@@ -18,6 +18,8 @@
 # ════════════════════════════════════════════════════════════════
 extends SubViewportContainer
 
+const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
+
 # Each preset specifies:
 #   scene          : res:// path of the location to instantiate
 #   camera_origin  : Vector3 in the location's world coords
@@ -3417,6 +3419,9 @@ func load_location(preset_id: String) -> bool:
 	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
 	# real transparency — before this every pane was an opaque slab.
 	GlassPass.apply(_location_instance)
+	# HERO ART (2026-10-12): the installed pictures (the alley mural, the
+	# photo in Diego's mirror ...) laid on their surfaces, stand-ins hidden.
+	HeroArtScript.apply(_location_instance, String(spec.get("scene", "")).get_file().get_basename())
 	# PER-PRESET LIGHTS (2026-10-08), the markers' convention carried to
 	# lights: a Light3D named `<name>__<preset_id>` belongs to that preset's
 	# AREA of a shared set and is dropped, before it enters the tree (so the

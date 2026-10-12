@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 97: HERO ART — 2D PICTURES ON THE WORLD'S SURFACES.**
+The user: "For 2D images, art, specific textures like the Aria street
+painting, add them to the hero prop as image generations or textures that
+can be imported." Hero Studio's roster gains an `art` kind: generated like
+any concept image (front view only, image-only cost), then INSTALLED as the
+picture itself at `godot/assets/art/hero/<slug>.png|jpg|webp` — no Meshy;
+the page's "Make 3D" reads "Install picture" for art. Each entry's `apply`
+rows name the surfaces: locale, centre (Blender coordinates), size in
+metres, facing, and the box stand-in's name prefixes to hide.
+`scripts/vn/HeroArt.gd` (called from `Background3D.load_location`) lays
+each installed picture on its surface as a lit matte quad and hides the
+stand-in; no picture = the stand-in stays. Installed art is on the Drive
+with the models (SAVE / drive-pull), git-ignored in its own `hero/`
+subfolder (the slowsticks' tracked art in `assets/art/<stick>/` is
+untouched). First four entries: **aria_alley_face** (Lena's mural of
+Aria's closed-eyed face on the Salty Tome alley wall, ch14 canon, hides
+the Face_* paint boxes), **sam_photo_diego** (the Walgreens print in his
+mirror), **periodic_table_diego**, **calendar_diego**. Tested with
+labelled placeholders: every picture on its surface, readable the right
+way round, stand-ins hidden; placeholders removed. `assets/art/hero/
+README.md` says how to add one. **Draft N+1:** generate the four in Hero
+Studio and judge them on the Deck; the alley face insert re-framed for a
+1.4 × 1.9 m painting; next entries the prose names — the sanderling mural
+across Main, Maya's posters, the band poster in Nate's garage, Bianca's
+August calendar, the cedar faces' carved surfaces (a `relief` mode with a
+normal map is a later step).
+
 **2026-10-12 · pass 96: THE DIRECTOR FOLLOWS THE NARRATOR IN DIEGO'S ROOM.**
 The user: "The director should be focusing on the items in Diego's room
 as they are being called out by the narrator." Twenty-five cues across

@@ -17,7 +17,8 @@
     "prompt_mode": "fallback (default: prompt used only when canon is empty) | append (prompt added after the canon quotes)",
     "base": "slug of the hero this entry is a LOOK of (another age or costume of the same person) — its own concept image and GLB; omitted on a hero's default look",
     "look": "{label, vols, scenes?, when}: what this look is and where the scenes stage it. CharLayer routes a base key to this look's GLB when the current scene's vol is in `vols` — narrowed to the listed scene ids when `scenes` is given (a costume is a scene, not a volume); the look's own keys always route to it",
-    "looks": "on a base entry: the slugs of its looks, for the Hero Studio to group under it"
+    "looks": "on a base entry: the slugs of its looks, for the Hero Studio to group under it",
+    "apply": "ART only: where the picture goes — a list of {locale, center [x,y,z] in BLENDER coordinates, size [w,h] in metres, facing (+x|-x|+y|-y|up = the side the viewer stands on), hide [name prefixes of the box stand-in to hide when the picture is installed], label}. scripts/vn/HeroArt.gd lays the picture there when the locale loads."
   },
   "defaults": {
     "provider": "google",
@@ -39,7 +40,9 @@
     "view_back": "Same subject, identical design, colours, clothing and details as the reference image, now seen directly from behind (180 degrees), same pose, same plain light-grey background, whole subject in frame.",
     "hero_short": "Full-body concept render of {name}: relaxed A-pose, facing camera, feet visible, whole body in frame, plain flat light-grey seamless background, even soft light, no cast shadow, one subject, semi-realistic painterly style, clean silhouette.",
     "demon_short": "Full-body concept render of {name}: uncanny figure, relaxed A-pose, facing camera, whole body in frame, plain flat light-grey seamless background, even soft light, one subject, bold exaggerated silhouette, muted palette with one sickly accent, almost human, wrong in one or two ways.",
-    "prop_short": "Single-object concept render of {name}: the object alone, centered, three-quarter view from slightly above, whole object in frame, plain flat light-grey seamless background, even soft light, no hands, no other objects, clear material read."
+    "prop_short": "Single-object concept render of {name}: the object alone, centered, three-quarter view from slightly above, whole object in frame, plain flat light-grey seamless background, even soft light, no hands, no other objects, clear material read.",
+    "art": "A single flat image of {name}, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.",
+    "art_short": "Flat straight-on image of {name}, the artwork alone filling the frame edge to edge, no wall, frame, room or perspective, true to its medium."
   },
   "entries": [
     {
@@ -7155,6 +7158,185 @@
         }
       ],
       "prompt_mode": "append"
+    },
+    {
+      "slug": "aria_alley_face",
+      "kind": "art",
+      "name": "the face Lena paints on the alley wall",
+      "file": "aria_alley_face.png",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "aria_alley_face"
+      ],
+      "tag": "vol7 ch14-22 · the Salty Tome alley · Aria's face, eyes closed, painted on the brick over the substrate's patch",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A mural of a young woman's face painted directly on old red brick in an alley, about one metre across: the eyes closed, the face tilted slightly up, long dark hair painted in bone black curling at the ends and falling to the waist, a calm forehead line. Brushwork visible, the brick's mortar lines showing through the thin paint at the edges, a faint blue sheen in the curls. Painted in one morning, from memory.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch14_painting.json",
+          "text": "She painted the closed-eyed face. She painted from the hair down. She painted the curling of the hair in the bone black against the brick — long, dark-when-wet, curling at the ends. She painted the line of the forehead."
+        },
+        {
+          "src": "vol7/vol7_ch14_painting.json",
+          "text": "The cedar has the closed eyes. You are going to paint the closed eyes."
+        },
+        {
+          "src": "vol7/vol7_ch14_painting.json",
+          "text": "The patch was the size of her torso, maybe slightly bigger. The patch was the place where the face was going to go."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "Aria: 'always young, always curly blue hair' (vol 7 wiki). The canon gives bone black hair; the blue is a sheen, not a colour — edit if it reads wrong.",
+      "apply": [
+        {
+          "locale": "salty_tome_interior",
+          "label": "the mural wall in the alley",
+          "center": [
+            -0.8,
+            11.855,
+            1.62
+          ],
+          "size": [
+            1.4,
+            1.9
+          ],
+          "facing": "-y",
+          "hide": [
+            "Face_Band_",
+            "Face_Eye_",
+            "Face_Mouth",
+            "Face_Hair_"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sam_photo_diego",
+      "kind": "art",
+      "name": "the photograph of Sam in Diego's mirror",
+      "file": "sam_photo_diego.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "sam_photo_diego"
+      ],
+      "tag": "vol6 prologue · a drugstore print of Sam tucked into the corner of Diego's mirror",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A 4x6 drugstore photo print of Sam Miller, seventeen, a candid outdoor snapshot: a teenage girl with dark blonde hair pulled back, squinting slightly into Texas summer sun, half a smile, a plain tee. Slightly overexposed, a little soft, the colours of a phone photo printed at a Walgreens kiosk. The print alone, straight on.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating."
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "SPARSE on Sam's look — match the sam_miller hero's concept before spending credits.",
+      "apply": [
+        {
+          "locale": "diego_bedroom",
+          "label": "tucked in the mirror's corner",
+          "center": [
+            -0.64,
+            0.1407,
+            1.705
+          ],
+          "size": [
+            0.075,
+            0.1
+          ],
+          "facing": "+y"
+        }
+      ]
+    },
+    {
+      "slug": "periodic_table_diego",
+      "kind": "art",
+      "name": "Diego's periodic table poster",
+      "file": "periodic_table_diego.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "periodic_table_diego"
+      ],
+      "tag": "vol6 · Diego's bedroom · the periodic table he has had since seventh grade",
+      "aspect": "3:2",
+      "pose": null,
+      "prompt": "A classroom periodic table of the elements wall poster, the standard school layout with colour-coded element families in muted primary colours, slightly faded and sun-bleached after five years on a bedroom wall, a small crease across one corner. Element symbols as simple shapes of colour blocks, legible layout but no readable small text.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "a periodic table he has had since seventh grade"
+        }
+      ],
+      "prompt_mode": "append",
+      "apply": [
+        {
+          "locale": "diego_bedroom",
+          "label": "the E wall over the desk",
+          "center": [
+            2.087,
+            2.95,
+            1.62
+          ],
+          "size": [
+            0.92,
+            0.62
+          ],
+          "facing": "-x",
+          "hide": [
+            "Periodic_Table"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "calendar_diego",
+      "kind": "art",
+      "name": "the calendar Diego stopped updating",
+      "file": "calendar_diego.png",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "calendar_diego"
+      ],
+      "tag": "vol6 prologue · a wall calendar left on March, the days crossed off and then not",
+      "aspect": "2:3",
+      "pose": null,
+      "prompt": "A free promotional wall calendar from a Texas feed store or credit union, hanging open to MARCH: a landscape photo of Hill Country bluebonnets on the top half, the month grid on the bottom half with the first two weeks of days crossed off in blue ballpoint and the rest left blank. Slightly curled pages. Flat, straight on.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch0_prelude.json",
+          "text": "a calendar he stopped updating"
+        }
+      ],
+      "prompt_mode": "append",
+      "notes": "The month is the builder's (Calendar_March); the canon says only that he stopped.",
+      "apply": [
+        {
+          "locale": "diego_bedroom",
+          "label": "the E wall by the window",
+          "center": [
+            2.087,
+            0.95,
+            1.55
+          ],
+          "size": [
+            0.32,
+            0.46
+          ],
+          "facing": "-x",
+          "hide": [
+            "Calendar_March"
+          ]
+        }
+      ]
     }
   ]
 }

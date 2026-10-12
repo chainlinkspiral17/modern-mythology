@@ -399,6 +399,25 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-12 · a picture on a wall is a texture, not more boxes
+
+- **The alley mural was nineteen coloured boxes** (face bands, eyes, a
+  mouth, hair sheets) standing in for a painted face — the honest ceiling
+  of a vertex-colour pipeline. A picture the prose dwells on (the mural,
+  a photo, a poster, a calendar) is now an `art` roster entry: a
+  generated image, installed as a PNG, laid on the surface by
+  `scripts/vn/HeroArt.gd` as a matte quad, the box stand-in hidden.
+- **Keep the stand-in in the builder.** It is the fallback when the
+  picture is not installed and it is the size and position reference for
+  the `apply` row (centre and size read straight off the builder's box).
+- **`facing` is the viewer's side**, in Blender axes; put the quad 1-2 mm
+  proud of the surface. Test with a labelled placeholder that says TOP
+  LEFT and has an arrow pointing up: a mirrored or upside-down quad is
+  obvious at once.
+- **Check what already lives in a folder before ignoring it.** The first
+  draft ignored `godot/assets/art/*` and would have hidden the slowsticks'
+  tracked art in its subfolders; hero art has its own `art/hero/`.
+
 ### 2026-10-12 · a failed load must clear the screen, or the last room lies
 
 **What happened.** The user, after a fresh pull: "maya and sam's room have

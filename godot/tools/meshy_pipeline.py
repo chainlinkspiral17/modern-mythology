@@ -75,7 +75,15 @@ OUT_DIRS = {
     "hero": CHAR_ROOT / "heroes",
     "demon": CHAR_ROOT / "demons",
     "prop": REPO / "assets" / "3d" / "props",
+    # ART (2026-10-12): 2D pictures that live ON the world's surfaces — the
+    # face Lena paints on the alley wall, the photo of Sam in Diego's mirror,
+    # a poster. Generated like any concept image, then INSTALLED as the
+    # picture itself (no Meshy); the game lays it on the surface the entry's
+    # `apply` rows name (scripts/vn/HeroArt.gd) and hides the box stand-in.
+    "art": REPO / "assets" / "art" / "hero",   # (assets/art/<stick>/ is the slowsticks' tracked art)
 }
+ART_EXTS = (".png", ".jpg", ".jpeg", ".webp")
+ART_FACINGS = ("+x", "-x", "+y", "-y", "up")
 KEY_FILES = {
     "google": TOOLS / ".google_key",
     "runway": TOOLS / ".runway_key",
@@ -426,6 +434,7 @@ def _git_head():
 GIT_SAVE_PATHS = [
     "godot/assets/3d/characters",
     "godot/assets/3d/props",
+    "godot/assets/art/hero",
     "godot/assets/concept/meshy",
     "godot/assets/concept/scenes",
     "godot/tools/meshy_roster.json",
@@ -584,6 +593,7 @@ DRIVE_DIRS = [
     "godot/assets/3d/characters/demons",
     "godot/assets/3d/props",
     "godot/assets/concept/meshy",
+    "godot/assets/art/hero",             # ART: pictures laid on the world's surfaces (HeroArt.gd)
     "godot/assets/concept/scenes",       # PAINT OR PASS — generations + composites
     "godot/assets/video",                # the opening movie (install_intro_video.sh)
     "godot/assets/audio/voice",          # Voice Studio lines (import_voice_dropins.sh)
@@ -1238,12 +1248,23 @@ def load_roster(path=ROSTER_PATH):
         if key in seen_files:
             sys.exit(f"roster: {e['slug']} and {seen_files[key]} both target {e['kind']}/{e['file']}")
         seen_files[key] = e["slug"]
-        if not e["file"].endswith(".glb"):
+        if e["kind"] == "art":
+            if not e["file"].endswith(".png"):
+                sys.exit(f"roster entry {e['slug']}: an art file must end in .png")
+            rows = e.get("apply")
+            if not isinstance(rows, list) or not rows:
+                sys.exit(f"roster entry {e['slug']}: art needs an `apply` list of surfaces")
+            for r in rows:
+                ok = (isinstance(r, dict) and r.get("locale") and isinstance(r.get("center"), list) and len(r["center"]) == 3
+                      and isinstance(r.get("size"), list) and len(r["size"]) == 2 and r.get("facing") in ART_FACINGS)
+                if not ok:
+                    sys.exit(f"roster entry {e['slug']}: apply rows need locale, center [x,y,z], size [w,h], facing in {ART_FACINGS}")
+        elif not e["file"].endswith(".glb"):
             sys.exit(f"roster entry {e['slug']}: file must end in .glb")
         e.setdefault("vol", [])
         e.setdefault("keys", [e["slug"]])
-        e.setdefault("aspect", "3:4" if e["kind"] != "prop" else "1:1")
-        e.setdefault("pose", "a-pose" if e["kind"] != "prop" else None)
+        e.setdefault("aspect", {"prop": "1:1", "art": "4:3"}.get(e["kind"], "3:4"))
+        e.setdefault("pose", None if e["kind"] in ("prop", "art") else "a-pose")
         e.setdefault("texture_prompt", "")
         e.setdefault("tag", "")
         e.setdefault("canon", [])
@@ -1292,7 +1313,44 @@ def entry_dir(entry):
 
 
 def entry_out_path(entry):
+    if entry["kind"] == "art":
+        # the installed picture keeps its source's format (a provider may hand back a JPEG)
+        stem = OUT_DIRS["art"] / Path(entry["file"]).stem
+        for ext in ART_EXTS:
+            if stem.with_suffix(ext).exists():
+                return stem.with_suffix(ext)
     return OUT_DIRS[entry["kind"]] / entry["file"]
+
+
+def install_art(entry, opts, log=print):
+    """ART: the chosen front image IS the deliverable — copy it to
+    assets/art/hero/<stem>.<ext>, dropping any other format of the same stem."""
+    src = Path(opts["image"]) if opts.get("image") else chosen_view_path(entry, "front")
+    if src is None:
+        cands = candidates_for(entry, "front")
+        src = cands[0] if cands else None
+    stem = OUT_DIRS["art"] / Path(entry["file"]).stem
+    if src is None or not Path(src).exists():
+        if opts.get("dry_run"):
+            log(f"  art · {entry['slug']} · [DRY] would install the chosen front image → {rel(stem.with_suffix('.png'))}")
+            return None
+        raise FileNotFoundError(f"{entry['slug']}: no image yet — generate one first")
+    src = Path(src)
+    dst = stem.with_suffix(src.suffix.lower() if src.suffix.lower() in ART_EXTS else ".png")
+    if opts.get("dry_run"):
+        log(f"  art · {entry['slug']} · [DRY] would install {rel(src)} → {rel(dst)}")
+        return None
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    for ext in ART_EXTS:
+        old = stem.with_suffix(ext)
+        if old.exists() and old != dst:
+            old.unlink()
+    shutil.copyfile(src, dst)
+    surfaces = ", ".join(f"{r['locale']} ({r.get('label', r['facing'])})" for r in entry.get("apply", []))
+    log(f"  art · {entry['slug']} · installed {rel(dst)} → laid on: {surfaces}")
+    append_manifest({"at": now_iso(), "stage": "art", "slug": entry["slug"], "kind": "art",
+                     "input": rel(src), "output": rel(dst)})
+    return dst
 
 
 RUNWAY_PROMPT_BUDGET = 1000     # promptText hard cap (UTF-16 units)
@@ -1856,7 +1914,7 @@ def stage_image(roster, entry, opts, log=print):
     aspect = opts.get("aspect") or entry["aspect"]
     if aspect not in GOOGLE_ASPECTS:
         raise ValueError(f"aspect {aspect!r} not in {sorted(GOOGLE_ASPECTS)}")
-    views = list(VIEWS) if opts.get("multiview") else ["front"]
+    views = list(VIEWS) if opts.get("multiview") and entry["kind"] != "art" else ["front"]
     dry = bool(opts.get("dry_run"))
     saved = []
 
@@ -1924,7 +1982,10 @@ def stage_image(roster, entry, opts, log=print):
 
 
 def stage_mesh(roster, entry, opts, log=print):
-    """Send the chosen view(s) to Meshy and install the GLB at the canonical path."""
+    """Send the chosen view(s) to Meshy and install the GLB at the canonical path.
+    An ART entry has no mesh: its "make" step installs the picture instead."""
+    if entry["kind"] == "art":
+        return install_art(entry, opts, log=log)
     dry = bool(opts.get("dry_run"))
     out_path = entry_out_path(entry)
     explicit = opts.get("image")
@@ -2011,7 +2072,7 @@ def estimate_cost(entries, opts, stages):
     total = 0.0
     provider = opts.get("provider") or "google"
     model = opts.get("model") or ""
-    for _ in entries:
+    for e in entries:
         if "image" in stages:
             n = max(1, int(opts.get("count") or 1)) + (2 if opts.get("multiview") else 0)
             if provider == "google":
@@ -2021,7 +2082,7 @@ def estimate_cost(entries, opts, stages):
                 total += n * COST_HINTS["openai"] * (3 if opts.get("quality") == "high" else 1)
             else:
                 total += n * COST_HINTS["runway"]
-        if "mesh" in stages:
+        if "mesh" in stages and e.get("kind") != "art":    # art installs, it does not call Meshy
             total += COST_HINTS["meshy:textured" if opts.get("texture") else "meshy:draft"]
     return total
 

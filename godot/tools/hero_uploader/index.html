@@ -95,6 +95,7 @@
   .card .kind { display: inline-block; font-size: 9px; padding: 0 5px; border-radius: 2px; border: 1px solid var(--border); margin-right: 4px; color: var(--fg-dim); text-transform: uppercase; }
   .card .kind.prop { color: var(--blue); border-color: var(--blue); }
   .card .kind.demon { color: var(--green-ok); border-color: var(--green-ok); }
+  .card .kind.art { color: var(--brass); border-color: var(--brass); }
   .card .kind.look { color: var(--brass); border-color: var(--brass); text-transform: none; }
   .card.look { margin-left: 14px; border-left: 2px solid var(--brass); }
   .card .sparse { font-size: 10px; color: var(--vinyl); margin-left: 4px; }
@@ -372,7 +373,7 @@ const state = {
   previewURL: null,
 };
 const $ = (id) => document.getElementById(id);
-const OUT_DIR = { hero: 'godot/assets/3d/characters/heroes', demon: 'godot/assets/3d/characters/demons', prop: 'godot/assets/3d/props' };
+const OUT_DIR = { hero: 'godot/assets/3d/characters/heroes', demon: 'godot/assets/3d/characters/demons', prop: 'godot/assets/3d/props', art: 'godot/assets/art/hero' };
 const COST = { 'google:gemini': 0.04, 'google:imagen': 0.04, runway: 0.08, openai: 0.07, 'meshy:draft': 0.20, 'meshy:textured': 0.80 };
 
 function log(level, msg) {
@@ -429,7 +430,7 @@ async function boot() {
 function normaliseRoster() {
   for (const e of state.roster.entries) {
     e.status = e.status || { glb_installed: false, chosen: {}, candidates: {} };
-    e.aspect = e.aspect || (e.kind === 'prop' ? '1:1' : '3:4');
+    e.aspect = e.aspect || (e.kind === 'prop' ? '1:1' : e.kind === 'art' ? '4:3' : '3:4');
   }
   state.roster.providers = state.roster.providers || {
     google: { models: ['gemini-2.5-flash-image', 'gemini-3.1-flash-image', 'gemini-3-pro-image-preview', 'imagen-4.0-generate-001', 'imagen-4.0-fast-generate-001', 'imagen-4.0-ultra-generate-001'], default: 'gemini-2.5-flash-image' },
@@ -524,7 +525,7 @@ function renderRoster() {
   let last = null;
   for (const e of entries) {
     const vols = (e.base ? (bySlug[e.base]?.vol || e.vol) : e.vol) || [];
-    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
+    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'art' ? `art (pictures on surfaces) · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
     if (grp !== last) { const h = document.createElement('div'); h.className = 'group-hdr'; h.textContent = grp; list.appendChild(h); last = grp; }
     const c = document.createElement('div');
     c.className = 'card' + (e.slug === state.selected ? ' selected' : '') + (e.base ? ' look' : '');
@@ -598,7 +599,11 @@ function select(slug) {
   $('entry-empty').style.display = 'none'; $('entry').style.display = '';
   $('e-name').textContent = e.name;
   $('e-tag').textContent = [e.kind, ...(e.vol || []).map(v => 'vol' + v), e.tag].filter(Boolean).join(' · ');
-  $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}`;
+  $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}` + (e.kind === 'art' ? '  →  laid on: ' + (e.apply || []).map(r => `${r.locale} (${r.label || r.facing})`).join(', ') : '');
+  // ART (2026-10-12): the picture IS the deliverable — no Meshy, the make step installs it
+  $('btn-mesh').textContent = e.kind === 'art' ? 'Install picture' : 'Make 3D';
+  $('btn-run').textContent = e.kind === 'art' ? 'Generate image → Install picture' : 'Generate image → Make 3D';
+  $('o-multiview').disabled = e.kind === 'art';
   $('e-notes').style.display = e.notes ? '' : 'none'; $('e-notes').textContent = e.notes || '';
   $('e-prompt').value = e.prompt || '';
   $('e-texprompt').value = e.texture_prompt || '';
@@ -779,7 +784,7 @@ function startGitPolling() { refreshGit(); if (!gitTimer) gitTimer = setInterval
 // ── RECOVERED (models fetched back from the Meshy account, not yet anyone's) ──
 // (esc() is defined above)
 function recHeroes() {
-  return (state.roster?.entries || []).filter(e => e.kind !== 'prop')
+  return (state.roster?.entries || []).filter(e => e.kind !== 'prop' && e.kind !== 'art')
     .map(e => ({ slug: e.slug, name: e.name, tag: e.tag, kind: e.kind, base: e.base, look: e.look, installed: !!e.status?.glb_installed }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
