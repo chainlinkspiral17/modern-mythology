@@ -3834,6 +3834,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 91: THE PORCH BY DAY.** `cabin_porch` carries no env of
+its own, so its four day chapters (ch1 Finn's morning, ch5, ch10, ch15 the
+wagon) rendered the porch under the cabin's night sky (the draft-16 sheet
+showed it). A `cabin_porch_day` preset: the same camera in the turnaround,
+the interior-day sky and ambient, the raw_observation pack; every
+`__cabin_porch` node — the ten shot markers, the eight named closeups, the
+porch sun and sky fill, the two window spills — cloned with the
+`__cabin_porch_day` suffix so the preset keeps the porch's own area and
+lights (a per-preset marker beats the interior's plain one). The four
+chapters routed. **Draft N+1:** a dawn porch for ch20 (`dawn_warm`); the
+porch's practicals (the smokers' tin, the door lamp) for the dusk chapters;
+a wagon-side camera for ch15.
+
+**2026-10-12 · pass 90: THE CABIN, interior draft 17.** The hung loft's
+SWAY BRACES — a V of 16 mm rods between the three front hangers, clamped
+to them above the rail (five pins cannot keep a loft from swinging); the
+strongback's hex nuts; a SNOW STOP below each solar array (a steel bar on
+three brackets, 0.10 off the shakes); a second cushion in the reading end;
+the LED bar's fifteen cells behind its lens. Local stub build + renders
+(porch by day, the room, the night). **Draft 18 targets:** the panels'
+cell grid; the controller's cable to the radio; the loft lantern as a
+warmer practical; the rods' plates at the roof as real forged straps; the
+porch's hour per chapter (see pass 91).
+
 **2026-10-12 · pass 89: THE READING PASS, draft 3 (the HUD bar, the
 save slots, settings, the main menu's chapter list).** The HUD bar's type
 up a step (title 13, the chapter whisper 14 in the italic, items 12, the

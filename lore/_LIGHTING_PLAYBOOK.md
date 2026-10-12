@@ -151,6 +151,24 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-12 · a preset without `env` inherits the scene's sky — a day area needs its own
+
+- **The porch rendered under the night sky for four day chapters.**
+  `cabin_porch` had a camera and suffixed lights (`Porch_Sun__cabin_porch`)
+  but no `env`, so the cabin .tscn's night WorldEnvironment applied and
+  the daylight-tagged sun shone under a black sky. A day preset is
+  camera + `env` + `style_pack` + ITS OWN NODES: `find_shot_marker` tries
+  `<name>__<preset>` then the plain name, and `_strip_other_preset_lights`
+  keeps only the preset's suffix and the unsuffixed — so a new preset on a
+  shared scene needs every suffixed node of its area cloned with its own
+  suffix (22 for the porch: markers, named closeups, sun, sky fill, window
+  spills), or its closeups fall to the interior's plain pair and its sun
+  is stripped. Clone by regex over the .tscn; never retype them.
+- **Read the chapters' mood tags before choosing a preset's hour.**
+  Twelve porch chapters: eight dusk / candlelight / night, four day, one
+  dawn. The night env stays the default; the day chapters route to the
+  day preset; dawn is its own (draft N+1).
+
 ### 2026-10-11 · a night twin for a set that already has per-preset areas
 
 - **A `__preset` suffix is exact, for lights AND markers.** The cab

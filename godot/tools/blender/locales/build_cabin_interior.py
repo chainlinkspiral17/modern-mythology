@@ -376,6 +376,15 @@ def build_loft():
     for ri, ry in enumerate((6.1, 7.4)):   # from the rafter at x -0.5, through a plate on its underside
         make_box(f"Roof_Hanger_Rafter_Plate_{ri}", (X1, ry, rafter_bot(ry) - 0.012), (0.12, 0.16, 0.024), steel_dk)
         rod(f"Roof_Hanger_Rod_E{ri}", X1, ry, rafter_bot(ry) - 0.024)
+    # (draft 17) THE SWAY BRACES: a V of 16 mm rods between the three front hangers,
+    # clamped to them above the rail (the loft cannot swing on five pins)
+    for bi, (xa, xb) in enumerate(((-3.0, -1.85), (-0.72, -1.85))):
+        make_tube(f"Roof_Hanger_Sway_{bi}", [(xa, Y0, 3.40), (xb, Y0, 5.60)], 0.008, steel, segments=6)   # from above the newels' caps (3.28)
+        for ci, (cxx, czz) in enumerate(((xa, 3.40), (xb, 5.60))):
+            make_cyl(f"Roof_Hanger_Sway_{bi}_Clamp_{ci}", (cxx, Y0, czz), 0.022, 0.05, steel_dk, segments=8)
+    # the strongback's nuts, a hex each (the bolt heads are in the rafters)
+    for bi, bx in enumerate((-3.5, -2.5, -1.5, -0.5)):
+        make_cyl(f"Roof_Hanger_Strongback_Nut_{bi}", (bx, Y0, sb_z - 0.045), 0.016, 0.012, steel_dk, segments=6)
     # the rails: along the front (a gap at the ladder, x -3.65..-2.95) and down the east edge
     rail_z = LOFT_Z + 0.10 + 0.46
     make_box("Loft_Rail_F_E", ((-2.95 + X1) / 2.0, Y0, rail_z), (X1 + 2.95, 0.05, 0.06), cedar_dk)
@@ -405,6 +414,9 @@ def build_loft():
         make_box(f"Loft_Rug_Stripe_{si}", (-1.45, sy, LOFT_Z + 0.10 + 0.013), (1.46, 0.10, 0.004), (0.30, 0.36, 0.42, 1.0))
     make_chamfer_box("Loft_Cushion", (-0.95, 7.10, LOFT_Z + 0.10 + 0.08), (0.60, 0.60, 0.16), (0.40, 0.44, 0.34, 1.0), chamfer=0.05)
     make_chamfer_box("Loft_Cushion_Back", (-0.72, 7.10, LOFT_Z + 0.10 + 0.30), (0.14, 0.56, 0.36), (0.36, 0.40, 0.30, 1.0), chamfer=0.04)
+    # (draft 17) the second cushion, against the rail beside the first, a different wool
+    make_chamfer_box("Loft_Cushion_2", (-0.95, 6.35, LOFT_Z + 0.10 + 0.08), (0.60, 0.60, 0.16), (0.52, 0.40, 0.30, 1.0), chamfer=0.05)
+    make_chamfer_box("Loft_Cushion_2_Back", (-0.72, 6.35, LOFT_Z + 0.10 + 0.30), (0.14, 0.56, 0.36), (0.46, 0.34, 0.26, 1.0), chamfer=0.04)
     make_chamfer_box("Loft_LowTable", (-1.75, 7.25, LOFT_Z + 0.10 + 0.30), (0.50, 0.40, 0.03), COL_WOOD, chamfer=0.01)
     for li, (lx, ly) in enumerate(((-1.95, 7.08), (-1.55, 7.08), (-1.95, 7.42), (-1.55, 7.42))):
         make_box(f"Loft_LowTable_Leg_{li}", (lx, ly, LOFT_Z + 0.10 + 0.14), (0.03, 0.03, 0.28), COL_WOOD_DK)
@@ -1098,6 +1110,15 @@ def build_solar_roof_2026_10():
                            [(y0 + 0.01, top(y0 + 0.01) + lift + 0.03), (y1 - 0.01, top(y1 - 0.01) + lift + 0.03),
                             (y1 - 0.01, top(y1 - 0.01) + lift + 0.045), (y0 + 0.01, top(y0 + 0.01) + lift + 0.045)],
                            x1 - x0 - 0.02, glass)
+    # (draft 17) a snow stop below each array: a steel bar on short brackets, 0.10 off the shakes
+    for arr, (x0, x1) in (("W", (-3.50, -1.30)), ("E", (1.30, 3.50))):
+        _prism_ccw(f"Roof_Snow_Stop_{arr}", ((x0 + x1) / 2.0, 0.0, 0.0),
+                   [(0.08, top(0.08) + 0.10), (0.14, top(0.14) + 0.10), (0.14, top(0.14) + 0.16), (0.08, top(0.08) + 0.16)],
+                   x1 - x0, rail)
+        for bi, bx in enumerate((x0 + 0.20, (x0 + x1) / 2.0, x1 - 0.20)):
+            _prism_ccw(f"Roof_Snow_Stop_{arr}_Bracket_{bi}", (bx, 0.0, 0.0),
+                       [(0.09, top(0.09)), (0.13, top(0.13)), (0.13, top(0.13) + 0.10), (0.09, top(0.09) + 0.10)],
+                       0.04, rail)
     # the combiner box at the west array's eave end, and the conduit: along the
     # eave to the wall's corner, down the south wall outside, in at the foundation
     make_box("Roof_Solar_Combiner", (-3.90, 0.05, top(0.05) + 0.12), (0.22, 0.16, 0.20), (0.30, 0.31, 0.33, 1.0))
@@ -1118,6 +1139,8 @@ def build_solar_roof_2026_10():
     # the LED bar under the loft deck, over the counter
     make_box("Loft_LED_Bar", (-2.85, 6.60, LOFT_Z - 0.03), (1.30, 0.04, 0.03), (0.50, 0.51, 0.53, 1.0))
     make_box("Loft_LED_Bar_Lens", (-2.85, 6.60, LOFT_Z - 0.047), (1.26, 0.03, 0.004), (0.96, 0.95, 0.90, 1.0))
+    for ci, cxx in enumerate([-3.44 + 0.084 * i for i in range(15)]):   # (draft 17) the LED cells behind the lens
+        make_box(f"Loft_LED_Bar_Cell_{ci}", (cxx, 6.60, LOFT_Z - 0.050), (0.03, 0.02, 0.003), (1.0, 0.98, 0.92, 1.0))
     # (two tubes: the run under the deck and the drop down the wall — one
     # tube's box would span the pot rack's bar)
     make_tube("Loft_LED_Bar_Wire", [(-2.20, 6.60, LOFT_Z - 0.02), (-2.20, 6.60, LOFT_Z - 0.005), (-3.85, 6.60, LOFT_Z - 0.005)],
