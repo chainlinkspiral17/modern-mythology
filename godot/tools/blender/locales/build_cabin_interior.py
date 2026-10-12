@@ -425,6 +425,9 @@ def build_loft():
     make_box("Loft_Lantern_Base", (-1.75, 7.25, LOFT_Z + 0.10 + 0.33), (0.14, 0.14, 0.03), cedar_dk)
     make_box("Loft_Lantern_Stem", (-1.75, 7.25, LOFT_Z + 0.10 + 0.43), (0.02, 0.02, 0.18), steel_dk)
     make_box("Loft_Lantern_Panel", (-1.75, 7.25, LOFT_Z + 0.10 + 0.54), (0.16, 0.02, 0.10), (0.96, 0.94, 0.86, 1.0))
+    # (draft 18) a paper shade round the LED panel — the cool light warmed for a reader
+    make_lathe("Loft_Lantern_Shade", (-1.75, 7.25, LOFT_Z + 0.10 + 0.46),
+               [(0.07, 0.0), (0.075, 0.04), (0.075, 0.14), (0.06, 0.18)], (0.94, 0.86, 0.70, 0.9), segments=12)
     make_chamfer_box("Loft_Book_Open", (-1.62, 7.30, LOFT_Z + 0.10 + 0.33), (0.22, 0.16, 0.02), (0.90, 0.88, 0.80, 1.0), chamfer=0.004)
     # the low shelf under the gable window, along the W wall: Eddvard's books
     make_box("Loft_Shelf", (-ROOM_W / 2.0 + 0.10 + 0.16, 5.60, LOFT_Z + 0.10 + 0.36), (0.28, 1.20, 0.72), cedar_dk)
@@ -1087,6 +1090,7 @@ def build_solar_roof_2026_10():
     th = 0.18
     top = lambda y: under_s(y) + th
     glass, carrier, rail = (0.07, 0.09, 0.14, 1.0), (0.58, 0.60, 0.62, 1.0), (0.42, 0.43, 0.45, 1.0)
+    cellline = (0.36, 0.40, 0.48, 1.0)   # (draft 18) the busbars and the gaps between cells
     cols = {"W": (-3.45, -2.40, -1.35), "E": (1.35, 2.40, 3.45)}   # the column edges per array
     rows = ((0.25, 1.90), (2.00, 3.65))
     lift = 0.08
@@ -1110,6 +1114,19 @@ def build_solar_roof_2026_10():
                            [(y0 + 0.01, top(y0 + 0.01) + lift + 0.03), (y1 - 0.01, top(y1 - 0.01) + lift + 0.03),
                             (y1 - 0.01, top(y1 - 0.01) + lift + 0.045), (y0 + 0.01, top(y0 + 0.01) + lift + 0.045)],
                            x1 - x0 - 0.02, glass)
+                # (draft 18) the cell grid: two busbar lines down the slope, the cell rows across it
+                gz = lift + 0.046
+                for li, lx in enumerate((x0 + (x1 - x0) / 3.0, x0 + 2.0 * (x1 - x0) / 3.0)):
+                    _prism_ccw(f"Roof_Solar_Cell_Line_{arr}{ci}_{pi_}_{li}", (lx, 0.0, 0.0),
+                               [(y0 + 0.03, top(y0 + 0.03) + gz), (y1 - 0.03, top(y1 - 0.03) + gz),
+                                (y1 - 0.03, top(y1 - 0.03) + gz + 0.003), (y0 + 0.03, top(y0 + 0.03) + gz + 0.003)],
+                               0.008, cellline)
+                for ri in range(1, 6):
+                    ry = y0 + (y1 - y0) * ri / 6.0
+                    _prism_ccw(f"Roof_Solar_Cell_Row_{arr}{ci}_{pi_}_{ri}", ((x0 + x1) / 2.0, 0.0, 0.0),
+                               [(ry - 0.004, top(ry - 0.004) + gz), (ry + 0.004, top(ry + 0.004) + gz),
+                                (ry + 0.004, top(ry + 0.004) + gz + 0.003), (ry - 0.004, top(ry - 0.004) + gz + 0.003)],
+                               x1 - x0 - 0.06, cellline)
     # (draft 17) a snow stop below each array: a steel bar on short brackets, 0.10 off the shakes
     for arr, (x0, x1) in (("W", (-3.50, -1.30)), ("E", (1.30, 3.50))):
         _prism_ccw(f"Roof_Snow_Stop_{arr}", ((x0 + x1) / 2.0, 0.0, 0.0),

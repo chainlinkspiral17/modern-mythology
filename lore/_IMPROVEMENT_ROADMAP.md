@@ -3834,6 +3834,47 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 95: A MISSING SET IS SHOWN AS MISSING (the user: "lots
+of assets missing ... maya and sam's room have the same decorations,
+diego's room is missing all the items the narration calls out").** The
+builders were right — Diego's has the green duffel with the broken zip,
+the water glass, the textbook, Sam's photo in the mirror, the periodic
+table, the stopped calendar, both curtain pairs, the fan, the dresser
+clock, the laptop, the blue pen and the envelope. The Deck was showing
+OTHER rooms: `Background3D.load_location` returned on a missing GLB before
+tearing down the previous location, so the last room that did build
+stayed on screen under every chapter whose set had not (Sam's chapters
+played in Maya's room). Every failure path now unloads the previous set
+and shows a notice naming the builder to run (a CanvasLayer in the "ui"
+group, F4 hides it); a successful load clears it. Tested in-engine (load
+Maya's room, request a set that cannot load: room torn down, notice up;
+load again: notice cleared). Diego's duffel gets its third shirt ("Three
+shirts, a phone charger, a pair of boots"). The Deck needs the full
+rebuild (`build_scenes.sh`) — locale GLBs are build outputs, never on the
+Drive. **Draft N+1:** a start-of-session check that lists every preset
+whose GLB is missing (the stale-build lister, run by the game); the
+notice's text in the reading face.
+
+**2026-10-12 · pass 94: THE CABIN, interior draft 18.** The solar panels'
+cell grid (two busbar lines down each panel, five cell rows across, a
+blue-grey line colour) so the arrays read as panels from the yard; a
+paper shade on the loft lantern and its practical warmed to (1.0, 0.86,
+0.66). The controller-to-radio cable is dropped: the cabin has no radio in
+the main room (the player is on the east room's shelf) and the run would
+cross the front door. **Draft 19 targets:** the porch's dusk practicals;
+the rods' roof plates as forged straps.
+
+**2026-10-12 · pass 93: NAMED CLOSEUPS — MAYA'S ROOM, THE CALDWELL PORCH,
+THE GRANDMOTHER'S KITCHEN, THE PIT STOP BOOTH AND LINE (D6).** Maya lying
+on the bedspread, framed from the foot of the bed; Maya and Linda in
+their porch chairs, each from its outer side along the porch; the abuela
+at the table under the kitchen window; Eileen in the back corner booth
+(suffixed for the booth preset); Ben on the grill and Jesse at the
+kitchen's swinging door (suffixed for the kitchen preset). `Mayas_Door*`
+→ `Bedroom_Door*`, `Mayas_Phone` → `SideTable_Phone`; Maya's porch chair
+keeps its name (it is her seat). Seats from the recorder; aim, wrong-room
+and obstruction clean.
+
 **2026-10-12 · pass 92: THE PORCH AT DAWN.** Ch20's "At six the cast was at
 the trucks" (`dawn_warm`) cut to the porch under the night sky. A
 `cabin_porch_dawn` preset: the porch camera, the dawn sky from the bypass
