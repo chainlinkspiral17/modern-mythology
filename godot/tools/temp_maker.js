@@ -259,10 +259,17 @@
     for (const t of P.tracks) {
       const spec = o.instruments && o.instruments[t.role];
       if (spec && !EXTRA_PADS.includes(t.role)) await setInstrument(E, t, spec);
-      const d = E.dev(t.deviceId);
-      instr[t.role] = !d ? 'none' : d.type === 'forge' ? 'forge:' + (d.preset || '') : d.type === 'patch' ? 'patch:' + d.patch : d.type === 'emu' ? 'emu:' + (d.emuId || '') + ' ch' + t.channel : d.type;
     }
     E.applyMix();
+    return instrumentsOf(E);
+  }
+  // { role (or track name): instrument } of the project as it stands — a take's meta.instruments
+  function instrumentsOf(E) {
+    const instr = {};
+    for (const t of E.project.tracks) {
+      const d = E.dev(t.deviceId), k = t.role || t.name;
+      instr[k] = !d ? (t.kind === 'audio' ? 'audio' : 'none') : d.type === 'forge' ? 'forge:' + (d.preset || '') : d.type === 'patch' ? 'patch:' + d.patch : d.type === 'emu' ? 'emu:' + (d.emuId || '') + ' ch' + t.channel : d.type;
+    }
     return instr;
   }
 
@@ -324,6 +331,8 @@
       meta.stems = man.stems.map(s => ({ name: s.name, role: s.role, layer: s.layer }));
     }
     if (credits.worst !== 'free') { await G.write(dir + 'credits.txt', new Blob([credits.text + '\n'], { type: 'text/plain' })); files.push('credits.txt'); }
+    // the exact project, so ✎ EDIT IN DAW opens this take as it was made (older takes are rebuilt from meta)
+    await G.write(dir + 'project.json', blobJson(E.project)); files.push('project.json');
     meta.files = files.slice();
     await G.write(dir + 'meta.json', blobJson(meta));
     return files.concat('meta.json').map(f => dir + f);
@@ -411,9 +420,50 @@
     return done;
   }
 
+  // ✎ EDIT IN DAW: a staged take back into E as an editable project — its project.json when it has one, else rebuilt
+  // from its meta (same seed / mood / request / length → the same notes and instruments). → { meta, song, exact }
+  async function loadTake(E, dir) {
+    const G = AKg().game;
+    const meta = JSON.parse(await G.readText(dir + 'meta.json')); meta.dir = dir;
+    let proj = null; try { proj = JSON.parse(await G.readText(dir + 'project.json')); } catch (e) {}
+    if (proj && proj.v) { await E.load(proj); E.project.name = meta.id; E.emit('project'); return { meta, song: null, exact: true }; }
+    const mo = meta.mood || {};
+    if (E.project) E.project.name = meta.id;
+    const song = await compose(E, { seed: mo.seed, style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, key: mo.key }, 'forge');
+    E.project.name = meta.id;
+    await shapeArrangement(E, song, normOpts(meta.request));
+    if (meta.bars) arrangeTo(E, song, meta.bars);
+    E.project.loop = { on: false, a: 0, b: meta.bars || E.songBars() };
+    E.emit('project');
+    return { meta, song, exact: false };
+  }
+  // ⇪ SEND TO DIRECTOR: the project in E as it is now → a NEW take of the same catalog track, next to the one it was
+  // opened from (meta.edited_from). An asked-for length stays seamless (renders folded over the whole song).
+  async function stageEdit(E, from, ctx = {}) {
+    const P = E.project, AK = AKg(), say = ctx.onProgress || (() => {});
+    if (!from || !from.id) throw new Error('no take to send back to');
+    const folded = !!(from.request && from.request.length), keepLoop = Object.assign({}, P.loop), bars = E.songBars();
+    if (folded) P.loop = { on: keepLoop.on, a: 0, b: bars };
+    let r;
+    try {
+      r = await render(E, { loop: folded, stems: E.canRenderOffline(), master: ctx.master !== false, lufs: ctx.lufs ?? -14,
+        onProgress: p => p && p.phase === 'stem' && say('rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
+    } finally { P.loop = keepLoop; }
+    say('saving…');
+    const credits = await E.credits(), seed = (from.mood || {}).seed;
+    const take = takeStamp() + '-s' + seed + '-edit', dir = REVIEW_DIR + '/' + from.id + '/' + take + '/';
+    const meta = Object.assign({}, from, { take, created: new Date().toISOString(), status: 'candidate', edited_from: from.take,
+      mood: Object.assign({}, from.mood, { bpm: P.bpm }), instruments: instrumentsOf(E), roles: P.tracks.map(x => x.role || x.name), bars,
+      lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, true_peak: r.mastered ? +r.mastered.truePeak.toFixed(2) : +AK.util.db(AK.util.peakOf(r.channels)).toFixed(2),
+      seconds: +(r.channels[0].length / r.sampleRate).toFixed(3), sample_rate: r.sampleRate, credits: credits.text || '', credits_worst: credits.worst || 'free', stems: [] });
+    delete meta.dir; delete meta.files; delete meta.arrangement;
+    const files = await writeTake(E, dir, r, r.stems, credits, meta);
+    return { take, dir, files, meta };
+  }
+
   root.TempMaker = {
     ROLE_ORDER, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
     routing, compose, loadBriefs, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
-    padLayer, texturePreset, shapeArrangement, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
+    padLayer, texturePreset, shapeArrangement, instrumentsOf, loadTake, stageEdit, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

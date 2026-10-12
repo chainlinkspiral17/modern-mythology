@@ -318,7 +318,7 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.eq(takes.length, 1);
     const dir = 'assets/audio/review/sam_theme/' + takes[0] + '/';
     first = json(dir + 'meta.json'); first.dir = dir;
-    t.eq(fs.readdirSync(G(dir)).sort(), ['meta.json', 'mix.wav', 'stems', 'stems.json']);
+    t.eq(fs.readdirSync(G(dir)).sort(), ['meta.json', 'mix.wav', 'project.json', 'stems', 'stems.json']);
     t.ok(!fs.existsSync(G('assets/audio/bgm/sam_theme.wav')) && !fs.existsSync(G('assets/audio/bgm/sam_theme.temp.ogg')), 'nothing written into the game path');
   });
   await t.test('the take avoids the rejected seed and records the request', async () => {
@@ -371,6 +371,38 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.ok(v.ok, JSON.stringify(v));
     t.eq(fs.readdirSync(G('assets/audio/bgm')).filter(f => f.startsWith('sam_theme')), []);
   });
+  await t.test('✎ EDIT IN DAW opens the exact take in the DAW; an edit comes back by ⇪ SEND TO DIRECTOR as a new take', async () => {
+    await p.evaluate(async () => { await refresh(); await selectTrack('sam_theme'); });
+    const i = await p.evaluate(take => DIR.takes.findIndex(m => m.take === take), first.take);
+    t.ok(i >= 0, 'take listed');
+    const popup = ctx.waitForEvent('page');
+    await p.evaluate(i => document.querySelector(`[data-edit="${i}"]`).click(), i);
+    const daw = await popup; const dawErr = []; t.watch(daw, dawErr);
+    await daw.waitForLoadState('domcontentloaded');
+    t.ok(/[?&]take=/.test(daw.url()), daw.url());
+    await daw.click('#gatebtn');
+    await daw.waitForFunction(() => typeof editTake !== 'undefined' && editTake && P && P.name === 'sam_theme', null, { timeout: 30000 });
+    const opened = await daw.evaluate(() => ({ roles: P.tracks.map(t => t.role), lead: E.dev(P.tracks.find(t => t.role === 'lead').deviceId).preset, bar: getComputedStyle(document.getElementById('takebar')).display, what: document.getElementById('take-what').textContent, note: document.getElementById('take-msg').textContent }));
+    t.eq(opened.roles, first.roles, 'same tracks as the take');
+    t.eq(opened.lead, leadPreset, 'same instrument');
+    t.ok(opened.bar !== 'none' && opened.what.includes(first.take) && opened.note === '', JSON.stringify(opened));
+    // an edit: drop the extra pad, then send it back
+    await daw.evaluate(() => { const tr = P.tracks.find(x => x.role === 'pad2'); E.removeTrack(tr.id); E.emit('project'); });
+    await daw.click('#takesend');
+    await daw.waitForFunction(() => /^sent as take /.test(document.getElementById('take-msg').textContent) || /failed/.test(document.getElementById('take-msg').textContent), null, { timeout: 60000 });
+    const sent = await daw.evaluate(() => document.getElementById('take-msg').textContent);
+    t.ok(/^sent as take .*-edit/.test(sent), sent);
+    t.noErrors(dawErr);
+    await daw.close(); await p.bringToFront();
+    const edit = fs.readdirSync(G('assets/audio/review/sam_theme')).find(d => /-edit$/.test(d)), dir = 'assets/audio/review/sam_theme/' + edit + '/';
+    const m = json(dir + 'meta.json');
+    t.eq([m.edited_from, m.status, m.id, m.roles], [first.take, 'candidate', 'sam_theme', ['bass', 'chords', 'lead', 'pad']]);
+    t.eq(json(dir + 'stems.json').stems.map(s => s.name), ['bass', 'chords', 'lead', 'pad'], 'stems follow the edit');
+    t.near(wavFrames(dir + 'mix.wav'), wavFrames(first.dir + 'mix.wav'), 1, 'same length (an asked-for length stays seamless)');
+    await p.evaluate(() => rescanOne('sam_theme'));
+    const card = await p.evaluate(take => { const i = DIR.takes.findIndex(m => m.take === take); return document.querySelector(`#takes [data-i="${i}"]`).textContent; }, edit);
+    t.ok(/edited in the DAW from take/.test(card), card.slice(0, 200));
+  });
   await t.test('TEMP TRACKS stages into review by default (skip-review off)', async () => {
     const daw = await ctx.newPage(); await daw.goto(p.url().replace(/audio_director\.html.*$/, 'daw.html'));
     const r = await daw.evaluate(() => ({ skip: document.getElementById('g-skipreview').checked, linkToDirector: !!document.querySelector('a[href="audio_director.html"]') }));
@@ -395,11 +427,12 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     await f.tap(b.x, b.y); await p.waitForTimeout(100);
     b = await box('[data-int="0.25"]'); t.ok(b.h >= 36 && b.w >= 36, 'intensity button'); await f.tap(b.x, b.y); await p.waitForTimeout(100);
     t.eq(await p.evaluate(() => PV.intensity), 0.25);
+    const cand0 = await p.evaluate(() => DIR.state.sam_theme.cand);
     b = await box('#takes [data-rej="1"]'); t.ok(b.h >= 36, 'reject'); await f.tap(b.x, b.y); await p.waitForTimeout(100);
     t.ok(await p.evaluate(() => /TAP AGAIN/.test(document.querySelector('#takes [data-rej="1"]').textContent)), 'armed after one tap');
     const b2 = await box('#takes [data-rej="1"]'); t.near(b2.y, b.y, 1, 'the armed button stays put');
     await f.tap(b2.x, b2.y); await p.waitForTimeout(600);
-    t.eq(await p.evaluate(() => DIR.state.sam_theme.cand), 1);
+    t.eq(await p.evaluate(() => DIR.state.sam_theme.cand), cand0 - 1, 'one candidate fewer');
     b = await box('#make'); t.ok(b.h >= 36, 'make takes');
     const small = await p.evaluate(() => [...document.querySelectorAll('#track button, header button, #chips button')].filter(e => e.offsetParent && (e.getBoundingClientRect().height < 36 || e.getBoundingClientRect().width < 36)).map(e => e.id || e.textContent));
     t.eq(small, [], 'buttons under 36 px');

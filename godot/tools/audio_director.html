@@ -210,7 +210,7 @@
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
       <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
-      <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings.</li>
+      <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings. Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
       <li>Songs approved before the Ogg change are still big WAVs in the game: <b>⇣ SHRINK … WAV TEMPS → OGG</b> (top bar) re-encodes all of them in one go and deletes the WAVs. Only temps — never real audio.</li>
       <li>When you're done: back the music up (it never goes in git) and commit the approval list — see the commands at the bottom of the page / from Claude.</li>
@@ -465,13 +465,14 @@ function renderTakes() {
       `<b style="color:var(--gold-hi);font-weight:normal">${esc(m.take)}</b> ${isAp ? '<span class="badge ok">APPROVED</span>' : m.status === 'rejected' ? '<span class="badge bad">REJECTED</span>' : '<span class="badge cand">CANDIDATE</span>'}<br>` +
       `<span class="mood">${esc(S ? S.name : mo.style)} · ${esc(mo.form)} · ${esc(SeqGen.NOTE_NAMES[mo.key] || '')} ${esc(mo.mode)} · ${(+mo.bpm).toFixed(+mo.bpm % 1 ? 2 : 0)} BPM · density ${mo.density} · seed ${mo.seed}</span><br>` +
       `<span>${m.lufs != null ? m.lufs.toFixed(1) + ' LUFS · ' : ''}${m.true_peak != null ? m.true_peak.toFixed(1) + ' dBTP · ' : ''}${(+m.seconds).toFixed(1)} s · ${m.bars} bars · ${m.stems && m.stems.length ? m.stems.length + ' stems (' + m.stems.map(s => s.name).join(', ') + ')' : 'no stems'}</span><br>` +
+      (m.edited_from ? `<span class="note" style="color:var(--violet)">✎ edited in the DAW from take ${esc(m.edited_from)}</span><br>` : '') +
       (m.why ? `<span class="note">${esc(m.why)}</span><br>` : '') +
       (reqText(m.request) ? `<span class="req">asked: ${esc(reqText(m.request))}</span><br>` : '') +
       (inst ? `<span class="note">instruments: ${esc(inst)}</span>` : '') +
       (m.credits ? `<br><span class="note">credits: ${esc(m.credits.replace(/\n/g, '; '))}</span>` : '') +
       `</div><div class="bt"><button data-play="${i}">▶ PLAY</button>` +
       (m.status === 'rejected' ? `<button class="dim" data-del="${i}">DELETE FILES</button>` : `<button class="go" data-ap="${i}">✓ APPROVE</button><button class="no" data-rej="${i}">✕ REJECT</button>`) +
-      `<button class="dim" data-again="${i}" title="make this take again from its recorded settings">⟳ AGAIN</button></div></div>`;
+      `<button class="dim" data-again="${i}" title="make this take again from its recorded settings">⟳ AGAIN</button><button class="dim" data-edit="${i}" title="open this take in the DAW to change it; ⇪ SEND TO DIRECTOR there adds the edit here as a new take">✎ EDIT IN DAW</button></div></div>`;
   }).join('');
 }
 $('showrej').addEventListener('change', () => { renderTakes(); });
@@ -483,6 +484,7 @@ $('takes').addEventListener('click', e => {
   if ((i = g('rej')) !== null) { reject(i, e.target.closest('button')); return; }
   if ((i = g('del')) !== null) { deleteTake(i, e.target.closest('button')); return; }
   if ((i = g('again')) !== null) { const m = DIR.takes[i]; requestTakes([DIR.sel], 1, regenOpts(m)); }
+  if ((i = g('edit')) !== null) { const m = DIR.takes[i]; const w = window.open('daw.html?take=' + encodeURIComponent(m.dir), 'mm_daw'); msg(w ? 'opened take ' + m.take + ' in the DAW — tap START there; ⇪ SEND TO DIRECTOR brings your edit back here as a new take.' : 'pop-up blocked — open daw.html?take=' + m.dir + ' yourself.', !w); }
 });
 $('prev').addEventListener('click', () => stepTrack(-1));
 $('next').addEventListener('click', () => stepTrack(1));
@@ -1091,6 +1093,9 @@ function renderPicker() {
 }
 $('pk-q').addEventListener('input', renderPicker);
 $('pk-close').addEventListener('click', () => $('picker').classList.remove('show'));
+// back from the DAW (✎ EDIT IN DAW → ⇪ SEND TO DIRECTOR): pick up new takes of the selected track
+window.addEventListener('focus', () => { if (AK.game.root && DIR.sel && !STUDIO.busy) rescanOne(DIR.sel); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden && AK.game.root && DIR.sel && !STUDIO.busy) rescanOne(DIR.sel); });
 $('helpbtn').addEventListener('click', () => $('help').classList.add('show'));
 $('help-close').addEventListener('click', () => $('help').classList.remove('show'));
 $('help').addEventListener('click', e => { if (e.target === $('help')) $('help').classList.remove('show'); });

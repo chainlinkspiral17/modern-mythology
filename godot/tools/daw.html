@@ -183,6 +183,7 @@
   <span class="badge" id="b-emu">FM-1 EMU: —</span>
   <span class="badge" id="b-midi">MIDI: —</span>
   <span class="badge" id="b-save">—</span>
+  <span id="takebar" style="display:none;gap:6px;align-items:center"><span class="badge ok" id="take-what"></span><button id="takesend" title="render this project as it is now and add it to the AUDIO DIRECTOR as a new take of the same track (the take you opened stays)">⇪ SEND TO DIRECTOR</button><span class="note" id="take-msg"></span></span>
 </header>
 
 <div class="transport">
@@ -390,8 +391,15 @@ Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('g-style').add(new Option(s
 (() => { const g = $('grid'), q = $('quant'); g.innerHTML = ''; q.innerHTML = '<option value="0">off</option>'; for (const x of DAW.GRIDS) { g.add(new Option(x.label, x.v)); q.add(new Option(x.label, x.v)); } g.value = '24'; q.value = '24'; })();
 $('g-seed').value = Math.floor(Math.random() * 1e6);
 
+// daw.html?take=<review dir>: the AUDIO DIRECTOR's ✎ EDIT IN DAW — open that take as the project; ⇪ SEND TO DIRECTOR
+// renders the edit back into review staging as a new take of the same track
+const TAKE_DIR = new URLSearchParams(location.search).get('take');
+let editTake = null;
+if (TAKE_DIR) { const g = document.createElement('div'); g.className = 'note'; g.style.cssText = 'color:var(--gold-hi);font-size:13px'; g.textContent = 'AUDIO DIRECTOR: tap START to open the take for editing.'; $('gate').appendChild(g); }
 $('gatebtn').addEventListener('click', async () => {
   $('gatebtn').textContent = 'starting…';
+  // Chrome's folder permission prompt needs this tap: ask before the awaits below use it up
+  const grant = TAKE_DIR && !AK.game.root ? AK.game.restore(true).catch(() => null) : null;
   try {
     await E.start();
     const saved = await E.restore();
@@ -400,7 +408,31 @@ $('gatebtn').addEventListener('click', async () => {
     $('gate').style.display = 'none';
     E.emit('project');               // load() fired 'project' before P was set: draw the restored project now
     badges(); takeInbox();
+    if (TAKE_DIR) { if (grant) await grant; await openTake(TAKE_DIR); }
   } catch (e) { $('gatebtn').textContent = 'failed: ' + (e.message || e); }
+});
+async function openTake(dir) {
+  if (!AK.game.root) { msg('g-msg', 'link the game folder (EXPORT → TEMP TRACKS → ⌂ LINK GAME FOLDER), then open the take from the AUDIO DIRECTOR again.', true); return; }
+  undoCapture();
+  try {
+    const r = await TM.loadTake(E, dir);
+    P = E.project; if (r.song) song = r.song; editTake = r.meta;
+    sel = { trackId: P.tracks[0] && P.tracks[0].id, clip: 0 }; $('pname').value = P.name; E.emit('project');
+    $('takebar').style.display = 'inline-flex';
+    $('take-what').textContent = 'EDITING TAKE ' + r.meta.take + ' · ' + (r.meta.title || r.meta.id);
+    $('take-msg').textContent = r.exact ? '' : '(rebuilt from its settings)';
+  } catch (e) { msg('g-msg', 'could not open the take: ' + (e.message || e), true); }
+}
+$('takesend').addEventListener('click', async () => {
+  if (!editTake) return;
+  if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { $('take-msg').textContent = 'link the game folder first.'; return; }
+  if (E.playing) E.stop();
+  $('takesend').disabled = true; const t0 = performance.now(), el = () => Math.round((performance.now() - t0) / 1000) + ' s';
+  try {
+    const out = await TM.stageEdit(E, editTake, { master: $('b-master').checked, lufs: +$('b-lufs').value, onProgress: t => { $('take-msg').textContent = t + ' · ' + el(); } });
+    $('take-msg').textContent = 'sent as take ' + out.take + ' (' + el() + ') — it is in the AUDIO DIRECTOR now.';
+  } catch (e) { $('take-msg').textContent = 'send failed: ' + (e.message || e); }
+  $('takesend').disabled = false;
 });
 function badges() {
   $('b-engine').textContent = 'ENGINE: ' + E.ctx.sampleRate / 1000 + ' kHz'; $('b-engine').className = 'badge ok';
