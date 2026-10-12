@@ -481,3 +481,27 @@ light_color = Color(1.000, 0.620, 0.260, 1)
 light_energy = 1.00
 shadow_enabled = false
 omni_range = 3.40
+
+; ── named closeups (pass 86): Tem on the couch, the others at the oak table, each from across
+; closeup: Tem on the couch under the wool blanket, from the room (south)
+[node name="shot_closeup_tem" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.350, -3.050)
+rotation = Vector3(-0.2368, -0.0138, 0.0)
+metadata/fov = 42.0
+
+; closeup: Lena at the table's NE chair (the kitchen side, the kettle behind her), from the west
+[node name="shot_closeup_lena" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.750, 1.400, -2.450)
+rotation = Vector3(-0.2274, -1.9585, 0.0)
+metadata/fov = 42.0
+
+; closeup: Kai at the table's west chair, from the east at a metre (farther, the counter behind him filled the frame)
+[node name="shot_closeup_kai" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.950, 1.350, -1.050)
+rotation = Vector3(-0.2456, 1.2015, 0.0)
+metadata/fov = 42.0
+[node name="shot_closeup_finn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.100, 1.400, -0.850)
+rotation = Vector3(-0.2202, -0.0000, 0.0)
+metadata/fov = 42.0
+

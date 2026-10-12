@@ -158,6 +158,38 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-12 · named closeups, round three (the bakery, Lena's)
+
+- **Read seats from the RECORDER, never from a builder's literals.** The
+  bakery's communal table is authored at (0, 2.3) and built at (0, 3.5):
+  the group moved +1.2 when the room grew and every literal in
+  `build_communal_table` is in the old frame. Five closeups aimed at
+  the wrong row passed the aim audit (no named prop to miss) — only
+  Roy's named chair caught it. Before placing a marker, run
+  `marker_aim_audit.geometry_godot(locale)` and print the `*_Seat` /
+  `*_Top` positions (Godot → blender: (x, −z, y)); aim at those.
+- **A chair named for the character IS the subject, legs and all.**
+  `shot_closeup_roy` resolved its subject to `Roys_Chair` and the
+  obstruction audit then asked whether every part of that chair is
+  visible — the legs under the table top are not, so a frame from
+  across the table is "OCCLUDED: Communal_Table_Top stands between the
+  lens and Roys_Chair_Leg_3". Frame a named chair END-ON from the
+  table's side (the legs clear) or from close above the top's edge.
+- **"fills 56%" is the counter behind the chair.** A seat framed from
+  2.6 m with a kitchen counter behind it is a frame of counter. Bring
+  the lens to about a metre; the person fills the frame and the audit
+  stops counting the wall.
+- **Hand-prints named for people hijack their closeups** (the pass-81
+  lesson, third time): `Hands_Print_Marit` made the aim audit point
+  Marit's closeup at the flour. Index such props (`_A`, `_B`) and say
+  whose they are in a comment.
+- **Never kill by pattern, even through `xargs`.** `ps | grep [p]attern
+  | awk | xargs kill` matched the shell that was running it (its own
+  command line carried the pattern's text in the restart clause) —
+  exit 144, the third time this session. Kill the two PIDs
+  `ps -eo pid,args` showed, by number, in a separate call, and nothing
+  else.
+
 ### 2026-10-11 · a character's name in ANY prop name answers that character's closeup
 
 - Adding `shot_closeup_tem` to the cabin resolved "tem" to

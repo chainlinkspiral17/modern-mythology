@@ -3834,6 +3834,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 86: NAMED CLOSEUPS AT HANS'S TABLE AND LENA'S (D6).**
+The next two rooms on the coverage list. The bakery: `closeup hans` (8),
+`roy` (8), `marit` (6), `marina` (6) and the plain `tem` fell to the plain
+pair; now the near head is Tem's ("Tem at one end"), the far head — ROY'S
+CHAIR, the carved crows watching it — is framed twice, for Hans ("Hans at
+the other") from the east and for Roy from the west; Marit at the WEST
+seat (y 1.65 — her floured hand-prints are there, Aud's beside them, so
+`aud` gets the same frame), Marina on the west side mid-table, each from
+across. The prints had been named `Hands_Print_Marit` / `_Aud` and the
+aim audit resolved Marit's closeup to the flour on the table — renamed
+`_A` / `_B` (the pass-81 lesson, again). The obstruction audit then sent
+Roy's frame end-on from the east (across the table the top hid his
+chair's legs) and Kai's lens to a metre (the counter behind him filled
+the frame). Geometry-audit playbook lesson. Lena's: Tem on the couch under the wool blanket from the room,
+Lena at the oak table's kitchen-side chair, Kai at its west chair, Finn
+at its north chair. No rebuilds. **Draft N+1:** cosmic_comics_interior
+(maya 7, rick 4, curtis 3), miller_kitchen (sam 6, eileen 4), kowalski
+kitchen (bill / ben / anita 4, gracie 3), centro_grocery_aisle (diego 5,
+bt 4), chillwave_backroom (cale 6, tem 3, lena 3), sam_bedroom (sam 9);
+the bakery's `kai` / `cale` cues (9 + 4 lines in ch17) still fall to the
+plain pair.
+
 **2026-10-12 · pass 85: THE READING PASS, draft 2 (the rest of the VN
 chrome).** The surfaces draft 1 left: the BACKLOG (default theme font at
 15 px) is the reading face at 20 px on a ~70-character column, names in

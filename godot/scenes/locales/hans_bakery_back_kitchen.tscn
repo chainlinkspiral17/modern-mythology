@@ -510,3 +510,42 @@ position = Vector3(-6.000, 1.300, -6.600)
 rotation = Vector3(-0.4383, -0.9332, 0.0)
 metadata/fov = 38.0
 
+; ── named closeups at the communal table (pass 86): the table is at (0, 3.5) in the 7.6 m room (the
+; group sits +1.2 from its authored frame — read the seats from the recorder, not the builder's
+; literals); the near head (0, 1.65) is Tem's, the far head (0, 5.35) ROY'S CHAIR; side chairs at
+; x ±0.85, y 2.20 / 2.85 / 3.50 / 4.15 / 4.80. Each seat from across; Roy end-on (his named chair).
+; closeup: Hans at the far head ("Hans at the other" end), from the east side of the table
+[node name="shot_closeup_hans" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.450, -3.700)
+rotation = Vector3(-0.1563, 0.5224, 0.0)
+metadata/fov = 42.0
+
+; closeup: Roy in ROY'S CHAIR, the far head, end-on from the east (the top hides a named chair's legs from across)
+[node name="shot_closeup_roy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.450, 1.450, -5.550)
+rotation = Vector3(-0.2022, 1.7079, 0.0)
+metadata/fov = 42.0
+
+; closeup: Marit at the west seat of row 1 (y 2.85 — her floured hand-prints are there), from the east
+[node name="shot_closeup_marit" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.420, -3.350)
+rotation = Vector3(-0.1592, 1.8417, 0.0)
+metadata/fov = 42.0
+
+; closeup: Aud, the same west seat (her prints beside Marit's), named for the cue
+[node name="shot_closeup_aud" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.420, -3.350)
+rotation = Vector3(-0.1592, 1.8417, 0.0)
+metadata/fov = 42.0
+
+; closeup: Marina on the west side, row 3, from the east
+[node name="shot_closeup_marina" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.420, -4.500)
+rotation = Vector3(-0.1622, 1.7628, 0.0)
+metadata/fov = 42.0
+
+; closeup: Tem at the near head ("Tem at one end"), from the north over the table
+[node name="shot_closeup_tem" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.450, -3.250)
+rotation = Vector3(-0.1738, 2.7828, 0.0)
+metadata/fov = 42.0

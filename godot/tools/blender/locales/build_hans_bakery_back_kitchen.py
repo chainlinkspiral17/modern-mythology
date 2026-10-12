@@ -479,7 +479,9 @@ def build_hero_props_2026_09():
         make_cyl(f"Brioche_Lobe_{li2}", (lx2, 1.95, 0.817), 0.038, 0.050,
                  (0.78, 0.56, 0.28, 1.0), segments=8)
     # ── THE HANDS · floured prints at the west seat (y 1.65) ──
-    for who, py, fy0 in (("Marit", 1.620, 1.585), ("Aud", 1.705, 1.670)):
+    # (pass 86: no character's name in a prop's name — it answers that
+    # character's closeup cue; the two pairs are Marit's and Aud's)
+    for who, py, fy0 in (("A", 1.620, 1.585), ("B", 1.705, 1.670)):
         make_box(f"Hands_Print_{who}", (-0.400, py, 0.7815), (0.070, 0.085, 0.0015), flour)
         for fi in range(4):
             make_box(f"Hands_Print_{who}_F{fi}", (-0.325, fy0 + fi * 0.022, 0.7815),
