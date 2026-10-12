@@ -3834,6 +3834,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 87: NAMED CLOSEUPS — COSMIC COMICS, SAM'S BEDROOM, THE
+MILLERS' ISLAND (D6).** Cosmic Comics: Maya at the counter's customer face
+("stands at the counter for a moment"), Rick on his stool at the register,
+Curtis at the front door ("comes in at ten fifteen"); in the back-office
+preset Rick's desk and Maya's doorway frames are named for the cues. Sam's
+bedroom: Sam at the desk chair with the WEDNESDAY LIST (the plain pair
+already frames the bed). Miller kitchen: Sam standing at the island's
+south face, Eileen on the table's north long side, from across. Seats
+confirmed in the recorder before aiming. Four more props named for
+characters were answering their closeups — `Sams_Phone` (Sam's bedroom
+AND the Kwik Stop, where `shot_closeup_sam` had been framing the phone),
+`Rick_Shelf_*`, `Ricks_Notebook` (the back office, 7.5 m from the shop
+marker, and the darkroom) — renamed `Nightstand_Phone`, `Counter_Phone`,
+`Register_Shelf_*`, `Desk_Notebook`, `Dry_Notebook`. The Kwik Stop's old
+`shot_closeup_sam` had been framing that phone from 0.7 m — re-aimed at
+Sam on the stool behind the counter from the customer side. The
+obstruction audit then moved Curtis's lens west of the door (east of it
+the camera stood inside the statue tower; from the floor the door was the
+frame) and Sam's bedroom frame to the north-west across the desk corner
+(from the west the E wall was the frame). New report tool
+`tools/audit/character_prop_names.py <locale>` lists every prop that
+carries a cued character's name — run it before placing a named closeup.
+No rebuilds (names only). **Draft N+1:** kowalski_kitchen (bill / ben / anita 4, gracie 3),
+centro_grocery_aisle (diego 5, bt 4), chillwave_backroom (cale 6, tem 3,
+lena 3); a one-shot scan for every remaining `<Name>s_` / `<Name>_` prop
+across the builders before the next round, so the aim audit stops finding
+them one pass at a time.
+
 **2026-10-12 · pass 86: NAMED CLOSEUPS AT HANS'S TABLE AND LENA'S (D6).**
 The next two rooms on the coverage list. The bakery: `closeup hans` (8),
 `roy` (8), `marit` (6), `marina` (6) and the plain `tem` fell to the plain

@@ -511,3 +511,16 @@ position = Vector3(2.900, 1.400, -4.400)
 rotation = Vector3(-0.1819, -2.3978, 0.0)
 metadata/fov = 42.0
 
+; ── named closeups (pass 87): Sam at the island, Eileen at the table's north long side
+; closeup: Sam standing at the island's south face, from the family-room side
+[node name="shot_closeup_sam" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.400, 1.550, -2.750)
+rotation = Vector3(-0.0692, 0.5880, 0.0)
+metadata/fov = 42.0
+
+; closeup: Eileen Henderson on the table's north long side, from across
+[node name="shot_closeup_eileen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.750, 1.400, -2.350)
+rotation = Vector3(-0.1697, 0.0286, 0.0)
+metadata/fov = 42.0
+

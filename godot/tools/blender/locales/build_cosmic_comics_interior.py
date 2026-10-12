@@ -476,10 +476,10 @@ def build_draft5_2026_10():
             make_box(f"Cubby_Hole_{r}_{c}", (kx - 0.16 + c * 0.32, ky - 0.181, 0.30 + r * 0.50), (0.28, 0.004, 0.42), (0.12, 0.10, 0.08, 1.0))
     make_chamfer_box("Cubby_Wren_Bag", (kx - 0.16, ky - 0.10, 0.70), (0.26, 0.16, 0.30), (0.62, 0.38, 0.30, 1.0), chamfer=0.03)
     # Rick's small shelf west of the door, the Sentinel folded on it, a mug
-    make_box("Rick_Shelf", (2.70, ROOM_D - 0.10 - 0.10, 1.45), (0.70, 0.20, 0.03), wood)
-    make_box("Rick_Shelf_Sentinel", (2.62, ROOM_D - 0.10 - 0.10, 1.475), (0.30, 0.17, 0.02), (0.86, 0.84, 0.78, 1.0))
-    make_box("Rick_Shelf_Sentinel_Masthead", (2.62, ROOM_D - 0.10 - 0.17, 1.4855), (0.26, 0.03, 0.002), (0.18, 0.18, 0.20, 1.0))
-    make_lathe("Rick_Shelf_Mug", (2.95, ROOM_D - 0.10 - 0.10, 1.465), [(0.04, 0.0), (0.042, 0.01), (0.044, 0.10), (0.0, 0.095)], (0.82, 0.78, 0.70, 1.0), segments=10)
+    make_box("Register_Shelf", (2.70, ROOM_D - 0.10 - 0.10, 1.45), (0.70, 0.20, 0.03), wood)
+    make_box("Register_Shelf_Sentinel", (2.62, ROOM_D - 0.10 - 0.10, 1.475), (0.30, 0.17, 0.02), (0.86, 0.84, 0.78, 1.0))
+    make_box("Register_Shelf_Sentinel_Masthead", (2.62, ROOM_D - 0.10 - 0.17, 1.4855), (0.26, 0.03, 0.002), (0.18, 0.18, 0.20, 1.0))
+    make_lathe("Register_Shelf_Mug", (2.95, ROOM_D - 0.10 - 0.10, 1.465), [(0.04, 0.0), (0.042, 0.01), (0.044, 0.10), (0.0, 0.095)], (0.82, 0.78, 0.70, 1.0), segments=10)
     # Curtis's thermos, under the register on the staff side
     make_lathe("Thermos", (3.20, 6.85, 0.0), [(0.045, 0.0), (0.045, 0.24), (0.035, 0.27), (0.035, 0.31), (0.0, 0.31)], (0.24, 0.36, 0.30, 1.0), segments=12)
     # ── the bins' lips and Tuesday's shelf-talkers ──

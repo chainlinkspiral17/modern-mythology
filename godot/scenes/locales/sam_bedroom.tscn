@@ -396,3 +396,11 @@ metadata/fov = 45.0
 position = Vector3(0.350, 1.350, -2.550)
 rotation = Vector3(-0.4010, 1.0122, 0.0)
 metadata/fov = 42.0
+
+; ── named closeup (pass 87): Sam at the desk with the WEDNESDAY LIST (the plain pair frames the bed)
+; closeup: Sam at the desk chair, from the north-west across the desk corner (from the west the E wall filled the frame)
+[node name="shot_closeup_sam" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.400, -3.750)
+rotation = Vector3(-0.2631, -2.4488, 0.0)
+metadata/fov = 42.0
+

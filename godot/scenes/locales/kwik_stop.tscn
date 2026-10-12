@@ -420,10 +420,12 @@ position = Vector3(-3.261, 1.784, -5.639)
 rotation = Vector3(-0.4266, 1.3946, 0.0)
 metadata/fov = 38.0
 
+; (pass 87) Sam on the stool behind the counter, from the customer side — this frame had been aimed at the phone
+; on the counter 0.7 m away (a prop then named for her), and the obstruction audit called the counter the frame
 [node name="shot_closeup_sam" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.224, 1.260, -4.050)
-rotation = Vector3(-0.2618, -1.5708, 0.0)
-metadata/fov = 45.0
+position = Vector3(3.200, 1.500, -4.250)
+rotation = Vector3(-0.1409, -1.4523, 0.0)
+metadata/fov = 42.0
 
 [node name="shot_closeup_customer" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(4.883, 1.950, -4.635)

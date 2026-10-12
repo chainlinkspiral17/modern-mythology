@@ -271,8 +271,8 @@ def build_hero_props_2026_09():
     the desk, its note page showing (the page carries the "note"
     cue: the list on its standard page).
     """
-    make_box("Ricks_Notebook", (-0.25 + DESK_DX, 3.35 + DESK_DY, 0.766), (0.18, 0.24, 0.012), (0.30, 0.44, 0.58, 1.0))
-    make_box("Ricks_Notebook_Wire", (-0.25 + DESK_DX, 3.476 + DESK_DY, 0.767), (0.18, 0.010, 0.014), (0.55, 0.56, 0.58, 1.0))
+    make_box("Desk_Notebook", (-0.25 + DESK_DX, 3.35 + DESK_DY, 0.766), (0.18, 0.24, 0.012), (0.30, 0.44, 0.58, 1.0))
+    make_box("Desk_Notebook_Wire", (-0.25 + DESK_DX, 3.476 + DESK_DY, 0.767), (0.18, 0.010, 0.014), (0.55, 0.56, 0.58, 1.0))
     make_box("Notebook_Note_Page", (-0.25 + DESK_DX, 3.34 + DESK_DY, 0.7735), (0.16, 0.21, 0.003), (0.94, 0.93, 0.88, 1.0))
     make_box("Note_Page_List_Lines", (-0.25 + DESK_DX, 3.36 + DESK_DY, 0.7755), (0.10, 0.12, 0.001), (0.36, 0.36, 0.40, 1.0))
     # ── 2026-09-03 · vol6 ch3_coda (re-homed off the street): "a small

@@ -552,3 +552,38 @@ light_energy = 1.10
 shadow_enabled = false
 omni_range = 1.76
 
+; ── named closeups (pass 87): the counter (register at (2.5, 6.5), 2.4 x 1.0, the clerk north of it), the front door (0, 0)
+; closeup: Maya at the counter's customer face ("stands at the counter for a moment"), from the south-west
+[node name="shot_closeup_maya" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.350, 1.550, -4.850)
+rotation = Vector3(-0.0655, -0.8551, 0.0)
+metadata/fov = 42.0
+
+; closeup: Rick on his stool at the register (3.30, 5.55), from the west
+[node name="shot_closeup_rick" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.900, 1.550, -5.050)
+rotation = Vector3(-0.1991, -1.2278, 0.0)
+metadata/fov = 42.0
+
+; closeup: Curtis a step inside the front door, from beside the glass front looking west (the door itself filled a frame taken from the floor)
+[node name="shot_closeup_curtis" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.250, 1.550, -0.700)
+rotation = Vector3(-0.0860, -1.4411, 0.0)
+metadata/fov = 42.0
+[node name="shot_closeup_rick__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.986, 1.612, -9.810)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+
+; closeup: Maya in the back office doorway, named for the cue
+[node name="shot_closeup_maya__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.074, 1.612, -11.722)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+

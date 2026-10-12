@@ -3061,9 +3061,9 @@ def build_hero_props_2026_09():
     """
     white = (0.88, 0.88, 0.86, 1.0)
     # ── SAM'S PHONE · counter top (Z=1.07) ──
-    make_box("Sams_Phone", (4.90, 4.05, 1.0755), (0.070, 0.140, 0.011),
+    make_box("Counter_Phone", (4.90, 4.05, 1.0755), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
-    make_box("Sams_Phone_Screen", (4.90, 4.05, 1.0820), (0.058, 0.124, 0.002),
+    make_box("Counter_Phone_Screen", (4.90, 4.05, 1.0820), (0.058, 0.124, 0.002),
              (0.32, 0.40, 0.48, 1.0))
     # ── THE CARD · by the register ──
     make_box("Roofing_Card", (5.00, 3.75, 1.0705), (0.089, 0.051, 0.001),
