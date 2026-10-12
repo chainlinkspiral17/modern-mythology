@@ -3834,6 +3834,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 92: THE PORCH AT DAWN.** Ch20's "At six the cast was at
+the trucks" (`dawn_warm`) cut to the porch under the night sky. A
+`cabin_porch_dawn` preset: the porch camera, the dawn sky from the bypass
+(pass 62), the raw_observation pack; the 22 porch nodes cloned with the
+`__cabin_porch_dawn` suffix, the cloned sun lowered to 12.6° out of the
+east and warmed (1.0, 0.74, 0.52), the sky fill cooled. Ch20's door scene
+stays on the night porch (it is lit by the south window and the kerosene
+lamp through the door). Rendered: a lavender sky, the low sun raking the
+west face. **Draft N+1:** the porch's practicals for its dusk chapters (the
+door lamp, the smokers' tin's glow); a wagon-side camera for ch15.
+
 **2026-10-12 · pass 91: THE PORCH BY DAY.** `cabin_porch` carries no env of
 its own, so its four day chapters (ch1 Finn's morning, ch5, ch10, ch15 the
 wagon) rendered the porch under the cabin's night sky (the draft-16 sheet

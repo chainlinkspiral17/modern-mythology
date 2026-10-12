@@ -2533,6 +2533,21 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"cabin_porch_dawn": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (pass 92, 2026-10-12) THE PORCH AT DAWN: ch20 "At six the cast was at the
+		# trucks" — the porch camera, a dawn sky, the sun low and warm; nodes cloned
+		# with the __cabin_porch_dawn suffix.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.30, 0.36, 0.58, 1), "sky_horizon": Color(0.92, 0.70, 0.52, 1),
+			"ground_horizon": Color(0.34, 0.32, 0.30, 1), "ground_bottom": Color(0.16, 0.15, 0.14, 1),
+			"ambient_color": Color(0.72, 0.62, 0.58, 1), "ambient_energy": 0.70, "fog_color": Color(0.60, 0.50, 0.46, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
 	"cabin_porch_day": {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
