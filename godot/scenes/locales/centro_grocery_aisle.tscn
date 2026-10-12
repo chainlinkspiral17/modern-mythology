@@ -445,3 +445,18 @@ light_color = Color(1.000, 0.300, 0.250, 1)
 light_energy = 0.50
 shadow_enabled = false
 omni_range = 1.60
+
+; ── named closeups (pass 88): BT in the lane between aisles 4 and 5 (the preset camera is at the store's
+; east end, x 11.8 — wrong_room_audit wants the face within 12 m of it), Diego two aisles over, each down the lane
+; closeup: BT facing the cereal (aisle 0's east face), from down the lane
+[node name="shot_closeup_bt" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(8.600, 1.600, -6.450)
+rotation = Vector3(-0.0510, 0.1022, 0.0)
+metadata/fov = 42.0
+
+; closeup: Diego two aisles over, in the third lane, from down the lane
+[node name="shot_closeup_diego" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.400, 1.600, -6.450)
+rotation = Vector3(-0.0511, -0.0768, 0.0)
+metadata/fov = 42.0
+

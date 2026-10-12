@@ -398,3 +398,23 @@ metadata/fov = 42.0
 position = Vector3(-0.300, 1.500, -6.400)
 rotation = Vector3(-0.1000, 1.3000, 0.0)
 metadata/fov = 42.0
+
+; ── named closeups in the back room (pass 88): Cale at his bench chair, Lena and Tem standing
+; closeup: Cale at the bench chair ("set down the small thing he had been working on"), from the north-west
+[node name="shot_closeup_cale__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.100, 1.450, -7.300)
+rotation = Vector3(-0.2194, -2.3036, 0.0)
+metadata/fov = 42.0
+
+; closeup: Lena standing in the back room's middle ("She did not move"), from beside the bench
+[node name="shot_closeup_lena__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.900, 1.550, -5.600)
+rotation = Vector3(-0.0279, 1.1071, 0.0)
+metadata/fov = 42.0
+
+; closeup: Tem standing in the back room's south half, from the east along the room's long axis (the N inventory shelf filled a frame taken from the south)
+[node name="shot_closeup_tem__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.550, -5.100)
+rotation = Vector3(-0.0276, 1.4601, 0.0)
+metadata/fov = 42.0
+

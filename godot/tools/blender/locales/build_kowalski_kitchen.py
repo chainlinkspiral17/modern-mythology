@@ -228,7 +228,7 @@ def build_hero_props_2026_09():
       of bacon. He sets it in front of Maya without comment."):
       the plate as served.
     """
-    make_box("Anitas_Phone", (0.30, 2.30, 0.7715), (0.070, 0.140, 0.011),
+    make_box("Table_Phone", (0.30, 2.30, 0.7715), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
     make_box("Crossword_Page", (-0.30, 2.60, 0.761), (0.200, 0.280, 0.002),
              (0.90, 0.88, 0.83, 1.0))

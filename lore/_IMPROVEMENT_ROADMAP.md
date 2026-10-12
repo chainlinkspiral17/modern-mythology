@@ -3834,6 +3834,45 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 89: THE READING PASS, draft 3 (the HUD bar, the
+save slots, settings, the main menu's chapter list).** The HUD bar's type
+up a step (title 13, the chapter whisper 14 in the italic, items 12, the
+MENU button 13 at 80 × 32). The save-slot overlay's slot lines in Literata
+17 (were IM Fell 14), its notes editor 15, its EMPTY labels in the italic.
+The settings overlay: option buttons in Literata 15 (were 12 px Cinzel),
+values and ticks in the reading face, headings 14 / row labels 13. The
+main menu's chapter list: titles Literata 17 (were IM Fell 15), the
+achievements' names 14 and descriptions in the italic 13, the small nav
+buttons 14. Cinzel stays on the menu's title and its primary nav — the
+book's chrome. Compile sweep clean. **Draft 4 targets:** the chapter plate
+(IM Fell 40) and the interlude side by side on the Deck at text scale 1.0
+and 1.3; the verb coin's caps; the TAROT GAUNTLET board and the
+planned-community screen (their own type systems — the BBS is a terminal
+by design); a Deck screenshot pass of every surface this draft touched.
+
+**2026-10-12 · pass 88: NAMED CLOSEUPS — THE KOWALSKI TABLE, THE CENTRO
+AISLES, CHILLWAVE'S BACK ROOM (D6).** Kowalski kitchen: Bill at the table's
+west chair with the Sentinel, Anita at its east chair with her coffee,
+Gracie at the south chair, Ben at the garage door ("at the door he
+pauses"). Centro: BT in the lane between aisles 4 and 5, Diego two aisles
+over, each framed down the lane — the first draft put BT in the first
+lane, 13.6 m from the preset's camera at the store's east end, and the
+wrong-room audit (a closeup is a face within 12 m of the camera) moved
+him; read the preset's `camera_origin` before choosing a lane. ChillWave's back room (a
+preset on chillwave_interior): Cale at his bench chair ("set down the
+small thing he had been working on"), Lena standing mid-room, Tem in the
+south half framed along the room's long axis (from the south the N
+inventory shelf was the frame). `Anitas_Phone` → `Table_Phone`,
+`Diegos_Phone` → `Aisle_Phone`, `Russell_*` → `Manager_*` (the report tool,
+run first this time). Seats from the recorder. No rebuilds. **Draft N+1:**
+the remaining cue gaps by lines — the cabin's `marit` (1), the bakery's
+`kai` / `cale` (ch17), vol 7's `old_man` / `nate` / `figure` / `crow` at
+Kestrel Mountain (the roster entries landed in pass 83; the markers wait
+on the models), `aud` at the jetty, `petra` at the Salty Tome (4), vol 1's
+abstractions (`the_writer`, `the_director` … — 2D on purpose, no marker);
+then the coverage scan again, repo-wide, to find what the named passes
+left at the plain pair.
+
 **2026-10-12 · pass 87: NAMED CLOSEUPS — COSMIC COMICS, SAM'S BEDROOM, THE
 MILLERS' ISLAND (D6).** Cosmic Comics: Maya at the counter's customer face
 ("stands at the counter for a moment"), Rick on his stool at the register,

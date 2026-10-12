@@ -341,11 +341,11 @@ def build_aisles():
         make_lathe(f"HandTruck_Wheel_{wi3}", (wx3, hy - 0.05, 0.0), [(0.0, 0.0), (0.12, 0.0), (0.12, 0.05), (0.0, 0.05)],
                    P.METAL_BLACK, segments=10)
     top = 0.76
-    make_box("Russell_Clipboard", (plx, ply - 0.15, top + 0.006), (0.240, 0.320, 0.012), (0.55, 0.42, 0.28, 1.0))
+    make_box("Manager_Clipboard", (plx, ply - 0.15, top + 0.006), (0.240, 0.320, 0.012), (0.55, 0.42, 0.28, 1.0))
     make_box("Clipboard_Sheet", (plx, ply - 0.14, top + 0.0135), (0.210, 0.280, 0.002), (0.94, 0.93, 0.88, 1.0))
     make_box("Clipboard_Clip", (plx, ply - 0.295, top + 0.022), (0.060, 0.030, 0.020), STEEL)
-    make_cyl("Russell_Pen", (plx + 0.06, ply - 0.08, top + 0.0195), 0.005, 0.130, (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
-    make_box("Diegos_Phone", (plx + 0.25, ply + 0.20, top + 0.0055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_cyl("Manager_Pen", (plx + 0.06, ply - 0.08, top + 0.0195), 0.005, 0.130, (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
+    make_box("Aisle_Phone", (plx + 0.25, ply + 0.20, top + 0.0055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
     make_box("Chain_Scanner", (plx - 0.20, ply + 0.30, top + 0.0225), (0.060, 0.150, 0.045), (0.22, 0.22, 0.25, 1.0))
     make_box("Scanner_Window", (plx - 0.20, ply + 0.2214, top + 0.0225), (0.036, 0.006, 0.020), (0.70, 0.24, 0.20, 1.0))
     make_cyl("Dented_Can", (GONDOLA_XS[3] - 0.55, 9.40, 0.055), 0.05, 0.11, (0.84, 0.80, 0.70, 1.0), axis='X', segments=10)
