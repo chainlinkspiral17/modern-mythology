@@ -154,27 +154,27 @@
     },
     {
       "t": "narrate",
-      "text": "On the floor near the desk there is an open duffel bag — the green one he has had since eighth grade, with the broken zipper on the front pocket that he fixed once with a safety pin and then the safety pin was lost and he never fixed it again.",
+      "text": "[shot:insert duffel]On the floor near the desk there is an open duffel bag — the green one he has had since eighth grade, with the broken zipper on the front pocket that he fixed once with a safety pin and then the safety pin was lost and he never fixed it again.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "The bag is half-packed. Three shirts, a phone charger, a pair of boots.",
+      "text": "[shot:insert boots]The bag is half-packed. Three shirts, a phone charger, a pair of boots.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "On the desk: a water glass with a finger of water left in it. A textbook for a class he is not taking anymore.",
+      "text": "[shot:insert glass]On the desk: a water glass with a finger of water left in it. A textbook for a class he is not taking anymore.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/031.ogg"
     },
     {
       "t": "narrate",
-      "text": "A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating in March.",
+      "text": "[shot:insert photo]A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating in March.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/032.ogg"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]The photograph is still there. The duffel bag is still there. The water glass is still there. Diego Ramos is not.",
+      "text": "[beat:still][shot:establish~]The photograph is still there. The duffel bag is still there. The water glass is still there. Diego Ramos is not.",
       "voice": "assets/audio/voice/vol6_ch0_prelude/033.mp3"
     },
     {

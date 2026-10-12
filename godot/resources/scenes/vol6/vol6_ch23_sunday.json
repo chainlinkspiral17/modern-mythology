@@ -33,7 +33,7 @@
   },
   {
    "t": "narrate",
-   "text": "The blackout curtains are doing what they have been doing since he was sixteen, which is keeping his bedroom in the kind of dark that has no relationship to the time of day outside it. He lies on his back for a beat."
+   "text": "[shot:insert curtains]The blackout curtains are doing what they have been doing since he was sixteen, which is keeping his bedroom in the kind of dark that has no relationship to the time of day outside it. He lies on his back for a beat."
   },
   {
    "t": "narrate",
@@ -155,7 +155,7 @@
   },
   {
    "t": "narrate",
-   "text": "After dinner he goes back upstairs. He sits at the desk in his bedroom that has been his desk since he was nine. He pulls out a clean sheet of plain white printer paper. He pulls out the same pen."
+   "text": "[shot:insert desk]After dinner he goes back upstairs. He sits at the desk in his bedroom that has been his desk since he was nine. He pulls out a clean sheet of plain white printer paper. He pulls out the same pen."
   },
   {
    "t": "narrate",
@@ -199,7 +199,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He closes the desk drawer."
+   "text": "[shot:insert drawer]He closes the desk drawer."
   },
   {
    "t": "narrate",

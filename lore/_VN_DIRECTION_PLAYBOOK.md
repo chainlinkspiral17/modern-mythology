@@ -291,6 +291,34 @@ over-the-shoulder two-shot when two heroes trade lines.
 
 ## Recent lessons
 
+### 2026-10-12 · the camera follows the narrator's inventory
+
+- **The user: "The director should be focusing on the items in Diego's
+  room as they are being called out by the narrator."** The prologue
+  walks his empty room object by object — the duffel, the three shirts
+  and the boots, the water glass and the textbook, Sam's photograph in
+  the mirror — and the camera held one wide shot (only the bed was cued).
+  The director cuts only on `[shot:...]` cues; a line that names an
+  object with no cue leaves the frame where it was.
+- **Rule: a narrated line that names a thing in the room cuts to it.**
+  One `[shot:insert <x>]` per line, a `shot_insert_<x>` marker per
+  object, the marker aimed so the object FILLS the frame (a mirror with
+  the photo as a corner square is a mirror shot; aim at the photo).
+  Repeated mentions within three lines do not re-cut. A line that
+  gathers several objects back into the room ("The photograph is still
+  there. The duffel bag is still there ... Diego Ramos is not.") is a
+  WIDE, not an insert.
+- **Not every noun is a cut.** Objects inside a dream, inside a quoted
+  letter, or in another place being remembered stay uncued.
+- **`tools/audit/narrated_object_audit.py [locale]`** lists every uncued
+  narrate line that names an object the room already has an insert for
+  (repeat mentions suppressed). It is a report: read each line. Run it
+  before and after a room's pass; repo-wide it lists ~1,500 lines.
+- **The same report finds wrong rooms.** Bianca's bedtime lines in ch23
+  matched Diego's `window` — they were playing over his room because the
+  chapter never cut the background. A narrated object that matches the
+  WRONG room's markers is a missing `bg` node.
+
 ### 2026-10-04 · a montage staged on one background shows one face — switch rooms per vignette
 
 - Judgement (vol 5 ch 20) is a montage: Erica in Houston, John in

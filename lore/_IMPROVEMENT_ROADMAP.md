@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 96: THE DIRECTOR FOLLOWS THE NARRATOR IN DIEGO'S ROOM.**
+The user: "The director should be focusing on the items in Diego's room
+as they are being called out by the narrator." Twenty-five cues across
+seven chapters: the prologue's inventory cut by cut (duffel → boots and
+shirts → the water glass and textbook → Sam's photograph in the mirror →
+a drifting wide on "Diego Ramos is not"); the blackout and regular
+curtains each time he draws or opens them; the fan "clicks on the third
+rotation"; the dresser clock at three eleven; the paper and pen, the
+folded letter, the envelope set on the desk's corner, the lamp he turns
+off; the laptop; the bed each time he gets into it; the desk drawer he
+closes. Nine new insert markers (boots, curtains, fan, clock, pen, lamp,
+laptop, desk, drawer), each rendered and checked; the boots and photo
+frames tightened after review. The nightstand gains the phone the prose
+names ("His phone, on the nightstand, has not vibrated" — there was only
+a charger). BIANCA'S BED: ch23's "Bianca is in her bed at eleven-oh-two.
+The book ... is on the nightstand" played over Diego's room (the chapter
+never cut the background); a `miller_master_bedroom_night` preset on the
+master bedroom already inside the Miller office set, with a headboard,
+pillows, the nightstand, the bee-balm book and a bedside lamp; the set's
+three directionals copied per existing preset so the night room gets only
+its moon and lamp. New report `tools/audit/narrated_object_audit.py`.
+**Draft N+1 (the program this opens):** the same pass room by room down
+the report's list — the cabin (161 + 102 lines), the Salty Tome alley,
+the Miller kitchen, Hans's bakery, Board Lords, the Kwik Stop; and the
+objects the prose names that a room has no marker for yet (the report
+only sees existing inserts).
+
 **2026-10-12 · pass 95: A MISSING SET IS SHOWN AS MISSING (the user: "lots
 of assets missing ... maya and sam's room have the same decorations,
 diego's room is missing all the items the narration calls out").** The

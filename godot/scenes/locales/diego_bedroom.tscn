@@ -345,9 +345,9 @@ rotation = Vector3(-0.5228, -0.8635, 0.0)
 metadata/fov = 38.0
 
 [node name="shot_insert_photo" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.850, 1.600, -1.200)
-rotation = Vector3(0.0923, -2.9460, 0.0)
-metadata/fov = 38.0
+position = Vector3(-0.620, 1.720, -0.580)
+rotation = Vector3(-0.0227, 3.0962, 0.0)
+metadata/fov = 32.0
 
 [node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.600, 1.250, -1.100)
@@ -389,3 +389,59 @@ metadata/fov = 45.0
 position = Vector3(-1.100, 1.150, -3.000)
 rotation = Vector3(-0.4882, 0.7076, 0.0)
 metadata/fov = 38.0
+
+; ── THE DIRECTOR FOLLOWS THE NARRATOR (pass 96): an insert per object the prose names
+; "Three shirts, a phone charger, a pair of boots" — into the open bag, the boots beside it
+[node name="shot_insert_boots" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.800, 0.900, -2.600)
+rotation = Vector3(-0.7510, 2.9060, 0.0)
+metadata/fov = 38.0
+
+; the window's two curtain pairs, the blackout on the outer rod
+[node name="shot_insert_curtains" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.500, -2.550)
+rotation = Vector3(-0.0727, 0.0973, 0.0)
+metadata/fov = 50.0
+
+; "The fan, on the ceiling, clicks on the third rotation" — from the bed, looking up
+[node name="shot_insert_fan" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.100, -1.700)
+rotation = Vector3(0.8464, -0.6435, 0.0)
+metadata/fov = 45.0
+
+; "The clock on the dresser says three eleven"
+[node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.250, -1.300)
+rotation = Vector3(-0.3679, 2.8706, 0.0)
+metadata/fov = 35.0
+
+; the plain white paper and the blue pen at the desk
+[node name="shot_insert_pen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.150, 1.250, -2.150)
+rotation = Vector3(-0.5810, -0.9197, 0.0)
+metadata/fov = 35.0
+
+; "He turns off the lamp" — the desk lamp
+[node name="shot_insert_lamp" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.050, 1.350, -2.550)
+rotation = Vector3(-0.3248, -1.0469, 0.0)
+metadata/fov = 38.0
+
+; the laptop open on the desk, the school schedule
+[node name="shot_insert_laptop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.050, 1.300, -2.400)
+rotation = Vector3(-0.4874, -1.0122, 0.0)
+metadata/fov = 38.0
+
+; "the desk that has been his desk since he was nine"
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.750, 1.450, -2.450)
+rotation = Vector3(-0.5502, -1.1372, 0.0)
+metadata/fov = 45.0
+
+; "He closes the desk drawer"
+[node name="shot_insert_drawer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 1.000, -3.400)
+rotation = Vector3(-0.4057, -1.8737, 0.0)
+metadata/fov = 35.0
+

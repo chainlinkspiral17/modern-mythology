@@ -34,12 +34,12 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls the regular curtains in his bedroom — not the blackout ones, those are for the Saturday sleep. Today is Friday, and Friday's sleep is the shorter sleep, the one he gets between nine and three before the Friday evening.",
+      "text": "[shot:insert curtains]He pulls the regular curtains in his bedroom — not the blackout ones, those are for the Saturday sleep. Today is Friday, and Friday's sleep is the shorter sleep, the one he gets between nine and three before the Friday evening.",
       "voice": "assets/audio/voice/vol6_ch18_letter/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets into bed in shorts and a t-shirt.",
+      "text": "[shot:insert bed]He gets into bed in shorts and a t-shirt.",
       "voice": "assets/audio/voice/vol6_ch18_letter/007.mp3"
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "He lies on his back for a minute. The room is dim. The clock on the dresser says three eleven. He has, by the math he is now able to do without effort, slept six hours and eleven minutes.",
+      "text": "[shot:insert clock]He lies on his back for a minute. The room is dim. The clock on the dresser says three eleven. He has, by the math he is now able to do without effort, slept six hours and eleven minutes.",
       "voice": "assets/audio/voice/vol6_ch18_letter/018.mp3"
     },
     {
@@ -109,7 +109,7 @@
     },
     {
       "t": "narrate",
-      "text": "He writes at the small desk that has been his desk since he was nine. He writes on a piece of plain white printer paper from the printer in his grandmother's office. He writes in pen — the blue pen his grandmother keeps in the kitchen drawer with the bills.",
+      "text": "[shot:insert pen]He writes at the small desk that has been his desk since he was nine. He writes on a piece of plain white printer paper from the printer in his grandmother's office. He writes in pen — the blue pen his grandmother keeps in the kitchen drawer with the bills.",
       "voice": "assets/audio/voice/vol6_ch18_letter/021.mp3"
     },
     {
@@ -184,7 +184,7 @@
     },
     {
       "t": "narrate",
-      "text": "He folds it. He puts it in a plain white envelope from the box of envelopes his grandmother keeps in the drawer with the bills.",
+      "text": "[shot:insert letter]He folds it. He puts it in a plain white envelope from the box of envelopes his grandmother keeps in the drawer with the bills.",
       "voice": "assets/audio/voice/vol6_ch18_letter/036.mp3"
     },
     {
@@ -194,7 +194,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sets the envelope on the corner of the desk.",
+      "text": "[shot:insert envelope]He sets the envelope on the corner of the desk.",
       "voice": "assets/audio/voice/vol6_ch18_letter/038.mp3"
     },
     {
@@ -204,7 +204,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stands at the desk a moment.",
+      "text": "[shot:insert desk]He stands at the desk a moment.",
       "voice": "assets/audio/voice/vol6_ch18_letter/040.mp3"
     },
     {
@@ -219,7 +219,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turns off the lamp. He goes downstairs.",
+      "text": "[shot:insert lamp]He turns off the lamp. He goes downstairs.",
       "voice": "assets/audio/voice/vol6_ch18_letter/043.mp3"
     },
     {

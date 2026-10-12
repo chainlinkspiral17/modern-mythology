@@ -563,7 +563,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in."
+      "text": "[shot:insert laptop]He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in."
     },
     {
       "t": "narrate",
@@ -575,11 +575,11 @@
     },
     {
       "t": "narrate",
-      "text": "He gets in bed."
+      "text": "[shot:insert bed]He gets in bed."
     },
     {
       "t": "narrate",
-      "text": "The blackout curtains are doing what they do."
+      "text": "[shot:insert curtains]The blackout curtains are doing what they do."
     },
     {
       "t": "narrate",
@@ -594,12 +594,16 @@
       "pos": "center"
     },
     {
+      "src": "3d:miller_master_bedroom_night",
+      "t": "bg"
+    },
+    {
       "t": "narrate",
       "text": "[shot:closeup bianca]Bianca is in her bed at eleven-oh-two."
     },
     {
       "t": "narrate",
-      "text": "The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine."
+      "text": "[shot:insert book]The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine."
     },
     {
       "t": "narrate",

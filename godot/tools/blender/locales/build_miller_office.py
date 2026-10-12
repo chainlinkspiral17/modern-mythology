@@ -294,7 +294,7 @@ def build_bianca_office_2026_10():
     August calendar, the bookshelf, the basket of mail; through the
     doorway in its W wall, the corner of the master bedroom. Preset
     `miller_office_bianca`; its markers and lights are suffixed."""
-    from _props.geometry import make_lathe, make_rot_box
+    from _props.geometry import make_lathe, make_rot_box, make_chamfer_box
     from _props.furniture import make_lamp
     from _props.decor import make_calendar
     x0, x1 = BX - B_W / 2.0, BX + B_W / 2.0
@@ -314,6 +314,17 @@ def build_bianca_office_2026_10():
     make_box("Bianca_Bedroom_Bed_Frame", (x0 - 1.4, 2.2, 0.25), (1.60, 1.60, 0.50), (0.40, 0.30, 0.22, 1.0))
     make_box("Bianca_Bedroom_Bed_Spread", (x0 - 1.4, 2.2, 0.53), (1.64, 1.64, 0.06), (0.62, 0.70, 0.76, 1.0))
     make_box("Bianca_Bedroom_Dresser", (x0 - 2.7, 0.70, 0.45), (0.50, 1.00, 0.90), (0.40, 0.30, 0.22, 1.0))
+    # (2026-10-12) the bed as a bed: the headboard against the N wall side, two pillows,
+    # the nightstand at its E side with the bee-balm book and the reading lamp (vol6 ch23:
+    # "Bianca is in her bed at eleven-oh-two. The book ... is on the nightstand")
+    make_box("Bianca_Bedroom_Headboard", (x0 - 1.4, 3.05, 0.70), (1.66, 0.06, 0.90), (0.36, 0.27, 0.20, 1.0))
+    for pi_, px in enumerate((x0 - 1.80, x0 - 1.00)):
+        make_chamfer_box(f"Bianca_Bedroom_Pillow_{pi_}", (px, 2.78, 0.62), (0.62, 0.36, 0.12), (0.94, 0.94, 0.92, 1.0), chamfer=0.04)
+    nx_, ny_ = x0 - 0.30, 2.70
+    make_box("Bianca_Bedroom_Nightstand", (nx_, ny_, 0.28), (0.40, 0.40, 0.56), (0.40, 0.30, 0.22, 1.0))
+    make_box("Bianca_Bedroom_Nightstand_Drawer", (nx_ - 0.205, ny_, 0.44), (0.012, 0.32, 0.12), (0.34, 0.25, 0.18, 1.0))
+    make_rot_box("Bianca_Bedroom_Book", (nx_ - 0.04, ny_ - 0.08, 0.575), (0.15, 0.22, 0.03), (0.46, 0.58, 0.40, 1.0), yaw=0.25)
+    make_lamp("Bianca_Bedroom_Lamp", nx_ + 0.05, ny_ + 0.10, base_z=0.56, h=0.40, shade_col=(0.94, 0.90, 0.80, 1.0), body_col=(0.80, 0.80, 0.78, 1.0))
     # the desk under the window
     dx, dy = BX + 0.4, B_D - 0.42
     make_box("Bianca_Desk_Top", (dx, dy, 0.74), (1.20, 0.60, 0.03), (0.94, 0.93, 0.90, 1.0))

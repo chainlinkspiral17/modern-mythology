@@ -1094,6 +1094,20 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"miller_master_bedroom_night": {
+		"scene": "res://scenes/locales/miller_office.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_office.glb",
+		# (2026-10-12) vol6 ch23: "Bianca is in her bed at eleven-oh-two. The book ...
+		# is on the nightstand." It played over Diego's room. The master bedroom built
+		# into this set (blender x 25.2..28.2), at night: the moon and the bedside lamp.
+		"camera_origin": Vector3(26.00, 1.55, -0.35),
+		"camera_rotation": Vector3(-0.3306, -0.3964, 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.12, 0.13, 0.20, 1),
+			"ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.30, 0.32, 0.42, 1), "ambient_energy": 0.30, "fog_color": Color(0.08, 0.08, 0.12, 1)},
+		"suppress_input": true,
+	},
 	"miller_office": {
 		"scene": "res://scenes/locales/miller_office.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_office.glb",

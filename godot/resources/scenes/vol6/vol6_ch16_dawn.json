@@ -839,7 +839,7 @@
   },
   {
    "t": "narrate",
-   "text": "The blackout curtains are drawn. The room is dark. The fan, on the ceiling, clicks on the third rotation. He has, since June, stopped counting.",
+   "text": "[shot:insert fan]The blackout curtains are drawn. The room is dark. The fan, on the ceiling, clicks on the third rotation. He has, since June, stopped counting.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/150.mp3"
   },
   {
@@ -894,7 +894,7 @@
   },
   {
    "t": "narrate",
-   "text": "He opens the blackout curtain.",
+   "text": "[shot:insert curtains]He opens the blackout curtain.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/161.mp3"
   },
   {

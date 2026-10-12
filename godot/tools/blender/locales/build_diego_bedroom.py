@@ -130,6 +130,9 @@ def build_bed():
     make_box("Nightstand", (nx, ny, 0.28), (0.40, 0.38, 0.56), COL_WOOD)
     make_box("Nightstand_Drawer", (nx + 0.205, ny, 0.44), (0.012, 0.32, 0.12), COL_WOOD_DK)
     make_box("Nightstand_Phone_Charger", (nx + 0.05, ny + 0.08, 0.565), (0.06, 0.04, 0.01), (0.90, 0.90, 0.88, 1.0))
+    # (pass 96) the phone itself, face up ("His phone, on the nightstand, has not vibrated")
+    make_box("Nightstand_Phone", (nx - 0.06, ny - 0.06, 0.566), (0.075, 0.150, 0.010), (0.10, 0.10, 0.11, 1.0))
+    make_box("Nightstand_Phone_Screen", (nx - 0.06, ny - 0.06, 0.5715), (0.066, 0.138, 0.001), (0.16, 0.20, 0.26, 1.0))
     make_wall_outlet("Outlet_Bed", (-ROOM_W / 2.0, ny + 0.32), axis='Y', face_sign=1)
 
 
