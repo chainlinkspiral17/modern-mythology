@@ -202,13 +202,27 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.eq(json('assets/audio/review/tem_theme/take-a/meta.json').status, 'approved');
     t.eq(await p.evaluate(() => DIR.state.tem_theme.status), 'approved');
   });
-  await t.test('real audio is never overwritten: a real .ogg, and a .wav that is not a temp', async () => {
+  await t.test('real audio is never overwritten: a real .ogg refuses; a .wav that is not a temp is described, and a second tap moves it aside (kept) and approves', async () => {
     const ogg = fs.readFileSync(G('assets/audio/bgm/real_track.ogg')), wav = fs.readFileSync(G('assets/audio/bgm/field_rec.wav'));
-    const r = await p.evaluate(async () => { await selectTrack('real_track'); const a = await approve(0); await approve(0); await selectTrack('field_rec'); const b = await approve(0); await approve(0); return { a, b, msg: document.getElementById('msg').textContent }; });
-    t.eq([r.a.why, r.b.why], ['real', 'real-wav']); t.ok(/REFUSED/.test(r.msg), r.msg);
+    const r = await p.evaluate(async () => { await selectTrack('real_track'); const a = await approve(0); await approve(0); await selectTrack('field_rec'); const b = await approve(0); return { a, b, msg: document.getElementById('msg').textContent }; });
+    t.eq([r.a.why, r.b.why], ['real', 'real-wav']);
+    t.ok(/is not a temp \(/.test(r.msg) && /MB\)/.test(r.msg) && /Tap APPROVE again/.test(r.msg), r.msg);
     t.ok(!fs.existsSync(G('assets/audio/bgm/real_track.wav')) && !fs.existsSync(G('assets/audio/bgm/real_track.temp.ogg')), 'no temp next to the real .ogg');
-    t.ok(!fs.existsSync(G('assets/audio/bgm/field_rec.temp.ogg')), 'no temp next to the real .wav');
+    t.ok(!fs.existsSync(G('assets/audio/bgm/field_rec.temp.ogg')), 'one tap: no temp next to the real .wav');
     t.ok(fs.readFileSync(G('assets/audio/bgm/real_track.ogg')).equals(ogg) && fs.readFileSync(G('assets/audio/bgm/field_rec.wav')).equals(wav), 'real files unchanged');
+    const c = await p.evaluate(async () => approve(0));
+    t.ok(c.ok, JSON.stringify(c));
+    const kept = fs.readdirSync(G('assets/audio/replaced')).filter(f => /^field_rec\..*\.wav$/.test(f));
+    t.eq(kept.length, 1, 'moved aside: ' + kept);
+    t.ok(fs.readFileSync(G('assets/audio/replaced/' + kept[0])).equals(wav), 'kept byte for byte');
+    t.ok(fs.existsSync(G('assets/audio/replaced/.gdignore')), 'Godot ignores the folder');
+    t.ok(!fs.existsSync(G('assets/audio/bgm/field_rec.wav')) && fs.existsSync(G('assets/audio/bgm/field_rec.temp.ogg')), 'the take is the game\'s temp now');
+    const h = json('resources/music/temp_approvals.json').tracks.field_rec.history.slice(-1)[0];
+    t.ok(h.moved_aside && h.moved_aside.some(x => /field_rec\.wav → assets\/audio\/replaced\//.test(x)), JSON.stringify(h));
+    // put it back so the later tests see the fixture as it was
+    fs.renameSync(G('assets/audio/replaced/' + kept[0]), G('assets/audio/bgm/field_rec.wav'));
+    for (const f of fs.readdirSync(G('assets/audio/bgm')).filter(f => f.startsWith('field_rec') && f !== 'field_rec.wav')) fs.rmSync(G('assets/audio/bgm/' + f), { recursive: true, force: true });
+    await p.evaluate(() => refresh());
   });
   await t.test('replacing an approved temp takes two taps', async () => {
     const was = fs.readFileSync(G('assets/audio/bgm/tem_theme.temp.ogg'));

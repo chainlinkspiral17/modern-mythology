@@ -795,6 +795,26 @@ context keeps running into a fake sink, and the meters still move.
   engine started outside a tap. Keep the director's engine start on
   the MAKE TAKES / ⟳ AGAIN click path.
 
+### 2026-10-12 — APPROVE over a non-temp .wav: say what it is, move it aside on a second tap
+
+- The user hit "REFUSED: …/vol1_ambient.wav is real audio (not a
+  temp — a FIELD RECORDER / TAPE STUDIO take?). Move it away first".
+  The tool gave no way to do that.
+  - Likely source: a DAW BOUNCE → INTO GAME from before the Ogg change.
+    Those are titled with the project name, not "(temp)", so they
+    count as real.
+- Never overwriting real audio is right; a dead end is not. Now:
+  - The first tap describes the file from its own chunks: kind, title,
+    originator, date, MB.
+  - A second tap within 4 s moves the .wav, its credits, and a non-temp
+    stems manifest + stems to `assets/audio/replaced/<name>.<stamp>…`.
+    That folder has a .gdignore, so Godot ignores it, and
+    music_drive.sh backs it up.
+  - Then it approves. The approval history records `moved_aside`.
+- Drive caveat: `music_drive.sh pull` never deletes, and Drive may
+  still hold the old `<base>.wav`, so a pull brings it back. Delete it
+  in Drive too (same as after SHRINK).
+
 ## TEMPLATE
 
 ```

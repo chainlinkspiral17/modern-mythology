@@ -208,7 +208,7 @@
       <li>Pick a track in the list on the left. <b>CANDIDATES</b> shows tracks with takes waiting for a verdict; <b>MISSING</b> shows tracks with no music yet.</li>
       <li>No takes yet? In the box under TAKES set how many (1–6), optionally write a <b>DIRECTION</b> (“slower, a lonely piano over rain”), then <b>⚄ MAKE TAKES</b>. They are composed and rendered right here — the message under the button counts through each take (composing → rendering stems → saving), and each one appears under TAKES as soon as it's done. Keep this page open while it works.</li>
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
-      <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
+      <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
       <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
@@ -743,12 +743,49 @@ const mb = b => (b / 1048576).toFixed(b < 1048576 ? 2 : 1);
 // a staged / legacy WAV as a lazy PCM source for AK.game.writeMusic (decoded sample-exact, one file at a time);
 // `tally` adds up the WAV bytes read, for the before / after sizes
 const wavPcm = (path, tally) => async () => { const f = await AK.game.readFile(path); if (tally) tally.wav += f.size; return AK.wav.decode(await f.arrayBuffer()); };
+// what a non-temp .wav is, from its own chunks: title · who wrote it · when
+async function describeWav(path) {
+  try {
+    const f = await AK.game.readFile(path), c = AK.wav.parseChunks(await f.slice(0, 262144).arrayBuffer());
+    const title = (c.info && c.info.INAM) || (c.bext && c.bext.description) || '', by = (c.bext && c.bext.originator) || (c.mmjs && c.mmjs.originator) || '';
+    const when = (c.bext && c.bext.date) || (c.mmjs && c.mmjs.date ? String(c.mmjs.date).slice(0, 10) : '') || (f.lastModified ? new Date(f.lastModified).toISOString().slice(0, 10) : '');
+    const kind = /MM DAW/i.test(by) ? 'a DAW bounce' : /FIELD|TAPE/i.test(by) ? 'a recording' : 'real audio';
+    return [kind, title && '“' + title + '”', by && 'by ' + by, when, (f.size / 1048576).toFixed(1) + ' MB'].filter(Boolean).join(' · ');
+  } catch (e) { return 'unreadable header'; }
+}
+// a real .wav (+ its stems, manifest, credits) → assets/audio/replaced/<name>.<stamp>…, kept; Godot ignores the folder
+const REPLACED_DIR = 'assets/audio/replaced';
+async function moveAside(base) {
+  const G = AK.game, name = base.split('/').pop(), stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..*$/, '').replace('T', '-');
+  const to = REPLACED_DIR + '/' + name + '.' + stamp, moved = [];
+  if (!(await G.exists(REPLACED_DIR + '/.gdignore'))) await G.write(REPLACED_DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+  const mv = async (from, dest) => { if (!(await G.exists(from))) return; await G.copy(from, dest); await G.remove(from); moved.push(from + ' → ' + dest); };
+  await mv(base + '.wav', to + '.wav');
+  await mv(base + '.wav.credits.txt', to + '.wav.credits.txt');
+  const man = await readJson(base + '.stems.json', null);
+  if (man && !man.temp) {
+    for (const e of await G.list(base + '.stems')) if (e.kind === 'file') await mv(base + '.stems/' + e.name, to + '.stems/' + e.name);
+    await mv(base + '.stems.json', to + '.stems.json');
+  }
+  return moved;
+}
 async function approve(i, btn) {
   const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
   if (m.status === 'rejected') { msg('take ' + (i + 1) + ' was rejected — make it again (⟳ AGAIN) to approve it.', true); return { ok: false, why: 'rejected' }; }
   const st = await scanTrack(t), base = baseOf(t.src), dest = base + '.temp.ogg';
   if (st.real) { msg('REFUSED: real audio exists at godot/' + t.src + ' — it always wins over a temp, and it is never overwritten.', true); return { ok: false, why: 'real' }; }
-  if (st.wav === 'real') { msg('REFUSED: godot/' + base + '.wav is real audio (not a temp — a FIELD RECORDER / TAPE STUDIO take?). Move it away first if you really mean to replace it.', true); return { ok: false, why: 'real-wav' }; }
+  let aside = null;
+  if (st.wav === 'real') {
+    // a .wav that isn't marked "(temp)": a FIELD RECORDER / TAPE STUDIO take, or a DAW BOUNCE → INTO GAME. Never
+    // overwritten — two taps move it (and its stems / manifest / credits) to assets/audio/replaced/, then approve.
+    const what = await describeWav(base + '.wav');
+    if (!twoTap('aside:' + t.id + ':' + m.take, btn, 'TAP AGAIN: MOVE IT ASIDE + APPROVE')) {
+      msg('godot/' + base + '.wav is not a temp (' + what + '), so the game plays it instead of any approved take. Tap APPROVE again within 4 s to move it to godot/' + REPLACED_DIR + '/ (kept, not deleted) and approve this take.', true);
+      return { ok: false, why: 'real-wav', what };
+    }
+    try { aside = await moveAside(base); } catch (e) { msg('could not move godot/' + base + '.wav aside: ' + (e.message || e), true); return { ok: false, why: 'error', error: String(e) }; }
+    st.wav = 'none'; st.temp = await AK.game.exists(base + '.temp.ogg') ? 'ogg' : null;
+  }
   if (st.approved && st.approved.take === m.take && st.temp === 'ogg') { msg('take ' + (i + 1) + ' is already the approved temp.'); return { ok: true, same: true }; }
   if (st.temp && !twoTap('ap:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REPLACE')) {
     msg('a temp is already approved here' + (st.approved ? ' (take ' + st.approved.take + ')' : ' (an older TEMP TRACKS write)') + ' — tap APPROVE again (or press a again) within 4 s to replace it.');
@@ -779,7 +816,7 @@ async function approve(i, btn) {
   const prev = rec.approved;
   rec.approved = { take: m.take, seed: (m.mood || {}).seed, mood: m.mood, request: m.request || {}, instruments: m.instruments || {}, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim(),
     lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files, format: 'ogg', bytes, quality: out.manifest.quality };
-  rec.history.push({ action: prev ? 'replace' : 'approve', take: m.take, seed: (m.mood || {}).seed, replaced: prev ? prev.take : undefined, date: rec.approved.date, by: who(), notes: rec.approved.notes });
+  rec.history.push({ action: prev ? 'replace' : 'approve', take: m.take, seed: (m.mood || {}).seed, replaced: prev ? prev.take : undefined, moved_aside: aside || undefined, date: rec.approved.date, by: who(), notes: rec.approved.notes });
   await writeApprovals(ap);
   await setMetaStatus(m, 'approved');
   if (prev && prev.take !== m.take) { const pm = DIR.state[t.id].takes.find(x => x.take === prev.take); if (pm) await setMetaStatus(pm, 'candidate'); }
