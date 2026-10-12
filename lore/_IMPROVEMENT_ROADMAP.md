@@ -3834,6 +3834,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 85: THE READING PASS, draft 2 (the rest of the VN
+chrome).** The surfaces draft 1 left: the BACKLOG (default theme font at
+15 px) is the reading face at 20 px on a ~70-character column, names in
+its semibold, the header in its italic; the PAUSE MENU's buttons go from
+12 px Cinzel (the smallest type in the game) to the reading face at 19,
+the notes editor and its hints to Literata 16 / italic 14, the save
+status to the italic; the INTERLUDE plate reads in Literata 30 with a
+Literata Italic 20 sub (Cinzel keeps the hint and the kickers — the book
+chrome stays chrome). New in SkinDB: `weighted(path, wght)` — a cached
+FontVariation on the variable file's wght axis — so bold in the dialogue
+box and the backlog is Literata's 600, not a faux-bold of the regular;
+`italic_of(path)` for the companion face. In-engine compile sweep clean
+(231 scripts). **Draft 3 targets:** the chapter card (IM Fell 40 on the
+plate) and the HUD bar's 11–12 px Cinzel against the reading sizes; the
+save-slot overlay; the settings screen; the verb coin's caps; a text-scale
+1.3 pass on the Deck; the suburban skin's cream band under the trip's
+daylight scenes (check contrast on the Deck's panel).
+
 **2026-10-11 · pass 84: THE CABIN, interior draft 16 — THE LOFT HANGS, THE
 ROOF MAKES POWER.** The user, three times: *"Loft pillars going through
 furniture … I don't want loft pillars going through furniture or furniture

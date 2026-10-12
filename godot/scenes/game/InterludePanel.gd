@@ -47,18 +47,20 @@ func _build() -> void:
 	_main = Label.new()
 	_main.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_main.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	if ResourceLoader.exists(SkinDB.F_IMFELL_R):
-		_main.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
-	_main.add_theme_font_size_override("font_size", 34)
+	# (pass 85) the reading face — an interlude is read, not announced
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		_main.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	_main.add_theme_font_size_override("font_size", 30)
+	_main.add_theme_constant_override("line_spacing", 8)
 	_main.add_theme_color_override("font_color", Color(0.93, 0.90, 0.83))
 	_center.add_child(_main)
 
 	_sub = Label.new()
 	_sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	if ResourceLoader.exists(SkinDB.F_CINZEL):
-		_sub.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	_sub.add_theme_font_size_override("font_size", 16)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		_sub.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	_sub.add_theme_font_size_override("font_size", 20)
 	_sub.add_theme_color_override("font_color", Color(0.65, 0.60, 0.50))
 	_center.add_child(_sub)
 

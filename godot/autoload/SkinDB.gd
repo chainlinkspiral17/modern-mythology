@@ -40,6 +40,32 @@ const DLG_TERMINAL := "terminal"
 
 var skins: Dictionary = {}
 
+# (pass 85) variable-font instances, cached: Literata and Inter carry a
+# wght axis, so a bold or a semibold is a FontVariation on the one file,
+# not a second file. Non-variable faces come back as themselves.
+var _font_cache: Dictionary = {}
+
+
+func weighted(path: String, wght: float = 600.0) -> Font:
+	var key: String = "%s@%d" % [path, int(wght)]
+	if _font_cache.has(key):
+		return _font_cache[key]
+	var base: Font = load(path) as Font
+	if base == null:
+		return null
+	var fv := FontVariation.new()
+	fv.base_font = base
+	fv.variation_opentype = {TextServerManager.get_primary_interface().name_to_tag("wght"): wght}
+	_font_cache[key] = fv
+	return fv
+
+
+## The italic companion of a reading face, or "" when the face has none.
+func italic_of(path: String) -> String:
+	if path == F_LITERATA:
+		return F_LITERATA_I
+	return ""
+
 
 func _ready() -> void:
 	_build()

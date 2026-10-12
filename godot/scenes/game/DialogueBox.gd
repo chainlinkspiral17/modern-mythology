@@ -275,7 +275,7 @@ func finish_typing() -> void:
 const READ_BODY_PX := 28
 const READ_LEADING := 0.18        # extra line separation (Literata already carries ~1.44 em of line height)
 const READ_MAX_COL := 980.0       # the measure: ~75 characters of Literata at 28 px
-const READ_SPK_PX  := 19
+const READ_SPK_PX  := 21
 const READ_BAND_RISE := 56.0      # how far above the box the band begins its fade
 
 var _band: TextureRect = null
@@ -348,7 +348,7 @@ func _build_standard() -> void:
 	# literary skins, Inter on suburban), a 2 px edge instead of the old
 	# third-of-the-size outline.
 	_speaker = Label.new()
-	_speaker.position = Vector2(pad[3], -34.0)
+	_speaker.position = Vector2(pad[3], -37.0)
 	var sc: float = Settings.get_text_scale()
 	_apply_font(_speaker, _skin.get("spk_font", SkinDB.F_CINZEL),
 				int(READ_SPK_PX * sc),
@@ -720,7 +720,9 @@ func _apply_rtl_font(rtl: RichTextLabel, font_path: String, size: int, col: Colo
 	if ResourceLoader.exists(font_path):
 		var ff: FontFile = load(font_path)
 		rtl.add_theme_font_override("normal_font",  ff)
-		rtl.add_theme_font_override("bold_font",    ff)
+		# (pass 85) bold is the face's 600 weight when it has a wght axis
+		var fb: Font = SkinDB.weighted(font_path, 600.0)
+		rtl.add_theme_font_override("bold_font",    fb if fb != null else ff)
 		# The italic face is the real italic when the body is Literata;
 		# every other face slants itself (no italic file shipped).
 		var it_path: String = _italic_for(font_path)

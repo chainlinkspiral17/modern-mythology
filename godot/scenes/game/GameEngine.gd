@@ -1710,17 +1710,21 @@ func _open_backlog() -> void:
 
 	var col := VBoxContainer.new()
 	col.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	col.offset_left = -420
-	col.offset_right = 420
-	col.offset_top = -300
-	col.offset_bottom = 300
-	col.add_theme_constant_override("separation", 8)
+	# (pass 85) the backlog reads like the page: the reading face at 20 px
+	# on a ~70-character measure, the names in its semibold
+	col.offset_left = -450
+	col.offset_right = 450
+	col.offset_top = -310
+	col.offset_bottom = 310
+	col.add_theme_constant_override("separation", 12)
 	_backlog_overlay.add_child(col)
 
 	var hdr := Label.new()
-	hdr.text = "· the story so far · H or ESC returns ·"
+	hdr.text = "the story so far   ·   H or ESC returns"
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	hdr.add_theme_font_size_override("font_size", 13)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		hdr.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	hdr.add_theme_font_size_override("font_size", 16)
 	hdr.add_theme_color_override("font_color", Color(0.62, 0.58, 0.50))
 	col.add_child(hdr)
 
@@ -1733,9 +1737,19 @@ func _open_backlog() -> void:
 	body.bbcode_enabled = true
 	body.fit_content = true
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	body.custom_minimum_size = Vector2(820, 0)
-	body.add_theme_font_size_override("normal_font_size", 15)
-	body.add_theme_color_override("default_color", Color(0.88, 0.86, 0.82))
+	body.custom_minimum_size = Vector2(880, 0)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		body.add_theme_font_override("normal_font", load(SkinDB.F_LITERATA) as Font)
+		var fb: Font = SkinDB.weighted(SkinDB.F_LITERATA, 600.0)
+		if fb != null:
+			body.add_theme_font_override("bold_font", fb)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		body.add_theme_font_override("italics_font", load(SkinDB.F_LITERATA_I) as Font)
+	body.add_theme_font_size_override("normal_font_size", 20)
+	body.add_theme_font_size_override("bold_font_size", 20)
+	body.add_theme_font_size_override("italics_font_size", 20)
+	body.add_theme_constant_override("line_separation", 5)
+	body.add_theme_color_override("default_color", Color(0.86, 0.83, 0.76))
 	body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	scroll.add_child(body)
 

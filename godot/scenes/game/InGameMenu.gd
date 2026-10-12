@@ -88,7 +88,7 @@ func _rebuild() -> void:
 	title.text = "GAME MENU"
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		title.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", 15)
 	title.add_theme_color_override("font_color", C_GOLD)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(title)
@@ -112,9 +112,9 @@ func _rebuild() -> void:
 	_save_status = Label.new()
 	_save_status.text = ""
 	_save_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	if ResourceLoader.exists(SkinDB.F_CINZEL):
-		_save_status.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	_save_status.add_theme_font_size_override("font_size", 12)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		_save_status.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	_save_status.add_theme_font_size_override("font_size", 15)
 	_save_status.add_theme_color_override("font_color", Color(0.6, 0.85, 0.5))
 	vbox.add_child(_save_status)
 
@@ -179,7 +179,9 @@ func _build_notes(col: VBoxContainer) -> void:
 		none.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		none.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		none.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.5))
-		none.add_theme_font_size_override("font_size", 12)
+		if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+			none.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+		none.add_theme_font_size_override("font_size", 15)
 		frame.add_child(none)
 
 	var te := TextEdit.new()
@@ -188,7 +190,9 @@ func _build_notes(col: VBoxContainer) -> void:
 	te.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	te.placeholder_text = "Your notes for this save — who you suspect, what to try next, where you left off…"
 	te.text = SaveSystem.get_notes(_active_slot)
-	te.add_theme_font_size_override("font_size", 13)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		te.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	te.add_theme_font_size_override("font_size", 16)
 	te.add_theme_color_override("font_color", C_TXT)
 	var tst := StyleBoxFlat.new()
 	tst.bg_color = Color(0.02, 0.016, 0.01, 0.95)
@@ -205,7 +209,9 @@ func _build_notes(col: VBoxContainer) -> void:
 
 	var hint := Label.new()
 	hint.text = "Saved as you type." + ("  On Steam Deck, STEAM + X opens the keyboard." if Input.get_connected_joypads().size() > 0 else "")
-	hint.add_theme_font_size_override("font_size", 12)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		hint.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	hint.add_theme_font_size_override("font_size", 14)
 	hint.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.55))
 	col.add_child(hint)
 
@@ -233,11 +239,13 @@ func _nav_btn(text: String) -> Button:
 	var btn := Button.new()
 	btn.text = text
 	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	btn.custom_minimum_size.y = 36
+	btn.custom_minimum_size.y = 40
 	btn.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	if ResourceLoader.exists(SkinDB.F_CINZEL):
-		btn.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	btn.add_theme_font_size_override("font_size", 12)
+	# (pass 85) the reading face at reading size — the 12 px Cinzel buttons
+	# were the smallest type in the game
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		btn.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	btn.add_theme_font_size_override("font_size", 19)
 	btn.add_theme_color_override("font_color", C_TXT)
 	btn.add_theme_color_override("font_hover_color", C_GOLD)
 	btn.add_theme_color_override("font_focus_color", C_GOLD)

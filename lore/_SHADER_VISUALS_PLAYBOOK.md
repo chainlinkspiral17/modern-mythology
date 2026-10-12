@@ -249,6 +249,13 @@ through them in order.
   built, falls back to a character-count estimate, and the first
   five-line passage clipped. Re-measure once, deferred, when the layout
   is real.
+- **A variable font's bold is an axis, not a file.** Godot's
+  RichTextLabel draws `[b]` with `bold_font`; handed the regular file it
+  fakes nothing and shows regular. Literata and Inter carry a `wght`
+  axis, so `SkinDB.weighted(path, 600)` returns a cached FontVariation
+  (`variation_opentype = {name_to_tag("wght"): 600}`) and that is the
+  bold. `TS` is not a GDScript global — use
+  `TextServerManager.get_primary_interface()`.
 - **Screenshot the real components.** `tools/VNTypeSpecimen.tscn` boots
   DialogueBox + ChoiceMenu over any render with the trip attached in
   texture mode (join `"trip_local"`, `TripSync.attach(bg)`) exactly as
