@@ -2495,11 +2495,17 @@ def make_handler(runner, roster_path):
 HERO_STUDIO_URL_FILE = TOOLS / ".hero_studio_url"
 
 
+def _local_open(req, timeout=2.0):
+    """urlopen for this machine's own Studio: never through a proxy (an
+    http_proxy in the environment would send 127.0.0.1 off the box)."""
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    return opener.open(req, timeout=timeout)
+
+
 def _studio_answers(host, port, timeout=2.0):
     """True when a Hero Studio answers on host:port."""
-    import urllib.request
     try:
-        with urllib.request.urlopen(f"http://{host}:{port}/api/jobs", timeout=timeout) as r:
+        with _local_open(f"http://{host}:{port}/api/jobs", timeout=timeout) as r:
             return r.status == 200 and '"jobs"' in r.read(200).decode("utf-8", "replace")
     except Exception:  # noqa: BLE001
         return False
@@ -2533,7 +2539,7 @@ def cmd_stop(args):
             asked += 1
             try:
                 import urllib.request
-                urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{port}/api/quit", data=b"{}", method="POST"), timeout=2)
+                _local_open(urllib.request.Request(f"http://127.0.0.1:{port}/api/quit", data=b"{}", method="POST"))
             except Exception:  # noqa: BLE001
                 pass
     time.sleep(0.8)
@@ -2577,8 +2583,7 @@ def cmd_serve(args):
         if port == args.port and _studio_answers(args.host, port):
             print(f"An older Hero Studio is on port {port} — asking it to quit …", flush=True)
             try:
-                import urllib.request
-                urllib.request.urlopen(urllib.request.Request(f"http://{args.host}:{port}/api/quit", data=b"{}", method="POST"), timeout=2)
+                _local_open(urllib.request.Request(f"http://{args.host}:{port}/api/quit", data=b"{}", method="POST"))
             except Exception:  # noqa: BLE001
                 pass
             time.sleep(1.0)
@@ -2611,6 +2616,35 @@ def cmd_serve(args):
     print("keys: " + "  ".join(f"{k}={r['source'] or 'MISSING'}" for k, r in rep.items()))
     print("      (paste/test keys in the page under KEYS, or run: meshy_pipeline.py doctor)")
     print("Ctrl-C (or the page's QUIT button, or `meshy_pipeline.py stop`) to stop.", flush=True)
+
+    # (2026-10-13, the Deck: "still not even starting for me in a webpage")
+    # serve never opened a page — it printed an address and waited, which
+    # reads as nothing happening. Now it loads its own page once it is up,
+    # says so plainly, and opens the browser on it.
+    def _check_and_open():
+        time.sleep(0.4)
+        try:
+            with _local_open(url, timeout=5) as r:
+                body = r.read(4000).decode("utf-8", "replace")
+            ok = "HERO STUDIO" in body.upper()
+            why = "" if ok else "it answered, but not with the Studio page"
+        except Exception as ex:  # noqa: BLE001
+            ok, why = False, f"{type(ex).__name__}: {ex}"
+        if not ok:
+            print(f"!! The Studio could not load its own page ({why}).", flush=True)
+            print("   Paste this terminal's output to Claude.", flush=True)
+            return
+        print(f"OK  the page is up. Open  {url}  in a browser.", flush=True)
+        if getattr(args, "no_browser", False):
+            return
+        try:
+            import webbrowser
+            opened = webbrowser.open(url, new=2)
+        except Exception:  # noqa: BLE001
+            opened = False
+        print("    (opened it in your browser)" if opened else
+              "    (no browser could be launched from here — copy the address into one)", flush=True)
+    threading.Thread(target=_check_and_open, daemon=True).start()
     srv.serve_forever()
 
 
@@ -2699,6 +2733,7 @@ def main():
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
     p.add_argument("--host", default="127.0.0.1")
     p.add_argument("--port", type=int, default=8877)   # (2026-10-13) 8765 belongs to another program on the Deck
+    p.add_argument("--no-browser", action="store_true", help="do not open the page in a browser")
     p = sub.add_parser("stop", help="stop every running Hero Studio server")
     p.add_argument("--port", type=int, default=8877)
 
