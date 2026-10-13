@@ -2489,11 +2489,13 @@ def make_handler(runner, roster_path):
 def cmd_serve(args):
     runner = JobRunner(ROSTER_PATH)
     handler = make_handler(runner, ROSTER_PATH)
+    srv = None
     try:
         srv = ThreadingHTTPServer((args.host, args.port), handler)
     except OSError as ex:
         if ex.errno not in (98, 48, 10048):       # EADDRINUSE on Linux / macOS / Windows
             raise
+    if srv is None:
         # (2026-10-13) the port is taken — almost always a Hero Studio started
         # before the last `git pull`, still running the OLD code (new roster
         # kinds and buttons will be missing from it). Say so, and how to fix it.
@@ -2502,9 +2504,24 @@ def cmd_serve(args):
         try:
             import urllib.request
             with urllib.request.urlopen(f"http://{args.host}:{args.port}/api/jobs", timeout=3) as r:
-                running = " (it answers as Hero Studio)" if r.status == 200 else ""
+                body = r.read(200).decode("utf-8", "replace")
+                running = " (it answers as Hero Studio)" if r.status == 200 and '"jobs"' in body else ""
         except Exception:  # noqa: BLE001
             pass
+        if not running:
+            # (2026-10-13) ANOTHER program owns the port (on the Deck something
+            # else listens on 8765 and answers {"error": "not found"}). Take the
+            # next free port and say so, rather than stopping.
+            for alt in range(args.port + 1, args.port + 20):
+                try:
+                    srv = ThreadingHTTPServer((args.host, alt), handler)
+                except OSError:
+                    continue
+                print(f"Port {args.port} belongs to another program — Hero Studio is on port {alt} instead.", flush=True)
+                args.port = alt
+                break
+    if srv is None:
+        url = f"http://{args.host}:{args.port}/hero_uploader/"
         print(f"Port {args.port} is already in use{running}.", file=sys.stderr)
         print("Another Hero Studio is probably still running, started before your last pull — it is", file=sys.stderr)
         print("serving the OLD code. Stop it and start this one:", file=sys.stderr)
