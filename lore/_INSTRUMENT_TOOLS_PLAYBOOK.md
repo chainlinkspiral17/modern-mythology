@@ -721,6 +721,80 @@ those tools.
   the Deck is unmeasured. The heaviest is `choir_angel` at 10
   oscillators per voice, against `strings_ensemble`'s 9.
 
+### 2026-10-13 — sound design in FORGE: ambience beds, transitions, hits (105 → 126 presets)
+
+- Why: temp tracks are getting a sound-design layer — a "texture" part
+  (one long held note per section), an "fx" part (risers into
+  sections) and a "hit" part (one-shots on downbeats). The composer
+  names presets by id, so these ids are a contract:
+  - Beds (`ambient`, tag `texture`): `amb_vinyl` (two `vinyl` loops at
+    different rates + surface noise + 33⅓ rpm rumble), `amb_tape_hiss`
+    (cassette hiss, wow on the top end, dropouts), `amb_room_tone`
+    (very low interior air + HVAC), `amb_fluor_hum` (60 / 120 Hz
+    ballast + CRT hum, slight flicker), `amb_life_support` (low hum,
+    air circulation, slow pump pulse), `amb_crickets`, `amb_cicadas`
+    (bandpass noise × ring mod for the buzz, swells over ~7 s),
+    `amb_surf` (noise swells every ~7–11 s), `amb_fire` (crackle loops
+    over a soft roar), `amb_thunder` (rolls ~12–14 s apart over low
+    rain), `amb_city` (far traffic, the odd distant horn),
+    `amb_clock` (tick-tock, 1 a second, quiet room), `amb_forest_night`
+    (pine wind, an owl every 10–13 s), `amb_modem` (dial-up handshake
+    then data hiss).
+  - Transitions (`fx`, tag `transition`): `fx_reverse_swell`,
+    `fx_whoosh`, `fx_tape_stop`. Hits (`fx`, tag `hit`):
+    `fx_sub_drop`, `fx_bell_hit`, `fx_wood_knock`, `fx_glass_ping`.
+- **Beds are pitch-free.** Every generator is `mode: 'fixed'` or an
+  unkeyed noise, and no route reads `note`. Whatever note the composer
+  holds, C3 and C4 give the same audio (the suite checks this to
+  0.0 dB).
+- **Beds stay poly.** Mono / legato *kills* the old voice when a new
+  note starts, so at a section boundary the bed would drop out and
+  fade back in. Poly overlaps the old release with the new attack.
+  The price: two held notes of a sample bed add up in phase, so a
+  sample layer's level has to leave room for that (the library render
+  holds two notes).
+- **Events need a sample source.** Linear mod routes can't gate.
+  S&H into a level makes random steps all the time, not an
+  occasional event. So intermittent things are built-in generated
+  sources: `crickets`, `fire`, `modem`, `owl`, `thunder`, `clock`,
+  `horns`, `tapehiss` (dropouts). Each is written *circularly* (an
+  event past the end wraps to the start), so a loop has no seam. Each
+  has a `rate` cap (11–32 kHz) to keep memory small. The first event
+  comes a few seconds in (owl 3.4 s, thunder 3.8 s) so a bed opens on
+  its bed. Noise + LFOs still did the rest: surf (an S&H on the swell
+  LFO's rate randomises the period), cicadas, wind, hums.
+- **A transition can't know how long it is held.** The reverse swell
+  is two linear ramps multiplied (amp attack × env1 → generator
+  levels). The brightness keeps opening to 6 s, so a one-bar hold
+  peaks lower than a four-bar hold. A short release makes the
+  reverse-cymbal cut at note-off. The whoosh and tape stop are fixed
+  ~1 s events from note-on, so start them a beat before the downbeat.
+- **Tape stop = a product of ramps.** Pitch = −(saw LFO × env1): the
+  retriggered saw rises linearly from 0, and env1 → `lfo.1.amount`
+  scales it. So the fall is t², slow then plunging, like a slowing
+  reel. env2 → `amp.level` −1 (with `velSens` 0) takes the level to
+  exactly 0 at 1 s. Give those envelopes long releases. Otherwise
+  note-off snaps the level route back before the amp release ends,
+  and you hear a blip.
+- **Flake found and fixed: the reverb IR cache was FIFO.** Every new
+  `ForgeSynth` builds the default patch (reverb 1.8 s) before
+  `loadPreset`. Once a page had used more than 16 reverbs, that IR
+  kept getting evicted and rebuilt from fresh `Math.random` noise. So
+  two seeded renders of the same preset drew different numbers, and
+  `amb_surf` measured 1.1 dB apart at C3 and C4. `irFor` is now LRU
+  (a hit moves the key to the back). Same seed, same cache, same
+  audio.
+- Listening by proxy: spectrograms from
+  `ffmpeg -lavfi showspectrumpic` of offline renders (read as images)
+  caught a steady 837 Hz line in the reverse cymbal (its "metal"
+  squares were too low, now 1.4–3.2 kHz) and the tape stop's
+  note-off blip. Levels relative to `amb_rain` (single held note
+  ≈ −19 dB RMS): beds sit at about −21 to −33 dB (room tone and clock the
+  quietest).
+- Open items: not yet heard on the Deck. `seqgen.js` doesn't know
+  these ids yet; the composer rewrite will wire texture / fx / hit
+  parts to them.
+
 ## TEMPLATE
 
 ```

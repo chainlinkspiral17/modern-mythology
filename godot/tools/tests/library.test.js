@@ -160,6 +160,92 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
     t.eq(up.filter(u => !(u.finite && u.pk <= 1)).map(u => u.id + ' ' + u.pk.toFixed(3) + (u.finite ? '' : ' NaN')), [], 'macros up: finite, never past full scale');
   });
 
+  // ── sound design (2026-10-13): the composer's texture / fx / hit parts reference these ids ──────────────
+  const BEDS = ['amb_vinyl', 'amb_tape_hiss', 'amb_room_tone', 'amb_fluor_hum', 'amb_life_support', 'amb_crickets', 'amb_cicadas', 'amb_surf',
+    'amb_fire', 'amb_thunder', 'amb_city', 'amb_clock', 'amb_forest_night', 'amb_modem'];
+  const EVENTS = { amb_clock: 4, amb_thunder: 1, amb_forest_night: 1 };   // intermittent by design: at least this many events in 6 s
+  const TRANS = ['fx_reverse_swell', 'fx_whoosh', 'fx_tape_stop'], HITS = ['fx_sub_drop', 'fx_bell_hit', 'fx_wood_knock', 'fx_glass_ping'];
+  // one note, seeded like LIB.render (by id:note unless a seed is given); returns 10 ms RMS frames (mono), the peak
+  // and zero crossings per 0.1 s
+  const HOLD = `window.HOLD = async function (id, note, hold, len, seed) {
+    const real = Math.random; let a = 7; for (const ch of seed || id + ':' + note) a = (a * 31 + ch.charCodeAt(0)) | 0;
+    Math.random = () => { a = (a + 0x6D2B79F5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
+    try {
+      const SR = 16000, off = new OfflineAudioContext(2, Math.round(SR * len), SR);
+      const s = new ForgeSynth(off, { output: off.destination }); await s.init(); s.loadPreset(id); await s.loaded();
+      s.noteOn(note, 0.8, 0); s.noteOff(note, hold);
+      const buf = await off.startRendering(); s.dispose();
+      const L = buf.getChannelData(0), R = buf.getChannelData(1), f = SR / 100, fr = [], zc = [];
+      let pk = 0, finite = true;
+      for (let i = 0; i < L.length; i++) { if (!isFinite(L[i]) || !isFinite(R[i])) finite = false; pk = Math.max(pk, Math.abs(L[i]), Math.abs(R[i])); }
+      for (let i = 0; i + f <= L.length; i += f) { let e = 0; for (let k = i; k < i + f; k++) { const m = (L[k] + R[k]) / 2; e += m * m; } fr.push(Math.sqrt(e / f)); }
+      for (let i = 0; i + SR / 10 <= L.length; i += SR / 10) { let z = 0; for (let k = i + 1; k < i + SR / 10; k++) if ((L[k - 1] + R[k - 1] < 0) !== (L[k] + R[k] < 0)) z++; zc.push(z); }
+      return { fr, pk, finite, zc };
+    } finally { Math.random = real; }
+  };`;
+  await F.p.evaluate(HOLD);
+  const rms = (fr, a, b) => Math.sqrt(fr.slice(Math.round(a * 100), Math.round(b * 100)).reduce((s, v) => s + v * v, 0) / Math.max(1, Math.round((b - a) * 100)));
+  const median = a => { const s = [...a].sort((x, y) => x - y); return s[s.length >> 1]; };
+
+  await t.test('sound design: the composer\'s bed / transition / hit ids exist with their category + tags', async () => {
+    const got = await F.p.evaluate(ids => ids.map(id => { const p = FORGE_PRESETS.find(x => x.id === id); return p ? [id, p.category, ForgeSynth.presetTags(id)] : [id, null, []]; }), [...BEDS, ...TRANS, ...HITS]);
+    const bad = got.filter(([id, cat, tags]) => BEDS.includes(id) ? !(cat === 'ambient' && tags.includes('texture'))
+      : TRANS.includes(id) ? !(cat === 'fx' && tags.includes('transition')) : !(cat === 'fx' && tags.includes('hit'))).map(x => x.join(' '));
+    t.eq(bad, [], 'wrong / missing');
+  });
+
+  await t.test('sound design: every bed holds 6 s at any pitch — keeps sounding, no gaps (or its events happen), peak ≤ 0.95', async () => {
+    const bad = [];
+    for (const id of BEDS) {
+      const r = await F.p.evaluate(([id]) => HOLD(id, 60, 6, 6.2), [id]);
+      // pitch independence: C3 and C4 drawing the same random numbers (after r has generated + cached the noise and
+      // sample buffers — a render that builds them draws more), so any difference is the pitch's alone
+      const [lo, hi] = await F.p.evaluate(async ([id]) => [await HOLD(id, 48, 6, 6.2, id), await HOLD(id, 60, 6, 6.2, id)], [id]);
+      if (!r.finite || r.pk > 0.95) bad.push(`${id} peak ${r.pk.toFixed(3)}`);
+      const first = rms(r.fr, 0, 1), last = rms(r.fr, 5, 6);
+      if (!(last > 0.15 * first)) bad.push(`${id} fades: last second ${(last / first).toFixed(2)} of the first`);
+      const d = 20 * Math.log10(rms(lo.fr, 1, 6) / rms(hi.fr, 1, 6));
+      if (Math.abs(d) > 1) bad.push(`${id} pitch-dependent: C3 vs C4 ${d.toFixed(1)} dB`);
+      const body = r.fr.slice(100, 600), med = median(body);
+      if (EVENTS[id]) {           // events: 20 ms frames above twice the bed, ≥ 0.2 s apart
+        let n = 0, lastAt = -1;
+        for (let i = 100; i < 599; i++) { const v = Math.hypot(r.fr[i], r.fr[i + 1]) / Math.SQRT2; if (v > 2 * med && i - lastAt > 20) { n++; lastAt = i; } }
+        if (n < EVENTS[id]) bad.push(`${id} ${n} events, want ≥ ${EVENTS[id]}`);
+      } else {                    // no stretch of 50 ms frames 30 dB under the bed's median for more than 0.5 s
+        let run = 0, worst = 0;
+        for (let i = 50; i + 5 <= 600; i += 5) { if (rms(r.fr, i / 100, (i + 5) / 100) < 0.0316 * med) run++; else run = 0; worst = Math.max(worst, run); }
+        if (worst > 10) bad.push(`${id} gap ${(worst * 0.05).toFixed(2)} s`);
+      }
+    }
+    t.eq(bad, [], 'bed problems');
+  });
+
+  await t.test('sound design: transitions build over the held note; hits ring past a short one', async () => {
+    const bad = [];
+    // reverse swell held two bars (100 bpm): quiet start, loudest right before the cut, then gone
+    const sw = await F.p.evaluate(() => HOLD('fx_reverse_swell', 60, 4.8, 5.6));
+    const s0 = rms(sw.fr, 0.2, 0.7), s1 = rms(sw.fr, 1.8, 2.3), s2 = rms(sw.fr, 4.3, 4.8), s3 = rms(sw.fr, 5.1, 5.6);
+    if (!(s1 > 2 * s0 && s2 > s1 && s3 < 0.5 * s2)) bad.push(`reverse swell ${[s0, s1, s2, s3].map(v => (20 * Math.log10(v)).toFixed(0)).join(' / ')} dB`);
+    // whoosh: a ~1 s event even when held four bars
+    const wh = await F.p.evaluate(() => HOLD('fx_whoosh', 60, 9.6, 10));
+    const wAll = rms(wh.fr, 0, 10) ** 2 * 10, wIn = rms(wh.fr, 0, 1.5) ** 2 * 1.5;
+    if (!(wIn > 0.95 * wAll && rms(wh.fr, 0.2, 0.6) > 0.01)) bad.push(`whoosh: ${(100 * wIn / wAll).toFixed(0)} % in the first 1.5 s`);
+    // tape stop: the pitch falls (zero crossings) and it has stopped by 1.3 s
+    const ts = await F.p.evaluate(() => HOLD('fx_tape_stop', 60, 3, 3.2));
+    const z0 = ts.zc[1], z1 = ts.zc[8];
+    if (!(z1 < 0.6 * z0 && rms(ts.fr, 1.3, 3) < 0.01 * rms(ts.fr, 0, 0.5))) bad.push(`tape stop zc ${z0}→${z1}, after ${(rms(ts.fr, 1.3, 3) / rms(ts.fr, 0, 0.5)).toFixed(3)}`);
+    // hits from a 0.1 s note: the attack is the loudest moment; bells / glass ring on, the knock is short
+    const RING = { fx_sub_drop: [0.8, 1.6, 0.05], fx_bell_hit: [1.5, 2.5, 0.05], fx_glass_ping: [0.5, 1, 0.02], fx_wood_knock: [0.4, 1, -1] };
+    for (const id of HITS) {
+      const h = await F.p.evaluate(([id]) => HOLD(id, 60, 0.1, 3), [id]);
+      const a = rms(h.fr, 0, 0.15), [r0, r1, min] = RING[id], ring = rms(h.fr, r0, r1);
+      if (!h.finite || h.pk > 0.95 || !(a > 0.01)) bad.push(`${id} peak ${h.pk.toFixed(3)} attack ${a.toFixed(4)}`);
+      if (min > 0 ? !(ring > min * a) : !(ring < 0.01 * a)) bad.push(`${id} ring ${(ring / a).toFixed(3)} of the attack`);
+      if (id === 'fx_sub_drop' && !(h.zc[8] < 0.8 * h.zc[1])) bad.push(`sub drop does not drop: zc ${h.zc[1]}→${h.zc[8]}`);
+    }
+    t.eq(bad, [], 'fx problems');
+  });
+
   await t.test('FORGE editor: BROWSE overlay by touch — category chip, tile loads the preset, ≥ 36 px targets', async () => {
     const T = t.touch(F.cdp);
     await F.p.evaluate(() => document.getElementById('gatebtn') && document.getElementById('gatebtn').click());
