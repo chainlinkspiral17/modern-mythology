@@ -3834,6 +3834,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-13 · pass 100: THE PORTRAITS RE-SEEN — THE BOX, THE RIG, THE
+EYES (portrait draft 2).** The user: "portraits need to be re-evaluated,
+lots don't line up right, lots look plain bad with lighting." A new rig,
+`tools/PortraitCastSheet.tscn`, renders the heroes two at a time in
+CharLayer's real left/right slots over a locale, the box drawn in, the trip
+routed as the VN routes it, with `--guides` (box top + each measured eye
+line), `--shots/--lights/--moods`, `--rig k=v` and `--look k=v` trials,
+`--clean`, `--amount`, and `_eyes.json` (eye line, neck, head size per shot,
+from the new `Portrait3D.frame_report()`). Read on the 7 local heroes:
+(1) **THE BOX.** The close sizes ignored the dialogue box: a 900 px slot on
+a 720 screen with the box from 403 px, so only the slot's top 42 % is clean
+— the cu put the eyes at 0.36 and every mouth and chin under the text; the
+ecu showed eyes over a paragraph. `FACE_FRAMES` re-specced: mcu 0.80 m eyes
+@0.20, cu 0.56 @0.22, ecu 0.36 @0.20 (brow to mouth) — every face clears
+the box. (2) **THE RIG.** Read back, the .tscn's FILL shone from below and
+behind the figure and its RIM from below: faces had one light, a key 45°
+up on the camera's side (flat near cheek, black sockets, a hard line under
+the lip). `Portrait3D.RIG` now places all three in code from where they
+shine — short key on the far side of the nose at ~21°, fill beside the lens
+just under the eye line, rim behind-above on the camera side — with per-
+character `rig` overrides; the moods' and CHARACTER_LIGHTING's fill
+energies (tuned while the fill never reached a face) scaled 0.76.
+(3) **THE EYES.** Only 50 heroes are in the hand-read SHEET43 table; the
+rest of the Drive cast framed on a neck+10 cm guess. `_measure_eyes` reads
+the eye line from each model's own texture — white AND dark beside the
+nose, not white on the bridge, 6-19 cm over the neck; shades as a fallback
+— and agrees with the table within 0.3-2.6 cm on all 7; a table hero whose
+measure is > 3 cm off (a replaced model) takes the measure. (4) **THE
+LOOK.** The yellow-green halo round every figure on the earlier sheets was
+the trip's screen layer, which the VN keeps off portraits — a test-rig
+artifact, now fixed in the rig. Under it, the painted pass smeared eyes and
+crushed sockets: new shader uniforms `look_crush` (the dark push) and
+`look_pigment` (blotch + wash-rim darkening), face defaults 0.25 / 0.30,
+wash 0.55, and `look_amount` 0.6 (the whole pass, faces only). Per
+character: Frasier (deep skin to mud at night) key 1.30, fill 0.60,
+specular 0.22; John fill 0.55. **Deck:** `bash godot/tools/portrait_review.sh
+--pairs` renders the whole cast this way into ~/hero_review. **Draft 3
+targets:** run --pairs on the ~90 Drive heroes and read every pair (the
+eye finder's misses print as "model changed" or fall to neck+10 cm —
+list them); per-character rig rows for the rest of the deep-skin cast and
+the painted-socket textures; a socket-local lift using the measured eye
+points (the texture rings on John and Nicola); retire SHEET43 once the
+measure has held across the whole cast; the two-ECU two-shot crowds the
+centre (hair meets) — the director should not pair them.
+
 **2026-10-13 · pass 99: PER-CHARACTER PORTRAIT SHADING (draft 1).** The user:
 "character lighting and shading needs to be figured out per character, the
 models look splotchy and have weird ugly visual artifacts that look like

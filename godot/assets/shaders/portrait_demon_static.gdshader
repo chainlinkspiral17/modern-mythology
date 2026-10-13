@@ -96,6 +96,15 @@ uniform float look_hatch     : hint_range(0.0, 1.0) = 0.5;
 uniform float look_paper     : hint_range(0.0, 1.0) = 0.7;
 uniform float look_bleed     : hint_range(0.0, 1.0) = 0.6;
 uniform float look_wobble    : hint_range(0.0, 2.0) = 1.0;
+// (2026-10-13) how hard the grade pushes the darks toward the room's
+// shadow: 1 = the old grade. Faces want little — under 35 % luminance
+// sit the eye sockets and the lip line, and crushing them drew the
+// "raccoon eyes" and "misshapen lips" the Deck complained of.
+uniform float look_crush     : hint_range(0.0, 1.0) = 1.0;
+// (2026-10-13) the pigment's blotches and its darkening at every wash rim:
+// 1 = the old look. The rims follow detail, and the eyes are a face's
+// densest detail — at full strength every socket became a bruise.
+uniform float look_pigment   : hint_range(0.0, 1.0) = 1.0;
 
 uniform float chaos_rate  : hint_range(1.0, 60.0) = 18.0;
 uniform float aberration  : hint_range(0.0, 0.04) = 0.012;
@@ -179,16 +188,16 @@ void fragment() {
         lum = wc_luma(col);
         col = mix(vec3(lum), col, mix(1.0, look_sat, look));
         col = (col - 0.5) * mix(1.0, look_contrast, look) + 0.5;
-        col = mix(col, col * 0.6 + look_shadow.rgb * 0.4, (1.0 - smoothstep(0.0, 0.35, lum)) * 0.5 * look);
+        col = mix(col, col * 0.6 + look_shadow.rgb * 0.4, (1.0 - smoothstep(0.0, 0.35, lum)) * 0.5 * look_crush * look);
         // PIGMENT: blotches at the brush's scale, granulation at the tooth
         float g_blotch = wc_fbm(UV * vec2(9.0, 9.5) + 1.3);
         float g_tooth = wc_fbm(UV * vec2(110.0, 118.0) + 2.0);
-        float dens = 1.0 + (g_blotch - 0.5) * 0.7 * look + (g_tooth - 0.5) * 0.45 * look_paper * look;
+        float dens = 1.0 + (g_blotch - 0.5) * 0.7 * look_pigment * look + (g_tooth - 0.5) * 0.45 * look_paper * look;
         col = wc_pigment(col, dens);
         // EDGE DARKENING at every wash rim and along the silhouette
         float sil = smoothstep(0.15, 0.6, amax - amin);
         float rim_w = max(smoothstep(0.06, 0.45, e), sil * 0.8) * (0.7 + 0.6 * g_tooth);
-        col = wc_pigment(col, 1.0 + 0.5 * rim_w * look);
+        col = wc_pigment(col, 1.0 + 0.5 * rim_w * look_pigment * look);
         // DRY PAPER in the lights
         vec3 sheet = vec3(0.96, 0.94, 0.90);
         float hi = smoothstep(0.70, 0.95, wc_luma(base.rgb));

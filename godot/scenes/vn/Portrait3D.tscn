@@ -81,7 +81,10 @@ render_target_update_mode = 4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
 environment = SubResource("Env_Portrait")
 
-; KEY · cool moonlight from camera-left high
+; KEY · cool moonlight. ALL THREE LIGHTS ARE RE-PLACED IN CODE on _ready
+; and on every load (Portrait3D.RIG, 2026-10-13): these transforms are
+; the editor's preview only — read back, the old fill shone from below
+; and behind the figure and the rim from below.
 [node name="Key" type="DirectionalLight3D" parent="SubViewport"]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 0, 0)
 light_color = Color(0.78, 0.84, 0.96, 1)

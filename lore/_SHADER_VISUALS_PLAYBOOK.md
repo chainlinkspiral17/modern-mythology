@@ -228,6 +228,26 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-13 · a test rig must route the trip as the game does
+
+- **A halo that is not in the game.** Every portrait sheet since the
+  look pass showed a yellow-green glow round each figure and on every
+  eyebrow — the trip's global screen layer, which the VN keeps off the
+  portraits (the scene joins `"trip_local"` and `TripSync.attach(bg)`).
+  The rig that judges a look must do the same (VNTypeSpecimen,
+  PortraitCastSheet), or a pass tunes the wrong shader. Check by flipping
+  the suspect off (`--clean`): if the artifact survives, it is upstream.
+- **A painted pass on faces needs its own strengths.** The hero look's
+  dark-crush (everything under 35 % luminance pushed to the room's
+  shadow) and its pigment darkening at wash rims both land hardest on the
+  eyes and the lip line — the densest detail and the darkest paint on a
+  face — and made the "raccoon eyes / misshapen lips" the Deck reported.
+  `look_crush`, `look_pigment` and the master `look_amount` (0.6) are
+  set for faces in Portrait3D.SHADING_DEFAULT; the scene-wide defaults
+  stay 1.0. Measure a strength change numerically (mean abs diff of a
+  face crop vs `--clean`) before trusting the eye on it.
+
+
 ### 2026-10-13 · Meshy faces: lift the painted shadows, tame the ink
 
 - **The user: "the models look splotchy and have weird ugly visual

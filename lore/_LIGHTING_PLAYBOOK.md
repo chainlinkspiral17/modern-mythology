@@ -151,6 +151,26 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-13 · read a light's direction back before trusting its comment
+
+- **The portrait rig's fill and rim were never where their comments
+  said.** Portrait3D.tscn's "FILL · warm tungsten from camera-right low"
+  shone from below and BEHIND the figure; the "BACK RIM" from below. A
+  Transform3D in a .tscn is written row by row; nobody had read the basis
+  back. Faces had one light for months, and every "lighting looks bad"
+  pass tuned colours and energies on lights that never reached a face.
+  Probe it: `str_to_var("Transform3D(...)").basis.z` is where a
+  DirectionalLight3D shines FROM. Better: place lights in code from
+  (yaw, elev) of where they stand (`Portrait3D._light_basis`), so the
+  number says what it does.
+- **Portrait rig for painted (Meshy) faces:** short key on the far side
+  of the nose, ~20° up (low enough to reach the eyes — 45° up makes
+  sockets); fill BESIDE THE LENS a touch under the eye line at ~0.4 of the
+  key (it opens the sockets and lip crease the texture paints dark); rim
+  behind-above on the camera side. Deep skin needs more key and fill and
+  a little specular sheen, or the planes of the face go to mud at night.
+
+
 ### 2026-10-12 · a preset without `env` inherits the scene's sky — a day area needs its own
 
 - **The porch rendered under the night sky for four day chapters.**
