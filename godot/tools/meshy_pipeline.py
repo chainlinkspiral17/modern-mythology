@@ -2342,6 +2342,12 @@ def make_handler(runner, roster_path):
 
         def do_POST(self):
             p = urllib.parse.urlparse(self.path).path
+            if p == "/api/quit":
+                # (2026-10-13) the page's QUIT button and `meshy_pipeline.py stop`
+                self._json({"quitting": True})
+                print("Hero Studio: quit requested — stopping.", flush=True)
+                threading.Thread(target=lambda: (time.sleep(0.3), os._exit(0)), daemon=True).start()
+                return
             roster = load_roster(roster_path)
             by_slug = {e["slug"]: e for e in roster["entries"]}
             if p in ("/api/scenes/paint", "/api/scenes/save"):
@@ -2486,61 +2492,126 @@ def make_handler(runner, roster_path):
     return Handler
 
 
+HERO_STUDIO_URL_FILE = TOOLS / ".hero_studio_url"
+
+
+def _studio_answers(host, port, timeout=2.0):
+    """True when a Hero Studio answers on host:port."""
+    import urllib.request
+    try:
+        with urllib.request.urlopen(f"http://{host}:{port}/api/jobs", timeout=timeout) as r:
+            return r.status == 200 and '"jobs"' in r.read(200).decode("utf-8", "replace")
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def _studio_pids():
+    """PIDs of every other `meshy_pipeline.py serve` on this machine (via /proc)."""
+    out = []
+    me = os.getpid()
+    for d in Path("/proc").glob("[0-9]*"):
+        try:
+            pid = int(d.name)
+            if pid == me:
+                continue
+            argv = (d / "cmdline").read_bytes().split(b"\0")
+        except (OSError, ValueError):
+            continue
+        args = [a.decode("utf-8", "replace") for a in argv if a]
+        if any(a.endswith("meshy_pipeline.py") for a in args) and "serve" in args:
+            out.append(pid)
+    return out
+
+
+def cmd_stop(args):
+    """Stop every running Hero Studio: ask nicely on the known ports, then
+    signal the processes by PID (TERM, then KILL)."""
+    import signal
+    asked = 0
+    for port in {getattr(args, "port", 8877), 8877, 8765, 8766, 8767, 8878, 8879}:
+        if _studio_answers("127.0.0.1", port, timeout=1.0):
+            asked += 1
+            try:
+                import urllib.request
+                urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{port}/api/quit", data=b"{}", method="POST"), timeout=2)
+            except Exception:  # noqa: BLE001
+                pass
+    time.sleep(0.8)
+    pids = _studio_pids()
+    for pid in pids:
+        try:
+            os.kill(pid, signal.SIGTERM)
+        except OSError:
+            pass
+    time.sleep(1.0)
+    left = []
+    for pid in _studio_pids():
+        try:
+            os.kill(pid, signal.SIGKILL)
+            left.append(pid)
+        except OSError:
+            pass
+    n = asked + len(pids)
+    print(f"Hero Studio: stopped {n} running server(s)" + (f" ({len(left)} needed a hard kill)" if left else "") + "."
+          if n else "Hero Studio: none was running.")
+    return 0
+
+
 def cmd_serve(args):
+    """Serve the page. It never refuses to start (2026-10-13, the Deck: "won't
+    start / won't quit"): a port held by an older Hero Studio is asked to quit;
+    a port held by anything else (or a Studio that will not go) is skipped for
+    the next free one. Ctrl-C and SIGTERM always end the process."""
+    import signal
     runner = JobRunner(ROSTER_PATH)
     handler = make_handler(runner, ROSTER_PATH)
     srv = None
-    try:
-        srv = ThreadingHTTPServer((args.host, args.port), handler)
-    except OSError as ex:
-        if ex.errno not in (98, 48, 10048):       # EADDRINUSE on Linux / macOS / Windows
-            raise
-    if srv is None:
-        # (2026-10-13) the port is taken — almost always a Hero Studio started
-        # before the last `git pull`, still running the OLD code (new roster
-        # kinds and buttons will be missing from it). Say so, and how to fix it.
-        url = f"http://{args.host}:{args.port}/hero_uploader/"
-        running = ""
+    port = args.port
+    for attempt in range(30):
         try:
-            import urllib.request
-            with urllib.request.urlopen(f"http://{args.host}:{args.port}/api/jobs", timeout=3) as r:
-                body = r.read(200).decode("utf-8", "replace")
-                running = " (it answers as Hero Studio)" if r.status == 200 and '"jobs"' in body else ""
-        except Exception:  # noqa: BLE001
-            pass
-        if not running:
-            # (2026-10-13) ANOTHER program owns the port (on the Deck something
-            # else listens on 8765 and answers {"error": "not found"}). Take the
-            # next free port and say so, rather than stopping.
-            for alt in range(args.port + 1, args.port + 20):
-                try:
-                    srv = ThreadingHTTPServer((args.host, alt), handler)
-                except OSError:
-                    continue
-                print(f"Port {args.port} belongs to another program — Hero Studio is on port {alt} instead.", flush=True)
-                args.port = alt
+            srv = ThreadingHTTPServer((args.host, port), handler)
+            break
+        except OSError as ex:
+            if ex.errno not in (98, 48, 10048):       # EADDRINUSE on Linux / macOS / Windows
+                raise
+        if port == args.port and _studio_answers(args.host, port):
+            print(f"An older Hero Studio is on port {port} — asking it to quit …", flush=True)
+            try:
+                import urllib.request
+                urllib.request.urlopen(urllib.request.Request(f"http://{args.host}:{port}/api/quit", data=b"{}", method="POST"), timeout=2)
+            except Exception:  # noqa: BLE001
+                pass
+            time.sleep(1.0)
+            try:
+                srv = ThreadingHTTPServer((args.host, port), handler)
                 break
+            except OSError:
+                print(f"It would not go (it predates the quit button; `meshy_pipeline.py stop` ends it).", flush=True)
+        port += 1
     if srv is None:
-        url = f"http://{args.host}:{args.port}/hero_uploader/"
-        print(f"Port {args.port} is already in use{running}.", file=sys.stderr)
-        print("Another Hero Studio is probably still running, started before your last pull — it is", file=sys.stderr)
-        print("serving the OLD code. Stop it and start this one:", file=sys.stderr)
-        print("", file=sys.stderr)
-        print('  pkill -f "meshy_pipeline.py serve"; sleep 1; python3 godot/tools/meshy_pipeline.py serve', file=sys.stderr)
-        print("", file=sys.stderr)
-        print(f"(or run this one on another port: python3 godot/tools/meshy_pipeline.py serve --port {args.port + 1})", file=sys.stderr)
-        print(f"The running one is at {url}", file=sys.stderr)
+        print(f"No free port between {args.port} and {port}. Run: python3 godot/tools/meshy_pipeline.py stop", file=sys.stderr)
         return 1
+    if port != args.port:
+        print(f"Port {args.port} is busy — Hero Studio is on port {port}.", flush=True)
+    url = f"http://{args.host}:{port}/hero_uploader/"
+    try:
+        HERO_STUDIO_URL_FILE.write_text(url + "\n")
+    except OSError:
+        pass
+
+    def _bye(signum, frame):  # noqa: ARG001
+        print("\nHero Studio stopped.", flush=True)
+        os._exit(0)
+    signal.signal(signal.SIGINT, _bye)
+    signal.signal(signal.SIGTERM, _bye)
+
     rep = key_report(check=False)
     print(f"meshy_pipeline.py  {rel(Path(__file__))}  (git: {_git_head()})")
-    print(f"Hero Studio  →  http://{args.host}:{args.port}/hero_uploader/")
+    print(f"Hero Studio  →  {url}")
     print("keys: " + "  ".join(f"{k}={r['source'] or 'MISSING'}" for k, r in rep.items()))
     print("      (paste/test keys in the page under KEYS, or run: meshy_pipeline.py doctor)")
-    print("Ctrl-C to stop.", flush=True)
-    try:
-        srv.serve_forever()
-    except KeyboardInterrupt:
-        pass
+    print("Ctrl-C (or the page's QUIT button, or `meshy_pipeline.py stop`) to stop.", flush=True)
+    srv.serve_forever()
 
 
 # ── CLI ─────────────────────────────────────────────────────────────────────
@@ -2627,7 +2698,9 @@ def main():
 
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
     p.add_argument("--host", default="127.0.0.1")
-    p.add_argument("--port", type=int, default=8765)
+    p.add_argument("--port", type=int, default=8877)   # (2026-10-13) 8765 belongs to another program on the Deck
+    p = sub.add_parser("stop", help="stop every running Hero Studio server")
+    p.add_argument("--port", type=int, default=8877)
 
     args = ap.parse_args()
     if args.cmd == "keys":
@@ -2640,6 +2713,8 @@ def main():
     if args.cmd == "serve":
         load_roster()  # validate early
         return cmd_serve(args)
+    if args.cmd == "stop":
+        return cmd_stop(args)
     if args.cmd in ("save", "drive-push", "drive-pull"):
         global DRIVE_LIVE
         DRIVE_LIVE = True

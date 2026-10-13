@@ -183,6 +183,7 @@
     <span class="keys" id="keys" title="click to set / test API keys" style="cursor:pointer"></span>
     <button id="btn-keys" class="secondary small">keys</button>
     <button id="btn-reset-settings" class="secondary small" title="your generation and Meshy choices are remembered between entries and reloads; this puts the roster defaults back">reset settings</button>
+    <button id="btn-quit" class="secondary small" title="stop the Hero Studio server (python3 godot/tools/meshy_pipeline.py stop does the same from a terminal)">quit</button>
     <button id="btn-save" class="save small" title="git add + commit + push everything the tool produced (models, chosen pictures, manifest, roster) to the current branch" style="display:none">SAVE</button>
   </div>
 </header>
@@ -1000,6 +1001,11 @@ function bind() {
   $('btn-keys').addEventListener('click', toggleKeys);
   $('keys').addEventListener('click', toggleKeys);
   $('btn-save').addEventListener('click', saveToGit);
+  // (2026-10-13) stop the server from the page
+  $('btn-quit').addEventListener('click', async () => {
+    try { await fetch('/api/quit', { method: 'POST', body: '{}' }); } catch (e) { /* the server is already going */ }
+    document.body.innerHTML = '<div style="padding:40px;font-family:sans-serif">Hero Studio stopped. Start it again with <code>python3 godot/tools/meshy_pipeline.py serve</code>.</div>';
+  });
   $('btn-recovered').addEventListener('click', toggleRecovered);
   $('btn-keys-save').addEventListener('click', saveKeys);
   $('btn-keys-test').addEventListener('click', testKeys);
