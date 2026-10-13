@@ -51,7 +51,7 @@ suite('data · registries, composer, MIDI files', async t => {
 
   await t.test('composer variety: 12 takes of one style differ in groove, bass figure, progression, comping and song shape', async () => {
     const low = { motorik: { bass: 2, comp: 2 }, ambient: { kick: 1, bass: 3, comp: 2 }, four_floor: { kick: 3 }, synthwave: { kick: 3 }, trap: { comp: 2 }, dnb: { comp: 3 } }, bad = [];
-    for (const style of Object.keys(SG.STYLES)) {
+    for (const style of Object.keys(SG.STYLES).filter(x => !SG.STYLES[x].placeholder)) {      // placeholders borrow another style's vocabulary
       const k = new Set(), b = new Set(), p = new Set(), c = new Set(), sh = new Set();
       for (let seed = 1; seed <= 12; seed++) {
         const s = SG.song({ seed, style, form: 'loop' }), first = r => Object.values(s.parts[r].patterns)[0];
