@@ -89,11 +89,17 @@ def main():
     g = conf[MAIN]
     td = g.get("team_drive", "")
     print(f"`{MAIN}` points at: " + (f"SHARED DRIVE {DENY_SHARED.get(td, td)} ({td})" if td else "My Drive"))
+    # names in quotes may hold spaces and slashes ("ModernMythology - Delete/Accident"):
+    # rclone takes them as paths, so a "/" in a Drive folder NAME is written as its
+    # full-width twin by rclone's encoder — lsjson returns it already encoded
     if dry:
         # change nothing: name both places inline (rclone connection strings)
         shared_id = td or next(iter(DENY_SHARED))
-        return copy_and_check(f"{MAIN},team_drive={shared_id}:{FOLDER}",
-                              f"{MAIN},team_drive='',root_folder_id='':{FOLDER}", dry=True)
+        src_root = f"{MAIN},team_drive={shared_id}:"
+        for name in shared_folders(src_root) or [FOLDER]:
+            print(f"\n── from the shared drive's  {name!r}")
+            copy_and_check(src_root + name, f"{MAIN},team_drive='',root_folder_id='':{FOLDER}", dry=True)
+        return 0
 
     # 1. the shared folder, kept as its own connection (read from, never written)
     if SHARED not in conf:
@@ -123,7 +129,30 @@ def main():
         sys.exit("could not move `gdrive` off the shared drive — nothing copied")
     run(["mkdir", f"{MAIN}:{FOLDER}"])
 
-    return copy_and_check(f"{SHARED}:{FOLDER}", f"{MAIN}:{FOLDER}", dry=False)
+    # (2026-10-13) the shared drive's folders may have been RENAMED
+    # ("ModernMythology - Delete/Accident"): copy out of every folder whose
+    # name begins with ModernMythology, oldest first, newest version winning
+    srcs = shared_folders(f"{SHARED}:")
+    if not srcs:
+        sys.exit(f"no ModernMythology… folder on the shared drive — nothing to copy")
+    worst = 0
+    for name in srcs:
+        print(f"\n── from the shared drive's  {name!r}")
+        worst = max(worst, copy_and_check(f"{SHARED}:{name}", f"{MAIN}:{FOLDER}", dry=False) or 0)
+    return worst
+
+
+def shared_folders(remote):
+    """Top-level folders on the shared drive named ModernMythology…, the
+    oldest first (so a newer copy of a file overwrites an older one)."""
+    r = run(["lsjson", remote, "--dirs-only"])
+    try:
+        rows = json.loads(r.stdout or "[]")
+    except ValueError:
+        return []
+    rows = [x for x in rows if str(x.get("Name", "")).startswith(FOLDER)]
+    rows.sort(key=lambda x: x.get("ModTime", ""))
+    return [x["Name"] for x in rows]
 
 
 def copy_and_check(src, dst, dry):
