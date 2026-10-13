@@ -67,6 +67,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent          # godot/
 TOOLS = REPO / "tools"
+if str(TOOLS) not in sys.path:      # drive_guard sits beside this file
+    sys.path.insert(0, str(TOOLS))
 ROSTER_PATH = TOOLS / "meshy_roster.json"
 CONCEPT_ROOT = REPO / "assets" / "concept" / "meshy"
 MANIFEST_PATH = CONCEPT_ROOT / "manifest.json"
@@ -640,17 +642,41 @@ def _drive_remote_conf():
         return {}
 
 
-def drive_write_block():
-    """Why the project must not write through its Drive connection now, or
-    "" — a connection that points at a shared drive (One Model Nation above
-    all) is refused: the files belong on the owner's My Drive."""
-    td = (_drive_remote_conf().get("team_drive") or "").strip()
-    if not td:
-        return ""
-    who = DRIVE_DENY_SHARED.get(td, "a shared drive")
-    return (f"STOPPED: the Drive connection points at {who} ({td}), not your My Drive. "
-            f"Nothing was uploaded. Run: python3 godot/tools/drive_rescue.py "
-            f"(moves the connection back to My Drive and copies the files that went there).")
+# The Studio's code as it was when this process started: a Studio left
+# running across a `git pull` keeps the OLD code in memory (2026-10-13: an
+# unguarded SAVE from such a process re-created the folder on the shared
+# drive). SAVE refuses until the Studio is restarted.
+_CODE_FILES = [Path(__file__).resolve(), TOOLS / "drive_guard.py"]
+_CODE_STAMP = {str(p): (p.stat().st_mtime if p.exists() else 0.0) for p in _CODE_FILES}
+
+
+def _code_changed():
+    return [p.name for p in _CODE_FILES if (p.stat().st_mtime if p.exists() else 0.0) != _CODE_STAMP[str(p)]]
+
+
+def drive_write_block(deep=False):
+    """Why the project must not write to Drive now, or "". Every upload goes
+    through drive_guard (Google is asked who owns the destination; a shared
+    drive has no owner and is refused). `deep` runs Google's check; the page's
+    status poll uses the config-only check."""
+    changed = _code_changed()
+    if changed:
+        return (f"STOPPED: {', '.join(changed)} changed on disk since this Hero Studio started (a pull?). "
+                f"Restart it first: bash godot/tools/hero_studio.sh. Nothing was uploaded.")
+    try:
+        import drive_guard
+        if deep:
+            drive_guard.verify_cached(DRIVE_REMOTE)
+        else:
+            drive_guard.verify_path_only(DRIVE_REMOTE)
+            td = (_drive_remote_conf().get("team_drive") or "").strip()
+            if td:
+                raise drive_guard.DriveRefused(
+                    f"the Drive connection points at {DRIVE_DENY_SHARED.get(td, 'a shared drive')} ({td}) — "
+                    f"run: python3 godot/tools/drive_rescue.py")
+    except Exception as ex:  # noqa: BLE001 — any doubt refuses
+        return f"STOPPED: {ex} Nothing was uploaded."
+    return ""
 
 
 def drive_configured():
@@ -749,9 +775,10 @@ def drive_push():
     rc = _rclone()
     if not rc:
         return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
-    block = drive_write_block()
+    block = drive_write_block(deep=True)
     if block:
         return {"ok": False, "steps": [block]}
+    import drive_guard
     steps = []
     with _drive_lock:
         pend = drive_pending()
@@ -773,19 +800,25 @@ def drive_push():
                 for r in rels:
                     tf.write(r[len(d) + 1:] + "\n")
                 lst = tf.name
-            args = [rc, "copy", str(REPO.parent / d), f"{DRIVE_REMOTE}/{d}", "--files-from", lst,
+            # (2026-10-13) through drive_guard, the ONLY writer: it proves the
+            # destination is the owner's My Drive before every chunk
+            args = ["copy", str(REPO.parent / d), f"{DRIVE_REMOTE}/{d}", "--files-from", lst,  # drive-guarded
                     "--no-traverse", "--transfers", "8", "--checkers", "16"]
             try:
                 if DRIVE_LIVE:
                     print(f"uploading {key} ({len(rels)} file(s); {done}/{total} done) …", flush=True)
-                    r = subprocess.run(args + ["--progress", "--stats-one-line"])
+                    rcode = drive_guard.rclone_write(args + ["--progress", "--stats-one-line"], live=True)
                     err = "see the lines above"
                 else:
-                    r = subprocess.run(args, capture_output=True, text=True)
+                    r = drive_guard.rclone_write(args)
+                    rcode = r.returncode
                     err = (r.stderr or r.stdout or "")[-300:]
+            except drive_guard.DriveRefused as ex:
+                steps.append(f"STOPPED: {ex} Nothing more was uploaded ({done} of {total} file(s) up).")
+                return {"ok": False, "steps": steps}
             finally:
                 os.unlink(lst)
-            if r.returncode:
+            if rcode:
                 steps.append(f"Google Drive upload failed for {key}: {err} ({done} of {total} file(s) up)")
                 return {"ok": False, "steps": steps}
             _record_on_drive(rels)
@@ -804,6 +837,7 @@ def drive_pull():
     for d in DRIVE_DIRS:
         dst = REPO.parent / d
         dst.mkdir(parents=True, exist_ok=True)
+        # drive-read: Drive → this checkout (writes only local files)
         r = subprocess.run([rc, "copy", f"{DRIVE_REMOTE}/{d}", str(dst), "--ignore-existing", "--transfers", "4"],
                            capture_output=True, text=True, timeout=3600)
         if r.returncode and "directory not found" not in (r.stderr or ""):
@@ -987,6 +1021,7 @@ def audio_send(path, kind="music", title="", vol=0):
         out_ext = ext if ext in AUDIO_PLAYABLE else ".ogg"
         dest = dest_dir / (stem + out_ext)
         tmp = dest_dir / (stem + ".part" + ext)
+        # drive-read: the read-only connection → a local temp file
         r = subprocess.run([rc, "copyto", AUDIO_READ_REMOTE + path, str(tmp)], capture_output=True, text=True, timeout=1800)
         if r.returncode or not tmp.exists():
             tmp.unlink(missing_ok=True)

@@ -4,6 +4,17 @@
 # audit dimension.
 set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# ── Drive gates (2026-10-13 · the user: "I want nothing more going to a
+# public shared folder. Very serious.") — first, and in every run: no
+# rclone write outside drive_guard.py, and every way past the guard is
+# refused (shared drive, root_folder_id, env overrides, an ownerless
+# folder, another remote, a changed owner). Nonzero fails.
+echo "── drive_write_audit.py ──"
+python3 drive_write_audit.py || exit 1
+echo "── drive_guard_test.py ──"
+python3 drive_guard_test.py | tail -1; python3 drive_guard_test.py >/dev/null || exit 1
+echo ""
 for f in audit_*.py; do
     echo "── $f ──"
     python3 "$f" 2>/dev/null | tail -2

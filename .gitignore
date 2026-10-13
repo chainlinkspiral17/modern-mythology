@@ -99,3 +99,4 @@ godot/assets/art/hero/*
 # Hero Studio writes the address it is serving on here (2026-10-13)
 godot/tools/.hero_studio_url
 godot/tools/.drive_rescue_missing.txt
+godot/tools/.drive_owner

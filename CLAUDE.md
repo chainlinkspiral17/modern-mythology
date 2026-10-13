@@ -192,6 +192,29 @@ var lines: Dictionary = {...}
 var line: String = String(lines.get(key, ""))
 ```
 
+## Google Drive: every write goes through drive_guard (hard rule, 2026-10-13)
+
+The user: "I want nothing more going to a public shared folder. Very
+serious." Twice the project's files landed on the One Model Nation shared
+drive (a re-sign-in pointed rclone at it; then a Hero Studio running old
+code re-created the folder there). Now:
+
+- **The only writer is `godot/tools/drive_guard.py`** (`rclone_write`,
+  `make_root`). It fails closed: rclone env overrides, any remote but
+  `gdrive`, any path outside `gdrive:ModernMythology`, a `team_drive` or
+  `root_folder_id`, a folder Google reports with no owner (a shared drive),
+  or an owner different from the recorded one → nothing is written.
+  Shortcuts are never followed.
+- **Never** call rclone with a write verb anywhere else, and never use the
+  Drive connector tools (create/copy/update/trash) on the user's files.
+  Reads into the machine are tagged `drive-read`.
+- `drive_write_audit.py` and `drive_guard_test.py` run first in every
+  suite (full and scoped). They must stay at zero.
+- Hero Studio refuses SAVE when its code changed on disk since it started
+  — after a pull the user restarts it (`bash godot/tools/hero_studio.sh`).
+- Say a Drive fix is in effect only once it is pushed AND the user has
+  pulled and restarted; until then tell them not to press SAVE.
+
 ## Run the SCOPED suite before a commit (2026-10-13)
 
 The user: "audit taking over an hour for simple fixes." Before a commit run

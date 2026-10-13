@@ -33,6 +33,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))      # drive_guard
+
 # Shared drives the project must never write to (meshy_pipeline refuses them).
 DENY_SHARED = {"0AEnZu3oDWBFuUk9PVA": "One Model Nation"}
 MAIN = "gdrive"
@@ -127,7 +129,12 @@ def main():
         print(f"`{MAIN}` now points at My Drive")
     if dump()[MAIN].get("team_drive"):
         sys.exit("could not move `gdrive` off the shared drive — nothing copied")
-    run(["mkdir", f"{MAIN}:{FOLDER}"])
+    import drive_guard
+    try:
+        owner = drive_guard.make_root()
+    except drive_guard.DriveRefused as ex:
+        sys.exit(f"REFUSED: {ex}")
+    print(f"My Drive's {FOLDER} is owned by {owner} — copying there")
 
     # (2026-10-13) the shared drive's folders may have been RENAMED
     # ("ModernMythology - Delete/Accident"): copy out of every folder whose
@@ -139,6 +146,12 @@ def main():
     for name in srcs:
         print(f"\n── from the shared drive's  {name!r}")
         worst = max(worst, copy_and_check(f"{SHARED}:{name}", f"{MAIN}:{FOLDER}", dry=False) or 0)
+    if worst == 0:
+        # everything is out: the connection to the shared drive goes, so no
+        # tool can ever reach it again (run this script again to re-make it)
+        run(["config", "delete", SHARED])
+        print(f"\nremoved the `{SHARED}` connection — nothing on this machine can reach the shared drive now.")
+        print("The shared drive's ModernMythology… folders can be deleted from the Drive web page.")
     return worst
 
 
@@ -164,15 +177,23 @@ def copy_and_check(src, dst, dry):
         print(f"My Drive folder:     {b[0]} files, {gb(b[1])}")
 
     # 3. copy across, newest wins
+    # drive-guarded: run as --dry-run (writes nothing) or through drive_guard.rclone_write
     base = ["copy", src, dst, "--update", "--transfers", "8", "--checkers", "16", "--progress",
             "--stats-one-line", "--retries", "5"]
-    if dry:
-        base.append("--dry-run")
     print("\ncopying (server-side where Google allows; files newer on My Drive are kept) …", flush=True)
-    rc = run(base + ["--drive-server-side-across-configs"], live=True)
-    if rc != 0 and not dry:
-        print("some files could not be copied server-side — sending those through this machine …", flush=True)
-        rc = run(base, live=True)
+    if dry:
+        rc = run(base + ["--dry-run"], live=True)   # drive-read: --dry-run writes nothing
+    else:
+        # the ONLY write: through drive_guard, which proves dst is My Drive
+        import drive_guard
+        try:
+            rc = drive_guard.rclone_write(base + ["--drive-server-side-across-configs"], live=True)
+            if rc != 0:
+                print("some files could not be copied server-side — sending those through this machine …", flush=True)
+                rc = drive_guard.rclone_write(base, live=True)
+        except drive_guard.DriveRefused as ex:
+            print(f"REFUSED: {ex}")
+            return 1
     if dry:
         print("\n(dry run: nothing was copied)")
         return 0

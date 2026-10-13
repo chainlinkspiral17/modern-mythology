@@ -49,6 +49,23 @@ if [ -z "$RC" ]; then
   RC="$BIN/rclone"
 fi
 echo "rclone: $("$RC" version | head -1)"
+# (2026-10-13) drive_guard asks Google who owns the upload folder through
+# rclone's Drive metadata (`lsjson -M`, folders included from v1.66): an
+# older rclone cannot say, and the guard then refuses every upload. Update
+# the private copy in ~/.local/bin when it is older.
+RV="$("$RC" version | head -1 | sed -n 's/^rclone v\([0-9]*\)\.\([0-9]*\).*/\1 \2/p')"
+if [ -n "$RV" ] && [ "$(echo "$RV" | awk '{print ($1 > 1 || ($1 == 1 && $2 >= 66)) ? 1 : 0}')" = 0 ]; then
+  echo "this rclone is older than v1.66 — installing the current one into $BIN"
+  TMP="$(mktemp -d)"
+  curl -fsSL -o "$TMP/rclone.zip" "https://downloads.rclone.org/rclone-current-linux-amd64.zip" \
+    || curl -fsSL -o "$TMP/rclone.zip" "https://github.com/rclone/rclone/releases/download/v1.68.2/rclone-v1.68.2-linux-amd64.zip"
+  python3 -m zipfile -e "$TMP/rclone.zip" "$TMP"
+  cp "$TMP"/rclone-*-linux-amd64/rclone "$BIN/rclone"
+  chmod +x "$BIN/rclone"
+  rm -rf "$TMP"
+  RC="$BIN/rclone"
+  echo "rclone: $("$RC" version | head -1)"
+fi
 
 ARGS=("$@")
 has_flag() { local a; for a in "${ARGS[@]}"; do [ "$a" = "$1" ] && return 0; done; return 1; }
@@ -141,8 +158,9 @@ if "$RC" config dump | python3 -c "import json,sys; sys.exit(0 if json.load(sys.
   echo "gdrive points at a shared drive — moving it to your My Drive and copying its files there"
   PATH="$BIN:$PATH" python3 "$HERE/drive_rescue.py"
 fi
-"$RC" mkdir gdrive:ModernMythology
-if "$RC" lsd gdrive: | grep -q ModernMythology; then
+# the folder is made through drive_guard (2026-10-13): it refuses a shared
+# drive and proves the folder's owner before anything is written
+if PATH="$BIN:$PATH" python3 "$HERE/drive_guard.py" --mkdir; then
   [ "$OWN" = 1 ] && echo "using your own Google client id"
   echo "DRIVE READY — Hero Studio's SAVE now puts models and pictures on Google Drive"
 fi

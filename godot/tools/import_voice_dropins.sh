@@ -32,6 +32,7 @@ if [ -z "$SRC" ]; then
   SRC="$HOME/.cache/modern-mythology/voice_dropins"
   mkdir -p "$SRC"
   echo "looking for voice_dropin_*.zip on the Drive (a minute for a big Drive) …"
+  # drive-read: the read-only connection (drive.readonly) → a local folder
   "$RC" copy gdrive_ro: "$SRC" --include "voice_dropin_*.zip" --fast-list \
     --drive-skip-shortcuts --transfers 4 --progress --stats-one-line
 fi
