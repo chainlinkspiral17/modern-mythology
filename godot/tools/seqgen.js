@@ -175,6 +175,13 @@
       bass: ['drone', 'root_whole', 'pedal'], chords: ['swell', 'pad', 'arp_broken'], lead: ['sparse', 'motif'], pad: ['drone', 'shimmer', 'sus'],
       presets: { bass: 'drone_dark', chords: 'pad_glass', lead: 'pluck_bell', pad: 'pad_warm' } },
   };
+  // styles the score bible names that aren't built yet: placeholders borrowing the nearest built style (marked
+  // `placeholder`) until their own grooves / figures / presets land
+  const PLACEHOLDER = { folk: ['shuffle', 'folk / americana'], chamber: ['noir', 'chamber strings'], piano: ['noir', 'solo piano'], hymn: ['ambient', 'hymn / chorale'],
+    dark_drone: ['ambient', 'dark drone'], synth_horror: ['synthwave', 'synth horror'], jazz: ['noir', 'jazz trio'], dub: ['boom_bap', 'dub'], post_rock: ['motorik', 'post-rock'],
+    lullaby: ['ambient', 'lullaby / music box'], industrial: ['trap', 'industrial'], surf: ['four_floor', 'surf'], bayou: ['shuffle', 'bayou / swamp'],
+    minimal: ['motorik', 'minimalist pulse'], chiptune: ['synthwave', 'chiptune'], trip_hop: ['boom_bap', 'trip-hop'] };
+  for (const [id, [from, name]] of Object.entries(PLACEHOLDER)) if (!STYLES[id]) STYLES[id] = Object.assign({}, STYLES[from], { name, placeholder: from });
   for (const st of Object.values(STYLES)) st.drums = st.grooves[0];
 
   // FORGE alternates per style and role, next to each style's own `presets` pick. Role rules: bass = mono
