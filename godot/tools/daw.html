@@ -536,7 +536,20 @@ window.addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
   if (k === 'z' && !e.shiftKey) { e.preventDefault(); undo(); } else if ((k === 'z' && e.shiftKey) || k === 'y') { e.preventDefault(); redo(); }
 }, true);
-function saveSoon() { if (E._rendered && !rEdited) { rEdited = true; rState = 'EDIT ▶'; playModeUI(); } undoCapture(); clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString(); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
+// the open project also lives in the game project (once the folder is linked), so music_drive.sh backs it up:
+// assets/audio/projects/<name>.daw.json (the whole project) + <name>.mid (every track)
+const PROJECTS_DIR = 'assets/audio/projects';
+async function mirrorProject() {
+  if (!AK.game.root || !P || !P.tracks.length) return null;
+  try {
+    if (!(await AK.game.exists(PROJECTS_DIR + '/.gdignore'))) await AK.game.write(PROJECTS_DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+    const base = PROJECTS_DIR + '/' + (AK.util.slug(P.name || '') || 'untitled');
+    await AK.game.write(base + '.daw.json', new Blob([JSON.stringify(P)], { type: 'application/json' }));
+    await AK.game.write(base + '.mid', new Blob([E.exportMidi()], { type: 'audio/midi' }));
+    return base;
+  } catch (e) { return null; }
+}
+function saveSoon() { if (E._rendered && !rEdited) { rEdited = true; rState = 'EDIT ▶'; playModeUI(); } undoCapture(); clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); const f = await mirrorProject(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString() + (f ? ' · in the game folder' : ''); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
 
 // ═══════════════════════════════════════════════════════════════════
 // transport

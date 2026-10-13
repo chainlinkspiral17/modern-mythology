@@ -9,13 +9,19 @@
 #                                       Google account (a browser tab opens — sign in, allow)
 #   godot/tools/music_drive.sh pull     Drive → game folder  (new / newer files only)
 #   godot/tools/music_drive.sh push     game folder → Drive  (new / newer files only)
+#   godot/tools/music_drive.sh sync     pull, then push (newer file wins each way)
+#   godot/tools/music_drive.sh auto on  push every 10 minutes in the background (a systemd user timer —
+#                                       survives reboots; `auto off` stops it, `auto status` shows it)
 #   godot/tools/music_drive.sh status   what differs, nothing copied
 #   godot/tools/music_drive.sh tidy     delete from Drive what the tools replaced here (older WAV temps
 #                                       shrunk to Ogg, .wav files APPROVE moved to replaced/) — lists
 #                                       them first and asks; anything else only in Drive is left alone
 #
-# Only audio and its sidecars move (.ogg .mp3 .wav .flac, .stems/ folders, .stems.json,
-# .credits.txt). push / pull never delete; `tidy` is the only command that removes anything (in Drive).
+# What moves: the game's audio and its sidecars (.ogg .mp3 .wav .flac, .stems/ folders, .stems.json,
+# .credits.txt), MIDI (.mid), and the tools' working folders in full — review/ (AUDIO DIRECTOR takes: WAVs,
+# song.mid, project.json, meta), library/ (every recording / bounce in the tools' library), projects/ (the DAW's
+# projects as .daw.json + .mid) and replaced/ (audio APPROVE moved aside).
+# push / pull / sync never delete; `tidy` is the only command that removes anything (in Drive).
 # Env overrides: MM_DRIVE_REMOTE (default gdrive), MM_DRIVE_DIR.
 set -euo pipefail
 
@@ -23,11 +29,15 @@ REMOTE="${MM_DRIVE_REMOTE:-gdrive}"
 DRIVE_DIR="${MM_DRIVE_DIR:-ModernMythology/godot/assets/audio}"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 LOCAL="$(cd "$HERE/../assets" && pwd)/audio"
-# assets/audio/review/ is the AUDIO DIRECTOR's local staging (candidate takes): approved takes are copied
-# out of it to their game paths and travel from there; the staging itself stays on this machine
+# the tools' working folders travel whole; elsewhere only audio, MIDI and their sidecars
 # (--filter rules apply in order; mixing --include with --exclude would leave the order to rclone)
-FILTERS=(--filter "- /review/**" --filter "+ *.ogg" --filter "+ *.mp3" --filter "+ *.wav" --filter "+ *.flac"
+FILTERS=(--filter "+ /review/**" --filter "+ /library/**" --filter "+ /projects/**" --filter "+ /replaced/**"
+         --filter "+ *.ogg" --filter "+ *.mp3" --filter "+ *.wav" --filter "+ *.flac" --filter "+ *.mid" --filter "+ *.midi"
          --filter "+ *.stems.json" --filter "+ *.credits.txt" --filter "- **")
+# a progress bar on a terminal; one stats line in the background (the timer's journal)
+if [ -t 1 ]; then PROG=(--progress); else PROG=(-v --stats-one-line --stats 0); fi
+do_pull() { mkdir -p "$LOCAL"; "$RCLONE" copy "$REMOTE:$DRIVE_DIR" "$LOCAL" "${FILTERS[@]}" --update "${PROG[@]}"; echo "✓ pulled into $LOCAL"; }
+do_push() { "$RCLONE" copy "$LOCAL" "$REMOTE:$DRIVE_DIR" "${FILTERS[@]}" --update "${PROG[@]}"; echo "✓ pushed to $REMOTE:$DRIVE_DIR"; }
 
 find_rclone() {
   if command -v rclone >/dev/null 2>&1; then command -v rclone
@@ -66,16 +76,56 @@ case "${1:-}" in
     echo "✓ ready: $LOCAL  ⇄  $REMOTE:$DRIVE_DIR"
     echo "  now:  $0 pull   (or push)"
     ;;
-  pull)
-    need
-    mkdir -p "$LOCAL"
-    "$RCLONE" copy "$REMOTE:$DRIVE_DIR" "$LOCAL" "${FILTERS[@]}" --update --progress
-    echo "✓ pulled into $LOCAL"
-    ;;
-  push)
-    need
-    "$RCLONE" copy "$LOCAL" "$REMOTE:$DRIVE_DIR" "${FILTERS[@]}" --update --progress
-    echo "✓ pushed to $REMOTE:$DRIVE_DIR"
+  pull) need; do_pull ;;
+  push) need; do_push ;;
+  sync) need; do_pull; do_push ;;
+  auto)
+    # a systemd user timer: pushes every 10 minutes (and 2 minutes after login), catches up after sleep.
+    # Push only — a background pull could bring back a file the tools just replaced; pull by hand.
+    UNIT_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user"; NAME=mm-music-drive; SCRIPT="$HERE/$(basename "$0")"
+    case "${2:-status}" in
+      on)
+        need
+        mkdir -p "$UNIT_DIR"
+        cat > "$UNIT_DIR/$NAME.service" <<UNIT
+[Unit]
+Description=Modern Mythology: push game audio + MIDI to Google Drive
+
+[Service]
+Type=oneshot
+Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=MM_DRIVE_REMOTE=$REMOTE
+Environment=MM_DRIVE_DIR=$DRIVE_DIR
+ExecStart=/bin/bash "$SCRIPT" push
+UNIT
+        cat > "$UNIT_DIR/$NAME.timer" <<UNIT
+[Unit]
+Description=Modern Mythology: push game audio + MIDI to Google Drive every 10 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+UNIT
+        systemctl --user daemon-reload
+        systemctl --user enable --now "$NAME.timer"
+        echo "✓ auto push on: every 10 minutes ($UNIT_DIR/$NAME.timer)"
+        echo "  check it: $0 auto status   ·   stop it: $0 auto off"
+        ;;
+      off)
+        systemctl --user disable --now "$NAME.timer" 2>/dev/null || true
+        rm -f "$UNIT_DIR/$NAME.timer" "$UNIT_DIR/$NAME.service"; systemctl --user daemon-reload
+        echo "✓ auto push off"
+        ;;
+      status)
+        systemctl --user list-timers "$NAME.timer" --all --no-pager || true
+        journalctl --user -u "$NAME.service" -n 12 --no-pager 2>/dev/null || true
+        ;;
+      *) echo "usage: $0 auto on|off|status" >&2; exit 1 ;;
+    esac
     ;;
   status)
     need
@@ -113,7 +163,7 @@ case "${1:-}" in
     echo "✓ tidied ${#gone[@]} file(s) from $REMOTE:$DRIVE_DIR"
     ;;
   *)
-    sed -n '2,21p' "$0" | sed 's/^# \{0,1\}//'
+    sed -n '2,28p' "$0" | sed 's/^# \{0,1\}//'
     exit 1
     ;;
 esac

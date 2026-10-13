@@ -233,6 +233,7 @@
 <script src="patch_bank.js"></script>
 <script src="daw_fx.js"></script>
 <script src="daw_perf.js"></script>
+<script src="smf.js"></script>
 <script src="daw_engine.js"></script>
 <script src="temp_maker.js"></script>
 <script>
@@ -306,6 +307,10 @@ async function scanTakes(id) {
     const m = await readJson(REVIEW_DIR + '/' + id + '/' + e.name + '/meta.json', null);
     if (m) out.push(Object.assign(m, { take: m.take || e.name, dir: REVIEW_DIR + '/' + id + '/' + e.name + '/' }));
   }
+  // a rejected take stays rejected even if its folder came back (a Drive pull restores deleted takes) — by take id,
+  // since an edit sent from the DAW shares its original's seed
+  const rej = new Set(((DIR.approvals.tracks[id] || {}).rejected || []).map(r => r.take).filter(Boolean));
+  for (const m of out) if (m.status !== 'rejected' && m.status !== 'approved' && rej.has(m.take)) m.status = 'rejected';
   return out.sort((a, b) => (a.created || '').localeCompare(b.created || '') || a.take.localeCompare(b.take));
 }
 async function scanTrack(t) {

@@ -333,6 +333,8 @@
     if (credits.worst !== 'free') { await G.write(dir + 'credits.txt', new Blob([credits.text + '\n'], { type: 'text/plain' })); files.push('credits.txt'); }
     // the exact project, so ✎ EDIT IN DAW opens this take as it was made (older takes are rebuilt from meta)
     await G.write(dir + 'project.json', blobJson(E.project)); files.push('project.json');
+    // and as standard MIDI (every track) — Drive keeps the notes alongside the audio
+    try { await G.write(dir + 'song.mid', new Blob([E.exportMidi()], { type: 'audio/midi' })); files.push('song.mid'); } catch (e) { /* no SMF writer on the page */ }
     meta.files = files.slice();
     await G.write(dir + 'meta.json', blobJson(meta));
     return files.concat('meta.json').map(f => dir + f);

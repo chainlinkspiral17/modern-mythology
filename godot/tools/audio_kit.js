@@ -574,6 +574,7 @@ AK.lib = {
       if (channels) tx.objectStore('pcm').put({ id: rec.id, data: channels });
     });
     const c = this.channel(); if (c) c.postMessage({ type: 'put', id: rec.id, kind: rec.kind });
+    if (channels && AK.game.root) AK.archive.one(rec).catch(e => console.warn('archive:', e && e.message));
     return rec;
   },
   async update(id, patch) {
@@ -629,6 +630,7 @@ AK.game = {
     if (!g) throw new Error('Pick the modern-mythology folder (or its godot/ folder).');
     this.root = g;
     try { await AK.lib.kvSet('godot_dir', g); } catch (e) { /* handles not storable here */ }
+    AK.archive.soon();
     return g;
   },
   // Restore a previously linked folder. needGesture=true → may prompt.
@@ -640,6 +642,7 @@ AK.game = {
     if (p !== 'granted' && needGesture) p = await h.requestPermission({ mode: 'readwrite' });
     if (p !== 'granted') { this._pending = h; return null; }
     this.root = h;
+    AK.archive.soon();
     return h;
   },
   async _dir(path, create) {
@@ -1147,4 +1150,37 @@ AK.draw = {
     for (const db of [-48, -36, -24, -18, -12, -6, -3]) { g.fillStyle = 'rgba(0,0,0,0.5)'; g.fillRect(((db + 60) / 60) * w, 0, 1, h); }
     if (clipped) { g.fillStyle = '#c64a3a'; g.fillRect(w - 6, 0, 6, h); }
   },
+};
+
+// ── the take library, mirrored into the game project ────────────────────────────────────────────────────────────
+// Every library item (FIELD RECORDER takes, TAPE STUDIO stems / mixes, DAW bounces) also lands as a file in
+// godot/assets/audio/library/<kind>/<name>-<id>.wav (+ .json with its meta), so `music_drive.sh push` backs it up
+// to Google Drive with everything else. The folder has a .gdignore: it is working material, never imported into the
+// game. A put mirrors at once when the game folder is linked; anything stored while it wasn't goes on the next
+// link / restore (AK.archive.all()). Deleting from the library leaves the file (it's the backup).
+AK.archive = {
+  DIR: 'assets/audio/library',
+  pathOf(rec) { return this.DIR + '/' + (AK.util.slug(rec.kind || 'take') || 'take') + '/' + (AK.util.slug(rec.name || '').slice(0, 60) || 'take') + '-' + AK.util.slug(String(rec.id)) + '.wav'; },
+  async one(rec) {
+    if (!AK.game.root) return false;
+    rec = (await AK.lib.meta(rec.id)) || rec;
+    const chs = await AK.lib.pcm(rec.id); if (!chs || !chs.length) return false;
+    if (!(await AK.game.exists(this.DIR + '/.gdignore'))) await AK.game.write(this.DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+    const path = this.pathOf(rec), m = rec.meta || {};
+    await AK.game.write(path, AK.wav.encode(chs, rec.sampleRate, { bitDepth: rec.kind === 'field' ? 24 : 16, loop: rec.loop || null,
+      meta: Object.assign({ title: rec.name, description: rec.name, originator: 'MM tools · ' + (rec.kind || 'take'), tags: m.tags || [] }, m) }));
+    const info = Object.assign({}, rec); delete info.archived;
+    await AK.game.write(path.replace(/\.wav$/, '.json'), new Blob([JSON.stringify(info, null, 1)], { type: 'application/json' }));
+    await AK.lib.update(rec.id, { archived: path, archivedAt: Date.now() });
+    return path;
+  },
+  // everything not mirrored yet (or changed since: a re-put clears `archived`)
+  async all() {
+    if (!AK.game.root || this._busy) return 0;
+    this._busy = true; let n = 0;
+    try { for (const rec of await AK.lib.list()) if (!rec.archived && rec.frames) { try { if (await this.one(rec)) n++; } catch (e) { console.warn('archive ' + rec.id + ':', e && e.message); } } }
+    finally { this._busy = false; }
+    return n;
+  },
+  soon() { clearTimeout(this._t); this._t = setTimeout(() => this.all().catch(() => {}), 1500); },
 };

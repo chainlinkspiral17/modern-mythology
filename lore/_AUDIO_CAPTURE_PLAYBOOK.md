@@ -830,6 +830,42 @@ context keeps running into a fake sink, and the meters still move.
 - Tested against a stub rclone (listremotes / lsf / deletefile) on a
   scratch tree; there's no rclone in the cloud sandbox.
 
+### 2026-10-13 — everything the tools make lands in the game project, and Drive gets all of it
+
+- The user asked that all created audio and music, MIDI included, go
+  to Google Drive and stay in sync with the Godot project.
+- Before this, three things never left the machine: the tools'
+  library (IndexedDB), DAW projects (IndexedDB), and review staging
+  (excluded from `music_drive.sh` on purpose). MIDI only existed as
+  downloads.
+- Now everything lands as files under `godot/assets/audio/`:
+  - `library/<kind>/<name>-<id>.wav + .json` mirrors every library
+    item: field recordings (24-bit), tape stems/mixes, DAW bounces.
+    `AK.lib.put` mirrors at once when the folder is linked, and
+    `AK.archive.all()` catches up on link/restore. A re-put clears
+    `archived`, so edits mirror again.
+  - `projects/<name>.daw.json + .mid` holds the DAW's open project,
+    written on every save.
+  - Every take folder gets `song.mid` (all tracks) next to
+    `project.json`.
+  - All four working folders (review, library, projects, replaced)
+    carry a `.gdignore` and are git-ignored, as are `*.mid` files
+    under audio.
+- `music_drive.sh` now pushes those folders whole, plus `*.mid`
+  anywhere.
+  - `sync` = pull then push.
+  - `auto on` installs a systemd user timer that pushes every 10
+    minutes (2 min after boot, catches up after sleep).
+  - The timer only pushes. A background pull could bring back a WAV
+    the tools just replaced, which would shadow its Ogg temp.
+- Pulled-back takes: a take rejected with "deletes files" can come back
+  from Drive. The director keeps it rejected by its take id from
+  `temp_approvals.json`, not its seed, because an edit sent from the
+  DAW shares its original's seed.
+- Tested: library mirror, take song.mid, and DAW project mirror in the
+  director suite; sync/tidy against a stub rclone. The systemd units
+  are untested here (no systemd in the sandbox).
+
 ## TEMPLATE
 
 ```

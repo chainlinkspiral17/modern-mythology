@@ -318,7 +318,9 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.eq(takes.length, 1);
     const dir = 'assets/audio/review/sam_theme/' + takes[0] + '/';
     first = json(dir + 'meta.json'); first.dir = dir;
-    t.eq(fs.readdirSync(G(dir)).sort(), ['meta.json', 'mix.wav', 'project.json', 'stems', 'stems.json']);
+    t.eq(fs.readdirSync(G(dir)).sort(), ['meta.json', 'mix.wav', 'project.json', 'song.mid', 'stems', 'stems.json']);
+    const mid = fs.readFileSync(G(dir + 'song.mid'));
+    t.ok(mid.slice(0, 4).toString() === 'MThd' && mid.readUInt16BE(10) >= 5, 'song.mid: a MIDI file with every track (' + mid.readUInt16BE(10) + ' chunks)');
     t.ok(!fs.existsSync(G('assets/audio/bgm/sam_theme.wav')) && !fs.existsSync(G('assets/audio/bgm/sam_theme.temp.ogg')), 'nothing written into the game path');
   });
   await t.test('the take avoids the rejected seed and records the request', async () => {
@@ -391,6 +393,10 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     await daw.click('#takesend');
     await daw.waitForFunction(() => /^sent as take /.test(document.getElementById('take-msg').textContent) || /failed/.test(document.getElementById('take-msg').textContent), null, { timeout: 60000 });
     const sent = await daw.evaluate(() => document.getElementById('take-msg').textContent);
+    // the DAW keeps its open project in the game folder too (saved 1.5 s after an edit): .daw.json + .mid
+    await daw.waitForFunction(() => /in the game folder/.test(document.getElementById('b-save').textContent), null, { timeout: 10000 });
+    const pj = json('assets/audio/projects/sam_theme.daw.json');
+    t.ok(pj.v && pj.tracks.length === 4 && fs.readFileSync(G('assets/audio/projects/sam_theme.mid')).slice(0, 4).toString() === 'MThd' && fs.existsSync(G('assets/audio/projects/.gdignore')), 'project mirrored: ' + pj.tracks.map(x => x.role).join());
     t.ok(/^sent as take .*-edit/.test(sent), sent);
     t.noErrors(dawErr);
     await daw.close(); await p.bringToFront();
@@ -402,6 +408,24 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     await p.evaluate(() => rescanOne('sam_theme'));
     const card = await p.evaluate(take => { const i = DIR.takes.findIndex(m => m.take === take); return document.querySelector(`#takes [data-i="${i}"]`).textContent; }, edit);
     t.ok(/edited in the DAW from take/.test(card), card.slice(0, 200));
+  });
+  await t.test('the tools\' library is mirrored into the game folder (library/<kind>/…wav + .json), at once and on link for older items', async () => {
+    const r = await p.evaluate(async () => {
+      const tone = n => { const c = new Float32Array(n); for (let i = 0; i < n; i++) c[i] = 0.3 * Math.sin(i * 0.05); return c; };
+      const a = await AK.lib.put({ kind: 'field', name: 'rain on tin', sampleRate: 44100, meta: { title: 'rain on tin' } }, [tone(4410), tone(4410)]);
+      await new Promise(res => setTimeout(res, 400));
+      // an item stored while no folder was linked: mirrored by the next link / restore
+      const root = AK.game.root; AK.game.root = null;
+      const b = await AK.lib.put({ kind: 'tape-mix', name: 'loop one', sampleRate: 44100, meta: { title: 'loop one' } }, [tone(2205)]);
+      const before = (await AK.lib.meta(b.id)).archived || null;
+      AK.game.root = root; const n = await AK.archive.all();
+      return { a: (await AK.lib.meta(a.id)).archived, b: (await AK.lib.meta(b.id)).archived, before, n };
+    });
+    t.ok(/^assets\/audio\/library\/field\/rain_on_tin-.+\.wav$/.test(r.a) && fs.existsSync(G(r.a)) && fs.existsSync(G(r.a.replace(/\.wav$/, '.json'))), 'put → mirrored: ' + r.a);
+    const info = json(r.a.replace(/\.wav$/, '.json')), bytes = fs.statSync(G(r.a)).size;
+    t.ok(info.frames === 4410 && bytes >= 4410 * 2 * 3 && bytes < 4410 * 2 * 3 + 4096, 'the recording, whole, 24-bit: ' + bytes + ' bytes');
+    t.ok(r.before === null && /^assets\/audio\/library\/tape[-_]mix\/loop_one-/.test(r.b) && fs.existsSync(G(r.b)) && r.n >= 1, 'caught up on link: ' + r.b);
+    t.ok(fs.existsSync(G('assets/audio/library/.gdignore')), 'Godot ignores the library mirror');
   });
   await t.test('TEMP TRACKS stages into review by default (skip-review off)', async () => {
     const daw = await ctx.newPage(); await daw.goto(p.url().replace(/audio_director\.html.*$/, 'daw.html'));

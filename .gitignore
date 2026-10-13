@@ -41,5 +41,11 @@ godot/assets/audio/**/*.flac
 godot/assets/audio/**/*.stems/
 godot/assets/audio/**/*.stems.json
 godot/assets/audio/**/*.credits.txt
-# AUDIO DIRECTOR review staging (DAW candidate takes + their meta.json) — local only
+godot/assets/audio/**/*.mid
+godot/assets/audio/**/*.midi
+# the tools' working folders — synced with Google Drive whole (music_drive.sh), never in git:
+# AUDIO DIRECTOR takes · the tools' library mirror · DAW projects · audio APPROVE moved aside
 godot/assets/audio/review/
+godot/assets/audio/library/
+godot/assets/audio/projects/
+godot/assets/audio/replaced/
