@@ -515,6 +515,8 @@
   // transitions: a riser / swell over the bars before a lift (B, C, a loop's restart); a downer before a break / outro
   function genFx(R, sec, ctx) {
     const notes = [], into = ctx.into, bars = sec.bars;
+    // a whoosh / tape stop is a ~1 s event from its note-on: it goes a beat before the downbeat, not over bars
+    if (ctx.short) { if (into) notes.push({ t: bars * BAR - BEAT, d: BEAT - 4, n: 60, v: into === 'up' ? 0.7 : 0.6 }); return notes; }
     if (into === 'up' && bars >= 2) { const len = Math.min(bars, R.pick([1, 2, 2, 4])); notes.push({ t: (bars - len) * BAR, d: len * BAR - 4, n: 60, v: 0.7 }); }
     else if (into === 'down' && bars >= 2) notes.push({ t: (bars - 1) * BAR, d: BAR - 4, n: 60, v: 0.6 });
     return notes;
@@ -621,7 +623,7 @@
     if (role === 'texture' || role === 'texture2') return genTexture(RR, sec, { gain: role === 'texture2' ? 0.75 : 1 });
     if (role === 'fx') {
       const into = nextBase === 'B' || nextBase === 'C' || ((formId === 'loop' || formId === 'bed') && !next) ? 'up' : nextBase === 'brk' || nextBase === 'outro' ? 'down' : null;
-      return genFx(RR, sec, { into });
+      return genFx(RR, sec, { into, short: /whoosh|tape_stop/.test(pl.fxPreset || '') });
     }
     if (role === 'hit') return genHit(RR, sec, { on0: (base === 'B' || base === 'C') && formId === 'song' });
     return [];
