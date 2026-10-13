@@ -1,0 +1,382 @@
+{
+ "_doc": "Score bible · VOL 7 · LAND OF MILK AND HONEY (Smolvud, OR). See README.md for the schema. Tonal plan: Smolvud's home is D (dorian in town, major at the cabin, phrygian when the substrate leans on the door); the family's hymn lives in F (D's relative major); the coast and the elders sit in A; the young and the shops in G. The palette is acoustic and close (felt piano, bowed strings, reed organ, wooden flutes, a hand-bell), with bass_sub as the substrate's 47 Hz under the floor. Electricity appears in only three cues: ChillWave's back room, the drones off the bluff and the tower.",
+ "volumes": {
+  "7": {
+   "feel": "The saga's slowest, dampest volume: Pacific rain that comes in off the ocean and decides, cedar and woodstove, kerosene light, a German hymn played in another room. Acoustic and close (felt piano, bowed strings, reed organ, wooden flutes, a hand-bell) with the substrate's low hum always just under the floorboards. Nothing hurries; the town knows you have arrived before you do.",
+   "key": ["D", "A", "G", "F"],
+   "mode": ["dorian", "major", "minor"],
+   "bpm": [58, 76],
+   "style": ["ambient", "piano", "hymn", "folk", "chamber"],
+   "density": [0.25, 0.45],
+   "voices": {
+    "drums": "kit",
+    "bass": ["bass_upright", "bass_sub", "bass_fretless"],
+    "chords": ["keys_felt", "pluck_nylon", "strings_ensemble"],
+    "pad": ["pad_warm", "strings_ensemble", "pad_cathedral_air", "pad_frost"],
+    "lead": ["keys_felt", "winds_flute", "winds_horns", "strings_noir"],
+    "fx": ["fx_reverse_swell", "fx_noise_sweep"]
+   },
+   "textures": ["amb_rain", "amb_fire", "amb_surf"],
+   "fx": ["fx_reverse_swell", "fx_noise_sweep"],
+   "hit": ["fx_wood_knock", "fx_bell_hit", "none"]
+  }
+ },
+ "chapters": {
+  "vol7_ch1": { "feel": "The cabin in the gray hour: rain thirty hours on the cedar roof, three people at a table doing nothing slowly. The volume opens at the woodstove, at its lowest flame.", "density": 0.25, "mode": "major", "textures": ["amb_rain", "amb_fire"] },
+  "vol7_ch2": { "feel": "Smolvud, Friday before dawn: the drones come up the cliff in fours and fives. This is the first act's only real pulse, mechanical and polite, and then the grandfather's wagon carries it down into the rain.", "density": 0.45, "mode": "dorian" },
+  "vol7_ch3": { "feel": "Saturday, Lena's two rooms: the apartment held at sixty-one with Tem on the couch, and the studio's single north window. The music is domestic and interior; the rain stays outside.", "density": 0.3, "mode": "major" },
+  "vol7_ch4": { "feel": "Tem alone at the cabin replaying what she said, then Finn on the porch with the crow on his dashboard. The woodstove again, a little lonelier.", "density": 0.25, "mode": "dorian" },
+  "vol7_ch5": { "feel": "Sunday on Main: the shop opens at ten like every Sunday, and Roy Hummel asks a question. This is the first unease, and the town's surface stays calm over it.", "density": 0.4, "mode": "dorian" },
+  "vol7_ch6": { "feel": "ChillWave's back room, where Cale finally says Nate Dean's name. The volume's one electric interior: a transformer hum, tape wobble, the past in a minor key.", "density": 0.3, "mode": "dorian", "textures": ["amb_fluor_hum", "amb_rain"] },
+  "vol7_ch7": { "feel": "Six o'clock, four coats on four hooks. The four of them gather in Lena's apartment, and the warmth of a small kitchen pushes back against the news.", "density": 0.35, "mode": "major" },
+  "vol7_ch8": { "feel": "Monday: the Daily Grind's gray counter, Roy walking out, then the table and the apology. Pressure and honesty, then goodnight in the dark. The apartment cue carries the whole evening.", "density": 0.4, "mode": "dorian" },
+  "vol7_ch9": { "feel": "Tuesday: the patch on the laundromat wall is bigger, and charred wood lies laid out in a shape on Finn's table. Main Street's grunge thickens.", "density": 0.45, "mode": "dorian" },
+  "vol7_ch10": { "feel": "Wednesday: the family enters. Per is at the floured board, and the cabin fills past four. The woodstove cue warms toward the bakery's F.", "density": 0.3, "mode": "major" },
+  "vol7_ch11": { "feel": "The first journey inside a stick: a mountain path, wind, a bird on patrol, a body that isn't his. The air opens, and the volume's first lydian.", "density": 0.2, "mode": "lydian" },
+  "vol7_ch12": { "feel": "Thursday rounds: the hexagon complete in a canvas bag, short drives between Lena's window, Board Lords and the alley. The volume's one road cue, in motion and almost bright.", "density": 0.5, "mode": "mixolydian" },
+  "vol7_ch13": { "feel": "Cale comes up and Marina stays. The cabin holds six; halyards and a far gull drift in from the marina that gives the chapter its name.", "density": 0.3, "mode": "mixolydian" },
+  "vol7_ch14": { "feel": "Friday: the painting room and the face on the wall. The music holds a close attentive breath and lets lydian's raised fourth turn the wonder slightly uncanny.", "density": 0.3, "mode": "lydian" },
+  "vol7_ch15": { "feel": "Saturday, bread at six oh-one: the family's table, the hymn from another room, the loft at four. The volume turns into F and into the family, and the hymn arrives.", "density": 0.3, "mode": "major" },
+  "vol7_ch16": { "feel": "Aud at the Missing Link, Board Lords reopened with the bell, the alley at eight. The town resumes its sounds, and the hymn keeps coming from the next room.", "density": 0.4, "mode": "major" },
+  "vol7_ch17": { "feel": "Sunday: dawn at the cabin, a bakery table for thirteen, Roy at the door with his hat in his hand, and Aria rings the bell. This is the volume's title moment, and the only place it is allowed to swell.", "density": 0.5, "mode": "major" },
+  "vol7_ch18": { "feel": "Inside the stick again: a tide pool rendered by someone who had been to the coast, and the end-of-stick beep waiting back in the bedroom. Glassy and lydian, a little too clean.", "density": 0.3, "mode": "lydian" },
+  "vol7_ch19": { "feel": "Sunday evening at the cabin: four bowls, kerosene light, mint tea for seven. A ritual, and the hymn comes home to the woodstove.", "density": 0.4, "mode": "major" },
+  "vol7_ch20": { "feel": "3:02 AM: a knock through the cedar wall, seven at the table holding still, then the alley at six forty-three. This is the volume's dread peak, in phrygian on D with everything held.", "density": 0.35, "mode": "phrygian" },
+  "vol7_ch21": { "feel": "Monday at the wall: the leaving begins without anyone calling for it. The music releases and disperses, with bread going around.", "density": 0.4, "mode": "major" },
+  "vol7_ch22": { "feel": "Forty-three miles up 101 to the tower: polished cedar, an empty desk, a six-inch window going milky. The cold ascent is the one cue that isn't Smolvud, and it ends held.", "density": 0.45, "mode": "minor" }
+ },
+ "characters": {
+  "aria": {
+   "feel": "Aria Dean, sighted on the coast in a yellow rainslicker: a single hand-bell strike, three seconds of held silence, then the strike again. The space between the strikes is the theme.",
+   "instrument": "bell_tubular",
+   "motifSpec": { "rhythm": [0, 16], "degrees": [7, 7] },
+   "mode": "lydian"
+  },
+  "wren": {
+   "feel": "Two notes of a wooden whistle: the first held, the second a step up and late, never quite arriving. Wren carries a message she doesn't fully understand.",
+   "instrument": "lead_whistle",
+   "motifSpec": { "rhythm": [0, 15], "degrees": [4, 5] },
+   "mode": "dorian"
+  },
+  "tem": {
+   "feel": "The cabin's keeper and the volume's most-heard figure: a distant horn like a kettle two rooms over, climbing a fifth and settling back down the stairs. Patient, warm, home.",
+   "instrument": "winds_horns",
+   "motifSpec": { "rhythm": [0, 4, 10, 16], "degrees": [0, 4, 3, 2] },
+   "mode": "major"
+  },
+  "petra": {
+   "feel": "A child's six-note recorder run up to the sixth, left hanging. It is played twice, the second time sinking lower. Petra's bookstore holds a younger Petra somewhere in the back.",
+   "instrument": "winds_flute",
+   "motifSpec": { "rhythm": [0, 1, 2, 3, 4, 6], "degrees": [0, 1, 2, 3, 4, 5] },
+   "mode": "major"
+  },
+  "kai": {
+   "feel": "Board Lords' slow grunge: a pushed tresillo like a skate kick or a boot-heel on plank, low and fuzzed, minor third up to the fourth, then falling to the second. A skater since fourteen who has learned to wait.",
+   "instrument": "lead_fuzz",
+   "motifSpec": { "rhythm": [0, 3, 6, 12], "degrees": [0, 2, 3, 1] },
+   "mode": "dorian"
+  },
+  "per": {
+   "feel": "Sixty, flour on his coat, tarred rope and a long exhale: the family hymn turned upside down and played low on a reed. He is the son who heard it in the next room his whole life.",
+   "instrument": "winds_harmonica",
+   "motifSpec": { "rhythm": [0, 6, 8, 16, 24], "degrees": [0, -2, -4, -3, -2] },
+   "mode": "dorian"
+  },
+  "sal": {
+   "feel": "Pizza Pirate since 1991: half a Sicilian phrase under the breath (a turn around the fifth through the flat sixth), then it drops to the second and stops. He never finishes it.",
+   "instrument": "winds_clarinet",
+   "motifSpec": { "rhythm": [0, 2, 4, 6, 12], "degrees": [4, 5, 4, 3, 1] },
+   "mode": "harmonic"
+  },
+  "finn": {
+   "feel": "A short bow on a single fiddle string: the same note twice, a flat-second rub, back, then a slip down. The radio that hears the band nobody allocated.",
+   "instrument": "strings_noir",
+   "motifSpec": { "rhythm": [0, 4, 6, 16, 22], "degrees": [0, 0, 1, 0, -1] },
+   "mode": "phrygian"
+  },
+  "gable": {
+   "feel": "Marian Gable's long-case clock at the end of the hall: a quarter-chime falling three steps and dropping to the low fifth, on a parlor harpsichord. She has seen the same crow every morning for nine years.",
+   "instrument": "keys_harpsichord",
+   "motifSpec": { "rhythm": [0, 4, 8, 16], "degrees": [2, 1, 0, -3] },
+   "mode": "dorian"
+  },
+  "werner": {
+   "feel": "The bread-maker: a slow upright with the una corda pedal in, rising like dough to the sixth and settling on the fifth. The same rise the family hymn begins with.",
+   "instrument": "keys_felt",
+   "motifSpec": { "rhythm": [0, 8, 12, 16, 28], "degrees": [0, 2, 4, 5, 4] },
+   "mode": "major"
+  },
+  "marit": {
+   "feel": "An older voice humming very close to the mic. She hums the hymn's second line, the one that comes home (five, four, three, two, one), and the words were never needed.",
+   "instrument": "choir_vox",
+   "motifSpec": { "rhythm": [0, 8, 16, 20, 24], "degrees": [4, 3, 2, 1, 0] },
+   "mode": "major"
+  },
+  "smolvud_hymn": {
+   "feel": "The family's German hymn: a chorale incipit that climbs do–mi–sol, steps down through a passing fa and stops unresolved on re, waiting for Marit's line to bring it home. It is always heard from another room.",
+   "instrument": "keys_felt",
+   "motifSpec": { "rhythm": [0, 4, 8, 14, 16, 24], "degrees": [0, 2, 4, 3, 2, 1] },
+   "mode": "major"
+  }
+ },
+ "tracks": {
+  "vol7_ambient": {
+   "feel": "The town that knows you've arrived before you do: fog with a frequency, a sub hum you feel more than hear, rain and surf far off, and a flute phrase that might be a bird. Nothing in it happens; everything in it is listening.",
+   "style": "ambient", "form": "bed", "bpm": 62, "key": "D", "mode": "dorian", "density": 0.25,
+   "voices": { "bass": "bass_sub", "chords": "strings_ensemble", "pad": "pad_frost", "lead": "winds_flute" },
+   "textures": ["amb_rain", "amb_surf"], "fx": "fx_reverse_swell", "hit": "none", "motif": null,
+   "shape": [["A", 16, ["bass", "pad", "chords", "lead", "texture", "fx"]]],
+   "stems": true
+  },
+  "vol7_apartment_rain": {
+   "feel": "Six o'clock, four coats on four hooks. Felt piano and upright bass in a small kept apartment above a bookstore, with rain on the window over Cypress Street. It warms as the four of them eat and goes quiet for the apology; it should still sound like home when the night ends in the dark.",
+   "style": "piano", "form": "bed", "bpm": 68, "key": "F", "mode": "major", "density": [0.3, 0.4],
+   "voices": { "drums": "kit", "bass": "bass_upright", "chords": "keys_felt", "pad": "pad_warm", "lead": "keys_felt" },
+   "textures": ["amb_rain", "amb_room_tone"], "fx": "none", "hit": "none", "motif": null,
+   "stems": true
+  },
+  "vol7_aria_theme": {
+   "feel": "A single hand-bell strike, three seconds of held silence, then again. Under it there is only air and far surf. The silence is part of the theme, so leave it empty.",
+   "style": "ambient", "form": "song", "bpm": 60, "key": "A", "mode": "lydian", "density": 0.15,
+   "voices": { "bass": "bass_sub", "pad": "pad_cathedral_air" },
+   "textures": ["amb_surf"], "fx": "fx_reverse_swell", "hit": "fx_bell_hit", "motif": "aria",
+   "shape": [["intro", 2, ["texture"]], ["A", 8, ["lead", "texture", "fx"]], ["brk", 4, ["texture"]], ["A2", 8, ["lead", "pad", "bass", "texture", "fx"]], ["outro", 4, ["lead", "texture"]]],
+   "stems": false
+  },
+  "vol7_bread_table": {
+   "feel": "Kitchen fire crackle and a table set for nine. The family hymn comes faintly on a reed organ from somewhere past the kitchen, with crockery set down and someone cutting the seeded rye. The warmest room in the volume.",
+   "style": "hymn", "form": "bed", "bpm": 64, "key": "F", "mode": "major", "density": 0.3,
+   "voices": { "bass": "bass_upright", "chords": "pad_organ_swell", "pad": "strings_ensemble", "lead": "keys_felt" },
+   "textures": ["amb_fire", "amb_room_tone"], "fx": "none", "hit": "fx_glass_ping", "motif": "smolvud_hymn",
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": false
+  },
+  "vol7_hymn_fragment": {
+   "feel": "A German hymn played on a far piano in another room of the house. Only the piano and the room: no drums, no bass, a reverse swell as if a door opened. It recurs across the family scenes, so keep it unfinished.",
+   "style": "hymn", "form": "song", "bpm": 62, "key": "F", "mode": "major", "density": 0.3,
+   "voices": { "chords": "keys_felt", "lead": "keys_felt", "pad": "pad_cathedral_air" },
+   "textures": ["amb_room_tone"], "fx": "fx_reverse_swell", "hit": "none", "motif": "smolvud_hymn",
+   "shape": [["intro", 2, ["texture"]], ["A", 8, ["chords", "lead", "texture"]], ["A2", 8, ["chords", "lead", "pad", "texture", "fx"]], ["outro", 4, ["lead", "texture"]]],
+   "stems": false
+  },
+  "vol7_marit_theme": {
+   "feel": "An older voice humming the hymn's homeward line very close to the mic, with no legible words. A reed organ breathes under her and the room is so quiet you hear the clock.",
+   "style": "hymn", "form": "song", "bpm": 60, "key": "F", "mode": "major", "density": 0.25,
+   "voices": { "chords": "keys_organ", "pad": "pad_warm", "bass": "bass_upright" },
+   "textures": ["amb_room_tone", "amb_clock"], "fx": "none", "hit": "none", "motif": "marit",
+   "shape": [["intro", 2, ["pad", "texture"]], ["A", 8, ["lead", "pad", "texture"]], ["B", 8, ["lead", "pad", "chords", "texture"]], ["A2", 8, ["lead", "pad", "bass", "texture"]], ["outro", 4, ["lead", "texture"]]],
+   "stems": false
+  },
+  "vol7_milestone_bell": {
+   "feel": "Aria rings the bell, at the volume's title moment. Her bell figure over a chorale that finally swells (strings, choir, a low tom like a heartbeat) and then lets the bell ring alone into the rain. Land of milk and honey in D major: earned, never bombastic.",
+   "style": "hymn", "form": "song", "bpm": 66, "key": "D", "mode": "major", "density": 0.55,
+   "voices": { "drums": "kit", "bass": "bass_upright", "chords": "strings_ensemble", "pad": "choir_angel", "lead": "bell_tubular" },
+   "textures": ["amb_rain"], "fx": "fx_reverse_swell", "hit": "fx_bell_hit", "motif": "aria",
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["lead", "chords", "pad", "bass", "fx"]], ["B", 8, ["lead", "chords", "pad", "bass", "drums", "fx"]], ["A2", 8, ["lead", "chords", "pad", "bass"]], ["outro", 8, ["lead", "pad", "texture"]]],
+   "stems": false
+  },
+  "vol7_rain_on_roof": {
+   "feel": "With two of them left in it the apartment was hers again. Only the rain on the roof and a felt piano that barely moves, with lydian's lift in the air like a held breath let go. The most intimate bed in the volume.",
+   "style": "ambient", "form": "bed", "bpm": 60, "key": "F", "mode": "lydian", "density": 0.22,
+   "voices": { "bass": "bass_fretless", "chords": "keys_felt", "pad": "pad_dusk", "lead": "keys_felt" },
+   "textures": ["amb_rain"], "fx": "none", "hit": "none", "motif": null,
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture"]]],
+   "stems": true
+  },
+  "vol7_wren_theme": {
+   "feel": "Two notes of a wooden whistle, the first held, the second never quite arriving. Wind and a reed pad answer, and under it there's a sub hum: the message she carries about the substrate leaking.",
+   "style": "ambient", "form": "song", "bpm": 64, "key": "G", "mode": "dorian", "density": 0.2,
+   "voices": { "bass": "bass_sub", "pad": "pad_hollow", "chords": "pluck_harp" },
+   "textures": ["amb_wind"], "fx": "fx_reverse_swell", "hit": "none", "motif": "wren",
+   "shape": [["intro", 2, ["texture"]], ["A", 8, ["lead", "pad", "texture", "fx"]], ["B", 8, ["lead", "pad", "bass", "chords"]], ["A2", 8, ["lead", "pad", "texture"]], ["outro", 4, ["pad", "texture"]]],
+   "stems": false
+  },
+  "vol7_tem_theme": {
+   "feel": "A wool-mitten brush across a kitchen-window pane (a soft noise sweep), and a kettle two rooms over (a distant horn). Nylon guitar and upright bass at walking pace, the woodstove going. The volume's most-heard theme, so make it a place to come back to, never a statement.",
+   "style": "folk", "form": "song", "bpm": 74, "key": "D", "mode": "major", "density": 0.35,
+   "voices": { "drums": "kit", "bass": "bass_upright", "chords": "pluck_nylon", "pad": "pad_warm" },
+   "textures": ["amb_fire", "amb_rain"], "fx": "fx_noise_sweep", "hit": "fx_glass_ping", "motif": "tem",
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["chords", "bass", "lead", "texture", "fx"]], ["B", 8, ["chords", "bass", "lead", "pad", "drums", "fx"]], ["A2", 8, ["chords", "bass", "lead", "pad", "texture"]], ["outro", 4, ["lead", "pad", "texture"]]],
+   "stems": true
+  },
+  "vol7_petra_theme": {
+   "feel": "A child's six-note recorder run, played twice, the second time sinking lower. Celesta and harp around it, rain on the bookstore window, an old cat on a pillow by the radiator. A lullaby kept behind the counter.",
+   "style": "lullaby", "form": "song", "bpm": 72, "key": "G", "mode": "major", "density": 0.3,
+   "voices": { "bass": "bass_upright", "chords": "keys_celesta", "pad": "pad_warm" },
+   "textures": ["amb_rain", "amb_room_tone"], "fx": "none", "hit": "fx_glass_ping", "motif": "petra",
+   "shape": [["intro", 2, ["chords", "texture"]], ["A", 8, ["lead", "chords", "texture"]], ["A2", 8, ["lead", "chords", "pad"]], ["B", 8, ["chords", "pad", "bass", "fx"]], ["outro", 4, ["lead", "texture"]]],
+   "stems": false
+  },
+  "vol7_kai_theme": {
+   "feel": "A boot-heel on a plank pier and a single hand-line clicking, then slow PNW grunge: clean nylon arpeggios, a fuzzed low lead and half-time drums that never hit hard. The cannery is his cathedral.",
+   "style": "post_rock", "form": "song", "bpm": 78, "key": "D", "mode": "dorian", "density": 0.45,
+   "voices": { "drums": "kit", "bass": "bass_fender", "chords": "pluck_nylon", "pad": "pad_dusk" },
+   "textures": ["amb_surf"], "fx": "fx_whoosh", "hit": "fx_wood_knock", "motif": "kai",
+   "shape": [["intro", 4, ["drums", "texture"]], ["A", 8, ["drums", "bass", "chords", "texture", "fx"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad", "fx"]], ["brk", 4, ["drums", "texture"]], ["A2", 8, ["drums", "bass", "chords", "lead"]], ["outro", 4, ["chords", "texture"]]],
+   "stems": true
+  },
+  "vol7_per_theme": {
+   "feel": "Tarred rope laid down, a pipe-knife strop (a noise sweep), an exhale through a close-trimmed beard. The family hymn upside down on a low harmonica over grange-hall strings, with the harbor wind behind him.",
+   "style": "chamber", "form": "song", "bpm": 66, "key": "A", "mode": "dorian", "density": 0.3,
+   "voices": { "bass": "bass_upright", "chords": "strings_ensemble", "pad": "pad_cathedral_air" },
+   "textures": ["amb_surf", "amb_wind"], "fx": "fx_noise_sweep", "hit": "fx_wood_knock", "motif": "per",
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["lead", "chords", "bass", "fx"]], ["B", 8, ["lead", "chords", "bass", "pad", "texture", "fx"]], ["A2", 8, ["lead", "chords", "bass"]], ["outro", 4, ["pad", "lead", "texture"]]],
+   "stems": false
+  },
+  "vol7_sal_theme": {
+   "feel": "An espresso steam wand (noise sweep), a tin sign tap (glass ping), and half a Sicilian phrase on clarinet under the breath, in harmonic minor over brushed jazz trio. Short: he never finishes the phrase, and the piece doesn't either.",
+   "style": "jazz", "form": "song", "bpm": 78, "key": "G", "mode": "harmonic", "density": 0.4,
+   "voices": { "drums": "kit", "bass": "bass_upright", "chords": "pluck_nylon" },
+   "textures": ["amb_room_tone"], "fx": "fx_noise_sweep", "hit": "fx_glass_ping", "motif": "sal",
+   "shape": [["intro", 2, ["texture"]], ["A", 8, ["lead", "chords", "bass", "drums", "fx"]], ["brk", 2, ["texture"]], ["A2", 8, ["chords", "bass", "drums", "lead"]], ["outro", 4, ["lead", "chords", "texture"]]],
+   "stems": false
+  },
+  "vol7_finn_theme": {
+   "feel": "A short bow across a single fiddle string, and the snow-shovel scrape outside the door. Phrygian D, a radio between stations, a sub hum on the off-band, a UV light flickering. The darkest of the vol 7 themes, but still a person rather than a threat.",
+   "style": "chamber", "form": "song", "bpm": 70, "key": "D", "mode": "phrygian", "density": 0.4,
+   "voices": { "bass": "bass_sub", "chords": "strings_tremolo", "pad": "pad_bowed_metal" },
+   "textures": ["amb_radio", "amb_wind"], "fx": "fx_noise_sweep", "hit": "fx_flicker", "motif": "finn",
+   "shape": [["intro", 4, ["texture", "pad"]], ["A", 8, ["lead", "pad", "bass", "texture", "fx"]], ["B", 8, ["lead", "chords", "pad", "bass", "fx"]], ["A2", 8, ["lead", "pad", "bass", "texture"]], ["outro", 4, ["lead", "texture"]]],
+   "stems": false
+  },
+  "vol7_gable_theme": {
+   "feel": "A teacup set against its saucer and the long-case clock at the end of the hall. The quarter-chime on a parlor harpsichord over a slow string quartet at sixty: one beat per tick. An archivist's patience, with something known and not said.",
+   "style": "chamber", "form": "song", "bpm": 60, "key": "A", "mode": "dorian", "density": 0.3,
+   "voices": { "bass": "bass_upright", "chords": "strings_ensemble", "pad": "pad_glass" },
+   "textures": ["amb_clock", "amb_room_tone"], "fx": "none", "hit": "fx_glass_ping", "motif": "gable",
+   "shape": [["intro", 4, ["texture"]], ["A", 8, ["lead", "chords", "texture"]], ["B", 8, ["lead", "chords", "pad", "bass", "texture", "fx"]], ["A2", 8, ["lead", "chords", "texture", "fx"]], ["outro", 4, ["texture"]]],
+   "stems": false
+  },
+  "vol7_cabin_woodstove": {
+   "feel": "A damper-pull tick, a log settling at the back of the firebox, the plank floor cooling. Nylon guitar and felt piano at the lowest flame, with rain on the cedar roof and Tem's figure drifting through, half-remembered. The volume's home base.",
+   "style": "folk", "form": "bed", "bpm": 62, "key": "D", "mode": "major", "density": 0.25,
+   "voices": { "bass": "bass_upright", "chords": "pluck_nylon", "pad": "pad_warm", "lead": "keys_felt" },
+   "textures": ["amb_fire", "amb_rain"], "fx": "none", "hit": "fx_wood_knock", "motif": "tem",
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": true
+  },
+  "vol7_kestrel_circle": {
+   "feel": "A slow-cycling thermal hiss and the small, very far cry of a bird on patrol, a theremin glide high above. Inside the stick on a basalt mountain path, in a borrowed body, the air opens. Lydian and weightless, the first time the volume leaves the ground.",
+   "style": "ambient", "form": "bed", "bpm": 60, "key": "A", "mode": "lydian", "density": 0.2,
+   "voices": { "bass": "bass_sub", "chords": "pad_shimmer", "pad": "pad_cathedral_air", "lead": "lead_theremin" },
+   "textures": ["amb_wind", "drone_horizon"], "fx": "fx_noise_sweep", "hit": "none", "motif": null,
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": true
+  },
+  "vol7_marina_morning": {
+   "feel": "Halyards tapping aluminum masts in an uneven pulse of small bell pings, dock lines creaking, a single gull a long way off. A minimalist pulse slowed to tide speed, mixolydian and salt-bright.",
+   "style": "minimal", "form": "bed", "bpm": 70, "key": "A", "mode": "mixolydian", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "pluck_bell", "pad": "pad_dusk", "lead": "winds_flute" },
+   "textures": ["amb_surf"], "fx": "none", "hit": "fx_glass_ping", "motif": null,
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": false
+  },
+  "vol7_painting_room": {
+   "feel": "A turpentine bottle uncorked, a brush tapping on canvas, the close attentive breath of someone looking. Felt piano and breath-pad in lydian; wonder that turns slightly uncanny when the face on the wall is the thing being looked at.",
+   "style": "piano", "form": "bed", "bpm": 64, "key": "G", "mode": "lydian", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "keys_felt", "pad": "pad_cathedral_air", "lead": "keys_celesta" },
+   "textures": ["amb_room_tone"], "fx": "fx_reverse_swell", "hit": ["fx_glass_ping", "fx_wood_knock"], "motif": null,
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": true
+  },
+  "vol7_loft_dust": {
+   "feel": "The hayloft settling, a sparrow in the eaves, four-o'clock sun on warm wood with dust turning in it. The sunniest cue in the volume: nylon guitar, harp and a soft brushed kit, in G major.",
+   "style": "folk", "form": "bed", "bpm": 80, "key": "G", "mode": "major", "density": 0.35,
+   "voices": { "drums": "kit", "bass": "bass_upright", "chords": "pluck_nylon", "pad": "pad_dusk", "lead": "pluck_harp" },
+   "textures": ["amb_room_tone", "amb_wind"], "fx": "none", "hit": "fx_wood_knock", "motif": null,
+   "stems": false
+  },
+  "vol7_shop_signal_bell": {
+   "feel": "The door-spring chime, the till's small mechanical click, the floorboard that always pops under the second step. Board Lords open again after a week shut: a lo-fi Wurlitzer with Kai's figure on resonator slide, with rain on Main.",
+   "style": "lofi", "form": "bed", "bpm": 76, "key": "D", "mode": "dorian", "density": 0.4,
+   "voices": { "drums": "kit", "bass": "bass_fender", "chords": "keys_wurli", "pad": "pad_tape_wobble", "lead": "pluck_dobro" },
+   "textures": ["amb_rain", "amb_room_tone"], "fx": "none", "hit": ["fx_bell_hit", "fx_wood_knock"], "motif": "kai",
+   "stems": false
+  },
+  "vol7_werner_theme": {
+   "feel": "A slow upright piano with the una corda pedal in: the bread-maker's hands, the dough rising, nothing else in the room. Solo piano, a little string warmth in the middle, and no texture: just the instrument.",
+   "style": "piano", "form": "song", "bpm": 60, "key": "F", "mode": "major", "density": 0.3,
+   "voices": { "chords": "keys_felt", "pad": "pad_warm" },
+   "textures": "none", "fx": "none", "hit": "none", "motif": "werner",
+   "shape": [["intro", 2, ["chords"]], ["A", 8, ["lead", "chords"]], ["B", 8, ["lead", "chords", "pad"]], ["A2", 8, ["lead", "chords"]], ["outro", 4, ["lead"]]],
+   "stems": false
+  },
+  "vol7_bluff_drones": {
+   "feel": "Friday before dawn: cargo drones come up the cliff face in fours and fives as a felt-piano minimalist pulse over a machine hum, whooshing over the rooftops. Then the grandfather's wagon goes down through Sitka and alder in the rain, and a distant horn takes over from the machines.",
+   "style": "minimal", "form": "song", "bpm": 112, "key": "A", "mode": "dorian", "density": 0.45,
+   "voices": { "drums": "kit", "bass": "bass_sub", "chords": "keys_felt", "pad": "strings_ensemble", "lead": "winds_horns" },
+   "textures": ["drone_engine", "amb_rain"], "fx": "fx_whoosh", "hit": "none", "motif": null,
+   "shape": [["intro", 4, ["chords", "texture"]], ["A", 8, ["chords", "bass", "texture", "fx"]], ["A2", 8, ["chords", "bass", "pad", "drums", "texture", "fx"]], ["B", 8, ["chords", "bass", "pad", "lead", "drums"]], ["outro", 4, ["pad", "lead", "texture"]]],
+   "stems": true
+  },
+  "vol7_across_main": {
+   "feel": "Kai's stretch of Main: the shop opened at ten like every Sunday since '48, Finn's rooms above the closed kayak shop, and the patch on the laundromat wall bigger each morning. Slow grunge in D dorian that keeps building without ever getting loud. Unease under a town's routine.",
+   "style": "post_rock", "form": "song", "bpm": 80, "key": "D", "mode": "dorian", "density": [0.4, 0.55],
+   "voices": { "drums": "kit", "bass": "bass_fender", "chords": "pluck_nylon", "pad": "pad_dusk", "lead": "lead_fuzz" },
+   "textures": ["amb_rain", "amb_city"], "fx": "fx_reverse_swell", "hit": "none", "motif": "kai",
+   "shape": [["intro", 4, ["chords", "texture"]], ["A", 8, ["chords", "bass", "drums", "texture", "fx"]], ["B", 8, ["chords", "bass", "drums", "lead", "pad"]], ["A2", 8, ["chords", "bass", "drums", "lead", "texture", "fx"]], ["outro", 4, ["chords", "pad", "texture"]]],
+   "stems": true
+  },
+  "vol7_chillwave_back_room": {
+   "feel": "The back of ChillWave: cedar shelves alphabetized by designer, a soldering iron cooling on the bench, the wall transformer humming with the iron unplugged. The volume's one electric room is washed-out tape synthwave at its slowest, under the story of Nate Dean. The shop bell rings twice at the door.",
+   "style": "synthwave", "form": "bed", "bpm": 96, "key": "G", "mode": "dorian", "density": 0.3,
+   "voices": { "drums": "kit", "bass": "bass_pluck", "chords": "keys_tape_ep", "pad": "pad_tape_wobble", "lead": "pluck_neon" },
+   "textures": ["amb_fluor_hum", "amb_tape_hiss"], "fx": "fx_downer", "hit": "fx_bell_hit", "motif": null,
+   "stems": true
+  },
+  "vol7_daily_grind": {
+   "feel": "The Daily Grind on a gray Monday: rain-light at the counter, a lo-fi Wurlitzer, and Mrs. Gable's quarter-chime on vibes from her morning seat. The bell at eleven fifty-eight. When Roy walks out the tape brakes, and the count of thirty is the silence after.",
+   "style": "lofi", "form": "bed", "bpm": 74, "key": "A", "mode": "dorian", "density": 0.4,
+   "voices": { "drums": "kit", "bass": "bass_fender", "chords": "keys_wurli", "pad": "pad_velvet", "lead": "keys_vibes" },
+   "textures": ["amb_rain", "amb_room_tone"], "fx": "fx_tape_stop", "hit": "fx_bell_hit", "motif": "gable",
+   "stems": true
+  },
+  "vol7_thursday_rounds": {
+   "feel": "Thursday in late August, the town awake an hour: the completed hexagon riding in a canvas bag, short drives between Lena's window, Board Lords and the alley behind the bakery. The volume's only road cue is an acoustic motorik in G mixolydian, with Finn's single-string figure on resonator slide, brightened.",
+   "style": "motorik", "form": "song", "bpm": 108, "key": "G", "mode": "mixolydian", "density": 0.5,
+   "voices": { "drums": "kit", "bass": "bass_fender", "chords": "pluck_nylon", "pad": "pad_hollow", "lead": "pluck_dobro" },
+   "textures": ["drone_engine", "amb_rain"], "fx": "fx_whoosh", "hit": "none", "motif": "finn",
+   "stems": true
+  },
+  "vol7_tide_pool": {
+   "feel": "Inside the stick: a tide pool on a basalt headland, rendered by someone who had been to the coast. One open anemone, two purple stars, harp and celesta clear as the water, with a faint chip lead as the only tell that it's rendered. The end-of-stick beep waits back in the bedroom.",
+   "style": "ambient", "form": "bed", "bpm": 66, "key": "D", "mode": "lydian", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "pluck_harp", "pad": "pad_glass", "lead": "arp_chip" },
+   "textures": ["amb_surf"], "fx": "fx_reverse_swell", "hit": "fx_glass_ping", "motif": null,
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": true
+  },
+  "vol7_four_bowls": {
+   "feel": "Sunday evening at the cabin: the stove banked higher than she banks it in the mornings, kerosene light, four bowls warm on the table, mint tea for seven. The family hymn comes home to the woodstove, rung on singing bowls over strings. A ritual, and the calmest the cast ever is.",
+   "style": "chamber", "form": "bed", "bpm": 64, "key": "D", "mode": "major", "density": 0.4,
+   "voices": { "bass": "bass_upright", "chords": "strings_ensemble", "pad": "pad_warm", "lead": "bell_bowl" },
+   "textures": ["amb_fire", "amb_rain"], "fx": "fx_reverse_swell", "hit": "none", "motif": "smolvud_hymn",
+   "shape": [["A", 16, ["bass", "chords", "pad", "lead", "texture", "fx"]]],
+   "stems": true
+  },
+  "vol7_three_oh_two": {
+   "feel": "A knock at 3:02 AM coming through the cedar wall: drones in D phrygian, crypt choir, tremolo strings. Then seven at the table holding still, which the music holds too. The figure at the door is many people at once; Per sees his father, so the bread-maker's figure surfaces warped on a far piano. It ends in the alley at six forty-three, facing the painted face.",
+   "style": "dark_drone", "form": "song", "bpm": 60, "key": "D", "mode": "phrygian", "density": 0.35,
+   "voices": { "bass": "bass_sub", "chords": "strings_tremolo", "pad": "choir_crypt", "lead": "keys_felt" },
+   "textures": ["amb_rain", "amb_forest_night"], "fx": "fx_reverse_swell", "hit": "fx_wood_knock", "motif": "werner",
+   "shape": [["intro", 4, ["texture", "pad"]], ["B", 8, ["pad", "bass", "texture", "fx"]], ["brk", 4, ["texture"]], ["C", 8, ["pad", "bass", "chords", "lead", "texture", "fx"]], ["outro", 8, ["pad", "lead", "texture"]]],
+   "stems": true
+  },
+  "vol7_the_leaving": {
+   "feel": "Monday morning at the wall: the face closed-eyed since seven thirty-eight, brioche and rye going around from Hans's van, the leaving beginning without anyone calling for it. Half-time post-rock that swells once, with Tem's horn on top, then thins out person by person until only the chords and the rain are left.",
+   "style": "post_rock", "form": "song", "bpm": 70, "key": "G", "mode": "major", "density": [0.35, 0.5],
+   "voices": { "drums": "kit", "bass": "bass_upright", "chords": "keys_felt", "pad": "strings_ensemble", "lead": "winds_horns" },
+   "textures": ["amb_rain"], "fx": "fx_reverse_swell", "hit": "none", "motif": "tem",
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["chords", "pad", "bass", "texture", "fx"]], ["B", 8, ["chords", "pad", "bass", "drums", "lead"]], ["A2", 8, ["chords", "bass", "lead", "pad"]], ["outro", 8, ["chords", "texture"]]],
+   "stems": true
+  },
+  "vol7_the_tower": {
+   "feel": "Forty-three miles up 101 to old-Yachats: a polished-cedar lobby, an empty reception desk, a six-inch window in a fourth-floor door gone milky. Cold, clean synth-horror arpeggios climbing the floors at a walking pulse. This is the only place in the volume that isn't Smolvud, and Aria's bell rings in it on a ring-mod lead, because it is her father's tower. It ends held, at the door.",
+   "style": "synth_horror", "form": "song", "bpm": 98, "key": "D", "mode": "minor", "density": 0.45,
+   "voices": { "drums": "kit", "bass": "bass_pluck", "chords": "pad_frost", "pad": "pad_shimmer", "lead": "lead_ring" },
+   "textures": ["amb_room_tone", "drone_dark"], "fx": "fx_riser", "hit": "fx_glass_ping", "motif": "aria",
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["chords", "bass", "pad", "texture"]], ["A2", 8, ["chords", "bass", "pad", "drums", "texture", "fx"]], ["B", 8, ["chords", "bass", "lead", "pad", "drums", "fx"]], ["brk", 4, ["texture", "fx"]], ["outro", 4, ["pad", "lead", "texture"]]],
+   "stems": true
+  }
+ }
+}
