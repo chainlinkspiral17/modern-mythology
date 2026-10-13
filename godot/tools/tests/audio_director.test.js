@@ -311,7 +311,7 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.eq([r.state, r.made, r.errors], ['done', 1, []], 'request');
     t.eq(r.busy, ['⚄ MAKING…', true, 'STUDIO: making'], 'busy while it works');
     t.ok(['composing…', 'saving…'].every(x => r.seen.includes(x)) && r.seen.some(x => /^rendering stems: (\d) of \1 done…$/.test(x)), 'progress: ' + JSON.stringify(r.seen));
-    t.ok(r.after[0] === '⚄ MAKE TAKES' && r.after[1] === 'STUDIO: ready' && /1 take\(s\) made in \d+ s — ▶ PLAY them under TAKES/.test(r.after[2]), JSON.stringify(r.after));
+    t.ok(/^⚄ MAKE \d+ TAKES?$/.test(r.after[0]) && r.after[1] === 'STUDIO: ready' && /1 take\(s\) made in \d+ s — ▶ PLAY them under TAKES/.test(r.after[2]), JSON.stringify(r.after));
     t.eq(ctx.pages().length, pages, 'no other tab opened');
     await p.waitForFunction(() => DIR.state.sam_theme && DIR.state.sam_theme.cand === 1, null, { timeout: 5000 });
     const takes = fs.readdirSync(G('assets/audio/review/sam_theme'));
