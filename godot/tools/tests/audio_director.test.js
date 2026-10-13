@@ -310,7 +310,7 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     }, { leadPreset });
     t.eq([r.state, r.made, r.errors], ['done', 1, []], 'request');
     t.eq(r.busy, ['⚄ MAKING…', true, 'STUDIO: making'], 'busy while it works');
-    t.ok(['composing…', 'rendering stems: 5 of 5 done…', 'saving…'].every(x => r.seen.includes(x)), 'progress: ' + JSON.stringify(r.seen));
+    t.ok(['composing…', 'saving…'].every(x => r.seen.includes(x)) && r.seen.some(x => /^rendering stems: (\d) of \1 done…$/.test(x)), 'progress: ' + JSON.stringify(r.seen));
     t.ok(r.after[0] === '⚄ MAKE TAKES' && r.after[1] === 'STUDIO: ready' && /1 take\(s\) made in \d+ s — ▶ PLAY them under TAKES/.test(r.after[2]), JSON.stringify(r.after));
     t.eq(ctx.pages().length, pages, 'no other tab opened');
     await p.waitForFunction(() => DIR.state.sam_theme && DIR.state.sam_theme.cand === 1, null, { timeout: 5000 });
@@ -337,11 +337,12 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
   });
   await t.test('instrument override is used; parts + extra pad give the expected tracks and stems', async () => {
     t.eq(first.instruments.lead, 'forge:' + leadPreset);
-    t.eq(first.roles, ['bass', 'chords', 'lead', 'pad', 'pad2']);
+    const SOUND = r => r === 'texture' || r === 'fx' || r === 'texture2' || r === 'hit';
+    t.eq(first.roles.filter(r => !SOUND(r)), ['bass', 'chords', 'lead', 'pad', 'pad2']);
     t.ok(!('drums' in first.instruments), 'drums left out');
     const man = json(first.dir + 'stems.json');
-    t.eq(man.stems.map(s => s.name + '@' + s.layer), ['bass@0.25', 'chords@0', 'lead@0.75', 'pad@0', 'pad2@0']);
-    t.eq(fs.readdirSync(G(first.dir + 'stems')).sort(), ['bass.wav', 'chords.wav', 'lead.wav', 'pad.wav', 'pad2.wav']);
+    t.eq(man.stems.map(s => s.name + '@' + s.layer).filter(x => !/^(texture|fx)@/.test(x)), ['bass@0.25', 'chords@0', 'lead@0.75', 'pad@0', 'pad2@0']);
+    t.eq(fs.readdirSync(G(first.dir + 'stems')).filter(f => !/^(texture|fx)\.wav$/.test(f)).sort(), ['bass.wav', 'chords.wav', 'lead.wav', 'pad.wav', 'pad2.wav']);
     const dev = await p.evaluate(() => { const E = STUDIO.E, t = E.project.tracks.find(x => x.role === 'lead'); return E.dev(t.deviceId).preset; });
     t.eq(dev, leadPreset);
   });
@@ -396,14 +397,15 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     // the DAW keeps its open project in the game folder too (saved 1.5 s after an edit): .daw.json + .mid
     await daw.waitForFunction(() => /in the game folder/.test(document.getElementById('b-save').textContent), null, { timeout: 10000 });
     const pj = json('assets/audio/projects/sam_theme.daw.json');
-    t.ok(pj.v && pj.tracks.length === 4 && fs.readFileSync(G('assets/audio/projects/sam_theme.mid')).slice(0, 4).toString() === 'MThd' && fs.existsSync(G('assets/audio/projects/.gdignore')), 'project mirrored: ' + pj.tracks.map(x => x.role).join());
+    t.ok(pj.v && pj.tracks.filter(x => !['texture', 'fx'].includes(x.role)).length === 4 && fs.readFileSync(G('assets/audio/projects/sam_theme.mid')).slice(0, 4).toString() === 'MThd' && fs.existsSync(G('assets/audio/projects/.gdignore')), 'project mirrored: ' + pj.tracks.map(x => x.role).join());
     t.ok(/^sent as take .*-edit/.test(sent), sent);
     t.noErrors(dawErr);
     await daw.close(); await p.bringToFront();
     const edit = fs.readdirSync(G('assets/audio/review/sam_theme')).find(d => /-edit$/.test(d)), dir = 'assets/audio/review/sam_theme/' + edit + '/';
     const m = json(dir + 'meta.json');
-    t.eq([m.edited_from, m.status, m.id, m.roles], [first.take, 'candidate', 'sam_theme', ['bass', 'chords', 'lead', 'pad']]);
-    t.eq(json(dir + 'stems.json').stems.map(s => s.name), ['bass', 'chords', 'lead', 'pad'], 'stems follow the edit');
+    const snd = r => r === 'texture' || r === 'fx' || r === 'texture2' || r === 'hit';
+    t.eq([m.edited_from, m.status, m.id, m.roles.filter(r => !snd(r))], [first.take, 'candidate', 'sam_theme', ['bass', 'chords', 'lead', 'pad']]);
+    t.eq(json(dir + 'stems.json').stems.map(s => s.name).filter(n => !snd(n)), ['bass', 'chords', 'lead', 'pad'], 'stems follow the edit');
     t.near(wavFrames(dir + 'mix.wav'), wavFrames(first.dir + 'mix.wav'), 1, 'same length (an asked-for length stays seamless)');
     await p.evaluate(() => rescanOne('sam_theme'));
     const card = await p.evaluate(take => { const i = DIR.takes.findIndex(m => m.take === take); return document.querySelector(`#takes [data-i="${i}"]`).textContent; }, edit);

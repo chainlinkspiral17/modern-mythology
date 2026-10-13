@@ -1385,7 +1385,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
     _chunkJob({ key, a, b, loop, lenSec, tailSec, sr }) {
       const spt = this.spt(), L = Math.round(lenSec * sr), frameOf = bar => Math.round((bar - a) * BAR * spt * sr);
       const chunks = [];
-      for (let x = a; x < b;) { const n = Math.min(b - x, 4); chunks.push({ a: x, b: x + n, at: frameOf(x), out: null }); x += n; }
+      // cut where the music's own clips start (sections), so long held notes — an ambience bed, a pad — rarely cross a
+      // cut (a crossing note makes its chunk render the rest of it as tail); spans longer than 8 bars split every 4
+      const cuts = new Set([a, b]);
+      for (const tr of this.project.tracks) for (const c of tr.clips || []) if (c.bar > a && c.bar < b) cuts.add(c.bar);
+      const at = [...cuts].sort((x, y) => x - y);
+      for (let i = 0; i + 1 < at.length; i++) { let x = at[i]; const z = at[i + 1]; const step = z - x > 8 ? 4 : z - x; while (x < z) { const n = Math.min(step, z - x); chunks.push({ a: x, b: x + n, at: frameOf(x), out: null }); x += n; } }
       const job = { key, segs: [], frames: 0, total: Math.ceil((lenSec + tailSec) * sr), done: false, buf: null, began: performance.now(), subs: new Set(), err: null, chunks };
       this._rjob = job;                                       // before the workers start: they stop when it changes
       const PAR = Math.max(1, Math.min(3, ((root.navigator && root.navigator.hardwareConcurrency) || 4) - 2));   // + the streamed chunk

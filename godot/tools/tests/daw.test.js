@@ -8,7 +8,8 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
 
   await t.test('generated project: 5 parts on FORGE / KIT', async () => {
     const r = await p.evaluate(() => P.tracks.map(t => t.role + ':' + E.dev(t.deviceId).type));
-    t.eq(r, ['drums:kit', 'bass:forge', 'chords:forge', 'lead:forge', 'pad:forge']);
+    t.eq(r.filter(x => !/^(texture|fx):/.test(x)), ['drums:kit', 'bass:forge', 'chords:forge', 'lead:forge', 'pad:forge']);
+    t.ok(r.filter(x => /^(texture|fx):/.test(x)).every(x => x.endsWith(':forge')), 'the sound-design layer (beds, risers, hits) is FORGE: ' + r);
   });
   await t.test('offline render: exact length, audible, faster than real time', async () => {
     const r = await p.evaluate(async () => { const t0 = performance.now(); const o = await E.renderOffline({ fromBar: 0, toBar: 2, loop: true }); return { len: o.channels[0].length, want: Math.round(2 * BAR * E.spt() * 44100), pk: AK.util.peakOf(o.channels), ms: performance.now() - t0, sec: o.lenSec }; });
@@ -27,7 +28,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
       let x = 0, ya = 0, yb = 0; a.forEach((v, i) => { x += (v - ma) * (b[i] - mb); ya += (v - ma) ** 2; yb += (b[i] - mb) ** 2; });
       return { names: stems.map(s => s.name), corr: x / Math.sqrt(ya * yb) };
     });
-    t.eq(r.names, ['drums', 'bass', 'chords', 'lead', 'pad']); t.ok(r.corr > 0.99, 'envelope corr ' + r.corr.toFixed(4));
+    t.eq(r.names.filter(n => n !== 'texture' && n !== 'fx'), ['drums', 'bass', 'chords', 'lead', 'pad']); t.ok(r.corr > 0.99, 'envelope corr ' + r.corr.toFixed(4));
   });
   await t.test('undo / redo an arrangement edit (no instrument reload)', async () => {
     const r = await p.evaluate(async () => {
@@ -41,7 +42,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
   });
   await t.test('MIDI export: drums on channel 10, all five parts', async () => {
     const r = await p.evaluate(() => SMF.read(E.exportMidi()).tracks.map(t => t.name + ':' + t.channel));
-    t.eq(r, ['drums:10', 'bass:1', 'chords:1', 'lead:1', 'pad:1']);
+    t.eq(r.filter(x => !/^(texture2?|fx|hit):/.test(x)), ['drums:10', 'bass:1', 'chords:1', 'lead:1', 'pad:1']);
   });
 
   const SLOW = !!process.env.TEST_SLOW;   // stems = one full render per part (~5× the time)
@@ -109,7 +110,8 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     const man = JSON.parse(fs.readFileSync(B + '.stems.json', 'utf8'));
     t.eq([man.temp, man.format, man.mix, man.loop], [true, 'ogg', 'assets/audio/bgm/test_club.temp.ogg', false]); t.near(man.frames, r.sec * 44100, 50, 'frames');
     if (SLOW) {
-      t.eq(man.stems.map(s => s.name + '@' + s.layer), ['drums@0.5', 'bass@0.25', 'chords@0', 'lead@0.75', 'pad@0']);
+      t.eq(man.stems.map(s => s.name + '@' + s.layer).filter(x => !/^(texture|fx)@/.test(x)), ['drums@0.5', 'bass@0.25', 'chords@0', 'lead@0.75', 'pad@0']);
+      t.ok(man.stems.every(s => s.name !== 'texture' || s.layer === 0) && man.stems.every(s => s.name !== 'fx' || s.layer === 0.5), 'bed always on, fx with the drums');
       for (const s of man.stems) { const m = mbMin(path.join(game, s.file)); t.ok(s.file.endsWith('.ogg') && m > 0.02 && m < 0.8, s.file + ' ' + m.toFixed(2) + ' MB/min'); }
       console.log('    stems (MB/min): ' + man.stems.map(s => s.name + ' ' + mbMin(path.join(game, s.file)).toFixed(2)).join(', '));
     }
@@ -156,7 +158,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
       return { dbg: [k, best, at, first], bar: BAR, startMs, rendered, tick, maxd, ticks, cachedMs, cachedOn, songEnd, notes: E.diag.filter(x => x.kind === 'audio').map(x => x.msg) };
     });
     t.ok(r.rendered, 'the ▶ button played rendered');
-    t.ok(r.startMs < 5000, 'first sound after ' + Math.round(r.startMs) + ' ms');
+    t.ok(r.startMs < 8000, 'first sound after ' + Math.round(r.startMs) + ' ms (8 parts incl. the sound layer, a 90 s song)');
     t.ok(r.tick > r.bar, 'playhead moved: ' + r.tick);
     t.ok(r.dbg[3] > 44100 * 3 && r.maxd < 1e-5, 'streamed output vs the finished render over ' + (r.dbg[3] / 44100).toFixed(1) + ' s, max diff ' + r.maxd);
     t.ok(r.ticks.every(x => x >= 0 && x < r.bar), 'loop playhead stays in bar 1: ' + r.ticks.map(Math.round).join(' '));

@@ -253,7 +253,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const REVIEW_DIR = 'assets/audio/review';
 const APPROVALS = 'resources/music/temp_approvals.json';
-const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad'];
+const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad', 'texture', 'fx'];   // texture: the ambience bed · fx: transitions + hits
 const EXTRA_PADS = ['pad2', 'pad3'];
 // AudioMgr.gd: stem layer thresholds, its fade (STEM_FADE) and the director's send fade
 const LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75 };

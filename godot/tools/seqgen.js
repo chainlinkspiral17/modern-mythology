@@ -63,48 +63,119 @@
   }
   function inScale(n, key, scale) { return scale.includes(((n - key) % 12 + 12) % 12); }
 
-  // progressions as scale degrees (0 = tonic), 4 chords, one per bar
+  // progressions as scale degrees (0 = tonic), one chord per harmonic-rhythm step. Families by mode; a song picks one
+  // for its A section and a contrasting one for B (and C) — see harmonyPlan()
   const PROGS = {
-    minor: [[0, 5, 2, 6], [0, 3, 4, 0], [0, 6, 5, 6], [0, 0, 5, 4], [0, 5, 3, 4], [0, 3, 0, 6], [0, 2, 5, 6], [0, 0, 3, 3]],
-    major: [[0, 5, 3, 4], [0, 4, 5, 3], [1, 4, 0, 0], [0, 3, 0, 4], [0, 3, 5, 4], [0, 2, 3, 4], [3, 4, 0, 0], [0, 6, 3, 0]],
-    modal: [[0, 6, 0, 6], [0, 1, 0, 1], [0, 3, 0, 3], [0, 0, 6, 6], [0, 6, 5, 6]],
-    drone: [[0, 0, 0, 0], [0, 0, 5, 5], [0, 0, 3, 3]],
+    minor: [[0, 5, 2, 6], [0, 3, 4, 0], [0, 6, 5, 6], [0, 0, 5, 4], [0, 5, 3, 4], [0, 3, 0, 6], [0, 2, 5, 6], [0, 0, 3, 3],
+      [0, 3, 6, 2], [0, 4, 5, 3], [0, 6, 3, 4], [5, 6, 0, 0], [0, 5, 0, 4], [3, 4, 0, 5], [0, 2, 3, 4], [5, 3, 0, 4], [0, 6, 5, 4]],
+    major: [[0, 5, 3, 4], [0, 4, 5, 3], [1, 4, 0, 0], [0, 3, 0, 4], [0, 3, 5, 4], [0, 2, 3, 4], [3, 4, 0, 0], [0, 6, 3, 0],
+      [0, 3, 1, 4], [5, 3, 0, 4], [0, 2, 5, 3], [3, 0, 4, 5], [0, 4, 3, 3], [1, 2, 3, 4], [0, 5, 1, 4], [3, 5, 4, 0]],
+    modal: [[0, 6, 0, 6], [0, 1, 0, 1], [0, 3, 0, 3], [0, 0, 6, 6], [0, 6, 5, 6], [0, 3, 6, 0], [0, 0, 1, 6], [0, 4, 3, 0]],
+    drone: [[0, 0, 0, 0], [0, 0, 5, 5], [0, 0, 3, 3], [0, 5, 0, 5], [0, 0, 6, 6], [0, 3, 0, 5]],
   };
 
   // ── styles ──────────────────────────────────────────────────────
-  // drum grids: 16 steps per bar, values = probability (0..1); `acc` accents
+  // drum grids: 16 steps per bar, values = probability (0..1). `grooves`: the style's beat vocabulary — a song picks one
+  // for A, another for B, a thinned one for breaks. bass / chords / lead / pad: the figure vocabularies picked per song
+  // (and per section). `drums` stays the first groove (older callers read it).
+  const G = (kick, back, hat, extra) => Object.assign({ kick }, back, hat, extra || {});
   const STYLES = {
-    four_floor: { name: 'four on the floor', bpm: [118, 126], swing: 0.0, prog: 'minor', modes: ['minor', 'dorian'],
-      drums: { kick: '1000100010001000', clap: '0000100000001000', hat_c: '0010001000100010', hat_o: '0000000000000000', shaker: '1111111111111111/0.35' },
-      bass: 'offbeat8', chords: 'stabs', lead: 'sparse', pad: 'swell', presets: { bass: 'bass_sub', chords: 'keys_organ', lead: 'pluck_bell', pad: 'pad_glass' } },
-    boom_bap: { name: 'boom bap', bpm: [84, 94], swing: 0.55, prog: 'minor', modes: ['minor', 'dorian'],
-      drums: { kick: '1000000010100000', snare: '0000100000001000', hat_c: '1010101010101010', rim: '0000000100000010/0.4' },
-      bass: 'syncop', chords: 'comp', lead: 'motif', pad: 'none', ghost: true, presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'pluck_marimba', pad: 'pad_warm' } },
-    lofi: { name: 'lo-fi', bpm: [70, 86], swing: 0.45, prog: 'major', modes: ['major', 'dorian'],
-      drums: { kick: '1000000010010000', snare: '0000100000001000', hat_c: '1010101010101010/0.8', shaker: '0010001000100010/0.5' },
-      bass: 'syncop', chords: 'pad', lead: 'motif', pad: 'none', ghost: true, presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'pluck_bell', pad: 'pad_warm' } },
-    trap: { name: 'trap', bpm: [130, 145], swing: 0.0, prog: 'minor', modes: ['minor', 'phrygian', 'harmonic'],
-      drums: { kick: '1000000100100000', clap: '0000000010000000', hat_c: '1111111111111111/0.9' },
-      bass: 'drone808', chords: 'pad', lead: 'motif', pad: 'swell', rolls: true, presets: { bass: 'bass_sub', chords: 'pad_glass', lead: 'lead_square', pad: 'choir_vox' } },
-    dnb: { name: 'drum & bass', bpm: [168, 176], swing: 0.0, prog: 'minor', modes: ['minor', 'dorian'],
-      drums: { kick: '1000000000100000', snare: '0000100000001000', hat_c: '1010101010101010/0.7', ride: '0010001000100010/0.3' },
-      bass: 'rolling', chords: 'pad', lead: 'sparse', pad: 'swell', presets: { bass: 'bass_reese', chords: 'pad_warm', lead: 'lead_saw', pad: 'pad_glass' } },
-    shuffle: { name: 'gulf-coast shuffle', bpm: [92, 112], swing: 0.62, prog: 'major', modes: ['mixolydian', 'major'],
-      drums: { kick: '1000000010000000', snare: '0000100000001000', ride: '1010101010101010', hat_c: '0000100000001000/0.6' },
-      bass: 'walking', chords: 'comp', lead: 'motif', pad: 'none', presets: { bass: 'bass_sub', chords: 'keys_organ', lead: 'keys_ep', pad: 'strings_ensemble' } },
-    motorik: { name: 'motorik', bpm: [112, 124], swing: 0.0, prog: 'modal', modes: ['dorian', 'mixolydian'],
-      drums: { kick: '1000100010001000', snare: '0000100000001000', hat_c: '1010101010101010' },
-      bass: 'pulse8', chords: 'arp', lead: 'sparse', pad: 'swell', presets: { bass: 'bass_acid', chords: 'arp_chip', lead: 'lead_saw', pad: 'pad_glass' } },
-    synthwave: { name: 'synthwave', bpm: [96, 108], swing: 0.0, prog: 'minor', modes: ['minor', 'dorian'],
-      drums: { kick: '1000100010001000', snare: '0000100000001000', hat_c: '0010001000100010', clap: '0000100000001000/0.5' },
-      bass: 'pulse8', chords: 'pad', lead: 'motif', pad: 'swell', presets: { bass: 'bass_acid', chords: 'pad_warm', lead: 'lead_saw', pad: 'strings_ensemble' } },
-    noir: { name: 'slow noir', bpm: [64, 80], swing: 0.58, prog: 'minor', modes: ['minor', 'harmonic', 'phrygian'],
-      drums: { kick: '1000000000000000/0.8', rim: '0000100000001000/0.7', ride: '1010101010101010/0.75' },
-      bass: 'walking', chords: 'pad', lead: 'motif', pad: 'swell', presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'keys_ep', pad: 'drone_dark' } },
-    ambient: { name: 'ambient bed', bpm: [60, 76], swing: 0.0, prog: 'drone', modes: ['lydian', 'dorian', 'minor', 'major'],
-      drums: { shaker: '0010000000100000/0.25', rim: '0000000000000100/0.15' },
-      bass: 'drone', chords: 'swell', lead: 'sparse', pad: 'drone', presets: { bass: 'drone_dark', chords: 'pad_glass', lead: 'pluck_bell', pad: 'pad_warm' } },
+    four_floor: { name: 'four on the floor', bpm: [118, 126], swing: 0.0, prog: 'minor', modes: ['minor', 'dorian'], hr: [1, 1, 2],
+      grooves: [
+        G('1000100010001000', { clap: '0000100000001000' }, { hat_c: '0010001000100010', shaker: '1111111111111111/0.35' }),
+        G('1000100010001000', { clap: '0000100000001000' }, { hat_c: '1111111111111111/0.55', hat_o: '0010001000100010' }),
+        G('1000100010001010/0.9', { clap: '0000100000001001/0.9' }, { hat_c: '0010001000100010', rim: '0001000100010001/0.5' }),
+        G('1000100010001000', { snare: '0000100000001000', clap: '0000000000001000/0.5' }, { hat_o: '0010001000100010', shaker: '1010101010101010/0.4' }),
+        G('1000100010001000', { clap: '0000100000001000' }, { ride: '1010101010101010/0.6', hat_c: '0010001000100010' }),
+      ],
+      bass: ['offbeat8', 'octave16', 'pump8', 'kicklock', 'tresillo'], chords: ['stabs', 'offbeat', 'pulse8', 'push', 'pad'], lead: ['sparse', 'motif', 'hook'], pad: ['swell', 'shimmer'],
+      presets: { bass: 'bass_sub', chords: 'keys_organ', lead: 'pluck_bell', pad: 'pad_glass' } },
+    boom_bap: { name: 'boom bap', bpm: [84, 94], swing: 0.55, prog: 'minor', modes: ['minor', 'dorian'], hr: [1, 1, 0.5], ghost: true,
+      grooves: [
+        G('1000000010100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010', rim: '0000000100000010/0.4' }),
+        G('1000000110100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010', hat_o: '0000000000000010/0.5' }),
+        G('1001000000100100', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.85' }),
+        G('1000001000100000', { snare: '0000100000001001/0.9' }, { hat_c: '1011101010111010/0.75' }),
+        G('1010000000100010', { snare: '0000100000001000' }, { ride: '1010101010101010/0.7', rim: '0000000100000000/0.5' }),
+        G('1000000100000100', { snare: '0000100000001000', clap: '0000100000000000/0.4' }, { hat_c: '1010101010101010', shaker: '0010001000100010/0.4' }),
+      ],
+      bass: ['syncop', 'kicklock', 'rootfifth', 'tresillo', 'walking'], chords: ['comp', 'charleston', 'strum', 'push'], lead: ['motif', 'answer', 'sparse'], pad: ['swell', 'moving'],
+      presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'pluck_marimba', pad: 'pad_warm' } },
+    lofi: { name: 'lo-fi', bpm: [70, 86], swing: 0.45, prog: 'major', modes: ['major', 'dorian'], hr: [1, 1, 0.5, 2], ghost: true,
+      grooves: [
+        G('1000000010010000', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.8', shaker: '0010001000100010/0.5' }),
+        G('1000001000100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.75' }),
+        G('1000000100100100/0.9', { snare: '0000100000001000' }, { hat_c: '0010101000101010/0.8', rim: '0000000000000100/0.5' }),
+        G('1001000000000100', { snare: '0000100000001000' }, { shaker: '1111111111111111/0.4', hat_c: '1000100010001000/0.6' }),
+        G('1000000010000000', { rim: '0000100000001000' }, { hat_c: '1010101010101010/0.7' }),
+      ],
+      bass: ['syncop', 'rootfifth', 'root_half', 'walking', 'arp'], chords: ['pad', 'strum', 'charleston', 'arp_broken'], lead: ['motif', 'answer', 'sparse'], pad: ['swell', 'moving', 'sus'],
+      presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'pluck_bell', pad: 'pad_warm' } },
+    trap: { name: 'trap', bpm: [130, 145], swing: 0.0, prog: 'minor', modes: ['minor', 'phrygian', 'harmonic'], hr: [2, 1, 2], rolls: true,
+      grooves: [
+        G('1000000100100000', { clap: '0000000010000000' }, { hat_c: '1111111111111111/0.9' }),
+        G('1000001000000100', { clap: '0000000010000000' }, { hat_c: '1010101010101010', hat_o: '0000000000000010/0.5' }),
+        G('1000000000100010', { clap: '0000000010000000', snare: '0000000010000001/0.4' }, { hat_c: '1111111111111111/0.75' }),
+        G('1010000000010000', { clap: '0000000010000000' }, { hat_c: '1011101110111011/0.8' }),
+      ],
+      bass: ['drone808', 'kicklock', 'tresillo'], chords: ['pad', 'arp_broken', 'swell'], lead: ['motif', 'hook', 'sparse'], pad: ['swell', 'drone'],
+      presets: { bass: 'bass_sub', chords: 'pad_glass', lead: 'lead_square', pad: 'choir_vox' } },
+    dnb: { name: 'drum & bass', bpm: [168, 176], swing: 0.0, prog: 'minor', modes: ['minor', 'dorian'], hr: [2, 1],
+      grooves: [
+        G('1000000000100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.7', ride: '0010001000100010/0.3' }),
+        G('1000000000000100', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.75' }),
+        G('1000000001100000', { snare: '0000100100001000' }, { hat_c: '1111111111111111/0.5' }),
+        G('1010000000110000', { snare: '0000100101001001/0.85' }, { hat_c: '1010101010101010/0.7', ride: '1000100010001000/0.4' }),
+      ],
+      bass: ['rolling', 'root_whole', 'syncop'], chords: ['pad', 'swell', 'stabs'], lead: ['sparse', 'motif'], pad: ['swell', 'shimmer'],
+      presets: { bass: 'bass_reese', chords: 'pad_warm', lead: 'lead_saw', pad: 'pad_glass' } },
+    shuffle: { name: 'gulf-coast shuffle', bpm: [92, 112], swing: 0.62, prog: 'major', modes: ['mixolydian', 'major'], hr: [1, 0.5, 1],
+      grooves: [
+        G('1000000010000000', { snare: '0000100000001000' }, { ride: '1010101010101010', hat_c: '0000100000001000/0.6' }),
+        G('1000001010000000', { snare: '0000100000001000' }, { ride: '1011101110111011/0.8' }),
+        G('1000000010100000', { snare: '0010100000101000/0.7' }, { hat_c: '1010101010101010' }),
+        G('1000000000000000', { snare: '0000000010000000' }, { ride: '1010101010101010', rim: '0000100000001000/0.6' }),
+      ],
+      bass: ['walking', 'rootfifth', 'pump8', 'arp'], chords: ['comp', 'charleston', 'offbeat', 'strum'], lead: ['motif', 'answer', 'hook'], pad: ['swell', 'moving'],
+      presets: { bass: 'bass_sub', chords: 'keys_organ', lead: 'keys_ep', pad: 'strings_ensemble' } },
+    motorik: { name: 'motorik', bpm: [112, 124], swing: 0.0, prog: 'modal', modes: ['dorian', 'mixolydian'], hr: [2, 1, 2],
+      grooves: [
+        G('1000100010001000', { snare: '0000100000001000' }, { hat_c: '1010101010101010' }),
+        G('1000100010101000', { snare: '0000100000001000' }, { hat_c: '1111111111111111/0.6' }),
+        G('1010100010001000', { snare: '0000100000001000' }, { hat_c: '1010101010101010', shaker: '0101010101010101/0.4' }),
+        G('1000100010001000', { snare: '0000100000001010/0.8' }, { ride: '1010101010101010/0.7' }),
+      ],
+      bass: ['pump8', 'pedal', 'octave16'], chords: ['arp_up', 'arp_ud', 'pulse8'], lead: ['sparse', 'motif', 'hook'], pad: ['swell', 'drone'],
+      presets: { bass: 'bass_acid', chords: 'arp_chip', lead: 'lead_saw', pad: 'pad_glass' } },
+    synthwave: { name: 'synthwave', bpm: [96, 108], swing: 0.0, prog: 'minor', modes: ['minor', 'dorian'], hr: [1, 2, 1],
+      grooves: [
+        G('1000100010001000', { snare: '0000100000001000', clap: '0000100000001000/0.5' }, { hat_c: '0010001000100010' }),
+        G('1000000010100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010' }),
+        G('1000100010001000', { snare: '0000100000001000' }, { hat_c: '1111111111111111/0.5', hat_o: '0010001000100010/0.6' }),
+        G('1000001010000000', { snare: '0000100000001000' }, { hat_c: '1010101010101010', tom: '0000000000000111/0.3' }),
+      ],
+      bass: ['pump8', 'octave16', 'offbeat8', 'arp'], chords: ['pad', 'arp_up', 'pulse8', 'stabs'], lead: ['motif', 'hook', 'sparse'], pad: ['swell', 'shimmer'],
+      presets: { bass: 'bass_acid', chords: 'pad_warm', lead: 'lead_saw', pad: 'strings_ensemble' } },
+    noir: { name: 'slow noir', bpm: [64, 80], swing: 0.58, prog: 'minor', modes: ['minor', 'harmonic', 'phrygian'], hr: [1, 2, 2],
+      grooves: [
+        G('1000000000000000/0.8', { rim: '0000100000001000/0.7' }, { ride: '1010101010101010/0.75' }),
+        G('1000000010000000/0.8', { rim: '0000100000001000/0.6' }, { ride: '1011101110111011/0.6' }),
+        G('0000000000000000', { rim: '0000000000001000/0.7' }, { ride: '1010101010101010/0.6', shaker: '0010001000100010/0.3' }),
+        G('1000000000100000/0.7', { snare: '0000100000001000/0.35' }, { ride: '1010101010101010/0.7' }),
+      ],
+      bass: ['walking', 'root_half', 'root_whole', 'pedal'], chords: ['pad', 'strum', 'charleston', 'arp_broken'], lead: ['motif', 'answer', 'sparse'], pad: ['swell', 'drone', 'sus', 'moving'],
+      presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'keys_ep', pad: 'drone_dark' } },
+    ambient: { name: 'ambient bed', bpm: [60, 76], swing: 0.0, prog: 'drone', modes: ['lydian', 'dorian', 'minor', 'major'], hr: [2, 2, 1],
+      grooves: [
+        G('0000000000000000', {}, { shaker: '0010000000100000/0.25', rim: '0000000000000100/0.15' }),
+        G('0000000000000000', {}, { rim: '0000001000000000/0.2', ride: '1000000010000000/0.15' }),
+        G('1000000000000000/0.25', {}, { shaker: '0000100000001000/0.2' }),
+        G('0000000000000000', {}, {}),
+      ],
+      bass: ['drone', 'root_whole', 'pedal'], chords: ['swell', 'pad', 'arp_broken'], lead: ['sparse', 'motif'], pad: ['drone', 'shimmer', 'sus'],
+      presets: { bass: 'drone_dark', chords: 'pad_glass', lead: 'pluck_bell', pad: 'pad_warm' } },
   };
+  for (const st of Object.values(STYLES)) st.drums = st.grooves[0];
 
   // FORGE alternates per style and role, next to each style's own `presets` pick. Role rules: bass = mono
   // patches (ambient's drone bass may be a pad), chords + pad = polyphonic, lead = anything melodic.
@@ -141,6 +212,8 @@
   }
 
   // ── forms: sections + which roles play ──────────────────────────
+  // FORMS stays the menu (song / short / loop / bed); a 'song' picks one of SONG_SHAPES per seed. A section's `base`
+  // (A for A / A2) shares material — A2 is A again with variation; B, C (a bridge) and brk (a break) contrast.
   const FORMS = {
     song: [['intro', 4, ['pad', 'chords']], ['A', 8, ['drums', 'bass', 'chords']], ['B', 8, ['drums', 'bass', 'chords', 'lead', 'pad']],
            ['A2', 8, ['drums', 'bass', 'chords', 'lead']], ['outro', 4, ['pad', 'bass']]],
@@ -149,152 +222,464 @@
     // game beds: one continuous section, no intro/outro, no crash on bar 1 → loops seamlessly
     bed: [['bed', 16, ['drums', 'bass', 'chords', 'lead', 'pad']]],
   };
+  const SONG_SHAPES = [
+    [['intro', 4], ['A', 8], ['B', 8], ['A2', 8], ['outro', 4]],
+    [['intro', 4], ['A', 8], ['A2', 8], ['B', 8], ['brk', 4], ['B2', 8], ['outro', 4]],
+    [['intro', 8], ['A', 8], ['B', 8], ['C', 8], ['B2', 8], ['outro', 4]],
+    [['intro', 2], ['A', 16], ['B', 8], ['A2', 8], ['outro', 4]],
+    [['intro', 4], ['A', 8], ['B', 8], ['brk', 8], ['A2', 8], ['outro', 8]],
+    [['intro', 4], ['A', 8], ['C', 8], ['A2', 8], ['B', 8], ['outro', 4]],
+  ];
+  const baseOf = name => name.replace(/\d+$/, '');
+  // which roles play in a section: the kind's options, picked per song (texture / fx / hit are added by song())
+  function rolesFor(R, base, name, st, sparse) {
+    const lead = R.chance(sparse ? 0.35 : 0.55);
+    switch (base) {
+      case 'intro': return R.pick([['pad', 'chords'], ['pad', 'lead'], ['chords'], ['pad', 'drums'], ['pad', 'chords', 'bass']]);
+      case 'A': return name === 'A2' ? ['drums', 'bass', 'chords', 'lead'].concat(R.chance(0.5) ? ['pad'] : []) : ['drums', 'bass', 'chords'].concat(lead ? ['lead'] : []);
+      case 'B': return ['drums', 'bass', 'chords', 'lead', 'pad'];
+      case 'C': return R.pick([['chords', 'pad', 'lead', 'bass'], ['pad', 'lead'], ['drums', 'bass', 'pad', 'lead'], ['chords', 'lead', 'bass']]);
+      case 'brk': return R.pick([['pad', 'lead'], ['drums', 'bass'], ['pad', 'chords'], ['bass', 'pad']]);
+      case 'outro': return R.pick([['pad', 'bass'], ['pad', 'chords'], ['chords', 'lead'], ['pad', 'lead', 'chords']]);
+      default: return ['drums', 'bass', 'chords', 'lead', 'pad'];
+    }
+  }
 
   function parseGrid(s) {
     const [pat, p] = String(s).split('/');
     const prob = p === undefined ? 1 : parseFloat(p);
     return pat.split('').map(c => c === '1' ? prob : 0);
   }
+  const STEPS = s => parseGrid(s).map((p, i) => p ? i : -1).filter(i => i >= 0);
 
-  // ── parts ───────────────────────────────────────────────────────
-  function genDrums(R, st, sec, opts) {
-    const notes = [], bars = sec.bars, dens = opts.density;
-    const grids = {}; for (const k in st.drums) grids[k] = parseGrid(st.drums[k]);
+  // ── harmony ─────────────────────────────────────────────────────
+  // chord tones (scale-degree offsets) per extension
+  const EXT = { triad: [0, 2, 4], seventh: [0, 2, 4, 6], sus2: [0, 1, 4], sus4: [0, 3, 4], add9: [0, 2, 4, 8], ninth: [0, 2, 4, 6, 8], power: [0, 4] };
+  const EXT_W = {
+    four_floor: [['seventh', 3], ['triad', 2], ['add9', 2], ['sus2', 1]], boom_bap: [['seventh', 4], ['ninth', 2], ['add9', 1]], lofi: [['seventh', 3], ['ninth', 3], ['add9', 2]],
+    trap: [['triad', 3], ['sus2', 1], ['power', 1]], dnb: [['seventh', 2], ['add9', 2], ['sus2', 1]], shuffle: [['seventh', 3], ['triad', 2]],
+    motorik: [['sus2', 2], ['triad', 2], ['power', 1], ['sus4', 1]], synthwave: [['triad', 2], ['add9', 2], ['seventh', 1]],
+    noir: [['seventh', 3], ['ninth', 2], ['triad', 1]], ambient: [['add9', 3], ['sus2', 2], ['sus4', 1], ['triad', 1]],
+  };
+  // a section's harmony: progression, harmonic rhythm (bars per chord), extension; B / C contrast with A
+  function harmonyPlan(R, st, fam, prog0) {
+    const pool = PROGS[fam];
+    const A = { prog: prog0 || R.pick(pool), hr: R.pick(st.hr || [1]), ext: R.weighted(EXT_W[st.id] || [['triad', 1]]) };
+    const other = avoid => { const c = pool.filter(p => p.join() !== avoid.join() && p[0] !== avoid[0]); return R.pick(c.length ? c : pool.filter(p => p.join() !== avoid.join()).concat([avoid])); };
+    const B = { prog: other(A.prog), hr: R.chance(0.3) ? R.pick(st.hr || [1]) : A.hr, ext: R.chance(0.4) ? R.weighted(EXT_W[st.id] || [['triad', 1]]) : A.ext };
+    const C = { prog: other(B.prog), hr: R.pick([1, 2]), ext: R.weighted(EXT_W[st.id] || [['triad', 1]]) };
+    const brk = R.chance(0.5) ? { prog: [A.prog[0]], hr: 4, ext: 'sus2' } : A;
+    return { A, B, C, brk, intro: R.chance(0.6) ? A : { prog: [A.prog[0], A.prog[A.prog.length - 1]], hr: 2, ext: A.ext }, outro: A, loop: A, bed: A };
+  }
+  // the chord under bar b (+ beat) of a section — { deg, ext }; a dominant-ish V gets its seventh
+  function chordAt(H, b, beat = 0) {
+    const pos = Math.floor((b + beat / 4) / H.hr), deg = H.prog[((pos % H.prog.length) + H.prog.length) % H.prog.length];
+    return { deg, ext: deg % 7 === 4 && H.ext === 'triad' ? 'seventh' : H.ext };
+  }
+  const chordNotes = (key, scale, c, oct) => EXT[c.ext].map(x => deg2midi(key, scale, c.deg + x, oct));
+  const chordPcsOf = (key, scale, c) => [...new Set(chordNotes(key, scale, c, 4).map(n => ((n % 12) + 12) % 12))];
+
+  // ── drums ───────────────────────────────────────────────────────
+  // ctx.groove: the section's grid set; variations every 4 bars, a fill (from a pool) on the phrase end
+  const FILLS = ['snare16', 'tom_run', 'stutter', 'drop', 'open_hat', 'flam', 'kick_push'];
+  // percussion colour a song may add on top of its grooves (GM: tamb 54, cowbell 56, congas 62 / 64, clave 75)
+  const PERC = {
+    tamb24: { n: 54, g: '0000100000001000/0.7' }, tamb8: { n: 54, g: '1010101010101010/0.45' }, conga: { n: 62, g: '0010010000100100/0.6', n2: 64, g2: '1000000010010000/0.5' },
+    clave: { n: 75, g: '1001001000101000/0.6' }, cowbell: { n: 56, g: '1000100010001000/0.4' }, shaker16: { n: 70, g: '1111111111111111/0.3' },
+  };
+  const PERC_FOR = { four_floor: ['tamb8', 'cowbell', 'conga'], boom_bap: ['clave', 'tamb24', 'shaker16'], lofi: ['shaker16', 'conga', 'tamb24'], shuffle: ['tamb24', 'conga', 'cowbell'],
+    synthwave: ['tamb24', 'shaker16'], motorik: ['tamb8', 'shaker16'], dnb: ['shaker16', 'tamb8'], trap: [], noir: ['conga', 'shaker16'], ambient: [] };
+  const GM_OF = { kick: 36, rim: 37, snare: 38, clap: 39, hat_c: 42, tom: 45, hat_o: 46, crash: 49, ride: 51, shaker: 70 };
+  function genDrums(R, st, sec, ctx, opts) {
+    const notes = [], bars = sec.bars, dens = opts.density, groove = ctx.groove, thin = ctx.thin;
+    const grids = {}; for (const k in groove) grids[k] = parseGrid(groove[k]);
+    if (thin) { for (const k of ['kick', 'snare', 'clap']) if (grids[k] && thin === 'perc') delete grids[k]; if (thin === 'half') { if (grids.snare) grids.snare = parseGrid('0000000010000000'); if (grids.clap) grids.clap = parseGrid('0000000010000000'); if (grids.kick) grids.kick = parseGrid('1000000000000000'); } }
+    const perc = ctx.perc && PERC[ctx.perc];
+    const fillKind = ctx.fill;
     for (let b = 0; b < bars; b++) {
-      const fill = !opts.bed && (b === bars - 1 || (bars > 4 && b % 4 === 3 && R.chance(0.35)));
+      const phraseEnd = !opts.bed && (b === bars - 1 || (bars > 4 && b % 8 === 7) || (b % 4 === 3 && R.chance(0.25)));
+      const turn = b % 4 === 3 && !phraseEnd;                 // a small variation every fourth bar
+      const T = b * BAR;
       for (const voice in grids) {
         const g = grids[voice];
         for (let s = 0; s < 16; s++) {
           let p = g[s];
-          if (fill && s >= 12 && (voice === 'kick' || voice === 'hat_o')) p *= 0.5;
+          if (phraseEnd && s >= 12 && fillKind !== 'open_hat' && (voice === 'kick' || voice === 'hat_o' || voice === 'hat_c')) p *= fillKind === 'drop' ? 0 : 0.5;
+          if (turn && voice === 'kick' && (s === 14 || s === 15) && !p && R.chance(0.4)) p = 0.8;
           if (!p) continue;
           const keep = voice === 'kick' || voice === 'snare' || voice === 'clap' ? p : p * (0.55 + 0.45 * dens);
           if (!R.chance(keep)) continue;
-          const accent = s % 4 === 0 ? 1 : s % 2 === 0 ? 0.8 : 0.65;
-          notes.push({ t: b * BAR + s * S16, d: S16, n: GM[voice], v: clampV((voice === 'hat_c' || voice === 'shaker' || voice === 'ride' ? 0.55 : 0.9) * accent + (R() - 0.5) * 0.1) });
+          const accent = s % 4 === 0 ? 1 : s % 2 === 0 ? 0.8 : 0.62;
+          const base = voice === 'hat_c' || voice === 'shaker' || voice === 'ride' ? 0.55 : voice === 'rim' ? 0.7 : 0.9;
+          notes.push({ t: T + s * S16, d: S16, n: GM_OF[voice], v: clampV(base * accent + (R() - 0.5) * 0.12) });
         }
       }
-      if (st.ghost) for (let s = 0; s < 16; s++) if ((s === 7 || s === 9 || s === 15) && R.chance(0.35 * dens)) notes.push({ t: b * BAR + s * S16, d: S16, n: GM.snare, v: 0.22 + R() * 0.1 });
-      if (st.rolls && R.chance(0.5)) { const at = R.pick([2, 6, 10, 14]); for (let k = 0; k < 6; k++) notes.push({ t: b * BAR + at * S16 + Math.round(k * S16 * 2 / 6), d: S16 / 3, n: GM.hat_c, v: 0.35 + k * 0.06 }); }
-      if (fill && (st.drums.snare || st.drums.clap)) {
-        const sn = st.drums.snare ? GM.snare : GM.clap;
-        for (let s = 12; s < 16; s++) if (R.chance(0.7)) notes.push({ t: b * BAR + s * S16, d: S16, n: R.chance(0.3) ? GM.tom : sn, v: 0.5 + (s - 12) * 0.12 });
+      if (perc && !thin) for (const [n, g] of [[perc.n, perc.g], [perc.n2, perc.g2]]) { if (!n) continue; const pg = parseGrid(g); for (let s = 0; s < 16; s++) if (pg[s] && R.chance(pg[s] * (0.6 + 0.4 * dens))) notes.push({ t: T + s * S16, d: S16, n, v: clampV(0.5 + (s % 4 === 0 ? 0.15 : 0) + (R() - 0.5) * 0.15) }); }
+      if (st.ghost && !thin) for (let s = 0; s < 16; s++) if ((s === 7 || s === 9 || s === 15 || s === 3) && R.chance(0.3 * dens)) notes.push({ t: T + s * S16, d: S16, n: GM.snare, v: 0.18 + R() * 0.1 });
+      if (st.rolls && !thin && R.chance(0.45)) { const at = R.pick([2, 6, 10, 14]), k3 = R.pick([3, 4, 6]); for (let k = 0; k < k3; k++) notes.push({ t: T + at * S16 + Math.round(k * S16 * 2 / k3), d: Math.max(4, Math.round(S16 * 2 / k3)), n: GM.hat_c, v: 0.35 + k * 0.07 }); }
+      if (phraseEnd && !thin) {
+        const sn = groove.snare ? GM.snare : groove.clap ? GM.clap : GM.rim;
+        if (fillKind === 'snare16') for (let s = 12; s < 16; s++) notes.push({ t: T + s * S16, d: S16, n: sn, v: 0.45 + (s - 12) * 0.13 });
+        else if (fillKind === 'tom_run') [[12, 48], [13, 48], [14, 45], [15, 41]].forEach(([s, n]) => notes.push({ t: T + s * S16, d: S16, n, v: 0.7 }));
+        else if (fillKind === 'stutter') for (let k = 0; k < 6; k++) notes.push({ t: T + 12 * S16 + Math.round(k * S16 * 4 / 6), d: 8, n: R.chance(0.5) ? sn : GM.kick, v: 0.5 + k * 0.07 });
+        else if (fillKind === 'open_hat') notes.push({ t: T + 14 * S16, d: S16 * 2, n: GM.hat_o, v: 0.75 });
+        else if (fillKind === 'flam') { notes.push({ t: T + 12 * S16 - 6, d: 6, n: sn, v: 0.35 }, { t: T + 12 * S16, d: S16, n: sn, v: 0.85 }, { t: T + 14 * S16, d: S16, n: sn, v: 0.7 }); }
+        else if (fillKind === 'kick_push') notes.push({ t: T + 14 * S16, d: S16, n: GM.kick, v: 0.8 }, { t: T + 15 * S16, d: S16, n: GM.kick, v: 0.7 });
       }
-      if (b === 0 && !opts.bed && sec.name !== 'intro' && (st.drums.kick)) notes.push({ t: 0, d: BEAT, n: GM.crash, v: 0.7 });
+      if (b === 0 && ctx.crash && !opts.bed) notes.push({ t: 0, d: BEAT, n: GM.crash, v: 0.7 });
     }
     return notes;
   }
 
-  function genBass(R, st, sec, harm, opts) {
-    const notes = [], { key, scale, chords } = harm, kind = st.bass;
+  // ── bass ────────────────────────────────────────────────────────
+  // one figure per section (from the style's vocabulary); approach notes lead into the next chord
+  function genBass(R, st, sec, ctx, harm, opts) {
+    const notes = [], { key, scale } = harm, H = ctx.H, kind = ctx.fig, kick = ctx.kickSteps || [0, 8];
+    const low = n => { while (n > 52) n -= 12; while (n < 31) n += 12; return n; };
+    const push = (t, d, n, v) => notes.push({ t, d, n, v });
     for (let b = 0; b < sec.bars; b++) {
-      const deg = chords[(sec.bar + b) % chords.length];
-      const root = deg2midi(key, scale, deg, 1) + (deg2midi(key, scale, deg, 1) < 33 ? 12 : 0);
-      const fifth = deg2midi(key, scale, deg + 4, 1) + (deg2midi(key, scale, deg, 1) < 33 ? 12 : 0);
-      const T = b * BAR;
-      if (kind === 'drone') { if (b % 2 === 0) notes.push({ t: T, d: BAR * 2 - S16, n: root, v: 0.7 }); }
-      else if (kind === 'drone808') { notes.push({ t: T, d: BEAT * 3, n: root, v: 0.9 }); if (R.chance(0.5)) notes.push({ t: T + BEAT * 3 + S16 * 2, d: S16 * 2, n: R.chance(0.5) ? root + 12 : fifth, v: 0.8 }); }
-      else if (kind === 'offbeat8') { for (let k = 0; k < 4; k++) notes.push({ t: T + k * BEAT + S16 * 2, d: S16 * 2, n: k === 3 && R.chance(0.3) ? fifth : root, v: 0.85 }); }
-      else if (kind === 'pulse8') { for (let k = 0; k < 8; k++) notes.push({ t: T + k * S16 * 2, d: S16 * 2 - 6, n: k % 4 === 3 && R.chance(0.4) ? root + 12 : root, v: k % 2 ? 0.65 : 0.85 }); }
-      else if (kind === 'rolling') { for (let k = 0; k < 16; k++) if (R.chance(k % 4 === 0 ? 1 : 0.45 * opts.density + 0.15)) notes.push({ t: T + k * S16, d: S16, n: R.chance(0.25) ? fifth : root, v: 0.8 }); }
-      else if (kind === 'walking') {
-        const next = deg2midi(key, scale, chords[(sec.bar + b + 1) % chords.length], 1);
-        const pcs = chordPCs(key, scale, deg, true);
-        const line = [root, nearestPC(root + 4, pcs, root + 1, root + 9), nearestPC(root + 7, pcs, root + 3, root + 12)];
-        const approach = next + (R.chance(0.5) ? -1 : 1);
-        line.push(inScale(approach, key, scale) || R.chance(0.5) ? approach : next - 2);
-        line.forEach((n, k) => notes.push({ t: T + k * BEAT, d: BEAT - 8, n, v: k === 0 ? 0.85 : 0.68 }));
-      } else { // syncop
-        const cells = [[0, 1], [3, 0.6], [6, 0.7], [10, 0.8], [12, 0.5], [14, 0.4]];
-        for (const [s, p] of cells) if (s === 0 || R.chance(p * (0.5 + 0.5 * opts.density))) notes.push({ t: T + s * S16, d: S16 * 2, n: s === 6 && R.chance(0.4) ? fifth : s === 14 && R.chance(0.4) ? root + 12 : root, v: s === 0 ? 0.9 : 0.72 });
+      const T = b * BAR, c = chordAt(H, b), nx = chordAt(H, b + 1), c2 = chordAt(H, b, 2);
+      const root = low(deg2midi(key, scale, c.deg, 1)), fifth = low(deg2midi(key, scale, c.deg + 4, 1)), third = low(deg2midi(key, scale, c.deg + 2, 1));
+      const oct = root + 12 <= 60 ? root + 12 : root, root2 = low(deg2midi(key, scale, c2.deg, 1));
+      const nextRoot = low(deg2midi(key, scale, nx.deg, 1));
+      const approach = nx.deg !== c.deg && R.chance(0.45 + 0.3 * opts.density) ? (R.chance(0.5) ? nextRoot + (nextRoot > root ? -1 : 1) : low(deg2midi(key, scale, nx.deg - 1, 1))) : null;
+      const end = approach !== null ? 14 : 16;                 // the last eighth goes to the approach note
+      const v1 = 0.88, v2 = 0.7;
+      switch (kind) {
+        case 'drone': if (b % 2 === 0) push(T, BAR * Math.min(2, sec.bars - b) - S16, root, 0.7); break;
+        case 'root_whole': push(T, BAR - S16, root, 0.8); break;
+        case 'root_half': push(T, BEAT * 2 - 8, root, v1); push(T + BEAT * 2, BEAT * 2 - 8, R.chance(0.4) ? fifth : root2, v2); break;
+        case 'pedal': push(T, BEAT * 2 - 8, low(deg2midi(key, scale, 0, 1)), v1); push(T + BEAT * 2, BEAT * 2 - 8, R.chance(0.5) ? root : low(deg2midi(key, scale, 0, 1)), v2); break;
+        case 'drone808': push(T, BEAT * 3, root, 0.9); if (R.chance(0.55)) push(T + BEAT * 3 + S16 * 2, S16 * 2, R.chance(0.5) ? oct : fifth, 0.8); break;
+        case 'offbeat8': for (let k = 0; k < 4; k++) push(T + k * BEAT + S16 * 2, S16 * 2, k === 3 && R.chance(0.3) ? fifth : root, 0.85); break;
+        case 'pump8': for (let k = 0; k < 8; k++) if (k * 2 < end) push(T + k * S16 * 2, S16 * 2 - 6, k === 7 && R.chance(0.4) ? oct : (k >= 4 ? root2 : root), k % 2 ? 0.66 : 0.86); break;
+        case 'octave16': for (let k = 0; k < 8; k++) if (k * 2 < end) push(T + k * S16 * 2, S16 - 4, k % 2 ? oct : root, k % 2 ? 0.7 : 0.88); break;
+        case 'rolling': for (let k = 0; k < 16; k++) if (k < end && R.chance(k % 4 === 0 ? 1 : 0.45 * opts.density + 0.15)) push(T + k * S16, S16, R.chance(0.25) ? fifth : root, 0.8); break;
+        case 'tresillo': [[0, 3], [3, 3], [6, 2]].forEach(([s, l]) => push(T + s * S16, l * S16 - 6, s === 6 && R.chance(0.4) ? fifth : root, s ? v2 : v1)); [[8, 3], [11, 3]].forEach(([s, l]) => { if (s < end && R.chance(0.7)) push(T + s * S16, l * S16 - 6, root2, v2); }); break;
+        case 'kicklock': for (const s of kick) if (s < end) push(T + s * S16, Math.max(S16, ((kick.find(x => x > s) ?? 16) - s) * S16 - 8), s >= 8 ? root2 : root, s % 4 === 0 ? v1 : v2); break;
+        case 'rootfifth': push(T, BEAT + S16 * 2, root, v1); push(T + BEAT * 2, BEAT, fifth, v2); if (R.chance(0.6)) push(T + BEAT * 3, S16 * 2, R.chance(0.5) ? oct : root2, v2); break;
+        case 'arp': [root, third, fifth, oct].forEach((n, k) => { if (k * 4 < end) push(T + k * BEAT, BEAT - 10, k >= 2 && c2.deg !== c.deg ? low(deg2midi(key, scale, c2.deg + [0, 2, 4, 7][k], 1)) : n, k ? v2 : v1); }); break;
+        case 'walking': {
+          const pcs = chordPcsOf(key, scale, c);
+          const line = [root, nearestPC(root + 4, pcs, root + 1, root + 9), nearestPC(root + 7, pcs, root + 3, root + 12)];
+          const ap = nextRoot + (R.chance(0.5) ? -1 : 1);
+          line.push(inScale(ap, key, scale) || R.chance(0.5) ? ap : nextRoot - 2);
+          line.forEach((n, k) => push(T + k * BEAT, BEAT - 8, n, k === 0 ? 0.85 : 0.68));
+          continue;
+        }
+        default: { // syncop
+          const cells = [[0, 1], [3, 0.6], [6, 0.7], [10, 0.8], [12, 0.5], [14, 0.4]];
+          for (const [s, p] of cells) if (s < end && (s === 0 || R.chance(p * (0.5 + 0.5 * opts.density)))) push(T + s * S16, S16 * 2, s === 6 && R.chance(0.4) ? fifth : s >= 8 ? root2 : root, s === 0 ? 0.9 : 0.72);
+        }
       }
+      if (approach !== null && kind !== 'drone' && kind !== 'root_whole') push(T + 14 * S16, S16 * 2 - 6, approach, 0.66);
     }
     return notes;
   }
 
-  function voiceChord(pcs, prev, lo, hi) {
+  // ── chords ──────────────────────────────────────────────────────
+  function voiceChord(pcs, prev, lo, hi, spread) {
     // pick one note per pitch class near the previous voicing's centre
     const centre = prev && prev.length ? prev.reduce((a, b) => a + b, 0) / prev.length : (lo + hi) / 2;
     const out = pcs.map(pc => nearestPC(centre, [pc], lo, hi)).sort((a, b) => a - b);
     // spread collisions
     for (let i = 1; i < out.length; i++) if (out[i] - out[i - 1] < 2 && out[i] + 12 <= hi) out[i] += 12;
+    out.sort((a, b) => a - b);
+    if (spread && out.length >= 4 && out[out.length - 2] - 12 >= lo - 5) out[out.length - 2] -= 12;   // drop-2: an open voicing
     return out.sort((a, b) => a - b);
   }
-
-  function genChords(R, st, sec, harm, opts, kindOverride) {
-    const notes = [], { key, scale, chords } = harm, kind = kindOverride || st.chords;
-    const seventh = !(st.prog === 'drone') && R.chance(0.6);
+  function genChords(R, st, sec, ctx, harm, opts) {
+    const notes = [], { key, scale } = harm, H = ctx.H, kind = ctx.fig, [lo, hi] = ctx.range;
     let prev = harm.prevVoicing || null;
     for (let b = 0; b < sec.bars; b++) {
-      const deg = chords[(sec.bar + b) % chords.length], T = b * BAR;
-      const v = voiceChord(chordPCs(key, scale, deg, seventh), prev, 52, 74); prev = v;
-      const push = (t, d, vel) => v.forEach(n => notes.push({ t: T + t, d, n, v: vel }));
-      if (kind === 'pad' || kind === 'swell') push(0, BAR - 4, kind === 'swell' ? 0.5 : 0.62);
-      else if (kind === 'stabs') { for (let k = 0; k < 4; k++) if (k !== 3 || R.chance(0.6)) push(k * BEAT + S16 * 2, S16 + 6, 0.7); }
-      else if (kind === 'comp') { push(0, S16 * 3, 0.68); push(BEAT + S16 * 2, S16 * 2, 0.55); if (R.chance(0.6)) push(BEAT * 2 + S16 * 2, S16 * 2, 0.5); push(BEAT * 3, S16 * 3, 0.6); }
-      else if (kind === 'arp') {
-        const seq = [...v, ...v.slice(1, -1).reverse()];
-        for (let k = 0; k < 16; k++) notes.push({ t: T + k * S16, d: S16, n: seq[k % seq.length] + (k >= 8 && R.chance(0.2) ? 12 : 0), v: k % 4 === 0 ? 0.75 : 0.55 });
+      const T = b * BAR;
+      for (const half of H.hr < 1 ? [0, 2] : [0]) {
+        const c = chordAt(H, b, half), span = H.hr < 1 ? BEAT * 2 : BAR, t0 = half * BEAT;
+        const v = voiceChord(chordPcsOf(key, scale, c), prev, lo, hi, ctx.spread); prev = v;
+        const push = (t, d, vel, only) => (only || v).forEach(n => { if (t < t0 + span) notes.push({ t: T + t, d: Math.min(d, t0 + span - t), n, v: vel }); });
+        const top = v.slice(-1), bottom = v.slice(0, -1);
+        switch (kind) {
+          case 'pad': push(t0, span - 4, 0.62); break;
+          case 'swell': push(t0, span - 4, 0.48); break;
+          case 'stabs': for (let k = 0; k < 4; k++) if (k * BEAT >= t0 && (k !== 3 || R.chance(0.6))) push(k * BEAT + S16 * 2, S16 + 6, 0.7); break;
+          case 'offbeat': for (let k = 0; k < 4; k++) if (k * BEAT >= t0) push(k * BEAT + S16 * 2, S16 * 2 - 6, k % 2 ? 0.6 : 0.68); break;
+          case 'pulse8': for (let k = 0; k < 8; k++) if (k * S16 * 2 >= t0) push(k * S16 * 2, S16 * 2 - 8, k % 2 ? 0.48 : 0.6); break;
+          case 'push': push(t0, BEAT + S16 * 2, 0.66); push(t0 + BEAT * 2 + S16 * 2, BEAT, 0.56); if (!half) push(BEAT * 3 + S16 * 2, S16 * 2, 0.6); break;
+          case 'charleston': push(t0, S16 * 3, 0.68); push(t0 + S16 * 6, S16 * 2, 0.56); if (span === BAR && R.chance(0.6)) push(BEAT * 3, S16 * 3, 0.55); break;
+          case 'comp': push(t0, S16 * 3, 0.68); push(t0 + BEAT + S16 * 2, S16 * 2, 0.55); if (span === BAR) { if (R.chance(0.6)) push(BEAT * 2 + S16 * 2, S16 * 2, 0.5); push(BEAT * 3, S16 * 3, 0.6); } break;
+          case 'strum': v.forEach((n, i) => notes.push({ t: T + t0 + i * 14, d: span - 8 - i * 14, n, v: 0.58 - i * 0.03 })); if (span === BAR && R.chance(0.5)) v.forEach((n, i) => notes.push({ t: T + BEAT * 2 + S16 * 2 + i * 10, d: BEAT, n, v: 0.42 })); break;
+          case 'arp_up': case 'arp_ud': case 'arp_broken': {
+            const up = [...v, top[0] + 12].filter(n => n <= hi + 12);
+            const seq = kind === 'arp_up' ? up : kind === 'arp_ud' ? up.concat(up.slice(1, -1).reverse()) : [v[0], v[2] ?? v[1], v[1], top[0], v[2] ?? v[1], v[1]];
+            const step = kind === 'arp_broken' ? S16 * 2 : S16, n = span / step;
+            for (let k = 0; k < n; k++) notes.push({ t: T + t0 + k * step, d: step * (kind === 'arp_broken' ? 2 : 1) - 4, n: seq[k % seq.length], v: k % 4 === 0 ? 0.7 : 0.52 });
+            break;
+          }
+          default: push(t0, span - 4, 0.6);
+        }
+        if (kind === 'pad' && bottom.length && R.chance(0.15)) { /* the pad sometimes leaves the top voice out for air */ }
       }
     }
     harm.prevVoicing = prev;
     return notes;
   }
 
-  function genLead(R, st, sec, harm, opts) {
-    const notes = [], { key, scale, chords } = harm, kind = st.lead;
-    const lo = 62, hi = 84;
-    // motif: rhythm cells (16ths per beat) + scale-step contour
-    const CELLS = kind === 'sparse'
-      ? [[1, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 1, 0]]
-      : [[1, 0, 0, 0], [1, 0, 1, 0], [1, 1, 1, 0], [0, 0, 1, 0], [1, 0, 0, 1], [0, 1, 1, 0], [1, 0, 1, 1]];
-    const motif = [];
-    let step = 0;
+  // ── lead ────────────────────────────────────────────────────────
+  // A motif (rhythm cells + a contour in scale steps) developed over the section: statement, sequence (moved with the
+  // harmony), answer (same rhythm, new ending), cadence. A character's leitmotif keeps its rhythm + contour in every
+  // track (seeded by the character); key, mode, register and instrument come from the track.
+  const CELL_SETS = {
+    sparse: [[1, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 1, 0]],
+    motif: [[1, 0, 0, 0], [1, 0, 1, 0], [1, 1, 1, 0], [0, 0, 1, 0], [1, 0, 0, 1], [0, 1, 1, 0], [1, 0, 1, 1]],
+    answer: [[0, 0, 0, 0], [1, 0, 1, 0], [0, 0, 1, 0], [1, 0, 0, 0], [0, 1, 0, 1]],
+    hook: [[1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1], [1, 0, 0, 0]],
+  };
+  const CONTOURS = { arch: [1, 1, 1, -1, -1, -1], fall: [-1, -1, 1, -1, -1, 0], rise: [1, 1, -1, 1, 1, 0], wave: [1, -1, 1, -1, 1, -1], still: [0, 1, -1, 0, 1, -1] };
+  function makeMotif(MR, kind, density) {
+    const cells = CELL_SETS[kind] || CELL_SETS.motif, contour = CONTOURS[MR.pick(Object.keys(CONTOURS))];
+    const ev = []; let step = 0, i = 0;
     for (let beat = 0; beat < 8; beat++) {
-      const cell = R.chance(0.15 + 0.25 * (1 - opts.density)) ? [0, 0, 0, 0] : R.pick(CELLS);
-      cell.forEach((on, k) => { if (on) { step += R.weighted([[0, 2], [1, 3], [-1, 3], [2, 1.2], [-2, 1.2], [4, 0.4], [-3, 0.4]]); motif.push({ s: beat * 4 + k, step }); } });
+      const cell = beat > 0 && MR.chance(0.12 + 0.3 * (1 - density)) ? [0, 0, 0, 0] : MR.pick(cells);
+      cell.forEach((on, k) => {
+        if (!on) return;
+        const dir = contour[i++ % contour.length], size = MR.weighted([[1, 5], [2, 2], [0, 1.5], [3, 0.6], [4, 0.3]]);
+        step += dir * size; step = Math.max(-5, Math.min(7, step));
+        ev.push({ s: beat * 4 + k, step });
+      });
     }
-    const base = deg2midi(key, scale, 0, 5) - 12 * (deg2midi(key, scale, 0, 5) > 76 ? 1 : 0);
-    let lastN = base;
+    if (!ev.length) ev.push({ s: 0, step: 0 });
+    return ev;
+  }
+  function genLead(R, st, sec, ctx, harm, opts) {
+    const notes = [], { key, scale } = harm, H = ctx.H, motif = ctx.motif, lo = ctx.range[0], hi = ctx.range[1];
+    const plan = ctx.phrase;                                  // e.g. ['M', 'S', 'M', 'C'] per 2-bar slot
+    const base = ctx.lift || 0;
+    let lastN = deg2midi(key, scale, base, 5);
     for (let b = 0; b < sec.bars; b += 2) {
-      const phraseVar = (b / 2) % 4;           // A A' A B
-      const deg = chords[(sec.bar + b) % chords.length];
-      const shift = phraseVar === 1 ? (deg - chords[0]) : phraseVar === 3 ? R.pick([2, -1, 4]) : 0;
-      const ev = motif.filter(m => m.s < 32);
+      const slot = plan[(b / 2) % plan.length];
+      if (slot === '-') continue;                             // breathe
+      const c0 = chordAt(H, b);
+      const shift = slot === 'S' ? c0.deg - H.prog[0] : slot === 'U' ? 2 : 0;    // sequence with the harmony · up a third
+      const ev = slot === 'A' ? motif.filter((m, i) => i < Math.ceil(motif.length / 2) || m.s >= 16) : motif;
       ev.forEach((m, i) => {
         if (b * 16 + m.s >= sec.bars * 16) return;
-        const bar = b + Math.floor(m.s / 16), cdeg = chords[(sec.bar + bar) % chords.length];
-        let n = deg2midi(key, scale, m.step + shift, 5);
+        const bar = b + Math.floor(m.s / 16), cd = chordAt(H, bar, (m.s % 16) / 4);
+        let n = deg2midi(key, scale, base + m.step + shift + (slot === 'A' && m.s >= 16 ? -1 : 0), 5);
         while (n > hi) n -= 12; while (n < lo) n += 12;
         const strong = m.s % 4 === 0;
-        if (strong) n = nearestPC(n, chordPCs(key, scale, cdeg, false), lo, hi);
+        if (strong) n = nearestPC(n, chordPcsOf(key, scale, cd), lo, hi);
         if (Math.abs(n - lastN) > 9) n += n > lastN ? -12 : 12;
         n = Math.min(hi, Math.max(lo, n));
         const nextS = i + 1 < ev.length ? ev[i + 1].s : 32;
-        const isEnd = phraseVar === 3 && i === ev.length - 1;
-        const dur = Math.max(S16, Math.min((nextS - m.s) * S16, kind === 'sparse' ? BAR : BEAT * 2));
-        notes.push({ t: b * BAR + m.s * S16, d: isEnd ? BAR : dur - 4, n: isEnd ? nearestPC(n, chordPCs(key, scale, 0, false), lo, hi) : n, v: clampV((strong ? 0.78 : 0.62) + (R() - 0.5) * 0.12) });
+        const isEnd = (slot === 'C' || slot === 'A') && i === ev.length - 1;
+        const dur = Math.max(S16, Math.min((nextS - m.s) * S16, ctx.kind === 'sparse' ? BAR : BEAT * 2));
+        if (isEnd) n = nearestPC(n, chordPcsOf(key, scale, { deg: 0, ext: 'triad' }), lo, hi);
+        notes.push({ t: b * BAR + m.s * S16, d: isEnd ? Math.min(BAR, (sec.bars - b) * BAR - m.s * S16) : dur - 4, n, v: clampV((strong ? 0.78 : 0.62) + (R() - 0.5) * 0.12) });
+        // a grace note into some strong notes
+        if (strong && ctx.kind !== 'sparse' && R.chance(0.08) && m.s > 0) notes.push({ t: b * BAR + m.s * S16 - 12, d: 10, n: n + (inScale(n + 2, key, scale) ? 2 : 1), v: 0.45 });
         lastN = n;
       });
     }
     return notes;
   }
 
-  function genPad(R, st, sec, harm, opts) {
-    const notes = [], { key, scale, chords } = harm, kind = st.pad;
-    if (kind === 'none') return notes;
+  // ── pad ─────────────────────────────────────────────────────────
+  function genPad(R, st, sec, ctx, harm, opts) {
+    const notes = [], { key, scale } = harm, H = ctx.H, kind = ctx.fig;
     for (let b = 0; b < sec.bars; b += 2) {
-      const deg = chords[(sec.bar + b) % chords.length];
-      const r = deg2midi(key, scale, deg, 3), f = deg2midi(key, scale, deg + 4, 3);
-      const len = Math.min(2, sec.bars - b) * BAR - 8;
-      if (kind === 'drone') { notes.push({ t: b * BAR, d: len, n: r - 12, v: 0.55 }, { t: b * BAR, d: len, n: f - 12, v: 0.45 }); }
-      else { notes.push({ t: b * BAR, d: len, n: r, v: 0.45 }, { t: b * BAR, d: len, n: f, v: 0.4 }, { t: b * BAR, d: len, n: deg2midi(key, scale, deg + 2, 4), v: 0.35 }); }
+      const c = chordAt(H, b), len = Math.min(2, sec.bars - b) * BAR - 8, T = b * BAR;
+      const r = deg2midi(key, scale, c.deg, 3), f = deg2midi(key, scale, c.deg + 4, 3), th = deg2midi(key, scale, c.deg + 2, 4);
+      if (kind === 'drone') notes.push({ t: T, d: len, n: r - 12, v: 0.55 }, { t: T, d: len, n: f - 12, v: 0.45 });
+      else if (kind === 'sus') {           // the fourth, resolving to the third halfway
+        const s4 = deg2midi(key, scale, c.deg + 3, 4);
+        notes.push({ t: T, d: len, n: r, v: 0.45 }, { t: T, d: len, n: f, v: 0.4 }, { t: T, d: Math.round(len / 2), n: s4, v: 0.36 }, { t: T + Math.round(len / 2), d: len - Math.round(len / 2), n: th, v: 0.36 });
+      } else if (kind === 'moving') {       // a slow top line: chord tones stepping each bar
+        notes.push({ t: T, d: len, n: r, v: 0.42 }, { t: T, d: len, n: f, v: 0.38 });
+        const tops = chordNotes(key, scale, c, 4).slice(1);
+        const a = R.pick(tops), z = R.pick(tops);
+        notes.push({ t: T, d: Math.min(BAR - 8, len), n: a, v: 0.36 });
+        if (len > BAR) notes.push({ t: T + BAR, d: len - BAR, n: z, v: 0.34 });
+      } else if (kind === 'shimmer') {      // high fifth + ninth over the root
+        notes.push({ t: T, d: len, n: r, v: 0.4 }, { t: T, d: len, n: deg2midi(key, scale, c.deg + 4, 5), v: 0.3 }, { t: T, d: len, n: deg2midi(key, scale, c.deg + 8, 5), v: 0.26 });
+      } else notes.push({ t: T, d: len, n: r, v: 0.45 }, { t: T, d: len, n: f, v: 0.4 }, { t: T, d: len, n: th, v: 0.35 });
     }
     return notes;
   }
 
+  // ── sound design: texture beds, transitions, hits ──────────────
+  // texture: one held note per section (the bed's own preset breathes; the level follows the section)
+  function genTexture(R, sec, ctx) {
+    const lvl = { intro: 0.75, brk: 0.8, outro: 0.75, C: 0.65, B: 0.5, A: 0.55, loop: 0.6, bed: 0.7 }[baseOf(sec.name)] ?? 0.6;
+    return [{ t: 0, d: sec.bars * BAR - 2, n: ctx.pitch || 48, v: clampV(lvl * (ctx.gain || 1)) }];
+  }
+  // transitions: a riser / swell over the bars before a lift (B, C, a loop's restart); a downer before a break / outro
+  function genFx(R, sec, ctx) {
+    const notes = [], into = ctx.into, bars = sec.bars;
+    if (into === 'up' && bars >= 2) { const len = Math.min(bars, R.pick([1, 2, 2, 4])); notes.push({ t: (bars - len) * BAR, d: len * BAR - 4, n: 60, v: 0.7 }); }
+    else if (into === 'down' && bars >= 2) notes.push({ t: (bars - 1) * BAR, d: BAR - 4, n: 60, v: 0.6 });
+    return notes;
+  }
+  // hits: on the downbeat of a lift, sometimes mid-section on a phrase start
+  function genHit(R, sec, ctx) {
+    const notes = [];
+    if (ctx.on0) notes.push({ t: 0, d: BEAT * 2, n: 48, v: 0.8 });
+    if (sec.bars >= 8 && R.chance(0.35)) notes.push({ t: 8 * BAR > (sec.bars - 1) * BAR ? 4 * BAR : 8 * BAR, d: BEAT * 2, n: 48, v: 0.55 });
+    return notes.filter(x => x.t < sec.bars * BAR);
+  }
+  // default beds / transitions / hits per style — the catalog's own sound words (soundsFromText) come first
+  const TEXTURE_FOR = { four_floor: ['amb_city'], boom_bap: ['amb_vinyl', 'amb_city'], lofi: ['amb_vinyl', 'amb_tape_hiss', 'amb_rain'], trap: ['amb_city', 'amb_room_tone'],
+    dnb: ['amb_city'], shuffle: ['amb_room_tone', 'amb_vinyl'], motorik: ['drone_engine', 'amb_tape_hiss'], synthwave: ['amb_tape_hiss', 'amb_city'],
+    noir: ['amb_rain', 'amb_room_tone', 'amb_radio', 'amb_vinyl'], ambient: ['amb_wind', 'amb_room_tone', 'drone_horizon', 'amb_forest_night'] };
+  const FX_FOR = { four_floor: ['fx_riser', 'fx_noise_sweep'], trap: ['fx_riser', 'fx_reverse_swell'], dnb: ['fx_riser', 'fx_noise_sweep'], synthwave: ['fx_riser', 'fx_reverse_swell'],
+    motorik: ['fx_noise_sweep', 'fx_riser'], boom_bap: ['fx_reverse_swell', 'fx_whoosh'], lofi: ['fx_reverse_swell', 'fx_tape_stop'], shuffle: ['fx_reverse_swell', 'fx_whoosh'],
+    noir: ['fx_reverse_swell', 'fx_noise_sweep'], ambient: ['fx_reverse_swell'] };
+  const HIT_FOR = { four_floor: ['fx_impact'], trap: ['fx_sub_drop', 'fx_impact'], dnb: ['fx_sub_drop', 'fx_impact'], synthwave: ['fx_impact', 'fx_glass_ping'], motorik: ['fx_impact'],
+    boom_bap: ['fx_wood_knock', 'fx_impact'], lofi: ['fx_glass_ping', 'fx_wood_knock'], shuffle: ['fx_wood_knock', 'fx_bell_hit'], noir: ['fx_bell_hit', 'fx_glass_ping'], ambient: ['fx_bell_hit', 'fx_glass_ping'] };
+  // where a preset a newer FORGE adds isn't there yet, the page swaps in its nearest older sound (temp_maker.js)
+  const SOUND_FALLBACK = { amb_vinyl: 'amb_radio', amb_tape_hiss: 'amb_radio', amb_room_tone: 'amb_wind', amb_fluor_hum: 'pad_fluorescent', amb_life_support: 'drone_engine',
+    amb_crickets: 'amb_wind', amb_cicadas: 'amb_wind', amb_surf: 'amb_wind', amb_fire: 'amb_rain', amb_thunder: 'amb_rain', amb_city: 'drone_engine', amb_clock: 'amb_wind',
+    amb_forest_night: 'amb_wind', amb_modem: 'amb_radio', fx_reverse_swell: 'fx_riser', fx_whoosh: 'fx_noise_sweep', fx_tape_stop: 'fx_downer', fx_sub_drop: 'fx_impact',
+    fx_bell_hit: 'bell_tubular', fx_wood_knock: 'fx_impact', fx_glass_ping: 'bell_glock' };
+
+  // ── song ────────────────────────────────────────────────────────
+  // o: { seed, style, key, mode, bpm, form, density, progression, motif (a leitmotif's seed: a character's name),
+  //      textures [preset ids] | 'none', fx (preset | 'none'), hit (preset | 'none'), voices { role: FORGE preset } }
+  const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad'];
+  const SD_ROLES = ['texture', 'texture2', 'fx', 'hit'];
+  function plan(o) {
+    const seed = o.seed ?? Math.floor(Math.random() * 1e9);
+    const R = rng(seed);
+    const styleId = STYLES[o.style] ? o.style : R.pick(Object.keys(STYLES));
+    const st = Object.assign({ id: styleId }, STYLES[styleId]);
+    const mode = SCALES[o.mode] ? o.mode : R.pick(st.modes);
+    const scale = SCALES[mode];
+    const key = Number.isInteger(o.key) ? ((o.key % 12) + 12) % 12 : R.int(0, 11);
+    const bpm = o.bpm || R.int(st.bpm[0], st.bpm[1]);
+    const formId = FORMS[o.form] ? o.form : (styleId === 'ambient' ? 'bed' : 'song');
+    const density = Math.max(0, Math.min(1, o.density ?? 0.6));
+    const fam = st.prog === 'drone' ? 'drone' : st.prog === 'modal' ? 'modal' : (MINORISH[mode] ? 'minor' : 'major');
+    // every structural choice comes from its own stream, so adding a choice never reshuffles the others
+    const P = k => rng(seed * 7 + hash('plan:' + k));
+    const HP = harmonyPlan(P('harm'), st, fam, o.progression);
+    const shape = formId === 'song' ? P('shape').pick(SONG_SHAPES) : FORMS[formId].map(([n, b]) => [n, b]);
+    const sparse = density < 0.45;
+    const sections = []; let bar = 0;
+    const SR = P('roles');
+    shape.forEach(([name, bars], i) => {
+      const base = baseOf(name), fixed = formId !== 'song' ? (FORMS[formId].find(f => f[0] === name) || [])[2] : null;
+      sections.push({ name, base, bar, bars, roles: fixed ? fixed.slice() : rolesFor(SR, base, name, st, sparse) });
+      bar += bars;
+    });
+    // per-song vocabulary picks (A / B contrast), from the style's lists
+    const V = P('vocab');
+    const gi = V.int(0, st.grooves.length - 1), gB = st.grooves.length > 1 && V.chance(0.6) ? (gi + V.int(1, st.grooves.length - 1)) % st.grooves.length : gi;
+    const pick2 = list => { const a = V.pick(list), b = V.chance(0.55) ? V.pick(list) : a; return [a, b]; };
+    const [bassA, bassB] = pick2(st.bass), [compA, compB] = pick2(st.chords), [padA, padB] = pick2(st.pad);
+    const leadKind = V.pick(st.lead);
+    const perc = V.chance(0.45) && (PERC_FOR[styleId] || []).length ? V.pick(PERC_FOR[styleId]) : null;
+    const range = V.pick([[50, 72], [53, 76], [55, 79], [48, 70]]), spread = V.chance(0.35);
+    const fills = [V.pick(FILLS), V.pick(FILLS)];
+    // the lead's motif: a leitmotif (same in every track of that character) or the song's own
+    const MR = o.motif ? rng(hash('motif:' + String(o.motif).toLowerCase())) : rng(seed * 13 + 5);
+    const motifA = makeMotif(MR, o.motif ? 'motif' : leadKind, o.motif ? 0.6 : density), motifB = makeMotif(rng(seed * 13 + 9), leadKind, density);
+    const phrases = [['M', 'S', 'M', 'C'], ['M', 'A', 'M', 'C'], ['M', '-', 'S', 'C'], ['M', 'M', 'U', 'C'], ['-', 'M', '-', 'A']];
+    const phraseA = V.pick(phrases), phraseB = V.pick(phrases);
+    // sound design
+    const SD = P('sound');
+    const want = x => x !== 'none' && x !== false;
+    let textures = Array.isArray(o.textures) ? o.textures.slice(0, 2) : o.textures === 'none' ? [] : null;
+    if (!textures) textures = SD.chance(0.7) ? [SD.pick(TEXTURE_FOR[styleId] || ['amb_room_tone'])] : [];
+    const fxPreset = want(o.fx) ? (o.fx || SD.pick(FX_FOR[styleId] || ['fx_noise_sweep'])) : null;
+    const hitPreset = want(o.hit) ? (o.hit || (SD.chance(0.6) ? SD.pick(HIT_FOR[styleId] || ['fx_impact']) : null)) : null;
+    return { seed, R, styleId, st, mode, scale, key, bpm, formId, density, fam, HP, sections, gi, gB, bassA, bassB, compA, compB, padA, padB, leadKind, perc, range, spread, fills,
+      motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {} };
+  }
+  // one role's notes for one section
+  function renderRole(pl, role, sec, i, harm) {
+    const { st, density, formId, HP } = pl, opts = { density, bed: formId === 'bed' };
+    const base = sec.base, isB = base === 'B' || base === 'C', variant = /\d$/.test(sec.name);
+    const H = HP[base] || HP.A;
+    const RR = rng(pl.seed * 31 + hash(role + base + (variant ? '~' : '')));
+    const next = pl.sections[i + 1], nextBase = next ? next.base : (formId === 'loop' || formId === 'bed' ? 'loop' : null);
+    if (role === 'drums') {
+      const thin = base === 'brk' ? RR.pick(['perc', 'half']) : base === 'intro' ? 'perc' : base === 'outro' ? 'half' : base === 'C' && RR.chance(0.5) ? 'half' : null;
+      const groove = st.grooves[isB ? pl.gB : pl.gi];
+      return genDrums(RR, st, sec, { groove, thin, perc: isB || variant ? pl.perc : (RR.chance(0.5) ? pl.perc : null), fill: pl.fills[isB ? 1 : 0], crash: (isB || variant) && formId === 'song' }, opts);
+    }
+    if (role === 'bass') {
+      const kickSteps = STEPS((st.grooves[isB ? pl.gB : pl.gi].kick) || '1000000010000000');
+      const fig = base === 'intro' || base === 'outro' || base === 'brk' ? (RR.chance(0.5) ? 'root_whole' : 'root_half') : isB ? pl.bassB : pl.bassA;
+      return genBass(RR, st, sec, { H, fig, kickSteps }, harm, opts);
+    }
+    if (role === 'chords') return genChords(RR, st, sec, { H, fig: base === 'intro' || base === 'outro' ? 'pad' : isB ? pl.compB : pl.compA, range: pl.range, spread: pl.spread }, harm, opts);
+    if (role === 'lead') {
+      const motif = base === 'B' || (base === 'C' && !pl.motif) ? pl.motifB : pl.motifA;
+      const phrase = base === 'intro' || base === 'outro' ? ['M', '-', '-', '-'] : isB ? pl.phraseB : pl.phraseA;
+      return genLead(RR, st, sec, { H, motif, phrase, kind: pl.leadKind, range: [62, 84], lift: base === 'B' ? RR.pick([2, 3, 4]) : base === 'C' ? -2 : 0 }, harm, opts);
+    }
+    if (role === 'pad') return genPad(RR, st, sec, { H, fig: isB ? pl.padB : pl.padA }, harm, opts);
+    if (role === 'texture' || role === 'texture2') return genTexture(RR, sec, { gain: role === 'texture2' ? 0.75 : 1 });
+    if (role === 'fx') {
+      const into = nextBase === 'B' || nextBase === 'C' || ((formId === 'loop' || formId === 'bed') && !next) ? 'up' : nextBase === 'brk' || nextBase === 'outro' ? 'down' : null;
+      return genFx(RR, sec, { into });
+    }
+    if (role === 'hit') return genHit(RR, sec, { on0: (base === 'B' || base === 'C') && formId === 'song' });
+    return [];
+  }
+  function song(o = {}) {
+    const pl = plan(o), { seed, st, styleId, mode, key, scale, bpm, formId, density, sections } = pl;
+    const harm = { key, scale, prevVoicing: null };
+    const parts = {};
+    for (const role of ROLES) parts[role] = { role, patterns: {}, clips: [], preset: pl.voices[role] || presetFor(styleId, role, seed) };
+    // sound design parts (texture / texture2 → one 'texture' stem; fx + hit → one 'fx' stem)
+    if (pl.textures[0]) parts.texture = { role: 'texture', patterns: {}, clips: [], preset: pl.textures[0], sound: true };
+    if (pl.textures[1]) parts.texture2 = { role: 'texture', patterns: {}, clips: [], preset: pl.textures[1], sound: true };
+    if (pl.fxPreset) parts.fx = { role: 'fx', patterns: {}, clips: [], preset: pl.fxPreset, sound: true };
+    if (pl.hitPreset) parts.hit = { role: 'fx', patterns: {}, clips: [], preset: pl.hitPreset, sound: true };
+    sections.forEach((sec, i) => {
+      const roles = sec.roles.concat(Object.keys(parts).filter(k => parts[k].sound));
+      for (const role of Object.keys(parts)) {
+        if (!roles.includes(role)) continue;
+        const notes = renderRole(pl, role, sec, i, harm);
+        if (!notes.length) continue;
+        const pid = role + '_' + sec.name;
+        parts[role].patterns[pid] = { name: role + ' ' + sec.name, lenBars: sec.bars, notes: sortNotes(clampLen(notes, sec.bars)) };
+        parts[role].clips.push({ bar: sec.bar, pid });
+      }
+    });
+    const A = pl.HP.A;
+    return {
+      v: 2, seed, style: styleId, styleName: st.name, key, keyName: NOTE_NAMES[key], mode, bpm, swing: st.swing, form: formId, density,
+      progression: A.prog, progressionText: A.prog.map(d => romanFor(d, mode)).join(' – ') + (A.hr !== 1 ? ' (' + (A.hr < 1 ? 'two per bar' : A.hr + ' bars each') + ')' : ''),
+      sections: sections.map(({ name, bar, bars }) => ({ name, bar, bars })), bars: sections.reduce((n, s) => n + s.bars, 0), parts,
+      motif: pl.motif, textures: pl.textures, fx: pl.fxPreset, hit: pl.hitPreset,
+      vocab: { groove: [pl.gi, pl.gB], bass: [pl.bassA, pl.bassB], chords: [pl.compA, pl.compB], pad: [pl.padA, pl.padB], lead: pl.leadKind, perc: pl.perc, fills: pl.fills, ext: [A.ext, pl.HP.B.ext], hr: [A.hr, pl.HP.B.hr] },
+    };
+  }
+  // re-roll one role in place: the same plan (structure, harmony, picks), that role's note dice re-seeded
+  function part(role, s, o = {}) {
+    const seed = o.seed ?? Math.floor(Math.random() * 1e9);
+    const pl = plan({ seed: s.seed, style: s.style, key: s.key, mode: s.mode, bpm: s.bpm, form: s.form, density: o.density ?? s.density, progression: s.progression, motif: s.motif,
+      textures: s.textures && s.textures.length ? s.textures : 'none', fx: s.fx || 'none', hit: s.hit || 'none' });
+    const pl2 = Object.assign({}, pl, { seed });                // new note dice, same structure
+    if (role === 'lead') { pl2.motifA = s.motif ? pl.motifA : makeMotif(rng(seed * 13 + 5), pl.leadKind, pl.density); pl2.motifB = makeMotif(rng(seed * 13 + 9), pl.leadKind, pl.density); }
+    const harm = { key: pl.key, scale: pl.scale, prevVoicing: null };
+    const prev = s.parts[role] || {};
+    const p = { role: prev.role || role, patterns: {}, clips: [], preset: prev.preset || presetFor(pl.styleId, role, s.seed) };
+    if (prev.sound) p.sound = true;
+    pl.sections.forEach((sec, i) => {
+      if (!sec.roles.includes(role) && !p.sound) return;
+      const notes = renderRole(pl2, role, sec, i, harm);
+      if (!notes.length) return;
+      const pid = role + '_' + sec.name;
+      p.patterns[pid] = { name: role + ' ' + sec.name, lenBars: sec.bars, notes: sortNotes(clampLen(notes, sec.bars)) };
+      p.clips.push({ bar: sec.bar, pid });
+    });
+    return p;
+  }
+
   // nothing rings past its own pattern (clips butt up against each other)
-  function clampLen(ns, bars) { const end = bars * BAR; return ns.filter(x => x.t < end).map(x => (x.t + x.d > end ? Object.assign({}, x, { d: end - x.t }) : x)); }
+  function clampLen(ns, bars) { const end = bars * BAR; return ns.filter(x => x.t >= 0 && x.t < end && x.n >= 0 && x.n <= 127).map(x => (x.t + x.d > end ? Object.assign({}, x, { d: end - x.t }) : x)); }
   function clampV(v) { return Math.max(0.05, Math.min(1, v)); }
   // sort, merge duplicates (same tick + pitch: keep the louder) and trim
   // same-pitch overlaps — MIDI (and every synth's note-off) can't hold two
@@ -311,77 +696,6 @@
     }
     return out;
   }
-
-  // ── song ────────────────────────────────────────────────────────
-  function song(o = {}) {
-    const seed = o.seed ?? Math.floor(Math.random() * 1e9);
-    const R = rng(seed);
-    const styleId = STYLES[o.style] ? o.style : R.pick(Object.keys(STYLES));
-    const st = STYLES[styleId];
-    const mode = SCALES[o.mode] ? o.mode : R.pick(st.modes);
-    const scale = SCALES[mode];
-    const key = Number.isInteger(o.key) ? ((o.key % 12) + 12) % 12 : R.int(0, 11);
-    const bpm = o.bpm || R.int(st.bpm[0], st.bpm[1]);
-    const formId = FORMS[o.form] ? o.form : (styleId === 'ambient' ? 'bed' : 'song');
-    const density = Math.max(0, Math.min(1, o.density ?? 0.6));
-    const fam = st.prog === 'drone' ? 'drone' : st.prog === 'modal' ? 'modal' : (MINORISH[mode] ? 'minor' : 'major');
-    const prog = o.progression || R.pick(PROGS[fam]);
-    const harm = { key, scale, chords: prog, prevVoicing: null };
-    const sections = [];
-    let bar = 0;
-    for (const [name, bars, roles] of FORMS[formId]) { sections.push({ name, bar, bars, roles }); bar += bars; }
-    const roles = ['drums', 'bass', 'chords', 'lead', 'pad'];
-    const parts = {};
-    for (const role of roles) parts[role] = { role, patterns: {}, clips: [], preset: presetFor(styleId, role, seed) };
-    const opts = { density, bed: formId === 'bed' };
-    // lead motif is shared across sections (A/A2 sound related), re-seeded per role
-    for (const sec of sections) {
-      for (const role of roles) {
-        if (!sec.roles.includes(role)) continue;
-        const RR = rng(seed * 31 + hash(role + (sec.name.replace(/\d+$/, ''))));
-        let notes;
-        if (role === 'drums') notes = genDrums(RR, st, sec, opts);
-        else if (role === 'bass') notes = genBass(RR, st, sec, harm, opts);
-        else if (role === 'chords') notes = genChords(RR, st, sec, harm, opts, sec.name === 'intro' ? 'pad' : null);
-        else if (role === 'lead') notes = genLead(RR, st, sec, harm, opts);
-        else notes = genPad(RR, Object.assign({}, st, { pad: st.pad === 'none' ? 'swell' : st.pad }), sec, harm, opts);
-        if (!notes.length) continue;
-        const pid = role + '_' + sec.name;
-        parts[role].patterns[pid] = { name: role + ' ' + sec.name, lenBars: sec.bars, notes: sortNotes(clampLen(notes, sec.bars)) };
-        parts[role].clips.push({ bar: sec.bar, pid });
-      }
-    }
-    return {
-      seed, style: styleId, styleName: st.name, key, keyName: NOTE_NAMES[key], mode, bpm, swing: st.swing, form: formId, density,
-      progression: prog, progressionText: prog.map(d => romanFor(d, mode)).join(' – '),
-      sections: sections.map(({ name, bar, bars }) => ({ name, bar, bars })), bars: bar, parts,
-    };
-  }
-
-  function part(role, s, o = {}) {
-    const seed = o.seed ?? Math.floor(Math.random() * 1e9);
-    const fresh = song({ seed: s.seed, style: s.style, key: s.key, mode: s.mode, bpm: s.bpm, form: s.form, density: o.density ?? s.density, progression: s.progression });
-    // regenerate only `role` with a new seed by re-running with that seed for the role
-    const R0 = seed;
-    const st = STYLES[s.style], harm = { key: s.key, scale: SCALES[s.mode], chords: s.progression, prevVoicing: null };
-    const p = { role, patterns: {}, clips: [], preset: fresh.parts[role].preset };
-    for (const sec of fresh.sections) {
-      const fsec = FORMS[s.form].find(f => f[0] === sec.name);
-      if (!fsec || !fsec[2].includes(role)) continue;
-      const RR = rng(R0 * 31 + hash(role + sec.name));
-      const opts = { density: o.density ?? s.density, bed: s.form === 'bed' };
-      const sec2 = Object.assign({}, sec, { roles: fsec[2] });
-      let notes = role === 'drums' ? genDrums(RR, st, sec2, opts) : role === 'bass' ? genBass(RR, st, sec2, harm, opts)
-        : role === 'chords' ? genChords(RR, st, sec2, harm, opts, sec.name === 'intro' ? 'pad' : null)
-        : role === 'lead' ? genLead(RR, st, sec2, harm, opts) : genPad(RR, Object.assign({}, st, { pad: st.pad === 'none' ? 'swell' : st.pad }), sec2, harm, opts);
-      if (!notes.length) continue;
-      const pid = role + '_' + sec.name;
-      p.patterns[pid] = { name: role + ' ' + sec.name, lenBars: sec.bars, notes: sortNotes(clampLen(notes, sec.bars)) };
-      p.clips.push({ bar: sec.bar, pid });
-    }
-    return p;
-  }
-
   function romanFor(deg, mode) {
     const R = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
     const sc = SCALES[mode];
@@ -412,6 +726,85 @@
     { mode: 'mixolydian', w: ['road', 'juke', 'porch', 'saturday', 'band', 'diner'] },
     { mode: 'major', w: ['resolved', 'released', 'breath', 'morning', 'family', 'sun', 'home', 'iced tea', 'credits', 'warm pad'] },
   ];
+  // ── sound words: what a catalog description asks to hear → ambience beds, hits, transitions, instruments ──────────
+  // ("Kitchen fire crackle, distant German hymn fragment" → a fire bed + organ; "Bowed cello single note" → strings).
+  // Several beds may match: the two most specific play (a generic room tone gives way).
+  const SOUNDS = [
+    { w: ['rain', 'drizzle', 'downpour'], tex: 'amb_rain' },
+    { w: ['storm', 'thunder', 'lightning'], tex: 'amb_thunder' },
+    { w: ['owl', 'pine', 'forest', 'woods', 'trees'], tex: 'amb_forest_night' },
+    { w: ['wind', 'gust', 'breeze', 'rest stop'], tex: 'amb_wind' },
+    { w: ['cicada'], tex: 'amb_cicadas' },
+    { w: ['cricket', 'night field'], tex: 'amb_crickets' },
+    { w: ['surf', 'tide', 'shore', 'waves', 'marina', 'ocean', 'beach', 'bluff', 'harbor', 'harbour'], tex: 'amb_surf' },
+    { w: ['fire', 'crackle', 'hearth', 'stove', 'campfire'], tex: 'amb_fire' },
+    { w: ['static', 'radio', 'transmission'], tex: 'amb_radio' },
+    { w: ['hiss', 'cassette', 'tape', 'reel', 'recording'], tex: 'amb_tape_hiss' },
+    { w: ['vinyl', 'record player', 'jukebox', 'needle'], tex: 'amb_vinyl' },
+    { w: ['fluorescent', 'ballast', 'crt', '60 hz', 'buzz', 'neon'], tex: 'amb_fluor_hum' },
+    { w: ['life support', 'station omega', 'deep space', 'airlock', 'vacuum', 'decompression', 'hull', 'robot'], tex: 'amb_life_support' },
+    { w: ['engine', 'idling', 'motor', 'bus', 'canopy fans', 'generator', 'pump'], tex: 'drone_engine' },
+    { w: ['city', 'traffic', 'street', 'five am', 'downtown', 'depot'], tex: 'amb_city' },
+    { w: ['clock', 'ticking', 'waiting room'], tex: 'amb_clock' },
+    { w: ['modem', 'dial-up', 'bbs', 'handshake', 'sysop'], tex: 'amb_modem' },
+    { w: ['room', 'interior', 'apartment', 'house', 'kitchen', 'bedroom', 'office', 'diner', 'store'], tex: 'amb_room_tone' },
+    { w: ['bell', 'chime', 'ding'], hit: 'fx_bell_hit' },
+    { w: ['knock', 'wood-block', 'woodblock', 'wood block', 'door', 'clasp'], hit: 'fx_wood_knock' },
+    { w: ['glass', 'bottle', 'clink', 'thermos', 'ping'], hit: 'fx_glass_ping' },
+    { w: ['sinkhole', 'collapse', 'impact', 'demon'], hit: 'fx_sub_drop' },
+    { w: ['headlights', 'rush', 'chase', 'build'], fx: 'fx_riser' },
+    { w: ['tape stop', 'winding down', 'call drops', 'hollow', 'going hollow'], fx: 'fx_tape_stop' },
+    { w: ['echo', 'reverse', 'dream', 'memory', 'flashback', 'from another room'], fx: 'fx_reverse_swell' },
+    { w: ['cello', 'double-bass', 'double bass', 'bowed', 'violin', 'strings'], voice: { lead: 'strings_noir', pad: 'strings_tremolo' } },
+    { w: ['piano', 'upright'], voice: { chords: 'keys_felt', lead: 'keys_felt' } },
+    { w: ['guitar', 'strummed', 'acoustic'], voice: { chords: 'pluck_nylon', lead: 'pluck_nylon' } },
+    { w: ['dobro', 'slide guitar'], voice: { lead: 'pluck_dobro' } },
+    { w: ['brass', 'horn', 'trumpet'], voice: { lead: 'winds_brass' } },
+    { w: ['sax'], voice: { lead: 'winds_sax' } },
+    { w: ['harmonica'], voice: { lead: 'winds_harmonica' } },
+    { w: ['flute', 'whistle'], voice: { lead: 'winds_flute' } },
+    { w: ['clarinet'], voice: { lead: 'winds_clarinet' } },
+    { w: ['organ', 'hymn'], voice: { chords: 'keys_organ', pad: 'pad_organ_swell' } },
+    { w: ['humming', 'choir', 'vocal', 'voice-tone', 'singing', 'voice'], voice: { pad: 'choir_vox', lead: 'choir_angel' } },
+    { w: ['music box', 'lullaby'], voice: { lead: 'bell_music_box' } },
+    { w: ['glockenspiel'], voice: { lead: 'bell_glock' } },
+    { w: ['vibraphone', 'vibes'], voice: { lead: 'keys_vibes' } },
+    { w: ['harp'], voice: { lead: 'pluck_harp' } },
+    { w: ['theremin'], voice: { lead: 'lead_theremin' } },
+    { w: ['resonator', 'metallic'], voice: { lead: 'lead_ring', pad: 'pad_bowed_metal' } },
+    { w: ['low sine', 'sine'], voice: { bass: 'bass_sub' } },
+    { w: ['electric piano', 'rhodes', 'wurlitzer'], voice: { chords: 'keys_ep' } },
+    { w: ['808'], voice: { bass: 'bass_808' } },
+  ];
+  const hasWord = (s, w) => new RegExp('(^|[^a-z])' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).test(s);
+  function soundsFromText(text) {
+    const s = String(text || '').toLowerCase(), out = { textures: [], voices: {}, hit: null, fx: null, words: [] };
+    if (/no field-recording|no field recording|no texture/.test(s)) { out.textures = 'none'; return out; }
+    for (const e of SOUNDS) {
+      const w = e.w.find(x => hasWord(s, x)); if (!w) continue;
+      out.words.push(w);
+      if (e.tex && !out.textures.includes(e.tex)) out.textures.push(e.tex);
+      if (e.hit && !out.hit) out.hit = e.hit;
+      if (e.fx && !out.fx) out.fx = e.fx;
+      if (e.voice) for (const [r, p] of Object.entries(e.voice)) if (!out.voices[r]) out.voices[r] = p;
+    }
+    if (out.textures.length > 1) out.textures = out.textures.filter(t => t !== 'amb_room_tone');
+    out.textures = out.textures.slice(0, 2);
+    return out;
+  }
+  // the character a track belongs to (its leitmotif): vol5_alberto_theme → alberto; the title / credits pair share 'title'
+  function motifOf(id) {
+    const m = /^vol\d+_([a-z_]+?)_theme/.exec(id || '');
+    if (m) return m[1];
+    return /^(title|credits)_theme$/.test(id || '') ? 'title' : null;
+  }
+  // a volume's tonal home: its tracks sit on that tonic or a close neighbour (fifth, fourth, relative) — one soundtrack
+  function volumeKey(vol, id) {
+    if (vol === undefined || vol === null) return undefined;
+    const home = hash('volume-key:' + vol) % 12, step = [0, 0, 0, 7, 5, 9][hash('key:' + id) % 6];
+    return (home + step) % 12;
+  }
+
   const PACE = { slow: ['slow', 'slower', 'held', 'sustained', 'single', 'drone', 'still'], fast: ['loud', 'dancing', 'chase', 'thump', 'rush', 'headlights, then more'] };
   function moodFromText(title, desc, id) {
     const s = ((title || '') + ' ' + (desc || '') + ' ' + (id || '')).toLowerCase();
@@ -430,7 +823,15 @@
     const slow = PACE.slow.some(w => s.includes(w)), fast = PACE.fast.some(w => s.includes(w));
     const [lo, hi] = st.bpm, bpm = Math.round(slow ? lo : fast ? hi : (lo + hi) / 2);
     const dark = ['phrygian', 'minor', 'harmonic'].includes(mode), bright = ['major', 'lydian', 'mixolydian'].includes(mode);
-    return { style: m.style, form: theme && m.form !== 'loop' ? 'song' : m.form, mode, bpm, seed: hash(id || s), density: dark ? 0.45 : bright ? 0.62 : 0.55, matched: bestScore, toneScore: score[mode] || 0 };
+    const snd = soundsFromText(s), quiet = /(single (low )?(note|pad|figure)|quietest|held silence|no one around)/.test(s);
+    const out = { style: m.style, form: theme && m.form !== 'loop' ? 'song' : m.form, mode, bpm, seed: hash(id || s), density: quiet ? 0.32 : dark ? 0.45 : bright ? 0.62 : 0.55, matched: bestScore, toneScore: score[mode] || 0 };
+    if (snd.textures === 'none' || snd.textures.length) out.textures = snd.textures;
+    if (snd.hit) out.hit = snd.hit;
+    if (snd.fx) out.fx = snd.fx;
+    if (Object.keys(snd.voices).length) out.voices = snd.voices;
+    if (snd.words.length) out.sounds = snd.words;
+    const motif = motifOf(id); if (motif) out.motif = motif;
+    return out;
   }
   // The MusicDirector's brief for a track (resources/music/temp_briefs.json, from music_direction.py brief):
   // start from the catalog text (+ the scenes' lexicon words, locales, characters), then move tempo, density and
@@ -475,13 +876,21 @@
     const sparse = DIRECTION.sparse.some(has), busy = DIRECTION.busy.some(has);
     if (sparse && !busy) m.density = +Math.max(0.15, m.density - 0.2).toFixed(2);
     else if (busy && !sparse) m.density = +Math.min(0.95, m.density + 0.2).toFixed(2);
+    // sounds named in the direction ("a lonely piano over rain") win over the catalog's
+    const snd = soundsFromText(text);
+    if (snd.textures === 'none' || snd.textures.length) m.textures = snd.textures;
+    if (snd.hit) m.hit = snd.hit;
+    if (snd.fx) m.fx = snd.fx;
+    if (Object.keys(snd.voices).length) m.voices = Object.assign({}, m.voices || {}, snd.voices);
     m.direction = text.trim();
     m.why = (m.why ? m.why + ' · ' : '') + 'direction: "' + m.direction.slice(0, 60) + '"';
     return m;
   }
   function moodFromBrief0(t, b) {
     const m = moodFromText(t.title, t.desc, t.id);
-    if (!b || !b.intensity) return Object.assign(m, { why: 'catalog text' });
+    const k = volumeKey(t.vol, t.id); if (k !== undefined) m.key = k;
+    const sounds = m.sounds ? ' · hears: ' + m.sounds.slice(0, 5).join(', ') : '';
+    if (!b || !b.intensity) return Object.assign(m, { why: 'catalog text' + sounds + (m.motif ? ' · motif: ' + m.motif : '') });
     // the catalog text was written for this track: it decides style / mode; the scenes' words only fill a blank
     if (!m.matched || !m.toneScore) {
       const extra = [(b.words || []).join(' '), (b.locales || []).join(' ')].join(' ');
@@ -499,12 +908,15 @@
     const roles = b.roles || {}, lead = Object.keys(roles).sort((x, y) => roles[y] - roles[x])[0];
     if (lead === 'leitmotif') m.form = 'song';                                // a character's theme has a shape
     m.stems = !!b.stems;
+    // a track the scenes play under one character carries that character's motif (cohesion across the soundtrack)
+    if (!m.motif && lead === 'leitmotif' && (b.chars || []).length) m.motif = String(b.chars[0]).toLowerCase();
     m.why = b.scene_count + ' scene' + (b.scene_count === 1 ? '' : 's') + ' · ' + Object.entries(roles).map(([k, v]) => k + ' ' + v).join(', ') +
-      ' · energy ' + Math.round(e * 100) + '% · dark ' + Math.round(dk * 100) + '%' + (m.stems ? ' · stems' : '');
+      ' · energy ' + Math.round(e * 100) + '% · dark ' + Math.round(dk * 100) + '%' + (m.stems ? ' · stems' : '') + sounds + (m.motif ? ' · motif: ' + m.motif : '');
     return m;
   }
 
-  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, rng, hash, deg2midi, chordPCs, song, part, presetFor, moodFromText, moodFromBrief, applyDirection, romanFor };
+  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, SONG_SHAPES, SOUNDS, SOUND_FALLBACK, TEXTURE_FOR, rng, hash, deg2midi, chordPCs, song, part, presetFor,
+    moodFromText, moodFromBrief, applyDirection, romanFor, soundsFromText, motifOf, volumeKey };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;
 })(typeof window !== 'undefined' ? window : globalThis);

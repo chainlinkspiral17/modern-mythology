@@ -21,11 +21,13 @@
   const BAR = () => root.DAW.BAR;
 
   const ROLE_ORDER = ['drums', 'bass', 'chords', 'lead', 'pad'];
-  const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36 };
+  // the sound-design layer seqgen.js writes: ambience beds (texture, texture2 → one 'texture' stem) · transitions + hits (→ 'fx')
+  const SOUND_PARTS = ['texture', 'texture2', 'fx', 'hit'], SOUND_ROLES = ['texture', 'fx'], ALL_ROLES = ROLE_ORDER.concat(SOUND_ROLES);
+  const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36, texture: 0.3, texture2: 0.24, fx: 0.4, hit: 0.42 };
   const ROLE_VEL = { drums: 1, bass: 0.95, chords: 0.75, lead: 0.85, pad: 0.7 };
   const COLORS = { drums: '#e08a7a', bass: '#c87633', chords: '#d8a060', lead: '#a8e89c', pad: '#8ab4f0', audio: '#c8a4f0', midi: '#f0b94a' };
   // the game's intensity layers per stem (AudioMgr: pad / chords always, bass from 0.25, drums 0.5, lead 0.75)
-  const STEM_LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75 };
+  const STEM_LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75, texture: 0, fx: 0.5 };
   const EXTRA_PADS = ['pad2', 'pad3'];                       // texture layers: the pad an octave up · a sub drone
   const TEMP_MIN_SEC = 90;
   const REVIEW_DIR = 'assets/audio/review';
@@ -73,6 +75,7 @@
     ambient:    { drums: 'gugs:128.48', bass: 'gugs:0.32', chords: 'gugs:0.88', lead: 'gugs:0.11', pad: 'gugs:0.91' },
   };
 
+  const havePreset = id => !!id && (root.FORGE_PRESETS || []).some(p => p.id === id);
   // where each role plays for each "PLAY ON" choice (emulator / hardware channels from the firmware registry)
   function routing(E, inst) {
     const reg = id => (typeof root.fm1Firmware === 'function' && root.fm1Firmware(id)) || {};
@@ -106,11 +109,21 @@
         dev = await E.addDevice('patch', { name: it ? it.name : pick, patch: pick });
       }
       else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT', kit: song.style });
-      else dev = await E.addDevice(typeof root.ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + part.preset, preset: part.preset });
+      else { const pr = havePreset(part.preset) ? part.preset : SG().presetFor(song.style, role, song.seed); dev = await E.addDevice(typeof root.ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + pr, preset: pr }); }
       const t = E.addTrack('midi', { name: role, role, deviceId: dev.id, channel: ch, color: COLORS[role] });
       t.patterns = part.patterns; t.clips = part.clips;
       if (dev !== emuDev && dev !== hwDev) dev.mix.vol = ROLE_LEVEL[role];   // a starting balance with headroom
       else t.vel = ROLE_VEL[role];
+    }
+    // the sound-design layer: always FORGE (beds / risers / hits); a preset this FORGE lacks → its nearest older sound
+    if (typeof root.ForgeSynth === 'function') for (const key of SOUND_PARTS) {
+      const part = song.parts[key]; if (!part || !part.clips.length) continue;
+      const fb = (SG().SOUND_FALLBACK || {})[part.preset], pr = havePreset(part.preset) ? part.preset : fb && havePreset(fb) ? fb : null;
+      if (!pr) continue;
+      const dev = await E.addDevice('forge', { name: key.toUpperCase() + ' · ' + pr, preset: pr });
+      const t = E.addTrack('midi', { name: key, role: part.role || key, deviceId: dev.id, color: COLORS.pad });
+      t.patterns = part.patterns; t.clips = part.clips;
+      dev.mix.vol = ROLE_LEVEL[key] ?? 0.3;
     }
     E.applyMix();
     if (emuDev) emuDev.clock = true;
@@ -138,11 +151,12 @@
     const L = o.length || {};
     if (+L.sec > 0) r.length = { sec: clamp(+L.sec, 2, 900) }; else if (+L.bars > 0) r.length = { bars: clamp(Math.round(+L.bars), 1, 512) };
     if (o.loop) r.loop = true;
-    if (Array.isArray(o.roles) && o.roles.length) { const rs = ROLE_ORDER.filter(x => o.roles.includes(x)); if (rs.length && rs.length < ROLE_ORDER.length) r.roles = rs; }
+    // PARTS: exactly the roles asked for — the sound layer (texture, fx) counts as parts too
+    if (Array.isArray(o.roles) && o.roles.length) { const rs = ALL_ROLES.filter(x => o.roles.includes(x)); if (rs.length && rs.length < ALL_ROLES.length) r.roles = rs; }
     if (+o.extraPads) r.extraPads = clamp(Math.round(+o.extraPads), 0, EXTRA_PADS.length);
     if (o.instruments && typeof o.instruments === 'object') {
       const ins = {};
-      for (const [k, v] of Object.entries(o.instruments)) if ((ROLE_ORDER.includes(k) || EXTRA_PADS.includes(k)) && v && v !== 'auto' && /^(kit|forge:.+|patch:.+)$/.test(String(v))) ins[k] = String(v);
+      for (const [k, v] of Object.entries(o.instruments)) if ((ALL_ROLES.includes(k) || EXTRA_PADS.includes(k)) && v && v !== 'auto' && /^(kit|forge:.+|patch:.+)$/.test(String(v))) ins[k] = String(v);
       if (Object.keys(ins).length) r.instruments = ins;
     }
     if (o.seed !== undefined && o.seed !== null && o.seed !== '' && Number.isFinite(+o.seed)) r.seed = Math.round(+o.seed);
@@ -160,7 +174,7 @@
     if (o.mode) m.mode = o.mode;
     if (o.bpm) m.bpm = o.bpm;
     if (o.density !== undefined) m.density = o.density;
-    m.key = o.key;
+    if (o.key !== undefined) m.key = o.key;                 // else the mood's own (its volume's tonal home)
     return m;
   }
   async function readApprovals() { try { const j = JSON.parse(await AKg().game.readText(APPROVALS)); j.tracks = j.tracks || {}; return j; } catch (e) { return { tracks: {} }; } }
@@ -247,7 +261,7 @@
   // a request's PARTS / EXTRA PADS / INSTRUMENTS applied to the generated project → { role: instrument } for the take's meta
   async function shapeArrangement(E, song, o) {
     const P = E.project, instr = {};
-    if (o.roles) for (const t of P.tracks.slice()) if (!o.roles.includes(t.role)) { const d = t.deviceId; E.removeTrack(t.id); if (d && !P.tracks.some(x => x.deviceId === d)) E.removeDevice(d); }
+    if (o.roles) for (const t of P.tracks.slice()) if (ALL_ROLES.includes(t.role) && !o.roles.includes(t.role)) { const d = t.deviceId; E.removeTrack(t.id); if (d && !P.tracks.some(x => x.deviceId === d)) E.removeDevice(d); }
     for (let k = 0; k < (o.extraPads || 0); k++) {
       const role = EXTRA_PADS[k], lay = padLayer(song, role);
       if (!Object.keys(lay.patterns).length) continue;
@@ -267,7 +281,7 @@
   function instrumentsOf(E) {
     const instr = {};
     for (const t of E.project.tracks) {
-      const d = E.dev(t.deviceId), k = t.role || t.name;
+      const d = E.dev(t.deviceId), k = t.role && !(t.role in instr) ? t.role : t.name;   // texture2 / hit share their stem's role
       instr[k] = !d ? (t.kind === 'audio' ? 'audio' : 'none') : d.type === 'forge' ? 'forge:' + (d.preset || '') : d.type === 'patch' ? 'patch:' + d.patch : d.type === 'emu' ? 'emu:' + (d.emuId || '') + ' ch' + t.channel : d.type;
     }
     return instr;
@@ -375,7 +389,8 @@
           let bars = o.length && o.length.bars;
           if (o.length && o.length.sec) { bars = Math.max(1, Math.round(o.length.sec * m.bpm / 240)); m.bpm = bars * 240 / o.length.sec; }
           if (E.project) E.project.name = t.id;
-          song = await compose(E, { seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: m.key }, ctx.inst || 'forge');
+          song = await compose(E, { seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: m.key,
+            motif: m.motif, textures: m.textures, fx: m.fx, hit: m.hit, voices: m.voices }, ctx.inst || 'forge');
           const P = E.project; P.name = t.id;
           const instruments = await shapeArrangement(E, song, o);
           // the game plays a track once, then the next: with no length asked, repeat to at least TEMP_MIN_SEC
@@ -392,7 +407,9 @@
             onProgress: p => p && p.phase === 'stem' && say('render', 'rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
           const credits = await E.credits();
           const sec = r.channels[0].length / r.sampleRate;
-          const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+song.bpm).toFixed(4), density: song.density, seed: song.seed };
+          const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+song.bpm).toFixed(4), density: song.density, seed: song.seed,
+            composer: song.v || 1, motif: song.motif || undefined, textures: song.textures && song.textures.length ? song.textures : 'none', fx: song.fx || 'none', hit: song.hit || 'none',
+            voices: m.voices || undefined, vocab: song.vocab };
           const entry = { id: t.id, style: song.style, mode: song.mode, bpm: mood.bpm, sec: +sec.toFixed(3), bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, seed: song.seed };
           say('write', 'saving…');
           if (review) {
@@ -431,7 +448,8 @@
     if (proj && proj.v) { await E.load(proj); E.project.name = meta.id; E.emit('project'); return { meta, song: null, exact: true }; }
     const mo = meta.mood || {};
     if (E.project) E.project.name = meta.id;
-    const song = await compose(E, { seed: mo.seed, style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, key: mo.key }, 'forge');
+    const song = await compose(E, { seed: mo.seed, style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, key: mo.key,
+      motif: mo.motif, textures: mo.textures, fx: mo.fx, hit: mo.hit, voices: mo.voices }, 'forge');
     E.project.name = meta.id;
     await shapeArrangement(E, song, normOpts(meta.request));
     if (meta.bars) arrangeTo(E, song, meta.bars);
@@ -464,7 +482,7 @@
   }
 
   root.TempMaker = {
-    ROLE_ORDER, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
+    ROLE_ORDER, SOUND_ROLES, ALL_ROLES, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
     routing, compose, loadBriefs, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
     padLayer, texturePreset, shapeArrangement, instrumentsOf, loadTake, stageEdit, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
   };

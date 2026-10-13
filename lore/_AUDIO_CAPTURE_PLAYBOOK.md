@@ -866,6 +866,65 @@ context keeps running into a fake sink, and the meters still move.
   director suite; sync/tidy against a stub rclone. The systemd units
   are untested here (no systemd in the sandbox).
 
+### 2026-10-13 — composer v2: "all sounding the same" → vocabularies, sections, sound design, cohesion
+
+- The user said "Songs ... all starting to sound the same after a few
+  generations. same beats, same baselines, just shallow". Then: "a
+  diverse but cohesive soundtrack with all sorts of evocative sounds,
+  moods, effects, and ambient noise."
+- Root causes in seqgen v1: one drum grid per style (variation was
+  only random note drops), one bass figure per style (root/fifth),
+  one 4-chord loop for the whole song (B and A2 reused it), one fixed
+  song form, and pads that were always root-fifth-third. A track's
+  brief always maps to the same style, so every take of that track
+  shared one beat and one bass line.
+- seqgen v2 (`song.v = 2`):
+  - per-style vocabularies: 4–6 grooves, 3–5 bass figures, 3–5
+    comping patterns, lead kinds, pad kinds;
+  - A/B contrast picks, 4-bar turns, a fill pool, optional
+    percussion colour;
+  - per-section harmony (A, contrasting B and C, break, intro), a
+    harmonic rhythm of 0.5, 1 or 2 bars per chord, and extensions
+    (7, 9, sus, add9);
+  - six song shapes (intro / A / B / C bridge / brk / outro);
+  - bass approach notes into chord changes;
+  - lead motifs developed by phrase plans (statement, sequence,
+    answer, cadence, rests).
+  - Measured over 12 seeds per style: 3–7 kick patterns (4-floor /
+    motorik stay steady), 4–10 bass rhythms, 6–9 progressions,
+    6 shapes. v1 had 1 groove, 1 comp pattern and 1 shape.
+- Sound design layer, new parts:
+  - `texture` (+`texture2`) — ambience beds, one held note per
+    section, → stem `texture` at layer 0;
+  - `fx` (risers into lifts, downers into breaks) and `hit`
+    (one-shots on lifts), both → stem `fx` at layer 0.5.
+- `soundsFromText()` reads the catalog's sound words into beds, hits,
+  transitions and instruments: "fire crackle" → amb_fire, "modem" →
+  amb_modem, "bowed cello" → strings, "piano" → keys_felt, "no
+  field-recording layer" → no bed. Typed direction words win over the
+  catalog's.
+- Cohesion:
+  - a character's leitmotif: `vol5_alberto_theme` → motif 'alberto',
+    and so does any track whose scenes lead with that character. The
+    rhythm + contour are seeded by the name and carried into every
+    style/key.
+  - a volume's tonal home (`volumeKey`): tonic, fifth, fourth or
+    relative.
+- `SOUND_FALLBACK` maps presets a FORGE build lacks to the nearest
+  older sound, so the composer can name new presets before they
+  ship.
+- Parallel PLAY: RENDER chunks now cut at clip/section starts. A
+  4-bar cut through a held bed made each chunk render the rest of the
+  bed as tail, and first sound went from 4 s to 12 s. With the sound
+  layer's 8 parts first sound is ~4–5 s; the test limit is now 8 s.
+- PARTS in the director include texture and fx, and a request plays
+  exactly the parts ticked.
+- Old seeds don't re-create v1 notes. Takes save project.json for
+  exact reopening; ⟳ AGAIN on a v1 take makes a v2 piece.
+- Test flake fixed at the root: the daw_rec CHECK-OUT pickup read the
+  value synchronously after a synthetic focus event, but the handler
+  is async. It now polls.
+
 ## TEMPLATE
 
 ```

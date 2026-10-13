@@ -66,7 +66,8 @@ suite('daw rec · count-in, punch, loop takes, latency', async t => {
       await other.evaluate(() => localStorage.setItem('mm_fm1_latency_ms', '27.5'));
       for (let i = 0; i < 30 && (seen = await fm1()).ms !== 27.5; i++) await p.waitForTimeout(100);
       // Chromium sometimes drops the storage event: coming back to the DAW tab (focus) must pick the value up then
-      if (seen.ms !== 27.5) { via = 'focus'; await p.evaluate(() => window.dispatchEvent(new Event('focus'))); seen = await fm1(); }
+      // (the focus handler re-reads asynchronously: wait for it rather than reading straight after the event)
+      if (seen.ms !== 27.5) { via = 'focus'; await p.evaluate(() => window.dispatchEvent(new Event('focus'))); for (let i = 0; i < 20 && (seen = await fm1()).ms !== 27.5; i++) await p.waitForTimeout(50); }
       await other.evaluate(() => localStorage.setItem('mm_fm1_latency_ms', '23'));
     } finally { await other.close(); await p.bringToFront(); }   // never leave the DAW behind another tab: no frames → touch fails later
     t.eq(seen, { ms: 27.5, src: 'checkout' }, 'CHECK-OUT value picked up live (' + via + ')');
