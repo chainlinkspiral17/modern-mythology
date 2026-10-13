@@ -169,7 +169,8 @@
     if (b && o.energy) bb = Object.assign({}, b, { energy: clamp((b.energy ?? 0.5) + o.energy, 0, 1) });
     // brief → the score's written direction (volume → chapter → character → track cue) → typed direction
     let m = S.moodFromBrief(t, bb);
-    if (score && S.applyScore) m = S.applyScore(m, score, t);
+    // the chapters a track plays in: the catalog's own list plus every scene the MusicDirector's brief plays it under
+    if (score && S.applyScore) m = S.applyScore(m, score, Object.assign({}, t, { chapters: [...(t.chapters || []), ...((b && b.scenes) || [])] }));
     if (o.description) m = S.applyDirection(m, o.description);
     if (!b && o.energy) { const [lo, hi] = S.STYLES[m.style].bpm; m.bpm = Math.round(clamp(m.bpm + o.energy * (hi - lo), lo, hi)); m.density = +clamp(m.density + o.energy * 0.4, 0.15, 0.95).toFixed(2); }
     if (o.style && o.style !== m.style) { const a = S.STYLES[m.style].bpm, z = S.STYLES[o.style].bpm, pos = clamp((m.bpm - a[0]) / Math.max(1, a[1] - a[0]), 0, 1); m.style = o.style; m.bpm = Math.round(z[0] + pos * (z[1] - z[0])); }

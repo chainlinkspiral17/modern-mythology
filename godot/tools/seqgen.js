@@ -845,7 +845,11 @@
     const R = rng(hash('score:' + t.id + ':' + (m.seed || 0)));
     const pickOne = v => Array.isArray(v) ? (v.length === 2 && v.every(x => typeof x === 'number') ? v[0] + R() * (v[1] - v[0]) : R.pick(v)) : v;
     const chapters = [...new Set((t.chapters || []).map(chapterOf).filter(Boolean))];
-    const layers = [score.soundtrack, (score.volumes || {})[String(t.vol)], ...chapters.slice(0, 1).map(c => (score.chapters || {})[c]), (score.tracks || {})[t.id]].filter(Boolean);
+    // a track the scenes play in several chapters: each take leans toward one of them (the ones the score describes),
+    // so takes differ the way those chapters do
+    const described = chapters.filter(c => (score.chapters || {})[c]), chap = described.length ? described[R.int(0, described.length - 1)] : null;
+    if (chap) m.chapter = chap;
+    const layers = [score.soundtrack, (score.volumes || {})[String(t.vol)], chap && (score.chapters || {})[chap], (score.tracks || {})[t.id]].filter(Boolean);
     const feel = [];
     const take = L => {
       if (L.style && STYLES[pickOne(L.style)] !== undefined) m.style = pickOne(L.style);
