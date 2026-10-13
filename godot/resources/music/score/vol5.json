@@ -1,0 +1,1845 @@
+{
+ "_doc": "Score bible · volume 5 (the Major Arcana) — see README.md. Home E; pre-Sinkhole cards sit on E / A / B / C#, the late cards drift to the flat side (Bb F C Eb G D) and walk home through C# A B to E at the World. Recurring beds: tape hiss (Priestess), fluorescent ballast (diner / offices), riverboat-engine drone (boat / cathedral), cicadas (bungalow / the World). The Demon lives a half-step up, in F.",
+ "volumes": {
+  "5": {
+   "feel": "Operator-noir warm: D'Ambrosio's at three in the morning, the Cathedral's hum, cassette decks and phosphor-green CRTs, a Gulf-Coast river always moving just outside. Twenty-two arcana, one deck — every cue is a small lit room with a machine breathing in the corner. The Sinkhole splits the volume: the early cards sit close to home (E and its neighbours) and are warm and populated; after the Wheel the keys drift flat and far and the rooms empty out, until the World walks back down to the river in E.",
+   "key": ["E", "A", "B", "C#"],
+   "mode": ["minor", "dorian"],
+   "bpm": [64, 96],
+   "style": ["noir", "jazz", "chamber", "ambient"],
+   "voices": {
+    "bass": ["bass_upright", "bass_fretless", "bass_sub"],
+    "chords": ["keys_felt", "keys_mk1", "keys_vibes", "strings_noir"],
+    "lead": ["winds_clarinet", "keys_vibes", "winds_harmon", "pluck_nylon", "strings_noir"],
+    "pad": ["strings_noir", "pad_tape_wobble", "pad_velvet", "pad_organ_swell"]
+   },
+   "textures": ["amb_tape_hiss", "amb_fluor_hum", "amb_room_tone"],
+   "density": [0.35, 0.55]
+  }
+ },
+ "chapters": {
+  "vol5_ch0": {
+   "feel": "0 · The Fool. D'Ambrosio's before dawn: vibes and a Wurlitzer over the fluorescent ballast, brushes, a bell at the pass. Home key, open mixolydian — the leap hasn't been taken yet.",
+   "key": "E",
+   "mode": "mixolydian",
+   "style": ["jazz", "lofi"],
+   "density": 0.35,
+   "textures": ["amb_room_tone", "amb_fluor_hum"]
+  },
+  "vol5_ch1": {
+   "feel": "I · The Magician. The Cathedral of Rust and Code: bowed metal, choir in the rafters, a riverboat engine under the floor and the demons bound in phrygian. The first dark turn.",
+   "key": "E",
+   "mode": "phrygian",
+   "style": "dark_drone",
+   "density": 0.35,
+   "textures": ["drone_engine", "amb_fluor_hum"],
+   "voices": {
+    "pad": "pad_bowed_metal"
+   }
+  },
+  "vol5_ch2": {
+   "feel": "II · The High Priestess. Elicia's bungalow at dusk: cicadas through the screen, tape hiss, a slow broken beat, her sustained voice-tone. Relative-minor C# — inward, listening.",
+   "key": "C#",
+   "mode": "dorian",
+   "style": ["trip_hop", "ambient"],
+   "density": 0.4,
+   "textures": ["amb_cicadas", "amb_tape_hiss"]
+  },
+  "vol5_ch3": {
+   "feel": "III · The Empress. Nicola's riverboat dining room: strings and clarinet over the engine, the long table set. Lush but moored — pre-Sinkhole abundance with static at the edges.",
+   "key": "A",
+   "mode": "dorian",
+   "style": "chamber",
+   "density": 0.45,
+   "textures": ["drone_engine", "amb_room_tone"]
+  },
+  "vol5_ch4": {
+   "feel": "IV · The Emperor. Dante's helm above the dining room: the same boat, brass and a clock instead of the table's warmth. Minor, upright, counting down to what takes him.",
+   "key": "A",
+   "mode": "minor",
+   "style": "chamber",
+   "density": 0.45,
+   "textures": ["amb_clock", "drone_engine"],
+   "voices": {
+    "lead": "winds_horns"
+   }
+  },
+  "vol5_ch5": {
+   "feel": "V · The Hierophant. The Sunday circuit — St Jude's, the bandstand, Table 17 — and RUST_CODE.BBS humming under it: organ and choir, then phosphor. Fifth-up B, the most public chapter.",
+   "key": "B",
+   "mode": "major",
+   "style": "hymn",
+   "density": 0.45,
+   "textures": ["drone_cathedral", "amb_modem"]
+  },
+  "vol5_ch6": {
+   "feel": "VI · The Lovers. The Roberts kitchen: a felt piano, marimba drips keeping time, the faucet nobody fixes. Bittersweet dorian, small and domestic.",
+   "key": "B",
+   "mode": "dorian",
+   "style": ["minimal", "piano"],
+   "density": 0.35,
+   "textures": ["amb_room_tone", "amb_clock"]
+  },
+  "vol5_ch7": {
+   "feel": "VII · The Chariot. Antonio's hot office above Ember & Ash: a motorik pulse under a losing window unit, brass that wants to go. The last forward motion before the wreck.",
+   "key": "F#",
+   "mode": "dorian",
+   "style": "motorik",
+   "density": 0.5,
+   "textures": ["drone_engine", "amb_city"]
+  },
+  "vol5_ch8": {
+   "feel": "VIII · Strength. A New Orleans bar in refrains: sax, Rhodes, upright, vinyl. The volume leaves home for the flat keys — Bb — and stays known rather than conquered.",
+   "key": "Bb",
+   "mode": "dorian",
+   "style": "jazz",
+   "density": 0.5,
+   "textures": ["amb_vinyl", "amb_city"]
+  },
+  "vol5_ch9": {
+   "feel": "IX · The Hermit. The Graustark ruin-scape: wind through scrawled walls, one lonesome whistle, a lantern flame. Sparse D dorian — a single light raised.",
+   "key": "D",
+   "mode": "dorian",
+   "style": "ambient",
+   "density": 0.25,
+   "textures": ["amb_wind", "amb_fire"]
+  },
+  "vol5_ch10": {
+   "feel": "X · The Wheel. After the Sinkhole: a Houston law office, motion denied, fluorescent hum. Alberto's cello note turning over a noir walk in F minor — the wheel turns either way.",
+   "key": "F",
+   "mode": "minor",
+   "style": "noir",
+   "density": 0.4,
+   "textures": ["amb_fluor_hum", "amb_room_tone"],
+   "motif": "alberto"
+  },
+  "vol5_ch11": {
+   "feel": "XI · Justice. Office to design studio, the morning after: chamber strings in harmonic minor, a clock, the city. Exact, costly, fair.",
+   "key": "C",
+   "mode": "harmonic",
+   "style": "chamber",
+   "density": 0.4,
+   "textures": ["amb_clock", "amb_city"]
+  },
+  "vol5_ch12": {
+   "feel": "XII · The Hanged Man. Natalie's apartment after midnight: a trip-hop drag, celesta floating in lydian, incense and tape hiss. The world calmly upside down.",
+   "key": "Eb",
+   "mode": "lydian",
+   "style": "trip_hop",
+   "density": 0.4,
+   "textures": ["amb_tape_hiss", "amb_city"]
+  },
+  "vol5_ch13": {
+   "feel": "XIII · Death. St. Jude's Mercy hospice: a hymn at the pace of a breathing machine, felt piano, choir far off. G major — nothing exempt, nothing cruel.",
+   "key": "G",
+   "mode": "major",
+   "style": "hymn",
+   "density": 0.25,
+   "textures": ["amb_life_support", "amb_room_tone"]
+  },
+  "vol5_ch14": {
+   "feel": "XIV · Temperance. A Montreal apartment years on: a jazz trio in patient exchange, vibes answering piano, two cups. Moderate in every parameter on purpose.",
+   "key": "D",
+   "mode": "dorian",
+   "style": "jazz",
+   "density": 0.35,
+   "textures": ["amb_room_tone", "amb_clock"]
+  },
+  "vol5_ch15": {
+   "feel": "XV · The Devil. Jimmy Daigle under a wobbling ceiling fan: a swamp groove in G mixolydian with the Demon's half-step figure worked into the harmonica. The chains are loose; they stay on.",
+   "key": "G",
+   "mode": "mixolydian",
+   "style": "bayou",
+   "density": 0.5,
+   "textures": ["drone_engine", "amb_cicadas"],
+   "motif": "the_demon"
+  },
+  "vol5_ch16": {
+   "feel": "XVI · The Tower. Elicia's command center gone to plaster: industrial at full fan load, fuzz and Reese in F phrygian, impacts. The loudest, coldest card.",
+   "key": "F",
+   "mode": "phrygian",
+   "style": "industrial",
+   "density": 0.65,
+   "textures": ["amb_life_support", "amb_fluor_hum"]
+  },
+  "vol5_ch17": {
+   "feel": "XVII · The Star. Graustark ruins under a shard-of-mirror moon: harp and bowed glass in D lydian, water poured, glass pings. The first light after the Tower.",
+   "key": "D",
+   "mode": "lydian",
+   "style": "ambient",
+   "density": 0.3,
+   "textures": ["amb_rain", "amb_wind"]
+  },
+  "vol5_ch18": {
+   "feel": "XVIII · The Moon. Five a.m. after the cards: a celesta lullaby in C# minor over crickets and a clock. The keys start walking home.",
+   "key": "C#",
+   "mode": "minor",
+   "style": "lullaby",
+   "density": 0.25,
+   "textures": ["amb_crickets", "amb_clock"]
+  },
+  "vol5_ch19": {
+   "feel": "XIX · The Sun. Café Olimpico in late May: nylon guitar, Wurlitzer and espresso clatter in A major. Six years of Tuesdays — the warmest, plainest cue in the volume.",
+   "key": "A",
+   "mode": "major",
+   "style": "folk",
+   "density": 0.55,
+   "textures": ["amb_city", "amb_room_tone"]
+  },
+  "vol5_ch20": {
+   "feel": "XX · Judgement. The hush over the ruins shatters: post-rock that builds from wind to full band, brass calling, B (the dominant of home).",
+   "key": "B",
+   "mode": "mixolydian",
+   "style": "post_rock",
+   "density": [0.4, 0.7],
+   "textures": ["amb_wind", "amb_thunder"]
+  },
+  "vol5_ch21": {
+   "feel": "XXI · The World. Minstral's Green by the rusting steamship: a bayou porch tune in E major, flute carrying John's apron phrase back to where the Fool started. Mostly.",
+   "key": "E",
+   "mode": "major",
+   "style": "bayou",
+   "density": 0.45,
+   "textures": ["amb_cicadas"],
+   "motif": "john"
+  }
+ },
+ "characters": {
+  "alberto": {
+   "feel": "The grieving son in sunglasses indoors: one dampened cello note, bowed and re-bowed like a number redialed nineteen times. It falls a step and comes back. Nothing resolves.",
+   "instrument": "strings_noir",
+   "mode": "minor",
+   "motifSpec": {
+    "rhythm": [0, 6, 16, 22, 28],
+    "degrees": [0, 0, 0, 0, -1]
+   }
+  },
+  "anya": {
+   "feel": "The recorded voice in Elicia's archive — never present, always heard. An almost-melody that wavers under the tape hiss, never quite stepping forward.",
+   "instrument": "lead_theremin",
+   "mode": "dorian",
+   "motifSpec": {
+    "rhythm": [0, 7, 12, 22],
+    "degrees": [2, 1, -1, 0]
+   }
+  },
+  "bbs_caller": {
+   "feel": "The sysop of ember.ash.rest.bbs: a modem handshake turned into a figure — chirp, answer, carrier — under a low fluorescent buzz.",
+   "instrument": "lead_fm",
+   "mode": "dorian",
+   "motifSpec": {
+    "rhythm": [0, 2, 4, 8, 10, 12],
+    "degrees": [0, 4, 0, 4, 7, 4]
+   }
+  },
+  "bus_kid": {
+   "feel": "The helper: a bright wood-block tap and a smile of brass that climbs a major triad and lands happy.",
+   "instrument": "winds_brass",
+   "mode": "major",
+   "motifSpec": {
+    "rhythm": [0, 4, 6, 12],
+    "degrees": [0, 2, 4, 7]
+   }
+  },
+  "elicia": {
+   "feel": "The High Priestess at the console: cassette-spool noise and a soft sustained voice-tone (no words) — a fifth up, then settling onto the minor third. She listens more than she sings.",
+   "instrument": "choir_vox",
+   "mode": "dorian",
+   "motifSpec": {
+    "rhythm": [0, 8, 14, 24],
+    "degrees": [0, 4, 3, 2]
+   }
+  },
+  "frasier": {
+   "feel": "The Magician at the workbench: a methodical climb in stacked thirds, one piece placed at a time, then the last piece set a step short. A ring-modulated tone with the pen scratch behind it.",
+   "instrument": "lead_ring",
+   "mode": "dorian",
+   "motifSpec": {
+    "rhythm": [0, 4, 8, 12, 20],
+    "degrees": [0, 2, 4, 6, 5]
+   }
+  },
+  "john": {
+   "feel": "The Fool behind the counter: an apron-tied phrase on a single mid-range pad, falling to the tonic and holding, a slow heartbeat below. It comes back at the World.",
+   "instrument": "pad_warm",
+   "mode": "major",
+   "motifSpec": {
+    "rhythm": [0, 6, 8, 16],
+    "degrees": [2, 1, 0, 0]
+   }
+  },
+  "line_cook": {
+   "feel": "The cook at the pass: one brass bell strike, then the heat-vent hum and a two-note call — order up — that drops a fifth.",
+   "instrument": "bell_tubular",
+   "mode": "mixolydian",
+   "motifSpec": {
+    "rhythm": [0, 6, 8, 24],
+    "degrees": [4, 4, 0, 0]
+   }
+  },
+  "mackenzie": {
+   "feel": "The Lovers at the receiver: a single piano left-hand figure — root, fifth, octave, back — under phone-line static, patient and a little stuck.",
+   "instrument": "keys_felt",
+   "mode": "minor",
+   "motifSpec": {
+    "rhythm": [0, 4, 8, 16, 20],
+    "degrees": [0, 4, 7, 5, 4]
+   }
+  },
+  "maya": {
+   "feel": "Nine years old, mid-card-trick at booth 6: a ten-second music-box loop in lydian that lands somewhere slightly different each pass — the trick.",
+   "instrument": "bell_music_box",
+   "mode": "lydian",
+   "motifSpec": {
+    "rhythm": [0, 2, 4, 8, 10, 12, 16],
+    "degrees": [4, 5, 4, 2, 4, 7, 3]
+   }
+  },
+  "the_demon": {
+   "feel": "The man at the bar: a cold sine pad that sits a half-step off everything around it — the phrygian b2 leaned on and never resolved. His key is F against the volume's E.",
+   "instrument": "pad_frost",
+   "mode": "phrygian",
+   "motifSpec": {
+    "rhythm": [0, 12, 16],
+    "degrees": [0, 1, 0]
+   }
+  },
+  "birdwatcher": {
+   "feel": "The woman in the windbreaker at the river window: a far two-note call on breathy flute, a long wait, one more. Chair creak and a patient exhale around it.",
+   "instrument": "winds_flute",
+   "mode": "lydian",
+   "motifSpec": {
+    "rhythm": [0, 3, 20],
+    "degrees": [4, 4, 2]
+   }
+  },
+  "college_friend": {
+   "feel": "An old laugh far in the back of the cathedral — a quick falling figure on distant horns that remembers the year you stopped speaking.",
+   "instrument": "winds_horns",
+   "mode": "dorian",
+   "motifSpec": {
+    "rhythm": [0, 2, 4, 6],
+    "degrees": [4, 3, 2, 0]
+   }
+  },
+  "critic": {
+   "feel": "Pen on notebook, a sharp inhale through the nose: two dry harpsichord plucks and a verdict. No music underneath.",
+   "instrument": "keys_harpsichord",
+   "mode": "harmonic",
+   "motifSpec": {
+    "rhythm": [0, 1, 12],
+    "degrees": [4, 4, 0]
+   }
+  },
+  "drifter": {
+   "feel": "The threshold figure at the bay: gravel, a far match-strike, two slid dobro notes. He doesn't stay long enough to leave a melody.",
+   "instrument": "pluck_dobro",
+   "mode": "mixolydian",
+   "motifSpec": {
+    "rhythm": [0, 10],
+    "degrees": [0, -2]
+   }
+  },
+  "drunk_uncle": {
+   "feel": "The uncle who arrived and will not be greeted: a sloppy Wurlitzer figure on off-grid steps, a thump that refuses to sync, a glass set down on wood.",
+   "instrument": "keys_wurli",
+   "mode": "mixolydian",
+   "motifSpec": {
+    "rhythm": [0, 5, 11, 19, 27],
+    "degrees": [0, 0, -1, 0, -3]
+   }
+  },
+  "superfan": {
+   "feel": "Too-fast breath, paper bag, plastic-cup tap: an eager glockenspiel run that hasn't read the room.",
+   "instrument": "bell_glock",
+   "mode": "major",
+   "motifSpec": {
+    "rhythm": [0, 1, 2, 3, 4, 6],
+    "degrees": [0, 2, 4, 2, 4, 7]
+   }
+  },
+  "twins": {
+   "feel": "Two of the same tone, milliseconds apart, hard left and hard right — every note of their figure struck twice, a sixteenth apart. They share patience; they share a theme.",
+   "instrument": "lead_whistle",
+   "mode": "major",
+   "motifSpec": {
+    "rhythm": [0, 1, 16, 17],
+    "degrees": [0, 0, 4, 4]
+   }
+  }
+ },
+ "tracks": {
+  "vol5_alberto_theme": {
+   "feel": "One dampened cello note, bowed and re-bowed — the grieving son indoors in sunglasses. A fretless pedal enters once and leaves.",
+   "style": "chamber",
+   "form": "song",
+   "bpm": 62,
+   "key": "F",
+   "mode": "minor",
+   "density": 0.25,
+   "voices": {
+    "lead": "strings_noir",
+    "pad": "strings_noir",
+    "bass": "bass_fretless"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "alberto",
+   "shape": [["intro", 2, ["pad"]], ["A", 8, ["lead", "pad"]], ["C", 4, ["lead", "bass", "pad"]], ["A2", 8, ["lead", "pad"]], ["outro", 2, ["lead"]]]
+  },
+  "vol5_anya_theme": {
+   "feel": "Found-tape hiss on top; Anya's almost-melody wavers just under the noise floor — keep the theremin ducked beneath the hiss, never a clean statement.",
+   "style": "ambient",
+   "form": "song",
+   "bpm": 66,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.22,
+   "voices": {
+    "lead": "lead_theremin",
+    "pad": "pad_tape_wobble",
+    "chords": "keys_tape_ep"
+   },
+   "textures": ["amb_tape_hiss"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "anya",
+   "shape": [["intro", 4, ["texture"]], ["A", 8, ["texture", "lead", "pad", "fx"]], ["B", 8, ["texture", "lead", "chords", "pad"]], ["A2", 8, ["texture", "lead"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_bbs_caller_theme": {
+   "feel": "A modem handshake becomes a figure: FM chirps and chip arpeggios over a low fluorescent buzz. Phosphor green, 2400 baud, no drums.",
+   "style": "chiptune",
+   "form": "song",
+   "bpm": 100,
+   "key": "B",
+   "mode": "dorian",
+   "density": 0.4,
+   "voices": {
+    "lead": "lead_fm",
+    "chords": "arp_chip",
+    "bass": "bass_pluck",
+    "pad": "pad_fluorescent"
+   },
+   "textures": ["amb_modem", "amb_fluor_hum"],
+   "fx": "fx_noise_sweep",
+   "hit": "fx_flicker",
+   "motif": "bbs_caller",
+   "shape": [["intro", 4, ["texture"]], ["A", 8, ["lead", "bass", "texture", "fx"]], ["B", 8, ["lead", "chords", "bass", "pad", "texture", "fx"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_bus_kid_theme": {
+   "feel": "A bright wood-block tap and a smile of brass — the helper clearing booths at a skip. Folk two-step in E major, the friendliest thing in the diner.",
+   "style": "folk",
+   "form": "song",
+   "bpm": 104,
+   "key": "E",
+   "mode": "major",
+   "density": 0.5,
+   "voices": {
+    "lead": "winds_brass",
+    "chords": "pluck_nylon",
+    "bass": "bass_fender",
+    "pad": "winds_horns"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "none",
+   "hit": "fx_wood_knock",
+   "motif": "bus_kid",
+   "shape": [["intro", 2, ["drums", "texture"]], ["A", 8, ["drums", "bass", "chords", "lead", "texture"]], ["B", 4, ["drums", "bass", "chords", "lead", "pad", "texture", "fx"]], ["A2", 8, ["drums", "bass", "chords", "lead", "texture", "fx"]], ["outro", 2, ["lead", "texture"]]]
+  },
+  "vol5_elicia_theme_solo": {
+   "feel": "Cassette-spool noise and a soft sustained voice-tone (no vocal) — the Priestess alone at the console, a hymn with no words. The spool runs out at the end.",
+   "style": "hymn",
+   "form": "song",
+   "bpm": 64,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.3,
+   "voices": {
+    "lead": "choir_vox",
+    "pad": "pad_cathedral_air",
+    "bass": "bass_sub"
+   },
+   "textures": ["amb_tape_hiss"],
+   "fx": "fx_tape_stop",
+   "hit": "none",
+   "motif": "elicia",
+   "shape": [["intro", 4, ["texture", "pad"]], ["A", 8, ["lead", "pad", "texture"]], ["B", 8, ["lead", "pad", "bass", "texture"]], ["A2", 8, ["lead", "pad", "texture", "fx"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_frasier_theme_solo": {
+   "feel": "Frasier's notebook: a harpsichord pulse and his ring-tone figure climbing, the warehouse drone behind — distinct from the chapter bed (a working pulse, not a hum). Pen scratch implied by the dry pluck.",
+   "style": "minimal",
+   "form": "song",
+   "bpm": 112,
+   "key": "E",
+   "mode": "dorian",
+   "density": 0.4,
+   "voices": {
+    "lead": "lead_ring",
+    "chords": "keys_harpsichord",
+    "bass": "bass_pluck",
+    "pad": "pad_bowed_metal"
+   },
+   "textures": ["drone_engine"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "frasier",
+   "shape": [["intro", 4, ["texture", "chords"]], ["A", 8, ["chords", "bass", "lead", "texture"]], ["B", 8, ["chords", "bass", "lead", "pad", "texture"]], ["A2", 8, ["chords", "bass", "lead", "texture"]], ["outro", 4, ["texture", "pad"]]]
+  },
+  "vol5_john_theme": {
+   "feel": "An apron-tied phrase on a single mid-range pad, a felt-kick heartbeat below. John wiping the same spot of formica, kindly. The gentlest theme in the volume.",
+   "style": "lofi",
+   "form": "song",
+   "bpm": 64,
+   "key": "E",
+   "mode": "major",
+   "density": 0.25,
+   "voices": {
+    "lead": "pad_warm",
+    "pad": "pad_warm",
+    "bass": "bass_sub"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "john",
+   "shape": [["intro", 2, ["pad"]], ["A", 8, ["lead", "drums", "bass"]], ["C", 8, ["lead", "pad", "drums", "bass"]], ["outro", 4, ["pad", "bass"]]]
+  },
+  "vol5_line_cook_theme": {
+   "feel": "A single brass bell strike at the start, then the heat-vent hum and a slow dub pulse from the line. Work music for a hot kitchen at 4 a.m.",
+   "style": "dub",
+   "form": "song",
+   "bpm": 86,
+   "key": "A",
+   "mode": "mixolydian",
+   "density": 0.35,
+   "voices": {
+    "lead": "bell_tubular",
+    "bass": "bass_sub",
+    "chords": "keys_mk1",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_room_tone", "drone_engine"],
+   "fx": "none",
+   "hit": "fx_bell_hit",
+   "motif": "line_cook",
+   "shape": [["C", 2, ["fx", "texture"]], ["A", 8, ["drums", "bass", "texture"]], ["B", 8, ["drums", "bass", "chords", "lead", "texture"]], ["outro", 4, ["bass", "pad", "texture"]]]
+  },
+  "vol5_mackenzie_theme": {
+   "feel": "Phone-line static and a single piano left-hand figure, turning. Mackenzie holding the receiver; when the scene leans in, a velvet pad and upright join under her hand.",
+   "style": "piano",
+   "form": "song",
+   "bpm": 72,
+   "key": "B",
+   "mode": "minor",
+   "density": 0.3,
+   "voices": {
+    "lead": "keys_felt",
+    "bass": "bass_upright",
+    "pad": "pad_velvet"
+   },
+   "textures": ["amb_radio"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "mackenzie",
+   "stems": true,
+   "shape": [["intro", 2, ["texture"]], ["A", 8, ["lead", "texture"]], ["A2", 8, ["lead", "bass", "texture"]], ["C", 8, ["lead", "pad", "bass", "texture"]], ["outro", 4, ["lead", "texture"]]]
+  },
+  "vol5_maya_theme": {
+   "feel": "A music-box loop, ten seconds long (three bars at 72), slightly varied each pass — the card trick that lands somewhere new every time. Nothing else.",
+   "style": "lullaby",
+   "form": "loop",
+   "bpm": 72,
+   "key": "E",
+   "mode": "lydian",
+   "density": 0.45,
+   "voices": {
+    "lead": "bell_music_box"
+   },
+   "textures": "none",
+   "fx": "none",
+   "hit": "none",
+   "motif": "maya",
+   "shape": [["loop", 3, ["lead"]]]
+  },
+  "vol5_the_demon_theme": {
+   "feel": "A cold sine pad a half-step out of tune with everything — F phrygian set against the volume's E, the b2 leaned on and never resolved. The lean man at the empty stool.",
+   "style": "dark_drone",
+   "form": "song",
+   "bpm": 60,
+   "key": "F",
+   "mode": "phrygian",
+   "density": 0.2,
+   "voices": {
+    "lead": "pad_frost",
+    "pad": "pad_frost",
+    "bass": "drone_dark"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "the_demon",
+   "shape": [["intro", 4, ["pad"]], ["A", 8, ["pad", "lead"]], ["C", 8, ["pad", "lead", "bass"]], ["outro", 4, ["pad"]]]
+  },
+  "vol5_birdwatcher_theme": {
+   "feel": "Chair creak, binocular-strap rustle, a slow patient exhale; a far two-note flute call over the river wind, then a long wait. Almost all room.",
+   "style": "ambient",
+   "form": "song",
+   "bpm": 60,
+   "key": "A",
+   "mode": "lydian",
+   "density": 0.15,
+   "voices": {
+    "lead": "winds_flute",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_wind", "amb_room_tone"],
+   "fx": "fx_noise_sweep",
+   "hit": "fx_wood_knock",
+   "motif": "birdwatcher",
+   "shape": [["intro", 4, ["texture"]], ["A", 8, ["texture", "lead", "fx"]], ["C", 8, ["texture", "pad", "lead", "fx"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_college_friend_theme": {
+   "feel": "An old laugh far in the back of the cathedral: distant horns falling, organ swell, a reverse swell like a memory turning up. The year you stopped speaking.",
+   "style": "hymn",
+   "form": "song",
+   "bpm": 66,
+   "key": "E",
+   "mode": "dorian",
+   "density": 0.3,
+   "voices": {
+    "lead": "winds_horns",
+    "pad": "pad_organ_swell",
+    "chords": "choir_vox",
+    "bass": "bass_fretless"
+   },
+   "textures": ["drone_cathedral"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "college_friend",
+   "shape": [["intro", 4, ["texture", "pad"]], ["A", 8, ["lead", "pad", "texture", "fx"]], ["C", 8, ["chords", "lead", "bass", "texture"]], ["A2", 8, ["lead", "pad", "texture"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_critic_theme": {
+   "feel": "Pen-on-notebook scratch and a sharp inhale through the nose — two dry harpsichord plucks and a verdict. No music underneath: no chords, no bass, no pad.",
+   "style": "noir",
+   "form": "song",
+   "bpm": 120,
+   "key": "C",
+   "mode": "harmonic",
+   "density": 0.2,
+   "voices": {
+    "lead": "keys_harpsichord"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "fx_noise_sweep",
+   "hit": "fx_wood_knock",
+   "motif": "critic",
+   "shape": [["A", 4, ["lead", "texture", "fx"]], ["B", 2, ["texture", "fx"]], ["A2", 4, ["lead", "texture", "fx"]], ["outro", 2, ["texture"]]]
+  },
+  "vol5_drifter_theme": {
+   "feel": "Gravel under boot, a far-away match-strike, two slid dobro notes and gone. He doesn't stay long enough to leave a melody — keep it short.",
+   "style": "folk",
+   "form": "song",
+   "bpm": 92,
+   "key": "B",
+   "mode": "mixolydian",
+   "density": 0.2,
+   "voices": {
+    "lead": "pluck_dobro",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_wind"],
+   "fx": "none",
+   "hit": "fx_flicker",
+   "motif": "drifter",
+   "shape": [["intro", 2, ["texture"]], ["A", 4, ["lead", "texture"]], ["B", 2, ["texture", "fx"]], ["outro", 2, ["texture", "pad"]]]
+  },
+  "vol5_drunk_uncle_theme": {
+   "feel": "A back-room thump that refuses to sync — the Wurlitzer figure lands on off-grid steps against a boom-bap pocket. A glass set down on wood. Nobody greets him.",
+   "style": "boom_bap",
+   "form": "song",
+   "bpm": 87,
+   "key": "A",
+   "mode": "mixolydian",
+   "density": 0.45,
+   "voices": {
+    "lead": "keys_wurli",
+    "bass": "bass_808",
+    "chords": "keys_mk1"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "none",
+   "hit": "fx_glass_ping",
+   "motif": "drunk_uncle",
+   "shape": [["intro", 2, ["drums", "texture"]], ["A", 8, ["drums", "bass", "lead", "texture", "fx"]], ["B", 8, ["drums", "bass", "chords", "lead", "texture", "fx"]], ["outro", 4, ["drums", "bass", "texture"]]]
+  },
+  "vol5_superfan_theme": {
+   "feel": "Too-fast breath, paper bag, plastic-cup tap: a drum & bass tempo in a quiet diner, a glockenspiel run that hasn't read the room. Over before anyone can say so.",
+   "style": "dnb",
+   "form": "song",
+   "bpm": 172,
+   "key": "E",
+   "mode": "major",
+   "density": 0.6,
+   "voices": {
+    "lead": "bell_glock",
+    "chords": "keys_combo_organ",
+    "bass": "bass_fm"
+   },
+   "textures": "none",
+   "fx": "fx_whoosh",
+   "hit": "fx_glass_ping",
+   "motif": "superfan",
+   "shape": [["A", 8, ["drums", "bass", "chords", "lead", "fx"]], ["B", 4, ["drums", "lead", "fx"]], ["outro", 2, ["lead"]]]
+  },
+  "vol5_twins_theme": {
+   "feel": "Two of the same tone, played a hair apart, hard left and hard right — a minimalist phase piece on two pure whistles over bowed glass. Patient, shared, unhurried.",
+   "style": "minimal",
+   "form": "song",
+   "bpm": 112,
+   "key": "A",
+   "mode": "major",
+   "density": 0.3,
+   "voices": {
+    "lead": "lead_whistle",
+    "chords": "pluck_marimba",
+    "pad": "pad_bowed_glass"
+   },
+   "textures": "none",
+   "fx": "none",
+   "hit": "none",
+   "motif": "twins",
+   "shape": [["intro", 4, ["lead"]], ["A", 8, ["lead", "pad"]], ["C", 8, ["lead", "chords", "pad"]], ["A2", 8, ["lead", "pad"]], ["outro", 4, ["lead"]]]
+  },
+  "vol5_ambient": {
+   "feel": "D'Ambrosio's at dawn — open 24 hours, technically. Brushed jazz trio at a crawl, vibes carrying John's apron phrase, a Wurlitzer, the ballast hum and the bell at the pass.",
+   "style": "jazz",
+   "form": "bed",
+   "bpm": 70,
+   "key": "E",
+   "mode": "mixolydian",
+   "density": 0.35,
+   "voices": {
+    "lead": "keys_vibes",
+    "chords": "keys_wurli",
+    "bass": "bass_upright",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_room_tone", "amb_fluor_hum"],
+   "fx": "none",
+   "hit": "fx_bell_hit",
+   "motif": "john"
+  },
+  "vol5_warehouse_drone": {
+   "feel": "The Cathedral of Rust and Code: bowed metal and a crypt choir over the riverboat-engine drone, fluorescent buzz, Frasier's ring-tone figure surfacing like a program waking.",
+   "style": "dark_drone",
+   "form": "bed",
+   "bpm": 66,
+   "key": "E",
+   "mode": "phrygian",
+   "density": 0.35,
+   "voices": {
+    "lead": "lead_ring",
+    "chords": "choir_crypt",
+    "bass": "drone_dark",
+    "pad": "pad_bowed_metal"
+   },
+   "textures": ["drone_engine", "amb_fluor_hum"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "frasier"
+  },
+  "vol5_cicadas_dusk": {
+   "feel": "The bungalow at dusk, cicadas through the screen: a dragging trip-hop beat, tape EP, fretless, Elicia's voice-tone. Swings hard — the beat and bass carry the high-intensity stems.",
+   "style": "trip_hop",
+   "form": "bed",
+   "bpm": 84,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.45,
+   "voices": {
+    "chords": "keys_tape_ep",
+    "bass": "bass_fretless",
+    "pad": "pad_tape_wobble"
+   },
+   "textures": ["amb_cicadas", "amb_tape_hiss"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "elicia",
+   "stems": true
+  },
+  "vol5_riverboat_drone": {
+   "feel": "Nicola's dining room afloat: chamber strings and a clarinet over the engine, a radio's static blooming at the edges, a water glass touched at Table 17. Warm, and moored over something dark.",
+   "style": "chamber",
+   "form": "bed",
+   "bpm": 70,
+   "key": "A",
+   "mode": "dorian",
+   "density": 0.4,
+   "voices": {
+    "lead": "winds_clarinet",
+    "chords": "strings_silver",
+    "bass": "bass_upright",
+    "pad": "strings_ensemble"
+   },
+   "textures": ["drone_engine", "amb_radio"],
+   "fx": "none",
+   "hit": "fx_glass_ping"
+  },
+  "vol5_faucet_metronome": {
+   "feel": "The Roberts kitchen before school: marimba drips keep time like the faucet, Mackenzie's left-hand figure on felt piano, two people deciding again not to fix it.",
+   "style": "minimal",
+   "form": "bed",
+   "bpm": 112,
+   "key": "B",
+   "mode": "dorian",
+   "density": 0.35,
+   "voices": {
+    "lead": "keys_felt",
+    "chords": "pluck_marimba",
+    "bass": "bass_fender",
+    "pad": "pad_warm"
+   },
+   "textures": ["amb_room_tone", "amb_clock"],
+   "fx": "none",
+   "hit": "fx_glass_ping",
+   "motif": "mackenzie"
+  },
+  "vol5_two_speeds": {
+   "feel": "Antonio's hot office: a motorik pulse that wants to drive against half-time pads that won't, the window unit losing, the voicemail light blinking. Gone, and about to be gone.",
+   "style": "motorik",
+   "form": "bed",
+   "bpm": 116,
+   "key": "F#",
+   "mode": "dorian",
+   "density": 0.5,
+   "voices": {
+    "lead": "lead_brass",
+    "chords": "pluck_neon",
+    "bass": "bass_pluck",
+    "pad": "pad_hollow"
+   },
+   "textures": ["drone_engine", "amb_city"],
+   "fx": "fx_whoosh",
+   "hit": "fx_flicker"
+  },
+  "vol5_the_score": {
+   "feel": "A New Orleans bar in refrains: tenor sax over Rhodes and upright, horns behind, vinyl crackle, smoke curling back on itself. The beast not conquered — known.",
+   "style": "jazz",
+   "form": "loop",
+   "bpm": 76,
+   "key": "Bb",
+   "mode": "dorian",
+   "density": 0.5,
+   "voices": {
+    "lead": "winds_sax",
+    "chords": "keys_mk1",
+    "bass": "bass_upright",
+    "pad": "winds_horns"
+   },
+   "textures": ["amb_vinyl", "amb_city"],
+   "fx": "none",
+   "hit": "none"
+  },
+  "vol5_lantern_for_those_below": {
+   "feel": "Wind through scrawled walls in the Graustark ruins; one lonesome whistle and a lantern flame, a horizon drone. Joanna raising a light for whoever is still climbing.",
+   "style": "ambient",
+   "form": "bed",
+   "bpm": 64,
+   "key": "D",
+   "mode": "dorian",
+   "density": 0.25,
+   "voices": {
+    "lead": "lead_whistle",
+    "chords": "pad_cathedral_air",
+    "bass": "drone_horizon",
+    "pad": "pad_hollow"
+   },
+   "textures": ["amb_wind", "amb_fire"],
+   "fx": "fx_reverse_swell",
+   "hit": "none"
+  },
+  "vol5_closing_arguments": {
+   "feel": "A Houston law office after the motion is denied: slow noir walk, felt piano, fluorescent hum, files squared with a knock — Alberto's cello note turning over and over. The wheel turns either way.",
+   "style": "noir",
+   "form": "bed",
+   "bpm": 68,
+   "key": "F",
+   "mode": "minor",
+   "density": 0.4,
+   "voices": {
+    "chords": "keys_felt",
+    "bass": "bass_upright",
+    "pad": "pad_fluorescent"
+   },
+   "textures": ["amb_fluor_hum", "amb_room_tone"],
+   "fx": "none",
+   "hit": "fx_wood_knock",
+   "motif": "alberto"
+  },
+  "vol5_the_weighing": {
+   "feel": "Erica Campbell's next morning, office to studio: chamber strings in harmonic minor, a clarinet weighing two lines against each other, a clock. The scales don't lie about the cost.",
+   "style": "chamber",
+   "form": "bed",
+   "bpm": 66,
+   "key": "C",
+   "mode": "harmonic",
+   "density": 0.4,
+   "voices": {
+    "lead": "winds_clarinet",
+    "chords": "strings_ensemble",
+    "bass": "bass_upright",
+    "pad": "strings_noir"
+   },
+   "textures": ["amb_clock", "amb_city"],
+   "fx": "none",
+   "hit": "fx_bell_hit"
+  },
+  "vol5_gravity_optional": {
+   "feel": "Natalie's apartment after midnight: a slow trip-hop drag, celesta floating in lydian, incense and tape hiss, reverse swells — the world seen calmly upside down.",
+   "style": "trip_hop",
+   "form": "bed",
+   "bpm": 84,
+   "key": "Eb",
+   "mode": "lydian",
+   "density": 0.4,
+   "voices": {
+    "lead": "keys_celesta",
+    "chords": "keys_tape_ep",
+    "bass": "bass_fretless",
+    "pad": "pad_tape_wobble"
+   },
+   "textures": ["amb_tape_hiss", "amb_city"],
+   "fx": "fx_reverse_swell",
+   "hit": "none"
+  },
+  "vol5_the_quiet_floor": {
+   "feel": "St. Jude's Mercy hospice, the last Tuesday in April: a hymn at the pace of the breathing machines, felt piano, choir far down the hall. Nothing exempt, nothing cruel.",
+   "style": "hymn",
+   "form": "bed",
+   "bpm": 60,
+   "key": "G",
+   "mode": "major",
+   "density": 0.25,
+   "voices": {
+    "lead": "keys_felt",
+    "chords": "pad_warm",
+    "bass": "bass_sub",
+    "pad": "choir_vox"
+   },
+   "textures": ["amb_life_support", "amb_room_tone"],
+   "fx": "none",
+   "hit": "none"
+  },
+  "vol5_moderate_tuesday": {
+   "feel": "A Montreal apartment years on: a jazz trio in patient exchange, vibes answering felt piano like two cups passed across a table. Nothing spills.",
+   "style": "jazz",
+   "form": "bed",
+   "bpm": 70,
+   "key": "D",
+   "mode": "dorian",
+   "density": 0.35,
+   "voices": {
+    "lead": "keys_vibes",
+    "chords": "keys_felt",
+    "bass": "bass_upright",
+    "pad": "pad_velvet"
+   },
+   "textures": ["amb_room_tone", "amb_clock"],
+   "fx": "none",
+   "hit": "fx_glass_ping"
+  },
+  "vol5_gumbo_limbo": {
+   "feel": "Jimmy Daigle under a wobbling ceiling fan: a swamp groove, harmonica bending the Demon's half-step figure, Wurlitzer, fretless. The chains are loose. The chains stay on.",
+   "style": "bayou",
+   "form": "bed",
+   "bpm": 94,
+   "key": "G",
+   "mode": "mixolydian",
+   "density": 0.5,
+   "voices": {
+    "lead": "winds_harmonica",
+    "chords": "keys_wurli",
+    "bass": "bass_fretless",
+    "pad": "pad_dusk"
+   },
+   "textures": ["drone_engine", "amb_cicadas"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "the_demon"
+  },
+  "vol5_render_queue": {
+   "feel": "Elicia's command center gone to plaster: industrial at full fan load, her voice-figure through a blown speaker, Reese bass, impacts — the crown already airborne. Stems for the collapse.",
+   "style": "industrial",
+   "form": "bed",
+   "bpm": 136,
+   "key": "F",
+   "mode": "phrygian",
+   "density": 0.65,
+   "voices": {
+    "lead": "lead_fuzz",
+    "chords": "pad_frost",
+    "bass": "bass_reese",
+    "pad": "strings_tremolo"
+   },
+   "textures": ["amb_life_support", "amb_fluor_hum"],
+   "fx": "fx_riser",
+   "hit": "fx_impact",
+   "motif": "elicia",
+   "stems": true
+  },
+  "vol5_glass_skin": {
+   "feel": "Graustark ruins under a shard-of-mirror moon: harp over bowed glass and shimmer in D lydian, water poured onto the earth, glass pings. Ink drying on glass skin.",
+   "style": "ambient",
+   "form": "bed",
+   "bpm": 66,
+   "key": "D",
+   "mode": "lydian",
+   "density": 0.3,
+   "voices": {
+    "lead": "pluck_harp",
+    "chords": "pad_bowed_glass",
+    "bass": "drone_horizon",
+    "pad": "pad_shimmer"
+   },
+   "textures": ["amb_rain"],
+   "fx": "fx_reverse_swell",
+   "hit": "fx_glass_ping"
+  },
+  "vol5_five_am_reading": {
+   "feel": "After the cards, before the sun: a celesta lullaby in C# minor over crickets and a parlor clock, Nicola asleep, Aria gone quiet (which is different). The softest stems in the volume.",
+   "style": "lullaby",
+   "form": "bed",
+   "bpm": 62,
+   "key": "C#",
+   "mode": "minor",
+   "density": 0.25,
+   "voices": {
+    "lead": "keys_celesta",
+    "chords": "keys_felt",
+    "bass": "bass_sub",
+    "pad": "pad_velvet"
+   },
+   "textures": ["amb_crickets", "amb_clock"],
+   "fx": "none",
+   "hit": "none",
+   "stems": true
+  },
+  "vol5_saint_viateur": {
+   "feel": "Café Olimpico, late May: nylon guitar and Wurlitzer in A major, espresso clatter, cups. Six years of Tuesdays; by now the staff just nod. Plain sunshine.",
+   "style": "folk",
+   "form": "bed",
+   "bpm": 100,
+   "key": "A",
+   "mode": "major",
+   "density": 0.55,
+   "voices": {
+    "lead": "pluck_nylon",
+    "chords": "keys_wurli",
+    "bass": "bass_fender",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_city", "amb_room_tone"],
+   "fx": "none",
+   "hit": "fx_glass_ping"
+  },
+  "vol5_the_stillness_breaks": {
+   "feel": "One Tuesday morning across Graustark: post-rock from wind and shimmer up to full band, brass calling, the hush shattering like flawed glass. The stems are the arrival.",
+   "style": "post_rock",
+   "form": "bed",
+   "bpm": 118,
+   "key": "B",
+   "mode": "mixolydian",
+   "density": [0.4, 0.7],
+   "voices": {
+    "lead": "lead_brass",
+    "chords": "pad_shimmer",
+    "bass": "bass_ladder",
+    "pad": "strings_ensemble"
+   },
+   "textures": ["amb_wind", "amb_thunder"],
+   "fx": "fx_riser",
+   "hit": "fx_impact",
+   "stems": true
+  },
+  "vol5_minstrals_green": {
+   "feel": "Down by the river where the steamship rusts: a bayou porch tune in E major, flute carrying John's apron phrase home, nylon and cicadas, a stick tapping a crawdad hole. The Frog says: mostly.",
+   "style": "bayou",
+   "form": "bed",
+   "bpm": 96,
+   "key": "E",
+   "mode": "major",
+   "density": 0.45,
+   "voices": {
+    "lead": "winds_flute",
+    "chords": "pluck_nylon",
+    "bass": "bass_fender",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_cicadas"],
+   "fx": "none",
+   "hit": "fx_wood_knock",
+   "motif": "john"
+  },
+  "vol5_noon_room_room": {
+   "feel": "Lunch-rush jukebox B-side: a Lake Charles dance-floor two-step, reeds where the accordion would be, organ and brass mic'd hot, the cook's order-up figure in the hook.",
+   "style": "bayou",
+   "form": "song",
+   "bpm": 112,
+   "key": "E",
+   "mode": "major",
+   "density": 0.7,
+   "voices": {
+    "lead": "winds_harmonica",
+    "chords": "keys_combo_organ",
+    "bass": "bass_fender",
+    "pad": "winds_brass"
+   },
+   "textures": ["amb_vinyl"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "line_cook"
+  },
+  "vol5_where_the_bar_used_to_be": {
+   "feel": "Evening-service jukebox B-side: solo after-hours piano recorded in the diner in 1979 — felt piano only, both hands, vinyl age on it. Also the New Orleans bar locale bed in Strength.",
+   "style": "piano",
+   "form": "bed",
+   "bpm": 68,
+   "key": "Bb",
+   "mode": "minor",
+   "density": 0.4,
+   "voices": {
+    "lead": "keys_felt",
+    "chords": "keys_felt"
+   },
+   "textures": ["amb_vinyl"],
+   "fx": "none",
+   "hit": "none",
+   "shape": [["bed", 16, ["chords", "lead", "texture"]]]
+  },
+  "vol5_sinking_feeling": {
+   "feel": "Magician · easy. Afternoon sun on the cathedral skylights, low river lap outside, a distant freight horn on french horn. The riverside knowing what's coming and not saying.",
+   "style": "ambient",
+   "form": "bed",
+   "bpm": 68,
+   "key": "E",
+   "mode": "dorian",
+   "density": 0.3,
+   "voices": {
+    "lead": "winds_horns",
+    "chords": "pad_shimmer",
+    "bass": "bass_fretless",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_surf", "amb_cicadas"],
+   "fx": "fx_downer",
+   "hit": "none"
+  },
+  "vol5_watch_party": {
+   "feel": "Magician · medium, 9:30 PM. TV-room hum, the Pomegranate Hour theme (Elicia's figure, lo-fi and muffled) bleeding through one wall, a far laugh from someone who isn't supposed to be there.",
+   "style": "lofi",
+   "form": "bed",
+   "bpm": 78,
+   "key": "E",
+   "mode": "dorian",
+   "density": 0.4,
+   "voices": {
+    "chords": "keys_tape_ep",
+    "bass": "bass_upright",
+    "pad": "pad_tape_wobble"
+   },
+   "textures": ["amb_fluor_hum", "amb_radio"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "elicia"
+  },
+  "vol5_blow_out_the_candles": {
+   "feel": "Magician · hard, 11:47 PM. Full moon over the river: a distant rager's four-on-the-floor low end through the walls, candle hiss, a theremin above, the bank making a noise the bank should not make.",
+   "style": "four_floor",
+   "form": "bed",
+   "bpm": 124,
+   "key": "E",
+   "mode": "phrygian",
+   "density": 0.45,
+   "voices": {
+    "lead": "lead_theremin",
+    "chords": "pad_seance",
+    "bass": "bass_sub",
+    "pad": "choir_crypt"
+   },
+   "textures": ["amb_fire", "amb_wind"],
+   "fx": "fx_downer",
+   "hit": "fx_sub_drop",
+   "stems": true
+  },
+  "vol5_cicada_session": {
+   "feel": "Priestess · easy, 9:18 PM. The reel turning fresh as a minimalist pulse; cicadas louder than they should be; the red record-light; Elicia's figure on a Mk I.",
+   "style": "minimal",
+   "form": "bed",
+   "bpm": 112,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.45,
+   "voices": {
+    "lead": "keys_mk1",
+    "chords": "keys_tape_ep",
+    "bass": "bass_sub",
+    "pad": "pad_dusk"
+   },
+   "textures": ["amb_cicadas", "amb_tape_hiss"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "elicia"
+  },
+  "vol5_long_quiet": {
+   "feel": "Priestess · medium, 11:02 PM. Confessional hour: a sparse solo piano over the booth's own noise floor (tape hiss and room — no cicadas now), bowed glass far back.",
+   "style": "piano",
+   "form": "bed",
+   "bpm": 62,
+   "key": "C#",
+   "mode": "minor",
+   "density": 0.2,
+   "voices": {
+    "lead": "keys_felt",
+    "chords": "pad_bowed_glass",
+    "bass": "bass_sub",
+    "pad": "pad_cathedral_air"
+   },
+   "textures": ["amb_tape_hiss", "amb_room_tone"],
+   "fx": "none",
+   "hit": "none"
+  },
+  "vol5_tape_witness": {
+   "feel": "Priestess · hard, 2:14 AM, off the books. Slow noir in C# phrygian, Anya's theremin figure as the truth-teller already in the booth, tremolo strings, the dark cathedral humming on the other side.",
+   "style": "noir",
+   "form": "bed",
+   "bpm": 66,
+   "key": "C#",
+   "mode": "phrygian",
+   "density": 0.4,
+   "voices": {
+    "chords": "keys_mk1",
+    "bass": "bass_upright",
+    "pad": "strings_tremolo"
+   },
+   "textures": ["amb_tape_hiss", "drone_cathedral"],
+   "fx": "fx_downer",
+   "hit": "none",
+   "motif": "anya",
+   "stems": true
+  },
+  "vol5_static_bloom": {
+   "feel": "Empress · easy. Friday dinner on Nicola's riverboat: a Gulf-coast shuffle with clarinet and silver strings, first arrivals setting the long table, glasses touched, the garden deck still in season.",
+   "style": "shuffle",
+   "form": "bed",
+   "bpm": 98,
+   "key": "A",
+   "mode": "major",
+   "density": 0.55,
+   "voices": {
+    "lead": "winds_clarinet",
+    "chords": "strings_silver",
+    "bass": "bass_upright",
+    "pad": "winds_horns"
+   },
+   "textures": ["amb_room_tone", "drone_engine"],
+   "fx": "none",
+   "hit": "fx_glass_ping"
+  },
+  "vol5_harvest_dinner": {
+   "feel": "Empress · medium. Late autumn: a slowed folk tune, nylon guitar picking out Frasier's figure as he walks the bank, strings under, wind across a cooled garden deck.",
+   "style": "folk",
+   "form": "bed",
+   "bpm": 92,
+   "key": "A",
+   "mode": "mixolydian",
+   "density": 0.4,
+   "voices": {
+    "lead": "pluck_nylon",
+    "chords": "keys_felt",
+    "bass": "bass_upright",
+    "pad": "strings_ensemble"
+   },
+   "textures": ["amb_wind", "drone_engine"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "frasier"
+  },
+  "vol5_ice_in_the_river": {
+   "feel": "Empress · hard, 11:14 PM, late February. Ice in the river for the first time in a decade: chamber strings in tremolo, celesta like cracking ice, frost pads, glass pings.",
+   "style": "chamber",
+   "form": "bed",
+   "bpm": 64,
+   "key": "A",
+   "mode": "harmonic",
+   "density": 0.35,
+   "voices": {
+    "lead": "keys_celesta",
+    "chords": "pad_frost",
+    "bass": "bass_fretless",
+    "pad": "strings_tremolo"
+   },
+   "textures": ["amb_wind"],
+   "fx": "fx_reverse_swell",
+   "hit": "fx_glass_ping",
+   "stems": true
+  },
+  "vol5_docket": {
+   "feel": "Emperor · easy. Tuesday morning: a steady boom-bap office pocket, brass clock ticking, harpsichord paperwork, the radiator on too high, a stamp on the blotter every few bars.",
+   "style": "boom_bap",
+   "form": "bed",
+   "bpm": 88,
+   "key": "A",
+   "mode": "minor",
+   "density": 0.45,
+   "voices": {
+    "lead": "winds_brass",
+    "chords": "keys_harpsichord",
+    "bass": "bass_upright",
+    "pad": "winds_horns"
+   },
+   "textures": ["amb_clock", "amb_room_tone"],
+   "fx": "none",
+   "hit": "fx_wood_knock"
+  },
+  "vol5_first_session": {
+   "feel": "Emperor · medium. Pre-clerk Monday: a sparse jazz trio, harmon-muted trumpet, cold radiator, frost pad. The petitioner slept in their car.",
+   "style": "jazz",
+   "form": "bed",
+   "bpm": 66,
+   "key": "A",
+   "mode": "minor",
+   "density": 0.3,
+   "voices": {
+    "lead": "winds_harmon",
+    "chords": "keys_felt",
+    "bass": "bass_upright",
+    "pad": "pad_frost"
+   },
+   "textures": ["amb_room_tone", "amb_city"],
+   "fx": "none",
+   "hit": "none"
+  },
+  "vol5_appeal": {
+   "feel": "Emperor · hard. Late Tuesday afternoon, six-month appellate hearing, volumes 9 and 10 of the river-code missing: chamber strings in harmonic minor, tremolo rising, the gavel knock.",
+   "style": "chamber",
+   "form": "bed",
+   "bpm": 76,
+   "key": "A",
+   "mode": "harmonic",
+   "density": 0.55,
+   "voices": {
+    "lead": "strings_noir",
+    "chords": "strings_ensemble",
+    "bass": "bass_upright",
+    "pad": "strings_tremolo"
+   },
+   "textures": ["amb_clock"],
+   "fx": "fx_riser",
+   "hit": "fx_wood_knock",
+   "stems": true
+  },
+  "vol5_green_phosphor": {
+   "feel": "Hierophant · easy. Tuesday night BBS: a synthwave hum, the sysop's handshake figure on a neon square lead, modem rack and banner paper rolling slowly.",
+   "style": "synthwave",
+   "form": "bed",
+   "bpm": 98,
+   "key": "B",
+   "mode": "dorian",
+   "density": 0.45,
+   "voices": {
+    "lead": "lead_square",
+    "chords": "pad_gate",
+    "bass": "bass_pluck",
+    "pad": "pad_neon_rain"
+   },
+   "textures": ["amb_modem", "amb_fluor_hum"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "bbs_caller"
+  },
+  "vol5_long_signal": {
+   "feel": "Hierophant · medium. Late Wednesday, Anya at the floppy wall, the ham band open at 14.301 MHz: dub echoes, a sub, her theremin figure riding the static.",
+   "style": "dub",
+   "form": "bed",
+   "bpm": 86,
+   "key": "B",
+   "mode": "minor",
+   "density": 0.4,
+   "voices": {
+    "chords": "keys_mk1",
+    "bass": "bass_sub",
+    "pad": "pad_seance"
+   },
+   "textures": ["amb_radio", "amb_modem"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "anya"
+  },
+  "vol5_broadcast_night": {
+   "feel": "Hierophant · hard, 3:14 AM. The lurker logged in: synth horror in B phrygian, FM lead, Reese, crypt choir; the ham band hisses then clears, a neon flicker.",
+   "style": "synth_horror",
+   "form": "bed",
+   "bpm": 100,
+   "key": "B",
+   "mode": "phrygian",
+   "density": 0.5,
+   "voices": {
+    "lead": "lead_fm",
+    "chords": "pad_seance",
+    "bass": "bass_reese",
+    "pad": "choir_crypt"
+   },
+   "textures": ["amb_radio", "amb_fluor_hum"],
+   "fx": "fx_noise_sweep",
+   "hit": "fx_flicker",
+   "stems": true
+  },
+  "vol5_demon_filly": {
+   "feel": "A young horse's exhale, a hoof on wood once, then waiting. A low sub pad and room tone; one knock; nothing melodic.",
+   "style": "dark_drone",
+   "form": "bed",
+   "bpm": 60,
+   "key": "E",
+   "mode": "phrygian",
+   "density": 0.15,
+   "voices": {
+    "pad": "pad_sub_drone",
+    "bass": "drone_dark"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "fx_noise_sweep",
+   "hit": "fx_wood_knock",
+   "shape": [["bed", 16, ["pad", "texture", "fx"]]]
+  },
+  "vol5_demon_husk": {
+   "feel": "Hollow corn rasp, dry rustle — the sound of nothing left inside the case. A hollow-body pad and wind; no bass, no melody.",
+   "style": "dark_drone",
+   "form": "bed",
+   "bpm": 60,
+   "key": "E",
+   "mode": "phrygian",
+   "density": 0.1,
+   "voices": {
+    "pad": "pad_hollow"
+   },
+   "textures": ["amb_wind"],
+   "fx": "fx_noise_sweep",
+   "hit": "none",
+   "shape": [["bed", 16, ["pad", "texture", "fx"]]]
+  },
+  "vol5_demon_moth": {
+   "feel": "Paper against a bulb, a glass tap, one high whistling overtone that doesn't resolve — a thin bowed-glass tone held in lydian over the ballast hum. No melody.",
+   "style": "ambient",
+   "form": "bed",
+   "bpm": 64,
+   "key": "E",
+   "mode": "lydian",
+   "density": 0.1,
+   "voices": {
+    "pad": "pad_bowed_glass"
+   },
+   "textures": ["amb_fluor_hum"],
+   "fx": "none",
+   "hit": "fx_glass_ping",
+   "shape": [["bed", 16, ["pad", "texture", "fx"]]]
+  },
+  "vol5_demon_starling": {
+   "feel": "Many small wings, no melody: shaker flutter and a moving séance pad, then a whoosh — the whole flock turning the same instant.",
+   "style": "ambient",
+   "form": "bed",
+   "bpm": 72,
+   "key": "B",
+   "mode": "dorian",
+   "density": 0.2,
+   "voices": {
+    "pad": "pad_seance"
+   },
+   "textures": ["amb_forest_night", "amb_wind"],
+   "fx": "fx_whoosh",
+   "hit": "none",
+   "shape": [["bed", 16, ["drums", "pad", "texture", "fx"]]]
+  },
+  "vol5_demon_steamboat": {
+   "feel": "The workbench paddle-wheel, not the river one: a two-bar toy-piano micro-loop in F against the volume's E, a clock tick. The texture is wrong on purpose.",
+   "style": "lullaby",
+   "form": "loop",
+   "bpm": 120,
+   "key": "F",
+   "mode": "phrygian",
+   "density": 0.35,
+   "voices": {
+    "chords": "keys_toy_piano",
+    "bass": "bass_pluck"
+   },
+   "textures": ["amb_clock"],
+   "fx": "none",
+   "hit": "none",
+   "shape": [["loop", 2, ["chords", "bass", "drums", "texture"]]]
+  },
+  "vol5_demon_vagrant": {
+   "feel": "Low rumble, a slow shuffle of bags, distant radio static — a dub sub and sparse shuffled kit drifting through the room, no melody.",
+   "style": "dub",
+   "form": "bed",
+   "bpm": 84,
+   "key": "E",
+   "mode": "minor",
+   "density": 0.2,
+   "voices": {
+    "bass": "bass_sub",
+    "pad": "pad_sub_drone"
+   },
+   "textures": ["amb_radio", "amb_city"],
+   "fx": "none",
+   "hit": "none",
+   "shape": [["bed", 16, ["drums", "bass", "pad", "texture"]]]
+  },
+  "vol5_demon_weir": {
+   "feel": "Water under boards, pressure building behind a thing about to spill: tremolo strings and a sub drone under a long riser that never breaks. No hit — it doesn't spill.",
+   "style": "dark_drone",
+   "form": "bed",
+   "bpm": 62,
+   "key": "E",
+   "mode": "harmonic",
+   "density": 0.3,
+   "voices": {
+    "pad": "strings_tremolo",
+    "bass": "drone_dark"
+   },
+   "textures": ["amb_surf"],
+   "fx": "fx_riser",
+   "hit": "none",
+   "shape": [["bed", 16, ["bass", "pad", "texture", "fx"]]]
+  },
+  "vol5_steamboat_motif": {
+   "feel": "The Magician's doom-clock: a slow paddle-wheel pulse and a far steam-whistle that thicken one layer per steamboat-ladder tier (0 → 6) — stems are the ladder. Frasier hears it building whether he works on it or not.",
+   "style": "minimal",
+   "form": "bed",
+   "bpm": 96,
+   "key": "E",
+   "mode": "minor",
+   "density": [0.35, 0.7],
+   "voices": {
+    "lead": "lead_whistle",
+    "chords": "keys_harpsichord",
+    "bass": "bass_pluck",
+    "pad": "winds_horns"
+   },
+   "textures": ["drone_engine"],
+   "fx": "fx_riser",
+   "hit": "none",
+   "stems": true
+  },
+  "vol5_finale_inertia_fallback": {
+   "feel": "The room sat on him: a tape-wobble pad and sub, motion stopping as the tape brakes, then only room tone.",
+   "style": "noir",
+   "form": "song",
+   "bpm": 60,
+   "key": "E",
+   "mode": "minor",
+   "density": 0.2,
+   "voices": {
+    "pad": "pad_tape_wobble",
+    "bass": "bass_sub"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "fx_tape_stop",
+   "hit": "none",
+   "shape": [["A", 2, ["pad", "bass", "fx"]], ["outro", 4, ["pad", "texture"]]]
+  },
+  "vol5_finale_maker_breaks": {
+   "feel": "Doubt at max: silence under one bowed pad falling a half-step (phrygian b2 → 1, a downlifter under it). The last breath before the host closes his eyes.",
+   "style": "dark_drone",
+   "form": "song",
+   "bpm": 60,
+   "key": "E",
+   "mode": "phrygian",
+   "density": 0.1,
+   "voices": {
+    "pad": "pad_bowed_metal"
+   },
+   "textures": "none",
+   "fx": "fx_downer",
+   "hit": "none",
+   "shape": [["A", 4, ["pad", "fx"]], ["outro", 4, ["pad"]]]
+  },
+  "vol5_finale_maker_forgets": {
+   "feel": "Stagnation at max: cassette-deck end-of-tape spool, lights at full — a bright lydian organ chord the cathedral exhales without him.",
+   "style": "hymn",
+   "form": "song",
+   "bpm": 64,
+   "key": "E",
+   "mode": "lydian",
+   "density": 0.25,
+   "voices": {
+    "chords": "pad_organ_swell",
+    "pad": "pad_cathedral_air"
+   },
+   "textures": ["amb_tape_hiss", "drone_cathedral"],
+   "fx": "fx_tape_stop",
+   "hit": "none",
+   "shape": [["A", 4, ["chords", "pad", "texture", "fx"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_finale_river_takes_bank": {
+   "feel": "The bank goes: a building giving up, slow wood-and-metal collapse — bowed metal and a fretless sliding down under a downlifter, one impact, the river after.",
+   "style": "dark_drone",
+   "form": "song",
+   "bpm": 60,
+   "key": "E",
+   "mode": "phrygian",
+   "density": 0.3,
+   "voices": {
+    "pad": "pad_bowed_metal",
+    "bass": "bass_fretless"
+   },
+   "textures": ["amb_surf"],
+   "fx": "fx_downer",
+   "hit": "fx_impact",
+   "shape": [["intro", 2, ["texture"]], ["B", 4, ["pad", "bass", "fx"]], ["outro", 4, ["pad", "texture"]]]
+  },
+  "vol5_finale_room_walked_out": {
+   "feel": "Three visitors claimed: everything has dropped out except the Demon's cold pad, held alone in his F, half a step off home.",
+   "style": "dark_drone",
+   "form": "song",
+   "bpm": 60,
+   "key": "F",
+   "mode": "phrygian",
+   "density": 0.15,
+   "voices": {
+    "pad": "pad_frost",
+    "lead": "pad_frost"
+   },
+   "textures": "none",
+   "fx": "none",
+   "hit": "none",
+   "motif": "the_demon",
+   "shape": [["A", 4, ["pad", "lead"]], ["outro", 4, ["pad"]]]
+  },
+  "vol5_finale_shift_ends": {
+   "feel": "Midnight, and behind: felt piano and noir strings over the clock, the work undone, the workbench-lamp clicks off. Then nothing.",
+   "style": "noir",
+   "form": "song",
+   "bpm": 64,
+   "key": "E",
+   "mode": "minor",
+   "density": 0.25,
+   "voices": {
+    "chords": "keys_felt",
+    "pad": "strings_noir"
+   },
+   "textures": ["amb_clock"],
+   "fx": "none",
+   "hit": "fx_wood_knock",
+   "shape": [["A", 2, ["chords", "pad", "texture"]], ["B", 2, ["fx"]]]
+  },
+  "vol5_finale_steamboat_sails": {
+   "feel": "The steamboat finished: the toy paddle-wheel turns once though no one is touching it, the bank slumps far away (a sub drop), then a held horn tone, resigned.",
+   "style": "minimal",
+   "form": "song",
+   "bpm": 100,
+   "key": "E",
+   "mode": "minor",
+   "density": 0.3,
+   "voices": {
+    "chords": "keys_toy_piano",
+    "pad": "winds_horns"
+   },
+   "textures": "none",
+   "fx": "none",
+   "hit": "fx_sub_drop",
+   "shape": [["A", 2, ["chords"]], ["B", 2, ["fx"]], ["outro", 4, ["pad"]]]
+  },
+  "vol5_priestess_finale_reel_ran_out": {
+   "feel": "The reel ran out mid-sentence: Elicia's voice-tone cut off by the end-of-tape spool. Her hand goes up. The truth lives in the room, not on the tape.",
+   "style": "ambient",
+   "form": "song",
+   "bpm": 72,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.3,
+   "voices": {
+    "pad": "pad_tape_wobble"
+   },
+   "textures": ["amb_tape_hiss"],
+   "fx": "fx_tape_stop",
+   "hit": "none",
+   "motif": "elicia",
+   "shape": [["A", 2, ["lead", "pad", "texture", "fx"]], ["outro", 2, ["texture"]]]
+  },
+  "vol5_priestess_finale_listener_breaks": {
+   "feel": "Doubt at max: Elicia in the booth chair, mic on, silent — room tone and hiss, the reel turning; only at the end does her own voice-tone surface, faint. She lets the room record her.",
+   "style": "ambient",
+   "form": "song",
+   "bpm": 60,
+   "key": "C#",
+   "mode": "lydian",
+   "density": 0.1,
+   "voices": {
+    "pad": "pad_cathedral_air"
+   },
+   "textures": ["amb_room_tone", "amb_tape_hiss"],
+   "fx": "none",
+   "hit": "none",
+   "motif": "elicia",
+   "shape": [["A", 4, ["texture", "pad"]], ["outro", 4, ["texture", "lead"]]]
+  },
+  "vol5_priestess_finale_session_empty": {
+   "feel": "Stagnation at max: the booked time ends, lounge empty, booth empty — two tired solo-piano chords, hiss, the tape brake. BLANK · don't reuse, again.",
+   "style": "piano",
+   "form": "song",
+   "bpm": 64,
+   "key": "C#",
+   "mode": "minor",
+   "density": 0.2,
+   "voices": {
+    "chords": "keys_tape_ep"
+   },
+   "textures": ["amb_tape_hiss"],
+   "fx": "fx_tape_stop",
+   "hit": "none",
+   "shape": [["A", 4, ["chords", "texture", "fx"]], ["outro", 2, ["texture"]]]
+  },
+  "vol5_priestess_finale_walked_out": {
+   "feel": "Three visitors claimed: the silences they left, played back through the console headphones as dub echoes and reverse swells. Not nothing. The wrong thing.",
+   "style": "dub",
+   "form": "song",
+   "bpm": 84,
+   "key": "C#",
+   "mode": "phrygian",
+   "density": 0.2,
+   "voices": {
+    "pad": "pad_seance"
+   },
+   "textures": ["amb_tape_hiss", "amb_room_tone"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "shape": [["A", 4, ["pad", "texture", "fx"]], ["outro", 4, ["texture"]]]
+  },
+  "vol5_priestess_finale_cicadas_stopped": {
+   "feel": "Cross-arcana collapse: the cicadas stop all at once (a sub drop where they were), the back door open on the dark cathedral, Frasier's ring-tone figure on the other side holding the steamboat. The red light still on.",
+   "style": "dark_drone",
+   "form": "song",
+   "bpm": 60,
+   "key": "C#",
+   "mode": "phrygian",
+   "density": 0.25,
+   "voices": {
+    "pad": "choir_crypt"
+   },
+   "textures": ["amb_cicadas"],
+   "fx": "none",
+   "hit": "fx_sub_drop",
+   "motif": "frasier",
+   "shape": [["intro", 2, ["texture"]], ["B", 1, ["fx"]], ["A", 4, ["pad", "lead"]], ["outro", 4, ["pad"]]]
+  },
+  "vol5_priestess_finale_shift_ends": {
+   "feel": "The booth lamp shuts itself off on Elicia's timer: a brushed jazz-trio coda, her figure once more, then the click. Visitors still waiting; she files what's done.",
+   "style": "jazz",
+   "form": "song",
+   "bpm": 70,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.3,
+   "voices": {
+    "chords": "keys_felt",
+    "bass": "bass_upright"
+   },
+   "textures": ["amb_room_tone"],
+   "fx": "none",
+   "hit": "fx_wood_knock",
+   "motif": "elicia",
+   "shape": [["A", 4, ["chords", "bass", "lead", "texture"]], ["B", 2, ["fx"]]]
+  },
+  "vol5_milestone_bindle": {
+   "feel": "The Bindle assembled in THE LEAP: John's phrase on a lonesome whistle over nylon guitar, the order bell — a small folk send-off. Leap by dawn.",
+   "style": "folk",
+   "form": "song",
+   "bpm": 100,
+   "key": "E",
+   "mode": "major",
+   "density": 0.4,
+   "voices": {
+    "lead": "lead_whistle",
+    "chords": "pluck_nylon",
+    "bass": "bass_upright",
+    "pad": "pad_warm"
+   },
+   "textures": "none",
+   "fx": "none",
+   "hit": "fx_bell_hit",
+   "motif": "john",
+   "shape": [["intro", 2, ["pad"]], ["A", 4, ["chords", "bass", "lead"]], ["C", 2, ["chords", "lead", "pad", "fx"]], ["outro", 2, ["pad"]]]
+  },
+  "vol5_milestone_candles_lit": {
+   "feel": "A single sustained match-strike, held flame hiss, a low pad. The cake is on the workbench.",
+   "style": "ambient",
+   "form": "song",
+   "bpm": 60,
+   "key": "E",
+   "mode": "dorian",
+   "density": 0.15,
+   "voices": {
+    "pad": "pad_warm",
+    "bass": "bass_sub"
+   },
+   "textures": ["amb_fire"],
+   "fx": "none",
+   "hit": "fx_flicker",
+   "shape": [["C", 2, ["fx", "texture"]], ["A", 4, ["pad", "bass", "texture"]], ["outro", 2, ["texture"]]]
+  },
+  "vol5_milestone_long_quiet": {
+   "feel": "Elicia's ability: one sustained voice-tone holding a silence that wasn't supposed to be there. A single choir chord as sparse as the engine allows; nothing else.",
+   "style": "hymn",
+   "form": "song",
+   "bpm": 60,
+   "key": "C#",
+   "mode": "dorian",
+   "density": 0.05,
+   "voices": {
+    "pad": "choir_vox"
+   },
+   "textures": "none",
+   "fx": "none",
+   "hit": "none",
+   "shape": [["A", 4, ["pad"]], ["outro", 2, ["pad"]]]
+  },
+  "vol5_gauntlet_win": {
+   "feel": "The Leap (won): a short post-rock lift in E major — John's phrase on brass, strings rising, a riser into the last chorus, the bell. Earned, not bombastic.",
+   "style": "post_rock",
+   "form": "song",
+   "bpm": 116,
+   "key": "E",
+   "mode": "major",
+   "density": 0.6,
+   "voices": {
+    "lead": "winds_brass",
+    "chords": "pad_shimmer",
+    "bass": "bass_ladder",
+    "pad": "strings_silver"
+   },
+   "textures": "none",
+   "fx": "fx_riser",
+   "hit": "fx_bell_hit",
+   "motif": "john",
+   "shape": [["intro", 2, ["pad", "chords"]], ["A", 4, ["drums", "bass", "chords", "lead", "fx"]], ["C", 4, ["drums", "bass", "chords", "lead", "pad", "fx"]], ["outro", 2, ["pad", "lead"]]]
+  },
+  "vol5_gauntlet_loss": {
+   "feel": "Twenty-Four Hours (reversed): John's phrase in E minor on a dusty tape EP, lo-fi and slowed, reverse swells pulling it backward, the diner's ballast hum left on.",
+   "style": "lofi",
+   "form": "song",
+   "bpm": 60,
+   "key": "E",
+   "mode": "minor",
+   "density": 0.2,
+   "voices": {
+    "lead": "keys_tape_ep",
+    "pad": "pad_tape_wobble"
+   },
+   "textures": ["amb_fluor_hum"],
+   "fx": "fx_reverse_swell",
+   "hit": "none",
+   "motif": "john",
+   "shape": [["A", 4, ["lead", "pad", "fx"]], ["outro", 4, ["pad", "texture"]]]
+  }
+ }
+}
