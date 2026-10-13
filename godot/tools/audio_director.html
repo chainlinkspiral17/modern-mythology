@@ -341,6 +341,7 @@ async function refresh() {
   try { DIR.cat = (await AK.game.catalog()).filter(t => t.src); } catch (e) { msg('catalog unreadable: ' + e.message, true); return; }
   const b = await readJson('resources/music/temp_briefs.json', { tracks: [] });
   DIR.briefs = Object.fromEntries((b.tracks || []).map(x => [x.id, x]));
+  DIR.score = await TempMaker.loadScore().catch(() => null);      // resources/music/score/*.json: the written direction
   DIR.approvals = await readApprovals();
   const dj = await readJson('resources/music/direction.json', null);
   if (dj && dj.defaults) for (const k of ['attack_sec', 'release_sec']) if (+dj.defaults[k] > 0) DIR.defaults[k] = +dj.defaults[k];
@@ -446,7 +447,10 @@ async function selectTrack(id, opts = {}) {
 function renderBrief(t, b) {
   $('briefsrc').textContent = b ? 'resources/music/temp_briefs.json' : 'no brief — the scenes never pick this track';
   const kv = (k, v) => v ? `<b>${k}</b><span>${v}</span>` : '';
-  $('brief').innerHTML = kv('catalog', esc(t.desc || '')) + (b ? kv('scenes', b.scene_count + ' — ' + esc((b.scenes || []).join(', ')) + (b.scene_count > (b.scenes || []).length ? ' …' : '')) +
+  const sc = DIR.score, cue = sc && (sc.tracks || {})[t.id], vol = sc && (sc.volumes || {})[String(t.vol)];
+  const chap = sc && [...new Set((t.chapters || []).map(SeqGen.chapterOf).filter(Boolean))].map(c => (sc.chapters || {})[c]).find(Boolean);
+  const scoreLine = [cue && cue.feel && 'cue: ' + cue.feel, chap && chap.feel && 'chapter: ' + chap.feel, vol && vol.feel && 'volume: ' + vol.feel].filter(Boolean).join(' · ');
+  $('brief').innerHTML = kv('catalog', esc(t.desc || '')) + (scoreLine ? kv('score', esc(scoreLine.slice(0, 400))) : '') + (b ? kv('scenes', b.scene_count + ' — ' + esc((b.scenes || []).join(', ')) + (b.scene_count > (b.scenes || []).length ? ' …' : '')) +
     kv('roles', esc(Object.entries(b.roles || {}).map(([k, v]) => k + ' ' + v).join(', '))) +
     kv('intensity', 'p10 ' + b.intensity.p10 + ' · mean ' + b.intensity.mean + ' · p90 ' + b.intensity.p90 + (b.stems ? ' · moves → stems' : '')) +
     kv('rank', 'energy ' + Math.round(b.energy * 100) + '% · darkness ' + Math.round(b.darkness * 100) + '%') +
@@ -1061,7 +1065,7 @@ async function runStudio() {
       let E; try { E = await studio(); } catch (e) { fail('could not start the audio engine: ' + (e.message || e)); continue; }
       const t0 = performance.now(), el = () => Math.round((performance.now() - t0) / 1000) + ' s';
       try {
-        await TempMaker.makeTakes(E, list, { takes: R.takes, review: true, stems: true, opts: R.opts }, { briefs: DIR.briefs,
+        await TempMaker.makeTakes(E, list, { takes: R.takes, review: true, stems: true, opts: R.opts }, { briefs: DIR.briefs, score: DIR.score ?? null,
           onEvent: ev => {
             if (ev.type === 'progress') { studioUI(ev.text + ' · ' + el()); $('dawmsg').textContent = ev.text; }
             else if (ev.type === 'take') {

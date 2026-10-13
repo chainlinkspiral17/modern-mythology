@@ -555,20 +555,22 @@
     const st = Object.assign({ id: styleId }, STYLES[styleId]);
     const mode = SCALES[o.mode] ? o.mode : R.pick(st.modes);
     const scale = SCALES[mode];
-    const key = Number.isInteger(o.key) ? ((o.key % 12) + 12) % 12 : R.int(0, 11);
+    const kq = keyOf(o.key), key = kq !== undefined ? kq : R.int(0, 11);
     const bpm = o.bpm || R.int(st.bpm[0], st.bpm[1]);
-    const formId = FORMS[o.form] ? o.form : (styleId === 'ambient' ? 'bed' : 'song');
+    const custom = Array.isArray(o.shape) && o.shape.length ? o.shape.filter(x => Array.isArray(x) && x[0] && +x[1] > 0) : null;
+    const formId = FORMS[o.form] ? o.form : custom ? 'song' : (styleId === 'ambient' ? 'bed' : 'song');
     const density = Math.max(0, Math.min(1, o.density ?? 0.6));
     const fam = st.prog === 'drone' ? 'drone' : st.prog === 'modal' ? 'modal' : (MINORISH[mode] ? 'minor' : 'major');
     // every structural choice comes from its own stream, so adding a choice never reshuffles the others
     const P = k => rng(seed * 7 + hash('plan:' + k));
     const HP = harmonyPlan(P('harm'), st, fam, o.progression);
-    const shape = formId === 'song' ? P('shape').pick(SONG_SHAPES) : FORMS[formId].map(([n, b]) => [n, b]);
+    // a score cue's own layout ([name, bars, roles?]) wins; else a song picks one of the shapes
+    const shape = custom ? custom.map(([n, b, r]) => [String(n), Math.round(+b), Array.isArray(r) ? r : null]) : formId === 'song' ? P('shape').pick(SONG_SHAPES) : FORMS[formId].map(([n, b]) => [n, b]);
     const sparse = density < 0.45;
     const sections = []; let bar = 0;
     const SR = P('roles');
-    shape.forEach(([name, bars], i) => {
-      const base = baseOf(name), fixed = formId !== 'song' ? (FORMS[formId].find(f => f[0] === name) || [])[2] : null;
+    shape.forEach(([name, bars, given], i) => {
+      const base = baseOf(name), fixed = given || (formId !== 'song' || custom ? (FORMS[formId].find(f => f[0] === name) || [])[2] : null);
       sections.push({ name, base, bar, bars, roles: fixed ? fixed.slice() : rolesFor(SR, base, name, st, sparse) });
       bar += bars;
     });
@@ -583,7 +585,9 @@
     const fills = [V.pick(FILLS), V.pick(FILLS)];
     // the lead's motif: a leitmotif (same in every track of that character) or the song's own
     const MR = o.motif ? rng(hash('motif:' + String(o.motif).toLowerCase())) : rng(seed * 13 + 5);
-    const motifA = makeMotif(MR, o.motif ? 'motif' : leadKind, o.motif ? 0.6 : density), motifB = makeMotif(rng(seed * 13 + 9), leadKind, density);
+    const spec = o.motifSpec && Array.isArray(o.motifSpec.rhythm) && Array.isArray(o.motifSpec.degrees) && o.motifSpec.rhythm.length ? o.motifSpec : null;
+    const motifA = spec ? spec.rhythm.map((s, i) => ({ s: Math.max(0, Math.min(31, Math.round(+s))), step: +spec.degrees[i % spec.degrees.length] || 0 })).sort((a, b) => a.s - b.s)
+      : makeMotif(MR, o.motif ? 'motif' : leadKind, o.motif ? 0.6 : density), motifB = makeMotif(rng(seed * 13 + 9), leadKind, density);
     const phrases = [['M', 'S', 'M', 'C'], ['M', 'A', 'M', 'C'], ['M', '-', 'S', 'C'], ['M', 'M', 'U', 'C'], ['-', 'M', '-', 'A']];
     const phraseA = V.pick(phrases), phraseB = V.pick(phrases);
     // sound design
@@ -594,7 +598,8 @@
     const fxPreset = want(o.fx) ? (o.fx || SD.pick(FX_FOR[styleId] || ['fx_noise_sweep'])) : null;
     const hitPreset = want(o.hit) ? (o.hit || (SD.chance(0.6) ? SD.pick(HIT_FOR[styleId] || ['fx_impact']) : null)) : null;
     return { seed, R, styleId, st, mode, scale, key, bpm, formId, density, fam, HP, sections, gi, gB, bassA, bassB, compA, compB, padA, padB, leadKind, perc, range, spread, fills,
-      motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {} };
+      motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {},
+      soundBy: shape.some(x => x[2] && x[2].some(r => r === 'texture' || r === 'fx')) };
   }
   // one role's notes for one section
   function renderRole(pl, role, sec, i, harm) {
@@ -639,7 +644,9 @@
     if (pl.fxPreset) parts.fx = { role: 'fx', patterns: {}, clips: [], preset: pl.fxPreset, sound: true };
     if (pl.hitPreset) parts.hit = { role: 'fx', patterns: {}, clips: [], preset: pl.hitPreset, sound: true };
     sections.forEach((sec, i) => {
-      const roles = sec.roles.concat(Object.keys(parts).filter(k => parts[k].sound));
+      // the sound layer plays everywhere — unless a cue's layout places it ('texture' / 'fx' in a section's roles)
+      const snd = Object.keys(parts).filter(k => parts[k].sound && (!pl.soundBy || sec.roles.includes(parts[k].role)));
+      const roles = sec.roles.concat(snd);
       for (const role of Object.keys(parts)) {
         if (!roles.includes(role)) continue;
         const notes = renderRole(pl, role, sec, i, harm);
@@ -807,6 +814,84 @@
     return (home + step) % 12;
   }
 
+  // a key as a pitch class: 0–11, or a name ('D', 'Eb', 'F#', 'Bbm' → the tonic only)
+  const FLATS = { Db: 1, Eb: 3, Gb: 6, Ab: 8, Bb: 10, Cb: 11, Fb: 4 };
+  function keyOf(k) {
+    if (k === undefined || k === null || k === '') return undefined;
+    if (Number.isFinite(+k)) return ((Math.round(+k) % 12) + 12) % 12;
+    const m = /^\s*([A-Ga-g])([#b]?)/.exec(String(k)); if (!m) return undefined;
+    const name = m[1].toUpperCase() + m[2];
+    if (FLATS[name] !== undefined) return FLATS[name];
+    const i = NOTE_NAMES.indexOf(name); if (i >= 0) return i;
+    return ((NOTE_NAMES.indexOf(m[1].toUpperCase()) + (m[2] === '#' ? 1 : 0)) % 12 + 12) % 12;
+  }
+
+  // ── the score bible (resources/music/score/*.json) ──────────────────────────────────────────────────────────────
+  // Written musical direction, layered: soundtrack → volume → chapter → character (motif, signature instrument) →
+  // track cue. Each layer may set: style, form, mode, key, bpm, density (a value or a list / [lo, hi] — picked per
+  // seed), voices {role: preset | [presets]}, textures [..] | 'none', fx, hit, motif, motifSpec {rhythm, degrees},
+  // shape [[name, bars, roles]], stems, feel (prose). Later layers win field by field; typed direction wins over all
+  // of them (applyDirection after this).
+  const chapterOf = sceneId => (/^(vol\d+_ch\d+)/.exec(sceneId || '') || [])[1] || null;
+  function applyScore(m, score, t) {
+    if (!score || !t) return m;
+    const R = rng(hash('score:' + t.id + ':' + (m.seed || 0)));
+    const pickOne = v => Array.isArray(v) ? (v.length === 2 && v.every(x => typeof x === 'number') ? v[0] + R() * (v[1] - v[0]) : R.pick(v)) : v;
+    const chapters = [...new Set((t.chapters || []).map(chapterOf).filter(Boolean))];
+    const layers = [score.soundtrack, (score.volumes || {})[String(t.vol)], ...chapters.slice(0, 1).map(c => (score.chapters || {})[c]), (score.tracks || {})[t.id]].filter(Boolean);
+    const feel = [];
+    const take = L => {
+      if (L.style && STYLES[pickOne(L.style)] !== undefined) m.style = pickOne(L.style);
+      for (const k of ['form', 'mode']) if (L[k]) { const v = pickOne(L[k]); if ((k === 'form' ? FORMS : SCALES)[v]) m[k] = v; }
+      if (L.key !== undefined) { const k = keyOf(pickOne(L.key)); if (k !== undefined) m.key = k; }
+      if (L.bpm !== undefined) m.bpm = Math.round(pickOne(L.bpm));
+      if (L.density !== undefined) m.density = +Math.max(0.05, Math.min(1, pickOne(L.density))).toFixed(2);
+      if (L.voices) { m.voices = Object.assign({}, m.voices || {}); for (const [r, v] of Object.entries(L.voices)) m.voices[r] = pickOne(v); }
+      if (L.textures !== undefined) m.textures = L.textures === 'none' ? 'none' : (Array.isArray(L.textures) ? (L.textures.length > 2 ? [R.pick(L.textures), R.pick(L.textures)].filter((x, i, a) => a.indexOf(x) === i) : L.textures.slice()) : [L.textures]);
+      for (const k of ['fx', 'hit']) if (L[k] !== undefined) m[k] = pickOne(L[k]);
+      if (L.motif !== undefined) m.motif = L.motif || null;
+      if (L.shape) m.shape = L.shape;
+      if (L.stems !== undefined) m.stems = !!L.stems;
+      if (L.feel) feel.push(String(L.feel));
+    };
+    for (const L of layers) take(L);
+    // the character whose motif this is: the motif's own shape, their signature instrument (unless the cue names one)
+    const ch = m.motif && (score.characters || {})[String(m.motif).toLowerCase()];
+    if (ch) {
+      if (ch.motifSpec) m.motifSpec = ch.motifSpec;
+      const cue = (score.tracks || {})[t.id] || {};
+      if (ch.instrument && !(cue.voices && cue.voices.lead)) m.voices = Object.assign({}, m.voices || {}, { lead: pickOne(ch.instrument) });
+      if (ch.mode && !cue.mode && SCALES[ch.mode] && /_theme$/.test(t.id)) m.mode = ch.mode;
+      if (ch.feel) feel.push(String(ch.feel));
+    }
+    if (layers.length || ch) { m.scored = true; m.why = (m.why ? m.why + ' · ' : '') + 'score' + (feel.length ? ': ' + feel[feel.length - 1].slice(0, 70) : ''); }
+    return m;
+  }
+  // the score's referential integrity — styles, modes, keys, presets (FORGE or a known fallback), catalog ids
+  function checkScore(score, { catalog = [], presets = [] } = {}) {
+    const bad = [], ids = new Set(catalog.map(t => t.id)), P = new Set(presets), okPreset = v => v === 'none' || v === 'kit' || P.has(v) || (/^patch:/.test(v)) || SOUND_FALLBACK[v] !== undefined;
+    const arr = v => (Array.isArray(v) ? v : [v]);
+    const layer = (where, L) => {
+      if (!L || typeof L !== 'object') return;
+      if (L.style) for (const s of arr(L.style)) if (!STYLES[s]) bad.push(where + ': style ' + s);
+      if (L.mode) for (const s of arr(L.mode)) if (!SCALES[s]) bad.push(where + ': mode ' + s);
+      if (L.form) for (const s of arr(L.form)) if (!FORMS[s]) bad.push(where + ': form ' + s);
+      if (L.key !== undefined) for (const k of arr(L.key)) if (keyOf(k) === undefined) bad.push(where + ': key ' + k);
+      for (const [r, v] of Object.entries(L.voices || {})) for (const x of arr(v)) if (!okPreset(x)) bad.push(where + ': voice ' + r + ' ' + x);
+      if (L.textures && L.textures !== 'none') for (const x of arr(L.textures)) if (!okPreset(x)) bad.push(where + ': texture ' + x);
+      for (const k of ['fx', 'hit']) if (L[k]) for (const x of arr(L[k])) if (!okPreset(x)) bad.push(where + ': ' + k + ' ' + x);
+      if (L.instrument) for (const x of arr(L.instrument)) if (!okPreset(x)) bad.push(where + ': instrument ' + x);
+      if (L.shape) for (const sec of L.shape) if (!Array.isArray(sec) || !sec[0] || !(+sec[1] > 0)) bad.push(where + ': shape ' + JSON.stringify(sec));
+      if (L.motifSpec && !(Array.isArray(L.motifSpec.rhythm) && Array.isArray(L.motifSpec.degrees))) bad.push(where + ': motifSpec');
+    };
+    layer('soundtrack', score.soundtrack);
+    for (const [k, L] of Object.entries(score.volumes || {})) layer('volume ' + k, L);
+    for (const [k, L] of Object.entries(score.chapters || {})) layer('chapter ' + k, L);
+    for (const [k, L] of Object.entries(score.characters || {})) layer('character ' + k, L);
+    for (const [k, L] of Object.entries(score.tracks || {})) { if (ids.size && !ids.has(k)) bad.push('track ' + k + ': not in the catalog'); layer('track ' + k, L); }
+    return bad;
+  }
+
   const PACE = { slow: ['slow', 'slower', 'held', 'sustained', 'single', 'drone', 'still'], fast: ['loud', 'dancing', 'chase', 'thump', 'rush', 'headlights, then more'] };
   function moodFromText(title, desc, id) {
     const s = ((title || '') + ' ' + (desc || '') + ' ' + (id || '')).toLowerCase();
@@ -918,7 +1003,7 @@
   }
 
   const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, SONG_SHAPES, SOUNDS, SOUND_FALLBACK, TEXTURE_FOR, rng, hash, deg2midi, chordPCs, song, part, presetFor,
-    moodFromText, moodFromBrief, applyDirection, romanFor, soundsFromText, motifOf, volumeKey };
+    moodFromText, moodFromBrief, applyDirection, romanFor, soundsFromText, motifOf, volumeKey, keyOf, applyScore, checkScore, chapterOf };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -163,11 +163,14 @@
     return r;
   }
   // the mood a take is composed with: brief (+ energy nudge) → typed direction → explicit overrides
-  function takeMood(t, b, o) {
+  function takeMood(t, b, o, score) {
     const S = SG();
     let bb = b;
     if (b && o.energy) bb = Object.assign({}, b, { energy: clamp((b.energy ?? 0.5) + o.energy, 0, 1) });
-    const m = S.moodFromBrief(t, bb, o.description);
+    // brief → the score's written direction (volume → chapter → character → track cue) → typed direction
+    let m = S.moodFromBrief(t, bb);
+    if (score && S.applyScore) m = S.applyScore(m, score, t);
+    if (o.description) m = S.applyDirection(m, o.description);
     if (!b && o.energy) { const [lo, hi] = S.STYLES[m.style].bpm; m.bpm = Math.round(clamp(m.bpm + o.energy * (hi - lo), lo, hi)); m.density = +clamp(m.density + o.energy * 0.4, 0.15, 0.95).toFixed(2); }
     if (o.style && o.style !== m.style) { const a = S.STYLES[m.style].bpm, z = S.STYLES[o.style].bpm, pos = clamp((m.bpm - a[0]) / Math.max(1, a[1] - a[0]), 0, 1); m.style = o.style; m.bpm = Math.round(z[0] + pos * (z[1] - z[0])); }
     if (o.form) m.form = o.form;
@@ -176,6 +179,20 @@
     if (o.density !== undefined) m.density = o.density;
     if (o.key !== undefined) m.key = o.key;                 // else the mood's own (its volume's tonal home)
     return m;
+  }
+  // the score bible: every resources/music/score/*.json merged (soundtrack / volumes / chapters / characters / tracks)
+  async function loadScore() {
+    const G = AKg().game, out = { soundtrack: null, volumes: {}, chapters: {}, characters: {}, tracks: {} };
+    let n = 0;
+    for (const e of await G.list('resources/music/score')) {
+      if (e.kind !== 'file' || !/\.json$/.test(e.name)) continue;
+      try {
+        const j = JSON.parse(await G.readText('resources/music/score/' + e.name)); n++;
+        if (j.soundtrack) out.soundtrack = Object.assign(out.soundtrack || {}, j.soundtrack);
+        for (const k of ['volumes', 'chapters', 'characters', 'tracks']) Object.assign(out[k], j[k] || {});
+      } catch (err) { console.warn('score ' + e.name + ':', err && err.message); }
+    }
+    return n ? out : null;
   }
   async function readApprovals() { try { const j = JSON.parse(await AKg().game.readText(APPROVALS)); j.tracks = j.tracks || {}; return j; } catch (e) { return { tracks: {} }; } }
   // seeds a new take must not reuse: every take still in review, the approved one, and every seed rejected before
@@ -371,6 +388,7 @@
     const o = normOpts(req.opts), review = req.review !== false, nTakes = clamp(Math.round(+req.takes || 1), 1, 12);
     const on = ctx.onEvent || (() => {}), S = SG(), AK = AKg();
     const briefs = ctx.briefs !== undefined ? ctx.briefs : await loadBriefs();
+    const score = ctx.score !== undefined ? ctx.score : await loadScore();
     const done = [], total = list.length * nTakes; let k = 0, song = null;
     for (const t of list) {
       const b = req.useBriefs === false ? null : (briefs && briefs[t.id]) || null;
@@ -378,7 +396,7 @@
       if (review) seeds = await seedsUsed(t.id);
       for (let n = 0; n < nTakes; n++) {
         k++;
-        const m = takeMood(t, b, o);
+        const m = takeMood(t, b, o, score);
         m.seed = o.seed != null && n === 0 ? o.seed : nextSeed(t.id, m.seed, seeds.used);
         seeds.used.add(m.seed);
         const tag = k + '/' + total + ' · ' + t.title + ' · ' + S.STYLES[m.style].name + ' ' + m.mode + ' · seed ' + m.seed;
@@ -390,7 +408,7 @@
           if (o.length && o.length.sec) { bars = Math.max(1, Math.round(o.length.sec * m.bpm / 240)); m.bpm = bars * 240 / o.length.sec; }
           if (E.project) E.project.name = t.id;
           song = await compose(E, { seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: m.key,
-            motif: m.motif, textures: m.textures, fx: m.fx, hit: m.hit, voices: m.voices }, ctx.inst || 'forge');
+            motif: m.motif, motifSpec: m.motifSpec, shape: o.length ? undefined : m.shape, textures: m.textures, fx: m.fx, hit: m.hit, voices: m.voices }, ctx.inst || 'forge');
           const P = E.project; P.name = t.id;
           const instruments = await shapeArrangement(E, song, o);
           // the game plays a track once, then the next: with no length asked, repeat to at least TEMP_MIN_SEC
@@ -409,7 +427,7 @@
           const sec = r.channels[0].length / r.sampleRate;
           const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+song.bpm).toFixed(4), density: song.density, seed: song.seed,
             composer: song.v || 1, motif: song.motif || undefined, textures: song.textures && song.textures.length ? song.textures : 'none', fx: song.fx || 'none', hit: song.hit || 'none',
-            voices: m.voices || undefined, vocab: song.vocab };
+            voices: m.voices || undefined, motifSpec: m.motifSpec || undefined, shape: m.shape || undefined, scored: m.scored || undefined, vocab: song.vocab };
           const entry = { id: t.id, style: song.style, mode: song.mode, bpm: mood.bpm, sec: +sec.toFixed(3), bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, seed: song.seed };
           say('write', 'saving…');
           if (review) {
@@ -449,7 +467,7 @@
     const mo = meta.mood || {};
     if (E.project) E.project.name = meta.id;
     const song = await compose(E, { seed: mo.seed, style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, key: mo.key,
-      motif: mo.motif, textures: mo.textures, fx: mo.fx, hit: mo.hit, voices: mo.voices }, 'forge');
+      motif: mo.motif, motifSpec: mo.motifSpec, shape: mo.shape, textures: mo.textures, fx: mo.fx, hit: mo.hit, voices: mo.voices }, 'forge');
     E.project.name = meta.id;
     await shapeArrangement(E, song, normOpts(meta.request));
     if (meta.bars) arrangeTo(E, song, meta.bars);
@@ -483,7 +501,7 @@
 
   root.TempMaker = {
     ROLE_ORDER, SOUND_ROLES, ALL_ROLES, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
-    routing, compose, loadBriefs, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
+    routing, compose, loadBriefs, loadScore, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
     padLayer, texturePreset, shapeArrangement, instrumentsOf, loadTake, stageEdit, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

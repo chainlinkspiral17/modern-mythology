@@ -89,6 +89,27 @@ suite('data · registries, composer, MIDI files', async t => {
     const keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map(id => SG.volumeKey(6, 'vol6_' + id)), home = SG.volumeKey(6, 'vol6_a');
     t.ok(new Set(keys).size <= 4, 'one volume, a few related keys: ' + keys);
   });
+  await t.test('score bible: every file valid (styles, modes, keys, presets, catalog ids); layers apply in order, typed direction wins', async () => {
+    const fs = require('fs'), dir = path.join(TOOLS, '..', 'resources', 'music', 'score');
+    global.window = global.window || globalThis; require(path.join(TOOLS, 'forge_synth.js'));
+    const presets = (globalThis.FORGE_PRESETS || []).map(p => p.id);
+    const cat = JSON.parse(fs.readFileSync(path.join(TOOLS, '..', 'resources', 'music_catalog.json'), 'utf8')), catalog = Array.isArray(cat) ? cat : cat.tracks;
+    const merged = { soundtrack: null, volumes: {}, chapters: {}, characters: {}, tracks: {} }, bad = [];
+    for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json'))) {
+      let j; try { j = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); } catch (e) { bad.push(f + ': ' + e.message); continue; }
+      for (const b of SG.checkScore(j, { catalog, presets })) bad.push(f + ': ' + b);
+      if (j.soundtrack) merged.soundtrack = j.soundtrack; for (const k of ['volumes', 'chapters', 'characters', 'tracks']) Object.assign(merged[k], j[k] || {});
+    }
+    t.eq(bad, [], 'score problems');
+    // layering on a made-up score
+    const sc = { soundtrack: { bpm: 70 }, volumes: { 9: { style: 'noir', key: 'D', voices: { lead: 'strings_noir' }, feel: 'v' } }, chapters: { vol9_ch2: { mode: 'phrygian', feel: 'c' } },
+      characters: { zed: { instrument: 'winds_clarinet', motifSpec: { rhythm: [0, 4, 8], degrees: [0, 2, 4] } } }, tracks: { vol9_zed_theme: { bpm: 60, textures: ['amb_fire'], feel: 't' } } };
+    const tr = { id: 'vol9_zed_theme', vol: 9, title: 'Zed', desc: 'A theme.', chapters: ['vol9_ch2_door'] };
+    const m = SG.applyScore(SG.moodFromText(tr.title, tr.desc, tr.id), sc, tr);
+    t.eq([m.style, m.key, m.mode, m.bpm, m.voices.lead, m.textures, m.motif, m.motifSpec.degrees], ['noir', 2, 'phrygian', 60, 'winds_clarinet', ['amb_fire'], 'zed', [0, 2, 4]]);
+    const d = SG.applyDirection(Object.assign({}, m), 'faster, a lonely piano over rain');
+    t.ok(d.bpm > 60 && d.voices.lead === 'keys_felt' && d.textures.includes('amb_rain'), 'typed direction wins: ' + JSON.stringify([d.bpm, d.voices, d.textures]));
+  });
   const SMF = require(path.join(TOOLS, 'smf.js'));
   await t.test('MIDI file write → read round trip (incl. same-pitch overlaps)', async () => {
     const notes = [{ t: 0, d: 96, n: 60, v: 0.8 }, { t: 48, d: 96, n: 60, v: 0.5 }, { t: 96, d: 48, n: 64, v: 1 }];
