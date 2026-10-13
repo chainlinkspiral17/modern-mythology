@@ -189,7 +189,8 @@
       try {
         const j = JSON.parse(await G.readText('resources/music/score/' + e.name)); n++;
         if (j.soundtrack) out.soundtrack = Object.assign(out.soundtrack || {}, j.soundtrack);
-        for (const k of ['volumes', 'chapters', 'characters', 'tracks']) Object.assign(out[k], j[k] || {});
+        // field by field: a character the soundtrack file describes keeps that when a volume file adds its motif
+        for (const k of ['volumes', 'chapters', 'characters', 'tracks']) for (const [id, v] of Object.entries(j[k] || {})) out[k][id] = Object.assign({}, out[k][id] || {}, v);
       } catch (err) { console.warn('score ' + e.name + ':', err && err.message); }
     }
     return n ? out : null;
