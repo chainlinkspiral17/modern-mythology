@@ -228,6 +228,29 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-13 · Meshy faces: lift the painted shadows, tame the ink
+
+- **The user: "the models look splotchy and have weird ugly visual
+  artifacts that look like misshapen lips or facial features."** Three
+  causes, each visible in a close-up over the diner: Meshy PAINTS shading
+  into the albedo (near-black eye sockets, a dark lip crease) and the rig
+  shades it again; Meshy's normal maps at full strength and its emission
+  map put noise and random lit patches on skin; and the portrait look's
+  ink pass (threshold 0.22) traced every texture edge while its 4-band
+  cel step and hatching cut the skin into patches.
+- **Portraits get their own skin shader** (`portrait_skin.gdshader`,
+  built by Portrait3D from the GLB's textures): a gamma LIFT that opens
+  the darkest albedo and fades out above a luminance knee, the normal map
+  at 0.35 depth, no emission, wrap diffuse, matte. A plain contrast cut
+  could not open John's sockets without washing his skin — the curve can.
+  The lift also lightens dark hair a little; tune it per character.
+- **The look's face defaults:** ink 0.20 at threshold 0.34, hatch 0.06,
+  cel 0.10 over 6 bands, wobble 0.6, bleed 0.6.
+- **Per character:** `SHADING_DEFAULT` + `CHARACTER_SHADING[<glb base>]`
+  (lift, lift_knee, normal_scale, sat, tint, specular, look overrides),
+  beside `CHARACTER_LIGHTING`. Judge on the whole cast:
+  `bash godot/tools/portrait_review.sh [--lift 0.6 ...]`.
+
 ### 2026-10-11 · the VN reads like an ereader, not a poster
 
 - **Outlined type is the "ugly".** The 2026-07 standard dialogue skin

@@ -240,6 +240,45 @@ const MOOD_LOOK := {
 	"surprised": {"look_contrast": 0.08, "look_ink": 0.10},
 }
 const LOOK_EASE: float = 4.0                # 1/s
+
+# ── PER-CHARACTER SHADING (2026-10-13) ─────────────────────────────────────
+# The user: "character lighting and shading needs to be figured out per
+# character, the models look splotchy and have weird ugly visual artifacts
+# that look like misshapen lips or facial features." Three causes, read off
+# John / Dante / Elicia renders over the diner:
+#   1. Meshy BAKES shading into the albedo (dark sockets, lip creases), and
+#      the rig shades it again — raccoon eyes, a dark gash for a mouth.
+#      → portrait_skin.gdshader: a curve that LIFTS the darkest albedo and
+#        leaves the highlights (`lift`, `lift_knee`); a plain contrast cut
+#        could not open John's near-black sockets without washing his skin.
+#   2. Meshy's normal maps are full strength and noisy at portrait range,
+#      and its emission map lights random patches → splotches.
+#      → normal_scale 0.35, emission off, a wrap diffuse for a soft
+#        terminator.
+#   3. The look's ink pass traced every texture edge (eyelids, lip lines)
+#      at threshold 0.22 and the 4-band cel step + hatching cut the skin
+#      into patches → `look` overrides: less ink, a higher threshold,
+#      finer bands, almost no hatching on faces.
+# SHADING_DEFAULT applies to every hero; CHARACTER_SHADING overrides per
+# character (keys as in CHARACTER_LIGHTING: the GLB's basename).
+const SKIN_SHADER := preload("res://assets/shaders/portrait_skin.gdshader")
+const SHADING_DEFAULT := {
+	"skin_shader": true, "lift": 0.45, "lift_knee": 0.45, "sat": 1.0, "tint": Color(1, 1, 1),
+	"specular": 0.10, "normal_scale": 0.35, "emission": false, "wrap": true,
+	"look": {"look_ink": 0.20, "look_ink_thr": 0.34, "look_hatch": 0.06, "look_cel": 0.10,
+			 "look_bands": 6.0, "look_wobble": 0.6, "look_bleed": 0.60},
+}
+const CHARACTER_SHADING := {
+	# near-black painted sockets and a hard mouth line in his texture
+	"john_frank": {"lift": 0.85, "lift_knee": 0.50},
+	# the age lines are the character: lift less, keep a little more ink
+	"dante_dambrosio": {"lift": 0.35, "look": {"look_ink": 0.26}},
+	"elicia_temple": {"lift": 0.55},
+}
+var _shading: Dictionary = {}               # the resolved shading for the loaded hero
+## A tuning override laid over the resolved shading (tools/PortraitLookTest
+## --lift/--knee/...); empty in the game.
+var shading_override: Dictionary = {}
 var _look_on: bool = true
 var _look_now: Dictionary = {}
 var _look_target: Dictionary = {}
@@ -551,6 +590,7 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 	_loaded_glb_path = glb_path
 	# Auto-orient + auto-scale to the portrait's target framing
 	_orient_and_scale_character(_current_character)
+	_shading = _resolve_shading(glb_path)
 	_matte_materials(_current_character)
 	_neck_y = _measure_neck(_current_character)
 	_head_xz = _measure_head(_current_character, _neck_y) if _neck_y > 0.0 else Vector2.ZERO
@@ -644,6 +684,11 @@ func set_expression(expression: String) -> void:
 ## The look the current mood + room ask for (eased toward in _process).
 func _compute_look() -> void:
 	var t: Dictionary = LOOK_BASE.duplicate()
+	# (2026-10-13) the character's face-friendly look, under the mood's deltas
+	var sh: Dictionary = _shading if not _shading.is_empty() else SHADING_DEFAULT
+	var shl: Dictionary = sh.get("look", {})
+	for k: String in shl:
+		t[k] = float(shl[k])
 	var md: Dictionary = MOOD_LOOK.get(_mood_id, {})
 	for k: String in md:
 		t[k] = float(t.get(k, 0.0)) + float(md[k])
@@ -1011,7 +1056,28 @@ func _measure_head(root: Node3D, neck: float) -> Vector2:
 ## plastic before any post pass sees them (the Deck, 2026-10-02: "less
 ## plastic"). Each surface gets a matte copy of its material: full
 ## roughness, no metal, a whisper of specular. Colour and texture keep.
+func _resolve_shading(glb_path: String) -> Dictionary:
+	var base: String = glb_path.get_file().get_basename().to_lower()
+	if base.ends_with("_gnm"):
+		base = base.substr(0, base.length() - 4)
+	var sh: Dictionary = SHADING_DEFAULT.duplicate(true)
+	if CHARACTER_SHADING.has(base):
+		var over: Dictionary = CHARACTER_SHADING[base]
+		for k: String in over:
+			if k == "look":
+				var lk: Dictionary = sh["look"]
+				var lo: Dictionary = over["look"]
+				for kk: String in lo:
+					lk[kk] = lo[kk]
+			else:
+				sh[k] = over[k]
+	for k: String in shading_override:
+		sh[k] = shading_override[k]
+	return sh
+
+
 func _matte_materials(root: Node3D) -> void:
+	var sh: Dictionary = _shading if not _shading.is_empty() else SHADING_DEFAULT
 	for n: Node in _collect_mesh_instances(root):
 		var mi: MeshInstance3D = n as MeshInstance3D
 		if mi == null or mi.mesh == null:
@@ -1026,7 +1092,37 @@ func _matte_materials(root: Node3D) -> void:
 			m.metallic = 0.0
 			m.metallic_specular = 0.12
 			m.clearcoat_enabled = false
+			# (2026-10-13) per-character shading: see SHADING_DEFAULT
+			if m.normal_enabled:
+				m.normal_scale = float(sh.get("normal_scale", 0.35))
+			if not bool(sh.get("emission", false)):
+				m.emission_enabled = false
+			if bool(sh.get("wrap", true)):
+				m.diffuse_mode = BaseMaterial3D.DIFFUSE_LAMBERT_WRAP
+			if bool(sh.get("skin_shader", true)) and m.albedo_texture != null:
+				mi.set_surface_override_material(si, _skin_material(m, sh))
+				continue
 			mi.set_surface_override_material(si, m)
+
+
+## The portrait skin material (portrait_skin.gdshader) from the GLB's own
+## textures and this character's shading values.
+func _skin_material(src: BaseMaterial3D, sh: Dictionary) -> ShaderMaterial:
+	var sm := ShaderMaterial.new()
+	sm.shader = SKIN_SHADER
+	sm.set_shader_parameter("albedo_tex", src.albedo_texture)
+	var has_n: bool = src.normal_enabled and src.normal_texture != null
+	sm.set_shader_parameter("has_normal", has_n)
+	if has_n:
+		sm.set_shader_parameter("normal_tex", src.normal_texture)
+	sm.set_shader_parameter("normal_depth", float(sh.get("normal_scale", 0.35)))
+	sm.set_shader_parameter("lift", float(sh.get("lift", 0.45)))
+	sm.set_shader_parameter("lift_knee", float(sh.get("lift_knee", 0.45)))
+	sm.set_shader_parameter("sat", float(sh.get("sat", 1.0)))
+	var tint: Color = sh.get("tint", Color(1, 1, 1))
+	sm.set_shader_parameter("tint", Color(tint.r * src.albedo_color.r, tint.g * src.albedo_color.g, tint.b * src.albedo_color.b, 1.0))
+	sm.set_shader_parameter("specular_amt", float(sh.get("specular", 0.10)))
+	return sm
 
 
 func _collect_mesh_instances(node: Node, out: Array[Node] = []) -> Array[Node]:

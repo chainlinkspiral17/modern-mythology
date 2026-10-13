@@ -3834,6 +3834,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-13 · pass 99: PER-CHARACTER PORTRAIT SHADING (draft 1).** The user:
+"character lighting and shading needs to be figured out per character, the
+models look splotchy and have weird ugly visual artifacts that look like
+misshapen lips or facial features." Read off John / Dante / Elicia close-
+ups over the diner: Meshy paints shading into the albedo (near-black
+sockets, a dark lip crease) that the rig shades again; full-strength
+normal maps and a stray emission map add noise; the look's ink traced
+every texture edge and its cel bands and hatching patched the skin. Now:
+`portrait_skin.gdshader` replaces the GLB material on portraits (a gamma
+lift on the painted shadows that fades above a luminance knee, normal
+depth 0.35, no emission, wrap diffuse, matte); the look's face defaults
+lowered (ink 0.20 @ 0.34, hatch 0.06, cel 0.10 × 6 bands); a
+`SHADING_DEFAULT` + `CHARACTER_SHADING` table beside the lighting table,
+first entries John (lift 0.85), Dante (0.35, more ink), Elicia (0.55).
+`PortraitLookTest --all` and `tools/portrait_review.sh` render the whole
+cast's close-ups into one folder, with --lift/--knee/--normal/--sat to
+try values. Hero Studio's serve also moves off a port another program
+owns (the Deck's 8765). **Draft 2 targets:** tune the other ~90 heroes
+from a Deck review sheet; a hair mask so the lift spares dark hair; the
+lighting table's key/fill ratio per character (most still use the rig's
+rest values); the three shelved `_gnm` models are unused and could go.
+
 **2026-10-12 · pass 98: THE HERO ART AUDIT.** The user: "Do an audit to find
 what more can be given a hero art pass. Flat backdrops for skies, backlots,
 windows, posters, monitors, TV screens, paintings." New report
