@@ -2489,7 +2489,31 @@ def make_handler(runner, roster_path):
 def cmd_serve(args):
     runner = JobRunner(ROSTER_PATH)
     handler = make_handler(runner, ROSTER_PATH)
-    srv = ThreadingHTTPServer((args.host, args.port), handler)
+    try:
+        srv = ThreadingHTTPServer((args.host, args.port), handler)
+    except OSError as ex:
+        if ex.errno not in (98, 48, 10048):       # EADDRINUSE on Linux / macOS / Windows
+            raise
+        # (2026-10-13) the port is taken — almost always a Hero Studio started
+        # before the last `git pull`, still running the OLD code (new roster
+        # kinds and buttons will be missing from it). Say so, and how to fix it.
+        url = f"http://{args.host}:{args.port}/hero_uploader/"
+        running = ""
+        try:
+            import urllib.request
+            with urllib.request.urlopen(f"http://{args.host}:{args.port}/api/jobs", timeout=3) as r:
+                running = " (it answers as Hero Studio)" if r.status == 200 else ""
+        except Exception:  # noqa: BLE001
+            pass
+        print(f"Port {args.port} is already in use{running}.", file=sys.stderr)
+        print("Another Hero Studio is probably still running, started before your last pull — it is", file=sys.stderr)
+        print("serving the OLD code. Stop it and start this one:", file=sys.stderr)
+        print("", file=sys.stderr)
+        print('  pkill -f "meshy_pipeline.py serve"; sleep 1; python3 godot/tools/meshy_pipeline.py serve', file=sys.stderr)
+        print("", file=sys.stderr)
+        print(f"(or run this one on another port: python3 godot/tools/meshy_pipeline.py serve --port {args.port + 1})", file=sys.stderr)
+        print(f"The running one is at {url}", file=sys.stderr)
+        return 1
     rep = key_report(check=False)
     print(f"meshy_pipeline.py  {rel(Path(__file__))}  (git: {_git_head()})")
     print(f"Hero Studio  →  http://{args.host}:{args.port}/hero_uploader/")
