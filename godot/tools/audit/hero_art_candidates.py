@@ -215,7 +215,9 @@ def scan():
             groups[("PAINTED", pref.lower(), pref + "_*")] = members
         loc_lines = lines.get(loc, [])
         for (cat, key, rt), inst in groups.items():
-            name, c, sz = max(inst, key=lambda t: sorted(t[2])[1] * sorted(t[2])[2])
+            surfs = surfaces(inst)
+            sf = max(surfs, key=lambda t: sorted(t["dims"])[1] * sorted(t["dims"])[2])
+            c, sz = sf["center"], sf["dims"]
             dims = sorted(sz)
             pat = r"\b(" + MENTION.get(key, re.escape(key.rstrip("s"))) + r")\w*"
             if cat == "WINDOW":
@@ -236,6 +238,8 @@ def scan():
             rows.append({"cat": cat, "locale": loc, "family": rt, "key": key, "count": len(inst), "area": round(total_area, 3),
                          "pieces": sorted({n for n, _, _ in inst})[:6],
                          "size": [round(dims[2], 2), round(dims[1], 2)], "thin_axis": "xyz"[list(sz).index(dims[0])],
+                         "dims": [round(v, 3) for v in sz],
+                         "surfaces": surfs,
                          "center": [round(v, 2) for v in c], "lines": len(loc_lines), "mentions": ment, "quote": quote,
                          "covered": any(l == loc and (rt.rstrip("*").rstrip("_").startswith(h) or h.startswith(rt.rstrip("*").rstrip("_"))) for (l, h) in covered),
                          "has_view": False})
@@ -267,9 +271,87 @@ def scan():
         else:
             i = "xy".index(ax)
             facing = ("+" if cam[i] >= c[i] else "-") + ax
-        r["apply"] = {"locale": r["locale"], "label": r["family"], "center": c, "size": r["size"], "facing": facing,
-                      "hide": [r["family"]]}
+        r["apply"] = {"locale": r["locale"], "label": r["family"], "center": c, "size": wh(r, facing), "facing": facing,
+                      "hide": [r["family"].rstrip("*")]}
+        # one row per surface (2026-10-13): each its own centre and true size
+        rows_all = []
+        for sf in r.get("surfaces") or []:
+            sub = dict(r, dims=sf["dims"])
+            sc = sf["center"]
+            f = facing
+            if r["cat"] == "BACKLOT" or ax == "z" and r["size"][1] > 3.0:
+                # each band of a backdrop turns to the camera on its own
+                dx, dy = cam[0] - sc[0], cam[1] - sc[1]
+                f = ("+x" if dx >= 0 else "-x") if abs(dx) >= abs(dy) else ("+y" if dy >= 0 else "-y")
+            elif ax in "xy":
+                i = "xy".index(ax)
+                f = ("+" if cam[i] >= sc[i] else "-") + ax
+            # hide exactly this surface's pieces (a window's glass, not its
+            # frame); a surface of many pieces hides by the family name
+            fam = r["family"].rstrip("*").rstrip("_")
+            hide = sf["pieces"] if len(sf["pieces"]) <= 24 else [fam, fam + "_"]
+            rows_all.append({"locale": r["locale"], "label": r["family"], "center": sc, "size": wh(sub, f),
+                             "facing": f, "hide": hide, "pieces": sf["pieces"][:8]})
+        r["apply_all"] = rows_all
     return rows
+
+
+def surfaces(inst, gap=0.05, plane=0.06):
+    """Pieces → the separate surfaces they make (2026-10-13). A family name
+    (Poster_*, Window_*) gathers every instance in a room; pieces that touch
+    (within `gap`) on one plane (thin along the same axis, within `plane`) are
+    one picture. Each surface: its bounding-box centre and extents, Blender
+    frame, and its piece names."""
+    n = len(inst)
+    par = list(range(n))
+
+    def find(i):
+        while par[i] != i:
+            par[i] = par[par[i]]
+            i = par[i]
+        return i
+    boxes = []
+    for name, c, sz in inst:
+        ax = list(sz).index(min(sz))
+        boxes.append((ax, [c[k] - sz[k] / 2 for k in range(3)], [c[k] + sz[k] / 2 for k in range(3)]))
+    for i in range(n):
+        for j in range(i + 1, n):
+            ai, lo_i, hi_i = boxes[i]
+            aj, lo_j, hi_j = boxes[j]
+            if ai != aj or abs((lo_i[ai] + hi_i[ai]) - (lo_j[ai] + hi_j[ai])) / 2 > plane:
+                continue
+            if all(lo_i[k] - gap <= hi_j[k] and lo_j[k] - gap <= hi_i[k] for k in range(3)):
+                par[find(i)] = find(j)
+    clusters = defaultdict(list)
+    for i in range(n):
+        clusters[find(i)].append(i)
+    out = []
+    for idx in clusters.values():
+        lo = [min(boxes[i][1][k] for i in idx) for k in range(3)]
+        hi = [max(boxes[i][2][k] for i in idx) for k in range(3)]
+        out.append({"center": [round((lo[k] + hi[k]) / 2, 3) for k in range(3)],
+                    "dims": [round(hi[k] - lo[k], 3) for k in range(3)],
+                    "pieces": sorted(inst[i][0] for i in idx)})
+    out.sort(key=lambda t: -(sorted(t["dims"])[1] * sorted(t["dims"])[2]))
+    return out
+
+
+def wh(r, facing):
+    """The picture's [width, height] as the viewer sees it (2026-10-13). The
+    row's `size` is largest-first and lost which side is up — a tall poster
+    read as landscape, and the hero tool generated it the wrong shape. A
+    picture facing ±x spans y by z; facing ±y, x by z; facing up, x by y."""
+    d = r.get("dims") or [r["size"][0], r["size"][1], r["size"][1]]
+    if facing in ("+x", "-x"):
+        w, h = d[1], d[2]
+    elif facing in ("+y", "-y"):
+        w, h = d[0], d[2]
+    else:
+        w, h = d[0], d[1]
+    if r["cat"] == "BACKLOT" and facing != "up":
+        # a backdrop card stands up across the band's long side
+        w, h = max(d[0], d[1]), d[2]
+    return [round(w, 2), round(h, 2)]
 
 
 def score(r):

@@ -81,7 +81,7 @@ static func apply(root: Node, locale: String) -> int:
 		root.add_child(quad)
 		var hide_v: Variant = row.get("hide", [])
 		if typeof(hide_v) == TYPE_ARRAY:
-			_hide(root, hide_v as Array)
+			_hide(root, hide_v as Array, quad)
 		placed += 1
 	if placed > 0:
 		print("[HeroArt] %s: %d picture(s) laid on their surfaces" % [locale, placed])
@@ -118,6 +118,26 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	mat.metallic_specular = 0.12
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	# (2026-10-13) never stretch: a backdrop card (`fit: tile`) far wider
+	# than any generator's widest frame (21:9) — a 150 m bluff, an 18 m
+	# treeline — repeats the picture across its width; any other surface
+	# of a shape no generator makes (a 5:1 shop sign) shows the image's
+	# middle band, which the prompt told the generator to compose into
+	var img_aspect: float = float(tex.get_width()) / maxf(float(tex.get_height()), 1.0)
+	var quad_aspect: float = float(sz[0]) / maxf(float(sz[1]), 0.001)
+	var fit: String = String(row.get("fit", ""))
+	if fit == "tile" and quad_aspect > img_aspect * 1.5:
+		mat.texture_repeat = true
+		mat.uv1_scale = Vector3(roundf(quad_aspect / img_aspect), 1.0, 1.0)
+	elif fit != "tile" and quad_aspect > img_aspect * 1.15:
+		# a sign far wider than the generator's frame: show its middle band
+		var sy: float = img_aspect / quad_aspect
+		mat.uv1_scale = Vector3(1.0, sy, 1.0)
+		mat.uv1_offset = Vector3(0.0, (1.0 - sy) * 0.5, 0.0)
+	elif fit != "tile" and quad_aspect < img_aspect / 1.15:
+		var sx: float = quad_aspect / img_aspect
+		mat.uv1_scale = Vector3(sx, 1.0, 1.0)
+		mat.uv1_offset = Vector3((1.0 - sx) * 0.5, 0.0, 0.0)
 	mesh.material = mat
 	var mi := MeshInstance3D.new()
 	mi.mesh = mesh
@@ -146,14 +166,35 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	return mi
 
 
-static func _hide(root: Node, prefixes: Array) -> void:
+## Hide the stand-in under one picture. (2026-10-13) A room can hold
+## several surfaces of one family (three Poster_* on three walls), each its
+## own picture now: only the prefix-matched nodes UNDER this quad hide — in
+## its rectangle (+15 cm) and within 30 cm of its plane. When nothing
+## matched there (a builder that parents its pieces at the origin), every
+## match in the room hides, as before.
+static func _hide(root: Node, prefixes: Array, quad: MeshInstance3D = null) -> void:
 	if prefixes.is_empty():
 		return
+	var matches: Array[Node3D] = []
 	for n: Node in root.find_children("*", "Node3D", true, false):
 		var nm: String = String(n.name)
 		if nm.begins_with("HeroArt_"):
 			continue
 		for pv: Variant in prefixes:
-			if nm.begins_with(String(pv)):
-				(n as Node3D).visible = false
+			# "Name_" hides by prefix; a bare name hides that node only (a
+			# window's glass, not the frame whose name begins with it)
+			var h: String = String(pv)
+			if nm == h or (h.ends_with("_") and nm.begins_with(h)):
+				matches.append(n as Node3D)
 				break
+	var near: Array[Node3D] = []
+	if quad != null:
+		var inv: Transform3D = quad.transform.affine_inverse()
+		var half: Vector2 = (quad.mesh as QuadMesh).size * 0.5 + Vector2(0.15, 0.15)
+		for n3: Node3D in matches:
+			var local: Vector3 = inv * (root as Node3D).global_transform.affine_inverse() * n3.global_position \
+				if root is Node3D else inv * n3.global_position
+			if absf(local.x) <= half.x and absf(local.y) <= half.y and absf(local.z) <= 0.30:
+				near.append(n3)
+	for n3: Node3D in (near if not near.is_empty() else matches):
+		n3.visible = false

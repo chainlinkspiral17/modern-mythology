@@ -1263,6 +1263,14 @@ def load_roster(path=ROSTER_PATH):
             sys.exit(f"roster entry {e['slug']}: file must end in .glb")
         e.setdefault("vol", [])
         e.setdefault("keys", [e["slug"]])
+        if e["kind"] == "art":
+            # (2026-10-13, the Deck: "the hero tool description for 2D items
+            # needs their 2D dimensions or it doesn't work") — the picture is
+            # stretched onto a w x h quad in the game, so its aspect comes from
+            # the surface, never a default
+            w, h = art_size(e)
+            e["size"] = [w, h]
+            e["aspect"] = art_aspect(w, h)
         e.setdefault("aspect", {"prop": "1:1", "art": "4:3"}.get(e["kind"], "3:4"))
         e.setdefault("pose", None if e["kind"] in ("prop", "art") else "a-pose")
         e.setdefault("texture_prompt", "")
@@ -1390,6 +1398,67 @@ def description_for(roster, entry, budget=None):
     return prompt
 
 
+def art_size(entry):
+    """An art entry's picture size in metres [w, h]: its own `size`, else the
+    first surface it is laid on."""
+    sz = entry.get("size") or (entry.get("apply") or [{}])[0].get("size") or [1.0, 1.0]
+    return [round(float(sz[0]), 3), round(float(sz[1]), 3)]
+
+
+def art_aspect(w, h):
+    """The generator aspect nearest w:h (by ratio, in log space)."""
+    import math
+    want = math.log(max(w, 1e-3) / max(h, 1e-3))
+    def r(a):
+        x, y = a.split(":")
+        return math.log(float(x) / float(y))
+    return min(sorted(GOOGLE_ASPECTS), key=lambda a: abs(r(a) - want))
+
+
+def art_size_text(entry):
+    """The line that tells the image model the picture's real shape."""
+    w, h = art_size(entry)
+    shape = "landscape" if w > h * 1.05 else "portrait" if h > w * 1.05 else "square"
+    def m(v):
+        return f"{v * 100:.0f} cm" if v < 1.0 else f"{v:.2f} m"
+    a = art_aspect(w, h)
+    x, y = (float(v) for v in a.split(":"))
+    ratio, img = w / max(h, 1e-3), x / y
+    if entry.get("fit") != "tile" and (ratio > img * 1.15 or ratio < img / 1.15):
+        # no generator frame is this shape: the game crops the middle band
+        if ratio > img:
+            pct = round(100 * img / ratio)
+            band = f"a horizontal strip through the middle {pct}% of the image's height"
+        else:
+            pct = round(100 * ratio / img)
+            band = f"a vertical strip through the middle {pct}% of the image's width"
+        return (f"SIZE: the real object is {m(w)} wide by {m(h)} tall, narrower than this {a} image, "
+                f"so the game shows only {band}. Put the whole design inside that strip; let the "
+                f"background simply continue beyond it.")
+    if ratio > img * 1.5:
+        # wider than any generator frame: the game repeats it across the card
+        n = round((w / max(h, 1e-3)) / (x / y))
+        return (f"SIZE: the real object is a band {m(w)} wide by {m(h)} tall; this image is one "
+                f"{a} section of it, repeated {n} times side by side in the game. Paint it so it "
+                f"TILES SEAMLESSLY left to right (the left and right edges continue into each other), "
+                f"with no single feature that would read as repeated.")
+    return (f"SIZE: the real object is {m(w)} wide by {m(h)} tall — a {shape} picture, aspect "
+            f"{a}. Compose for exactly this shape and scale (detail readable at "
+            f"that size); the image's edges are the object's edges.")
+
+
+def art_suffix(roster, entry):
+    """The roster's closing line ("No text, no captions …"). A sign, a menu, a
+    calendar is lettering: an art entry's `lettering` says exactly what it
+    reads, and the no-text rule gives way to it."""
+    suffix = roster["style"].get("suffix", "").strip()
+    lettering = (entry.get("lettering") or "").strip() if entry["kind"] == "art" else ""
+    if lettering:
+        return (f"Lettering on it reads exactly: {lettering}. Spell it exactly so; no other words. "
+                "No watermark, no border.")
+    return suffix
+
+
 def build_prompt(roster, entry, view="front", provider=None):
     """Description (canon quotes, else fallback prompt) + style preamble +
     view instruction. Runway's promptText is capped at 1000 chars, so for
@@ -1398,15 +1467,19 @@ def build_prompt(roster, entry, view="front", provider=None):
     if provider == "runway":
         style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
         style = style.replace("{name}", entry["name"]).strip()
-        suffix = roster["style"].get("suffix", "").strip()
+        suffix = art_suffix(roster, entry)
         view_txt = _view_text(roster, view)
         fixed = len(style) + len(suffix) + len(view_txt) + 6
+        size_txt = art_size_text(entry) if entry["kind"] == "art" else ""
+        fixed += len(size_txt) + 1
         desc = description_for(roster, entry, budget=max(200, RUNWAY_PROMPT_BUDGET - fixed))
-        parts = [desc, style, suffix, view_txt]
+        parts = [desc, size_txt, style, suffix, view_txt]
         return "\n".join(p for p in parts if p)[:RUNWAY_PROMPT_BUDGET]
     style = roster["style"].get(style_key, "")
     parts = [description_for(roster, entry), style.replace("{name}", entry["name"]).strip()]
-    suffix = roster["style"].get("suffix", "").strip()
+    if entry["kind"] == "art":
+        parts.insert(1, art_size_text(entry))
+    suffix = art_suffix(roster, entry)
     if suffix:
         parts.append(suffix)
     parts.append(_view_text(roster, view))
@@ -1912,6 +1985,10 @@ def stage_image(roster, entry, opts, log=print):
     quality = opts.get("quality") or roster["defaults"].get("openai_quality", "medium")
     count = max(1, int(opts.get("count") or 1))
     aspect = opts.get("aspect") or entry["aspect"]
+    if entry["kind"] == "art" and aspect != entry["aspect"]:
+        log(f"  image · {entry['slug']} · aspect {aspect} ignored: the surface is "
+            f"{entry['size'][0]} x {entry['size'][1]} m → {entry['aspect']}")
+        aspect = entry["aspect"]
     if aspect not in GOOGLE_ASPECTS:
         raise ValueError(f"aspect {aspect!r} not in {sorted(GOOGLE_ASPECTS)}")
     views = list(VIEWS) if opts.get("multiview") and entry["kind"] != "art" else ["front"]

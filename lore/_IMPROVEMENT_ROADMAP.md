@@ -3834,6 +3834,40 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-13 · pass 101: EVERY PICTURE IN THE TOOL, AT ITS REAL SIZE (hero
+art draft 2).** The user: "Is it still only four pieces of 2D art? We need
+to add all those to the tool" and "the hero tool description for 2D items
+needs their 2D dimensions or it doesn't work." Three faults under it:
+(1) `hero_art_candidates` stored a surface's size LARGEST-FIRST, losing
+which side was up (a tall poster read as landscape), and (2) took one
+piece's box for a whole family (three posters on three walls = one
+"surface" the size of the biggest piece). It now clusters a family's
+pieces into SURFACES (touching, one plane), gives each its bounding box,
+its width x height as the viewer sees it (`wh()`: ±x spans y by z, ±y
+spans x by z, up spans x by y), its own facing toward the preset camera,
+and an exact hide list (a window's glass, not its frame). (3) The prompt
+never said how big the thing is: `meshy_pipeline.py` now adds a SIZE line
+to every art prompt ("16 cm wide by 11 cm tall — landscape, aspect 3:2"),
+derives the aspect from the surface (an override is refused), and for
+shapes no generator makes either TILES (backdrops, `fit: tile`: "paint a
+section that tiles seamlessly … repeated 16 times") or CROPS (a 5:1 shop
+sign: "the game shows only the middle 49 % strip"). An art entry's
+`lettering` replaces the roster's "No text" line (OPEN / CLOSED signs set).
+`HeroArt.gd` matches: repeat or crop by UV instead of stretching; hides only
+the stand-in under its own quad, exact names (a `Name_` entry still hides by
+prefix). The roster gains **541 art entries** (545 with the first four):
+186 signs, 147 pictures, 67 screens, 52 backdrops, 46 windows, 43 painted
+stand-ins — every surface of 7 cm+ in a locale the story plays, one entry
+per surface (33 families of 5+ surfaces share one picture, noted in each);
+81 carry the prose line that names them. Skipped: 158 in locales never
+played, 83 under 7 cm, 24 procedural skies (no surface — a sky mode is its
+own pass). The page shows each art entry's size and aspect. **Draft 3
+targets:** prompts are templates — read and rewrite the top-ranked (sorted
+most-played first) before generating; lettering for the other ~180 signs
+(read the builders' sign text); a sky mode for the 24 procedural skies;
+screens want an emissive material (lit, not lit-by-room); split the 33
+shared-picture families where the surfaces should differ.
+
 **2026-10-13 · pass 100: THE PORTRAITS RE-SEEN — THE BOX, THE RIG, THE
 EYES (portrait draft 2).** The user: "portraits need to be re-evaluated,
 lots don't line up right, lots look plain bad with lighting." A new rig,

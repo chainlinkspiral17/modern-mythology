@@ -600,7 +600,9 @@ function select(slug) {
   $('entry-empty').style.display = 'none'; $('entry').style.display = '';
   $('e-name').textContent = e.name;
   $('e-tag').textContent = [e.kind, ...(e.vol || []).map(v => 'vol' + v), e.tag].filter(Boolean).join(' · ');
-  $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}` + (e.kind === 'art' ? '  →  laid on: ' + (e.apply || []).map(r => `${r.locale} (${r.label || r.facing})`).join(', ') : '');
+  $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}` + (e.kind === 'art'
+    ? `  ·  ${(e.size || [0, 0]).map(v => (+v).toFixed(2)).join(' × ')} m (aspect ${e.aspect})  →  laid on: ` + (e.apply || []).map(r => `${r.locale} (${r.label || r.facing})`).join(', ')
+    : '');
   // ART (2026-10-12): the picture IS the deliverable — no Meshy, the make step installs it
   $('btn-mesh').textContent = e.kind === 'art' ? 'Install picture' : 'Make 3D';
   $('btn-run').textContent = e.kind === 'art' ? 'Generate image → Install picture' : 'Generate image → Make 3D';
