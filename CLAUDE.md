@@ -192,6 +192,23 @@ var lines: Dictionary = {...}
 var line: String = String(lines.get(key, ""))
 ```
 
+## Run the SCOPED suite before a commit (2026-10-13)
+
+The user: "audit taking over an hour for simple fixes." Before a commit run
+
+```bash
+bash godot/tools/audit/run_changed_audits.sh
+```
+
+It reads what changed against `origin/claude/3d-locales-clean` (plus the
+working tree). Tools, the Hero Studio roster, portrait / hero-art runtime,
+Drive scripts and docs get their own checks in seconds (py compile, JSON,
+gdparse + gdinfer_check, `bash -n`, .tscn syntax, the roster loader).
+Anything that can move the world — a builder, a locale .tscn, chapter
+JSON, Background3D / the director, audio, the audits — runs the full
+`run_all_audits.sh` exactly as before (`FULL=1` forces it). Widen the
+LIGHT list in the script only for files no gate reads.
+
 ## Lesson-capture cadence (durable rule)
 
 After every significant work session — meaning anything that

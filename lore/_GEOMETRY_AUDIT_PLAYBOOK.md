@@ -158,6 +158,17 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-13 · scope the suite to what changed
+
+- **An hour of gates for a prompt edit.** run_all_audits.sh records every
+  builder several times (the marker sightline gate ~40 min); a roster,
+  tool, portrait-shader or docs change cannot move a box. 
+  `run_changed_audits.sh` runs the full suite only when a changed file is
+  outside its LIGHT list, and seconds of file-level checks otherwise.
+  Keep the LIGHT list honest: a file goes on it only if no gate reads it
+  (hero_art_candidates.py lives in audit/ and so still triggers the full
+  run — correct, if conservative).
+
 ### 2026-10-12 · named closeups, round three (the bakery, Lena's)
 
 - **Read seats from the RECORDER, never from a builder's literals.** The
