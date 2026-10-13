@@ -3834,6 +3834,27 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-13 · pass 102: THE PROJECT'S FILES BACK ON MY DRIVE.** The user:
+"my google drive should be on my google drive, not the one model nation
+drive … flag one model nation drive not to use, as that is a shared project,
+that I have no permission over … make sure all the files from One Model
+Nation drive that are the most current are backed up on My Drive." Found
+through the Drive connector: two `ModernMythology` folders — My Drive's
+(made 2026-10-01 00:41) and one in shared drive `0AEnZu3oDWBFuUk9PVA` (no
+owner, made 19:40 the same day, after the own-client-id re-sign-in: rclone's
+"Configure this as a Shared Drive?" had been answered yes). Every SAVE since
+went to the shared drive. `godot/tools/drive_rescue.py`: keeps the shared
+folder as `gdrive_modelnation:` (only ever read), points `gdrive` back at My
+Drive, copies the shared folder to My Drive with `--update` (newest version
+of each file wins; server-side where Google allows), then `rclone check`s
+that nothing is left only on the shared drive; `--dry-run` changes nothing
+(inline connection strings). `meshy_pipeline.DRIVE_DENY_SHARED` names One
+Model Nation; `drive_write_block()` refuses any upload through a connection
+that points at ANY shared drive (the page's SAVE says so); drive_setup.sh
+tells the sign-in to pick the user's account and answer n to the Shared
+Drive question, and runs the rescue if the connection points at one.
+**Next:** the Deck runs the rescue once; confirm the check prints OK.
+
 **2026-10-13 · pass 101: EVERY PICTURE IN THE TOOL, AT ITS REAL SIZE (hero
 art draft 2).** The user: "Is it still only four pieces of 2D art? We need
 to add all those to the tool" and "the hero tool description for 2D items

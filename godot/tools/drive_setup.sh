@@ -102,6 +102,9 @@ connect() {   # name scope what-it-is
     echo
     echo "── sign in: $what ──"
     echo "A browser window will open. Sign in to Google and click Allow."
+    echo "Pick YOUR account (andylink@…), not One Model Nation's. If rclone asks"
+    echo "'Configure this as a Shared Drive (Team Drive)?' answer n — the project"
+    echo "lives on your My Drive (2026-10-13)."
     [ "$OWN" = 1 ] && echo "(your own app: if Google says it is unverified — Advanced → Go to … → Continue)"
     echo "Press Enter at any question rclone asks here."
     echo
@@ -131,6 +134,12 @@ connect gdrive "$MAIN_SCOPE" "the project folder (Hero Studio's SAVE)"
 # --client moves the read-only connection too, if there is one
 if has_flag --client && has_remote gdrive_ro && ! has_flag --read; then
   connect gdrive_ro drive.readonly "the read-only view of your whole Drive"
+fi
+# never a shared drive (2026-10-13): a "yes" to rclone's Shared Drive
+# question on 2026-10-01 sent every SAVE to One Model Nation's drive
+if "$RC" config dump | python3 -c "import json,sys; sys.exit(0 if json.load(sys.stdin).get('gdrive',{}).get('team_drive') else 1)"; then
+  echo "gdrive points at a shared drive — moving it to your My Drive and copying its files there"
+  PATH="$BIN:$PATH" python3 "$HERE/drive_rescue.py"
 fi
 "$RC" mkdir gdrive:ModernMythology
 if "$RC" lsd gdrive: | grep -q ModernMythology; then

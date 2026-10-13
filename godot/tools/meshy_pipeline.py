@@ -587,6 +587,13 @@ def git_save_push(message=None):
 # checkout can `drive-pull` the models it lacks. `copy`, never `sync`:
 # nothing on the Drive is ever deleted by the tool.
 DRIVE_REMOTE = os.environ.get("MM_DRIVE_REMOTE", "gdrive:ModernMythology")
+# (2026-10-13, the user: "my google drive should be on my google drive, not
+# the one model nation drive … flag one model nation drive not to use, as
+# that is a shared project, that I have no permission over.") The project's
+# files go to the owner's My Drive and NEVER to a shared drive: a push
+# through a connection that points at one is refused (drive_write_block).
+# godot/tools/drive_rescue.py moved the files that had gone there.
+DRIVE_DENY_SHARED = {"0AEnZu3oDWBFuUk9PVA": "One Model Nation"}
 DRIVE_MANIFEST = TOOLS / "drive_manifest.json"
 DRIVE_DIRS = [
     "godot/assets/3d/characters/heroes",
@@ -617,6 +624,33 @@ def _rclone():
 def _drive_remote_name():
     r = DRIVE_REMOTE
     return r.split(":", 1)[0] + ":" if ":" in r and not r.startswith("/") else None
+
+
+def _drive_remote_conf():
+    """The rclone settings of the project's Drive connection ({} if unknown)."""
+    rc = _rclone()
+    name = _drive_remote_name()
+    if not rc or not name:
+        return {}
+    import subprocess
+    try:
+        out = subprocess.run([rc, "config", "dump"], capture_output=True, text=True, timeout=20).stdout
+        return json.loads(out or "{}").get(name[:-1], {})
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def drive_write_block():
+    """Why the project must not write through its Drive connection now, or
+    "" — a connection that points at a shared drive (One Model Nation above
+    all) is refused: the files belong on the owner's My Drive."""
+    td = (_drive_remote_conf().get("team_drive") or "").strip()
+    if not td:
+        return ""
+    who = DRIVE_DENY_SHARED.get(td, "a shared drive")
+    return (f"STOPPED: the Drive connection points at {who} ({td}), not your My Drive. "
+            f"Nothing was uploaded. Run: python3 godot/tools/drive_rescue.py "
+            f"(moves the connection back to My Drive and copies the files that went there).")
 
 
 def drive_configured():
@@ -684,7 +718,7 @@ def drive_status():
     except Exception:  # noqa: BLE001
         pend = []
     return {"configured": drive_configured(), "remote": DRIVE_REMOTE, "pending": len(pend),
-            "pending_files": pend[:12], "rclone": bool(_rclone())}
+            "pending_files": pend[:12], "rclone": bool(_rclone()), "blocked": drive_write_block()}
 
 
 def _record_on_drive(paths):
@@ -715,6 +749,9 @@ def drive_push():
     rc = _rclone()
     if not rc:
         return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
+    block = drive_write_block()
+    if block:
+        return {"ok": False, "steps": [block]}
     steps = []
     with _drive_lock:
         pend = drive_pending()
