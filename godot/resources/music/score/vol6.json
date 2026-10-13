@@ -1,0 +1,321 @@
+{
+ "_doc": "Score bible · vol 6 · PLANNED COMMUNITY (Harmony Creek Estates, Gulf Coast, one summer). See README.md for the schema. Tonal plan: F# is the substrate (the 47 Hz substation hum), C# is NexCorp (the 68 Hz corporate sine), A / B / E / D are the people. Part one (ch0–ch9) is one late-May week; part two (ch10–ch23) is mid-August. The seam between them is the milestone cue.",
+ "volumes": {
+  "6": {
+   "feel": "Clipped suburban paranoia, air-conditioned year-round by corporate decree: zines, Maxell mixtapes, fluorescent strip-mall light, cicadas on the far side of double-pane glass. Sincere, a little funny, a little unsettling. Under every cue sits a fluorescent hum the book says is 47 Hz, so the volume always leans toward F#, while NexCorp's rooms sit a fifth up in C#.",
+   "key": ["F#", "C#", "A", "B", "E"],
+   "mode": ["dorian", "minor", "mixolydian"],
+   "bpm": [72, 104],
+   "style": ["lofi", "folk", "minimal", "ambient"],
+   "density": [0.3, 0.5],
+   "voices": {
+    "bass": ["bass_sub", "bass_fender", "bass_upright"],
+    "chords": ["keys_wurli", "keys_tape_ep", "pluck_nylon"],
+    "lead": ["pluck_bell", "keys_celesta", "pluck_dobro", "keys_vibes"],
+    "pad": ["pad_fluorescent", "pad_tape_wobble", "pad_dusk"]
+   },
+   "textures": ["amb_fluor_hum", "amb_tape_hiss", "amb_cicadas"],
+   "fx": ["fx_reverse_swell", "fx_tape_stop"],
+   "hit": "fx_bell_hit"
+  }
+ },
+ "chapters": {
+  "vol6_ch0": { "feel": "Prelude. Sixty-eight degrees by decree: clean lydian glass and the AC breathing, with the hum barely there. The book opens on the community's own idea of itself.", "mode": "lydian", "density": 0.25, "textures": ["amb_room_tone", "amb_cicadas"] },
+  "vol6_ch1": { "feel": "Saturday night, the intersection at 11:47, Diego gone. The first minor key: fluorescents, the door chime, Sam's figure. Unease without a name yet.", "mode": "minor", "density": 0.3, "textures": ["amb_fluor_hum", "amb_room_tone"] },
+  "vol6_ch2": { "feel": "Monday dressed up as itself. Sunny on top (vibes, Wurlitzer, lawns), and the same groove after dark with a white sedan at the curb. The surface holds, but only just.", "mode": "major", "density": 0.35, "textures": ["amb_cicadas", "amb_city"] },
+  "vol6_ch3": { "feel": "Tuesday turns inward to lists, notebooks, chat windows and Diego's mixtape on a borrowed deck. Solo instruments and tape hiss. The darkest quiet chapter of part one.", "mode": "minor", "density": 0.3, "textures": ["amb_tape_hiss", "amb_clock"] },
+  "vol6_ch4": { "feel": "The Wednesday storm, and the volume's loudest weather: thunder, rain, rhythm turned into machinery, a Speak & Spell glowing red. Energy and darkness both peak here.", "mode": "phrygian", "density": 0.7, "textures": ["amb_thunder", "amb_rain"] },
+  "vol6_ch5": { "feel": "Thursday catharsis. The band plays loud enough to forget, with distortion through the garage-door vent and a radio carrier under the static. Release, not relief.", "mode": "minor", "density": 0.7, "textures": ["amb_radio"] },
+  "vol6_ch6": { "feel": "Friday on the service roads. The search finally moves: a night-drive pulse down I-10, gated pads, and Diego's figure on a cold digital lead. Forward motion and surveillance in equal parts.", "mode": "minor", "density": 0.5, "textures": ["amb_city"] },
+  "vol6_ch7": { "feel": "The day after. Chamber strings and a clarinet in waiting rooms and kitchens; exhausted relief, with a little comedy let back in.", "mode": "major", "density": 0.35, "textures": ["amb_fluor_hum", "amb_clock"] },
+  "vol6_ch8": { "feel": "Pre-dawn blue in late May. A soft pulse brightening in lydian, like a monitor beep becoming morning. The first open sky in the book.", "mode": "lydian", "density": 0.3, "textures": ["amb_crickets"] },
+  "vol6_ch9": { "feel": "The long sleep closes part one. A music-box lullaby wound too slow, and the caged fluorescent room following Diego under. The hum gets into the dream.", "mode": "minor", "density": 0.22, "textures": ["amb_fluor_hum", "amb_room_tone"] },
+  "vol6_ch10": { "feel": "Part two opens in mid-August, back at the Kwik Stop night shift. It is the same noir bed as ch1, but it is home now, and the fear has settled into habit.", "mode": "minor", "density": 0.3, "textures": ["amb_fluor_hum", "amb_room_tone"] },
+  "vol6_ch11": { "feel": "Bianca's kitchen at four-thirty: coffee in the dark, brushes and upright bass so as not to wake anyone, then the doorbell. Warm and low, with a small held question.", "mode": "dorian", "density": 0.3, "textures": ["amb_clock", "amb_room_tone"] },
+  "vol6_ch12": { "feel": "Cosmic Comics in August: the Casio demo loop, the photocopier, Rick's figure in chip voices. The community's warmest room, and it is busier now.", "mode": "mixolydian", "density": 0.45, "textures": ["amb_tape_hiss", "amb_fluor_hum"] },
+  "vol6_ch13": { "feel": "Two-a-days in the heat: cleats, cicadas, three whistle bursts, trap hats from a truck. The most physical chapter.", "mode": "phrygian", "density": 0.6, "textures": ["amb_cicadas"] },
+  "vol6_ch14": { "feel": "Live Oak, then Substation Nine. The volume's hum is named out loud and becomes the whole cue: drone, bowed metal, F#.", "mode": "phrygian", "density": 0.2, "textures": ["amb_fluor_hum", "drone_dark"] },
+  "vol6_ch15": { "feel": "Kwik Stop again: the back cooler's endless reflection. The night-shift bed returns thinner and closer.", "mode": "minor", "density": 0.28, "textures": ["amb_fluor_hum", "amb_room_tone"] },
+  "vol6_ch16": { "feel": "El Rancho's late plate into dawn. A norteño chord held a bar too long and the dishwasher's last cycle. Tired and kind.", "mode": "mixolydian", "density": 0.35, "textures": ["amb_room_tone"] },
+  "vol6_ch17": { "feel": "Porch lights in mid-August: heat-haze dub, slow echoes, cicadas. Gentle on the surface, with everybody watching everybody from the cul-de-sac windows.", "mode": "mixolydian", "density": 0.3, "textures": ["amb_cicadas"] },
+  "vol6_ch18": { "feel": "The stockroom and the letter. The Kwik Stop bed at its most private: fewer notes, more hum.", "mode": "minor", "density": 0.25, "textures": ["amb_fluor_hum", "amb_room_tone"] },
+  "vol6_ch19": { "feel": "The depth chart. Motorik in a bright mode, with steady feet and a steady road. The first cue that isn't afraid of what's ahead.", "mode": "mixolydian", "density": 0.5, "textures": ["amb_cicadas"] },
+  "vol6_ch20": { "feel": "The fourth chord. The band's song finds its bridge: a sus chord hanging in the hum key, then moving. Post-rock lift.", "mode": "mixolydian", "density": 0.55, "textures": ["amb_tape_hiss", "amb_fluor_hum"] },
+  "vol6_ch21": { "feel": "Cosmic Comics and Linda's porch. Folk warmth, ice in the glass, and Maya's figure played gently. The community at its kindest.", "mode": "major", "density": 0.35, "textures": ["amb_crickets"] },
+  "vol6_ch22": { "feel": "The long Saturday from four a.m. coffee to the Foxhole show. A bar-band shuffle that keeps getting louder as the day goes; the volume's last crescendo.", "mode": "major", "density": [0.45, 0.65], "textures": ["amb_city"] },
+  "vol6_ch23": { "feel": "Sunday, lights out. A hymn-slow chorale with Diego's figure at rest. The hum is almost inaudible for once, and the volume closes on a family at a table.", "mode": "major", "density": 0.35, "textures": ["amb_crickets", "amb_room_tone"] }
+ },
+ "characters": {
+  "sam": {
+   "feel": "Sam Miller, eighteen, on the Kwik Stop register. She is steady rather than sad. Her figure is the entry-bell chime, a falling third that lands half a beat late each time and then drops to the low fifth.",
+   "instrument": "pluck_bell",
+   "motifSpec": { "rhythm": [2, 6, 18, 22, 28], "degrees": [2, 0, 2, 0, -3] },
+   "mode": "dorian"
+  },
+  "diego": {
+   "feel": "Diego Ramos: a drummer, nineteen, and missing. His figure is three short whistle bursts, a snap up to the fifth, then a held breath that slips down a step.",
+   "instrument": "lead_whistle",
+   "motifSpec": { "rhythm": [0, 2, 4, 8, 26], "degrees": [0, 0, 0, 4, 3] },
+   "mode": "dorian"
+  },
+  "maya": {
+   "feel": "Maya Daigle, sixteen: zines, F.T.'s letters, the volume's moral center. Her figure climbs a fifth and an octave, falls to the major seventh and leans on the raised fourth before settling on the fifth. Curious and unresolved.",
+   "instrument": "keys_celesta",
+   "motifSpec": { "rhythm": [0, 3, 6, 10, 16, 22], "degrees": [0, 4, 7, 6, 3, 4] },
+   "mode": "lydian"
+  },
+  "rick": {
+   "feel": "Rick of Cosmic Comics, sixty-two, still bags and boards everything. His figure is a 1950s sci-fi matinee line: a leap of a sixth, then a sigh down to the leading tone.",
+   "instrument": "lead_theremin",
+   "motifSpec": { "rhythm": [0, 4, 10, 16, 24], "degrees": [0, 5, 4, 2, -1] },
+   "mode": "harmonic"
+  },
+  "skip": {
+   "feel": "Skip Donnelly, NexCorp Gas & Go shift supervisor and reluctant witness. His figure is two pump-bell dings, then a resigned walk down the scale, like a man deciding not to say what he saw.",
+   "instrument": "pluck_dobro",
+   "motifSpec": { "rhythm": [0, 4, 10, 12, 14, 24], "degrees": [4, 4, 2, 1, 0, -3] },
+   "mode": "mixolydian"
+  },
+  "tanya": {
+   "feel": "Tanya Horne, NexCorp regional director, with a smile practiced for photographs since middle school. Her figure climbs the triad to the octave and slips a step off it.",
+   "instrument": "lead_brass",
+   "motifSpec": { "rhythm": [0, 2, 4, 8, 16], "degrees": [0, 2, 4, 7, 6] },
+   "mode": "minor"
+  },
+  "carl": {
+   "feel": "Carl Reno, fifty-six, who hosts the HOA welcome breakfast, folksy and unhurried. His figure is a howdy-neighbor phrase that never lands home: it ends on the second degree.",
+   "instrument": "winds_harmonica",
+   "motifSpec": { "rhythm": [0, 4, 6, 8, 20], "degrees": [4, 4, 5, 4, 1] },
+   "mode": "major"
+  },
+  "lena": {
+   "feel": "Lena Vargas. Her figure is one Spanish-guitar string left open on the tonic, with condensation dripping from above it. The theme carries north to vol 7.",
+   "instrument": "pluck_nylon",
+   "motifSpec": { "rhythm": [0, 7, 11, 16, 23, 27], "degrees": [0, 7, 5, 0, 6, 4] },
+   "mode": "phrygian"
+  },
+  "alma": {
+   "feel": "Alma: Pleasant Beige. Her figure is a saccharine, corporate-jingle-adjacent two-note motif, sol–mi, repeated once more than it should be.",
+   "instrument": "bell_glock",
+   "motifSpec": { "rhythm": [0, 4, 16, 20], "degrees": [4, 2, 4, 2] },
+   "mode": "major"
+  }
+ },
+ "tracks": {
+  "vol6_sam_theme": {
+   "feel": "Eleven forty-seven at the register. A steady low sine runs under everything, and the entry-bell chime arrives half a beat late every time. Minimalist pulse, not sad: a girl holding a shift together.",
+   "style": "minimal", "form": "song", "bpm": 112, "key": "F#", "mode": "dorian", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "keys_tape_ep", "pad": "pad_fluorescent" },
+   "textures": ["amb_fluor_hum"], "fx": "fx_reverse_swell", "hit": "fx_bell_hit", "motif": "sam", "stems": false,
+   "shape": [["intro", 4, ["bass", "texture"]], ["A", 8, ["bass", "lead", "texture"]], ["A2", 8, ["drums", "bass", "chords", "lead", "texture"]], ["B", 8, ["drums", "bass", "chords", "pad", "lead"]], ["brk", 4, ["bass", "lead", "fx"]], ["B2", 8, ["drums", "bass", "chords", "pad", "lead", "texture"]], ["outro", 4, ["bass", "lead", "texture"]]]
+  },
+  "vol6_diego_theme": {
+   "feel": "Sneaker squeak on gym lacquer and the held breath at the line of scrimmage. A drummer's theme with the kit up front: three short whistle bursts, then nothing until the snap. Young, kinetic, and already a little missing.",
+   "style": "boom_bap", "form": "song", "bpm": 90, "key": "B", "mode": "dorian", "density": 0.55,
+   "voices": { "bass": "bass_fender", "chords": "keys_wurli", "pad": "strings_tremolo" },
+   "textures": ["amb_cicadas"], "fx": "fx_riser", "hit": "fx_wood_knock", "motif": "diego", "stems": false,
+   "shape": [["intro", 4, ["drums", "texture"]], ["A", 8, ["drums", "bass", "chords", "lead"]], ["brk", 2, ["pad", "fx"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad"]], ["A2", 8, ["drums", "bass", "chords", "lead"]], ["outro", 4, ["drums", "lead", "texture"]]]
+  },
+  "vol6_maya_theme": {
+   "feel": "Cassette hiss and a half-strummed guitar heard through her bedroom wall. A celesta figure climbs past where it should stop and leans on the raised fourth. Sincere, curious, sixteen.",
+   "style": "lofi", "form": "song", "bpm": 76, "key": "A", "mode": "lydian", "density": 0.35,
+   "voices": { "bass": "bass_fender", "chords": "pluck_nylon", "pad": "pad_tape_wobble" },
+   "textures": ["amb_tape_hiss"], "fx": "fx_tape_stop", "hit": "none", "motif": "maya", "stems": false,
+   "shape": [["intro", 4, ["chords", "texture"]], ["A", 8, ["drums", "bass", "chords", "lead", "texture"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad", "texture"]], ["A2", 8, ["drums", "bass", "chords", "lead"]], ["brk", 2, ["chords", "fx"]], ["outro", 4, ["chords", "lead", "texture"]]]
+  },
+  "vol6_rick_theme": {
+   "feel": "Back-issue reverence. Brushes like mylar bags being flipped, the 60 Hz hum of a vintage-store CRT, and a theremin line out of a 1957 matinee, played by a man who still bags and boards everything. Warm, a little spooky, devout.",
+   "style": "jazz", "form": "song", "bpm": 72, "key": "E", "mode": "harmonic", "density": 0.4,
+   "voices": { "bass": "bass_upright", "chords": "keys_vibes", "pad": "pad_velvet" },
+   "textures": ["amb_fluor_hum", "amb_vinyl"], "fx": "fx_reverse_swell", "hit": "fx_flicker", "motif": "rick", "stems": false,
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["drums", "bass", "chords", "lead"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad"]], ["A2", 8, ["drums", "bass", "chords", "lead", "texture"]], ["outro", 4, ["bass", "lead", "texture"]]]
+  },
+  "vol6_skip_theme": {
+   "feel": "Pump four at shift change: the pump-bell ding, a ballast clicking, canopy fans pushing hot air around. A dobro walks down the scale like a man who saw something and is deciding not to say it. A Gulf-coast shuffle slowed by the heat.",
+   "style": "shuffle", "form": "song", "bpm": 96, "key": "E", "mode": "mixolydian", "density": 0.4,
+   "voices": { "bass": "bass_fender", "chords": "keys_wurli", "pad": "pad_fluorescent" },
+   "textures": ["amb_fluor_hum", "amb_room_tone"], "fx": "fx_whoosh", "hit": "fx_bell_hit", "motif": "skip", "stems": false,
+   "shape": [["intro", 4, ["texture", "fx"]], ["A", 8, ["drums", "bass", "chords", "lead"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad"]], ["brk", 4, ["bass", "lead", "texture"]], ["A2", 8, ["drums", "bass", "chords", "lead", "texture"]], ["outro", 4, ["lead", "pad", "texture"]]]
+  },
+  "vol6_tanya_theme": {
+   "feel": "The HCE take. Talk radio bleeds under a wood-panel dash, a long-press lighter clicks, and a smooth trip-hop crawl sets in. Polished synth brass climbs to the octave like a practiced smile and slips a step off it. Charming, in control, wrong.",
+   "style": "trip_hop", "form": "song", "bpm": 88, "key": "C#", "mode": "minor", "density": 0.45,
+   "voices": { "bass": "bass_sub", "chords": "keys_mk1", "pad": "strings_noir" },
+   "textures": ["amb_radio"], "fx": "fx_downer", "hit": "fx_wood_knock", "motif": "tanya", "stems": false,
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["drums", "bass", "chords", "texture"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad"]], ["A2", 8, ["drums", "bass", "chords", "lead"]], ["outro", 4, ["bass", "pad", "texture", "fx"]]]
+  },
+  "vol6_carl_theme": {
+   "feel": "Lunch pail. The tin clasp pops, the thermos pours, and a harmonica takes the unhurried breath of a man who has done this thirty thousand times. Front-porch folk with Revival Tent organ, as friendly as a welcome breakfast, and the phrase never quite lands home.",
+   "style": "folk", "form": "song", "bpm": 94, "key": "D", "mode": "major", "density": 0.4,
+   "voices": { "bass": "bass_upright", "chords": "keys_organ", "pad": "pad_warm" },
+   "textures": ["amb_clock"], "fx": "none", "hit": "fx_glass_ping", "motif": "carl", "stems": false,
+   "shape": [["intro", 4, ["chords", "texture"]], ["A", 8, ["drums", "bass", "chords", "lead"]], ["A2", 8, ["drums", "bass", "chords", "lead", "pad"]], ["B", 8, ["drums", "bass", "chords", "pad"]], ["outro", 4, ["chords", "lead", "texture"]]]
+  },
+  "vol6_lena_theme": {
+   "feel": "Apartment window: one Spanish-guitar string, the low E, left ringing open, and condensation running down the glass a drop at a time. Phrygian, patient, cold at the edges. It travels north with her into vol 7.",
+   "style": "ambient", "form": "song", "bpm": 66, "key": "E", "mode": "phrygian", "density": 0.25,
+   "voices": { "bass": "bass_sub", "chords": "keys_felt", "pad": "pad_frost" },
+   "textures": ["amb_rain"], "fx": "fx_reverse_swell", "hit": "fx_glass_ping", "motif": "lena", "stems": false,
+   "shape": [["intro", 4, ["lead", "texture"]], ["A", 8, ["bass", "lead", "pad", "texture"]], ["B", 8, ["bass", "chords", "lead", "pad"]], ["A2", 8, ["bass", "lead", "pad", "texture"]], ["outro", 4, ["lead", "texture"]]]
+  },
+  "vol6_alma_theme": {
+   "feel": "Pleasant Beige. A saccharine, corporate-jingle-adjacent two-note figure on glockenspiel over a polite aerobics-video four-on-the-floor in the corporate key. Everything is fine. Everything is beige. The jingle repeats one more time than it should.",
+   "style": "four_floor", "form": "song", "bpm": 118, "key": "C#", "mode": "major", "density": 0.45,
+   "voices": { "bass": "bass_fm", "chords": "keys_ep", "pad": "strings_silver" },
+   "textures": ["amb_room_tone"], "fx": "fx_riser", "hit": "fx_glass_ping", "motif": "alma", "stems": false,
+   "shape": [["intro", 4, ["chords", "lead"]], ["A", 8, ["drums", "bass", "chords", "lead"]], ["B", 8, ["drums", "bass", "chords", "lead", "pad"]], ["A2", 8, ["drums", "bass", "chords", "lead"]], ["brk", 2, ["lead"]], ["outro", 4, ["chords", "lead", "texture"]]]
+  },
+  "vol6_kwik_stop_interior": {
+   "feel": "The store at 11:47 PM: sodium-buzz fluorescents, the beer cooler's compressor cycling, the taquito roller's squeak, the door chime now and then. A slow noir bed in the hum key with Sam's chime figure drifting through. Everything in vol 6 passes through this room.",
+   "style": "noir", "form": "bed", "bpm": 70, "key": "F#", "mode": "minor", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "keys_tape_ep", "lead": "pluck_bell", "pad": "pad_fluorescent" },
+   "textures": ["amb_fluor_hum", "amb_room_tone"], "fx": "fx_reverse_swell", "hit": "fx_bell_hit", "motif": "sam", "stems": true
+  },
+  "vol6_cosmic_comics_interior": {
+   "feel": "Saturday pull at Cosmic Comics: bagged-and-boarded shuffle, the photocopier warming up, and a hand-me-down Casio in the back room cycling its demo loop, with Rick's theremin figure rendered in cheap chip voices. The volume's warmest room.",
+   "style": "chiptune", "form": "loop", "bpm": 100, "key": "A", "mode": "mixolydian", "density": 0.45,
+   "voices": { "bass": "bass_pluck", "chords": "keys_combo_organ", "lead": "arp_chip", "pad": "pad_tape_wobble" },
+   "textures": ["amb_tape_hiss", "amb_fluor_hum"], "fx": "fx_tape_stop", "hit": "none", "motif": "rick", "stems": true
+  },
+  "vol6_gas_and_go_interior": {
+   "feel": "NexCorp Gas & Go, locker four: canopy fans, the ice-maker dropping a tray, the manager-office printer grinding out the daily report. A dub bed of machines echoing machines in the corporate key, with Skip's walk-down figure on marimba, filed in triplicate.",
+   "style": "dub", "form": "loop", "bpm": 86, "key": "C#", "mode": "dorian", "density": 0.35,
+   "voices": { "bass": "bass_sub", "chords": "keys_ep", "lead": "pluck_marimba", "pad": "pad_fluorescent" },
+   "textures": ["amb_room_tone", "amb_fluor_hum"], "fx": "fx_noise_sweep", "hit": "fx_bell_hit", "motif": "skip", "stems": false
+  },
+  "vol6_el_rancho_interior": {
+   "feel": "El Rancho, late plate: a norteño guitar holding one chord a bar too long, the dishwasher on its last cycle of the night, and a reed voice standing in for the accordion. Bayou swing, kin to the Tex-Mex across the Sabine. Tired and kind.",
+   "style": "bayou", "form": "loop", "bpm": 94, "key": "D", "mode": "mixolydian", "density": 0.35,
+   "voices": { "bass": "bass_upright", "chords": "pluck_nylon", "lead": "winds_clarinet", "pad": "pad_dusk" },
+   "textures": ["amb_room_tone", "drone_engine"], "fx": "none", "hit": "fx_glass_ping", "motif": null, "stems": false
+  },
+  "vol6_live_oak_field": {
+   "feel": "Two-a-days at 6:15 AM: cleats on Bermuda grass, cicadas already loud, the coach's whistle giving three short bursts from across the field. Trap hats rattle from somebody's truck speakers and the heat is already coming. The most physical cue in the book.",
+   "style": "trap", "form": "loop", "bpm": 136, "key": "B", "mode": "phrygian", "density": 0.6,
+   "voices": { "bass": "bass_808", "chords": "keys_tape_ep", "lead": "lead_whistle", "pad": "pad_hollow" },
+   "textures": ["amb_cicadas"], "fx": "fx_riser", "hit": "fx_sub_drop", "motif": "diego", "stems": false
+  },
+  "vol6_substation_nine": {
+   "feel": "The hum itself: chain-link buzzing, a transformer drone the book insists is 47 Hz (F#, the volume's tonic), bowed metal, and one grackle that won't leave. It is barely music, the field listening back. Every other cue's fluorescent hum is this, only quieter.",
+   "style": "dark_drone", "form": "bed", "bpm": 62, "key": "F#", "mode": "phrygian", "density": 0.18,
+   "voices": { "bass": "bass_sub", "chords": "pad_bowed_metal", "lead": "lead_ring", "pad": "pad_sub_drone" },
+   "textures": ["amb_fluor_hum", "drone_dark"], "fx": "fx_reverse_swell", "hit": "fx_flicker", "motif": null, "stems": false
+  },
+  "vol6_ambient": {
+   "feel": "Harmony Creek Estates, sixty-eight degrees year-round by corporate decree: lydian glass pads, felt piano, the AC breathing, and cicadas on the far side of double-pane windows. Pleasant to the point of uncanny, and Alma's two-note jingle is hidden somewhere in the celesta.",
+   "style": "ambient", "form": "bed", "bpm": 64, "key": "C#", "mode": "lydian", "density": 0.25,
+   "voices": { "bass": "bass_sub", "chords": "keys_felt", "lead": "keys_celesta", "pad": "pad_glass" },
+   "textures": ["amb_room_tone", "amb_cicadas"], "fx": "fx_reverse_swell", "hit": "none", "motif": "alma", "stems": true
+  },
+  "vol6_corporate_hum": {
+   "feel": "Sixty-Eight, Year-Round: the HVAC and a single sine pad near 68 Hz (C#, the corporate key). Clean. Inhuman. No melody, no pulse: the planned community at rest.",
+   "style": "ambient", "form": "bed", "bpm": 60, "key": "C#", "mode": "lydian", "density": 0.08,
+   "voices": { "bass": "bass_sub", "chords": "pad_frost", "pad": "pad_glass" },
+   "textures": ["amb_room_tone", "amb_life_support"], "fx": "none", "hit": "none", "motif": null, "stems": false,
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 16, ["bass", "pad", "texture"]], ["A2", 8, ["bass", "chords", "pad", "texture"]], ["outro", 4, ["pad", "texture"]]]
+  },
+  "vol6_milestone_phc": {
+   "feel": "The Community (acknowledged), the seam between Summer's Start and End of Summer Begins. A post-rock swell in the hum's key: fluorescent pads give way to choir and strings, distant horns carry Maya's raised-fourth figure, and the full kit arrives only once the thing has been named.",
+   "style": "post_rock", "form": "song", "bpm": 116, "key": "F#", "mode": "dorian", "density": 0.6,
+   "voices": { "bass": "bass_fender", "chords": "strings_ensemble", "lead": "winds_horns", "pad": "choir_vox" },
+   "textures": ["amb_fluor_hum", "amb_cicadas"], "fx": "fx_reverse_swell", "hit": "fx_impact", "motif": "maya", "stems": true,
+   "shape": [["intro", 4, ["pad", "texture"]], ["A", 8, ["bass", "chords", "pad", "texture"]], ["B", 8, ["bass", "chords", "lead", "pad"]], ["brk", 2, ["fx", "texture"]], ["C", 8, ["drums", "bass", "chords", "lead", "pad"]], ["B2", 8, ["drums", "bass", "chords", "lead", "pad", "fx"]], ["outro", 4, ["pad", "lead", "texture"]]]
+  },
+  "vol6_planning_office": {
+   "feel": "The Planning Office: recirculated office air and one fluorescent tube buzzing over empty cubicles, with no human movement. A Carpenter-style synth pulse turned almost all the way down, and Tanya's figure spelled out slowly on a ring-modulated lead.",
+   "style": "synth_horror", "form": "loop", "bpm": 96, "key": "C#", "mode": "minor", "density": 0.2,
+   "voices": { "bass": "bass_pluck", "chords": "pad_frost", "lead": "lead_ring", "pad": "pad_fluorescent" },
+   "textures": ["amb_room_tone", "amb_fluor_hum"], "fx": "fx_downer", "hit": "fx_flicker", "motif": "tanya", "stems": false
+  },
+  "vol6_slushie_futures": {
+   "feel": "Monday dressed up as itself: lawns permitted to thirst by HOA decree, the Pit Stop's lunch-shuffle grill, vibes and Wurlitzer in the sun. After dark a white sedan keeps its unassigned vigil at the curb, over the same groove with the light gone off it.",
+   "style": "lofi", "form": "loop", "bpm": 84, "key": "A", "mode": "major", "density": 0.35,
+   "voices": { "bass": "bass_fender", "chords": "keys_wurli", "lead": "keys_vibes", "pad": "pad_dusk" },
+   "textures": ["amb_cicadas", "amb_city"], "fx": "fx_whoosh", "hit": "fx_bell_hit", "motif": null, "stems": false
+  },
+  "vol6_tuesday_notebooks": {
+   "feel": "Tuesday: Sam in the kitchen before her father for the first time in six months, the white sedan in the lot, lists and chat windows glowing after dark. Solo felt piano in the hum key with Sam's chime figure turned inward, and the hiss of a borrowed Maxell under it.",
+   "style": "piano", "form": "bed", "bpm": 70, "key": "F#", "mode": "minor", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "keys_felt", "lead": "pluck_bell", "pad": "pad_tape_wobble" },
+   "textures": ["amb_tape_hiss", "amb_clock"], "fx": "fx_tape_stop", "hit": "none", "motif": "sam", "stems": true
+  },
+  "vol6_gulf_storm": {
+   "feel": "The Wednesday storm, in off the Gulf since midnight: thunder rolling from six-oh-four, parking lots turning into shallow lakes, a Speak & Spell glowing darkroom red on Rick's shelf. The volume's loudest, darkest cue: industrial weather, a square-wave voice, rain on every surface.",
+   "style": "industrial", "form": "song", "bpm": 132, "key": "F#", "mode": "phrygian", "density": 0.7,
+   "voices": { "bass": "bass_ladder", "chords": "strings_tremolo", "lead": "lead_square", "pad": "pad_sub_drone" },
+   "textures": ["amb_thunder", "amb_rain"], "fx": "fx_noise_sweep", "hit": "fx_impact", "motif": null, "stems": true
+  },
+  "vol6_garage_band": {
+   "feel": "Thursday catharsis: three distorted Telecaster chords leaking through the garage-door vent, Ben's truck parked dark at the curb, and 1776 kHz coming in under the static. Surf-garage twang pushed into fuzz, with Suburban Blight practicing loud enough to forget.",
+   "style": "surf", "form": "song", "bpm": 124, "key": "E", "mode": "minor", "density": 0.7,
+   "voices": { "bass": "bass_fender", "chords": "keys_combo_organ", "lead": "lead_fuzz", "pad": "pad_tape_wobble" },
+   "textures": ["amb_radio"], "fx": "fx_noise_sweep", "hit": "fx_impact", "motif": null, "stems": false
+  },
+  "vol6_service_roads": {
+   "feel": "Friday along I-10: an unmarked van at pump six, a white sedan on the gravel shoulder three miles east of the FM-3411 exit, a frame house thirty-two miles southeast. A night-drive synth pulse and gated pads, with Diego's three-burst figure on a payphone FM lead. The search is finally moving.",
+   "style": "synthwave", "form": "loop", "bpm": 100, "key": "C#", "mode": "minor", "density": 0.5,
+   "voices": { "bass": "bass_pluck", "chords": "keys_tape_ep", "lead": "lead_fm", "pad": "pad_gate" },
+   "textures": ["amb_city"], "fx": "fx_whoosh", "hit": "fx_sub_drop", "motif": "diego", "stems": true
+  },
+  "vol6_waiting_rooms": {
+   "feel": "The day after: vending-machine coffee going cold in the hospital waiting room, pot roast in the oven since two-thirty, Daisy hiding from a butterfly behind a lawn chair. Chamber strings and a clarinet give exhausted relief, with a little comedy let back in.",
+   "style": "chamber", "form": "song", "bpm": 72, "key": "A", "mode": "major", "density": 0.35,
+   "voices": { "bass": "bass_upright", "chords": "strings_ensemble", "lead": "winds_clarinet", "pad": "pad_warm" },
+   "textures": ["amb_fluor_hum", "amb_clock"], "fx": "fx_reverse_swell", "hit": "none", "motif": null, "stems": false
+  },
+  "vol6_pre_dawn_blue": {
+   "feel": "The eight minutes of pre-dawn blue Texas does in late May: a truck on the highway at first light, Courtroom 4 waiting on the judge's lunch, Room 318 with the IV in the Morse hand. A soft minimalist pulse on harp brightens in lydian, like a monitor's steady beep becoming morning.",
+   "style": "minimal", "form": "loop", "bpm": 114, "key": "D", "mode": "lydian", "density": 0.3,
+   "voices": { "bass": "bass_sub", "chords": "pluck_harp", "lead": "winds_flute", "pad": "pad_cathedral_air" },
+   "textures": ["amb_crickets", "amb_fluor_hum"], "fx": "fx_reverse_swell", "hit": "none", "motif": null, "stems": false
+  },
+  "vol6_the_long_sleep": {
+   "feel": "Diego at the safehouse: eighteen hours of sleep in every twenty-four, and the caged fluorescent room follows him under. A music-box lullaby in minor, wound slightly too slow. His three-burst figure is a toy now, and the ballast hum never quite leaves the dream.",
+   "style": "lullaby", "form": "bed", "bpm": 62, "key": "B", "mode": "minor", "density": 0.22,
+   "voices": { "bass": "bass_sub", "chords": "keys_felt", "lead": "bell_music_box", "pad": "pad_fluorescent" },
+   "textures": ["amb_fluor_hum", "amb_room_tone"], "fx": "fx_reverse_swell", "hit": "none", "motif": "diego", "stems": false
+  },
+  "vol6_four_thirty_kitchen": {
+   "feel": "Bianca's kitchen before the subdivision stirs: awake at four-eleven again, coffee made in the dark, brushes and upright bass so as not to wake anyone. Then the doorbell rings at eight-oh-three on a Monday nobody was expecting. Warm and low, with a small held question.",
+   "style": "jazz", "form": "loop", "bpm": 66, "key": "B", "mode": "dorian", "density": 0.3,
+   "voices": { "bass": "bass_upright", "chords": "keys_mk1", "lead": "winds_harmon", "pad": "pad_warm" },
+   "textures": ["amb_clock", "amb_room_tone"], "fx": "none", "hit": "fx_bell_hit", "motif": null, "stems": false
+  },
+  "vol6_porch_light_watch": {
+   "feel": "Mid-August at the cul-de-sac windows: Don Geller's porch light comes on eight minutes early at four forty-three, in the shaded back-porch hour before the ninety-five settles in. Heat-haze dub with slow echoes, a kalimba and cicadas. Gentle on the surface, with everybody watching everybody.",
+   "style": "dub", "form": "loop", "bpm": 80, "key": "B", "mode": "mixolydian", "density": 0.3,
+   "voices": { "bass": "bass_fender", "chords": "keys_wurli", "lead": "pluck_kalimba", "pad": "pad_dusk" },
+   "textures": ["amb_cicadas"], "fx": "fx_reverse_swell", "hit": "none", "motif": null, "stems": false
+  },
+  "vol6_depth_chart": {
+   "feel": "Friday of the depth chart: three easy miles at six-oh-eight with no stopwatch, then the drive home with two new things riding along in the Civic. Motorik in a bright mode, steady feet on a steady road. This is the first cue in the book that isn't afraid of what's ahead.",
+   "style": "motorik", "form": "loop", "bpm": 120, "key": "E", "mode": "mixolydian", "density": 0.5,
+   "voices": { "bass": "bass_pluck", "chords": "keys_tape_ep", "lead": "lead_saw", "pad": "pad_hollow" },
+   "textures": ["amb_cicadas"], "fx": "fx_riser", "hit": "none", "motif": null, "stems": false
+  },
+  "vol6_fourth_chord": {
+   "feel": "Substation Nine gets its bridge: a suspended fourth found at four-twelve in Jesse's bedroom, with the kitchen light still on at ten thirty-eight. Post-rock in the hum key, the sus chord hanging and hanging and then, finally, moving. The band's song is learning to answer the field.",
+   "style": "post_rock", "form": "song", "bpm": 104, "key": "F#", "mode": "mixolydian", "density": 0.55,
+   "voices": { "bass": "bass_fender", "chords": "pluck_nylon", "lead": "lead_fuzz", "pad": "pad_fluorescent" },
+   "textures": ["amb_tape_hiss", "amb_fluor_hum"], "fx": "fx_reverse_swell", "hit": "none", "motif": null, "stems": true
+  },
+  "vol6_iced_tea_porch": {
+   "feel": "Evening on Linda's porch: the light on, the wicker chair, two glasses of iced tea with Maya's poured in advance. Folk at walking pace on nylon guitar, with Maya's figure played gently on celesta and crickets and ice in the glass. The community at its kindest.",
+   "style": "folk", "form": "loop", "bpm": 92, "key": "A", "mode": "major", "density": 0.35,
+   "voices": { "bass": "bass_upright", "chords": "pluck_nylon", "pad": "pad_warm" },
+   "textures": ["amb_crickets"], "fx": "none", "hit": "fx_glass_ping", "motif": "maya", "stems": false
+  },
+  "vol6_saturday_town": {
+   "feel": "The long Saturday: coffee made in the dark at four-eleven, the Vinton bus in the lot at four-oh-three, inventory codes read in half-voice, and the Foxhole on the back side of the strip mall warming up for Suburban Blight. A Gulf-coast bar-band shuffle that keeps getting louder as the day goes.",
+   "style": "shuffle", "form": "song", "bpm": 106, "key": "A", "mode": "major", "density": [0.45, 0.65],
+   "voices": { "bass": "bass_fender", "chords": "keys_combo_organ", "lead": "winds_sax", "pad": "pad_dusk" },
+   "textures": ["amb_city"], "fx": "fx_riser", "hit": "fx_impact", "motif": null, "stems": true
+  },
+  "vol6_sunday_dinner": {
+   "feel": "Sunday closes out the volume: Diego waking at four-oh-eight PM behind blackout curtains, enchiladas kept warm, three Hendersons at the table. A hymn-slow chorale on chapel organ and strings, with Diego's whistle figure finally at rest. Lights out, and the hum is almost inaudible for once.",
+   "style": "hymn", "form": "song", "bpm": 64, "key": "A", "mode": "major", "density": 0.35,
+   "voices": { "bass": "bass_upright", "chords": "pad_organ_swell", "pad": "strings_ensemble" },
+   "textures": ["amb_crickets", "amb_room_tone"], "fx": "fx_reverse_swell", "hit": "none", "motif": "diego", "stems": false
+  }
+ }
+}
