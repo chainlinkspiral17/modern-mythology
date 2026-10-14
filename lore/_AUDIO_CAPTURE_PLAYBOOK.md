@@ -1056,6 +1056,91 @@ context keeps running into a fake sink, and the meters still move.
   listening pass decides whether the layers are audible or just
   bookkeeping.
 
+### 2026-10-14 — MAKE TAKES: ensembles, variety, direct musical controls, quick moods
+
+- The user asked for "a lot more instrumentation and variety of
+  choice". Before this, the panel offered style / mode / form, energy,
+  density and a five-role hand picker. Everything else came from the
+  brief.
+- **ENSEMBLES** (`TempMaker.ENSEMBLES`) are 17 named families plus
+  auto: orchestra, strings, brass, winds, piano, rock, jazz, folk,
+  electronic, synthwave, chiptune, ambient, world, choir, horror,
+  toy box and lo-fi.
+  - Each one lists FORGE ids per role and `kit:<style>` drums.
+    Optional fields: a `texture` bed, `link` (solo piano is one
+    instrument on both hands), `drop` (no kit for strings / choir /
+    ambient), `patch` lists for the PATCH BANK route, and `fits` (the
+    styles it suits, which SURPRISE ME uses).
+  - Every take draws its own pick per role from its seed.
+  - Priority: a hand pick (INSTRUMENTS) > an instrument named in the
+    DIRECTION > the ensemble > the style's own.
+  - Presets FORGE lacks are skipped at pick time.
+    `ENSEMBLE_MORE` is the single append point for the new FORGE
+    presets once they merge.
+- **FNV's low bits are nearly constant across nearby seeds.** Its
+  lowest bit is just the parity of the input's characters, so
+  `hash(seed + ':role') % 2` gave the same kit to all four takes.
+  The panel's picks go through `mixHash` (FNV + a murmur finalizer).
+  seqgen's own `presetFor` keeps plain FNV, so old seeds keep their
+  instruments.
+- **VARIETY**:
+  - close: take 1's style, key, tempo, sound and instruments are
+    locked for the later takes;
+  - mixed: today's behaviour;
+  - wide: take 1 keeps the brief's style, and every later take gets a
+    different style from `STYLE_COMPAT`. That map is symmetric
+    (closed at load), e.g. noir↔jazz↔trip_hop↔lofi and
+    hymn↔chamber↔ambient↔minimal;
+  - wild: any style and any ensemble.
+  - The picks land in `meta.mood` (style, ensemble, kit, drop, feel,
+    harmony, ext, prog, variety). `regenOpts` drops `variety` and
+    re-asks the take's own ensemble, so ⟳ AGAIN gives the same take
+    (the test compares song.mid byte for byte).
+- **Direct controls**:
+  - KEY: auto, `home` (the volume's tonic), or a note.
+  - BPM: a typed BPM is the final tempo.
+  - FEEL: straight / swung / shuffle go into
+    `project.swing` / `project.groove` (the daw_perf groove).
+    Half- and double-time scale only the *auto* tempo and density, so
+    an AGAIN that pins `bpm` doesn't halve it twice.
+  - HARMONY: the extension colour.
+  - PROG: the progression family.
+  - Sound design: texture ×2 / fx / hit, each auto, none or a preset.
+- **The seqgen hook is one optional argument to `harmonyPlan`**
+  (`o.ext` = an EXT name or weighted pairs, `o.progFamily`). Each pick
+  still takes exactly one draw from R, so the groove, bass, shape and
+  every other stream keep their choices.
+  - The data test proves defaults are unchanged: with no new option,
+    `varyTake` is a no-op and `songOpts(m)` equals the old inline
+    option list, for 4 tracks × 3 seeds × brief/none × 3 requests.
+    The song JSON hashes also matched a pre-change snapshot.
+- **QUICK moods** are page data (direction text + style / ensemble
+  / energy / feel / harmony / sound). The line under the chips says
+  what each one set. 🎲 SURPRISE ME picks a style, then an ensemble
+  that `fits` it 85 % of the time. It only offers half-time to fast
+  styles and double-time to slow ones.
+- **Layout at 1280×800**: the rare settings fold into two
+  `<details>` (MORE: sound / parts / pads / seed; INSTRUMENTS). Each
+  summary shows what it holds, so a closed one still says "not
+  auto".
+  - The MAKE row is `position: sticky; bottom: 0`.
+  - ⚙ SETTINGS ↓ scrolls the box below the sticky transport;
+    `scrollIntoView` had tucked the first three rows under it.
+  - The test checks every row for horizontal overflow at
+    1280×800 and 1024×640, with both folds open.
+- Fixed along the way:
+  - ⟳ AGAIN used to overwrite `texture2` / `hit` with the first
+    bed's / riser's preset. They share their stem's role, so
+    `shapeArrangement` now skips them.
+  - A re-applied identical instrument no longer rebuilds its device.
+  - A bare `kit` keeps the style's kit; it used to swap in the
+    plain one.
+  - Takes record `kit:<style>`.
+- Rough: `SeqGen.part()` (re-roll one part in the DAW) doesn't carry
+  `ext` / `progFamily`, so a re-rolled part of a "lush" song gets the
+  style's own extensions. Half-time on an already-slow style bottoms
+  out at 40 BPM.
+
 ## TEMPLATE
 
 ```

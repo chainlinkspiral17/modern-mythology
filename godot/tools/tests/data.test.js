@@ -144,6 +144,91 @@ suite('data · registries, composer, MIDI files', async t => {
     const d = SG.applyDirection(Object.assign({}, m), 'faster, a lonely piano over rain');
     t.ok(d.bpm > 60 && d.voices.lead === 'keys_felt' && d.textures.includes('amb_rain'), 'typed direction wins: ' + JSON.stringify([d.bpm, d.voices, d.textures]));
   });
+  // ── the AUDIO DIRECTOR's MAKE TAKES choices (temp_maker.js, pure parts: no engine) ──
+  global.window = global.window || globalThis; require(path.join(TOOLS, 'forge_synth.js')); require(path.join(TOOLS, 'temp_maker.js'));
+  const TM = globalThis.TempMaker, FORGE = new Set((globalThis.FORGE_PRESETS || []).map(p => p.id));
+  await t.test('normOpts: ensemble / variety / key / bpm / feel / harmony / progression / sound design validated strictly (unknown → dropped)', async () => {
+    t.eq(TM.normOpts({ ensemble: 'jazz', variety: 'wide', key: 'home', bpm: 300, feel: 'shuffle', harmony: 'lush', prog: 'blues', textures: ['amb_rain', 'amb_fire', 'amb_wind'], fx: 'fx_riser', hit: 'none' }),
+      { bpm: 240, key: 'home', ensemble: 'jazz', variety: 'wide', feel: 'shuffle', harmony: 'lush', prog: 'blues', textures: ['amb_rain', 'amb_fire'], fx: 'fx_riser', hit: 'none' });
+    t.eq(TM.normOpts({ ensemble: 'kazoo', variety: 'mixed', key: 'H', feel: 'polka', harmony: 'atonal', prog: 'jazz_minor', textures: ['nope', 'fx_riser'], fx: 'amb_rain', hit: 'kick', bogus: 1, ensembleX: 'jazz' }), {},
+      'unknown / default values are dropped (mixed is the default; a _minor family is picked by the mode, not asked for)');
+    t.eq([TM.normOpts({ key: 'Eb' }).key, TM.normOpts({ key: 7 }).key, TM.normOpts({ key: '' }).key, TM.normOpts({ textures: 'none' }).textures, TM.normOpts({ ensemble: 'toString' }).ensemble], [3, 7, undefined, 'none', undefined]);
+    t.eq(TM.normOpts({ instruments: { drums: 'kit:jazz', bass: 'kit', lead: 'forge:lead_saw', pad: 'kitchen', chords: 'patch:gugs:0.4', nope: 'forge:x' } }).instruments,
+      { drums: 'kit:jazz', bass: 'kit', lead: 'forge:lead_saw', chords: 'patch:gugs:0.4' });
+  });
+  await t.test('ENSEMBLES name only presets FORGE has (by role kind), real kit styles, well-formed PATCH ids; every style has PATCH picks and compatible neighbours', async () => {
+    const bad = [], cat = Object.fromEntries((globalThis.FORGE_PRESETS || []).map(p => [p.id, p.category])), PATCH = /^(gugs:(0|128)\.\d{1,3}|jrhodes:st|vsco:[a-z0-9_]+)$/;
+    t.ok(Object.keys(TM.ENSEMBLES).length >= 17, 'ensembles (+ auto): ' + Object.keys(TM.ENSEMBLES).length);
+    for (const [id, e] of Object.entries(TM.ENSEMBLES)) {
+      if (!e.name || !e.short) bad.push(id + ': name');
+      for (const [role, list] of Object.entries(e.roles)) for (const x of list) {
+        if (role === 'drums') { if (!/^kit(:[a-z_]+)?$/.test(x) || (x.includes(':') && !SG.STYLES[x.split(':')[1]])) bad.push(id + ' drums ' + x); continue; }
+        if (!FORGE.has(x)) { bad.push(id + ' ' + role + ' ' + x + ' (no such FORGE preset)'); continue; }
+        if (role === 'texture' ? cat[x] !== 'ambient' : ['drums', 'fx'].includes(cat[x]) || (cat[x] === 'ambient' && !/^drone_/.test(x))) bad.push(id + ' ' + role + ' ' + x + ' is ' + cat[x]);
+      }
+      for (const list of Object.values(e.patch || {})) for (const x of list) if (!PATCH.test(x)) bad.push(id + ' patch ' + x);
+      for (const [r, from] of Object.entries(e.link || {})) if (!e.roles[from]) bad.push(id + ' link ' + r + '→' + from);
+      for (const s of e.fits || []) if (!SG.STYLES[s]) bad.push(id + ' fits ' + s);
+    }
+    for (const s of Object.keys(SG.STYLES)) {
+      if (!TM.PATCH_PICKS[s] || !TM.PATCH_POOLS[s]) bad.push('PATCH tables miss ' + s);
+      for (const x of Object.values(TM.PATCH_PICKS[s] || {}).concat(...Object.values(TM.PATCH_POOLS[s] || {}))) if (!PATCH.test(x)) bad.push(s + ' patch ' + x);
+      const c = TM.STYLE_COMPAT[s] || [];
+      if (c.length < 3 || c.includes(s) || c.some(x => !SG.STYLES[x])) bad.push('STYLE_COMPAT ' + s + ': ' + c);
+      for (const x of c) if (!(TM.STYLE_COMPAT[x] || []).includes(s)) bad.push('STYLE_COMPAT not symmetric: ' + s + ' → ' + x);
+    }
+    t.eq(bad, []);
+  });
+  const TR = [{ id: 'vol5_alberto_theme', vol: 5, title: 'Alberto', desc: 'A character theme. Warm, a little tired. Piano over rain.' }, { id: 'vol2_diner', vol: 2, title: 'Diner', desc: 'Jukebox at the diner, saturday.' },
+    { id: 'vol7_sinkhole', vol: 7, title: 'Sinkhole', desc: 'Low rumble, a demon under the floor.' }, { id: 'vol3_hymn', vol: 3, title: 'Hymn', desc: 'Kitchen fire crackle, distant German hymn fragment.' }];
+  const BRIEF = { scene_count: 4, roles: { leitmotif: 4 }, energy: 0.7, darkness: 0.3, intensity: { p10: 0.2, mean: 0.5, p90: 0.8 }, stems: true, chars: ['alberto'], words: [], locales: [] };
+  await t.test('default requests compose exactly as before: no new option → varyTake changes nothing, songOpts = the old option list, same song per seed', async () => {
+    const legacy = m => ({ seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: m.key, motif: m.motif, motifSpec: m.motifSpec, shape: m.shape, textures: m.textures, fx: m.fx, hit: m.hit, voices: m.voices });
+    for (const tr of TR) for (const seed of [1, 4242, 987654321]) for (const b of [null, BRIEF]) for (const req of [{}, { description: 'slower, a lonely piano', energy: 0.2 }, { style: 'jazz', key: 4 }]) {
+      const o = TM.normOpts(req), m0 = TM.takeMood(tr, b, o, null); m0.seed = seed;
+      const before = JSON.stringify(m0), m = TM.varyTake(JSON.parse(before), o, { n: 1, seed, used: new Set(['noir']) });
+      t.eq(JSON.stringify(m), before, 'varyTake is a no-op: ' + tr.id + ' ' + JSON.stringify(req));
+      t.eq(TM.songOpts(m), legacy(m), 'songOpts');
+      t.eq(SG.hash(JSON.stringify(SG.song(TM.songOpts(m)))), SG.hash(JSON.stringify(SG.song(legacy(m)))), 'same song: ' + tr.id + ' seed ' + seed);
+    }
+    // the harmony hook changes only the harmony: the other streams (groove, bass figure, shape …) keep their picks
+    const a = SG.song({ seed: 9, style: 'noir', form: 'song' }), c = SG.song({ seed: 9, style: 'noir', form: 'song', ext: [['ninth', 1]], progFamily: 'blues' });
+    t.eq([c.vocab.groove, c.vocab.bass, c.vocab.lead, c.sections], [a.vocab.groove, a.vocab.bass, a.vocab.lead, a.sections]);
+    t.ok(c.vocab.ext.every(x => x === 'ninth') && SG.PROGS.blues.some(p => p.join() === c.progression.join()), JSON.stringify([c.vocab.ext, c.progression]));
+    t.eq(SG.song({ seed: 9, style: 'noir', form: 'song', ext: 'bogus' }).vocab, a.vocab, 'an unknown ext is the style\'s own');
+  });
+  await t.test('varyTake: ensembles give each seed its own line-up from the family; wide → different compatible styles; wild → anything; feel / harmony / key', async () => {
+    const tr = TR[0], run = (req, n = 4) => { const o = TM.normOpts(req), used = new Set(), out = []; for (let k = 0; k < n; k++) { const m = TM.takeMood(tr, null, o, null); m.seed = 1000 + k * 7919; TM.varyTake(m, o, { n: k, seed: m.seed, used }); used.add(m.style); out.push(m); } return out; };
+    const J = TM.ENSEMBLES.jazz.roles, jz = run({ ensemble: 'jazz' }, 6);
+    for (const m of jz) for (const r of ['bass', 'chords', 'lead', 'pad']) t.ok(J[r].includes(m.voices[r]), r + ' ' + m.voices[r]);
+    t.ok(jz.every(m => ['jazz', 'noir'].includes(m.kit) && m.ensemble === 'jazz'), 'kits from the family');
+    t.ok(new Set(jz.map(m => JSON.stringify(m.voices))).size >= 5, 'line-ups differ per seed');
+    t.ok(new Set(jz.map(m => m.kit)).size === 2, 'both kits turn up across six seeds (the pick is well mixed)');
+    const pn = run({ ensemble: 'piano' })[0];
+    t.ok(pn.voices.bass === pn.voices.chords && pn.voices.lead === pn.voices.chords && pn.drop.join() === 'drums,pad', 'solo piano: one instrument, no kit / pad: ' + JSON.stringify(pn));
+    const hand = run({ ensemble: 'jazz', instruments: { lead: 'forge:lead_saw' }, description: 'a harmonica' })[0];
+    t.ok(!('lead' in hand.voices) || hand.voices.lead === TM.takeMood(tr, null, TM.normOpts({ description: 'a harmonica' }), null).voices.lead, 'a hand-picked / named instrument is not overridden: ' + JSON.stringify(hand.voices));
+    const wide = run({ variety: 'wide' }).map(m => m.style), base = TM.takeMood(tr, null, {}, null).style;
+    t.ok(wide[0] === base && new Set(wide).size === 4 && wide.slice(1).every(s => TM.STYLE_COMPAT[base].includes(s)), 'wide: ' + wide);
+    const wideX = run({ variety: 'wide', style: 'hymn' }).map(m => m.style);
+    t.ok(wideX[0] === 'hymn' && wideX.slice(1).every(s => TM.STYLE_COMPAT.hymn.includes(s)), 'wide around an asked-for style: ' + wideX);
+    const wild = run({ variety: 'wild' }, 6);
+    t.ok(new Set(wild.map(m => m.style)).size === 6 && new Set(wild.map(m => m.ensemble || 'auto')).size >= 3, 'wild: ' + wild.map(m => m.style + '/' + (m.ensemble || 'auto')));
+    const close = run({ variety: 'close', ensemble: 'rock' });
+    t.ok(new Set(close.map(m => m.style)).size === 1, 'close keeps the style');
+    // feel: half / double time scale the auto tempo and the density, never a typed BPM / density
+    const m0 = TM.takeMood(tr, null, {}, null), half = run({ feel: 'half' })[0], dbl = run({ feel: 'double' })[0], typed = run({ feel: 'half', bpm: 90, density: 0.5 })[0];
+    t.eq([half.bpm, dbl.bpm, half.feel], [Math.max(40, Math.round(m0.bpm / 2)), Math.min(220, m0.bpm * 2), 'half']);
+    t.ok(half.density > m0.density && dbl.density < m0.density, 'density follows: ' + [half.density, m0.density, dbl.density]);
+    t.eq([typed.bpm, typed.density], [90, 0.5]);
+    const h = run({ harmony: 'modal', mode: 'minor' })[0], j = run({ prog: 'jazz', mode: 'minor' })[0], jM = run({ prog: 'jazz', mode: 'major' })[0];
+    t.eq([h.harmony, h.progFamily, JSON.stringify(h.ext), j.progFamily, jM.progFamily], ['modal', 'modal', JSON.stringify(TM.HARMONY.modal.ext), 'jazz_minor', 'jazz']);
+    t.eq([TM.takeMood(tr, null, TM.normOpts({ key: 'home' }), null).key, TM.homeKey(5)], [SG.hash('volume-key:5') % 12, SG.hash('volume-key:5') % 12], 'volume home key');
+    const snd = TM.takeMood(TR[3], null, TM.normOpts({ textures: ['amb_rain'], hit: 'none' }), null);
+    t.eq([snd.textures, snd.hit], [['amb_rain'], 'none'], 'the SOUND controls win over the catalog\'s words (fire crackle)');
+    const amb = TM.takeMood(TR[1], null, TM.normOpts({}), null); TM.varyTake(amb, TM.normOpts({ ensemble: 'lofi' }), { seed: 3 });
+    t.ok(amb.textures === undefined || TM.ENSEMBLES.lofi.roles.texture.includes(amb.textures[0]), 'an ensemble bed only where nothing named one: ' + JSON.stringify(amb.textures));
+  });
   const SMF = require(path.join(TOOLS, 'smf.js'));
   await t.test('MIDI file write → read round trip (incl. same-pitch overlaps)', async () => {
     const notes = [{ t: 0, d: 96, n: 60, v: 0.8 }, { t: 48, d: 96, n: 60, v: 0.5 }, { t: 96, d: 48, n: 64, v: 1 }];

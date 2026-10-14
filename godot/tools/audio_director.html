@@ -94,6 +94,19 @@
   .modal .mhead { display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--rule); }
   .modal .mbody { overflow-y: auto; padding: 6px 10px 30px; }
   .grp { margin: 8px 0 3px; color: var(--gold); letter-spacing: 0.12em; font-size: 11px; }
+  /* MAKE TAKES: compact rows, the rarer settings folded away, the MAKE button pinned while the box is in view */
+  .row .lb { color: var(--text-dim); font-size: 11px; margin-left: 6px; }
+  #regen select { max-width: 150px; }
+  #regen input[type=number]#r-bpm { width: 64px; }
+  #regen details { margin: 6px 0 2px; border-top: 1px dashed var(--rule); }
+  #regen summary { cursor: pointer; min-height: 36px; display: flex; align-items: center; gap: 8px; color: var(--gold); letter-spacing: 0.12em; font-size: 11px; list-style: none; flex-wrap: wrap; }
+  #regen summary::-webkit-details-marker { display: none; }
+  #regen summary::before { content: '▸'; color: var(--gold-hi); }
+  #regen details[open] > summary::before { content: '▾'; }
+  #regen summary .note { letter-spacing: 0; font-style: normal; }
+  #quickmsg { min-height: 0; margin: 0 0 2px 76px; color: var(--amber); font-style: normal; }
+  #quick button, #ensembles button, #variety button { padding: 4px 8px; }
+  .makebar { position: sticky; bottom: 0; z-index: 2; background: var(--bg-1); margin: 8px -8px -6px; padding: 6px 8px; border-top: 1px solid var(--rule); }
   .chipset { display: flex; flex-wrap: wrap; gap: 4px; }
   .chipset button { min-height: 38px; }
   footer { border-top: 1px solid var(--rule); padding: 4px 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -181,18 +194,33 @@
       <h2>MAKE TAKES <span class="sp"></span><span class="note">composed and rendered right here — each take shows up under TAKES when it's done</span></h2>
       <div class="box" id="regen">
         <div class="row"><label>FOR</label><span id="forwho" class="note"></span></div>
-        <div class="row"><label>TAKES</label><span class="chipset" id="ntakes"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button><button data-n="6">6</button></span></div>
+        <div class="row"><label>TAKES</label><span class="chipset" id="ntakes"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button><button data-n="6">6</button></span>
+          <span class="lb" title="how different the takes of one request are">VARIETY</span><span class="chipset" id="variety"><button data-v="close" title="same style, key, tempo and instruments — only the notes change">close</button><button data-v="" class="on" title="same style, the instruments vary per take (the default)">mixed</button><button data-v="wide" title="take 1 keeps the brief's style, every other take a different but compatible one">wide</button><button data-v="wild" title="any style, any ensemble — for discovery">wild</button></span></div>
+        <div class="row"><label title="one tap fills the panel with a flavour; it says below what it set">QUICK</label><span class="chipset" id="quick"></span></div>
+        <div class="note" id="quickmsg"></div>
         <div class="row"><label>DIRECTION</label><textarea id="desc" placeholder="e.g. slower, more dread, a lonely piano over rain — overrides style / mode / pace words from the catalog text"></textarea></div>
+        <div class="row"><label title="an instrument family: each take draws its own line-up from it (INSTRUMENTS picks still win)">ENSEMBLE</label><span class="chipset" id="ensembles"></span></div>
         <div class="row"><label>STYLE</label><select id="r-style"><option value="">auto</option></select><select id="r-mode"><option value="">auto mode</option></select><select id="r-form"><option value="">auto form</option></select></div>
-        <div class="row"><label>ENERGY</label><input type="range" id="r-energy" min="-0.5" max="0.5" step="0.05" value="0" data-default="0" style="width:160px"><b id="r-energyv">±0</b><span class="note">nudges tempo / density from the brief</span></div>
-        <div class="row"><label>DENSITY</label><label class="note"><input type="checkbox" id="r-densauto" checked> auto</label><input type="range" id="r-dens" min="0.1" max="0.95" step="0.05" value="0.55" data-default="0.55" style="width:160px" disabled><b id="r-densv">auto</b></div>
+        <div class="row"><label>MUSIC</label>
+          <span class="lb">KEY</span><select id="r-key" title="the tonic: auto (the score / the volume's key family), the volume's home key, or a note"><option value="">auto</option><option value="home">volume home</option></select>
+          <span class="lb">BPM</span><input type="number" id="r-bpm" min="30" max="240" placeholder="auto" title="blank: from the brief and style; a number is the final tempo">
+          <span class="lb">FEEL</span><select id="r-feel"><option value="">auto</option></select>
+          <span class="lb">HARMONY</span><select id="r-harm"><option value="">auto</option></select>
+          <span class="lb">PROG</span><select id="r-prog" title="the progression family the chords are drawn from"><option value="">auto</option></select></div>
+        <div class="row"><label>ENERGY</label><input type="range" id="r-energy" min="-0.5" max="0.5" step="0.05" value="0" data-default="0" style="width:140px" title="nudges tempo / density from the brief"><b id="r-energyv" style="min-width:40px">±0</b>
+          <span class="lb">DENSITY</span><label class="note"><input type="checkbox" id="r-densauto" checked> auto</label><input type="range" id="r-dens" min="0.1" max="0.95" step="0.05" value="0.55" data-default="0.55" style="width:120px" disabled><b id="r-densv">auto</b></div>
         <div class="row"><label>LENGTH</label><select id="r-lenmode"><option value="">auto (≥ 90 s)</option><option value="sec">seconds</option><option value="bars">bars</option></select><input type="number" id="r-len" min="1" max="900" value="90" disabled><label class="note" title="a seamless loop: the game then loops it forever (the loop goes in the Ogg temp's manifest) — only for beds"><input type="checkbox" id="r-loop"> seamless loop points</label></div>
-        <div class="row roles"><label>PARTS</label><span class="chipset" id="roles"></span></div>
-        <div class="row"><label>EXTRA PADS</label><span class="chipset" id="pads"><button data-p="0" class="on">0</button><button data-p="1">+1 (octave up)</button><button data-p="2">+2 (+ sub drone)</button></span></div>
-        <div class="row"><label>SEED</label><input type="number" id="r-seed" style="width:140px" placeholder="new"><span class="note">blank: a fresh seed per take, never a rejected one</span></div>
-        <div class="grp">INSTRUMENTS</div>
-        <div class="instr" id="instr"></div>
-        <div class="row" style="margin-top:8px"><button class="go" id="make">⚄ MAKE TAKES</button><button class="dim" id="resetregen">reset</button><span class="msg" id="makemsg"></span></div>
+        <details id="more"><summary>MORE — sound design · parts · extra pads · seed <span class="note" id="moresum"></span></summary>
+          <div class="row"><label title="ambience beds under the music (up to two)">TEXTURE</label><select id="r-tex"></select><select id="r-tex2"></select>
+            <span class="lb" title="risers / swells into a lift">FX</span><select id="r-fx"></select><span class="lb" title="one-shots on a lift">HIT</span><select id="r-hit"></select></div>
+          <div class="row roles"><label>PARTS</label><span class="chipset" id="roles"></span></div>
+          <div class="row"><label>EXTRA PADS</label><span class="chipset" id="pads"><button data-p="0" class="on">0</button><button data-p="1">+1 (octave up)</button><button data-p="2">+2 (+ sub drone)</button></span></div>
+          <div class="row"><label>SEED</label><input type="number" id="r-seed" style="width:140px" placeholder="new"><span class="note">blank: a fresh seed per take, never a rejected one</span></div>
+        </details>
+        <details id="moreinst"><summary>INSTRUMENTS — per role, over the ensemble <span class="note" id="instrsum"></span></summary>
+          <div class="instr" id="instr"></div>
+        </details>
+        <div class="row makebar"><button class="go" id="make">⚄ MAKE TAKES</button><button class="dim" id="resetregen">reset</button><span class="msg" id="makemsg"></span></div>
       </div>
     </div>
   </div>
@@ -211,10 +239,11 @@
       <li>Type your name in <b>who</b> (top right) — it goes into the approval record.</li>
       <li>Pick a track in the list on the left. <b>CANDIDATES</b> shows tracks with takes waiting for a verdict; <b>MISSING</b> shows tracks with no music yet.</li>
       <li>No takes yet? Tap <b>⚄ MAKE TAKES</b> in the TAKES header. To steer them first, <b>⚙ SETTINGS ↓</b> jumps to the box where you set how many (1–6) and can write a <b>DIRECTION</b> (“slower, a lonely piano over rain”). They are composed and rendered right here — the message under the button counts through each take (composing → rendering stems → saving), and each one appears under TAKES as soon as it's done. Keep this page open while it works.</li>
+      <li>Steering the takes (all optional — blank / <i>auto</i> means the brief decides): a <b>QUICK</b> chip (<i>lonely night</i>, <i>chase</i>, <i>dread</i>, <i>neon</i> …) fills the panel with a flavour and the line under it says what it set; <b>🎲 SURPRISE ME</b> rolls a style, an ensemble that suits it, a feel, a harmony and a sound. <b>ENSEMBLE</b> picks an instrument family (orchestra, jazz, rock, choir, chiptune, lo-fi …) and each take draws its own line-up from it. <b>VARIETY</b>: <i>close</i> keeps style and instruments and changes only the notes, <i>mixed</i> varies the instruments, <i>wide</i> gives each take after the first a different but related style, <i>wild</i> anything. <b>MUSIC</b> sets KEY (or the volume's home key), BPM, FEEL (straight, swung, shuffle, half / double time), HARMONY (plain, sevenths, lush 9ths, open, modal) and the PROGression family. <b>MORE</b> holds the sound design (ambience beds, risers, hits), parts, extra pads and the seed; <b>INSTRUMENTS</b> picks one role by hand and wins over the ensemble.</li>
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
       <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
-      <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings. Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
+      <li>None good? Change the DIRECTION / STYLE / ENSEMBLE / VARIETY / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings (its style, line-up, feel and sound — the card shows what it got). Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
       <li>Songs approved before the Ogg change are still big WAVs in the game: <b>⇣ SHRINK … WAV TEMPS → OGG</b> (top bar) re-encodes all of them in one go and deletes the WAVs. Only temps — never real audio.</li>
       <li>When you're done: back the music up (it never goes in git) and commit the approval list — see the commands at the bottom of the page / from Claude.</li>
@@ -466,8 +495,15 @@ function reqText(r) {
   if (r.length) a.push(r.length.sec ? r.length.sec + ' s' : r.length.bars + ' bars'); if (r.loop) a.push('loop points');
   if (r.roles) a.push('parts ' + r.roles.join('+')); if (r.extraPads) a.push('+' + r.extraPads + ' pad' + (r.extraPads > 1 ? 's' : ''));
   if (r.instruments) a.push(Object.entries(r.instruments).map(([k, v]) => k + '=' + v).join(' '));
+  if (r.ensemble) a.push('ensemble ' + r.ensemble); if (r.variety) a.push('variety ' + r.variety);
+  if (r.key !== undefined) a.push('key ' + (r.key === 'home' ? 'volume home' : SeqGen.NOTE_NAMES[r.key] || r.key)); if (r.bpm) a.push(r.bpm + ' BPM');
+  if (r.feel) a.push('feel ' + r.feel); if (r.harmony) a.push('harmony ' + r.harmony); if (r.prog) a.push('progression ' + r.prog);
+  if (r.textures) a.push('texture ' + (r.textures === 'none' ? 'none' : r.textures.join('+'))); if (r.fx) a.push('fx ' + r.fx); if (r.hit) a.push('hit ' + r.hit);
   return a.join(' · ');
 }
+// what the panel's choices gave this take (from its mood): ensemble, feel, harmony colour, progression family
+const takeChoices = mo => [mo.ensemble && TempMaker.ENSEMBLES[mo.ensemble] ? TempMaker.ENSEMBLES[mo.ensemble].name : mo.ensemble, mo.feel && (TempMaker.FEELS[mo.feel] || {}).name,
+  mo.harmony && (TempMaker.HARMONY[mo.harmony] || {}).name, mo.prog && 'prog ' + mo.prog].filter(Boolean).map(x => ' · ' + x).join('');
 function renderTakes() {
   const st = DIR.state[DIR.sel]; if (!st) return;
   const all = st.takes, show = $('showrej').checked;
@@ -481,7 +517,7 @@ function renderTakes() {
     const inst = m.instruments ? Object.entries(m.instruments).map(([k, v]) => k + ': ' + v).join(' · ') : '';
     return `<div class="${cls}" data-i="${i}"><div class="num" data-pick="${i}" title="key ${i + 1}">${i + 1}</div><div>` +
       `<b style="color:var(--gold-hi);font-weight:normal">${esc(m.take)}</b> ${isAp ? '<span class="badge ok">APPROVED</span>' : m.status === 'rejected' ? '<span class="badge bad">REJECTED</span>' : '<span class="badge cand">CANDIDATE</span>'}<br>` +
-      `<span class="mood">${esc(S ? S.name : mo.style)} · ${esc(mo.form)} · ${esc(SeqGen.NOTE_NAMES[mo.key] || '')} ${esc(mo.mode)} · ${(+mo.bpm).toFixed(+mo.bpm % 1 ? 2 : 0)} BPM · density ${mo.density} · seed ${mo.seed}</span><br>` +
+      `<span class="mood">${esc(S ? S.name : mo.style)} · ${esc(mo.form)} · ${esc(SeqGen.NOTE_NAMES[mo.key] || '')} ${esc(mo.mode)} · ${(+mo.bpm).toFixed(+mo.bpm % 1 ? 2 : 0)} BPM · density ${mo.density} · seed ${mo.seed}${esc(takeChoices(mo))}</span><br>` +
       `<span>${m.lufs != null ? m.lufs.toFixed(1) + ' LUFS · ' : ''}${m.true_peak != null ? m.true_peak.toFixed(1) + ' dBTP · ' : ''}${(+m.seconds).toFixed(1)} s · ${m.bars} bars · ${m.stems && m.stems.length ? m.stems.length + ' stems (' + m.stems.map(s => s.name).join(', ') + ')' : 'no stems'}</span><br>` +
       (m.edited_from ? `<span class="note" style="color:var(--violet)">✎ edited in the DAW from take ${esc(m.edited_from)}</span><br>` : '') +
       (m.why ? `<span class="note">${esc(m.why)}</span><br>` : '') +
@@ -951,12 +987,90 @@ $('revoke').addEventListener('click', e => revoke(e.currentTarget));
 // ═══════════════════════════════════════════════════════════════════
 // MAKE TAKES: composed, rendered and staged right here (temp_maker.js on a DAW engine of our own — no DAW tab)
 // ═══════════════════════════════════════════════════════════════════
-const RG = { n: 2, roles: ROLES.slice(), pads: 0, instruments: {} };
+const RG = { n: 2, roles: ROLES.slice(), pads: 0, instruments: {}, ensemble: '', variety: '' };
 Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('r-style').add(new Option(s.name, id)));
 Object.keys(SeqGen.SCALES).forEach(m => $('r-mode').add(new Option(m, m)));
 Object.keys(SeqGen.FORMS).forEach(f => $('r-form').add(new Option(f, f)));
+// the panel's choice lists come from temp_maker.js (ENSEMBLES, FEELS, HARMONY, the PROGS families, the sound presets)
+SeqGen.NOTE_NAMES.forEach((k, i) => $('r-key').add(new Option(k, String(i))));
+Object.entries(TempMaker.FEELS).forEach(([id, f]) => $('r-feel').add(new Option(f.name, id)));
+Object.entries(TempMaker.HARMONY).forEach(([id, h]) => $('r-harm').add(new Option(h.name, id)));
+TempMaker.progFamilies().forEach(f => $('r-prog').add(new Option(f, f)));
+const SOUND_SEL = { 'r-tex': ['ambient', 'auto', true], 'r-tex2': ['ambient', '+ no 2nd bed', false], 'r-fx': ['fx', 'auto', true], 'r-hit': ['fx', 'auto', true] };
+for (const [id, [kind, first, none]] of Object.entries(SOUND_SEL)) {
+  $(id).add(new Option(first, '')); if (none) $(id).add(new Option('none', 'none'));
+  const ids = [...TempMaker.soundChoices(kind)].filter(x => id === 'r-hit' ? !/riser|sweep|swell|whoosh|tape_stop|downer/.test(x) : id === 'r-fx' ? /riser|sweep|swell|whoosh|tape_stop|downer|flicker/.test(x) : true).sort();
+  for (const x of ids) $(id).add(new Option(x.replace(/^(amb|fx)_/, '').replace(/_/g, ' '), x));
+}
+$('ensembles').innerHTML = `<button data-ens="" class="on" title="the style's own instruments">auto</button>` + Object.entries(TempMaker.ENSEMBLES).map(([id, e]) =>
+  `<button data-ens="${esc(id)}" class="dim" title="${esc(e.name + ' — ' + Object.entries(e.roles).map(([r, l]) => r + ': ' + l.join(', ')).join(' · ') + (e.drop ? ' · no ' + e.drop.join(' / ') : ''))}">${esc(e.short || e.name)}</button>`).join('');
+// QUICK MOODS: one tap fills the flavour of the panel (direction text + style / ensemble / energy / feel / harmony / sound)
+const QUICK = {
+  lonely_night: { name: 'lonely night', desc: 'lonely, slow and sparse, rain on the window at night', style: 'noir', ensemble: 'piano', energy: -0.2, feel: 'straight', harmony: 'sevenths' },
+  chase: { name: 'chase', desc: 'urgent, driving, tense', style: 'motorik', ensemble: 'rock', energy: 0.4, harmony: 'open', fx: 'fx_riser' },
+  warm_memory: { name: 'warm memory', desc: 'warm, gentle, a memory from another room', style: 'lofi', ensemble: 'lofi', energy: -0.1, feel: 'swung', harmony: 'lush' },
+  dread: { name: 'dread', desc: 'dread, ominous, sparse, something under the floor', style: 'dark_drone', ensemble: 'horror', energy: -0.15, harmony: 'open', hit: 'fx_sub_drop' },
+  sacred: { name: 'sacred', desc: 'sacred, still, slow, warm', style: 'hymn', ensemble: 'choir', energy: -0.2, harmony: 'plain' },
+  neon: { name: 'neon', desc: 'cool, shimmering, a neon night', style: 'synthwave', ensemble: 'synthwave', energy: 0.15, harmony: 'lush', textures: ['amb_city'] },
+  small_town: { name: 'small town', desc: 'warm, rootsy, gentle, a porch at dusk', style: 'folk', ensemble: 'folk', energy: 0, harmony: 'plain', textures: ['amb_crickets'] },
+  dream: { name: 'dream', desc: 'dreamy, floating, ethereal, slow', style: 'ambient', ensemble: 'ambient', energy: -0.2, harmony: 'lush', prog: 'modal', fx: 'fx_reverse_swell' },
+  heist: { name: 'heist', desc: 'cool, smoky, sly', style: 'jazz', ensemble: 'jazz', energy: 0.1, feel: 'swung', harmony: 'sevenths' },
+  machine: { name: 'machine', desc: 'cold, mechanical, driving', style: 'industrial', ensemble: 'horror', energy: 0.2, harmony: 'open', textures: ['drone_engine'] },
+};
+$('quick').innerHTML = Object.entries(QUICK).map(([id, q]) => `<button data-quick="${id}" class="dim" title="${esc(q.desc)}">${esc(q.name)}</button>`).join('') +
+  `<button id="surprise" title="random style, ensemble, feel, harmony and sound design — within sane bounds">🎲 SURPRISE ME</button>`;
+const selOk = (id, v) => [...$(id).options].some(o => o.value === v);
+// set the flavour controls (anything not named → auto) and say what was set
+function setFlavour(f, label) {
+  if (f.desc !== undefined) $('desc').value = f.desc;
+  $('r-style').value = f.style && selOk('r-style', f.style) ? f.style : '';
+  RG.ensemble = f.ensemble && TempMaker.ENSEMBLES[f.ensemble] ? f.ensemble : '';
+  $('r-energy').value = f.energy || 0;
+  $('r-feel').value = f.feel && selOk('r-feel', f.feel) ? f.feel : '';
+  $('r-harm').value = f.harmony && selOk('r-harm', f.harmony) ? f.harmony : '';
+  $('r-prog').value = f.prog && selOk('r-prog', f.prog) ? f.prog : '';
+  const tx = f.textures === 'none' ? ['none'] : f.textures || [];
+  $('r-tex').value = tx[0] && selOk('r-tex', tx[0]) ? tx[0] : ''; $('r-tex2').value = tx[1] && selOk('r-tex2', tx[1]) ? tx[1] : '';
+  $('r-fx').value = f.fx && selOk('r-fx', f.fx) ? f.fx : ''; $('r-hit').value = f.hit && selOk('r-hit', f.hit) ? f.hit : '';
+  renderRegen();
+  const o = regenForm(), set = [];
+  if (o.description) set.push('direction “' + o.description + '”');
+  if (o.style) set.push('style ' + SeqGen.STYLES[o.style].name);
+  if (o.ensemble) set.push('ensemble ' + TempMaker.ENSEMBLES[o.ensemble].name);
+  if (o.energy) set.push('energy ' + (o.energy > 0 ? '+' : '') + o.energy);
+  if (o.feel) set.push('feel ' + TempMaker.FEELS[o.feel].name);
+  if (o.harmony) set.push('harmony ' + TempMaker.HARMONY[o.harmony].name);
+  if (o.prog) set.push('progression ' + o.prog);
+  if (o.textures) set.push('texture ' + (o.textures === 'none' ? 'none' : o.textures.join(' + ')));
+  if (o.fx) set.push('fx ' + o.fx); if (o.hit) set.push('hit ' + o.hit);
+  $('quickmsg').textContent = label + ' → ' + (set.join(' · ') || 'everything auto');
+  return o;
+}
+$('quick').addEventListener('click', e => {
+  if (e.target.closest('#surprise')) { surprise(); return; }
+  const b = e.target.closest('[data-quick]'); if (!b) return;
+  setFlavour(QUICK[b.dataset.quick], QUICK[b.dataset.quick].name);
+  document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = x === b ? 'on' : 'dim');
+});
+// 🎲 SURPRISE ME: a random style, an ensemble that suits it (now and then any), a feel the tempo can take, a harmony
+// colour, sometimes a progression family and a sound — shown in the line under the chips
+function surprise(rnd = Math.random) {
+  const pick = a => a[Math.floor(rnd() * a.length)];
+  const styles = Object.keys(SeqGen.STYLES), style = pick(styles), [lo, hi] = SeqGen.STYLES[style].bpm;
+  const ens = Object.keys(TempMaker.ENSEMBLES), fits = ens.filter(id => (TempMaker.ENSEMBLES[id].fits || []).includes(style));
+  const feels = ['straight', 'swung', 'shuffle'].concat(lo >= 110 ? ['half'] : []).concat(hi <= 80 ? ['double'] : []);
+  const amb = [...TempMaker.soundChoices('ambient')], fx = [...$('r-fx').options].map(o => o.value).filter(v => v && v !== 'none'), hit = [...$('r-hit').options].map(o => o.value).filter(v => v && v !== 'none');
+  const f = { style, ensemble: fits.length && rnd() < 0.85 ? pick(fits) : pick(ens), feel: pick(feels), harmony: pick(Object.keys(TempMaker.HARMONY)),
+    energy: Math.round((rnd() * 0.6 - 0.3) * 20) / 20, prog: rnd() < 0.35 ? pick(TempMaker.progFamilies().filter(x => x !== 'drone' || SeqGen.STYLES[style].bed)) : '' };
+  const r = rnd(); if (r < 0.45) f.textures = [pick(amb)]; else if (r < 0.6) f.textures = 'none';
+  if (rnd() < 0.4) f.fx = pick(fx); if (rnd() < 0.4) f.hit = pick(hit);
+  document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = 'dim');
+  return setFlavour(f, '🎲');
+}
 function renderRegen() {
   document.querySelectorAll('#ntakes [data-n]').forEach(b => b.classList.toggle('on', +b.dataset.n === RG.n));
+  document.querySelectorAll('#variety [data-v]').forEach(b => b.className = b.dataset.v === RG.variety ? 'on' : 'dim');
+  document.querySelectorAll('#ensembles [data-ens]').forEach(b => b.className = b.dataset.ens === RG.ensemble ? 'on' : 'dim');
   $('roles').innerHTML = ROLES.map(r => `<button data-role="${r}" class="${RG.roles.includes(r) ? 'on' : 'dim'}">${r}</button>`).join('');
   document.querySelectorAll('#pads [data-p]').forEach(b => b.classList.toggle('on', +b.dataset.p === RG.pads));
   const roles = ROLES.concat(EXTRA_PADS.slice(0, RG.pads));
@@ -964,24 +1078,38 @@ function renderRegen() {
   $('r-energyv').textContent = (+$('r-energy').value > 0 ? '+' : +$('r-energy').value < 0 ? '' : '±') + (+$('r-energy').value).toFixed(2);
   $('r-dens').disabled = $('r-densauto').checked; $('r-densv').textContent = $('r-densauto').checked ? 'auto' : (+$('r-dens').value).toFixed(2);
   $('r-len').disabled = !$('r-lenmode').value;
+  const t1 = $('r-tex').value; $('r-tex2').disabled = !t1 || t1 === 'none';
+  // what the folded sections hold, so a closed one still shows it isn't on auto
+  const nice = x => x.replace(/^(amb|fx)_/, '').replace(/_/g, ' ');
+  const more = [t1 && 'texture ' + (t1 === 'none' ? 'none' : nice(t1) + ($('r-tex2').value && !$('r-tex2').disabled ? ' + ' + nice($('r-tex2').value) : '')),
+    $('r-fx').value && 'fx ' + nice($('r-fx').value), $('r-hit').value && 'hit ' + nice($('r-hit').value),
+    RG.roles.length < ROLES.length && 'parts ' + RG.roles.join('+'), RG.pads && '+' + RG.pads + ' pad' + (RG.pads > 1 ? 's' : ''), $('r-seed').value !== '' && 'seed ' + $('r-seed').value].filter(Boolean);
+  $('moresum').textContent = more.length ? '· ' + more.join(' · ') : '· all auto';
+  const picked = Object.keys(RG.instruments).filter(k => RG.instruments[k] && roles.includes(k));
+  $('instrsum').textContent = picked.length ? '· ' + picked.map(k => k + ' ' + instLabel(RG.instruments[k])).join(' · ') : RG.ensemble ? '· from the ' + TempMaker.ENSEMBLES[RG.ensemble].name + ' ensemble' : '· all auto';
 }
 function instLabel(v) {
   if (!v) return 'auto';
   if (v === 'kit') return 'KIT';
   const [k, ...r] = v.split(':'), id = r.join(':');
+  if (k === 'kit') return 'KIT · ' + (SeqGen.STYLES[id] ? SeqGen.STYLES[id].name : id);
   if (k === 'forge') { const p = (window.FORGE_PRESETS || []).find(x => x.id === id); return 'FORGE ' + (p ? p.name : id); }
   if (k === 'patch') return 'PATCH ' + (DIR.patchNames && DIR.patchNames[id] || id);
   return v;
 }
 $('ntakes').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { RG.n = +b.dataset.n; renderRegen(); studioUI(); } });
+$('variety').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) { RG.variety = b.dataset.v; renderRegen(); } });
+$('ensembles').addEventListener('click', e => { const b = e.target.closest('[data-ens]'); if (b) { RG.ensemble = b.dataset.ens; renderRegen(); } });
 $('roles').addEventListener('click', e => { const b = e.target.closest('[data-role]'); if (!b) return; const r = b.dataset.role; if (RG.roles.includes(r)) { if (RG.roles.length > 1) RG.roles = RG.roles.filter(x => x !== r); } else RG.roles = ROLES.filter(x => x === r || RG.roles.includes(x)); renderRegen(); });
 $('pads').addEventListener('click', e => { const b = e.target.closest('[data-p]'); if (b) { RG.pads = +b.dataset.p; renderRegen(); } });
 $('instr').addEventListener('click', e => { const b = e.target.closest('[data-inst]'); if (b) openPicker(b.dataset.inst); });
 ['r-energy', 'r-dens'].forEach(id => $(id).addEventListener('input', renderRegen));
-['r-densauto', 'r-lenmode'].forEach(id => $(id).addEventListener('change', renderRegen));
+['r-densauto', 'r-lenmode', 'r-tex', 'r-tex2', 'r-fx', 'r-hit', 'r-seed'].forEach(id => $(id).addEventListener('change', renderRegen));
 $('resetregen').addEventListener('click', () => {
-  Object.assign(RG, { n: 2, roles: ROLES.slice(), pads: 0, instruments: {} });
+  Object.assign(RG, { n: 2, roles: ROLES.slice(), pads: 0, instruments: {}, ensemble: '', variety: '' });
   $('desc').value = ''; $('r-style').value = $('r-mode').value = $('r-form').value = ''; $('r-energy').value = 0; $('r-densauto').checked = true; $('r-lenmode').value = ''; $('r-loop').checked = false; $('r-seed').value = '';
+  for (const id of ['r-key', 'r-bpm', 'r-feel', 'r-harm', 'r-prog', 'r-tex', 'r-tex2', 'r-fx', 'r-hit']) $(id).value = '';
+  $('quickmsg').textContent = ''; document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = 'dim');
   renderRegen();
 });
 function regenForm() {
@@ -999,15 +1127,30 @@ function regenForm() {
   const ins = {}; for (const [k, v] of Object.entries(RG.instruments)) if (v && (ROLES.includes(k) || EXTRA_PADS.slice(0, RG.pads).includes(k))) ins[k] = v;
   if (Object.keys(ins).length) o.instruments = ins;
   if ($('r-seed').value !== '') o.seed = +$('r-seed').value;
+  // ensemble · variety · key · bpm · feel · harmony · progression · sound design (temp_maker.normOpts validates them)
+  if (RG.ensemble) o.ensemble = RG.ensemble;
+  if (RG.variety) o.variety = RG.variety;
+  const key = $('r-key').value; if (key === 'home') o.key = 'home'; else if (key !== '') o.key = +key;
+  if (+$('r-bpm').value > 0) o.bpm = +$('r-bpm').value;
+  if ($('r-feel').value) o.feel = $('r-feel').value;
+  if ($('r-harm').value) o.harmony = $('r-harm').value;
+  if ($('r-prog').value) o.prog = $('r-prog').value;
+  const t1 = $('r-tex').value, t2 = $('r-tex2').value;
+  if (t1 === 'none') o.textures = 'none'; else if (t1) o.textures = t2 && t2 !== t1 ? [t1, t2] : [t1];
+  if ($('r-fx').value) o.fx = $('r-fx').value;
+  if ($('r-hit').value) o.hit = $('r-hit').value;
   return o;
 }
 // the settings a take was made with, for an identical take: the request + the mood it resolved to + its
 // instruments (so a later change to the DAW's per-style picks can't change it). Key only if it was asked.
+// VARIETY is not re-applied (its picks — style, ensemble — are in the mood); the ensemble the take got is.
 function regenOpts(m) {
   const mo = m.mood || {}, r = Object.assign({}, m.request || {});
   Object.assign(r, { style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, seed: mo.seed });
   if (m.request && m.request.key === undefined) delete r.key;
-  const ins = {}; for (const [k, v] of Object.entries(m.instruments || {})) if (/^(kit|forge:.+|patch:.+)$/.test(v)) ins[k] = v;
+  delete r.variety;
+  if (mo.ensemble) r.ensemble = mo.ensemble;
+  const ins = {}; for (const [k, v] of Object.entries(m.instruments || {})) if (TempMaker.INSTR_SPEC.test(v)) ins[k] = v;
   if (Object.keys(ins).length) r.instruments = ins;
   return r;
 }
@@ -1018,11 +1161,15 @@ function forWho() {
 function makeNow() {
   const ids = DIR.checked.size ? [...DIR.checked] : DIR.sel ? [DIR.sel] : [];
   if (!ids.length) { msg('pick a track (or tick some) first.', true, 'makemsg'); msg('pick a track on the left first.', true); return; }
-  requestTakes(ids, RG.n, regenForm());
+  return requestTakes(ids, RG.n, regenForm());
 }
 $('make').addEventListener('click', makeNow);
 $('make2').addEventListener('click', makeNow);
-$('tosettings').addEventListener('click', () => $('regen').scrollIntoView({ behavior: 'smooth', block: 'start' }));
+// the box's top lands just under the sticky transport (scrollIntoView alone would tuck FOR / TAKES / QUICK beneath it)
+$('tosettings').addEventListener('click', () => {
+  const tr = document.querySelector('.transport').getBoundingClientRect(), top = $('regen').getBoundingClientRect().top;
+  $('right').scrollBy({ top: top - ($('right').getBoundingClientRect().top - 8 + tr.height) - 34, behavior: 'smooth' });
+});
 // One engine for the page, started on the first MAKE TAKES tap (its AudioContext needs the gesture); requests queue
 // and run one after another. Each take lands in review staging and shows up under TAKES as soon as it's written.
 const STUDIO = { E: null, busy: false, queue: [] };
@@ -1093,8 +1240,12 @@ async function openPicker(role) {
   renderPicker();
 }
 async function instrumentChoices(role) {
-  const drums = role === 'drums', groups = [{ name: 'AUTO', items: [{ v: '', name: 'auto — the DAW picks for the style' }] }];
-  if (drums) groups.push({ name: 'KIT', items: [{ v: 'kit', name: 'KIT — FORGE drum kit' }] });
+  const drums = role === 'drums', groups = [{ name: 'AUTO', items: [{ v: '', name: RG.ensemble ? 'auto — from the ' + TempMaker.ENSEMBLES[RG.ensemble].name + ' ensemble' : 'auto — the DAW picks for the style' }] }];
+  // the chosen ensemble's own options for this role first (a take draws one of them by its seed)
+  const ens = RG.ensemble && TempMaker.ENSEMBLES[RG.ensemble], el = ens && ens.roles[role] && ens.roles[role].filter(x => drums ? /^kit/.test(x) : (window.FORGE_PRESETS || []).some(p => p.id === x));
+  if (el && el.length) groups.push({ name: 'ENSEMBLE · ' + ens.name, items: el.map(x => drums ? { v: x, name: instLabel(x) } : { v: 'forge:' + x, name: instLabel('forge:' + x).replace(/^FORGE /, '') }) });
+  // a kit: the style's own (auto), the standard one, or any style's pieces (brushes, felt kick, 808, timpani-ish toms …)
+  if (drums) groups.push({ name: 'KIT', items: [{ v: 'kit', name: 'KIT — the style\'s FORGE kit' }, { v: 'kit:standard', name: 'KIT · standard' }].concat(Object.keys((window.DAW && DAW.KIT_STYLES) || {}).map(s => ({ v: 'kit:' + s, name: 'KIT · ' + (SeqGen.STYLES[s] ? SeqGen.STYLES[s].name : s) }))) });
   const fp = (window.FORGE_PRESETS || []).filter(p => drums ? false : p.category !== 'drums');
   const fcats = [...new Set(fp.map(p => p.category || 'other'))];
   for (const c of fcats) groups.push({ name: 'FORGE · ' + c, items: fp.filter(p => (p.category || 'other') === c).map(p => ({ v: 'forge:' + p.id, name: p.name })) });
