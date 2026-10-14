@@ -115,7 +115,7 @@ func _shoot_presets(manifest: Dictionary) -> void:
 			continue
 		var p: Dictionary = pv
 		var pid: String = String(p.get("id", ""))
-		if pid == "" or (_only != "" and not pid.begins_with(_only)):
+		if pid == "" or not _only_match(pid):
 			continue
 		var loaded: bool = bool(bg.call("load_location", pid))
 		if not loaded:
@@ -180,9 +180,19 @@ func _mood_tag(mood: String) -> String:
 	return "default" if mood == "" else mood
 
 
+## --only=a,b,c (2026-10-14): any of several preset-id prefixes.
+func _only_match(pid: String) -> bool:
+	if _only == "":
+		return true
+	for pre: String in _only.split(",", false):
+		if pid.begins_with(pre.strip_edges()):
+			return true
+	return false
+
+
 # ── the cast ──────────────────────────────────────────────────────
 func _shoot_heroes(manifest: Dictionary) -> void:
-	if _only != "" and not "_heroes".begins_with(_only):
+	if _only != "" and not _only_match("_heroes"):
 		return
 	var heroes: Array = manifest.get("heroes", [])
 	var exprs: Array = manifest.get("expressions", ["neutral"])

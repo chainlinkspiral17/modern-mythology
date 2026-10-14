@@ -1436,9 +1436,18 @@ def entry_out_path(entry):
 ART_PX_PER_M = 1200
 ART_PX_MIN = 256
 ART_PX_MAX = 2048
+# (2026-10-14, the user: "if images are useful for close-ups of meta-texts
+# or things that add personality to the world, they can be kept large, if
+# we expand the visual novel to include moments to look closer at these
+# things for quiet/introspective moments away from dialogue.") An entry
+# marked `inspect` (letters, flyers, photos, paintings, maps, boards — and
+# whatever the prose describes) keeps its full resolution, up to this:
+ART_PX_INSPECT = 4096
 
 
 def art_size_limit(entry):
+    if entry.get("inspect"):
+        return ART_PX_INSPECT
     w, h = art_size(entry)
     px = int(max(w, h) * ART_PX_PER_M)
     if entry.get("fit") == "tile":

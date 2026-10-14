@@ -7211,7 +7211,8 @@
             "Face_Hair_"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sam_photo_diego",
@@ -7251,7 +7252,8 @@
           ],
           "facing": "+y"
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "periodic_table_diego",
@@ -7293,7 +7295,8 @@
             "Periodic_Table"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "calendar_diego",
@@ -7337,7 +7340,8 @@
             "Calendar_March_"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cabin_interior_ebed_win_glass",
@@ -7673,7 +7677,8 @@
             "Canvas_Board"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "lena_apartment_canvas_2",
@@ -7714,7 +7719,8 @@
           ]
         }
       ],
-      "lettering": "Starfish study — 2050 — L.V."
+      "lettering": "Starfish study — 2050 — L.V.",
+      "inspect": true
     },
     {
       "slug": "lena_apartment_nebula_1",
@@ -7774,7 +7780,8 @@
             "Nebula_Star_Core"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "lena_apartment_nebula_2",
@@ -7822,7 +7829,8 @@
             "Nebula_Patch_4"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "salty_tome_interior_alley_muralwall",
@@ -7861,7 +7869,8 @@
             "Alley_MuralWall_Grime"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "salty_tome_interior_canvas",
@@ -7900,7 +7909,8 @@
             "Canvas_Bag"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "salty_tome_interior_hemlock_across_facade",
@@ -7992,7 +8002,8 @@
             "Nebula_Ground"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "salty_tome_interior_nebula_2",
@@ -8031,7 +8042,8 @@
             "Nebula_Star_Core"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "hans_bakery_back_kitchen_canvas",
@@ -8070,7 +8082,8 @@
             "Canvas_Bag"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "hans_bakery_back_kitchen_hemlock_far",
@@ -9154,7 +9167,8 @@
             "Bin_2_Comic_19"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cosmic_comics_interior_key",
@@ -9610,7 +9624,8 @@
           ]
         }
       ],
-      "lettering": "KEY · $85 VF"
+      "lettering": "KEY · $85 VF",
+      "inspect": true
     },
     {
       "slug": "cosmic_comics_interior_newarrivals_comic",
@@ -9735,7 +9750,8 @@
             "NewArrivals_Comic_5"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cosmic_comics_interior_open_sign",
@@ -9782,7 +9798,8 @@
             "Open_Sign_Text"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cosmic_comics_interior_spin2_comic",
@@ -10112,7 +10129,8 @@
           ]
         }
       ],
-      "lettering": "DOLLAR REPRINT"
+      "lettering": "DOLLAR REPRINT",
+      "inspect": true
     },
     {
       "slug": "cosmic_comics_interior_spinner_comic",
@@ -10441,7 +10459,8 @@
             "Spinner_Comic_2_5"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_bookstore_sign",
@@ -10526,7 +10545,8 @@
             "Closed_Sign"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_exit_sign",
@@ -10655,7 +10675,8 @@
             "Mural_Patch"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_open_sign",
@@ -10700,7 +10721,8 @@
             "Open_Sign"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_sanderling_mural_1",
@@ -10748,7 +10770,8 @@
             "Sanderling_Mural_Sky"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_sanderling_mural_2",
@@ -10796,7 +10819,8 @@
             "Sanderling_Mural_Sand"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_sanderling_mural_3",
@@ -10844,7 +10868,8 @@
             "Sanderling_Mural_Wet"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_shoe_repair_sign",
@@ -11174,7 +11199,8 @@
           ]
         }
       ],
-      "lettering": "KWIK STOP"
+      "lettering": "KWIK STOP",
+      "inspect": true
     },
     {
       "slug": "kwik_stop_brand_2",
@@ -11214,7 +11240,8 @@
           ]
         }
       ],
-      "lettering": "K"
+      "lettering": "K",
+      "inspect": true
     },
     {
       "slug": "kwik_stop_brand_3",
@@ -11254,7 +11281,8 @@
           ]
         }
       ],
-      "lettering": "O"
+      "lettering": "O",
+      "inspect": true
     },
     {
       "slug": "kwik_stop_cupstack_salesign",
@@ -11454,7 +11482,8 @@
           ]
         }
       ],
-      "lettering": "ICE"
+      "lettering": "ICE",
+      "inspect": true
     },
     {
       "slug": "kwik_stop_novelty_cooler_decal",
@@ -12032,7 +12061,8 @@
             "Devil_Daigle_SignPeel_2"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "graustark_devil_daigle_neon",
@@ -13310,7 +13340,8 @@
           ]
         }
       ],
-      "lettering": "FROG KNOWS BEST · AQUARIUM · BAIT"
+      "lettering": "FROG KNOWS BEST · AQUARIUM · BAIT",
+      "inspect": true
     },
     {
       "slug": "vehicle_cab_altima_map",
@@ -13349,7 +13380,8 @@
             "Altima_Map_Folded"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "vehicle_cab_corolla_map",
@@ -13388,7 +13420,8 @@
             "Corolla_Map_Folded"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "vehicle_cab_map",
@@ -13440,7 +13473,8 @@
             "Map_Folded"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "vehicle_cab_mile_marker_sign",
@@ -14051,7 +14085,8 @@
           ]
         }
       ],
-      "lettering": "TWO-A-DAYS 6:00 AM · BOOSTER CLUB CAR WASH"
+      "lettering": "TWO-A-DAYS 6:00 AM · BOOSTER CLUB CAR WASH",
+      "inspect": true
     },
     {
       "slug": "school_field_evening_depthchart",
@@ -14101,7 +14136,8 @@
           ]
         }
       ],
-      "lettering": "NEW AUBURN FOOTBALL · DEPTH CHART · VINTON SCRIMMAGE · TE-1 ACHTERBERG (LeBlanc)"
+      "lettering": "NEW AUBURN FOOTBALL · DEPTH CHART · VINTON SCRIMMAGE · TE-1 ACHTERBERG (LeBlanc)",
+      "inspect": true
     },
     {
       "slug": "school_field_evening_score",
@@ -14278,7 +14314,8 @@
           ]
         }
       ],
-      "lettering": "HOME 00 · GUEST 00 · 12:00 · QTR 1"
+      "lettering": "HOME 00 · GUEST 00 · 12:00 · QTR 1",
+      "inspect": true
     },
     {
       "slug": "pit_stop_interior_print",
@@ -14324,7 +14361,8 @@
             "Print_8x10_2"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "pit_stop_interior_prints",
@@ -14368,7 +14406,8 @@
             "Prints_Paper_Bag"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "henderson_kitchen_contact_prints",
@@ -14416,7 +14455,8 @@
             "Contact_Prints_Sheet"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "finn_apartment_coat_canvas",
@@ -14460,7 +14500,8 @@
             "Coat_Canvas"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "finn_apartment_n_window",
@@ -14587,7 +14628,8 @@
           ]
         }
       ],
-      "lettering": "HEAT TO BREAK BY TUESDAY"
+      "lettering": "HEAT TO BREAK BY TUESDAY",
+      "inspect": true
     },
     {
       "slug": "kowalski_kitchen_window",
@@ -14878,7 +14920,8 @@
           ]
         }
       ],
-      "lettering": "INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS · DO NOT PROP COOLER DOORS WITH MILK CRATES · CENTRO FOODS"
+      "lettering": "INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS · DO NOT PROP COOLER DOORS WITH MILK CRATES · CENTRO FOODS",
+      "inspect": true
     },
     {
       "slug": "diner_bbs_screen",
@@ -15008,7 +15051,8 @@
             "NeonOpenSign"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "diner_phonebooth_sign",
@@ -15394,7 +15438,8 @@
           ]
         }
       ],
-      "lettering": "no legible text beyond the score bug: HOME 17 · AWAY 20 · 4TH 2:41"
+      "lettering": "no legible text beyond the score bug: HOME 17 · AWAY 20 · 4TH 2:41",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_beerneon_1",
@@ -15441,7 +15486,8 @@
           ]
         }
       ],
-      "lettering": "Delta Lager"
+      "lettering": "Delta Lager",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_beerneon_2",
@@ -15488,7 +15534,8 @@
           ]
         }
       ],
-      "lettering": "Pelican Gold"
+      "lettering": "Pelican Gold",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_exit_sign",
@@ -15576,7 +15623,8 @@
           ]
         }
       ],
-      "lettering": "no legible text beyond score digits"
+      "lettering": "no legible text beyond score digits",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_open_neon",
@@ -15667,7 +15715,8 @@
           ]
         }
       ],
-      "lettering": "THE FOXHOLE · SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO)"
+      "lettering": "THE FOXHOLE · SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO)",
+      "inspect": true
     },
     {
       "slug": "new_auburn_courtroom_clerk_screen",
@@ -15713,7 +15762,8 @@
           ]
         }
       ],
-      "lettering": "NEW AUBURN COUNTY COURT · CRIMINAL DOCKET / STATE OF TEXAS v. MILLER, M. · ARRAIGNMENT 2:00 PM / SECOND AMENDED DOCKET — FILED 10:46 AM — INTERESTED PARTY: D. DEAN"
+      "lettering": "NEW AUBURN COUNTY COURT · CRIMINAL DOCKET / STATE OF TEXAS v. MILLER, M. · ARRAIGNMENT 2:00 PM / SECOND AMENDED DOCKET — FILED 10:46 AM — INTERESTED PARTY: D. DEAN",
+      "inspect": true
     },
     {
       "slug": "cabin_road_roadsign",
@@ -15798,7 +15848,8 @@
             "Framed_Print_Image"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "maya_bedroom_hall_photo_1",
@@ -15842,7 +15893,8 @@
             "Hall_Photo_0_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "maya_bedroom_hall_photo_2",
@@ -15886,7 +15938,8 @@
             "Hall_Photo_1_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "maya_bedroom_hall_photo_3",
@@ -15930,7 +15983,8 @@
             "Hall_Photo_2_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cedar_tower_dean_portrait",
@@ -15975,7 +16029,8 @@
             "Dean_Portrait_Figure"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cedar_tower_desk_monitor",
@@ -16139,7 +16194,8 @@
           ]
         }
       ],
-      "lettering": "no legible text"
+      "lettering": "no legible text",
+      "inspect": true
     },
     {
       "slug": "cedar_tower_ephoto",
@@ -16251,7 +16307,8 @@
             "EPhoto_4"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cedar_tower_estuary7_poster",
@@ -16300,7 +16357,8 @@
           ]
         }
       ],
-      "lettering": "ESTUARY 7 · Ines Rocha, with the Oneironautics Inc. team, after a series template begun by D. Dean in 1997."
+      "lettering": "ESTUARY 7 · Ines Rocha, with the Oneironautics Inc. team, after a series template begun by D. Dean in 1997.",
+      "inspect": true
     },
     {
       "slug": "centro_stockroom_extinguisher_sign",
@@ -16421,7 +16479,8 @@
           ]
         }
       ],
-      "lettering": "ESPRESSO 2.75 · ALLONGÉ 3.00 · MACCHIATO 3.00 · CAPPUCCINO 4.25 · LATTE 4.50 · CANNOLI 3.50 · BISCOTTI 1.50"
+      "lettering": "ESPRESSO 2.75 · ALLONGÉ 3.00 · MACCHIATO 3.00 · CAPPUCCINO 4.25 · LATTE 4.50 · CANNOLI 3.50 · BISCOTTI 1.50",
+      "inspect": true
     },
     {
       "slug": "cafe_olimpico_out_facade",
@@ -16863,7 +16922,8 @@
           ]
         }
       ],
-      "lettering": "DAILY GRIND — DRIP 2 · AMERICANO 2 · CORTADO 3 · LATTE 3 · CAPPUCCINO 3 / POUR-OVER 3 · HOT CHOCOLATE 2 · TEA 2 · DECAF 2 · HANS'S PASTRY 2 (prices in tokens)"
+      "lettering": "DAILY GRIND — DRIP 2 · AMERICANO 2 · CORTADO 3 · LATTE 3 · CAPPUCCINO 3 / POUR-OVER 3 · HOT CHOCOLATE 2 · TEA 2 · DECAF 2 · HANS'S PASTRY 2 (prices in tokens)",
+      "inspect": true
     },
     {
       "slug": "daily_grind_interior_win_s_0_glass",
@@ -17189,7 +17249,8 @@
             "KitchenDoor_PushPlate"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "missing_link_interior_laminated_menu",
@@ -17239,7 +17300,8 @@
           ]
         }
       ],
-      "lettering": "THE MISSING LINK\nWe have what we have.\nTHE FAUST $6.50\nTHE PASADENA $5\nSMOLVUD TOAST $3\nSANDERLING EGGS $5.50\nTHE CALE $2\nBRIAR FALLS PIE\nF.T.'S FLOAT $4\nLAFAYETTE — no charge for the coffee\nCHILDREN'S MENU: A glass of milk and three crackers."
+      "lettering": "THE MISSING LINK\nWe have what we have.\nTHE FAUST $6.50\nTHE PASADENA $5\nSMOLVUD TOAST $3\nSANDERLING EGGS $5.50\nTHE CALE $2\nBRIAR FALLS PIE\nF.T.'S FLOAT $4\nLAFAYETTE — no charge for the coffee\nCHILDREN'S MENU: A glass of milk and three crackers.",
+      "inspect": true
     },
     {
       "slug": "missing_link_interior_linksign",
@@ -17286,7 +17348,8 @@
           ]
         }
       ],
-      "lettering": "THE MISSING LINK"
+      "lettering": "THE MISSING LINK",
+      "inspect": true
     },
     {
       "slug": "missing_link_interior_menuboard_1",
@@ -17330,7 +17393,8 @@
           ]
         }
       ],
-      "lettering": "THE FAUST 6.50\nTHE PASADENA 5.00\nSANDERLING EGGS 5.50\nTHE CALE 2.00"
+      "lettering": "THE FAUST 6.50\nTHE PASADENA 5.00\nSANDERLING EGGS 5.50\nTHE CALE 2.00",
+      "inspect": true
     },
     {
       "slug": "missing_link_interior_photo",
@@ -17481,7 +17545,8 @@
             "Photo_1_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "missing_link_interior_window_1",
@@ -17775,7 +17840,8 @@
           ]
         }
       ],
-      "lettering": "Inbox (412) / John Frank — Hi — Eli — I heard you were in Montreal. From the Roberts."
+      "lettering": "Inbox (412) / John Frank — Hi — Eli — I heard you were in Montreal. From the Roberts.",
+      "inspect": true
     },
     {
       "slug": "elicia_apartment_skyline",
@@ -17914,7 +17980,8 @@
           ]
         }
       ],
-      "lettering": "Cypress"
+      "lettering": "Cypress",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_cypress_motel_sign_2",
@@ -17999,7 +18066,8 @@
           ]
         }
       ],
-      "lettering": "VACANCY"
+      "lettering": "VACANCY",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_foxhole_front_sign",
@@ -18044,7 +18112,8 @@
           ]
         }
       ],
-      "lettering": "THE FOXHOLE"
+      "lettering": "THE FOXHOLE",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_lighting_van_logo",
@@ -18089,7 +18158,8 @@
           ]
         }
       ],
-      "lettering": "RAMÓN VARGAS LIGHTING — SAN ANTONIO"
+      "lettering": "RAMÓN VARGAS LIGHTING — SAN ANTONIO",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_marquee_1",
@@ -18138,7 +18208,8 @@
           ]
         }
       ],
-      "lettering": "SAT 8/22 — SUBURBAN BLIGHT / DJ CHESS  DOORS 8"
+      "lettering": "SAT 8/22 — SUBURBAN BLIGHT / DJ CHESS  DOORS 8",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_marquee_2",
@@ -18187,7 +18258,8 @@
           ]
         }
       ],
-      "lettering": "SAT 8/22 — SUBURBAN BLIGHT"
+      "lettering": "SAT 8/22 — SUBURBAN BLIGHT",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_napd_sign",
@@ -18232,7 +18304,8 @@
           ]
         }
       ],
-      "lettering": "NAPD SUBSTATION B / NEW AUBURN POLICE DEPARTMENT"
+      "lettering": "NAPD SUBSTATION B / NEW AUBURN POLICE DEPARTMENT",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_payday_loan_sign",
@@ -18394,7 +18467,8 @@
           ]
         }
       ],
-      "lettering": "NEW AUBURN POLICE DEPARTMENT · SUBSTATION B · LOBBY HOURS MON–FRI 8–5 · IN AN EMERGENCY DIAL 911"
+      "lettering": "NEW AUBURN POLICE DEPARTMENT · SUBSTATION B · LOBBY HOURS MON–FRI 8–5 · IN AN EMERGENCY DIAL 911",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_substation_2",
@@ -18434,7 +18508,8 @@
           ]
         }
       ],
-      "lettering": "STAFF ONLY"
+      "lettering": "STAFF ONLY",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_substation_3",
@@ -18480,7 +18555,8 @@
           ]
         }
       ],
-      "lettering": "NAPD SUBSTATION B"
+      "lettering": "NAPD SUBSTATION B",
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_unit_1",
@@ -18524,7 +18600,8 @@
             "Unit_BackDoor"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_unit_2",
@@ -18569,7 +18646,8 @@
             "Unit_Window_Paper_2"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_auburn_road_unit_3",
@@ -18613,7 +18691,8 @@
             "Unit_Window_Paper_1"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_dining_photo_1",
@@ -18653,7 +18732,8 @@
             "Dining_Photo_0_Pic"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_dining_photo_2",
@@ -18692,7 +18772,8 @@
             "Dining_Photo_1_Pic"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_foyer_photo_1",
@@ -18731,7 +18812,8 @@
             "Foyer_Photo_Mat"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_tv",
@@ -18952,7 +19034,8 @@
           ]
         }
       ],
-      "lettering": "TAQUERIA / EL RANCHO"
+      "lettering": "TAQUERIA / EL RANCHO",
+      "inspect": true
     },
     {
       "slug": "el_rancho_taqueria_speaker_broke_sign",
@@ -18997,7 +19080,8 @@
           ]
         }
       ],
-      "lettering": "SPEAKER BROKE — ORDER AT WINDOW"
+      "lettering": "SPEAKER BROKE — ORDER AT WINDOW",
+      "inspect": true
     },
     {
       "slug": "nightmare_cell_may_calendar",
@@ -19046,7 +19130,8 @@
           ]
         }
       ],
-      "lettering": "MAY 2025 · SUN MON TUE WED THU FRI SAT"
+      "lettering": "MAY 2025 · SUN MON TUE WED THU FRI SAT",
+      "inspect": true
     },
     {
       "slug": "sam_bedroom_bed_print",
@@ -19086,7 +19171,8 @@
             "Bed_Print_Image"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sam_bedroom_curtain_1",
@@ -19125,7 +19211,8 @@
             "Curtain_Drape_W"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sam_bedroom_curtain_2",
@@ -19164,7 +19251,8 @@
             "Curtain_Drape_E"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sam_bedroom_curtain_3",
@@ -19203,7 +19291,8 @@
             "Curtain_Sheer"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sam_bedroom_window",
@@ -19295,7 +19384,8 @@
             "Beach_Print_Sky"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "hospice_room_beach_print_2",
@@ -19339,7 +19429,8 @@
             "Beach_Print_Sand"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "hospice_room_dresser_photo",
@@ -19378,7 +19469,8 @@
             "Dresser_Photo"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "hospice_room_window",
@@ -19508,7 +19600,8 @@
           ]
         }
       ],
-      "lettering": "LA NUIT DU TRAVERSIER"
+      "lettering": "LA NUIT DU TRAVERSIER",
+      "inspect": true
     },
     {
       "slug": "montreal_apartment_poster_2",
@@ -19555,7 +19648,8 @@
           ]
         }
       ],
-      "lettering": "THE LONG NOON"
+      "lettering": "THE LONG NOON",
+      "inspect": true
     },
     {
       "slug": "montreal_apartment_window",
@@ -19642,7 +19736,8 @@
             "Helm_WifePhoto"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "riverboat_interior_staffexit_exitsign",
@@ -19722,7 +19817,8 @@
             "Bike_Wheel_Rear_Rim"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_bike_2",
@@ -19762,7 +19858,8 @@
             "Bike_Wheel_Front_Rim"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_win_e_glass",
@@ -19890,7 +19987,8 @@
           ]
         }
       ],
-      "lettering": "00:14:22:07  PAUSE"
+      "lettering": "00:14:22:07  PAUSE",
+      "inspect": true
     },
     {
       "slug": "bungalow_priestess_johnmonitor",
@@ -19980,7 +20078,8 @@
           ]
         }
       ],
-      "lettering": "1 GRID FAILURE / 2 SUBSTATION NINE / 3 BOX FAN / 4 BLOWBACK / 5 HERE COMES YOUR MAN"
+      "lettering": "1 GRID FAILURE / 2 SUBSTATION NINE / 3 BOX FAN / 4 BLOWBACK / 5 HERE COMES YOUR MAN",
+      "inspect": true
     },
     {
       "slug": "kestrel_mountain_mountain",
@@ -20122,7 +20221,8 @@
           ]
         }
       ],
-      "lettering": "0.4 MI TO THE FALLS / 1.2 MI TO THE OLD TOWER (DISCONTINUED — DO NOT)"
+      "lettering": "0.4 MI TO THE FALLS / 1.2 MI TO THE OLD TOWER (DISCONTINUED — DO NOT)",
+      "inspect": true
     },
     {
       "slug": "new_orleans_room_room_tv",
@@ -20167,7 +20267,8 @@
           ]
         }
       ],
-      "lettering": "4TH 2:13 · 14–17"
+      "lettering": "4TH 2:13 · 14–17",
+      "inspect": true
     },
     {
       "slug": "new_orleans_room_window",
@@ -20292,7 +20393,8 @@
             "Thomas_Photo"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "caldwell_radio_room_night_wall_photo_1",
@@ -20332,7 +20434,8 @@
             "Wall_Photo_1_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "caldwell_radio_room_night_wall_photo_2",
@@ -20372,7 +20475,8 @@
             "Wall_Photo_0_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "caldwell_radio_room_night_wall_photo_3",
@@ -20412,7 +20516,8 @@
             "Wall_Photo_2_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "caldwell_radio_room_night_wall_photo_4",
@@ -20452,7 +20557,8 @@
             "Wall_Photo_3_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cape_perpetua_overlook_bluff",
@@ -20542,7 +20648,8 @@
             "Canvas_Bag"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "cape_perpetua_overlook_vestergaard_plaque",
@@ -20587,7 +20694,8 @@
           ]
         }
       ],
-      "lettering": "VESTERGAARD FOUNDATION — Coastal Stewardship"
+      "lettering": "VESTERGAARD FOUNDATION — Coastal Stewardship",
+      "inspect": true
     },
     {
       "slug": "foxhole_dressing_room_dr_sign",
@@ -20632,7 +20740,8 @@
           ]
         }
       ],
-      "lettering": "DRESSING ROOM"
+      "lettering": "DRESSING ROOM",
+      "inspect": true
     },
     {
       "slug": "nexcorp_gas_go_aisle_endcap_water_sign",
@@ -20846,7 +20955,8 @@
           ]
         }
       ],
-      "lettering": "#"
+      "lettering": "#",
+      "inspect": true
     },
     {
       "slug": "missing_link_exterior_sign_1",
@@ -20895,7 +21005,8 @@
           ]
         }
       ],
-      "lettering": "THE MISSING LINK"
+      "lettering": "THE MISSING LINK",
+      "inspect": true
     },
     {
       "slug": "missing_link_exterior_sign_2",
@@ -21029,7 +21140,8 @@
           ]
         }
       ],
-      "lettering": "Come Visit Today.\nA Twisted Beauty and a Beast.\nOnly at The Cliffside Circus Attraction —"
+      "lettering": "Come Visit Today.\nA Twisted Beauty and a Beast.\nOnly at The Cliffside Circus Attraction —",
+      "inspect": true
     },
     {
       "slug": "cliffside_circus_main_sign_1",
@@ -21109,7 +21221,8 @@
           ]
         }
       ],
-      "lettering": "THE CLIFFSIDE CIRCUS"
+      "lettering": "THE CLIFFSIDE CIRCUS",
+      "inspect": true
     },
     {
       "slug": "miller_office_laptop_screen",
@@ -21190,7 +21303,8 @@
           ]
         }
       ],
-      "lettering": "PIT STOP DINER · GRAND OPENING"
+      "lettering": "PIT STOP DINER · GRAND OPENING",
+      "inspect": true
     },
     {
       "slug": "riverfront_boatsign",
@@ -21478,7 +21592,8 @@
           ]
         }
       ],
-      "lettering": "WHARF STREET PARK"
+      "lettering": "WHARF STREET PARK",
+      "inspect": true
     },
     {
       "slug": "riverfront_sign_1",
@@ -21528,7 +21643,8 @@
           ]
         }
       ],
-      "lettering": "D'Ambrosio's\nOPEN 24 HOURS"
+      "lettering": "D'Ambrosio's\nOPEN 24 HOURS",
+      "inspect": true
     },
     {
       "slug": "riverfront_sign_2",
@@ -21574,7 +21690,8 @@
           ]
         }
       ],
-      "lettering": "D'Ambrosio's\nOPEN 24 HOURS"
+      "lettering": "D'Ambrosio's\nOPEN 24 HOURS",
+      "inspect": true
     },
     {
       "slug": "riverfront_stripmall_sign",
@@ -21827,7 +21944,8 @@
           ]
         }
       ],
-      "lettering": "LITTLE SWITZERLAND"
+      "lettering": "LITTLE SWITZERLAND",
+      "inspect": true
     },
     {
       "slug": "little_switzerland_sign_2",
@@ -21934,7 +22052,8 @@
             "Canvas_Surface"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "lena_studio_old_canvas",
@@ -21976,7 +22095,8 @@
           ]
         }
       ],
-      "lettering": "L.V. — no. 6"
+      "lettering": "L.V. — no. 6",
+      "inspect": true
     },
     {
       "slug": "lena_studio_win_n_glass",
@@ -22188,7 +22308,8 @@
           ]
         }
       ],
-      "lettering": "Come Visit Today. A Twisted Beauty and a Beast. Only at The Cliffside Circus Attraction"
+      "lettering": "Come Visit Today. A Twisted Beauty and a Beast. Only at The Cliffside Circus Attraction",
+      "inspect": true
     },
     {
       "slug": "crumpled_barn_sign_2",
@@ -22232,7 +22353,8 @@
             "Sign_Panel_Hi"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "crumpled_barn_sign_3",
@@ -22277,7 +22399,8 @@
             "Sign_Hair"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "darkroom_dryprint",
@@ -22416,7 +22539,8 @@
             "DryPrint_4_Img"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "darkroom_sink_print",
@@ -22457,7 +22581,8 @@
             "Sink_Print_2"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "gallatin_water_tower_fence_screen_1",
@@ -22505,7 +22630,8 @@
             "Fence_Screen_Side_W"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "gallatin_water_tower_fence_screen_2",
@@ -22549,7 +22675,8 @@
             "Fence_Screen_Side_E"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "graustark_post_office_clerk",
@@ -22673,7 +22800,8 @@
             "Clerk_Window_2_Sign"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "salty_tome_interior_slowterminal_screen",
@@ -22722,7 +22850,8 @@
           ]
         }
       ],
-      "lettering": "SALTY TOME · CATALOG / THE ARCHITECTURE OF INLAND WATER / PATTERN PERSISTENCE: SELECTED ESSAYS / THE SEVEN FLOORS OF THE GLASS HOUSE / 0 TITLES FOUND"
+      "lettering": "SALTY TOME · CATALOG / THE ARCHITECTURE OF INLAND WATER / PATTERN PERSISTENCE: SELECTED ESSAYS / THE SEVEN FLOORS OF THE GLASS HOUSE / 0 TITLES FOUND",
+      "inspect": true
     },
     {
       "slug": "cosmic_comics_interior_winposter",
@@ -22763,7 +22892,8 @@
           ]
         }
       ],
-      "lettering": "NEW ISSUES EVERY WEEK"
+      "lettering": "NEW ISSUES EVERY WEEK",
+      "inspect": true
     },
     {
       "slug": "board_lords_interior_across_facade",
@@ -23015,7 +23145,8 @@
           ]
         }
       ],
-      "lettering": "BOBBY'S TOWING & AUTO · NEW AUBURN · AUGUST 2025"
+      "lettering": "BOBBY'S TOWING & AUTO · NEW AUBURN · AUGUST 2025",
+      "inspect": true
     },
     {
       "slug": "kwik_stop_poster_1",
@@ -23056,7 +23187,8 @@
           ]
         }
       ],
-      "lettering": "GULF HIGHWAY / THE HEAT NEVER BREAKS"
+      "lettering": "GULF HIGHWAY / THE HEAT NEVER BREAKS",
+      "inspect": true
     },
     {
       "slug": "graustark_billboard_1",
@@ -23296,7 +23428,8 @@
           ]
         }
       ],
-      "lettering": "GRAUSTARK · FOUNDED ON THE RIVER · 1847 · ERECTED BY THE CITIZENS OF GRAUSTARK · 1912"
+      "lettering": "GRAUSTARK · FOUNDED ON THE RIVER · 1847 · ERECTED BY THE CITIZENS OF GRAUSTARK · 1912",
+      "inspect": true
     },
     {
       "slug": "centro_grocery_aisle_calendar",
@@ -23337,7 +23470,8 @@
           ]
         }
       ],
-      "lettering": "AUGUST 2025 · INVENTORY"
+      "lettering": "AUGUST 2025 · INVENTORY",
+      "inspect": true
     },
     {
       "slug": "centro_grocery_aisle_office_corkboard_1",
@@ -23380,7 +23514,8 @@
           ]
         }
       ],
-      "lettering": "NIGHT CREW"
+      "lettering": "NIGHT CREW",
+      "inspect": true
     },
     {
       "slug": "centro_grocery_aisle_office_corkboard_2",
@@ -23425,7 +23560,8 @@
           ]
         }
       ],
-      "lettering": "MAINTENANCE REQUEST"
+      "lettering": "MAINTENANCE REQUEST",
+      "inspect": true
     },
     {
       "slug": "centro_grocery_aisle_office_corkboard_3",
@@ -23465,7 +23601,8 @@
           ]
         }
       ],
-      "lettering": "QUARTERLY INVENTORY — ALL HANDS"
+      "lettering": "QUARTERLY INVENTORY — ALL HANDS",
+      "inspect": true
     },
     {
       "slug": "centro_grocery_aisle_office_monitor",
@@ -23511,7 +23648,8 @@
           ]
         }
       ],
-      "lettering": "WK33 SHRINK"
+      "lettering": "WK33 SHRINK",
+      "inspect": true
     },
     {
       "slug": "centro_grocery_aisle_storefront_e_decal",
@@ -23765,7 +23903,8 @@
           ]
         }
       ],
-      "lettering": "BURGERS: CHEESEBURGER 9.25 · PATTY MELT 9.75 · BACON JALAPEÑO 10.50 / PLATES: CHICKEN FRIED STEAK 13.95 · ENCHILADA PLATE 11.50 · CATFISH 12.95"
+      "lettering": "BURGERS: CHEESEBURGER 9.25 · PATTY MELT 9.75 · BACON JALAPEÑO 10.50 / PLATES: CHICKEN FRIED STEAK 13.95 · ENCHILADA PLATE 11.50 · CATFISH 12.95",
+      "inspect": true
     },
     {
       "slug": "pit_stop_interior_menuboard_2",
@@ -23805,7 +23944,8 @@
           ]
         }
       ],
-      "lettering": "BREAKFAST ALL DAY · 2 EGGS ANY STYLE 7.50 · PANCAKES (3) 6.95 · BREAKFAST TACOS 2 FOR 5.00 · BISCUITS & GRAVY 6.50 · COFFEE 2.00 FREE REFILLS"
+      "lettering": "BREAKFAST ALL DAY · 2 EGGS ANY STYLE 7.50 · PANCAKES (3) 6.95 · BREAKFAST TACOS 2 FOR 5.00 · BISCUITS & GRAVY 6.50 · COFFEE 2.00 FREE REFILLS",
+      "inspect": true
     },
     {
       "slug": "pit_stop_interior_menuboard_3",
@@ -23845,7 +23985,8 @@
           ]
         }
       ],
-      "lettering": "SIDES & PIE · FRIES 3.25 · ONION RINGS 3.95 · OKRA 3.50 · PIE BY THE SLICE 4.50 PECAN · COCONUT CREAM · APPLE · ICED TEA 2.25"
+      "lettering": "SIDES & PIE · FRIES 3.25 · ONION RINGS 3.95 · OKRA 3.50 · PIE BY THE SLICE 4.50 PECAN · COCONUT CREAM · APPLE · ICED TEA 2.25",
+      "inspect": true
     },
     {
       "slug": "pit_stop_interior_strip_across_sign",
@@ -23924,7 +24065,8 @@
             "Family_Photo_0_Image"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "kowalski_kitchen_family_photo_2",
@@ -23963,7 +24105,8 @@
             "Family_Photo_1_Image"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "kowalski_kitchen_family_photo_3",
@@ -24002,7 +24145,8 @@
             "Family_Photo_2_Image"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "kowalski_kitchen_hall_photo",
@@ -24042,7 +24186,8 @@
             "Hall_Photo_Image"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "natalie_apartment_out_s_facade",
@@ -24408,7 +24553,8 @@
           ]
         }
       ],
-      "lettering": "THE FOOL"
+      "lettering": "THE FOOL",
+      "inspect": true
     },
     {
       "slug": "diner_wallphoto",
@@ -24516,7 +24662,8 @@
           ]
         }
       ],
-      "lettering": "Opening Day, '83"
+      "lettering": "Opening Day, '83",
+      "inspect": true
     },
     {
       "slug": "diner_westext_corridor_painting",
@@ -24555,7 +24702,8 @@
             "WestExt_Corridor_Painting_Canvas"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "foxhole_bar_backbar_neon_1",
@@ -24803,7 +24951,8 @@
           ]
         }
       ],
-      "lettering": "BAYOU SALVAGE & LUMBER · AUGUST · beam delivery · inspection"
+      "lettering": "BAYOU SALVAGE & LUMBER · AUGUST · beam delivery · inspection",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_chalk_corner_flyer_1",
@@ -24844,7 +24993,8 @@
           ]
         }
       ],
-      "lettering": "SEVENTH WARD SOCIAL BRASS BAND · THURSDAYS AT THE IRON CROW · 10 PM · $5"
+      "lettering": "SEVENTH WARD SOCIAL BRASS BAND · THURSDAYS AT THE IRON CROW · 10 PM · $5",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_chalk_corner_flyer_2",
@@ -24885,7 +25035,8 @@
           ]
         }
       ],
-      "lettering": "PINBALL & MISSILE COMMAND LEAGUE · 2ND TUESDAYS · HIGH SCORE GETS A ROUND"
+      "lettering": "PINBALL & MISSILE COMMAND LEAGUE · 2ND TUESDAYS · HIGH SCORE GETS A ROUND",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_chalk_corner_flyer_3",
@@ -24926,7 +25077,8 @@
           ]
         }
       ],
-      "lettering": "Mardi Gras '09"
+      "lettering": "Mardi Gras '09",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_chalk_corner_flyer_4",
@@ -24967,7 +25119,8 @@
           ]
         }
       ],
-      "lettering": "CRAWFISH BOIL · SUNDAY 2 PM · $12 A PLATE · BENEFIT FOR THE MARIGNY MUTUAL AID"
+      "lettering": "CRAWFISH BOIL · SUNDAY 2 PM · $12 A PLATE · BENEFIT FOR THE MARIGNY MUTUAL AID",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_gator_plaque",
@@ -25008,7 +25161,8 @@
           ]
         }
       ],
-      "lettering": "HONEY ISLAND SWAMP · 1987"
+      "lettering": "HONEY ISLAND SWAMP · 1987",
+      "inspect": true
     },
     {
       "slug": "new_orleans_bar_missilecmd_marquee",
@@ -25054,7 +25208,8 @@
           ]
         }
       ],
-      "lettering": "MISSILE COMMAND"
+      "lettering": "MISSILE COMMAND",
+      "inspect": true
     },
     {
       "slug": "henderson_garage_corridor_map",
@@ -25103,7 +25258,8 @@
           ]
         }
       ],
-      "lettering": "NEW AUBURN · HARMONY CREEK ESTATES · LIVE OAK ST"
+      "lettering": "NEW AUBURN · HARMONY CREEK ESTATES · LIVE OAK ST",
+      "inspect": true
     },
     {
       "slug": "new_auburn_courtroom_bar_1",
@@ -25142,7 +25298,8 @@
             "Bar_Rail_L_Panel"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_auburn_courtroom_bar_2",
@@ -25181,7 +25338,8 @@
             "Bar_Rail_R_Panel"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_auburn_courtroom_bar_3",
@@ -25220,7 +25378,8 @@
             "Bar_Gate_L"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_auburn_courtroom_bar_4",
@@ -25259,7 +25418,8 @@
             "Bar_Gate_R"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_auburn_courtroom_window_1",
@@ -25593,7 +25753,8 @@
           ]
         }
       ],
-      "lettering": "NEWS FROM HARMONY CREEK"
+      "lettering": "NEWS FROM HARMONY CREEK",
+      "inspect": true
     },
     {
       "slug": "maya_bedroom_laptop_screen",
@@ -25638,7 +25799,8 @@
           ]
         }
       ],
-      "lettering": "f.t.  15:22  maya, i'm sorry to do this over chat."
+      "lettering": "f.t.  15:22  maya, i'm sorry to do this over chat.",
+      "inspect": true
     },
     {
       "slug": "maya_bedroom_tapestry_1",
@@ -25681,7 +25843,8 @@
             "Tapestry_Ring_3"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "centro_stockroom_safety_poster_1",
@@ -25722,7 +25885,8 @@
           ]
         }
       ],
-      "lettering": "LIFT SAFE — Bend your knees · Keep it close · Don't twist"
+      "lettering": "LIFT SAFE — Bend your knees · Keep it close · Don't twist",
+      "inspect": true
     },
     {
       "slug": "centro_stockroom_safety_poster_2",
@@ -25763,7 +25927,8 @@
           ]
         }
       ],
-      "lettering": "SAFETY STARTS WITH YOU — Centro Foods"
+      "lettering": "SAFETY STARTS WITH YOU — Centro Foods",
+      "inspect": true
     },
     {
       "slug": "cafe_olimpico_cafe_tv",
@@ -25911,7 +26076,8 @@
             "Team_Photo_2_Pic"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "new_orleans_apartment_out_facade",
@@ -26135,7 +26301,8 @@
           ]
         }
       ],
-      "lettering": "STATIC TRUTHS — small things the coast does not get to record — new issue at the Salty Tome"
+      "lettering": "STATIC TRUTHS — small things the coast does not get to record — new issue at the Salty Tome",
+      "inspect": true
     },
     {
       "slug": "daily_grind_interior_exit_sign",
@@ -26219,7 +26386,8 @@
             "Painting_1_Mark_4"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "daily_grind_interior_painting_2",
@@ -26263,7 +26431,8 @@
             "Painting_2_Mark_4"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "daily_grind_interior_painting_3",
@@ -26307,7 +26476,8 @@
             "Painting_0_Mark_4"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "daily_grind_interior_pickup_sign",
@@ -26474,7 +26644,8 @@
           ]
         }
       ],
-      "lettering": "SALE 0.00\nGALLONS 0.000\nPRICE/GAL 4.19⁹\nPAY INSIDE"
+      "lettering": "SALE 0.00\nGALLONS 0.000\nPRICE/GAL 4.19⁹\nPAY INSIDE",
+      "inspect": true
     },
     {
       "slug": "missing_link_interior_pump_display_2",
@@ -26520,7 +26691,8 @@
           ]
         }
       ],
-      "lettering": "OUT OF ORDER"
+      "lettering": "OUT OF ORDER",
+      "inspect": true
     },
     {
       "slug": "elicia_apartment_corkboard",
@@ -26559,7 +26731,8 @@
             "Corkboard"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_counterrun_1",
@@ -26598,7 +26771,8 @@
             "CounterRun_E_Door"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_counterrun_2",
@@ -26637,7 +26811,8 @@
             "CounterRun_W_Door"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_counterrun_3",
@@ -26676,7 +26851,8 @@
             "CounterRun_E_Drawer"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "roberts_kitchen_counterrun_4",
@@ -26715,7 +26891,8 @@
             "CounterRun_W_Drawer"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "el_rancho_taqueria_menuboard",
@@ -26755,7 +26932,8 @@
           ]
         }
       ],
-      "lettering": "TACOS · BURRITOS · CUSTOM BURRITO — ADD POTATOES · FLAUTAS · TORTAS · QUESADILLAS · HOUSE SAUCE: VERDE · ROJA · EL DIABLITO"
+      "lettering": "TACOS · BURRITOS · CUSTOM BURRITO — ADD POTATOES · FLAUTAS · TORTAS · QUESADILLAS · HOUSE SAUCE: VERDE · ROJA · EL DIABLITO",
+      "inspect": true
     },
     {
       "slug": "nightmare_cell_cot_canvas",
@@ -26794,7 +26972,8 @@
             "Cot_Canvas"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sam_bedroom_corkboard",
@@ -26837,7 +27016,8 @@
           ]
         }
       ],
-      "lettering": "KWIK STOP · SHIFT SCHEDULE · SAM M. 8-4 · GALLATIN BAND"
+      "lettering": "KWIK STOP · SHIFT SCHEDULE · SAM M. 8-4 · GALLATIN BAND",
+      "inspect": true
     },
     {
       "slug": "hospice_room_garden_far",
@@ -26960,7 +27140,8 @@
           ]
         }
       ],
-      "lettering": "FIRE DRILL ROUTE · COMPUTER LAB SIGN-UP"
+      "lettering": "FIRE DRILL ROUTE · COMPUTER LAB SIGN-UP",
+      "inspect": true
     },
     {
       "slug": "accretion_basement_bulletin_2",
@@ -27000,7 +27181,8 @@
           ]
         }
       ],
-      "lettering": "FIRE DRILL · EXIT ROUTE B · WALK, DO NOT RUN"
+      "lettering": "FIRE DRILL · EXIT ROUTE B · WALK, DO NOT RUN",
+      "inspect": true
     },
     {
       "slug": "accretion_basement_bulletin_3",
@@ -27040,7 +27222,8 @@
           ]
         }
       ],
-      "lettering": "COMPUTER LAB SIGN-UP · AFTER HOURS · NATE · NATE · NATE"
+      "lettering": "COMPUTER LAB SIGN-UP · AFTER HOURS · NATE · NATE · NATE",
+      "inspect": true
     },
     {
       "slug": "accretion_basement_hall_b_exit_sign",
@@ -27129,7 +27312,8 @@
           ]
         }
       ],
-      "lettering": "FALL SCHEDULE\nSPANISH IV\nCALCULUS\nENGLISH IV\nGOVERNMENT / ECONOMICS\nPHYSICS"
+      "lettering": "FALL SCHEDULE\nSPANISH IV\nCALCULUS\nENGLISH IV\nGOVERNMENT / ECONOMICS\nPHYSICS",
+      "inspect": true
     },
     {
       "slug": "lake_palestine_ramp_sign",
@@ -27210,7 +27394,8 @@
           ]
         }
       ],
-      "lettering": "SCHEDULE"
+      "lettering": "SCHEDULE",
+      "inspect": true
     },
     {
       "slug": "riverboat_interior_bc_timeclock_display",
@@ -27289,7 +27474,8 @@
             "Cat_WallCalendar"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "riverboat_interior_t17_1",
@@ -27335,7 +27521,8 @@
             "T17_DeepWindow_MullV_1"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_canvas_1",
@@ -27380,7 +27567,8 @@
             "Canvas_Water_Swell"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_canvas_2",
@@ -27424,7 +27612,8 @@
             "Canvas_Air"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_canvas_3",
@@ -27469,7 +27658,8 @@
             "Canvas_Fire_Core"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_desk_sketch",
@@ -27509,7 +27699,8 @@
           ]
         }
       ],
-      "lettering": "water · air · fire"
+      "lettering": "water · air · fire",
+      "inspect": true
     },
     {
       "slug": "faust_apartment_easel_canvas",
@@ -27554,7 +27745,8 @@
             "Easel_Canvas_Ground"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_floor_canvas_1",
@@ -27597,7 +27789,8 @@
             "Floor_Canvas_0_Ground"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_floor_canvas_2",
@@ -27640,7 +27833,8 @@
             "Floor_Canvas_1_Ground"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "faust_apartment_leaned_canvas",
@@ -27682,7 +27876,8 @@
           ]
         }
       ],
-      "lettering": "JF"
+      "lettering": "JF",
+      "inspect": true
     },
     {
       "slug": "bungalow_bedroom_dresser_picture",
@@ -27721,7 +27916,8 @@
             "Bedroom_Dresser_Picture"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "bungalow_bedroom_dresser_pictureback",
@@ -27760,7 +27956,8 @@
             "Bedroom_Dresser_PictureBack"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "bungalow_poster_1",
@@ -27802,7 +27999,8 @@
           ]
         }
       ],
-      "lettering": "PERSEPHONE IN AUGUST"
+      "lettering": "PERSEPHONE IN AUGUST",
+      "inspect": true
     },
     {
       "slug": "bungalow_poster_2",
@@ -27843,7 +28041,8 @@
           ]
         }
       ],
-      "lettering": "WHISPERS FROM THE LIMINAL"
+      "lettering": "WHISPERS FROM THE LIMINAL",
+      "inspect": true
     },
     {
       "slug": "nate_garage_bike_1",
@@ -27882,7 +28081,8 @@
             "Bike_0_Wheel_F"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "nate_garage_bike_2",
@@ -27921,7 +28121,8 @@
             "Bike_0_Wheel_R"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "nate_garage_bike_3",
@@ -27960,7 +28161,8 @@
             "Bike_1_Wheel_F"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "nate_garage_bike_4",
@@ -27999,7 +28201,8 @@
             "Bike_1_Wheel_R"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "nate_garage_wedding_band_poster",
@@ -28040,7 +28243,8 @@
           ]
         }
       ],
-      "lettering": "THE LATE BLOOMERS — Weddings · Receptions · Private Parties"
+      "lettering": "THE LATE BLOOMERS — Weddings · Receptions · Private Parties",
+      "inspect": true
     },
     {
       "slug": "safehouse_bedroom_hall_print",
@@ -28080,7 +28284,8 @@
             "Hall_Print_Field"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "houston_design_studio_out_facade",
@@ -28367,7 +28572,8 @@
             "Bldg_Plaque_0"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "briar_falls_bldg_plaque_2",
@@ -28411,7 +28617,8 @@
             "Bldg_Plaque_1"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "nexcorp_fueling_station_canopy_logo",
@@ -28496,7 +28703,8 @@
           ]
         }
       ],
-      "lettering": "NexCorp · STORE 3411 · REG 1\nDIET COKE 20OZ 2.49\nPRETZELS 1.99\nTOTAL $4.85\nCASH  CARD  VOID  LOTTERY  FUEL PREPAY"
+      "lettering": "NexCorp · STORE 3411 · REG 1\nDIET COKE 20OZ 2.49\nPRETZELS 1.99\nTOTAL $4.85\nCASH  CARD  VOID  LOTTERY  FUEL PREPAY",
+      "inspect": true
     },
     {
       "slug": "nexcorp_fueling_station_pump_display",
@@ -29205,7 +29413,8 @@
           ]
         }
       ],
-      "lettering": "HARMONY CREEK FOOTBALL — DEPTH CHART — VS. VINTON / C: KOWALSKI, BRENT / TE: KOWALSKI, BEN"
+      "lettering": "HARMONY CREEK FOOTBALL — DEPTH CHART — VS. VINTON / C: KOWALSKI, BRENT / TE: KOWALSKI, BEN",
+      "inspect": true
     },
     {
       "slug": "small_wood_road_county_sign",
@@ -29441,7 +29650,8 @@
           ]
         }
       ],
-      "lettering": "NOW HIRING · ALL SHIFTS · Cashiers · Overnight · Weekends · $13/hr start · Apply at the counter or scan"
+      "lettering": "NOW HIRING · ALL SHIFTS · Cashiers · Overnight · Weekends · $13/hr start · Apply at the counter or scan",
+      "inspect": true
     },
     {
       "slug": "nexcorp_gas_go_ice_1",
@@ -29481,7 +29691,8 @@
           ]
         }
       ],
-      "lettering": "PAY INSIDE FIRST"
+      "lettering": "PAY INSIDE FIRST",
+      "inspect": true
     },
     {
       "slug": "nexcorp_gas_go_ice_2",
@@ -29521,7 +29732,8 @@
           ]
         }
       ],
-      "lettering": "PURIFIED ICE · 10 LB $3.49 · KEEP DOOR CLOSED"
+      "lettering": "PURIFIED ICE · 10 LB $3.49 · KEEP DOOR CLOSED",
+      "inspect": true
     },
     {
       "slug": "nexcorp_gas_go_ice_3",
@@ -29562,7 +29774,8 @@
           ]
         }
       ],
-      "lettering": "ICE · Gulf Coast Ice Co."
+      "lettering": "ICE · Gulf Coast Ice Co.",
+      "inspect": true
     },
     {
       "slug": "nexcorp_gas_go_locker",
@@ -29686,7 +29899,8 @@
             "Locker_6_Door"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "nexcorp_gas_go_monitor",
@@ -29927,7 +30141,8 @@
           ]
         }
       ],
-      "lettering": "NexCorp REWARDS · SAVE 5¢/GAL · Ask for your card inside"
+      "lettering": "NexCorp REWARDS · SAVE 5¢/GAL · Ask for your card inside",
+      "inspect": true
     },
     {
       "slug": "bindery_display",
@@ -29971,7 +30186,8 @@
             "Display_Deck"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "miller_office_bianca_laptop_display",
@@ -30016,7 +30232,8 @@
           ]
         }
       ],
-      "lettering": "Bill Pay · Electric $96.00 Paid · Water $58.00 Paid · Cable $172.00 Paid · Visa — Pay Now"
+      "lettering": "Bill Pay · Electric $96.00 Paid · Water $58.00 Paid · Cable $172.00 Paid · Visa — Pay Now",
+      "inspect": true
     },
     {
       "slug": "miller_office_map_1",
@@ -30059,7 +30276,8 @@
           ]
         }
       ],
-      "lettering": "HARMONY CREEK ESTATES · PHASES I–III · ZONE G"
+      "lettering": "HARMONY CREEK ESTATES · PHASES I–III · ZONE G",
+      "inspect": true
     },
     {
       "slug": "pharmacy_aisle_sign",
@@ -30276,7 +30494,8 @@
           ]
         }
       ],
-      "lettering": "WEEKLY SCHEDULE — FAUST / DEBORAH / ERIC"
+      "lettering": "WEEKLY SCHEDULE — FAUST / DEBORAH / ERIC",
+      "inspect": true
     },
     {
       "slug": "pharmacy_office_diploma_1",
@@ -30316,7 +30535,8 @@
           ]
         }
       ],
-      "lettering": "Doctor of Pharmacy — John Faust"
+      "lettering": "Doctor of Pharmacy — John Faust",
+      "inspect": true
     },
     {
       "slug": "pharmacy_office_diploma_2",
@@ -30356,7 +30576,8 @@
           ]
         }
       ],
-      "lettering": "PHARMACIST LICENSE — JOHN FAUST"
+      "lettering": "PHARMACIST LICENSE — JOHN FAUST",
+      "inspect": true
     },
     {
       "slug": "pharmacy_office_monitor",
@@ -30437,7 +30658,8 @@
           ]
         }
       ],
-      "lettering": "PHOTO — Prints in 1 hour · Passport photos"
+      "lettering": "PHOTO — Prints in 1 hour · Passport photos",
+      "inspect": true
     },
     {
       "slug": "pharmacy_promo_sign",
@@ -30478,7 +30700,8 @@
           ]
         }
       ],
-      "lettering": "2 FOR $5 — Mix & Match Snacks"
+      "lettering": "2 FOR $5 — Mix & Match Snacks",
+      "inspect": true
     },
     {
       "slug": "pharmacy_rx_monitor_1",
@@ -30768,7 +30991,8 @@
           ]
         }
       ],
-      "lettering": "FOOD SERVICE ESTABLISHMENT PERMIT · FOOD HANDLER · STAFF SCHEDULE · SCORE 96"
+      "lettering": "FOOD SERVICE ESTABLISHMENT PERMIT · FOOD HANDLER · STAFF SCHEDULE · SCORE 96",
+      "inspect": true
     },
     {
       "slug": "riverfront_billboard_1",
@@ -31384,7 +31608,8 @@
           ]
         }
       ],
-      "lettering": "DRIFTWOOD"
+      "lettering": "DRIFTWOOD",
+      "inspect": true
     },
     {
       "slug": "school_newspaper_hall_poster",
@@ -31425,7 +31650,8 @@
           ]
         }
       ],
-      "lettering": "SMALL WOOD HIGH FOOTBALL\nFRIDAY NIGHTS · 7:00"
+      "lettering": "SMALL WOOD HIGH FOOTBALL\nFRIDAY NIGHTS · 7:00",
+      "inspect": true
     },
     {
       "slug": "school_newspaper_win_e_0_glass",
@@ -31665,7 +31891,8 @@
           ]
         }
       ],
-      "lettering": "IN APPRECIATION · COACH KAZANTZAKIS · TEN SEASONS OF HARMONY CREEK HIGH SCHOOL FOOTBALL"
+      "lettering": "IN APPRECIATION · COACH KAZANTZAKIS · TEN SEASONS OF HARMONY CREEK HIGH SCHOOL FOOTBALL",
+      "inspect": true
     },
     {
       "slug": "coach_k_bedroom_photo_1",
@@ -31705,7 +31932,8 @@
             "Photo_1_Img"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "coach_k_bedroom_photo_2",
@@ -31745,7 +31973,8 @@
             "Photo_0_Img"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "coach_k_bedroom_photo_3",
@@ -31785,7 +32014,8 @@
             "Photo_2_Img"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "coach_k_bedroom_team_picture",
@@ -31826,7 +32056,8 @@
           ]
         }
       ],
-      "lettering": "HARMONY CREEK HIGH SCHOOL VARSITY FOOTBALL · DISTRICT CHAMPIONS"
+      "lettering": "HARMONY CREEK HIGH SCHOOL VARSITY FOOTBALL · DISTRICT CHAMPIONS",
+      "inspect": true
     },
     {
       "slug": "coach_k_bedroom_w_window",
@@ -31905,7 +32136,8 @@
             "Wedding_Photo_Print"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "smolvud_coop_cooler_header_sign",
@@ -31989,7 +32221,8 @@
           ]
         }
       ],
-      "lettering": "BEACH CLEANUP — ONA BEACH · FISH CO-OP SHARES · LOST CAT · HANS'S BREAD: SEEDED RYE WED"
+      "lettering": "BEACH CLEANUP — ONA BEACH · FISH CO-OP SHARES · LOST CAT · HANS'S BREAD: SEEDED RYE WED",
+      "inspect": true
     },
     {
       "slug": "smolvud_coop_corkboard_2",
@@ -32029,7 +32262,8 @@
           ]
         }
       ],
-      "lettering": "CO-OP BOXES BY BIKE — Tue · Thu · Sat — ask Margaret at the counter"
+      "lettering": "CO-OP BOXES BY BIKE — Tue · Thu · Sat — ask Margaret at the counter",
+      "inspect": true
     },
     {
       "slug": "smolvud_coop_corkboard_3",
@@ -32069,7 +32303,8 @@
           ]
         }
       ],
-      "lettering": "SMOKED SALMON SHARES — Fish Co-op — order by Wednesday"
+      "lettering": "SMOKED SALMON SHARES — Fish Co-op — order by Wednesday",
+      "inspect": true
     },
     {
       "slug": "smolvud_coop_corkboard_4",
@@ -32109,7 +32344,8 @@
           ]
         }
       ],
-      "lettering": "HANS'S BAKERY on Hemlock — SEEDED RYE WEDNESDAYS — loaves on the rack by the counter"
+      "lettering": "HANS'S BAKERY on Hemlock — SEEDED RYE WEDNESDAYS — loaves on the rack by the counter",
+      "inspect": true
     },
     {
       "slug": "smolvud_coop_register_tablet",
@@ -32276,7 +32512,8 @@
           ]
         }
       ],
-      "lettering": "GRUNION FESTIVAL · BEACH CLEANUP SIGN-UP · QUEEN'S FLOAT JUDGING SATURDAY"
+      "lettering": "GRUNION FESTIVAL · BEACH CLEANUP SIGN-UP · QUEEN'S FLOAT JUDGING SATURDAY",
+      "inspect": true
     },
     {
       "slug": "small_wood_rec_center_bulletin_2",
@@ -32316,7 +32553,8 @@
           ]
         }
       ],
-      "lettering": "TEEN DANCE · FRIDAY 7-10 PM · $2 AT THE DOOR · DJ JAY ROSE"
+      "lettering": "TEEN DANCE · FRIDAY 7-10 PM · $2 AT THE DOOR · DJ JAY ROSE",
+      "inspect": true
     },
     {
       "slug": "small_wood_rec_center_bulletin_3",
@@ -32356,7 +32594,8 @@
           ]
         }
       ],
-      "lettering": "REC HALL RULES · 1. SIGN UP FOR POOL · 2. ONE FOOSBALL GAME IF OTHERS WAIT · 3. CARTRIDGES STAY IN THE BOX · 4. NO FOOD BY THE TV"
+      "lettering": "REC HALL RULES · 1. SIGN UP FOR POOL · 2. ONE FOOSBALL GAME IF OTHERS WAIT · 3. CARTRIDGES STAY IN THE BOX · 4. NO FOOD BY THE TV",
+      "inspect": true
     },
     {
       "slug": "small_wood_rec_center_restroom_sign_1",
@@ -32633,7 +32872,8 @@
           ]
         }
       ],
-      "lettering": "HARMONY CREEK FOOTBALL — OFFENSE DEPTH CHART · QB Brent · TE-1 Kowalski · TE-2 Diaz · LT-1 Tucker · SLOT Marcus"
+      "lettering": "HARMONY CREEK FOOTBALL — OFFENSE DEPTH CHART · QB Brent · TE-1 Kowalski · TE-2 Diaz · LT-1 Tucker · SLOT Marcus",
+      "inspect": true
     },
     {
       "slug": "ben_bedroom_team_photo",
@@ -32674,7 +32914,8 @@
           ]
         }
       ],
-      "lettering": "HARMONY CREEK VARSITY FOOTBALL 2025"
+      "lettering": "HARMONY CREEK VARSITY FOOTBALL 2025",
+      "inspect": true
     },
     {
       "slug": "wagner_home_fridge_flyer",
@@ -32714,7 +32955,8 @@
           ]
         }
       ],
-      "lettering": "NATTSKOG · with GRAVFROST + ULVEHEIM · SATURDAY · ALL AGES · $7"
+      "lettering": "NATTSKOG · with GRAVFROST + ULVEHEIM · SATURDAY · ALL AGES · $7",
+      "inspect": true
     },
     {
       "slug": "wagner_home_poster_1",
@@ -32755,7 +32997,8 @@
           ]
         }
       ],
-      "lettering": "FJELLGRAV"
+      "lettering": "FJELLGRAV",
+      "inspect": true
     },
     {
       "slug": "wagner_home_poster_2",
@@ -32796,7 +33039,8 @@
           ]
         }
       ],
-      "lettering": "NATTSKOG"
+      "lettering": "NATTSKOG",
+      "inspect": true
     },
     {
       "slug": "wagner_home_poster_3",
@@ -32837,7 +33081,8 @@
           ]
         }
       ],
-      "lettering": "ULVEHEIM · Under Frostens Krone"
+      "lettering": "ULVEHEIM · Under Frostens Krone",
+      "inspect": true
     },
     {
       "slug": "wagner_home_tv",
@@ -32958,7 +33203,8 @@
             "Curtain_Fold_2"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "gallatin_water_tower_fence_sign",
@@ -33216,7 +33462,8 @@
           ]
         }
       ],
-      "lettering": "NexCorp Residential Solutions"
+      "lettering": "NexCorp Residential Solutions",
+      "inspect": true
     },
     {
       "slug": "gallatin_water_tower_van_logo_2",
@@ -33261,7 +33508,8 @@
           ]
         }
       ],
-      "lettering": "NexCorp Residential Solutions"
+      "lettering": "NexCorp Residential Solutions",
+      "inspect": true
     },
     {
       "slug": "graustark_post_office_counter_screen",
@@ -33426,7 +33674,8 @@
           ]
         }
       ],
-      "lettering": "WANTED"
+      "lettering": "WANTED",
+      "inspect": true
     },
     {
       "slug": "graustark_post_office_window",
@@ -33509,7 +33758,8 @@
             "Altar_Photo"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "graciela_bedroom_photo_1",
@@ -33549,7 +33799,8 @@
             "Photo_4_Img"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "graciela_bedroom_photo_2",
@@ -33588,7 +33839,8 @@
             "Photo_0_Img"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "sapo_falls_tepui_far",
@@ -33673,7 +33925,8 @@
             "Photo_Print_0"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "caldwell_kitchen_night_photo_2",
@@ -33712,7 +33965,8 @@
             "Photo_Print_1"
           ]
         }
-      ]
+      ],
+      "inspect": true
     },
     {
       "slug": "diner_far_auto_sign",
