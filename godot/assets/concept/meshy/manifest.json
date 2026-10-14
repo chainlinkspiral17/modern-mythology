@@ -18093,5 +18093,30 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/small_wood_rec_center_tv/front.png",
     "output": "godot/assets/art/hero/small_wood_rec_center_tv.png"
+  },
+  {
+    "at": "2026-10-14T05:47:16+00:00",
+    "stage": "art",
+    "slug": "kwik_stop_window_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/kwik_stop_window_1/front.png",
+    "output": "godot/assets/art/hero/kwik_stop_window_1.png"
+  },
+  {
+    "at": "2026-10-14T05:47:39+00:00",
+    "stage": "image",
+    "slug": "kwik_stop_window_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view out the Kwik Stop's west picture window like this: The lot, in the four-PM heat, is empty of customers. The asphalt is doing its shimmer. Additional direction: The view out of the west picture window of a small Kwik Stop on the Gulf Coast plain of Texas, late afternoon in mid-August 2025, painted as a flat, straight-on exterior scene filling the frame. Foreground: sun-bleached asphalt forecourt with faded yellow parking stripes and heat shimmer; the cream-and-tan underside edge of the fuel canopy with its navy trim, one square canopy column, an orange-bodied gas pump, a steel propane-exchange cage with white tanks, a small dusty pickup parked by the column. Beyond: a tall sodium streetlight on the corner, the two-lane road (Gallatin) running off to a flat horizon lined with power poles, salt cedar scrub, a few Chinese tallow and live oak trees, a closed equipment-rental yard fence. Sky hazy pale blue going warm gold toward the west, glaring white sun haze, 97-degree heat. No people, no interior, no glass, no window frame.\nSIZE: the real object is 1.20 m wide by 70 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view out the Kwik Stop's west picture window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/kwik_stop_window_1/kwik_stop_window_1_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
   }
 ]
