@@ -72,6 +72,14 @@
       [0, 3, 1, 4], [5, 3, 0, 4], [0, 2, 5, 3], [3, 0, 4, 5], [0, 4, 3, 3], [1, 2, 3, 4], [0, 5, 1, 4], [3, 5, 4, 0]],
     modal: [[0, 6, 0, 6], [0, 1, 0, 1], [0, 3, 0, 3], [0, 0, 6, 6], [0, 6, 5, 6], [0, 3, 6, 0], [0, 0, 1, 6], [0, 4, 3, 0]],
     drone: [[0, 0, 0, 0], [0, 0, 5, 5], [0, 0, 3, 3], [0, 5, 0, 5], [0, 0, 6, 6], [0, 3, 0, 5]],
+    // genre families (a style names one in `prog`; any mode) — the cadences each genre leans on
+    folk: [[0, 3, 0, 4], [0, 4, 5, 3], [0, 3, 5, 4], [5, 3, 0, 4], [0, 0, 3, 0], [0, 3, 4, 0], [3, 0, 4, 0], [0, 5, 3, 4], [0, 4, 3, 0]],
+    hymn: [[0, 3, 4, 0], [0, 3, 0, 4], [0, 5, 3, 4], [0, 4, 5, 3], [0, 1, 4, 0], [3, 0, 4, 0], [0, 5, 1, 4], [0, 3, 1, 4], [0, 2, 3, 4]],
+    jazz: [[1, 4, 0, 0], [1, 4, 0, 5], [0, 5, 1, 4], [2, 5, 1, 4], [1, 4, 2, 5], [0, 3, 1, 4], [3, 2, 1, 4], [0, 1, 2, 4]],
+    jazz_minor: [[1, 4, 0, 0], [0, 5, 1, 4], [0, 3, 1, 4], [0, 0, 1, 4], [5, 1, 4, 0], [0, 3, 4, 0], [3, 4, 0, 0]],   // <family>_minor: used in minor modes
+    blues: [[0, 0, 3, 0], [3, 3, 0, 0], [4, 3, 0, 4], [0, 3, 0, 4], [0, 3, 4, 3], [0, 3, 0, 0], [3, 0, 4, 0]],
+    horror: [[0, 5, 0, 5], [0, 1, 0, 1], [0, 0, 5, 6], [0, 6, 5, 6], [0, 5, 6, 0], [0, 0, 1, 0], [0, 3, 5, 4], [5, 5, 0, 0]],
+    surf: [[0, 3, 4, 3], [0, 0, 3, 4], [0, 5, 6, 0], [0, 6, 5, 6], [0, 3, 0, 4], [0, 5, 3, 4], [0, 6, 5, 4]],
   };
 
   // ── styles ──────────────────────────────────────────────────────
@@ -165,7 +173,7 @@
       ],
       bass: ['walking', 'root_half', 'root_whole', 'pedal'], chords: ['pad', 'strum', 'charleston', 'arp_broken'], lead: ['motif', 'answer', 'sparse'], pad: ['swell', 'drone', 'sus', 'moving'],
       presets: { bass: 'bass_sub', chords: 'keys_ep', lead: 'keys_ep', pad: 'drone_dark' } },
-    ambient: { name: 'ambient bed', bpm: [60, 76], swing: 0.0, prog: 'drone', modes: ['lydian', 'dorian', 'minor', 'major'], hr: [2, 2, 1],
+    ambient: { name: 'ambient bed', bpm: [60, 76], swing: 0.0, prog: 'drone', modes: ['lydian', 'dorian', 'minor', 'major'], hr: [2, 2, 1], bed: true,
       grooves: [
         G('0000000000000000', {}, { shaker: '0010000000100000/0.25', rim: '0000000000000100/0.15' }),
         G('0000000000000000', {}, { rim: '0000001000000000/0.2', ride: '1000000010000000/0.15' }),
@@ -175,12 +183,159 @@
       bass: ['drone', 'root_whole', 'pedal'], chords: ['swell', 'pad', 'arp_broken'], lead: ['sparse', 'motif'], pad: ['drone', 'shimmer', 'sus'],
       presets: { bass: 'drone_dark', chords: 'pad_glass', lead: 'pluck_bell', pad: 'pad_warm' } },
   };
-  // styles the score bible names that aren't built yet: placeholders borrowing the nearest built style (marked
-  // `placeholder`) until their own grooves / figures / presets land
-  const PLACEHOLDER = { folk: ['shuffle', 'folk / americana'], chamber: ['noir', 'chamber strings'], piano: ['noir', 'solo piano'], hymn: ['ambient', 'hymn / chorale'],
-    dark_drone: ['ambient', 'dark drone'], synth_horror: ['synthwave', 'synth horror'], jazz: ['noir', 'jazz trio'], dub: ['boom_bap', 'dub'], post_rock: ['motorik', 'post-rock'],
-    lullaby: ['ambient', 'lullaby / music box'], industrial: ['trap', 'industrial'], surf: ['four_floor', 'surf'], bayou: ['shuffle', 'bayou / swamp'],
-    minimal: ['motorik', 'minimalist pulse'], chiptune: ['synthwave', 'chiptune'], trip_hop: ['boom_bap', 'trip-hop'] };
+  // The score bible's genres. Extra style fields: `fills` (the fill pool; ['none'] = no fills), `nocrash` (no crash on a
+  // lift), `bed` (a bed is the default form), `trip8` (offbeat eighths land on the triplet: swung eighths — the engine's
+  // `swing` only moves off-sixteenths), `lilt` (triplet-flavoured figures: 12/8 inside the 4/4 bar), `link` {role: role}
+  // (the same instrument as that role: solo piano's two hands). A 12-character grid is a bar of triplet eighths; a grid
+  // may carry a velocity after its probability ('1000/0.5/0.4'). Extra drum voices: hat_p (pedal hat), tamb, cowbell,
+  // conga, conga_lo, clave, tom_lo, tom_hi.
+  Object.assign(STYLES, {
+    folk: { name: 'folk / americana', bpm: [84, 112], swing: 0.2, prog: 'folk', modes: ['major', 'mixolydian', 'major', 'dorian'], hr: [1, 2, 1, 0.5], nocrash: true,
+      fills: ['flam', 'drop', 'snare16'],
+      grooves: [
+        G('1000000010000000/0.9', { snare: '0000100000001000/0.8/0.7' }, { shaker: '1010101010101010/0.6' }),                    // brushes two-step
+        G('1000000010000000', { snare: '0000100000001000/1/0.8', rim: '1011101110111011/0.55/0.45' }, {}),                       // train beat
+        G('1000000010100000/0.9', { clap: '0000100000001000/0.9/0.75' }, { tamb: '0000100000001000/0.7' }),                      // porch stomp-clap
+        G('1000000000100000/0.8', { snare: '0000000010000000/0.8/0.7' }, { tamb: '1010101010101010/0.5' }),                      // half-time
+      ],
+      bass: ['two_beat', 'two_beat', 'rootfifth', 'root_half', 'stepwise'], chords: ['fingerpick', 'fingerpick', 'boomchick', 'strum'], lead: ['whistle', 'motif', 'answer'], pad: ['swell', 'moving', 'sus'],
+      presets: { bass: 'bass_upright', chords: 'pluck_nylon', lead: 'winds_harmonica', pad: 'strings_silver' } },
+    chamber: { name: 'chamber strings', bpm: [56, 76], swing: 0.0, prog: 'minor', modes: ['minor', 'harmonic', 'dorian', 'major'], hr: [1, 2, 1, 0.5], fills: ['none'], nocrash: true,
+      grooves: [
+        G('0000000000000000', {}, {}),
+        G('1000000000000000/0.25/0.6', {}, {}),                                                                                   // a timpani stroke now and then
+        G('0000000000000000', {}, { tom_lo: '0000000000001111/0.15/0.45' }),                                                     // a soft timpani roll into the bar
+      ],
+      bass: ['stepwise', 'root_half', 'pedal', 'arp', 'stepwise'], chords: ['pad', 'tremolo', 'pulse8', 'chorale', 'arp_broken'], lead: ['answer', 'whistle', 'motif', 'sparse'], pad: ['swell', 'moving', 'sus'],
+      presets: { bass: 'bass_fretless', chords: 'strings_ensemble', lead: 'strings_noir', pad: 'strings_silver' } },
+    piano: { name: 'solo piano', bpm: [58, 84], swing: 0.0, prog: 'minor', modes: ['minor', 'major', 'dorian', 'lydian'], hr: [1, 2, 1, 0.5], fills: ['none'], nocrash: true,
+      link: { bass: 'chords', lead: 'chords' },
+      grooves: [G('0000000000000000', {}, {})],
+      bass: ['root_whole', 'lh_octave', 'stepwise', 'root_half'], chords: ['alberti', 'block', 'arp_broken', 'block', 'alberti'], lead: ['answer', 'sparse', 'motif', 'whistle'], pad: ['swell', 'sus'],
+      presets: { bass: 'keys_felt', chords: 'keys_felt', lead: 'keys_felt', pad: 'pad_dusk' } },
+    hymn: { name: 'hymn / chorale', bpm: [60, 80], swing: 0.0, prog: 'hymn', modes: ['major', 'harmonic', 'major', 'dorian'], hr: [1, 0.5, 1], fills: ['none'], nocrash: true,
+      grooves: [G('0000000000000000', {}, {})],
+      bass: ['chorale_bass', 'chorale_bass', 'root_half', 'stepwise'], chords: ['chorale', 'chorale', 'pad'], lead: ['hymn', 'hymn', 'whistle'], pad: ['open', 'swell', 'sus'],
+      presets: { bass: 'bass_sub', chords: 'keys_organ', lead: 'choir_angel', pad: 'pad_organ_swell' } },
+    dark_drone: { name: 'dark drone', bpm: [50, 66], swing: 0.0, prog: 'drone', modes: ['phrygian', 'minor', 'harmonic'], hr: [2, 4, 1], fills: ['none'], nocrash: true, bed: true,
+      grooves: [
+        G('0000000000000000', {}, {}),
+        G('1000000000000000/0.2/0.6', {}, {}),                                                                                    // a far-off thud
+        G('0000000000000000', {}, { ride: '1000000000000000/0.15/0.4' }),                                                        // a bell-ish cymbal in the dark
+      ],
+      bass: ['drone', 'drone', 'root_whole', 'pedal'], chords: ['swell', 'pad', 'tremolo'], lead: ['sparse', 'whistle'], pad: ['cluster', 'drone', 'cluster', 'sus'],
+      presets: { bass: 'bass_sub', chords: 'pad_bowed_metal', lead: 'lead_theremin', pad: 'drone_dark' } },
+    synth_horror: { name: 'synth horror', bpm: [100, 126], swing: 0.0, prog: 'horror', modes: ['minor', 'phrygian', 'harmonic'], hr: [1, 2, 2, 1],
+      fills: ['tom_run', 'drop', 'snare16', 'kick_push'],
+      grooves: [
+        G('1000100010001000', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.7' }),
+        G('1000000010000000', { snare: '0000100000001000' }, { hat_c: '1111111111111111/0.5' }),
+        G('0000000000000000', {}, { hat_c: '1010101010101010/0.65' }),                                                           // only the ticking hat: dread
+        G('1000000000000000', { tom_lo: '0000000000001010/0.5' }, { hat_c: '0010001000100010' }),
+        G('1001001000100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010' }),
+      ],
+      bass: ['pedal_pulse', 'pedal_pulse', 'pump8', 'octave16', 'pedal'], chords: ['pad', 'arp_up', 'ostinato', 'swell', 'pulse8'], lead: ['sparse', 'whistle', 'motif'], pad: ['cluster', 'drone', 'swell'],
+      presets: { bass: 'bass_ladder', chords: 'pad_glass', lead: 'lead_square', pad: 'pad_sub_drone' } },
+    jazz: { name: 'jazz trio', bpm: [88, 132], swing: 0.4, prog: 'jazz', modes: ['major', 'harmonic', 'major', 'dorian'], hr: [1, 0.5, 1, 2], trip8: true, nocrash: true,
+      fills: ['flam', 'snare16', 'drop'],
+      grooves: [
+        G('100000100000/0.3/0.6', { snare: '000000000001/0.35/0.4' }, { ride: '100101100101/1.3', hat_p: '000100000100/1.3' }),      // spang-a-lang ride, hat on 2 & 4
+        G('100000000000/0.35/0.6', { snare: '101101101101/0.8/0.35' }, { hat_p: '000100000100/1.3', ride: '100000100000/0.4/0.7' }),  // brushes
+        G('1000000000000000/0.35/0.6', { snare: '0000100000001000/0.5/0.5' }, { ride: '1000100010001000/0.8', hat_p: '0000100000001000' }),  // ballad
+        G('100000100000/0.5/0.7', { rim: '000100000100/0.6' }, { ride: '100101100101/0.9' }),                                // two-feel
+      ],
+      bass: ['stand_up', 'stand_up', 'walking', 'two_beat'], chords: ['shell', 'comp', 'charleston', 'four', 'shell'], lead: ['blue', 'lilt', 'answer', 'motif'], pad: ['swell', 'moving', 'sus'],
+      presets: { bass: 'bass_upright', chords: 'keys_felt', lead: 'winds_sax', pad: 'strings_noir' } },
+    dub: { name: 'dub', bpm: [66, 80], swing: 0.15, prog: 'modal', modes: ['minor', 'dorian'], hr: [2, 1, 2], fills: ['drop', 'flam', 'stutter', 'tom_run'],
+      grooves: [
+        G('0000000010000000', { rim: '0000000010000000' }, { hat_c: '1010101010101010/0.8', hat_o: '0000000000000010/0.4' }),  // one drop
+        G('1000100010001000', { rim: '0000000010000000' }, { hat_c: '0010001000100010' }),                                      // steppers
+        G('1000000010000000', { snare: '0000000010000000/0.9' }, { hat_c: '1011101110111011/0.7' }),                            // rockers
+        G('0000000010000000', { rim: '0000000010000000', snare: '0000000000000001/0.3/0.4' }, { hat_c: '1111111111111111/0.5' }),
+      ],
+      bass: ['dub', 'dub', 'syncop', 'tresillo'], chords: ['skank', 'skank', 'bubble', 'swell'], lead: ['sparse', 'answer', 'whistle'], pad: ['swell', 'drone', 'shimmer'],
+      presets: { bass: 'bass_sub', chords: 'keys_clav', lead: 'winds_harmonica', pad: 'pad_tape_wobble' } },
+    post_rock: { name: 'post-rock', bpm: [96, 126], swing: 0.0, prog: 'major', modes: ['major', 'lydian', 'minor', 'dorian'], hr: [2, 1, 2], fills: ['tom_run', 'snare16', 'flam', 'drop'],
+      grooves: [
+        G('1000000010000000/0.8', { tom_lo: '0010001000100010/0.6' }, { ride: '1010101010101010/0.5' }),                      // floor-tom pulse
+        G('1000000010100000', { snare: '0000100000001000' }, { ride: '1010101010101010/0.8' }),
+        G('1000000000100000', { snare: '0000000010000000' }, { hat_c: '1010101010101010/0.7' }),                                 // half-time
+        G('0000000000000000', {}, { ride: '1000100010001000/0.4/0.6' }),                                                         // the quiet part
+        G('1010101010101010/0.75', { snare: '0000100000001000' }, { ride: '1010101010101010' }),                                 // the climax
+      ],
+      bass: ['root_whole', 'pump8', 'root_half', 'pedal'], chords: ['tremolo', 'dotted', 'arp_ud', 'swell', 'tremolo'], lead: ['sparse', 'whistle', 'motif'], pad: ['rise', 'swell', 'shimmer'],
+      presets: { bass: 'bass_fender', chords: 'pluck_neon', lead: 'bell_glock', pad: 'strings_silver' } },
+    lullaby: { name: 'lullaby / music box', bpm: [60, 76], swing: 0.0, prog: 'hymn', modes: ['major', 'major', 'minor', 'mixolydian'], hr: [1, 2, 1], trip8: true, lilt: true,
+      fills: ['none'], nocrash: true,
+      grooves: [
+        G('000000000000', {}, {}),
+        G('000000000000', {}, { shaker: '100000100000/0.3/0.6' }),                                                              // rocking on the dotted quarters
+        G('100000000000/0.15/0.5', {}, { clave: '100100100100/0.25/0.45' }),                                                    // a clock in the nursery
+      ],
+      bass: ['root_whole', 'two_beat', 'root_half', 'stepwise'], chords: ['alberti', 'alberti', 'block', 'arp_broken'], lead: ['lilt', 'lilt', 'whistle', 'sparse'], pad: ['swell', 'sus', 'shimmer'],
+      presets: { bass: 'bass_upright', chords: 'pluck_harp', lead: 'bell_music_box', pad: 'pad_dusk' } },
+    industrial: { name: 'industrial', bpm: [96, 124], swing: 0.0, prog: 'modal', modes: ['phrygian', 'minor', 'harmonic'], hr: [2, 1, 2], fills: ['stutter', 'snare16', 'kick_push', 'tom_run'],
+      grooves: [
+        G('1000001010000000', { snare: '0000100000001000', clap: '0000100000001000/0.5' }, { hat_c: '1111111111111111/0.6', cowbell: '0010000000100000/0.5' }),
+        G('1000100010001000', { snare: '0000100000001000' }, { clave: '0001000100010001/0.5', hat_c: '1010101010101010' }),     // machine march
+        G('1010001000100010/0.9', { snare: '0000100000001001/0.8' }, { hat_c: '1011101110111011/0.7' }),
+        G('1000000000000000', { tom_lo: '0000001000000100/0.6', snare: '0000000010000000' }, { shaker: '1111111111111111/0.5', cowbell: '1000000000000000/0.6' }),  // stomp
+        G('1001001001001000', { clap: '0000100000001000' }, { hat_o: '0010001000100010/0.6' }),                                 // 3-3-3-3-4
+      ],
+      bass: ['machine', 'pedal_pulse', 'octave16', 'kicklock', 'machine'], chords: ['chug', 'stabs', 'pad', 'chug', 'pulse8'], lead: ['sparse', 'hook', 'motif'], pad: ['cluster', 'drone', 'swell'],
+      presets: { bass: 'bass_ladder', chords: 'pad_gate', lead: 'lead_fuzz', pad: 'pad_bowed_metal' } },
+    surf: { name: 'surf', bpm: [128, 168], swing: 0.0, prog: 'surf', modes: ['minor', 'harmonic', 'major', 'mixolydian'], hr: [1, 1, 2, 0.5], fills: ['tom_run', 'snare16', 'flam', 'tom_run'],
+      grooves: [
+        G('1000000010000000', { snare: '0000100000001000' }, { tom: '1010101010101010/0.5' }),                                   // tom-tom surf beat
+        G('1000000010100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010' }),
+        G('1000000010010000', { snare: '0000100000001000' }, { ride: '1010101010101010', tamb: '0000100000001000/0.6' }),          // ride drive, the kick pushing
+        G('1000000010000000', { snare: '0000100000001000/0.8' }, { tom_lo: '1011101110111011/0.5/0.6' }),                       // floor-tom rumble
+      ],
+      bass: ['two_beat', 'pump8', 'walking', 'rootfifth'], chords: ['tremolo', 'offbeat', 'strum', 'stabs'], lead: ['trem', 'hook', 'motif', 'trem'], pad: ['swell', 'sus'],
+      presets: { bass: 'bass_fender', chords: 'pluck_dobro', lead: 'pluck_neon', pad: 'keys_combo_organ' } },
+    bayou: { name: 'bayou / swamp', bpm: [92, 124], swing: 0.3, prog: 'blues', modes: ['mixolydian', 'major', 'dorian'], hr: [1, 1, 0.5, 2], trip8: true,
+      fills: ['flam', 'snare16', 'drop'],
+      grooves: [
+        G('100000100000', { snare: '000100000100' }, { hat_c: '101101101101/0.9', shaker: '111111111111/0.4' }),               // triplet shuffle + washboard
+        G('100100100100/0.8', { snare: '000100000100' }, { tamb: '111111111111/0.55' }),                                       // zydeco two-step
+        G('1000000010100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010' }),                                    // swamp groove (swung)
+        G('100000000100/0.8', { snare: '000000100000' }, { ride: '101101101101/0.7' }),                                       // half-time swamp
+      ],
+      bass: ['swamp', 'swamp', 'walking', 'two_beat', 'rootfifth'], chords: ['offbeat', 'four', 'comp', 'strum'], lead: ['blue', 'hook', 'answer', 'blue'], pad: ['swell', 'moving'],
+      presets: { bass: 'bass_upright', chords: 'keys_combo_organ', lead: 'winds_harmonica', pad: 'pad_organ_swell' } },
+    minimal: { name: 'minimalist pulse', bpm: [100, 132], swing: 0.0, prog: 'modal', modes: ['dorian', 'major', 'lydian', 'minor'], hr: [2, 2, 1, 4], fills: ['none', 'drop'], nocrash: true,
+      grooves: [
+        G('000000000000', {}, { clave: '111011010110/1.25/0.9' }),                                                              // clapping-music cell on claves
+        G('1000000010000000/0.5/0.7', {}, { shaker: '1111111111111111/0.5' }),
+        G('0000000000000000', {}, { clave: '1010101010101010/1.1/0.8' }),
+        G('0000000000000000', {}, {}),
+        G('100000000000/0.4/0.7', { clap: '111011010110/1/0.55' }, {}),
+      ],
+      bass: ['root_whole', 'pedal', 'pump8'], chords: ['ostinato', 'ostinato', 'arp_up', 'pulse8', 'arp_ud'], lead: ['sparse', 'whistle', 'motif'], pad: ['swell', 'sus', 'shimmer'],
+      presets: { bass: 'bass_fretless', chords: 'pluck_marimba', lead: 'winds_flute', pad: 'strings_ensemble' } },
+    chiptune: { name: 'chiptune', bpm: [120, 160], swing: 0.0, prog: 'minor', modes: ['minor', 'major', 'dorian'], hr: [1, 1, 2, 0.5], fills: ['snare16', 'stutter', 'tom_run', 'kick_push'],
+      grooves: [
+        G('1000000010000000', { snare: '0000100000001000' }, { hat_c: '1010101010101010' }),
+        G('1000001000100000', { snare: '0000100000001000' }, { hat_c: '1111111111111111/0.6' }),
+        G('1010000010100000', { snare: '0000100000001010/0.8' }, { hat_c: '0010001000100010' }),
+        G('1000100010001000', { snare: '0000100000001000' }, { hat_o: '0010001000100010/0.7' }),
+      ],
+      bass: ['octave16', 'pump8', 'arp', 'rolling'], chords: ['chip_arp', 'chip_arp', 'pulse8', 'stabs', 'offbeat'], lead: ['chip', 'chip', 'hook', 'motif'], pad: ['swell', 'shimmer'],
+      presets: { bass: 'bass_pluck', chords: 'arp_chip', lead: 'lead_square', pad: 'keys_combo_organ' } },
+    trip_hop: { name: 'trip-hop', bpm: [70, 90], swing: 0.35, prog: 'minor', modes: ['minor', 'harmonic', 'dorian', 'phrygian'], hr: [1, 2, 2], ghost: true, fills: ['drop', 'flam', 'stutter'],
+      grooves: [
+        G('1000000100100000', { snare: '0000100000001000' }, { hat_c: '1010101010101010/0.8' }),
+        G('1000000000100100', { snare: '0000100000001000' }, { hat_c: '0010001000100010', shaker: '1111111111111111/0.3' }),
+        G('1000001000000000', { snare: '0000000010000000' }, { ride: '1010101010101010/0.6' }),                                  // half-time
+        G('1001000000100000', { snare: '0000100000001001/0.8' }, { hat_c: '1011101010111010/0.7', rim: '0000001000000000/0.4' }),
+        G('1000000010010000', { snare: '0000100000001000', clap: '0000000000001000/0.4' }, { hat_o: '0010000000100000/0.5', hat_c: '1000100010001000' }),
+      ],
+      bass: ['dub', 'syncop', 'root_whole', 'drone808'], chords: ['dotted', 'pad', 'arp_broken', 'swell', 'block'], lead: ['sparse', 'answer', 'whistle', 'motif'], pad: ['swell', 'drone', 'moving'],
+      presets: { bass: 'bass_sub', chords: 'keys_tape_ep', lead: 'lead_theremin', pad: 'strings_noir' } },
+  });
+  // ids the score bible names before their style is built: { id: [nearest built style, name] } clones that style (marked
+  // `placeholder`; the composer-variety test skips them) until its own grooves / figures / presets land
+  const PLACEHOLDER = {};
   for (const [id, [from, name]] of Object.entries(PLACEHOLDER)) if (!STYLES[id]) STYLES[id] = Object.assign({}, STYLES[from], { name, placeholder: from });
   for (const st of Object.values(STYLES)) st.drums = st.grooves[0];
 
@@ -209,10 +364,43 @@
     ambient: { bass: ['pad_sub_drone', 'drone_cathedral', 'drone_horizon'], chords: ['pad_shimmer', 'pad_bowed_glass', 'pad_cathedral_air', 'pad_frost', 'pad_organ_swell', 'choir_angel'],
       lead: ['bell_tubular', 'bell_bowl', 'pluck_kalimba', 'keys_celesta', 'winds_flute', 'pluck_harp', 'lead_theremin'],
       pad: ['pad_seance', 'pad_bowed_metal', 'drone_horizon', 'pad_dusk', 'pad_hollow', 'choir_angel', 'pad_cathedral_air'] },
+    folk: { bass: ['bass_fender', 'bass_fretless'], chords: ['pluck_harp', 'pluck_dobro', 'keys_felt', 'pluck_kalimba'],
+      lead: ['pluck_dobro', 'winds_flute', 'lead_whistle', 'winds_clarinet', 'pluck_nylon'], pad: ['pad_organ_swell', 'pad_dusk', 'winds_horns', 'strings_ensemble'] },
+    chamber: { bass: ['bass_upright', 'winds_clarinet', 'bass_sub'], chords: ['strings_noir', 'strings_silver', 'strings_tremolo', 'keys_felt', 'winds_horns'],
+      lead: ['winds_clarinet', 'winds_flute', 'strings_silver', 'keys_felt', 'winds_harmon'], pad: ['strings_noir', 'strings_tremolo', 'choir_crypt', 'pad_velvet', 'winds_horns'] },
+    // solo piano: bass + lead are linked to the chords' piano (STYLES.piano.link), so only chords + pad have pools
+    piano: { chords: ['keys_tape_ep', 'keys_mk1', 'keys_ep', 'keys_wurli'], pad: ['pad_velvet', 'strings_silver', 'pad_bowed_glass', 'pad_warm'] },
+    hymn: { bass: ['bass_fretless', 'bass_upright'], chords: ['pad_organ_swell', 'keys_felt', 'winds_horns', 'strings_ensemble', 'choir_vox'],
+      lead: ['keys_felt', 'winds_flute', 'winds_horns', 'winds_clarinet', 'strings_noir'], pad: ['choir_vox', 'pad_cathedral_air', 'choir_angel', 'strings_silver'] },
+    dark_drone: { bass: ['bass_reese', 'bass_fretless', 'bass_fm'], chords: ['pad_sub_drone', 'choir_crypt', 'strings_tremolo', 'pad_seance', 'pad_hollow'],
+      lead: ['bell_bowl', 'bell_tubular', 'lead_ring', 'strings_noir'], pad: ['pad_sub_drone', 'drone_cathedral', 'drone_horizon', 'pad_seance', 'choir_crypt'] },
+    synth_horror: { bass: ['bass_pluck', 'bass_fm', 'bass_acid', 'bass_sub'], chords: ['pad_gate', 'pad_frost', 'keys_felt', 'pad_seance', 'keys_celesta'],
+      lead: ['lead_theremin', 'lead_saw', 'lead_fm', 'bell_tubular', 'lead_ring'], pad: ['pad_seance', 'choir_crypt', 'pad_frost', 'strings_tremolo', 'pad_bowed_metal'] },
+    jazz: { bass: ['bass_fretless', 'bass_fender'], chords: ['keys_mk1', 'keys_vibes', 'keys_ep', 'keys_wurli'],
+      lead: ['winds_harmon', 'keys_vibes', 'winds_clarinet', 'winds_flute', 'keys_felt'], pad: ['winds_horns', 'pad_velvet', 'pad_dusk', 'strings_silver'] },
+    dub: { bass: ['bass_808', 'bass_fretless', 'bass_fender'], chords: ['keys_organ', 'pluck_nylon', 'keys_combo_organ', 'keys_mk1'],
+      lead: ['winds_flute', 'winds_harmon', 'lead_whistle', 'pluck_steel_pan', 'winds_brass'], pad: ['pad_dusk', 'pad_hollow', 'pad_organ_swell', 'pad_seance'] },
+    post_rock: { bass: ['bass_pluck', 'bass_fretless', 'bass_sub'], chords: ['pluck_nylon', 'keys_mk1', 'pluck_harp', 'pad_shimmer', 'strings_tremolo'],
+      lead: ['lead_ring', 'lead_fuzz', 'strings_noir', 'keys_celesta', 'bell_tubular'], pad: ['pad_shimmer', 'pad_cathedral_air', 'pad_frost', 'strings_ensemble', 'pad_bowed_glass'] },
+    lullaby: { bass: ['bass_fretless', 'bass_sub'], chords: ['keys_celesta', 'keys_felt', 'bell_music_box', 'pluck_kalimba', 'keys_toy_piano'],
+      lead: ['keys_celesta', 'bell_glock', 'winds_flute', 'keys_toy_piano', 'pluck_kalimba'], pad: ['choir_angel', 'pad_velvet', 'strings_silver', 'pad_warm', 'pad_bowed_glass'] },
+    industrial: { bass: ['bass_reese', 'bass_fm', 'bass_808', 'bass_acid'], chords: ['pad_bowed_metal', 'keys_clav', 'pad_fluorescent', 'pad_frost'],
+      lead: ['lead_ring', 'lead_saw', 'lead_siren', 'lead_fm'], pad: ['pad_sub_drone', 'choir_crypt', 'pad_seance', 'pad_fluorescent'] },
+    surf: { bass: ['bass_pluck', 'bass_upright'], chords: ['keys_combo_organ', 'pluck_neon', 'pluck_nylon', 'keys_clav'],
+      lead: ['pluck_dobro', 'lead_square', 'pluck_steel_pan', 'winds_brass', 'lead_ring'], pad: ['pad_organ_swell', 'winds_horns', 'pad_neon_rain', 'strings_silver'] },
+    bayou: { bass: ['bass_fender', 'bass_fretless'], chords: ['keys_wurli', 'pluck_dobro', 'keys_clav', 'pluck_nylon', 'winds_brass'],
+      lead: ['pluck_dobro', 'winds_sax', 'winds_clarinet', 'winds_harmon', 'lead_whistle'], pad: ['winds_horns', 'pad_dusk', 'strings_silver', 'drone_bayou'] },
+    minimal: { bass: ['bass_sub', 'bass_upright', 'bass_pluck'], chords: ['keys_vibes', 'keys_celesta', 'keys_felt', 'pluck_kalimba', 'keys_harpsichord', 'keys_organ'],
+      lead: ['winds_clarinet', 'keys_vibes', 'bell_glock', 'choir_vox', 'pluck_marimba'], pad: ['choir_vox', 'pad_organ_swell', 'strings_silver', 'pad_glass'] },
+    chiptune: { bass: ['bass_sub', 'bass_fm', 'bass_acid'], chords: ['pluck_neon', 'keys_combo_organ', 'keys_toy_piano', 'bell_glock'],
+      lead: ['arp_chip', 'lead_fm', 'pluck_neon', 'bell_glock', 'lead_siren'], pad: ['pad_gate', 'keys_organ', 'pad_glass', 'pad_neon_rain'] },
+    trip_hop: { bass: ['bass_808', 'bass_fretless', 'bass_upright', 'bass_ladder'], chords: ['keys_felt', 'strings_noir', 'keys_wurli', 'pad_tape_wobble', 'keys_vibes'],
+      lead: ['strings_noir', 'winds_harmon', 'keys_vibes', 'bell_glock', 'winds_clarinet'], pad: ['pad_tape_wobble', 'choir_crypt', 'pad_seance', 'pad_dusk', 'strings_tremolo'] },
   };
   function presetFor(styleId, role, seed) {
     const st = STYLES[styleId]; if (!st) return null;
     if (role === 'drums') return 'kit';
+    if (st.link && st.link[role]) return presetFor(styleId, st.link[role], seed);   // one instrument for several roles
     const base = st.presets[role], pool = ((FORGE_POOLS[styleId] || {})[role] || []).filter(x => x !== base);
     const all = base ? [base, ...pool] : pool;
     return all.length ? all[hash(String(seed) + ':forge:' + role) % all.length] : null;
@@ -257,16 +445,26 @@
     const prob = p === undefined ? 1 : parseFloat(p);
     return pat.split('').map(c => c === '1' ? prob : 0);
   }
-  const STEPS = s => parseGrid(s).map((p, i) => p ? i : -1).filter(i => i >= 0);
+  const gridVel = s => { const v = String(s).split('/')[2]; return v === undefined ? 1 : parseFloat(v); };
+  // the steps a grid plays, as sixteenths (a 12-step triplet grid rounds to the nearest)
+  const STEPS = s => { const g = parseGrid(s); return g.map((p, i) => p ? Math.round(i * 16 / g.length) : -1).filter(i => i >= 0); };
 
   // ── harmony ─────────────────────────────────────────────────────
   // chord tones (scale-degree offsets) per extension
-  const EXT = { triad: [0, 2, 4], seventh: [0, 2, 4, 6], sus2: [0, 1, 4], sus4: [0, 3, 4], add9: [0, 2, 4, 8], ninth: [0, 2, 4, 6, 8], power: [0, 4] };
+  const EXT = { triad: [0, 2, 4], seventh: [0, 2, 4, 6], sus2: [0, 1, 4], sus4: [0, 3, 4], add9: [0, 2, 4, 8], ninth: [0, 2, 4, 6, 8], power: [0, 4], sixth: [0, 2, 4, 5] };
   const EXT_W = {
     four_floor: [['seventh', 3], ['triad', 2], ['add9', 2], ['sus2', 1]], boom_bap: [['seventh', 4], ['ninth', 2], ['add9', 1]], lofi: [['seventh', 3], ['ninth', 3], ['add9', 2]],
     trap: [['triad', 3], ['sus2', 1], ['power', 1]], dnb: [['seventh', 2], ['add9', 2], ['sus2', 1]], shuffle: [['seventh', 3], ['triad', 2]],
     motorik: [['sus2', 2], ['triad', 2], ['power', 1], ['sus4', 1]], synthwave: [['triad', 2], ['add9', 2], ['seventh', 1]],
     noir: [['seventh', 3], ['ninth', 2], ['triad', 1]], ambient: [['add9', 3], ['sus2', 2], ['sus4', 1], ['triad', 1]],
+    folk: [['triad', 5], ['sus2', 1], ['sus4', 1], ['add9', 1]], chamber: [['triad', 3], ['seventh', 2], ['sus4', 1], ['add9', 1]],
+    piano: [['add9', 2], ['seventh', 2], ['triad', 2], ['sus2', 1]], hymn: [['triad', 6], ['sus4', 1], ['seventh', 1]],
+    dark_drone: [['triad', 2], ['sus2', 1], ['sus4', 1], ['power', 1]], synth_horror: [['triad', 4], ['sus2', 1], ['power', 1]],
+    jazz: [['seventh', 4], ['ninth', 3], ['sixth', 1]], dub: [['triad', 2], ['seventh', 2], ['sus2', 1]],
+    post_rock: [['add9', 3], ['sus2', 2], ['triad', 2], ['power', 1]], lullaby: [['triad', 3], ['add9', 2], ['sus2', 1], ['sixth', 1]],
+    industrial: [['power', 3], ['triad', 1], ['sus2', 1]], surf: [['triad', 3], ['sixth', 2], ['seventh', 1]],
+    bayou: [['seventh', 4], ['triad', 1], ['sixth', 1]], minimal: [['triad', 2], ['sus2', 2], ['add9', 2]],
+    chiptune: [['triad', 4], ['seventh', 1], ['sus4', 1]], trip_hop: [['seventh', 3], ['ninth', 2], ['triad', 1]],
   };
   // a section's harmony: progression, harmonic rhythm (bars per chord), extension; B / C contrast with A
   function harmonyPlan(R, st, fam, prog0) {
@@ -283,7 +481,9 @@
     const pos = Math.floor((b + beat / 4) / H.hr), deg = H.prog[((pos % H.prog.length) + H.prog.length) % H.prog.length];
     return { deg, ext: deg % 7 === 4 && H.ext === 'triad' ? 'seventh' : H.ext };
   }
-  const chordNotes = (key, scale, c, oct) => EXT[c.ext].map(x => deg2midi(key, scale, c.deg + x, oct));
+  // a 'sixth' adds the major sixth over the root whatever the scale (the minor-six of jazz / surf, a dim7 on a diminished triad)
+  const chordNotes = (key, scale, c, oct) => c.ext === 'sixth' ? [0, 2, 4].map(x => deg2midi(key, scale, c.deg + x, oct)).concat(deg2midi(key, scale, c.deg, oct) + 9)
+    : EXT[c.ext].map(x => deg2midi(key, scale, c.deg + x, oct));
   const chordPcsOf = (key, scale, c) => [...new Set(chordNotes(key, scale, c, 4).map(n => ((n % 12) + 12) % 12))];
 
   // ── drums ───────────────────────────────────────────────────────
@@ -295,11 +495,16 @@
     clave: { n: 75, g: '1001001000101000/0.6' }, cowbell: { n: 56, g: '1000100010001000/0.4' }, shaker16: { n: 70, g: '1111111111111111/0.3' },
   };
   const PERC_FOR = { four_floor: ['tamb8', 'cowbell', 'conga'], boom_bap: ['clave', 'tamb24', 'shaker16'], lofi: ['shaker16', 'conga', 'tamb24'], shuffle: ['tamb24', 'conga', 'cowbell'],
-    synthwave: ['tamb24', 'shaker16'], motorik: ['tamb8', 'shaker16'], dnb: ['shaker16', 'tamb8'], trap: [], noir: ['conga', 'shaker16'], ambient: [] };
-  const GM_OF = { kick: 36, rim: 37, snare: 38, clap: 39, hat_c: 42, tom: 45, hat_o: 46, crash: 49, ride: 51, shaker: 70 };
+    synthwave: ['tamb24', 'shaker16'], motorik: ['tamb8', 'shaker16'], dnb: ['shaker16', 'tamb8'], trap: [], noir: ['conga', 'shaker16'], ambient: [],
+    folk: ['tamb24', 'shaker16'], chamber: [], piano: [], hymn: [], dark_drone: [], synth_horror: ['shaker16'], jazz: [], dub: ['shaker16', 'clave', 'conga'],
+    post_rock: ['tamb8', 'shaker16'], lullaby: [], industrial: ['cowbell', 'shaker16'], surf: ['tamb8', 'tamb24'], bayou: ['tamb8', 'shaker16'], minimal: ['shaker16', 'clave'],
+    chiptune: [], trip_hop: ['shaker16', 'conga'] };
+  const GM_OF = { kick: 36, rim: 37, snare: 38, clap: 39, hat_c: 42, tom: 45, hat_o: 46, crash: 49, ride: 51, shaker: 70,
+    hat_p: 44, tamb: 54, cowbell: 56, conga: 62, conga_lo: 64, clave: 75, tom_lo: 41, tom_hi: 48 };
+  const SOFT_VOICE = { hat_c: 0.55, shaker: 0.55, ride: 0.55, rim: 0.7, hat_p: 0.5, tamb: 0.5, clave: 0.6, cowbell: 0.6, conga: 0.65, conga_lo: 0.65 };
   function genDrums(R, st, sec, ctx, opts) {
     const notes = [], bars = sec.bars, dens = opts.density, groove = ctx.groove, thin = ctx.thin;
-    const grids = {}; for (const k in groove) grids[k] = parseGrid(groove[k]);
+    const grids = {}, gvel = {}; for (const k in groove) { grids[k] = parseGrid(groove[k]); gvel[k] = gridVel(groove[k]); }
     if (thin) { for (const k of ['kick', 'snare', 'clap']) if (grids[k] && thin === 'perc') delete grids[k]; if (thin === 'half') { if (grids.snare) grids.snare = parseGrid('0000000010000000'); if (grids.clap) grids.clap = parseGrid('0000000010000000'); if (grids.kick) grids.kick = parseGrid('1000000000000000'); } }
     const perc = ctx.perc && PERC[ctx.perc];
     const fillKind = ctx.fill;
@@ -308,17 +513,18 @@
       const turn = b % 4 === 3 && !phraseEnd;                 // a small variation every fourth bar
       const T = b * BAR;
       for (const voice in grids) {
-        const g = grids[voice];
-        for (let s = 0; s < 16; s++) {
+        const g = grids[voice], len = g.length, stepT = BAR / len;          // 16 sixteenths, or 12 triplet eighths
+        for (let s = 0; s < len; s++) {
           let p = g[s];
-          if (phraseEnd && s >= 12 && fillKind !== 'open_hat' && (voice === 'kick' || voice === 'hat_o' || voice === 'hat_c')) p *= fillKind === 'drop' ? 0 : 0.5;
-          if (turn && voice === 'kick' && (s === 14 || s === 15) && !p && R.chance(0.4)) p = 0.8;
+          const at = s * stepT, pos = at % BEAT;
+          if (phraseEnd && at >= 3 * BEAT && fillKind !== 'open_hat' && (voice === 'kick' || voice === 'hat_o' || voice === 'hat_c')) p *= fillKind === 'drop' ? 0 : 0.5;
+          if (turn && voice === 'kick' && (s === len - 2 || s === len - 1) && !p && R.chance(0.4)) p = 0.8;
           if (!p) continue;
           const keep = voice === 'kick' || voice === 'snare' || voice === 'clap' ? p : p * (0.55 + 0.45 * dens);
           if (!R.chance(keep)) continue;
-          const accent = s % 4 === 0 ? 1 : s % 2 === 0 ? 0.8 : 0.62;
-          const base = voice === 'hat_c' || voice === 'shaker' || voice === 'ride' ? 0.55 : voice === 'rim' ? 0.7 : 0.9;
-          notes.push({ t: T + s * S16, d: S16, n: GM_OF[voice], v: clampV(base * accent + (R() - 0.5) * 0.12) });
+          const accent = pos === 0 ? 1 : pos === BEAT / 2 ? 0.8 : len === 12 && pos > BEAT / 2 ? 0.72 : 0.62;
+          const base = SOFT_VOICE[voice] || 0.9;
+          notes.push({ t: T + Math.round(at), d: S16, n: GM_OF[voice], v: clampV(base * accent * gvel[voice] + (R() - 0.5) * 0.12) });
         }
       }
       if (perc && !thin) for (const [n, g] of [[perc.n, perc.g], [perc.n2, perc.g2]]) { if (!n) continue; const pg = parseGrid(g); for (let s = 0; s < 16; s++) if (pg[s] && R.chance(pg[s] * (0.6 + 0.4 * dens))) notes.push({ t: T + s * S16, d: S16, n, v: clampV(0.5 + (s % 4 === 0 ? 0.15 : 0) + (R() - 0.5) * 0.15) }); }
@@ -333,17 +539,31 @@
         else if (fillKind === 'flam') { notes.push({ t: T + 12 * S16 - 6, d: 6, n: sn, v: 0.35 }, { t: T + 12 * S16, d: S16, n: sn, v: 0.85 }, { t: T + 14 * S16, d: S16, n: sn, v: 0.7 }); }
         else if (fillKind === 'kick_push') notes.push({ t: T + 14 * S16, d: S16, n: GM.kick, v: 0.8 }, { t: T + 15 * S16, d: S16, n: GM.kick, v: 0.7 });
       }
-      if (b === 0 && ctx.crash && !opts.bed) notes.push({ t: 0, d: BEAT, n: GM.crash, v: 0.7 });
+      if (b === 0 && ctx.crash && !opts.bed && !st.nocrash) notes.push({ t: 0, d: BEAT, n: GM.crash, v: 0.7 });
     }
     return notes;
   }
 
   // ── bass ────────────────────────────────────────────────────────
   // one figure per section (from the style's vocabulary); approach notes lead into the next chord
+  // dub riffs: [sixteenth, scale steps above the chord root, length in sixteenths] — beat 1 mostly left empty
+  const DUB_RIFFS = [[[2, 0, 3], [6, 0, 2], [8, 4, 2], [10, 2, 2], [12, 0, 4]], [[4, 0, 4], [8, 0, 2], [10, 4, 2], [12, 6, 2], [14, 4, 2]],
+    [[3, 0, 3], [6, 4, 2], [8, 0, 6], [14, -1, 2]], [[2, 0, 2], [4, 2, 2], [6, 4, 4], [10, 4, 2], [12, 2, 2], [14, 0, 2]], [[0, 0, 3], [3, 0, 1], [6, 7, 2], [10, 4, 2], [12, 2, 4]]];
+  // swamp boogie: per bar, four (on-beat, triplet-let) pairs in semitones over the chord root (null = rest)
+  const SWAMP = [[[0, 4, 7, 9, 10, 9, 7, 4]], [[0, 12, 0, 12, 0, 12, 10, 7]], [[0, null, 10, 12, 0, null, 7, 5]], [[0, 4, 7, 9, 10, 9, 7, 4], [0, 12, 10, 7, 5, 4, 3, 2]]];
+  // pedal pulse: a rhythm gate (16ths) + the semitones over the tonic per step
+  const PULSES = [['1010101010101010', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], ['1010101010101010', [0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0]],
+    ['1111111111111111', [0, 0, 12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0, 12, 0]], ['1001001010010010', [0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], ['1010101010101011', [0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 7, 12]]];
+  const MACHINE = ['1011101110111011', '1001001010010010', '1110111011101110', '1000101010001010', '1101101101101101'];
   function genBass(R, st, sec, ctx, harm, opts) {
     const notes = [], { key, scale } = harm, H = ctx.H, kind = ctx.fig, kick = ctx.kickSteps || [0, 8];
     const low = n => { while (n > 52) n -= 12; while (n < 31) n += 12; return n; };
     const push = (t, d, n, v) => notes.push({ t, d, n, v });
+    // degree `deg` in the octave of `ref` (a note of degree refDeg); the shortest way round from degree a to z (−3..3)
+    const at = (deg, ref, refDeg) => deg2midi(key, scale, deg, 1) + (ref - deg2midi(key, scale, refDeg, 1));
+    const toward = (a, z) => { let d = ((z - a) % 7 + 7) % 7; if (d > 3) d -= 7; return d; };
+    const reg = (n, lo = 28, hi = 55) => { while (n > hi) n -= 12; while (n < lo) n += 12; return n; };
+    let figure = null;                                           // a section-long pick (riff, gate, boogie)
     for (let b = 0; b < sec.bars; b++) {
       const T = b * BAR, c = chordAt(H, b), nx = chordAt(H, b + 1), c2 = chordAt(H, b, 2);
       const root = low(deg2midi(key, scale, c.deg, 1)), fifth = low(deg2midi(key, scale, c.deg + 4, 1)), third = low(deg2midi(key, scale, c.deg + 2, 1));
@@ -366,6 +586,88 @@
         case 'kicklock': for (const s of kick) if (s < end) push(T + s * S16, Math.max(S16, ((kick.find(x => x > s) ?? 16) - s) * S16 - 8), s >= 8 ? root2 : root, s % 4 === 0 ? v1 : v2); break;
         case 'rootfifth': push(T, BEAT + S16 * 2, root, v1); push(T + BEAT * 2, BEAT, fifth, v2); if (R.chance(0.6)) push(T + BEAT * 3, S16 * 2, R.chance(0.5) ? oct : root2, v2); break;
         case 'arp': [root, third, fifth, oct].forEach((n, k) => { if (k * 4 < end) push(T + k * BEAT, BEAT - 10, k >= 2 && c2.deg !== c.deg ? low(deg2midi(key, scale, c2.deg + [0, 2, 4, 7][k], 1)) : n, k ? v2 : v1); }); break;
+        case 'two_beat': {            // root on 1, the fifth (often the one below) on 3; a walk-up into some changes
+          if (approach !== null && R.chance(0.5)) {
+            push(T, BEAT - 8, root, v1);
+            let w = [3, 2, 1].map(k => at(nx.deg - k, nextRoot, nx.deg)); if (w[0] < 28) w = w.map(n => n + 12);
+            w.forEach((n, k) => push(T + (k + 1) * BEAT, BEAT - 8, n, v2));
+            continue;
+          }
+          const alt = c2.deg !== c.deg ? root2 : R.chance(0.6) && fifth - 12 >= 28 ? fifth - 12 : fifth;
+          push(T, BEAT * 2 - 10, root, v1); push(T + BEAT * 2, (end < 16 ? BEAT + S16 * 2 : BEAT * 2) - 10, alt, v2);
+          break;
+        }
+        case 'stepwise': {            // beat 1 the root, beat 3 a passing step toward the next root (a lament / cello line)
+          let pass;
+          const dd = toward(c.deg, nx.deg);
+          if (c2.deg !== c.deg) pass = root2;
+          else if (Math.abs(dd) >= 2) pass = reg(at(c.deg + Math.sign(dd), root, c.deg));
+          else pass = R.chance(0.5) ? third : fifth;
+          push(T, BEAT * 2 - 8, root, v1); push(T + BEAT * 2, BEAT * 2 - 8, pass, v2);
+          continue;
+        }
+        case 'chorale_bass': {        // hymn: half notes — the root, then an inversion or quarters stepping to the next root
+          if (c2.deg !== c.deg) { push(T, BEAT * 2 - 6, root, v1); push(T + BEAT * 2, BEAT * 2 - 6, root2, v2); continue; }
+          if (b % 4 === 3) { push(T, BAR - 8, root, v1); continue; }          // the cadence holds
+          const r = R(), dd = toward(c.deg, nx.deg);
+          push(T, BEAT * 2 - 6, root, v1);
+          if (r < 0.45) push(T + BEAT * 2, BEAT * 2 - 6, R.chance(0.5) ? third : fifth, v2);
+          else if (r < 0.8 && dd) { push(T + BEAT * 2, BEAT - 6, R.chance(0.5) ? root : third, v2); push(T + BEAT * 3, BEAT - 6, reg(at(nx.deg - Math.sign(dd), nextRoot, nx.deg)), v2); }
+          else push(T + BEAT * 2, BEAT * 2 - 6, root, v2 * 0.9);
+          continue;
+        }
+        case 'lh_octave': {           // piano left hand: root + octave (sometimes broken), the fifth / next root on 3
+          push(T, BEAT * 2 - 6, root, 0.72);
+          if (root + 12 <= 62) push(T + (R.chance(0.4) ? S16 * 2 : 0), BEAT * 2 - 6 - S16 * 2, root + 12, 0.56);
+          push(T + BEAT * 2, BEAT * 2 - 8, c2.deg !== c.deg ? root2 : fifth, 0.62);
+          continue;
+        }
+        case 'dub': {                 // heavy, round, melodic: the riff leaves beat 1 open; every fourth bar it turns around
+          if (!figure) figure = R.pick(DUB_RIFFS);
+          const turnBar = b % 4 === 3;
+          for (const [s, off, l] of figure) {
+            if (turnBar && s >= 12) continue;
+            const ch = s >= 8 ? c2 : c, ref = s >= 8 ? root2 : root;
+            push(T + s * S16, l * S16 - 6, reg(at(ch.deg + off, ref, ch.deg), 28, 52), s % 4 === 0 ? 0.88 : 0.76);
+          }
+          if (turnBar) { push(T + 12 * S16, S16 * 2 - 6, reg(root2 + 12, 28, 55), 0.72); push(T + 14 * S16, S16 * 2 - 6, approach ?? root2, 0.7); }
+          continue;
+        }
+        case 'pedal_pulse': {         // synth horror: a pulse on the tonic pedal under the moving chords
+          if (!figure) figure = R.pick(PULSES);
+          const [gate, oct] = figure, ped = low(deg2midi(key, scale, 0, 1));
+          for (let s = 0; s < 16; s++) if (gate[s] === '1') { const nx16 = gate.indexOf('1', s + 1); push(T + s * S16, Math.min(S16 * 2, ((nx16 < 0 ? 16 : nx16) - s) * S16) - 6, ped + oct[s], s % 4 === 0 ? 0.86 : 0.68); }
+          continue;
+        }
+        case 'machine': {             // industrial: a sequencer's sixteenth gate on the root, accents jumping an octave
+          if (!figure) figure = R.pick(MACHINE);
+          for (let s = 0; s < 16; s++) if (figure[s] === '1') { const acc = s % 4 === 0; push(T + s * S16, S16 - 4, (s >= 8 ? root2 : root) + (acc && R.chance(0.25) ? 12 : 0), acc ? 0.9 : 0.7); }
+          continue;
+        }
+        case 'swamp': {               // bayou: shuffled boogie — long on the beat, short on the triplet let; the blue third slid into
+          if (!figure) figure = R.pick(SWAMP);
+          const seq = figure[b % figure.length];
+          for (let k = 0; k < 4; k++) {
+            const ref = k >= 2 ? root2 : root, on = seq[2 * k], lt = seq[2 * k + 1];
+            const tail = k === 3 && approach !== null;
+            if (on !== null) { if (on === 4 && R.chance(0.35)) push(T + k * BEAT - 10, 10, ref + 3, 0.5); push(T + k * BEAT, lt === null && !tail ? BEAT - 8 : 60, ref + on, k ? 0.78 : 0.88); }
+            if (tail) push(T + k * BEAT + 64, 26, approach, 0.66);
+            else if (lt !== null) push(T + k * BEAT + 64, 26, ref + lt, 0.62);
+          }
+          continue;
+        }
+        case 'stand_up': {            // jazz walking: chord tones, scale steps, a chromatic enclosure into the next root, a ghosted skip
+          const step2 = R.chance(0.5) ? third : reg(at(c.deg + 1, root, c.deg));
+          let b3 = c2.deg !== c.deg ? root2 : R.chance(0.6) ? fifth : third, b4 = R.pick([nextRoot - 1, nextRoot + 1, reg(at(nx.deg + 1, nextRoot, nx.deg))]);
+          if (c2.deg === c.deg && R.chance(0.25)) { b3 = reg(at(nx.deg + 1, nextRoot, nx.deg)); b4 = nextRoot - 1; }    // enclosure: above, then below
+          const line = [root, step2, b3, b4];
+          const skip = R.chance(0.2) ? R.int(1, 3) : -1;
+          line.forEach((n, k) => {
+            push(T + k * BEAT, (k === skip ? 60 : BEAT - 8), reg(n), k === 0 ? 0.86 : 0.7);
+            if (k === skip) push(T + k * BEAT + 64, 24, reg(n), 0.4);
+          });
+          continue;
+        }
         case 'walking': {
           const pcs = chordPcsOf(key, scale, c);
           const line = [root, nearestPC(root + 4, pcs, root + 1, root + 9), nearestPC(root + 7, pcs, root + 3, root + 12)];
@@ -395,14 +697,19 @@
     if (spread && out.length >= 4 && out[out.length - 2] - 12 >= lo - 5) out[out.length - 2] -= 12;   // drop-2: an open voicing
     return out.sort((a, b) => a - b);
   }
+  // fingerpicking: eight eighth-note slots — R thumb root, 5 thumb fifth, T top voice, M the one under it, P a pinch (R + T)
+  const FINGER = [['P', 'M', '5', 'T', 'R', 'M', '5', 'T'], ['R', 'T', '5', 'M', 'R', 'T', '5', 'M'], ['P', null, '5', 'M', 'R', 'T', null, 'M'], ['R', 'M', 'T', 'R', 'M', 'T', 'R', 'T']];
+  const CHUG = ['1011101110111011', '1001001010010010', '1110111011101110', '1000101010001010', '1111101011111010'];
   function genChords(R, st, sec, ctx, harm, opts) {
     const notes = [], { key, scale } = harm, H = ctx.H, kind = ctx.fig, [lo, hi] = ctx.range;
     let prev = harm.prevVoicing || null;
+    const memo = {}, once = (k, f) => (k in memo ? memo[k] : (memo[k] = f()));     // a section-long pick
     for (let b = 0; b < sec.bars; b++) {
       const T = b * BAR;
       for (const half of H.hr < 1 ? [0, 2] : [0]) {
         const c = chordAt(H, b, half), span = H.hr < 1 ? BEAT * 2 : BAR, t0 = half * BEAT;
-        const v = voiceChord(chordPcsOf(key, scale, c), prev, lo, hi, ctx.spread); prev = v;
+        const pcs = chordPcsOf(key, scale, c);
+        const v = voiceChord(pcs, prev, lo, hi, ctx.spread); prev = v;
         const push = (t, d, vel, only) => (only || v).forEach(n => { if (t < t0 + span) notes.push({ t: T + t, d: Math.min(d, t0 + span - t), n, v: vel }); });
         const top = v.slice(-1), bottom = v.slice(0, -1);
         switch (kind) {
@@ -420,6 +727,107 @@
             const seq = kind === 'arp_up' ? up : kind === 'arp_ud' ? up.concat(up.slice(1, -1).reverse()) : [v[0], v[2] ?? v[1], v[1], top[0], v[2] ?? v[1], v[1]];
             const step = kind === 'arp_broken' ? S16 * 2 : S16, n = span / step;
             for (let k = 0; k < n; k++) notes.push({ t: T + t0 + k * step, d: step * (kind === 'arp_broken' ? 2 : 1) - 4, n: seq[k % seq.length], v: k % 4 === 0 ? 0.7 : 0.52 });
+            break;
+          }
+          case 'fingerpick': case 'boomchick': {      // folk guitar: an alternating thumb under the chord (Travis), or boom-chick
+            const fifthPc = ((deg2midi(key, scale, c.deg + 4, 4) % 12) + 12) % 12;
+            const tr = nearestPC(v[0] - 8, [pcs[0]], v[0] - 15, v[0] - 1), t5 = nearestPC(tr + 7, [fifthPc], tr + 3, tr + 9);
+            if (kind === 'boomchick') {
+              const late = once('chick', () => R.chance(0.4));
+              for (let k = 0; k < 4; k++) {
+                const x = k * BEAT; if (x < t0 || x >= t0 + span) continue;
+                if (k % 2 === 0) push(x, BEAT - 8, 0.62, [k === 2 ? t5 : tr]); else push(x, S16 * 2, 0.5, v.slice(-3));
+              }
+              if (late && t0 + span === BAR) push(BEAT * 3 + S16 * 2, S16 * 2, 0.42, v.slice(-3));
+              break;
+            }
+            const fp = once('finger', () => R.pick(FINGER)), M = v[v.length - 2] ?? v[0];
+            for (let e = t0 / (S16 * 2); e < (t0 + span) / (S16 * 2); e++) {
+              const tok = fp[e], x = e * S16 * 2; if (!tok) continue;
+              if (tok === 'R' || tok === '5' || tok === 'P') push(x, BEAT - 6, e === 0 ? 0.62 : 0.55, [tok === '5' ? t5 : tr]);
+              if (tok === 'T' || tok === 'P') push(x, S16 * 3, tok === 'P' ? 0.52 : 0.46, top);
+              if (tok === 'M') push(x, S16 * 3, 0.43, [M]);
+            }
+            break;
+          }
+          case 'chorale': {                           // hymn: block chords in half notes, the top voice moving on repeats; cadences hold
+            const rh = b % 4 === 3 && span === BAR ? [0] : once('chorale', () => R.pick([[0, 2], [0, 2], [0, 1, 2], [0, 3], [0, 2, 3], [0, 1, 2, 3]]));
+            const on = rh.map(x => x * BEAT).filter(x => x > t0 && x < t0 + span); on.unshift(t0);
+            let vo = v;
+            on.forEach((x, i) => {
+              if (i) {                                // re-voice: the top voice steps to another chord tone nearby
+                const tp = vo[vo.length - 1], floor = vo.length > 1 ? vo[vo.length - 2] + 2 : lo, cands = [];
+                for (let n = tp - 5; n <= tp + 5; n++) if (n !== tp && n >= floor && n <= hi + 2 && pcs.includes(((n % 12) + 12) % 12)) cands.push(n);
+                if (cands.length) vo = vo.slice(0, -1).concat(R.pick(cands));
+              }
+              const end = on[i + 1] ?? t0 + span;
+              vo.forEach((n, j) => notes.push({ t: T + x, d: end - x - 6, n, v: 0.5 + (x === t0 ? 0.06 : 0) + (j === vo.length - 1 ? 0.04 : 0) }));
+            });
+            prev = vo.slice().sort((a, z) => a - z);
+            break;
+          }
+          case 'tremolo': {                           // post-rock / surf / strings: the chord re-struck in 16ths (32nds on the top two), swelling
+            const rate = once('trem', () => R.pick([S16, S16, S16 / 2]));
+            const vs = rate < S16 ? v.slice(-2) : v;
+            for (let x = t0; x < t0 + span; x += rate) { const vel = 0.34 + 0.28 * ((b + x / BAR) / sec.bars) + (x % BEAT === 0 ? 0.05 : 0); vs.forEach(n => notes.push({ t: T + x, d: rate - 3, n, v: vel })); }
+            break;
+          }
+          case 'skank': {                             // dub / reggae: short chops on 2 and 4 (or every offbeat), sometimes echoing
+            const sk = once('skank', () => ({ at: R.pick([[1, 3], [1, 3], [1, 3, 3.25], [0.5, 1.5, 2.5, 3.5]]), echo: R.chance(0.5) }));
+            const vs = v.slice(-3);
+            for (const x of sk.at) {
+              const tt = x * BEAT; if (tt < t0 || tt >= t0 + span) continue;
+              push(tt, 18, 0.66, vs);
+              if (sk.echo && x === sk.at[sk.at.length - 1]) for (let e = 1; e <= 2; e++) push(tt + e * S16 * 3, 14, 0.66 * Math.pow(0.45, e), vs);
+            }
+            break;
+          }
+          case 'bubble':                              // reggae organ bubble: chord on the &, the low note on the e and a
+            for (let k = 0; k < 4; k++) { const tt = k * BEAT; if (tt < t0 || tt >= t0 + span) continue; push(tt + S16 * 2, S16 + 4, 0.52, v.slice(1)); push(tt + S16, 14, 0.34, [v[0]]); push(tt + S16 * 3, 14, 0.38, [v[0]]); }
+            break;
+          case 'four':                                // four to the bar: short quarter chords, 2 and 4 leaning (Freddie Green, zydeco)
+            for (let k = 0; k < 4; k++) { const tt = k * BEAT; if (tt >= t0 && tt < t0 + span) push(tt, S16 * 2 + 4, k % 2 ? 0.6 : 0.5); }
+            break;
+          case 'shell': {                             // jazz piano: rootless shells, comped off the beat, never the same bar twice
+            let sh = v.filter(n => n % 12 !== pcs[0]); if (sh.length < 2) sh = v.slice(-2);
+            const rh = R.pick(span === BAR ? [[0, 1.5], [0, 2.5], [1.5, 3], [0, 3.5], [0.5, 2], [0, 1.5, 3]] : [[0], [0.5], [0, 1.5]]);
+            rh.forEach((x, i) => { const tt = t0 + x * BEAT, last = i === rh.length - 1; push(tt, last ? Math.min(BEAT * 1.5, t0 + span - tt) - 6 : S16 * 3, 0.56 + (R() - 0.5) * 0.08, sh); });
+            break;
+          }
+          case 'alberti': {                           // piano / lullaby: low–high–middle–high in eighths, or low–middle–high triplets
+            const trip = once('alberti', () => (st.lilt ? R.chance(0.8) : R.chance(0.3)));
+            const m = v[1] ?? v[0], seq = trip ? [v[0], m, top[0]] : [v[0], top[0], m, top[0]], step = trip ? BEAT / 3 : S16 * 2;
+            for (let k = 0; k * step < span; k++) { const x = t0 + k * step; notes.push({ t: T + x, d: Math.min(step * 2, t0 + span - x) - 4, n: seq[k % seq.length], v: k % seq.length === 0 ? 0.52 : 0.4 }); }
+            break;
+          }
+          case 'block': {                             // piano: a held voicing, a hair late, sometimes rolled from the bottom; a soft re-strike
+            const late = R.int(0, 8), roll = R.chance(0.5) ? R.int(5, 10) : 0;
+            v.forEach((n, i) => notes.push({ t: T + t0 + late + i * roll, d: span - late - i * roll - 6, n, v: (i === v.length - 1 ? 0.56 : 0.48) + (R() - 0.5) * 0.06 }));
+            if (span === BAR && R.chance(0.45)) { const a2 = R.pick([BEAT * 2, BEAT * 2, BEAT + S16 * 2, BEAT * 3]) + R.int(0, 6); v.slice(-2).forEach(n => notes.push({ t: T + a2, d: BAR - a2 - 6, n, v: 0.4 })); }
+            break;
+          }
+          case 'ostinato': {                          // minimalism: a 5–7 note cell over the chord, phasing against the bar, one note longer every four bars
+            const os = once('ost', () => { const L = R.int(5, 7), cell = []; for (let i = 0; i < L; i++) cell.push(R.int(0, 4)); return { cell, k: 0, rate: R.pick([S16 * 2, S16 * 2, S16]) }; });
+            if (half === 0 && b > 0 && b % 4 === 0 && os.cell.length < 9) os.cell.push(R.int(0, 4));
+            const tones = v.concat(v.map(n => n + 12));
+            for (let x = t0; x < t0 + span; x += os.rate) { const i = os.k++ % os.cell.length; notes.push({ t: T + x, d: os.rate - 4, n: tones[Math.min(os.cell[i], tones.length - 1)], v: i === 0 ? 0.6 : 0.47 }); }
+            break;
+          }
+          case 'chip_arp': {                          // chiptune: the chord as a 32nd (or 16th) arpeggio — one voice faking a chord
+            const ca = once('chip', () => ({ rate: R.pick([S16 / 2, S16 / 2, S16]), shape: R.pick(['up', 'updown', 'oct']) }));
+            const up = v.concat(top[0] + 12), seq = ca.shape === 'up' ? v : ca.shape === 'updown' ? up.concat(up.slice(1, -1).reverse()) : up;
+            let k = 0; for (let x = t0; x < t0 + span; x += ca.rate, k++) notes.push({ t: T + x, d: ca.rate - 2, n: seq[k % seq.length], v: x % BEAT === 0 ? 0.58 : 0.46 });
+            break;
+          }
+          case 'dotted': {                            // post-rock / trip-hop: dotted-eighth arpeggio from the top (a delay's echo pattern)
+            const seq = [top[0], v[v.length - 2] ?? v[0], v[0], v[v.length - 2] ?? v[0]];
+            for (let k = 0; k * S16 * 3 < span; k++) { const x = t0 + k * S16 * 3; notes.push({ t: T + x, d: Math.min(S16 * 5, t0 + span - x) - 4, n: seq[k % seq.length], v: k % 3 === 0 ? 0.56 : 0.44 }); }
+            break;
+          }
+          case 'chug': {                              // industrial: palm-muted power chord on a sixteenth gate; every 4th bar may ring
+            const mask = once('chug', () => R.pick(CHUG)), r0 = nearestPC(lo - 2, [pcs[0]], lo - 9, lo + 4), pw = [r0, r0 + 7, r0 + 12];
+            if (b % 4 === 3 && half === 0 && R.chance(0.4)) { push(t0, span - 6, 0.7, pw); break; }
+            for (let k = 0; k < 16; k++) { const x = k * S16; if (x >= t0 && x < t0 + span && mask[k] === '1') push(x, S16 - 6, x % BEAT === 0 ? 0.68 : 0.54, pw); }
             break;
           }
           default: push(t0, span - 4, 0.6);
@@ -440,7 +848,18 @@
     motif: [[1, 0, 0, 0], [1, 0, 1, 0], [1, 1, 1, 0], [0, 0, 1, 0], [1, 0, 0, 1], [0, 1, 1, 0], [1, 0, 1, 1]],
     answer: [[0, 0, 0, 0], [1, 0, 1, 0], [0, 0, 1, 0], [1, 0, 0, 0], [0, 1, 0, 1]],
     hook: [[1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1], [1, 0, 0, 0]],
+    // genre kinds: whistle (long held tones), hymn (stepwise quarters and halves), chip (busy sixteenths, played staccato
+    // with arpeggio bursts), lilt (positions 1 / 2 of a cell sit on the triplet: 12/8 in a 4/4 bar), trem (a hook,
+    // tremolo-picked), blue (a motif with blue-note slides)
+    whistle: [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [1, 0, 0, 0], [0, 0, 0, 0]],
+    hymn: [[1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 1, 0], [0, 0, 0, 0]],
+    chip: [[1, 1, 1, 1], [1, 0, 1, 1], [1, 1, 1, 0], [1, 0, 1, 0], [0, 1, 1, 1]],
+    lilt: [[1, 0, 0, 0], [1, 0, 1, 0], [1, 1, 1, 0], [0, 0, 1, 0], [1, 0, 0, 0]],
+    trem: [[1, 0, 0, 0], [1, 0, 1, 0], [1, 0, 0, 1], [0, 0, 1, 0]],
+    blue: [[1, 0, 0, 0], [1, 0, 1, 0], [0, 0, 1, 0], [1, 0, 0, 1], [0, 1, 1, 0], [1, 1, 1, 0]],
   };
+  const LONG_LEAD = { sparse: 1, whistle: 1 }, STEPWISE_LEAD = { hymn: 1, whistle: 1 };
+  const LILT = [0, BEAT / 3, (BEAT * 2) / 3, (BEAT * 3) / 4];           // a cell's four positions in a lilting beat
   const CONTOURS = { arch: [1, 1, 1, -1, -1, -1], fall: [-1, -1, 1, -1, -1, 0], rise: [1, 1, -1, 1, 1, 0], wave: [1, -1, 1, -1, 1, -1], still: [0, 1, -1, 0, 1, -1] };
   function makeMotif(MR, kind, density) {
     const cells = CELL_SETS[kind] || CELL_SETS.motif, contour = CONTOURS[MR.pick(Object.keys(CONTOURS))];
@@ -449,7 +868,7 @@
       const cell = beat > 0 && MR.chance(0.12 + 0.3 * (1 - density)) ? [0, 0, 0, 0] : MR.pick(cells);
       cell.forEach((on, k) => {
         if (!on) return;
-        const dir = contour[i++ % contour.length], size = MR.weighted([[1, 5], [2, 2], [0, 1.5], [3, 0.6], [4, 0.3]]);
+        const dir = contour[i++ % contour.length], size = MR.weighted(STEPWISE_LEAD[kind] ? [[1, 6], [0, 1.5], [2, 1]] : [[1, 5], [2, 2], [0, 1.5], [3, 0.6], [4, 0.3]]);
         step += dir * size; step = Math.max(-5, Math.min(7, step));
         ev.push({ s: beat * 4 + k, step });
       });
@@ -460,7 +879,8 @@
   function genLead(R, st, sec, ctx, harm, opts) {
     const notes = [], { key, scale } = harm, H = ctx.H, motif = ctx.motif, lo = ctx.range[0], hi = ctx.range[1];
     const plan = ctx.phrase;                                  // e.g. ['M', 'S', 'M', 'C'] per 2-bar slot
-    const base = ctx.lift || 0;
+    const base = ctx.lift || 0, kind = ctx.kind;
+    const tOf = kind === 'lilt' ? s => Math.floor(s / 4) * BEAT + LILT[s % 4] : s => s * S16;
     let lastN = deg2midi(key, scale, base, 5);
     for (let b = 0; b < sec.bars; b += 2) {
       const slot = plan[(b / 2) % plan.length];
@@ -479,11 +899,20 @@
         n = Math.min(hi, Math.max(lo, n));
         const nextS = i + 1 < ev.length ? ev[i + 1].s : 32;
         const isEnd = (slot === 'C' || slot === 'A') && i === ev.length - 1;
-        const dur = Math.max(S16, Math.min((nextS - m.s) * S16, ctx.kind === 'sparse' ? BAR : BEAT * 2));
+        const dur = Math.max(S16, Math.min(tOf(nextS) - tOf(m.s), LONG_LEAD[kind] ? BAR : kind === 'chip' ? S16 * 2 : BEAT * 2));
         if (isEnd) n = nearestPC(n, chordPcsOf(key, scale, { deg: 0, ext: 'triad' }), lo, hi);
-        notes.push({ t: b * BAR + m.s * S16, d: isEnd ? Math.min(BAR, (sec.bars - b) * BAR - m.s * S16) : dur - 4, n, v: clampV((strong ? 0.78 : 0.62) + (R() - 0.5) * 0.12) });
+        const t = b * BAR + tOf(m.s), d = isEnd ? Math.min(BAR, (sec.bars - b) * BAR - tOf(m.s)) : dur - 4, vel = clampV((strong ? 0.78 : 0.62) + (R() - 0.5) * 0.12);
+        if (kind === 'chip' && strong && !isEnd && R.chance(0.3)) {          // an arpeggio burst in 32nds through the chord
+          const up = chordPcsOf(key, scale, cd), burst = [n, nearestPC(n + 4, up, n + 2, n + 5), nearestPC(n + 7, up, n + 6, n + 9), n + 12];
+          burst.forEach((x, k) => { if (k * 12 < dur) notes.push({ t: t + k * 12, d: 10, n: x, v: clampV(vel - k * 0.05) }); });
+        } else if (kind === 'trem' && d >= BEAT) {                            // tremolo-picked: the note re-struck in 32nds
+          for (let x = 0; x < d; x += 12) notes.push({ t: t + x, d: 10, n, v: clampV(vel * (x % 24 ? 0.82 : 1)) });
+        } else notes.push({ t, d, n, v: vel });
         // a grace note into some strong notes
-        if (strong && ctx.kind !== 'sparse' && R.chance(0.08) && m.s > 0) notes.push({ t: b * BAR + m.s * S16 - 12, d: 10, n: n + (inScale(n + 2, key, scale) ? 2 : 1), v: 0.45 });
+        const graced = strong && ctx.kind !== 'sparse' && R.chance(0.08) && m.s > 0;
+        if (graced) notes.push({ t: b * BAR + m.s * S16 - 12, d: 10, n: n + (inScale(n + 2, key, scale) ? 2 : 1), v: 0.45 });
+        // blue: a slide from a semitone under into some strong notes (the third, the fifth)
+        if (kind === 'blue' && strong && m.s > 0 && !graced && R.chance(0.3)) notes.push({ t: t - 10, d: 10, n: n - 1, v: 0.48 });
         lastN = n;
       });
     }
@@ -508,6 +937,15 @@
         if (len > BAR) notes.push({ t: T + BAR, d: len - BAR, n: z, v: 0.34 });
       } else if (kind === 'shimmer') {      // high fifth + ninth over the root
         notes.push({ t: T, d: len, n: r, v: 0.4 }, { t: T, d: len, n: deg2midi(key, scale, c.deg + 4, 5), v: 0.3 }, { t: T, d: len, n: deg2midi(key, scale, c.deg + 8, 5), v: 0.26 });
+      } else if (kind === 'cluster') {      // dark drone / horror: root + fifth, a minor ninth creeping in, sometimes the tritone
+        const half = Math.round(len / 2);
+        notes.push({ t: T, d: len, n: r - 12, v: 0.44 }, { t: T, d: len, n: f, v: 0.34 }, { t: T + half, d: len - half, n: r + 13, v: 0.24 });
+        if (R.chance(0.5)) notes.push({ t: T + Math.round(len * 3 / 4), d: len - Math.round(len * 3 / 4), n: r + 18, v: 0.2 });
+      } else if (kind === 'rise') {         // post-rock: the triad swelling toward the end of the section
+        const v = 0.22 + 0.48 * Math.min(1, (b + 2) / sec.bars);
+        notes.push({ t: T, d: len, n: r, v }, { t: T, d: len, n: f, v: v * 0.9 }, { t: T, d: len, n: th, v: v * 0.8 }, { t: T, d: len, n: r + 24, v: v * 0.6 });
+      } else if (kind === 'open') {         // hymn / organ: open voicing — root, fifth, octave, tenth
+        notes.push({ t: T, d: len, n: r - 12, v: 0.4 }, { t: T, d: len, n: f, v: 0.36 }, { t: T, d: len, n: r + 12, v: 0.32 }, { t: T, d: len, n: th + 12, v: 0.28 });
       } else notes.push({ t: T, d: len, n: r, v: 0.45 }, { t: T, d: len, n: f, v: 0.4 }, { t: T, d: len, n: th, v: 0.35 });
     }
     return notes;
@@ -538,12 +976,29 @@
   // default beds / transitions / hits per style — the catalog's own sound words (soundsFromText) come first
   const TEXTURE_FOR = { four_floor: ['amb_city'], boom_bap: ['amb_vinyl', 'amb_city'], lofi: ['amb_vinyl', 'amb_tape_hiss', 'amb_rain'], trap: ['amb_city', 'amb_room_tone'],
     dnb: ['amb_city'], shuffle: ['amb_room_tone', 'amb_vinyl'], motorik: ['drone_engine', 'amb_tape_hiss'], synthwave: ['amb_tape_hiss', 'amb_city'],
-    noir: ['amb_rain', 'amb_room_tone', 'amb_radio', 'amb_vinyl'], ambient: ['amb_wind', 'amb_room_tone', 'drone_horizon', 'amb_forest_night'] };
+    noir: ['amb_rain', 'amb_room_tone', 'amb_radio', 'amb_vinyl'], ambient: ['amb_wind', 'amb_room_tone', 'drone_horizon', 'amb_forest_night'],
+    folk: ['amb_crickets', 'amb_fire', 'amb_wind', 'amb_forest_night'], chamber: ['amb_room_tone', 'amb_rain', 'amb_clock'], piano: ['amb_room_tone', 'amb_rain', 'amb_clock', 'amb_vinyl'],
+    hymn: ['amb_room_tone', 'amb_fire', 'amb_wind', 'drone_cathedral'], dark_drone: ['amb_wind', 'amb_room_tone', 'amb_fluor_hum', 'drone_engine', 'amb_life_support'],
+    synth_horror: ['amb_tape_hiss', 'amb_fluor_hum', 'amb_wind', 'amb_crickets'], jazz: ['amb_rain', 'amb_room_tone', 'amb_vinyl', 'amb_city'],
+    dub: ['amb_vinyl', 'amb_tape_hiss', 'amb_city', 'amb_rain'], post_rock: ['amb_wind', 'amb_tape_hiss', 'amb_forest_night', 'amb_surf'],
+    lullaby: ['amb_crickets', 'amb_clock', 'amb_room_tone', 'amb_rain'], industrial: ['drone_engine', 'amb_fluor_hum', 'amb_life_support', 'amb_city'],
+    surf: ['amb_surf', 'amb_vinyl', 'amb_wind', 'amb_city'], bayou: ['amb_crickets', 'amb_cicadas', 'amb_forest_night', 'drone_bayou'],
+    minimal: ['amb_room_tone', 'amb_clock', 'amb_tape_hiss', 'drone_horizon'], chiptune: ['amb_fluor_hum', 'amb_modem', 'amb_room_tone', 'amb_city'],
+    trip_hop: ['amb_vinyl', 'amb_rain', 'amb_city', 'amb_tape_hiss'] };
   const FX_FOR = { four_floor: ['fx_riser', 'fx_noise_sweep'], trap: ['fx_riser', 'fx_reverse_swell'], dnb: ['fx_riser', 'fx_noise_sweep'], synthwave: ['fx_riser', 'fx_reverse_swell'],
     motorik: ['fx_noise_sweep', 'fx_riser'], boom_bap: ['fx_reverse_swell', 'fx_whoosh'], lofi: ['fx_reverse_swell', 'fx_tape_stop'], shuffle: ['fx_reverse_swell', 'fx_whoosh'],
-    noir: ['fx_reverse_swell', 'fx_noise_sweep'], ambient: ['fx_reverse_swell'] };
+    noir: ['fx_reverse_swell', 'fx_noise_sweep'], ambient: ['fx_reverse_swell'],
+    folk: ['fx_reverse_swell', 'fx_whoosh'], chamber: ['fx_reverse_swell'], piano: ['fx_reverse_swell'], hymn: ['fx_reverse_swell'], dark_drone: ['fx_reverse_swell', 'fx_downer', 'fx_noise_sweep'],
+    synth_horror: ['fx_riser', 'fx_reverse_swell', 'fx_noise_sweep'], jazz: ['fx_reverse_swell', 'fx_whoosh'], dub: ['fx_reverse_swell', 'fx_tape_stop', 'fx_whoosh'],
+    post_rock: ['fx_reverse_swell', 'fx_riser', 'fx_noise_sweep'], lullaby: ['fx_reverse_swell'], industrial: ['fx_noise_sweep', 'fx_riser', 'fx_tape_stop'],
+    surf: ['fx_reverse_swell', 'fx_whoosh', 'fx_riser'], bayou: ['fx_reverse_swell', 'fx_whoosh'], minimal: ['fx_reverse_swell', 'fx_noise_sweep'],
+    chiptune: ['fx_riser', 'fx_noise_sweep'], trip_hop: ['fx_reverse_swell', 'fx_tape_stop'] };
   const HIT_FOR = { four_floor: ['fx_impact'], trap: ['fx_sub_drop', 'fx_impact'], dnb: ['fx_sub_drop', 'fx_impact'], synthwave: ['fx_impact', 'fx_glass_ping'], motorik: ['fx_impact'],
-    boom_bap: ['fx_wood_knock', 'fx_impact'], lofi: ['fx_glass_ping', 'fx_wood_knock'], shuffle: ['fx_wood_knock', 'fx_bell_hit'], noir: ['fx_bell_hit', 'fx_glass_ping'], ambient: ['fx_bell_hit', 'fx_glass_ping'] };
+    boom_bap: ['fx_wood_knock', 'fx_impact'], lofi: ['fx_glass_ping', 'fx_wood_knock'], shuffle: ['fx_wood_knock', 'fx_bell_hit'], noir: ['fx_bell_hit', 'fx_glass_ping'], ambient: ['fx_bell_hit', 'fx_glass_ping'],
+    folk: ['fx_wood_knock', 'fx_bell_hit'], chamber: ['fx_bell_hit', 'fx_glass_ping'], piano: ['fx_glass_ping', 'fx_bell_hit'], hymn: ['fx_bell_hit'], dark_drone: ['fx_sub_drop', 'fx_bell_hit'],
+    synth_horror: ['fx_impact', 'fx_sub_drop', 'fx_bell_hit'], jazz: ['fx_glass_ping', 'fx_bell_hit'], dub: ['fx_sub_drop', 'fx_glass_ping'], post_rock: ['fx_impact', 'fx_bell_hit'],
+    lullaby: ['fx_glass_ping', 'fx_bell_hit'], industrial: ['fx_impact', 'fx_sub_drop', 'fx_wood_knock'], surf: ['fx_impact', 'fx_glass_ping'], bayou: ['fx_wood_knock', 'fx_bell_hit'],
+    minimal: ['fx_glass_ping', 'fx_bell_hit'], chiptune: ['fx_impact', 'fx_glass_ping', 'fx_flicker'], trip_hop: ['fx_sub_drop', 'fx_glass_ping'] };
   // where a preset a newer FORGE adds isn't there yet, the page swaps in its nearest older sound (temp_maker.js)
   const SOUND_FALLBACK = { amb_vinyl: 'amb_radio', amb_tape_hiss: 'amb_radio', amb_room_tone: 'amb_wind', amb_fluor_hum: 'pad_fluorescent', amb_life_support: 'drone_engine',
     amb_crickets: 'amb_wind', amb_cicadas: 'amb_wind', amb_surf: 'amb_wind', amb_fire: 'amb_rain', amb_thunder: 'amb_rain', amb_city: 'drone_engine', amb_clock: 'amb_wind',
@@ -565,9 +1020,11 @@
     const kq = keyOf(o.key), key = kq !== undefined ? kq : R.int(0, 11);
     const bpm = o.bpm || R.int(st.bpm[0], st.bpm[1]);
     const custom = Array.isArray(o.shape) && o.shape.length ? o.shape.filter(x => Array.isArray(x) && x[0] && +x[1] > 0) : null;
-    const formId = FORMS[o.form] ? o.form : custom ? 'song' : (styleId === 'ambient' ? 'bed' : 'song');
+    const formId = FORMS[o.form] ? o.form : custom ? 'song' : (st.bed ? 'bed' : 'song');
     const density = Math.max(0, Math.min(1, o.density ?? 0.6));
-    const fam = st.prog === 'drone' ? 'drone' : st.prog === 'modal' ? 'modal' : (MINORISH[mode] ? 'minor' : 'major');
+    // a style's own family (drone, modal, folk, hymn, jazz, blues, horror, surf); 'minor' / 'major' follow the mode
+    const own = PROGS[st.prog] && st.prog !== 'minor' && st.prog !== 'major' ? st.prog : null;
+    const fam = own ? (MINORISH[mode] && PROGS[own + '_minor'] ? own + '_minor' : own) : (MINORISH[mode] ? 'minor' : 'major');
     // every structural choice comes from its own stream, so adding a choice never reshuffles the others
     const P = k => rng(seed * 7 + hash('plan:' + k));
     const HP = harmonyPlan(P('harm'), st, fam, o.progression);
@@ -589,7 +1046,7 @@
     const leadKind = V.pick(st.lead);
     const perc = V.chance(0.45) && (PERC_FOR[styleId] || []).length ? V.pick(PERC_FOR[styleId]) : null;
     const range = V.pick([[50, 72], [53, 76], [55, 79], [48, 70]]), spread = V.chance(0.35);
-    const fills = [V.pick(FILLS), V.pick(FILLS)];
+    const fills = [V.pick(st.fills || FILLS), V.pick(st.fills || FILLS)];
     // the lead's motif: a leitmotif (same in every track of that character) or the song's own
     const MR = o.motif ? rng(hash('motif:' + String(o.motif).toLowerCase())) : rng(seed * 13 + 5);
     const spec = o.motifSpec && Array.isArray(o.motifSpec.rhythm) && Array.isArray(o.motifSpec.degrees) && o.motifSpec.rhythm.length ? o.motifSpec : null;
@@ -608,8 +1065,22 @@
       motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {},
       soundBy: shape.some(x => x[2] && x[2].some(r => r === 'texture' || r === 'fx')) };
   }
+  // swung eighths (st.trip8): an offbeat eighth moves to the triplet's last third; the note before it stretches to meet it
+  function swing8(ns) {
+    const off = BEAT / 2, push = BEAT / 6;
+    return ns.map(x => {
+      const pos = ((x.t % BEAT) + BEAT) % BEAT;
+      if (pos === off) return Object.assign({}, x, { t: x.t + push, d: Math.max(6, x.d - push) });
+      if (pos === 0 && x.d >= S16 && x.d <= off) return Object.assign({}, x, { d: Math.round(x.d * 4 / 3) });
+      return x;
+    });
+  }
   // one role's notes for one section
   function renderRole(pl, role, sec, i, harm) {
+    const ns = renderRole0(pl, role, sec, i, harm);
+    return pl.st.trip8 && (role === 'drums' || role === 'bass' || role === 'chords' || role === 'lead') ? swing8(ns) : ns;
+  }
+  function renderRole0(pl, role, sec, i, harm) {
     const { st, density, formId, HP } = pl, opts = { density, bed: formId === 'bed' };
     const base = sec.base, isB = base === 'B' || base === 'C', variant = /\d$/.test(sec.name);
     const H = HP[base] || HP.A;
@@ -644,7 +1115,8 @@
     const pl = plan(o), { seed, st, styleId, mode, key, scale, bpm, formId, density, sections } = pl;
     const harm = { key, scale, prevVoicing: null };
     const parts = {};
-    for (const role of ROLES) parts[role] = { role, patterns: {}, clips: [], preset: pl.voices[role] || presetFor(styleId, role, seed) };
+    const linked = r => st.link && st.link[r] && pl.voices[st.link[r]];      // solo piano: the hands follow the chords' instrument
+    for (const role of ROLES) parts[role] = { role, patterns: {}, clips: [], preset: pl.voices[role] || linked(role) || presetFor(styleId, role, seed) };
     // sound design parts (texture / texture2 → one 'texture' stem; fx + hit → one 'fx' stem)
     if (pl.textures[0]) parts.texture = { role: 'texture', patterns: {}, clips: [], preset: pl.textures[0], sound: true };
     if (pl.textures[1]) parts.texture2 = { role: 'texture', patterns: {}, clips: [], preset: pl.textures[1], sound: true };
@@ -721,8 +1193,26 @@
   }
 
   // ── mood from a catalog brief ───────────────────────────────────
-  // ties go to the first entry: ambient beds are what most game cues need
+  // ties go to the first entry. Genre words name the music outright, so they come first (a "hymn" by a kitchen stove is a
+  // hymn); among the scene words ambient beds lead, as they are what most game cues need. Words match as substrings:
+  // keep them specific ('dub ' not 'dub' — "dubious").
   const MOODS = [
+    { words: ['hymn', 'chorale', 'church organ', 'pipe organ', 'congregation', 'chapel', 'sunday service'], style: 'hymn', form: 'loop' },
+    { words: ['lullaby', 'music box', 'nursery', 'cradle', 'bedtime'], style: 'lullaby', form: 'loop' },
+    { words: ['banjo', 'fiddle', 'folk song', 'folk tune', 'americana', 'acoustic guitar', 'fingerpick', 'bluegrass', 'hayride'], style: 'folk', form: 'loop' },
+    { words: ['jazz', 'brushes', 'upright bass', 'walking bass', 'bebop', 'piano trio', 'supper club'], style: 'jazz', form: 'loop' },
+    { words: ['swamp', 'zydeco', 'bayou', 'accordion', 'cajun', 'lake charles', 'washboard'], style: 'bayou', form: 'loop' },
+    { words: ['chiptune', '8-bit', 'arcade', 'game boy', 'pixel'], style: 'chiptune', form: 'loop' },
+    { words: ['synth horror', 'carpenter', 'slasher', '80s horror'], style: 'synth_horror', form: 'loop' },
+    { words: ['reggae', 'dub ', 'dub.', 'dub,', 'dubwise', 'melodica', 'riddim'], style: 'dub', form: 'loop' },
+    { words: ['surf rock', 'surf guitar', 'twang', 'spring reverb'], style: 'surf', form: 'loop' },
+    { words: ['industrial', 'factory', 'machine shop', 'foundry', 'sawmill', 'steel mill', 'assembly line', 'clanking'], style: 'industrial', form: 'loop' },
+    { words: ['string quartet', 'chamber music', 'chamber strings', 'quartet', 'cello', 'violin'], style: 'chamber', form: 'loop' },
+    { words: ['solo piano', 'lone piano', 'piano alone', 'after-hours piano', 'nocturne', 'parlor piano'], style: 'piano', form: 'loop' },
+    { words: ['dark drone', 'rumble', 'abyss', 'subterranean', 'mine shaft', 'catacomb'], style: 'dark_drone', form: 'bed' },
+    { words: ['minimalist', 'phasing', 'ostinato', 'clockwork', 'interlocking'], style: 'minimal', form: 'loop' },
+    { words: ['post-rock', 'post rock', 'tremolo-picked', 'slow build', 'crescendo'], style: 'post_rock', form: 'loop' },
+    { words: ['trip-hop', 'trip hop', 'downtempo', 'breakbeat'], style: 'trip_hop', form: 'loop' },
     { words: ['drone', 'ambient', 'hum', 'substation', 'cathedral', 'hospital', 'waiting', 'liminal', 'dust', 'wind', 'tide', 'marina', 'bluff', 'field', 'cicada', 'stove', 'interior', 'long sleep'], style: 'ambient', form: 'bed' },
     { words: ['club', 'thump', 'dance', 'rave', 'warehouse party'], style: 'four_floor', form: 'loop' },
     { words: ['chillwave', 'vhs', 'neon', 'synth', 'arcade', 'render'], style: 'synthwave', form: 'loop' },
@@ -1009,7 +1499,7 @@
     return m;
   }
 
-  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, SONG_SHAPES, SOUNDS, SOUND_FALLBACK, TEXTURE_FOR, rng, hash, deg2midi, chordPCs, song, part, presetFor,
+  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, SONG_SHAPES, SOUNDS, SOUND_FALLBACK, TEXTURE_FOR, FX_FOR, HIT_FOR, PERC_FOR, rng, hash, deg2midi, chordPCs, song, part, presetFor,
     moodFromText, moodFromBrief, applyDirection, romanFor, soundsFromText, motifOf, volumeKey, keyOf, applyScore, checkScore, chapterOf };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;

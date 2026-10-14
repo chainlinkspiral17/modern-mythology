@@ -47,10 +47,44 @@ suite('data · registries, composer, MIDI files', async t => {
     t.eq(m('The Pharmacy Mirror', "Pharmacy fluorescent buzz. The mirror that doesn't quite reflect right.").mode, 'phrygian');
     t.eq(m('The Underworld', 'Intercut. Dancing. Loud music club thump.').style, 'four_floor');
     t.eq(m('The Painting', 'A slow oil-tone pad. The painting that knows you saw it.').mode, 'lydian');
+    // genre words name the style outright, and win a tie with a scene word ("kitchen" → lo-fi)
+    t.eq(['Kitchen fire crackle, distant German hymn fragment.', 'Lake Charles accordion on the jukebox.', 'A jazz trio with brushes.', 'A music box lullaby.',
+      'Low rumble under the floor. A demon.', 'Banjo and fiddle on the porch.', 'Chiptune from the arcade.', 'Dub with melodica, deep reggae bass.', 'Factory floor, machine shop.',
+      'Surf guitar twang.', 'Bowed cello single note.', 'Solo piano, late.', 'Synth horror, a Carpenter pulse.', 'A minimalist ostinato.', 'Post-rock slow build.', 'Trip-hop, downtempo.']
+      .map(d => m('Cue', d).style),
+    ['hymn', 'bayou', 'jazz', 'lullaby', 'dark_drone', 'folk', 'chiptune', 'dub', 'industrial', 'surf', 'chamber', 'piano', 'synth_horror', 'minimal', 'post_rock', 'trip_hop']);
+    t.eq(m('Doubts', 'A dubious stranger.').style !== 'dub', true, '"dubious" is not dub');
+  });
+  await t.test('genre idioms: swung eighths, drumless styles, a dub bass that leaves the one, the horror pedal, a lilting lullaby, one piano', async () => {
+    const S = (style, seed) => SG.song({ seed, style, form: 'loop' }), all = (s, r) => Object.values(s.parts[r].patterns).flatMap(p => p.notes);
+    const offEighth = [];
+    for (let seed = 1; seed <= 8; seed++) for (const style of ['jazz', 'bayou']) for (const r of ['bass', 'chords', 'lead']) if (all(S(style, seed), r).some(n => n.t % SG.PPQ === SG.PPQ / 2)) offEighth.push(style + '/' + r + ' seed ' + seed);
+    t.eq(offEighth, [], 'jazz / bayou offbeat eighths sit on the triplet');
+    const kit = [];
+    for (const style of ['chamber', 'piano', 'hymn', 'lullaby', 'dark_drone']) for (let seed = 1; seed <= 8; seed++) for (const form of ['loop', 'song']) {
+      const d = Object.values(SG.song({ seed, style, form }).parts.drums.patterns).flatMap(p => p.notes);
+      if (d.some(n => [38, 39, 42, 46, 49].includes(n.n))) kit.push(style + ' seed ' + seed + ' ' + form);
+    }
+    t.eq(kit, [], 'no snare / clap / hats / crash in the drumless styles');
+    let one = 0, bars = 0, ped = 0, pedBad = 0, lilt = 0, liltAll = 0;
+    for (let seed = 1; seed <= 40; seed++) {
+      const d = S('dub', seed); if (d.vocab.bass[0] === 'dub') { const b = all(d, 'bass'); for (let k = 0; k < 8; k++) { bars++; if (b.some(n => n.t === k * SG.BAR)) one++; } }
+      const h = S('synth_horror', seed); if (h.vocab.bass[0] === 'pedal_pulse') { for (const n of all(h, 'bass')) { ped++; if (![0, 7].includes(((n.n - h.key) % 12 + 12) % 12)) pedBad++; } }
+      const l = S('lullaby', seed); if (l.vocab.lead === 'lilt') for (const n of all(l, 'lead')) { liltAll++; if ([32, 64].includes(n.t % SG.PPQ)) lilt++; }
+    }
+    t.ok(bars && one / bars < 0.35, 'dub bass on the one in ' + one + ' / ' + bars + ' bars');
+    t.ok(ped && pedBad === 0, 'horror pedal stays on the tonic (+ fifth): ' + pedBad + ' / ' + ped + ' off');
+    t.ok(liltAll && lilt / liltAll > 0.25, 'lullaby lead on the triplet: ' + lilt + ' / ' + liltAll);
+    for (let seed = 1; seed <= 6; seed++) { const p = S('piano', seed).parts; t.eq([p.bass.preset, p.lead.preset], [p.chords.preset, p.chords.preset], 'solo piano: one instrument, seed ' + seed); }
+    const v = SG.song({ seed: 3, style: 'piano', form: 'loop', voices: { chords: 'keys_ep' } }).parts;
+    t.eq([v.bass.preset, v.lead.preset], ['keys_ep', 'keys_ep'], 'a voiced piano carries both hands');
+    t.eq(Object.values(SG.STYLES).filter(s => s.placeholder).length, 0, 'no placeholder styles left');
   });
 
   await t.test('composer variety: 12 takes of one style differ in groove, bass figure, progression, comping and song shape', async () => {
-    const low = { motorik: { bass: 2, comp: 2 }, ambient: { kick: 1, bass: 3, comp: 2 }, four_floor: { kick: 3 }, synthwave: { kick: 3 }, trap: { comp: 2 }, dnb: { comp: 3 } }, bad = [];
+    const low = { motorik: { bass: 2, comp: 2 }, ambient: { kick: 1, bass: 3, comp: 2 }, four_floor: { kick: 3 }, synthwave: { kick: 3 }, trap: { comp: 2 }, dnb: { comp: 3 },
+      // drumless by design — strings, a piano, an organ chorale, a nursery, a drone keep the kit out (a timpani stroke at most)
+      chamber: { kick: 1 }, piano: { kick: 1 }, hymn: { kick: 1 }, lullaby: { kick: 1 }, dark_drone: { kick: 1 } }, bad = [];
     for (const style of Object.keys(SG.STYLES).filter(x => !SG.STYLES[x].placeholder)) {      // placeholders borrow another style's vocabulary
       const k = new Set(), b = new Set(), p = new Set(), c = new Set(), sh = new Set();
       for (let seed = 1; seed <= 12; seed++) {

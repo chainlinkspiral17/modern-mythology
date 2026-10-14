@@ -189,5 +189,24 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     t.ok(r.lv > 0.01, 'light live playback sounds: ' + r.lv);
     t.eq(r.stored, 'light');
   });
+  await t.test('every style composes onto FORGE / KIT and renders a 2-bar loop offline: finite, audible', async () => {
+    const r = await p.evaluate(async () => {
+      window.confirm = () => true; E.stop(); await E.setLiveQuality('full');
+      const out = [];
+      for (const style of Object.keys(SeqGen.STYLES)) {
+        try {
+          // a fixed brisk tempo: the notes don't depend on it, and an offline render here runs about real time
+          await generate({ force: true, seed: 5, style, form: 'loop', bpm: 150 }); await E.whenReady();
+          const o = await E.renderOffline({ fromBar: 0, toBar: 2, loop: true });
+          let finite = true, pk = 0;
+          for (const c of o.channels) for (let i = 0; i < c.length; i++) { const x = c[i]; if (!Number.isFinite(x)) { finite = false; break; } if (Math.abs(x) > pk) pk = Math.abs(x); }
+          out.push({ style, finite, pk: +pk.toFixed(3), kit: P.tracks.some(x => x.role === 'drums' && E.dev(x.deviceId).type === 'kit') || !song.parts.drums.clips.length });
+        } catch (e) { out.push({ style, err: String((e && e.message) || e) }); }
+      }
+      return out;
+    });
+    t.ok(r.length >= 26, r.length + ' styles');
+    t.eq(r.filter(x => x.err || !x.finite || !(x.pk > 0.02) || !x.kit), [], 'styles that fail to render');
+  });
   await t.test('no page / console errors', async () => t.noErrors(errors));
 });
