@@ -2621,9 +2621,9 @@
    "size": 2193053
   },
   "godot/assets/art/hero/centro_grocery_aisle_corral_sign.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "ddbd31576a4afe7c514faf033ada759a",
-   "size": 2416367
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "6f9ade530d00c802c776e3266a2a5370",
+   "size": 2636086
   },
   "godot/assets/art/hero/centro_grocery_aisle_dairy_sign.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -2741,9 +2741,9 @@
    "size": 2482758
   },
   "godot/assets/art/hero/cliffside_circus_main_sign_2.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "dfbefe9571499ffe2caefd75031fcea7",
-   "size": 2872988
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "31c8d0f667114d2c9854450dfeff7e07",
+   "size": 3072935
   },
   "godot/assets/art/hero/club_sharp_hash_neon.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4656,9 +4656,9 @@
    "size": 2085152
   },
   "godot/assets/art/hero/salty_tome_interior_alley_muralwall.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "502436b01bf594aa62a3d441e71be5c5",
-   "size": 4056936
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "93b97a140d8643a673efd7a4170d5e5f",
+   "size": 3211030
   },
   "godot/assets/art/hero/salty_tome_interior_canvas.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4666,9 +4666,9 @@
    "size": 4411314
   },
   "godot/assets/art/hero/salty_tome_interior_hemlock_across_facade.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "0890e288fd4c69c6e67811560794d0fb",
-   "size": 3285794
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "86ec1dbe76def41ad9811b1fb27009ab",
+   "size": 2291487
   },
   "godot/assets/art/hero/salty_tome_interior_nebula_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4676,9 +4676,9 @@
    "size": 3216795
   },
   "godot/assets/art/hero/salty_tome_interior_nebula_2.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "ad3d7c49fec7f38ca65808ca4b828441",
-   "size": 2667187
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "0ed139656480ad92d733faee9e4bda0c",
+   "size": 2684612
   },
   "godot/assets/art/hero/salty_tome_interior_slowterminal_screen.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4811,9 +4811,9 @@
    "size": 1916767
   },
   "godot/assets/art/hero/small_wood_rec_center_tv.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "5ad03852b2372a79b21f03c14ded6ecd",
-   "size": 1658008
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "9d5588a30cabd5b814e37e32914cd8ba",
+   "size": 1955502
   },
   "godot/assets/art/hero/small_wood_rec_center_window_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4836,9 +4836,9 @@
    "size": 2854373
   },
   "godot/assets/art/hero/smolvud_coop_cooler_header_sign.png": {
-   "at": "2026-10-14T02:24:58+00:00",
-   "md5": "8b9caa9da58e6d629e88b677ff898ba7",
-   "size": 2367093
+   "at": "2026-10-14T05:30:55+00:00",
+   "md5": "93bb606821ff6fb74fefc916ba82c236",
+   "size": 1190706
   },
   "godot/assets/art/hero/smolvud_coop_corkboard_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -56795,10 +56795,15 @@
    "md5": "ddbd31576a4afe7c514faf033ada759a",
    "size": 2416367
   },
+  "godot/assets/concept/meshy/centro_grocery_aisle_corral_sign/centro_grocery_aisle_corral_sign_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:31:02+00:00",
+   "md5": "6f9ade530d00c802c776e3266a2a5370",
+   "size": 2636086
+  },
   "godot/assets/concept/meshy/centro_grocery_aisle_corral_sign/front.png": {
-   "at": "2026-10-14T02:34:28+00:00",
-   "md5": "ddbd31576a4afe7c514faf033ada759a",
-   "size": 2416367
+   "at": "2026-10-14T05:31:02+00:00",
+   "md5": "6f9ade530d00c802c776e3266a2a5370",
+   "size": 2636086
   },
   "godot/assets/concept/meshy/centro_grocery_aisle_dairy_sign/centro_grocery_aisle_dairy_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:34:35+00:00",
@@ -57110,10 +57115,15 @@
    "md5": "dfbefe9571499ffe2caefd75031fcea7",
    "size": 2872988
   },
+  "godot/assets/concept/meshy/cliffside_circus_main_sign_2/cliffside_circus_main_sign_2_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:31:10+00:00",
+   "md5": "31c8d0f667114d2c9854450dfeff7e07",
+   "size": 3072935
+  },
   "godot/assets/concept/meshy/cliffside_circus_main_sign_2/front.png": {
-   "at": "2026-10-14T02:37:27+00:00",
-   "md5": "dfbefe9571499ffe2caefd75031fcea7",
-   "size": 2872988
+   "at": "2026-10-14T05:31:10+00:00",
+   "md5": "31c8d0f667114d2c9854450dfeff7e07",
+   "size": 3072935
   },
   "godot/assets/concept/meshy/club_sharp_hash_neon/club_sharp_hash_neon_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:37:48+00:00",
@@ -62951,14 +62961,19 @@
    "size": 1962811
   },
   "godot/assets/concept/meshy/salty_tome_interior_alley_muralwall/front.png": {
-   "at": "2026-10-14T03:22:56+00:00",
-   "md5": "502436b01bf594aa62a3d441e71be5c5",
-   "size": 4056936
+   "at": "2026-10-14T05:31:17+00:00",
+   "md5": "93b97a140d8643a673efd7a4170d5e5f",
+   "size": 3211030
   },
   "godot/assets/concept/meshy/salty_tome_interior_alley_muralwall/salty_tome_interior_alley_muralwall_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T03:22:56+00:00",
    "md5": "502436b01bf594aa62a3d441e71be5c5",
    "size": 4056936
+  },
+  "godot/assets/concept/meshy/salty_tome_interior_alley_muralwall/salty_tome_interior_alley_muralwall_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:31:17+00:00",
+   "md5": "93b97a140d8643a673efd7a4170d5e5f",
+   "size": 3211030
   },
   "godot/assets/concept/meshy/salty_tome_interior_canvas/front.png": {
    "at": "2026-10-14T03:23:04+00:00",
@@ -62976,14 +62991,19 @@
    "size": 4411314
   },
   "godot/assets/concept/meshy/salty_tome_interior_hemlock_across_facade/front.png": {
-   "at": "2026-10-14T03:23:11+00:00",
-   "md5": "0890e288fd4c69c6e67811560794d0fb",
-   "size": 3285794
+   "at": "2026-10-14T05:31:26+00:00",
+   "md5": "86ec1dbe76def41ad9811b1fb27009ab",
+   "size": 2291487
   },
   "godot/assets/concept/meshy/salty_tome_interior_hemlock_across_facade/salty_tome_interior_hemlock_across_facade_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T03:23:11+00:00",
    "md5": "0890e288fd4c69c6e67811560794d0fb",
    "size": 3285794
+  },
+  "godot/assets/concept/meshy/salty_tome_interior_hemlock_across_facade/salty_tome_interior_hemlock_across_facade_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:31:26+00:00",
+   "md5": "86ec1dbe76def41ad9811b1fb27009ab",
+   "size": 2291487
   },
   "godot/assets/concept/meshy/salty_tome_interior_nebula_1/front.png": {
    "at": "2026-10-14T03:23:18+00:00",
@@ -62996,14 +63016,19 @@
    "size": 3216795
   },
   "godot/assets/concept/meshy/salty_tome_interior_nebula_2/front.png": {
-   "at": "2026-10-14T03:23:25+00:00",
-   "md5": "ad3d7c49fec7f38ca65808ca4b828441",
-   "size": 2667187
+   "at": "2026-10-14T05:31:32+00:00",
+   "md5": "0ed139656480ad92d733faee9e4bda0c",
+   "size": 2684612
   },
   "godot/assets/concept/meshy/salty_tome_interior_nebula_2/salty_tome_interior_nebula_2_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T03:23:25+00:00",
    "md5": "ad3d7c49fec7f38ca65808ca4b828441",
    "size": 2667187
+  },
+  "godot/assets/concept/meshy/salty_tome_interior_nebula_2/salty_tome_interior_nebula_2_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:31:32+00:00",
+   "md5": "0ed139656480ad92d733faee9e4bda0c",
+   "size": 2684612
   },
   "godot/assets/concept/meshy/salty_tome_interior_slowterminal_screen/front.png": {
    "at": "2026-10-14T03:23:34+00:00",
@@ -63336,14 +63361,19 @@
    "size": 1916767
   },
   "godot/assets/concept/meshy/small_wood_rec_center_tv/front.png": {
-   "at": "2026-10-14T03:27:08+00:00",
-   "md5": "5ad03852b2372a79b21f03c14ded6ecd",
-   "size": 1658008
+   "at": "2026-10-14T05:32:06+00:00",
+   "md5": "9d5588a30cabd5b814e37e32914cd8ba",
+   "size": 1955502
   },
   "godot/assets/concept/meshy/small_wood_rec_center_tv/small_wood_rec_center_tv_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T03:27:08+00:00",
    "md5": "5ad03852b2372a79b21f03c14ded6ecd",
    "size": 1658008
+  },
+  "godot/assets/concept/meshy/small_wood_rec_center_tv/small_wood_rec_center_tv_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:32:06+00:00",
+   "md5": "9d5588a30cabd5b814e37e32914cd8ba",
+   "size": 1955502
   },
   "godot/assets/concept/meshy/small_wood_rec_center_window_1/front.png": {
    "at": "2026-10-14T03:27:17+00:00",
@@ -63386,14 +63416,19 @@
    "size": 2854373
   },
   "godot/assets/concept/meshy/smolvud_coop_cooler_header_sign/front.png": {
-   "at": "2026-10-14T03:27:48+00:00",
-   "md5": "8b9caa9da58e6d629e88b677ff898ba7",
-   "size": 2367093
+   "at": "2026-10-14T05:32:11+00:00",
+   "md5": "93bb606821ff6fb74fefc916ba82c236",
+   "size": 1190706
   },
   "godot/assets/concept/meshy/smolvud_coop_cooler_header_sign/smolvud_coop_cooler_header_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T03:27:48+00:00",
    "md5": "8b9caa9da58e6d629e88b677ff898ba7",
    "size": 2367093
+  },
+  "godot/assets/concept/meshy/smolvud_coop_cooler_header_sign/smolvud_coop_cooler_header_sign_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:32:11+00:00",
+   "md5": "93bb606821ff6fb74fefc916ba82c236",
+   "size": 1190706
   },
   "godot/assets/concept/meshy/smolvud_coop_corkboard_1/front.png": {
    "at": "2026-10-14T03:27:56+00:00",
