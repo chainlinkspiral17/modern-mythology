@@ -280,6 +280,13 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
       }
     }
     t.eq(bad, [], 'pool problems');
+    // every style's sound-design defaults name FORGE beds (ambient) and one-shots / sweeps (fx)
+    const sd = [];
+    for (const style of Object.keys(SG.STYLES)) for (const [k, tbl, cat] of [['texture', SG.TEXTURE_FOR, 'ambient'], ['fx', SG.FX_FOR, 'fx'], ['hit', SG.HIT_FOR, 'fx']]) {
+      const ids = tbl[style]; if (!ids || !ids.length) { sd.push(style + ': no ' + k + ' defaults'); continue; }
+      for (const id of ids) if (!info[id] || info[id].cat !== cat) sd.push(style + '/' + k + ': ' + id + (info[id] ? ' is ' + info[id].cat : ' missing'));
+    }
+    t.eq(sd, [], 'sound-design defaults');
     const a = SG.song({ seed: 77, style: 'noir', form: 'song' }), b = SG.song({ seed: 77, style: 'noir', form: 'song' });
     t.eq(Object.values(a.parts).map(p => p.preset), Object.values(b.parts).map(p => p.preset), 'same seed, same instruments');
     for (const style of Object.keys(SG.STYLES)) for (const role of ['bass', 'chords', 'lead', 'pad']) {

@@ -162,6 +162,21 @@
     boom_bap: { 35: ['kick_felt', 36, 0.9], 36: ['kick', 36, 1] },
     noir: { 38: ['snare_brush', 60, 1], 40: ['snare_brush', 62, 0.9] },
     shuffle: { 40: ['snare_brush', 60, 0.9] },
+    // the score bible's genres: brushes for the acoustic ones, a low tom for timpani, retuned pieces for chip / industrial
+    folk: { 35: ['kick_felt', 36, 0.9], 36: ['kick_felt', 36, 0.9], 38: ['snare_brush', 60, 1], 40: ['snare_brush', 62, 0.9] },
+    jazz: { 35: ['kick_felt', 36, 0.8], 36: ['kick_felt', 36, 0.8], 38: ['snare_brush', 60, 1], 40: ['snare_brush', 62, 0.9], 44: ['hat_closed', 56, 0.5] },
+    bayou: { 36: ['kick_felt', 36, 1], 38: ['snare_brush', 60, 1], 54: ['perc_tamb', 66, 0.55], 70: ['perc_shaker', 66, 0.5] },
+    chamber: { 36: ['tom', 31, 0.9], 41: ['tom', 33, 0.8], 49: ['cym_crash', 52, 0.5] },
+    hymn: { 36: ['tom', 31, 0.8], 49: ['cym_crash', 52, 0.45] },
+    piano: { 36: ['kick_felt', 36, 0.7] },
+    dark_drone: { 36: ['tom', 26, 0.9], 51: ['cym_ride', 48, 0.5] },
+    lullaby: { 36: ['kick_felt', 36, 0.6], 70: ['perc_shaker', 60, 0.3], 75: ['perc_clave', 74, 0.4] },
+    minimal: { 37: ['perc_clave', 72, 0.7], 39: ['clap', 62, 0.8], 75: ['perc_clave', 67, 0.75] },
+    chiptune: { 36: ['kick', 40, 0.9], 38: ['snare', 70, 0.85], 42: ['hat_closed', 76, 0.6], 46: ['hat_open', 72, 0.6], 41: ['tom', 50, 0.9], 45: ['tom', 55, 0.9], 48: ['tom', 60, 0.9] },
+    industrial: { 35: ['kick_808', 34, 1], 36: ['kick_808', 34, 1], 38: ['snare', 55, 1], 56: ['perc_cowbell', 46, 0.8], 75: ['perc_clave', 40, 0.8] },
+    trip_hop: { 36: ['kick', 33, 1], 38: ['snare', 56, 1] },
+    dub: { 36: ['kick', 33, 1], 37: ['perc_rim', 58, 1], 38: ['snare', 58, 0.9] },
+    post_rock: { 41: ['tom', 38, 1] },
   };
   const kitMapFor = style => Object.assign({}, KIT_MAP, KIT_STYLES[style] || {});
 
