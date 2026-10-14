@@ -17910,5 +17910,188 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/county_line_station_parish_sign/front.png",
     "output": "godot/assets/art/hero/county_line_station_parish_sign.png"
+  },
+  {
+    "at": "2026-10-14T05:08:34+00:00",
+    "stage": "image",
+    "slug": "salty_tome_interior_hemlock_across_facade",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A horizontal band of the street frontage across Hemlock Street in Smolvud, a small damp town on the central Oregon coast in the 2050s, seen straight-on from across a two-lane street on a grey, rainy morning. A continuous row of old two-storey commercial buildings: weathered cedar shingle and painted clapboard in muted brown-grey and moss-tinged greens, a few brick fronts, recessed doorways, deep-set shop windows, some dark, some glowing with warm lamplight, small sloped awnings dripping, a downspout, rain-darkened sidewalk at the bottom edge. Low cloud and fine drizzle, everything wet and soft. It must tile seamlessly left-right: no single landmark, no readable signs, no people, uniform light across the width. Wide band (about 3.3:1). This is a WIDE STREET SCENE of building fronts \u2014 not an object, not a bag, not a close-up of anything; buildings fill the whole frame left to right.\nSIZE: the real object is 6.50 m wide by 2.00 m tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the far side of Hemlock Street through the bookshop window (tiling band), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/salty_tome_interior_hemlock_across_facade/salty_tome_interior_hemlock_across_facade_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:08:40+00:00",
+    "stage": "art",
+    "slug": "salty_tome_interior_hemlock_across_facade",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/salty_tome_interior_hemlock_across_facade/front.png",
+    "output": "godot/assets/art/hero/salty_tome_interior_hemlock_across_facade.png"
+  },
+  {
+    "at": "2026-10-14T05:09:49+00:00",
+    "stage": "image",
+    "slug": "salty_tome_interior_nebula_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A close square crop of one detail of a hand-painted night-sky mural on old brick: a single brilliant star painted in thick cream and pale-gold exterior paint, a soft radiating glow of warm ivory feathering out into deep indigo-violet, four long thin diffraction spikes and a scatter of tiny white dots around it, brick texture and mortar lines visible through the paint, slight weathering and a hairline flake at one edge. Flat, square, evenly lit.\nSIZE: the real object is 17 cm wide by 17 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the bright star at the heart of the Starfish Nebula mural, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/salty_tome_interior_nebula_2/salty_tome_interior_nebula_2_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:09:56+00:00",
+    "stage": "art",
+    "slug": "salty_tome_interior_nebula_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/salty_tome_interior_nebula_2/front.png",
+    "output": "godot/assets/art/hero/salty_tome_interior_nebula_2.png"
+  },
+  {
+    "at": "2026-10-14T05:11:09+00:00",
+    "stage": "image",
+    "slug": "cliffside_circus_main_sign_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Close straight-on crop of the lettering band on a 1902 painted signboard: hand-painted serif capitals THE CLIFFSIDE CIRCUS in deep maroon (RGB ~82,38,38) with a thin cream outline and a dark drop shadow, on weathered cream boards, the paint crazed and chalky from sea air, a board seam running through the middle of the letters. The whole phrase THE CLIFFSIDE CIRCUS sits on ONE line through the middle of the image, complete, with clear margin at both ends \u2014 no letter may touch or cross the edge. Evenly lit.\nSIZE: the real object is 1.40 m wide by 12 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 20% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the lettering band of the Cliffside Circus signboard, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: THE CLIFFSIDE CIRCUS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cliffside_circus_main_sign_2/cliffside_circus_main_sign_2_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:11:15+00:00",
+    "stage": "art",
+    "slug": "cliffside_circus_main_sign_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cliffside_circus_main_sign_2/front.png",
+    "output": "godot/assets/art/hero/cliffside_circus_main_sign_2.png"
+  },
+  {
+    "at": "2026-10-14T05:11:40+00:00",
+    "stage": "image",
+    "slug": "salty_tome_interior_alley_muralwall",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The bottom half-metre of an old three-storey brick wall at the end of a narrow alley behind a bookshop on the rainy Oregon coast, seen flat and straight-on as a long horizontal strip. Weathered red-brown common brick (dark rust and umber) with recessed grey mortar, the bottom courses stained almost black by decades of rain splash-back and asphalt grit, a green fuzz of moss in the joints, white efflorescence blooms, a tide-line where puddles sit; at the very top edge the faint flaking lower margin of a deep indigo painted mural begins. Damp sheen, no objects in front. Very wide strip (about 21:1), continuous left to right, evenly lit. Brick and grime ONLY: no mural, no painted figures, no faces, no stars, no rectangle or patch \u2014 just the bottom courses of a plain old wall.\nSIZE: the real object is 5.40 m wide by 25 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 11% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the grimy foot of the Starfish Nebula mural wall in the alley, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/salty_tome_interior_alley_muralwall/salty_tome_interior_alley_muralwall_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:11:49+00:00",
+    "stage": "art",
+    "slug": "salty_tome_interior_alley_muralwall",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/salty_tome_interior_alley_muralwall/front.png",
+    "output": "godot/assets/art/hero/salty_tome_interior_alley_muralwall.png"
+  },
+  {
+    "at": "2026-10-14T05:12:20+00:00",
+    "stage": "image",
+    "slug": "smolvud_coop_cooler_header_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A long, narrow painted wooden sign mounted over a wall of glass-door coolers in a small organic food co-op on the Oregon coast: forest green (RGB ~0.30/0.44/0.28) with hand-lettered cream capitals separated by small painted icons \u2014 a milk bottle, an egg, a fish. Simple, friendly, community-made; brush marks visible, one letter repainted slightly brighter. Clean and well kept. Flat-on, evenly lit, very wide horizontal format. The whole line DAIRY \u00b7 EGGS \u00b7 SMOKED FISH sits on ONE row through the middle of the image, complete, with margin at both ends \u2014 no word may be cut off.\nSIZE: the real object is 4.60 m wide by 15 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 8% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the header sign over the co-op's cooler wall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: DAIRY \u00b7 EGGS \u00b7 SMOKED FISH. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/smolvud_coop_cooler_header_sign/smolvud_coop_cooler_header_sign_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:12:26+00:00",
+    "stage": "art",
+    "slug": "smolvud_coop_cooler_header_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/smolvud_coop_cooler_header_sign/front.png",
+    "output": "godot/assets/art/hero/smolvud_coop_cooler_header_sign.png"
+  },
+  {
+    "at": "2026-10-14T05:12:48+00:00",
+    "stage": "art",
+    "slug": "centro_grocery_aisle_corral_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/centro_grocery_aisle_corral_sign/front.png",
+    "output": "godot/assets/art/hero/centro_grocery_aisle_corral_sign.png"
+  },
+  {
+    "at": "2026-10-14T05:13:04+00:00",
+    "stage": "image",
+    "slug": "centro_grocery_aisle_corral_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat, straight-on face of a long narrow parking-lot sign fixed to a steel cart-corral rail: Centro green background (about RGB 61,133,87), white bold sans-serif capitals reading CART RETURN with a simple white shopping-cart pictogram at the left and a smaller GRACIAS at the right. Reflective road-sign sheeting on aluminium, sun-bleached toward mint at the top edge, a few cart-bump scrapes and a rust bloom at one bolt hole, a smear of parking-lot grime along the bottom. Texas Gulf Coast heat and humidity have aged it; the lot is lit at night by sodium-white pole lamps. Evenly lit, no perspective. Perfectly flat and orthographic, like a scan: no perspective, no angle, no parking lot around it \u2014 the sign face alone, filling the frame.\nSIZE: the real object is 1.12 m wide by 15 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 31% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the cart-return sign on the corral in Centro's parking lot, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: CART RETURN \u00b7 GRACIAS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/centro_grocery_aisle_corral_sign/centro_grocery_aisle_corral_sign_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:13:09+00:00",
+    "stage": "art",
+    "slug": "centro_grocery_aisle_corral_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/centro_grocery_aisle_corral_sign/front.png",
+    "output": "godot/assets/art/hero/centro_grocery_aisle_corral_sign.png"
+  },
+  {
+    "at": "2026-10-14T05:13:50+00:00",
+    "stage": "image",
+    "slug": "small_wood_rec_center_tv",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The screen of a modern flat-panel TV on a rolling cart in the Small Wood rec hall on the Oregon coast in the 2050s, edge to edge, no bezel: a contemporary indie game left paused \u2014 a painterly side-on scene of a rainy harbour town at dusk, soft volumetric light, a small hooded figure frozen mid-step on a wet pier, a clean modern pause overlay in the centre with RESUME / OPTIONS. Crisp current-generation display, no scanlines, no pixel art, no CRT, nothing that imitates an old console. Evenly lit, a faint fingerprint smudge in one corner.\nSIZE: the real object is 22 cm wide by 19 cm tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the rec center's TV on its cart, the Nintendo plugged in, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: PAUSED \u00b7 RESUME \u00b7 OPTIONS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/small_wood_rec_center_tv/small_wood_rec_center_tv_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T05:13:57+00:00",
+    "stage": "art",
+    "slug": "small_wood_rec_center_tv",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/small_wood_rec_center_tv/front.png",
+    "output": "godot/assets/art/hero/small_wood_rec_center_tv.png"
   }
 ]
