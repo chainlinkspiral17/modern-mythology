@@ -753,7 +753,14 @@ async function api(method, path, body, ctype) {
     throw new Error('Hero Studio is not running — start it again: bash godot/tools/hero_studio.sh (then use the page it opens)');
   }
   const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(data.error || `${r.status} ${path}`);
+  if (!r.ok) {
+    // (2026-10-14) a failed SAVE answers 409 WITH its steps — keep them, so
+    // the page can say why ("SAVE failed: 409 /api/git/push" said nothing)
+    const why = data.error || (Array.isArray(data.steps) && data.steps.length ? data.steps[data.steps.length - 1] : '');
+    const err = new Error(why || `${r.status} ${path}`);
+    err.data = data;
+    throw err;
+  }
   return data;
 }
 
@@ -886,8 +893,18 @@ async function saveToGit() {
       log('ok', 'SAVE complete.');
     }
   } catch (err) {
-    log('err', `SAVE failed: ${err.message}`);
-    refreshGit();
+    const steps = (err.data && Array.isArray(err.data.steps)) ? err.data.steps : [];
+    const bad = /STOPPED|REFUSED|failed|rejected|not set up|not installed|error|NOT/;
+    for (const s of steps) log(bad.test(s) ? 'err' : 'ok', `SAVE: ${s}`);
+    const why = steps.filter(s => bad.test(s)).pop() || err.message;
+    log('err', `SAVE did NOT complete: ${why}`);
+    if (err.data && err.data.status) renderGit(err.data.status);
+    if (state.connected) {
+      b.disabled = false;
+      b.className = 'save small dirty';
+      b.textContent = 'SAVE FAILED · see why';
+      b.title = why + '\n\nIn a terminal, for the full story:\npython3 godot/tools/meshy_pipeline.py save';
+    }
   }
 }
 
