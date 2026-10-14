@@ -3755,6 +3755,11 @@
    "md5": "173f26646461b6b5445b57ca0a729b2c",
    "size": 2770335
   },
+  "godot/assets/art/hero/kwik_stop_window_1.png": {
+   "at": "2026-10-14T05:48:07+00:00",
+   "md5": "edb779a4feedc4d2df7c63dc9f2dc45c",
+   "size": 2064748
+  },
   "godot/assets/art/hero/kwik_stop_window_2.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "4362c1f2082109bf6b103e4d27295075",
@@ -59936,14 +59941,19 @@
    "size": 2770335
   },
   "godot/assets/concept/meshy/kwik_stop_window_1/front.png": {
-   "at": "2026-10-14T03:05:44+00:00",
-   "md5": "edb779a4feedc4d2df7c63dc9f2dc45c",
-   "size": 2064748
+   "at": "2026-10-14T05:48:14+00:00",
+   "md5": "4f7b8b8cbf6c167ccf732cf567644d8f",
+   "size": 2246009
   },
   "godot/assets/concept/meshy/kwik_stop_window_1/kwik_stop_window_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T03:05:44+00:00",
    "md5": "edb779a4feedc4d2df7c63dc9f2dc45c",
    "size": 2064748
+  },
+  "godot/assets/concept/meshy/kwik_stop_window_1/kwik_stop_window_1_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T05:48:14+00:00",
+   "md5": "4f7b8b8cbf6c167ccf732cf567644d8f",
+   "size": 2246009
   },
   "godot/assets/concept/meshy/kwik_stop_window_2/front.png": {
    "at": "2026-10-14T03:05:51+00:00",
