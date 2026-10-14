@@ -1022,6 +1022,40 @@ context keeps running into a fake sink, and the meters still move.
   back to lo-fi's for the new styles. FORGE is the default
   instrument path.
 
+### 2026-10-14 — the score bible: "several hundred tracks, each with their own feel"
+
+- One brief per track wasn't enough to keep 179 tracks distinct AND
+  related. `godot/resources/music/score/*.json` is the composer's
+  cue sheet, layered soundtrack → volume → chapter → character →
+  track. Later layers win field by field (`TM.loadScore` deep-merges
+  the files in name order, so vol6's Lena overrides vol0-4's — on
+  purpose). Typed direction in the director still beats all of it
+  (`applyDirection` runs last).
+- A track that plays in several chapters leans toward ONE of them per
+  take (chapters come from the catalog + the brief's scenes; only
+  chapters the bible describes are eligible). Re-rolling a take can
+  land in a different chapter's colour — that's the variety, inside
+  the volume's palette.
+- Cohesion comes from what repeats, not from one style: the volume
+  key (`volumeKey`), the character leitmotifs (`motifSpec` rhythm +
+  scale degrees, carried by `motifOf` from track ids like
+  `vol5_petra_theme`) and the soundtrack-wide `feel`. Diversity comes
+  from style / form / shape / textures / fx, which the chapter and
+  track layers change freely.
+- `checkScore` validates every field (style exists, key parses,
+  shape roles are real roles, degrees in range); the data test runs
+  it over every file, so a typo in a cue fails CI instead of silently
+  falling back.
+- Written by four parallel agents (one per volume group) from the
+  wikis. Their flagged gaps, still open: chapter-only tracks the
+  MusicDirector never picks (vol5), two tracks titled "Static
+  Bloom", motifs that need chromatic steps (Petra's half-step run
+  can't be scale degrees), foley the cues ask for that FORGE has no
+  preset for.
+- Nobody has listened to a take built from it yet. The first
+  listening pass decides whether the layers are audible or just
+  bookkeeping.
+
 ## TEMPLATE
 
 ```
