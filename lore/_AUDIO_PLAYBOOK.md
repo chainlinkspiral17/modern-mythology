@@ -85,6 +85,19 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-10-14 · the stillness bed — how to tag ambient pieces for quiet moments
+
+- The VN's STILLNESS moment (J / pad Y, see _VN_DIRECTION_PLAYBOOK)
+  plays an ambient piece over the room: AudioMgr.enter_stillness picks a
+  music_catalog entry tagged `"moments": ["stillness"]` (or
+  `"tags": ["stillness"]`) — one listing the room in `"locales": [...]`
+  first, then one of the same `"vol"`, then any — fades it in over 2.4 s
+  on its own player (Master bus, scaled by the music setting) while the
+  Music Player track sinks to 18 % and the locale hum to 45 %; leaving
+  fades it out over 1.2 s and restores both. Nothing tagged = the music
+  just dips. For the audio director: loopable, low-motion ambient pieces;
+  tag a few per volume and a handful per signature room.
+
 ### 2026-10-01 · Drive audio · voice zips realigned, songs sent one by one
 
 - **An export carries its scene's past.** A Voice Studio zip holds the

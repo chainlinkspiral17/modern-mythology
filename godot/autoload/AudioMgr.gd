@@ -76,6 +76,25 @@ var _ambient_cfg_loaded: bool           = false
 
 var _music_heard: Dictionary = {}
 
+# ── Stillness (2026-10-14) ────────────────────────────────────────
+# The player's quiet moment (GameEngine · J / pad Y): the text goes, the
+# camera settles on a picture in the room, and the sound settles too. A
+# catalog track tagged `"moments": ["stillness"]` (the audio director's
+# ambient pieces) fades in on its own player — this room's piece first
+# (`"locales": [...]`), then this volume's, then any — while the Music
+# Player track and the room hum sink under it. Nothing tagged yet: the
+# music simply dips. Leaving reverses it.
+const STILL_FADE_IN  := 2.4    # slow — the moment arrives
+const STILL_FADE_OUT := 1.2
+const STILL_BGM_MULT := 0.18   # the scene's music under the stillness bed
+const STILL_HUM_MULT := 0.45   # the room hum under it
+const STILL_GAIN     := 0.85
+var _still: AudioStreamPlayer = null
+var _still_tween: Tween = null
+var _still_active: bool = false
+var _still_src: String = ""
+var _still_rot: int = 0
+
 # Sources that have failed to load (file missing, corrupt, undecodable).
 # Each src only logs once per session — subsequent attempts short-circuit
 # silently so the queue can advance to the next track without spam.
@@ -163,6 +182,15 @@ func _setup_players() -> void:
 	_ambient = AudioStreamPlayer.new()
 	_ambient.bus = "Ambient"
 	add_child(_ambient)
+
+	# the stillness bed: its own player (and its own fades, on the
+	# player, so the locale hum's bus tweens never touch it)
+	_still = AudioStreamPlayer.new()
+	# Master, not Ambient (silent in a room with no hum) or BGM (ducked
+	# for the moment); the music-volume setting scales it in _tween_still
+	_still.bus = "Master"
+	_still.volume_db = linear_to_db(0.0001)
+	add_child(_still)
 
 
 func _process(delta: float) -> void:
@@ -312,6 +340,8 @@ func unduck() -> void:
 # bus (both pull it down, we take the combined target).
 func _bgm_bus_target() -> float:
 	var duck_mult: float = DUCK_RATIO if _is_ducked else 1.0
+	if _still_active:
+		duck_mult *= STILL_BGM_MULT
 	var amb_mult:  float = AMBIENT_DUCK if _ambient_active else 1.0
 	# The hum and the Music Player track are, since 2026-09-12, usually
 	# the SAME bed (one locale→bed table feeds both layers). A 14% ghost
@@ -336,7 +366,8 @@ func _retarget_bgm_bus(duration: float) -> void:
 # is the Music Player track.
 func _ambient_target() -> float:
 	var sig_mult: float = SIGNATURE_HUM if _is_signature(_current_src) else 1.0
-	return Settings.bgm_vol * _ambient_gain * sig_mult
+	var still_mult: float = STILL_HUM_MULT if _still_active else 1.0
+	return Settings.bgm_vol * _ambient_gain * sig_mult * still_mult
 
 
 func _retarget_ambient_bus(duration: float) -> void:
@@ -440,6 +471,86 @@ func exit_locale_ambient() -> void:
 	_ambient_bed = ""
 	_tween_ambient_bus(0.0, AMBIENT_FADE, true)
 	_retarget_bgm_bus(UNDUCK_FADE)
+
+
+## Begin a stillness moment. Returns the bed's src ("" = the music only
+## dips — nothing in the catalog is tagged for stillness yet).
+func enter_stillness(locale_id: String, vol: int) -> String:
+	if _still_active:
+		return _still_src
+	_still_active = true
+	var src: String = _pick_stillness_bed(locale_id, vol)
+	_still_src = src
+	if src != "":
+		var stream := _load_audio(src)
+		if stream != null:
+			_set_stream_loop(stream, true)
+			_still.stream = stream
+			_still.volume_db = linear_to_db(0.0001)
+			_still.play()
+			_tween_still(Settings.bgm_vol * STILL_GAIN, STILL_FADE_IN, false)
+		else:
+			_still_src = ""
+	_retarget_bgm_bus(STILL_FADE_IN)
+	_retarget_ambient_bus(STILL_FADE_IN)
+	return _still_src
+
+
+func exit_stillness() -> void:
+	if not _still_active:
+		return
+	_still_active = false
+	_tween_still(0.0, STILL_FADE_OUT, true)
+	_retarget_bgm_bus(STILL_FADE_OUT)
+	_retarget_ambient_bus(STILL_FADE_OUT)
+
+
+func is_stillness_active() -> bool:
+	return _still_active
+
+
+## The catalog's stillness pieces, best fit first: this room's, then this
+## volume's, then any; rotated so the same moment does not always get the
+## same piece.
+func _pick_stillness_bed(locale_id: String, vol: int) -> String:
+	var room: Array[String] = []
+	var same_vol: Array[String] = []
+	var any: Array[String] = []
+	for entry: Dictionary in SceneDataDB.get_music_catalog():
+		var moments: Array = entry.get("moments", [])
+		var tags: Array = entry.get("tags", [])
+		if not ("stillness" in moments or "stillness" in tags):
+			continue
+		var src: String = String(entry.get("src", ""))
+		if src == "":
+			continue
+		var locs: Array = entry.get("locales", [])
+		if locale_id != "" and locale_id in locs:
+			room.append(src)
+		elif int(entry.get("vol", -1)) == vol:
+			same_vol.append(src)
+		else:
+			any.append(src)
+	for pool: Array[String] in [room, same_vol, any]:
+		if not pool.is_empty():
+			_still_rot += 1
+			return pool[_still_rot % pool.size()]
+	return ""
+
+
+func _tween_still(target_linear: float, duration: float, stop_at_end: bool) -> void:
+	if _still_tween and _still_tween.is_valid():
+		_still_tween.kill()
+	_still_tween = create_tween()
+	_still_tween.tween_method(
+		func(v: float) -> void:
+			_still.volume_db = linear_to_db(maxf(v, 0.0001)),
+		db_to_linear(_still.volume_db), target_linear, duration
+	)
+	if stop_at_end:
+		_still_tween.tween_callback(func() -> void:
+			if not _still_active:
+				_still.stop())
 
 
 func _tween_ambient_bus(target_linear: float, duration: float, stop_at_end: bool = false) -> void:

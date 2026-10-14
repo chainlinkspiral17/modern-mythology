@@ -278,6 +278,38 @@ misses eyes); a catchlight for cu/ecu; matching the portrait's key to
 the locale's (the diner is warm, the portrait key is cool); an
 over-the-shoulder two-shot when two heroes trade lines.
 
+## The art in the room · noticing + stillness (draft 1 · 2026-10-14)
+
+The user: "since we have all this 2D art now, the visual novel director
+needs to feature it but subtly. Building out quiet moments of stillness
+using the game mechanics would be preferable." 532 hero-art pictures hang
+in the rooms (HeroArt.gd). Two uses, both marker-free — the director
+frames any placed picture from its quad (`_art_pose`: stand-off for
+ART_FILL of the frame, a few degrees off square, slow ART_DRIFT push):
+
+1. **NOTICING** (automatic, subtle). A NARRATION line with no `[shot:]`
+   of its own that names a picture in the room by an object word
+   (calendar, photo, mural, menu, poster, sign … — nouns only, never
+   "face"/"table"/"board") holds on that picture for the line; the next
+   line returns the frame it left. Once per picture per room visit,
+   ART_COOLDOWN (6) lines between, never on dialogue, the author's cue
+   always wins. With the text up the picture is framed small and HIGH
+   (ART_FILL_TEXT 0.40, centre at 33 % of the screen) — clear of the box.
+   ~120 lines across the story qualify before cooldowns.
+2. **STILLNESS** (the player's). On a waiting line in a room with
+   close-up pieces (roster `inspect`: meta-texts, art pieces, what the
+   prose describes) a faint "◇ look · J" sits by the AUTO chip. J / pad
+   Y (GamepadMgr's Y→J synth — one path) lets the text go; the camera
+   settles on the nearest piece, nearest-first, centred, drifting; an
+   italic caption names it; ◂ ▸ browse; J / advance / back return to
+   EXACTLY the frame left (a noticing shot stays one). The music dips
+   under the audio director's stillness bed (AudioMgr.enter_stillness:
+   catalog tracks tagged `"moments": ["stillness"]`). Each piece seen is
+   marked `art:<slug>` in SaveSystem's seen set. Auto-advance holds.
+
+Not a cut grammar violation: noticing is a held frame like any insert;
+stillness is the player's own camera.
+
 ## Voice rules for directing scripts
 
 - Establish once per location change; do not re-establish on
@@ -290,6 +322,16 @@ over-the-shoulder two-shot when two heroes trade lines.
   nothing does.
 
 ## Recent lessons
+
+### 2026-10-14 · a local variable hid a new static; Godot caught it, the linters did not
+
+- `HeroArt.apply()` counts with a local `var placed: int`; a new
+  `static var placed: Array` was invisible inside it and
+  `placed.append(...)` compiled against the int — Godot: "append() not
+  found in base int". gdparse and gdinfer_check both passed it. Run the
+  change in the engine (a SceneTree test script, xvfb + opengl3) before
+  shipping anything the VN loads; name statics so they cannot collide
+  (`placed_art`).
 
 ### 2026-10-12 · the camera follows the narrator's inventory
 

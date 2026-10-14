@@ -3834,6 +3834,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-14 · pass 104: THE ART IN THE ROOM — NOTICING AND STILLNESS
+(draft 1).** The user: "the visual novel director needs to feature it but
+subtly. Building out quiet moments of stillness using the game mechanics
+would be preferable" and "the audio director is going to be generating a
+lot of ambient type music which would be ideal for these types of
+moments." Built (see _VN_DIRECTION_PLAYBOOK "The art in the room"):
+VnDirector frames any placed picture without a marker; NOTICING holds on a
+picture an uncued narration line names (once per picture per visit,
+6-line cooldown, framed above the text box, returns next line);
+STILLNESS — "◇ look · J" (pad Y) — the player's own quiet browse of the
+room's close-up pieces, caption in the bottom bar, ◂ ▸, exact return,
+seen-marking; AudioMgr's stillness bed fades in a catalog piece tagged
+`moments: ["stillness"]` (room → volume → any) over the ducked music and
+hum. Engine-tested on the Missing Link menu chapter (noticing fired on
+"The menu is laminated…", stillness entered / browsed 2 of 13 / returned
+to the exact frame). **Draft 2 targets:** occlusion (the kitchen-door
+sign framed through the counter — the rooms have no colliders; test the
+stand-off ray against the locale's mesh AABBs); a gallery page for the
+pieces seen (`art:` keys); stillness pieces ordered by what the scene has
+named first; the audio director's tagged stillness pieces; a per-room
+cap so a 13-piece diner does not ask the player to browse all of it.
+
 **2026-10-14 · pass 103: THE HERO ART, REVIEWED (hero art draft 3).** 532
 pictures generated on the Deck (1.3 GB on My Drive) came back as 22
 contact sheets + a report (`art_review.sh` → `ArtReviewSheet.gd`) and 701
