@@ -2475,10 +2475,30 @@
    "md5": "7b2be78dea47ffa91e233448ef96c7d1",
    "size": 1859396
   },
+  "godot/assets/art/hero/cafe_olimpico_front_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "163ede0444b0a3573d73b66ae3da5b7c",
+   "size": 2623491
+  },
+  "godot/assets/art/hero/cafe_olimpico_menu.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "42b80cc328e50f6d465e560e4fea8889",
+   "size": 2829780
+  },
+  "godot/assets/art/hero/cafe_olimpico_out_facade.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "de33696f59bc7211af5106dce0232524",
+   "size": 2619328
+  },
   "godot/assets/art/hero/cafe_olimpico_team_photo.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "2e75d8b2d25bb988a869d30566bc8a53",
    "size": 2993300
+  },
+  "godot/assets/art/hero/cafe_olimpico_win_backcorner_glass.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "c905b76349daceadc277a5b04ca4a889",
+   "size": 2390427
   },
   "godot/assets/art/hero/caldwell_kitchen_night_photo_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -2680,6 +2700,11 @@
    "md5": "85effb4bd21f6de6d21856f509c9e36f",
    "size": 1926299
   },
+  "godot/assets/art/hero/centro_stockroom_extinguisher_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "50e9941d1c84efbd8c311c8d7d6ab20b",
+   "size": 1757924
+  },
   "godot/assets/art/hero/centro_stockroom_safety_poster_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "bc72d11289cc0c7531b9f605ff232337",
@@ -2794,6 +2819,16 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "0b13ef6efb036deecd2ecdb46e6c7778",
    "size": 2586178
+  },
+  "godot/assets/art/hero/county_line_station_bus_stop_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "19d53a1182e1ce88af909c0321eb596b",
+   "size": 2562919
+  },
+  "godot/assets/art/hero/county_line_station_parish_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "4fc23f00228b5b52081c8648c1b23fc2",
+   "size": 2620656
   },
   "godot/assets/art/hero/county_line_station_pump_display.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -3040,6 +3075,36 @@
    "md5": "e284bf603f73fb8ce37649d66126a98c",
    "size": 2891811
   },
+  "godot/assets/art/hero/elicia_apartment_dead_monitor_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "3df3d8ca0d716d7587c34b7d9120e4e6",
+   "size": 1625951
+  },
+  "godot/assets/art/hero/elicia_apartment_dead_monitor_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "6f5c17f934f402c5a41f89572641e47b",
+   "size": 1860552
+  },
+  "godot/assets/art/hero/elicia_apartment_laptop_screen.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "3c98bf09e24d44fe3f48a429f9ffe666",
+   "size": 1433758
+  },
+  "godot/assets/art/hero/elicia_apartment_skyline.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "8908f352020e0bda37e27df1cb431e4a",
+   "size": 1871120
+  },
+  "godot/assets/art/hero/faust_apartment_bike_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "3851ed3062852c00630189c9aae91ea2",
+   "size": 2351085
+  },
+  "godot/assets/art/hero/faust_apartment_bike_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "d87c1314eb7c125bbbe6048a8d2ce41e",
+   "size": 2258218
+  },
   "godot/assets/art/hero/faust_apartment_canvas_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "fa4977c4adb41de0579529b9b4b81c2f",
@@ -3080,10 +3145,30 @@
    "md5": "fd104cf9e6689810a71ad371d71cf5ee",
    "size": 3968668
   },
+  "godot/assets/art/hero/faust_apartment_win_e_glass.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "dc1c634ebcf414d4cb10baebbbd2e4ad",
+   "size": 2089071
+  },
+  "godot/assets/art/hero/faust_apartment_win_n_glass.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "bbb662e64f79ac94378d52a45c63d006",
+   "size": 2550839
+  },
   "godot/assets/art/hero/finn_apartment_coat_canvas.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "7c6ab069eb7188a43fea6c4e8965e418",
    "size": 2273662
+  },
+  "godot/assets/art/hero/finn_apartment_n_window.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "0a2f054f5482490ffecbf8079ab7860d",
+   "size": 2594072
+  },
+  "godot/assets/art/hero/finn_apartment_out_n_treeline.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "710ae78dae87275478e2f947d679039d",
+   "size": 2537036
   },
   "godot/assets/art/hero/foxhole_bar_backbar_neon_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -3525,6 +3610,11 @@
    "md5": "eb5a2a361302175b18e5d43dc10e2741",
    "size": 1879514
   },
+  "godot/assets/art/hero/kowalski_kitchen_tv_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "89b4c7a74580f77c44e7c8ce9bab9841",
+   "size": 1818439
+  },
   "godot/assets/art/hero/kowalski_kitchen_window.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "f0d644d91e75d407a41cc750ad57414b",
@@ -3730,6 +3820,16 @@
    "md5": "80c0fa8e95a76ae1ca377ba888dd05a7",
    "size": 2203007
   },
+  "godot/assets/art/hero/maya_bedroom_hall_photo_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "76c21af5929efc0e337b983dc870d05b",
+   "size": 2320010
+  },
+  "godot/assets/art/hero/maya_bedroom_hall_photo_3.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "8d843aa0bbb1bc3febabc5870c1ac43c",
+   "size": 2505824
+  },
   "godot/assets/art/hero/maya_bedroom_laptop_screen.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "ad9c253361d5f501bada3ece0c45eaf8",
@@ -3779,6 +3879,11 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "5c92d9e7267163d0370198a7f6e16f55",
    "size": 1391530
+  },
+  "godot/assets/art/hero/missing_link_interior_kitchendoor_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "4c47c976c263e0cbe6d85deb2f2652e9",
+   "size": 2256020
   },
   "godot/assets/art/hero/missing_link_interior_laminated_menu.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -3925,10 +4030,140 @@
    "md5": "24465cf4cdcba45111be0ca6543838ef",
    "size": 3029031
   },
+  "godot/assets/art/hero/new_auburn_road_bypass_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "928117e87966977d522b0dbd842489e0",
+   "size": 2483355
+  },
+  "godot/assets/art/hero/new_auburn_road_cypress_motel_sign_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "b4263664657deace7b646c3955c76be8",
+   "size": 2336048
+  },
+  "godot/assets/art/hero/new_auburn_road_cypress_motel_sign_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "8c8261c52edaecf43430135f81e80b3b",
+   "size": 1464947
+  },
+  "godot/assets/art/hero/new_auburn_road_cypress_motel_vacancy_neon.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "080188f42ce6cb3eef4e54c5d2e8c9ad",
+   "size": 1431451
+  },
+  "godot/assets/art/hero/new_auburn_road_foxhole_front_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "df956a56f203e84e098567a12655bc7f",
+   "size": 1750670
+  },
+  "godot/assets/art/hero/new_auburn_road_lighting_van_logo.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "4bfea3163dff3301e56f8f3d722c8d4f",
+   "size": 1946537
+  },
+  "godot/assets/art/hero/new_auburn_road_marquee_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "48fe3a632b1eb909961d96faa9db4989",
+   "size": 2716851
+  },
+  "godot/assets/art/hero/new_auburn_road_marquee_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "4a063a15cd5770797972ac12e96c9749",
+   "size": 2643292
+  },
+  "godot/assets/art/hero/new_auburn_road_napd_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "22b72d98ed0737c428be40c40a906a69",
+   "size": 2478663
+  },
+  "godot/assets/art/hero/new_auburn_road_payday_loan_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "ec13e5384c43e68e098d3231f2d7acc3",
+   "size": 1668933
+  },
+  "godot/assets/art/hero/new_auburn_road_ranch_gate_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "d838193a6d9ee11257f7d25b0ec74f02",
+   "size": 3234396
+  },
+  "godot/assets/art/hero/new_auburn_road_streetsign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "a52821b66de540822335592488f66325",
+   "size": 1684476
+  },
+  "godot/assets/art/hero/new_auburn_road_substation_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "61206120a93da661f47bc05611eef776",
+   "size": 1826320
+  },
+  "godot/assets/art/hero/new_auburn_road_substation_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "17ade62edf9103c15f22eebd429f9c5f",
+   "size": 2486680
+  },
+  "godot/assets/art/hero/new_auburn_road_substation_3.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "ea1a21689fc039c7a8a29e140324757e",
+   "size": 2588807
+  },
+  "godot/assets/art/hero/new_auburn_road_unit_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "04f1f36322ff06e9f224fde4d4f3fe65",
+   "size": 2395910
+  },
+  "godot/assets/art/hero/new_auburn_road_unit_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "c5ec4c304418c413a4da41d3e7b2a6e6",
+   "size": 1708209
+  },
+  "godot/assets/art/hero/new_auburn_road_unit_3.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "e36b2abd7b09aa91351b84b443f439c4",
+   "size": 1617951
+  },
   "godot/assets/art/hero/new_orleans_apartment_out_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "62d0b69296022c134dc8d97e83482fd9",
    "size": 2586461
+  },
+  "godot/assets/art/hero/new_orleans_apartment_tv_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "41af8e925099b9fe72ab46de64fabcdb",
+   "size": 2942215
+  },
+  "godot/assets/art/hero/new_orleans_apartment_tv_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "026998fbdb4766fa682213cb1a7ba4cc",
+   "size": 2343290
+  },
+  "godot/assets/art/hero/new_orleans_apartment_window_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "8265984138b74da946efb277c9a30d91",
+   "size": 2527129
+  },
+  "godot/assets/art/hero/new_orleans_apartment_window_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "46d9db296a74639a2b7d4003d3571d22",
+   "size": 2661161
+  },
+  "godot/assets/art/hero/new_orleans_bar_atm_screen.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "63c9293e8fe1cb5f1f438d4340556061",
+   "size": 3147757
+  },
+  "godot/assets/art/hero/new_orleans_bar_bar_tv_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "bf2bfc95e7dc2e1d4abede2ed7ec6809",
+   "size": 2322863
+  },
+  "godot/assets/art/hero/new_orleans_bar_beerneon_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "d9114f74afe40e5da65879c0296985a9",
+   "size": 2222837
+  },
+  "godot/assets/art/hero/new_orleans_bar_beerneon_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "9152d3c8b7de9473335fb6f21e398e7c",
+   "size": 2041170
   },
   "godot/assets/art/hero/new_orleans_bar_chalk_corner_flyer_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -3950,6 +4185,11 @@
    "md5": "3109719291ae423435a1d78aa1afc781",
    "size": 2097734
   },
+  "godot/assets/art/hero/new_orleans_bar_exit_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "5955e0a2b8518f0ee5f93e011f766d92",
+   "size": 2173334
+  },
   "godot/assets/art/hero/new_orleans_bar_gator_plaque.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "524b98c3efa2dd29c9d7869c2e73a64a",
@@ -3959,6 +4199,16 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "c7bb6d71fa71ba8ac18b3c590d669ff5",
    "size": 2843473
+  },
+  "godot/assets/art/hero/new_orleans_bar_missilecmd_screen.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "3f94a4aa385f9850a18ce934631fbd45",
+   "size": 1543562
+  },
+  "godot/assets/art/hero/new_orleans_bar_open_neon.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "9386e5a3996e4a902259e4cf795ff419",
+   "size": 2168246
   },
   "godot/assets/art/hero/new_orleans_office_out_facade.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4205,6 +4455,11 @@
    "md5": "d9b72645092a3c837d2ff8b6c1388952",
    "size": 1940930
   },
+  "godot/assets/art/hero/pit_stop_interior_prints.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "80994515ae945670ed5292ea9b9b7a35",
+   "size": 3376205
+  },
   "godot/assets/art/hero/pit_stop_interior_strip_across_sign.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "c21cfed602dda366cf20e18accc5755f",
@@ -4305,6 +4560,46 @@
    "md5": "95a8615b97f535c6f755e3db006cfb73",
    "size": 2803443
   },
+  "godot/assets/art/hero/riverfront_gasstation_sign_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "9f62cc70b07276dd1b171d114a1370fa",
+   "size": 1620488
+  },
+  "godot/assets/art/hero/riverfront_gasstation_sign_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "5388b6cc11d65969de613d4d04b390e3",
+   "size": 1970429
+  },
+  "godot/assets/art/hero/riverfront_hwy_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "f6e65f42903a21e15f90403869256831",
+   "size": 2450526
+  },
+  "godot/assets/art/hero/riverfront_park_signpanel.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "de22e28c36fa125cd4e3b73beaa68968",
+   "size": 3256549
+  },
+  "godot/assets/art/hero/riverfront_park_signtext.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "ac1b2331d0fc7c8b2c5eff6510ed2094",
+   "size": 3031596
+  },
+  "godot/assets/art/hero/riverfront_sign_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "19875a6c797ed80ff0002bf4454e8248",
+   "size": 2410223
+  },
+  "godot/assets/art/hero/riverfront_sign_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "737f931055d81293774f6ee87a4d638f",
+   "size": 2370829
+  },
+  "godot/assets/art/hero/riverfront_stripmall_sign.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "01a3ccd461c1cd3e2745852bde70bc66",
+   "size": 1374401
+  },
   "godot/assets/art/hero/roberts_kitchen_counterrun_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "1cd64d3ad0d920e2bf93fc37dd95854d",
@@ -4324,6 +4619,31 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "f24643df8739347d96cdaabadf2c3c6d",
    "size": 2722223
+  },
+  "godot/assets/art/hero/roberts_kitchen_dining_photo_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "bc7bc0ef7778d6ff57713b58e0cfbf74",
+   "size": 2793702
+  },
+  "godot/assets/art/hero/roberts_kitchen_dining_photo_2.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "fd0f13dcc2c345cc59be898f983f96ec",
+   "size": 2707174
+  },
+  "godot/assets/art/hero/roberts_kitchen_foyer_photo_1.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "3cd1c0a1a53f1904ed8408b72e590fc7",
+   "size": 1966971
+  },
+  "godot/assets/art/hero/roberts_kitchen_tv.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "78059a8ae6f7056f9ce82acf8ff91085",
+   "size": 2722339
+  },
+  "godot/assets/art/hero/roberts_kitchen_window.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "e672b05b23e84d1223195291bfb36bde",
+   "size": 3854079
   },
   "godot/assets/art/hero/safehouse_bedroom_hall_print.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -4414,6 +4734,21 @@
    "at": "2026-10-14T02:24:58+00:00",
    "md5": "1be792cd1e0e273a25ebb0544ddcaf99",
    "size": 2527228
+  },
+  "godot/assets/art/hero/school_field_evening_corkboard.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "453010d3553ba5e0fb985280b3938ac2",
+   "size": 4219999
+  },
+  "godot/assets/art/hero/school_field_evening_depthchart.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "0dc41ae96b9d87dd0d1b56ac87e5b6f0",
+   "size": 3063416
+  },
+  "godot/assets/art/hero/school_field_evening_score.png": {
+   "at": "2026-10-14T03:30:44+00:00",
+   "md5": "d22add26b5bcb0294cb182ef86179843",
+   "size": 2821525
   },
   "godot/assets/art/hero/school_newspaper_computer_monitor_1.png": {
    "at": "2026-10-14T02:24:58+00:00",
@@ -56095,6 +56430,36 @@
    "md5": "7b2be78dea47ffa91e233448ef96c7d1",
    "size": 1859396
   },
+  "godot/assets/concept/meshy/cafe_olimpico_front_sign/cafe_olimpico_front_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:30:51+00:00",
+   "md5": "163ede0444b0a3573d73b66ae3da5b7c",
+   "size": 2623491
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_front_sign/front.png": {
+   "at": "2026-10-14T03:30:51+00:00",
+   "md5": "163ede0444b0a3573d73b66ae3da5b7c",
+   "size": 2623491
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_menu/cafe_olimpico_menu_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:30:58+00:00",
+   "md5": "42b80cc328e50f6d465e560e4fea8889",
+   "size": 2829780
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_menu/front.png": {
+   "at": "2026-10-14T03:30:58+00:00",
+   "md5": "42b80cc328e50f6d465e560e4fea8889",
+   "size": 2829780
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_out_facade/cafe_olimpico_out_facade_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:15+00:00",
+   "md5": "de33696f59bc7211af5106dce0232524",
+   "size": 2619328
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_out_facade/front.png": {
+   "at": "2026-10-14T03:31:15+00:00",
+   "md5": "de33696f59bc7211af5106dce0232524",
+   "size": 2619328
+  },
   "godot/assets/concept/meshy/cafe_olimpico_team_photo/cafe_olimpico_team_photo_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:31:01+00:00",
    "md5": "2e75d8b2d25bb988a869d30566bc8a53",
@@ -56104,6 +56469,16 @@
    "at": "2026-10-14T02:31:01+00:00",
    "md5": "2e75d8b2d25bb988a869d30566bc8a53",
    "size": 2993300
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_win_backcorner_glass/cafe_olimpico_win_backcorner_glass_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:22+00:00",
+   "md5": "c905b76349daceadc277a5b04ca4a889",
+   "size": 2390427
+  },
+  "godot/assets/concept/meshy/cafe_olimpico_win_backcorner_glass/front.png": {
+   "at": "2026-10-14T03:31:22+00:00",
+   "md5": "c905b76349daceadc277a5b04ca4a889",
+   "size": 2390427
   },
   "godot/assets/concept/meshy/caldwell_kitchen_night_photo_1/caldwell_kitchen_night_photo_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:31:07+00:00",
@@ -56580,6 +56955,16 @@
    "md5": "85effb4bd21f6de6d21856f509c9e36f",
    "size": 1926299
   },
+  "godot/assets/concept/meshy/centro_stockroom_extinguisher_sign/centro_stockroom_extinguisher_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:29+00:00",
+   "md5": "50e9941d1c84efbd8c311c8d7d6ab20b",
+   "size": 1757924
+  },
+  "godot/assets/concept/meshy/centro_stockroom_extinguisher_sign/front.png": {
+   "at": "2026-10-14T03:31:29+00:00",
+   "md5": "50e9941d1c84efbd8c311c8d7d6ab20b",
+   "size": 1757924
+  },
   "godot/assets/concept/meshy/centro_stockroom_safety_poster_1/centro_stockroom_safety_poster_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:36:37+00:00",
    "md5": "bc72d11289cc0c7531b9f605ff232337",
@@ -57014,6 +57399,26 @@
    "at": "2026-10-14T02:39:26+00:00",
    "md5": "0b13ef6efb036deecd2ecdb46e6c7778",
    "size": 2586178
+  },
+  "godot/assets/concept/meshy/county_line_station_bus_stop_sign/county_line_station_bus_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:36+00:00",
+   "md5": "19d53a1182e1ce88af909c0321eb596b",
+   "size": 2562919
+  },
+  "godot/assets/concept/meshy/county_line_station_bus_stop_sign/front.png": {
+   "at": "2026-10-14T03:31:36+00:00",
+   "md5": "19d53a1182e1ce88af909c0321eb596b",
+   "size": 2562919
+  },
+  "godot/assets/concept/meshy/county_line_station_parish_sign/county_line_station_parish_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:43+00:00",
+   "md5": "4fc23f00228b5b52081c8648c1b23fc2",
+   "size": 2620656
+  },
+  "godot/assets/concept/meshy/county_line_station_parish_sign/front.png": {
+   "at": "2026-10-14T03:31:43+00:00",
+   "md5": "4fc23f00228b5b52081c8648c1b23fc2",
+   "size": 2620656
   },
   "godot/assets/concept/meshy/county_line_station_pump_display/county_line_station_pump_display_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:39:34+00:00",
@@ -57645,6 +58050,36 @@
    "md5": "3df3d8ca0d716d7587c34b7d9120e4e6",
    "size": 1625951
   },
+  "godot/assets/concept/meshy/elicia_apartment_dead_monitor_2/elicia_apartment_dead_monitor_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:52+00:00",
+   "md5": "6f5c17f934f402c5a41f89572641e47b",
+   "size": 1860552
+  },
+  "godot/assets/concept/meshy/elicia_apartment_dead_monitor_2/front.png": {
+   "at": "2026-10-14T03:31:52+00:00",
+   "md5": "6f5c17f934f402c5a41f89572641e47b",
+   "size": 1860552
+  },
+  "godot/assets/concept/meshy/elicia_apartment_laptop_screen/elicia_apartment_laptop_screen_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:31:59+00:00",
+   "md5": "3c98bf09e24d44fe3f48a429f9ffe666",
+   "size": 1433758
+  },
+  "godot/assets/concept/meshy/elicia_apartment_laptop_screen/front.png": {
+   "at": "2026-10-14T03:31:59+00:00",
+   "md5": "3c98bf09e24d44fe3f48a429f9ffe666",
+   "size": 1433758
+  },
+  "godot/assets/concept/meshy/elicia_apartment_skyline/elicia_apartment_skyline_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:06+00:00",
+   "md5": "8908f352020e0bda37e27df1cb431e4a",
+   "size": 1871120
+  },
+  "godot/assets/concept/meshy/elicia_apartment_skyline/front.png": {
+   "at": "2026-10-14T03:32:06+00:00",
+   "md5": "8908f352020e0bda37e27df1cb431e4a",
+   "size": 1871120
+  },
   "godot/assets/concept/meshy/elicia_temple/elicia_temple_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "76f163c5e3afe4059dbff63eadef1984",
@@ -57719,6 +58154,26 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "e82c6c08249f2a3ec9c9a49f996bd2a6",
    "size": 69946
+  },
+  "godot/assets/concept/meshy/faust_apartment_bike_1/faust_apartment_bike_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:13+00:00",
+   "md5": "3851ed3062852c00630189c9aae91ea2",
+   "size": 2351085
+  },
+  "godot/assets/concept/meshy/faust_apartment_bike_1/front.png": {
+   "at": "2026-10-14T03:32:13+00:00",
+   "md5": "3851ed3062852c00630189c9aae91ea2",
+   "size": 2351085
+  },
+  "godot/assets/concept/meshy/faust_apartment_bike_2/faust_apartment_bike_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:20+00:00",
+   "md5": "d87c1314eb7c125bbbe6048a8d2ce41e",
+   "size": 2258218
+  },
+  "godot/assets/concept/meshy/faust_apartment_bike_2/front.png": {
+   "at": "2026-10-14T03:32:20+00:00",
+   "md5": "d87c1314eb7c125bbbe6048a8d2ce41e",
+   "size": 2258218
   },
   "godot/assets/concept/meshy/faust_apartment_canvas_1/faust_apartment_canvas_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:47:08+00:00",
@@ -57800,6 +58255,26 @@
    "md5": "fd104cf9e6689810a71ad371d71cf5ee",
    "size": 3968668
   },
+  "godot/assets/concept/meshy/faust_apartment_win_e_glass/faust_apartment_win_e_glass_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:27+00:00",
+   "md5": "dc1c634ebcf414d4cb10baebbbd2e4ad",
+   "size": 2089071
+  },
+  "godot/assets/concept/meshy/faust_apartment_win_e_glass/front.png": {
+   "at": "2026-10-14T03:32:27+00:00",
+   "md5": "dc1c634ebcf414d4cb10baebbbd2e4ad",
+   "size": 2089071
+  },
+  "godot/assets/concept/meshy/faust_apartment_win_n_glass/faust_apartment_win_n_glass_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:34+00:00",
+   "md5": "bbb662e64f79ac94378d52a45c63d006",
+   "size": 2550839
+  },
+  "godot/assets/concept/meshy/faust_apartment_win_n_glass/front.png": {
+   "at": "2026-10-14T03:32:34+00:00",
+   "md5": "bbb662e64f79ac94378d52a45c63d006",
+   "size": 2550839
+  },
   "godot/assets/concept/meshy/finn/back.png": {
    "at": "2026-10-11T18:11:51+00:00",
    "md5": "e08a263ddb2664bf0a92bd7fe6c42505",
@@ -57844,6 +58319,26 @@
    "at": "2026-10-14T02:49:20+00:00",
    "md5": "7c6ab069eb7188a43fea6c4e8965e418",
    "size": 2273662
+  },
+  "godot/assets/concept/meshy/finn_apartment_n_window/finn_apartment_n_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:41+00:00",
+   "md5": "0a2f054f5482490ffecbf8079ab7860d",
+   "size": 2594072
+  },
+  "godot/assets/concept/meshy/finn_apartment_n_window/front.png": {
+   "at": "2026-10-14T03:32:41+00:00",
+   "md5": "0a2f054f5482490ffecbf8079ab7860d",
+   "size": 2594072
+  },
+  "godot/assets/concept/meshy/finn_apartment_out_n_treeline/finn_apartment_out_n_treeline_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:49+00:00",
+   "md5": "710ae78dae87275478e2f947d679039d",
+   "size": 2537036
+  },
+  "godot/assets/concept/meshy/finn_apartment_out_n_treeline/front.png": {
+   "at": "2026-10-14T03:32:49+00:00",
+   "md5": "710ae78dae87275478e2f947d679039d",
+   "size": 2537036
   },
   "godot/assets/concept/meshy/foxhole_bar_backbar_neon_1/foxhole_bar_backbar_neon_1_front_openai_gpt-image-2.5-sunburst_01.png": {
    "at": "2026-10-14T02:49:27+00:00",
@@ -59130,6 +59625,16 @@
    "md5": "eb5a2a361302175b18e5d43dc10e2741",
    "size": 1879514
   },
+  "godot/assets/concept/meshy/kowalski_kitchen_tv_1/front.png": {
+   "at": "2026-10-14T03:32:57+00:00",
+   "md5": "89b4c7a74580f77c44e7c8ce9bab9841",
+   "size": 1818439
+  },
+  "godot/assets/concept/meshy/kowalski_kitchen_tv_1/kowalski_kitchen_tv_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:32:57+00:00",
+   "md5": "89b4c7a74580f77c44e7c8ce9bab9841",
+   "size": 1818439
+  },
   "godot/assets/concept/meshy/kowalski_kitchen_window/front.png": {
    "at": "2026-10-14T03:02:05+00:00",
    "md5": "f0d644d91e75d407a41cc750ad57414b",
@@ -59770,6 +60275,26 @@
    "md5": "80c0fa8e95a76ae1ca377ba888dd05a7",
    "size": 2203007
   },
+  "godot/assets/concept/meshy/maya_bedroom_hall_photo_2/front.png": {
+   "at": "2026-10-14T03:33:05+00:00",
+   "md5": "76c21af5929efc0e337b983dc870d05b",
+   "size": 2320010
+  },
+  "godot/assets/concept/meshy/maya_bedroom_hall_photo_2/maya_bedroom_hall_photo_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:05+00:00",
+   "md5": "76c21af5929efc0e337b983dc870d05b",
+   "size": 2320010
+  },
+  "godot/assets/concept/meshy/maya_bedroom_hall_photo_3/front.png": {
+   "at": "2026-10-14T03:33:12+00:00",
+   "md5": "8d843aa0bbb1bc3febabc5870c1ac43c",
+   "size": 2505824
+  },
+  "godot/assets/concept/meshy/maya_bedroom_hall_photo_3/maya_bedroom_hall_photo_3_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:12+00:00",
+   "md5": "8d843aa0bbb1bc3febabc5870c1ac43c",
+   "size": 2505824
+  },
   "godot/assets/concept/meshy/maya_bedroom_laptop_screen/front.png": {
    "at": "2026-10-14T03:07:33+00:00",
    "md5": "ad9c253361d5f501bada3ece0c45eaf8",
@@ -59924,6 +60449,16 @@
    "at": "2026-10-14T03:08:37+00:00",
    "md5": "5c92d9e7267163d0370198a7f6e16f55",
    "size": 1391530
+  },
+  "godot/assets/concept/meshy/missing_link_interior_kitchendoor_1/front.png": {
+   "at": "2026-10-14T03:33:19+00:00",
+   "md5": "4c47c976c263e0cbe6d85deb2f2652e9",
+   "size": 2256020
+  },
+  "godot/assets/concept/meshy/missing_link_interior_kitchendoor_1/missing_link_interior_kitchendoor_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:19+00:00",
+   "md5": "4c47c976c263e0cbe6d85deb2f2652e9",
+   "size": 2256020
   },
   "godot/assets/concept/meshy/missing_link_interior_laminated_menu/front.png": {
    "at": "2026-10-14T03:08:43+00:00",
@@ -60295,6 +60830,186 @@
    "md5": "24465cf4cdcba45111be0ca6543838ef",
    "size": 3029031
   },
+  "godot/assets/concept/meshy/new_auburn_road_bypass_sign/front.png": {
+   "at": "2026-10-14T03:33:26+00:00",
+   "md5": "928117e87966977d522b0dbd842489e0",
+   "size": 2483355
+  },
+  "godot/assets/concept/meshy/new_auburn_road_bypass_sign/new_auburn_road_bypass_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:26+00:00",
+   "md5": "928117e87966977d522b0dbd842489e0",
+   "size": 2483355
+  },
+  "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_1/front.png": {
+   "at": "2026-10-14T03:33:33+00:00",
+   "md5": "b4263664657deace7b646c3955c76be8",
+   "size": 2336048
+  },
+  "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_1/new_auburn_road_cypress_motel_sign_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:33+00:00",
+   "md5": "b4263664657deace7b646c3955c76be8",
+   "size": 2336048
+  },
+  "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_2/front.png": {
+   "at": "2026-10-14T03:33:42+00:00",
+   "md5": "8c8261c52edaecf43430135f81e80b3b",
+   "size": 1464947
+  },
+  "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_2/new_auburn_road_cypress_motel_sign_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:42+00:00",
+   "md5": "8c8261c52edaecf43430135f81e80b3b",
+   "size": 1464947
+  },
+  "godot/assets/concept/meshy/new_auburn_road_cypress_motel_vacancy_neon/front.png": {
+   "at": "2026-10-14T03:33:50+00:00",
+   "md5": "080188f42ce6cb3eef4e54c5d2e8c9ad",
+   "size": 1431451
+  },
+  "godot/assets/concept/meshy/new_auburn_road_cypress_motel_vacancy_neon/new_auburn_road_cypress_motel_vacancy_neon_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:50+00:00",
+   "md5": "080188f42ce6cb3eef4e54c5d2e8c9ad",
+   "size": 1431451
+  },
+  "godot/assets/concept/meshy/new_auburn_road_foxhole_front_sign/front.png": {
+   "at": "2026-10-14T03:33:57+00:00",
+   "md5": "df956a56f203e84e098567a12655bc7f",
+   "size": 1750670
+  },
+  "godot/assets/concept/meshy/new_auburn_road_foxhole_front_sign/new_auburn_road_foxhole_front_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:33:57+00:00",
+   "md5": "df956a56f203e84e098567a12655bc7f",
+   "size": 1750670
+  },
+  "godot/assets/concept/meshy/new_auburn_road_lighting_van_logo/front.png": {
+   "at": "2026-10-14T03:34:05+00:00",
+   "md5": "4bfea3163dff3301e56f8f3d722c8d4f",
+   "size": 1946537
+  },
+  "godot/assets/concept/meshy/new_auburn_road_lighting_van_logo/new_auburn_road_lighting_van_logo_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:05+00:00",
+   "md5": "4bfea3163dff3301e56f8f3d722c8d4f",
+   "size": 1946537
+  },
+  "godot/assets/concept/meshy/new_auburn_road_marquee_1/front.png": {
+   "at": "2026-10-14T03:34:12+00:00",
+   "md5": "48fe3a632b1eb909961d96faa9db4989",
+   "size": 2716851
+  },
+  "godot/assets/concept/meshy/new_auburn_road_marquee_1/new_auburn_road_marquee_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:12+00:00",
+   "md5": "48fe3a632b1eb909961d96faa9db4989",
+   "size": 2716851
+  },
+  "godot/assets/concept/meshy/new_auburn_road_marquee_2/front.png": {
+   "at": "2026-10-14T03:34:19+00:00",
+   "md5": "4a063a15cd5770797972ac12e96c9749",
+   "size": 2643292
+  },
+  "godot/assets/concept/meshy/new_auburn_road_marquee_2/new_auburn_road_marquee_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:19+00:00",
+   "md5": "4a063a15cd5770797972ac12e96c9749",
+   "size": 2643292
+  },
+  "godot/assets/concept/meshy/new_auburn_road_napd_sign/front.png": {
+   "at": "2026-10-14T03:34:27+00:00",
+   "md5": "22b72d98ed0737c428be40c40a906a69",
+   "size": 2478663
+  },
+  "godot/assets/concept/meshy/new_auburn_road_napd_sign/new_auburn_road_napd_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:27+00:00",
+   "md5": "22b72d98ed0737c428be40c40a906a69",
+   "size": 2478663
+  },
+  "godot/assets/concept/meshy/new_auburn_road_payday_loan_sign/front.png": {
+   "at": "2026-10-14T03:34:36+00:00",
+   "md5": "ec13e5384c43e68e098d3231f2d7acc3",
+   "size": 1668933
+  },
+  "godot/assets/concept/meshy/new_auburn_road_payday_loan_sign/new_auburn_road_payday_loan_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:36+00:00",
+   "md5": "ec13e5384c43e68e098d3231f2d7acc3",
+   "size": 1668933
+  },
+  "godot/assets/concept/meshy/new_auburn_road_ranch_gate_sign/front.png": {
+   "at": "2026-10-14T03:34:43+00:00",
+   "md5": "d838193a6d9ee11257f7d25b0ec74f02",
+   "size": 3234396
+  },
+  "godot/assets/concept/meshy/new_auburn_road_ranch_gate_sign/new_auburn_road_ranch_gate_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:43+00:00",
+   "md5": "d838193a6d9ee11257f7d25b0ec74f02",
+   "size": 3234396
+  },
+  "godot/assets/concept/meshy/new_auburn_road_streetsign/front.png": {
+   "at": "2026-10-14T03:34:51+00:00",
+   "md5": "a52821b66de540822335592488f66325",
+   "size": 1684476
+  },
+  "godot/assets/concept/meshy/new_auburn_road_streetsign/new_auburn_road_streetsign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:34:51+00:00",
+   "md5": "a52821b66de540822335592488f66325",
+   "size": 1684476
+  },
+  "godot/assets/concept/meshy/new_auburn_road_substation_1/front.png": {
+   "at": "2026-10-14T03:35:00+00:00",
+   "md5": "61206120a93da661f47bc05611eef776",
+   "size": 1826320
+  },
+  "godot/assets/concept/meshy/new_auburn_road_substation_1/new_auburn_road_substation_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:00+00:00",
+   "md5": "61206120a93da661f47bc05611eef776",
+   "size": 1826320
+  },
+  "godot/assets/concept/meshy/new_auburn_road_substation_2/front.png": {
+   "at": "2026-10-14T03:35:08+00:00",
+   "md5": "17ade62edf9103c15f22eebd429f9c5f",
+   "size": 2486680
+  },
+  "godot/assets/concept/meshy/new_auburn_road_substation_2/new_auburn_road_substation_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:08+00:00",
+   "md5": "17ade62edf9103c15f22eebd429f9c5f",
+   "size": 2486680
+  },
+  "godot/assets/concept/meshy/new_auburn_road_substation_3/front.png": {
+   "at": "2026-10-14T03:35:18+00:00",
+   "md5": "ea1a21689fc039c7a8a29e140324757e",
+   "size": 2588807
+  },
+  "godot/assets/concept/meshy/new_auburn_road_substation_3/new_auburn_road_substation_3_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:18+00:00",
+   "md5": "ea1a21689fc039c7a8a29e140324757e",
+   "size": 2588807
+  },
+  "godot/assets/concept/meshy/new_auburn_road_unit_1/front.png": {
+   "at": "2026-10-14T03:35:25+00:00",
+   "md5": "04f1f36322ff06e9f224fde4d4f3fe65",
+   "size": 2395910
+  },
+  "godot/assets/concept/meshy/new_auburn_road_unit_1/new_auburn_road_unit_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:25+00:00",
+   "md5": "04f1f36322ff06e9f224fde4d4f3fe65",
+   "size": 2395910
+  },
+  "godot/assets/concept/meshy/new_auburn_road_unit_2/front.png": {
+   "at": "2026-10-14T03:35:32+00:00",
+   "md5": "c5ec4c304418c413a4da41d3e7b2a6e6",
+   "size": 1708209
+  },
+  "godot/assets/concept/meshy/new_auburn_road_unit_2/new_auburn_road_unit_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:32+00:00",
+   "md5": "c5ec4c304418c413a4da41d3e7b2a6e6",
+   "size": 1708209
+  },
+  "godot/assets/concept/meshy/new_auburn_road_unit_3/front.png": {
+   "at": "2026-10-14T03:35:40+00:00",
+   "md5": "e36b2abd7b09aa91351b84b443f439c4",
+   "size": 1617951
+  },
+  "godot/assets/concept/meshy/new_auburn_road_unit_3/new_auburn_road_unit_3_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:40+00:00",
+   "md5": "e36b2abd7b09aa91351b84b443f439c4",
+   "size": 1617951
+  },
   "godot/assets/concept/meshy/new_orleans_apartment_out_facade/front.png": {
    "at": "2026-10-14T03:12:26+00:00",
    "md5": "62d0b69296022c134dc8d97e83482fd9",
@@ -60304,6 +61019,86 @@
    "at": "2026-10-14T03:12:26+00:00",
    "md5": "62d0b69296022c134dc8d97e83482fd9",
    "size": 2586461
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_tv_1/front.png": {
+   "at": "2026-10-14T03:35:49+00:00",
+   "md5": "41af8e925099b9fe72ab46de64fabcdb",
+   "size": 2942215
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_tv_1/new_orleans_apartment_tv_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:49+00:00",
+   "md5": "41af8e925099b9fe72ab46de64fabcdb",
+   "size": 2942215
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_tv_2/front.png": {
+   "at": "2026-10-14T03:35:59+00:00",
+   "md5": "026998fbdb4766fa682213cb1a7ba4cc",
+   "size": 2343290
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_tv_2/new_orleans_apartment_tv_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:35:59+00:00",
+   "md5": "026998fbdb4766fa682213cb1a7ba4cc",
+   "size": 2343290
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_1/front.png": {
+   "at": "2026-10-14T03:36:06+00:00",
+   "md5": "8265984138b74da946efb277c9a30d91",
+   "size": 2527129
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_1/new_orleans_apartment_window_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:36:06+00:00",
+   "md5": "8265984138b74da946efb277c9a30d91",
+   "size": 2527129
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_2/front.png": {
+   "at": "2026-10-14T03:36:13+00:00",
+   "md5": "46d9db296a74639a2b7d4003d3571d22",
+   "size": 2661161
+  },
+  "godot/assets/concept/meshy/new_orleans_apartment_window_2/new_orleans_apartment_window_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:36:13+00:00",
+   "md5": "46d9db296a74639a2b7d4003d3571d22",
+   "size": 2661161
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_atm_screen/front.png": {
+   "at": "2026-10-14T03:36:33+00:00",
+   "md5": "63c9293e8fe1cb5f1f438d4340556061",
+   "size": 3147757
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_atm_screen/new_orleans_bar_atm_screen_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:36:33+00:00",
+   "md5": "63c9293e8fe1cb5f1f438d4340556061",
+   "size": 3147757
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_bar_tv_1/front.png": {
+   "at": "2026-10-14T03:36:41+00:00",
+   "md5": "bf2bfc95e7dc2e1d4abede2ed7ec6809",
+   "size": 2322863
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_bar_tv_1/new_orleans_bar_bar_tv_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:36:41+00:00",
+   "md5": "bf2bfc95e7dc2e1d4abede2ed7ec6809",
+   "size": 2322863
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_beerneon_1/front.png": {
+   "at": "2026-10-14T03:36:48+00:00",
+   "md5": "d9114f74afe40e5da65879c0296985a9",
+   "size": 2222837
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_beerneon_1/new_orleans_bar_beerneon_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:36:48+00:00",
+   "md5": "d9114f74afe40e5da65879c0296985a9",
+   "size": 2222837
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_beerneon_2/front.png": {
+   "at": "2026-10-14T03:36:57+00:00",
+   "md5": "9152d3c8b7de9473335fb6f21e398e7c",
+   "size": 2041170
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_beerneon_2/new_orleans_bar_beerneon_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:36:57+00:00",
+   "md5": "9152d3c8b7de9473335fb6f21e398e7c",
+   "size": 2041170
   },
   "godot/assets/concept/meshy/new_orleans_bar_chalk_corner_flyer_1/front.png": {
    "at": "2026-10-14T03:12:34+00:00",
@@ -60345,6 +61140,16 @@
    "md5": "3109719291ae423435a1d78aa1afc781",
    "size": 2097734
   },
+  "godot/assets/concept/meshy/new_orleans_bar_exit_sign/front.png": {
+   "at": "2026-10-14T03:37:05+00:00",
+   "md5": "5955e0a2b8518f0ee5f93e011f766d92",
+   "size": 2173334
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_exit_sign/new_orleans_bar_exit_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:37:05+00:00",
+   "md5": "5955e0a2b8518f0ee5f93e011f766d92",
+   "size": 2173334
+  },
   "godot/assets/concept/meshy/new_orleans_bar_gator_plaque/front.png": {
    "at": "2026-10-14T03:13:07+00:00",
    "md5": "524b98c3efa2dd29c9d7869c2e73a64a",
@@ -60364,6 +61169,26 @@
    "at": "2026-10-14T03:13:17+00:00",
    "md5": "c7bb6d71fa71ba8ac18b3c590d669ff5",
    "size": 2843473
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_missilecmd_screen/front.png": {
+   "at": "2026-10-14T03:37:12+00:00",
+   "md5": "3f94a4aa385f9850a18ce934631fbd45",
+   "size": 1543562
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_missilecmd_screen/new_orleans_bar_missilecmd_screen_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:37:12+00:00",
+   "md5": "3f94a4aa385f9850a18ce934631fbd45",
+   "size": 1543562
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_open_neon/front.png": {
+   "at": "2026-10-14T03:37:31+00:00",
+   "md5": "9386e5a3996e4a902259e4cf795ff419",
+   "size": 2168246
+  },
+  "godot/assets/concept/meshy/new_orleans_bar_open_neon/new_orleans_bar_open_neon_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:37:31+00:00",
+   "md5": "9386e5a3996e4a902259e4cf795ff419",
+   "size": 2168246
   },
   "godot/assets/concept/meshy/new_orleans_office_out_facade/front.png": {
    "at": "2026-10-14T03:13:24+00:00",
@@ -60944,6 +61769,16 @@
    "at": "2026-10-14T03:19:28+00:00",
    "md5": "d9b72645092a3c837d2ff8b6c1388952",
    "size": 1940930
+  },
+  "godot/assets/concept/meshy/pit_stop_interior_prints/front.png": {
+   "at": "2026-10-14T03:37:40+00:00",
+   "md5": "80994515ae945670ed5292ea9b9b7a35",
+   "size": 3376205
+  },
+  "godot/assets/concept/meshy/pit_stop_interior_prints/pit_stop_interior_prints_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:37:40+00:00",
+   "md5": "80994515ae945670ed5292ea9b9b7a35",
+   "size": 3376205
   },
   "godot/assets/concept/meshy/pit_stop_interior_strip_across_sign/front.png": {
    "at": "2026-10-14T03:19:37+00:00",
@@ -61820,6 +62655,86 @@
    "md5": "95a8615b97f535c6f755e3db006cfb73",
    "size": 2803443
   },
+  "godot/assets/concept/meshy/riverfront_gasstation_sign_1/front.png": {
+   "at": "2026-10-14T03:37:47+00:00",
+   "md5": "9f62cc70b07276dd1b171d114a1370fa",
+   "size": 1620488
+  },
+  "godot/assets/concept/meshy/riverfront_gasstation_sign_1/riverfront_gasstation_sign_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:37:47+00:00",
+   "md5": "9f62cc70b07276dd1b171d114a1370fa",
+   "size": 1620488
+  },
+  "godot/assets/concept/meshy/riverfront_gasstation_sign_2/front.png": {
+   "at": "2026-10-14T03:37:56+00:00",
+   "md5": "5388b6cc11d65969de613d4d04b390e3",
+   "size": 1970429
+  },
+  "godot/assets/concept/meshy/riverfront_gasstation_sign_2/riverfront_gasstation_sign_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:37:56+00:00",
+   "md5": "5388b6cc11d65969de613d4d04b390e3",
+   "size": 1970429
+  },
+  "godot/assets/concept/meshy/riverfront_hwy_sign/front.png": {
+   "at": "2026-10-14T03:38:05+00:00",
+   "md5": "f6e65f42903a21e15f90403869256831",
+   "size": 2450526
+  },
+  "godot/assets/concept/meshy/riverfront_hwy_sign/riverfront_hwy_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:05+00:00",
+   "md5": "f6e65f42903a21e15f90403869256831",
+   "size": 2450526
+  },
+  "godot/assets/concept/meshy/riverfront_park_signpanel/front.png": {
+   "at": "2026-10-14T03:38:12+00:00",
+   "md5": "de22e28c36fa125cd4e3b73beaa68968",
+   "size": 3256549
+  },
+  "godot/assets/concept/meshy/riverfront_park_signpanel/riverfront_park_signpanel_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:12+00:00",
+   "md5": "de22e28c36fa125cd4e3b73beaa68968",
+   "size": 3256549
+  },
+  "godot/assets/concept/meshy/riverfront_park_signtext/front.png": {
+   "at": "2026-10-14T03:38:21+00:00",
+   "md5": "ac1b2331d0fc7c8b2c5eff6510ed2094",
+   "size": 3031596
+  },
+  "godot/assets/concept/meshy/riverfront_park_signtext/riverfront_park_signtext_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:21+00:00",
+   "md5": "ac1b2331d0fc7c8b2c5eff6510ed2094",
+   "size": 3031596
+  },
+  "godot/assets/concept/meshy/riverfront_sign_1/front.png": {
+   "at": "2026-10-14T03:38:29+00:00",
+   "md5": "19875a6c797ed80ff0002bf4454e8248",
+   "size": 2410223
+  },
+  "godot/assets/concept/meshy/riverfront_sign_1/riverfront_sign_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:29+00:00",
+   "md5": "19875a6c797ed80ff0002bf4454e8248",
+   "size": 2410223
+  },
+  "godot/assets/concept/meshy/riverfront_sign_2/front.png": {
+   "at": "2026-10-14T03:38:37+00:00",
+   "md5": "737f931055d81293774f6ee87a4d638f",
+   "size": 2370829
+  },
+  "godot/assets/concept/meshy/riverfront_sign_2/riverfront_sign_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:37+00:00",
+   "md5": "737f931055d81293774f6ee87a4d638f",
+   "size": 2370829
+  },
+  "godot/assets/concept/meshy/riverfront_stripmall_sign/front.png": {
+   "at": "2026-10-14T03:38:42+00:00",
+   "md5": "01a3ccd461c1cd3e2745852bde70bc66",
+   "size": 1374401
+  },
+  "godot/assets/concept/meshy/riverfront_stripmall_sign/riverfront_stripmall_sign_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:42+00:00",
+   "md5": "01a3ccd461c1cd3e2745852bde70bc66",
+   "size": 1374401
+  },
   "godot/assets/concept/meshy/roberts_kitchen_counterrun_1/front.png": {
    "at": "2026-10-14T03:22:12+00:00",
    "md5": "1cd64d3ad0d920e2bf93fc37dd95854d",
@@ -61859,6 +62774,61 @@
    "at": "2026-10-14T03:22:36+00:00",
    "md5": "f24643df8739347d96cdaabadf2c3c6d",
    "size": 2722223
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_dining_photo_1/front.png": {
+   "at": "2026-10-14T03:38:49+00:00",
+   "md5": "bc7bc0ef7778d6ff57713b58e0cfbf74",
+   "size": 2793702
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_dining_photo_1/roberts_kitchen_dining_photo_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:49+00:00",
+   "md5": "bc7bc0ef7778d6ff57713b58e0cfbf74",
+   "size": 2793702
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_dining_photo_2/front.png": {
+   "at": "2026-10-14T03:38:56+00:00",
+   "md5": "fd0f13dcc2c345cc59be898f983f96ec",
+   "size": 2707174
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_dining_photo_2/roberts_kitchen_dining_photo_2_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:38:56+00:00",
+   "md5": "ed50aff51327558c581492b84eec9ada",
+   "size": 2527435
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_dining_photo_2/roberts_kitchen_dining_photo_2_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-14T03:38:56+00:00",
+   "md5": "fd0f13dcc2c345cc59be898f983f96ec",
+   "size": 2707174
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_foyer_photo_1/front.png": {
+   "at": "2026-10-14T03:39:03+00:00",
+   "md5": "3cd1c0a1a53f1904ed8408b72e590fc7",
+   "size": 1966971
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_foyer_photo_1/roberts_kitchen_foyer_photo_1_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:39:03+00:00",
+   "md5": "3cd1c0a1a53f1904ed8408b72e590fc7",
+   "size": 1966971
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_tv/front.png": {
+   "at": "2026-10-14T03:39:11+00:00",
+   "md5": "78059a8ae6f7056f9ce82acf8ff91085",
+   "size": 2722339
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_tv/roberts_kitchen_tv_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:39:11+00:00",
+   "md5": "78059a8ae6f7056f9ce82acf8ff91085",
+   "size": 2722339
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_window/front.png": {
+   "at": "2026-10-14T03:39:19+00:00",
+   "md5": "e672b05b23e84d1223195291bfb36bde",
+   "size": 3854079
+  },
+  "godot/assets/concept/meshy/roberts_kitchen_window/roberts_kitchen_window_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:39:19+00:00",
+   "md5": "e672b05b23e84d1223195291bfb36bde",
+   "size": 3854079
   },
   "godot/assets/concept/meshy/roy/back.png": {
    "at": "2026-10-11T19:18:35+00:00",
@@ -62214,6 +63184,26 @@
    "at": "2026-10-14T03:24:56+00:00",
    "md5": "453010d3553ba5e0fb985280b3938ac2",
    "size": 4219999
+  },
+  "godot/assets/concept/meshy/school_field_evening_depthchart/front.png": {
+   "at": "2026-10-14T03:39:28+00:00",
+   "md5": "0dc41ae96b9d87dd0d1b56ac87e5b6f0",
+   "size": 3063416
+  },
+  "godot/assets/concept/meshy/school_field_evening_depthchart/school_field_evening_depthchart_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:39:28+00:00",
+   "md5": "0dc41ae96b9d87dd0d1b56ac87e5b6f0",
+   "size": 3063416
+  },
+  "godot/assets/concept/meshy/school_field_evening_score/front.png": {
+   "at": "2026-10-14T03:39:35+00:00",
+   "md5": "d22add26b5bcb0294cb182ef86179843",
+   "size": 2821525
+  },
+  "godot/assets/concept/meshy/school_field_evening_score/school_field_evening_score_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-14T03:39:35+00:00",
+   "md5": "d22add26b5bcb0294cb182ef86179843",
+   "size": 2821525
   },
   "godot/assets/concept/meshy/school_newspaper_computer_monitor_1/front.png": {
    "at": "2026-10-14T03:25:03+00:00",
