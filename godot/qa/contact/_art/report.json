@@ -1,0 +1,10129 @@
+{
+ "accretion_basement_bulletin_1": {
+  "alpha": false,
+  "border_vs_inner": 0.54,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "accretion_basement",
+  "mean_lum": 0.61,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.33,
+  "surface_m": [
+   0.6,
+   0.45
+  ]
+ },
+ "accretion_basement_bulletin_2": {
+  "alpha": false,
+  "border_vs_inner": 0.59,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "accretion_basement",
+  "mean_lum": 0.76,
+  "mean_sat": 0.1,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.71,
+  "surface_m": [
+   0.1,
+   0.14
+  ]
+ },
+ "accretion_basement_bulletin_3": {
+  "alpha": false,
+  "border_vs_inner": 0.59,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "accretion_basement",
+  "mean_lum": 0.77,
+  "mean_sat": 0.1,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.71,
+  "surface_m": [
+   0.1,
+   0.14
+  ]
+ },
+ "accretion_basement_hall_b_exit_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.46,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "accretion_basement",
+  "mean_lum": 0.35,
+  "mean_sat": 0.72,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.14,
+  "surface_m": [
+   0.15,
+   0.07
+  ]
+ },
+ "aria_alley_face": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.35,
+  "mean_sat": 0.28,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.74,
+  "surface_m": [
+   1.4,
+   1.9
+  ]
+ },
+ "bar_exterior_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "bar_exterior",
+  "mean_lum": 0.18,
+  "mean_sat": 0.64,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.58,
+  "surface_m": [
+   8.0,
+   3.1
+  ]
+ },
+ "bar_exterior_far": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "bar_exterior",
+  "mean_lum": 0.11,
+  "mean_sat": 0.48,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.38,
+  "surface_m": [
+   10.0,
+   4.2
+  ]
+ },
+ "ben_bedroom_depthchart": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "ben_bedroom",
+  "mean_lum": 0.71,
+  "mean_sat": 0.12,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.76,
+  "surface_m": [
+   0.25,
+   0.33
+  ]
+ },
+ "ben_bedroom_team_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.48,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "ben_bedroom",
+  "mean_lum": 0.56,
+  "mean_sat": 0.26,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.3,
+   0.21
+  ]
+ },
+ "bindery_display": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "bindery",
+  "mean_lum": 0.3,
+  "mean_sat": 0.46,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.21,
+  "surface_m": [
+   0.93,
+   0.42
+  ]
+ },
+ "board_lords_interior_across_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.3,
+  "mean_sat": 0.35,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.09,
+  "surface_m": [
+   9.0,
+   2.2
+  ]
+ },
+ "board_lords_interior_bookstore_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.31,
+  "mean_sat": 0.17,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.5,
+  "surface_m": [
+   0.9,
+   0.2
+  ]
+ },
+ "board_lords_interior_closed_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.61,
+  "mean_sat": 0.19,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.57,
+  "surface_m": [
+   0.11,
+   0.07
+  ]
+ },
+ "board_lords_interior_exit_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.66,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.32,
+  "mean_sat": 0.74,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.16,
+   0.08
+  ]
+ },
+ "board_lords_interior_laundromat_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.49,
+  "mean_sat": 0.31,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.2,
+  "surface_m": [
+   1.8,
+   0.25
+  ]
+ },
+ "board_lords_interior_mural": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.49,
+  "mean_sat": 0.12,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.12,
+  "surface_m": [
+   0.57,
+   0.51
+  ]
+ },
+ "board_lords_interior_open_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.45,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.65,
+  "mean_sat": 0.24,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.12,
+   0.08
+  ]
+ },
+ "board_lords_interior_sanderling_mural_1": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.67,
+  "mean_sat": 0.1,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.62,
+  "surface_m": [
+   3.0,
+   0.65
+  ]
+ },
+ "board_lords_interior_sanderling_mural_2": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.59,
+  "mean_sat": 0.23,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 9.09,
+  "surface_m": [
+   3.0,
+   0.33
+  ]
+ },
+ "board_lords_interior_sanderling_mural_3": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.61,
+  "mean_sat": 0.06,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 10.0,
+  "surface_m": [
+   3.0,
+   0.3
+  ]
+ },
+ "board_lords_interior_shoe_repair_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.31,
+  "mean_sat": 0.57,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   0.8,
+   0.2
+  ]
+ },
+ "board_lords_interior_shop_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "board_lords_interior",
+  "mean_lum": 0.31,
+  "mean_sat": 0.4,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.8,
+  "surface_m": [
+   1.2,
+   0.25
+  ]
+ },
+ "briar_falls_bldg_plaque_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "briar_falls",
+  "mean_lum": 0.59,
+  "mean_sat": 0.35,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.88,
+  "surface_m": [
+   0.15,
+   0.17
+  ]
+ },
+ "briar_falls_bldg_plaque_2": {
+  "alpha": false,
+  "border_vs_inner": 0.46,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "briar_falls",
+  "mean_lum": 0.52,
+  "mean_sat": 0.33,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.88,
+  "surface_m": [
+   0.15,
+   0.17
+  ]
+ },
+ "briar_falls_trail_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "briar_falls",
+  "mean_lum": 0.24,
+  "mean_sat": 0.53,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.67,
+  "surface_m": [
+   0.55,
+   0.15
+  ]
+ },
+ "bungalow_bedroom_dresser_picture": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "bungalow",
+  "mean_lum": 0.25,
+  "mean_sat": 0.49,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   0.08,
+   0.11
+  ]
+ },
+ "bungalow_bedroom_dresser_pictureback": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "bungalow",
+  "mean_lum": 0.23,
+  "mean_sat": 0.4,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.7,
+  "surface_m": [
+   0.07,
+   0.1
+  ]
+ },
+ "bungalow_poster_1": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "bungalow",
+  "mean_lum": 0.26,
+  "mean_sat": 0.52,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.62,
+  "surface_m": [
+   0.23,
+   0.37
+  ]
+ },
+ "bungalow_poster_2": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "bungalow",
+  "mean_lum": 0.17,
+  "mean_sat": 0.37,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.69,
+  "surface_m": [
+   0.2,
+   0.29
+  ]
+ },
+ "bungalow_priestess_anyamonitor": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "bungalow",
+  "mean_lum": 0.19,
+  "mean_sat": 0.25,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.15,
+   0.12
+  ]
+ },
+ "bungalow_priestess_johnmonitor": {
+  "alpha": false,
+  "border_vs_inner": 0.73,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "bungalow",
+  "mean_lum": 0.71,
+  "mean_sat": 0.09,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.22,
+  "surface_m": [
+   0.11,
+   0.09
+  ]
+ },
+ "cabin_interior_ebed_win_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "cabin_interior",
+  "mean_lum": 0.3,
+  "mean_sat": 0.17,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.73,
+   0.51
+  ]
+ },
+ "cabin_interior_forest_band_1": {
+  "alpha": false,
+  "border_vs_inner": 0.33,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "cabin_interior",
+  "mean_lum": 0.27,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.91,
+  "surface_m": [
+   17.75,
+   6.1
+  ]
+ },
+ "cabin_interior_forest_band_2": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "cabin_interior",
+  "mean_lum": 0.23,
+  "mean_sat": 0.26,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.91,
+  "surface_m": [
+   17.75,
+   6.1
+  ]
+ },
+ "cabin_interior_forest_band_3": {
+  "alpha": false,
+  "border_vs_inner": 0.27,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "cabin_interior",
+  "mean_lum": 0.3,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.62,
+  "surface_m": [
+   16.0,
+   6.1
+  ]
+ },
+ "cabin_interior_forest_band_4": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "cabin_interior",
+  "mean_lum": 0.28,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.62,
+  "surface_m": [
+   16.0,
+   6.1
+  ]
+ },
+ "cabin_interior_north_window": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "cabin_interior",
+  "mean_lum": 0.3,
+  "mean_sat": 0.37,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.1,
+  "surface_m": [
+   0.53,
+   0.48
+  ]
+ },
+ "cabin_interior_window": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "cabin_interior",
+  "mean_lum": 0.27,
+  "mean_sat": 0.24,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.32,
+  "surface_m": [
+   0.62,
+   0.47
+  ]
+ },
+ "cabin_road_roadsign": {
+  "alpha": false,
+  "border_vs_inner": 0.89,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "cabin_road",
+  "mean_lum": 0.71,
+  "mean_sat": 0.36,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.25,
+   0.25
+  ]
+ },
+ "cafe_olimpico_cafe_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "cafe_olimpico",
+  "mean_lum": 0.47,
+  "mean_sat": 0.62,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.45,
+   0.27
+  ]
+ },
+ "cafe_olimpico_front_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "cafe_olimpico",
+  "mean_lum": 0.29,
+  "mean_sat": 0.61,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.0,
+  "surface_m": [
+   2.0,
+   0.25
+  ]
+ },
+ "cafe_olimpico_menu": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "cafe_olimpico",
+  "mean_lum": 0.21,
+  "mean_sat": 0.24,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.42,
+  "surface_m": [
+   0.44,
+   0.31
+  ]
+ },
+ "cafe_olimpico_out_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "cafe_olimpico",
+  "mean_lum": 0.38,
+  "mean_sat": 0.29,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.6,
+  "surface_m": [
+   13.0,
+   5.0
+  ]
+ },
+ "cafe_olimpico_team_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "cafe_olimpico",
+  "mean_lum": 0.56,
+  "mean_sat": 0.17,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.77,
+  "surface_m": [
+   0.1,
+   0.13
+  ]
+ },
+ "cafe_olimpico_win_backcorner_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "cafe_olimpico",
+  "mean_lum": 0.45,
+  "mean_sat": 0.3,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.92,
+  "surface_m": [
+   0.58,
+   0.63
+  ]
+ },
+ "caldwell_kitchen_night_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.44,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "caldwell_kitchen_night",
+  "mean_lum": 0.46,
+  "mean_sat": 0.33,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.12,
+   0.15
+  ]
+ },
+ "caldwell_kitchen_night_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.93,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "caldwell_kitchen_night",
+  "mean_lum": 0.34,
+  "mean_sat": 0.15,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.09,
+   0.12
+  ]
+ },
+ "caldwell_porch_night_house_body_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "caldwell_porch_night",
+  "mean_lum": 0.59,
+  "mean_sat": 0.12,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.12,
+  "surface_m": [
+   5.5,
+   2.6
+  ]
+ },
+ "caldwell_porch_night_neighbour_house_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.78,
+  "locale": "caldwell_porch_night",
+  "mean_lum": 0.54,
+  "mean_sat": 0.13,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.88,
+  "surface_m": [
+   4.5,
+   2.4
+  ]
+ },
+ "caldwell_porch_night_street_house_facade_1": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "caldwell_porch_night",
+  "mean_lum": 0.52,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.14,
+  "surface_m": [
+   4.5,
+   2.1
+  ]
+ },
+ "caldwell_porch_night_street_house_facade_2": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "caldwell_porch_night",
+  "mean_lum": 0.5,
+  "mean_sat": 0.14,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.08,
+  "surface_m": [
+   5.0,
+   2.4
+  ]
+ },
+ "caldwell_porch_night_street_house_facade_3": {
+  "alpha": false,
+  "border_vs_inner": 0.23,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "caldwell_porch_night",
+  "mean_lum": 0.51,
+  "mean_sat": 0.33,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.05,
+  "surface_m": [
+   4.5,
+   2.2
+  ]
+ },
+ "caldwell_radio_room_night_thomas_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "caldwell_radio_room_night",
+  "mean_lum": 0.47,
+  "mean_sat": 0.13,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.78,
+  "surface_m": [
+   0.07,
+   0.09
+  ]
+ },
+ "caldwell_radio_room_night_wall_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.37,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "caldwell_radio_room_night",
+  "mean_lum": 0.48,
+  "mean_sat": 0.15,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.33,
+  "surface_m": [
+   0.2,
+   0.15
+  ]
+ },
+ "caldwell_radio_room_night_wall_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "caldwell_radio_room_night",
+  "mean_lum": 0.53,
+  "mean_sat": 0.25,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.79,
+  "surface_m": [
+   0.15,
+   0.19
+  ]
+ },
+ "caldwell_radio_room_night_wall_photo_3": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "caldwell_radio_room_night",
+  "mean_lum": 0.41,
+  "mean_sat": 0.26,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.76,
+  "surface_m": [
+   0.13,
+   0.17
+  ]
+ },
+ "caldwell_radio_room_night_wall_photo_4": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "caldwell_radio_room_night",
+  "mean_lum": 0.49,
+  "mean_sat": 0.18,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.11,
+   0.08
+  ]
+ },
+ "calendar_diego": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "diego_bedroom",
+  "mean_lum": 0.62,
+  "mean_sat": 0.2,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.7,
+  "surface_m": [
+   0.32,
+   0.46
+  ]
+ },
+ "cape_perpetua_overlook_bluff": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "cape_perpetua_overlook",
+  "mean_lum": 0.34,
+  "mean_sat": 0.13,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 37.5,
+  "surface_m": [
+   150.0,
+   4.0
+  ]
+ },
+ "cape_perpetua_overlook_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.23,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "cape_perpetua_overlook",
+  "mean_lum": 0.38,
+  "mean_sat": 0.33,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.4,
+  "surface_m": [
+   0.14,
+   0.1
+  ]
+ },
+ "cape_perpetua_overlook_vestergaard_plaque": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "cape_perpetua_overlook",
+  "mean_lum": 0.35,
+  "mean_sat": 0.44,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.63,
+  "surface_m": [
+   0.21,
+   0.08
+  ]
+ },
+ "cedar_tower_dean_portrait": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "cedar_tower",
+  "mean_lum": 0.35,
+  "mean_sat": 0.2,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.7,
+  "surface_m": [
+   0.3,
+   0.43
+  ]
+ },
+ "cedar_tower_desk_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.0,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "cedar_tower",
+  "mean_lum": 0.05,
+  "mean_sat": 0.81,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.57,
+  "surface_m": [
+   0.22,
+   0.14
+  ]
+ },
+ "cedar_tower_ephoto": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "cedar_tower",
+  "mean_lum": 0.3,
+  "mean_sat": 0.37,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.31,
+  "surface_m": [
+   0.17,
+   0.13
+  ]
+ },
+ "cedar_tower_estuary7_poster": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "cedar_tower",
+  "mean_lum": 0.55,
+  "mean_sat": 0.14,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.88,
+  "surface_m": [
+   0.23,
+   0.26
+  ]
+ },
+ "centro_break_room_bulletinboard": {
+  "alpha": false,
+  "border_vs_inner": 0.46,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "centro_break_room",
+  "mean_lum": 0.56,
+  "mean_sat": 0.22,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.78,
+  "surface_m": [
+   0.8,
+   0.45
+  ]
+ },
+ "centro_grocery_aisle_bakery_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.65,
+  "mean_sat": 0.51,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.33,
+  "surface_m": [
+   1.3,
+   0.3
+  ]
+ },
+ "centro_grocery_aisle_bread_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.59,
+  "mean_sat": 0.6,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   1.5,
+   0.3
+  ]
+ },
+ "centro_grocery_aisle_calendar": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.68,
+  "mean_sat": 0.23,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.61,
+  "surface_m": [
+   0.2,
+   0.33
+  ]
+ },
+ "centro_grocery_aisle_corral_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.5,
+  "mean_sat": 0.46,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.47,
+  "surface_m": [
+   1.12,
+   0.15
+  ]
+ },
+ "centro_grocery_aisle_dairy_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.47,
+  "mean_sat": 0.52,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 10.0,
+  "surface_m": [
+   3.0,
+   0.3
+  ]
+ },
+ "centro_grocery_aisle_deli_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.56,
+  "mean_sat": 0.67,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.0,
+  "surface_m": [
+   1.8,
+   0.3
+  ]
+ },
+ "centro_grocery_aisle_entrance_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.78,
+  "mean_sat": 0.28,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   3.0,
+   0.6
+  ]
+ },
+ "centro_grocery_aisle_exit_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.61,
+  "mean_sat": 0.36,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.2,
+   0.1
+  ]
+ },
+ "centro_grocery_aisle_frozen_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.44,
+  "mean_sat": 0.61,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   1.5,
+   0.3
+  ]
+ },
+ "centro_grocery_aisle_meat_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.42,
+  "mean_sat": 0.62,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.67,
+  "surface_m": [
+   2.0,
+   0.3
+  ]
+ },
+ "centro_grocery_aisle_office_corkboard_1": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.59,
+  "mean_sat": 0.28,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.6,
+   0.4
+  ]
+ },
+ "centro_grocery_aisle_office_corkboard_2": {
+  "alpha": false,
+  "border_vs_inner": 0.49,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.67,
+  "mean_sat": 0.38,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.09,
+   0.12
+  ]
+ },
+ "centro_grocery_aisle_office_corkboard_3": {
+  "alpha": false,
+  "border_vs_inner": 0.62,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.72,
+  "mean_sat": 0.14,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.09,
+   0.12
+  ]
+ },
+ "centro_grocery_aisle_office_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.9,
+  "mean_sat": 0.12,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.56,
+  "surface_m": [
+   0.25,
+   0.16
+  ]
+ },
+ "centro_grocery_aisle_produce_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.45,
+  "mean_sat": 0.55,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.71,
+  "surface_m": [
+   2.0,
+   0.35
+  ]
+ },
+ "centro_grocery_aisle_receiving_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.45,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.81,
+  "mean_sat": 0.15,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.38,
+  "surface_m": [
+   0.7,
+   0.13
+  ]
+ },
+ "centro_grocery_aisle_service_desk_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.23,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.92,
+  "mean_sat": 0.08,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.8,
+  "surface_m": [
+   1.2,
+   0.25
+  ]
+ },
+ "centro_grocery_aisle_storefront_e_decal": {
+  "alpha": false,
+  "border_vs_inner": 0.37,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.51,
+  "mean_sat": 0.39,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.8,
+  "surface_m": [
+   0.7,
+   0.25
+  ]
+ },
+ "centro_grocery_aisle_storefront_w_decal": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "centro_grocery_aisle",
+  "mean_lum": 0.67,
+  "mean_sat": 0.61,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.8,
+  "surface_m": [
+   0.7,
+   0.25
+  ]
+ },
+ "centro_stockroom_extinguisher_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "centro_stockroom",
+  "mean_lum": 0.35,
+  "mean_sat": 0.68,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.15,
+   0.15
+  ]
+ },
+ "centro_stockroom_safety_poster_1": {
+  "alpha": false,
+  "border_vs_inner": 0.32,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "centro_stockroom",
+  "mean_lum": 0.67,
+  "mean_sat": 0.57,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.74,
+  "surface_m": [
+   0.17,
+   0.23
+  ]
+ },
+ "centro_stockroom_safety_poster_2": {
+  "alpha": false,
+  "border_vs_inner": 0.57,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "centro_stockroom",
+  "mean_lum": 0.61,
+  "mean_sat": 0.32,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.74,
+  "surface_m": [
+   0.17,
+   0.23
+  ]
+ },
+ "chillwave_interior_across_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.47,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "chillwave_interior",
+  "mean_lum": 0.34,
+  "mean_sat": 0.12,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.25,
+  "surface_m": [
+   6.5,
+   2.0
+  ]
+ },
+ "chillwave_interior_display_1": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "chillwave_interior",
+  "mean_lum": 0.47,
+  "mean_sat": 0.14,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.08,
+   0.08
+  ]
+ },
+ "chillwave_interior_display_2": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "chillwave_interior",
+  "mean_lum": 0.53,
+  "mean_sat": 0.18,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.08,
+   0.08
+  ]
+ },
+ "cliffside_circus_gate_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "cliffside_circus",
+  "mean_lum": 0.33,
+  "mean_sat": 0.41,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.75,
+   0.5
+  ]
+ },
+ "cliffside_circus_main_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "cliffside_circus",
+  "mean_lum": 0.36,
+  "mean_sat": 0.39,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.07,
+  "surface_m": [
+   1.7,
+   0.28
+  ]
+ },
+ "cliffside_circus_main_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "cliffside_circus",
+  "mean_lum": 0.61,
+  "mean_sat": 0.25,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 11.67,
+  "surface_m": [
+   1.4,
+   0.12
+  ]
+ },
+ "club_sharp_hash_neon": {
+  "alpha": false,
+  "border_vs_inner": 0.69,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "club_sharp",
+  "mean_lum": 0.15,
+  "mean_sat": 0.69,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.93,
+  "surface_m": [
+   1.4,
+   1.5
+  ]
+ },
+ "coach_k_bedroom_coach_plaque": {
+  "alpha": false,
+  "border_vs_inner": 0.38,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.36,
+  "mean_sat": 0.52,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.15,
+   0.11
+  ]
+ },
+ "coach_k_bedroom_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.55,
+  "mean_sat": 0.24,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.57,
+  "surface_m": [
+   0.08,
+   0.14
+  ]
+ },
+ "coach_k_bedroom_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.49,
+  "mean_sat": 0.39,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   0.08,
+   0.11
+  ]
+ },
+ "coach_k_bedroom_photo_3": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.34,
+  "mean_sat": 0.22,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.08,
+   0.1
+  ]
+ },
+ "coach_k_bedroom_team_picture": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.4,
+  "mean_sat": 0.15,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.52,
+  "surface_m": [
+   0.35,
+   0.23
+  ]
+ },
+ "coach_k_bedroom_w_window": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.15,
+  "mean_sat": 0.33,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.1,
+  "surface_m": [
+   0.55,
+   0.5
+  ]
+ },
+ "coach_k_bedroom_wedding_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "coach_k_bedroom",
+  "mean_lum": 0.49,
+  "mean_sat": 0.26,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.25,
+   0.2
+  ]
+ },
+ "cosmic_comics_interior_bin_comic": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.44,
+  "mean_sat": 0.37,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.2,
+   0.1
+  ]
+ },
+ "cosmic_comics_interior_key": {
+  "alpha": false,
+  "border_vs_inner": 0.4,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.44,
+  "mean_sat": 0.27,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.9,
+  "surface_m": [
+   0.18,
+   0.2
+  ]
+ },
+ "cosmic_comics_interior_newarrivals_comic": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.34,
+  "mean_sat": 0.32,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.71,
+  "surface_m": [
+   0.15,
+   0.21
+  ]
+ },
+ "cosmic_comics_interior_open_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.66,
+  "mean_sat": 0.37,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.15,
+   0.1
+  ]
+ },
+ "cosmic_comics_interior_spin2_comic": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.42,
+  "mean_sat": 0.39,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   0.11,
+   0.15
+  ]
+ },
+ "cosmic_comics_interior_spinner_comic": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.58,
+  "mean_sat": 0.3,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   0.11,
+   0.15
+  ]
+ },
+ "cosmic_comics_interior_winposter": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "cosmic_comics_interior",
+  "mean_lum": 0.41,
+  "mean_sat": 0.36,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.78,
+  "surface_m": [
+   0.8,
+   0.45
+  ]
+ },
+ "county_line_station_bus_stop_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "county_line_station",
+  "mean_lum": 0.48,
+  "mean_sat": 0.44,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.2,
+   0.25
+  ]
+ },
+ "county_line_station_parish_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "county_line_station",
+  "mean_lum": 0.39,
+  "mean_sat": 0.77,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.6,
+  "surface_m": [
+   1.3,
+   0.5
+  ]
+ },
+ "county_line_station_pump_display": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "county_line_station",
+  "mean_lum": 0.33,
+  "mean_sat": 0.11,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.57,
+  "surface_m": [
+   0.22,
+   0.14
+  ]
+ },
+ "crumpled_barn_farwindbreak": {
+  "alpha": false,
+  "border_vs_inner": 0.22,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "crumpled_barn",
+  "mean_lum": 0.49,
+  "mean_sat": 0.18,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 40.0,
+  "surface_m": [
+   220.0,
+   5.5
+  ]
+ },
+ "crumpled_barn_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "crumpled_barn",
+  "mean_lum": 0.38,
+  "mean_sat": 0.26,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.9,
+  "surface_m": [
+   0.57,
+   0.3
+  ]
+ },
+ "crumpled_barn_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.22,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "crumpled_barn",
+  "mean_lum": 0.44,
+  "mean_sat": 0.28,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.45,
+   0.33
+  ]
+ },
+ "crumpled_barn_sign_3": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "crumpled_barn",
+  "mean_lum": 0.29,
+  "mean_sat": 0.42,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.52,
+  "surface_m": [
+   0.12,
+   0.23
+  ]
+ },
+ "daily_grind_interior_bookswap_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.31,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.31,
+  "mean_sat": 0.22,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.75,
+  "surface_m": [
+   0.3,
+   0.08
+  ]
+ },
+ "daily_grind_interior_community_board_flyer": {
+  "alpha": false,
+  "border_vs_inner": 0.5,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.58,
+  "mean_sat": 0.16,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   0.08,
+   0.11
+  ]
+ },
+ "daily_grind_interior_exit_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.43,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.36,
+  "mean_sat": 0.74,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.18,
+   0.09
+  ]
+ },
+ "daily_grind_interior_hill": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.34,
+  "mean_sat": 0.2,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.89,
+  "surface_m": [
+   35.0,
+   9.0
+  ]
+ },
+ "daily_grind_interior_kai_laptop_display": {
+  "alpha": false,
+  "border_vs_inner": 0.38,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.37,
+  "mean_sat": 0.23,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.56,
+  "surface_m": [
+   0.14,
+   0.09
+  ]
+ },
+ "daily_grind_interior_kai_laptop_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.5,
+  "mean_sat": 0.07,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.6,
+  "surface_m": [
+   0.16,
+   0.1
+  ]
+ },
+ "daily_grind_interior_menu_1": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.22,
+  "mean_sat": 0.11,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.22,
+  "surface_m": [
+   2.4,
+   0.46
+  ]
+ },
+ "daily_grind_interior_painting_1": {
+  "alpha": false,
+  "border_vs_inner": 0.32,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.58,
+  "mean_sat": 0.19,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.33,
+  "surface_m": [
+   0.6,
+   0.45
+  ]
+ },
+ "daily_grind_interior_painting_2": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.42,
+  "mean_sat": 0.21,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.96,
+  "surface_m": [
+   0.51,
+   0.53
+  ]
+ },
+ "daily_grind_interior_painting_3": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.39,
+  "mean_sat": 0.27,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.32,
+  "surface_m": [
+   0.58,
+   0.44
+  ]
+ },
+ "daily_grind_interior_pickup_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.36,
+  "mean_sat": 0.11,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.2,
+   0.1
+  ]
+ },
+ "daily_grind_interior_register_tablet": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.78,
+  "mean_sat": 0.14,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.12,
+   0.08
+  ]
+ },
+ "daily_grind_interior_restroom_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.34,
+  "mean_sat": 0.58,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.09,
+   0.09
+  ]
+ },
+ "daily_grind_interior_win_s_0_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.27,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.35,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.25,
+  "surface_m": [
+   2.7,
+   1.2
+  ]
+ },
+ "daily_grind_interior_win_s_1_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.36,
+  "mean_sat": 0.19,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.08,
+  "surface_m": [
+   1.3,
+   1.2
+  ]
+ },
+ "daily_grind_interior_win_s_2_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.33,
+  "mean_sat": 0.18,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.58,
+  "surface_m": [
+   0.7,
+   1.2
+  ]
+ },
+ "daily_grind_interior_win_w_0_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.39,
+  "mean_sat": 0.16,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   2.0,
+   1.2
+  ]
+ },
+ "daily_grind_interior_win_w_1_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "daily_grind_interior",
+  "mean_lum": 0.32,
+  "mean_sat": 0.25,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   1.2,
+   1.2
+  ]
+ },
+ "darkroom_curtain_1": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "darkroom",
+  "mean_lum": 0.1,
+  "mean_sat": 0.08,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.64,
+  "surface_m": [
+   0.65,
+   1.02
+  ]
+ },
+ "darkroom_dryprint": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "darkroom",
+  "mean_lum": 0.49,
+  "mean_sat": 0.04,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.92,
+  "surface_m": [
+   0.12,
+   0.13
+  ]
+ },
+ "darkroom_sink_print": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "darkroom",
+  "mean_lum": 0.42,
+  "mean_sat": 0.06,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.22,
+  "surface_m": [
+   0.29,
+   0.09
+  ]
+ },
+ "diego_bedroom_laptop_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.47,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "diego_bedroom",
+  "mean_lum": 0.75,
+  "mean_sat": 0.14,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.56,
+  "surface_m": [
+   0.14,
+   0.09
+  ]
+ },
+ "diego_bedroom_window": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "diego_bedroom",
+  "mean_lum": 0.5,
+  "mean_sat": 0.36,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.1,
+  "surface_m": [
+   0.53,
+   0.48
+  ]
+ },
+ "diner_bbs_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "diner",
+  "mean_lum": 0.19,
+  "mean_sat": 0.9,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.27,
+  "surface_m": [
+   0.14,
+   0.11
+  ]
+ },
+ "diner_cardwall_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "diner",
+  "mean_lum": 0.49,
+  "mean_sat": 0.28,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.14,
+  "surface_m": [
+   0.8,
+   0.7
+  ]
+ },
+ "diner_dinersign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.24,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.19,
+  "mean_sat": 0.66,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.67,
+  "surface_m": [
+   4.0,
+   0.6
+  ]
+ },
+ "diner_far_auto_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.28,
+  "mean_sat": 0.33,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.9,
+  "surface_m": [
+   1.38,
+   0.2
+  ]
+ },
+ "diner_far_cafe_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.28,
+  "mean_sat": 0.52,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.6,
+  "surface_m": [
+   1.12,
+   0.2
+  ]
+ },
+ "diner_far_liquor_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.32,
+  "mean_sat": 0.46,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   1.0,
+   0.2
+  ]
+ },
+ "diner_far_pawn_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.26,
+  "mean_sat": 0.38,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.25,
+  "surface_m": [
+   1.25,
+   0.2
+  ]
+ },
+ "diner_far_tackle_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.28,
+  "mean_sat": 0.43,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   1.0,
+   0.2
+  ]
+ },
+ "diner_neonopensign": {
+  "alpha": false,
+  "border_vs_inner": 0.53,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.14,
+  "mean_sat": 0.69,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.61,
+  "surface_m": [
+   0.6,
+   0.23
+  ]
+ },
+ "diner_phonebooth_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.37,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "diner",
+  "mean_lum": 0.52,
+  "mean_sat": 0.4,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.42,
+   0.42
+  ]
+ },
+ "diner_rv_distant_1": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.52,
+  "mean_sat": 0.15,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.5,
+  "surface_m": [
+   7.0,
+   2.0
+  ]
+ },
+ "diner_rv_distant_2": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.42,
+  "mean_sat": 0.18,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.86,
+  "surface_m": [
+   5.0,
+   1.75
+  ]
+ },
+ "diner_stopsign": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "diner",
+  "mean_lum": 0.43,
+  "mean_sat": 0.58,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.35,
+   0.35
+  ]
+ },
+ "diner_wallphoto": {
+  "alpha": false,
+  "border_vs_inner": 0.4,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "diner",
+  "mean_lum": 0.49,
+  "mean_sat": 0.31,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.35,
+  "surface_m": [
+   0.23,
+   0.17
+  ]
+ },
+ "diner_westext_barpartition_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.22,
+  "mean_sat": 0.53,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.75,
+  "surface_m": [
+   0.3,
+   0.08
+  ]
+ },
+ "diner_westext_corridor_painting": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "diner",
+  "mean_lum": 0.27,
+  "mean_sat": 0.64,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.45,
+   0.3
+  ]
+ },
+ "diner_westext_formalpartition_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "diner",
+  "mean_lum": 0.2,
+  "mean_sat": 0.64,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 10.0,
+  "surface_m": [
+   0.8,
+   0.08
+  ]
+ },
+ "el_rancho_taqueria_menuboard": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "el_rancho_taqueria",
+  "mean_lum": 0.17,
+  "mean_sat": 0.27,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.43,
+  "surface_m": [
+   1.12,
+   0.46
+  ]
+ },
+ "el_rancho_taqueria_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "el_rancho_taqueria",
+  "mean_lum": 0.57,
+  "mean_sat": 0.74,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.59,
+  "surface_m": [
+   3.21,
+   0.7
+  ]
+ },
+ "el_rancho_taqueria_speaker_broke_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.56,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "el_rancho_taqueria",
+  "mean_lum": 0.5,
+  "mean_sat": 0.14,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.1,
+   0.07
+  ]
+ },
+ "elicia_apartment_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "elicia_apartment",
+  "mean_lum": 0.39,
+  "mean_sat": 0.35,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.35,
+   0.28
+  ]
+ },
+ "elicia_apartment_dead_monitor_1": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "elicia_apartment",
+  "mean_lum": 0.09,
+  "mean_sat": 0.33,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.65,
+  "surface_m": [
+   0.28,
+   0.17
+  ]
+ },
+ "elicia_apartment_dead_monitor_2": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "elicia_apartment",
+  "mean_lum": 0.1,
+  "mean_sat": 0.33,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.65,
+  "surface_m": [
+   0.28,
+   0.17
+  ]
+ },
+ "elicia_apartment_laptop_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "elicia_apartment",
+  "mean_lum": 0.93,
+  "mean_sat": 0.07,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.63,
+  "surface_m": [
+   0.13,
+   0.08
+  ]
+ },
+ "elicia_apartment_skyline": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "elicia_apartment",
+  "mean_lum": 0.17,
+  "mean_sat": 0.26,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.22,
+  "surface_m": [
+   20.0,
+   9.0
+  ]
+ },
+ "faust_apartment_bike_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "faust_apartment",
+  "mean_lum": 0.38,
+  "mean_sat": 0.21,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.33,
+   0.33
+  ]
+ },
+ "faust_apartment_bike_2": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "faust_apartment",
+  "mean_lum": 0.38,
+  "mean_sat": 0.21,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.33,
+   0.33
+  ]
+ },
+ "faust_apartment_canvas_1": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "faust_apartment",
+  "mean_lum": 0.56,
+  "mean_sat": 0.3,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.24,
+  "surface_m": [
+   0.1,
+   0.41
+  ]
+ },
+ "faust_apartment_canvas_2": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "faust_apartment",
+  "mean_lum": 0.69,
+  "mean_sat": 0.21,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.22,
+  "surface_m": [
+   0.09,
+   0.4
+  ]
+ },
+ "faust_apartment_canvas_3": {
+  "alpha": false,
+  "border_vs_inner": 0.31,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "faust_apartment",
+  "mean_lum": 0.52,
+  "mean_sat": 0.63,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.29,
+  "surface_m": [
+   0.1,
+   0.35
+  ]
+ },
+ "faust_apartment_desk_sketch": {
+  "alpha": false,
+  "border_vs_inner": 0.33,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "faust_apartment",
+  "mean_lum": 0.63,
+  "mean_sat": 0.22,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.42,
+  "surface_m": [
+   0.17,
+   0.12
+  ]
+ },
+ "faust_apartment_easel_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "faust_apartment",
+  "mean_lum": 0.53,
+  "mean_sat": 0.36,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.78,
+  "surface_m": [
+   0.4,
+   0.51
+  ]
+ },
+ "faust_apartment_floor_canvas_1": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "faust_apartment",
+  "mean_lum": 0.31,
+  "mean_sat": 0.36,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.61,
+  "surface_m": [
+   0.45,
+   0.28
+  ]
+ },
+ "faust_apartment_floor_canvas_2": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "faust_apartment",
+  "mean_lum": 0.36,
+  "mean_sat": 0.65,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.6,
+  "surface_m": [
+   0.32,
+   0.2
+  ]
+ },
+ "faust_apartment_leaned_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "faust_apartment",
+  "mean_lum": 0.63,
+  "mean_sat": 0.3,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.63,
+  "surface_m": [
+   0.32,
+   0.51
+  ]
+ },
+ "faust_apartment_win_e_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "faust_apartment",
+  "mean_lum": 0.32,
+  "mean_sat": 0.17,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.13,
+  "surface_m": [
+   0.87,
+   0.77
+  ]
+ },
+ "faust_apartment_win_n_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.37,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "faust_apartment",
+  "mean_lum": 0.42,
+  "mean_sat": 0.21,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.85,
+  "surface_m": [
+   0.57,
+   0.67
+  ]
+ },
+ "finn_apartment_coat_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.93,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "finn_apartment",
+  "mean_lum": 0.54,
+  "mean_sat": 0.29,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.23,
+   0.42
+  ]
+ },
+ "finn_apartment_n_window": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "finn_apartment",
+  "mean_lum": 0.37,
+  "mean_sat": 0.2,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.21,
+  "surface_m": [
+   0.58,
+   0.48
+  ]
+ },
+ "finn_apartment_out_n_treeline": {
+  "alpha": false,
+  "border_vs_inner": 0.24,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "finn_apartment",
+  "mean_lum": 0.39,
+  "mean_sat": 0.2,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   12.0,
+   3.0
+  ]
+ },
+ "foxhole_bar_backbar_neon_1": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "foxhole_bar",
+  "mean_lum": 0.13,
+  "mean_sat": 0.74,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.46,
+  "surface_m": [
+   1.1,
+   0.13
+  ]
+ },
+ "foxhole_bar_backbar_neon_2": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "foxhole_bar",
+  "mean_lum": 0.13,
+  "mean_sat": 0.76,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.82,
+  "surface_m": [
+   0.65,
+   0.17
+  ]
+ },
+ "foxhole_bar_backbar_neon_3": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "foxhole_bar",
+  "mean_lum": 0.19,
+  "mean_sat": 0.5,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.82,
+  "surface_m": [
+   0.65,
+   0.17
+  ]
+ },
+ "foxhole_bar_backdrop": {
+  "alpha": false,
+  "border_vs_inner": 0.0,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "foxhole_bar",
+  "mean_lum": 0.07,
+  "mean_sat": 0.06,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.24,
+  "surface_m": [
+   4.7,
+   2.1
+  ]
+ },
+ "foxhole_bar_entrance_exit_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.46,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "foxhole_bar",
+  "mean_lum": 0.56,
+  "mean_sat": 0.37,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.63,
+  "surface_m": [
+   0.21,
+   0.08
+  ]
+ },
+ "foxhole_dressing_room_dr_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.75,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "foxhole_dressing_room",
+  "mean_lum": 0.46,
+  "mean_sat": 0.35,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.15,
+   0.11
+  ]
+ },
+ "gallatin_water_tower_fence_screen_1": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SCREEN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.27,
+  "mean_sat": 0.45,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 28.89,
+  "surface_m": [
+   26.0,
+   0.9
+  ]
+ },
+ "gallatin_water_tower_fence_screen_2": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SCREEN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.27,
+  "mean_sat": 0.36,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 28.89,
+  "surface_m": [
+   26.0,
+   0.9
+  ]
+ },
+ "gallatin_water_tower_fence_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.6,
+  "mean_sat": 0.3,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.14,
+  "surface_m": [
+   1.2,
+   0.56
+  ]
+ },
+ "gallatin_water_tower_house_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.23,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.45,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.41,
+  "surface_m": [
+   4.5,
+   1.87
+  ]
+ },
+ "gallatin_water_tower_street_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.39,
+  "mean_sat": 0.76,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.44,
+  "surface_m": [
+   0.4,
+   0.09
+  ]
+ },
+ "gallatin_water_tower_van_logo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.76,
+  "mean_sat": 0.12,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.33,
+  "surface_m": [
+   0.8,
+   0.15
+  ]
+ },
+ "gallatin_water_tower_van_logo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "gallatin_water_tower",
+  "mean_lum": 0.75,
+  "mean_sat": 0.12,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.33,
+  "surface_m": [
+   0.8,
+   0.15
+  ]
+ },
+ "graciela_bedroom_altar_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "graciela_bedroom",
+  "mean_lum": 0.51,
+  "mean_sat": 0.21,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.88,
+  "surface_m": [
+   0.07,
+   0.08
+  ]
+ },
+ "graciela_bedroom_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "graciela_bedroom",
+  "mean_lum": 0.47,
+  "mean_sat": 0.15,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.29,
+  "surface_m": [
+   0.18,
+   0.14
+  ]
+ },
+ "graciela_bedroom_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "graciela_bedroom",
+  "mean_lum": 0.48,
+  "mean_sat": 0.17,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.08,
+   0.1
+  ]
+ },
+ "graustark_billboard_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "graustark",
+  "mean_lum": 0.55,
+  "mean_sat": 0.31,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.8,
+  "surface_m": [
+   2.25,
+   1.25
+  ]
+ },
+ "graustark_billboard_2": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.46,
+  "mean_sat": 0.32,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.5,
+  "surface_m": [
+   1.8,
+   0.4
+  ]
+ },
+ "graustark_boatsign": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.12,
+  "mean_sat": 0.65,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.17,
+  "surface_m": [
+   3.8,
+   1.2
+  ]
+ },
+ "graustark_devil": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "graustark",
+  "mean_lum": 0.39,
+  "mean_sat": 0.24,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.59,
+  "surface_m": [
+   0.95,
+   1.62
+  ]
+ },
+ "graustark_devil_daigle_neon": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.18,
+  "mean_sat": 0.66,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.48,
+  "surface_m": [
+   0.8,
+   0.23
+  ]
+ },
+ "graustark_devil_daigle_neonopen_1": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.18,
+  "mean_sat": 0.5,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.06,
+  "surface_m": [
+   0.35,
+   0.17
+  ]
+ },
+ "graustark_devil_daigle_neonopen_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.13,
+  "mean_sat": 0.15,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.06,
+  "surface_m": [
+   0.35,
+   0.17
+  ]
+ },
+ "graustark_devil_daigle_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.43,
+  "mean_sat": 0.53,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.56,
+  "surface_m": [
+   2.5,
+   0.45
+  ]
+ },
+ "graustark_exitsign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.37,
+  "mean_sat": 0.56,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.17,
+  "surface_m": [
+   2.5,
+   0.6
+  ]
+ },
+ "graustark_farhill_1": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.66,
+  "mean_sat": 0.07,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.92,
+  "surface_m": [
+   17.5,
+   6.0
+  ]
+ },
+ "graustark_farhill_2": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.78,
+  "locale": "graustark",
+  "mean_lum": 0.62,
+  "mean_sat": 0.09,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   14.0,
+   7.0
+  ]
+ },
+ "graustark_farhill_3": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.62,
+  "mean_sat": 0.08,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   15.0,
+   5.0
+  ]
+ },
+ "graustark_farhill_4": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.61,
+  "mean_sat": 0.08,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   16.0,
+   4.0
+  ]
+ },
+ "graustark_fq_banner_1": {
+  "alpha": false,
+  "border_vs_inner": 0.37,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.82,
+  "mean_sat": 0.27,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.25,
+  "surface_m": [
+   2.5,
+   0.4
+  ]
+ },
+ "graustark_fq_banner_2": {
+  "alpha": false,
+  "border_vs_inner": 0.58,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.62,
+  "mean_sat": 0.28,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.25,
+  "surface_m": [
+   2.5,
+   0.4
+  ]
+ },
+ "graustark_fq_banner_3": {
+  "alpha": false,
+  "border_vs_inner": 0.59,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.69,
+  "mean_sat": 0.23,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.25,
+  "surface_m": [
+   2.5,
+   0.4
+  ]
+ },
+ "graustark_gasstation_pump_screen_1": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.21,
+  "mean_sat": 0.23,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.33,
+  "surface_m": [
+   0.35,
+   0.15
+  ]
+ },
+ "graustark_gasstation_pump_screen_2": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.29,
+  "mean_sat": 0.18,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.33,
+  "surface_m": [
+   0.35,
+   0.15
+  ]
+ },
+ "graustark_gasstation_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "graustark",
+  "mean_lum": 0.54,
+  "mean_sat": 0.62,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   1.5,
+   1.2
+  ]
+ },
+ "graustark_gasstation_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "graustark",
+  "mean_lum": 0.61,
+  "mean_sat": 0.37,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   1.2,
+   0.8
+  ]
+ },
+ "graustark_graustark_busstop_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.41,
+  "mean_sat": 0.34,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   0.8,
+   0.2
+  ]
+ },
+ "graustark_graustark_fq_row_restaurantsign": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.42,
+  "mean_sat": 0.68,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.43,
+  "surface_m": [
+   1.93,
+   0.3
+  ]
+ },
+ "graustark_graustark_phone_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.63,
+  "mean_sat": 0.39,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   0.4,
+   0.1
+  ]
+ },
+ "graustark_graustark_rr_crossing_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.56,
+  "mean_sat": 0.02,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.07,
+  "surface_m": [
+   1.06,
+   0.15
+  ]
+ },
+ "graustark_graustark_statue_plaque": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.3,
+  "mean_sat": 0.36,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   0.6,
+   0.2
+  ]
+ },
+ "graustark_graustark_streetcar_stopsign": {
+  "alpha": false,
+  "border_vs_inner": 0.9,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "graustark",
+  "mean_lum": 0.52,
+  "mean_sat": 0.25,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.25,
+   0.25
+  ]
+ },
+ "graustark_graustark_stripmall_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.36,
+  "mean_sat": 0.48,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.75,
+  "surface_m": [
+   3.5,
+   0.4
+  ]
+ },
+ "graustark_hwy_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.38,
+  "mean_sat": 0.51,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.81,
+  "surface_m": [
+   2.25,
+   0.8
+  ]
+ },
+ "graustark_park_signpanel": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.48,
+  "mean_sat": 0.28,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.4,
+  "surface_m": [
+   0.6,
+   0.25
+  ]
+ },
+ "graustark_park_signtext": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.42,
+  "mean_sat": 0.3,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.56,
+  "surface_m": [
+   0.5,
+   0.09
+  ]
+ },
+ "graustark_post_office_clerk": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "graustark_post_office",
+  "mean_lum": 0.27,
+  "mean_sat": 0.4,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.29,
+  "surface_m": [
+   0.45,
+   0.35
+  ]
+ },
+ "graustark_post_office_counter_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark_post_office",
+  "mean_lum": 0.22,
+  "mean_sat": 0.61,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.68,
+  "surface_m": [
+   3.5,
+   0.95
+  ]
+ },
+ "graustark_post_office_wanted_poster": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "graustark_post_office",
+  "mean_lum": 0.61,
+  "mean_sat": 0.21,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.12,
+   0.16
+  ]
+ },
+ "graustark_post_office_window": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "graustark_post_office",
+  "mean_lum": 0.33,
+  "mean_sat": 0.26,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.54,
+  "surface_m": [
+   0.7,
+   1.3
+  ]
+ },
+ "graustark_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.17,
+  "mean_sat": 0.44,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.2,
+  "surface_m": [
+   3.2,
+   1.0
+  ]
+ },
+ "graustark_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.16,
+  "mean_sat": 0.57,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.2,
+  "surface_m": [
+   3.2,
+   1.0
+  ]
+ },
+ "graustark_stripmall_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "graustark",
+  "mean_lum": 0.49,
+  "mean_sat": 0.72,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.14,
+  "surface_m": [
+   2.0,
+   0.28
+  ]
+ },
+ "graustark_temperance_lounge_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "graustark",
+  "mean_lum": 0.04,
+  "mean_sat": 0.17,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.15,
+  "surface_m": [
+   0.3,
+   2.0
+  ]
+ },
+ "graustark_wheel_casino_neondisc": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "graustark",
+  "mean_lum": 0.14,
+  "mean_sat": 0.65,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   1.5,
+   1.5
+  ]
+ },
+ "graustark_world_frogshop_frogsign": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "graustark",
+  "mean_lum": 0.47,
+  "mean_sat": 0.25,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.9,
+   0.45
+  ]
+ },
+ "gym_weight_room_depthchart_1": {
+  "alpha": false,
+  "border_vs_inner": 0.61,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "gym_weight_room",
+  "mean_lum": 0.53,
+  "mean_sat": 0.21,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.45,
+   0.56
+  ]
+ },
+ "hans_bakery_back_kitchen_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "hans_bakery_back_kitchen",
+  "mean_lum": 0.44,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.4,
+  "surface_m": [
+   0.14,
+   0.1
+  ]
+ },
+ "hans_bakery_back_kitchen_hemlock_far": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "hans_bakery_back_kitchen",
+  "mean_lum": 0.18,
+  "mean_sat": 0.37,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.7,
+  "surface_m": [
+   20.0,
+   2.3
+  ]
+ },
+ "henderson_garage_corridor_map": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "henderson_garage",
+  "mean_lum": 0.74,
+  "mean_sat": 0.06,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.27,
+  "surface_m": [
+   0.14,
+   0.11
+  ]
+ },
+ "henderson_garage_flyer": {
+  "alpha": false,
+  "border_vs_inner": 0.27,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "henderson_garage",
+  "mean_lum": 0.58,
+  "mean_sat": 0.41,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.79,
+  "surface_m": [
+   0.11,
+   0.14
+  ]
+ },
+ "henderson_kitchen_contact_prints": {
+  "alpha": false,
+  "border_vs_inner": 0.62,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "henderson_kitchen",
+  "mean_lum": 0.35,
+  "mean_sat": 0.07,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.1,
+   0.07
+  ]
+ },
+ "highway_101_far": {
+  "alpha": false,
+  "border_vs_inner": 0.31,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "highway_101",
+  "mean_lum": 0.44,
+  "mean_sat": 0.44,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 92.86,
+  "surface_m": [
+   1300.0,
+   14.0
+  ]
+ },
+ "highway_101_sea_horizon": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "highway_101",
+  "mean_lum": 0.49,
+  "mean_sat": 0.22,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 216.67,
+  "surface_m": [
+   1300.0,
+   6.0
+  ]
+ },
+ "hospice_room_beach_print_1": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "hospice_room",
+  "mean_lum": 0.75,
+  "mean_sat": 0.15,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.5,
+  "surface_m": [
+   0.3,
+   0.12
+  ]
+ },
+ "hospice_room_beach_print_2": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "hospice_room",
+  "mean_lum": 0.72,
+  "mean_sat": 0.22,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.33,
+  "surface_m": [
+   0.3,
+   0.09
+  ]
+ },
+ "hospice_room_dresser_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "hospice_room",
+  "mean_lum": 0.45,
+  "mean_sat": 0.43,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.88,
+  "surface_m": [
+   0.07,
+   0.08
+  ]
+ },
+ "hospice_room_garden_far": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "hospice_room",
+  "mean_lum": 0.53,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   15.0,
+   3.0
+  ]
+ },
+ "hospice_room_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "hospice_room",
+  "mean_lum": 0.09,
+  "mean_sat": 0.94,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.55,
+  "surface_m": [
+   0.17,
+   0.11
+  ]
+ },
+ "hospice_room_window": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "hospice_room",
+  "mean_lum": 0.38,
+  "mean_sat": 0.24,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.29,
+  "surface_m": [
+   0.9,
+   0.7
+  ]
+ },
+ "hospital_room_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "hospital_room",
+  "mean_lum": 0.31,
+  "mean_sat": 0.69,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.35,
+   0.21
+  ]
+ },
+ "hospital_room_vitals_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "hospital_room",
+  "mean_lum": 0.11,
+  "mean_sat": 0.49,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.92,
+  "surface_m": [
+   0.11,
+   0.12
+  ]
+ },
+ "hospital_room_wait_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.48,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "hospital_room",
+  "mean_lum": 0.63,
+  "mean_sat": 0.25,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   0.45,
+   0.09
+  ]
+ },
+ "hospital_room_wait_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "hospital_room",
+  "mean_lum": 0.16,
+  "mean_sat": 0.75,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.45,
+   0.27
+  ]
+ },
+ "houston_design_studio_out_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.25,
+  "locale": "houston_design_studio",
+  "mean_lum": 0.38,
+  "mean_sat": 0.28,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.2,
+  "surface_m": [
+   18.5,
+   15.45
+  ]
+ },
+ "houston_design_studio_pen_tablet": {
+  "alpha": false,
+  "border_vs_inner": 0.92,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "houston_design_studio",
+  "mean_lum": 0.62,
+  "mean_sat": 0.04,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.67,
+  "surface_m": [
+   0.12,
+   0.18
+  ]
+ },
+ "houston_office_marcus_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "houston_office",
+  "mean_lum": 0.96,
+  "mean_sat": 0.04,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.65,
+  "surface_m": [
+   0.28,
+   0.17
+  ]
+ },
+ "houston_office_out_facade_1": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.0,
+  "locale": "houston_office",
+  "mean_lum": 0.4,
+  "mean_sat": 0.19,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.94,
+  "surface_m": [
+   19.5,
+   20.7
+  ]
+ },
+ "houston_office_out_facade_2": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 0.8,
+  "locale": "houston_office",
+  "mean_lum": 0.39,
+  "mean_sat": 0.17,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.89,
+  "surface_m": [
+   18.5,
+   20.7
+  ]
+ },
+ "kestrel_mountain_mountain": {
+  "alpha": false,
+  "border_vs_inner": 0.33,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "kestrel_mountain",
+  "mean_lum": 0.36,
+  "mean_sat": 0.17,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.33,
+  "surface_m": [
+   80.0,
+   15.0
+  ]
+ },
+ "kowalski_backyard_across_house_facade_1": {
+  "alpha": false,
+  "border_vs_inner": 0.27,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "kowalski_backyard",
+  "mean_lum": 0.55,
+  "mean_sat": 0.28,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   4.5,
+   1.5
+  ]
+ },
+ "kowalski_backyard_across_house_facade_2": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "kowalski_backyard",
+  "mean_lum": 0.53,
+  "mean_sat": 0.22,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   4.5,
+   1.5
+  ]
+ },
+ "kowalski_backyard_across_house_facade_3": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "kowalski_backyard",
+  "mean_lum": 0.57,
+  "mean_sat": 0.29,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   4.5,
+   1.5
+  ]
+ },
+ "kowalski_backyard_kwin_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.65,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "kowalski_backyard",
+  "mean_lum": 0.44,
+  "mean_sat": 0.19,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.55,
+  "surface_m": [
+   0.68,
+   0.44
+  ]
+ },
+ "kowalski_kitchen_family_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "kowalski_kitchen",
+  "mean_lum": 0.39,
+  "mean_sat": 0.26,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.76,
+  "surface_m": [
+   0.16,
+   0.21
+  ]
+ },
+ "kowalski_kitchen_family_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.32,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "kowalski_kitchen",
+  "mean_lum": 0.56,
+  "mean_sat": 0.25,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.31,
+  "surface_m": [
+   0.21,
+   0.16
+  ]
+ },
+ "kowalski_kitchen_family_photo_3": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "kowalski_kitchen",
+  "mean_lum": 0.45,
+  "mean_sat": 0.3,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.79,
+  "surface_m": [
+   0.11,
+   0.14
+  ]
+ },
+ "kowalski_kitchen_hall_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "kowalski_kitchen",
+  "mean_lum": 0.41,
+  "mean_sat": 0.23,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.29,
+  "surface_m": [
+   0.18,
+   0.14
+  ]
+ },
+ "kowalski_kitchen_tv_1": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "kowalski_kitchen",
+  "mean_lum": 0.39,
+  "mean_sat": 0.7,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.73,
+  "surface_m": [
+   0.57,
+   0.33
+  ]
+ },
+ "kowalski_kitchen_window": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "kowalski_kitchen",
+  "mean_lum": 0.56,
+  "mean_sat": 0.26,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.75,
+   0.55
+  ]
+ },
+ "kwik_stop_aisle_topsign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.59,
+  "mean_sat": 0.46,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 23.33,
+  "surface_m": [
+   2.8,
+   0.12
+  ]
+ },
+ "kwik_stop_aisle_topsign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.31,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.84,
+  "mean_sat": 0.18,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 23.33,
+  "surface_m": [
+   2.8,
+   0.12
+  ]
+ },
+ "kwik_stop_aisle_topsign_3": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.81,
+  "mean_sat": 0.21,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 23.33,
+  "surface_m": [
+   2.8,
+   0.12
+  ]
+ },
+ "kwik_stop_aisle_topsign_4": {
+  "alpha": false,
+  "border_vs_inner": 0.4,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.8,
+  "mean_sat": 0.22,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 23.33,
+  "surface_m": [
+   2.8,
+   0.12
+  ]
+ },
+ "kwik_stop_atm_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "kwik_stop",
+  "mean_lum": 0.37,
+  "mean_sat": 0.61,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.45,
+  "surface_m": [
+   0.16,
+   0.11
+  ]
+ },
+ "kwik_stop_banner_1": {
+  "alpha": false,
+  "border_vs_inner": 0.71,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.65,
+  "mean_sat": 0.26,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 9.23,
+  "surface_m": [
+   2.4,
+   0.26
+  ]
+ },
+ "kwik_stop_banner_2": {
+  "alpha": false,
+  "border_vs_inner": 0.59,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.71,
+  "mean_sat": 0.22,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   0.9,
+   0.18
+  ]
+ },
+ "kwik_stop_banner_3": {
+  "alpha": false,
+  "border_vs_inner": 0.42,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.46,
+  "mean_sat": 0.6,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.44,
+  "surface_m": [
+   0.8,
+   0.18
+  ]
+ },
+ "kwik_stop_banner_4": {
+  "alpha": false,
+  "border_vs_inner": 0.77,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.75,
+  "mean_sat": 0.34,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.67,
+  "surface_m": [
+   0.7,
+   0.15
+  ]
+ },
+ "kwik_stop_brand_1": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.83,
+  "mean_sat": 0.2,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.95,
+  "surface_m": [
+   1.79,
+   0.2
+  ]
+ },
+ "kwik_stop_brand_2": {
+  "alpha": false,
+  "border_vs_inner": 0.65,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "kwik_stop",
+  "mean_lum": 0.63,
+  "mean_sat": 0.44,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.17,
+  "surface_m": [
+   0.14,
+   0.12
+  ]
+ },
+ "kwik_stop_brand_3": {
+  "alpha": false,
+  "border_vs_inner": 0.62,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "kwik_stop",
+  "mean_lum": 0.66,
+  "mean_sat": 0.43,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.17,
+  "surface_m": [
+   0.14,
+   0.12
+  ]
+ },
+ "kwik_stop_calendar": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "kwik_stop",
+  "mean_lum": 0.62,
+  "mean_sat": 0.36,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.61,
+  "surface_m": [
+   0.2,
+   0.33
+  ]
+ },
+ "kwik_stop_cupstack_salesign": {
+  "alpha": false,
+  "border_vs_inner": 0.81,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.52,
+  "mean_sat": 0.67,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.22,
+  "surface_m": [
+   0.2,
+   0.09
+  ]
+ },
+ "kwik_stop_donut_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.45,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.73,
+  "mean_sat": 0.3,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.25,
+  "surface_m": [
+   0.42,
+   0.08
+  ]
+ },
+ "kwik_stop_fireext_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "kwik_stop",
+  "mean_lum": 0.33,
+  "mean_sat": 0.75,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.15,
+   0.15
+  ]
+ },
+ "kwik_stop_icemachine_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.62,
+  "mean_sat": 0.4,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.67,
+  "surface_m": [
+   0.4,
+   0.15
+  ]
+ },
+ "kwik_stop_icemachine_signtext": {
+  "alpha": false,
+  "border_vs_inner": 0.4,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.73,
+  "mean_sat": 0.27,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.5,
+  "surface_m": [
+   0.2,
+   0.08
+  ]
+ },
+ "kwik_stop_novelty_cooler_decal": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.58,
+  "mean_sat": 0.35,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   0.6,
+   0.2
+  ]
+ },
+ "kwik_stop_pizza_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "kwik_stop",
+  "mean_lum": 0.41,
+  "mean_sat": 0.67,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.25,
+   0.25
+  ]
+ },
+ "kwik_stop_poster_1": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "kwik_stop",
+  "mean_lum": 0.47,
+  "mean_sat": 0.47,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.6,
+  "surface_m": [
+   0.3,
+   0.5
+  ]
+ },
+ "kwik_stop_propanecage_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.33,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.8,
+  "mean_sat": 0.13,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.57,
+  "surface_m": [
+   0.6,
+   0.07
+  ]
+ },
+ "kwik_stop_pump_display_1": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "kwik_stop",
+  "mean_lum": 0.23,
+  "mean_sat": 0.26,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.2,
+   0.25
+  ]
+ },
+ "kwik_stop_pump_display_2": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "kwik_stop",
+  "mean_lum": 0.19,
+  "mean_sat": 0.25,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.2,
+   0.25
+  ]
+ },
+ "kwik_stop_register_display": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.12,
+  "mean_sat": 0.59,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.43,
+  "surface_m": [
+   0.17,
+   0.07
+  ]
+ },
+ "kwik_stop_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "kwik_stop",
+  "mean_lum": 0.65,
+  "mean_sat": 0.2,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.2,
+   0.1
+  ]
+ },
+ "kwik_stop_soccer_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "kwik_stop",
+  "mean_lum": 0.51,
+  "mean_sat": 0.43,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.29,
+  "surface_m": [
+   0.3,
+   0.07
+  ]
+ },
+ "kwik_stop_window_1": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "kwik_stop",
+  "mean_lum": 0.6,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.71,
+  "surface_m": [
+   1.2,
+   0.7
+  ]
+ },
+ "kwik_stop_window_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "kwik_stop",
+  "mean_lum": 0.6,
+  "mean_sat": 0.22,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.71,
+  "surface_m": [
+   1.2,
+   0.7
+  ]
+ },
+ "lena_apartment_canvas_1": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "lena_apartment",
+  "mean_lum": 0.6,
+  "mean_sat": 0.12,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.83,
+  "surface_m": [
+   0.34,
+   0.41
+  ]
+ },
+ "lena_apartment_canvas_2": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "lena_apartment",
+  "mean_lum": 0.51,
+  "mean_sat": 0.42,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.78,
+  "surface_m": [
+   0.28,
+   0.36
+  ]
+ },
+ "lena_apartment_nebula_1": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "lena_apartment",
+  "mean_lum": 0.33,
+  "mean_sat": 0.3,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   2.15,
+   1.43
+  ]
+ },
+ "lena_apartment_nebula_2": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "lena_apartment",
+  "mean_lum": 0.32,
+  "mean_sat": 0.35,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.09,
+  "surface_m": [
+   0.25,
+   0.23
+  ]
+ },
+ "lena_studio_canvas_1": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "lena_studio",
+  "mean_lum": 0.4,
+  "mean_sat": 0.23,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.48,
+  "surface_m": [
+   1.98,
+   1.34
+  ]
+ },
+ "lena_studio_old_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "lena_studio",
+  "mean_lum": 0.54,
+  "mean_sat": 0.39,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.92,
+  "surface_m": [
+   0.45,
+   0.49
+  ]
+ },
+ "lena_studio_win_n_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "lena_studio",
+  "mean_lum": 0.39,
+  "mean_sat": 0.17,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.92,
+  "surface_m": [
+   0.55,
+   0.6
+  ]
+ },
+ "little_switzerland_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.43,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "little_switzerland",
+  "mean_lum": 0.52,
+  "mean_sat": 0.36,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.62,
+  "surface_m": [
+   1.1,
+   0.42
+  ]
+ },
+ "little_switzerland_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.23,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "little_switzerland",
+  "mean_lum": 0.38,
+  "mean_sat": 0.31,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.67,
+  "surface_m": [
+   0.7,
+   0.15
+  ]
+ },
+ "maya_bedroom_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.53,
+  "mean_sat": 0.28,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.55,
+   0.4
+  ]
+ },
+ "maya_bedroom_framed_print": {
+  "alpha": false,
+  "border_vs_inner": 0.57,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.59,
+  "mean_sat": 0.11,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.87,
+  "surface_m": [
+   0.13,
+   0.15
+  ]
+ },
+ "maya_bedroom_hall_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.61,
+  "mean_sat": 0.08,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.87,
+  "surface_m": [
+   0.13,
+   0.15
+  ]
+ },
+ "maya_bedroom_hall_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.17,
+  "mean_sat": 0.13,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.87,
+  "surface_m": [
+   0.13,
+   0.15
+  ]
+ },
+ "maya_bedroom_hall_photo_3": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.53,
+  "mean_sat": 0.14,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.87,
+  "surface_m": [
+   0.13,
+   0.15
+  ]
+ },
+ "maya_bedroom_laptop_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.97,
+  "mean_sat": 0.04,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.42,
+  "surface_m": [
+   0.17,
+   0.12
+  ]
+ },
+ "maya_bedroom_tapestry_1": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "maya_bedroom",
+  "mean_lum": 0.47,
+  "mean_sat": 0.25,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.75,
+   0.55
+  ]
+ },
+ "miller_office_bianca_laptop_display": {
+  "alpha": false,
+  "border_vs_inner": 0.97,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "miller_office",
+  "mean_lum": 0.76,
+  "mean_sat": 0.15,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.56,
+  "surface_m": [
+   0.14,
+   0.09
+  ]
+ },
+ "miller_office_laptop_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "miller_office",
+  "mean_lum": 0.33,
+  "mean_sat": 0.42,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.64,
+  "surface_m": [
+   0.18,
+   0.11
+  ]
+ },
+ "miller_office_map_1": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "miller_office",
+  "mean_lum": 0.7,
+  "mean_sat": 0.23,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.62,
+  "surface_m": [
+   0.63,
+   0.39
+  ]
+ },
+ "miriam_subaru_county_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.42,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "miriam_subaru",
+  "mean_lum": 0.39,
+  "mean_sat": 0.65,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.22,
+  "surface_m": [
+   1.0,
+   0.45
+  ]
+ },
+ "missing_link_exterior_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.47,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "missing_link_exterior",
+  "mean_lum": 0.53,
+  "mean_sat": 0.42,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.34,
+  "surface_m": [
+   1.45,
+   0.62
+  ]
+ },
+ "missing_link_exterior_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.68,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "missing_link_exterior",
+  "mean_lum": 0.72,
+  "mean_sat": 0.27,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.25,
+  "surface_m": [
+   0.65,
+   0.2
+  ]
+ },
+ "missing_link_exterior_sign_3": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "missing_link_exterior",
+  "mean_lum": 0.32,
+  "mean_sat": 0.74,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.4,
+  "surface_m": [
+   0.14,
+   0.35
+  ]
+ },
+ "missing_link_interior_crossing_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.93,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.74,
+  "mean_sat": 0.35,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.23,
+   0.23
+  ]
+ },
+ "missing_link_interior_kitchendoor_1": {
+  "alpha": false,
+  "border_vs_inner": 0.46,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.63,
+  "mean_sat": 0.23,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.51,
+  "surface_m": [
+   0.57,
+   1.12
+  ]
+ },
+ "missing_link_interior_laminated_menu": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.78,
+  "mean_sat": 0.12,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.71,
+  "surface_m": [
+   0.12,
+   0.17
+  ]
+ },
+ "missing_link_interior_linksign": {
+  "alpha": false,
+  "border_vs_inner": 0.66,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.54,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.46,
+   0.23
+  ]
+ },
+ "missing_link_interior_menuboard_1": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.26,
+  "mean_sat": 0.14,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.29,
+  "surface_m": [
+   1.15,
+   0.35
+  ]
+ },
+ "missing_link_interior_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.34,
+  "mean_sat": 0.19,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.14,
+   0.14
+  ]
+ },
+ "missing_link_interior_pump_display_1": {
+  "alpha": false,
+  "border_vs_inner": 0.43,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.5,
+  "mean_sat": 0.17,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.18,
+   0.13
+  ]
+ },
+ "missing_link_interior_pump_display_2": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.4,
+  "mean_sat": 0.17,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.18,
+   0.13
+  ]
+ },
+ "missing_link_interior_window_1": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.37,
+  "mean_sat": 0.14,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.14,
+  "surface_m": [
+   0.64,
+   0.56
+  ]
+ },
+ "missing_link_interior_window_2": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.43,
+  "mean_sat": 0.12,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.14,
+  "surface_m": [
+   0.64,
+   0.56
+  ]
+ },
+ "missing_link_interior_window_3": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.43,
+  "mean_sat": 0.11,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.14,
+  "surface_m": [
+   0.64,
+   0.56
+  ]
+ },
+ "missing_link_interior_window_4": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "missing_link_interior",
+  "mean_lum": 0.32,
+  "mean_sat": 0.15,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.14,
+  "surface_m": [
+   0.64,
+   0.56
+  ]
+ },
+ "montreal_apartment_poster_1": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "montreal_apartment",
+  "mean_lum": 0.32,
+  "mean_sat": 0.26,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.3,
+   0.55
+  ]
+ },
+ "montreal_apartment_poster_2": {
+  "alpha": false,
+  "border_vs_inner": 0.38,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "montreal_apartment",
+  "mean_lum": 0.3,
+  "mean_sat": 0.56,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.28,
+   0.51
+  ]
+ },
+ "montreal_apartment_window": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "montreal_apartment",
+  "mean_lum": 0.37,
+  "mean_sat": 0.17,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.11,
+  "surface_m": [
+   1.0,
+   0.9
+  ]
+ },
+ "natalie_apartment_out_s_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "natalie_apartment",
+  "mean_lum": 0.31,
+  "mean_sat": 0.32,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.33,
+  "surface_m": [
+   8.0,
+   2.4
+  ]
+ },
+ "natalie_apartment_window": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "natalie_apartment",
+  "mean_lum": 0.17,
+  "mean_sat": 0.38,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.85,
+   0.85
+  ]
+ },
+ "nate_garage_bike_1": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "nate_garage",
+  "mean_lum": 0.47,
+  "mean_sat": 0.15,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.33,
+   0.33
+  ]
+ },
+ "nate_garage_bike_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "nate_garage",
+  "mean_lum": 0.46,
+  "mean_sat": 0.15,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.33,
+   0.33
+  ]
+ },
+ "nate_garage_bike_3": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "nate_garage",
+  "mean_lum": 0.47,
+  "mean_sat": 0.16,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.33,
+   0.33
+  ]
+ },
+ "nate_garage_bike_4": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "nate_garage",
+  "mean_lum": 0.47,
+  "mean_sat": 0.15,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.33,
+   0.33
+  ]
+ },
+ "nate_garage_flyer": {
+  "alpha": false,
+  "border_vs_inner": 0.66,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "nate_garage",
+  "mean_lum": 0.56,
+  "mean_sat": 0.41,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.79,
+  "surface_m": [
+   0.11,
+   0.14
+  ]
+ },
+ "nate_garage_wedding_band_poster": {
+  "alpha": false,
+  "border_vs_inner": 0.67,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "nate_garage",
+  "mean_lum": 0.48,
+  "mean_sat": 0.27,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.69,
+  "surface_m": [
+   0.2,
+   0.29
+  ]
+ },
+ "new_auburn_courtroom_bar_1": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.18,
+  "mean_sat": 0.5,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.7,
+  "surface_m": [
+   3.62,
+   0.47
+  ]
+ },
+ "new_auburn_courtroom_bar_2": {
+  "alpha": false,
+  "border_vs_inner": 0.52,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.44,
+  "mean_sat": 0.34,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.7,
+  "surface_m": [
+   3.62,
+   0.47
+  ]
+ },
+ "new_auburn_courtroom_bar_3": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.19,
+  "mean_sat": 0.59,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.3,
+   0.4
+  ]
+ },
+ "new_auburn_courtroom_bar_4": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.19,
+  "mean_sat": 0.58,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.3,
+   0.4
+  ]
+ },
+ "new_auburn_courtroom_clerk_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.36,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.86,
+  "mean_sat": 0.15,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.65,
+  "surface_m": [
+   0.28,
+   0.17
+  ]
+ },
+ "new_auburn_courtroom_window_1": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "WINDOW",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.42,
+  "mean_sat": 0.35,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.47,
+  "surface_m": [
+   0.8,
+   1.7
+  ]
+ },
+ "new_auburn_courtroom_window_2": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "WINDOW",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.42,
+  "mean_sat": 0.34,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.47,
+  "surface_m": [
+   0.8,
+   1.7
+  ]
+ },
+ "new_auburn_courtroom_window_3": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "WINDOW",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_auburn_courtroom",
+  "mean_lum": 0.45,
+  "mean_sat": 0.35,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.47,
+  "surface_m": [
+   0.8,
+   1.7
+  ]
+ },
+ "new_auburn_road_bypass_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.6,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.43,
+  "mean_sat": 0.72,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.67,
+  "surface_m": [
+   0.8,
+   0.3
+  ]
+ },
+ "new_auburn_road_cypress_motel_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.35,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.6,
+  "mean_sat": 0.5,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.2,
+  "surface_m": [
+   1.3,
+   0.25
+  ]
+ },
+ "new_auburn_road_cypress_motel_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.78,
+  "mean_sat": 0.3,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 6.15,
+  "surface_m": [
+   0.8,
+   0.13
+  ]
+ },
+ "new_auburn_road_cypress_motel_vacancy_neon": {
+  "alpha": false,
+  "border_vs_inner": 0.32,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.08,
+  "mean_sat": 0.45,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.89,
+  "surface_m": [
+   0.8,
+   0.09
+  ]
+ },
+ "new_auburn_road_foxhole_front_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.23,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.19,
+  "mean_sat": 0.25,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.29,
+  "surface_m": [
+   1.5,
+   0.35
+  ]
+ },
+ "new_auburn_road_lighting_van_logo": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.73,
+  "mean_sat": 0.17,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.2,
+  "surface_m": [
+   1.3,
+   0.25
+  ]
+ },
+ "new_auburn_road_marquee_1": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.22,
+  "mean_sat": 0.06,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.85,
+  "surface_m": [
+   1.2,
+   0.65
+  ]
+ },
+ "new_auburn_road_marquee_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.2,
+  "mean_sat": 0.04,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 11.88,
+  "surface_m": [
+   0.95,
+   0.08
+  ]
+ },
+ "new_auburn_road_napd_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.36,
+  "mean_sat": 0.48,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.9,
+   0.45
+  ]
+ },
+ "new_auburn_road_payday_loan_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.57,
+  "mean_sat": 0.72,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.71,
+  "surface_m": [
+   2.0,
+   0.35
+  ]
+ },
+ "new_auburn_road_ranch_gate_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.45,
+  "mean_sat": 0.32,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   1.0,
+   0.25
+  ]
+ },
+ "new_auburn_road_streetsign": {
+  "alpha": false,
+  "border_vs_inner": 0.74,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.68,
+  "mean_sat": 0.32,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.29,
+  "surface_m": [
+   0.6,
+   0.14
+  ]
+ },
+ "new_auburn_road_substation_1": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.27,
+  "mean_sat": 0.21,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.48,
+  "surface_m": [
+   0.5,
+   1.05
+  ]
+ },
+ "new_auburn_road_substation_2": {
+  "alpha": false,
+  "border_vs_inner": 0.4,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.53,
+  "mean_sat": 0.12,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.45,
+  "surface_m": [
+   0.47,
+   1.05
+  ]
+ },
+ "new_auburn_road_substation_3": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.31,
+  "mean_sat": 0.56,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.0,
+  "surface_m": [
+   1.5,
+   0.3
+  ]
+ },
+ "new_auburn_road_unit_1": {
+  "alpha": false,
+  "border_vs_inner": 0.62,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.42,
+  "mean_sat": 0.09,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.45,
+  "surface_m": [
+   0.47,
+   1.05
+  ]
+ },
+ "new_auburn_road_unit_2": {
+  "alpha": false,
+  "border_vs_inner": 0.8,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.65,
+  "mean_sat": 0.15,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.74,
+  "surface_m": [
+   0.61,
+   0.35
+  ]
+ },
+ "new_auburn_road_unit_3": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "new_auburn_road",
+  "mean_lum": 0.71,
+  "mean_sat": 0.18,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.1,
+  "surface_m": [
+   0.33,
+   0.3
+  ]
+ },
+ "new_orleans_apartment_out_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.78,
+  "locale": "new_orleans_apartment",
+  "mean_lum": 0.34,
+  "mean_sat": 0.32,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   10.0,
+   5.0
+  ]
+ },
+ "new_orleans_apartment_tv_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "new_orleans_apartment",
+  "mean_lum": 0.38,
+  "mean_sat": 0.62,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.42,
+   0.28
+  ]
+ },
+ "new_orleans_apartment_tv_2": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_orleans_apartment",
+  "mean_lum": 0.25,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.64,
+  "surface_m": [
+   0.36,
+   0.22
+  ]
+ },
+ "new_orleans_apartment_window_1": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "new_orleans_apartment",
+  "mean_lum": 0.24,
+  "mean_sat": 0.36,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.6,
+   1.1
+  ]
+ },
+ "new_orleans_apartment_window_2": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "new_orleans_apartment",
+  "mean_lum": 0.27,
+  "mean_sat": 0.37,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.6,
+   1.1
+  ]
+ },
+ "new_orleans_bar_atm_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.42,
+  "mean_sat": 0.61,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.15,
+   0.11
+  ]
+ },
+ "new_orleans_bar_bar_tv_1": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.48,
+  "mean_sat": 0.39,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.71,
+  "surface_m": [
+   0.65,
+   0.38
+  ]
+ },
+ "new_orleans_bar_beerneon_1": {
+  "alpha": false,
+  "border_vs_inner": 0.43,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.13,
+  "mean_sat": 0.75,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.96,
+  "surface_m": [
+   0.45,
+   0.23
+  ]
+ },
+ "new_orleans_bar_beerneon_2": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.16,
+  "mean_sat": 0.81,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.83,
+  "surface_m": [
+   0.42,
+   0.23
+  ]
+ },
+ "new_orleans_bar_chalk_corner_flyer_1": {
+  "alpha": false,
+  "border_vs_inner": 0.4,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.53,
+  "mean_sat": 0.32,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.21,
+   0.28
+  ]
+ },
+ "new_orleans_bar_chalk_corner_flyer_2": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.58,
+  "mean_sat": 0.51,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.18,
+   0.24
+  ]
+ },
+ "new_orleans_bar_chalk_corner_flyer_3": {
+  "alpha": false,
+  "border_vs_inner": 0.73,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.51,
+  "mean_sat": 0.26,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.15,
+   0.2
+  ]
+ },
+ "new_orleans_bar_chalk_corner_flyer_4": {
+  "alpha": false,
+  "border_vs_inner": 0.24,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.6,
+  "mean_sat": 0.26,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.15,
+   0.15
+  ]
+ },
+ "new_orleans_bar_exit_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.51,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.16,
+  "mean_sat": 0.69,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.42,
+  "surface_m": [
+   0.08,
+   0.19
+  ]
+ },
+ "new_orleans_bar_gator_plaque": {
+  "alpha": false,
+  "border_vs_inner": 1.16,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.34,
+  "mean_sat": 0.55,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.65,
+  "surface_m": [
+   0.45,
+   0.17
+  ]
+ },
+ "new_orleans_bar_missilecmd_marquee": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.26,
+  "mean_sat": 0.54,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.44,
+  "surface_m": [
+   0.31,
+   0.09
+  ]
+ },
+ "new_orleans_bar_missilecmd_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.1,
+  "mean_sat": 0.62,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.29,
+  "surface_m": [
+   0.27,
+   0.21
+  ]
+ },
+ "new_orleans_bar_open_neon": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_bar",
+  "mean_lum": 0.19,
+  "mean_sat": 0.78,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.38,
+  "surface_m": [
+   0.31,
+   0.13
+  ]
+ },
+ "new_orleans_office_out_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_office",
+  "mean_lum": 0.42,
+  "mean_sat": 0.44,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.89,
+  "surface_m": [
+   7.0,
+   1.8
+  ]
+ },
+ "new_orleans_office_site_calendar": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "new_orleans_office",
+  "mean_lum": 0.55,
+  "mean_sat": 0.15,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.56,
+  "surface_m": [
+   0.2,
+   0.36
+  ]
+ },
+ "new_orleans_room_laundromat_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.67,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_room",
+  "mean_lum": 0.48,
+  "mean_sat": 0.56,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.22,
+  "surface_m": [
+   1.2,
+   0.23
+  ]
+ },
+ "new_orleans_room_out_facade_1": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.33,
+  "locale": "new_orleans_room",
+  "mean_lum": 0.17,
+  "mean_sat": 0.5,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.4,
+  "surface_m": [
+   7.0,
+   5.0
+  ]
+ },
+ "new_orleans_room_out_facade_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_room",
+  "mean_lum": 0.27,
+  "mean_sat": 0.6,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.33,
+  "surface_m": [
+   6.0,
+   1.8
+  ]
+ },
+ "new_orleans_room_out_facade_3": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "new_orleans_room",
+  "mean_lum": 0.24,
+  "mean_sat": 0.4,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   6.0,
+   1.5
+  ]
+ },
+ "new_orleans_room_room_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "new_orleans_room",
+  "mean_lum": 0.38,
+  "mean_sat": 0.57,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.24,
+   0.16
+  ]
+ },
+ "new_orleans_room_window": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "new_orleans_room",
+  "mean_lum": 0.2,
+  "mean_sat": 0.55,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.63,
+   0.63
+  ]
+ },
+ "nexcorp_fueling_station_canopy_logo": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_fueling_station",
+  "mean_lum": 0.27,
+  "mean_sat": 0.76,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 11.33,
+  "surface_m": [
+   1.7,
+   0.15
+  ]
+ },
+ "nexcorp_fueling_station_counter_register_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "nexcorp_fueling_station",
+  "mean_lum": 0.63,
+  "mean_sat": 0.25,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.31,
+  "surface_m": [
+   0.17,
+   0.13
+  ]
+ },
+ "nexcorp_fueling_station_pump_display": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "nexcorp_fueling_station",
+  "mean_lum": 0.27,
+  "mean_sat": 0.21,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.25,
+   0.15
+  ]
+ },
+ "nexcorp_fueling_station_pylon_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_fueling_station",
+  "mean_lum": 0.37,
+  "mean_sat": 0.6,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   1.0,
+   0.25
+  ]
+ },
+ "nexcorp_fueling_station_restroom_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_fueling_station",
+  "mean_lum": 0.3,
+  "mean_sat": 0.67,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.5,
+  "surface_m": [
+   0.2,
+   0.08
+  ]
+ },
+ "nexcorp_fueling_station_store_parapet_logo": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_fueling_station",
+  "mean_lum": 0.31,
+  "mean_sat": 0.63,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.33,
+  "surface_m": [
+   1.5,
+   0.18
+  ]
+ },
+ "nexcorp_gas_go_aisle_endcap_water_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.39,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.52,
+  "mean_sat": 0.75,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   0.18,
+   0.09
+  ]
+ },
+ "nexcorp_gas_go_aisle_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.84,
+  "mean_sat": 0.16,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 19.23,
+  "surface_m": [
+   2.5,
+   0.13
+  ]
+ },
+ "nexcorp_gas_go_atm_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.32,
+  "mean_sat": 0.85,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.42,
+  "surface_m": [
+   0.17,
+   0.12
+  ]
+ },
+ "nexcorp_gas_go_far": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.78,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.71,
+  "mean_sat": 0.16,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.88,
+  "surface_m": [
+   4.5,
+   2.4
+  ]
+ },
+ "nexcorp_gas_go_hiring_poster": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.65,
+  "mean_sat": 0.57,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.56,
+  "surface_m": [
+   0.23,
+   0.41
+  ]
+ },
+ "nexcorp_gas_go_ice_1": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.66,
+  "mean_sat": 0.26,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.3,
+   0.55
+  ]
+ },
+ "nexcorp_gas_go_ice_2": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.66,
+  "mean_sat": 0.22,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.55,
+  "surface_m": [
+   0.3,
+   0.55
+  ]
+ },
+ "nexcorp_gas_go_ice_3": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.47,
+  "mean_sat": 0.62,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.82,
+  "surface_m": [
+   0.65,
+   0.17
+  ]
+ },
+ "nexcorp_gas_go_locker": {
+  "alpha": false,
+  "border_vs_inner": 0.0,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.44,
+  "mean_sat": 0.03,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.28,
+  "surface_m": [
+   0.24,
+   0.87
+  ]
+ },
+ "nexcorp_gas_go_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.71,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.65,
+  "mean_sat": 0.31,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.39,
+  "surface_m": [
+   0.25,
+   0.18
+  ]
+ },
+ "nexcorp_gas_go_pump_display_1": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.62,
+  "mean_sat": 0.44,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.25,
+   0.15
+  ]
+ },
+ "nexcorp_gas_go_pump_display_2": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.32,
+  "mean_sat": 0.2,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.25,
+   0.15
+  ]
+ },
+ "nexcorp_gas_go_pumpcontroller_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.31,
+  "mean_sat": 0.79,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.7,
+  "surface_m": [
+   0.37,
+   0.1
+  ]
+ },
+ "nexcorp_gas_go_window_s_decal_1": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.58,
+  "mean_sat": 0.32,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.2,
+   0.14
+  ]
+ },
+ "nexcorp_gas_go_window_s_decal_2": {
+  "alpha": false,
+  "border_vs_inner": 0.41,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "nexcorp_gas_go",
+  "mean_lum": 0.59,
+  "mean_sat": 0.67,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.2,
+   0.14
+  ]
+ },
+ "nightmare_cell_cot_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "nightmare_cell",
+  "mean_lum": 0.37,
+  "mean_sat": 0.21,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.39,
+  "surface_m": [
+   0.36,
+   0.93
+  ]
+ },
+ "nightmare_cell_may_calendar": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "nightmare_cell",
+  "mean_lum": 0.62,
+  "mean_sat": 0.17,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.8,
+  "surface_m": [
+   0.12,
+   0.15
+  ]
+ },
+ "periodic_table_diego": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "",
+  "fit": "crop",
+  "img_aspect": 1.78,
+  "locale": "diego_bedroom",
+  "mean_lum": 0.65,
+  "mean_sat": 0.23,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.48,
+  "surface_m": [
+   0.92,
+   0.62
+  ]
+ },
+ "pharmacy_aisle_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.52,
+  "mean_sat": 0.35,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.25,
+  "surface_m": [
+   0.65,
+   0.2
+  ]
+ },
+ "pharmacy_flu_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "pharmacy",
+  "mean_lum": 0.68,
+  "mean_sat": 0.29,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.56,
+  "surface_m": [
+   0.3,
+   0.54
+  ]
+ },
+ "pharmacy_office_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.36,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.61,
+  "mean_sat": 0.28,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.2,
+  "surface_m": [
+   0.66,
+   0.3
+  ]
+ },
+ "pharmacy_office_diploma_1": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.8,
+  "mean_sat": 0.2,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.31,
+  "surface_m": [
+   0.21,
+   0.16
+  ]
+ },
+ "pharmacy_office_diploma_2": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.85,
+  "mean_sat": 0.12,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.4,
+  "surface_m": [
+   0.14,
+   0.1
+  ]
+ },
+ "pharmacy_office_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.29,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "pharmacy",
+  "mean_lum": 0.76,
+  "mean_sat": 0.23,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.71,
+  "surface_m": [
+   0.29,
+   0.17
+  ]
+ },
+ "pharmacy_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.49,
+  "mean_sat": 0.62,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   0.45,
+   0.15
+  ]
+ },
+ "pharmacy_promo_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.52,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "pharmacy",
+  "mean_lum": 0.5,
+  "mean_sat": 0.42,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.3,
+   0.18
+  ]
+ },
+ "pharmacy_rx_monitor_1": {
+  "alpha": false,
+  "border_vs_inner": 0.33,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "pharmacy",
+  "mean_lum": 0.58,
+  "mean_sat": 0.27,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.63,
+  "surface_m": [
+   0.26,
+   0.16
+  ]
+ },
+ "pharmacy_rx_monitor_2": {
+  "alpha": false,
+  "border_vs_inner": 0.33,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "pharmacy",
+  "mean_lum": 0.58,
+  "mean_sat": 0.3,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.63,
+  "surface_m": [
+   0.26,
+   0.16
+  ]
+ },
+ "pharmacy_rx_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.43,
+  "mean_sat": 0.64,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.67,
+  "surface_m": [
+   0.55,
+   0.15
+  ]
+ },
+ "pharmacy_rx_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.41,
+  "mean_sat": 0.62,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.67,
+  "surface_m": [
+   0.55,
+   0.15
+  ]
+ },
+ "pharmacy_rx_sign_3": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "pharmacy",
+  "mean_lum": 0.4,
+  "mean_sat": 0.71,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.67,
+  "surface_m": [
+   0.55,
+   0.15
+  ]
+ },
+ "pit_stop_interior_menuboard_1": {
+  "alpha": false,
+  "border_vs_inner": 0.72,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "pit_stop_interior",
+  "mean_lum": 0.42,
+  "mean_sat": 0.13,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.67,
+  "surface_m": [
+   1.4,
+   0.3
+  ]
+ },
+ "pit_stop_interior_menuboard_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "pit_stop_interior",
+  "mean_lum": 0.65,
+  "mean_sat": 0.26,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.33,
+  "surface_m": [
+   0.28,
+   0.21
+  ]
+ },
+ "pit_stop_interior_menuboard_3": {
+  "alpha": false,
+  "border_vs_inner": 0.27,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "pit_stop_interior",
+  "mean_lum": 0.62,
+  "mean_sat": 0.22,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.33,
+  "surface_m": [
+   0.28,
+   0.21
+  ]
+ },
+ "pit_stop_interior_print": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "pit_stop_interior",
+  "mean_lum": 0.54,
+  "mean_sat": 0.03,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.17,
+   0.17
+  ]
+ },
+ "pit_stop_interior_prints": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "pit_stop_interior",
+  "mean_lum": 0.55,
+  "mean_sat": 0.47,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   0.08,
+   0.11
+  ]
+ },
+ "pit_stop_interior_strip_across_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "pit_stop_interior",
+  "mean_lum": 0.48,
+  "mean_sat": 0.38,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.29,
+  "surface_m": [
+   0.8,
+   0.35
+  ]
+ },
+ "pit_stop_office_monitor": {
+  "alpha": false,
+  "border_vs_inner": 0.77,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "pit_stop_office",
+  "mean_lum": 0.45,
+  "mean_sat": 0.26,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.2,
+   0.14
+  ]
+ },
+ "pit_stop_office_office_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.45,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "pit_stop_office",
+  "mean_lum": 0.63,
+  "mean_sat": 0.29,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.79,
+  "surface_m": [
+   0.68,
+   0.38
+  ]
+ },
+ "pit_stop_office_opening_day_photo": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "pit_stop_office",
+  "mean_lum": 0.49,
+  "mean_sat": 0.29,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.29,
+  "surface_m": [
+   0.18,
+   0.14
+  ]
+ },
+ "riverboat_interior_bc_bulletin": {
+  "alpha": false,
+  "border_vs_inner": 0.73,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "riverboat_interior",
+  "mean_lum": 0.54,
+  "mean_sat": 0.32,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.56,
+  "surface_m": [
+   0.7,
+   0.45
+  ]
+ },
+ "riverboat_interior_bc_timeclock_display": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "riverboat_interior",
+  "mean_lum": 0.1,
+  "mean_sat": 0.34,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.08,
+   0.08
+  ]
+ },
+ "riverboat_interior_cat_wallcalendar": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "riverboat_interior",
+  "mean_lum": 0.62,
+  "mean_sat": 0.32,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.83,
+  "surface_m": [
+   0.25,
+   0.3
+  ]
+ },
+ "riverboat_interior_helm_wifephoto": {
+  "alpha": false,
+  "border_vs_inner": 0.43,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "riverboat_interior",
+  "mean_lum": 0.42,
+  "mean_sat": 0.31,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.78,
+  "surface_m": [
+   0.07,
+   0.09
+  ]
+ },
+ "riverboat_interior_staffexit_exitsign": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverboat_interior",
+  "mean_lum": 0.43,
+  "mean_sat": 0.61,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.13,
+  "surface_m": [
+   0.25,
+   0.08
+  ]
+ },
+ "riverboat_interior_t17_1": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "riverboat_interior",
+  "mean_lum": 0.42,
+  "mean_sat": 0.57,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.08,
+  "surface_m": [
+   0.7,
+   0.65
+  ]
+ },
+ "riverfront_billboard_1": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "riverfront",
+  "mean_lum": 0.43,
+  "mean_sat": 0.47,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.8,
+  "surface_m": [
+   2.25,
+   1.25
+  ]
+ },
+ "riverfront_billboard_2": {
+  "alpha": false,
+  "border_vs_inner": 0.3,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.42,
+  "mean_sat": 0.53,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.5,
+  "surface_m": [
+   1.8,
+   0.4
+  ]
+ },
+ "riverfront_boatsign": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.2,
+  "mean_sat": 0.67,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.17,
+  "surface_m": [
+   3.8,
+   1.2
+  ]
+ },
+ "riverfront_exitsign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.21,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.55,
+  "mean_sat": 0.27,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.17,
+  "surface_m": [
+   2.5,
+   0.6
+  ]
+ },
+ "riverfront_farhill_1": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.63,
+  "mean_sat": 0.09,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.92,
+  "surface_m": [
+   17.5,
+   6.0
+  ]
+ },
+ "riverfront_farhill_2": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 1.78,
+  "locale": "riverfront",
+  "mean_lum": 0.62,
+  "mean_sat": 0.11,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 2.0,
+  "surface_m": [
+   14.0,
+   7.0
+  ]
+ },
+ "riverfront_farhill_3": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.55,
+  "mean_sat": 0.1,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.0,
+  "surface_m": [
+   15.0,
+   5.0
+  ]
+ },
+ "riverfront_farhill_4": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.6,
+  "mean_sat": 0.06,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   16.0,
+   4.0
+  ]
+ },
+ "riverfront_gasstation_pump_screen_1": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.18,
+  "mean_sat": 0.15,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.33,
+  "surface_m": [
+   0.35,
+   0.15
+  ]
+ },
+ "riverfront_gasstation_pump_screen_2": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.27,
+  "mean_sat": 0.26,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.33,
+  "surface_m": [
+   0.35,
+   0.15
+  ]
+ },
+ "riverfront_gasstation_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.46,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "riverfront",
+  "mean_lum": 0.67,
+  "mean_sat": 0.5,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   1.5,
+   1.2
+  ]
+ },
+ "riverfront_gasstation_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.22,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "riverfront",
+  "mean_lum": 0.63,
+  "mean_sat": 0.4,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   1.2,
+   0.8
+  ]
+ },
+ "riverfront_hwy_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.32,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.39,
+  "mean_sat": 0.36,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.81,
+  "surface_m": [
+   2.25,
+   0.8
+  ]
+ },
+ "riverfront_park_signpanel": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.43,
+  "mean_sat": 0.34,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.4,
+  "surface_m": [
+   0.6,
+   0.25
+  ]
+ },
+ "riverfront_park_signtext": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.43,
+  "mean_sat": 0.27,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 5.56,
+  "surface_m": [
+   0.5,
+   0.09
+  ]
+ },
+ "riverfront_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.12,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.18,
+  "mean_sat": 0.63,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.2,
+  "surface_m": [
+   3.2,
+   1.0
+  ]
+ },
+ "riverfront_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.19,
+  "mean_sat": 0.69,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.2,
+  "surface_m": [
+   3.2,
+   1.0
+  ]
+ },
+ "riverfront_stripmall_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.49,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "riverfront",
+  "mean_lum": 0.74,
+  "mean_sat": 0.29,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.14,
+  "surface_m": [
+   2.0,
+   0.28
+  ]
+ },
+ "roberts_kitchen_counterrun_1": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.43,
+  "mean_sat": 0.66,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.97,
+  "surface_m": [
+   0.57,
+   0.29
+  ]
+ },
+ "roberts_kitchen_counterrun_2": {
+  "alpha": false,
+  "border_vs_inner": 0.09,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.45,
+  "mean_sat": 0.6,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.1,
+  "surface_m": [
+   0.32,
+   0.29
+  ]
+ },
+ "roberts_kitchen_counterrun_3": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.43,
+  "mean_sat": 0.64,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 7.12,
+  "surface_m": [
+   0.57,
+   0.08
+  ]
+ },
+ "roberts_kitchen_counterrun_4": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.46,
+  "mean_sat": 0.61,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 4.0,
+  "surface_m": [
+   0.32,
+   0.08
+  ]
+ },
+ "roberts_kitchen_dining_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.53,
+  "mean_sat": 0.11,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.3,
+  "surface_m": [
+   0.13,
+   0.1
+  ]
+ },
+ "roberts_kitchen_dining_photo_2": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.56,
+  "mean_sat": 0.3,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.77,
+  "surface_m": [
+   0.1,
+   0.13
+  ]
+ },
+ "roberts_kitchen_foyer_photo_1": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.8,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.45,
+  "mean_sat": 0.33,
+  "px": [
+   1024,
+   1280
+  ],
+  "surface_aspect": 0.78,
+  "surface_m": [
+   0.07,
+   0.09
+  ]
+ },
+ "roberts_kitchen_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.49,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.29,
+  "mean_sat": 0.55,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.33,
+  "surface_m": [
+   0.2,
+   0.15
+  ]
+ },
+ "roberts_kitchen_window": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "roberts_kitchen",
+  "mean_lum": 0.44,
+  "mean_sat": 0.31,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.55,
+  "surface_m": [
+   0.85,
+   0.55
+  ]
+ },
+ "safehouse_bedroom_hall_print": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "safehouse_bedroom",
+  "mean_lum": 0.6,
+  "mean_sat": 0.37,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.25,
+   0.2
+  ]
+ },
+ "safehouse_bedroom_window": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "safehouse_bedroom",
+  "mean_lum": 0.45,
+  "mean_sat": 0.22,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 0.97,
+  "surface_m": [
+   0.6,
+   0.62
+  ]
+ },
+ "salty_tome_interior_alley_muralwall": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "PICTURE",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.18,
+  "mean_sat": 0.35,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 21.6,
+  "surface_m": [
+   5.4,
+   0.25
+  ]
+ },
+ "salty_tome_interior_canvas": {
+  "alpha": false,
+  "border_vs_inner": 0.43,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.39,
+  "mean_sat": 0.16,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.4,
+  "surface_m": [
+   0.14,
+   0.1
+  ]
+ },
+ "salty_tome_interior_hemlock_across_facade": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.3,
+  "mean_sat": 0.15,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.25,
+  "surface_m": [
+   6.5,
+   2.0
+  ]
+ },
+ "salty_tome_interior_nebula_1": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.34,
+  "mean_sat": 0.37,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 3.88,
+  "surface_m": [
+   6.05,
+   1.56
+  ]
+ },
+ "salty_tome_interior_nebula_2": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.27,
+  "mean_sat": 0.38,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.17,
+   0.17
+  ]
+ },
+ "salty_tome_interior_slowterminal_screen": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "salty_tome_interior",
+  "mean_lum": 0.22,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.36,
+  "surface_m": [
+   0.15,
+   0.11
+  ]
+ },
+ "sam_bedroom_bed_print": {
+  "alpha": false,
+  "border_vs_inner": 0.05,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "sam_bedroom",
+  "mean_lum": 0.66,
+  "mean_sat": 0.28,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.43,
+  "surface_m": [
+   0.3,
+   0.21
+  ]
+ },
+ "sam_bedroom_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.57,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "sam_bedroom",
+  "mean_lum": 0.49,
+  "mean_sat": 0.36,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.74,
+  "surface_m": [
+   0.61,
+   0.35
+  ]
+ },
+ "sam_bedroom_curtain_1": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "sam_bedroom",
+  "mean_lum": 0.75,
+  "mean_sat": 0.14,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.18,
+  "surface_m": [
+   0.17,
+   0.95
+  ]
+ },
+ "sam_bedroom_curtain_2": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "sam_bedroom",
+  "mean_lum": 0.7,
+  "mean_sat": 0.19,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.18,
+  "surface_m": [
+   0.17,
+   0.95
+  ]
+ },
+ "sam_bedroom_curtain_3": {
+  "alpha": false,
+  "border_vs_inner": 0.06,
+  "cat": "PAINTED",
+  "fit": "crop",
+  "img_aspect": 0.56,
+  "locale": "sam_bedroom",
+  "mean_lum": 0.83,
+  "mean_sat": 0.02,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.2,
+  "surface_m": [
+   0.13,
+   0.65
+  ]
+ },
+ "sam_bedroom_window": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "sam_bedroom",
+  "mean_lum": 0.44,
+  "mean_sat": 0.33,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.21,
+  "surface_m": [
+   0.58,
+   0.48
+  ]
+ },
+ "sam_photo_diego": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "diego_bedroom",
+  "mean_lum": 0.6,
+  "mean_sat": 0.22,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.075,
+   0.1
+  ]
+ },
+ "sapo_falls_tepui_far": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 0.75,
+  "locale": "sapo_falls",
+  "mean_lum": 0.43,
+  "mean_sat": 0.25,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.73,
+  "surface_m": [
+   3.5,
+   4.8
+  ]
+ },
+ "school_field_evening_banner": {
+  "alpha": false,
+  "border_vs_inner": 0.1,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "school_field_evening",
+  "mean_lum": 0.41,
+  "mean_sat": 0.39,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 8.0,
+  "surface_m": [
+   2.8,
+   0.35
+  ]
+ },
+ "school_field_evening_bleach_pressbox_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "school_field_evening",
+  "mean_lum": 0.29,
+  "mean_sat": 0.55,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 10.5,
+  "surface_m": [
+   2.1,
+   0.2
+  ]
+ },
+ "school_field_evening_corkboard": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "school_field_evening",
+  "mean_lum": 0.47,
+  "mean_sat": 0.35,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.4,
+  "surface_m": [
+   0.7,
+   0.5
+  ]
+ },
+ "school_field_evening_depthchart": {
+  "alpha": false,
+  "border_vs_inner": 0.59,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "school_field_evening",
+  "mean_lum": 0.77,
+  "mean_sat": 0.11,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.71,
+  "surface_m": [
+   0.15,
+   0.21
+  ]
+ },
+ "school_field_evening_score": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "PAINTED",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "school_field_evening",
+  "mean_lum": 0.19,
+  "mean_sat": 0.35,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.67,
+  "surface_m": [
+   0.4,
+   0.6
+  ]
+ },
+ "school_newspaper_computer_monitor_1": {
+  "alpha": false,
+  "border_vs_inner": 0.38,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "school_newspaper",
+  "mean_lum": 0.63,
+  "mean_sat": 0.04,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.15,
+   0.12
+  ]
+ },
+ "school_newspaper_computer_monitor_2": {
+  "alpha": false,
+  "border_vs_inner": 0.74,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "school_newspaper",
+  "mean_lum": 0.75,
+  "mean_sat": 0.06,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.15,
+   0.12
+  ]
+ },
+ "school_newspaper_computer_monitor_3": {
+  "alpha": false,
+  "border_vs_inner": 0.16,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "school_newspaper",
+  "mean_lum": 0.6,
+  "mean_sat": 0.04,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.25,
+  "surface_m": [
+   0.15,
+   0.12
+  ]
+ },
+ "school_newspaper_hall_poster": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "school_newspaper",
+  "mean_lum": 0.36,
+  "mean_sat": 0.7,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.3,
+   0.4
+  ]
+ },
+ "school_newspaper_win_e_0_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.11,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "school_newspaper",
+  "mean_lum": 0.51,
+  "mean_sat": 0.2,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.19,
+  "surface_m": [
+   0.95,
+   0.8
+  ]
+ },
+ "school_newspaper_win_e_1_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.27,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "school_newspaper",
+  "mean_lum": 0.46,
+  "mean_sat": 0.17,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.19,
+  "surface_m": [
+   0.95,
+   0.8
+  ]
+ },
+ "school_newspaper_win_e_2_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.19,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "school_newspaper",
+  "mean_lum": 0.49,
+  "mean_sat": 0.1,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.19,
+  "surface_m": [
+   0.95,
+   0.8
+  ]
+ },
+ "small_wood_rec_center_bulletin_1": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.56,
+  "mean_sat": 0.34,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.6,
+   0.4
+  ]
+ },
+ "small_wood_rec_center_bulletin_2": {
+  "alpha": false,
+  "border_vs_inner": 0.24,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.59,
+  "mean_sat": 0.14,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.09,
+   0.12
+  ]
+ },
+ "small_wood_rec_center_bulletin_3": {
+  "alpha": false,
+  "border_vs_inner": 0.18,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.79,
+  "mean_sat": 0.19,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.75,
+  "surface_m": [
+   0.09,
+   0.12
+  ]
+ },
+ "small_wood_rec_center_restroom_sign_1": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.29,
+  "mean_sat": 0.74,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.09,
+   0.09
+  ]
+ },
+ "small_wood_rec_center_restroom_sign_2": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.28,
+  "mean_sat": 0.72,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.0,
+  "surface_m": [
+   0.09,
+   0.09
+  ]
+ },
+ "small_wood_rec_center_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.28,
+  "mean_sat": 0.18,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.16,
+  "surface_m": [
+   0.22,
+   0.19
+  ]
+ },
+ "small_wood_rec_center_window_1": {
+  "alpha": false,
+  "border_vs_inner": 0.08,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.16,
+  "mean_sat": 0.35,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.27,
+  "surface_m": [
+   0.7,
+   0.55
+  ]
+ },
+ "small_wood_rec_center_window_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.19,
+  "mean_sat": 0.32,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.27,
+  "surface_m": [
+   0.7,
+   0.55
+  ]
+ },
+ "small_wood_rec_center_window_3": {
+  "alpha": false,
+  "border_vs_inner": 0.03,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "small_wood_rec_center",
+  "mean_lum": 0.13,
+  "mean_sat": 0.3,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.27,
+  "surface_m": [
+   0.7,
+   0.55
+  ]
+ },
+ "small_wood_road_county_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.2,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "small_wood_road",
+  "mean_lum": 0.36,
+  "mean_sat": 0.5,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.4,
+  "surface_m": [
+   0.6,
+   0.25
+  ]
+ },
+ "smolvud_coop_cooler_header_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.26,
+  "cat": "SIGN",
+  "fit": "crop",
+  "img_aspect": 2.33,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.86,
+  "mean_sat": 0.07,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 30.67,
+  "surface_m": [
+   4.6,
+   0.15
+  ]
+ },
+ "smolvud_coop_corkboard_1": {
+  "alpha": false,
+  "border_vs_inner": 0.28,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.25,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.56,
+  "mean_sat": 0.41,
+  "px": [
+   1280,
+   1024
+  ],
+  "surface_aspect": 1.12,
+  "surface_m": [
+   0.55,
+   0.49
+  ]
+ },
+ "smolvud_coop_corkboard_2": {
+  "alpha": false,
+  "border_vs_inner": 0.47,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.68,
+  "mean_sat": 0.21,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.77,
+  "surface_m": [
+   0.1,
+   0.13
+  ]
+ },
+ "smolvud_coop_corkboard_3": {
+  "alpha": false,
+  "border_vs_inner": 0.07,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.7,
+  "mean_sat": 0.24,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.77,
+  "surface_m": [
+   0.1,
+   0.13
+  ]
+ },
+ "smolvud_coop_corkboard_4": {
+  "alpha": false,
+  "border_vs_inner": 0.22,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.71,
+  "mean_sat": 0.7,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.77,
+  "surface_m": [
+   0.1,
+   0.13
+  ]
+ },
+ "smolvud_coop_register_tablet": {
+  "alpha": false,
+  "border_vs_inner": 0.13,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.83,
+  "mean_sat": 0.15,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.44,
+  "surface_m": [
+   0.13,
+   0.09
+  ]
+ },
+ "smolvud_coop_window_1": {
+  "alpha": false,
+  "border_vs_inner": 0.17,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 2.33,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.34,
+  "mean_sat": 0.23,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 2.19,
+  "surface_m": [
+   2.3,
+   1.05
+  ]
+ },
+ "smolvud_coop_window_2": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.0,
+  "locale": "smolvud_coop",
+  "mean_lum": 0.33,
+  "mean_sat": 0.18,
+  "px": [
+   1024,
+   1024
+  ],
+  "surface_aspect": 1.05,
+  "surface_m": [
+   1.1,
+   1.05
+  ]
+ },
+ "smolvud_jetty_far": {
+  "alpha": false,
+  "border_vs_inner": 0.34,
+  "cat": "BACKLOT",
+  "fit": "tile",
+  "img_aspect": 2.33,
+  "locale": "smolvud_jetty",
+  "mean_lum": 0.53,
+  "mean_sat": 0.06,
+  "px": [
+   1792,
+   768
+  ],
+  "surface_aspect": 11.67,
+  "surface_m": [
+   70.0,
+   6.0
+  ]
+ },
+ "smolvud_jetty_jetty_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.25,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "smolvud_jetty",
+  "mean_lum": 0.51,
+  "mean_sat": 0.57,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.52,
+  "surface_m": [
+   0.35,
+   0.23
+  ]
+ },
+ "vehicle_cab_altima_map": {
+  "alpha": false,
+  "border_vs_inner": 0.89,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "vehicle_cab",
+  "mean_lum": 0.62,
+  "mean_sat": 0.07,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.11,
+   0.08
+  ]
+ },
+ "vehicle_cab_corolla_map": {
+  "alpha": false,
+  "border_vs_inner": 0.01,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "vehicle_cab",
+  "mean_lum": 0.72,
+  "mean_sat": 0.18,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.11,
+   0.08
+  ]
+ },
+ "vehicle_cab_map": {
+  "alpha": false,
+  "border_vs_inner": 0.15,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.33,
+  "locale": "vehicle_cab",
+  "mean_lum": 0.67,
+  "mean_sat": 0.08,
+  "px": [
+   1536,
+   1152
+  ],
+  "surface_aspect": 1.38,
+  "surface_m": [
+   0.11,
+   0.08
+  ]
+ },
+ "vehicle_cab_mile_marker_sign": {
+  "alpha": false,
+  "border_vs_inner": 0.42,
+  "cat": "SIGN",
+  "fit": "exact",
+  "img_aspect": 0.56,
+  "locale": "vehicle_cab",
+  "mean_lum": 0.43,
+  "mean_sat": 0.55,
+  "px": [
+   864,
+   1536
+  ],
+  "surface_aspect": 0.61,
+  "surface_m": [
+   0.11,
+   0.18
+  ]
+ },
+ "wagner_home_fridge_flyer": {
+  "alpha": false,
+  "border_vs_inner": 0.49,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.75,
+  "locale": "wagner_home",
+  "mean_lum": 0.56,
+  "mean_sat": 0.06,
+  "px": [
+   1152,
+   1536
+  ],
+  "surface_aspect": 0.77,
+  "surface_m": [
+   0.1,
+   0.13
+  ]
+ },
+ "wagner_home_poster_1": {
+  "alpha": false,
+  "border_vs_inner": 0.22,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "wagner_home",
+  "mean_lum": 0.29,
+  "mean_sat": 0.04,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.5,
+  "surface_m": [
+   0.45,
+   0.3
+  ]
+ },
+ "wagner_home_poster_2": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "wagner_home",
+  "mean_lum": 0.29,
+  "mean_sat": 0.04,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.68,
+  "surface_m": [
+   0.3,
+   0.44
+  ]
+ },
+ "wagner_home_poster_3": {
+  "alpha": false,
+  "border_vs_inner": 0.02,
+  "cat": "PICTURE",
+  "fit": "exact",
+  "img_aspect": 0.67,
+  "locale": "wagner_home",
+  "mean_lum": 0.23,
+  "mean_sat": 0.03,
+  "px": [
+   1024,
+   1536
+  ],
+  "surface_aspect": 0.68,
+  "surface_m": [
+   0.3,
+   0.44
+  ]
+ },
+ "wagner_home_tv": {
+  "alpha": false,
+  "border_vs_inner": 0.14,
+  "cat": "SCREEN",
+  "fit": "exact",
+  "img_aspect": 1.78,
+  "locale": "wagner_home",
+  "mean_lum": 0.48,
+  "mean_sat": 0.23,
+  "px": [
+   1536,
+   864
+  ],
+  "surface_aspect": 1.67,
+  "surface_m": [
+   0.55,
+   0.33
+  ]
+ },
+ "wagner_home_win_s_glass": {
+  "alpha": false,
+  "border_vs_inner": 0.04,
+  "cat": "WINDOW",
+  "fit": "exact",
+  "img_aspect": 1.5,
+  "locale": "wagner_home",
+  "mean_lum": 0.47,
+  "mean_sat": 0.26,
+  "px": [
+   1536,
+   1024
+  ],
+  "surface_aspect": 1.57,
+  "surface_m": [
+   1.1,
+   0.7
+  ]
+ }
+}
