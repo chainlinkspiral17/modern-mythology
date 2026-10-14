@@ -925,6 +925,103 @@ context keeps running into a fake sink, and the meters still move.
   value synchronously after a synthetic focus event, but the handler
   is async. It now polls.
 
+### 2026-10-13 — 26 styles: the score bible's 16 genres built for real
+
+- The score bible names 16 genres that were placeholders (clones of
+  the nearest style). Each is now a real `STYLES` entry with its own:
+  - grooves, bass / chords / lead / pad vocabularies, prog family,
+    modes, harmonic rhythm and `EXT_W`;
+  - FORGE pick + `FORGE_POOLS`;
+  - `PERC_FOR` / `TEXTURE_FOR` / `FX_FOR` / `HIT_FOR`;
+  - `KIT_STYLES` pieces in daw_engine.js.
+  `PLACEHOLDER` stays as an empty table for the next unbuilt id.
+- The 10 existing styles render byte-identical songs: every new
+  choice is gated so it consumes no RNG for an old style (checked by
+  diffing `song()` JSON before/after for every style × form × seed).
+- What makes each one idiomatic (small-town, nocturnal, haunted):
+  - **folk**: brush two-step / train beat / porch stomp-clap;
+    two-beat bass with walk-ups; Travis fingerpicking or boom-chick;
+    a long "whistle" lead (harmonica, dobro, flute); I–IV–V family.
+  - **chamber**: no kit (a timpani stroke, a soft roll); a cello line
+    stepping toward the next root; strings in tremolo, pulse,
+    chorale or broken chords.
+  - **piano**: solo — bass and lead are *linked* to the chords'
+    instrument (`link`), so one piano plays both hands; alberti,
+    rubato block chords (a hair late, sometimes rolled), lh octaves.
+  - **hymn**: four-part chorale in half notes, the top voice moving
+    on repeats, cadences held; a pedal bass in halves stepping by
+    quarters; a stepwise "hymn" melody; organ, choir, horns.
+  - **dark_drone**: a bed by default; drones and a cluster pad (a
+    minor ninth creeping in, sometimes the tritone); theremin, bowls.
+  - **synth_horror**: a pulse on the tonic pedal under moving chords
+    (8ths, 16ths, 3-3-2), horror progressions (i–bII, i–bVI);
+    the "only the ticking hat" groove.
+  - **jazz**: triplet ride (spang-a-lang), hat on 2 & 4, brushes;
+    stand-up walking with chromatic enclosures and ghosted skips;
+    rootless shells comped off the beat; ii–V families (a
+    `jazz_minor` family for minor modes); a blue-note lead.
+  - **dub**: one drop / steppers / rockers; a riff bass that leaves
+    the one; skanks on 2 & 4 with echoes; the organ bubble; melodica.
+  - **post_rock**: floor-tom pulse → climax groove; tremolo chords
+    swelling across the section, dotted-eighth delay arps; a rising
+    pad.
+  - **lullaby**: 12/8 inside 4/4: triplet alberti, a lilting music-box
+    lead, swung eighths, a nursery clock on claves.
+  - **industrial**: sequencer-gated bass, palm-muted power-chord
+    chugs, anvil/pipe hits (retuned cowbell / clave), 3-3-3-3-4 kicks.
+  - **surf**: tom-tom beats, two-beat bass, tremolo-picked lead and
+    chords, Farfisa-ish organ pad.
+  - **bayou**: triplet shuffle and zydeco two-step with washboard;
+    a boogie bass with the blue third slid into; accordion-ish reeds
+    on the offbeat or four to the bar; blues family.
+  - **minimal**: an additive ostinato (5–7 notes, phasing against
+    the bar, one note longer every four bars); clapping-music cell on
+    claves; marimba, vibes, organ.
+  - **chiptune**: 32nd-note chord arpeggios, staccato lead with
+    arpeggio bursts, retuned kit.
+  - **trip_hop**: dusty half-time breaks with ghosts, dub bass,
+    dotted-eighth Rhodes, theremin / strings.
+- New figure kinds:
+  - bass: `two_beat`, `stepwise`, `chorale_bass`, `lh_octave`,
+    `dub`, `pedal_pulse`, `machine`, `swamp`, `stand_up`;
+  - chords: `fingerpick`, `boomchick`, `chorale`, `tremolo`,
+    `skank`, `bubble`, `four`, `shell`, `alberti`, `block`,
+    `ostinato`, `chip_arp`, `dotted`, `chug`;
+  - lead: `whistle`, `hymn`, `chip`, `lilt`, `trem`, `blue`;
+  - pad: `cluster`, `rise`, `open`.
+  - A section-long pick (riff, gate, fingerpick pattern, ostinato
+    cell) uses a `once()` memo, so a figure stays one figure for a
+    section.
+- Engine additions (all opt-in per style):
+  - a 12-character drum grid is a bar of triplet eighths;
+  - a grid may carry a velocity (`'1000/prob/vel'`); a probability
+    above 1 keeps the jazz ride steady through the density thinning;
+  - extra drum voices: hat_p, tamb, cowbell, conga, conga_lo, clave,
+    tom_lo, tom_hi;
+  - `trip8` swings offbeat eighths onto the triplet — the engine's
+    `swing` only moves off-sixteenths;
+  - `fills` (a style's fill pool; `['none']`), `nocrash`, `bed`;
+  - `<family>_minor` progression families for minor modes;
+  - an EXT `sixth`.
+- MOODS: genre words ("hymn", "accordion", "fiddle", "cello",
+  "rumble", "jazz", "music box", …) now come first and win a tie with
+  a scene word. 8 of 179 catalog tracks moved: the hymn tracks →
+  hymn, the Lake Charles accordion → bayou, the cello → chamber, the
+  fiddle / acoustic-guitar signatures → folk, the Vagrant's "low
+  rumble" → dark_drone. Words match as substrings, so they stay
+  specific ('dub ' not 'dub').
+- Tests:
+  - data: `composer variety` covers all 26; the drumless five get
+    `kick: 1`;
+  - data: a `genre idioms` test — swung eighths, no snare/hats in the
+    drumless styles, the dub bass mostly off the one, the horror
+    pedal on the tonic, the lullaby lead on the triplet, one piano;
+  - daw: every style composes onto FORGE / KIT and renders a 2-bar
+    loop offline, finite and audible.
+- Not done: temp_maker's PATCH BANK picks (`PATCH_PICKS`) still fall
+  back to lo-fi's for the new styles. FORGE is the default
+  instrument path.
+
 ## TEMPLATE
 
 ```
