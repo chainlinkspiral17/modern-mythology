@@ -25,6 +25,11 @@ const LIFT := 0.002          # off the surface, so the quad never fights it
 
 static var _rows_by_locale: Dictionary = {}
 static var _loaded: bool = false
+## (2026-10-14) what the last apply() did, picture by picture — "placed",
+## "no picture installed", "picture did not load", "stand-in not found" —
+## for the contact sheet's report (the Deck's renders could not say why a
+## picture was missing).
+static var last_report: Dictionary = {}
 
 
 static func _load_roster() -> void:
@@ -62,6 +67,7 @@ static func _load_roster() -> void:
 ## Lay every installed picture for `locale` on its surface under `root`.
 ## Returns how many pictures went up.
 static func apply(root: Node, locale: String) -> int:
+	last_report = {}
 	if root == null:
 		return 0
 	if not _loaded:
@@ -72,20 +78,33 @@ static func apply(root: Node, locale: String) -> int:
 	var items: Array = _rows_by_locale[locale]
 	for iv: Variant in items:
 		var it: Dictionary = iv
+		var slug: String = String(it["slug"])
 		var tex: Texture2D = _texture(String(it["stem"]))
 		if tex == null:
+			last_report[slug] = _why_missing(String(it["stem"]))
 			continue
 		var row: Dictionary = it["row"]
 		var quad: MeshInstance3D = _quad(tex, row)
-		quad.name = "HeroArt_" + String(it["slug"])
+		quad.name = "HeroArt_" + slug
 		root.add_child(quad)
+		var hid: int = 0
 		var hide_v: Variant = row.get("hide", [])
 		if typeof(hide_v) == TYPE_ARRAY:
-			_hide(root, hide_v as Array, quad)
+			hid = _hide(root, hide_v as Array, quad)
+		last_report[slug] = "placed (%dx%d px), %d stand-in piece(s) hidden" % [tex.get_width(), tex.get_height(), hid] \
+			if hid > 0 or (hide_v as Array).is_empty() else "placed, but its stand-in was NOT found (it may cover the picture)"
 		placed += 1
 	if placed > 0:
 		print("[HeroArt] %s: %d picture(s) laid on their surfaces" % [locale, placed])
 	return placed
+
+
+static func _why_missing(stem: String) -> String:
+	for ext: String in EXTS:
+		var path: String = ART_ROOT + stem + ext
+		if FileAccess.file_exists(path) or ResourceLoader.exists(path):
+			return "picture did not load (%s)" % path.get_file()
+	return "no picture installed"
 
 
 static func _texture(stem: String) -> Texture2D:
@@ -118,6 +137,15 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 	mat.metallic_specular = 0.12
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	# (2026-10-14) a screen or a neon sign makes its own light — painted
+	# like a poster it went dead in every night room. `glow` (roster row) is
+	# the emission energy: the picture itself lights, on top of the room's
+	var glow: float = float(row.get("glow", 0.0))
+	if glow > 0.0:
+		mat.emission_enabled = true
+		mat.emission_texture = tex
+		mat.emission = Color(1, 1, 1)
+		mat.emission_energy_multiplier = glow
 	# (2026-10-13) never stretch: a backdrop card (`fit: tile`) far wider
 	# than any generator's widest frame (21:9) — a 150 m bluff, an 18 m
 	# treeline — repeats the picture across its width; any other surface
@@ -172,29 +200,57 @@ static func _quad(tex: Texture2D, row: Dictionary) -> MeshInstance3D:
 ## its rectangle (+15 cm) and within 30 cm of its plane. When nothing
 ## matched there (a builder that parents its pieces at the origin), every
 ## match in the room hides, as before.
-static func _hide(root: Node, prefixes: Array, quad: MeshInstance3D = null) -> void:
+static func _hide(root: Node, prefixes: Array, quad: MeshInstance3D = null) -> int:
 	if prefixes.is_empty():
-		return
-	var matches: Array[Node3D] = []
+		return 0
+	# exact names, `Name_` prefixes, and (2026-10-14) a stand-in's own parts
+	# — Donut_Sign's Donut_SignText, Poster_Faded's Poster_Faded_Title, the
+	# lettering boxes that sit in front of the sign face and would float over
+	# the picture — which are hidden only when they lie under this picture
+	var exact: Array[Node3D] = []
+	var parts: Array[Node3D] = []
 	for n: Node in root.find_children("*", "Node3D", true, false):
 		var nm: String = String(n.name)
 		if nm.begins_with("HeroArt_"):
 			continue
 		for pv: Variant in prefixes:
-			# "Name_" hides by prefix; a bare name hides that node only (a
-			# window's glass, not the frame whose name begins with it)
 			var h: String = String(pv)
 			if nm == h or (h.ends_with("_") and nm.begins_with(h)):
-				matches.append(n as Node3D)
+				exact.append(n as Node3D)
+				break
+			if nm.begins_with(h):
+				parts.append(n as Node3D)
 				break
 	var near: Array[Node3D] = []
+	var near_parts: Array[Node3D] = []
 	if quad != null:
 		var inv: Transform3D = quad.transform.affine_inverse()
 		var half: Vector2 = (quad.mesh as QuadMesh).size * 0.5 + Vector2(0.15, 0.15)
-		for n3: Node3D in matches:
-			var local: Vector3 = inv * (root as Node3D).global_transform.affine_inverse() * n3.global_position \
-				if root is Node3D else inv * n3.global_position
-			if absf(local.x) <= half.x and absf(local.y) <= half.y and absf(local.z) <= 0.30:
-				near.append(n3)
-	for n3: Node3D in (near if not near.is_empty() else matches):
+		for pair: Array in [[exact, near], [parts, near_parts]]:
+			var src: Array[Node3D] = pair[0]
+			var dst: Array[Node3D] = pair[1]
+			for n3: Node3D in src:
+				# (2026-10-14) relative to the room, not the world: apply() runs
+				# before the room is in the tree, where global_position errors
+				var local: Vector3 = inv * _rel_origin(root, n3)
+				if absf(local.x) <= half.x and absf(local.y) <= half.y and absf(local.z) <= 0.30:
+					dst.append(n3)
+	var hidden: Array[Node3D] = near if not near.is_empty() else exact
+	for n3: Node3D in hidden:
 		n3.visible = false
+	for n3: Node3D in near_parts:
+		n3.visible = false
+	return hidden.size() + near_parts.size()
+
+
+## A node's origin in `root`'s space, by walking up its parents (works
+## before the room is added to the scene tree).
+static func _rel_origin(root: Node, n: Node3D) -> Vector3:
+	var xf: Transform3D = n.transform
+	var p: Node = n.get_parent()
+	while p != null and p != root:
+		var p3: Node3D = p as Node3D
+		if p3 != null:
+			xf = p3.transform * xf
+		p = p.get_parent()
+	return xf.origin

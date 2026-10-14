@@ -7844,10 +7844,10 @@
         "salty_tome_interior_alley_muralwall"
       ],
       "tag": "picture · salty_tome_interior · 5.4 x 0.25 m · 844 lines play here, 5 mention it",
-      "prompt": "The bottom half-metre of an old three-storey brick wall at the end of a narrow alley behind a bookshop on the rainy Oregon coast, seen flat and straight-on as a long horizontal strip. Weathered red-brown common brick (dark rust and umber) with recessed grey mortar, the bottom courses stained almost black by decades of rain splash-back and asphalt grit, a green fuzz of moss in the joints, white efflorescence blooms, a tide-line where puddles sit; at the very top edge the faint flaking lower margin of a deep indigo painted mural begins. Damp sheen, no objects in front. Very wide strip (about 21:1), continuous left to right, evenly lit.",
+      "prompt": "The bottom half-metre of an old three-storey brick wall at the end of a narrow alley behind a bookshop on the rainy Oregon coast, seen flat and straight-on as a long horizontal strip. Weathered red-brown common brick (dark rust and umber) with recessed grey mortar, the bottom courses stained almost black by decades of rain splash-back and asphalt grit, a green fuzz of moss in the joints, white efflorescence blooms, a tide-line where puddles sit; at the very top edge the faint flaking lower margin of a deep indigo painted mural begins. Damp sheen, no objects in front. Very wide strip (about 21:1), continuous left to right, evenly lit. Brick and grime ONLY: no mural, no painted figures, no faces, no stars, no rectangle or patch — just the bottom courses of a plain old wall.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) builder: Alley_MuralWall_Grime (0.34,0.24,0.20) band along the mural wall's foot; the mural ground (indigo) sits just above it; the rest inferred from the alley's 'puddles' in vol7 ch20/21",
+      "notes": "REDO (2026-10-14 review): the generator painted the mural with a brick patch instead of the wall's grimy foot. Prompt tightened. (2026-10-13, written from the builder, scenes and wiki) builder: Alley_MuralWall_Grime (0.34,0.24,0.20) band along the mural wall's foot; the mural ground (indigo) sits just above it; the rest inferred from the alley's 'puddles' in vol7 ch20/21",
       "art_cat": "PICTURE",
       "score_lines": 844,
       "score_mentions": 5,
@@ -7924,10 +7924,10 @@
         "salty_tome_interior_hemlock_across_facade"
       ],
       "tag": "backlot · salty_tome_interior · 6.5 x 2.0 m · 844 lines play here, 3 mention it",
-      "prompt": "A horizontal band of the street frontage across Hemlock Street in Smolvud, a small damp town on the central Oregon coast in the 2050s, seen straight-on from across a two-lane street on a grey, rainy morning. A continuous row of old two-storey commercial buildings: weathered cedar shingle and painted clapboard in muted brown-grey and moss-tinged greens, a few brick fronts, recessed doorways, deep-set shop windows, some dark, some glowing with warm lamplight, small sloped awnings dripping, a downspout, rain-darkened sidewalk at the bottom edge. Low cloud and fine drizzle, everything wet and soft. It must tile seamlessly left-right: no single landmark, no readable signs, no people, uniform light across the width. Wide band (about 3.3:1).",
+      "prompt": "A horizontal band of the street frontage across Hemlock Street in Smolvud, a small damp town on the central Oregon coast in the 2050s, seen straight-on from across a two-lane street on a grey, rainy morning. A continuous row of old two-storey commercial buildings: weathered cedar shingle and painted clapboard in muted brown-grey and moss-tinged greens, a few brick fronts, recessed doorways, deep-set shop windows, some dark, some glowing with warm lamplight, small sloped awnings dripping, a downspout, rain-darkened sidewalk at the bottom edge. Low cloud and fine drizzle, everything wet and soft. It must tile seamlessly left-right: no single landmark, no readable signs, no people, uniform light across the width. Wide band (about 3.3:1). This is a WIDE STREET SCENE of building fronts — not an object, not a bag, not a close-up of anything; buildings fill the whole frame left to right.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) builder: Hemlock_Across_Facade (0.42,0.36,0.30) with one lit window, one dark window and a door; rain from vol7 ch8 ('looking out at Hemlock through the rain'); building materials inferred for the PNW coast",
+      "notes": "REDO (2026-10-14 review): the generator made a canvas tote bag. Prompt tightened. (2026-10-13, written from the builder, scenes and wiki) builder: Hemlock_Across_Facade (0.42,0.36,0.30) with one lit window, one dark window and a door; rain from vol7 ch8 ('looking out at Hemlock through the rain'); building materials inferred for the PNW coast",
       "fit": "tile",
       "art_cat": "BACKLOT",
       "score_lines": 844,
@@ -10584,7 +10584,8 @@
           "hide": [
             "Exit_Sign",
             "Exit_Sign_Face"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -11151,7 +11152,8 @@
           "facing": "+y",
           "hide": [
             "ATM_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "WELCOME / INSERT CARD TO BEGIN / A $3.50 FEE WILL BE CHARGED"
@@ -11720,7 +11722,8 @@
           "facing": "-x",
           "hide": [
             "Register_Display"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "SLUSHIE LG 1.79 / TOTAL $1.79"
@@ -12099,7 +12102,8 @@
           "facing": "-x",
           "hide": [
             "Devil_Daigle_Neon"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "Schlitz"
@@ -12139,7 +12143,8 @@
           "facing": "+x",
           "hide": [
             "Devil_Daigle_NeonOpen_Lit"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "OP"
@@ -12179,7 +12184,8 @@
           "facing": "+x",
           "hide": [
             "Devil_Daigle_NeonOpen_Dead"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "EN"
@@ -12260,7 +12266,8 @@
           "hide": [
             "ExitSign_Highway",
             "ExitSign_HighwayText"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT 23 — RIVER ROAD"
@@ -12464,7 +12471,8 @@
           "facing": "+y",
           "hide": [
             "GasStation_Pump_0_screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "TOTAL SALE $ 0.00 · GALLONS 0.000 · PRICE/GAL 2.89"
@@ -12504,7 +12512,8 @@
           "facing": "+y",
           "hide": [
             "GasStation_Pump_1_screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "TOTAL SALE $ 34.68 · GALLONS 12.000 · PRICE/GAL 2.89 · PAY INSIDE BEFORE PUMPING"
@@ -13258,7 +13267,8 @@
           "facing": "+x",
           "hide": [
             "Temperance_Lounge_Sign"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "THE MIXING GLASS"
@@ -13298,7 +13308,8 @@
           "facing": "+y",
           "hide": [
             "Wheel_Casino_NeonDisc"
-          ]
+          ],
+          "glow": 1.4
         }
       ]
     },
@@ -13608,10 +13619,10 @@
         "centro_grocery_aisle_corral_sign"
       ],
       "tag": "sign · centro_grocery_aisle · 1.12 x 0.15 m · 428 lines play here, 2 mention it",
-      "prompt": "Flat, straight-on face of a long narrow parking-lot sign fixed to a steel cart-corral rail: Centro green background (about RGB 61,133,87), white bold sans-serif capitals reading CART RETURN with a simple white shopping-cart pictogram at the left and a smaller GRACIAS at the right. Reflective road-sign sheeting on aluminium, sun-bleached toward mint at the top edge, a few cart-bump scrapes and a rust bloom at one bolt hole, a smear of parking-lot grime along the bottom. Texas Gulf Coast heat and humidity have aged it; the lot is lit at night by sodium-white pole lamps. Evenly lit, no perspective.",
+      "prompt": "Flat, straight-on face of a long narrow parking-lot sign fixed to a steel cart-corral rail: Centro green background (about RGB 61,133,87), white bold sans-serif capitals reading CART RETURN with a simple white shopping-cart pictogram at the left and a smaller GRACIAS at the right. Reflective road-sign sheeting on aluminium, sun-bleached toward mint at the top edge, a few cart-bump scrapes and a rust bloom at one bolt hole, a smear of parking-lot grime along the bottom. Texas Gulf Coast heat and humidity have aged it; the lot is lit at night by sodium-white pole lamps. Evenly lit, no perspective. Perfectly flat and orthographic, like a scan: no perspective, no angle, no parking lot around it — the sign face alone, filling the frame.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Lettering invented; builder gives only the green panel on the corral rail in the lot.",
+      "notes": "REDO (2026-10-14 review): photographed at an angle in a parking lot. Prompt tightened. (2026-10-13, written from the builder, scenes and wiki) Lettering invented; builder gives only the green panel on the corral rail in the lot.",
       "art_cat": "SIGN",
       "score_lines": 428,
       "score_mentions": 2,
@@ -13795,7 +13806,8 @@
           "hide": [
             "Exit_Sign",
             "Exit_Sign_Letters"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -14625,7 +14637,8 @@
             "TV",
             "TV_Screen",
             "TV_Screen_Anchor_Desk"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "HEAT TO BREAK BY TUESDAY",
@@ -14790,7 +14803,8 @@
           "facing": "+y",
           "hide": [
             "Marcus_Monitor"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "ERICA CAMPBELL · Newsom v. PetroTex — settlement draft · 8:47 AM"
@@ -14958,7 +14972,8 @@
           "facing": "-x",
           "hide": [
             "BBS_Screen_Diner"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "RUST_CODE.BBS"
@@ -14999,7 +15014,8 @@
           "hide": [
             "DinerSign_Backing",
             "DinerSign_Neon"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "D'AMBROSIO'S"
@@ -15049,7 +15065,8 @@
           "facing": "-y",
           "hide": [
             "NeonOpenSign"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "inspect": true
@@ -15384,7 +15401,8 @@
           "facing": "+x",
           "hide": [
             "ATM_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "CASH · INSERT CARD TO BEGIN · $3.50 SURCHARGE"
@@ -15435,7 +15453,8 @@
           "hide": [
             "Bar_TV",
             "Bar_TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "no legible text beyond the score bug: HOME 17 · AWAY 20 · 4TH 2:41",
@@ -15483,7 +15502,8 @@
           "hide": [
             "BeerNeon_0_Box",
             "BeerNeon_0_Tube"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "Delta Lager",
@@ -15531,7 +15551,8 @@
           "hide": [
             "BeerNeon_2_Box",
             "BeerNeon_2_Tube"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "Pelican Gold",
@@ -15574,7 +15595,8 @@
           "hide": [
             "Exit_Sign",
             "Exit_Sign_Face"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -15620,7 +15642,8 @@
           "facing": "+x",
           "hide": [
             "MissileCmd_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "no legible text beyond score digits",
@@ -15663,7 +15686,8 @@
           "hide": [
             "Open_Neon_Box",
             "Open_Neon_Tube"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "OPEN"
@@ -15759,7 +15783,8 @@
           "hide": [
             "Clerk_Screen",
             "Clerk_Screen_Face"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "NEW AUBURN COUNTY COURT · CRIMINAL DOCKET / STATE OF TEXAS v. MILLER, M. · ARRAIGNMENT 2:00 PM / SECOND AMENDED DOCKET — FILED 10:46 AM — INTERESTED PARTY: D. DEAN",
@@ -16072,7 +16097,8 @@
           "facing": "-y",
           "hide": [
             "Desk_0_0_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16089,7 +16115,8 @@
           "facing": "-y",
           "hide": [
             "Desk_0_1_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16106,7 +16133,8 @@
           "facing": "-y",
           "hide": [
             "Desk_0_2_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16123,7 +16151,8 @@
           "facing": "-y",
           "hide": [
             "Desk_0_3_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16140,7 +16169,8 @@
           "facing": "-y",
           "hide": [
             "Desk_1_0_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16157,7 +16187,8 @@
           "facing": "-y",
           "hide": [
             "Desk_1_1_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16174,7 +16205,8 @@
           "facing": "-y",
           "hide": [
             "Desk_1_2_Monitor"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "cedar_tower",
@@ -16191,7 +16223,8 @@
           "facing": "-y",
           "hide": [
             "Desk_1_3_Monitor"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "no legible text",
@@ -16607,7 +16640,8 @@
           "facing": "-x",
           "hide": [
             "TV"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "NOLA THIS MORNING · 6:04 AM · 78° · HUMID"
@@ -16648,7 +16682,8 @@
           "facing": "-x",
           "hide": [
             "TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "PAUSED · RESUME · OPTIONS · QUIT"
@@ -16832,7 +16867,8 @@
           "facing": "+x",
           "hide": [
             "Kai_Laptop_Display"
-          ]
+          ],
+          "glow": 0.9
         }
       ]
     },
@@ -18063,7 +18099,8 @@
           "facing": "+x",
           "hide": [
             "Cypress_Motel_Vacancy_Neon"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "VACANCY",
@@ -18850,7 +18887,8 @@
           "facing": "+x",
           "hide": [
             "TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "SINKHOLE: SEISMIC MONITORING CONTINUES"
@@ -19774,7 +19812,8 @@
           "facing": "+y",
           "hide": [
             "StaffExit_ExitSign"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -19984,7 +20023,8 @@
           "hide": [
             "Priestess_AnyaMonitor_Face",
             "Priestess_AnyaMonitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "00:14:22:07  PAUSE",
@@ -20026,7 +20066,8 @@
           "hide": [
             "Priestess_JohnMonitor_EmailBg",
             "Priestess_JohnMonitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "From: John Frank / I am also in Montreal. I have been here for some years. You don't have to write back. But if you want to get coffee, I am at Cafe Olimpico most Tuesday mornings."
@@ -20264,7 +20305,8 @@
           "facing": "+x",
           "hide": [
             "Room_TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "4TH 2:13 · 14–17",
@@ -20952,7 +20994,8 @@
             "Hash_Neon_Backing",
             "Hash_Neon_H_0",
             "Hash_Neon_H_1"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "#",
@@ -21195,10 +21238,10 @@
         "cliffside_circus_main_sign_2"
       ],
       "tag": "sign · cliffside_circus · 1.4 x 0.12 m · 37 lines play here, 1 mention it",
-      "prompt": "Close straight-on crop of the lettering band on a 1902 painted signboard: hand-painted serif capitals THE CLIFFSIDE CIRCUS in deep maroon (RGB ~82,38,38) with a thin cream outline and a dark drop shadow, on weathered cream boards, the paint crazed and chalky from sea air, a board seam running through the middle of the letters. Extremely wide 11:1 strip, letters filling it edge to edge. Evenly lit.",
+      "prompt": "Close straight-on crop of the lettering band on a 1902 painted signboard: hand-painted serif capitals THE CLIFFSIDE CIRCUS in deep maroon (RGB ~82,38,38) with a thin cream outline and a dark drop shadow, on weathered cream boards, the paint crazed and chalky from sea air, a board seam running through the middle of the letters. The whole phrase THE CLIFFSIDE CIRCUS sits on ONE line through the middle of the image, complete, with clear margin at both ends — no letter may touch or cross the edge. Evenly lit.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Name from the prose; dark maroon text band colour from the builder.",
+      "notes": "REDO (2026-10-14 review): lettering ran off the edge (THE CLIFFSIDE C). Prompt tightened. (2026-10-13, written from the builder, scenes and wiki) Name from the prose; dark maroon text band colour from the builder.",
       "art_cat": "SIGN",
       "score_lines": 37,
       "score_mentions": 1,
@@ -21384,7 +21427,8 @@
           "hide": [
             "ExitSign_Highway",
             "ExitSign_HighwayText"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT 23 — RIVER ROAD"
@@ -22847,7 +22891,8 @@
           "facing": "-x",
           "hide": [
             "SlowTerminal_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "SALTY TOME · CATALOG / THE ARCHITECTURE OF INLAND WATER / PATTERN PERSISTENCE: SELECTED ESSAYS / THE SEVEN FLOORS OF THE GLASS HOUSE / 0 TITLES FOUND",
@@ -23645,7 +23690,8 @@
           "hide": [
             "Office_Monitor",
             "Office_Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "WK33 SHRINK",
@@ -24741,7 +24787,8 @@
           "facing": "+y",
           "hide": [
             "BackBar_Neon_2"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "THE FOXHOLE"
@@ -24782,7 +24829,8 @@
           "facing": "+y",
           "hide": [
             "BackBar_Neon_0"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "COLD BEER"
@@ -24823,7 +24871,8 @@
           "facing": "+y",
           "hide": [
             "BackBar_Neon_1"
-          ]
+          ],
+          "glow": 1.4
         }
       ],
       "lettering": "LIVE MUSIC"
@@ -24906,7 +24955,8 @@
           "facing": "+y",
           "hide": [
             "Entrance_Exit_Sign"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -25589,7 +25639,8 @@
           "hide": [
             "TV",
             "TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "91°\n7:42"
@@ -25629,7 +25680,8 @@
           "facing": "-x",
           "hide": [
             "Vitals_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "HR 72\nSpO2 97\nNIBP 128/76 (93)\nRESP 16"
@@ -25710,7 +25762,8 @@
           "hide": [
             "Wait_TV",
             "Wait_TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "LATE NEWS\n11:31"
@@ -25966,7 +26019,8 @@
           "hide": [
             "Cafe_TV",
             "Cafe_TV_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "ITA 1–0 ESP · 67'"
@@ -26339,7 +26393,8 @@
           "facing": "-y",
           "hide": [
             "Exit_Sign"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -26555,7 +26610,8 @@
           "facing": "-y",
           "hide": [
             "Register_Tablet_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "HOT CHOCOLATE + MARSHMALLOW · CORTADO · TOTAL 5 TOKENS · TAP TO PAY"
@@ -27095,7 +27151,8 @@
           "facing": "-y",
           "hide": [
             "Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "HR 58 · SpO2 91 · RESP 12 · 4:01 AM"
@@ -27260,7 +27317,8 @@
           "facing": "-y",
           "hide": [
             "Hall_B_Exit_Sign"
-          ]
+          ],
+          "glow": 1.0
         }
       ],
       "lettering": "EXIT"
@@ -27432,7 +27490,8 @@
           "facing": "-x",
           "hide": [
             "BC_TimeClock_Display"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "FRI 4:52 PM"
@@ -28363,7 +28422,8 @@
           "facing": "up",
           "hide": [
             "Pen_Tablet"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "D'AMBROSIO'S: EMBER & ASH"
@@ -28700,7 +28760,8 @@
           "facing": "+x",
           "hide": [
             "Counter_Register_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "NexCorp · STORE 3411 · REG 1\nDIET COKE 20OZ 2.49\nPRETZELS 1.99\nTOTAL $4.85\nCASH  CARD  VOID  LOTTERY  FUEL PREPAY",
@@ -28741,7 +28802,8 @@
           "facing": "+x",
           "hide": [
             "Pump_1_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28758,7 +28820,8 @@
           "facing": "+x",
           "hide": [
             "Pump_1_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28775,7 +28838,8 @@
           "facing": "+x",
           "hide": [
             "Pump_2_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28792,7 +28856,8 @@
           "facing": "+x",
           "hide": [
             "Pump_2_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28809,7 +28874,8 @@
           "facing": "+x",
           "hide": [
             "Pump_3_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28826,7 +28892,8 @@
           "facing": "+x",
           "hide": [
             "Pump_3_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28843,7 +28910,8 @@
           "facing": "+x",
           "hide": [
             "Pump_4_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28860,7 +28928,8 @@
           "facing": "+x",
           "hide": [
             "Pump_4_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28877,7 +28946,8 @@
           "facing": "-x",
           "hide": [
             "Pump_5_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28894,7 +28964,8 @@
           "facing": "-x",
           "hide": [
             "Pump_5_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28911,7 +28982,8 @@
           "facing": "-x",
           "hide": [
             "Pump_6_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28928,7 +29000,8 @@
           "facing": "-x",
           "hide": [
             "Pump_6_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28945,7 +29018,8 @@
           "facing": "-x",
           "hide": [
             "Pump_7_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28962,7 +29036,8 @@
           "facing": "-x",
           "hide": [
             "Pump_7_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28979,7 +29054,8 @@
           "facing": "-x",
           "hide": [
             "Pump_8_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "nexcorp_fueling_station",
@@ -28996,7 +29072,8 @@
           "facing": "-x",
           "hide": [
             "Pump_8_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "TOTAL $ 0.00\nGALLONS 0.000\nPRICE/GAL $2.79⁹\nLIFT NOZZLE · SELECT GRADE"
@@ -29493,7 +29570,8 @@
           "facing": "-x",
           "hide": [
             "ATM_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "WELCOME · PLEASE INSERT YOUR CARD · $3.75 FEE APPLIES"
@@ -29938,7 +30016,8 @@
           "hide": [
             "Monitor_Body",
             "Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "NexCorp Workforce · Shift Schedule · RAMOS, D. — Unreachable at scheduled workplace — contact pending ☑"
@@ -30058,7 +30137,8 @@
           "facing": "+y",
           "hide": [
             "PumpController_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "PUMP STATUS · 1 IDLE · 2 FUELING $18.40 · 3 IDLE · 4 STOP · 5 PREPAY $30 · 6 IDLE · 7 FUELING · 8 IDLE"
@@ -30229,7 +30309,8 @@
           "facing": "-y",
           "hide": [
             "Bianca_Laptop_Display"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "Bill Pay · Electric $96.00 Paid · Water $58.00 Paid · Cable $172.00 Paid · Visa — Pay Now",
@@ -30615,7 +30696,8 @@
           "hide": [
             "Office_Monitor_Panel",
             "Office_Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "STORE DASHBOARD — Rx volume · Wait time · Training overdue"
@@ -30739,7 +30821,8 @@
           "hide": [
             "RX_Monitor_0",
             "RX_Monitor_0_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "RX QUEUE"
@@ -30780,7 +30863,8 @@
           "hide": [
             "RX_Monitor_1",
             "RX_Monitor_1_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "FILL — PRINT LABEL"
@@ -30943,7 +31027,8 @@
           "facing": "-y",
           "hide": [
             "Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "PIT STOP — WEEKLY ORDER · ITEM · VENDOR · PAR · ON HAND · ORDER"
@@ -31280,7 +31365,8 @@
           "facing": "+y",
           "hide": [
             "GasStation_Pump_0_screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "TOTAL SALE $ 0.00\nGALLONS 0.000\nPRICE PER GAL 2.39⁹"
@@ -31321,7 +31407,8 @@
           "facing": "+y",
           "hide": [
             "GasStation_Pump_1_screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "TOTAL SALE $ 18.42\nGALLONS 7.708\nPRICE PER GAL 2.39⁹"
@@ -31361,7 +31448,8 @@
           "facing": "+x",
           "hide": [
             "Pump_1_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31378,7 +31466,8 @@
           "facing": "+x",
           "hide": [
             "Pump_1_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31395,7 +31484,8 @@
           "facing": "+x",
           "hide": [
             "Pump_2_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31412,7 +31502,8 @@
           "facing": "+x",
           "hide": [
             "Pump_2_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31429,7 +31520,8 @@
           "facing": "+x",
           "hide": [
             "Pump_3_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31446,7 +31538,8 @@
           "facing": "+x",
           "hide": [
             "Pump_3_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31463,7 +31556,8 @@
           "facing": "+x",
           "hide": [
             "Pump_4_Display_-1"
-          ]
+          ],
+          "glow": 0.9
         },
         {
           "locale": "county_line_station",
@@ -31480,7 +31574,8 @@
           "facing": "+x",
           "hide": [
             "Pump_4_Display_+1"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "SALE $ 0.00 · GALLONS 0.000 · PRICE/GAL 3.09⁹ · LIFT NOZZLE · SELECT GRADE"
@@ -31520,7 +31615,8 @@
           "facing": "+x",
           "hide": [
             "Computer_0_Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "SEASON OPENER: A GLORIOUS DISASTER"
@@ -31560,7 +31656,8 @@
           "facing": "+x",
           "hide": [
             "Computer_1_Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "FROM THE BUS: NOTES ON A LOSING SEASON"
@@ -31605,7 +31702,8 @@
           "facing": "+x",
           "hide": [
             "Computer_2_Monitor_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "DRIFTWOOD",
@@ -32151,10 +32249,10 @@
         "smolvud_coop_cooler_header_sign"
       ],
       "tag": "sign · smolvud_coop · 4.6 x 0.15 m · 22 lines play here, 0 mention it",
-      "prompt": "A long, narrow painted wooden sign mounted over a wall of glass-door coolers in a small organic food co-op on the Oregon coast: forest green (RGB ~0.30/0.44/0.28) with hand-lettered cream capitals separated by small painted icons — a milk bottle, an egg, a fish. Simple, friendly, community-made; brush marks visible, one letter repainted slightly brighter. Clean and well kept. Flat-on, evenly lit, very wide horizontal format.",
+      "prompt": "A long, narrow painted wooden sign mounted over a wall of glass-door coolers in a small organic food co-op on the Oregon coast: forest green (RGB ~0.30/0.44/0.28) with hand-lettered cream capitals separated by small painted icons — a milk bottle, an egg, a fish. Simple, friendly, community-made; brush marks visible, one letter repainted slightly brighter. Clean and well kept. Flat-on, evenly lit, very wide horizontal format. The whole line DAIRY · EGGS · SMOKED FISH sits on ONE row through the middle of the image, complete, with margin at both ends — no word may be cut off.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Lettering invented from the cooler contents in the builder (milk, eggs, the fish co-op's smoked salmon).",
+      "notes": "REDO (2026-10-14 review): lettering ran off the edge (DAIRY · EGGS · SI…). Prompt tightened. (2026-10-13, written from the builder, scenes and wiki) Lettering invented from the cooler contents in the builder (milk, eggs, the fish co-op's smoked salmon).",
       "art_cat": "SIGN",
       "score_lines": 22,
       "score_mentions": 0,
@@ -32383,7 +32481,8 @@
           "hide": [
             "Register_Tablet",
             "Register_Tablet_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "SMOLVUD FOOD CO-OP · MORNING DELIVERIES · HANS'S BAKERY · FISH CO-OP · 0.00 kg"
@@ -32689,10 +32788,10 @@
         "small_wood_rec_center_tv"
       ],
       "tag": "screen · small_wood_rec_center · 0.22 x 0.19 m · 20 lines play here, 0 mention it",
-      "prompt": "The glowing screen of a small 1990s CRT television on a rolling cart in a small-town rec hall, edge to edge with no bezel. An 8-bit home-console game left paused mid-level: a chunky pixel-art side-scrolling scene with a blue sky, green hills and brick blocks, a small sprite hero frozen mid-jump, a score bar along the top, and a flashing PAUSE in the centre. Real CRT character: visible scanlines, soft colour bleed, slight curvature and bloom at the edges, a faint dust film and a reflection-free glow. Flat and straight on.",
+      "prompt": "The screen of a modern flat-panel TV on a rolling cart in the Small Wood rec hall on the Oregon coast in the 2050s, edge to edge, no bezel: a contemporary indie game left paused — a painterly side-on scene of a rainy harbour town at dusk, soft volumetric light, a small hooded figure frozen mid-step on a wet pier, a clean modern pause overlay in the centre with RESUME / OPTIONS. Crisp current-generation display, no scanlines, no pixel art, no CRT, nothing that imitates an old console. Evenly lit, a faint fingerprint smudge in one corner.",
       "canon": [],
       "prompt_mode": "fallback",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) The interlude names 'scattered cartridges popped into an old Nintendo system'; the game is generic and invented (no real title).",
+      "notes": "REDO (2026-10-14 review): the old prompt asked for a 1990s CRT and an 8-bit platformer — retro cosplay the game rules out, and it came out as a Mario knock-off. Now a modern screen and an in-world game. (2026-10-13, written from the builder, scenes and wiki) The interlude names 'scattered cartridges popped into an old Nintendo system'; the game is generic and invented (no real title).",
       "art_cat": "SCREEN",
       "score_lines": 20,
       "score_mentions": 0,
@@ -32712,10 +32811,11 @@
           "facing": "-x",
           "hide": [
             "TV_Set_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
-      "lettering": "PAUSE"
+      "lettering": "PAUSED · RESUME · OPTIONS"
     },
     {
       "slug": "small_wood_rec_center_window_1",
@@ -33120,7 +33220,8 @@
           "hide": [
             "TV_Panel",
             "TV_Panel_Screen"
-          ]
+          ],
+          "glow": 0.9
         }
       ],
       "lettering": "PAUSED · RESUME · RESTART · OPTIONS · QUIT"

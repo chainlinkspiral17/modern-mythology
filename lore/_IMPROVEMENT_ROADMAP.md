@@ -3834,6 +3834,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-14 · pass 103: THE HERO ART, REVIEWED (hero art draft 3).** 532
+pictures generated on the Deck (1.3 GB on My Drive) came back as 22
+contact sheets + a report (`art_review.sh` → `ArtReviewSheet.gd`) and 701
+room renders with the art laid in. Verdict: the art is strong — on-period,
+legible, in character. Fixed: (1) "lots of errors" on the Deck was HeroArt
+asking for global positions while the room was not yet in the tree (once
+per picture per room load) — positions are now taken relative to the room;
+(2) a sign's separate lettering boxes (Donut_SignText, Poster_Faded_Title)
+stayed in front of the new picture — a stand-in's own parts under the
+picture now hide with it; (3) screens and neon signs were painted like
+posters and went dead in night rooms — 48 screens and 24 neon / lit signs
+now emit (`glow` per row); (4) the contact sheet's report now lists, per
+room, every picture placed or why not. Close-up pictures (`inspect`, 254:
+meta-texts, art pieces, what the prose describes — the user: "they can be
+kept large … art pieces as well") import at full size; the rest are capped
+by their surface. REDO (prompts tightened, notes say why): the Hemlock St
+facade (came out a tote bag), the alley wall's foot (a mural instead of
+brick), two very wide signs whose lettering ran off the edge, the Centro
+cart-return sign (photographed at an angle), and the rec-hall TV (the
+prompt itself asked for an 8-bit CRT — retro cosplay; now a modern screen
+and an in-world game). Board Lords' black square is intended (the prompt's
+"absence"). **Draft 4 targets:** shaped signs (round, diamond, arrow) keep
+white corners — cut them out to alpha at install; Lena's nebula mural did
+not show in the Deck's insert though it places locally (the new per-picture
+report will say why); the "look closer" VN cue for `inspect` pictures.
+
 **2026-10-13 · pass 102: THE PROJECT'S FILES BACK ON MY DRIVE.** The user:
 "my google drive should be on my google drive, not the one model nation
 drive … flag one model nation drive not to use, as that is a shared project,

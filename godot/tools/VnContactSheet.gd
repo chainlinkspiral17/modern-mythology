@@ -29,6 +29,7 @@ extends Control
 ## Not HUD: nothing here joins "ui"; the rig quits when it is done.
 
 const BG_SCENE := preload("res://scenes/vn/Background3D.tscn")
+const HERO_ART := preload("res://scripts/vn/HeroArt.gd")
 const PORTRAIT_SCENE := preload("res://scenes/vn/Portrait3D.tscn")
 const MANIFEST := "res://qa/contact_manifest.json"
 const OUT_DIR := "res://qa/contact"
@@ -118,6 +119,12 @@ func _shoot_presets(manifest: Dictionary) -> void:
 		if pid == "" or not _only_match(pid):
 			continue
 		var loaded: bool = bool(bg.call("load_location", pid))
+		# (2026-10-14) every hero-art picture this room got, or why not
+		var ha: Dictionary = HERO_ART.last_report
+		if not ha.is_empty():
+			if not _report.has("hero_art"):
+				_report["hero_art"] = {}
+			(_report["hero_art"] as Dictionary)[pid] = ha.duplicate()
 		if not loaded:
 			(_report["skipped_glb"] as Array).append(pid)
 			var why: String = String(bg.get("last_load_error"))
