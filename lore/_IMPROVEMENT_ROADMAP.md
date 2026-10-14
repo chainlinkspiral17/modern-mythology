@@ -3850,7 +3850,9 @@ room, every picture placed or why not. Close-up pictures (`inspect`, 254:
 meta-texts, art pieces, what the prose describes — the user: "they can be
 kept large … art pieces as well") import at full size; the rest are capped
 by their surface. REDO (prompts tightened, notes say why): the Hemlock St
-facade (came out a tote bag), the alley wall's foot (a mural instead of
+facade (came out a mountain lake — the review first misread the sheet one
+cell off and blamed it for the tote bag, which is salty_tome_interior_canvas
+and correct), the alley wall's foot (a mural instead of
 brick), two very wide signs whose lettering ran off the edge, the Centro
 cart-return sign (photographed at an angle), and the rec-hall TV (the
 prompt itself asked for an 8-bit CRT — retro cosplay; now a modern screen
