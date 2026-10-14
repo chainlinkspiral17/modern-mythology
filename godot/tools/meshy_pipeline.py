@@ -1402,6 +1402,81 @@ def entry_out_path(entry):
     return OUT_DIRS[entry["kind"]] / entry["file"]
 
 
+# ART IMPORT (2026-10-14, the user: "optimize and minimize file size as
+# needed for game size and performance"). The generated pictures arrive at
+# 1-2k pixels whatever the object — a 16 cm ATM screen the same as a 2 m
+# mural — and Godot imports a runtime-loaded PNG LOSSLESS (no 3D use is
+# detected), ~16 MB of video memory for a 2048² picture. Each installed
+# picture gets an .import beside it: VRAM-compressed (BPTC/S3TC, what the
+# Deck's GPU samples natively), mipmapped (no shimmer on far signs), and
+# capped at the pixels its surface can show: ART_PX_PER_M of its long side,
+# between ART_PX_MIN and ART_PX_MAX. The full-size original stays on Drive.
+ART_PX_PER_M = 1200
+ART_PX_MIN = 256
+ART_PX_MAX = 2048
+
+
+def art_size_limit(entry):
+    w, h = art_size(entry)
+    px = int(max(w, h) * ART_PX_PER_M)
+    if entry.get("fit") == "tile":
+        # a repeated section covers only one tile's width of the band
+        ratio = max(w, h) / max(min(w, h), 1e-3)
+        px = int(min(w, h) * ART_PX_PER_M * min(ratio, 21 / 9))
+    px = max(ART_PX_MIN, min(ART_PX_MAX, px))
+    return (px + 63) // 64 * 64
+
+
+def art_import_settings(entry, path, log=print):
+    """Write <picture>.import so Godot imports it compressed and capped.
+    The file has no [remap] path yet, so the editor (or --import) reimports
+    it with these settings on its next scan."""
+    path = Path(path)
+    limit = art_size_limit(entry)
+    imp = path.with_name(path.name + ".import")
+    want = f"process/size_limit={limit}"
+    if imp.exists():
+        old = imp.read_text()
+        if want in old and "compress/mode=2" in old and "mipmaps/generate=true" in old:
+            return limit
+    res = "res://" + str(path.relative_to(REPO)).replace(os.sep, "/")
+    imp.write_text("\n".join([
+        "[remap]", "", 'importer="texture"', 'type="CompressedTexture2D"', "",
+        "[deps]", "", f'source_file="{res}"', "",
+        "[params]", "",
+        "compress/mode=2", "compress/high_quality=true", "compress/lossy_quality=0.8",
+        "compress/hdr_compression=1", "compress/normal_map=0", "compress/channel_pack=0",
+        "mipmaps/generate=true", "mipmaps/limit=-1", "roughness/mode=0", 'roughness/src_normal=""',
+        "process/fix_alpha_border=true", "process/premult_alpha=false", "process/normal_map_invert_y=false",
+        "process/hdr_as_srgb=false", "process/hdr_clamp_exposure=false", want, "detect_3d/compress_to=0", ""]))
+    log(f"  art · {entry['slug']} · import: VRAM-compressed, mipmapped, ≤ {limit} px")
+    return limit
+
+
+def cmd_art_optimize(args):
+    """Give every installed hero-art picture its import settings; report sizes."""
+    roster = load_roster()
+    n, src_bytes, est_vram = 0, 0, 0
+    for e in roster["entries"]:
+        if e.get("kind") != "art":
+            continue
+        stem = OUT_DIRS["art"] / Path(e["file"]).stem
+        f = next((stem.with_suffix(x) for x in ART_EXTS if stem.with_suffix(x).exists()), None)
+        if f is None:
+            continue
+        lim = art_import_settings(e, f, log=(lambda *a: None))
+        w, h = art_size(e)
+        a = min(w, h) / max(w, h, 1e-3)
+        est_vram += int(lim * lim * a * 1.0 * 1.33)      # BPTC: 1 byte/px, + mips
+        src_bytes += f.stat().st_size
+        n += 1
+    print(f"{n} installed picture(s): {src_bytes / 1e6:.1f} MB of originals → about "
+          f"{est_vram / 1e6:.1f} MB compressed in the game (all of them; a room loads only its own).")
+    print("Now let Godot re-import them: open the project in the editor once, or run "
+          "bash godot/tools/reimport_models.sh")
+    return 0
+
+
 def install_art(entry, opts, log=print):
     """ART: the chosen front image IS the deliverable — copy it to
     assets/art/hero/<stem>.<ext>, dropping any other format of the same stem."""
@@ -1426,6 +1501,7 @@ def install_art(entry, opts, log=print):
         if old.exists() and old != dst:
             old.unlink()
     shutil.copyfile(src, dst)
+    art_import_settings(entry, dst, log=log)
     surfaces = ", ".join(f"{r['locale']} ({r.get('label', r['facing'])})" for r in entry.get("apply", []))
     log(f"  art · {entry['slug']} · installed {rel(dst)} → laid on: {surfaces}")
     append_manifest({"at": now_iso(), "stage": "art", "slug": entry["slug"], "kind": "art",
@@ -2877,6 +2953,7 @@ def main():
     sub.add_parser("save", help="the page's SAVE: models + pictures to Google Drive, then git commit + push")
     sub.add_parser("drive-status", help="is Google Drive set up, and what is not on it yet")
     sub.add_parser("drive-push", help="upload every model and picture to Google Drive, update the manifest")
+    sub.add_parser("art-optimize", help="compressed, size-capped import settings for every installed hero-art picture")
     sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
 
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
@@ -2910,6 +2987,8 @@ def main():
             print(step)
         print("OK" if res["ok"] else "NOT OK")
         return 0 if res["ok"] else 1
+    if args.cmd == "art-optimize":
+        return cmd_art_optimize(args)
     if args.cmd == "drive-status":
         print(json.dumps(drive_status(), indent=1))
         return 0

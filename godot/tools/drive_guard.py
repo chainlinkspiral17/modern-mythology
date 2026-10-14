@@ -118,14 +118,56 @@ def verify(dest, allow_create_root=False):
     meta = rows[0].get("Metadata") or {}
     owner = (meta.get("owner") or "").strip()
     if not owner:
-        raise DriveRefused(f"Google reports no owner for {ROOT_FOLDER} — it is on a shared drive, or this "
-                           "rclone is too old to say (update: bash godot/tools/drive_setup.sh). Nothing written.")
+        # (2026-10-14) rclone does not always report a FOLDER's owner in its
+        # metadata — then every SAVE was refused. Ask Google directly about
+        # this folder, with rclone's own sign-in: a shared-drive item carries
+        # a driveId; the owner's own item is ownedByMe. Any doubt refuses.
+        owner = _owner_from_api(rc, str(rows[0].get("ID") or ""))
     known = OWNER_FILE.read_text().strip() if OWNER_FILE.exists() else ""
     if known and known.lower() != owner.lower():
         raise DriveRefused(f"{ROOT_FOLDER} is owned by {owner}, not {known} (recorded in {OWNER_FILE.name}). "
                            "Nothing written. If that is really your account now, delete that file.")
     if not known:
         OWNER_FILE.write_text(owner + "\n")
+    return owner
+
+
+def _api_get(url, token):
+    """GET a Drive API URL with a bearer token → dict (tests replace this)."""
+    import urllib.request
+    req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+
+def _owner_from_api(rc, folder_id):
+    """The folder's owner per Google's Drive API, or DriveRefused. Refuses a
+    shared-drive item (driveId), an item not owned by the signed-in account,
+    and any failure to get an answer."""
+    if not folder_id:
+        raise DriveRefused(f"rclone gave no ID for {ROOT_FOLDER}; cannot ask Google where it is. Nothing written.")
+    try:
+        conf = json.loads(_run(rc, ["config", "dump"], 30).stdout or "{}").get(REMOTE_NAME) or {}
+        token = json.loads(conf.get("token") or "{}").get("access_token") or ""
+    except (ValueError, subprocess.SubprocessError):
+        token = ""
+    if not token:
+        raise DriveRefused("no Google sign-in token to ask where the folder is. Nothing written.")
+    url = (f"https://www.googleapis.com/drive/v3/files/{folder_id}"
+           "?fields=id,name,driveId,ownedByMe,owners(emailAddress)&supportsAllDrives=true")
+    try:
+        info = _api_get(url, token)
+    except Exception as ex:  # noqa: BLE001 — no answer refuses
+        raise DriveRefused(f"Google did not say where {ROOT_FOLDER} is ({type(ex).__name__}). Nothing written.")
+    if info.get("driveId"):
+        d = info["driveId"]
+        raise DriveRefused(f"{ROOT_FOLDER} is on the shared drive {DENY_SHARED.get(d, d)} ({d}). Nothing written.")
+    if not info.get("ownedByMe"):
+        raise DriveRefused(f"{ROOT_FOLDER} is not owned by the signed-in account. Nothing written.")
+    owners = info.get("owners") or []
+    owner = (owners[0].get("emailAddress") if owners else "") or ""
+    if not owner:
+        raise DriveRefused(f"Google named no owner for {ROOT_FOLDER}. Nothing written.")
     return owner
 
 

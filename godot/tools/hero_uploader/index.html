@@ -850,8 +850,21 @@ async function saveToGit() {
   log('info', 'SAVE: committing and pushing…');
   try {
     const r = await api('POST', '/api/git/push', {});
-    for (const s of r.steps) log('ok', `SAVE: ${s}`);
+    // (2026-10-14) a failed SAVE logged every step green and the count never
+    // moved ("I keep hitting the button"): failures are red, and the button
+    // says SAVE FAILED with the reason until the next save
+    const bad = /STOPPED|REFUSED|failed|rejected|not set up|not installed|error/i;
+    for (const s of r.steps) log(r.ok || !bad.test(s) ? 'ok' : 'err', `SAVE: ${s}`);
     renderGit(r.status);
+    if (!r.ok) {
+      const why = r.steps.filter(s => bad.test(s)).pop() || r.steps[r.steps.length - 1] || 'unknown';
+      b.className = 'save small dirty';
+      b.textContent = 'SAVE FAILED · see why';
+      b.title = why + '\n\nIn a terminal, for the full story:\npython3 godot/tools/meshy_pipeline.py save';
+      log('err', `SAVE did NOT complete: ${why}`);
+    } else {
+      log('ok', 'SAVE complete.');
+    }
   } catch (err) {
     log('err', `SAVE failed: ${err.message}`);
     refreshGit();

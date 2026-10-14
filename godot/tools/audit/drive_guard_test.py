@@ -128,6 +128,34 @@ def main():
         else:
             print(f"ok    refused: {name}")
 
+    # (2026-10-14) rclone gives no folder owner: Google's API decides
+    NOMETA = [{"Name": "ModernMythology", "IsDir": True, "ID": "1Ofi"}]
+    TOKEN_CONF = {"gdrive": {"type": "drive", "token": json.dumps({"access_token": "t"})}}
+    for name, answer, want_ok in [
+            ("API: the folder is on a shared drive", {"driveId": "0AEnZu3oDWBFuUk9PVA", "ownedByMe": False}, False),
+            ("API: not owned by the signed-in account", {"ownedByMe": False, "owners": [{"emailAddress": "x@y"}]}, False),
+            ("API: no answer", None, False),
+            ("API: the owner's My Drive", {"ownedByMe": True, "owners": [{"emailAddress": "me@example.com"}]}, True)]:
+        log = scenario(tmp, config=TOKEN_CONF, lsjson=NOMETA)
+
+        def fake_api(url, token, a=answer):
+            if a is None:
+                raise OSError("offline")
+            return a
+        drive_guard._api_get = fake_api
+        try:
+            drive_guard.rclone_write(copy)
+            got_ok = True
+        except drive_guard.DriveRefused:
+            got_ok = False
+        wrote = len(writes(log))
+        if got_ok != want_ok or (not want_ok and wrote) or (want_ok and wrote != 1):
+            fails += 1
+            print(f"FAIL  {name}: ok={got_ok} wrote={wrote}")
+        else:
+            print(f"ok    {'passes' if want_ok else 'refused'}: {name}")
+    drive_guard._api_get = lambda url, token: (_ for _ in ()).throw(OSError("no network in tests"))
+
     # the honest setup writes once, never following shortcuts
     log = scenario(tmp)
     r = drive_guard.rclone_write(copy)
