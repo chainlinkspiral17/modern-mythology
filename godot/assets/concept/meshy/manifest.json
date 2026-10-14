@@ -16235,5 +16235,1680 @@
     "kind": "art",
     "input": "godot/assets/concept/meshy/school_field_evening_bleach_pressbox_sign/front.png",
     "output": "godot/assets/art/hero/school_field_evening_bleach_pressbox_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:21:46+00:00",
+    "stage": "image",
+    "slug": "school_field_evening_corkboard",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on view of a weatherworn outdoor cork bulletin board on the cinderblock field house at a Texas high-school football field. Sun-darkened brown cork (RGB 133,97,66) in a rough wooden frame, studded with old staples and rusty pushpins. Pinned around the edges (leave the centre clear): a curling yellow sheet TWO-A-DAYS 6:00 AM, a weight-room schedule, a booster-club car-wash flyer, a water-break reminder, all faded and rain-rippled. August heat and Gulf humidity wear. Landscape format, evenly lit.\nSIZE: the real object is 70 cm wide by 50 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the corkboard outside the field-house door, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: TWO-A-DAYS 6:00 AM \u00b7 BOOSTER CLUB CAR WASH. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/school_field_evening_corkboard/school_field_evening_corkboard_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:22:49+00:00",
+    "stage": "art",
+    "slug": "school_field_evening_corkboard",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/school_field_evening_corkboard/front.png",
+    "output": "godot/assets/art/hero/school_field_evening_corkboard.png"
+  },
+  {
+    "at": "2026-10-14T02:23:15+00:00",
+    "stage": "image",
+    "slug": "school_field_evening_depthchart",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Vinton-scrimmage depth chart pinned to the corkboard like this: The sheet is, in its standard format, twenty-two starters listed by position with the backups in parentheses below. In parentheses below his name: (LeBlanc). Additional direction: Straight-on view of a single printed sheet of paper pinned with a red pushpin: a Texas high-school football depth chart. Plain office printout, black Times-style type: header NEW AUBURN FOOTBALL \u00b7 DEPTH CHART \u00b7 VINTON SCRIMMAGE, then twenty-two starters listed by position in two columns (offense and defense), each with a backup name in parentheses beneath. Mid-column, legible: TE-1 ACHTERBERG with (LeBlanc) below it. Fresh white sheet (RGB 235,230,209), slight humidity ripple, portrait letter format, evenly lit.\nSIZE: the real object is 15 cm wide by 21 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the Vinton-scrimmage depth chart pinned to the corkboard, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: NEW AUBURN FOOTBALL \u00b7 DEPTH CHART \u00b7 VINTON SCRIMMAGE \u00b7 TE-1 ACHTERBERG (LeBlanc). Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/school_field_evening_depthchart/school_field_evening_depthchart_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:23:20+00:00",
+    "stage": "art",
+    "slug": "school_field_evening_depthchart",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/school_field_evening_depthchart/front.png",
+    "output": "godot/assets/art/hero/school_field_evening_depthchart.png"
+  },
+  {
+    "at": "2026-10-14T02:23:42+00:00",
+    "stage": "image",
+    "slug": "school_field_evening_score",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "2:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on face of a high-school football scoreboard's display: matte black panel (RGB 26,31,41) with glowing amber LED seven-segment digits (RGB 250,168,46). Two big two-digit scores under small grey placards HOME and GUEST, reading 00 and 00; a four-digit game clock 12:00 centred below; under it a small square red-orange box with QTR 1. Weathered metal edges, a couple of dead LED segments showing as faint dark strokes. Portrait-ish format, evenly lit, no sky.\nSIZE: the real object is 40 cm wide by 60 cm tall \u2014 a portrait picture, aspect 2:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the scoreboard's digit panel beyond the north end zone, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: HOME 00 \u00b7 GUEST 00 \u00b7 12:00 \u00b7 QTR 1. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/school_field_evening_score/school_field_evening_score_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:23:47+00:00",
+    "stage": "art",
+    "slug": "school_field_evening_score",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/school_field_evening_score/front.png",
+    "output": "godot/assets/art/hero/school_field_evening_score.png"
+  },
+  {
+    "at": "2026-10-14T02:24:11+00:00",
+    "stage": "image",
+    "slug": "pit_stop_interior_prints",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the crumpled paper bag the prints came in like this: Jesse arrives at 14:17 carrying the second and a crumpled paper bag. Additional direction: The side of a crumpled brown kraft-paper lunch sack standing on a diner's lunch counter, holding three photographic prints: tan kraft paper (about RGB 0.72/0.60/0.42) with deep creases and soft crinkles from being folded and carried, the top rolled over twice, a grease-free but grubby fingerprint smudge, a faint water ring. No printing, no logo. Plain, everyday, slightly secretive. Flat, straight-on, evenly lit, the bag face only.\nSIZE: the real object is 8 cm wide by 11 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the crumpled paper bag the prints came in, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/pit_stop_interior_prints/pit_stop_interior_prints_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:24:36+00:00",
+    "stage": "art",
+    "slug": "pit_stop_interior_prints",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/pit_stop_interior_prints/front.png",
+    "output": "godot/assets/art/hero/pit_stop_interior_prints.png"
+  },
+  {
+    "at": "2026-10-14T02:25:02+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_n_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The view north out of a second-floor apartment window above a kayak shop in Smolvud, a small town on the central Oregon coast, on a rainy late-August morning, flat straight-on exterior scene. Just below and close: the shallow-pitched gable roof of the neighbour's single-storey house, dark brown asphalt shingles furred with green moss, a mossy gutter dripping, pale grey-beige cedar siding and a dark window; behind it a narrow back yard with a sagging fence, blackberry bramble, a rusted burn barrel. Beyond: a hill rising into a dense dark treeline of Sitka spruce, western hemlock and shore pine, red alder at the edge, low cloud and drifting fog sitting in the tops. Soft grey diffuse light, everything wet. No people, no interior, no frame or glass.\nSIZE: the real object is 58 cm wide by 48 cm tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north out of Finn's bedroom window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_n_window/finn_apartment_n_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:25:07+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_n_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_n_window/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_n_window.png"
+  },
+  {
+    "at": "2026-10-14T02:25:25+00:00",
+    "stage": "image",
+    "slug": "finn_apartment_out_n_treeline",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A horizontal band of dense Oregon-coast forest seen across back yards in Smolvud on a wet late-August morning, straight-on. A continuous dark wall of Sitka spruce, western hemlock and shore pine (deep blue-green, near black in the shadows) with a lighter fringe of red alder along the bottom, ragged spire tops against a pale wet grey sky, fog drifting between the crowns and softening the distance. Must tile seamlessly left-right: no single landmark, no buildings, no poles, uniform overcast light. Wide band (4:1).\nSIZE: the real object is a band 12.00 m wide by 3.00 m tall; this image is one 21:9 section of it, repeated 2 times side by side in the game. Paint it so it TILES SEAMLESSLY left to right (the left and right edges continue into each other), with no single feature that would read as repeated.\nA single flat image of the conifer treeline north of Finn's apartment (tiling band), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/finn_apartment_out_n_treeline/finn_apartment_out_n_treeline_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:25:28+00:00",
+    "stage": "art",
+    "slug": "finn_apartment_out_n_treeline",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/finn_apartment_out_n_treeline/front.png",
+    "output": "godot/assets/art/hero/finn_apartment_out_n_treeline.png"
+  },
+  {
+    "at": "2026-10-14T02:26:32+00:00",
+    "stage": "image",
+    "slug": "kowalski_kitchen_tv_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the noon news on the Kowalskis' family-room TV like this: He watches, with the sound off, the noon news, which has \u2014 at twelve oh-five \u2014 a story about the heat that has been in every noon broadcast for three weeks and that says, today, the heat is going to break by Tuesday. Additional direction: Full-frame content of a flat-screen TV, no bezel: a local Southeast Texas station's noon newscast, sound off. Left: a news anchor at a glossy blue anchor desk (#334D85) in front of a skyline backdrop; right: an over-the-shoulder graphic of a weather map of the Gulf Coast in hot oranges and reds with a big '101\u00b0' and a downward arrow; lower third banner 'HEAT TO BREAK BY TUESDAY'; along the bottom a red scrolling ticker (#CC2924) with headlines and a station bug and clock reading 12:05. Bright broadcast colours, 2025 HD graphics package.\nSIZE: the real object is 57 cm wide by 33 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the noon news on the Kowalskis' family-room TV, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: HEAT TO BREAK BY TUESDAY. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/kowalski_kitchen_tv_1/kowalski_kitchen_tv_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:26:37+00:00",
+    "stage": "art",
+    "slug": "kowalski_kitchen_tv_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/kowalski_kitchen_tv_1/front.png",
+    "output": "godot/assets/art/hero/kowalski_kitchen_tv_1.png"
+  },
+  {
+    "at": "2026-10-14T02:27:01+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_atm_screen",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The small LCD screen of an aging freestanding cash machine in a New Orleans Marigny dive bar, wedged between the cigarette machine and the wall, shown edge to edge. A dated teal-and-white interface (0.30/0.56/0.62) from a cheap independent ATM operator: a chunky header, a centred instruction in blocky white sans-serif, a cartoonish card-insert icon, and a surcharge notice in a yellow box at the bottom. Low-resolution late-2000s screen with soft pixels, slight burn-in ghosting of the logo, a cloudy scratched protective cover and a sticky smudge. Flat, evenly lit, no bezel.\nSIZE: the real object is 15 cm wide by 11 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the screen of the Iron Crow's ATM, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: CASH \u00b7 INSERT CARD TO BEGIN \u00b7 $3.50 SURCHARGE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_atm_screen/new_orleans_bar_atm_screen_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:27:06+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_atm_screen",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_atm_screen/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_atm_screen.png"
+  },
+  {
+    "at": "2026-10-14T02:27:30+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_bar_tv_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the muted bar TV over the bottles at the Iron Crow like this: The game flickered on the bar TV. The neon ghosts on the screen threw up their hands in digital despair. Additional direction: A wide 16:9 flat-screen TV image, edge to edge: a muted night broadcast of a professional American football game seen in a high wide-angle camera shot. Green field with white yard lines, the line of scrimmage, small players in pads mid-play \u2014 the defense in white jerseys, the offense in black and gold \u2014 with a pass being intercepted near midfield. A navy score bug along the bottom left with abbreviated team names, score, quarter and play clock; no real league or network logos. Slightly oversaturated cheap-TV colour, faint motion blur, a hint of compression blockiness, a bar's grimy screen with a smoky haze. Flat, evenly lit.\nSIZE: the real object is 65 cm wide by 38 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the muted bar TV over the bottles at the Iron Crow, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: no legible text beyond the score bug: HOME 17 \u00b7 AWAY 20 \u00b7 4TH 2:41. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_bar_tv_1/new_orleans_bar_bar_tv_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:27:35+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_bar_tv_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_bar_tv_1/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_bar_tv_1.png"
+  },
+  {
+    "at": "2026-10-14T02:27:51+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_beerneon_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the red beer neon over Douglas's corner booth like this: Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Additional direction: A vintage beer neon sign on the wall of a Marigny dive bar, front view, lit. Glowing red-pink neon tubing (0.86/0.32/0.34) bent into script lettering for a defunct regional lager, with an outlined bottle-cap emblem, mounted on a black painted wire-mesh frame (0.14/0.12/0.14) with visible tube supports and a little dangling cord. One letter is half dark and flickering, dust and nicotine film on the glass, a scorch mark near an electrode. It advertises a brand the bar stopped carrying years ago. Night glow against darkness, flat and straight on.\nSIZE: the real object is 45 cm wide by 23 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the red beer neon over Douglas's corner booth, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Delta Lager. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_beerneon_1/new_orleans_bar_beerneon_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:28:07+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_beerneon_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_beerneon_1/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_beerneon_1.png"
+  },
+  {
+    "at": "2026-10-14T02:28:26+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_beerneon_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the amber beer neon over the arcade at the Iron Crow like this: Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Additional direction: An old beer neon sign above the arcade cabinets in a New Orleans dive bar, front view, lit. Warm amber-gold neon tubing (0.90/0.70/0.28) forming a stylised pelican in profile over block lettering for a beer, on a black mesh frame with steel tube supports, the transformer box showing at the bottom edge. The beer is long discontinued in this bar; the sign stays because nobody took it down. One section of the pelican's wing is dead, the glass is filmed with old smoke, a Mardi Gras bead strand is looped over one corner. Glowing against darkness, flat, straight on.\nSIZE: the real object is 42 cm wide by 23 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the amber beer neon over the arcade at the Iron Crow, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Pelican Gold. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_beerneon_2/new_orleans_bar_beerneon_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:32:22+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_beerneon_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_beerneon_2/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_beerneon_2.png"
+  },
+  {
+    "at": "2026-10-14T02:32:42+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_exit_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A small illuminated EXIT sign over the delivery door at the end of a dive bar's back hall, face on. Black thermoplastic housing (0.16/0.16/0.18) with a red translucent face, the four letters in tall red stencil-style capitals lit from within (0.96/0.24/0.20), a small chevron arrow pointing to the right. Old and grimy: yellowed plastic, a crack across one corner, a smear of dust on the top edge and a dead bug inside the diffuser. Flat, evenly lit, no wall.\nSIZE: the real object is 8 cm wide by 19 cm tall, narrower than this 9:16 image, so the game shows only a vertical strip through the middle 75% of the image's width. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the EXIT sign over the Iron Crow's back door, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: EXIT. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_exit_sign/new_orleans_bar_exit_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:32:46+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_exit_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_exit_sign/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_exit_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:33:06+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_missilecmd_screen",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Missile Command screen at the Iron Crow like this: Yes. And Missile Command, too. Additional direction: The screen of an early-1980s upright arcade cabinet running the Missile Command attract mode, edge to edge, no bezel. A black night sky over a low yellow-brown ground strip with six small blocky cities and three missile-base mounds; thin coloured incoming missile trails slanting down from the top, expanding circular explosions in flashing red, blue and white, a small crosshair cursor. Score digits in red at the top. Real CRT look: glowing raster lines, slight bloom, curvature at the edges, a faint green-tinted phosphor cast (0.14/0.30/0.22) and a hint of burn-in. Flat, straight on.\nSIZE: the real object is 27 cm wide by 21 cm tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the Missile Command screen at the Iron Crow, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: no legible text beyond score digits. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_missilecmd_screen/new_orleans_bar_missilecmd_screen_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:33:10+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_missilecmd_screen",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_missilecmd_screen/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_missilecmd_screen.png"
+  },
+  {
+    "at": "2026-10-14T02:33:30+00:00",
+    "stage": "image",
+    "slug": "new_orleans_bar_open_neon",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A classic window OPEN neon sign hanging in a dive bar's street window, front view, lit at night. Bright red-pink neon tubing (0.96/0.30/0.34) forming the word in rounded capitals, outlined by a second thin tube rectangle, mounted on a small black acrylic backing panel (0.10/0.10/0.12) with clear plastic tube clips. Old and well used: one corner of the outline flickering, dust on the glass, tape on a cracked support. Glowing against darkness, flat, straight on, no window or chain.\nSIZE: the real object is 31 cm wide by 13 cm tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the OPEN neon in the Iron Crow's east window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: OPEN. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_bar_open_neon/new_orleans_bar_open_neon_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:33:34+00:00",
+    "stage": "art",
+    "slug": "new_orleans_bar_open_neon",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_bar_open_neon/front.png",
+    "output": "godot/assets/art/hero/new_orleans_bar_open_neon.png"
+  },
+  {
+    "at": "2026-10-14T02:33:57+00:00",
+    "stage": "image",
+    "slug": "maya_bedroom_hall_photo_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the second (darkest) of her grandfather's photographs in the hall like this: The paper has the particular weight of mid-seventies gelatin silver printing, which Maya has learned to recognize from the framed prints her grandfather had left around this house. Additional direction: A mid-1970s black-and-white gelatin silver photograph by a Graustark, Texas\u2013Louisiana river-town photographer, hung in a narrow black frame with a white mat in an upstairs hallway: a dock at night \u2014 a single bare bulb on a pole lighting wet planks, a moored shrimp boat's rigging fading into black water, a coil of rope, mist over the river. Dark, deep print with heavy blacks (overall dark gray, about RGB 0.40/0.40/0.40), one bright pool of light, visible grain. Quietly ominous, the kind of place the photographer should not have been. Flat, straight-on, evenly lit.\nSIZE: the real object is 13 cm wide by 15 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the second (darkest) of her grandfather's photographs in the hall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/maya_bedroom_hall_photo_2/maya_bedroom_hall_photo_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:35:00+00:00",
+    "stage": "art",
+    "slug": "maya_bedroom_hall_photo_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/maya_bedroom_hall_photo_2/front.png",
+    "output": "godot/assets/art/hero/maya_bedroom_hall_photo_2.png"
+  },
+  {
+    "at": "2026-10-14T02:35:22+00:00",
+    "stage": "image",
+    "slug": "maya_bedroom_hall_photo_3",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the third of her grandfather's photographs in the hall like this: The paper has the particular weight of mid-seventies gelatin silver printing, which Maya has learned to recognize from the framed prints her grandfather had left around this house. Additional direction: A mid-1970s black-and-white gelatin silver photograph by a Graustark, Texas\u2013Louisiana river-town photographer, hung in a narrow black frame with a white mat in an upstairs hallway: a Graustark main street in midday sun \u2014 a corner diner with a hand-painted sign too small to read, a church steeple behind, a man in a straw hat crossing, long shadows of telephone poles across the pavement. Balanced mid-tone print (overall mid-gray, about RGB 0.52/0.52/0.50), crisp grain, slight warm tone from age. Flat, straight-on, evenly lit.\nSIZE: the real object is 13 cm wide by 15 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the third of her grandfather's photographs in the hall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/maya_bedroom_hall_photo_3/maya_bedroom_hall_photo_3_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:35:26+00:00",
+    "stage": "art",
+    "slug": "maya_bedroom_hall_photo_3",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/maya_bedroom_hall_photo_3/front.png",
+    "output": "godot/assets/art/hero/maya_bedroom_hall_photo_3.png"
+  },
+  {
+    "at": "2026-10-14T02:35:48+00:00",
+    "stage": "image",
+    "slug": "centro_stockroom_extinguisher_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on view of a square safety sign: a red panel (#BF2924) with a white pictogram of a fire extinguisher and a small flame, FIRE EXTINGUISHER in white bold sans-serif capitals beneath, and a white downward arrow. Rigid printed plastic screwed to a painted grey-green cinderblock wall, the corners scuffed, a film of warehouse dust and one forklift-height scrape. Grocery back-of-house under bare fluorescent tubes.\nSIZE: the real object is 15 cm wide by 15 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the fire extinguisher sign in the Centro stockroom, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: FIRE EXTINGUISHER. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/centro_stockroom_extinguisher_sign/centro_stockroom_extinguisher_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:35:50+00:00",
+    "stage": "art",
+    "slug": "centro_stockroom_extinguisher_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/centro_stockroom_extinguisher_sign/front.png",
+    "output": "godot/assets/art/hero/centro_stockroom_extinguisher_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:36:04+00:00",
+    "stage": "image",
+    "slug": "cafe_olimpico_front_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The fascia sign over the glazed front of an old Italian espresso bar in Mile End, Montreal: a wide painted band in deep teal-green (RGB ~0.16/0.30/0.28) with the name centered in cream (RGB ~0.92/0.88/0.70) slightly condensed serif capitals with a fine gold outline, a thin tricolor stripe of green, white and red at each end. Fifty years old and repainted more than once; faint brush ridges, a little grime along the bottom edge. Seen flat-on, evenly lit on a bright late-May morning.\nSIZE: the real object is 2.00 m wide by 25 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 29% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of Caf\u00e9 Olimpico's front sign on Saint-Viateur, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: CAF\u00c9 OLIMPICO. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cafe_olimpico_front_sign/cafe_olimpico_front_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:36:09+00:00",
+    "stage": "art",
+    "slug": "cafe_olimpico_front_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cafe_olimpico_front_sign/front.png",
+    "output": "godot/assets/art/hero/cafe_olimpico_front_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:36:25+00:00",
+    "stage": "image",
+    "slug": "cafe_olimpico_menu",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A small wood-framed chalkboard menu over an Italian espresso bar in Montreal, seen flat-on, landscape. Dark green-black slate (RGB ~0.12/0.14/0.12). Seven hand-chalked lines, alternating cream, soft pink and pale sky-blue chalk, prices in cream at the right in Canadian dollars; the Italian drink names with a few French words. Old-school caf\u00e9 handwriting, a small chalk espresso cup and a coffee bean in a corner, eraser haze from decades of price changes.\nSIZE: the real object is 44 cm wide by 31 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Caf\u00e9 Olimpico's chalk menu over the bar, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: ESPRESSO 2.75 \u00b7 ALLONG\u00c9 3.00 \u00b7 MACCHIATO 3.00 \u00b7 CAPPUCCINO 4.25 \u00b7 LATTE 4.50 \u00b7 CANNOLI 3.50 \u00b7 BISCOTTI 1.50. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cafe_olimpico_menu/cafe_olimpico_menu_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:36:33+00:00",
+    "stage": "art",
+    "slug": "cafe_olimpico_menu",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cafe_olimpico_menu/front.png",
+    "output": "godot/assets/art/hero/cafe_olimpico_menu.png"
+  },
+  {
+    "at": "2026-10-14T02:36:52+00:00",
+    "stage": "image",
+    "slug": "cafe_olimpico_out_facade",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the building facades across Saint-Viateur from Caf\u00e9 Olimpico like this: Then out the window, at the Montreal street with its trees beginning to go into their full green, at the ordinary Tuesday commerce of Saint-Viateur. The bagel shop across the street began its lunch rush. Additional direction: A wide horizontal band of the three-storey brick walk-up facades across rue Saint-Viateur in Mile End, Montreal, on a bright late-May late morning. Warm tan-red brick (RGB ~0.62/0.46/0.34), regular rows of tall sash windows with gray stone lintels and sills, a pressed-metal cornice along the top, black wrought-iron balcony railings, a few cast-iron exterior stairs, and fresh green maple leaves edging in. Clear spring light, soft and even. The ground-floor shopfronts are left as a plain dark band. It must tile seamlessly left-right: a repeating window rhythm with no single landmark, sign or storefront name. Flat, straight-on.\nSIZE: the real object is 13.00 m wide by 5.00 m tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the building facades across Saint-Viateur from Caf\u00e9 Olimpico, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cafe_olimpico_out_facade/cafe_olimpico_out_facade_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:36:57+00:00",
+    "stage": "art",
+    "slug": "cafe_olimpico_out_facade",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cafe_olimpico_out_facade/front.png",
+    "output": "godot/assets/art/hero/cafe_olimpico_out_facade.png"
+  },
+  {
+    "at": "2026-10-14T02:37:21+00:00",
+    "stage": "image",
+    "slug": "cafe_olimpico_win_backcorner_glass",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior view through a small back-corner window of a Mile End caf\u00e9, Montreal, on a sunny late-May late morning: a narrow side street lined with brick triplexes, their black wrought-iron spiral staircases climbing to second-floor balconies, a young silver maple in fresh full green leaf throwing dappled shadow on the sidewalk, a row of bicycles chained to a rail, a parked compact car. Bright clear sky, slanted warm sunlight, crisp spring colors. Flat, straight-on, naturalistic.\nSIZE: the real object is 58 cm wide by 63 cm tall \u2014 a portrait picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view west out of Caf\u00e9 Olimpico's back-corner window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cafe_olimpico_win_backcorner_glass/cafe_olimpico_win_backcorner_glass_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:37:24+00:00",
+    "stage": "art",
+    "slug": "cafe_olimpico_win_backcorner_glass",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/cafe_olimpico_win_backcorner_glass/front.png",
+    "output": "godot/assets/art/hero/cafe_olimpico_win_backcorner_glass.png"
+  },
+  {
+    "at": "2026-10-14T02:38:21+00:00",
+    "stage": "image",
+    "slug": "new_orleans_apartment_tv_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Full-screen frame of a flat-panel TV left on all night in a rented New Orleans apartment, pre- dawn: a local early-morning newscast's weather segment, muted. A blue-green Doppler radar map of southeast Louisiana and the Mississippi River with a ragged band of green-and-yellow rain crossing toward New Orleans, a lower-third bar reading NOLA THIS MORNING \u00b7 6:04 AM \u00b7 78\u00b0 \u00b7 HUMID, a small station bug in the corner. Slightly washed, cool blue-grey cast (RGB 77,92,107), screen dust visible. 16:9, no bezel, evenly lit.\nSIZE: the real object is 42 cm wide by 28 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the TV in Jimmy's sublet, left on before dawn, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: NOLA THIS MORNING \u00b7 6:04 AM \u00b7 78\u00b0 \u00b7 HUMID. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_apartment_tv_1/new_orleans_apartment_tv_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:38:24+00:00",
+    "stage": "art",
+    "slug": "new_orleans_apartment_tv_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_apartment_tv_1/front.png",
+    "output": "godot/assets/art/hero/new_orleans_apartment_tv_1.png"
+  },
+  {
+    "at": "2026-10-14T02:38:48+00:00",
+    "stage": "image",
+    "slug": "new_orleans_apartment_tv_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Full-screen frame of a contemporary two-player split-screen co-op video game paused mid-session on a flat-panel TV: top half a neon-lit night city street racer from behind a battered muscle car, bottom half the second player's car drifting through rain, HUD speedometers and lap counters in the corners, a little PAUSED overlay with RESUME / OPTIONS / QUIT in clean modern UI. Cool slate blue overall (RGB 77,92,107) with magenta and amber highlights. 16:9, no bezel, evenly lit.\nSIZE: the real object is 36 cm wide by 22 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the video game on Jacob's TV, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: PAUSED \u00b7 RESUME \u00b7 OPTIONS \u00b7 QUIT. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_apartment_tv_2/new_orleans_apartment_tv_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:38:52+00:00",
+    "stage": "art",
+    "slug": "new_orleans_apartment_tv_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_apartment_tv_2/front.png",
+    "output": "godot/assets/art/hero/new_orleans_apartment_tv_2.png"
+  },
+  {
+    "at": "2026-10-14T02:39:16+00:00",
+    "stage": "image",
+    "slug": "new_orleans_apartment_window_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view south from the west French window, three floors above the street like this: Below, the street was slowly coming alive. A delivery man pushed a hand truck of bread across the cobblestones in a way that suggested he had been doing this exact route, at this exact hour, for thirty years and would continue to do it for as long as he was capable. Additional direction: View from a third-floor French window down onto a narrow French Quarter street in New Orleans just before dawn: wet cobblestones and a cracked flagstone banquette three storeys below, a gas lamp still burning, a delivery man's hand truck of bread loaves parked at a door, and across the street a three-storey stucco row building in faded terracotta and ochre with long cast-iron galleries, hanging ferns, louvered green shutters. The light is bruised purple and sickly green with a yellowish streetlamp cast, sky pale violet. Humid haze, no interior.\nSIZE: the real object is 60 cm wide by 1.10 m tall \u2014 a portrait picture, aspect 9:16. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view south from the west French window, three floors above the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_apartment_window_1/new_orleans_apartment_window_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:39:21+00:00",
+    "stage": "art",
+    "slug": "new_orleans_apartment_window_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_apartment_window_1/front.png",
+    "output": "godot/assets/art/hero/new_orleans_apartment_window_1.png"
+  },
+  {
+    "at": "2026-10-14T02:40:10+00:00",
+    "stage": "image",
+    "slug": "new_orleans_apartment_window_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the view south from the east French window, three floors above the street like this: The world swam in a jaundiced filter, all bruised purples and sickly greens bleeding through the grimy apartment window. Additional direction: View from the second tall French window of a third-floor apartment over a French Quarter street in New Orleans at first light: the street continuing to the right toward a corner, cobblestones shining wet, a shuttered corner bar with its door propped, a lone tall streetlamp; across the way the long cast-iron galleries of a three-storey terracotta stucco building, potted banana plants and bead strands on the rails. Sky shading from bruised violet to a jaundiced yellow-green dawn, humid haze. No people close up, no interior.\nSIZE: the real object is 60 cm wide by 1.10 m tall \u2014 a portrait picture, aspect 9:16. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view south from the east French window, three floors above the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_orleans_apartment_window_2/new_orleans_apartment_window_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:40:14+00:00",
+    "stage": "art",
+    "slug": "new_orleans_apartment_window_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_orleans_apartment_window_2/front.png",
+    "output": "godot/assets/art/hero/new_orleans_apartment_window_2.png"
+  },
+  {
+    "at": "2026-10-14T02:40:36+00:00",
+    "stage": "image",
+    "slug": "missing_link_interior_kitchendoor_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on view of a diner's swinging kitchen door, tall 1:2 portrait. Cream laminate face (RGB ~219,209,179) worn greyish at hand height, a round porthole window high in the center with a polished chrome rim; through the porthole a glimpse of a lit steel kitchen, a hood light and the blurred shoulder of a cook in white. A brushed chrome push plate on the right at waist height with a dark smudge of palms; a steel hinge strip down the left edge; scuffs and a kick-mark band across the bottom. Roadside Pacific Northwest diner, decades old. Evenly lit, no perspective.\nSIZE: the real object is 57 cm wide by 1.12 m tall \u2014 a portrait picture, aspect 9:16. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the Missing Link's swinging kitchen door, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/missing_link_interior_kitchendoor_1/missing_link_interior_kitchendoor_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:40:41+00:00",
+    "stage": "art",
+    "slug": "missing_link_interior_kitchendoor_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/missing_link_interior_kitchendoor_1/front.png",
+    "output": "godot/assets/art/hero/missing_link_interior_kitchendoor_1.png"
+  },
+  {
+    "at": "2026-10-14T02:40:49+00:00",
+    "stage": "art",
+    "slug": "elicia_apartment_dead_monitor_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/elicia_apartment_dead_monitor_1/front.png",
+    "output": "godot/assets/art/hero/elicia_apartment_dead_monitor_1.png"
+  },
+  {
+    "at": "2026-10-14T02:41:09+00:00",
+    "stage": "image",
+    "slug": "elicia_apartment_dead_monitor_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The screen of a powered-off desktop flat-panel monitor on a wrecked editing desk in a Montreal apartment: a dead, near-black glossy LCD (charcoal blue-black) showing no image at all. A hairline crack runs diagonally from the upper right corner where something was dropped against it. Fine dust settled across the surface, a few fingerprint smudges, a faint cold blue-grey sheen of dusk light grazing across it. Landscape 16:9, flat, evenly lit, no bezel.\nSIZE: the real object is 28 cm wide by 17 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the second dead monitor on Elicia's work table, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/elicia_apartment_dead_monitor_2/elicia_apartment_dead_monitor_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:41:13+00:00",
+    "stage": "art",
+    "slug": "elicia_apartment_dead_monitor_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/elicia_apartment_dead_monitor_2/front.png",
+    "output": "godot/assets/art/hero/elicia_apartment_dead_monitor_2.png"
+  },
+  {
+    "at": "2026-10-14T02:41:33+00:00",
+    "stage": "image",
+    "slug": "elicia_apartment_laptop_screen",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Elicia's laptop screen (the email inbox) like this: There were four hundred and twelve unread messages. The subject line was Hi. Additional direction: A laptop screen in a dark apartment at night, screen content only: a clean modern webmail inbox in a light theme, the header Inbox with the count 412 unread, a long list of bold unread rows \u2014 two from a web-hosting provider about an overdue payment, newsletters, a festival \u2014 and one row highlighted mid-list from John Frank with the subject Hi, dated three weeks ago, preview text beginning Eli \u2014 I heard you were in Montreal. Small sans-serif UI type, a sidebar of folders. Slight glare-free LCD glow, cool blue-white. Landscape 16:10, flat, no bezel.\nSIZE: the real object is 13 cm wide by 8 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Elicia's laptop screen (the email inbox), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Inbox (412) / John Frank \u2014 Hi \u2014 Eli \u2014 I heard you were in Montreal. From the Roberts.. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/elicia_apartment_laptop_screen/elicia_apartment_laptop_screen_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:42:35+00:00",
+    "stage": "art",
+    "slug": "elicia_apartment_laptop_screen",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/elicia_apartment_laptop_screen/front.png",
+    "output": "godot/assets/art/hero/elicia_apartment_laptop_screen.png"
+  },
+  {
+    "at": "2026-10-14T02:42:56+00:00",
+    "stage": "image",
+    "slug": "elicia_apartment_skyline",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Montreal at dusk out of Elicia's west window (tiling band) like this: Watching the indifferent city lights prick the bruise-colored Montreal dusk. Lights of the harbour gleam red and gold afar. Outside, the November Montreal evening did its grey careful work. Additional direction: A horizontal band of the Montreal cityscape seen west from a third-floor Mile End apartment on a November evening, straight-on. Rows of dark flat-roofed brick triplexes and mid-rise apartment blocks, a few taller residential towers further back, all near-black silhouettes (deep blue-black) punctured by scattered lit windows in warm amber, cream and a few cool blue-white TV glows, rooftop water tanks and bare tree crowns in between; far off at the bottom, a low glimmer of harbour lights in red and gold. Sky a bruised violet-grey dusk going to night, cold November haze. Must tile seamlessly left-right: no single landmark (no cross on the mountain, no famous towers), no readable signs, even distribution of lights. Wide band (about 2.2:1).\nSIZE: the real object is 20.00 m wide by 9.00 m tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of Montreal at dusk out of Elicia's west window (tiling band), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/elicia_apartment_skyline/elicia_apartment_skyline_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:43:00+00:00",
+    "stage": "art",
+    "slug": "elicia_apartment_skyline",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/elicia_apartment_skyline/front.png",
+    "output": "godot/assets/art/hero/elicia_apartment_skyline.png"
+  },
+  {
+    "at": "2026-10-14T02:43:16+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_bypass_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Face of a Texas highway guide sign on a pole at the New Auburn Bypass intersection, beside the traffic signal at the payday-loan / police-substation strip. Retroreflective green aluminium panel (deep highway green, about RGB 0.16/0.42/0.24) with a thin white border and rounded corners; white Highway Gothic / Clearview-style capitals reading NEW AUBURN BYPASS with a bold white arrow. Small-town East Texas, flat cedar-scrub country, current day. Condition: ten years of Gulf-coast sun, the green slightly chalky and faded toward the top edge, a few rust-bloomed bolt heads, a dent, a little bird dropping streak. Flat, straight-on, evenly lit, no background beyond the panel.\nSIZE: the real object is 80 cm wide by 30 cm tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the green New Auburn Bypass guide sign by the substation signal, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: NEW AUBURN BYPASS \u2192. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_bypass_sign/new_auburn_road_bypass_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:43:21+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_bypass_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_bypass_sign/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_bypass_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:43:38+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_cypress_motel_sign_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the CYPRESS name panel on the Cypress Motel pole sign like this: The Cypress Motel sign across the road is on. Additional direction: The top name panel of a 1970s roadside motel pole sign on a Texas two-lane, the Cypress Motel (single-story, twelve rooms in an L). A long horizontal backlit sign box: a cream-yellow translucent plastic face (about RGB 0.96/0.92/0.72) set in a teal-green painted sheet-metal cabinet (0.18/0.40/0.36), with the word Cypress in a looping mid-century brush-script, deep bottle-green letters with a thin rust-brown outline, and a small stylised cypress tree silhouette at the left end. Fifty years old: the plastic face yellowed and slightly sun-crazed, a hairline crack patched with tape, the cabinet's teal paint chalky with rust streaks from the screws. Lit from inside, glowing evenly. Flat and straight-on.\nSIZE: the real object is 1.30 m wide by 25 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 45% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the CYPRESS name panel on the Cypress Motel pole sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: Cypress. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_1/new_auburn_road_cypress_motel_sign_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:43:42+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_cypress_motel_sign_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_1/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_cypress_motel_sign_1.png"
+  },
+  {
+    "at": "2026-10-14T02:43:59+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_cypress_motel_sign_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A narrow horizontal sign strip below the Cypress name on a 1970s motel pole sign by a Texas two-lane highway: the single word MOTEL in wide, spaced, bold mid-century block capitals, cream-white letters on a burnt-orange panel (about RGB 0.92/0.60/0.30), the panel a backlit plastic face in a teal sheet-metal frame. Period roadside Americana, still in use in 2025. Wear: the orange sun-faded unevenly toward pale peach at one end, faint ghost outlines of older letters, small rust weeps at the corners, a dead moth caught inside the plastic. Glowing evenly from within. Flat, straight-on, panel only, no sky.\nSIZE: the real object is 80 cm wide by 13 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 38% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the MOTEL strip on the Cypress Motel pole sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: MOTEL. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_2/new_auburn_road_cypress_motel_sign_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:44:04+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_cypress_motel_sign_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_cypress_motel_sign_2/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_cypress_motel_sign_2.png"
+  },
+  {
+    "at": "2026-10-14T02:44:21+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_cypress_motel_vacancy_neon",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Cypress Motel's red VACANCY neon like this: The Cypress Motel sign across the road is on. Additional direction: The VACANCY neon under the Cypress Motel's pole sign on a Texas back road: a long, low black-painted sheet-metal box (near-black 0.16/0.16/0.18) carrying the word VACANCY in a single run of hand-bent red neon tube, simple narrow sans-serif capitals, tubes glowing warm cherry red (about RGB 0.94/0.30/0.30) with a soft halo on the black backing, visible tube standoffs and a dark electrode blob at each end of the run. 1970s fixture still working in 2025: one letter slightly dimmer than the others, flaking paint and a little rust at the box edges, dust on the glass. Shown lit. Flat, straight-on, box face only.\nSIZE: the real object is 80 cm wide by 9 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 26% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the Cypress Motel's red VACANCY neon, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: VACANCY. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_cypress_motel_vacancy_neon/new_auburn_road_cypress_motel_vacancy_neon_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:44:25+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_cypress_motel_vacancy_neon",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_cypress_motel_vacancy_neon/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_cypress_motel_vacancy_neon.png"
+  },
+  {
+    "at": "2026-10-14T02:44:42+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_foxhole_front_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Foxhole's lit sign above its front door like this: The Foxhole's marquee \u2014 which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show \u2014 is on. Additional direction: The small lit venue sign above the front door of The Foxhole, a dive music venue in a beige stucco strip mall on Old San Antonio Road, New Auburn, Texas. A long black box sign (near-black, about RGB 0.14/0.14/0.15): the venue logo at the left, a running fox in a simple line drawing, and THE FOXHOLE in chunky condensed white-and-amber capitals, with a thin red pinstripe border. Internally lit, warm and even. Indie-bar register, not a chain: hand-cut vinyl on the plastic face, slightly peeling at one corner, sticker residue from band stickers someone scraped off, a little grime along the bottom edge. Flat, straight-on, sign face only.\nSIZE: the real object is 1.50 m wide by 35 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 54% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the Foxhole's lit sign above its front door, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: THE FOXHOLE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_foxhole_front_sign/new_auburn_road_foxhole_front_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:44:46+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_foxhole_front_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_foxhole_front_sign/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_foxhole_front_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:45:02+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_lighting_van_logo",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the RAM\u00d3N VARGAS LIGHTING logo on the side of the cargo van like this: But then he sees, in the lot in front of The Foxhole's front door, a 2019 Toyota Tacoma he has not seen before, and a smaller cargo van with a logo on the side that says RAM\u00d3N VARGAS LIGHTING \u2014 SAN ANTONIO, and the front door of The Foxhole is propped open with a small black road case. Additional direction: Side-panel vinyl logo on a white cargo van parked outside The Foxhole in New Auburn, Texas: the mobile stage-lighting business of DJ Chess's brother. Royal-to-navy blue graphics (about RGB 0.20/0.30/0.56) cut vinyl on glossy white van paint: a stylised moving-head stage light throwing three beams at the left, then RAM\u00d3N VARGAS LIGHTING in bold italic sans-serif capitals with the accent on the \u00d3, and SAN ANTONIO beneath in smaller spaced capitals, maybe a phone number line. Small-business work-van graphics, a couple of years old: one letter edge lifting, road dust along the bottom. Flat, straight-on, logo area only.\nSIZE: the real object is 1.30 m wide by 25 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 45% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the RAM\u00d3N VARGAS LIGHTING logo on the side of the cargo van, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: RAM\u00d3N VARGAS LIGHTING \u2014 SAN ANTONIO. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_lighting_van_logo/new_auburn_road_lighting_van_logo_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:45:08+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_lighting_van_logo",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_lighting_van_logo/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_lighting_van_logo.png"
+  },
+  {
+    "at": "2026-10-14T02:45:24+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_marquee_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the Foxhole's chalk reader board like this: The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 \u2014 SUBURBAN BLIGHT // DJ CHESS \u2014 DOORS 8. The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's handwriting from this morning: SAT 8/22 \u2014 DOORS 8 \u2014 SUBURBAN BLIGHT 9 \u2014 DJ CHESS 11. Additional direction: A black chalkboard reader board on two steel posts at the front corner of the Foxhole's strip mall in New Auburn, Texas, framed by a thin red-painted trim rail along the top. Matte slate-black board (about RGB 0.14/0.14/0.15) with the next show chalked by hand this afternoon in white bar-staff capitals: SAT 8/22 \u2014 SUBURBAN BLIGHT across the top in one long line, and below it on the left DJ CHESS and on the right DOORS 8. Real chalk texture, uneven pressure, a smudged ghost of last week's bill wiped off underneath, a small hand-drawn star. Weathered board edges, a screw-head showing. Flat, straight-on, evenly lit.\nSIZE: the real object is 1.20 m wide by 65 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the Foxhole's chalk reader board, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: SAT 8/22 \u2014 SUBURBAN BLIGHT / DJ CHESS  DOORS 8. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_marquee_1/new_auburn_road_marquee_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:45:29+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_marquee_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_marquee_1/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_marquee_1.png"
+  },
+  {
+    "at": "2026-10-14T02:46:29+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_marquee_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the top chalk line on the Foxhole reader board (the band's name) like this: The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 \u2014 SUBURBAN BLIGHT // DJ CHESS \u2014 DOORS 8. His own band's name, in chalk, on the front of a venue, in his town, on a Saturday in mid-August. Additional direction: A single long line of hand-written chalk on a black slate reader board outside The Foxhole in New Auburn, Texas: SAT 8/22 \u2014 SUBURBAN BLIGHT, in white chalk capitals by a bartender's hand, slightly rising to the right, the letters wider at the start and squeezed at the end where the writer ran out of room. Real chalk grain, dusty edges, faint smudged ghost letters from an older bill behind it on the matte black board (about RGB 0.14/0.14/0.15). A local garage band seeing its name on a venue for the first time. Very wide thin strip composition, text filling the width. Flat, straight-on, evenly lit.\nSIZE: the real object is 95 cm wide by 8 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 20% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the top chalk line on the Foxhole reader board (the band's name), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: SAT 8/22 \u2014 SUBURBAN BLIGHT. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_marquee_2/new_auburn_road_marquee_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:46:37+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_marquee_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_marquee_2/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_marquee_2.png"
+  },
+  {
+    "at": "2026-10-14T02:46:55+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_napd_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the NAPD SUBSTATION B monument sign like this: Its sign \u2014 NAPD SUBSTATION B \u2014 has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for. Additional direction: A small low municipal monument sign for the New Auburn Police Department's Substation B, East Texas: a flat sheet-metal panel on a concrete block base, painted dark navy-blue enamel (about RGB 0.12/0.18/0.38) with a thin white keyline border and NAPD SUBSTATION B in plain white sans-serif capitals, and NEW AUBURN POLICE DEPARTMENT smaller beneath. The blue has been hand-touched-up with a brush twice a year for a decade: visible brush strokes, slightly mismatched patches of fresher, glossier blue over chalky older paint, careful edges around the letters, a little rust bleeding from one bolt. Flat, straight-on, evenly lit, sign face only.\nSIZE: the real object is 90 cm wide by 45 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the NAPD SUBSTATION B monument sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: NAPD SUBSTATION B / NEW AUBURN POLICE DEPARTMENT. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_napd_sign/new_auburn_road_napd_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:47:00+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_napd_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_napd_sign/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_napd_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:47:18+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_payday_loan_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The storefront fascia sign of a payday loan store in a flat-roofed beige strip-mall building off the New Auburn Bypass, Texas, sharing a lot with the police substation and a tax preparer. A long backlit sign band: bright marigold-yellow face (about RGB 0.92/0.72/0.20) with heavy black condensed sans-serif capitals reading CASH ADVANCE \u00b7 PAYDAY LOANS, a small dollar-sign roundel at the left. Cheap, loud, 2010s franchise-lookalike signage: the yellow slightly sun-bleached, a hairline crack across the plastic, dead bugs inside the bottom of the lightbox, faint ghost letters of a previous tenant. Flat, straight-on, evenly lit, sign face only.\nSIZE: the real object is 2.00 m wide by 35 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 41% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the payday loan store's fascia sign beside the police substation, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: CASH ADVANCE \u00b7 PAYDAY LOANS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_payday_loan_sign/new_auburn_road_payday_loan_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:47:22+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_payday_loan_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_payday_loan_sign/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_payday_loan_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:47:41+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_ranch_gate_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A wooden ranch-gate name board hung between two cedar posts over a pipe gate and cattle guard on a narrow cedar-scrub road south of New Auburn, Texas. A single rough-sawn pine plank, weathered to tan-gray (about RGB 0.72/0.60/0.40), with the ranch name routed into it and the grooves painted dark brown: CEDAR DRAW RANCH, a small running-iron brand mark (a C over a bar) burned at each end. Decades in the Texas sun: silvered grain, checking cracks, one corner split, rusted lag bolts and a chain hanger. Flat, straight-on, evenly lit, board face only.\nSIZE: the real object is 1.00 m wide by 25 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 58% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the ranch-gate sign on the cedar route south of town, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: CEDAR DRAW RANCH. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_ranch_gate_sign/new_auburn_road_ranch_gate_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:47:45+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_ranch_gate_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_ranch_gate_sign/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_ranch_gate_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:47:59+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_streetsign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A municipal street-name blade on a steel post at the south corner where Harmony Creek Estates meets the two-lane road in New Auburn, Texas: a long flat aluminium blade with retroreflective dark green face (about RGB 0.20/0.46/0.32), a thin white border, and CYPRESS POINT DR in clean white upper-case highway lettering, a small block number 1200 at the left end. A planned-community sign, newer than the road, but sun-faded after a few Gulf-coast summers: slight chalking, a sticker scar, a bit of grime along the bottom edge. Flat, straight-on, evenly lit, blade face only.\nSIZE: the real object is 60 cm wide by 14 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 54% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the street-name blade at the subdivision corner, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: 1200 CYPRESS POINT DR. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_streetsign/new_auburn_road_streetsign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:48:04+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_streetsign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_streetsign/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_streetsign.png"
+  },
+  {
+    "at": "2026-10-14T02:48:23+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_substation_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The public front entrance door of a small police substation in a flat-roofed beige strip-mall building off the New Auburn Bypass, Texas: a commercial aluminium storefront door in dark bronze-anodized frame, the glass dark smoke-tinted (blue-gray, about RGB 0.28/0.32/0.40), a vertical push bar, a keyed deadbolt. On the glass, white vinyl decals: NEW AUBURN POLICE DEPARTMENT, SUBSTATION B, LOBBY HOURS MON\u2013FRI 8\u20135, and a small NO WEAPONS sticker, plus a laminated sheet taped inside reading IN AN EMERGENCY DIAL 911. Underfunded upkeep: scuffed kick plate, peeling decal corner, a crack in the tint film. Flat, straight-on, evenly lit, the whole door.\nSIZE: the real object is 50 cm wide by 1.05 m tall, narrower than this 9:16 image, so the game shows only a vertical strip through the middle 85% of the image's width. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the front door of NAPD Substation B, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: NEW AUBURN POLICE DEPARTMENT \u00b7 SUBSTATION B \u00b7 LOBBY HOURS MON\u2013FRI 8\u20135 \u00b7 IN AN EMERGENCY DIAL 911. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_substation_1/new_auburn_road_substation_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:48:27+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_substation_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_substation_1/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_substation_1.png"
+  },
+  {
+    "at": "2026-10-14T02:48:45+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_substation_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A plain steel side service door in the beige stucco wall of a police substation in a Texas strip-mall building, the staff entrance off the lot: a flat hollow-metal door painted mid-gray (about RGB 0.44/0.44/0.46), a lever handle, a black push-button cipher lock above it, a small engraved plate reading STAFF ONLY, a closer arm shadow at the top. Wear: the gray paint scuffed to primer around the handle and along the bottom, a boot-kick dent, rust freckles at the base, a strip of weather seal peeling. Unremarkable municipal door. Flat, straight-on, evenly lit, the whole door.\nSIZE: the real object is 47 cm wide by 1.05 m tall, narrower than this 9:16 image, so the game shows only a vertical strip through the middle 80% of the image's width. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the side door of NAPD Substation B (where Ramirez waits with two coffees), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: STAFF ONLY. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_substation_2/new_auburn_road_substation_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:48:50+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_substation_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_substation_2/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_substation_2.png"
+  },
+  {
+    "at": "2026-10-14T02:49:08+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_substation_3",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the NAPD SUBSTATION B sign band on the building fascia like this: Its sign \u2014 NAPD SUBSTATION B \u2014 has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for. Additional direction: The fascia sign over the front of a flat-roofed beige strip-mall building off the New Auburn Bypass, Texas, which houses a police substation. A long flat sheet-metal panel painted dark blue enamel (about RGB 0.20/0.28/0.44) with NAPD SUBSTATION B in plain off-white sans-serif capitals, evenly spaced. The panel has been brush-touched-up by one officer twice a year since 2014: overlapping patches of slightly different blues, visible brush marks, drips cleaned off, the white letters carefully re-cut by hand so their edges waver a little. A couple of rust weeps at the fixing screws. Flat, straight-on, evenly lit, panel only.\nSIZE: the real object is 1.50 m wide by 30 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 47% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the NAPD SUBSTATION B sign band on the building fascia, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: NAPD SUBSTATION B. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_substation_3/new_auburn_road_substation_3_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:49:22+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_substation_3",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_substation_3/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_substation_3.png"
+  },
+  {
+    "at": "2026-10-14T02:49:40+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_unit_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "9:16",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the tracked unit's back door behind the Foxhole strip mall like this: The back door is a metal service door, painted institutional gray, with no signage. Additional direction: The rear service door of an anonymous commercial unit behind a Texas strip mall, the one a teenager has been watching all summer: a flat hollow-metal door painted institutional gray, repainted darker than its neighbours (charcoal gray, about RGB 0.24/0.23/0.24), with no signage at all, no door number, no wall lamp above it. A plain steel lever handle, a heavy deadbolt, a fresh-looking bright brass keyway that does not match the old door, a scuffed kick zone at the bottom and a faint outline where a number plate was removed. Set in pale beige stucco. Flat, straight-on, evenly lit, the whole door.\nSIZE: the real object is 47 cm wide by 1.05 m tall, narrower than this 9:16 image, so the game shows only a vertical strip through the middle 80% of the image's width. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the tracked unit's back door behind the Foxhole strip mall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_unit_1/new_auburn_road_unit_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:49:43+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_unit_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_unit_1/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_unit_1.png"
+  },
+  {
+    "at": "2026-10-14T02:50:02+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_unit_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "16:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the papered-over window of the tracked unit (two sheets) like this: The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering \u2014 once in early July, once in early August \u2014 in a way that suggests the paper has been lifted from the inside and then replaced. Additional direction: A storefront window of a vacant-looking commercial unit in a Texas strip mall, blanked out from the inside with sheets of off-white butcher paper (about RGB 0.86/0.83/0.76) taped to the glass, seen from outside: two overlapping sheets hung slightly askew, their edges not square to the frame, translucent where the sun has been on them, yellowed masking tape at the corners, one strip of tape newer and whiter than the rest, wrinkles and a crease where a sheet was lifted and re-stuck. A faint shadow line of the inner sash. No text, no logos, nothing visible behind. Flat, straight-on, evenly lit.\nSIZE: the real object is 61 cm wide by 35 cm tall \u2014 a landscape picture, aspect 16:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the papered-over window of the tracked unit (two sheets), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_unit_2/new_auburn_road_unit_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:50:08+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_unit_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_unit_2/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_unit_2.png"
+  },
+  {
+    "at": "2026-10-14T02:50:33+00:00",
+    "stage": "image",
+    "slug": "new_auburn_road_unit_3",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the third sheet of paper on the tracked unit's window like this: The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering \u2014 once in early July, once in early August \u2014 in a way that suggests the paper has been lifted from the inside and then replaced. Additional direction: A single sheet of off-white butcher paper (about RGB 0.86/0.83/0.76) taped to the inside of a strip-mall shop window in New Auburn, Texas, seen from outside, filling the frame: hung a few degrees crooked, wrinkled from being peeled off and stuck back, two generations of masking tape at its corners (old yellow-brown and newer cream), a torn notch at one edge, sun-yellowing in a gradient toward the top. Slightly translucent with a faint darker blur behind it but nothing legible. Flat, straight-on, evenly lit.\nSIZE: the real object is 33 cm wide by 30 cm tall \u2014 a landscape picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the third sheet of paper on the tracked unit's window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/new_auburn_road_unit_3/new_auburn_road_unit_3_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:50:36+00:00",
+    "stage": "art",
+    "slug": "new_auburn_road_unit_3",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/new_auburn_road_unit_3/front.png",
+    "output": "godot/assets/art/hero/new_auburn_road_unit_3.png"
+  },
+  {
+    "at": "2026-10-14T02:50:58+00:00",
+    "stage": "image",
+    "slug": "roberts_kitchen_dining_photo_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A framed colour photograph print, flat and straight-on, behind a cream mat: a wide grey-blue Gulf of Mexico beach on an overcast morning, Bolivar-style flat sand strewn with bleached driftwood logs, a young Philip Roberts small in the middle distance dragging a silver driftwood branch, gulls, a pale sky meeting a pewter sea. Faded drugstore print (about RGB 148,158,168 overall), slight colour shift toward cyan, a little dust on the glass. Evenly lit, no frame edges beyond the mat.\nSIZE: the real object is 13 cm wide by 10 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the beach photograph on the Roberts' dining-room wall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/roberts_kitchen_dining_photo_1/roberts_kitchen_dining_photo_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:51:09+00:00",
+    "stage": "art",
+    "slug": "roberts_kitchen_dining_photo_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/roberts_kitchen_dining_photo_1/front.png",
+    "output": "godot/assets/art/hero/roberts_kitchen_dining_photo_1.png"
+  },
+  {
+    "at": "2026-10-14T02:51:29+00:00",
+    "stage": "image",
+    "slug": "roberts_kitchen_dining_photo_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A portrait-format photograph, flat and straight-on: Mackenzie and Philip Roberts on the steps of a small-town Texas county courthouse on their wedding day, early twenties, she in a simple cream sundress with a handful of wildflowers, he in a borrowed brown suit, both squinting and laughing in hard afternoon sun, live-oak shade at the edge of frame. Warm faded colour (about RGB 194,179,148 overall), slightly overexposed, a soft vignette. Unposed and secondhand-looking, like everything in their house. Evenly lit.\nSIZE: the real object is 10 cm wide by 13 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the wedding photo in the gold frame in the Roberts' dining room, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/roberts_kitchen_dining_photo_2/roberts_kitchen_dining_photo_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:52:10+00:00",
+    "stage": "image",
+    "slug": "roberts_kitchen_dining_photo_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A portrait-format photograph, flat and straight-on: Mackenzie and Philip Roberts, a handsome young black man, on the steps of a small-town Texas county courthouse on their wedding day, early twenties, she in a simple cream sundress with a handful of wildflowers, he in a borrowed brown suit, both squinting and laughing in hard afternoon sun, live-oak shade at the edge of frame. Warm faded colour (about RGB 194,179,148 overall), slightly overexposed, a soft vignette. Unposed and secondhand-looking, like everything in their house. Evenly lit.\nSIZE: the real object is 10 cm wide by 13 cm tall \u2014 a portrait picture, aspect 3:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the wedding photo in the gold frame in the Roberts' dining room, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/roberts_kitchen_dining_photo_2/roberts_kitchen_dining_photo_2_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:52:17+00:00",
+    "stage": "art",
+    "slug": "roberts_kitchen_dining_photo_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/roberts_kitchen_dining_photo_2/front.png",
+    "output": "godot/assets/art/hero/roberts_kitchen_dining_photo_2.png"
+  },
+  {
+    "at": "2026-10-14T02:52:57+00:00",
+    "stage": "image",
+    "slug": "roberts_kitchen_foyer_photo_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A small portrait-format snapshot behind a cream mat, flat and straight-on: Mackenzie's older brother as a young man, mid-twenties, leaning on the tailgate of a pickup in a gravel drive, hands in his jeans pockets, half-smiling at the camera the way a man smiles at a sister, Texas summer light, a chain-link fence and a pecan tree behind. Warm tan faded colour (about RGB 184,168,138), soft focus, a small scratch. Evenly lit.\nSIZE: the real object is 7 cm wide by 9 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the small photo by the Roberts' front door, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/roberts_kitchen_foyer_photo_1/roberts_kitchen_foyer_photo_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:53:12+00:00",
+    "stage": "art",
+    "slug": "roberts_kitchen_foyer_photo_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/roberts_kitchen_foyer_photo_1/front.png",
+    "output": "godot/assets/art/hero/roberts_kitchen_foyer_photo_1.png"
+  },
+  {
+    "at": "2026-10-14T02:53:35+00:00",
+    "stage": "image",
+    "slug": "roberts_kitchen_tv",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:3",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Screen content only, flat and straight-on: an old 4:3 CRT tube TV showing a small-market local morning newscast \u2014 a news anchor at a blue-and-red desk on the left, an over-the-shoulder graphic of a fenced-off collapse in a town street, and a lower-third banner reading SINKHOLE: SEISMIC MONITORING CONTINUES with a station bug in the corner and a crawl of weather temperatures. Soft CRT glow, mild colour bleed, slightly rounded image corners, faint static. No bezel.\nSIZE: the real object is 20 cm wide by 15 cm tall \u2014 a landscape picture, aspect 4:3. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the Roberts' CRT television, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: SINKHOLE: SEISMIC MONITORING CONTINUES. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/roberts_kitchen_tv/roberts_kitchen_tv_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:53:39+00:00",
+    "stage": "art",
+    "slug": "roberts_kitchen_tv",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/roberts_kitchen_tv/front.png",
+    "output": "godot/assets/art/hero/roberts_kitchen_tv.png"
+  },
+  {
+    "at": "2026-10-14T02:54:03+00:00",
+    "stage": "image",
+    "slug": "roberts_kitchen_window",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Exterior view only: a small back yard on the edge of Graustark, Texas, on a spring Saturday morning \u2014 a low dry-stacked pale limestone fence across the middle distance, Mackenzie's vegetable garden in front of it with rows of newly sprouted tomato seedlings in cages and a mulch path, a patched cedar picket section Philip has mended, a live oak and a pecan beyond the fence, a weathered tool shed at the right edge, flat Gulf Coast land and humid hazy blue sky, soft early sun from the east. Natural muted greens, limestone cream, weathered grey wood.\nSIZE: the real object is 85 cm wide by 55 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view east out of the Roberts' back-yard window, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/roberts_kitchen_window/roberts_kitchen_window_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:54:07+00:00",
+    "stage": "art",
+    "slug": "roberts_kitchen_window",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/roberts_kitchen_window/front.png",
+    "output": "godot/assets/art/hero/roberts_kitchen_window.png"
+  },
+  {
+    "at": "2026-10-14T02:54:33+00:00",
+    "stage": "image",
+    "slug": "faust_apartment_bike_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on side view of the rear wheel of a well-used steel commuter bicycle that a young pharmacy worker rides to work at dawn, leaning on a warm gray-green plaster wall (about RGB 0.52/0.50/0.43) in a second-floor walk-up studio. A 26-inch wheel filling the square: black knobby-but-worn tyre (0.12) with a faded sidewall, a silver alloy rim (0.66/0.66/0.64) with brake-track scuffs, 36 thin steel spokes crossing to a small steel hub with a five-speed freewheel cluster and a loop of greasy chain, the wall visible through the spokes. A bit of road grime and a dried leaf caught in the spokes. Flat, straight-on, evenly lit; the area outside the tyre is the plain plaster wall.\nSIZE: the real object is 33 cm wide by 33 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the rear wheel of Faust's bicycle, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/faust_apartment_bike_1/faust_apartment_bike_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:54:36+00:00",
+    "stage": "art",
+    "slug": "faust_apartment_bike_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/faust_apartment_bike_1/front.png",
+    "output": "godot/assets/art/hero/faust_apartment_bike_1.png"
+  },
+  {
+    "at": "2026-10-14T02:55:00+00:00",
+    "stage": "image",
+    "slug": "faust_apartment_bike_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on side view of the front wheel of a well-used steel commuter bicycle that a young pharmacy worker rides to work at dawn, leaning on a warm gray-green plaster wall (about RGB 0.52/0.50/0.43) in a second-floor walk-up studio. A 26-inch wheel filling the square: black knobby-but-worn tyre (0.12) with a faded sidewall, a silver alloy rim (0.66/0.66/0.64) with brake-track scuffs, 36 thin steel spokes crossing to a small steel hub with a quick-release lever, the wall visible through the spokes. A bit of road grime and a dried leaf caught in the spokes. Flat, straight-on, evenly lit; the area outside the tyre is the plain plaster wall.\nSIZE: the real object is 33 cm wide by 33 cm tall \u2014 a square picture, aspect 1:1. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the front wheel of Faust's bicycle, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/faust_apartment_bike_2/faust_apartment_bike_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:55:03+00:00",
+    "stage": "art",
+    "slug": "faust_apartment_bike_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/faust_apartment_bike_2/front.png",
+    "output": "godot/assets/art/hero/faust_apartment_bike_2.png"
+  },
+  {
+    "at": "2026-10-14T02:55:26+00:00",
+    "stage": "image",
+    "slug": "faust_apartment_win_e_glass",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "View straight out from a second-floor window of an old walk-up in an aging American downtown, looking east across a quiet two-lane commercial side street two storeys below: the opposite sidewalk, a few parked cars, a row of two- and three-storey brick storefront buildings with shuttered shopfronts and apartment windows above, a fire escape, a cobra-head streetlamp still burning sodium orange, wires across the street, one bare street tree. The hour is first light around dawn: the sky behind the rooftops pale blue-gray going to faint peach at the horizon, the street still in cool shadow and empty. No people. Flat, straight-on composition, evenly lit.\nSIZE: the real object is 87 cm wide by 77 cm tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view east out of Faust's studio window, two floors above the street, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/faust_apartment_win_e_glass/faust_apartment_win_e_glass_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:55:31+00:00",
+    "stage": "art",
+    "slug": "faust_apartment_win_e_glass",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/faust_apartment_win_e_glass/front.png",
+    "output": "godot/assets/art/hero/faust_apartment_win_e_glass.png"
+  },
+  {
+    "at": "2026-10-14T02:55:51+00:00",
+    "stage": "image",
+    "slug": "faust_apartment_win_n_glass",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "View straight out from a second-floor back window of an old brick walk-up, looking north over the rear of a city block: a narrow alley below, small fenced back yards with board fences and a chain-link gate, trash cans, a tangle of overhead wires on wooden poles, one leafy shade tree, and beyond it the rear walls and flat or low-pitched rooflines of neighbouring two-storey houses and brick buildings, chimneys and a rooftop water tank against a soft overcast morning sky. Muted brick reds, weathered grays, dull greens. Quiet, nobody about. Flat, straight-on composition, evenly lit.\nSIZE: the real object is 57 cm wide by 67 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the view north out of Faust's desk window, over the back of the block, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/faust_apartment_win_n_glass/faust_apartment_win_n_glass_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:55:55+00:00",
+    "stage": "art",
+    "slug": "faust_apartment_win_n_glass",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/faust_apartment_win_n_glass/front.png",
+    "output": "godot/assets/art/hero/faust_apartment_win_n_glass.png"
+  },
+  {
+    "at": "2026-10-14T02:56:18+00:00",
+    "stage": "image",
+    "slug": "riverfront_gasstation_sign_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "5:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Front face of a tall illuminated pole-sign cabinet for an independent filling station on River Road in Graustark, a bayou-edge town on the Texas-Louisiana line. Glossy brand-red acrylic face (RGB ~200,51,46), backlit plastic. Top third: invented brand PELICAN in bold white rounded sans-serif capitals beside a simple white pelican silhouette; below it a smaller white line FOOD MART. Lower two-thirds: a recessed cream-yellow price area left plain (a separate price board sits over it). Slight sun-fading of the red toward pink at the top, dead-bug specks inside the lens, a hairline crack in one corner. Near-square 5:4 format, flat, evenly lit.\nSIZE: the real object is 1.50 m wide by 1.20 m tall \u2014 a landscape picture, aspect 5:4. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the River Road filling station's red pole-sign cabinet, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: PELICAN\nFOOD MART. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_gasstation_sign_1/riverfront_gasstation_sign_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:56:23+00:00",
+    "stage": "art",
+    "slug": "riverfront_gasstation_sign_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_gasstation_sign_1/front.png",
+    "output": "godot/assets/art/hero/riverfront_gasstation_sign_1.png"
+  },
+  {
+    "at": "2026-10-14T02:56:41+00:00",
+    "stage": "image",
+    "slug": "riverfront_gasstation_sign_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:2",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat front view of the changeable price board on a gas station pole sign: a pale yellow backlit panel (RGB ~242,235,166) with three rows of black slide-in price numerals in a tall condensed digital-style face, each row labeled at left in small black capitals: REGULAR 2.39\u2079, PLUS 2.59\u2079, DIESEL 2.79\u2079, the superscript 9/10 cents in each. Thin black divider rules between rows, a narrow aluminum frame. Slightly mismatched number panels (one a shade whiter, newer), faint water stain at the bottom edge from Gulf humidity. 3:2 landscape, evenly lit, no perspective.\nSIZE: the real object is 1.20 m wide by 80 cm tall \u2014 a landscape picture, aspect 3:2. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the filling station's yellow price board, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: REGULAR 2.39\u2079\nPLUS 2.59\u2079\nDIESEL 2.79\u2079. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_gasstation_sign_2/riverfront_gasstation_sign_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:56:46+00:00",
+    "stage": "art",
+    "slug": "riverfront_gasstation_sign_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_gasstation_sign_2/front.png",
+    "output": "godot/assets/art/hero/riverfront_gasstation_sign_2.png"
+  },
+  {
+    "at": "2026-10-14T02:57:00+00:00",
+    "stage": "image",
+    "slug": "riverfront_hwy_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Straight-on face of a green overhead guide sign hung from a gantry above a concrete highway overpass outside Graustark, a river town on the Texas-Louisiana line. Highway-green panel (RGB ~46,92,72), white border, white US route shield with 90 at left, then white Highway Gothic legend: EAST on the top line, Lake Charles beneath in mixed case, and a smaller line Louisiana Line 3 MI. Wide 2.8:1 format. Weathered: faded reflective film, a grey road-grime band along the lower edge, two bolt heads. Flat, evenly lit, no perspective, no sky.\nSIZE: the real object is 2.25 m wide by 80 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 83% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the US 90 overhead sign on the overpass, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: 90 EAST\nLake Charles\nLouisiana Line 3 MI. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_hwy_sign/riverfront_hwy_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:57:05+00:00",
+    "stage": "art",
+    "slug": "riverfront_hwy_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_hwy_sign/front.png",
+    "output": "godot/assets/art/hero/riverfront_hwy_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:57:23+00:00",
+    "stage": "image",
+    "slug": "riverfront_park_signpanel",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat front view of a small municipal park entrance sign on a wooden post beside River Road in a Gulf Coast town. Routed and painted wooden board in park-department green (RGB ~92,117,71) with a raised border, cream-white routed capitals reading WHARF STREET PARK and a smaller line beneath, CITY OF GRAUSTARK, flanked by a tiny carved live-oak leaf at each end. 2.4:1 landscape. Paint chalky and sun-faded, grain raised and checked by humidity, a green algae film creeping up from the bottom edge, one corner softened by mower nicks. Evenly lit, no perspective.\nSIZE: the real object is 60 cm wide by 25 cm tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the Wharf Street Park entrance sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: WHARF STREET PARK\nCITY OF GRAUSTARK. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_park_signpanel/riverfront_park_signpanel_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:57:27+00:00",
+    "stage": "art",
+    "slug": "riverfront_park_signpanel",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_park_signpanel/front.png",
+    "output": "godot/assets/art/hero/riverfront_park_signpanel.png"
+  },
+  {
+    "at": "2026-10-14T02:57:44+00:00",
+    "stage": "image",
+    "slug": "riverfront_park_signtext",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Close straight-on crop of the lettering band on a routed wooden municipal park sign: one line of cream-white serif capitals, WHARF STREET PARK, cut into and painted on a weathered park-green board (RGB ~92,117,71), letters slightly raised with soft chipped edges and grey weathering in the grooves. Very wide 5.5:1 strip, text filling the width with even margins. Humid Gulf Coast wear: faded paint, faint mildew speckle. Flat, evenly lit.\nSIZE: the real object is 50 cm wide by 9 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 42% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the lettering band on the Wharf Street Park sign, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: WHARF STREET PARK. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_park_signtext/riverfront_park_signtext_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:57:51+00:00",
+    "stage": "art",
+    "slug": "riverfront_park_signtext",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_park_signtext/front.png",
+    "output": "godot/assets/art/hero/riverfront_park_signtext.png"
+  },
+  {
+    "at": "2026-10-14T02:58:09+00:00",
+    "stage": "image",
+    "slug": "riverfront_sign_1",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the D'Ambrosio's pole sign by River Road (north face) like this: The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered. Additional direction: Flat front view of the roadside pole sign for D'Ambrosio's, an all-night riverboat diner in Graustark on the Texas-Louisiana line. A near-black panel (RGB ~31,26,26) in a brown painted-wood frame carries 'D'Ambrosio's' in large cursive red neon (Lobster-style brush script, cherry-red tube with a dark outline), and below it a smaller line of straight red-orange neon capitals: OPEN 24 HOURS. The neon has the slightly uneven brightness of tired tubes, one letter dimmer than the rest. Rust at the frame corners, faded panel paint, wasp nests tucked under the top rail. 3.2:1 format, evenly lit, no sky.\nSIZE: the real object is 3.20 m wide by 1.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 73% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the D'Ambrosio's pole sign by River Road (north face), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: D'Ambrosio's\nOPEN 24 HOURS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_sign_1/riverfront_sign_1_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:58:12+00:00",
+    "stage": "art",
+    "slug": "riverfront_sign_1",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_sign_1/front.png",
+    "output": "godot/assets/art/hero/riverfront_sign_1.png"
+  },
+  {
+    "at": "2026-10-14T02:58:31+00:00",
+    "stage": "image",
+    "slug": "riverfront_sign_2",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes the D'Ambrosio's pole sign by River Road (south face) like this: The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. Additional direction: Flat front view of the second face of D'Ambrosio's double-sided pole sign, the one southbound drivers on River Road see first: a near-black panel (RGB ~31,26,26) in a brown painted-wood frame with 'D'Ambrosio's' in big flowing cursive red neon (Lobster-style script, cherry-red glass tube, dark outline, tube returns visible) and beneath it straight neon capitals OPEN 24 HOURS in a warmer red-orange. Same weathering as a sign facing the Gulf sun: the panel bleached slightly greyer, rust at the bolts, a small dead-moth shadow behind one tube. 3.2:1 landscape, evenly lit, no perspective.\nSIZE: the real object is 3.20 m wide by 1.00 m tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 73% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of the D'Ambrosio's pole sign by River Road (south face), an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: D'Ambrosio's\nOPEN 24 HOURS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_sign_2/riverfront_sign_2_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:58:36+00:00",
+    "stage": "art",
+    "slug": "riverfront_sign_2",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_sign_2/front.png",
+    "output": "godot/assets/art/hero/riverfront_sign_2.png"
+  },
+  {
+    "at": "2026-10-14T02:58:53+00:00",
+    "stage": "image",
+    "slug": "riverfront_stripmall_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "Flat front view of one backlit storefront fascia sign on a modest single-storey strip mall along River Road in a Gulf Coast river town. Long horizontal plastic sign box, very wide 7:1, with an orange-red face (RGB ~217,82,51) and white channel-style letters: BOUDREAUX'S PO-BOYS in a bold condensed sans, a small white shrimp icon at the left end and 'PO-BOYS \u00b7 GUMBO \u00b7 BOUDIN' in small capitals at the right. Thin brushed-aluminum frame. Moderate wear: red faded toward salmon at the top edge, a dark water line along the bottom, a few dead insects visible through the translucent face. Evenly lit, no perspective.\nSIZE: the real object is 2.00 m wide by 28 cm tall, narrower than this 21:9 image, so the game shows only a horizontal strip through the middle 33% of the image's height. Put the whole design inside that strip; let the background simply continue beyond it.\nA single flat image of a storefront fascia sign on the River Road strip mall, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: BOUDREAUX'S PO-BOYS\nPO-BOYS \u00b7 GUMBO \u00b7 BOUDIN. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/riverfront_stripmall_sign/riverfront_stripmall_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:58:58+00:00",
+    "stage": "art",
+    "slug": "riverfront_stripmall_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/riverfront_stripmall_sign/front.png",
+    "output": "godot/assets/art/hero/riverfront_stripmall_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:59:22+00:00",
+    "stage": "image",
+    "slug": "county_line_station_bus_stop_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "4:5",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A small rural regional bus-stop sign on a steel post at the edge of a country gas-station lot in south Louisiana: a reflective blue aluminium plate (medium royal blue) with a white bus pictogram, BUS STOP in white bold capitals, and a white panel underneath with small black type for the route to Simons and its two-hourly schedule. Weathered: sun-faded blue, a sticker scar, rust at the post bolts, a little road film. Flat, straight-on, portrait (4:5), evenly lit.\nSIZE: the real object is 20 cm wide by 25 cm tall \u2014 a portrait picture, aspect 4:5. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the bus-stop sign at the edge of the station lot, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: BUS STOP / SIMONS \u00b7 EVERY 2 HRS. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/county_line_station_bus_stop_sign/county_line_station_bus_stop_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:59:26+00:00",
+    "stage": "art",
+    "slug": "county_line_station_bus_stop_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/county_line_station_bus_stop_sign/front.png",
+    "output": "godot/assets/art/hero/county_line_station_bus_stop_sign.png"
+  },
+  {
+    "at": "2026-10-14T02:59:42+00:00",
+    "stage": "image",
+    "slug": "county_line_station_parish_sign",
+    "kind": "art",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "21:9",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "A Louisiana highway boundary sign on two steel posts beside a two-lane parish road, seen flat: a reflective green aluminium panel (highway green) with a thin white border, the parish name in large white highway-gothic capitals on the top line and LINE in smaller white capitals beneath. Country-road wear: a few shotgun-pellet dings, a mud-splash film along the bottom, slight fading, a lichen spot at a corner bolt. Flat, straight-on, wide (2.6:1), evenly lit.\nSIZE: the real object is 1.30 m wide by 50 cm tall \u2014 a landscape picture, aspect 21:9. Compose for exactly this shape and scale (detail readable at that size); the image's edges are the object's edges.\nA single flat image of the parish-line sign by the gas station, an artwork that exists inside a literary visual novel. The image IS the artwork's surface, seen straight on and filling the whole frame edge to edge: no wall around it, no frame, no room, no perspective, no hands, no photographer, no shadows falling across it. Painterly realism, real materials (paint on brick, a photo print, ink on paper), true to the medium named in the description.\nLettering on it reads exactly: ST. MARTIN PARISH / LINE. Spell it exactly so; no other words. No watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/county_line_station_parish_sign/county_line_station_parish_sign_front_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T02:59:45+00:00",
+    "stage": "art",
+    "slug": "county_line_station_parish_sign",
+    "kind": "art",
+    "input": "godot/assets/concept/meshy/county_line_station_parish_sign/front.png",
+    "output": "godot/assets/art/hero/county_line_station_parish_sign.png"
   }
 ]
