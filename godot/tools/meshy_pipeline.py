@@ -474,8 +474,24 @@ def _git(*args, timeout=60):
 
 def _save_pathspecs():
     """GIT_SAVE_PATHS minus the paths that do not exist yet (git add refuses
-    a pathspec that matches nothing — a checkout with no props folder)."""
-    return [p for p in GIT_SAVE_PATHS if p.startswith(":") or (REPO.parent / p).exists()]
+    a pathspec that matches nothing — a checkout with no props folder) and
+    minus the paths .gitignore excludes whole (2026-10-14: PAINT OR PASS's
+    godot/assets/concept/scenes/ is Drive-only; once the Deck had that
+    folder, `git add -A -- … concept/scenes …` refused the whole add —
+    "The following paths are ignored" — and no SAVE got past its first
+    step from 2026-10-11 on)."""
+    out = []
+    for p in GIT_SAVE_PATHS:
+        if p.startswith(":"):
+            out.append(p)
+            continue
+        if not (REPO.parent / p).exists():
+            continue
+        code, _, _ = _git("check-ignore", "-q", p, timeout=10)
+        if code == 0:            # ignored whole: its files go to Drive, not git
+            continue
+        out.append(p)
+    return out
 
 
 def git_status():
@@ -511,7 +527,13 @@ def _commit_push(message, steps):
         steps.append("the checkout is not on a branch (detached HEAD) — check out a branch first")
         return False, st
     if st["unsaved"]:
-        code, out, err = _git("add", "-A", "--", *_save_pathspecs())
+        specs = _save_pathspecs()
+        code, out, err = _git("add", "-A", "--", *specs)
+        if code and "ignored by one of your .gitignore" in err:
+            # belt and braces: drop whatever git names as ignored and retry
+            named = {ln.strip() for ln in err.splitlines() if ln.strip() and not ln.startswith(("The following", "hint:"))}
+            specs = [p for p in specs if p not in named]
+            code, out, err = _git("add", "-A", "--", *specs)
         if code:
             steps.append(f"git add failed: {err}")
             return False, git_status()
