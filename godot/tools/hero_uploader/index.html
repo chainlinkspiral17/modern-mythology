@@ -742,10 +742,30 @@ async function api(method, path, body, ctype) {
     opts.body = ctype ? body : JSON.stringify(body);
     opts.headers['Content-Type'] = ctype || 'application/json';
   }
-  const r = await fetch(path, opts);
+  let r;
+  try {
+    r = await fetch(path, opts);
+  } catch (netErr) {
+    // (2026-10-14) "Failed to fetch" meant the Studio program had stopped
+    // (closed, crashed, or `meshy_pipeline.py stop`) while this page stayed
+    // open — say that, and how to start it again
+    markStudioGone();
+    throw new Error('Hero Studio is not running — start it again: bash godot/tools/hero_studio.sh (then use the page it opens)');
+  }
   const data = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(data.error || `${r.status} ${path}`);
   return data;
+}
+
+function markStudioGone() {
+  if (!state.connected) return;
+  state.connected = false;
+  $('conn-dot').classList.remove('ok');
+  $('conn-text').textContent = 'Hero Studio is NOT running — in a terminal: bash godot/tools/hero_studio.sh';
+  $('conn-text').style.color = 'var(--red-bad)';
+  const b = $('btn-save');
+  if (b) { b.disabled = true; b.textContent = 'STUDIO STOPPED'; b.title = 'start it: bash godot/tools/hero_studio.sh'; }
+  log('err', 'Hero Studio is not running (it was stopped or closed). Start it: bash godot/tools/hero_studio.sh — it opens a fresh page.');
 }
 
 // ── SAVE (git add + commit + push, from the runner) ──────────────
