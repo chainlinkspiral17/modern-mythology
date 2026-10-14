@@ -145,6 +145,68 @@ suite('data · registries, composer, MIDI files', async t => {
     t.ok(d.bpm > 60 && d.voices.lead === 'keys_felt' && d.textures.includes('amb_rain'), 'typed direction wins: ' + JSON.stringify([d.bpm, d.voices, d.textures]));
   });
   const SMF = require(path.join(TOOLS, 'smf.js'));
+  await t.test('remix: NOTES recipes graft the source\'s harmony, sections and theme; plain songs unchanged; seeded', async () => {
+    const SG = require(path.join(TOOLS, 'seqgen.js')), RX = require(path.join(TOOLS, 'remix.js'));
+    const src = { seed: 4242, style: 'hymn', form: 'song', mode: 'major', key: 5, bpm: 70, density: 0.5 };
+    const before = JSON.stringify(SG.song(src).parts);
+    const sp = SG.plan(src);
+    for (const recipe of ['restyle', 'cover', 'variations', 'underscore', 'intense', 'dream', 'blend']) {
+      const no = RX.notesOptions(recipe, src, { seed: 7, n: 0, target: { style: 'noir', key: 9, density: 0.6 }, with: recipe === 'blend' ? { seed: 99, style: 'folk', mode: 'major', key: 2, motif: 'sam' } : null });
+      const pl = SG.plan(no.o), song = SG.song(no.o);
+      t.eq(pl.sections.map(x => x.name + ':' + x.bars), sp.sections.map(x => x.name + ':' + x.bars), recipe + ' sections');
+      t.eq(pl.HP.A.prog, sp.HP.A.prog, recipe + ' progression A');
+      if (recipe !== 'variations') t.eq(pl.HP.B.prog, sp.HP.B.prog, recipe + ' progression B');
+      t.eq([pl.mode, pl.key], [sp.mode, 9], recipe + ': the source mode, the target key');
+      t.ok(song.bars === sp.sections.reduce((n, x) => n + x.bars, 0) && song.parts.lead.clips.length + song.parts.pad.clips.length > 0, recipe + ' composes');
+      if (recipe === 'underscore' || recipe === 'dream') t.ok(!song.parts.drums.clips.length, recipe + ': no drums');
+      if (recipe === 'intense') t.ok(song.bpm >= SG.STYLES[song.style].bpm[0] && song.parts.drums.clips.length >= sp.sections.filter(x => x.base !== 'intro').length, 'intense: drums everywhere, up to tempo');
+      if (recipe === 'restyle' || recipe === 'cover') t.ok(song.style !== 'hymn', recipe + ' changes style: ' + song.style);
+      t.eq(JSON.stringify(SG.song(RX.notesOptions(recipe, src, { seed: 7, n: 0, target: { style: 'noir', key: 9, density: 0.6 }, with: recipe === 'blend' ? { seed: 99, style: 'folk', mode: 'major', key: 2, motif: 'sam' } : null }).o).parts), JSON.stringify(song.parts), recipe + ' seeded');
+    }
+    const bl = SG.plan(RX.notesOptions('blend', src, { seed: 7, n: 0, target: {}, with: { seed: 99, style: 'folk', mode: 'major', key: 2 } }).o);
+    t.eq(JSON.stringify(bl.motifA), JSON.stringify(SG.plan({ seed: 99, style: 'folk', mode: 'major', key: 2 }).motifA), 'blend: the WITH source\'s theme');
+    t.eq(JSON.stringify(SG.song(src).parts), before, 'a plain song is untouched by the graft hook');
+    const m = [{ s: 0, step: 0 }, { s: 4, step: 2 }, { s: 16, step: 4 }];
+    t.eq(RX.motifOp(m, 'invert').map(x => x.step), [0, -2, -4]);
+    t.eq(RX.motifOp(m, 'augment').map(x => x.s), [0, 8]);
+    t.eq(RX.motifOp(m, 'displace').map(x => x.s), [2, 6, 18]);
+    t.ok(RX.MOTIF_OPS.every(op => RX.motifOp(m, op).every(x => x.s >= 0 && x.s < 32)), 'every op stays in two bars');
+  });
+  await t.test('remix: tempo, downbeat, key and bar roots heard from audio; the stretch and chop are finite and the right length', async () => {
+    const SG = require(path.join(TOOLS, 'seqgen.js')), RX = require(path.join(TOOLS, 'remix.js')), sr = 48000;
+    const synth = (bpm, key, minor, sec, off) => {
+      const x = new Float32Array(sec * sr), beat = 60 / bpm, sc = minor ? [0, 2, 3, 5, 7, 8, 10] : [0, 2, 4, 5, 7, 9, 11], prog = [0, 5, 3, 4], R = SG.rng(1);
+      for (let i = 0; i < x.length; i++) {
+        const tt = i / sr - off; if (tt < 0) continue;
+        const deg = prog[Math.floor(tt / (4 * beat)) % 4]; let v = 0;
+        for (const d of [deg, deg + 2, deg + 4]) v += 0.08 * Math.sin(2 * Math.PI * 440 * Math.pow(2, (key + sc[d % 7] + 12 * Math.floor(d / 7) - 21) / 12) * tt);
+        const bt = tt % beat; if (bt < 0.03) v += Math.sin(2 * Math.PI * 60 * bt) * Math.exp(-bt * 80) * 0.8 + (bt < 0.01 ? (R() - 0.5) * 0.3 : 0);
+        x[i] = v;
+      }
+      return x;
+    };
+    for (const [bpm, key, minor, off] of [[100, 9, true, 0.3], [84, 2, false, 0], [126, 4, true, 1.1]]) {
+      const x = synth(bpm, key, minor, 30, off), tp = RX.estimateTempo(x, sr), k = RX.estimateKey(x, sr);
+      const beat = 60 / bpm, ph = RX.downbeat(x, sr, tp.bpm, tp.phase), barSec = 4 * beat;
+      const err = Math.abs(((ph - off) % barSec + barSec + barSec / 2) % barSec - barSec / 2);
+      t.ok(Math.abs(tp.bpm - bpm) < 0.5, 'tempo ' + tp.bpm + ' vs ' + bpm);
+      t.ok(err < 0.04, 'downbeat ' + ph.toFixed(3) + ' vs ' + off + ' (off by ' + (err * 1000).toFixed(0) + ' ms)');
+      // a key or its relative (D major / B minor: the same notes, which is what the remix's bass needs)
+      const tonicMaj = k.mode === 'major' ? k.key : (k.key + 3) % 12, want = minor ? (key + 3) % 12 : key;
+      t.eq(tonicMaj, want, 'key ' + SG.NOTE_NAMES[k.key] + ' ' + k.mode + ' (or its relative) for ' + SG.NOTE_NAMES[key] + (minor ? ' minor' : ' major'));
+      const sc = SG.SCALES[k.mode], pcs = RX.barRoots(x, sr, { bpm: tp.bpm, phase: ph, key: k.key, mode: k.mode }).slice(0, 4).map(d => SG.deg2midi(k.key, sc, d, 4) % 12);
+      const tsc = SG.SCALES[minor ? 'minor' : 'major'];
+      const first = Math.round((ph - off) / barSec), exp = [0, 1, 2, 3].map(i => [0, 5, 3, 4][(((first + i) % 4) + 4) % 4]);   // the downbeat found may be a later bar's
+      t.eq(pcs, exp.map(d => SG.deg2midi(key, tsc, d, 4) % 12), 'bar roots (pitch classes) of i VI iv v / I vi IV V');
+    }
+    const x = synth(90, 9, true, 12, 0), R = SG.rng(3);
+    const st = RX.stretchLayer([x, x], sr, 40, R);
+    t.ok(st.channels[0].length === 40 * sr && st.channels.every(c => c.every(Number.isFinite)) && st.factor > 3, 'stretch ×' + st.factor.toFixed(1));
+    let diff = 0; for (let i = sr * 10; i < sr * 11; i++) diff += Math.abs(st.channels[0][i] - st.channels[1][i]);
+    t.ok(diff > 1, 'L and R decorrelated (wide)');
+    const ch = RX.chopLayer([x, x], sr, { bpm: 90, phase: 0 }, 8, SG.rng(5), 0.6);
+    t.ok(ch.channels[0].length === 8 * Math.round(240 / 90 * sr) && ch.srcBars.length === 8 && ch.channels[0].some(v => v !== 0), 'chop: 8 bars');
+  });
   await t.test('MIDI file write → read round trip (incl. same-pitch overlaps)', async () => {
     const notes = [{ t: 0, d: 96, n: 60, v: 0.8 }, { t: 48, d: 96, n: 60, v: 0.5 }, { t: 96, d: 48, n: 64, v: 1 }];
     const back = SMF.read(SMF.write([{ name: 'x', channel: 10, notes }], { ppq: 96, bpm: 123 }));

@@ -1061,9 +1061,11 @@
     if (!textures) textures = SD.chance(0.7) ? [SD.pick(TEXTURE_FOR[styleId] || ['amb_room_tone'])] : [];
     const fxPreset = want(o.fx) ? (o.fx || SD.pick(FX_FOR[styleId] || ['fx_noise_sweep'])) : null;
     const hitPreset = want(o.hit) ? (o.hit || (SD.chance(0.6) ? SD.pick(HIT_FOR[styleId] || ['fx_impact']) : null)) : null;
-    return { seed, R, styleId, st, mode, scale, key, bpm, formId, density, fam, HP, sections, gi, gB, bassA, bassB, compA, compB, padA, padB, leadKind, perc, range, spread, fills,
+    const out = { seed, R, styleId, st, mode, scale, key, bpm, formId, density, fam, HP, sections, gi, gB, bassA, bassB, compA, compB, padA, padB, leadKind, perc, range, spread, fills,
       motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {},
       soundBy: shape.some(x => x[2] && x[2].some(r => r === 'texture' || r === 'fx')) };
+    // a remix (remix.js) grafts another song's material onto this plan: its harmony, sections, motif (fields of `out`)
+    return typeof o.graft === 'function' ? Object.assign(out, o.graft(out) || {}) : out;
   }
   // swung eighths (st.trip8): an offbeat eighth moves to the triplet's last third; the note before it stretches to meet it
   function swing8(ns) {
@@ -1505,6 +1507,7 @@
 
   const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, SONG_SHAPES, SOUNDS, SOUND_FALLBACK, TEXTURE_FOR, FX_FOR, HIT_FOR, PERC_FOR, rng, hash, deg2midi, chordPCs, song, part, presetFor,
     moodFromText, moodFromBrief, applyDirection, romanFor, soundsFromText, motifOf, volumeKey, keyOf, applyScore, checkScore, chapterOf };
+  API.plan = plan;                                           // remix.js: a song's plan without its notes
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;
 })(typeof window !== 'undefined' ? window : globalThis);

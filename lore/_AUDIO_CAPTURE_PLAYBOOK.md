@@ -1056,6 +1056,36 @@ context keeps running into a fake sink, and the meters still move.
   listening pass decides whether the layers are audible or just
   bookkeeping.
 
+### 2026-10-14 — REMIX: new takes out of finished music (remix.js)
+
+- "a generative remix with finished tracks": the director's REMIX box makes takes for the selected (or ticked)
+  track FROM anything finished — any take (an approved one sorts first), a real recording (the catalog's .ogg /
+  .mp3, or a .wav that isn't a temp), or an approved temp's .temp.ogg. Remixes land in review like MAKE TAKES'
+  (TempMaker.writeTake), so PLAY / APPROVE / ⟳ AGAIN / ✎ EDIT IN DAW work unchanged. It lives in its own
+  module so it never touches makeTakes; seqgen gained one hook: `plan(o)` applies `o.graft(plan)`.
+- Two kinds of recipe, and the split matters:
+  - NOTES (a take made here — it has `project.gen.o`): rebuild the source's plan, graft its harmony
+    (progressions + harmonic rhythm; the extension comes from the NEW style), sections and motif onto a new
+    plan. RESTYLE · COVER (the source project's literal lead patterns, transposed) · VARIATIONS (motif
+    inverted / reversed / augmented / diminished / displaced / sequenced, a new B) · UNDERSCORE · INTENSE · DREAM ·
+    BLEND (one source's chords, another's theme — two characters meeting). For another track the key is the
+    TARGET's (its volume's tonal home); the mode stays the source's (the tune's character).
+  - AUDIO (anything that plays): analyse, cut into one 'source' layer (an AK.lib item, kind 'remix', on an
+    audio track, stem layer 0) + new drums + a bass that follows the source bar by bar. CHOP · DUB · STRETCH
+    (paulstretch) · TAPE (−2 semitones, wow/flutter). From a take it uses its stems minus drums (and fx).
+- A take's own metadata beats listening: bpm / key / mode / phase 0 come from meta.mood; only recordings are
+  guessed. The guesser: spectral-flux onsets → autocorrelation with a log-tempo prior → a FINE joint tempo +
+  phase search (a 0.3 % tempo error drifted the grid 70 ms over 40 s) → the downbeat where beat-synchronous
+  chroma changes most → Krumhansl–Kessler key → per-bar diatonic root. Relative major/minor is ambiguous by
+  nature (D major ≡ B minor for I–vi–IV–V); harmless here — same notes, same bass pitches.
+- Seed discipline: one rng stream PER DECISION (style pick, op/density, tempo). With one shared stream, ⟳ AGAIN
+  (which passes the style the take got) skipped the style draw and every later draw shifted — a different remix.
+- Paulstretch stereo for free: one inverse FFT of Z = L + i·R (each with its own random phases) gives both
+  channels — decorrelated, wide. 90 s from an 18 s excerpt ≈ 3 s in node.
+- Nobody has listened yet. Unknowns: whether CHOP's slice choices groove on real material, whether the
+  root-following bass is right on dense harmony, how the guessed tempo does on the real recordings (mostly
+  ambient — STRETCH / DUB suit those best).
+
 ## TEMPLATE
 
 ```

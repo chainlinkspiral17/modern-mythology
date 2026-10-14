@@ -411,6 +411,89 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     const card = await p.evaluate(take => { const i = DIR.takes.findIndex(m => m.take === take); return document.querySelector(`#takes [data-i="${i}"]`).textContent; }, edit);
     t.ok(/edited in the DAW from take/.test(card), card.slice(0, 200));
   });
+  // ── REMIX: takes made from finished ones ──
+  const remixDone = async (ids, n, rx) => p.evaluate(async ({ ids, n, rx }) => { const R = await requestRemix(ids, n, rx).done; return { state: R.state, made: R.made, errors: R.errors, msg: document.getElementById('rxmsg').textContent }; }, { ids, n, rx });
+  const newest = (id, re) => { const d = fs.readdirSync(G('assets/audio/review/' + id)).filter(x => re.test(x)).sort().pop(); const dir = 'assets/audio/review/' + id + '/' + d + '/'; return Object.assign(json(dir + 'meta.json'), { dir }); };
+  const firstRef = () => ({ kind: 'take', id: 'sam_theme', title: 'Sam', take: first.take, dir: first.dir });
+  await t.test('REMIX box: sources listed (this track\'s take first), take-row ⤳ REMIX picks it, NOTES recipes off for a recording', async () => {
+    await p.evaluate(async () => { await refresh(); await selectTrack('sam_theme'); });
+    const r = await p.evaluate(take => {
+      const i = DIR.takes.findIndex(m => m.take === take);
+      document.querySelector(`[data-remix="${i}"]`).click();
+      const from = document.getElementById('rx-from').value, groups = [...document.querySelectorAll('#rx-from optgroup')].map(g => g.label.replace(/ \(\d+\)$/, ''));
+      const field = RX.list.find(x => x.id === 'field_rec' && x.kind === 'file');
+      RX.from = field ? 'file:' + field.path : ''; rxRender();
+      const off = [...document.querySelectorAll('#rx-recipes [data-rx]')].filter(b => b.disabled).map(b => b.dataset.rx);
+      return { from, groups, field: !!field, real: !!RX.list.find(x => x.id === 'real_track' && x.real), off, recipe: RX.recipe, go: document.getElementById('rx-go').textContent };
+    }, first.take);
+    t.ok(r.from.startsWith('take:') && r.from.includes(first.take), 'take-row REMIX selects it: ' + r.from);
+    t.ok(r.groups.includes('THIS TRACK') && r.field && r.real, JSON.stringify(r));
+    t.eq(r.off, ['restyle', 'cover', 'variations', 'underscore', 'intense', 'dream', 'blend'], 'a recording has no notes');
+    t.eq([r.recipe, r.go], ['chop', '⤳ REMIX × 2']);
+  });
+  let rs = null;
+  await t.test('RESTYLE: the take\'s chords, sections and theme in another style, for another track, in that track\'s key', async () => {
+    const r = await remixDone(['tem_theme'], 1, { recipe: 'restyle', from: firstRef(), bars: 4 });
+    t.eq([r.state, r.made, r.errors], ['done', 1, []], r.msg);
+    t.ok(/1 take\(s\) made/.test(r.msg), 'progress lands in the REMIX box: ' + r.msg);
+    rs = newest('tem_theme', /-restyle$/);
+    t.eq([rs.request.remix.recipe, rs.request.remix.from.take, rs.remix.recipe, rs.bars, rs.status], ['restyle', first.take, 'restyle', 4, 'candidate']);
+    t.ok(rs.mood.style !== first.mood.style && /^REMIX · RESTYLE/.test(rs.why), rs.mood.style + ' · ' + rs.why);
+    // the harmony is the source's: the same progression (degrees), in the target's key
+    const src = await p.evaluate(o => SeqGen.plan(o).HP.A.prog.join(), JSON.parse(fs.readFileSync(G(first.dir + 'project.json'), 'utf8')).gen.o);
+    const pj = json(rs.dir + 'project.json');
+    t.ok(pj.tracks.some(x => x.role === 'lead') && json(rs.dir + 'stems.json').stems.length >= 3, 'tracks + stems: ' + pj.tracks.map(x => x.role).join());
+    t.ok(src.length > 0, 'source progression ' + src);
+  });
+  await t.test('⟳ AGAIN on a remix makes the identical remix (same source, recipe, seed, style)', async () => {
+    await p.evaluate(async () => { await refresh(); await selectTrack('tem_theme'); });
+    const n0 = fs.readdirSync(G('assets/audio/review/tem_theme')).length;
+    await p.evaluate(take => { const i = DIR.takes.findIndex(m => m.take === take); document.querySelector(`[data-again="${i}"]`).click(); }, rs.take);
+    await p.waitForFunction(n0 => !STUDIO.busy && Object.values(DIR.requests).slice(-1)[0].state === 'done', n0, { timeout: 120000 });
+    const dirs = fs.readdirSync(G('assets/audio/review/tem_theme')).filter(x => /-restyle$/.test(x)).sort();
+    t.eq(dirs.length, 2, 'a second restyle take');
+    const again = Object.assign(json('assets/audio/review/tem_theme/' + dirs[1] + '/meta.json'), { dir: 'assets/audio/review/tem_theme/' + dirs[1] + '/' });
+    const notes = d => JSON.stringify(json(d + 'project.json').tracks.filter(x => x.kind === 'midi').map(x => [x.role, Object.values(x.patterns).map(q => q.notes.map(n => [n.t, n.n, n.d]))]));
+    t.eq([again.mood.seed, again.mood.style, again.mood.key], [rs.mood.seed, rs.mood.style, rs.mood.key]);
+    t.ok(notes(again.dir) === notes(rs.dir), 'the same notes');
+  });
+  await t.test('COVER for the same track keeps the source\'s lead notes exactly; the band around it is new', async () => {
+    const r = await remixDone(['sam_theme'], 1, { recipe: 'cover', from: firstRef(), bars: 2 });
+    t.eq([r.state, r.made, r.errors], ['done', 1, []], r.msg);
+    const cv = newest('sam_theme', /-cover$/), a = json(first.dir + 'project.json'), b = json(cv.dir + 'project.json');
+    const lead = pj => { const tr = pj.tracks.find(x => x.role === 'lead'); return Object.entries(tr.patterns).filter(([k]) => !/_\d+b$/.test(k)).map(([k, q]) => [k, q.notes.map(n => [n.t, n.n])]); };
+    const la = Object.fromEntries(lead(a)), lb = lead(b);
+    t.ok(lb.length && lb.some(([k]) => la[k]) && lb.every(([k, ns]) => !la[k] || JSON.stringify(ns) === JSON.stringify(la[k])), 'lead patterns: ' + JSON.stringify(lb).slice(0, 160));
+    t.ok(cv.mood.style !== first.mood.style, cv.mood.style);
+  });
+  await t.test('CHOP from a take\'s audio: the source layer (layer 0) + new drums and a bass that follows it; tempo + key from the take, not guessed', async () => {
+    const r = await remixDone(['tem_theme'], 1, { recipe: 'chop', from: firstRef(), bars: 4 });
+    t.eq([r.state, r.made, r.errors], ['done', 1, []], r.msg);
+    const ch = newest('tem_theme', /-chop$/), man = json(ch.dir + 'stems.json');
+    t.ok(man.stems.some(s => s.name === 'source' && s.layer === 0) && man.stems.some(s => s.name === 'drums') && man.stems.some(s => s.name === 'bass'), man.stems.map(s => s.name + '@' + s.layer).join());
+    t.eq([ch.remix.analysis.bpm, ch.remix.analysis.key, ch.remix.analysis.mode, ch.remix.analysis.guessed], [first.mood.bpm, first.mood.key, first.mood.mode, []]);
+    t.ok(ch.remix.lib && fs.readdirSync(G('assets/audio/library/remix')).some(f => f.endsWith('.wav')), 'the chopped layer is a library item, mirrored');
+    const pj = json(ch.dir + 'project.json'), src = pj.tracks.find(x => x.role === 'source');
+    t.ok(src && src.kind === 'audio' && src.audio.length === 1 && src.audio[0].libId === ch.remix.lib, 'an audio track the DAW can open');
+    t.near(wavFrames(ch.dir + 'stems/source.wav'), wavFrames(ch.dir + 'mix.wav'), 1, 'stems the mix\'s length');
+  });
+  await t.test('STRETCH from a recording (a plain .wav): tempo + key guessed, a stretched bed + a new theme', async () => {
+    const r = await remixDone(['field_rec'], 1, { recipe: 'stretch', from: { kind: 'file', id: 'field_rec', title: 'Field', path: 'assets/audio/bgm/field_rec.wav' }, bars: 4 });
+    t.eq([r.state, r.made, r.errors], ['done', 1, []], r.msg);
+    const st = newest('field_rec', /-stretch$/);
+    t.ok(st.remix.stretch.factor > 3 && st.remix.analysis.guessed.includes('key'), JSON.stringify(st.remix));
+    t.ok(json(st.dir + 'stems.json').stems.some(s => s.name === 'source'), 'source stem');
+    t.ok(st.lufs > -20 && st.true_peak <= -1, 'mastered: ' + st.lufs + ' LUFS ' + st.true_peak + ' dBTP');
+  });
+  await t.test('DUB and TAPE from a take: a source layer the new band\'s length; TAPE two semitones down and slower', async () => {
+    for (const recipe of ['dub', 'tape']) {
+      const r = await remixDone(['quiet_bed'], 1, { recipe, from: firstRef(), bars: 4 });
+      t.eq([r.state, r.made, r.errors], ['done', 1, []], recipe + ': ' + r.msg);
+      const m = newest('quiet_bed', new RegExp('-' + recipe + '$'));
+      t.ok(json(m.dir + 'stems.json').stems.some(s => s.name === 'source') && m.bars === 4, recipe + ' stems');
+      if (recipe === 'tape') t.ok(Math.abs(m.mood.bpm - first.mood.bpm * Math.pow(2, -2 / 12)) < 0.01 && m.mood.key === (first.mood.key + 10) % 12, 'tape: ' + m.mood.bpm + ' BPM in ' + m.mood.key);
+    }
+  });
   await t.test('the tools\' library is mirrored into the game folder (library/<kind>/…wav + .json), at once and on link for older items', async () => {
     const r = await p.evaluate(async () => {
       const tone = n => { const c = new Float32Array(n); for (let i = 0; i < n; i++) c[i] = 0.3 * Math.sin(i * 0.05); return c; };

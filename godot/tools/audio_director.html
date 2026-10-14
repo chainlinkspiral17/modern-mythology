@@ -194,6 +194,17 @@
         <div class="instr" id="instr"></div>
         <div class="row" style="margin-top:8px"><button class="go" id="make">⚄ MAKE TAKES</button><button class="dim" id="resetregen">reset</button><span class="msg" id="makemsg"></span></div>
       </div>
+
+      <h2>REMIX <span class="sp"></span><span class="note">new takes for this track made from finished music — any take, an approved one, a recording</span></h2>
+      <div class="box" id="remix">
+        <div class="row"><label>FROM</label><select id="rx-from" style="flex:1;min-width:220px"></select></div>
+        <div class="row"><label>RECIPE</label><span class="chipset" id="rx-recipes"></span></div>
+        <div class="row"><label></label><span class="note" id="rx-hint"></span></div>
+        <div class="row" id="rx-withrow" style="display:none"><label>WITH</label><select id="rx-with" style="flex:1;min-width:220px"></select><span class="note">its theme</span></div>
+        <div class="row"><label>STYLE</label><select id="rx-style"><option value="">auto</option></select><select id="rx-key" title="NOTES recipes: the key the remix plays in"><option value="">key: auto (this track's home)</option></select>
+          <label>TAKES</label><span class="chipset" id="rx-n"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button></span></div>
+        <div class="row" style="margin-top:8px"><button class="go" id="rx-go">⤳ REMIX</button><span class="msg" id="rxmsg"></span></div>
+      </div>
     </div>
   </div>
 </main>
@@ -214,6 +225,7 @@
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
       <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
+      <li><b>REMIX</b> (under MAKE TAKES) makes takes for this track out of music that's already done: pick a take (any track's — an approved one is marked), a recording or an approved temp under <b>FROM</b>, a <b>RECIPE</b>, then <b>⤳ REMIX</b>. RESTYLE / COVER / VARIATIONS / UNDERSCORE / INTENSE / DREAM / BLEND re-compose the take's own chords, sections and theme (they need a take made here); CHOP / DUB / STRETCH / TAPE cut up the audio itself (anything that plays) over new drums and bass. Every take row has <b>⤳ REMIX</b> to start from it. Remixes land under TAKES like any other take.</li>
       <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings. Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
       <li>Songs approved before the Ogg change are still big WAVs in the game: <b>⇣ SHRINK … WAV TEMPS → OGG</b> (top bar) re-encodes all of them in one go and deletes the WAVs. Only temps — never real audio.</li>
@@ -240,6 +252,7 @@
 <script src="smf.js"></script>
 <script src="daw_engine.js"></script>
 <script src="temp_maker.js"></script>
+<script src="remix.js"></script>
 <script>
 "use strict";
 // AUDIO DIRECTOR — review the DAW's candidate temp tracks, approve one into the game, reject the rest.
@@ -460,6 +473,7 @@ function renderBrief(t, b) {
 function reqText(r) {
   if (!r) return '';
   const a = [];
+  if (r.remix) { const x = r.remix; a.push('remix ' + x.recipe + ' of ' + ((x.from && (x.from.title + (x.from.take ? ' take ' + x.from.take : ''))) || '?') + (x.with ? ' with ' + x.with.title : '') + (x.style ? ' · style ' + x.style : '')); }
   if (r.description) a.push('“' + r.description + '”');
   if (r.style) a.push('style ' + r.style); if (r.mode) a.push('mode ' + r.mode); if (r.form) a.push('form ' + r.form);
   if (r.energy) a.push('energy ' + (r.energy > 0 ? '+' : '') + r.energy); if (r.density !== undefined) a.push('density ' + r.density);
@@ -470,6 +484,7 @@ function reqText(r) {
 }
 function renderTakes() {
   const st = DIR.state[DIR.sel]; if (!st) return;
+  rxRender();
   const all = st.takes, show = $('showrej').checked;
   const keepTake = DIR.cur >= 0 && DIR.takes[DIR.cur] ? DIR.takes[DIR.cur].take : null;
   DIR.takes = all.filter(m => show || m.status !== 'rejected');
@@ -490,7 +505,7 @@ function renderTakes() {
       (m.credits ? `<br><span class="note">credits: ${esc(m.credits.replace(/\n/g, '; '))}</span>` : '') +
       `</div><div class="bt"><button data-play="${i}">▶ PLAY</button>` +
       (m.status === 'rejected' ? `<button class="dim" data-del="${i}">DELETE FILES</button>` : `<button class="go" data-ap="${i}">✓ APPROVE</button><button class="no" data-rej="${i}">✕ REJECT</button>`) +
-      `<button class="dim" data-again="${i}" title="make this take again from its recorded settings">⟳ AGAIN</button><button class="dim" data-edit="${i}" title="open this take in the DAW to change it; ⇪ SEND TO DIRECTOR there adds the edit here as a new take">✎ EDIT IN DAW</button></div></div>`;
+      `<button class="dim" data-again="${i}" title="make this take again from its recorded settings">⟳ AGAIN</button><button class="dim" data-edit="${i}" title="open this take in the DAW to change it; ⇪ SEND TO DIRECTOR there adds the edit here as a new take">✎ EDIT IN DAW</button><button class="dim" data-remix="${i}" title="remix from this take (the REMIX box below)">⤳ REMIX</button></div></div>`;
   }).join('');
 }
 $('showrej').addEventListener('change', () => { renderTakes(); });
@@ -501,7 +516,8 @@ $('takes').addEventListener('click', e => {
   if ((i = g('ap')) !== null) { approve(i, e.target.closest('button')); return; }
   if ((i = g('rej')) !== null) { reject(i, e.target.closest('button')); return; }
   if ((i = g('del')) !== null) { deleteTake(i, e.target.closest('button')); return; }
-  if ((i = g('again')) !== null) { const m = DIR.takes[i]; requestTakes([DIR.sel], 1, regenOpts(m)); }
+  if ((i = g('again')) !== null) { const m = DIR.takes[i]; if (m.request && m.request.remix) requestRemix([DIR.sel], 1, remixAgain(m)); else requestTakes([DIR.sel], 1, regenOpts(m)); }
+  if ((i = g('remix')) !== null) { remixFrom(DIR.takes[i]); return; }
   if ((i = g('edit')) !== null) { const m = DIR.takes[i]; const w = window.open('daw.html?take=' + encodeURIComponent(m.dir), 'mm_daw'); msg(w ? 'opened take ' + m.take + ' in the DAW — tap START there; ⇪ SEND TO DIRECTOR brings your edit back here as a new take.' : 'pop-up blocked — open daw.html?take=' + m.dir + ' yourself.', !w); }
 });
 $('prev').addEventListener('click', () => stepTrack(-1));
@@ -1034,7 +1050,8 @@ async function studio() {
   return E;
 }
 function studioUI(text, err) {
-  if (text != null) msg(text, err, 'makemsg');
+  if (text != null) msg(text, err, STUDIO.rx ? 'rxmsg' : 'makemsg');
+  $('rx-go').disabled = STUDIO.busy; $('rx-go').textContent = STUDIO.busy ? '⤳ MAKING…' : '⤳ REMIX' + (RX.n > 1 ? ' × ' + RX.n : '');
   for (const id of ['make', 'make2']) { $(id).disabled = STUDIO.busy; $(id).textContent = STUDIO.busy ? '⚄ MAKING…' : '⚄ MAKE ' + (RG.n > 1 ? RG.n + ' TAKES' : '1 TAKE'); }
   // progress shows next to the TAKES header too, so it's visible without scrolling to the settings
   if (text != null) msg(text, err);
@@ -1043,9 +1060,9 @@ function studioUI(text, err) {
 }
 setTimeout(() => studioUI(), 0);
 // → { rid, done: Promise<request> } — the request records made / failed / state
-function requestTakes(ids, takes, opts) {
+function requestTakes(ids, takes, opts, remix) {
   const rid = 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-  const R = DIR.requests[rid] = { ids, takes, opts, made: 0, failed: 0, errors: [], state: 'queued' };
+  const R = DIR.requests[rid] = { ids, takes, opts, remix: remix || null, made: 0, failed: 0, errors: [], state: 'queued' };
   R.done = new Promise(res => { R.resolve = res; });
   STUDIO.queue.push(rid);
   if (STUDIO.busy) studioUI('queued: ' + takes + ' take(s) of ' + ids.join(', ') + ' — after the one in progress.');
@@ -1057,7 +1074,7 @@ async function runStudio() {
   STUDIO.busy = true; studioUI();
   try {
     while (STUDIO.queue.length) {
-      const rid = STUDIO.queue.shift(), R = DIR.requests[rid]; R.state = 'making'; studioUI();
+      const rid = STUDIO.queue.shift(), R = DIR.requests[rid]; R.state = 'making'; STUDIO.rx = !!R.remix; studioUI();
       const fail = text => { R.state = 'failed'; R.errors.push(text); studioUI(text, true); R.resolve(R); };
       if (!AK.game.root) { fail('link the game folder first (⌂ LINK GAME FOLDER, top left) — takes are saved into it.'); continue; }
       const list = R.ids.map(id => DIR.cat.find(c => c.id === id)).filter(Boolean);
@@ -1065,7 +1082,8 @@ async function runStudio() {
       let E; try { E = await studio(); } catch (e) { fail('could not start the audio engine: ' + (e.message || e)); continue; }
       const t0 = performance.now(), el = () => Math.round((performance.now() - t0) / 1000) + ' s';
       try {
-        await TempMaker.makeTakes(E, list, { takes: R.takes, review: true, stems: true, opts: R.opts }, { briefs: DIR.briefs, score: DIR.score ?? null,
+        const made = R.remix ? c => Remix.remixTakes(E, list, Object.assign({ takes: R.takes }, R.remix), c) : c => TempMaker.makeTakes(E, list, { takes: R.takes, review: true, stems: true, opts: R.opts }, c);
+        await made({ briefs: DIR.briefs, score: DIR.score ?? null,
           onEvent: ev => {
             if (ev.type === 'progress') { studioUI(ev.text + ' · ' + el()); $('dawmsg').textContent = ev.text; }
             else if (ev.type === 'take') {
@@ -1080,6 +1098,77 @@ async function runStudio() {
       R.resolve(R);
     }
   } finally { STUDIO.busy = false; studioUI(); }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// REMIX: takes for the selected (or ticked) track made from finished music (remix.js), queued on the same studio
+// ═══════════════════════════════════════════════════════════════════
+const RX = { n: 2, recipe: 'restyle', from: '', with: '', list: [] };
+Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('rx-style').add(new Option(s.name, id)));
+SeqGen.NOTE_NAMES.forEach((n, i) => $('rx-key').add(new Option('key: ' + n, String(i))));
+const rxKey = x => x.kind === 'take' ? 'take:' + x.dir : 'file:' + x.path;
+const rxSrc = k => RX.list.find(x => rxKey(x) === k) || null;
+function rxRender() {
+  if (!DIR.cat || !DIR.state) return;
+  RX.list = Remix.sourcesFrom(DIR.cat, DIR.state, DIR.approvals || { tracks: {} });
+  // default source: this track's approved take, else its newest take, else the first approved / real one anywhere
+  if (!rxSrc(RX.from)) {
+    const mine = RX.list.filter(x => x.id === DIR.sel), d = mine.find(x => x.approved) || mine.find(x => x.kind === 'take') || mine[0] || RX.list[0];
+    RX.from = d ? rxKey(d) : '';
+  }
+  const groups = [['APPROVED · RECORDINGS', x => x.approved || x.real || x.temp], ['THIS TRACK', x => x.id === DIR.sel && !(x.approved || x.real || x.temp)], ['OTHER TAKES', x => x.id !== DIR.sel && !(x.approved || x.real || x.temp)]];
+  const opts = list => groups.map(([g, f]) => { const it = list.filter(f); return it.length ? `<optgroup label="${esc(g)} (${it.length})">` + it.map(x => `<option value="${esc(rxKey(x))}">${esc(x.label)}</option>`).join('') + '</optgroup>' : ''; }).join('');
+  $('rx-from').innerHTML = RX.list.length ? opts(RX.list) : '<option value="">nothing finished yet — make and approve a take first</option>';
+  $('rx-from').value = RX.from;
+  const takes = RX.list.filter(x => x.kind === 'take' && rxKey(x) !== RX.from);
+  if (!takes.some(x => rxKey(x) === RX.with)) RX.with = takes[0] ? rxKey(takes[0]) : '';
+  $('rx-with').innerHTML = takes.length ? opts(takes) : '<option value="">no other take</option>';
+  $('rx-with').value = RX.with;
+  const src = rxSrc(RX.from), notesOk = !!(src && src.kind === 'take');
+  if (!notesOk && Remix.RECIPES[RX.recipe].kind === 'notes') RX.recipe = 'chop';
+  $('rx-recipes').innerHTML = Object.entries(Remix.RECIPES).map(([id, r]) => {
+    const off = r.kind === 'notes' && !notesOk;
+    return `<button data-rx="${id}" class="${id === RX.recipe ? 'on' : 'dim'}" ${off ? 'disabled' : ''} title="${esc(r.hint + (off ? ' — needs a take made here (a recording has no notes)' : ''))}">${r.name}</button>`;
+  }).join('');
+  const R0 = Remix.RECIPES[RX.recipe];
+  $('rx-hint').textContent = R0.hint + (R0.kind === 'notes' ? ' · works from the take’s notes' : ' · works from the audio' + (src && src.kind === 'take' ? ' (its stems minus the drums)' : ''));
+  $('rx-withrow').style.display = R0.needsWith ? '' : 'none';
+  $('rx-key').disabled = R0.kind !== 'notes';
+  document.querySelectorAll('#rx-n [data-n]').forEach(b => b.classList.toggle('on', +b.dataset.n === RX.n));
+}
+$('rx-from').addEventListener('change', () => { RX.from = $('rx-from').value; rxRender(); });
+$('rx-with').addEventListener('change', () => { RX.with = $('rx-with').value; });
+$('rx-recipes').addEventListener('click', e => { const b = e.target.closest('[data-rx]'); if (b && !b.disabled) { RX.recipe = b.dataset.rx; rxRender(); } });
+$('rx-n').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { RX.n = +b.dataset.n; rxRender(); studioUI(); } });
+// what a source is, as the remix request records it (enough to find it again: ⟳ AGAIN)
+const rxRef = x => x.kind === 'take' ? { kind: 'take', id: x.id, title: x.title, take: x.take, dir: x.dir } : { kind: 'file', id: x.id, title: x.title, path: x.path, known: x.known };
+function requestRemix(ids, takes, rx) { return requestTakes(ids, takes, {}, rx); }
+function remixNow() {
+  const ids = DIR.checked.size ? [...DIR.checked] : DIR.sel ? [DIR.sel] : [];
+  if (!ids.length) { msg('pick a track (or tick some) first — the remix is made for it.', true, 'rxmsg'); return; }
+  const src = rxSrc(RX.from); if (!src) { msg('pick something to remix FROM.', true, 'rxmsg'); return; }
+  const R0 = Remix.RECIPES[RX.recipe], wth = R0.needsWith ? rxSrc(RX.with) : null;
+  if (R0.needsWith && !wth) { msg(R0.name + ' needs a second take under WITH.', true, 'rxmsg'); return; }
+  const rx = { recipe: RX.recipe, from: rxRef(src) };
+  if (wth) rx.with = rxRef(wth);
+  if ($('rx-style').value) rx.style = $('rx-style').value;
+  if (R0.kind === 'notes' && $('rx-key').value !== '') rx.key = +$('rx-key').value;
+  requestRemix(ids, RX.n, rx);
+}
+$('rx-go').addEventListener('click', remixNow);
+// ⤳ REMIX on a take row: that take becomes the source
+function remixFrom(m) {
+  RX.from = 'take:' + m.dir; rxRender();
+  $('remix').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  msg('remixing from take ' + m.take + ' — pick a RECIPE, then ⤳ REMIX.', false, 'rxmsg');
+}
+// ⟳ AGAIN on a remix: the same source, recipe, seed and the style (and key) it got
+function remixAgain(m) {
+  const x = Object.assign({}, m.request.remix), mo = m.mood || {};
+  x.seed = mo.seed; if (mo.style) x.style = mo.style;
+  if ((Remix.RECIPES[x.recipe] || {}).kind === 'notes' && mo.key !== undefined) x.key = mo.key;
+  if (m.bars) x.bars = m.bars;
+  return x;
 }
 
 // instrument picker: FORGE presets and PATCH BANK patches, read at runtime (both libraries grow)
