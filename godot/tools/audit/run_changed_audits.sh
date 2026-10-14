@@ -24,7 +24,7 @@ BASE="${1:-origin/claude/3d-locales-clean}"
 # Files no audit in run_all_audits.sh reads to judge the world's geometry,
 # cameras, story wiring or audio: tools, the portrait + hero-art runtime,
 # docs. Anything not matched here sends the run to the full suite.
-LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
+LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
 
 # the Drive gates run on EVERY change, light or not (2026-10-13)
 python3 godot/tools/audit/drive_write_audit.py || { echo "EXIT 1"; exit 1; }

@@ -3834,6 +3834,45 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-14 · pass 105: THE GRAPHICS BUDGET, MEASURED (perf draft 1).**
+The user: "do a quick assessment how well game is handling graphical load so
+far, and how much it can be optimized/expanded with new content" — before
+another pass of 3D backgrounds, more 2D art and the hero models still to
+come. New `godot/tools/PerfProbe.gd` (exact counts; fps must be read on the
+Deck). Findings, worst view of four from each room's first camera:
+
+- **Draw calls are the bottleneck, not triangles.** Every builder exports
+  each part as its own mesh (vertex colors, no materials), and the
+  Compatibility renderer draws each one separately — again for every
+  shadow pass. graustark 14,316 calls (14,303 meshes); pharmacy 12,464 and
+  nexcorp_fueling_station 12,302 (only ~1,700 meshes, multiplied by the sun's
+  shadow); kwik_stop 7,364; faust_apartment 6,772 (784 meshes, sun + 2
+  shadowed lamps); riverfront 6,295; centro 4,998. Small rooms are fine:
+  ben_bedroom 294, hospital_room 604, missing_link 716, henderson_kitchen 850.
+  Rough comfort line for GL on the Deck: ~2,000 calls a view.
+- **Triangles are fine** — median room 14k, worst view 1.4M (pharmacy with
+  shadows).
+- **2D art is cheap.** All 533 pictures, compressed with mipmaps at their
+  size limits: ~770 MB total, but only the room's own load — worst
+  graustark 48 MB, median 6.6 MB a room.
+- **Hero models are the real install-size and memory risk.** The 10 on
+  this machine: median 40 MB, 643k triangles (max 1.13M, elicia_temple), each
+  with two 4096² and two 2048² textures. 119 heroes + 62 props + 8 demons at
+  that rate ≈ 7 GB and three characters on screen ≈ 2M+ triangles.
+
+NEXT (perf draft 2, before the next background / hero passes):
+1. **Merge static parts at build time** — join every part no script names
+   (HeroArt hides, doors, director markers, practicals) into per-room chunks
+   (~4 m cells so culling still works). Target ≤ 400 meshes a room; the
+   detail budget it frees is what the next 3D-background pass spends.
+2. **Shadows** — tiny props cast none; sun shadow two splits with a short
+   max distance; one shadowed lamp a room at most.
+3. **Hero models through a decimate step in meshy_pipeline** — ~80–120k
+   triangles, 2048 base + 1024 normal (portrait close-ups judged on the cast
+   sheet before/after), so ~5 MB a model.
+4. PerfProbe inside GameEngine (post stack, hero art, people) and a
+   draw-call gate in run_all_audits so new detail can't silently cost fps.
+
 **2026-10-14 · pass 104: THE ART IN THE ROOM — NOTICING AND STILLNESS
 (draft 1).** The user: "the visual novel director needs to feature it but
 subtly. Building out quiet moments of stillness using the game mechanics
