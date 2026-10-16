@@ -859,8 +859,10 @@ def drive_pull():
     for d in DRIVE_DIRS:
         dst = REPO.parent / d
         dst.mkdir(parents=True, exist_ok=True)
+        # (_full/ holds the untouched originals of slimmed models: kept on
+        # the Drive, never needed by a checkout)
         # drive-read: Drive → this checkout (writes only local files)
-        r = subprocess.run([rc, "copy", f"{DRIVE_REMOTE}/{d}", str(dst), "--ignore-existing", "--transfers", "4"],
+        r = subprocess.run([rc, "copy", f"{DRIVE_REMOTE}/{d}", str(dst), "--ignore-existing", "--transfers", "4", "--exclude", "_full/**"],
                            capture_output=True, text=True, timeout=3600)
         if r.returncode and "directory not found" not in (r.stderr or ""):
             steps.append(f"pull failed for {d}: {(r.stderr or r.stdout)[-300:]}")
@@ -1501,11 +1503,278 @@ def cmd_art_optimize(args):
         est_vram += int(lim * lim * a * 1.0 * 1.33)      # BPTC: 1 byte/px, + mips
         src_bytes += f.stat().st_size
         n += 1
+    maps = 0
+    for e in roster["entries"]:
+        if e.get("kind") in SLIM_BUDGET and entry_out_path(e).exists():
+            maps += model_texture_settings(entry_out_path(e), e["kind"], log=(lambda *a: None))
+    if maps:
+        print(f"{maps} model texture(s) set to VRAM-compressed and capped (heroes, demons, props)")
     print(f"{n} installed picture(s): {src_bytes / 1e6:.1f} MB of originals → about "
           f"{est_vram / 1e6:.1f} MB compressed in the game (all of them; a room loads only its own).")
     print("Now let Godot re-import them: open the project in the editor once, or run "
           "bash godot/tools/reimport_models.sh")
     return 0
+
+
+# ── SLIM (2026-10-16 · perf draft 2) ────────────────────────────────────────
+# The user: "do a quick assessment how well game is handling graphical load
+# … how much it can be optimized/expanded with new content", then "Go ahead".
+# PerfProbe found the hero models the install-size and memory risk: median
+# 40 MB and 643k triangles, two 4096² maps each — ~180 more at that rate is
+# ~7 GB. Every model Hero Studio installs now goes through Blender
+# (tools/blender/slim_model.py) to a budget; the untouched original stays in
+# <kind dir>/_full/ (on the Drive, gitignored, .gdignore'd so Godot neither
+# imports nor ships it). `meshy_pipeline.py slim` does the ones on disk.
+SLIM_BUDGET = {
+    "hero": {"tris": 120000, "tex": 2048, "tex_small": 1024},
+    "demon": {"tris": 120000, "tex": 2048, "tex_small": 1024},
+    "prop": {"tris": 40000, "tex": 1024, "tex_small": 512},
+}
+SLIM_SCRIPT = TOOLS / "blender" / "slim_model.py"
+
+
+def find_blender():
+    """Blender the way tools/blender/run_cathedral.sh finds it on the Deck
+    (BLENDER_BIN first). Returns an argv prefix, or None."""
+    import shutil as _sh
+    import subprocess
+    env = os.environ.get("BLENDER_BIN", "").strip()
+    if env:
+        return env.split()
+    home = Path.home()
+    for c in [home / ".local/share/Steam/steamapps/common/Blender/blender",
+              home / ".steam/steam/steamapps/common/Blender/blender",
+              Path("/run/media/mmcblk0p1/steamapps/common/Blender/blender"),
+              Path("/run/media/deck/SDCARD/steamapps/common/Blender/blender")]:
+        if c.exists() and os.access(c, os.X_OK):
+            return [str(c)]
+    if _sh.which("flatpak"):
+        r = subprocess.run(["flatpak", "list", "--app"], capture_output=True, text=True)
+        if "org.blender.Blender" in (r.stdout or ""):
+            return ["flatpak", "run", "org.blender.Blender"]
+    for c in sorted((home / "Downloads").glob("[bB]lender-*.AppImage")):
+        if os.access(c, os.X_OK):
+            return [str(c)]
+    b = _sh.which("blender")
+    return [b] if b else None
+
+
+def glb_budget(path):
+    """(triangles, largest image side) of a GLB, read from its header —
+    no Blender needed. (0, 0) when the file cannot be read."""
+    import struct
+    try:
+        b = Path(path).read_bytes()
+        ln = struct.unpack_from("<I", b, 12)[0]
+        j = json.loads(b[20:20 + ln])
+    except (OSError, ValueError, struct.error):
+        return 0, 0
+    acc = j.get("accessors", [])
+    tris = 0
+    for m in j.get("meshes", []):
+        for pr in m.get("primitives", []):
+            a = pr.get("indices", pr.get("attributes", {}).get("POSITION"))
+            if a is not None:
+                tris += acc[a]["count"] // 3
+    side = 0
+    bin_at = 20 + ln + 8
+    for im in j.get("images", []):
+        bv = j["bufferViews"][im["bufferView"]] if "bufferView" in im else None
+        if bv is None:
+            continue
+        d = b[bin_at + bv.get("byteOffset", 0): bin_at + bv.get("byteOffset", 0) + min(bv["byteLength"], 1 << 16)]
+        if d[:4] == b"\x89PNG":
+            w, h = struct.unpack(">II", d[16:24])
+            side = max(side, w, h)
+            continue
+        i = 2
+        while i + 9 < len(d) and d[i] == 0xFF:
+            mk = d[i + 1]
+            seg = struct.unpack(">H", d[i + 2:i + 4])[0]
+            if mk in (0xC0, 0xC1, 0xC2):
+                h, w = struct.unpack(">HH", d[i + 5:i + 9])
+                side = max(side, w, h)
+                break
+            i += 2 + seg
+    return tris, side
+
+
+def _glb_json(path):
+    import struct
+    try:
+        b = Path(path).read_bytes()
+        return json.loads(b[20:20 + struct.unpack_from("<I", b, 12)[0]])
+    except (OSError, ValueError, struct.error):
+        return None
+
+
+def model_texture_settings(glb, kind, log=print):
+    """Write the .import of every texture Godot extracts from `glb`
+    (<stem>_<image name or index>.<ext>, beside it): VRAM-compressed,
+    mipmapped, capped at the kind's budget, the normal map as a normal map.
+    (2026-10-16: PerfProbe found alberto's four maps loading UNCOMPRESSED —
+    175.7 MB of video memory for one character; Godot's own default is
+    lossless until the editor happens to notice a 3D use.) Only for maps
+    Godot has already extracted — run after an import. Returns how many
+    files it wrote."""
+    glb = Path(glb).resolve()
+    budget = SLIM_BUDGET.get(kind)
+    j = _glb_json(glb)
+    if budget is None or not j:
+        return 0
+    tex = j.get("textures", [])
+
+    def img_of(ref):
+        ti = (ref or {}).get("index")
+        return tex[ti].get("source") if isinstance(ti, int) and ti < len(tex) else None
+
+    role = {}
+    for m in j.get("materials", []):
+        pbr = m.get("pbrMetallicRoughness", {})
+        for i in (img_of(pbr.get("baseColorTexture")),):
+            if i is not None:
+                role[i] = "big"
+        i = img_of(m.get("normalTexture"))
+        if i is not None:
+            role[i] = "normal"
+    wrote = 0
+    for i, im in enumerate(j.get("images", [])):
+        ext = "png" if "png" in (im.get("mimeType") or "") else "jpg"
+        name = im.get("name") or str(i)
+        path = glb.parent / f"{glb.stem}_{name}.{ext}"
+        if not path.exists():
+            # Godot has not extracted it yet — and an .import written first
+            # makes Godot skip the extraction and load the map UNCOMPRESSED
+            # (tested 2026-10-16). The next art-optimize / slim run sets it.
+            continue
+        r = role.get(i, "small")
+        limit = budget["tex_small"] if r == "small" else budget["tex"]
+        nm = 1 if r == "normal" else 0
+        want = [f"process/size_limit={limit}", "compress/mode=2", f"compress/normal_map={nm}"]
+        imp = path.with_name(path.name + ".import")
+        if imp.exists() and all(w in imp.read_text() for w in want):
+            continue
+        res = "res://" + str(path.relative_to(REPO)).replace(os.sep, "/")
+        imp.write_text("\n".join([
+            "[remap]", "", 'importer="texture"', 'type="CompressedTexture2D"', "",
+            "[deps]", "", f'source_file="{res}"', "",
+            "[params]", "",
+            "compress/mode=2", "compress/high_quality=false", "compress/lossy_quality=0.8",
+            "compress/hdr_compression=1", f"compress/normal_map={nm}", "compress/channel_pack=0",
+            "mipmaps/generate=true", "mipmaps/limit=-1", "roughness/mode=0", 'roughness/src_normal=""',
+            "process/fix_alpha_border=true", "process/premult_alpha=false", "process/normal_map_invert_y=false",
+            "process/hdr_as_srgb=false", "process/hdr_clamp_exposure=false", f"process/size_limit={limit}",
+            "detect_3d/compress_to=0", ""]))
+        wrote += 1
+    if wrote:
+        log(f"    textures · {glb.name}: {wrote} map(s) set to VRAM-compressed, ≤ {budget['tex']} px")
+    return wrote
+
+
+def slim_glb(path, kind, log=print, force=False, fresh=False):
+    """Cut one installed model to SLIM_BUDGET[kind]; the original goes to
+    _full/. fresh: `path` was just downloaded — it IS the new original and
+    replaces any older one in _full/. force: re-slim from _full/ even when
+    in budget. Returns a dict (ok, skipped, tris_in/out, bytes_in/out, why)."""
+    import subprocess
+    path = Path(path)
+    budget = SLIM_BUDGET.get(kind)
+    if budget is None or not path.exists():
+        return {"ok": False, "why": "no budget for this kind" if budget is None else "no file"}
+    tris, side = glb_budget(path)
+    if fresh:
+        force = False
+    if not force and tris and tris <= budget["tris"] * 1.05 and side <= budget["tex"]:
+        model_texture_settings(path, kind, log=log)
+        return {"ok": True, "skipped": True, "why": f"already in budget ({tris} triangles, {side}px)"}
+    blender = find_blender()
+    if not blender:
+        log(f"    slim · {path.name}: no Blender found — left full size (install Blender from Steam, then run: "
+            f"python3 godot/tools/meshy_pipeline.py slim)")
+        return {"ok": False, "why": "no Blender"}
+    full_dir = path.parent / "_full"
+    full_dir.mkdir(exist_ok=True)
+    (full_dir / ".gdignore").touch()
+    full = full_dir / path.name
+    if fresh or not full.exists():
+        import shutil as _sh
+        _sh.copy2(path, full)
+    tmp = path.with_suffix(".slim.glb")
+    cmd = blender + ["-b", "--python", str(SLIM_SCRIPT), "--", str(full), str(tmp),
+                     "--tris", str(budget["tris"]), "--tex", str(budget["tex"]),
+                     "--tex-small", str(budget["tex_small"])]
+    log(f"    slim · {path.name}: {tris} triangles, {side}px maps → Blender …")
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=1200)
+    except (OSError, subprocess.SubprocessError) as ex:
+        return {"ok": False, "why": f"Blender did not run: {ex}"}
+    line = next((ln for ln in (r.stdout or "").splitlines() if ln.startswith("SLIM ")), "")
+    # the SLIM line is printed after the export finished; trust it and a
+    # readable file over the exit code (a teardown crash comes after both)
+    if not line or not tmp.exists() or glb_budget(tmp)[0] == 0:
+        tmp.unlink(missing_ok=True)
+        return {"ok": False, "why": "Blender failed: " + ((r.stderr or r.stdout or "")[-400:]).strip()}
+    info = json.loads(line[5:])
+    os.replace(tmp, path)
+    log(f"    slim · {path.name}: {info['tris_in']} → {info['tris_out']} triangles, "
+        f"{info['bytes_in'] / 1e6:.1f} → {info['bytes_out'] / 1e6:.1f} MB (original in {rel(full)})")
+    info.update(ok=True, skipped=False)
+    _drop_stale_maps(path, log)
+    model_texture_settings(path, kind, log=log)
+    return info
+
+
+def _drop_stale_maps(glb, log=print):
+    """The maps Godot extracted from the full-size model (<stem>_0.jpg … or
+    <stem>_Image_0.jpg …) that the slim one no longer names: left alone they
+    stay imported — and exported — at 4096. Only digit / Image_<n> names."""
+    glb = Path(glb)
+    j = _glb_json(glb) or {}
+    keep = set()
+    for i, im in enumerate(j.get("images", [])):
+        keep.add(im.get("name") or str(i))
+    dropped = 0
+    for f in glb.parent.glob(f"{glb.stem}_*"):
+        m = re.fullmatch(re.escape(glb.stem) + r"_((?:Image_)?\d+)\.(?:jpg|jpeg|png)(\.import)?", f.name)
+        if m and m.group(1) not in keep:
+            f.unlink()
+            dropped += 1
+    if dropped:
+        log(f"    slim · {glb.name}: removed {dropped} stale full-size map file(s)")
+
+
+def cmd_slim(args):
+    """Slim every installed hero / demon / prop model that is over budget."""
+    roster = load_roster()
+    sel = set(args.slugs or [])
+    done = skipped = failed = 0
+    before = after = 0
+    for e in roster["entries"]:
+        kind = e.get("kind")
+        if kind not in SLIM_BUDGET or (sel and e["slug"] not in sel):
+            continue
+        out = entry_out_path(e)
+        if not out.exists():
+            continue
+        b0 = out.stat().st_size
+        res = slim_glb(out, kind, force=args.force)
+        model_texture_settings(out, kind)
+        if res.get("skipped"):
+            skipped += 1
+        elif res.get("ok"):
+            done += 1
+            before += b0
+            after += out.stat().st_size
+        else:
+            failed += 1
+            print(f"  {e['slug']}: {res.get('why')}")
+            if res.get("why") == "no Blender":
+                break
+    print(f"slimmed {done} model(s) ({before / 1e6:.0f} → {after / 1e6:.0f} MB), {skipped} already in budget, {failed} failed")
+    if done:
+        print("Godot re-imports them the next time the project opens (or: bash godot/tools/reimport_models.sh). "
+              "Then SAVE in Hero Studio puts the slim models and the _full/ originals on the Drive.")
+    return 1 if failed else 0
 
 
 def install_art(entry, opts, log=print):
@@ -1722,6 +1991,7 @@ def assign_recovered(entry, task_id, overwrite=False):
         raise ValueError(f"{entry['slug']} already has {rel(out)} — tick overwrite to replace it")
     out.parent.mkdir(parents=True, exist_ok=True)
     shutil.move(str(src), str(out))
+    slim_glb(out, entry["kind"], fresh=True)
     thumb = RECOVERED_DIR / f"{task_id}.png"
     cand = None
     if thumb.exists():
@@ -2309,6 +2579,7 @@ def stage_mesh(roster, entry, opts, log=print):
     os.replace(tmp, out_path)
     size_kb = out_path.stat().st_size / 1024
     log(f"    installed {rel(out_path)}  ({size_kb:.0f} KB)")
+    slim_glb(out_path, entry["kind"], log=log, fresh=True)
     thumb = result.get("thumbnail_url")
     if thumb:
         try:
@@ -2985,6 +3256,9 @@ def main():
     sub.add_parser("drive-status", help="is Google Drive set up, and what is not on it yet")
     sub.add_parser("drive-push", help="upload every model and picture to Google Drive, update the manifest")
     sub.add_parser("art-optimize", help="compressed, size-capped import settings for every installed hero-art picture")
+    p = sub.add_parser("slim", help="cut installed hero / demon / prop models to the game budget (Blender; originals kept in _full/)")
+    p.add_argument("slugs", nargs="*", help="only these (default: every model over budget)")
+    p.add_argument("--force", action="store_true", help="re-slim from the _full/ original even when in budget")
     sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
 
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
@@ -3020,6 +3294,8 @@ def main():
         return 0 if res["ok"] else 1
     if args.cmd == "art-optimize":
         return cmd_art_optimize(args)
+    if args.cmd == "slim":
+        return cmd_slim(args)
     if args.cmd == "drive-status":
         print(json.dumps(drive_status(), indent=1))
         return 0

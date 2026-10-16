@@ -1,0 +1,44 @@
+{
+ "ben_bedroom": {
+  "draw": 92
+ },
+ "centro_grocery_aisle": {
+  "draw": 214
+ },
+ "diner": {
+  "draw": 1248
+ },
+ "faust_apartment": {
+  "draw": 4033
+ },
+ "graustark": {
+  "draw": 1254
+ },
+ "henderson_kitchen": {
+  "draw": 106
+ },
+ "hospital_room": {
+  "draw": 100
+ },
+ "kwik_stop": {
+  "draw": 276
+ },
+ "lena_apartment": {
+  "draw": 156
+ },
+ "missing_link_interior": {
+  "draw": 90
+ },
+ "nexcorp_fueling_station": {
+  "draw": 174
+ },
+ "pharmacy": {
+  "draw": 1096
+ },
+ "riverfront": {
+  "draw": 471
+ },
+ "salty_tome_interior": {
+  "draw": 402
+ }
+}

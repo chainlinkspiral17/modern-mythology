@@ -100,3 +100,8 @@ godot/assets/art/hero/*
 godot/tools/.hero_studio_url
 godot/tools/.drive_rescue_missing.txt
 godot/tools/.drive_owner
+
+# SLIM (2026-10-16): the untouched originals of slimmed models — kept on the
+# Drive by Hero Studio, never in git (meshy_pipeline.py slim_glb)
+godot/assets/3d/characters/*/_full/
+godot/assets/3d/props/_full/

@@ -36,6 +36,10 @@ CHANGED="$( { git diff --name-only "$BASE"...HEAD 2>/dev/null; git diff --name-o
 if [ -z "$CHANGED" ]; then
     echo "nothing changed against $BASE"; echo "EXIT 0"; exit 0
 fi
+# PERF GATE (2026-10-16): a room whose builder / scene / GLB changed is
+# re-measured (tools/PerfProbe.gd) and may not draw more than its cap — see
+# perf_gate.py. Without Godot it notes the rooms and passes.
+python3 godot/tools/audit/perf_gate.py --changed "$BASE" || { echo "EXIT 1"; exit 1; }
 HEAVY="$(echo "$CHANGED" | grep -Ev "$LIGHT" || true)"
 if [ -n "${FULL:-}" ] || [ -n "$HEAVY" ]; then
     [ -n "$HEAVY" ] && { echo "full suite — these can move the world:"; echo "$HEAVY" | head -20 | sed 's/^/   /'; }

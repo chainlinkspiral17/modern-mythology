@@ -3834,6 +3834,77 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-16 · pass 106: THE GRAPHICS BUDGET, SPENT WELL (perf draft 2).**
+The user, after pass 105's assessment: "Go ahead". Four pieces:
+
+1. **`scripts/StaticMerge.gd` — the still parts drawn as chunks.** Attached
+   by MoodCycler (every locale, walkable and VN alike); two frames after
+   load it groups eligible MeshInstance3Ds by material look, vertex format,
+   shadow mode and cell (4 m in a room, up to 12 m for a town) and builds
+   each group into one mesh, a few a frame (40–500 ms in all here). The
+   parts keep their nodes, names and colliders — only their render
+   instances go off — and a chunk splits back if anything hides or frees a
+   member. Left alone: scripted subtrees, AnimationPlayer targets,
+   transparent / shader / normal-mapped materials, HeroProp hide_prefixes,
+   the runtime lookups (Sprinkler_Head, Miller_Cracked, HeroArt_), group
+   "no_merge"; a chunk may be reached by at most 8 lamps (the renderer's
+   per-object cap); a scene with a shadow-casting lamp merges nothing.
+   Worst view of four, before → after (one room per process; pictures
+   diffed against MM_STATIC_MERGE=0):
+
+   | room | before | after |
+   |---|---|---|
+   | graustark | 14,316 | 1,254 |
+   | pharmacy | 12,492 | 1,096 |
+   | nexcorp_fueling_station | 12,330 | 174 |
+   | kwik_stop | 7,364 | 276 |
+   | faust_apartment | 6,800 | 4,033 (shadow trim only — see NEXT) |
+   | riverfront | 6,295 | 471 |
+   | centro_grocery_aisle | 4,998 | 214 |
+   | lena_apartment | 4,098 | 156 |
+   | salty_tome_interior | 3,348 | 402 |
+   | diner | 2,572 | 1,248 |
+   | henderson_kitchen | 878 | 106 |
+   | missing_link_interior | 744 | 90 |
+   | hospital_room | 632 | 100 |
+   | ben_bedroom | 322 | 92 |
+
+   Pictures: every room within noise of the unmerged render (worst 0.48%
+   of pixels, single-pixel slivers where coplanar surfaces meet). Two bugs
+   found on the way and fixed: SurfaceTool.append_from turns normals by the
+   plain basis (wrong for scaled + rotated parts), and the glTF importer's
+   per-primitive default materials meant nothing merged until the merge
+   keyed on the material's look.
+
+2. **Sun shadows: two splits within 60 m** (`StaticMerge.shadow_budget`,
+   28 rooms) — no visible change; Faust 6,800 → 4,033 from that alone.
+3. **Hero models slimmed at install** (`tools/blender/slim_model.py`,
+   `meshy_pipeline.py slim`): 120k triangles with the UV seams locked,
+   base + normal 2048, others 1024 — elicia 56 → 5.7 MB, frasier 49 → 5.2,
+   no visible change at ECU / MCU on the cast sheet. Original kept in
+   `_full/` (Drive, gitignored, .gdignore). And the maps are now
+   VRAM-compressed (`model_texture_settings`, run by art-optimize after
+   Godot extracts them): they were loading UNCOMPRESSED — 175.7 MB of
+   texture memory for one character, 25 MB slimmed + compressed.
+4. **`tools/audit/perf_gate.py`** in run_changed_audits.sh: a room whose
+   builder / scene / GLB changed may not draw more than max(2,000,
+   baseline × 1.15); baselines in `perf_baseline.json`.
+
+Deck: `meshy_pipeline.py slim` on the ten committed heroes (Blender), then
+reimport, art-optimize, reimport. Fps still unmeasured on the Deck itself.
+
+NEXT (perf draft 3):
+- Faust (and any future shadowed lamp): find why a shadow-casting omni
+  changes the picture once chunks exist, so those rooms merge too.
+- Rooms past 8 lamps a cell (the diner, 36) keep many parts separate:
+  shorter lamp ranges, or fewer, overlapping practicals.
+- Merge at IMPORT (EditorScenePostImport) so loading does no work; give the
+  town chunks generated LODs.
+- PerfProbe inside GameEngine (post stack, hero art, cast on stage); a
+  baseline for every locale (only the 14 measured rooms have one).
+- Slim the 8 demons and future props through the same step; judge
+  the 120k figure on the whole cast sheet, not two heroes.
+
 **2026-10-14 · pass 105: THE GRAPHICS BUDGET, MEASURED (perf draft 1).**
 The user: "do a quick assessment how well game is handling graphical load so
 far, and how much it can be optimized/expanded with new content" — before
