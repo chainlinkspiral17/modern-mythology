@@ -743,7 +743,7 @@ We can stand on this porch for hours or we can go on inside.
 
 ### vii. SCUMM
 
-*from the dream journal of D. Dean — sophomore year, Alsea Valley High, before the transfer — spring 1994*
+*from the dream journal of D. Dean — Alsea Valley High — spring 1994*
 
 **march 2**
 
