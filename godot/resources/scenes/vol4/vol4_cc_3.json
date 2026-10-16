@@ -81,6 +81,11 @@
       "text": "Glitter is stuck to it in fact."
     },
     {
+      "t": "cg",
+      "src": "assets/cg/vol4_cc_glitter_mask.jpg",
+      "caption": "All Smiles"
+    },
+    {
       "t": "say",
       "char": "All Smiles",
       "expr": "neutral",
