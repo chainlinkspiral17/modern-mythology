@@ -1,0 +1,254 @@
+{
+  "id": "vol3_ch8_passengers_c",
+  "vol": 3,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "vi. passengers",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_blanket_fort_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "A shared dream",
+      "sub": "Four sleepers · one signal",
+      "duration": 2200
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the billowing fort",
+          "goto": 7
+        },
+        {
+          "text": "let them sleep",
+          "goto": 8
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The sheet lifts and falls with the fan, slow as breathing, lit blue by the television."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a shared dream that happens between them that occurs something like this:"
+    },
+    {
+      "t": "narrate",
+      "text": "Steven working at a gas station, thinking of a girl he'd immortalized. Her image printed on a t-shirt he wears daily now thick with grease stains. He feels his gums receding, his teeth becoming loose, he is an artist, he has taken up the pencil."
+    },
+    {
+      "t": "narrate",
+      "text": "Drawing to earn respect and catch her eye. He is nobody, he is trembling, afraid to continue any further in this reality. People he used to know pull up to pump gas and don't recognize him under his long hair, facial stubble."
+    },
+    {
+      "t": "narrate",
+      "text": "He listens to the mass of traffic pounding on the overhead expressway, drinking cheap liquor stolen from broken bottles."
+    },
+    {
+      "t": "narrate",
+      "text": "Amanda is a summertime fungirl, living in the backs of cars, getting picked up by boys by the side of the road, all their faces imaginary, people she's never seen before, perhaps existing just within this moment. Making out with a girl who looks like her sister, attracted to her neck, her long slender clavicle."
+    },
+    {
+      "t": "narrate",
+      "text": "They hold hands and talk about summer camp experience and share cigarettes. She realizes she is not done with school but it is done with her. Complicated thoughts are made simple, drifting pleasure to pleasure."
+    },
+    {
+      "t": "narrate",
+      "text": "She stares out a window, this is a train ride through farm country, warm and fertile."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron, a Marine, only he's not with the Marines right now. He's at his family home, estranged and distant, visiting old friends, tracking down old girlfriends. He knows someone close to him will die soon."
+    },
+    {
+      "t": "narrate",
+      "text": "He sleeps sixteen hours a day in his childhood bed surrounded by the familiar, half-forgotten. What he has aren't suicidal thoughts, he does not know the word ennui, he returns to abstract images that convey purpose, direction, inertia. He visits his father in jail for selling cocaine of all things."
+    },
+    {
+      "t": "narrate",
+      "text": "He drives around around the neighborhood nighttimes at speeds in excess of 100 miles an hour."
+    },
+    {
+      "t": "narrate",
+      "text": "Summer almost a mother having lost a little girl once already and trying again so soon. Someone special her body could not hold onto, too good for this world, a large part of her that must be toxic. She can't stop reading about sudden infant death syndrome, downs syndrome, thermonuclear war."
+    },
+    {
+      "t": "narrate",
+      "text": "Reasons not to bring new life into this old world. She crochets spiderweb shaped configurations, dreamcatchers finished, filled up. Her husband uses the rainbow octagons as beer coasters."
+    },
+    {
+      "t": "narrate",
+      "text": "She does not know why she can't stop making them."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chau_game_room_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_suburban_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The Chau residence",
+      "sub": "Suburbia · Sunday morning",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Sunday morning, the Chau residence."
+    },
+    {
+      "t": "narrate",
+      "text": "The homeless man passes out on the floor of the game room."
+    },
+    {
+      "t": "narrate",
+      "text": "He discovered the liquor cabinet earlier that evening and began his drinking in earnest. He smoked the fancy found cigars going through them like cigarettes. Playing billiards, throwing darts, flipping channels."
+    },
+    {
+      "t": "narrate",
+      "text": "He jerked off to pay-per-view pornography. It was in those high numbered channels he discovered a jazz music channel which he left it at, the soundtrack of his diminished drinking returns. He'd gotten to the point where he just wanted to flush himself away and feel the hurt of oblivion some other morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Instead of stopping and falling asleep he forced himself to consume."
+    },
+    {
+      "t": "narrate",
+      "text": "Fuck you point of no return."
+    },
+    {
+      "t": "narrate",
+      "text": "At one point he awoke, retching in a corner, pulling himself up to a potted fern like plant, clear liquid from inside him gelling up in thick mossy dirt. He laughed to himself after he was all done feeling so much better, his whole world swimming away in a warm current."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chau_house_day.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Mrs. Chau returns home early, calls out for her son at the entryway. Her nickname for him literally translated means dog fart. Younger son Chris had been treated to a McDonald's chocolate milkshake, he carries it around close to his chest, sipping at it with his whole face."
+    },
+    {
+      "t": "narrate",
+      "text": "Mrs. Chau puts her purse on a counter and hangs up her jacket, calling out for Steven."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris surveys the disarray of the house. The mess left in the kitchen, the main living room television on, the looping intro to a movie playing static, not quite. He goes into his room, finds the computer on, sits down and looks at the history of the browser, retraces the steps backwards in time, reading carefully."
+    },
+    {
+      "t": "narrate",
+      "text": "Mrs. Chau goes into her room and deposits her suitcase, pulls at her bangs in the mirror. Her tiny dog runs up to her begging for food barking sharply. Her mother-in-law, come to visit from Taiwan tried to abandon the dog blamed the dog for running away."
+    },
+    {
+      "t": "narrate",
+      "text": "She hoped the old woman would die before the dog and suffer in limbo long before the price on her soul was paid in full."
+    },
+    {
+      "t": "narrate",
+      "text": "Mrs. Chau picks her up in her arms and holds her to her chin."
+    },
+    {
+      "t": "narrate",
+      "text": "They walk together through the house."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_suburban_street_ambulance.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "A few hours later",
+      "sub": "Suburbia · Sunday",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "A few hours later, Aaron and Steven return."
+    },
+    {
+      "t": "narrate",
+      "text": "The thing that gets their attention are the flashing lights then the sounds, whooping."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_gurney_driveway.jpg",
+      "caption": "Flashing lights in the driveway."
+    },
+    {
+      "t": "narrate",
+      "text": "An ambulance pulled up out front, they see the homeless man strapped to a gurney, young EMTs pushing, pulling, hoisting and bored looking, their thoughts lateral elsewhere. Two police cars are off to the side, empty inside. Steven is driving, looking over at Aaron."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesus Christ, the sound they make, not quite in tandem, one of them starts it."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron hopping out in a hurry while Steven figures out what to do with the car. Aaron rushes over to the EMTs, asks what's going on."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven leaves the car on the curb, walks inside the opened up garage door, forgetting all about his friend. He sees his mother's car, implications hitting him now."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron gets caught up in the moment, goes along for the ride in the back desperately lying about who he is confusing the EMT even further but whatever no time to think about anything really."
+    },
+    {
+      "t": "narrate",
+      "text": "And he's off, the sirens sounding so much different from the inside."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chau_living_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Mrs. Chau on the couch, holding her one son so close. The four men look down on her even if they're seated."
+    },
+    {
+      "t": "narrate",
+      "text": "They don't notice for a minute but when they do all the attention shifts and settles on him."
+    },
+    {
+      "t": "narrate",
+      "text": "And then there is noise, unbelievable noise, so much he can't hear any longer, meaning he can not discern, he just stands there, waiting for impact, sustained collision, the tossing of himself far off away, never landing, tumbling, dizzy, falling wherever."
+    },
+    {
+      "t": "narrate",
+      "text": "Forget slow motion, this is ballet, his fingers instinctively push at invisible strings."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch8_passengers_c_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch9_backward_jaunt"
+    }
+  ]
+}

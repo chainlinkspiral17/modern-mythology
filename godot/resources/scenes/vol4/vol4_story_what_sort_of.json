@@ -74,6 +74,10 @@
       "text": "She did her composing on a Yamaha keyboard which also plugged into the Mac, allowing her to compose in silence with her headphones on, because she had neighbors who didn't keep the same hours as her. She kept to herself here when she wasn't at work, because work was all about other people, other people's music."
     },
     {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_chess_apartment_morning.jpg"
+    },
+    {
       "t": "narrate",
       "text": "Chess took the kid to her apartment because she only lived three miles from the Saga and she didn't feel like wasting her whole morning on his account."
     },
@@ -123,18 +127,18 @@
       "t": "choice",
       "opts": [
         {
-          "text": "look down the hallway",
-          "goto": 26
+          "text": "wait for the doors",
+          "goto": 27
         },
         {
           "text": "step out",
-          "goto": 27
+          "goto": 28
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "The hallway carpet is worn to a path down the middle."
+      "text": "The elevator hums and settles, slow as an old man."
     },
     {
       "t": "narrate",

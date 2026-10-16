@@ -53,27 +53,48 @@
     },
     {
       "t": "narrate",
-      "text": "John didn't think much about the safety concerns of being alone in a big drug store at four in the morning but neither did the corporation who made his decisions for him. An elderly man had come into the store three nights ago wanting itch creme."
+      "text": "John didn't think much about the safety concerns of being alone in a big drug store at four in the morning but neither did the corporation who made his decisions for him."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "count the cameras",
+          "goto": 13
+        },
+        {
+          "text": "watch the door",
+          "goto": 14
+        }
+      ]
     },
     {
       "t": "narrate",
-      "text": "John didn't give much thought to the old man but pointed him in the right direction when words were required of him. The old man came back, angry because he couldn't find what he was looking for, and angry John couldn't help him out because he couldn't leave the counter, the till full of money left unattended."
+      "text": "Twelve small dark lenses, all of them turned toward the counter."
     },
     {
       "t": "narrate",
-      "text": "The old man got angrier and John asked him to leave. That's when he came for me. The old man rushed John with an electric drill in his hand and drove the whirling metal bit into his head."
+      "text": "An elderly man had come into the store three nights ago wanting itch creme. John didn't give much thought to the old man but pointed him in the right direction when words were required of him."
     },
     {
       "t": "narrate",
-      "text": "He was trying to get at me. Trying to kill what he thought was me. Pushed John to the floor and pushed his hair to the side and found the incision."
+      "text": "The old man came back, angry because he couldn't find what he was looking for, and angry John couldn't help him out because he couldn't leave the counter, the till full of money left unattended. The old man got angrier and John asked him to leave. That's when he came for me."
     },
     {
       "t": "narrate",
-      "text": "That's when he plunged the drill into his skull. Two inches in. The scrap of blood and bone and metal."
+      "text": "The old man rushed John with an electric drill in his hand and drove the whirling metal bit into his head. He was trying to get at me. Trying to kill what he thought was me."
     },
     {
       "t": "narrate",
-      "text": "Yellow goo came out the hole. It felt like a bomb went off in John's head. Then when the old man was gone, John hit the panic button and called 911, but didn't talk into the receiver, because he didn't know if he should."
+      "text": "Pushed John to the floor and pushed his hair to the side and found the incision. That's when he plunged the drill into his skull. Two inches in."
+    },
+    {
+      "t": "narrate",
+      "text": "The scrap of blood and bone and metal. Yellow goo came out the hole. It felt like a bomb went off in John's head."
+    },
+    {
+      "t": "narrate",
+      "text": "Then when the old man was gone, John hit the panic button and called 911, but didn't talk into the receiver, because he didn't know if he should."
     },
     {
       "t": "narrate",

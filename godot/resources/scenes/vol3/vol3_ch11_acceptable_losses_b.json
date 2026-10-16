@@ -1,0 +1,525 @@
+{
+  "id": "vol3_ch11_acceptable_losses_b",
+  "vol": 3,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "ix. acceptable losses",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_lake_house_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_texas_summer.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The lake house",
+      "sub": "Texas · the last weekend of summer",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "The car pulls in. A barbecue is set up, something is smoking underneath the lid. Before the car can stop, my sis is out the door stretching and pulling her backpack from the wedge under her seat."
+    },
+    {
+      "t": "narrate",
+      "text": "The place is better than I imagined, a big home on the lake, a boathouse out back."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry comes to greet us. His shirt is off and he's wearing bright red swim trunks that look a little large on his small frame. He comes up and shakes my dad's hand as he exits the car and grabs a bag away from my mother at the same time."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Glad to see you all made it, the kids are out skiing, Leslie is pulling them around in the boat. Here let me take that,\" he says, grabbing another bag from my sister. He pushes the screen door open with his back and escorts us in."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_dugout_august.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The game is all about tension. Not much action, just anticipation. The sense of dread and disappointment figure heavily."
+    },
+    {
+      "t": "narrate",
+      "text": "I saw it on Chris's face. He had nothing to worry about. He was the best of us."
+    },
+    {
+      "t": "narrate",
+      "text": "He made things happen. I sat on third breathing hard and fast because I got lucky and the ball went flying over the third baseman's head and he and the left fielder had to run for it. I knocked Tony on second in for a run and he got to celebrate with coach at the dusty home plate."
+    },
+    {
+      "t": "narrate",
+      "text": "All Chris had to do at bat was make something happen and we'd be in the lead. Sixth inning and in our league there were only seven to a game, so yeah, something had to happen soon. So I sat and waited, breathing hard and often completely soaked in sweat."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chris_bedroom_trophies.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "\"You'll be sharing this room with Chris,\" Terry says. There's a cot set up for me by the window. I nod and smile."
+    },
+    {
+      "t": "narrate",
+      "text": "I set my shit down in the corner and look at the place. Hard to believe this is the kid's second bedroom. He's got autographed Texas Ranger posters all over, Pudge and Nolan Ryan's 5000th strikeout stand out."
+    },
+    {
+      "t": "narrate",
+      "text": "A television is in the corner with a pile of tapes that look like they were sent courtesy of Sports Illustrated."
+    },
+    {
+      "t": "narrate",
+      "text": "I flip through a stack of magazines. Not the sort of shit I read in my spare time. The room is clean and sterile."
+    },
+    {
+      "t": "narrate",
+      "text": "Unused. All in all, it looks like a dentist's office with a jock-strap fetish."
+    },
+    {
+      "t": "narrate",
+      "text": "That weird feeling passes over me. You know the one. You're in a new place, it's like nothing you've ever experienced, you're scared shitless and even though you're all grown up, it feels like you're in first grade looking up at a teacher who's a whole lot creepier than mommy."
+    },
+    {
+      "t": "narrate",
+      "text": "Sort of like that, plus the whole I'm a teenage boy and I'm staying in another teenage boy's room and I don't know what kind of shit he's into when the lights are off kind of vibe. My palms are sweating and shaking at the same time, perhaps it has something to do with my flu."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_dugout_august.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I hustled back to the dugout to grab my glove from my dad. So much for superstar saving the day at the plate. Terry was tearing into Chris in a very public show of affection."
+    },
+    {
+      "t": "narrate",
+      "text": "His chest was heaving as if he was sobbing and stopping himself from actually shedding tears. Terry hit him in the chest with his clipboard and pointed down viciously with his dry-erase marker."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad was standing, ready to receive me. Great hit, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "He held out my giant, way-too expensive left-handed first baseman's glove. It looks like a leather scythe, black and orange. I managed to turn my grimace into a half smile."
+    },
+    {
+      "t": "narrate",
+      "text": "He sprayed me with water and tapped my shoulder affectionately. Chris came over and handed me a ball. His face was red and puffy."
+    },
+    {
+      "t": "narrate",
+      "text": "Go warm up the basemen, I gotta get some practice pitches in, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I smiled and nodded and ran for my place between first and second base, tossing the ball in an underhand lob to skip it over to third."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_lake_dock_day.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I go out to back to the dock by the lake to watch my father try to fit the water ski boots on his feet. \"Don't think they're gonna fit,\" I say."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks up at me and frowns, \"No kidding, but it's the largest they've got. What size are you wearing?\" Dad goes back to sitting with his legs over the water, struggling with the booties."
+    },
+    {
+      "t": "narrate",
+      "text": "I walk behind and get a better look at the shoes."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Now? Sixteens. No way those things are gonna fit,\" I say."
+    },
+    {
+      "t": "narrate",
+      "text": "\"If you keep growing, nothing will. Wonder if Nike makes clown shoes. Those might work,\" he says."
+    },
+    {
+      "t": "narrate",
+      "text": "I kick him in the back, he laughs."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look out over the lake",
+          "goto": 40
+        },
+        {
+          "text": "kick off the sandals",
+          "goto": 41
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Light breaks on the water in long white seams, far boats trailing their wakes like chalk."
+    },
+    {
+      "t": "narrate",
+      "text": "I pull my T-shirt off and kick my sandals across polished wood. The lake is beautiful. Better than I thought it could be."
+    },
+    {
+      "t": "narrate",
+      "text": "My sunglasses are tucked into my shirt which I put in a bundle by the dock's edge. God, this is gorgeous. Sailboats and speedboats create wakes which splash up on the dock, hot air balloons take off on some distant shore."
+    },
+    {
+      "t": "narrate",
+      "text": "I smile. For the first time this stupid trip, I smile."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_pitchers_mound.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The catcher's hand did a quick motion. Chris nodded and started his stance. He stepped back on the bar and raised his shoulders up, pulling his glove and throwing arm to his chest."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked back and forth watching for the runners to try and steal. There was none of that so Chris stepped forward and down the mound in one quick graceful motion, his throwing arm down at his shoe and the ball already in the catcher's mitt. Strike three."
+    },
+    {
+      "t": "narrate",
+      "text": "I clapped my fist into my mitt and hollered, half the people in attendance did the same. One more to go, I said to myself. One more to go, I shout to the sky."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_lake_dock_day.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I swim by the dock's edge, enjoying the feel of the hard water on my body. It's cold lake water, so I shiver and I smile. It tastes like scum and the visibility when I open my eyes underwater is claustrophobic."
+    },
+    {
+      "t": "narrate",
+      "text": "I could catch some awful microscopic bug in this shit and die but that's the price you pay for twenty minutes of utter bliss."
+    },
+    {
+      "t": "narrate",
+      "text": "I hear the boat coming back, I see Dad waving because he's ready for his turn. The kids jump into the water once they get close enough to me. Chris has a smile on his face."
+    },
+    {
+      "t": "narrate",
+      "text": "This is the happiest I've ever seen him. He screams as he lands in the water and I lose him under the surface. I feel cold hands grab my ankles and pull me down."
+    },
+    {
+      "t": "narrate",
+      "text": "For fuck's sake I think as my open mouth is filled with water and my head goes underneath. I struggle vainly with my arms and try to kick him off my legs. I gulp thick brown water in my panic and I start to choke."
+    },
+    {
+      "t": "narrate",
+      "text": "This is now a very bad thing. Chris lets go and I see his white form race by as he goes back for air. I kick and punch my way back up, gasping and choking out water, wheezing in pain."
+    },
+    {
+      "t": "narrate",
+      "text": "I hear the two of them laughing, brother and sister."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Bastard,\" I spit out. Chris giggles and splashes water in my face. His little sister does the same."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_dugout_august.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "There was a team meeting in the dugout. Terry sat back and let his son take charge of the team. Chris had his hand out and made contact with each of us."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked serious and said, this is a big deal. Right now, what's happening. This is the last game we play together this year."
+    },
+    {
+      "t": "narrate",
+      "text": "We win this, we win it all. The league is ours. I honestly don't think we're as good as those guys, but they've won three years in a row and they're a bunch of assholes."
+    },
+    {
+      "t": "narrate",
+      "text": "I want this to be over and I know we have it in us to win. They're ahead by one point and that pisses me off. We've made too many stupid mistakes."
+    },
+    {
+      "t": "narrate",
+      "text": "We can win this, we just have to hit the ball and hit it hard."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris spoke with strength and determination. Things that make people sit up straight and pay attention. The kid is good."
+    },
+    {
+      "t": "narrate",
+      "text": "A leader. He can say shit like that and not make me laugh. He's got talent and that makes people uneasy."
+    },
+    {
+      "t": "narrate",
+      "text": "To recognize a quality in someone else that is greater than your own."
+    },
+    {
+      "t": "narrate",
+      "text": "That shit usually upsets me, but not with Chris, Chris is different."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chris_bedroom_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Chris and I are sitting across from each other in his bedroom, playing cards. Chris is the dealer. Five-card Stud being a game, Chris is better at it."
+    },
+    {
+      "t": "narrate",
+      "text": "I haven't won a single hand though I've often had better cards. I frown. This is embarrassing."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris plays with a big, goofy grin which is scary on a face like his. Lean and mean. I fold."
+    },
+    {
+      "t": "narrate",
+      "text": "I had shit. We're playing for candy and I've already lost my share ten times over. Chris keeps pulling more out of the bag to give to me, not letting the game end."
+    },
+    {
+      "t": "narrate",
+      "text": "I put my thumb to the bridge of my nose and tap hard, my frustration obvious. He celebrates by tossing candy at me, giving it away. He cracks up."
+    },
+    {
+      "t": "narrate",
+      "text": "He delights in annoying the shit out of me. He does this to nobody else. Pisses me off."
+    },
+    {
+      "t": "narrate",
+      "text": "I can't stand it. \"Chris man, stop it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls his smile straight up into a sneer, \"Pretty soon we'll be all out of candy.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yeah, thank God.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I put my pot in prematurely. He hands me a new set of cards and grabs his hand as soon as he's finished dealing. The look on his face says it all."
+    },
+    {
+      "t": "narrate",
+      "text": "I look at my cards again to find some hope. I feel a stinging slap on my thigh. He just hit me with a licorice stick on the thigh."
+    },
+    {
+      "t": "narrate",
+      "text": "Fuck, I scream in my head. Bastard, I look up at him. My hands fist up and my back gets that itchy feeling."
+    },
+    {
+      "t": "narrate",
+      "text": "He plays it straight like nothing happened. I throw my cards down and he gets an upset pissy look on his face like I just ruined his evening, \"Come on, what'd I do?\" he says."
+    },
+    {
+      "t": "narrate",
+      "text": "I just look at him, \"Fuck this, I'm going to bed. No more games, I'm feeling like shit.\" He looks sad and upset with himself like he just realized what a prick he's been all evening, \"Jeez, look I forgot."
+    },
+    {
+      "t": "narrate",
+      "text": "No more bullshit.\" He is animate, in motion, cleaning up the mess of cards and trying to stop me from leaving the corner."
+    },
+    {
+      "t": "narrate",
+      "text": "Fine. \"Fine,\" I say completely uninterested, trying to get the cot ready for bed. He comes over and tries to set the pillow in place and I push him away, \"I got it man, I'm going to bed.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"A game or two more, we gotta play a game or two more.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I look at him. He's near tears. This kid I don't hang out with."
+    },
+    {
+      "t": "narrate",
+      "text": "This kid I play ball with and that's it. He's a teammate. An associate."
+    },
+    {
+      "t": "narrate",
+      "text": "He grabs my hand as I pull the zipper on my sleeping bag down. I look at him, look him in his eyes. He's sad and angry."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls my hand to his face and starts kissing it. I jerk it away. My gut takes over, like a wasp is crawling all over."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't think for a second or two. I can't. I see tears in his eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "He's crying and can't stop. No sobs, no noises, just tears pouring down his face. Then his chest heaves, just once, like a hiccup."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know what to say. I know I say something like, \"I'm sorry, I'm sorry,\" like it was my fault he was crying. I don't know what the fuck is going on."
+    },
+    {
+      "t": "narrate",
+      "text": "I just know I feel sorry for him, I offer him my hand back, hoping to stop him from crying. Because all I can think about is him waking his parents up and them coming in and asking what's wrong and me having to tell them. I offer him my hand and he slaps it away."
+    },
+    {
+      "t": "narrate",
+      "text": "It hurts and I look at him more confused than shit and I just say, \"You okay?\""
+    },
+    {
+      "t": "narrate",
+      "text": "He shakes his head and turns away from me. I reach out with my hand again and just leave it there, shaking. I watch it, I watch him crawl into bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The lights are on and he's going to bed. He sobs in his pillow and I just stand there. After a couple of minutes of me just thinking shit over, I go and crawl into the cot, the light still on."
+    },
+    {
+      "t": "narrate",
+      "text": "He sobs for hours and he's still crying when I fall asleep hours later."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_concession_stand.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Chris was warming up as pitcher. Dad waved from the convenience stand to get me to come over. Nothing was happening so I went and joined him."
+    },
+    {
+      "t": "narrate",
+      "text": "Little kids were picking out ice cream bars by the pictures taped to the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "Fun game, Dad said."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah. Close one."
+    },
+    {
+      "t": "narrate",
+      "text": "Want me to get you anything?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sunscreen, I said. He laughed."
+    },
+    {
+      "t": "narrate",
+      "text": "We were next to order. Dad got the biggest soda they sold. A 64-ounce monster."
+    },
+    {
+      "t": "narrate",
+      "text": "What do you think of Dale? That kid can cover second."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah, I said. I took a sip from the straw as soon as it is passed over the counter. Dad asked for onion rings with lots of ketchup."
+    },
+    {
+      "t": "narrate",
+      "text": "The greasy guy nodded and removed the frozen rings from the large metal fridge. Dad asked the guy if they sold sunscreen. He pulled out Kid's Coppertone."
+    },
+    {
+      "t": "narrate",
+      "text": "Bright pink. For little girls. Dad laughed and handed it to me."
+    },
+    {
+      "t": "narrate",
+      "text": "I chuckled and squirt a handful on my palm and rubbed it into my nose and cheeks. Dad paid the guy and looked at me, cleaning up the mess on my face with a finger."
+    },
+    {
+      "t": "narrate",
+      "text": "What about Aaron? Can bring him in from center. Think he's got it in him?"
+    },
+    {
+      "t": "narrate",
+      "text": "He wants to play shortstop. He's clumsy as hell."
+    },
+    {
+      "t": "narrate",
+      "text": "Best natural athlete we've got."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris is pretty good."
+    },
+    {
+      "t": "narrate",
+      "text": "You think so?"
+    },
+    {
+      "t": "narrate",
+      "text": "He's better than me."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry shouldn't keep pitching him. His arm is going to hell."
+    },
+    {
+      "t": "narrate",
+      "text": "He hates it, Dad. Say something to Terry. He hates the goddamn pressure."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris wouldn't do it if he didn't love it."
+    },
+    {
+      "t": "narrate",
+      "text": "All eyes are on him Dad. He hates it. Every mistake he makes."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone sees it."
+    },
+    {
+      "t": "narrate",
+      "text": "You want me to say something to Terry."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah, Dad."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris would be a good short stop."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch11_acceptable_losses_b_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch11_acceptable_losses_c"
+    }
+  ]
+}

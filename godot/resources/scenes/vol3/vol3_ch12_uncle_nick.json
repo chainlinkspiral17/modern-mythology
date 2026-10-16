@@ -1,0 +1,343 @@
+{
+  "id": "vol3_ch12_uncle_nick",
+  "vol": 3,
+  "chapter": 12,
+  "type": "chapter",
+  "title": "x. uncle nick",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_family_kitchen_evening.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_ambient_home.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "x. uncle nick",
+      "sub": "Home · now",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "My son asks me to tell him a story about Uncle Nick."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Uncle Nick,\" I say. \"You want an Uncle Nick story?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yeah,\" he says. \"Yeah.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tony is twelve. My wife is worried because he hasn't yet hit that masturbation phase. She was twelve when she lost her virginity so she thinks it's fine and dandy for young kids to experiment."
+    },
+    {
+      "t": "narrate",
+      "text": "Hell, she thinks it's mandatory. I respect her opinion but it doesn't apply in all cases. I didn't even go on my first date until I was twenty."
+    },
+    {
+      "t": "narrate",
+      "text": "I told her that and she tells me I'm the exception. Fine, so let Tony be the exception. I don't think that's healthy, she says, he should be hanging out with girls his own age."
+    },
+    {
+      "t": "narrate",
+      "text": "Sure, I say, but girls his age treat him like shit."
+    },
+    {
+      "t": "narrate",
+      "text": "So she bought him a subscription to Playboy and the first issue came in the mail yesterday. The kid looked at me as he held it in his hands. That black shrink-wrapped magazine with his name printed on the outside."
+    },
+    {
+      "t": "narrate",
+      "text": "I didn't know until he showed it to me."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesus, I'm thinking. What should I say? Your mom thought it was a good idea?"
+    },
+    {
+      "t": "narrate",
+      "text": "A lot of good writers submit articles and short stories and you're into that stuff, right? So there in front of his dad, Tony tore into his fresh copy of Playboy Magazine, staring at the cover for what must've been a minute. A sleazy yet somehow respectable actress was straddled on a TWISTER game board."
+    },
+    {
+      "t": "narrate",
+      "text": "The same kind he got last year for his birthday. God this hurts. I love my kid but he's a geek, just like I was."
+    },
+    {
+      "t": "narrate",
+      "text": "Just like Nick was. His eyes kept scanning the cover. He looked afraid."
+    },
+    {
+      "t": "narrate",
+      "text": "He grew up on R-rated movies and probably borrowed his friend's brother's copy from time to time but what was staring him in the face was not the natural progression of things. He still wanted to have fun with his friends. He still wanted to be a kid."
+    },
+    {
+      "t": "narrate",
+      "text": "He sure as hell didn't want his mom buying him Playboy. I grabbed the magazine from him and stuck it under my arm. \"You wanna know why we call Uncle Nick, Uncle Nick?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I say. The kid's eyes bulged. For years, he wanted to know."
+    },
+    {
+      "t": "narrate",
+      "text": "Whenever he asked, I just smiled and told him, when you're old enough, kid."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_brick_wall_halloween_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Halloween",
+      "sub": "Along the highway · years ago",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Halloween night, Nick got pummeled by a kid named Jacob. We were walking to an exclusive neighborhood along a well-lit highway. A red brick wall kept us out along the perimeter."
+    },
+    {
+      "t": "narrate",
+      "text": "First they threw a bottle at us from their car. When they missed, they stopped fifteen yards in front of us and got out. They were wearing mall clothes, middle-class designer shit that would look absolutely hysterical in five years."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick and I walked right into them."
+    },
+    {
+      "t": "narrate",
+      "text": "\"What the fuck?\""
+    },
+    {
+      "t": "narrate",
+      "text": "A kid named Jacob got a look at Nick and recognized him from school."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick frowned and did his best to keep moving. I kept pace with him. Jacob jogged to catch up, his frown turned to smile and he offered his hand, \"Nick."
+    },
+    {
+      "t": "narrate",
+      "text": "Didn't know that was you. What you been up to? Hell you wearing?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Nick was wearing a Phantom of the Opera costume. Very Lon Chaney Jr. He had applied prosthetic make-up underneath the white mask."
+    },
+    {
+      "t": "narrate",
+      "text": "Because he could."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick raised his hand to meet Jacob's and Jacob sucker punched him in the jaw."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick's head stopped rolling when it hit his shoulder. He looked up, rubbing his face. It already looked puffy."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob started to laugh like a son of a bitch, his shoulders bouncing up and down in the night."
+    },
+    {
+      "t": "narrate",
+      "text": "He socked Nick again. Because he could. And Nick bled bad because Nick had braces."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick smiled, teeth red. He held his middle finger up against the black of his cape. It got the desired effect."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob lunged at him and started to pound his chest, his face. I stood there frozen. Jacob got a hold of Nick and threw him head first against the red brick wall."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick dropped to his knees and Jacob hit on his back and side."
+    },
+    {
+      "t": "narrate",
+      "text": "Faggot, faggot, bitch, queer faggot."
+    },
+    {
+      "t": "narrate",
+      "text": "And all I could think was Jacob wasn't doing well in school."
+    },
+    {
+      "t": "narrate",
+      "text": "He spat on Nick and ran back to the car. A herd of young kids dressed as popular cartoon characters approached with candy bags. Jacob shouted back one last obscenity as the car took off down the street."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick gathered himself, picked up his glasses and adjusted his cape. Blood smeared his left cheek and eyebrow, he kept spitting up thick red phlegm on the sidewalk. The little kid dressed as Bugs Bunny came up and looked Nick in the eye, \"Great costume,\" he said."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_grandma_house_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I helped get him home. We walked the way back mostly quiet. Nick couldn't smile or take pressure off his cheek."
+    },
+    {
+      "t": "narrate",
+      "text": "His grandma's house was unlit from the outside. Kids didn't stop by anymore. When Nick's dad took off with his little brother, their yearly Halloween decorations became a memory."
+    },
+    {
+      "t": "narrate",
+      "text": "Talent ran in the family. Mark, the father, had a genius for building things. Nick, the geek, could draw anything in the world and make it look real."
+    },
+    {
+      "t": "narrate",
+      "text": "In kindergarten, when asked to draw a picture of a pig, Nick drew the pig in three dimensions from memory. When Mark found out, he put his son to work, having him design Halloween dioramas and haunted houses for the neighborhood to see. Nick loved to draw and his father loved to bring those drawings to life."
+    },
+    {
+      "t": "narrate",
+      "text": "Every Halloween the city had new monsters to look forward to."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark left behind the mini-bike. It sat outside the house, unused and rusting. He often told us about the flying car he would build when he had the money."
+    },
+    {
+      "t": "narrate",
+      "text": "Even to a ten year old, it sounded like a stupid idea. But Mark had a way of making things seem real. That was his gift."
+    },
+    {
+      "t": "narrate",
+      "text": "He would build a flying car, no, not like the Jetsons or any of that science fiction shit. No, he said, it would work. It wouldn't really be a car."
+    },
+    {
+      "t": "narrate",
+      "text": "More like an ultra-light combined with a helicopter and a turbine. He showed us cut out designs from old Boy's Life and more modern Electronics Today. He even had Nick draw up faces to paint on the flying car once it was finished."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick at least got to paint the mini-bike. Mark built it from spare parts soon after assembling the ballistic knife. He ordered the pattern for it from Soldier of Fortune Magazine."
+    },
+    {
+      "t": "narrate",
+      "text": "It was spring-loaded and kicked like a bitch when it shot. He gave it to Nick for his tenth birthday. We took it outside and punched holes in the neighbor's fence until we got caught."
+    },
+    {
+      "t": "narrate",
+      "text": "It didn't shock us that ballistic knifes weren't too popular with other adults in the neighborhood. What surprised us was that Mark got into more trouble than we did."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_nick_garage_workshop.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The garage was Mark's workshop until Nick cleaned it up for his own purposes. Thick old grease and oil stains had permanently bonded assembly books and wood chippings to the counter. Nick threw his cape into a box of costumes and tossed his hat on a broken lightning ball."
+    },
+    {
+      "t": "narrate",
+      "text": "His white sleeve was rolled back to his elbow, his forearm splattered with blood."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_nick_bedroom_drawings.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Nick's grandma was asleep on the recliner, the television mute but alive with a shopping channel. Nick went into the bathroom to assess the damage and take off his make-up. I went into his room which seemed empty without his brother Neal taking up space."
+    },
+    {
+      "t": "narrate",
+      "text": "The walls were lined with designs and visions yet unrealized. On his child-sized drafting table a sketch of his costume was broken down. Liquid latex and make-up tubes sat next to his models and sculptures."
+    },
+    {
+      "t": "narrate",
+      "text": "Comic books tiled the floor and posters hung from the ceiling. Nick had started packing up in the closet to move into his father's empty room."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the drawings on the walls",
+          "goto": 67
+        },
+        {
+          "text": "wait for Nick",
+          "goto": 68
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Pencil faces and impossible machines crowd every inch of wall, their corners curling."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick came in, his hands filled with reddened toilet paper. \"Can your mom,\" he had trouble talking, \"to hospital?\""
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_family_living_room_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Mom took him to Children's Medical and for insurance reasons told the attendant he was her son. He got fourteen stitches on the inside of his cheek and Mom brought him back to our house later that evening. She called his grandmother that night, yelling in anger every few minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick was asleep on the couch when she came to me, the television showing a scary movie marathon. \"Nick's grandma wants him to come with us. When we move.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Are you going to let him?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"No, I can't do that.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Why not?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Mom winced and pulled my shoulder into a hug. I forget what she said. It was probably something important but whatever the reason, I can't remember."
+    },
+    {
+      "t": "narrate",
+      "text": "I just know I cried for hours. Much later. Alone."
+    },
+    {
+      "t": "narrate",
+      "text": "Hyperventilating. Sobbing, pounding my fist against my chest. Things a kid would do to get his way."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch12_uncle_nick_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch12_uncle_nick_b"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "id": "vol3_ch6_jane",
+  "vol": 3,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. stacks",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_sleep_lab.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Jane",
+      "sub": "now · the basement's basement",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "jane",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Her name is Jane, she says when she finds Andy's hand and shakes enthusiastically, \"Thanks for coming, volunteering. Can I ask you some questions real quick to see if you even qualify first things first?\""
+    },
+    {
+      "t": "narrate",
+      "text": "The test is done on the computer. A general application is breezed through to get to the qualifying questions. Age, sex, education."
+    },
+    {
+      "t": "narrate",
+      "text": "Then the fun ones:"
+    },
+    {
+      "t": "narrate",
+      "text": "Have you ever cried playing a video game. Never, once, several times, often."
+    },
+    {
+      "t": "narrate",
+      "text": "Do you sexually fantasize about video game characters."
+    },
+    {
+      "t": "narrate",
+      "text": "How emotional do you get playing video games on a scale of one to ten."
+    },
+    {
+      "t": "narrate",
+      "text": "Do you use verbal profanity when you make mistakes when playing a game."
+    },
+    {
+      "t": "narrate",
+      "text": "Have you ever resorted physical violence as a result of playing a video game."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa hangs out for the first bit of the testing, then leaves Andy to Jane as minutes stretch into many more minutes further on, says she'll come back and get him in the morning, like he's a puppy at a boarding house, or a grandkid spending the night with grandma."
+    },
+    {
+      "t": "narrate",
+      "text": "Jane runs several more tests, some of which are puzzles."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "What are you studying? What are you looking for?"
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "neutral",
+      "text": "I can tell you after."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Is it just tonight I can do this, or can I do it the whole time I'm here?"
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "neutral",
+      "text": "We'll see how it goes. We can pay up to a week's compensation per subject."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "warm",
+      "text": "Perfect. There's this game I want to get and play with sis while I'm here. And I was thinking about treating her and her friends to a going away dinner my last night."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "warm",
+      "text": "How much do you pay a session?"
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "amused",
+      "text": "Fifty bucks. For sleeping. I know."
+    },
+    {
+      "t": "narrate",
+      "text": "She flirts with Andy a little, touches his hand, bites her lip, asks him about himself in ways he assumes have nothing to do with nothing except to satisfy her own curiosity."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy does like her, is attracted to her but gets a really weird vibe off her. She's pretty but hasn't really figured herself out yet, a jumble of nerves and strange tics."
+    },
+    {
+      "t": "narrate",
+      "text": "More than a small part of her screams insecure like she's had her confidence shaken or is in the middle of something very stressful distressing and maybe she tries a little too hard to hide whatever it is that eats at her. But she's cute and edgy and smart and not perfect and that's got to count for something."
+    },
+    {
+      "t": "narrate",
+      "text": "This Jane is not plain."
+    },
+    {
+      "t": "narrate",
+      "text": "They play with blocks, she times his assembly skills then a series of blinds and identifications. On the computer there are odd mathematical, financial and economic questions."
+    },
+    {
+      "t": "narrate",
+      "text": "She takes his blood pressure, asks more personal questions he answers a bit too honestly, truthfully, playfully. She blushes and shows him the machinery under the curtain, it looks simple but expensive tells him how this is all going to go sets down some ground rules."
+    },
+    {
+      "t": "narrate",
+      "text": "Says he shouldn't get up to go pee once he's laid down for the night. Says he can read, listen to music or go for a jog, and get cleaned up for bed before getting started. She shows Andy the bathroom, shower."
+    },
+    {
+      "t": "narrate",
+      "text": "One-way vector of linear time. What comes next."
+    },
+    {
+      "t": "narrate",
+      "text": "These are scribbles Andy sees on her note-pad. Gentle foreshadowing of who knows what but the words itch at Andy's front and center awareness, he wants to study her scribbles but they are upsidedown and he is distant and they are just pieces of a puzzle and he likes games and that's why he's here."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Read the scribbles upside down.",
+          "goto": 33
+        },
+        {
+          "text": "Let them go.",
+          "goto": 34
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "One-way vector of linear time. What comes next."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "When can we start."
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "warm",
+      "text": "Just get comfortable — let yourself go. We'll be here to catch you."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Andy does, thinking about Jane just out of sight monitoring vital statistic data pertaining to nothing and everything for a greater good that goes by the name science technology progress. It all feels like a dream and he's not even there yet. The story hasn't actually happened."
+    },
+    {
+      "t": "narrate",
+      "text": "He wonders why Dad had to die. Why the good die young. He is the last surviving male in his family."
+    },
+    {
+      "t": "narrate",
+      "text": "He has bad genes. Dad died of a genetic cancer. He fears the future."
+    },
+    {
+      "t": "narrate",
+      "text": "He wants to think about Jane undressing wants to picture her body's proportion a bit heavy but a good heavy her eye glasses emo heavy as well. She wore cute shoes, wore even cuter toe socks. Her shoes come off at some point and she wiggles her netherdigits for pleasure showing off."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy can tell she shops for the bottom half more so than the top. He especially liked the way she said the Rorschach test. Roar shark, roar."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch6_jane_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch7_emulsion"
+    }
+  ]
+}

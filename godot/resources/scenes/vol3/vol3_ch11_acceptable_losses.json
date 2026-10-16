@@ -1,0 +1,271 @@
+{
+  "id": "vol3_ch11_acceptable_losses",
+  "vol": 3,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "ix. acceptable losses",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pizza_parlor_rain.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_texas_summer.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "ix. acceptable losses",
+      "sub": "Strip mall · summer night, raining",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "A strip mall on a hot wet summer night, a pizza parlor tucked in the corner, a father and son outside arguing, screaming, a party room reserved for a baseball team in the back, a projection screen showing Major League, the sound of a crowd scene lost in the din of reality,"
+    },
+    {
+      "t": "narrate",
+      "text": "sixteen teenage boys with their families celebrating loudly humidity steaming windows air thick with sweat and perfume smelling of pepperoni, hot pepper powder and small children that smell like shit and baby powder."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the projection screen",
+          "goto": 9
+        },
+        {
+          "text": "turn to the window",
+          "goto": 10
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "On the screen a pitcher winds up in washed-out color, his stadium roaring without sound."
+    },
+    {
+      "t": "narrate",
+      "text": "I push my empty plate to the pile and sit back full and tired. My ear goes to the window and I close my eyes. The chill of the rain on the pane of glass feels great, a tingle goes down my spine and then my back."
+    },
+    {
+      "t": "narrate",
+      "text": "In one ear I hear them outside fighting."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Get back in there,\" says coach to star player."
+    },
+    {
+      "t": "narrate",
+      "text": "In return, all-star shows defiance."
+    },
+    {
+      "t": "narrate",
+      "text": "\"I said, back in there, goddamnit,\" father to son."
+    },
+    {
+      "t": "narrate",
+      "text": "Teenage boy is crying, the anger in father's voice at a place near hysteria. Without looking I see a man trying hard to not lose control. Grown boy cries harder."
+    },
+    {
+      "t": "narrate",
+      "text": "No one says anything for a moment. I hear the tinkle of small metal."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Alright,\" he says. \"Get in the car,\" he says."
+    },
+    {
+      "t": "narrate",
+      "text": "Son's cries muffled by hand and forearm. The father coughs in the dampness, \"You're sobbing like a girl and I'm sure your friends don't want to see that.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Footsteps splash in the film of water over asphalt. The glass is quiet except for the sounds of rain and the city."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_family_bathroom_day.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "My dad puts his ear to the bathroom door. I hear him breathing outside. I look down at my shoes, my untied laces, \"Dad, go away,\" I say."
+    },
+    {
+      "t": "narrate",
+      "text": "He takes a deep breath and taps the door. \"Dad?\""
+    },
+    {
+      "t": "narrate",
+      "text": "He coughs and says, \"You okay in there?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Dad, don't worry, I won't make us late.\" After a moment, I hear him walk away. I put my head down, prop it up on my thighs, cradle it in my palms."
+    },
+    {
+      "t": "narrate",
+      "text": "The pressure in my gut is unbearable. I press my hands against the side of my head. Harder until it hurts."
+    },
+    {
+      "t": "narrate",
+      "text": "From five feet down the hall, \"Son, what's wrong?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I keep pressing in on my skull. The bathroom looks like wet watercolor. Pastel, everything in tint."
+    },
+    {
+      "t": "narrate",
+      "text": "It's too bright. The pressure on my inside, building up and still not releasing. That moan should count for something."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Son?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I can feel it."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Son?\""
+    },
+    {
+      "t": "narrate",
+      "text": "There it is. Release. Oh there it is."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Son?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Dad?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"What is it?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I start laughing. I holler. \"It felt like I was pissing out of my ass that time.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tears in my eyes, running down my cheek, the summer flu, the fucking bastard. I hear my dad laughing behind the door. My mom slaps him on the back, \"Don't encourage him."
+    },
+    {
+      "t": "narrate",
+      "text": "In a couple of years, he'll be as bad as you.\""
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_texas_highway_rain.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The car ride to the country, to a large man-made lake in the middle of nowhere. I play games with the streams of rain running down the windshield. I sit in the front seat with Dad."
+    },
+    {
+      "t": "narrate",
+      "text": "Mom now designated to the back with sis because I turned thirteen, my long legs to blame. She insists."
+    },
+    {
+      "t": "narrate",
+      "text": "My idea of a good time anything but this. I'm missing a summer weekend for whatever that's worth, one of the last before I go back to school. Pool parties, movies, couches and extreme comfort."
+    },
+    {
+      "t": "narrate",
+      "text": "Pobrecito, Don't bitch and whine, mom says, it's a cultural experience, she says. Culture defined by the frown on my face. She smiles when I grimace that's the kind of mom she is."
+    },
+    {
+      "t": "narrate",
+      "text": "Loving but sadistic. I smile, fake and plastic to show I love her."
+    },
+    {
+      "t": "narrate",
+      "text": "My head bangs back against the headrest, it sits too low on my neck even at its highest adjustment. Dad has the same problem, he drives hunched over the wheel of the little Peugeot. Road kill litters the highway's horizon."
+    },
+    {
+      "t": "narrate",
+      "text": "Don't Mess with Texas says a Willie Nelson billboard."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad points to a sign a little ways off. I nod and he slows the car to a crawl in the margin. We turn hard right onto a small wooded road."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_dugout_august.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The dugout",
+      "sub": "Texas · August, 110 degrees",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The dugout was full because we were up to bat. I was sitting next to Dad and a kid named Cody. Dad gripped the bench beneath him hunched over watching with focused attention."
+    },
+    {
+      "t": "narrate",
+      "text": "The crowd bleachers held parents and younger siblings on metal steps, fathers in short shorts and mothers in Lycra. Dirty children played at their feet with the sand and trash on pavement. Pink gum stuck to everything, sunflower seed shells lay spat back out wherever."
+    },
+    {
+      "t": "narrate",
+      "text": "The heat of an August in Texas, well past 110 degrees. Kids and their parents suffering heat strokes ambulances could be heard pulling into the parking lot every so often."
+    },
+    {
+      "t": "narrate",
+      "text": "At least I wasn't practicing for the upcoming football season under a mass of pads, running wind sprints, choking on my own sweat, passing out in a tackle. A kid who went to my school died the week prior from shock and exhaustion, a real sad thing. I stood and wiped the layer of sweat from my forehead."
+    },
+    {
+      "t": "narrate",
+      "text": "My hands were stiff from salt, my eyes wet with tears."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris was warming up but he wasn't to bat until after me. He looked at the grass as he pivoted the bat against his neck from behind. Coach Terry came up and pulled my hat on straight."
+    },
+    {
+      "t": "narrate",
+      "text": "Alright, look here. You're gonna get a base hit. Got that?"
+    },
+    {
+      "t": "narrate",
+      "text": "Just hit the ball and get to first on time. I want to see some spring in your step."
+    },
+    {
+      "t": "narrate",
+      "text": "I nodded and he handed me a plastic bottle, the kind used for cleaning windows. I sprayed a mist of cool water on my face and neck and handed it back over. Terry was still looking at me."
+    },
+    {
+      "t": "narrate",
+      "text": "I could feel sunburn all over my arms and face. My nose and cheeks were tight. I'll do my best, I said."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch11_acceptable_losses_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch11_acceptable_losses_b"
+    }
+  ]
+}
