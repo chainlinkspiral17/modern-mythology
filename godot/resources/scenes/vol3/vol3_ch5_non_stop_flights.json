@@ -3,7 +3,7 @@
   "vol": 3,
   "chapter": 5,
   "type": "chapter",
-  "title": "v. non-stop flights",
+  "title": "Ch 5 — v. non-stop flights",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "v. non-stop flights",
+      "text": "Ch 5 — v. non-stop flights",
       "sub": "transmission · LAX / Oregon",
       "duration": 2400
     },

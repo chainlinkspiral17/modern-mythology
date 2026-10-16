@@ -3,7 +3,7 @@
   "vol": 3,
   "chapter": 3,
   "type": "chapter",
-  "title": "iii. safari",
+  "title": "Ch 3 — iii. safari",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "iii. safari",
+      "text": "Ch 3 — iii. safari",
       "sub": "slide carousel · Tulsa, mid-eighties",
       "duration": 2400
     },

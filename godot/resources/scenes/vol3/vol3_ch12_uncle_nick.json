@@ -3,7 +3,7 @@
   "vol": 3,
   "chapter": 12,
   "type": "chapter",
-  "title": "x. uncle nick",
+  "title": "Ch 12 — x. uncle nick",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "x. uncle nick",
+      "text": "Ch 12 — x. uncle nick",
       "sub": "Home · now",
       "duration": 2200
     },
