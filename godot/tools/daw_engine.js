@@ -1392,7 +1392,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const P = this.project; if (!P) return false;
       if (P.devices.some(d => !['forge', 'kit', 'basic'].includes(d.type))) return false;
       const mixes = [...P.devices.map(d => d.mix), ...P.tracks.filter(t => t.kind === 'audio').map(t => t.mix)].filter(Boolean);
-      return !mixes.some(m => m.duck || (m.fx || []).some(f => f.on !== false && f.type === 'gate'));
+      return !mixes.some(m => m.duck || (m.fx || []).some(f => f.on !== false && (f.type === 'gate' || f.type === 'machine')));
     }
     // PLAY: RENDER's parallel render: 4-bar chunks, each with its own tail (and any note held past its end); they overlap and
     // sum like the full render. Chunk 1 streams its output back while it renders (its tap worklet puts it on Chrome's shared

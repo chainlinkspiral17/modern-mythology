@@ -1,5 +1,6 @@
 // audio_kit.js DSP + worklets on file:// (regressions: blob-URL worklets, LUFS K-weighting)
-const { suite } = require('./harness');
+const { suite, TOOLS } = require('./harness');
+const TapeModelSat = () => require(require('path').join(TOOLS, 'tape_model.js')).machine('cassette').drive;
 
 suite('dsp · loudness, true peak, mastering, worklets on file://', async t => {
   const { p, errors } = await t.page('field_recorder.html', { fakeMedia: true });
@@ -94,7 +95,17 @@ suite('dsp · loudness, true peak, mastering, worklets on file://', async t => {
   await t.test('TAPE STUDIO starts its tape worklet from file://', async () => {
     const { p: tp, errors: te } = await t.page('tape_studio.html');
     const ok = await tp.evaluate(async () => { await startAudio(); return !!tape && ctx.state; });
-    t.eq(ok, 'running'); t.noErrors(te);
+    t.eq(ok, 'running');
+    // MACHINE: a physical tape model takes over the master tape section and back; the knobs follow the machine
+    const m = await tp.evaluate(async () => {
+      const opts = [...document.getElementById('machine').options].map(o => o.value);
+      const sel = document.getElementById('machine'); sel.value = 'cassette'; sel.dispatchEvent(new Event('change'));
+      const on = !!nodes.machine && nodes.machineId === 'cassette', sat = +document.getElementById('sat').value;
+      sel.value = ''; sel.dispatchEvent(new Event('change'));
+      return { n: opts.length, on, sat, off: !nodes.machine && nodes.machineId === '' };
+    });
+    t.ok(m.n >= 6 && m.on && m.off && Math.abs(m.sat - TapeModelSat()) < 1e-6, JSON.stringify(m));
+    t.noErrors(te);
   });
   await t.test('no page / console errors', async () => t.noErrors(errors));
 });

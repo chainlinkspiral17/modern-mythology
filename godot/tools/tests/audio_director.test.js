@@ -491,8 +491,50 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
       t.eq([r.state, r.made, r.errors], ['done', 1, []], recipe + ': ' + r.msg);
       const m = newest('quiet_bed', new RegExp('-' + recipe + '$'));
       t.ok(json(m.dir + 'stems.json').stems.some(s => s.name === 'source') && m.bars === 4, recipe + ' stems');
-      if (recipe === 'tape') t.ok(Math.abs(m.mood.bpm - first.mood.bpm * Math.pow(2, -2 / 12)) < 0.01 && m.mood.key === (first.mood.key + 10) % 12, 'tape: ' + m.mood.bpm + ' BPM in ' + m.mood.key);
+      if (recipe === 'tape') t.ok(Math.abs(m.mood.bpm - first.mood.bpm * Math.pow(2, -2 / 12)) < 0.01 && m.mood.key === (first.mood.key + 10) % 12 && m.remix.machine === 'worn_cassette', 'tape: ' + m.mood.bpm + ' BPM in ' + m.mood.key + ' through ' + m.remix.machine);
     }
+  });
+  await t.test('TAPE MACHINE: the worklet and the plain-JS model give the same samples; the DAW insert renders (and keeps renders unchunked)', async () => {
+    const r = await p.evaluate(async () => {
+      const sr = 48000, n = sr, x = new Float32Array(n).map((_, i) => 0.5 * Math.sin(2 * Math.PI * 220 * i / sr));
+      const prm = Object.assign(TapeModel.machine('reel_7'), { degrade: 0, chew: 0, seed: 5 });
+      const off = new OfflineAudioContext(2, n + 2000, sr); await TapeModel.prepare(off);
+      const src = off.createBufferSource(), b = off.createBuffer(2, n, sr); b.copyToChannel(x, 0); b.copyToChannel(x, 1); src.buffer = b;
+      const node = TapeModel.createNode(off, prm); src.connect(node); node.connect(off.destination); src.start(0);
+      const wl = (await off.startRendering()).getChannelData(0), js = TapeModel.process([x, x], sr, prm)[0], lat = new TapeModel.DSP(sr, 2, prm).latency;
+      let err = 0, pk = 0; for (let i = 2000; i < n - 2000; i++) { err = Math.max(err, Math.abs(wl[i + lat] - js[i])); pk = Math.max(pk, Math.abs(js[i])); }
+      // the DAW: a TAPE MACHINE insert on a FORGE strip
+      const E = STUDIO.E || (STUDIO.E = new DAW.Engine()); await E.start();
+      const proj = DAW.Engine.newProject(); proj.bpm = 100; await E.load(proj);
+      const dev = await E.addDevice('forge', { name: 'K', preset: FORGE_PRESETS.find(q => q.category === 'keys').id });
+      const tr = E.addTrack('midi', { name: 'keys', deviceId: dev.id }); tr.patterns = { p: { name: 'p', lenBars: 1, notes: [{ t: 0, d: 300, n: 60, v: 0.8 }, { t: 0, d: 300, n: 64, v: 0.8 }] } }; tr.clips = [{ bar: 0, pid: 'p' }];
+      E.emit('project'); await E.whenReady();
+      const plain = await E.renderOffline({ fromBar: 0, toBar: 1, tailSec: 0.5 });
+      const chunkBefore = E.chunkable();
+      dev.mix.fx = [{ id: 'm1', type: 'machine', on: true, params: Object.assign(TapeModel.machine('worn_cassette'), { seed: 2 }) }]; E.applyMix(); await E.whenReady();
+      const taped = await E.renderOffline({ fromBar: 0, toBar: 1, tailSec: 0.5 });
+      let diff = 0, fin = true; const a0 = plain.channels[0], b0 = taped.channels[0];
+      for (let i = 0; i < Math.min(a0.length, b0.length); i++) { diff += Math.abs(a0[i] - b0[i]); if (!Number.isFinite(b0[i])) fin = false; }
+      const listed = DawFX.TYPES.some(q => q.id === 'machine') && DawFX.presets('machine').length >= 5 && DawFX.normField('15', DawFX.spec('machine').speed) === 15;
+      return { err, pk, diff, fin, chunkBefore, chunkAfter: E.chunkable(), listed };
+    });
+    t.ok(r.pk > 0.2 && r.err < 1e-4, 'worklet = JS: max difference ' + r.err.toExponential(2) + ' (peak ' + r.pk.toFixed(2) + ')');
+    t.ok(r.diff > 1 && r.fin, 'the insert changes the render: ' + r.diff.toFixed(1));
+    t.eq([r.chunkBefore, r.chunkAfter, r.listed], [true, false, true], 'chunkable before / after · listed with presets · numeric speed from a <select>');
+  });
+  await t.test('MAKE TAKES with TAPE: every stem through one machine, stems still sum to the mix, recorded for ⟳ AGAIN', async () => {
+    const r = await p.evaluate(async () => { const R = await requestTakes(['quiet_bed'], 1, { length: { bars: 2 }, roles: ['bass', 'chords', 'pad'], tape: 'cassette' }).done; return { state: R.state, errors: R.errors, opts: regenForm.length }; });
+    t.eq([r.state, r.errors], ['done', []]);
+    const m = newest('quiet_bed', /^\d{8}-\d{6}-s\d+$/), man = json(m.dir + 'stems.json');
+    t.eq([m.mood.tape, m.request.tape], ['cassette', 'cassette']);
+    // the stems add up to the mix (the tape went on before the master, on every stem alike)
+    const pcm = rel => { const b = fs.readFileSync(G(rel)); let o = 12; while (o < b.length) { const id = b.toString('ascii', o, o + 4), sz = b.readUInt32LE(o + 4); if (id === 'data') { const out = new Float32Array(sz / 2); for (let i = 0; i < out.length; i++) out[i] = b.readInt16LE(o + 8 + i * 2) / 32768; return out; } o += 8 + sz + (sz & 1); } return null; };
+    const mix = pcm(m.dir + 'mix.wav'), sum = new Float32Array(mix.length);
+    for (const st of man.stems) { const d = pcm(st.file); for (let i = 0; i < Math.min(d.length, sum.length); i++) sum[i] += d[i]; }
+    let err = 0, pk = 0; for (let i = 0; i < mix.length; i++) { err = Math.max(err, Math.abs(mix[i] - sum[i])); pk = Math.max(pk, Math.abs(mix[i])); }
+    t.ok(pk > 0.1 && err < 0.002 * man.stems.length + 1e-3, 'stems sum to the mix within 16-bit rounding: ' + err.toFixed(5));
+    const card = await p.evaluate(async () => { await refresh(); await selectTrack('quiet_bed'); return document.getElementById('takes').textContent; });
+    t.ok(/tape: cassette deck/.test(card), 'the take card says which tape');
   });
   await t.test('the tools\' library is mirrored into the game folder (library/<kind>/…wav + .json), at once and on link for older items', async () => {
     const r = await p.evaluate(async () => {

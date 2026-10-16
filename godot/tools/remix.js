@@ -304,24 +304,26 @@
     for (let c = 0; c < 2; c++) { const d = r.getChannelData(c); for (let i = n; i < d.length; i++) o[c][i - n] += d[i]; }
     return { channels: o, srcBars };
   }
-  // TAPE: playback slowed by `rate` (pitch with it) with wow (0.5 Hz) + flutter (6.5 Hz), band-limited, softly saturated
-  async function tapeLayer(chs, sr, an, outBars, rate, R) {
+  // TAPE: playback slowed by `rate` (pitch with it), then through a worn tape machine (tape_model.js: hysteresis, head
+  // losses, wow / flutter, degrade, chew — seeded). Without tape_model.js: a filtered, saturated stand-in.
+  async function tapeLayer(chs, sr, an, outBars, rate, R, machine = 'worn_cassette') {
     const srcBars = linearBars(chs, sr, an, Math.ceil(outBars * rate) + 1), dry = barsLayer(chs, sr, an, srcBars);
     const barSec = 240 / (an.bpm * rate), len = Math.round(outBars * barSec * sr);
     const ctx = new OfflineAudioContext(2, len, sr), src = ctx.createBufferSource(), buf = ctx.createBuffer(2, dry[0].length, sr);
     buf.copyToChannel(dry[0], 0); buf.copyToChannel(dry[1], 1); src.buffer = buf; src.playbackRate.value = rate;
-    const wow = ctx.createOscillator(), wg = ctx.createGain(), fl = ctx.createOscillator(), fg = ctx.createGain();
-    wow.frequency.value = 0.45 + R() * 0.15; wg.gain.value = 0.0035 * rate; fl.frequency.value = 6.5; fg.gain.value = 0.0012 * rate;
-    wow.connect(wg); wg.connect(src.playbackRate); fl.connect(fg); fg.connect(src.playbackRate);
-    const lp = ctx.createBiquadFilter(), hp = ctx.createBiquadFilter(), sat = ctx.createWaveShaper(), g = ctx.createGain();
-    lp.type = 'lowpass'; lp.frequency.value = 4200; lp.Q.value = 0.5; hp.type = 'highpass'; hp.frequency.value = 90;
-    const curve = new Float32Array(1024); for (let i = 0; i < 1024; i++) { const x = i / 511.5 - 1; curve[i] = Math.tanh(1.6 * x) / Math.tanh(1.6); }
-    sat.curve = curve; g.gain.value = 0.8;
-    src.connect(hp); hp.connect(lp); lp.connect(sat); sat.connect(g); g.connect(ctx.destination);
-    wow.start(0); fl.start(0); src.start(0);
+    const T = root.TapeModel;
+    if (T) src.connect(ctx.destination);
+    else {
+      const lp = ctx.createBiquadFilter(), sat = ctx.createWaveShaper(), curve = new Float32Array(1024);
+      lp.type = 'lowpass'; lp.frequency.value = 4200; for (let i = 0; i < 1024; i++) { const x = i / 511.5 - 1; curve[i] = Math.tanh(1.6 * x) / Math.tanh(1.6); }
+      sat.curve = curve; src.connect(lp); lp.connect(sat); sat.connect(ctx.destination);
+    }
+    src.start(0);
     const r = await ctx.startRendering();
+    let out = [r.getChannelData(0), r.getChannelData(1)];
+    if (T) out = T.process(out, sr, Object.assign(T.machine(machine) || {}, { seed: Math.floor(R() * 4294967295) >>> 0 }));
     // which source bar each output bar holds (the slowed tape covers fewer source bars than output bars)
-    return { channels: [r.getChannelData(0), r.getChannelData(1)], srcBars: Array.from({ length: outBars }, (_, b) => srcBars[Math.min(srcBars.length - 1, Math.floor(b * rate))]) };
+    return { channels: out, srcBars: Array.from({ length: outBars }, (_, b) => srcBars[Math.min(srcBars.length - 1, Math.floor(b * rate))]), machine: T ? machine : null };
   }
   // STRETCH: paulstretch — magnitudes kept, phases randomised, overlap-added; L and R get different random phases
   // (one inverse FFT carries both: Z = X·e^{iφL} + i·X·e^{iφR} → real part left, imaginary part right)
@@ -587,7 +589,7 @@
             let layer, srcBars = null;
             if (recipe === 'chop') ({ channels: layer, srcBars } = chopLayer(audio.channels, RATE, an, bars, DR, 0.6));
             else if (recipe === 'dub') ({ channels: layer, srcBars } = await dubLayer(audio.channels, RATE, an, bars, DR));
-            else if (recipe === 'tape') ({ channels: layer, srcBars } = await tapeLayer(audio.channels, RATE, an, bars, rate, DR));
+            else if (recipe === 'tape') { const tl = await tapeLayer(audio.channels, RATE, an, bars, rate, DR, req.tapeMachine || 'worn_cassette'); layer = tl.channels; srcBars = tl.srcBars; extra.machine = tl.machine; }
             else { const r = stretchLayer(audio.channels, RATE, bars * 240 / bpm, DR); layer = r.channels; extra.stretch = { factor: +r.factor.toFixed(2), excerpt: r.excerpt.map(x => +x.toFixed(2)) }; }
             peakNorm(layer, 0.5);
             // the new bass follows the source's harmony bar by bar (stretch: one sustained root)
@@ -610,13 +612,13 @@
           await E.whenReady();
           say('render', 'rendering…');
           const stems = req.stems !== false && E.canRenderOffline();
-          const r = await T.render(E, { loop: false, stems, master: ctx.master !== false, lufs: ctx.lufs ?? -14,
+          const r = await T.render(E, { loop: false, stems, master: ctx.master !== false, lufs: ctx.lufs ?? -14, tape: req.tape ? { id: req.tape, seed } : null,
             onProgress: p => p && p.phase === 'stem' && say('render', 'rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
           const credits = await E.credits(), sec = r.channels[0].length / r.sampleRate;
           why = 'REMIX · ' + label + ' — from ' + src.title + (src.ref.take ? ' (take ' + src.ref.take + ')' : '') + (wth ? ' with the theme of ' + wth.title : '');
           const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+P.bpm).toFixed(4), density: song.density, seed,
             composer: song.v || 1, motif: song.motif || undefined, textures: song.textures && song.textures.length ? song.textures : 'none', fx: song.fx || 'none', hit: song.hit || 'none', vocab: song.vocab };
-          const request = { remix: { recipe, from: req.from, with: req.with || undefined, style: req.style || undefined, key: req.key ?? undefined, bars: req.bars || undefined } };
+          const request = { remix: { recipe, from: req.from, with: req.with || undefined, style: req.style || undefined, key: req.key ?? undefined, bars: req.bars || undefined, tape: req.tape || undefined } };
           say('write', 'saving…');
           const take = T.takeStamp() + '-s' + seed + '-' + recipe, dir = T.REVIEW_DIR + '/' + t.id + '/' + take + '/';
           const meta = { v: 1, id: t.id, take, created: new Date().toISOString(), status: 'candidate', title: t.title, vol: t.vol, src: t.src,

@@ -210,6 +210,7 @@
         <div class="row"><label>ENERGY</label><input type="range" id="r-energy" min="-0.5" max="0.5" step="0.05" value="0" data-default="0" style="width:140px" title="nudges tempo / density from the brief"><b id="r-energyv" style="min-width:40px">±0</b>
           <span class="lb">DENSITY</span><label class="note"><input type="checkbox" id="r-densauto" checked> auto</label><input type="range" id="r-dens" min="0.1" max="0.95" step="0.05" value="0.55" data-default="0.55" style="width:120px" disabled><b id="r-densv">auto</b></div>
         <div class="row"><label>LENGTH</label><select id="r-lenmode"><option value="">auto (≥ 90 s)</option><option value="sec">seconds</option><option value="bars">bars</option></select><input type="number" id="r-len" min="1" max="900" value="90" disabled><label class="note" title="a seamless loop: the game then loops it forever (the loop goes in the Ogg temp's manifest) — only for beds"><input type="checkbox" id="r-loop"> seamless loop points</label></div>
+        <div class="row"><label title="the whole take through a tape machine after it renders: magnetic hysteresis, head losses at the tape speed, wow &amp; flutter, hiss and wear — a physical model after CHOW Tape (tape_model.js)">TAPE</label><select id="r-tape"><option value="">no tape</option></select><span class="note" id="r-tapenote">every stem through the same machine, so the layers still line up in the game</span></div>
         <details id="more"><summary>MORE — sound design · parts · extra pads · seed <span class="note" id="moresum"></span></summary>
           <div class="row"><label title="ambience beds under the music (up to two)">TEXTURE</label><select id="r-tex"></select><select id="r-tex2"></select>
             <span class="lb" title="risers / swells into a lift">FX</span><select id="r-fx"></select><span class="lb" title="one-shots on a lift">HIT</span><select id="r-hit"></select></div>
@@ -229,7 +230,7 @@
         <div class="row"><label>RECIPE</label><span class="chipset" id="rx-recipes"></span></div>
         <div class="row"><label></label><span class="note" id="rx-hint"></span></div>
         <div class="row" id="rx-withrow" style="display:none"><label>WITH</label><select id="rx-with" style="flex:1;min-width:220px"></select><span class="note">its theme</span></div>
-        <div class="row"><label>STYLE</label><select id="rx-style"><option value="">auto</option></select><select id="rx-key" title="NOTES recipes: the key the remix plays in"><option value="">key: auto (this track's home)</option></select>
+        <div class="row"><label>STYLE</label><select id="rx-style"><option value="">auto</option></select><select id="rx-key" title="NOTES recipes: the key the remix plays in"><option value="">key: auto (this track's home)</option></select><select id="rx-tape" title="the remix through a tape machine after it renders (tape_model.js)"><option value="">no tape</option></select>
           <label>TAKES</label><span class="chipset" id="rx-n"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button></span></div>
         <div class="row" style="margin-top:8px"><button class="go" id="rx-go">⤳ REMIX</button><span class="msg" id="rxmsg"></span></div>
       </div>
@@ -276,6 +277,7 @@
 <script src="sampler.js"></script>
 <script src="dx7_synth.js"></script>
 <script src="patch_bank.js"></script>
+<script src="tape_model.js"></script>
 <script src="daw_fx.js"></script>
 <script src="daw_perf.js"></script>
 <script src="smf.js"></script>
@@ -502,7 +504,8 @@ function renderBrief(t, b) {
 function reqText(r) {
   if (!r) return '';
   const a = [];
-  if (r.remix) { const x = r.remix; a.push('remix ' + x.recipe + ' of ' + ((x.from && (x.from.title + (x.from.take ? ' take ' + x.from.take : ''))) || '?') + (x.with ? ' with ' + x.with.title : '') + (x.style ? ' · style ' + x.style : '')); }
+  if (r.tape && typeof TapeModel !== 'undefined' && TapeModel.MACHINES[r.tape]) a.push('tape: ' + TapeModel.MACHINES[r.tape].name);
+  if (r.remix) { const x = r.remix; if (x.tape && typeof TapeModel !== 'undefined' && TapeModel.MACHINES[x.tape]) a.push('tape: ' + TapeModel.MACHINES[x.tape].name); a.push('remix ' + x.recipe + ' of ' + ((x.from && (x.from.title + (x.from.take ? ' take ' + x.from.take : ''))) || '?') + (x.with ? ' with ' + x.with.title : '') + (x.style ? ' · style ' + x.style : '')); }
   if (r.description) a.push('“' + r.description + '”');
   if (r.style) a.push('style ' + r.style); if (r.mode) a.push('mode ' + r.mode); if (r.form) a.push('form ' + r.form);
   if (r.energy) a.push('energy ' + (r.energy > 0 ? '+' : '') + r.energy); if (r.density !== undefined) a.push('density ' + r.density);
@@ -1022,15 +1025,15 @@ $('ensembles').innerHTML = `<button data-ens="" class="on" title="the style's ow
   `<button data-ens="${esc(id)}" class="dim" title="${esc(e.name + ' — ' + Object.entries(e.roles).map(([r, l]) => r + ': ' + l.join(', ')).join(' · ') + (e.drop ? ' · no ' + e.drop.join(' / ') : ''))}">${esc(e.short || e.name)}</button>`).join('');
 // QUICK MOODS: one tap fills the flavour of the panel (direction text + style / ensemble / energy / feel / harmony / sound)
 const QUICK = {
-  lonely_night: { name: 'lonely night', desc: 'lonely, slow and sparse, rain on the window at night', style: 'noir', ensemble: 'piano', energy: -0.2, feel: 'straight', harmony: 'sevenths' },
+  lonely_night: { name: 'lonely night', desc: 'lonely, slow and sparse, rain on the window at night', style: 'noir', ensemble: 'piano', energy: -0.2, feel: 'straight', harmony: 'sevenths', tape: 'reel_7' },
   chase: { name: 'chase', desc: 'urgent, driving, tense', style: 'motorik', ensemble: 'rock', energy: 0.4, harmony: 'open', fx: 'fx_riser' },
-  warm_memory: { name: 'warm memory', desc: 'warm, gentle, a memory from another room', style: 'lofi', ensemble: 'lofi', energy: -0.1, feel: 'swung', harmony: 'lush' },
+  warm_memory: { name: 'warm memory', desc: 'warm, gentle, a memory from another room', style: 'lofi', ensemble: 'lofi', energy: -0.1, feel: 'swung', harmony: 'lush', tape: 'cassette' },
   dread: { name: 'dread', desc: 'dread, ominous, sparse, something under the floor', style: 'dark_drone', ensemble: 'horror', energy: -0.15, harmony: 'open', hit: 'fx_sub_drop' },
   sacred: { name: 'sacred', desc: 'sacred, still, slow, warm', style: 'hymn', ensemble: 'choir', energy: -0.2, harmony: 'plain' },
   neon: { name: 'neon', desc: 'cool, shimmering, a neon night', style: 'synthwave', ensemble: 'synthwave', energy: 0.15, harmony: 'lush', textures: ['amb_city'] },
   small_town: { name: 'small town', desc: 'warm, rootsy, gentle, a porch at dusk', style: 'folk', ensemble: 'folk', energy: 0, harmony: 'plain', textures: ['amb_crickets'] },
-  dream: { name: 'dream', desc: 'dreamy, floating, ethereal, slow', style: 'ambient', ensemble: 'ambient', energy: -0.2, harmony: 'lush', prog: 'modal', fx: 'fx_reverse_swell' },
-  heist: { name: 'heist', desc: 'cool, smoky, sly', style: 'jazz', ensemble: 'jazz', energy: 0.1, feel: 'swung', harmony: 'sevenths' },
+  dream: { name: 'dream', desc: 'dreamy, floating, ethereal, slow', style: 'ambient', ensemble: 'ambient', energy: -0.2, harmony: 'lush', prog: 'modal', fx: 'fx_reverse_swell', tape: 'vhs' },
+  heist: { name: 'heist', desc: 'cool, smoky, sly', style: 'jazz', ensemble: 'jazz', energy: 0.1, feel: 'swung', harmony: 'sevenths', tape: 'studio_15' },
   machine: { name: 'machine', desc: 'cold, mechanical, driving', style: 'industrial', ensemble: 'horror', energy: 0.2, harmony: 'open', textures: ['drone_engine'] },
 };
 $('quick').innerHTML = Object.entries(QUICK).map(([id, q]) => `<button data-quick="${id}" class="dim" title="${esc(q.desc)}">${esc(q.name)}</button>`).join('') +
@@ -1048,6 +1051,7 @@ function setFlavour(f, label) {
   const tx = f.textures === 'none' ? ['none'] : f.textures || [];
   $('r-tex').value = tx[0] && selOk('r-tex', tx[0]) ? tx[0] : ''; $('r-tex2').value = tx[1] && selOk('r-tex2', tx[1]) ? tx[1] : '';
   $('r-fx').value = f.fx && selOk('r-fx', f.fx) ? f.fx : ''; $('r-hit').value = f.hit && selOk('r-hit', f.hit) ? f.hit : '';
+  $('r-tape').value = f.tape && selOk('r-tape', f.tape) ? f.tape : '';
   renderRegen();
   const o = regenForm(), set = [];
   if (o.description) set.push('direction “' + o.description + '”');
@@ -1059,6 +1063,7 @@ function setFlavour(f, label) {
   if (o.prog) set.push('progression ' + o.prog);
   if (o.textures) set.push('texture ' + (o.textures === 'none' ? 'none' : o.textures.join(' + ')));
   if (o.fx) set.push('fx ' + o.fx); if (o.hit) set.push('hit ' + o.hit);
+  if (o.tape) set.push('tape: ' + TapeModel.MACHINES[o.tape].name);
   $('quickmsg').textContent = label + ' → ' + (set.join(' · ') || 'everything auto');
   return o;
 }
@@ -1080,6 +1085,7 @@ function surprise(rnd = Math.random) {
     energy: Math.round((rnd() * 0.6 - 0.3) * 20) / 20, prog: rnd() < 0.35 ? pick(TempMaker.progFamilies().filter(x => x !== 'drone' || SeqGen.STYLES[style].bed)) : '' };
   const r = rnd(); if (r < 0.45) f.textures = [pick(amb)]; else if (r < 0.6) f.textures = 'none';
   if (rnd() < 0.4) f.fx = pick(fx); if (rnd() < 0.4) f.hit = pick(hit);
+  if (rnd() < 0.35) f.tape = pick(['studio_15', 'reel_7', 'cassette', 'cassette', 'worn_cassette', 'vhs', 'master_30']);
   document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = 'dim');
   return setFlavour(f, '🎲');
 }
@@ -1124,7 +1130,7 @@ $('instr').addEventListener('click', e => { const b = e.target.closest('[data-in
 $('resetregen').addEventListener('click', () => {
   Object.assign(RG, { n: 2, roles: ROLES.slice(), pads: 0, instruments: {}, ensemble: '', variety: '' });
   $('desc').value = ''; $('r-style').value = $('r-mode').value = $('r-form').value = ''; $('r-energy').value = 0; $('r-densauto').checked = true; $('r-lenmode').value = ''; $('r-loop').checked = false; $('r-seed').value = '';
-  for (const id of ['r-key', 'r-bpm', 'r-feel', 'r-harm', 'r-prog', 'r-tex', 'r-tex2', 'r-fx', 'r-hit']) $(id).value = '';
+  for (const id of ['r-key', 'r-bpm', 'r-feel', 'r-harm', 'r-prog', 'r-tex', 'r-tex2', 'r-fx', 'r-hit', 'r-tape']) $(id).value = '';
   $('quickmsg').textContent = ''; document.querySelectorAll('#quick [data-quick]').forEach(x => x.className = 'dim');
   renderRegen();
 });
@@ -1155,6 +1161,7 @@ function regenForm() {
   if (t1 === 'none') o.textures = 'none'; else if (t1) o.textures = t2 && t2 !== t1 ? [t1, t2] : [t1];
   if ($('r-fx').value) o.fx = $('r-fx').value;
   if ($('r-hit').value) o.hit = $('r-hit').value;
+  if ($('r-tape').value) o.tape = $('r-tape').value;
   return o;
 }
 // the settings a take was made with, for an identical take: the request + the mood it resolved to + its
@@ -1251,6 +1258,8 @@ async function runStudio() {
 // REMIX: takes for the selected (or ticked) track made from finished music (remix.js), queued on the same studio
 // ═══════════════════════════════════════════════════════════════════
 const RX = { n: 2, recipe: 'restyle', from: '', with: '', list: [] };
+// TAPE machines (tape_model.js) for MAKE TAKES and REMIX
+if (typeof TapeModel !== 'undefined') for (const id of ['r-tape', 'rx-tape']) for (const [mid, m] of Object.entries(TapeModel.MACHINES)) $(id).add(new Option('tape: ' + m.name, mid));
 Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('rx-style').add(new Option(s.name, id)));
 SeqGen.NOTE_NAMES.forEach((n, i) => $('rx-key').add(new Option('key: ' + n, String(i))));
 const rxKey = x => x.kind === 'take' ? 'take:' + x.dir : 'file:' + x.path;
@@ -1300,6 +1309,7 @@ function remixNow() {
   if (wth) rx.with = rxRef(wth);
   if ($('rx-style').value) rx.style = $('rx-style').value;
   if (R0.kind === 'notes' && $('rx-key').value !== '') rx.key = +$('rx-key').value;
+  if ($('rx-tape').value) rx.tape = $('rx-tape').value;
   requestRemix(ids, RX.n, rx);
 }
 $('rx-go').addEventListener('click', remixNow);

@@ -138,6 +138,7 @@
     </div>
     <h2>TAPE · the machine itself</h2>
     <div class="knobs">
+      <span>MACHINE</span><select id="machine" title="classic: the simple saturation + wow chain · a named machine: a physical tape model (magnetic hysteresis, head losses at its tape speed, wow &amp; flutter, wear — after CHOW Tape). With a machine, SAT drives the tape, WOW / FLUT move its transport and AGE wears it."><option value="">classic (simple)</option></select>
       <span>SAT</span><input type="range" id="sat" min="0" max="1" step="0.01" value="0.25">
       <span>WOW</span><input type="range" id="wow" min="0" max="1" step="0.01" value="0.15">
       <span>FLUT</span><input type="range" id="flut" min="0" max="1" step="0.01" value="0.1">
@@ -190,6 +191,7 @@
 <script src="fm1_firmwares.js"></script>
 <script src="midi_input.js"></script>
 <script src="audio_kit.js"></script>
+<script src="tape_model.js"></script>
 <script src="touch_controls.js"></script>
 <script>
 "use strict";
@@ -399,6 +401,7 @@ async function startAudio() {
   if (ctx) { if (ctx.state === 'suspended') await ctx.resume(); return; }
   ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: SR, latencyHint: 'interactive' });
   await AK.addWorklet(ctx, WORKLETS);
+  if (typeof TapeModel !== 'undefined') await TapeModel.prepare(ctx);
   tape = new AudioWorkletNode(ctx, 'mm-tape', {
     numberOfInputs: 1, numberOfOutputs: NT + 1, outputChannelCount: Array(NT + 1).fill(2),
     channelCount: 2, channelCountMode: 'explicit', channelInterpretation: 'speakers',
@@ -519,6 +522,7 @@ function applyMaster() {
   N.age.frequency.setTargetAtTime(20000 * Math.pow(2, -(+$('age').value) * 3.3), now, 0.05);
   const g = +$('glue').value; N.glue.threshold.setTargetAtTime(-6 - g * 24, now, 0.05); N.glue.ratio.setTargetAtTime(1 + g * 5, now, 0.05);
   N.mvol.gain.setTargetAtTime(+$('mvol').value, now, 0.03);
+  if (N.machine) N.machine.setParams({ drive: +$('sat').value, wow: +$('wow').value, flutter: +$('flut').value, degrade: +$('age').value });
   N.inGain.gain.setTargetAtTime(+$('ingain').value, now, 0.03);
   N.monitor.gain.setTargetAtTime($('monitor').checked ? 1 : 0, now, 0.03);
   const resample = $('insrc').value === 'resample';
@@ -528,6 +532,27 @@ function applyMaster() {
   shred.port.postMessage({ bar: beatFrames() * 4, rev: $('shrev').checked, rnd: $('shrnd').checked });
 }
 function applyAll() { for (let t = 0; t < NT; t++) applyTrack(t); applyMaster(); }
+// MACHINE: a named machine (tape_model.js) takes the place of sat → wow → age between the DJ filter and the rumble
+// filter; the knobs then drive it (SAT → drive, WOW / FLUT → its transport, AGE → degrade). The echo keeps its wow.
+if (typeof TapeModel !== 'undefined') for (const [id, m] of Object.entries(TapeModel.MACHINES)) $('machine').add(new Option(m.name, id));
+function setMachine(id, fromUser) {
+  if (!nodes) return;
+  const N = nodes, want = id && typeof TapeModel !== 'undefined' && TapeModel.MACHINES[id] ? id : '';
+  if ((N.machineId || '') === want) return;
+  try { N.mHP.disconnect(); } catch (e) {}
+  try { N.hissGain.disconnect(); } catch (e) {}
+  if (N.machine) { N.machine.stop(); N.machine = null; }
+  if (want) {
+    const p = TapeModel.machine(want);
+    try { N.machine = TapeModel.createNode(ctx, p); } catch (e) { N.machine = null; console.warn('tape machine:', e && e.message); }
+    if (fromUser && N.machine) { $('sat').value = p.drive; $('wow').value = p.wow; $('flut').value = p.flutter; $('age').value = p.degrade; }
+  }
+  if (N.machine) { N.mHP.connect(N.machine); N.machine.connect(N.rumble); N.hissGain.connect(N.rumble); }
+  else { N.mHP.connect(N.sat); N.hissGain.connect(N.age); }
+  N.machineId = N.machine ? want : '';
+  applyMaster();
+}
+$('machine').addEventListener('change', () => { setMachine($('machine').value, true); saveMetaSoon(); });
 ['mf', 'echomix', 'echofb', 'echotime', 'verbmix', 'verbsize', 'sat', 'wow', 'flut', 'hiss', 'age', 'glue', 'mvol', 'ingain', 'monitor', 'insrc', 'shrev', 'shrnd']
   .forEach(id => $(id).addEventListener(id === 'echotime' || id === 'verbsize' || id === 'insrc' || id.startsWith('sh') || id === 'monitor' ? 'change' : 'input', () => { applyMaster(); saveMetaSoon(); }));
 $('mf').addEventListener('dblclick', () => { $('mf').value = 0; applyMaster(); });
@@ -921,7 +946,7 @@ $('linkgame').addEventListener('click', linkGame);
 // ═══════════════════════════════════════════════════════════════════
 // Project persistence (IndexedDB)
 // ═══════════════════════════════════════════════════════════════════
-const META_IDS = ['bpm', 'bars', 'freesec', 'mode', 'mf', 'echomix', 'echotime', 'echofb', 'verbmix', 'verbsize', 'sat', 'wow', 'flut', 'hiss', 'age', 'glue', 'mvol', 'ingain', 'latms'];
+const META_IDS = ['bpm', 'bars', 'freesec', 'mode', 'mf', 'echomix', 'echotime', 'echofb', 'verbmix', 'verbsize', 'sat', 'wow', 'flut', 'hiss', 'age', 'glue', 'mvol', 'ingain', 'latms', 'machine'];
 let metaTimer = null, tapeTimer = null;
 function saveMetaSoon() { clearTimeout(metaTimer); metaTimer = setTimeout(saveMeta, 600); }
 function saveTapeSoon() { clearTimeout(tapeTimer); tapeTimer = setTimeout(saveTape, 1500); }
@@ -944,7 +969,7 @@ async function loadProject() {
   if (p && p.ui) {
     META_IDS.forEach(id => { if (p.ui[id] !== undefined) $(id).value = p.ui[id]; });
     (p.tracks || []).forEach((s, t) => { if (tracks[t]) Object.assign(tracks[t], s, { armed: false }); });
-    buildBento(); lengthChanged(); applyAll(); sendLat();
+    buildBento(); lengthChanged(); applyAll(); sendLat(); setMachine($('machine').value, false);
     tape.port.postMessage({ type: 'mode', mode: $('mode').value });
     tracks.forEach((s, t) => tape.port.postMessage({ type: 'fb', t, v: s.decay }));
   }

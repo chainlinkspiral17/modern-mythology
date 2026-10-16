@@ -27,6 +27,7 @@
 (function (root) {
   "use strict";
   const FS = () => (typeof ForgeSynth !== 'undefined' ? ForgeSynth : root.ForgeSynth);
+  const TMg = () => (typeof TapeModel !== 'undefined' ? TapeModel : root.TapeModel);      // tape_model.js (optional)
   const AKg = () => (typeof AK !== 'undefined' ? AK : root.AK);
   const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
   const isNum = v => typeof v === 'number' && isFinite(v);
@@ -102,10 +103,12 @@ registerProcessor('daw-duck', DawDuck);
       else await ctx.audioWorklet.addModule('data:text/javascript;base64,' + btoa(WORKLET));
       r.ok = true;
     })().catch(e => { console.warn('daw_fx worklet:', e && e.message); });
-    r.p = Promise.all([mine, F && F.prepareEffects ? F.prepareEffects(ctx) : null]).then(() => r.ok);
+    const T = TMg();
+    r.p = Promise.all([mine, F && F.prepareEffects ? F.prepareEffects(ctx) : null, T ? T.prepare(ctx).then(ok => { r.tape = ok; }) : null]).then(() => r.ok);
     return r.p;
   }
   const workletOk = ctx => !!(READY.get(ctx) || {}).ok;
+  const tapeOk = ctx => !!(READY.get(ctx) || {}).tape;
 
   // ── types ───────────────────────────────────────────────────────────
   // forge: the snap-in it wraps · only: restrict / relabel FORGE params · extra: DAW-side params
@@ -133,6 +136,10 @@ registerProcessor('daw-duck', DawDuck);
     flanger: { label: 'FLANGER', forge: 'flanger', auto: ['depth', 'fb', 'mix'] },
     width:   { label: 'WIDTH', forge: 'width', auto: ['width'] },
     trance:  { label: 'TRANCE GATE', forge: 'gate', auto: ['depth', 'mix'] },
+    // the physical tape model (tape_model.js — after Chowdhury's DAFx 2019 model, CHOW Tape's): hysteresis, head
+    // losses by speed, wow / flutter, degrade, chew. Needs its worklet: an offline render without worklets passes it by.
+    machine: { label: 'TAPE MACHINE', own: () => { const T = TMg(); if (!T) return null; const o = Object.assign({}, T.SPEC); delete o.seed; o.seed = Object.assign({}, T.SPEC.seed, { hidden: true }); return o; },
+               auto: ['drive', 'sat', 'bias', 'tone', 'wow', 'flutter', 'degrade', 'chew', 'mix'] },
   };
   const PRESETS = {
     eq: [['flat', {}], ['low cut', { lowcut: 120 }], ['air', { high: 4, highf: 8000 }], ['warm', { low: 3, high: -3 }], ['scoop', { mid: -5, midf: 800 }], ['telephone', { lowcut: 400, highcut: 3200, mid: 6, midf: 1500 }]],
@@ -146,6 +153,10 @@ registerProcessor('daw-duck', DawDuck);
     tape: [['cassette', { sat: 0.35, wow: 0.3, flutter: 0.25, age: 0.4, hiss: 0.15 }], ['warped', { wow: 0.9, flutter: 0.4, age: 0.5 }], ['clean deck', { sat: 0.2, wow: 0.08, flutter: 0.05, age: 0.1, hiss: 0 }]],
     gate: [['tight', { thresh: -30, release: 0.05 }], ['gentle', { thresh: -45, range: -20, release: 0.25 }]],
   };
+  const presetsOf = type => {
+    if (type === 'machine') { const T = TMg(); return T ? Object.values(T.MACHINES).map(m => [m.name, m.params]) : []; }
+    return PRESETS[type] || [];
+  };
   let SPECS = null;
   function specs() {
     if (SPECS) return SPECS;
@@ -153,7 +164,7 @@ registerProcessor('daw-duck', DawDuck);
     const out = {};
     for (const [id, d] of Object.entries(DEF)) {
       let sp = null;
-      if (d.own) sp = Object.assign({}, d.own);
+      if (d.own) { const own = typeof d.own === 'function' ? d.own() : d.own; if (own) sp = Object.assign({}, own); }
       else if (fx[d.forge]) {
         sp = Object.assign({}, fx[d.forge].params, d.only || {}, d.extra || {});
         if (d.order) { const o = {}; for (const k of d.order) if (sp[k]) o[k] = sp[k]; for (const k in sp) if (!o[k]) o[k] = sp[k]; sp = o; }
@@ -165,7 +176,7 @@ registerProcessor('daw-duck', DawDuck);
   }
   const spec = type => specs()[type] || null;
   function normField(v, sp) {
-    if (sp.opts) return sp.opts.includes(v) ? v : sp.def;
+    if (sp.opts) return sp.opts.includes(v) ? v : (v !== '' && v !== null && sp.opts.includes(+v) ? +v : sp.def);   // numeric choices (tape speed) come back from a <select> as text
     if (sp.bool) return v === undefined || v === null ? sp.def : !!v;
     if (sp.pattern || sp.str) return typeof v === 'string' ? v : sp.def;
     let x = isNum(v) ? v : (typeof v === 'string' && v !== '' && isFinite(+v) ? +v : sp.def);
@@ -205,6 +216,22 @@ registerProcessor('daw-duck', DawDuck);
     let bpm = isNum(opts.bpm) ? opts.bpm : 120;
     Object.defineProperty(unit, 'bpm', { get: () => bpm, set: v => { if (isNum(v)) { bpm = v; if (unit._fx) unit._fx.bpm = v; } } });
     const at = when => (when === null ? null : Math.max(ctx.currentTime, isNum(when) ? when : ctx.currentTime));
+
+    if (type === 'machine') {
+      let node = null; const T = TMg();
+      if (T && tapeOk(ctx)) { try { node = T.createNode(ctx, p); } catch (e) { node = null; } }
+      if (node) { input.connect(node); node.connect(output); } else input.connect(output);    // no worklet → pass through
+      unit.set = (k, v, when) => {
+        if (!(k in sp)) return false;
+        p[k] = normField(v, sp[k]);
+        if (!node) return true;
+        const prm = node.parameters.get(k);
+        if (prm) smooth(prm, p[k], at(when)); else node.port.postMessage({ params: { [k]: p[k] } });
+        return true;
+      };
+      unit.dispose = () => { try { if (node) node.stop(); input.disconnect(); output.disconnect(); } catch (e) {} };
+      return unit;
+    }
 
     if (type === 'gate') {
       let node = null;
@@ -274,7 +301,8 @@ registerProcessor('daw-duck', DawDuck);
     label: type => (DEF[type] || {}).label || type,
     spec, defaults, normParams, normField, toValue, toNorm,
     auto: type => ((DEF[type] || {}).auto || []).slice(),
-    presets: type => (PRESETS[type] || []).map(([name, params]) => ({ name, params })),
+    presets: type => presetsOf(type).map(([name, params]) => ({ name, params })),
+    tapeOk,
   };
   root.DawFX = DawFX;
 })(typeof window !== 'undefined' ? window : globalThis);

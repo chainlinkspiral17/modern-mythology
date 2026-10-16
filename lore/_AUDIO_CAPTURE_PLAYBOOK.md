@@ -1171,6 +1171,35 @@ context keeps running into a fake sink, and the meters still move.
   style's own extensions. Half-time on an already-slow style bottoms
   out at 40 BPM.
 
+### 2026-10-16 — TAPE MACHINE: a physical tape model after CHOW Tape (tape_model.js)
+
+- "incorporate some chow tools, tape primarily": ChowDSP's plugins are native (VST/AU/CLAP, JUCE) and
+  CHOW Tape's code is GPL-3 — neither runs in our file:// browser tools, and copying it would make the tools
+  GPL. So tape_model.js is our own implementation of the PUBLISHED model (Chowdhury, "Real-time Physical
+  Modelling for Analog Tape Machines", DAFx 2019), with CHOW Tape's sections and order: input · tone
+  (pre-emphasis tilt, undone after) · compression · hysteresis (Jiles–Atherton, RK4 / RK2 at 2×) · loss
+  (spacing / thickness / gap at a tape speed, a linear-phase FIR + head bump) · wow & flutter (variance,
+  drift) · degrade · chew · output · mix. Credit the paper in docs; never paste plugin code in.
+- One DSP core as a SOURCE STRING: `new Function(src)` for plain JS (offline, REMIX, node tests) and the same
+  text inside the 'mm-tape-model' worklet. Processing in 128-frame blocks in both makes them sample-identical
+  (the browser test checks worklet = JS within 1e-4). Every random draw comes from a seeded mulberry32 — the
+  worklet has no seeded Math.random, and offline renders / ⟳ AGAIN must repeat.
+- Calibration that mattered: drive 0.5 at −10 dBFS ≈ 3 % THD (H3 −31 dB) — the first mapping gave 7 %, far hotter
+  than tape at nominal level. Small-signal gain is normalised to 1 by running a quiet 1 kHz tone through a fresh
+  state at every parameter change. The symmetric loop gives odd harmonics only (true to the model; real decks add
+  a little even from asymmetry). Thickness loss at 1⅞ ips is brutal with "real" µm values — the cassette preset
+  uses thin-tape numbers or it sits −11 dB at 5 kHz.
+- Where it is: DAW insert TAPE MACHINE (DawFX 'machine', 9 machine presets; needs its worklet, so a strip with one
+  keeps renders unchunked like the gate) · TAPE STUDIO's MACHINE select (replaces sat → wow → age; the knobs drive
+  it) · MAKE TAKES / REMIX "TAPE" (after the render, BEFORE the master: every stem through the same machine + seed
+  → one transport, stems still sum to the mix; hiss divided by the stem count since the seeded hiss is coherent) ·
+  REMIX's TAPE recipe (slowed cleanly, then worn_cassette).
+- Seamless loops through a stateful machine: run three passes, keep the middle, crossfade its first 60 ms from
+  the third pass's head (what actually follows the middle's tail). The wrap step then matches the signal's own.
+- Cost: ≈ 7 % of real time for stereo RK4 in node; fine for a bus, heavy on every track of a live Deck mix.
+- Nobody has listened yet. Unknowns by ear: whether bias reads as "under-biased grit", the head-bump size,
+  and chew's character (ours is a dull dip + grind, not CHOW's exact one).
+
 ## TEMPLATE
 
 ```

@@ -356,6 +356,7 @@
 <script src="sampler.js"></script>
 <script src="dx7_synth.js"></script>
 <script src="patch_bank.js"></script>
+<script src="tape_model.js"></script>
 <script src="daw_fx.js"></script>
 <script src="daw_perf.js"></script>
 <script src="daw_engine.js"></script>
@@ -1772,7 +1773,7 @@ function paramRow(attr, k, sp, v) {
 }
 function fxPanel(f) {
   const sp = DawFX.spec(f.type), np = DawFX.normParams(f.type, f.params), pre = DawFX.presets(f.type);
-  return `<div class="kv3">${Object.keys(sp).map(k => paramRow('data-p', k, sp[k], np[k])).join('')}</div>` +
+  return `<div class="kv3">${Object.keys(sp).filter(k => !sp[k].hidden).map(k => paramRow('data-p', k, sp[k], np[k])).join('')}</div>` +
     (pre.length ? `<div class="row"><select data-preset="1"><option value="">preset…</option>${pre.map((x, i) => `<option value="${i}">${esc(x.name)}</option>`).join('')}</select><button class="dim" data-f="reset" title="back to the defaults">INIT</button></div>` : '');
 }
 function renderMixer() {

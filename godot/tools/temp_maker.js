@@ -379,6 +379,8 @@
     else if (Array.isArray(o.textures)) { const amb = soundChoices('ambient'), x = [...new Set(o.textures.map(String))].filter(id => amb.has(id)).slice(0, 2); if (x.length) r.textures = x; }
     for (const k of ['fx', 'hit']) { if (o[k] === 'none') r[k] = 'none'; else if (o[k] && soundChoices('fx').has(String(o[k]))) r[k] = String(o[k]); }
     if (o.seed !== undefined && o.seed !== null && o.seed !== '' && Number.isFinite(+o.seed)) r.seed = Math.round(+o.seed);
+    // TAPE: the whole take through a tape machine (tape_model.js) after rendering
+    if (o.tape && TMg() && TMg().MACHINES[o.tape]) r.tape = o.tape;
     return r;
   }
   // the mood a take is composed with: brief (+ energy nudge) → typed direction → explicit overrides
@@ -628,19 +630,26 @@
   // render the project's song (or its loop, folded seamless): with stems, the mastered mix is their sum and every stem
   // gets the same gain and limiter curve → they still add up to the mix exactly, so the game's layered version is as
   // loud as the stereo one. Throws on failure (never hands back an older render).
-  async function render(E, { loop = false, stems = true, master = true, lufs = -14, onProgress } = {}) {
+  // tape: { id (a TapeModel.MACHINES id), seed } — every stem through that machine (same transport) before the master
+  const TMg = () => root.TapeModel || null;
+  const tapeParams = tape => { const T = TMg(); const p = tape && T && T.machine(tape.id); return p ? Object.assign(p, { seed: (+tape.seed >>> 0) || 1 }) : null; };
+  async function render(E, { loop = false, stems = true, master = true, lufs = -14, onProgress, tape = null } = {}) {
     const P = E.project; if (!P || !P.tracks.length) throw new Error('nothing to render');
     const from = loop ? P.loop.a : 0, to = loop ? P.loop.b : E.songBars();
     const AK = AKg();
     if (stems && !E.canRenderOffline()) throw new Error('stems need every track on FORGE / KIT / PATCH BANK (emulator and hardware tracks render in real time only)');
     if (stems) {
       const parts = await E.renderStems({ groups: stemGroups(P), fromBar: from, toBar: to, loop, onProgress });
+      const tp = tapeParams(tape);
+      if (tp) { if (onProgress) onProgress({ phase: 'tape', id: tape.id }); TMg().processStems(parts.map(p => p.channels), parts[0].sampleRate, tp, { loop }).forEach((c, i) => { parts[i].channels = c; }); }
       const sum = sumChannels(parts), sr = parts[0].sampleRate;
       let mixCh = sum, stats = null, stemCh = parts.map(p => p.channels);
       if (master) { stats = await AK.dsp.master(sum, sr, { lufs, truePeak: -1.5, stems: stemCh }); mixCh = stats.channels; stemCh = stats.stems; }
       return Object.assign({}, parts[0], { channels: mixCh, mastered: stats, stems: parts.map((p, i) => Object.assign(p, { channels: stemCh[i] })) });
     }
     const r = await E.bounce({ fromBar: from, toBar: to, loop });
+    const tp = tapeParams(tape);
+    if (tp) r.channels = (loop ? TMg().processLoop : TMg().process)(r.channels, r.sampleRate, tp);
     if (!master) return Object.assign(r, { stems: null });
     const m = await AK.dsp.master(r.channels, r.sampleRate, { lufs, truePeak: -1.5 });
     return Object.assign({}, r, { channels: m.channels, mastered: m, stems: null });
@@ -743,8 +752,8 @@
           // stems: as asked; else the page's default (ctx.stems), or when the brief's scenes swing in intensity (m.stems)
           const stems = (req.stems ?? (ctx.stems === undefined ? true : !!(ctx.stems || m.stems))) && E.canRenderOffline();
           // an asked-for length renders folded (the tail wraps onto the head): exactly `bars` long and seamless
-          const r = await render(E, { loop: !!o.length, stems, master: ctx.master !== false, lufs: ctx.lufs ?? -14,
-            onProgress: p => p && p.phase === 'stem' && say('render', 'rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
+          const r = await render(E, { loop: !!o.length, stems, master: ctx.master !== false, lufs: ctx.lufs ?? -14, tape: o.tape ? { id: o.tape, seed: song.seed } : null,
+            onProgress: p => p && (p.phase === 'stem' ? say('render', 'rendering stems: ' + p.done + ' of ' + p.total + ' done…') : p.phase === 'tape' && say('render', 'through the tape machine…')) });
           const credits = await E.credits();
           const sec = r.channels[0].length / r.sampleRate;
           const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+song.bpm).toFixed(4), density: song.density, seed: song.seed,
@@ -752,7 +761,7 @@
             voices: m.voices || undefined, motifSpec: m.motifSpec || undefined, shape: m.shape || undefined, scored: m.scored || undefined, vocab: song.vocab,
             // what this take got from the panel's choices (absent when nothing was asked) — ⟳ AGAIN / loadTake rebuild from it
             ensemble: m.ensemble || undefined, kit: m.kit || undefined, drop: m.drop || undefined, feel: m.feel || undefined, harmony: m.harmony || undefined,
-            ext: m.ext || undefined, prog: m.progFamily || undefined, variety: o.variety || undefined };
+            ext: m.ext || undefined, prog: m.progFamily || undefined, variety: o.variety || undefined, tape: o.tape || undefined };
           const entry = { id: t.id, style: song.style, mode: song.mode, bpm: mood.bpm, sec: +sec.toFixed(3), bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, seed: song.seed };
           say('write', 'saving…');
           if (review) {
@@ -810,7 +819,8 @@
     if (folded) P.loop = { on: keepLoop.on, a: 0, b: bars };
     let r;
     try {
-      r = await render(E, { loop: folded, stems: E.canRenderOffline(), master: ctx.master !== false, lufs: ctx.lufs ?? -14,
+      const tp = from.request && from.request.tape ? { id: from.request.tape, seed: (from.mood || {}).seed } : null;      // the take's TAPE stays on the edit
+      r = await render(E, { loop: folded, stems: E.canRenderOffline(), master: ctx.master !== false, lufs: ctx.lufs ?? -14, tape: tp,
         onProgress: p => p && p.phase === 'stem' && say('rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
     } finally { P.loop = keepLoop; }
     say('saving…');

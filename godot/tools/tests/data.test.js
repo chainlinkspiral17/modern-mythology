@@ -292,6 +292,42 @@ suite('data · registries, composer, MIDI files', async t => {
     const ch = RX.chopLayer([x, x], sr, { bpm: 90, phase: 0 }, 8, SG.rng(5), 0.6);
     t.ok(ch.channels[0].length === 8 * Math.round(240 / 90 * sr) && ch.srcBars.length === 8 && ch.channels[0].some(v => v !== 0), 'chop: 8 bars');
   });
+  await t.test('tape machine: hysteresis harmonics grow with drive, unity small-signal gain, losses follow tape speed, wow moves pitch', async () => {
+    const TM = require(path.join(TOOLS, 'tape_model.js')), sr = 48000;
+    const sine = (f, amp, sec) => { const x = new Float32Array(Math.round(sec * sr)); for (let i = 0; i < x.length; i++) x[i] = amp * Math.sin(2 * Math.PI * f * i / sr); return x; };
+    const harm = (y, f, h) => { const N = sr / 2, st = y.length - N; let re = 0, im = 0; for (let i = 0; i < N; i++) { re += y[st + i] * Math.cos(2 * Math.PI * f * h * i / sr); im += y[st + i] * Math.sin(2 * Math.PI * f * h * i / sr); } return 2 * Math.hypot(re, im) / N; };
+    const flat = { wow: 0, flutter: 0, drift: 0, degrade: 0, chew: 0, loss: 0, bump: 0 };
+    const thd = (amp, drive) => { const [y] = TM.process([sine(200, amp, 1)], sr, Object.assign({ drive }, flat)); return { g: harm(y, 200, 1) / amp, h3: 20 * Math.log10(harm(y, 200, 3) / harm(y, 200, 1)), h2: 20 * Math.log10(harm(y, 200, 2) / harm(y, 200, 1) + 1e-12) }; };
+    const q = thd(0.01, 0.5), lo = thd(0.3, 0.2), mid = thd(0.3, 0.5), hi = thd(0.3, 0.9);
+    t.ok(Math.abs(q.g - 1) < 0.05, 'small-signal gain ' + q.g.toFixed(3));
+    t.ok(lo.h3 < mid.h3 && mid.h3 < hi.h3 && mid.h3 > -40 && mid.h3 < -20 && hi.h3 > -22, 'H3 rises with drive: ' + [lo.h3, mid.h3, hi.h3].map(x => x.toFixed(0)).join(' / ') + ' dB');
+    t.ok(mid.h2 < -60, 'symmetric loop: no even harmonics (' + mid.h2.toFixed(0) + ' dB)');
+    const at10k = id => TM.lossResponse(TM.machine(id), sr, [10000])[0];
+    t.ok(at10k('master_30') > at10k('reel_7') && at10k('reel_7') > at10k('cassette') && at10k('cassette') > at10k('dictaphone'), 'slower / worse tape is darker at 10 kHz: ' + ['master_30', 'reel_7', 'cassette', 'dictaphone'].map(at10k).map(x => x.toFixed(1)).join(' > '));
+    t.ok(Math.abs(TM.lossResponse(TM.machine('cassette'), sr, [100])[0]) < 0.5, 'lows untouched by the head losses');
+    const dev = wow => { const [y] = TM.process([sine(1000, 0.1, 4)], sr, Object.assign({}, flat, { loss: 0, wow, drive: 0.3 })); const zc = []; for (let i = 1; i < y.length; i++) if (y[i - 1] < 0 && y[i] >= 0) zc.push(i - y[i] / (y[i] - y[i - 1])); const fs = []; for (let i = 501; i < zc.length; i++) fs.push(sr / (zc[i] - zc[i - 1])); return Math.max(...fs) - Math.min(...fs); };
+    const d1 = dev(0.25), d2 = dev(0.75);
+    t.ok(d1 > 0.3 && d2 > 4 * d1, 'wow pitch swing ' + d1.toFixed(2) + ' Hz → ' + d2.toFixed(2) + ' Hz');
+  });
+  await t.test('tape machine: seeded, safe under abuse, seamless loops, stems through one transport', async () => {
+    const TM = require(path.join(TOOLS, 'tape_model.js')), sr = 48000, R = require(path.join(TOOLS, 'seqgen.js')).rng(9);
+    const x = new Float32Array(sr * 2).map((_, i) => 0.5 * Math.sin(i * 0.03) + 0.2 * (R() - 0.5));
+    const m = Object.assign(TM.machine('chewed'), { seed: 7 });
+    const a = TM.process([x, x], sr, m), b = TM.process([x, x], sr, m), c = TM.process([x, x], sr, Object.assign({}, m, { seed: 8 }));
+    t.ok(a[0].every((v, i) => v === b[0][i]) && a[0].some((v, i) => v !== c[0][i]), 'same seed → same tape; another seed → another');
+    const wild = new Float32Array(sr).map(() => (R() - 0.5) * 20);
+    const w = TM.process([wild, wild], sr, { drive: 1, sat: 1, bias: 0, in: 24, chew: 1, chewFreq: 1, degrade: 1, wow: 1, flutter: 1 });
+    t.ok(w.every(ch => ch.every(Number.isFinite)) && Math.max(...w[0].map(Math.abs)) < 20, 'finite and bounded when slammed');
+    // a loop: the wrap continues as smoothly as the rest of the signal
+    const L = sr, loop = new Float32Array(L).map((_, i) => 0.4 * Math.sin(2 * Math.PI * 110 * i / L * Math.round(L / sr * 1)));
+    const lp = TM.processLoop([loop, loop], sr, TM.machine('cassette'));
+    const d = lp[0], jumps = []; for (let i = 1; i < d.length; i++) jumps.push(Math.abs(d[i] - d[i - 1]));
+    const wrap = Math.abs(d[0] - d[d.length - 1]), typical = jumps.sort((p, q) => p - q)[Math.floor(jumps.length * 0.99)];
+    t.ok(lp[0].length === L && wrap <= typical * 1.5, 'loop wrap step ' + wrap.toFixed(4) + ' vs 99th-percentile step ' + typical.toFixed(4));
+    // stems: identical stems come out identical (one transport); hiss is shared out
+    const st = TM.processStems([[x, x], [x, x]], sr, Object.assign(TM.machine('worn_cassette'), { seed: 3 }));
+    t.ok(st[0][0].every((v, i) => v === st[1][0][i]), 'two stems, one machine: sample-identical');
+  });
   await t.test('MIDI file write → read round trip (incl. same-pitch overlaps)', async () => {
     const notes = [{ t: 0, d: 96, n: 60, v: 0.8 }, { t: 48, d: 96, n: 60, v: 0.5 }, { t: 96, d: 48, n: 64, v: 1 }];
     const back = SMF.read(SMF.write([{ name: 'x', channel: 10, notes }], { ppq: 96, bpm: 123 }));

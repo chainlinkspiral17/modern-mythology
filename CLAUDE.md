@@ -44,7 +44,8 @@ touching code:
    the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,
    the AUDIO DIRECTOR (`audio_director.html`: make, review / approve / reject
    temp takes staged in `assets/audio/review/`; both pages make takes through `temp_maker.js`; REMIX makes takes
-   from finished music through `remix.js`), the shared `audio_kit.js`, the vendored
+   from finished music through `remix.js`), the TAPE MACHINE physical tape model (`tape_model.js`, after
+   CHOW Tape's published model — our own code, never the GPL plugin's), the shared `audio_kit.js`, the vendored
    Ogg Vorbis encoder (`godot/tools/vendor/oggvorbis/`), and how audio reaches the game
    (recordings: `.wav` next to a catalog track's `src`; temp music: small Ogg Vorbis
    `<base>.temp.ogg` + `.stems/*.ogg` + `.stems.json`; never hand-edit `music_catalog.json`).
