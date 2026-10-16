@@ -715,6 +715,15 @@ I don't value your company because you think yourself better than me. One look t
 
 You think this world is so easy, the glow of your skin, the light behind your eyes. You think you've seen it all, the assurance and way you carry yourself. People like me exist to make you sweat and fear and fuck and weep for the future. You need me like you need to sleep at night. I will gnaw at you until you use me up and make me go away forever. I am the boogeyman beautiful. You want me in you and you
 
+<!-- p.133 -->
+don't know why.
+
+My throat hurts and I want a drink to make it burn softer. I want a smoke to see you by. I want a touch to know your scent and brush my face rough against the softness of your hair. You tremble like a little boy at the mercy of his fathers, you pray like a good little girl. This is the simplicity of who I am, why you came all the way out here to know all about me.
+
+My handshake is firm, I've invited you in.
+
+We can stand on this porch for hours or we can go on inside.
+
 :::expansion
 **[expansion E3 — NEW WRITING (Claude draft for Andy's review) · fills the empty chapter seven of Small Wood Volumes]**
 *In 2006 Andy set chapter seven aside for a downloadable graphic adventure, SCUMM, which never shipped (blog, p.391). This draft fills the slot with pages from Dickens Dean's high school dream journal, spring 1994. It records the recurring nightmare that grew into SCUMM and the night he names the slow stick, which later becomes the technology behind Oneironautics Inc. It works as a sneak preview of the SCUMM volume and sets it up.*
@@ -959,15 +968,6 @@ SCUMM
 
 *— end of chapter seven —*
 :::
-
-<!-- p.133 -->
-don't know why.
-
-My throat hurts and I want a drink to make it burn softer. I want a smoke to see you by. I want a touch to know your scent and brush my face rough against the softness of your hair. You tremble like a little boy at the mercy of his fathers, you pray like a good little girl. This is the simplicity of who I am, why you came all the way out here to know all about me.
-
-My handshake is firm, I've invited you in.
-
-We can stand on this porch for hours or we can go on inside.
 
 viii. stories within stories
 

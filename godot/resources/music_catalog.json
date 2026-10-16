@@ -343,10 +343,7 @@
    "tobor",
    "antonio"
   ],
-  "chapters": [
-   "vol3_the_choice",
-   "vol3_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol3_antonio_theme",
@@ -375,9 +372,7 @@
   "chars": [
    "antonio"
   ],
-  "chapters": [
-   "vol3_the_choice"
-  ]
+  "chapters": []
  },
  {
   "id": "vol3_milestone_choice",
@@ -390,9 +385,7 @@
    "type": "key",
    "key": "milestone:vol3_choice"
   },
-  "chapters": [
-   "vol3_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol3_tobor_theme",
@@ -422,10 +415,7 @@
    "nicola",
    "dante"
   ],
-  "chapters": [
-   "vol4_standoff",
-   "vol4_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol4_dante_theme",
@@ -452,9 +442,7 @@
    "type": "key",
    "key": "milestone:vol4_standoff"
   },
-  "chapters": [
-   "vol4_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol4_nicola_theme",
@@ -484,9 +472,7 @@
    "nicola",
    "dante"
   ],
-  "chapters": [
-   "vol4_standoff"
-  ]
+  "chapters": []
  },
  {
   "id": "vol5_alberto_theme",

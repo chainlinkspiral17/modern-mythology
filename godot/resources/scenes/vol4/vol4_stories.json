@@ -1,0 +1,155 @@
+{
+  "id": "vol4_stories",
+  "vol": 4,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Stories, stapled",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "choice",
+      "prompt": "A stack of stories, stapled at the corner. Pick one.",
+      "opts": [
+        {
+          "text": "betterment",
+          "scene": "vol4_story_betterment_a"
+        },
+        {
+          "text": "all over town",
+          "scene": "vol4_story_all_over_town"
+        },
+        {
+          "text": "jack of suede",
+          "scene": "vol4_story_jack_of_suede"
+        },
+        {
+          "text": "angry fog",
+          "scene": "vol4_story_angry_fog"
+        },
+        {
+          "text": "heavy breathing",
+          "scene": "vol4_story_heavy_breathing"
+        },
+        {
+          "text": "ourobouros",
+          "scene": "vol4_story_ourobouros"
+        },
+        {
+          "text": "what sort of",
+          "scene": "vol4_story_what_sort_of"
+        },
+        {
+          "text": "voices in a crowded room",
+          "scene": "vol4_story_voices_in_a_crowded_room"
+        },
+        {
+          "text": "looking forward most",
+          "scene": "vol4_story_looking_forward_most"
+        },
+        {
+          "text": "the wasted sentiment",
+          "scene": "vol4_story_the_wasted_sentiment"
+        },
+        {
+          "text": "seem",
+          "scene": "vol4_story_seem"
+        },
+        {
+          "text": "209",
+          "scene": "vol4_story_209"
+        },
+        {
+          "text": "chimes",
+          "scene": "vol4_story_chimes"
+        },
+        {
+          "text": "hit a wall",
+          "scene": "vol4_story_hit_a_wall"
+        },
+        {
+          "text": "i. paper cuts and the star key",
+          "scene": "vol4_story_paper_cuts"
+        },
+        {
+          "text": "nothing doing",
+          "scene": "vol4_story_nothing_doing"
+        },
+        {
+          "text": "liquid pour",
+          "scene": "vol4_story_liquid_pour"
+        },
+        {
+          "text": "wit's end",
+          "scene": "vol4_story_wits_end"
+        },
+        {
+          "text": "workinp",
+          "scene": "vol4_story_workinp"
+        },
+        {
+          "text": "cracked and broken",
+          "scene": "vol4_story_cracked_and_broken"
+        },
+        {
+          "text": "everyday in november",
+          "scene": "vol4_story_everyday_in_november"
+        },
+        {
+          "text": "agwat",
+          "scene": "vol4_story_agwat"
+        },
+        {
+          "text": "iii. static electric",
+          "scene": "vol4_story_static_electric"
+        },
+        {
+          "text": "ii. map of the city",
+          "scene": "vol4_story_map_of_the_city"
+        },
+        {
+          "text": "rescue ranger",
+          "scene": "vol4_story_rescue_ranger"
+        },
+        {
+          "text": "SCUMM",
+          "scene": "vol4_story_scumm"
+        },
+        {
+          "text": "ps.",
+          "scene": "vol4_story_ps"
+        },
+        {
+          "text": "caltech",
+          "scene": "vol4_story_caltech"
+        },
+        {
+          "text": "2-Player Sit-Down",
+          "scene": "vol4_story_two_player"
+        },
+        {
+          "text": "in/flux",
+          "scene": "vol4_story_influx_a"
+        },
+        {
+          "text": "back to the desk",
+          "scene": "vol4_hub"
+        }
+      ]
+    }
+  ]
+}

@@ -80,6 +80,11 @@ for v, (fname, title, register, (a, b)) in VOLS.items():
     HY = re.compile(r"([A-Za-z]+)-\s*\n\n<!-- p\.(\d+)( ✓)? -->\n(> \[\[RECOVERED[^\n]*\n\n)?([a-z][A-Za-z']*)([.,;:!?\"]*)")
     joined = HY.sub(lambda m: m.group(1) + m.group(5) + m.group(6) + "\n\n<!-- p." + m.group(2) + (m.group(3) or "") + " -->\n" + (m.group(4) or ""), joined)
     for a_, b_ in [("Nathanielress", "mattress"), ("Nathanieler", "matter")]: joined = joined.replace(a_, b_)
+    # E3_MOVE: chapter seven belongs right before 'viii. stories within stories', not mid-sentence after p.132
+    m = re.search(r'\n:::expansion\n\*\*\[expansion E3.*?\n:::\n', joined, re.S)
+    if m:
+        blk = m.group(0); joined = joined.replace(blk, '\n')
+        joined = re.sub(r'(\nviii\. stories within stories)', lambda mm: blk + mm.group(1), joined, count=1)
     out = '\n'.join(head) + joined
     out = re.sub(r'\n{3,}', '\n\n', out)
     open(f'final/{fname}', 'w').write(out)

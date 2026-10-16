@@ -344,6 +344,19 @@ And they are. The webpage for the House of Glass is already up, the interlinked 
 It certainly doesn't help that as of this very moment, the (spoiler) written finale is a musical number filled with such choice moments as our fresh out of high school sexual suicide diva masturbating with a pen camera while all the characters watch and come together as one uber-art-organism thanks to the magical black man powers of bass. I mean goddamn. We're going for broke here, we're letting it all hang out and fall where it may.
 
 <!-- p.200 -->
+> [[RECOVERED from page image]]
+
+Somehow all the people associated look at us and think we know what we're doing.
+
+There are moments you never forget. When the book we walk through comes to a new chapter and the words that begin this great transition hover vibrato in the air.
+
+Everything changed when we saw the film. I hesitate to even call it that. I lead you gently into that night.
+
+I was in town, the start of the movie making weekend that would last a hollow eternity. It was a Friday afternoon and there was nothing for Justin and I to do except socialize and reacquaint. We wandered streets in the early evening, window drop shopping independent record stores, trailblazing Powells book store, being observed out in the open laughing and celebrating early that rush of impending weekend freedom rubbing it in eager curious noses that looked up from lack of passion duties.
+
+She found me, the young woman with dreadlocked hair all the colors of fruity pebbles. Practically assaulted me in the street, thought she knew me from somewhere, called me by a stranger's name which I remember to be Bran. She was certain I was him and grew all the more empirical the longer we spoke between concrete limbo. She thought I was fucking with her and went back and forth between upset and excited. I showed her my driver's license to which she said, I'll be damned and changed her tune, suddenly now wanting to hang with us, asked if we had a problem with that. She kept looking at me, eying me, squinting effectively unnervingly. Justin, to stop the honking, embraced the girl completely, her name April. She lurched over and included me in the hugging tight. I was big and awkward, consciously scouting for my implied doppleganger to appear out of nowhere. The three of us in the road, just like that.
+
+She took us by hand and led us through alleys we'd never considered but understand she was not an alley person.
 
 <!-- p.201 -->
 I don't want to give the impression that she was from the street that she knew the lingo because she was entirely like us and we were all tourists. She used four dollar words because she was a student and they felt good on her tongue. Pierced not once but twice. We shared this new world together for a day the way strangers do when they familiarize themselves with comfortable otherness. She wanted to know all about us, all about our movie, because she loved movies. In fact, she explains in bold, she got an invite to an invitation only movie screening that very evening and this she kept repeating.

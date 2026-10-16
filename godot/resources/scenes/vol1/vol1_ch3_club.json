@@ -129,7 +129,8 @@
       "text": "— End of Act One, Part II —"
     },
     {
-      "t": "end"
+      "t": "jump",
+      "scene": "vol1_ch4_dream_states"
     }
   ]
 }

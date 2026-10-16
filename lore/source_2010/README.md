@@ -41,3 +41,20 @@ New material sits only inside `:::expansion` fences. Each fence names its source
 - **E5** (after p.35, optional): *Land of Milk & Honey* (2018), an echo of the Triumvirate's declaration.
 
 Not used: the *Egretta* D. Nathaniel Dean bio (Andy: not canon); *paper cuts & the star key* (already in the book at pp 368–370, now recovered); *Egretta*'s Alan Wake framing (third-party IP); personal pieces (*You Don't Get to Have Nice Things*, the *da convo* chat); *macauscifinovel* (authorship unclear); *picking up the pieces* (graphic violence against children); *hometown something?* (real politicians and actors as characters).
+
+## In the game (scene JSON)
+
+The rest of Vols I–IV is now in `godot/resources/scenes/vol1–vol4`. There are about 6,900 nodes and 129K words. `index.json` lists the scenes in play order, and `validate_scenes.py` reports 0 errors and 0 warnings. The adaptation is faithful: all of the book's text is reached on every path. Added choices are "linger" or reading-order forks that always rejoin. The authoring brief is `SCENE_AUTHORING.md`.
+
+- **Vol I:** `vol1_ch4_interstitial` (the skipped p.48), then Act Two, `vol1_ch5_*`–`vol1_ch8_*`, then `vol1_finale`. Chapters 2→3→4 now chain straight through.
+- **Vol II:** `vol2_ch3_*`–`vol2_ch12_*`, including **vii. SCUMM** (`vol2_ch7_scumm_a–d`). Then `vol2_drift_wood`, a **placeholder** for Andy's DRIFT WOOD strips, then `vol2_finale`.
+- **Vol III:** `vol3_title` (Earthman plate), then `vol3_ch1_*`–`vol3_ch14_*`, then `vol3_finale`. The placeholder ORACLE-7 demo is moved to `scenes/_demo/`.
+- **Vol IV:** a scrapbook desk, `vol4_hub`, opens Scraps, Poems, the Zine, Charlie & Caroline, and Stories in any order. **vii. daddy** appears only after all five have been opened; this uses the new `requires` choice gating in `GameEngine.gd`. The placeholder Casper demo is moved to `scenes/_demo/`.
+
+`ASSET_WORKLIST.tsv` lists every new background, CG, music track and portrait the scenes reference (220 bg, 35 cg, 34 bgm, 18 portraits), with one painter-ready line each. It's ready for bulk_intake.
+
+Open questions for Andy, as flagged by the batches:
+- p.283 is blank in the PDF, so "uncle nick" jumps from "He looked dead." straight to "damn it's a funny thing."
+- The chapter numerals in Earthman repeat (two v.s and two vi.s). The game numbers them 1–14.
+- In Vol I, "Dicken's Phone vibrates" is printed where the line seems to be Faust's. It's kept as printed.
+- In "ps." (p.393), the blog postscript after SCUMM plays as its own story.

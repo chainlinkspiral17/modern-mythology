@@ -219,7 +219,8 @@
       "text": "— End of Act One, Part I —"
     },
     {
-      "t": "end"
+      "t": "jump",
+      "scene": "vol1_ch3_judgement_day"
     }
   ]
 }
