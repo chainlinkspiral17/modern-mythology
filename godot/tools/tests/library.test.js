@@ -351,7 +351,8 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
     const T = t.touch(D.cdp);
     await D.p.evaluate(async () => { document.getElementById('g-style').value = 'noir'; await generate({ force: true, seed: 12 }); const tr = P.tracks.find(x => x.role === 'pad'); sel = { trackId: tr.id, clip: 0 }; document.querySelector('.tabs button[data-tab="dev"]').click(); renderDevDetail(); });
     await D.p.waitForTimeout(200);
-    const b = await D.p.evaluate(() => { const r = document.getElementById('dd-preset').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2, r.height]; });
+    // (a song with arrangement parts has more tracks: the device panel may start below the fold)
+    const b = await D.p.evaluate(() => { const e = document.getElementById('dd-preset'); e.scrollIntoView({ block: 'center' }); const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2, r.height, r.y]; });
     t.ok(b[2] >= 36, 'PRESET button ' + b[2] + ' px');
     await T.tap(b[0], b[1]);
     await D.p.fill('.fgb-q', 'choir');

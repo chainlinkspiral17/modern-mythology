@@ -66,10 +66,15 @@ next rule.
 
 | Level | Layers playing |
 |---|---|
-| 0 | pad + chords |
+| 0 | pad + chords (+ the ambience bed) |
 | 0.25 | + bass |
-| 0.5 | + drums |
-| 0.75 | + lead |
+| 0.4 | + hand percussion (`perc`) |
+| 0.5 | + drums, arp (+ risers / hits) |
+| 0.75 | + lead, its counter |
+| 0.9 | + the doubling (`double`: choices, reveals) |
+
+(Layers come from `TempMaker.STEM_LAYER`; a take has only the parts its
+style and seed wrote, so most tracks have a few of these.)
 
 A track without stems ignores intensity, which is harmless. So
 intensity is how hard the score *plays*, never how loud it is. Don't
@@ -228,7 +233,10 @@ APPROVE puts one where AudioMgr looks.
   - `loop: true` also writes WAV loop points in staging; APPROVE turns
     them into the manifest's `loop` / `loop_offset`. Godot then loops
     the file forever, so use it only for beds.
-  - `roles` chooses which of drums / bass / chords / lead / pad play.
+  - `roles` chooses which of drums / bass / chords / lead / pad, the
+    arrangement parts (perc / arp / counter / double) and the sound layer
+    (texture / fx) play. An arrangement part ticked in a subset is always
+    written; with every part ticked the style's odds decide.
   - `extraPads`: pad2 is the pad an octave up, pad3 its root an octave
     down. Each gets its own stem on layer 0.
   - `density`, `energy` (a ± nudge to the brief's rank), `style`,

@@ -229,6 +229,126 @@ suite('data · registries, composer, MIDI files', async t => {
     const amb = TM.takeMood(TR[1], null, TM.normOpts({}), null); TM.varyTake(amb, TM.normOpts({ ensemble: 'lofi' }), { seed: 3 });
     t.ok(amb.textures === undefined || TM.ENSEMBLES.lofi.roles.texture.includes(amb.textures[0]), 'an ensemble bed only where nothing named one: ' + JSON.stringify(amb.textures));
   });
+  // ── arrangement parts: counter, arp, perc, double ─────────────────────────
+  await t.test('reproducibility: drums / bass / chords / lead / pad notes are byte-identical to the composer before the arrangement parts', async () => {
+    const { snapshot } = require('./fixtures/seqgen_snapshot.js');
+    const want = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', 'seqgen_roles_v2.json'), 'utf8')), got = snapshot(SG);
+    const bad = Object.keys(want).filter(k => want[k] !== got[k]);
+    t.ok(Object.keys(want).length > 1000, 'snapshot size ' + Object.keys(want).length);
+    t.eq(bad, [], 'style/form/seed/variant whose five original parts changed (takes would re-compose differently)');
+    // and o.arrange never moves them either: no arrangement parts, all of them forced, the style's odds — same five parts
+    const five = s => JSON.stringify(['drums', 'bass', 'chords', 'lead', 'pad'].map(r => s.parts[r].patterns));
+    for (const style of ['noir', 'synthwave', 'folk', 'jazz', 'chamber']) {
+      const a = SG.song({ seed: 31, style, form: 'song' }), b = SG.song({ seed: 31, style, form: 'song', arrange: 'none' }), c = SG.song({ seed: 31, style, form: 'song', arrange: SG.ARR_ROLES });
+      t.eq([five(b), five(c)], [five(a), five(a)], style + ': arrange option moved an original part');
+      t.ok(SG.ARR_ROLES.every(r => !b.parts[r]), style + ': arrange none');
+    }
+  });
+  await t.test('arrangement parts: each style gets the parts it wants (and none it doesn\'t), with sections bringing them in and out', async () => {
+    const bad = [], seen = {};
+    for (const style of Object.keys(SG.STYLES)) {
+      const A = SG.ARRANGE[style], got = { counter: 0, arp: 0, perc: 0, double: 0 }, kinds = new Set();
+      for (let seed = 1; seed <= 24; seed++) for (const form of ['loop', 'song']) {
+        const s = SG.song({ seed, style, form });
+        for (const r of SG.ARR_ROLES) if (s.parts[r] && s.parts[r].clips.length) got[r]++;
+        if (s.vocab.arrange.counter) kinds.add(s.vocab.arrange.counter);
+      }
+      seen[style] = got;
+      SG.ARR_ROLES.forEach((r, i) => {
+        if (A.p[i] >= 0.3 && !got[r]) bad.push(style + ': no ' + r + ' in 48 songs');
+        if (A.p[i] === 0 && got[r]) bad.push(style + ': ' + r + ' though the style never wants it');
+      });
+      if (A.p[0] >= 0.5 && kinds.size < Math.min(2, new Set(A.counter).size)) bad.push(style + ': counter kinds ' + [...kinds]);
+    }
+    t.eq(bad, [], 'arrangement odds');
+    t.ok(seen.synthwave.arp > seen.jazz.arp && seen.chamber.counter > seen.trap.counter && seen.bayou.perc > seen.chamber.perc, 'idioms: synthwave arps, chamber counter lines, bayou percussion');
+    // in a song the parts come and go with the sections: an arp / counter never in every section of every song
+    let everywhere = 0, songs = 0;
+    for (let seed = 1; seed <= 30; seed++) {
+      const s = SG.song({ seed, style: 'synthwave', form: 'song', arrange: ['arp', 'counter'] }); songs++;
+      if (['arp', 'counter'].every(r => s.parts[r].clips.length === s.sections.length)) everywhere++;
+      const lead = new Set(s.parts.lead.clips.map(c => c.bar));
+      for (const c of s.parts.counter.clips) if (!lead.has(c.bar) && !['second', 'ring', 'interlock'].includes(s.vocab.arrange.counter)) throw new Error('an answering counter without a lead, seed ' + seed);
+    }
+    t.ok(everywhere < songs / 3, 'arp + counter in every section of ' + everywhere + ' / ' + songs + ' songs');
+  });
+  await t.test('counter: answers around the lead — off its onsets, no unison / octave on strong beats, no parallel octaves, one voice', async () => {
+    const pc = n => ((n % 12) + 12) % 12, S16 = SG.S16, BEAT = SG.PPQ;
+    let on = 0, hit = 0, strong = 0, oct = 0, par = 0, overlap = 0, inRange = 0, notes = 0;
+    for (const style of Object.keys(SG.STYLES)) for (let seed = 1; seed <= 10; seed++) for (const form of ['song', 'loop']) {
+      const s = SG.song({ seed, style, form, arrange: ['counter'] }), c = s.parts.counter; if (!c) continue;
+      for (const [pid, p] of Object.entries(c.patterns)) {
+        const lp = s.parts.lead.patterns['lead_' + pid.slice('counter_'.length)], ln = lp ? lp.notes.filter(x => x.d > 10 || x.v >= 0.5) : [];
+        const onsets = new Set(ln.map(x => Math.round(x.t / S16))), sound = t => { let n = null; for (const x of ln) if (x.t <= t && x.t + x.d > t) n = x.n; return n; };
+        for (const x of p.notes) { notes++; if (x.n >= 52 && x.n <= 93) inRange++; if (s.vocab.arrange.counter !== 'harmony') { on++; if (onsets.has(Math.round(x.t / S16))) hit++; } }
+        for (let i = 1; i < p.notes.length; i++) if (p.notes[i - 1].t + p.notes[i - 1].d > p.notes[i].t) overlap++;
+        let prev = null;
+        for (let t0 = 0; t0 < p.lenBars * SG.BAR; t0 += 2 * BEAT) {
+          const cn = (p.notes.find(x => x.t <= t0 && x.t + x.d > t0) || {}).n, l = sound(t0);
+          if (cn === undefined || l === null) { prev = null; continue; }
+          strong++; const o = pc(cn - l) === 0; if (o) oct++;
+          if (o && prev && prev.o && prev.c !== cn && prev.l !== l) par++;
+          prev = { c: cn, l, o };
+        }
+      }
+    }
+    t.ok(notes > 2000, notes + ' counter notes');
+    t.ok(hit / on < 0.05, 'counter notes on a lead onset: ' + hit + ' / ' + on);
+    t.eq([oct, par, overlap], [0, 0, 0], 'strong-beat unisons / octaves (of ' + strong + '), parallel octaves, overlapping notes');
+    t.eq(inRange, notes, 'counter register');
+  });
+  await t.test('arp: chord tones only, one note at a time, rate from density; perc on its own voices; doubles in octaves; swung where the style swings', async () => {
+    const pc = n => ((n % 12) + 12) % 12;
+    let n = 0, off = 0, overlap = 0;
+    for (const style of Object.keys(SG.STYLES)) for (let seed = 1; seed <= 6; seed++) for (const form of ['song', 'loop', 'bed']) {
+      const s = SG.song({ seed, style, form, arrange: ['arp'] }), a = s.parts.arp; if (!a) continue;
+      for (const [pid, p] of Object.entries(a.patterns)) {
+        for (const x of p.notes) { n++; if (!SG.chordTonesAt(s, pid.slice(4), x.t).includes(pc(x.n))) off++; }
+        for (let i = 1; i < p.notes.length; i++) if (p.notes[i - 1].t + p.notes[i - 1].d > p.notes[i].t) overlap++;
+      }
+    }
+    t.ok(n > 10000, n + ' arp notes'); t.eq([off, overlap], [0, 0], 'arp notes off the chord / overlapping');
+    const count = d => Object.values(SG.song({ seed: 4, style: 'synthwave', form: 'loop', density: d, arrange: ['arp'] }).parts.arp.patterns).reduce((k, p) => k + p.notes.length, 0);
+    t.ok(count(0.9) > count(0.3) * 1.4, 'denser → faster arp: ' + count(0.3) + ' → ' + count(0.9));
+    // perc (by the style's odds) never doubles a voice the drums play; plays a KIT
+    const clash = [];
+    for (const style of Object.keys(SG.STYLES)) for (let seed = 1; seed <= 24; seed++) {
+      const s = SG.song({ seed, style, form: 'song' }); if (!s.parts.perc) continue;
+      const dn = new Set(Object.values(s.parts.drums.patterns).flatMap(p => p.notes.map(x => x.n)));
+      const both = [...new Set(Object.values(s.parts.perc.patterns).flatMap(p => p.notes.map(x => x.n)))].filter(x => dn.has(x));
+      if (both.length) clash.push(style + '/' + seed + ': ' + both); if (s.parts.perc.preset !== 'kit') clash.push(style + ' perc preset ' + s.parts.perc.preset);
+    }
+    t.eq(clash, [], 'perc voices the drums already play');
+    // double: the lead an octave away, the same rhythm
+    const d = SG.song({ seed: 9, style: 'noir', form: 'song', arrange: ['double'] });
+    for (const [pid, p] of Object.entries(d.parts.double.patterns)) {
+      const src = d.vocab.arrange.double === 'bass_up' ? d.parts.bass.patterns['bass_' + pid.slice(7)] : d.parts.lead.patterns['lead_' + pid.slice(7)];
+      const st = new Map(src.notes.map(x => [x.t, x.n]));
+      t.ok(p.notes.every(x => st.has(x.t) && Math.abs(x.n - st.get(x.t)) === 12), 'double ' + pid + ' is its source in octaves');
+    }
+    // trip8 styles (jazz, bayou, lullaby): no straight offbeat eighth in the new parts either
+    const straight = [];
+    for (const style of ['jazz', 'bayou', 'lullaby']) for (let seed = 1; seed <= 8; seed++) {
+      const s = SG.song({ seed, style, form: 'loop', arrange: SG.ARR_ROLES });
+      for (const r of SG.ARR_ROLES) if (s.parts[r] && Object.values(s.parts[r].patterns).some(p => p.notes.some(x => x.t % SG.PPQ === SG.PPQ / 2))) straight.push(style + '/' + r + ' seed ' + seed);
+    }
+    t.eq(straight, [], 'straight offbeat eighths in a swung style');
+    // re-roll one arrangement part: same structure, new notes
+    const s0 = SG.song({ seed: 12, style: 'synthwave', form: 'song', arrange: SG.ARR_ROLES });
+    for (const r of SG.ARR_ROLES) {
+      const p = SG.part(r, s0, { seed: 777 });
+      t.eq(p.clips.map(c => c.bar), s0.parts[r].clips.map(c => c.bar), r + ' re-roll keeps its sections');
+      t.ok(r === 'double' || JSON.stringify(p.patterns) !== JSON.stringify(s0.parts[r].patterns), r + ' re-roll changes the notes');
+    }
+  });
+  await t.test('score shapes may place the arrangement parts; checkScore knows the roles', async () => {
+    const s = SG.song({ seed: 5, style: 'noir', shape: [['intro', 2, ['pad', 'arp']], ['A', 4, ['drums', 'bass', 'chords', 'lead', 'counter']], ['B', 4, ['drums', 'bass', 'lead', 'perc', 'double']]] });
+    const where = r => (s.parts[r] ? s.parts[r].clips.map(c => c.bar) : []);
+    t.eq([where('arp'), where('counter'), where('perc'), where('double')], [[0], [2], [6], [6]], 'parts exactly where the cue puts them');
+    const bad = SG.checkScore({ tracks: {}, volumes: { 1: { shape: [['A', 4, ['drums', 'arp', 'counter', 'bogus']]], voices: { counter: 'winds_horns', fiddle: 'strings_silver' } } } }, { presets: ['winds_horns', 'strings_silver'] });
+    t.eq(bad, ['volume 1: voices role fiddle', 'volume 1: shape A role bogus']);
+    t.eq(SG.song({ seed: 5, style: 'noir', form: 'loop', voices: { counter: 'winds_flute' }, arrange: ['counter'] }).parts.counter.preset, 'winds_flute', 'voices name the counter\'s instrument');
+  });
   const SMF = require(path.join(TOOLS, 'smf.js'));
   await t.test('remix: NOTES recipes graft the source\'s harmony, sections and theme; plain songs unchanged; seeded', async () => {
     const SG = require(path.join(TOOLS, 'seqgen.js')), RX = require(path.join(TOOLS, 'remix.js'));

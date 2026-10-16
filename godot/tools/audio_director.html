@@ -301,10 +301,11 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const REVIEW_DIR = 'assets/audio/review';
 const APPROVALS = 'resources/music/temp_approvals.json';
-const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad', 'texture', 'fx'];   // texture: the ambience bed · fx: transitions + hits
+// texture: the ambience bed · fx: transitions + hits · perc / arp / counter / double: the arrangement parts (TempMaker.ARR_ROLES)
+const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad', 'perc', 'arp', 'counter', 'double', 'texture', 'fx'];
 const EXTRA_PADS = ['pad2', 'pad3'];
 // AudioMgr.gd: stem layer thresholds, its fade (STEM_FADE) and the director's send fade
-const LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75 };
+const LAYER = { pad: 0, chords: 0, bass: 0.25, perc: 0.4, drums: 0.5, arp: 0.5, lead: 0.75, counter: 0.75, double: 0.9 };   // = TempMaker.STEM_LAYER
 const STEM_FADE = 1.5, DIRECTOR_FADE = 0.4;
 const layerOn = (layer, level) => level + 0.0001 >= layer;          // AudioMgr.set_music_intensity's rule
 const fmt = s => { s = Math.max(0, s || 0); return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0'); };
@@ -1339,7 +1340,7 @@ async function openPicker(role) {
   renderPicker();
 }
 async function instrumentChoices(role) {
-  const drums = role === 'drums', groups = [{ name: 'AUTO', items: [{ v: '', name: RG.ensemble ? 'auto — from the ' + TempMaker.ENSEMBLES[RG.ensemble].name + ' ensemble' : 'auto — the DAW picks for the style' }] }];
+  const drums = role === 'drums' || role === 'perc', groups = [{ name: 'AUTO', items: [{ v: '', name: RG.ensemble ? 'auto — from the ' + TempMaker.ENSEMBLES[RG.ensemble].name + ' ensemble' : 'auto — the DAW picks for the style' }] }];
   // the chosen ensemble's own options for this role first (a take draws one of them by its seed)
   const ens = RG.ensemble && TempMaker.ENSEMBLES[RG.ensemble], el = ens && ens.roles[role] && ens.roles[role].filter(x => drums ? /^kit/.test(x) : (window.FORGE_PRESETS || []).some(p => p.id === x));
   if (el && el.length) groups.push({ name: 'ENSEMBLE · ' + ens.name, items: el.map(x => drums ? { v: x, name: instLabel(x) } : { v: 'forge:' + x, name: instLabel('forge:' + x).replace(/^FORGE /, '') }) });
