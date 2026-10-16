@@ -1,0 +1,283 @@
+{
+  "id": "vol4_cc_1",
+  "vol": 4,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Charlie & Caroline — The Bus",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_various_locales.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cc_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Various Locales",
+      "sub": "Int. and Ext. · Day and Night",
+      "duration": 2000
+    },
+    {
+      "t": "say",
+      "char": "Charlie & Chorus",
+      "expr": "neutral",
+      "text": "We all just want her out of our heads. We can't get her out. She sits at the top of our thoughts, sometimes a casual obsession, more often, a horrible beautiful daydream."
+    },
+    {
+      "t": "say",
+      "char": "Charlie & Chorus",
+      "expr": "neutral",
+      "text": "Destroyer of men and women alike, we adore her in spite, because of, for being exactly who she is. She's our muse, a rotten thing of perfection and imperfection entwined. She has no conscience, no thought for anyone but herself."
+    },
+    {
+      "t": "say",
+      "char": "Charlie & Chorus",
+      "expr": "neutral",
+      "text": "To spit on her face, to kiss her lips. That's why we love her. That's why we'll do anything to be near her, to help her, to put her on a pedestal to raise her higher and higher, further and further from the depths we sink to because of her."
+    },
+    {
+      "t": "say",
+      "char": "Charlie & Chorus",
+      "expr": "neutral",
+      "text": "We reach out. Call out. Scream out."
+    },
+    {
+      "t": "say",
+      "char": "Charlie & Chorus",
+      "expr": "neutral",
+      "text": "Caroline."
+    },
+    {
+      "t": "narrate",
+      "text": "TITLES: SISTER CARRIE, BASED ON THE NOVEL BY THEODORE DREISER"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bus_station_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "A Bus Station",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "CHARLIE DROUET stands, reading his newspaper. His name imprinted on the newspaper itself. He wears a simple t-shirt with jeans."
+    },
+    {
+      "t": "narrate",
+      "text": "His hair uncombed, his face slightly stubbly."
+    },
+    {
+      "t": "narrate",
+      "text": "CAROLINE walks up to the bus overhang. She has a bag by her side. Her clothes are disheveled."
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She is attractive, but nothing special at this time and place, still, the spark is there."
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie folds up his newspaper and walks over, looking her over just a bit."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Where you headed?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "My sister's, not too far from here."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Where you from?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "Small town, about three hours east. You'd have never heard of it."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Can I offer you a cigarette?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "No thanks, don't smoke."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I insist you start or start back up."
+    },
+    {
+      "t": "narrate",
+      "text": "Carrie takes the cigarette and he lights."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "Thanks."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bus_interior_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The Bus",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "They both sit on the bus. He is sitting next to her. They both steal looks at each other."
+    },
+    {
+      "t": "narrate",
+      "text": "Each speaks to the camera in turn."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "steal a look at her",
+          "goto": 37
+        },
+        {
+          "text": "look straight ahead",
+          "goto": 38
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The window throws the city across both their faces, a frame at a time."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I'd like to think I charmed her, I'd like to think there was some instantaneous attraction neither of us could help or control."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "When they think about me like this, I always look better, sound smarter than I really am. I'm really nothing special. I always insist, but they never seem to hear."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I was fantasizing about all the things I'd like to do to her, nothing super dirty. I mean, I wanted to see her naked, wanted to touch her. But it was all just casual sensual, just getting to know you fantasizing."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "Charlie was real sweet, mostly harmless. Not the kind of guy I usually go for, exactly the kind of guy I know I'll end up hurting."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I'm taking creative license with this whole introduction scene, because I can't exactly be honest about how raw and honest our initial encounter felt. This is all in retrospect, all suspect to my emotion. Nothing objective."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I hope to strip it all away and make ourselves naked and somehow figure out just who this girl is."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "amused",
+      "text": "Charlie's a passionate guy, but a bit naïve. Wears his heart on his sleeve. That can be really attractive in a guy."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "amused",
+      "text": "Or not."
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie looks at Carrie. She looks back at him. He hands her his business card."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Look, I know you're new here. But if you need someone to show you around, help you get comfortable with the city, all you gotta do is let me know. I keep my own hours, so it's never a bother."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "Thanks Charlie."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_cc_1_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_cc_2"
+    }
+  ]
+}

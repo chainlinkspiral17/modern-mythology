@@ -1,0 +1,88 @@
+{
+  "id": "vol5_prelude_arcana_ep22_hanged_man",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 19 · the hanged man",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep22_hanged_man.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 19 · the hanged man",
+      "sub": "",
+      "duration": 2400
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "the hanged man"
+    },
+    {
+      "t": "narrate",
+      "text": "Wither and waste away, two week old fruit in a bowl speckled inside and out with this avocado-colored mold. Even t-shirts lay about in corner piles textured of crepe paper the Christmas noon after, holed discolored."
+    },
+    {
+      "t": "narrate",
+      "text": "His room a place of discardment, here and there scattered about hard and soft plastic wrapper containers, reminders of disposable products all ended in respective consumer lifecycles, the admen and market peoples forced to thunk up and shuffle off a new brand of new."
+    },
+    {
+      "t": "narrate",
+      "text": "Here he is in the corner of a one bedroom, headphones on, blocked out, locked in, comfortable and sad, and so very lost. A hard breakup will do that."
+    },
+    {
+      "t": "narrate",
+      "text": "See, there was this one girl, typical, beyond him. Go down a checklist and find all his shortcomings amid her obvious warning signs, and come to whatever conclusion suits."
+    },
+    {
+      "t": "narrate",
+      "text": "Know, he has become used to failure, the notion of it a permanent taste in his mouth. What is unique about the boy is that he should be well on his way to great things. It was promised to him by loving parents, expectant friends, and interested third parties truly wanting to see him succeed."
+    },
+    {
+      "t": "narrate",
+      "text": "But oh, how did it ever go wrong. He should blame the fates, because they are very much to blame, yet he does not outwardly acknowledge their limitless influence."
+    },
+    {
+      "t": "narrate",
+      "text": "He is content to sit and watch the days go by, never once thinking to live each day as it was his last. Hell, just one day a month, at the very least, he should get out and try something new, but no."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not pine for her any longer. He had a nice coffee, realized how little he valued her friendship after all, and stopped caring in any way about her, altogether."
+    },
+    {
+      "t": "narrate",
+      "text": "His taste in music awful barren these days, stagnant to the point of cliche, rooted firmly to the inside foreground of the ever draining cultural shallow pool his red eyes open, a chlorine shocked depth perception perhaps."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep22_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

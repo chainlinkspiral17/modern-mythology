@@ -1,0 +1,286 @@
+{
+  "id": "vol1_ch17_editing_suite",
+  "vol": 1,
+  "chapter": 17,
+  "type": "chapter",
+  "title": "Act Three — The Editing Suite",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_editing_suite.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Editing Suite",
+      "sub": "INT. · After",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Monitors. The last frame of the film is frozen on screen: Faust's back at the easel, brush up, the canvas still blank."
+    },
+    {
+      "t": "narrate",
+      "text": "THE DIRECTOR is at the console. THE WRITER sits on the arm of the couch with a notebook. THE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil."
+    },
+    {
+      "t": "narrate",
+      "text": "THE ARTIST is at the window, looking out at nothing in particular."
+    },
+    {
+      "t": "narrate",
+      "text": "Silence."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Well. That's where it cuts."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "That's not an ending."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "It's a shot. It's a good shot. Back to camera, blank canvas, morning light. Audiences love a back to camera."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "They'll want to know if he got the girl."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "He got two friends and a third of a painting and a coffee date with someone he hasn't called in years."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "That's not the girl."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "That's better than the girl."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "(from the window) There wasn't one girl. That was the point. Depends who's looking."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Can we at least get the father and the daughter. One shot. Reunion. Swell the strings. I've got strings."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "She doesn't arrive yet."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "When does she arrive."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Later. Much later. Somewhere else."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "angry",
+      "text": "(throwing up his hands) That's not a release date that's a prophecy."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Most of the good ones are."
+    },
+    {
+      "t": "narrate",
+      "text": "THE FOOL bursts in through the door, disheveled, carrying a bucket of popcorn that is mostly empty, wearing a t-shirt with a painted wooden frame on it and nothing inside."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "Did I miss it. Did they make it. Did the boat come back."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Boat came back."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "And the cat?"
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "warm",
+      "text": "(gently) Cat crossed."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "(sitting down hard) Good. Good. She was tired."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "It isn't finished."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "(pointing at each in turn) Of course it's not finished, you said so on page one, you said I'm starting something I should never finish and then you were surprised when you didn't finish it. That's like being surprised your teeth fall out in the dream, where your teeth fall out."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "I said it has to be completed."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "Completed's not finished. Completed is you went all the way there and you came all the way back and you brought something. Finished is you put it in a frame, so it can't leave."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "sad",
+      "text": "(turning from the window, quietly) Then leave the frame empty."
+    },
+    {
+      "t": "narrate",
+      "text": "They all look at the Fool's shirt."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "(looking down at it) Oh. Oh, I've got the empty one. Who gave me this."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody answers."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "(after a moment, to the Writer) So what do I tell them. The ones who came for an ending."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "(closing his notebook) Tell them it's in production."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Tell them thank you. Tell them thank the sun and moon and stars."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "Tell them to paint something."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "Tell them it's four in the morning and they're awake, so that counts."
+    },
+    {
+      "t": "narrate",
+      "text": "THE DIRECTOR looks at the frozen frame a long time. He doesn't hit play. He doesn't hit stop. He leaves it there."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Fine. Roll credits over the back to camera."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "What's the last card."
+    },
+    {
+      "t": "narrate",
+      "text": "THE FOOL takes a fistful of popcorn, considers the screen, and says it like it's obvious, like it's what anyone would say."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "fly not fall."
+    },
+    {
+      "t": "narrate",
+      "text": "THE DIRECTOR types it. On the monitor, over Faust's back, over the blank canvas, small and lowercase:\nfly not fall."
+    },
+    {
+      "t": "narrate",
+      "text": "The suite goes dark, all but the monitor."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch17_editing_suite_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_finale"
+    }
+  ]
+}

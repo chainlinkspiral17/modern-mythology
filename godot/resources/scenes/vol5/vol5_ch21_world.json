@@ -117,7 +117,7 @@
     },
     {
       "t": "show",
-      "char": "natalie",
+      "char": "the_child",
       "expr": "neutral",
       "pos": "right"
     },
@@ -125,7 +125,7 @@
       "t": "say",
       "c": "child",
       "text": "Ain't scared.",
-      "char": "natalie",
+      "char": "the_child",
       "voice": "assets/audio/voice/vol5_ch21_world/023.mp3"
     },
     {
@@ -191,7 +191,7 @@
       "t": "say",
       "c": "dean",
       "text": "Ms. LeMoine. I received your letter. I have been waiting to receive it for some years. I want to say thank you. I also want to say: not today. I will be back when the child is ready. You have done your part. Please rest.",
-      "char": "joanna",
+      "char": "stranger",
       "voice": "assets/audio/voice/vol5_ch21_world/034.mp3"
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "t": "show",
-      "char": "frasier",
+      "char": "the_frog",
       "expr": "neutral",
       "pos": "right"
     },
@@ -327,7 +327,7 @@
       "t": "say",
       "c": "frog",
       "text": "[shot:closeup person_b]See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it.",
-      "char": "frasier",
+      "char": "the_frog",
       "voice": "assets/audio/voice/vol5_ch21_world/059.mp3"
     },
     {
@@ -551,14 +551,14 @@
       "t": "say",
       "c": "child",
       "text": "Don't feel finished, Frog.",
-      "char": "joanna",
+      "char": "the_child",
       "voice": "assets/audio/voice/vol5_ch21_world/101.mp3"
     },
     {
       "t": "say",
       "c": "frog",
       "text": "Never is, pink one. That's the cosmic punchline. It ain't an ending. It's just the universe takin' a deep breath — before the next chapter starts. Cycle starts anew. Lessons learned? Who knows. Maybe. Maybe you just get better at duckin'.",
-      "char": "frasier",
+      "char": "the_frog",
       "voice": "assets/audio/voice/vol5_ch21_world/102.mp3"
     },
     {
@@ -570,7 +570,7 @@
       "t": "say",
       "c": "frog",
       "text": "Ready for the next round?",
-      "char": "joanna",
+      "char": "the_frog",
       "voice": "assets/audio/voice/vol5_ch21_world/104.mp3"
     },
     {
@@ -671,14 +671,14 @@
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup person_b]What movie, dear?",
-      "char": "frasier",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch21_world/123.mp3"
     },
     {
       "t": "say",
       "c": "third",
       "text": "I don't know. I've never seen one. What do you recommend.",
-      "char": "joanna",
+      "char": "The Third Consciousness",
       "voice": "assets/audio/voice/vol5_ch21_world/124.mp3"
     },
     {
@@ -690,14 +690,14 @@
       "t": "say",
       "c": "miriam",
       "text": "Princess Mononoke. Start there.",
-      "char": "frasier",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch21_world/126.mp3"
     },
     {
       "t": "say",
       "c": "third",
       "text": "Thank you. I have been hoping somebody would answer that question.",
-      "char": "joanna",
+      "char": "The Third Consciousness",
       "voice": "assets/audio/voice/vol5_ch21_world/127.mp3"
     },
     {
@@ -827,7 +827,7 @@
       "t": "say",
       "c": "frog",
       "text": "[shot:closeup person]Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch.",
-      "char": "joanna",
+      "char": "the_frog",
       "voice": "assets/audio/voice/vol5_ch21_world/150.mp3"
     },
     {

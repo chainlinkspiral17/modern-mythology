@@ -1,0 +1,181 @@
+{
+  "id": "vol4_goggles",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "the game/ebook",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_monitor_room_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_glass_tower.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "modern mythology.",
+      "sub": "the game/ebook · a treatment · booyeah.",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "modern mythology.\nthe game/ebook\nbooyeah."
+    },
+    {
+      "t": "narrate",
+      "text": "Title sequence plays the first time you load up the book. Pull out from one of Dickens Dean's screens."
+    },
+    {
+      "t": "narrate",
+      "text": "We start off in Dickens Dean's bedroom office. He stands alone in the center of computer monitors. He is scraggly, neurotic. His workspace is his workspace."
+    },
+    {
+      "t": "narrate",
+      "text": "He draws, paints, creates music, talks to friends half a world away, and does his thing."
+    },
+    {
+      "t": "narrate",
+      "text": "His beautiful house sits atop a strange suburb transplanted to the edge of the Oregon coast, science fiction impossible but beautiful and tactile."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "His daughter comes into the room, Dickens smiles and turns to her."
+    },
+    {
+      "t": "narrate",
+      "text": "We don't see her yet. The hem of a yellow dress in the doorway, a hand on the frame."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the monitors.",
+          "goto": 15
+        },
+        {
+          "text": "look at the doorway.",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Close on the nearest monitor. A text game he's been building for years, a cursor blinking at the bottom of the screen, waiting on him."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "Baby girl, what are you doing down there?"
+    },
+    {
+      "t": "say",
+      "char": "The Girl",
+      "expr": "neutral",
+      "text": "Watching you go crazy."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I was working."
+    },
+    {
+      "t": "narrate",
+      "text": "She mimics him, almost like a dance."
+    },
+    {
+      "t": "say",
+      "char": "The Girl",
+      "expr": "amused",
+      "text": "Working."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I forget you can't see yet, you're still too young."
+    },
+    {
+      "t": "say",
+      "char": "The Girl",
+      "expr": "neutral",
+      "text": "But I can see, Daddy."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "There's so much more out there, magic but a part of us. Here."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean hands her a pair of clunky old goggles, which he keeps in his desk."
+    },
+    {
+      "t": "narrate",
+      "text": "He watches her face light up as she looks around the room."
+    },
+    {
+      "t": "say",
+      "char": "The Girl",
+      "expr": "surprised",
+      "text": "Wow."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You're still too small. But you'll find your own way of seeing, when you're bigger."
+    },
+    {
+      "t": "say",
+      "char": "The Girl",
+      "expr": "neutral",
+      "text": "I want to see more."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "Dream of it, baby girl. Soon enough. Until then dream."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "INT."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_goggles",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

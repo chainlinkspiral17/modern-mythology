@@ -1,0 +1,124 @@
+{
+  "id": "vol5_prelude_arcana_ep01_umbra",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 1 · UMBRA",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep01_umbra.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 1 · UMBRA",
+      "sub": "",
+      "duration": 2400
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "the case for/against"
+    },
+    {
+      "t": "narrate",
+      "text": "Long after the fact, it becomes very difficult for a group of individuals, or even just one person, to pinpoint the specific genesis of a very bad idea."
+    },
+    {
+      "t": "narrate",
+      "text": "In the beginning there were five of us, sitting around with far too much time on our hands, brainstorming, shooting the shit, lots of games, really, just looking for something diverting enough to concentrate our collective energies and excitement towards without much damage to ourselves or loved ones in the process."
+    },
+    {
+      "t": "narrate",
+      "text": "The cultural climate was getting underscored more desperate by the minute, and the collective consensus among us was that things could only get worse."
+    },
+    {
+      "t": "narrate",
+      "text": "Yves had moved from his family's house in Tokyo after the death of his father. Arthur threw the towel in on both Los Angeles and New York, his acting career ended prematurely sudden, and Martin, backish from Afghanistan, looking to get his PhD in philosophy and unable to secure a loan."
+    },
+    {
+      "t": "narrate",
+      "text": "My brother, Niles, out of work, angry, and recently dumped by a longterm love interest, was now having to bunk it with me."
+    },
+    {
+      "t": "narrate",
+      "text": "After earning a useless journalism degree, I'd gotten work with a sleazy mail-order medical company, regretting most every minute spent on the phone, having to lie to our customers about a curious lack of product and dearth of appropriate insurance coverage options."
+    },
+    {
+      "t": "narrate",
+      "text": "If I had to pinpoint the exact germ, the single speck of information where the whole crazy enterprise stemmed from, it'd be a casual remark Martin made over a very late round of smoke and scotch."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Ever notice how information, the really good shit, is just out of reach."
+    },
+    {
+      "t": "narrate",
+      "text": "Reading a book, poking around on the tubes, pressing a point in a conversation, all the pertinent leads come to an unnatural end, and you’re left with a sudden and righteous period in place of or maybe instead of more question marks, because the questions I have just keep on coming, and maybe sometimes just an exclamation mark."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe it was something I picked up from time spent thinking far too much for my own good, safe and cozy in some college library, or thick in the shit with my squad mates, building some skeezy third world elementary school for kids who will only know premature death."
+    },
+    {
+      "t": "narrate",
+      "text": "I always laughed at the conspiracy types, my old roommates, my war buddies, my mom's third husband. But the more I see of the world, the less I understand, and the more I want to peel back the layers and get to the truth of the matter.\""
+    },
+    {
+      "t": "narrate",
+      "text": "One of us asked, in what way."
+    },
+    {
+      "t": "narrate",
+      "text": "\"In the way that I really feel I need to do some digging, get my hands dirty, and start answering these questions for real.\""
+    },
+    {
+      "t": "narrate",
+      "text": "And again, one of us asked, from who."
+    },
+    {
+      "t": "narrate",
+      "text": "\"From the government, our government, or the people who choose to obscure the truths which should be so very self evident.\""
+    },
+    {
+      "t": "narrate",
+      "text": "And I think I might've asked, where would you start, and where would it naturally end."
+    },
+    {
+      "t": "narrate",
+      "text": "\"From the lowest place I can get some concrete, legit and comprehensive answers, and continue on to the very top where the great secrets hidden from us have finally come to light.\""
+    },
+    {
+      "t": "narrate",
+      "text": "We laughed and drank more, far more than we possibly should have, and left entertaining fantastic notions of freeing this knowledge for all."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep01_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

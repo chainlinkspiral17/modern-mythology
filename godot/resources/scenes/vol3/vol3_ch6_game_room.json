@@ -1,0 +1,177 @@
+{
+  "id": "vol3_ch6_game_room",
+  "vol": 3,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vi. stacks",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_caltech_campus_afternoon.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Establishing shots",
+      "sub": "now · Pasadena",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Words to fill in the blank where story matters little, settling in still, establishing shots in a motion picture, panorama ex machina before we get to the very end of the beginning. Cruising on an unmade couchmobile, getting a feel for the place."
+    },
+    {
+      "t": "narrate",
+      "text": "General impressions of a boy out of whack with time and place, wanting to be someone he's not, trying so hard to figure out what any of this means. The campus is clean like most are. Central beating heart of a thriving sleepy town called Pasadena on the edge of that great big city of angels."
+    },
+    {
+      "t": "narrate",
+      "text": "Other schools less prestigious soak up the wash-outs and locals, community tech schools, a culinary arts school that costs an arm and a leg. Young people and old are the visible population majority."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a history to the place despite the relative newness of southern California in the grand cultural scheme of things. People have grown old and died here."
+    },
+    {
+      "t": "narrate",
+      "text": "There is art and artifice and artificial mash-up cultural identity everywhere like strata of pasted poster sized advertisement image peeking past the decades of old accumulation"
+    },
+    {
+      "t": "narrate",
+      "text": "There is a scream that says look how pretty this all is don't you just love it. The air is perfect is it not. It is sunny and it always will be except when it's not though never mind that."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy wants to fall in love, he wants to be swept off his feet but that is so far away from now."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_dabney_game_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Andy leaves his bag in the Dabney hall video game basement room. The womb it feels like. Black leather couches form a U that smile wickedly up at a wall of large screen televisions and computer monitors, tethered to miles of black rubber twine cord connection."
+    },
+    {
+      "t": "narrate",
+      "text": "Controllers strewn about, a comprehensive history of videogame technophile standards and obsolescence. Betamax, DV deck, DVD, VHS, SVHS. The pantheon of gods among them Sony, Nintendo, Microsoft."
+    },
+    {
+      "t": "narrate",
+      "text": "Sounds of din and tin assault the ear, kids who stink of in-between and ozone in old t-shirt and blue jean short stained cheetoh orange and mountain dew green. Refrigerators line one wall, all big and industrial and filled with snack drinks, their collective hum a calm companion."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy could sleep here and never wake up."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Sink into the black leather.",
+          "goto": 18
+        },
+        {
+          "text": "Go up to Spencer's room.",
+          "goto": 19
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The refrigerators hum. A controller slides off a cushion onto the carpet and nobody picks it up."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_spencer_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "They go up to Spencer's room. He's writing code on his laptop sitting on the floor wrapped up in a blanket. He doesn't make eye contact with Andy because Andy intimidates him, he feels small and inconsequential next to Andy."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy is older, he is alpha geek, he is big in his skin and wears it comfortably."
+    },
+    {
+      "t": "narrate",
+      "text": "Spencer is slight, wire frame, sunken defeated because this term has wasted him away to nothing except his exceptional intellect."
+    },
+    {
+      "t": "narrate",
+      "text": "He's found his limit and must find a way past the peak or fail and end up nobody, a washed up somebody half-formed, good for everything but the bleeding edge, that place where only the best and brightest live and die and make the world in their image, that's where he wants to be."
+    },
+    {
+      "t": "narrate",
+      "text": "The limit, his theoretical limit he must imagine his way past. Janessa's older brother never really registers."
+    },
+    {
+      "t": "narrate",
+      "text": "It's just a level, a stage he can transcend. But Janessa wants something wants him to meet someone. Her brother."
+    },
+    {
+      "t": "narrate",
+      "text": "One look dismissive. A dumb male Janessa he can see the resemblance and files this one into the siblings brought here that are seldom as impressive."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy looks around the room, pokes his nose into the dirty clothed over corners picks up at magazine and text book and thumbs through articles without care."
+    },
+    {
+      "t": "narrate",
+      "text": "He sees a picture of a pretty Asian girl posed with Janessa and both are wearing an uncomfortable very little, Jessie with hair not so pink as neon explicit plugged in exploded, both the girls covered or not so covered in strategic locations with black vinyl paint-on."
+    },
+    {
+      "t": "say",
+      "char": "Janessa",
+      "expr": "neutral",
+      "text": "Jessie. Nineteen, and a sophomore at Pomona next year."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy says, \"Damn,\" and Spencer looks up and frowns. Prickles is the word."
+    },
+    {
+      "t": "narrate",
+      "text": "Spencer pushes his long bangs away from his face and takes a good look at the big man. Andy is tall and heavy like a slumped over Liam Neeson, he has that popular chinstrap Abe Lincoln facial hair and looks like he's thinking too hard for his own good, constipated for thought, dim perhaps."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy smiles suddenly and everything changes, he is alive and Spencer can't stop looking at him. Andy turns to meet his gaze. Andy takes a frame off the wall."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside is a piece of paper, a sketch of a 2D video game stage, long and detailed on blue grid paper with Japanese characters scrawled up and down and sideways. Andy wants to examine it further but has to ask and congratulate and share."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "surprised",
+      "text": "Is this a level from Contra? Like, an original? How much did this cost?"
+    },
+    {
+      "t": "narrate",
+      "text": "Spencer looks back down at the computer, \"It was a birthday present from Jessie. Ask her.\""
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch6_game_room_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch6_couch"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "vol4_story_agwat",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "agwat",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_cold_water.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "agwat",
+      "sub": "the edge · before the plunge",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "You are about to explode because of what you want to say and know that once you do nothing will ever be the same again. Some of the greatest tests of our lives come from being honest with ourselves, putting it all out there. So seldom do we ever take that plunge."
+    },
+    {
+      "t": "narrate",
+      "text": "It could be cold waters, it could be the greatest thing ever. But you gotta take that first step. If you see the opportunity, if you know yourself, be honest and find a way. The universe is telling you stuff all the time, your heart is wanting to be heard over the noise of it all. Holding back hurts everyone involved."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone and everything happens to you for a reason."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_agwat",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

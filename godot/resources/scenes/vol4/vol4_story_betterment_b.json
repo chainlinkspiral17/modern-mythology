@@ -1,0 +1,221 @@
+{
+  "id": "vol4_story_betterment_b",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "betterment",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_betterment_desk_2am.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "betterment",
+      "sub": "story · two in the morning",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "We're someplace else now. Explanation is needed. Things you need to know about me."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm writing in my underwear at two in the morning. I'm coming down with the flu, and I should be sleeping because I need to be at work earlier than normal. Writing comes to me easier the closer I get to dream."
+    },
+    {
+      "t": "narrate",
+      "text": "To be asleep and be awake at the same time is a very unusual, sensual experience. Music plays quietly as not to wake the other people in the house who live here with me asleep behind their doors and walls."
+    },
+    {
+      "t": "narrate",
+      "text": "I am debating whether or not I should be honest to you, the reader, because my life is very complicated at this point. It's simple in how easily even I misconstrue it."
+    },
+    {
+      "t": "narrate",
+      "text": "Another moment of my life taken out of context."
+    },
+    {
+      "t": "narrate",
+      "text": "A day away from Thanksgiving. I am thinking about Christmas presents for my friends and family. I am greedy."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to spend all my money on presents for myself and only give them my words. I am writing stories for each of them. Stories that will be read by only them, me giving my stories over to them completely, to do with them what they will, out of my hands."
+    },
+    {
+      "t": "narrate",
+      "text": "All the stories together will tell a larger story, one that they may or may not be aware of. I will keep no copies of these stories. I will print out one copy and one copy only for each of them."
+    },
+    {
+      "t": "narrate",
+      "text": "What happens to those words is entirely up to them."
+    },
+    {
+      "t": "narrate",
+      "text": "Another story for all of you. This one about two sisters, who each had a lot to say to each other but only said it to other people."
+    },
+    {
+      "t": "narrate",
+      "text": "Gina was around twenty-five and single, not bad looking, not afraid of the world, she fed off innocence. She had that dark thing going for her. She made bad choices and learned to live with them."
+    },
+    {
+      "t": "narrate",
+      "text": "She respected honesty and beauty and people who were open to new ideas. Her baby sister Agnes was only seventeen. Agnes was losing her innocence but the many people like Gina still fed off the innocence that existed inside her."
+    },
+    {
+      "t": "narrate",
+      "text": "Agnes was alive and full of hope and dream. People who saw her were the people who had lost this, wanted her for that reason only no matter how good looking she was, how smart she was, that's all they saw until they'd used it up all out of her."
+    },
+    {
+      "t": "narrate",
+      "text": "Both girls grew up in the same household but Gina had a different father she remembered living with until she was five."
+    },
+    {
+      "t": "narrate",
+      "text": "Agnes had a friend, we'll call him Eric who wanted to be an artist. He drew anatomy. Not flesh so much as bone."
+    },
+    {
+      "t": "narrate",
+      "text": "He liked to fascinate himself with evolving lines that became mazes that became illusions to the eyes at so many angles. He dropped out of high school at age sixteen because no one around him seemed to care. Eric worked at a gas station part time and lived at a house with his brother's friends."
+    },
+    {
+      "t": "narrate",
+      "text": "While Gina worked at a call center, she dreamt of vacations to the far north, wherever that might be. Because it was cool and wet and so much like a dream. She lived south, where it was hot and sticky and where it only got foggy on the highway with so much pollution."
+    },
+    {
+      "t": "narrate",
+      "text": "Gina called old people, who were either about to die or were already dead. She hated her job. It had no future for her though the industry of health care only seemed to be growing."
+    },
+    {
+      "t": "narrate",
+      "text": "While Agnes was at school, fourth period, she thought about a road trip Gina took her on last summer. They went to New Orleans without all the Mardi Gras hooplah. They went to Bourbon street and all the historical landmark cliches that marked the map."
+    },
+    {
+      "t": "narrate",
+      "text": "They stayed at a cheap motel with a cheap, not totally unsanitary public pool. Some nights after sightseeing, they sat in the pool and talked to different boys who were passing through. On the second to last night, Agnes watched her sister make out with Derrick and Todd and thought nothing of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Neither of them wanted her so she went up to her room and fell asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "While Eric smoked on his break, he watched the cars go by on the service road leading up to the highway. He thought about buying a new car should he win the lottery. He thought about hanging out at IHOP after work with some chicks his brother wanted him to meet."
+    },
+    {
+      "t": "narrate",
+      "text": "Eric didn't know what he wanted so much as he wanted to want again. He thought he might want to try Opium. God knows why."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought about PCP. How fucking crazy that might be. If there was a world that existed outside this one, Eric thought about how fucking mindblowing it'd be to step over to the other side just for a lunchbreak and maybe not ever come back."
+    },
+    {
+      "t": "narrate",
+      "text": "When Eric talked to his friends, mostly what he talked about was making a fresh start for himself somewhere new. He wanted to run from what he had. Not that he didn't have anything."
+    },
+    {
+      "t": "narrate",
+      "text": "He just had opportunity and he blew it. He hated regret, because everyone told him he shouldn't have any regret. But he did."
+    },
+    {
+      "t": "narrate",
+      "text": "Things are radically different in no real discernible way. Quantum physics are to blame. Particles that interact with other particles are forever entwined across time and space."
+    },
+    {
+      "t": "narrate",
+      "text": "Destroy an atom and time travel is possible. Collide an atom, shatter it and it is not lost, it will reconstitute in another time and place."
+    },
+    {
+      "t": "narrate",
+      "text": "Conservation of mass, conservation of the universe, the big and the small forever in orbit, the unknown tug of gravity, the one force that we have yet to fathom that does not seem to exist except for the effect it has on everything."
+    },
+    {
+      "t": "narrate",
+      "text": "It is not light, it is not energy, it is not matter, it is perhaps everything and nothing. It is an idea that maybe it comes from the very center of the universe pulling forevermore. What pulls us."
+    },
+    {
+      "t": "narrate",
+      "text": "What makes us. What is responsible for all this being. The cold hard truth is that we will never know."
+    },
+    {
+      "t": "narrate",
+      "text": "Even the faithful cannot deny the overwhelming reality. It creeps in like cracks in china, intact but questions permeate. What they probe is both their faith and their conscience."
+    },
+    {
+      "t": "narrate",
+      "text": "When they ask questions to God and they get their answers, are they any wiser? Are the scientists, the mystics, the lunatics and artists? If all the faithful screamed out in unison, if all the skeptics continued to work towards their own answers."
+    },
+    {
+      "t": "narrate",
+      "text": "Denying that, disproving this. The simple conclusion, the singular occurrence of humanity would remain."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a colorblind boy who does not yet know he is colorblind. His world is our world and this difference is not yet part of the cultural consciousness that will emerge from his life."
+    },
+    {
+      "t": "narrate",
+      "text": "There is no philosophy to contain humanity. No government, no utopia, no bright and shiny future to look forward to. The universe is slowly ending."
+    },
+    {
+      "t": "narrate",
+      "text": "Humanity works towards its own end much quicker. The hope that remains begins with children who see the world, their world and universe, as a playground of right and wrong and possibility, not plausibility and deniability. The dream of humanity, the ideal of humanity is very much alive in minds such as these."
+    },
+    {
+      "t": "narrate",
+      "text": "posted by Andy : 10:09 AM"
+    },
+    {
+      "t": "narrate",
+      "text": "Man. Crack me up. All these posts are saying exactly the same thing, exactly the opposite thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Cause for worry. I realized I'm not at all sick anymore today. Wow."
+    },
+    {
+      "t": "narrate",
+      "text": "Just snuck up on me. Feeling well, not coughing up crap, not feeling down. Well, I feel down, only because it's a down sorta day."
+    },
+    {
+      "t": "narrate",
+      "text": "It's all in my head. I am a simple, nice guy. I can make myself happy damn it."
+    },
+    {
+      "t": "narrate",
+      "text": "Heh."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_betterment",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

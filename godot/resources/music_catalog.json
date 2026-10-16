@@ -41,13 +41,20 @@
    "_narrator"
   ],
   "chapters": [
-   "vol1_ch1_s2",
+   "meld_kaleidoscope_b",
+   "vol1_ch16_four_am",
+   "vol1_ch17_editing_suite",
+   "vol1_ch2_act_one",
    "vol1_ch2_park",
    "vol1_ch2_skatepark",
+   "vol1_ch5_morning",
+   "vol1_ch6_office",
+   "vol1_ch7_joan",
    "vol1_interlude_demographic",
    "vol1_introduction",
    "vol1_prelude_editing_suite",
-   "vol1_trailer_faust3"
+   "vol1_trailer_faust3",
+   "vol4_curtain_call"
   ]
  },
  {
@@ -61,11 +68,16 @@
    "type": "heard"
   },
   "chapters": [
+   "vol1_ch13_deep_end",
    "vol1_ch3_bar",
    "vol1_ch3_bar_b",
    "vol1_ch3_club",
    "vol1_ch4_club_sharp",
    "vol1_ch4_club_sharp_b",
+   "vol1_ch8_triumvirate",
+   "vol1_ch9_street",
+   "vol4_cc_3",
+   "vol4_cc_5",
    "vol6_ch22_foxhole"
   ]
  },
@@ -80,6 +92,9 @@
    "type": "heard"
   },
   "chapters": [
+   "meld_kaleidoscope_c",
+   "vol1_ch11_aisles",
+   "vol1_ch11_drugstore",
    "vol1_link_booth",
    "vol1_link_counter",
    "vol1_link_end",
@@ -96,6 +111,7 @@
    "vol1_link_shuttle",
    "vol1_link_window",
    "vol1_missing_link",
+   "vol2_ch8_apple_peddler",
    "vol7_ch9_evening"
   ]
  },
@@ -110,12 +126,17 @@
    "type": "heard"
   },
   "chapters": [
+   "meld_seam_1_2",
+   "vol1_ch12_history",
+   "vol1_ch14_painting",
    "vol1_ch2_act_one",
    "vol1_ch4_dream_bar",
    "vol1_ch4_dream_bed",
    "vol1_ch4_dream_states",
    "vol1_ch4_lullaby",
-   "vol1_ch4_waking"
+   "vol1_ch4_waking",
+   "vol1_ch6_tutorial",
+   "vol1_ch8_club"
   ]
  },
  {
@@ -129,9 +150,9 @@
    "type": "heard"
   },
   "chapters": [
-   "vol1_ch3_judgement_day",
-   "vol1_ch3_outside",
-   "vol1_ch3_outside_b"
+   "vol1_ch10_longboat",
+   "vol1_ch15_river_turn",
+   "vol1_ch3_judgement_day"
   ]
  },
  {
@@ -159,9 +180,7 @@
    "type": "key",
    "key": "milestone:vol1_choice"
   },
-  "chapters": [
-   "vol1_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol1_painting",
@@ -173,10 +192,7 @@
   "unlock": {
    "type": "heard"
   },
-  "chapters": [
-   "vol1_ch2_painting",
-   "vol1_ch2_painting_b"
-  ]
+  "chapters": []
  },
  {
   "id": "vol1_pharmacy",
@@ -188,10 +204,7 @@
   "unlock": {
    "type": "heard"
   },
-  "chapters": [
-   "vol1_ch2_pharmacy",
-   "vol1_ch2_pharmacy_mirror"
-  ]
+  "chapters": []
  },
  {
   "id": "vol1_sharp_theme",
@@ -231,9 +244,7 @@
   "unlock": {
    "type": "heard"
   },
-  "chapters": [
-   "vol1_title"
-  ]
+  "chapters": []
  },
  {
   "id": "vol2_ambient",
@@ -249,10 +260,30 @@
    "lena"
   ],
   "chapters": [
+   "meld_kaleidoscope_f",
+   "meld_seam_1_2",
    "vol2_bf_hub",
    "vol2_briar_falls_interlude",
+   "vol2_ch10_salmon",
+   "vol2_ch10_spawning_grounds",
+   "vol2_ch11_dickens_dean",
+   "vol2_ch12_drift_wood_intro",
    "vol2_ch1_history_one",
    "vol2_ch2_interlude_three",
+   "vol2_ch3_points_of_impact",
+   "vol2_ch3_rewind",
+   "vol2_ch4_lighthouse",
+   "vol2_ch4_night_lights",
+   "vol2_ch5_egretta",
+   "vol2_ch5_lessons_in_leaves",
+   "vol2_ch6_mayhune",
+   "vol2_ch6_sacrificial_pair",
+   "vol2_ch6_triptych",
+   "vol2_ch7_scumm_d",
+   "vol2_ch8_apple_peddler",
+   "vol2_ch8_stories",
+   "vol2_ch9_flotsam",
+   "vol2_ch9_truck",
    "vol2_title"
   ]
  },
@@ -266,9 +297,7 @@
   "unlock": {
    "type": "heard"
   },
-  "chapters": [
-   "vol2_bf_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol2_graveyard_solo",
@@ -280,9 +309,7 @@
   "unlock": {
    "type": "heard"
   },
-  "chapters": [
-   "vol2_graveyard"
-  ]
+  "chapters": []
  },
  {
   "id": "vol2_lena_theme",
@@ -309,9 +336,7 @@
    "type": "key",
    "key": "milestone:vol2_seagash"
   },
-  "chapters": [
-   "vol2_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol2_rest_stop_wind",
@@ -329,7 +354,11 @@
    "vol2_bf_lot",
    "vol2_bf_overlook",
    "vol2_bf_picnic",
-   "vol2_bf_trail"
+   "vol2_bf_trail",
+   "vol2_briar_falls_interlude",
+   "vol2_ch11_terminal_velocity",
+   "vol2_ch6_watcher",
+   "vol3_ch7_emulsion"
   ]
  },
  {
@@ -343,33 +372,36 @@
    "type": "heard"
   },
   "chapters": [
+   "meld_kaleidoscope_f",
+   "vol2_ch10_salmon",
    "vol2_ch2_cliffside",
    "vol2_ch2_disappearance",
    "vol2_ch2_ghost",
    "vol2_ch2_interlude_one",
    "vol2_ch2_interlude_two",
    "vol2_ch2_seagash",
-   "vol2_graveyard"
+   "vol2_ch3_points_of_impact",
+   "vol2_ch4_lighthouse",
+   "vol2_ch6_ark",
+   "vol2_ch6_watcher",
+   "vol2_ch9_art_class",
+   "vol2_ch9_truck"
   ]
  },
  {
   "id": "vol3_ambient",
   "vol": 3,
-  "title": "Station Omega-14",
+  "title": "The Father's House",
   "src": "assets/audio/bgm/vol3_ambient.wav",
   "composer": "—",
-  "desc": "The hum of life support and the silence of deep space.",
+  "desc": "Vol 3 bed · The Earthman Chronicles. Pulp static from 1945 over a 2003 Pasadena night; a Texas hospital at the edge of hearing.",
   "unlock": {
    "type": "heard"
   },
   "chars": [
-   "tobor",
-   "antonio"
+   "andy"
   ],
-  "chapters": [
-   "vol3_end",
-   "vol3_the_choice"
-  ]
+  "chapters": []
  },
  {
   "id": "vol3_antonio_theme",
@@ -398,9 +430,7 @@
   "chars": [
    "antonio"
   ],
-  "chapters": [
-   "vol3_the_choice"
-  ]
+  "chapters": []
  },
  {
   "id": "vol3_milestone_choice",
@@ -413,9 +443,7 @@
    "type": "key",
    "key": "milestone:vol3_choice"
   },
-  "chapters": [
-   "vol3_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol3_tobor_theme",
@@ -434,21 +462,17 @@
  {
   "id": "vol4_ambient",
   "vol": 4,
-  "title": "Five AM, No One Around",
+  "title": "Five AM at the Desk",
   "src": "assets/audio/bgm/vol4_ambient.wav",
   "composer": "—",
-  "desc": "The city before it remembers you're not supposed to be there.",
+  "desc": "Vol 4 bed · the back-matter desk at dawn. Copier cooling, red string on cork, the city not up yet.",
   "unlock": {
    "type": "heard"
   },
   "chars": [
-   "nicola",
-   "dante"
+   "_narrator"
   ],
-  "chapters": [
-   "vol4_end",
-   "vol4_standoff"
-  ]
+  "chapters": []
  },
  {
   "id": "vol4_dante_theme",
@@ -475,9 +499,7 @@
    "type": "key",
    "key": "milestone:vol4_standoff"
   },
-  "chapters": [
-   "vol4_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol4_nicola_theme",
@@ -507,9 +529,7 @@
    "nicola",
    "dante"
   ],
-  "chapters": [
-   "vol4_standoff"
-  ]
+  "chapters": []
  },
  {
   "id": "vol5_alberto_theme",
@@ -608,7 +628,8 @@
    "vol5_ch2_priestess_b",
    "vol5_ch5_hierophant",
    "vol5_ch7_chariot",
-   "vol5_ch9_hermit"
+   "vol5_ch9_hermit",
+   "vol5_prelude_arcana_liar_king"
   ],
   "chars": [
    "elicia"
@@ -2934,6 +2955,808 @@
    "vol6_ch6_interstate",
    "vol6_ch6_miller_truck",
    "vol6_ch8_miller_truck"
+  ]
+ },
+ {
+  "id": "vol1_drive_day",
+  "vol": 1,
+  "title": "Driving Around · Day",
+  "src": "assets/audio/bgm/vol1_drive_day.mp3",
+  "composer": "—",
+  "desc": "INT. Judgement Day · Day. Sun on the windshield, the radio stuck between stations.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol1_ch6_judgement_day"
+  ]
+ },
+ {
+  "id": "vol2_scumm_adlib",
+  "vol": 2,
+  "title": "Sixteen Colors",
+  "src": "assets/audio/bgm/vol2_scumm_adlib.mp3",
+  "composer": "—",
+  "desc": "Dream journal, 1994. A point-and-click nightmare on a cheap FM sound card; the cursor never stops blinking.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol2_ch7_scumm_a",
+   "vol2_ch7_scumm_b",
+   "vol2_ch7_scumm_c",
+   "vol2_ch7_scumm_d",
+   "meld_kaleidoscope_c",
+   "meld_kaleidoscope_f"
+  ]
+ },
+ {
+  "id": "vol3_radio_1945",
+  "vol": 3,
+  "title": "Wireless, Pasadena 1945",
+  "src": "assets/audio/bgm/vol3_radio_1945.mp3",
+  "composer": "—",
+  "desc": "A tube set warming up in Ron's room. Dance-band ghosts under the static; the war just over.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "ron"
+  ],
+  "chapters": [
+   "meld_seam_2_3",
+   "vol3_ch10_notes_from_the_underground",
+   "vol3_ch19_ron_takes_notes"
+  ]
+ },
+ {
+  "id": "vol3_arcadeum_lobby",
+  "vol": 3,
+  "title": "Arcadeum · Lobby, Honolulu 1991",
+  "src": "assets/audio/bgm/vol3_arcadeum_lobby.mp3",
+  "composer": "—",
+  "desc": "High-rise lobby on a sleepless morning: fluorescent hum, a boutique game shop’s demo loop leaking through glass, trade wind at the revolving door.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "june_okimoto",
+   "arcadeum_shopkeeper"
+  ],
+  "chapters": [
+   "vol3_ch6_arcadeum"
+  ]
+ },
+ {
+  "id": "vol3_signal_drone",
+  "vol": 3,
+  "title": "The Transmission",
+  "src": "assets/audio/bgm/vol3_signal_drone.mp3",
+  "composer": "—",
+  "desc": "The ruined-future carrier wave. The time pod humming between 1945 and now.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_seam_2_3",
+   "vol3_ch12_uncle_nick",
+   "vol3_ch13_sins_of_our_fathers",
+   "vol3_ch14_last_of_the_oil_men",
+   "vol3_ch1_boy_from_pasadena",
+   "vol3_ch2_dreams_in_the_key_of_godhead",
+   "vol3_ch8_passengers",
+   "vol3_ch8_passengers_b",
+   "vol3_ch8_passengers_c",
+   "vol3_ch8_pulp_the_catwalk",
+   "vol3_ch9_backward_jaunt",
+   "vol3_title"
+  ]
+ },
+ {
+  "id": "vol3_projector_hum",
+  "vol": 3,
+  "title": "Slide Carousel",
+  "src": "assets/audio/bgm/vol3_projector_hum.mp3",
+  "composer": "—",
+  "desc": "Tulsa, mid-eighties. Projector fan, the clack of the next slide, a family safari on a bedsheet.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_seam_2_3",
+   "vol3_ch3_safari"
+  ]
+ },
+ {
+  "id": "vol3_texas_summer",
+  "vol": 3,
+  "title": "Last Weekend of Summer",
+  "src": "assets/audio/bgm/vol3_texas_summer.mp3",
+  "composer": "—",
+  "desc": "Texas after rain. Strip-mall sodium light, lake-house cicadas before dawn.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch11_acceptable_losses",
+   "vol3_ch11_acceptable_losses_b",
+   "vol3_ch11_acceptable_losses_c"
+  ]
+ },
+ {
+  "id": "vol3_club_pulse",
+  "vol": 3,
+  "title": "Friday, 1 A.M.",
+  "src": "assets/audio/bgm/vol3_club_pulse.mp3",
+  "composer": "—",
+  "desc": "Industrial downtown. A kick drum through two walls; the body keeping time the mind won't.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch11_acceptable_losses_c",
+   "vol3_ch13_sins_of_our_fathers",
+   "vol3_ch8_passengers",
+   "vol3_ch8_passengers_b"
+  ]
+ },
+ {
+  "id": "vol3_hospital_hum",
+  "vol": 3,
+  "title": "Houston, After Hours",
+  "src": "assets/audio/bgm/vol3_hospital_hum.mp3",
+  "composer": "—",
+  "desc": "The ward at night. Monitor pips, air handlers, a father asleep. The pulp ward is the same room.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch11_pulp_the_room_with_birds",
+   "vol3_ch5_md_anderson",
+   "vol3_ch5_pulp_the_ward",
+   "meld_kaleidoscope_b",
+   "meld_kaleidoscope_e",
+   "meld_seam_3_4"
+  ]
+ },
+ {
+  "id": "vol3_ambient_home",
+  "vol": 3,
+  "title": "Home, Now",
+  "src": "assets/audio/bgm/vol3_ambient_home.mp3",
+  "composer": "—",
+  "desc": "Uncle Nick at the house. Refrigerator, wall clock, a screen door that won't latch.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch12_uncle_nick",
+   "vol3_ch12_uncle_nick_b"
+  ]
+ },
+ {
+  "id": "vol3_pulp_theme",
+  "vol": 3,
+  "title": "Earthman!",
+  "src": "assets/audio/bgm/vol3_pulp_theme.mp3",
+  "composer": "—",
+  "desc": "Forties serial fanfare worn to a whisper. Jack Perkins, the time pod, the boy from Pasadena.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "betty",
+   "jack_parsons"
+  ],
+  "chapters": [
+   "vol3_ch17_pulp_earthman",
+   "vol3_ch2_dreams_in_the_key_of_godhead",
+   "vol3_ch2_second_set_of_eyes"
+  ]
+ },
+ {
+  "id": "vol3_backyard_night",
+  "vol": 3,
+  "title": "Backyard, Tulsa Night",
+  "src": "assets/audio/bgm/vol3_backyard_night.mp3",
+  "composer": "—",
+  "desc": "Crickets, a sprinkler ticking over, two boys out past the porch light.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "niles",
+   "marty"
+  ],
+  "chapters": [
+   "vol3_ch3_safari"
+  ]
+ },
+ {
+  "id": "vol3_eight_track_twang",
+  "vol": 3,
+  "title": "Eight-Track Twang",
+  "src": "assets/audio/bgm/vol3_eight_track_twang.mp3",
+  "composer": "—",
+  "desc": "The back room, four screens. A country cartridge clunking over to the next program mid-song.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch4_four_screens"
+  ]
+ },
+ {
+  "id": "vol3_neon_drift",
+  "vol": 3,
+  "title": "Names in Neon",
+  "src": "assets/audio/bgm/vol3_neon_drift.mp3",
+  "composer": "—",
+  "desc": "Now. Invitations, a stranger's bathroom, the coast. A synth pad under buzzing tubes.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "april"
+  ],
+  "chapters": [
+   "vol3_ch4_four_screens",
+   "vol3_ch4_invitation_only",
+   "vol3_ch4_names_in_neon",
+   "vol3_ch4_the_coast"
+  ]
+ },
+ {
+  "id": "vol3_coast_radio",
+  "vol": 3,
+  "title": "Coast Radio",
+  "src": "assets/audio/bgm/vol3_coast_radio.mp3",
+  "composer": "—",
+  "desc": "Weeks later, the Pacific. A car radio losing its station to the surf.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch4_the_coast"
+  ]
+ },
+ {
+  "id": "vol3_signal_ambient",
+  "vol": 3,
+  "title": "Non-Stop Flights",
+  "src": "assets/audio/bgm/vol3_signal_ambient.mp3",
+  "composer": "—",
+  "desc": "LAX to Oregon. Cabin pressure, engine drone, the stacks at altitude.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch5_non_stop_flights",
+   "vol3_ch6_stacks"
+  ]
+ },
+ {
+  "id": "vol3_suburban_hum",
+  "vol": 3,
+  "title": "Saturday, Noon",
+  "src": "assets/audio/bgm/vol3_suburban_hum.mp3",
+  "composer": "—",
+  "desc": "Suburbia. Mowers three yards over, a TV through a screen door, four sleepers on one signal.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol3_ch8_passengers_b",
+   "vol3_ch8_passengers_c"
+  ]
+ },
+ {
+  "id": "vol4_radio_static",
+  "vol": 4,
+  "title": "Between Stations",
+  "src": "assets/audio/bgm/vol4_radio_static.mp3",
+  "composer": "—",
+  "desc": "Scrapbook radio. An intersection under street lights, the dial never landing.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_kaleidoscope_a",
+   "meld_kaleidoscope_d",
+   "vol4_story_chimes",
+   "vol4_story_cracked_and_broken"
+  ]
+ },
+ {
+  "id": "vol4_photocopier_drone",
+  "vol": 4,
+  "title": "Generation Loss",
+  "src": "assets/audio/bgm/vol4_photocopier_drone.mp3",
+  "composer": "—",
+  "desc": "Copy shop, issue six. The platen light sweeping; every copy a little further from the first.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_kaleidoscope_d",
+   "meld_seam_3_4",
+   "vol4_story_agwat",
+   "vol4_story_liquid_pour",
+   "vol4_story_nothing_doing",
+   "vol4_story_ps",
+   "vol4_story_rescue_ranger",
+   "vol4_story_wits_end"
+  ]
+ },
+ {
+  "id": "vol4_city_pulse",
+  "vol": 4,
+  "title": "Map of the City",
+  "src": "assets/audio/bgm/vol4_city_pulse.mp3",
+  "composer": "—",
+  "desc": "Sun high, traffic as a pulse. The zine's city drawn from memory.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_kaleidoscope_d",
+   "vol4_story_map_of_the_city"
+  ]
+ },
+ {
+  "id": "vol4_cabin_hum",
+  "vol": 4,
+  "title": "Everyday in November",
+  "src": "assets/audio/bgm/vol4_cabin_hum.mp3",
+  "composer": "—",
+  "desc": "A blog post in transit. Airliner cabin hum, a reading light, nowhere yet.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_kaleidoscope_e",
+   "vol4_story_everyday_in_november"
+  ]
+ },
+ {
+  "id": "vol4_beach_wind",
+  "vol": 4,
+  "title": "Low Tide, Four A.M.",
+  "src": "assets/audio/bgm/vol4_beach_wind.mp3",
+  "composer": "—",
+  "desc": "A beach-house day care in the morning; one image at low tide. Wind across an open mic.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_kaleidoscope_g",
+   "vol4_story_workinp"
+  ]
+ },
+ {
+  "id": "vol4_xerox_hum",
+  "vol": 4,
+  "title": "Scraps",
+  "src": "assets/audio/bgm/vol4_xerox_hum.mp3",
+  "composer": "—",
+  "desc": "The desk after midnight. Copier idling, tube light buzzing, scissors and staples: the zine table Vol 4 is pinned to.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "meld_seam_3_4",
+   "vol4_board",
+   "vol4_cc_6",
+   "vol4_story_all_over_town",
+   "vol4_story_angry_fog",
+   "vol4_story_betterment_a",
+   "vol4_story_betterment_b",
+   "vol4_story_heavy_breathing",
+   "vol4_story_jack_of_suede",
+   "vol4_story_looking_forward_most",
+   "vol4_story_ourobouros",
+   "vol4_story_seem",
+   "vol4_story_the_wasted_sentiment",
+   "vol4_story_voices_in_a_crowded_room",
+   "vol4_story_what_sort_of",
+   "vol4_title"
+  ]
+ },
+ {
+  "id": "vol4_por_puesto_night",
+  "vol": 4,
+  "title": "Por Puesto",
+  "src": "assets/audio/bgm/vol4_por_puesto_night.mp3",
+  "composer": "—",
+  "desc": "The corkboard's last pin. A Caracas jitney idling at night, two short and one long on the horn, a bolero leaking from the dash.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol4_board"
+  ]
+ },
+ {
+  "id": "vol4_cc_ambient",
+  "vol": 4,
+  "title": "Charlie & Caroline",
+  "src": "assets/audio/bgm/vol4_cc_ambient.mp3",
+  "composer": "—",
+  "desc": "The bus, the apartment, the sister's house, the couch. Two people in a screenplay that won't end.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "charlie",
+   "caroline"
+  ],
+  "chapters": [
+   "vol4_cc_1",
+   "vol4_cc_2",
+   "vol4_cc_4",
+   "vol4_cc_5"
+  ]
+ },
+ {
+  "id": "vol4_glass_tower",
+  "vol": 4,
+  "title": "Glass Tower on the Pacific",
+  "src": "assets/audio/bgm/vol4_glass_tower.mp3",
+  "composer": "—",
+  "desc": "Daddy. Monitors on in a tower over the water; the Dean house one late night.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "esther"
+  ],
+  "chapters": [
+   "vol4_daddy_a",
+   "vol4_daddy_b",
+   "vol4_daddy_c"
+  ]
+ },
+ {
+  "id": "vol4_machine_hum",
+  "vol": 4,
+  "title": "The Machine",
+  "src": "assets/audio/bgm/vol4_machine_hum.mp3",
+  "composer": "—",
+  "desc": "The office after hours. Fans, the star key, static electric. Always now.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol4_story_209",
+   "vol4_story_paper_cuts",
+   "vol4_story_static_electric"
+  ]
+ },
+ {
+  "id": "vol4_chiptune_loop",
+  "vol": 4,
+  "title": "Last Quarters",
+  "src": "assets/audio/bgm/vol4_chiptune_loop.mp3",
+  "composer": "—",
+  "desc": "Arcade, Caltech halls, the SCUMM addendum. A square-wave attract loop on a cabinet left on.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol4_story_caltech",
+   "vol4_story_scumm",
+   "vol4_story_two_player"
+  ]
+ },
+ {
+  "id": "vol4_fridge_hum",
+  "vol": 4,
+  "title": "Hit a Wall",
+  "src": "assets/audio/bgm/vol4_fridge_hum.mp3",
+  "composer": "—",
+  "desc": "Chess's kitchen, four p.m., waking hours. A refrigerator compressor and nothing else.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol4_story_hit_a_wall"
+  ]
+ },
+ {
+  "id": "vol4_classroom_hum",
+  "vol": 4,
+  "title": "In/Flux",
+  "src": "assets/audio/bgm/vol4_classroom_hum.mp3",
+  "composer": "—",
+  "desc": "A Texas middle school: before the bell, between periods, after lunch.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol4_story_influx_a",
+   "vol4_story_influx_b",
+   "vol4_story_influx_c"
+  ]
+ },
+ {
+  "id": "vol5_ember_ash_drone",
+  "vol": 5,
+  "title": "Ember and Ash",
+  "src": "assets/audio/bgm/vol5_ember_ash_drone.ogg",
+  "composer": "—",
+  "desc": "Chapter VII — The Chariot. Antonio's warehouse. Low industrial hum + skylight wind + the slow creak of the cypress beam under load. The two cameos on this chapter's beats (Dante at Ember & Ash, Frasier at Ember & Ash, John at Ember & Ash) inherit this ambient.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "antonio",
+   "jimmy",
+   "dante",
+   "frasier",
+   "john_frank"
+  ],
+  "chapters": [
+   "vol5_ch7_chariot",
+   "vol5_cameo_dante_at_ember_and_ash",
+   "vol5_cameo_frasier_at_ember_and_ash",
+   "vol5_cameo_john_at_ember_and_ash"
+  ]
+ },
+ {
+  "id": "vol5_cameo_water_glass_left_full",
+  "vol": 5,
+  "title": "The Water Glass, Left Full",
+  "src": "assets/audio/bgm/vol5_cameo_water_glass_left_full.ogg",
+  "composer": "—",
+  "desc": "Empress cameo · Dean Arrives finale stinger. The Dean-walks-out-with-the-note moment. Single brass note + the dining-room ambient cooling down + the small specific clink of a glass set back on the formica without being drunk from. 40s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "dean"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_bandstand_ringback",
+  "vol": 5,
+  "title": "The Bandstand Calls Back",
+  "src": "assets/audio/bgm/vol5_cameo_bandstand_ringback.ogg",
+  "composer": "—",
+  "desc": "Empress cameo · Quentin at Table 17 mid-run cue. The bandstand payphone callback arriving on the boat's bar extension. A single distant ringing tone over the dining-room ambient + the slow muffled pickup. 30s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "quentin_paul"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_well_runs",
+  "vol": 5,
+  "title": "The Well Runs",
+  "src": "assets/audio/bgm/vol5_cameo_well_runs.ogg",
+  "composer": "—",
+  "desc": "Emperor cameo · Sammy at the Well sustaining ambient. Ice scoop on stainless + the lemons being cut + the speed-pourer's small mechanical pulse + the pitcher refill. A working bartender's signature texture, never melodic. Loops under the run.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "sammy"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_iron_stair_landing",
+  "vol": 5,
+  "title": "The Iron Stair Landing",
+  "src": "assets/audio/bgm/vol5_cameo_iron_stair_landing.ogg",
+  "composer": "—",
+  "desc": "Emperor cameo · Antonio's Friday Visit finale stinger. The held quiet of the small dark helm cabin + the leaded window light landing + Marta's voice on the phone audible only as a register. 45s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "antonio",
+   "dante"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_circuit_tuesday",
+  "vol": 5,
+  "title": "The Same Circuit on a Tuesday",
+  "src": "assets/audio/bgm/vol5_cameo_circuit_tuesday.ogg",
+  "composer": "—",
+  "desc": "Hierophant cameo · Dante Walks the Same Circuit ambient. Tuesday-afternoon St Jude's interior + parking-lot asphalt heat-shimmer + the rectory window open. A Sunday space heard at a Tuesday hour. Loops under the run.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "dante",
+   "father_amato"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_pauls_flinch",
+  "vol": 5,
+  "title": "Paul's Flinch",
+  "src": "assets/audio/bgm/vol5_cameo_pauls_flinch.ogg",
+  "composer": "—",
+  "desc": "Hierophant cameo · Antonio Confronts Paul stinger. The moment of the recorded no. Candle hiss + the small intake of breath caught on the recording + the corner-booth silence folding inward. 30s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "antonio",
+   "quentin_paul"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_anya_on_mackenzie_tv",
+  "vol": 5,
+  "title": "Anya on Mackenzie's TV",
+  "src": "assets/audio/bgm/vol5_cameo_anya_on_mackenzie_tv.ogg",
+  "composer": "—",
+  "desc": "Lovers cameo · Elicia at the Roberts stinger. The first frame of the Anya tape on the Roberts' CRT — Elicia's bungalow source ambient bleeding through the cooler living-room speakers. The cassette warm and the room cold around it. 50s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "elicia",
+   "mackenzie"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_polaroid_morning",
+  "vol": 5,
+  "title": "The Morning of the Polaroid",
+  "src": "assets/audio/bgm/vol5_cameo_polaroid_morning.ogg",
+  "composer": "—",
+  "desc": "Lovers cameo · John at the Roberts deferred-reveal stinger. Fires at doubt 5 when the Polaroid-about-to-arrive registers. The street is the street + the cicadas at morning-frequency + a small Polaroid-camera shutter sound from two streets over. 40s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "john_frank",
+   "mackenzie"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_mailbox_post",
+  "vol": 5,
+  "title": "Setting the Post",
+  "src": "assets/audio/bgm/vol5_cameo_mailbox_post.ogg",
+  "composer": "—",
+  "desc": "Lovers cameo · Frasier at the Roberts ambient. The four-verb manual labor as a sustained piece: post-hole digger biting soil + the cypress 4x4 sliding in + the level's bubble settling + the tamper packing down. The work is the cue. Loops.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "frasier"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_dont_say_what_youre_thinking",
+  "vol": 5,
+  "title": "Don't Say What You're Thinking",
+  "src": "assets/audio/bgm/vol5_cameo_dont_say_what_youre_thinking.ogg",
+  "composer": "—",
+  "desc": "Chariot cameo · Dante at Ember & Ash silent-presence stinger. The Time-0 verb of restraint. A held breath + the office leaded-window light settling + the ledger closing one beat too soon. No melody. 25s.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "dante",
+   "antonio"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_cypress_beam_choice",
+  "vol": 5,
+  "title": "The Beam Holds For Now",
+  "src": "assets/audio/bgm/vol5_cameo_cypress_beam_choice.ogg",
+  "composer": "—",
+  "desc": "Chariot cameo · Frasier at Ember & Ash binary-choice stinger. Plays the moment TELL HIM FINE / TELL HIM NOT resolves. Slow upward groan of structural wood + the skylight wind + the cardinal-direction air shifting around the catwalk. 50s. The same stinger fires for either answer; the saga flag decides which voice the BBM hears in vol7's read.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "frasier",
+   "antonio"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_cameo_warehouse_phone",
+  "vol": 5,
+  "title": "The Warehouse Phone",
+  "src": "assets/audio/bgm/vol5_cameo_warehouse_phone.ogg",
+  "composer": "—",
+  "desc": "Chariot cameo · John at Ember & Ash sustaining ambient. The host-as-visitor scenario. The warehouse interior empty of crew + the cicadas on the phone at afternoon-frequency + the wrong-quiet of a building by 5 PM. Loops.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [
+   "antonio",
+   "john_frank"
+  ],
+  "chapters": []
+ },
+ {
+  "id": "vol5_whispers_theme",
+  "vol": 5,
+  "title": "Whispers from the Liminal",
+  "src": "assets/audio/bgm/vol5_whispers_theme.mp3",
+  "composer": "—",
+  "desc": "Prelude · a channel page past midnight. Late-night broadcast theme for the episode hub; every episode already up.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol5_prelude_arcana_channel",
+   "vol5_prelude_arcana_whispers"
+  ]
+ },
+ {
+  "id": "vol5_prelude_low_bar",
+  "vol": 5,
+  "title": "Shadiest Bar, Best Zip Code",
+  "src": "assets/audio/bgm/vol5_prelude_low_bar.mp3",
+  "composer": "—",
+  "desc": "Prelude · after work with the tribe called best friends. Smoke that clings, a jukebox two decades behind.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol5_prelude_arcana_john_bar"
+  ]
+ },
+ {
+  "id": "vol5_prelude_dinner_rush",
+  "vol": 5,
+  "title": "The Dinner Rush",
+  "src": "assets/audio/bgm/vol5_prelude_dinner_rush.mp3",
+  "composer": "—",
+  "desc": "Prelude · John's shift at the future restaurant. Ticket printer, plates on the pass, a portrait lighting up in the gallery.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chars": [],
+  "chapters": [
+   "vol5_prelude_arcana_john_shift"
   ]
  }
 ]

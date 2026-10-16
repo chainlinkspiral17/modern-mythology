@@ -1,0 +1,96 @@
+{
+  "id": "vol4_drawer_harbinger",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Harbinger",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Harbinger",
+      "sub": "rules, and a war deck · 2008–2009",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Harbinger Rules"
+    },
+    {
+      "t": "narrate",
+      "text": "Basic Description: For One to Four Players. The goal of Harbinger is to score the highest by ruining the earth."
+    },
+    {
+      "t": "narrate",
+      "text": "The map is divided up into territories, of which there are four basic types: Population, Industrial, Agriculture, Military. Each territory has a value, from one to fifteen. A fifth territory, Water, also has value, but no type."
+    },
+    {
+      "t": "narrate",
+      "text": "There are four card types in the basic Harbinger game: Plague, Famine, Pestilence, and War. There are four Hotspot tokens to centralize and flow-balance gameplay."
+    },
+    {
+      "t": "narrate",
+      "text": "The game begins when five cards are dealt to all the players. A Hotspot piece is placed at the start of play, randomly, on a land mass with a value between one and three. The first player to go draws a card and plays a card in a territory adjacent to the Hotspot."
+    },
+    {
+      "t": "narrate",
+      "text": "Every card has one main action to it. Depending on the type, it can be played on: Location, On Self, On Player, or Interrupt. A card MUST be played during a turn."
+    },
+    {
+      "t": "narrate",
+      "text": "In addition to the main card action, the card can be broken into four unique shards. These can be re-assembled at any time, as long as all the pieces are present. Up to four shards can be played per turn."
+    },
+    {
+      "t": "narrate",
+      "text": "The shards are roughly 1/4 as powerful as the main card, but can be deployed strategically in many different ways. Shards can also be assembled into brand new cards with unique properties. The final trump cards are assembled in this fashion."
+    },
+    {
+      "t": "narrate",
+      "text": "War Cards."
+    },
+    {
+      "t": "narrate",
+      "text": "Zero (Limited Use) · Civil Disobedience\nLocation: Next enemy card played on that territory automatically discarded.\nInterrupt: Trade this card with a player for another card not being played."
+    },
+    {
+      "t": "narrate",
+      "text": "One · Lynch Mob\nLocation: No war cards can be played on territory.\n\nFour · Pirate Activity\nLocation: Minus one to take for each surrounding water territory."
+    },
+    {
+      "t": "narrate",
+      "text": "Seven · Covert Ops\nLocation: Can be played anywhere on the map at any time.\nInterrupt: Moves hotspot, Enemy card must be played at new hotspot."
+    },
+    {
+      "t": "narrate",
+      "text": "Fifteen · The Nuke\nNuclear Strike. Random directional drift, take or claim territories in path for three collective player turns.\nNuclear Deterrent. Counters any card, including another trump."
+    },
+    {
+      "t": "narrate",
+      "text": "Blank but for their names: Ballistic Missile Defence. Uranium Centrifuge. Illegal Arms Deal. High-altitude EMP. Rods From God. The GAO Will Never Know. Empty Quiver."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_harbinger",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

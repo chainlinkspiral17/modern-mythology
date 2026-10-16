@@ -1,0 +1,203 @@
+{
+  "id": "vol2_ch10_salmon",
+  "vol": 2,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "x. The Spawning Grounds — Salmon",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_coast_highway_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Road trip",
+      "sub": "Up the coast to Depot Bay · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "I stole my daddy's gun, he said when he and I took a road trip up to Depot Bay for the day. No you didn't. Yes I did, see here. He opens up his backpack and shows it to me, sitting at the top. That ain't loaded? Sure as hell it is. I keep driving. Don't worry. He said."
+    },
+    {
+      "t": "narrate",
+      "text": "I thought we could go on the beach and shoot seals. Seals? Don't look at me like that. You just said you wanted to go and shoot seals, what reason you have to shoot seals? They eat the salmon. That's not a reason. They steal the crab bait out of the pots, they're smart bastards, those seals. You're insane."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah but those seals are no good, and probably deserve it. Silence as Frank pulled a sandwich out of his bag. Through messy bites he said. You got to read that Kesey book I gave you. Watch the mess. Fucking brilliant that book. That tuna you're eating smells something awful. There was no mayonnaise. I had to improvise."
+    },
+    {
+      "t": "narrate",
+      "text": "That's horrible, I don't even want to know. Did you read it? No, not yet. You'd better, it's fucking killer. Next time Dad drags me out to help work the tows I'll bring it with me. Yeah man, you should. In the book, a bunch of crazies like me escape from the loony bin and go to Depot Bay and go fishing for the day."
+    },
+    {
+      "t": "narrate",
+      "text": "Only crazies would want to go fishing in Depot Bay. For fun man, they do it all for a little bit of fun. To escape the insanity. You want to shoot seals. For fun man. To escape the insanity."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_bonfire.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The bonfire",
+      "sub": "Beach · Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "We ended up buying saltwater taffy and beer. Frank and I built a bonfire on the beach and spent the night out there, drunk beyond good measure. You love her, don't you? I nodded and then he nodded. I don't have that yet. He said. Love. I'm just a fucking salmon man. I started to crack up and slid down off the log."
+    },
+    {
+      "t": "narrate",
+      "text": "You and your salmon. You wearing the analogy a little thin, you think? Frank tossed his empty bottle in the fire and watched it smoke up from the inside. Those Siletz Indian Motherfuckers. Those bastards my daddy says killed my mommy. They think the Salmon is something special. Something to admire."
+    },
+    {
+      "t": "narrate",
+      "text": "You're fucking drunk. My daddy didn't love my mommy. Your dad wasn't a salmon, either. He coulda been. My mommy died right after she had me. She coulda been a salmon. Maybe. I said. Maybe she was. Becca is something special, isn't she? I smiled and nodded and gave my best friend another beer."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_school_hallway.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The hallway",
+      "sub": "Small Wood High · Lunch",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Frank was my best friend until the day he ran away. He told no one. Just up and disappeared. I was the reason why. Clarrisa cornered me in the hall and told me. I found Becca and cornered her at lunch. Becca. I said. Becca. She wouldn't look at me. Becca. I lowered my head to look her in the eyes. Becca."
+    },
+    {
+      "t": "narrate",
+      "text": "She covered her face with a hand. Becca. Crying. Becca. I grabbed her by the shoulders. Becca. Her face was red and wet. Her hands were on my arms as I shook her. Becca. She fell limp and dropped to her butt. Becca. Sitting and crying in front of everybody. Becca. Frank grabbed me and pulled me away from her."
+    },
+    {
+      "t": "narrate",
+      "text": "I looked at her. Becca. She wouldn't look back. Becca wouldn't look back."
+    },
+    {
+      "t": "narrate",
+      "text": "I was sobbing, there in front of everybody. Frank tried to talk to me. It was nothing. It meant nothing. Ask Becca. It was a mistake. My best friend. My love. It was a mistake. Don't be mad at her. I was the one who started kissing. Becca. It was me. Frank. Yes. Frank. It's over. Frank. Nothing more will happen. Frank."
+    },
+    {
+      "t": "narrate",
+      "text": "We decided it was a mistake. Frank. It will never happen again. Frank. We're sorry. Frank. I can't begin to tell you how sorry. Frank. You're my best friend. Frank."
+    },
+    {
+      "t": "narrate",
+      "text": "I punched him in the jaw and he went down with one hit. He didn't make any noise as I kept hitting him. He didn't move as I punched him in the chest. He didn't make any noise when I broke his nose and split his lip. He didn't say anything to me ever again. That's where the book ends. Frank died when he was thirty."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_gymnasium_hearing.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The hearing",
+      "sub": "High school gymnasium · Evening",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Becca stands up and makes her way to the podium. She looks radiant."
+    },
+    {
+      "t": "say",
+      "char": "Becca",
+      "expr": "neutral",
+      "text": "Frank Boehme gave us a gift. His novel is our novel. It is the story of each and every one of us. But the idea of teaching The Spawning Grounds to my students frightens me. It is a wonderful story but it is so very personal. The mistakes I made as a kid would be open to debate in my classroom."
+    },
+    {
+      "t": "say",
+      "char": "Becca",
+      "expr": "neutral",
+      "text": "I couldn't teach this novel. I couldn't bring any objectivity to the story. I couldn't grade an essay questioning Frank's decision to sleep with his best friend's girlfriend. I couldn't read my students the chapter where I. Everyone here knows his story. It is a big piece of our tiny little culture."
+    },
+    {
+      "t": "say",
+      "char": "Becca",
+      "expr": "neutral",
+      "text": "It is a part of who we are. There's nothing more I need to say today. Thank you."
+    },
+    {
+      "t": "narrate",
+      "text": "Becca sits and I hug her tight."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_harbor_dusk.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The docks",
+      "sub": "Harbor · Evening",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "We hadn't spoken in three months. Not since Frank went away. She found me on the docks, cleaning the deck of my daddy's boat. I looked up at her and I smiled and invited her down. She slipped a little and I caught her."
+    },
+    {
+      "t": "narrate",
+      "text": "We rocked back and forth on a bench, sitting and watching the rest of the boats come in for the evening, hearing the bells and whistles and moans of the harbor."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "watch the boats come in",
+          "goto": 37
+        },
+        {
+          "text": "watch her face",
+          "goto": 37
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "I'm pregnant. She said. I just nodded and hugged her close. I'm going to keep the baby because it is my baby. Frank's not going to know. I nodded and watched her face. She was calm and warm to the touch. Her hair was tied down but strands hovered in the wind above her head. Marry me. She said. I love you. She said."
+    },
+    {
+      "t": "narrate",
+      "text": "I want you to be my husband. I want you to be the father. You were always supposed to be the father. I kissed her on the lips and looked in her eyes. There was love. I nodded and kissed her again. I put my hands in her hair and pulled her close. Our breath steaming and swirling. Our fingers locked and inseparable."
+    },
+    {
+      "t": "narrate",
+      "text": "Marry me. I said. I will. She said. We sat and watched the sun go down. Beneath us the salmon made their way to the river."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch10_salmon_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch11_terminal_velocity"
+    }
+  ]
+}

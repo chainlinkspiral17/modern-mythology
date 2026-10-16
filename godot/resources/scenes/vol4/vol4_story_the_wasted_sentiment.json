@@ -1,0 +1,61 @@
+{
+  "id": "vol4_story_the_wasted_sentiment",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "the wasted sentiment",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_wasted_sentiment_bedroom.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "the wasted sentiment",
+      "sub": "story · the weekend",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Steven didn't want to leave his house, didn't want to make the journey outside. He was still tired and stiff from falling asleep like he did, twisted in a tight spot."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreamt of being at a summer camp for smart kids, where the kids did science experiments and played on computers, only he just wanted to go swimming and sing around the camp fire and be a kid. They had plans they made last Sunday night and looked forward to all school week."
+    },
+    {
+      "t": "narrate",
+      "text": "They had parties to go to, raves to track down, energy to burn."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_the_wasted_sentiment",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

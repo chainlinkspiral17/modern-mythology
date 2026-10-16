@@ -1,0 +1,57 @@
+{
+  "id": "vol4_poem_retinal_burn_second",
+  "vol": 4,
+  "chapter": 3,
+  "type": "interlude",
+  "title": "Retinal Burn (darkroom) (second)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Retinal Burn (darkroom) (second)",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Light from all stars, mostly just our star,\nCapturing and framing countenance and circumstance.\nShadows sketch far more interesting facets\nThan light ever will."
+    },
+    {
+      "t": "narrate",
+      "text": "The chemical burn, that trace image\nThe simple lasting magic that ages as we do.\nWrinkling yellowing molding\nThe negative reverse, the mold cast outward"
+    },
+    {
+      "t": "narrate",
+      "text": "To study inward and return to the amber moments.\nThere is a secret process,\nOnly known to those who consider\nThe baths of poison that give it shape and color,\nLeaving it to dry like leaves on a vine after a rainstorm."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_retinal_burn_second",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

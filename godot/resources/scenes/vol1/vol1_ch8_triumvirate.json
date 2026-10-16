@@ -1,0 +1,225 @@
+{
+  "id": "vol1_ch8_triumvirate",
+  "vol": 1,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Act Two — Rock On",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_office_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Left Alone",
+      "sub": "INT. Club # · Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The Handsome Triumvirate are left alone with the body of young Aria."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "All right. We need to think."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "angry",
+      "text": "Jesus, he just ditched us, didn't he."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "No, he's still here — this is just a moment we need to share together without his voice in our heads."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "The air is different, a certain dramatic gloom hangs about it. The music in my head is dredg, nordic runes etched into my back."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Still we carry with us primal tools he gave to which we possess these gifts of elseworld make — perhaps Disingenuous design."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Quiet, I hear him in your voice — wait, no, he's in all our voices. I can feel his presence in this world. He's always been here, always looking."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "worried",
+      "text": "Have you gone mad, Faust? You were the one who introduced him to us. How can he be in us when you yourself were the source?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "worried",
+      "text": "Did not dream this. This is no dream, or is it? Don't know what to make of any. Don't like how words feel coming out my mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner puts his hand on his friend's shoulder."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "warm",
+      "text": "We're here for you, dude. Don't get all knocked askew. Life is all about shattering these doors of perception wide open."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob grimaces and does the same."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You got us into this mess, you'll get us out, and you'll become a cliche and get the girl in the end."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust stands up, wiping tears from his eyes."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "sad",
+      "text": "Some part of me is always a stupid child, learning so much from every moment. How can adults turn this off and forget the joy of discovery?"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust stands a beat."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "warm",
+      "text": "Yeah, he's in us. Rock on."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Take one last look at the room.",
+          "goto": 26
+        },
+        {
+          "text": "Head for the door.",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The office is very quiet without his voice in it."
+    },
+    {
+      "t": "narrate",
+      "text": "They proceed to leave the club."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_city_color_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_club_thump.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the world is a wash of color and activity. They see everything in strange new ways, so bright shiny new and overwhelming."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "surprised",
+      "text": "Whoa."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "amused",
+      "text": "Now we're playing with power."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "If this is what being close to death is like, then sign me up because I'm sold. I feel like a full blown rockstar, every step I take trembles ridiculous."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "warm",
+      "text": "There is a guitar riff buried deep, echoing out a lonesome wail into the stardust aether of 'all and right' — and we Sirs are most definitely all and right."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Act Three",
+      "sub": "The Handsome Triumvirate",
+      "duration": 2400
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch8_triumvirate_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch9_street"
+    }
+  ]
+}

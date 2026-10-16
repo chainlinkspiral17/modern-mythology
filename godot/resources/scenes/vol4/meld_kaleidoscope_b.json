@@ -1,0 +1,203 @@
+{
+  "id": "meld_kaleidoscope_b",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — the water tower",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the water tower",
+      "sub": "EXT. FAUST'S APARTMENT · Small Wood · day · the margin",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Faust has an easel set up on the balcony. He paints from a notebook, a pencil sketch of a town he has never been to. One road down to the water. A cannery. A water tower."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Everyone must have a hobby\nsaid Aunt Grace who set me up"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust paints. The water tower goes in first, four legs and a tank and a pointed hat."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "painting burns an image from memory.\nonly that I am starting to see\nthings which should not be."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_facet_tower.jpg",
+      "caption": "the water tower, wet"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust takes a hit off the joint and leans back."
+    },
+    {
+      "t": "narrate",
+      "text": "His models sit for him, the three elementals. Water on the left, fire on the right, air in the middle."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "Quiet while he works on me\nI think he really gets it"
+    },
+    {
+      "t": "narrate",
+      "text": "Every time he looks up, Water has gone a little further out, like a tide."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "amused",
+      "text": "It's cool how\nwe can see ourselves\nas he paints us"
+    },
+    {
+      "t": "narrate",
+      "text": "Fire is blue at the root, like a pilot light under a diner grill."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "You're just trying to win his favor"
+    },
+    {
+      "t": "narrate",
+      "text": "Air comes and goes, like breathing in a room where somebody is sick."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_room_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_hospital_hum.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "A hospital room on a top floor, large for what it is."
+    },
+    {
+      "t": "narrate",
+      "text": "A television dangling from an odd angle plays ducks on a lake or a pond somewhere."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust paints ducks onto the water under the tower. He couldn't tell you where they came from."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "tired",
+      "text": "When nightmares keep me up\nat odd hours I can relax\nwith my demons and desires\nmade firm in the slowing of paint."
+    },
+    {
+      "t": "narrate",
+      "text": "The paint is still wet. The tower leans a little, like it wants to see over his shoulder."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "surprised",
+      "text": "Look what I've trapped"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "It starts to rain. Faust drags the easel inside and the paint runs anyway."
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_tower",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "turn the lens. the paint is still wet.",
+      "opts": [
+        {
+          "text": "the water tower, in wet paint",
+          "scene": "meld_kaleidoscope_b",
+          "hide_if": "meld_facet_tower"
+        },
+        {
+          "text": "coffee in the editing suite",
+          "scene": "meld_kaleidoscope_c",
+          "hide_if": "meld_facet_suite"
+        },
+        {
+          "text": "a copy of a copy of a copy",
+          "scene": "meld_kaleidoscope_d",
+          "hide_if": "meld_facet_xerox"
+        },
+        {
+          "text": "the lamp, the porthole",
+          "scene": "meld_kaleidoscope_e",
+          "hide_if": "meld_facet_porthole"
+        },
+        {
+          "text": "crab number zero",
+          "scene": "meld_kaleidoscope_f",
+          "hide_if": "meld_facet_derby"
+        },
+        {
+          "text": "stop turning.",
+          "scene": "meld_kaleidoscope_g",
+          "requires": [
+            "meld_facet_tower",
+            "meld_facet_suite",
+            "meld_facet_xerox",
+            "meld_facet_porthole",
+            "meld_facet_derby"
+          ]
+        }
+      ]
+    }
+  ]
+}

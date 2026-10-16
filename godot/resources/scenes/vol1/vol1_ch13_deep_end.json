@@ -1,0 +1,482 @@
+{
+  "id": "vol1_ch13_deep_end",
+  "vol": 1,
+  "chapter": 13,
+  "type": "chapter",
+  "title": "Act Three — The Deep End",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_deep_end_pool.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_club_thump.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Deep End",
+      "sub": "INT./EXT. · No Time",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The MUSIC aisle doesn't end. It slopes and curves downward and turns into concrete, smooth and pale, an empty swimming pool so big the far wall is out of sight, painted at the bottom with a faded blue that used to be water."
+    },
+    {
+      "t": "narrate",
+      "text": "The coping is lined with kids sitting in a row with their boards across their knees, waiting to drop in. All of them are dead, and none of them seem bothered by it."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere, from everywhere, there's a guitar riff, one note held, a lonesome wail."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "warm",
+      "text": "(reverent) There it is. That's the riff. I said there was a riff buried deep."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You did say that."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Out the club door. I said it and I didn't know I knew it."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner's shirt-Fire peels off his chest and sits on the coping, swinging her legs, giving off heat."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Somebody bring a board?"
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner looks down. He's holding his deck, the one from his house, the one he put up on the wall the afternoon they played Burzum."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I didn't bring it."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "You always bring it."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "worried",
+      "text": "(peering over the edge, gray) Nope. Absolutely not. I just landed a plane on a desk."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "You don't have to drop. Sit on the edge. Keep the radio on me."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Gladly."
+    },
+    {
+      "t": "narrate",
+      "text": "Further down the coping there's a different crowd: boys in corpse paint, black and white, leather and spikes, sitting around a record player that plays the riff backward. They're arguing in low voices, and they've been arguing a long time."
+    },
+    {
+      "t": "say",
+      "char": "Corpse-Painted Boy",
+      "expr": "neutral",
+      "text": "(to Wagner) You came to hear it."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I came for a friend."
+    },
+    {
+      "t": "say",
+      "char": "Corpse-Painted Boy",
+      "expr": "neutral",
+      "text": "Everybody says that. Then they stay for the story."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I know who you are. I've got the records."
+    },
+    {
+      "t": "say",
+      "char": "Corpse-Painted Boy",
+      "expr": "neutral",
+      "text": "Then you know we burned everything that wasn't the story. Churches. Each other. We got so far inside it, we couldn't see out. It was beautiful in there."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "warm",
+      "text": "(gently) It was a story. You made it. You could have put it down."
+    },
+    {
+      "t": "say",
+      "char": "Corpse-Painted Boy",
+      "expr": "neutral",
+      "text": "Could you? You're standing at the edge of the biggest pool in the world, listening to the riff. You going to put it down?"
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner looks at the pool."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "sad",
+      "text": "(quietly, to Wagner) He's not wrong, he's just not you. Drop in. Don't fall in. Those are different."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner sets his tail on the coping and steps on, and he drops in."
+    },
+    {
+      "t": "narrate",
+      "text": "He's beautiful at it, which is no surprise. He carves the wall, rides it up, turns high off the far side and comes back down. The riff follows him, or he follows the riff."
+    },
+    {
+      "t": "narrate",
+      "text": "Every pass he goes higher."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "(watching, to Jacob) I feel old just coming out here."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(watching too) Not so bad. Giving me hope for the future."
+    },
+    {
+      "t": "narrate",
+      "text": "They hear themselves. They both laugh."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner goes higher, too high. On the next pass he's up past the coping, past where the walls stop, hanging in the air above the pool, and the riff holds that one note and doesn't let him come back down."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "warm",
+      "text": "(up there, dreamy) Oh. Oh this is it. This is the part where you stay."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Wagner."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I could live here. I could be the riff."
+    },
+    {
+      "t": "say",
+      "char": "Corpse-Painted Boy",
+      "expr": "neutral",
+      "text": "(satisfied) See."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "worried",
+      "text": "(to Faust, urgent) He's doing the thing. He's getting lost in the story. Dickens said, the closer we get the more we lose of ourselves."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob's hand goes to his pocket, to the needle."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Not yet. Lifeline first. Needle's last."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust presses his own earbud, hard, and holds it up to the sky like he's tuning in a radio."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner's partner's sample plays, out loud now, through the whole pool."
+    },
+    {
+      "t": "say",
+      "char": "Wagner's Partner",
+      "expr": "neutral",
+      "text": "drinking with the boys, steering them out of trouble, I know, I know, come home anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner hears it. He looks down. Below him the pool is huge and blue and very far."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Ah. Ah, there she is."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts to fall. He comes straight down, not carving, the board spinning away from his feet."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Don't fall. Fly."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "worried",
+      "text": "(standing up, terrified) Somebody —"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust drops in."
+    },
+    {
+      "t": "narrate",
+      "text": "He has no board, and he's never once done this. He runs down the wall of the empty pool in his sneakers, arms out, and he's going to break every bone he owns."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Break tailbone later!"
+    },
+    {
+      "t": "narrate",
+      "text": "He doesn't fall. The water on his shirt spills out and spreads across the bottom of the pool, the faded blue turning back into real water, cold and deep, and Wagner comes down into it with a splash like a cannonball at a summer pool party."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust comes down after him. Then Jacob, who didn't decide to and is shrieking."
+    },
+    {
+      "t": "narrate",
+      "text": "All three come up for air in the deep end. Wagner is laughing, and he can't stop."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "You dropped in."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I dropped in."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "angry",
+      "text": "(spitting water) I did NOT drop in I was DROPPED in."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Earn mad skills through trial and error."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Error! All error!"
+    },
+    {
+      "t": "narrate",
+      "text": "The riff resolves. It finally lets that held note go and lands on the next one, and it's a whole song now, and they can hear the words even though nobody is singing them."
+    },
+    {
+      "t": "narrate",
+      "text": "Up on the coping the corpse-painted boys watch. One of them takes off his spiked armband and sets it on the concrete, like he isn't going to need it anymore. He doesn't come down, but he stops arguing."
+    },
+    {
+      "t": "say",
+      "char": "Corpse-Painted Boy",
+      "expr": "neutral",
+      "text": "(to nobody) Huh."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "(swimming over, steaming) That's what I came to see."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner floats on his back."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Pebbles on the water's surface. Smallest thing changes the big picture completely."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You quoting yourself now."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Somebody should."
+    },
+    {
+      "t": "narrate",
+      "text": "Something floats up beside Faust, a guitar pick, black, thin, worn down on one side."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "That's for you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I don't play."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "It's not for playing. It's what you strum the riff with when you need to get back here. Or get back from here. Either way."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust pockets it next to the page and the Advil."
+    },
+    {
+      "t": "narrate",
+      "text": "The pool drains, gently, a bath when the plug comes out. They're standing in the aisle, soaked, dripping on the floor wax next to the cough drops. A sign on a yellow tripod says CAUTION WET FLOOR."
+    },
+    {
+      "t": "narrate",
+      "text": "It wasn't there before."
+    },
+    {
+      "t": "narrate",
+      "text": "The third aisle, ART, is lit."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Your turn, captain."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "(not moving) Give me a second."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You okay."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm scared of my own paintings."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "(from his shirt) that's the best fear."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Somebody already told me that."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "I know. I was on the wall."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch13_deep_end_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch11_aisles"
+    }
+  ]
+}

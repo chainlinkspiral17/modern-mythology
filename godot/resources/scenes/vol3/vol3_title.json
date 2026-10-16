@@ -1,0 +1,44 @@
+{
+  "id": "vol3_title",
+  "vol": 3,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "The Earthman Chronicles",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_plate_earthman.jpg",
+      "caption": "The Earthman Chronicles — by Lafayette Hubbard"
+    },
+    {
+      "t": "interlude",
+      "text": "The Earthman Chronicles",
+      "sub": "by Lafayette Hubbard",
+      "duration": 2600
+    },
+    {
+      "t": "jump",
+      "scene": "meld_seam_2_3"
+    }
+  ]
+}

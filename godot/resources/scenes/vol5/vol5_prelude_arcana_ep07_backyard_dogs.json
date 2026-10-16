@@ -1,0 +1,342 @@
+{
+  "id": "vol5_prelude_arcana_ep07_backyard_dogs",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 6 · the backyard dogs",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep07_backyard_dogs.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 6 · the backyard dogs",
+      "sub": "",
+      "duration": 2400
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "CLINTON, a precise and well-groomed suburban idler, takes a beer from the cooler and sits down on his porch. BREAKER, a larger and shaggier fellow, wanders up half-drunk and takes a seat next to Clinton. Clinton proceeds to hand Breaker a beer."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Brings you here this fine afternoon."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Thought put to motion, motion come to rest."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Know how that is."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "What is this we’re drinking today?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Asian horse piss but I kind of like it."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Been out here long and or did I miss anything?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Neighbors had a row of it but they’re all done now."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "How are Cindy and the kids?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Enjoying the art museum downtown, having a late afternoon picnic."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Sounds lovely, why aren’t you with them?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Going out on a job tomorrow, needed to do some thinking to set myself."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "I’ve known few men to mentally prepare themselves for their respective labors as you do."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "The common perils of many such lines of work."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Where you off?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "I’ll find out as I nearer my destination."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Meaning?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Further instruction awaits when I’m at the airport."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "That is something curious."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Indeed Sir, it is."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "What is it going down manana, if you don’t mind me asking?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "You found yourself over here drinking with me on a fine enough afternoon, so now I suppose we should proceed to discuss the particulars."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Sounds serious."
+    },
+    {
+      "t": "narrate",
+      "text": "Clinton gives him a look."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "I mean, what I’m saying, you don’t show it this poor, if it is well and truly, all I’m trying to say."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Reckon we’re both cool customers, obliged to perform one’s duty, push come to shove, we get the business done."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "We both got families, Clinton. Families need looking after."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "That’s why we do whatever it is we do. To provide."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "This ain’t about support, this is about, you know what this is about."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Every way I figure, I’m still just coming to understand why it is I do the things I do, and all this quality rearing a family lifestyle just happened somewhere along the way."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "It’s a beautiful thing, but that awful no good world is trying to find ways to catch up to you. To all of us."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "If it isn’t me, then who will it be? I’m proud of where my path has gotten me and the life I’ve lead, however fucked up horrific, and when you bare knuckle get down to it, just plain stupid most of my life choices have been."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "When you’re still, I don’t see how you can keep it all from crashing down."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "It’s a coin, Breaker. On one side, I see all the bad in the world, and then I have to think of the good to get me through it. And then another day happens and it’s the inverse and I see all the good in the world, and then I have to think of all that bad just to keep myself pure for those moments of absolute certainty."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "At some point, you’re going to have to choose to fall on one side or the other."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "It’s the razor’s edge we can talk to death, but somewhere I gave up and chose to balance the edge, hoping for the easy rest that comes with acclimating to burning chaos, no easy wriggling out of whatever’s trying to find a way back in."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Why are you telling me all this right now?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "You know why. In case it does all comes apart at the seams. Someone will tell get a chance at the truth, or at any rate, some semblance of the truth will get itself out there, maybe perhaps."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "And you’re expecting this, right now?"
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Or round about now?"
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Jesus, Clinton."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "We wouldn’t be having this conversation if I was only half certain, if you get my meaning."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Meaning got."
+    },
+    {
+      "t": "narrate",
+      "text": "Clinton gets another fresh beer for the both of them."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "I’ll talk more if I get back from wherever it is I’m headed."
+    },
+    {
+      "t": "narrate",
+      "text": "They clink cans."
+    },
+    {
+      "t": "say",
+      "char": "Breaker",
+      "expr": "neutral",
+      "text": "Conditional if."
+    },
+    {
+      "t": "say",
+      "char": "Clinton",
+      "expr": "neutral",
+      "text": "Conditional if."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep07_airport_hotel.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "EXT. AN AIRPORT HOTEL - NIGHT",
+      "sub": "",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Clinton checks in, slinging a bag over his shoulder."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep07_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

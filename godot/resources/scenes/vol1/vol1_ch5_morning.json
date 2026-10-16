@@ -1,0 +1,385 @@
+{
+  "id": "vol1_ch5_morning",
+  "vol": 1,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Act Two — The Plot Thickens",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_wagner_home.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Act Two",
+      "sub": "The Plot Thickens",
+      "duration": 2400
+    },
+    {
+      "t": "interlude",
+      "text": "Wagner's Home",
+      "sub": "INT. Wagner's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner begins the day by getting out of bed, walking over to his turn-table and putting on an album."
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "All right."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_jacob_apartment.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Jacob's Home",
+      "sub": "INT. Jacob's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob watches his son waking up to start the day."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Faust's Home",
+      "sub": "INT. Faust's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Faust is gagging, he stumbles about disoriented."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_wagner_porch_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Wagner's Home",
+      "sub": "INT. Wagner's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner is sitting on the porch, reading and smoking."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_jacob_apartment.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Jacob's Home",
+      "sub": "INT. Jacob's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob is cooking up schnitzel."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Faust's Home",
+      "sub": "INT. Faust's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Faust looks at himself through a crusty mirror."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Keep looking.",
+          "goto": 27
+        },
+        {
+          "text": "Turn away from it.",
+          "goto": 28
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The face in the glass is still half asleep, and does not look away first."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a knocking at his door and he goes to get it. It is Dickens Dean."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Forgive my mess, but I find it conducive to creativity. I can look at things in sedimentary layers and remember where in it something should be. Fossil finds in my own apartment."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "The air you bring about you really changes the place, Dickens."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Yeah, I've been told that. I'd suspect you'd carry your specific voice and identity with you as well. Assuming those were your goals."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "At this time in my life, I really just want to see to the happiness of my friends and family first. My ambitions while fierce, do not supersede their own closeness or proximity to me."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I've been neglectful or selfish enough to them in this existence alone, without bringing any other dimensions into the equation."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You know why I sought you out. You have a great potential to craft something I really want to see made. Well, lots of things I want to see made. I wouldn't say you alone, but you few, you special few."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Who are you exactly, I'm intrigued."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "In my world, I was the fastest kid in town. I ran everywhere, I was always thinking on my feet. I was Forrest Gump but not retarded."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "When I wasn't running, I was in a book, waiting tables, I ran to the edges of town and I got lost. I knew there was a bigger world out there just waiting. But I never left."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I just kept running those same streets. Looking up at the powerlines, seeing the strange connections running just under the surface."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I was the youngest person let into the Elk's Lodge, because I did so much work for them. I got them hooked up to the Internet, is all, but that's a big thing to old people."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Even better if you explain to them how awesome it all is. They see the spark in the eyes and just want to follow your gaze."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "amused",
+      "text": "You were what, a broadband prophet."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "In my world, I achieved way more pushing technology forward. Your trickle would not be felt for but a moment in the churning ocean of what I helped bring about."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "A flood of information, pouring out across the world. Knowledge for all."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Sounds intense. Why do you want to hang with me?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You have a vision, from those of us who've learned to wander, they've spoken of you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I hardly think I'm worthy to cross time and space. And besides, it sounds like my reality is awfully grungy to you, like you're slumming dude."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Sorry, no, that's not the impression I want to leave. I'm very much enjoying my travels. Think of me like a tourist."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "warm",
+      "text": "Eyes always wide open and happy, staring out with mute fascination and wonder upon the fresh new world. It's my first time outside Small Wood, though I have watched from afar."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust's phone vibrates. He checks his text message."
+    },
+    {
+      "t": "narrate",
+      "text": "From Habes. Hey, in town, wanted to catch up. Thinking of you."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Who is that from?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Someone I hadn't thought about in a very long time."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "In a good way or bad."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "It's never just one now is it?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Love lifes are complicated."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I imagine hopping between dimensions only complicates the deal."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "amused",
+      "text": "You think girls are weird on this plane of existence, just you wait."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "amused",
+      "text": "Ha, no spoilers."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Mind if I hang out with you and your friends today?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Why would I? You seem like you can hold your own."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Thanks, I appreciate it."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch5_morning_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch5_proposition"
+    }
+  ]
+}

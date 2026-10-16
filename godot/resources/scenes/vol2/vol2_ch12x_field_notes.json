@@ -1,0 +1,149 @@
+{
+  "id": "vol2_ch12x_field_notes",
+  "vol": 2,
+  "chapter": 12,
+  "type": "interlude",
+  "title": "Small Wood — field notes",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "field notes",
+      "sub": "Small Wood · February 2013",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The second time I lived in Small Wood I kept a blog nobody read. Some of it I printed off at the copy shop on slow nights and folded into the back of the notebook."
+    },
+    {
+      "t": "narrate",
+      "text": "Nursing a bottle of firefly whiskey. I sit on the steps leading up from the beach, and look out for ghosts. Local superstition mentions them coming in with the tide."
+    },
+    {
+      "t": "narrate",
+      "text": "The old man at the bait shop says you hear them on the radio first."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_town_road.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I spent the weekend in Small Wood, talking to locals. Found a killer patched-up jacket at a local thrift store. I'll post some footage from travels by month's end."
+    },
+    {
+      "t": "narrate",
+      "text": "Weather is cold and clammy here on the coast. The local economy is still depressed. Watched the State of the Union on my laptop on borrowed wifi. In Spain, it was pronounced wee-fee. Their elections were a tad more dramatic."
+    },
+    {
+      "t": "narrate",
+      "text": "Not sure which reality I'm anchored to, but smooth sailing seems to be assured. Communication out across Flood Channel is intermittent at best."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_pier_crabbing.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Chartered a boat later this week at an extreme evening/early morning hour to go crabbing out near Red's Churn, just puttering around the bay, though we'll need to keep an eye on our float traps and other traffic."
+    },
+    {
+      "t": "narrate",
+      "text": "The chart on the wall at the bait shop has it as Jesup's Churn. Nobody could tell me who Jesup was. Or Red either."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_video_store_counter.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Small Wood still has a local video store. No chain restaurants. One stoplight, two stop signs."
+    },
+    {
+      "t": "narrate",
+      "text": "The owner of the video store tried to get me to rent MELODY, a film shot nearby back in the nineties. Looks very J-Horror, only predating that particular cinema movement by five or so years."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "take the tape to the counter",
+          "goto": 20
+        },
+        {
+          "text": "leave it on the shelf",
+          "goto": 21
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Chuck pulled the tape out from behind the counter. Said Dean up the hill rents it every so often, always brings it back the next morning. Said it like that was a recommendation."
+    },
+    {
+      "t": "narrate",
+      "text": "Need to get a VHS player to check it out. Christ. It's been awhile, since I've used one. Film doesn't look very promising. Still, Chuck said there aren't any late fees."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_gymnasium_hearing.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "High school basketball is about to finish up, or is in the throes of finishing up. The Small Wood Wolverines made it to the playoffs after a lackluster season, beating the number one ranked Jesuit school in their second to last game."
+    },
+    {
+      "t": "narrate",
+      "text": "Next weekend, I promised a gal we'd drive up the coast for the Seafood and Wine festival. I'm looking forward to some of the Willamette Valley wines and whatever artisanal cheese and meats make the trip. If it's anywhere near as good as the farmer's market, we'll dine well."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_used_bookstore.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Bought for a dollar at the Small Wood Public Library: The Recognitions by William Gaddis. It figured into an argument regarding Scope the Small Wood Scriveners, the local writer's group, descended into. See also: David Foster Wallace & Thomas Pynchon."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Bought a bottle of firefly whiskey to sit on the beach with, and look out for ghosts. Local superstition mentions them coming in with the tide."
+    },
+    {
+      "t": "narrate",
+      "text": "Stone washed smooth, orange in fading sight.\nEntranced oceangoers taut in golden hour gilded light.\nThe fade and sway done break away.\nCarpets of sea flea pestilence in lee breeze.\nSex on the beach willed how you please\nWhite cloth draped photogenic innocence.\nTime to reconcile soft penitence.\nWedded wreckage and willed happenstance."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch12x_field_notes_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch12x_loose_pages"
+    }
+  ]
+}

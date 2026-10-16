@@ -1,0 +1,198 @@
+{
+  "id": "vol5_prelude_arcana_john_shift",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "John. — the dinner rush",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_steamship_gallery.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_prelude_dinner_rush.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The First Tier",
+      "sub": "the gallery · a portrait lights",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "John."
+    },
+    {
+      "t": "narrate",
+      "text": "The worst of us was also the best in all ways subtle and endearing. He was there to set the world on fire, but also the first of us to leave. Forced to the curb, not knowing his place in our grand scheme."
+    },
+    {
+      "t": "narrate",
+      "text": "Just a baby, new to the city. Don’t mother him, now of all times, don’t mother him. He has to learn, he has to see."
+    },
+    {
+      "t": "narrate",
+      "text": "Stop showing him all the ugliness, please, you’ll drown him. He has to see."
+    },
+    {
+      "t": "narrate",
+      "text": "We let him into our midst and he betrayed our secret. Which secret. Every last one."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_restaurant_floor.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Waiting tables",
+      "sub": "the dining room · dinner rush",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Some cub scout journalist monster. Waited tables on the upper crust. Kept every dirty secret by becoming several himself along the way."
+    },
+    {
+      "t": "narrate",
+      "text": "Can’t wait to have him, can’t wait to hear what he has to spill. Oops, that red wine won’t come out, you clumsy fool. Roguish charm smears way to ugly smarm."
+    },
+    {
+      "t": "narrate",
+      "text": "Better I take your rage than your spastic child. Dear please. You think this rage, quietly simmering. Why yes I do, here let me top yours off Maam."
+    },
+    {
+      "t": "narrate",
+      "text": "See, the air is clear and words are all that sting the ear. Carry on with your pathetic leech-like income motions, don’t interrupt us further, this was almost a scene. Agreed, but you insisted."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyebrows reach the Missus, her neck cranes as shudder itch rises in her."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_waiter_pen.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Back in the waiter pen, he is straight to the machine, fingers flying fine on their own until she smacks into him. Gloria. Get out of the way you dumb slob."
+    },
+    {
+      "t": "narrate",
+      "text": "He misses something small, her order about twenty lines of text pounded out on some unresponsive touch screen interface, twice a twitter. Around the table he goes, reliving the instant. The young boy thumbing with whole torso his entutainment, smacking away anybody close to him."
+    },
+    {
+      "t": "narrate",
+      "text": "We recognize himself in ourself, the youth changing into something the parent does not recognize in themself. Some alien creature caught up in a world far more remarkable than this immediate mundane hereafter."
+    },
+    {
+      "t": "narrate",
+      "text": "John smiles, knowing his best friends make the interactive entutainments that pacify and solidify all those agile young minds. The boy says without any eye contact whatsoever, a meatball with spaghetti."
+    },
+    {
+      "t": "narrate",
+      "text": "The older daughter pecking at her phone, twisting a finger round gossamer twirls, a monstrous tween whose look cuts fragile psyche. What kind of salads do you have? There’s a house with vinaigrette and a caesar, but I’d go with the salad special, jumbo lump crab on top some mixed greens, honey basil."
+    },
+    {
+      "t": "narrate",
+      "text": "I’ll have that. Which. Whatever. Salad special it is. Wife can’t decide. The husband prods with eyes first. Honey, he’s waiting. It’s fine, really."
+    },
+    {
+      "t": "narrate",
+      "text": "He watches the boy play his game, recognizes it as Studio Edda’s Psychadella. A platformer puzzler based on psychedelic drug experiences. He knows the kid who made it, some punk in Prague."
+    },
+    {
+      "t": "narrate",
+      "text": "What do you recommend of the Pastas? Carbs, really? Handmade Sir. You grind the grain yourself? No, it comes pre-ground. Shame."
+    },
+    {
+      "t": "narrate",
+      "text": "I like it my wheat fresh from the chaff, no more than two days picked. The waiter boy laughs not sure if he’s joking, then I’d recommend the Pasta Serpico, an orzo bolognese, melts in the mouth. Threadlike beads of micrograin durum and aerated eggwhite, tossed in a sauce of nicely atomized beef and lamb."
+    },
+    {
+      "t": "narrate",
+      "text": "It breathes of basil and garlic roasted pine nut. Fine. I’ll have that. She’ll have the sea bass, her usual way. He remembers the details. The chef will not."
+    },
+    {
+      "t": "narrate",
+      "text": "The newer restaurants POS screen have save tabs for regulars keyed to tables. The bossman is behind the times in more ways than one."
+    },
+    {
+      "t": "narrate",
+      "text": "Gloria shoots him a nasty glare until he gets it right. There is another machine that had opened up since that first salvo. He returns her look with one of his own make."
+    },
+    {
+      "t": "narrate",
+      "text": "What the fuck is your problem? I just tuned you out completely, his smile says. Just doing my job, he says direct."
+    },
+    {
+      "t": "narrate",
+      "text": "He’s getting better at this. No flirting, no hurting. So she gives him one hopeless last look, because to her, he’s small time, she knows she’s bedded way further on up the ladder, and he’ll be stuck in this waitstaff purgatory for some time yet."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_restaurant_floor.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The meals come made by hand, as the generations did it. The subtle shift in quantum foodstuff lost on old school Sicilians."
+    },
+    {
+      "t": "narrate",
+      "text": "John, their waiter, lies to their faces."
+    },
+    {
+      "t": "narrate",
+      "text": "They don’t want to hear about the migrant laborers doing their best in an understaffed, poorly ventilated kitchen, trying to keep up with the literally bleeding edge, most having never lived with voices in their heads, retinal readouts, unable to speak modulated sonorous artifice through larynxd vocal cords, and denied the absolute presence of intrusive ED that permeates high tension social situations."
+    },
+    {
+      "t": "narrate",
+      "text": "Most improvise just fine, cheat where they have to."
+    },
+    {
+      "t": "narrate",
+      "text": "One poor kid exploded a finger in the duster last week, his afterscream sounding all the way to the front of the house valet service, the poor underpaid kid hyperventilating in a good deal of his own blood and gristle, a slightly warm and sticky pink curtain that descends on everything, wafts out into the dining area as the kitchen doors swing loudly open and shut on worn out hinges."
+    },
+    {
+      "t": "narrate",
+      "text": "The boss can’t or won’t afford culinary graduates, too many that there are these days anyways. They all end up becoming high-end waiters anyways, no one else can explain the mostly made up bullshit concoctions, all just trying to get by on generous handouts for the story they’re telling."
+    },
+    {
+      "t": "narrate",
+      "text": "The guests are told, tell themselves, and whoever might be listening, they are here for the experience, excitedly settle in for the ride to come, see, this fine meal is just getting started, first course out momentarily."
+    },
+    {
+      "t": "narrate",
+      "text": "Have an ambu, clear the palate. Can you feel the far back tastebuds open up, shocked clean by an edible bleach mint pepper salivary dye that makes up the first layer. Underneath taste the chocolate maple currant liquor, an upperdowner sensual rollercoaster, size of a quarter."
+    },
+    {
+      "t": "narrate",
+      "text": "Look at all the pretty people outside fighting to be where you are sitting."
+    },
+    {
+      "t": "narrate",
+      "text": "Forget about everything for just a moment."
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_john_shift_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_john_bar"
+    }
+  ]
+}

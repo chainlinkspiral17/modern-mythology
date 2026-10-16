@@ -1,0 +1,68 @@
+{
+  "id": "vol3_ch5_christine_first",
+  "vol": 3,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "v. non-stop flights",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_oregon_apartment_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Before the flights",
+      "sub": "now · Oregon",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Andy has to tell the live-in girlfriend he's going away. She knows he's going away but she expected to go along with him. She doesn't question his distance only knows their last few minutes together will be important."
+    },
+    {
+      "t": "narrate",
+      "text": "Christine undresses him and comes onto him wants to lift him up and make that last impression memorable. For a few hours she is alive and tender and sweet."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_lax_terminal_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa stresses about all the summer trips she was supposed to take and will still take regardless. She itemizes her packing list, works on a checklist for all the international travel preparations she will need to make and how this next awful week will complicate her plans, all her imminent destinations."
+    },
+    {
+      "t": "narrate",
+      "text": "She's only half prepared for her trips to Taiwan and Brazil. There is so much she needs to prepare for both academically and responsibly. Passport visas, inoculations, last minute shopping and communication."
+    },
+    {
+      "t": "narrate",
+      "text": "Her whole summer planned out to the nth degree and here in the middle Dad goes and does his dying thing. No matter that he's been fighting the sickness for over a year now, he's bigstrong, he's supposed to live forever."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad is her heart and her heart is breaking and she can't deal, so this is how she deals, she plans her escape."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch5_christine_first_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch5_flight"
+    }
+  ]
+}

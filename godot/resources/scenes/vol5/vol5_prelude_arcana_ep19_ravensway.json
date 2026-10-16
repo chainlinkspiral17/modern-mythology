@@ -1,0 +1,140 @@
+{
+  "id": "vol5_prelude_arcana_ep19_ravensway",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 16 · ravensway",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep19_ravensway.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 16 · ravensway",
+      "sub": "",
+      "duration": 2400
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "i."
+    },
+    {
+      "t": "narrate",
+      "text": "You will want to hear the story about this one, says one friend to another."
+    },
+    {
+      "t": "narrate",
+      "text": "What, about that guy only writes about other people’s nightmares.\nNah, that was some artist I know.\nAnd you got it wrong, he was a she."
+    },
+    {
+      "t": "narrate",
+      "text": "You certain?\nWhatever, let’s move on."
+    },
+    {
+      "t": "narrate",
+      "text": "What can you tell us about this individual?\nMoves mountains by song.\nThat voice, and to hear it ring is to die partway."
+    },
+    {
+      "t": "narrate",
+      "text": "Said can’t stay in one place for long.\nSo not much of a demigod then but whatever."
+    },
+    {
+      "t": "narrate",
+      "text": "Mostly mortal toil so busy running up down\n\nrung-ladder\ncorporate-concrete\nglass-gunsteel."
+    },
+    {
+      "t": "narrate",
+      "text": "Very careful breathing out braced for spine broke cracklin electric."
+    },
+    {
+      "t": "narrate",
+      "text": "ii."
+    },
+    {
+      "t": "narrate",
+      "text": "what are you exactly, one voice entreaties another.\nstaring across from whatever other self this may be\nformless uncertainty a puzzle to figure\nwhat dark secret do they dare break free"
+    },
+    {
+      "t": "narrate",
+      "text": "eternal gentle selfish nudgin unseats loved kin\nproper positions in an ever-evolving pantheon\nduck duck goose swan there and back again\nkindly sit a spell by this here a-jarred window"
+    },
+    {
+      "t": "narrate",
+      "text": "left open by your last lover’s embrace\nhaving formulated an all-but-certain escape plan."
+    },
+    {
+      "t": "narrate",
+      "text": "weave lines through the air and connect the ...s"
+    },
+    {
+      "t": "narrate",
+      "text": "The quantum revolution took everyone by surprise. Some called it the return of magic, others, the singularity, and a good deal of folk correctly assumed it was the breakdown of coherent reality. Insanity for all."
+    },
+    {
+      "t": "narrate",
+      "text": "Eyeing the everyday from a brand new broken perspective, as rationalizing and coherency fought their way back from the abyss. The first to return to sanity were, of course, the madmen."
+    },
+    {
+      "t": "narrate",
+      "text": "Things just made sense now, or at the very least, those the longest suffering were the best equipped to deal. They quickly became the best tour guides of the new status quo."
+    },
+    {
+      "t": "narrate",
+      "text": "Poets, preachers, and painter junkies, all peeking in through the fogged up window, broken prophets, all, during that brief and wondrous awful reign of chaos."
+    },
+    {
+      "t": "narrate",
+      "text": "Child, where-ever is that mother of yours.\nNever had one, you say? I find that hard to believe.\nShe has to be here someplace. Lots of Mothers in here."
+    },
+    {
+      "t": "narrate",
+      "text": "Want to come inside, try to find her?\nBetter have something of hers to show.\nIn case she doesn’t recognize you.\nShe might remember that pretty trinket, instead."
+    },
+    {
+      "t": "narrate",
+      "text": "Find the frog. He has much to show you.\nI tried calling him a name, and he got mad at me.\nEvery day at sunset he goes and sits on the edge of the broken bridge."
+    },
+    {
+      "t": "narrate",
+      "text": "The fear emitters here are some of the strongest ever recorded.\nProblem was were all the other emotional pitches they used\nto scale the experience. Walk in through the front door\nhit you hard practically sprayed in the face with trigger data\nnostalgia mixed with sadness laced with a tinge of trace panic."
+    },
+    {
+      "t": "narrate",
+      "text": "Go spend a moment in the shade under the water tower\nAnd you can practically feel the guilt, anguish and paranoia\nof burying a body (alive?) right there in that loose damp earth\nthat clumps when rubbed together."
+    },
+    {
+      "t": "narrate",
+      "text": "The experience was almost too good\nsuch that upon leaving ravensway few ever wanted to return.\nOnce was enough, indeed."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep19_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

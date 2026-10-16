@@ -1,0 +1,109 @@
+{
+  "id": "vol4_drawer_komodo_dawn",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Komodo Dawn",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Komodo Dawn",
+      "sub": "film slate · a screenplay by L.A. Steve & Oneironautics",
+      "duration": 2000
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_komodo_dawn_slate.jpg",
+      "caption": "Komodo Dawn · L.A. Steve & Oneironautics"
+    },
+    {
+      "t": "narrate",
+      "text": "Elevator pitch: a midnight-movie fever dream of a cable Original film. The year is 1982. The oil is offshore."
+    },
+    {
+      "t": "narrate",
+      "text": "Engineers, scientists, machinists, pilots, sailors & roughnecks risk life and limb to extract petroleum from the earth's crust. They work weeks on, and spend their time planning out and looking forward to when their downtime lets them haunt the beautiful beach culture of many islands off Indonesia."
+    },
+    {
+      "t": "narrate",
+      "text": "The humans of import are:"
+    },
+    {
+      "t": "narrate",
+      "text": "Carlisle. The resident bad boy. The moneyman, the wheelgreaser, the guy on the inside, that corporate fucker. Carlisle has been making serious money on the downside, using his time off to trap and sell exotic animals on nearby uninhabited island chains."
+    },
+    {
+      "t": "narrate",
+      "text": "Mona. Crane, lift, and hydraulics operator. She also trained as a sharpshooter growing up at her family's cabin and regularly practices with cans in the water or left at strategic locales."
+    },
+    {
+      "t": "narrate",
+      "text": "Fullbright. MechE, PolySci, CompE&Sci, Physics proof writer and industrial welder in the off hours.\nDM. Chef, dungeon master, pool shark, barista, lounge singer, pit fighter, polymath.\nNewport. Coast guard captain turned boat fleet owner."
+    },
+    {
+      "t": "narrate",
+      "text": "Cedular. An ex-spy and oil man from South America. Maria's second in command of the rig."
+    },
+    {
+      "t": "narrate",
+      "text": "Feckless. An obscenely wealthy tennis pro with a penchant for organizing unusual match-ups of the sport. His latest is an off-shore tournament/illegal bet-off on the oil rig. He's friends with Carlisle for all the wrong reasons."
+    },
+    {
+      "t": "narrate",
+      "text": "Maria. They call her the robot after the bot from Lang's Metropolis. Tall, angular, off-putting. She runs this rig, but only in eyes of the hard data, the big brass, and the ocean that surrounds."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone else questions her judgement, places demands on her limited time, and demands perfection. She's kind of a badass."
+    },
+    {
+      "t": "narrate",
+      "text": "But who gives a shit about them. The name of the film is Komodo Dawn. The leezards are the stars of this picture."
+    },
+    {
+      "t": "narrate",
+      "text": "These are pretty much your run of the mill komodo dragon, though they have distinctive personalities and with an end of first act reveal, are able to communicate freely with each other, in sub-titled komodo-speak."
+    },
+    {
+      "t": "narrate",
+      "text": "Black & Blue. Alpha Female. She has a distinctive head bob that tics along to her kick-ass pulsating beat on the soundtrack."
+    },
+    {
+      "t": "narrate",
+      "text": "The old guard:\nJade Green. Old male. Highly venomous and just plain nasty.\nYellow Grey. The old shaman of the group. Eats weird shit and spouts nonsense. A fan favorite.\nWhite Blue. Old female. Her scales are sloughing off in a downy plume."
+    },
+    {
+      "t": "narrate",
+      "text": "The youngins:\nBright Blue. She's quick and silly.\nBright Green. Chillaxed. Not down with the whole leaving the island plan.\nBright red. The mean as shit aggro lizard. Impulsive but obeys his fellows."
+    },
+    {
+      "t": "narrate",
+      "text": "Longish treatment:"
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_komodo_dawn",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

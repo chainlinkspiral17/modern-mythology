@@ -1,0 +1,400 @@
+{
+  "id": "vol1_ch16_four_am",
+  "vol": 1,
+  "chapter": 16,
+  "type": "chapter",
+  "title": "Act Three — 4:00 AM",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_sharp_empty.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Club #",
+      "sub": "INT. · 4:00 AM",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Low light, stage light, the middle of an empty bar. The three are on the floor where they lay down, in a loose triangle around the up-ended cage. Their shirts are on, and the prints are still."
+    },
+    {
+      "t": "narrate",
+      "text": "Air, Fire, Water. Whether there's anything else in them is hard to tell in this light."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust opens his eyes first. Then Wagner. Then Jacob, who sits up too fast and holds his head."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Ow. Did we die."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Close to it. Not quite."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That was the brochure."
+    },
+    {
+      "t": "narrate",
+      "text": "They look at the cage. It's empty. There's no body. There's no blood. The floor inside it is swept clean."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Where'd she go."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Which she."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody answers that."
+    },
+    {
+      "t": "narrate",
+      "text": "On the floor of the cage there's one object. Faust reaches in and picks it up. It's Joan's dagger. It's warm."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean comes from the back, from the DJ booth, slowly. He looks very tired, and very real. He's wearing the fourth shirt, the frame, the wood grain, and in the middle of it, where there was white cotton, there's something faint, a smudge, a watermark, the shape of something seen through rain."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at what Faust is holding."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Those are hers."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "(holding it up) This is a knife."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(looking right at it) Those are her headphones."
+    },
+    {
+      "t": "narrate",
+      "text": "They both look at the object. Faust sees a dagger. Dickens sees a pair of DJ headphones with one ear-pad cracked. Jacob and Wagner look at each other and don't say what they see."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust holds it out. Dickens takes it gently. In his hands it's whatever it is to him. He puts it to his ear like a shell."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(listening) ..."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Is she in there."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "(a long time) There's a song. I don't know the song. That's either very good or it means nothing."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "That's music, man. That's what it always means."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens touches the smudge in the middle of his shirt."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Something's in it. Could be her. Could be a water stain."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Could be both."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "amused",
+      "text": "(almost smiling) In my experience, it's usually both."
+    },
+    {
+      "t": "narrate",
+      "text": "He walks to the door, stops, and turns back."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You declined. Nobody declines. I'm going to have to think about that for a very long time."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Did you get what you came for."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I don't know yet. I'll tell you when I do. It may be a while. It may be somebody else I tell."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Mister Ominous Sounding in a Movie Moment."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(at the door) Zing."
+    },
+    {
+      "t": "narrate",
+      "text": "He leaves. The door closes, and for a moment the outline of it is still there in the wall. Then the wall is just a wall."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The three sit a while."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I need a ginger beer."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I need to go home and watch my kid sleep like a creep."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Breakfast first. Schnitzel."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "It's four in the morning."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Schnitzel's not a dinosaur. It doesn't care what time it is."
+    },
+    {
+      "t": "narrate",
+      "text": "They help each other up. Jacob's back hurts, and when he reaches around to rub it there's a faint pencil line under his shirt that wasn't there yesterday. Wagner's hands smell like chlorine."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust's palm is clean, completely clean, except deep in the creases, where it's blue."
+    },
+    {
+      "t": "narrate",
+      "text": "They walk out together into a street that is just a street, ordinary, gray, about to be morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Judgement Day is parked at the curb. There's a cat hair on the front seat."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_bedroom_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Faust's Bedroom",
+      "sub": "INT. · 4:00 AM",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "tired",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The alarm goes off. It's 4:00 am."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust lies there. He doesn't turn it off right away. He listens to it, all the way through, like a song."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "If it is 4am, then I am awake."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns it off. He drinks a tug of water and gets up. He goes to the bathroom and stands over the toilet a long time, waiting to be sick."
+    },
+    {
+      "t": "narrate",
+      "text": "He isn't sick."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Huh."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to the easel. The elemental painting is there: water on the left, fire on the right, air in the middle. In the frame, in the wood, there's a new knot he doesn't remember, small and dark, the size of a postage stamp."
+    },
+    {
+      "t": "narrate",
+      "text": "He touches it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Hi."
+    },
+    {
+      "t": "narrate",
+      "text": "The painting doesn't answer. It's a painting."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust picks up his phone. The old text is still there. Hey, in town, wanted to catch up. Thinking of you."
+    },
+    {
+      "t": "narrate",
+      "text": "He types. He deletes it. He types again."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "(typing, aloud) Still in town? I'm up early. Coffee?"
+    },
+    {
+      "t": "narrate",
+      "text": "He sends it. He puts the phone face down, picks up a brush and looks at it, picks a softer one, then puts that down and picks up the coarse one again."
+    },
+    {
+      "t": "narrate",
+      "text": "He starts a new canvas. He doesn't know what it is yet."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch16_four_am_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch17_editing_suite"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "vol5_prelude_arcana_channel",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_whispers_channel.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_whispers_theme.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Whispers from the Liminal",
+      "sub": "a channel page · past midnight",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere a laptop has been left open. A channel page, dark theme, a row of thumbnails the color of rooms with the lights off."
+    },
+    {
+      "t": "narrate",
+      "text": "No schedule. No running order. Every episode is already up."
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_found",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

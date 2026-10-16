@@ -1,0 +1,52 @@
+{
+  "id": "vol4_drawer",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "the bottom drawer",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the bottom drawer",
+      "sub": "the desk · Oneironautics Inc.",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The bottom drawer sticks, then gives."
+    },
+    {
+      "t": "narrate",
+      "text": "Green hanging folders, the tabs typed ONEIRONAUTICS INC. and then whatever each one holds. Pitches and design docs, a story, a deck of cards. Games, mostly. Most of them never got made."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_opened_drawer",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "vol4_story_liquid_pour",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "liquid pour",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_xerox_sky.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "liquid pour",
+      "sub": "the sky so high · the glass",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "the sky so high, the riddle of the blanket, the oscillating eye and the cloud behind. cataract, tesseract, oh so plain in fact. the woman form, grace of her face and absolute certainty of disgrace. Disinfranchised, illusioned, matter of fact. the riddle of the subject, control the control subject."
+    },
+    {
+      "t": "narrate",
+      "text": "standards in practice and divisions of industry. break it down under the thumb. press it hard against the skin. slide against your loving kin. what you see, break against me. the wave, the glass, the house of never solitude. what is washed up, tossed aside, drift into a life. taken in and smothered whole."
+    },
+    {
+      "t": "narrate",
+      "text": "bottled up and swallowed whole. stupid words, divided so. the math a part of the alien tongue. the puzzle a tickle, to curl lips up, retreat flesh. tear against the teeth. tongue against the roof. a sore a pleasure a broken blister. the pinkened fissure, a ripened bleeding aorta, the smile of the soldier."
+    },
+    {
+      "t": "narrate",
+      "text": "describe a decibel, compose a dream. ear splitting, mind consuming. passion as a play. players on a stage, exit left, words linger."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_liquid_pour",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

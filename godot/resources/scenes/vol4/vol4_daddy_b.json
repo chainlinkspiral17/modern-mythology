@@ -1,0 +1,208 @@
+{
+  "id": "vol4_daddy_b",
+  "vol": 4,
+  "chapter": 8,
+  "type": "interlude",
+  "title": "vii. daddy",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_dean_home_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_glass_tower.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "vii. daddy",
+      "sub": "the Dean house · one late night",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens and Esther Dean lived a comfortable life together. They had a daughter they named Aria, a beautiful gift of a child. They spent as much time together with her as they could. Dickens Dean never hurt to provide them with whatever it is they wanted."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "esther",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "This is too easy, don't you think, Esther asked him one late night."
+    },
+    {
+      "t": "narrate",
+      "text": "Do you want it to be harder he asked her?"
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "worried",
+      "text": "Why do you sound so sinister. It's like you want something bad to happen to our happiness."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "Oh gosh no. I want us to be the best we can possibly be."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "neutral",
+      "text": "But that's unnatural."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Oh, I know. It'll take its toll in other ways. The universe is all about balance. With you and Aria I'm all about balance."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "tired",
+      "text": "Go to bed you've got a doctor's appointment in the morning."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Just reading a bit longer, okay?"
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "neutral",
+      "text": "Okay."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_aria_childhood.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Aria feels special but doesn't know why. Everyone in her world seems to be looking at her like she's an angel. It's been this way all her life and frankly by ten years old she's gotten a little sick of it. She doesn't want to hang out with the pretty superficial mean children."
+    },
+    {
+      "t": "narrate",
+      "text": "She wants to have discussions and get into arguments and talk about all there is to talk about."
+    },
+    {
+      "t": "narrate",
+      "text": "Aria's dad is away on business a lot these days. Her mom is happy but a bit distant and forces Aria to go to dancing lessons and take piano. Aria is good at them but has no interest in them at this point in her life. She knows that will come later."
+    },
+    {
+      "t": "narrate",
+      "text": "Right now she just wants to soak in the sights, sounds and smell of childhood. She likes being small and finding odd corners to hide away in. She enjoys car rides and rainy days and getting her hair cut. Her friends all love her and she loves them back. She is always getting them into trouble."
+    },
+    {
+      "t": "narrate",
+      "text": "Aria is a teenager and gets the distinct vibe that everyone is studying her for signs of weakness. Women prod her with strange lines of questioning, men are either entranced or exasperated by her. Her parents are coy with her, making all sort of sly jokes to each other in quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "She resents their secrets from her and realizes why she must begin keeping secrets of her own, a nice socially acceptable weapon to keep tucked away safely."
+    },
+    {
+      "t": "narrate",
+      "text": "Aria dreams of escape. She is starting to feel the smallness of her world in eerie tremors, night terrors and directs her tastes towards the macabre and unexplained. All the answers she gets back through books and mass media is entertaining but hollow. She probes deeper."
+    },
+    {
+      "t": "narrate",
+      "text": "She does her research and makes some strange insights into the fabric of reality. She experiments with hallucinogens and listens to some Pink Floyd. There may or may not be a black light and or lava lamp in her dorm room."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_shanghai_apartment.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Aria visits her dad in Shanghai, he drives her to his one-room apartment and leaves her there, goes to sleep in his office. She wanders from window to window, surveying all that lies before her. She always knew she grew up at the seat of power but didn't know what that meant exactly."
+    },
+    {
+      "t": "narrate",
+      "text": "Her father's business was at the forefront of everything, it was hard for her to distinguish her parents from the rest of the world at this point. It all felt like home to her."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay at the window.",
+          "goto": 33
+        },
+        {
+          "text": "go with him.",
+          "goto": 35
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "She wanders from window to window, surveying all that lies before her."
+    },
+    {
+      "t": "narrate",
+      "text": "The city lights go on below without end, every window someone else's."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_dean_office_night.jpg"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The next night he takes her to his office building and shows her around."
+    },
+    {
+      "t": "narrate",
+      "text": "These are the things you probably shouldn't see, he says and leads her in."
+    },
+    {
+      "t": "narrate",
+      "text": "From here, her whole world shattered into a million pieces and here her flight into multiverse began."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_daddy_c"
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "id": "vol2_ch8_apple_peddler",
+  "vol": 2,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "viii. Stories Within Stories — d.dean",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_copy_shop_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "d.dean",
+      "sub": "a stapled copy · the wastebasket",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The next day I came across a story in the wastebasket of the copy shop, the stapled copy page of\nd.dean\nwho had written this,"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_apple_peddler_diner.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_diner_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Open 24 hours",
+      "sub": "off the main drag · rain",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Open 24 hours says the sign to which the door agrees. Walk in and look around before finding a stall to hunker into."
+    },
+    {
+      "t": "narrate",
+      "text": "Notice the vending machines for cigarettes, local periodicals and tide tables stacked on the floor next to the door, the pages hard bricked together under considerable weight and ever present condensation."
+    },
+    {
+      "t": "narrate",
+      "text": "The ladies who work here look like retired prostitutes, lingering just out of sight until necessary, knocking their hips back and forth as they approach, insincere caution hard etched around their eyes. Even the regulars don't look them in the face, this place."
+    },
+    {
+      "t": "narrate",
+      "text": "Named the Apple Peddler, right off the main drag through town, next door to the Greyhound Station. Misery walks in and exhales, that breath lingers. The feeling that nobody wants to be here but there's no where else to go, this is it."
+    },
+    {
+      "t": "narrate",
+      "text": "The menu is one page laminate, six main dishes. Meat loaf, chicken fried steak, fish and chips, fried chicken, cheeseburger, and club sandwich. They peddle in apple pie, hence the name."
+    },
+    {
+      "t": "narrate",
+      "text": "Pie and coffee, people drink whole pots here, often multiple. They have that look, pained past the point of confusion, eyes shaking, the thin glisten of surface moisture catching the light and holding it, blinking erratic. Go in and order a cup, it comes out smelling like ozone, too hot to intake."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a point in coming here, besides getting out of the rain. Here to see someone, talk over coffee. A neutral ground, away from places that stink of the past."
+    },
+    {
+      "t": "narrate",
+      "text": "His name Bernard, nickname Saint. He was a boyfriend, then something else, a fascinating person with scary friends. Why she agreed to see him, let him explain."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "You want to be her mother again, you say. Well, you don't come out and say, but that's the only thing this could be about. You taking off like that, seemed awful sudden."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "Had to get away, had to get help, thoughts going through you perhaps. Heard all about the women's center, you and that lady running it, taking up together, she real nice to you, I imagine. Older I hear, but treats you good."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "So I'm happy for you, bet you didn't think I was capable, but I am, and I understand now how I did you bad. You weren't so well, last I saw you. Now I see color, honest to goodness life in those eyes."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "For that I'm glad."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a pause while he gets himself a fresh cigarette. She looks at him. A young man in a body that never fit proper."
+    },
+    {
+      "t": "narrate",
+      "text": "He sags with twenty extra pounds, facial hair grows in erratic patches. His bottom lip is split with a white scar."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "But you ain't getting her, because she's gone, off to live with relations, better for all of us, which, if you'd think about this rationally for a minute, is the truth. We can play all day at being parents, or not, in your case. We had the chance and we failed pretty awful bad."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "She was born into a world that ain't hers. And as such her world ain't ours. You knew that I knew she wasn't my flesh and blood."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "It's obvious that she turned out how she did for a reason, and that reason ain't me."
+    },
+    {
+      "t": "narrate",
+      "text": "Bernard knows she's scared of him so he slumps in his seat, stops flaring his nostrils, deflates his chest, taps his cigarette until the inner fire dies down and smoke dangles."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "worried",
+      "text": "I want to know who she came from. I remember we were experimenting with all sorts of messed up no good shit back then, but if you have any idea, tell me now. For her sake, baby."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "worried",
+      "text": "She's getting to that age, and to be honest, I'm getting a little scared."
+    },
+    {
+      "t": "narrate",
+      "text": "She was seventeen when she got pregnant, he was twenty-one. They met for the first time at a party when she was thirteen. He sold her drugs which she sometimes paid for with sex."
+    },
+    {
+      "t": "narrate",
+      "text": "That first time, her fifteen year old cousin paid for them both. The Saint could get her anything and lived in a world that confused her as much as she enjoyed it all. He traded in favors, lived in houses that weren't his own, drifting casually, often disappearing from Small Wood for months at a time."
+    },
+    {
+      "t": "narrate",
+      "text": "He existed as much in rumors as he did in the flesh. He was no good, the tone used in over-heard conversations that were about him made it clear that he was not a person anyone wanted to be seen with outside of a party house, a camp bonfire, or a Friday night parking lot beer gathering."
+    },
+    {
+      "t": "narrate",
+      "text": "He lived out of his truck when he couldn't live off anyone else, arrived in town already a high school dropout at age sixteen from who knows where. Authorities knew of him, hassled him just enough to lend an aura of respect more than he deserved, but never busted him for anything requiring more than a weekend in jail."
+    },
+    {
+      "t": "narrate",
+      "text": "He would work at the docks if he needed a steady paycheck or do handy-man jobs at a local retirement community. Like most young men of Small Wood, he couldn't stay at one thing for very long."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a rumor going round the high school that he had a twin brother, drowned at an early age while they were both playing on the beach. Whether or not the Saint made this rumor up, the public perception was this."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saint was sometimes heard speaking to himself or not to himself rather but responding to voices no one else could hear. He said that the voices would let him know if a party was about to get busted or if trouble in the form of an angry ex-boyfriend was on his way over."
+    },
+    {
+      "t": "narrate",
+      "text": "The Saint had a funny look about him, there was no denying that."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "I mean, I have an idea who the daddy is, I just want to hear you say. Because I need to hear you say."
+    },
+    {
+      "t": "narrate",
+      "text": "Back when he was sneaking over, spending the night, she asked him why he came to Small Wood, he told her that it was because there was someone here he had to meet. Asked if he ever got around to meeting him, he told her, sure."
+    },
+    {
+      "t": "narrate",
+      "text": "He was the only one, coming over in the dead of night, in through the window, out by daylight."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "neutral",
+      "text": "So, it must have been him, if you thought it was me, that's what you're saying."
+    },
+    {
+      "t": "narrate",
+      "text": "He could be two people, she knew that from the beginning. The guy sitting before her was a down on his luck loser who got older and was falling apart at the edges. The one she fell in love with was the ageless ghost who crept into her, the one she would never know, whose uncut smile could cut like glass."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "sad",
+      "text": "I see him sometimes, you know. Out for a stroll on the beach, on the far end of a grocery store aisle, we catch glimpses of each other."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "sad",
+      "text": "He lives as close as possible to me, I'm always bumping into the same people a minute after he's gone, striking up random conversations on the street with absolute strangers who know more about me than I do, leaving me to sort through the mess he's made of my life. I don't know which of us is the ghost no more."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "sad",
+      "text": "Even if he's not really here, he's done more in this town than I ever will. I mean, he's a goddamn father. Her first word, you remember her first word."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "think of the girl at the window",
+          "goto": 47
+        },
+        {
+          "text": "think of why she left",
+          "goto": 63
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The baby girl was always looking out windows, never saying a word. They thought her mentally retarded because she seldom ever spoke. She was so frail, stayed away from other children, would only ever go outside if it was raining, but loved the beach, oh did she ever."
+    },
+    {
+      "t": "narrate",
+      "text": "She was like a seashell, sometimes you had to put an ear to her to know she still sounded."
+    },
+    {
+      "t": "narrate",
+      "text": "There were good times that did not last because when she looked down she saw not her child but a monster. She left, not for her own safety, but for her daughter's. She dreamt regularly of drowning her baby, her beautiful baby."
+    },
+    {
+      "t": "narrate",
+      "text": "A gnawing quiet thought that ate its way through to the surface. She looked into those too large eyes and saw only death. Bernard would never grow up, never see past his failings."
+    },
+    {
+      "t": "narrate",
+      "text": "He would never understand, never recognize, never make the effort. They were haunted, plain and simple."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "tired",
+      "text": "So you didn't come here for her, what did you come here for."
+    },
+    {
+      "t": "narrate",
+      "text": "Bernard paid his tab at the register and waved as he walked out, not noticing as his brother walked in, just a second too late. Her hand quickly went back up, waving him over."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_copy_shop_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I find no comfort in these words, which is why I keep at them. Night after night, bleeding into morning. Exercises I put myself through, and for what."
+    },
+    {
+      "t": "narrate",
+      "text": "I get no closer to the truth and fall ever closer to the bleeding edge of it all. Because these are wounds I travel over, my map my goddamn heart, my compass tilting to madness."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to know these ghosts, the spirits of failure that live right here in Small Wood. There are two thousand citizens, legacies of last names and land rights. Feuds continued, strife created and played out daily."
+    },
+    {
+      "t": "narrate",
+      "text": "Since I am here, I have no choice but to look closer. I only know a few dozen friends, neighbors, coworkers, somewhat strangers by name. I'm still an outsider, even more than I ever was."
+    },
+    {
+      "t": "narrate",
+      "text": "Most of the youth, the culture that I knew, has spread thin across the country, and never come back. I was perhaps the least likely to ever return, and here I am now. Trapped because I'm afraid, and losing family matters and I've nothing to show for the years in between."
+    },
+    {
+      "t": "narrate",
+      "text": "I can tell that story now."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch8_apple_peddler_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch9_flotsam"
+    },
+    {
+      "t": "narrate",
+      "text": "There were good times that did not last because when she looked down she saw not her child but a monster. She left, not for her own safety, but for her daughter's. She dreamt regularly of drowning her baby, her beautiful baby."
+    },
+    {
+      "t": "narrate",
+      "text": "A gnawing quiet thought that ate its way through to the surface. She looked into those too large eyes and saw only death. Bernard would never grow up, never see past his failings."
+    },
+    {
+      "t": "narrate",
+      "text": "He would never understand, never recognize, never make the effort. They were haunted, plain and simple."
+    },
+    {
+      "t": "narrate",
+      "text": "The baby girl was always looking out windows, never saying a word. They thought her mentally retarded because she seldom ever spoke. She was so frail, stayed away from other children, would only ever go outside if it was raining, but loved the beach, oh did she ever."
+    },
+    {
+      "t": "narrate",
+      "text": "She was like a seashell, sometimes you had to put an ear to her to know she still sounded."
+    },
+    {
+      "t": "say",
+      "char": "Bernard",
+      "expr": "tired",
+      "text": "So you didn't come here for her, what did you come here for."
+    },
+    {
+      "t": "narrate",
+      "text": "Bernard paid his tab at the register and waved as he walked out, not noticing as his brother walked in, just a second too late. Her hand quickly went back up, waving him over."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_copy_shop_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I find no comfort in these words, which is why I keep at them. Night after night, bleeding into morning. Exercises I put myself through, and for what."
+    },
+    {
+      "t": "narrate",
+      "text": "I get no closer to the truth and fall ever closer to the bleeding edge of it all. Because these are wounds I travel over, my map my goddamn heart, my compass tilting to madness."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to know these ghosts, the spirits of failure that live right here in Small Wood. There are two thousand citizens, legacies of last names and land rights. Feuds continued, strife created and played out daily."
+    },
+    {
+      "t": "narrate",
+      "text": "Since I am here, I have no choice but to look closer. I only know a few dozen friends, neighbors, coworkers, somewhat strangers by name. I'm still an outsider, even more than I ever was."
+    },
+    {
+      "t": "narrate",
+      "text": "Most of the youth, the culture that I knew, has spread thin across the country, and never come back. I was perhaps the least likely to ever return, and here I am now. Trapped because I'm afraid, and losing family matters and I've nothing to show for the years in between."
+    },
+    {
+      "t": "narrate",
+      "text": "I can tell that story now."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch8_apple_peddler_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch9_flotsam"
+    }
+  ]
+}

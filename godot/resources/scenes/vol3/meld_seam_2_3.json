@@ -1,0 +1,137 @@
+{
+  "id": "meld_seam_2_3",
+  "vol": 3,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "the time between times",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pasadena_street_1945.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_radio_1945.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "transmission",
+      "sub": "Small Wood · 1994 · transmission · Pasadena",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "That spring I played games on the computer most nights, until the floppy drive was the only sound in the house. tk tk tk tk. Loading the next part of somewhere else."
+    },
+    {
+      "t": "narrate",
+      "text": "The picture came in bands, top to bottom. A street in the rain. Streetcar wire. A movie marquee. Orange trees."
+    },
+    {
+      "t": "narrate",
+      "text": "Pasadena, the box said, 1945. I remember thinking it wasn't supposed to rain there."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_meld_rain_loading.jpg",
+      "caption": "Pasadena, loading"
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere down the hill a car horn, two short and one long, and then the dogs started up the way they used to in Caracas."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_meld_time_pod_interior.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the egg",
+      "sub": "the time between times · 1945 · 1994 · ——",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Inside the pod it was quiet the way the inside of an egg is quiet. One seat, one button, the instruments breathing their green lights."
+    },
+    {
+      "t": "narrate",
+      "text": "He built his egg with a team of other young, passionate like-minded scientists, volunteered himself, sealed himself inside one quiet night, dared himself to push a button."
+    },
+    {
+      "t": "narrate",
+      "text": "On the floor of the pod, against the riveted seam, lay a feather. Blue-grey, long as a hand."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_meld_feather_pod_floor.jpg",
+      "caption": "a feather from the blue heron"
+    },
+    {
+      "t": "narrate",
+      "text": "Jack Perkins did not remember packing it. He turned it over in his fingers like a thing sent from very far away and buttoned it into his breast pocket, over his heart."
+    },
+    {
+      "t": "narrate",
+      "text": "He waited. The pod waited with him."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_four_screen_room.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_projector_hum.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Then a beam came down out of the dark at a slant, from very high up, from a machine on a long jointed stalk, covered in tiny lights like little eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "It swiveled the way an eye on a stalk swivels. It hovered over him and held there, deciding what he was."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_meld_eyestalk_beam.jpg",
+      "caption": "the projector, the eye, the stalk"
+    },
+    {
+      "t": "narrate",
+      "text": "It was looking at him looking at it."
+    },
+    {
+      "t": "narrate",
+      "text": "He opened his eyes and could not close them back up again."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky was falling and it came down in pieces."
+    },
+    {
+      "t": "flag",
+      "key": "meld_seam_2_3_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch1_boy_from_pasadena"
+    }
+  ]
+}

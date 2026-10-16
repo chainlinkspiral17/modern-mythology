@@ -1,0 +1,166 @@
+{
+  "id": "vol4_story_map_of_the_city",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "ii. map of the city",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_alley_dumpster.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_city_pulse.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "ii. map of the city",
+      "sub": "the city · the sun high",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I wake in a dumpster, shirt off my back, face stiff with hurt. The sun high in the sky, the trash around me humid and sweating. Breathing difficult, chest hurts so bad. I remember them beating me. Had to catch the bus, car problems, wouldn't start for some reason."
+    },
+    {
+      "t": "narrate",
+      "text": "Just standing there when the gang comes young men knowing just what to do."
+    },
+    {
+      "t": "narrate",
+      "text": "I hear the dump truck beeping down the alley. I squirm, find a solid grip and pull myself out. I see their faces, driver and passenger and I know they aren't human. They have the right shape, the right sort of movement in those bright yellow jumpsuits. One gets off the side mount."
+    },
+    {
+      "t": "narrate",
+      "text": "His face is covered in a mask, a circle but no color just empty eye sockets, big and black and empty. He picks up a homeless man, dead or asleep, throws him in the compactor like he weighs nothing at all. Homeless man doesn't fight or move. He's stiff like a mannequin."
+    },
+    {
+      "t": "narrate",
+      "text": "They clean out everything in the alley, human or otherwise. Make it so that nothing remains. So I hurry on out where the street should be. All I see out there are people, hundreds of thousands of people, a sea of people, all flowing together like cells in an artery vein. They have faces, they have purpose."
+    },
+    {
+      "t": "narrate",
+      "text": "I stay as far from them as I can. I pull myself along the face of a building hugging it else they sweep me along where they're going in their hurry of cellular motion."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_fast_food_riot.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I get inside a fast food restaurant. There is a pretty lady in front of me in a red dress down to her ankles, straps over her shoulders, long black hair down her back. She turns around and she has on a mask, a triangle that seems to be falling off her face. Black triangle holes for eyes. She sees me but doesn't care."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns and watches the young men fighting. There is a large crowd of them beating each other up, blood washing on the walls and floor and ceiling."
+    },
+    {
+      "t": "narrate",
+      "text": "They throw each other into tables and counters and some just watching exit to the indoor children's playground where the children are ganging up on the younger and smaller children, throwing them off the top, putting their heads between wood planks in the bouncy bridge, and shoving their mouths full with loose gravel."
+    },
+    {
+      "t": "narrate",
+      "text": "The adult men just stomp the children. Get them underfoot and destroy them, throw them into objects or each other."
+    },
+    {
+      "t": "narrate",
+      "text": "A boy comes up to me, grabs my arm and pulls me out. Yanks me through the river of people across the street into a clothing store. It is empty except for naked mannequins and sale banners slumped and covered thick with dust."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_dead_department_store.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The boy wears clothes from another era, brown with age sweat and the dirt of the city. He has on a fast food paper crown. He says his name is King. King of the City, he says. And his words echo in the empty shell around me. He hops up on a counter, the glass crunching in the recess under his tiny feet."
+    },
+    {
+      "t": "narrate",
+      "text": "Ruled by Rage, those lot were. She's a wicked one. Her and her sisters, can't tell them much apart these days. Might be demons might be they are. We don't really have names here, don't really talk much either. Fast times, living in the city. We're all brothers here, all sisters, all mothers and fathers."
+    },
+    {
+      "t": "narrate",
+      "text": "Once was, always will be."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at his crown.",
+          "goto": 23
+        },
+        {
+          "text": "climb.",
+          "goto": 25
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "He has on a fast food paper crown. He says his name is King. King of the City, he says."
+    },
+    {
+      "t": "narrate",
+      "text": "The paper crown is soft with sweat and creased where it has been folded and refolded."
+    },
+    {
+      "t": "narrate",
+      "text": "We walk up the metal spine of the dead escalator. We climb to the sky, broken and pink. King runs to the edge of the roof and looks out, hoots for me to come over. Vertigo swells. We're someplace not real. I can't take it all in. The city feeds on itself, gives birth to itself, twists, turns, collapses, congeals."
+    },
+    {
+      "t": "narrate",
+      "text": "King grabs me by my belt and slaps my chest. Best get scared of ones in masks. They aren't blood relation like the rest of us. They want nothing more than to have us fight, feast, or fuck ourselves to complacency."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_dead_park.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "King jumps from the roof. I jump after him. We land in a park, square and dead. The trees empty of leaves, the benches empty of people. In the center, a statue of my mother and father, bronzed and beaten with pigeon shit. King takes me to a mound of dirt and begins digging. I join in without a word from him."
+    },
+    {
+      "t": "narrate",
+      "text": "A person's face emerges, gasping for air, a woman buried shallow."
+    },
+    {
+      "t": "narrate",
+      "text": "We pull her out, she is naked. Her hair is dyed red and she is middle aged. We three talk about the newspaper leafs that drift together like schools of fish while she washes clean in the fountain thick with leaves and slime. Her name is Maria. More so than me she does not belong here."
+    },
+    {
+      "t": "narrate",
+      "text": "King says so as he's lived here as long as he can remember. He wants to leave the city but first he must find the map of the city. Hard to map something that's always changing always growing. When it's cut it bleeds. The city has a body. Like the Hindu Jahti. Need a special kind of map from a special kind of mapmaker."
+    },
+    {
+      "t": "narrate",
+      "text": "I ask him why the King of the City would ever want to leave. He smiles. We three make our way to the heart, which is always beating."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_map_of_the_city",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

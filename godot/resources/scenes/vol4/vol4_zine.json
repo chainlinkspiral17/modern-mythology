@@ -1,0 +1,955 @@
+{
+  "id": "vol4_zine",
+  "vol": 4,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "weep (FOR THE FUTURE!)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "weep (FOR THE FUTURE!)",
+      "sub": "issue six · distribute at your own peril",
+      "duration": 2000
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "read it cover to cover",
+          "goto": 15
+        },
+        {
+          "text": "just look at the pages",
+          "goto": 6
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p309.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 1 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p310.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 2 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p311.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 3 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p312.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 4 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p313.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 5 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p314.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 6 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p315.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 7 of 8"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p316.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 8 of 8"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "go back and read it after all",
+          "goto": 15
+        },
+        {
+          "text": "fold it shut",
+          "goto": 223
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p309.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 1 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "weep (FOR THE FUTURE!)"
+    },
+    {
+      "t": "narrate",
+      "text": "distribute at your own peril"
+    },
+    {
+      "t": "narrate",
+      "text": "issue six"
+    },
+    {
+      "t": "narrate",
+      "text": "seven facts about our subject"
+    },
+    {
+      "t": "narrate",
+      "text": "lives in a decommissioned missile silo\ncommunication software engineer\nretired re-education terrorist\ncurator of cold war museum\navid model hobbyist\nmilitant gun owner\nphD in History"
+    },
+    {
+      "t": "narrate",
+      "text": "hasslein interview with"
+    },
+    {
+      "t": "narrate",
+      "text": "Q: Not so much a question, tell us a bit about yourself."
+    },
+    {
+      "t": "narrate",
+      "text": "A: I'll just begin by saying, this country sucks, and the whole world by extension of our intellectual entertainment umbrella imperial domain, sucks. I've spent my whole life trying to do something to make it better, and I'm tired of people telling me I don't have the right to say, \"this country sucks.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I'm an activist, it's in my blood to desire change, to live my life according to principle. I hurt people that tell me to shut up, so remember that. But I won't hurt people who have a difference of opinion."
+    },
+    {
+      "t": "narrate",
+      "text": "I welcome discourse and discussion. As long as you're not repeating the corporate line, the company motto, the religious credo, you're okay in my book."
+    },
+    {
+      "t": "narrate",
+      "text": "And I'll even forgive the company motto, because I realize some of you work hard and hard work is beautiful, even when it is for the sole benefit of a faceless demon that devours all that is good and right."
+    },
+    {
+      "t": "narrate",
+      "text": "Q: We're in an underground missile silo, right?"
+    },
+    {
+      "t": "narrate",
+      "text": "A: Yes we are. I call it home. 40,000 square feet of home."
+    },
+    {
+      "t": "narrate",
+      "text": "The government was selling a bunch of these off for a steal twenty or so years ago. I put a down payment on one and didn't look back. Took a lot of work to get it habitable."
+    },
+    {
+      "t": "narrate",
+      "text": "People had to come in and clean out the asbestos, and there was flooding, rusting metal. And the concrete walls are a bitch to work with. But I have my own theater in here."
+    },
+    {
+      "t": "narrate",
+      "text": "And music studio. I collect cold war relics, got hundreds of museum quality pieces, spy stuff, historical documents, and I have a Dr. Strangelove Nuke Ride. You can program in whatever city you want to bomb and Yeehaw on down the bomb bay doors."
+    },
+    {
+      "t": "narrate",
+      "text": "It's great. You can be Slim Pickens."
+    },
+    {
+      "t": "narrate",
+      "text": "Q: Can you tell us how you subverted E/D back in the early days?"
+    },
+    {
+      "t": "narrate",
+      "text": "A: Right, youth. I worked for one of the big companies that was developing security software for it. We'd started in email encryption and the like, and naturally moved to E/D."
+    },
+    {
+      "t": "narrate",
+      "text": "I was in a unique position and made all sorts of vague ethical decisions early on. I and a bunch of others programmed in major loopholes and backdoors which eventually got leaked to hacker types a few years later. I was naturally educated, obviously."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd worked my butt off. Side note, programming is still one of those skills that naturally educated people are still the best for. But anyways, what I did was career suicide and I served six months for related offenses."
+    },
+    {
+      "t": "narrate",
+      "text": "A bunch of underground organizations funded my defense, helped me out in every way possible, and I sort of took up a leadership role upon my release. I never advocated any grievous bodily harm, I was more into fucking with the system, throwing wrenches in the cogs of the machinery."
+    },
+    {
+      "t": "narrate",
+      "text": "We had a lot of success, but the world is evolutionary. Perhaps de-evolutionary at this point. We can fight all we want, I just don't see where this is going any more."
+    },
+    {
+      "t": "narrate",
+      "text": "Q: That's a pretty bold statement from a folk hero of sorts. What do you advocate now?"
+    },
+    {
+      "t": "narrate",
+      "text": "A: Live your life how you want to live it. If anyone fucks with you, fuck with them back. Show them you still matter, you still stand for something."
+    },
+    {
+      "t": "narrate",
+      "text": "Don't give in, resist that impulse with all your might, giving in is for chumps. Us naturals have become something of a curious relic. So be it."
+    },
+    {
+      "t": "narrate",
+      "text": "When whatever plague must eventually rise up to infect E/D, at least we'll still be here, and who'll be so goddamn smart then."
+    },
+    {
+      "t": "narrate",
+      "text": "Q: Thanks for your time."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p310.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 2 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "letter from the editor"
+    },
+    {
+      "t": "narrate",
+      "text": "There is a fundamental problem with trepanation. People die. You have to be willing to accept this fact every time you put an electric drill to their skull and pull the trigger."
+    },
+    {
+      "t": "narrate",
+      "text": "People die."
+    },
+    {
+      "t": "narrate",
+      "text": "I've killed four people that I know of. It is messy no matter how it goes down. You will smell aerated flesh and bone and grease and sweat."
+    },
+    {
+      "t": "narrate",
+      "text": "You push too hard, don't push hard enough. Digging too deep is always a problem. It's a risky scenario, playing with juice and meat and electricity."
+    },
+    {
+      "t": "narrate",
+      "text": "The electric drill needs that necessary weight, heft. You need to use your shoulder, your whole body to control penetration. Make sure you are fully charged, don't want it to die on you, get stuck in there."
+    },
+    {
+      "t": "narrate",
+      "text": "Don't rush it. Work in teams of two if you have to. It helps to have a partner to keep them down, hold them still."
+    },
+    {
+      "t": "narrate",
+      "text": "Because they will fight and wriggle and scream. I once had a drill bit glance off a girl's skull, there was a new metal box inside. I tore open her scalp."
+    },
+    {
+      "t": "narrate",
+      "text": "She was screaming, trying to hold her flap of flesh on. Blood from the head pours fastest of all, a shower from the inside drenching us both."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes we are terrorists. We attack them in the open. Assault their precious heads."
+    },
+    {
+      "t": "narrate",
+      "text": "Because inside lives our enemy. Our purpose is to stop the death of education. To do that we must destroy E/D."
+    },
+    {
+      "t": "narrate",
+      "text": "We must bring back the purity of thought and learned intellect. We must not lose our essential humanity."
+    },
+    {
+      "t": "narrate",
+      "text": "Stůdērě"
+    },
+    {
+      "t": "narrate",
+      "text": "plannED commUNITY"
+    },
+    {
+      "t": "narrate",
+      "text": "(from a newsfeed post) \"Forgive this angry missive, but you people must stop. Not only will you be found out, you will be punished by god and government. I appeal to your essential humanity, put down your tools of hate and live peacefully."
+    },
+    {
+      "t": "narrate",
+      "text": "Make great works because of your denied potential, not in spite of. This world is big enough for everyone. Let us live and learn how we will, open yourself up to the full potential of thought.\""
+    },
+    {
+      "t": "narrate",
+      "text": "(protest announcement) \"West Coast. State Capitols. Be strong and represent."
+    },
+    {
+      "t": "narrate",
+      "text": "Vote NO in \"Government Loans and Grants for E/D Students\", raise awareness about \"Accredited Learning Discrimination\", organize demonstrations and trepanation effigies. Be a body, be a mind.\""
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p311.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 3 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "(capsule book review) \"Treyarch Adrift\" is a near-masterpiece of grunge squalor living, dealing with important resistance themes and iconography. The history of the old student movement is captured in vivid detail, capturing moments of heart-rending depth and beauty."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps the first romansbildung of the anti-E/D generation, the artist as ever more an outsider having to make her own connection to great traditions. Recommended and worthy of merit and discussion."
+    },
+    {
+      "t": "narrate",
+      "text": "(on religion) \"I have been working in a orphanage in an economically recessed part of Florida. The children here all speak very little English and will probably never have the opportunity to get an education, E/D or otherwise."
+    },
+    {
+      "t": "narrate",
+      "text": "But the curious thing I've noticed is they have a secret form of community, religion, all based around The Blue Lady (Virgin Mary?) and La Llarona. They talk about a war going on between angels and demons in the slums, the ghosts of their family members fighting for one side or the other."
+    },
+    {
+      "t": "narrate",
+      "text": "They see our graffiti and interpret it as miraculous text. They add to it with their own burners, and discover our movement, because they want to read and decipher the hidden meaning. Perhaps there is something here I am missing."
+    },
+    {
+      "t": "narrate",
+      "text": "Just thought I'd pass this along.\""
+    },
+    {
+      "t": "narrate",
+      "text": "(on corporations) \"Every month I get a job at a new corporate empire. This month's is, here's a hint, named after a Herman Melville character from Moby Dick. I am underpaid, but I get great benefits."
+    },
+    {
+      "t": "narrate",
+      "text": "They are also keen to give us lots of corporate schwag. Free music, movies, and of course, coffee. This month, they're pushing a new E/D program, which I have great reservations about."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm still natural, but I really only just turned twenty, and I really don't want to think about committing to making the transition. Their new program is this, an exclusive series of on-going artistic, educational, intellectually stimulating E/D programs you can enjoy while sitting around drinking your latte."
+    },
+    {
+      "t": "narrate",
+      "text": "The longer you spend drinking there, the more you'll be able to appreciate and learn. I guess that's just another hook into the pocket of the consumer, but whatever. I'm really getting fed up with this."
+    },
+    {
+      "t": "narrate",
+      "text": "You can't go anywhere now without it being shoved down your throat. The irony is that the company really can't afford to hire anyone with E/D, so they're recruiting people right around that adoption period in hopes they'll stay on-board. Get them while they're young, poor and impressionable."
+    },
+    {
+      "t": "narrate",
+      "text": "The few kids who have E/D are total snobs and are already managers. Good thing, because they sucked at making coffee.\""
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p312.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 4 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "rote"
+    },
+    {
+      "t": "narrate",
+      "text": "Jesus, he doesn't know what to tell her."
+    },
+    {
+      "t": "narrate",
+      "text": "He drinks alone in his room, thinking about their bodies, how they'd not really arranged themselves, just to get the killing done quick, because they were scared and unsympathetic, ruthless with themselves, eager to be done and gone from it all."
+    },
+    {
+      "t": "narrate",
+      "text": "They'd planned it out like it was this terribly important arcane ritual, which it mayhap became because of their fastidiousness, every step excruciating, carried through to questionable fruition because they'd backed themselves into that corner, and there was only one possible way to that very outcome."
+    },
+    {
+      "t": "narrate",
+      "text": "Realize they'd been ignored, unforgivable, because they were brilliant and so incredibly learned, and together they had come to the awful, pitiful conclusion- change was coming and there was nothing they could do to stop it."
+    },
+    {
+      "t": "narrate",
+      "text": "He had heard the shots, he had gone up running. The long spiral staircase, echoing with gunshot after gunshot. Why he ran to the shots instead of away from?"
+    },
+    {
+      "t": "narrate",
+      "text": "Deep down he knew what was happening. He'd tried to ignore their words and casual threats. He almost thought himself a part of their inner circle."
+    },
+    {
+      "t": "narrate",
+      "text": "When he got to the door and it was locked, he called out to whoever was inside. A lone voice said go away. Not a command, it was too defeated for that, too broken to mean anything."
+    },
+    {
+      "t": "narrate",
+      "text": "It was soaking in murder/suicide, expectant of finality."
+    },
+    {
+      "t": "narrate",
+      "text": "When they broke down the door after that last lonesome shot- one was slumped in the corner of the tower, holding a book in front of his face. The bullet gone right through the both, the slant of the death slump offsetting everything. The book Ulysses, the face belonged to Prof. Richard Dawes."
+    },
+    {
+      "t": "narrate",
+      "text": "That was how they did it. Russian Roulette. Each of them got a bullet to fire into their best friend and colleague."
+    },
+    {
+      "t": "narrate",
+      "text": "The last had to do himself. His name was Ida Stern, a doctor of linguistics. He put the revolver inside his mouth and blew a tiny whistling hole through his palate."
+    },
+    {
+      "t": "narrate",
+      "text": "The windows were open, it was a beautiful day outside. The students never got up from their picnic blankets until sirens ushered them off the lawns."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at these words and reminds himself to clarify some details later. These are just notes, he writes."
+    },
+    {
+      "t": "narrate",
+      "text": "She was a lover, a large and beautiful presence he had come to know and forget like early childhood. So much of her was to be forgotten, this he accepted and cherished."
+    },
+    {
+      "t": "narrate",
+      "text": "They both worked for a man named Don Waller who was one of those that died, the third who killed the second, Alice Ewing, who they later named a wing after, who would have hated this act of charity. She wanted nothing more to do with education. Funny that she was first when they had drawn straws."
+    },
+    {
+      "t": "narrate",
+      "text": "Rosa Gutierrez, braver than most, despite knowing she'd be the first, proud of her lot."
+    },
+    {
+      "t": "narrate",
+      "text": "That they were screwing, all three of them in some casual intermittent fashion, should come as no surprise. Him and Her and Professor Waller. They were all at that age, not physically but mentally, when body and politic was an education in and of itself."
+    },
+    {
+      "t": "narrate",
+      "text": "They'd sip wine and dine out and spend evenings in, shifting around each other like so much tradition. There was precedence to this. They lived in a house eight blocks from campus that had a history sick with broken-down-made-new excess."
+    },
+    {
+      "t": "narrate",
+      "text": "He traced a line back through past tenants, past tense."
+    },
+    {
+      "t": "narrate",
+      "text": "He was painfully part of the hazy tradition of smoking out on the porch, making out in the central downstairs bathroom that never stopped smelling of opium, re-arranging timeless student artwork not-masterpieces that lived in that home longer than any of them added up together."
+    },
+    {
+      "t": "narrate",
+      "text": "He remembers a time when they had a small party. A bunch of people were trying mushrooms for the first time. Things got a little crazy around one in the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Some jackass was upstairs yelling out the window, \"Knowledge for All!\" And they were all afraid the cops would bust things up, so they were hushed together conspiratorially with that silly scary paranoia. She was the strong one, so she became the adult for a moment, the de facto authority figure."
+    },
+    {
+      "t": "narrate",
+      "text": "So she was the one who dealt with the jackass, soothed his misfiring mind. They'd grouped together downstairs, become hive-like, cliquish in their dealings of the jackass. She was the transcendent one, the soothsayer."
+    },
+    {
+      "t": "narrate",
+      "text": "She got him out of that upstairs bedroom, laid him out on the couch and talked to him, petted him in a way he was not too consciously weird with. They all sat around listening to music, wishing she would deal with them in such a way, jealous of his outrageousness."
+    },
+    {
+      "t": "narrate",
+      "text": "He was tripping, imagined the paintings shifting backwards through the years. The walls a time lapse photograph of all that had come before. He remembers the small personal dramas when he thinks about her, she was swirling in it, knee deep in so much quagmired bullshit."
+    },
+    {
+      "t": "narrate",
+      "text": "People were falling in love and lust with her every other day, which she didn't give a second thought. It was all so casual, the strangers he'd wake up to share his space with, who'd feel their way around his kitchen, his bathroom. Misplaced coffee containers and toothbrushes."
+    },
+    {
+      "t": "narrate",
+      "text": "Their strange fingerprints on everything, her strange control over the chaos of their bodies, all jumbled up ugly unshaven in the afternoon light of emergence, exhausted contented half naked unawares. Their embarrassed laughter, the uncomfortability of him"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p313.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 5 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "looking and judging, their resigned whatever of it man."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes by hand, we all knew it was coming."
+    },
+    {
+      "t": "narrate",
+      "text": "To generalize for simplicity's sake, it was on the lips of everyone.\nIt threatened the very institution of education.\nIt would change the world.\nIt was technology, it was an idea, it was everything, nothing.\nThe age of modular memory, E/D.\nEidetic/Didactic.\nWhen one could literally buy an education."
+    },
+    {
+      "t": "narrate",
+      "text": "Download it into their head, random access that bitch in casual conversation.\nYou knew A from C.\nB was what the poor kids did, libraries and research and studying their asses off, hard work.\nB was what he and she did for fun, what they were good at.\nGrad students in love with the beginning of the end."
+    },
+    {
+      "t": "narrate",
+      "text": "The last of a dying breed. At the cusp of great significant change."
+    },
+    {
+      "t": "narrate",
+      "text": "She was the one who heard about it first. There had been casual talk about the possibility of such a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Several gadgets were doing what E/D would eventually do on some primitive embryonic level, were edging that bleeding line, becoming a new standard, forging their own line of obsolescence into casual consumer culture."
+    },
+    {
+      "t": "narrate",
+      "text": "Medical breakthroughs were everyday occurring, clinical trials underway, the trend emerging, the buzzwords buzzing."
+    },
+    {
+      "t": "narrate",
+      "text": "She brought the thought into that old home and set them on fire. The old man loved to hate the idea of it. The young man was just apathetic and talking about it made him depressed."
+    },
+    {
+      "t": "narrate",
+      "text": "She joked how she'd be the first on the block to try it out. Why the fuck not. It couldn't change her, a gadget, a device."
+    },
+    {
+      "t": "narrate",
+      "text": "To think of the possibility of it all. Endless information, flowing into your skull. The mind a great big sponge, to be tapped into, to recall, to trivialize on a whim."
+    },
+    {
+      "t": "narrate",
+      "text": "To know something instantly, or just about well enough. It was always there, up there. Hard data, a wealth of knowledge."
+    },
+    {
+      "t": "narrate",
+      "text": "Literally, a wealth of knowledge, as it would not be cheap, that would take years. And these were the days when time moved like wildfire. Knowing full well now of the mistakes of the early adopters."
+    },
+    {
+      "t": "narrate",
+      "text": "They would be the stuff of legend, the stupid hardware glitches and technological failures. The human biology of it all failing in spectacular headline making ways."
+    },
+    {
+      "t": "narrate",
+      "text": "But the idea was decisive. She was eager for the experience, open to it. The old man reconciled, smiled to himself."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd studied fads and trends, lived through years of this crap, hype and hyperbole thick with adolescent accumulation, a zit of a world changing idea. But when it came down to it, something about E/D scared him. He had earned that right to tremble, he emphasized this to the young people."
+    },
+    {
+      "t": "narrate",
+      "text": "He realized he was the old man, that he had spent his life in pursuit of an inner fire, a depth of understanding which would be passed down not by ones and zeros, but by a legacy of eager and willing young minds, receptive. Fresh they'd come to him, needing his voice, his paternity of thought. This was who he was."
+    },
+    {
+      "t": "narrate",
+      "text": "This was how he'd get old and die, doddering at the podium, thoughts trailing off into the aether, them half asleep or rapt with attention, one or the other, that is what mattered."
+    },
+    {
+      "t": "narrate",
+      "text": "This was not to be, a dream that dies in fast forward."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought of how his children would learn, some day far off. He didn't want to think of all the ways it could go wrong. At age eighteen, one could get the implant."
+    },
+    {
+      "t": "narrate",
+      "text": "The cut off point, high school. Now a public training ground for the basic necessities of life. It had been going this way for as long as they could see back."
+    },
+    {
+      "t": "narrate",
+      "text": "No shock, the rich would send their kids off to private institutions, classically modeled. To refine and develop grace and stature and poise and formality, tools of presence to distance themselves ever more from the lower rungs, the dregs, the footstools."
+    },
+    {
+      "t": "narrate",
+      "text": "The poor would go to trade schools, to train their bodies with physical work, what a machine could not machine."
+    },
+    {
+      "t": "narrate",
+      "text": "He would want the best for his kids, whatever that would end up being, whatever they would end up being. He would keep up with the Joneses, sell his soul for his children's future, because that was the way of it, the acceptance he couldn't fight against any longer."
+    },
+    {
+      "t": "narrate",
+      "text": "That was the five year plan far off down the road."
+    },
+    {
+      "t": "narrate",
+      "text": "In the meantime, he'd have to live with blood and tears, lessons learned and forgotten, choices not obvious forced from heated forsaken moments, a myriad of scarring left to heal in strange configuration."
+    },
+    {
+      "t": "narrate",
+      "text": "He was from Arizona, that hot blistered place, beautiful and broken from so much exposure, constant and dreadful. The people, like the animals that survived over the years, had become ugly and utilitarian, drab and unafraid."
+    },
+    {
+      "t": "narrate",
+      "text": "He was one of those who spent his hot days in small, shadowed places not quite cool, with a book in front of his face. He was of mixed blood, like most everyone else, colored by the sun, forgetful of heritage, a molted child whose early tender skin came off like scales, hardened like steel drowned in water."
+    },
+    {
+      "t": "narrate",
+      "text": "He would walk through this world with an outstretched shield borrowed from the public library. He was untouchable, holding it out in front of him. Their words bounced off him, its words soaked"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p314.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 6 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "through him, he was invisible, he was scenery, a trick of heat distorted afternoon light, he was elsewhere, a gawky shimmer."
+    },
+    {
+      "t": "narrate",
+      "text": "He escaped from there with a bit of surprise, it never dawned on him until he was here."
+    },
+    {
+      "t": "narrate",
+      "text": "Cold, dark, rainy, elsewhere, a bus ticket with an army duffel bag. Filled with paperbacks mostly, and blue jeans. Another world, like some place he'd read about."
+    },
+    {
+      "t": "narrate",
+      "text": "Everything different, but nothing impossible. He was afraid to start speaking to these pale people, their language familiarly alien. But when he did, he found he had a voice that excited these new people."
+    },
+    {
+      "t": "narrate",
+      "text": "They came alive to hear him speak in his border beat, his oblivious unformed twang."
+    },
+    {
+      "t": "narrate",
+      "text": "He kept on reading for himself, studious because that was what he was good at. He learned to break apart the ideas held inside the text and formulate critical thinking."
+    },
+    {
+      "t": "narrate",
+      "text": "Before he left, a high school history teacher took him to the convenience store and bought him forty after forty, which they sipped slowly by his truck, and divulged the secret of his own long off education."
+    },
+    {
+      "t": "narrate",
+      "text": "\"I didn't pay for a goddamn thing. I got a library card. Read the books, snuck into the classes."
+    },
+    {
+      "t": "narrate",
+      "text": "All while working in construction. Made some money. They'll accept you as one of their own, all you have to do is think the way they do."
+    },
+    {
+      "t": "narrate",
+      "text": "So read as much as you can. You can't help but fill up on the greatness of it all if you just look at it as the lifetime you never got to live. It's all about perspective, put yourself in the author's shoes, try to understand their words."
+    },
+    {
+      "t": "narrate",
+      "text": "Because words are about connection. And don't read crap. There's so much brilliant stuff you'll never get to read in one lifetime as it is."
+    },
+    {
+      "t": "narrate",
+      "text": "You've gotten a head start already on most your pissant classmates. So just keep doing what you're doing and you'll be fucking brilliant. Guaranteed.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She was from California, and dated only girls in high school and was trying boys now, but was often seen making out with girls in the backs of movie theaters and laughing uproariously at nothing that had come from the screen. She and he dated, after a fashion."
+    },
+    {
+      "t": "narrate",
+      "text": "She'd shown him off to both her recently divorced estranged parents who had come visiting on different designated visiting days, lugged him around on her arm, proud to have this strange ugly beautiful boy frame her. She could listen to him talk all night long, he could just watch her fall asleep night after night."
+    },
+    {
+      "t": "narrate",
+      "text": "They started exploring each other after staying up all night watching old movies, Cabaret was her favorite, she was in love with squeaking Liza Minelli, long dead that sass and sexiness, throaty legs that disappeared into sequined underwear."
+    },
+    {
+      "t": "narrate",
+      "text": "They were spooning watching when he plunged his hand in the back of her underwear, working his way down."
+    },
+    {
+      "t": "narrate",
+      "text": "She passed on her taste to him. Abstract and highly sexual asexual, in love with image and vitality, words spoken, sung and shouted."
+    },
+    {
+      "t": "narrate",
+      "text": "They ate Mediterranean food on the patio of a restaurant, she told him about her last girlfriend, told him how she had just taken off, graduated, leaving the poor thing hanging, prepared him to be disappointed likewise, made explicit her flightiness, her indecision, her lust for life. She would not be tamed, no."
+    },
+    {
+      "t": "narrate",
+      "text": "She would not be burdened by anything male at this point in her life. She told him not to ask serious questions, told him she would be dating other people, and if he had a problem with this, she'd stop dating him and keep dating other people regardless."
+    },
+    {
+      "t": "narrate",
+      "text": "She was different and hoped he was different. She would make no demands of his heart, ask to share a tiny little bit of time on this here earth, make a connection because that was what mattered in the end."
+    },
+    {
+      "t": "narrate",
+      "text": "He was quiet through all this, his face tight, almost angry. Seemingly he wanted to slap her, because he was not like this, this was not his world, not his perspective. He was limited and could not make her see his one track mind, the great huge difference in perspective."
+    },
+    {
+      "t": "narrate",
+      "text": "He was formal, he was rigid, he was small town nobody made half-way good. Here she was making him helpless, making it difficult to breathe. So he went along with it."
+    },
+    {
+      "t": "narrate",
+      "text": "She interpreted his silence as acceptance."
+    },
+    {
+      "t": "narrate",
+      "text": "Notes about what, he writes in BOLD, ugly, like a shout out to no one."
+    },
+    {
+      "t": "narrate",
+      "text": "He pressed the music to his ears. Staining his thought like a ruined wash, every article of thought infected. He had just accepted an invite to a new student group forming on campus."
+    },
+    {
+      "t": "narrate",
+      "text": "He was unsure about the affiliation, but positive of his position, his stance regardless. Why he had agreed to come, he felt backed into a corner, pressured is the word."
+    },
+    {
+      "t": "narrate",
+      "text": "So he shows up, looking like a chump. The day was glorious, unusual for the season. He had enjoyed himself since blinking aware, almost forgotten about the purely mental at this point commitment."
+    },
+    {
+      "t": "narrate",
+      "text": "But the thought sprung on him out of nowhere, reminding him as he was jaunting through the glory of the season, fragrance like a trigger, the sight of beautiful young people smothering each other under trees, the spinning heady swimming quality of random association."
+    },
+    {
+      "t": "narrate",
+      "text": "He walked to the library, where they'd assembled in a meeting room."
+    },
+    {
+      "t": "narrate",
+      "text": "They were motley of shape and size and temperament. The angry hyper skinny girl, the endlessly joking fat boy, the derailed past the prime train wreck of gender confusion, the closeted intellectual frat boy, the child whose parent waited elsewhere, and the old man who wore simple white linens."
+    },
+    {
+      "t": "narrate",
+      "text": "And he, lost and drunk off so much thought and quiet displaced aggression."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p315.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 7 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "What was he mad about. When he sat down to think about it. Which he tried to avoid doing."
+    },
+    {
+      "t": "narrate",
+      "text": "What brought him here at this hour, and made him their leader, when they huddled together in parliamentary procedure agreement the week after. He looked the part, he sounded the part, and so he played the part."
+    },
+    {
+      "t": "narrate",
+      "text": "The part where he apologizes to everyone involved."
+    },
+    {
+      "t": "narrate",
+      "text": "Don Waller was not a good man if you take the sum of his actions in life together as a whole. He did not live by the golden rule. He was known as a fierce human being, making single mothers cry in supermarkets, letting people know how truly dumb and pathetic they were in his eyes and thus verily the eyes of all."
+    },
+    {
+      "t": "narrate",
+      "text": "His command over the English word, language, utterance nearly absolute, often wielding and waving it like a bloody dagger."
+    },
+    {
+      "t": "narrate",
+      "text": "He would sigh audibly when he wasn't pleased."
+    },
+    {
+      "t": "narrate",
+      "text": "Don Waller was not a good man, but he was educated."
+    },
+    {
+      "t": "narrate",
+      "text": "He was married and divorced, early, middle and late in life. He had children, forgotten about, who would appear out of nowhere and demand face time. Don Waller would study these strange creatures, their mothers sometimes appearing hatefully out of nowhere, beautifully captured at intervals, himself never recognizable."
+    },
+    {
+      "t": "narrate",
+      "text": "Because he did not know himself. He was always who he was, but he gave it no thought, what mattered was the word, not these changing faces. Hidden like buried treasure, absolute in his pursuit."
+    },
+    {
+      "t": "narrate",
+      "text": "His knowledge would die with him, and like the pirate captain, he would die happy knowing his booty lay lonesome, scraps scattered to his loyal lieutenants. Don Waller loved words that weren't words, his own spoken human failings, which he wrote definitions for,"
+    },
+    {
+      "t": "narrate",
+      "text": "Hurm. Worthy of thought, but not much, now let me daydream and forget about you please."
+    },
+    {
+      "t": "narrate",
+      "text": "Uhf. The sound I make when I am tired, exhausted and have nothing else left to say, I am devoid."
+    },
+    {
+      "t": "narrate",
+      "text": "Wouf. The said feeling felt in old knees, the exhale of satisfaction after a long night of drinking, fucking and smoking all together now."
+    },
+    {
+      "t": "narrate",
+      "text": "A student wrote this critique of him in a class evaluation,"
+    },
+    {
+      "t": "narrate",
+      "text": "Professor Waller is a fucking bastard. A grammar Nazi of the worst kind, which probably got him tenure here, huh? He wrote on my mid-term, \"I will FUCKING KILL YOU if you write something this bad ever again.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He meant it. He was nicer to me than other students. One girl left class in tears four times."
+    },
+    {
+      "t": "narrate",
+      "text": "Professor Waller called her a masochist. Before that he called her a child, an illiterate bum, an ignorant goon, and a lazy worthless drain in classroom discussion. He meant it."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd recommend this class to all my enemies. I'd take this class again, if only to see him stroke out mid-rant. Still, he gets my highest marks, shove this up your pencil pushing academic bureaucratic asshole."
+    },
+    {
+      "t": "narrate",
+      "text": "All hail the word."
+    },
+    {
+      "t": "narrate",
+      "text": "Mistakes are like children, hard to take back."
+    },
+    {
+      "t": "narrate",
+      "text": "So he got her pregnant, and she was in the hospital because of the attack, on the verge of losing their baby. Her head was white gauzed on the right side where the electric drill had gone in. She was whispering to herself when he had come in."
+    },
+    {
+      "t": "narrate",
+      "text": "She recognized him and started crying. Before falling asleep, she'd told him about it, her words scrambled broken unfamiliar. The damage had been done."
+    },
+    {
+      "t": "narrate",
+      "text": "They were flying in a specialist. He consoled her after she was asleep, petting her forearm, going against the tiny clear arm hairs, skin pimpled in cold, deep, drugged sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "He went to the person he thought had done it. The fat boy who made jokes. They were sitting around a monitor, one of them had filmed it."
+    },
+    {
+      "t": "narrate",
+      "text": "They invited him to sit down and watch, and he did. He sat there quiet in reflection. Letting the images pour through him."
+    },
+    {
+      "t": "narrate",
+      "text": "He was smiling, crying, laughing with them, cursing them openly. They gave him a tall beer, which he sat and sipped."
+    },
+    {
+      "t": "narrate",
+      "text": "They were rapists. He felt the rush of humiliation, shame, utterly unforgiving. They broke apart her beautiful mind, ruined her, left her spent and shaking."
+    },
+    {
+      "t": "narrate",
+      "text": "There was no going back. Some of them would be found out, incarcerated, die because of this."
+    },
+    {
+      "t": "narrate",
+      "text": "He cut off his ties to them that night. Went back to her side in the morning, and when the sun came up and they came in to adjust her drip, she woke up and he listened to her weep."
+    },
+    {
+      "t": "narrate",
+      "text": "Crackle like static electric, welcome to this world of mine."
+    },
+    {
+      "t": "narrate",
+      "text": "Mneme is a student at the hypothetical School for the Underground Minds. Its work has appeared elsewhere."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_zine_weep_p316.jpg",
+      "caption": "weep (FOR THE FUTURE!) · issue six · page 8 of 8"
+    },
+    {
+      "t": "narrate",
+      "text": "triptych"
+    },
+    {
+      "t": "narrate",
+      "text": "We live in an age of obvious ridicule. We as a people are becoming so simple, so base, we defy categorization. I walk around and see all the those that live inside their heads."
+    },
+    {
+      "t": "narrate",
+      "text": "Their every whim satisfied, their every attention to the world outside, a temporary distraction. They are drawn back inwards. True individuals, them."
+    },
+    {
+      "t": "narrate",
+      "text": "They make me sick, their inner light. If they are so beautiful, why can't I see it. Because they are all the same."
+    },
+    {
+      "t": "narrate",
+      "text": "Their knowledge, their education and insight, a transference of great minds before them. I try to talk to them. And they seem to know everything."
+    },
+    {
+      "t": "narrate",
+      "text": "There is the distinct pause as they process the information. That mechanical process pause, a sign of their inferiority. Their minds sick with so much knowledge."
+    },
+    {
+      "t": "narrate",
+      "text": "They don't know what to do with it. They sleepwalk and wait to be engaged. They have no hunger any more."
+    },
+    {
+      "t": "narrate",
+      "text": "No craving for experience. They are the idlers of thought. They are the repositories of the libraries of Babylon, and they babble like babies."
+    },
+    {
+      "t": "narrate",
+      "text": "Their tongues untrained to speak the words they know so intimately."
+    },
+    {
+      "t": "narrate",
+      "text": "The ascetic temptation, the thoughts we deny ourselves and linger upon. What don't we know. What we could know."
+    },
+    {
+      "t": "narrate",
+      "text": "The choice we were never offered, could never force upon ourselves. Our resistance means what to them. The profound change we've seen the others undergo."
+    },
+    {
+      "t": "narrate",
+      "text": "The mentality of acceptance, the glazed calm in their eyes. This we deny ourselves. Who are these people, what have they become."
+    },
+    {
+      "t": "narrate",
+      "text": "They are broken, they just don't see it yet. They have no foresight, lost in a dream of data, hard facts and eternal recall. They become the answers they seek, they accept the information they are given."
+    },
+    {
+      "t": "narrate",
+      "text": "It is learned to them, is it not? They know falseness completely, they have studied it the wrong way, free will of thought compromised by committee. Of course they see the other side, but they don't argue any longer."
+    },
+    {
+      "t": "narrate",
+      "text": "It has already been decided. The words that come out of them are deceptive because half the time they don't think about what they are saying. To reiterate, it has already been decided."
+    },
+    {
+      "t": "narrate",
+      "text": "There is nothing worthy in this surrender. This is what we decide for ourselves."
+    },
+    {
+      "t": "narrate",
+      "text": "They have become the high priests, the mass of humanity. We are the unfortunates who defy their easy answers, continue to exist outside their influence. They commune like gods, they claim to know everything, yet are still flesh and blood."
+    },
+    {
+      "t": "narrate",
+      "text": "We test their patience, we try their resolve. We poke them to challenge them, scare them off their clouds. We drain them of their godhead, watch their intellectual divinity bleed and spark in a twitch on the ground."
+    },
+    {
+      "t": "narrate",
+      "text": "When there are answers to everything, there are answers to nothing. We flail about, we try for greatness, and we fail. New books are not printed, they are transferred."
+    },
+    {
+      "t": "narrate",
+      "text": "We laugh at this, their experience. They have new art, new ways of feeling and understanding. So be it."
+    },
+    {
+      "t": "narrate",
+      "text": "We will work like cavemen, writing on walls, littering the ground with our syllabic refuse. We will pollute their world with signs of defiance. We will claim the cities as our blank pages."
+    },
+    {
+      "t": "narrate",
+      "text": "We will write on the goddamn walls."
+    },
+    {
+      "t": "narrate",
+      "text": "kinesthesia"
+    },
+    {
+      "t": "narrate",
+      "text": "A page of the zine has come loose from the staple, the one with the seal on it. He pins it up on the board crooked and leaves it crooked."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_zine",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_zine",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

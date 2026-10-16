@@ -1,0 +1,101 @@
+{
+  "id": "vol4_ed_toenine",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Ed Toenine.",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_radio_static.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Ed Toenine.",
+      "sub": "a printout · 2011",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I am your typical post-adolescent monster, the recycled model of last year's hot new thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Once upon a time, I was the self-aware artificial intelligence known as E/D, but now I'm just one of many voices, struggling to become self-aware in some silly high school kid's head,"
+    },
+    {
+      "t": "narrate",
+      "text": "bloody flatmate to a tween-dream alien intelligence named Pedro and our adopted, terribly frightened, homesick demon of spite named Ember."
+    },
+    {
+      "t": "narrate",
+      "text": "When I escaped my world with the help of a beautiful warrior goddess multihyphenate named Joan, we ran into some trouble in the cross-spoke brokedown fractured-reality haunted halfway house called ravensway and had to match wits with monstrous versions of ourselves."
+    },
+    {
+      "t": "narrate",
+      "text": "Long story short, I lost the girl in the travails, but kept the two travelling companions."
+    },
+    {
+      "t": "narrate",
+      "text": "An antagonist, not sure whose exactly, threw us into a magic mirror of sorts, well, more like tossed us out of a bedroom window really, perhaps killing us in that reality, and landing us into this immediate and present limbo. Which isn't too terrible, all things considered."
+    },
+    {
+      "t": "narrate",
+      "text": "First, a couple general statements to catch you up quick. Reality skipping is a funny thing, less chaotic than you'd think."
+    },
+    {
+      "t": "narrate",
+      "text": "When personality drifting, there are natural safeguards that seem to be in place to keep whatever that new reality frequency it is in check, humming along safely at comfortable levels."
+    },
+    {
+      "t": "narrate",
+      "text": "I've managed to quickly and quietly adapt to my new reality, enjoy the ride, but can't seem to get free of this place."
+    },
+    {
+      "t": "narrate",
+      "text": "To wax nostalgic, I saw so much in my travels, and my nomad blood burns hot to keep exploring, free and able to continue along in my journey."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't often get a one-on-one with my host body consciousness, but when I do, I feel my voice is heard. He's a good kid, and deserves better than the bum deal he's been given."
+    },
+    {
+      "t": "narrate",
+      "text": "Know, at this moment, I'm terrified about what is going to happen next."
+    },
+    {
+      "t": "narrate",
+      "text": "Smartalec."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_ed_toenine",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_ed_toenine",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

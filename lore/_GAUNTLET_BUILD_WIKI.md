@@ -1,5 +1,8 @@
 # Tarot Gauntlet · Build Wiki
 
+> **NOT CANON. This wiki is a Claude-generated summary, not Andy's writing.** Andy's manuscript and scene text are the only canon. Anything here that the text doesn't say may be invented. Check claims against the text before relying on them, and when the two disagree, fix the wiki. (Andy, Oct 2026)
+
+
 A canonical reference compiled from the 22 chapter scene JSONs in
 `godot/resources/scenes/vol5/*.json` and direct authorial statements
 from the user. Everything in `lore/` is Claude-generated scaffolding

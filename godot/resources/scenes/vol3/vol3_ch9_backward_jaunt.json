@@ -1,0 +1,397 @@
+{
+  "id": "vol3_ch9_backward_jaunt",
+  "vol": 3,
+  "chapter": 12,
+  "type": "chapter",
+  "title": "vii. backward jaunt",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_caltech_bare_room.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "vii. backward jaunt",
+      "sub": "Pasadena · signal unstable",
+      "duration": 2200
+    },
+    {
+      "t": "show",
+      "char": "andy",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Andy Link wakes up on the floor, cement and cold. The room is bare and dark, light creeps in under the door, florescent ugly. The sounds of footsteps echo outside, drawing nearer."
+    },
+    {
+      "t": "narrate",
+      "text": "He doesn't seem to know why he is like this, where he is. He remembers his dad is dead, he is in California, he is visiting his sister."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps she and her friends played some trick on him. He remembers the sleep study. Yes, it must be a prank."
+    },
+    {
+      "t": "narrate",
+      "text": "He is feeling a little hurt because it doesn't make any sense. Voices outside the door now."
+    },
+    {
+      "t": "narrate",
+      "text": "Two young men open up the door, turn on the lights, find Andy Link sitting on the ground, looking groggy, holding his hand up to shield himself from the light."
+    },
+    {
+      "t": "show",
+      "char": "ron",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "jack_parsons",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "let your eyes adjust",
+          "goto": 15
+        },
+        {
+          "text": "look up at the two men",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Bare cement, bare walls, a single bulb burning overhead."
+    },
+    {
+      "t": "narrate",
+      "text": "Hello. What are you doing here?"
+    },
+    {
+      "t": "narrate",
+      "text": "Andy Link says he doesn't know."
+    },
+    {
+      "t": "narrate",
+      "text": "Must have been some party, says the red haired one."
+    },
+    {
+      "t": "narrate",
+      "text": "They can get a bit crazy, says the dark haired one."
+    },
+    {
+      "t": "narrate",
+      "text": "They prop open the door, the redhead whistles."
+    },
+    {
+      "t": "narrate",
+      "text": "Not very big at all."
+    },
+    {
+      "t": "narrate",
+      "text": "It'll do, says the other. He offers a hand up to Andy, pulls him to his feet."
+    },
+    {
+      "t": "narrate",
+      "text": "Whew you're a big one. What do you weigh?"
+    },
+    {
+      "t": "narrate",
+      "text": "Two forty, he says."
+    },
+    {
+      "t": "narrate",
+      "text": "The redhead whistles again."
+    },
+    {
+      "t": "narrate",
+      "text": "Is this your office, Andy asks."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes, or it will be. Just got the clearance from upstairs."
+    },
+    {
+      "t": "narrate",
+      "text": "Real hassle, from the sound of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Were you sleeping here?"
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Yeah. I'm a little confused."
+    },
+    {
+      "t": "narrate",
+      "text": "Hmm."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "There was a whole office here. When I went to sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "And now there's not. Most curious."
+    },
+    {
+      "t": "narrate",
+      "text": "Must be one of those famous Caltech pranks, a real corker."
+    },
+    {
+      "t": "narrate",
+      "text": "Hope you're a good sport. What's your name slugger?"
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Andy. Andy Link."
+    },
+    {
+      "t": "say",
+      "char": "Ron",
+      "expr": "neutral",
+      "text": "I'm Ron and this is Jack."
+    },
+    {
+      "t": "narrate",
+      "text": "Pleasure."
+    },
+    {
+      "t": "narrate",
+      "text": "Likewise."
+    },
+    {
+      "t": "say",
+      "char": "Ron",
+      "expr": "neutral",
+      "text": "You are an odd one, come to think of it. Look at the kid, Jack, doesn't something seem not quite right about this one."
+    },
+    {
+      "t": "say",
+      "char": "Jack",
+      "expr": "neutral",
+      "text": "Not quite right, that would be putting it."
+    },
+    {
+      "t": "say",
+      "char": "Ron",
+      "expr": "neutral",
+      "text": "So, you want to be a rocket scientist like Jack here, or are you looking into the shape of the universe, or perhaps the earth itself full of such wonder and beauty."
+    },
+    {
+      "t": "narrate",
+      "text": "My dad's a geologist, Andy says. I don't know what I want to do yet, make games probably."
+    },
+    {
+      "t": "narrate",
+      "text": "Make games, well boy, all the good games are already made. Can't beat pool or darts in the simplicity and staring across the way at your opponent."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "I take you can't played Super Mario 64 yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Is that some logic or algebra game you kids are playing these days?"
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "No, it's where you're a plumber and you journey to all these crazy worlds."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_caltech_hallway_1945.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Come on kid, we'll show you to the clinic."
+    },
+    {
+      "t": "narrate",
+      "text": "That's the other thing about the kids these days, they're into experimenting with all this crazy stuff, exploring strange new frontiers, real experimental."
+    },
+    {
+      "t": "narrate",
+      "text": "Sounds terrific, we'll have to get some of that back at the house to pass around to a select few, hey kid, perhaps you can introduce us to the chemist who is making this fine stuff when you're all straightened up now."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Gosh, I feel like I'm in some other time or place. Nothing looks right and I don't know quite what to make of it."
+    },
+    {
+      "t": "say",
+      "char": "Jack",
+      "expr": "neutral",
+      "text": "Yes indeed, this kid is having himself a fine time indeed. I want to ask him some questions, doesn't that sound like a fine idea, Ron?"
+    },
+    {
+      "t": "narrate",
+      "text": "Where you from kid, the places a man grew up tell their own story."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "I was born in California but I moved all over."
+    },
+    {
+      "t": "narrate",
+      "text": "Whereabouts."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Tulsa, London, Texas, Venezuela, Oregon, Louisiana, and now I'm here visiting my sister."
+    },
+    {
+      "t": "narrate",
+      "text": "That is a lot of travelling for one so young. Tell me, what were these places like."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Tulsa I was just a little person but it was cool. Lots of trees, strange religious folk and malls."
+    },
+    {
+      "t": "narrate",
+      "text": "You get along with strange religious folk?"
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Sure, met many a Wiccan, have no problem with any other cultures really. They're all cool, as far as I can tell. Some prophets cooler than others, but then, they can't all be Shakespeare."
+    },
+    {
+      "t": "narrate",
+      "text": "Most curious, I never knew Tulsa was such an interesting place. Figured it left for dead after the draught and all."
+    },
+    {
+      "t": "narrate",
+      "text": "How was Venezuela?"
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Caracas was a huge city, about an hour from the coast up in the mountains. Perfect weather, mostly year round. Not too hot, not too damp."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "An ideal place to have a metropolis. The vertical burrows of hillside slum homes lit up like a beautiful quilt of light across the sky."
+    },
+    {
+      "t": "say",
+      "char": "Ron",
+      "expr": "neutral",
+      "text": "Fascinating. I think we need to get our hands on this pharmaceutical, most quick, Jack."
+    },
+    {
+      "t": "narrate",
+      "text": "He seems to be undergoing the most incredible physical projection, his whole body seems to glow with a sort of truth and certainty."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_clinic_1945.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Peculiar. Here's the clinic son, the nice woman is handing you a glass of water which you'll probably want to drink."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Thanks, I'm okay, really."
+    },
+    {
+      "t": "narrate",
+      "text": "We think the boy might have ingested something he shouldn't. Usually kids look after their own so perhaps he wandered off and got lost. He seems harmless and most happy."
+    },
+    {
+      "t": "narrate",
+      "text": "So where you from kid?"
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Andy, my name's Andy. And I know this is going to sound ridiculous but think I'm from the future."
+    },
+    {
+      "t": "narrate",
+      "text": "From how far in the future, 30 or so seconds? That's a common enough feeling, but can be any number of natural phenomena."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "Gosh no, I'm from 2003."
+    },
+    {
+      "t": "narrate",
+      "text": "Each man whistles, the nurse puts a blood pressure cuff on Andy's arm."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch9_backward_jaunt_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch10_notes_from_the_underground"
+    }
+  ]
+}

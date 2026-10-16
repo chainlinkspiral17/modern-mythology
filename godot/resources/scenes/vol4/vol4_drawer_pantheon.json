@@ -1,0 +1,76 @@
+{
+  "id": "vol4_drawer_pantheon",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Pantheon",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Pantheon",
+      "sub": "a metal space adventure · pitch · 2010",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The godship Duedem encounters a radiant AI on the far reaches of the universe, and is caught in a war for its soul. With the mantle of the Duedem lying precarious in the balance, the four crew that make up its ascendant ranks are fighting amongst themselves for control, as well."
+    },
+    {
+      "t": "narrate",
+      "text": "The first act you play as Duedem himself, the integrated captain and starship both. The godlike powers of the mantle are felt here. In full control of his faculties, the Duedem is a beast in battle."
+    },
+    {
+      "t": "narrate",
+      "text": "Battle should be designed for guitar controllers. When the ship goes into battle mode, you get the warning klaxon to ready your weapon. Nailing riffs, shredding the strings, building up the melody, all each serve a specific tactic in battle."
+    },
+    {
+      "t": "narrate",
+      "text": "Special actions allow for tilt-up maneuvers. Dodging a near collision, firing a massive weapon, giving orders to crew people as indicated by their button."
+    },
+    {
+      "t": "narrate",
+      "text": "At the end of the first act, Duedem is overtaken by a wandering Radiant, an almost angelic/demonic type of space creature. Rare and mythical. This one attacks Duedem at a moment of weakness and locks itself into an epic internal battle that shuts down the systems and strands the crew until this life and death situation is resolved."
+    },
+    {
+      "t": "narrate",
+      "text": "Stuck in a very dangerous territory, the crew must explore the Radiant's hunting ground of detritus, which has some mighty impressive trophies, prisoners, starships, and traps in store."
+    },
+    {
+      "t": "narrate",
+      "text": "Along the way, they will discover more about the radiant and its strange culture, Duedem himself, who reports back in static missives from his internal field of battle, and the various other castaways they encounter along the way."
+    },
+    {
+      "t": "narrate",
+      "text": "The four stations are Communications, Weapons, Engineering, and Navigation."
+    },
+    {
+      "t": "narrate",
+      "text": "Communications are the vocals, describing the action, tension, and emotion in simple terms.\nNavigation determines the flow of combat and position between offense and defense. The guitar part.\nEngineering is sort of the bass track. The heartbeat of the ship, keeping it all running smooth.\nWeapons is the drum track."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_pantheon",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

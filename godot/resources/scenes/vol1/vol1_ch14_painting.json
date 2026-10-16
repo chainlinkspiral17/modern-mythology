@@ -1,0 +1,684 @@
+{
+  "id": "vol1_ch14_painting",
+  "vol": 1,
+  "chapter": 14,
+  "type": "chapter",
+  "title": "Act Three — The Painting",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_painting_interior.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_dream_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Painting",
+      "sub": "INT. · No Time",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The ART aisle opens onto the inside of a canvas. The light is turpentine-gold. The ground is gesso with the weave of linen showing through, and everything is wet, still being made."
+    },
+    {
+      "t": "narrate",
+      "text": "Off to the left, painted water. Off to the right, painted fire. In the middle, painted air, which is mostly the space between brushstrokes."
+    },
+    {
+      "t": "narrate",
+      "text": "Around all of it, at the very edges, is a frame of carved wood, knots, grain, old rings. It's too big to see all at once."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust's shirt-Water steps off his chest onto the gesso. Fire comes off Wagner. Air comes off Jacob. The three elementals stand in the places Faust painted them, left, right, and center, in the same poses as the afternoon he painted them."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Look who finally came to visit."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "we're home. this is home."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "He's late. They're always late."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I've been a little busy, dying-adjacent."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "We know. We've been watching. We said we should warn you."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "Remember? Not to play with fire?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I remember you made a joke."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "It was half a joke."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "we were going to tell you after the sitting, but you had to pee."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(to Wagner) I'm sorry, the fate of everything, was postponed for a bathroom break?"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Wonderful tea party."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "So. Here's the warning. Sit."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sits on the wet gesso. It doesn't get on him, or it does and it's supposed to."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "The old men before you. The ones who summoned us. They had manuals. They had circles on the floor. And every one of them wanted to keep something. A woman. A spirit. A youth. A summer that would never end."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "And they put us in frames, so we couldn't leave."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "and called it a deal."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "That's the whole old story. A man trades what's personal for something he can keep. Then he keeps it in a frame, until it dies in there."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I didn't frame you to keep you. I framed you because that's how you hang a painting."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "We know, dork. That's why we're telling you. You're the first one who wasn't trying to keep us."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "so don't start now."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Start what."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "She's in here. Your girl. And when you find her you're going to want to carry her out, whole."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "You can't. You'll burn. You already generate a lot of heat."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "and she's too big. the man said so. he wasn't lying about that part."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "If you carry her out whole, you'll have made the same deal as all of them. You'll be a frame with her in it. And she'll die in there, a second time, slower."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust doesn't say anything for a while."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "sad",
+      "text": "(quiet) So what do we do."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "That's not ours to say. We're elementals. We're not a manual."
+    },
+    {
+      "t": "narrate",
+      "text": "The frame creaks, the whole huge frame at the edge of everything, wood settling in a house at night. Then a voice comes from it, from everywhere around the edges. It's old and slow, deep as a root."
+    },
+    {
+      "t": "say",
+      "char": "Wood",
+      "expr": "neutral",
+      "text": "I hold. That's all I do. I hold, and the picture gets to be the picture. Hold her like that. (a long creak) I know the man in the empty shirt. He's from a small wood I haven't grown yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Then nothing more. The frame is a frame again."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "(after a moment) Did the frame just talk."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Once. She'll only do it once."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "How do you know that."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I painted her. She doesn't waste words. She's wood."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust gets up. Deeper in the canvas, past the three elementals, there's a painting inside the painting: the one he made the afternoon Joan left, Joan Charging Off Into Battle, her clashes, her triumphs, her victory over many strange foe. It's still going. The battle in it is still being fought."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That's mine. I painted that after she left. I painted her winning."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "You painted her fighting. You didn't paint her done."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust's earbud clicks. A new sample comes up from the queue, an older woman's voice, smoky, warm, from the seventies."
+    },
+    {
+      "t": "say",
+      "char": "Aunt Grace",
+      "expr": "neutral",
+      "text": "Everyone must have a hobby, Johnny. Mine was being a little bit famous. Yours is going to be knowing when to put the brush down."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Aunt Grace."
+    },
+    {
+      "t": "say",
+      "char": "Aunt Grace",
+      "expr": "neutral",
+      "text": "Don't overwork it, honey. That's how you get mud."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Who's that."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "She set me up. With the easel. With all of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust steps into the battle painting."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_battle_painting.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The Battle Painting",
+      "sub": "INT. · Continuous",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "It's chaos in oil paint, thick impasto, strange foes with too many limbs, banners, smoke done in drybrush. In the middle of it Joan is fighting with the dagger. She's beaten and raw the way she was in the cage, but she's moving, and she's winning, the way he painted her."
+    },
+    {
+      "t": "narrate",
+      "text": "Her back is to him, and on it are his brushstrokes, coarse-bristle lines down the spine, warm, strong, fierce."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Joan."
+    },
+    {
+      "t": "narrate",
+      "text": "She doesn't stop fighting."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You're late, John Faust."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Everyone keeps saying that."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Everyone keeps being right."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes a foe, and it falls apart into loose pigment. She turns."
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "It's Joan. Faust is sure of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind Faust, at the edge of the painting, the fourth shirt hangs in the air, the empty frame from the rearview of Judgement Day, and inside it, faint as a watermark, is DICKENS DEAN. He's barely there, a pencil sketch going gray at the edges."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "tired",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "worried",
+      "text": "(thin, staticky) Aria."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust looks at Dickens. Then at Joan."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That's not — (he looks again) That's Joan."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "That's my daughter."
+    },
+    {
+      "t": "narrate",
+      "text": "The figure in the battle looks from one of them to the other. For half a second, depending on who's watching, she's somebody else. Dickens sees something Faust doesn't, a color at the edge of her hair that might be a trick of the paint, a glint where glasses might be."
+    },
+    {
+      "t": "narrate",
+      "text": "Then it's gone, or it was never there."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "tired",
+      "text": "(to both of them, tired) It depends who's looking. It always depends who's looking. That's my whole trouble."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(behind Faust, in a whisper) That's what Air said."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(to her) I came all this way. I came through all of them. Please."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You showed me the truth, before I wanted it."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I know."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You were a bad dad."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I'm a bad dad. That's why I'm here."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "warm",
+      "text": "(not unkindly) Then be here. Don't take. Just be here."
+    },
+    {
+      "t": "narrate",
+      "text": "The sketch of Dickens flickers and goes thinner. His lines are disappearing from the outside in."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "He's going. Faust, he's going."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(to Faust, steady, almost relieved) Told you. Marginal. None of you like me much. It's fine. Get her home. Get one of her home."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust's hand is in his pocket on his needle, his last line of defense, the one that resets him to his own reality."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "(from outside the painting) That's yours. For you."
+    },
+    {
+      "t": "say",
+      "char": "Fire",
+      "expr": "neutral",
+      "text": "You'll need it."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Faust. That's your way back."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I've got two ways back. I've got you two idiots."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls the needle, steps to the fourth shirt, to the faint gray sketch of the man who maybe killed her, and puts the needle in his arm."
+    },
+    {
+      "t": "narrate",
+      "text": "The sketch goes dark, ink black, solid, and gasps."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "worried",
+      "text": "(real again, shaking) Why would you —"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Charon carries people. That's the job. I don't get to pick who I like."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You don't even know if I did it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "No. I don't. Add it to the list of things I don't know. It's a long list. It's getting personal."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens is solid but staying in the frame. He doesn't step out of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Joan comes to Faust. Up close she's the woman from the foot of his bed, from the club, from his couch. Every eyelash and blemish of skin, far too real to be a dream."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You asked me, what if this is all we get."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You asked me. I said I'm selfish and don't accept that."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "And now?"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust takes a long time."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Now I think, this is all we get. And it's a lot. It's a whole painting."
+    },
+    {
+      "t": "narrate",
+      "text": "Joan smiles. She takes his hand and puts it on her back, on his own brushwork."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You painted me, warm, strong, and fierce. That was yours. I wore your ink as long as I could. Take it back."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I don't want it back. I want you."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "I know. That's why you can't have me. I've got my own hero's journey to complete. I told you that the first night."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I was drunk."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You were listening anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Under his palm the paint on her back lifts, comes away, lines of it sticking to his hand. It's warm, like skin, like the blade."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "It's too much for you. It's too much for one. Share it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That's what he said."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "He was right about one thing. Let him have one thing."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns and walks back into the battle, deeper into the painting, past the foes and the smoke, toward an edge none of them can see. She doesn't look back. In the painting, for the first time, the battle is over. The strange foes lie down in the pigment and the smoke clears off into raw canvas."
+    },
+    {
+      "t": "narrate",
+      "text": "The painting is finished. Or it's stopped, which is not the same thing."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(in the frame, watching her go) That's how she always leaves."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Who."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "(after a while) Whoever you saw."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch14_painting_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch11_aisles"
+    }
+  ]
+}

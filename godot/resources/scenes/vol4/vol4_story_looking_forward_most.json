@@ -1,0 +1,101 @@
+{
+  "id": "vol4_story_looking_forward_most",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "looking forward most",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_looking_forward_bath.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "looking forward most",
+      "sub": "story · one night a week",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "She was set. She had everything planned out. Her evening was before her."
+    },
+    {
+      "t": "narrate",
+      "text": "She had a list, a winecooler her parents wouldn't notice missing, three kinds of scented bubble bath, bath beads, and scented oils, a book about sex only not really because she found it in the school library, and her cellular phone which was flashing blue and pink, pulsing out near the antennae."
+    },
+    {
+      "t": "narrate",
+      "text": "She was getting ready for the evening that lay ahead, that she could not get too excited about else she'd set herself up for disappointment, but she could imagine scenarios, situations that weren't too unsensual, too unusual."
+    },
+    {
+      "t": "narrate",
+      "text": "She could sit back and smile and think dirty thoughts, feel like a girl and a woman and alive for one night a week. Lizza Beth spent hours getting ready for the moments ahead. She could dream about words that would never be said, looks in his eyes that could never be read."
+    },
+    {
+      "t": "narrate",
+      "text": "She believed in the potential of forever. Wishing for the happilys and evers after. She painted her nails, and played with her eyelashes."
+    },
+    {
+      "t": "narrate",
+      "text": "She could be an artist make herself the art. She could try and transform her ways most subtle. She felt just a little different just a little better."
+    },
+    {
+      "t": "narrate",
+      "text": "Here a little there a lot. She could taste the artificiality on her lips, and she loved it. That spoiled creme pink, that blue current under her eye that made her look as happy as she wanted to be."
+    },
+    {
+      "t": "narrate",
+      "text": "It wasn't only a date, it wasn't only a moment set aside for the two of them, it was the promise of more, and it wasn't really a date, it wasn't really something that concrete. It was just a movie. They did it a lot."
+    },
+    {
+      "t": "narrate",
+      "text": "They went out and were friends and could just act evil and bullshit and be kids and adults and little monsters."
+    },
+    {
+      "t": "narrate",
+      "text": "They'd see R-rated movies because they were almost seventeen and no one ever checked, and they'd go to a fifties mall diner and have hamburgers and milkshakes and watch the greasers and rollerskating foodhandlers with their pierced tongues and noses and dyed hair go zooming past."
+    },
+    {
+      "t": "narrate",
+      "text": "Because the moments they had together, together, went by too quickly. Because Lizza Beth would reflect on those moments until the next moment. She would analyze and plan and attack the memory, the future, like all young people did who knew what they were doing."
+    },
+    {
+      "t": "narrate",
+      "text": "She could dream and breathe and smile and sigh. She could be naked and unashamed, be analytical of herself and see only potential. Depression was something that wasn't happening to her, wasn't who she was."
+    },
+    {
+      "t": "narrate",
+      "text": "Not today, not right now."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_looking_forward_most",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

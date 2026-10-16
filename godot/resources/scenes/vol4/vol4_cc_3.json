@@ -1,0 +1,264 @@
+{
+  "id": "vol4_cc_3",
+  "vol": 4,
+  "chapter": 5,
+  "type": "interlude",
+  "title": "Charlie & Caroline — Paradise Lost",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_abstract_club_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_club_thump.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "An Abstract Night Club of Peculiar Light and Form",
+      "sub": "Int. · Night",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I know nothing about her, except that she waved at me, she had glitter all over her face, and her smile was like words can't describe, like the most beautiful music in the world playing under three feet of water."
+    },
+    {
+      "t": "narrate",
+      "text": "This music of sorts play over an abstract club scene. Charlie takes two small indented pills with a shot of vodka. The grittiness of the scene gives way to a healthy blur of color and shape."
+    },
+    {
+      "t": "narrate",
+      "text": "Bodies touch and pull away from each other. Charlie's smiling face stands out among it all."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "watch the light",
+          "goto": 11
+        },
+        {
+          "text": "keep dancing",
+          "goto": 12
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Color pools and breaks over the floor like something spilled."
+    },
+    {
+      "t": "narrate",
+      "text": "The girl who is ALL SMILES comes up and dances. They dance close and she kisses him. His hand goes down her back."
+    },
+    {
+      "t": "narrate",
+      "text": "Her eyes are Carrie's. Charlie pulls back and examines this amalgamation. A cut-out of Carrie's head is worn like a mask over ALL SMILES' face."
+    },
+    {
+      "t": "narrate",
+      "text": "Glitter is stuck to it in fact."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_cc_glitter_mask.jpg",
+      "caption": "All Smiles"
+    },
+    {
+      "t": "say",
+      "char": "All Smiles",
+      "expr": "neutral",
+      "text": "I'm going to ask you out and you aren't going to even remember this moment, are you?"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Of course I'll remember. I may not get all the details just right, but I'll remember."
+    },
+    {
+      "t": "say",
+      "char": "All Smiles",
+      "expr": "amused",
+      "text": "Goodness gracious."
+    },
+    {
+      "t": "narrate",
+      "text": "All Smiles leans in to kiss. Their faces meet. 2D plays against 3D."
+    },
+    {
+      "t": "narrate",
+      "text": "In all the dancing that's going on, Charlie and All Smiles become a solid blur of connection."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_grungy_bathroom_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "A Grungy Bathroom",
+      "sub": "Int. · Night",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie leans up against the wall, looks at himself in the mirror. Someone has drawn a face with a sharpie marker. His reflection framed most peculiar."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "An after party. Where lines are crossed, connections made, and everything forgotten in a blur of indulgence and high energy."
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie goes outside."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_after_party_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The After Party",
+      "sub": "Int. · Night",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "A woman swings on a tire, her dress leaving contrails of pink and orange light. One contrail bounces all over the room. Charlie follows it to the bar, where it lands in a shot glass."
+    },
+    {
+      "t": "narrate",
+      "text": "He downs the pink liquid and turns to look."
+    },
+    {
+      "t": "narrate",
+      "text": "Carrie is standing there, smiling at him. Charlie eyes her suspiciously."
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "amused",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "surprised",
+      "text": "You're not in my head are you?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "I dunno, am I?"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I thought I saw you earlier, but it wasn't you. She didn't even look like you. But I think I made her look like you-"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "In your head?"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "amused",
+      "text": "Exactly!"
+    },
+    {
+      "t": "narrate",
+      "text": "Caroline produces a cigarette."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "amused",
+      "text": "See what you did to me?"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "What I've been doing? What have you been doing? You get settled in with your sister?"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "All moved in?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "You really want to hear about all that?"
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Tell me everything, leave nothing out."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_cc_3_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_cc_4"
+    }
+  ]
+}

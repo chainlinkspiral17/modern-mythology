@@ -1,0 +1,61 @@
+{
+  "id": "vol4_poem_public_sanctuary",
+  "vol": 4,
+  "chapter": 3,
+  "type": "interlude",
+  "title": "The Art of the Public Sanctuary",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Art of the Public Sanctuary",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "to fountains that exist as monuments to idleness\nbroken marble laid comfortably askew\nangles bisecting natural order.\nto freshly manufactured lawn that is open to every trespass\ntended by invisible hands that leverage harmony\nfor casual consideration."
+    },
+    {
+      "t": "narrate",
+      "text": "to demands of city life that call into question\nrules of governance scheduled demolition zoning jurisdiction\ncivil ordinance allotted acreage.\nto weary business people\nlooking like freshly risen corpses shuffling unawares\nstraggling homeless\nthe lively dead\nsitting together on benches without a word shared."
+    },
+    {
+      "t": "narrate",
+      "text": "to quiet afternoons\nnot so quiet with city sound\nechoing through concrete glass\narriving far off wind chimes\ndissonant music played under three feet of water.\nto newspapers left scattered pushed up against young trees\narmored in chicken wire to ward off urban blight."
+    },
+    {
+      "t": "narrate",
+      "text": "to the child who finds a quiet spot\nsettles in place absently pulls at grass\nthinking of subterranean tunnels\nconnecting daycare to workplace to bus stop to here.\nto adventures that happen just out of sight\nsmall cause for alarm a camera crew\nfilming at the base of a fountain\nbecause it adds slight motion to an otherwise still frame."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_public_sanctuary",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

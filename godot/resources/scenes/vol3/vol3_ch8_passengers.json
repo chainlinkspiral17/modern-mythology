@@ -1,0 +1,287 @@
+{
+  "id": "vol3_ch8_passengers",
+  "vol": 3,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "vi. passengers",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_warehouse_club_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_club_pulse.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "vi. passengers",
+      "sub": "Industrial downtown · Friday, 1 a.m.",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "This is the story of two boys, one named Steven Chau, one named Aaron Cauther and the stranger they took home one night after much fun was had."
+    },
+    {
+      "t": "narrate",
+      "text": "Around one am, industrial downtown, the fading of a Friday night into the weekend's heavier remainder."
+    },
+    {
+      "t": "narrate",
+      "text": "The music beat with the life of the almighty goddamned. Green and pink light cut across body mist, artificial smoke, thick fog of exhausted sigh and exhalation."
+    },
+    {
+      "t": "narrate",
+      "text": "Young people flinging all up against each other, salmon dancing up the biological waterfall, casting off that lower energy where old exhausted succumbed to die. Into the air it went, into those four walls, even more into the floor, penetrating permeating."
+    },
+    {
+      "t": "narrate",
+      "text": "They reached out to seize that connection they could not simply grasp with outstretched hands. The hunger for sensation better than the drug they were currently on."
+    },
+    {
+      "t": "narrate",
+      "text": "The moment rushing upcoming just around the corner cutting into the next beat already here dancing harder faster now because this moment should - will - last forever. Yes. Chants in their heads."
+    },
+    {
+      "t": "narrate",
+      "text": "Inner ears numb and stimulated almost sexually spent."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_car_backseat_streetlamps.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Steven not quite asleep in the backseat, drifting in and out on his back, one forearm half covering his eyes, the gentle rhythmic pulse of the tall sentinel street lamps, the haze of the mid-between hour a blur on top the blur."
+    },
+    {
+      "t": "narrate",
+      "text": "Moaning softly to himself, scratching his head, the long scars under thick bristle hair where they cut him open to relieve hemorrhaging. He was near to the moment, the moment he could not ever remember except perhaps in near sleep standing on precipice footing."
+    },
+    {
+      "t": "narrate",
+      "text": "Getting hit by the car when he was nine and then again when he was thirteen. What they said about lightning, random vehicles did to Steven. Hit and run in empty stretches of suburbia."
+    },
+    {
+      "t": "narrate",
+      "text": "He was found broken, run over, smooshed, swollen bloody oozing by kind and panicked strangers who would come to visit in recovery. When he woke in hospitals, drugged and unaware, stupid like a baby, it was like a party."
+    },
+    {
+      "t": "narrate",
+      "text": "All his friends would visit, his younger brother would hug him and familial relatives flown in chattering from Taiwan and there would be no animosity, no petty grudges, all wiped clean, like him. He had been a violin prodigy, taken from him. He said finally, I'm done, broke his parents' hearts."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd worked so hard to recover after that first time. Months of rehabilitation, he'd gotten as good if not better by the time of the second accident. His fingerprints still thick with vibrato callus."
+    },
+    {
+      "t": "narrate",
+      "text": "After that, he was moody, teenagerish, said fuck it, let his body fall apart, untrained himself, let his brain remain half-crushed steam-fried from so much swelling and healing, the blunt trauma of life. This was change, this was how he grew."
+    },
+    {
+      "t": "narrate",
+      "text": "His disappointed mother, who had escaped from him, invested herself in younger son Chris, both of them away at a state competition, piano. The father never coming home, importing exporting in Vietnam. The new empty beautiful house to return to, to fall into like a couch and not get up from."
+    },
+    {
+      "t": "narrate",
+      "text": "He was the ambitionless lost cause bah bah black sheep age sixteen. He didn't want to think, didn't want to feel, wanted to shed his old friends and start over new. Be young and pretty and horrible."
+    },
+    {
+      "t": "narrate",
+      "text": "Join the tribe of the tattooed pierced scarred forgotten nobodies ageless in their youth."
+    },
+    {
+      "t": "narrate",
+      "text": "He recognized the sound of his garage door opening, closing behind them. He was home."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_suburban_garage_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The Chau house",
+      "sub": "Suburbia · Saturday, 3 a.m.",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Saturday, between three and four am, pulling into the six month old eight hundred thousand dollar home of Steven Chau."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron Cauther helping his friend up out of the back seat. Steven cursing at him, at the smell of what, he is not sure, saying softly, whathufuckishat smell."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_gas_station_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron has an aura, taint, of vomit on him, Steven's own vomit from earlier left mostly on gas station asphalt. Their one stop between here and there. The limbo stretch of suburban convenience and molded colored letter lighting, signs from large department stores the only thing emitting, radiating in the murk."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron remembers because it was almost like now, Steven in the front seat pitching back and forth stopped by the seat belt, that olive look, the slight pouching of his cheeks. Aaron stopped the car, went around to the passenger side, helped Steven get unbuckled, asked if he was okay."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven said, I'm fine, swaying in place."
+    },
+    {
+      "t": "narrate",
+      "text": "Then he put his hand over his mouth and tried to cup his throw up instead sprayed it like a fan all over Aaron. The rest he puked between his knees coughing crying sputtering it out, still sitting in the car, at least facing outside. Aaron went to the bathroom to clean himself off, get towels."
+    },
+    {
+      "t": "narrate",
+      "text": "He tried the door but it was locked tight, seemingly one piece with the wall, metal frame firm shut."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron went inside the small market, bleached white light, smelling of burnt popcorn and windex. The kid behind the counter raised his eyebrows at Aaron as if that was word or warning enough."
+    },
+    {
+      "t": "narrate",
+      "text": "I need the key to the bathroom, said Aaron."
+    },
+    {
+      "t": "narrate",
+      "text": "The kid regarded this, took tiny headphone nubs out of his ears, asked You gonna buy something."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron slapped change down on the counter, two crumpled dollar bills."
+    },
+    {
+      "t": "narrate",
+      "text": "Just gimme some gas on eight."
+    },
+    {
+      "t": "narrate",
+      "text": "The key was pushed across the counter chained to a plank of wood."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look in the mirror",
+          "goto": 43
+        },
+        {
+          "text": "just wash up",
+          "goto": 44
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The mirror is scratched and spotted, the bulb above it humming a sick green."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron washed in the sink, looked himself in the mirror. His t-shirt wet but not uncomfortable. He smelled but at least it wasn't thick on him."
+    },
+    {
+      "t": "narrate",
+      "text": "He dispensed pink soap and lathered the shirt once more. Wrung it out, flicked off flecks of chunk on his jeans, scraped lines and dots that had crusted like sores. Thinking about his best friend, not quite concerned, almost parental, a frown."
+    },
+    {
+      "t": "narrate",
+      "text": "Their lives moving away from common childhood afternoons spent walking home, reading comic books, watching cartoons. Now they shared pornography, music, video games. They communicated through artificial lines, about artificial constructs of culture, common threads these."
+    },
+    {
+      "t": "narrate",
+      "text": "Their shared history was one of wish fulfillment and young outsider nostalgia holding onto childish things."
+    },
+    {
+      "t": "narrate",
+      "text": "See the new Joyner record is out."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah. Wanting to go to that show. When they coming to town?"
+    },
+    {
+      "t": "narrate",
+      "text": "March, no April. Sometime for sure. Dahlia, I think they're with."
+    },
+    {
+      "t": "narrate",
+      "text": "She's so goddamn fine."
+    },
+    {
+      "t": "narrate",
+      "text": "Despite allying himself with the husk of Steven Chau, Aaron was still smart, still very much interested in school. His parents were cautious but not yet concerned about the friendship. He'd started playing in a soccer club, started marathon long distance running, been taking up leadership roles in the ROTC program."
+    },
+    {
+      "t": "narrate",
+      "text": "He still wore glasses, still pretty much a geek, but had a squinting attractiveness, strength, resolve, a budding presence of body and mind. He wasn't sure what he was doing here, why he'd have to go back out there and clean his best friend like a baby."
+    },
+    {
+      "t": "narrate",
+      "text": "The gas station attendant yelling. Aaron thought because wasted Steven might be doing something stupid. Instead the attendant was focused on a homeless man squeegeeing the car windshield."
+    },
+    {
+      "t": "narrate",
+      "text": "Cause for alarm dissipating, Aaron approached, noticed Steven had moved to the backseat, unaware, asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The dickhead attendant pointing at the homeless man said, I told him he's not supposed to be doing that, I can call the cops if you want."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron threw the driftwood key rather hard at the attendant, walked over to the homeless fellow, took the squeegee from his hands and continued wiping. The homeless guy stumbled back, leaning against a pillar. The attendant just stood there while Aaron finished wiping."
+    },
+    {
+      "t": "narrate",
+      "text": "When he was done, he looked for a five dollar bill to give the homeless guy, but realized he had given the last of his change to the attendant."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron said, I don't have any money. You need a ride somewhere or something?"
+    },
+    {
+      "t": "narrate",
+      "text": "I could bum a smoke."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron shook his head, we can drop you off someplace."
+    },
+    {
+      "t": "narrate",
+      "text": "I just need to crash, getting late, cold, got nowhere to go."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron considered, the attendant standing there with his arms crossed."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch8_passengers_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch8_passengers_b"
+    }
+  ]
+}

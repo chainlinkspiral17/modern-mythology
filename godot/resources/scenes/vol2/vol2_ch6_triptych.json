@@ -1,0 +1,124 @@
+{
+  "id": "vol2_ch6_triptych",
+  "vol": 2,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. Triptych",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_coast_highway_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "vi. triptych",
+      "sub": "a distant wail",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Energy hits the body like a thousand volts. Sunlight on the cheeks, the sky a cobalt blue, the smell of youth an intoxication. A day to be alive, to lose the hours cruising around in vehicles with windows down, music blaring, every lyric and riff imbued with meaning and clarity."
+    },
+    {
+      "t": "narrate",
+      "text": "The blast of wind across the skin, the prickle an aphrodisiac. Close company with the opposite sex, one on each side, stuck in the middle of their smell and touch. Every breath taking in this drug of life's choices."
+    },
+    {
+      "t": "narrate",
+      "text": "Everything physical and real and so very immediate. Screaming for no reason, squealing just to test those pipes, slam those brakes. The curves of corners go fast and tight, the crush and the heat of visceral contact in the backseat."
+    },
+    {
+      "t": "narrate",
+      "text": "Discovering what is real and what is right. Learning this is youth, these sensations new, horizons open up and skies break through so very clear."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_reading_lamp_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "back to reality,",
+      "sub": "right here right now",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "the song in my head that is stuck. i weep because it is so beautiful. it is like a turning point in time, when life is revealed so damn ugly and wonderful and all there is to be done about it is laugh and cry, one and the same."
+    },
+    {
+      "t": "narrate",
+      "text": "what follows is a story told in three parts. words that have never been said before. will never be said again. people lost and wisdom gained."
+    },
+    {
+      "t": "narrate",
+      "text": "words that run together without so much as a breath to break them apart. the emotion that spills out like a hot scream, steaming the landscape forever. learn how this life will never be the same again, the tender veil parts, the wicked are we reflections in each other ourselves."
+    },
+    {
+      "t": "narrate",
+      "text": "people tell me to stop writing because they know what comes next. i tell them i've yet to get to the best parts. when it all becomes madness, because i lose and i don't know what to say, so i just keep going because that is what i do."
+    },
+    {
+      "t": "narrate",
+      "text": "i am here now, this story has a long ways to go. travel with me yet, this unreliable narrator, author boy wise beyond his years, never measuring up, disconnected from his friends and family, willing to destroy everything he has built for a chance to show just how much he loves an impossible dream."
+    },
+    {
+      "t": "narrate",
+      "text": "he is already dead, he just doesn't know it yet."
+    },
+    {
+      "t": "interlude",
+      "text": "First Panel — Mayhune Lovers",
+      "sub": "a story about what it means to be",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "because it means something to me at this point in the telling. I've not been able to put my words down in quite some time. You read this linear but I write when words seize me and refuse to let go."
+    },
+    {
+      "t": "narrate",
+      "text": "It happens when it wills itself, here and there. Make no mistake that I'm struggling with who I am and where I'm going in this life, understand that by committing myself to this project and seeing it through, many sacrifices were and will be made. Every word is a choice and I have to live with the consequences."
+    },
+    {
+      "t": "narrate",
+      "text": "I am a lazy human being, full of idle thought and means of leisure. I occupy myself with entertainments, diversions and frequent breaks from reality. I have been drinking to excess."
+    },
+    {
+      "t": "narrate",
+      "text": "You know nothing of my present and I apologize, but you can always skip ahead to the second half where I detail in greater length my present woe. It's a different sort of story, so very different from the one that will immediately follow."
+    },
+    {
+      "t": "narrate",
+      "text": "When I set out to collect my thoughts, I thought these Small Wood reminisces would be easy. I said how I am very lazy, I tell you I thought this would write itself. I was wrong and now realize just how hard this will be to continue at this pace and say what needs to be said."
+    },
+    {
+      "t": "narrate",
+      "text": "So often when I sit down to write I give up half-way through, delete what came before and retire to my bed. I need to feel the click in place with this language, this past. It doesn't have to be true; it just has to feel true."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_triptych_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_mayhune"
+    }
+  ]
+}

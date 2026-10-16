@@ -1,0 +1,132 @@
+{
+  "id": "vol2_ch6_ark",
+  "vol": 2,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. Triptych — Philip",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Philip",
+      "sub": "the beach · one summer night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "He was a young man named Philip. His red hair a cocky mane he threw around to give more weight to his slender freckled frame. He had a thin beard and almost never wore a shirt."
+    },
+    {
+      "t": "narrate",
+      "text": "He loved the outside, loved women and couldn't stand to be wrong in the face of the obvious. Philip sang around campfires in a certain atonal hymnal, a frog-throated choirboy whose croaking seemed right no matter how inherently wrong it was."
+    },
+    {
+      "t": "narrate",
+      "text": "Most of his friends were hippies because like them he liked to surf, smoke and screw. Philip had a dirty little secret and that was his personal relationship with the lord Jesus Christ. One summer night baked on the beach Jesus spoke to Philip and outlined his plan."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip saw the ocean rise up and he scrambled for his surf board. His friends slept through the rising surf, disappearing beneath the water. Philip paddled for what seemed like hours, the world around vanished beneath."
+    },
+    {
+      "t": "narrate",
+      "text": "The water sang to him with the collision of every wave, the crash of breakers, the shift of temperatures beneath him, like thousands of voices, each more beautiful than any he'd heard in the sum total of his existence."
+    },
+    {
+      "t": "narrate",
+      "text": "Their effect was to render him prostrate on his board, weeping up at the sky, the clouds moving far too quickly, racing across, dissolving together."
+    },
+    {
+      "t": "narrate",
+      "text": "The voice of God was the sound of water pounding in his ear drums. Thick and solid, splitting him open down the middle, good and evil, man and boy, father and son. He had no present, he was just his past and future."
+    },
+    {
+      "t": "narrate",
+      "text": "He knew who he was and where he came from and then God told him what exactly was coming."
+    },
+    {
+      "t": "narrate",
+      "text": "A flood like nothing he'd ever read about or seen in any movie."
+    },
+    {
+      "t": "narrate",
+      "text": "It would swallow everything he loved and there was nothing that could be done to stop it. It would not obey the laws of physics nor would it adhere to natural order. It was chaos and fluid, the stuff of final death and amniotic creation."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip's tears, so small and tiny, returned to the ocean. He beat his fists against the give of the ocean. He rocked on his surfboard and screamed at the sky, never stopping its mad dash."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_overcast.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "God left him on the sandy beach, the morning sun throwing light across a dark and western ocean."
+    },
+    {
+      "t": "narrate",
+      "text": "When Philip was twenty-four his firstborn was baptized in the freshwater saltwater mix where the Seagash met the Pacific. The little girl cried on her own choke."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a small party afterwards and through several glasses of wine, Philip thought he heard someone calling his name from far off. He very much hoped it was the divine. He needed to hear so very badly at this point."
+    },
+    {
+      "t": "narrate",
+      "text": "He wasn't making enough money, wasn't very happy with the whole situation really."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_ark_hillside.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "When Philip was thirty-one, he quit his job to start construction. He started seeing signs all around him and knew it was time to begin. The first week he'd convinced his family he was cutting wood to build a new porch."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the guise that he needed something to occupy himself during the transition. He couldn't afford raw lumber so he began by felling small trees by himself, alone and away from the house."
+    },
+    {
+      "t": "narrate",
+      "text": "His children came up with their own reasons why trees would crash not so far off, why their father would disappear for half a day and come back sweaty and exhausted and too tired to look at them."
+    },
+    {
+      "t": "narrate",
+      "text": "He read the bible but never out of comfort. He needed answers, needed the word of God to provide a foundation. He dreamt of that ocean of judgement."
+    },
+    {
+      "t": "narrate",
+      "text": "Believed in that dream above all else."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_ark_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_watcher"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "id": "vol4_board",
+  "vol": 4,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "the corkboard",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_corkboard_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the corkboard",
+      "sub": "the desk · after midnight",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Four things up on the cork now. He digs a ball of red string out of the drawer, in with the rubber bands and the dead nine-volts."
+    },
+    {
+      "t": "narrate",
+      "text": "He ties it off on the zine page first, since it's farthest out. The future where you buy an education and download it into your head, kids with power drills, the old man in the missile silo bragging about the back doors he left open."
+    },
+    {
+      "t": "narrate",
+      "text": "Left and down to the headline. All over town. The flood loosed on mankind, and the people who used to teach with nothing to do but talk about it."
+    },
+    {
+      "t": "narrate",
+      "text": "Left again, to the blog post. A kid up all night in March with a story due Monday, finishing the rough of weep."
+    },
+    {
+      "t": "narrate",
+      "text": "Four days later he turns it in, goes to hear two poets read at a theater, goes home and plays video games to wash the day off."
+    },
+    {
+      "t": "narrate",
+      "text": "Doesn't matter much which came first. The string runs back through all of it."
+    },
+    {
+      "t": "narrate",
+      "text": "At the left edge it ends on an index card in his own block capitals, notes for the next thing."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_board_string.jpg",
+      "caption": "DICKENS DEAN."
+    },
+    {
+      "t": "narrate",
+      "text": "Under it, smaller: glass tower on the pacific. wants children."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "leave it there.",
+          "goto": 16
+        },
+        {
+          "text": "pull the string a little.",
+          "goto": 18
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "He leaves it. The string pulled tight to the card."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "follow the string.",
+          "goto": 19
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "He pulls. The card holds and the string keeps coming off the ball, more than the board has room for."
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_por_puesto_night.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "There's slack left over. A lot of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He runs it down off the board and down the wall to a strip of old cork under the light switch, where a few things have been pinned so long the pins have rusted."
+    },
+    {
+      "t": "narrate",
+      "text": "A clipping from a Caracas paper, gone the color of weak tea. The crime page. SUCESOS."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "read the headline.",
+          "goto": 24
+        },
+        {
+          "text": "look at the photograph.",
+          "goto": 28
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. A jitney with no plates, picking up fares on the unfinished highway."
+    },
+    {
+      "t": "narrate",
+      "text": "Beside it, a photo of a parade, shot off a television screen. Masks with too many eyes, feathers, a jaguar float made out of hubcaps."
+    },
+    {
+      "t": "narrate",
+      "text": "A girl in a yellow slicker at the edge of the crowd, out of focus. Under it, foto: Maribel."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "turn it over.",
+          "goto": 31
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "A photo of a parade, shot off a television screen. Masks with too many eyes, feathers, a jaguar float made out of hubcaps."
+    },
+    {
+      "t": "narrate",
+      "text": "A girl in a yellow slicker at the edge of the crowd, out of focus. Under it, foto: Maribel."
+    },
+    {
+      "t": "narrate",
+      "text": "Above it the headline. POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. A jitney with no plates, picking up fares on the unfinished highway."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns it over on its pin. The back is birth notices and half an ad for powdered milk."
+    },
+    {
+      "t": "narrate",
+      "text": "A lollipop wrapper, waxed paper flattened under a thumb. Printed on the inside, where you'd only see it once the candy was gone: VALE POR UN BOLETO."
+    },
+    {
+      "t": "narrate",
+      "text": "The last one isn't pinned yet. He's holding it."
+    },
+    {
+      "t": "narrate",
+      "text": "A cardboard sign off a windshield. RUTA 77 in house paint. Chacaíto. Sabana Grande. Plaza Venezuela. Petare."
+    },
+    {
+      "t": "narrate",
+      "text": "The bottom stop painted over so many times the cardboard has a crust."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_route_card.jpg",
+      "caption": "RUTA 77"
+    },
+    {
+      "t": "narrate",
+      "text": "He pins it up with the others."
+    },
+    {
+      "t": "narrate",
+      "text": "What he remembers is rain on hot asphalt at four in the afternoon, the streets steaming, and the dogs up in the barrio going all night."
+    },
+    {
+      "t": "narrate",
+      "text": "Headlights cross the ceiling. He turns off the lamp."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_board_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "vol4_poem_retinal_burn_first",
+  "vol": 4,
+  "chapter": 3,
+  "type": "interlude",
+  "title": "Retinal Burn (darkroom) (first)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Retinal Burn (darkroom) (first)",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "(I don't know where anything comes from)"
+    },
+    {
+      "t": "narrate",
+      "text": "The cathode rays burn through in one of three colors.\nUp close through a child's eyes, like a dance of pinpricks.\nLight from all stars, mostly just our star,\nCapturing and framing countenance and circumstance."
+    },
+    {
+      "t": "narrate",
+      "text": "Shadows sketch far more interesting facets\nThan light ever will.\nThe chemical burn, the trace image\nThe simple lasting magic that ages as we do.\nWrinkling yellowing molding"
+    },
+    {
+      "t": "narrate",
+      "text": "The negative reverse, the mold cast outward\nTo study inward and return to the amber moments."
+    },
+    {
+      "t": "narrate",
+      "text": "There is an unknown process,\nAs we don't consider\nThe baths of poison that give it color and shape.\nDrying like leaves on a vine after a rainstorm."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_retinal_burn_first",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

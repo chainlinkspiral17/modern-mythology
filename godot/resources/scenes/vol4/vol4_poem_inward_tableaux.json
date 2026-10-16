@@ -1,0 +1,109 @@
+{
+  "id": "vol4_poem_inward_tableaux",
+  "vol": 4,
+  "chapter": 3,
+  "type": "interlude",
+  "title": "inward tableaux",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "inward tableaux",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Great gasping sobs is what it feels like to be a miracle\nI feel them before they leap out of me\ntears already cold and chilling on my face."
+    },
+    {
+      "t": "narrate",
+      "text": "I can't look at any of this any longer\nI strain against the leash\nmy animal form a bit terrified and trembling to continue\nI am horse, oh, how am I ever.\nI am bat, silent in flight.\nI am salmon, persistent upstream."
+    },
+    {
+      "t": "narrate",
+      "text": "I look in the mirror and see the day as kaleidoscope of image\nfixating on all the work that needs to be done with craftsman type fingers\npicking and choosing among the best of the exciting delightful."
+    },
+    {
+      "t": "narrate",
+      "text": "Tiny little moments hidden out of sight, reflecting back a world of infinite possibility."
+    },
+    {
+      "t": "narrate",
+      "text": "We play the game as only we know how."
+    },
+    {
+      "t": "narrate",
+      "text": "Choose Your Own Adventure, indeed."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks back at me, almost wishing me well."
+    },
+    {
+      "t": "narrate",
+      "text": "To hold his gaze is to know this uncertain animal for what he is."
+    },
+    {
+      "t": "narrate",
+      "text": "Wanting to be tame, wanting to be wild, flexing at the binds that tie."
+    },
+    {
+      "t": "narrate",
+      "text": "All the bones in his spine crack as he flexes with his might."
+    },
+    {
+      "t": "narrate",
+      "text": "His hair flows back, his nostrils flare, with wings he takes flight."
+    },
+    {
+      "t": "narrate",
+      "text": "A mad dervish of flesh and fire and billowing smoke, no\nhot steam from his lungs all of him wails."
+    },
+    {
+      "t": "narrate",
+      "text": "his head waving from side to side\nstrong tail pulsing forward\nscales sloughing off in death."
+    },
+    {
+      "t": "narrate",
+      "text": "This form that binds me loves me holds me and shows me it loves me\nand what do I show back but contempt?\nFor this majesty, this vessel, this ark into the world\nOur bodies are histories written in mammal blood and conflictstrife\nThe childhoods we had nuzzled in tight and adolescence spent exploring."
+    },
+    {
+      "t": "narrate",
+      "text": "I look with hungry eyes upon the life I want to live.\nSo full of horrors, so full of wonders.\nWhy are we capable of the very best of everything and also the worst?\nIt's not just a struggle outside, it's a struggle that tears apart our very being.\nWho am I?\nWhat do I matter?\nWhat does any of this mean?"
+    },
+    {
+      "t": "narrate",
+      "text": "Most of the answers are already out there, in the good books.\nWe wear it about ourselves, dine with it, take in a movie with it, spend a quiet evening alone with it.\nourself. A major player in consciousness that most neglect time with.\nSpecial alone time with who you are and what you need in life.\nThis is all about you."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_inward_tableaux",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

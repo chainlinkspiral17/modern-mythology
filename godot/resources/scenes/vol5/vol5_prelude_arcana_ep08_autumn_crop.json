@@ -1,0 +1,84 @@
+{
+  "id": "vol5_prelude_arcana_ep08_autumn_crop",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 7 · The Autumn Crop",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep08_autumn_crop.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 7 · The Autumn Crop",
+      "sub": "",
+      "duration": 2400
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Beatrice looked after old folks with most of her free time. Sure, she also volunteered at the library and the local Latter Day Saints donation collection site, but most of her devotional energy went to helping out people two to three times her age, rather than just her average."
+    },
+    {
+      "t": "narrate",
+      "text": "This fall had introduced her to Bernie, short for Bernadette, and Little Ron, called that because he was the tiniest of the Rons who was part of the current make-up of the Senior Center lunch group."
+    },
+    {
+      "t": "narrate",
+      "text": "This year’s batch of lunchsters was about fifty heads, with an average of twenty regulars, and as few as half a dozen on a rotten off day."
+    },
+    {
+      "t": "narrate",
+      "text": "There were ride shares and meal shares to organize, but she was just a part-time cog in that process, preferring to stick with one or two individuals each season, rather than the whole geriatric mass."
+    },
+    {
+      "t": "narrate",
+      "text": "Beatrice met Bernadette through the library board, and would often go over to her public housing unit to help clean up the small living space, or fiddle with her decade plus personal computer to keep it just barely relevant."
+    },
+    {
+      "t": "narrate",
+      "text": "Bernie kept plants as pets, made her own minimal collage textured fabric artworks and dressed exclusively in sweat clothes. She aspired to quilting as an on again off again grand creative design."
+    },
+    {
+      "t": "narrate",
+      "text": "This year however, she wasn’t feeling particularly inspired, and told Beatrice she was instead enjoying a book series introduced to her by a visiting author."
+    },
+    {
+      "t": "narrate",
+      "text": "Little Ron was currently shacked up with Liza, one of the many matronly social butterflies he had dated in recent years. As one of the oldest living men in the area, he enjoyed riding around his electric lawn mower on her hillside property and paying neighboring school children ten dollars for an hour’s work."
+    },
+    {
+      "t": "narrate",
+      "text": "Beatrice also helped Little Ron with his computer, which was maybe two years newer than Bernie’s, yet worse off in every way."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep08_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

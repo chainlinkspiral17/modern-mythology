@@ -1,0 +1,164 @@
+{
+  "id": "vol3_ch5_yellow_card",
+  "vol": 3,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "v. non-stop flights",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_catwalk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Yellow card",
+      "sub": "now · the catwalks",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa is walked by a staff aide to a hospital down the road. Terry had drawn directions on a napkin and made arrangements behind the scenes."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa hears all the hospital lingo being thrown about back and forth, sounding almost sinister, health care underworld, professional care mafioso, everything has been taken care of, it's all been arranged."
+    },
+    {
+      "t": "narrate",
+      "text": "Her path was nearly a mile, almost completely indoors, multiple hospitals connected by catwalks all heavily air-conditioned. Her eyes had been fuzzy since her arrival and she hadn't brought any spare contacts and slept in this pair once already."
+    },
+    {
+      "t": "narrate",
+      "text": "Her vision is fuzzy at the edges, the tunnels she walks through only adding to the sensation."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_clinic_waiting_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The waiting room of the inoculation center has several magazines, most documenting or remembering September 11th dark times. A nurse quickly gets her because news travels fast and administers the shots and stamps a yellow card to keep in the passport. Janessa asks her why only certain clinics administer yellow fever."
+    },
+    {
+      "t": "say",
+      "char": "The Nurse",
+      "expr": "neutral",
+      "text": "It's a live virus, just weakened. They need to keep a greater amount of control and regulation over the clinics that carry it."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa thinks and says, \"So would it be okay if I return to MD Anderson's top floor with the leukemia patients? Would it get to them with their weakened immune systems, would it hurt them?\""
+    },
+    {
+      "t": "narrate",
+      "text": "The nurse thinks for a moment and says, \"So long as you're not going into any of their rooms you should be alright.\""
+    },
+    {
+      "t": "say",
+      "char": "Janessa",
+      "expr": "neutral",
+      "text": "I'm only going to visit my dad and he doesn't matter at this point."
+    },
+    {
+      "t": "narrate",
+      "text": "The nurse gives Janessa a look so Janessa knows what she's thinking."
+    },
+    {
+      "t": "say",
+      "char": "Janessa",
+      "expr": "worried",
+      "text": "I didn't mean my dad doesn't matter, I just mean my live virus can't do him any farther harm. He's too far gone."
+    },
+    {
+      "t": "narrate",
+      "text": "The nurse doesn't say anything more."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa is aware of the emotional trap she sprung on herself, slightly proud to have thought of asking such a question, such a considerate scientist, just like Dad she's become but the shame of saying such simple honest obvious words sting her, ashamed to admit that Dad can't hurt any further and that this stranger is judging her capacity as a loving daughter."
+    },
+    {
+      "t": "narrate",
+      "text": "So they give her a bill which she will forward on to the geology department at CalTech and retraces her steps back to MD Anderson."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_room_window_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "By the window",
+      "sub": "now · top floor",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "When Mom and Andy are alone with him, Mom goes and sits by the window."
+    },
+    {
+      "t": "narrate",
+      "text": "Mom does not get up from where she sits."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad is going now, the doctors have essentially put him to sleep. Andy sits and hold his hand up to his father's. He's looking at it, holding it, loving him these last few minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks at the wrinkles in his flesh, his fingernails. His hand is the only thing he finds familiar about his father. He want his hand to grasp back but it is slack."
+    },
+    {
+      "t": "narrate",
+      "text": "He put his face into this hand and Andy cries and Dad goes. He watches his eyes go from living human being to plastic hollow corpse. The eyes, the connection, the weight of his life and love, it's all gone."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits there and cries, doesn't want to look at his dead father any longer."
+    },
+    {
+      "t": "narrate",
+      "text": "Quickly people come and make Andy and Mom leave the room."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_elevator_benches.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa arrives back where Mom and Andy are sitting on benches just outside the top floor elevator. Mom says they'd cleaned Dad up and asked Janessa if she wanted to see him. She'd made this decision before she'd punched the elevator's number."
+    },
+    {
+      "t": "narrate",
+      "text": "No. Her last memory of dad isn't going to be of a dead man. None of that needing closure nonsense, there's already plenty of doors that get slammed suddenly."
+    },
+    {
+      "t": "narrate",
+      "text": "Mom and Andy hugged Janessa and they all went downstairs completely gone and disconnected. Janessa sees a sign on the way out to donate blood and resolves to but realizes the malarial in her blood will prevent her from doing just that for many a year to come. The ethereal statue in the lobby seemed even more alien."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa thinks about the anniversary card and gift in her bag that she'd bought at the airport. She hadn't found a moment to mention it or bring it up because it would almost be in bad taste. Yesterday was their twenty-fourth."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch5_yellow_card_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch6_stacks"
+    }
+  ]
+}

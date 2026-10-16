@@ -1,5 +1,8 @@
 # VOL 6 · PLANNED COMMUNITY · Wiki
 
+> **NOT CANON. This wiki is a Claude-generated summary, not Andy's writing.** Andy's manuscript and scene text are the only canon. Anything here that the text doesn't say may be invented. Check claims against the text before relying on them, and when the two disagree, fix the wiki. (Andy, Oct 2026)
+
+
 The synthesizing entry point for vol 6 of *Modern Mythology* — the
 **Planned Community** volume. The vol 5 cast is here in middle age
 or older; new young leads carry the volume's primary POV;

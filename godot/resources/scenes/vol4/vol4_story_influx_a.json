@@ -1,0 +1,271 @@
+{
+  "id": "vol4_story_influx_a",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "in/flux",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_apartment_dawn.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_classroom_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "in/flux",
+      "sub": "a middle school in Texas · before the bell",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He wakes to troubled dreams and curled up tight sleep, tiny faces with strange, just strange, looks on faces he can't quite recognize remember decide upon later."
+    },
+    {
+      "t": "narrate",
+      "text": "He lies there awake and scratches himself raw in this one spot on his hip, the skin there dry and defeated, crumbling off in large unwholesome flakes."
+    },
+    {
+      "t": "narrate",
+      "text": "He fills the morning emptiness with hot coffee diluted to last through the weekend. The sun will not make an appearance for an hour yet. He showers and shaves and brushes and dresses, his hair still wet and thick against his neck and ears."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in his car, it lurches backwards, jumps forward in a hurry, the apartment gates inhale to let him out, and he drives through suburban side streets to get there, avoiding main arteries not yet choked at this early hour."
+    },
+    {
+      "t": "narrate",
+      "text": "He parks in the side lot, almost full to capacity already."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_computer_lab.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "There are kids and their questions waiting for him outside the computer lab. He opens it with keys, their questions answered in the order he cares to answer them."
+    },
+    {
+      "t": "narrate",
+      "text": "-skills lab is a 2-"
+    },
+    {
+      "t": "narrate",
+      "text": "-do you have your flow chart-"
+    },
+    {
+      "t": "narrate",
+      "text": "-are we reading chapter six-"
+    },
+    {
+      "t": "narrate",
+      "text": "-yes, you can go in the classroom, read chapter seven, and the-"
+    },
+    {
+      "t": "narrate",
+      "text": "Kids pour in, books and arms and bags toss about. Start-up screens replacing screensavers, kids shrieking unexpectedly at nothing in particular. There is a sign hung up over one of the children that says, \"We see everything as inspiration!\""
+    },
+    {
+      "t": "narrate",
+      "text": "A kind of peace settles throughout and within, eyes go wide and blank, staring straight ahead."
+    },
+    {
+      "t": "narrate",
+      "text": "-how did you do that-"
+    },
+    {
+      "t": "narrate",
+      "text": "-he threw gum in the recycling bin-"
+    },
+    {
+      "t": "narrate",
+      "text": "-by your hand is-"
+    },
+    {
+      "t": "narrate",
+      "text": "-aight-"
+    },
+    {
+      "t": "narrate",
+      "text": "-I'm not unmotivated-"
+    },
+    {
+      "t": "narrate",
+      "text": "-I'm just lazy-"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks over the shoulder of a kid wearing abercrombie-fitch jeans, his name is Todd, he thinks he may be one of them, he says to Todd, \"I like your text. Right click to hyper-link. What slide is it going to?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Another motivational poster says, \"In the book of life the answers aren't in the back!\""
+    },
+    {
+      "t": "narrate",
+      "text": "Todd taps through, shows him the sequence of events. He smiles almost. Todd has lost the project twice already, by either forgetting to save or saving it to the wrong place in the class folder. He is almost glad the kid is such a mess-up because his story comes out better each time he has to do it over again."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You are the author of your own life story,\" says another."
+    },
+    {
+      "t": "narrate",
+      "text": "He is thumbing through quizzes, \"That's a no name. I think I pulled out the no names to the front. It's not in here. Did you check the box to see if it accidentally. Did you do it on a separate sheet of paper. Did you want to redo it. When did you want to come in. Tomorrow after school. Okay, that sounds good.\""
+    },
+    {
+      "t": "narrate",
+      "text": "-there's a Jessica Simpson gallery on this computer-"
+    },
+    {
+      "t": "narrate",
+      "text": "-music videos-"
+    },
+    {
+      "t": "narrate",
+      "text": "-it doesn't save on gaggle-"
+    },
+    {
+      "t": "narrate",
+      "text": "-It keeps opening up gaggle-"
+    },
+    {
+      "t": "narrate",
+      "text": "-how is her social studies-"
+    },
+    {
+      "t": "narrate",
+      "text": "-it's not English-"
+    },
+    {
+      "t": "narrate",
+      "text": "-a kid said her mom died-"
+    },
+    {
+      "t": "narrate",
+      "text": "-who said-"
+    },
+    {
+      "t": "narrate",
+      "text": "-Carlos said-"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_classroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He walks to his classroom to let in the motley seventh grade morning crew, those few hungry reader types huddled close to the door looking for a fix off the shelf, those who nobody talks to outside of class vacant eyed troubled souls with nowhere else to go, and those normal behind in their homework everyday everyway plain joes and janes."
+    },
+    {
+      "t": "narrate",
+      "text": "Another of the boys is in his first period, home room, Jacob. He sits by himself in the back, and watches Dylan provoke a girl to tears, almost."
+    },
+    {
+      "t": "narrate",
+      "text": "Drifting in casual comfortable, at home, home room, to await the same old start of day."
+    },
+    {
+      "t": "narrate",
+      "text": "They remain loud and noisy, the ones who are loud and noisy, until the room has become a packed assembly hall sounding with squeaky confused uncertain voices."
+    },
+    {
+      "t": "narrate",
+      "text": "All he has to do is stand up and all goes quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "Their voices go hushed, their eyes on him, those oblivious elbowed into silent submission."
+    },
+    {
+      "t": "narrate",
+      "text": "The Curious George clock ticktocks unnoticed. The posters for TAKS testing have been gazed over and absorbed an inch at a time rendered nullvoid this late in the year. Posters for making an apology, skills for adolescents, a whole series going something like this: Caring. Choices. Effort. Respect. Responsibility."
+    },
+    {
+      "t": "narrate",
+      "text": "He points to the B.U.G. Board, with the other hand he points to a student."
+    },
+    {
+      "t": "narrate",
+      "text": "\"What does B.U.G. stand for?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Bringing up Grades.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"You were a big B.U.G.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yeah, I know.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Insect stickers with names on them."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, across the hallway, a kid blocks the entrance to another classroom with his body, preventing the remainder from entering."
+    },
+    {
+      "t": "narrate",
+      "text": "\"She cuts her bangs,\" says the kid in the Led Zeppelin t-shirt."
+    },
+    {
+      "t": "narrate",
+      "text": "More posters detailing elements of a short story or novel. Setting, plot, character, point of view, theme."
+    },
+    {
+      "t": "narrate",
+      "text": "Honor the Texas Flag."
+    },
+    {
+      "t": "narrate",
+      "text": "Roll. The quiet right after taking roll. What the students can't see he jots down on copied sheets of paper. A drone, the intercom clicks to life, resounds through the room, a student at the microphone calling off birthdates, \"Have a thoughtful Thursday,\" it ends."
+    },
+    {
+      "t": "narrate",
+      "text": "Halfway through the first lesson, \"Just say it out so I can call on you and you can give an answer.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I can't find where we are.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"You should be looking at your QuickStarts.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"They're due today, right?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Caution, brains at work,\" another says."
+    },
+    {
+      "t": "narrate",
+      "text": "First period ends. As they exit into the hallway he watches them, because that is part of his job."
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_story_influx_b"
+    }
+  ]
+}

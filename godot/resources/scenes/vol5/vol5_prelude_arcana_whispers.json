@@ -1,0 +1,119 @@
+{
+  "id": "vol5_prelude_arcana_whispers",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — what to watch",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_whispers_channel.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_whispers_theme.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "prompt": "Whispers from the Liminal",
+      "opts": [
+        {
+          "text": "ep. 1 · UMBRA",
+          "scene": "vol5_prelude_arcana_ep01_umbra"
+        },
+        {
+          "text": "ep. 2 · In/Flux",
+          "scene": "vol5_prelude_arcana_ep02_in_flux"
+        },
+        {
+          "text": "ep. 3 · Iris · title screen",
+          "scene": "vol5_prelude_arcana_ep04_iris_title"
+        },
+        {
+          "text": "ep. 4 · iris",
+          "scene": "vol5_prelude_arcana_ep05_iris"
+        },
+        {
+          "text": "ep. 5 · The old woman before you",
+          "scene": "vol5_prelude_arcana_ep06_old_woman"
+        },
+        {
+          "text": "ep. 6 · the backyard dogs",
+          "scene": "vol5_prelude_arcana_ep07_backyard_dogs"
+        },
+        {
+          "text": "ep. 7 · The Autumn Crop",
+          "scene": "vol5_prelude_arcana_ep08_autumn_crop"
+        },
+        {
+          "text": "ep. 8 · the sound of the silence of",
+          "scene": "vol5_prelude_arcana_ep10_sound_of_silence"
+        },
+        {
+          "text": "ep. 9 · writ fer rain",
+          "scene": "vol5_prelude_arcana_ep11_writ_fer_rain"
+        },
+        {
+          "text": "ep. 10 · pour 1",
+          "scene": "vol5_prelude_arcana_ep12_pour_1"
+        },
+        {
+          "text": "ep. 11 · paper cuts & the star key",
+          "scene": "vol5_prelude_arcana_ep13_paper_cuts"
+        },
+        {
+          "text": "ep. 12 · Land of Milk & Honey",
+          "scene": "vol5_prelude_arcana_ep14_milk_and_honey"
+        },
+        {
+          "text": "ep. 13 · hometown something? (excerpt)",
+          "scene": "vol5_prelude_arcana_ep15_lynchs_peak"
+        },
+        {
+          "text": "ep. 14 · one hundred places.",
+          "scene": "vol5_prelude_arcana_ep17_one_hundred_places"
+        },
+        {
+          "text": "ep. 15 · the city in miniature",
+          "scene": "vol5_prelude_arcana_ep18_sigsbees_deep"
+        },
+        {
+          "text": "ep. 16 · ravensway",
+          "scene": "vol5_prelude_arcana_ep19_ravensway"
+        },
+        {
+          "text": "ep. 17 · Sisters Wyrd",
+          "scene": "vol5_prelude_arcana_ep20_sisters_wyrd"
+        },
+        {
+          "text": "ep. 18 · a field guide, left on a park bench",
+          "scene": "vol5_prelude_arcana_ep21_field_guide"
+        },
+        {
+          "text": "ep. 19 · the hanged man",
+          "scene": "vol5_prelude_arcana_ep22_hanged_man"
+        },
+        {
+          "text": "ep. 20 · visitation",
+          "scene": "vol5_prelude_arcana_ep23_visitation"
+        },
+        {
+          "text": "Leave it.",
+          "scene": "vol5_prelude_arcana_john_shift"
+        }
+      ]
+    }
+  ]
+}

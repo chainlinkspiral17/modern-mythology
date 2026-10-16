@@ -1,0 +1,254 @@
+{
+  "id": "vol2_ch4_lighthouse",
+  "vol": 2,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "iv. night lights — The Lighthouse",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_minivan_night_coast.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The Feast of Lights",
+      "sub": "The coast · night",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "In my lap I held Dean's diary, gripped tight by fingers itching to begin a dialogue with the white space inside. The oncoming headlights looked like slowly exploding fireflies and I blinked in deep thought, working details around in my head."
+    },
+    {
+      "t": "narrate",
+      "text": "Distortions in the glass were visual riffs, music that I could play off in thought, a game of connection and association."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bed_breakfast_christmas.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "We arrived and I pulled myself out of the daze. Opening the door, I heard the faint mewling of some animal or small child. It was off in the distance and it took a moment of the family standing around discussing it to realize the sound was coming from the woods on the other side of the road."
+    },
+    {
+      "t": "narrate",
+      "text": "We chose to ignore it and walked over to the bed and breakfast. The sign outside named it the \"The Cozier Cottage\". A large Christmas tree was seen inside through the large front windows."
+    },
+    {
+      "t": "narrate",
+      "text": "The edges of everything were festooned in white lights, most of which simulated tall candles, dripping fake plastic wax."
+    },
+    {
+      "t": "narrate",
+      "text": "It was dark, and we could not see the actual structure itself, but a lighthouse beacon burnt out across the night, its glass eye catching mine until I stopped staring."
+    },
+    {
+      "t": "narrate",
+      "text": "The garden was a thing of beauty, tended by the young husband, Trav, who had quit his successful real estate career in southern California and moved up north on whimsy. The wife was Jo, her face so full of joy, it seemed carefully molded on just so."
+    },
+    {
+      "t": "narrate",
+      "text": "The expanse of several manicured acres stretched out in most every direction. There were carefully placed rows to walk along and everywhere I looked, something was in bloom for the season, even in the dull cold chill of winter."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside the restored home was bracing warmth, clean and fertile smells of spice and the comfortable feeling of being instantly familiar in the home of friends."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a feeling I had to fight against almost nostalgic holiday intoxication; I wanted to keep myself cut off from, to preserve an individual sense of integrity."
+    },
+    {
+      "t": "narrate",
+      "text": "Jo took our family photograph with a Polaroid camera and pasted it into an album she kept by a register. She had us sign in and then ushered us into a sitting room, where hot cocoa and cookies were waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "She told us a brief history of who they were, what they hoped to do with their new lives, and a little bit about the place. I wasn't paying much attention, but caught fragments of pieces while I filled up on their foodstuff."
+    },
+    {
+      "t": "narrate",
+      "text": "Trav came in and shook hands enthusiastically, told us he'd take us out for a night walk along the trail leading up to the lighthouse. He called it the ghost whistle."
+    },
+    {
+      "t": "narrate",
+      "text": "Trav explained that strong coastal winds would find their way into and out of the cracks of the column and the resulting sounds would carry far into the night. Sometimes, he said, it would seem as if voices called out."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_lighthouse_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "We all carried large flashlights of the two-handed variety. We laughed as we trudged, clouds of vapor lit by our beams. Varieties of flora were singled out and lectured upon, my father gave lessons in coastal geological strata and my sister and I discussed movies we'd like to see in the coming new year."
+    },
+    {
+      "t": "narrate",
+      "text": "The lighthouse was surrounded by barbed gate, padlocked and rising high. Trav produced keys and let us into the bricked foundation walkway."
+    },
+    {
+      "t": "narrate",
+      "text": "He pointed out imaginary people and incidents long since past, snorting out disdain for the teenagers and tourists who'd come up to drink and fool around, oblivious to the high winds and slippery underfoot."
+    },
+    {
+      "t": "narrate",
+      "text": "He went on to explain that he and Jo were part of a troupe of community actors who'd re-enact historical pageants at the lighthouse during the summer and holidays."
+    },
+    {
+      "t": "narrate",
+      "text": "Although the lighthouse was not needed any more due to technological seafaring innovation, it was still kept operating by local tradition with diesel burning generating machines and their electricity."
+    },
+    {
+      "t": "narrate",
+      "text": "This lighthouse was once hand-wound; the intricate lenses a dance of refraction and convection, the distance seen in all directions until disappearing under the natural curvature of the Pacific Ocean."
+    },
+    {
+      "t": "narrate",
+      "text": "Trav told us about Russian lighthouses run on nuclear power and how they had disappeared into the ether, lost off the map. Their nuclear contents stolen for black-market materials, their physical locations erased from maps and memories."
+    },
+    {
+      "t": "narrate",
+      "text": "He dreamed of the intrigue of physically reaching those remote and precarious locations, the lighthouse silo like something out of a James Bond novel."
+    },
+    {
+      "t": "narrate",
+      "text": "We were all getting very cold out there but the sound inside was so very unusual. It was a haunted sound, painful and beautiful, shrill and serene. The pounding of the surf was like the sound of blood through the ears, thick and occluded and so close to overwhelming, echoing all around."
+    },
+    {
+      "t": "narrate",
+      "text": "Rooted to that spot we were, looking up in darkness, the stone masonry surrounding, the light twinkling up above shot out of floorboard and crevasse."
+    },
+    {
+      "t": "narrate",
+      "text": "It was like nothing Christmas should ever be. Unnatural beauty erected at odds with the surrounding scar of water and rock. It was a beacon, this fortress of solitude."
+    },
+    {
+      "t": "narrate",
+      "text": "Slim and narrow, damp and noisy, a full time job and a home of sorts, this lighthouse was nothing if not an exaggeration of duty and human commitment."
+    },
+    {
+      "t": "narrate",
+      "text": "If I had a girl to hug close it would have been romantic but even my family felt distant so close to me. I wrapped my arms around my chest to brace against the shivers that came easy, my teeth knocking against each other, my nose and ears so very red and flush cold."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_lighthouse_beam.jpg",
+      "caption": "A beacon, this fortress of solitude."
+    },
+    {
+      "t": "narrate",
+      "text": "Story time."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Listen to the lighthouse a little longer.",
+          "goto": 39
+        },
+        {
+          "text": "Open Dean.",
+          "goto": 40
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The wind kept finding the cracks in the column, the whistle rising and falling over the surf."
+    },
+    {
+      "t": "narrate",
+      "text": "I wrote this one down in Dean, to be saved for occasions such as this. I share it with you because there is no other place for it to go but here."
+    },
+    {
+      "t": "narrate",
+      "text": "She appeared to the world as so much grief, her exhale was one of loathing but never indifference. She was plain in the most beautiful ways, overlooked and invisible to all but the most curious and alert."
+    },
+    {
+      "t": "narrate",
+      "text": "Her body was underdeveloped for her age, more than slight, dark hair around so much pale nothingness, punctuated by a cherry birthmark above her left eye. Kids called her V."
+    },
+    {
+      "t": "narrate",
+      "text": "I grew to know her from the stories surrounding her, hushed here and there when her presence was not felt. She was a freshman, very much picked on, her frequent companion a worn and torn paper-back fantasy novel, always a volume in a neverending saga."
+    },
+    {
+      "t": "narrate",
+      "text": "She'd jump forward and back in literary time as she found her way around inside the pulp. V was the daughter of an antique store owner who specialized in chairs so ancient they should not be sat in."
+    },
+    {
+      "t": "narrate",
+      "text": "Girls like V had a stigma attached to them, that they were quiet and shy. V was not. Her voice was loud and clear and when she used it, it was a force of nature that shushed the world around her."
+    },
+    {
+      "t": "narrate",
+      "text": "For such a tiny package, V possessed such self-assured rage, so much bitterness, that those who heard her felt the world go gray around them."
+    },
+    {
+      "t": "narrate",
+      "text": "People tried to befriend V but she was not one to suffer fools or even kings. Her temperament was turpentine that stripped the color from the kind souls who ached to reach her."
+    },
+    {
+      "t": "narrate",
+      "text": "She was a character in a small town, which meant most of Small Wood's interaction with her consisted of odd looks and warnings behind hands raised to mouths."
+    },
+    {
+      "t": "narrate",
+      "text": "One day V fell in love which surprised even her. She observed him from a distance always curious, never suffocating. Her first tactic was one of indirect confrontation."
+    },
+    {
+      "t": "narrate",
+      "text": "She'd leave clues to her existence, small puzzles for the boy to piece together on his own."
+    },
+    {
+      "t": "narrate",
+      "text": "The problem with this initial tactic was V never let anyone in to know her to begin with, and the concrete details that made up the personality she thought she possessed was generally unknown to the world at large, most of all this beautiful boy."
+    },
+    {
+      "t": "narrate",
+      "text": "V followed this up with an ever more assailable series of \"hi's\" that came so out of left field, the boy was always seen frantically looking both ways to meet his greeter, a tentative hand half raised in confusion."
+    },
+    {
+      "t": "narrate",
+      "text": "An unwritten rule: Objects of affection never actually have to return any affection lavished upon them, they simply have to maintain their objective object status and receive whatever there is to be given. The beautiful boy did this well."
+    },
+    {
+      "t": "narrate",
+      "text": "The mystery crush was an ego boost he never anticipated and brought all sorts of would-be girlfriends out of the woodwork. When V realized she was the accidental cut that brought upon the beautiful boy feeding frenzy, she went into a very strange sort of despair."
+    },
+    {
+      "t": "narrate",
+      "text": "The curious notes, the half-finished poems, the declarations of something maybe, all stopped. The boy fell in love with real flesh and blood and disappeared into that. V pined for awhile and forgot all about him, her status in the high school reality never firmly established."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch4_lighthouse_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch5_lessons_in_leaves"
+    }
+  ]
+}

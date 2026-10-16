@@ -1,0 +1,178 @@
+{
+  "id": "vol4_story_cracked_and_broken",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "cracked and broken",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_ambulance_road.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_radio_static.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "cracked and broken",
+      "sub": "the road · fifteen minutes before",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Victim of circumstance, the boy who refused to look both ways and met a minivan head-on. He rolled off the front right side and the mother and child on the inside screamed. He got off with a broken wrist and twelve stitches where his chin hit the pavement."
+    },
+    {
+      "t": "narrate",
+      "text": "Three years later, he'd get hit by a truck riding his bicycle home from school. He was in a coma for six days. Two years after that when the hair had grown back and the bones had long since reset, he crashed his driver's ed vehicle head on into an ambulance. No one survived that accident."
+    },
+    {
+      "t": "narrate",
+      "text": "Not the boy, not the teacher, not driver or the EMTs, and most definitely not the man strapped down in back who was already dead."
+    },
+    {
+      "t": "narrate",
+      "text": "His last conscious thoughts, fifteen minutes before the accident were as follows."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky is splitting open and all I see is the breast of my mother. The ground won't let go of me and I cannot move. My children will never hear my voice again. My breathing. Don't let it stop. Please God, don't let it stop. Pain like a warm bath all around and comforting. Shock. Mind racing going everywhere."
+    },
+    {
+      "t": "narrate",
+      "text": "Oh the colors. My head is rolling back and forth. Eyelids won't stop fluttering. People. Where are the people to find me. Somebody please."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay with the last breath.",
+          "goto": 13
+        },
+        {
+          "text": "let them go.",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Pain like a warm bath all around and comforting."
+    },
+    {
+      "t": "narrate",
+      "text": "The siren winds down to nothing on the wet asphalt."
+    },
+    {
+      "t": "narrate",
+      "text": "The incident of that moment, fading memories. The EMT who received his last breath loved that part of the job. It was his drug of choice. Trying to save people, doing everything in his power, taking that last bit of them into his lungs when there was nothing more he could do for them."
+    },
+    {
+      "t": "narrate",
+      "text": "The final exhalation was what he lived for, though he would never admit as much. He'd read that in some cultures, they bottled the final breath. Sucked it down, Spirits, taking the name from."
+    },
+    {
+      "t": "narrate",
+      "text": "His last breath, the last one that mattered, was the concussive impact of him being thrown and tumbled, over and over but the first impact was what did it. Cracked like a china doll, all that knowledge, information and love leaked right out."
+    },
+    {
+      "t": "narrate",
+      "text": "Good people are no less immune from pain and misery. Good people are hypocrites same as the rest. Surely we all know those who go about their lives, trying to do good, trying to live right. We like to think ourselves so very giving, so much like them. It takes a certain kind."
+    },
+    {
+      "t": "narrate",
+      "text": "Their words and actions and deeds may live on past but the small sacrifices and mercies die just the same when they live no more to carry out. A mission of goodwill, of servitude to something great, what is lost in their leaving?"
+    },
+    {
+      "t": "narrate",
+      "text": "Who are the victims of that circumstance. Those impacted by the passing of good from this world. Those who give inspiration and encourage honesty and just means of mercy. The flipside of the coin are the victims of evil. How silly it comes down to gross simplification."
+    },
+    {
+      "t": "narrate",
+      "text": "But know this, the Janus of good and evil is all the more so because we believe it so."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bathroom_mirror.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Reflections in the mirror. What she glanced back at, not herself, but the world behind her. The more she studied, the more she disbelieved it all. A big fat lie, a figment of folly, the imagination. She turned quickly, the light and her eyes played cruel tricks on her."
+    },
+    {
+      "t": "narrate",
+      "text": "She grew scared, she thought herself irrational because she was chasing after shadows. She wanted to stop thinking so much, trying to stop scaring herself to the brink of breakdown. Complete and mental. She wasn't sleeping, she wasn't going to work. Friends and family grew concerned."
+    },
+    {
+      "t": "narrate",
+      "text": "She had never been on medication. She was thinking it time she saw a doctor. But she was so afraid of the knowledge they wielded over her like a weapon. Their words made it so, impressed their reality upon her. She knew reality was malleable, soft like butter."
+    },
+    {
+      "t": "narrate",
+      "text": "Light was the fastest thing in the world but it bent and twisted before her eyes. Gravity was the center of everything but all she was space dust hurtling through the void on so many axis, twisted and warped to the chaos rock, round and around the fire, the cosmic candle which would some day give out."
+    },
+    {
+      "t": "narrate",
+      "text": "Break it down, make it new, the cosmic glue, entropy entrusted. Stop, she told herself. Just stop."
+    },
+    {
+      "t": "narrate",
+      "text": "Words were déjà vu. She'd said them before, or felt she'd had never stopped saying them. Two faced, in the mirror. The way the shadows fell. One side in bright, the other in black, a warm friendly smile, a cruel twisted thing, the teeth so bright."
+    },
+    {
+      "t": "narrate",
+      "text": "i know things will be good. there is happiness to be found. there are smiles and laughter still to be had."
+    },
+    {
+      "t": "narrate",
+      "text": "Remarkable. Blind sight. With skin you feel it all. Without, every nerve ending opened up and overloaded. An explosion of sensation, the focus comes into retina, burns the image at the back of the mind's eye inverted. There are moments where I get drunk off beauty."
+    },
+    {
+      "t": "narrate",
+      "text": "I can just sit with someone and just the sight, their presence and being, just the amount of sensation they bring me, overwhelms. I get tongue tied and stupid. It is said I think too much when I think too little. You can't critique such a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "You can't even say you appreciate it without questions that ruin just how singular perfect it resonates. There are hints, glimmers and glamours, that leave a forever lasting impression. Moments, glances, poses, ways of phrases so perfect they need to be locked in time and shared and studied. People need to know."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps I am not the person to say maybe it is best I show. We find it easier to believe in the seeing of the thing. But when it comes to ourselves, how little we trust the words of others. Compliments we deny outright we explain away with a secret blush our hearts racing our face slightly flush."
+    },
+    {
+      "t": "narrate",
+      "text": "That is the way it is with me. Yet I feel there is so little trust I've earned in this lifetime. Connections never firmly established. I drift at the edges of acceptance. I'd like to think it's all of my own doing, always too late the understanding comes."
+    },
+    {
+      "t": "narrate",
+      "text": "All I can do is laugh, be a warm and friendly human being and disappear into the sublime beauty of it all."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_cracked_and_broken",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 # VOL 5 · MAJOR ARCANA · Wiki
 
+> **NOT CANON. This wiki is a Claude-generated summary, not Andy's writing.** Andy's manuscript and scene text are the only canon. Anything here that the text doesn't say may be invented. Check claims against the text before relying on them, and when the two disagree, fix the wiki. (Andy, Oct 2026)
+
+
 The synthesizing entry point for vol 5 of *Modern Mythology* — the
 **Major Arcana** volume. Fragmented canon lives across many lore
 docs and per-arcana files; this wiki is the *start-here* page that

@@ -1,0 +1,251 @@
+{
+  "id": "vol2_ch9_art_class",
+  "vol": 2,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "ix. Flotsam and Jetsam — Plain Jane Julie",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_art_classroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Art class",
+      "sub": "Small Wood High · Afternoon",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I was sitting behind Emily and Tara and they were making fun of Nathaniel."
+    },
+    {
+      "t": "narrate",
+      "text": "Nathaniel was a funny sort of fellow, quiet and girlish."
+    },
+    {
+      "t": "narrate",
+      "text": "Cute, with an ass you remember."
+    },
+    {
+      "t": "narrate",
+      "text": "They thought he had gone fag in middle school. I thought he was just too pretty for them. He kept smiling when they called him faggot, kept nodding when they asked him if he was a virgin."
+    },
+    {
+      "t": "narrate",
+      "text": "Ever fuck any girls?"
+    },
+    {
+      "t": "narrate",
+      "text": "Nathaniel shook his head."
+    },
+    {
+      "t": "narrate",
+      "text": "Ever fuck a guy before, Nathaniel? Ever fuck him in the ass? Maybe suck his cock?"
+    },
+    {
+      "t": "narrate",
+      "text": "Tara showed him how to do it with her pen. He just smiled and shook his head. He was used to this. He smiled a lot like that."
+    },
+    {
+      "t": "narrate",
+      "text": "It happened in art class, all four of us sitting around a table, working on line drawings. I wasn't picked on because I was plain. Invisible is the other word for it. No one talked to me in class or at lunch. That's how it is when you're nothing special. You're ugly, you get picked on. You're pretty and you're hated."
+    },
+    {
+      "t": "narrate",
+      "text": "Plain Jane Julie, I was altogether different."
+    },
+    {
+      "t": "narrate",
+      "text": "I heard people say awful things because I was not worth shutting up for. At my locker, grabbing books for history, Bobby told Marianne to get an abortion because he didn't love her and wouldn't love her baby. He quieted down when his friends walked by. She hushed up when she saw the homecoming queen across the hall."
+    },
+    {
+      "t": "narrate",
+      "text": "I was there the whole time. Listening to her crying when he told her this wasn't the first time he's had to pay a girl to shut up and do the right thing."
+    },
+    {
+      "t": "narrate",
+      "text": "That is the absolute truth."
+    },
+    {
+      "t": "narrate",
+      "text": "There are a lot of plain people in the world. We hear these things all the time. You'd think we'd become friends and hang out, but us plain folk aren't interested in each other, either, sort of like cats that way."
+    },
+    {
+      "t": "narrate",
+      "text": "I liked Nathaniel. He was beautiful and smart and I think he liked me too. Pretty people didn't look at me like he did. He had a cute smile for a boy. His eyes got all watery and his face went red when we talked. Girls see stuff guys never do. I could tell he liked me."
+    },
+    {
+      "t": "narrate",
+      "text": "Emily and Tara were too busy talking about jocks and college studs to notice. I could hear their insults before they said them. That's why I kept quiet up until that day."
+    },
+    {
+      "t": "narrate",
+      "text": "Nathaniel. Be a dear and pass this to Craig."
+    },
+    {
+      "t": "narrate",
+      "text": "Tara handed the note over. He looked at it."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to fuck you."
+    },
+    {
+      "t": "narrate",
+      "text": "He smiled and handed it back to her. He laughed and shook his head the moment it was out of his hands. She thought of something even more clever. She wrote his name down. Nathaniel, in big bold letters at the bottom. He watched this with a frown and laid his head on the table."
+    },
+    {
+      "t": "narrate",
+      "text": "I saw him looking at me from the dark of his arms. He didn't do a thing to stop her as she stood up and walked over to Craig."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "watch Tara cross the room",
+          "goto": 28
+        },
+        {
+          "text": "watch Nathaniel",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "I saw him looking at me from the dark of his arms."
+    },
+    {
+      "t": "narrate",
+      "text": "Tara handed Craig the note and he looked at the folded piece of paper, then up at Tara. He opened it and read it over a couple of times. Then he laughed out loud and stood up. Walked with his hand out, holding the note. Nathaniel scooted in when he heard Craig rake the chair legs across linoleum."
+    },
+    {
+      "t": "narrate",
+      "text": "I stood up to Craig. He didn't even see me, walked right past."
+    },
+    {
+      "t": "narrate",
+      "text": "I yelled. Hey."
+    },
+    {
+      "t": "narrate",
+      "text": "Silence. He turned to look at me."
+    },
+    {
+      "t": "narrate",
+      "text": "Tara wrote that note you stupid piece of shit."
+    },
+    {
+      "t": "narrate",
+      "text": "I said that."
+    },
+    {
+      "t": "narrate",
+      "text": "A step toward me, looking down."
+    },
+    {
+      "t": "narrate",
+      "text": "Excuse me, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Tara. She likes to suck things. Watch her, she'll put anything in her mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "Craig started to laugh and scratched his eyebrow. He looked at Tara who was looking at me. She was sucking the tip of her thumb."
+    },
+    {
+      "t": "narrate",
+      "text": "She pulled it out instantly."
+    },
+    {
+      "t": "narrate",
+      "text": "Probably thinking of you, Craig. Should be flattered."
+    },
+    {
+      "t": "narrate",
+      "text": "You a dike, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Why? You wanna fuck me, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "He smiled then looked around the room. It was quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes or no question, Craig."
+    },
+    {
+      "t": "narrate",
+      "text": "No, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Good. Hear you like to give it up the ass. Ain't no way to treat a lady. His smile vanished. The class picked up the cue and started to crack up. In between those two moments, I found it again for the first time. Truth. Realization that something I said could become absolute."
+    },
+    {
+      "t": "narrate",
+      "text": "My words would carry past that split second of time. And when I sat back down, Nathaniel looked at me with a smile."
+    },
+    {
+      "t": "narrate",
+      "text": "I saw him drawing my name in ink a week later."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_sea_cave.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The sea cave",
+      "sub": "Beach · Low tide",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The insects borne of me had grown up and returned to repeat the cycle. I realized it was time for me to move on. I wandered the caves and the beaches collecting the husks of the dead. Sea gulls and cats, crabs and hollowed lobsters, I took their shells to the cave and threw them into the sinkhole."
+    },
+    {
+      "t": "narrate",
+      "text": "They were small enough to fall through. I watched with a bit of sadness as they swept away under rock and wondered where they went in death. Probably back out to sea."
+    },
+    {
+      "t": "narrate",
+      "text": "What I have become is impossible in my own mind. I can touch but I cannot feel. I can hold but there is no sensation of warmth or cold. I started to wear the clothes that I found washed up, frayed and stiff with salt."
+    },
+    {
+      "t": "narrate",
+      "text": "Living people can see me when I'm dressed up in dead clothes but they still don't pay me any attention. Was I always a ghost? Plain Jane Julie. Always invisible."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch9_art_class_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch9_truck"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "id": "vol2_ch5_egretta",
+  "vol": 2,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "v. lessons in leaves — Egretta",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bookstore_back_lounge.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Egretta",
+      "sub": "Notes · the members",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Imogene, further documentation, insight into;"
+    },
+    {
+      "t": "narrate",
+      "text": "Was seven years older than me to the day, curious we had the same birthday which in theory should have made us a lot a like but we never really had much to share with one another, our lives very different and unappealing to the other. Still there were moments where understanding was exchanged across that thin membrane."
+    },
+    {
+      "t": "narrate",
+      "text": "She studied cultural anthropology. She hoped to travel the world and become part of the global culture. She had a hard time with foreign language despite a lot of effort and secretly hoped that her mastery of the English language would be enough."
+    },
+    {
+      "t": "narrate",
+      "text": "She was a whore for grammar which is perhaps why she and Charles got along so well. She liked smart guys who could talk for hours about life and their experience in it. The details that made up a learned education were big turn ons."
+    },
+    {
+      "t": "narrate",
+      "text": "Imogene had a thing for engineers and biologists, but it mostly just came down to getting them drunk and talking non-stop about things far over her head."
+    },
+    {
+      "t": "narrate",
+      "text": "When she flunked out of her primary studies, she tried to coast along on her electives and ever slowly resigned herself to finding a way to crawl back to Small Wood and rediscover her place among the washed up forgotten."
+    },
+    {
+      "t": "narrate",
+      "text": "Her excuse to everyone but herself was this was how it was supposed to be, she played up her ordinariness, the fact she did not have enough money, good enough grades to support a four year college career."
+    },
+    {
+      "t": "narrate",
+      "text": "In Imogene was an answer to the question, \"Where do I go from here?\" She had decided that life was a series of encounters, she would live in the present, give no thought to the future. In her was a simple basic desire to connect, learn from, and enjoy the company of others."
+    },
+    {
+      "t": "narrate",
+      "text": "The world was full of people and people were the answer. She would give herself over to them."
+    },
+    {
+      "t": "narrate",
+      "text": "She and Charles had shared company, nights infrequent. It was the tender grasp of two minds sensing understanding and then not. So much would be further muddled by lack of correspondence and miscommunication."
+    },
+    {
+      "t": "narrate",
+      "text": "There was an age difference, a physical attraction that was always see-sawing, hung up between desperation and ill-timing."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a fling borne out of long nights without endings and days without proper starts. They were a couple in a loose sense but the bond between them was thick and messy. You could not sit between them without uncomfortability, layers of meaning behind their comments to one another."
+    },
+    {
+      "t": "narrate",
+      "text": "But this is not about them, this is about Imogene, who liked to read books about far away places she'd never get to, strange and exotic people she'd never know, unless they happened upon the shores of Small Wood. Her voice was strong and beautiful, so sure of herself."
+    },
+    {
+      "t": "narrate",
+      "text": "She was intelligent, well-read and attractive in her own way."
+    },
+    {
+      "t": "narrate",
+      "text": "If I developed an interest in her it was by accident. Nothing should have happened but the curious interest, fascination, prescient male hormone was a long time coming. Her place in my life comes many years away from this small footnote, a weakness I see developing in my accuracy as a narrator."
+    },
+    {
+      "t": "narrate",
+      "text": "If these words you take as honest truth, I apologize. By honest truth, I mean all sides represented accurately and fairly. This is not the place for that."
+    },
+    {
+      "t": "narrate",
+      "text": "My voice is my own, all blanket judgements and basic misunderstandings aside. I approach this as an observer working backwards in my own life, profound insights gained in places such as these. I have no gift for knowing intrinsically."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_dive_bar_bridge.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Incidents involving Imogene before a time of great importance; Of note, she found work as a barmaid at The Salty Schooner, a restaurant dive bar hybrid that was rank in the stink of fishermen and their coffer. I went there for lunch sometimes during a school day. She was often my waitress."
+    },
+    {
+      "t": "narrate",
+      "text": "I would usually be reading a book for the thirty or so minutes I had alone away from classes. It was a nice sort of retreat, and I enjoyed her company. She tried to impress upon me the wonder of coffee, but I stuck to soda and iced tea."
+    },
+    {
+      "t": "narrate",
+      "text": "My meal was usually chicken strips and plank fries, or if not that, a Rueben sandwich. The food was just okay, but the view of the bridge was nice. I liked the empty booth and the old music they played there."
+    },
+    {
+      "t": "narrate",
+      "text": "It felt faded and worn from memory and I kept returning."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bookstore_back_lounge.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Facts on Lily, about her, the central role she played;"
+    },
+    {
+      "t": "narrate",
+      "text": "Lily was also divorced, a concert cellist still active with the Yakima Chamber Orchestra and successful mother of two. Her youngest daughter would graduate salutatorian a year ahead of me. Her ex-husband, Patrick kept a beach home in Small Wood but worked most of the year overseas for an international accounting firm."
+    },
+    {
+      "t": "narrate",
+      "text": "Lily made sure that their broken household was a happy one, and that the splintered family unit worked as well as it could. She put aside differences and hostilities with Patrick to keep the peace and out of that consideration a new mutual friendship emerged."
+    },
+    {
+      "t": "narrate",
+      "text": "In her words the only reason none of that came crashing down was because, \"We have such great kids.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Lily was the driving force behind Egretta and never once missed a meeting. Frances was one of her best friends and constant companions. They took weekend trips to Portland to soak up as much culture as they could with their allotted time together."
+    },
+    {
+      "t": "narrate",
+      "text": "They were a team, always working in tandem to invite authors to local signings, organize library charity events and put out a community literary newsletter."
+    },
+    {
+      "t": "narrate",
+      "text": "Lily was an extraordinary young woman, beautiful, resourceful and brazen intelligent. She kept a book in a shelf at the Blue Heron, signed by a very famous and influential author. On the page it read,"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look at the signature first.",
+          "goto": 37
+        },
+        {
+          "text": "Read the inscription.",
+          "goto": 38
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The ink had gone brown with the years, the hand looping and certain."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Dearest L — Return home safe in the months to come. I know you've read your old copy ragged, this in hopes there is still something left undiscovered. Write soon, learn me in the lessons of how very extraordinary you are."
+    },
+    {
+      "t": "narrate",
+      "text": "I fear how the days will feel longer in the absence of your company.\""
+    },
+    {
+      "t": "narrate",
+      "text": "If there was one thing Lily treasured above her family, it was her time spent as a muse, the life she lived in tune with the greater good of coaxing lasting art from the visionary paragons of this era. She kept this aspect of her life hidden to but a few, the glory of who she once was, always will be, mostly forgotten."
+    },
+    {
+      "t": "narrate",
+      "text": "Shadows from her past had occasion to spill forth and the stories of these encounters wonderful, fantastic even."
+    },
+    {
+      "t": "narrate",
+      "text": "At the Getty Museum her eldest daughter would see a photograph of a naked woman, half in shadow, fading to black. She would try and place the feeling, this instinctual knowing recognition and she would reflect for some time on it and never begin to understand."
+    },
+    {
+      "t": "narrate",
+      "text": "Egretta, the club and my place in it;"
+    },
+    {
+      "t": "narrate",
+      "text": "I was the new blood, the childe. I was mostly quiet, there to observe and listen and understand these people. When I happened to say my mind I found the response to be warm, agreeable and always unexpected."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a strange place to spend three hours a week. I took their instructions and parting knowledge home with me, used their insistence to dig deeper into the foundations of Small Wood, understand a fraction more of the greater puzzle."
+    },
+    {
+      "t": "narrate",
+      "text": "I asked about ghosts, which resulted in a lot of nodding and very little in the way of storytelling. I inquired about their past and got smiles and personal looks. I realized that to this circle of friends, rivals and confidants, and I was the young enigma, the outsider, the unknown they were taking a chance on."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_heron_feather.jpg",
+      "caption": "A feather from the blue heron."
+    },
+    {
+      "t": "narrate",
+      "text": "At the end of the first meeting, I was given a feather from the blue heron. I was told to place it in a book of great importance, to hide away from sight and age and never lose. They told me it was hand-picked especially for me, representing the molting of the first unused feathers from flight."
+    },
+    {
+      "t": "narrate",
+      "text": "It was an in-joke at my expense but it made me smile and I suppose it made me come back and continue to ask questions for which they would give me precious few answers."
+    },
+    {
+      "t": "narrate",
+      "text": "The members of the Blue Heron enjoyed their place away from the flow of time, this world of their own creation and welcomed me into it without question."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch5_egretta_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_triptych"
+    }
+  ]
+}

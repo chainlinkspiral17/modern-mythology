@@ -1,0 +1,63 @@
+{
+  "id": "vol4_scraps",
+  "vol": 4,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "scraps",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "prompt": "scraps — the posts, newest first",
+      "opts": [
+        {
+          "text": "scraps — thursday, may 18, 2006",
+          "scene": "vol4_scrap_scraps"
+        },
+        {
+          "text": "clean — friday, april 28, 2006",
+          "scene": "vol4_scrap_clean"
+        },
+        {
+          "text": "stained glass — tuesday, march 28, 2006",
+          "scene": "vol4_scrap_stained_glass"
+        },
+        {
+          "text": "weep (FOR THE FUTURE!) — friday, march 24, 2006",
+          "scene": "vol4_scrap_weep"
+        },
+        {
+          "text": "careful veneer — monday, march 06, 2006",
+          "scene": "vol4_scrap_careful_veneer"
+        },
+        {
+          "text": "twirlwind — sunday, february 05, 2006",
+          "scene": "vol4_scrap_twirlwind"
+        },
+        {
+          "text": "service engine soon — thursday, january 19, 2006",
+          "scene": "vol4_scrap_service_engine_soon"
+        },
+        {
+          "text": "back to the desk",
+          "scene": "vol4_hub"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": "vol4_story_chimes",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "chimes",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_crash_intersection.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_radio_static.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "chimes",
+      "sub": "an intersection · under street lights",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I hear glass shatter. A boy was listening to the radio station XGFM with radio personalities Satan Spork and Slim Jim Joachim. The music something fast and rapid."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy was hit from behind by a suburban monster truck one of those beasts of a machine that eats and pisses thick liquid and glows under street lights like a one-ton fish of the deep it's antenna angling back and forth picking up silent cosmic vibrations your whole body can feel."
+    },
+    {
+      "t": "narrate",
+      "text": "No damage to its front grill as it pushed the back of the small car three feet north. The boy was caught by a pillow moving at the speed of sound exploded his nose and left cheek. His seat twisted, his right leg snapped near the hip."
+    },
+    {
+      "t": "narrate",
+      "text": "Kept conscious by the beep beep beep of some emergency system and the music in his head. I ask him a question while he's too stunned to move, when the music quiets down and a commercial break surges to the moment twice as loud. His consciousness responds with an association. The image is of a teenage girl in a bikini."
+    },
+    {
+      "t": "narrate",
+      "text": "A wine cooler in her hand. A beach as wide as the horizon. A place he has never been before, what he wants heaven to be, where he wants to be instead of here. All this information is valuable. All the details. What type of bikini she is wearing. What color it is."
+    },
+    {
+      "t": "narrate",
+      "text": "What color her lipstick could be if it was a real color instead of an association. She is an ideal. The broken boy's internal beautiful moment is what people spend their whole lives wishing for. This is the sublime. This moment is the holy grail to people who worship ideals. Advertisers mostly."
+    },
+    {
+      "t": "narrate",
+      "text": "The people who live by the notion that sex sells, fashion is fleeting and youth is the most beautiful thing there ever was or will be. This is A class wish fulfillment. The moment of desperation, the surrender of the senses to something greater. He doesn't think about his family."
+    },
+    {
+      "t": "narrate",
+      "text": "He doesn't think about his dog named Zorba. He thinks about never getting to see the next episode of his favorite television show. He wants to live to see game four of the NBA finals. He doesn't want to wear a cast on his leg because he only gets to wear one sneaker on his foot."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay on the commercial break.",
+          "goto": 15
+        },
+        {
+          "text": "change the station.",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "A beach as wide as the horizon. A place he has never been before, what he wants heaven to be, where he wants to be instead of here."
+    },
+    {
+      "t": "narrate",
+      "text": "The dashboard lights blink red and patient over the broken glass."
+    },
+    {
+      "t": "narrate",
+      "text": "He might not get to go skiing with his friends for graduation. Above all else he was afraid something bad might've happened to his dick. He moaned when the music started back up because the song sucked. This is all valuable information. He couldn't move but he could change the radio station in his head."
+    },
+    {
+      "t": "narrate",
+      "text": "Jerked in a second to ZRON, where the last half of a word was heard. -ly means to me. Why don't we talk another call from one of you out there. Reaching out to the masses. Needing that supplication, needing that audience, needing those advertisers. The boy thought about an ice cold soda."
+    },
+    {
+      "t": "narrate",
+      "text": "The ice first washed with cold water to remove the bitter frost and only then added to soda. Sweet. Full of energy. He dreamed of flavored potato chips and bleach blonde bimbos. He dreamed of hamburgers that existed only in commercials. He dreamed of buying a bigger car with a better collision rating."
+    },
+    {
+      "t": "narrate",
+      "text": "His heaven was a place of security. Where he didn't have to worry about car crashes, taxes, car insurance and bad grades. Heaven was an advertisement that played in his own mind. His heaven was the sublime of cliche."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_chimes",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

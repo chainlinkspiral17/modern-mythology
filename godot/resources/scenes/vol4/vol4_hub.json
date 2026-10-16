@@ -1,0 +1,105 @@
+{
+  "id": "vol4_hub",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "The desk",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "choice",
+      "prompt": "The desk. Everything that didn't fit anywhere else.",
+      "opts": [
+        {
+          "text": "the blog printouts — scraps, 2006",
+          "scene": "vol4_scraps"
+        },
+        {
+          "text": "loose poems in a folder",
+          "scene": "vol4_poems"
+        },
+        {
+          "text": "a zine: weep (FOR THE FUTURE!), issue six",
+          "scene": "vol4_zine"
+        },
+        {
+          "text": "a screenplay: Charlie & Caroline",
+          "scene": "vol4_cc_1"
+        },
+        {
+          "text": "stories, stapled",
+          "scene": "vol4_stories"
+        },
+        {
+          "text": "a treatment: the game/ebook",
+          "scene": "vol4_goggles"
+        },
+        {
+          "text": "a printout signed Smartalec.",
+          "scene": "vol4_ed_toenine"
+        },
+        {
+          "text": "a VHS-C tape: paper cuts, video tests",
+          "scene": "vol4_video_tests"
+        },
+        {
+          "text": "index cards, rubber-banded",
+          "scene": "vol4_index_cards"
+        },
+        {
+          "text": "the bottom drawer · Oneironautics Inc.",
+          "scene": "vol4_drawer"
+        },
+        {
+          "text": "the corkboard over the desk",
+          "scene": "vol4_board",
+          "requires": [
+            "vol4_pin_weep_post",
+            "vol4_pin_turned_in",
+            "vol4_pin_zine",
+            "vol4_pin_all_over_town"
+          ]
+        },
+        {
+          "text": "vii. daddy",
+          "scene": "vol4_daddy_a",
+          "requires": [
+            "vol4_read_scraps",
+            "vol4_read_poems",
+            "vol4_read_zine",
+            "vol4_read_cc",
+            "vol4_read_stories",
+            "vol4_board_seen"
+          ]
+        },
+        {
+          "text": "vii. daddy",
+          "scene": "vol4_board_gaps",
+          "requires": [
+            "vol4_read_scraps",
+            "vol4_read_poems",
+            "vol4_read_zine",
+            "vol4_read_cc",
+            "vol4_read_stories"
+          ],
+          "hide_if": "vol4_board_seen"
+        }
+      ]
+    }
+  ]
+}

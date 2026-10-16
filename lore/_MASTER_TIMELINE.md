@@ -317,9 +317,10 @@ shifted resolution**; the author decides.
    "Dean at 48" in 2013 (ch22_floors), but the b. ~1978
    arithmetic (14 in Oct '92; 28 at SFO 2006 — two attestations)
    makes him 35 in 2013. The portrait's "48" is the odd one out.
-   Options: fix the portrait line to 35, or keep it and let
-   Tem's read of the portrait be wrong. [RESERVED — found
-   2026-08-14 during enemy-arc work.]
+   [RESOLVED 2026-10-16 — the author's vol1-4-source-text pass
+   ratified Dean b. 1978 ("Dean is 35 in 2013") and the
+   ch22_floors portrait line now reads thirty-five. Merged with
+   the line's full tail restored.]
 
 ---
 

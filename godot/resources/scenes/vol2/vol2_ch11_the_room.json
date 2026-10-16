@@ -1,0 +1,125 @@
+{
+  "id": "vol2_ch11_the_room",
+  "vol": 2,
+  "chapter": 11,
+  "type": "interlude",
+  "title": "xi. Terminal Velocity — The Room",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_room_ranch_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the room",
+      "sub": "Up the hill · The same afternoon",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I asked him how often he's been in the room. He responds."
+    },
+    {
+      "t": "narrate",
+      "text": "Hardly ever, he said. When he opens the door for himself there's nothing in there, white walls and a drain in the middle of the floor like the wash bay at a gas station. He said it does better with somebody else standing in it."
+    },
+    {
+      "t": "narrate",
+      "text": "That's why he wanted his old friends up the hill, one at a time. He said it like it was an apology. It wasn't one."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay out on the roof",
+          "goto": 10
+        },
+        {
+          "text": "climb back in through the window",
+          "goto": 13
+        }
+      ]
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_room_roof_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "From the roof the field ran down to the road the way it always had, the second house off to the left with its windows gone. Past the road it was wrong. Where the woods should have gone up dark there was a hill lit top to bottom, little lights stacked on little lights like the barrios from our apartment in Caracas, and somewhere down in it a car honked twice."
+    },
+    {
+      "t": "narrate",
+      "text": "I told him that wasn't the ranch. He looked at it a long while and said no, he guessed it wasn't. Then he climbed back in through the window and I went in after him."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_room_ranch_bedroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "On the nightstand where my clock radio used to sit there was a stick of grey plastic about as long as a pencil, no label on it. I picked it up and it was warm, like it had been in the window all day. Dean took it from me and put it in his pocket. I figured it was some part of how he did all this and I didn't ask."
+    },
+    {
+      "t": "narrate",
+      "text": "Then the blinds started up, those wood plank blinds my grandmother hung, knocking at the frame though there wasn't any wind I could feel."
+    },
+    {
+      "t": "narrate",
+      "text": "Low e note frequency vibration\nwind rattle of plank blinds\nclacking strung along sway in place\nechoing Morse gibberish infrequent."
+    },
+    {
+      "t": "narrate",
+      "text": "Dean stood there with his head cocked, listening like they were telling him something. I lay awake half my junior year to that sound and never once thought it was saying anything."
+    },
+    {
+      "t": "narrate",
+      "text": "On the hook behind the door where I hung my jacket there was something yellow, a kid's size, wet like it had just come in out of the rain. When I turned to look it was my jacket."
+    },
+    {
+      "t": "narrate",
+      "text": "Thought of Her as it should be\npassing glance held astray\nsharp crack delirium tremens"
+    },
+    {
+      "t": "narrate",
+      "text": "Dean was already at the door. He said I had to see the pool before the sun went, the light comes in off the bay this time of day and does things to the water. He was excited the way he used to get on deadline, the paper all laid out and the two of us the last ones in the room."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulled the door shut behind us and it was a door in his hallway again, white like all the others."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_glass_mansion_bay.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I drove down the hill with the blinds still going in my ears. That night I got out the old notebook and the box of things I kept from Small Wood and went through all of it, I don't know what for. To see what I had left that was still mine."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch11_the_room_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch12x_field_notes"
+    }
+  ]
+}

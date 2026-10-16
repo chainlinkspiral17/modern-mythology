@@ -1,0 +1,101 @@
+{
+  "id": "vol4_story_everyday_in_november",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "everyday in november",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_airplane_cabin.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cabin_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "everyday in november",
+      "sub": "a blog post · in transit",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "ack.\nack ack."
+    },
+    {
+      "t": "narrate",
+      "text": "about to choke over my own tongue. flustered and non-verbal today. Language has taken off running for the hills."
+    },
+    {
+      "t": "narrate",
+      "text": "late for work. hesitant to take a deep breath. back in my own."
+    },
+    {
+      "t": "narrate",
+      "text": "two feet."
+    },
+    {
+      "t": "narrate",
+      "text": "the descent of man."
+    },
+    {
+      "t": "narrate",
+      "text": "the decent man."
+    },
+    {
+      "t": "narrate",
+      "text": "american ennui. the mood i find myself in. alone and afflicted with what ails."
+    },
+    {
+      "t": "narrate",
+      "text": "others understand with silent acknowledgement."
+    },
+    {
+      "t": "narrate",
+      "text": "the pressure in the cabin is increasing. my ears won't pop. a whistle in my head that gets louder and louder. tears come to my eyes and i realize. dried up and deserted. the invisible intangible. i fall asleep among strangers and dream alien dreams while cold dry recycled air fills my sinuses. where is my place."
+    },
+    {
+      "t": "narrate",
+      "text": "where am i headed. i am unwanted. sneaking down the stairs, out the door and maybe just maybe."
+    },
+    {
+      "t": "narrate",
+      "text": "people who wear glasses have indents on their noses. people who wear their hearts on the outside are a bloody mess."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Say you want to find out what ails you. You go to a doctor. If you can't go to a doctor, you look up the symptoms. Try and figure out what the cause is, how to fix it. I've been looking through the books, reading commentary from the experts on the matter."
+    },
+    {
+      "t": "narrate",
+      "text": "I've come to the conclusion that what I have is so very typical, but so very terminal.\""
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_everyday_in_november",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

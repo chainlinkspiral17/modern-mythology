@@ -1,0 +1,312 @@
+{
+  "id": "vol4_story_workinp",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "workinp",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_beach_daycare.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_beach_wind.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "workinp",
+      "sub": "a beach house day care · southern California, morning",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The scarf around his neck was tight and made him sweat in the southern California heat. His mother was a chef at a local waffle place, dressed ready for work, on her way to dropping him off for day care."
+    },
+    {
+      "t": "narrate",
+      "text": "The old woman running the place was prone to hot flashes and kept the air conditioning circulating frigid inside the crumbling Victorian beach home."
+    },
+    {
+      "t": "narrate",
+      "text": "The gates leading down to the front door came up to the boy's shoulders. He enjoyed running his hand along the peeled paint and braving potential splinters. His hand always came away flecked with yellow. A large, crude wooden cross hung on the front door. Sand blew up against the crack at the bottom."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy and his mother went inside without knocking. The sound of other children at play echoed down the foyer. She signed a piece of paper behind the front door. The boy took his shoes off and put them carefully in line with the rest."
+    },
+    {
+      "t": "narrate",
+      "text": "Shivering, he made his way quietly, softly, down the hallway, his feet light on the waxed wood floor. There was a room with old toys and a small library of large books. He continued down to the patio cordoned off with a fine cloth mesh. Children were playing in pots, burying seeds under instruction."
+    },
+    {
+      "t": "narrate",
+      "text": "He saw the beach just outside, swimsuits jogging along, sitting down to bathe, venturing out into the cold calm."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Alex, here take this,\" his mother had gotten behind him."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a check, \"give it to Grandma Tulsa at the end of the day, okay?\""
+    },
+    {
+      "t": "narrate",
+      "text": "She kissed him and gave him a, \"be good,\" before she was gone."
+    },
+    {
+      "t": "narrate",
+      "text": "Before lunch, Alex and the children drew in coloring books, listened to Grandma Tulsa tell a chapter in The Sea Shells and the Very Scary Storm Cloud storybook. She had a strange voice. Hard and man-like, but still very soft and gentle."
+    },
+    {
+      "t": "narrate",
+      "text": "She made the pain of the Sea Shells feel very real and immediate and the oppressive Storm Cloud so very scary. Her accent was very different than any Alex had ever heard but he never had trouble understanding a word she said."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "listen to the story.",
+          "goto": 18
+        },
+        {
+          "text": "lie still.",
+          "goto": 20
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The Sea Shells and the Very Scary Storm Cloud. She made the pain of the Sea Shells feel very real and immediate and the oppressive Storm Cloud so very scary."
+    },
+    {
+      "t": "narrate",
+      "text": "The storybook's pages are soft and grey at the corners from being turned."
+    },
+    {
+      "t": "narrate",
+      "text": "A certain quiet settled into the place right after the meal had been eaten. Alex spread out on a sleeping mat, his back on the floor, chewing nails as stillness descended. An oscillating fan shook steadily overhead, papers tacked to the wall rustled."
+    },
+    {
+      "t": "narrate",
+      "text": "There were intermittent coughs and sneezes and sighs from all around him. He was comfortable in the middle of them all. Grandma Tulsa sat rocking in a chair, doing cross stitch in her lap."
+    },
+    {
+      "t": "narrate",
+      "text": "The light in the room slowly died out. Cloud cover was rolling in or fog on the beach. Alex thought about the sound of thunder, so far away, in another place. It hardly ever did that here. It could be very scary. The quality of the air seemed to change. The chill deepened stuck to his skin."
+    },
+    {
+      "t": "narrate",
+      "text": "He pulled his scarf tight to his lips, his breath pouring out near his eyes, his eyelids unsure."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a sound from down below where the steps led up. Heavy footsteps, wet footsteps. Alex turned on his side and looked over to Grandma Tulsa. She set aside the stitch work in a basket by her side and stood sharply adjusting her glasses."
+    },
+    {
+      "t": "narrate",
+      "text": "The light from the windows seemed to bleed out dead. A reddish hue settled into the shadows. The children still slept in their spot, rooted by full tummies and strange visions behind eyelids."
+    },
+    {
+      "t": "narrate",
+      "text": "A shape and sound approached the door. Grandma Tulsa unlocked the door to let the stranger in. A storm of sand blew in, orange and yellow, a dervish of grit and salt."
+    },
+    {
+      "t": "narrate",
+      "text": "Still they slept perhaps even deeper into their dreaming. Alex refused to sit upright. He pushed his scarf up to hide his wide open eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "In walked a sea gull on trident feet. His lumpy beak opened and cawed out. A cloud of black sea fleas emerged from inside, emptying the gull out completely. Feathers out, consumed by the fleas. The beak and claws dropped to the door mat. Grandma Tulsa opened her mouth wide and let the fleas fly inside."
+    },
+    {
+      "t": "narrate",
+      "text": "They crawled on her face and in her hair. They covered her glasses and ventured into her ears."
+    },
+    {
+      "t": "narrate",
+      "text": "Twisting and shaking her limbs, she took a few steps and found her footing. When she removed her glasses, Alex saw she was very different. Her eyes were the same but the lines that made up her face were gone. Her hair was still a shock of white but full and healthy."
+    },
+    {
+      "t": "narrate",
+      "text": "She wasn't beautiful, she wasn't any skinnier but she was younger."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_beach_daycare_red.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The man who entered was wearing a baseball cap and coveralls."
+    },
+    {
+      "t": "narrate",
+      "text": "\"I'm here to paint the fence,\" he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Crabs fell from his pockets each subsequent one larger than the last. They were crabs like Alex had never seen before. Colored outside the lines of reality just a bit, more or less legs than necessary, strange parts deep sea creatures were said to possess."
+    },
+    {
+      "t": "narrate",
+      "text": "They were coming for Alex, working their way through the sleeping children. They started up his leg, inside his pant cuff. He tightened and tensed and muffled his terror as much he could. One the shape of an egg came up on orange fingerlike tentacles."
+    },
+    {
+      "t": "narrate",
+      "text": "Its eyes resembled a squid's and when Alex knew that, \"the boy should be sleeping,\" he said."
+    },
+    {
+      "t": "narrate",
+      "text": "The crabs raised their claws high to attack."
+    },
+    {
+      "t": "narrate",
+      "text": "Tulsa came kicking at them brushing them aside. They turned to sand and the sand poured out between the cracks in the floor."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You shouldn't come during the day,\" she said, looking up, but leaning down to reassure Alex."
+    },
+    {
+      "t": "narrate",
+      "text": "He walked over to the window and put his hand against the window, \"There's work that needs to be done.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The impression he left was a handprint of blood. She raised Alex to his feet and took hold of his wrist, pulling him into the kitchen."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_beach_daycare_kitchen.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "\"I'm going to pull out a strawberry shortcake and you can eat it while Maine and I talk grown-up talk,\" Tulsa tucked his shirt into his pants and rubbed the snot off his face and then finally went about preparing a plate of the dessert."
+    },
+    {
+      "t": "narrate",
+      "text": "Alex sat up next to the window looking out at Maine who had gone outside to guard his paints and brushes. He was cussing at the loud music coming from down on the beach."
+    },
+    {
+      "t": "narrate",
+      "text": "Alex heard the artificial birth of the whipped cream and turned his attention to the sweet dish placed in front of him."
+    },
+    {
+      "t": "narrate",
+      "text": "Tulsa left without a word and met Maine on the porch. Spoonful after spoonful it never diminished. The light cake the air light cream, Alex hoped he'd get full and have to stop eating."
+    },
+    {
+      "t": "narrate",
+      "text": "Maine showed Tulsa how to paint over the windows. They started high. Yellow lines like paste squished down the picture window frames, soon the whole ocean view was obscured by the dirty off color. Alex noticed he'd finished his shortcake and stood to reach and put his plate on the counter."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_beach_daycare_yellow.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Alex remembered his friends still sleeping in the other room, and walked in on careful footsteps."
+    },
+    {
+      "t": "narrate",
+      "text": "A boy, skin and bone clear like a jellyfish, colorful tendrils for hair sat bobbing gently in Tulsa's chair. He was reading a picture book carefully, his eyes large and wet and gray. When he saw Alex he smiled and pulled his thin legs into a knot and sat up straight."
+    },
+    {
+      "t": "narrate",
+      "text": "Light from the yellow windows pressed through him, cast a dazzle of color upon the floor and wall."
+    },
+    {
+      "t": "narrate",
+      "text": "His voice felt like the brush of bubbles on the skin, \"I was told to wait here until they said so.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Alex sat at the foot of the chair and watched the boything turn the pages, his face reflecting back the playful watercolor imagery. His eyes deep and solid, optic nerve dissolving into clear liquid colliding with a milky explosion of color that could only be his brain."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Who are you,\" asked Alex realizing he was staring."
+    },
+    {
+      "t": "narrate",
+      "text": "\"How come you're not asleep,\" said the boy, just for a moment taking his eyes off the book to look Alex over."
+    },
+    {
+      "t": "say",
+      "char": "Alex",
+      "expr": "neutral",
+      "text": "I'm not tired."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy gave a slow nod of lazy agreement. He turned another page, his eyes went back to the page, \"My name is Hurley.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Alex didn't say another thing as Hurley finished his picture book. When he was done, he closed its covers and placed it on the floor. As he shook his hands in front of his face, the fingers lost their rigidity and moved like anemone strings."
+    },
+    {
+      "t": "narrate",
+      "text": "His finger tips lit up with a harsh electric glow and the room was filled with streaks of blue and pink light. Wherever the light touched, the light remained, casting off the old room like it was a shadow."
+    },
+    {
+      "t": "narrate",
+      "text": "It felt like the prickles of sensation returning after a limb falling asleep. Alex looked down at his hands. The creases on his knuckles smoothed out. He stood up, his equilibrium all wrong. He was growing too big for his skin, his clothes pulled tight across his skin and the instant he was afraid, it all stopped."
+    },
+    {
+      "t": "narrate",
+      "text": "Hurley got up from his chair and looked around the room. He went over to a splash of light that had settled inside a painting of a fisherman and his boy at the docks, putting fish on lines of string."
+    },
+    {
+      "t": "narrate",
+      "text": "Alex noticed the other children were bathed in the glow and seemed to be physically diminishing like the bottom of the room had fallen out from under him, like he had entered a funhouse and the proportion was skewed to throw him off balance."
+    },
+    {
+      "t": "narrate",
+      "text": "\"What did you do,\" he asked."
+    },
+    {
+      "t": "narrate",
+      "text": "Hurley opened his mouth and his translucent tongue emerged, taking on more color and form the further it stuck out from his mouth. The tip touched the painting and lapped at the light, tasting at not just the light, but all the color from the painted world as well."
+    },
+    {
+      "t": "narrate",
+      "text": "\"This place is funny,\" Hurley said, quite happy with his discovery, \"It's all so ugly until I touch it then it's just wonderful.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I don't understand,\" said Alex."
+    },
+    {
+      "t": "narrate",
+      "text": "\"We came for Mom, to help secure the home against the storm that's coming,\" said the boything his voice slight and broken."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_workinp",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

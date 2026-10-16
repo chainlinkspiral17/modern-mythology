@@ -1,0 +1,157 @@
+{
+  "id": "vol3_ch17_pulp_earthman",
+  "vol": 3,
+  "chapter": 17,
+  "type": "chapter",
+  "title": "i. the boy from pasadena — earthman",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_room_window_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_pulp_theme.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "i. the boy from pasadena — earthman",
+      "sub": "transmission · morning",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Jack sits by the bed all night, or what passes for night in a place where the lights never go down. He has pulled a chair up close. The man has stopped fighting. The straps lie loose across him unbuckled, nobody bothering anymore."
+    },
+    {
+      "t": "narrate",
+      "text": "Sometimes the man talks. Not much, and slow, every word costing him. And Jack learns the language of the future the way he learned every subject his father ever put in front of him. By drill. By saying it back."
+    },
+    {
+      "t": "narrate",
+      "text": "What do you observe, the man asks."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack observes. He says it out loud the way he was taught, general to particular. The air is cold and dry and moving. The light is constant, its source overhead. There are machines on the wall measuring the subject's heart and the subject's heart is slowing."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a woman at the window who hasn't slept. There is a big kid on the floor by the vent who has woken up and is sitting up now and has taken the subject's other hand."
+    },
+    {
+      "t": "narrate",
+      "text": "Good, the man says. And what do you conclude."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack can't conclude. He opens his mouth and nothing's there."
+    },
+    {
+      "t": "narrate",
+      "text": "Men in dark green come in and confer with the woman at the window and she tells them give him more. They ask does she understand what that will do. She tells them she breathes for people for a living, she knows what comes next. She doesn't get up from where she sits."
+    },
+    {
+      "t": "narrate",
+      "text": "The man looks at Jack a long time. Then he looks at the kid on the other side of the bed. Then back at Jack."
+    },
+    {
+      "t": "narrate",
+      "text": "Go on home, he says. Go on."
+    },
+    {
+      "t": "narrate",
+      "text": "Then his eyes go. Jack watches it happen, the light going out of them all at once and everywhere like a cloud over a lake until what's left is glass. Across the bed the big kid holds the other hand and cries and doesn't try to keep it quiet."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay with the hand.",
+          "goto": 18
+        },
+        {
+          "text": "go to the window.",
+          "goto": 19
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "It cools under his fingers by slow degrees, a stone moved into shade."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pulp_helipad_dawn.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Outside the great machines have stopped. Jack goes to the real window, past the lake still flickering with its birds, and pulls back the curtain and the pink is going out of the sky. It is morning. Only morning."
+    },
+    {
+      "t": "narrate",
+      "text": "On the roof below a machine sits with its long blades drooping and its lights gone dark, and two of the figures in green sit on its runner in the cold sharing a cigarette, passing it back and forth."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_elevator_benches.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "In the room of benches the girl with the sore eyes is back. She holds a yellow card. Somebody asks if she wants to go in and see him and she says no."
+    },
+    {
+      "t": "narrate",
+      "text": "He walks out of the tower. Nobody stops him. The children of the ruin are getting up off the benches and the floors and going out into the morning with their coats over their arms, blinking at the daylight, grown and half grown."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pulp_pod_street_dawn.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The egg is where he left it under the fallen street sign, a street sign is all it is, knocked down in some storm with its cables still hanging. Dew on the hull. A bird has been at it."
+    },
+    {
+      "t": "narrate",
+      "text": "He seals himself in. He sits a long time with his hand over the button. He thinks of his father at the kitchen table chewing a cold pipe. He thinks of the old man with the bruised hands asking him what he observes. He doesn't conclude anything."
+    },
+    {
+      "t": "narrate",
+      "text": "He pushes the button."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch17_pulp_earthman_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch14_last_of_the_oil_men"
+    }
+  ]
+}

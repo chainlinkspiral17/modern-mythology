@@ -1,0 +1,131 @@
+{
+  "id": "vol4_scrap_weep",
+  "vol": 4,
+  "chapter": 2,
+  "type": "interlude",
+  "title": "weep (FOR THE FUTURE!)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "weep (FOR THE FUTURE!)",
+      "sub": "scraps · friday, march 24, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Okay. Tonight I finish this bad boy of a story for school up. I'm going to work until it done."
+    },
+    {
+      "t": "narrate",
+      "text": "How about that? I'm prepared for an all nighter. So long as the words flow, I'll be fine."
+    },
+    {
+      "t": "narrate",
+      "text": "Got to see some fine folk yesterday. The Smitjol, Mansleeve, and Dave Addison. I crashed on D.A.s couch, the strains of Lost lulling me to sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "I also got pulled over by a cop for running a red light. I suck. I ran that red light, totally unaware."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe he was making it up, but I don't think so. I just said was in a daze and apologized. I think I can take defensive driving to make it go away."
+    },
+    {
+      "t": "narrate",
+      "text": "I've had several strange dreams. I'm trying to remember last night's. The night before, was a keystone dream and unlocked several others from my past, allowing me to remember a big giant section of dream time narrative."
+    },
+    {
+      "t": "narrate",
+      "text": "This dream was what I now dub my \"nightmare nautical sci-fi wasteland\". In this dream, I'll only highlight the current bits, not all the backstory. I was leading a group of scuba divers through this hellish stretch of ocean going vessel graveyard."
+    },
+    {
+      "t": "narrate",
+      "text": "Rusted, run aground cruiseliners in a bleak bit of Caribbean keys. The horrific bit was we were being prodded by a massive sea turtle that kept breaching the surface, staring at us, and perhaps eating a few of us. It was unclear, or maybe something else was."
+    },
+    {
+      "t": "narrate",
+      "text": "This thing was monstrous. The head was the size of trailer home. We were swimming for our lives."
+    },
+    {
+      "t": "narrate",
+      "text": "Okay. I need to write now. Must."
+    },
+    {
+      "t": "narrate",
+      "text": "I start now."
+    },
+    {
+      "t": "narrate",
+      "text": "okay. update from the day after. i've finished the story bit of it."
+    },
+    {
+      "t": "narrate",
+      "text": "just like i said i would. the rest of the project is almost done as well. lots of work i'm doing on that."
+    },
+    {
+      "t": "narrate",
+      "text": "the graphic design is all done, basically. i just need some flava text. i'll post a pdf of it, and the text of the story, when i'm all done."
+    },
+    {
+      "t": "narrate",
+      "text": "maybe tomorrow. i need to have it finished by monday, regardless."
+    },
+    {
+      "t": "narrate",
+      "text": "Another day. Sunday now. About to run off to work."
+    },
+    {
+      "t": "narrate",
+      "text": "Just finished the rough of weep. You can read it here or wait until i get you a better looking hard copy sometime this week."
+    },
+    {
+      "t": "narrate",
+      "text": "He tears the post off along the perforation and pins it to the corkboard over the desk. Top corner. The first thing up there."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_weep_post",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_weep",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "read it here.",
+          "scene": "vol4_zine"
+        },
+        {
+          "text": "later. back to the scraps.",
+          "scene": "vol4_scraps"
+        }
+      ]
+    }
+  ]
+}

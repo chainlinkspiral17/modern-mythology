@@ -1,0 +1,73 @@
+{
+  "id": "vol4_story_ourobouros",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "ourobouros",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_ourobouros_mirror.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "ourobouros",
+      "sub": "story · the mirror",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Steven put gel in his dark hair and stared at himself in the mirror, remembered when he pissed himself, shit himself, when he'd wake up in the middle of the night rank with shit, wet with stick."
+    },
+    {
+      "t": "narrate",
+      "text": "He tried to hide the sheets and clothes in his closet after he showered in the middle of the night, scared and quietly crying despite himself. He didn't like being reduced to a baby at the age of thirteen. He didn't like how words came out of his mouth when they came out at all."
+    },
+    {
+      "t": "narrate",
+      "text": "How he sometimes had seizures in public and how the scars on his body looked when he went to a public pool. He was getting better, slowly, but he would never be as good as he was. He used to be in gifted classes, with gifted kids who weren't as smart as he was."
+    },
+    {
+      "t": "narrate",
+      "text": "He had to go to normal classrooms for the very first time in his life where the kids were just as mean and bitter as the teachers class materials old and out of date and covered in spit and snot and bite marks and had pictures that were probably taken in the nineteen seventies."
+    },
+    {
+      "t": "narrate",
+      "text": "Where instead of using computers, they watched filmstrips and listened to headphones while they followed along in work books that had all the pages torn out. His old friends called him a retard. He got Cs."
+    },
+    {
+      "t": "narrate",
+      "text": "He worked so hard to never get back to where he was."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_ourobouros",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

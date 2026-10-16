@@ -1,0 +1,301 @@
+{
+  "id": "vol3_ch10_notes_from_the_underground",
+  "vol": 3,
+  "chapter": 13,
+  "type": "chapter",
+  "title": "viii. notes from the underground",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pasadena_street_1945.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_radio_1945.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "viii. notes from the underground",
+      "sub": "Pasadena · 1945",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "1945 is a walk in the park. Everything feels new despite being past tense. Normal people can be seen reading books in public noses deep in newspapers using journals and magazines to rest their coffee on."
+    },
+    {
+      "t": "narrate",
+      "text": "The same movie plays all over town, the same few songs drift from the radio. The women are striking. Gorgeous even."
+    },
+    {
+      "t": "narrate",
+      "text": "I try not to think of them being the same age as my grandmother if not older. Lots of people of color, black, Chinese, mexican, indeterminate. I expect less for some reason."
+    },
+    {
+      "t": "narrate",
+      "text": "They are normal but keep more to themselves."
+    },
+    {
+      "t": "narrate",
+      "text": "The cars are so slow. Public transportation moves near the same clip. Life as a result feels more dragged out, casual."
+    },
+    {
+      "t": "narrate",
+      "text": "I walk everywhere I can. I feel out of place but nobody notices. The sky is clear, it tastes so damn good to just stand there and breathe."
+    },
+    {
+      "t": "narrate",
+      "text": "Heavy citrus aromas in the air, the salt on the breeze."
+    },
+    {
+      "t": "narrate",
+      "text": "I wear my button up shirt and pull over sweater vest, dark slacks and black work boots. I carry around a notebook which I've been given to keep phone numbers and addresses in. I scribble into it when I get the chance."
+    },
+    {
+      "t": "narrate",
+      "text": "I always seem to have a couple dollars in my pockets. My hands are always greasy, I can't seem to wash away the slick feeling, I rub my hair back with my palms."
+    },
+    {
+      "t": "narrate",
+      "text": "I eat Chinese today, it tastes predominately of ketchup, sort of how dad used to make it."
+    },
+    {
+      "t": "narrate",
+      "text": "The diners are okay. The people are fun to look at, listen to, engage at random."
+    },
+    {
+      "t": "narrate",
+      "text": "I try to keep a tight leash on myself, stick close to what I know of Pasadena. The buses are fantastic. I read the books Ron has given me."
+    },
+    {
+      "t": "narrate",
+      "text": "They're all bad but there is a spark of personality that makes reading them infectious."
+    },
+    {
+      "t": "narrate",
+      "text": "The men here are all so friendly."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pasadena_park_1945.jpg"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "sit by the chess tables",
+          "goto": 22
+        },
+        {
+          "text": "watch the kites",
+          "goto": 23
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Old men bend over the boards in the shade, pigeons working the gravel at their feet."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a nice park to explore every few blocks. I stop and linger. I play chess and lose."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone is so much better at everything. I toss around a football with a few college kids. I'm out of breath and they lose interest in me."
+    },
+    {
+      "t": "narrate",
+      "text": "People are actually flying kites."
+    },
+    {
+      "t": "narrate",
+      "text": "There is still a lot of fear out there. Japs and Germans and all that what comes next nonsense. There has been an enemy."
+    },
+    {
+      "t": "narrate",
+      "text": "The otherness of world war. There is the beginnings of the communist hysteria. It is out there, socialism prominent, beckoning from behind closed shop doors and office fronts, people with pamphlets on street corners ready to jaw your ear off."
+    },
+    {
+      "t": "narrate",
+      "text": "The clothing stores and department stores are like glorified resale shops. This is the height of commerce. It makes me sick to think how out of control this will all get."
+    },
+    {
+      "t": "narrate",
+      "text": "Consumerism is still a terrible infant, teething."
+    },
+    {
+      "t": "narrate",
+      "text": "No one has a problem with corporations. Incorporate is a good word, a swell word. America is in the upswing."
+    },
+    {
+      "t": "narrate",
+      "text": "Corporations are keen. The logos and brands I recognize I want to tear to pieces. I wouldn't have expected this reaction."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to wake them up. But then they'd just call me a commie or worse."
+    },
+    {
+      "t": "narrate",
+      "text": "Because there is nothing wrong with the American dream. Which doesn't explain all the new age cults I see. This place is demented."
+    },
+    {
+      "t": "narrate",
+      "text": "There is something in the air that makes you aware of so much possibility. There is prosperity, but you still have to struggle. There is intellectualism, but also great ignorance."
+    },
+    {
+      "t": "narrate",
+      "text": "The same can be said of any age, from one generation's perspective far removed."
+    },
+    {
+      "t": "narrate",
+      "text": "I expect to see masked crime fighters, visitors from another planet, foreign menaces that threaten to unravel the straightlace of decency and morality."
+    },
+    {
+      "t": "narrate",
+      "text": "I come here to hide from reality. I can halt the grief, stop the clock on my education, delay the final schism with Christine. I have no family to need me, no friends who know me and have watched me make mistake after mistake."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to join everyone and buy into this sunny California dream, reimagining themselves as they see fit. When it gets down to it, this is anathema to the American Dream. This is where those with nightmares go."
+    },
+    {
+      "t": "narrate",
+      "text": "I forget how much has happened. Rather, every time I look down a street I can't help but remember so much history that has yet to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Technology is trying so hard and works despite being so damn clumsy. Television and particularly radio are so enthusiastic, so immodest. At least the radio has grown into its own skin."
+    },
+    {
+      "t": "narrate",
+      "text": "Television is too new, selling itself as much as its commercial sponsors. The sounds of far off places, actors so eloquent, pitchmen so persuasive. Products long forgotten jingle, their slogans stick in the head like wonderbread."
+    },
+    {
+      "t": "narrate",
+      "text": "God, these grandmothers of ours are hot. It must be the fashion. It's showing plenty and suggesting a promise of so much more."
+    },
+    {
+      "t": "narrate",
+      "text": "They dress smart, confident. I can see why these people made so many goddamn babies. The confidence and arrogance of them."
+    },
+    {
+      "t": "narrate",
+      "text": "I go to libraries and borrow off the shelves. I write letters to myself, my unborn family. I want to tease the time stream, I want to fuck things up."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps there are ways of changing things for the better. The hubris comes in the open window. Could I save my father from death."
+    },
+    {
+      "t": "narrate",
+      "text": "Is there a way to let him know about the cancer before it is too late. Is this my reason for coming here, making this trip back in time."
+    },
+    {
+      "t": "narrate",
+      "text": "I need to experiment. I need to find a way to connect through to the present. If this is just a recurring night time dream state, fine."
+    },
+    {
+      "t": "narrate",
+      "text": "But it feels like it was meant to be, this perception of reality."
+    },
+    {
+      "t": "narrate",
+      "text": "Paradox thought makes me queasy, uneasy. There is a specific limit on my temporal confinement. There is a reason for me being here, there has to be."
+    },
+    {
+      "t": "narrate",
+      "text": "I feel important, I feel gifted, I feel honored. I swell up because I am the ultimate tourist."
+    },
+    {
+      "t": "narrate",
+      "text": "I just watch and listen and think. I'm afraid to move and play and touch these lives with my strong father's fingers."
+    },
+    {
+      "t": "narrate",
+      "text": "None of these people have the slightest clue. I hold this knowledge above them, that I could possibly know their destiny, the remains of their glorious rotten future. I am from the place where the answers are already written."
+    },
+    {
+      "t": "narrate",
+      "text": "Because I've come from the future. And I wonder how often this has happened before. People have written books about it, after all."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark Twain sent his Connecticut Yankee to King Arthur's Court."
+    },
+    {
+      "t": "narrate",
+      "text": "I have to wonder what role the accidental time-traveller plays in the unfolding of this quiet drama."
+    },
+    {
+      "t": "narrate",
+      "text": "Who have the others been? Is there a reason why fiction is the only avenue to express this? Reality only works one way and to say otherwise would bring the whole thing down."
+    },
+    {
+      "t": "narrate",
+      "text": "How easy would it be to rewrite history. Can I change the slightest thing, not for selfish reasons. If I can, should I."
+    },
+    {
+      "t": "narrate",
+      "text": "If I can, given the choice, it should be assumed that I would operate on this just by the very fact that I am here."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_mojave_desert_1945.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The experiment. With the boys in the desert. We drive out one afternoon."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a box empty of explosives they've gone through. I bury a newspaper, a novel, and a toy soldier by a fence. I think I can find my way back."
+    },
+    {
+      "t": "narrate",
+      "text": "I quiz myself on what I know of the 1940s. Surprisingly little, I find out."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm in Los Angeles. Home to the faces that survived to live on forever, the achingly beautiful icons and household names. I want to seek them out, see them in the flesh."
+    },
+    {
+      "t": "narrate",
+      "text": "This is an opportunity I have been given."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hollywood_street_1945.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I stroll down to Hollywood. It is a hub of activity. The studios are busy crafting dreams lived in at 24 frames per second."
+    },
+    {
+      "t": "narrate",
+      "text": "They shoot on the streets, the closed sets are easy to gain access to."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch10_notes_from_the_underground_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch11_acceptable_losses"
+    }
+  ]
+}

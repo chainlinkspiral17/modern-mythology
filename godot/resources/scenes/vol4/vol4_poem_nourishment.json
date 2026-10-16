@@ -1,0 +1,53 @@
+{
+  "id": "vol4_poem_nourishment",
+  "vol": 4,
+  "chapter": 3,
+  "type": "interlude",
+  "title": "Nourishment",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Nourishment",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He is giving away two cabinets for food\nThe contents of one exchanged for another\nNourishment of a different sort\nRetaining whatever knowledge he can\nOf names and titles carried within"
+    },
+    {
+      "t": "narrate",
+      "text": "A collection lost out of desperation\nDoesn't dare start thinking eating quietly by candlelight\nThe temporary insanity already sated\nThe patience of contentedness a friction against\nThe slow crumbling agony of a lifetime's empty legacy"
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_nourishment",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

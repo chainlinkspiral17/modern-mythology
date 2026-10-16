@@ -1,0 +1,221 @@
+{
+  "id": "meld_kaleidoscope_c",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — cut",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_editing_suite_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_diner_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "cut",
+      "sub": "INT. EDITING SUITE · Aud's · 4 a.m. · rolling",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Four in the morning in the editing suite. Four chairs. Coffee rings on everything."
+    },
+    {
+      "t": "narrate",
+      "text": "Aud comes in with a pot of coffee, sleeves rolled, glasses on the chain, like it's any other morning."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "Who's on decaf."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "None for me ginger beer thanks"
+    },
+    {
+      "t": "narrate",
+      "text": "She pours anyway, into a cup that's already full, and it goes over and runs along the cables."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_facet_suite_coffee.jpg",
+      "caption": "coffee, the deck, the monitors"
+    },
+    {
+      "t": "narrate",
+      "text": "On the monitors, a bakery window. Hans lifting a loaf off a tray and setting it back, lifting it, setting it back."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Cut."
+    },
+    {
+      "t": "narrate",
+      "text": "Hans lifts the loaf."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "angry",
+      "text": "Cut. Cut."
+    },
+    {
+      "t": "narrate",
+      "text": "Hans sets it back. On the next monitor minivan doors slide open and shut all down a street."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Can't we just sit here and think a minute."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "amused",
+      "text": "Nobody leaves. That's the trouble with a good diner."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "angry",
+      "text": "I said cut."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing stops. The coffee finds the door and goes out under it, downhill."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_hemlock_vga.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_scumm_adlib.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "rolling",
+      "sub": "Hemlock · sixteen colors · still rolling",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Out on Hemlock it runs in the gutter past the bakery. Hans calls after somebody going by."
+    },
+    {
+      "t": "say",
+      "char": "Hans",
+      "expr": "neutral",
+      "text": "Bread for the morning. You'll want it later."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_editing_suite_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_diner_ambient.mp3"
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "A conspiracy of beautiful dreamers yet a conspiracy no less."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "Pay at the register."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "sad",
+      "text": "It hurts to think this play has already started and I just now realize it must be completed."
+    },
+    {
+      "t": "narrate",
+      "text": "The Director takes his hand off the deck. The town keeps going without him."
+    },
+    {
+      "t": "narrate",
+      "text": "Aud sets down the pot."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "It's the one you're going to make."
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_suite",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "turn the lens again.",
+      "opts": [
+        {
+          "text": "the water tower, in wet paint",
+          "scene": "meld_kaleidoscope_b",
+          "hide_if": "meld_facet_tower"
+        },
+        {
+          "text": "coffee in the editing suite",
+          "scene": "meld_kaleidoscope_c",
+          "hide_if": "meld_facet_suite"
+        },
+        {
+          "text": "a copy of a copy of a copy",
+          "scene": "meld_kaleidoscope_d",
+          "hide_if": "meld_facet_xerox"
+        },
+        {
+          "text": "the lamp, the porthole",
+          "scene": "meld_kaleidoscope_e",
+          "hide_if": "meld_facet_porthole"
+        },
+        {
+          "text": "crab number zero",
+          "scene": "meld_kaleidoscope_f",
+          "hide_if": "meld_facet_derby"
+        },
+        {
+          "text": "stop turning.",
+          "scene": "meld_kaleidoscope_g",
+          "requires": [
+            "meld_facet_tower",
+            "meld_facet_suite",
+            "meld_facet_xerox",
+            "meld_facet_porthole",
+            "meld_facet_derby"
+          ]
+        }
+      ]
+    }
+  ]
+}

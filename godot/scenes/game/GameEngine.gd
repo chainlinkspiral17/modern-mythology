@@ -937,6 +937,10 @@ func _do_choice(n: Dictionary) -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
+	# Hide the portraits while choosing. Portrait3D SubViewports render
+	# every frame (UPDATE_ALWAYS) and keep their idle-sway going, so
+	# without this they draw and animate over the choice buttons.
+	_chars.visible = false
 	var all_opts: Array = n.get("opts", [])
 	# Flag-gated options (the VERB COIN, 2026-09-07): an option with
 	# "hide_if_flag" disappears once its flag is set — a verb the player
@@ -954,8 +958,13 @@ func _do_choice(n: Dictionary) -> void:
 		# in _flags as "item:<name>" so they save with everything else.
 		if o.has("needs_item") and not _has_item(String(o.get("needs_item"))):
 			continue
+		# Vol 1-4 hub gating ("requires" / "hide_if" — the Vol IV desk):
+		# the source-text branch's grammar, kept alongside the coin's.
+		if not _opt_visible(o):
+			continue
 		opts.append(o)
 	if opts.is_empty():
+		_chars.visible = true
 		_dlg.visible = true
 		_run_next()
 		return
@@ -963,6 +972,7 @@ func _do_choice(n: Dictionary) -> void:
 	_choices.call("present", n.get("prompt", ""), opts,
 		func(idx: int) -> void:
 			_choices.visible = false
+			_chars.visible = true
 			_dlg.visible = true
 			var opt: Dictionary = opts[idx]
 			# An option may set a flag directly · the cheap way for a
@@ -985,7 +995,7 @@ func _do_choice(n: Dictionary) -> void:
 				_train_skill(String(opt["skill"]), int(opt.get("amount", 1)),
 					"%s#%d:%d" % [_scene_id, _node_idx, idx])
 			if opt.has("check"):
-				_resolve_check(opt["check"])
+				_resolve_check(opt)
 			elif opt.has("scene"):
 				_load_scene(opt["scene"])
 			elif opt.has("goto"):
@@ -1061,11 +1071,29 @@ func _train_skill(skill: String, amount: int, once_key: String = "") -> void:
 		})
 
 
-func _resolve_check(check: Dictionary) -> void:
+func _opt_visible(o: Dictionary) -> bool:
+	var req = o.get("requires", null)
+	if req != null:
+		var keys: Array = req if req is Array else [req]
+		for k in keys:
+			if not bool(_flags.get(str(k), false)):
+				return false
+	var hide_key = o.get("hide_if", null)
+	if hide_key != null and bool(_flags.get(str(hide_key), false)):
+		return false
+	return true
+
+
+# Scene data puts pass/fail as siblings of `check` on the option
+# (e.g. {"check": {"skill": "logic", "diff": 9}, "pass": 11, "fail": 8});
+# older/hand-authored data nests them inside `check`. Accept both: the
+# caller passes the whole option, and a bare check dict still works.
+func _resolve_check(opt: Dictionary) -> void:
+	var check: Dictionary = opt.get("check", opt)
 	var skill: String = check.get("skill", "")
 	var diff:  int    = int(check.get("diff", 0))
-	var pass_idx: int = int(check.get("pass", _node_idx))
-	var fail_idx: int = int(check.get("fail", _node_idx))
+	var pass_idx: int = int(opt.get("pass", check.get("pass", _node_idx)))
+	var fail_idx: int = int(opt.get("fail", check.get("fail", _node_idx)))
 	_node_idx = pass_idx if int(_skills.get(skill, 0)) >= diff else fail_idx
 	_run_next()
 

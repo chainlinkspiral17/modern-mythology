@@ -1,0 +1,178 @@
+{
+  "id": "vol4_story_paper_cuts",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "i. paper cuts and the star key",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_office_copier.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_machine_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "i. paper cuts and the star key",
+      "sub": "the office · after hours",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "My own personal refresh rate is set to the constant of the rate of decay of the universe. How often the new and beautiful washes over the old and stale Dorian Gray. Recreation on a conscious level extrapolated with the purely cosmetic zed. Beauty as a quantifier, measure it just so across matrices."
+    },
+    {
+      "t": "narrate",
+      "text": "Brow lines, beatific blemishes, jaw lines, ear placement, the tiny human dabs of paint that stick out to turn your head to the side in consideration."
+    },
+    {
+      "t": "narrate",
+      "text": "I blow up letters. I place a form letter in the copying machine. Reduction is good for abstraction before re-enlargement. The letter e. lower case like e.e. cummings, filling eight and a half by eleven. It hardly looks perfect, inelegant but beautiful."
+    },
+    {
+      "t": "narrate",
+      "text": "Takes me twelve copies at four hundred percent to get it this large. The edges are jagged just right. Splotchy islands exist outside the mainland. Reason being who gives a shit. Forget for a second I have a reason to exist. I occupy my time setting goals, fulfilling milestones."
+    },
+    {
+      "t": "narrate",
+      "text": "Some of these I'd prefer to complete before I die."
+    },
+    {
+      "t": "narrate",
+      "text": "I imagine my mortal coil like a corkscrew. As some higher power forces me through the cork, everything slows, I dull to a stop, then pop. My destiny fulfilled, my purpose accounted for by cosmic reckoning. I order lunch for the office. I account for coworkers indebted to me and the change I must break."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm the day's mealtime bookie. Today is Saigon Deli. A notepad of numbers and exceptions to the rule, none of this, more of that please. I daydream because it's one of the few pleasures in life I don't have to share with anyone. I'm selfish that way. I close my eyes when no one is looking."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "keep them closed.",
+          "goto": 14
+        },
+        {
+          "text": "open your eyes.",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "I daydream because it's one of the few pleasures in life I don't have to share with anyone."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind the eyelids the copier light passes, slow and green, again and again."
+    },
+    {
+      "t": "narrate",
+      "text": "My fingers bleed. The fingernails are bent back but never broken. They never speak to me. When one is not working on me, they shuffle together like they're trying to dance. There is no music, only light that could almost be music, the way it pulsates and throbs. They look like neighbors."
+    },
+    {
+      "t": "narrate",
+      "text": "The class of people who live on the edge of what we know, are comfortable with."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the nails they place a thin strip of magnesium that sparks when it touches the pink wet. It burns like how agony would burn, I shake and weep and can't control my legs which would kick up and at them. I see pink, soft and beautiful. Their caul is pulled across my vision."
+    },
+    {
+      "t": "narrate",
+      "text": "An expense report I fill out. With gas mileage to and from lunch meetings, toll fares, printer cartridges, black markers and highlighters. Receipts of who owes what again. I do the math and the numbers leave my fingers connecting the past to the future. I feel the subtraction, the reduction of myself. Orange."
+    },
+    {
+      "t": "narrate",
+      "text": "Like a cream soda. I break down what I know and what I don't. A list I keep hidden in my desk drawer. The Nieto Avenue Library. Monica Dewitt. Calamari. Sometimes, to help myself, I draw lines between the disparate associations, to try and make sense of it all."
+    },
+    {
+      "t": "narrate",
+      "text": "I started wearing glasses when I turned twenty five. I look fine, I thought I wouldn't when I was eighteen. My body changes almost daily. I degauss more often than I should. The wash of color, the breaking of the lines, the bending of the window, the reality I know. Like someone threw a pebble in."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a man who comes up to my desk once a week and tries to sell me cookies. His name is Javier and he talks about nothing but animals. Mammals, insects, fish and invertebrates, he organizes classifications of life in his mind like sports scores or famous quotations, sea cucumbers and pygmy shrews."
+    },
+    {
+      "t": "narrate",
+      "text": "What they have in common, how they're completely unlike. Javier once told me that all cities are one city. That in your head exist all your ancestors, alive and fighting to live a new life through you."
+    },
+    {
+      "t": "narrate",
+      "text": "I stay to work after hours, when the cleaning crews come over to play. In their white smocks and aprons, like chefs and surgeons, they chitter and chatter in foreign tongue and made up playspeak. Their hum can be heard above and below. Moving closer, then further away."
+    },
+    {
+      "t": "narrate",
+      "text": "The sound they make is the sound of alien lovemaking."
+    },
+    {
+      "t": "narrate",
+      "text": "The white noise of penetration, their faces brittle and full of hostile intent. I stare at where the walls meet, at a ninety degree angle. How bright it is in the center, at the nexus. My eyes play tricks on me."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't trust them anymore, perhaps the lenses are too thick, the layers compressed together to fool me just so. Hiding inside is a polarized portal that hides and reveals things it should not."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_blue_sand_beach.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "There is a beach I visit where the waves crash thick white and the sand is blue. Volcanic rock I pack in bags and take home with me. Only the locals know of this place and they tend to avoid it. When the sun hits the horizon you've never seen anything like it. I only wade out to my knees."
+    },
+    {
+      "t": "narrate",
+      "text": "The kelp ropes around my ankles and black green crabs pump across the surface sideways. My sun-block lotion is orange and pink and here is where I can daydream I'm at my desk, waiting for the hour to dissolve away and my future open up like the sky falling down."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_office_copier.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Products of the imagination. Distributed friendships, emergent acquaintances, proffered contact lists. I skim the rolodex and remove hazy recollections, broken trusts, go-betweens. My fingers scream for mercy. I type a form letter to payroll attorneys I've never seen. I don't trust my eyes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_parking_garage.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The parking garage is the color of honeydew. The fluorescent lighting plays against the concrete hardtop interior. The hum in the air is like electricity on the teeth. My throat warbles just a bit, a taste of unease swallowed away."
+    },
+    {
+      "t": "narrate",
+      "text": "Always the sound of the far off car descending that stresses me to action at a hurried pace. To retreat before it shows itself. The headlights catching me, the descending thing ever nearer."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_paper_cuts",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

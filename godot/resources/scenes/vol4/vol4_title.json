@@ -1,0 +1,44 @@
+{
+  "id": "vol4_title",
+  "vol": 4,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "#/Sharp",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_plate_glyph.jpg",
+      "caption": ""
+    },
+    {
+      "t": "interlude",
+      "text": "#/Sharp",
+      "sub": "scraps · modern mythology. · volume four",
+      "duration": 2400
+    },
+    {
+      "t": "jump",
+      "scene": "meld_seam_3_4"
+    }
+  ]
+}

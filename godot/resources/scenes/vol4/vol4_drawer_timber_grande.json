@@ -1,0 +1,121 @@
+{
+  "id": "vol4_drawer_timber_grande",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "a Dickens Dean story",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "a Dickens Dean story",
+      "sub": "typed · 2012 · unsigned",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "People who don't really know the guy, often ask me to tell them a Dickens Dean story, as somewhere along the line I became the closest thing the man had to a friend, or at the very least, his personal storyteller."
+    },
+    {
+      "t": "narrate",
+      "text": "Depending on how they ask, that's how I'll choose to tell the story of which there are a great many different types."
+    },
+    {
+      "t": "narrate",
+      "text": "Yeah, dude was a genius, seemingly born to do great things, and done them he did. A visionary, a mind untethered to this mundane realm, a haunted practitioner of arcane science and practical arts."
+    },
+    {
+      "t": "narrate",
+      "text": "But also a family man. Not just his own wife, and kids, but also a good student of the lineage that brought him forth, carried him aloft. The demons he carried with him, those I got to know best of anybody."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "ask about the first Dickens.",
+          "goto": 10
+        },
+        {
+          "text": "ask about his father.",
+          "goto": 11
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The first Dickens, now. That's a whole other story, and not a kind one. Maybe another time."
+    },
+    {
+      "t": "narrate",
+      "text": "Since you asked kind, and seem to know a good deal more than all the rest, this story about to be told concerns his father, John, one of those oft-referenced but out of fashion father figures of computer science,"
+    },
+    {
+      "t": "narrate",
+      "text": "crafter of one of the first truly lived in virtual worlds, The Timber Grande, and Dickens's ancestral link to Small Wood, virtual or no."
+    },
+    {
+      "t": "narrate",
+      "text": "The Deans, as a family unit, had curious attachment to the place that tended toward the dramatic, as several generations and family names came and went, Small Wood stragglers come to make, or lose a fortune, before Dickens found a measure of sustained success."
+    },
+    {
+      "t": "narrate",
+      "text": "John's doctoral thesis, begun in 1968, was finally finished in 1977, and had more hands in it, than such things usually do."
+    },
+    {
+      "t": "narrate",
+      "text": "You may have heard of MUD, or Multi-User Dungeon, or more accurate, Multi Undergrad Destroyer due to their propensity to suck away the most valued of academic currencies, time."
+    },
+    {
+      "t": "narrate",
+      "text": "When the story begins, Dickens would not be born for another ten years, but John and his wife Mary welcomed their first child shortly after the paper's beginning, a baby girl named Lydia."
+    },
+    {
+      "t": "narrate",
+      "text": "The thesis was ahead of its time, spelling out mechanics and fashions of game design that would not become practical or commonplace for decades to come."
+    },
+    {
+      "t": "narrate",
+      "text": "But John and his team managed an embryonic and utilitarian shell of a thing, getting the guts up and pumping on an Oregon State mainframe. And over the course of the next three years, access to the Timber Grande had spread to connected university labs the country over."
+    },
+    {
+      "t": "narrate",
+      "text": "John wasn't around to watch much of it spread. The ink was hardly dry on the thesis before he took a job with an oil company, of all things, down in Caracas. Dickens was born there the next year."
+    },
+    {
+      "t": "narrate",
+      "text": "They came back to Oregon in ninety-two. Far as anybody on the Grande could tell, John never logged in again."
+    },
+    {
+      "t": "narrate",
+      "text": "“Keep pushing and see where this body ends up. No sense in dragging a husk consumed, a shell exhumed, keratinous bits ever extending. How much is dead, how much is dying."
+    },
+    {
+      "t": "narrate",
+      "text": "Pieces flayed free by eager tongues, white teeth smiles slashing, young blood bellowing hungry lungs. Leave no marrow inside for sun to bleach. Suckle gulp swallow whole, you monstrous things.”"
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_timber_grande",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "vol4_daddy_c",
+  "vol": 4,
+  "chapter": 8,
+  "type": "interlude",
+  "title": "vii. daddy",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_glass_tower.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_glass_tower.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "vii. daddy",
+      "sub": "the glass tower · after",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean didn't know how to explain to his wife that their daughter was gone forever."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "sad",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "esther",
+      "expr": "worried",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "surprised",
+      "text": "What do you mean, she's gone?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "She's left this world and considering how many worlds there are, and how hard it is to travel across them, the chances of her coming home are zero to none."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "worried",
+      "text": "What are you talking about, Dickens Dean?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "You're going to hate me for everything I'm going to tell you. You're going to hate me so much."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "angry",
+      "text": "You seem awful certain, Dickens Dean."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You must have your opinions of me but know everything I've done in this life together with you has been for myself, my own ambition and our child."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "angry",
+      "text": "You are a selfish human being, now tell me where she is."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "It was time to tell Aria where she comes from. Where I come from. I had to show her."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "surprised",
+      "text": "But you come from here. You're from here."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Yes and no. I come from another world. I came to this world looking for you in hopes of having a beautiful child."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "worried",
+      "text": "What other world?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "While I use the terms real, I only refer to my real world as my origin point. All the worlds I peer across now are just as real to me as my original."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I created this world, this virtual world, to create my perfect woman. I pursued you relentlessly until you caved."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "angry",
+      "text": "What you are saying is so wrong, so abhorrent on so many levels."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You may not believe it but understand this, our child is a half-breed, a beautiful lovely entity living across the multiverse that has broken many natural and unnatural laws by her very existence."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "She is so powerful and can change so many worlds just by continuing to exist."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "sad",
+      "text": "I don't know what you're saying."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at him. really look.",
+          "goto": 27
+        },
+        {
+          "text": "let him go on.",
+          "goto": 29
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean didn't know how to explain to his wife that their daughter was gone forever."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind him the glass holds the whole dark Pacific, and nothing moving on it."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I'm going to go look for her. I have so much to tell her. We've got people working on it right now, we just have to follow her and if that proves impossible, we'll have to draw her to us."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "worried",
+      "text": "How do you hope to do that?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "amused",
+      "text": "No spoilers, just know that I'll be working hard to bring her home safely."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "sad",
+      "text": "Assuming she wants to come back."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "She still loves us, she just doesn't know what anything is right now."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "sad",
+      "text": "I remember youth, Dickens Dean."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "I will love you forever, you know."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "sad",
+      "text": "You know."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_daddy",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "meld_kaleidoscope_a"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "id": "vol4_story_what_sort_of",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "what sort of",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_what_sort_of_car_dawn.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "what sort of",
+      "sub": "story · morning after",
+      "duration": 2000
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Tell me where to drop you off. When to drop you off. Recognize anything yet?"
+    },
+    {
+      "t": "narrate",
+      "text": "The kid wasn't looking up, just holding his head in his hands in his lap. \"Just drop me off and I'll be okay.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Chess looked at the kid and kept on driving. Because she'd been in his place before, had the kinds of nights he was just now waking up from. He looked so mad at himself, so not interested in what was happening outside his head."
+    },
+    {
+      "t": "narrate",
+      "text": "Chess thought about how old people looked, their eyes totally eating up everything, so interested in what was out there, like they were tired of who they were, but in a good way. Kids like her and him just had to keep moving, because because because they had no reason to stop."
+    },
+    {
+      "t": "narrate",
+      "text": "She needed coffee and caffeine however she could get it. She had to get to sleep in a couple hours so she could be up by nine pm and exhaustion was the only thing that did her in for sleep. Chess couldn't bring herself to stop the nightlife, couldn't get back on a real schedule like the rest of them."
+    },
+    {
+      "t": "narrate",
+      "text": "When she was up all night and the sun popped up and morning was here, her mind told her no, her body told her yes, because natural cycles fucked everything up. The music and energy that drove her, drove her to the ground, where she slept on a mattress in a small single room apartment."
+    },
+    {
+      "t": "narrate",
+      "text": "She had a futon for visitors, which could uncomfortably fit two in certain situations. She had a small black and white television, not because she couldn't afford color, but because she liked the artificial noir."
+    },
+    {
+      "t": "narrate",
+      "text": "In front of the curtained picture window was a pretty swell stereo system she built herself piece by piece after graduation. Her music collection shrunk to tiny since she went digital. She kept everything on CD and inside her on computer."
+    },
+    {
+      "t": "narrate",
+      "text": "She had several external computer hard drives she kept in a stack, which she'd pop in and out of her Mac as she saw fit to update her collection."
+    },
+    {
+      "t": "narrate",
+      "text": "She did her composing on a Yamaha keyboard which also plugged into the Mac, allowing her to compose in silence with her headphones on, because she had neighbors who didn't keep the same hours as her. She kept to herself here when she wasn't at work, because work was all about other people, other people's music."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_chess_apartment_morning.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Chess took the kid to her apartment because she only lived three miles from the Saga and she didn't feel like wasting her whole morning on his account."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "I gotta phone, should you feel so inclined to make a phone call to somebody, anybody."
+    },
+    {
+      "t": "narrate",
+      "text": "Chess motioned for the boy to follow her into the elevator, which he did at his own pace. He kept turned away from her. \"That nose of yours is something. Looks like a spoiled fruit.\""
+    },
+    {
+      "t": "narrate",
+      "text": "His bottom lip pursed but he said nothing."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Got a name, yeah, you got a name. Maybe you'd like to share it?"
+    },
+    {
+      "t": "say",
+      "char": "Norm",
+      "expr": "neutral",
+      "text": "Norm."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Like normal. Cool."
+    },
+    {
+      "t": "say",
+      "char": "Norm",
+      "expr": "neutral",
+      "text": "Norman Todd. Most people just call me Norm. Or Todd. Because Norman was that guy in Psycho. Norman Bates."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "wait for the doors",
+          "goto": 26
+        },
+        {
+          "text": "step out",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The elevator hums and settles, slow as an old man."
+    },
+    {
+      "t": "narrate",
+      "text": "The elevator opened and Norman Todd followed Chess out into hallway, where an elderly man was walking their way with a garden trough in his hand."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Morning Earl."
+    },
+    {
+      "t": "narrate",
+      "text": "The old man didn't say anything, but his face brightened with the look of extreme pleasure and satisfaction, his smile so much a smile as to split the skin along his lips and his eyes. Chess kept walking and Norman Todd kept following, moving closer to her with each step."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_what_sort_of",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

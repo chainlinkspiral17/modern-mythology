@@ -1,0 +1,177 @@
+{
+  "id": "vol3_ch6_stacks",
+  "vol": 3,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vi. stacks",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_plane_cabin_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "vi. stacks",
+      "sub": "transmission · flight number one",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Literature is exhaustion, the literature of exhaustion."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy Link strains over notes in hardcover notebook. He double-checks reading list he forced on himself over a too long summer still not yet over with."
+    },
+    {
+      "t": "narrate",
+      "text": "He has read two books total that matter for something, the remainder of so many other words light summertime fun reading, crap mostly that rots in him and makes him feel inferior."
+    },
+    {
+      "t": "narrate",
+      "text": "He is anxious on flight number one, struggles to read something serious intelligent, pop his awareness and intellect front and center because he needs to be attuned. Modernism. An expression of crisis."
+    },
+    {
+      "t": "narrate",
+      "text": "Specifically the crisis of the word."
+    },
+    {
+      "t": "narrate",
+      "text": "He borrows far too liberally for stories of his own that he has not yet written, steals outright from those he idolizes, wordspiral to the center of his universe, black hole nebula. Language from the center of the universe proper, bang big."
+    },
+    {
+      "t": "narrate",
+      "text": "He traces patterns of illegibly written words with his finger, trying to absorb trace ink through skin, blind reading indented braille. This is the start of something."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy Link can't comprehend the big picture of what he sees. Words make no sense because the world gets in the way and he can't make that all go away. Words are small, the world is big, much too big."
+    },
+    {
+      "t": "narrate",
+      "text": "The plan is: He is going to surround himself with the freaks, the mad genius children of the future, the CalTech kindred souls he shares by association with his sister who are so alike and unlike himself he knows he'll want to flee their midst when the week is up and then never look back."
+    },
+    {
+      "t": "narrate",
+      "text": "He has never met these people and assumes they will be just like him in some distorted mirrored fun house way. And here he is, hours away from priming and pumping them for story ideas, steal their lives and birth them on a later page."
+    },
+    {
+      "t": "narrate",
+      "text": "Step one, he will give them a tiny faint impression of Andy Link, the brokenhearted drifter and then leave them hanging for more. He fully expects to dominate their lives to write the story that unfolds that he helped to create and make their existence his own during the flicker of time they share together."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks his sister doesn't know this about him, this schemer dreamer, not the shy boy she sees at holidays, the boy she looked up to from infancy, older brother, swell and seldom cruel, always generous with his small circle of friends and borrowed intellectual pleasures."
+    },
+    {
+      "t": "narrate",
+      "text": "They growed up geeks, wordnerds, their common shared language, half-formed shorthand, star wars final fantasy x-men transformer ninja turtle free nerd association six am before school cartoons three pm after school electric teat babysitter among friends all sitting on the floor front and center,"
+    },
+    {
+      "t": "narrate",
+      "text": "evening readings passed back and forth worn beyond crumbling copies of sci-fi fantasy novels (and good fictional readings of the non-genre variety as well) handmedowns from fatherfigure."
+    },
+    {
+      "t": "narrate",
+      "text": "Something happened to Andy. He must not let himself forget this."
+    },
+    {
+      "t": "narrate",
+      "text": "He forgets this and it's like waking up from a dream."
+    },
+    {
+      "t": "narrate",
+      "text": "He shakes his head to knock away disorientation."
+    },
+    {
+      "t": "narrate",
+      "text": "How he orients himself now. Wake up and say, repeat after me. Deal."
+    },
+    {
+      "t": "narrate",
+      "text": "Let's start with Andy losing his soul and his conscience, the voice in his head that tells him how to be a quality human being. He wants to hate something big. He wants to cry but he's sick of that."
+    },
+    {
+      "t": "narrate",
+      "text": "The rage has simmered down to a general loathing of self. He blames himself for all the lost transmissions all the words he never entrusted to father and now the chance is gone and he's left with so many possibly maybes."
+    },
+    {
+      "t": "narrate",
+      "text": "That's what life is now, fractured parallel universe existence in which he imagines all the ways Dad might have survived to see another day, to share his words once more."
+    },
+    {
+      "t": "narrate",
+      "text": "The loss of the transcendent universe, another note he makes skimming close to the page distracted."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Underline it.",
+          "goto": 29
+        },
+        {
+          "text": "Turn the page.",
+          "goto": 30
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The pen bears down and the ink goes through to the next page."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy has resolved to be a right bastard, a real prick, but only when the time comes to maximize his inner asshole efficiently. He'll be a nice guy up until a point then he'll turn on them."
+    },
+    {
+      "t": "narrate",
+      "text": "He'll be selfish, take what he wants when he wants, goddamn the consequences, make a break for the dark side, because Luke has no father. He thinks this is possible now, yes, that he is capable of such treachery. Caltech will be the testing ground for the new improved Andy, the Andy who will set the world on fire."
+    },
+    {
+      "t": "narrate",
+      "text": "He always so nice, though."
+    },
+    {
+      "t": "narrate",
+      "text": "He made a list of the places he's been and the people he's known. Texas full of new friends, a few old ones thrown in to ease the transition. Oregon basically dead to him."
+    },
+    {
+      "t": "narrate",
+      "text": "Caltech is California, it's the west coast, the place he sprung from life, so full of life, full of crazy ember dying horizon light bathing the world in orange and red and pink as the sun permanently and repeatedly inches underwater for the night."
+    },
+    {
+      "t": "narrate",
+      "text": "It is the place of his mother and father, his sister too, all of them, sprung forth."
+    },
+    {
+      "t": "narrate",
+      "text": "The Death of God."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch6_stacks_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch6_dabney"
+    }
+  ]
+}

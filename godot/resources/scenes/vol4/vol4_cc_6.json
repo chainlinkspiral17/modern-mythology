@@ -1,0 +1,137 @@
+{
+  "id": "vol4_cc_6",
+  "vol": 4,
+  "chapter": 5,
+  "type": "interlude",
+  "title": "Charlie & Caroline — A Waif Amid Forces",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_sister_carrie_notes.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Sister Carrie",
+      "sub": "notes · a waif amid forces",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "A passage from Sister Carrie near the beginning, most important. Granted, my take on this will be very similar, but very different. It's a very modern book, despite the era in which it takes place."
+    },
+    {
+      "t": "narrate",
+      "text": "first chapter, subtitled, a waif amid forces."
+    },
+    {
+      "t": "narrate",
+      "text": "\"When a girl leaves her home at eighteen, she does one of two things. Either she falls into saving hands and becomes better, or she rapidly assumes the cosmopolitan standard of virtue and becomes worse. Of an intermediate balance, under the circumstances, there is no possibility."
+    },
+    {
+      "t": "narrate",
+      "text": "\"The city has its cunning wiles, no less than the infinitely smaller and more human tempter. There are large forces which allure with all the soulfulness of expression possible in the most cultured human. The gleam of a thousand lights is often as effective as the persuasive light in a wooing and fascinating eye."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Half the undoing of the unsophisticated and natural mind is accomplished by forces wholly superhuman. A blare of sound, a roar of life, a vast array of human hives, appeal to the astonished senses in equivocal terms."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Without a counsellor at hand to whisper cautious interpretations, what falsehoods may not these things breathe into the unguarded ear! Unrecognised for what they are, their beauty, like music, too often relaxes, then weakens, then perverts the simpler human perceptions."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Caroline, or Sister Carrie, as she had been half affectionately termed by the family, was possessed of a mind rudimentary in its power of observation and analysis. Self-interest with her was high, but not strong. It was, nevertheless, her guiding characteristic."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Warm with the fancies of youth, pretty with the insipid prettiness of the formative period, possessed of a figure promising eventual shapeliness and an eye alight with certain native intelligence, she was a fair example of the middle American class--two generations removed from the emigrant."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Books were beyond her interest--knowledge a sealed book. In the intuitive graces she was still crude. She could scarcely toss her head gracefully."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Her hands were almost ineffectual. The feet, though small, were set flatly. And yet she was interested in her charms, quick to understand the keener pleasures of life, ambitious to gain in material things."
+    },
+    {
+      "t": "narrate",
+      "text": "\"A half-equipped little knight she was, venturing to reconnoitre the mysterious city and dreaming wild dreams of some vague, far-off supremacy, which should make it prey and subject--the proper penitent, grovelling at a woman's slipper.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The first meeting of Carrie and Charlie on the train heading into Chicago, in which he charms her within a moment. The amount of dialogue will be minimal. The emotions, gestures, and signals should do most of the talking."
+    },
+    {
+      "t": "narrate",
+      "text": "Working with framing, incidental detail, and visual evocation, ie lighting, staging, blocking."
+    },
+    {
+      "t": "narrate",
+      "text": "\"How true it is that words are but the vague shadows of the volumes we mean. Little audible links, they are, chaining together great inaudible feelings and purposes. Here were these two, bandying little phrases, drawing purses, looking at cards, and both unconscious of how inarticulate all their real feelings were."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Neither was wise enough to be sure of the working of the mind of the other. He could not tell how his luring succeeded. She could not realise that she was drifting, until he secured her address."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Now she felt that she had yielded something--he, that he had gained a victory. Already they felt that they were somehow associated. Already he took control in directing the conversation."
+    },
+    {
+      "t": "narrate",
+      "text": "\"His words were easy. Her manner was relaxed.\""
+    },
+    {
+      "t": "narrate",
+      "text": "In the beginning, we have to feel her unease of the men coming up to her, winning 'these small victories'... and her alienation with her new surroundings. She's not in her skin yet."
+    },
+    {
+      "t": "narrate",
+      "text": "She's not a tourist, but rather, a new tenant to the city of which she knows little about, has little contact to."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Carrie realised the change of affectional atmosphere at once. Amid all the maze, uproar, and novelty she felt cold reality taking her by the hand. No world of light and merriment. No round of amusement. Her sister carried with her most of the grimness of shift and toil.\""
+    },
+    {
+      "t": "narrate",
+      "text": "In the beginning, I want Carrie to be naked. The men who will project so much of their desires and wants on her, will first encounter her as such. She is most herself at the beginning and end, away from the perspective of the suitors."
+    },
+    {
+      "t": "narrate",
+      "text": "It is in the two bookend scenes where we see how much she has changed and how very much the same she has remained the same."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_cc_6_complete",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_cc",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

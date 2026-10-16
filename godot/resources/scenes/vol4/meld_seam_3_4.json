@@ -1,0 +1,128 @@
+{
+  "id": "meld_seam_3_4",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "letters to myself",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_sleep_lab.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_hospital_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "lights out",
+      "sub": "the sleep lab · the desk · 2003 · 2006",
+      "duration": 2200
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "warm",
+      "text": "Just get comfortable. Let yourself go. We'll be here to catch you."
+    },
+    {
+      "t": "narrate",
+      "text": "The machinery under the curtain looks simple but expensive. It hums. It's the hum of the air conditioning unit in Dad's room, the one Andy fell asleep beside on the floor, the constant mechanical breeze."
+    },
+    {
+      "t": "narrate",
+      "text": "One-way vector of linear time. What comes next. The rest of her notepad is upside down and he can't make it out."
+    },
+    {
+      "t": "narrate",
+      "text": "He lies down. He doesn't get up to pee. He lets himself go, like she said."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_office_copier.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "toner",
+      "sub": "copy shop · 4 a.m. · the sleep lab · somewhere",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "four in the morning at the copy shop. the light goes back and forth under the lid, a dirty pink, and the pages come out warm."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_copier_pink_bar.jpg",
+      "caption": "the scan bar, pink"
+    },
+    {
+      "t": "narrate",
+      "text": "issue six. i keep pulling pages off the tray and reading them like somebody else wrote them."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the desk",
+      "sub": "the desk · night · everything that didn't fit",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "home. the desk drawer sticks, then gives."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_drawer_relics.jpg",
+      "caption": "a newspaper, a novel, a toy soldier"
+    },
+    {
+      "t": "narrate",
+      "text": "in there, for no good reason, a newspaper, a novel, and a toy soldier. i think i can find my way back."
+    },
+    {
+      "t": "narrate",
+      "text": "and letters. letters to myself, my unborn family."
+    },
+    {
+      "t": "narrate",
+      "text": "crackle and static tug at my ears.\ni'm alone in my room.\ntonight i actually feel it."
+    },
+    {
+      "t": "narrate",
+      "text": "i write here in hopes that i can jar a thought or three free."
+    },
+    {
+      "t": "flag",
+      "key": "meld_seam_3_4_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

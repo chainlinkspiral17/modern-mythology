@@ -1,0 +1,113 @@
+{
+  "id": "vol4_drawer_iris",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Iris",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Iris",
+      "sub": "production bible · 2009–2010 · our initial offering",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Iris Williams - a 75 year old woman living in the desert with a strange collection of artists, visionaries, doomsayers, war protesters, and the ghosts of her past."
+    },
+    {
+      "t": "narrate",
+      "text": "Grace Knight - Iris's best friend and worst enemy, at various points in life. An artistic genius whose vision haunts and shades Iris's perspective."
+    },
+    {
+      "t": "narrate",
+      "text": "Gabriel Jansen - The love of Iris's life, father of Grace's daughter, a world traveler, soldier, entrepreneur, writer."
+    },
+    {
+      "t": "narrate",
+      "text": "Hope - Grace's grand-daughter, seven years old. Introverted, artistic, passionate, playful but casually cruel. Likes books, pictures, drawing, nature."
+    },
+    {
+      "t": "narrate",
+      "text": "Esther Knight - Daughter of Gabriel, kept her Mother's name. Dotes on about her father, sort of neglects her daughter. Wants to learn as much about her Dad as she can from Iris, as he has recently passed away."
+    },
+    {
+      "t": "narrate",
+      "text": "Cameron Stephenson - An old-fashioned inventor type, has a workshop. At seventy-seven, his mind is a whirling dervish of activity. His visions of the future, of science, technology, awe and wonder are the stuff of dreams and nightmares."
+    },
+    {
+      "t": "narrate",
+      "text": "The key crux of the story is this: The people that make up Iris world are themes and variations on her ideal lives she has lead, or might yet lead. They are all herself, had she made different choices."
+    },
+    {
+      "t": "narrate",
+      "text": "Her world is a strange shadow world of her own choosing, represented by the various threads of existence she eeks out in her associations."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris is a tabula rasa until the player forms her, through the interactions and connections she makes over the course of her last 30 minutes of her life."
+    },
+    {
+      "t": "narrate",
+      "text": "If she remains utterly passive and never leaves the room she will get a different ending as a player who explores their universe."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "the act one map",
+          "goto": 16
+        },
+        {
+          "text": "the tab for the Schulidner trailer",
+          "goto": 18
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The prologue is a three minute window before the nukes fly. In it, players will only have access to the interior of their trailer and can only look at what Iris tells the player to look at, speak to, or use what's been told to us."
+    },
+    {
+      "t": "narrate",
+      "text": "When Iris goes to finally look out the window, she sees the nukes and the game begins."
+    },
+    {
+      "t": "narrate",
+      "text": "THE SCHULIDNER TRAILER – Devin and Melody are having an argument. Iris can take Devin's side, which results in Devin's increasing paranoia and him versus the world mentality. If Iris takes Melody's, she works towards bettering both the father daughter bond."
+    },
+    {
+      "t": "narrate",
+      "text": "Devin collects old models and toys from when he was a kid in the forties, and loves the pulp sci-fi aesthetic. Melody has taken to painting under Iris's instruction and has a few simple and not so simple pieces she's working on."
+    },
+    {
+      "t": "narrate",
+      "text": "Orange Kitty Agent\nPhysical States: Tired, Hungry, Awake, Asleep, At Rest, Eating, Grooming, Lounging.\nEmotional States: Excited, Angry, Happy, Intrigued, Confused, Agitated, Playful, Dreaming, Deep Sleep, Focused, Distracted, Alert."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_iris",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

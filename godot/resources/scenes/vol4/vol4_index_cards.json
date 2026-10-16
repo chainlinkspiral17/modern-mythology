@@ -1,0 +1,100 @@
+{
+  "id": "vol4_index_cards",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "index cards",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "index cards",
+      "sub": "rubber-banded · 2010–2013",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "may day\n\nfingers possessed wicked smile splitting my fat face\nsee how these teeth of mine shine\nfangs buried deep in pink gums jaw locked tight\npieces of me crack snap pop old bones finding new foundation"
+    },
+    {
+      "t": "narrate",
+      "text": "flesh worried tight and anxious coiled in on itself\nreptile hunger cold and waiting to strike\nfeel those swallowed whole brushing past displaced rib and spine\ninsect sense turned ultraviolet the sparkle of seed a sticky dust of life."
+    },
+    {
+      "t": "narrate",
+      "text": "The tensile pull at the back of my neck feels like pulling on a pair of leather boots that are a size too small. Tiny bones shift and pop, tissue sponges and releases."
+    },
+    {
+      "t": "narrate",
+      "text": "Winter Cactus.\n\nA blind old cat calls out in early mid night.\nFingers peel back from grungied keys,\nSnuck back away from a world away."
+    },
+    {
+      "t": "narrate",
+      "text": "Fumbling over words, turned kept.\nHalf thought unfocused eternally dismissive."
+    },
+    {
+      "t": "narrate",
+      "text": "Cold to the bone unheated home underthing shiver.\nMovement scatters ambient chill, the peace of chattered calm.\nElse prickled in a blanket, collapsed remembrance braced."
+    },
+    {
+      "t": "narrate",
+      "text": "We walk through the house.\nLoud noises punctuate our missteps.\nSometimes I encourage her exploration with rides or pets on head.\nAnd whiskers prevent the majority of head on damage.\nTiny explosions pepper our outside and in."
+    },
+    {
+      "t": "narrate",
+      "text": "The litter box is a negative.\nToo late to eat again.\nHesitant to wander outside\nat this strange cold hour."
+    },
+    {
+      "t": "narrate",
+      "text": "I fluff the towel on her old chair\nAnd pet until head lays down again."
+    },
+    {
+      "t": "narrate",
+      "text": "Words come down to nothing. A transitional half-song of thought and human contact. We sing to ourselves, to our loved ones. Pay attention to the beat. That slow measure fever pitch of totality."
+    },
+    {
+      "t": "narrate",
+      "text": "Listen to the human song. Birds became our dinosaur avian angels. Their lizard kin the serpent wrapped around our necks. What do we become."
+    },
+    {
+      "t": "narrate",
+      "text": "“For the last year, I've written of inanimate objects & inanimate objects only. I've withheld the impulse to breathe life into these chunks of letter and word,"
+    },
+    {
+      "t": "narrate",
+      "text": "and going back to revisit long passages, I've furthered the study of these inarticulate and imaginary constructs, substance derived of only gentle repose, cast still life as full bodied word. In doing so, I've come to know the interior life of the void quite well.”"
+    },
+    {
+      "t": "narrate",
+      "text": "Dying for her was the easy part. Coming back, well, that was slightly harder."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_index_cards",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

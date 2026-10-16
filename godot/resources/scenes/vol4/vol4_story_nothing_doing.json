@@ -1,0 +1,110 @@
+{
+  "id": "vol4_story_nothing_doing",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "nothing doing",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bedroom_desk.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "nothing doing",
+      "sub": "a blog post · late",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "My mental landscape has been firmly rooted in between idling and productive. My mind is wandering, and I let it. It does feel good to roam without much of a care, without want for worry. Website is coming. Most of it is done. I just need to go back and really tighten the screws."
+    },
+    {
+      "t": "narrate",
+      "text": "I went live before feature complete, but oh well. I'm lazy that way. My justification is that life is a work in progress."
+    },
+    {
+      "t": "narrate",
+      "text": "I've been a little bit angry, a little bit complacent and a little bit lost in the world. Most of who I am is very happy to be here in this moment, living this life. There is a lot of wonderful potential for me there, out there. Mostly I just wonder. I have no dreams right now. None at all."
+    },
+    {
+      "t": "narrate",
+      "text": "When I sleep I get patterns and imagery but no clues. When I daydream I feel a great big void. At this time and place I lack the imagination to fill it in."
+    },
+    {
+      "t": "narrate",
+      "text": "My faint glimmer, the tiny musement, that little spark of inspiration is a shadow of the past, cast reflected, teasing. A picture locked in my mind's eye, set and too far gone, to be but a wish upon a star."
+    },
+    {
+      "t": "narrate",
+      "text": "To me, words are never wasted. But to most they are never heard."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "read that line again.",
+          "goto": 13
+        },
+        {
+          "text": "scroll on.",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "To me, words are never wasted. But to most they are never heard."
+    },
+    {
+      "t": "narrate",
+      "text": "The comment box under the post sits empty, cursor blinking."
+    },
+    {
+      "t": "narrate",
+      "text": "In one ear and out the other. As all the perspectives of the world give way to our own, when we are alone, what are we left with? You try and be strong, but few can live off the will of their will alone. We are raised by whatever family our fate-luck saw fit to bestow. We make the best."
+    },
+    {
+      "t": "narrate",
+      "text": "The pattern is made with age. Running the grain. To feel all the difference subtle and spoken."
+    },
+    {
+      "t": "narrate",
+      "text": "There is a time when I need to hear that voice, the one not in my head, the one that is not my conscience, my motherfatherother. That voice rings true, like all honest eyes in the night that sparkle just right."
+    },
+    {
+      "t": "narrate",
+      "text": "Away with this. Before I confuse myself further."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_nothing_doing",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

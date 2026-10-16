@@ -1,0 +1,191 @@
+{
+  "id": "vol2_ch7_scumm_c",
+  "vol": 2,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vii. SCUMM — Aud",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_missing_link_vga.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_scumm_adlib.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "march 14",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Aud."
+    },
+    {
+      "t": "narrate",
+      "text": "Missing Link is right where it's supposed to be and the light inside is the yellow of the inside of a pie. Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain."
+    },
+    {
+      "t": "narrate",
+      "text": "She's pouring coffee into a cup that's already full and it goes over the rim, down the counter, onto the floor, out the door, and it doesn't stop, the way the river behind our house doesn't stop."
+    },
+    {
+      "t": "narrate",
+      "text": "> TALK TO Aud\n1. Where is everybody?\n2. How do I leave?\n3. What is this place?"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "1. Where is everybody?",
+          "goto": 11
+        },
+        {
+          "text": "2. How do I leave?",
+          "goto": 19
+        },
+        {
+          "text": "3. What is this place?",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "Everybody's here, hon."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "amused",
+      "text": "Nobody leaves. That's the trouble with a good diner."
+    },
+    {
+      "t": "narrate",
+      "text": "When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "It's the one you're going to make,"
+    },
+    {
+      "t": "narrate",
+      "text": "she said."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "Pay at the register."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_c_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_d"
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "amused",
+      "text": "Nobody leaves. That's the trouble with a good diner."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "Everybody's here, hon."
+    },
+    {
+      "t": "narrate",
+      "text": "When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "It's the one you're going to make,"
+    },
+    {
+      "t": "narrate",
+      "text": "she said."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "Pay at the register."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_c_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_d"
+    },
+    {
+      "t": "narrate",
+      "text": "When I asked what this place was she put the pot down and looked out of the screen. Not at the boy. At me. At the bed in the rented house with my mouth open."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "It's the one you're going to make,"
+    },
+    {
+      "t": "narrate",
+      "text": "she said."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "Pay at the register."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "Everybody's here, hon."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "amused",
+      "text": "Nobody leaves. That's the trouble with a good diner."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_c_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_d"
+    }
+  ]
+}

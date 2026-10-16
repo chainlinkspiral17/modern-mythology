@@ -1,0 +1,71 @@
+{
+  "id": "vol4_drawer_menu",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "the bottom drawer",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "prospectus · 2010",
+          "scene": "vol4_drawer_prospectus"
+        },
+        {
+          "text": "a Dickens Dean story, typed",
+          "scene": "vol4_drawer_timber_grande"
+        },
+        {
+          "text": "production bible · Iris",
+          "scene": "vol4_drawer_iris"
+        },
+        {
+          "text": "film slate · Komodo Dawn",
+          "scene": "vol4_drawer_komodo_dawn"
+        },
+        {
+          "text": "GDD · retinal burn, with a carbon",
+          "scene": "vol4_drawer_retinal_burn"
+        },
+        {
+          "text": "GDD · Creche",
+          "scene": "vol4_drawer_creche"
+        },
+        {
+          "text": "world bible · Staturo",
+          "scene": "vol4_drawer_staturo"
+        },
+        {
+          "text": "pitch · Pantheon",
+          "scene": "vol4_drawer_pantheon"
+        },
+        {
+          "text": "rules · Harbinger, and a war deck",
+          "scene": "vol4_drawer_harbinger"
+        },
+        {
+          "text": "shut the drawer",
+          "scene": "vol4_hub"
+        }
+      ],
+      "prompt": "ONEIRONAUTICS INC. — hanging files"
+    }
+  ]
+}

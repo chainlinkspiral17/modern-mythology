@@ -1,0 +1,129 @@
+{
+  "id": "meld_kaleidoscope_g",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — one image",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_overcast.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_beach_wind.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "—",
+      "sub": "four in the morning · low tide · everywhere at once",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "The pieces stop sliding."
+    },
+    {
+      "t": "narrate",
+      "text": "They settle one onto the next, the way silt settles when a river finally lets go of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Low tide. The flats all the way out, shining."
+    },
+    {
+      "t": "narrate",
+      "text": "Out on the flats, a desk, its legs down in the wet sand."
+    },
+    {
+      "t": "narrate",
+      "text": "A lamp on it, still on."
+    },
+    {
+      "t": "narrate",
+      "text": "A cup of coffee full to the rim."
+    },
+    {
+      "t": "narrate",
+      "text": "A notebook, wide-ruled, open, a heron feather keeping the place."
+    },
+    {
+      "t": "narrate",
+      "text": "The chair pushed back, like somebody just got up."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_one_image.jpg",
+      "caption": "low tide, four in the morning"
+    },
+    {
+      "t": "narrate",
+      "text": "No hum. No copier. Just wind off the water."
+    },
+    {
+      "t": "narrate",
+      "text": "Out where the water starts the crab stands with one leg lifted."
+    },
+    {
+      "t": "narrate",
+      "text": "Up the beach past the cannery somebody taps a horn, twice. Then dogs on a hill, going all night."
+    },
+    {
+      "t": "narrate",
+      "text": "At the edge of the lamplight something small and yellow goes by. Then it's dark there again."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "A moment ago I was debating whether or not to begin."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "-To be."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "Everybody's here, hon."
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "warm",
+      "text": "We'll be here to catch you."
+    },
+    {
+      "t": "narrate",
+      "text": "The lamp stays on over the open notebook."
+    },
+    {
+      "t": "narrate",
+      "text": "If it is 4am\nthen I am awake."
+    },
+    {
+      "t": "flag",
+      "key": "meld_kaleidoscope_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_curtain_call"
+    }
+  ]
+}

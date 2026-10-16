@@ -65,13 +65,38 @@ python3 tools/voice_manifest.py vol5_ch0_* --format csv > vol5_ch0.csv
 # Spoken lines only, skip narration
 python3 tools/voice_manifest.py vol5_ch0_* --kind say think
 
-# Whole volume
-python3 tools/voice_manifest.py --vol 5 --format csv > vol5_all.csv
+# Whole volume, in index.json play order (best for a session)
+python3 tools/voice_manifest.py --vol 1 --format csv > vol1_all.csv
+
+# Meld scenes / the Vol 5 prelude (incl. Whispers from the Liminal)
+python3 tools/voice_manifest.py 'meld_*'
+python3 tools/voice_manifest.py 'vol5_prelude_arcana_*'
+
+# Per-volume coverage: lines, wired, audio on disk, uncast characters
+python3 tools/voice_manifest.py --coverage
 ```
 
-CSV columns: `scene_id, node_index, kind, char, file, text`. The
-`file` column is the exact relative path the engine will look up.
-`char` is `_narrator` for narration nodes.
+Every `resources/scenes/vol*/*.json` with `id` + `nodes` counts as a
+scene, so `meld_*` files are included. CSV columns: `scene_id,
+node_index, kind, char, file, text, voice_key`. The `file` column is the
+exact relative path the engine will look up; `voice_key` is the
+`voice_map.json` key the line resolves to.
+
+**Character keys.** Names are normalised the same way everywhere
+(`tools/voice_common.py` `char_key()` = `voice_studio.html` `charKey()`):
+lowercase, `(...)` suffix stripped, apostrophes dropped, other
+punctuation → `_`. So `Dickens Dean` → `dickens_dean`,
+`Olivia (alternate)` → `olivia`, `The Frog`/`the_frog` → `the_frog`.
+Then `voice_map.json` applies `scene_aliases` (per-scene, e.g. the
+vol1 dream "Woman" is Joan), `aliases`, and `_walkons` (shared generic
+voices for one-liners). Multi-speaker lines (`Faust, Jacob, Wagner`) →
+`_chorus`, which falls back to the first named speaker with a voice.
+
+**Narrators.** Narration (and char-less `think` lines) resolves to
+`_narrator_vol{N}` from the scene's `vol` field, or
+`_narrator_whispers` for `vol5_prelude_arcana_ep*`. Lookup falls back
+`_narrator_vol{N}` → `_narrator`; `_narrator_vol5` is an alias of
+`_narrator`.
 
 **2a. Record yourself.** Drop files into the matching paths. Anything
 Godot can import works — `.ogg` is smoothest.
@@ -81,11 +106,13 @@ Godot can import works — `.ogg` is smoothest.
 ```bash
 export ELEVENLABS_API_KEY=sk_...                          # one-time
 
-# Map characters to voice IDs (one-time)
+# Map characters to voice IDs (one-time). Each entry has a "casting"
+# brief to cast from.
 $EDITOR tools/voice_map.json
 
-# Dry-run to preview cost / coverage. No API calls.
-python3 tools/elevenlabs_render.py vol5_ch0_booth6 --dry-run
+# Dry-run: no API key, no ffmpeg, no network. Shows each line's voice
+# key and flags keys that still lack a voice_id.
+python3 tools/elevenlabs_render.py --vol 1 --dry-run
 
 # Render a small test batch first
 python3 tools/elevenlabs_render.py vol5_ch0_booth6 --limit 3
@@ -104,8 +131,14 @@ The renderer reads `tools/voice_map.json` for the character → voice_id
 mapping, calls ElevenLabs TTS (model `eleven_v3` by default,
 configurable via `--model`), pipes PCM through local `ffmpeg` to
 produce `.ogg`, and saves at `assets/audio/voice/<scene_id>/NNN.ogg`.
-Skips lines whose target file already exists unless `--overwrite`.
-`_narrator` is used for every `narrate` node.
+Skips lines that already have audio (`.ogg`, `.mp3` or `.wav`) unless
+`--overwrite`. Narration uses the per-volume narrator described above;
+a character with no `voice_map.json` entry at all falls back to the
+narrator, but one with an empty `voice_id` is reported as missing.
+
+`tools/voice_studio.html` can **Import voice_map.json** (ElevenLabs
+panel) so the browser studio uses the same voice_ids, aliases and
+narrator rules.
 
 Requires the `ELEVENLABS_API_KEY` env var and `ffmpeg` on PATH.
 

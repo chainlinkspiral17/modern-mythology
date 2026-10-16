@@ -1,0 +1,519 @@
+{
+  "id": "vol3_ch11_acceptable_losses_c",
+  "vol": 3,
+  "chapter": 14,
+  "type": "chapter",
+  "title": "ix. acceptable losses",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_family_bathroom_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_texas_summer.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Middle of the night",
+      "sub": "The lake house · before dawn",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "I'm in the bathroom. It's the middle of the night or early in the morning. Goddamn shits."
+    },
+    {
+      "t": "narrate",
+      "text": "Wakes me up, makes me run to the goddamn bathroom because I have no control. I don't like this. I sit and wait to shit again."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't like this one bit."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_first_base.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I was guarding first base and some bastard last named Larry was keeping me company. He had a crew cut and he tried to spit on my shoe. I just smiled and held out my glove arm, waiting for Chris to throw the ball my way."
+    },
+    {
+      "t": "narrate",
+      "text": "Larry crept his way forward a few feet in a crab-squat, sideways. I tapped my glove to get Chris's attention. He didn't even look at me."
+    },
+    {
+      "t": "narrate",
+      "text": "Larry grinned and tested his luck by extending himself ever more towards second base."
+    },
+    {
+      "t": "narrate",
+      "text": "Ain't getting nowhere, I said real quiet, so he could hear me and ump couldn't."
+    },
+    {
+      "t": "narrate",
+      "text": "Eat shit, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd love to, I said. Long as you keep it real warm and juicy for me."
+    },
+    {
+      "t": "narrate",
+      "text": "Fuck you, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I just smiled and jerked my hand out real fast. Sucker. Last name Larry looked back at Chris and then jumped back to the plate expecting the worst."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris looked over at me and smiled. Larry coughed down from his cloud of dust and stood, his uniform a whole lot dirtier."
+    },
+    {
+      "t": "narrate",
+      "text": "That's gotta be embarrassing, I said. Bet your family saw that."
+    },
+    {
+      "t": "narrate",
+      "text": "Shut up, he said, shaking the dirt out of his jersey."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_lake_dock_dawn.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Morning",
+      "sub": "The dock · sunrise",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Morning comes quick enough. I wake up at sunrise and wander into the kitchen, Chris still asleep in the bedroom. I go to the cupboard and grab cereal and eat it dry."
+    },
+    {
+      "t": "narrate",
+      "text": "I sit at a table with my box of granola watching the sun crawl over the horizon. Terry is outside the window fishing off the dock in his shorts. I take the cereal under my arm and open the sliding glass door."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry hears me and turns around raising his free hand in the air in a half-salute."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Good morning,\" I say. \"You actually catch shit out here this early?\""
+    },
+    {
+      "t": "narrate",
+      "text": "He shakes his head and laughs. I see tiny insects buzzing above the water and I can still smell dew in the air. \"You fish much?\""
+    },
+    {
+      "t": "narrate",
+      "text": "he says."
+    },
+    {
+      "t": "narrate",
+      "text": "I shake my head and say, \"No,\" just in case he doesn't see me."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You're dad's a real sportsman. I'm surprised he doesn't take you out more.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"He lets me do my own thing. Don't like to fish,\" I say."
+    },
+    {
+      "t": "narrate",
+      "text": "\"He does.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yeah, I go sometimes but he knows I don't enjoy it all that much,\" I say."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry finishes reeling the line in and pulls the hook onto a ring, bending the rod in a bow. He looks at me, \"You playing in the soccer club this year?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I give him a funny look, \"Haven't thought about it. Soccer's not my thing.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yeah,\" he says, \"You're not the fastest. But you're smart and quick on your feet, we could use someone like you.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I shake my head, \"I don't like soccer,\" I say, \"Thanks, though.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He frowns and the look on his face says he ain't done with me yet, \"Chris isn't playing this year. We need someone good in our club.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Something sounds wrong, \"Chris ain't playing? I thought soccer was his favorite.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"It is. Soccer is his favorite,\" he says."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris loves soccer. Everyone knows this. Chris not playing soccer is like Chris not existing."
+    },
+    {
+      "t": "narrate",
+      "text": "\"He won't play for me anymore.\" His frown goes deeper. \"It's too expensive to let him play in someone else's club."
+    },
+    {
+      "t": "narrate",
+      "text": "Especially when I can get him in ours for practically nothing.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"So you won't let him play soccer at all?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I won't let him play in anyone else's club,\" he says."
+    },
+    {
+      "t": "narrate",
+      "text": "I shake my head, thinking how wrong this is. He must see this look on my face."
+    },
+    {
+      "t": "narrate",
+      "text": "\"It just doesn't look good. I try hard, I do,\" he says, \"I've built this club up with Chris since he was in kindergarten and now he won't play for me anymore.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I keep shaking my head. \"Why not?\" I say, \"Why won't he play for you?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Terry just looks at me with a strange little smile like he's never really thought it over. His face looks like it's about ready to say something important then that look is gone and he smiles a big, friendly Coach Terry smile. \"Kids will be kids,\" he says."
+    },
+    {
+      "t": "narrate",
+      "text": "No. My gut begins to hurt real bad. No."
+    },
+    {
+      "t": "narrate",
+      "text": "\"We could really use you, we're still one hell of a team, even without Chris.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I shake my head. He looks upset. \"I could teach you, in my spare time.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I shake my head harder. \"I can give you a deal. I'd throw in uniforms for free and we can carpool, that'll cut down the price.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I look at him, the pain in my gut is coming back. \"I was talking to your dad, he seemed to be cool with it, he said he'd even help coach if you really wanted to do it.\" I lower my head, rumbling deep down inside."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You'd be helping me out. And the team.\" I just want him to shut up, to stop talking."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Soccer is a great opportunity, it'll keep you fit in the off-season and there's a chance of scholarships.\" No. No."
+    },
+    {
+      "t": "narrate",
+      "text": "\"It's a great team, with you on it, we'd be unstoppable.\" He stops talking. I look up."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Soccer's not my thing,\" I say. He just nods and nods, not really hearing what I just said. \"Sorry, it's just not my thing.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He looks pissed for a second then he looks perfectly cool. \"Yeah, well. It's just a game, right?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I nod in agreement."
+    },
+    {
+      "t": "narrate",
+      "text": "I begin to walk away. \"Wait,\" he says, hurrying over. \"Wait just a minute.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I don't stop. I keep walking. He grabs my shoulder and spins me around, \"You're dad wanted you to do it, he thought it'd be good,\" he says, \"Your dad and I were talking, and we thought it'd be real good.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I look at his hand on my arm."
+    },
+    {
+      "t": "narrate",
+      "text": "It burns he's holding it so tight. \"Let go Coach,\" I say. He looks down and I can feel his hand easing up."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Let go,\" I say and he does."
+    },
+    {
+      "t": "narrate",
+      "text": "I see him nod and scratch his chin. Standing there in his big red shorts with his sunburned shoulders, looking hurt and confused. I walk inside and lock myself in the bathroom."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_home_plate.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_club_pulse.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Chris was up to bat. Tears in his eyes but he was finished crying. His body tensed to a coil, wound up ready to explode."
+    },
+    {
+      "t": "narrate",
+      "text": "I watched from second behind the pitcher. I had the best seat in the house. I smiled, urging him on my head, trying to mentally vibe over good thoughts."
+    },
+    {
+      "t": "narrate",
+      "text": "Go man. Hit the fucking ball man. Knock that shit over the fence."
+    },
+    {
+      "t": "narrate",
+      "text": "Do it man. I rocked back and forth on my knees. Waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "Watching."
+    },
+    {
+      "t": "narrate",
+      "text": "There was chanting in the stands from both teams. Louder and louder. Longer and longer."
+    },
+    {
+      "t": "narrate",
+      "text": "I rocked back in forth to the rhythm of the game. Electricity shot through my body. I could feel it happen."
+    },
+    {
+      "t": "narrate",
+      "text": "The ball leaving the pitcher's hand in a blur. Fucking fast. Chris swinging."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps a little early. Beautiful swing. Bat and ball met somewhere in time and space."
+    },
+    {
+      "t": "narrate",
+      "text": "And then something rocketed over my head. A line-drive. Absolutely beautiful."
+    },
+    {
+      "t": "narrate",
+      "text": "It didn't reach the fences. Fuck. Fuck."
+    },
+    {
+      "t": "narrate",
+      "text": "I started kicking my feet forward in a sprint, pushing my arms down then pumping them up. Over and over. Faster and faster."
+    },
+    {
+      "t": "narrate",
+      "text": "I rounded third base and ran even harder. It's easy. Too easy."
+    },
+    {
+      "t": "narrate",
+      "text": "I could feel it. I was home free. I was safe."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere between third and home the catcher saw me coming and began twirling his free arm in the air to draw all attention to the situation at hand. I pushed him out of my way and stomped down on the plate."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_home_plate_collision.jpg",
+      "caption": "Ball hit glove. Chris hit catcher."
+    },
+    {
+      "t": "narrate",
+      "text": "I scored. My vision blurred over in joy. I felt him cover up the plate behind me."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad grabbed me to stop me from hitting the fence. People rushed over to meet me but then the ump stopped more from leaving the dugout. I was in someone's arms but then I was thrown away."
+    },
+    {
+      "t": "narrate",
+      "text": "I turned and I saw him. Chris was running and running. He was the fastest motherfucker on the planet."
+    },
+    {
+      "t": "narrate",
+      "text": "He was running. He cleared second. The centerfielder got his hand on the ball and started his run and throw."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris closes on third. The second baseman grabbed the ball out of the air. Chris was past third, running to home."
+    },
+    {
+      "t": "narrate",
+      "text": "Second baseman didn't stop moving, the ball left his hand, thrown to the catcher. The pitcher had to duck to avoid being hit. Chris was almost there."
+    },
+    {
+      "t": "narrate",
+      "text": "So fast. The moment you have to watch. The train wreck moment."
+    },
+    {
+      "t": "narrate",
+      "text": "Collision. Ball hit glove. Chris hit catcher."
+    },
+    {
+      "t": "narrate",
+      "text": "So hard. They fell across the ground, still sliding with Chris's shared momentum. The ump threw his thumb back over his head."
+    },
+    {
+      "t": "narrate",
+      "text": "Over and over. Out. Out."
+    },
+    {
+      "t": "narrate",
+      "text": "Out, he yelled. Everyone yelled. I yelled."
+    },
+    {
+      "t": "narrate",
+      "text": "I yelled."
+    },
+    {
+      "t": "narrate",
+      "text": "I was at the center of the noise. Confusion. The catcher tore his mask off, his face a vision of joy."
+    },
+    {
+      "t": "narrate",
+      "text": "Confusion. Chris looked pissed. He wasn't crying."
+    },
+    {
+      "t": "narrate",
+      "text": "He was pissed. Terry was pissed. The ump screamed."
+    },
+    {
+      "t": "narrate",
+      "text": "Tie game, tie game."
+    },
+    {
+      "t": "narrate",
+      "text": "Impossible. I shook my head, hearing the news."
+    },
+    {
+      "t": "narrate",
+      "text": "It was the final game. There is no such thing as a tie game. There can't be a tie game."
+    },
+    {
+      "t": "narrate",
+      "text": "There's only one trophy, somebody screamed. I scream. Everyone is pissed now, the air thick with hate."
+    },
+    {
+      "t": "narrate",
+      "text": "To the books, the ump said, get the scorekeeper's books. Each team pulled one out. Confusion trying to get them on the field."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry was screaming at Chris. Screaming at him because he wasn't fast enough. Because he didn't try hard enough."
+    },
+    {
+      "t": "narrate",
+      "text": "I screamed. The ump pulled the scorekeepers in close and huddled with them. They counted."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry pushed Chris into the fence, screaming, gesturing wildly. Screaming."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris looked down. Trembling."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone was quiet, waiting for the results."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad came up and hugged me. Great game, he said. Way to play, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I saw his smile. Chris fell to the dirt. He curled up to his knees."
+    },
+    {
+      "t": "narrate",
+      "text": "His face wet with tears. He thought he lost the game. He thought it was all his fault."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone was quiet. Terry left Chris in the dust. He sat over the umps shoulder, watching them count up something."
+    },
+    {
+      "t": "narrate",
+      "text": "His hands shot up in the air. He began jumping up and down. The ump cleared away the sound with his hand and yelled something."
+    },
+    {
+      "t": "narrate",
+      "text": "The noise. The unbelievable noise. We won."
+    },
+    {
+      "t": "narrate",
+      "text": "We won. Most runners on third base. We had the most runners on third base."
+    },
+    {
+      "t": "narrate",
+      "text": "We had the most by one and we won. Chris was the winning runner, Chris was the winning runner. Terry's face lit up with pure and total joy."
+    },
+    {
+      "t": "narrate",
+      "text": "He grabbed his broken son off the ground and pulled him into his arms. Chris would have none of it. Terry was screaming and crying with joy."
+    },
+    {
+      "t": "narrate",
+      "text": "Chris was screaming and crying. There was outrage. The other team, the other parents were in a state of fury."
+    },
+    {
+      "t": "narrate",
+      "text": "Another inning, they screamed. This isn't fair, they screamed. The umps tried to explain the rules."
+    },
+    {
+      "t": "narrate",
+      "text": "The parents, the coaches would have none of it. They screamed. Terry grabbed the trophy from the box one of the umps was carrying out onto the field."
+    },
+    {
+      "t": "narrate",
+      "text": "He pushed it on his son. Chris wouldn't touch it. Terry shoved it up in the air and motioned for the team to join him."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone rushed in, celebrating. Tonight, Terry screamed, Tonight we're gonna celebrate!"
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch11_acceptable_losses_c_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch12_uncle_nick"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "vol4_scrap_service_engine_soon",
+  "vol": 4,
+  "chapter": 2,
+  "type": "interlude",
+  "title": "service engine soon",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "service engine soon",
+      "sub": "scraps · thursday, january 19, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "i'm so unbelievably happy right now, but there is a puzzle piece missing.\ni say this here in abstract because if i say it out loud, to myself, i'll just give it form and that would probably break me. I've done it before, spoken my own curse, brought it down upon myself. And I hate doing it to others."
+    },
+    {
+      "t": "narrate",
+      "text": "When it comes to passion, when it comes to depth of feeling, i have this reserved front i continue to put up, yet it does me no good in the end."
+    },
+    {
+      "t": "narrate",
+      "text": "All i want to is do the selfish arrogant male thing and shout my heart out for the world, sometimes recklessly, but all that has given me is heartache and too much time and distance from those i adore."
+    },
+    {
+      "t": "narrate",
+      "text": "The games we play, the poker metaphor. The showing of the hand. See, here's how i normally am."
+    },
+    {
+      "t": "narrate",
+      "text": "I know I got a great hand, I'm terrible at bluffing, anyone can read me. But I got a great hand regardless, read into this how you will. But I know I'm a good person, that I have many outstanding qualities and virtues and blah de blah, that I can make people happy just by being myself."
+    },
+    {
+      "t": "narrate",
+      "text": "And I'm grinning because I know I got it good, on the inside and outside, I'm a happy camper. I live in that moment, of knowing myself and wanting to know other people, truly understand them, and accept them."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't ever want to put my cards down, I want to hold them back and smile and look across and not be judged on what I'm holding back."
+    },
+    {
+      "t": "narrate",
+      "text": "But that's not how people play that game."
+    },
+    {
+      "t": "narrate",
+      "text": "I wish I could communicate more of who I am without really giving away all the best surprises, I wish I could exist in the present to so many people who matter so much, but until I get better at opening up, truly learning how to communicate without alienating, saying stupid things however honest they may be, they end up hurting just as much."
+    },
+    {
+      "t": "narrate",
+      "text": "I shouldn't write right after running. I'm still a bit dizzy. And sweaty."
+    },
+    {
+      "t": "narrate",
+      "text": "Yuck."
+    },
+    {
+      "t": "narrate",
+      "text": "School is awesome. Life is awesome. Unsaids are awesome."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_service_engine_soon",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_scraps"
+    }
+  ]
+}

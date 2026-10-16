@@ -1,0 +1,190 @@
+{
+  "id": "vol4_story_jack_of_suede",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "jack of suede",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_jack_of_suede_stage.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "jack of suede",
+      "sub": "story · concert night",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Dressed all in black like an upstate concert goer. The sound of a Theremin off in the distance, humming and trilling, not shrill but pleasant like a bad 1950s mad scientist creature feature only turned into something romantic, desperate. Because music is important, that's why they're here."
+    },
+    {
+      "t": "narrate",
+      "text": "It's not a diversion, an escape into the throng of the masses. It's a retreat into their own tiny heads. Picture a stage draped in satin, sheets of satin, black and kind of shimmery, like a reflecting pool of black oil, slick."
+    },
+    {
+      "t": "narrate",
+      "text": "The theatrics are overwhelming, often stealing away from the focus. Her. Half naked, half interested in them."
+    },
+    {
+      "t": "narrate",
+      "text": "She's like the bead of light at the end of the magnifying glass. Burning them with her radiance, her indifference. She's not quite human."
+    },
+    {
+      "t": "narrate",
+      "text": "She sings and they all scream, wail, moan and faint. Whatever, she thinks. Like she hasn't seen this before."
+    },
+    {
+      "t": "narrate",
+      "text": "But she smiles and continues singing. So. Long."
+    },
+    {
+      "t": "narrate",
+      "text": "Farewell. She's working on a movie. She'll star in it."
+    },
+    {
+      "t": "narrate",
+      "text": "Produce it. But the idea's not hers. The script, please, she doesn't even write her own songs."
+    },
+    {
+      "t": "narrate",
+      "text": "She's pop. She's manufactured. An image to associate with an emotion and she knows it."
+    },
+    {
+      "t": "narrate",
+      "text": "The latest model off the assembly line. If you squint real hard you might be able to tell them apart. In a few years it'll be someone else's turn to shine."
+    },
+    {
+      "t": "narrate",
+      "text": "She's the only reason they're here but her story just might be the least interesting. Days spent in buses, airports, record stores, megamalls, rehearsal halls, hotel rooms, hotel conference rooms, lobbies, penthouses, saunas, bars. She's never alone, never turned off."
+    },
+    {
+      "t": "narrate",
+      "text": "She's a machine of human process, human desire. Without them she can't function. Without them she's never truly alive."
+    },
+    {
+      "t": "narrate",
+      "text": "Without him, she'd be nothing. He's old, fat and unattractive. He has more secrets, more dirty little secrets than even he can stomach."
+    },
+    {
+      "t": "narrate",
+      "text": "He's gotten blow jobs from children while their parents look on. He once let a thug cut the lips off a girl because she just wouldn't shut up. He doesn't report half of what he owes in taxes."
+    },
+    {
+      "t": "narrate",
+      "text": "He's a bad man. Jack was once a record executive. He worked for the RIAA."
+    },
+    {
+      "t": "narrate",
+      "text": "He made millions and millions of really easy to get money. He wrote contracts and pushed talent in and out of offices. He didn't even listen to the music, couldn't even stand it."
+    },
+    {
+      "t": "narrate",
+      "text": "He wears ear plugs for these concerts. Music is all about image to Jack. Music is all about the attitude, the charisma."
+    },
+    {
+      "t": "narrate",
+      "text": "Because really ugly fat chicks can sing like the very angels themselves but they can't get the thirteen year old boys or girls at home with the radio on and the genitalia between their fingers off. Because fantasies are all about attraction. About wanting someone."
+    },
+    {
+      "t": "narrate",
+      "text": "Wanting to be that someone. Live that lifestyle, wear that outfit, command those audiences. This was the power of Kings and Queens."
+    },
+    {
+      "t": "narrate",
+      "text": "What people raised nations over. And this was the new warfare, the new art of war. Jack would never be a figurehead but he could be the puppet dictator."
+    },
+    {
+      "t": "narrate",
+      "text": "Because true Kings and Queens were often children. Half retarded children stunted by parents who couldn't parent who thrust their young ones into the wilds to further themselves. Jack was a bad man but he wasn't a monster, not like these people who sell their young into slavery."
+    },
+    {
+      "t": "narrate",
+      "text": "Who live vicariously on the telly on the loo with the tabloid rag between their sweaty palms who can read all about their fictional selves in totally unauthorized biographies. Whose offspring defined their existence."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "listen for the theremin",
+          "goto": 29
+        },
+        {
+          "text": "watch Jack",
+          "goto": 30
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere past the satin, the theremin bends a note and lets it go."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack was in town on a hot tip. Here to make the claim, attend to the virgin sacrifice. Some girl in a junior high school had come out of nowhere."
+    },
+    {
+      "t": "narrate",
+      "text": "Auditioned for a musical variety show. One of the casting agents in his pocket got him out here first thing pronto. Jack had treated her folks to a nice dinner at some place noveau, limo, champagne, caviar, all that bullshit they expect."
+    },
+    {
+      "t": "narrate",
+      "text": "Because their baby's a star. An honest to goodness piece of heaven, piece of ass. Get them backstage, get their eyes wide as saucers, all this can be theirs."
+    },
+    {
+      "t": "narrate",
+      "text": "It's not a hard sell. It's not like it's their life savings. It's just their baby."
+    },
+    {
+      "t": "narrate",
+      "text": "She's practically an adult now anyway. She can make up her own mind. She's old enough and knows what's best, who are they to interfere with her dreams, her wishes."
+    },
+    {
+      "t": "narrate",
+      "text": "And she's 15. Jack sees kids half her age wanting twice as much as her. Their tiny little brains already forced into ambition."
+    },
+    {
+      "t": "narrate",
+      "text": "Molded into rock star movie star fashion primadonnas. Because this is the Cinderella society. Where you can be poor, dumb and ignorant, but if you're beautiful and you've got a bit of fairy dust, you can be Queen."
+    },
+    {
+      "t": "narrate",
+      "text": "The power of the people. Few can resist the call. It made Jack kind of want to believe in Fate."
+    },
+    {
+      "t": "narrate",
+      "text": "Watching promise fulfilled. Destiny itself could not resist this very temptation. Jack sipped bottled water, five bucks, stood back and watched the happy family unit, watched that brief flicker, it wasn't something he wished for, knewing what he knew."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_jack_of_suede",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

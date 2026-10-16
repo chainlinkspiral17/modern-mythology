@@ -1,0 +1,121 @@
+{
+  "id": "vol4_scrap_clean",
+  "vol": 4,
+  "chapter": 2,
+  "type": "interlude",
+  "title": "clean",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "clean",
+      "sub": "scraps · friday, april 28, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "okay, that shower feels good and deserved."
+    },
+    {
+      "t": "narrate",
+      "text": "i am sloppy when it comes to my thoughts. especially when i am really feeling it, emotionally. and i've really been feeling it emotionally this week."
+    },
+    {
+      "t": "narrate",
+      "text": "and sometimes i get lucky and when i'm really feeling it emotionally, clarity washes over me and words are mine to command. not so much this week, but hopefully soon."
+    },
+    {
+      "t": "narrate",
+      "text": "i guess i really don't understand how anything works, especially my own thought process. but i am very much loving life, learning much, and bringing joy to those who matter."
+    },
+    {
+      "t": "narrate",
+      "text": "i tend to come across as haphazard and random, but passionate, and lazy, but intense, and quiet... conflicted, over analytical andy link why can't he just deep breath sigh enjoy himself in this moment..."
+    },
+    {
+      "t": "narrate",
+      "text": "i really have a lot to do this weekend. for school, mostly, but work will occupy valuable evening time. i'd like to be chumming and slumming with friends, however."
+    },
+    {
+      "t": "narrate",
+      "text": "so i may lapse if friendly words of encouragement cross my lap."
+    },
+    {
+      "t": "narrate",
+      "text": "i am probably going to get started tonight on organizing my poetry portfolio for monday. i have a paper for mexican-american autobiography do as well that day. time is a wasting."
+    },
+    {
+      "t": "narrate",
+      "text": "at least i'll be all done with everything by thursday."
+    },
+    {
+      "t": "narrate",
+      "text": "i went to court yesterday to settle a traffic ticket and my missing in action insurance card. damn court fee was a hundred bucks. eh."
+    },
+    {
+      "t": "narrate",
+      "text": "now i just have to take defensive driving and all will be squared. i also made a fool out of myself to be sweet to a special pretty girl with flowers and candy. tulips and dark chocolate to be precise, which on a hot day, left in the car for not very long, both became soggy."
+    },
+    {
+      "t": "narrate",
+      "text": "seriously, i won't live this one down for awhile, i am dork."
+    },
+    {
+      "t": "narrate",
+      "text": "i got my new mcsweeneys in the mail yesterday. which was joy of joys, good words to digest at my own leisure. i am still discovering cool stuff in past issues."
+    },
+    {
+      "t": "narrate",
+      "text": "my appreciation of writers in general has grown immensely and i have much to do to ever make an impact such as any of these fine wordsmiths on the literary scene. but i am eager to try, and ready to fail but good."
+    },
+    {
+      "t": "narrate",
+      "text": "my camera is all repaired (or so the camera repair people say) and has been shipped back to me. i should get it early next week. i'm excited for 'all right' to come about how it may."
+    },
+    {
+      "t": "narrate",
+      "text": "may."
+    },
+    {
+      "t": "narrate",
+      "text": "almost here. wow. start of summer."
+    },
+    {
+      "t": "narrate",
+      "text": "i think this one will be good. despite me being bogged down in school and work. i will play and create much, i know it."
+    },
+    {
+      "t": "narrate",
+      "text": "my head is bursting with images and ideas i want to share with all the good peoples of the world who crave like i do."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_clean",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_scraps"
+    }
+  ]
+}

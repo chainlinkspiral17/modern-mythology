@@ -1,0 +1,268 @@
+{
+  "id": "vol2_ch5_lessons_in_leaves",
+  "vol": 2,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "v. lessons in leaves",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_sea_wall_bookstore.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "v. lessons in leaves",
+      "sub": "The sea wall · winter",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Many discoveries in life are made by wandering aimlessly and I owe it to chance that I discovered the Blue Heron by such an accident. I was taking a walk along the sea wall for my own peace of mind when I happened to look up and see a small, strange woman looking out at me."
+    },
+    {
+      "t": "narrate",
+      "text": "She was about four feet, twisted and broken looking, her forearms in stilts that lifted her, walking with her shoulders mostly, lilting to and fro."
+    },
+    {
+      "t": "narrate",
+      "text": "Her name was Frances, had red brown hair and bright blue eyes. Inside the store she nurtured her children, bookshelves, individually bought and so very different in shape and size, organized how she saw fit, owing to no one classification."
+    },
+    {
+      "t": "narrate",
+      "text": "She mothered over the place behind thick glasses, alternating kind and caustic, ordering people to have a seat, clean up their mess and keep asking questions."
+    },
+    {
+      "t": "narrate",
+      "text": "Frances kept the coffee station well stocked and had a large section of literary journals sent in from all over the world which I always flipped through and never bought. It was a reader's store and I was instantly at home in the place."
+    },
+    {
+      "t": "narrate",
+      "text": "Frances had lived in Small Wood all her life. I could not determine her age but she was roughly my mother's. She expected no pity or help running the store and was happily married to an unsuccessful water painter named Todd who I'd met and chatted with at the video store once or twice."
+    },
+    {
+      "t": "narrate",
+      "text": "One day, she produced a newsletter for me to read, titled \"Egretta\". In it was contained a list of books and articles written by other patrons of the store I had never met."
+    },
+    {
+      "t": "narrate",
+      "text": "Frances pointed out to me a date and a time written on the back and explained to me that this was the name of her reading club and that she wanted me to sit in on a meeting."
+    },
+    {
+      "t": "narrate",
+      "text": "Since football was done I had far more free time on my hands and I really had no reason or excuse but to reluctantly agreed to stop in and see what this was all about."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bookstore_back_lounge.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Egretta",
+      "sub": "The back room · Thursday evening",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Notes on the first meeting, a rundown of who is who and what was said;"
+    },
+    {
+      "t": "narrate",
+      "text": "Minutes of sorts, I arrived near seven-thirty in the Thursday evening. It was dark and cold and wet outside and I found the meager parking lot of the B.H. filled to capacity by an old blue Datsun, a violet Peugeot, a Plymouth minivan and a wide Buick."
+    },
+    {
+      "t": "narrate",
+      "text": "I parked in front of a neighbor's house and made my way to the front door which I discovered to be locked with a note stating thus: \"Come around back.\" I remembered the back entrance from my beach walk, mostly all windows and rediscover it as such."
+    },
+    {
+      "t": "narrate",
+      "text": "I peeked inside and saw nothing, nobody, but the door was open so I went inside. I heard voices coming from the store room which upon entering is not so much a store room as a very well furnished lounge and study area."
+    },
+    {
+      "t": "narrate",
+      "text": "The first person to break off conversation and notice me is Charles, a man going grey and ripe around the middle. He ushered me to a seat next to him which I helped myself to. He put a book in my lap, a very old leather-bound thing with fine leafing and stitch work."
+    },
+    {
+      "t": "narrate",
+      "text": "\"This was written by the founder of the Boy Scouts, Lilly picked it up last year at a neighbor's garage sale.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He pointed out the slightly worn exterior condition, the fine plate illustrations and historical quality of the material to be found inside. It impressed me but didn't really interest me. I smiled and nodded along with his evaluation."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Turn the pages of the old book.",
+          "goto": 25
+        },
+        {
+          "text": "Look around the room.",
+          "goto": 26
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The plates were browned at the edges, each one guarded by a thin sheet of tissue."
+    },
+    {
+      "t": "narrate",
+      "text": "A young woman poured me a cup of tea and introduced herself as Imogene. She wore a faded comic book lettered t-shirt featuring an ankh prominent, played with greasy black bangs and pushed at a flowing botik skirt that was opaque enough to not hide her legs."
+    },
+    {
+      "t": "narrate",
+      "text": "Frances was talking with a woman who looked to be in her mid-thirties, wearing a pantsuit and expensive jewelry. They laughed and touched shoulders, exchanged sly looks and shared history. When Charles wrapped up his profound insight, she would reach out a hand to me and say a name, \"Lily.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I asked a question which was, \"Are you two married?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Imogene shifted uncomfortably, Lily shook her head no and Charles said as much with a short series of dismissive coughs."
+    },
+    {
+      "t": "narrate",
+      "text": "Charles, thoughts, comments, errata on;"
+    },
+    {
+      "t": "narrate",
+      "text": "Charles came to Small Wood sometime after his second divorce. He almost went to jail for having an affair with a student which would end his teaching career."
+    },
+    {
+      "t": "narrate",
+      "text": "He published a novel when he was thirty, a counterculture sci-fi thing in which the main characters crossed into each other's lives deus ex machina, a breakdown in reality, one a drug user crashing down the fourth wall with the other, a programmer. The book was received with no real acclaim."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a generic rehash of most every plot out there, very much the sublime in cliche. But reading it, I took away three truths."
+    },
+    {
+      "t": "narrate",
+      "text": "Truth One: Charles was a firm believer. Give him an idea however half-baked and he'd gladly consider it. In fact moreover he'd try to have you believe it the longer he considered it."
+    },
+    {
+      "t": "narrate",
+      "text": "Truth Two: Charles would never allow himself to be wrong. The world was an infinite kaleidoscope according to him. Every word a reflection on the generous nature of our infinite realities."
+    },
+    {
+      "t": "narrate",
+      "text": "The way of the world was the fractal, the spiral staircase of logic and reason whereupon which nothing ever ended where every opportunity was the birth of something new and beautiful."
+    },
+    {
+      "t": "narrate",
+      "text": "Truth Three: Charles was absolutely certain he'd come to Small Wood for a reason. He knew at the bottom of all he held dear that he was here for a reason, that his role would be played here that the answers the universe may never impart were buried here."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_riverbed_dunes.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Which brings me to the story of the metal detector."
+    },
+    {
+      "t": "narrate",
+      "text": "Charles explained in great depth to whoever would listen, the absolute will of the universe. So much existed in this world to be discovered. Not merely the great and monumental like new planets, fuel sources, and philosophies of thought."
+    },
+    {
+      "t": "narrate",
+      "text": "More precisely what Charles was enamored with, the minutae, innerspace, microcosm. He turned inward, underneath, inside it all."
+    },
+    {
+      "t": "narrate",
+      "text": "Charles had charts in his house not of the large but the small. He didn't have a topographical map of Oregon so much as a corkboard tacked full of photos, clippings and post-it notes."
+    },
+    {
+      "t": "narrate",
+      "text": "A passion of his was scouring the coast with his metal detector, looking, not so much to find but as to connect with the same spirit of discovery as an olde world explorer, primitive mystic, baby child."
+    },
+    {
+      "t": "narrate",
+      "text": "Returning to the machine he held in his hands on these journeys into the under in-between. Radio Shack era make and manufacture. Charles knew everything about his machine."
+    },
+    {
+      "t": "narrate",
+      "text": "He studied how it worked, why it did what it did and knew how to repair it on occasion. I am not concerned with transmit coils, induction balance, signal discrimination, or pulse induction. He would explain in detail the reason for being and then go on to where these manufacture choices would lead him."
+    },
+    {
+      "t": "narrate",
+      "text": "The energy expenditure, the strength of the signal, all coming back to Charles at a particular point in time. He poured his faith into energy stored within battery cell, hoping to connect to the metallic resonance, some disturbance in sand or loose soil."
+    },
+    {
+      "t": "narrate",
+      "text": "The machine to man. The man to the earth. He poured his fingers into it, pulled away the strata of nature's design, what it chose to conceal for however length of time."
+    },
+    {
+      "t": "narrate",
+      "text": "What Charles found, what he had so desperately been searching for almost always slag metal, coins of indeterminate make and origin. The sand not preserving so much as stripping away humanity, returning buried treasure to the element it came from."
+    },
+    {
+      "t": "narrate",
+      "text": "This Charles found beautiful, this was never his disappointment. He delighted in the discovery, the foreplay, the act of stripping away the pretext, of touching this virgin aspect of the unknown."
+    },
+    {
+      "t": "narrate",
+      "text": "Charles never expected to find a whole vehicle buried in the sand. It was near a riverbed off the way of the roads and beaches. A 1969 Mercedes-Benz."
+    },
+    {
+      "t": "narrate",
+      "text": "Red, convertible top. Plates were not recovered with it and there were no serial numbers to speak of. Charles excavated the machine by himself over the course of a week he'd rented a bungalow nearby."
+    },
+    {
+      "t": "narrate",
+      "text": "The machine was in almost perfect working order. He gave it over to a mechanic, invested around two thousand into parts and labor."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_buried_mercedes.jpg",
+      "caption": "A 1969 Mercedes-Benz. Red, convertible top."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_diner_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He still had the car, he still persisted with his metal detector. He explained to me one evening at a diner over hot coffee."
+    },
+    {
+      "t": "say",
+      "char": "Charles",
+      "expr": "neutral",
+      "text": "The will of the thing. Either it wanted to be found, tired of staying dead and buried or in fact I wanted it so bad the universe up and gave it to me said here you go Charles you've suffered enough, have this."
+    },
+    {
+      "t": "say",
+      "char": "Charles",
+      "expr": "neutral",
+      "text": "It isn't some kind of lottery but you believe in this and through this I'll show you just how much you don't know. Look a bit closer, what do you see. Is that yourself or is it me?"
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch5_lessons_in_leaves_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch5_egretta"
+    }
+  ]
+}

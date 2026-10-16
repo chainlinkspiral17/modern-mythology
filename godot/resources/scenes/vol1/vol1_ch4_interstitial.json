@@ -1,0 +1,171 @@
+{
+  "id": "vol1_ch4_interstitial",
+  "vol": 1,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Act One — Kindred Souls",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_dream_bar.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Kindred Souls",
+      "sub": "The bar that was not there · Night",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Cutting to the quick of it — we're both protagonists. You've made several intuitive leaps already, but know that I am not opposed to you, and ourselves can all compliment each other quite nicely."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We can co-exist and rule this realm of collective consciousness with ease."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Both the main characters in our own life stories."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Correct. And this beautiful lady beside me is one as well."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "amused",
+      "text": "Joan. And hi again, drunk boy."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We come from different fictional worlds, of which you yourself are also a part. You feel that your life is special, because it is."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You are an exciting creation at an exciting point in time. You should be enjoying this moment."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "And he doesn't mean that just you are fictional. You are still an awesome, wholly rewarding creation in your own right."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "But you are a product of so much — the lineage of blood that brought you here, the shapes and constructs of society, both exalted and on its knees."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You are alive and you are special and you have to leave this place and come with us."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I follow along so far, but understand my narrative arc entirely in my own hands."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look down at the drawings.",
+          "goto": 19
+        },
+        {
+          "text": "Hold her gaze.",
+          "goto": 20
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "On the table, the pencil portraits of the two of them look back up at him."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "How far off path have you strayed in dreamtime wanderings? How deep have you gone down the well of self-discovery?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "What strange draughts have you concocted on your own to tear down the walls of your perception, the safety of your own mind and body?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You perceive on a different frequency, you see the unreality of things. You're becoming a superhero."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Gatsby and company has nothing on us. You share your sleep with kindred souls."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm here and in the mood to be a tourist, so show me the way. But I don't have long — need to get back to friends."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch4_interstitial_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch4_club_sharp"
+    }
+  ]
+}

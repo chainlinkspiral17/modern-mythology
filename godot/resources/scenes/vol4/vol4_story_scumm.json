@@ -1,0 +1,134 @@
+{
+  "id": "vol4_story_scumm",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "SCUMM",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_crt_adventure.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_chiptune_loop.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "SCUMM",
+      "sub": "a blog post · midnight addendum",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I think I'm out of the funk. Serious sleep and nostalgia overload last night may have cured me. I delved into some old graphic adventures and started on my own, aka chapter seven of small wood volumes. Yes. Really."
+    },
+    {
+      "t": "narrate",
+      "text": "There will be other stuff in the chapter as well, all that text stuff will stand alone and connect, but the main proper chapter will be best experienced in the self-contained graphic adventure you must download and play on your computer. It won't be terribly long but it will rock."
+    },
+    {
+      "t": "narrate",
+      "text": "I did the brainstorming and man, I can't wait to do the whole arty po-mo self-referential blender thing featuring my nostalgic youth of graphic adventure game playing, and some seriously messed up small wood stuff best represented just like this."
+    },
+    {
+      "t": "narrate",
+      "text": "The art I'm doing for it is some of my favorite as I've been painting and drawing all sorts of strange stuff in hopes of making it memorable, to say the least, and what's really cool is a bunch of you real world people will be characters in it."
+    },
+    {
+      "t": "narrate",
+      "text": "So if I ask to take pictures, have you give line readings, you know what for. So ha. Further proof I've gone insane, yes I think so. I'll post screen caps in a bit, when I get further along. It'll be a slow-going project, but worthy in a way that will be of no importance to anyone but a select few."
+    },
+    {
+      "t": "narrate",
+      "text": "Still, I hope that anybody who experiences small wood volumes plays through and gets something out of it. When I stop to think about it, I realize how much I'm putting into this multi-media monster known as small wood volumes and I'm just happy to be productive in so many different ways, each serving the same purpose."
+    },
+    {
+      "t": "narrate",
+      "text": "I dream of the day when a whole mess of stories, images, and other fragments are assembled into a cohesive whole and taken in as such. It is all self-indulgent nonsense but necessary therapy, I guess."
+    },
+    {
+      "t": "narrate",
+      "text": "some notes on graphic adventures and how I'll be using them, I'll addend these to chapter seven when i get there on that blog..."
+    },
+    {
+      "t": "narrate",
+      "text": "To me, the medium was very psychological. The presentation was that of a stage, with the fourth wall cut away. I will reference this aspect with a theater portion, where Dickens Dean, the player character, shows up on-stage in the middle of a production. How information is relayed in the medium is subtle."
+    },
+    {
+      "t": "narrate",
+      "text": "The very curious and insistent are rewarded with further and further insight. It encourages deep thought, reiteration and experimentation. Choices are always limited, puzzles sometimes carefully constructed, clever, but almost always according to an alien logic."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the screen caps.",
+          "goto": 17
+        },
+        {
+          "text": "read on.",
+          "goto": 19
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The art I'm doing for it is some of my favorite as I've been painting and drawing all sorts of strange stuff in hopes of making it memorable, to say the least."
+    },
+    {
+      "t": "narrate",
+      "text": "Sixteen colors on a curved monitor, a verb list along the bottom of the screen."
+    },
+    {
+      "t": "narrate",
+      "text": "The graphics are a timestamp of the era in which it was made. I will use this to show chronology. The pseudo-me PC will journey through a dream state small wood, pretty horrifying in its presentation. Doors will open to the past and he will emerge pixellated, 16 color, flat."
+    },
+    {
+      "t": "narrate",
+      "text": "I like how the past and childhood sequences will be primitive and archetypal in presentation. It reflects the whole nature of simple scribbles and broad strokes."
+    },
+    {
+      "t": "narrate",
+      "text": "Small Wood segments will be artsy mishmash collage of line art, photo, mixed media nonsense. The overall tone will be aesthetically beautiful and frightening."
+    },
+    {
+      "t": "narrate",
+      "text": "Flashes to the real world will be photoreal or stylized art work, depending on the situation."
+    },
+    {
+      "t": "narrate",
+      "text": "Playthrough, not exhausting exploration should run forty five minutes to an hour. I want to limit locations to around 25-30. Characters to half that. Puzzles, maybe one every five minutes, with two being semi-difficult. Inventory items will be limited to essentials and a few red herrings."
+    },
+    {
+      "t": "narrate",
+      "text": "midnight addendum: I worked on this quite a bit this evening, learning more of the basics and setting up the first section. It is a lot easier than I thought it would be. sleep tonight after I sketch out a few more sequences."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_scumm",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

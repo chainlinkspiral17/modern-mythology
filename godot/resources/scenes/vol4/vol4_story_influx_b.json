@@ -1,0 +1,236 @@
+{
+  "id": "vol4_story_influx_b",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "in/flux",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_school_hallway.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_classroom_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "in/flux",
+      "sub": "the hallway · between periods",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Between periods, the women gather together in pairs or threes near stairwells or traffic intersections, herding children with a laying on of hands and talking amongst themselves the whole time."
+    },
+    {
+      "t": "narrate",
+      "text": "-not handling the break-up well-"
+    },
+    {
+      "t": "narrate",
+      "text": "-Jack transferred to Kincaid-"
+    },
+    {
+      "t": "narrate",
+      "text": "-teaching choir now-"
+    },
+    {
+      "t": "narrate",
+      "text": "-he was the fun one-"
+    },
+    {
+      "t": "narrate",
+      "text": "-shame he's the one who had to leave-"
+    },
+    {
+      "t": "narrate",
+      "text": "He waves to the women, who stop talking for a moment to wave back, then continue on only nearer a whisper."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns and watches a boy who watches him. Colby, he's one of them. He looks down to shove a book in his bag, slams the plate metal door and rushes up a lonely flight of stairs."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "watch the boy who watches him.",
+          "goto": 15
+        },
+        {
+          "text": "go back to class.",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "He turns and watches a boy who watches him."
+    },
+    {
+      "t": "narrate",
+      "text": "A locker door hangs open, a sticker half scraped off its face."
+    },
+    {
+      "t": "narrate",
+      "text": "The rhythm of the hall gives way to a pulling out of the tide. Figures recede and hurry gamely to beelined destinations."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_classroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He returns to class which has seemingly started without him. Second period is his favorite. The smart kids who want to be here, who seem to give a damn. Their books are already opened up. Two of the boys are in here, they sit together and keep poking each other."
+    },
+    {
+      "t": "narrate",
+      "text": "Finding the verb that agrees with the subject."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Why David? This is what we've been doing the whole time. The subject is what. A noun or a pronoun. I know you guys know plural and subject. That's why I'm telling you, you gotta find the subject of the sentence first. Are we saying the employees are excellent. No, we're saying the safety record is excellent.\""
+    },
+    {
+      "t": "narrate",
+      "text": "One of them is a sullen boy with dark wet bangs across his tiny slit eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "\"The cloud of locusts approaches.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The other is Derrick the drama kid. Big kid, not fat, messy hair, always trying to be funny, never forcing it, wears a t-shirt says, \"Trust me, I'm Irish.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"If you talk during a quiz, what will I think you're doing?\""
+    },
+    {
+      "t": "narrate",
+      "text": "In a loud voice they all say at once, \"Cheating!\""
+    },
+    {
+      "t": "narrate",
+      "text": "He goes around the room, looking over shoulders, a word here or there, leaning in sometimes. They are hunched over pensive. A hand to a forehead, all grip. Statue of a raven, painted cheaply, looks down from above. Frequent eyes searching outward, scanning, frequent yawns."
+    },
+    {
+      "t": "narrate",
+      "text": "Girls playing with bangs, always playing with bangs. One girl fans herself with an index card. A rubber duck hangs from the ceiling like a mobile, words dangling off it, \"Drenched. Sailor. Texture.\" Elbow on the desk, hand in the hair, other hand resting on arm near the shoulder."
+    },
+    {
+      "t": "narrate",
+      "text": "While they take the quiz he checks the chart for participation. Some names already have three checks. This is why he loves this class. And then it is over and the rest of the day comes on suddenly."
+    },
+    {
+      "t": "narrate",
+      "text": "The bit with the hallway again. The women don't even care that he's nearby."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_school_hallway.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "-doesn't seem it does he-"
+    },
+    {
+      "t": "narrate",
+      "text": "-how can you tell-"
+    },
+    {
+      "t": "narrate",
+      "text": "-god, you're vain-"
+    },
+    {
+      "t": "narrate",
+      "text": "-of course he does-"
+    },
+    {
+      "t": "narrate",
+      "text": "-not that pretty, but attractive enough I suppose-"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_classroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He passes out a pink hand-out, titled \"Character Suitcase.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I want you to imagine you're Bilbo Baggins and you're going on a vacation to Mirkwood. What would you pack to take along with you. You're project is to make a suitcase for Bilbo to take with him on his trip. Memorabilia and mementos to decorate the outside of the suitcase.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"What's pervious mean?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Pervious. Previous. That's a typo.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Who is the main goblin guy?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Just call him the main goblin, okay?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tangible, intangible nouns. The kids make animal sounds, the momentum of the noisemaking builds. One kid sits back absently, playing with a pencil, flipping it into the air. He might possess the attention span of a gnat. The muddled language at the back of the class is a stupid annoyance. They keep disrupting."
+    },
+    {
+      "t": "narrate",
+      "text": "He decides he'll force the whole class to stay several minutes after class, to cut into their hallway recess time."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Can I put some pig meat in the suitcase?\" One kid is rubbing his stomach, imagining pig meat. Another is shredding little bits of paper which he litters the carpet like dandruff. Someone starts singing, they turn to look, he is singing the meow mix song."
+    },
+    {
+      "t": "narrate",
+      "text": "Another boy shouts out across the room a knowing, \"I'm a kitty cat!\""
+    },
+    {
+      "t": "narrate",
+      "text": "They all crack up at this. Some inside joke he does not get. One child leans threateningly over the desk of one of the girls, his face wide open like a monkey. He exhales, blows hard down on her desk and scatters her papers."
+    },
+    {
+      "t": "narrate",
+      "text": "\"In the book of life the answers aren't in the back. - Charlie Brown\""
+    },
+    {
+      "t": "narrate",
+      "text": "Kids run from the social studies teacher in the hall. He hears her talk to the Spanish teacher about the Vice-Principal touching a sixth grade girl accidentally inappropriately. He hears that one everywhere, the kids won't shut up about it. \"Stop touching each other and go to class,\" a shout from an unknown direction."
+    },
+    {
+      "t": "narrate",
+      "text": "He has a flower pen, at the top is an orange plastic flower. He keeps it raised up to his nose, tickling himself with it. 6th graders rush by. Going to lunch. Tiny little apes, bouncing off the walls, each other, so tiny."
+    },
+    {
+      "t": "narrate",
+      "text": "Teachers with their lunches in plastic grocery bags, ducking out of sight along unused halls, intent on rendezvous and momentary escape."
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_story_influx_c"
+    }
+  ]
+}

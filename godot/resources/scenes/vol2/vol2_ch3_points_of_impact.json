@@ -1,0 +1,285 @@
+{
+  "id": "vol2_ch3_points_of_impact",
+  "vol": 2,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "iii. points of impact",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_football_field_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "iii. points of impact",
+      "sub": "Small Wood · Friday night",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "I got very angry over the summer spent training for football, I had slimmed down, gained considerable muscle mass and worked up a healthy appetite of unchecked aggression. When I think back on football, I remember the mindset it put me in."
+    },
+    {
+      "t": "narrate",
+      "text": "When at first I was apprehensive and distant, tossing in witty asides and cracking wise, I was later borderline bloodthirsty and hair-trigger. I did not know my limits. I strained to push myself harder and further than I had ever known."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd run for miles, knowing no end to what I could actually accomplish. I'd gained my breath and got the beat down like it was a musical performance I knew intrinsically. I could go and go and sometimes it was all I did."
+    },
+    {
+      "t": "narrate",
+      "text": "I learned how alone and empty I was on the inside, I strained to fill that interior space of myself with connection, knowledge and beauty. To know myself, I'd push on into fringes of not quite exactly normal."
+    },
+    {
+      "t": "narrate",
+      "text": "What happened was this. Our first two games, not to count our pre-season exercises, were away games. We actually won our first two without much fanfare."
+    },
+    {
+      "t": "narrate",
+      "text": "In between victory, the pep squad left us little handmade offerings on our lockers. We wore our jerseys to school and puffed our stuff. It was all a bit of a show, as we had two star players who made up for the relative lack of experience all around and made the rest of us look good."
+    },
+    {
+      "t": "narrate",
+      "text": "There were many happy accidents on the away fields, as well the early teams we played were far more rural and lackluster than the pride and joy of Small Wood."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_home_game_lights.jpg",
+      "caption": "The first home game. The crowd was electric."
+    },
+    {
+      "t": "narrate",
+      "text": "The Friday night of our first home game was raucous. The crowd was electric, the turnout left the minority of town still at home, and the game began beautifully. One, two quarters passed with us doing a bit more than nudging ahead."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look up at the stands.",
+          "goto": 16
+        },
+        {
+          "text": "Follow the team in.",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The stadium lights hung over the field in a white haze, the bleachers stamping and steaming in the cold."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_locker_room.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Coach Kordowski humbled things down in the locker room, trying to exercise a modicum of restraint and beat it into our heads the game was far from over. Near the end of his impassioned plea for level-headedness, an assistant coach came up and whispered into Kordowski's ear."
+    },
+    {
+      "t": "narrate",
+      "text": "Kordowski took a moment, raised his hands as if to strangle or hug, then lowered them, his bald face washed tight and red. He tried choking them back but the tears came anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "He told us in a plain voice that two girls were killed in a hit and run accident just two blocks from the stadium near the start of the first quarter. Everyone on the team knew the dead girls by name except me. The teenager was named Erica and despite sharing class together, I'd never really noticed her."
+    },
+    {
+      "t": "narrate",
+      "text": "She was walking her developmentally disabled sister, Monica, to the game when a motorist ran into them at a speed that tore their bodies to pieces."
+    },
+    {
+      "t": "narrate",
+      "text": "Later on, details would emerge that he was drunk and the gore of the impact so shocking he stopped and tried to throw the scattered remains into the drainage ditch and cover the bodies and flee. He made it to a motel before he broke down, wept himself sober and over the phone turned himself into the police."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_farmhouse_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Fast Forward",
+      "sub": "The farmhouse · four years later",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Four years later I was attending a nearby state university. Living in the farm house we had occupied was a family of four. Sometimes you hear about what happens to the families that live in the homes you've abandoned."
+    },
+    {
+      "t": "narrate",
+      "text": "The husband employed himself as a full time metal sculpture artist and part time handy man. The wife sold chicken eggs by the side of the road. The rent on the place wasn't much, and they managed the day to day life just fine."
+    },
+    {
+      "t": "narrate",
+      "text": "They had two cute young daughters who were smitten with the farm life."
+    },
+    {
+      "t": "narrate",
+      "text": "One day, the husband and father began over-reacting to every little thing. Something in his voice betrayed a hidden anger. He retreated to his workshop and tore apart metal, twisting the original forms beyond comprehension."
+    },
+    {
+      "t": "narrate",
+      "text": "He stayed there all day and all night. His wife and mother of his children brought him food and drink and a blanket, which he didn't need in the heat of composition."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside the home the wife put the children to bed. She read them stories together and when the smaller girl was asleep read to the older one individually. She put on reading glasses halfway through the hour long ritual and sipped at an ever cooling mug of hot tea and honey."
+    },
+    {
+      "t": "narrate",
+      "text": "She pushed the edge of the blankets under and over the tiny forms tight and checked the windows for cracks. The mother and wife closed the door, leaving a sliver of light to cut into the warm space. She walked down the stairs, grabbing an afghan blanket off the banister."
+    },
+    {
+      "t": "narrate",
+      "text": "She put her cup in the sink of the kitchen and ran it under water. She looked out the kitchen window, past the fruit-bearing trees and saw the light from the workshop."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Watch the workshop light.",
+          "goto": 35
+        },
+        {
+          "text": "Turn from the window.",
+          "goto": 36
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The workshop light held steady across the dark yard, past the black shapes of the fruit trees."
+    },
+    {
+      "t": "narrate",
+      "text": "She went into the living room and turned on the small, barely working television. Local reception was spotty, more radio than video. She tuned into public broadcasting, interrupted the middle of a raucous imported British sitcom."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat with the blanket on her lap and slowly drifted off to sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "She was woken suddenly by the sound of glass breaking. Coming out of first stage sleep, she initially shook it off as the remnants of a near dream. But then it happened again, the sound coming from outside."
+    },
+    {
+      "t": "narrate",
+      "text": "It was barely there muted by distance, then again in her right ear hardly registering. She stood and went to the window but saw only darkness past the light cast from inside. She felt like a tiny ship at sea, the moon hidden behind clouds and pulled the afghan closer."
+    },
+    {
+      "t": "narrate",
+      "text": "Time passed and she waited keeping watch. Nothing happened."
+    },
+    {
+      "t": "narrate",
+      "text": "She walked to the service porch, pulled on a jacket and unlocked the door. The smashing, shattering sound of glass again this time from right outside in the garage port not twenty feet from her. The wife and mother got very afraid now."
+    },
+    {
+      "t": "narrate",
+      "text": "She locked the door back up and retreated into the living room. There were two large picture windows that killed the heating bill, but provided a gorgeous view of the valley."
+    },
+    {
+      "t": "narrate",
+      "text": "She looked out from behind, like a second pair of glasses, the feeling of desperation and inaction overtaking rational thought like the quickening of her breath."
+    },
+    {
+      "t": "narrate",
+      "text": "She heard the sound of broken glass, the tinkling of the shards against the floor, now from inside the house. The small service porch window, she rushed back to it, just peeking in. A clump of metal was still coming to a rolling stop."
+    },
+    {
+      "t": "narrate",
+      "text": "She locked the secondary service door and rushed upstairs, one hand in front of her mouth, the other swinging and grabbing and pushing. She was crying tears coming fast down her face but she made no sound. One of the picture windows imploded as she went up the steps not looking back."
+    },
+    {
+      "t": "narrate",
+      "text": "The mother went to her children who were already awake and confused. She pulled them from their blankets and they all went into the master bedroom with its two stairwell hallway doors and connecting bathroom."
+    },
+    {
+      "t": "narrate",
+      "text": "The sound of breaking glass continued. The mother phoned the police who were calm and even. The mother tried to match their rationale tone."
+    },
+    {
+      "t": "narrate",
+      "text": "It occurred to her that they were separated by so much. The voice on the other end was sympathetic, casual and assuring, trained to relay information, to be a presence but the two worlds the mother and the dispatcher occupied were far apart and could never be bridged."
+    },
+    {
+      "t": "narrate",
+      "text": "One was safe away from harm, comfortable and emotionally distant. Whereas the mother was suffering a shock induced breakdown, her home invaded and raped by brute force, her children contemplating their own mortal danger perhaps for the first time, her own very life perhaps in the balance."
+    },
+    {
+      "t": "narrate",
+      "text": "What was in her ear, alien, calm and constant, a flood of reassurance and it's alrights it's okays. The mother knew the voice on the other end could not hear the tinkle of glass, the crunch of footsteps over the ruin, the bass of whole house beating to the sound of approach."
+    },
+    {
+      "t": "narrate",
+      "text": "His voice called out to them, the husband father's. He said he was bleeding, that he'd cut himself, that he needed help. The mother wife kept talking into the phone, her children close to her in silence, erratic breathing in their tiny chests, not sure what they should be doing."
+    },
+    {
+      "t": "narrate",
+      "text": "They played with each other's hair."
+    },
+    {
+      "t": "narrate",
+      "text": "He pounded his fists against the hard wood door. When it would not give way, he tried kicking it. He persisted for minutes, screaming obscenities and threats of violence, pleading love and death in the same bloody roar."
+    },
+    {
+      "t": "narrate",
+      "text": "Eventually he collapsed, weeping, shaking the door with his sobs."
+    },
+    {
+      "t": "narrate",
+      "text": "When the police arrived, he came back to life and took to defending his home from the authorities. He was subdued and sedated and put in the back of the police car until the ambulance arrived."
+    },
+    {
+      "t": "narrate",
+      "text": "When the officers assured her it was over and that she could come out, the mother wife and her daughters emerged, shaking but pacified calm."
+    },
+    {
+      "t": "narrate",
+      "text": "There were smears of gore all through the house. The father husband had cut himself pretty bad on his hands and arms. It was revealed that he punched out his car's windows first with bare fists."
+    },
+    {
+      "t": "narrate",
+      "text": "When he noticed how badly he'd cut himself, he wrapped them and continued punching out windows with his bandaged hands. For the windows he could not reach, he threw his art through, making one last bold statement."
+    },
+    {
+      "t": "narrate",
+      "text": "The husband father was not a bad man, he just for some reason forgot to take his medication. The mother wife and her daughters stayed at an anonymous women's shelter in the woods for three weeks while he recovered, served a small stint in jail and went to counseling."
+    },
+    {
+      "t": "narrate",
+      "text": "All the while I helped my grandmother with the repairs to the family home. The mother wife felt so incredibly horrible and understood that no simple apology or explanation would do. The family vanished to another town, another rented home and prayed to god something like this would never happen again."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch3_points_of_impact_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch3_rewind"
+    }
+  ]
+}

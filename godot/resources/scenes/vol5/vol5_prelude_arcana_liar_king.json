@@ -1,0 +1,326 @@
+{
+  "id": "vol5_prelude_arcana_liar_king",
+  "vol": 5,
+  "chapter": 0,
+  "type": "chapter",
+  "title": "Prologue :: The Liar King",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_river_shallows.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_cicadas_dusk.ogg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Major Arcana",
+      "sub": "Prologue :: The Liar King",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Agile child hands feel through bottom silt, grubby face so near reflected, tiny body fighting small splashing waves at the river’s edge."
+    },
+    {
+      "t": "narrate",
+      "text": "Over shoulder, a four foot tall frog rolls a cigarette, cork hat pulled down low on his v-shaped face, eyes set apart but centered intently, filthy denim suspenders hanging low, bare-chested, barefooted."
+    },
+    {
+      "t": "show",
+      "char": "the_frog",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "Patience, pink one. I can state with maximum authority, I saw your blasted trinket this morning making my way to the jetty by way of Rooster’s Perch, so unless there was another bystander in these forsaken parts, the device should still be in this general vicinity."
+    },
+    {
+      "t": "narrate",
+      "text": "The child stands up, mostly soaked, bangs dripping loose and curly."
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "It ain’t mine, an you know it. Belongs to the king, said to never lose it."
+    },
+    {
+      "t": "narrate",
+      "text": "The frog inspects long fine digits up against the setting golden hour sun, illuminating the webbing, burning through rubber skin, the purple veins and dark warts can be seen all the way through the other side."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "Your misfortune, not mine, and I am doing my darnedest to help ya. Ain’t nothing to be done, save find it then. I told you where to look, can’t help if we’ve been out half the day nothing to show."
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "Well, you could help."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "All I can do is provide a different point of view, and mostly all that caught was glint. You’re on your own, child."
+    },
+    {
+      "t": "narrate",
+      "text": "The frog reveals an industrial lighter, spins it out of back pocket, the chrome shell of the thing flashes, and flames dance across broken water glimmer. The child misses this performance, intent on something else entire and dives down after."
+    },
+    {
+      "t": "narrate",
+      "text": "The frog takes a long slow breather, sucking with tiny lungfuls, tendrils of smoke itching their way through large cavernous nostrils."
+    },
+    {
+      "t": "narrate",
+      "text": "He eyes the water, the child’s legs kick as it tries to plunge down deeper, the frog’s glance is one of comparative animal critique for the less than inspired water impaired undersized mammalian form."
+    },
+    {
+      "t": "narrate",
+      "text": "The dirty child emerges glistening, beaming, the object of all its woes, worries, and great personal significant importance clasped in love and horror against the chest. Deep breaths as it calms down and the whole of the day fogs into focus."
+    },
+    {
+      "t": "narrate",
+      "text": "The frog throws his cigarette into the mudflat, claps in long slow succession, the slapping disturbance dispersing nesting oystercatchers, whimbrel and snipe."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_minstrals_green_hull.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The child does not go home straight away, instead circles and lingers round the sunken corpse of the once proud “Minstral’s Green” steamship, first time since going in and exploring the guts several times in years past, but never wearing father’s doohickey, as he calls it."
+    },
+    {
+      "t": "narrate",
+      "text": "The doohickey having once being sold in stores. Molecular Keep Out technology that changes physical properties to that of roughly onyx, dark and impenetrable. At a distance, it appears as if a small crystal ball hovers between two neck clasps, jutting out like a second Adam’s apple."
+    },
+    {
+      "t": "narrate",
+      "text": "Sitting at the water’s edge, having gotten some distance from the frog, the youth polishes the crystal, real careful like sonic cleaner, sun scatter revealing enfolded intricacies within the ball itself. The child whispers to no one, “the projector is your protector-”"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol5_prelude_crystal_lattice.jpg",
+      "caption": "the projector is your protector"
+    },
+    {
+      "t": "narrate",
+      "text": "The child goes lost, holding the crystal ball up to an eye, squinting in with the other. Inside, something more than all the collected wonder and beauty of the known universe, just possibly maybe. Much more than some claim this world can naturally possess."
+    },
+    {
+      "t": "narrate",
+      "text": "And yet this child can look into that impossible trancelike void and survive its haunting lattices, navigate with ease, the webs and tendrils of light that float inside, geometric and organic shapes that dance and collide, explosions of color and beauty more profound than the most dazzling fireworks from crumbling billboard poster tack of far off holiday horizons, or promised in paint in Ravensway’s main gallery."
+    },
+    {
+      "t": "show",
+      "char": "the_frog",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The frog clears his throat, as only a giant bullfrog could, flapping wrinkled timbre from an overstretched throat beginning to sag, so that all other noisemakers in the river swamp fall silent."
+    },
+    {
+      "t": "narrate",
+      "text": "The child startles at the noise, tugged free from the bauble’s grip."
+    },
+    {
+      "t": "narrate",
+      "text": "“I know you’re there,” shouts youth."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "Do you remember how you lost it yet, why we came out here to begin with?"
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "We weren’t out here."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "No, we weren’t, but you must have been."
+    },
+    {
+      "t": "narrate",
+      "text": "The child nods the affirmative, absently, and puts the necklace full on."
+    },
+    {
+      "t": "narrate",
+      "text": "Frog extends his hand and the two walk into the haunted steamship, their way relit in farcast light."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_steamship_interior.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Minstral’s Green",
+      "sub": "inside · farcast light",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "the_frog",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "Father said this was Mother’s favorite place in the park."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "He built it for her, did he?"
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "All of it. Maybe. Mentioned seeing her ghost here."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "Do you believe in ghosts?"
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "Real ones, or just the kind like you?"
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "What if they’re one and the same."
+    },
+    {
+      "t": "say",
+      "char": "The Child",
+      "expr": "neutral",
+      "text": "You mean, what if Father made her into one of you."
+    },
+    {
+      "t": "say",
+      "char": "The Frog",
+      "expr": "neutral",
+      "text": "He wouldn’t have done that, would he?"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "“There is nothing really all that great about his food, except for the simple fact it will make you a superhero.”"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_steamship_gallery.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The child goes to the crystal ball, when it lights up, the portraits sitting idly in the gallery, shimmer with activity, but remain dim and shadowy. Above the crystal ball shines a piece of paper. The child goes up to read it."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol5_prelude_gallery_paper.jpg",
+      "caption": "Once upon a time"
+    },
+    {
+      "t": "narrate",
+      "text": "Once upon a time, in the dynamic inbred world of health care industry, energy behemoths, invasive houses of law, and breeding ground for political career trajectory, and the cutthroat food service industry that fed them fat and feasted on the crumbs, there existed the major arcana."
+    },
+    {
+      "t": "narrate",
+      "text": "They were just like you or me, only thing that made them different was they that were closest to the action. We’ve become them now and we are your chorus. Solitary souls connected in turn, great eyes peering out across electric eyestrain yonder."
+    },
+    {
+      "t": "narrate",
+      "text": "Housewives, single fathers, spinster whores, the crack addicted, youth screwed in straight, the bent and broken beautiful all among them."
+    },
+    {
+      "t": "narrate",
+      "text": "Lived in, fresh up to bat, extraordinary human beings in every human right, the petty squabbles, the lofty dreams, the schooling and the drooling, the lease paid off bankrupt, yearning just to brush up close, take in, and make their own."
+    },
+    {
+      "t": "narrate",
+      "text": "The old man just turned sixty. Twin sons ruling over some future birthright of coop competing. Split head warm docile serpents ruling an almost culinary empire."
+    },
+    {
+      "t": "narrate",
+      "text": "One pushed back the filth that creeped up round the door, the other locked himself away in office dealings with bureaucratic nightmares. They’d have you believe it more complex their scheming and dreaming, and it was, layers of bloody hilarious intrigue, but know when this begins they were losing the race."
+    },
+    {
+      "t": "narrate",
+      "text": "One of them is here with us now, the other got left behind, we won’t spoil which is amongst us yet."
+    },
+    {
+      "t": "narrate",
+      "text": "The gallery is divided into different tiers. Portraits hang at various levels. The First Tier."
+    },
+    {
+      "t": "narrate",
+      "text": "“It wasn’t that they were quick on the up-take, no doubt they were. It’s just, here we are.”"
+    },
+    {
+      "t": "narrate",
+      "text": "The people living, really truly living. That’s who we were. Smack dab, stuck in the middle of something beautiful. You just had to be there to see."
+    },
+    {
+      "t": "narrate",
+      "text": "They pushed us away, wanting us only so close to them. Fine, so be it. We still made it here, didn’t we."
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_liar_king_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_channel"
+    }
+  ]
+}

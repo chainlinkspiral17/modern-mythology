@@ -1,0 +1,171 @@
+{
+  "id": "vol2_ch10_spawning_grounds",
+  "vol": 2,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "x. The Spawning Grounds",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_gymnasium_hearing.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "x. the spawning grounds",
+      "sub": "High school gymnasium · Evening",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "I'm in a small town high school gymnasium with a bunch of old men who get off on spouting out the rules of parliamentary procedure to the uninitiated. Rebecca, my wife of 22 years is sitting next to me, quiet and angry. I hold her hand under the table more for my sake than hers."
+    },
+    {
+      "t": "narrate",
+      "text": "Our table is pushed corner to corner with two others forming a U. The air smells of wood polish and talcum powder. Wrestling season. Every chair squeak is echoed ten times over."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the council table",
+          "goto": 10
+        },
+        {
+          "text": "look at Becca",
+          "goto": 9
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Rebecca, my wife of 22 years is sitting next to me, quiet and angry."
+    },
+    {
+      "t": "narrate",
+      "text": "Mayor Ethel Marshall sits in the middle of the U with a smile on her face flanked by senior members of city council. She has a radio microphone plugged into an amp she lifted from the band room. Over there on the right is Pastor Tim with wife and children. His oldest son, James, is in my Psychology class."
+    },
+    {
+      "t": "narrate",
+      "text": "The little sister Rachel is a Freshman in Ethics. Good kids. Naïve as hell, but sweet in their own way. There's the K-U's way back over there. Originally from San Francisco, they own an all-natural Italian Bakery ten miles out of town right on the water. Four kids, each one cracks me up."
+    },
+    {
+      "t": "narrate",
+      "text": "Liberal as hell but every small town needs that sort of element to make something happen on an off day. They're why we're here right now. Their new cause is a book by Frank Boehme. The Spawning Grounds, it's called."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_model_workbench.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Two hours ago",
+      "sub": "Home · Afternoon",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Two hours ago, I was painting scale model miniatures of Mexican War battalions. I dipped a single-hair brush carefully into metallic resin number four because I needed to add a worn quality to the Ranger's cannons."
+    },
+    {
+      "t": "narrate",
+      "text": "Becca was listening to Credence on vinyl and dancing in front of the plants she laid out under the front windows for sunlight. That's when I got the phone call from Eric. My boy."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm in trouble. Dad. He said. I'm in a lot of trouble."
+    },
+    {
+      "t": "narrate",
+      "text": "How bad, Eric. My eyes filled with tears. I'm your goddamn. Tell me. Son. Last time he called he was trying out stolen credit cards at a gas station in San Diego. He's not a kid who gets into harmless trouble with friends."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad. He said. This is my one phone call, Dad."
+    },
+    {
+      "t": "narrate",
+      "text": "This is your one phone call? Jesus. I said."
+    },
+    {
+      "t": "narrate",
+      "text": "I could see him. Through my tears, I could see my boy holding himself up."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad?"
+    },
+    {
+      "t": "narrate",
+      "text": "What'd you do Eric? What'd you have to go and do?"
+    },
+    {
+      "t": "narrate",
+      "text": "Don't want to talk about it. Dad. Just need to hear you."
+    },
+    {
+      "t": "narrate",
+      "text": "Okay kid. We can just talk."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad. He said heavy breathing. I'm sorry."
+    },
+    {
+      "t": "narrate",
+      "text": "I know Kiddo."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad. He said. It was in a library bathroom this time. I had to show them."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesus Kiddo."
+    },
+    {
+      "t": "narrate",
+      "text": "I didn't touch them, Dad. I never do that."
+    },
+    {
+      "t": "narrate",
+      "text": "I know."
+    },
+    {
+      "t": "narrate",
+      "text": "Don't tell Mom. You can't."
+    },
+    {
+      "t": "narrate",
+      "text": "I won't."
+    },
+    {
+      "t": "narrate",
+      "text": "Thanks, Dad. Thanks."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch10_spawning_grounds_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch10_frank"
+    }
+  ]
+}

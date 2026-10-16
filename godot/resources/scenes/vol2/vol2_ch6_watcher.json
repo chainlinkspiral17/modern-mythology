@@ -1,0 +1,248 @@
+{
+  "id": "vol2_ch6_watcher",
+  "vol": 2,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. Triptych — The Watcher",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_second_house_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_rest_stop_wind.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Third Panel — The Watcher",
+      "sub": "a story of what may be",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Fucking tears on my face, all over my face. My eyes wouldn't stop because my heart beat. I bled and anguished."
+    },
+    {
+      "t": "narrate",
+      "text": "I was living in the second house on the property in my little room sleeping on old and dirty mattresses. I'd brought in a kerosene lamp to read by, there was no electricity out to the old place, the walls shone through bare in places, stripped to the board."
+    },
+    {
+      "t": "narrate",
+      "text": "It was cold and damp inside, except for the tiny pocket of heat around me. I was sick of my family, tired of their bullshit. I fled to the second house to tear it apart and make it new."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd painted what remained of the plaster on the walls with natural earthy colors and hidden shapes, shadow figures in pattern and texture of the surface. I realized I could not continue being myself in the warm home. I was rebelling against an authority that did not exist and that scared my family."
+    },
+    {
+      "t": "narrate",
+      "text": "I didn't want to be a further source of discomfort, I didn't want to suffer the growing sense of foolishness that surrounded their individual lives. The family was disintegrating, the unit we'd become. Dad was off consulting, another city, another project."
+    },
+    {
+      "t": "narrate",
+      "text": "Mom had moved to the town of Frederick, cleaning homes, waiting for her state respiratory therapy license to come through. My sister and I were effectively alone and at each others throats."
+    },
+    {
+      "t": "narrate",
+      "text": "I started going out to the abandoned building after dinner. I'd take a book out with me and read until my eyes hurt and then I'd keep on reading. I was stranded at the house for most days as there was no vehicle I could use to drive away from the goddamn place."
+    },
+    {
+      "t": "narrate",
+      "text": "Sis and I hiked up the hill at six in the morning to catch the school bus, always a shameful ride to and fro. We'd be cold, wet and miserable because the school months were the nine months out of the year it rained, drizzled, down-poured consistently."
+    },
+    {
+      "t": "narrate",
+      "text": "Life inside the outside was lonely but marginally better than keeping company. I wanted nothing to do with the town, nor anyone in it. I had a portable emergency radio I kept by my mattress side, running on batteries, picking up mostly dead air with the occasional ghostly voice or wail to interrupt."
+    },
+    {
+      "t": "narrate",
+      "text": "I liked the perpetual sound, like running water."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd been reading about the settlers who'd come through in the eighteen hundreds, who'd buried the living assumed dead. Hours, they'd give them to come back to life, if so was the case. They had a name for the person whose job this was to sit and wait for the dead."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd be tasked to stand watch out there alone while the wagon trained moved on ahead. He'd have to catch up, hurry on back to the safety and comfort only after knowing one way or the other. He'd last out there as long as he could, contemplating that only he would ever know the truth in the matter."
+    },
+    {
+      "t": "narrate",
+      "text": "It was always a foregone conclusion. The dead don't regularly return to life but for some reason along the Oregon trail they needed a goddamn watchman to keep an eye after these dead. This was a matter of fact, this was of historic record."
+    },
+    {
+      "t": "narrate",
+      "text": "What the watchman did with the dead, what was he looking out for, what he dreamt would or would not happen. My mind reeled at the thought because I had read it plain as day."
+    },
+    {
+      "t": "narrate",
+      "text": "Stupid shivers ran through me. I couldn't get warm enough at the odd hours of the night. I'd woken up having to pee. I did it out a window after I'd cracked it some."
+    },
+    {
+      "t": "narrate",
+      "text": "Trees swayed in place like foreign mourners, clouds hustled sideways across the sky. Steam blew up off my piss, pungent and warm."
+    },
+    {
+      "t": "narrate",
+      "text": "The light was on inside the family house and it reminded me of a day when all was good and right. A piece of a broken mirror shone through a crack in the floorboards. A stack of magazines from the seventies served no purpose in the corner."
+    },
+    {
+      "t": "narrate",
+      "text": "My fingers were crusted with paint, dirt and blood, most of it in reds and browns. My left thumbnail was cracked halfway down and I'd bandaged it over with some gauze. It pressed with a dull ache."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd hammered it instead of a nail I was trying to turn in on its side and crush into the wood."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd been seeing this girl named Andrea. She was blonde, had a stud in her tongue which I'd never seen before let alone felt in my mouth. She'd come by the house, spent the night just that once."
+    },
+    {
+      "t": "narrate",
+      "text": "She parked up off the road and hopped the fence and come into the room to be with me."
+    },
+    {
+      "t": "narrate",
+      "text": "She told me she loved the rundown place, that she wanted to move in, her breath fast and heavy on my chest and neck, then she started talking in her sleep about fucked up shit, names of guys and girls she wanted to screw and murder. She wouldn't stop even after I tried shaking her and calling her name."
+    },
+    {
+      "t": "narrate",
+      "text": "Her body next to me, hand tight in mine, both us on our backs, her mouth hot with hate and perspiration. She rocked gently, started from her waist up to the top of her head, slowly never stopping. I put my hand in between her, held her like that."
+    },
+    {
+      "t": "narrate",
+      "text": "I was tired and cold and this was all I wanted at this hour, just the comfort of her."
+    },
+    {
+      "t": "narrate",
+      "text": "Andrea was an outsider like me. She'd showed up late that school year, moving from someplace in northern California. Her parents had divorced, she'd gone to live with her father after trouble with her mother."
+    },
+    {
+      "t": "narrate",
+      "text": "She liked being trouble, dug very much the stigma that followed. She listened to music which I knew nothing about. She'd sing to herself, in this pathetic sort of singsong voice like she was trying too hard."
+    },
+    {
+      "t": "narrate",
+      "text": "It was cute at first, the way she'd overenunciate and dance with her fingers, never taking her eyes off them. She was smart about guys unlike so many girls. She lived life according to her own take on the law of undiminished wants and needs."
+    },
+    {
+      "t": "narrate",
+      "text": "There was nothing shared between us outside that bedroom. Early flirtations were forgotten upon bodily impact, our faces lost in each other, our grip on each other tight just that night, the want was desperate coming off immediate and answered upon like a signal flare."
+    },
+    {
+      "t": "narrate",
+      "text": "We went to school together, took classes, sat apart and away from, never found each other again. I realized I was sickened by the act, the environment in which it took place. It was lovely never again beautiful in how rotten tainted fetid it was."
+    },
+    {
+      "t": "narrate",
+      "text": "She left in the morning, leaving behind a faint and unpleasant human aroma. I cracked the windows and let her waft out over the course of the day. Sometime during the night, the radio had come to life, playing a quiet and broken sound, the voice singing in French."
+    },
+    {
+      "t": "narrate",
+      "text": "I may have been dreaming."
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "My name is not my own that is the clue that I leave to you. I was born in a big city raised by small men. My father and his father they loved the things that all men do."
+    },
+    {
+      "t": "narrate",
+      "text": "They fought with each other like brothers, treated me like a third birth. Born in California, our stories are almost the very repeat of the original story. Women will mean nothing to me because they have meant so much."
+    },
+    {
+      "t": "narrate",
+      "text": "When I touch them I don't know myself but I know my purpose for being here and they become what I detest in this world. I don't understand how they can be so beautiful, so ugly, so wasted rotten on the inside, so fresh pure alive forever."
+    },
+    {
+      "t": "narrate",
+      "text": "They aren't a good sex for easy answers and they can't stop talking to save their lives. I see nothing of myself in them except their desire and wicked imagination. I am a doll with the name of an imaginary friend they want to twist and break and do with as they will."
+    },
+    {
+      "t": "narrate",
+      "text": "I am not a hard man and I am not an easy man but you may think me simple. Good. I don't want you to get to know me all that well."
+    },
+    {
+      "t": "narrate",
+      "text": "For your sake understand. To learn what makes me tick you have to first find me. I am not an easy man to find. I keep to myself, away from the noise of the world."
+    },
+    {
+      "t": "narrate",
+      "text": "I can't stand to hear much of it. I once drove across this country and learned I liked it even less than I imagined I would. I can't stand the truth that comes out of me when I'm drunk, I can't take the hot foul breath of a lover in my face asleep with their life and light gone out away from me."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't want any children of my own despite knowing one is on the way."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't value your company because you think yourself better than me. One look tells you all you need to know. I am not a good person."
+    },
+    {
+      "t": "narrate",
+      "text": "The air around me, you noticed it. It's not exactly a sadness, it's a refusal to give into sadness, an impossibility to ever be happy. But here I am alive as the day I was born."
+    },
+    {
+      "t": "narrate",
+      "text": "I continue on because that is the only option I was ever given. There are pleasures in this world that are easy and simple and I take them when I will. When my teeth fall out and my skin folds in on itself, you will pity me and I will detest you."
+    },
+    {
+      "t": "narrate",
+      "text": "I will spit black on your passing shadow and curse you."
+    },
+    {
+      "t": "narrate",
+      "text": "You think this world is so easy, the glow of your skin, the light behind your eyes. You think you've seen it all, the assurance and way you carry yourself. People like me exist to make you sweat and fear and fuck and weep for the future."
+    },
+    {
+      "t": "narrate",
+      "text": "You need me like you need to sleep at night. I will gnaw at you until you use me up and make me go away forever. I am the boogeyman beautiful."
+    },
+    {
+      "t": "narrate",
+      "text": "You want me in you and you don't know why."
+    },
+    {
+      "t": "narrate",
+      "text": "My throat hurts and I want a drink to make it burn softer. I want a smoke to see you by. I want a touch to know your scent and brush my face rough against the softness of your hair."
+    },
+    {
+      "t": "narrate",
+      "text": "You tremble like a little boy at the mercy of his fathers, you pray like a good little girl. This is the simplicity of who I am, why you came all the way out here to know all about me."
+    },
+    {
+      "t": "narrate",
+      "text": "My handshake is firm, I've invited you in."
+    },
+    {
+      "t": "narrate",
+      "text": "We can stand on this porch for hours or we can go on inside."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_watcher_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_a"
+    }
+  ]
+}

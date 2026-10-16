@@ -1,0 +1,299 @@
+{
+  "id": "vol3_ch5_flight",
+  "vol": 3,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "v. non-stop flights",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_saab_highway_dusk.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Southbound",
+      "sub": "now · Oregon",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "For the last year Andy has known that the type of cancer killing his dad was designated AML. Acute myelogenous leukemia. Coincidentally enough, Andy's initials are AML, the M standing for Martin, his father's first name."
+    },
+    {
+      "t": "narrate",
+      "text": "Justin shows up driving his SAAB, he has an early model IPOD which plays healing music, music Justin picked out last minute to give Andy strength and keep him cool and positive. The first song is Elevation by U2 and the trend continues until Andy is numb to Justin's upbeat bopping along in the driver's seat."
+    },
+    {
+      "t": "narrate",
+      "text": "Justin's girlfriend has just left him and he wants to talk about that, so they do and they both feel much better. Andy tells Justin it will be okay, Justin tells Andy it will be okay, and they both know it will be okay just not right this very instant."
+    },
+    {
+      "t": "narrate",
+      "text": "Justin drops Andy off at the airport, the small man gives the bigger man a humongous hug that lasts too long and not nearly long enough. Andy is crying saying goodbye because it may be a long goodbye and he doesn't have the heart to tell Justin that just yet."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_plane_cabin_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The last flight",
+      "sub": "now · 40,000 feet",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Andy only realizes he is seated on the plane when the Captain's voice comes on to announce the immediate departure. When the Captain is done, a stewardess comes on to tell everyone this will be the last commercial flight of this pilot as he will be retiring upon landing."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy always tries to get the aisle seat because his legs are long and he likes room to stretch out, instead he's seated at the window, which is good because he mostly turns to cry, looking out at nothing or at his reflection when the satellite lamp overhead is on."
+    },
+    {
+      "t": "narrate",
+      "text": "He does have the fan positioned to hit him hard in the face and it blows consistently, drying him sucking the moisture clean off him."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look out the window.",
+          "goto": 15
+        },
+        {
+          "text": "Let the fan dry your face.",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Below, the dark, and now and then the lights of some town strung thin along a highway, and then the dark again."
+    },
+    {
+      "t": "narrate",
+      "text": "A woman sits next to Andy. She is unmistakably Texan, day old red business suit, large hoop earrings supported by fine cartilage curly dark hair that refuses to budge in airline stillness, glimmers in stiff concentration."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy remembers a friend once saying that a woman who spends that much time on her hair can not be good for a man."
+    },
+    {
+      "t": "narrate",
+      "text": "When they are in the air the businesswoman keeps leaning over to talk to Andy. It is a late flight and she orders drink after drink. \"This will put me to sleep,\" she says."
+    },
+    {
+      "t": "narrate",
+      "text": "A moment later she says, \"But I'm really not all that tired.\""
+    },
+    {
+      "t": "narrate",
+      "text": "She asks Andy if she can put the arm rest up, scoots in close and asks, \"You ever see the movie 9 and ½ Weeks.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Andy is aware of the movie, the sex and nudity and all that good stuff but an actual plot summary escapes him. Perhaps all that good stuff is the plot. He nods and she pulls out her portable CD player, puts the earphones on over his ears."
+    },
+    {
+      "t": "say",
+      "char": "The Businesswoman",
+      "expr": "warm",
+      "text": "I love the music to it. I work out to it all the time. Makes me feel so special and sexy."
+    },
+    {
+      "t": "say",
+      "char": "The Businesswoman",
+      "expr": "warm",
+      "text": "And alive. It's my favorite."
+    },
+    {
+      "t": "narrate",
+      "text": "She is probably a few years older than Andy and he can they live a much different lifestyle and that the only clicking they do is because of the booze she drinks which doesn't do much to mask her insecurity and sad clingy desperation. Andy feels like a magnet to these people."
+    },
+    {
+      "t": "narrate",
+      "text": "He doesn't want to say much to encourage her but at the same time he wants to sort of see what she's all about. So he humors her in the caring sort of way that shows interest and genuine sympathy perhaps."
+    },
+    {
+      "t": "narrate",
+      "text": "She looks at him with big sad make-up eyes far too dark and wet like raccoon eyes and asks if he wants to hear any more of this music perhaps something else of whatever else she has. He shakes his head no and she hails a stewardess to get her another."
+    },
+    {
+      "t": "narrate",
+      "text": "She keeps right on drinking. Amaretto sours. Out of the blue asks Andy, \"Do you think I'm sexy,\" doesn't wait for him to answer keeps right on talking, \"I feel sexy because work is going real good and I think they like me."
+    },
+    {
+      "t": "narrate",
+      "text": "I sell advertising space so everybody's got to like me. My bosses, my coworkers, the people on the phone, the clients, everybody. They like me because I do my job and we make money and that is fantastic.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Andy tells her he knows a fair amount about what she does, that he knows how hard it can be."
+    },
+    {
+      "t": "narrate",
+      "text": "\"I miss my boyfriend,\" she says when she puts her hand on his leg. She shows absolutely no knowledge having done so."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy drinks orange juice and then a sprite. He pushes the call button later on for a glass of water. The air is loud and leeches the energy right out."
+    },
+    {
+      "t": "narrate",
+      "text": "That centralized crisp dried out quality infects sinus, chills the body deep down inside. The business lady falling asleep next to Andy."
+    },
+    {
+      "t": "narrate",
+      "text": "While she lightly snores leaned up against him he watches a Cuba Gooding Jr. comedy on the in-flight embedded headrest monitor sans sound."
+    },
+    {
+      "t": "narrate",
+      "text": "The businesswoman rubs his chest scoots closer in to hug onto him."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits up straight further sipping on various liquids, trying out some of her remainder beverages and the many ice cubes in clear plastic cups which are later crunched, the half-melted remains audible to only Andy and perhaps the sleeping listener with an ear to his chest."
+    },
+    {
+      "t": "narrate",
+      "text": "The whining drone of 40,000 feet continues all around."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy drifts off and wakes up suddenly. A sickening vertigo hits him, kicks him, his mouth tastes like lingering sickness, groggy numbness, foggy vision, congested ear sinus nostril inside yuck. He pops at his jaw, clarity, try to clear ears, equalize, decongest."
+    },
+    {
+      "t": "narrate",
+      "text": "The woman next to him stirs."
+    },
+    {
+      "t": "narrate",
+      "text": "She slurs her words, as drunk if not more so than when she first fell asleep. Maybe forty five minutes have passed on their way down."
+    },
+    {
+      "t": "narrate",
+      "text": "The voice that announces this is speaking too closely to the microphone, his disaffected enthusiasm pops in and out."
+    },
+    {
+      "t": "narrate",
+      "text": "In the tunnel leading up and away from the plane the business lady tries to take Andy by the hand. She ends up putting her business card in his palm. When she reaches the exit her demeanor changes."
+    },
+    {
+      "t": "narrate",
+      "text": "Her arms are in the air, she sees her boy."
+    },
+    {
+      "t": "narrate",
+      "text": "\"I'm so drunk,\" are the last words Andy hears her say she finding arms giving Andy a look as he walks by, over the shoulder she holds that look until he is out of sight."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_houston_car_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Aunt Terry",
+      "sub": "now · Houston · night",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Terry meets Andy at the airport. She looks tired, professionally tired. A business lady, Mom's best friend, a long-time friend of the family."
+    },
+    {
+      "t": "narrate",
+      "text": "Aunt Terry. She has on a gray suit, her blond hair is cropped short and curly cute. She is formal with her caring this is me coping mode."
+    },
+    {
+      "t": "narrate",
+      "text": "Terry asks Andy if he's hungry as they drive into the night."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy ask how far it is to the hospital."
+    },
+    {
+      "t": "say",
+      "char": "Terry",
+      "expr": "tired",
+      "text": "About a half an hour. Your sister was hungry when she got in."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "neutral",
+      "text": "What'd she have."
+    },
+    {
+      "t": "narrate",
+      "text": "Ten minutes of quiet neither of them can stand it."
+    },
+    {
+      "t": "say",
+      "char": "Terry",
+      "expr": "worried",
+      "text": "Janessa wasn't ready to see Marty. I tried to explain to her what was happening. How he looks with all the tubes."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "worried",
+      "text": "Does he look bad."
+    },
+    {
+      "t": "narrate",
+      "text": "She thinks about how to say it, her hands on the wheel, looking over at him, \"He's dying,\" she says."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "sad",
+      "text": "I know he's dying."
+    },
+    {
+      "t": "say",
+      "char": "Terry",
+      "expr": "sad",
+      "text": "What I mean is he's dying. He's going quickly. He's been fighting like a trooper."
+    },
+    {
+      "t": "say",
+      "char": "Terry",
+      "expr": "sad",
+      "text": "Janessa wasn't ready to see him in that way."
+    },
+    {
+      "t": "say",
+      "char": "Andy",
+      "expr": "sad",
+      "text": "He didn't look so good at Christmas."
+    },
+    {
+      "t": "say",
+      "char": "Terry",
+      "expr": "sad",
+      "text": "Just be ready."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch5_flight_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch5_md_anderson"
+    }
+  ]
+}

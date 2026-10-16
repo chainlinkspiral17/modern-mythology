@@ -1,0 +1,238 @@
+{
+  "id": "vol4_cc_2",
+  "vol": 4,
+  "chapter": 5,
+  "type": "interlude",
+  "title": "Charlie & Caroline — Charlie's Apartment",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_charlie_apartment_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cc_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Charlie's Apartment",
+      "sub": "Int. · Night",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie is lying in bed, a book over his chest."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I'm a single man. I enjoy the frequent company of different women. I have projects I must work on, people to see, art to make."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Instead, I sit in bed and let my imagination take hold. I let Caroline sink in. I most like the affect she has on me."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bus_interior_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The Bus",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie gets off the bus, Carrie stays. She flips over his card, then puts it in her purse. A middle-aged business man or professor type sits next to her."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "He plays with a PDA."
+    },
+    {
+      "t": "say",
+      "char": "George",
+      "expr": "angry",
+      "text": "Wife totaled the goddamn car this morning, talking on her phone. Yap Yap Yap. She's to see about getting a rental, which I assume will be a piece of shit wrecker."
+    },
+    {
+      "t": "say",
+      "char": "George",
+      "expr": "angry",
+      "text": "Goddamn inconvenience and then some."
+    },
+    {
+      "t": "narrate",
+      "text": "Carrie kindly gets off the bus, passing in front of GEORGE HURSTWOOD."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "Have a good day sir. Hope it improves."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_charlie_apartment_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Charlie's Apartment",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie wakes up in bed and walks through the apartment."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Professor George Hurstwood teaches Literature. He has a wife and two children. He is forty-three years old and is currently working with his agent to publish his fourth collection of short stories."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I happen to be in one of his classes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_workshop_classroom_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Hurstwood's Class",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "The desks are all in a circle, workshop style. Charlie shares a book with an attractive girl."
+    },
+    {
+      "t": "say",
+      "char": "Hurstwood",
+      "expr": "neutral",
+      "text": "What's nice about my job is I can get grad students to do all my work for me."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "What's nice about his class is I'm the only dude in it."
+    },
+    {
+      "t": "say",
+      "char": "Girl",
+      "expr": "neutral",
+      "text": "I find the journey of Rasselas to be something of an insight the human spirit, but the exotic setting is kind of hokey and one dimensional. At least it goes down easy for bullshit philosophy disguised as fiction."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_charlie_apartment_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Charlie's Apartment",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie is getting dressed and ready for the day."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "I have a date with some girl named Andrea today. One of her friends hooked us up at this club called Paradise Lost."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_cc_2_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_cc_3"
+    }
+  ]
+}

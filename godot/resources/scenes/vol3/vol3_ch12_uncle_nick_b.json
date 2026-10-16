@@ -1,0 +1,354 @@
+{
+  "id": "vol3_ch12_uncle_nick_b",
+  "vol": 3,
+  "chapter": 15,
+  "type": "chapter",
+  "title": "x. uncle nick",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_bedroom_lamp_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_ambient_home.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Men get quiet",
+      "sub": "Home · now",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "My wife said something to me once, something I haven't quite forgotten."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Men get quiet when they need help.\""
+    },
+    {
+      "t": "narrate",
+      "text": "I grunted when she said that. What do you mean, I said. Does that mean I need help?"
+    },
+    {
+      "t": "narrate",
+      "text": "No, no, she said. It was just something I've noticed."
+    },
+    {
+      "t": "narrate",
+      "text": "I looked at her. Is it Tony, I said. Does Tony need help?"
+    },
+    {
+      "t": "narrate",
+      "text": "No, she said."
+    },
+    {
+      "t": "narrate",
+      "text": "I was quiet for a moment, thinking."
+    },
+    {
+      "t": "narrate",
+      "text": "Love, I said, there's gotta be a reason you brought that up, what are you thinking about? Oh, she said. Oh nothing, just thinking, she said."
+    },
+    {
+      "t": "narrate",
+      "text": "About men in general, she said."
+    },
+    {
+      "t": "narrate",
+      "text": "Men in general. That has got to be code red for something. Love, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm confused now, I said. She looked me in the eyes and smiled."
+    },
+    {
+      "t": "narrate",
+      "text": "I love you too, she said. And she kissed me."
+    },
+    {
+      "t": "narrate",
+      "text": "And then she turned off the light."
+    },
+    {
+      "t": "narrate",
+      "text": "And then she went to sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "And then I spent half the night awake staring at the ceiling."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_nick_bedroom_drawings.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "After Halloween",
+      "sub": "Back then",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "After Halloween, Nick wasn't quite so eager to show off anymore. He wasn't proud of his accomplishments. He kept drawing but he'd never show me."
+    },
+    {
+      "t": "narrate",
+      "text": "Why? Because I'd encourage him, he'd say, I'd make him stand out. Nick was a nerd."
+    },
+    {
+      "t": "narrate",
+      "text": "We both were. When we got together, we became a greater nerd than the sum of our parts. I thought he was upset I didn't jump in the fight."
+    },
+    {
+      "t": "narrate",
+      "text": "I kept thinking, why the hell didn't I do anything? But I asked Nick and he said no, the fight would never have happened if he hadn't made that stupid costume. I'm too old for that shit, he told me, I've got to stop acting like a fucking kid, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Goddamn you, I thought. Goddamn you for saying that. Best friends since first grade."
+    },
+    {
+      "t": "narrate",
+      "text": "Best friends for close to a decade. You can't leave me behind. You can't grow up without me."
+    },
+    {
+      "t": "narrate",
+      "text": "Going to leave in six short months. Gone for who knows how long. We were renting the house but times were hard, we needed the money, we had to move someplace else."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe that's why my parents didn't want to look after Nick. Because of money. No."
+    },
+    {
+      "t": "narrate",
+      "text": "They always treated him like a son but he never once pretended to be their kid. He would joke with them, make fun of them, things I could never do."
+    },
+    {
+      "t": "narrate",
+      "text": "He made fun of my little sister. If Nick was ever mean to anyone on the planet, it was my sister. We made a comic together called Super Bitch."
+    },
+    {
+      "t": "narrate",
+      "text": "It might've been my idea. It was a bad idea. Nick drew my sister out of proportion, making her look heavier than she was, uglier than she ever could be."
+    },
+    {
+      "t": "narrate",
+      "text": "Her braces looked like the front grill of a semi, her glasses had a comic thickness. My sister loved animals. She had a small zoo in her room."
+    },
+    {
+      "t": "narrate",
+      "text": "Super Bitch was about those animals trying to escape their cruel tormentor. He thought it was all in good fun, but it wasn't. Only when she cried and she rarely cried, did he know how awful he was."
+    },
+    {
+      "t": "narrate",
+      "text": "Things people never did, Nick did. My parents loved him but they never wanted him as a son. Nick refused to come over after the fight."
+    },
+    {
+      "t": "narrate",
+      "text": "Not to visit, not to shoot the shit, not to get me in any more trouble. We spoke at school and over the phone and I would visit him at his place. But he never came over again."
+    },
+    {
+      "t": "narrate",
+      "text": "My parents noticed but said nothing."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_silkscreen_garage.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Years later",
+      "sub": "Back then · back again",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "So we moved away without Nick. We stayed in touch over the phone and I'd visit during summer vacations. It wasn't a hard thing."
+    },
+    {
+      "t": "narrate",
+      "text": "I got new friends but Nick was never pushed into the past. We stayed in touch and time passed. We both got older but only one of us grew up."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick kept his smile and casual charm but when I moved back he was suddenly beautiful to the opposite sex. His geekiness became something else entirely. His laugh was deeper and his smile a little wider."
+    },
+    {
+      "t": "narrate",
+      "text": "He still sounded like a kid. He was still the same Nick I remembered from long summers hanging out at pools and throwing rocks at hornet's nests. The very same."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick had built a printing press in his grandmother's garage and was designing, printing and selling comic books and T-shirts. He had multiple girlfriends hanging around his room at all times and never went to school. I went to his place after class to write stories and help him work the silk-screen printer."
+    },
+    {
+      "t": "narrate",
+      "text": "His grandma came up to me one day when I was fixing myself a grilled cheese, \"How's Mark doing?\""
+    },
+    {
+      "t": "narrate",
+      "text": "I just stared at her. \"Haven't seen him,\" I said."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You know Scott, you really should look after your little brother a little better,\" She said."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yes Maam, I'll keep that in mind,\" I said."
+    },
+    {
+      "t": "narrate",
+      "text": "I told Nick about the incident and he tried to explain things. Grandma started acting funny right after Grandpa left, he said. It might've been before maybe that's why he took off, I don't know."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe he just didn't want to raise my father, myself and Neal at the same time, Nick said. None of us liked Grandpa much. I don't think Grandma really loved him, at least not for a long time she didn't."
+    },
+    {
+      "t": "narrate",
+      "text": "He never looked happy. Ever. But she seems to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Right now. Pretending or imagining I'm my father, she seems a lot happier. I don't know, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I nodded and handed him back his drawing with notes on it. He ate half the grilled cheese and started on a sketch of a naked woman."
+    },
+    {
+      "t": "narrate",
+      "text": "About this time, Nick and I began working on a comic about his father, Mark. Nick hadn't spoken to him in over four years, nor his little brother. Nick had learned a lot about the man through his conversations with his grandma."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick was having weird dreams, sometimes of himself as his father as a young man. Not often but just enough to be creepy. He dug through the family albums and learned as much about his parents as he could."
+    },
+    {
+      "t": "narrate",
+      "text": "Working nine at night till four in the morning, we pushed to get the book done. It started small but became a massive project, chronicling his father's childhood up until his departure. Nick did it, he said, because he could."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a beautiful piece, done in black and white, laid out in different design schemes for each stage of his life. Nick had me write it because he wanted it to be about an outsider looking in. We compared the pictures of Mark and Scott as children, almost identical to himself and Neal."
+    },
+    {
+      "t": "narrate",
+      "text": "We started the comic with an image out of Mark's childhood. He was very small, on a sailboat with his brother. Nick told me that Mark worked with his father to build and maintain that boat all through his childhood."
+    },
+    {
+      "t": "narrate",
+      "text": "When Mark was fifteen, he got drunk and took it out with some friends. They wrecked it. That was in Corpus Christie, he said, Grandpa never forgave him."
+    },
+    {
+      "t": "narrate",
+      "text": "The night we finished, Nick looked at me and said, \"I don't ever want to be a father.\""
+    },
+    {
+      "t": "narrate",
+      "text": "That night we stayed awake till dawn and talked about the future."
+    },
+    {
+      "t": "narrate",
+      "text": "We talked about the future as two high school boys would talk about the future. We talked about our parents. Mine are together and look happy, so hell, that's what I want, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to be happy. Nick just smiled and pointed to the last page of the story. Mark was drunk and stoned on the couch."
+    },
+    {
+      "t": "narrate",
+      "text": "The last time I ever saw my father, the caption said, his eyes were rolled into the back of his head. He looked dead."
+    },
+    {
+      "t": "narrate",
+      "text": "But, I said to Nick, you're nothing like Mark. You could be a great dad."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked me in the eyes and turned away a second later. No, he said, I don't think so. Unless it happens by accident, it'd scare me too much. I don't want to be that. I don't ever want to have my kid look at me, he said pointing to page, and see this. I don't want to be seen like this."
+    },
+    {
+      "t": "narrate",
+      "text": "Nick signed the bottom of the page with an ink brush and took his glasses off to give it one final going over. He looked up and said to me, I want to be Uncle Nick. I want to be the guy kids come to for advice, to buy cigarettes and alcohol off. I love my dad but he never wanted to be my dad."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't think my grandpa wanted kids either. You, man, have wonderful parents. I wish they were mine but that's not how it works. Not all the time. You can be a good father, I think. You have that in you. No, man. I just want to be Uncle Nick."
+    },
+    {
+      "t": "narrate",
+      "text": "I just want to be the guy who loans kids dirty magazines and tells them stories they don't want to believe about their parents. It's a sad thing. A very sad thing, to say I don't ever want kids but it's the honest to god truth. I'm eighteen. I'm a fucking kid, and I don't think I will ever be an adult."
+    },
+    {
+      "t": "narrate",
+      "text": "My dad died when he became an adult. Having kids ruined him. Not at first but over time, that's what killed him. I don't want to die in my kid's eye. I don't want that to happen to me. I just want to be Uncle Nick."
+    },
+    {
+      "t": "narrate",
+      "text": "I looked at him. For an instant, what he said made sense to me."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_family_kitchen_evening.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Uncle Nick",
+      "sub": "Home · now",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Tony is looking at me, across from the table. The magazine sits between us. We are way too quiet. My wife would see something wrong with this. I don't know what to do. This is a big deal, this is a scary place to be. I love my kid, I talk to him and like to think I treat him right."
+    },
+    {
+      "t": "narrate",
+      "text": "But I wonder sometimes if Nick's words will ever come true. Will I ever fail Tony so miserably? I spin the magazine and I begin to chuckle. Goddamn it's a funny thing. Life."
+    },
+    {
+      "t": "narrate",
+      "text": "My kid sees my smile and we both share a big grin. I love this. This perfectly pathetic moment is the kind of shit I live for."
+    },
+    {
+      "t": "narrate",
+      "text": "This may not be much. This may not be anything at all. But I will remember this look on Tony's face as he stares me down, and struggles so very hard to keep it all inside."
+    },
+    {
+      "t": "narrate",
+      "text": "I will remember. Because that is all I can do."
+    },
+    {
+      "t": "narrate",
+      "text": "I have tears in my eyes but I'm not laughing or crying."
+    },
+    {
+      "t": "narrate",
+      "text": "Whenever Nick comes over, he knows it. He knows what he's missing."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch12_uncle_nick_b_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch13_sins_of_our_fathers"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "vol5_prelude_arcana_ep20_sisters_wyrd",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 17 · Sisters Wyrd",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep20_sisters_wyrd.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 17 · Sisters Wyrd",
+      "sub": "",
+      "duration": 2400
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Sisters Wyrd"
+    },
+    {
+      "t": "narrate",
+      "text": "jumping in."
+    },
+    {
+      "t": "narrate",
+      "text": "Wind came fast down the east hill shear, something of a howl also eager to rip the wrap from fingers, the blanket from back. The pack animals huffed displeasure with detached quizzical instinct, hoof stomping in multiples their remainder agitation."
+    },
+    {
+      "t": "narrate",
+      "text": "The Padre felt it in his bones, holy relics in waiting, promised to churches, cathedrals and abbeys he’d visited, his spiritual legacy all but assured."
+    },
+    {
+      "t": "narrate",
+      "text": "He was neither extraordinarily pious, nor disciplined as a devout, in fact made a shallow vessel for the incorporeal almighty, but having survived this far, he’d become something of a living saint, regardless."
+    },
+    {
+      "t": "narrate",
+      "text": "In his youth, he first witnessed momentous, never returning with a story so much as carrying it four steps ahead, often incomplete but never in doubt."
+    },
+    {
+      "t": "narrate",
+      "text": "His body held scars that burned different rainbow hues, his eyes changed shape and colour depending on temperament, never his own, instead his optics divined the nature of those reflected."
+    },
+    {
+      "t": "narrate",
+      "text": "He was on the way to Tulsa, where it all began. Where the girls were born and raised. Where they played as normal girls do, in a city"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep20_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "id": "vol3_ch8_passengers_b",
+  "vol": 3,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "vi. passengers",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chau_house_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_suburban_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Chau house",
+      "sub": "Suburbia · Saturday, noon",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "The hour noonish, later that Saturday. Aaron never really falling asleep, spent all night on Steven's computer, flaming a videogame maker for their substandard product."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven waking up, the sound of the television on in a distant room, loud, the bass from the surround a rattle, an action film playing perhaps, something blowing up, the blowing up sound continuing, not seeming to end, the din without sound continuing on even past that, shaking small objects in place on top counters."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven's head hurts but not because of the sound. Nevertheless his aggravation attributes this to that."
+    },
+    {
+      "t": "narrate",
+      "text": "Still lying down, his mouth muffled by pillow, he yells out, Aaron, Aaron."
+    },
+    {
+      "t": "narrate",
+      "text": "He is unanswered."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven sits up, eyes closed, feeling himself, scratching and rubbing at places. Light comes in through window blinds, the sound of an industrial lawn mower far off. He is wearing his boxers, he does not remember how he got here, the condition of his dormant condition."
+    },
+    {
+      "t": "narrate",
+      "text": "He hears water running, a shower or sink in another room, the walls make the sound ears make when they fill up with water, gone swimming, empty peaceful."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven stumbles through the house, yawning, tugging at boxers. He grabs candy from a candy dish, throws it in the back of his mouth. Seasonal candy, this looks like Valentine's Day, old and left out, forgotten about, unloved, he eats without thinking, grazing."
+    },
+    {
+      "t": "narrate",
+      "text": "He is in front of the bathroom door, it is closed."
+    },
+    {
+      "t": "narrate",
+      "text": "It is locked when he tries to open it. He calls out, Aaron, Aaron. Nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "Then, Aaron answers from down the hall. Steven wanders over to where the voice of Aaron should be, and there is Aaron hunched by the computer, typing, not looking up."
+    },
+    {
+      "t": "narrate",
+      "text": "Are you still feeling anything, says Steven, recalling some of his last sober thoughts."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron shakes his head, I'm gonna crash soon if that's cool. Did you want to do anything later tonight?"
+    },
+    {
+      "t": "narrate",
+      "text": "Steven mumbles something."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron nods and returns his gaze to the computer screen, transfixed with levels of murky Internet correspondence deception unfolding."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_crt_monitor_newsgroup.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Re: Smart Clarification\n\nFrom aldusm@hotmail.com\nOrganization The Leader in Internet Discussion\nDate Mon, 13 Apr 20:16:04 -0600\nNewsgroups comp.sys.ibm.pc.games.strategic,alt.games\nMessage-ID <6gudcj$1ps$1@nnrp1>\nReferences 1 2"
+    },
+    {
+      "t": "narrate",
+      "text": "Hello again,"
+    },
+    {
+      "t": "narrate",
+      "text": "I respect Dr Smart's personal decision to withhold information about where he obtained his PhD. Our school was well known to be affiliated with several government and military organizations. These connections were always a concern for the students as they might be somewhat detrimental for career advancements."
+    },
+    {
+      "t": "narrate",
+      "text": "Dr Smart's work was always held in high regard at the school and he was considered by all to be the 'authority' on Artificial Intelligence research. It's sad to see his work so maligned at present."
+    },
+    {
+      "t": "narrate",
+      "text": "His game represents the pinnacle of 'machine intelligence.' Regardless of its outer shell or other superficial problems, $50 is small price to pay for such a magnificent scientific work."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm not certain of the source validity of this next statement, but I heard from another fellow student that Dr. Smart was approached by NASA to incorporate some of the Neural Network code into future planetary probe missions (perhaps the dual probe Pluto Fast Flyby?)."
+    },
+    {
+      "t": "narrate",
+      "text": "Regards again,\n\nAldus Mayhune"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_chau_bathroom_steam.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The stranger finishing up his shower shaved several times consecutively with disposable razors found behind the mirror. Looking alert, feeling fine, sober, somewhat, sort of. Soaps and moisturizers good on the skin, clean towels rubbed hard against himself discarded in a pile."
+    },
+    {
+      "t": "narrate",
+      "text": "His hair unused to shampoo, conditioner. His fingers, nails, altogether virgin from soaking, scrubbing. He chewed at the rough ends of himself, spat them into the drain."
+    },
+    {
+      "t": "narrate",
+      "text": "It felt trespass to return clean body to filthy clothes, his only choice."
+    },
+    {
+      "t": "narrate",
+      "text": "Soaking his skin and first layer of clothing in aftershave, spray-on deodorant, musk and ozone, fake and sensual, tickling his nostrils burning him like a beautiful dream."
+    },
+    {
+      "t": "narrate",
+      "text": "Looking, seeing an old man, where did the boy go, wanting to hurt the stupid child, if he could still see him he would."
+    },
+    {
+      "t": "narrate",
+      "text": "Too much. He can't deal."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hot_tub_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_club_pulse.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Amanda's",
+      "sub": "A friend's house · Saturday, 10 p.m.",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Around ten Saturday night, the two boys at a friend's house, her name Amanda, and with Amanda, her friend Summer. The scene in which our young heroes find themselves naked in water coughed up by air jets passing around a bottle of jack daniels."
+    },
+    {
+      "t": "narrate",
+      "text": "So there's this kid who came up to me the other day, Robert was his name and he was like all into me and I was just like no way."
+    },
+    {
+      "t": "narrate",
+      "text": "Lots of Roberts."
+    },
+    {
+      "t": "narrate",
+      "text": "This one you'd know if you saw him. Real freaky, long hair, denim jacket, headband."
+    },
+    {
+      "t": "narrate",
+      "text": "What's up with that?"
+    },
+    {
+      "t": "narrate",
+      "text": "(it continues like this, oblivious and wasteful, words and skin brush up against one another, hardly interesting except for the surface sensation, the lingering sensuality of buzz and boredom, kids who look across see opposite sex mysterious, hardly knowing, not really very attracted, more curious,"
+    },
+    {
+      "t": "narrate",
+      "text": "withholding depth for someone else special, another unspoken about at another table across town in a place just like this with someone else not unlike them, for if they kiss it is not because they want but because they can and it may not feel spectacular because good may be enough to get them through this moment,"
+    },
+    {
+      "t": "narrate",
+      "text": "what is this really but filler, artificial sweetener adding to the overall package, caloric contents printed on side panels for public consumption, poisons tucked down there at the very bottom almost German in their polysyllabic never-ending.)"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_blanket_fort_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "They end up passed out in towels and blankets on pushed together couches, curled up tight like children asleep or near to it, music videos playing behind them on a large television. A large floor fan drones and kicks a sheet into the air, tented in place by a tall floor lamp."
+    },
+    {
+      "t": "narrate",
+      "text": "A billowing fort, they are enclosed and safe and comfortable."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch8_passengers_b_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch8_passengers_c"
+    }
+  ]
+}

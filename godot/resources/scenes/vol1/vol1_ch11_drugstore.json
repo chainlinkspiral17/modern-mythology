@@ -1,0 +1,382 @@
+{
+  "id": "vol1_ch11_drugstore",
+  "vol": 1,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "Act Three — The All-Night Drugstore",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_drugstore_purgatory.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_diner_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The All-Night Drugstore",
+      "sub": "INT. · No Time",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "It's Faust's drugstore, or a cousin of it. Same impulse racks, same cheap fluorescent buzz, same chalky smell. It's also a gas station: pumps outside on the water, a methane torch burning on a pole, a bucket of filthy window-wash fluid by the door."
+    },
+    {
+      "t": "narrate",
+      "text": "Every light is on, inside and out."
+    },
+    {
+      "t": "narrate",
+      "text": "There are customers who aren't buying anything. They stand in the aisles reading the backs of things, and some of them have been reading the same box a long time."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "(low) This place."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I've been in this place. Every road trip. Two in the morning, you need gas and Funyuns."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "This is my store."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "It's everybody's store."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Stop doing that."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind the front counter, where Deborah should be, there's a reception desk. Olivia is behind it, the secretary from the tutorial, in the same cardigan, typing. A cat carrier sits on the counter beside her keyboard with the little door open."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Greetings gentlemen. I'm here to help you adjust."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Olivia? From the lobby? From the hazy?"
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "I'm a very real person. I keep saying that. Nobody ever writes it down."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Is this still the tutorial."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "It's always still the tutorial. Try adjusting your viewpoint to Empathetic."
+    },
+    {
+      "t": "narrate",
+      "text": "The three touch their earbuds. Her voice breaks up and the subtitles come."
+    },
+    {
+      "t": "say",
+      "char": "Olivia (alternate)",
+      "expr": "neutral",
+      "text": "She's been tired for weeks. I brought her to work because I didn't want her to be alone for it. I keep the door open, so she can decide."
+    },
+    {
+      "t": "narrate",
+      "text": "They all look at the carrier. A gray cat comes out slowly, the way old cats get up, and sits on the counter facing Faust."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "(to the cat) Hey there."
+    },
+    {
+      "t": "narrate",
+      "text": "The cat looks at him. Then at the door. Then at the water outside, where Judgement Day is waiting with its engine idling."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "She wants a ride."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm not taking a cat to — I'm not taking a cat."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "You're the one with the boat."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "warm",
+      "text": "(gentle, for Jacob) Faust. That's the job, right. That's what the job is. Not bringing them back. Taking them over."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust stands there. Then he picks up the cat, carefully, the way you pick up something that already hurts. He carries her out the door, down to the boat, and sets her on the front seat. She turns around once and lies down."
+    },
+    {
+      "t": "narrate",
+      "text": "He comes back in without her. Out on the water Judgement Day pulls away from the dock with nobody at the wheel, slow and steady, the cat's shape small in the window, and heads off into the bright."
+    },
+    {
+      "t": "narrate",
+      "text": "Olivia watches it go. She keeps typing."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Thank you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I didn't do anything."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "You opened the door and held it. That's mostly what anybody does."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "How do we get our ride back."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "It comes back. It always comes back. It's a car."
+    },
+    {
+      "t": "narrate",
+      "text": "An OLD WOMAN, the happy one from the pharmacy counter, comes up to the counter with her prescription bag still stapled shut."
+    },
+    {
+      "t": "say",
+      "char": "Old Woman",
+      "expr": "neutral",
+      "text": "I'm early. They said I'd be early."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You told me to be young and happy forever."
+    },
+    {
+      "t": "say",
+      "char": "Old Woman",
+      "expr": "neutral",
+      "text": "And are you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Working on it."
+    },
+    {
+      "t": "say",
+      "char": "Old Woman",
+      "expr": "neutral",
+      "text": "That's the most anybody gets. Working on it. (she pats his hand) Go on. You're blocking the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "Olivia slides three forms across the desk. On each one the boxes have been filled in already in Faust's handwriting, which he doesn't remember doing."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "To go further in you need a pass."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "What kind of pass."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Any kind of pass. But it has to be yours."
+    },
+    {
+      "t": "narrate",
+      "text": "They have nothing. Faust's earbud clicks and another sample comes up out of the queue."
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "amused",
+      "text": "(from the bar, delighted, a little drunk) Corbin Dallas. Multi-pass. Multi-pass!"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "(cracking up) Emily. Oh my god."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Say it."
+    },
+    {
+      "t": "say",
+      "char": "Faust, Jacob, Wagner",
+      "expr": "neutral",
+      "text": "(together, terrible Leeloo accent) Multi-pass."
+    },
+    {
+      "t": "narrate",
+      "text": "Olivia stamps all three forms."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Pinball is a valid form of identification. Through the back. You'll see."
+    },
+    {
+      "t": "narrate",
+      "text": "At the rear of the store, where the pharmacy window should be, there are three aisles. The hanging signs over them read, in the same corporate font as COUGH & COLD:\nHISTORY. MUSIC. ART."
+    },
+    {
+      "t": "narrate",
+      "text": "The air coming out of each one is different. HISTORY smells like paper and jet fuel, MUSIC like hot asphalt and amplifier dust, and ART like linseed oil and something burning low."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob's shirt-Air leans toward HISTORY. Wagner's shirt-Fire leans toward MUSIC. Faust's shirt-Water doesn't lean anywhere."
+    },
+    {
+      "t": "narrate",
+      "text": "She's looking up at him."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "your call, captain."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(faint) This is the step. The one I warned you about."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Switch to Target Demographic real quick. I want to see what they're selling."
+    },
+    {
+      "t": "narrate",
+      "text": "They do. The signs flicker. HISTORY: A Heritage You Can Trust. MUSIC: Feel Something Today. ART: Express Yourself (Terms Apply)."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Gross. Switch it back."
+    },
+    {
+      "t": "narrate",
+      "text": "They switch it back."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Whoever goes first leads. The other two follow and keep him tethered. Then we switch."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Who goes first."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch11_drugstore_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch11_aisles"
+    }
+  ]
+}

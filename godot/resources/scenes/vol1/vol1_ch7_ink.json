@@ -1,0 +1,351 @@
+{
+  "id": "vol1_ch7_ink",
+  "vol": 1,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Act Two — Wear My Ink",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Afterwards",
+      "sub": "INT. Faust's Home · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Afterwards, Joan is dressing, her naked back visible to John."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Tonight I go to battle. I'd like you to paint me with thoughts that are warm, strong, and fierce."
+    },
+    {
+      "t": "narrate",
+      "text": "John brushes her back. He traces a faint line with his fingernail, etching in basic lines."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I can do that."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "I don't ask that you do it. I ask that you do it well. All that you do not yet see is apparent to me. You have a gift, you are an artist."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I was never very good at it."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You speak of the past as if it is ancient history. As long as you live and breathe, your will is a vital part of existence. Do not be afraid to exercise your will."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust gets up to get his paint. He returns and prepares behind her."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm a little afraid but mostly of myself."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "That is the best fear. Be your own worst enemy and all others will seem trivial."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "How did you get so strong."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "I got hurt time after time, my body grew tired of hurting so it became strong."
+    },
+    {
+      "t": "narrate",
+      "text": "John strokes her back with his brush."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol1_joan_painted_back.jpg",
+      "caption": "Paint me how you see me"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Your brush is coarse and scratches."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Would you like me to use one softer?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Paint me how you see me, John Faust and power will come from that."
+    },
+    {
+      "t": "narrate",
+      "text": "John kisses her neck, she looks up. The brush comes down her spine."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You will be in my thoughts while I do what I must."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "worried",
+      "text": "We've only just met. But come back to me in one piece, okay?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "What if this is all we get, John Faust?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm selfish and don't accept that."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "And I repeat, what if this is it?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Wear my ink for as long as you can."
+    },
+    {
+      "t": "narrate",
+      "text": "Joan kisses Faust and gets dressed. He touches her dagger until she takes it from him."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Goodbye John Faust."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She is gone. John looks at his brushes. Then gets up to paint."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Sit with the brushes a while.",
+          "goto": 36
+        },
+        {
+          "text": "Paint.",
+          "goto": 37
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The bristles are still wet with the colors of her back."
+    },
+    {
+      "t": "narrate",
+      "text": "He paints Joan charging off into battle. Her clashes, her triumphs, her victory over many strange foe."
+    },
+    {
+      "t": "narrate",
+      "text": "A phone ringing interrupts him. Faust answers it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Yellow?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You and your friends headed by the club tonight?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "At some point."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Stop worrying about her and come out and play."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm sure she'll be okay."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You don't fool me."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I've only known her a day."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You've known her a lot longer than that."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "This is all some test, isn't it?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "A worthy quest for a worthy hero."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm not, though."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You will be, soon enough."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "worried",
+      "text": "How bad will things get, if you don't mind me asking?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "It's all coming down."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Just as we're building it all up?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Doesn't seem fair, does it?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm an optimist. Eternal optimist."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Good. The world needs your kind, too."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Why I'm here."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch7_ink_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch8_club"
+    }
+  ]
+}

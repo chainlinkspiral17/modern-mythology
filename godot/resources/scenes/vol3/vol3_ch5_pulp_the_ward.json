@@ -1,0 +1,142 @@
+{
+  "id": "vol3_ch5_pulp_the_ward",
+  "vol": 3,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "i. the boy from pasadena — the ward",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pulp_ward_rows.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_hospital_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "i. the boy from pasadena — the ward",
+      "sub": "transmission · inside the machine",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes are open and they will not close. The light is there and it does not stop, long white tubes laid end to end down a ceiling running on farther than any ceiling has a right to run, buzzing, flickering at the edges, and Jack Perkins lies under it on a narrow cot railed in steel and can't look away, can't blink, can't do much of anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Some salve or ointment sits thick on his eyes, cool, a greasy film over everything, the lights smeared to halos. He tells his eyelids to close and they don't listen, his arms don't listen, his legs he can't find at all."
+    },
+    {
+      "t": "narrate",
+      "text": "He is not alone. He turns his head the inch it will turn and there is another cot and a man on it, and past that man another, and another, a long row of sleepers laid out like specimens in a museum drawer, each one tethered to the wall by bundles of cable and clear rubber hose."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_pulp_ward_sleepers.jpg",
+      "caption": "the rows"
+    },
+    {
+      "t": "narrate",
+      "text": "The hoses run red and yellow and clear. The cables run to black glass boxes where a green line jumps and falls, jumps and falls, drawn across and wiped away and drawn again, every box keeping its own time, every box chirping, tiny lights blinking all over them like little eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "Crickets, a hundred crickets all out of step, a summer night with no night in it."
+    },
+    {
+      "t": "narrate",
+      "text": "So this is the inside of the machine. He expected gears, dynamos, the hot green throat of a generator, ozone and burnt cork and sparks."
+    },
+    {
+      "t": "narrate",
+      "text": "Instead it is clean, cleaner than any lab he was ever allowed into, cleaner than his mother's kitchen Sunday morning, and it smells of rubbing alcohol and of something under the alcohol the alcohol is meant to cover up."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "linger on the boxes.",
+          "goto": 15
+        },
+        {
+          "text": "lie still.",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The green line in the nearest box stutters, skips, catches itself and goes on."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the chirping, along the floor, a hum, steady, the cold breath of some engine somewhere keeping the whole place cold."
+    },
+    {
+      "t": "narrate",
+      "text": "A figure comes down the row. It walks on two legs like a man. It is covered head to heel in a suit the color of pond scum, a paper muzzle over its mouth and nose, its hands sheathed in a second skin so thin he can see the knuckles through it."
+    },
+    {
+      "t": "narrate",
+      "text": "It stops at each sleeper, reads the green lines, pinches a hose and the hose drips faster, makes marks on a board it carries, moves on. When it gets to Jack it bends down close, its eyes right up in his eyes, and the eyes are human. Brown and tired and dark underneath from no sleep. Somebody's aunt maybe."
+    },
+    {
+      "t": "narrate",
+      "text": "It talks. The words have English in them but the English is wrong, bent, chopped up. He hears numbers in it, pressure, something about a line. He hears it call him honey and that can't be right."
+    },
+    {
+      "t": "narrate",
+      "text": "He tries to tell it his name, the year he set out from, the coordinates of the arroyo, the institute that will vouch for him, his father's name. His mouth won't make a single word. His tongue just lies there, a dead thing in his jaw."
+    },
+    {
+      "t": "narrate",
+      "text": "The figure puts its gloved hand flat on his chest and leaves it there awhile, then goes on down the row."
+    },
+    {
+      "t": "narrate",
+      "text": "Overhead, past the tubes, past the ceiling, the great machines are still coming and going, he can feel the thunder of them through the steel of the cot, the roof taking their weight. Out over the ruin with their pink lights, picking up the ones lying still and bringing them here into the rows, for what purpose he can't begin to guess."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere down the row a door sighs open and sighs shut and through it for the length of a breath comes the voice. Angry, desperate, pleading. Not quite English. Almost."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack Perkins lies under the light with his eyes open and counts crickets and waits for his body to come back to him."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch5_pulp_the_ward_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch5_non_stop_flights"
+    }
+  ]
+}

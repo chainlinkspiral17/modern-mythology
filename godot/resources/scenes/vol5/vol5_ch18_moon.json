@@ -309,7 +309,7 @@
       "t": "say",
       "c": "aria",
       "text": "[shot:closeup natalie]Visitor. How long.",
-      "char": "natalie",
+      "char": "aria",
       "voice": "assets/audio/voice/vol5_ch18_moon/061.mp3"
     },
     {
@@ -322,28 +322,28 @@
       "t": "say",
       "c": "natalie",
       "text": "Minutes, I think.",
-      "char": "aria",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/063.mp3"
     },
     {
       "t": "say",
       "c": "aria",
       "text": "Should I wake her.",
-      "char": "natalie",
+      "char": "aria",
       "voice": "assets/audio/voice/vol5_ch18_moon/064.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "Yes, sweetheart. Both of you are going to need to be awake.",
-      "char": "aria",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/065.mp3"
     },
     {
       "t": "say",
       "c": "aria",
       "text": "Understood.",
-      "char": "natalie",
+      "char": "aria",
       "voice": "assets/audio/voice/vol5_ch18_moon/066.mp3"
     },
     {
@@ -355,7 +355,7 @@
       "t": "say",
       "c": "nicola",
       "text": "What —",
-      "char": "aria",
+      "char": "nicola",
       "voice": "assets/audio/voice/vol5_ch18_moon/068.mp3"
     },
     {
@@ -368,7 +368,7 @@
       "t": "say",
       "c": "natalie",
       "text": "[shot:closeup nicola]Someone's coming, Nic. It's okay. Sit up. Put on your shoes.",
-      "char": "nicola",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/070.mp3"
     },
     {
@@ -465,7 +465,7 @@
       "t": "say",
       "c": "miriam",
       "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/089.mp3"
     },
     {
@@ -479,7 +479,7 @@
       "t": "say",
       "c": "miriam",
       "text": "Close enough.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/091.mp3"
     },
     {
@@ -491,7 +491,7 @@
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup miriam]Hello, dear. I'm here for you.",
-      "char": "nicola",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/093.mp3"
     },
     {
@@ -518,14 +518,14 @@
       "t": "say",
       "c": "nicola",
       "text": "[shot:closeup natalie]Who are you.",
-      "char": "natalie",
+      "char": "nicola",
       "voice": "assets/audio/voice/vol5_ch18_moon/098.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "I'm a friend of Joanna LeMoine's.",
-      "char": "aria",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/099.mp3"
     },
     {
@@ -537,28 +537,28 @@
       "t": "say",
       "c": "nicola",
       "text": "[shot:closeup natalie]Joanna —",
-      "char": "natalie",
+      "char": "nicola",
       "voice": "assets/audio/voice/vol5_ch18_moon/101.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "The woman in the ruins. You don't know her. She knows you. She has known you, in the way she knows people, since you were about twelve. She's asked me to come get you.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/102.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "Come get me where.",
-      "char": "natalie",
+      "char": "nicola",
       "voice": "assets/audio/voice/vol5_ch18_moon/103.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "Somewhere safe. Somewhere the man from Table 14 can't find you. Somewhere where what's growing in you can grow. Both of what's growing in you.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/104.mp3"
     },
     {
@@ -582,35 +582,35 @@
       "t": "say",
       "c": "miriam",
       "text": "Because you've been broadcasting on a frequency Joanna LeMoine has been listening to for thirty-eight years, dear.",
-      "char": "nicola",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/108.ogg"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "Because the older system has been moving pieces to get you somewhere safe before the thing that's about to happen happens. Because Joanna wrote a letter this morning and the letter set pieces moving, and one of the pieces is me.",
-      "char": "nicola",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/109.ogg"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "I'm the piece that gets you in the car.",
-      "char": "nicola",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/110.ogg"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "You don't have to come. I can tell you what will happen if you don't. You won't like it. But I'm not going to force you. This is a ride, not a collection.",
-      "char": "aria",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/111.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "[shot:closeup nicola]Nic. Aria. Listen to me.",
-      "char": "nicola",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/112.mp3"
     },
     {
@@ -622,7 +622,7 @@
       "t": "say",
       "c": "natalie",
       "text": "I've known there was weather coming since midnight. I didn't know what the weather was. I now know. I trust this woman because the room trusts this woman.",
-      "char": "aria",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/114.mp3"
     },
     {
@@ -634,21 +634,21 @@
       "t": "say",
       "c": "natalie",
       "text": "The room is not often wrong. I'm going to suggest you go with her. I'm going to suggest it for reasons I can't fully explain, but which I would explain if I could. Do you want me to come.",
-      "char": "nicola",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/116.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "Can you.",
-      "char": "aria",
+      "char": "nicola",
       "voice": "assets/audio/voice/vol5_ch18_moon/117.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "If Miriam says yes.",
-      "char": "nicola",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/118.mp3"
     },
     {
@@ -660,7 +660,7 @@
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup natalie]I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/120.mp3"
     },
     {
@@ -672,7 +672,7 @@
       "t": "say",
       "c": "natalie",
       "text": "Then yes, Nic. I'll come to the line.",
-      "char": "nicola",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/122.mp3"
     },
     {
@@ -862,7 +862,7 @@
       "t": "say",
       "c": "miriam",
       "text": "This is where you get out.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/159.mp3"
     },
     {
@@ -875,14 +875,14 @@
       "t": "say",
       "c": "natalie",
       "text": "Okay.",
-      "char": "miriam",
+      "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch18_moon/161.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup natalie]The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue.",
-      "char": "natalie",
+      "char": "miriam",
       "voice": "assets/audio/voice/vol5_ch18_moon/162.mp3"
     },
     {

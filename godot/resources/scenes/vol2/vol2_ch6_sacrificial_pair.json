@@ -1,0 +1,192 @@
+{
+  "id": "vol2_ch6_sacrificial_pair",
+  "vol": 2,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. Triptych — The Sacrificial Pair",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_upturned_log_woods.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Second Panel — The Sacrificial Pair",
+      "sub": "a story of who we were",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Just write and this will all make sense."
+    },
+    {
+      "t": "narrate",
+      "text": "Idyllic: a beautiful word for a beautiful state of being. We never know we are living in such times until they are gone from us forever, memories rooted just beneath the surface like gentle barbs. There are two basic forms of idyllic existence, the flurry hurried up passage of time and the trawling crawl of time."
+    },
+    {
+      "t": "narrate",
+      "text": "The first time I ever felt connected to Small Wood, I was standing by a large upturned log with my new friends Justin and Katrina. We were using Justin's hi8 video camera to record footage of Katrina wandering around."
+    },
+    {
+      "t": "narrate",
+      "text": "I had written something and that impulse required me to reach out and use what I could find to bring life to the endeavor."
+    },
+    {
+      "t": "narrate",
+      "text": "Katrina was a year between Justin and I. That day she was dressed plainly, very much acting like a tomboy, assertive, adventurous and content with half a sly smile. Justin and I would make light fun of her, something she enjoyed."
+    },
+    {
+      "t": "narrate",
+      "text": "She appreciated people who didn't take her too serious, who dared her to let her guard down. We'd think of odd behaviors to stick to her on camera. Bite into this raw onion, it'll make you cry."
+    },
+    {
+      "t": "narrate",
+      "text": "We didn't want to capture the tears so much as her protestation and eventual resignation to her fate."
+    },
+    {
+      "t": "narrate",
+      "text": "Like most of our documentation, the footage of Kate and the log really had no purpose; it was not connected to the narrative, just something Justin wanted to shoot, something I could not imagine. Justin, who would become and remain one of my favorite people in the world, was two years younger than I was."
+    },
+    {
+      "t": "narrate",
+      "text": "At that point, he was timid and slight with an intense gaze that would lock on to a person."
+    },
+    {
+      "t": "narrate",
+      "text": "The first encounter I remember Justin by occurred in the school lunch room. I was eating there atypically and reading a film script. Justin walked by, recognized the page format and asked to sit and talk about it over."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a simple connection between two like minds. Justin had lived his whole life in Small Wood belonging totally to the place, yet not surprisingly never quite fitting in. He dreamt of bigger cities and bigger budgets."
+    },
+    {
+      "t": "narrate",
+      "text": "My fault for the horrible dialogue coming out of their mouths, I winced because I knew how bad it was, smiled because they were trying too hard to sell it and I didn't have the heart, we didn't have the time to stop and try again."
+    },
+    {
+      "t": "narrate",
+      "text": "Because light was fading fast, their energy was depleted and we were all anxious to move onto the next shot. I had given up caring about the words I'd written, instead focused on the technical details and creative problem solving of production. There is a dream inherent in youth."
+    },
+    {
+      "t": "narrate",
+      "text": "To aspire to so much, try so hard and fail so miserably. Always worthy, this attempt was, learning the limits of what could be achieved through sheer will alone. Money was not a factor as we had none to spend."
+    },
+    {
+      "t": "narrate",
+      "text": "Actors had no training, their only prequalification a necessary willingness to be bored and waste time entertaining themselves and each other while we worked out all the details of a particular shot. Our locations were our saving grace."
+    },
+    {
+      "t": "narrate",
+      "text": "The city of Small Wood had a rundown quality that looked appropriate and somewhat more beautiful because of the hi8 video. The foliage popped out a brighter green, the small scars and stains of wear and tear lost themselves to the low resolution capture."
+    },
+    {
+      "t": "narrate",
+      "text": "When we ran out of ideas we captured each others lives and tried to somehow tie it into the narrative we conjured out of thin air. A parade Kate had to appear in two towns away became a backdrop for a scene in which the hero first eyes her and falls in love with this being of luminous beauty."
+    },
+    {
+      "t": "narrate",
+      "text": "We kept moving and shooting, writing and scheming. Justin and I would spend weekends trying to piece together footage analog, scene by laborious scene on two editing deck VCRs. It always ended up a mess but we were always happy however aborted our labor should've been."
+    },
+    {
+      "t": "narrate",
+      "text": "It was strange to capture so much youth before it faded away so fast."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_ark_hillside.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The Ark",
+      "sub": "a hillside · Small Wood",
+      "duration": 1800
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the ark",
+          "goto": 28
+        },
+        {
+          "text": "remember what everyone told you",
+          "goto": 35
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "It should have been a religious experience seeing the Ark for the first time. The wooden dreadnaught was empty of animals, fallen to ruin, sitting unused and hollow on the side of a hill."
+    },
+    {
+      "t": "narrate",
+      "text": "The man who had grown old building it, watched his wife and children leave him because of it, still resided in a small shack workshop nearby. Animal cages were many and empty, the scale of the project staggering in how wasteful. He gave tours for free because God would want it that way."
+    },
+    {
+      "t": "narrate",
+      "text": "People always gave him money anyways, he always said godbless, not refusing charity."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd heard of the Ark from many people. Since I was new, everyone explained in great detail with much emphasis how I needed to check the place out. Members of the football team razed the place every year, stealing supplies, pissing on it, breaking stuff for the hell of it."
+    },
+    {
+      "t": "narrate",
+      "text": "There were advertisements and announcement signs off the road, handpainted pointing the way. I did my best to keep a safe distance."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_sacrificial_pair_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_ark"
+    },
+    {
+      "t": "narrate",
+      "text": "I'd heard of the Ark from many people. Since I was new, everyone explained in great detail with much emphasis how I needed to check the place out. Members of the football team razed the place every year, stealing supplies, pissing on it, breaking stuff for the hell of it."
+    },
+    {
+      "t": "narrate",
+      "text": "There were advertisements and announcement signs off the road, handpainted pointing the way. I did my best to keep a safe distance."
+    },
+    {
+      "t": "narrate",
+      "text": "It should have been a religious experience seeing the Ark for the first time. The wooden dreadnaught was empty of animals, fallen to ruin, sitting unused and hollow on the side of a hill."
+    },
+    {
+      "t": "narrate",
+      "text": "The man who had grown old building it, watched his wife and children leave him because of it, still resided in a small shack workshop nearby. Animal cages were many and empty, the scale of the project staggering in how wasteful. He gave tours for free because God would want it that way."
+    },
+    {
+      "t": "narrate",
+      "text": "People always gave him money anyways, he always said godbless, not refusing charity."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_sacrificial_pair_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_ark"
+    }
+  ]
+}

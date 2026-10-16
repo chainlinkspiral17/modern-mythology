@@ -1,0 +1,558 @@
+{
+  "id": "vol1_ch12_history",
+  "vol": 1,
+  "chapter": 12,
+  "type": "chapter",
+  "title": "Act Three — History",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_drugstore_aisles.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "HISTORY",
+      "sub": "The Back of the Store · No Time",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(before anyone else can answer) Me. Get it over with. History's the oldest. It goes first. That's how history works."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Bossy."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Chronological."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob walks into HISTORY. The others follow."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_hall_of_ratifications.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_dream_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The Hall of Ratifications",
+      "sub": "EXT. Airfield · No Time",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "It's a hangar the size of a sky. Hanging from the rafters on wires, like a museum, are aircraft, one for every year anybody can remember: biplanes, a silver Clipper, bombers with names painted on the noses, a crop duster, a passenger jet frozen mid-bank."
+    },
+    {
+      "t": "narrate",
+      "text": "Under them are long tables piled with ledgers, and the ledgers stretch off further than anyone can see."
+    },
+    {
+      "t": "narrate",
+      "text": "At the tables sit clerks with eyeshades and no faces, signing. Pens scratch everywhere, like rain on a tin roof."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob's shirt-Air lifts off his chest and hangs in the air beside him, made of drafts and paper scraps."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "Finally. One of you reads."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(to Faust) Your painting's talking to me."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "She does that."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "What are you reading, Jacob."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(automatic, he's been asked before) Ratifying nations of the comprehensive nuclear test ban treaty."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "And?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "And it's a list. Of who signed and who signed but didn't ratify and who never signed at all. And then there's a list underneath that list nobody prints of everyone who lived downwind."
+    },
+    {
+      "t": "narrate",
+      "text": "The nearest ledger flips open by itself. Rows and rows of names in faint pencil, the downwind list."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Jesus."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "That's the part I can't put down."
+    },
+    {
+      "t": "narrate",
+      "text": "A CLERK with no face slides a pen across to Jacob."
+    },
+    {
+      "t": "say",
+      "char": "Clerk",
+      "expr": "neutral",
+      "text": "Sign in."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I'm not here to sign anything. Last guy who offered us a deal gave us shirts."
+    },
+    {
+      "t": "say",
+      "char": "Clerk",
+      "expr": "neutral",
+      "text": "Everyone here signs in. You signed in when you were born. This is just the visitor log."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob takes the pen. He hesitates over the line."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Use your real name."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I always use my real name."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Use all of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob signs. The ink sits on the page a second, then soaks in."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere overhead, one of the hanging planes, a small one, single prop, unpainted, starts its engine."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "That's yours. Go up. See it from where it happened."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Guys."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "We're right here. We'll be on the radio."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You don't fly."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I skate. It's close."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob climbs a rolling stair to the plane, which hangs from its wires and then doesn't need them. He drops into the cockpit and takes off right out of the rafters, banks once around the hangar and out through a wall that turns out to be sky."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_above_the_record.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Above the Record",
+      "sub": "EXT. · Continuous",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob flies over history. It's laid out like a board game seen from above, a map with the paint still wet, little lit-up places where things happened, and he can zoom in on any of them by looking."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(into his radio) You guys seeing this."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "On the goggles. It's beautiful."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "It's not beautiful. It's a lot of people, having the worst day of their lives in tiny dioramas."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "It can be both, bro."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(tight) That's what the brochures say."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky darkens a little. A voice that isn't his starts in under the radio."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "What do you know of human history. Really truly."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You again."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You never answered."
+    },
+    {
+      "t": "narrate",
+      "text": "Below him one of the little lit places brightens: an old city, a square, a stake and smoke."
+    },
+    {
+      "t": "narrate",
+      "text": "The plane drops toward it without Jacob steering. He fights the stick and it doesn't help."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Faust. I'm going in. I'm not choosing it, it's choosing it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Then look. Switch to Empathetic. Look at what you're looking at."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob switches. The square comes up close. Smoke, crowd, and in the middle a girl in armor that doesn't fit her, hair cut short, chin up. Her back is turned to him, and across her back, under the armor straps, are painted lines: warm, strong, fierce brushwork, a coarse brush that scratched."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "sad",
+      "text": "(quiet) Faust."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I think I found your girl. Or a girl. In the record. She's — they're burning her. They're about to. It's a long time ago."
+    },
+    {
+      "t": "narrate",
+      "text": "Silence on the line."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Is it her."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "It's everybody who ever went to battle when they told her not to. It's a type. She's a type in the history books. That's what history does, man. It makes a girl into a type."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob circles. He doesn't land. He can't do anything for her and he knows it."
+    },
+    {
+      "t": "narrate",
+      "text": "The girl in the square turns her head, not all the way, just enough. She can't possibly hear an airplane from that century, but she looks up anyway."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "She saw me."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "(in the cockpit with him now, wind in a jar) She sees everyone who looks. It's her whole trouble."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Can I take her. Can I just put the plane down and take her out of there."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "That's not your job. Your job is the other thing."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "What other thing."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "Answer the man's question."
+    },
+    {
+      "t": "narrate",
+      "text": "The plane dips and Jacob's stomach goes. The ledger-names start rising off the ground like smoke, thousands of them, all the downwind names, and fill up the sky around him. He can't see. The engine coughs."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I'm losing it. I'm losing the horizon."
+    },
+    {
+      "t": "narrate",
+      "text": "His earbud clicks."
+    },
+    {
+      "t": "say",
+      "char": "Jacob's Son",
+      "expr": "neutral",
+      "text": "dad, dad, what's history."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob stops fighting the stick."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(to his son, not to anyone else) History, buddy. History is everybody who ever made dinner for somebody. Everybody who waited up. It's the treaty and it's who lived downwind and it's the girl in the square and it's also me, cooking schnitzel on a Tuesday, while you ask me if it's a dinosaur."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "It's not the important people. It's mostly people waiting for somebody to come home. And I'm going to come home. Because I'm selfish. Because I want to see what you turn into."
+    },
+    {
+      "t": "narrate",
+      "text": "The names part. A horizon line comes back, clean and level."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "amused",
+      "text": "(pleased) There it is."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "(very quietly) Thank you. I didn't know that. I was born knowing everything and I didn't know that."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You're welcome, weirdo."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob banks away from the square. He looks back once. The girl is still looking up, or her painting is."
+    },
+    {
+      "t": "narrate",
+      "text": "He brings the plane in and lands it in the hangar on a table, among the ledgers, nose down in the paperwork. Faust and Wagner pull him out."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "You okay?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I need a drink and a hug and a different century."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Was it her."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(handing him something) Here."
+    },
+    {
+      "t": "narrate",
+      "text": "A page from the visitor log, torn out. Jacob's signature is on it, and beneath his, in a different hand, a single initial:\nJ."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That's all?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "That's history, man. You get an initial. You're lucky."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust folds the page and puts it in his pocket next to the Advil."
+    },
+    {
+      "t": "say",
+      "char": "Air",
+      "expr": "neutral",
+      "text": "(drifting back onto Jacob's chest, settling into cotton) Nordic runes etched on your back, you said. Turn around."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob turns. On the back of his shirt, where there was nothing, there's a single line of pencil, faint, one name from the downwind list he doesn't know."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I'll carry it. Somebody should."
+    },
+    {
+      "t": "narrate",
+      "text": "The aisle sign flickers back. They're standing between shelves of cough drops. MUSIC is lit up next door."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "My turn."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch12_history_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch11_aisles"
+    }
+  ]
+}

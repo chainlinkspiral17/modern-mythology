@@ -1,0 +1,205 @@
+{
+  "id": "meld_kaleidoscope_f",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — number zero",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_pier_crabbing.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the derby",
+      "sub": "Small Wood · August · a hip bar · the flats",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Crab derby off the pier. Numbers painted on the shells, a chalk line across the boards, everybody leaning over it."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "Shots all around."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "None for me ginger beer thanks"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Twenty bucks says it's the same crab."
+    },
+    {
+      "t": "narrate",
+      "text": "Everybody laughs. The winner comes over the chalk sideways, slow. Its number is zero."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_facet_derby_zero.jpg",
+      "caption": "number 0"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "But aren't we already I mean look at us"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "warm",
+      "text": "living in this land of milk honey."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the clipping",
+      "sub": "Elk Lodge · corkboard · undated",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "In Small Wood's Elk Lodge, a newspaper clipping behind glass, yellow at the edges."
+    },
+    {
+      "t": "narrate",
+      "text": "Disappearances occur at a higher than normal percentile in towns such as Small Wood."
+    },
+    {
+      "t": "narrate",
+      "text": "A girl by the name of Gloria Bryant was last seen tending to chickens in a coop outside her room."
+    },
+    {
+      "t": "narrate",
+      "text": "And finally, the most very sad and true fact about a person who disappears off the face of the map is that they are most often never heard from again. There are always exceptions, as people are so prone to prove."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_tideflats_crab_vga.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_scumm_adlib.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Out on the flats the crab lifts one leg and holds it there."
+    },
+    {
+      "t": "narrate",
+      "text": "It turned one eye toward the beach, an eye on a stalk as tall as the water tower."
+    },
+    {
+      "t": "narrate",
+      "text": "It was looking at me looking at it."
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_derby",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "turn the lens, and the lens turns.",
+      "opts": [
+        {
+          "text": "the water tower, in wet paint",
+          "scene": "meld_kaleidoscope_b",
+          "hide_if": "meld_facet_tower"
+        },
+        {
+          "text": "coffee in the editing suite",
+          "scene": "meld_kaleidoscope_c",
+          "hide_if": "meld_facet_suite"
+        },
+        {
+          "text": "a copy of a copy of a copy",
+          "scene": "meld_kaleidoscope_d",
+          "hide_if": "meld_facet_xerox"
+        },
+        {
+          "text": "the lamp, the porthole",
+          "scene": "meld_kaleidoscope_e",
+          "hide_if": "meld_facet_porthole"
+        },
+        {
+          "text": "crab number zero",
+          "scene": "meld_kaleidoscope_f",
+          "hide_if": "meld_facet_derby"
+        },
+        {
+          "text": "stop turning.",
+          "scene": "meld_kaleidoscope_g",
+          "requires": [
+            "meld_facet_tower",
+            "meld_facet_suite",
+            "meld_facet_xerox",
+            "meld_facet_porthole",
+            "meld_facet_derby"
+          ]
+        }
+      ]
+    }
+  ]
+}

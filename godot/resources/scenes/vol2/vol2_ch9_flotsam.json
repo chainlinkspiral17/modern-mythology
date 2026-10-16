@@ -1,0 +1,139 @@
+{
+  "id": "vol2_ch9_flotsam",
+  "vol": 2,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "ix. Flotsam and Jetsam",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_coast_woods_dawn.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "ix. flotsam and jetsam",
+      "sub": "Woods by the shore · Before dawn",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "I died a pretty tragic death a couple months back. Someone I cared about cut me with an exacto knife. It hurt pretty bad but the worst part was seeing the hurt in his eyes, as he tried to hold me still. To comfort me in death, I guess."
+    },
+    {
+      "t": "narrate",
+      "text": "But I broke free and left this world forever."
+    },
+    {
+      "t": "narrate",
+      "text": "You'd think the pain would go away after a while; after the blood stopped feeding the vessels, charging the nerves, but being dead just got worse becoming ever more unbearable. Then I realized I was watching him weep. The look on his face was one of confusion."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps comprehending the loss of my life, yet still trying to figure out what he had to do to not get caught. After a few minutes he stopped crying and left me in the passenger seat, leaking blood but not really bleeding."
+    },
+    {
+      "t": "narrate",
+      "text": "He wrapped me in a bed sheet he found in a suitcase in the trunk. I realized I was watching him from the shadows of the trees. I was still not sure what to make of death. I guess I was a ghost or something. When I looked down I could see my naked arms, my naked body."
+    },
+    {
+      "t": "narrate",
+      "text": "When I walked on leaves, they pressed into the mud, which seemed rather odd considering the rules of physics and all. I wasn't sure if he could see me. It didn't seem like he could, but I still wasn't sure."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_sea_cave.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The sea cave",
+      "sub": "Beach · First light",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "When he disappeared down the dirt path, dragging my body, I followed in silence, not wanting to scare him, if that makes any sense. We came upon the beach, the sun still under the ocean, enough light enough to blanket the world in a white blue."
+    },
+    {
+      "t": "narrate",
+      "text": "We crossed the beach and then he carried me over his shoulders into a sea cave. He slipped and fell a lot on the soft green scum algae, but he never once dropped me. Way in the back, there was a small spout, which pumped up water that flowed in through a sea cave."
+    },
+    {
+      "t": "narrate",
+      "text": "He dropped me in there but I didn't fall into the water. The hole was too narrow and I got wedged in between some of the sharp volcanic rock. It was far enough back the tide couldn't drag me free yet deep enough in no one made the effort to discover the source of the smell."
+    },
+    {
+      "t": "narrate",
+      "text": "It was pretty clever of him, all things considered."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay with the body",
+          "goto": 20
+        },
+        {
+          "text": "look back toward the mouth of the cave",
+          "goto": 19
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Out past the mouth of the cave the water lay flat and white blue, coming in."
+    },
+    {
+      "t": "narrate",
+      "text": "Then I was alone with my death. I had nowhere to go and nothing to do so I just sat and watched. The cave filled up with water. Tiny fishes and crabs kept close to my body, feeding off it. The high tide left, and didn't return for quite some time."
+    },
+    {
+      "t": "narrate",
+      "text": "After a few days of dryness, my skin swelled and pocked up pink, bloated with salt and moisture. Gnats and sea fleas took to my skin to birth their young. It is strange to say it, but it was beautiful the way the threadlike maggots burrowed into my skin, turning my flesh inside out. Consuming it."
+    },
+    {
+      "t": "narrate",
+      "text": "Without a gag reflex, I could watch my own decomposition without the slightest tinge of disgust. And I could enjoy it. It reminded me of being a child again and playing in dirt, not being able to imagine the germs or the filth. It was freedom to wonder."
+    },
+    {
+      "t": "narrate",
+      "text": "Two weeks I watched my body fall apart like that thinking of all the things I'd done to it testing my human limit. A youth I spent fighting, fucking, cursing and crying. Those were the moments I learned to regret. Sensations were white noise to me now."
+    },
+    {
+      "t": "narrate",
+      "text": "For most of my life, my body buzzed and hummed in tune with the world around. There was no tone to distinguish me."
+    },
+    {
+      "t": "narrate",
+      "text": "And I did nothing to define myself until I started telling the absolute truth, the truth as only I could interpret it. As a child, these were the lies I told to make life seem fantastic. When I was a young teenager, I had to choose my mother over my father on the witness stand. It was that kind of truth."
+    },
+    {
+      "t": "narrate",
+      "text": "The kind of truth you couldn't take back, no matter how much you wanted to. That was the truth I died for."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch9_flotsam_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch9_art_class"
+    }
+  ]
+}

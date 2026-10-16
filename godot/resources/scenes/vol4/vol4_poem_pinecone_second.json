@@ -1,0 +1,53 @@
+{
+  "id": "vol4_poem_pinecone_second",
+  "vol": 4,
+  "chapter": 3,
+  "type": "interlude",
+  "title": "Pinecone (second)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Pinecone (second)",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "armored and pronged waiting to drop\npacked tight like a hand grenade\nto only explode in a forest fire\nuntouched by man's hands."
+    },
+    {
+      "t": "narrate",
+      "text": "pieces of it litter the carpet ashen floor\nfallen shrapnel upon unmade desolation\nLying in wait for however long it takes\nTo be the first to seed new life."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_pinecone_second",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

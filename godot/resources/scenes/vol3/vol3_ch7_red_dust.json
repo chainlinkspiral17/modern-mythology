@@ -1,0 +1,177 @@
+{
+  "id": "vol3_ch7_red_dust",
+  "vol": 3,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "v. emulsion",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_dust_storm_highway.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Red",
+      "sub": "transmission · the interstate",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "As she drives it gets harder to see. She wipes at the inside of the glass with bare hand. A squirt of liquid assist onto windshield wipers and it all turns into this great red smear."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy says shit and pulls off to the side of the road, the undercar bumping against upturned root clumps and nothing much else."
+    },
+    {
+      "t": "narrate",
+      "text": "All around her the dust comes taking away everything."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy tells the kids quiet stay quiet and drives slowly along the edge like this creeping into the redness."
+    },
+    {
+      "t": "narrate",
+      "text": "Cars still on the road thunder past in excess of sixty miles appearing and disappearing like camera lens median focus objects on a murky lake underbottom. The kids quiet excited faces pressed up to the windows all on one side."
+    },
+    {
+      "t": "narrate",
+      "text": "Not so far off booms heard."
+    },
+    {
+      "t": "narrate",
+      "text": "Sick thuds and squeals."
+    },
+    {
+      "t": "narrate",
+      "text": "Black smoke mixes with red fog, the dust storm reveals in movie film wipes a long burning mass of wreckage, tight thick with metal fire tiny voices calling out amid conflagration. A man in a baseball cap and yellow tee-shirt steps into road and tries to direct traffic if only for an instant."
+    },
+    {
+      "t": "narrate",
+      "text": "A family station wagon clips him full speed and both disappear into so much else."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy can see now how it started. Two semis meet and collide, how, across parallel lines distinctly delineated, their hinged cargo whiteouts both lanes and car after car disappear inside them a drain sucking down and around, a black hole swallow it all."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy and the children hear the man scream a splitsecond before the car cuts him off. His disappearance leaves a fine grease of blood drops and oil smears on left side windows sheening in this occluded glowing prenatal half-light."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy turns the AC up all the way even though she turns it right back down before turning it right back up again. She says her thoughts out loud because there are children present, because they need the comfort, because she needs the comfortable comfort sound of her own voice."
+    },
+    {
+      "t": "narrate",
+      "text": "She says I should stop and help, it's what I'm trained to do, it's what I should do as a good person but I can't stop, we just have to keep driving just like this, it looks fine up ahead we should keep going."
+    },
+    {
+      "t": "narrate",
+      "text": "The kids nod, terrified scared excited."
+    },
+    {
+      "t": "narrate",
+      "text": "Because I've got four children in this car and two of you aren't even mine, your mother trusted me to you, to take care of you, so I can't stop."
+    },
+    {
+      "t": "narrate",
+      "text": "And they nod."
+    },
+    {
+      "t": "narrate",
+      "text": "And she felt a momentary relief but her breath not quite returned to all right normal. The vision of the end is already gone from sight when she thinks to worry about the guilt of having to look in the rear-view mirror and seeing it all fade away to nothing left behind."
+    },
+    {
+      "t": "narrate",
+      "text": "All gone lost in the red haze, aswirl and doomed and all that's left its howl alive."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_desert_motel_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She pulled into a motel some twenty miles down. The kids grabbed their stuff, followed her lead, from tallest on down, tiny people clutch marching their stuff tight. Inside an elderly woman watching the television."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy said, back on the road there was a"
+    },
+    {
+      "t": "narrate",
+      "text": "Yes dear, I know."
+    },
+    {
+      "t": "narrate",
+      "text": "Was handed over a set of keys."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_motel_pool_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The kids all found the pool and watched the sky change, the dust pass over, they swam and played, despite, because it all, the only ones in that pool in that hotel for all the world. And when they ran along the concrete shorelines they became tinted wet blood colored, ran screaming and hollering marco wait polo,"
+    },
+    {
+      "t": "narrate",
+      "text": "jumping into the pool where the bottom never quite settled until they returned to beds floors pillows blanket comforter sheets each to curl up with eyes stinging red salty chlorinated shock treated hair sticky stiff faces tight showered conditioned concentrated clean fingernails all."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Stay out by the pool a while.",
+          "goto": 32
+        },
+        {
+          "text": "Go inside to Kathy.",
+          "goto": 33
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Red silt settles on the skin of the water and turns slowly there."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_motel_room_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy had sat on the single bed in the empty room, the television on while they played outside. She watched the first thing that came on, a strange cartoon HBO played in the middle of the afternoon."
+    },
+    {
+      "t": "narrate",
+      "text": "A little girl was being pushed out onto an acidic flood plain trying to stop a pillbug monster from drowning destroying itself. The tiny girl's feet burned blistered bled as she was pushed deeper and deeper. Kathy cried."
+    },
+    {
+      "t": "narrate",
+      "text": "It startled like a hollow laugh, empty, small talk of unnameable sorrow. She went into the bathroom and locked the door. She started coughing and could not stop until she saw herself there suddenly her red eyes clear with red."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch7_red_dust_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch8_passengers"
+    }
+  ]
+}

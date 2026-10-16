@@ -1,0 +1,102 @@
+{
+  "id": "vol4_story_wits_end",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "wit's end",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bedroom_desk.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "wit's end",
+      "sub": "a blog post · friday",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I'm all out of the human vitality we call energy. I'm just run dry. Even my down days this week have been too intense. And here we be at Friday. Janessa's in town before she's off to the Arctic in mid-October. I think we're going to go to the Renaissance Festival tomorrow with Mom."
+    },
+    {
+      "t": "narrate",
+      "text": "Can't wait for that but I think tonight we'll go hard as well. Well, I hope not too hard but you never know. I write many stupid words to make sense of my stupid thoughts. I'm overcome by the desire to just lock myself in my room and write and not ever come out. But the timing is suspect."
+    },
+    {
+      "t": "narrate",
+      "text": "Needless, with all the shit going on in my head, in the world around me, my family has been in my thoughts very much lately. Seeing Grandma was the start of it. A nice little interlude in Oregon. I felt a lot of warmth up there, a lot of hope in the air. It wasn't quite like how I remembered it."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay in Oregon a while.",
+          "goto": 10
+        },
+        {
+          "text": "come back down.",
+          "goto": 12
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "A nice little interlude in Oregon. I felt a lot of warmth up there, a lot of hope in the air."
+    },
+    {
+      "t": "narrate",
+      "text": "Grey coast light through a kitchen window, coffee going cold on the sill."
+    },
+    {
+      "t": "narrate",
+      "text": "My initial passage from there to here was built on the back of tragedy, circumstance and many endings all at once. Right now, with all the half tears that sit in my eyes and don't come out. With all the work I've given my knuckles, I'm half way between anger management and depression. I should be happy."
+    },
+    {
+      "t": "narrate",
+      "text": "I am happy, aren't I? Questions roll around in my head and I can't quite articulate or spit the damn things out. I'm told to stop being such a nice guy because somehow nice makes me seem deceitful and I come across half honest."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm full of tired, full of wasted thoughts and emotion. I don't know where to go from here. I never do. What was good and right went wrong so very quick and that seems to be the way of it. Intensity boiled down, personality burnt off."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to surround myself with the unknown, smother myself in the beauty I see but so very little of this life has anything to do with me right now. It's all so impersonal and uninterested, not giving a shit, one whit."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm frayed."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_wits_end",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

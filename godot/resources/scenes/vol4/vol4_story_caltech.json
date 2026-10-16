@@ -1,0 +1,97 @@
+{
+  "id": "vol4_story_caltech",
+  "vol": 4,
+  "chapter": 6,
+  "type": "interlude",
+  "title": "caltech",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_caltech_basement.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_chiptune_loop.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "caltech",
+      "sub": "Pasadena · hallowed walls",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Invitational intellect divvied up\nWrit on walls, up in the air\nMusical strains echo through halls\nArriving here nor there."
+    },
+    {
+      "t": "narrate",
+      "text": "Rich paternity of learned expression\nExpanded consciousness and experimentation\nYoung bodies yearning and earning\nLingering in exhausted's comfy shadow."
+    },
+    {
+      "t": "narrate",
+      "text": "Video basements alive with gameplay\nA broken insect's eye of screen and monitor\nCathode rays, LCD infestation of low light imagery\nRetinal burn pattern recognition cognitive dissonance."
+    },
+    {
+      "t": "narrate",
+      "text": "Nerdery, a simple refrain for Nerdery."
+    },
+    {
+      "t": "narrate",
+      "text": "8-bit chorus line of butt rock R2D2\nMuralized sprite art, archaic and totemic.\nScrawled across leather couch with pen knife\nGAY FOR C3PO"
+    },
+    {
+      "t": "narrate",
+      "text": "Houses pitted against each other\nFor intellectual supremacy,\nSettling instead on cultural divides\nThat shape egos instead."
+    },
+    {
+      "t": "narrate",
+      "text": "A cross-talk emerges, ages of experience\nForbidden knowledge and cracked sanities\nSpill out on warm California concrete\nA rich paternity of L. Ron Hubbard,\nJack Parsons, JPL and experimental rockets to hell."
+    },
+    {
+      "t": "narrate",
+      "text": "Not so much eternal damnation as muddled\nAntichrists, stolen goods and womens\nBlack magic martyrs for the lost and confused\nErrol Flynn wannabes and Pulp Fiction Religion."
+    },
+    {
+      "t": "narrate",
+      "text": "A moment which fragments an author's dream\nInto that of a renegade charlatan prophet\nDiscords New Age into something Tired\nThe dreamers cease to and the opposite comes true."
+    },
+    {
+      "t": "narrate",
+      "text": "Larger than life lover of life, Admiral of the\nSalted seas, an earth he could not return to.\nLeft to journey to the end of days\nAmid a preteen Gestapo and other bad ideas."
+    },
+    {
+      "t": "narrate",
+      "text": "Lafayette was a pirate captain, aye.\nI dreamed his dream in hallowed walls\nThought perhaps so was I\nFooling the foolish, feeling quite the fool."
+    },
+    {
+      "t": "narrate",
+      "text": "An ecstatic state of being, drifting to beaches\nOver-lit Chinese supermalls, sister's friends\nIn Bikini tops, striding through freezer section\nFighting over which Mochi ball is the more perfect."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_caltech",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}
