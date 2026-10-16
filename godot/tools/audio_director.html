@@ -109,6 +109,7 @@
   .makebar { position: sticky; bottom: 0; z-index: 2; background: var(--bg-1); margin: 8px -8px -6px; padding: 6px 8px; border-top: 1px solid var(--rule); }
   .chipset { display: flex; flex-wrap: wrap; gap: 4px; }
   .chipset button { min-height: 38px; }
+  #cov-tracks button, #cov-srcs button { text-align: left; }
   footer { border-top: 1px solid var(--rule); padding: 4px 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   footer code { color: var(--gold-hi); background: var(--ink); padding: 2px 6px; }
   .empty { padding: 30px; color: var(--text-dim); text-align: center; line-height: 1.7; }
@@ -118,7 +119,7 @@
 <body>
 <header>
   <h1>AUDIO DIRECTOR</h1>
-  <span class="badge" id="b-ver" title="the build of the tools on this page — after a pull it should show the newest date (if not: Ctrl+Shift+R)">build 2026-10-16 · covers</span>
+  <span class="badge" id="b-ver" title="the build of the tools on this page — after a pull it should show the newest date (if not: Ctrl+Shift+R)">build 2026-10-16 · covers 2</span>
   <span class="badge" id="b-folder">GAME FOLDER: —</span>
   <button id="link">⌂ LINK GAME FOLDER</button>
   <button class="dim" id="refresh" title="re-read catalog, briefs, approvals and review staging">⟳ RESCAN</button>
@@ -251,9 +252,10 @@
   <div class="mhead"><b style="color:var(--gold-hi);font-weight:normal;letter-spacing:0.14em">♫ COVER A SONG</b><span style="flex:1"></span><button id="cov-close">✕ CLOSE</button></div>
   <div class="mbody" style="font-size:13px;line-height:1.6">
     <div class="note">A sketch cover: the song is transcribed (tempo, key, chords, sections, melody, bass) and re-played by our instruments in the style you pick. The takes land under TAKES of the track below, like any take.</div>
-    <div class="row"><label>SONG</label><select id="cov-src" style="flex:1;min-width:220px"></select><button class="dim" id="cov-pick">⇪ NEW FILE…</button><input type="file" id="cov-file" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac" style="display:none"></div>
+    <div class="row"><label>SONG</label><span class="chipset" id="cov-srcs" style="flex:1"></span><button class="dim" id="cov-pick">⇪ NEW FILE…</button><input type="file" id="cov-file" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac" style="display:none"></div>
     <div class="row" id="cov-newrow" style="display:none"><label>RIGHTS</label><select id="cov-rights"><option value="unlicensed">someone else's music — flagged ⚠ TEMP ONLY</option><option value="cleared">mine / public domain / licensed — not flagged</option></select><span class="note" id="cov-fname"></span></div>
-    <div class="row"><label>FOR TRACK</label><select id="cov-track" style="flex:1;min-width:220px"></select></div>
+    <div class="row"><label>FOR TRACK</label><b id="cov-cur" style="color:var(--gold-hi);font-weight:normal"></b><input type="text" id="cov-q" placeholder="search tracks (title, id, volume)" style="flex:1;min-width:160px"><label class="note"><input type="checkbox" id="cov-missing"> missing only</label></div>
+    <div class="chipset" id="cov-tracks" style="max-height:200px;overflow-y:auto;margin:0 0 4px 76px"></div>
     <div class="row"><label>STYLE</label><select id="cov-style"><option value="">auto (the track's own)</option></select><select id="cov-tape"><option value="">no tape</option></select>
       <label>TAKES</label><select id="cov-n"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
     <div class="row" style="margin-top:8px"><button class="go" id="cov-go">⤳ MAKE COVER</button><span class="msg" id="covmsg"></span></div>
@@ -1391,30 +1393,48 @@ function remixAgain(m) {
 }
 
 
-// ♫ COVER A SONG: the one-dialog way to a sketch cover (import if new → REMIX · COVER for a track)
+// ♫ COVER A SONG: the one-dialog way to a sketch cover (import if new → REMIX · COVER for a track). Touch-first:
+// the song and the track are tap rows (a 179-entry <select> is unusable on the Deck's screen), the track list searchable.
+const COV = { src: '', track: '' };
+function covRenderSrcs() {
+  const imps = DIR.imports || [];
+  $('cov-srcs').innerHTML = imps.map(im => `<button data-cs="${esc(im.path)}" class="${im.path === COV.src ? 'on' : 'dim'}">${esc(im.name)}${im.rights === 'cleared' ? ' (cleared)' : ' ⚠ temp only'}</button>`).join('') +
+    (COV.src === '' && $('cov-file').files[0] ? `<button class="on">${esc($('cov-file').files[0].name)} (new)</button>` : '') +
+    (!imps.length && !$('cov-file').files[0] ? '<span class="note">no songs imported yet — ⇪ NEW FILE…</span>' : '');
+  $('cov-newrow').style.display = COV.src ? 'none' : '';
+}
+function covRenderTracks() {
+  const q = $('cov-q').value.trim().toLowerCase(), miss = $('cov-missing').checked, order = DIR.order || DIR.cat || [];
+  const list = order.filter(t => (!miss || (DIR.state[t.id] || {}).status === 'missing') && (!q || (t.title + ' ' + t.id + ' vol ' + t.vol).toLowerCase().includes(q)));
+  $('cov-tracks').innerHTML = list.slice(0, 80).map(t => `<button data-ct="${esc(t.id)}" class="${t.id === COV.track ? 'on' : 'dim'}" title="${esc(t.id)}">${esc(t.title)} <span class="note">· vol ${esc(t.vol)} · ${esc((STATUS_LABEL[(DIR.state[t.id] || {}).status] || ['?'])[0])}</span></button>`).join('') +
+    (list.length > 80 ? `<span class="note">… ${list.length - 80} more — search to narrow</span>` : '') + (list.length ? '' : '<span class="note">no track matches</span>');
+  const cur = (DIR.cat || []).find(t => t.id === COV.track);
+  $('cov-cur').textContent = cur ? cur.title + ' (' + cur.id + ')' : '— tap a track below —';
+}
 function covOpen() {
   if (!AK.game.root) { msg('link the game folder first (⌂ LINK GAME FOLDER, top left).', true); return; }
-  const imps = DIR.imports || [];
-  $('cov-src').innerHTML = imps.map(im => `<option value="${esc(im.path)}">${esc(im.name)}${im.rights === 'cleared' ? ' (cleared)' : ' ⚠ temp only'}</option>`).join('') + '<option value="">— a new file (⇪ NEW FILE…) —</option>';
-  $('cov-src').value = imps.length ? imps[imps.length - 1].path : '';
-  $('cov-newrow').style.display = imps.length ? 'none' : ''; $('cov-fname').textContent = '';
-  const order = DIR.order || DIR.cat || [];
-  $('cov-track').innerHTML = order.map(t => `<option value="${esc(t.id)}">${esc(t.title)} · ${esc(t.id)} · ${esc((STATUS_LABEL[(DIR.state[t.id] || {}).status] || ['?'])[0])}</option>`).join('');
-  $('cov-track').value = DIR.sel || (order.find(t => (DIR.state[t.id] || {}).status === 'missing') || order[0] || {}).id || '';
-  if (!$('cov-style').options.length || $('cov-style').options.length < 2) Object.entries(SeqGen.STYLES).forEach(([id, st]) => $('cov-style').add(new Option(st.name, id)));
+  const imps = DIR.imports || [], order = DIR.order || DIR.cat || [];
+  if (!imps.some(im => im.path === COV.src)) COV.src = imps.length ? imps[imps.length - 1].path : '';
+  COV.track = DIR.sel || COV.track || (order.find(t => (DIR.state[t.id] || {}).status === 'missing') || order[0] || {}).id || '';
+  $('cov-q').value = ''; $('cov-fname').textContent = '';
+  if ($('cov-style').options.length < 2) Object.entries(SeqGen.STYLES).forEach(([id, st]) => $('cov-style').add(new Option(st.name, id)));
   if ($('cov-tape').options.length < 2 && typeof TapeModel !== 'undefined') for (const [mid, m] of Object.entries(TapeModel.MACHINES)) $('cov-tape').add(new Option('tape: ' + m.name, mid));
   msg('', false, 'covmsg');
+  covRenderSrcs(); covRenderTracks();
   $('covdlg').classList.add('show');
 }
 $('coverbtn').addEventListener('click', covOpen);
 $('cov-close').addEventListener('click', () => $('covdlg').classList.remove('show'));
 $('covdlg').addEventListener('click', e => { if (e.target === $('covdlg')) $('covdlg').classList.remove('show'); });
 $('cov-pick').addEventListener('click', () => $('cov-file').click());
-$('cov-file').addEventListener('change', () => { const f = $('cov-file').files[0]; if (!f) return; $('cov-src').value = ''; $('cov-newrow').style.display = ''; $('cov-fname').textContent = f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; });
-$('cov-src').addEventListener('change', () => { $('cov-newrow').style.display = $('cov-src').value ? 'none' : ''; });
+$('cov-file').addEventListener('change', () => { const f = $('cov-file').files[0]; if (!f) return; COV.src = ''; $('cov-fname').textContent = f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; covRenderSrcs(); });
+$('cov-srcs').addEventListener('click', e => { const b = e.target.closest('[data-cs]'); if (b) { COV.src = b.dataset.cs; covRenderSrcs(); } });
+$('cov-tracks').addEventListener('click', e => { const b = e.target.closest('[data-ct]'); if (b) { COV.track = b.dataset.ct; covRenderTracks(); } });
+$('cov-q').addEventListener('input', covRenderTracks);
+$('cov-missing').addEventListener('change', covRenderTracks);
 async function covMake() {
-  const tid = $('cov-track').value; if (!tid) { msg('pick the track the cover is for.', true, 'covmsg'); return null; }
-  let path = $('cov-src').value;
+  const tid = COV.track; if (!tid) { msg('tap the track the cover is for.', true, 'covmsg'); return null; }
+  let path = COV.src;
   if (!path) {
     const f = $('cov-file').files[0]; if (!f) { msg('pick a song: ⇪ NEW FILE…', true, 'covmsg'); return null; }
     msg('importing ' + f.name + '…', false, 'covmsg');

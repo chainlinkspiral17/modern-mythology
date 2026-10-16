@@ -611,16 +611,21 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
       await refresh();
       document.getElementById('coverbtn').click();
       const open = document.getElementById('covdlg').classList.contains('show');
-      const srcs = [...document.getElementById('cov-src').options].map(o => o.textContent);
-      document.getElementById('cov-src').value = 'assets/audio/imports/my_sketch_song.wav';
-      document.getElementById('cov-track').value = 'tem_theme'; document.getElementById('cov-n').value = '1'; document.getElementById('cov-style').value = 'folk';
+      const srcs = [...document.querySelectorAll('#cov-srcs [data-cs]')].map(o => o.textContent);
+      document.querySelector('#cov-srcs [data-cs="assets/audio/imports/my_sketch_song.wav"]').click();
+      // the track: search, then tap the row (touch-sized)
+      const q = document.getElementById('cov-q'); q.value = 'tem_theme'; q.dispatchEvent(new Event('input'));
+      const row = document.querySelector('#cov-tracks [data-ct="tem_theme"]'), rowH = row.getBoundingClientRect().height; row.click();
+      const cur = document.getElementById('cov-cur').textContent, others = document.querySelectorAll('#cov-tracks [data-ct]').length;
+      document.getElementById('cov-n').value = '1'; document.getElementById('cov-style').value = 'folk';
       const req = await covMake(); const R = await req.done; await rescanOne('tem_theme');
       document.querySelector('#chips [data-f="covers"]').click();
       const listed = visible().map(t => t.id);
       document.querySelector('#chips [data-f="all"]').click();
-      return { open, srcs, state: R.state, errors: R.errors, sel: DIR.sel, listed, ver: document.getElementById('b-ver').textContent };
+      return { open, srcs, rowH, cur, others, state: R.state, errors: R.errors, sel: DIR.sel, listed, ver: document.getElementById('b-ver').textContent };
     });
     t.ok(r.open && r.srcs.some(x => /My Sketch Song ⚠ temp only/.test(x)), JSON.stringify(r.srcs));
+    t.ok(r.rowH >= 36 && /Tem \(tem_theme\)/.test(r.cur) && r.others === 1, 'tap row ' + r.rowH + ' px, picked: ' + r.cur + ', search left ' + r.others);
     t.eq([r.state, r.errors, r.sel], ['done', [], 'tem_theme']);
     const m = newest('tem_theme', /-cover$/);
     t.ok(m.third_party && m.third_party.kind === 'cover' && m.mood.style === 'folk', JSON.stringify({ tp: m.third_party, style: m.mood.style }));
