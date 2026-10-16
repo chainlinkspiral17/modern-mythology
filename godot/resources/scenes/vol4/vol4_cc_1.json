@@ -3,7 +3,7 @@
   "vol": 4,
   "chapter": 5,
   "type": "chapter",
-  "title": "Charlie & Caroline — The Bus",
+  "title": "Ch 5 — Charlie & Caroline — The Bus",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Various Locales",
+      "text": "Ch 5 — Various Locales",
       "sub": "Int. and Ext. · Day and Night",
       "duration": 2000
     },

@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 5,
   "type": "chapter",
-  "title": "Act Two — The Plot Thickens",
+  "title": "Ch 5 — Act Two — The Plot Thickens",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Act Two",
+      "text": "Ch 5 — Act Two",
       "sub": "The Plot Thickens",
       "duration": 2400
     },
@@ -294,7 +294,7 @@
     },
     {
       "t": "narrate",
-      "text": "Dicken's phone vibrates. He checks his text message."
+      "text": "Faust's phone vibrates. He checks his text message."
     },
     {
       "t": "narrate",

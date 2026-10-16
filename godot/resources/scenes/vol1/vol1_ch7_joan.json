@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 7,
   "type": "chapter",
-  "title": "Act Two — The Blade",
+  "title": "Ch 7 — Act Two — The Blade",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Faust's Home",
+      "text": "Ch 7 — Faust's Home",
       "sub": "INT. Faust's Home · Day",
       "duration": 2000
     },

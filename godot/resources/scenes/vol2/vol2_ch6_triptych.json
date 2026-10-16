@@ -3,7 +3,7 @@
   "vol": 2,
   "chapter": 6,
   "type": "chapter",
-  "title": "vi. Triptych",
+  "title": "Ch 6 — vi. Triptych",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "vi. triptych",
+      "text": "Ch 6 — vi. triptych",
       "sub": "a distant wail",
       "duration": 2200
     },

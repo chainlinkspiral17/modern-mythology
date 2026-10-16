@@ -2068,7 +2068,7 @@ happy, staring out with mute fascination and wonder upon the fresh new world. It
 outside Small Wood, though I have watched from  
 afar.  
 
-Dicken's Phone vibrates. He checks his text message.
+Faust's Phone vibrates. He checks his text message.
 
 From Habes. Hey, in town, wanted to catch  
 up. Thinking of you.  

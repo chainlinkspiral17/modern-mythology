@@ -3,7 +3,7 @@
   "vol": 2,
   "chapter": 2,
   "type": "chapter",
-  "title": "ii. The Siren of Seagash",
+  "title": "Ch 2 — ii. The Siren of Seagash",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "ii. The Siren of Seagash",
+      "text": "Ch 2 — ii. The Siren of Seagash",
       "sub": "— A history, with interludes —",
       "duration": 3200
     },
