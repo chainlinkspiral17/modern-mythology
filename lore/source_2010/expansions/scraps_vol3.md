@@ -59,29 +59,20 @@ New play order: … second_set_of_eyes → **starship_melody** → safari … ga
 
 ## 6. Arcadeum / Koa Works / Mountaintop / Iris
 - **Iris Notes:** https://docs.google.com/document/d/13gqBFfCeoQuk0Vz5bwsu9o4fR2ppE74Od8HE2_qfsNg/edit?usp=drivesdk
-  - **Used:** five cast entries and the design crux, as a found Oneironautics binder in the sleep lab (`vol3_ch6_binder`).
+  - **Used:** five cast entries and the design crux, as an unlabeled IRIS binder on the sleep-lab bookshelf (`vol3_ch6_binder`; the Oneironautics attribution was cut in the voice pass).
   - **Cut:** the other cast entries, among them the Almiedez/Judith cancer thread, which is too close to the father material. I also trimmed Esther's and Jane Huxley's entries.
   - **Typo fixes:** "Iris world" → "Iris' world", "has lead" → "has led".
 - **retinal burn (GDD):** https://docs.google.com/document/d/1pDESA5iPqtGcAXeY6QsCsSYugIguGUkvT2t7mfMVwoY/edit?usp=drivesdk
-  - **Used:** the full quick pitch, printed on a Mountaintop beta CD insert in the game room.
+  - **Used:** the full quick pitch, on an inkjet insert in a burned disc's case in the game room (the Mountaintop attribution was cut in the voice pass).
   - **Cut:** "as told by the Coen Brothers" and "Gabriel Knight" (real people / third-party IP).
 - **Devin Schulidner's Trailer (Iris):** read and skipped. It doesn't fit the 2003 game room, and its Judith cancer thread is too close to the father material.
 - **Arcadeum / Koa Works:** the only Drive item is a six-word title page. June's Koa Works story is already in `vol3_ch6_arcadeum`, so I only point toward it.
 
 ---
 
-## Hooks planted
-- **Sept. 2003 on a 1946 carbon** (starship_melody): Ron types the date the boy gives him. It could pay off as a dated artifact that turns up later in someone else's hands.
-- **EARTH / EARTHMAN, first word struck** (starship_melody): Ron's title is born from the Sentries' "Something has rebuilt it." It can tie the Melody pulp to the Earthman twist Ron "already figured out".
-- **A clef over an eye on a shoebox lid, in a hand not Ron's** (starship_melody): the MELODY insignia drawn by someone else. It connects to the name "Melody" (the lost Small Wood film, Iris's Melody) and to whoever else was in that room.
-- **SLOW STICKS / put in and wait, knife-cut into the Dabney couch** (couch): the name exists in 2003, well before the 2050s product. Who carved it, and when?
-- **RETINAL BURN, Mountaintop beta, "Do not distribute"** (couch): Stefan Stutgart's lost film ties to the Stutgart/Stuttgart thread (Por Puesto) and to Mountaintop's catalogue. Andy had just written "retinal burn" himself.
-- **S.C.U.M.M. floppy, "D.N.D.", Oregon number one digit short, asks for a disk two that isn't there** (couch): an early Dean SCUMM build has reached Caltech.
-- **J.O.K. at the top of the sit-down cabinet's high scores** (couch): June Okimoto has been in this basement, or will be.
-- **IRIS binder, Oneironautics Inc., stamped rev. 22 SEP 09, found in 2003** (binder): a date that doesn't add up. Oneironautics may be working on the sleep study.
-- **Jane Huxley in the IRIS cast; Jane runs the sleep lab** (binder): the sleep-lab Jane may be a variation of a life, in the Iris-crux sense.
-- **Sign-in sheet: "J. Okimoto — Dallas — calibration", one line above Andy** (binder): June's 2003 Oneironautics hire brushes Andy's 2003.
-- **The binder goes back on the shelf "spine in" by morning; Andy doesn't remember shelving it** (binder): someone was in the room.
+## Hooks planted (superseded by the voice pass below)
+
+All of the hooks this pass planted were cut or flattened in the 2026-10-16 voice pass. See "Voice pass" at the end of this file. None of them should be treated as a seed.
 
 ---
 
@@ -91,15 +82,15 @@ New play order: … second_set_of_eyes → **starship_melody** → safari … ga
 
 *[the starship melody · Pasadena · 1946 · Ron's room · late]*
 
-[[new]] Ron did not sleep that night. The time-traveler sat on the one clear corner of floor among the books, and Ron fed a fresh sheet and a carbon into the machine. [[/new]]
+[[new]] Ron wasn't going to sleep, not tonight, and the kid from the future wasn't either by the look of him, sat cross-legged on the one patch of floor not drowned in books, big as a bear and tired as one. Ron rolled a fresh sheet into the machine with a carbon behind it and squared them up and waited. [[/new]]
 
 [[new]] RON: What do they tell stories about, where you come from? [[/new]]
 
-[[new]] ANDY: Spaceships, still. Robots. A girl who turns out to be the ship. [[/new]]
+[[new]] ANDY: Spaceships, still. Robots. I wrote one once, about a girl who turns out to be the ship. [[/new]]
 
 [[new]] RON: Can you tell it like a picture show? [[/new]]
 
-[[new]] At the head of the page Ron typed what the boy gave him. A Script by Andrew Link. Under it, because Ron asked and the boy answered without thinking, a date: Sept. 2003. [[/new]]
+[[new]] The kid shut his eyes to remember it and started in, and Ron typed it as fast as it came, typos and all, the way he typed everything, never going back. [[/new]]
 
 *[INT. BLACK SPACE — VOID · transmission · as told]*
 
@@ -185,8 +176,6 @@ CORE: I sense otherwise. Your make-up is linear and your programming obsolete—
 
 VERSE: Sometimes antiquities are better suited to the task.
 
-[[new]] Ron asked the boy to say that line again, and typed it twice. [[/new]]
-
 CORE: We sense no life activity in the delivery, something we specifically requested.
 
 JULES: There was an unfortunate complication—
@@ -265,17 +254,13 @@ SENTRIES: Go there. See for yourself. You must go to it. Create as it destroys.
 
 Melody disappears in an instant. Ghosted images of her fly about for a few seconds, then dissipate into nothingness.
 
-[[new]] Ron laid the sheet and the carbon face down on the stack. He asked what happened when she got there. The boy said he never wrote that part. [[/new]]
-
-[[new]] Ron fed a new sheet. Across the top he typed EARTH, then EARTHMAN, and struck the first word out. [[/new]]
-
-[[new]] The carbon went into a shoebox under the bed. On the underside of the lid, in a pencil hand that was not Ron's, someone drew a clef over an eye. [[/new]]
+[[new]] Ron pulled the page and its carbon out together and laid them face down on the pile. He asked what happens when she gets there. The kid said he never wrote that part, he never finished much of anything back then, and lay back on the floor among the books with his big shoes still on and was asleep before Ron could ask what back then meant to a boy his age. [[/new]]
 
 ### `vol3_ch6_couch` (after `vol3_ch6_game_room`, before `vol3_ch6_arcadeum`)
 
 *[the couch · now · Dabney basement · afternoon]*
 
-[[new]] Andy goes back down to the basement alone with his notebook. [[/new]]
+[[new]] Afternoon, nobody up yet, the house sleeping off whatever last night was. Andy goes back down to the game room with his hardcover notebook and sinks into the black leather, the refrigerators humming, some screen left on its title loop, and he writes because he told himself he would, a page a day minimum, more if the place gives it up. [[/new]]
 
 Andy Link is an awful writer, but stupid him loves his own words, he can not help himself. Indulge me, that's all he asks of any reader, asks of himself.
 
@@ -324,7 +309,7 @@ Scrawled across leather couch with pen knife
 
 *(cg: vol3_couch_carving.jpg)*
 
-[[new]] Under his hand the leather says it, cut deep and gone gray in the grooves: SLOW STICKS. Smaller, under that: put in and wait. [[/new]]
+[[new]] Under his hand the leather is cut all over, initials and dates and house jokes gone gray in the grooves, a phone number for a good time, somebody's girlfriend's name scratched out so hard it goes through to the stuffing. [[/new]]
 
 Houses pitted against each other  
 For intellectual supremacy,  
@@ -357,7 +342,7 @@ Over-lit Chinese supermalls, sister's friends
 In Bikini tops, striding through freezer section  
 Fighting over which Mochi ball is the more perfect.
 
-[[new]] Under the wall of screens is a shelf of big game boxes gone soft at the corners. Final Cut, from a studio called Mountaintop. Wedged behind it, a burned disc in a jewel case: RETINAL BURN. Mountaintop. Beta. Do not distribute. [[/new]]
+[[new]] Under the wall of screens a shelf of game boxes gone soft at the corners, cracked jewel cases, burned discs with sharpie titles nobody remembers burning. One has a folded insert printed off somebody's inkjet, a pitch for a game that never got made or got made by somebody else, retinal burn in lowercase across the top. [[/new]]
 
 Imagine an adventure game taken to the next level, a fractal cinematic narrative video-game, a mature blend of old school investigation, coupled with a new and unique gameplay mechanic.
 
@@ -365,15 +350,13 @@ Retinal Burn follows a film student/historian tasked with uncovering the long lo
 
 Starting with a tutorial in the academic world, the player embarks upon a globetrot to rediscover the missing film reels, encountering a wide range of shady entrepreneurs and filmland eccentrics and royalty.
 
-[[new]] Retinal burn. It is in his notebook already, a line he wrote ten minutes ago. He reads the insert again to be sure he didn't write that too. [[/new]]
-
-[[new]] Under the jewel case lies a floppy disk, the label in ballpoint: S.C.U.M.M. Under that, D.N.D., and an Oregon phone number one digit short. [[/new]]
+[[new]] Under the jewel cases a floppy disk with no label, and in the corner a beige PC old enough to still take one. [[/new]]
 
 > choice: *try the floppy in the old machine.* / *leave it where it was.*
 
 > [floppy]
 
-[[new]] The drive grinds and the screen asks for disk two. There is no disk two. [[/new]]
+[[new]] The drive grinds a long time and the screen asks for disk two. There is no disk two. [[/new]]
 
 > [cabinet]
 
@@ -399,15 +382,15 @@ Drunken fingers fumble over drunken quarters
 The last game is played to warm the eyes  
 Back in to focus.
 
-[[new]] The sit-down cabinet in the corner cycles its high scores to nobody. At the top, three initials nobody in the house will claim: J.O.K. [[/new]]
+[[new]] The sit-down cabinet in the corner cycles its high scores to nobody, initials of kids long graduated, somebody's ASS at number three, because there is always somebody's ASS at number three. [[/new]]
 
 ### `vol3_ch6_binder` (after `vol3_ch6_jane`, before `vol3_ch8_pulp_the_catwalk`)
 
 *[the binder · now · the basement's basement · 3 a.m.]*
 
-[[new]] He is not supposed to get up, so he doesn't. He reaches instead for the bookshelf between the two beds. [[/new]]
+[[new]] He's not supposed to get up, Jane said so, not even to pee, so he doesn't. Three in the morning and wide awake under the curtain glow, he reaches for the bookshelf between the two beds instead. [[/new]]
 
-[[new]] Between the Wittgenstein and the Powers is a white binder with no spine label. The cover sheet says IRIS, and under it ONEIRONAUTICS INC., and under that a violet stamp: rev. 22 SEP 09. [[/new]]
+[[new]] Between the Wittgenstein and the Powers a white binder, no label on the spine. The cover sheet says IRIS and nothing else. Design notes for a game, a cast list, the kind of thing Andy writes himself and never finishes. [[/new]]
 
 *(cg: vol3_iris_binder.jpg)*
 
@@ -427,8 +410,6 @@ Cameron Stephenson - An old-fashioned inventor type, has a workshop. At seventy-
 
 Jane Huxley - A thirty-six year old woman of the moment, always looking after people as best she can, and always asking about others. A flirt, gossip, grandmotherly-type, despite being quite young.
 
-[[new]] Andy reads the name twice. Through the curtain the monitor light does not change. [[/new]]
-
 > [crux]
 
 The key crux of the story is this: The people that make up Iris' world are themes and variations on her ideal lives she has led, or might yet lead. They are all herself, had she made different choices.
@@ -447,8 +428,33 @@ Iris is a tabula rasa until the player forms her, through the interactions and c
 
 If she remains utterly passive and never leaves the room she will get a different ending as a player who explores their universe.
 
-[[new]] Andy thinks of another room, the one in Houston, and closes the binder on his thumb. [[/new]]
+[[new]] Last thirty minutes of her life. Andy closes the binder on his thumb. He doesn't want to think about last thirty minutes, Dad in the bed watching the ducks, so he thinks about Jane instead, just out of sight on the other side of the curtain, watching her numbers. [[/new]]
 
-[[new]] On the clipboard by the door hangs the week's sign-in sheet. His name is the last line. The line above it is in a neater hand, no school listed: J. Okimoto — Dallas — calibration. [[/new]]
+[[new]] Somewhere past three he goes under with the binder open on his chest. [[/new]]
 
-[[new]] Somewhere past three he goes under with the binder on his chest. He does not remember putting it back. In the morning it is on the shelf, spine in. [[/new]]
+---
+
+## Voice pass (2026-10-16)
+
+Done under `/home/claude/mm_src/VOICE_PASS_BRIEF.md`. Only `[[new]]` lines changed; Andy's text is untouched. Every `[[new]]` line above is now the revised text. The 1946 lines are in the run-on, third-person register of the Ron chapters, and the 2003 lines are in the "stacks"/"game room" register. Scene JSON was edited to match, and gotos were re-checked.
+
+**Rewritten (14):** Ron's opening; Andy's "spaceships" line; the dictation line; Ron's closing line; the couch opener; the leather carving; the disc shelf; the floppy; the disk-two line; the high-score cabinet; the binder opener; the binder cover; the Houston line; falling asleep.
+
+**Cut (6):**
+- `starship_melody`: "Ron asked the boy to say that line again, and typed it twice." It pointed at the antiquities line.
+- `starship_melody`: EARTH / EARTHMAN struck out. It announced the title's origin and contradicts p.185, where Ron has already titled the book.
+- `starship_melody`: the shoebox lid with a clef over an eye "in a pencil hand that was not Ron's". It was another-hand marginalia.
+- `couch`: "Retinal burn. It is in his notebook already…" It was a wink at the coincidence.
+- `binder`: "Andy reads the name twice." It was a wink at Jane Huxley.
+- `binder`: the sign-in sheet, "J. Okimoto — Dallas — calibration". It was a cross-book hook.
+
+**Hook content removed from rewritten lines:**
+- the Sept. 2003 date on the carbon
+- the SLOW STICKS carving
+- the Mountaintop studio and the "Beta. Do not distribute." label
+- S.C.U.M.M., D.N.D. and the Oregon number
+- J.O.K.
+- Oneironautics Inc. and the violet "rev. 22 SEP 09" stamp
+- the binder found "spine in" the next morning
+
+The binder CG caption changed from "IRIS · Oneironautics Inc." to "IRIS".
