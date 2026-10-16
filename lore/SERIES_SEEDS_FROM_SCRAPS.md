@@ -802,4 +802,5 @@ The index flags it as AI-assisted prose; it is used here for structure only.
   Drop the "commercial E/D after 2026" proposal. Read the disagreeing dates as different worlds, not as a timeline to reconcile.
 - **Joven (Vol 8):** Joven is young Nate. It's his Venezuelan nickname.
 - **Chumpa Chump (Vol 9):** recast his later crime with an adult victim.
-- **X1 (volume numbering):** still open; explained to Andy.
+- **X2 (Vol 10 lead):** **Arthur Finch is the lead of ROFLcopter.**
+- **X1 (volume numbering):** still open. Does #/Sharp get its own number, and does the Vol 7 wiki's 2025 date become the 2050s?
