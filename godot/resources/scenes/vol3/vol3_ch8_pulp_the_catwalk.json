@@ -1,0 +1,146 @@
+{
+  "id": "vol3_ch8_pulp_the_catwalk",
+  "vol": 3,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "i. the boy from pasadena — the catwalk",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pulp_ward_rows.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "i. the boy from pasadena — the catwalk",
+      "sub": "transmission · the long corridor",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "His body comes back to him the way feeling comes back to a foot, in needles. First the fingers. Then the long bones of the arms. Then all at once the rest of him, heavy and stupid and his own."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits up. The hose pulls at the crook of his elbow and he finds the place where it goes into him, taped down under a clear film. He peels the tape back and draws the needle out of his own vein slow, the way his father taught him to draw a splinter, steady and without apology. Blood beads. He presses his thumb to it."
+    },
+    {
+      "t": "narrate",
+      "text": "The box behind him screams. It does not chirp now. It holds one long note, and Jack swings his legs off the cot and stands, and the floor is cold through his socks, and he goes."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody stops him. The figures in pond-water green are bent over other sleepers, other screaming boxes. One of them looks up at him and looks back down."
+    },
+    {
+      "t": "narrate",
+      "text": "The corridor runs on. It turns and runs on again. It is lined with doors and every door is shut and every door has a number and a little window of wired glass, and behind the glass the same white light, the same green lines. He walks a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "The air is cold, scrubbed and blown down through vents, dry enough to split his lips."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_catwalk_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Then the corridor leaves the ground. It becomes a tube of glass slung out over nothing, a catwalk between one tower and the next, and Jack stops in the middle of it with his hand on the rail and looks out on the ruin."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look down.",
+          "goto": 15
+        },
+        {
+          "text": "look out.",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Far below, along a road, something moves in a long bright chain, red lights going one way and white lights the other."
+    },
+    {
+      "t": "narrate",
+      "text": "On the near roof a vent breathes steam into the dark, and nobody is warming themselves at it."
+    },
+    {
+      "t": "narrate",
+      "text": "It is night. The city goes on to the edge of seeing in every direction, and it is lit. Towers of lit windows. Roads of light poured through the dark and running with lights."
+    },
+    {
+      "t": "narrate",
+      "text": "Where he had seen fires there are lamps on poles, a thousand thousand of them, laid over the land like a quilt, and between the towers the machines go about their business, blinking red and white, lowering themselves gently onto the roofs."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_pulp_catwalk_city.jpg",
+      "caption": "The end of the world, going on without him."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing is burning. He looks for the charred foundations and the cables hung at odd angles and the children crouched at their fires, and from up here he can find none of it. Only the light, and the business as usual of it, the end of the world going on without him."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_elevator_benches.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "He crosses into the next tower. There is a room of benches, and a box on a pole playing pictures to nobody, and a low table heaped with magazines whose covers show the same two towers, standing, then burning, then gone."
+    },
+    {
+      "t": "narrate",
+      "text": "The children are here. They sleep on the benches in their coats with their shoes still on, grown and half grown. A woman sits upright with her eyes shut and her hands folded in her lap, waiting the way the old wait in train stations. A girl rubs at her eyes as if they hurt her and will not stop rubbing."
+    },
+    {
+      "t": "narrate",
+      "text": "In this light they are not monsters. They are tired. Jack walks among them careful, the way you walk through a house where everyone has finally gone to sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Down the hall a door sighs open, and the voice comes through it, and this time Jack Perkins is near enough to hear it break."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch8_pulp_the_catwalk_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch7_emulsion"
+    }
+  ]
+}

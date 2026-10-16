@@ -1,7 +1,7 @@
 {
   "id": "vol3_ch8_passengers_c",
   "vol": 3,
-  "chapter": 8,
+  "chapter": 10,
   "type": "chapter",
   "title": "vi. passengers",
   "nodes": [
@@ -248,7 +248,7 @@
     },
     {
       "t": "jump",
-      "scene": "vol3_ch9_backward_jaunt"
+      "scene": "vol3_ch11_pulp_the_room_with_birds"
     }
   ]
 }

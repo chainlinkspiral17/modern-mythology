@@ -1,7 +1,7 @@
 {
   "id": "vol3_ch13_sins_of_our_fathers",
   "vol": 3,
-  "chapter": 13,
+  "chapter": 16,
   "type": "chapter",
   "title": "xii. sins of our fathers",
   "nodes": [
@@ -223,7 +223,7 @@
     },
     {
       "t": "jump",
-      "scene": "vol3_ch14_last_of_the_oil_men"
+      "scene": "vol3_ch17_pulp_earthman"
     }
   ]
 }

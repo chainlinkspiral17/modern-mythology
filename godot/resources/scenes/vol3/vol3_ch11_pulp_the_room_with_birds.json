@@ -1,0 +1,146 @@
+{
+  "id": "vol3_ch11_pulp_the_room_with_birds",
+  "vol": 3,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "i. the boy from pasadena — the room with birds",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_room_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_hospital_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "i. the boy from pasadena — the room with birds",
+      "sub": "transmission · the last door",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "The room at the end is larger than the others and lit low. One whole wall is a window, and through the window Jack sees a lake in autumn, the water flat and copper, the reeds gone to rust, and on it wild ducks rising and settling, rising and settling, never all of them in the air at once."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_pulp_duck_window.jpg",
+      "caption": "A different lake in the same fall."
+    },
+    {
+      "t": "narrate",
+      "text": "It takes him a long moment to see that the window hangs from the ceiling on an arm of steel, and the lake is inside it, and it goes on with or without anybody watching. After a while the ducks change, and the lake changes, and it is a different lake in the same fall."
+    },
+    {
+      "t": "narrate",
+      "text": "The voice comes from the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "Four of them hold the man down. They have him at the wrists and the shoulders and the shins, and he fights them with what he has, which is not much, and he spends all of it. He is trying to rise."
+    },
+    {
+      "t": "narrate",
+      "text": "He is trying to get up out of the bed and go somewhere, and the voice comes out of him angry and desperate and pleading, the words gone out of it and only the shape left."
+    },
+    {
+      "t": "narrate",
+      "text": "They buckle straps across him. One of them puts a needle into the hose, and the fight goes out of him by degrees, like a fire banked for the night."
+    },
+    {
+      "t": "narrate",
+      "text": "Two women in the corner, close to him but not around him. The older has her hand over her mouth. The younger stands and goes, fast, out past Jack in the doorway without once seeing him."
+    },
+    {
+      "t": "narrate",
+      "text": "On the floor by the wall vent, where the cold air comes out humming, a boy too big for any bed lies curled in his own warmth. Bearded, his shoes falling apart on his feet. He has slept through all of it. He sleeps as if the hum were a lullaby somebody is singing just for him."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack goes to the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "The man is old, older than any man Jack has ever stood beside. His skin has gone the yellow of old piano keys and it is mapped with bruises. His gums are bleeding. His chest is bound in gauze. His eyes are too big in their sockets and roll there and will not settle."
+    },
+    {
+      "t": "narrate",
+      "text": "Then they settle. They find Jack. They hold."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack Perkins's father was forty-four years old the night Jack sealed himself into the egg. He had dark hair and a hard jaw and a pipe he never lit, only chewed, while he graded proofs at the kitchen table. Jack carries a photograph of him in his billfold, gone soft at the corners."
+    },
+    {
+      "t": "narrate",
+      "text": "The man in the bed opens his mouth. The voice that comes out now is quiet, its anger used up, and it says one word Jack can make out, and the word is his name."
+    },
+    {
+      "t": "narrate",
+      "text": "He knows the voice. He has known it longer than he has known anything. He knew it before he knew it was a voice."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks down at the hand strapped on the blanket. The square nails. The knuckles knotted up. The little white scar across the back of the thumb from the summer the hatchet slipped at the lake cabin. Of all of it, only the hand."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "say it back to him.",
+          "goto": 23
+        },
+        {
+          "text": "take the hand.",
+          "goto": 24
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Father, Jack says, and it comes out of him in a boy's voice, high and cracked, the voice of a child who has stayed out too long after dark."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack takes it in both of his. It is warm, and it grips back, weak, and holds."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind him on the hanging glass the ducks rise off the copper water, and settle, and rise."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch11_pulp_the_room_with_birds_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch9_backward_jaunt"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "id": "vol3_ch14_last_of_the_oil_men",
   "vol": 3,
-  "chapter": 14,
+  "chapter": 18,
   "type": "chapter",
   "title": "the last of the oil men.",
   "nodes": [
@@ -164,7 +164,7 @@
     },
     {
       "t": "jump",
-      "scene": "vol3_finale"
+      "scene": "vol3_ch19_ron_takes_notes"
     }
   ]
 }
