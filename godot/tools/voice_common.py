@@ -89,7 +89,7 @@ def alias_table(vmap):
             for m in members:
                 out[char_key(m)] = group_key
     for src, dst in (vmap.get("aliases") or {}).items():
-        if isinstance(dst, str):
+        if isinstance(dst, str) and not src.startswith("_comment"):
             out[char_key(src)] = char_key(dst)
     return out
 
@@ -134,7 +134,7 @@ def resolve_char(vmap, char, kind="say", scene_id=None, _aliases=None, vol=None)
         return dedup[0], dedup[1:]
     k = char_key(char)
     scoped = (vmap.get("scene_aliases") or {}).get(scene_id or "", {})
-    scoped = {char_key(a): char_key(b) for a, b in scoped.items()}
+    scoped = {char_key(a): char_key(b) for a, b in scoped.items()} if isinstance(scoped, dict) else {}
     if k in scoped:
         return scoped[k], []
     if k in aliases:

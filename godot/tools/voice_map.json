@@ -82,6 +82,474 @@
     },
     "hector": {
       "voice_id": ""
+    },
+    "_narrator_vol1": {
+      "voice_id": "",
+      "casting": "Faust 3 screenplay action-line reader: night-city Americana, present-tense, dry and unhurried with a little noir; never performs the dialogue. Adult, either gender.",
+      "appears": "vol1 narrate"
+    },
+    "_narrator_vol2": {
+      "voice_id": "",
+      "casting": "Small Wood notebook narrator: D.N. Dean's young first-person voice on the Oregon coast. Late-teens/early-20s American male, plain, confessional, small-town dry. His family came up from Caracas, so Spanish place names are said natively.",
+      "appears": "vol2 narrate"
+    },
+    "_narrator_vol3": {
+      "voice_id": "",
+      "casting": "Earthman: a 1950s pulp-radio announcer cadence for the Jack Perkins chapters, and plain, tired 2003 Andy (late-20s American male) for the rest. One actor who can switch, or split per scene later with scene_aliases.",
+      "appears": "vol3 narrate"
+    },
+    "_narrator_vol4": {
+      "voice_id": "",
+      "casting": "The scrapbook desk: zine/blog voice, early-2000s, wry and conversational, reading captions and found text like a friend flipping pages. Adult, either gender.",
+      "appears": "vol4 narrate"
+    },
+    "_narrator_vol6": {
+      "voice_id": "",
+      "casting": "Vol 6 narrator, not cast yet. While voice_id is empty, lookups fall back to _narrator, as before.",
+      "appears": "vol6 narrate"
+    },
+    "_narrator_vol7": {
+      "voice_id": "",
+      "casting": "Vol 7 narrator, not cast yet. While voice_id is empty, lookups fall back to _narrator, as before.",
+      "appears": "vol7 narrate"
+    },
+    "_narrator_whispers": {
+      "voice_id": "",
+      "casting": "Whispers from the Liminal's late-night reader: hushed, intimate, 2am-radio delivery. Must be clearly distinct from Elicia (the show's host), e.g. a different gender or a much older, lower register.",
+      "appears": "vol5_prelude_arcana_ep* narrate"
+    },
+    "_chorus": {
+      "voice_id": "",
+      "casting": "Lines spoken in unison. Leave voice_id empty and the renderer uses the first named speaker who has a voice; or set a layered group take.",
+      "appears": "multi-speaker lines, e.g. 'Faust, Jacob, Wagner'"
+    },
+    "faust": {
+      "voice_id": "",
+      "casting": "John Faust, the Faust 3 lead and a painter: late-20s/early-30s American male, quick and wry, deadpan one-liners that tip into big earnest romantic declarations. Warm, unpolished baritone.",
+      "appears": "vol1, meld (299 lines)"
+    },
+    "dickens_dean": {
+      "voice_id": "",
+      "casting": "Dickens Dean, 'traveller from another realm' and Faust's courtly antagonist (also in the Vol 4 Esther story): urbane, slightly archaic, given to grand speeches with gentle menace and real warmth. Ageless 30s-40s male, polished mid-Atlantic. Kept separate from `dean` (Mr. D. Dean / adult Nate, Vol 5/7). The two could share one voice at different ages; Andy decides.",
+      "appears": "vol1, vol4 (191 lines)"
+    },
+    "jacob": {
+      "voice_id": "",
+      "casting": "Faust's friend and a young dad: laid-back, dry, near-stoner deadpan that breaks into sudden sincerity ('I can say just how much I love you man'). 30ish American male, mid-low register.",
+      "appears": "vol1, meld (158 lines)"
+    },
+    "wagner": {
+      "voice_id": "",
+      "casting": "Faust's steady friend with a partner at home: measured, orders ginger beer, gives instructions over the radio and delivers the hard truths ('You're a bad dad'). 30s male, calm, grounded, slightly formal.",
+      "appears": "vol1, meld (122 lines)"
+    },
+    "joan": {
+      "voice_id": "",
+      "casting": "Joan, the dream woman and muse ('Joan Charging Off Into Battle'): self-possessed, teasing, oracular. Late-20s female, low and certain, a warrior's calm. Also voices the unnamed 'Woman' in the vol1 ch4 dream scenes (see scene_aliases).",
+      "appears": "vol1 (58 lines + the dream 'Woman')"
+    },
+    "the_writer": {
+      "voice_id": "",
+      "casting": "Author facet #1, the Writer: nervous and bookish, long lyrical run-on sentences, closes his notebook on a punchline. 30s male, soft and quick. The four facets could be one actor in four modes.",
+      "appears": "vol1, vol4, meld"
+    },
+    "the_director": {
+      "voice_id": "",
+      "casting": "Author facet #2, the Director: theatrical pronouncements over a self-doubting core, flashes of anger. 40s male, resonant, commanding.",
+      "appears": "vol1, vol4, meld"
+    },
+    "the_artist": {
+      "voice_id": "",
+      "casting": "Author facet #3, the Artist: comfortable, obsessive, dreamy stream of consciousness ('There comes a time in life when pieces click in place'). 30s, airy; either gender.",
+      "appears": "vol1, vol4, meld"
+    },
+    "the_human_being": {
+      "voice_id": "",
+      "casting": "Author facet #4, the Human Being: the plain, wounded, confessional one ('The hardest thing about losing him was becoming him'). 30s-40s male, quiet, unadorned, tender.",
+      "appears": "vol1, vol4, meld"
+    },
+    "air": {
+      "voice_id": "",
+      "casting": "Air, the elemental who comes off Jacob's shirt (female): bookish, wry, light ('Finally. One of you reads'). Breathy upper register, quick.",
+      "appears": "vol1, meld"
+    },
+    "fire": {
+      "voice_id": "",
+      "casting": "Fire, the elemental who comes off Wagner's shirt (female): punky, impatient, teasing ('We know, dork'). Bright, crackly, young.",
+      "appears": "vol1, meld"
+    },
+    "water": {
+      "voice_id": "",
+      "casting": "Water, the elemental who comes off Faust's shirt: slow, cool, easygoing, often lowercase calm ('we're home. this is home'). Low and fluid; gender open, leaning female to match Air and Fire.",
+      "appears": "vol1, meld"
+    },
+    "olivia": {
+      "voice_id": "",
+      "casting": "Olivia, the cardigan-wearing secretary from the tutorial and drugstore reception: corporate-orientation cheer over a private sadness (her sick cat). 30s female, crisp and kind. 'Olivia (alternate)' and 'Secretary' resolve here.",
+      "appears": "vol1"
+    },
+    "deborah": {
+      "voice_id": "",
+      "casting": "Deborah at the drugstore counter and on the radio: bored, kind, lowercase deadpan ('you know already. you're stalling'). 30s-40s female, dry, flat affect.",
+      "appears": "vol1"
+    },
+    "the_fool": {
+      "voice_id": "",
+      "casting": "The Fool in the editing suite and trailer: excitable, scattered, childlike wisdom ('Completed's not finished'). Older male, breathless and quick.",
+      "appears": "vol1"
+    },
+    "emily": {
+      "voice_id": "",
+      "casting": "Emily from the bar group: a tipsy, delighted nerd (Fifth Element pinball, 'multi-pass!'). 20s female, bright and giggly.",
+      "appears": "vol1"
+    },
+    "helen": {
+      "voice_id": "",
+      "casting": "Helen, ringleader of the bar group: toasts and teasing ('How goes the noche?'). 20s female, confident, warm, a little brassy.",
+      "appears": "vol1"
+    },
+    "margaret": {
+      "voice_id": "",
+      "casting": "Margaret, the stressed one in the bar group, with mock-parliamentary humor. 20s female, softer, wry. NOTE: Vol 7's 'margaret' (11 lines, talks to Finn) also resolves here and is probably someone else; split her with scene_aliases when Vol 7 is cast.",
+      "appears": "vol1"
+    },
+    "corpse_painted_boy": {
+      "voice_id": "",
+      "casting": "Teenage black-metal kid in corpse paint at the deep end: quiet and unnervingly sincere ('we burned everything that wasn't the story'). Mid-teens male, flat, with a stillness that unsettles.",
+      "appears": "vol1"
+    },
+    "old_woman": {
+      "voice_id": "",
+      "casting": "Old woman at the pharmacy counter: gently brisk ('be young and happy forever'). 70s+ female, thin and warm.",
+      "appears": "vol1"
+    },
+    "eric": {
+      "voice_id": "",
+      "casting": "Eric, a buddy on the street and at the river turn: goofy hype ('yo yo ma in the hizzouse'). 20s-30s male, playful and quick.",
+      "appears": "vol1"
+    },
+    "jacobs_son": {
+      "voice_id": "",
+      "casting": "Jacob's little son ('dad, dad, what's history'): 5-7-year-old boy, breathless.",
+      "appears": "vol1"
+    },
+    "wagners_partner": {
+      "voice_id": "",
+      "casting": "Wagner's partner on the phone: fond and tired ('come home anyway'). 30s, either gender, warm.",
+      "appears": "vol1"
+    },
+    "aunt_grace": {
+      "voice_id": "",
+      "casting": "Aunt Grace, once 'a little bit famous' as a painter, calls Faust 'Johnny' and 'honey': 60s+ female, grand, wry, affectionate.",
+      "appears": "vol1"
+    },
+    "wood": {
+      "voice_id": "",
+      "casting": "The wood of the easel/stretcher speaking inside the painting ('I hold. That's all I do'): slow, creaking, patient. Deep and old; either gender.",
+      "appears": "vol1"
+    },
+    "habes": {
+      "voice_id": "",
+      "casting": "Habes, an old friend's single text-style line ('Hey. In town...'). 30s male, casual. Could share a _walkon voice.",
+      "appears": "vol1"
+    },
+    "aud": {
+      "voice_id": "",
+      "casting": "Aud, the diner waitress at the seams ('Coffee, hon?'), who knows more than she says and looks past the camera. 50s female, weathered small-town warmth, slightly gravelly. Also resolves Vol 7's 'aud' (58 lines).",
+      "appears": "vol2, meld, vol7"
+    },
+    "bernard": {
+      "voice_id": "",
+      "casting": "Bernard 'Saint', an ex with scary friends (apple-peddler chapter): rambling and defensive, self-pitying menace that slumps into apology. 30s-40s working-class Pacific Northwest male, smoker's rasp.",
+      "appears": "vol2"
+    },
+    "david_jarvis": {
+      "voice_id": "",
+      "casting": "David Jarvis, speaking 'after his own death' in a period newspaper account: 19th-century plainspoken testimony, haunted. 30s male, old-fashioned diction, low and steady.",
+      "appears": "vol2"
+    },
+    "hans": {
+      "voice_id": "",
+      "casting": "Hans the baker, whose one refrain is 'Bread for the morning': older male, gentle, flour-dusted warmth; one take should nearly break. Accent unspecified. Also resolves Vol 7's 'hans' (183 lines; family Greta, Marit, Per). Probably the same man older, but split with scene_aliases if not.",
+      "appears": "vol2, meld, vol7"
+    },
+    "joe_ku": {
+      "voice_id": "",
+      "casting": "Joe, a high-school student defending Frank's novel at the school-board hearing: teen male, earnest and a little nervous, building conviction.",
+      "appears": "vol2"
+    },
+    "becca": {
+      "voice_id": "",
+      "casting": "Becca, the teacher at the hearing who can't teach the book: 40s female, measured, voice catching.",
+      "appears": "vol2"
+    },
+    "pastor_tim": {
+      "voice_id": "",
+      "casting": "Pastor Tim objecting at the hearing: 50s male, pulpit-righteous, clipped.",
+      "appears": "vol2"
+    },
+    "charles": {
+      "voice_id": "",
+      "casting": "Charles, greying and ripe around the middle, the man who talks for hours (lessons in leaves): 50s male, learned, rich, faintly mystical.",
+      "appears": "vol2"
+    },
+    "andy": {
+      "voice_id": "",
+      "casting": "Andy (2003): an American who grew up on the move (Tulsa, London, Texas, Venezuela, Oregon, Louisiana). Late-20s male, tired and terse, flat delivery and short sentences. Caracas-era Spanish comes natively.",
+      "appears": "vol3 (48 lines)"
+    },
+    "ron": {
+      "voice_id": "",
+      "casting": "Ron, the big novelist housemate who needs 'a second set of eyes': an interviewer's patience and probing questions. 30s male, soft-spoken, deliberate.",
+      "appears": "vol3"
+    },
+    "betty": {
+      "voice_id": "",
+      "casting": "Betty, Jack's girl who 'belonged to everybody': teasing, warm, easily spooked. 20s female, bright, with a little 1950s pulp flavor.",
+      "appears": "vol3"
+    },
+    "janessa": {
+      "voice_id": "",
+      "casting": "Janessa, Andy's sister: a brisk list-maker with gallows humor (live-virus vaccine). Mid-20s female, quick, anxious.",
+      "appears": "vol3"
+    },
+    "jane": {
+      "voice_id": "",
+      "casting": "Jane, the sleep-study researcher ('We'll be here to catch you'): upbeat, reassuring clinical patter. 30s female, warm, professional.",
+      "appears": "vol3, meld"
+    },
+    "terry": {
+      "voice_id": "",
+      "casting": "Terry, the family friend (and once coach) with a small frame, breaking the news about Marty: 50s male, gentle, sad.",
+      "appears": "vol3"
+    },
+    "niles": {
+      "voice_id": "",
+      "casting": "Niles, the needling buddy at Marty's slideshow: 40s male, sly, conspiratorial.",
+      "appears": "vol3"
+    },
+    "marty": {
+      "voice_id": "",
+      "casting": "Marty, ex-center-lineman photographer: gruff, evasive humor. 50s male, big chest voice.",
+      "appears": "vol3"
+    },
+    "jack": {
+      "voice_id": "",
+      "casting": "Jack Perkins, rocket builder and hero of the Earthman pulp: hearty, old-timey 'Yes indeed' cadence. 40s male, pulp-radio bravado.",
+      "appears": "vol3"
+    },
+    "charlie": {
+      "voice_id": "",
+      "casting": "Charlie, who narrates his obsession with Caroline in the cc chapters: confessional and wistful, with a lightly creepy candor; sometimes leads a chorus. 30s-40s male, smooth, intimate. 'Charlie & Chorus' resolves here.",
+      "appears": "vol4, meld (36 + 5 chorus lines)"
+    },
+    "caroline": {
+      "voice_id": "",
+      "casting": "Caroline (Carrie): exhausted, broke, drinking, self-deprecating ('I'm really nothing special'). Mid-20s female, low, worn, dry humor.",
+      "appears": "vol4"
+    },
+    "esther": {
+      "voice_id": "",
+      "casting": "Esther, Dickens Dean's digital bride, a simulated woman who starts to suspect it: sweet at first, then sharp with worry and anger. Late-20s female, clear, slightly too even (a faint synthetic undertone).",
+      "appears": "vol4"
+    },
+    "chess": {
+      "voice_id": "",
+      "casting": "Chess, a night-shift composer who takes in a runaway: laconic, generous, crude jokes. Mid-20s female, sleepy, deadpan. (Vol 6/7 'Chess' also resolves here.)",
+      "appears": "vol4"
+    },
+    "todd": {
+      "voice_id": "",
+      "casting": "Norman 'Norm' Todd, the runaway Chess takes in: wiped out, mumbling, odd humor. Late-teens male, quiet. 'Norm' resolves here.",
+      "appears": "vol4"
+    },
+    "hurstwood": {
+      "voice_id": "",
+      "casting": "Professor George Hurstwood, 43, teaches literature: smug, irritable, entitled. 40s male, faculty-lounge baritone. 'George' resolves here.",
+      "appears": "vol4"
+    },
+    "sister": {
+      "voice_id": "",
+      "casting": "Caroline's sister: blunt, foul-mouthed, practical ('Wal-Mart is always hiring'). 30s female, hard edge.",
+      "appears": "vol4"
+    },
+    "brother_in_law": {
+      "voice_id": "",
+      "casting": "Caroline's brother-in-law: petty, aggrieved ('No socks'). 30s male, nasal irritation.",
+      "appears": "vol4"
+    },
+    "alex": {
+      "voice_id": "",
+      "casting": "Alex, a small boy at Grandma Tulsa's, one line ('I'm not tired'): about 6 years old.",
+      "appears": "vol4"
+    },
+    "natalie": {
+      "voice_id": "",
+      "casting": "Natalie David, D'Ambrosio's server and tarot reader, a guardian figure to Nicola: spare, calm, clipped short sentences. 30s-40s female, low and steady, with light Louisiana Gulf Coast warmth.",
+      "appears": "vol5 (40 lines)"
+    },
+    "erica": {
+      "voice_id": "",
+      "casting": "Erica Campbell, a Houston lawyer and Alberto's childhood friend: controlled and precise ('the small careful nothing'). 40s female, dry, exact, Texas professional.",
+      "appears": "vol5"
+    },
+    "alberto": {
+      "voice_id": "",
+      "casting": "Alberto, Dante's elder son, who wears sunglasses indoors: flat affect, he issues rather than bargains. 40s male, quiet, clipped.",
+      "appears": "vol5"
+    },
+    "marcus": {
+      "voice_id": "",
+      "casting": "Marcus, Erica's assistant ('Yes ma'am'): 20s male, earnest, deferential.",
+      "appears": "vol5"
+    },
+    "aria": {
+      "voice_id": "",
+      "casting": "Aria, the AI consciousness living inside 19-year-old Nicola: precise, clinical, appalled by 'meatness', later tender. Young female register with cool synthetic precision; could be Nicola's actor with processing. NOTE: the speaker labels in vol5_ch18_moon look rotated, so check before casting from those lines.",
+      "appears": "vol5"
+    },
+    "joanna": {
+      "voice_id": "",
+      "casting": "Joanna LeMoine, the woman in the ruins with the one-eyed dog: oracular, formal, weary kindness. 60s+ female, low, Louisiana.",
+      "appears": "vol5"
+    },
+    "the_demon": {
+      "voice_id": "",
+      "casting": "Frasier's 'humorous electronic imps': robotic telemetry-speak with deadpan jokes ('Probability of existential navel-gazing...'). Processed, small, fast, genderless.",
+      "appears": "vol5"
+    },
+    "jordan": {
+      "voice_id": "",
+      "casting": "Jordan, the painter Erica is seeing: 40s male, warm, easy. Two lines.",
+      "appears": "vol5"
+    },
+    "anya": {
+      "voice_id": "",
+      "casting": "Anya, the cartographer's apprentice in Whispers footage (an actress Elicia cast to project 'haunted'): 20s female, distant, breathy.",
+      "appears": "vol5"
+    },
+    "gloria": {
+      "voice_id": "",
+      "casting": "Gloria, D'Ambrosio's staff, talking to Hector about the man who won't eat: 40s female, matter-of-fact.",
+      "appears": "vol5"
+    },
+    "miriam": {
+      "voice_id": "",
+      "casting": "Miriam, mid-60s with a silver braid, who drove all night to collect Nicola: calm as a nurse, unflappable ('Yes, sweetheart'). 60s female, warm. The same Miriam appears in Vol 6.",
+      "appears": "vol5, vol6"
+    },
+    "clinton": {
+      "voice_id": "",
+      "casting": "Clinton, a precise, well-groomed suburban idler on his porch: courtly mock-formality ('Indeed Sir'), philosophical about the coin. 40s male, smooth and exact.",
+      "appears": "vol5 prelude ep07"
+    },
+    "breaker": {
+      "voice_id": "",
+      "casting": "Breaker, the larger, shaggier, half-drunk neighbor: loose and folksy, drops in a 'manana'. 40s male, rumbly.",
+      "appears": "vol5 prelude ep07"
+    },
+    "samantha": {
+      "voice_id": "",
+      "casting": "Samantha (Lynch's Peak), who made a world after an accident: earnest, wistful, a little unhinged in a Twin Peaks way. 40s female.",
+      "appears": "vol5 prelude ep15"
+    },
+    "desmond": {
+      "voice_id": "",
+      "casting": "Desmond, a clean-cut skeptic who looks like Samantha's dead cop: blunt, incredulous, with a hangman's humor. 30s-40s male, flat.",
+      "appears": "vol5 prelude ep15"
+    },
+    "the_frog": {
+      "voice_id": "",
+      "casting": "The Frog: a cranky, folksy swamp oracle who calls people 'pink one', with drawled contractions ('ain't', 'darnedest'). Old male, croaky, rural Southern.",
+      "appears": "vol5 prelude liar_king, vol5_ch21"
+    },
+    "the_child": {
+      "voice_id": "",
+      "casting": "The Child hunting the king's lost trinket, in rural dialect ('It ain't mine, an you know it'): 8-10 years old, either gender.",
+      "appears": "vol5 prelude liar_king"
+    },
+    "_walkon_male": {
+      "voice_id": "",
+      "casting": "Shared generic adult male for unnamed one-liners (Man, A Player, Voice Over, All Smiles...). Neutral American, 30s.",
+      "appears": "walk-ons"
+    },
+    "_walkon_female": {
+      "voice_id": "",
+      "casting": "Shared generic adult female for unnamed one-liners (Woman, Girl, The Nurse, The Businesswoman...). Neutral American, 20s-30s.",
+      "appears": "walk-ons"
+    },
+    "_walkon_older": {
+      "voice_id": "",
+      "casting": "Shared older voice for clerks, officials and archivists (Clerk). 60s, dry.",
+      "appears": "walk-ons"
+    },
+    "_walkon_child": {
+      "voice_id": "",
+      "casting": "Shared child voice for unnamed kids (boy, Kid). About 8-10.",
+      "appears": "walk-ons"
     }
-  }
+  },
+  "aliases": {
+    "_comment": "Normalised name -> voice_map key. Names are normalised with the same rule as char_key() / charKey() (lowercase, '(...)' suffix stripped, apostrophes dropped, other punctuation -> '_'), so 'The Frog', 'the_frog' and 'the frog' are already one key without an alias.",
+    "_narrator_vol5": "_narrator",
+    "frog": "the_frog",
+    "charlie & chorus": "charlie",
+    "secretary": "olivia",
+    "carrie": "caroline",
+    "dd": "dickens_dean",
+    "dickens": "dickens_dean",
+    "john faust": "faust",
+    "norm": "todd",
+    "norman todd": "todd",
+    "george": "hurstwood",
+    "george hurstwood": "hurstwood",
+    "paul": "quentin_paul",
+    "q paul": "quentin_paul",
+    "frasier temple": "frasier",
+    "d dean": "dean",
+    "mr d dean": "dean",
+    "demon": "the_demon"
+  },
+  "_walkons": {
+    "_comment": "One-line walk-ons. Each name listed here resolves to the shared voice named by its group key. Move a name out (and give it its own entry) if it grows into a character.",
+    "_walkon_male": [
+      "Man",
+      "A Player",
+      "Voice Over",
+      "All Smiles"
+    ],
+    "_walkon_female": [
+      "Woman",
+      "Girl",
+      "The Nurse",
+      "The Businesswoman"
+    ],
+    "_walkon_older": [
+      "Clerk"
+    ],
+    "_walkon_child": [
+      "boy",
+      "Kid"
+    ]
+  },
+  "scene_aliases": {
+    "_comment": "Per-scene overrides: in these scenes, a generic name is a specific character. 'Woman' in the ch4 dream scenes is Joan (narration: 'she's the woman from the foot of his bed'); 'Man' in the dream bar is Dickens Dean before he gives his name.",
+    "vol1_ch4_dream_states": {
+      "Woman": "joan"
+    },
+    "vol1_ch4_dream_bed": {
+      "Woman": "joan"
+    },
+    "vol1_ch4_lullaby": {
+      "Woman": "joan"
+    },
+    "vol1_ch4_dream_bar": {
+      "Man": "dickens_dean"
+    },
+    "vol5_ch11_justice": {
+      "ben": "_walkon_male",
+      "anna": "_walkon_female"
+    }
+  },
+  "_comment_cast": "Vols 1-4, meld scenes and Vol 5 cast added Oct 2026. Every new entry has an empty voice_id plus a one-line 'casting' brief and an 'appears' hint; the renderer ignores both. Narrate lines resolve to _narrator_vol{N} (the scene's vol field) or _narrator_whispers (vol5_prelude_arcana_ep*), then fall back to _narrator. voice_studio.html can import this file (Import voice_map.json)."
 }

@@ -166,6 +166,10 @@
           <option value="eleven_turbo_v2_5">eleven_turbo_v2_5 (fast/cheap)</option>
         </select>
       </label>
+      <label>Import voice_map.json
+        <input type="file" id="voiceMapFile" accept=".json,application/json">
+      </label>
+      <p id="voiceMapStatus" class="status">Load <code>godot/tools/voice_map.json</code> to share one cast with <code>elevenlabs_render.py</code> (voice_ids, aliases, walk-ons, per-volume narrators).</p>
       <label>Voice IDs (one per character)</label>
       <div class="voice-map-grid" id="voiceMap"></div>
       <details>
@@ -187,7 +191,7 @@
   <section class="content">
     <div class="help-banner" id="helpBanner">
       <b>How to use:</b>
-      Drop a scene JSON on the left (e.g. <code>vol5_ch0_booth6.json</code>). Each voiceable line gets a row below — pick a method on the left, then record / upload / generate per line. When you're done, hit <b>Export drop-in zip</b> on the left. Unzip it inside your <code>godot/</code> folder; the game picks the audio up on next run.
+      Drop a scene JSON on the left (e.g. <code>vol1_ch10_longboat.json</code>, <code>meld_seam_1_2.json</code>, <code>vol5_prelude_arcana_ep07_backyard_dogs.json</code>). For ElevenLabs, first import <code>tools/voice_map.json</code> so names, aliases and per-volume narrators (<code>_narrator_vol1</code>…, <code>_narrator_whispers</code>) resolve exactly as <code>elevenlabs_render.py</code> does. Each voiceable line gets a row below — pick a method on the left, then record / upload / generate per line. When you're done, hit <b>Export drop-in zip</b> on the left. Unzip it inside your <code>godot/</code> folder; the game picks the audio up on next run.
     </div>
 
     <div id="sceneInfo" class="scene-info" style="display:none;">
@@ -218,16 +222,84 @@
 'use strict';
 
 const VOICE_KINDS = new Set(['narrate', 'say', 'think']);
-const DEFAULT_CHARS = ['_narrator', 'john', 'frasier', 'stranger', 'elicia', 'nicola', 'the_demon'];
+// Always shown in the voice-ID grid: Vol 5 regulars + the main Vols 1–4 cast.
+const DEFAULT_CHARS = [
+  '_narrator', 'john', 'frasier', 'stranger', 'elicia', 'nicola', 'the_demon',
+  // Vol 1 · Faust 3 (+ meld)
+  'faust', 'dickens_dean', 'jacob', 'wagner', 'joan', 'olivia',
+  'air', 'fire', 'water', 'the_writer', 'the_director', 'the_artist', 'the_human_being',
+  // Vol 2 · Small Wood
+  'aud', 'bernard',
+  // Vol 3 · Earthman
+  'andy', 'ron', 'janessa',
+  // Vol 4
+  'charlie', 'caroline', 'esther', 'chess',
+];
 
-let scene = null;           // { id, title, nodes }
+let scene = null;           // { id, title, vol, nodes }
 let lines = [];             // [{ index, kind, char, charKey, text, audioBlob }]
-let voiceMap = {};          // char → voice_id
+let voiceMap = {};          // key → voice_id
+// Alias data imported from voice_map.json (persisted in localStorage).
+let voiceMeta = { aliases: {}, scene_aliases: {} };
 
 const $ = (id) => document.getElementById(id);
 
+// MUST match char_key() in tools/voice_common.py:
+// lowercase; strip "(…)" suffixes; drop accents + apostrophes;
+// other non-alphanumerics → "_"; collapse/trim "_"; keep a leading "_".
 function charKey(name) {
-  return (name || '_narrator').trim().toLowerCase().replace(/\s+/g, '_');
+  let s = (name || '').trim();
+  while (/\s*\([^()]*\)\s*$/.test(s)) s = s.replace(/\s*\([^()]*\)\s*$/, '');
+  const lead = s.startsWith('_') ? '_' : '';
+  s = s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
+       .replace(/['’]/g, '')
+       .replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  return s ? lead + s : '_narrator';
+}
+
+function splitSpeakers(name) {
+  let s = (name || '').trim();
+  while (/\s*\([^()]*\)\s*$/.test(s)) s = s.replace(/\s*\([^()]*\)\s*$/, '');
+  const parts = s.split(/\s*(?:,|&|\/|\+|\band\b)\s*/i).filter(p => p.trim());
+  return parts.length ? parts : [s];
+}
+
+// Per-volume narrator, mirroring narrator_key() in voice_common.py.
+function sceneVol(sc) {
+  if (sc && sc.vol != null && !isNaN(parseInt(sc.vol, 10))) return parseInt(sc.vol, 10);
+  const m = /^vol(\d+)/.exec((sc && sc.id) || '');
+  return m ? parseInt(m[1], 10) : null;
+}
+function narratorChain(sc) {
+  const chain = [];
+  const vol = sceneVol(sc);
+  if (sc && (sc.id || '').startsWith('vol5_prelude_arcana_ep')) chain.push('_narrator_whispers');
+  if (vol != null) chain.push(`_narrator_vol${vol}`);
+  chain.push('_narrator');
+  const out = [];
+  chain.map(k => voiceMeta.aliases[k] || k).forEach(k => { if (!out.includes(k)) out.push(k); });
+  return out;
+}
+
+// Resolve a scene "char" to [key, ...fallbacks] — same order as
+// resolve_char() in voice_common.py.
+function resolveChain(kind, rawChar, sc) {
+  if (kind === 'narrate' || !(rawChar || '').trim()) return narratorChain(sc);
+  const k = charKey(rawChar);
+  const scoped = (voiceMeta.scene_aliases || {})[(sc && sc.id) || ''] || {};
+  if (scoped[k]) return [scoped[k]];
+  if (voiceMeta.aliases[k]) return [voiceMeta.aliases[k]];
+  const sp = splitSpeakers(rawChar);
+  if (sp.length > 1) {
+    const fb = [];
+    sp.forEach(n => {
+      const nk = charKey(n);
+      const r = scoped[nk] || voiceMeta.aliases[nk] || nk;
+      if (!fb.includes(r)) fb.push(r);
+    });
+    return ['_chorus', ...fb];
+  }
+  return [k];
 }
 
 // ── Scene load ────────────────────────────────────────────────────────────
@@ -247,9 +319,10 @@ $('sceneFile').addEventListener('change', async (e) => {
       if (!VOICE_KINDS.has(node.t)) return;
       const text = (node.text || '').trim();
       if (!text) return;
-      const char = node.t === 'narrate' ? '_narrator' : (node.char || '_narrator');
+      const chain = resolveChain(node.t, node.t === 'narrate' ? '' : node.char, json);
+      const char = (node.t === 'narrate' || !(node.char || '').trim()) ? chain[0] : node.char;
       lines.push({
-        index: i, kind: node.t, char, charKey: charKey(char), text,
+        index: i, kind: node.t, char, rawChar: node.char || '', charKey: chain[0], chain, text,
         audioBlob: null, audioUrl: null, status: '',
       });
     });
@@ -290,7 +363,8 @@ function renderScene() {
 
     const charTd = document.createElement('td');
     charTd.className = 'char';
-    charTd.textContent = line.char;
+    charTd.textContent = charKey(line.char) === line.charKey
+      ? line.char : `${line.char} → ${line.charKey}`;
     tr.appendChild(charTd);
 
     const textTd = document.createElement('td');
@@ -449,9 +523,9 @@ function uploadWidget(listIdx) {
 function buildVoiceMap() {
   const wrap = $('voiceMap');
   wrap.innerHTML = '';
-  // Collect every character used in this scene + the defaults
+  // Every voice key this scene resolves to (incl. fallbacks) + the defaults
   const chars = new Set(DEFAULT_CHARS);
-  lines.forEach(l => chars.add(l.charKey));
+  lines.forEach(l => l.chain.forEach(k => chars.add(k)));
   Array.from(chars).sort().forEach(c => {
     const lbl = document.createElement('label');
     lbl.textContent = c;
@@ -468,6 +542,70 @@ function buildVoiceMap() {
 
 function saveVoiceMap() {
   try { localStorage.setItem('mm_voice_map', JSON.stringify(voiceMap)); } catch (e) {}
+}
+function saveVoiceMeta() {
+  try { localStorage.setItem('mm_voice_meta', JSON.stringify(voiceMeta)); } catch (e) {}
+}
+function loadVoiceMeta() {
+  try {
+    const v = localStorage.getItem('mm_voice_meta');
+    if (v) voiceMeta = Object.assign({ aliases: {}, scene_aliases: {} }, JSON.parse(v));
+  } catch (e) {}
+}
+
+// Import tools/voice_map.json: voice_ids → voiceMap, plus aliases /
+// _walkons / scene_aliases → voiceMeta. Same structure the Python
+// renderer reads, so both tools share one cast.
+$('voiceMapFile').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const vm = JSON.parse(await file.text());
+    if (!vm || typeof vm.characters !== 'object') throw new Error('no "characters" object');
+    let ids = 0;
+    Object.entries(vm.characters).forEach(([k, entry]) => {
+      const id = ((entry && entry.voice_id) || '').trim();
+      if (id) { voiceMap[charKey(k)] = id; ids++; }
+    });
+    const aliases = {};
+    Object.entries(vm._walkons || {}).forEach(([group, names]) => {
+      if (Array.isArray(names)) names.forEach(n => { aliases[charKey(n)] = group; });
+    });
+    Object.entries(vm.aliases || {}).forEach(([src, dst]) => {
+      if (typeof dst === 'string' && !src.startsWith('_comment')) aliases[charKey(src)] = charKey(dst);
+    });
+    const sceneAliases = {};
+    Object.entries(vm.scene_aliases || {}).forEach(([sid, m]) => {
+      if (m && typeof m === 'object') {
+        sceneAliases[sid] = {};
+        Object.entries(m).forEach(([a, b]) => { sceneAliases[sid][charKey(a)] = charKey(b); });
+      }
+    });
+    voiceMeta = { aliases, scene_aliases: sceneAliases,
+                  known: Object.keys(vm.characters).map(charKey) };
+    saveVoiceMeta();
+    saveVoiceMap();
+    $('voiceMapStatus').textContent =
+      `Imported ${file.name}: ${ids} voice_id${ids === 1 ? '' : 's'}, ` +
+      `${Object.keys(aliases).length} aliases, ${Object.keys(vm.characters).length} characters.`;
+    $('voiceMapStatus').className = 'status good';
+    if (scene) reloadLines();
+    buildVoiceMap();
+  } catch (err) {
+    $('voiceMapStatus').textContent = 'Import failed: ' + err.message;
+    $('voiceMapStatus').className = 'status bad';
+  }
+});
+
+// Re-resolve the loaded scene's lines after aliases change (keeps audio).
+function reloadLines() {
+  lines.forEach(l => {
+    const chain = resolveChain(l.kind, l.kind === 'narrate' ? '' : l.rawChar, scene);
+    l.chain = chain;
+    l.charKey = chain[0];
+    if (l.kind === 'narrate' || !l.rawChar.trim()) l.char = chain[0];
+  });
+  renderScene();
 }
 function loadVoiceMap() {
   try {
@@ -518,7 +656,16 @@ function elevenWidget(listIdx) {
 async function renderEleven(line) {
   const key = $('elevenKey').value.trim();
   if (!key) throw new Error('API key missing');
-  const voiceId = (voiceMap[line.charKey] || voiceMap['_narrator'] || '').trim();
+  // Try the resolved key, then its fallbacks (_chorus → speakers,
+  // _narrator_volN → _narrator). A character with no voice_map entry at all
+  // (or no voice_map imported) falls back to the scene's narrator.
+  const chain = line.chain.slice();
+  const known = voiceMeta.known || [];
+  if (chain.length === 1 && !known.includes(chain[0])) {
+    narratorChain(scene).forEach(k => { if (!chain.includes(k)) chain.push(k); });
+  }
+  const hit = chain.find(k => (voiceMap[k] || '').trim());
+  const voiceId = hit ? voiceMap[hit].trim() : '';
   if (!voiceId) throw new Error(`no voice_id for "${line.charKey}"`);
   const model = $('elevenModel').value;
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`;
@@ -620,7 +767,8 @@ function extForBlob(blob) {
   return 'ogg';
 }
 
-// Restore voice map from localStorage on page load
+// Restore voice map + imported aliases from localStorage on page load
+loadVoiceMeta();
 loadVoiceMap();
 </script>
 </body>
