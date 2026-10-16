@@ -16,7 +16,10 @@ const RENDER = `(async function () {
   const SR = 16000;
   const PAT = { drums: [[[60, 0, 0.3]], 2], bass: [[[36, 0, 1.2], [43, 1.3, 0.5]], 2.6], pads: [[[48, 0, 2.6], [55, 0, 2.6], [60, 0, 2.6], [64, 0, 2.6]], 3.4],
     ambient: [[[48, 0, 2.6], [55, 0, 2.6]], 3.4], fx: [[[60, 0, 2.2]], 3], keys: [[[60, 0, 1.4], [64, 0, 1.4], [67, 0, 1.4]], 2.6],
-    plucks: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], leads: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6], winds: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6] };
+    plucks: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], leads: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6], winds: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6],
+    // the 2026-10-14 categories play like their nearest older one
+    guitars: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], world: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], orchestra: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6],
+    voices: [[[48, 0, 2.6], [55, 0, 2.6], [60, 0, 2.6], [64, 0, 2.6]], 3.4] };
   function fft(re, im) { const n = re.length; for (let i = 1, j = 0; i < n; i++) { let bit = n >> 1; for (; j & bit; bit >>= 1) j ^= bit; j ^= bit; if (i < j) { [re[i], re[j]] = [re[j], re[i]]; [im[i], im[j]] = [im[j], im[i]]; } }
     for (let len = 2; len <= n; len <<= 1) { const a = -2 * Math.PI / len, wr = Math.cos(a), wi = Math.sin(a); for (let i = 0; i < n; i += len) { let cr = 1, ci = 0; for (let k = 0; k < len / 2; k++) { const h = len / 2, ur = re[i + k], ui = im[i + k], vr = re[i + k + h] * cr - im[i + k + h] * ci, vi = re[i + k + h] * ci + im[i + k + h] * cr; re[i + k] = ur + vr; im[i + k] = ui + vi; re[i + k + h] = ur - vr; im[i + k + h] = ui - vi; const t = cr * wr - ci * wi; ci = cr * wi + ci * wr; cr = t; } } } }
   const edges = Array.from({ length: 25 }, (_, i) => 40 * Math.pow((SR / 2) / 40, i / 24));
@@ -56,7 +59,9 @@ const RENDER = `(async function () {
     for (let i = a0; i < Math.min(a1, e10.length - 8); i++) { let sm = 0; for (let k = -7; k <= 7; k++) sm += e10[Math.max(0, i + k)]; sm /= 15; md += Math.abs(e10[i] - sm); mm += sm; }
     const cmu = cents.reduce((a, v) => a + v, 0) / (cents.length || 1);
     const motion = cents.length > 2 ? Math.sqrt(cents.reduce((a, v) => a + (v - cmu) ** 2, 0) / cents.length) / (cmu || 1) : 0;
-    return { id, cat: P.category, pk, finite, rmsDb: 20 * Math.log10(rms || 1e-9), sus, fp, ef, mod: mm ? md / mm : 0, motion };
+    let s1 = 0, s2 = 0; for (let i = 0; i < m.length; i++) { s1 += m[i]; s2 += m[i] * m[i]; }
+    const dc = Math.abs(s1) / Math.sqrt(m.length * s2 || 1e-12), tail = Math.max(...e50.slice(-6)) / mx;   // DC share of the signal; the last 0.3 s vs the loudest frame
+    return { id, cat: P.category, pk, finite, rmsDb: 20 * Math.log10(rms || 1e-9), sus, fp, ef, mod: mm ? md / mm : 0, motion, dc, tail };
   }
   const dist = (a, b) => { let d = 0, e = 0; for (let i = 0; i < 24; i++) d += (a.fp[i] - b.fp[i]) ** 2; for (let i = 0; i < 16; i++) e += (a.ef[i] - b.ef[i]) ** 2;
     return Math.sqrt(d / 24) + Math.sqrt(e / 16) + 2 * Math.abs(a.mod - b.mod) + 2 * Math.abs(a.motion - b.motion); };
@@ -144,6 +149,26 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
     t.eq(out, [], 'too loud / too quiet');
   });
 
+  // ── the 2026-10-14 instrument library (presets with `added: '2026-10-14'`) ───────────────────────────────
+  await t.test('2026-10-14 library: no DC, drums die away, loudness by family, every snap-in kept', async () => {
+    const meta = await F.p.evaluate(() => Object.fromEntries(FORGE_PRESETS.map(p => [p.id, { added: p.added, tagged: !!p.tags,
+      lanes: ['A', 'B', 'C'].map(L => ((p.state.lanes || {})[L] || {}).fx || []).map(f => f.length) }])));
+    const fresh = R.filter(r => meta[r.id].added === '2026-10-14'), bad = [];
+    t.ok(fresh.length >= 120, 'new presets ' + fresh.length);
+    // a lane holds 8 snap-ins; the normaliser drops the rest silently (the routing test only catches routed ones)
+    for (const [id, m] of Object.entries(meta)) if (m.lanes.some(n => n > 8)) bad.push(id + ' lane over 8 snap-ins');
+    for (const r of fresh) {
+      if (r.dc > 0.05) bad.push(r.id + ' DC ' + r.dc.toFixed(3));                    // e.g. an asymmetric string into a drive
+      if (r.cat === 'drums' && r.tail > 0.03) bad.push(r.id + ' still ringing at the end of the hit (' + r.tail.toFixed(3) + ')');
+    }
+    // the new categories sit with the older family they play like: decaying → plucks, sustaining → leads (pads for voices)
+    const ref = {}; for (const r of R) if (!meta[r.id].tagged) (ref[r.cat] = ref[r.cat] || []).push(r.rmsDb);
+    const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+    const FAM = { guitars: r => r.sus < 0.5 ? 'plucks' : 'leads', world: r => r.sus < 0.5 ? 'plucks' : 'leads', orchestra: r => r.sus < 0.5 ? 'plucks' : 'leads', voices: () => 'pads' };
+    for (const r of fresh) if (FAM[r.cat]) { const f = FAM[r.cat](r), d = r.rmsDb - mean(ref[f]); if (Math.abs(d) > 9) bad.push(r.id + ' ' + d.toFixed(1) + ' dB vs ' + f); }
+    t.eq(bad, [], 'library problems');
+  });
+
   await t.test('every preset is distinct from its nearest neighbour (spectrum + envelope + motion)', async () => {
     const r = await F.p.evaluate(R => { const near = []; for (const a of R) { let bd = 1e9, bn = ''; for (const b of R) if (a !== b) { const d = LIB.dist(a, b); if (d < bd) { bd = d; bn = b.id; } } near.push([a.id, bn, bd]); } return near; }, R);
     const close = r.filter(x => x[2] < 0.22).map(x => x[0] + '≈' + x[1] + ' ' + x[2].toFixed(2));
@@ -163,8 +188,14 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
   // ── sound design (2026-10-13): the composer's texture / fx / hit parts reference these ids ──────────────
   const BEDS = ['amb_vinyl', 'amb_tape_hiss', 'amb_room_tone', 'amb_fluor_hum', 'amb_life_support', 'amb_crickets', 'amb_cicadas', 'amb_surf',
     'amb_fire', 'amb_thunder', 'amb_city', 'amb_clock', 'amb_forest_night', 'amb_modem'];
-  const EVENTS = { amb_clock: 4, amb_thunder: 1, amb_forest_night: 1 };   // intermittent by design: at least this many events in 6 s
-  const TRANS = ['fx_reverse_swell', 'fx_whoosh', 'fx_tape_stop'], HITS = ['fx_sub_drop', 'fx_bell_hit', 'fx_wood_knock', 'fx_glass_ping'];
+  // 2026-10-14: the foley the score bible names
+  BEDS.push('amb_heartbeat', 'amb_drip', 'amb_rain_window', 'amb_dawn_chorus', 'amb_frogs', 'amb_crowd', 'amb_river', 'amb_harbor', 'amb_train',
+    'amb_wind_chimes', 'amb_typewriter', 'amb_radio_tuning', 'amb_footsteps', 'amb_kitchen', 'amb_monitor', 'amb_steamboat', 'amb_storm', 'amb_substation');
+  const EVENTS = { amb_clock: 4, amb_thunder: 1, amb_forest_night: 1,   // intermittent by design: at least this many events in 6 s
+    amb_heartbeat: 4, amb_drip: 2, amb_monitor: 4, amb_footsteps: 4 };
+  const TRANS = ['fx_reverse_swell', 'fx_whoosh', 'fx_tape_stop', 'fx_vinyl_scratch'], HITS = ['fx_sub_drop', 'fx_bell_hit', 'fx_wood_knock', 'fx_glass_ping'];
+  const HITS2 = ['fx_church_bell', 'fx_gong', 'fx_door_creak', 'fx_door_chime', 'fx_doorbell', 'fx_phone_ring', 'fx_ship_horn', 'fx_steam_whistle',
+    'fx_thunder_crack', 'fx_sonar_ping', 'fx_register'];
   // one note, seeded like LIB.render (by id:note unless a seed is given); returns 10 ms RMS frames (mono), the peak
   // and zero crossings per 0.1 s
   const HOLD = `window.HOLD = async function (id, note, hold, len, seed) {
@@ -188,7 +219,7 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
   const median = a => { const s = [...a].sort((x, y) => x - y); return s[s.length >> 1]; };
 
   await t.test('sound design: the composer\'s bed / transition / hit ids exist with their category + tags', async () => {
-    const got = await F.p.evaluate(ids => ids.map(id => { const p = FORGE_PRESETS.find(x => x.id === id); return p ? [id, p.category, ForgeSynth.presetTags(id)] : [id, null, []]; }), [...BEDS, ...TRANS, ...HITS]);
+    const got = await F.p.evaluate(ids => ids.map(id => { const p = FORGE_PRESETS.find(x => x.id === id); return p ? [id, p.category, ForgeSynth.presetTags(id)] : [id, null, []]; }), [...BEDS, ...TRANS, ...HITS, ...HITS2]);
     const bad = got.filter(([id, cat, tags]) => BEDS.includes(id) ? !(cat === 'ambient' && tags.includes('texture'))
       : TRANS.includes(id) ? !(cat === 'fx' && tags.includes('transition')) : !(cat === 'fx' && tags.includes('hit'))).map(x => x.join(' '));
     t.eq(bad, [], 'wrong / missing');
@@ -244,6 +275,19 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
       if (id === 'fx_sub_drop' && !(h.zc[8] < 0.8 * h.zc[1])) bad.push(`sub drop does not drop: zc ${h.zc[1]}→${h.zc[8]}`);
     }
     t.eq(bad, [], 'fx problems');
+  });
+
+  await t.test('foley hits (2026-10-14): a 0.1 s note plays the whole event at its own pitch — C3 and C4 alike', async () => {
+    const bad = [];
+    for (const id of HITS2) {
+      const [lo, hi] = await F.p.evaluate(async ([id]) => [await HOLD(id, 48, 0.1, 3, id), await HOLD(id, 60, 0.1, 3, id)], [id]);
+      const mx = Math.max(...lo.fr);
+      if (!lo.finite || lo.pk > 0.95 || !(mx > 0.005)) bad.push(`${id} peak ${lo.pk.toFixed(3)} loudest frame ${mx.toFixed(4)}`);
+      if (!(rms(lo.fr, 0.4, 0.9) > 0.03 * mx)) bad.push(`${id} cut by the note-off: 0.4–0.9 s at ${(rms(lo.fr, 0.4, 0.9) / mx).toFixed(3)} of the loudest frame`);
+      const d = 20 * Math.log10(rms(lo.fr, 0, 2.5) / rms(hi.fr, 0, 2.5));
+      if (Math.abs(d) > 1) bad.push(`${id} pitch-dependent: C3 vs C4 ${d.toFixed(1)} dB`);
+    }
+    t.eq(bad, [], 'hit problems');
   });
 
   await t.test('FORGE editor: BROWSE overlay by touch — category chip, tile loads the preset, ≥ 36 px targets', async () => {
@@ -326,6 +370,13 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
     const by = Object.fromEntries(r.map(x => [x.style, x]));
     t.eq([by.trap.kick, by.lofi.kick, by.noir.snare, by.noir.ride], ['kick_808', 'kick_felt', 'snare_brush', 'cym_ride']);
     t.eq(await D.p.evaluate(() => DAW.kitMapFor('ambient')[36][0] + ' ' + DAW.kitMapFor('nope')[70][0]), 'kick perc_shaker', 'unstyled kits use KIT_MAP');
+    // 2026-10-14 pieces: every kit voice names a real drums-capable preset; the styles that got their own
+    const kits = await D.p.evaluate(() => { const ids = new Set(FORGE_PRESETS.map(p => p.id)), styles = Object.keys(DAW.KIT_STYLES).concat('nope'), missing = [];
+      for (const s of styles) for (const [n, m] of Object.entries(DAW.kitMapFor(s))) if (!ids.has(m[0])) missing.push(s + ':' + n + ' ' + m[0]);
+      const k = s => DAW.kitMapFor(s);
+      return { missing, picks: [k('chamber')[36][0], k('hymn')[35][0], k('dark_drone')[36][0], k('dub')[38][0], k('bayou')[70][0], k('chiptune')[42][0], k('four_floor')[36][0], k('jazz')[39][0], k('nope')[81][0]] }; });
+    t.eq(kits.missing, [], 'kit voices without a preset');
+    t.eq(kits.picks, ['orch_timpani', 'perc_bass_drum', 'perc_taiko', 'snare_spring', 'perc_washboard', 'hat_chip', 'kick_909', 'perc_snap', 'perc_triangle']);
     for (const x of r) t.eq(x.built0, 0, x.style + ': no kit piece is built before it is hit');
     t.ok(!/hat_closed.*kick_808|kick_808/.test(by.lofi.voices) && by.trap.voices.includes('kick_808') && !by.trap.voices.split(',').includes('kick'), 'kit builds only the voices its map plays: ' + by.trap.voices);
   });

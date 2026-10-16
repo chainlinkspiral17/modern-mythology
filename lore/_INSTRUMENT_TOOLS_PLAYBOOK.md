@@ -795,6 +795,102 @@ those tools.
   these ids yet; the composer rewrite will wire texture / fx / hit
   parts to them.
 
+### 2026-10-14 — the instrument library: FORGE 126 → 257 presets, no sample files
+
+- User ask (via the AUDIO DIRECTOR): "still needs a lot more
+  instrumentation". 131 presets, each marked `added: '2026-10-14'`:
+  - four new categories: `guitars` (11), `orchestra` (8), `world` (16),
+    `voices` (5) — in `PRESET_CATEGORIES`, the editor's optgroup order
+    and `previewNotes`;
+  - plus winds 8, keys 11, synth leads / pads / basses 17, drums 26,
+    ambient beds 18, fx hits 12.
+- **How the instruments are made** (everything in the page, rendered
+  once per sample rate, cached in `bufsFor`; rate-capped 11–32 kHz):
+  - *Plucked strings* = `ksString`: Karplus-Strong with an allpass-tuned
+    delay (in tune to ±1 ct), T60 loss, a pick = triangle at the pluck
+    position + softened noise, fed as its first difference. Options:
+    `pickup` (comb 2·pos·P apart, magnetic pickup), `lp` (one-pole loop
+    loss — basses and nylon, highs die fast), `buzz` (sitar jawari /
+    shamisen sawari), `symp` (sympathetic strings).
+  - *Struck* = `addMode` (one decaying partial by complex rotation, no
+    `Math.sin` per sample). Piano = inharmonic partials (B), hammer
+    position, highs dying first, three detuned strings for the beats and
+    the two-stage decay. Bells, bars, gongs, membranes (with a tension
+    drop) are mode lists.
+  - *Bowed, blown, sung* = oscillators + keyed bow / breath noise through
+    **fixed** lane resonances (`BODY` = peaking filters). A violin
+    plate or a vowel stays at its Hz whatever note plays — a pitched
+    sample can't do that.
+  - *Foley* = circular event loops like 2026-10-13: heartbeat, drips,
+    rain on glass, birds, frogs, crowd babble (glottal pulses through
+    per-syllable formants), river bubbles, harbor, train, chimes,
+    typewriter, radio dial, footsteps, kitchen, monitor, paddle wheel,
+    close thunder; one-shots for the hits.
+- **A sample generator's `root` is the gen's own field, not the
+  source's.** `rate = 2^((note − g.root)/12)`, and `g.root` defaults to
+  60. A preset that plays `piano_lo` (C3) or `ebass` (C2) must say
+  `root: 48` / `root: 36`, or every note sounds an octave or two off.
+  The first grand piano did exactly that.
+- **Piano across the keyboard** = two string groups (C3, C5),
+  crossfaded by `note → gen.level` (±0.8). At most an octave of
+  stretch either way; the two layers' slightly different partials beat
+  like a third string.
+- **The sitar's buzz had to leave the loop.** Changing the delay length
+  per sample (the physical jawari) either died with the note (linear
+  reads damp the highs) or blew up (a cubic read gains > 1 → the loop
+  grows). It is now done after the loop: the string relative to an
+  envelope follower, cubed, high-passed, through a band-pass sweeping
+  down. Because it's scaled to the string's own level, the buzz keeps
+  its shape as the note dies.
+- **A lane holds 8 snap-ins; the normaliser drops the 9th without a
+  word.** The bowed strings lost their reverb that way (4 body filters
+  + a shelf + the 4-piece tail). The library suite now checks the raw
+  count. Shared tails: `TAIL(k)` = EQ / chorus / delay / reverb with
+  the M8 macro layout, `AMBT(k)` + `A8` for beds.
+- **An asymmetric waveform into drive makes DC.** A picked string with
+  a pickup comb into `dist` came out with 12 % DC; a high-pass after the
+  drive fixed it. The suite checks DC on the new presets. *Older
+  presets carry a lot of it*: keys_ep 0.77 of its RMS, keys_wurli 0.69,
+  keys_mk1 0.54, winds_horns 0.53, winds_brass 0.46, keys_felt 0.43,
+  pluck_nylon 0.35 (1:1 FM makes a 0 Hz sideband; the `pluck` source
+  keeps its noise burst's DC). Untouched here — the first 29 are pinned;
+  worth a high-pass in a later pass.
+- A high-pass above 8 kHz is silent in the library's 16 kHz render
+  (above Nyquist). Keep hats' filters ≤ 7 kHz or the suite reads them
+  as silent.
+- **Cost:** a sampled instrument is one buffer source a voice. Heaviest
+  new voice: the supersaw at 9 oscillators (choir_angel's 10 is still
+  the ceiling). Generating the sources is main-thread work on first use:
+  the crowd babble ~350 ms, gong / piano ~100–150 ms (node, 32 kHz);
+  everything else < 100 ms. The DAW's PLAY: RENDER streaming test is
+  timing-sensitive and flaked once in three runs with the heavier
+  four_floor song (supersaw + 909 kit) while other suites were running.
+- **Composer + KIT:** the new ids are appended to every style's
+  `FORGE_POOLS` (a separate `POOLS_2026_10_14` block); existing seeds
+  pick different instruments, same notes. `SOUND_FALLBACK` is empty.
+  KIT styles got timpani / orchestral bass drum (chamber, hymn), taiko
+  (dark drone), spring snare (dub), washboard + güiro (bayou), 8-bit
+  voices (chiptune), 909 (four_floor), Linn (synthwave), snaps, swirl,
+  frame drums, bongos; KIT_MAP the GM timbales / agogô / güiro /
+  triangle / castanets.
+- **Honest about quality** (judged by numbers + spectrograms; nobody
+  has listened yet):
+  - convincing-ish: steel / nylon / 12-string / mandolin / banjo /
+    koto / guzheng / harp plucks, pizzicato, marimba-like bars,
+    handpan, gamelan, timpani, hand drums, the bells, most foley;
+  - approximations: solo violin / viola / cello / erhu (a saw through
+    a fixed body — reads as a good synth string, not a player), brass
+    (filter-envelope brass), the piano (additive; no soundboard, no
+    pedal resonance), shakuhachi / duduk / uilleann (reed / breath
+    models), the robot choir (moving formant peaks, not a vocoder),
+    "sync" (an FM sweep — Web Audio has no hard sync), PWM strings
+    (detuned pulses — no width modulation), crowd murmur (babble, no
+    words), wind chimes (fixed pentatonic in C: can clash with the key).
+- Not wired yet: `SeqGen.SOUNDS` (catalog / score words → beds and
+  hits) doesn't know the new foley ids, so a cue that says "door chime"
+  or "heartbeat" still gets `fx_bell_hit` / nothing. That table sits
+  next to the generators other work was editing, so it was left alone.
+
 ## TEMPLATE
 
 ```

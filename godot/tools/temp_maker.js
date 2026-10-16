@@ -221,7 +221,25 @@
   // ENSEMBLES[id].roles below, after the ids already there. Safe to add before a preset ships: ids FORGE doesn't have are
   // skipped when a take picks (the data test checks every id once they exist). A new ensemble goes straight into ENSEMBLES.
   const ENSEMBLE_MORE = {
-    // rock: { chords: ['guitar_…'], lead: ['guitar_…'] },  orchestral: { lead: ['…'] },  world: { chords: ['…'], lead: ['…'] },
+    // the 2026-10-14 FORGE library: real guitars, solo orchestra, brass and reeds, world instruments, voices, synths
+    orchestral: { bass: ['bass_contra_arco', 'orch_timpani'], chords: ['orch_spiccato', 'orch_pizz', 'orch_harp', 'strings_swell'], lead: ['solo_violin', 'solo_cello', 'winds_oboe', 'winds_horn_solo', 'winds_trumpet'], pad: ['strings_swell'] },
+    strings: { bass: ['bass_contra_arco', 'bass_contra_pizz'], chords: ['orch_pizz', 'orch_spiccato', 'strings_swell'], lead: ['solo_violin', 'solo_viola', 'solo_cello'], pad: ['strings_swell'] },
+    brass: { bass: ['winds_tuba'], chords: ['winds_trombone'], lead: ['winds_trumpet', 'winds_trombone', 'winds_horn_solo'], pad: ['winds_horn_solo'] },
+    winds: { bass: ['winds_bassoon'], chords: ['keys_harmonium'], lead: ['winds_oboe', 'winds_english_horn', 'winds_piccolo'] },
+    piano: { chords: ['keys_grand', 'keys_grand_dark', 'keys_honky'] },
+    rock: { bass: ['bass_picked'], chords: ['gtr_crunch', 'gtr_jangle', 'gtr_twelve'], lead: ['gtr_lead', 'gtr_crunch'] },
+    jazz: { bass: ['bass_contra_pizz'], chords: ['keys_grand', 'gtr_jazz'], lead: ['winds_trumpet', 'winds_trombone', 'gtr_jazz'] },
+    folk: { bass: ['bass_contra_pizz'], chords: ['gtr_steel', 'gtr_twelve', 'gtr_banjo', 'gtr_mandolin', 'keys_accordion'], lead: ['gtr_mandolin', 'solo_violin', 'gtr_pedal_steel', 'gtr_banjo'] },
+    electronic: { bass: ['bass_square_sub', 'bass_wobble'], chords: ['keys_house_organ', 'keys_rave_stab'], lead: ['lead_supersaw', 'lead_hoover', 'pluck_arp'] },
+    synthwave: { chords: ['pad_brass_80s'], lead: ['lead_supersaw', 'lead_sync', 'gtr_lead'], pad: ['pad_brass_80s', 'pad_pwm'] },
+    chiptune: { bass: ['bass_square_sub'], lead: ['lead_glitch'] },
+    ambient: { bass: ['world_didgeridoo', 'world_pipes_drone'], chords: ['pad_grain', 'pad_fm_bell', 'world_gender'], lead: ['world_shakuhachi', 'vox_soprano', 'world_handpan'], pad: ['pad_grain'] },
+    world: { bass: ['world_didgeridoo'], chords: ['world_koto', 'world_guzheng', 'world_oud', 'world_bouzouki', 'world_handpan', 'world_gender'],
+      lead: ['world_sitar', 'world_shamisen', 'world_erhu', 'world_duduk', 'world_shakuhachi', 'world_pan_flute', 'world_uilleann'], pad: ['world_pipes_drone'] },
+    choir: { chords: ['choir_ooh', 'keys_pipe_organ'], lead: ['vox_soprano'], pad: ['choir_ooh', 'choir_chant'] },
+    horror: { chords: ['keys_prepared'], lead: ['lead_sync', 'lead_glitch'], pad: ['vox_whisper', 'choir_robot', 'choir_chant'] },
+    toybox: { chords: ['gtr_ukulele', 'orch_harp'], lead: ['orch_xylophone', 'world_pan_flute'] },
+    lofi: { chords: ['keys_grand_dark', 'gtr_jazz', 'gtr_ukulele'], lead: ['keys_melodica', 'world_handpan', 'world_koto'] },
   };
   for (const [id, more] of Object.entries(ENSEMBLE_MORE)) {
     const e = ENSEMBLES[id]; if (!e) continue;

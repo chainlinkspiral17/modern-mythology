@@ -1283,6 +1283,23 @@ context keeps running into a fake sink, and the meters still move.
   PARTS, `o.arrange`, a cue's shape — always play and don't count. Over 26 styles × 39 seeds: 10 % none, 35 %
   one, 55 % two. The five original roles are untouched (the 1092-hash snapshot still matches).
 
+### 2026-10-16 — 257 FORGE presets wired through: lexicon, ensembles, arrangement pools
+
+- The instrument library more than doubled (126 → 257: guitars, solo orchestra, brass + reeds, world, voices,
+  synths, hand percussion, 30 foley sounds). A preset nobody can reach is wasted, so the merge wired each one
+  three ways: `FORGE_POOLS` (per style, by role), `TempMaker.ENSEMBLE_MORE` (rock finally has guitars, world has
+  sitar / koto / erhu / duduk, orchestral has solo strings and timpani) and `ARR_POOLS_2026_10_16` (the counter /
+  arp / double parts: a horn counter-line in noir, a fiddle in folk, gamelan arps in minimal).
+- `SeqGen.SOUNDS` (text → texture / hit / instrument): the FIRST match per role wins, so the new specific words go
+  in FRONT — "door chime" before "chime", "harbor" → amb_harbor before the generic surf entry, "violin" →
+  solo_violin before the old strings entry. Score cues that described foley in prose (door chime, heartbeat,
+  church bell, gulls, typewriter …) now get the real sound instead of a stand-in.
+- `hasWord` only checks the word's START boundary: "window" still matches "wind". Harmless so far (textures
+  cap at two), but a precise sound word must not be a prefix of a common one.
+- Every id in pools / ensembles / lexicon is checked against FORGE_PRESETS (data + library tests); appending to a
+  pool moves which preset an old seed draws, never the notes — approvals record their instruments, so AGAIN
+  holds.
+
 ## TEMPLATE
 
 ```
