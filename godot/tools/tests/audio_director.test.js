@@ -572,6 +572,11 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     const tr = cover.remix.transcription;
     // A minor, or its relative C major (the same notes — the chords land on the same pitches either way)
     t.ok(Math.abs(tr.bpm - 100) < 1 && (tr.mode === 'major' ? tr.key : (tr.key + 3) % 12) === 0 && tr.bars >= 12 && tr.chords >= 12 && /^A/.test(tr.sections), 'heard: ' + JSON.stringify(tr));
+    t.ok(/basic-pitch/.test(tr.engine || '') && tr.notes > 40 && tr.melody >= 20 && tr.bass >= 6, 'notes transcribed (melody + bass): ' + JSON.stringify(tr));
+    // COVER keeps the transcribed line: the take's lead plays the test piece's melody (chord tones of A minor's i – VI – III – VII, an octave up)
+    const pj = json(cover.dir + 'project.json'), lead = pj.tracks.find(x => x.role === 'lead'), ln = Object.values(lead.patterns).flatMap(q => q.notes);
+    const pcs = new Set([9, 0, 4, 5, 7, 11, 2]);
+    t.ok(ln.length >= 8 && ln.filter(x => pcs.has(((x.n % 12) + 12) % 12)).length / ln.length > 0.9, 'lead notes from the piece: ' + ln.slice(0, 8).map(x => x.n).join(' '));
     t.eq([cover.third_party.kind, cover.third_party.rights, cover.third_party.source], ['cover', 'temp-only', 'My Sketch Song']);
     const card = await p.evaluate(async () => { await refresh(); await selectTrack('quiet_bed'); return document.getElementById('takes').textContent; });
     t.ok(/⚠ COVER OF My Sketch Song · TEMP ONLY/.test(card), 'the card says so');

@@ -1367,6 +1367,16 @@ context keeps running into a fake sink, and the meters still move.
   `maxFreq: 300` drops key 62 (293.7 Hz) and up, and `minFreq: 300` still keeps key 62. To keep key K
   under a `maxFreq`, pass key K + 1's frequency.
 
+### 2026-10-16 — Basic Pitch on full mixes: clean before you pick the lines
+
+- Basic Pitch hears partials: on a mix it reports +12 / +19 / +24 overtones and phantom notes an octave under the
+  bass (the vendoring test: 268 notes for 103 played). remix.js `cleanNotes` drops a note 12 / 19 / 24 / 28 above
+  a louder one it overlaps ONLY when it starts with it (± 60 ms) — the first version dropped any octave-up
+  overlap and threw away a melody that doubled a held chord tone two octaves up (9 melody runs of ~48). Plus
+  phantom sub-octaves (same onset, octave under a louder note) and notes under v 0.22.
+- The melody line takes the STRONGEST note in 52–96 per 16th (ties → the higher), not the highest: the highest is
+  usually a surviving partial or a cymbal-ish bleed.
+
 ## TEMPLATE
 
 ```

@@ -575,13 +575,25 @@
     }
     return secs.length ? secs : [{ name: 'A', base: 'A', bar: 0, bars: Math.max(1, chromas.length), label: 0 }];
   }
+  // Basic Pitch on a full mix hears every partial: drop a note sitting an octave / octave + fifth / two octaves over
+  // a louder note it overlaps (an overtone), one an octave UNDER a louder note starting with it (a phantom sub), and
+  // the faintest ones
+  function cleanNotes(notes) {
+    const ov = (a, b) => Math.max(0, Math.min(a.t + a.d, b.t + b.d) - Math.max(a.t, b.t));
+    const keep = notes.filter(x => (x.v ?? 0.6) >= 0.22);
+    return keep.filter(a => !keep.some(b => b !== a && (b.v ?? 0.6) >= (a.v ?? 0.6) * 0.7 && (
+      ([12, 19, 24, 28].includes(a.n - b.n) && Math.abs(a.t - b.t) < 0.06 && ov(a, b) >= 0.6 * a.d) ||      // an overtone starts with its fundamental; a melody doubling a held chord tone doesn't
+      (b.n - a.n === 12 && Math.abs(a.t - b.t) < 0.05 && ov(a, b) >= 0.6 * a.d))));
+  }
   // a top line and a bottom line from polyphonic notes, on the 16th grid (ticks from the first downbeat)
   function lines(notes, an, bars) {
+    notes = cleanNotes(notes);
     const S = SG(), S16 = S.S16, grid = 60 / an.bpm / 4, steps = bars * 16, top = new Int16Array(steps).fill(-1), bot = new Int16Array(steps).fill(-1), vel = new Float32Array(steps);
     for (const nt of notes) {
       const a = Math.max(0, Math.round((nt.t - an.phase) / grid)), z = Math.min(steps, Math.max(a + 1, Math.round((nt.t + nt.d - an.phase) / grid)));
       for (let k = a; k < z; k++) {
-        if (nt.n >= 52 && nt.n <= 96 && (nt.v ?? 0.6) >= 0.2 && nt.n > top[k]) { top[k] = nt.n; vel[k] = nt.v ?? 0.6; }
+        const v = nt.v ?? 0.6;
+        if (nt.n >= 52 && nt.n <= 96 && (top[k] < 0 || v > vel[k] * 1.15 || (v >= vel[k] * 0.85 && nt.n > top[k]))) { top[k] = nt.n; vel[k] = v; }      // the strongest high note (ties: the higher)
         if (nt.n >= 28 && nt.n <= 55 && (bot[k] < 0 || nt.n < bot[k])) bot[k] = nt.n;
       }
     }
@@ -811,7 +823,7 @@
     return out.sort((a, b) => (b.approved || b.real || b.temp || b.imported ? 1 : 0) - (a.approved || a.real || a.temp || a.imported ? 1 : 0) || a.label.localeCompare(b.label));
   }
 
-  root.Remix = { transcribe, barChords, sectionsOf, lines, motifFrom, thirdPartyOf, RECIPES, NEAR, MOTIF_OPS, fft, onsetEnvelope, estimateTempo, downbeat, estimateKey, chroma, barRoots, chopLayer, dubLayer, tapeLayer, paulstretch, stretchLayer,
+  root.Remix = { transcribe, cleanNotes, barChords, sectionsOf, lines, motifFrom, thirdPartyOf, RECIPES, NEAR, MOTIF_OPS, fft, onsetEnvelope, estimateTempo, downbeat, estimateKey, chroma, barRoots, chopLayer, dubLayer, tapeLayer, paulstretch, stretchLayer,
     liveliest, motifOp, notesOptions, rootBass, loadSource, sourceAudio, analyse, remixTakes, sourcesFrom, coverLead };
   if (typeof module !== 'undefined' && module.exports) module.exports = root.Remix;
 })(typeof window !== 'undefined' ? window : globalThis);

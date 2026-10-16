@@ -450,6 +450,15 @@ suite('data · registries, composer, MIDI files', async t => {
     const st = TM.processStems([[x, x], [x, x]], sr, Object.assign(TM.machine('worn_cassette'), { seed: 3 }));
     t.ok(st[0][0].every((v, i) => v === st[1][0][i]), 'two stems, one machine: sample-identical');
   });
+  await t.test('remix: transcription cleanup drops overtones and phantom sub-octaves, keeps a melody doubling a held chord tone', async () => {
+    const RX = require(path.join(TOOLS, 'remix.js'));
+    const notes = [
+      { t: 0, d: 1, n: 57, v: 0.8 }, { t: 0.01, d: 0.9, n: 69, v: 0.4 }, { t: 0.0, d: 0.9, n: 76, v: 0.3 },   // A3 + its octave and 12th overtones
+      { t: 0, d: 1, n: 45, v: 0.4 },                                                                        // a phantom octave under it
+      { t: 0.5, d: 0.3, n: 81, v: 0.6 },                                                                    // a melody note over the held chord (own onset)
+      { t: 2, d: 0.2, n: 64, v: 0.1 }];                                                                     // too faint
+    t.eq(RX.cleanNotes(notes).map(x => x.n), [57, 81]);
+  });
   await t.test('MIDI file write → read round trip (incl. same-pitch overlaps)', async () => {
     const notes = [{ t: 0, d: 96, n: 60, v: 0.8 }, { t: 48, d: 96, n: 60, v: 0.5 }, { t: 96, d: 48, n: 64, v: 1 }];
     const back = SMF.read(SMF.write([{ name: 'x', channel: 10, notes }], { ppq: 96, bpm: 123 }));
