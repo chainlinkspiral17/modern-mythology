@@ -1,0 +1,445 @@
+{
+  "id": "vol1_ch5_proposition",
+  "vol": 1,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Act Two — The Proposition",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_jacob_house_ext_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Jacob's House",
+      "sub": "EXT. Jacob's House · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Faust and Dickens Dean are walking over to Jacob's house. Jacob is waiting for them outside, smoking."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Jacob, Dickens Dean. Dickens Dean, Jacob."
+    },
+    {
+      "t": "narrate",
+      "text": "They shake and meet."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Pleasure."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Likewise."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Are you a fellow dreamer with a mad quest of your own?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You might say that."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Excellent. I am a tourist in this fine city, and am friends with your friend John Faust."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Funny, he never said anything about you."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We are new friends."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Watch Jacob's cigarette.",
+          "goto": 19
+        },
+        {
+          "text": "Let Jacob size him up.",
+          "goto": 20
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob's cigarette burns down slowly while he looks the stranger over."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I've known this kid for fifteen years, and he ain't once mentioned you, all I'm saying."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Give my friends their due, Dickens Dean. They are as cool as me, if not moreso."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We are but the company we keep."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Damn straight. So what are you in town for, business?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Several reasons, some personal, some business. I came to your friend John Faust because I have access to resources that will elevate you and your friends to superhero status."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "Jesus, sounds like the premise of a bad live-action Japanese television show."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Or rock star, if you prefer. The gal I'm looking for is drawn to larger than life figures. She seems to be preying on them. But she's only after a certain sort of person."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Most guys don't mind being the prey sometimes."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Then you will be perfect for our little trap. I've opened up a club in this town, later on you'll need to get there and make a scene and see if you can draw her out."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "John Faust, you weren't kidding when you mentioned life taking a turn towards the surreal."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Just you wait."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "No spoilers?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "amused",
+      "text": "No spoilers."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_wagner_house_ext_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Wagner's House",
+      "sub": "EXT. Wagner's House · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Music lingers on the afternoon air. The three approach the steps."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Howdy gentlemen. What brings you here this fine afternoon?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "My name is Dickens Dean and I have a proposition for the three of you."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "And what would that be?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Dreamstuff. Power. Magick. Resources. You name it, it's yours. Just know that whatever you're working towards brings me closer to my goal."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "amused",
+      "text": "Sounds positively Faustian, no offense John."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "None taken."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Of course, we'll want to know what we're working for."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Good. Progress. Art and beauty. Education. Entertainment."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "So you're giving us all the cards, all the chips, hell, the whole game just to do with what we want."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Too good to be true. Of course it is, and it's not without a certain fine print. But I assure you, our goals and ambitions are lined up just right."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "But we have to make the choice to help you."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I've got a good feeling about you guys. I can go elsewhere but this feels like the right time and place."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Great. Now you got me curious. So this girl you're after."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "She's just a girl."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Aren't they all."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "So all you want us to do is help you find her."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Finding her will be easy, keeping her will be hard. She always loses interest so quickly. Keep her eye and force her to settle here for a spell, keep her fascinated."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "What's her name?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Aria."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Aria, huh, I'll put the word out."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Thank you. This is an awful lot of exposition to take in in such a short amount of time."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Even the best of narratives are guilty of it."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Give us your number and we'll get back to you."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Faust will be my go-between. He and I are going to your new office. From there, I'll get you the equipment you need to start on your journey."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Our journey? I was under the impression we'll be looking for her here."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Well, yes. You'll see. Actually, do you all want to come along? Might save me time if I just explain as we tour your new digs."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Listen to the record a moment longer.",
+          "goto": 69
+        },
+        {
+          "text": "Go along.",
+          "goto": 70
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Through the open door, the album on the turn-table plays on to an empty room."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch5_proposition_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch6_office"
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "id": "vol1_ch6_debrief",
+  "vol": 1,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Act Two — Space Fetus",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_office_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Office",
+      "sub": "INT. The Office · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean is sipping on coffee."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "amused",
+      "text": "Feels pretty cool, don't it?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "How long have you possessed this technology?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I was one of the first to know about it. It became available to the masses three of my years ago."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "surprised",
+      "text": "You let shit like this out in public?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Of course. I can't deny my fellow man the glory of the multiverse."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Good call. Democratize the imagination, seed it across the possibly maybes."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "It's about getting your message out there. I'm just here to let you know things are getting better. Across the multiverse, things are getting better. Free thinking nerds must spreading the word."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Yeah, but I can imagine there are some serious repercussions to all this."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We're fast forwarding to some very cool stuff, so realize that whatever cool obstacle you're facing, it's all about making the right choices. Are you true to yourself, the moments that have led you to this in life?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Are you honoring your legacy or ever compromising and giving up strides when degradation and authoritarian principle challenge your own assertion to your own existence?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You're talking about our universe, aren't you? Just the general principle of human history thus far."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "What do you know of human history? Really truly."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "A history major, that means little to you, doesn't it?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "When I was growing up, I was one of the first weaned off book learning, introduced to hyper-subliminal implementation and higher education memory implants."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I was just born aware of so much of what you learned in your lifetime's education."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "It would certainly give you a leg up."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Where are you from really?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "To give name to the place is hard to describe, the closest would be: A future in which I am always peering much of my life into the past."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "worried",
+      "text": "This is getting creepy."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Hmm. From what I've gathered of my own lifetime, I seem to be a consciousness, the closest I can describe it as would be a space fetus growing out nurtured by the stars and the nature of the cosmos."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "My world is a kaleidoscope of times, places, and peoples. I've found a footing in various identities, settled in for awhile. My mind is at once, isolated and connected with all the rest."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I feel like an island, but also an archipelago. I've been many people, but I've always lived my life as if it were my own. I struggle to find myself and return to the center of my being."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look at him, not the words.",
+          "goto": 32
+        },
+        {
+          "text": "Keep listening.",
+          "goto": 33
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "He holds the coffee in both hands. It has long gone cold."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Are you immortal?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I have lived as many characters, I have died as many characters. Do I maintain a reality separate from those fictional threads. Not really. When this narrative is done will I continue on. Most probably."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What about us?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I honestly don't know yet. We'll just have to wait and see how this little drama plays out, now won't we?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "Yeah, thanks a lot Mister Ominous Sounding in a Movie Moment."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "amused",
+      "text": "Zing."
+    },
+    {
+      "t": "narrate",
+      "text": "They all laugh. Uncomfortably. Playfully. Considering."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Well, I'll leave you three to your fun and games. I have to go back to my club to see about some long due business."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "surprised",
+      "text": "So that club from my dream was real?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "It wasn't yet, but it will be tonight."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Rock on."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I always imagined Rome could be built in a day, why not, I believed in Santa Claus."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Damn, well, guess that's our cue to exit stage left."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Let us away to Judgement Day."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Our ride awaits."
+    },
+    {
+      "t": "narrate",
+      "text": "They all exit and salute Dickens Dean."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Smell you later."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch6_debrief_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch6_judgement_day"
+    }
+  ]
+}

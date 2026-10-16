@@ -1,0 +1,225 @@
+{
+  "id": "vol1_ch6_tutorial",
+  "vol": 1,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Act Two — The Tutorial",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_tutorial_lobby.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_dream_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The Tutorial",
+      "sub": "INT. The Tutorial · Hazy",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "John Faust is already lingering in the lobby. Jacob and Wagner pop into view. A cute secretary is typing at her console."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Secretary",
+      "expr": "neutral",
+      "text": "Greetings gentlemen. My name is Olivia and I am here to help you adjust to your new equipment."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "What are you, AI, avatar?"
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "I am a very real person. The equipment goggles we gave you include projection windows into other dimensions. These office spaces were carved out of imagination, but occupy a very real volume in space-time."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "There are quite a few software level functions to allow you to adjust these realities, but keep in mind you will only affect the rules of the world itself and not its inhabitants."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "There are ways to do just that, but not within the legal confines of our hardware, so you'll have to get crafty all on your lonesome."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Impressive."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Try adjusting your viewpoint to Empathetic."
+    },
+    {
+      "t": "narrate",
+      "text": "The boys do."
+    },
+    {
+      "t": "narrate",
+      "text": "As Olivia speaks, her words break up and become a bit scrambled. Her speech is subtitled."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Notice how you hear one thing, but what I'm saying is actually quite different from how you perceive it."
+    },
+    {
+      "t": "say",
+      "char": "Olivia (alternate)",
+      "expr": "sad",
+      "text": "As much as I love my job, today is not a good day for me to be here. My pet cat is sick and I'm worrying about her a great deal. My mom's phone call last night gave me nightmares."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob looks at his brother and smiles."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "warm",
+      "text": "I can say just how much I love you man, and you will truly know I mean it."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "That goes without saying. Empathetic mode is only going to give us super powers."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Yeah, I feel the world heating up. Got to be careful with that button."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Now switch the channel to Target Demographic."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Stay in Empathetic a moment longer.",
+          "goto": 27
+        },
+        {
+          "text": "Switch.",
+          "goto": 28
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "For a moment longer, the lobby hums with everything nobody in it is saying."
+    },
+    {
+      "t": "narrate",
+      "text": "They do."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "Here you will see the world as a product being designed and sold by invisible hands. People will reek of corporate identification and speak their affiliation."
+    },
+    {
+      "t": "narrate",
+      "text": "They watch a television program."
+    },
+    {
+      "t": "narrate",
+      "text": "A sitcom family relates its day in the products it consumed and the interests it has in coming products. It's horrifying."
+    },
+    {
+      "t": "say",
+      "char": "Olivia",
+      "expr": "neutral",
+      "text": "There are millions of other possible filters or windows into these realities. Be careful which doors you open, because if you're not strong or careful, you might not return."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "surprised",
+      "text": "Jesus. I think staring into the multiverse may be blinding."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Oh, that is for certain. But think of the sights we'll see."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "My head was starting to hurt, but now I think in a good way."
+    },
+    {
+      "t": "narrate",
+      "text": "The boys stand up, take off their goggles."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "tired",
+      "text": "I think I'm going to need a drink."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch6_tutorial_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch6_debrief"
+    }
+  ]
+}

@@ -69,7 +69,11 @@
     },
     {
       "t": "narrate",
-      "text": "Marty's young children were allowed to mingle and run around until exhausted and this confused the guests so they regarded the kids as everything children were actually not, depending on their level of intoxication and familiarity: to young adults a delightful entertainment, an oftentimes nuisance, focused on them they were, free range youth as gangly pets without cages, pets without leashes."
+      "text": "Marty's young children were allowed to mingle and run around until exhausted and this confused the guests so they regarded the kids as everything children were actually not,"
+    },
+    {
+      "t": "narrate",
+      "text": "depending on their level of intoxication and familiarity: to young adults a delightful entertainment, an oftentimes nuisance, focused on them they were, free range youth as gangly pets without cages, pets without leashes."
     },
     {
       "t": "narrate",
@@ -108,11 +112,11 @@
       "opts": [
         {
           "text": "hold on this slide.",
-          "goto": 25
+          "goto": 26
         },
         {
           "text": "advance.",
-          "goto": 26
+          "goto": 27
         }
       ]
     },
@@ -226,13 +230,155 @@
       "text": "Someone finally pipes up, it's Niles, the geologist cartoonist."
     },
     {
+      "t": "narrate",
+      "text": "Marty is a frequent character in his corporate sketches that make the rounds on xerox macintosh telefax throughout the Cities Service."
+    },
+    {
+      "t": "show",
+      "char": "niles",
+      "expr": "amused",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "Niles",
+      "expr": "amused",
+      "text": "So Marty, I think the question we all want to ask, you do anything with that."
+    },
+    {
+      "t": "show",
+      "char": "marty",
+      "expr": "amused",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Marty swaggers back, tall deep glass in hand, fielding a fly ball."
+    },
+    {
+      "t": "narrate",
+      "text": "The wife on sidelines unaware, drifting buzzing, her secretary glasses and Velma haircut catching enough attention on their own. People often see her in scrubs, teal green things, tonight it's just a tan slip dress thing with black stocking that disappears into shadow."
+    },
+    {
+      "t": "say",
+      "char": "Marty",
+      "expr": "amused",
+      "text": "What do you want me to say, I'm not saying anything."
+    },
+    {
+      "t": "say",
+      "char": "Niles",
+      "expr": "neutral",
+      "text": "I'm just noticing certain things is all, the way this is going."
+    },
+    {
+      "t": "say",
+      "char": "Marty",
+      "expr": "neutral",
+      "text": "These slides have been in that spindle for years. I could be playing it backwards for all it matters."
+    },
+    {
+      "t": "say",
+      "char": "Niles",
+      "expr": "amused",
+      "text": "It matters, you know what I'm saying. Anybody else sides me seeing this."
+    },
+    {
+      "t": "narrate",
+      "text": "A smattering of ayes, drunken yays."
+    },
+    {
+      "t": "narrate",
+      "text": "The myth of Marty ever deepens. You my friend, are a work of art."
+    },
+    {
+      "t": "narrate",
+      "text": "Pour him another and make sure he drinks."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty points out Kilimanjaro, shows the road they take, stops on a slide of a hippopotamus and for a moment his recollection sounds verbatim Jungle Cruise Disneyland."
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_tulsa_backyard_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_backyard_night.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Much later on",
+      "sub": "Tulsa · the patio, fall",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Much later on, Marty would go out to the patio with a select few. Mosquitoes dying off in the fall, the breeze turned crisp, but still after his high cholesterol blood just sweet enough. Finishing off the booze, gulping now instead of tasting savoring swishing sniffing."
+    },
+    {
+      "t": "narrate",
+      "text": "It is a game, their easy embraces and familiarity. They speak highly of friends who could not make it out tonight, who were with them in spirit, oftentimes very far away, sharing stories of, remembering like this."
+    },
+    {
+      "t": "narrate",
+      "text": "Kathy and the kids also far away, but safe right here tucked away right here."
+    },
+    {
+      "t": "narrate",
+      "text": "It is a boys club he is part of. The shared stories, made up shit, waxing on forever seeming at this uncertain hour. They wanted details spilled, laid bare. Drink more they said and did."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty and Niles boxing, ducking and weaving with their fists raised up using the children's sawdust playground as a proving ground. The moon is there between tall skinny trees. Two guys remain sideline, young proteges of Marty and Niles both. Marty doesn't know what he's doing."
+    },
+    {
+      "t": "narrate",
+      "text": "Niles is fucking Norwegian, so who the fuck knows. They're drunk and stumbling and laughing and hugging between hits. No blood showing despite some copper taste on their lips and gums. Mostly ribs hurt, mostly they fall to their knees giggling upon landing a solid hit to the others shoulder or stomach."
+    },
+    {
+      "t": "narrate",
+      "text": "They hold whole bottles now, the final remnants a black ink poured down with a final shout out to the heavens. They relax against the wooden fort Marty built for the children one long weekend Kathy took off without telling him. Inside is a play kitchen for his daughter, the faux sink thick with red dirt and twig."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look in at the play kitchen.",
+          "goto": 80
+        },
+        {
+          "text": "stay out under the trees.",
+          "goto": 81
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_play_fort_night.jpg",
+      "caption": "The wooden fort, one long weekend's work."
+    },
+    {
+      "t": "narrate",
+      "text": "This is good, he thinks. Not quite sure, but he thinks."
+    },
+    {
       "t": "flag",
       "key": "vol3_ch3_safari_complete",
       "val": true
     },
     {
       "t": "jump",
-      "scene": "vol3_ch3_patio"
+      "scene": "vol3_ch4_names_in_neon"
     }
   ]
 }

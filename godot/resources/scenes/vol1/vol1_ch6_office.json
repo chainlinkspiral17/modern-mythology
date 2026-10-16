@@ -1,0 +1,241 @@
+{
+  "id": "vol1_ch6_office",
+  "vol": 1,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "Act Two — The Office",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_office_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The Office",
+      "sub": "INT. The Office · Day",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "A modest modern looking building tucked into the quiet part of a neighborhood. Dickens Dean unlocks the door and goes in."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "This is your new office. The cover you'll use is game design. Instead, we'll have you exploring dream worlds and other parallel dimensions just off the main drag."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Aria is interested in music, video games, consumerism, nature, history, and novels, and search engines."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "The equipment here will help you tune into those planes of existence and embark upon your journey. Think of it as the space program for the soul. Astral projection mixed with high technology."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob looks at the business card on his desk. Oneironautics."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Funny, I had a dream about this."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Dreams are what brought me here, so think of that what you will."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "So we're supposed to find Aria, and once that is done?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You go about your lives, stronger for the experience."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sits at a desk, puts on the strange goggles."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "This is all proprietary technology from another dimension, so please act like adults."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust browses the channels of perception."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Hold on one channel.",
+          "goto": 22
+        },
+        {
+          "text": "Keep flipping.",
+          "goto": 23
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "One channel holds: the same office, a half-second out of step with itself."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "There are a great many presets, but you'll have to get creative when hunting down Aria. Because she is not from here, she can become anyone or anything, depending on how she is viewed by that individual."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "These overlaps in reality produce strange effects, social ripples of unease and disorientation."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Who exactly is Aria? To you, I mean."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "She's my daughter."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "You look younger than me, daddy-o."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "sad",
+      "text": "In my reality, I'm not very old at all. But to Aria, I'm much older. I showed her my true self and the results did not go so well."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "To those people who think they know everything, truth is perhaps the most dangerous thing there is."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I was only trying to show her the way."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Your way. The only true way would be the path she chooses for herself. You forced her to accept truths she was not yet ready to face. You're a bad dad."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "sad",
+      "text": "I'm a bad dad and that's why I'm here, that's why you're here. I don't know how to be a good dad. All I've ever done is lie to the ones I've loved."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We'll see if we can find her."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I've included a tutorial. I suggest you complete it before venturing out on your own. These new tools should give you a significant advantage."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "In what?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Existence."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch6_office_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch6_tutorial"
+    }
+  ]
+}

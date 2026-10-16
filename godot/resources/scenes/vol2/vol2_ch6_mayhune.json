@@ -27,9 +27,159 @@
     },
     {
       "t": "interlude",
-      "text": "Mayhune Lovers",
-      "sub": "First Panel · she and he",
+      "text": "she and he",
+      "sub": "a backyard · summer",
       "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Her name was like so many other girl names, named for a flower. He had his father's name, the fourth father's name in a row. They did not truly see the other for the first time until her fifteenth birthday."
+    },
+    {
+      "t": "narrate",
+      "text": "Their parents had been best friends, grown up together, courted, married and had children together. Their families lived on opposites ends of the town which meant they lived pretty close by never more than a phone call away."
+    },
+    {
+      "t": "narrate",
+      "text": "Four or five days every month got spent co-mingling, the kids clashing, bonding and spurting through the years while the parents worked, mellowed and enjoyed the rearing."
+    },
+    {
+      "t": "narrate",
+      "text": "The birthday party was nothing special. Her family had set-up a large table out in the backyard. It was summer, of course."
+    },
+    {
+      "t": "narrate",
+      "text": "The small children played in a sprinkler, on a slip and slide. The bright husks of broken water balloons were not well hidden in the tall grass."
+    },
+    {
+      "t": "narrate",
+      "text": "The girl was sullen and distant, not wanting the carefree ritual burden of tearing through wrapped presents, eating cake and ice cream that were her favorite flavor, smiling and thanking everyone for their thought and consideration."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy was quiet but kind, realizing that his place in this world was changing, that things were changing and never going back. He was remarkably attracted this almost sister of his. She was the keeper of so many of his secrets and lived forever in the pages of family albums."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay with her",
+          "goto": 14
+        },
+        {
+          "text": "watch him in the grass",
+          "goto": 35
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "She had been unwanted by a boy, a feeling she'd anticipated ever since childhood. It was the other half of play, when one doll snubbed the other for the affection of herself. Dejection was always a concept never an actual emotion."
+    },
+    {
+      "t": "narrate",
+      "text": "So very different from being left behind as a child at a gas station, being forgotten for a moment, a terrifying moment. Altogether alien and foreign to her, a slight against her character, her not being good enough, attractive enough, ideal enough in the eyes of her own ideal."
+    },
+    {
+      "t": "narrate",
+      "text": "Her head was clouded with thoughts of endings, of melodramatic over-simplifications. She would change herself to challenge him, to change his perception of her. She would go into the bathroom and cry as quiet as she could, look into the mirror and hate that awful no good reflection."
+    },
+    {
+      "t": "narrate",
+      "text": "He pined for her gaze but had no trick up his sleeve to catch it. He was ordinary, altogether plain. He would sit in the grass, let his brothers and sisters wrestle him to the wet carpet."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes would never leave her, they played for his smile and smile he did. He wore glasses, dressed like an old man. The sound of a fog horn off in the distance, birds overhead."
+    },
+    {
+      "t": "narrate",
+      "text": "He drank cherry soda and wiped his forehead. She sat silent, so her mother shook her shoulders to stir some life back into those bones. She smiled weakly, played with a mash of cake and cream."
+    },
+    {
+      "t": "narrate",
+      "text": "Keep waiting for that moment of connection because he and she were like fish in a bowl, always brushing past each other never touching. He was clumsy like the words out of his mouth, she was stoic with her inward gaze. Compare and contrast for effect."
+    },
+    {
+      "t": "narrate",
+      "text": "But they had a history."
+    },
+    {
+      "t": "narrate",
+      "text": "He remembered something, a moment he'd forgotten. They were age nine or so, lanky springs of acutely conscious energy, polar in their pursuits. She wanted to be a vet, loved animals and was preoccupied with breeding rabbits."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd help her clean cages, little fecal balls rolled away and he'd have to pick them up, one by one with his fingers. He didn't know what he wanted to do with his life and didn't much care to worry. His gaze was on her."
+    },
+    {
+      "t": "narrate",
+      "text": "He knew he enjoyed her company. She tried to teach him little things suspected he'd forget completely. Yet he remembered every thing about the way she said it, how much fun they were having."
+    },
+    {
+      "t": "narrate",
+      "text": "She only saw him as uninteresting, plain and simple. She grew tired of trying to improve him, he was not worth her energy. But they had a history, and she too remembered moments."
+    },
+    {
+      "t": "narrate",
+      "text": "When they were thirteen, he could not begin to understand who she was becoming. Never were they so very different. Somehow he remembered the smallest thing she said at the lake one spring."
+    },
+    {
+      "t": "narrate",
+      "text": "About how she wanted to go to Nepal and climb the highest mountain and at the top instead of leaving a flag, she'd leave a photo of herself to be buried under all that snow."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bedroom_window_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "When the day was done and he had left with his family, the painful waves and hugs and thanks all exchanged, she went up to her room and sat in silence. She looked over all her unwrapped presents and considered him again. It was nothing really but she kept thinking about him and she didn't want to."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd given her a stethoscope for her birthday. She'd wanted to be a doctor now and hadn't told anybody, even him. She wanted to help people because there was so much sickness in the world and she knew nothing of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He was so simple, so silly. She could not get him out of her head. The day turned to night and she sat on her pillows, her legs crossed, her chin cradled against her hands, forehead creased and set like stone."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside her chest her breathing came short against her throat, she breathed through her nose, every thought and beat of her eyes a measure of her consideration. Her hands were sweaty together entwined, eyes more out of focus with every flutter."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_mayhune_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_sacrificial_pair"
+    },
+    {
+      "t": "narrate",
+      "text": "He pined for her gaze but had no trick up his sleeve to catch it. He was ordinary, altogether plain. He would sit in the grass, let his brothers and sisters wrestle him to the wet carpet."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes would never leave her, they played for his smile and smile he did. He wore glasses, dressed like an old man. The sound of a fog horn off in the distance, birds overhead."
+    },
+    {
+      "t": "narrate",
+      "text": "He drank cherry soda and wiped his forehead. She sat silent, so her mother shook her shoulders to stir some life back into those bones. She smiled weakly, played with a mash of cake and cream."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been unwanted by a boy, a feeling she'd anticipated ever since childhood. It was the other half of play, when one doll snubbed the other for the affection of herself. Dejection was always a concept never an actual emotion."
+    },
+    {
+      "t": "narrate",
+      "text": "So very different from being left behind as a child at a gas station, being forgotten for a moment, a terrifying moment. Altogether alien and foreign to her, a slight against her character, her not being good enough, attractive enough, ideal enough in the eyes of her own ideal."
+    },
+    {
+      "t": "narrate",
+      "text": "Her head was clouded with thoughts of endings, of melodramatic over-simplifications. She would change herself to challenge him, to change his perception of her. She would go into the bathroom and cry as quiet as she could, look into the mirror and hate that awful no good reflection."
     },
     {
       "t": "narrate",

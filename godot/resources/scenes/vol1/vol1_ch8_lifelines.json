@@ -1,0 +1,300 @@
+{
+  "id": "vol1_ch8_lifelines",
+  "vol": 1,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Act Two — Lifelines",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_office_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Dickens Dean's Office",
+      "sub": "INT. Club # · Night",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean leads them on to his office. Each of them has a t-shirt laid out. There are four portable listening devices."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I based these designs the closest I could on your artwork for each of the heroes. These will be strong visual reminders to the outside world that we belong and have a place to come home to."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes over the music devices."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "These audio communicators have imbedded imagery cues which will affect your perception, emotional reaction and keep you tethered to reality through familiar audio clues and personal samples from your music library."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We can also converse with each other however great a distance. We may get lost but these are our lifelines to each other."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean gives them each a small medical looking needle device."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Turn it over in your hand.",
+          "goto": 15
+        },
+        {
+          "text": "Pocket it.",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The device is cold, and lighter than it looks."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Your last line of defense, won't work in every situation, but will in most, a shock to the neural system that will hopefully reset you back to this reality. A very powerful drug. Be very careful with it."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "And how exactly were you hoping to bring back two young ladies whose bodies are dead and rotting?"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "We ain't going to hell and back for a lost cause. And sorry but zombies freak me out."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You'll have to trust me."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Forgive us if we don't."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We don't come back unchanged."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What do you mean?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We save their consciousness. We carry them home with us. I could probably bear Aria's. But you three would probably have to share Joan."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "surprised",
+      "text": "What?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "She is far too big for you, Faust."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sighs."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "tired",
+      "text": "None of this makes any sense."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "She is worth saving. As is my Aria. That is all that matters."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "They're dead and I happen to be a little selfish and think all of us here are pretty damn awesome."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "This is sounding more and more a fool's errand."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I may be a madman but I am no fool."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "If we choose to do this, we're all foolish madmen."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob picks up the equipment."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "How do we do this?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "We explore realities close to death, but not quite. We start off simple, ease our way into it."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Easing ourselves close to death isn't simple."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Actually, it is. Life is a state of mind. Our bodies have a series of biological safeguards and back-up systems in place. We can perceive of ways past these barriers with only the power of our mind."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Well and good, but with little to no warning we're thrust into this situation and have to proceed? Life or death?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "This day is the same as any other day."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "worried",
+      "text": "But at this point, I might die?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Precisely. Who is to know when their time is even up. There are other safeguards automatically built into the system to bolster your feelings of importance and invulnerability."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "By merely perceiving a world in which you are a superhero, one starts to grow comfortable there. Very quickly you will become whatever it is you need to become."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Each world has different requirements of you, which you must work alone or together to overcome. I'll be with you, but my connection to these are more personal, and I can not inform that reality with my presence."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I warn you, the worlds from here will diverge and how you take this next step determines how —"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean slowly fades away, a static hiss interrupting his signal."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch8_lifelines_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch8_triumvirate"
+    }
+  ]
+}

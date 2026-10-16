@@ -1,0 +1,405 @@
+{
+  "id": "vol1_ch8_club",
+  "vol": 1,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "Act Two — Club #",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_club_sharp_empty.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_dream_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Club #",
+      "sub": "INT. Club # · Night",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean surveys the club before him, curiously empty."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Not yet, but you will be."
+    },
+    {
+      "t": "narrate",
+      "text": "He hangs up the call. Sitting caged in the center of the club, beaten and raw is Joan."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The three friends arrive at the club and investigate. It is opened, but there seems to be no activity."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Guess it hasn't found its niche yet."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "I don't remember this ever being here. I walk by this lot all the time."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Yeah, funny about that. I dreamt about this place two nights ago, and now here it is."
+    },
+    {
+      "t": "narrate",
+      "text": "The other two look at him funny."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look up at the sign first.",
+          "goto": 20
+        },
+        {
+          "text": "Go in.",
+          "goto": 21
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Above the door, the # logo hangs unlit."
+    },
+    {
+      "t": "narrate",
+      "text": "The trio enter the building. There is low lighting, lit like a stage in the middle of a bar."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust sees Joan and rushes over to her. She is unmoving inside the cage."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "worried",
+      "text": "Joan, please girl turn over, let me see you, if you can respond to the sound of my voice say something, there are people here, we're here with you."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob is already on his phone. It won't turn on. Wagner tries the same. Faust fumbles for his connection."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "angry",
+      "text": "Come on, why isn't this working?"
+    },
+    {
+      "t": "narrate",
+      "text": "His hands on the cage."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "worried",
+      "text": "Somebody help me."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust starts trying to push the cage. They both come to help and manage to up-end it."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust turns Joan over. She has been shot through the head."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust struggles to find his breath."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "sad",
+      "text": "No, this can't be happening."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean appears. Faust sees him, bellows furiously."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "angry",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "angry",
+      "text": "You! You did this!"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Would it even matter to you if I did?"
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob and Wagner back up Faust."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "You are so blinded by rage right now I couldn't reason with you if I tried."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "sad",
+      "text": "She was my ideal. She was my perfect woman."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "I know, that's why I brought her to you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "angry",
+      "text": "To kill her."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "The story isn't over."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "sad",
+      "text": "She's dead."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "She is. But you can journey to wherever she is to find her."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "angry",
+      "text": "I know your game. I'm not going for Aria. I'm going for Joan."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "This is a two for one deal and I'll be going with you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You did all this to recruit me to follow her into the afterlife?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "Close to death but not quite crossing over into it. That's what this technology does. But being so close to death, we'll be literally so very-close to death. And not just you, Faust, but all of you."
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "angry",
+      "text": "Nuh uh. Homeboy may be willing to pursue his own end for some girl, but I'm not."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "But we wouldn't be going for some girl, we'd be going to keep Faust safe."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Fuck."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "No, this is my battle."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "The closer we travel to death, the further we lose of ourselves. Having people who matter share in this experience gives a much firmer grip of reality to fall back on."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "If anyone has the most to lose, it's myself, and as none of you know or like me all that much right now, my chances of coming back are marginal. But I need to make sure Aria gets back safe and sound, her life is not yet over with."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "How did she die?"
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "sad",
+      "text": "She was working as a D.J. when shots were fired in the air. She was up in her booth and one caught her by random chance. It wasn't fair. She was too perfect to lose to random chance."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "role": "Antagonist",
+      "expr": "neutral",
+      "text": "It wasn't fair to track her across so many worlds and lose her here. But I've discovered back doors into the reality of death. There are many ways into it. I just had to find three strong dreamers to sneak us in."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Jesus, this shit is ridiculous. Fuck. If we're doing this, we're doing this."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "All right. Yeah, damn."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "warm",
+      "text": "Thanks guys."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You'll owe us one."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "A very big one."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Each."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust shakes their hands."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Let's get on with it."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch8_club_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch8_lifelines"
+    }
+  ]
+}

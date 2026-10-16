@@ -155,7 +155,7 @@
         },
         {
           "text": "3. Nothing. Goodbye.",
-          "goto": 37
+          "goto": 36
         }
       ]
     },
@@ -177,11 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nobody here calls me that. Mom when she's angry. Never Dad."
-    },
-    {
-      "t": "narrate",
-      "text": "It was Grandpa's name, and Grandpa was not good to him."
+      "text": "Nobody here calls me that. Mom when she's angry. Never Dad. It was Grandpa's name, and Grandpa was not good to him."
     },
     {
       "t": "flag",
@@ -204,11 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nobody here calls me that. Mom when she's angry. Never Dad."
-    },
-    {
-      "t": "narrate",
-      "text": "It was Grandpa's name, and Grandpa was not good to him."
+      "text": "Nobody here calls me that. Mom when she's angry. Never Dad. It was Grandpa's name, and Grandpa was not good to him."
     },
     {
       "t": "flag",

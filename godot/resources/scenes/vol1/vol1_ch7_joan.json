@@ -1,0 +1,246 @@
+{
+  "id": "vol1_ch7_joan",
+  "vol": 1,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Act Two — The Blade",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_faust_apartment_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Faust's Home",
+      "sub": "INT. Faust's Home · Day",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Faust comes home and flops down on the couch, grabbing a book to read. Joan is in the corner, looking over a painting."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Look at the painting she's looking at.",
+          "goto": 8
+        },
+        {
+          "text": "Stay with the book.",
+          "goto": 9
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "It is one of his, leaned against the wall where the window light falls."
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "joan",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "I like this one."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I thought you were supposed to be busy."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "With proper motivation, I can do even the most horrible things quite efficiently."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "So tell me about your day then."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Your world is strange, I don't know what to think of it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "How is it any different from your own?"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Everything. It's overwhelming, really. You'd think my world primitive in most aspects. This world is more advanced than the ones we've come from yet backwards in so many ways."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I don't doubt it. We've got to find some measure of balance, I'm sure our history is no different when it comes to difficult compromise. Have to make sacrifices somewhere."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "So are you a champion of your people?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "amused",
+      "text": "Hah. Hardly. I try to be a good friend and family member, and only made good grades in school, pretty low requirements for championhood."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "You say you are average, but you do not seem it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I don't know what I am. Just when I think I'm something, life throws another labor at me to complete, and I'm something brand new."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "So you are a champion."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "The only trophies I have are my books, my friends, and my stories."
+    },
+    {
+      "t": "narrate",
+      "text": "Joan sits next to him on the couch. She pulls out a dagger."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol1_joan_dagger.jpg",
+      "caption": "Joan's dagger"
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "Your eyes may not be able to see the energies that reside within this blade, but you should be able to feel them."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust touches her blade."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "surprised",
+      "text": "It feels like warm skin."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "That is because it is tied to my body and soul. When you touch my blade, you touch me."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust keeps his hand on the blade, looking Joan in the eyes. She leans in to kiss him."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We probably shouldn't."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "warm",
+      "text": "How often are you given the gift of a woman from another dimension, blind champion?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Well, if I'm blind, perhaps you should guide the way."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "amused",
+      "text": "What do you think I was trying to do, John Faust?"
+    },
+    {
+      "t": "narrate",
+      "text": "They kiss."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "This can only mean trouble."
+    },
+    {
+      "t": "say",
+      "char": "Joan",
+      "expr": "neutral",
+      "text": "For you or for me?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "For everything."
+    },
+    {
+      "t": "narrate",
+      "text": "They kiss again."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch7_joan_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch7_ink"
+    }
+  ]
+}

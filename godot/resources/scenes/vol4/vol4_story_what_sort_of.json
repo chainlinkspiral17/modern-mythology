@@ -89,11 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chess motioned for the boy to follow her into the elevator, which he did at his own pace. He kept turned away from her. \"That nose of yours is something."
-    },
-    {
-      "t": "narrate",
-      "text": "Looks like a spoiled fruit.\""
+      "text": "Chess motioned for the boy to follow her into the elevator, which he did at his own pace. He kept turned away from her. \"That nose of yours is something. Looks like a spoiled fruit.\""
     },
     {
       "t": "narrate",
@@ -128,11 +124,11 @@
       "opts": [
         {
           "text": "wait for the doors",
-          "goto": 27
+          "goto": 26
         },
         {
           "text": "step out",
-          "goto": 28
+          "goto": 27
         }
       ]
     },

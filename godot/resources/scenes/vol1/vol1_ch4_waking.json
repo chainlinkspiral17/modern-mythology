@@ -92,7 +92,8 @@
       "text": "— End of Act One, Part III —"
     },
     {
-      "t": "end"
+      "t": "jump",
+      "scene": "vol1_ch5_morning"
     }
   ]
 }

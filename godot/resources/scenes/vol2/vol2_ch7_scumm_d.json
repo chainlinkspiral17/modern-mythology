@@ -63,11 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "The stick is the other weird one. Size of a pack of gum. Plastic."
-    },
-    {
-      "t": "narrate",
-      "text": "Warm."
+      "text": "The stick is the other weird one. Size of a pack of gum. Plastic. Warm."
     },
     {
       "t": "narrate",
@@ -79,15 +75,11 @@
     },
     {
       "t": "narrate",
-      "text": "Not the town. The inside of the town. Every kitchen."
+      "text": "Not the town. The inside of the town. Every kitchen. Every basement. What everybody in it was thinking right at that second, all at once, slow, like syrup."
     },
     {
       "t": "narrate",
-      "text": "Every basement. What everybody in it was thinking right at that second, all at once, slow, like syrup. I can't write down what that was like."
-    },
-    {
-      "t": "narrate",
-      "text": "I tried for ten minutes and threw the page away."
+      "text": "I can't write down what that was like. I tried for ten minutes and threw the page away."
     },
     {
       "t": "bg",
@@ -113,15 +105,15 @@
     },
     {
       "t": "narrate",
-      "text": "In the middle of everything is a hole. Round. Turning."
+      "text": "In the middle of everything is a hole. Round. Turning. Those games have a trick for water and fire where they cycle the colors through a shape instead of drawing new pictures, so the river looks like it's moving when nothing's moving at all."
     },
     {
       "t": "narrate",
-      "text": "Those games have a trick for water and fire where they cycle the colors through a shape instead of drawing new pictures, so the river looks like it's moving when nothing's moving at all. The hole is that trick done to a spiral. Blue to violet to theater red to black to blue, around and down."
+      "text": "The hole is that trick done to a spiral. Blue to violet to theater red to black to blue, around and down. The coffee goes in."
     },
     {
       "t": "narrate",
-      "text": "The coffee goes in. The rain goes in, the three lines bending at the bottom for the first time all night. Out on the flats the crab is walking toward it, slow, sideways, and the whole map on its back is turning with it."
+      "text": "The rain goes in, the three lines bending at the bottom for the first time all night. Out on the flats the crab is walking toward it, slow, sideways, and the whole map on its back is turning with it."
     },
     {
       "t": "narrate",
@@ -152,7 +144,7 @@
       "opts": [
         {
           "text": "MAKE",
-          "goto": 35
+          "goto": 33
         }
       ]
     },
@@ -162,15 +154,11 @@
     },
     {
       "t": "narrate",
-      "text": "I put the pointer on it and before I could click, black. A save box. Ten slots."
+      "text": "I put the pointer on it and before I could click, black. A save box. Ten slots. Nine full of names I don't know in handwriting I don't know with dates that haven't happened."
     },
     {
       "t": "narrate",
-      "text": "Nine full of names I don't know in handwriting I don't know with dates that haven't happened. 2013. 2026."
-    },
-    {
-      "t": "narrate",
-      "text": "2042. 2052. The tenth one empty, cursor blinking."
+      "text": "2013. 2026. 2042. 2052. The tenth one empty, cursor blinking."
     },
     {
       "t": "narrate",
@@ -212,15 +200,11 @@
     },
     {
       "t": "narrate",
-      "text": "Didn't go back to sleep. Went down to the basement in socks, didn't turn on the monitor. Graph paper."
+      "text": "Didn't go back to sleep. Went down to the basement in socks, didn't turn on the monitor. Graph paper. Drew the town like the dream draws it, one road, buildings propped on nothing, the crab on the flats with the map on its back, the spiral in the middle."
     },
     {
       "t": "narrate",
-      "text": "Drew the town like the dream draws it, one road, buildings propped on nothing, the crab on the flats with the map on its back, the spiral in the middle. Under it I wrote the five letters off the side of the boxes all those games came in. They don't mean what the box says they mean."
-    },
-    {
-      "t": "narrate",
-      "text": "I don't know what they mean instead yet."
+      "text": "Under it I wrote the five letters off the side of the boxes all those games came in. They don't mean what the box says they mean. I don't know what they mean instead yet."
     },
     {
       "t": "narrate",
@@ -244,19 +228,15 @@
     },
     {
       "t": "narrate",
-      "text": "About the daughter. About the work. About bringing her here."
+      "text": "About the daughter. About the work. About bringing her here. He was quiet a long time. Then he asked if I'd been playing those games again."
     },
     {
       "t": "narrate",
-      "text": "He was quiet a long time. Then he asked if I'd been playing those games again. I said yeah."
+      "text": "I said yeah."
     },
     {
       "t": "narrate",
-      "text": "*It's going to be a game,* I said. *Not a game. A place."
-    },
-    {
-      "t": "narrate",
-      "text": "A machine that makes a place. You put a stick in and it's slow.*"
+      "text": "*It's going to be a game,* I said. *Not a game. A place. A machine that makes a place. You put a stick in and it's slow.*"
     },
     {
       "t": "narrate",

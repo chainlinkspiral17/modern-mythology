@@ -70,23 +70,15 @@
     },
     {
       "t": "narrate",
-      "text": "Every line belongs to THE BOY. Page one is the airport. The exact words Mom said."
+      "text": "Every line belongs to THE BOY. Page one is the airport. The exact words Mom said. The words I didn't say back. In the margin somebody wrote in pencil *slower here*."
     },
     {
       "t": "narrate",
-      "text": "The words I didn't say back. In the margin somebody wrote in pencil *slower here*."
+      "text": "Someone in the dark starts clapping. Slow, and it doesn't stop when it should. Nobody joins in. I raised the pointer to find who it was and every head in every row turned around at once and they don't have faces."
     },
     {
       "t": "narrate",
-      "text": "Someone in the dark starts clapping. Slow, and it doesn't stop when it should. Nobody joins in."
-    },
-    {
-      "t": "narrate",
-      "text": "I raised the pointer to find who it was and every head in every row turned around at once and they don't have faces. Skin color and the outline of hair and that's it, smooth as the backs of spoons."
-    },
-    {
-      "t": "narrate",
-      "text": "And I knew, the way you know things in dreams with no argument, that the one clapping wrote the script, and is sitting in the third row, and is proud of me."
+      "text": "Skin color and the outline of hair and that's it, smooth as the backs of spoons. And I knew, the way you know things in dreams with no argument, that the one clapping wrote the script, and is sitting in the third row, and is proud of me."
     },
     {
       "t": "narrate",
@@ -139,11 +131,11 @@
       "opts": [
         {
           "text": "LOOK AT crab",
-          "goto": 31
+          "goto": 29
         },
         {
           "text": "LOOK AT the number on its back",
-          "goto": 37
+          "goto": 35
         }
       ]
     },
