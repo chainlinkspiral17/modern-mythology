@@ -28,7 +28,7 @@ The aim is flickers only. Nothing below resolves, names Dean as the Caracas birt
 - **Vol 2, "a brief history of me":** the family moved to Small Wood "the summer after my sophomore year spent overseas in Caracas." The dad was out of work. Other details: the hallaca, Canaima, Sapo Falls, and the scumm line "Caracas: the apartment on the hill, Dad's company car, the dogs in the barrio going all night."
 - **Vol 3, backward jaunt:** "Caracas was a huge city, about an hour from the coast up in the mountains… hillside slum homes lit up like a beautiful quilt of light." Also "The war in Venezuela was bad" (Steve poem).
 - **Vol 4, *angry fog*:** Marco from Venezuela. His dad is fifty and in college on an oil-company deal. His mom teaches at an International School and speaks thirteen languages.
-- **Vol 7 (`vol7_ch6_nate`, `vol7_ch6_cale`):** Nate's family came up in '92 from Caracas. The dad was "an oil guy." They were "Americans" who had been there "since the eighties." They rented a farmhouse up the Alsea off Little Switzerland Road. He brought computer parts up from Caracas.
+- **Vol 7 (`vol7_ch6_nate`, `vol7_ch6_cale`):** Nate's family came up in '92 from Caracas. The dad was "an oil guy." They were "Americans" who had been there "since the seventies" (changed from "eighties", Oct 2026, to fit the 1978 birth). They rented a farmhouse up the Alsea off Little Switzerland Road. He brought computer parts up from Caracas.
 
 **Google Drive (read only)**
 - **"mm ii" (2016):** *por puesto.* is described as "Memoirfiction, Venezuela and neighbors in the mid 90s." It is one of four novellas, with Arcadeum, plannED commUNITY and The Value Menu.
@@ -44,6 +44,6 @@ The aim is flickers only. Nothing below resolves, names Dean as the Caracas birt
 - **Gemini cover collage:** "77 / POR PUESTO / DRIVER."
 
 ## Open flags for Andy
-- **Birth vs. arrival.** The brief has Dean born in Caracas in 1978. Vol 7's Cale says the family were Americans who had been there "since the eighties." The torn-name birth notice is compatible with either reading, so please confirm which is canon.
+- **Birth vs. arrival.** The brief has Dean born in Caracas in 1978. Vol 7's Cale says the family were Americans who had been there "since the seventies" (changed from "eighties", Oct 2026, to fit the 1978 birth). The torn-name birth notice is compatible with either reading, so please confirm which is canon.
 - **1990s–2020s span.** Nothing yet points past 1978 or into the 90s. The next seed could be a 1992 moving-company tag on the computer parts (Vol 7), or a TropiArepa receipt.
 - **Unused Drive canon:** Torso, Stuttgart/Timtam, Chupa/Miriam and Chumpa Chump are only alluded to (the ticket, the unfinished highway). No one is put on stage.

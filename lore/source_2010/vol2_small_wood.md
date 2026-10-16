@@ -955,7 +955,7 @@ Disks are wrong. Disks are fast and small and you swap them. The thing in the dr
 
 SLOW STICKS.
 
-Called Cale at quarter past four and he picked up on the first ring because he's sixteen too and nobody sleeps. Didn't tell him about the theater or Aud or the faces like spoons or the crab. Told him the other thing. About the daughter. About the work. About bringing her here. He was quiet a long time. Then he asked if I'd been playing those games again. I said yeah.
+Called Cale at quarter past four and he picked up on the first ring because he's a senior and seniors don't sleep. Didn't tell him about the theater or Aud or the faces like spoons or the crab. Told him the other thing. About the daughter. About the work. About bringing her here. He was quiet a long time. Then he asked if I'd been playing those games again. I said yeah.
 
 *It's going to be a game,* I said. *Not a game. A place. A machine that makes a place. You put a stick in and it's slow.*
 
