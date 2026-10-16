@@ -397,6 +397,40 @@
     trip_hop: { bass: ['bass_808', 'bass_fretless', 'bass_upright', 'bass_ladder'], chords: ['keys_felt', 'strings_noir', 'keys_wurli', 'pad_tape_wobble', 'keys_vibes'],
       lead: ['strings_noir', 'winds_harmon', 'keys_vibes', 'bell_glock', 'winds_clarinet'], pad: ['pad_tape_wobble', 'choir_crypt', 'pad_seance', 'pad_dusk', 'strings_tremolo'] },
   };
+  // the 2026-10-14 instrument library (guitars, orchestra, winds, world, voices, synths), appended to each style's
+  // pool. Appending moves which preset an old seed picks (presetFor hashes over the whole pool); notes are untouched.
+  const POOLS_2026_10_14 = {
+    four_floor: { bass: ['bass_square_sub'], chords: ['keys_house_organ', 'keys_rave_stab', 'lead_supersaw'], lead: ['lead_supersaw', 'lead_hoover', 'pluck_arp'], pad: ['pad_brass_80s', 'pad_pwm'] },
+    boom_bap: { bass: ['bass_contra_pizz'], chords: ['keys_grand_dark', 'gtr_jazz'], lead: ['keys_melodica', 'gtr_jazz', 'world_koto'], pad: ['choir_ooh'] },
+    lofi: { bass: ['bass_contra_pizz'], chords: ['keys_grand_dark', 'gtr_jazz', 'gtr_ukulele'], lead: ['world_handpan', 'keys_melodica', 'world_koto'], pad: ['choir_ooh', 'pad_pwm'] },
+    trap: { bass: ['bass_wobble'], chords: ['choir_ooh', 'orch_pizz'], lead: ['world_pan_flute', 'orch_xylophone', 'lead_pea_whistle'], pad: ['strings_swell', 'choir_chant'] },
+    dnb: { bass: ['bass_wobble'], chords: ['keys_rave_stab', 'pad_pwm'], lead: ['lead_hoover', 'lead_sync'], pad: ['pad_grain'] },
+    shuffle: { bass: ['bass_contra_pizz', 'winds_tuba'], chords: ['keys_honky', 'gtr_jazz', 'keys_accordion'], lead: ['winds_trumpet', 'winds_trombone', 'gtr_pedal_steel'], pad: ['choir_ooh', 'pad_brass_80s'] },
+    motorik: { bass: ['bass_picked', 'bass_square_sub'], chords: ['gtr_jangle', 'pluck_arp'], lead: ['lead_sync', 'gtr_lead'], pad: ['pad_pwm'] },
+    synthwave: { bass: ['bass_square_sub'], chords: ['pad_brass_80s', 'lead_supersaw'], lead: ['lead_supersaw', 'lead_sync', 'gtr_lead'], pad: ['pad_pwm', 'pad_brass_80s'] },
+    noir: { bass: ['bass_contra_pizz', 'bass_contra_arco'], chords: ['keys_grand_dark', 'gtr_jazz'], lead: ['solo_cello', 'winds_english_horn', 'world_duduk'], pad: ['choir_ooh', 'strings_swell'] },
+    ambient: { bass: ['world_didgeridoo', 'world_pipes_drone'], chords: ['pad_grain', 'pad_fm_bell', 'world_gender', 'world_handpan'], lead: ['world_shakuhachi', 'world_guzheng', 'vox_soprano', 'world_handpan'], pad: ['pad_grain', 'vox_whisper', 'choir_chant'] },
+    folk: { bass: ['bass_contra_pizz', 'winds_tuba'], chords: ['gtr_steel', 'gtr_twelve', 'gtr_banjo', 'gtr_mandolin', 'keys_harmonium'], lead: ['gtr_mandolin', 'gtr_pedal_steel', 'solo_violin', 'world_uilleann', 'gtr_banjo'], pad: ['keys_harmonium', 'world_pipes_drone'] },
+    chamber: { bass: ['bass_contra_arco', 'bass_contra_pizz', 'winds_bassoon', 'orch_timpani'], chords: ['orch_pizz', 'orch_spiccato', 'orch_harp', 'keys_grand'], lead: ['solo_violin', 'solo_cello', 'winds_oboe', 'winds_english_horn', 'winds_horn_solo'], pad: ['strings_swell', 'choir_ooh'] },
+    piano: { chords: ['keys_grand', 'keys_grand_dark', 'keys_honky'], pad: ['strings_swell', 'choir_ooh'] },
+    hymn: { bass: ['bass_contra_arco', 'winds_tuba'], chords: ['keys_pipe_organ', 'keys_harmonium', 'keys_organ_flute', 'choir_ooh'], lead: ['winds_horn_solo', 'vox_soprano', 'winds_oboe'], pad: ['keys_pipe_organ', 'choir_ooh', 'choir_chant', 'strings_swell'] },
+    dark_drone: { bass: ['bass_contra_arco', 'world_didgeridoo'], chords: ['choir_chant', 'keys_prepared', 'pad_grain'], lead: ['world_duduk', 'world_shakuhachi', 'solo_cello', 'world_erhu', 'world_sitar'], pad: ['choir_chant', 'vox_whisper', 'world_pipes_drone', 'pad_grain'] },
+    synth_horror: { bass: ['bass_square_sub'], chords: ['keys_prepared', 'keys_pipe_organ', 'orch_spiccato'], lead: ['lead_sync', 'choir_robot'], pad: ['vox_whisper', 'choir_robot'] },
+    jazz: { bass: ['bass_contra_pizz'], chords: ['keys_grand', 'gtr_jazz'], lead: ['winds_trumpet', 'winds_trombone', 'gtr_jazz'], pad: ['choir_ooh'] },
+    dub: { bass: ['bass_square_sub'], chords: ['keys_melodica', 'gtr_jazz', 'keys_house_organ'], lead: ['keys_melodica', 'winds_trombone'], pad: ['pad_pwm'] },
+    post_rock: { bass: ['bass_picked'], chords: ['gtr_jangle', 'gtr_twelve', 'gtr_crunch', 'strings_swell'], lead: ['gtr_lead', 'gtr_pedal_steel', 'solo_cello'], pad: ['strings_swell', 'pad_grain', 'choir_ooh'] },
+    lullaby: { bass: ['bass_contra_pizz'], chords: ['orch_harp', 'gtr_ukulele', 'world_handpan', 'orch_xylophone'], lead: ['orch_xylophone', 'world_pan_flute', 'keys_organ_flute'], pad: ['choir_ooh', 'keys_organ_flute'] },
+    industrial: { bass: ['bass_wobble', 'bass_picked'], chords: ['gtr_crunch', 'keys_rave_stab', 'keys_prepared'], lead: ['lead_hoover', 'lead_glitch', 'lead_sync'], pad: ['choir_robot', 'choir_chant'] },
+    surf: { bass: ['bass_picked'], chords: ['gtr_surf', 'gtr_jangle', 'gtr_crunch'], lead: ['gtr_surf', 'winds_trumpet', 'gtr_lead'], pad: ['choir_ooh'] },
+    bayou: { bass: ['winds_tuba', 'bass_contra_pizz'], chords: ['keys_accordion', 'gtr_banjo', 'gtr_mandolin', 'keys_honky'], lead: ['keys_accordion', 'gtr_mandolin', 'solo_violin', 'winds_trombone'], pad: ['keys_accordion', 'keys_harmonium'] },
+    minimal: { bass: ['bass_square_sub', 'bass_contra_pizz'], chords: ['world_gender', 'world_bonang', 'orch_xylophone', 'world_koto', 'keys_grand'], lead: ['world_bonang', 'world_koto', 'orch_xylophone', 'world_handpan'], pad: ['keys_organ_flute', 'pad_fm_bell'] },
+    chiptune: { bass: ['bass_square_sub'], chords: ['pluck_arp'], lead: ['lead_glitch', 'lead_pea_whistle', 'winds_piccolo'], pad: ['pad_pwm'] },
+    trip_hop: { bass: ['bass_contra_pizz', 'bass_square_sub'], chords: ['keys_grand_dark', 'gtr_jazz'], lead: ['world_duduk', 'world_erhu', 'world_shakuhachi'], pad: ['strings_swell', 'choir_ooh', 'vox_whisper'] },
+  };
+  for (const [st, roles] of Object.entries(POOLS_2026_10_14)) for (const [r, ids] of Object.entries(roles)) {
+    const pool = (FORGE_POOLS[st] = FORGE_POOLS[st] || {})[r] = FORGE_POOLS[st][r] || [];
+    for (const id of ids) if (!pool.includes(id)) pool.push(id);
+  }
   function presetFor(styleId, role, seed) {
     const st = STYLES[styleId]; if (!st) return null;
     if (role === 'drums') return 'kit';
@@ -999,11 +1033,10 @@
     synth_horror: ['fx_impact', 'fx_sub_drop', 'fx_bell_hit'], jazz: ['fx_glass_ping', 'fx_bell_hit'], dub: ['fx_sub_drop', 'fx_glass_ping'], post_rock: ['fx_impact', 'fx_bell_hit'],
     lullaby: ['fx_glass_ping', 'fx_bell_hit'], industrial: ['fx_impact', 'fx_sub_drop', 'fx_wood_knock'], surf: ['fx_impact', 'fx_glass_ping'], bayou: ['fx_wood_knock', 'fx_bell_hit'],
     minimal: ['fx_glass_ping', 'fx_bell_hit'], chiptune: ['fx_impact', 'fx_glass_ping', 'fx_flicker'], trip_hop: ['fx_sub_drop', 'fx_glass_ping'] };
-  // where a preset a newer FORGE adds isn't there yet, the page swaps in its nearest older sound (temp_maker.js)
-  const SOUND_FALLBACK = { amb_vinyl: 'amb_radio', amb_tape_hiss: 'amb_radio', amb_room_tone: 'amb_wind', amb_fluor_hum: 'pad_fluorescent', amb_life_support: 'drone_engine',
-    amb_crickets: 'amb_wind', amb_cicadas: 'amb_wind', amb_surf: 'amb_wind', amb_fire: 'amb_rain', amb_thunder: 'amb_rain', amb_city: 'drone_engine', amb_clock: 'amb_wind',
-    amb_forest_night: 'amb_wind', amb_modem: 'amb_radio', fx_reverse_swell: 'fx_riser', fx_whoosh: 'fx_noise_sweep', fx_tape_stop: 'fx_downer', fx_sub_drop: 'fx_impact',
-    fx_bell_hit: 'bell_tubular', fx_wood_knock: 'fx_impact', fx_glass_ping: 'bell_glock' };
+  // where a preset a newer FORGE adds isn't there yet, the page swaps in its nearest older sound (temp_maker.js).
+  // Empty since 2026-10-14: every id it used to cover (the 2026-10-13 beds / transitions / hits) ships in FORGE.
+  // Name a preset here before FORGE has it: { new_id: 'nearest_existing_id' }.
+  const SOUND_FALLBACK = {};
 
   // ── song ────────────────────────────────────────────────────────
   // o: { seed, style, key, mode, bpm, form, density, progression, motif (a leitmotif's seed: a character's name),

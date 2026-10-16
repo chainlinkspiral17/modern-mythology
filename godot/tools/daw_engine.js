@@ -178,6 +178,29 @@
     dub: { 36: ['kick', 33, 1], 37: ['perc_rim', 58, 1], 38: ['snare', 58, 0.9] },
     post_rock: { 41: ['tom', 38, 1] },
   };
+  // 2026-10-14: GM percussion the FORGE library now has real voices for (timbales, agogô, güiro, triangle,
+  // castanets), and per-style pieces: timpani / orchestral bass drum for the chamber + hymn kits, taiko for
+  // dark drone, a spring-reverb snare for dub, washboard + güiro on the bayou, 8-bit voices for chiptune,
+  // 909 / Linn machines, finger snaps and brush swirls. Same GM notes as SeqGen.GM_OF.
+  Object.assign(KIT_MAP, { 65: ['perc_timbale', 64, 0.8], 66: ['perc_timbale', 57, 0.8], 67: ['perc_agogo', 64, 0.6], 68: ['perc_agogo', 60, 0.6],
+    73: ['perc_guiro', 64, 0.6], 74: ['perc_guiro', 57, 0.6], 80: ['perc_triangle', 60, 0.4], 81: ['perc_triangle', 60, 0.55], 85: ['perc_castanets', 60, 0.7] });
+  const KIT_2026_10_14 = {
+    four_floor: { 35: ['kick_909', 36, 1], 36: ['kick_909', 36, 1], 38: ['snare_909', 60, 0.9], 40: ['snare_909', 62, 0.85], 42: ['hat_909', 60, 0.7], 44: ['hat_909', 57, 0.55] },
+    synthwave: { 35: ['kick_linn', 36, 1], 36: ['kick_linn', 36, 1], 38: ['snare_linn', 60, 0.9], 40: ['snare_linn', 62, 0.85] },
+    chamber: { 35: ['perc_bass_drum', 60, 0.8], 36: ['orch_timpani', 43, 0.9], 41: ['orch_timpani', 38, 0.8], 45: ['orch_timpani', 45, 0.8], 81: ['perc_triangle', 60, 0.45] },
+    hymn: { 35: ['perc_bass_drum', 60, 0.75], 36: ['orch_timpani', 43, 0.8], 81: ['perc_triangle', 60, 0.4] },
+    dark_drone: { 35: ['perc_bass_drum', 55, 0.9], 36: ['perc_taiko', 55, 0.9] },
+    dub: { 38: ['snare_spring', 60, 0.9] },
+    bayou: { 70: ['perc_washboard', 60, 0.5], 73: ['perc_guiro', 64, 0.55] },
+    chiptune: { 35: ['kick_chip', 36, 0.9], 36: ['kick_chip', 36, 0.9], 38: ['snare_chip', 60, 0.85], 42: ['hat_chip', 60, 0.6] },
+    jazz: { 39: ['perc_snap', 60, 0.8], 40: ['snare_brush_swirl', 60, 0.8] },
+    trip_hop: { 39: ['perc_snap', 60, 0.8] },
+    folk: { 62: ['perc_frame', 60, 0.85], 64: ['perc_frame', 55, 0.9] },
+    shuffle: { 60: ['perc_bongo', 64, 0.8], 61: ['perc_bongo', 60, 0.8] },
+    lullaby: { 81: ['perc_triangle', 64, 0.35] },
+    minimal: { 76: ['perc_agogo', 60, 0.6] },
+  };
+  for (const [st, m] of Object.entries(KIT_2026_10_14)) KIT_STYLES[st] = Object.assign(KIT_STYLES[st] || {}, m);
   const kitMapFor = style => Object.assign({}, KIT_MAP, KIT_STYLES[style] || {});
 
   // ── tiny fallback synth (no forge_synth.js) ───────────────────────
