@@ -1,0 +1,22 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_objects_marks",
+      "kind": "objects",
+      "era": "era3",
+      "tags": [
+        "objects",
+        "era3",
+        "mark",
+        "signature"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. a reference sheet of tiny hand-drawn margin marks in a row, each labeled: a two-stroke gull; a tiny crab from above; the gull with a small dog silhouette beside it; the gull at two-thirds size; a single clean horizontal stroke; a three-legged scruff of ink asleep; the gull and the scruff together; the word ROFLCOPTER lettered tiny; and a signature line reading A. Finch — Small Wood, OR. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

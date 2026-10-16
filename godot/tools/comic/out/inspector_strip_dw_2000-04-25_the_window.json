@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-04-25_the_window",
+      "strip_id": "dw_2000-04-25_the_window",
+      "title": "The window",
+      "date": "2000-04-25",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Tuesday. The owner lets him do the window. He arranges twelve empty frames in it, nothing inside any of them. She looks at it a long time and leaves it that way for a year. Panel 1: brush-pen black-and-white, xerox grain, a young man arranging a dozen empty picture frames of different sizes in a shop's front window display (in this panel: WOOD). No dialogue in this panel. Panel 2: brush-pen black-and-white, xerox grain, a frame shop's front window seen from the sidewalk with twelve empty frames arranged so each one frames a different piece of the shop interior and the reflected road, no words. No dialogue in this panel. Panel 3: brush-pen black-and-white, xerox grain, an older woman standing on a sidewalk with her arms folded looking at a shop window, no words. No dialogue in this panel. Panel 4: brush-pen black-and-white, xerox grain, an older woman coming back into a frame shop and speaking to a young man who was waiting for a verdict (in this panel: WOOD). Owner says \"Nothing in them.\". Wood says \"I can put —\". Owner says \"Leave it. People will bring their own.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @wood_20 for the character Wood at 20-23; @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer. Clothes and props: as described here, not from the reference. Panel 1: a young man arranging a dozen empty picture frames of different sizes in a shop's front window display (in this panel: WOOD). No text. Panel 2: a frame shop's front window seen from the sidewalk with twelve empty frames arranged so each one frames a different piece of the shop…. No text. Panel 3: an older woman standing on a sidewalk with her arms folded looking at a shop window, no words. No text. Panel 4: an older woman coming back into a frame shop and speaking to a young man who was waiting for a verdict (in this panel: WOOD). Owner: \"Nothing in them.\"; Wood: \"I can put —\"; Owner: \"Leave it. People will bring their own.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD. Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

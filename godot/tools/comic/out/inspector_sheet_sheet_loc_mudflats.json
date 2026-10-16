@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_mudflats",
+      "kind": "location",
+      "era": "era3",
+      "tags": [
+        "location",
+        "era3",
+        "dw_mudflats"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. an environment sheet of a Pacific Northwest estuary at low tide from a bluff: long bands of mudflat, a channel reflecting the sky, old cannery pilings, log booms, a heron, a far wall of spruce, the bay mouth opening to the ocean; insets at dawn, dusk and under a bruised indigo storm sky; labeled ALSEA BAY. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

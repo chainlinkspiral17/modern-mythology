@@ -1,0 +1,23 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_slash_cast",
+      "kind": "character",
+      "era": "era1",
+      "tags": [
+        "character",
+        "era1",
+        "extra_framer",
+        "extra_green_coat",
+        "extra_sergeant"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. a noir model sheet in brush-pen with vertical rain hatching behind the figures, labeled: THE FRAMER (a man of forty with heavy-lidded eyes, a barber's mustache, a long jaw and combed-back hair, in a shop apron over a white shirt with the sleeves rolled, ink-stained hands shown large and separately), THE GREEN COAT (a tall woman in her thirties in a long dark wool coat, leather gloves and a hat with the brim low, her mouth one flat line, shown from behind and in profile and once with a photograph face down in her gloved hand), THE DESK SERGEANT (only a broad uniformed shoulder and a jaw at the sheet's edge). Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

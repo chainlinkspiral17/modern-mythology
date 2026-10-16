@@ -1,0 +1,22 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_garage",
+      "kind": "location",
+      "era": "era3",
+      "tags": [
+        "location",
+        "era3",
+        "dw_garage",
+        "dw_tavern"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. an environment sheet of a garage apartment studio from three angles plus detail insets: cedar-shingle walls, corrugated tin ceiling, splintered fir floorboards, a drafting table with a green enameled swing-arm lamp under a small wood-mullioned casement window, three jars on the sill (brushes, nibs, a sand dollar), a cinderblock bookcase, numbered banker's boxes, a wicker wastebasket, a crowded corkboard, an old comic strip pinned to the wall, a braided wool dog bed under the table; inset: the porch with three cedar steps and an aluminum storm door; labeled THE GARAGE. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

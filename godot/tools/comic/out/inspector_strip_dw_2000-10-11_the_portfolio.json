@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-10-11_the_portfolio",
+      "strip_id": "dw_2000-10-11_the_portfolio",
+      "title": "The portfolio",
+      "date": "2000-10-11",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. CHLOE wears doctor who tee. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Chloe asks to see the portfolio he told her about. There are two drawings in it. One is the crab. Panel 1: a young woman opening a cheap black portfolio case in a bedroom while a young man stands with his arms crossed and a small dog watches from the bed, brush-pen black and white (in this panel: CHLOE, WOOD, BARNABY (the dog)). Chloe says \"The portfolio. You said you were 'working on it.'\". Panel 2: close-up of an open portfolio case holding exactly two drawings: a large hatched crab and a wide estuary landscape. No dialogue in this panel. Panel 3: a young woman holding up a drawing of a crab with a flat expression while a young man corrects her (in this panel: CHLOE, WOOD). Chloe says \"A crab.\". Wood says \"A crab of consequence.\". Chloe says \"And a marsh.\". Wood says \"Estuary.\". Panel 4: a young woman carefully sliding two drawings back into a portfolio case while a young man watches her hands, black and white (in this panel: CHLOE, WOOD). Chloe says \"They're good, Wood. That's the problem. They're good and there are two of them.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized crab, seen from above. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. CHLOE wears doctor who tee. Clothes and props: as described here, not from the reference. Panel 1: a young woman opening a cheap black portfolio case in a bedroom while a young man stands with his arms crossed and a small dog watches from… (in this panel: CHLOE, WOOD, BARNABY (the dog)). Chloe: \"The portfolio. You said you were 'working on it.'\". Panel 2: close-up of an open portfolio case holding exactly two drawings: a large hatched crab and a wide estuary landscape. No text. Panel 3: a young woman holding up a drawing of a crab with a flat expression while a young man corrects her (in this panel: CHLOE, WOOD). Chloe: \"A crab.\"; Wood: \"A crab of consequence.\"; Chloe: \"And a marsh.\"; Wood: \"Estuary.\". Panel 4: a young woman carefully sliding two drawings back into a portfolio case while a young man watches her hands, black and white (in this panel: CHLOE, WOOD). Chloe: \"They're good, Wood. That's the problem. They're good and there are two of them.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog).",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        }
+      ]
+    }
+  ]
+}

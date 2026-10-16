@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2025-02-19_the_scumm_stick_give_coffee_to_bird",
+      "strip_id": "bk_2025-02-19_the_scumm_stick_give_coffee_to_bird",
+      "title": "THE SCUMM STICK · GIVE coffee TO bird",
+      "date": "2025-02-19",
+      "era": "era4",
+      "format": "page",
+      "tier": "B",
+      "prompt": "a single full-page comic drawing (1 panels). Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. Cast, the same faces, hair and builds in every panel, ages exactly as given: THE BIRD — a small plump songbird, teal head, rose-pink breast, green wing, long teal tail, every color, wrong for the coast. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: BACKUP. The strip: The seawall as a room, the bird on the wall outlined, the crow at the far end outlined, GIVE coffee TO bird, and the engine's answer as a blank balloon again. The inventory loses the coffee anyway. The page draws a thing given to something that doesn't take things. Panel 1: a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a seawall with a small rainbow bird outlined as a hotspot and a crow at the far end, a coffee cup set on the wall beside the bird, a small empty speech balloon beneath the verb row, no words legible (in this panel: THE BIRD). No text, no lettering, no speech balloons, no signature; leave clean space in each panel where balloons would go. Reference @the_bird is the model sheet for THE BIRD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_2026 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_main_street shows the setting; keep its architecture and props. Match the attached references: @the_bird for the character the bird; @wood_2026 for the concept design; @loc_main_street for the setting.",
+      "prompt_compact": "a single full-page comic drawing (1 panels). Style: spare ink line, muted ochre and slate watercolor, no panel borders. Cast: THE BIRD — a small plump songbird, teal head, rose-pink breast. Clothes and props: as described here, not from the reference. Panel 1: a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes,… (in this panel: THE BIRD). No text, no lettering, no speech balloons, no signature; leave clean space in each panel where balloons would go. Reference @the_bird is the model sheet for THE BIRD. Reference @wood_2026 is the model sheet for WOOD. Reference @loc_main_street shows the setting; keep its architecture and props..",
+      "negative": "photorealistic, 3D render, saturated color, neon, anime, busy composition, text, letters, watermark, signature, extra fingers, text, letters",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": false,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "the_bird",
+          "id": "sheet_the_bird",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_the_bird.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "the_bird",
+            "era4"
+          ]
+        },
+        {
+          "tag": "wood_2026",
+          "id": "concept_sheet_wood_2026",
+          "kind": "concept",
+          "file": "lore/drift_wood/refs/sheet_01_wood.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "the_bird",
+            "era4"
+          ]
+        },
+        {
+          "tag": "loc_main_street",
+          "id": "sheet_loc_main_street",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_main_street.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_main_street"
+          ]
+        }
+      ]
+    }
+  ]
+}

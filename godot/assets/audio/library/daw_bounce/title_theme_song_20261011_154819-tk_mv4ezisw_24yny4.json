@@ -1,0 +1,20 @@
+{
+ "created": 1791758899184,
+ "kind": "daw-bounce",
+ "name": "title_theme song · 20261011_154819",
+ "sampleRate": 44100,
+ "loop": null,
+ "meta": {
+  "title": "title_theme song",
+  "bpm": 72,
+  "tags": [
+   "daw",
+   "song"
+  ],
+  "key": "G minor"
+ },
+ "id": "tk_mv4ezisw_24yny4",
+ "channels": 2,
+ "frames": 4836300,
+ "durationSec": 109.66666666666667
+}

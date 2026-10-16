@@ -1,0 +1,30 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_objects_vehicles_food",
+      "kind": "objects",
+      "era": "era3",
+      "tags": [
+        "objects",
+        "era3",
+        "subaru",
+        "legacy",
+        "datsun",
+        "flatbed",
+        "espresso",
+        "thermos",
+        "clams",
+        "maple bar",
+        "corn",
+        "lawn chair"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. a reference sheet: a faded green 1993 Subaru Legacy wagon with one hubcap, a blue tarp in the back and a tiny spare tire, trailing a faint blue haze; an old small Datsun; a flatbed truck with a winch; a chrome two-group espresso machine; a giant thermos with paper cups; two wax-paper grease sacks of fried clams; a day-old maple bar; a paper tray of corn; a green-webbed folding lawn chair with a rusted frame. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

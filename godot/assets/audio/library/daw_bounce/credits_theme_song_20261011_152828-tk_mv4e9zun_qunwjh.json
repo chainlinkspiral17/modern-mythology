@@ -1,0 +1,20 @@
+{
+ "created": 1791757708223,
+ "kind": "daw-bounce",
+ "name": "credits_theme song · 20261011_152828",
+ "sampleRate": 44100,
+ "loop": null,
+ "meta": {
+  "title": "credits_theme song",
+  "bpm": 64,
+  "tags": [
+   "daw",
+   "song"
+  ],
+  "key": "Eb major"
+ },
+ "id": "tk_mv4e9zun_qunwjh",
+ "channels": 2,
+ "frames": 5424300,
+ "durationSec": 123
+}

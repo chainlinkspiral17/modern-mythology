@@ -1,0 +1,60 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2001-10-29_slash_the_card_in_the_bag",
+      "strip_id": "bk_2001-10-29_slash_the_card_in_the_bag",
+      "title": "SLASH · The card in the bag",
+      "date": "2001-10-29",
+      "era": "era1",
+      "format": "page",
+      "tier": "B",
+      "prompt": "a single full-page comic drawing (1 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: BACKUP. The strip: The Newport police's evidence room, through a window: a clear bag on a shelf with a single playing card in it, face out, a figure with a goat's head — no, a man in a good suit — the framer can't tell through two panes. He draws it both ways in the margin. The desk sergeant asks if he's family. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a wire-glass window into an evidence room with a clear plastic bag on a shelf holding a single card face out, its figure ambiguous, two small margin sketches of the card drawn one as a horned figure and one as a man in a suit. Sergeant says \"You family?\". Framer says \"I framed something for her.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17; @wood_20 for the character Wood at 20-23.",
+      "prompt_compact": "a single full-page comic drawing (1 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a wire-glass window…. Sergeant: \"You family?\"; Framer: \"I framed something for her.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY. Reference @wood_20 is the model sheet for WOOD.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

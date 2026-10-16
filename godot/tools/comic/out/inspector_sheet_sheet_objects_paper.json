@@ -1,0 +1,28 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_objects_paper",
+      "kind": "objects",
+      "era": "era2",
+      "tags": [
+        "objects",
+        "era2",
+        "produce box",
+        "note",
+        "postcard",
+        "bus schedule",
+        "flyer",
+        "digest",
+        "corner box",
+        "newspaper"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. a reference sheet of paper objects laid flat: a waxed produce box stamped ALICE'S WHOLESALE BAIT & SMOKED MEATS; a butcher-paper note in blocky grease pencil taped with electrical tape; a postcard back covered edge to edge in tiny cramped handwritten capitals; a bus schedule with every departure circled in pencil; a crab derby flyer with a large meticulously hatched crab; a small stapled quarter-letter zine; a hand-lettered corner box advertisement in a squared display face; a yellowed newspaper page with a tide table beside a comic strip. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, painterly, glossy, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

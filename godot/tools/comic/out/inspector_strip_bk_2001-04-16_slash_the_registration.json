@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2001-04-16_slash_the_registration",
+      "strip_id": "bk_2001-04-16_slash_the_registration",
+      "title": "SLASH · The registration",
+      "date": "2001-04-16",
+      "era": "era1",
+      "format": "page",
+      "tier": "B",
+      "prompt": "a single full-page comic drawing (1 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: BACKUP. The strip: The photograph's back: a boat's registration number and a home port the framer has never heard of — GRAUSTARK, LA — in a hand that isn't the woman's. He measures the back as told and copies the number onto his cuff. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, the blank back of a photograph filling most of the page with a handwritten registration number and a port name, and below it a man's shirt cuff with the same number copied in ballpoint beside a mat cutter's blade. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @loc_frame_shop shows the setting; keep its architecture and props. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @loc_frame_shop for the setting; @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17.",
+      "prompt_compact": "a single full-page comic drawing (1 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, the blank back of a…. No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @loc_frame_shop shows the setting; keep its architecture and props.. Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "loc_frame_shop",
+          "id": "sheet_loc_frame_shop",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_frame_shop.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "dw_frame_shop",
+            "era1"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

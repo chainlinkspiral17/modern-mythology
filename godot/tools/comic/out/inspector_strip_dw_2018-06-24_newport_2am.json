@@ -1,0 +1,63 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2018-06-24_newport_2am",
+      "strip_id": "dw_2018-06-24_newport_2am",
+      "title": "Sunday · Newport, 2 AM",
+      "date": "2018-06-24",
+      "era": "era3",
+      "format": "sunday",
+      "tier": "A",
+      "prompt": "a full-page Sunday comic in horizontal tiers stacked top to bottom, each tier one wide panel (4 tiers). Style: comic Sunday page tier, confident brush-and-ink line over wet-on-wet watercolor washes on cold-press paper, Pacific Northwest coastal light, gray-green moss, fog, rusted galvanized tin, water bleeding softly over the ink edge. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 38, lean man, hairline beginning to recede, weathered jaw, thickened drawing hands; CHLOE — aged 38, woman with a sharp face, dark hair pinned up, faint eyeliner, straight posture, a plain ring with a small stone. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: The 24-hour diner in Newport. Wood and the strip's Chloe at 2 AM. Thirty years of dialect. No exposition. Tier 1: a 24-hour roadside diner at 2 AM in wet-on-wet watercolor, lit windows in a dark lot with an old Subaru wagon and a rental car, two figures in a booth seen through the glass (in this tier: WOOD, CHLOE). No dialogue in this tier. Tier 2: a woman with pinned dark hair and a man in a plaid flannel across a diner booth at night with two coffees and an untouched plate of fries, tired kind faces, watercolor (in this tier: CHLOE, WOOD). Chloe says \"Corn or peas.\". Wood says \"You remember that.\". Chloe says \"I remember everything. It's the problem.\". Tier 3: close-up of two hands on a diner table not touching, a ring on one, a plate of fries, night (in this tier: CHLOE, WOOD). Wood says \"How's the brand narrative.\". Chloe says \"Thirty years of packaging for things nobody needed. Give or take.\". Wood says \"It's been twenty.\". Chloe says \"It's been thirty, Wood. I count from the cafeteria.\". Tier 4: the same diner from outside later with the booth empty and two cars pulling out of the lot in opposite directions, a clock reading 3:40 through the window, watercolor, no words. No dialogue in this tier. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized crab, seen from above. Reference @chloe_34 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @dw_2014_12_21_the_box is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @objects_vehicles_food is a finished strip in this style. Match the attached references: @chloe_34 for the character the strip's Chloe at 34; @dw_2014_12_21_the_box for a finished strip in this style; @objects_vehicles_food for the objects.",
+      "prompt_compact": "a full-page Sunday comic in horizontal tiers stacked top to bottom, each tier one wide panel (4 tiers). Style: razor-sharp brush-and-ink newspaper strip; Sundays wet-on-wet watercolor. Cast: WOOD — aged 38, lean man, hairline beginning to recede, weathered jaw; CHLOE — aged 38, woman with a sharp face, dark hair pinned up, faint eyeliner. Clothes and props: as described here, not from the reference. Tier 1: a 24-hour roadside diner at 2 AM in wet-on-wet watercolor, lit windows in a dark lot with an old Subaru wagon and a rental car, two figures… (in this tier: WOOD, CHLOE). No text. Tier 2: a woman with pinned dark hair and a man in a plaid flannel across a diner booth at night with two coffees and an untouched plate of fries,… (in this tier: CHLOE, WOOD). Chloe: \"Corn or peas.\"; Wood: \"You remember that.\"; Chloe: \"I remember everything. It's the problem.\". Tier 3: close-up of two hands on a diner table not touching, a ring on one, a plate of fries, night (in this tier: CHLOE, WOOD). Wood: \"How's the brand narrative.\"; Chloe: \"Thirty years of packaging for things nobody needed. Give or take.\"; Wood: \"It's been twenty.\"; Chloe: \"It's been thirty, Wood. I count from the cafeteria.\". Tier 4: the same diner from outside later with the booth empty and two cars pulling out of the lot in opposite directions, a clock reading 3:40…. No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_34 is the model sheet for CHLOE. Reference @dw_2014_12_21_the_box is the model sheet for WOOD. Reference @objects_vehicles_food is a finished strip in this style..",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_34",
+          "id": "sheet_chloe_34",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_34.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_34",
+            "era3"
+          ]
+        },
+        {
+          "tag": "dw_2014_12_21_the_box",
+          "id": "concept_dw_2014-12-21_the_box",
+          "kind": "strip",
+          "file": "godot/assets/comic/vol10/concept/dw_2014-12-21_the_box.png",
+          "url": null,
+          "runway_task_id": "66eb10b5-f5e4-4f33-817f-480887baa49a",
+          "score": 4,
+          "why": [
+            "wood_34",
+            "era3"
+          ]
+        },
+        {
+          "tag": "objects_vehicles_food",
+          "id": "sheet_objects_vehicles_food",
+          "kind": "objects",
+          "file": "godot/assets/comic/vol10/sheets/sheet_objects_vehicles_food.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "era3",
+            "legacy"
+          ]
+        }
+      ]
+    }
+  ]
+}

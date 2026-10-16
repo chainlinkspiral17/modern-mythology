@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2001-03-07_what_people_frame_7",
+      "strip_id": "dw_2001-03-07_what_people_frame_7",
+      "title": "What people frame, vii",
+      "date": "2001-03-07",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 21, thin young man with a slouch, three days' stubble, dark hair grown longer. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Wednesday: a customer brings in a page torn from the laundromat digest. The strip. Wood mats his own strip and charges full price. She never asks. Panel 1: brush-pen over blue pencil, xerox grain, stark black spotting, a woman at a frame-shop counter holding a torn quarter-letter zine page showing a comic strip with a dog under a table, a young clerk (in this panel: WOOD). Customer says \"It's from the laundromat thing. My husband likes the dog.\". Wood says \"...Okay.\". Panel 2: brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a torn zine page of a comic strip on a counter, a small signature in its margin half covered by a woman's thumb. No dialogue in this panel. Panel 3: brush-pen over blue pencil, xerox grain, stark black spotting, a young man cutting a mat with great precision for a small zine page while an older woman watches over her glasses from the back, no words (in this panel: WOOD). No dialogue in this panel. Panel 4: brush-pen over blue pencil, xerox grain, stark black spotting, a woman paying at a counter for a small framed comic strip while the young clerk keeps his face perfectly still (in this panel: WOOD). Customer says \"Eighteen?\". Wood says \"Eighteen.\". Customer says \"For a laundromat thing.\". Wood says \"Frame's the same.\". caption box: \"Wednesday.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @supporting is the model sheet for THE EDITOR: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_frame_shop shows the setting; keep its architecture and props. Match the attached references: @wood_20 for the character Wood at 20-23; @supporting for the character the editor; @loc_frame_shop for the setting.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 21, thin young man with a slouch, three days' stubble, dark hair grown longer. Clothes and props: as described here, not from the reference. Panel 1: a woman at a frame-shop counter holding a torn quarter-letter zine page showing a comic strip with a dog under a table, a young clerk (in this panel: WOOD). Customer: \"It's from the laundromat thing. My husband likes the dog.\"; Wood: \"...Okay.\". Panel 2: close-up of a torn zine page of a comic strip on a counter, a small signature in its margin half covered by a woman's thumb. No text. Panel 3: a young man cutting a mat with great precision for a small zine page while an older woman watches over her glasses from the back, no words (in this panel: WOOD). No text. Panel 4: a woman paying at a counter for a small framed comic strip while the young clerk keeps his face perfectly still (in this panel: WOOD). Customer: \"Eighteen?\"; Wood: \"Eighteen.\"; Customer: \"For a laundromat thing.\"; Wood: \"Frame's the same.\"; caption \"Wednesday.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD. Reference @supporting is the model sheet for THE EDITOR. Reference @loc_frame_shop shows the setting; keep its architecture and props..",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "supporting",
+          "id": "sheet_supporting",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_supporting.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "extra_owner_heceta"
+          ]
+        },
+        {
+          "tag": "loc_frame_shop",
+          "id": "sheet_loc_frame_shop",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_frame_shop.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "dw_frame_shop",
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

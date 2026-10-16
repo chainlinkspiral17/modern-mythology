@@ -18118,5 +18118,383 @@
     "outputs": [
       "godot/assets/concept/meshy/kwik_stop_window_1/kwik_stop_window_1_front_openai_gpt-image-2.5-sunburst_02.png"
     ]
+  },
+  {
+    "at": "2026-10-14T15:45:01+00:00",
+    "stage": "image",
+    "slug": "the_birdwatcher",
+    "kind": "demon",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Bird-watcher like this: Demons are digital imps, human-like but PS2 era graphics, slightly demonic or supernatural. Late-fifties woman in a faded blue windbreaker, binoculars around her neck, two thin braids of grey-blonde hair. Caught through the river window from the inside \u2014 her hand on the glass, mouthing sorry-i'm-sorry, gesturing UP toward the iron struts above the river bank where the osprey nest is. Apologetic, jovial. Painted with the river light behind her.\n\nTHE BIRD-WATCHER \u2014 late 50s woman, faded blue windbreaker, binoculars around her neck, two thin grey-blonde braids. Visible through the river window from outside, watching the osprey nest in the iron struts.\n\nA woman in a windbreaker, binoculars around her neck, mouthing sorry through the pane.\n\nA glint against the river-window from the outside walk.\n\nSits with her back to the wall, binoculars up.\n\nShe apologized for the binoculars.\n\nThe Bird-Watcher** \u2014 the woman in the windbreaker at the river window.\nFull-body concept render of The Bird-watcher, an uncanny figure from a literary visual novel about thin places in the American South. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_birdwatcher/the_birdwatcher_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_birdwatcher/the_birdwatcher_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_birdwatcher/the_birdwatcher_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T15:46:43+00:00",
+    "stage": "image",
+    "slug": "the_birdwatcher",
+    "kind": "demon",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Bird-watcher like this: Demons are digital imps, human-like but PS2 era graphics, slightly demonic or supernatural. Late-fifties woman in a faded blue windbreaker, binoculars around her neck, two thin braids of grey-blonde hair. Caught through the river window from the inside \u2014 her hand on the glass, mouthing sorry-i'm-sorry, gesturing UP toward the iron struts above the river bank where the osprey nest is. Apologetic, jovial. Painted with the river light behind her.\n\nTHE BIRD-WATCHER \u2014 late 50s woman, faded blue windbreaker, binoculars around her neck, two thin grey-blonde braids. Visible through the river window from outside, watching the osprey nest in the iron struts.\n\nA woman in a windbreaker, binoculars around her neck, mouthing sorry through the pane.\n\nA glint against the river-window from the outside walk.\n\nSits with her back to the wall, binoculars up.\n\nShe apologized for the binoculars.\n\nThe Bird-Watcher** \u2014 the woman in the windbreaker at the river window.\nFull-body concept render of The Bird-watcher, an uncanny figure from a literary visual novel about thin places in the American South. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_birdwatcher/the_birdwatcher_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/the_birdwatcher/the_birdwatcher_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/the_birdwatcher/the_birdwatcher_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T15:48:07+00:00",
+    "stage": "image",
+    "slug": "ben_kowalski",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ben Kowalski like this: Marcus's footwork is, as always, fluid in a way Ben \u2014 at six-four and two-thirty \u2014 is never going to be. He walks at the small Ben-pace, which is the pace of a six-foot-four seventeen-year-old He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Ben is in his Pit Stop shirt. His apron is off. Ben arrives at three fifty-six. He is in the same clothes he wore to the Caldwell porch on Friday night, plus a clean t-shirt and, by his own small Sunday concession to the occasion, a button-down over the t-shirt that he has not buttoned. Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon one of the officers, off-duty, had said, in the particular casual voice adult men used when they were escalating something in the presence of teenagers \u2014 \"you ever wrestle, big guy?\" He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six.\nFull-body concept render of Ben Kowalski, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/ben_kowalski/ben_kowalski_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ben_kowalski/ben_kowalski_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ben_kowalski/ben_kowalski_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T15:49:21+00:00",
+    "stage": "image",
+    "slug": "ben_kowalski_pads",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ben Kowalski (practice, ch13) like this: into the equipment they are going to be hit in. Ben does this in five minutes. Additional direction: Ben Kowalski, 18, tight end, in two-a-days: a white practice jersey over shoulder pads, white football pants with a belt, black cleats, a helmet under one arm, a mouthguard on its strap, sweat already at the hairline. Broad-chested, open-faced.\nFull-body concept render of Ben Kowalski (practice, ch13), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/ben_kowalski_pads/ben_kowalski_pads_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ben_kowalski_pads/ben_kowalski_pads_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ben_kowalski_pads/ben_kowalski_pads_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T15:50:35+00:00",
+    "stage": "image",
+    "slug": "ben_kowalski_game",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Ben Kowalski (the TE-1 jersey, ch22) like this: give the kid in the TE-1 jersey a small thumbs-up. The kid is going to start at TE-1 tomorrow. Additional direction: Ben Kowalski, 18, on game night: the school's home jersey in the school colours with the tight end's number, full pads, game pants, black cleats, eye black, the helmet on with the chin strap hanging. Broad-chested, the open face set for once.\nFull-body concept render of Ben Kowalski (the TE-1 jersey, ch22), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/ben_kowalski_game/ben_kowalski_game_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ben_kowalski_game/ben_kowalski_game_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/ben_kowalski_game/ben_kowalski_game_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T15:51:37+00:00",
+    "stage": "image",
+    "slug": "chief_miller_offduty",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Chief Miller (off duty, ch4) like this: He is in jeans and a short-sleeve shirt \u2014 the kind of shirt Sam has not, in some years, seen him in on a weekday evening. Additional direction: Chief Miller, 50, Sam's father, off duty in his own kitchen on a weekday evening: jeans, a short-sleeve plaid shirt untucked, brown boots, no badge, no belt. Barrel-chested, close-cropped grey hair, the uniform's bearing still in the shoulders.\nFull-body concept render of Chief Miller (off duty, ch4), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/chief_miller_offduty/chief_miller_offduty_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/chief_miller_offduty/chief_miller_offduty_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/chief_miller_offduty/chief_miller_offduty_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T15:52:51+00:00",
+    "stage": "image",
+    "slug": "fool_bindle",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes John's bindle like this: Broken broom handle propped against the freezer for eleven years. Nobody has thrown it away. Nobody has used it. A cloth napkin folded for the next customer. The creases are permanent. a cloth napkin folded for the next customer. It's been folded the same way for so long the creases are permanent. Take it. A Scratched Penny From Your Apron The Cassette Spine \u2014 JOHN_47AM_3 FRANKLY / FOOLISH. Scratched twenty years ago. Taken back. The Bindle \u2014 stick, cloth, contents\nSingle-object concept render of John's bindle, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/fool_bindle/fool_bindle_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/fool_bindle/fool_bindle_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/fool_bindle/fool_bindle_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T16:58:58+00:00",
+    "stage": "image",
+    "slug": "magician_iron",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Frasier's soldering iron like this: He picked up a soldering iron, its tip glowing hot. He touched the soldering iron to a waiting circuit board. A tiny spark. A puff of acrid smoke. Frasier hands him a soldering iron. The soldering iron is warm. The iron has been warm for nine years. holding a soldering iron in one hand, working on a circuit board with the other.\nSingle-object concept render of Frasier's soldering iron, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/magician_iron/magician_iron_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/magician_iron/magician_iron_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/magician_iron/magician_iron_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:02:01+00:00",
+    "stage": "image",
+    "slug": "bbs_terminal",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes RUST_CODE.BBS terminal like this: phosphor-green CRT. RUST_CODE.BBS hums here too. phosphor-green on your knuckles. the cursor blinks in the chat window. The BBS terminal at the Cathedral's corner. Phosphor-green CRT. RUST_CODE.BBS. The BBS terminal blinks an unread line in the corner. The terminal acknowledges with a single clean line of green. Dot-matrix output, faded. A list of commands he meant to memorize and never did. Folding chairs out, BBS terminal patched into the cassette deck, the show is starting in forty minutes.\nSingle-object concept render of RUST_CODE.BBS terminal, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bbs_terminal/bbs_terminal_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bbs_terminal/bbs_terminal_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bbs_terminal/bbs_terminal_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:03:28+00:00",
+    "stage": "image",
+    "slug": "cassette_archive",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Elicia's cassette archive like this: Elicia's cassette archive \u2014 wall of tapes, labels painted as strokes (no legible English). Elicia's archive \u2014 cassettes labeled in her hand Elicia's tape archive. the spool of one cassette is rewinding without anyone touching it. the storage closet behind the studio \u00b7 five boxes of Pomegranate Hour material \u00b7 drives, tapes, contact sheets, the disc with the never-finished pilot episode \u00b7 you have not, since November, opened the closet. the boxes are labeled in your hand from '21. the labels say PH. the labels say PH-DAILIES. the labels say PH-CUT-3. TDK, the cheap line, white label. Nobody has recorded on it yet. The label is blank. The reel-sides are unevenly worn \u2014 somebody played one side a lot more. Elicia's bungalow \u2014 one-bedroom shotgun on a quiet side street. The cassette archive against one wall.\nSingle-object concept render of Elicia's cassette archive, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cassette_archive/cassette_archive_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cassette_archive/cassette_archive_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cassette_archive/cassette_archive_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:07:03+00:00",
+    "stage": "image",
+    "slug": "the_polaroid",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Polaroid like this: Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street \u2014 the Houston Street, the one that no longer existed, the one that had gone into the sinkhole \u2014 at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible. In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother. A faded Polaroid. Houston Street in late-afternoon light. A young man walking with his back to the camera, hands in his pockets. On the back, in handwriting nobody in the house recognizes: He waved. Philip turned it over. On the back, in the same careful handwriting that had addressed the envelope, two words: A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for.\nSingle-object concept render of The Polaroid, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/the_polaroid/the_polaroid_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_polaroid/the_polaroid_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/the_polaroid/the_polaroid_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:13:37+00:00",
+    "stage": "image",
+    "slug": "water_glass_table_17",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The water glass at Table 17 like this: The water glass at Table 17 \u2014 the Empress's vessel of hospitality, and (in the Dean cameo) the vessel of withholding. Does not order food. Drinks one glass of water. An out-of-town suit at Table 14. Plain face. Lapels-smoothing gesture. Drinking water. Sammy's. Refilled before you ask. The pitcher has a small chip at the base he claims is from '01. Already knows the water-pour preferences for the regulars \u2014 Table 12 wants three-quarter glasses, Table 5 wants the pitcher set down, Paul's Sunday table wants nothing he hasn't asked for. Gloria caught his gaze as she refilled water glasses two booths down from his court.\nSingle-object concept render of The water glass at Table 17, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/water_glass_table_17/water_glass_table_17_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/water_glass_table_17/water_glass_table_17_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/water_glass_table_17/water_glass_table_17_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:19:36+00:00",
+    "stage": "image",
+    "slug": "cypress_beam",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The cypress beam offcut like this: a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more, when it arrived, than he had any business loving an inanimate object A two-foot offcut from the salvage beam. Smells like the kind of wood the Demons in Frasier's workshop would talk to if they were here. They are not. the warehouse floor with the partially-hung cypress beam, the kitchen rough-in (wrong gauge for the gas line), and the salvage piles. The beam is still up but not, in his professional opinion, straight. The cypress beam is at 3/6 of straight. The receipt for the cypress beam from the salvage yard outside Lafayette. The amount you paid is, in your own handwriting in the corner, more than you should have. The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation.\nSingle-object concept render of The cypress beam offcut, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/cypress_beam/cypress_beam_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cypress_beam/cypress_beam_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/cypress_beam/cypress_beam_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:24:12+00:00",
+    "stage": "image",
+    "slug": "brass_clock",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Emperor's brass clock like this: From your father's office. Since 1962. Chimes the quarter, the half, the hour. Has not, in 64 years, gained or lost more than a minute. Brass Clock \u00b7 1962 The brass clock from his father's office.\nSingle-object concept render of The Emperor's brass clock, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/brass_clock/brass_clock_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/brass_clock/brass_clock_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/brass_clock/brass_clock_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:25:21+00:00",
+    "stage": "image",
+    "slug": "appointment_book",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Dante's appointment book like this: Your father's cursive in the early years; your own in the recent. The boat's bookings. The catering bookings. The first-Sunday-of-even-months entries in their own column. Mode: found document. A scanned page from the Emperor's leather desk diary. 21:30   private \u2014 the boat, alone (90m) Appointment Book \u00b7 this year\nSingle-object concept render of Dante's appointment book, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/appointment_book/appointment_book_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/appointment_book/appointment_book_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/appointment_book/appointment_book_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:26:26+00:00",
+    "stage": "image",
+    "slug": "bourbon_bottle",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The bourbon bottle like this: From the file cabinet bottom drawer. Half-empty in the way a half-empty bottle is half-empty when nobody else has been pouring. The bottle of bourbon at his elbow looked, suddenly, less like a bad decision and more like a tool whose specific function he was about to need. He uncapped it. Poured one finger into the chipped glass on the desk. Drank it. Half-empty in the way half-empty bottles are half-empty when only one man has been pouring from them. He poured himself a bourbon. Neat. No ice. Ice was for the weak. Ice diluted the truth of the thing. He left the bottle uncapped, because uncapping it had always felt like a commitment and recapping it had always felt like a lie, and he had stopped lying to bottles in 2017. Bourbon \u00b7 half-empty since Wednesday\nSingle-object concept render of The bourbon bottle, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bourbon_bottle/bourbon_bottle_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bourbon_bottle/bourbon_bottle_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bourbon_bottle/bourbon_bottle_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:28:27+00:00",
+    "stage": "image",
+    "slug": "bakelite_microphone",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The Bakelite microphone like this: Original. Heavier than the new RE-20 Rashid has been trying to replace it with. Has been keyed by every WGUR DJ since 1974.\nSingle-object concept render of The Bakelite microphone, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bakelite_microphone/bakelite_microphone_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bakelite_microphone/bakelite_microphone_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bakelite_microphone/bakelite_microphone_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-14T17:29:52+00:00",
+    "stage": "image",
+    "slug": "master_tape_february",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The February master tape like this: Reel-to-reel. Your special: the four-hour ambient show you recorded the second week of February. The label on the reel-box, in your handwriting: 'EVA / FEB / DO NOT ERASE.'\nSingle-object concept render of The February master tape, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/master_tape_february/master_tape_february_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/master_tape_february/master_tape_february_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/master_tape_february/master_tape_february_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

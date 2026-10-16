@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_julian",
+      "kind": "character",
+      "era": "era3",
+      "tags": [
+        "character",
+        "era3",
+        "extra_julian"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. a model sheet of a man drawn with deliberate neutrality, labeled JULIAN: a pleasant well-dressed man with nothing in his face on purpose, shown three ways the strip allows: a good gray coat hanging on a hook with no one in it, a small printed holiday-card photograph of his face beside a woman's, and once in person in linen at a cedar-and-glass pavilion, kind and blank. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

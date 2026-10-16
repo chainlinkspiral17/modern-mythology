@@ -1,0 +1,25 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_frontier_cast",
+      "kind": "character",
+      "era": "era1",
+      "tags": [
+        "character",
+        "era1",
+        "extra_stranger",
+        "extra_lapels",
+        "extra_painter",
+        "extra_surveyor",
+        "extra_mill_boss"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. a western model sheet in committed brush-pen with dust as stipple, labeled: THE STRANGER (a lean man under a low hat brim with three days' stubble in a long duster to the boot and a bandana, a small dog at his heel, a card in his hatband face down; and on a mule), THE MAN WHO SMOOTHS HIS LAPELS (a trim man in his fifties with slicked silver hair and a narrow smile in a gambler's good coat with a watch chain, both hands on his lapels), THE SIGN PAINTER (a thin man with a brush in his teeth on a ladder), THE SURVEYOR (a stout man in a waistcoat and bowler with a chain over his shoulder and a stake in his fist), THE MILL BOSS (a thick bearded man in shirtsleeves and suspenders). Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

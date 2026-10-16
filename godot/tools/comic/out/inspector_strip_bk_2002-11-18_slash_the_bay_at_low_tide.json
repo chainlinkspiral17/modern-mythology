@@ -1,0 +1,60 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2002-11-18_slash_the_bay_at_low_tide",
+      "strip_id": "bk_2002-11-18_slash_the_bay_at_low_tide",
+      "title": "SLASH · The bay at low tide",
+      "date": "2002-11-18",
+      "era": "era1",
+      "format": "page",
+      "tier": "B",
+      "prompt": "a single full-page comic drawing (1 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: BACKUP. The strip: The bay at low tide with the riverboat gone and a rectangle in the mud the size of a boat, water standing in it, gulls at its edge. The framer on the flats with the dog — the novel has a dog after all; it's drawn in from the strip — looking at where a thing was. The page the canon will draw a hundred ways is drawn here first, as a crime scene. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, wide tidal mudflats at low tide with a huge rectangle of standing water where a boat's hull rested, gulls at its edge, a small figure in a coat and a small dog at the rectangle's corner, rain hatching beginning at the top (in this panel: BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_mudflats shows the setting; keep its architecture and props. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @barnaby for the character Barnaby; @loc_mudflats for the setting; @chloe_17 for the character the strip's Chloe at 17.",
+      "prompt_compact": "a single full-page comic drawing (1 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, wide tidal mudflats at… (in this panel: BARNABY (the dog)). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @barnaby is the model sheet for BARNABY (the dog). Reference @loc_mudflats shows the setting; keep its architecture and props.. Reference @chloe_17 is the model sheet for CHLOE.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "loc_mudflats",
+          "id": "sheet_loc_mudflats",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_mudflats.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_mudflats"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

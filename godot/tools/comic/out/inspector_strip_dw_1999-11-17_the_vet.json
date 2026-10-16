@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_1999-11-17_the_vet",
+      "strip_id": "dw_1999-11-17_the_vet",
+      "title": "The vet",
+      "date": "1999-11-17",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, drawn the same in every panel, ages exactly as given: WOOD — aged 19, thin young man with a slouch, three days' stubble, hair longer, brown canvas chore coat with a frayed cuff and one mismatched button, hands always in its pockets; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. Title of the strip: DRIFT WOOD. The strip: The county vet guesses a year. Wood guesses a name for the breed. Neither is right. Panel 1: a small veterinary clinic, a scruffy terrier-hound on a steel table, a vet listening with a stethoscope, a young man holding a sock (in this panel: BARNABY (the dog), WOOD). Vet says \"About a year. Terrier and something. Hound, maybe. Beagle.\". Wood says \"I was going to say 'coastal.'\". Panel 2: close-up of a young man's finger on a dog-breed poster pointing at nothing in particular (in this panel: WOOD). Wood says \"He's not on here.\". Vet says \"They're never on there.\". Panel 3: a vet writing on a clipboard chart while a young man answers, a dog on the table. Vet says \"Name?\". Wood says \"Barnaby.\". Vet says \"Owner?\". Wood says \"...Finch.\". Panel 4: outside a vet clinic in the rain, a scruffy dog on a new leash waiting patiently while a young man ties his shoe with a receipt in his teeth, black and white, no words (in this panel: BARNABY (the dog), WOOD). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @wood_20 is the model sheet for WOOD: match that face, build, hair and clothes exactly. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, build, hair and clothes exactly. Reference @chloe_17 is the model sheet for CHLOE: match that face, build, hair and clothes exactly. Match the attached references: @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby; @chloe_17 for the character the strip's Chloe at 17.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 19, thin young man with a slouch, three days' stubble, hair longer; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Panel 1: a small veterinary clinic, a scruffy terrier-hound on a steel table, a vet listening with a stethoscope, a young man holding a sock (in this panel: BARNABY (the dog), WOOD). Vet: \"About a year. Terrier and something. Hound, maybe. Beagle.\"; Wood: \"I was going to say 'coastal.'\". Panel 2: close-up of a young man's finger on a dog-breed poster pointing at nothing in particular (in this panel: WOOD). Wood: \"He's not on here.\"; Vet: \"They're never on there.\". Panel 3: a vet writing on a clipboard chart while a young man answers, a dog on the table. Vet: \"Name?\"; Wood: \"Barnaby.\"; Vet: \"Owner?\"; Wood: \"...Finch.\". Panel 4: outside a vet clinic in the rain, a scruffy dog on a new leash waiting patiently while a young man ties his shoe with a receipt in his… (in this panel: BARNABY (the dog), WOOD). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog). Reference @chloe_17 is the model sheet for CHLOE.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

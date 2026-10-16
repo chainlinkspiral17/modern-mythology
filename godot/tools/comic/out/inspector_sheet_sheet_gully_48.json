@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_gully_48",
+      "kind": "character",
+      "era": "era4",
+      "tags": [
+        "character",
+        "era4",
+        "gully_48"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. model sheet of a heavyset man in his late forties with gray in his beard and no hat, a green flannel and a black fleece vest, jeans and rubber boots, standing on a dock pointing at the water; front, profile, seated on a dock edge; labeled GULLY 2024. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

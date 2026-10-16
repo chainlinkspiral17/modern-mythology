@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "title": "Dream States (temp)",
+ "temp": true,
+ "format": "ogg",
+ "length_sec": 131,
+ "frames": 5777100,
+ "sample_rate": 44100,
+ "loop": false,
+ "loop_offset": 0,
+ "loop_start": 0,
+ "bpm": 60,
+ "bars": 32,
+ "lufs": -14,
+ "credits": "",
+ "approved": {
+  "take": "20261011-170844-s643066080",
+  "seed": 643066080,
+  "date": "2026-10-12T00:10:44.616Z"
+ },
+ "mix": "assets/audio/bgm/vol1_dream_drone.temp.ogg",
+ "quality": {
+  "mix": 4,
+  "stem": 1
+ },
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/vol1_dream_drone.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/vol1_dream_drone.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/vol1_dream_drone.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/vol1_dream_drone.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/vol1_dream_drone.stems/pad.ogg",
+   "layer": 0
+  }
+ ],
+ "bytes": {
+  "mix": 2229086,
+  "stems": 4445175
+ }
+}

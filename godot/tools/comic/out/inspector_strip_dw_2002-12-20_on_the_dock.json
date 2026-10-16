@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2002-12-20_on_the_dock",
+      "strip_id": "dw_2002-12-20_on_the_dock",
+      "title": "December, on the dock",
+      "date": "2002-12-20",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 22, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Does Chloe come home. She does. One strip. The dock. They don't talk about it. Panel 1: a young woman in a city coat standing at the end of a wooden dock at winter dusk, a small dog running to her, a young man in a chore coat arriving behind, brush-pen black and white (in this panel: CHLOE, WOOD, BARNABY (the dog)). No dialogue in this panel. Panel 2: a young woman and a young man sitting at the end of a dock with a small dog between them, feet over dark water (in this panel: CHLOE, WOOD, BARNABY (the dog)). Chloe says \"Three days. My mother's sick of me already.\". Wood says \"How's Europe.\". Chloe says \"Over. How's the strip.\". Wood says \"Daily.\". Panel 3: a young woman looking back at a shingle shack with a half-painted hand-lettered sign, dusk (in this panel: CHLOE). Chloe says \"He's naming it.\". Wood says \"He's naming it.\". Chloe says \"And you're not going anywhere.\". Wood says \"I have a job and a dog.\". Panel 4: two young people and a small dog seen from behind sitting at the end of a dock at dusk over dark water, small in the frame, black and white, no words (in this panel: CHLOE, WOOD, BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized crab, seen from above. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 22, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: a young woman in a city coat standing at the end of a wooden dock at winter dusk, a small dog running to her, a young man in a chore coat… (in this panel: CHLOE, WOOD, BARNABY (the dog)). No text. Panel 2: a young woman and a young man sitting at the end of a dock with a small dog between them, feet over dark water (in this panel: CHLOE, WOOD, BARNABY (the dog)). Chloe: \"Three days. My mother's sick of me already.\"; Wood: \"How's Europe.\"; Chloe: \"Over. How's the strip.\"; Wood: \"Daily.\". Panel 3: a young woman looking back at a shingle shack with a half-painted hand-lettered sign, dusk (in this panel: CHLOE). Chloe: \"He's naming it.\"; Wood: \"He's naming it.\"; Chloe: \"And you're not going anywhere.\"; Wood: \"I have a job and a dog.\". Panel 4: two young people and a small dog seen from behind sitting at the end of a dock at dusk over dark water, small in the frame, black and… (in this panel: CHLOE, WOOD, BARNABY (the dog)). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog).",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        }
+      ]
+    }
+  ]
+}

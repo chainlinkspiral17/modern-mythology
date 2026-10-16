@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_gully_27",
+      "kind": "character",
+      "era": "era2",
+      "tags": [
+        "character",
+        "era2",
+        "gully_27"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. model sheet of a stocky man in his late twenties in a black rubber fisherman's apron over a red plaid flannel with the sleeves pushed up, a backwards cap, thick forearms; front, profile, behind-a-counter pose, kneeling-to-a-dog pose; expression heads: grin, careful, steady, delighted; labeled GULLY 2006. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, painterly, glossy, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

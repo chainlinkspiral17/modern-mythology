@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_gully_17",
+      "kind": "character",
+      "era": "era1",
+      "tags": [
+        "character",
+        "era1",
+        "gully_17"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. model sheet of a stocky teenage boy in a blue baseball cap worn backwards, a faded green hoodie with his hands in the front pocket, muddy tan work boots, round easy face; front, profile, seated-drawing-on-a-napkin pose; expression heads: cheerful, plain, content, absorbed; labeled GULLY 1998. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

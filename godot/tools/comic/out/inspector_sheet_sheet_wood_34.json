@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_wood_34",
+      "kind": "character",
+      "era": "era3",
+      "tags": [
+        "character",
+        "era3",
+        "wood_34"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. model sheet of a lean man in his mid-thirties with a receding hairline and weathered sharp jaw, blue plaid flannel open over a dark band tee, faded jeans, brown boots, thick drawing hands; front, profile, back, a crouching pose, and a second figure in a maroon motel polo a size too big; expression heads: quiet, flat, trapped, zero sentimentality, exhausted surrender; labeled WOOD 2014. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

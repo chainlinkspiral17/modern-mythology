@@ -1,0 +1,20 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_era2",
+      "kind": "era",
+      "era": "era2",
+      "tags": [
+        "era",
+        "era2"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. a reference swatch sheet for a mid-2000s webcomic: samples of rubbery brush-pen line, muddy slightly misregistered digital flat colors, a saturated CRT-glow lighting sample, an over-wet watercolor sky that bled past its ink beside a controlled one, rust bleeding orange into gray on corrugated tin, a small stick figure drawn at the back of a panel, a tiny gull drawn at two-thirds size beside a normal one; labeled ERA II 2004–2011. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, painterly, glossy, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

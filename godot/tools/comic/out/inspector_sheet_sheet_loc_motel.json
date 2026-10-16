@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_motel",
+      "kind": "location",
+      "era": "era3",
+      "tags": [
+        "location",
+        "era3",
+        "dw_motel_desk"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. an environment sheet of a small roadside motel: a low L of rooms off a coastal highway with a pole sign reading DRIFTWOOD MOTEL VACANCY in pale neon; the lobby with a night-audit desk, a CRT, a desk bell, a key rack, a vending machine, a glass door, a dim hallway with an ice machine; labeled THE DRIFTWOOD MOTEL. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

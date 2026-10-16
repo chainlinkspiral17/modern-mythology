@@ -1,0 +1,20 @@
+{
+ "created": 1791759463248,
+ "kind": "daw-bounce",
+ "name": "vol1_ambient song · 20261011_155743",
+ "sampleRate": 44100,
+ "loop": null,
+ "meta": {
+  "title": "vol1_ambient song",
+  "bpm": 68,
+  "tags": [
+   "daw",
+   "song"
+  ],
+  "key": "C mixolydian"
+ },
+ "id": "tk_mv4fbm1c_hlmy4v",
+ "channels": 2,
+ "frames": 5113006,
+ "durationSec": 115.941179138322
+}

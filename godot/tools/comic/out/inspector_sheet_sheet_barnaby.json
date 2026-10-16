@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_barnaby",
+      "kind": "character",
+      "era": "era2",
+      "tags": [
+        "character",
+        "era2",
+        "barnaby"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. model sheet of a scruffy low-slung terrier-hound mix with a long body, short legs, folded velvet ears and a wiry white-and-tan coat; standing, curled in a tight spiral, chin resting on a slipper, mid-bark at a wave, being carried in a blanket; plus three heads at ages one, eight and fifteen with the muzzle graying and the eyes clouding; labeled BARNABY 1999–2014. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, painterly, glossy, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

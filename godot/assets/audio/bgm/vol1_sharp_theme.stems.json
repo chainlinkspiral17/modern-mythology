@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "title": "Sharp (temp)",
+ "temp": true,
+ "format": "ogg",
+ "length_sec": 109.667,
+ "frames": 4836300,
+ "sample_rate": 44100,
+ "loop": false,
+ "loop_offset": 0,
+ "loop_start": 0,
+ "bpm": 72,
+ "bars": 32,
+ "lufs": -14.4,
+ "credits": "",
+ "approved": {
+  "take": "20261013-151659-s890319104",
+  "seed": 890319104,
+  "date": "2026-10-13T22:18:50.782Z"
+ },
+ "mix": "assets/audio/bgm/vol1_sharp_theme.temp.ogg",
+ "quality": {
+  "mix": 4,
+  "stem": 1
+ },
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/pad.ogg",
+   "layer": 0
+  }
+ ],
+ "bytes": {
+  "mix": 1802634,
+  "stems": 3447679
+ }
+}

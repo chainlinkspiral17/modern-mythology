@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_1998-10-16_the_halloween_issue_the_cafeteria_at_night",
+      "strip_id": "bk_1998-10-16_the_halloween_issue_the_cafeteria_at_night",
+      "title": "THE HALLOWEEN ISSUE · The cafeteria at night",
+      "date": "1998-10-16",
+      "era": "era1",
+      "format": "biweekly",
+      "tier": "A",
+      "prompt": "a four-panel comic strip laid out as a two-by-two grid on a half page, thin black panel borders (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, drawn the same in every panel, ages exactly as given: WOOD — aged 18, gaunt boy drawn a head too tall, oversized thrift-store wool overcoat to the knee worn indoors, faded black tee, dark jeans, sneakers, a bristol pad clutched flat to his chest, chin up; GULLY — aged 19, stocky boy with a round face, backwards blue cap, faded green hoodie with his hands in the front pocket, muddy tan work boots, easy slouch; THE LUNCH LADY — heavyset woman in a white cafeteria smock and hairnet holding a steel ladle, unimpressed posture. Title of the strip: BACKUP. The strip: An issue that never went to the copier: the cafeteria at night, the tables up, the lunch lady's hairnet on a hook, and the tray line moving with no one at it. Wood and Gully in with a flashlight because Chloe dared them. The spotting is the horror. Two by two. Panel 1: black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, two teenage boys in a dark school cafeteria doorway with a flashlight beam across upended tables (in this panel: WOOD, GULLY). Gully says \"She dared us. That's not the same as us having to.\". Panel 2: black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a hairnet on a hook beside a cafeteria tray line whose rollers turn with nothing on them. No dialogue in this panel. Panel 3: black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a lunch lady standing motionless at the far end of a dark cafeteria holding a ladle (in this panel: THE LUNCH LADY). No dialogue in this panel. Panel 4: black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, two teenage boys running down a dark school hallway with a flashlight beam swinging behind them (in this panel: WOOD, GULLY). Lunch Lady says \"Tuesday's meatloaf.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Reference @gully_17 is the model sheet for GULLY: match that face, build, hair and clothes exactly. Reference @chloe_17 is the model sheet for CHLOE: match that face, build, hair and clothes exactly. Reference @wood_20 is the model sheet for WOOD: match that face, build, hair and clothes exactly. Match the attached references: @gully_17 for the character the strip's Gully at 17; @chloe_17 for the character the strip's Chloe at 17; @wood_20 for the character Wood at 20-23.",
+      "prompt_compact": "a four-panel comic strip laid out as a two-by-two grid on a half page, thin black panel borders (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 18, gaunt boy drawn a head too tall, oversized thrift-store wool overcoat to the knee worn indoors, faded black tee; GULLY — aged 19, stocky boy with a round face, backwards blue cap, faded green hoodie with his hands in the front pocket; THE LUNCH LADY — heavyset woman in a white cafeteria smock and hairnet holding a steel ladle, unimpressed posture. Panel 1: two teenage boys in a dark school cafeteria doorway with a flashlight beam across upended tables (in this panel: WOOD, GULLY). Gully: \"She dared us. That's not the same as us having to.\". Panel 2: a hairnet on a hook beside a cafeteria tray line whose rollers turn with nothing on them. No text. Panel 3: a lunch lady standing motionless at the far end of a dark cafeteria holding a ladle (in this panel: THE LUNCH LADY). No text. Panel 4: two teenage boys running down a dark school hallway with a flashlight beam swinging behind them (in this panel: WOOD, GULLY). Lunch Lady: \"Tuesday's meatloaf.\". Letter every balloon completely, large and clean; never cut a word; no other words. Reference @gully_17 is the model sheet for GULLY. Reference @chloe_17 is the model sheet for CHLOE. Reference @wood_20 is the model sheet for WOOD.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1168:880",
+      "google_aspect": "4:3",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "gully_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

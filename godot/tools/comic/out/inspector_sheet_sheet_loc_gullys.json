@@ -1,0 +1,22 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_gullys",
+      "kind": "location",
+      "era": "era2",
+      "tags": [
+        "location",
+        "era2",
+        "dw_gullys",
+        "dw_boat_launch"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. an environment sheet of a weathered shingle shack at a boat launch: exterior with a hand-painted sign reading GULLY'S TACKLE & ROAST, a wooden dock on pilings, crab pots, a chalkboard menu in a crab pot, an old green-webbed lawn chair under the eave, a row of crab flyers on the wall; interior with a counter holding a chrome two-group espresso machine between a bait cooler and an old register, a single stool, a crowded corkboard above the register; labeled GULLY'S. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, painterly, glossy, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

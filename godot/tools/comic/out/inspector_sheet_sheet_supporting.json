@@ -1,0 +1,27 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_supporting",
+      "kind": "character",
+      "era": "era3",
+      "tags": [
+        "character",
+        "era3",
+        "extra_maria",
+        "extra_uncle",
+        "extra_owner_heceta",
+        "the_editor",
+        "extra_gully_kid",
+        "extra_mother",
+        "extra_father"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. a lineup model sheet of supporting characters, front views, labeled: MARIA (practical woman in a county-issue rain shell), THE UNCLE (weathered fisherman in a rain hood beside a green-webbed lawn chair with an oxygen line), THE FRAME SHOP OWNER (woman in reading glasses on a cord at a mat cutter), THE EDITOR (young woman in a dark green coat with a tote and notebook), GULLY'S DAUGHTER at six with a marker, and two figures drawn deliberately withheld: a mother shown only as a hand setting down toast, and a father shown only as a back in a faded mill jacket. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

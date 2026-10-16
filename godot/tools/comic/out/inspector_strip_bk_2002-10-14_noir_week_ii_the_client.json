@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2002-10-14_noir_week_ii_the_client",
+      "strip_id": "bk_2002-10-14_noir_week_ii_the_client",
+      "title": "NOIR WEEK II · The client",
+      "date": "2002-10-14",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010; WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: BACKUP. The strip: The second week: the dog in the trench coat behind the drafting table, a client in the door — a woman's postcard, propped on a crate, doing the talking. The case: a missing digest. The dog says nothing, because he's a dog. The caption does the talking; the caption is unreliable. Panel 1: brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat and fedora sitting behind a drafting table under a low lamp with a man's legs propped at the frame's edge (in this panel: BARNABY (the dog), WOOD). caption box: \"It was raining. It's always raining. That's the coast.\". Panel 2: brush-pen black and white, heavy spotting, trench-coat noir parody, a postcard of a cathedral propped on a wooden crate in a doorway with a speech balloon coming from it. Postcard says \"Something's missing, detective.\". Panel 3: brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat sitting unmoved under a lamp (in this panel: BARNABY (the dog)). caption box: \"She had legs. Well. She had a stamp.\". Panel 4: brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog's paw resting on a photocopied comic digest with a page torn out (in this panel: BARNABY (the dog)). caption box: \"A digest with a page torn out. In this town that's a crime.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @objects_paper is a finished strip in this style. Match the attached references: @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby; @objects_paper for the objects.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs; WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer. Clothes and props: as described here, not from the reference. Panel 1: a small dog in a trench coat and fedora sitting behind a drafting table under a low lamp with a man's legs propped at the frame's edge (in this panel: BARNABY (the dog), WOOD). caption \"It was raining. It's always raining. That's the coast.\". Panel 2: a postcard of a cathedral propped on a wooden crate in a doorway with a speech balloon coming from it. Postcard: \"Something's missing, detective.\". Panel 3: a small dog in a trench coat sitting unmoved under a lamp (in this panel: BARNABY (the dog)). caption \"She had legs. Well. She had a stamp.\". Panel 4: a small dog's paw resting on a photocopied comic digest with a page torn out (in this panel: BARNABY (the dog)). caption \"A digest with a page torn out. In this town that's a crime.\". Letter every balloon completely, large and clean; never cut a word; no other words. Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog). Reference @objects_paper is a finished strip in this style..",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "objects_paper",
+          "id": "sheet_objects_paper",
+          "kind": "objects",
+          "file": "godot/assets/comic/vol10/sheets/sheet_objects_paper.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "digest",
+            "postcard"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_1997-10-24_back_page",
+      "strip_id": "dw_1997-10-24_back_page",
+      "title": "Drift Wood #4 · the back page",
+      "date": "1997-10-24",
+      "era": "era1",
+      "format": "biweekly",
+      "tier": "B",
+      "prompt": "a four-panel comic strip laid out as a two-by-two grid on a half page, thin black panel borders (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, drawn the same in every panel, ages exactly as given: WOOD — aged 17, gaunt boy drawn a head too tall, oversized thrift-store wool overcoat to the knee worn indoors, faded black tee, dark jeans, sneakers, a bristol pad clutched flat to his chest, chin up; CHLOE — aged 17, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders, oversized dark cardigan, a Discman on her belt with headphones around her neck, a folded-back paperback, reads while talking. Title of the strip: DRIFT WOOD. The strip: Chloe gives him the back page. She wants something for it. Panel 1: a teenage girl with heavy eyeliner taping a blank rectangle onto a newspaper paste-up board while a boy in an overcoat watches, school newsroom, light table (in this panel: CHLOE, WOOD). Chloe says \"Back page. Bottom half. Yours.\". Panel 2: close-up of a teenage boy with his hand on his chest accepting something graciously (in this panel: WOOD). Wood says \"I accept. The back page is where the real readers go first.\". Panel 3: a teenage girl with her back turned working at a paste-up board, deadpan (in this panel: CHLOE). Chloe says \"The back page is where the ads didn't sell.\". Panel 4: a teenage boy leaning over a paste-up board drawing a tiny gull in the corner of an empty rectangle, newsroom lamp light (in this panel: WOOD). Wood says, in a small balloon, \"Real readers.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @chloe_17 is the model sheet for CHLOE: match that face, build, hair and clothes exactly. Reference @wood_20 is the model sheet for WOOD: match that face, build, hair and clothes exactly. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @wood_20 for the character Wood at 20-23.",
+      "prompt_compact": "a four-panel comic strip laid out as a two-by-two grid on a half page, thin black panel borders (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 17, gaunt boy drawn a head too tall, oversized thrift-store wool overcoat to the knee worn indoors, faded black tee; CHLOE — aged 17, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders. Panel 1: a teenage girl with heavy eyeliner taping a blank rectangle onto a newspaper paste-up board while a boy in an overcoat watches, school… (in this panel: CHLOE, WOOD). Chloe: \"Back page. Bottom half. Yours.\". Panel 2: close-up of a teenage boy with his hand on his chest accepting something graciously (in this panel: WOOD). Wood: \"I accept. The back page is where the real readers go first.\". Panel 3: a teenage girl with her back turned working at a paste-up board, deadpan (in this panel: CHLOE). Chloe: \"The back page is where the ads didn't sell.\". Panel 4: a teenage boy leaning over a paste-up board drawing a tiny gull in the corner of an empty rectangle, newsroom lamp light (in this panel: WOOD). Wood (small): \"Real readers.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @wood_20 is the model sheet for WOOD.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1168:880",
+      "google_aspect": "4:3",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}
