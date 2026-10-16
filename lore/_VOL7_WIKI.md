@@ -1,6 +1,8 @@
 # VOL 7 · LAND OF MILK AND HONEY · Wiki
 
-> **Canon rule (Andy, Oct 2026):** the scene and manuscript text is canon, and this wiki follows it. The present is **August 2052**; the wiki used to say 2025. Where the wiki and the text disagree, fix the wiki.
+> **NOT CANON. This wiki is a Claude-generated summary, not Andy's writing.** Andy's manuscript and scene text are the only canon. Anything here that the text doesn't say may be invented. Check claims against the text before relying on them, and when the two disagree, fix the wiki. (Andy, Oct 2026)
+
+
 
 
 The synthesizing entry point for vol 7 of *Modern Mythology* — the
@@ -28,7 +30,7 @@ cage second.
 
 The volume's central artifact is **the substrate** — the non-
 human phenomenon that runs beneath the deck's chapters across all
-volumes. Stable for thirty-seven years. Became unstable in 2052.
+volumes. Became unstable in 2052.
 The instability is, by Frasier Temple's quiet warehouse read, *a
 request.* Vol 7's third act is the volume's small careful
 response.
@@ -196,7 +198,6 @@ What is known across the volumes:
 - The substrate is the same thing the chassis breathes.
 - The substrate is the same thing the cannery's basement servers
   are receiving, sending, and unknown-ing.
-- The substrate has been stable for at least thirty-seven years.
 - The substrate has, in 2052, become **unstable**.
 
 By Frasier's quiet warehouse read, the instability is **a
@@ -234,7 +235,7 @@ The tower in Small Wood is one of Dean's interfaces to it.
 
 - **The patient response to a long signal.** Vol 7 is the slowest
   volume. The characters do not rush. The substrate does not
-  rush. The thirty-seven-year stability is the precondition for the
+  rush. The long stability is the precondition for the
   current attention; the destabilization is the call to act.
 - **The young recognizing the elders' patient knowledge.** Lena
   recognizing what Mrs. Gable has been seeing. Kai recognizing what

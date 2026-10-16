@@ -1,5 +1,8 @@
 # Series Seeds from the Drive Scraps: Volumes 5–10
 
+> **NOT CANON. This wiki is a Claude-generated summary, not Andy's writing.** Andy's manuscript and scene text are the only canon. Anything here that the text doesn't say may be invented. Check claims against the text before relying on them, and when the two disagree, fix the wiki. (Andy, Oct 2026)
+
+
 *Compiled 2026-10-16 for the `seeds` batch of the scraps brief (`/home/claude/mm_src/SCRAPS_BRIEF.md`). This is a lore bible, not scene JSON. Drive was read only.*
 
 **How to read this file**
