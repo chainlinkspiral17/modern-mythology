@@ -20,9 +20,7 @@ var _saves:    Array    = []
 func open(mode: String, callback: Callable) -> void:
 	_mode     = mode
 	_callback = callback
-	# The autosave (slot 0) is offered when loading, never as a manual
-	# save target.
-	_saves    = SaveSystem.list_saves(_mode == "continue")
+	_saves    = SaveSystem.list_saves()
 	_rebuild()
 	visible = true
 
@@ -44,10 +42,10 @@ func _rebuild() -> void:
 	# Card panel
 	var card := Panel.new()
 	card.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	card.offset_left   = -320
-	card.offset_right  = 320
-	card.offset_top    = -300
-	card.offset_bottom = 300
+	card.offset_left   = -440
+	card.offset_right  = 440
+	card.offset_top    = -330
+	card.offset_bottom = 330
 	var st := StyleBoxFlat.new()
 	st.bg_color     = C_BG
 	st.border_color = C_BORDER
@@ -112,12 +110,13 @@ func _rebuild() -> void:
 		btn.add_theme_stylebox_override("focus",   hover_style)
 		btn.add_theme_stylebox_override("pressed", hover_style)
 
-		if ResourceLoader.exists(SkinDB.F_IMFELL_R):
-			btn.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
+		# (pass 89) the slot lines in the reading face at reading size
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			btn.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
 		btn.add_theme_color_override("font_color",        C_TXT)
 		btn.add_theme_color_override("font_hover_color",  C_GOLD)
 		btn.add_theme_color_override("font_focus_color",  C_GOLD)
-		btn.add_theme_font_size_override("font_size", 14)
+		btn.add_theme_font_size_override("font_size", 17)
 
 		if is_empty:
 			btn.text = "  SLOT %d    —    EMPTY" % slot
@@ -126,9 +125,8 @@ func _rebuild() -> void:
 			var vol: int = int(save_data.get("vol", 0))
 			var ts: float = float(save_data.get("ts", 0))
 			var dt := Time.get_datetime_dict_from_unix_time(int(ts))
-			var slot_label := "AUTO  " if slot == SaveSystem.AUTOSAVE_SLOT else "SLOT %d" % slot
-			btn.text = "  %s    Vol.%d  ·  %s\n  %02d/%02d/%d  %02d:%02d" % [
-				slot_label, vol, scene_id,
+			btn.text = "  SLOT %d    Vol.%d  ·  %s\n  %02d/%02d/%d  %02d:%02d" % [
+				slot, vol, scene_id,
 				dt.get("month", 0), dt.get("day", 0), dt.get("year", 0),
 				dt.get("hour", 0),  dt.get("minute", 0)
 			]
@@ -140,6 +138,21 @@ func _rebuild() -> void:
 			var sl: int = slot
 			btn.pressed.connect(func() -> void: _pick(sl, sd if not sd.get("empty", false) else {}))
 
+		# Each slot is its picture, its line, and its notes (2026-10-01):
+		# "the save state should be a thumbnail with a notes section.
+		# Players can input these notes at any time."
+		var row := HBoxContainer.new()
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_theme_constant_override("separation", 10)
+		row.add_child(_thumb_box(slot, is_empty))
+		var info := VBoxContainer.new()
+		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		info.add_theme_constant_override("separation", 4)
+		row.add_child(info)
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		info.add_child(btn)
+		if not is_empty:
+			info.add_child(_notes_box(slot, String(save_data.get("notes", ""))))
 		if not is_empty and _mode == "new":
 			var del_btn := Button.new()
 			del_btn.text = "✕"
@@ -147,15 +160,8 @@ func _rebuild() -> void:
 			del_btn.add_theme_color_override("font_color", Color(0.8, 0.3, 0.3))
 			var sl: int = slot
 			del_btn.pressed.connect(func() -> void: _delete_slot(sl))
-			# wrap button + delete in hbox
-			var hbox := HBoxContainer.new()
-			hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			hbox.add_child(btn)
-			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			hbox.add_child(del_btn)
-			slot_vbox.add_child(hbox)
-		else:
-			slot_vbox.add_child(btn)
+			row.add_child(del_btn)
+		slot_vbox.add_child(row)
 
 	vbox.add_child(_make_rule())
 
@@ -166,6 +172,63 @@ func _rebuild() -> void:
 	vbox.add_child(back_btn)
 
 
+const THUMB_SIZE := Vector2(192, 108)
+
+
+func _thumb_box(slot: int, is_empty: bool) -> Control:
+	var frame := PanelContainer.new()
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0, 0, 0, 0.6)
+	st.border_color = Color(C_BORDER.r, C_BORDER.g, C_BORDER.b, 0.25)
+	st.set_border_width_all(1)
+	frame.add_theme_stylebox_override("panel", st)
+	frame.custom_minimum_size = THUMB_SIZE
+	var tex: Texture2D = null if is_empty else SaveSystem.get_thumb(slot)
+	if tex != null:
+		var tr := TextureRect.new()
+		tr.texture = tex
+		tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		tr.custom_minimum_size = THUMB_SIZE
+		frame.add_child(tr)
+	else:
+		var none := Label.new()
+		none.text = "EMPTY" if is_empty else "no picture"
+		none.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		none.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		none.add_theme_color_override("font_color", C_DIM)
+		if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+			none.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+		none.add_theme_font_size_override("font_size", 14)
+		frame.add_child(none)
+	return frame
+
+
+func _notes_box(slot: int, notes: String) -> TextEdit:
+	var te := TextEdit.new()
+	te.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	te.custom_minimum_size.y = 52
+	te.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
+	te.placeholder_text = "notes…"
+	te.text = notes
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		te.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	te.add_theme_font_size_override("font_size", 15)
+	te.add_theme_color_override("font_color", C_TXT)
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.02, 0.016, 0.01, 0.9)
+	st.border_color = Color(C_BORDER.r, C_BORDER.g, C_BORDER.b, 0.25)
+	st.set_border_width_all(1)
+	st.content_margin_left = 6.0
+	st.content_margin_right = 6.0
+	st.content_margin_top = 4.0
+	st.content_margin_bottom = 4.0
+	te.add_theme_stylebox_override("normal", st)
+	te.add_theme_stylebox_override("focus", st)
+	te.text_changed.connect(func() -> void: SaveSystem.set_notes(slot, te.text))
+	return te
+
+
 func _pick(slot: int, save_data: Dictionary) -> void:
 	visible = false
 	if _callback.is_valid():
@@ -174,7 +237,7 @@ func _pick(slot: int, save_data: Dictionary) -> void:
 
 func _delete_slot(slot: int) -> void:
 	SaveSystem.delete_save(slot)
-	_saves = SaveSystem.list_saves(_mode == "continue")
+	_saves = SaveSystem.list_saves()
 	_rebuild()
 
 

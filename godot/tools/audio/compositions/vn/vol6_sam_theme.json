@@ -1,0 +1,76 @@
+{
+ "meta": {
+  "title": "vol6_sam_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_sam_theme",
+  "notes": "Sam \u00b7 Eleven Forty-Seven. Register clerk's steady: a low sine held, and the entry bell half a beat behind where you'd expect, three times."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.156,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.18
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.078,
+   "notes": [
+    {
+     "pitch": "E6",
+     "bar": 1,
+     "beat": 1.5,
+     "dur": 0.15,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 3,
+     "beat": 1.5,
+     "dur": 0.15,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E6",
+     "bar": 5,
+     "beat": 1.5,
+     "dur": 0.15,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

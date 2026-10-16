@@ -1,0 +1,63 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-10-02_bags",
+      "strip_id": "dw_2000-10-02_bags",
+      "title": "Bags",
+      "date": "2000-10-02",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. CHLOE wears dandy warhols tee. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Chloe's bags are packed for Seattle. The town feels smaller by the hour. Wood measures it. Panel 1: a small-town porch in rain drawn as frantic vertical hatching, two packed bags by the door, a young woman on the top step and a young man in a chore coat on the bottom step, brush-pen black and white (in this panel: CHLOE, WOOD). Chloe says \"Two weeks. Then the bus.\". Panel 2: close-up of a young man drawing two packed bags on a pad in the rain (in this panel: WOOD). Wood says \"The town's getting smaller. I measured. Main street was four blocks in September. It's three and a half now.\". Panel 3: close-up of a young woman on a porch step, unconvinced, rain behind (in this panel: CHLOE). Chloe says \"That's not how towns work.\". Wood says \"It's how this one works.\". Panel 4: a porch seen from the street in heavy rain with two people on its steps and two packed bags by the door, the panel noticeably narrower than a standard panel, black and white, no words (in this panel: CHLOE, WOOD). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized crab, seen from above. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_main_street shows the setting; keep its architecture and props. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @wood_20 for the character Wood at 20-23; @loc_main_street for the setting.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders. CHLOE wears dandy warhols tee. Clothes and props: as described here, not from the reference. Panel 1: a small-town porch in rain drawn as frantic vertical hatching, two packed bags by the door, a young woman on the top step and a young man… (in this panel: CHLOE, WOOD). Chloe: \"Two weeks. Then the bus.\". Panel 2: close-up of a young man drawing two packed bags on a pad in the rain (in this panel: WOOD). Wood: \"The town's getting smaller. I measured. Main street was four blocks in September. It's three and a half now.\". Panel 3: close-up of a young woman on a porch step, unconvinced, rain behind (in this panel: CHLOE). Chloe: \"That's not how towns work.\"; Wood: \"It's how this one works.\". Panel 4: a porch seen from the street in heavy rain with two people on its steps and two packed bags by the door, the panel noticeably narrower than… (in this panel: CHLOE, WOOD). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @wood_20 is the model sheet for WOOD. Reference @loc_main_street shows the setting; keep its architecture and props..",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "loc_main_street",
+          "id": "sheet_loc_main_street",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_main_street.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "dw_chloe_porch",
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "manager_scrapbook",
+  "title": "Manager Mode · Scrapbook",
+  "notes": "Human-readable catalog of the lore_tokens that Manager Mode surfaces across the summer of '98.  A future scrapbook UI can enumerate this file, cross-reference each entry against GauntletState.state.lore_tokens_revealed, and render the discovered ones with a colored dot next to their title.  Tokens not yet earned render as '· · ·' silhouettes.\n\nThree tiers:\n  · guests (5)     — served each rare guest at least once\n  · modifiers (6)  — survived each unusual shift condition\n  · nights (3)     — met a per-night threshold (any night)\n  · summers (2)    — accumulated across a whole run\n  · endings (3)    — reached one of the Manager-only endings",
+
+  "entries": [
+    { "token": "sam_met_the_regional_manager",           "tier": "guests",    "title": "The regional manager's walk-through",       "blurb": "The suit walked in on a Wednesday, bought bottled water, said thank you, walked out.  Sam kept the receipt for a year." },
+    { "token": "sam_served_the_high_schoolers",          "tier": "guests",    "title": "Three high-schoolers, three drinks",         "blurb": "They were going to a party.  Sam did not, at 24, feel old.  Sam felt, in a way Sam could not identify, sober." },
+    { "token": "sam_helped_the_lost_couple",             "tier": "guests",    "title": "Directions to Cannon Beach",                 "blurb": "The wife asked, the husband bought the map, both left grateful.  Sam thought, later, about how much of the summer was directions." },
+    { "token": "sam_served_the_biker",                   "tier": "guests",    "title": "A tall and a tip that meant it",             "blurb": "'You keep a good store, kid.'  Sam wrote the biker's actual sentence down in the ledger, in pencil, in the margin." },
+    { "token": "sam_served_the_church_lady",             "tier": "guests",    "title": "The church lady's ginger ale",               "blurb": "She offered a prayer.  Sam accepted it.  Neither Sam nor the church lady thought this odd." },
+
+    { "token": "sam_worked_a_full_moon_night",           "tier": "modifiers", "title": "A full moon on the water",                   "blurb": "Tips were doubled.  Nobody remembers why, but every clerk on the coast will tell you this if you ask." },
+    { "token": "sam_passed_the_sheriffs_look",           "tier": "modifiers", "title": "The night deputy's look",                    "blurb": "He walked through, nodded, walked out.  Sam did not know what was being looked for.  Sam passed anyway." },
+    { "token": "sam_ate_the_counterfeit_bill",           "tier": "modifiers", "title": "The counterfeit twenty",                     "blurb": "Somebody left a bad twenty in the register last shift.  Sam ate the loss and finished the night in the black." },
+    { "token": "sam_zero_walkouts_at_the_fair",          "tier": "modifiers", "title": "County fair traffic, zero walkouts",         "blurb": "The Tillamook fair opened; 101 was busy; Sam still served every walk-in cleanly.  A minor miracle." },
+    { "token": "sam_zero_walkouts_shipment_delay",       "tier": "modifiers", "title": "Eight-and-eight-and-eight, zero walkouts",   "blurb": "Snyder's truck skipped.  The cooler ran short.  Sam still served every walk-in cleanly.  A less minor miracle." },
+    { "token": "sam_rang_thirty_in_the_rain",            "tier": "modifiers", "title": "Thirty dollars in the rain",                 "blurb": "It rained all night.  The parking lot was mirroring the fluorescents.  Sam still rang thirty." },
+
+    { "token": "sam_a_clean_night",                      "tier": "nights",    "title": "A clean night",                              "blurb": "One shift, zero walkouts.  It happens.  It doesn't always." },
+    { "token": "sam_a_hundred_dollar_night",             "tier": "nights",    "title": "A hundred-dollar night",                     "blurb": "One shift, $100 rung.  Not the biggest ever · a good one." },
+    { "token": "sam_a_five_dollar_tip_night",            "tier": "nights",    "title": "A five-dollar tip night",                    "blurb": "One shift, tip jar past five bucks.  Sam bought a coffee on the way home with it." },
+
+    { "token": "sam_met_three_of_five_guests",           "tier": "summers",   "title": "Three of the five",                          "blurb": "The summer had, when you counted it, three of the five rare visitors.  A wide summer." },
+    { "token": "sam_met_all_five_guests",                "tier": "summers",   "title": "All five",                                   "blurb": "The regional manager.  Three high-schoolers.  A lost couple.  A biker.  A church lady.  A summer where nobody unusual was missed." },
+    { "token": "sam_saw_the_summer_wide",                "tier": "summers",   "title": "The summer, wide",                           "blurb": "Five different unusual conditions survived cleanly.  The summer of '98, in retrospect, was not the average summer." },
+
+    { "token": "sam_owns_the_kwik_stop",                 "tier": "endings",   "title": "Owns it now",                                "blurb": "The $4,200 threshold cleared, the offer made, Jules said yes on Tuesday.  Five years later the store is still the store." },
+    { "token": "sam_ran_the_clean_ledger",               "tier": "endings",   "title": "Ran the clean ledger",                       "blurb": "Twelve nights, zero walkouts.  The costs, quiet.  The wren, heard later." },
+    { "token": "sam_closed_at_three_forty_seven",        "tier": "endings",   "title": "Closed at 3:47",                             "blurb": "Three bad nights in a row broke something.  Sam ended the shift, wrote a note, walked to the estuary, came back the next night.  Held." }
+  ]
+}

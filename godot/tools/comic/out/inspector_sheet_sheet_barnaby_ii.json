@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_barnaby_ii",
+      "kind": "character",
+      "era": "era3",
+      "tags": [
+        "character",
+        "era3",
+        "barnaby_ii"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. model sheet of a small wiry-haired terrier-and-border-collie mix with three legs, the left hind leg ending cleanly below the hock, one ear pinned back and one upright, steel-wool coat, gray whiskers; standing like a tripod with chest out, mid-scuttle with motion lines, asleep across a man's ankles holding a wooden pen holder, standing inside a cardboard produce box; puppy and adult heads; labeled BARNABY II 2014–. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

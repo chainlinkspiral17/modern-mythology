@@ -1,0 +1,177 @@
+{
+ "id": "seed_dying",
+ "notes": "The seedling tray with the rows going brown from one end.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    18,
+    30,
+    60,
+    10
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     18,
+     30
+    ],
+    [
+     78,
+     30
+    ],
+    [
+     78,
+     40
+    ],
+    [
+     18,
+     40
+    ],
+    [
+     18,
+     30
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 23,
+   "y_range": [
+    24,
+    30
+   ],
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    23,
+    23
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "vline",
+   "x": 33,
+   "y_range": [
+    24,
+    30
+   ],
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    33,
+    23
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "vline",
+   "x": 43,
+   "y_range": [
+    24,
+    30
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    43,
+    23
+   ],
+   "size": 1,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 53,
+   "y_range": [
+    24,
+    30
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    53,
+    23
+   ],
+   "size": 1,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 63,
+   "y_range": [
+    24,
+    30
+   ],
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    63,
+    23
+   ],
+   "size": 1,
+   "color": 9
+  },
+  {
+   "op": "vline",
+   "x": 73,
+   "y_range": [
+    24,
+    30
+   ],
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    73,
+    23
+   ],
+   "size": 1,
+   "color": 9
+  }
+ ]
+}

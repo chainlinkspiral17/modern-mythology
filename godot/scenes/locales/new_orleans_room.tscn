@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://new_orleans_room_cameo"]
+[gd_scene load_steps=26 format=3 uid="uid://new_orleans_room_cameo"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/new_orleans_room.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.78, 0.32, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.04, 0.04, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.46, 0.36, 0.24, 1)
-ambient_light_energy = 0.5
+ambient_light_energy = 0.7
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.32, 0.22, 0.14, 1)
 fog_light_energy = 0.4
 fog_density = 0.006
@@ -154,23 +169,57 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_BareBulb" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+; (pass 70, 2026-10-11) the authored rig is suffixed to new_orleans_room: its time-of-day twin below brings its own
+[node name="Key_BareBulb__new_orleans_room" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.86, 0.46, 1)
-light_energy = 0.45
+light_energy = 0.85
 shadow_enabled = false
 
-[node name="Fill_SashWindow" type="DirectionalLight3D" parent="."]
+[node name="Fill_SashWindow__new_orleans_room" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -5)
 light_color = Color(0.62, 0.62, 0.74, 1)
-light_energy = 0.25
+light_energy = 0.4
 shadow_enabled = false
 
-[node name="Back_None" type="DirectionalLight3D" parent="."]
+; Bare-bulb practical overhead
+[node name="Practical_BareBulb" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -2.5)
+light_color = Color(1.0, 0.88, 0.6, 1)
+light_energy = 1.3
+omni_range = 4.0
+shadow_enabled = false
+
+; The LAUNDROMAT sign below the window (2026-10-05): the room's second
+; practical. Its pink glow comes up past the sill onto the shade and the
+; ceiling by the window. Blender (0.9, 5.55, -0.20) → godot.
+[node name="Practical_LaundromatSign" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, -0.20, -5.55)
+light_color = Color(0.98, 0.50, 0.70, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Back_None__new_orleans_room" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 4)
 light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
+
+; ── THE AFTERNOON (pass 70): new_orleans_room_day — the Marigny haze through the sash window
+[node name="Day_Sun__new_orleans_room_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.4545, 0.5417, 0.0000, 0.7660, 0.6428, -0.7071, 0.4545, -0.5417, 0, 5, -4)
+light_color = Color(1.00, 0.92, 0.80, 1)
+light_energy = 0.9
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__new_orleans_room_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, 0)
+light_color = Color(0.80, 0.80, 0.84, 1)
+light_energy = 0.5
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +321,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +340,36 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · arcana sets round 2) ────────
+; rotation B: from the basin corner over the bed to the door
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.1, 1.45, -4.5)
+rotation = Vector3(-0.19197, 2.59673, 0)
+metadata/fov = 52.0
+
+; closeup: Douglas on the bed
+[node name="shot_closeup_douglas" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.9, 1.25, -2.5)
+rotation = Vector3(-0.374316, -0.785398, 0)
+metadata/fov = 36.0
+
+; insert: the letter on the desk
+; RE-AIMED 2026-10-03: the letter on the desk (it framed the bed), the small mirror
+; over the dresser (it framed a bare wall)
+[node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.120, -3.950)
+rotation = Vector3(-0.5506, 0.2663, 0.0)
+metadata/fov = 34.0
+
+; insert: the small mirror above the dresser
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.200, 1.580, -2.600)
+rotation = Vector3(0.0298, 1.5708, 0.0)
+metadata/fov = 34.0
+
+; insert: the game on the TV, muted
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.25, -2.6)
+rotation = Vector3(-0.2616, 1.5708, 0.0)
+metadata/fov = 42.0

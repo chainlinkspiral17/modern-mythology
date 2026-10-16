@@ -1,0 +1,240 @@
+{
+ "id": "town_meeting_pushback",
+ "notes": "Raised hands over the chair rows, the lectern holding.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 76,
+   "y_range": [
+    22,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    72,
+    18,
+    10,
+    6
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     72,
+     18
+    ],
+    [
+     82,
+     18
+    ],
+    [
+     82,
+     24
+    ],
+    [
+     72,
+     24
+    ],
+    [
+     72,
+     18
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    12,
+    21
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 12,
+   "y_range": [
+    38,
+    44
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    33
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    26,
+    35
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 26,
+   "y_range": [
+    38,
+    44
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    30,
+    33
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    40,
+    49
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 40,
+   "y_range": [
+    38,
+    44
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    44,
+    33
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    54,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 54,
+   "y_range": [
+    38,
+    44
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    58,
+    33
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 18,
+   "y_range": [
+    24,
+    31
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    18,
+    23
+   ],
+   "size": 1,
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 46,
+   "y_range": [
+    24,
+    31
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    46,
+    23
+   ],
+   "size": 1,
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 60,
+   "y_range": [
+    24,
+    31
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    60,
+    23
+   ],
+   "size": 1,
+   "color": 4
+  }
+ ]
+}

@@ -1,735 +1,454 @@
-"""Kowalski Kitchen — the Kowalski house, a Harmony Creek Estates
-tract cul-de-sac — vol6 hero locale (7 VN bg refs, all vol6:
-vol6_ch8_kowalski_kitchen "Anita's Kitchen", vol6_ch13_home "The
-Chart", vol6_ch19_depthchart, vol6_ch19_chains x3 bg cuts,
-vol6_ch23_sleep Sunday dinner).
+"""Kowalski Kitchen — vol6 placement script.
 
-Bill (51, water-plant operator), Anita (night-shift nurse), Ben (17,
-TE-1) and Gracie (11) — plus Daisy the twelve-year-old golden and
-half of Mister the cat. THE REGISTER: a shift-work engine room. The
-same tract bones as the Miller and Caldwell kitchens (HCE repeats
-its floor plan), but this one runs on a schedule — coffee always on
-at somebody's 4 AM, white appliances wiped down, steel hardware,
-nothing renovated and nothing broken. Canon baked in:
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3, 7 placements): a
+gooseneck faucet with its handle, burners, knobs and an oven bar on the
+stove, the pendant as canopy + cord + shade + bulb, the fridge's handle
+as a pull with a photo under a magnet, salt and pepper as shakers; the
+kitchen's first WEAR (paths, the chairs' patches, the counter's edge,
+the drip line, the fridge's hand patch, Daisy's spot and her hair on
+the couch); D3 (two switches, outlets, cords from the TV, the coffee
+maker and the fridge); D5 (the backyard through the sink window, the
+neighbour's yard and mower through the east one). The .tscn's overhead
+practical becomes the pendant's bulb and the under-cabinet light
+Anita sits by gets its own.
 
-  · vol6_ch8_kowalski_kitchen:26-27 — interlude "Anita's Kitchen /
-    Sunday — 09:18": the wall clock over the window is frozen at
-    9:18, the one hour the whole family is in the room.
-  · vol6_ch8_kowalski_kitchen:64 — the full-kitchen blocking, kept:
-    Bill AT THE STOVE cooking eggs (the steel skillet with two eggs
-    on the front burner; ":148 two eggs over-easy, two pieces of
-    toast" — the toaster), Anita AT THE TABLE in scrubs drinking
-    coffee (her mug at the north chair), Gracie AT THE COUNTER
-    eating cereal (bowl + spoon + box in the corner by the fridge),
-    Daisy UNDER THE TABLE (floor there left clear — see negatives).
-  · vol6_ch8_kowalski_kitchen:153 — "Hot sauce is in the cabinet to
-    the LEFT of the stove": the Upper_HotSauce cabinet west of the
-    hood bay. The bottle is IN the cabinet, so it is not modeled.
-  · vol6_ch13_home:54-58 / vol6_ch19_depthchart:182 — Bill at the
-    table with the Sentinel, "doing the Friday crossword in pen":
-    folded Sentinel + crossword grid + Bill's pen at the west chair.
-  · vol6_ch13_home:44 — "He goes in through the garage": the garage
-    entry door in the WEST wall (steel, painted, closed), mat, and
-    the key rack beside it — three sets (Ben's Civic, Bill's truck,
-    Anita's car; the three vehicles of ch13:36-40).
-  · vol6_ch13_home:174-178 / ch19_depthchart:304 / ch19_chains:180 —
-    Ben's sandwich counter (three scenes): bread board, loaf,
-    plate + butter knife west of the sink. "He drinks two glasses
-    of water" — BOTH water glasses live in the drying rack.
-  · vol6_ch19_chains:950 — "the small under-cabinet light" Anita
-    sits inside at her 10:15-PM morning coffee: ONE warm strip under
-    the east upper (singular in canon — one strip only; the real
-    Light3D stays scene-side). Her coffee is constant across ch8
-    (09:18), ch19:152 (15:30) and ch19:950 (22:15) — the drip
-    coffee maker east of the sink is the room's engine.
-  · vol6_ch19_chains:520 — Anita helping Gracie with "the
-    second-to-last page of the sticker activity book": the book +
-    sticker sheet at Gracie's (south) place. vol6_ch23_sunday:238 —
-    GRACIE, STICKER QUEEN: her sticker cluster on the fridge door
-    at eleven-year-old height.
-  · vol6_ch23_sleep:369 — "I switched two shifts this week... I
-    have already done the schedule with Helen": Anita's shift grid
-    on the fridge with TWO red swap marks. ch23_sleep:357 + :363
-    ("Game Friday" / "We'll be there") — the red game-day mark on
-    the wall calendar.
-  · vol6_ch19_chains:628 — the cinnamon coffee cake Bianca sent
-    over (the same foil-wrapped loaf baked into the Miller counter,
-    vol6_ch17_table:1472) sits on this counter tonight — one house
-    to the other, same prop.
-  · vol6_ch7_hospital:296 — "dark except for the kitchen light":
-    THE kitchen light is one house dome fixture over the table.
-  · Exterior (through the window): the window is the one Gracie
-    hears Bill through, "yelling about the weeds"
-    (vol6_ch19_chains:261) — so it faces the BACK yard: the lawn
-    Bill does at five before the heat (ch19_chains:934), mowed in
-    stripes but browning at the edges (three weeks of heat,
-    ch13_home:178), THE WEEDS in a ragged line at the privacy
-    fence, THE PECAN TREE (vol6_ch23_sunday:238) filling the upper
-    panes, the hose reel on the siding, the attached garage wing
-    west (ch13:44), a neighbor roofline beyond the fence.
-    Siding = build_harmony_district COL_HOUSE_BODY_B tan — same
-    tract, different paint run than the Millers' cream.
-
-Canon-NEGATIVES honored (what this kitchen does NOT have):
-  · NO commercial fluorescents, NO drop-tile grid, NO crown molding
-    — the scaffold's tube fixtures + crown were Kwik Stop
-    vocabulary (same lesson as the Caldwell/Maya passes); house
-    fixtures only.
-  · NO transparency: the scaffold's alpha-0.55 window glass is
-    gone. The window is a REAL OPENING (playbook rule), moved from
-    the scaffold's east wall to the north wall over the sink —
-    canon has ONE "kitchen window" (ch19_chains:261).
-  · NO Daisy / NO Mister modeled — living characters, not props
-    (Daisy's under-table floor is left clear; her feed station sits
-    by the garage door instead). Mister sleeps UPSTAIRS at Ben's
-    feet (ch19_chains:1046) — no cat dish baked (unspecified).
-  · NO landline wall phone, no Cuisinart, no press pot, no peach
-    preserves, no cast-iron styling — Miller-kitchen canon, not
-    imported. The Kowalski egg pan is plain steel.
-  · NO radio (the windowsill/shortwave radios are Ramos and
-    Caldwell canon), no kettle ("the kettle is on" is the CALDWELL
-    passphrase), NO SOUP POT — the soup is Linda Caldwell's and
-    lives at her house ("the soup is everybody's now,"
-    ch19_chains:987, but the POT is hers; Ben carries servings).
-  · No dishwasher — never named for this house (Miller's is cited
-    canon; this one isn't): the drying rack does the dishes.
-  · No wine bottle/glass baked — Anita's red is the SUNDAY-night
-    glass only (ch23_sleep:310), not a fixture; the constant is
-    coffee.
-  · No folding table under the pecan tree — it lives IN THE GARAGE
-    except on ceremony Sunday (vol6_ch23_sunday:238).
-  · No Pit Stop artifacts — the Pit Stop is Ben's workplace
-    (suburban_blight.md:13), not this room's vocabulary.
-
-NAME-DEPENDENCY FLAG: the household is exactly four — Ben, Gracie,
-Bill, Anita (vol6_ch20_prints "the Kowalski house is dark" roster)
-— so the table seats FOUR. "Brent Kowalski" (vol6_ch13_two_a_days:98,
-"the team's center"; vol6_ch22_vinton:302 calls the same Brent "the
-senior quarterback" — internal position drift) shares the surname
-but is NOT in this household: no fifth place is set. "Coach K" is
-Kazantzakis, not Kowalski (ch19_chains:645 disambiguates the
-Eileens the same way). The ch8 title "Anita's Kitchen" names usage,
-not separate ownership.
-
-Shell footprint kept from the scaffold (6 x 5, CEIL 2.6, gap
-x -1..+1 in the south wall = the hall doorway the Background3D
-camera preset (0, 2.30, +0.5 / yaw 180 / fov 60) shoots through).
-Stage-north = the BACK of the house (driveway / street / Bill's
-Friday truck parking are out front, unmodeled).
+DRAFT 5 (2026-10-09, the overnight run; CLAUDE.md "build big"). A 6 x 5
+box held the kitchen run, the table, the fridge, the couch, the TV and a
+stair: the couch stood a chair-width from the table and the TV hung on
+the kitchen's E wall. The Kowalskis' kitchen opens onto a FAMILY ROOM
+(vol6 ch13/19: "Bill is at the kitchen table with the Sentinel"; "sat
+with the dog, watched five minutes of the noon news"; "He goes in
+through the garage"; his mother asleep "by the angle of the bedroom
+door from the hallway"). 10.0 x 6.4 now:
+  - the KITCHEN, E half: the run on the N wall (the kit, laid out on
+    the new wall with the sink under the back-yard window and the hot
+    sauce cabinet left of the stove), the table under its pendant, the
+    fridge and the E window (moved rigidly, plan.shifted);
+  - the FAMILY ROOM, W half: the couch along the W wall with Daisy on
+    it, the TV on a low stand facing it with the noon news on, a coffee
+    table, a floor lamp, the calendar;
+  - the S wall: the garage door (Ben's way in) and the hall opening, the
+    hall beyond with the bedroom door shut (night-shift sleep).
+The stair mouth is gone: nothing in the prose climbs a stair here.
+Draft 6 targets (were draft 5's): the upper cabinet doors with pulls and one ajar; the
+dish rack's dishes; the stair treads with risers and a runner; the TV
+on a stand with its cord; the couch's throw; Deck: the ch19 establish
+under the under-cabinet light alone.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_table, make_chair
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
-from _props.decor import make_wall_clock, make_calendar
-from _props.safety import make_smoke_detector, make_hvac_vent
+from _props.geometry import make_blob   # module-level: plan.shifted moves it (2026-10-09)
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.shelving import make_snack_aisle, make_endcap
+from _props.food_service import make_coffee_pots, make_donut_display
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
+from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
-# ── Shell (footprint kept from the scaffold — camera-safe) ───────
-ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.6
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
+ROOM_W = 10.0; ROOM_D = 6.4; CEIL = 2.6   # draft 5 (2026-10-09): was 6.0 x 5.0
+PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
+COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
+COL_ACCENT = (0.62, 0.42, 0.22, 1.0)
+# the kitchen on the kit (2026-10-07): the Kowalskis' honey maple and
+# butcher-block laminate; the counter stays at the 0.92 every dressing
+# prop already stands on
+from _props import kitchen_kit as K
+Y_BACK = ROOM_D - 0.10
+TOP_Z = 0.92
+# the kitchen run spans the E 5.8 m of the N wall (draft 5)
+KX0, KX1 = -0.90, ROOM_W/2.0 - 0.10
+SINK_X, RANGE_X = 0.50, 3.50
+HOT_X0 = RANGE_X - 0.42 - 0.46        # the hot sauce cabinet's left edge
+MAPLE = (0.58, 0.44, 0.28, 1.0); MAPLE_DK = (0.46, 0.34, 0.22, 1.0)
+BLOCK = (0.66, 0.50, 0.32, 1.0); BLOCK_EDGE = (0.50, 0.36, 0.22, 1.0)
+PEWTER = (0.48, 0.48, 0.46, 1.0); BISCUIT = (0.90, 0.84, 0.72, 1.0)
 
-# ── Kowalski house palette — HCE tract bones, this family's paint.
-# Siding matches build_harmony_district COL_HOUSE_BODY_B (tan) /
-# COL_HOUSE_ROOF_A so the house reads as the tan tract model from
-# the street grid (Millers = cream A; one subdivision, two runs).
-KOWALSKI_INT_WALL  = (0.92, 0.86, 0.74, 1.0)   # scaffold eggshell, kept
-KOWALSKI_BASEBOARD = (0.42, 0.32, 0.22, 1.0)   # scaffold, kept
-KOWALSKI_TRIM      = (0.93, 0.91, 0.85, 1.0)   # builder-white trim
-KOWALSKI_SIDING    = (0.72, 0.66, 0.56, 1.0)   # HOUSE_BODY_B tan
-KOWALSKI_ROOF      = (0.32, 0.26, 0.22, 1.0)   # dark shingle
-COL_SIDING_SEAM = (0.58, 0.53, 0.44, 1.0)      # lap shadow lines
-# Interior register: cabinets Bill repainted white one off-season,
-# steel hardware (no brass — Miller/Caldwell have the brass), white
-# appliances, warm wheat laminate (scaffold formica tone, kept).
-COL_CABINET     = (0.88, 0.86, 0.80, 1.0)   # painted-white fronts
-COL_CABINET_SH  = (0.66, 0.64, 0.58, 1.0)   # seams / shadow
-COL_LAMINATE    = (0.78, 0.66, 0.42, 1.0)   # wheat laminate (scaffold)
-COL_APPLIANCE   = (0.90, 0.90, 0.88, 1.0)   # white appliances
-COL_VINYL       = (0.74, 0.58, 0.38, 1.0)   # scaffold floor, kept
-COL_VINYL_SEAM  = (0.42, 0.30, 0.18, 1.0)
-COL_WOOD        = (0.46, 0.34, 0.22, 1.0)   # the dinette set (scaffold)
-COL_WOOD_DK     = (0.30, 0.22, 0.14, 1.0)
-COL_STEEL_DK    = (0.44, 0.46, 0.48, 1.0)
-COL_VALANCE     = (0.30, 0.36, 0.50, 1.0)   # plain navy valance
-COL_GLOW_WARM   = (0.99, 0.90, 0.66, 1.0)   # THE under-cabinet strip
-COL_CERAMIC     = (0.92, 0.90, 0.84, 1.0)
-COL_COFFEE      = (0.30, 0.20, 0.12, 1.0)
-COL_DOOR_STEEL  = (0.78, 0.76, 0.72, 1.0)   # garage entry door paint
-COL_NAVY_CAP    = (0.22, 0.28, 0.42, 1.0)   # Ben's ball cap
-# Back yard, late-August, Bill-maintained:
-COL_LAWN        = (0.38, 0.46, 0.24, 1.0)   # kept green (the 5 AM lawn)
-COL_LAWN_STRIPE = (0.43, 0.50, 0.27, 1.0)   # mow stripes
-COL_LAWN_BROWN  = (0.55, 0.50, 0.30, 1.0)   # heat-browned edges
-COL_WEED        = (0.52, 0.55, 0.28, 1.0)   # THE weeds (ch19:261)
-COL_WEED_DK     = (0.44, 0.48, 0.24, 1.0)
-COL_FENCE       = (0.55, 0.47, 0.36, 1.0)   # privacy fence, daylight
-COL_FENCE_SEAM  = (0.40, 0.33, 0.25, 1.0)
-COL_TRUNK       = (0.34, 0.27, 0.20, 1.0)   # pecan bark
-COL_PECAN_LEAF  = (0.28, 0.38, 0.21, 1.0)
-COL_PECAN_LEAF2 = (0.24, 0.33, 0.18, 1.0)
-COL_NEIGHBOR    = (0.62, 0.58, 0.62, 1.0)   # HOUSE_BODY_C grey-blue
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
-PAL_WALL = {"wall": KOWALSKI_INT_WALL, "baseboard": KOWALSKI_BASEBOARD}
-
-GRADE_Z = -0.40           # back-yard grade outside the window
-WIN_W = 1.60              # window opening x -0.80..+0.80
-WIN_SILL = 0.95
-WIN_HEAD = 2.15
-
-_DIRS = {'N': (0.0, 1.0), 'S': (0.0, -1.0), 'E': (1.0, 0.0), 'W': (-1.0, 0.0)}
-
-
-def _kowalski_chair(prefix, cx, cy, facing):
-    """The Kowalskis' dinette chair — FOUR at the table, one per
-    Kowalski (household of four; see name flag — no fifth)."""
-    dx, dy = _DIRS[facing]
-    make_box(f"{prefix}_Seat", (cx, cy, 0.45), (0.42, 0.42, 0.045), COL_WOOD)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"{prefix}_Leg_{li}", (cx + sx * 0.17, cy + sy * 0.17, 0.225),
-                 0.019, 0.45, COL_WOOD_DK)
-    bx, by = cx - dx * 0.20, cy - dy * 0.20
-    for pi, sgn in enumerate((-1, +1)):
-        px = bx + (sgn * 0.17 if dx == 0 else 0.0)
-        py = by + (sgn * 0.17 if dy == 0 else 0.0)
-        make_cyl(f"{prefix}_Post_{pi}", (px, py, 0.70), 0.017, 0.50, COL_WOOD)
-    slat = (0.38, 0.032, 0.085) if dx == 0 else (0.032, 0.38, 0.085)
-    for si, sz in enumerate((0.74, 0.90)):
-        make_box(f"{prefix}_Slat_{si}", (bx, by, sz), slat, COL_WOOD)
-
-
-# ═════════════════════════════════════════════════════════════════
-# SHELL — vinyl floor, eggshell walls, flat drywall ceiling (house,
-# not store: no grid, no stains, NO crown molding — the scaffold's
-# crown was commercial vocabulary and is gone), the hall doorway
-# casing in the scaffold gap, REAL window opening in the north
-# (back) wall.
-# ═════════════════════════════════════════════════════════════════
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
-               size_y=ROOM_D + 0.4, palette={"vinyl": COL_VINYL, "seam": COL_VINYL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
-    # North wall — window opening x -0.80..+0.80, sill 0.95, head 2.15
-    seg_len = (ROOM_W / 2.0 - WIN_W / 2.0) + 0.20     # 2.40
-    seg_cx = WIN_W / 2.0 + seg_len / 2.0              # 2.00
-    make_wall("Wall_N_W", (-seg_cx, ROOM_D, 0), length=seg_len, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_E", (+seg_cx, ROOM_D, 0), length=seg_len, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_box("Wall_N_SillFill", (0.0, ROOM_D, WIN_SILL / 2.0), (WIN_W, 0.20, WIN_SILL),
-             KOWALSKI_INT_WALL)
-    make_box("Wall_N_HeadFill", (0.0, ROOM_D, (WIN_HEAD + CEIL) / 2.0),
-             (WIN_W, 0.20, CEIL - WIN_HEAD), KOWALSKI_INT_WALL)
-    # South wall — scaffold hall gap x -1..+1 kept (camera doorway;
-    # beyond it the hall, the couch and the noon news, ch13:178)
-    make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0), length=ROOM_W / 2.0 - 1.0,
-              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.5), 0.0, 0), length=ROOM_W / 2.0 - 1.0,
-              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.30), (2.0, 0.20, 0.60),
-             KOWALSKI_INT_WALL)
-    for sgn in (-1, +1):
-        make_box(f"HallDoor_Jamb_{sgn:+d}", (sgn * 1.03, 0.0, 1.00), (0.10, 0.26, 2.00),
-                 KOWALSKI_TRIM)
-    make_box("HallDoor_Head", (0.0, 0.0, 2.05), (2.26, 0.26, 0.10), KOWALSKI_TRIM)
-    # Flat drywall ceiling — no grid, no stains (Bill patches things)
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
-                 size_y=ROOM_D + 0.4, palette={"tile": (0.93, 0.91, 0.85, 1.0)},
-                 with_grid=False, with_stains=False)
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(3.0 + SH_TF[1], 1.550, 1.500, 1.100)])
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
+                            palette=PAL_WALL, baseboard_face_sign=-1, openings=[(SINK_X, 1.52, 1.50, 1.00), (-3.0, 1.52, 1.60, 1.10)])
+    # the S wall: the hall opening W, the garage door E
+    make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1,
+                            openings=[HALL_OPEN, GARAGE_DOOR])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
+    for nm, ax, length, wx, wy in [
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10),
+            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
+def build_counter():
+    """The N run on the kitchen kit (2026-10-07). It was a store counter
+    (make_counter) with a chamfered box for a stove, and the upper
+    cabinets ran ACROSS the sink window — the back yard Gracie's dad
+    yells about the weeds in was half behind a cabinet. Now: base
+    cabinets wall to wall, the sink under the window, the range where
+    Bill cooks the eggs, uppers either side of the window — "hot sauce
+    is in the cabinet to the left of the stove" — and the under-cabinet
+    light Anita sits by under the run left of the stove."""
+    K.base_run("Counter", KX0, KX1, Y_BACK, top_z=TOP_Z,
+               body=MAPLE, top=BLOCK, edge=BLOCK_EDGE, pull=PEWTER, rail=MAPLE_DK,
+               gaps=[(RANGE_X - 0.38, RANGE_X + 0.38)])
+    K.sink("Sink", SINK_X, Y_BACK, TOP_Z)
+    K.range_("Stove", RANGE_X, Y_BACK, TOP_Z)
+    for nm, a, b in (("Upper_W", KX0, SINK_X - 0.86),
+                     ("Upper_Mid", SINK_X + 0.86, HOT_X0),
+                     ("Upper_E", RANGE_X + 0.42, KX1)):
+        K.upper_run(nm, a, b, Y_BACK, z0=1.46, z1=2.20, body=MAPLE, pull=PEWTER, rail=MAPLE_DK)
+    # THE HOT SAUCE CABINET (draft 5's "one upper door ajar"): the last
+    # upper left of the stove, open — "Hot sauce is in the cabinet to the
+    # left of the stove if you want it" (ch8) — a shell, its shelf, the
+    # bottle and its neighbours, the door swung 70 degrees
+    from _props.structure import make_case_shell
+    from _props.geometry import make_rot_box
+    hx0, hx1 = HOT_X0, RANGE_X - 0.42
+    hxc, hw = (hx0 + hx1) / 2.0, hx1 - hx0
+    make_case_shell("HotSauce_Cab", (hxc, Y_BACK - 0.17, 1.83), (hw, 0.34, 0.74), MAPLE, open_face='-Y')
+    make_box("HotSauce_Cab_Shelf", (hxc, Y_BACK - 0.17, 1.83), (hw - 0.04, 0.30, 0.018), MAPLE_DK)
+    make_box("HotSauce_Cab_Crown", (hxc, Y_BACK - 0.33, 2.23), (hw + 0.02, 0.05, 0.06), MAPLE)
+    for bi, (bx, col, ht) in enumerate(((-0.11, (0.78, 0.14, 0.10, 1.0), 0.16), (0.0, (0.86, 0.66, 0.20, 1.0), 0.22),
+                                         (0.11, (0.30, 0.22, 0.16, 1.0), 0.19))):
+        nm = "HotSauce_Bottle" if bi == 0 else f"HotSauce_Cab_Jar_{bi}"
+        make_cyl(nm, (hxc + bx, Y_BACK - 0.20, 1.839 + ht / 2.0), 0.028, ht, col, segments=8)
+        make_cyl(f"{nm}_Cap", (hxc + bx, Y_BACK - 0.20, 1.839 + ht + 0.012), 0.016 if bi == 0 else 0.03, 0.024,
+                 (0.94, 0.92, 0.86, 1.0) if bi == 0 else (0.20, 0.20, 0.22, 1.0), segments=8)
+    for bi, bx in enumerate((-0.10, 0.06)):
+        make_cyl(f"HotSauce_Cab_Can_{bi}", (hxc + bx, Y_BACK - 0.18, 1.48 + 0.06), 0.035, 0.12, (0.62, 0.20, 0.16, 1.0), segments=8)
+    # the door, hinged on the cabinet's LEFT edge, swung 70 degrees out
+    import math
+    sw = math.radians(70.0)                  # the swing, out into the room
+    dw = hw - 0.012
+    make_rot_box("HotSauce_Cab_Door", (hx0 + math.cos(sw) * dw / 2.0, Y_BACK - 0.34 - math.sin(sw) * dw / 2.0, 1.83),
+                 (dw, 0.018, 0.72), MAPLE, yaw=-sw)
+    for nm, a, b in (("Splash_W", KX0, SINK_X - 0.86), ("Splash_E", SINK_X + 0.86, KX1)):
+        K.backsplash(nm, a, b, Y_BACK, TOP_Z, 1.44, tile=BISCUIT, grout=(0.76, 0.70, 0.58, 1.0))
 
-# ═════════════════════════════════════════════════════════════════
-# WINDOW — THE kitchen window (singular, ch19_chains:261 — the one
-# Gracie hears Bill through when he's out at the weeds). Real
-# opening over the sink: painted double-hung frame, meeting rail,
-# muntins, casing, stool, apron. Dressing is one plain navy valance
-# — nobody in this house irons curtains. The clock above is frozen
-# at 9:18 — the Sunday-breakfast hour the whole family holds the
-# room at once (vol6_ch8 interlude, "Sunday — 09:18").
-# ═════════════════════════════════════════════════════════════════
+def build_table():
+    tx, ty = 0.0, ROOM_D/2.0
+    # DETAIL DRAFT 3 (2026-09-06): the table and its four chairs through the
+    # furniture kit — turned legs, aprons, a stretcher; spindled chair backs
+    # turned away from the table. Names keep Table_Top / Chair_N_Seat.
+    make_table("Table", tx, ty, w=1.20, d=0.80, h=0.76, wood=COL_WOOD)
+    for ci, (cx, cy, yaw) in enumerate([(tx-0.80, ty, -1.5708), (tx+0.80, ty, 1.5708), (tx, ty-0.62, 0.0), (tx, ty+0.62, 3.1416)]):
+        make_chair(f"Chair_{ci}", cx, cy, yaw=yaw, wood=COL_WOOD)
+
+def build_clock():
+    make_wall_clock("Clock", (2.0, ROOM_D - 0.10, CEIL-0.22), frozen_hour=8, frozen_min=15, facing='-Y')
+
 def build_window():
-    wy = ROOM_D
-    make_box("Win_FrameT", (0.0, wy, WIN_HEAD - 0.03), (WIN_W, 0.14, 0.06),
-             KOWALSKI_TRIM)
-    make_box("Win_FrameB", (0.0, wy, WIN_SILL + 0.03), (WIN_W, 0.14, 0.06),
-             KOWALSKI_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"Win_Jamb_{sgn:+d}", (sgn * (WIN_W / 2.0 - 0.03), wy, 1.55),
-                 (0.06, 0.14, 1.20), KOWALSKI_TRIM)
-    make_box("Win_MeetingRail", (0.0, wy, 1.56), (WIN_W - 0.08, 0.10, 0.06),
-             KOWALSKI_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"Win_Muntin_{sgn:+d}", (sgn * 0.27, wy - 0.02, 1.86),
-                 (0.035, 0.06, 0.54), KOWALSKI_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"Win_Casing_{sgn:+d}", (sgn * (WIN_W / 2.0 + 0.09), wy - 0.105, 1.55),
-                 (0.10, 0.05, 1.40), KOWALSKI_TRIM)
-    make_box("Win_CasingHead", (0.0, wy - 0.105, WIN_HEAD + 0.08),
-             (WIN_W + 0.28, 0.05, 0.10), KOWALSKI_TRIM)
-    make_box("Win_Stool", (0.0, wy - 0.135, WIN_SILL + 0.02), (WIN_W + 0.30, 0.16, 0.04),
-             KOWALSKI_TRIM)
-    make_box("Win_Apron", (0.0, wy - 0.105, WIN_SILL - 0.05), (WIN_W + 0.16, 0.05, 0.09),
-             KOWALSKI_TRIM)
-    # The navy valance on a steel rod — the room's one soft good
-    make_cyl("Valance_Rod", (0.0, wy - 0.16, 2.28), 0.012, 1.98, P.METAL_STEEL,
-             axis='X', segments=8)
-    make_box("Valance", (0.0, wy - 0.155, 2.13), (1.86, 0.028, 0.24), COL_VALANCE)
-    make_box("Valance_Fold", (0.30, wy - 0.172, 2.11), (0.14, 0.014, 0.20),
-             (0.24, 0.30, 0.43, 1.0))
-    # Frozen at 9:18 — the ch8 family-breakfast minute
-    make_wall_clock("Clock", (0.0, wy - 0.14, 2.42), frozen_hour=9, frozen_min=18)
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_frame_ring("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
+    make_box("Window_E_Glass", (ROOM_W/2.0-0.1425, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
+
+def build_ceiling_infra():
+    # Family kitchen: flush dome + over-table pendant, no shop tubes
+    make_lathe("Table_Pendant_Canopy", (0.0, ROOM_D/2.0, CEIL-0.03), [(0.06, 0.0), (0.06, 0.02), (0.02, 0.03), (0.0, 0.03)], P.METAL_BLACK, segments=8)
+    make_tube("Table_Pendant_Cord", [(0.0, ROOM_D/2.0, CEIL-0.03), (0.0, ROOM_D/2.0, CEIL-0.30)], 0.005, P.METAL_BLACK, segments=4)
+    make_lathe("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.46), [(0.17, 0.0), (0.16, 0.02), (0.06, 0.14), (0.025, 0.16), (0.0, 0.16)], (0.62, 0.46, 0.28, 1.0), segments=12)
+    make_lathe("Table_Pendant_Bulb", (0.0, ROOM_D/2.0, CEIL-0.48), [(0.0, 0.0), (0.03, 0.01), (0.032, 0.04), (0.02, 0.06), (0.0, 0.07)], (0.98, 0.94, 0.80, 1.0), segments=8)
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
 
 
-# ═════════════════════════════════════════════════════════════════
-# COUNTER RUN — white-painted base + upper cabinets (steel D-pulls,
-# not brass), wheat laminate. West to east: range with THE EGG
-# SKILLET (Bill's Sunday eggs, ch8:64/:148) under the hood — the
-# HOT-SAUCE CABINET is the upper immediately LEFT of the stove
-# (ch8:153, bottle inside, unmodeled); the toaster (the toast,
-# ch8:148); Bianca's foil-wrapped cinnamon coffee cake
-# (ch19_chains:628 — the same loaf the Miller build carries); BEN'S
-# SANDWICH STATION (bread board, loaf, plate, knife —
-# ch13:174/ch19_depthchart:304/ch19_chains:180); the sink under the
-# window; the drip coffee maker (Anita's constant, ch8/ch19 x3);
-# the drying rack with the TWO WATER GLASSES (ch13:178); Gracie's
-# cereal corner by the fridge (ch8:64). ONE under-cabinet light
-# strip — canon is singular (ch19_chains:950).
-# ═════════════════════════════════════════════════════════════════
-def build_counter_run():
-    # Base cabinets: x -2.9..+1.3, front face y ~5.41
-    make_box("Base_Body", (-0.80, 4.7, 0.445), (4.20, 0.58, 0.79), COL_CABINET)
-    make_box("Base_Kick", (-0.80, 4.44, 0.05), (4.10, 0.03, 0.10), COL_CABINET_SH)
-    make_box("Counter_Top", (-0.80, 4.69, 0.89), (4.27, 0.66, 0.04), COL_LAMINATE)
-    make_box("Counter_Edge", (-0.80, 4.375, 0.89), (4.27, 0.03, 0.04), COL_CABINET_SH)
-    make_box("Backsplash", (-0.80, 4.885, 1.00), (4.20, 0.03, 0.18), COL_LAMINATE)
-    # Door + drawer fronts — steel D-pulls (skip the range bay)
-    doors = [(-2.68, 0.42), (-1.30, 0.50), (-0.44, 0.40), (0.02, 0.40),
-             (0.56, 0.44), (1.06, 0.42)]
-    for di, (dx, dw) in enumerate(doors):
-        make_box(f"Base_Door_{di}", (dx, 5.415, 0.40), (dw - 0.04, 0.02, 0.54),
-                 COL_CABINET)
-        make_box(f"Base_Pull_{di}", (dx + dw / 2.0 - 0.07, 5.40, 0.60),
-                 (0.016, 0.02, 0.09), P.METAL_STEEL)
-        if abs(dx + 0.2) > 0.7:   # drawers everywhere except the sink bay
-            make_box(f"Base_Drawer_{di}", (dx, 5.415, 0.775), (dw - 0.04, 0.02, 0.14),
-                     COL_CABINET)
-            make_box(f"Base_DrawerPull_{di}", (dx, 5.40, 0.775), (0.09, 0.02, 0.016),
-                     P.METAL_STEEL)
-    # Upper cabinets — hood bay x -2.43..-1.67 left clear (the
-    # Gas & Go interpenetration lesson). Upper_HotSauce is THE
-    # cabinet to the left of the stove (ch8:153).
-    uppers = [("HotSauce", -2.70, 0.44, 1.90, 0.76), ("W1", -1.28, 0.72, 1.90, 0.76),
-              ("E0", 1.18, 0.88, 1.90, 0.76)]
-    for nm, ux, uw, uz, uh in uppers:
-        make_box(f"Upper_{nm}", (ux, 5.835, uz), (uw, 0.33, uh), COL_CABINET)
-        make_box(f"Upper_{nm}_Seam", (ux, 5.665, uz), (0.012, 0.012, uh - 0.06),
-                 COL_CABINET_SH)
-        make_box(f"Upper_{nm}_Pull", (ux - 0.07, 5.66, uz - uh / 2.0 + 0.10),
-                 (0.016, 0.02, 0.09), P.METAL_STEEL)
-    # THE under-cabinet light — ONE strip, under the east upper,
-    # over the coffee corner (ch19_chains:950; Light3D scene-side)
-    make_box("UnderCabLight", (1.18, 4.7, 1.505), (0.84, 0.05, 0.028), COL_GLOW_WARM)
-    # Sink under the window + faucet + dish soap
-    make_box("Sink_Rim", (0.0, 4.7, 0.925), (0.82, 0.52, 0.02), P.METAL_STEEL)
-    make_box("Sink_Basin", (0.0, 4.7, 0.83), (0.70, 0.42, 0.17), P.METAL_STEEL,
-             open_faces={'+Z'})
-    make_box("Sink_BasinFloor", (0.0, 4.7, 0.752), (0.66, 0.38, 0.012), COL_STEEL_DK)
-    make_cyl("Faucet_Base", (0.0, 4.92, 0.955), 0.030, 0.04, P.METAL_STEEL)
-    make_cyl("Faucet_Riser", (0.0, 4.92, 1.06), 0.016, 0.20, P.METAL_STEEL)
-    make_cyl("Faucet_Spout", (0.0, 4.82, 1.15), 0.014, 0.22, P.METAL_STEEL, axis='Y')
-    make_box("Faucet_Handle", (0.10, 4.92, 1.17), (0.08, 0.02, 0.02), P.METAL_STEEL)
-    make_cyl("DishSoap", (0.34, 4.9, 0.985), 0.022, 0.13, (0.72, 0.60, 0.30, 1.0))
-    # Range west — Bill's station (ch8:64) + the steel egg skillet
-    # with two eggs over-easy (ch8:148). Plain steel, NOT cast iron
-    # (cast iron is the Miller Friday-roast pan).
-    make_box("Range_Body", (-2.05, 4.67, 0.45), (0.76, 0.64, 0.90), COL_APPLIANCE)
-    make_box("Range_Cooktop", (-2.05, 4.67, 0.915), (0.76, 0.64, 0.02), P.METAL_BLACK)
-    for bi, (bx, by) in enumerate([(-0.19, -0.16), (0.19, -0.16), (-0.19, 0.16),
-                                   (0.19, 0.16)]):
-        make_cyl(f"Range_Burner_{bi}", (-2.05 + bx, 5.67 + by, 0.930), 0.085, 0.010,
-                 (0.12, 0.11, 0.10, 1.0), segments=10)
-    make_box("Range_Backguard", (-2.05, 4.955, 0.98), (0.76, 0.05, 0.12), COL_APPLIANCE)
-    for ki in range(4):
-        make_cyl(f"Range_Knob_{ki}", (-2.29 + ki * 0.16, 5.925, 0.99), 0.018, 0.025,
-                 P.METAL_BLACK, axis='Y')
-    make_box("Range_OvenDoor", (-2.05, 4.345, 0.46), (0.70, 0.02, 0.52), COL_APPLIANCE)
-    make_box("Range_OvenWindow", (-2.05, 4.335, 0.50), (0.42, 0.012, 0.22),
-             P.METAL_BLACK)
-    make_box("Range_OvenHandle", (-2.05, 4.33, 0.76), (0.72, 0.03, 0.03), P.METAL_STEEL)
-    make_box("Hood_Body", (-2.05, 4.77, 1.96), (0.76, 0.44, 0.14), COL_APPLIANCE)
-    make_box("Hood_Lip", (-2.05, 4.56, 1.90), (0.76, 0.03, 0.05), P.METAL_STEEL)
-    make_cyl("EggSkillet_Pan", (-2.24, 4.51, 0.955), 0.130, 0.05, (0.30, 0.30, 0.32, 1.0),
-             segments=12)
-    make_box("EggSkillet_Handle", (-2.24, 4.32, 0.965), (0.032, 0.18, 0.024),
-             (0.20, 0.20, 0.22, 1.0))
-    for ei, (ex, ey) in enumerate([(-0.045, -0.035), (0.045, 0.045)]):
-        make_cyl(f"Egg_White_{ei}", (-2.24 + ex, 5.51 + ey, 0.985), 0.048, 0.012,
-                 (0.94, 0.93, 0.90, 1.0), segments=10)
-        make_cyl(f"Egg_Yolk_{ei}", (-2.24 + ex, 5.51 + ey, 0.998), 0.018, 0.014,
-                 (0.92, 0.72, 0.20, 1.0), segments=8)
-    # The toaster (the two pieces of toast, ch8:148)
-    make_box("Toaster_Body", (-1.30, 4.78, 1.005), (0.26, 0.17, 0.19), P.METAL_STEEL)
-    for si, sy in enumerate((-0.035, +0.035)):
-        make_box(f"Toaster_Slot_{si}", (-1.30, 5.78 + sy, 1.102), (0.20, 0.025, 0.006),
-                 P.METAL_BLACK)
-    make_box("Toaster_Lever", (-1.155, 4.78, 1.05), (0.014, 0.03, 0.03), COL_STEEL_DK)
-    # Bianca's cinnamon coffee cake, foil-wrapped (ch19_chains:628 —
-    # the Miller loaf, vol6_ch17_table:1472, one house over)
-    make_box("CoffeeCake_Foil", (-0.94, 4.78, 0.955), (0.28, 0.14, 0.09),
-             (0.80, 0.81, 0.84, 1.0))
-    make_box("CoffeeCake_Seam", (-0.94, 4.78, 1.002), (0.24, 0.02, 0.008), COL_STEEL_DK)
-    # BEN'S SANDWICH STATION west of the sink (ch13:174,
-    # ch19_depthchart:304, ch19_chains:180 — he makes it with his
-    # back to the room, twice on the TE-1 Friday alone)
-    make_box("BreadBoard", (-0.60, 4.66, 0.918), (0.36, 0.28, 0.016), COL_WOOD)
-    make_box("BreadLoaf", (-0.66, 4.7, 0.985), (0.15, 0.22, 0.10),
-             (0.78, 0.62, 0.40, 1.0))
-    make_cyl("SandwichPlate", (-0.52, 4.64, 0.932), 0.078, 0.012, COL_CERAMIC,
-             segments=12)
-    make_box("ButterKnife_Blade", (-0.52, 4.79, 0.930), (0.022, 0.09, 0.006),
-             P.METAL_STEEL)
-    make_box("ButterKnife_Handle", (-0.52, 4.86, 0.932), (0.018, 0.05, 0.012),
-             COL_WOOD_DK)
-    # The drip coffee maker — the engine of the shift household
-    # (Anita's coffee: ch8:64 09:18, ch19_chains:152 15:30,
-    # ch19_chains:950 22:15). Plain black drip, not a Cuisinart.
-    make_box("CoffeeMaker_Body", (0.55, 4.82, 1.07), (0.22, 0.24, 0.32),
-             (0.22, 0.22, 0.24, 1.0))
-    make_box("CoffeeMaker_Basket", (0.55, 4.76, 1.20), (0.20, 0.26, 0.06),
-             (0.22, 0.22, 0.24, 1.0))
-    make_cyl("CoffeeMaker_Carafe", (0.55, 4.7, 0.99), 0.062, 0.15,
-             (0.74, 0.78, 0.76, 1.0), segments=12)
-    make_cyl("CoffeeMaker_Coffee", (0.55, 4.7, 0.955), 0.052, 0.07, COL_COFFEE,
-             segments=12)
-    make_box("CoffeeMaker_Switch", (0.55, 4.695, 1.14), (0.05, 0.012, 0.03),
-             (0.86, 0.42, 0.32, 1.0))
-    # Drying rack east of the sink — home of the TWO water glasses
-    # ("He drinks two glasses of water," ch13:178) + the supper plate
-    make_box("DryRack_Tray", (0.95, 4.72, 0.925), (0.32, 0.40, 0.015), KOWALSKI_TRIM)
-    for wi in range(4):
-        make_box(f"DryRack_Wire_{wi}", (0.83 + wi * 0.08, 5.72, 0.985),
-                 (0.010, 0.36, 0.09), P.METAL_STEEL)
-    make_cyl("WaterGlass_0", (0.88, 4.6, 0.99), 0.033, 0.115, (0.74, 0.78, 0.76, 1.0),
-             segments=10)
-    make_cyl("WaterGlass_1", (1.00, 4.8, 0.99), 0.033, 0.115, (0.74, 0.78, 0.76, 1.0),
-             segments=10)
-    make_cyl("DryRack_Plate", (0.95, 4.72, 1.03), 0.10, 0.014, COL_CERAMIC, axis='Y',
-             segments=12)
-    # Gracie's cereal corner by the fridge (ch8:64 — "at the counter
-    # eating cereal in her pajamas")
-    make_box("Cereal_Box", (1.24, 4.84, 1.06), (0.08, 0.20, 0.30), P.SNACK_TINTS[0])
-    make_box("Cereal_BoxFace", (1.24, 4.73, 1.09), (0.07, 0.006, 0.14),
-             (0.92, 0.86, 0.60, 1.0))
-    make_cyl("Cereal_Bowl", (1.20, 4.58, 0.94), 0.075, 0.055, COL_CERAMIC, segments=12)
-    make_cyl("Cereal_Milk", (1.20, 4.58, 0.965), 0.062, 0.010, (0.88, 0.82, 0.68, 1.0),
-             segments=10)
-    make_box("Cereal_Spoon", (1.31, 4.62, 0.925), (0.018, 0.11, 0.008), P.METAL_STEEL)
-
-
-# ═════════════════════════════════════════════════════════════════
-# FRIDGE — white top-freezer east of the counter. On the door, the
-# household's whole operating system: ANITA'S SHIFT GRID with the
-# two red swap marks ("I switched two shifts this week... the
-# schedule is set," ch23_sleep:369), GRACIE'S STICKER CLUSTER at
-# eleven-year-old height (STICKER QUEEN, vol6_ch23_sunday:238), the
-# HCE newsletter (subdivision-wide paper), magnets.
-# ═════════════════════════════════════════════════════════════════
 def build_fridge():
-    fx, fy = 2.35, 5.55
-    make_box("Fridge_Body", (fx, fy, 0.86), (0.82, 0.72, 1.72), COL_APPLIANCE)
-    make_box("Fridge_DoorSeam", (fx, fy - 0.365, 1.28), (0.80, 0.015, 0.03),
-             COL_STEEL_DK)
-    make_box("Fridge_HandleTop", (fx - 0.35, fy - 0.375, 1.46), (0.035, 0.035, 0.26),
-             COL_STEEL_DK)
-    make_box("Fridge_HandleBot", (fx - 0.35, fy - 0.375, 0.86), (0.035, 0.035, 0.50),
-             COL_STEEL_DK)
-    make_box("Fridge_Grille", (fx, fy - 0.365, 0.06), (0.78, 0.02, 0.10), COL_STEEL_DK)
-    # Anita's shift grid — done with Helen, set for the season; the
-    # TWO switched shifts are the two red marks (ch23_sleep:369)
-    make_box("Fridge_ShiftGrid", (fx - 0.15, fy - 0.373, 1.56), (0.16, 0.012, 0.20),
-             P.PAPER)
-    make_box("Fridge_ShiftGrid_Rule", (fx - 0.15, fy - 0.380, 1.63),
-             (0.14, 0.006, 0.012), COL_STEEL_DK)
-    for si, (sx, sz) in enumerate([(-0.04, 1.545), (0.045, 1.505)]):
-        make_box(f"Fridge_ShiftSwap_{si}", (fx - 0.15 + sx, fy - 0.381, sz),
-                 (0.026, 0.006, 0.026), (0.78, 0.18, 0.16, 1.0))
-    # The HCE newsletter — canon navy + cream, subdivision standard
-    make_box("Fridge_HCENews", (fx + 0.19, fy - 0.373, 1.58), (0.15, 0.012, 0.21),
-             P.BRAND_NAVY_HCE)
-    make_box("Fridge_HCENews_Head", (fx + 0.19, fy - 0.380, 1.655),
-             (0.13, 0.006, 0.04), P.BRAND_NAVY_TXT)
-    # Gracie's stickers — a ragged cluster at the height an
-    # eleven-year-old reaches (STICKER QUEEN, ch23_sunday:238)
-    for gi, (gx, gz) in enumerate([(-0.22, 1.18), (-0.13, 1.06), (-0.02, 1.14),
-                                   (0.08, 0.99), (0.18, 1.10), (0.26, 1.02)]):
-        make_box(f"Fridge_Sticker_{gi}", (fx + gx, fy - 0.376, gz),
-                 (0.028, 0.008, 0.028), P.SNACK_TINTS[gi % len(P.SNACK_TINTS)])
-    # Assorted magnets
-    for mi, (mx, mz) in enumerate([(-0.27, 1.70), (0.30, 1.40), (-0.05, 1.66),
-                                   (0.24, 1.32)]):
-        make_box(f"Fridge_Magnet_{mi}", (fx + mx, fy - 0.376, mz), (0.035, 0.008, 0.045),
-                 P.SNACK_TINTS[(mi + 2) % len(P.SNACK_TINTS)])
+    fx, fy = +ROOM_W/2.0 - 0.55, 1.0
+    make_chamfer_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.82, 0.82, 0.84, 1.0))
+    make_chamfer_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.82, 0.82, 0.84, 1.0))
+    make_chamfer_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.82, 0.82, 0.84, 1.0))
+    make_tube("Fridge_Handle", [(fx-0.36, fy-0.20, 1.05), (fx-0.40, fy-0.20, 1.05), (fx-0.40, fy-0.20, 1.55), (fx-0.36, fy-0.20, 1.55)], 0.012, P.METAL_STEEL, segments=6)
+    make_box("Fridge_Photo", (fx-0.362, fy+0.05, 1.42), (0.003, 0.10, 0.075), (0.72, 0.66, 0.58, 1.0))
+    make_cyl("Fridge_Magnet", (fx-0.365, fy+0.05, 1.465), 0.012, 0.004, (0.62, 0.20, 0.18, 1.0), axis='X', segments=8)
+
+def build_counter_dressing():
+    """The coffee maker left of the sink, the dish rack right of it."""
+    cw_x = SINK_X; cw_y = ROOM_D-0.45
+    make_coffee_pots("Coffee", (cw_x-1.0, cw_y+0.50, 0.94), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor (2026-09-25)
+    make_box("DishRack_Base", (cw_x+0.9, cw_y, TOP_Z+0.015), (0.34, 0.30, 0.03), P.METAL_STEEL)
+    for ti in range(5):
+        make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, TOP_Z+0.11), (0.01, 0.24, 0.16), P.METAL_STEEL)
 
 
-# ═════════════════════════════════════════════════════════════════
-# TABLE — four chairs, one per Kowalski (household of four — see
-# name flag; Brent Kowalski is not fed here). Long axis E-W.
-# Seat geography from the scenes: BILL west with the folded
-# Sentinel, the crossword and THE PEN (Friday crossword in pen,
-# ch13:54-58 / ch19_depthchart:182); ANITA north, facing the window,
-# her coffee mug (ch8:64, ch19_chains:152/:950, ch7_hospital:296 —
-# every hour of this family's clock finds her here); GRACIE south
-# with the sticker activity book + sheet (ch19_chains:520); BEN
-# east — his chair, though he mostly eats standing at the counter.
-# The floor under the table is DAISY'S and is left clear (ch8:64,
-# ch13:58).
-# ═════════════════════════════════════════════════════════════════
-def build_table_zone():
-    tx, ty = 0.15, 2.60
-    make_box("Table_Top", (tx, ty, 0.745), (1.30, 0.90, 0.045), COL_WOOD)
-    make_box("Table_Apron", (tx, ty, 0.685), (1.16, 0.78, 0.07), COL_WOOD)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_box(f"Table_Leg_{li}", (tx + sx * 0.56, ty + sy * 0.36, 0.34),
-                 (0.055, 0.055, 0.68), COL_WOOD_DK)
-    _kowalski_chair("Chair_Bill", tx - 0.93, ty, 'E')
-    _kowalski_chair("Chair_Ben", tx + 0.93, ty, 'W')
-    _kowalski_chair("Chair_Anita", tx, ty + 0.73, 'S')
-    _kowalski_chair("Chair_Gracie", tx, ty - 0.73, 'N')
-    top = 0.7675
-    # The Sentinel, folded to the Friday crossword, and Bill's pen
-    make_box("Sentinel", (tx - 0.38, ty + 0.06, top + 0.008), (0.30, 0.21, 0.016),
-             P.NEWSPRINT)
-    make_box("Sentinel_Masthead", (tx - 0.38, ty + 0.13, top + 0.018),
-             (0.26, 0.05, 0.004), (0.30, 0.28, 0.26, 1.0))
-    make_box("Crossword_Grid", (tx - 0.33, ty - 0.01, top + 0.018), (0.07, 0.07, 0.004),
-             (0.30, 0.28, 0.26, 1.0))
-    make_box("Bill_Pen", (tx - 0.22, ty - 0.06, top + 0.010), (0.012, 0.13, 0.012),
-             (0.16, 0.20, 0.34, 1.0))
-    # Gracie's sticker activity book + the sheet she's working
-    # (ch19_chains:520 — the second-to-last page)
-    make_box("StickerBook", (tx + 0.12, ty - 0.26, top + 0.009), (0.21, 0.27, 0.018),
-             (0.86, 0.55, 0.65, 1.0))
-    make_box("StickerBook_Spine", (tx + 0.015, ty - 0.26, top + 0.012),
-             (0.012, 0.27, 0.020), (0.66, 0.38, 0.48, 1.0))
-    make_box("StickerSheet", (tx + 0.36, ty - 0.20, top + 0.004), (0.13, 0.17, 0.004),
-             P.PAPER)
-    for pi, (px, pz_y) in enumerate([(-0.03, -0.04), (0.03, 0.01), (-0.01, 0.05)]):
-        make_box(f"Sticker_Dot_{pi}", (tx + 0.36 + px, ty - 0.20 + pz_y, top + 0.008),
-                 (0.022, 0.022, 0.003), P.SNACK_TINTS[(pi + 1) % len(P.SNACK_TINTS)])
-    # Anita's coffee mug at the north place
-    make_cyl("Mug_Anita", (tx - 0.02, ty + 0.28, top + 0.047), 0.038, 0.095,
-             COL_CERAMIC, segments=10)
-    make_cyl("Mug_Anita_Coffee", (tx - 0.02, ty + 0.28, top + 0.092), 0.030, 0.006,
-             COL_COFFEE, segments=10)
-    make_box("Mug_Anita_Handle", (tx + 0.028, ty + 0.28, top + 0.05),
-             (0.016, 0.014, 0.05), COL_CERAMIC)
-    # Salt + pepper + napkin holder
-    make_cyl("Salt", (tx + 0.44, ty + 0.06, top + 0.055), 0.020, 0.11, COL_CERAMIC,
-             segments=8)
-    make_cyl("Pepper", (tx + 0.51, ty + 0.12, top + 0.055), 0.020, 0.11,
-             (0.36, 0.30, 0.26, 1.0), segments=8)
-    make_box("Napkins_Base", (tx + 0.44, ty - 0.12, top + 0.008), (0.13, 0.09, 0.016),
-             COL_WOOD_DK)
-    make_box("Napkins_Stack", (tx + 0.44, ty - 0.12, top + 0.05), (0.11, 0.07, 0.07),
-             P.PAPER)
+def build_calendar():
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 2.0, 1.6))
 
 
-# ═════════════════════════════════════════════════════════════════
-# WEST WALL — the GARAGE ENTRY ("He goes in through the garage,"
-# ch13:44): painted steel door, closed, with mat; the key rack with
-# the household's three sets (Civic / truck / Anita's car —
-# ch13:36-40); coat pegs with Ben's ball cap; DAISY'S feed station
-# (her water and kibble — the dog herself is not modeled); the wall
-# calendar with the red game-day mark ("Game Friday" / "We'll be
-# there," ch23_sleep:357-363).
-# ═════════════════════════════════════════════════════════════════
-def build_west_wall():
-    wf = -ROOM_W / 2.0 + 0.10          # interior face x -2.9
-    # Garage entry door — flush steel, two recessed panels, closed
-    make_box("GarageDoor_Leaf", (wf - 0.035, 3.25, 1.05), (0.05, 0.92, 2.10),
-             COL_DOOR_STEEL)
-    for pi, pz in enumerate((0.62, 1.48)):
-        make_box(f"GarageDoor_Panel_{pi}", (wf - 0.005, 3.25, pz), (0.012, 0.60, 0.56),
-                 (0.70, 0.68, 0.64, 1.0))
-    make_cyl("GarageDoor_Knob", (wf + 0.005, 2.88, 1.02), 0.030, 0.035, P.METAL_STEEL,
-             axis='X')
-    make_box("GarageDoor_Deadbolt", (wf - 0.002, 2.88, 1.16), (0.014, 0.045, 0.07),
-             P.METAL_STEEL)
-    for sgn in (-1, +1):
-        make_box(f"GarageDoor_Casing_{sgn:+d}", (wf - 0.02, 3.25 + sgn * 0.52, 1.08),
-                 (0.06, 0.10, 2.16), KOWALSKI_TRIM)
-    make_box("GarageDoor_CasingHead", (wf - 0.02, 3.25, 2.20), (0.06, 1.14, 0.10),
-             KOWALSKI_TRIM)
-    make_box("GarageDoor_Mat", (wf + 0.40, 3.25, 0.008), (0.58, 0.92, 0.014),
-             (0.40, 0.34, 0.28, 1.0))
-    # The key rack — three hooks, three sets (ch13:36-40: the Civic,
-    # Bill's truck on the street for the trash trucks, Anita's car)
-    make_box("KeyRack_Board", (wf + 0.012, 2.28, 1.38), (0.024, 0.30, 0.12), COL_WOOD)
-    for ki, (ky, kc) in enumerate([(2.19, P.METAL_STEEL),
-                                   (2.28, (0.20, 0.20, 0.22, 1.0)),
-                                   (2.37, (0.72, 0.30, 0.24, 1.0))]):
-        make_box(f"KeyRack_Hook_{ki}", (wf + 0.03, ky, 1.345), (0.016, 0.014, 0.03),
-                 COL_STEEL_DK)
-        make_box(f"KeyRack_Keys_{ki}", (wf + 0.032, ky, 1.295), (0.014, 0.03, 0.06), kc)
-    # Coat pegs + Ben's ball cap
-    make_box("PegBoard", (wf + 0.012, 4.30, 1.60), (0.024, 0.50, 0.09), COL_WOOD)
-    for gi, gy in enumerate((4.15, 4.45)):
-        make_cyl(f"Peg_{gi}", (wf + 0.05, gy, 1.58), 0.014, 0.09, COL_WOOD_DK, axis='X')
-    make_cyl("BenCap_Crown", (wf + 0.09, 4.15, 1.52), 0.085, 0.09, COL_NAVY_CAP,
-             axis='X', segments=10)
-    make_box("BenCap_Brim", (wf + 0.13, 4.15, 1.45), (0.14, 0.15, 0.012), COL_NAVY_CAP)
-    # Daisy's feed station (ch8:64, ch13:58 — the dog is real and
-    # therefore not baked; her bowls are)
-    make_box("Daisy_Mat", (wf + 0.38, 1.60, 0.006), (0.50, 0.34, 0.012),
-             (0.55, 0.30, 0.22, 1.0))
-    make_cyl("Daisy_BowlWater", (wf + 0.28, 1.52, 0.0395), 0.085, 0.055, P.METAL_STEEL,
-             segments=12)
-    make_cyl("Daisy_Water", (wf + 0.28, 1.52, 0.062), 0.068, 0.008,
-             (0.30, 0.38, 0.44, 1.0), segments=10)
-    make_cyl("Daisy_BowlFood", (wf + 0.48, 1.68, 0.0395), 0.085, 0.055, P.METAL_STEEL,
-             segments=12)
-    make_cyl("Daisy_Kibble", (wf + 0.48, 1.68, 0.062), 0.068, 0.008,
-             (0.48, 0.34, 0.20, 1.0), segments=10)
-    # The calendar — the season on the wall; red mark on the Friday
-    # game day (ch23_sleep:357-363)
-    make_calendar("Calendar", (wf + 0.01, 1.00, 1.55))
-    make_box("Calendar_GameDay", (wf + 0.018, 0.94, 1.44), (0.002, 0.05, 0.04),
-             (0.78, 0.18, 0.16, 1.0))
+def build_table_dressing():
+    # Table centrepiece: napkin holder + salt & pepper
+    tx, ty = 0.0, ROOM_D/2.0
+    make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
+    for nm, sx_, col in (("Salt", tx+0.16, (0.92, 0.92, 0.90, 1.0)), ("Pepper", tx+0.22, (0.28, 0.24, 0.22, 1.0))):
+        make_lathe(nm, (sx_, ty, 0.76), [(0.02, 0.0), (0.025, 0.01), (0.025, 0.07), (0.018, 0.09), (0.02, 0.10), (0.0, 0.105)], col, segments=8)
 
 
-# ═════════════════════════════════════════════════════════════════
-# EAST WALL — the family wall: three framed photos, staggered the
-# way twenty-eight years of marriage hangs them (ch23_sleep:272 —
-# "two people who have been married twenty-eight years").
-# ═════════════════════════════════════════════════════════════════
-def build_east_wall():
-    wf = ROOM_W / 2.0 - 0.10           # interior face x 2.9
-    frames = [("A", 2.45, 1.64, 0.26, 0.32, (0.62, 0.54, 0.44, 1.0)),
-              ("B", 2.92, 1.52, 0.20, 0.24, (0.44, 0.50, 0.58, 1.0)),
-              ("C", 3.34, 1.66, 0.22, 0.28, (0.70, 0.58, 0.42, 1.0))]
-    for nm, fy, fz, fw, fh, tint in frames:
-        make_box(f"Photo_{nm}_Frame", (wf - 0.008, fy, fz), (0.016, fw, fh), COL_WOOD_DK)
-        make_box(f"Photo_{nm}_Print", (wf - 0.018, fy, fz), (0.006, fw - 0.05, fh - 0.05),
-                 tint)
+def build_plant():
+    # Floor plant in the SW corner (make_floor_plant was unused)
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
+
+def build_hero_props():
+    """2026-08-03 hero-prop pass: upper cabinets (hot sauce to the
+    left of the stove), the under-cabinet light Anita sits by, the
+    couch + noon-news TV, the stair mouth, the window over the
+    sink (Gracie's dad yells about weeds through it)."""
+    wood = (0.52, 0.40, 0.26, 1.0)
+    # Upper cabinets over the counter + the box left of the stove
+    # on the wall face (2026-09-23: 9.5 cm into the N wall)
+    # (2026-10-07: the uppers are the kit's, in build_counter — the hot
+    # sauce is behind Upper_Mid's last door, left of the stove)
+    # The under-cabinet light — the only light in the ch19 beat — under
+    # Upper_Mid's front edge
+    make_box("UnderCab_Light", ((SINK_X + 0.86 + RANGE_X - 0.42) / 2.0, Y_BACK - 0.26, 1.44),
+             (RANGE_X - 0.42 - SINK_X - 0.86 - 0.10, 0.05, 0.04), (0.98, 0.90, 0.70, 1.0))   # under Upper_Mid AND the hot sauce cabinet
+    # The window over the sink onto the backyard
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Sink_Window", (SINK_X, ROOM_D - 0.10, 1.52), width=1.50, height=1.00, see_through=True)
 
 
-# ═════════════════════════════════════════════════════════════════
-# CEILING — THE kitchen light ("dark except for the kitchen light,"
-# ch7_hospital:296): one steel-trimmed dome over the table. House
-# fixtures only — the scaffold's fluorescent tubes are gone. Smoke
-# detector + HVAC register.
-# ═════════════════════════════════════════════════════════════════
-def build_ceiling_fixtures():
-    make_cyl("DomeLight_Plate", (0.15, 2.60, CEIL - 0.015), 0.19, 0.025, P.METAL_STEEL,
-             segments=12)
-    make_cyl("DomeLight_Dome", (0.15, 2.60, CEIL - 0.065), 0.165, 0.075,
-             (0.97, 0.93, 0.82, 1.0), segments=12)
-    make_cyl("DomeLight_Finial", (0.15, 2.60, CEIL - 0.115), 0.018, 0.03, P.METAL_STEEL)
-    make_smoke_detector("Smoke", (-1.7, 1.1, CEIL))
-    make_hvac_vent("HVAC", (1.8, 0.85, CEIL), width=0.55, depth=0.32)
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues, all at the table (top 0.76):
+
+    - ANITA'S PHONE ("Anita slides her phone across the table"):
+      face-up mid-slide, off-square.
+    - THE CROSSWORD ("He looks down at the crossword"): the folded
+      page with its grid inlay, pencil beside.
+    - THE EGGS ("Two eggs over-easy, two pieces of toast, a strip
+      of bacon. He sets it in front of Maya without comment."):
+      the plate as served.
+    """
+    make_box("Table_Phone", (0.30, 2.30, 0.7715), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+    make_box("Crossword_Page", (-0.30, 2.60, 0.761), (0.200, 0.280, 0.002),
+             (0.90, 0.88, 0.83, 1.0))
+    make_box("Crossword_Grid", (-0.30, 2.54, 0.7625), (0.100, 0.100, 0.001),
+             (0.30, 0.30, 0.33, 1.0))
+    make_cyl("Crossword_Pencil", (-0.13, 2.70, 0.766), 0.005, 0.130,
+             (0.86, 0.72, 0.28, 1.0), axis='Y', segments=6)
+    make_cyl("Breakfast_Plate", (0.28, 2.66, 0.771), 0.120, 0.012,
+             (0.92, 0.90, 0.86, 1.0), segments=14)
+    for ei, (ex2, ey2) in enumerate(((0.235, 2.63), (0.30, 2.70))):
+        make_cyl(f"Egg_White_{ei}", (ex2, ey2, 0.783), 0.028, 0.012,
+                 (0.96, 0.94, 0.90, 1.0), segments=10)
+        make_cyl(f"Egg_Yolk_{ei}", (ex2, ey2, 0.792), 0.012, 0.006,
+                 (0.94, 0.72, 0.20, 1.0), segments=8)
+    for ti2, (tx3, ty3) in enumerate(((0.35, 2.585), (0.375, 2.66))):
+        make_box(f"Toast_{ti2}", (tx3, ty3, 0.781), (0.055, 0.040, 0.008),
+                 (0.80, 0.62, 0.36, 1.0))
+    make_box("Bacon_Strip", (0.21, 2.72, 0.7795), (0.020, 0.090, 0.005),
+             (0.62, 0.30, 0.22, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR · THE BACK YARD (through the window) — Bill's contested
-# ground: the lawn he does at five before the heat (ch19_chains:934)
-# mowed in stripes, browning at the edges in week three of the heat
-# (ch13:178); THE WEEDS in a ragged line at the privacy fence — the
-# ones Gracie heard him yelling about through this window
-# (ch19_chains:261); THE PECAN TREE (vol6_ch23_sunday:238 — Gracie's
-# ceremony ground; the folding table stays in the garage); the hose
-# reel on the tan siding; the attached garage wing west (ch13:44);
-# a grey-blue neighbor roofline beyond the fence.
-# ═════════════════════════════════════════════════════════════════
-def build_exterior_back():
-    wallout = ROOM_D + 0.10
-    seg_len = (ROOM_W / 2.0 - WIN_W / 2.0) + 0.20
-    seg_cx = WIN_W / 2.0 + seg_len / 2.0
-    # Siding skins wrap the window opening (opening left CLEAR)
-    make_box("Ext_Skin_W", (-seg_cx, wallout + 0.02, 1.30), (seg_len, 0.06, 2.60),
-             KOWALSKI_SIDING)
-    make_box("Ext_Skin_E", (+seg_cx, wallout + 0.02, 1.30), (seg_len, 0.06, 2.60),
-             KOWALSKI_SIDING)
-    make_box("Ext_Skin_Sill", (0.0, wallout + 0.02, WIN_SILL / 2.0),
-             (WIN_W, 0.06, WIN_SILL), KOWALSKI_SIDING)
-    make_box("Ext_Skin_Head", (0.0, wallout + 0.02, (WIN_HEAD + 2.60) / 2.0),
-             (WIN_W, 0.06, 2.60 - WIN_HEAD), KOWALSKI_SIDING)
-    for si, sz in enumerate((0.55, 1.45, 2.35)):
-        make_box(f"Ext_SidingSeam_{si}", (0.0, wallout + 0.052, sz),
-                 (ROOM_W + 0.4, 0.006, 0.02), COL_SIDING_SEAM)
-    # Hose reel + bib on the siding east of the window (the 5 AM
-    # lawn kit lives within reach)
-    make_cyl("HoseBib", (2.35, wallout + 0.08, 0.85), 0.020, 0.10, P.METAL_STEEL,
-             axis='Y')
-    make_cyl("HoseReel", (2.35, wallout + 0.10, 0.55), 0.155, 0.09,
-             (0.24, 0.36, 0.24, 1.0), axis='Y', segments=12)
-    make_cyl("HoseReel_Hub", (2.35, wallout + 0.16, 0.55), 0.045, 0.06, COL_STEEL_DK,
-             axis='Y', segments=8)
-    # The lawn — kept green (Bill), mow stripes, browning at edges
-    make_box("Ext_Lawn", (0.0, 8.9, GRADE_Z - 0.05), (22.0, 7.0, 0.10), COL_LAWN)
-    for mi, mx in enumerate((-1.5, 1.0, 3.5)):
-        make_box(f"Ext_MowStripe_{mi}", (mx, 8.9, GRADE_Z + 0.004), (1.1, 6.8, 0.004),
-                 COL_LAWN_STRIPE)
-    for bi, (bx, by, bw, bd) in enumerate([(-3.6, 8.0, 1.3, 0.9),
-                                           (4.3, 10.6, 1.6, 1.0)]):
-        make_box(f"Ext_BrownPatch_{bi}", (bx, by, GRADE_Z + 0.006), (bw, bd, 0.004),
-                 COL_LAWN_BROWN)
-    # THE PECAN TREE (vol6_ch23_sunday:238) — trunk in the window's
-    # east panes from the preset camera, canopy filling the head
-    make_cyl("Pecan_Trunk", (1.15, 9.6, GRADE_Z + 1.40), 0.15, 2.80, COL_TRUNK,
-             segments=10)
-    for ci, (cr, ch, cz, col) in enumerate([(1.70, 0.80, 3.10, COL_PECAN_LEAF),
-                                            (1.30, 0.75, 3.80, COL_PECAN_LEAF2),
-                                            (0.80, 0.60, 4.45, COL_PECAN_LEAF)]):
-        make_cyl(f"Pecan_Canopy_{ci}", (1.15, 9.6, GRADE_Z + cz), cr, ch, col,
-                 segments=10)
-    # THE WEEDS — ragged tufts along the fence line (ch19_chains:261;
-    # deterministic hand-set list, no RNG)
-    weeds = [(-6.5, 11.90, 0.09, 0.42), (-4.8, 12.00, 0.07, 0.30),
-             (-3.6, 11.85, 0.10, 0.48), (-1.9, 11.95, 0.06, 0.28),
-             (0.4, 11.90, 0.08, 0.38), (2.2, 12.00, 0.10, 0.50),
-             (4.6, 11.90, 0.07, 0.32), (6.3, 11.95, 0.09, 0.44)]
-    for wi, (wx, wyy, wr, wh) in enumerate(weeds):
-        make_cyl(f"Weed_{wi}", (wx, wyy, GRADE_Z + wh / 2.0), wr, wh,
-                 COL_WEED if wi % 2 == 0 else COL_WEED_DK, segments=6)
-    # The privacy fence
-    make_box("Fence_Run", (0.0, 12.3, GRADE_Z + 0.90), (17.0, 0.05, 1.80), COL_FENCE)
-    for si2 in range(12):
-        make_box(f"Fence_Seam_{si2}", (-7.2 + si2 * 1.31, 12.27, GRADE_Z + 0.90),
-                 (0.020, 0.008, 1.76), COL_FENCE_SEAM)
-    make_box("Fence_Cap", (0.0, 12.3, GRADE_Z + 1.83), (17.0, 0.11, 0.05),
-             COL_FENCE_SEAM)
-    for pi2 in range(6):
-        make_box(f"Fence_Post_{pi2}", (-6.8 + pi2 * 2.72, 12.3, GRADE_Z + 0.92),
-                 (0.11, 0.11, 1.88), COL_FENCE_SEAM)
-    # The attached garage wing, west (ch13:44 — the door in the west
-    # wall goes here; the folding table and Bill's mower live inside)
-    make_box("Garage_Body", (-4.7, 6.9, GRADE_Z + 1.25), (3.0, 3.6, 2.50),
-             KOWALSKI_SIDING)
-    make_box("Garage_Roof", (-4.7, 6.9, GRADE_Z + 2.70), (3.4, 4.0, 0.40),
-             KOWALSKI_ROOF)
-    # A neighbor roofline beyond the fence — the tract repeating in
-    # its grey-blue run (HOUSE_BODY_C)
-    make_box("Neighbor_Body", (6.5, 15.8, GRADE_Z + 1.35), (5.5, 4.0, 2.70),
-             COL_NEIGHBOR)
-    make_box("Neighbor_Roof", (6.5, 15.8, GRADE_Z + 2.92), (6.1, 4.6, 0.42),
-             KOWALSKI_ROOF)
-    make_box("Neighbor_Window", (5.4, 13.75, GRADE_Z + 1.55), (0.85, 0.06, 0.75),
-             (0.16, 0.18, 0.22, 1.0))
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; 7 placements) — WEAR,
+    D3, D5. Draft 5 split it by AREA (below) so each piece moves with its
+    furniture; the paths are re-walked on the new plan here."""
+    from _props.detail import make_traffic_wear
+    floor_dk = (0.69, 0.54, 0.35, 1.0)    # (draft 5: at 0.58 the paths read as dark rugs)
+    make_traffic_wear("Wear_Path_Garage", [(GARAGE_DOOR[0], 0.5), (GARAGE_DOOR[0], 1.6), (2.6, 2.6)], width=0.5, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Counter", [(2.0, 4.4), (1.2, 5.0), (0.6, 5.5)], width=0.42, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Hall", [(HALL_OPEN[0], 0.5), (-1.6, 2.0), (-3.4, 3.0)], width=0.45, tint=floor_dk)
+
+
+def build_wear_table():
+    from _props.detail import make_floor_stain
+    tx, ty = 0.0, ROOM_D/2.0
+    for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
+        make_floor_stain(f"Wear_Patch_Seat_{ci}", (cx, cy), radius=0.26, tint=(0.66, 0.52, 0.34, 1.0), segments=10)
+
+
+def build_wear_counter():
+    from _props.detail import make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run, make_backyard_view
+    make_box("Wear_Elbow_Strip", (SINK_X, Y_BACK-0.62+0.02, TOP_Z+0.002), (2.2, 0.06, 0.004), (0.50, 0.36, 0.22, 1.0))
+    make_scuff_band("Wear_Drip", (SINK_X, Y_BACK-0.62-0.024), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
+    make_light_switch("Switch_2", (SINK_X + 1.30, ROOM_D), axis='X', face_sign=-1, z=1.35, aged=True)
+    make_wall_outlet("Outlet_N_1", (SINK_X - 1.05, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
+    make_cord_run("Cord_2", (SINK_X - 0.95, ROOM_D-0.45+0.10, 0.96), (SINK_X - 1.05, ROOM_D - 0.12, 1.10), sag=0.03)
+    make_backyard_view("Yard", ROOM_D, span=12.0, tree=(2.4, 3.2))
+
+
+def build_wear_fridge():
+    from _props.detail import make_wall_outlet, make_cord_run
+    make_box("Wear_Hand_Patch", (ROOM_W/2.0-0.55-0.362, 1.0-0.10, 1.30), (0.003, 0.14, 0.20), (0.74, 0.74, 0.76, 1.0))
+    make_wall_outlet("Outlet_E_2", (ROOM_W/2.0, 0.55), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_3", (ROOM_W/2.0-0.22, 0.75, 0.10), (ROOM_W/2.0 - 0.13, 0.55, 0.30), sag=0.0)
+
+
+def build_eyard():
+    make_box("EYard_Lawn", (ROOM_W/2.0 + 3.0, 3.0, -0.03), (6.0, 8.0, 0.05), (0.40, 0.48, 0.28, 1.0))
+    make_lathe("EYard_Tree", (ROOM_W/2.0 + 3.5, 3.4, 0.0), [(0.16, 0.0), (0.12, 1.2), (0.09, 2.6), (0.0, 2.6)], (0.38, 0.30, 0.22, 1.0), segments=8)
+    make_blob("EYard_Canopy", (ROOM_W/2.0 + 3.5, 3.4, 3.6), 1.5, (0.30, 0.42, 0.24, 1.0), noise=0.22, seed=23, squash=0.8)
+    make_chamfer_box("EYard_Mower", (ROOM_W/2.0 + 1.6, 2.2, 0.165), (0.55, 0.85, 0.34), (0.66, 0.20, 0.16, 1.0), chamfer=0.02)   # on the lawn (2026-09-23: 2 cm over it)
+    make_tube("EYard_Mower_Handle", [(ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 0.4, 0.33), (ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 1.1, 0.93), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 1.1, 0.93), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 0.4, 0.33)], 0.012, (0.30, 0.30, 0.32, 1.0), segments=5)
+
+
+def build_family_room():
+    """DRAFT 5: the family room's own things, on the new plan (no shift):
+    the TV facing the couch with the noon news on, its stand and cord,
+    the coffee table, a floor lamp, DAISY on the couch, a ceiling light;
+    the S wall's garage door and the hall beyond the opening with the
+    bedroom door shut."""
+    from _props.detail import make_wall_outlet, make_light_switch
+    from _props.creatures import make_dog
+    wood = (0.52, 0.40, 0.26, 1.0)
+    # the couch facing S (draft 5: the room turned so the TV can stand on a
+    # wall — it was a stand in the middle of the floor)
+    cx_, cy_ = -3.0, 4.33
+    make_chamfer_box("Couch_Base", (cx_, cy_, 0.19), (2.00, 0.85, 0.38), (0.44, 0.38, 0.30, 1.0))
+    make_chamfer_box("Couch_Back", (cx_, cy_ + 0.37, 0.62), (2.00, 0.18, 0.58), (0.40, 0.34, 0.27, 1.0))
+    for nm, ox in (("W", -1.06), ("E", 1.06)):
+        make_chamfer_box(f"Couch_Arm_{nm}", (cx_ + ox, cy_, 0.30), (0.14, 0.85, 0.60), (0.40, 0.34, 0.27, 1.0))
+    for k, ox in enumerate((-0.50, 0.50)):
+        make_chamfer_box(f"Couch_Cushion_{k}", (cx_ + ox, cy_ - 0.07, 0.46), (0.96, 0.70, 0.14), (0.48, 0.42, 0.34, 1.0))
+    make_box("Couch_Throw", (cx_ + 0.80, cy_ + 0.30, 0.93), (0.40, 0.22, 0.04), (0.62, 0.30, 0.26, 1.0))
+    # Daisy's spot on the W cushion, her hair on it, DAISY on it, head up at the door
+    make_chamfer_box("Wear_Daisy_Spot", (cx_ - 0.50, cy_ - 0.07, 0.535), (0.55, 0.50, 0.02), (0.42, 0.36, 0.30, 1.0), chamfer=0.008)
+    for hi in range(6):
+        make_rot_box(f"Wear_Hair_{hi}", (cx_ - 0.58 + 0.08 * (hi % 3), cy_ - 0.20 + 0.10 * (hi // 3), 0.548), (0.03, 0.004, 0.002), (0.80, 0.72, 0.56, 1.0), yaw=0.6 * hi)
+    make_dog("Daisy", cx_ - 0.50, cy_ - 0.24, 0.545, heading='-Y', pose='lying', scale=0.85)
+    # the TV on its stand against the S wall, the noon news on
+    tvx, tvy = -3.0, 0.31
+    make_box("TV_Stand", (tvx, tvy, 0.25), (1.30, 0.42, 0.50), MAPLE_DK)
+    make_box("TV_Stand_Box", (tvx - 0.30, tvy + 0.215, 0.18), (0.50, 0.01, 0.20), (0.20, 0.20, 0.22, 1.0))
+    make_box("TV_Foot", (tvx, tvy, 0.515), (0.40, 0.22, 0.03), (0.10, 0.10, 0.12, 1.0))
+    make_box("TV", (tvx, tvy, 0.86), (1.10, 0.07, 0.66), (0.10, 0.10, 0.12, 1.0))
+    make_box("TV_Screen", (tvx, tvy + 0.036, 0.86), (1.02, 0.004, 0.58), (0.36, 0.46, 0.56, 1.0))
+    make_box("TV_Screen_Anchor_Desk", (tvx - 0.20, tvy + 0.039, 0.74), (0.40, 0.002, 0.14), (0.20, 0.30, 0.52, 1.0))
+    make_box("TV_Screen_Ticker", (tvx, tvy + 0.039, 0.62), (1.00, 0.002, 0.05), (0.80, 0.16, 0.14, 1.0))
+    make_wall_outlet("Outlet_TV", (tvx + 0.75, 0.0), axis='X', face_sign=1, z=0.30, aged=True)
+    # the coffee table between them
+    make_box("Coffee_Table", (-3.0, 2.55, 0.40), (1.10, 0.60, 0.04), wood)
+    for li, (ox, oy) in enumerate(((-0.50, -0.26), (0.50, -0.26), (-0.50, 0.26), (0.50, 0.26))):
+        make_box(f"Coffee_Table_Leg_{li}", (-3.0 + ox, 2.55 + oy, 0.19), (0.04, 0.04, 0.38), wood)
+    make_box("Coffee_Table_Remote", (-2.85, 2.50, 0.43), (0.16, 0.05, 0.02), (0.14, 0.14, 0.16, 1.0))
+    make_box("Coffee_Table_Mags", (-3.25, 2.58, 0.428), (0.28, 0.22, 0.016), (0.80, 0.68, 0.52, 1.0))
+    # a floor lamp at the couch's N end
+    make_lathe("FloorLamp_Base", (-4.45, 4.45, 0.0), [(0.0, 0.0), (0.14, 0.0), (0.13, 0.03), (0.02, 0.05), (0.0, 0.05)], (0.24, 0.22, 0.20, 1.0), segments=12)
+    make_cyl("FloorLamp_Pole", (-4.45, 4.45, 0.76), 0.012, 1.42, (0.30, 0.28, 0.24, 1.0), segments=6)
+    make_lathe("FloorLamp_Shade", (-4.45, 4.45, 1.38), [(0.20, 0.0), (0.14, 0.26), (0.0, 0.26)], (0.86, 0.80, 0.66, 1.0), segments=14)
+    make_cyl("FloorLamp_Bulb", (-4.45, 4.45, 1.44), 0.03, 0.06, (0.98, 0.94, 0.80, 1.0), segments=8)
+    # the family room's ceiling light
+    make_cyl("Family_Ceiling_Light", (-3.0, 3.0, CEIL - 0.05), 0.18, 0.08, (0.96, 0.90, 0.72, 1.0), segments=14)
+    # the garage door (closed, a deadbolt) and its switch
+    gx = GARAGE_DOOR[0]
+    make_box("Garage_Door_Leaf", (gx, 0.0, 1.035), (0.86, 0.045, 2.07), (0.88, 0.86, 0.80, 1.0))
+    make_cyl("Garage_Door_Knob", (gx - 0.34, 0.05, 1.0), 0.03, 0.05, (0.62, 0.58, 0.48, 1.0), segments=10, axis='Y')
+    make_box("Garage_Door_Deadbolt", (gx - 0.34, 0.035, 1.28), (0.06, 0.025, 0.06), (0.62, 0.58, 0.48, 1.0))
+    for nm, x in (("A", gx - GARAGE_DOOR[2] / 2.0 - 0.035), ("B", gx + GARAGE_DOOR[2] / 2.0 + 0.035)):
+        make_box(f"Garage_Door_Casing_{nm}", (x, 0.11, 1.07), (0.07, 0.02, 2.14), (0.86, 0.84, 0.78, 1.0))
+    make_box("Garage_Door_Casing_Head", (gx, 0.11, 2.115), (GARAGE_DOOR[2] + 0.14, 0.02, 0.07), (0.86, 0.84, 0.78, 1.0))
+    make_light_switch("Switch_1", (gx - 0.70, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
+    make_box("Key_Hooks", (gx + 0.70, 0.11, 1.45), (0.30, 0.02, 0.08), wood)
+    make_box("Key_Hooks_Keys", (gx + 0.66, 0.13, 1.38), (0.04, 0.02, 0.07), (0.70, 0.70, 0.66, 1.0))
+    # the hall beyond the opening: its floor, walls, the bedroom door SHUT
+    hx = HALL_OPEN[0]
+    make_box("Hall_Floor", (hx, -0.75, -0.01), (2.4, 1.3, 0.02), COL_FLOOR)
+    make_wall("Hall_Wall_S", (hx, -1.50, 0), length=2.6, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    for nm, x, bb in (("Hall_Wall_W", hx - 1.20, +1), ("Hall_Wall_E", hx + 1.20, -1)):
+        make_wall(nm, (x, -0.75, 0), length=1.3, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    make_box("Hall_Ceil", (hx, -0.75, CEIL + 0.01), (2.4, 1.3, 0.02), (0.92, 0.90, 0.86, 1.0))
+    make_box("Bedroom_Door_Leaf", (hx + 0.20, -1.38, 1.035), (0.84, 0.04, 2.07), (0.86, 0.84, 0.78, 1.0))
+    make_cyl("Bedroom_Door_Knob", (hx + 0.52, -1.34, 1.0), 0.028, 0.05, (0.62, 0.58, 0.48, 1.0), segments=8, axis='Y')
+    make_box("Hall_Photo", (hx - 0.70, -1.385, 1.55), (0.36, 0.02, 0.28), (0.20, 0.16, 0.12, 1.0))
+    make_box("Hall_Photo_Image", (hx - 0.70, -1.373, 1.55), (0.30, 0.004, 0.22), (0.62, 0.56, 0.46, 1.0))
+
+
+def build_family_fill():
+    """DRAFT 5 · THE FILL: the doubled room read as bare floor. Bill's
+    recliner facing the TV, the area rug under the coffee table, a
+    bookcase on the W wall, family photos, Daisy's bowls by the counter
+    end, the boots and Bill's work jacket by the garage door."""
+    wood = (0.52, 0.40, 0.26, 1.0)
+    # the area rug (a border round a field)
+    make_box("Family_Rug_Border", (-3.0, 2.95, 0.006), (2.90, 2.40, 0.006), (0.40, 0.26, 0.20, 1.0))
+    make_box("Family_Rug_Field", (-3.0, 2.95, 0.010), (2.60, 2.10, 0.004), (0.62, 0.46, 0.34, 1.0))
+    # Bill's recliner, facing S at the TV
+    rx, ry = -4.40, 2.55
+    rc = (0.36, 0.30, 0.24, 1.0)
+    make_chamfer_box("Recliner_Base", (rx, ry, 0.22), (0.86, 0.86, 0.44), rc)
+    make_chamfer_box("Recliner_Back", (rx, ry + 0.36, 0.72), (0.86, 0.16, 0.66), rc)
+    for nm, ox in (("W", -0.37), ("E", 0.37)):
+        make_chamfer_box(f"Recliner_Arm_{nm}", (rx + ox, ry - 0.02, 0.56), (0.13, 0.80, 0.26), rc)
+    make_chamfer_box("Recliner_Cushion", (rx, ry - 0.06, 0.49), (0.60, 0.66, 0.10), (0.42, 0.36, 0.28, 1.0))
+    make_box("Recliner_Lever", (rx + 0.445, ry - 0.10, 0.40), (0.02, 0.04, 0.10), (0.20, 0.20, 0.20, 1.0))
+    make_box("Recliner_Sentinel", (rx + 0.36, ry + 0.05, 0.705), (0.20, 0.30, 0.02), (0.86, 0.84, 0.78, 1.0))
+    # the W-wall bookcase N of the floor lamp
+    bx0, by0, by1 = -ROOM_W/2.0 + 0.10, 4.75, 5.75
+    make_box("Family_Case_Back", (bx0 + 0.01, (by0 + by1) / 2.0, 0.90), (0.02, by1 - by0, 1.80), wood)
+    for nm, y in (("S", by0 + 0.01), ("N", by1 - 0.01)):
+        make_box(f"Family_Case_Side_{nm}", (bx0 + 0.18, y, 0.90), (0.34, 0.02, 1.80), wood)
+    for si, z in enumerate((0.05, 0.50, 0.95, 1.40, 1.79)):
+        make_box(f"Family_Case_Shelf_{si}", (bx0 + 0.18, (by0 + by1) / 2.0, z), (0.34, by1 - by0 - 0.04, 0.025), wood)
+    for si, z in enumerate((0.0625, 0.5125, 0.9625, 1.4125)):
+        y = by0 + 0.04
+        k = 0
+        while y < by1 - 0.06:
+            t = 0.035 + 0.01 * ((k + si) % 3)
+            if si == 3 and k == 4:
+                make_box("Family_Case_Trophy", (bx0 + 0.20, y + 0.08, z + 0.12), (0.10, 0.10, 0.24), (0.80, 0.66, 0.30, 1.0))
+                y += 0.20
+            else:
+                h = 0.20 + 0.03 * ((k * 3 + si) % 4)
+                make_box(f"Family_Case_Book_{si}_{k}", (bx0 + 0.22, y + t / 2.0, z + h / 2.0), (0.22, t, h), P.SNACK_TINTS[(k + si * 2) % len(P.SNACK_TINTS)])
+                y += t + 0.004
+            k += 1
+    # family photos on the N wall either side of the family-room window
+    for k, (x, w, h) in enumerate(((-4.35, 0.40, 0.50), (-1.85, 0.50, 0.40), (-1.30, 0.30, 0.36))):
+        make_box(f"Family_Photo_{k}_Frame", (x, ROOM_D - 0.115, 1.62), (w, 0.03, h), (0.30, 0.22, 0.16, 1.0))
+        make_box(f"Family_Photo_{k}_Image", (x, ROOM_D - 0.132, 1.62), (w - 0.08, 0.004, h - 0.08), ((0.60, 0.56, 0.48, 1.0), (0.44, 0.52, 0.40, 1.0), (0.66, 0.60, 0.52, 1.0))[k])
+    # Daisy's bowls by the counter's W end
+    for k, (ox, col) in enumerate(((0.0, (0.66, 0.70, 0.74, 1.0)), (0.26, (0.62, 0.22, 0.18, 1.0)))):
+        make_lathe(f"Daisy_Bowl_{k}", (-1.35 + ox, 5.85, 0.0), [(0.0, 0.0), (0.11, 0.0), (0.12, 0.07), (0.10, 0.07), (0.0, 0.02)], col, segments=12)
+    make_box("Daisy_Bowl_Mat", (-1.22, 5.85, 0.004), (0.56, 0.32, 0.008), (0.30, 0.34, 0.40, 1.0))
+    # the garage door's corner: boots on a tray, Bill's work jacket on a hook
+    gx = GARAGE_DOOR[0]
+    make_box("Boot_Tray", (gx + 0.80, 0.34, 0.012), (0.60, 0.40, 0.024), (0.16, 0.16, 0.18, 1.0))
+    for k, (ox, oy) in enumerate(((-0.14, -0.05), (0.0, -0.05), (0.14, 0.06))):
+        make_box(f"Boot_{k}", (gx + 0.80 + ox, 0.34 + oy, 0.105), (0.11, 0.27, 0.16), (0.30, 0.24, 0.18, 1.0))
+    make_box("Jacket_Hook", (gx + 0.62, 0.13, 1.70), (0.03, 0.05, 0.03), (0.60, 0.58, 0.52, 1.0))
+    make_box("Work_Jacket", (gx + 0.62, 0.17, 1.28), (0.48, 0.06, 0.82), (0.34, 0.38, 0.28, 1.0))
+
+
+# ── DRAFT 5 · THE BIGGER ROOM (2026-10-09, lore/_SET_DETAIL_PLAYBOOK.md) ──
+from _props.plan import shifted
+_OLD = dict(ROOM_W=6.0, ROOM_D=5.0)
+SH_TF = (2.0, 0.8)      # the table + pendant + table props, the fridge, the E window, the E yard
+SH_W = (-2.0, 1.0)      # the couch + Daisy's spot, the plant, the calendar
+HALL_OPEN = (-0.40, 1.05, 1.00, 2.10)
+GARAGE_DOOR = (3.70, 1.04, 0.86, 2.08)
+
+
+def _in(sh):
+    return shifted(globals(), sh[0], sh[1], extra=("make_wall_clock", "make_floor_plant", "make_calendar", "make_coffee_pots"), **_OLD)
 
 
 def main():
     clear_scene()
     build_shell()
-    build_window()
-    build_counter_run()
-    build_fridge()
-    build_table_zone()
-    build_west_wall()
-    build_east_wall()
-    build_ceiling_fixtures()
-    build_exterior_back()
+    build_counter()
+    build_counter_dressing()
+    build_clock()
+    build_wear_counter()
+    with _in(SH_TF):
+        build_table(); build_table_dressing(); build_fridge(); build_window(); build_ceiling_infra()
+        build_hero_props_2026_09(); build_wear_table(); build_wear_fridge(); build_eyard()
+    with _in(SH_W):
+        build_plant(); build_calendar()
+    build_hero_props()
+    build_family_room()
+    build_family_fill()
+    build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_kitchen.glb"))
     print(f"\n[build_kowalski_kitchen] exporting to {out}")

@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -155,7 +155,7 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key_BareBulb" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.86, 0.46, 1)
 light_energy = 0.55
 shadow_enabled = false
@@ -172,13 +172,31 @@ light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
 
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_speak_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81, 2.10, -1.74)
+rotation = Vector3(-0.4098, 2.4286, 0.0)
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 1.36, -2.83)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09, 1.36, -2.59)
+rotation = Vector3(-0.4644, -0.9133, 0.0)
+
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.500, 1.780, -1.200)
+rotation = Vector3(-0.0538, 2.3562, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
 mood_strata = Array[String](["raw", "noir", "lithograph", "macro_haze", "silent_film_18", "candlelight", "memory_warm"])
-default_style_pack = ""
+default_style_pack = "kitchen_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
@@ -272,7 +290,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +309,97 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
+; rotation B: reverse from the service door - desk, filing cabinets, office door
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.6, 1.65, -4.4)
+rotation = Vector3(-0.179934, 2.89661, 0)
+metadata/fov = 56.0
+
+; rotation C: over the light table toward the longbox stacks and mini fridge
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.5, 1.5, -3.5)
+rotation = Vector3(-0.296132, -1.94564, 0)
+metadata/fov = 58.0
+
+; insert: the corkboard over the desk
+[node name="shot_insert_corkboard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.55, -3.5)
+rotation = Vector3(0.0378607, 0, 0)
+metadata/fov = 40.0
+
+; insert: the office safe in the corner
+[node name="shot_insert_safe" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.987, 0.559, -4.020)
+rotation = Vector3(-0.2618, -1.3090, 0.0)
+metadata/fov = 42.0
+
+; insert: Rick's spiral notebook, open, kept since Sunday
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.1, -2.95)
+rotation = Vector3(-0.2188, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: the list on its standard page
+[node name="shot_insert_note" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117, 1.033, -3.563)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+; insert: the Speak & Spell on the shelf above the file cabinet, not glowing
+[node name="shot_insert_speak_and_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 1.6, -1.5)
+rotation = Vector3(0.0921, 2.3581, 0.0)
+metadata/fov = 42.0
+
+; ── vn_shot · vol6 ch3_coda re-homed 2026-09-03: the folder's three things ──
+; insert: the hand-drawn map of the east side, one building circled in red ink
+[node name="shot_insert_map" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122, 1.027, -3.421)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+; insert: the 1974 Polaroid of Thomas in front of the Graustark storefront
+[node name="shot_insert_polaroid" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.2, -2.8)
+rotation = Vector3(-0.8421, 0.2387, 0.0)
+metadata/fov = 42.0
+
+; insert: F.T.'s note folded back into its envelope, bound for the fireproof box
+[node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 1.029, -3.486)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.386, 1.612, -1.810)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.526, 1.612, -3.722)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Bulb_Glass_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 1.740, -2.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.48
+
+[node name="DeskLamp_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.670, 1.100, -4.800)
+light_color = Color(0.950, 0.820, 0.580, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 1.76

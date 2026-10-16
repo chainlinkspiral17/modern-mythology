@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2002-11-13_the_grinder",
+      "strip_id": "dw_2002-11-13_the_grinder",
+      "title": "The grinder",
+      "date": "2002-11-13",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer; GULLY — aged 23, stocky boy with a round face, easy slouch. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. GULLY usually wears backwards blue cap, faded green hoodie, muddy tan work boots. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Wednesday. The grinder. Gully grinds bait-shop coarse. The first shot pulls in four seconds. Wood times it on the bait-tank clock. 'That's a sneeze.' 'That's a shot.' 'That's a sneeze, Gully.' Panel 1: brush-pen black-and-white, xerox grain, a teenager in an apron cranking a hand coffee grinder like a winch in a bait shack while another sits on a crate, no dog (in this panel: GULLY, WOOD). No dialogue in this panel. Panel 2: brush-pen black-and-white, xerox grain, close-up of coarse gravel-like coffee grounds in an espresso portafilter. No dialogue in this panel. Panel 3: brush-pen black-and-white, xerox grain, a teenager pulling an espresso shot while another times it on a wall clock, a cup of pale liquid (in this panel: GULLY, WOOD). Wood says \"Four seconds.\". Gully says \"That's a shot.\". Wood says \"That's a sneeze, Gully.\". Panel 4: brush-pen black-and-white, xerox grain, a grim teenager cranking a coffee grinder finer while another draws him (in this panel: GULLY, WOOD). Gully says \"Finer.\". Wood says \"Finer.\". Gully says \"I didn't ask.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_gullys shows the setting; keep its architecture and props. Match the attached references: @gully_17 for the character the strip's Gully at 17; @wood_20 for the character Wood at 20-23; @loc_gullys for the setting.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer; GULLY — aged 23, stocky boy with a round face, easy slouch. Clothes and props: as described here, not from the reference. Panel 1: a teenager in an apron cranking a hand coffee grinder like a winch in a bait shack while another sits on a crate, no dog (in this panel: GULLY, WOOD). No text. Panel 2: close-up of coarse gravel-like coffee grounds in an espresso portafilter. No text. Panel 3: a teenager pulling an espresso shot while another times it on a wall clock, a cup of pale liquid (in this panel: GULLY, WOOD). Wood: \"Four seconds.\"; Gully: \"That's a shot.\"; Wood: \"That's a sneeze, Gully.\". Panel 4: a grim teenager cranking a coffee grinder finer while another draws him (in this panel: GULLY, WOOD). Gully: \"Finer.\"; Wood: \"Finer.\"; Gully: \"I didn't ask.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @gully_17 is the model sheet for GULLY. Reference @wood_20 is the model sheet for WOOD. Reference @loc_gullys shows the setting; keep its architecture and props..",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "gully_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "loc_gullys",
+          "id": "sheet_loc_gullys",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_gullys.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_gullys"
+          ]
+        }
+      ]
+    }
+  ]
+}

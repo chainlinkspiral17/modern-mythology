@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_chloe_44",
+      "kind": "character",
+      "era": "era4",
+      "tags": [
+        "character",
+        "era4",
+        "chloe_44"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. model sheet of a woman in her mid-forties with dark hair streaked gray and no makeup, a worn navy rain jacket, jeans and olive rubber boots, holding a white ceramic mug in both hands; front, profile, seated on a dock; expression heads: clear, unhurried, wry, at rest; labeled CHLOE 2024. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

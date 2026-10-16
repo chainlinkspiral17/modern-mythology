@@ -1,0 +1,166 @@
+{
+  "id": "ending_a_red_cap",
+  "notes": "Unseelie ending. A bathroom mirror at night. Your reflection wears the red cap and a new expression. The cap is the only warm color in the frame.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#181024",
+    "#2a1c38",
+    "#4a3860",
+    "#8a7ab0",
+    "#c8bcd0",
+    "#c02030",
+    "#e05060",
+    "#0a0814",
+    "#6a5a80"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        70,
+        90
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        50,
+        8,
+        60,
+        66
+      ],
+      "color": 1
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        54,
+        12,
+        52,
+        58
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        56,
+        14,
+        48,
+        54
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        70,
+        26,
+        20,
+        32
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        74,
+        32,
+        12,
+        20
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        40
+      ],
+      "size": 2,
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        83,
+        40
+      ],
+      "size": 2,
+      "color": 1
+    },
+    {
+      "op": "hline",
+      "y": 47,
+      "x_range": [
+        77,
+        84
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        24,
+        16,
+        6
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        74,
+        21,
+        12,
+        4
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        10,
+        60,
+        26,
+        4
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        18,
+        52,
+        10,
+        8
+      ],
+      "color": 5
+    },
+    {
+      "op": "dot",
+      "xy": [
+        23,
+        50
+      ],
+      "size": 3,
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 22,
+      "y_range": [
+        64,
+        80
+      ],
+      "color": 1
+    }
+  ]
+}

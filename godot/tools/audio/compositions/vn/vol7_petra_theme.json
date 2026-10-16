@@ -1,0 +1,126 @@
+{
+ "meta": {
+  "title": "vol7_petra_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_petra_theme",
+  "notes": "Petra. A child's six-note recorder run, played twice, the second time a half-step lower."
+ },
+ "tempo_bpm": 72,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.504,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D5",
+     "bar": 1,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E5",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G5",
+     "bar": 1,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E5",
+     "bar": 1,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 3.5,
+     "dur": 1.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C#5",
+     "bar": 3,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D#5",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F#5",
+     "bar": 3,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D#5",
+     "bar": 3,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B4",
+     "bar": 3,
+     "beat": 3.5,
+     "dur": 1.0,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.224,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.14
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

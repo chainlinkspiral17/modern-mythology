@@ -1,0 +1,20 @@
+{
+  "id": "the_tideline",
+  "notes": "The Tideline · Oneironautics · 2004 · Rocha's first solo credit. Meditation piece. Minimalist blue-grey spine.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#0a1218",
+    "#4a6070",
+    "#c8d4dc",
+    "#28384a",
+    "#8ca0b0"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "hband", "y_range": [62, 64], "color": 4 },
+    { "op": "text",  "xy": [8, 32], "s": "THE", "color": 2 },
+    { "op": "text",  "xy": [4, 42], "s": "TIDELINE", "color": 2 },
+    { "op": "text",  "xy": [18, 78], "s": "OI", "color": 4 },
+    { "op": "text",  "xy": [18, 86], "s": "04", "color": 4 }
+  ]
+}

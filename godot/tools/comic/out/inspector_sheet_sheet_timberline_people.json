@@ -1,0 +1,28 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_timberline_people",
+      "kind": "character",
+      "era": "era1",
+      "tags": [
+        "character",
+        "era1",
+        "extra_mr_hadley",
+        "extra_principal",
+        "extra_yearbook_photog",
+        "extra_bus_driver",
+        "extra_cashier",
+        "extra_grunion_queen",
+        "extra_student",
+        "extra_kid"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. a lineup model sheet of a 1990s small-town high school's people, front views, labeled: MR. HADLEY (man of fifty with a mustache and a sweater vest holding chalk), THE PRINCIPAL (bald man with a whistle on a lanyard, short-sleeved shirt and tie), THE YEARBOOK PHOTOGRAPHER (a patient bored girl in a hoodie with a big camera), THE BUS DRIVER (heavy woman with a permanent wave in a quilted vest, hands on a wheel, eyes ahead), THE CASHIER (teenage girl in a grocery apron chewing gum), THE GRUNION QUEEN (a girl in a sash and a paper crown over a raincoat waving with her whole arm), A STUDENT (a teenager with a backpack, passing, face turned away), A KID (a gap-toothed child of nine in a too-big raincoat with a pencil, and again in a bedsheet with a pillowcase). Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

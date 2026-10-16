@@ -104,7 +104,7 @@ def clear_scene():
                 c.remove(item)
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+def _make_box_vendored(name, center, size, base_color, open_faces=None):
     open_faces = open_faces or set()
     cx, cy, cz = center
     sx, sy, sz = size
@@ -136,6 +136,24 @@ def make_box(name, center, size, base_color, open_faces=None):
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     return obj
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, color, segments=8, axis='Z'):
@@ -824,6 +842,70 @@ def build_workbench():
         sy = -3.0 - 0.30 + i * 0.05
         make_cyl(f"WireSpool_{i}", (sx, sy, bench_top_z + 0.04),
                  0.05, 0.04, col, segments=8, axis='Z')
+    # ── Frasier's phone — HERO PROP (2026-07-13) ──
+    # "It was not, strictly, a phone. A Frankensteinian assemblage of
+    # cracked screen and exposed circuitry held together with
+    # electrical tape and a kind of desperate optimism... a digital
+    # familiar." The Demon lives in its screen; it hisses on the
+    # bench. Front-and-centre on the workbench so [shot:insert phone]
+    # can frame it. Bright screen/LED colours read as glow through the
+    # post stack (same trick as the BBS phosphor + solder tip).
+    ph_x, ph_y = 0.30, -3.0 + 0.30      # front-centre of the bench
+    ph_z = bench_top_z + 0.012          # resting on the top
+    COL_PHONE_BODY   = (0.09, 0.09, 0.11, 1.0)   # scorched dark chassis
+    COL_PHONE_SCREEN = (1.00, 0.24, 0.86, 1.0)   # Demon-light magenta (arcana)
+    COL_PHONE_CRACK  = (0.04, 0.03, 0.05, 1.0)   # dark fracture lines
+    COL_PHONE_PCB    = (0.14, 0.42, 0.24, 1.0)   # exposed green board
+    COL_PHONE_TRACE  = (0.78, 0.54, 0.24, 1.0)   # copper traces
+    COL_PHONE_CHIP   = (0.14, 0.14, 0.16, 1.0)   # black chips
+    COL_PHONE_TAPE   = (0.05, 0.05, 0.06, 1.0)   # electrical tape wraps
+    COL_PHONE_LED    = (0.30, 1.00, 0.55, 1.0)   # green status LED (glow)
+    COL_PHONE_WIRE   = (0.20, 0.17, 0.14, 1.0)   # shunt wire
+    COL_PHONE_PAD    = (0.86, 0.82, 0.70, 1.0)   # electrode pad
+    # Chassis slab (a hair proud of the bench, reads from above + side)
+    make_box("Phone_Body", (ph_x, ph_y, ph_z + 0.010),
+             (0.095, 0.175, 0.020), COL_PHONE_BODY)
+    # Demon-light screen — proud of the body so the glow catches
+    make_box("Phone_Screen", (ph_x, ph_y, ph_z + 0.021),
+             (0.072, 0.132, 0.004), COL_PHONE_SCREEN)
+    # Spiderweb cracks across the screen (thin dark bars, offset)
+    make_box("Phone_Crack_A", (ph_x, ph_y + 0.02, ph_z + 0.0235),
+             (0.070, 0.004, 0.002), COL_PHONE_CRACK)
+    make_box("Phone_Crack_B", (ph_x + 0.012, ph_y - 0.03, ph_z + 0.0235),
+             (0.006, 0.090, 0.002), COL_PHONE_CRACK)
+    make_box("Phone_Crack_C", (ph_x - 0.020, ph_y + 0.015, ph_z + 0.0235),
+             (0.004, 0.070, 0.002), COL_PHONE_CRACK)
+    # Two electrical-tape wraps holding the assemblage together
+    make_box("Phone_Tape_1", (ph_x, ph_y - 0.058, ph_z + 0.012),
+             (0.100, 0.022, 0.024), COL_PHONE_TAPE)
+    make_box("Phone_Tape_2", (ph_x, ph_y + 0.052, ph_z + 0.012),
+             (0.100, 0.018, 0.024), COL_PHONE_TAPE)
+    # Exposed circuitry hanging off the bottom end (the "Frankenstein")
+    make_box("Phone_PCB", (ph_x + 0.02, ph_y - 0.108, ph_z + 0.006),
+             (0.060, 0.055, 0.006), COL_PHONE_PCB)
+    make_box("Phone_PCB_Trace_1", (ph_x + 0.005, ph_y - 0.108, ph_z + 0.010),
+             (0.050, 0.003, 0.001), COL_PHONE_TRACE)
+    make_box("Phone_PCB_Trace_2", (ph_x + 0.028, ph_y - 0.100, ph_z + 0.010),
+             (0.003, 0.040, 0.001), COL_PHONE_TRACE)
+    make_box("Phone_Chip_1", (ph_x + 0.00, ph_y - 0.100, ph_z + 0.012),
+             (0.018, 0.014, 0.008), COL_PHONE_CHIP)
+    make_box("Phone_Chip_2", (ph_x + 0.030, ph_y - 0.118, ph_z + 0.011),
+             (0.012, 0.010, 0.006), COL_PHONE_CHIP)
+    # Red-hot status LED on the PCB (Demon presence)
+    make_cyl("Phone_LED", (ph_x - 0.020, ph_y - 0.112, ph_z + 0.014),
+             0.005, 0.006, COL_PHONE_LED, segments=6, axis='Z')
+    # Stub antenna taped to the side
+    make_cyl("Phone_Antenna", (ph_x - 0.055, ph_y + 0.06, ph_z + 0.030),
+             0.004, 0.10, COL_PHONE_CHIP, segments=4, axis='Z')
+    # The neural shunt — a nest of wires snaking off to two electrode
+    # pads lying on the bench ("slapped a pad onto his temple")
+    make_cyl("Phone_Shunt_1", (ph_x + 0.10, ph_y - 0.10, ph_z + 0.006),
+             0.004, 0.20, COL_PHONE_WIRE, segments=4, axis='X')
+    make_cyl("Phone_Shunt_2", (ph_x + 0.20, ph_y - 0.04, ph_z + 0.006),
+             0.004, 0.14, COL_PHONE_WIRE, segments=4, axis='Y')
+    for k, (ex, ey) in enumerate([(0.28, -0.02), (0.30, 0.05)]):
+        make_cyl(f"Phone_Electrode_{k}", (ph_x + ex, ph_y + ey, ph_z + 0.004),
+                 0.016, 0.004, COL_PHONE_PAD, segments=8, axis='Z')
 
 
 def build_workbench_chair():
@@ -1135,8 +1217,30 @@ def export_glb():
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     legacy = {}
     if 'export_colors' in rna.properties:  legacy['export_colors']  = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     bpy.ops.export_scene.gltf(**base, **legacy)
+    try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+        import sys as _s, os as _o
+        _d = _o.path.dirname(_o.path.abspath(__file__))
+        for _c in (_d, _o.path.dirname(_d)):
+            if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                _s.path.insert(0, _c)
+        from _props.glb_colorfix import postfix as _colorfix
+        _colorfix(base["filepath"], bpy)
+    except Exception as _e:
+        print("[glb_colorfix] skipped:", _e)
     if os.path.exists(out_path):
         size = os.path.getsize(out_path)
         print(f"[build_cathedral] ✓ wrote {out_path} ({size} bytes)")
@@ -2006,6 +2110,318 @@ def build_magician_party_dressing():
                  (0.42, 0.32, 0.20, 1.0))
 
 
+
+
+def build_industrial_dressing():
+    """Asset-improvement pass (2026-07-11, user: 'needs more detail').
+    Fills the warehouse's empty mid-band with the industrial clutter
+    the prose describes: steel shelving stacked with salvage along
+    the north wall, crate stacks by the bay door, oil drums, cable
+    trays under the rafters, and three caged work lights hung over
+    the hero zones (bench / city floor / nave) — each work light has
+    a matching OmniLight3D in cathedral.tscn."""
+    steel = (0.30, 0.30, 0.32, 1.0)
+    rust  = (0.42, 0.26, 0.16, 1.0)
+    salv  = [(0.24, 0.30, 0.26, 1.0), (0.36, 0.30, 0.20, 1.0),
+             (0.22, 0.24, 0.34, 1.0), (0.40, 0.36, 0.28, 1.0)]
+    # ── Three shelving units along the north wall (y=+8.2) ──
+    for u in range(3):
+        ux = -6.0 + u * 3.0
+        for sgn in (-1, +1):
+            make_box(f"Shelf{u}_Upright_{sgn:+d}", (ux + sgn * 1.0, 8.35, 1.5),
+                     (0.08, 0.5, 3.0), steel)
+        for lv in range(4):
+            lz = 0.35 + lv * 0.75
+            make_box(f"Shelf{u}_Plate_{lv}", (ux, 8.35, lz),
+                     (2.1, 0.55, 0.05), steel)
+            # salvage bins/boxes on each shelf (staggered)
+            for b in range(2 + (lv + u) % 2):
+                bx = ux - 0.7 + b * 0.65 + (lv % 2) * 0.2
+                make_box(f"Shelf{u}_Salvage_{lv}_{b}",
+                         (bx, 8.32, lz + 0.17),
+                         (0.45, 0.4, 0.3), salv[(u + lv + b) % 4])
+    # ── Crate stack near the bay door (NE open floor) ──
+    for i, (cx, cy, cz, sz) in enumerate([
+            (7.4, 4.4, 0.35, 0.7), (7.4, 5.2, 0.35, 0.7),
+            (7.4, 4.8, 1.05, 0.7), (6.6, 4.6, 0.3, 0.6)]):
+        make_box(f"CrateStack_{i}", (cx, cy, cz), (sz, sz, sz), rust)
+        make_box(f"CrateStack_{i}_Lid", (cx, cy, cz + sz/2 + 0.015),
+                 (sz + 0.06, sz + 0.06, 0.03), (0.34, 0.22, 0.14, 1.0))
+    # ── Oil drum cluster (west, south of the plinth row) ──
+    for i, (dx, dy) in enumerate([(-7.6, -5.4), (-7.0, -5.7), (-7.4, -4.8)]):
+        make_cyl(f"OilDrum_{i}", (dx, dy, 0.45), 0.30, 0.90,
+                 (0.24, 0.30, 0.34, 1.0) if i != 1 else rust, segments=10)
+        make_cyl(f"OilDrum_{i}_Rim", (dx, dy, 0.90), 0.31, 0.03,
+                 steel, segments=10)
+    # ── Cable trays under the rafters, running E-W ──
+    for i, ty in enumerate((-4.0, 2.0)):
+        make_box(f"CableTray_{i}", (0.0, ty, 6.5), (20.0, 0.35, 0.08), steel)
+        make_box(f"CableTray_{i}_Cables", (0.0, ty, 6.56),
+                 (19.6, 0.22, 0.05), (0.14, 0.12, 0.10, 1.0))
+    # ── Caged work lights over the hero zones (lights in the tscn) ──
+    for name, (wx, wy) in {"Bench": (0.0, -3.0), "CityFloor": (5.0, 2.0),
+                           "Nave": (-5.5, 5.0)}.items():
+        make_cyl(f"WorkLight_{name}_Cord", (wx, wy, 5.2), 0.015, 3.2,
+                 (0.10, 0.10, 0.10, 1.0), segments=4)
+        make_cyl(f"WorkLight_{name}_Cage", (wx, wy, 3.55), 0.14, 0.24,
+                 steel, segments=6)
+        make_sphere_low(f"WorkLight_{name}_Bulb", (wx, wy, 3.52), 0.09,
+                        (0.98, 0.90, 0.70, 1.0), rings=2, segments=6)
+
+
+
+
+def build_organic_and_rig_detail():
+    """Asset pass 2 (user: 'not just boxes'). Compound-silhouette
+    props: kudzu vine runs down the interior brick (the prose's
+    'vines thick as wrists'), a gantry beam with chain hoist and
+    hook over the nave, a tire stack and cable spools by the bay
+    door, and a draped tarp hanging from the rafters."""
+    import math as _m
+    vine_wood  = (0.16, 0.20, 0.12, 1.0)
+    leaf_a     = (0.18, 0.30, 0.14, 1.0)
+    leaf_b     = (0.24, 0.36, 0.16, 1.0)
+    steel      = (0.30, 0.30, 0.32, 1.0)
+    rust       = (0.42, 0.26, 0.16, 1.0)
+    # ── Kudzu runs: wandering cylinder chains down the west wall
+    # (river side) and the NE corner, with leaf-cluster spheres ──
+    runs = [(-11.75, -1.0, 0.35), (-11.75, 3.2, -0.3), (11.75, 6.4, 0.3)]
+    for r, (wx, wy0, drift) in enumerate(runs):
+        z = 6.4
+        wy = wy0
+        seg = 0
+        while z > 0.8:
+            dz = 0.55 + 0.12 * ((seg * 7) % 3)
+            wy2 = wy + drift * (0.5 + 0.3 * ((seg * 5) % 2))
+            mid = ((wy + wy2) / 2.0, z - dz / 2.0)
+            make_cyl(f"Kudzu{r}_Stem_{seg}",
+                     (wx, mid[0], mid[1]),
+                     0.05 + 0.015 * ((seg + r) % 2), dz + 0.15,
+                     vine_wood, segments=5, axis='Z')
+            if seg % 2 == 0:
+                make_sphere_low(f"Kudzu{r}_Leaf_{seg}a",
+                                (wx + (0.12 if wx < 0 else -0.12), wy2, z - dz + 0.1),
+                                0.16 + 0.05 * (seg % 3), leaf_a if seg % 4 else leaf_b,
+                                rings=2, segments=6)
+            if seg % 3 == 0:
+                make_sphere_low(f"Kudzu{r}_Leaf_{seg}b",
+                                (wx + (0.2 if wx < 0 else -0.2), wy - 0.2, z - 0.1),
+                                0.13, leaf_b, rings=2, segments=5)
+            wy, z = wy2, z - dz
+            seg += 1
+    # ── Gantry beam + chain hoist over the nave (E-W at y=+4.2) ──
+    make_box("Gantry_Beam", (0.0, 4.2, 6.85), (17.0, 0.28, 0.30), steel)
+    make_box("Gantry_Beam_Flange", (0.0, 4.2, 6.68), (17.0, 0.40, 0.06), steel)
+    make_box("Gantry_Trolley", (-2.5, 4.2, 6.55), (0.5, 0.5, 0.25), rust)
+    for i in range(7):
+        lz = 6.4 - i * 0.28
+        make_cyl(f"Gantry_Chain_{i}", (-2.5, 4.2, lz), 0.035, 0.22,
+                 steel, segments=5, axis='Z' if i % 2 == 0 else 'Y')
+    make_box("Gantry_Hook_Shank", (-2.5, 4.2, 4.28), (0.06, 0.06, 0.30), steel)
+    make_box("Gantry_Hook_Curve", (-2.5, 4.32, 4.10), (0.06, 0.30, 0.08), steel)
+    make_box("Gantry_Hook_Tip",   (-2.5, 4.44, 4.20), (0.06, 0.08, 0.16), steel)
+    # ── Tire stack by the SE corner ──
+    for i in range(3):
+        tz = 0.12 + i * 0.24
+        off = (0.06 * (i % 2), -0.05 * (i % 2))
+        make_cyl(f"TireStack_{i}", (8.2 + off[0], -6.8 + off[1], tz),
+                 0.42, 0.22, (0.10, 0.10, 0.11, 1.0), segments=10)
+        make_cyl(f"TireStack_{i}_Hub", (8.2 + off[0], -6.8 + off[1], tz + 0.001),
+                 0.20, 0.224, (0.20, 0.20, 0.22, 1.0), segments=8)
+    # ── Cable spools near the bay door: one upright, one on its side ──
+    for name, (sx, sy), axis, up in (("Upright", (9.0, 1.0), 'Z', True),
+                                     ("Fallen", (8.5, 2.3), 'Y', False)):
+        r_disc, w = 0.48, 0.60
+        if up:
+            make_cyl(f"Spool_{name}_DiscB", (sx, sy, 0.05), r_disc, 0.09, rust, segments=10)
+            make_cyl(f"Spool_{name}_DiscT", (sx, sy, 0.05 + w), r_disc, 0.09, rust, segments=10)
+            make_cyl(f"Spool_{name}_Wound", (sx, sy, 0.05 + w / 2), 0.30, w - 0.1,
+                     (0.14, 0.13, 0.12, 1.0), segments=8)
+        else:
+            make_cyl(f"Spool_{name}_DiscA", (sx, sy - w / 2, r_disc), r_disc, 0.09,
+                     rust, segments=10, axis='Y')
+            make_cyl(f"Spool_{name}_DiscB", (sx, sy + w / 2, r_disc), r_disc, 0.09,
+                     rust, segments=10, axis='Y')
+            make_cyl(f"Spool_{name}_Wound", (sx, sy, r_disc), 0.30, w - 0.1,
+                     (0.14, 0.13, 0.12, 1.0), segments=8, axis='Y')
+    # ── Draped tarp hanging from a rafter (SW quarter) ──
+    tv = [(-3.6, -6.2, 5.6), (-2.4, -6.2, 5.6),
+          (-3.9, -5.6, 3.7), (-2.1, -5.9, 3.4),
+          (-3.7, -6.7, 3.9), (-2.3, -6.6, 3.6)]
+    make_prism("Tarp_SheetA", [tv[0], tv[1], tv[3], tv[2]],
+               [(0, 1, 2, 3)], (0.35, 0.36, 0.30, 1.0))
+    make_prism("Tarp_SheetB", [tv[0], tv[1], tv[5], tv[4]],
+               [(0, 1, 2, 3)], (0.31, 0.32, 0.27, 1.0))
+
+
+
+
+def build_overhead_rigging():
+    """Asset pass 3: the air above the workbench earns its keep — a
+    pulley on a rafter bracket with a rope down to a hook, and two
+    droplights on long cords over the open floor (fixtures only;
+    the room's light comes from the tscn rig)."""
+    steel = (0.30, 0.30, 0.32, 1.0)
+    rope  = (0.52, 0.44, 0.30, 1.0)
+    # Pulley + rope + hook, off the bench's east end
+    px, py = 1.4, -3.0
+    make_box("Pulley_Bracket", (px, py, 6.55), (0.10, 0.24, 0.30), steel)
+    make_cyl("Pulley_Wheel", (px, py, 6.35), 0.14, 0.06, steel, segments=10, axis='X')
+    make_cyl("Pulley_RopeDown", (px + 0.10, py, 4.55), 0.022, 3.5, rope, segments=4)
+    make_cyl("Pulley_RopeUp", (px - 0.10, py, 5.55), 0.022, 1.5, rope, segments=4)
+    make_box("Pulley_HookShank", (px + 0.10, py, 2.72), (0.05, 0.05, 0.18), steel)
+    make_box("Pulley_HookCurve", (px + 0.10, py + 0.09, 2.60), (0.05, 0.22, 0.06), steel)
+    # Two droplights on cords over the open floor
+    for name, (dx, dy, dz) in {"A": (-2.6, -0.8, 3.1), "B": (2.6, -0.4, 3.4)}.items():
+        make_cyl(f"Droplight_{name}_Cord", (dx, dy, (7.0 + dz) / 2), 0.012,
+                 7.0 - dz, (0.10, 0.10, 0.10, 1.0), segments=4)
+        make_cyl(f"Droplight_{name}_Socket", (dx, dy, dz + 0.08), 0.045, 0.10,
+                 (0.20, 0.16, 0.10, 1.0), segments=6)
+        make_sphere_low(f"Droplight_{name}_Bulb", (dx, dy, dz), 0.07,
+                        (0.96, 0.88, 0.66, 1.0), rings=2, segments=6)
+
+
+
+
+def build_graffiti_and_schematics():
+    """Asset pass 4: the decay has authors. Two layered graffiti
+    murals on the brick (color-block art with paint drips), loose
+    schematic sheets scattered around the bench and city pad, and a
+    ventilation duct run down the NE corner."""
+    # ── Mural A — north wall (big arcs of color + tag bar + drips)
+    def mural(tag, x0, wall_y, face_dir, w, palette):
+        f = wall_y + 0.03 * face_dir
+        f2 = wall_y + 0.045 * face_dir
+        f3 = wall_y + 0.06 * face_dir
+        make_box(f"Mural_{tag}_Bg", (x0, f, 2.2), (w, 0.01, 2.6), palette[0])
+        make_box(f"Mural_{tag}_ShapeA", (x0 - w * 0.22, f2, 2.5),
+                 (w * 0.36, 0.01, 1.6), palette[1])
+        make_box(f"Mural_{tag}_ShapeB", (x0 + w * 0.18, f2, 1.9),
+                 (w * 0.42, 0.01, 1.1), palette[2])
+        make_box(f"Mural_{tag}_TagBar", (x0, f3, 3.1), (w * 0.7, 0.01, 0.35),
+                 palette[3])
+        for d in range(5):
+            make_box(f"Mural_{tag}_Drip_{d}",
+                     (x0 - w * 0.3 + d * w * 0.15, f2, 0.75 - 0.12 * (d % 3)),
+                     (0.05, 0.01, 0.5 + 0.2 * (d % 2)), palette[1 + d % 3])
+    mural("N", -8.5, 9.0, -1, 4.5,
+          [(0.10, 0.08, 0.14, 1.0), (0.75, 0.25, 0.55, 1.0),
+           (0.20, 0.60, 0.65, 1.0), (0.90, 0.80, 0.30, 1.0)])
+    mural("E", 12.0, 0.0, 0, 0.0, [(0, 0, 0, 1)] * 4) if False else None
+    # East wall mural — same builder, rotated axes done manually
+    fx = 11.94
+    make_box("Mural_E_Bg", (fx, -1.5, 2.0), (0.01, 3.6, 2.2),
+             (0.08, 0.12, 0.10, 1.0))
+    make_box("Mural_E_ShapeA", (fx - 0.015, -2.3, 2.3), (0.01, 1.3, 1.4),
+             (0.85, 0.45, 0.15, 1.0))
+    make_box("Mural_E_ShapeB", (fx - 0.015, -0.8, 1.7), (0.01, 1.5, 0.9),
+             (0.25, 0.30, 0.70, 1.0))
+    make_box("Mural_E_TagBar", (fx - 0.03, -1.5, 2.85), (0.01, 2.5, 0.3),
+             (0.90, 0.88, 0.80, 1.0))
+    for d in range(4):
+        make_box(f"Mural_E_Drip_{d}", (fx - 0.015, -2.6 + d * 0.75, 0.7),
+                 (0.01, 0.05, 0.45 + 0.18 * (d % 2)), (0.85, 0.45, 0.15, 1.0))
+    # ── Schematic sheets on the floor ──
+    sheets = [(-1.2, -1.9, 0.5, 0.36), (0.9, -2.1, 0.42, 0.3),
+              (3.6, -4.6, 0.46, 0.34), (1.8, -0.6, 0.38, 0.5)]
+    for i, (sx, sy, w, h) in enumerate(sheets):
+        blue = i % 2 == 0
+        make_box(f"Schematic_{i}", (sx, sy, 0.006), (w, h, 0.004),
+                 (0.20, 0.28, 0.48, 1.0) if blue else (0.90, 0.88, 0.80, 1.0))
+        for l in range(3):
+            make_box(f"Schematic_{i}_Line_{l}",
+                     (sx - w * 0.2 + l * w * 0.2, sy, 0.010),
+                     (0.02, h * 0.7, 0.002),
+                     (0.85, 0.88, 0.92, 1.0) if blue else (0.25, 0.25, 0.30, 1.0))
+    # ── Duct run down the NE corner ──
+    make_box("Duct_Vert", (11.5, 7.9, 3.2), (0.45, 0.45, 6.4),
+             (0.38, 0.40, 0.42, 1.0))
+    make_cyl("Duct_Elbow", (11.5, 7.9, 6.55), 0.30, 0.5,
+             (0.34, 0.36, 0.38, 1.0), segments=8, axis='Y')
+    make_box("Duct_Grille", (11.5, 7.63, 1.4), (0.34, 0.02, 0.5),
+             (0.22, 0.24, 0.26, 1.0))
+    for g in range(4):
+        make_box(f"Duct_GrilleSlat_{g}", (11.5, 7.615, 1.22 + g * 0.12),
+                 (0.30, 0.01, 0.03), (0.14, 0.15, 0.16, 1.0))
+
+
+def build_magician_props_2026_08():
+    """2026-08-03 hero-prop pass (vol5_ch1_magician): the gutted CRT
+    projecting the miniature casino, the e-waste vocabulary of the
+    model city (heat-sink monuments, capacitor water towers,
+    server-rack tenements, smartphone-screen paving), the aquarium
+    pump under-lighting the crushed-glass river, and the sputtering
+    fluorescent tubes overhead."""
+    # Gutted CRT + the holographic casino cone (Boll Parish corner)
+    make_box("Gutted_CRT", (6.2, 0.9, 0.42), (0.40, 0.38, 0.34), (0.62, 0.58, 0.50, 1.0))
+    make_box("Gutted_CRT_Hollow", (6.2, 0.9, 0.50), (0.28, 0.26, 0.16), (0.08, 0.07, 0.07, 1.0))
+    make_cyl("Casino_Holo_Cone", (6.2, 0.9, 0.74), 0.14, 0.30, (0.55, 0.80, 0.88, 0.30), segments=10)
+    make_box("Casino_Holo_Core", (6.2, 0.9, 0.78), (0.10, 0.10, 0.16), (0.72, 0.92, 0.96, 0.55))
+    # E-waste city on the Graustark platform (centered ~(5,2,0.30))
+    for i, (dx, dy) in enumerate(((-1.4, -0.9), (-0.6, -1.1), (0.4, -0.8), (1.2, -1.2))):
+        make_box(f"Motherboard_Plaza_{i}", (5.0+dx, 2.0+dy, 0.315), (0.55, 0.40, 0.01), (0.20, 0.42, 0.26, 1.0))
+    for i, (dx, dy, h) in enumerate(((-1.2, 0.4, 0.34), (-0.5, 0.7, 0.46), (0.3, 0.5, 0.28))):
+        make_box(f"HeatSink_Monument_{i}", (5.0+dx, 2.0+dy, 0.30 + h/2.0), (0.16, 0.16, h), (0.60, 0.62, 0.64, 1.0))
+        for f in range(3):
+            make_box(f"HeatSink_{i}_Fin_{f}", (5.0+dx, 2.0+dy - 0.07 + f*0.07, 0.30 + h + 0.015),
+                     (0.18, 0.015, 0.03), (0.68, 0.70, 0.72, 1.0))
+    for i, (dx, dy) in enumerate(((1.0, 0.9), (1.5, 0.3))):
+        make_cyl(f"Capacitor_WaterTower_{i}", (5.0+dx, 2.0+dy, 0.46), 0.05, 0.28, (0.22, 0.24, 0.44, 1.0), segments=8)
+        make_cyl(f"Capacitor_{i}_Cap", (5.0+dx, 2.0+dy, 0.61), 0.055, 0.02, (0.72, 0.72, 0.70, 1.0), segments=8)
+    for i, (dx, dy, h) in enumerate(((-1.6, 1.1, 0.40), (0.0, 1.2, 0.52))):
+        make_box(f"ServerRack_Tenement_{i}", (5.0+dx, 2.0+dy, 0.30 + h/2.0), (0.28, 0.20, h), (0.28, 0.28, 0.30, 1.0))
+        for s in range(4):
+            make_box(f"ServerRack_{i}_Slot_{s}", (5.0+dx, 2.0+dy-0.105, 0.36 + s*(h/4.5)),
+                     (0.22, 0.01, 0.03), (0.44, 0.30, 0.18, 1.0))
+    for i, (dx, dy) in enumerate(((-0.9, -0.2), (0.1, -0.3), (0.9, -0.1))):
+        make_box(f"Screen_Paving_{i}", (5.0+dx, 2.0+dy, 0.312), (0.45, 0.16, 0.008), (0.16, 0.20, 0.28, 1.0))
+        make_box(f"Screen_Paving_{i}_Crack", (5.0+dx+0.05, 2.0+dy, 0.316), (0.02, 0.14, 0.004), (0.55, 0.62, 0.66, 1.0))
+    # Aquarium pump + under-glow on the model river
+    make_box("Aquarium_Pump", (5.0, 3.3, 0.36), (0.20, 0.14, 0.12), (0.30, 0.32, 0.30, 1.0))
+    make_box("River_Underglow", (5.0, 2.6, 0.308), (1.8, 0.30, 0.006), (0.42, 0.62, 0.80, 1.0))
+    # The sputtering fluorescent tubes overhead — cantankerous
+    # seraphim (this warehouse EARNS them)
+    for r, ry in enumerate((-3.0, 2.0)):
+        for c in range(4):
+            tx = -6.0 + c * 4.0
+            make_box(f"Seraphim_Tube_{r}_{c}", (tx, ry, 6.2), (1.30, 0.12, 0.06), (0.90, 0.94, 0.86, 1.0))
+            make_box(f"Seraphim_Housing_{r}_{c}", (tx, ry, 6.28), (1.40, 0.20, 0.06), (0.40, 0.40, 0.42, 1.0))
+
+
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues fire on the model chapter:
+
+    - THE SPEAK & SPELL ("has not been the same since the night it
+      sang Old MacDonald in the voice of early Einstuerzende
+      Neubauten attempting Cumbia"): the orange toy flat on the
+      workbench's west end — body, key grid, green display slot.
+      NOTE for the Deck look: workbench_props.glb loads separately;
+      if the terminal lands on the west end, slide this east.
+    - THE CROW ("lands on the fence post beside him. The crow has
+      been waiting."): a fence post beside the dock with the crow
+      perched on it (the _props/creatures crow).
+    - The charcoal cue (~, the S U N letters on Sun's thigh) is a
+      bedroom beat from another life of this preset — no honest
+      anchor here; deliberately blind, VnDirector holds the wide.
+
+    Markers are HAND-AIMED in cathedral.tscn: this builder lives in
+    tools/blender (BUILDERS_ALT), which geometry_godot does not
+    execute, so marker_reaim cannot see its objects.
+    """
+    from _props.creatures import make_crow
+    make_box("SpeakSpell_Body", (-1.25, -2.80, 0.9575), (0.25, 0.19, 0.035),
+             (0.85, 0.30, 0.16, 1.0))
+    make_box("SpeakSpell_Keys", (-1.25, -2.83, 0.9761), (0.18, 0.08, 0.002),
+             (0.90, 0.82, 0.62, 1.0))
+    make_box("SpeakSpell_Display", (-1.25, -2.735, 0.9761), (0.16, 0.045, 0.002),
+             (0.16, 0.30, 0.18, 1.0))
+    make_box("Dock_Fence_Post", (15.0, 3.2, 0.55), (0.12, 0.12, 1.10),
+             (0.40, 0.32, 0.24, 1.0))
+    make_crow("Cathedral_Crow", 15.0, 3.2, 1.11, facing=-1.0)
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2018,18 +2434,24 @@ def main():
     build_entry_door()
     build_plinth_markers()
     build_workbench()
+    build_hero_props_2026_09()
     build_workbench_chair()
     build_pegboard()
     build_shelves_and_figurines()
     build_storage_crates()
     build_hanging_chains_and_cables()
     build_floor_clutter()
+    build_industrial_dressing()
+    build_organic_and_rig_detail()
+    build_overhead_rigging()
+    build_graffiti_and_schematics()
     build_gauntlet_stations()
     # Scene-description specifics from the Magician scenarios —
     # fridge with the cake, folding chairs, the Demon's stool with
     # his glass, the osprey nest at the river window. Always present
     # in the GLB.
     build_magician_party_dressing()
+    build_magician_props_2026_08()
     export_glb()
 
 

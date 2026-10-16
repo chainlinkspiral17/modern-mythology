@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-02-28_too_good_1",
+      "strip_id": "dw_2000-02-28_too_good_1",
+      "title": "Too good for it, i",
+      "date": "2000-02-28",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, drawn the same in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, hair longer, brown canvas chore coat with a frayed cuff and one mismatched button, hands always in its pockets; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders, oversized dark cardigan, a Discman on her belt with headphones around her neck, a folded-back paperback, reads while talking; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. Title of the strip: DRIFT WOOD. The strip: A second envelope from Portland. This one is opened, on the page. Wood is magnificent about it. Panel 1: a young man standing at his bedroom table reading a letter from an opened envelope, a dog looking up, a crowded corkboard behind, brush-pen black and white (in this panel: WOOD, BARNABY (the dog)). Wood says \"'...pleased to offer...' Of course they are.\". Panel 2: close-up of a typed acceptance letter with one figure smudged into illegibility, a thumb nearby. No dialogue in this panel. Panel 3: a young man with his arms spread wide holding a letter and orating to an unimpressed dog under a table (in this panel: WOOD, BARNABY (the dog)). Wood says \"A commercial racket designed to castrate raw vision. Four years of being told what a line is by people who've never cut mat board.\". Panel 4: an acceptance letter pinned to a corkboard on top of a bus schedule, a young man drawing at the table below, a dog asleep, no words (in this panel: WOOD, BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @chloe_17 is the model sheet for CHLOE: match that face, build, hair and clothes exactly. Reference @wood_20 is the model sheet for WOOD: match that face, build, hair and clothes exactly. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, build, hair and clothes exactly. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, hair longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Panel 1: a young man standing at his bedroom table reading a letter from an opened envelope, a dog looking up, a crowded corkboard behind, brush-pen… (in this panel: WOOD, BARNABY (the dog)). Wood: \"'...pleased to offer...' Of course they are.\". Panel 2: close-up of a typed acceptance letter with one figure smudged into illegibility, a thumb nearby. No text. Panel 3: a young man with his arms spread wide holding a letter and orating to an unimpressed dog under a table (in this panel: WOOD, BARNABY (the dog)). Wood: \"A commercial racket designed to castrate raw vision. Four years of being told what a line is by people who've never cut mat board.\". Panel 4: an acceptance letter pinned to a corkboard on top of a bus schedule, a young man drawing at the table below, a dog asleep, no words (in this panel: WOOD, BARNABY (the dog)). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog).",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        }
+      ]
+    }
+  ]
+}

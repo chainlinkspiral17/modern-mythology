@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://daily_grind_interior_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://daily_grind_interior_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/daily_grind_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.62, 0.78, 0.86, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.66, 0.52, 1)
-ambient_light_energy = 0.75
+ambient_light_energy = 0.55
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.36, 0.26, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
@@ -154,23 +169,102 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.88, 0.62, 1)
-light_energy = 0.7
-shadow_enabled = false
+; ── light rig (2026-10-10, draft 3) — written row-major (the .tscn basis lists ROWS)
+; the overcast morning through the Main Street and side windows: north, east and down
+[node name="Sky_Window" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9397, 0.1170, -0.3214, 0.0000, 0.9397, 0.3420, 0.3420, -0.3214, 0.8830, 0, 8, 8)
+light_color = Color(0.84, 0.88, 0.94, 1)
+light_energy = 0.60
+shadow_enabled = true
+metadata/daylight = true
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 4, 0)
-light_color = Color(0.92, 0.74, 0.32, 1)
-light_energy = 0.3
+; the bar pendants (2700 K)
+[node name="Pendant_Bar_0_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00, 2.42, -8.00)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 1.30
 shadow_enabled = false
+omni_range = 4.00
 
-[node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, -4)
-light_color = Color(0.42, 0.42, 0.40, 1)
-light_energy = 0.18
+[node name="Pendant_Bar_1_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60, 2.42, -8.00)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 1.30
 shadow_enabled = false
+omni_range = 4.00
+
+[node name="Pendant_Bar_2_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.20, 2.42, -8.00)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.00
+
+; the table pendants and the corner table
+[node name="Pendant_Table_0_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60, 2.35, -3.00)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.40
+
+[node name="Pendant_Table_1_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20, 2.35, -3.00)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.40
+
+[node name="Pendant_Table_2_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60, 2.35, -5.40)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.40
+
+[node name="Pendant_Table_3_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20, 2.35, -5.40)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.40
+
+[node name="Pendant_Table_4_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60, 2.35, -4.20)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.40
+
+[node name="Pendant_Corner_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85, 2.20, -1.40)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.95
+shadow_enabled = false
+omni_range = 3.20
+
+; the floor lamp in the lounge, the hall fluorescent
+[node name="Floor_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55, 1.50, -9.55)
+light_color = Color(1.00, 0.80, 0.56, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 3.00
+
+[node name="Hall_Fluor_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20, 2.55, -11.30)
+light_color = Color(0.92, 0.96, 0.92, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 3.00
+
+; the track over Lena's paintings (unnamed spill: the heads are aimed, not omni)
+[node name="Track_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00, 3.10, -3.50)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 3.20
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +366,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +385,82 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-10-10, draft 3) — the Daily Grind
+; closeup: Lena behind the bar by the milk pitchers, from the customer's side
+[node name="shot_closeup_lena" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.300, 1.550, -6.550)
+rotation = Vector3(0.0289, -0.3152, 0.0)
+metadata/fov = 40.0
+
+; closeup: Wren at the counter ("Hot chocolate?"), from behind the bar
+[node name="shot_closeup_wren" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.300, 1.620, -8.950)
+rotation = Vector3(-0.0976, 2.7656, 0.0)
+metadata/fov = 40.0
+
+; closeup: Kai at the corner table, his back to the side window
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.950, 1.350, -1.750)
+rotation = Vector3(-0.0832, 1.7971, 0.0)
+metadata/fov = 42.0
+
+; closeup: Tem across the corner table from him, the room and the bar behind her
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.550, 1.350, -0.550)
+rotation = Vector3(-0.0826, -0.9987, 0.0)
+metadata/fov = 42.0
+
+; closeup: Tem at the corner table (the same frame as person_b)
+[node name="shot_closeup_tem" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.550, 1.350, -0.550)
+rotation = Vector3(-0.0826, -0.9987, 0.0)
+metadata/fov = 42.0
+
+; closeup: Finn in the fourth chair, the wet coat, the duffel at his feet
+[node name="shot_closeup_finn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.550, 1.400, -0.500)
+rotation = Vector3(-0.0894, -0.4316, 0.0)
+metadata/fov = 42.0
+
+; insert: Kai's phone on the corner table beside the laptop (from the N, clear of the open screen)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.850, 1.200, -2.050)
+rotation = Vector3(-0.7129, 2.6150, 0.0)
+metadata/fov = 40.0
+
+; insert: the Frequency paperback on the corner table, the graphite dial on its cover
+[node name="shot_insert_book" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.450, 1.200, -1.400)
+rotation = Vector3(-0.8088, 0.7509, 0.0)
+metadata/fov = 40.0
+
+; insert: Wren's spiral notebook
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.300, 1.150, -1.250)
+rotation = Vector3(-0.7236, 0.6202, 0.0)
+metadata/fov = 40.0
+
+; insert: Finn's duffel on the floor by the fourth chair
+[node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.550, 1.100, -3.050)
+rotation = Vector3(-0.8210, 2.3162, 0.0)
+metadata/fov = 42.0
+
+; insert: the tower on the hill, "longer than the town" — a cutaway from the slope below it (inserts stay within 40 m)
+[node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-30.000, 16.000, 48.000)
+rotation = Vector3(0.4495, 2.8753, 0.0)
+metadata/fov = 40.0
+
+; insert: the front window and the slate-gray light over Main
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.000, 1.550, -1.600)
+rotation = Vector3(-0.0110, 3.1122, 0.0)
+metadata/fov = 52.0
+
+; reverse: Lena's view from behind the bar, over the machine to the front window and Main
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.680, -8.900)
+rotation = Vector3(-0.0492, 2.7192, 0.0)
+metadata/fov = 60.0

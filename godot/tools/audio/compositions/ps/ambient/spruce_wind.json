@@ -1,0 +1,11 @@
+{
+  "meta": { "title": "wind in the spruces", "for": "Pirate Summer · east forest and north bluff · plays every ~40s", "composer": "Marc Ostrom" },
+  "tempo_bpm": 50, "time_sig": [4, 4], "sample_rate": 44100, "loop_bars": 4,
+  "tracks": [
+    { "instrument": "rain", "gain": 0.22, "notes": [ {"pitch": "F5", "bar": 1, "beat": 1, "dur": 8.0, "vel": 0.6} ] },
+    { "instrument": "soft_sine", "gain": 0.10, "notes": [
+      {"pitch": "F5", "bar": 1, "beat": 2, "dur": 2.5, "vel": 0.24},
+      {"pitch": "D5", "bar": 3, "beat": 1, "dur": 2.0, "vel": 0.22}
+    ] }
+  ]
+}

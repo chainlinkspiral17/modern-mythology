@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "title": "vol7_finn_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_finn_theme",
+  "notes": "Finn. A short bow across a single fiddle string + the snow-shovel scrape outside the door."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.45,
+   "notes": [
+    {
+     "pitch": "D5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D5",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2.5,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.8,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 2,
+     "beat": 3,
+     "dur": 0.8,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 0.8,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 4,
+     "beat": 3,
+     "dur": 0.8,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "title": "The Graveyard (temp)",
+ "temp": true,
+ "format": "ogg",
+ "length_sec": 131,
+ "frames": 5777100,
+ "sample_rate": 44100,
+ "loop": false,
+ "loop_offset": 0,
+ "loop_start": 0,
+ "bpm": 60,
+ "bars": 32,
+ "lufs": -14,
+ "credits": "",
+ "approved": {
+  "take": "20261013-151331-s3719752444",
+  "seed": 3719752444,
+  "date": "2026-10-13T22:15:32.071Z"
+ },
+ "mix": "assets/audio/bgm/vol2_graveyard_solo.temp.ogg",
+ "quality": {
+  "mix": 4,
+  "stem": 1
+ },
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/vol2_graveyard_solo.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/vol2_graveyard_solo.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/vol2_graveyard_solo.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/vol2_graveyard_solo.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/vol2_graveyard_solo.stems/pad.ogg",
+   "layer": 0
+  }
+ ],
+ "bytes": {
+  "mix": 1640941,
+  "stems": 4140378
+ }
+}

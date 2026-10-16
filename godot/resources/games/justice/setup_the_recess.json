@@ -1,0 +1,203 @@
+{
+ "id": "the_recess",
+ "arcana": "xi_justice",
+ "location": "courthouse_chamber",
+ "hand": "anna",
+ "title": "THE RECESS",
+ "subtitle": "Graustark Parish Courthouse · 12:40 PM · fifty minutes of lunch",
+ "difficulty": "medium",
+ "epigraph_upright": "Justice recesses. The scales come off the bench and eat a sandwich like anybody. This is not a suspension of the work. This is the part of the work that keeps the rest of it honest.",
+ "epigraph_reversed": "You brought the transcript to lunch. You are annotating it with the hand that should be holding the sandwich. The afternoon session will be worse for every page you turn now.",
+ "scene_description": "Recess until 1:30. The chamber is yours; the sandwich is from the place on Ninth; the transcript of the morning is in your bag where you promised Erica it would stay. The clerk is eating in the corridor because the corridor is cooler. Somewhere in the building, Tessier's counsel is doing whatever Tessier's counsel does at lunch, which is not your business, which is the point. Fifty minutes. The verdict on how you spend them is the one nobody appeals.",
+ "direction_hint": "Eat the sandwich. Actually eat it. Three people are in this building at lunch with no agenda — that's rarer than it sounds. Connect three, keep Inertia under 7, and don't open the bag.",
+ "opening_log_lines": [
+  "The chamber clock is four minutes fast and everyone has agreed not to fix it.",
+  "Click [b]PHASE: ACTION[/b] for the rules. CROSS is sealed until 1:30 — that's the point of a recess.",
+  "The sandwich place on Ninth still wraps in paper. Small mercies, still operating."
+ ],
+ "starting_state": {
+  "player_pos": "chambers",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 0,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 6,
+  "tension_stat": "weight",
+  "tension_label": "WEIGHT",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "enter_evidence",
+   "object",
+   "stipulate",
+   "cross"
+  ]
+ },
+ "visitors_present_at_start": [
+  "the_court_clerk"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "erica_on_the_bench",
+   "arrival_turn": 2,
+   "arrival_space": "chambers"
+  },
+  {
+   "visitor": "the_window_washer",
+   "arrival_turn": 4,
+   "arrival_space": "corridor"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_transcript_stayed_in_bag": true,
+  "require_personal_topic_raised": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "opened_the_bag": true,
+  "worked_through_lunch": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the matter is called",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the defense reads the motion",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "Erica is looking at the brief, not at you",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the gallery shifts in the pews",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the defense's argument keeps landing",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "you can hear the clerk's pen pause",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "Erica looks at you the first time",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 12,
+   "label": "the motion goes to ruling",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "rear_door",
+   "label": "REAR DOOR",
+   "ending_lore_token": "anna_left_through_the_rear",
+   "visible_from_start": true,
+   "flavor": "Out the back. The hallway that runs to the chambers. Erica's chambers."
+  }
+ ],
+ "max_turns": 10,
+ "notes": "Fourth setup (Wave-3, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Mechanical scaffolding inherited from the arcana's medium sibling; functional win/loss contract is the generic evaluator (connections + inertia); named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_window_washer",
+   "name": "Dupre (the courthouse windows, third Thursday)",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 4,
+    "from": "corridor",
+    "to": "corridor"
+   },
+   "lore_token": "dupre_did_the_high_panes",
+   "lore_text": "Dupre. Does the courthouse glass every third Thursday, has for nineteen years, and has heard — through glass, which he will remind you carries sound better than people think — more of this parish's business than most of its lawyers. Repeats none of it. That's the whole reason he still has the contract.",
+   "accent": "#a8c8d8",
+   "mood": "preoccupied",
+   "tutorial_note": "Dupre connects through STIPULATE in the corridor — agree with him about the weather, the glass, and the fast clock, in that order. It's a ritual. Rituals are stipulations that survived.",
+   "steps": {
+    "greet": "He nods at you over the bucket. \"Judge.\" He's not wrong by much.",
+    "listen": "He says the west panes are the worst this month — river haze. Says the chamber clock is four minutes fast. Says it like a man reading evidence into a record he keeps in his head.",
+    "deliver": "You hold the ladder. He doesn't need it held. Nineteen years of not needing it held, and it gets held anyway, third Thursdays.",
+    "sit_with": "From the top of the ladder he says the only opinion he'll ever offer you: \"Building's honest. Seen every kind of day through this glass. Building's honest.\" You take it as precedent."
+   }
+  },
+  {
+   "id": "the_sandwich_in_paper",
+   "name": "the sandwich from Ninth Street, still wrapped",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 1,
+    "from": "chambers",
+    "to": "chambers"
+   },
+   "lore_token": "the_sandwich_got_eaten",
+   "lore_text": "Muffuletta, half, extra olive salad, wrapped in paper by a man named Feld whose father wrapped them in the same paper. It has been on the desk for six minutes. The transcript in the bag knows exactly how long.",
+   "accent": "#d8c890",
+   "mood": "lonely",
+   "tutorial_note": "The sandwich connects through SHORT REST in chambers — the connection is eating it while it's still lunch and you're still a person.",
+   "steps": {
+    "greet": "It's wrapped. The paper crackles when the ceiling fan passes over it.",
+    "listen": "Unwrapped, it smells like Ninth Street at noon, which smells like 1989, which is admissible.",
+    "deliver": "You eat the first half at the desk and the second half at the window, which is the correct order and both of you know it.",
+    "sit_with": "You fold the paper into quarters after, the way Feld's father used to ask people to. Nobody asks anymore. You do it anyway."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [
+  {
+   "id": "chambers",
+   "label": "CHAMBERS",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "corridor",
+   "label": "THE CORRIDOR",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_adjacency_additions": []
+}

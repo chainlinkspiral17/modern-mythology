@@ -1,0 +1,101 @@
+{
+ "id": "winter_blocked",
+ "notes": "Winter card \u00b7 BLOCKED \u00b7 the flat as you knew it. Ruth no longer waves.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#5a6058",
+  "#8a8878",
+  "#3a4a52",
+  "#a8a290",
+  "#708468",
+  "#b8b4a4",
+  "#d87838",
+  "#2a3038"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 5
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    38,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     20,
+     90
+    ],
+    [
+     60,
+     50
+    ],
+    [
+     90,
+     62
+    ],
+    [
+     150,
+     46
+    ],
+    [
+     160,
+     56
+    ],
+    [
+     160,
+     90
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     30,
+     60
+    ],
+    [
+     70,
+     56
+    ],
+    [
+     110,
+     60
+    ],
+    [
+     150,
+     54
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    128,
+    26,
+    20,
+    10
+   ],
+   "color": 7
+  },
+  {
+   "op": "vline",
+   "x": 138,
+   "y_range": [
+    18,
+    26
+   ],
+   "color": 7
+  }
+ ]
+}

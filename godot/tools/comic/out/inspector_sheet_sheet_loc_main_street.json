@@ -1,0 +1,22 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_main_street",
+      "kind": "location",
+      "era": "era1",
+      "tags": [
+        "location",
+        "era1",
+        "dw_main_street",
+        "dw_chloe_porch"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. an environment sheet of a small coastal timber-town main street: a corner hardware store reading WAGNER'S HARDWARE, a row of wooden houses, a laundromat, a crosswalk, a log truck; the same street shown twice, once in the late 1990s and once decades later with a cell mast, key lockboxes on the doors and an empty corner storefront; labeled MAIN STREET 1997 / 2021. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

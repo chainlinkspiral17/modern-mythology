@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+; Standalone proof of SlowstickDiorama. Open on the Deck (F6 in the editor)
+; to see the shallow 3D diorama in isolation before wiring it behind a stick:
+; a slow-turning untextured "resonator" placeholder under Light3D. Point the
+; script's glb_path at a normalized Meshy hero to swap the placeholder.
+
+[ext_resource type="Script" path="res://scenes/games/estuary_3/SlowstickDiorama.gd" id="1_diorama"]
+
+[node name="DioramaDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_diorama")

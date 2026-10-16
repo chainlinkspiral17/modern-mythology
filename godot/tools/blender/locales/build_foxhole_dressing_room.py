@@ -1,297 +1,234 @@
-"""foxhole_dressing_room — THE FOXHOLE, the dressing room. Vol 6.
+"""foxhole_dressing_room — backstage at the Foxhole venue (vol6 ch22).
 
-Same venue as build_foxhole_bar.py / build_foxhole_stage.py (The
-Foxhole, Live Oak Street strip mall, New Auburn TX). Canon is exact
-and modest — vol6_ch22_foxhole.json: "The dressing room is, by
-Foxhole standard, a storage closet with two folding chairs and a
-clothing rack and a sign on the door that says DRESSING ROOM in
-marker. The fluorescent overhead has a slow buzz."
+DRAFT 3 (2026-10-10) — the wrong REGISTER, the other way round. The
+prose: "The dressing room is, by Foxhole standard, a storage closet with
+two folding chairs and a clothing rack and a sign on the door that says
+DRESSING ROOM in marker. The fluorescent overhead has a slow buzz ... Em
+on one folding chair stretching her neck, Carl on the floor against the
+wall with his sticks rolling between his palms, Nate on the second
+folding chair on his phone, Jesse standing at the rack with one hand on
+the metal." Drafts 1-2 dressed it up as a green room — a bulb-framed
+vanity, a couch, a mini-fridge, a rug. It is the closet: the two folding
+chairs, the rack, the tube, the door and its marker sign, the band's
+cases, the setlist taped up; and what a venue's storage closet holds —
+the steel shelving on the N wall with the cleaning supplies, the paper
+towel and toilet paper flats, the bar's spare glassware crates, the
+mop bucket and its mop in the corner, the stack of spare folding chairs,
+the box of merch shirts; the floor left clear along the W wall for Carl.
 
-Canon dressed into this room:
-  · TWO folding chairs (Em's and Nate's) — no more. Carl sits on
-    the floor against the wall; that floor stays clear.
-  · The clothing rack Jesse stands at with one hand on the metal,
-    and Em grips post-set (vol6_ch22).
-  · The door with DRESSING ROOM in marker — leaf swung open flat
-    against the south wall so the sign reads from inside.
-  · ONE fluorescent overhead with a slow buzz (one dying end).
-  · Water bottles — Jesse drinks half a bottle in two pulls
-    backstage after the set (vol6_ch22).
-  · Wall clock frozen at 8:58 — Ricky's knock: "Five." (vol6_ch22).
-  · Storage-closet truth: venue shelf with boxes, flyer stock
-    (the mustard half-letter prints, vol6_ch14), a road case, a
-    mop and bucket. NOT a vanity mirror — this is a closet.
+Draft 4 targets: the small hallway to the stage door; the buzz as a
+flicker on the tube's practical.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
-from _props.decor import make_wall_clock
-from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture
+from _props.safety import make_smoke_detector
+from _props.objects import make_bottle
 
-# Shell footprint — KEPT from the scaffold; the Background3D camera
-# preset ("foxhole_dressing_room") and .tscn lights are tuned to it.
 ROOM_W = 4.0; ROOM_D = 4.0; CEIL = 2.6
-
-# ══ FOXHOLE SHARED PALETTE ═══════════════════════════════════════
-# KEEP IN SYNC — declared identically in build_foxhole_bar.py /
-# build_foxhole_stage.py / build_foxhole_dressing_room.py.
-# One venue, three rooms: black-painted everything, beer-worn brown
-# floor, silver duct tape, mustard flyer stock, fox-red accent, and
-# Ramón's blue→purple→magenta LED cycle (vol6_ch20_bridge.json).
-FOX_WALL        = (0.25, 0.21, 0.18, 1.0)   # scuffed charcoal-brown paint
-FOX_BASEBOARD   = (0.13, 0.11, 0.09, 1.0)
-FOX_FLOOR       = (0.27, 0.20, 0.14, 1.0)   # beer-worn brown plank
-FOX_FLOOR_SEAM  = (0.15, 0.11, 0.08, 1.0)
-FOX_FLOOR_SCUFF = (0.20, 0.15, 0.11, 1.0)
-FOX_CEIL_TILE   = (0.20, 0.18, 0.16, 1.0)   # black-painted drop tile
-FOX_CEIL_GRID   = (0.14, 0.13, 0.12, 1.0)
-FOX_CEIL_STAIN  = (0.30, 0.26, 0.20, 1.0)
-FOX_BLACK       = (0.10, 0.09, 0.09, 1.0)   # amps / PA / truss matte
-FOX_STAGE_DECK  = (0.16, 0.13, 0.10, 1.0)   # scuffed black stage ply
-FOX_STEEL       = (0.58, 0.60, 0.62, 1.0)
-FOX_CHROME      = (0.78, 0.80, 0.82, 1.0)
-FOX_WOOD        = (0.38, 0.27, 0.17, 1.0)   # bar top / table wood
-FOX_TAPE_DUCT   = (0.56, 0.58, 0.61, 1.0)   # silver duct/gaff tape
-FOX_TAPE_MASK   = (0.85, 0.79, 0.62, 1.0)   # Ricky's masking tape
-FOX_FLYER       = (0.80, 0.66, 0.30, 1.0)   # faded mustard flyer stock
-FOX_INK         = (0.16, 0.14, 0.12, 1.0)   # photocopy black
-FOX_RED         = (0.70, 0.20, 0.16, 1.0)   # venue accent fox-red
-FOX_CREAM       = (0.90, 0.86, 0.74, 1.0)
-FOX_AMBER       = (0.92, 0.60, 0.24, 1.0)   # beer-sign warm
-FOX_TOPO_GREEN  = (0.36, 0.55, 0.42, 1.0)   # Topo Chico glass
-FOX_LED_BLUE    = (0.24, 0.34, 0.84, 1.0)   # Ramón's cue: deep blue…
-FOX_LED_PURPLE  = (0.46, 0.24, 0.76, 1.0)   # …into deep purple…
-FOX_LED_MAGENTA = (0.78, 0.26, 0.60, 1.0)   # …into a small magenta
-FOX_STICKERS    = [(0.72, 0.28, 0.20, 1.0), (0.30, 0.46, 0.60, 1.0),
-                   (0.86, 0.72, 0.30, 1.0), (0.42, 0.56, 0.36, 1.0),
-                   (0.88, 0.86, 0.80, 1.0), (0.50, 0.30, 0.56, 1.0)]
-PAL_WALL = {"wall": FOX_WALL, "baseboard": FOX_BASEBOARD}
-PAL_CEIL = {"tile": FOX_CEIL_TILE, "grid": FOX_CEIL_GRID}
-# ══ end shared palette ═══════════════════════════════════════════
-
-GRAY_CHAIR = (0.60, 0.60, 0.62, 1.0)   # borrowed folding chairs
-KRAFT = (0.62, 0.48, 0.30, 1.0)        # cardboard
-
-
-# ── Shared venue micro-props (same helpers as build_foxhole_bar) ──
-def _flyer(nm, pos, *, axis='X', face=-1, fresh=False, extra_line=False):
-    """Photocopied Foxhole flyer — canon vol6_ch14_substation_nine:
-    black ink on faded mustard, hand-drawn 2019 block lettering."""
-    stock = FOX_CREAM if fresh else FOX_FLYER
-    x, y, z = pos
-    w, h = 0.28, 0.42
-    if axis == 'X':
-        make_box(f"{nm}_Paper", (x, y + face * 0.012, z), (w, 0.006, h), stock)
-        make_box(f"{nm}_Head", (x, y + face * 0.017, z + 0.13),
-                 (w * 0.80, 0.002, 0.09), FOX_INK)
-        make_box(f"{nm}_Body", (x, y + face * 0.017, z - 0.06),
-                 (w * 0.70, 0.002, 0.16), FOX_INK)
-        if extra_line:
-            make_box(f"{nm}_Bill", (x, y + face * 0.017, z - 0.17),
-                     (w * 0.60, 0.002, 0.03), FOX_INK)
-    else:
-        make_box(f"{nm}_Paper", (x + face * 0.012, y, z), (0.006, w, h), stock)
-        make_box(f"{nm}_Head", (x + face * 0.017, y, z + 0.13),
-                 (0.002, w * 0.80, 0.09), FOX_INK)
-        make_box(f"{nm}_Body", (x + face * 0.017, y, z - 0.06),
-                 (0.002, w * 0.70, 0.16), FOX_INK)
-        if extra_line:
-            make_box(f"{nm}_Bill", (x + face * 0.017, y, z - 0.17),
-                     (0.002, w * 0.60, 0.03), FOX_INK)
-
-
-def _sticker(nm, pos, i, *, axis='X', face=-1):
-    """One gig sticker on a vertical surface — deterministic tint."""
-    x, y, z = pos
-    col = FOX_STICKERS[i % len(FOX_STICKERS)]
-    w = 0.10 + (i % 3) * 0.03
-    h = 0.06 + ((i + 1) % 3) * 0.02
-    if axis == 'X':
-        make_box(f"{nm}_Sticker_{i}", (x, y + face * 0.006, z), (w, 0.003, h), col)
-    else:
-        make_box(f"{nm}_Sticker_{i}", (x + face * 0.006, y, z), (0.003, w, h), col)
-# ── end shared micro-props ────────────────────────────────────────
-
+PAL_WALL = {"wall":(0.46,0.40,0.34,1.0),"baseboard":(0.28,0.22,0.16,1.0)}
+COL_FLOOR = (0.42,0.34,0.28,1.0); COL_SEAM = (0.24,0.18,0.14,1.0)
+COL_WOOD = (0.42,0.30,0.20,1.0); COL_STEEL = P.METAL_STEEL; COL_BLACK = P.METAL_BLACK
+COL_BULB = (0.98,0.92,0.72,1.0); COL_MIRROR = (0.38,0.42,0.48,0.9)
+COL_COUCH = (0.40,0.28,0.34,1.0); COL_COUCH_CUSH = (0.48,0.34,0.40,1.0)
+COL_ACCENT = (0.86,0.46,0.24,1.0)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-               palette={"vinyl": FOX_FLOOR, "seam": FOX_FLOOR_SEAM})
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0,
-              height=CEIL, axis='X', palette=PAL_WALL)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0,
-              height=CEIL, axis='X', palette=PAL_WALL)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), FOX_WALL)
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-                 palette=PAL_CEIL, with_stains=False)
-    # One stain, right where the ceiling meets the fluorescent.
-    make_box("Ceil_Stain", (0.7, 2.5, CEIL - 0.006), (0.55, 0.55, 0.004),
-             FOX_CEIL_STAIN)
-    make_box("Floor_Scuff_Door", (0.0, 0.5, 0.007), (1.4, 0.7, 0.002),
-             FOX_FLOOR_SCUFF)
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
-
-def build_door_sign():
-    """The door, swung open flat against the south wall's east leaf,
-    with DRESSING ROOM in marker on a taped-up sheet (vol6_ch22)."""
-    make_box("Door_Slab", (1.48, 0.16, 1.00), (0.95, 0.06, 2.00),
-             (0.20, 0.16, 0.13, 1.0))
-    for hi, hz in enumerate([0.35, 1.00, 1.65]):
-        make_cyl(f"Door_Hinge_{hi}", (1.01, 0.13, hz), 0.018, 0.08, FOX_STEEL,
-                 segments=6)
-    make_cyl("Door_Knob", (1.86, 0.22, 1.00), 0.024, 0.05, FOX_STEEL, axis='Y',
-             segments=8)
-    # The marker sign, read from inside the room now the door is open.
-    make_box("DoorSign_Paper", (1.48, 0.193, 1.45), (0.20, 0.004, 0.14), FOX_CREAM)
-    make_box("DoorSign_Marker_A", (1.48, 0.196, 1.48), (0.16, 0.002, 0.03), FOX_INK)
-    make_box("DoorSign_Marker_B", (1.48, 0.196, 1.42), (0.10, 0.002, 0.03), FOX_INK)
-    make_box("DoorSign_Tape", (1.48, 0.196, 1.53), (0.06, 0.002, 0.025),
-             FOX_TAPE_MASK)
-
-
-def build_folding_chairs():
-    """Exactly two — Em stretches her neck on one, Nate's on his
-    phone on the other. Gray metal, borrowed-forever."""
-    for ci, (cx, cy) in enumerate([(0.75, 2.30), (-0.95, 2.75)]):
-        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.45), (0.38, 0.38, 0.03), GRAY_CHAIR)
-        make_box(f"Chair_{ci}_Back", (cx, cy + 0.17, 0.72), (0.38, 0.04, 0.34),
-                 GRAY_CHAIR)
-        for li, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16),
-                                        (-0.16, 0.16), (0.16, 0.16)]):
-            make_cyl(f"Chair_{ci}_Leg_{li}", (cx + lx, cy + ly, 0.22), 0.010, 0.44,
-                     (0.42, 0.42, 0.44, 1.0), segments=4)
-    # Water bottles — one by each chair (vol6_ch22 backstage beat).
-    make_cyl("Water_0", (0.45, 2.15, 0.10), 0.032, 0.20, (0.90, 0.92, 0.92, 1.0),
-             segments=8)
-    make_cyl("Water_1_HalfDrunk", (-0.65, 2.60, 0.065), 0.032, 0.13,
-             (0.90, 0.92, 0.92, 1.0), segments=8)
-
+def build_vanity():
+    vy = 3.60
+    # Table
+    make_box("Vanity_Top", (0.0, vy, 0.75), (1.60, 0.46, 0.05), COL_WOOD)
+    for sx in (-0.72, 0.72):
+        make_box(f"Vanity_Side_{sx:+.0f}", (sx, vy, 0.37), (0.06, 0.44, 0.74), COL_WOOD)
+    make_box("Vanity_Back", (0.0, vy+0.20, 0.42), (1.60, 0.04, 0.60), (0.36,0.26,0.18,1.0))
+    # Mirror + frame
+    # on the N wall face at y 3.90 (2026-09-23: frame, mirror and all
+    # eleven bulbs 5 cm off the wall on nothing)
+    make_box("Vanity_MirrorFrame", (0.0, 3.88, 1.55), (1.06, 0.04, 0.96), (0.30,0.22,0.16,1.0))
+    make_box("Vanity_Mirror", (0.0, 3.85, 1.55), (0.92, 0.03, 0.82), COL_MIRROR)
+    # Bulb frame — top row + side columns
+    for bi in range(5):
+        bx = -0.44 + bi * 0.22
+        make_cyl(f"Vanity_BulbTop_{bi}", (bx, 3.83, 2.06), 0.045, 0.06, COL_BULB, segments=8)
+    for si, bz in enumerate([1.30, 1.55, 1.80]):
+        make_cyl(f"Vanity_BulbL_{si}", (-0.58, 3.83, bz), 0.045, 0.06, COL_BULB, segments=8)
+        make_cyl(f"Vanity_BulbR_{si}", (0.58, 3.83, bz), 0.045, 0.06, COL_BULB, segments=8)
+    # Clutter on the vanity
+    make_cyl("Vanity_Jar", (-0.30, vy, 0.85), 0.05, 0.14, (0.42,0.62,0.58,0.6))
+    make_bottle("Vanity_Bottle", 0.34, vy, 0.78, (0.72, 0.32, 0.24, 1.0),
+                h=0.17, r=0.032)
+    make_box("Vanity_Tin", (0.10, vy-0.10, 0.80), (0.14,0.10,0.06), COL_STEEL)
+    # Stool
+    make_cyl("Vanity_Stool_Seat", (0.0, 3.05, 0.46), 0.16, 0.05, COL_COUCH, segments=12)
+    for li, (ox, oy) in enumerate([(-0.11,-0.11),(0.11,-0.11),(-0.11,0.11),(0.11,0.11)]):
+        make_cyl(f"Vanity_Stool_Leg_{li}", (ox, 3.05+oy, 0.22), 0.015, 0.44, COL_BLACK)
 
 def build_clothing_rack():
-    """The rack. Jesse stands at it with one hand on the metal; Em
-    puts her hand on it post-set and breathes (vol6_ch22)."""
-    rack_y = 3.45
-    for ui, ux in enumerate([-0.85, 0.85]):
-        make_cyl(f"Rack_Upright_{ui}", (ux, rack_y, 0.90), 0.020, 1.64, FOX_CHROME)
-        make_box(f"Rack_Foot_{ui}", (ux, rack_y, 0.035), (0.10, 0.50, 0.05),
-                 FOX_STEEL)
-        for wi, wy in enumerate([rack_y - 0.20, rack_y + 0.20]):
-            make_cyl(f"Rack_Caster_{ui}_{wi}", (ux, wy, 0.03), 0.03, 0.04,
-                     FOX_BLACK, axis='X', segments=8)
-    make_cyl("Rack_TopBar", (0.0, rack_y, 1.72), 0.020, 1.90, FOX_CHROME, axis='X')
-    # Two empty wire hangers + three hung garments.
-    for hi, hx in enumerate([-0.62, 0.55]):
-        make_box(f"Rack_Hanger_{hi}", (hx, rack_y, 1.64), (0.36, 0.015, 0.02),
-                 FOX_STEEL)
-    for gi, (gx, gw, gh, gcol) in enumerate([
-            (-0.30, 0.40, 0.62, (0.14, 0.13, 0.14, 1.0)),   # black tee
-            (0.05, 0.42, 0.68, FOX_RED),                     # flannel
-            (0.32, 0.34, 0.55, (0.30, 0.34, 0.44, 1.0))]):   # denim
-        make_box(f"Rack_Garment_{gi}", (gx, rack_y, 1.70 - gh / 2.0 - 0.04),
-                 (gw, 0.06, gh), gcol)
+    rx = 1.62
+    for pi, py in enumerate([1.0, 2.8]):
+        make_cyl(f"Rack_Pole_{pi}", (rx, py, 0.85), 0.02, 1.70, COL_STEEL)
+        make_cyl(f"Rack_Foot_{pi}", (rx, py, 0.03), 0.14, 0.03, COL_BLACK, segments=10)
+    make_cyl("Rack_Bar", (rx, 1.9, 1.68), 0.015, 1.80, COL_STEEL, axis='Y')
+    garment_cols = [(0.24,0.28,0.42,1.0),(0.62,0.20,0.22,1.0),(0.20,0.20,0.22,1.0),
+                    (0.52,0.42,0.24,1.0),(0.32,0.42,0.36,1.0)]
+    for gi in range(5):
+        gy = 1.15 + gi * 0.40
+        make_cyl(f"Rack_Hanger_{gi}", (rx, gy, 1.62), 0.008, 0.10, COL_STEEL)
+        make_box(f"Rack_Garment_{gi}", (rx-0.02, gy, 1.17), (0.10, 0.20, 0.80), garment_cols[gi])   # on its hanger (2026-09-23: 2 cm under it)
 
+def build_couch():
+    cx = -1.52
+    make_box("Couch_Base", (cx, 2.0, 0.24), (0.72, 1.70, 0.22), COL_COUCH)
+    make_box("Couch_Back", (cx-0.28, 2.0, 0.58), (0.18, 1.70, 0.56), COL_COUCH)
+    for ay in (1.20, 2.80):
+        make_box(f"Couch_Arm_{ay:.0f}", (cx, ay, 0.42), (0.68, 0.16, 0.36), COL_COUCH)
+    for ci, cy in enumerate([1.55, 2.45]):
+        make_box(f"Couch_SeatCush_{ci}", (cx+0.02, cy, 0.40), (0.60, 0.62, 0.14), COL_COUCH_CUSH)
+        make_box(f"Couch_BackCush_{ci}", (cx-0.18, cy, 0.62), (0.20, 0.60, 0.40), COL_COUCH_CUSH)
+    # A tossed jacket on the arm
+    make_box("Couch_Jacket", (cx, 1.20, 0.62), (0.62, 0.30, 0.10), (0.30,0.22,0.20,1.0))
 
-def build_storage():
-    """Storage-closet truth: venue shelf, boxes, flyer stock, spare
-    cable, a road case, mop + bucket."""
-    # Steel shelf unit against the E wall.
-    for pi, (px, py) in enumerate([(1.55, 1.00), (1.85, 1.00), (1.55, 2.20),
-                                    (1.85, 2.20)]):
-        make_cyl(f"Shelf_Post_{pi}", (px, py, 0.75), 0.015, 1.50, FOX_STEEL,
-                 segments=6)
-    for si, sz in enumerate([0.35, 0.85, 1.35]):
-        make_box(f"Shelf_Plate_{si}", (1.70, 1.60, sz), (0.36, 1.30, 0.03),
-                 FOX_STEEL)
-    # Bottom: two kraft boxes.
-    make_box("Box_Kraft_0", (1.70, 1.25, 0.51), (0.30, 0.34, 0.28), KRAFT)
-    make_box("Box_Kraft_1", (1.70, 1.85, 0.49), (0.30, 0.40, 0.24), KRAFT)
-    make_box("Box_Kraft_1_TapeSeam", (1.70, 1.85, 0.615), (0.31, 0.06, 0.006),
-             FOX_TAPE_DUCT)
-    # Middle: shrink-wrapped water case (the set-break bottles).
-    make_box("WaterCase_Tray", (1.70, 1.30, 0.88), (0.30, 0.22, 0.03), KRAFT)
-    for wi in range(6):
-        wx = 1.62 + (wi % 2) * 0.16
-        wy = 1.22 + (wi // 2) * 0.08
-        make_cyl(f"WaterCase_Bottle_{wi}", (wx, wy, 0.985), 0.030, 0.17,
-                 (0.90, 0.92, 0.92, 1.0), segments=8)
-    # Middle: flyer stock — a ream of the mustard prints (vol6_ch14).
-    make_box("FlyerStack_Ream", (1.70, 1.95, 0.90), (0.24, 0.32, 0.07), FOX_FLYER)
-    make_box("FlyerStack_TopSheet", (1.70, 1.95, 0.938), (0.22, 0.30, 0.002),
-             FOX_CREAM)
-    # Top: coiled spare mic cable + gaff rolls.
-    make_cyl("CableCoil", (1.70, 1.30, 1.39), 0.11, 0.05, FOX_BLACK, segments=10)
-    for gi in range(2):
-        make_cyl(f"GaffRoll_{gi}", (1.66 + gi * 0.10, 1.95, 1.39), 0.055, 0.045,
-                 FOX_TAPE_DUCT, segments=10)
-    # Road case parked SW, sticker-crusted, duct-taped corner.
-    make_box("RoadCase_Body", (-1.45, 1.00, 0.375), (0.65, 0.50, 0.75), FOX_BLACK)
-    for ei, ex in enumerate([-1.76, -1.14]):
-        make_box(f"RoadCase_Edge_{ei}", (ex, 1.00, 0.375), (0.03, 0.52, 0.77),
-                 FOX_STEEL)
-    make_box("RoadCase_Latch", (-1.45, 0.74, 0.42), (0.10, 0.02, 0.14), FOX_STEEL)
-    make_box("RoadCase_DuctTape", (-1.45, 0.74, 0.62), (0.16, 0.012, 0.10),
-             FOX_TAPE_DUCT)
-    for i in range(3):
-        _sticker("RoadCase", (-1.62 + i * 0.18, 0.745, 0.22 + (i % 2) * 0.12), i,
-                 axis='X', face=-1)
-    # Mop + yellow bucket, NE corner.
-    make_cyl("Bucket", (1.55, 3.45, 0.125), 0.14, 0.25, (0.82, 0.70, 0.20, 1.0),
-             segments=10)
-    make_cyl("Mop_Pole", (1.72, 3.60, 0.70), 0.012, 1.30, FOX_WOOD, segments=6)
-    make_box("Mop_Head", (1.72, 3.60, 0.08), (0.14, 0.14, 0.16),
-             (0.72, 0.68, 0.60, 1.0))
+def _make_guitar_case(prefix, cx, cy, col, rot_y=False):
+    # flat on the floor (2026-09-23: the case lay 6 cm over it)
+    if rot_y:
+        make_box(f"{prefix}_Body", (cx, cy, 0.07), (0.90, 0.44, 0.14), col)
+        make_box(f"{prefix}_Neck", (cx+0.62, cy, 0.055), (0.42, 0.16, 0.11), col)
+        make_box(f"{prefix}_Handle", (cx, cy-0.24, 0.14), (0.16, 0.03, 0.03), COL_BLACK)
+        make_box(f"{prefix}_LatchA", (cx-0.20, cy-0.23, 0.07), (0.05,0.02,0.05), COL_STEEL)
+        make_box(f"{prefix}_LatchB", (cx+0.20, cy-0.23, 0.07), (0.05,0.02,0.05), COL_STEEL)
+    else:
+        make_box(f"{prefix}_Body", (cx, cy, 0.07), (0.44, 0.90, 0.14), col)
+        make_box(f"{prefix}_Neck", (cx, cy+0.62, 0.055), (0.16, 0.42, 0.11), col)
+        make_box(f"{prefix}_Handle", (cx-0.24, cy, 0.14), (0.03, 0.16, 0.03), COL_BLACK)
+        make_box(f"{prefix}_LatchA", (cx-0.23, cy-0.20, 0.07), (0.02,0.05,0.05), COL_STEEL)
+        make_box(f"{prefix}_LatchB", (cx-0.23, cy+0.20, 0.07), (0.02,0.05,0.05), COL_STEEL)
 
+def build_cases():
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    _make_guitar_case("Case_A", 0.230, 0.70, (0.14,0.12,0.12,1.0), rot_y=False)
+    _make_guitar_case("Case_B", 0.60, 0.55, (0.28,0.20,0.14,1.0), rot_y=True)
 
-def build_wall_dressing():
-    """The clock stopped at Ricky's knock, one old flyer, marker
-    tags from seven years of bands, sticker crust."""
-    # 8:58 — "At eight fifty-eight Ricky knocks on the door. He
-    # says: Five." (vol6_ch22_foxhole.json)
-    make_wall_clock("Clock", (0.0, ROOM_D - 0.12, 2.20), frozen_hour=8,
-                    frozen_min=58)
-    _flyer("Flyer_W", (-(ROOM_W/2.0 - 0.10), 1.60, 1.50), axis='Y', face=+1)
-    # Marker tags on the west wall — bands sign the closet, not the
-    # greenroom they don't have.
-    for ti in range(4):
-        make_box(f"MarkerTag_{ti}",
-                 (-(ROOM_W/2.0 - 0.105), 2.10 + ti * 0.35, 1.30 + (ti % 2) * 0.28),
-                 (0.004, 0.26, 0.05), FOX_INK)
-    make_box("MarkerTag_Red", (-(ROOM_W/2.0 - 0.105), 2.65, 1.72),
-             (0.004, 0.20, 0.05), FOX_RED)
-    for i in range(4):
-        _sticker("WallW", (-(ROOM_W/2.0 - 0.10), 0.85 + i * 0.22,
-                           1.05 + (i % 2) * 0.14), i + 1, axis='Y', face=+1)
+def build_setlist_stickers():
+    # Taped setlist on the east wall by the door.
+    make_box("Setlist_Paper", (1.89, 0.90, 1.45), (0.02, 0.24, 0.32), P.PAPER)
+    for li in range(6):
+        make_box(f"Setlist_Line_{li}", (1.8984, 0.90, 1.58 - li*0.05), (0.002, 0.18, 0.012), (0.20,0.18,0.16,1.0))
+    for ti, (ty, tz) in enumerate([(0.80,1.62),(1.02,1.55),(0.86,1.32)]):
+        make_box(f"Setlist_Tape_{ti}", (1.8964, ty, tz), (0.006, 0.05, 0.03), (0.86,0.82,0.70,0.7))
+    # Sticker cluster on the same wall.
+    sticker_cols = [(0.86,0.24,0.20,1.0),(0.24,0.62,0.72,1.0),(0.92,0.72,0.24,1.0),(0.42,0.62,0.36,1.0)]
+    for si, (sy, sz) in enumerate([(1.40,1.70),(1.55,1.55),(1.42,1.42),(1.58,1.78)]):
+        make_box(f"Sticker_{si}", (1.8964, sy, sz), (0.006, 0.10, 0.10), sticker_cols[si])
 
+def build_mini_fridge():
+    fx, fy = 1.55, 3.45
+    make_box("Fridge_Body", (fx, fy, 0.42), (0.52, 0.50, 0.84), (0.82,0.80,0.76,1.0))
+    make_box("Fridge_Door", (fx-0.27, fy, 0.42), (0.03, 0.46, 0.78), (0.88,0.86,0.82,1.0))
+    make_box("Fridge_Handle", (fx-0.30, fy-0.16, 0.50), (0.03, 0.04, 0.24), COL_STEEL)
+    make_box("Fridge_Top", (fx, fy, 0.86), (0.52, 0.50, 0.03), (0.72,0.70,0.66,1.0))
+    # Stuff on top: a couple of cans + a coffee mug
+    for ci, cy in enumerate([3.32, 3.46, 3.60]):
+        make_cyl(f"Fridge_Can_{ci}", (fx+0.06, cy, 0.94), 0.03, 0.12,
+                 [(0.86,0.24,0.20,1.0),(0.24,0.42,0.68,1.0),(0.42,0.62,0.36,1.0)][ci])
+
+def build_rug():
+    make_cyl("Rug", (-0.2, 1.7, 0.012), 1.00, 0.005, COL_ACCENT, segments=20)
 
 def build_ceiling_infra():
-    """ONE fluorescent overhead — 'a slow buzz' (vol6_ch22). The
-    dying end of the tube reads darker."""
-    make_fluorescent_tube_fixture("Fluor", (0.0, 2.0, CEIL), length=1.20, width=0.30)
-    make_box("Fluor_DyingEnd", (-0.42, 2.0, CEIL - 0.145), (0.22, 0.13, 0.015),
-             (0.55, 0.52, 0.46, 1.0))
-    make_smoke_detector("Smoke", (0.9, 1.2, CEIL))
+    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+
+def build_hero_props():
+    """2026-08-03 hero-prop pass: the two folding chairs (canon
+    calls this room "a storage closet with two folding chairs and a
+    clothing rack"), the BUZZING FLUORESCENT overhead (the room's
+    named light), the door with DRESSING ROOM in marker, Carl's
+    sticks on the floor by the wall."""
+    steel = (0.55, 0.57, 0.58, 1.0)
+    for fi, (fx, fy) in enumerate(((-0.55, 1.55), (0.45, 1.35))):
+        make_box(f"Folding_Chair_{fi}_Seat", (fx, fy, 0.45), (0.40, 0.40, 0.03), (0.48, 0.42, 0.36, 1.0))
+        # back stands on the seat's rear edge, not through the seat
+        make_box(f"Folding_Chair_{fi}_Back", (fx, fy+0.215, 0.635), (0.40, 0.03, 0.34), (0.48, 0.42, 0.36, 1.0))
+        for lx in (fx-0.17, fx+0.17):
+            make_box(f"Folding_Chair_{fi}_LegF_{lx:.2f}", (lx, fy-0.15, 0.22), (0.025, 0.025, 0.44), steel)
+            make_box(f"Folding_Chair_{fi}_LegB_{lx:.2f}", (lx, fy+0.15, 0.22), (0.025, 0.025, 0.44), steel)
+    # The fluorescent overhead with the slow buzz — the ONLY named
+    # light in the room
+    make_box("Fluor_Housing", (0.0, 2.0, 2.56), (1.20, 0.24, 0.08), (0.72, 0.72, 0.70, 1.0))
+    make_box("Fluor_Tube", (0.0, 2.0, 2.51), (1.05, 0.10, 0.03), (0.92, 0.95, 0.88, 1.0))
+    # The door + the marker sign
+    make_box("DR_Door", (-0.55, 0.03, 1.02), (0.85, 0.05, 2.03), (0.38, 0.32, 0.28, 1.0))
+    make_box("DR_Sign", (-0.55, -0.005, 1.62), (0.30, 0.01, 0.22), (0.90, 0.88, 0.80, 1.0))
+    make_box("DR_Sign_Marker", (-0.55, -0.012, 1.62), (0.24, 0.008, 0.06), (0.16, 0.16, 0.18, 1.0))
+    # Carl's sticks on the floor against the wall
+    for si, dy in enumerate((0.0, 0.06)):
+        make_cyl(f"Drum_Stick_{si}", (-0.2, 0.9+dy, 0.02), 0.012, 0.40, (0.72, 0.58, 0.36, 1.0), segments=6, axis='Y')
+
+
+
+def build_door_infill_dr_door_2026_09():
+    """DR_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("DR_Door_Fill_E", (0.438, 0.000, 0), length=1.125, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
+def build_closet_2026_10():
+    """The storage closet's own things (see the module docstring)."""
+    steel = (0.56, 0.58, 0.60, 1.0); card = (0.66, 0.54, 0.38, 1.0)
+    sx0, sx1, sy = -1.20, 0.90, ROOM_D - 0.10 - 0.25
+    for i, x in enumerate((sx0, sx1)):
+        for j, y in enumerate((sy - 0.22, sy + 0.22)):
+            make_box(f"Shelving_Post_{i}_{j}", (x, y, 0.95), (0.04, 0.04, 1.90), steel)
+    for k, z in enumerate((0.15, 0.70, 1.25, 1.80)):
+        make_box(f"Shelving_Shelf_{k}", ((sx0 + sx1) / 2.0, sy, z), (sx1 - sx0 + 0.04, 0.48, 0.03), steel)
+    # what a venue keeps in its closet
+    for i in range(3):
+        make_box(f"Paper_Towel_Flat_{i}", (sx0 + 0.35 + i * 0.55, sy, 0.165 + 0.18), (0.50, 0.40, 0.36), (0.90, 0.88, 0.84, 1.0))
+    for i in range(4):
+        make_cyl(f"Cleaner_Bottle_{i}", (sx0 + 0.20 + i * 0.16, sy - 0.08, 0.715 + 0.12), 0.045, 0.24,
+                 [(0.30, 0.60, 0.86, 1.0), (0.92, 0.82, 0.30, 1.0), (0.86, 0.30, 0.30, 1.0), (0.40, 0.76, 0.40, 1.0)][i], segments=8)
+    for i in range(2):
+        make_box(f"Glass_Crate_{i}", (sx0 + 1.10 + i * 0.52, sy, 0.715 + 0.10), (0.48, 0.40, 0.20), (0.20, 0.20, 0.22, 1.0))
+    make_box("Merch_Box", (sx0 + 0.55, sy, 1.265 + 0.16), (0.60, 0.40, 0.32), card)
+    make_box("Merch_Box_Shirt", (sx0 + 0.55, sy - 0.05, 1.265 + 0.33), (0.40, 0.26, 0.02), (0.14, 0.14, 0.16, 1.0))
+    make_box("TP_Flat", (sx0 + 1.40, sy, 1.265 + 0.15), (0.50, 0.40, 0.30), (0.92, 0.92, 0.90, 1.0))
+    make_box("Spare_Cable_Coil", (sx0 + 0.40, sy, 1.815 + 0.06), (0.40, 0.36, 0.12), (0.10, 0.10, 0.12, 1.0))
+    # the mop bucket in the NE corner, the mop leaning
+    bx, by = ROOM_W / 2.0 - 0.10 - 0.30, ROOM_D - 0.10 - 0.95
+    make_box("Mop_Bucket", (bx, by, 0.20), (0.40, 0.34, 0.36), (0.86, 0.72, 0.20, 1.0))
+    make_box("Mop_Bucket_Wringer", (bx, by - 0.10, 0.44), (0.30, 0.10, 0.12), (0.30, 0.30, 0.32, 1.0))
+    from _props.geometry import make_rot_box
+    make_rot_box("Mop_Handle", (bx + 0.06, by + 0.06, 0.80), (0.025, 0.025, 1.30), (0.66, 0.52, 0.34, 1.0), roll=0.10)
+    # the stack of spare folding chairs against the W wall's N end
+    for i in range(5):
+        make_box(f"Chair_Stack_Folded_{i}", (-ROOM_W / 2.0 + 0.10 + 0.05 + i * 0.03, 3.35, 0.45), (0.025, 0.44, 0.88), (0.48, 0.42, 0.36, 1.0))
 
 
 def main():
     clear_scene()
     build_shell()
-    build_door_sign()
-    build_folding_chairs()
     build_clothing_rack()
-    build_storage()
-    build_wall_dressing()
+    build_cases()
+    build_setlist_stickers()
     build_ceiling_infra()
+    build_closet_2026_10()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_dressing_room.glb"))
+    build_door_infill_dr_door_2026_09()
     print(f"\n[build_foxhole_dressing_room] exporting to {out}")
     export_glb(out)
-
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2002-03-11_slash_the_mat_cutter",
+      "strip_id": "bk_2002-03-11_slash_the_mat_cutter",
+      "title": "SLASH · The mat cutter",
+      "date": "2002-03-11",
+      "era": "era1",
+      "format": "page",
+      "tier": "A",
+      "prompt": "a single full-page comic drawing (1 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: BACKUP. The strip: The frame shop at 2 AM and someone in it: the green coat at the counter with the framer's mat cutter in her hand, the blade out, cutting not a mat but the photograph — into a rectangle the size of a card. The framer in the doorway. She doesn't turn. The rain does its hatching. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop at night with rain hatched in the window and a woman in a dark coat at the counter cutting a photograph with a mat cutter's blade into a small rectangle, a man's silhouette in the back doorway. Green Coat says \"You measured the back.\". Framer says \"You said to.\". Green Coat says \"I said to. I didn't say to remember it.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @loc_frame_shop shows the setting; keep its architecture and props. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @loc_frame_shop for the setting; @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17.",
+      "prompt_compact": "a single full-page comic drawing (1 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Panel 1: black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop at night…. Green Coat: \"You measured the back.\"; Framer: \"You said to.\"; Green Coat: \"I said to. I didn't say to remember it.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @loc_frame_shop shows the setting; keep its architecture and props.. Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "loc_frame_shop",
+          "id": "sheet_loc_frame_shop",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_frame_shop.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "dw_frame_shop",
+            "era1"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

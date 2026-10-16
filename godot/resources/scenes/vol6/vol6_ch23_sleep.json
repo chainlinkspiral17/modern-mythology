@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Across town at the same hour, the Henderson kitchen is — by Eileen's afternoon arrangement — the kitchen of three people having Sunday dinner."
+      "text": "[mood:kitchen_practical]Across town at the same hour, the Henderson kitchen is — by Eileen's afternoon arrangement — the kitchen of three people having Sunday dinner."
     },
     {
       "t": "show",
@@ -51,11 +51,21 @@
     },
     {
       "t": "narrate",
-      "text": "Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his."
+      "text": "[shot:insert table]Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his."
+    },
+    {
+     "t": "narrate",
+     "when_flag": "ch20_kettle_on",
+     "text": "The kettle is on the clean burner where Jesse left it Thursday night. Nobody has moved it. Nobody has said anything about it. It is, Jesse notices, full."
+    },
+{
+     "t": "narrate",
+     "when_not_flag": "ch20_kettle_on",
+     "text": "The kettle is where it always is, cold, on the burner nobody uses."
     },
     {
       "t": "narrate",
-      "text": "Eileen has made a pot roast."
+      "text": "[shot:insert pot_roast]Eileen has made a pot roast."
     },
     {
       "t": "narrate",
@@ -82,7 +92,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "neutral"
     },
     {
@@ -99,7 +109,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim, after a beat, smiles — the slow Jim-smile."
+      "text": "[shot:closeup jim]Jim, after a beat, smiles — the slow Jim-smile."
     },
     {
       "t": "say",
@@ -126,7 +136,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "What piano.",
+      "text": "[shot:closeup person_b]What piano.",
       "expr": "neutral"
     },
     {
@@ -156,7 +166,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -168,7 +178,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "The dining room. The dining room is going to be the piano room. We don't dine in the dining room. We dine here. The dining room has been, for fourteen years, the room where the small table that holds the lamp lives. The small table can move. The dining room is going to be the piano room.",
+      "text": "The dining room. The dining room is going to be the piano room. We don't dine in the dining room. We dine here. The dining room has been, for fourteen years, the room where the small table that holds the lamp lives.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "The small table can move. The dining room is going to be the piano room.",
       "expr": "neutral"
     },
     {
@@ -180,13 +196,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral"
     },
     {
       "t": "say",
       "char": "Jim",
-      "text": "And I am going to be glad about it.",
+      "text": "[shot:closeup person]And I am going to be glad about it.",
       "expr": "neutral"
     },
     {
@@ -197,7 +213,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, looks at his parents."
+      "text": "[shot:closeup jesse]Jesse, at the table, looks at his parents."
     },
     {
       "t": "say",
@@ -241,7 +257,7 @@
     },
     {
       "t": "narrate",
-      "text": "At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023."
+      "text": "[mood:night][shot:insert notebook]At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023."
     },
     {
       "t": "narrate",
@@ -273,7 +289,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sleeps."
+      "text": "[shot:establish]He sleeps."
     },
     {
       "t": "hide",
@@ -307,7 +323,11 @@
     },
     {
       "t": "narrate",
-      "text": "He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off. She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
+      "text": "[shot:establish]He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off."
+    },
+    {
+      "t": "narrate",
+      "text": "She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
     },
     {
       "t": "show",
@@ -330,13 +350,13 @@
     {
       "t": "say",
       "char": "Gracie",
-      "text": "Sixth grade.",
+      "text": "[shot:closeup person]Sixth grade.",
       "expr": "neutral"
     },
     {
       "t": "say",
       "char": "Bill",
-      "text": "Senior year.",
+      "text": "[shot:closeup person]Senior year.",
       "expr": "neutral"
     },
     {
@@ -366,7 +386,7 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "I switched two shifts this week. I will be at every game this season. I have already done the schedule with Helen. The schedule is set.",
+      "text": "[shot:closeup person_b]I switched two shifts this week. I will be at every game this season. I have already done the schedule with Helen. The schedule is set.",
       "expr": "neutral"
     },
     {
@@ -396,12 +416,12 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
       "t": "narrate",
-      "text": "Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks."
+      "text": "[shot:closeup gracie]Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks."
     },
     {
       "t": "say",
@@ -445,7 +465,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:cosmic_comics_back_office"
+      "src": "3d:ben_bedroom"
     },
     {
       "t": "show",
@@ -459,7 +479,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet."
+      "text": "[shot:insert cat]Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet."
     },
     {
       "t": "narrate",
@@ -497,7 +517,11 @@
     },
     {
       "t": "narrate",
-      "text": "In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago. The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
+      "text": "[shot:closeup maya]In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago."
+    },
+    {
+      "t": "narrate",
+      "text": "The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
     },
     {
       "t": "narrate",
@@ -525,7 +549,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:diego_bedroom"
+      "src": "3d:diego_bedroom_night"
     },
     {
       "t": "show",
@@ -535,11 +559,15 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, in his room, is at the desk again at ten forty-five."
+      "text": "[shot:closeup diego]Diego, in his room, is at the desk again at ten forty-five."
     },
     {
       "t": "narrate",
-      "text": "He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in. He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before."
+      "text": "[shot:insert laptop]He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in."
+    },
+    {
+      "t": "narrate",
+      "text": "He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before."
     },
     {
       "t": "narrate",
@@ -547,11 +575,11 @@
     },
     {
       "t": "narrate",
-      "text": "He gets in bed."
+      "text": "[shot:insert bed]He gets in bed."
     },
     {
       "t": "narrate",
-      "text": "The blackout curtains are doing what they do."
+      "text": "[shot:insert curtains]The blackout curtains are doing what they do."
     },
     {
       "t": "narrate",
@@ -566,12 +594,16 @@
       "pos": "center"
     },
     {
-      "t": "narrate",
-      "text": "Bianca is in her bed at eleven-oh-two."
+      "src": "3d:miller_master_bedroom_night",
+      "t": "bg"
     },
     {
       "t": "narrate",
-      "text": "The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine."
+      "text": "[shot:closeup bianca]Bianca is in her bed at eleven-oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert book]The book — the one about the woman in her late forties and the bee balm — is on the nightstand. She had finished it on the porch at eight twenty this evening. The ending was — by her own internal sense — fine. Not the ending she would have written. Fine."
     },
     {
       "t": "narrate",
@@ -583,7 +615,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:meadowlark_circle_night"
     },
     {
       "t": "narrate",
@@ -591,7 +623,11 @@
     },
     {
       "t": "narrate",
-      "text": "The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window. He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
+      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window."
+    },
+    {
+      "t": "narrate",
+      "text": "He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
     },
     {
       "t": "narrate",
@@ -630,7 +666,7 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "Yamaha.",
+      "text": "[shot:closeup person]Yamaha.",
       "expr": "neutral"
     },
     {
@@ -647,7 +683,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:meadowlark_circle_night"
     },
     {
       "t": "narrate",
@@ -659,7 +695,11 @@
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up. She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
+      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up."
+    },
+    {
+      "t": "narrate",
+      "text": "She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
     },
     {
       "t": "narrate",
@@ -695,7 +735,7 @@
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed."
+      "text": "[shot:establish]In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed."
     },
     {
       "t": "narrate",
@@ -703,11 +743,11 @@
     },
     {
       "t": "narrate",
-      "text": "The town holds."
+      "text": "[shot:establish~]The town holds."
     },
     {
       "t": "narrate",
-      "text": "The summer is, by midnight, over."
+      "text": "[beat:still]The summer is, by midnight, over."
     },
     {
       "t": "narrate",

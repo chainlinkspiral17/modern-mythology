@@ -13,6 +13,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.decor import make_wall_clock, make_faded_poster
 from _props.safety import (make_smoke_detector, make_sprinkler,
                             make_fluorescent_tube_fixture, make_bug_zapper)
+from _props.objects import make_liquor_bottle
 
 PAL = {"wall": (0.42, 0.36, 0.28, 1.0), "baseboard": (0.22, 0.18, 0.16, 1.0)}
 COL_FLOOR = (0.32, 0.22, 0.16, 1.0); COL_SEAM = (0.18, 0.14, 0.12, 1.0)
@@ -33,8 +34,8 @@ def build_shell():
                   palette=PAL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-3.0, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+3.0, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-3.0, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+3.0, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),
                                     ("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),
@@ -55,11 +56,13 @@ def build_bar():
         for bi in range(20):
             bx = -2.30 + bi * 0.25
             bc = COL_BEER_AMBER if bi % 2 == 0 else COL_BEER_CLEAR
-            make_cyl(f"Bottle_{si}_{bi}", (bx, ROOM_D-0.10, sz + 0.14), 0.035, 0.26, bc, segments=8)
+            make_liquor_bottle(f"Bottle_{si}_{bi}", bx, ROOM_D - 0.10,
+                               sz + 0.01, bc,
+                               h=0.23 + ((si + bi) % 3) * 0.03, r=0.030)
     # Beer tap row at bar front
     for ti in range(4):
         tx = -1.20 + ti * 0.80
-        make_cyl(f"Tap_{ti}_Stem", (tx, ROOM_D-0.50, 1.30), 0.025, 0.30, COL_JUKE_CHROME)
+        make_cyl(f"Tap_{ti}_Stem", (tx, ROOM_D-0.50, 1.28), 0.025, 0.30, COL_JUKE_CHROME)   # from the bar top (2026-09-23: 2 cm over it)
         make_box(f"Tap_{ti}_Handle", (tx, ROOM_D-0.50, 1.50), (0.06, 0.06, 0.20),
                  (0.42, 0.20, 0.16, 1.0))
     # 5 bar stools facing the bar (S side)
@@ -111,11 +114,11 @@ def build_jukebox():
 
 def build_neon_schlitz():
     # Iconic neon over the bar centerline
-    make_box("Neon_Schlitz_BG", (0.0, ROOM_D-0.06, 2.20), (1.40, 0.04, 0.40), COL_NEON_SCHLITZ)
-    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.08, 2.20), (0.005, 1.20, 0.24), P.PAPER)
+    make_box("Neon_Schlitz_BG", (0.0, ROOM_D-0.12, 2.20), (1.40, 0.04, 0.40), COL_NEON_SCHLITZ)
+    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.12 - 0.0231, 2.20), (1.20, 0.005, 0.24), P.PAPER)
     # Smaller "BEER" neon next to it
-    make_box("Neon_Beer_BG", (-2.20, ROOM_D-0.06, 2.20), (0.80, 0.04, 0.30), (0.96, 0.72, 0.20, 1.0))
-    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.08, 2.20), (0.005, 0.64, 0.18), P.PAPER)
+    make_box("Neon_Beer_BG", (-2.20, ROOM_D-0.12, 2.20), (0.80, 0.04, 0.30), (0.96, 0.72, 0.20, 1.0))
+    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.12 - 0.0231, 2.20), (0.64, 0.005, 0.18), P.PAPER)
 
 
 def build_gator_head():
@@ -143,15 +146,15 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 5.5, 2.20), frozen_hour=4, frozen_min=15)
-    make_faded_poster("Poster_S", (+ROOM_W/2.0-0.05, 5.0, 1.50))
+    make_wall_clock("Clock", (-4.400, 5.5, 2.20), frozen_hour=4, frozen_min=15, facing='+X')
+    make_faded_poster("Poster_S", (+ROOM_W/2.0-0.05 - 0.0535, 5.0, 1.50), into_room=-1)
     # Cardboard corkboard with stapled notices near the front (E wall)
-    make_box("Corkboard", (+ROOM_W/2.0-0.04, 1.7, 1.50), (0.04, 0.80, 0.60), (0.62, 0.46, 0.32, 1.0))
+    make_box("Corkboard", (+ROOM_W/2.0-0.12, 1.7, 1.50), (0.04, 0.80, 0.60), (0.62, 0.46, 0.32, 1.0))
     for ni in range(4):
-        nx = +ROOM_W/2.0 - 0.06
+        nx = +ROOM_W/2.0 - 0.10   # on the corkboard (2026-10-09: it and the notices stood inside the wall)
         ny = 1.40 + (ni % 2) * 0.30
         nz = 1.30 + (ni // 2) * 0.30
-        make_box(f"Notice_{ni}", (nx, ny, nz), (0.005, 0.18, 0.14), (0.92, 0.86, 0.74, 1.0))
+        make_box(f"Notice_{ni}", (nx - 0.0431, ny, nz), (0.005, 0.18, 0.14), (0.92, 0.86, 0.74, 1.0))
 
 
 def build_devil_dressing():
@@ -169,9 +172,13 @@ def build_devil_dressing():
       · A door-counter sign on the front door · "6 STEPS" (the
         canonical line: "six steps from your stool")
     """
-    # Bar approx along Y = -3.5; Lou's station at around (-1.5, -3.5)
-    bar_cy = -3.5
-    bar_top_z = 1.05
+    # THE BAR (build_bar): along the N wall at y ROOM_D-0.40, 5.5 × 0.5,
+    # top surface 1.13. Lou works its north side; the customer side is
+    # south. (2026-09-09: this pass had the bar at y -3.5 — outside the
+    # building's south wall — so Lou's glass, the register, the tab
+    # and "your stool" all stood in the parking lot.)
+    bar_cy = ROOM_D - 0.40
+    bar_top_z = 1.13
 
     # Lou's polished glass + bar towel
     lou_x = -1.5
@@ -192,35 +199,37 @@ def build_devil_dressing():
     reg_x = +2.0
     # Wall-mounted clip strip just behind the bar (north side of bar)
     make_box("TabClip_Strip",
-             (reg_x - 0.40, bar_cy + 0.50, bar_top_z + 0.22),
+             (reg_x - 0.40, bar_cy + 0.15, bar_top_z + 0.22),
              (0.40, 0.04, 0.04),
              (0.42, 0.32, 0.20, 1.0))
     # 4 brass clips on the strip
     for ci, cx_off in enumerate([-0.16, -0.05, +0.05, +0.16]):
         make_box("TabClip_%d" % ci,
-                 (reg_x - 0.40 + cx_off, bar_cy + 0.48, bar_top_z + 0.22),
+                 (reg_x - 0.40 + cx_off, bar_cy + 0.13, bar_top_z + 0.22),
                  (0.04, 0.005, 0.04),
                  (0.78, 0.62, 0.30, 1.0))
     # The tab paper hanging from the clip nearest the register (rightmost)
     tab_x = reg_x - 0.40 + 0.16
     make_box("MyTab_Paper",
-             (tab_x, bar_cy + 0.481, bar_top_z + 0.10),
+             (tab_x, bar_cy + 0.131, bar_top_z + 0.10),
              (0.08, 0.001, 0.20),
              (0.94, 0.90, 0.80, 1.0))
     # Tally marks on the tab — 6 darker hashes (one for each round you remember + 1)
     for hi in range(6):
         make_box("MyTab_Hash_%d" % hi,
                  (tab_x - 0.025 + (hi % 3) * 0.025,
-                  bar_cy + 0.4815,
+                  bar_cy + 0.1315,
                   bar_top_z + 0.12 - (hi // 3) * 0.04),
                  (0.005, 0.0005, 0.020),
                  (0.20, 0.16, 0.12, 1.0))
 
     # Pool table augmentation — racked balls + a cue on the rail
-    # Pool table approx at (+2.0, +1.0)
-    pt_cx = +2.0
-    pt_cy = +1.0
-    pt_top_z = 0.78
+    # The pool table (Pool_Felt): (1.5, 3.2), felt top 0.82.
+    # (2026-09-10: this pass had it at (2, 1) — the racked balls and
+    # the cue lay on open floor a metre south of the table.)
+    pt_cx = +1.5
+    pt_cy = +3.2
+    pt_top_z = 0.82
     # Triangular rack at the foot end
     rack_x = pt_cx
     rack_y = pt_cy - 0.50
@@ -254,19 +263,19 @@ def build_devil_dressing():
              (0.94, 0.92, 0.88, 1.0), segments=8, axis='Z')
     # Cue resting on the side rail (along the east rail)
     make_cyl("PoolCue_Shaft",
-             (pt_cx + 0.50, pt_cy, pt_top_z + 0.06),
+             (pt_cx + 0.75, pt_cy, 0.902),   # ON the east rail (2026-09-23: 5 cm over the felt)
              0.012, 1.40,
              (0.74, 0.62, 0.42, 1.0), segments=6, axis='Y')
     # Cue tip
     make_cyl("PoolCue_Tip",
-             (pt_cx + 0.50, pt_cy + 0.70, pt_top_z + 0.06),
+             (pt_cx + 0.75, pt_cy + 0.70, 0.902),
              0.014, 0.04,
              (0.42, 0.28, 0.16, 1.0), segments=6, axis='Y')
 
     # "Your stool" with the worn seat ring
     # Stool approx at (0.0, -2.6) — across the bar from Lou
     stool_x = 0.0
-    stool_y = bar_cy + 0.80
+    stool_y = bar_cy - 0.80      # the customer side, six steps from the door
     # Stool seat (round disc, oxblood leather)
     make_cyl("YourStool_Seat",
              (stool_x, stool_y, 0.74),
@@ -288,9 +297,11 @@ def build_devil_dressing():
                  segments=6, axis='Z')
 
     # "6 STEPS" sign on the front door
-    # Front door approx at (0.0, +5.4, south interior of front wall)
-    door_x = 0.0
-    door_y = +5.40
+    # The front wall is the SOUTH wall (y 0, interior face 0.10) with
+    # its doorway at x -1.5..1.5; the sign hangs on the wall just east
+    # of the opening. (2026-09-10: it stood at (0, 5.4) — mid-room.)
+    door_x = 1.65   # on the wall EAST of the opening (2026-09-23: 1.35 is inside the 3 m doorway)
+    door_y = 0.122
     make_box("SixSteps_Sign_Backing",
              (door_x, door_y - 0.012, 1.60),
              (0.20, 0.005, 0.10),
@@ -325,11 +336,14 @@ def build_devil_wave2_props():
       · Back-room door with Lou's rental key in the outside lock
     """
     import math
-    bar_top_z = 1.06
+    bar_top_z = 1.13          # the bar's top surface (Bar_Top at y 7.1)
 
     # ── the_wednesday_call ──────────────────────────────────────
+    # Gil's stool at the bar's customer (south) side; his buckle and
+    # the rest at stool_y + 0.2 land ON the bar (6.85..7.35).
+    # (2026-09-10: this pass had the stool at (1, 0) — the south wall.)
     stool_x = +1.00
-    stool_y = 0.00
+    stool_y = 6.75
     make_box("Gil_BeltBuckle_Silver",
              (stool_x + 0.10, stool_y + 0.20, bar_top_z + 0.008),
              (0.06, 0.05, 0.008),
@@ -344,35 +358,37 @@ def build_devil_wave2_props():
              (0.10, 0.20, 0.24, 1.0))
 
     make_cyl("Lou_IronicMug_Body",
-             (-0.60, +0.20, bar_top_z + 0.06),
+             (-0.60, 7.05, bar_top_z + 0.06),   # on the bar, on its own ring (2026-09-23: at y 0.2, in the air by the door)
              0.040, 0.12,
              (0.92, 0.90, 0.86, 1.0), segments=10, axis='Z')
     make_box("Lou_IronicMug_Handle",
-             (-0.66, +0.20, bar_top_z + 0.10),
+             (-0.645, 7.05, bar_top_z + 0.10),
              (0.006, 0.020, 0.04),
              (0.92, 0.90, 0.86, 1.0))
     make_box("Lou_IronicMug_Text",
-             (-0.56, +0.20, bar_top_z + 0.08),
+             (-0.5595, 7.05, bar_top_z + 0.08),
              (0.001, 0.06, 0.04),
              (0.12, 0.10, 0.10, 1.0))
 
     # ── the_first_meeting ───────────────────────────────────────
-    room_x = -3.00
-    room_y = +6.00
-    ring_r = 1.30
+    room_x = -2.55
+    room_y = +5.20
+    ring_r = 1.20   # backs now face OUT; 1.30 put chair 6's back into the jukebox
 
     for ci in range(11):
-        ang = ci * (2 * math.pi / 11)
+        ang = (ci + 0.5) * (2 * math.pi / 11)
         cx = room_x + math.cos(ang) * ring_r
         cy = room_y + math.sin(ang) * ring_r
         make_box("MtgChair_%d_Seat" % ci,
                  (cx, cy, 0.44),
                  (0.32, 0.32, 0.04),
                  (0.62, 0.62, 0.64, 1.0))
-        back_dx = -math.cos(ang) * 0.14
-        back_dy = -math.sin(ang) * 0.14
+        # the back sits on the OUTSIDE of the ring — the chair faces the
+        # coffee table (2026-09-07: it shipped facing away)
+        back_dx = math.cos(ang) * 0.14
+        back_dy = math.sin(ang) * 0.14
         make_box("MtgChair_%d_Back" % ci,
-                 (cx + back_dx, cy + back_dy, 0.72),
+                 (cx + back_dx, cy + back_dy, 0.65),
                  (0.32, 0.06, 0.36),
                  (0.62, 0.62, 0.64, 1.0))
         for (lx, ly) in [(-0.14, -0.14), (+0.14, -0.14),
@@ -454,6 +470,62 @@ def build_devil_wave2_props():
              (0.72, 0.72, 0.74, 1.0), segments=6, axis='X')
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the Devil (wear pass 6).
+
+    Daigle's is the anti-Mixing-Glass: appetite doesn't measure.
+    Where Temperance's bar has ONE ring, this bar top is RINGS ON
+    RINGS — overlapping, decades deep, plus cigarette scallops
+    burned into the south edge from ashtrays that overflowed
+    before the smoker noticed. The dance patch in front of the
+    jukebox is worn through the finish to pale wood in a rough
+    ring (couples turn), scuffed dark at its rim where the
+    watchers stand. The bar's whole length wears evenly — at
+    Daigle's EVERYBODY bellies up — and the pool table's floor
+    shows the shooter's lane around all four sides plus a chalk
+    haze at the west rail where the talkers chalk and lean.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    rings = (0.30, 0.22, 0.14, 1.0)
+    burn = (0.16, 0.12, 0.09, 1.0)
+    pale = (0.55, 0.42, 0.28, 1.0)
+    rim = (0.24, 0.18, 0.13, 1.0)
+    chalk = (0.55, 0.62, 0.72, 1.0)
+    lane = (0.28, 0.21, 0.15, 1.0)
+    # RINGS ON RINGS · eleven, overlapping, along the whole top.
+    ring_spots = ((-2.3, 6.95), (-1.9, 7.1), (-1.2, 6.9), (-0.6, 7.05),
+                  (-0.1, 6.92), (0.4, 7.08), (0.9, 6.95), (1.5, 7.02),
+                  (2.0, 6.9), (2.35, 7.06), (1.7, 6.88))
+    for ri5, (rx5, ry5) in enumerate(ring_spots):
+        make_cyl("Wear_BarRing_%d" % ri5, (rx5, ry5, 1.133), 0.045, 0.003,
+                 rings, segments=8)
+    # Cigarette scallops on the south edge, clustered near the taps.
+    for ci5, cx5 in enumerate((-1.6, -1.45, 0.2, 1.1, 1.22)):
+        make_box("Wear_CigBurn_%d" % ci5, (cx5, 6.87, 1.132), (0.045, 0.02, 0.003),   # on the top's south edge (2026-09-23: 13 cm past it)
+                 burn)
+    # THE DANCE PATCH · in front of the jukebox: pale ring worn
+    # through the finish, dark scuff rim where the watchers stand.
+    make_floor_stain("Wear_Dance_Pale", (-2.2, 3.0), radius=0.85,
+                     tint=pale, segments=14)
+    make_floor_stain("Wear_Dance_Center", (-2.2, 3.0), radius=0.35,
+                     tint=(0.46, 0.35, 0.24, 1.0), segments=10)
+    make_cyl("Wear_Dance_Rim", (-2.2, 3.0, 0.004), 1.05, 0.003, rim, segments=14)
+    # The bar's full-length belly lane — everybody's boots.
+    make_traffic_wear("Wear_Bar_Belly",
+                      [(-2.6, 6.3), (0.0, 6.35), (2.6, 6.3)],
+                      width=0.7, tint=lane)
+    # Door to bar: the widest lane in the room.
+    make_traffic_wear("Wear_Door_Bar",
+                      [(0.0, 0.6), (-0.4, 3.4), (0.0, 6.1)],
+                      width=0.85, tint=lane)
+    # The shooter's lane around the pool table + chalk haze west.
+    make_traffic_wear("Wear_Pool_Lane",
+                      [(0.5, 2.2), (0.5, 4.2), (2.5, 4.2), (2.5, 2.2), (0.7, 2.1)],
+                      width=0.5, tint=lane)
+    make_floor_stain("Wear_Chalk_Haze", (0.55, 3.2), radius=0.28,
+                     tint=chalk, segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -466,6 +538,7 @@ def main():
     build_decor()
     build_devil_dressing()
     build_devil_wave2_props()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/daigles_roadhouse.glb"))
     print(f"\n[build_daigles_roadhouse] exporting to {out}")

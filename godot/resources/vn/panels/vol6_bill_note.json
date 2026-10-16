@@ -1,0 +1,224 @@
+{
+ "id": "vol6_bill_note",
+ "w": 120,
+ "h": 96,
+ "palette": [
+  "#2a2620",
+  "#e8e2d0",
+  "#d8d2be",
+  "#b8b2a0",
+  "#484440",
+  "#6a6660",
+  "#c43c30",
+  "#908a7a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    14,
+    8,
+    94,
+    82
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    12,
+    6,
+    94,
+    82
+   ],
+   "color": 1
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    12,
+    6,
+    94,
+    82
+   ],
+   "density": 0.05,
+   "seed": 11,
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 33,
+   "x_range": [
+    12,
+    106
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 61,
+   "x_range": [
+    12,
+    106
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 12,
+   "x_range": [
+    16,
+    102
+   ],
+   "color": 6
+  },
+  {
+   "op": "text",
+   "xy": [
+    18,
+    15
+   ],
+   "s": "PIT",
+   "color": 7
+  },
+  {
+   "op": "text",
+   "xy": [
+    34,
+    15
+   ],
+   "s": "STOP",
+   "color": 7
+  },
+  {
+   "op": "text",
+   "xy": [
+    20,
+    40
+   ],
+   "s": "THE",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    40
+   ],
+   "s": "RED",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    56,
+    40
+   ],
+   "s": "LIGHT",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    82,
+    40
+   ],
+   "s": "LIES",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    20,
+    50
+   ],
+   "s": "I",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    28,
+    50
+   ],
+   "s": "AM",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    42,
+    50
+   ],
+   "s": "SORRY",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    20,
+    70
+   ],
+   "s": "I",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    28,
+    70
+   ],
+   "s": "WILL",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    50,
+    70
+   ],
+   "s": "COME",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    74,
+    70
+   ],
+   "s": "BACK",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    20,
+    80
+   ],
+   "s": "WHEN",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    44,
+    80
+   ],
+   "s": "I",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    52,
+    80
+   ],
+   "s": "CAN",
+   "color": 5
+  }
+ ]
+}

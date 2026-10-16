@@ -1,0 +1,104 @@
+{
+ "meta": {
+  "title": "vol5_gauntlet_win",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_gauntlet_win",
+  "notes": "THE LEAP (won). The shared win sting. A minor opens to C major and stays there \u2014 the only cadence in the gauntlet's music, because winning is the only thing here that resolves."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.3
+    },
+    {
+     "pitch": "G3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G4",
+     "bar": 4,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C5",
+     "bar": 4,
+     "beat": 3,
+     "dur": 8,
+     "vel": 0.28
+    }
+   ]
+  }
+ ]
+}

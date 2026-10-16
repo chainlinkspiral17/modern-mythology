@@ -1,0 +1,133 @@
+{
+ "id": "fey_faire_spine",
+ "notes": "Rocha 1990 \u00b7 hand-inked cel over cream stock \u00b7 a tent stripe and one mauve pennant.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#f0e8d8",
+  "#8a5878",
+  "#c8a030",
+  "#38302a",
+  "#5a3a50"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    12
+   ],
+   "color": 4
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    12,
+    15
+   ],
+   "color": 2
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    113,
+    128
+   ],
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "F",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "A",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "I",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "R",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    62
+   ],
+   "s": "E",
+   "color": 3
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     14,
+     100
+    ],
+    [
+     30,
+     100
+    ],
+    [
+     22,
+     112
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 22,
+   "y_range": [
+    92,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     22,
+     92
+    ],
+    [
+     30,
+     95
+    ],
+    [
+     22,
+     98
+    ]
+   ],
+   "color": 2
+  }
+ ]
+}

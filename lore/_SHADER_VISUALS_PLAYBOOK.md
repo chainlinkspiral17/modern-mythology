@@ -196,6 +196,9 @@ They're polish; static reads first.
 | `ascii_directional.gdshader`             | Per-cell directional ASCII           | blueprint              |
 | `neon_edge.gdshader`                     | Sobel silhouette outline + gradient fill | chillwave / sunset / lithograph / blueprint_red / noir / ice |
 | `demoscene_post.gdshader`                | Palette quantize / dither / scanlines / chromatic aberration | every mood             |
+| `trip_sync.gdshader`                     | THE TRIP · music-synced rainbow edge aura + flat-region flow warp + capped hue drift + beat ripple; screen mode (global layer 60) or texture mode (VN backgrounds) | TripSync autoload, always on (Settings.trip_amount) |
+| `trip_feedback.gdshader`                 | THE TRIP · the feedback ACCUMULATE pass — re-projects the previous buffer (slow zoom/spin/drift), decays it, screens in the picture's highlights + the register's aura; runs inside two half-res ping-pong SubViewports | TripSync autoload (Settings.trip_trails) |
+| `trip_feedback_show.gdshader`            | THE TRIP · the feedback DISPLAY pass — soft-rolls the buffer (1 − e^−x) and adds it back over the surface, stepping back where the picture is already bright | TripSync, mounted by GameEngine above the VN background |
 | `ascii_edges.gdshader` (legacy)          | Edge detection + ASCII overlay       | not wired (kept for ref) |
 | `glyph_field.gdshader` (legacy)          | Drifting ASCII glyph field           | not wired (kept for ref) |
 | `gouraud_lambert.gdshader`               | Cathedral baked vertex-color shader  | warehouse scene only   |
@@ -224,6 +227,516 @@ through them in order.
 | raw           | Unfiltered debug                              | none          |
 
 ## Recent lessons
+
+### 2026-10-13 · a test rig must route the trip as the game does
+
+- **A halo that is not in the game.** Every portrait sheet since the
+  look pass showed a yellow-green glow round each figure and on every
+  eyebrow — the trip's global screen layer, which the VN keeps off the
+  portraits (the scene joins `"trip_local"` and `TripSync.attach(bg)`).
+  The rig that judges a look must do the same (VNTypeSpecimen,
+  PortraitCastSheet), or a pass tunes the wrong shader. Check by flipping
+  the suspect off (`--clean`): if the artifact survives, it is upstream.
+- **A painted pass on faces needs its own strengths.** The hero look's
+  dark-crush (everything under 35 % luminance pushed to the room's
+  shadow) and its pigment darkening at wash rims both land hardest on the
+  eyes and the lip line — the densest detail and the darkest paint on a
+  face — and made the "raccoon eyes / misshapen lips" the Deck reported.
+  `look_crush`, `look_pigment` and the master `look_amount` (0.6) are
+  set for faces in Portrait3D.SHADING_DEFAULT; the scene-wide defaults
+  stay 1.0. Measure a strength change numerically (mean abs diff of a
+  face crop vs `--clean`) before trusting the eye on it.
+
+
+### 2026-10-13 · Meshy faces: lift the painted shadows, tame the ink
+
+- **The user: "the models look splotchy and have weird ugly visual
+  artifacts that look like misshapen lips or facial features."** Three
+  causes, each visible in a close-up over the diner: Meshy PAINTS shading
+  into the albedo (near-black eye sockets, a dark lip crease) and the rig
+  shades it again; Meshy's normal maps at full strength and its emission
+  map put noise and random lit patches on skin; and the portrait look's
+  ink pass (threshold 0.22) traced every texture edge while its 4-band
+  cel step and hatching cut the skin into patches.
+- **Portraits get their own skin shader** (`portrait_skin.gdshader`,
+  built by Portrait3D from the GLB's textures): a gamma LIFT that opens
+  the darkest albedo and fades out above a luminance knee, the normal map
+  at 0.35 depth, no emission, wrap diffuse, matte. A plain contrast cut
+  could not open John's sockets without washing his skin — the curve can.
+  The lift also lightens dark hair a little; tune it per character.
+- **The look's face defaults:** ink 0.20 at threshold 0.34, hatch 0.06,
+  cel 0.10 over 6 bands, wobble 0.6, bleed 0.6.
+- **Per character:** `SHADING_DEFAULT` + `CHARACTER_SHADING[<glb base>]`
+  (lift, lift_knee, normal_scale, sat, tint, specular, look overrides),
+  beside `CHARACTER_LIGHTING`. Judge on the whole cast:
+  `bash godot/tools/portrait_review.sh [--lift 0.6 ...]`.
+
+### 2026-10-11 · the VN reads like an ereader, not a poster
+
+- **Outlined type is the "ugly".** The 2026-07 standard dialogue skin
+  put 34 px type with an outline a third of its size straight on the
+  art, and the user's verdict was "courier like … still a bit ugly." An
+  outline that thick turns every face into a sticker; a reading surface
+  wants NO outline and a ground instead — a gradient band fading up from
+  the skin's dlg_bg under the text, a 1 px shadow at most. Legibility is
+  the band's job, never the glyph's.
+- **One reading face, chosen for long text.** Literata (opsz-variable,
+  OFL) at 28 px, ~1.6 effective line pitch (its own 1.44 em plus 0.18),
+  a measure capped near 75 characters. Display faces (Cinzel, IM Fell)
+  stay chrome — plates, kickers, nameplates — and the monos stay where a
+  screen is diegetic (`signal`). Fonts in Godot are font-size overrides
+  per Label; the skin holds the PATH and the box applies it, so a swap
+  is one constant in SkinDB.
+- **Measure before the label has a layout and you get a guess.** The
+  auto-fit (`get_content_height`) returns ~0 on the frame a box is
+  built, falls back to a character-count estimate, and the first
+  five-line passage clipped. Re-measure once, deferred, when the layout
+  is real.
+- **A variable font's bold is an axis, not a file.** Godot's
+  RichTextLabel draws `[b]` with `bold_font`; handed the regular file it
+  fakes nothing and shows regular. Literata and Inter carry a `wght`
+  axis, so `SkinDB.weighted(path, 600)` returns a cached FontVariation
+  (`variation_opentype = {name_to_tag("wght"): 600}`) and that is the
+  bold. `TS` is not a GDScript global — use
+  `TextServerManager.get_primary_interface()`.
+- **Screenshot the real components.** `tools/VNTypeSpecimen.tscn` boots
+  DialogueBox + ChoiceMenu over any render with the trip attached in
+  texture mode (join `"trip_local"`, `TripSync.attach(bg)`) exactly as
+  GameEngine does — without that the global trip layer halos the
+  letters and the sheet lies about the game. Hide the dialogue when the
+  choice menu is up, as the engine does.
+
+### 2026-10-08 · the paint pass blotches a FLAT field into a disc
+
+- Under the new porch sun, the cabin's front door, one flat dark slab
+  0.95 x 2.1 m, showed a huge dark half-disc and octagons down its edge.
+  Moving trees and disabling shadows changed nothing. It was the painted
+  pass's screen-space blotches, legible only on a large untextured field.
+  The fix was geometry, not the shader: the door became board-and-batten
+  (seams, battens, a Z-brace, strap hinges). Before blaming a shadow or a
+  light, toggle shadows off. If the shape stays, it is the paper.
+
+
+### 2026-10-07 · scene_default must not carry a sky: a missing key means "keep the scene's"
+
+- MoodCycler's LIGHTING_PRESETS[0] "scene_default" carried a hard-coded
+  NIGHT sky_top / sky_horizon / fog_color. F11 back to it, or stepping
+  out of lightshow_extreme, wrote those onto the scene's own
+  ProceduralSkyMaterial: every authored day sky went night. The fix is
+  the ambient pattern already there (energy -1 = keep base): the sky
+  and fog base are captured in _collect_lights, and a preset without
+  sky_* / fog_color keys resolves to them. A "default" preset holds
+  NO values — only sentinels.
+
+### 2026-10-06 · skies through windows: geometry out past the fog reads black; the fog tints the sky
+
+- The dock's dawn was band geometry 520 m out — lit only by ambient
+  and 88 % fogged at density 0.004: one black frame. A sky is the
+  ENVIRONMENT's job (ProceduralSkyMaterial: top / horizon / curve);
+  geometry is for a card in the near distance (the thermal smear,
+  55 m). `sky_curve` 0.10 hugs the warmth to the ground line where the
+  terrain hides it; 0.25-0.35 lets it climb.
+- `fog_sky_affect` defaults to 1.0: a warm interior fog (0.62, 0.46,
+  0.32 at 0.4 energy) turned the morning sky through the kitchen window
+  BROWN. Interiors that look out: `fog_sky_affect = 0`.
+- A DirectionalLight draws a sun disc in a procedural sky where it
+  points from — a fluorescent "key" faked as a directional must be
+  `sky_mode = 1` (light only).
+
+### 2026-10-02 (v) · the watercolour in play: five Deck notes, five causes
+
+- "Too bright and contrasty in the diner": ch 0 runs under `[mood:night]`
+  — palette 9, dither, scanline 0.5, shadow_lift 0.6 — and my tests had
+  used the locale's default pack. ALWAYS render a scene under its own
+  [mood:] (TripPaintTest `--mood`). Under paint, a mood's SIGNAL
+  artifacts (quantization, dither, scanlines, fringe, shadow lift) now
+  go quiet (MoodCycler.set_painted); its neon / ASCII / film — the tenor
+  — stay. Scanlines are retro cosplay the design bible bars anyway.
+- "Muddy, details lost" (exterior) / "blobby" (warehouse) / "underwater"
+  (the Empress): wash LAYERING stepped the value even on flat dark
+  walls, so a flat region became a map of random blobs, and a lamp's
+  gradient on a ceiling became bright patches. Layering is now gated to
+  where a gradient actually exists (|local − ring mean|), its
+  perturbation halved, blotch 0.45 → 0.25, wash radius 6 → 4.
+- "Neon line border coming on a bit strong": under paint the trip's
+  inked line is a tint (line factor 1.35 → 0.5 at paint_under 1).
+- "The same wash texture stays static in background": screen-space noise
+  sits still under a camera track. Background3D now pushes the view's
+  yaw/pitch as a UV shift (`noise_shift`, yaw/fov_h, pitch/fov_v) every
+  frame; the blotches, tooth and wobble travel with the picture. Verified
+  by cross-correlation: a 3° pan moved the room 36 px and the texture
+  28-41 px the same way.
+- A one-pan check beats a montage: `TripPaintTest --yaw_deg 3` and
+  compare two frames.
+
+### 2026-10-02 (iv) · a real watercolour: the model, shared by room and hero
+
+- The Deck on draft 3: "better, but it doesn't look like watercolor at
+  all." A softened render with outlines is not a painting. What reads
+  as watercolour, now in `watercolor.gdshaderinc` (both the room pass
+  and the hero look `#include` it): WASH regions (Kuwahara, 4×4 taps a
+  quadrant, radius 5-6 px — big enough to make regions); BLEEDING (at a
+  colour border the lookup is displaced by low-frequency noise, so two
+  washes feather); LAYERS (a gradient becomes 2-3 stepped washes whose
+  thresholds wander with the brush load — the cue the lit diner ceiling
+  was missing); PIGMENT density (Bousseau: c·(1−(1−c)(d−1)), blotches at
+  brush-load scale, granulation at the tooth); EDGE DARKENING at colour
+  borders AND layer borders (pigment pools as a wash dries — the
+  strongest cue); DRY PAPER in the lights, broken by the tooth; the
+  sheet's tooth and mottle over all; a PENCIL under the paint (thin,
+  broken, graphite in the local colour) instead of ink.
+- `fwidth()` on the stepped value gives the layer borders for free.
+- Values still re-key to the source (mean exposure downward only, a
+  knee, a mild lift toward the paper's luma): a night watercolour is
+  deep blue with paper showing, not cream mud.
+- The hero's ink dropped to a pencil (look_ink 0.45, thr 0.22, hatch
+  0.25); its wash, bleed and paper carry the look now.
+- Judge at 1:1 crops, not the montage: the tooth and the pooled rims
+  vanish at half size.
+
+### 2026-10-02 (vii) · the stills lied: the TRAIL rig over the paint (ch 0 "still too muddy … neon lines overwhelming")
+
+- The Deck, with a ch 0 screenshot: "I saw stills that looked to fix
+  this, in action, still looks terrible. first five chapters I flipped
+  through looked unchanged." Every still came from TripPaintTest, which
+  attached the trip's AURA to the painted bg exactly as GameEngine does
+  — and never mounted the trip's FEEDBACK rig, which GameEngine does on
+  every background: a buffer that catches the picture's lights above
+  luma 0.6 and the aura's edges, re-projects them a hair larger every
+  frame (fb_zoom 0.10/s, decay 6.5) and screens the sum back over the
+  picture. On a photo that is a slow bloom. On a watercolour it is a
+  halo round every lit wall, bright neon on every edge (the edge feed
+  is fed back as LIGHT, whatever `paint_under` made of the aura's own
+  lines), and a smear of every detail in motion. A/B on the riverfront:
+  A (the rig as shipped) is the Deck's screenshot; B is the painting.
+- Fix: `TripSync.paint_under_3d` (GameEngine sets it to the bg's
+  TRIP_PAINT_UNDER when it attaches); when the trail's live source is
+  a SubViewportContainer, the gain and the edge feed scale by (1 −
+  that) — 15 % of a trail over a painting. And in the aura itself the
+  inked cross-fade now reaches 1 under paint (`paint_under * 1.25`:
+  the 15 % of screen glow that was left read as neon once the trail
+  fed it), the inked line 0.5 → 0.32.
+- RULE: the test tool mounts EVERY layer the game mounts. TripPaintTest
+  now attaches the feedback rig too (`--trails 0` leaves it off,
+  `--trails_paint 0` runs it as the Deck saw it). A still that skips a
+  layer is a still of a different game.
+- The Deck's build is `gl_compatibility`, the same renderer these
+  renders use — the painter itself is identical there; the gap was the
+  rig, not the driver.
+
+### 2026-10-02 (vi) · glass is glass — vertex alpha becomes transparency at load (LocaleGlass)
+
+- Every builder writes glass with an alpha below 1 (Houston's glass
+  wall 0.30, its partitions 0.50, the helm's cabinet glass, a cooler
+  jug 0.55) and the GLB's COLOR_0 carries it (VEC4) — but the glTF
+  importer's material for a material-less primitive is opaque, so
+  every pane rendered as a painted slab. Erica's "glass-walled office"
+  was a box; the riverboat's leaded window over the dining room was a
+  wall; the lead cames sat INSIDE the pane, invisible.
+- `scripts/LocaleGlass.gd` — `apply(root)` walks the instanced locale,
+  reads each surface's ARRAY_COLOR, and where alpha < 0.98 sets a
+  duplicate StandardMaterial3D with TRANSPARENCY_ALPHA + vertex colour
+  as albedo + no culling. Background3D calls it right after
+  `instantiate()`. No GLB rebuild — the Deck needs no Blender for it.
+- PRELOAD it, do not rely on `class_name`: the global class cache only
+  learns a new class on an editor scan or `--import`; before that
+  Background3D failed to parse and every test tool hung for its full
+  timeout ("Nonexistent function set_paper_for_volume in base
+  SubViewportContainer" is what a script that failed to load looks like
+  from the outside).
+- Transparent surfaces do not write depth; the painter reads colour,
+  not depth, so the washes and the pencil see through glass as the eye
+  does. Anything a builder gave an alpha for a reason OTHER than
+  see-through (none found in vol 5's builders; survey before vol 6/7)
+  will now show through — a lampshade at 0.7 is a lit shade, fine.
+- GLASS NEEDS A HOLE (2026-10-03). `make_window` builds a frame and a
+  pane ON a wall; `make_wall` never cuts one. Every apartment window
+  was a pane in front of a solid wall — Montreal's north "frame" was
+  even a solid steel plate behind its glass — so the alley, the yard,
+  the street and the dusk towers the builders made were never
+  visible. `make_wall_with_openings(…, openings=[(centre_along, z,
+  w, h)])` builds piers, a spandrel and a lintel round each opening;
+  Montreal, Elicia's and the Roberts house are cut now. Audit the
+  pane too: the obstruction audit treats `glass`/`pane` names as
+  passable again, so a window shot that still hits a wall says
+  `Wall_N stands between the lens and …` and names the wall to cut.
+- The default `P.GLASS` alpha went 0.45 → 0.25: at 0.45 every view out
+  of a window was a pale wash over what lay beyond. `P.GLASS_WARM`
+  (make_window's "afternoon sun" pane) went 0.70 → 0.22: at 0.70 every
+  west window was a beige slab — Elicia's skyline sat behind one.
+- A bed's head against a window's SPANDREL is a bed against a wall:
+  furniture_grammar's BED rule reads spandrel pieces of any size now
+  (the cut walls are piers + spandrel + lintel, and a 1.2 m spandrel
+  under a 1.5 m wall-size floor failed the old filter).
+- A leaded window reads by its LATTICE: 2 cm cames at 50 cm vanished
+  under the Kuwahara; 3.5 cm at 25 cm, standing 1.5 cm proud of the
+  pane each side, in lead grey, hold.
+
+### 2026-10-02 (iii) · vol 5's tenor is the TRIP, and it rides OVER the paint as ink
+
+- The Deck, with a screenshot: "I want the look vol 6 has, but with
+  vol 5's tenor. I didn't want it to go away. It was just poorly lit."
+  The green edges and the glare were TripSync's arcana aura on the
+  Background3D CONTAINER — above the painted pass, so the "painter's
+  bed" (which only quieted the locale's own stack) never touched it.
+  The bed and the vol-5 "firmer hand" were the wrong diagnosis and are
+  gone; one hand paints every volume, only the paper changes.
+- UNDER the painter the aura vanishes: Kuwahara flattens its lines, the
+  colour-edge ink eats its hue. OVER the painter, screen-blended light
+  on medium-bright paper is glare. The answer is the trip's own INKED
+  branch (`paint_under` uniform, GameEngine sets 0.85 on attach): the
+  lines darken toward the register's hue, the flats take its tint — a
+  colour print carrying neon. Tested with a held loud beat (energy 0.7,
+  pulse 0.6) on the real diner: no glare, the tenor reads.
+- "Poorly lit" was real too: the diner's two counter fluorescents at
+  energy 8.0 (+ ambient 1.0, glow 0.85) rendered the room near-white
+  before any pass. 4.5 / 0.75 / 0.55. The painter's downward exposure
+  holds the MEAN; local clipping is the lights' to fix.
+- bpy (Blender as a pip module) runs here: build_diner.py in 20 s, then
+  the contact sheet and tools/TripPaintTest.tscn render the REAL locale
+  through the real stack. Judge locales that way, not from sheet JPEGs.
+
+### 2026-10-02 (ii) · the painted room, balanced (vol 5's Deck notes)
+
+- The Deck: ch 0 "muddy establishing shot, no real details make it
+  through. diner is an eyesore, washed out and too bright, far too
+  bright"; "vol 5 is real rough with this look, needs a strong
+  direction balance pass"; vol 6 "looks good". Draft 1 LIFTED every
+  value toward cream paper and faded the margins to bright paper —
+  night went to grey mud, a bright room to glare.
+- A painted pass must keep the scene's VALUES: re-key to the source's
+  brightness at the end (value_keep), compress highlights over a knee,
+  fade margins to paper darkened to the local value, read ink edges
+  RELATIVE to local light (night edges are small in absolute terms).
+- Downward-only auto-exposure: the diner rendered near-white before
+  any painting. A 6×5 tap grid gives the frame's mean; a room brighter
+  than target_key is brought down, a dark one never brightened.
+  Full-res taps: the Compatibility back buffer has no mip chain — a
+  `textureLod(…, 4.0)` read returned nothing and the exposure did zero.
+- THE PAINTER'S BED: paint over a CLEAN render. The locale's own stack
+  (MoodCycler) keeps lighting + trip response but drops quantization,
+  dither, scanlines, fringe, ASCII, neon, motion, old film, blur while
+  the VN paints (`set_painted_bed`). Even the "raw" mood quantized at
+  palette 32 — the diner's ceiling rings. Vol 6's moods were mostly
+  clean already; that is why it read well and vol 5 did not.
+- Each register gets its own hand (Background3D.VOLUME_PAINT): vol 5
+  lower key, more contrast, stronger ink, cooler; vol 6 the defaults.
+
+### 2026-10-02 · the painted room (the backgrounds join the heroes' watercolour)
+
+- The Deck: "background clashing with the new art style and models.
+  let's bridge the gap." `painted_scene.gdshader` is the room's half of
+  the language: Kuwahara washes, a lift toward the volume's PAPER (not
+  white), pigment pooling at real colour borders, ink along COLOUR
+  edges, one hatch direction in the shadows, granulation + tooth, and
+  the painting thinning to bare paper at the frame margins.
+- Where it lives: a CanvasLayer (layer 90, "PaintedPass", group
+  `world_render`) INSIDE Background3D's SubViewport, above the locale's
+  own PostProcess (layer 50) — it paints whatever the style pack left.
+  Not the container's material: that slot is TripSync's.
+- Godot will not route a built-in TEXTURE and a uniform sampler through
+  the same function, nor two samplers with different hints/filters —
+  "called more than once using both built-ins and uniform textures".
+  A failed canvas shader draws SOLID WHITE, silently. The pass reads
+  only `hint_screen_texture`; the test tool stacks it the same way.
+- Edges in COLOUR, not brightness (red on grey is one brightness), over
+  a 2.5 px reach and a high threshold: the locales' post bands light
+  into rings, and a fine brightness test inked every ring. The brush
+  warp must stay a whisper (0.25) on rooms — more bends banded light
+  into marble (the diner's ceiling).
+- Paper per volume register (Background3D.VOLUME_PAPER): vol 5 cool rag,
+  vol 6 warm cream, vol 7 green-grey. The sheet now shows rooms painted;
+  `contact_sheet.sh --raw` for geometry judging.
+
+
+### 2026-10-02 · the painted hero (watercolour + ink over the 3D portraits)
+
+- The Deck: "less plastic, more cartoon sketch, with watercolor vibe."
+  Two halves, both needed: the Meshy materials go MATTE on load
+  (roughness 1, no metal, specular 0.12 — the sheen lives in the
+  material before any shader), and the container's `look` pass paints:
+  Kuwahara washes (4 quadrants × 9 alpha-weighted taps — the flattest
+  wins, so CG gradients become pigment areas with crisp borders), soft
+  cel bands, a value lift toward the paper, pigment pooling where
+  washes meet, fbm granulation + paper tooth, Sobel ink lines plus the
+  silhouette, gapped by noise ("the pen lifts"), two-direction hatching
+  in the shadows, a ragged bleed past the silhouette.
+- Watercolour has no true black: lift the deepest values and let the
+  paper show through them, or hair renders as a flat hole.
+- Everything static — no boil, no per-frame noise (the same Deck asked
+  for less motion). Grain is per pixel, not per frame.
+- Mood moves the MEDIUM, not just the grade: sorrow runs wetter and
+  paler (bleed up, ink down), anger inks harder and hatches deeper
+  (fewer bands), joy is a bright clean wash. The mood's own red key
+  already warms anger — its grade runs slightly cool or it floods orange.
+- Judge it on the CONTACT SHEET's `__look_*` frames: the portrait
+  container sits in its own SubViewport there, so the capture includes
+  its material. The repo holds only seven old July hero GLBs (the real
+  51 are on the Deck + Drive) — a local render is never the verdict.
+
+
+### 2026-10-01 · the 3D heroes get a look (they were clean CG over a processed room)
+
+- Each locale renders through its OWN post stack inside its viewport;
+  anything composited over it in 2D (the CharLayer heroes) never sees
+  that stack. A layer drawn over a processed image needs its own
+  matched pass, or it reads as pasted on.
+- The hero pass lives on the portrait's SubViewportContainer material
+  (`portrait_demon_static.gdshader`, `look` uniform), beside the demon
+  recipe (`strength`): fringe toward the frame edge, grade, bloom,
+  grain, an inner + OUTER rim glow (alpha ring sampling — the halo is
+  drawn outside the silhouette), vignette, a fade at the base. Driven
+  per frame from Portrait3D (mood + the room's key/ambient), eased.
+- A contact sheet that saves `get_viewport_texture()` captures the RAW
+  render, never the container's shader. Judge the look from a window
+  capture (`tools/PortraitLookTest.tscn` under xvfb-run).
+- Mood grades stack with the mood's own 3D light: angry's key is
+  already red, so the grade adds little warmth; clamp the summed
+  temperature.
+
+
+### 2026-09-11 · THE FEEDBACK · Minter trails without moving the picture
+
+User direction: "the psychedelic visual layer to the visual novel
+should include a feedback element ... ala Jeff Minter visualizers and
+games." The bible had listed it as the missing half of the Minter
+register since draft 1.
+
+- **Feed back the LAYER'S LIGHT, not the picture.** Minter's feedback
+  trails everything because in his work everything is emissive; here
+  the picture is a photograph that rule 1 says must stay a photograph.
+  So the buffer catches exactly two things — the bright part of the
+  source, and the aura recomputed from its silhouettes in the
+  register's hue — and the scene composites over it, sharp. A face
+  never smears because a face was never in the buffer.
+- **The source must be a TEXTURE, not the screen, or type smears.**
+  A screen-space feedback layer in the VN would trail the dialogue
+  box. Reading the background texture makes that impossible by
+  construction, and it is the same reasoning that put the trip shader
+  in texture mode there. The catch: the VN's `3d:` path sets
+  `_bg.texture = null` and renders through a SubViewportContainer, so
+  a rig bound to the TextureRect alone goes dark on most of the game.
+  Register BOTH surfaces and take whichever is live.
+- **Every feedback rate must be per-second × delta.** `decay` is
+  `exp(-dt · rate)`, `zoom` and `spin` are rates × dt. A per-frame
+  constant makes the wake four times longer on a 30 fps Deck than in
+  a 120 fps editor, and you tune the wrong number for weeks.
+- **Screen to accumulate, soft-roll to display.** Screen blend
+  (`1 − (1−a)(1−b)`) inside the buffer is bounded, so a static
+  highlight settles instead of running away to white. The display
+  pass is `blend_add` — a trail is light — but tone-maps with
+  `1 − e^(−b·soft)` FIRST, so the add can never contribute more than
+  1 and there is no clipped edge (the draft-2 "add clips; screen
+  rolls off" lesson, applied to a buffer).
+- **Clamp the re-projection, do not wrap it.** A wrapped sample draws
+  the top of the frame back in at the bottom, which reads as a glitch
+  rather than as light.
+- **An idle rig must cost nothing.** Both SubViewports sit at
+  `UPDATE_DISABLED` until a surface is registered AND the dials are
+  above zero; the write buffer takes `UPDATE_ONCE` per frame. Half
+  resolution throughout — a wake wants to be soft anyway.
+
+
+### 2026-07-20 · VN direction audit + the mood-shift-at-interludes pass
+
+- **Audit direction density, not just correctness.** New tool
+  `godot/tools/audit_vn_direction.py` validates every scene's
+  `{"t":"bg","src":"3d:<preset>"}` against Background3D.CAMERA_PRESETS
+  (0 broken across 145 scenes — the bg wiring is clean) AND flags
+  FLAT scenes: >=40 nodes on <=1 backdrop with <=1 `[mood:]` cue.
+  Eight surfaced; that list IS the direction-pass worklist.
+- **Place mood shifts on the interlude beats.** A scene's own
+  `{"t":"interlude"}` cards mark its structural turns. The empress
+  scene (113 nodes, one `smoky_bar` mood) had interludes at "A
+  flicker behind her eyes", "A kick", "Table 14" — three ready-made
+  shift points. Prepend `[mood:X]` to the first `narrate` after each:
+  dream_blur for the interior flicker, candlelight_low for the
+  grounded beat, arcana_cool for Dean's entrance (the arcana-thread
+  antagonist). Direction from the text's own scaffolding.
+- **Only use moods already in the corpus.** `grep -ohE "\[mood:[a-z_]+\]"`
+  over the scenes gives the 28 de-facto-valid moods — reuse those so
+  a cue can't reference a mood the engine can't build. Same discipline
+  as the gauntlet visitor look-derivation: author from the known set.
+
+
+### 2026-07-13 · "wireframe nightmare" — neon-1.0 moods are NOT direction-safe
+
+User verdict on ch1 + the tarot chapters: scenes "read as a wireframe
+nightmare, not a real place." Root cause: a `[mood:]` whose `neon`
+is 1.0 runs the neon-edge shader, which OUTLINES EVERY EDGE — the
+literal wireframe look. When authoring VN scene direction that must
+"read as a real place," use ONLY color-grade moods (neon 0, ascii 0).
+
+- **BANNED as scene direction (neon 1.0 = wireframe):** `noir`,
+  `bar_pendant_amber`, `chillwave`, `lithograph`, `ink_green`,
+  `ink_blue`, `sunset`, `blueprint_red`, `high_contrast_bw`,
+  `cel_shaded`, `linework`/`linework_overlay`/`linework_multiply`,
+  `substrate_press`, `ice`, `debug_purple`, `texas_bleach_day`,
+  `anime_motion`. Also ascii moods (`demoscene_ascii`,
+  `psychedelic_substrate`, `precipice`, `substrate`, `3_47_am`).
+  And any STYLE_PACK that RESOLVES to one (e.g. `bungalow_late`
+  pointed its `mood` at `noir` — fixed to `night`). ALWAYS resolve a
+  pack to its mood and check neon before using it as direction.
+- **SAFE color-grade moods (neon 0, ascii 0) — the direction palette:**
+  `raw`, `day_bright`, `morning_bright`, `dawn_warm`, `dusk`, `night`,
+  `lunch`, `studio`, `macro_haze`, `dream_blur`, `motion_blur`,
+  `silent_film_12/18/24`, `kitchen_practical`, `fluorescent_corridor`,
+  `candlelight_low`, `tv_glow_blue`, `rain_interior`, `liminal_interior`,
+  and the rebuilt subtle `arcana` / `arcana_cool` / `arcana_warm`.
+- **`candlelight_low` NOT `memory_warm` / `bar_pendant_amber` for warm
+  dim beats.** `memory_warm` and `bar_pendant_amber` are STYLE_PACKs
+  whose lighting preset (`candlelight`, dir_mult 0.15) crushes dim
+  sets to black (see the 2026-07-12 entry). `candlelight_low` is a
+  MOOD (neon 0) that only grades colour — no Light3D change, no black.
+- **Verify before authoring:** grep the mood in `MoodCycler.gd`, check
+  `"neon"` and `"ascii"` are 0. A batch mechanical check:
+  `[mood:X]` is safe iff MOODS[X] (or the mood its STYLE_PACK resolves
+  to) has neon<1.0 AND ascii<0.5.
+
+### 2026-09-24 · the keys did nothing: the quantiser floors the dark end
+
+- **Raising a key does not rescue a black palette-mood frame.** The
+  night mood changes no Light3D; demoscene_post quantises with
+  `floor(col * palette_size) / palette_size` on the sRGB screen, so at
+  palette 9 everything under 28/255 is 0. A dark-albedo set lit to a
+  believable night sits there. The 2026-07-12 rule is the lever:
+  scene ambient 1.0–1.8 (eight scenes lifted from 0.5–0.65).
+- **The user's answer (same day): lift only the dark moods.**
+  demoscene_post has `shadow_lift` (a gamma lift, col^(1/(1+lift)),
+  applied BEFORE dither + quantise; 0 = off, byte-identical output).
+  Set per mood in MOODS: night 0.6, 3_47_am 0.6, dusk 0.3 — tuned so a
+  moonlit ~0.03 clears the first step of that mood's palette. Every
+  other mood is untouched. A new dark mood gets its own shadow_lift;
+  don't reach for scene ambient first.
+
+### 2026-07-12 · the recurring "scene is black" antipattern
+
+- **Never pair an establishing/clean pack with the `midnight`
+  (dir_mult 0.6) or `candlelight` (0.15) lighting preset on a
+  dark-albedo set.** Repeatedly shipped near-black chapters this way:
+  cathedral (warehouse_nave/cathedral_workbench were candlelight/
+  midnight), riverboat helm (riverboat_clean was midnight + ambient
+  0.25). Fix = raw mood + `scene_default` lighting + ambient >= ~1.0.
+  The diner survives dambrosios_3am (raw+midnight) ONLY because its
+  ambient is 1.0 and it has many bright practicals — midnight is a
+  beat lighting, not a baseline. Rule: clean packs use scene_default;
+  bump the tscn ambient into the 1.0-1.8 range for sets whose vertex
+  colours sit at 0.1-0.3 albedo (warehouses, night interiors).
+
+
+### 2026-07-12 · establishing shots open CLEAN
+
+- **A locale's default_style_pack IS the establishing look — never
+  point it at an edge/ascii/press mood.** The bungalow opened on
+  `linework` (Sobel edge-detect, neon=1.0) and the riverboat on
+  `lithograph` (3-color + scanline 0.6); the user read both as "a
+  weird effect, always." The diner's `raw` (palette-quantize only,
+  every distortion 0) is the one that read as normal. Fix: clean
+  packs (cathedral_clean / bungalow_clean / riverboat_clean /
+  kitchen_clean), all `raw` mood + a warm lighting preset, set as
+  each locale's default. Stylized moods stay reachable via [mood:]
+  mid-scene and the F-key strata — they're beats, not the baseline.
+
 
 ### 2026-06-14 · spinning up this playbook
 
@@ -619,6 +1132,110 @@ copperplate), Sacramento (modern handwritten).
   them, but adding the group makes the intent explicit and
   matches the riverfront pattern. **Rule:** every HUD CanvasLayer
   in a `*.tscn` carries `groups=["ui"]`.
+
+### 2026-07-09 · slowstick look pass · demoscene_post as house language
+
+- **Slowsticks render modern; retro cosplay is banned.** User
+  directive: slowsticks are tech from an alternate universe —
+  they never had our timeline's hardware limits and must not
+  fake them. All hand-drawn CRT-scanline ColorRect loops were
+  stripped from Earthman Chronicles (7 files). **Rule:** period
+  flavor comes from palette/composition/type (each studio's
+  design culture), never from simulated hardware failure. Full
+  doctrine: `lore/_SLOWSTICK_AESTHETIC_BIBLE.md`.
+- **One shader, per-studio presets — never per-host uniforms.**
+  `SlowstickLook.apply(host, preset)` (estuary_3/SlowstickLook.gd)
+  adds a layer-80 `"world_render"` CanvasLayer running
+  demoscene_post with a named preset (oneironautics ·
+  rocha_faire · astro_cortex · ranch · shelf). This keeps every
+  stick in the same post-process language as TAROT GAUNTLET /
+  COMMUNITY PLANNED while giving each studio a distinct material
+  feel. New studios extend PRESETS; nobody sets uniforms inline.
+- **The look layer must not eat input.** The full-rect ColorRect
+  carries `MOUSE_FILTER_IGNORE`; without it every slowstick
+  button dies silently under the overlay.
+- **Deck type floor.** 309 `add_theme_font_size_override` calls
+  across fey_faire / earthman_chronicles / sams_summer_shifts
+  raised via BUMP map {8→12 … 16→20}. **Rule:** no slowstick font
+  below 12; body text 14–16.
+- **Regex-anchored patch scripts: assert per-file, expect drift.**
+  The wiring script's `add_to_group("ui")\n` anchor missed
+  SlowstockShelf because that line carries a trailing comment
+  (`# F4 compliance`). A mid-script assert aborted the LATER
+  steps too. **Rule:** when batch-patching, run each step
+  independent of the others' asserts, and anchor on the loosest
+  unique substring, not on exact line shape.
+
+### 2026-09-07 · THE TRIP · a global music-synced layer (draft 1)
+
+- **A project-wide layer lives in an autoload, not in 124 tscns.**
+  "Running through the game at all times" means every locale walk,
+  every slowstick, the menu, and the VN. The scene PostProcess
+  stacks are per-tscn; the one place that spans them all is an
+  autoload CanvasLayer. TripSync owns a layer-60 CanvasLayer (above
+  PostProcess at 50 — so it sees the quantized/dithered picture and
+  its rainbow lines stay smooth on top — below the slowstick look
+  at 80 and HUD at 100). CanvasLayer boundaries give the screen
+  copy for free (SlowstickLook proved it; no BackBufferCopy needed).
+- **One shader, two mounts.** A screen-reading ColorRect cannot
+  tell dialogue text from geometry. For the VN the same shader runs
+  in texture mode (`use_screen = false`, reads TEXTURE) as the
+  material on the background TextureRect and the 3D
+  SubViewportContainer, and GameEngine joins `"trip_local"` so the
+  global layer hides. Rule: any surface that must keep text clean
+  joins `trip_local` and calls `TripSync.attach(item)` on its
+  backgrounds. In texture mode carry the vertex colour through a
+  varying — fragment `COLOR` already has TEXTURE folded in, so
+  `result * COLOR` applies the texture twice.
+- **"Realism but trippy" = mask by edge density.** The warp and the
+  hue drift are multiplied by `1 − density` (a wide Sobel); the
+  aura by the thin Sobel. Flat stretches breathe and drift, edges
+  (and any text under the global layer) stay pin-sharp. The hue
+  rotation is a YIQ rotation clamped to ±0.62 rad — colours breathe,
+  a wall never turns green.
+- **Analyze the BGM bus, auto-gain it, detect beats on the lows.**
+  AudioMgr already keeps a spectrum analyzer on BGM; TripSync reuses
+  it (attaches one if missing). Eight log bands 40 Hz–9 kHz with a
+  +55%/band tilt (the highs carry a fraction of the amplitude), a
+  slow-sinking loudness ceiling for the gain, asymmetric smoothing
+  (rise 0.55, fall 0.14). Beats: low band over 1.32× its ~1 s
+  running average, 220 ms refractory; median of the last eight
+  inter-beat intervals is the tempo that locks `beat_phase` /
+  `bar_phase`. Silence for 1.5 s → an idle breath (energy ~0.2 LFO)
+  so the layer never reads dead. InGameMusicPlayer moved from Master
+  to the BGM bus so user-dropped tracks feed the same analyzer.
+- **Draft-1 caveat.** Not one frame has been seen on the Deck; every
+  threshold above was set blind. Draft 2 is a taste pass with the
+  PSYCHEDELIA slider, then per-mood and per-surface scaling.
+- **Registers, same day.** The user gave each pillar a SOUND
+  (arcade / sludge / wall of sound / Minter) and the look followed:
+  `TripSync.REGISTERS` holds five dial sets with a per-register
+  palette function in the shader (`aura_color`), sparks, photocopy
+  grain, a cabinet power dip, the Minter thump, and a per-register
+  `pulse_decay` — the single number that most changes how a pillar
+  feels on the beat. Hosts push a register with themselves as owner
+  and it pops when they leave the tree. Doctrine + game-grammar
+  queue: `lore/_PSYCHEDELIC_DESIGN_BIBLE.md`.
+
+### 2026-09-07 · THE TRIP draft 2 · the motion rule
+
+- **Never displace the picture to a continuous audio signal.** The
+  Deck verdict on draft 1's few-pixel flat warp + beat ripple +
+  zoom thump was "mostly nausea inducing." Post-process effects
+  that MOVE pixels (warp, ripple, zoom, chroma split, screen shake)
+  are motion-sickness triggers when they are involuntary and
+  continuous; brightness flicker is a photosensitivity trigger.
+  THE TRIP is now colour + light on a still image — see
+  `_PSYCHEDELIC_DESIGN_BIBLE.md` rule 0. Apply the same test to any
+  future screen-space effect: if it moves the frame, it is a
+  gated beat of seconds, not a running layer.
+- **Edge detection above demoscene_post reads the dither.** Any
+  Sobel that runs AFTER the quantize/dither pass sees the Bayer
+  matrix as edges. Average three sample scales and raise the floor
+  (or run the Sobel below the dither, as neon_edge does).
+- **Screen-blend additive light.** `col += glow` clips; `1 − (1−col)
+  (1−glow)` rolls off. Use screen for any aura/bloom laid over a
+  lit scene.
 
 ### TEMPLATE for next session
 

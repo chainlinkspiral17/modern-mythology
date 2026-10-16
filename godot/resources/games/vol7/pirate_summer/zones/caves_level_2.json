@@ -1,0 +1,49 @@
+{
+  "id": "caves_level_2",
+  "display_name": "the caves · level 2 · the drowned corridor",
+  "size": [22, 18],
+
+  "tileset": {
+    "#": { "kind": "rock",         "color": "#141010", "walkable": false, "label": "rock walls · slick with seawater" },
+    ".": { "kind": "sand",         "color": "#3a3020", "walkable": true  },
+    "w": { "kind": "shallow",      "color": "#243a4a", "walkable": true,  "label": "shallow tidepool" },
+    "W": { "kind": "deep",         "color": "#0a1a24", "walkable": false, "label": "deep water · you can see the passage at the bottom but you can't walk through it" },
+    "U": { "kind": "underwater",   "color": "#182838", "walkable": false, "label": "the underwater passage · Ollie could hold his breath through it · or Ford could tide-time it", "interact": "underwater_passage" },
+    "l": { "kind": "lantern",      "color": "#c8a842", "walkable": false, "label": "a wall lantern · someone keeps this lit too" },
+    "n": { "kind": "old_rope",     "color": "#5c4a2a", "walkable": true,  "label": "an old length of coiled rope · dry · you could take it", "interact": "pickup", "item_id": "old_ships_rope" },
+    "s": { "kind": "wall_scratch", "color": "#4a3a20", "walkable": false, "label": "words scratched into the rock at Sam's eye level · someone else once stood here", "interact": "examine_wall_scratch" },
+    "P": { "kind": "passage_up",   "color": "#241814", "walkable": true,  "exit": {"zone": "caves_level_3", "spawn": "from_level_2"}, "label": "a passage climbing up and around · leads deeper into the cave system" },
+    "p": { "kind": "back_up",      "color": "#3a3020", "walkable": true,  "exit": {"zone": "caves_level_1", "spawn": "from_level_2"}, "label": "back up to the chamber of barrels" }
+  },
+
+  "tiles": [
+    "######################",
+    "##...s..............##",
+    "##..................##",
+    "##....wwww..........##",
+    "##...wwwwww.........##",
+    "##..wwwwwwww........##",
+    "##..wWWWWWWW........##",
+    "##..wWWUWWWW........##",
+    "##...wWWWWWw......P.##",
+    "##....wwwwww........##",
+    "##.....wwww.........##",
+    "##..................##",
+    "##.....n............##",
+    "##....l.............##",
+    "##..................##",
+    "##..................##",
+    "##.p................##",
+    "######################"
+  ],
+
+  "spawns": {
+    "start":         [3, 16],
+    "from_level_1":  [3, 16],
+    "from_level_3":  [17, 8]
+  },
+
+  "npcs": [],
+
+  "notes": "Caves level 2 · the drowned corridor.  A pool at center with a submerged passage at its bottom that leads to level 3.  Sam needs Ollie (HOLD YOUR BREATH) to swim through, OR Ford (MARINE LOGIC) to tide-time when the water level drops enough to wade.  An old length of dry rope on the sand.  A wall scratch at eye level · words from someone who stood here first."
+}

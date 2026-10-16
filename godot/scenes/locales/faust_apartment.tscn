@@ -1,0 +1,427 @@
+[gd_scene load_steps=26 format=3 uid="uid://faust_apartment"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/faust_apartment.glb" id="1_glb"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="8_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="9_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.10
+shader_parameter/scanline_strength = 0.18
+shader_parameter/chromatic_aberration = 0.0008
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/ascii_bg = Color(0.10, 0.09, 0.07, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/bg_color = Color(0.10, 0.09, 0.07, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("7_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.6
+shader_parameter/edge_color = Color(0.72, 0.70, 0.60, 1)
+shader_parameter/fill_low = Color(0.32, 0.28, 0.20, 1)
+shader_parameter/fill_high = Color(0.08, 0.08, 0.09, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("8_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.72, 0.70, 0.60, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/mono_red = Color(0.72, 0.70, 0.60, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("9_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.82, 0.95, 1)
+shader_parameter/chip_col = Color(0.62, 0.78, 0.88, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.62, 0.70, 0.82, 1)
+shader_parameter/cloud_core_col = Color(0.85, 0.88, 0.95, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("10_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("11_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("12_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("15_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.70, 0.60, 0.44, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
+[sub_resource type="Environment" id="Env_Locale"]
+background_mode = 2
+sky = SubResource("Sky_Win")
+background_color = Color(0.08, 0.06, 0.04, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.66, 0.56, 0.40, 1)
+ambient_light_energy = 0.72
+fog_enabled = true
+fog_sky_affect = 0.0
+fog_light_color = Color(0.38, 0.30, 0.22, 1)
+fog_light_energy = 0.4
+fog_density = 0.005
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.04
+adjustment_saturation = 0.92
+glow_enabled = true
+glow_intensity = 0.65
+glow_bloom = 0.1
+glow_blend_mode = 1
+glow_hdr_threshold = 0.95
+glow_hdr_scale = 2.4
+
+[node name="FaustApartment" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Locale")
+
+[node name="Key_Window__faust_bedroom" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 6, 0)
+light_color = Color(0.66, 0.72, 0.92, 1)
+light_energy = 0.45
+shadow_enabled = false
+
+[node name="Fill_Warm" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 3, -2)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 0.22
+shadow_enabled = false
+
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 3, 3)
+light_color = Color(0.42, 0.32, 0.22, 1)
+light_energy = 0.15
+shadow_enabled = false
+
+; DRAFT 3 practicals (2026-10-09): each tied to a fixture in the GLB
+[node name="NLamp_Bulb_Practical__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82, 0.96, -6.35)
+light_color = Color(0.98, 0.80, 0.48, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 2.8
+
+; the bare bulb: on low at 4 am (he has just switched it on), off for the painting morning
+[node name="Bulb_Practical__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.30, -3.4)
+light_color = Color(1.0, 0.86, 0.52, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 6.0
+
+; the bathroom's vanity bulb, left on: its spill through the open door
+[node name="Bath_Vanity_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40, 2.12, -0.62)
+light_color = Color(0.96, 0.90, 0.78, 1)
+light_energy = 1.3
+shadow_enabled = true
+omni_range = 3.4
+
+[node name="Moon_Spill__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 1.9, -4.1)
+light_color = Color(0.6, 0.7, 0.95, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 4.2
+
+; the sodium street lamp two floors down, lighting the ceiling
+[node name="Street_Sodium__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0.2, -4.1)
+light_color = Color(1.0, 0.66, 0.32, 1)
+light_energy = 0.9
+shadow_enabled = true
+omni_range = 8.0
+
+; daylight through the E window (follows the mood: 0 at night)
+[node name="Sun_Window__faust_apartment_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.545, -0.251, 0.800, 0.000, 0.954, 0.300, -0.838, -0.163, 0.520, 6, 3.5, -4.1)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 1.3
+shadow_enabled = true
+metadata/daylight = true
+
+; the morning's skylight in the room (no shadows: it is the sky through two windows, not the sun)
+[node name="Day_Fill__faust_apartment_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.545, -0.251, 0.800, 0.000, 0.954, 0.300, -0.838, -0.163, 0.520, 0, 3, -3)
+light_color = Color(0.92, 0.94, 1.0, 1)
+light_energy = 0.55
+shadow_enabled = false
+metadata/daylight = true
+
+; the morning's bounce off the floor by the E window
+[node name="Window_Bounce__faust_apartment_day" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.4, -4.0)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 6.5
+
+[node name="Interior" parent="." instance=ExtResource("1_glb")]
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+mood_strata = Array[String](["raw", "noir", "lithograph", "macro_haze", "silent_film_18", "candlelight", "memory_warm"])
+default_style_pack = ""
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("16_limc")
+post_process_path = NodePath("../PostProcess")
+location_json = ""
+
+[node name="PDRiffrocker" type="Node" parent="."]
+script = ExtResource("13_riff")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 16.0
+offset_top = 360.0
+offset_right = 520.0
+offset_bottom = 980.0
+script = ExtResource("14_dbgm")
+
+; DRAFT 3 coverage (2026-10-09): the bigger room, the bathroom mirror, the bed's own pair
+[node name="shot_insert_paint_table" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.550, 1.400, -3.350)
+rotation = Vector3(-0.6662, -2.1401, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.450, 1.650, -1.750)
+rotation = Vector3(-0.0551, 3.0987, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_easel" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.550, 1.450, -2.350)
+rotation = Vector3(-0.1363, -0.5404, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_curtain" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.750, -3.200)
+rotation = Vector3(-0.0260, -1.0839, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_alarm" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.350, 0.950, -5.750)
+rotation = Vector3(-0.4527, 0.3961, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_coat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.450, 1.450, -1.600)
+rotation = Vector3(-0.1010, -2.9376, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, -2.600)
+rotation = Vector3(-0.0932, -0.9179, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.600, -3.350)
+rotation = Vector3(-0.0841, 1.7544, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person__faust_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.550, 1.250, -4.150)
+rotation = Vector3(-0.1690, 0.5880, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__faust_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.450, 1.150, -6.000)
+rotation = Vector3(-0.0817, -2.9562, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.200, 1.700, -5.900)
+rotation = Vector3(-0.0969, 2.2282, 0.0)
+metadata/fov = 60.0

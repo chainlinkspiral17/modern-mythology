@@ -155,14 +155,14 @@ func _build_ui() -> void:
 	var sub := Label.new()
 	sub.text = "RUST_CODE.BBS · ACTIVE NODES: 64"
 	sub.add_theme_color_override("font_color", C_TEXT_DIM)
-	sub.add_theme_font_size_override("font_size", 11)
+	sub.add_theme_font_size_override("font_size", 12)
 	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(sub)
 
 	_hint_label = Label.new()
 	_hint_label.text = "[ click node to enter · ESC to close ]"
 	_hint_label.add_theme_color_override("font_color", C_TEXT_DIM)
-	_hint_label.add_theme_font_size_override("font_size", 10)
+	_hint_label.add_theme_font_size_override("font_size", 12)
 	header.add_child(_hint_label)
 
 	_close_btn = Button.new()
@@ -234,7 +234,7 @@ func _make_node_button(scene_id: String, label_text: String,
 	btn.text = label_text
 	btn.custom_minimum_size = Vector2(56, 56)
 	btn.add_theme_color_override("font_color", C_GOLD_HI if is_available else C_TEXT_DIM)
-	btn.add_theme_font_size_override("font_size", 9)
+	btn.add_theme_font_size_override("font_size", 12)
 	btn.disabled = not is_available
 	btn.clip_text = true
 	# styling
@@ -336,7 +336,7 @@ func _on_node_pressed(scene_id: String) -> void:
 	if scene_id.begins_with("_cluster_vol"):
 		# placeholder — future: zoom into the volume sub-compass
 		var vol = int(scene_id.replace("_cluster_vol", ""))
-		_title_label.text = "VOL %d — sub-compass TODO" % vol
+		_title_label.text = "VOL %d — the needle has not learned this ring yet" % vol
 		return
 	scene_selected.emit(scene_id)
 

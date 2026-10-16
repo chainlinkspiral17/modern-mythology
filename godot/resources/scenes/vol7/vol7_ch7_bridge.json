@@ -7,21 +7,21 @@
     },
     {
       "t": "bgm",
-      "src": "assets/audio/bgm/vol7_apartment_rain.mp3"
+      "src": "assets/audio/bgm/vol7_apartment_rain.wav"
     },
     {
       "t": "interlude",
       "text": "What you need to know:",
-      "sub": "Smolvud \u00b7 Before Chapter 6",
+      "sub": "Smolvud · Before Chapter 6",
       "duration": 0
     },
     {
       "t": "narrate",
-      "text": "You work at the Daily Grind. Kai runs Board Lords down the street. Tem lives at the cabin at the edge of the small wood. Finn lives somewhere between the two."
+      "text": "[mood:morning_bright]You work at the Daily Grind. Kai runs Board Lords down the street. Tem lives at the cabin at the edge of the small wood. Finn lives somewhere between the two."
     },
     {
       "t": "narrate",
-      "text": "There is a tower on the hill that has been there longer than the town. Nobody talks about it directly. Everyone knows something about it."
+      "text": "[shot:insert tower~]There is a tower on the hill that has been there longer than the town. Nobody talks about it directly. Everyone knows something about it."
     },
     {
       "t": "narrate",

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:cabin_interior_day",
       "t": "bg"
     },
     {
@@ -45,7 +45,11 @@
       "t": "show"
     },
     {
-      "text": "Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat. He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
+      "text": "[shot:insert bowl][mood:day_bright]Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
       "t": "narrate"
     },
     {
@@ -70,7 +74,7 @@
     },
     {
       "char": "cale",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {
@@ -88,7 +92,11 @@
       "t": "narrate"
     },
     {
-      "text": "The disc-case was the case the stick had been in when Cale had sold it to Tem at ChillWave on the eleventh of July for nineteen dollars. It was the case that had been on Tem's writing desk through July. It was the case Tem had brought back to Cale on the eighth of August when she had decided the stick was broken. It was the case Cale had put on the inventory shelf behind his register on the seventeenth of August.",
+      "text": "[shot:insert disc]The disc-case was the case the stick had been in when Cale had sold it to Tem at ChillWave on the eleventh of July for nineteen dollars. It was the case that had been on Tem's writing desk through July.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the case Tem had brought back to Cale on the eighth of August when she had decided the stick was broken. It was the case Cale had put on the inventory shelf behind his register on the seventeenth of August.",
       "t": "narrate"
     },
     {
@@ -100,7 +108,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem looked at it. Kai looked at it. Finn looked at it. None of them, for a long count, moved to pick it up.",
+      "text": "[shot:establish]Tem looked at it. Kai looked at it. Finn looked at it. None of them, for a long count, moved to pick it up.",
       "t": "narrate"
     },
     {
@@ -119,7 +127,7 @@
       "t": "say"
     },
     {
-      "text": "Tem looked at the disc-case. She said, after a count:",
+      "text": "[shot:closeup tem]Tem looked at the disc-case. She said, after a count:",
       "t": "narrate"
     },
     {
@@ -134,7 +142,7 @@
     },
     {
       "char": "tem",
-      "text": "Not before the tower.",
+      "text": "[beat:still]Not before the tower.",
       "t": "say"
     },
     {
@@ -163,7 +171,7 @@
     },
     {
       "char": "tem",
-      "text": "The disc-case moved itself onto Cale's counter and that's the substrate telling us the time is now.",
+      "text": " The disc-case moved itself onto Cale's counter and that's the substrate telling us the time is now.",
       "t": "say"
     },
     {
@@ -202,11 +210,11 @@
       "t": "say"
     },
     {
-      "text": "Tem stood up from the table. She walked to the bedroom. She came back with her coat. She put it on. Kai stood up. Finn stood up. The three of them at the cabin.",
+      "text": "[shot:establish]Tem stood up from the table. She walked to the bedroom. She came back with her coat. She put it on. Kai stood up. Finn stood up. The three of them at the cabin.",
       "t": "narrate"
     },
     {
-      "text": "The two bowls on the table. The cedar bell-piece. The disc-case.",
+      "text": "[shot:insert table~]The two bowls on the table. The cedar bell-piece. The disc-case.",
       "t": "narrate"
     },
     {
@@ -225,7 +233,7 @@
       "t": "say"
     },
     {
-      "text": "The three of them went out to the wagon. Tem locked the cabin door behind her \u2014 she did not, on most days, lock it, but she locked it now.",
+      "text": "[shot:establish]The three of them went out to the wagon. Tem locked the cabin door behind her — she did not, on most days, lock it, but she locked it now.",
       "t": "narrate"
     },
     {
@@ -233,7 +241,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:cabin_road",
       "t": "bg"
     },
     {

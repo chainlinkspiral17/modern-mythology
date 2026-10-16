@@ -1,0 +1,124 @@
+{
+ "id": "earthman_chronicles_spine",
+ "notes": "Astro-Cortex 1985 \u00b7 precision-instrument glass \u00b7 signal amber rule lines.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#101418",
+  "#38c8d8",
+  "#e8a830",
+  "#c8ccd4",
+  "#3a3028"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    8
+   ],
+   "color": 2
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    8,
+    10
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    118,
+    128
+   ],
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "E",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "R",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "T",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "H",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    62
+   ],
+   "s": "M",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    71
+   ],
+   "s": "N",
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    104
+   ],
+   "size": 4,
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    104
+   ],
+   "size": 2,
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 112,
+   "x_range": [
+    12,
+    32
+   ],
+   "color": 1
+  }
+ ]
+}

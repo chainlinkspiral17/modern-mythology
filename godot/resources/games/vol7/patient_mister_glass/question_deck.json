@@ -1,0 +1,477 @@
+{
+  "notes": "The question deck + the nine findings. A FINDING is a true contradiction \u00b7 pin the exact pair in the ledger. A false pin costs trust \u00b7 he saw you take the bait. f_balances enables the CLOSE THE LEDGER verdict.",
+  "menu_by_evening": {
+    "1": "chowder",
+    "2": "chowder",
+    "3": "chowder",
+    "4": "chowder",
+    "5": "bread",
+    "6": "bread",
+    "7": "bread",
+    "8": "bread",
+    "9": "bread",
+    "10": "jam",
+    "11": "jam",
+    "12": "jam",
+    "13": "jam"
+  },
+  "evening_9_rain_watch_line": "before you ask anything, apropos of the rain: 'a fellow told me once about standing a night watch at that camp, years after. said the rain sounded like an audience.' he looks at you. 'you hear things, this coast. most of them are true.'",
+  "questions": [
+    {
+      "id": "q_farebox",
+      "label": "THE FARE BOX",
+      "variants": [
+        {
+          "id": "farebox_1",
+          "text": "'the box balanced every night. i counted it on the chart table, the purser initialed, done.' he stirs. 'you can write that down. everyone else did.'",
+          "cond": {
+            "evening_max": 5
+          }
+        },
+        {
+          "id": "farebox_2",
+          "text": "'a fare box on a two-run ferry is mostly quarters and forgiveness. you round. everyone rounds. the county's forms didn't have a column for weather.'",
+          "cond": {
+            "cooking": "bread"
+          }
+        },
+        {
+          "id": "farebox_3",
+          "text": "'the box never balanced. it was never meant to. the county paid us in arrears \u2014 sixty, ninety days. a box that balances to zero is a ferry that can't buy a fan belt on a friday.' he says it like a man explaining tide to a child. 'so, yes. there was a float.'",
+          "cond": {
+            "trust_min": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_second_ledger",
+      "label": "THE SECOND LEDGER",
+      "variants": [
+        {
+          "id": "ledger_1",
+          "text": "'the county had my ledger. has it still, i'd imagine, in a box in a basement with the mouse traps.' a beat. 'there was one ledger of record.'"
+        },
+        {
+          "id": "ledger_2",
+          "text": "'people say second ledger like it's a knife in a drawer.' he wipes the counter that is already clean. 'a careful man writes things down. that's all a ledger is. care, in columns.'",
+          "cond": {
+            "evening_min": 5
+          }
+        },
+        {
+          "id": "ledger_3",
+          "text": "'if such a book existed \u2014' the kettle starts and he lets it build a while before he moves. '\u2014 it would balance. that's all i'll say about a book that doesn't exist. it would balance.'",
+          "cond": {
+            "trust_min": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_anchor_run",
+      "label": "THE ANCHOR BAY RUN",
+      "variants": [
+        {
+          "id": "anchor_1",
+          "text": "'six-ten out, seven-forty back, twice daily, april to october. i could clerk that run in my sleep and some februaries i believe i did.'"
+        },
+        {
+          "id": "anchor_2",
+          "text": "'anchor bay was the money run. commuters, cannery shifts, and in the summers the camp traffic \u2014 the whole north coast rode with us at one time or another.'",
+          "cond": {
+            "evening_min": 4
+          }
+        },
+        {
+          "id": "anchor_3",
+          "text": "'we lost the anchor bay run the same week the auditor came. october of '74. i remember because you don't forget the two worst weeks of a job arriving holding hands.'",
+          "cond": {
+            "trust_min": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_auditor",
+      "label": "THE WEEK THE AUDITOR CAME",
+      "variants": [
+        {
+          "id": "auditor_1",
+          "text": "'may of '74, i want to say. a young fellow. brown suit. he was polite and i was polite and the numbers were the numbers.'",
+          "cond": {
+            "evening_max": 6
+          }
+        },
+        {
+          "id": "auditor_2",
+          "text": "'he sat where you're sitting. asked shorter questions than yours. i'll say that for you \u2014 you ask longer questions.' it is nearly a compliment.",
+          "cond": {
+            "cooking": "bread"
+          }
+        },
+        {
+          "id": "auditor_3",
+          "text": "'he found what was findable. thirty-one thousand across four years of fare seasons. he wasn't wrong, you understand. he just wasn't asking what it was FOR.' the knife board, steady. 'nobody has. yet.'",
+          "cond": {
+            "trust_min": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_wife",
+      "label": "EDITH",
+      "variants": [
+        {
+          "id": "wife_1",
+          "text": "'forty-one years. she kept the garden and i kept the water and between us we kept this kitchen.' the pot gets his attention for a while. that is the whole answer.",
+          "cond": {
+            "evening_max": 8
+          }
+        },
+        {
+          "id": "wife_2",
+          "text": "'edith did the mail. every wednesday, walked it up herself, rain or no. she liked the walk. she liked...' he re-buttons a cardigan button that was fine. 'she liked errands with a shape to them.'",
+          "cond": {
+            "evening_min": 6
+          }
+        },
+        {
+          "id": "wife_3",
+          "text": "'she knew. i'll spare you the asking \u2014 she knew, she licked the envelopes. you can't do a thing like that for three years in a kitchen this size without a marriage knowing.' the rain on the window. 'she'd have liked you. she liked people who came back.'",
+          "cond": {
+            "trust_min": 8,
+            "rain": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_never_left",
+      "label": "WHY HE NEVER LEFT",
+      "variants": [
+        {
+          "id": "left_1",
+          "text": "'left for where?' he seems genuinely to be waiting for an answer. 'the water's here.'"
+        },
+        {
+          "id": "left_2",
+          "text": "'a clerk with a mark on his file doesn't get many harbors. and i had... standing obligations. wednesday kinds of obligations.'",
+          "cond": {
+            "evening_min": 7
+          }
+        },
+        {
+          "id": "left_3",
+          "text": "'the post office knew me by my wednesdays, the teller knew me by my fridays. a small town is an alibi and a witness at the same time. i stayed where i was seen.'",
+          "cond": {
+            "trust_min": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_missing_money",
+      "label": "THE THIRTY-ONE THOUSAND",
+      "variants": [
+        {
+          "id": "money_1",
+          "text": "'a man who took thirty-one thousand dollars would have something to show for it, wouldn't he. look around.' the kitchen is clean, old, and small. the kettle is the newest thing in it and the kettle is not new.",
+          "cond": {
+            "evening_max": 6
+          }
+        },
+        {
+          "id": "money_2",
+          "text": "'thirty-one thousand. they say. it's a county number \u2014 round on the front, ragged underneath.' he tastes the chowder, adds nothing to it. 'numbers that ragged are usually true.'",
+          "cond": {
+            "cooking": "chowder"
+          }
+        },
+        {
+          "id": "money_3",
+          "text": "'thirty-one thousand, two hundred and fourteen.' he says it the way other men say a grandchild's birthday. then, hearing himself: 'or so the file says.' the file says thirty-one thousand even. you both know it.",
+          "cond": {
+            "trust_min": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_1976",
+      "label": "THE SUMMER OF 1976",
+      "variants": [
+        {
+          "id": "y76_1",
+          "text": "'i barely remember that summer. hot, i think. you'd have to ask somebody younger.' he is looking at the pot when he says it, and the pot doesn't need looking at.",
+          "cond": {
+            "evening_max": 5
+          }
+        },
+        {
+          "id": "y76_2",
+          "text": "'the camp summer. everyone on this coast files their years around it, whether they say so or not.' the steam climbs. 'the season died in a week. the boats felt it before the papers did.'",
+          "cond": {
+            "evening_min": 5
+          }
+        },
+        {
+          "id": "y76_3",
+          "text": "'i carried them, you know. after. to the hearings in the county seat, twice a month, the same faces at the same rail. you learn a family's coat before you ever learn their name.'",
+          "cond": {
+            "trust_min": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_county",
+      "label": "THE COUNTY",
+      "variants": [
+        {
+          "id": "county_1",
+          "text": "'the county.' he lets the two words sit there like a verdict. 'next question, or shall i say something i'll have to apologize for.'"
+        },
+        {
+          "id": "county_2",
+          "text": "'there was talk of a settlement fund, after. for the families. approved, i heard, somewhere in a meeting.' the ladle stops a half-second. 'i heard a lot of things.'",
+          "cond": {
+            "evening_min": 6
+          }
+        },
+        {
+          "id": "county_3",
+          "text": "'denied. spring of '77. eleven pages, and the word regret four times \u2014 i counted.' a long quiet. 'i read the letter. you'll want to ask how a ferry clerk read the county's letter to four families. that's a better question than the ones on your list.'",
+          "cond": {
+            "trust_min": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_ferry_families",
+      "label": "THE REGULARS",
+      "variants": [
+        {
+          "id": "regulars_1",
+          "text": "'thirty years of regulars. cannery girls, the doctor, the delisle boy with his bicycle. a ferry's a town that floats.'"
+        },
+        {
+          "id": "regulars_2",
+          "text": "'that summer and after, it was the same four families to the hearings and back. the vanes. the corlisses. the two i won't name because they've got kids in the phone book still.' he catches himself at the exact edge of it, every time.",
+          "cond": {
+            "evening_min": 8,
+            "trust_min": 5
+          }
+        },
+        {
+          "id": "regulars_3",
+          "text": "'you don't clerk people's worst year twice a month without ending up in it. i was the last face they saw going and the first coming back. a rail to hold onto. that's all a clerk is, some years.'",
+          "cond": {
+            "trust_min": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_retirement",
+      "label": "THE LAST DAY",
+      "variants": [
+        {
+          "id": "retire_1",
+          "text": "'eighty-nine. the county motorized the booth \u2014 a machine takes exact change and doesn't learn anybody's coat. i took the hint and the pension.'"
+        },
+        {
+          "id": "retire_2",
+          "text": "'the pension does me fine. a man alone, a kitchen, a kettle. my wants fit in a coat pocket.'",
+          "cond": {
+            "cooking": "jam"
+          }
+        },
+        {
+          "id": "retire_3",
+          "text": "'sixty-one dollars in the passbook. you checked, didn't you \u2014 of course you checked, it's your job.' no anger in it at all. 'sixty-one dollars, and i sleep like the tide.'",
+          "cond": {
+            "trust_min": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_kitchen",
+      "label": "WHAT HE'S COOKING",
+      "variants": [
+        {
+          "id": "kitchen_1",
+          "text": "'chowder week. october starts with chowder, it's not a decision, it's a calendar.' he taps the pot rim twice, listens to it like a fare box.",
+          "cond": {
+            "cooking": "chowder"
+          }
+        },
+        {
+          "id": "kitchen_2",
+          "text": "'bread days. you can't interrogate a man on bread days, the timing's against you.' it is the closest he has come to a joke, and he times it to the oven.",
+          "cond": {
+            "cooking": "bread"
+          }
+        },
+        {
+          "id": "kitchen_3",
+          "text": "'the jam is late-october. blackberry.' he turns the page of a fat, flour-dusted notebook to check something he clearly knows by heart. recipes, in a careful column hand. the same hand that kept ledgers. 'this one's not mine. mrs. vane's. she'd want it made right, so i check.'",
+          "cond": {
+            "cooking": "jam"
+          }
+        }
+      ]
+    },
+    {
+      "id": "q_envelopes",
+      "label": "THE ENVELOPES",
+      "locked": true,
+      "variants": [
+        {
+          "id": "envelopes_1",
+          "text": "he doesn't ask how you know. he sets the spoon down as if it had gotten heavy. 'plain envelopes. cash. the first wednesday of the month, seventy-six to seventy-nine. edith addressed them \u2014 my hand was too well known at the post office.' the kettle, forgotten, begins to shriek, and he lets it. 'every one is written down.'"
+        }
+      ]
+    },
+    {
+      "id": "q_four_families",
+      "label": "THE FOUR FAMILIES",
+      "locked": true,
+      "variants": [
+        {
+          "id": "families_1",
+          "text": "'the vanes. the corlisses. the harmons. the delisles.' four names, dealt out like fares. 'the county's letter said regret. the envelopes said something with arithmetic in it. a season's wage a year, per family, for three years \u2014 what the settlement WOULD have paid. i did the numbers myself.' of course he did."
+        }
+      ]
+    },
+    {
+      "id": "q_why_wait",
+      "label": "WHY DID YOU WAIT",
+      "locked": true,
+      "variants": [
+        {
+          "id": "wait_1",
+          "text": "'because taking it quietly and giving it quietly was the point. a thing like that, spoken, turns into a story about ME.' he finally sits down, for the first time in fourteen evenings. 'but a ledger wants an auditor, son. i have been waiting thirty years for somebody to come to this kitchen and ASK the right wrong question. you're slower than i hoped and faster than i feared.'",
+          "cond": {
+            "trust_min": 5
+          }
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "f_float",
+      "pair": [
+        "farebox_1",
+        "farebox_3"
+      ],
+      "title": "THE BOX RAN A FLOAT",
+      "text": "Balanced every night \u00b7 never balanced, never meant to. The fare box carried an off-book float, by design, for years.",
+      "unlocks": "q_envelopes"
+    },
+    {
+      "id": "f_audit_date",
+      "pair": [
+        "auditor_1",
+        "anchor_3"
+      ],
+      "title": "HE MOVES THE AUDIT",
+      "text": "May of '74 in one telling; the week the Anchor Bay run died \u2014 October \u2014 in another. He relocates the worst week when he can.",
+      "unlocks": ""
+    },
+    {
+      "id": "f_book_exists",
+      "pair": [
+        "ledger_1",
+        "kitchen_3"
+      ],
+      "title": "THE NOTEBOOK HAND",
+      "text": "One ledger of record \u00b7 and a flour-dusted notebook of recipes kept in a careful column hand. The second book has been on the counter all along.",
+      "unlocks": "q_envelopes"
+    },
+    {
+      "id": "f_to_the_cent",
+      "pair": [
+        "money_1",
+        "money_3"
+      ],
+      "title": "TO THE CENT",
+      "text": "Nothing to show for it \u00b7 and a figure four digits more precise than the county's. $31,214. A man knows a number like that from writing it, not from hearing it.",
+      "unlocks": "q_why_wait"
+    },
+    {
+      "id": "f_wednesdays",
+      "pair": [
+        "wife_2",
+        "left_2"
+      ],
+      "title": "WEDNESDAY OBLIGATIONS",
+      "text": "Edith walked the mail up every Wednesday \u00b7 and his reasons for never leaving were 'wednesday kinds of obligations.' The mail WAS the obligation.",
+      "unlocks": "q_envelopes"
+    },
+    {
+      "id": "f_remembers",
+      "pair": [
+        "y76_1",
+        "y76_3"
+      ],
+      "title": "HE REMEMBERS EXACTLY",
+      "text": "Barely remembers that summer \u00b7 and knows the hearing schedule, the rail, the families' coats. The forgetting is a door he shuts on purpose.",
+      "unlocks": "q_four_families"
+    },
+    {
+      "id": "f_the_letter",
+      "pair": [
+        "county_2",
+        "county_3"
+      ],
+      "title": "HE READ THE LETTER",
+      "text": "'Approved, I heard' \u00b7 then denied, eleven pages, regret four times, counted. A ferry clerk read the county's letter to four families closely enough to count the word regret.",
+      "unlocks": "q_four_families"
+    },
+    {
+      "id": "f_nothing_to_show",
+      "pair": [
+        "retire_3",
+        "money_1"
+      ],
+      "title": "SIXTY-ONE DOLLARS",
+      "text": "A man who took $31,000 would have something to show for it \u00b7 and this one has $61 and sleeps like the tide. The money went THROUGH him, not to him.",
+      "unlocks": "q_why_wait"
+    },
+    {
+      "id": "f_balances",
+      "pair": [
+        "ledger_3",
+        "envelopes_1"
+      ],
+      "title": "THE LEDGER BALANCES",
+      "text": "A book that doesn't exist, which would balance \u00b7 and every envelope written down. Float in, envelopes out, 1976\u20131979. It balances to the cent. It has been waiting to be audited.",
+      "unlocks": ""
+    }
+  ],
+  "verdicts": {
+    "accuse": {
+      "label": "ACCUSE",
+      "requires_findings": 1,
+      "text": "you write it up the way the county wants it: clerk of record, unexplained shortfall, findings attached. recovery proceedings against a man with sixty-one dollars in savings. he shakes your hand at the door. 'you did the job,' he says, and means it, which is the worst part.\n\nthe winter card shows the kitchen dark.",
+      "card": "the file closes. the kitchen goes dark in december. the theme does not resolve."
+    },
+    "clear": {
+      "label": "CLEAR",
+      "requires_findings": 0,
+      "text": "you falsify nothing, exactly. you just file the findings in the order that makes them weather instead of evidence. insufficient basis. case closed. he thanks you at the door and holds the handshake one beat too long, and both of you know, and neither of you will ever say.",
+      "card": "the file closes. the drive home is long. the theme plays and does not quite resolve."
+    },
+    "close_ledger": {
+      "label": "CLOSE THE LEDGER",
+      "requires_finding_id": "f_balances",
+      "text": "you file the third thing, the one with no box on the form: THE ACCOUNT BALANCES. money in, money out, four families, three years, to the cent \u2014 just not in the column anyone audited. not innocence. not guilt. settled.\n\nhe reads your one-page finding at the kitchen table, twice. then he gets up and puts the kettle on, and while it builds he hums \u2014 and you realize you know the tune, you've been hearing it over every drive home, and he has been the source all along.",
+      "card": "the drive-home theme plays in the kitchen, very quietly, for the only time. it resolves."
+    }
+  }
+}

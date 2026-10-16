@@ -1,0 +1,1128 @@
+# SLOWSTOCK AUTHORING PLAYBOOK
+
+Patterns for authoring the in-fiction retro slowsticks — Estuary 3
+(1993), Manager Mode (Estuary 3 alt), Pirate Summer (1988), Fey
+Faire (1990), Earthman Chronicles (1985). All of them ship as text-
+forward Control scenes owned by a single Host controller that
+routes between child scenes on signal.
+
+Read this before adding a fifth slowstick, before scaffolding a
+new host controller, or before writing a beat-sequence chapter
+scene.
+
+## Core rules
+
+### THE DEPTH FLOOR (2026-07-27 · standing user verdict)
+
+"Slowstick games just far too basic. I keep repeating this. I want
+depth of play." The premise is MODERN GAMES through an alt-reality
+prism — modern game DEPTH is part of the premise, and a vignette
+with a title screen breaks it as surely as flat art does. No stick
+ships (and no stick is called done) unless it clears ALL of:
+
+1. **Three interlocking systems minimum.** Resources that trade
+   against each other (time/energy/money/relationships), not one
+   track that only goes up. The test: can the player want two
+   things and only afford one?
+2. **≥ 30 meaningful decisions per run.** One choice per
+   month/morning/day is a menu, not a game (Salmonberry v1 shipped
+   ~10 — the user called it out by name). Subdivide the clock until
+   the decision count is real.
+3. **Visible chance + mastery.** Checks roll against built stats
+   WITH the roll shown; strong and rough outcomes both exist and
+   both matter. Deterministic-per-save seeds so reloads don't
+   reroll.
+4. **Scarcity that expires.** Limited-time opportunities, deadlines,
+   decay — something the player can permanently miss. If nothing
+   can be lost, nothing is chosen.
+5. **A build.** Purchases/gear/unlocks that change what later play
+   CAN do, not just numbers that grow.
+6. **Failure with texture.** Rough weeks/losses teach something or
+   cost something and leave a line in the fiction — never a bare
+   "try again."
+
+Reference implementations: Estuary 3 Manager Mode, Pirate Summer,
+Fey Faire, Salmonberry v2 (the week loop). The roadmap carries the
+rebuild queue for the sticks below the floor.
+
+### The Host / child-scene contract
+
+Every slowstick has ONE host controller (e.g. `FeyFaireHost.gd`)
+that owns:
+- title screen (built inline as `_title_root: Node`)
+- save file at `user://<name>.save.json`
+- one `_run_state: Dictionary` that all child scenes share
+- one `_child_scene: Node` reference · always one scene at a time
+- `_clear_current_scene()` free-and-null before every open
+
+Every child scene:
+- extends `Control`, sets `PRESET_FULL_RECT` in `_ready()`
+- joins `add_to_group("ui")` so F4 hides it
+- accepts a `boot(state: Dictionary)` method called AFTER
+  `add_child()` — receives the run_state (or a slice of it)
+- emits `quit_to_shelf` (goes back to shelf) OR `quit` (goes back
+  one level to Gate/Host) — never both
+- emits any scene-specific signal (`negotiate_with_fey`,
+  `enter_big_top`, `chapter_complete`, `finished`) that the host
+  translates into a routing decision
+
+The host uses `child_scene.has_signal(name)` / `has_method("boot")`
+to defensively connect only what exists. This lets a child stub in
+a partial signal-set during scaffolding without breaking the host.
+
+### Signals for the boot layer
+
+`SlowstockBoot.gd` calls into every host uniformly, so every host
+MUST provide:
+- `signal quit_to_shelf`
+- `signal finished(canon_vars: Dictionary, lore_tokens: Array)`
+- `func start_new_run(manager_mode: bool = false) -> void`
+
+Match this exactly. `manager_mode` is ignored by slowsticks that
+don't have an alt mode; keep the parameter.
+
+### `_run_state` shape
+
+Every host initializes `_run_state` twice — once at the field
+declaration site (default values on ready if no save) and once at
+the top of `start_new_run()` (reset for a fresh run). Keep them in
+sync. The dictionary must be JSON-serializable — no `Vector2` or
+`Color` values, no scene refs, no Callables.
+
+Keys grow over time. When you add a new mechanic that persists,
+add it to BOTH initializers and add a default read in every child
+that reads it (`_run_state.get("new_key", default_value)`).
+
+### `_save_state()` writes JSON with indent
+
+```gdscript
+f.store_string(JSON.stringify(_run_state, "  "))
+```
+
+The two-space indent matters. It makes save files readable during
+debugging, which is required for any content that wants to be
+inspected during authoring.
+
+### The beat-sequence pattern
+
+For story chapters (Earthman Ch1-6, Fey Faire Big Top, Chapter 5
+"Academy" reveal), use a hardcoded `var _beats: Array = [...]` of
+dictionaries with `speaker`, `text`, optional `type: "choice"`
+with `choices` array. Then:
+
+- `_render_current_beat()` reads `_beats[_beat_idx]` and calls
+  `_render_choices()` or `_render_advance_button()`
+- `_on_choice_selected(choice)` merges `sets` deltas into
+  `_run_state` and advances
+- Space / Enter / KP_Enter advance non-choice beats via `_input`
+
+The `_delta` suffix convention in `sets`: any key ending in
+`_delta` is applied as an integer add against the base key. This
+handles disposition shifts, court alignment, HP/SP changes with a
+single line each in JSON-shaped GDScript literals.
+
+Beat scenes should stay in one file each — no fancy inheritance.
+Duplicating the frame-drawing code across chapters is fine; a
+chapter's tone comes from its palette + wallpaper motifs, and
+those are the top ~40 lines of each chapter script.
+
+### The ending scene pattern
+
+Both Earthman Ch6 and Fey Faire's endings scene follow the same
+three-phase structure:
+
+1. **gather phase** · 2-3 beats set the tone before choices
+2. **choice phase** · walk-out / consent gate · buttons appear
+   only if state qualifies for that ending
+3. **ending phase** · beat-sequence playback of the chosen ending
+
+`_pick_ending()` (or `_resolve_ending_from_state()`) inspects
+run state and returns an ending id. Priority ordering matters —
+put the TRUE ending first, then rare gated endings, then default
+court endings. The final fallback should never return null; pick
+a sensible default so a broken state doesn't hang the run.
+
+### Variable substitution against the questionnaire
+
+Any ending script that references `$PLAYER_NAME`, `$LOST_PERSON`,
+`$CITY`, `$FAVORITE_SONG` should route through a single
+`_substitute(text)` helper that reads `_run_state.questionnaire`
+and does `.replace()` calls. Add new variables to that helper as
+needed, not inline in each beat.
+
+### Data-driven scenes for combat / negotiation
+
+Where the same scene structure is repeated across many entities
+(feys, campers, workings), the scene should read a JSON catalog
+and pick the entry by id passed via `boot({"id": ...})`. Never
+switch-statement on ids inside a scene; that's a smell that the
+data model isn't right yet.
+
+Fey Faire's `FeyFaireNegotiation` and `FeyFaireCombat` both do
+this well — the fey's stats, skills, court, weakness, and
+manifestation all come from `feys.json` at boot time.
+
+### F4 must sweep every new HUD
+
+Every new HUD Control MUST either:
+- `add_to_group("ui")` — F4 hides all group-`ui` nodes, OR
+- live inside a CanvasLayer — F4 sweeps CanvasLayers by default
+
+If a child scene forgets this, the fix is one line in `_ready()`
+(the `add_to_group("ui")` call). Add it at scaffold time; don't
+wait for someone to press F4 and see leftover UI.
+
+### Escape key behavior
+
+Every scene handles `KEY_ESCAPE` in `_input()` and calls
+`get_viewport().set_input_as_handled()`. The host's own `_input`
+handler ONLY escapes when the title screen is showing (child
+scenes handle their own escape). This prevents double-escape
+races and keeps back-navigation predictable.
+
+### Save-then-CONTINUE routing
+
+The host's `_on_continue_pressed()` routes based on saved
+`chapter` (Earthman) or `night` (Pirate Summer, Fey Faire) or
+`act` (Estuary 3). Match the enum to the game's own progression
+unit. If a slowstick has multiple progression axes, pick one
+canonical routing axis and store it in `_run_state` explicitly at
+each state transition.
+
+## THE LOOP — every stick earns, spends, and carries (hard rule)
+
+The DEPTH FLOOR made single runs deep. It did nothing about the
+space *between* runs: you finished, you got an ending, and the next
+run started identical. Reported 2026-07-31 as *"need gameplay loops
+in each individual game, so the progression and reward and
+customization feed back into each other."*
+
+Every slowstick now implements the same four-part contract, through
+the shared `StickLoop` (`scenes/games/estuary_3/StickLoop.gd`, static
++ file-backed at `user://stick_loop.json`, same shape as
+`OneironauticsTokens`):
+
+| part | where | what |
+|---|---|---|
+| **EARN** | end of a run | `StickLoop.finish_run(id, {"credit": n, "outcome": s})` |
+| **SPEND** | shelf → OUTFIT | `resources/games/vol7/<stick>/loadout.json` |
+| **CARRY** | stick boot | `StickLoop.effect(id, key)` / `StickLoop.flag(id, key)` |
+| **MASTER** | automatic | `needs_mastery` on an upgrade gates it behind N finished runs |
+
+### The rules that keep it from being a treadmill
+
+1. **Every tier ships at least one FLAG, not just numbers.** A number
+   makes the same run easier. A flag opens a verb or a route — the
+   long coat eats a cold bite (number-ish), but the brass compass
+   makes the east sister unable to lie to you, and the eighth point
+   turns a one-time ritual into a permanent road. Numbers alone are
+   not customization; they are a difficulty slider you paid for.
+2. **The currency is the stick's own noun.** SILVER, friendship,
+   catch weight, depth. Never "points". `currency.name` in the
+   loadout, shown everywhere the OUTFIT screen shows a price.
+3. **A locked row states its unlock.** `blocked_reason()` returns the
+   exact sentence ("finish 3 runs first", "needs THE LONG COAT"), and
+   the OUTFIT screen prints it. The shop doubles as the roadmap.
+4. **Earning must name what paid.** `earn_line` in the loadout says
+   how credit is made, in the stick's voice, so a bad run still
+   teaches you the economy.
+5. **Nothing bought may be required.** Every ending stays reachable
+   on a bare loadout. The outfit changes HOW, never WHETHER.
+
+### Legibility is part of the loop
+
+A reward you can't evaluate isn't a reward. Where a stick asks
+"engage or not?", it must show the answer **relative to the player's
+current strength**, not in absolute terms. Fey Faire's midway prints
+a five-pip read plus a sentence against the party you are actually
+carrying — tier alone told you what the fey *is*, never whether *you*
+should walk in.
+
+Calibrate that read against the real data before shipping it. The
+first Fey Faire model summed the party and scored 700 against a
+median tier-3 of 235 — every encounter read "in hand" by mid-game.
+The model that matches the roster is *strongest standing member +15%
+per extra body*, with a solo floor at the median tier-1 weight.
+**Run the numbers over the actual JSON, in every band, at both ends
+of the campaign.** A threat readout that lies is worse than none.
+
+### Status across the catalog
+
+Wired: **Sisters Wyrd** (9-item outfit, silver banked per ride).
+Everything else still needs its `loadout.json` and its two call
+sites. The engine, the OUTFIT screen and the shelf button are done
+and generic — a new stick needs data plus two lines of code.
+
+## PRODUCTION RULES — think before you build (hard rule · 2026-08-03)
+
+The user's verdict, screenshot in hand: *"slowsticks need a logic
+and direction and production pass. you aren't thinking about a
+thing before you make it."* The sticks were built systems-first —
+data, chains, saves — and nobody asked what the player SEES. Every
+new scene, and every production pass over an old one, answers the
+FIRST-SCREEN TEST before any code:
+
+1. **Camera** — does the play space fill the frame? A zone smaller
+   than the screen gets zone-fit zoom (CampOverworld's
+   _recenter_camera is the model), never a postage stamp in a void.
+2. **Visual logic** — can a stranger name the room in one second?
+   The space's PURPOSE must be legible from its layout (a bunkroom
+   is bunks + a rug + a door, not floor).
+3. **Exits** — every way out is VISIBLE and distinct. A door drawn
+   with the wall's sprite is an invisible exit (the 'can't leave
+   cabin' bug). Doors get door art + a tell (light seam, mat).
+4. **Detail at read-size** — author art at the size it renders.
+   A 16px tile seen at 2x needs interior detail; a 160x90 hero
+   image on a title screen is a COVER, composed as one (no baked
+   status text, no ambiguous blobs).
+5. **UI coherence** — one owner per screen region; overlays claim
+   the whole screen or none of it; nothing overlaps ("the UI is
+   also overlapping and incoherent"). Audit HUD + dialogue + panels
+   together, not per-widget.
+6. **Scale to fiction** — a 4-bunk cabin is small. Rooms are sized
+   to their story, then dressed to their size.
+
+Model: Cabin Sturgeon (2026-08-03) — 20x12 empty warehouse became
+a 14x10 dressed bunkroom with a visible double door, under zone-fit
+zoom. Run this checklist over every zone of every stick.
+
+## Recent lessons
+
+### 2026-08-31 · Array.has(int) is FALSE against JSON numbers (shipped-bug class)
+
+- **JSON numbers parse as FLOATS, and Godot 4's Array.has() compares
+  typed: `[0.0, 1.0].has(1)` is false.** Salmonberry's Year gated
+  activities on `months.has(month)` — so clamming, the fall cannery
+  line, berry picking, row the bay, and storm watch NEVER appeared
+  in the week menu from the v2 depth pass until Wave D's sim caught
+  it. A whole seasonal layer, silently absent, and nothing errored.
+- **The fix is int-compare in the loop** (`if int(m_v) == month`),
+  or the double-check SalmonberryTown already used
+  (`months.has(float(m)) or months.has(m)`). When gating on a
+  JSON-loaded number array, NEVER bare `.has(int_var)`.
+- **The detection that generalizes:** a day-one sim driver playing
+  through the real UI. The static checkers can't see this class —
+  the code is syntactically and type-inference clean. The sim's
+  empty `errands=[]` was one probe away from the root cause.
+- Wave D's errand system itself: one-shot bond-gated jobs are just
+  activities plus `errand:true` + `require {bond,min}` + a months
+  window, resolved through the same check pipeline and tracked in
+  `errands_done`. Reuse the pipeline; don't fork it.
+
+
+### 2026-08-04 · PS production pass 2 · the audit is the deliverable
+
+- **Write the audit, then fix what it finds.** The user reported
+  one symptom ("can't leave the cabin"). Hand-fixing it found one
+  door. `tools/audit/ps_zone_audit.py` — exits with no art,
+  dangling exit targets, spawns on non-walkable tiles, stranded
+  NPC positions, ragged grids, undeclared tiles — found SEVENTEEN
+  on its first run, including a boathouse you could enter but not
+  walk into, and Sam spawning inside a building. Every symptom the
+  player reports is a class; the class is what you fix.
+- **A tile kind with no sprite mapping is invisible design.** 58
+  kinds were rendering as flat ColorRects, and eight of them were
+  EXITS. Nothing walkable may be a flat rect — that's the rule
+  now, and the audit enforces it. Deliberate multi-tile
+  silhouettes (a rock formation spelled across 14 tiles) are the
+  one exception and are listed by name in the audit.
+- **Scale a room to its roster, not to the tilemap.** Cabin
+  Sturgeon slept five campers in three bunks; the other three
+  cabins were identical 18x10 boxes regardless of holding four,
+  three, or two kids. Build the room from the cast list: one bunk
+  per sleeper, a footlocker at each foot, and the walls close
+  enough that the props read as a life instead of decoration.
+- **Positions authored against an old layout do not announce
+  themselves.** Redrawing Sturgeon silently left three campers'
+  `bunk_pos` in open floor. Any data that indexes into a grid
+  (bunk_pos, seats, activity positions, spawns) must be
+  regenerated by the same script that draws the grid, and
+  validated after.
+- **Reserve HUD bands; never place by eyeball.** PS put ~790px of
+  control hints in a 400px top-right box; Labels don't clip, so it
+  ran through the BACK button and off-screen. Three bands
+  (top-left status · top-right the one exit control · bottom
+  stacked hover + hints), every label clipped with ellipsis, and
+  panel offsets expressed in terms of the band constant so a panel
+  can't be authored on top of it.
+
+
+### 2026-08-01 · WAVE 4 · drawn incident pools are the cheapest honest replay texture
+
+The 6-17K sticks read identical on a second run because every beat
+was authored exactly once. The fix that respects small games: a
+POOL of small drawn incidents, seeded per run, surfaced through the
+stick's existing verb — Sweetgum's on CHECK at a station (3 per
+watch from an 18-pool + the palimpsest grown 6→11 years), KSM's as
+one report line per ordinary week (16-pool, seeded by crew hash so
+a reload doesn't reroll but a new summer does).
+
+Two rules that made it work:
+1. **Authored beats keep their weight.** Rent weeks, week 8's
+   robbery, Sweetgum's light — the pool never fires on top of the
+   moments the game is actually about. Texture frames the beats; it
+   must not dilute them.
+2. **Respect the stick's fiction ceiling.** Sweetgum's design rule
+   is "the game never confirms anything" — so every pool entry is a
+   watchman's mundane texture (stiff locks, raccoons, paint smell)
+   that a nervous mind COULD read into. The one supernatural
+   exception stays the only one.
+
+Also learned: check whether a "thin" stick is thin before
+thickening it. Estuary 4 measured 14K but its variety is SYSTEMIC
+(seeded tide tables against a budget/morale sim) — data volume was
+the wrong metric, and it needed a re-verdict, not a pass.
+
+### 2026-08-01 · SALMONBERRY · a walkable map must know things the menu doesn't
+
+The town overworld shipped as "an interface, not a second economy" —
+the same activities.json entries, arranged spatially. The user called
+it precisely: *"walking around versus picking from a list is
+superficial."* The fix was not more prose on the list; it was giving
+the walk its own knowledge, all data-driven (`town_life.json`):
+
+- **PRESENCE** · people are AT places by month + weather, and AWAY —
+  Del's slip is empty during the run, Boyd winters off-map, the
+  school shuts in June. An away person takes their activities with
+  them, so who-is-where genuinely changes the month. Approach lines
+  fire once per approach; a small drawn figure marks occupied doors.
+- **OVERHEARD** · crossing Main Street catches seasonal fragments of
+  the town talking to itself. Cooldown 22s so it stays a texture,
+  not a ticker.
+- **MOMENTS** · route-only encounters at coordinates BETWEEN places
+  (the bridge rail, the boardwalk, the hill path). They pay real
+  state — journal lines, bond touches, thread clues — WITHOUT
+  spending the week: the walk itself is the price, which is the
+  entire argument for walking. Marked by a faint glint, not a map
+  pin; spent ids persist in the run state.
+
+Rule to carry: **an overworld earns its existence by holding
+information and rewards that the menu path cannot reach.** If every
+fact and payoff is list-accessible, the map is decor and will read
+as such.
+
+Also this wave: outcome variants (tier > season > rotation > base in
+`_pick_outcome`) and one authored line per calendar week
+(`week_flavor.json`) — the flavor-density bar from the content map.
+
+### 2026-07-22 · SALMONBERRY · an RPG-of-a-life on the Estuary-1 loop
+
+Stick #21 — a part-RPG part-adventure about a year in a 1960s coastal
+Oregon town, the studio's biggest genre. Built v1 as the SMALLEST
+complete version (the Estuary-1 discipline), not the full overworld.
+
+- **An RPG's growth doesn't need combat — it needs a verb and a
+  ledger.** Six aptitudes raised by DOING (hands/sea/word/heart/wild/
+  grit), a bond web, and a journal, all moved by one data-driven
+  "spend the month" choice. It's Estuary 1's one-lever loop grown two
+  more axes (bonds + collection), and it reads as an RPG because the
+  numbers go up and the town's response changes. Ship the loop first;
+  the walkable town is a wave, not the MVP.
+- **Data-driven activities make the town a JSON file.** activities.json
+  (season gate + require + apts/bond/money/journal deltas + outcome)
+  and npcs.json (bond_lines that surface at thresholds 2/4/6) mean new
+  content is data, never code — the same lesson as Fey Faire's feys and
+  the gauntlet visitors. The register resolves from the ledger (the
+  Tideline pattern), no win flag.
+- **Real history as tentpoles, handled with the Sweetgum restraint.**
+  The year is framed by two events everyone from that coast remembers
+  (a November afternoon, a Good Friday night); both are felt through
+  the town, never staged. The March tsunami is the one scripted month —
+  a climactic choice gated by what you built (SEA/bonds), so the RPG
+  systems PAY OFF as a rescue. When a real tragedy anchors a stick,
+  make it a consequence of the player's year, not a cutscene.
+- **The meta-hook lives in provenance + the true ending, not the UI.**
+  The grandmother's songs ARE the catalog's recurring melodies; the
+  game is their origin. Said once (THE SONG ending, the manifest),
+  never on the HUD. The deepest canon payoff is the quietest.
+
+### 2026-07-22 · SPIDERDROPS 2 · a post-game sequel that inverts the verb
+
+Stick #20, THE LONG WIND — the sequel to #19, built the next session.
+
+- **A sequel is the host shape reused + one new physics mode + carry
+  the ending in.** SpiderdropsTwoHost is Spiderdrops' host verbatim
+  (title/run/ending-register/save); only the boot reads
+  `OneironauticsTokens.canon("spiderdrops_result")` and
+  `.has("spiderdrops_star")` to set starting silk and the true-ending
+  gate. "Carry the ending as the opening" (the Year-Two rule) works
+  across two different GENRES, not just two summers of the same one.
+- **Invert the verb, don't escalate it.** Game 1 is defense (hold the
+  web); the sequel is traversal (balloon on the wind). The hazard
+  becomes the vehicle — the same gust system, re-signed from threat to
+  tailwind. A sequel that's "the first game but harder" wastes the
+  chance; a sequel that completes the first game's SENTENCE (nothing
+  holds → so you move on) is worth building.
+- **Post-game unlock = the Sweetgum gate.** `starts_unlocked` +
+  `hidden_until_token: <prequel>_finished` in shelf_layout: the slot
+  literally does not exist until you finish the first, then it is
+  immediately bootable. Cleaner than a wave for "you can't own the
+  sequel before the original."
+- **One forgiving fail path beats many.** The glide's only loss is
+  running out of silk (STILL FLYING — reframed as peace, not defeat);
+  reaching all legs ARRIVES. All the tension lives in one resource
+  (silk) vs one distance, per leg. A physics toy wants a single legible
+  stake, not a punish grid.
+
+### 2026-07-21 · SPIDERDROPS · a live physics stick on the same frame
+
+Stick #19 (Pretty Dreams, 1993) — a real-time Verlet web sim, the first
+action/physics stick. It slotted into the exact same host contract as
+the text-forward sticks. Lessons:
+
+- **A real-time stick is still host + one scene + data.** The web sim
+  is one child (`SpiderdropsWeb`) emitting the uniform `quit` +
+  scene-specific `run_over(result)`; the host title/ending/save is the
+  Estuary-1 shape verbatim. New GENRE did not mean new frame — the
+  boot contract carried an arcade toy as cleanly as it carries a beat
+  scene. The one thing that earned new code was the renderer (the
+  "core mechanic deserves the renderer" rule): a ~50-line Verlet loop
+  (`_integrate` → N× `_solve_constraints` → `_snap_and_cull`) in
+  `_physics_process`, all drawing in `_draw` (sky first, web, spider,
+  rain), HUD as child Labels so the font floor + F4 still hold.
+- **Draw the WORLD in `_draw`, keep only HUD as children.** A Control
+  paints its own `_draw` BEFORE its children, so a child sky ColorRect
+  would cover the web. Everything world-space goes in `_draw` in order;
+  Labels (crisp font, floor 12) ride on top as children. Same split
+  any live `_draw` stick will want.
+- **One-path-per-input still bites in real time.** Movement polls the
+  built-in `ui_*` actions each physics tick; PLUCK is `ui_accept`;
+  BRACE is a held raw `KEY_SHIFT`; SPIN is raw `KEY_S`. Before picking
+  a raw key, grep the `[input]` map — here only advance/menu_back/
+  menu_select/skip are custom and WASD is unbound, so `KEY_S` is free.
+  A raw key that collides with a movement action double-fires.
+- **The MM twist can be structural, not a cameo.** The "standard game
+  experience" is honest arcade physics; the twist is that the storm
+  ALWAYS wins and the run grades the web's SHAPE (the Tideline-register
+  pattern), and that an orb web stripped to its 8 spokes IS the Order's
+  eight-pointed star — a THIRD publisher the star leaks into,
+  uncommented. Emit `spiderdrops_star` now for a future Order consumer
+  (readers-vs-writers: emit before the reader exists).
+- **Tuning is Deck-work; ship reasonable starts and say so.** Break
+  ratio, rain rate, gust strength, verb cooldowns, resource regen — all
+  physics feel that can't be proofed in CI. Author sane constants,
+  gdparse-clean, and flag the numbers for a Deck pass rather than
+  claiming they're balanced.
+
+### 2026-07-20 · slowstick depth pass · spine + de-domination + a second axis
+
+- **The shelf is a system, cheaply.** The catalog already had a dense
+  cross-stick token web but no COLLECTOR spine — nothing responded to
+  how much of the whole shelf you had read. Fix rode existing state:
+  `SlowstockBoot._fire_collector_milestones` crosses first/half/whole
+  thresholds (counted over the 18 CORE sticks, remake excluded) and
+  fires durable tokens the Almanac lights. Centralize the repeated
+  `/root/GauntletState` → `canon_vars`/`slowsticks_finished` reads into
+  `OneironauticsTokens.canon()/finished_sticks()/is_stick_finished()`
+  once, refactor the copies onto it.
+- **De-dominate by scaling the REWARD, not adding rebuffs.** Fey Faire
+  OFFER was a universal solvent because every branch that succeeded
+  granted the same disposition. Give each fey a single WANT (derived
+  from data it already carries — favorite_play → RECITE, else court;
+  curated-override hatch, empty by default) and scale disposition on
+  the match (+3 delighted, +1 cool). OFFER is never a want, so gold
+  stops being optimal. No new rebuffs = no soft-locks, no dead content;
+  only warmth and flavor change. Surface a legible "tell" so it is a
+  READ, not trial-and-error. Same derive+override shape as the gauntlet
+  visitor look table.
+- **A neglected stat needs a HARD-OVERRIDE ending to matter.** KSM
+  tracked landlord but folded it into the single score, where cash
+  outweighed it — so it gated nothing. Adding an `evicted` ending that
+  OVERRIDES the score when landlord ≤ 1 makes it a real second axis:
+  "win the score" and "keep the store" pull apart. Telegraph the danger
+  band in the weekly report so the loss is warned, never a gotcha.
+- **Promote one boss's good idea to a shared idiom.** Earthman built a
+  telegraph -> DEFEND -> counter rhythm for exactly one boss (Thar), and
+  DEFEND was near-dead (+5 HP) in every other fight, in both combat
+  sticks. Generalizing the pattern — a readable wind-up every third
+  enemy turn, DEFEND on that turn fully SLIPS the heavy blow and opens a
+  x1.5 counter, DEFEND still halves ordinary hits — makes DEFEND
+  load-bearing everywhere with no new engine. Reuse the boss's own state
+  flags (`_bind_incoming` -> `_counter_open`); port the same three
+  branches into the sibling stick (Fey Faire `_fey_turn`). When one
+  encounter proves a mechanic, the cheapest depth is making it the rule,
+  not leaving it a one-off.
+- **Turn a hazard stat into a spendable one for a route economy.**
+  Basilica's coherence was purely a thing you protected. Letting the
+  player BURN it to force a "B" wall (a corridor at another pitch)
+  instead of tuning to its band creates a real shortcut-vs-detour
+  choice: fast but thins your buffer for the next interference room.
+  Guard the spend so a force can never itself zero you (the risk is
+  being thin AFTER), and print the option on the wall you can't pass so
+  it is discovered, not hidden.
+- **Scarcity makes a witnessing loop a decision.** Tideline reset its
+  2 ruled lines EVERY station, so recording was free and "record
+  everything" was optimal — no choice. Re-scoping the counter to a
+  SEASON-WIDE budget (8 lines for 11 stations) makes WHAT you choose to
+  notice the game, and the ending register (living/lost/line/whole)
+  emerges from that allocation: go broad for "the whole beach" or spend
+  deep in one category. Persist the budget in run_state; gate the
+  per-station cap to `min(2, budget_left)`; show the season number, not
+  just the station one. Fits the stick's own restraint theme rather
+  than fighting it — the same re-scope is the smallest real-choice add
+  for any "attention is the verb" loop (Estuary 2's LOOK is next).
+
+### 2026-07-20 · the meta-layer trilogy · one work, not four
+
+Built three cross-pillar systems in one arc — the Oneironaut's
+Almanac (hub), the Major Arcana campaign, the collector's Catalog —
+all on the SAME read-only spine. Lessons for wrapping finished
+pillars into one work:
+
+- **A tiny predicate engine unifies everything.** `AlmanacState.
+  predicate_met({token / token_prefix / arcana_won / all_arcana /
+  canon-eq / any / all})` is ~40 lines, and all three systems reuse
+  it: Almanac entries light, Catalog carts show played, Catalog
+  achievements resolve, campaign tokens surface. One matcher over
+  the tokens the pillars ALREADY write beats bespoke checks per
+  screen. Build the matcher first; pour JSON into it.
+- **Read-only over the existing spine = zero migration risk.** The
+  whole trilogy adds no save format (GauntletState gained one
+  additive `campaign` block, guarded for old saves). It lights up on
+  an existing save because it reads tokens/canon that already fire.
+  When connecting shipped systems, READ, don't re-plumb.
+- **The campaign is a launcher + bookend, not a second engine.**
+  MajorArcanaCampaign reuses SpreadHost's exact launch contract
+  (`start_scenario` + `game_ended`); it sequences and frames the 22,
+  carries a thin thread, and never touches the board/combat code.
+  Free play stays. A "campaign" over existing content is mostly a
+  selection screen + an interstitial + a progress dict.
+- **Menu overlays: one proven scaffold, three screens.** All three
+  are ProfilePanel-pattern (`static build(parent)`, ui group, Esc,
+  fresh each open). Copying the known-good overlay skeleton made each
+  new screen a content problem, not a lifecycle one.
+- **Lattice canon lives in docs; structure it once for the UI.** The
+  studio/year/credits lattice was prose in the roadmap + aesthetic
+  bible. catalog.json is that canon structured — authored ONCE,
+  cross-checked against the source (every cart's studio ∈ the studio
+  table) so it can't silently contradict the fiction.
+- **Commit messages: no backticks, and prefer double quotes.** Twice
+  a backticked word ran as a shell command and an apostrophe in a
+  single-quoted message broke out. House rule now: plain words in
+  commit bodies, double-quoted.
+
+### 2026-07-20 · Fey Faire · closing the economy loop (C2-tail arc)
+
+Finished the whole C2-tail in one arc: Warren, death economy, booth
+puzzles, royal exclusivity, gold sinks. The connective lesson:
+
+- **Every source needs a sink; every sink needs a reason.** Adding
+  the puzzle-win gold SOURCE (+3) meant the loop needed more sinks,
+  so provisions + the strongbox followed. And each sink pays a
+  system that already exists: provisions feed combat survival (which
+  feeds the death economy — fewer deaths, fewer spent memories); the
+  strongbox protects against the exact half-gold-on-death rule wired
+  the same day. Don't add a sink the player has no reason to use.
+- **A choice is only a choice if it costs.** Titania/Oberon were both
+  freely recruitable, so "which royal" wasn't a decision. Barring one
+  on recruit turned an inert pair into the run's defining fork — and
+  the endings that already keyed on their dispositions suddenly
+  meant something. Look for pairs/options the player can currently
+  take ALL of; that's usually a missing exclusivity.
+- **The hidden third way rewards mastery without cheapening the
+  choice.** Reconciling the royals needs BOTH a walked mirror AND an
+  NG+ keepsake (Prospero's Word) whose flavor text already described
+  this exact use. First-run players feel the hard fork; deep players
+  find the door. Gate the "have it all" path behind proof of depth,
+  not behind grinding.
+- **Three puzzles, three verbs.** Cobweb/Puck/Erlking could all have
+  been the same timing game. Making them timing / memory / deduction
+  respectively meant one scene taught three skills. When authoring a
+  set of minigames, vary the VERB, not just the theme.
+
+### 2026-07-20 · Fey Faire · wiring a specified-but-dead economy
+
+The death/checkpoint economy was fully written in the mechanics doc
+and half-scaffolded in code (checkpoints APPENDED on every recruit/
+vanquish, `memories_lost` incremented, gold halved) — but nothing
+consumed any of it: loss silently routed to the Gate. Wiring it up:
+
+- **Grep for the half-built scaffold before designing from scratch.**
+  The checkpoints array, the loss outcome, `memories_lost`, and
+  `midway_cell`-restore-on-boot all already existed. The feature was
+  90% latent state that no code read. The build was mostly "make the
+  existing writes have a reader," not new systems.
+- **Respawn = set the restore key, reopen the scene.** The midway
+  already restored `_run_state["midway_cell"]` on boot. So
+  "respawn at checkpoint X" is one line — set midway_cell, call
+  _open_midway — not a new navigation path. Look for the scene's
+  existing boot-restore before writing a teleport.
+- **Read another scene's const graph via preload, don't duplicate.**
+  Checkpoint depth needed the midway adjacency, which lives as a
+  `const MIDWAY` in the midway SCENE script. `preload(".../Midway.gd")
+  .MIDWAY` reads it with zero instantiation — BFS from the Gate in
+  the Host, no copy of the graph, no drift.
+- **Keep two views of one counter in lockstep, in a comment.** The
+  Trailer's mirror wall cracks memories by `i < memories_lost`; the
+  death screen names the memory at slot `memories_lost - 1`. Both
+  index the SAME ordered list — so the list lives once conceptually,
+  with a comment in each file pointing at the other. A drifting
+  second copy would crack mirror 3 while the death screen mourned
+  memory 4.
+- **A cost the player can't see didn't happen.** Halving gold in
+  silence taught nothing. The interstitial that NAMES each loss (and
+  what survived) is the actual feature — the numbers were already
+  moving. "Every death teaches a specific lesson" is a UI rule as
+  much as a balance one.
+
+### 2026-07-20 · Fey Faire · THE WARREN · giving 101 authored feys a purpose
+
+User: "use all the fey, find a purpose... reasons for having them in
+a party." The survey found the party did four small things and 61 of
+101 feys were authored-but-unreachable. One loop answered both:
+
+- **Split the roster by REACH, not by rarity.** 40 feys are the
+  on-map booth cast (you walk to them); the other 61 live "beyond
+  the fence" and are reached ONLY through a party fey vouching for
+  its kin. Don't build 61 more booth cells — that's a chore, not a
+  game. The unreached majority became a side-quest layer (errands)
+  that the party UNLOCKS, so a broad roster is the key.
+- **"Boons ride existing machinery" is the modes rule at feature
+  scale.** Four passive party benefits (seelie OFFER discount,
+  unseelie THREATEN-vouch, wildfey booth-pass, song RECITE-retry)
+  are each a `_party_has_court()/_party_has_song()` scan + a
+  once-per-night guard flag on run_state (`*_night == night`). No
+  new scene, no save-format change — the existing negotiation/
+  midway scenes just branch on party composition. Holding a fey now
+  CHANGES what you can do, which is the whole point of a party.
+- **Compose side-quest cards from the target's OWN authored
+  fields.** 61 errands read specific and true because each card is
+  built at runtime from the target fey's name/manifestation/
+  `request`, wrapped in ONE authored hook line in errands.json.
+  Generated against feys.json so coverage is total and every `needs`
+  (damage_type == weakness, or court_not for weakness "none") is
+  satisfiable from the roster. Total bespoke prose written: 61
+  lines, not 61 pages.
+- **A boon must be a SENTENCE in the roster, not a stat.** Each boon
+  shows in the COTS readout as plain language ("Moth · SONG · she'll
+  hum you a second try at a line") so party composition is a visible,
+  legible choice — not a hidden modifier the player has to infer.
+
+### 2026-07-19 · the expansion pass · A5 depth expansions + two new sticks
+
+Closed the whole expansion backlog (A1-A5, B1-B4, C1-C2) across
+one long arc. What the five A5 depth expansions taught, together:
+
+- **"Modes ride existing machinery" held every time.** Counselor
+  Mode, Off Season, Second Reading, Second Deck, Subfloor, Year
+  Two - none needed a new scene. Each was a flag on the existing
+  run state that the existing scene reads: `counselor`, `off_season`,
+  `second_reading`, `b_side`, `year_two`. The cheapest depth on
+  the shelf is a boolean the host sets before add_child and the
+  child branches on.
+- **Cross-stick CANON reads, not just tokens.** Estuary 4 reads
+  The Tideline's filed register (`canon_vars.tideline_report`)
+  from GauntletState; Year Two reads `estuary_3_ending`. Tokens
+  answer "did X happen"; canon vars answer "which way" - and
+  reading the latter is what makes a sequel feel like it
+  remembers YOUR run, not just that a run occurred.
+- **Pre-scaffolded slots are a gift; grep for them first.** Mrs.
+  Wu, both Tidelines, Estuary 4 all had shelf slots + unlock
+  waves already in the library JSONs from earlier sessions. The
+  Mrs. Wu build nearly re-created one. ALWAYS grep shelf_layout +
+  unlock_graph for the stick id before authoring registration.
+- **Hand-formatted JSON: surgical-append or lose the file.** Bit
+  twice this arc - once an `open(w)` truncated ending.json before
+  json.dump threw on a None format probe. The rule now: probe
+  format; if it round-trips, dump; if it DOESN'T (hand-authored),
+  read the file, find the array close bracket by brace-depth
+  scan, splice the new entry rendered at the detected indent, and
+  re-parse to verify BEFORE writing. Never `open(w)` a
+  hand-formatted file you haven't already built the full new
+  string for.
+- **Carry the ending as the OPENING.** Year Two's whole feeling
+  comes from the year-one ending becoming the starting cooler
+  stock, opening till, and first-night card. A sequel's best
+  starting condition is the previous ending, stated in mechanics
+  the player already reads (stock, cash) not just prose.
+
+### 2026-07-19 · depth passes · Sisters Wyrd + Fey Faire · giving decisions teeth
+
+User called Sisters Wyrd underdeveloped and Fey Faire's gameplay
+thin. Both were right, and the failure mode was the same in both
+sticks: systems that LOOK like decisions but always say yes.
+
+- **Audit for "always yes" before adding content.** Fey Faire had
+  101 authored feys, 331 skills, 51 quotes — and a negotiation
+  where every branch recruited on the first click. Content was
+  never the problem; consequence was. Survey the loop for
+  decisions with no failure shape before authoring another line.
+- **Give every branch a DIFFERENT price and a DIFFERENT failure.**
+  Interchangeable branches are one button wearing four labels.
+  FF now: OFFER spends gold, PROMISE is refused at three
+  outstanding, THREATEN starts fights at the top tier, RECITE
+  needs the actually-matching play. Failure locks the booth for
+  the night — when in doubt, charge TIME; every stick has a
+  clock and it's always the realest currency.
+- **Aftermath beats punishment.** Sisters Wyrd's verbs now write
+  on the whole territory (widow-weather, calm quadrants, prices
+  that land mechanically: the hat means sunstroke, the question
+  means no more lore from asking). The choice matters because
+  the WORLD is different after, not because a number went down.
+- **Grep the data before designing thresholds.** The THREATEN→
+  combat trigger was authored at tier 4; the entire roster is
+  tier 1–3, so the door would never have opened. Same lesson as
+  the HeroImage schema: the data file is the truth, check it
+  first (also: two state-key mismatches had made THREATEN dead
+  code and RECITE gating fictional for a whole build — grep the
+  writer of every key you read).
+- **Economies need a loop, not a pile.** SW silver was dead
+  because nothing consumed it and nothing renewed it. The bounty
+  board fixed both AND produced destinations — a resource loop
+  that also generates rides is worth two systems.
+
+### 2026-07-09 · four slowsticks end-to-end · what the fourth build taught us
+
+Landed Fey Faire (Gate → Questionnaire → Negotiation → Trailer →
+Midway → Big Top → Combat → Endings, 7 endings) and Earthman
+Chronicles (all 6 chapters + 6 endings). Both fully playable
+start-to-finish. The pattern above is now stable across four
+slowsticks.
+
+Lessons:
+
+- **The uniform host signal set (`quit_to_shelf` + `finished`) is
+  worth its weight in gold.** SlowstockBoot doesn't need to know
+  anything about Fey Faire's specific state — it treats every
+  slowstick as a black box that eventually emits `finished` with
+  a canon_vars dict + lore_tokens array. New slowstick = drop-in.
+  The cost of enforcing this uniformly across four hosts is under
+  10 lines of duplicated signal-declaration each; the payoff is
+  that the boot layer never grows a switch statement.
+
+- **Beat arrays beat state machines for narrative scenes.** Every
+  chapter scene is a flat `_beats: Array` of dicts. The temptation
+  to build a proper node-graph story engine was real, but flat
+  arrays with `_on_choice_selected` merging `sets` deltas covered
+  every case across ~40 chapter scenes. The `_delta` suffix
+  convention (any `foo_delta` in `sets` adds to `foo`) collapsed
+  ~200 potential switch cases into three lines of runtime code.
+
+- **Ending selection is a priority ladder, not a table lookup.**
+  Both Earthman Ch6 and Fey Faire endings use if-elif ladders
+  with the TRUE ending first, gated endings next, and defaults
+  last. This is easier to read (and easier to reason about
+  correctness for) than a scoring table, because the gates ARE
+  the state facts you already track — "IX refused AND all six
+  corrections AND Rocha recruited AND Sara LIKED+" reads as
+  literal English in a single if.
+
+- **Endings scripts belong in the scene, not in endings.json.**
+  We authored `endings.json` files first (Earthman, Fey Faire)
+  with full script text expecting to load and interpret them at
+  runtime. In practice the beats got copied inline into the
+  ending scene as `const ENDINGS: Dictionary` because the scene
+  wanted to control tint, per-beat animation, and choice injection
+  in ways the flat JSON didn't express. The JSON is now the
+  design-time document; the scene is the runtime source of truth.
+  Keep both in sync manually — this is fine, they don't diverge
+  often.
+
+- **`_run_state["_route_to_trailer"]` and friends: transient
+  routing flags are load-bearing.** Some transitions need one bit
+  of "which scene do we go back to." Fey Faire's midway sets
+  `_run_state["_route_to_trailer"] = true` before emitting `quit`;
+  host reads it, opens the trailer, and `.erase()`s the flag.
+  This is uglier than a proper "return address" parameter but it
+  survives save/reload and is one line at each site. Don't over-
+  engineer this until you have three or more return-target flags
+  simultaneously.
+
+- **Chapter status lines on the title screen are the fastest
+  progress signal.** After each chapter lands, update the title
+  screen's `status_label.text` to say what's playable. This is a
+  30-second edit that lets the player (and the next session's
+  claude) know at a glance where the game is. "Chapters 1-5
+  playable · Chapter 6 pending" → "all 6 chapters playable · 6
+  endings authored".
+
+- **Palette shifts per chapter carry more than dialogue does.**
+  Earthman's palette walks from cool-purple (Pasadena) → dust-
+  orange (Parsa surface) → warm-cream (Talikan) → basalt-black
+  (Mines) → deep-indigo-with-gold-star-motif (Academy) → dark-
+  cortex-purple (Finale). Reading the source code with the
+  palette blocks visible tells you the emotional arc even before
+  you read the beats. Chapter tone is 40% palette / 20%
+  wallpaper motif / 40% dialogue.
+
+### 2026-07-09 · the audit pass · readers vs writers
+
+Ran a full feature/wiring audit across both new slowsticks after
+they reached end-to-end playable. Five real bugs, all one shape.
+
+- **Audit every gate's readers against its writers.** Every bug the
+  audit found was a state key that something READ (ending triggers,
+  Codex tabs, THREATEN unlocks) but nothing WROTE — or wrote under a
+  different name. `titania_disposition` gated an ending nothing fed;
+  `fey_court_<id>` was counted but never cached; the mirror granted
+  true name `kelpie_water_horse` while checks looked for `kelpie`;
+  the Observatory granted `correction_academy_broadcast`, an id not
+  in corrections.json. Grep each gate key for its writer BEFORE
+  declaring an ending reachable.
+- **Watch for grant-during-the-ending chicken-and-egg gates.** THE
+  CORRECTION required 6 corrections, but the 6th was designed to be
+  granted BY the ending. Gate on the findable set; grant the
+  capstone during playback.
+- **Chapter-end "next chapter pending" texts rot the moment the
+  next chapter lands.** They're player-facing, and auto-advance
+  makes them lies. Replace endcaps with in-fiction transitions at
+  the time the next chapter ships, not later.
+- **A currency needs three legs or it isn't one: init, income,
+  balance check.** Shenin had zero of three — costs existed with no
+  wallet. If a design doc mentions "money you earned," the earn
+  mechanic must exist before any spend gate ships.
+
+### 2026-07-09 · the systems arc · six sticks, one library
+
+Sam's Summer Shifts became the sixth playable slowstick, the
+console inside Pirate Summer boots the real games, and every
+authored-but-unconsumed data file got its consumer (workings,
+quotes, promises, the manuscript). Lessons:
+
+- **When the data isn't machine-checkable, make the honor system
+  the mechanic.** Fey Faire's promises are life-promises ("plant a
+  tree") · inventory-matching was impossible and wrong. The fix:
+  Ondine reads the ledger back on Night 6 and ASKS. The game takes
+  your word, on purpose, on theme. Don't fight the data's nature;
+  design around what it actually is.
+- **NG+ is a lifetime block the reset preserves.** `start_new_run`
+  reads the keys that should survive (endings_seen) BEFORE building
+  the fresh dict and seeds them back in. One pattern, two games
+  (Fey Faire, Sam's Summer Shifts). Anything not in the lifetime
+  block is per-run by definition · no ambiguity.
+- **Overlay combat preserves beat position.** Chapter beat-scenes
+  don't save mid-chapter, so combat launched by the HOST would
+  reset the chapter. Instead the chapter instantiates the combat
+  scene as its own child, pauses on it, and resumes `_on_advance()`
+  from `combat_complete`. The chapter never knows it stopped.
+- **The uniform host contract paid out twice more.** Nesting Fey
+  Faire inside Pirate Summer's console was ~50 lines because
+  quit_to_shelf/finished are universal; Sam's Summer Shifts slotted
+  into SlowstockBoot with one const + one branch + one opener.
+- **A completed progression ladder makes a free moveset.** Earthman
+  combat lets each finished Working be cast once per fight · the
+  nine-rung ritual ladder doubles as the special-move list with
+  zero new progression design. Look for systems the player already
+  climbed before inventing new ones.
+- **Sub-menus need the same cleanup discipline as scenes.** The
+  combat action row overlapped its own WORKING/PARTY submenus until
+  both were named into the same "BottomMenu" slot. Anything that
+  swaps in-place needs a single named anchor to clear.
+
+### 2026-07-10 · Estuary 1 · the smallest full stick
+
+- **A one-screen game wants `_draw`, not a scene graph.** Estuary
+  1's whole picture (tide bands, reeds, gate, lever, shimmer,
+  air-holes) is one Control `_draw()` plus two real children (the
+  notebook Label and the advance Button).  Deterministic scatter
+  comes from an integer hash, never `randf()` in `_draw` — a
+  redraw must not re-roll the world.
+- **Roll randomness once, save it.** The twelve tide-luck values
+  are rolled at boot and stored in `_run_state["luck"]`, so a
+  continued save replays the same weather.  Any per-run randomness
+  belongs in the save, not in the frame.
+- **Single-track AudioMgr + stem-mixed score = render the
+  combinations.** Ostrom's drone-plus-voices score became 8
+  pre-rendered WAVs (`mix_d[f][s][h]`); the loop swaps files
+  weekly and the crossfade sells it.  Naming the files by stem
+  set keeps the pick logic one string-append per voice.
+- **The shelf's BOOT button keys off `manifest.has("acts")`.**
+  SSS shipped without an `acts` key and silently showed PEEK
+  instead of BOOT.  Every playable manifest needs `acts`, even a
+  one-act stick — added to both manifests this session.
+- **Emit AND consume in the same commit.** `estuary_1_patience_a`
+  ships with its Jules line (E3 Act 2) and `estuary_1_week_13_seen`
+  with its grace beat (E3 Act 4), per the readers-vs-writers
+  audit lesson: a token nobody reads is a bug deferred.
+
+### 2026-07-10 · Northwind Harbor · listening as the mechanic
+
+- **Passive steps fire on arrival; active steps wait for the
+  button.** The town talks AT you: `heard`/`look` steps auto-fire
+  when you enter their screen (listening is not an action), while
+  pickup/give/use need the deliberate `· pick up ·` press.  This
+  split IS the design — walking around is enough to learn
+  everything; helping still costs a choice.
+- **Carryover chains need a data slot, not code.** Each chain's
+  final step carries a `carryover_line`; on later mornings, an
+  unfinished chain's location shows that line instead of ambient
+  ("still got my glove, then").  The town noticing is one string
+  per chain in the JSON.
+- **Fog = relabel navigation, change nothing else.** Chapter 6
+  swaps nav-button labels from location names to each location's
+  `sound_cue` and dims the tableau modulate.  The graph, steps,
+  and code path are untouched · the LISTENING mechanic graduates
+  to literal purely through data.
+- **Canon that predates the game constrains the build — collect
+  it FIRST.** Pirate Summer had already canonized the title theme
+  (soft pad, F major, 14 s), Chapter 1's opening line (the boy
+  asks the dog), Sam's save (mid-pocket, holding the glove), and
+  the camp cart's blacked-out Delisle chart.  Grep every existing
+  reference to a stick before authoring its data · all four
+  landed as authored beats, not retcons.
+- **Cross-check data with a script before first boot.** A
+  20-line validator (step locs exist · requires resolve ·
+  adjacency symmetric · a hero image per location) catches the
+  class of bug the engine reports as silent nothing.
+
+### 2026-07-10 · the catalog run · eight sticks in one arc
+
+- **The uniform host contract scaled to sixteen sticks without a
+  crack.** Every build this arc (Riffrocker, Glass, Sweetgum,
+  E2, Hane no Niwa, Basilica) was host + one core scene +
+  data JSONs, wired identically into SlowstockBoot/Shelf.  Cost
+  per stick kept falling because nothing about the frame was
+  ever re-decided.
+- **The core mechanic deserves the new renderer; everything else
+  is data.** Basilica got the catalog's one new renderer
+  (WireframeView · trapezoid depths + prop line-lists) and even
+  that is ~150 lines because the grid, bands, and props are
+  JSON.  When tempted to write engine code, check whether it's
+  actually a data file wearing a trenchcoat.
+- **Real audio beats simulated audio.** Basilica's interference
+  is two live sine voices in one AudioStreamGenerator — actual
+  acoustic beating, free, instead of a rendered 'dissonance
+  WAV'.  When the fiction says two tones fight, let two tones
+  fight.
+- **Absence is contentable.** Sweetgum's shelf slot doesn't
+  exist until a fact is known (hidden_until_token); Basilica IS
+  an empty sleeve until an auction beat fills it.  Both gates
+  live in shelf/boot data + ~20 lines, and both are the single
+  strongest lore delivery in their sticks.
+- **Validate reachability in CI-of-one.** The Basilica level
+  flood-fill (entry → S/U/M) and the HNN tag-coverage check each
+  caught a real authoring bug (green tag clauseless; grids fine
+  but only because checked).  Every graph-shaped data file gets
+  a 20-line python validator before first boot, no exceptions.
+
+### 2026-07-10 · the Deck compile pass · gdparse is not Godot
+
+- **gdparse checks syntax; Godot 4.6 checks semantics.**  A clean
+  gdparse sweep let through: `var x := arr[i]` (cannot infer from
+  untyped container · HARD error), `:= max(/clamp(/lerp(/abs(`
+  (untyped builtins), `:= loop_var` captures, duplicate `var` in
+  nested blocks, and a `func _set(x,y,idx)` colliding with
+  Object._set.  **Rule:** never use `:=` when the right side is a
+  container index, an untyped builtin, or an untyped loop var ·
+  write the type.  Use maxi/maxf/clampi/clampf/lerpf/absi/absf,
+  never the Variant versions.
+- **Never name a method _set/_get/_ready-anything on a helper.**
+  Object's virtuals will collide with a different signature and
+  the whole file (and everything depending on it) fails to load.
+  HeroImage's painter is now `_put`.
+- **Scripts compile on LOAD, not at startup.**  The boot log only
+  shows errors for autoloads + the main-menu dependency tree; a
+  slowstick that parses today can still explode when first
+  booted.  After any typing fix, sweep ALL game scenes for the
+  same pattern, not just the ones in the error log.
+
+### 2026-07-19 · the per-stick improvement waves · one paid-off variable each
+
+- **The cheapest depth is one variable, tracked, paid off.** Six
+  waves, one mechanic each: bosun pets → chapter-7 line tiers;
+  absence gaps in the mudflat journal; water words from the
+  pre-rolled luck; Court statuses in Fey combat; NG+ deja-vu in
+  Pirate Summer; a repave/solo week in KSM/SSS.  Every one is a
+  var in the existing `_run_state`/`_state` (free persistence),
+  one seed site, one payoff site.  If a feature needs a new save
+  shape, it's the wrong feature for a wave.
+- **`<stick>_finished` in OneironauticsTokens is the crossover
+  bus.** Estuary 1 and Pirate Summer already emit it; KSM's heron
+  and SSS's slushie guest consume it.  When writing an ending
+  scene, ALWAYS add the `<id>_finished` token even with no
+  consumer yet — a later stick will want the gate, and retrofitting
+  the emitter means touching a shipped ending.
+- **NG+ = boot-time token check → one seed fact → gated lines.**
+  Pirate Summer's whole NG+ is: OneironauticsTokens check in the
+  fresh-run boot branch, a `ng_*` fact in the dialogue web, and
+  `conditions.requires_fact` lines in the chatter pools.  No new
+  systems; idle chatter just learned the same `requires_fact` key
+  party chatter had.  Check which pools actually honor the gate
+  before authoring gated lines — one grep saved four dead lines.
+- **Scripted boss = branch the boss TURN, not the scaffold.** The
+  Thar-Krai-Tam arena is one `_boss_turn_thar()` dispatched by
+  boss id; the player verbs, HP labels, and outcome flow are
+  untouched, so other bosses stay generic until each earns its
+  own pattern.  Telegraph-then-punish plus a defend-to-counter
+  window is enough to make DEFEND (previously dead) load-bearing.
+
+## TEMPLATE — new lesson entry
+
+```
+### YYYY-MM-DD · short session title
+
+- **Punchy lesson, present tense.** Two-to-four sentences.
+- **Next lesson.** Same shape.
+```
+
+### 2026-07-27 · Northwind Harbor full build · depth without breaking a quiet game
+
+- **Scarcity through abundance fits even the gentlest design.** The
+  depth floor asks for expiring tradeoffs, but Northwind's soul is
+  "no fail states." Resolution: author MORE morning than the 73
+  minutes hold (main chain + 4-5 optional kindness chains, each
+  with its own overheard hint). Nothing fails — you just can't do
+  everything, and what you skip carries over with the town
+  noticing. Pressure without punishment.
+- **Make the signature mechanic mechanical.** "Listening" was
+  flavor; now every optional chain is gated behind its own heard
+  step, so the hint system IS the quest log. If a stick has a
+  stated core mechanic, the depth pass should route real play
+  through it, not around it.
+- **Pay off tracked variables with capability, not just prose.**
+  Bosun's pets were a ch7 text payoff; now trust ≥3 also buys one
+  fetch per morning (adjacent-screen pickup, tagged fetchable) —
+  the relationship becomes a mastery lever while keeping its prose
+  payoff intact.
+- **Expand content in the canon's own voice or not at all.** All 26
+  v1 steps kept verbatim (Sam's 1988 save is canon); the 26 new
+  steps imitate the lowercase working-harbor register. A depth pass
+  that rewrites canon prose is a different, worse thing.
+
+### 2026-07-27 · the second-system batch · Tideline, SD2, Mrs Wu
+
+- **The second system is already in the fiction — find it, don't
+  invent it.** The Tideline's is in its NAME (the tide erases the
+  beach behind your attention); Mrs Wu's is October itself (weather
+  rewrites the beds' needs; sheets need drying weather); SD2's is
+  the sky that gives as well as takes. If the second system needs
+  new nouns, keep looking.
+- **Expiring windows want authored ghost lines.** A tide-taken
+  observation renders as dimmed prose ("a green glint riding OUT on
+  the flood...") — the loss is FELT, which is the whole point of
+  expiring scarcity. Silently absent content reads as a bug.
+- **Earn the crisis resources in the calm.** Mrs Wu's frost sheets
+  moved from a flat 4 to the linen chest (wash on drying evenings)
+  — the triage now reads the whole game back at you. If a finale
+  hands out its resources, the finale is a cutscene.
+
+### 2026-07-27 · the vignette tier that mostly wasn't · audit by content, not line count
+
+- **wc -l is not a depth audit.** The "hosts with vignettes" tier
+  was built from controller line counts; on content inspection,
+  four of five (Sweetgum, Patient Mister Glass, Riffrocker, Hane
+  no Niwa) are complete designed works — small ENGINES over rich
+  DATA (PMG: 453 lines of engine, 39 authored rotations + 9 wired
+  findings in the deck). Data-driven sticks put their depth in
+  JSON, exactly as this playbook tells them to. Audit the data.
+- **Read the data with its real keys.** Three successive wrong
+  conclusions in one audit came from grepping guessed key names
+  ("answers" vs "variants", "pin" vs "pair", "call" vs "calls").
+  Dump one raw entry FIRST, then measure.
+- **The floor bends to the design doc, not the reverse.** Sweetgum
+  ("no third variation") and Riffrocker ("the only fail state is
+  quitting") pass as deliberate art objects; Sam's Summer Shifts
+  ("one scripted beat per week") did not and got the register.
+  The test is whether the stick delivers ITS OWN stated design at
+  full depth — not whether every stick is a resource sim.
+
+### 2026-09-07 · in-stick light (the Minter register, game grammar row 4)
+
+- **Spectacle is a child node fed by events, never an overlay.** The
+  Deck rejected the screen-space neon over a 2D game ("ugly and
+  strobey"). Spiderdrops now draws its own additive sparks
+  (SpiderdropsMinterFX.gd — a Node2D with a CanvasItemMaterial ADD
+  blend, z_index 2) from the game's real events: land, snap, score.
+  Reuse the class; call `burst(pos, col, n, speed, core)` and
+  `mote(from, col)`; cap live particles; fade everything, flash
+  nothing.

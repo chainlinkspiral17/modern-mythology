@@ -55,6 +55,7 @@
       "expressions": ["neutral", "warm", "cold"],
       "volumes": [6]
     },
+    "stranger": {
       "displayName": "Stranger",
       "folder": "assets/characters/stranger/",
       "expressions": ["neutral", "warm", "amused", "surprised", "impressed"],

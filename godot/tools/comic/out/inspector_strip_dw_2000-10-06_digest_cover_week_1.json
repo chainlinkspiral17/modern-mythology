@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-10-06_digest_cover_week_1",
+      "strip_id": "dw_2000-10-06_digest_cover_week_1",
+      "title": "The digest cover · the bags",
+      "date": "2000-10-06",
+      "era": "era1",
+      "format": "digest_cover",
+      "tier": "A",
+      "prompt": "a single-image zine cover, one drawing filling the page (1 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: DRIFT WOOD. The strip: Friday's digest cover, week one: the two bags on Chloe's porch in vertical rain, no people, drawn from the street. The arc's first cover. Panel 1: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a zine cover of two packed bags on the porch of an old wooden house in heavy vertical rain, no people, heavy black spotting, no words. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized crab, seen from above. Reference @loc_main_street shows the setting; keep its architecture and props. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @loc_main_street for the setting; @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17.",
+      "prompt_compact": "a single-image zine cover, one drawing filling the page (1 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Panel 1: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a zine cover of two packed bags on…. No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @loc_main_street shows the setting; keep its architecture and props.. Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "loc_main_street",
+          "id": "sheet_loc_main_street",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_main_street.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "dw_chloe_porch",
+            "era1"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

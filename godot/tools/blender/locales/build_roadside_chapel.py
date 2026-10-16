@@ -59,24 +59,26 @@ def build_stained_glass_window():
 
 def build_altar():
     ax, ay = 0.0, ROOM_D - 1.20
-    make_box("Altar_Base", (ax, ay, 0.50), (1.30, 0.50, 1.00), COL_ALTAR)
+    make_box("Altar_Base", (ax, ay, 0.51), (1.30, 0.50, 1.02), COL_ALTAR)   # up to the top (2026-09-23: the top hung 2 cm over it)
     make_box("Altar_Top",  (ax, ay, 1.04), (1.40, 0.56, 0.04), COL_ALTAR)
     # Altar cloth front
     make_box("Altar_Cloth", (ax, ay-0.30, 0.50), (1.34, 0.005, 1.00), COL_ALTAR_CLOTH)
     # Candle pair + crucifix
     for sgn in (-1, +1):
         make_cyl(f"Altar_Candle_{sgn:+d}", (ax + sgn*0.40, ay, 1.18), 0.04, 0.24, P.PAPER)
-        make_cyl(f"Altar_Candle_Flame_{sgn:+d}", (ax + sgn*0.40, ay, 1.34), 0.025, 0.04, COL_VOTIVE)
-    make_box("Altar_Crucifix_V", (ax, ay, 1.40), (0.04, 0.04, 0.40), COL_PEW_WOOD)
-    make_box("Altar_Crucifix_H", (ax, ay, 1.50), (0.20, 0.04, 0.04), COL_PEW_WOOD)
-    # Votive rack to the right of the altar
+        make_cyl(f"Altar_Candle_Flame_{sgn:+d}", (ax + sgn*0.40, ay, 1.32), 0.025, 0.04, COL_VOTIVE)   # on the wick
+    make_box("Altar_Crucifix_V", (ax, ay, 1.26), (0.04, 0.04, 0.40), COL_PEW_WOOD)   # on the altar top (2026-09-22: 14 cm up)
+    make_box("Altar_Crucifix_H", (ax, ay, 1.36), (0.20, 0.04, 0.04), COL_PEW_WOOD)
+    # Votive rack to the right of the altar, on its stand
     vx, vy = +1.40, ay - 0.20
+    make_box("Votive_Stand", (vx, vy, 0.185), (0.06, 0.06, 0.37), COL_BELL_BRONZE)   # (2026-09-22: the rack hung at 0.37)
     make_box("Votive_Rack", (vx, vy, 0.42), (0.30, 0.30, 0.10), COL_BELL_BRONZE)
     for i in range(6):
-        cx = vx - 0.20 + (i % 3) * 0.20
-        cy = vy - 0.10 + (i // 3) * 0.20
+        # inside the rack (2026-09-23: the outer four stood off its edges)
+        cx = vx - 0.10 + (i % 3) * 0.10
+        cy = vy - 0.06 + (i // 3) * 0.12
         make_cyl(f"Votive_{i}", (cx, cy, 0.50), 0.025, 0.06, COL_VOTIVE)
-        make_cyl(f"Votive_Flame_{i}", (cx, cy, 0.58), 0.018, 0.03, COL_VOTIVE)
+        make_cyl(f"Votive_Flame_{i}", (cx, cy, 0.545), 0.018, 0.03, COL_VOTIVE)   # on the wick
 
 
 def build_pews():
@@ -84,9 +86,9 @@ def build_pews():
     for pi, py in enumerate([2.00, 3.80]):
         make_box(f"Pew_{pi}_Seat",   (0.0, py, 0.46), (2.20, 0.40, 0.06), COL_PEW_WOOD)
         make_box(f"Pew_{pi}_Back",   (0.0, py-0.20, 0.80), (2.20, 0.06, 0.68), COL_PEW_WOOD)
-        make_box(f"Pew_{pi}_Kneeler", (0.0, py+0.32, 0.12), (2.20, 0.16, 0.06), COL_PEW_WOOD)
+        make_box(f"Pew_{pi}_Kneeler", (0.0, py+0.32, 0.04), (2.20, 0.16, 0.06), COL_PEW_WOOD)   # on the floor (2026-09-22)
         for sgn in (-1, +1):
-            make_box(f"Pew_{pi}_End_{sgn:+d}", (sgn*1.12, py, 0.46), (0.04, 0.40, 0.80), COL_PEW_WOOD)
+            make_box(f"Pew_{pi}_End_{sgn:+d}", (sgn*1.12, py, 0.43), (0.04, 0.40, 0.86), COL_PEW_WOOD)   # to the floor
 
 
 def build_statue_niche():
@@ -102,7 +104,7 @@ def build_statue_niche():
 def build_bell_pull():
     # Rope dangling from ceiling in SW corner.
     bx, by = -ROOM_W/2.0 + 0.40, 0.60
-    make_box("BellPull_Rope", (bx, by, 1.70), (0.04, 0.04, 1.60), COL_BELL_BRONZE)
+    make_box("BellPull_Rope", (bx, by, (CEIL + 0.89) / 2.0), (0.04, 0.04, CEIL - 0.89), COL_BELL_BRONZE)   # from the ceiling (2026-09-22: 0.9 m short)
     make_cyl("BellPull_Knot", (bx, by, 0.94), 0.08, 0.10, COL_BELL_BRONZE)
 
 
@@ -111,13 +113,13 @@ def build_ceiling_infra():
     make_sprinkler("Spr", (0.0, 1.5, CEIL))
     # Hanging brass pendant over the altar
     make_cyl("Pendant_Cord", (0.0, ROOM_D-1.20, CEIL-0.40), 0.012, 0.80, P.METAL_BLACK)
-    make_cyl("Pendant_Bowl", (0.0, ROOM_D-1.20, CEIL-0.96), 0.16, 0.08, COL_BELL_BRONZE)
+    make_cyl("Pendant_Bowl", (0.0, ROOM_D-1.20, CEIL-0.84), 0.16, 0.08, COL_BELL_BRONZE)   # at the cord's end (2026-09-22: 12 cm under it)
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 5.5, 2.20), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (-2.400, 5.5, 2.20), frozen_hour=4, frozen_min=15, facing='+X')
     make_floor_plant("Plant_SE", (ROOM_W/2.0-0.60, 0.60, 0.0), palette={"leaf": (0.42, 0.52, 0.36, 1.0)})
-    make_faded_poster("Poster", (-ROOM_W/2.0+0.05, 1.8, 1.50))
+    make_faded_poster("Poster", (-ROOM_W/2.0+0.05 + 0.0535, 1.8, 1.50), into_room=+1)
 
 
 def build_lovers_exterior():
@@ -166,6 +168,10 @@ def build_lovers_exterior():
         # Skip if within the mound footprint
         if abs(sx - mound_cx) <= mound_w / 2.0 + 0.5 and abs(sy - mound_cy) <= mound_d / 2.0 + 0.5:
             continue
+        # Skip the asphalt apron (centered (0,-6.5), 14x10) — cane
+        # was growing up through the parking surface.
+        if abs(sx - 0.0) <= 7.5 and abs(sy - (-6.5)) <= 5.5:
+            continue
         stalk_h = _r.uniform(1.40, 2.20)
         make_cyl("CaneStalk_%d" % placed,
                  (sx, sy, -1.05 + stalk_h / 2.0),
@@ -184,10 +190,135 @@ def build_lovers_exterior():
              (0.60, 0.56, 0.50, 1.0))   # gravel
     # Three stone steps up the mound's south face
     for s in range(3):
-        make_box("MoundStep_%d" % s,
+        make_box("Exterior_MoundStep_%d" % s,
                  (0.0, -0.40 - s * 0.40, -0.25 + s * 0.10),
                  (1.10, 0.36, 0.10),
                  (0.46, 0.40, 0.34, 1.0))   # limestone-darker
+
+
+def build_facade_2026_08():
+    """2026-08-03 tail pass: the chapel_exterior preset photographs
+    the front — which never existed. Portico + steps + door +
+    steeple + the asphalt apron, the idling black car, the trash
+    can from the lemonade beat."""
+    wood = (0.82, 0.80, 0.74, 1.0)      # white clapboard
+    trim = (0.62, 0.60, 0.55, 1.0)
+    # Steps + portico
+    for si, (sy, sz) in enumerate(((-0.45, 0.15), (-0.75, 0.30), (-1.05, 0.45))):
+        make_box(f"Church_Step_{si}", (0.0, sy, sz - 0.075), (2.4, 0.32, 0.15), trim)
+    for px in (-1.0, 1.0):
+        make_cyl(f"Portico_Col_{px:+.0f}", (px, -0.9, 1.55), 0.09, 2.6, wood, segments=8)
+    make_box("Portico_Roof", (0.0, -0.7, 3.05), (2.8, 1.8, 0.22), (0.42, 0.36, 0.30, 1.0))
+    make_box("Portico_Pediment", (0.0, -0.55, 3.35), (2.4, 1.2, 0.4), wood)
+    # Door + facade face + steeple
+    make_box("Church_Door", (0.0, -0.02, 1.30), (1.10, 0.08, 2.30), (0.36, 0.26, 0.16, 1.0))
+    make_box("Facade_Face", (0.0, -0.05, 1.85), (5.2, 0.06, 3.7), wood)
+    make_box("Facade_Gable", (0.0, -0.05, 4.2), (3.4, 0.06, 1.2), wood)
+    # on the roof slab (top 3.50; 2026-09-22: 30 cm of air under the base)
+    make_box("Steeple_Base", (0.0, 0.8, 4.3), (1.2, 1.2, 1.6), wood)
+    make_box("Steeple_Spire_0", (0.0, 0.8, 5.6), (0.85, 0.85, 1.2), trim)
+    make_box("Steeple_Spire_1", (0.0, 0.8, 6.8), (0.5, 0.5, 1.4), trim)
+    make_box("Steeple_Cross_V", (0.0, 0.8, 7.9), (0.06, 0.06, 0.8), (0.74, 0.58, 0.28, 1.0))
+    make_box("Steeple_Cross_H", (0.0, 0.8, 8.1), (0.4, 0.06, 0.06), (0.74, 0.58, 0.28, 1.0))
+    # The shimmering asphalt apron + curb
+    make_box("Asphalt_Apron", (0.0, -6.5, -0.01), (14.0, 10.0, 0.04), (0.22, 0.22, 0.24, 1.0))
+    make_box("Curb", (0.0, -9.0, 0.05), (14.0, 0.25, 0.12), (0.55, 0.53, 0.48, 1.0))
+    # The long black car idling by the curb
+    make_box("Black_Car_Body", (4.5, -8.0, 0.55), (4.6, 1.75, 0.55), (0.08, 0.08, 0.10, 1.0))
+    make_box("Black_Car_Cabin", (4.2, -8.0, 1.02), (2.4, 1.6, 0.45), (0.08, 0.08, 0.10, 1.0))
+    make_box("Black_Car_Glass", (4.2, -8.0, 1.04), (2.2, 1.45, 0.36), (0.16, 0.18, 0.22, 1.0))
+    for wx in (3.0, 5.9):
+        for wy in (-8.75, -7.25):
+            make_cyl(f"BC_Wheel_{wx:.0f}_{wy:.2f}", (wx, wy, 0.30), 0.30, 0.22,
+                     (0.06, 0.06, 0.07, 1.0), segments=10, axis='Y')
+    # The trash can at the foot of the steps (the lemonade cup)
+    make_cyl("Trash_Can", (1.8, -2.2, 0.45), 0.28, 0.90, (0.30, 0.34, 0.30, 1.0), segments=10)
+    build_facade_detail_2026_09(wood, trim)
+
+
+def build_facade_detail_2026_09(wood, trim):
+    """Draft 2 of the front (2026-09-30) — the 09-26 sheet: the camera
+    stood 4.5 m off a 5 m facade and the frame was one blank tan wall,
+    a portico and a trash can. The preset backs out across the apron
+    now (the whole chapel, the steeple, the black car at the right
+    edge); the facade gets what a white clapboard country chapel shows
+    from the road:
+      · two tall lancet windows either side of the portico, dark
+        glass in white frames with a pointed head;
+      · clapboard — the shadow line under every course, 25 cm apart;
+      · corner boards at both ends of the front.
+    NEXT (draft 3): the side walls' windows (the establish sees the
+    east wall at an angle now); a parish sign board at the path's
+    road end; the bell in the steeple's louvred opening; heat shimmer
+    over the apron (a mood, not a mesh)."""
+    glass = (0.14, 0.16, 0.22, 1.0)
+    shadow = (0.64, 0.62, 0.57, 1.0)
+    fy = -0.085                           # the facade's front face is y -0.08
+    for sx in (-1, 1):
+        wx = sx * 1.85
+        make_box(f"Facade_Lancet_Frame_{sx:+d}", (wx, fy, 1.85), (0.74, 0.012, 1.62), trim)
+        make_box(f"Facade_Lancet_Glass_{sx:+d}", (wx, fy - 0.007, 1.80), (0.56, 0.005, 1.36), glass)
+        # the pointed head: two stepped courses over the glass
+        make_box(f"Facade_Lancet_Head_{sx:+d}_0", (wx, fy - 0.007, 2.54), (0.40, 0.005, 0.12), glass)
+        make_box(f"Facade_Lancet_Head_{sx:+d}_1", (wx, fy - 0.007, 2.64), (0.20, 0.005, 0.08), glass)
+        make_box(f"Facade_Lancet_Sill_{sx:+d}", (wx, fy - 0.03, 1.02), (0.82, 0.06, 0.05), trim)
+        make_box(f"Facade_CornerBoard_{sx:+d}", (sx * 2.53, fy, 1.85), (0.14, 0.012, 3.70), trim)
+    # clapboard shadow lines on the two panels beside the portico
+    for ci in range(14):
+        cz = 0.25 + ci * 0.25
+        for sx in (-1, 1):
+            # skip the lancet openings (x 1.48..2.22, z 1.04..2.68)
+            if 1.0 <= cz <= 2.72:
+                segs = [(sx * 1.24, 0.40), (sx * 2.37, 0.26)]
+            else:
+                segs = [(sx * 1.80, 1.40)]
+            for k, (cx, ln) in enumerate(segs):
+                make_box(f"Facade_Clapboard_{ci}_{sx:+d}_{k}", (cx, fy - 0.001, cz), (ln, 0.004, 0.018), shadow)
+
+
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the Lovers (wear pass 8, the
+    last arcana personality).
+
+    A roadside wedding chapel wears IN PAIRS. Two knee-dents on
+    the front kneeler, close together, worn pale — couples kneel
+    side by side and always at the center. The aisle lane is
+    narrow and perfectly centered, because processions walk slow
+    and in step. Rice sits ground into the threshold seams — no
+    broom has ever beaten the next wedding to it. The bell rope
+    is hand-dark at one height (rung once after each vow), the
+    statue's foot is rubbed bright the way petitioners' thumbs
+    do, and the altar top carries wax in TWO colors at the two
+    candle stations — two households' candles, brought and burned
+    down together.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    knee = (0.58, 0.46, 0.32, 1.0)
+    aisle = (0.34, 0.27, 0.20, 1.0)
+    rice = (0.90, 0.88, 0.80, 1.0)
+    hand = (0.34, 0.24, 0.14, 1.0)
+    bright = (0.88, 0.72, 0.38, 1.0)
+    # THE PAIR OF KNEE-DENTS · front kneeler (pew 0 at y=2.0,
+    # kneeler at y=2.32), centered, 0.34m apart.
+    for sgn in (-1, 1):
+        make_box("Wear_Knee_%+d" % sgn, (sgn * 0.17, 2.32, 0.0725),   # on the kneeler (now on the floor)
+                 (0.14, 0.13, 0.004), knee)
+    # The aisle: narrow, centered, door to altar. Walked in step.
+    make_traffic_wear("Wear_Aisle",
+                      [(0.0, 0.4), (0.0, 2.9), (0.0, 5.2)],
+                      width=0.4, tint=aisle)
+    # Rice in the threshold seams — three grains-drifts at the door.
+    for ri6, (rx6, ry6) in enumerate(((-0.28, 0.16), (0.10, 0.12), (0.34, 0.18))):
+        make_box("Wear_Rice_%d" % ri6, (rx6, ry6, 0.012), (0.14, 0.05, 0.006), rice)
+    # The bell rope's hand-height: one dark grip band on the rope.
+    make_box("Wear_BellRope_Grip", (-2.10, 0.60, 1.32), (0.045, 0.045, 0.18), hand)
+    # The statue's rubbed foot — bright where the thumbs go.
+    make_box("Wear_Statue_Foot", (2.20, 3.31, 1.385), (0.08, 0.05, 0.015), bright)
+    # Two wax colors at the altar's two candle stations.
+    make_cyl("Wear_Wax_West", (-0.40, 5.80, 1.062), 0.06, 0.004,
+             (0.88, 0.84, 0.72, 1.0), segments=8)
+    make_cyl("Wear_Wax_East", (0.40, 5.80, 1.062), 0.06, 0.004,
+             (0.80, 0.68, 0.62, 1.0), segments=8)
 
 
 def main():
@@ -201,10 +332,32 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_lovers_exterior()
+    build_facade_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/roadside_chapel.glb"))
     print(f"\n[build_roadside_chapel] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
+
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 32m. Cane fields and hedgerow
+    lines running out to the parish section roads."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    # Top must sit BELOW the cane-field ground (top -1.05): this
+    # plane at -0.03 floated a full meter above local grade and
+    # sliced through every cane stalk mid-height.
+    make_box("Ground_Far", (0.0, 0.0, -1.08), (1080.0, 1080.0, 0.02),
+             (0.22, 0.28, 0.16, 1.0))
+    from _props.detail import make_far_bands
+    make_far_bands("FarHedgerow", (0.30, 0.38, 0.26),
+                   [(60.0, 70.0, 5.0, 0.90), (130.0, 120.0, 6.5, 0.72),
+                    (260.0, 200.0, 8.0, 0.56), (460.0, 320.0, 10.0, 0.42)],
+                   profile="treeline")
 
 
 if __name__ == "__main__":

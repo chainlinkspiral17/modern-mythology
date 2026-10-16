@@ -1,0 +1,454 @@
+# THE PSYCHEDELIC DESIGN BIBLE · THE TRIP (2026-09-07 · draft 2)
+
+The project-wide theme, in the user's words:
+
+> "Big project theme, psychedelic art and visuals. Realism but
+> trippy, I always wanted this running through the game at all
+> times, in lines and backgrounds, synced to the music currently
+> playing."
+>
+> "Slowstick games, too. Jeff Minter like design and visuals. Only
+> using current hardware. And game design."
+>
+> "Major Arcana is swampy and arcade inspired. Planned Community:
+> retro video games and zines and stoner sludge meta punk rock.
+> Land of Milk and Honey is SCUMM game inspired, psychedelic wall
+> of sound classic rock but sci-fi."
+
+Read this before touching `godot/autoload/TripSync.gd`,
+`godot/assets/shaders/trip_sync.gdshader`, any pillar's look, or
+any pillar's game-design direction. Companion to
+`_SHADER_VISUALS_PLAYBOOK.md` (the stack) and
+`_SLOWSTICK_AESTHETIC_BIBLE.md` (the no-retro-cosplay doctrine,
+which this document extends to the whole game).
+
+## Core rules
+
+0. **THE MOTION RULE (draft 3).** Draft 1 was "mostly nausea
+   inducing"; draft 2 (a still image) then 2B (faint) "lost all the
+   best parts." The balance: the flats may drift — slowly, like
+   water under glass — but the motion is NEAR-CONSTANT and NEVER
+   SYNCED TO THE BEAT. What made draft 1 sick was pumping: a
+   displacement amplitude that jumped with the bass (7 + 22·bass px,
+   breathing on the bar), a ripple that wobbled the whole frame on
+   every kick, a zoom thump, a chromatic split, a brightness dip.
+   All of those stay gone for good. What lives: a 6 + 6·energy px
+   liquid drift in the OPEN regions only (edges and text never move),
+   a field that moves at a fraction of draft 1's rate; the beat is a
+   ring of LIGHT, never a displacement; the pulse has a 45 ms attack;
+   hue rotation on large areas is capped (±0.55 rad) and slow. The
+   player holds the FLOW dial (Settings.trip_flow) — 0 is a still
+   image — beside LINES, COLOUR and BEAT.
+1. **Realism but trippy.** The picture stays the picture. THE TRIP
+   never crushes a palette, never ASCII-fies, never fills. It rides
+   on the lines (edge aura) and the backgrounds (flat-region flow,
+   capped hue drift) and leaves geometry outlines and text sharp.
+   If a pass makes a wall unreadable or a face green, it failed.
+2. **At all times.** One autoload (TripSync), one shader
+   (trip_sync.gdshader), one global layer (CanvasLayer 60 —
+   above every scene PostProcess stack at 50, below the slowstick
+   look at 80 and HUD at 100). Text-heavy surfaces that must keep
+   their type clean join `"trip_local"` and attach the same shader
+   in texture mode to their backgrounds (the VN does). Nothing
+   opts out entirely; the dial is `Settings.trip_amount`.
+3. **Synced to the music currently playing.** Everything moves to
+   the BGM bus spectrum: energy, three bands, a low-band beat
+   pulse, a tempo-locked beat/bar phase, a music-paced flow clock.
+   No visual clock runs free of the track except the idle breath
+   when nothing plays.
+4. **Current hardware only.** The Minter register is made of what a
+   2026 GPU does well — additive glow, particle storms, feedback
+   buffers, a screen that thumps — never of simulated 1980s
+   failure. No scanline loops, no phosphor fiction, no 8-bit
+   palette clamps as "authenticity." (The slowstick bible's rule,
+   now global.) Period flavour comes from palette, composition,
+   type, and game grammar.
+5. **Registers, not per-host uniforms.** A pillar's look is a
+   named entry in `TripSync.REGISTERS`. Hosts push a register with
+   themselves as owner (`TripSync.push_register("arcana", self)`);
+   it pops by itself when the owner leaves the tree. Nobody sets
+   trip uniforms inline. New pillar, new register.
+6. **Game design carries the register too.** The visual register
+   is the half we can ship from the container; each pillar also
+   has a GAME grammar below that every design pass should pull
+   toward. A pass that only adds shader dials is half a pass.
+
+## Direction: the three dials the director holds (draft 4)
+
+The player's PSYCHEDELIA slider is the ceiling (default **75 %**,
+the user's call 2026-09-07: "75 percent seems about right for me
+right now as default"). Under it, direction sets the level per beat:
+
+1. **Per mood** — every `MoodCycler` preset carries a `trip_scale`.
+   Dark and dreaming moods run hot (dream_blur 1.35, liminal_interior
+   1.35, arcana_neon 1.3, arcana_cool 1.25, macro_haze 1.2, smoky_bar
+   1.2, candlelight_low 1.15, tv_glow_blue 1.15, 3_47_am / precipice
+   1.4); bright, plain daylight runs cool (day_bright 0.7,
+   morning_bright 0.7, fluorescent_corridor 0.7, studio 0.6, lunch
+   0.75, kitchen_practical 0.8, dawn_warm 0.85); night / dusk sit at
+   1.0. Edge and ASCII moods without a key auto-scale to 0.35.
+2. **Per beat** — a `[trip:X]` cue in the chapter JSON, next to
+   `[mood:]` and `[shot:]`: `[trip:1.3]` pushes the layer for the
+   line, `[trip:0.4]` pulls it, `[trip:off]`, `[trip:full]` (1.5),
+   `[trip:reset]`. Every scene opens at reset; the cue is replayed on
+   load like mood and shot.
+3. **Per surface** — the registers (below) and the `trip_soft` group.
+4. **Per scene — the REGISTER itself** (2026-09-11). `[register:X]`
+   beside `[mood:]` and `[trip:]`. The volume picks a register for the
+   whole pillar, which is right until a chapter inside it is a
+   different KIND of room: the Lovers is a kitchen at nine in the
+   morning inside a volume whose look is swamp phosphor and arcade
+   amber, and the Deck verdict was "**the lovers should be warm and
+   cozy and domestic, not garish and weird**". Same lifecycle as
+   `[trip:]` — set by a cue, cleared on every scene load, sits above
+   the owner stack without disturbing it, `[register:reset]` returns
+   to the pillar. **Reach for this before reaching for the dial**: the
+   2026-09-07 lesson still holds, subtlety lives in WHAT the look is,
+   not in scaling a wrong look down.
+
+**Bright scenes get INK, not light.** The Deck verdict: "whiter or
+brighter scenes are too plain and humdrum, it really only looks good
+on darker scenes." Light laid on a bright picture adds nothing, so
+where the picture is bright the shader cross-fades to a colour-print
+treatment: the aura becomes coloured ink (the lines darken toward the
+register's hue), the flats take a soft multiplied tint instead of a
+glow, and the hue drift runs 1.7× — the one thing that reads on
+white. Dark scenes keep the glow. The cross-fade is by scene
+luminance per pixel, so a lit window in a dark room still glows.
+
+## The four registers
+
+| Register | Pillar | Sound (the brief) | Visual register (shipped, draft 1) | Game grammar (the queue) |
+|---|---|---|---|---|
+| `arcana` | Vol 5 · MAJOR ARCANA · TAROT GAUNTLET · Graustark bayou | swampy + arcade | bayou-water flow (slow, wide); phosphor-green → cyan lines with sodium amber bleeding in on the kick; the cabinet dips its power on the beat; hue drift low so the operator-noir stays noir | ARCADE: attract mode on the gauntlet board when idle (the deck shuffles itself); score bursts and chain multipliers as rounds link; named loss conditions already read as "insert coin" — make the bookends literal (a credit, a continue); per-arcana high-score table; time-of-day difficulty axis becomes TEMPO (dawn slow, 3 am fast); visitor arrivals land on the beat |
+| `community` | Vol 6 · PLANNED COMMUNITY · COMMUNITY PLANNED · Harmony Creek | retro video games, zines, stoner sludge meta punk rock | two risograph inks on the lines (fluorescent pink + teal, hard-edged, no rainbow); photocopy grain; the pulse HANGS (decay 2.6 — sludge); flow slow and heavy; hue drift near zero | ZINE ISSUE: mission stages as pages, the BBS as the letters column, the summer pressure curve (W6/W12/W18) as tempo drops; META: the game already knows it sits in a book's pause — let it say so in the zine's voice; RETRO GAMES as in-fiction objects (cartridges, cabinet flyers, a review column) not as rendering; STONER pacing: long holds rewarded, nothing punishes patience |
+| `milk_honey` | Vol 7 · LAND OF MILK AND HONEY · Smolvud · the substrate · the slowstock shelf's cabin | SCUMM game, psychedelic wall-of-sound classic rock, sci-fi | liquid light show — the oil-projector palette (amber / rose / violet / one cold blue); the densest flow and hue drift of the four (the wall of sound); a sparse starfield of sparks in the dark; big soft ripples | SCUMM: verb-object interaction in the VN chapters (look at / pick up / talk to / use … on — the cabin, the tower, the Daily Grind), an inventory that matters, dialogue trees with wrong answers that are funny not fatal; SCI-FI: the substrate is the engine under a small-town point-and-click — the strange thing is always one room away; WALL OF SOUND: beds + BGM + practicals all breathing together (practicals pulse with the bar at ~10% of lightshow_extreme) |
+| `slowstick` | every slowstick under the shelf | Jeff Minter | the FAINTEST register (draft 2B · "ugly and strobey" as an overlay): a faint neon breath on the lines, nothing on the flats, no sparks. The Minter look lives INSIDE each stick's own rendering — its particles, its glow, its beat-lit lines — never as a screen overlay on a 2D game's type | MINTER: score as spectacle (every point is a particle), escalation by DENSITY not punishment, bonus rounds as pure light synth, the whimsy where a studio's fiction allows it; feedback trails via a SubViewport history buffer (current hardware — Godot does this natively), particles via GPUParticles2D |
+| `domestic` | a WARM ROOM inside a cold pillar — named per scene with `[register:domestic]`, not per pillar | a fridge cycling, a radio two rooms over, people who know each other well enough not to talk | palette 5 HEARTH: amber → rose → cream and nothing on the cold side of the wheel; a LOW aura the colour of light through a curtain; almost no wash and almost no hue drift (a kitchen should stay the colour it is); the pulse never snaps (decay 2.8); the wake is afternoon sun on a wall — faint, slow, going nowhere | — (the chapter's own grammar) |
+| `base` | menus, vols 1–4, anything unregistered | — | rainbow aura, moderate everything | — |
+
+The values live in `TripSync.REGISTERS`; float dials cross-fade
+over 0.9 s when the register changes, the palette snaps at the
+midpoint. `pulse_decay` is per register — it is the single number
+that most changes how a pillar FEELS on the beat (arcade snaps,
+sludge hangs).
+
+## Who pushes what
+
+- `GameEngine._apply_skin(vol)` → `register_for_volume(vol)`
+  (5 arcana · 6 community · 7 milk_honey · else base), owner the
+  engine (pops on quit to menu).
+- `TarotGauntletGame._ready` → `arcana`; `CommunityPlannedGame._ready`
+  → `community`. Owner the game root.
+- `SlowstickLook.apply(host, preset)` → `slowstick`, owner the look
+  layer (dies with the host; the shelf falls back to the VN's or
+  the menu's register underneath).
+- Pirate Summer's console games boot inside a layer-90 CanvasLayer
+  — above the global layer. Draft-2 item: SlowstickLook already
+  climbs to enclosing+5 for its own layer; TripSync's global layer
+  should do the same when a `"trip_raise"` owner is present.
+
+## Game grammar · shipped rows
+
+- **arcana · ATTRACT MODE (draft 1, 2026-09-07).** The gauntlet board
+  left alone for 45 s runs an arcade attract loop: a banner cycles
+  the scenario's title, subtitle, INSERT COIN and the turn count;
+  the locale's mood strata step every 9 s (the cabinet's colour
+  cycle); THE TRIP pushes to 1.3. Any key, button or real mouse move
+  wakes it and everything returns. Next: score bursts on chained
+  rounds; tempo as the difficulty axis; a per-arcana high-score card.
+- **community · THE LETTERS COLUMN (draft 1, 2026-09-07).** RUST_CODE
+  gains a public board, THE_LETTERS (`N`): NEWS FROM HARMONY CREEK's
+  letters to the editor, nine threads W2–W16 in the zine register —
+  lot 14's cookies, Sam's correction to the back-cooler strip, Carla's
+  47 Hz, PHASE III's "a zine with a letters column is a newspaper",
+  the NexCorp Voice's courteous note, F.T.'s "the pause" at the
+  book's seam (issue #20: eight blank pages, one dollar), the storm-
+  window letter in three lines, 892's grey sedan again, "for the
+  fund". The pressure curve is the tempo: letters lengthen to W6, go
+  terse at W13–14, ease by W16. Data only — no engine change; the
+  phosphor-green rule holds. Next: the BBS masthead for that board
+  set in the zine's hand (Cosmic Comics paper stock as the board's
+  colour), a reader letter that answers a `[trip:]` beat.
+- **milk_honey · THE VERB COIN (draft 1, 2026-09-07).** SCUMM grammar
+  in the VN with no new node type: a `choice` with `"style":
+  "verb_coin"` and a `"hotspot"` renders the hotspot in small caps and
+  its options as short verbs in caps (LOOK AT · ASK PER · LEAVE IT);
+  options carry `hide_if_flag` so a spent verb disappears; each verb's
+  branch ends in `{"t":"jump","goto":<coin>}` and the coin re-presents
+  itself with what is left. First coin: Per's wooden box on the cabin
+  table, vol7 ch10 — look (Olaf's joinery, the carried stripe), ask
+  ("At noon, Kai."), leave it. Next: a coin per model chapter (the
+  diner's jukebox, the kwik stop's back cooler), an inventory that
+  the coins feed (`only_if_flag` already gates on it), wrong answers
+  that are funny not fatal.
+- **slowstick · MINTER INSIDE THE STICK (draft 1, 2026-09-07).**
+  Spiderdrops — the high-score toy — draws its own additive light:
+  a child Node2D (SpiderdropsMinterFX.gd, CanvasItemMaterial ADD) fed
+  by the game's events. A drop lands: nine drop-blue sparks. A thread
+  snaps: twenty-six sparks with white cores at the break. Every ten
+  points: a mote of gold rises from the hub to the HUD bar — every
+  point is a particle. Sparks brighten with TripSync's beat pulse;
+  nothing flashes, nothing moves the frame; 420 live sparks cap.
+  **Draft 2 (2026-09-10):** the FINALE — when the run resolves the
+  web's light plays out for ~2 s before the host reads the register:
+  WHOLE / HELD / STAR send light travelling the web from the hub
+  outward, ring by ring, sweeping round the spokes, anchors flaring
+  white, ten motes of gold climbing to the score bar; THE STORM
+  flickers gray-blue sparks off every anchor, quickening, until the
+  frame is all the web there is. Density drives the light: a snap in
+  gust six throws 56 sparks where gust one threw 26. Nothing moves
+  the frame; the web itself is frozen for the finale (a held panel).
+  Each register fires one house sting as its light begins (lift for
+  the whole web, the uncanny close for held / the star, the thud for
+  the storm — haptics ride along).
+  **Draft 3 (2026-09-11): the same class under SPIDERDROPS 2.** THE
+  LONG WIND's events are the glide's own — the silk cast throws
+  eighteen white sparks with cores off the spinnerets; a drop caught
+  out of the air pops drop-blue where it was; a THERMAL sends six pale
+  motes climbing the column the moment you enter it (light going up is
+  the lift, stated); a leg crossed throws thirty gold with five motes
+  to the score. Every ten points, one mote — the first stick's rule
+  holds. Nothing strobes, nothing moves the frame. And a FINALE like
+  the storm's: ARRIVED plays the crossing back as light — sixteen
+  bursts travelling left to right along the wind band, silk and drop
+  alternating, then eight gold motes up from where you landed; STILL
+  FLYING is the wind's own light leaving to the right and not coming
+  back. One house sting each. Next: the Deck read of both sticks' light
+  at 75 % trip, and whether the finale's 0.9 s hold is the right beat.
+- **VN · SKILLS EARN (draft 1, 2026-09-17).** The consequence map
+  (`tools/audit/consequence_map.py` → `lore/_VN_CONSEQUENCE_MAP.md`)
+  found that nothing in the game had ever raised a skill: the five
+  start at zero, show on the HUD, and every "[LOGIC] …" option took
+  its fail branch since the first build. Now a choice option carries
+  `"skill": "<name>"` and trains it by one when taken, once per
+  playthrough per option (the diner hub loops); the plate shows the
+  skill the way a check shows its ask (`·  empathy  ·`), the HUD dots
+  fill, a toast names the count. Seventy options tagged across 28
+  choices — listening is empathy, looking is logic, restraint is
+  composure, the reply is rhetoric, the uncanny is signal — and the
+  five checks' difficulties set from what is earnable before them.
+  `vn_skill_audit.py` gates it: a check the reader cannot pass is a
+  lie. Next: the 43 loose flags (set, never read — a choice the game
+  never remembers) paid off one line at a time; the two decorative
+  checks written a pass branch; a check per volume that a whole
+  arc of listening unlocks.
+- **direction · [trip:] cues (draft 1).** 190 interlude beats across
+  vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
+  the way `[mood:]` cues were placed on interludes), plus three
+  authored beats: the river past the parking lot, Lena's charcoal
+  letters, the tower's substrate line.
+
+## What draft 1 does NOT do (honest)
+
+- No game-design change has shipped. The GAME GRAMMAR column is the
+  authored direction and the queue; every pillar's next design
+  pass should land one row of it (attract mode on the gauntlet
+  board · the BBS as letters column · a verb coin on the cabin
+  chapter · a Minter bonus round in one stick).
+- ~~No feedback-trail buffer yet~~ — SHIPPED 2026-09-11, draft 1, in
+  the VN. See THE FEEDBACK below.
+- Draft 1 was seen on the Deck ("mostly nausea inducing", then "I
+  like it, but it's rough"); draft 2 has not. The Minter thump and
+  the cabinet power dip died with the motion rule; the Minter
+  register keeps its neon, sparks and white cores.
+
+## THE FEEDBACK (draft 1 · 2026-09-11)
+
+User direction: *"the psychedelic visual layer to the visual novel
+should include a feedback element that deepens the visual experience
+ala Jeff Minter visualizers and games."*
+
+Feedback is the technique the Minter register was named for and the
+one thing it did not have. Two half-resolution SubViewports ping-pong
+(`TripSync._update_feedback`): each frame the write buffer re-projects
+the read buffer a hair larger — or smaller — with a slow spin and
+drift, decays it, and screens in new light. A show rect draws the
+result back over the surface with `blend_add`. Light leaves a wake.
+
+**What feeds the buffer is THE LAYER'S OWN LIGHT, not the picture.**
+This is the whole design, and it is what keeps the feedback inside
+rule 1. The buffer catches two things and nothing else: the bright
+part of the source (a lamp, a window, a sky) and the register's AURA,
+recomputed from the source's silhouettes in the register's hue. The
+photograph does not trail. A face does not smear. What trails is the
+light THE TRIP is already laying down — which is exactly what Minter's
+feedback does, because in his work everything on screen is emissive.
+
+**The motion rule holds, and this is the pass most likely to break
+it.** The re-projection moves the TRAIL, never the picture, and it is
+a constant rate: `fb_zoom` and `fb_spin` are screens- and radians-
+per-second multiplied by delta, identical whether the music is loud,
+quiet or absent. `fb_decay` is `exp(-dt · rate)` so the wake is the
+same length at 30 fps and at 90. **The beat's only job here is the one
+it has everywhere else — it makes light brighter (`pulse` lifts the
+gain), never bigger, never faster, never displaced.** A zoom that
+pumps with the bass is draft 1's nausea wearing a new hat.
+
+**The source is a TEXTURE, never the screen.** In the VN the buffer
+reads the background — the PNG for image scenes, the 3D locale's
+SubViewport for `3d:` ones (the 3D path nulls the TextureRect, so
+both are registered and the rig takes whichever is live). The dialogue
+box, the portraits and every glyph of type are outside the buffer by
+construction and *cannot* smear. The show rect sits at `z_index 10` —
+above every background layer, below the cast at UI_Z−40, far below
+the type at UI_Z. A screen-sourced feedback layer for the locale walk
+and the gauntlet is draft 2 and needs a UI-free source first.
+
+Per register (the same reading as the pulse decay — this is the second
+number that most changes how a pillar FEELS):
+
+| Register | amount | decay | zoom | the read |
+|---|---|---|---|---|
+| `arcana` | 0.55 | 6.0 | **−0.09** | light SINKS into the screen, a slow clockwise crawl, a short wake — an arcade monitor, not a lava lamp |
+| `community` | 0.45 | **2.6** | 0.02 | the wake HANGS and barely travels: a smear in place, the photocopier's ghost |
+| `milk_honey` | **0.90** | 3.8 | **+0.17** | the oil projector — light blooms outward and turns; the densest of the five |
+| `slowstick` | 0.22 | 5.5 | 0.11 | the register feedback belongs to and shows least in: the overlay stays faint because Minter lives inside each stick |
+| `base` | 0.50 | 6.5 | 0.10 | moderate |
+
+Player dial: **TRAILS**, a fifth mix slider beside FLOW · LINES ·
+COLOUR · BEAT (`Settings.trip_trails`). 0 is no wake. Where the
+picture under the trail is already bright the show pass steps back
+(`dark_bias`), because light on light is invisible — the same verdict
+that gave bright scenes ink instead of glow.
+
+**Draft 2 (2026-09-12) — everywhere, still without the UI.** Two more
+sources, no screen reads anywhere:
+- **The gauntlet board** mounts the rig on its own `fp_3d_container`
+  (the board's 3D already renders into a SubViewport — the VN's
+  pattern), show rect one z above the container and under the board
+  header, so the wake lands on the room and never on a card.
+- **THE MIRROR** for anything whose 3D renders straight to the root
+  viewport — the locale walk, the cathedral, a menu visualizer. A
+  quarter-resolution SubViewport that shares the root's World3D, with
+  its own Camera3D copying the live camera (transform, fov, near/far,
+  projection, environment, attributes, cull mask) every frame, no
+  shadows, no AA. The buffer catches light from THAT render, so the
+  HUD, the debug labels and the music strip are never in it by
+  construction. Costs one extra low-res draw of the world. It stands
+  down whenever a mounted surface is live or the VN holds the global
+  layer aside, and a 2D screen (every slowstick) has no camera to
+  mirror — so the sticks stay untouched, as the register rule wants.
+
+Still Deck-gated: the wake's length and the zoom sign per register
+are guesses made in a container; whether `milk_honey` at 0.90 is a
+light show or a fog; and whether the mirror's quarter-res draw is
+free enough on the Deck in the biggest locale walks (graustark).
+
+## Recent lessons
+
+### 2026-09-12 · the dials multiply — a push on a cool mood is a fight
+
+- **The three levels multiply, so they can disagree.** The 190-
+  interlude pass gave every structural turn `[trip:1.2]` without
+  reading the mood under it; 85 of those sat on moods that had
+  deliberately dialled themselves under 0.85 (day_bright 39,
+  morning_bright 23, lunch 8, fluorescent_corridor 6,
+  kitchen_practical 6, studio 3). Each is a scene saying "daylight,
+  keep it low" and "push it" in one breath, against the standing Deck
+  verdict that light on a bright picture adds nothing. The Lovers'
+  opening was one; the Deck caught it as "garish." All 85 pushes
+  removed — the mood governs — and `trip_fight_audit.py` gates it.
+- **A mechanical pass over cues must read the cue it is stacking
+  on.** The rule for any future sweep that places `[trip:]`,
+  `[mood:]` or `[register:]`: compute the effective product per line,
+  not the cue in isolation.
+
+
+### 2026-09-11 · first Deck sighting of the feedback — and the Lovers
+
+- **"I like the look of the psychedelic warehouse, it fits."** The
+  Magician's cathedral interior under `arcana` + the new feedback is
+  a KEEP. That is the first verdict THE TRIP has had that isn't a
+  complaint, and it is the reference frame now: swamp phosphor over a
+  dark, lamp-lit, machine-filled interior, with the wake sinking into
+  the screen. When a register is questioned, compare against this
+  frame before changing a number.
+- **"Other chapters aren't as successful — the lovers should be warm
+  and cozy and domestic, not garish and weird."** The cause was not
+  the amount, it was the REGISTER: vol 5 pushes `arcana` for the whole
+  volume, and phosphor-green lines with sodium amber on the kick are
+  exactly wrong over a kitchen in the morning. A pillar-wide register
+  is right for a pillar and wrong for a room. Hence `domestic` and
+  `[register:]` (above) — and hence the rule: **a register is a kind
+  of ROOM as much as a kind of pillar.**
+- **The chapter was also fighting itself.** The Lovers opened
+  `[trip:1.2][mood:morning_bright]` — the mechanical structural-turn
+  push from the 190-interlude pass, multiplying a mood that had
+  deliberately dialled itself down to 0.70. Where a register change is
+  the fix, take the dial cue OUT rather than adding a second one.
+- **Locale is not register — read the prose.** Ten more vol 5 chapters
+  play in domestic interiors and most of them must NOT be warm: THE
+  STAR is in a cottage and reads "the moon a shard of broken mirror
+  stuck in the bruised velvet throat of the Graustark sky ... like
+  having your skin peeled back layer by sensitive layer." A locale
+  name would have marked it cozy. Only TEMPERANCE joined the Lovers
+  (dust motes in a shaft of light, a coffee maker gurgling, middle
+  age, "a cluttered archive of selves"). The other eight are an
+  authorial call, not a lookup.
+
+
+### 2026-09-07 · draft 2 · "mostly nausea inducing" → "I like it, but it's rough"
+
+- **Music-synced displacement is motion sickness, full stop.** A
+  few pixels of warp in the flats felt subtle in the maths and was
+  the first thing the eye rejected: continuous, involuntary, audio-
+  driven movement of the whole picture. The fix was not a smaller
+  amplitude — it was zero. Colour and light carry the trip now
+  (rule 0 above). The beat "ripple" became a ring of LIGHT that
+  lights the lines as it passes.
+- **"Rough" was the edge finder reading the dither.** The global
+  layer sits above demoscene_post, so a single-scale Sobel saw the
+  Bayer dither as a thousand tiny edges — speckled rainbow noise
+  on every surface. Three Sobel scales (1.5 / 2.5 / 4 px) averaged,
+  with a higher floor, leave only real silhouettes with an anti-
+  aliased falloff.
+- **Add clips; screen rolls off.** Adding the aura on top of a lit
+  scene blew highlights to white with a hard clamp edge. Screen
+  blend (`1 − (1−a)(1−b)`) for the aura, the wash and the sparks
+  keeps highlights soft.
+- **A beat needs an attack.** `pulse` snapping to 1.0 on the hit
+  read as a strobe even at low amounts. It now follows the
+  envelope through a 45 ms attack; band smoothing rises slower too.
+- **The dial is not the fix (draft 3: "find a balance").** 2B cut
+  the coefficients so far that the PSYCHEDELIA slider at full was
+  "still too muted." Subtlety lives in WHAT moves and how it is
+  synced, not in scaling everything down: draft 3 restores draft 1's
+  colour and line weight and a slow, unsynced liquid, defaults the
+  dial to 0.6, and hands the player four mix sliders (FLOW · LINES
+  · COLOUR · BEAT) so the balance is found on the Deck, not guessed
+  in a container.
+- **Screen overlays do not belong on 2D game screens.** The Deck
+  verdict on the slowstick register: "ugly and strobey." A 2D game
+  has UI edges everywhere and no lit flats, so an edge aura smears
+  the type and a beat-lit anything reads as strobe. The slowstick
+  overlay is now the faintest register; the Minter direction is a
+  per-game RENDER task inside the stick (its own particles and
+  glow, its own beat-lit geometry), scheduled under game grammar.
+
+### 2026-09-07 · draft 1 · registers + the three pillars
+
+- **Name the pillar's SOUND first, derive the look from it.** The
+  brief gave a sound per pillar (arcade / sludge / wall of sound /
+  Minter). Every visual dial fell out of the sound: sludge = long
+  pulse decay + heavy slow flow; arcade = fast decay + a cabinet
+  power dip; wall of sound = dense flow + dense hue drift; Minter =
+  additive, thumping, still flats. Start there next time too.
+- **The register is owned, not set.** A stack of (name, owner)
+  where a freed or exited owner pops itself means no host ever has
+  to remember to restore the previous look — the VN under a
+  slowstick under the shelf under the menu unwinds by itself.
+- **Static builders push before add_child.** SlowstickLook pushes
+  from a static function before the layer is in the tree; the
+  stack therefore only prunes an owner once it has been SEEN
+  inside the tree and then left. Without that flag the register
+  was popped on the very next frame.
+
+### TEMPLATE for next session
+
+```markdown
+### YYYY-MM-DD · <session focus>
+
+- **<headline lesson>.** <what went wrong / what we learned, plus
+  the rule that came out of it>.
+```

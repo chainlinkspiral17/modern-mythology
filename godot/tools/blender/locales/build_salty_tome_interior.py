@@ -1,1033 +1,749 @@
-"""THE SALTY TOME — Petra's used bookshop — vol7 hero locale (Smolvud, OR).
+"""salty_tome_interior — vol5-7 locale. THE SALTY TOME, a cramped
+second-hand bookshop: floor-to-ceiling shelves packed spine-out, a
+double-sided center gondola, a sales counter with an antique register
+and stacked books, a reading nook (wing armchair + floor lamp + side
+table on a rug), a rolling library ladder, a globe on a stand, a card
+catalog, a hanging shop sign, and a front window. Warm tungsten light.
 
-Ground floor of Petra's building on Hemlock (Lena's apartment is
-directly upstairs — build_lena_apartment.py models this same facade
-from above, brick + cornice + the hanging spruce-blue sign; keep
-those treatments in sync). Petra bought the building in '11 and has
-lived above the bookstore since '15 (vol7_ch14_petra). PNW 2025
-register — tall fir stacks, sea-junk ephemera, rain outside, warm
-inside. NOT a corporate bookstore: Petra buys the slow electronics
-on purpose. Canon sources baked in:
-
-  · vol7_ch8_monday: the front door on Hemlock + THE BELL over it;
-    the CLOSED/OPEN flip sign; the till with the cash float; "the
-    small terminal Petra kept on the counter" that hums slowly
-    (Petra "did not like fast electronics and bought the slow ones
-    on purpose"); the hold ledger; the NEW-ARRIVALS shelf Edgar
-    buys from without asking; the children's section with the
-    clean carpet + the picture book the girl had to leave behind;
-    the small kitchenette in the back (Petra's kettle, the
-    pour-over cone, the dark French Soren roasts, the small clay
-    mug from Margit's 2009, the sandwich fridge); the desk outside
-    the office door; the coat hook by the office door; Petra came
-    out at seven-twenty (the wall clock); the back door off the
-    alley; tokens for payment.
-  · vol7_ch8_aria: the small brass bell ON the counter (Lena turns
-    it over in her hand); the small stool Lena uses when she is
-    alone in the shop; Tem's cup of cold coffee on the counter;
-    the small table by the window display (Roy's coat, Petra's
-    tote); THE CAT on the small wool pillow in the front-window
-    display "where she always was".
-  · vol7_ch14_petra: the kitchenette table the four of them sit
-    at (Petra set out four mugs); the chair beside the radiator
-    with the cat's wool pillow; the couch in the back office
-    (behind the closed office door — not modeled, door is shut);
-    "the bookstore opens onto the front and the alley both"; rain
-    on the back window; the dumpster in the alley; the mural on
-    the wall outside the back door (the Starfish Nebula Lena
-    painted in '50 — the ARIA FACE from ch14 is deliberately NOT
-    baked: this bg also serves ch8, pre-face).
-  · lore/_VOL7_WIKI.md + milk_and_honey/static_truths.md: sells
-    everything from tide charts to local zines; STATIC TRUTHS is
-    photocopied on Petra's back-room copier ($2 the first run,
-    free after) — the copier stands in the back-west corner with
-    a fresh half-letter run in its output tray.
-  · milk_and_honey/_ART_MANIFEST.md: "front counter, the wall
-    where her paintings hang, the front door on Hemlock" — two
-    framed sea paintings on the east wall; the kitchenette at the
-    back with the cat's pillow + the alley back door.
-
-FACADE CONSISTENCY (with build_lena_apartment.py): brick street
-face (0.44,0.28,0.22), gray-green cornice (0.30,0.34,0.32), the
-hanging sign = spruce-blue board (0.16,0.24,0.30) with brass rules
-on a black iron arm, warm shop-window glow at grade. Lena's dark
-front window sits above the shopfront here, sign hung beneath it.
-
-No transparency: windows are REAL OPENINGS with fir frames +
-mullions; the exterior (Hemlock sidewalk, streetlamp, dollar cart)
-and the alley (mural wall, dumpster) live outside the openings.
-Text is scene-side Label3D per the playbook; this script bakes
-named vertex-colored panels:
-  SaltyTome_SignBoard, FlipSign_Board, HoursPlaque, NewArrivals_Card,
-  StackSign_0/1, EndcapCard_0/1, WestShelf_Card_0/1, Kids_Card,
-  Zine_StaticTruths, TideChart_Sheet, OfficeDoor_Sign, HoldLedger_*,
-  Copier_Output_StaticTruths, Cart_Card.
+Rebuilt 2026-07-13 from the bare auto-generated template (which
+shipped only two floor bins + a register counter + filing cabinets —
+a stockroom mislabelled as a bookshop).
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import (make_floor, make_wall, make_ceiling,
-                              make_crown_molding, make_door_hinges)
-from _props.store_fixtures import make_register
-from _props.decor import make_wall_clock, make_floor_plant, make_fire_extinguisher
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, make_lathe, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.store_fixtures import make_counter, make_register
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent
+from _props.signage import make_hanging_banner
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
+                           make_wall_tint_band, make_threshold, make_wall_outlet,
+                           make_light_switch, make_cord_run)
 
-# ── Shell (footprint kept from the scaffold — the .tscn camera at
-#    Godot (0, 2.30, +0.5) looks north from the front door across
-#    this 8 × 6 room; door gap x −1..+1) ──────────────────────────
 ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 2.8
-PAL_WALL = {"wall": (0.79, 0.74, 0.64, 1.0),     # aged warm plaster
-            "baseboard": (0.30, 0.24, 0.18, 1.0)}
-COL_FLOOR = (0.55, 0.42, 0.30, 1.0)              # fir floorboards
-COL_SEAM  = (0.33, 0.25, 0.18, 1.0)
+PAL_WALL = {"wall": (0.80, 0.72, 0.58, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
+COL_FLOOR = (0.52, 0.40, 0.28, 1.0); COL_SEAM = (0.32, 0.22, 0.14, 1.0)
+COL_WOOD = (0.42, 0.30, 0.20, 1.0); COL_WOOD_DK = (0.30, 0.20, 0.12, 1.0)
+COL_LEATHER = (0.46, 0.28, 0.20, 1.0); COL_BRASS = (0.78, 0.62, 0.30, 1.0)
+COL_GLASS = (0.78, 0.84, 0.86, 0.45); COL_LAMP = (0.98, 0.82, 0.52, 1.0)
+COL_TEAL = (0.16, 0.34, 0.34, 1.0); COL_RUG = (0.52, 0.24, 0.20, 1.0)
+COL_RUG_BORDER = (0.34, 0.16, 0.14, 1.0); COL_BLACK = (0.14, 0.12, 0.12, 1.0)
 
-# ── Bookshop palette (2025 PNW coastal, warm + salt-weathered) ───
-COL_WOOD      = (0.48, 0.35, 0.22, 1.0)   # old oak shelving
-COL_WOOD_DARK = (0.28, 0.21, 0.15, 1.0)
-COL_WOOD_LT   = (0.66, 0.52, 0.34, 1.0)
-COL_BUTCHER   = (0.72, 0.58, 0.38, 1.0)   # counter top ("hands flat
-                                          #  on the wood", ch8_aria)
-COL_BRASS     = (0.70, 0.57, 0.30, 1.0)
-COL_CREAM     = (0.90, 0.87, 0.80, 1.0)
-COL_SPRUCE    = (0.16, 0.24, 0.30, 1.0)   # hanging-sign board — SAME
-                                          # tint as build_lena_apartment
-COL_CLAY      = (0.62, 0.40, 0.28, 1.0)   # Margit's mug (2009)
-COL_BEIGE_TECH= (0.82, 0.78, 0.68, 1.0)   # slow terminal housing
-COL_UPHOLSTER = (0.55, 0.32, 0.22, 1.0)   # rust wool reading chair
-COL_WOOL      = (0.78, 0.72, 0.62, 1.0)   # the cat's pillow
-COL_CAT       = (0.42, 0.40, 0.38, 1.0)   # Petra's old gray cat
-COL_CAT_DK    = (0.30, 0.28, 0.27, 1.0)
-COL_RUG_A     = (0.34, 0.44, 0.44, 1.0)   # children's carpet ground
-COL_RUG_B     = (0.62, 0.34, 0.24, 1.0)   # carpet border band
-COL_RAINCOAT  = (0.38, 0.36, 0.26, 1.0)   # wax canvas (town uniform)
-COL_RADIATOR  = (0.68, 0.66, 0.60, 1.0)   # many-coats-of-paint iron
-COL_CAST_IRON = (0.13, 0.13, 0.14, 1.0)
-COL_PLANT     = (0.36, 0.47, 0.32, 1.0)
-COL_POT       = (0.58, 0.38, 0.26, 1.0)
-COL_FLOAT     = (0.32, 0.52, 0.50, 1.0)   # glass fishing float (opaque)
-COL_BRICK     = (0.44, 0.28, 0.22, 1.0)   # facade — matches lena bld
-COL_BRICK_DK  = (0.32, 0.20, 0.16, 1.0)
-COL_CORNICE   = (0.30, 0.34, 0.32, 1.0)
-COL_CONCRETE  = (0.55, 0.54, 0.51, 1.0)
-COL_ASPHALT   = (0.15, 0.15, 0.16, 1.0)
-COL_PUDDLE    = (0.30, 0.33, 0.36, 1.0)
-COL_XEROX     = (0.86, 0.86, 0.88, 1.0)   # copier beige (matches the
-COL_XEROX_TOP = (0.32, 0.32, 0.32, 1.0)   #  harmony copy-shop machine)
-COL_XEROX_PNL = (0.18, 0.18, 0.22, 1.0)
-COL_STEEL     = P.METAL_STEEL
-# Starfish Nebula mural fragment (alley) — SAME tints as
-# build_lena_apartment.py's full mural (Lena painted it in '50)
-COL_MURAL_GROUND = (0.14, 0.12, 0.26, 1.0)
-COL_MURAL_OCTO   = (0.82, 0.52, 0.30, 1.0)
-COL_MURAL_STAR   = (0.90, 0.82, 0.52, 1.0)
-COL_MURAL_POOL   = (0.24, 0.48, 0.48, 1.0)
-
-# Used-book spines — lena-apartment BOOK_TINTS + two coastal tones
-BOOK_TINTS = [(0.48, 0.30, 0.24, 1.0), (0.28, 0.36, 0.42, 1.0),
-              (0.62, 0.54, 0.34, 1.0), (0.36, 0.30, 0.38, 1.0),
-              (0.70, 0.64, 0.52, 1.0), (0.30, 0.44, 0.42, 1.0),
-              (0.55, 0.42, 0.28, 1.0)]
-CHAIR_TINTS = [COL_WOOD, (0.34, 0.48, 0.46, 1.0), COL_WOOD_DARK,
-               (0.62, 0.34, 0.22, 1.0)]
-
-COUNTER_TOP = 0.99          # shop counter top surface z
+BOOK_SPINES = [(0.42, 0.16, 0.14, 1.0), (0.20, 0.30, 0.22, 1.0), (0.16, 0.22, 0.38, 1.0),
+               (0.62, 0.50, 0.28, 1.0), (0.58, 0.44, 0.16, 1.0), (0.36, 0.20, 0.28, 1.0),
+               (0.28, 0.34, 0.36, 1.0), (0.48, 0.34, 0.18, 1.0)]
+BOOK_W = [0.05, 0.07, 0.045, 0.06, 0.055, 0.08, 0.05, 0.065]
+BOOK_HF = [0.86, 0.78, 0.92, 0.72, 0.88, 0.80, 0.90, 0.76]
 
 
-# ═════════════════════════════════════════════════════════════════
-# Local helpers (deterministic — index-cycled variation, no random)
-# ═════════════════════════════════════════════════════════════════
-_SPINE_W = (0.055, 0.040, 0.070, 0.045, 0.060, 0.035, 0.050, 0.065)
-_SPINE_H = (0.215, 0.185, 0.240, 0.200, 0.225, 0.175, 0.230, 0.195)
-
-def _spine_row(prefix, x0, x1, y_face, shelf_z, seed=0):
-    """A run of used-book spines along X, backs at y_face, standing
-    on shelf_z. Deterministic gaps + flat piles break the rhythm."""
-    cursor = x0 + 0.03
-    i = 0
-    while cursor < x1 - 0.06:
-        k = seed + i
-        if k % 11 == 9:                      # pulled-book gap
-            cursor += 0.055
-            i += 1
-            continue
-        if k % 13 == 11:                     # short flat pile
-            for pi in range(2):
-                make_box(f"{prefix}_Flat_{i}_{pi}",
-                         (cursor + 0.075, y_face, shelf_z + 0.023 + pi * 0.042),
-                         (0.145, 0.20, 0.040 - pi * 0.004),
-                         BOOK_TINTS[(k + pi * 3) % len(BOOK_TINTS)])
-            cursor += 0.165
-            i += 1
-            continue
-        w = _SPINE_W[k % len(_SPINE_W)]
-        h = _SPINE_H[(k * 5 + 2) % len(_SPINE_H)]
-        make_box(f"{prefix}_{i}", (cursor + w / 2.0, y_face, shelf_z + h / 2.0),
-                 (w, 0.165, h), BOOK_TINTS[(k * 3 + 1) % len(BOOK_TINTS)])
-        cursor += w + (0.004 if k % 5 else 0.014)
-        i += 1
-
-def _book_pile(prefix, cx, cy, bz, count, seed=0):
-    for bi in range(count):
-        k = seed + bi
-        make_box(f"{prefix}_{bi}",
-                 (cx + (k % 3 - 1) * 0.012, cy + (k % 2) * 0.010,
-                  bz + 0.021 + bi * 0.042),
-                 (0.155 - (k % 2) * 0.012, 0.215 - (k % 3) * 0.014, 0.040),
-                 BOOK_TINTS[(k * 2 + 3) % len(BOOK_TINTS)])
-
-def _chair(prefix, cx, cy, facing, tint):
-    """Mismatched wood chair; `facing` = direction the sitter faces."""
-    dx, dy = {'N': (0, 1), 'S': (0, -1), 'E': (1, 0), 'W': (-1, 0)}[facing]
-    make_box(f"{prefix}_Seat", (cx, cy, 0.45), (0.40, 0.40, 0.04), tint)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"{prefix}_Leg_{li}", (cx + sx * 0.16, cy + sy * 0.16, 0.225),
-                 0.018, 0.45, COL_WOOD_DARK)
-    bx, by = cx - dx * 0.19, cy - dy * 0.19
-    for pi, sgn in enumerate((-1, +1)):
-        px = bx + (sgn * 0.16 if dx == 0 else 0.0)
-        py = by + (sgn * 0.16 if dy == 0 else 0.0)
-        make_cyl(f"{prefix}_BackPost_{pi}", (px, py, 0.675), 0.016, 0.45, tint)
-    slat_sz = (0.36, 0.03, 0.09) if dx == 0 else (0.03, 0.36, 0.09)
-    for si, sz_z in enumerate((0.72, 0.86)):
-        make_box(f"{prefix}_Slat_{si}", (bx, by, sz_z), slat_sz, tint)
-
-def _pendant(prefix, cx, cy, drop=0.62, shade=COL_CREAM):
-    """Cylinder-shade pendant — round geometry at eye level."""
-    make_cyl(f"{prefix}_Canopy", (cx, cy, CEIL - 0.02), 0.05, 0.04, P.METAL_BLACK)
-    make_cyl(f"{prefix}_Cord", (cx, cy, CEIL - drop / 2.0), 0.008, drop, P.METAL_BLACK)
-    make_cyl(f"{prefix}_Shade", (cx, cy, CEIL - drop - 0.065), 0.15, 0.13, shade,
-             segments=12)
-    make_cyl(f"{prefix}_Bulb", (cx, cy, CEIL - drop - 0.135), 0.05, 0.04,
-             (0.98, 0.88, 0.62, 1.0))
-
-def _cup_saucer(prefix, cx, cy, bz, tint):
-    make_cyl(f"{prefix}_Saucer", (cx, cy, bz + 0.006), 0.062, 0.012, COL_CREAM,
-             segments=12)
-    make_cyl(f"{prefix}_Cup", (cx, cy, bz + 0.045), 0.036, 0.065, tint)
-    make_box(f"{prefix}_Handle", (cx + 0.045, cy, bz + 0.045), (0.014, 0.012, 0.04), tint)
-
-def _mug(prefix, cx, cy, bz, tint):
-    make_cyl(f"{prefix}_Body", (cx, cy, bz + 0.048), 0.038, 0.095, tint)
-    make_box(f"{prefix}_Handle", (cx + 0.048, cy, bz + 0.050), (0.016, 0.014, 0.05), tint)
-
-
-# ═════════════════════════════════════════════════════════════════
-# SHELL — same 8 × 6 footprint as the scaffold, but the south wall
-# gets REAL window openings (frames later, no glass) and the north
-# wall gets the office door, the alley back door ("the bookstore
-# opens onto the front and the alley both", ch14_petra) and the
-# kitchenette window. Fir floor, plank ceiling, crown molding.
-# ═════════════════════════════════════════════════════════════════
-def build_shell():
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    # Side walls — solid
-    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    # North wall — office door gap x −3.0..−2.1, back door gap
-    # x −0.3..+0.6, kitchenette window x 2.0..3.4 (sill 1.05 head 2.25)
-    make_wall("Wall_N_W", (-3.6, ROOM_D, 0), length=1.20, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_C", (-1.2, ROOM_D, 0), length=1.80, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_E1", (1.3, ROOM_D, 0), length=1.40, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_E2", (3.8, ROOM_D, 0), length=0.80, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_box("Wall_N_AboveOffice", (-2.55, ROOM_D, 2.50), (0.90, 0.20, 0.60), PAL_WALL["wall"])
-    make_box("Wall_N_AboveBack", (0.15, ROOM_D, 2.50), (0.90, 0.20, 0.60), PAL_WALL["wall"])
-    make_box("Wall_N_KitchSill", (2.7, ROOM_D, 0.525), (1.40, 0.20, 1.05), PAL_WALL["wall"])
-    make_box("Wall_N_KitchHeader", (2.7, ROOM_D, 2.525), (1.40, 0.20, 0.55), PAL_WALL["wall"])
-    # South (Hemlock storefront) wall — door gap x −1..+1, window
-    # openings x −3.1..−1.3 and +1.3..+3.1 (sill 0.75, head 2.30)
-    for nm, px, pw in [("Wall_S_PierSW", -3.65, 1.10), ("Wall_S_PierWD", -1.15, 0.30),
-                       ("Wall_S_PierED", +1.15, 0.30), ("Wall_S_PierSE", +3.65, 1.10)]:
-        make_box(nm, (px, 0.0, CEIL / 2.0), (pw, 0.20, CEIL), PAL_WALL["wall"])
-    for tag, wx in [("W", -2.2), ("E", +2.2)]:
-        make_box(f"Wall_S_{tag}_Sill", (wx, 0.0, 0.375), (1.80, 0.20, 0.75), PAL_WALL["wall"])
-        make_box(f"Wall_S_{tag}_SillBase", (wx, 0.06, 0.08), (1.80, 0.06, 0.16),
-                 PAL_WALL["baseboard"])
-        make_box(f"Wall_S_{tag}_Header", (wx, 0.0, 2.55), (1.80, 0.20, 0.50), PAL_WALL["wall"])
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.28), (2.0, 0.20, 0.56), PAL_WALL["wall"])
-    # Ceiling — painted planks with battens (pre-war building)
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-                 palette={"tile": (0.80, 0.75, 0.66, 1.0), "grid": (0.46, 0.35, 0.24, 1.0)},
-                 with_stains=False)
-    for nm, ax, length, wx, wy in [
-            ("Crown_W", 'Y', ROOM_D, -ROOM_W / 2.0 + 0.10, ROOM_D / 2.0),
-            ("Crown_E", 'Y', ROOM_D, +ROOM_W / 2.0 - 0.10, ROOM_D / 2.0),
-            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D - 0.10),
-            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
-        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
-                           ceil_z=CEIL, palette={"wood": COL_WOOD})
-
-
-# ═════════════════════════════════════════════════════════════════
-# STOREFRONT — fir frames + mullions in the openings (no glass),
-# the front door on Hemlock, THE BELL over it (ch8_monday: it rings
-# at eleven fifty-eight when Roy comes in; ch8_aria: "She looked at
-# the bell over the door for a long count"), the CLOSED/OPEN flip
-# sign ("She turned the CLOSED sign"), the window displays — cat on
-# her wool pillow east, sea-junk + tide charts west — and the small
-# table by the window display (Roy's coat / Petra's tote land here).
-# ═════════════════════════════════════════════════════════════════
-def _window_frame_south(tag, wx):
-    """Frame + mullions for a south opening centered at wx.
-    Opening 1.8 wide, z 0.75..2.30, transom bar at 1.95."""
-    make_box(f"WinS_{tag}_Sill", (wx, 0.0, 0.735), (1.92, 0.22, 0.07), COL_WOOD)
-    make_box(f"WinS_{tag}_Ledge", (wx, 0.14, 0.775), (1.80, 0.14, 0.03), COL_WOOD_LT)
-    make_box(f"WinS_{tag}_Head", (wx, 0.0, 2.315), (1.92, 0.22, 0.07), COL_WOOD)
-    for sgn in (-1, +1):
-        make_box(f"WinS_{tag}_Jamb_{sgn:+d}", (wx + sgn * 0.93, 0.0, 1.525),
-                 (0.06, 0.22, 1.65), COL_WOOD)
-    for mi, mx in enumerate((-0.6, +0.6)):
-        make_box(f"WinS_{tag}_MullV_{mi}", (wx + mx, 0.0, 1.525), (0.05, 0.14, 1.55), COL_WOOD)
-    make_box(f"WinS_{tag}_Transom", (wx, 0.0, 1.95), (1.80, 0.14, 0.05), COL_WOOD)
-
-def build_storefront():
-    _window_frame_south("W", -2.2)
-    _window_frame_south("E", +2.2)
-    # Front door — solid fir leaf, west-hinged, brass knob (a shop
-    # you can lock from the inside, ch8_aria: Tem's instruction)
-    for sgn in (-1, +1):
-        make_box(f"Door_Post_{sgn:+d}", (sgn * 0.96, 0.0, 1.10), (0.08, 0.16, 2.20), COL_WOOD)
-    make_box("Door_Transom", (0.0, 0.0, 2.24), (2.00, 0.16, 0.08), COL_WOOD)
-    make_box("Door_Leaf", (-0.50, 0.02, 1.08), (0.90, 0.05, 2.10), COL_WOOD_DARK)
-    for pi in range(2):
-        make_box(f"Door_Panel_{pi}", (-0.50, -0.012, 0.62 + pi * 0.95),
-                 (0.62, 0.008, 0.72), COL_WOOD)
-    make_cyl("Door_Knob", (-0.14, -0.06, 1.02), 0.028, 0.05, COL_BRASS, axis='Y')
-    make_box("Door_Deadbolt", (-0.14, -0.045, 1.18), (0.05, 0.02, 0.08), COL_BRASS)
-    make_box("Door_KickPlate", (-0.50, -0.015, 0.15), (0.80, 0.02, 0.26), COL_BRASS)
-    make_door_hinges("Door_Hinge", edge_x=-0.92, edge_y=0.0,
-                     edge_z_centers=[0.35, 1.05, 1.80], axis='X')
-    # THE BELL over the door (brass, bracket-mounted)
-    make_box("DoorBell_Mount", (0.55, 0.13, 2.32), (0.06, 0.10, 0.06), P.METAL_BLACK)
-    make_cyl("DoorBell_Arm", (0.55, 0.24, 2.32), 0.012, 0.16, COL_BRASS, axis='Y')
-    make_cyl("DoorBell_Body", (0.55, 0.32, 2.27), 0.050, 0.07, COL_BRASS)
-    make_cyl("DoorBell_Flare", (0.55, 0.32, 2.22), 0.068, 0.025, COL_BRASS)
-    make_cyl("DoorBell_Clapper", (0.55, 0.32, 2.18), 0.012, 0.05, P.METAL_BLACK)
-    # CLOSED/OPEN flip sign on a cord in the east sidelite position
-    make_cyl("FlipSign_Cord", (0.45, 0.05, 1.98), 0.004, 0.28, P.TWINE, axis='Z')
-    make_box("FlipSign_Board", (0.45, 0.05, 1.74), (0.36, 0.02, 0.20), COL_CREAM)
-    make_box("FlipSign_Text_In", (0.45, 0.063, 1.74), (0.28, 0.006, 0.09), COL_SPRUCE)
-    make_box("FlipSign_Text_Out", (0.45, 0.037, 1.74), (0.28, 0.006, 0.09), COL_SPRUCE)
-    make_box("HoursPlaque", (1.15, 0.105, 1.50), (0.16, 0.010, 0.22), P.PAPER)
-    # Entry mat + umbrella stand (rain register)
-    make_box("EntryMat_Under", (0.0, 0.80, 0.004), (1.90, 1.00, 0.006), (0.14, 0.13, 0.13, 1.0))
-    make_box("EntryMat", (0.0, 0.80, 0.011), (1.76, 0.88, 0.008), P.RUBBER_MAT)
-    make_cyl("UmbrellaStand", (-1.35, 0.45, 0.28), 0.11, 0.56, P.METAL_BLACK, segments=12)
-    make_cyl("Umbrella_Shaft", (-1.31, 0.41, 0.62), 0.012, 0.75, P.METAL_BLACK)
-    make_cyl("Umbrella_Canopy", (-1.31, 0.41, 0.78), 0.045, 0.34, (0.24, 0.28, 0.38, 1.0))
-    make_cyl("Umbrella_Tip", (-1.31, 0.41, 1.02), 0.006, 0.10, COL_STEEL)
-    # ── EAST window display — THE CAT (ch8_monday: "on the small
-    # wool pillow in the front-window display where she always
-    # was"; asleep — she opens one eye scene-side, not here)
-    make_box("WinDispE_Platform", (2.2, 0.42, 0.12), (1.70, 0.55, 0.24), COL_WOOD)
-    make_cyl("Cat_Pillow", (2.62, 0.42, 0.265), 0.17, 0.055, COL_WOOL, segments=12)
-    make_cyl("Cat_Body", (2.62, 0.44, 0.375), 0.085, 0.26, COL_CAT, axis='Y', segments=12)
-    make_cyl("Cat_Head", (2.62, 0.28, 0.405), 0.055, 0.09, COL_CAT, axis='Y', segments=12)
-    for ei, ex in enumerate((2.585, 2.655)):
-        make_box(f"Cat_Ear_{ei}", (ex, 0.27, 0.465), (0.020, 0.020, 0.028), COL_CAT_DK)
-    make_box("Cat_Muzzle", (2.62, 0.235, 0.385), (0.035, 0.02, 0.025), COL_CREAM)
-    for si in range(3):
-        make_box(f"Cat_Stripe_{si}", (2.62, 0.36 + si * 0.07, 0.462),
-                 (0.10, 0.022, 0.012), COL_CAT_DK)
-    make_cyl("Cat_Tail", (2.54, 0.55, 0.30), 0.020, 0.18, COL_CAT_DK, axis='X')
-    # Display books west of the cat (spines to the street too)
-    _book_pile("WinDispE_Pile", 1.65, 0.42, 0.24, 4, seed=2)
-    for fi in range(2):
-        make_box(f"WinDispE_FaceOut_{fi}", (1.95 + fi * 0.24, 0.30, 0.395),
-                 (0.16, 0.035, 0.23), BOOK_TINTS[(fi * 4 + 1) % len(BOOK_TINTS)])
-        make_box(f"WinDispE_Stand_{fi}", (1.95 + fi * 0.24, 0.34, 0.30),
-                 (0.10, 0.06, 0.12), COL_WOOD_DARK)
-    make_box("WinDispE_PriceCard", (1.65, 0.24, 0.29), (0.09, 0.008, 0.06), P.PAPER)
-    # ── WEST window display — sea junk + tide charts (wiki: "sells
-    # everything from tide charts to local zines")
-    make_box("WinDispW_Platform", (-2.2, 0.42, 0.12), (1.70, 0.55, 0.24), COL_WOOD)
-    make_box("TideChart_Crate", (-2.75, 0.42, 0.35), (0.34, 0.34, 0.22), COL_WOOD_DARK,
-             open_faces={'+Z'})
-    for ri in range(4):
-        make_cyl(f"TideChart_Roll_{ri}", (-2.85 + (ri % 2) * 0.11, 0.36 + (ri // 2) * 0.13,
-                 0.42 + (ri % 3) * 0.012), 0.028, 0.30, P.PAPER_AGED)
-    for gi, (gx, gr) in enumerate([(-2.25, 0.075), (-2.05, 0.055)]):
-        make_cyl(f"GlassFloat_{gi}", (gx, 0.40, 0.24 + gr), gr, gr * 1.7, COL_FLOAT,
-                 segments=12)
-        make_box(f"GlassFloat_{gi}_NetA", (gx, 0.40, 0.24 + gr), (gr * 2.1, 0.012, 0.012),
-                 P.TWINE)
-        make_box(f"GlassFloat_{gi}_NetB", (gx, 0.40, 0.24 + gr), (0.012, gr * 2.1, 0.012),
-                 P.TWINE)
-    make_box("Driftwood", (-1.62, 0.44, 0.29), (0.42, 0.14, 0.10), (0.58, 0.52, 0.44, 1.0))
-    _book_pile("WinDispW_Pile", -1.60, 0.30, 0.24, 3, seed=9)
-    # The small table by the window display (ch8_monday: Roy sets
-    # the wax canvas coat on it; ch8_aria: Petra's tote bag)
-    make_cyl("WinTable_Top", (2.85, 1.10, 0.74), 0.30, 0.04, COL_WOOD_LT, segments=12)
-    make_cyl("WinTable_Column", (2.85, 1.10, 0.38), 0.045, 0.68, COL_WOOD_DARK)
-    make_cyl("WinTable_Base", (2.85, 1.10, 0.025), 0.17, 0.05, COL_WOOD_DARK, segments=12)
-    _book_pile("WinTable_Pile", 2.85, 1.10, 0.76, 3, seed=5)
-
-
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR · HEMLOCK (south) — sidewalk, curb, wet street, brick
-# facade + cornice + Lena's dark window above the shop (SAME brick
-# / cornice / sign treatment as build_lena_apartment.py, which
-# models this facade from her window), the hanging spruce-blue
-# SALTY TOME sign, a streetlamp, and the dollar cart.
-# ═════════════════════════════════════════════════════════════════
-def build_exterior_street():
-    make_box("Ext_Sidewalk", (0.0, -1.25, -0.03), (9.6, 2.50, 0.06), COL_CONCRETE)
-    for si in range(4):
-        make_box(f"Ext_SidewalkSeam_{si}", (-3.1 + si * 2.0, -1.25, 0.001),
-                 (0.02, 2.50, 0.002), (0.40, 0.39, 0.37, 1.0))
-    make_box("Ext_Curb", (0.0, -2.55, -0.02), (9.6, 0.16, 0.12), (0.46, 0.45, 0.43, 1.0))
-    make_box("Ext_Street", (0.0, -3.70, -0.05), (9.6, 2.20, 0.04), COL_ASPHALT)
-    make_box("Ext_Puddle_0", (1.6, -3.30, -0.028), (1.30, 0.60, 0.002), COL_PUDDLE)
-    make_box("Ext_Puddle_1", (-2.4, -1.05, 0.002), (0.80, 0.42, 0.002), COL_PUDDLE)
-    # Brick facade — pilasters, upper storey band, cornice (brick +
-    # cornice tints match build_lena_apartment's street face)
-    for pi, px in enumerate((-4.05, +4.05)):
-        make_box(f"Facade_Pilaster_{pi}", (px, -0.02, 2.15), (0.30, 0.24, 4.30), COL_BRICK)
-    make_box("Facade_UpperBand", (0.0, -0.02, 3.56), (8.40, 0.24, 1.52), COL_BRICK)
-    make_box("Facade_BrickCourse", (0.0, -0.10, 2.84), (8.40, 0.10, 0.08), COL_BRICK_DK)
-    make_box("Facade_Cornice", (0.0, -0.14, 4.40), (8.70, 0.50, 0.20), COL_CORNICE)
-    # Lena's front window over the shopfront (the window she looks
-    # down at Hemlock from) + the stairwell window — both dark
-    for wi, wx in enumerate((-1.5, +1.7)):
-        make_box(f"Upstairs_Win_{wi}_Recess", (wx, -0.10, 3.55), (0.86, 0.06, 1.10),
-                 (0.10, 0.10, 0.12, 1.0))
-        make_box(f"Upstairs_Win_{wi}_SillExt", (wx, -0.16, 2.96), (0.98, 0.14, 0.07), COL_WOOD)
-        make_box(f"Upstairs_Win_{wi}_Head", (wx, -0.16, 4.14), (0.98, 0.14, 0.07), COL_WOOD)
+def make_bookshelf(prefix, anchor, *, run_len=4.0, height=2.2, depth=0.32,
+                   shelves=5, axis='X', front_sign=-1, wood=COL_WOOD):
+    """Wall bookcase packed spine-out. axis='X' runs E-W (books face
+    ±Y per front_sign); axis='Y' runs N-S (books face ±X). anchor is
+    the unit center at floor level (cx, cy, 0.0)."""
+    cx, cy, bz = anchor
+    shelf_gap = (height - 0.18) / shelves
+    if axis == 'X':
         for sgn in (-1, +1):
-            make_box(f"Upstairs_Win_{wi}_Jamb_{sgn:+d}", (wx + sgn * 0.46, -0.16, 3.55),
-                     (0.06, 0.14, 1.25), COL_WOOD)
-        make_box(f"Upstairs_Win_{wi}_Mull", (wx, -0.16, 3.55), (0.86, 0.10, 0.05), COL_WOOD)
-    # THE HANGING SIGN under Lena's window — iron arm, chain links,
-    # spruce-blue board + brass rules; lettering scene-side Label3D
-    # (mirror of build_lena_apartment's SaltyTome_Sign* from street)
-    make_box("SaltyTome_SignMount", (-1.5, -0.14, 2.66), (0.10, 0.06, 0.16), P.METAL_BLACK)
-    make_box("SaltyTome_SignArm", (-1.5, -0.42, 2.70), (0.04, 0.52, 0.04), P.METAL_BLACK)
-    for hi, hy in enumerate((-0.28, -0.56)):
-        make_cyl(f"SaltyTome_SignLink_{hi}", (-1.5, hy, 2.62), 0.008, 0.14, P.METAL_BLACK)
-    make_box("SaltyTome_SignBoard", (-1.5, -0.42, 2.36), (0.05, 0.44, 0.40), COL_SPRUCE)
-    for ri, sgn in enumerate((-1, +1)):
-        make_box(f"SaltyTome_SignRule_{ri}", (-1.5 + sgn * 0.028, -0.42, 2.50),
-                 (0.006, 0.36, 0.04), COL_BRASS)
-    # Streetlamp on the curb-side buffer (public right-of-way rule)
-    make_cyl("Streetlamp_Pole", (-3.7, -2.30, 2.10), 0.045, 4.20, P.METAL_BLACK, segments=12)
-    make_cyl("Streetlamp_Arm", (-3.55, -2.30, 4.05), 0.025, 0.40, P.METAL_BLACK, axis='X')
-    make_cyl("Streetlamp_Head", (-3.32, -2.30, 3.98), 0.09, 0.14, P.METAL_BLACK, segments=12)
-    make_cyl("Streetlamp_Glow", (-3.32, -2.30, 3.89), 0.065, 0.05, (0.98, 0.84, 0.56, 1.0),
-             segments=12)
-    # The dollar cart under the east window (used-bookshop register;
-    # card lettering scene-side on Cart_Card)
-    make_box("Cart_Body", (2.3, -0.55, 0.52), (0.96, 0.42, 0.50), COL_WOOD, open_faces={'+Z'})
-    make_box("Cart_LowerShelf", (2.3, -0.55, 0.30), (0.90, 0.36, 0.03), COL_WOOD_DARK)
-    for ci, (cx2, cy2) in enumerate([(1.92, -0.71), (2.68, -0.71), (1.92, -0.39),
-                                     (2.68, -0.39)]):
-        make_cyl(f"Cart_Caster_{ci}", (cx2, cy2, 0.06), 0.05, 0.04, P.METAL_BLACK, axis='Y')
-    _spine_row("Cart_RowA", 1.90, 2.70, -0.64, 0.77, seed=31)
-    _spine_row("Cart_RowB", 1.90, 2.70, -0.46, 0.77, seed=47)
-    make_box("Cart_Card", (2.3, -0.78, 0.88), (0.22, 0.010, 0.12), P.PAPER_AGED)
-    make_floor_plant("Ext_Planter", (-2.6, -0.55, 0.0))
+            make_box(f"{prefix}_Post_{sgn:+d}", (cx + sgn*run_len/2.0, cy, bz+height/2.0),
+                     (0.06, depth, height), wood)
+        make_box(f"{prefix}_Top", (cx, cy, bz+height), (run_len, depth, 0.06), wood)
+        make_box(f"{prefix}_Back", (cx, cy - front_sign*depth/2.0, bz+height/2.0),
+                 (run_len, 0.02, height), wood)
+        for sh in range(shelves):
+            sz = bz + 0.10 + sh*shelf_gap
+            make_box(f"{prefix}_Shelf_{sh}", (cx, cy, sz), (run_len-0.08, depth, 0.03), wood)
+            n = int((run_len - 0.16) / 0.072)
+            x = cx - run_len/2.0 + 0.10
+            for bi in range(n):
+                w = BOOK_W[(sh+bi) % len(BOOK_W)]
+                if x + w > cx + run_len/2.0 - 0.10:
+                    break
+                bh = shelf_gap * BOOK_HF[(sh*2+bi) % len(BOOK_HF)]
+                col = BOOK_SPINES[(sh*3+bi) % len(BOOK_SPINES)]
+                make_box(f"{prefix}_Book_{sh}_{bi}",   # ON the shelf top, sz + 0.015 (2026-09-23: 1.5 cm over every shelf)
+                         (x + w/2.0, cy + front_sign*(depth*0.12), sz + 0.015 + bh/2.0),
+                         (w, depth*0.72, bh), col)
+                x += w + 0.006
+    else:  # axis == 'Y'
+        for sgn in (-1, +1):
+            make_box(f"{prefix}_Post_{sgn:+d}", (cx, cy + sgn*run_len/2.0, bz+height/2.0),
+                     (depth, 0.06, height), wood)
+        make_box(f"{prefix}_Top", (cx, cy, bz+height), (depth, run_len, 0.06), wood)
+        make_box(f"{prefix}_Back", (cx - front_sign*depth/2.0, cy, bz+height/2.0),
+                 (0.02, run_len, height), wood)
+        for sh in range(shelves):
+            sz = bz + 0.10 + sh*shelf_gap
+            make_box(f"{prefix}_Shelf_{sh}", (cx, cy, sz), (depth, run_len-0.08, 0.03), wood)
+            n = int((run_len - 0.16) / 0.072)
+            y = cy - run_len/2.0 + 0.10
+            for bi in range(n):
+                w = BOOK_W[(sh+bi) % len(BOOK_W)]
+                if y + w > cy + run_len/2.0 - 0.10:
+                    break
+                bh = shelf_gap * BOOK_HF[(sh*2+bi) % len(BOOK_HF)]
+                col = BOOK_SPINES[(sh*3+bi) % len(BOOK_SPINES)]
+                make_box(f"{prefix}_Book_{sh}_{bi}",
+                         (cx + front_sign*(depth*0.12), y + w/2.0, sz + 0.015 + bh/2.0),
+                         (depth*0.72, w, bh), col)
+                y += w + 0.006
 
 
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR · ALLEY (north) — what the kitchenette window shows:
-# the opposite building with the STARFISH NEBULA mural fragment
-# (Lena painted it in '50; ch14_petra: "the mural on the wall
-# outside my back door" — the ARIA FACE is ch14-morning-only and
-# deliberately NOT baked, this bg serves ch8 too), the dumpster
-# Petra reads at, a caged safety light over the back door, rain
-# puddles.
-# ═════════════════════════════════════════════════════════════════
-def build_exterior_alley():
-    make_box("Alley_Ground", (0.6, 7.25, -0.03), (10.0, 2.90, 0.06), COL_ASPHALT)
-    make_box("Alley_Puddle_0", (2.4, 7.0, 0.002), (1.20, 0.55, 0.002), COL_PUDDLE)
-    make_box("Alley_Puddle_1", (0.2, 7.6, 0.002), (0.70, 0.40, 0.002), COL_PUDDLE)
-    # Opposite building — dark brick, mural fragment facing us
-    make_box("Alley_OppositeWall", (1.4, 8.75, 2.20), (7.60, 0.15, 4.40), COL_BRICK_DK)
-    make_box("Mural_Ground", (2.7, 8.66, 1.85), (2.60, 0.02, 2.50), COL_MURAL_GROUND)
-    make_cyl("Mural_Octo_Head", (2.1, 8.64, 2.35), 0.42, 0.012, COL_MURAL_OCTO,
-             axis='Y', segments=12)
-    for ai, (ax, alen) in enumerate([(1.75, 1.10), (2.05, 1.40), (2.40, 0.95)]):
-        make_box(f"Mural_Octo_Arm_{ai}", (ax, 8.645, 1.95 - alen / 2.0 + 0.60),
-                 (0.13, 0.012, alen), COL_MURAL_OCTO)
-    make_box("Mural_Starfish", (3.45, 8.645, 2.65), (0.44, 0.012, 0.44), COL_MURAL_STAR)
-    make_box("Mural_PoolBand", (2.7, 8.645, 0.85), (2.40, 0.012, 0.38), COL_MURAL_POOL)
-    # The dumpster (ch14_petra: "by my reading at the dumpster")
-    make_box("Dumpster_Body", (1.3, 7.7, 0.55), (1.50, 0.85, 1.00), (0.20, 0.30, 0.24, 1.0))
-    make_box("Dumpster_Lid", (1.3, 7.62, 1.08), (1.54, 0.72, 0.06), (0.16, 0.24, 0.19, 1.0))
-    make_box("Dumpster_Skid_0", (0.7, 7.7, 0.06), (0.14, 0.80, 0.12), COL_CAST_IRON)
-    make_box("Dumpster_Skid_1", (1.9, 7.7, 0.06), (0.14, 0.80, 0.12), COL_CAST_IRON)
-    # Caged safety light over the back door (exterior north face)
-    make_box("AlleyLight_Base", (0.15, 6.14, 2.45), (0.16, 0.06, 0.16), P.METAL_BLACK)
-    make_cyl("AlleyLight_Glow", (0.15, 6.20, 2.45), 0.055, 0.09, (0.98, 0.84, 0.56, 1.0),
-             axis='Y')
-    for gi in range(3):
-        make_box(f"AlleyLight_Cage_{gi}", (0.07 + gi * 0.08, 6.24, 2.45),
-                 (0.012, 0.10, 0.16), P.METAL_BLACK)
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=bb)
+    # N wall split for the doorway into the back annex (x 2.4..3.4).
+    make_wall("Wall_N_W", (-0.9, ROOM_D, 0), length=6.6, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Wall_N_E", (3.8, ROOM_D, 0), length=0.8, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Wall_N_AboveDoor", (2.9, ROOM_D, CEIL-0.30), (1.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_wall_with_openings("Wall_S_W", (-2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.5, 1.55, 2.40, 1.30)])   # cut 2026-10-07: its window was a pane on a solid wall
+    make_wall("Wall_S_E", (+2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
+                                    ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+                                    ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
+                           ceil_z=CEIL, palette={"wood": COL_WOOD_DK})
 
 
-# ═════════════════════════════════════════════════════════════════
-# COUNTER — Petra's counter, plank-faced, wood top ("hands flat on
-# the wood between them", ch8_aria). On it, west→east: the hold
-# ledger + pencil (ch8_monday), the small brass bell (ch8_aria),
-# Tem's cup of cold coffee (ch8_aria), the token dish (Edgar and
-# Mr. Marsden pay in tokens), the SLOW TERMINAL ("Petra did not
-# like fast electronics and bought the slow ones on purpose"), and
-# the till ("The till is unlocked. The float is one-twenty").
-# Lena's stool behind (ch8_aria: Tem pulls it around).
-# ═════════════════════════════════════════════════════════════════
-def build_counter():
-    # Body x −0.15..2.15, customer face y 3.54, top z COUNTER_TOP
-    make_box("Counter_Body", (1.0, 3.85, 0.46), (2.30, 0.62, 0.92), COL_WOOD)
-    make_box("Counter_Top", (1.0, 3.85, 0.96), (2.46, 0.74, 0.06), COL_BUTCHER)
-    make_box("Counter_Kick", (1.0, 3.53, 0.10), (2.30, 0.02, 0.20), COL_WOOD_DARK)
-    for pi in range(6):
-        px = -0.02 + pi * 0.41
-        make_box(f"Counter_Plank_{pi}", (px, 3.535, 0.52), (0.34, 0.012, 0.78),
-                 COL_WOOD_LT if pi % 2 == 0 else COL_WOOD)
-    make_box("Counter_Notice", (0.45, 3.528, 0.70), (0.16, 0.008, 0.22), P.PAPER_AGED)
-    # Hold ledger, open, with pencil (ch8_monday: "wrote the name
-    # down in the hold ledger as Petra had taught her to do")
-    for li, sgn in enumerate((-1, +1)):
-        make_box(f"HoldLedger_Page_{li}", (0.35 + sgn * 0.105, 3.72, COUNTER_TOP + 0.008),
-                 (0.20, 0.28, 0.016), P.PAPER)
-    make_box("HoldLedger_Spine", (0.35, 3.72, COUNTER_TOP + 0.006), (0.03, 0.28, 0.020),
-             COL_WOOD_DARK)
-    make_cyl("HoldLedger_Pencil", (0.35, 3.90, COUNTER_TOP + 0.008), 0.006, 0.16,
-             (0.82, 0.64, 0.28, 1.0), axis='X')
-    # The small brass bell (ch8_aria — Lena turns it over in her hand)
-    make_cyl("CounterBell_Base", (0.02, 3.70, COUNTER_TOP + 0.006), 0.045, 0.012,
-             COL_WOOD_DARK)
-    make_cyl("CounterBell_Dome", (0.02, 3.70, COUNTER_TOP + 0.030), 0.038, 0.036, COL_BRASS)
-    make_cyl("CounterBell_Button", (0.02, 3.70, COUNTER_TOP + 0.054), 0.008, 0.014,
-             P.METAL_BLACK)
-    # Tem's coffee, gone cold at the counter's west end (ch8_aria)
-    _cup_saucer("TemCoffee", -0.05, 3.95, COUNTER_TOP, COL_CREAM)
-    # Token dish — Smolvud runs on tokens (ch8_monday: Edgar +
-    # Mr. Marsden both pay in tokens)
-    make_cyl("TokenDish", (0.68, 3.70, COUNTER_TOP + 0.010), 0.055, 0.020, COL_WOOD)
-    for ti in range(4):
-        make_cyl(f"Token_{ti}", (0.67 + (ti % 2) * 0.022, 3.70 + (ti % 3) * 0.014,
-                 COUNTER_TOP + 0.022 + (ti // 2) * 0.007), 0.026, 0.006, COL_WOOD_LT)
-    # The slow terminal — beige CRT, humming carefully (ch8_monday)
-    make_box("Terminal_Base", (1.15, 3.95, COUNTER_TOP + 0.035), (0.34, 0.32, 0.07),
-             COL_BEIGE_TECH)
-    make_box("Terminal_CRT", (1.15, 3.98, COUNTER_TOP + 0.21), (0.30, 0.28, 0.28),
-             COL_BEIGE_TECH)
-    make_box("Terminal_Screen", (1.15, 3.825, COUNTER_TOP + 0.22), (0.22, 0.012, 0.17),
-             (0.08, 0.14, 0.10, 1.0))
-    make_box("Terminal_ScreenLine", (1.15, 3.818, COUNTER_TOP + 0.27), (0.16, 0.004, 0.014),
-             (0.36, 0.62, 0.40, 1.0))
-    make_box("Terminal_Keyboard", (1.15, 3.70, COUNTER_TOP + 0.020), (0.30, 0.13, 0.030),
-             (0.72, 0.68, 0.58, 1.0))
-    for vi in range(3):
-        make_box(f"Terminal_Vent_{vi}", (1.325, 3.98, COUNTER_TOP + 0.13 + vi * 0.05),
-                 (0.006, 0.22, 0.014), (0.62, 0.58, 0.50, 1.0))
-    # The till (make_register's 90s POS reads right for a shopkeeper
-    # who buys the slow ones on purpose)
-    make_register("Till", (1.80, 3.92, COUNTER_TOP), palette={"body": (0.30, 0.29, 0.28, 1.0)})
-    # Lena's stool, behind the counter (ch8_aria)
-    make_cyl("LenaStool_Seat", (1.0, 4.42, 0.60), 0.16, 0.045, COL_WOOD, segments=12)
-    for li2, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"LenaStool_Leg_{li2}", (1.0 + sx * 0.10, 4.42 + sy * 0.10, 0.29),
-                 0.016, 0.58, COL_WOOD_DARK)
-    # Kraft-wrapped hold parcels on the back shelf (Petra tapes the
-    # torn dust jackets, ch8_monday)
-    make_box("Counter_BackShelf", (0.5, 4.05, 0.55), (1.10, 0.30, 0.025), COL_WOOD_DARK)
-    for pi2 in range(2):
-        make_box(f"HoldParcel_{pi2}", (0.25 + pi2 * 0.45, 4.05, 0.615),
-                 (0.26, 0.20, 0.09), P.PAPER_AGED)
-        make_box(f"HoldParcel_{pi2}_Twine", (0.25 + pi2 * 0.45, 4.05, 0.663),
-                 (0.28, 0.02, 0.012), P.TWINE)
+def build_bookshelves():
+    # N wall (E-W run, books face S)
+    make_bookshelf("Shelf_N", (-0.6, ROOM_D-0.22, 0.0), run_len=5.6, height=2.4,
+                   axis='X', front_sign=-1)
+    # W wall (N-S run, books face E)
+    make_bookshelf("Shelf_W", (-ROOM_W/2.0+0.22, 3.4, 0.0), run_len=3.6, height=2.4,
+                   axis='Y', front_sign=+1)
+    # E wall, north portion (N-S run, books face W) — S portion left for counter
+    make_bookshelf("Shelf_E", (+ROOM_W/2.0-0.22, 4.6, 0.0), run_len=2.2, height=2.4,
+                   axis='Y', front_sign=-1)
+    # Double-sided center gondola (two back-to-back E-W units)
+    make_bookshelf("Gondola_S", (-0.4, 2.95, 0.0), run_len=3.4, height=1.7,
+                   axis='X', front_sign=-1)
+    make_bookshelf("Gondola_N", (-0.4, 3.25, 0.0), run_len=3.4, height=1.7,
+                   axis='X', front_sign=+1)
 
 
-# ═════════════════════════════════════════════════════════════════
-# THE STACKS — two tall double-sided runs west of the center aisle,
-# 2.2 m of used spines (the register's "tall stacks"), endcaps
-# facing the aisle, top piles. Section lettering scene-side on
-# StackSign_0/1 + EndcapCard_0/1.
-# ═════════════════════════════════════════════════════════════════
-def _stack_run(idx, cy):
-    x0, x1 = -3.0, -0.7
-    cx = (x0 + x1) / 2.0
-    length = x1 - x0
-    h = 2.20
-    make_box(f"Stack_{idx}_Plinth", (cx, cy, 0.06), (length, 0.56, 0.12), COL_WOOD_DARK)
-    make_box(f"Stack_{idx}_Divider", (cx, cy, h / 2.0), (length, 0.05, h), COL_WOOD)
-    for si, sx in enumerate((x0, x1)):
-        make_box(f"Stack_{idx}_Side_{si}", (sx + (0.025 if si == 0 else -0.025), cy, h / 2.0),
-                 (0.05, 0.56, h), COL_WOOD)
-    make_box(f"Stack_{idx}_Cap", (cx, cy, h + 0.025), (length + 0.06, 0.60, 0.05), COL_WOOD)
-    make_box(f"StackSign_{idx}", (cx, cy, h + 0.14), (0.90, 0.04, 0.18), COL_SPRUCE)
-    for face, fsgn in (("S", -1), ("N", +1)):
-        for shelf_i, sz in enumerate((0.14, 0.66, 1.18, 1.70)):
-            make_box(f"Stack_{idx}_{face}_Shelf_{shelf_i}",
-                     (cx, cy + fsgn * 0.145, sz), (length - 0.10, 0.24, 0.035), COL_WOOD_DARK)
-            _spine_row(f"Stack_{idx}_{face}_Books_{shelf_i}", x0 + 0.06, x1 - 0.06,
-                       cy + fsgn * 0.155, sz + 0.018,
-                       seed=idx * 17 + shelf_i * 5 + (0 if face == "S" else 51))
-    _book_pile(f"Stack_{idx}_TopPile_A", x0 + 0.45, cy, h + 0.05, 3, seed=idx * 7 + 1)
-    _book_pile(f"Stack_{idx}_TopPile_B", x1 - 0.50, cy, h + 0.05, 2, seed=idx * 7 + 4)
-    # Endcap facing the center aisle — face-out staff picks
-    make_box(f"Endcap_{idx}_Panel", (x1 + 0.02, cy, 1.10), (0.04, 0.50, 2.20), COL_WOOD)
-    for fi, fz in enumerate((0.55, 1.15, 1.75)):
-        make_box(f"Endcap_{idx}_Ledge_{fi}", (x1 + 0.08, cy, fz - 0.14),
-                 (0.10, 0.44, 0.025), COL_WOOD_DARK)
-        make_box(f"Endcap_{idx}_Book_{fi}", (x1 + 0.075, cy - 0.02, fz),
-                 (0.035, 0.165, 0.24), BOOK_TINTS[(idx * 5 + fi * 2) % len(BOOK_TINTS)])
-    make_box(f"EndcapCard_{idx}", (x1 + 0.045, cy, 1.98), (0.012, 0.26, 0.12), P.PAPER)
-
-def build_stacks():
-    _stack_run(0, 2.50)
-    _stack_run(1, 3.80)
+def build_rolling_ladder():
+    # Rolling library ladder leaning on the N shelf
+    lx, ly = -2.4, ROOM_D - 0.55
+    for sgn in (-1, +1):
+        make_box(f"Ladder_Rail_{sgn:+d}", (lx + sgn*0.16, ly, 1.25), (0.05, 0.05, 2.50), COL_WOOD_DK)
+    for ri in range(6):
+        make_cyl(f"Ladder_Rung_{ri}", (lx, ly, 0.30 + ri*0.42), 0.022, 0.32, COL_WOOD_DK, axis='X', segments=6)
+    make_box("Ladder_TopHook", (lx, ly + 0.16, 2.45), (0.40, 0.30, 0.05), COL_BRASS)
+    for sgn in (-1, +1):
+        make_cyl(f"Ladder_Wheel_{sgn:+d}", (lx + sgn*0.16, ly - 0.08, 0.10), 0.06, 0.04,
+                 COL_BLACK, axis='X', segments=10)
 
 
-# ═════════════════════════════════════════════════════════════════
-# WEST WALL — full-height wall shelving with the ROLLING LADDER
-# (2.35 m shelves warrant it), and the CHILDREN'S SECTION at the
-# front: low case, picture books face-out (the one the girl had to
-# leave behind goes back face-out, ch8_monday), the clean carpet
-# ("take your time, the carpet's clean"), a floor cushion.
-# ═════════════════════════════════════════════════════════════════
-def build_west_wall():
-    wall_face = -ROOM_W / 2.0 + 0.10          # −3.90
-    # Wall shelving y 2.2..4.9, 2.35 high, spines face east
-    y0, y1 = 2.2, 4.9
-    cyy = (y0 + y1) / 2.0
-    make_box("WestShelf_Back", (wall_face + 0.02, cyy, 1.175), (0.04, y1 - y0, 2.35), COL_WOOD)
-    for si, sy in enumerate((y0, cyy, y1)):
-        make_box(f"WestShelf_Upright_{si}", (wall_face + 0.14, sy, 1.175),
-                 (0.24, 0.05, 2.35), COL_WOOD)
-    make_box("WestShelf_Cap", (wall_face + 0.14, cyy, 2.375), (0.28, y1 - y0 + 0.10, 0.05),
-             COL_WOOD)
-    for shelf_i, sz in enumerate((0.14, 0.60, 1.06, 1.52, 1.98)):
-        make_box(f"WestShelf_Board_{shelf_i}", (wall_face + 0.14, cyy, sz),
-                 (0.24, y1 - y0 - 0.10, 0.035), COL_WOOD_DARK)
-        # Books run along Y here — reuse _spine_row by mapping X→Y
-        # via a thin local loop (deterministic like _spine_row)
-        cursor = y0 + 0.09
-        bi = 0
-        while cursor < y1 - 0.12:
-            k = shelf_i * 23 + bi
-            if k % 11 == 9:
-                cursor += 0.055
-                bi += 1
-                continue
-            w = _SPINE_W[k % len(_SPINE_W)]
-            h2 = _SPINE_H[(k * 5 + 2) % len(_SPINE_H)]
-            make_box(f"WestShelf_Book_{shelf_i}_{bi}",
-                     (wall_face + 0.16, cursor + w / 2.0, sz + 0.018 + h2 / 2.0),
-                     (0.165, w, h2), BOOK_TINTS[(k * 3 + 2) % len(BOOK_TINTS)])
-            cursor += w + (0.004 if k % 5 else 0.014)
-            bi += 1
-    for ci2, cz2 in enumerate((0.90, 1.82)):
-        make_box(f"WestShelf_Card_{ci2}", (wall_face + 0.27, y0 + 0.5 + ci2 * 1.4, cz2),
-                 (0.012, 0.24, 0.10), P.PAPER)
-    # ROLLING LADDER — brass rail along the shelf face, near-vertical
-    # ladder hooked on (axis-aligned per the no-diagonal rule)
-    make_cyl("Ladder_Rail", (wall_face + 0.30, cyy, 2.30), 0.016, y1 - y0 - 0.10, COL_BRASS,
-             axis='Y')
-    for bi2, byy in enumerate((y0 + 0.15, cyy, y1 - 0.15)):
-        make_box(f"Ladder_RailBracket_{bi2}", (wall_face + 0.245, byy, 2.30),
-                 (0.10, 0.03, 0.03), P.METAL_BLACK)
-    for si2, syy in enumerate((2.88, 3.32)):
-        make_cyl(f"Ladder_Stile_{si2}", (wall_face + 0.34, syy, 1.13), 0.022, 2.26, COL_WOOD)
-        make_box(f"Ladder_Hook_{si2}", (wall_face + 0.32, syy, 2.29), (0.06, 0.04, 0.07),
-                 COL_BRASS)
-        make_cyl(f"Ladder_Wheel_{si2}", (wall_face + 0.36, syy, 0.035), 0.035, 0.03,
-                 P.METAL_BLACK, axis='Y')
+def build_sales_counter():
+    cx, cy = +ROOM_W/2.0 - 1.4, 2.6
+    top_z = make_counter("Counter", (cx, cy, 0.0), length=2.60, depth=0.70, height=0.95,
+                         palette={"formica": COL_WOOD, "top": COL_WOOD_DK, "kick": COL_WOOD_DK})
+    make_register("Register", (cx, cy + 0.70, top_z),
+                  palette={"body": COL_BRASS, "keys": COL_WOOD_DK, "screen": (0.30, 0.22, 0.14, 1.0)})
+    # Stacked books to be shelved + a service bell + a banker's lamp
+    for si in range(4):
+        make_box(f"CounterStack_{si}", (cx - 0.05, cy - 0.60, top_z + 0.03 + si*0.055),
+                 (0.34, 0.24, 0.05), BOOK_SPINES[si % len(BOOK_SPINES)])
+    make_cyl("CounterBell", (cx - 0.10, cy - 1.00, top_z + 0.025), 0.05, 0.05, COL_BRASS, segments=12)   # on the top
+    # Green banker's lamp
+    make_cyl("DeskLamp_Base", (cx + 0.05, cy + 1.05, top_z + 0.03), 0.06, 0.04, COL_BRASS, segments=10)
+    make_cyl("DeskLamp_Stem", (cx + 0.05, cy + 1.05, top_z + 0.14), 0.012, 0.20, COL_BRASS)
+    make_box("DeskLamp_Shade", (cx + 0.05, cy + 1.05, top_z + 0.26), (0.26, 0.12, 0.06), COL_TEAL)
+    make_box("DeskLamp_Glow", (cx + 0.05, cy + 1.05, top_z + 0.22), (0.22, 0.10, 0.02), COL_LAMP)
+
+
+def build_reading_nook():
+    nx, ny = -ROOM_W/2.0 + 1.1, 1.3
+    # Rug
+    make_box("Rug", (nx, ny, 0.006), (2.0, 2.0, 0.006), COL_RUG)
+    make_box("Rug_Border", (nx, ny, 0.007), (1.7, 1.7, 0.004), COL_RUG_BORDER)
+    # Wing armchair (facing E, into the room)
+    ax, ay = nx - 0.1, ny
+    make_box("Chair_Seat", (ax, ay, 0.40), (0.62, 0.60, 0.14), COL_LEATHER)
+    make_box("Chair_Cushion", (ax, ay, 0.50), (0.54, 0.52, 0.10), COL_LEATHER)
+    make_box("Chair_Back", (ax - 0.28, ay, 0.72), (0.12, 0.60, 0.62), COL_LEATHER)
+    for sgn in (-1, +1):
+        make_box(f"Chair_Arm_{sgn:+d}", (ax - 0.02, ay + sgn*0.32, 0.54), (0.44, 0.12, 0.22), COL_LEATHER)
+        make_box(f"Chair_Wing_{sgn:+d}", (ax - 0.24, ay + sgn*0.30, 0.80), (0.14, 0.10, 0.30), COL_LEATHER)
+    for lx, ly in [(-0.24, -0.24), (0.24, -0.24), (-0.24, 0.24), (0.24, 0.24)]:
+        make_box(f"Chair_Leg_{lx:+.0f}_{ly:+.0f}", (ax + lx, ay + ly, 0.16), (0.06, 0.06, 0.32), COL_WOOD_DK)
+    # Floor lamp beside the chair
+    fx, fy = nx + 0.7, ny + 0.6
+    make_cyl("FloorLamp_Base", (fx, fy, 0.03), 0.16, 0.05, COL_WOOD_DK, segments=12)
+    make_cyl("FloorLamp_Pole", (fx, fy, 0.85), 0.02, 1.60, COL_BRASS)
+    make_cyl("FloorLamp_Shade", (fx, fy, 1.66), 0.20, 0.24, (0.86, 0.74, 0.52, 1.0), segments=12)
+    make_cyl("FloorLamp_Bulb", (fx, fy, 1.60), 0.06, 0.06, COL_LAMP, segments=8)
+    # Side table with a book + a teacup
+    tx, ty = nx + 0.5, ny - 0.5
+    make_cyl("SideTable_Top", (tx, ty, 0.52), 0.26, 0.04, COL_WOOD, segments=14)
+    make_cyl("SideTable_Post", (tx, ty, 0.27), 0.03, 0.50, COL_WOOD_DK)
+    for sgn in (-1, +1):
+        make_box(f"SideTable_Foot_{sgn:+d}", (tx + sgn*0.16, ty, 0.03), (0.30, 0.05, 0.04), COL_WOOD_DK)
+    make_box("SideTable_Book", (tx, ty, 0.57), (0.20, 0.15, 0.04), BOOK_SPINES[2])
+    make_cyl("SideTable_Cup", (tx + 0.10, ty + 0.08, 0.58), 0.04, 0.06, (0.90, 0.88, 0.82, 1.0), segments=10)
+
+
+def build_globe_and_catalog():
+    # Globe on a wooden tripod stand
+    gx, gy = +0.8, 1.2
+    for ai in range(3):
+        ang = ai * (2.0*math.pi/3.0)
+        make_box(f"Globe_Leg_{ai}", (gx + math.cos(ang)*0.16, gy + math.sin(ang)*0.16, 0.35),
+                 (0.04, 0.04, 0.70), COL_WOOD_DK)
+    make_cyl("Globe_Cradle", (gx, gy, 0.715), 0.18, 0.03, COL_WOOD_DK, segments=12)   # legs to globe (2026-09-23: the globe floated between its legs)
+    make_cyl("Globe_Ring", (gx, gy, 0.86), 0.20, 0.02, COL_BRASS, axis='X', segments=16)
+    for zi, r in enumerate([0.09, 0.13, 0.15, 0.15, 0.13, 0.09]):
+        make_cyl(f"Globe_Sphere_{zi}", (gx, gy, 0.74 + zi*0.058), r, 0.058,
+                 (0.36, 0.48, 0.56, 1.0), segments=14)
+    # Card catalog cabinet near the counter
+    cx, cy = +2.2, 1.1
+    make_box("Catalog_Body", (cx, cy, 0.55), (0.90, 0.50, 1.10), COL_WOOD)
+    make_box("Catalog_Top", (cx, cy, 1.12), (0.96, 0.56, 0.04), COL_WOOD_DK)
+    for r in range(5):
+        for c in range(3):
+            dz = 0.20 + r*0.18
+            dx = cx - 0.28 + c*0.28
+            make_box(f"Catalog_Drawer_{r}_{c}", (dx, cy - 0.24, dz), (0.24, 0.02, 0.14), COL_WOOD_DK)
+            make_box(f"Catalog_Label_{r}_{c}", (dx, cy - 0.252, dz + 0.02), (0.12, 0.005, 0.04), P.PAPER)
+            make_cyl(f"Catalog_Pull_{r}_{c}", (dx, cy - 0.26, dz - 0.03), 0.012, 0.02, COL_BRASS, axis='Y', segments=6)
+
+
+def build_ceiling_and_sign():
+    for pi, px in enumerate([-2.4, 0.0, +2.4]):
+        make_cyl(f"Pendant_Cord_{pi}", (px, 3.0, CEIL-0.25), 0.01, 0.50, COL_BLACK)   # to the ceiling (2026-09-22: 5 cm short)
+        make_cyl(f"Pendant_Shade_{pi}", (px, 3.0, CEIL-0.57), 0.14, 0.14, COL_BRASS, segments=12)
+        make_cyl(f"Pendant_Bulb_{pi}", (px, 3.0, CEIL-0.67), 0.05, 0.06, COL_LAMP, segments=8)
+    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    make_hvac_vent("Vent", (+2.0, 4.8, CEIL), width=1.00, depth=0.50, slats=5)
+    # Hanging "THE SALTY TOME" shop sign near the entrance
+    make_hanging_banner("SaltyTomeSign", (0.0, 1.4, CEIL), width=1.90, height=0.40,
+                        bg_color=COL_TEAL, text_color=COL_BRASS)
+
+
+def build_decor():
+    make_wall_clock("Clock", (3.900, 1.2, 2.10), frozen_hour=5, frozen_min=10, facing='-X')
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 5.4, 2.05))
+    make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 5.6, 1.70), into_room=-1)
+    make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.55, 0.0),
+                     palette={"leaf": (0.36, 0.46, 0.32, 1.0)})
+    # Front window on the S-W wall segment
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_Front", (-2.5, 0.10, 1.55), width=2.4, height=1.30, room_dir=+1, see_through=True)
+
+
+def build_back_annex_2026_08():
+    """2026-08-03 tail pass — the back of the store the vol7 scenes
+    live in: the KITCHENETTE (Petra's kettle, the clay mug from
+    Margit's, four mugs, the table by the kitchenette window, the
+    radiator, the cat asleep on its chair), Petra's BACK OFFICE
+    behind its closed door (desk + phone + couch + coat hook), the
+    BACK DOOR Lena unlocks from the alley — and the alley itself:
+    dumpster, and the MURAL WALL with the painted face (ch14)."""
+    AN_Y0, AN_Y1 = ROOM_D, 9.0
+    # Annex floor + side walls + far (alley-side) wall with window
+    # + back door.
+    make_floor("Annex_Floor", (0.0, (AN_Y0+AN_Y1)/2.0, 0.0), size_x=ROOM_W+0.4, size_y=AN_Y1-AN_Y0,
+               palette={"vinyl": (0.56, 0.46, 0.34, 1.0), "seam": COL_SEAM})
+    for nm, x, bb in [("Annex_Wall_W", -ROOM_W/2.0, +1), ("Annex_Wall_E", +ROOM_W/2.0, -1)]:
+        make_wall(nm, (x, (AN_Y0+AN_Y1)/2.0, 0), length=AN_Y1-AN_Y0, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=bb)
+    # Alley-side wall: back door at x=-3.3, kitchenette window at x=-1.6.
+    make_wall("Annex_Wall_N_Wd", (-2.45, AN_Y1, 0), length=0.7, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Annex_Wall_N_Mid", (0.35, AN_Y1, 0), length=2.5, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Annex_Wall_N_E", (2.9, AN_Y1, 0), length=2.6, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Annex_AboveBackDoor", (-3.3, AN_Y1, CEIL-0.30), (1.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_window("Kitchenette_Window", (-1.6, AN_Y1-0.10, 1.55), width=1.10, height=1.15)
+    make_box("Annex_AboveKWin", (-1.6, AN_Y1, CEIL-0.25), (1.2, 0.20, 0.50), PAL_WALL["wall"])
+    make_ceiling("Annex_Ceil", (0.0, (AN_Y0+AN_Y1)/2.0, CEIL), size_x=ROOM_W+0.4, size_y=AN_Y1-AN_Y0)
+    # The BACK DOOR (Lena's morning key) — mostly closed leaf.
+    make_box("Back_Door", (-3.3, AN_Y1-0.06, 1.05), (0.95, 0.06, 2.10), (0.36, 0.28, 0.20, 1.0))
+    make_cyl("Back_Door_Knob", (-3.0, AN_Y1-0.12, 1.02), 0.03, 0.04, COL_BRASS, segments=8)
+    # Office partition at x=0.9: Petra behind the closed door.
+    make_wall("Office_Part", (0.9, (AN_Y0+AN_Y1)/2.0, 0), length=AN_Y1-AN_Y0, height=CEIL, axis='Y',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Office_Door", (0.84, AN_Y0+0.85, 1.05), (0.06, 0.90, 2.10), (0.42, 0.32, 0.22, 1.0))
+    make_cyl("Office_Door_Knob", (0.78, AN_Y0+0.55, 1.02), 0.03, 0.04, COL_BRASS, segments=8)
+    make_box("Office_Coat_Hook", (0.96, AN_Y0+1.9, 1.70), (0.05, 0.04, 0.05), COL_BRASS)
+    make_box("Office_Coat", (1.00, AN_Y0+1.9, 1.25), (0.06, 0.38, 0.90), (0.30, 0.32, 0.38, 1.0))
+    # Office: desk + phone + the couch.
+    make_box("Office_Desk_Top", (2.7, 8.35, 0.74), (1.60, 0.70, 0.04), COL_WOOD)
+    for oi, oxo in enumerate([-0.72, 0.72]):
+        make_box(f"Office_Desk_Side_{oi}", (2.7+oxo, 8.35, 0.37), (0.06, 0.66, 0.72), COL_WOOD)
+    make_box("Office_Phone_Base", (2.35, 8.30, 0.78), (0.20, 0.14, 0.07), COL_BLACK)
+    make_box("Office_Phone_Handset", (2.35, 8.30, 0.85), (0.22, 0.06, 0.04), COL_BLACK)
+    for pi2 in range(3):
+        make_box(f"Office_Papers_{pi2}", (3.0-pi2*0.05, 8.32, 0.765+pi2*0.008), (0.22, 0.28, 0.008),
+                 (0.90, 0.88, 0.82, 1.0))
+    make_box("Office_Couch_Base", (2.9, 6.85, 0.17), (1.70, 0.70, 0.34), (0.40, 0.30, 0.26, 1.0))   # on the floor (2026-09-22: 9 cm up)
+    make_box("Office_Couch_Back", (2.9, 7.16, 0.60), (1.70, 0.16, 0.55), (0.40, 0.30, 0.26, 1.0))
+    for ci2, cxo in enumerate([-0.55, 0.0, 0.55]):
+        make_box(f"Office_Couch_Cushion_{ci2}", (2.9+cxo, 6.80, 0.39), (0.52, 0.60, 0.10),
+                 (0.46, 0.35, 0.30, 1.0))
+    # KITCHENETTE along the annex W + N walls.
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_box("Kitch_Counter", (-3.55, 6.960, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
+    make_box("Kitch_Counter_Top", (-3.55, 6.960, 0.92), (0.66, 1.9, 0.05), (0.72, 0.68, 0.60, 1.0))
+    make_box("Kitch_Sink", (-3.55, 6.560, 0.93), (0.40, 0.34, 0.03), (0.60, 0.62, 0.64, 1.0))
+    make_cyl("Kitch_Faucet", (-3.72, 6.560, 1.05), 0.015, 0.20, (0.62, 0.64, 0.66, 1.0), segments=6)
+    # Petra's KETTLE on a two-ring hob.
+    make_box("Kitch_Hob", (-3.55, 7.410, 0.95), (0.44, 0.36, 0.04), COL_BLACK)
+    make_cyl("Kettle_Body", (-3.55, 7.85, 1.06), 0.11, 0.16, (0.74, 0.76, 0.78, 1.0), segments=12)
+    make_cyl("Kettle_Lid", (-3.55, 7.85, 1.16), 0.05, 0.04, (0.66, 0.68, 0.70, 1.0), segments=10)
+    make_box("Kettle_Handle", (-3.55, 7.85, 1.19), (0.16, 0.03, 0.03), COL_BLACK)   # on the lid (2026-09-23: 2.5 cm over it)
+    # Four mugs set out + the small clay mug from Margit's (2009).
+    for mi in range(4):
+        make_cyl(f"Mug_{mi}", (-3.40+0.14*(mi%2), 6.55+0.16*(mi//2), 0.99), 0.04, 0.09,
+                 [(0.80, 0.78, 0.72, 1.0), (0.46, 0.56, 0.58, 1.0),
+                  (0.62, 0.48, 0.36, 1.0), (0.70, 0.70, 0.66, 1.0)][mi], segments=8)
+    make_cyl("Clay_Mug_Margits", (-3.62, 6.70, 1.00), 0.045, 0.10, (0.58, 0.38, 0.26, 1.0), segments=8)
+    # The table by the kitchenette window + three chairs (Lena and
+    # Cale sit, Kai stands by the door).
+    make_box("Kitch_Table_Top", (-1.6, 7.660, 0.74), (0.95, 0.85, 0.04), COL_WOOD)
+    for li3, (lxo, lyo) in enumerate([(-0.40, -0.35), (0.40, -0.35), (-0.40, 0.35), (0.40, 0.35)]):
+        make_box(f"Kitch_Table_Leg_{li3}", (-1.6+lxo, 8.1+lyo - 0.440, 0.36), (0.05, 0.05, 0.72), COL_WOOD_DK)
+    for ci3, (cxo, cyo, bxo) in enumerate([(-0.75, 0.0, -0.20), (0.75, 0.0, 0.20), (0.0, -0.75, 0.0)]):
+        make_box(f"Kitch_Chair_{ci3}_Seat", (-1.6+cxo, 8.1+cyo - 0.440, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"Kitch_Chair_{ci3}_Leg_{lx_:+d}_{ly_:+d}",
+                         (-1.6+cxo + lx_ * 0.17, 8.1+cyo + ly_ * 0.17 - 0.440, 0.22),
+                         (0.035, 0.035, 0.44), COL_WOOD)
+        if ci3 < 2:
+            make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo+bxo, 8.1+cyo - 0.440, 0.75), (0.05, 0.42, 0.55), COL_WOOD)
+        else:
+            make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo, 8.1+cyo-0.20 - 0.440, 0.75), (0.42, 0.05, 0.55), COL_WOOD)
+    # Radiator under the kitchenette window.
     for ri2 in range(6):
-        make_cyl(f"Ladder_Rung_{ri2}", (wall_face + 0.34, 3.10, 0.30 + ri2 * 0.32),
-                 0.016, 0.40, COL_WOOD_DARK, axis='Y')
-    # ── CHILDREN'S SECTION (SW front corner) ─────────────────────
-    make_box("Kids_Rug", (-3.0, 1.25, 0.008), (1.55, 1.30, 0.012), COL_RUG_A)
-    make_box("Kids_Rug_Border", (-3.0, 1.25, 0.014), (1.25, 1.00, 0.004), COL_RUG_B)
-    make_box("Kids_Rug_Center", (-3.0, 1.25, 0.018), (0.95, 0.70, 0.004), COL_RUG_A)
-    # Low case against the west wall
-    make_box("Kids_Case_Back", (wall_face + 0.02, 1.25, 0.46), (0.04, 1.50, 0.92), COL_WOOD)
-    for ki, kyy in enumerate((0.50, 1.25, 2.00)):
-        make_box(f"Kids_Case_Upright_{ki}", (wall_face + 0.13, kyy, 0.46),
-                 (0.22, 0.04, 0.92), COL_WOOD)
-    make_box("Kids_Case_Cap", (wall_face + 0.13, 1.25, 0.935), (0.26, 1.58, 0.03), COL_WOOD)
-    for shelf_i2, kz in enumerate((0.10, 0.50)):
-        make_box(f"Kids_Case_Board_{shelf_i2}", (wall_face + 0.13, 1.25, kz),
-                 (0.22, 1.44, 0.03), COL_WOOD_DARK)
-        cursor = 0.58
-        bi3 = 0
-        while cursor < 1.88:
-            k = shelf_i2 * 31 + bi3 + 7
-            w = 0.05 + (k % 4) * 0.012
-            make_box(f"Kids_Book_{shelf_i2}_{bi3}",
-                     (wall_face + 0.15, cursor + w / 2.0, kz + 0.016 + 0.10),
-                     (0.15, w, 0.20 - (k % 3) * 0.02),
-                     BOOK_TINTS[(k * 2 + 5) % len(BOOK_TINTS)])
-            cursor += w + 0.008
-            bi3 += 1
-    # The picture book the girl left behind — face-out on top
-    # (ch8_monday: "they would come back on Saturday for the third")
-    make_box("Kids_FaceOut_Stand", (wall_face + 0.16, 1.05, 0.99), (0.10, 0.08, 0.10),
-             COL_WOOD_DARK)
-    make_box("Kids_FaceOut_Book", (wall_face + 0.18, 1.05, 1.09), (0.035, 0.22, 0.24),
-             (0.82, 0.64, 0.28, 1.0))
-    _book_pile("Kids_TopPile", -3.72, 1.55, 0.95, 2, seed=13)
-    make_box("Kids_Card", (wall_face + 0.26, 1.25, 0.80), (0.012, 0.22, 0.10), P.PAPER)
-    # Floor cushion where the girl sat with all three books open
-    make_cyl("Kids_Cushion", (-2.75, 1.15, 0.055), 0.20, 0.11, COL_RUG_B, segments=12)
-    make_box("Kids_OpenBook_PageL", (-3.10, 1.45, 0.026), (0.15, 0.20, 0.012), P.PAPER)
-    make_box("Kids_OpenBook_PageR", (-2.95, 1.45, 0.026), (0.15, 0.20, 0.012), P.PAPER)
-    make_box("Kids_OpenBook_Spine", (-3.025, 1.45, 0.022), (0.02, 0.20, 0.016),
-             BOOK_TINTS[5])
+        make_box(f"Radiator_Fin_{ri2}", (-2.05+ri2*0.18, AN_Y1-0.22, 0.31), (0.10, 0.16, 0.62),   # to the floor (2026-09-22: 12 cm up)
+                 (0.72, 0.70, 0.66, 1.0))
+    make_box("Radiator_Top", (-1.6, AN_Y1-0.22, 0.64), (1.10, 0.18, 0.04), (0.66, 0.64, 0.60, 1.0))
+    # The CAT — Petra's old cat, asleep in a loaf on its own chair.
+    make_box("Cat_Chair_Seat", (-0.5, 6.7, 0.42), (0.44, 0.44, 0.05), COL_WOOD)
+    for lx_ in (-1, 1):   # legs (2026-09-22: the seat hung at 0.39)
+        for ly_ in (-1, 1):
+            make_box(f"Cat_Chair_Leg_{lx_:+d}_{ly_:+d}", (-0.5 + lx_ * 0.18, 6.7 + ly_ * 0.18, 0.20), (0.03, 0.03, 0.40), COL_WOOD)
+    make_box("Cat_Chair_Back", (-0.28, 6.7, 0.72), (0.05, 0.44, 0.52), COL_WOOD)
+    make_box("Cat_Cushion", (-0.5, 6.7, 0.47), (0.38, 0.38, 0.06), (0.52, 0.30, 0.26, 1.0))
+    make_box("Cat_Loaf_Body", (-0.5, 6.7, 0.56), (0.30, 0.20, 0.13), (0.28, 0.26, 0.24, 1.0))
+    make_box("Cat_Loaf_Head", (-0.36, 6.74, 0.60), (0.11, 0.11, 0.09), (0.30, 0.28, 0.26, 1.0))
+    for ei2, eyo in enumerate([-0.035, 0.035]):
+        make_box(f"Cat_Ear_{ei2}", (-0.33, 6.74+eyo, 0.66), (0.03, 0.025, 0.03), (0.26, 0.24, 0.22, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# EAST WALL — the local-zine rack (STATIC TRUTHS face-out among
-# them, static_truths.md), the reading nook (rust wool armchair +
-# side table + floor lamp), "the wall where her paintings hang"
-# (_ART_MANIFEST) — two sea paintings — a framed tide chart by the
-# counter, and the radiator with the cat's OTHER wool cushion on
-# the chair beside it (ch14_petra).
-# ═════════════════════════════════════════════════════════════════
-def build_east_wall():
-    wall_face = ROOM_W / 2.0 - 0.10           # +3.90
-    # ── Zine rack (front, y 0.5..1.5) — local zines, face-out ────
-    make_box("ZineRack_Back", (wall_face + 0.02, 1.0, 1.25), (0.04, 1.00, 1.10), COL_WOOD)
-    for zi, zz in enumerate((0.90, 1.30, 1.70)):
-        make_box(f"ZineRack_Rail_{zi}", (wall_face - 0.055, 1.0, zz - 0.11),
-                 (0.10, 0.96, 0.025), COL_WOOD_DARK)
-        make_box(f"ZineRack_Lip_{zi}", (wall_face - 0.105, 1.0, zz - 0.085),
-                 (0.012, 0.96, 0.05), COL_WOOD_DARK)
-    zine_tints = [P.PAPER, (0.42, 0.52, 0.62, 1.0), P.PAPER_AGED,
-                  (0.86, 0.66, 0.34, 1.0), P.NEWSPRINT, P.PAPER]
-    zslots = [(0.70, 0.90), (1.00, 0.90), (1.30, 0.90),
-              (0.70, 1.30), (1.30, 1.30), (0.85, 1.70), (1.15, 1.70)]
-    for qi, (qy, qz) in enumerate(zslots):
-        make_box(f"ZineRack_Zine_{qi}", (wall_face - 0.07, qy, qz),
-                 (0.016, 0.15, 0.215), zine_tints[qi % len(zine_tints)])
-    # STATIC TRUTHS Issue stack, front + center slot (photocopied
-    # half-letter, single-fold — masthead Label3D scene-side)
-    make_box("Zine_StaticTruths", (wall_face - 0.075, 1.0, 1.30), (0.020, 0.145, 0.215),
-             P.PAPER)
-    make_box("Zine_StaticTruths_Masthead", (wall_face - 0.088, 1.0, 1.375),
-             (0.006, 0.115, 0.045), P.METAL_BLACK)
-    make_box("Zine_StaticTruths_Cover", (wall_face - 0.088, 1.0, 1.27),
-             (0.006, 0.09, 0.10), (0.55, 0.52, 0.48, 1.0))
-    # ── Reading nook (mid-east) ──────────────────────────────────
-    make_box("Nook_Rug", (3.15, 2.35, 0.008), (1.15, 1.15, 0.012), (0.40, 0.36, 0.30, 1.0))
-    make_box("Armchair_Base", (3.38, 2.45, 0.22), (0.62, 0.62, 0.30), COL_UPHOLSTER)
-    make_box("Armchair_Cushion", (3.33, 2.45, 0.42), (0.50, 0.52, 0.12), COL_UPHOLSTER)
-    make_box("Armchair_Back", (3.62, 2.45, 0.62), (0.16, 0.62, 0.60), COL_UPHOLSTER)
-    for ai2, sgn in enumerate((-1, +1)):
-        make_box(f"Armchair_Arm_{ai2}", (3.38, 2.45 + sgn * 0.30, 0.50),
-                 (0.58, 0.12, 0.26), COL_UPHOLSTER)
-    for fi2, (fx, fy) in enumerate([(3.14, 2.22), (3.62, 2.22), (3.14, 2.68), (3.62, 2.68)]):
-        make_cyl(f"Armchair_Foot_{fi2}", (fx, fy, 0.035), 0.022, 0.07, COL_WOOD_DARK)
-    # A book left splayed on the chair arm (used-bookshop register)
-    make_box("Armchair_Book", (3.38, 2.72, 0.585), (0.16, 0.11, 0.03), BOOK_TINTS[1])
-    make_cyl("Nook_SideTable_Top", (2.90, 1.92, 0.55), 0.22, 0.04, COL_WOOD_DARK, segments=12)
-    make_cyl("Nook_SideTable_Column", (2.90, 1.92, 0.27), 0.035, 0.52, COL_WOOD_DARK)
-    make_cyl("Nook_SideTable_Base", (2.90, 1.92, 0.02), 0.13, 0.04, COL_WOOD_DARK, segments=12)
-    _book_pile("Nook_TablePile", 2.90, 1.92, 0.57, 2, seed=21)
-    make_cyl("Nook_Lamp_Base", (3.62, 2.95, 0.02), 0.13, 0.04, P.METAL_BLACK, segments=12)
-    make_cyl("Nook_Lamp_Pole", (3.62, 2.95, 0.76), 0.013, 1.44, COL_BRASS)
-    make_cyl("Nook_Lamp_Shade", (3.62, 2.95, 1.56), 0.13, 0.17, COL_CREAM, segments=12)
-    make_cyl("Nook_Lamp_Glow", (3.62, 2.95, 1.47), 0.055, 0.03, (0.98, 0.88, 0.62, 1.0))
-    # ── Petra's paintings (above the nook, _ART_MANIFEST) ────────
-    # A: gray-green seascape — sky band, sea band, dark headland
-    make_box("Painting_A_Frame", (wall_face + 0.015, 2.15, 1.80), (0.03, 0.70, 0.52),
-             COL_WOOD_DARK)
-    make_box("Painting_A_Canvas", (wall_face - 0.005, 2.15, 1.80), (0.02, 0.62, 0.44),
-             (0.72, 0.72, 0.68, 1.0))
-    make_box("Painting_A_Sea", (wall_face - 0.018, 2.15, 1.68), (0.006, 0.62, 0.20),
-             (0.30, 0.40, 0.42, 1.0))
-    make_box("Painting_A_Headland", (wall_face - 0.022, 2.38, 1.75), (0.006, 0.16, 0.10),
-             (0.20, 0.22, 0.20, 1.0))
-    # B: small harbor study — boat hull + mast on slate water
-    make_box("Painting_B_Frame", (wall_face + 0.015, 2.95, 1.78), (0.03, 0.46, 0.38),
-             COL_WOOD_DARK)
-    make_box("Painting_B_Canvas", (wall_face - 0.005, 2.95, 1.78), (0.02, 0.38, 0.30),
-             (0.36, 0.42, 0.46, 1.0))
-    make_box("Painting_B_Hull", (wall_face - 0.018, 2.95, 1.72), (0.006, 0.18, 0.05),
-             (0.55, 0.32, 0.22, 1.0))
-    make_cyl("Painting_B_Mast", (wall_face - 0.018, 2.95, 1.82), 0.005, 0.14, COL_WOOD_DARK)
-    # ── Framed tide chart by the counter (wiki: sells tide charts) ─
-    make_box("TideChart_Frame", (wall_face + 0.015, 3.60, 1.70), (0.03, 0.42, 0.56),
-             COL_WOOD)
-    make_box("TideChart_Sheet", (wall_face - 0.005, 3.60, 1.70), (0.02, 0.36, 0.50), P.PAPER)
-    for gi2 in range(4):
-        make_box(f"TideChart_Row_{gi2}", (wall_face - 0.018, 3.60, 1.86 - gi2 * 0.11),
-                 (0.004, 0.30, 0.020), (0.42, 0.52, 0.62, 1.0))
-    for mi2 in range(3):
-        make_cyl(f"TideChart_Moon_{mi2}", (wall_face - 0.018, 3.48 + mi2 * 0.12, 1.92),
-                 0.014, 0.006, COL_SPRUCE, axis='X')
-    # ── Radiator + the chair beside it (ch14_petra: the cat's wool
-    # pillow lives on this chair when the kitchenette is in use) ──
-    for fi3 in range(7):
-        make_box(f"Radiator_Fin_{fi3}", (3.82, 4.56 + fi3 * 0.075, 0.36),
-                 (0.16, 0.045, 0.56), COL_RADIATOR)
-    make_box("Radiator_TopRail", (3.82, 4.79, 0.655), (0.17, 0.56, 0.03), COL_RADIATOR)
-    for li3, ly in enumerate((4.60, 4.98)):
-        make_cyl(f"Radiator_Foot_{li3}", (3.82, ly, 0.04), 0.025, 0.08, COL_CAST_IRON)
-    make_cyl("Radiator_Pipe", (3.84, 5.06, 1.05), 0.022, 2.10, COL_RADIATOR)
-    make_cyl("Radiator_Valve", (3.84, 5.06, 0.24), 0.040, 0.05, COL_BRASS)
-    _chair("RadiatorChair", 3.50, 4.78, 'W', CHAIR_TINTS[1])
-    make_cyl("RadiatorChair_Cushion", (3.50, 4.78, 0.50), 0.16, 0.05, COL_WOOL, segments=12)
-    # Fire extinguisher between nook and radiator (retail code)
-    make_fire_extinguisher("FireExt", (wall_face + 0.04, 3.98, 0.30))
-    make_floor_plant("FloorPlant_SE", (3.55, 0.45, 0.0))
+def build_office_2026_10():
+    """THE BACK OFFICE as a room to shoot (pass 67, 2026-10-11): x 0.9..4.0,
+    y 6..9 behind the partition. "Petra was in the back office with the door
+    closed" (ch8 Monday, the phone in mediation register); "The bookstore has
+    a couch in the back office. Take it." / "Petra came in behind her with a
+    wool blanket" (ch14). Draft 1: the desk lamp and the flush ceiling
+    fixture (their practicals in the .tscn), the wool blanket folded on the
+    couch's arm, the two-drawer filing cabinet, the rug, the pinboard, the
+    wastebasket, the desk chair. Draft 2 targets: Petra's reading glasses on
+    the papers; the ledger; a framed photo of the shop in 2009; the
+    mediation-register phone as a cordless on its base; a transom over the
+    door so the shop's light reaches in."""
+    # the desk lamp on the desk's east end, the flush fixture over the room's middle
+    make_lathe("Office_Desk_Lamp_Base", (3.30, 8.45, 0.76), [(0.09, 0.0), (0.09, 0.015), (0.04, 0.03), (0.02, 0.06)], COL_BRASS, segments=10)
+    make_cyl("Office_Desk_Lamp_Stem", (3.30, 8.45, 0.96), 0.012, 0.34, COL_BRASS, segments=6)
+    make_lathe("Office_Desk_Lamp_Shade", (3.30, 8.45, 1.10), [(0.03, 0.0), (0.11, 0.0), (0.14, 0.16), (0.0, 0.16)], (0.26, 0.40, 0.34, 1.0), segments=12)
+    make_cyl("Office_Ceiling_Light", (2.45, 7.5, CEIL - 0.05), 0.17, 0.10, (0.94, 0.92, 0.86, 1.0), segments=14)
+    # Petra's wool blanket folded on the couch's west arm
+    make_box("Office_Blanket", (2.15, 6.85, 0.40), (0.40, 0.56, 0.12), (0.36, 0.30, 0.34, 1.0))
+    make_box("Office_Blanket_Fold", (2.15, 6.85, 0.475), (0.36, 0.50, 0.03), (0.40, 0.33, 0.37, 1.0))
+    # the filing cabinet in the NE corner, the wastebasket, the rug, the desk chair
+    make_box("Office_File_Cabinet", (3.72, 8.70, 0.36), (0.42, 0.56, 0.72), (0.44, 0.46, 0.44, 1.0))
+    for di in range(2):
+        make_box(f"Office_File_Drawer_{di}", (3.72, 8.405, 0.20 + di * 0.34), (0.38, 0.012, 0.30), (0.50, 0.52, 0.50, 1.0))
+        make_box(f"Office_File_Pull_{di}", (3.72, 8.39, 0.30 + di * 0.34), (0.10, 0.02, 0.02), COL_BRASS)
+    make_cyl("Office_Wastebasket", (1.25, 8.40, 0.15), 0.13, 0.30, (0.30, 0.32, 0.30, 1.0), segments=10)
+    make_box("Office_Rug", (2.45, 7.55, 0.006), (1.80, 1.20, 0.012), (0.34, 0.30, 0.26, 1.0))
+    make_box("Office_Chair_Seat", (2.7, 7.75, 0.45), (0.44, 0.44, 0.05), COL_WOOD)
+    make_box("Office_Chair_Back", (2.7, 7.53, 0.75), (0.44, 0.05, 0.55), COL_WOOD)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"Office_Chair_Leg_{lx_:+d}_{ly_:+d}", (2.7 + lx_ * 0.18, 7.75 + ly_ * 0.18, 0.22), (0.035, 0.035, 0.44), COL_WOOD)
+    # the pinboard over the desk: invoices, the calendar, a postcard
+    make_box("Office_Pinboard", (2.7, 8.88, 1.55), (1.20, 0.03, 0.80), (0.60, 0.46, 0.30, 1.0))
+    for pi_, (px, pz, pw, ph, col) in enumerate(((2.30, 1.65, 0.20, 0.26, (0.92, 0.90, 0.84, 1.0)), (2.62, 1.50, 0.22, 0.30, (0.90, 0.88, 0.80, 1.0)),
+                                                 (2.98, 1.68, 0.24, 0.18, (0.60, 0.70, 0.76, 1.0)), (3.12, 1.42, 0.18, 0.24, (0.92, 0.90, 0.84, 1.0)))):
+        make_box(f"Office_Pin_{pi_}", (px, 8.86, pz), (pw, 0.004, ph), col)
 
 
-# ═════════════════════════════════════════════════════════════════
-# NORTH ZONE — the office door (closed; the couch is behind it,
-# ch14_petra), the coat hooks BY the office door (ch8_monday:
-# Petra's wax canvas; ch8_aria: Tem hangs hers on the same hook),
-# the desk outside the office door with Petra's clay mug (Margit's,
-# 2009), the wall clock at SEVEN-TWENTY (when Petra came out,
-# ch8_monday), THE COPIER (static_truths.md: Static Truths is run
-# on this machine — a fresh half-letter run sits in the output
-# tray), and the alley back door with boots + mat.
-# ═════════════════════════════════════════════════════════════════
-def build_north_zone():
-    wall_y = ROOM_D
-    # ── Office door (x −3.0..−2.1), closed solid leaf ────────────
-    for sgn in (-1, +1):
-        make_box(f"OfficeDoor_Post_{sgn:+d}", (-2.55 + sgn * 0.49, wall_y - 0.05, 1.10),
-                 (0.08, 0.14, 2.20), COL_WOOD)
-    make_box("OfficeDoor_Header", (-2.55, wall_y - 0.06, 2.26), (1.06, 0.10, 0.12), COL_WOOD)
-    make_box("OfficeDoor_Leaf", (-2.55, wall_y + 0.02, 1.08), (0.86, 0.06, 2.12),
-             COL_WOOD_DARK)
-    for pi in range(2):
-        make_box(f"OfficeDoor_Panel_{pi}", (-2.55, wall_y - 0.012, 0.70 + pi * 0.85),
-                 (0.58, 0.008, 0.62), COL_WOOD)
-    make_cyl("OfficeDoor_Knob", (-2.24, wall_y - 0.05, 1.02), 0.028, 0.05, COL_BRASS,
-             axis='Y')
-    make_door_hinges("OfficeDoor_Hinge", edge_x=-2.96, edge_y=wall_y - 0.02,
-                     edge_z_centers=[0.35, 1.05, 1.80], axis='X')
-    make_box("OfficeDoor_Sign", (-2.55, wall_y - 0.115, 1.62), (0.24, 0.012, 0.10),
-             P.PAPER_AGED)
-    # ── Coat hooks by the office door (west side) ────────────────
-    make_box("CoatHooks_Rail", (-3.45, wall_y - 0.115, 1.70), (0.50, 0.03, 0.08), COL_WOOD)
-    for hi, hx in enumerate((-3.62, -3.45, -3.28)):
-        make_cyl(f"CoatHooks_Peg_{hi}", (hx, wall_y - 0.16, 1.68), 0.014, 0.10, COL_BRASS,
-                 axis='Y')
-    # Petra's wax canvas on the middle peg (the town uniform)
-    make_box("PetraCoat_Body", (-3.45, wall_y - 0.22, 1.28), (0.34, 0.07, 0.76), COL_RAINCOAT)
-    make_box("PetraCoat_Hood", (-3.45, wall_y - 0.22, 1.70), (0.22, 0.08, 0.12), COL_RAINCOAT)
-    make_box("PetraCoat_Flap", (-3.45, wall_y - 0.262, 1.24), (0.10, 0.012, 0.60),
-             (0.32, 0.30, 0.22, 1.0))
-    # ── The desk outside the office door ─────────────────────────
-    make_box("Desk_Top", (-1.2, 5.62, 0.76), (1.25, 0.55, 0.04), COL_WOOD)
-    for li4, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"Desk_Leg_{li4}", (-1.2 + sx * 0.55, 5.62 + sy * 0.21, 0.37),
-                 0.022, 0.74, COL_WOOD_DARK)
-    make_box("Desk_Drawer", (-1.2, 5.42, 0.66), (1.10, 0.03, 0.12), COL_WOOD_DARK)
-    make_cyl("Desk_DrawerKnob", (-1.2, 5.40, 0.66), 0.014, 0.02, COL_BRASS, axis='Y')
-    # Petra's clay mug from Margit's, 2009 (ch8_monday — Lena sets
-    # the coffee here when the office door is closed)
-    _mug("MargitMug", -1.55, 5.60, 0.78, COL_CLAY)
-    for si3 in range(3):
-        make_box(f"Desk_Papers_{si3}", (-1.05, 5.62, 0.79 + si3 * 0.012),
-                 (0.24, 0.32, 0.010), P.PAPER if si3 % 2 == 0 else P.PAPER_AGED)
-    make_box("Desk_HoldSlips", (-0.78, 5.55, 0.795), (0.10, 0.14, 0.03), P.NEWSPRINT)
-    make_cyl("Desk_Lamp_Base", (-1.68, 5.72, 0.79), 0.06, 0.02, COL_CAST_IRON, segments=12)
-    make_cyl("Desk_Lamp_Pole", (-1.68, 5.72, 0.94), 0.010, 0.28, COL_BRASS)
-    make_cyl("Desk_Lamp_Shade", (-1.63, 5.68, 1.09), 0.075, 0.06, (0.24, 0.40, 0.30, 1.0),
-             segments=12)
-    # Wall clock over the desk — 7:20, the minute Petra came out of
-    # the office (ch8_monday)
-    make_wall_clock("Clock", (-1.2, wall_y - 0.13, 2.30), frozen_hour=7, frozen_min=20)
-    # ── THE COPIER — back-west corner (static_truths.md: "printed
-    # on the Salty Tome's back-room copier"; first run $2, then
-    # "the copier is the copier. I'm not in the way.") ────────────
-    make_box("Copier_Body", (-3.50, 5.30, 0.50), (0.66, 0.58, 0.88), COL_XEROX)
-    make_box("Copier_Top", (-3.50, 5.30, 0.955), (0.68, 0.60, 0.035), COL_XEROX_TOP)
-    make_box("Copier_Lid", (-3.50, 5.34, 0.99), (0.60, 0.48, 0.035), COL_XEROX)
-    make_box("Copier_LidHandle", (-3.50, 5.06, 0.995), (0.18, 0.03, 0.025), COL_XEROX_TOP)
-    make_box("Copier_Panel", (-3.28, 5.02, 0.90), (0.20, 0.03, 0.10), COL_XEROX_PNL)
-    for bi4 in range(4):
-        make_cyl(f"Copier_Button_{bi4}", (-3.34 + bi4 * 0.045, 5.005, 0.90), 0.011, 0.012,
-                 (0.66, 0.64, 0.60, 1.0) if bi4 else (0.30, 0.62, 0.34, 1.0), axis='Y')
-    for di2 in range(2):
-        make_box(f"Copier_Drawer_{di2}", (-3.50, 5.005, 0.30 + di2 * 0.20),
-                 (0.56, 0.02, 0.14), (0.78, 0.78, 0.80, 1.0))
-        make_box(f"Copier_DrawerHandle_{di2}", (-3.50, 4.99, 0.355 + di2 * 0.20),
-                 (0.30, 0.012, 0.02), COL_XEROX_TOP)
-    make_box("Copier_OutTray", (-3.06, 5.30, 0.72), (0.26, 0.34, 0.02), COL_XEROX_TOP)
-    # Fresh Static Truths run in the tray — half-letter, single-fold
-    for zi2 in range(4):
-        make_box(f"Copier_Output_Sheet_{zi2}", (-3.06, 5.30, 0.735 + zi2 * 0.006),
-                 (0.145, 0.215, 0.005), P.PAPER)
-    make_box("Copier_Output_StaticTruths", (-3.06, 5.24, 0.762), (0.11, 0.05, 0.004),
-             P.METAL_BLACK)
-    make_box("Copier_ReamStack_0", (-3.78, 4.86, 0.03), (0.23, 0.30, 0.06), P.PAPER)
-    make_box("Copier_ReamStack_1", (-3.78, 4.86, 0.09), (0.23, 0.30, 0.06), P.PAPER_AGED)
-    make_box("Copier_Cord", (-3.72, 5.62, 0.015), (0.03, 0.45, 0.02), COL_CAST_IRON)
-    # ── The alley back door (x −0.3..+0.6) — Lena's morning door ─
-    for sgn in (-1, +1):
-        make_box(f"BackDoor_Post_{sgn:+d}", (0.15 + sgn * 0.49, wall_y - 0.05, 1.10),
-                 (0.08, 0.14, 2.20), COL_WOOD)
-    make_box("BackDoor_Header", (0.15, wall_y - 0.06, 2.26), (1.06, 0.10, 0.12), COL_WOOD)
-    make_box("BackDoor_Leaf", (0.15, wall_y + 0.02, 1.08), (0.86, 0.06, 2.12), COL_WOOD_DARK)
-    for pi3 in range(2):
-        make_box(f"BackDoor_Panel_{pi3}", (0.15, wall_y - 0.012, 0.70 + pi3 * 0.85),
-                 (0.58, 0.008, 0.62), COL_WOOD)
-    make_cyl("BackDoor_Knob", (0.46, wall_y - 0.05, 1.02), 0.028, 0.05, COL_BRASS, axis='Y')
-    make_box("BackDoor_Deadbolt", (0.46, wall_y - 0.055, 1.18), (0.05, 0.02, 0.08), COL_BRASS)
-    make_door_hinges("BackDoor_Hinge", edge_x=-0.26, edge_y=wall_y - 0.02,
-                     edge_z_centers=[0.35, 1.05, 1.80], axis='X')
-    make_box("BackDoor_Mat", (0.15, 5.55, 0.006), (0.90, 0.55, 0.010), P.RUBBER_MAT)
-    for bi5, bx2 in enumerate((-0.52, -0.38)):
-        make_cyl(f"Boot_{bi5}_Shaft", (bx2, 5.70, 0.14), 0.05, 0.24, COL_RAINCOAT)
-        make_box(f"Boot_{bi5}_Foot", (bx2, 5.62, 0.035), (0.09, 0.22, 0.07),
-                 (0.24, 0.22, 0.18, 1.0))
+def build_alley_2026_08():
+    """The alley behind the store: asphalt, the dumpster Petra reads
+    beside, and the MURAL WALL with the three-foot painted face
+    (vol7_ch14_figure)."""
+    AL_Y0, AL_Y1 = 9.0, 12.0
+    make_box("Alley_Asphalt", (0.0, (AL_Y0+AL_Y1)/2.0, -0.02), (ROOM_W+3.0, AL_Y1-AL_Y0, 0.04),
+             (0.30, 0.30, 0.32, 1.0))
+    # The mural wall — the facing building's brick flank.
+    make_box("Mural_Wall", (0.0, AL_Y1, 1.60), (ROOM_W+3.0, 0.24, 3.60), (0.46, 0.30, 0.24, 1.0))
+    # The FACE: ~0.9m across at head height, hair falling to waist
+    # height (stacked paint planes proud of the brick).
+    fx = -0.8
+    for zi2, (r, col) in enumerate([(0.18, (0.78, 0.62, 0.50, 1.0)), (0.32, (0.80, 0.64, 0.52, 1.0)),
+                                    (0.42, (0.82, 0.66, 0.54, 1.0)), (0.45, (0.82, 0.66, 0.54, 1.0)),
+                                    (0.42, (0.80, 0.64, 0.52, 1.0)), (0.30, (0.78, 0.62, 0.50, 1.0))]):
+        make_box(f"Face_Band_{zi2}", (fx, AL_Y1-0.13, 2.30-zi2*0.18), (r*2.0, 0.02, 0.18), col)
+    for ei3, exo in enumerate([-0.18, 0.18]):
+        make_box(f"Face_Eye_{ei3}", (fx+exo, AL_Y1-0.145, 2.12), (0.10, 0.015, 0.05),
+                 (0.20, 0.22, 0.26, 1.0))
+    make_box("Face_Mouth", (fx, AL_Y1-0.145, 1.72), (0.16, 0.015, 0.035), (0.52, 0.30, 0.28, 1.0))
+    # Hair: dark sheets from crown to waist height either side.
+    for hi, (hxo, hw, hz, hh) in enumerate([(-0.55, 0.35, 1.65, 1.70), (0.55, 0.35, 1.65, 1.70),
+                                            (0.0, 1.15, 2.48, 0.30)]):
+        make_box(f"Face_Hair_{hi}", (fx+hxo, AL_Y1-0.14, hz), (hw, 0.02, hh), (0.16, 0.14, 0.16, 1.0))
+    # The dumpster ("by my reading at the dumpster").
+    make_box("Dumpster_Body", (2.4, 10.2, 0.65), (1.90, 1.00, 1.10), (0.20, 0.34, 0.28, 1.0))
+    make_box("Dumpster_Lid", (2.4, 10.45, 1.24), (1.92, 0.55, 0.06), (0.16, 0.28, 0.23, 1.0))
+    make_box("Dumpster_Lid_Open", (2.4, 9.85, 1.45), (1.92, 0.06, 0.55), (0.16, 0.28, 0.23, 1.0))
+    for wi2, wxo in enumerate([-0.75, 0.75]):
+        make_cyl(f"Dumpster_Wheel_{wi2}", (2.4+wxo, 10.2, 0.08), 0.07, 0.05, COL_BLACK,
+                 axis='X', segments=8)
+    # A milk crate reading-perch and a downspout for texture.
+    make_box("Alley_Crate", (1.1, 10.6, 0.16), (0.35, 0.35, 0.32), (0.55, 0.45, 0.30, 1.0))
+    make_cyl("Downspout", (-3.9, 9.15, 1.40), 0.05, 2.80, (0.44, 0.44, 0.46, 1.0), segments=8)
 
 
-# ═════════════════════════════════════════════════════════════════
-# NEW ARRIVALS — the table between the door and the counter
-# (ch8_monday: Edgar "bought a book from the new-arrivals shelf
-# without asking what it was"; Roy walks it picking books up and
-# putting them down). Card lettering scene-side on NewArrivals_Card.
-# ═════════════════════════════════════════════════════════════════
-def build_new_arrivals():
-    make_box("NewArrivals_Top", (1.55, 1.85, 0.76), (1.15, 0.68, 0.05), COL_WOOD_LT)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"NewArrivals_Leg_{li}", (1.55 + sx * 0.50, 1.85 + sy * 0.27, 0.37),
-                 0.022, 0.74, COL_WOOD_DARK)
-    make_box("NewArrivals_Shelf", (1.55, 1.85, 0.30), (1.00, 0.55, 0.03), COL_WOOD_DARK)
-    _book_pile("NewArrivals_PileA", 1.20, 1.70, 0.785, 4, seed=3)
-    _book_pile("NewArrivals_PileB", 1.55, 2.02, 0.785, 3, seed=11)
-    _book_pile("NewArrivals_PileC", 1.90, 1.72, 0.785, 5, seed=17)
-    for fi, (fx, fy) in enumerate([(1.32, 2.02), (1.80, 2.05)]):
-        make_box(f"NewArrivals_FaceUp_{fi}", (fx, fy, 0.795), (0.155, 0.215, 0.020),
-                 BOOK_TINTS[(fi * 3 + 2) % len(BOOK_TINTS)])
-    _book_pile("NewArrivals_Under", 1.45, 1.85, 0.315, 3, seed=23)
-    make_box("NewArrivals_CardStand", (2.02, 1.95, 0.815), (0.06, 0.04, 0.06), COL_WOOD_DARK)
-    make_box("NewArrivals_Card", (2.02, 1.95, 0.90), (0.16, 0.012, 0.11), P.PAPER)
+def build_detail_pass_2026_08():
+    """D2 surface breakup + a first D3 taste (set-detail playbook).
+    Forty-one years of Petra: the shop's wear is deep and settled —
+    the aisle path is nearly a groove, the kitchenette has poured
+    ten thousand kettles, the alley is honest about the dumpster.
+    D4 (use states) next."""
+    wear = (0.46, 0.35, 0.24, 1.0)
+    # The aisle groove: door -> counter -> the N doorway -> annex.
+    make_traffic_wear("Wear_Aisle", [(0.0, 0.6), (0.0, 2.6), (2.0, 2.6)],
+                      width=0.75, tint=wear)
+    make_traffic_wear("Wear_ToBack", [(2.9, 3.4), (2.9, 6.6)],
+                      width=0.65, tint=wear)
+    # Kitchenette path: back door -> kettle -> the window table; and
+    # the cat chair's patch (he is walked around, never moved).
+    make_traffic_wear("Wear_Kitch", [(-3.3, 8.4), (-3.3, 7.4), (-1.9, 7.4)],
+                      width=0.6, tint=(0.50, 0.41, 0.30, 1.0))
+    make_floor_stain("Stain_Kettle", (-3.5, 7.85, ), radius=0.22,
+                     tint=(0.48, 0.39, 0.28, 1.0))
+    make_floor_stain("Stain_CatChair", (-0.5, 6.7), radius=0.40,
+                     tint=(0.50, 0.42, 0.32, 1.0))
+    # Reading-nook rug shadow (the rug has not moved since 2015).
+    make_floor_stain("Stain_NookEdge", (-2.6, 1.3), radius=0.30, tint=wear)
+    # Kick scuffs: sales counter + the back door's boot line.
+    # the counter runs N-S (x 2.25..2.95, y 1.3..3.9); its customer face is the
+    # WEST kick (2026-09-23: the band ran E-W 19 cm through the counter front)
+    make_scuff_band("Scuff_Counter", (2.224, 2.6), length=2.5, axis='Y',
+                    band_z=0.08, tint=(0.28, 0.20, 0.13, 1.0))
+    make_scuff_band("Scuff_BackDoor", (-3.3, 8.90), length=0.9, axis='X',
+                    band_z=0.09, tint=(0.26, 0.20, 0.14, 1.0))
+    # Ceiling gather over the tall shelf walls.
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, 3.0, 0.0), length=5.4,
+                        axis='Y', band_z=CEIL-0.16, tint=(0.72, 0.64, 0.50, 1.0))
+    make_wall_tint_band("Band_E", (ROOM_W/2.0-0.105, 3.0, 0.0), length=5.4,
+                        axis='Y', band_z=CEIL-0.16, tint=(0.72, 0.64, 0.50, 1.0))
+    # Thresholds at every door the scenes use.
+    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X',
+                   tint=(0.46, 0.32, 0.20, 1.0))
+    make_threshold("Threshold_Annex", (2.9, ROOM_D), width=1.0, axis='X',
+                   tint=(0.46, 0.32, 0.20, 1.0))
+    make_threshold("Threshold_Back", (-3.3, 9.0), width=0.95, axis='X',
+                   tint=(0.46, 0.32, 0.20, 1.0))
+    # First infrastructure: switch by the door, the kitchenette
+    # outlet the kettle cord actually reaches.
+    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_Kitch", (-4.0, 7.6), axis='Y', face_sign=1, aged=True)
+    make_cord_run("Cord_Kettle", (-3.55, 7.85, 0.98), (-3.89, 7.6, 0.30))
+    # ── Alley truth ──
+    make_floor_stain("Alley_Dumpster_Juice", (2.4, 9.65), radius=0.5,
+                     tint=(0.22, 0.22, 0.22, 1.0))
+    make_floor_stain("Alley_Puddle", (-1.2, 10.6), radius=0.45,
+                     tint=(0.26, 0.27, 0.30, 1.0))
+    # Downspout streak on the store's back wall + grime base band
+    # along the mural wall.
+    make_box("Alley_Downspout_Streak", (-3.9, 9.06, 1.30), (0.22, 0.02, 2.5),
+             (0.36, 0.36, 0.36, 1.0))
+    make_box("Alley_MuralWall_Grime", (0.0, 11.86, 0.25), (10.8, 0.02, 0.5),
+             (0.34, 0.24, 0.20, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# KITCHENETTE (NE, ch8_monday + ch14_petra) — counter with Petra's
-# kettle + the pour-over cone (the dark French Soren roasts; the
-# cone fight is Petra's pleasure), the small sandwich fridge, the
-# four mugs on the shelf (Petra set out four, ch14), the sink, the
-# back window with the alley beyond, and the table the four of
-# them sit at.
-# ═════════════════════════════════════════════════════════════════
-def build_kitchenette():
-    # Window frame (opening x 2.0..3.4, z 1.05..2.25) — rain-side
-    make_box("KitchWin_Sill", (2.7, ROOM_D, 1.035), (1.52, 0.22, 0.07), COL_WOOD)
-    make_box("KitchWin_Head", (2.7, ROOM_D, 2.265), (1.52, 0.22, 0.07), COL_WOOD)
-    for sgn in (-1, +1):
-        make_box(f"KitchWin_Jamb_{sgn:+d}", (2.7 + sgn * 0.73, ROOM_D, 1.65),
-                 (0.06, 0.22, 1.30), COL_WOOD)
-    make_box("KitchWin_MullV", (2.7, ROOM_D, 1.65), (0.05, 0.14, 1.22), COL_WOOD)
-    make_box("KitchWin_MullH", (2.7, ROOM_D, 1.65), (1.40, 0.14, 0.05), COL_WOOD)
-    # Counter run along the north wall x 0.95..3.05
-    make_box("Kitch_Cabinet", (2.0, 5.70, 0.44), (2.10, 0.52, 0.88), COL_WOOD)
-    make_box("Kitch_Top", (2.0, 5.70, 0.90), (2.20, 0.58, 0.04), COL_BUTCHER)
-    make_box("Kitch_Kick", (2.0, 5.43, 0.08), (2.10, 0.02, 0.16), COL_WOOD_DARK)
-    for di3, dx2 in enumerate((1.45, 2.55)):
-        make_box(f"Kitch_CabDoor_{di3}", (dx2, 5.435, 0.48), (0.72, 0.015, 0.66), COL_WOOD_LT)
-        make_cyl(f"Kitch_CabKnob_{di3}", (dx2 + 0.28, 5.42, 0.60), 0.014, 0.02, COL_BRASS,
-                 axis='Y')
-    # Kettle (Petra's, ch8_monday)
-    make_cyl("Kettle_Body", (1.30, 5.70, 0.995), 0.080, 0.15, COL_STEEL, segments=12)
-    make_cyl("Kettle_Lid", (1.30, 5.70, 1.08), 0.055, 0.02, COL_STEEL)
-    make_cyl("Kettle_Knob", (1.30, 5.70, 1.10), 0.014, 0.02, COL_WOOD_DARK)
-    make_box("Kettle_Spout", (1.39, 5.70, 0.975), (0.07, 0.018, 0.018), COL_STEEL)
-    make_box("Kettle_Handle", (1.21, 5.70, 1.085), (0.03, 0.02, 0.09), COL_WOOD_DARK)
-    # THE CONE + carafe (the coffee is made the way Petra wants it
-    # made, and she still complains — ch8_monday)
-    make_box("PourOver_Base", (1.78, 5.68, 0.925), (0.30, 0.22, 0.03), COL_WOOD)
-    for ui, ux in enumerate((1.66, 1.90)):
-        make_box(f"PourOver_Upright_{ui}", (ux, 5.68, 1.06), (0.03, 0.03, 0.24), COL_WOOD)
-    make_box("PourOver_TopRail", (1.78, 5.68, 1.195), (0.30, 0.10, 0.03), COL_WOOD)
-    make_cyl("PourOver_Cone_Upper", (1.78, 5.68, 1.245), 0.062, 0.06, COL_CREAM)
-    make_cyl("PourOver_Cone_Lower", (1.78, 5.68, 1.21), 0.038, 0.03, COL_CREAM)
-    make_cyl("PourOver_Carafe", (1.78, 5.68, 0.99), 0.052, 0.11, (0.62, 0.42, 0.22, 1.0))
-    # Soren's dark French, in a labeled tin
-    make_cyl("CoffeeTin", (2.10, 5.74, 1.00), 0.045, 0.13, (0.22, 0.13, 0.08, 1.0))
-    make_box("CoffeeTin_Label", (2.055, 5.74, 1.00), (0.006, 0.06, 0.07), P.PAPER_AGED)
-    # Sink under the window + gooseneck faucet
-    make_box("Kitch_Sink_Basin", (2.70, 5.72, 0.865), (0.38, 0.32, 0.09), COL_STEEL,
-             open_faces={'+Z'})
-    make_box("Kitch_Sink_Floor", (2.70, 5.72, 0.828), (0.36, 0.30, 0.01),
-             (0.42, 0.44, 0.46, 1.0))
-    make_cyl("Kitch_Faucet_Riser", (2.70, 5.86, 1.02), 0.013, 0.22, COL_STEEL)
-    make_cyl("Kitch_Faucet_Spout", (2.70, 5.78, 1.12), 0.011, 0.18, COL_STEEL, axis='Y')
-    # Dish rack with the second cup (Lena's own, ch8_monday)
-    make_box("Kitch_DishRack", (3.00, 5.70, 0.925), (0.26, 0.30, 0.03), COL_WOOD_DARK)
-    _mug("Kitch_SecondCup", 3.00, 5.70, 0.94, CHAIR_TINTS[1])
-    # The small sandwich fridge ("There is a sandwich in the small
-    # fridge if you do not eat. Eat it." — ch8_monday)
-    make_box("Kitch_Fridge", (3.50, 5.66, 0.42), (0.56, 0.56, 0.84), COL_CREAM)
-    make_box("Kitch_Fridge_Door", (3.50, 5.365, 0.42), (0.52, 0.02, 0.78), (0.84, 0.82, 0.76, 1.0))
-    make_box("Kitch_Fridge_Handle", (3.28, 5.35, 0.52), (0.03, 0.015, 0.26), COL_STEEL)
-    make_box("Kitch_Fridge_Note", (3.55, 5.352, 0.60), (0.10, 0.006, 0.08), P.PAPER)
-    # Mug shelf west of the window — the FOUR mugs Petra set out
-    # (ch14_petra)
-    make_box("Kitch_MugShelf", (1.30, 5.81, 1.60), (0.80, 0.18, 0.03), COL_WOOD)
-    for ki2, sgn in enumerate((-1, +1)):
-        make_box(f"Kitch_MugShelf_Bracket_{ki2}", (1.30 + sgn * 0.34, 5.855, 1.54),
-                 (0.03, 0.09, 0.10), P.METAL_BLACK)
-    for mi3 in range(4):
-        _mug(f"Kitch_ShelfMug_{mi3}", 1.02 + mi3 * 0.19, 5.81, 1.615,
-             [COL_CREAM, COL_CLAY, CHAIR_TINTS[1], (0.62, 0.34, 0.22, 1.0)][mi3])
-    # ── The kitchenette table (ch14: Lena, Cale across, Petra at
-    # the end; Kai stood by the door — three chairs + the radiator
-    # chair make the four seats) ─────────────────────────────────
-    make_box("KitchTable_Top", (2.85, 4.62, 0.74), (0.85, 0.85, 0.04), COL_WOOD_LT)
-    for li5, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"KitchTable_Leg_{li5}", (2.85 + sx * 0.36, 4.62 + sy * 0.36, 0.36),
-                 0.022, 0.72, COL_WOOD_DARK)
-    _chair("KitchChair_S", 2.85, 4.02, 'N', CHAIR_TINTS[0])
-    _chair("KitchChair_W", 2.24, 4.62, 'E', CHAIR_TINTS[2])
-    _chair("KitchChair_N", 2.85, 5.20, 'S', CHAIR_TINTS[3])
-    # Two of the four cups on the table (the hour of sitting, ch14)
-    _mug("KitchTable_Cup_A", 2.68, 4.50, 0.76, COL_CLAY)
-    _mug("KitchTable_Cup_B", 3.02, 4.74, 0.76, COL_CREAM)
+def build_use_states_2026_08():
+    """D3 remainder + D4 use states (set-detail playbook). The store
+    mid-morning: Petra ON the phone behind her door, the four mugs
+    actually poured, the hold shelf doing its slow work. Also lands
+    the three commercial-report props draft 1 missed: the SLOW
+    TERMINAL, the HOLD SHELF, the open LEDGER. D5/D6 next."""
+    # ── Counter: the ledger open beside the register, the slow
+    # terminal (a CRT that takes its time), the hold shelf below
+    # with three tagged books waiting for their people ──
+    # The counter runs N-S: x 2.2..3.0, y 1.25..3.95, top face 1.01,
+    # the clerk to the east. (2026-09-22: this pass dressed an E-W
+    # counter that isn't there — ledger, terminal and hold shelf all
+    # hung beside the real one, on air.)
+    cx, cy = ROOM_W/2.0 - 1.4, 2.6
+    top = 1.01
+    make_box("Ledger_Open_L", (cx - 0.18, cy - 0.15, top + 0.0075), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
+    make_box("Ledger_Open_R", (cx + 0.01, cy - 0.15, top + 0.0075), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
+    make_box("Ledger_Spine", (cx - 0.085, cy - 0.15, top + 0.014), (0.02, 0.26, 0.012), (0.36, 0.24, 0.16, 1.0))
+    make_box("SlowTerminal_Body", (cx, cy + 0.25, top + 0.17), (0.40, 0.36, 0.34), (0.78, 0.75, 0.68, 1.0))
+    make_box("SlowTerminal_Screen", (cx + 0.19, cy + 0.25, top + 0.19), (0.02, 0.30, 0.22), (0.16, 0.24, 0.18, 1.0))   # faces the clerk
+    make_box("SlowTerminal_Cursor", (cx + 0.2025, cy + 0.16, top + 0.14), (0.005, 0.03, 0.02), (0.55, 0.85, 0.55, 1.0))
+    make_box("SlowTerminal_Keyboard", (cx + 0.30, cy + 0.25, top + 0.0125), (0.14, 0.36, 0.025), (0.70, 0.67, 0.60, 1.0))
+    # the hold shelf on the counter's east face, the books on it
+    make_box("Hold_Shelf", (cx + 0.475, cy + 0.42, 0.59), (0.25, 1.35, 0.03), COL_WOOD_DK)
+    for hi in range(3):
+        make_box(f"Hold_Book_{hi}", (cx + 0.475, cy - 0.08 + hi * 0.35, 0.63),
+                 (0.17, 0.24, 0.05), BOOK_SPINES[(hi * 2) % len(BOOK_SPINES)])
+        make_box(f"Hold_Slip_{hi}", (cx + 0.555, cy - 0.08 + hi * 0.35, 0.6575),
+                 (0.14, 0.06, 0.005), (0.94, 0.92, 0.84, 1.0))
+    # ── Petra's office mid-call: handset OFF the cradle, coiled
+    # cord to her ear-height, papers pushed to one side ──
+    make_box("Office_Handset_InUse", (2.35, 8.05, 1.26), (0.06, 0.20, 0.05), COL_BLACK)   # at the cord's end (2026-09-22)
+    # the cord: one line from the phone's base to the handset, the coil
+    # rings riding it (2026-09-22: four rings hung 10 cm apart on nothing)
+    make_tube("Office_PhoneCord", [(2.35, 8.26, 0.815), (2.35, 8.05, 1.235)], 0.010, COL_BLACK, segments=4)
+    for ci in range(4):
+        t_ = (ci + 0.5) / 4.0
+        make_cyl(f"Office_PhoneCoil_{ci}", (2.35, 8.26 - 0.21 * t_, 0.815 + 0.42 * t_),
+                 0.025, 0.03, COL_BLACK, segments=6)
+    make_box("Office_Papers_Pushed", (3.25, 8.45, 0.775), (0.30, 0.24, 0.03), (0.88, 0.86, 0.80, 1.0))
+    # ── The four mugs POURED (dark coffee discs) + the kettle just
+    # set down off-center on the hob ──
+    for mi in range(4):
+        mx = -3.40 + 0.14 * (mi % 2)
+        my = 6.55 + 0.16 * (mi // 2)
+        make_cyl(f"Mug_{mi}_Coffee", (mx, my, 1.031), 0.033, 0.008, (0.24, 0.16, 0.10, 1.0), segments=8)   # in the rim (2026-09-22: 4 cm over it)
+    make_cyl("Clay_Mug_Coffee", (-3.62, 6.70, 1.046), 0.038, 0.008, (0.26, 0.17, 0.11, 1.0), segments=8)
+    # ── The reading nook mid-read: the side-table book now OPEN on
+    # the chair arm, cushion dented (darker patch) ──
+    make_box("Nook_Book_Open_L", (-3.08, 1.62, 0.655), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))   # ON the chair arm (2026-09-22: 12 cm east of it)
+    make_box("Nook_Book_Open_R", (-2.96, 1.62, 0.655), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))
+    make_box("Nook_Cushion_Dent", (-2.9, 1.3, 0.555), (0.36, 0.34, 0.015), (0.40, 0.24, 0.17, 1.0))
+    # ── The alley crate as a reading perch: Petra's glasses folded
+    # on it + the folded newspaper ("by my reading at the dumpster") ──
+    make_box("Alley_Glasses_Bridge", (1.1, 10.55, 0.335), (0.09, 0.012, 0.008), (0.24, 0.22, 0.20, 1.0))
+    for gi, gxo in enumerate([-0.05, 0.05]):
+        make_cyl(f"Alley_Glasses_Lens_{gi}", (1.1 + gxo, 10.55, 0.333), 0.022, 0.005,
+                 (0.70, 0.76, 0.78, 0.6), segments=8)
+    make_box("Alley_Newspaper", (1.1, 10.72, 0.335), (0.22, 0.16, 0.012), (0.84, 0.82, 0.76, 1.0))
+    make_box("Alley_Newspaper_Fold", (1.1, 10.72, 0.345), (0.22, 0.015, 0.008), (0.70, 0.68, 0.62, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# CEILING — warm pendants (bookshop, not fluorescent-tube retail:
-# the scaffold's tube fixtures were the wrong vocabulary, per the
-# Cosmic Comics scaffold lesson), green library shades over the
-# counter, smoke detector, one HVAC vent.
-# ═════════════════════════════════════════════════════════════════
-def build_ceiling_infra():
-    _pendant("Pendant_Aisle", 0.0, 2.7)
-    _pendant("Pendant_Kids", -2.85, 1.25)
-    _pendant("Pendant_Nook", 3.15, 2.40)
-    _pendant("Pendant_Kitch", 2.85, 4.70)
-    _pendant("Pendant_Counter_W", 0.35, 3.85, drop=0.70, shade=(0.24, 0.40, 0.30, 1.0))
-    _pendant("Pendant_Counter_E", 1.65, 3.85, drop=0.70, shade=(0.24, 0.40, 0.30, 1.0))
-    make_smoke_detector("Smoke", (-0.6, 3.4, CEIL))
-    make_hvac_vent("HVAC", (0.9, 5.0, CEIL), width=0.80, depth=0.40)
+def build_beyond_glass_2026_08():
+    """D5 · Hemlock Street through the front glass (set-detail
+    playbook): sidewalk with joints, a parked car at the curb, the
+    facing building with one lit window, a mailbox, a street tree.
+    The alley (N) was dressed in the annex pass; this closes the
+    last raw edge. D6 coverage rides in the tscn markers."""
+    make_box("Hemlock_Sidewalk", (0.0, -1.6, -0.02), (14.0, 2.6, 0.04), (0.56, 0.55, 0.52, 1.0))
+    for ji, jx in enumerate([-4.5, -1.5, 1.5, 4.5]):
+        make_box(f"Hemlock_Joint_{ji}", (jx, -1.6, 0.005), (0.04, 2.6, 0.01), (0.44, 0.43, 0.40, 1.0))
+    make_box("Hemlock_Asphalt", (0.0, -4.8, -0.02), (14.0, 3.8, 0.04), (0.27, 0.27, 0.29, 1.0))
+    make_box("Hemlock_Centerline", (0.0, -4.8, 0.005), (12.5, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
+    # The parked car framed by the front window (x=-2.5 glass).
+    make_box("Hemlock_Car_Body", (-2.7, -2.6, 0.55), (4.2, 1.75, 0.55), (0.30, 0.34, 0.30, 1.0))
+    for wxo in (-1.4, 1.4):   # wheels (2026-09-22: the car hung 28 cm over the street)
+        for sgn in (-1, 1):
+            make_cyl(f"Hemlock_Car_Wheel_{wxo:+.1f}_{sgn:+d}", (-2.7 + wxo, -2.6 + sgn * 0.82, 0.30), 0.30, 0.20,
+                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
+    make_box("Hemlock_Car_Cabin", (-3.0, -2.6, 1.02), (2.2, 1.6, 0.45), (0.30, 0.34, 0.30, 1.0))
+    # Mailbox on the sidewalk + street tree between sightlines.
+    make_box("Hemlock_Mailbox_Body", (2.6, -1.0, 1.05), (0.5, 0.4, 0.5), (0.22, 0.30, 0.46, 1.0))
+    make_box("Hemlock_Mailbox_Leg", (2.6, -1.0, 0.4), (0.08, 0.08, 0.8), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Hemlock_Tree_Trunk", (4.3, -1.4, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
+    # 2026-08-04: the street tree seen through the window had a BOX
+    # crown. Blob now.
+    from _props.geometry import make_blob
+    make_blob("Hemlock_Tree_Crown", (4.3, -1.4, 3.3), 1.05,
+              (0.16, 0.24, 0.15, 1.0), noise=0.22, seed=5, squash=0.9)
+    # The facing building: facade band, one lit window (the town is
+    # awake), a dark doorway.
+    make_box("Hemlock_Across_Facade", (0.0, -7.6, 2.0), (13.0, 0.6, 4.0), (0.42, 0.36, 0.30, 1.0))
+    make_box("Hemlock_Across_Win_Dark", (-3.0, -7.27, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))   # on the facade
+    make_box("Hemlock_Across_Win_Lit", (1.8, -7.27, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Hemlock_Across_Door", (-0.6, -7.25, 1.15), (0.95, 0.06, 2.3), (0.24, 0.20, 0.18, 1.0))
+
+
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues on the interior preset; the office phone
+    exists (marker only). Built:
+
+    - THE BELL OVER THE DOOR ("She looked at the bell over the
+      door for a long count."): brass bell + clapper on a bracket
+      at the front entry's transom, inside — the pit stop's
+      door-bell grammar.
+    - THE BRASS BELL ("She picked up the small brass bell on the
+      counter and turned it over in her hand and set it back
+      down."): on the counter south of the register.
+    """
+    brass = (0.72, 0.58, 0.28, 1.0)
+    make_box("Door_Bell_Bracket", (0.30, 0.14, 2.45), (0.030, 0.080, 0.030),
+             (0.40, 0.34, 0.26, 1.0))
+    make_cyl("Door_Bell", (0.30, 0.18, 2.41), 0.035, 0.050, brass, segments=8)
+    make_cyl("Door_Bell_Clapper", (0.30, 0.18, 2.375), 0.008, 0.020,
+             (0.30, 0.26, 0.20, 1.0), segments=6)
+    make_cyl("Brass_Bell", (2.82, 2.35, 1.028), 0.030, 0.045, brass, segments=8)
+    make_cyl("Brass_Bell_Handle", (2.82, 2.35, 1.065), 0.008, 0.030,
+             (0.55, 0.44, 0.22, 1.0), segments=6)
+
+
+def build_alley_2026_09():
+    """THE ALLEY, RE-HOMED (2026-09-01). Nine vol7 segments — the
+    painting of the face (ch14), the crowd at the wall (ch20/21), the
+    leaving — sat on the cabin_road backdrop; they now stage here, and
+    the alley needed what those chapters hold:
+
+    - THE STARFISH NEBULA on this wall (Lena's kitchen window looks
+      down at it) and THE SUBSTRATE PATCH the face is painted INTO
+      ("paint the face into the patch. Where the substrate has been
+      eating"). The face bands already stand proud of the brick; the
+      patch sits just behind them, the nebula behind that.
+    - THE MILK CRATE at the foot of the wall ("She set the crate down
+      beside the wall") with the brush in its jar of medium, the
+      eighth-piece cedar, Kai's notebook; the canvas bag beside it.
+    - THE FOUR BOWLS on the asphalt at the wall (ch21).
+    - LENA'S HAND on the wall over the patch — a faint print, the
+      residue grammar for hands.
+    - THE CROW on the dumpster lid.
+    - The laundromat's brick closing the far (east) end: "The alley
+      has only the one entrance."
+    """
+    from _props.creatures import make_crow
+    cedar = (0.55, 0.38, 0.26, 1.0); cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    AL_Y1 = 12.0
+    # nebula ground + bands (inside the wall's paint depth), the patch in front
+    make_box("Nebula_Ground", (-0.8, AL_Y1 - 0.105, 1.85), (7.0, 0.010, 2.60), (0.13, 0.10, 0.26, 1.0))
+    make_box("Nebula_Band_Violet", (-3.2, AL_Y1 - 0.100, 2.30), (2.6, 0.008, 0.9), (0.34, 0.20, 0.46, 1.0))
+    make_box("Nebula_Band_Teal", (1.6, AL_Y1 - 0.100, 1.55), (2.4, 0.008, 1.0), (0.16, 0.38, 0.44, 1.0))
+    make_box("Nebula_Band_Rose", (-2.4, AL_Y1 - 0.098 - 0.0256, 1.10), (1.8, 0.006, 0.55), (0.62, 0.32, 0.42, 1.0))
+    make_box("Nebula_Star_Core", (2.2, AL_Y1 - 0.097 - 0.0261, 2.45), (0.34, 0.005, 0.34), (0.88, 0.84, 0.66, 1.0))
+    make_box("Substrate_Patch", (-0.8, AL_Y1 - 0.116, 1.85), (2.2, 0.006, 2.2), (0.06, 0.06, 0.07, 1.0))
+    # Lena's hand on the wall over the patch
+    make_box("Hand_Wall_Print", (-0.15, AL_Y1 - 0.121, 1.50), (0.09, 0.004, 0.11), (0.30, 0.28, 0.30, 1.0))
+    # the milk crate at the foot of the wall + what is on it
+    make_box("Wall_Crate", (-1.6, 11.55, 0.16), (0.35, 0.35, 0.32), (0.55, 0.45, 0.30, 1.0))
+    make_cyl("Brush_Jar", (-1.70, 11.66, 0.375), 0.040, 0.11, (0.72, 0.76, 0.74, 0.6), segments=10)
+    make_cyl("Paint_Brush", (-1.70, 11.66, 0.52), 0.007, 0.18, (0.62, 0.50, 0.32, 1.0), segments=6)
+    make_box("Carved_Cedar", (-1.48, 11.66, 0.345), (0.07, 0.05, 0.05), cedar_dk)
+    make_box("Kai_Notebook", (-1.60, 11.47, 0.326), (0.11, 0.15, 0.012), (0.30, 0.44, 0.58, 1.0))
+    make_box("Canvas_Bag", (-2.15, 11.55, 0.09), (0.28, 0.20, 0.18), (0.62, 0.58, 0.48, 1.0))
+    # the four bowls on the asphalt at the wall
+    for bi, (bx, by) in enumerate(((-2.9, 11.5), (-3.25, 11.45), (-2.75, 11.72), (-3.5, 11.7))):
+        make_cyl(f"Cedar_Bowl_{bi}", (bx, by, 0.0275), 0.085, 0.055, cedar, segments=12)
+        make_cyl(f"Cedar_Bowl_Rim_{bi}", (bx, by, 0.0575), 0.068, 0.005, cedar_dk, segments=12)
+    # the crow on the dumpster lid
+    make_crow("Alley_Crow", 2.0, 10.45, 1.28, facing=-1.0)
+    # the laundromat's brick closes the far end
+    # (2026-10-09: the laundromat's end is its whole building now — build_alley_2026_10)
+    make_box("Alley_Entrance_Curb", (-5.6, 10.5, 0.03), (0.30, 3.40, 0.10), (0.52, 0.52, 0.50, 1.0))
+
+
+def build_alley_2026_10():
+    """THE ALLEY, A PLACE (2026-10-09, the overnight run). Vol 7's climax
+    happens here — thirty-five people at the wall, the face opening its
+    eyes — and the alley was a strip of asphalt between a 3.6 m mural
+    wall and the store's 2.8 m back wall, with sky over both and nothing
+    past either end. From ch14/16/18/20/21:
+
+    - the mural wall is a BUILDING: three storeys of brick over the mural,
+      dark windows, a cornice;
+    - the store side has its upper storey (the floor band over the annex,
+      three windows, one lit behind a curtain), and building corners fill
+      it to the entrance and to the laundromat;
+    - "The far end of the alley was the brick wall of the laundromat ...
+      There was no door in the laundromat's brick. There was no fire
+      escape": the laundromat is a building that closes the alley, a
+      downspout its only feature;
+    - "the back-door light Petra had turned on at seven-thirty so the alley
+      would not be dark": the wall lamp over her back door (its practical
+      lights the night scenes);
+    - "The puddles in the alley were the puddles": rain pools, a drain;
+    - "She set the cup on a milk crate": the takeaway cup on the crate
+      (the `insert coffee` cues cut to the kitchenette's mug before);
+    - "with the alley behind them and the town in front": the street
+      across the entrance — sidewalk, two lanes, the facades opposite.
+    """
+    brick = (0.42, 0.29, 0.23, 1.0); brick_dk = (0.36, 0.25, 0.20, 1.0)
+    glass_dk = (0.16, 0.18, 0.22, 1.0); sill = (0.56, 0.54, 0.50, 1.0)
+    # ── the mural building over the mural ──
+    make_box("Mural_Bldg_Upper", (0.0, 12.94, 6.40), (ROOM_W + 3.0, 2.12, 6.0), brick)
+    make_box("Mural_Bldg_Cornice", (0.0, 12.90, 9.50), (ROOM_W + 3.2, 2.24, 0.20), brick_dk)
+    for fi, wz in enumerate((5.3, 7.9)):
+        for wi, wx in enumerate((-4.0, -1.4, 1.4, 4.0)):
+            make_box(f"Mural_Bldg_Win_{fi}_{wi}", (wx, 11.872, wz), (0.95, 0.012, 1.30), glass_dk)
+            make_box(f"Mural_Bldg_Win_{fi}_{wi}_Sill", (wx, 11.84, wz - 0.69), (1.05, 0.08, 0.06), sill)
+    # ── the store side: the floor band, the upper storey, its windows ──
+    make_box("Store_Upper_Floorband", (0.0, 9.06, 2.85), (ROOM_W + 0.4, 0.12, 0.10), brick_dk)
+    make_box("Store_Upper_Storey", (0.0, 7.56, 4.75), (ROOM_W + 0.4, 3.12, 3.70), brick)
+    for wi, (wx, lit) in enumerate(((-2.4, False), (0.2, True), (2.8, False))):
+        make_box(f"Store_Upper_Win_{wi}", (wx, 9.126, 4.65), (1.00, 0.012, 1.30), (0.86, 0.70, 0.42, 1.0) if lit else glass_dk)
+        make_box(f"Store_Upper_Win_{wi}_Sill", (wx, 9.16, 3.96), (1.10, 0.08, 0.06), sill)
+        if lit:
+            for ci, cx in enumerate((wx - 0.38, wx + 0.38)):
+                make_box(f"Store_Upper_Win_{wi}_Curtain_{ci}", (cx, 9.135, 4.65), (0.20, 0.008, 1.24), (0.72, 0.52, 0.42, 1.0))
+    make_box("Alley_S_Bldg_W", (-4.90, 7.60, 3.30), (1.40, 3.00, 6.60), brick)
+    make_box("Alley_S_Bldg_E", (4.85, 7.60, 3.30), (1.30, 3.00, 6.60), brick)
+    # ── the laundromat closes the far end ──
+    make_box("Laundromat_Bldg", (8.50, 10.50, 3.30), (6.0, 9.0, 6.60), (0.40, 0.28, 0.22, 1.0))
+    make_box("Laundromat_Bldg_Cornice", (8.50, 10.50, 6.70), (6.0, 9.1, 0.20), brick_dk)
+    make_tube("Laundromat_Downspout", [(5.46, 11.60, 6.55), (5.46, 11.60, 0.30), (5.30, 11.60, 0.12)], 0.05, (0.44, 0.44, 0.46, 1.0), segments=8)
+    # ── Petra's back-door light ──
+    make_box("BackDoor_Lamp_Bracket", (-3.3, 9.20, 2.62), (0.06, 0.20, 0.06), COL_BLACK)
+    make_lathe("BackDoor_Lamp", (-3.3, 9.30, 2.36), [(0.0, 0.0), (0.06, 0.0), (0.10, 0.10), (0.11, 0.18), (0.04, 0.24), (0.0, 0.25)],
+               (0.94, 0.86, 0.62, 1.0), segments=12)
+    # ── rain pools and the drain ──
+    for pi, (px, py, pr) in enumerate(((-0.2, 10.3, 0.50), (2.9, 11.2, 0.36), (-4.0, 10.8, 0.62))):
+        make_cyl(f"Alley_Rainpool_{pi}", (px, py, 0.002), pr, 0.004, (0.20, 0.21, 0.24, 1.0), segments=18)
+    make_box("Alley_Drain", (0.9, 10.5, 0.003), (0.50, 0.50, 0.006), (0.12, 0.12, 0.13, 1.0))
+    for bi in range(5):
+        make_box(f"Alley_Drain_Bar_{bi}", (0.72 + bi * 0.09, 10.5, 0.008), (0.03, 0.46, 0.006), (0.30, 0.30, 0.32, 1.0))
+    # ── the cup on the crate ──
+    make_lathe("Alley_Coffee_Cup", (-1.47, 11.45, 0.32), [(0.035, 0.0), (0.045, 0.12), (0.048, 0.125), (0.048, 0.14), (0.0, 0.14)],
+               (0.90, 0.88, 0.82, 1.0), segments=12)
+    make_box("Alley_Coffee_Cup_Sleeve", (-1.47, 11.45, 0.385), (0.09, 0.09, 0.04), (0.56, 0.42, 0.28, 1.0))
+    # ── the town in front of the entrance ──
+    from _props.views import make_view
+    make_view("View_W", "W", -5.6, 10.5, kind="street", seed=5)
 
 
 def main():
     clear_scene()
     build_shell()
-    build_storefront()
-    build_exterior_street()
-    build_exterior_alley()
-    build_counter()
-    build_stacks()
-    build_west_wall()
-    build_east_wall()
-    build_north_zone()
-    build_new_arrivals()
-    build_kitchenette()
-    build_ceiling_infra()
+    build_bookshelves()
+    build_rolling_ladder()
+    build_sales_counter()
+    build_reading_nook()
+    build_globe_and_catalog()
+    build_ceiling_and_sign()
+    build_decor()
+    build_back_annex_2026_08()
+    build_office_2026_10()
+    build_alley_2026_08()
+    build_detail_pass_2026_08()
+    build_use_states_2026_08()
+    build_beyond_glass_2026_08()
+    build_hero_props_2026_09()
+    build_alley_2026_09()
+    build_alley_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")
     export_glb(out)
+
 
 if __name__ == "__main__":
     main()

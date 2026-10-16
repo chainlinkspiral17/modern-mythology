@@ -1,0 +1,213 @@
+{
+  "id": "ending_become_the_faire",
+  "notes": "You at cricket-scale on a stool on the ticket counter, in a new town, watching a new teenager approach through the gate arch at night.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#180810",
+    "#281629",
+    "#5a3059",
+    "#c8bcd0",
+    "#f8e0d0",
+    "#f8c848",
+    "#8a2050",
+    "#e0b0c0",
+    "#382030"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        64,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          20,
+          64
+        ],
+        [
+          20,
+          30
+        ],
+        [
+          80,
+          16
+        ],
+        [
+          140,
+          30
+        ],
+        [
+          140,
+          64
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "vline",
+      "x": 34,
+      "y_range": [
+        28,
+        64
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 50,
+      "y_range": [
+        24,
+        64
+      ],
+      "color": 7
+    },
+    {
+      "op": "vline",
+      "x": 66,
+      "y_range": [
+        20,
+        64
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 82,
+      "y_range": [
+        17,
+        64
+      ],
+      "color": 7
+    },
+    {
+      "op": "vline",
+      "x": 98,
+      "y_range": [
+        20,
+        64
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 114,
+      "y_range": [
+        24,
+        64
+      ],
+      "color": 7
+    },
+    {
+      "op": "vline",
+      "x": 130,
+      "y_range": [
+        28,
+        64
+      ],
+      "color": 6
+    },
+    {
+      "op": "dot",
+      "xy": [
+        40,
+        22
+      ],
+      "size": 2,
+      "color": 5
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        10
+      ],
+      "size": 2,
+      "color": 5
+    },
+    {
+      "op": "dot",
+      "xy": [
+        120,
+        22
+      ],
+      "size": 2,
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        48,
+        36,
+        16
+      ],
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 48,
+      "x_range": [
+        28,
+        64
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        42,
+        40,
+        5,
+        8
+      ],
+      "color": 5
+    },
+    {
+      "op": "dot",
+      "xy": [
+        44,
+        38
+      ],
+      "size": 2,
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        108,
+        44,
+        8,
+        20
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        112,
+        40
+      ],
+      "size": 4,
+      "color": 3
+    },
+    {
+      "op": "text",
+      "xy": [
+        70,
+        74
+      ],
+      "s": "6 NIGHTS",
+      "color": 5
+    }
+  ]
+}

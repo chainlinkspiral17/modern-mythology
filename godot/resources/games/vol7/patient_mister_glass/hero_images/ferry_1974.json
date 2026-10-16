@@ -1,0 +1,134 @@
+{
+ "id": "ferry_1974",
+ "notes": "The ferry from the water, 1974 \u00b7 the Northwind\u2013Anchor Bay run, the booth, the clerk.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#100c0a",
+  "#e8a038",
+  "#6a4a30",
+  "#8a98a8",
+  "#c8442c",
+  "#d8ccb8",
+  "#3a4438"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    58,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 62,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     30,
+     42
+    ],
+    [
+     130,
+     42
+    ],
+    [
+     122,
+     58
+    ],
+    [
+     38,
+     58
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    52,
+    28,
+    56,
+    14
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    70,
+    32,
+    10,
+    10
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 96,
+   "y_range": [
+    14,
+    28
+   ],
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     96,
+     14
+    ],
+    [
+     104,
+     10
+    ],
+    [
+     112,
+     12
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    56,
+    48
+   ],
+   "s": "ANCHOR BAY",
+   "color": 0
+  },
+  {
+   "op": "dot",
+   "xy": [
+    20,
+    20
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    140,
+    16
+   ],
+   "size": 1,
+   "color": 5
+  }
+ ]
+}

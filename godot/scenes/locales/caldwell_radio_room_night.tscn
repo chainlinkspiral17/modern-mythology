@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://caldwell_radio_room_night_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://caldwell_radio_room_night_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/caldwell_radio_room_night.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.78, 0.62, 0.42, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.62, 0.42, 1)
 ambient_light_energy = 0.65
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.32, 0.22, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
@@ -155,7 +170,7 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.86, 0.46, 1)
 light_energy = 0.55
 shadow_enabled = false
@@ -171,6 +186,29 @@ transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0,
 light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
+
+; (2026-10-08) her bedroom's lights: the desk lamp (the window the street
+; sees lit), the radio's amber dial, the bedside lamp
+[node name="Desk_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.010, 1.040, -1.770)
+light_color = Color(0.98, 0.84, 0.56, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 2.6
+
+[node name="Radio_Dial_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.700, 0.840, -1.400)
+light_color = Color(0.98, 0.70, 0.32, 1)
+light_energy = 0.35
+shadow_enabled = false
+omni_range = 1.4
+
+[node name="Bedside_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.300, 0.950, -4.600)
+light_color = Color(0.98, 0.86, 0.62, 1)
+light_energy = 0.40
+shadow_enabled = false
+omni_range = 2.4
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +310,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +329,39 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: 1776 kHz, Morse she has not used since 1989
+; (2026-10-08) over her chair onto the transceiver, the key, the log
+[node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.050, 1.300, -1.000)
+rotation = Vector3(-0.4201, -1.1526, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; (2026-10-08) Linda at the radio, from the bed
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 1.450, -3.000)
+rotation = Vector3(-0.1684, -3.0109, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+; (2026-10-08) Maya on the edge of the bed, from the desk
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.300, 1.450, -1.500)
+rotation = Vector3(-0.2690, -0.0345, 0.0)
+metadata/fov = 45.0
+
+; (2026-10-07) out the radio room's window: the back yard, the dark
+; (2026-10-08) out the window and down: the back yard a storey below
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.550, -1.900)
+rotation = Vector3(-0.4058, -3.0319, 0.0)
+metadata/fov = 52.0
+
+; insert (2026-10-10, ch2 Maya's bedroom): "Her grandmother's hand on hers" — the edge of the bed, in the dark
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.300, -2.900)
+rotation = Vector3(-0.5739, -0.7854, 0.0)
+metadata/fov = 40.0

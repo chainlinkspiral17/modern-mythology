@@ -276,7 +276,7 @@ func _refresh_node_list() -> void:
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.custom_minimum_size.y = 24
 		_style_list_btn(btn, i == _sel_node_idx)
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 12)
 		var idx: int = i
 		btn.pressed.connect(func() -> void: _select_node(idx))
 		_node_list_vbox.add_child(btn)
@@ -380,11 +380,11 @@ func _refresh_detail() -> void:
 			_detail_vbox.add_child(_text_field("SCENE", node, "scene", nodes))
 		"flag":
 			_detail_vbox.add_child(_text_field("KEY", node, "key", nodes))
-			_detail_vbox.add_child(_text_field("VAL", node, "val", nodes, "auto"))
+			_detail_vbox.add_child(_text_field("VAL", node, "val", nodes))
 		"interlude":
 			_detail_vbox.add_child(_text_area("TEXT", node, "text", nodes))
 			_detail_vbox.add_child(_text_field("SUB", node, "sub", nodes))
-			_detail_vbox.add_child(_text_field("DURATION (ms)", node, "duration", nodes, "int"))
+			_detail_vbox.add_child(_text_field("DURATION (ms)", node, "duration", nodes))
 		"choice":
 			_detail_vbox.add_child(_text_field("PROMPT", node, "prompt", nodes))
 			var opts: Array = node.get("opts", [])
@@ -402,11 +402,7 @@ func _refresh_detail() -> void:
 			_detail_vbox.add_child(add_opt_btn)
 
 
-# kind: "string" (default) stores the text as-is; "int" stores an int;
-# "auto" infers int/float/bool from the text. Without this, editing a
-# flag's VAL or an interlude's DURATION silently converted numeric and
-# boolean JSON values into strings on save.
-func _text_field(label: String, node: Dictionary, key: String, nodes: Array, kind: String = "string") -> VBoxContainer:
+func _text_field(label: String, node: Dictionary, key: String, nodes: Array) -> VBoxContainer:
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 4)
 	var lbl := Label.new()
@@ -418,20 +414,8 @@ func _text_field(label: String, node: Dictionary, key: String, nodes: Array, kin
 	line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_style_input(line)
 	var k: String = key
-	var knd: String = kind
 	line.text_changed.connect(func(v: String) -> void:
-		var out: Variant = v
-		match knd:
-			"int":
-				out = int(v) if v.is_valid_int() else 0
-			"auto":
-				if v.is_valid_int():
-					out = int(v)
-				elif v.is_valid_float():
-					out = float(v)
-				elif v.to_lower() == "true" or v.to_lower() == "false":
-					out = v.to_lower() == "true"
-		(nodes[_sel_node_idx] as Dictionary)[k] = out
+		(nodes[_sel_node_idx] as Dictionary)[k] = v
 		_dirty = true
 		_status_lbl.text = "● unsaved"
 		_status_lbl.add_theme_color_override("font_color", Color(0.9, 0.6, 0.3))
@@ -617,7 +601,7 @@ func _style_list_btn(btn: Button, selected: bool) -> void:
 	btn.add_theme_stylebox_override("pressed", hover)
 	btn.add_theme_color_override("font_color",       C_GOLD if selected else C_TXT)
 	btn.add_theme_color_override("font_hover_color", C_GOLD)
-	btn.add_theme_font_size_override("font_size", 11)
+	btn.add_theme_font_size_override("font_size", 12)
 	if ResourceLoader.exists(SkinDB.F_IMFELL_R):
 		btn.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
 

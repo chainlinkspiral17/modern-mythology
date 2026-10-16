@@ -72,6 +72,10 @@ CEIL_Z = 2.80
 # ════════════════════════════════════════════════════════════════
 # SHELL
 # ════════════════════════════════════════════════════════════════
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
                size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4)
@@ -86,10 +90,10 @@ def build_shell():
               length=ROOM_W + 0.4, height=CEIL_Z, axis='X',
               baseboard_face_sign=-1)
     # South wall split around door (door at X∈[-1.5, 1.5])
-    make_wall("Wall_S_W", (-3.25, 0.0, 0),
-              length=3.50, height=CEIL_Z, axis='X')
-    make_wall("Wall_S_E", (+3.25, 0.0, 0),
-              length=3.50, height=CEIL_Z, axis='X')
+    make_wall_with_openings("Wall_S_W", (-3.25, 0.0, 0),   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1, openings=[(-3.200, 1.400, 2.400, 1.400)])
+    make_wall_with_openings("Wall_S_E", (+3.25, 0.0, 0),   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1, openings=[(3.200, 1.400, 2.400, 1.400)])
     # Door header
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, 0.20, 0.60), P.WALL_CREAM)
@@ -105,10 +109,12 @@ def build_shell():
         make_crown_molding(nm, wall_x=anchor[0], wall_y=anchor[1],
                            length=length, axis=axis, ceil_z=CEIL_Z)
     # Front window (south, west side of door)
-    make_window("Window_SW", (-3.20, 0.0, 1.40),
-                width=2.40, height=1.40)
-    make_window("Window_SE", (+3.20, 0.0, 1.40),
-                width=2.40, height=1.40)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SW", (-3.20, 0.10, 1.40),
+                width=2.40, height=1.40, room_dir=+1)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+3.20, 0.10, 1.40),
+                width=2.40, height=1.40, room_dir=+1)
     # Door hinges
     make_door_hinges("FrontDoor_Hinge", edge_x=-1.50, edge_y=0.0,
                      edge_z_centers=[0.30, 1.05, 1.80], axis='X')
@@ -128,9 +134,12 @@ def build_counter_setup():
                   palette={"screen": (0.46, 0.32, 0.62, 1.0)})  # purple LCD
     make_credit_card_terminal("CCTerm", (cx, cy + 0.40, top_z))
     # Long-boxes of back-issues stacked behind counter
+    # two stacks of two in the gap between the counter and the E wall
+    # (2026-09-23: they stood 20 cm into the counter, every other one
+    # hanging 20 cm up with nothing under it)
     for li in range(4):
         make_box(f"LongBox_{li}",
-                 (cx + 0.50, cy + (li - 1.5) * 0.32, 0.16 + (li % 2) * 0.20),
+                 (cx + 0.70, cy + (li // 2 - 0.5) * 0.34, 0.10 + (li % 2) * 0.20),
                  (0.40, 0.30, 0.20), P.PAPER_AGED)
 
 
@@ -164,18 +173,18 @@ def build_browse_bins():
 # ════════════════════════════════════════════════════════════════
 def build_decor():
     # Wall clock above the counter
-    make_wall_clock("Clock", (4.0, 7.80, 2.10),
-                    frozen_hour=4, frozen_min=22)
+    make_wall_clock("Clock", (4.0, 7.900, 2.10),   # on the N wall (2026-09-23: 8 cm off it)
+                    frozen_hour=4, frozen_min=22, facing='-Y')
     # Faded movie posters on west wall (3)
     for pi, py in enumerate([2.5, 5.0, 7.0]):
-        make_faded_poster(f"Poster_W_{pi}", (-4.90, py, 1.70))
+        make_faded_poster(f"Poster_W_{pi}", (-4.8965, py, 1.70), into_room=+1)
     # Payphone east wall by door
-    make_payphone("Payphone", (4.85, 1.40, 1.30))
+    make_payphone("Payphone", (4.87, 1.40, 1.30))   # on the E wall (2026-09-23: 2 cm off it)
     # Comic-shop staple: floor plant near door
     make_floor_plant("Plant", (-3.80, 1.20, 0.0))
     # Saturated purple comic-rack accent piece (signature canon)
     make_box("ComicRack_Accent",
-             (-4.80, 5.20, 1.40),
+             (-4.85, 5.20, 1.40),   # on the W wall (2026-09-23: 5 cm off it)
              (0.10, 1.40, 1.60), PAL_PURPLE_ACCENT)
 
 
@@ -214,6 +223,8 @@ def main():
         os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cosmic_comics.glb"))
     print(f"\n[build_cosmic_comics] exporting to {out_path}")
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=23)   # the street past the front glass
     export_glb(out_path)
 
 

@@ -16,8 +16,16 @@ var _voice_vol:      float  = 0.80
 var _skip_unread:    bool   = false
 var _auto_advance_ms: int   = 0
 var _window_mode:    String = "720p"
+var _haptics:        float  = 1.0
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
+var _music_jukebox:  bool   = true
+var _trip_amount:    float  = 0.75   # THE TRIP · psychedelic layer strength (TripSync)
+var _trip_flow:      float  = 1.0    # THE TRIP mix · the liquid drift (the one dial that moves pixels)
+var _trip_lines:     float  = 1.0    # THE TRIP mix · aura on the lines
+var _trip_colour:    float  = 1.0    # THE TRIP mix · hue drift + wash in the flats
+var _trip_beat:      float  = 1.0    # THE TRIP mix · how much the beat shows
+var _trip_trails:    float  = 1.0    # THE TRIP mix · the feedback buffer (Minter light trails)
 
 
 var txt_scale: float:
@@ -83,6 +91,16 @@ var window_mode: String:
 		settings_changed.emit("window_mode", val)
 		_save()
 
+# Haptic rumble strength · 0.0 = off, 1.0 = full. Driven by
+# SFXBank's rumble grammar; baseline device is the 2026 Steam
+# Controller (SDL rumble rendered by its HD haptic motors).
+var haptics: float:
+	get: return _haptics
+	set(val):
+		_haptics = clampf(val, 0.0, 1.0)
+		settings_changed.emit("haptics", _haptics)
+		_save()
+
 var music_skin: String:
 	get: return _music_skin
 	set(val):
@@ -95,6 +113,60 @@ var music_viz: String:
 	set(val):
 		_music_viz = val
 		settings_changed.emit("music_viz", val)
+		_save()
+
+# Jukebox mode: the Music Player owns playback — the full catalog
+# rotates continuously and per-scene BGM requests are ignored.
+# OFF = classic behavior: scene / queue music.
+var music_jukebox: bool:
+	get: return _music_jukebox
+	set(val):
+		_music_jukebox = val
+		settings_changed.emit("music_jukebox", val)
+		_save()
+
+# THE TRIP (2026-09-07): strength of the project-wide music-synced
+# psychedelic layer. 0 turns it off; TripSync reads this live.
+var trip_amount: float:
+	get: return _trip_amount
+	set(val):
+		_trip_amount = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_amount", _trip_amount)
+		_save()
+
+var trip_flow: float:
+	get: return _trip_flow
+	set(val):
+		_trip_flow = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_flow", _trip_flow)
+		_save()
+
+var trip_lines: float:
+	get: return _trip_lines
+	set(val):
+		_trip_lines = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_lines", _trip_lines)
+		_save()
+
+var trip_colour: float:
+	get: return _trip_colour
+	set(val):
+		_trip_colour = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_colour", _trip_colour)
+		_save()
+
+var trip_beat: float:
+	get: return _trip_beat
+	set(val):
+		_trip_beat = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_beat", _trip_beat)
+		_save()
+
+var trip_trails: float:
+	get: return _trip_trails
+	set(val):
+		_trip_trails = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_trails", _trip_trails)
 		_save()
 
 
@@ -138,6 +210,12 @@ func _resize_window(w: int, h: int) -> void:
 func _load() -> void:
 	var cfg := ConfigFile.new()
 	if cfg.load(SAVE_PATH) != OK:
+		# First run with no settings file. Exported builds (the
+		# Steam Machine target) live on a TV — default fullscreen.
+		# Editor / source runs keep the windowed dev default.
+		if OS.has_feature("template"):
+			_window_mode = "fullscreen"
+			_apply_window_mode(_window_mode)
 		return
 	var raw_size = cfg.get_value("settings", "txt_scale", null)
 	if raw_size == null:
@@ -155,8 +233,16 @@ func _load() -> void:
 	_skip_unread     = bool(cfg.get_value("settings",  "skip_unread",    false))
 	_auto_advance_ms = int(cfg.get_value("settings",   "auto_advance_ms", 0))
 	_window_mode     = str(cfg.get_value("settings",   "window_mode",    "720p"))
+	_haptics         = clampf(float(cfg.get_value("settings", "haptics", 1.0)), 0.0, 1.0)
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
+	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
+	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.75)), 0.0, 1.0)
+	_trip_flow       = clampf(float(cfg.get_value("settings", "trip_flow", 1.0)), 0.0, 1.0)
+	_trip_lines      = clampf(float(cfg.get_value("settings", "trip_lines", 1.0)), 0.0, 1.0)
+	_trip_colour     = clampf(float(cfg.get_value("settings", "trip_colour", 1.0)), 0.0, 1.0)
+	_trip_beat       = clampf(float(cfg.get_value("settings", "trip_beat", 1.0)), 0.0, 1.0)
+	_trip_trails     = clampf(float(cfg.get_value("settings", "trip_trails", 1.0)), 0.0, 1.0)
 	_apply_window_mode(_window_mode)
 
 
@@ -170,6 +256,14 @@ func _save() -> void:
 	cfg.set_value("settings", "skip_unread",     _skip_unread)
 	cfg.set_value("settings", "auto_advance_ms", _auto_advance_ms)
 	cfg.set_value("settings", "window_mode",     _window_mode)
+	cfg.set_value("settings", "haptics",         _haptics)
 	cfg.set_value("settings", "music_skin",      _music_skin)
 	cfg.set_value("settings", "music_viz",       _music_viz)
+	cfg.set_value("settings", "music_jukebox",   _music_jukebox)
+	cfg.set_value("settings", "trip_amount",     _trip_amount)
+	cfg.set_value("settings", "trip_flow",       _trip_flow)
+	cfg.set_value("settings", "trip_lines",      _trip_lines)
+	cfg.set_value("settings", "trip_colour",     _trip_colour)
+	cfg.set_value("settings", "trip_beat",       _trip_beat)
+	cfg.set_value("settings", "trip_trails",     _trip_trails)
 	cfg.save(SAVE_PATH)

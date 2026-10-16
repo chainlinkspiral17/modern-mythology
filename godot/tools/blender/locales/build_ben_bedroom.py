@@ -1,0 +1,263 @@
+"""Ben Kowalski's bedroom — vol6 placement script.
+
+Canon (vol6 ch23 "Sleep" + ch19 "The Chains"): after dinner Ben goes
+upstairs, packs his backpack for the morning, sets the alarm, gets in
+bed at nine forty-eight. Mister, the half-Kowalski cat, comes through
+the door "cracked the small specific way Ben has been cracking it for
+a month" and curls up at his feet. The room is dark. Ch19 adds the
+shower/lamp-off/alarm-for-ten ritual before a game.
+
+A tidy athlete's room, NOT a slob room: made bed, packed backpack by
+the door, football gear in the corner, the depth chart taped over the
+desk. Bed-variation rules: headboard EAST wall, twin-XL with a low
+footlocker at the foot — a footprint no other bedroom uses.
+
+Hero props: the bed with Mister curled at its foot, the CRACKED door
+(ajar at the canon angle), the desk with lamp + alarm clock reading
+9:48, the backpack, the gear corner (helmet, shoulder pads, cleats).
+
+Coordinate frame: Blender Z-up. y=0 south wall (door), +Y north,
+walls x=±ROOM_W/2. glTF export remaps to Godot (x, z, -y).
+"""
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling
+from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+
+ROOM_W = 4.4      # x ∈ [-2.2, 2.2] (2026-09-24: widened, "rooms too cramped")
+ROOM_D = 4.6      # y ∈ [0, 4.6] (2026-09-24)
+CEIL = 2.5
+
+COL_WALL = (0.36, 0.40, 0.46, 1.0)      # slate blue-grey
+COL_BASE = (0.24, 0.26, 0.30, 1.0)
+COL_FLOOR = (0.35, 0.26, 0.17, 1.0)     # oak boards
+COL_SEAM = (0.26, 0.19, 0.12, 1.0)
+COL_FRAME = (0.30, 0.22, 0.14, 1.0)     # bed/desk wood
+COL_FRAME_DK = (0.22, 0.16, 0.10, 1.0)
+COL_SHEET = (0.72, 0.74, 0.78, 1.0)
+COL_BLANKET = (0.20, 0.28, 0.42, 1.0)   # navy blanket
+COL_PILLOW = (0.80, 0.80, 0.82, 1.0)
+COL_CAT = (0.28, 0.26, 0.24, 1.0)       # Mister, a dark tabby shape
+COL_DOOR = (0.60, 0.56, 0.50, 1.0)
+COL_PACK = (0.24, 0.34, 0.28, 1.0)      # green backpack
+COL_HELMET = (0.70, 0.68, 0.64, 1.0)
+COL_JERSEY = (0.55, 0.14, 0.14, 1.0)    # school colors, wine red
+COL_PAPER = (0.82, 0.80, 0.72, 1.0)
+COL_LAMP = (1.00, 0.85, 0.58, 1.0)
+COL_CLOCK = (0.90, 0.24, 0.16, 1.0)     # red LED digits
+COL_RUG = (0.30, 0.32, 0.30, 1.0)
+
+
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
+               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    pal = {"wall": COL_WALL, "baseboard": COL_BASE}
+    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
+        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+                  axis='Y', palette=pal, baseboard_face_sign=bb)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.450, 1.540, 1.000, 0.920)])
+    # South wall split around the door opening (west of center)
+    make_wall("Wall_S_E", (0.85, 0.0, 0), length=ROOM_W - 1.5, height=CEIL,
+              axis='X', palette=pal, baseboard_face_sign=+1)
+    make_box("Wall_S_W", (-1.55, 0.0, CEIL / 2.0), (0.5, 0.20, CEIL), COL_WALL)
+    # the full width of the opening (2026-09-23: it stopped 17 cm short of
+    # Wall_S_E and left a slot open to the ceiling)
+    make_box("Wall_S_Above", (-0.75, 0.0, CEIL - 0.20), (1.10, 0.20, 0.40), COL_WALL)
+    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
+                 size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
+    # The CRACKED door — ajar ~25 degrees into the room (canon: the
+    # small specific way, for Mister)
+    # (2026-09-23: the leaf stood shut in the plane of the wall, the knob
+    # hung in the air 56 cm in front of it and the "crack" was a dark
+    # strip in the slot beside the opening; the leaf now swings in on its
+    # W hinge, the knob on its free end, the dark hall behind the opening)
+    import math as _m
+    th = 0.44
+    hx, hy = -1.24, 0.06
+    make_rot_box("Door_Leaf", (hx + 0.41 * _m.cos(th), hy + 0.41 * _m.sin(th), 1.02),
+                 (0.82, 0.05, 2.03), COL_DOOR, yaw=th)
+    make_box("Door_Crack_Dark", (-0.75, -0.115, 1.05), (1.10, 0.03, 2.10), (0.05, 0.05, 0.06, 1.0))
+    make_cyl("Door_Knob", (hx + 0.76 * _m.cos(th) - 0.05 * _m.sin(th),
+                           hy + 0.76 * _m.sin(th) + 0.05 * _m.cos(th), 0.98), 0.035, 0.05, COL_FRAME_DK,
+             segments=8, axis='Y')
+    make_box("Door_Jamb", (-1.28, 0.0, 1.02), (0.08, 0.22, 2.04), COL_FRAME_DK)
+    # Oval rug mid-floor
+    make_cyl("Rug", (0.1, 2.0, 0.008), 0.85, 0.012, COL_RUG, segments=16)
+
+
+def build_bed():
+    from _props.furniture import make_bed
+    """Twin-XL, headboard EAST wall (unique footprint), footlocker at
+    the foot, Mister curled at the foot of the blanket."""
+    bx = ROOM_W / 2.0 - 1.18     # bed runs E→W, head at east wall (platform ends at the headboard)
+    by = 2.9
+    # on the wall face (2026-09-23: the whole board was inside the E wall)
+    make_box("Bed_Head", (ROOM_W / 2.0 - 0.14, by, 0.55), (0.08, 1.05, 0.75), COL_FRAME_DK)
+    # the shared bed, head to the E wall, navy blanket made (2026-09-07)
+    make_bed("Bed", bx, by, head="+X", w=1.05, d=2.0, style="platform",
+             frame_col=COL_FRAME, mattress_col=COL_SHEET, sheet_col=COL_SHEET,
+             blanket_col=COL_BLANKET, pillow_col=COL_PILLOW, pillows=1, made=True, headboard=False)
+    # Mister, curled at the foot — a low mound with a tail sweep
+    make_cyl("Cat_Mister", (bx - 0.75, by + 0.15, 0.57), 0.16, 0.10, COL_CAT, segments=10)
+    make_box("Cat_Tail", (bx - 0.60, by + 0.28, 0.545), (0.22, 0.05, 0.03), COL_CAT)
+    # Footlocker at the foot of the bed
+    # its east face 2 cm off the platform's foot (2026-09-25: 7 cm — it read as standing in the room)
+    make_box("Footlocker", (bx - 1.20, by, 0.20), (0.35, 0.9, 0.38), COL_FRAME_DK)
+    make_box("Footlocker_Lid", (bx - 1.20, by, 0.40), (0.36, 0.92, 0.03), COL_FRAME)
+
+
+def build_desk():
+    """Desk on the WEST wall: lamp, the 9:48 alarm clock, homework
+    stack, the depth chart taped above."""
+    dx = -ROOM_W / 2.0 + 0.40   # against the wall face (2026-09-23: 8 cm into it)
+    dy = 1.4
+    make_box("Desk_Top", (dx, dy, 0.74), (0.6, 1.2, 0.05), COL_FRAME)
+    for sy in (dy - 0.52, dy + 0.52):
+        make_box(f"Desk_Leg_{sy:.1f}", (dx, sy, 0.37), (0.55, 0.05, 0.74), COL_FRAME_DK)
+    # Lamp (the one he turns off)
+    make_cyl("Desk_Lamp_Post", (dx - 0.12, dy + 0.42, 0.90), 0.015, 0.30, COL_FRAME_DK, segments=6)
+    make_cyl("Desk_Lamp_Shade", (dx - 0.12, dy + 0.42, 1.06), 0.10, 0.10, COL_BLANKET, segments=10)
+    make_cyl("Desk_Lamp_Bulb", (dx - 0.12, dy + 0.42, 1.01), 0.05, 0.03, COL_LAMP, segments=8)
+    # Alarm clock — red LED block
+    make_box("Clock", (dx - 0.05, dy - 0.35, 0.81), (0.20, 0.10, 0.09), (0.10, 0.10, 0.11, 1.0))
+    make_box("Clock_Digits", (dx - 0.05, dy - 0.405, 0.81), (0.14, 0.005, 0.045), COL_CLOCK)
+    # Homework stack + a pencil
+    make_box("Papers", (dx + 0.05, dy + 0.05, 0.775), (0.30, 0.24, 0.03), COL_PAPER)
+    make_cyl("Pencil", (dx + 0.12, dy - 0.12, 0.775), 0.008, 0.18, (0.75, 0.55, 0.20, 1.0),
+             segments=6, axis='Y')
+    # Chair
+    make_box("Chair_Seat", (dx + 0.55, dy, 0.46), (0.40, 0.40, 0.05), COL_FRAME)
+    make_box("Chair_Back", (dx + 0.74, dy, 0.78), (0.05, 0.40, 0.60), COL_FRAME)
+    for cx, cy in ((dx + 0.38, dy - 0.16), (dx + 0.38, dy + 0.16),
+                   (dx + 0.72, dy - 0.16), (dx + 0.72, dy + 0.16)):
+        make_box(f"Chair_Leg_{cx:.2f}_{cy:.2f}", (cx, cy, 0.22), (0.04, 0.04, 0.44), COL_FRAME_DK)
+    # THE DEPTH CHART taped to the wall above the desk (ch19 canon)
+    # on the wall face (2026-09-23: taped inside the wall)
+    make_box("DepthChart", (-ROOM_W / 2.0 + 0.105, dy, 1.55), (0.01, 0.5, 0.65), COL_PAPER)
+    for r in range(6):
+        make_box(f"DepthChart_Row_{r}", (-ROOM_W / 2.0 + 0.1125, dy, 1.78 - r * 0.09),
+                 (0.005, 0.42, 0.025), (0.35, 0.35, 0.38, 1.0))
+    for tc in ((dy - 0.22, 1.86), (dy + 0.22, 1.24)):
+        make_box(f"DepthChart_Tape_{tc[1]:.2f}", (-ROOM_W / 2.0 + 0.113, tc[0], tc[1]),
+                 (0.006, 0.08, 0.04), (0.85, 0.82, 0.70, 0.8))
+
+
+def build_gear_and_pack():
+    """The packed backpack by the door; football gear in the NW
+    corner; jersey hung on the wall."""
+    # Backpack — packed, leaning by the door (ready for morning)
+    make_box("Backpack", (-1.15, 0.55, 0.26), (0.34, 0.22, 0.5), COL_PACK)
+    make_box("Backpack_Pocket", (-1.15, 0.42, 0.18), (0.26, 0.06, 0.24), (0.18, 0.26, 0.21, 1.0))
+    make_box("Backpack_Strap", (-1.02, 0.55, 0.30), (0.04, 0.18, 0.42), (0.14, 0.20, 0.16, 1.0))
+    # Gear corner NW: helmet on a crate, shoulder pads, cleats
+    make_box("Gear_Crate", (-ROOM_W/2.0 + 0.33, 3.6, 0.18), (0.45, 0.45, 0.36), COL_FRAME_DK)   # against the W wall (2026-09-25: 43 cm off it)
+    make_cyl("Helmet", (-1.8700, 3.6, 0.48), 0.15, 0.24, COL_HELMET, segments=12)
+    make_box("Helmet_Mask", (-1.8700, 3.38, 0.42), (0.22, 0.05, 0.12), COL_FRAME_DK)
+    make_box("ShoulderPads", (-0.95, 3.75, 0.12), (0.55, 0.35, 0.22), COL_HELMET)
+    for k in range(2):
+        make_box(f"Cleat_{k}", (-1.3 + k * 0.24, 3.15, 0.06), (0.12, 0.30, 0.10),
+                 (0.15, 0.15, 0.16, 1.0))
+    # Jersey on a hanger, north wall
+    # hung from the rod, the rod on the wall (2026-09-23: rod 1.5 cm off
+    # the wall, jersey 5.5 cm under the rod)
+    make_box("Jersey", (-0.75, ROOM_D - 0.12, 1.605), (0.55, 0.04, 0.6), COL_JERSEY)
+    make_box("Jersey_Num", (-0.75, ROOM_D - 0.145, 1.605), (0.22, 0.01, 0.3), COL_PILLOW)
+    make_cyl("Jersey_Rod", (-0.75, ROOM_D - 0.115, 1.92), 0.015, 0.7, COL_FRAME_DK,
+             segments=6, axis='X')
+    # A REAL window on the north wall (the cicadas are loud through
+    # it; the old build was a single 6 cm stick inside the wall)
+    make_box("Window_Frame_T", (0.45, ROOM_D - 0.12, 2.02), (1.06, 0.05, 0.06), COL_FRAME_DK)
+    make_box("Window_Frame_B", (0.45, ROOM_D - 0.12, 1.06), (1.06, 0.05, 0.06), COL_FRAME_DK)
+    make_box("Window_Frame_L", (-0.06, ROOM_D - 0.12, 1.54), (0.05, 0.05, 1.02), COL_FRAME_DK)
+    make_box("Window_Frame_R", (0.96, ROOM_D - 0.12, 1.54), (0.05, 0.05, 1.02), COL_FRAME_DK)
+    make_box("Window_Glass", (0.45, ROOM_D - 0.12, 1.54), (1.00, 0.005, 0.92), (0.14, 0.17, 0.24, 0.6))
+    make_box("Window_Sill", (0.45, ROOM_D - 0.17, 1.02), (1.14, 0.14, 0.05), COL_FRAME_DK)
+
+
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0))
+    pw = COL_WALL
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
+
+def build_athletes_walls_2026_10():
+    """BEN'S WALLS (2026-10-08; "too bare and empty" — 27 % of them held
+    anything at eye height). A tidy athlete's room keeps its football on
+    the walls: the team pennant and the framed team photograph over the
+    headboard, a shelf of trophies, a dresser under it, a sports print by
+    the door, the hamper in the corner."""
+    from _props.geometry import make_chamfer_box, make_lathe
+    from _props.decor import make_faded_poster
+    EF, NF, SF, WF = ROOM_W/2.0 - 0.10, ROOM_D - 0.10, 0.10, -ROOM_W/2.0 + 0.10
+    navy, gold = (0.16, 0.22, 0.42, 1.0), (0.90, 0.72, 0.24, 1.0)
+    wood = (0.50, 0.38, 0.26, 1.0)
+    # the pennant and the team photo over the headboard (E wall)
+    make_box("Pennant_Base", (EF - 0.005, 2.90, 1.75), (0.01, 0.10, 0.30), navy)
+    for k in range(6):
+        w = 0.62 - k * 0.10
+        make_box(f"Pennant_{k}", (EF - 0.006, 2.90 - 0.05 - w / 2.0 + 0.05, 1.75 + 0.12 - k * 0.048), (0.008, w, 0.05), navy if k % 2 == 0 else (0.18, 0.24, 0.46, 1.0))
+    make_box("Pennant_Letters", (EF - 0.012, 2.62, 1.76), (0.002, 0.30, 0.08), gold)
+    make_box("Team_Photo", (EF - 0.015, 3.60, 1.70), (0.03, 0.60, 0.42), (0.22, 0.18, 0.14, 1.0))
+    make_box("Team_Photo_Print", (EF - 0.031, 3.60, 1.70), (0.002, 0.52, 0.34), (0.40, 0.46, 0.38, 1.0))
+    for r in range(2):
+        for c in range(7):
+            make_box(f"Team_Photo_Player_{r}_{c}", (EF - 0.033, 3.40 + c * 0.066, 1.62 + r * 0.12), (0.002, 0.04, 0.07), navy if (r + c) % 2 else (0.86, 0.84, 0.80, 1.0))
+    # the dresser on the E wall south of the bed, the trophy shelf over it
+    dy0, dy1 = 0.45, 1.65
+    make_box("Dresser", (EF - 0.25, (dy0 + dy1) / 2.0, 0.42), (0.50, dy1 - dy0, 0.84), wood)
+    for di in range(3):
+        make_box(f"Dresser_Drawer_{di}", (EF - 0.505, (dy0 + dy1) / 2.0, 0.15 + di * 0.27), (0.01, dy1 - dy0 - 0.06, 0.22), (0.42, 0.30, 0.20, 1.0))
+        make_box(f"Dresser_Pull_{di}", (EF - 0.52, (dy0 + dy1) / 2.0, 0.15 + di * 0.27), (0.02, 0.14, 0.02), (0.20, 0.20, 0.22, 1.0))
+    make_box("Dresser_Speaker", (EF - 0.25, 0.70, 0.92), (0.14, 0.14, 0.16), (0.12, 0.12, 0.14, 1.0))
+    make_box("Trophy_Shelf", (EF - 0.11, 1.05, 1.45), (0.22, 1.10, 0.025), wood)
+    for ti, (ty, th) in enumerate(((0.65, 0.26), (0.92, 0.20), (1.15, 0.30), (1.42, 0.22))):
+        make_box(f"Trophy_{ti}_Base", (EF - 0.11, ty, 1.4625 + 0.03), (0.08, 0.08, 0.06), (0.16, 0.14, 0.12, 1.0))
+        make_lathe(f"Trophy_{ti}", (EF - 0.11, ty, 1.5225), [(0.012, 0.0), (0.012, th * 0.5), (0.05, th * 0.75), (0.04, th), (0.0, th)], gold, segments=10)
+    make_cyl("Game_Ball", (EF - 0.11, 1.30, 1.4625 + 0.08), 0.08, 0.20, (0.50, 0.28, 0.16, 1.0), axis='Y', segments=10)
+    # a sports print by the door (S wall), the hamper in the NW corner
+    make_faded_poster("Poster_S", (1.10, SF + 0.0025, 1.55), axis='X', into_room=+1, kind="sports")
+    make_lathe("Hamper", (WF + 0.30, NF - 0.30, 0.0), [(0.20, 0.0), (0.22, 0.55), (0.0, 0.55)], (0.70, 0.64, 0.52, 1.0), segments=12)
+
+def main():
+    clear_scene()
+    build_shell()
+    build_bed()
+    build_desk()
+    build_gear_and_pack()
+    build_detail_pass_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.45, kind="back", ground_z=-2.9, seed=21)   # upstairs at the Kowalskis': the back yard, the cicadas
+    build_athletes_walls_2026_10()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/ben_bedroom.glb"))
+    print(f"\n[build_ben_bedroom] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()

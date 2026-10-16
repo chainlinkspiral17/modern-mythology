@@ -1,503 +1,388 @@
-"""
-build_centro_break_room.py · v2 (hero pass)
-══════════════════════════════════════════════════════════════════
-VOL 6 · Centro Foods — the break room, off the dock corridor.
-The four-AM-break room. One store, two rooms — this file and
-build_centro_grocery_aisle.py share a byte-identical palette
-block (KEEP IN SYNC marker below).
+"""Centro Grocery — break room — vol6 placement script.
 
-Canon sources (read before dressing):
-  · vol6_ch10_night_shift.json — the room's own inventory: "a
-    card table with four mismatched chairs. A microwave that has
-    been at Centro since 2009. A refrigerator with a sign that
-    says LABEL YOUR FOOD OR IT GETS THROWN OUT in a hand that
-    is Jessa's. A bulletin board with a printed schedule and a
-    printed inventory countdown — INVENTORY FRIDAY NIGHT — 12 AM
-    SHARP — ALL HANDS — and a printed safety reminder from the
-    corporate office about not propping the cooler doors with
-    milk crates." Plus: the coffee pot Jessa keeps going on the
-    counter (paper cups); a single exterior door onto the
-    loading dock; Doug's chair against the back wall.
-  · vol6_ch18_stockroom.json — "the radio above the microwave
-    plays the Tejano station Marisol has, since 2019, put on
-    every shift"; the small dishwasher Jessa runs at the end of
-    every shift; the jacket hook by the door; the coffee pot
-    ("Coffee's hot").
-  · vol6_ch22_inventory.json — Russell's folded Express-News
-    left on the table ("finish that crossword on the third
-    page, kid"); Doug's chair against the wall; the break-room
-    corridor to the dock.
-
-Register: SAME STORE, BACK OF HOUSE. The corporate register is
-present only as paper (the printed countdown, the corporate
-safety memo, the teal letterhead); everything physical is worn
-and personal — the 2009 microwave, the mismatched chairs, the
-one hand-lettered sign in the whole building (Jessa's, on the
-fridge). The contrast between printed and hand-lettered IS the
-room.
-
-Canon-negatives (deliberately NOT built):
-  · NO vending machine (scaffold had one). The ch10 inventory
-    doesn't include it and nobody buys from one all volume —
-    food back here is from home (Marisol's tupperware, Russell's
-    banana), from El Rancho, or from Jessa's coffee pot.
-  · NO lockers. Belongings live on the jacket hooks and in the
-    cubby behind the front register (ch16).
-  · NO Muzak ceiling speaker. The corporate ambient loop is a
-    sales-floor thing; the music back here is Marisol's Tejano
-    radio above the microwave (ch18).
-  · NO round pedestal table (scaffold had one) — canon says CARD
-    TABLE: square top, thin tubular legs.
-  · ONE fluorescent fixture, not two — a 5×4 m back room gets a
-    single twin-tube housing.
-
-Footprint (unchanged from scaffold / Background3D preset):
-  Interior X ∈ [-2.5, +2.5], Y ∈ [0, +4], ceiling Z = 2.6
-  Door gap at south centre (X ∈ [-1, +1]) → the dock corridor.
-  Steel exterior door to the dock in the north wall.
-  Card table centre; counter run on the east wall (the coffee
-  pot's warm burner ties the scene's Fill light practical);
-  fridge NW corner; bulletin board west wall.
-
-Run:
-    blender --background --python build_centro_break_room.py
-Output:
-    godot/assets/3d/locales/centro_break_room.glb
+DRAFT 3 (2026-10-09, the overnight run; CLAUDE.md "build big"). The night
+crew's break room (vol6 ch18/ch22): "The team is in the break room.
+Marisol is at the table with her thermos. Russell is at the table with
+the morning Express-News. Doug is at the chair with Karamazov on his
+lap"; "Doug is in his standard break-room position — the chair against
+the back wall, thermos at his feet"; "The radio above the microwave";
+"BT is at the doorway ... The team listens to BT's footsteps cross the
+break-room corridor, hit the dock, push the dock door open". The room
+was 5.6 x 4.6 with TWO tables built on top of each other (the round
+pedestal table the hero pass had meant to replace, and the card table
+that replaced it) and the dock door in the break room's own wall. Now
+7.2 x 5.6: one folding crew table for six with mismatched chairs,
+DOUG'S CHAIR against the back (N) wall, lockers and the time clock, the
+doorway standing open on the corridor with the dock door at its far
+end, the radio keyed to the microwave.
+Draft 4 targets: the crew's things on the lockers (names on tape); the
+corridor's dock door lit by the dock's sodium lamp through its wire
+glass; Deck framing.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_chair
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band, make_wall_tint_band,
+                           make_wall_outlet, make_light_switch, make_cord_run, make_thermostat)
+from _props.geometry import make_rot_box, make_blob, make_chamfer_box
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_door_hinges
-from _props.decor import make_wall_clock
-from _props.cleaning import make_trash_can
-from _props.food_service import make_paper_cup_stack, make_sugar_creamer_caddy
-from _props.safety import (make_smoke_detector, make_hvac_vent,
-                           make_fluorescent_tube_fixture)
+from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_tube, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
+from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
+from _props.shelving import make_snack_aisle, make_endcap
+from _props.food_service import make_coffee_pots, make_donut_display
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
+from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
-ROOM_W = 5.0; ROOM_D = 4.0; CEIL = 2.6
+ROOM_W = 7.2; ROOM_D = 5.6; CEIL = 2.6   # draft 3 (2026-10-09): was 5.6 x 4.6   # 2026-09-25: 5.0 × 4.0 read cramped on the sheet (the user: "rooms too cramped")
+PAL_WALL = {"wall": (0.74, 0.74, 0.70, 1.0), "baseboard": (0.32, 0.30, 0.28, 1.0)}
+COL_FLOOR = (0.62, 0.58, 0.52, 1.0); COL_SEAM = (0.32, 0.30, 0.28, 1.0); COL_WOOD = (0.42, 0.32, 0.22, 1.0)
+COL_ACCENT = (0.86, 0.62, 0.28, 1.0)
+DOORWAY = (0.6, 1.05, 0.96, 2.10)       # to the corridor (and the dock beyond it)
 
-# ═══ CENTRO FOODS SHARED PALETTE — KEEP IN SYNC ══════════════════
-# One store, two rooms: this block is byte-identical in
-# build_centro_grocery_aisle.py and build_centro_break_room.py.
-# If you edit a constant here, edit BOTH files and verify:
-#   awk '/CENTRO_PALETTE_BEGIN/,/CENTRO_PALETTE_END/' <file> | md5sum
-# CENTRO_PALETTE_BEGIN
-BRAND_TEAL       = (0.16, 0.42, 0.44, 1.0)   # Centro Foods teal — the polo color (vol6 ch10)
-BRAND_TEAL_DARK  = (0.10, 0.28, 0.30, 1.0)
-BRAND_CREAM      = (0.94, 0.92, 0.84, 1.0)   # sign lettering band
-COL_FLOOR_SALES  = (0.80, 0.79, 0.74, 1.0)   # buffed VCT, sales floor
-COL_FLOOR_BACK   = (0.62, 0.58, 0.52, 1.0)   # scuffed back-of-house vinyl
-COL_FLOOR_SEAM   = (0.55, 0.53, 0.48, 1.0)
-COL_FLOOR_SCUFF  = (0.44, 0.42, 0.38, 1.0)
-COL_WALL_SALES   = (0.90, 0.89, 0.85, 1.0)
-COL_WALL_BACK    = (0.78, 0.76, 0.68, 1.0)
-COL_BASEBOARD    = (0.36, 0.35, 0.33, 1.0)
-COL_STEEL        = (0.66, 0.68, 0.70, 1.0)
-COL_METAL_DARK   = (0.22, 0.22, 0.24, 1.0)
-COL_GONDOLA      = (0.88, 0.88, 0.86, 1.0)   # white shelving steel
-COL_CARDBOARD    = (0.72, 0.56, 0.38, 1.0)
-COL_PALLET_WOOD  = (0.60, 0.48, 0.34, 1.0)
-COL_CAN_LID      = (0.78, 0.80, 0.82, 1.0)
-# One tint per planogram run — chain shelf discipline (Gas & Go
-# lesson: the register lives in the geometry).
-CENTRO_CAN_RUNS = [
-    (0.72, 0.28, 0.22, 1.0),   # stewed-tomato red (vol6 ch10)
-    (0.86, 0.74, 0.44, 1.0),   # corn gold
-    (0.44, 0.54, 0.36, 1.0),   # green-bean sage
-    (0.92, 0.88, 0.78, 1.0),   # cream-of-mushroom (vol6 ch22, row 4F)
-    (0.36, 0.44, 0.56, 1.0),   # house-brand blue
-    (0.78, 0.52, 0.28, 1.0),   # chicken-soup amber
-]
-CENTRO_DRY_RUNS = [
-    (0.86, 0.66, 0.34, 1.0),   # honey-oat gold
-    (0.94, 0.82, 0.52, 1.0),   # cream wheat
-    (0.56, 0.58, 0.42, 1.0),   # sage olive
-    (0.62, 0.38, 0.26, 1.0),   # bran rust
-    (0.42, 0.52, 0.56, 1.0),   # muted teal (house brand)
-]
-# CENTRO_PALETTE_END
-
-PAL_WALL = {"wall": COL_WALL_BACK, "baseboard": COL_BASEBOARD}
-
-# Break-room-only shades
-COL_ALMOND_AGED  = (0.84, 0.82, 0.74, 1.0)   # 2009-appliance almond
-COL_CABINET      = (0.58, 0.50, 0.40, 1.0)
-COL_COUNTERTOP   = (0.70, 0.62, 0.48, 1.0)
-COL_CORK         = (0.60, 0.44, 0.30, 1.0)
-COL_MARKER_INK   = (0.16, 0.16, 0.20, 1.0)   # Jessa's hand
-COL_COFFEE       = (0.16, 0.10, 0.06, 1.0)
-COL_BURNER_GLOW  = (1.00, 0.78, 0.32, 1.0)   # the pot Jessa keeps going
-
-
-# ════════════════════════════════════════════════════════════════
-# SHELL — footprint unchanged; back-of-house beige, no crown
-# molding, hand-placed ceiling stains (the default stain spread
-# would land outside this small footprint).
-# ════════════════════════════════════════════════════════════════
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
-               size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-               palette={"vinyl": COL_FLOOR_BACK, "seam": COL_FLOOR_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
-                  axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0),
-              length=ROOM_W / 2.0 - 1.0, height=CEIL, axis='X', palette=PAL_WALL)
-    make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.5), 0.0, 0),
-              length=ROOM_W / 2.0 - 1.0, height=CEIL, axis='X', palette=PAL_WALL)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.30), (2.0, 0.20, 0.60),
-             COL_WALL_BACK)
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL),
-                 size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4, with_stains=False)
-    for si, (sx, sy) in enumerate([(-1.2, 3.2), (0.8, 1.0)]):
-        make_box(f"CentroB_CeilStain_{si}", (sx, sy, CEIL + 0.025),
-                 (0.70, 0.70, 0.003), P.CEILING_STAIN)
-    # Worn entry mat inside the corridor door
-    make_box("CentroB_EntryMat", (0.0, 0.55, 0.012),
-             (1.40, 0.70, 0.02), P.RUBBER_MAT)
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    from _props.structure import make_wall_with_openings
+    make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL,
+                            baseboard_face_sign=+1, openings=[DOORWAY])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    for nm, ax, length, wx, wy in [
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10),
+            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
+def build_table_OLD_round():
+    """(draft 3: retired — the hero pass built a card table over it)"""
+    tx, ty = 0.0, ROOM_D/2.0
+    make_cyl("Table_Top", (tx, ty, 0.74), 0.40, 0.04, COL_WOOD)
+    make_lathe("Table_Pedestal", (tx, ty, 0.0), [(0.22, 0.0), (0.20, 0.03), (0.07, 0.06), (0.05, 0.40), (0.06, 0.62), (0.10, 0.70), (0.12, 0.72)], P.METAL_BLACK, segments=12)
+    import math
+    for ci in range(4):
+        ang = ci * 1.57
+        cx, cy = tx + math.cos(ang)*0.85, ty + math.sin(ang)*0.85
+        make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=P.METAL_BLACK, seat_col=COL_WOOD, w=0.38)
 
-# ════════════════════════════════════════════════════════════════
-# CARD TABLE + FOUR MISMATCHED CHAIRS (vol6 ch10 — the canon
-# furniture list). Square folding-leg card table, and four chairs
-# that agree on nothing: a metal folding chair, a wooden kitchen
-# chair, a faded plastic stacker, and a cast-off office chair.
-# Russell's folded Express-News sits on the table (ch22).
-# ════════════════════════════════════════════════════════════════
-TABLE_X, TABLE_Y = 0.0, 2.0
+def build_vending():
+    vx, vy = +ROOM_W/2.0-0.30, ROOM_D-1.0
+    # an open shell with a shelf under each row, glints for the glass
+    # (2026-09-24: a solid body with the snacks inside it, behind a glass
+    # slab that renders opaque — no alpha in this pipeline)
+    make_case_shell("Vending_Body", (vx, vy, 1.00), (0.50, 0.70, 2.00), COL_ACCENT, open_face='-X')
+    for gi, (gy, gw) in enumerate(((-0.20, 0.02), (-0.13, 0.01))):
+        make_box(f"Vending_Glint_{gi}", (vx-0.248, vy+gy, 1.00), (0.004, gw, 1.96), (0.86, 0.90, 0.92, 1.0))
+    for r in range(4):
+        make_box(f"Vending_Shelf_{r}", (vx-0.0075, vy, 0.60+r*0.30), (0.475, 0.66, 0.02), P.METAL_STEEL)
+        for c in range(5):
+            make_box(f"Vending_Snack_{r}_{c}", (vx-0.22, vy-0.28+c*0.14, 0.70+r*0.30), (0.04, 0.10, 0.18), P.SNACK_TINTS[(r+c)%len(P.SNACK_TINTS)])
 
-def build_card_table():
-    tx, ty = TABLE_X, TABLE_Y
-    make_box("CentroB_CardTable_Top", (tx, ty, 0.72),
-             (0.90, 0.90, 0.045), (0.52, 0.42, 0.30, 1.0))
-    for ei, (exo, eyo, w, d) in enumerate([
-            (0.0, -0.45, 0.92, 0.03), (0.0, +0.45, 0.92, 0.03),
-            (-0.45, 0.0, 0.03, 0.92), (+0.45, 0.0, 0.03, 0.92)]):
-        make_box(f"CentroB_CardTable_Edge_{ei}", (tx + exo, ty + eyo, 0.72),
-                 (w, d, 0.05), COL_METAL_DARK)
-    for li, (lxo, lyo) in enumerate([(-0.38, -0.38), (+0.38, -0.38),
-                                     (-0.38, +0.38), (+0.38, +0.38)]):
-        make_cyl(f"CentroB_CardTable_Leg_{li}", (tx + lxo, ty + lyo, 0.35),
-                 0.018, 0.70, COL_METAL_DARK)
-    # Russell's folded newspaper, left for the kid (ch22).
-    # Table top surface is z = 0.72 + 0.0225 = 0.7425.
-    make_box("CentroB_ExpressNews_Bottom", (tx + 0.18, ty + 0.12, 0.7475),
-             (0.32, 0.24, 0.010), P.NEWSPRINT)
-    make_box("CentroB_ExpressNews_Top", (tx + 0.16, ty + 0.14, 0.7565),
-             (0.30, 0.22, 0.008), P.NEWSPRINT)
-    make_box("CentroB_ExpressNews_Fold", (tx + 0.03, ty + 0.13, 0.754),
-             (0.02, 0.24, 0.014), P.PAPER_AGED)
-    # A paper coffee cup somebody hasn't bussed yet
-    make_cyl("CentroB_TableCup", (tx - 0.26, ty - 0.20, 0.79),
-             0.040, 0.095, P.PAPER)
+def build_kitchenette():
+    """Galley counter along the W wall: sink + faucet, a compound
+    microwave, a drip coffee station, and upper cabinets."""
+    # (2026-09-23: the run stood 8 cm inside the W wall with every door,
+    # pull and the fridge's doors on the wall side; it stands on the
+    # wall face now and faces the room, +X)
+    cx = -ROOM_W/2.0 + 0.36
+    cy0 = ROOM_D/2.0
+    # Counter carcass + top
+    make_box("Counter_Body", (cx, cy0, 0.45), (0.52, 2.60, 0.90), COL_WOOD)
+    make_box("Counter_Top", (cx + 0.02, cy0, 0.92), (0.56, 2.64, 0.05), P.METAL_STEEL)
+    make_box("Counter_Kick", (cx, cy0, 0.05), (0.44, 2.56, 0.10), (0.20, 0.16, 0.12, 1.0))
+    # Cabinet doors under the counter
+    for di, dy in enumerate([cy0-0.85, cy0-0.28, cy0+0.30, cy0+0.88]):
+        make_box(f"Counter_Door_{di}", (cx+0.27, dy, 0.46), (0.02, 0.50, 0.72), (0.36, 0.28, 0.18, 1.0))
+        make_box(f"Counter_Pull_{di}", (cx+0.29, dy+0.20, 0.46), (0.02, 0.03, 0.12), P.METAL_BLACK)
+    # Sink basin (recessed dark box + rim) at the S third
+    sy = cy0 - 0.80
+    make_box("Sink_Rim", (cx, sy, 0.93), (0.42, 0.44, 0.03), P.METAL_STEEL)
+    make_box("Sink_Basin", (cx, sy, 0.86), (0.34, 0.36, 0.14), (0.30, 0.32, 0.34, 1.0))
+    # Faucet (riser + gooseneck spout)
+    make_cyl("Faucet_Riser", (cx+0.10, sy+0.16, 1.02), 0.02, 0.18, P.METAL_STEEL, segments=8, axis='Z')
+    # out of the riser's top over the basin (2026-09-23: 8 cm clear of the riser)
+    make_cyl("Faucet_Spout", (cx+0.01, sy+0.16, 1.12), 0.018, 0.20, P.METAL_STEEL, segments=8, axis='X')
+    make_box("Faucet_Handle", (cx+0.14, sy+0.16, 1.04), (0.04, 0.10, 0.03), P.METAL_STEEL)
+    # Compound microwave at the N third of the counter
+    my = cy0 + 0.85
+    make_box("Microwave_Body", (cx, my, 1.10), (0.48, 0.44, 0.30), (0.30, 0.30, 0.32, 1.0))
+    # door, window, panel and handle on the room face (2026-09-23: on the
+    # S side, facing down the counter)
+    make_box("Microwave_Door", (cx+0.25, my-0.06, 1.10), (0.02, 0.30, 0.26), (0.18, 0.18, 0.20, 1.0))
+    make_box("Microwave_Window", (cx+0.265, my-0.08, 1.10), (0.01, 0.20, 0.18), (0.10, 0.14, 0.12, 0.7))
+    make_box("Microwave_Panel", (cx+0.25, my+0.16, 1.10), (0.02, 0.10, 0.24), (0.14, 0.14, 0.16, 1.0))
+    make_box("Microwave_Handle", (cx+0.27, my+0.10, 1.10), (0.02, 0.02, 0.22), P.METAL_STEEL)
+    # Drip coffee station (make_coffee_pots was imported/unused)
+    make_coffee_pots("Coffee", (cx, cy0+0.10, 0.94), pots=2)
+    # Upper cabinets above the counter
+    make_box("UpperCab_Body", (cx-0.04, cy0, 1.95), (0.44, 2.40, 0.60), (0.36, 0.28, 0.18, 1.0))   # on the wall
+    for ui, uy in enumerate([cy0-0.60, cy0+0.60]):
+        make_box(f"UpperCab_Door_{ui}", (cx+0.19, uy, 1.95), (0.02, 1.10, 0.56), (0.42, 0.32, 0.20, 1.0))
+        make_box(f"UpperCab_Pull_{ui}", (cx+0.21, uy+0.45, 1.80), (0.02, 0.03, 0.12), P.METAL_BLACK)
 
-
-def _chair_folding(tag, cx, cy, back_dx, back_dy, tint):
-    """Metal folding chair — thin frame, hard panels."""
-    make_box(f"CentroB_Chair{tag}_Seat", (cx, cy, 0.45),
-             (0.40, 0.40, 0.025), tint)
-    make_box(f"CentroB_Chair{tag}_Back",
-             (cx + back_dx * 0.19, cy + back_dy * 0.19, 0.78),
-             (0.40 if back_dy else 0.03, 0.40 if back_dx else 0.03, 0.36), tint)
-    for li, (lxo, lyo) in enumerate([(-0.17, -0.17), (+0.17, -0.17),
-                                     (-0.17, +0.17), (+0.17, +0.17)]):
-        make_cyl(f"CentroB_Chair{tag}_Leg_{li}", (cx + lxo, cy + lyo, 0.22),
-                 0.012, 0.44, COL_METAL_DARK)
-
-
-def build_chairs():
-    tx, ty = TABLE_X, TABLE_Y
-    # 1 · metal folding chair, sage-gray (south seat, faces table)
-    _chair_folding("Fold", tx, ty - 0.72, 0, -1, (0.44, 0.48, 0.42, 1.0))
-    # 2 · wooden kitchen chair (east seat)
-    wx, wy, wood = tx + 0.72, ty, (0.52, 0.38, 0.24, 1.0)
-    make_box("CentroB_ChairWood_Seat", (wx, wy, 0.45), (0.42, 0.42, 0.04), wood)
-    for li, (lxo, lyo) in enumerate([(-0.18, -0.18), (+0.18, -0.18),
-                                     (-0.18, +0.18), (+0.18, +0.18)]):
-        make_box(f"CentroB_ChairWood_Leg_{li}", (wx + lxo, wy + lyo, 0.22),
-                 (0.04, 0.04, 0.44), wood)
-    for pi in (-1, +1):
-        make_box(f"CentroB_ChairWood_Post_{pi:+d}", (wx + 0.19, wy + pi * 0.18, 0.72),
-                 (0.04, 0.04, 0.58), wood)
-    for si2, sz in enumerate([0.72, 0.86, 1.00]):
-        make_box(f"CentroB_ChairWood_Slat_{si2}", (wx + 0.19, wy, sz),
-                 (0.03, 0.34, 0.06), wood)
-    # 3 · faded plastic stacking chair (west seat)
-    px, py, shell = tx - 0.72, ty, (0.80, 0.52, 0.30, 1.0)
-    make_box("CentroB_ChairPlastic_Seat", (px, py, 0.44), (0.42, 0.40, 0.05), shell)
-    make_box("CentroB_ChairPlastic_Back", (px - 0.20, py, 0.72), (0.05, 0.40, 0.50), shell)
-    for li, (lxo, lyo) in enumerate([(-0.16, -0.16), (+0.16, -0.16),
-                                     (-0.16, +0.16), (+0.16, +0.16)]):
-        make_cyl(f"CentroB_ChairPlastic_Leg_{li}", (px + lxo, py + lyo, 0.21),
-                 0.014, 0.42, COL_STEEL)
-    # 4 · cast-off office chair (north seat)
-    ox, oy, navy = tx, ty + 0.72, (0.28, 0.32, 0.44, 1.0)
-    make_box("CentroB_ChairOffice_Seat", (ox, oy, 0.48), (0.44, 0.44, 0.09), navy)
-    make_box("CentroB_ChairOffice_Back", (ox, oy + 0.22, 0.82), (0.42, 0.08, 0.46), navy)
-    make_cyl("CentroB_ChairOffice_Post", (ox, oy, 0.28), 0.025, 0.34, COL_METAL_DARK)
-    make_cyl("CentroB_ChairOffice_Base", (ox, oy, 0.06), 0.24, 0.05,
-             COL_METAL_DARK, segments=10)
-    # 5 · Doug's chair, against the back wall (ch10/ch18/ch22 —
-    # "the chair against the back wall"), facing the room.
-    _chair_folding("Doug", 1.60, 3.62, 0, +1, (0.40, 0.44, 0.48, 1.0))
-
-
-# ════════════════════════════════════════════════════════════════
-# REFRIGERATOR — NW corner, with THE hand-lettered sign (Jessa's
-# hand, ch10): LABEL YOUR FOOD OR IT GETS THROWN OUT. Marker
-# strokes abstracted as uneven ink bands — deliberately crooked
-# next to all the printed paper in this store.
-# ════════════════════════════════════════════════════════════════
 def build_fridge():
-    fx, fy = -2.02, 3.38
-    make_box("CentroB_Fridge_Body", (fx, fy, 0.85), (0.70, 0.68, 1.70),
-             COL_ALMOND_AGED)
-    make_box("CentroB_Fridge_DoorSeam", (fx, fy - 0.345, 1.12),
-             (0.66, 0.005, 0.015), COL_BASEBOARD)
-    for hz, hh in [(1.32, 0.26), (0.84, 0.38)]:
-        make_box(f"CentroB_Fridge_Handle_{int(hz*100)}",
-                 (fx + 0.26, fy - 0.37, hz), (0.035, 0.03, hh), COL_METAL_DARK)
-    # Jessa's sign — taped a little off square (offset strips)
-    make_box("CentroB_Fridge_Sign", (fx - 0.04, fy - 0.348, 1.42),
-             (0.30, 0.005, 0.22), P.PAPER)
-    for bi, (bxo, bw) in enumerate([(-0.02, 0.24), (0.02, 0.18), (-0.01, 0.22)]):
-        make_box(f"CentroB_Fridge_SignInk_{bi}",
-                 (fx - 0.04 + bxo, fy - 0.351, 1.48 - bi * 0.055),
-                 (bw, 0.002, 0.030), COL_MARKER_INK)
-    make_box("CentroB_Fridge_SignTape", (fx - 0.04, fy - 0.352, 1.525),
-             (0.08, 0.002, 0.025), (0.86, 0.84, 0.78, 1.0))
-    for mi, mcol in enumerate([(0.72, 0.28, 0.22, 1.0),
-                               (0.36, 0.44, 0.56, 1.0),
-                               (0.86, 0.74, 0.44, 1.0)]):
-        make_cyl(f"CentroB_Fridge_Magnet_{mi}",
-                 (fx - 0.18 + mi * 0.10, fy - 0.348, 1.02),
-                 0.018, 0.008, mcol, axis='Y')
+    # Fridge in the NW corner
+    # (2026-09-23: 16 cm into the N wall and 4 into the W, doors against
+    # the W wall; in the corner now, between the counter's end and the
+    # N wall, doors to the room)
+    fx, fy = -ROOM_W/2.0 + 0.46, ROOM_D - 0.38
+    make_box("Fridge_Body", (fx, fy, 0.95), (0.72, 0.56, 1.90), (0.82, 0.82, 0.80, 1.0))
+    make_box("Fridge_DoorUpper", (fx+0.375, fy, 1.35), (0.03, 0.52, 1.02), (0.86, 0.86, 0.84, 1.0))
+    make_box("Fridge_DoorLower", (fx+0.375, fy, 0.55), (0.03, 0.52, 0.66), (0.86, 0.86, 0.84, 1.0))
+    make_box("Fridge_HandleU", (fx+0.405, fy+0.20, 1.35), (0.03, 0.04, 0.40), P.METAL_STEEL)
+    make_box("Fridge_HandleL", (fx+0.405, fy+0.20, 0.55), (0.03, 0.04, 0.30), P.METAL_STEEL)
+    make_box("Fridge_Kick", (fx, fy, 0.05), (0.68, 0.52, 0.10), (0.30, 0.30, 0.30, 1.0))
+    # Magnets / a note on the door
+    make_box("Fridge_Note", (fx+0.3925, fy-0.10, 1.45), (0.005, 0.16, 0.20), P.PAPER)
 
+def build_board():
+    # on the wall face (2026-09-23: board and notices inside the N wall)
+    make_box("BulletinBoard", (0.0, ROOM_D-0.12, 1.50), (1.60, 0.04, 0.90), (0.62, 0.42, 0.28, 1.0))
+    for pi in range(8):
+        px = -0.60 + (pi%4)*0.40; pz = 1.20 + (pi//4)*0.50
+        make_box(f"Notice_{pi}", (px, ROOM_D-0.1425, pz), (0.20, 0.005, 0.16), P.PAPER)
 
-# ════════════════════════════════════════════════════════════════
-# COUNTER RUN — east wall. The coffee pot Jessa keeps going (its
-# amber burner is the practical for the scene's warm Fill light),
-# paper cups, sugar caddy, the 2009 microwave, Marisol's Tejano
-# radio on a shelf ABOVE the microwave (ch18), and the small
-# dishwasher below (ch18).
-# ════════════════════════════════════════════════════════════════
-def build_counter():
-    face_x = ROOM_W / 2.0 - 0.10          # east wall interior face
-    cx = face_x - 0.30                    # counter centreline
-    run_cy, run_l = 2.10, 2.00
-    make_box("CentroB_Counter_Base", (cx, run_cy, 0.44),
-             (0.56, run_l, 0.88), COL_CABINET)
-    make_box("CentroB_Counter_Top", (cx - 0.02, run_cy, 0.90),
-             (0.62, run_l + 0.04, 0.04), COL_COUNTERTOP)
-    make_box("CentroB_Counter_Backsplash", (face_x - 0.02, run_cy, 1.00),
-             (0.03, run_l, 0.16), COL_COUNTERTOP)
-    for di, dy in enumerate([1.55, 2.65]):
-        make_box(f"CentroB_Counter_DoorSeam_{di}", (cx - 0.285, dy, 0.42),
-                 (0.005, 0.015, 0.72), COL_BASEBOARD)
-        make_box(f"CentroB_Counter_Knob_{di}", (cx - 0.30, dy + 0.12, 0.70),
-                 (0.02, 0.03, 0.03), COL_METAL_DARK)
-    # ── Coffee machine + the pot that is always going ────────────
-    # L-shaped drip machine: base plate + rear tower + brew head
-    # overhanging the pot. The pot sits in the OPEN front recess —
-    # never buried inside a solid body (playbook: audit
-    # intersections). Counter top surface is z = 0.92.
-    mx, my = cx + 0.06, 2.72
-    make_box("CentroB_Coffee_BasePlate", (mx, my, 0.935),
-             (0.26, 0.30, 0.03), COL_METAL_DARK)
-    make_box("CentroB_Coffee_Tower", (mx + 0.09, my, 1.15),
-             (0.10, 0.30, 0.40), COL_METAL_DARK)
-    make_box("CentroB_Coffee_Head", (mx, my, 1.30),
-             (0.28, 0.30, 0.10), COL_METAL_DARK)
-    make_box("CentroB_Coffee_Basket", (mx - 0.02, my, 1.21),
-             (0.10, 0.16, 0.06), COL_STEEL)
-    make_cyl("CentroB_Coffee_Burner", (mx - 0.05, my, 0.958),
-             0.10, 0.015, COL_BURNER_GLOW, segments=10)
-    make_cyl("CentroB_Coffee_Pot", (mx - 0.05, my, 1.04),
-             0.085, 0.14, COL_COFFEE, segments=10)
-    make_cyl("CentroB_Coffee_PotRim", (mx - 0.05, my, 1.115),
-             0.088, 0.012, COL_STEEL, segments=10)
-    make_box("CentroB_Coffee_PotHandle", (mx - 0.17, my, 1.05),
-             (0.035, 0.03, 0.10), COL_METAL_DARK)
-    make_box("CentroB_Coffee_Switch", (mx + 0.09, my - 0.16, 1.00),
-             (0.02, 0.005, 0.03), (0.86, 0.42, 0.32, 1.0))
-    make_paper_cup_stack("CentroB_Cups", (cx + 0.10, 2.40, 0.928), count=12)
-    make_sugar_creamer_caddy("CentroB_Caddy", (cx + 0.05, 2.14, 0.96))
-    # ── The 2009 microwave (ch10) ────────────────────────────────
-    wx, wy = cx + 0.02, 1.42
-    make_box("CentroB_Microwave_Body", (wx, wy, 1.08), (0.42, 0.55, 0.32),
-             COL_ALMOND_AGED)
-    make_box("CentroB_Microwave_Door", (wx - 0.215, wy - 0.06, 1.08),
-             (0.01, 0.38, 0.26), (0.16, 0.16, 0.18, 1.0))
-    make_box("CentroB_Microwave_Handle", (wx - 0.225, wy - 0.27, 1.08),
-             (0.015, 0.03, 0.24), COL_METAL_DARK)
-    make_box("CentroB_Microwave_Clock", (wx - 0.215, wy + 0.17, 1.16),
-             (0.005, 0.08, 0.03), (0.32, 0.62, 0.42, 1.0))
-    # ── Marisol's radio, on a shelf above the microwave (ch18) ───
-    sx, sy = face_x - 0.20, 1.42
-    make_box("CentroB_RadioShelf", (sx, sy, 1.62), (0.36, 0.50, 0.03),
-             COL_CABINET)
-    for bi2, byo in enumerate([-0.18, +0.18]):
-        make_box(f"CentroB_RadioShelf_Bracket_{bi2}",
-                 (face_x - 0.06, sy + byo, 1.54), (0.10, 0.03, 0.14), COL_STEEL)
-    make_box("CentroB_Radio_Body", (sx, sy, 1.72), (0.18, 0.32, 0.16),
-             (0.26, 0.24, 0.24, 1.0))
-    make_box("CentroB_Radio_Grille", (sx - 0.093, sy - 0.06, 1.72),
-             (0.005, 0.14, 0.12), (0.40, 0.38, 0.36, 1.0))
-    for ki, kyo in enumerate([0.09, 0.14]):
-        make_cyl(f"CentroB_Radio_Knob_{ki}", (sx - 0.095, sy + kyo, 1.70),
-                 0.014, 0.012, COL_STEEL, axis='X')
-    make_cyl("CentroB_Radio_Antenna", (sx + 0.05, sy + 0.13, 1.94),
-             0.004, 0.30, COL_STEEL)
-    # ── The small dishwasher Jessa runs every shift-end (ch18) ───
-    make_box("CentroB_Dishwasher_Front", (cx - 0.295, 1.10, 0.46),
-             (0.02, 0.52, 0.68), COL_STEEL)
-    make_box("CentroB_Dishwasher_Bar", (cx - 0.315, 1.10, 0.72),
-             (0.02, 0.40, 0.03), COL_METAL_DARK)
-    make_box("CentroB_Dishwasher_Light", (cx - 0.307, 1.30, 0.60),
-             (0.005, 0.02, 0.02), (0.32, 0.62, 0.42, 1.0))
-    # Trash can at the counter's south end
-    make_trash_can("CentroB_Trash", (1.55, 0.55, 0.0),
-                   palette={"body": (0.45, 0.46, 0.44, 1.0)}, branded=False)
+def build_break_decor():
+    # Wall clock on the N wall beside the bulletin board
+    make_wall_clock("Clock", (1.70, ROOM_D - 0.100, 2.10), frozen_hour=12, frozen_min=30, facing='-Y')   # on the N wall's face wherever it is (2026-09-25: literal 3.9 floated when the room grew)
+    # Wall calendar on the E wall (make_calendar was imported/unused)
+    make_calendar("Calendar", (ROOM_W/2.0-0.1025, 1.20, 1.60))
+    # Corner floor plant (make_floor_plant was imported/unused)
+    make_floor_plant("Plant", (ROOM_W/2.0-0.55, 0.60, 0.0))
+    # Swing-lid trash bin by the counter
+    tx, ty = -ROOM_W/2.0+1.25, 0.45   # east of the dishwasher (2026-09-25: at +0.95 the widened room put it inside the dishwasher)
+    make_cyl("Trash_Body", (tx, ty, 0.34), 0.20, 0.68, (0.34, 0.36, 0.34, 1.0), segments=12, axis='Z')
+    make_cyl("Trash_Rim", (tx, ty, 0.68), 0.21, 0.03, (0.24, 0.26, 0.24, 1.0), segments=12, axis='Z')
+    make_box("Trash_SwingLid", (tx, ty, 0.71), (0.30, 0.30, 0.04), (0.28, 0.30, 0.28, 1.0))
 
-
-# ════════════════════════════════════════════════════════════════
-# BULLETIN BOARD — west wall. Everything on it is PRINTED (the
-# corporate register): the schedule grid, the inventory countdown
-# (INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS, with its red
-# urgency band), and the corporate safety memo about not propping
-# the cooler doors with milk crates (teal letterhead). ch10.
-# ════════════════════════════════════════════════════════════════
-def build_bulletin_board():
-    face_x = -(ROOM_W / 2.0 - 0.10)       # west wall interior face
-    bx = face_x + 0.035
-    by, bz = 1.70, 1.50
-    make_box("CentroB_Board_Cork", (bx, by, bz), (0.05, 1.30, 0.85), COL_CORK)
-    for fi, (fyo, fzo, w, h) in enumerate([
-            (0.0, +0.44, 1.36, 0.04), (0.0, -0.44, 1.36, 0.04),
-            (-0.67, 0.0, 0.04, 0.92), (+0.67, 0.0, 0.04, 0.92)]):
-        make_box(f"CentroB_Board_Frame_{fi}", (bx, by + fyo, bz + fzo),
-                 (0.06, w, h), COL_PALLET_WOOD)
-    px = bx + 0.030
-    # Printed schedule grid
-    make_box("CentroB_Board_Schedule", (px, by - 0.38, bz + 0.10),
-             (0.005, 0.30, 0.40), P.PAPER)
-    for ri in range(4):
-        make_box(f"CentroB_Board_ScheduleRow_{ri}",
-                 (px + 0.003, by - 0.38, bz + 0.24 - ri * 0.09),
-                 (0.002, 0.24, 0.010), COL_METAL_DARK)
-    # INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS
-    make_box("CentroB_Board_Countdown", (px, by + 0.02, bz + 0.14),
-             (0.005, 0.34, 0.26), P.PAPER)
-    make_box("CentroB_Board_CountdownBand", (px + 0.003, by + 0.02, bz + 0.21),
-             (0.002, 0.30, 0.06), (0.72, 0.28, 0.22, 1.0))
-    make_box("CentroB_Board_CountdownText", (px + 0.003, by + 0.02, bz + 0.10),
-             (0.002, 0.26, 0.05), COL_MARKER_INK)
-    # Corporate safety memo — teal letterhead, small print
-    make_box("CentroB_Board_SafetyMemo", (px, by + 0.42, bz + 0.08),
-             (0.005, 0.24, 0.32), P.PAPER)
-    make_box("CentroB_Board_SafetyHead", (px + 0.003, by + 0.42, bz + 0.20),
-             (0.002, 0.20, 0.05), BRAND_TEAL)
-    for ri in range(3):
-        make_box(f"CentroB_Board_SafetyLine_{ri}",
-                 (px + 0.003, by + 0.42, bz + 0.11 - ri * 0.05),
-                 (0.002, 0.18, 0.015), COL_METAL_DARK)
-    # An older, sun-aged posting nobody has taken down
-    make_box("CentroB_Board_OldNotice", (px, by - 0.05, bz - 0.26),
-             (0.005, 0.22, 0.16), P.PAPER_AGED)
-    for pi2, (pyo, pzo, pcol) in enumerate([
-            (-0.38, 0.31, (0.72, 0.28, 0.22, 1.0)),
-            (+0.02, 0.28, (0.36, 0.44, 0.56, 1.0)),
-            (+0.42, 0.25, (0.86, 0.74, 0.44, 1.0)),
-            (-0.05, -0.17, (0.44, 0.54, 0.36, 1.0))]):
-        make_cyl(f"CentroB_Board_Pin_{pi2}", (px + 0.006, by + pyo, bz + pzo),
-                 0.010, 0.012, pcol, axis='X')
-
-
-# ════════════════════════════════════════════════════════════════
-# DOCK DOOR + HOOKS + CLOCK — the single exterior door onto the
-# loading dock (ch10; Diego's second-break door), the jacket
-# hooks by the corridor door (ch18), and the wall clock frozen
-# at 4:03 — the minute Jessa walks in on every four-AM break.
-# ════════════════════════════════════════════════════════════════
-def build_doors_and_walls():
-    face_y = ROOM_D - 0.10                # north wall interior face
-    # Steel dock door, north wall west-of-centre. x = -1.00 keeps
-    # the frame 16cm clear of the fridge's swing zone (fridge east
-    # face at x = -1.67).
-    dx = -1.00
-    make_box("CentroB_DockDoor", (dx, face_y - 0.04, 1.02),
-             (0.90, 0.06, 2.05), (0.46, 0.50, 0.54, 1.0))
-    make_box("CentroB_DockDoor_Frame_T", (dx, face_y - 0.045, 2.10),
-             (1.02, 0.07, 0.10), COL_METAL_DARK)
-    for sgn in (-1, +1):
-        make_box(f"CentroB_DockDoor_Frame_{sgn:+d}",
-                 (dx + sgn * 0.51, face_y - 0.045, 1.02),
-                 (0.06, 0.07, 2.05), COL_METAL_DARK)
-    make_cyl("CentroB_DockDoor_PanicBar", (dx, face_y - 0.10, 1.02),
-             0.022, 0.62, COL_STEEL, axis='X')
-    make_box("CentroB_DockDoor_Kick", (dx, face_y - 0.075, 0.18),
-             (0.80, 0.01, 0.30), COL_STEEL)
-    make_door_hinges("CentroB_DockDoor_Hinge",
-                     edge_x=dx - 0.44, edge_y=face_y - 0.04,
-                     edge_z_centers=[0.35, 1.02, 1.70], axis='X')
-    make_box("CentroB_DockSign_BG", (dx, face_y - 0.02, 2.28),
-             (0.50, 0.02, 0.16), BRAND_TEAL_DARK)
-    make_box("CentroB_DockSign_Text", (dx, face_y - 0.035, 2.28),
-             (0.36, 0.005, 0.07), BRAND_CREAM)
-    # Wall clock, north wall, frozen at 4:03 — Jessa comes in at
-    # four oh-three on every break (ch10).
-    make_wall_clock("CentroB_Clock", (0.55, face_y - 0.02, 2.05),
-                    frozen_hour=4, frozen_min=3)
-    # Jacket hooks inside the corridor door (ch18 — Diego "pulls
-    # his jacket off the hook"), on the SE wall segment.
-    hy = 0.12
-    make_box("CentroB_HookRail", (1.75, hy + 0.02, 1.62),
-             (0.90, 0.03, 0.06), COL_PALLET_WOOD)
-    for hi in range(4):
-        make_cyl(f"CentroB_Hook_{hi}", (1.45 + hi * 0.20, hy + 0.06, 1.58),
-                 0.013, 0.09, COL_METAL_DARK, axis='Y')
-
-
-# ════════════════════════════════════════════════════════════════
-# CEILING INFRA + FLOOR WEAR — one twin-tube fluorescent (small
-# back room, single fixture), smoke detector, HVAC. NO Muzak
-# speaker back here (canon-negative — the radio is the music).
-# ════════════════════════════════════════════════════════════════
 def build_ceiling_infra():
-    make_fluorescent_tube_fixture("CentroB_Fluor", (0.0, 2.0, CEIL),
-                                  length=1.30, width=0.32)
-    make_smoke_detector("CentroB_Smoke", (-1.2, 1.3, CEIL))
-    make_hvac_vent("CentroB_HVAC", (-1.25, 3.45, CEIL), width=0.70, depth=0.35)
+    for j in range(2):
+        ypos = ROOM_D * (0.30 + j * 0.40)
+        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
+    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+
+def build_hero_props():
+    """2026-08-03 hero-prop pass: DOUG'S CHAIR against the wall
+    (thermos at its feet) — the most-staged object here — the
+    Tejano radio above the microwave, Jessa's small dishwasher, the
+    jacket hooks, the dock door leaf. Plus the table squared into
+    the card table canon names."""
+    wood = (0.46, 0.36, 0.26, 1.0)
+    # Doug's chair "against the back wall", facing the table, thermos at its feet
+    make_chair("Dougs_Chair", DOUG_X, ROOM_D - 0.42, yaw=3.1416, wood=wood, seat_col=(0.40, 0.36, 0.30, 1.0), w=0.42)
+    make_cyl("Dougs_Thermos", (DOUG_X - 0.32, ROOM_D - 0.40, 0.13), 0.05, 0.26, (0.30, 0.42, 0.30, 1.0), segments=10)
+    # Radio above the microwave (the Tejano station since 2019) — on a
+    # bracket shelf over it (draft 3: keyed to the microwave)
+    rcx, rmy = -ROOM_W/2.0 + 0.36, ROOM_D/2.0 + 0.85
+    make_box("Break_Radio_Shelf", (rcx - 0.10, rmy, 1.42), (0.30, 0.40, 0.025), (0.36, 0.28, 0.18, 1.0))
+    make_box("Break_Radio_Shelf_Bracket", (-ROOM_W/2.0 + 0.11, rmy, 1.36), (0.02, 0.06, 0.10), P.METAL_BLACK)
+    make_box("Break_Radio", (rcx - 0.10, rmy, 1.50), (0.13, 0.24, 0.13), (0.36, 0.30, 0.26, 1.0))
+    make_cyl("Break_Radio_Dial", (rcx - 0.03, rmy + 0.06, 1.50), 0.028, 0.02, (0.86, 0.82, 0.72, 1.0), axis='X', segments=8)
+    make_tube("Break_Radio_Antenna", [(rcx - 0.12, rmy - 0.10, 1.565), (rcx - 0.12, rmy - 0.42, 1.62)], 0.004, (0.70, 0.70, 0.68, 1.0), segments=4)
+    # Jessa's small dishwasher, under-counter
+    # at the counter's S end, against the walls (2026-09-23: half inside
+    # the counter carcass and 8 cm into the W wall)
+    make_box("Small_Dishwasher", (-ROOM_W/2.0+0.66, 0.39, 0.44), (0.52, 0.58, 0.85), (0.78, 0.76, 0.72, 1.0))
+    make_box("Dishwasher_Handle", (-ROOM_W/2.0+0.935, 0.39, 0.78), (0.03, 0.42, 0.04), (0.55, 0.57, 0.58, 1.0))
+    # Jacket hooks by the doorway (E of it)
+    for hi, hx in enumerate((1.55, 1.80, 2.05)):
+        make_cyl(f"Jacket_Hook_{hi}", (hx, 0.10, 1.70), 0.015, 0.06, (0.20, 0.19, 0.20, 1.0), axis='Y', segments=6)
+    make_box("Hung_Jacket", (1.80, 0.16, 1.34), (0.18, 0.10, 0.68), (0.30, 0.34, 0.40, 1.0))
 
 
-def build_floor_details():
-    for i, (sx, sy) in enumerate([
-            (0.0, 1.05), (0.35, 1.75), (-0.4, 2.3),
-            (1.75, 1.5), (-1.9, 2.9)]):
-        make_box(f"CentroB_Scuff_{i}", (sx, sy, 0.008),
-                 (0.26, 0.16, 0.001), COL_FLOOR_SCUFF)
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
 
+    Three distinct cues; Dougs_Chair and his floor thermos exist.
+    Built:
+
+    - THE KARAMAZOV ("Doug closes the Karamazov. He sets it on the
+      floor beside his chair."): the brick of a paperback on the
+      floor by the chair's east side, spine band showing.
+    - THE HORCHATA ("Diego sets the medium horchata on the table
+      in front of Doug"): cream cup + lid + straw at the table's
+      Doug-facing edge.
+    - DOUG'S COFFEE ("He drinks the last of it. He puts the cup
+      down."): the cup on the table — the marker sits close so it
+      wins the coffee cue over the kitchenette pots.
+    """
+    kx_ = DOUG_X + 0.35
+    make_box("Karamazov_Paperback", (kx_, ROOM_D - 0.45, 0.020), (0.190, 0.130, 0.040),
+             (0.36, 0.28, 0.22, 1.0))
+    make_box("Paperback_Spine_Band", (kx_, ROOM_D - 0.512, 0.020), (0.190, 0.006, 0.034),
+             (0.74, 0.62, 0.30, 1.0))
+    T = TABLE_Z
+    make_cyl("Horchata_Cup", (TABLE_X + 0.55, TABLE_Y + 0.22, T + 0.065), 0.042, 0.130,
+             (0.90, 0.86, 0.76, 0.95), segments=10)
+    make_cyl("Horchata_Lid", (TABLE_X + 0.55, TABLE_Y + 0.22, T + 0.14), 0.044, 0.020,
+             (0.86, 0.84, 0.80, 1.0), segments=10)
+    make_cyl("Horchata_Straw", (TABLE_X + 0.56, TABLE_Y + 0.21, T + 0.20), 0.005, 0.100,
+             (0.86, 0.36, 0.30, 1.0), segments=6)
+    make_cyl("Dougs_Coffee_Cup", (TABLE_X + 0.70, TABLE_Y + 0.26, T + 0.04), 0.040, 0.080,
+             (0.82, 0.80, 0.76, 1.0), segments=10)
+
+
+
+TABLE_X, TABLE_Y, TABLE_Z = 0.20, 2.70, 0.74
+DOUG_X = 2.20
+
+
+def build_crew_table():
+    """One folding crew table for six (Marisol, Russell, Diego, the rest),
+    the chairs mismatched: kit chairs and two plastic stackers."""
+    import math
+    tx, ty, tz = TABLE_X, TABLE_Y, TABLE_Z
+    make_box("Crew_Table_Top", (tx, ty, tz - 0.0175), (1.83, 0.76, 0.035), (0.86, 0.84, 0.78, 1.0))
+    make_box("Crew_Table_Edge", (tx, ty, tz - 0.045), (1.85, 0.78, 0.02), (0.30, 0.30, 0.32, 1.0))
+    for li, (ox, oy) in enumerate(((-0.82, -0.32), (0.82, -0.32), (-0.82, 0.32), (0.82, 0.32))):
+        make_box(f"Crew_Table_Leg_{li}", (tx + ox, ty + oy, (tz - 0.055) / 2.0), (0.03, 0.03, tz - 0.055), (0.40, 0.42, 0.44, 1.0))
+    for si, ox in enumerate((-0.82, 0.82)):
+        make_box(f"Crew_Table_Stretcher_{si}", (tx + ox, ty, 0.12), (0.025, 0.60, 0.025), (0.40, 0.42, 0.44, 1.0))
+    seats = [(-0.55, -0.70, 0.0, "kit"), (0.15, -0.70, 0.0, "plastic"), (0.70, -0.70, 0.0, "kit"),
+             (-0.55, 0.70, math.pi, "plastic"), (0.15, 0.70, math.pi, "kit"), (-1.30, 0.0, -math.pi / 2.0, "kit")]
+    for ci, (ox, oy, yaw, kind) in enumerate(seats):
+        if kind == "kit":
+            make_chair(f"Crew_Chair_{ci}", tx + ox, ty + oy, yaw=yaw, wood=P.METAL_BLACK, seat_col=COL_WOOD, w=0.40)
+        else:
+            col = (0.24, 0.40, 0.52, 1.0) if ci % 2 else (0.70, 0.66, 0.58, 1.0)
+            cx, cy = tx + ox, ty + oy
+            s = 1 if yaw == 0.0 else -1
+            make_box(f"Crew_Stacker_{ci}_Seat", (cx, cy, 0.45), (0.42, 0.40, 0.03), col)
+            make_box(f"Crew_Stacker_{ci}_Back", (cx, cy - s * 0.19, 0.72), (0.40, 0.03, 0.34), col)
+            for li, (lx, ly) in enumerate(((-0.18, -0.17), (0.18, -0.17), (-0.18, 0.17), (0.18, 0.17))):
+                make_box(f"Crew_Stacker_{ci}_Leg_{li}", (cx + lx, cy + ly, 0.2175), (0.022, 0.022, 0.435), (0.66, 0.66, 0.64, 1.0))
+            make_box(f"Crew_Stacker_{ci}_BackPost", (cx, cy - s * 0.19, 0.5075), (0.04, 0.03, 0.085), col)
+    # the table's night: Marisol's thermos, Russell's Express-News, a napkin box
+    make_cyl("Marisol_Thermos", (tx - 0.55, ty - 0.20, tz + 0.13), 0.045, 0.26, (0.62, 0.20, 0.24, 1.0), segments=10)
+    make_box("Express_News", (tx + 0.15, ty + 0.18, tz + 0.006), (0.36, 0.28, 0.012), (0.86, 0.84, 0.78, 1.0))
+    make_box("Express_News_Masthead", (tx + 0.15, ty + 0.30, tz + 0.0125), (0.30, 0.03, 0.001), (0.16, 0.16, 0.18, 1.0))
+    make_box("Napkin_Box", (tx - 0.10, ty, tz + 0.05), (0.14, 0.12, 0.10), (0.86, 0.86, 0.82, 1.0))
+
+
+def build_lockers_clock():
+    """The crew's lockers on the E wall S of the vending machine; the
+    time clock and its card rack W of the doorway."""
+    lx, ly0 = ROOM_W/2.0 - 0.10 - 0.25, 1.15
+    for k in range(6):
+        y = ly0 + 0.08 + k * 0.38
+        make_box(f"Locker_{k}", (lx, y + 0.19, 0.95), (0.50, 0.36, 1.90), (0.42, 0.48, 0.52, 1.0))
+        make_box(f"Locker_{k}_Vents", (lx - 0.252, y + 0.19, 1.62), (0.004, 0.24, 0.16), (0.30, 0.34, 0.38, 1.0))
+        make_box(f"Locker_{k}_Handle", (lx - 0.256, y + 0.33, 1.05), (0.012, 0.03, 0.10), (0.70, 0.70, 0.68, 1.0))
+        make_box(f"Locker_{k}_Name_Tape", (lx - 0.253, y + 0.19, 1.78), (0.003, 0.18, 0.04), (0.92, 0.90, 0.80, 1.0))
+    tcx = DOORWAY[0] - DOORWAY[2] / 2.0 - 0.55
+    make_box("Time_Clock", (tcx, 0.18, 1.35), (0.26, 0.16, 0.32), (0.80, 0.78, 0.72, 1.0))
+    make_box("Time_Clock_Face", (tcx, 0.262, 1.42), (0.18, 0.004, 0.10), (0.20, 0.28, 0.22, 1.0))
+    make_box("Time_Card_Rack", (tcx - 0.45, 0.12, 1.35), (0.40, 0.04, 0.60), (0.56, 0.58, 0.60, 1.0))
+    for k in range(6):
+        make_box(f"Time_Card_{k}", (tcx - 0.60 + (k % 3) * 0.15, 0.15, 1.20 + (k // 3) * 0.28), (0.08, 0.004, 0.20), (0.92, 0.90, 0.80, 1.0))
+
+
+def build_corridor():
+    """Through the doorway: the break-room corridor and, at its E end,
+    the dock door (steel, push bar, the EXIT sign) — "BT's footsteps
+    cross the break-room corridor, hit the dock, push the dock door
+    open"."""
+    cy0, cy1 = -1.70, -0.10
+    make_box("Corridor_Floor", (1.4, (cy0 + cy1) / 2.0, -0.01), (6.0, cy1 - cy0, 0.02), (0.56, 0.54, 0.50, 1.0))
+    make_box("Corridor_Ceil", (1.4, (cy0 + cy1) / 2.0, CEIL + 0.01), (6.0, cy1 - cy0, 0.02), (0.84, 0.84, 0.80, 1.0))
+    make_wall("Corridor_Wall_S", (1.4, cy0 - 0.10, 0), length=6.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Corridor_Wall_W", (-1.70, (cy0 + cy1) / 2.0, 0), length=cy1 - cy0, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    ex = 4.50
+    from _props.structure import make_wall_with_openings
+    make_wall_with_openings("Corridor_Wall_E", (ex, (cy0 + cy1) / 2.0, 0), length=cy1 - cy0, height=CEIL, axis='Y', palette=PAL_WALL,
+                            baseboard_face_sign=-1, openings=[((cy0 + cy1) / 2.0, 1.05, 0.96, 2.10)])
+    make_box("Dock_Door", (ex, (cy0 + cy1) / 2.0, 1.035), (0.05, 0.94, 2.07), (0.55, 0.57, 0.58, 1.0))
+    make_box("Dock_Door_PushBar", (ex - 0.045, (cy0 + cy1) / 2.0, 1.05), (0.03, 0.70, 0.06), (0.40, 0.42, 0.44, 1.0))
+    make_box("Dock_Door_WireGlass", (ex - 0.03, (cy0 + cy1) / 2.0, 1.55), (0.006, 0.26, 0.36), (0.44, 0.48, 0.50, 1.0))
+    make_box("Dock_Door_Exit_Sign", (ex - 0.12, (cy0 + cy1) / 2.0, 2.30), (0.10, 0.36, 0.14), (0.86, 0.22, 0.18, 1.0))
+    make_box("Corridor_Light", (1.4, (cy0 + cy1) / 2.0, CEIL - 0.03), (1.20, 0.24, 0.05), (0.96, 0.96, 0.90, 1.0))
+    make_box("Corridor_Mop_Bucket", (-1.30, cy0 + 0.30, 0.20), (0.36, 0.30, 0.40), (0.86, 0.72, 0.20, 1.0))
+
+
+def build_detail_2026_10():
+    """DETAIL PASSES D2–D5 (pass 76, 2026-10-11 — lore/_SET_DETAIL_PLAYBOOK.md).
+    D2: the traffic ribbon doorway → table → kitchenette, the stains by the
+    trash and under the coffee, the lockers' kick scuff, the ceiling-shadow
+    band on the N and W walls. D3: outlets (the counter's two, the vending's,
+    the doorway's), the switch by the doorway, the thermostat, cords from the
+    microwave, the radio, the coffee maker and the vending machine. D4: a
+    chair pushed back from the table at an angle, a jacket on a locker
+    handle, the coffee ring on the table, the thermos cap off, the Express-
+    News's second section slid aside, the crumpled napkin that missed the
+    trash. D5: past the dock door's wire glass — the dock's pad, its far
+    wall, the sodium lamp over the door outside (its practical in the .tscn).
+    Draft N+1: the time clock's conduit; the vending machine's cord to a
+    floor box; the lockers' tape names legible as colour bands; the
+    corridor's mop bucket's water."""
+    W = ROOM_W / 2.0
+    # ── D2 ──
+    make_traffic_wear("Wear_Door_Table", [(0.6, 0.25), (0.4, 1.6), (0.2, 2.1)], width=0.7)
+    make_traffic_wear("Wear_Table_Counter", [(-0.6, 2.3), (-2.4, 2.8)], width=0.6)
+    make_floor_stain("Stain_Trash", (-2.05, 0.75), radius=0.16)
+    make_floor_stain("Stain_Coffee", (-2.75, 2.95), radius=0.18)
+    make_scuff_band("Scuff_Lockers", (W - 0.35 - 0.255, 2.45), 2.6, axis='Y', height=0.14, band_z=0.08)
+    make_scuff_band("Scuff_Counter", (-W + 0.36 + 0.28, 2.8), 2.5, axis='Y', height=0.12, band_z=0.07)
+    make_wall_tint_band("Tint_N_Top", (0.0, ROOM_D - 0.10), ROOM_W - 0.2, axis='X', height=0.28, band_z=CEIL - 0.16)
+    make_wall_tint_band("Tint_W_Top", (-W + 0.10, ROOM_D / 2.0), ROOM_D - 0.2, axis='Y', height=0.28, band_z=CEIL - 0.16)
+    # ── D3 ──
+    make_wall_outlet("Outlet_Counter_N", (-W, 3.65), axis='Y', face_sign=1, z=1.10)
+    make_wall_outlet("Outlet_Counter_S", (-W, 2.35), axis='Y', face_sign=1, z=1.10)
+    make_wall_outlet("Outlet_Vending", (W, 4.05), axis='Y', face_sign=-1, z=0.30)
+    make_wall_outlet("Outlet_Door", (1.55, 0.0), axis='X', face_sign=1, z=0.30)
+    make_light_switch("Switch_Door", (1.25, 0.0), axis='X', face_sign=1, z=1.20)
+    make_thermostat("Thermostat", (-W, 0.95), axis='Y', face_sign=1, z=1.45)
+    make_cord_run("Cord_Microwave", (-W + 0.14, 3.88, 0.98), (-W + 0.10, 3.65, 1.10), sag=0.04)   # from the back of the microwave, not through it
+    make_cord_run("Cord_Radio", (-W + 0.11, 3.78, 1.44), (-W + 0.08, 3.68, 1.12), sag=0.03)   # down the wall behind the microwave
+    make_cord_run("Cord_Coffee", (-3.05, 2.70, 0.96), (-W + 0.10, 2.35, 1.10), sag=0.06)
+    make_cord_run("Cord_Vending", (W - 0.56, 4.25, 0.20), (W - 0.10, 4.05, 0.30), sag=0.04)
+    # ── D4 ──
+    make_chair("Crew_Chair_Pushed", 1.45, 1.55, yaw=2.45, wood=P.METAL_BLACK, seat_col=COL_WOOD, w=0.40)
+    make_box("Locker_Jacket", (W - 0.35 - 0.262, 2.62, 0.62), (0.07, 0.34, 0.86), (0.26, 0.30, 0.42, 1.0))
+    make_cyl("Table_Coffee_Ring", (TABLE_X + 0.55, TABLE_Y - 0.15, TABLE_Z + 0.001), 0.045, 0.002, (0.48, 0.36, 0.22, 1.0), segments=12)
+    make_cyl("Thermos_Cap", (TABLE_X - 0.42, TABLE_Y - 0.26, TABLE_Z + 0.02), 0.038, 0.04, (0.50, 0.16, 0.20, 1.0), segments=10)
+    make_rot_box("Express_News_Section_B", (TABLE_X + 0.46, TABLE_Y + 0.08, TABLE_Z + 0.0135), (0.32, 0.26, 0.010), (0.84, 0.82, 0.76, 1.0), yaw=0.22)
+    make_blob("Napkin_Crumpled", (-1.75, 0.40, 0.04), 0.045, (0.90, 0.90, 0.86, 1.0), noise=0.3, seed=5, squash=0.8)
+    # ── D5: the dock past the door's wire glass ──
+    ex, cyc = 4.50, -0.90
+    make_box("Dock_Pad", (ex + 1.8, cyc, -0.08), (3.4, 4.0, 0.06), (0.40, 0.40, 0.42, 1.0))
+    make_box("Dock_Far_Wall", (ex + 3.55, cyc, 1.5), (0.20, 4.0, 3.0), (0.52, 0.50, 0.46, 1.0))
+    make_box("Dock_Bollard", (ex + 1.2, cyc + 1.3, 0.42), (0.16, 0.16, 0.90), (0.86, 0.72, 0.20, 1.0))
+    make_box("Dock_Sodium_Lamp", (ex + 0.14, cyc, 2.42), (0.18, 0.30, 0.16), (1.0, 0.76, 0.40, 1.0))
+    make_box("Dock_Sodium_Lamp_Hood", (ex + 0.16, cyc, 2.52), (0.22, 0.34, 0.03), (0.30, 0.31, 0.34, 1.0))
+
+
+def build_door_infill_dock_door_2026_09():
+    """Dock_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Dock_Door_W", (-0.725, 0.000, 0), length=0.550, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Dock_Door_E", (0.725, 0.000, 0), length=0.550, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
 def main():
     clear_scene()
     build_shell()
-    build_card_table()
-    build_chairs()
+    build_crew_table()
+    build_lockers_clock()
+    build_corridor()
+    build_detail_2026_10()
+    build_vending()
+    build_kitchenette()
     build_fridge()
-    build_counter()
-    build_bulletin_board()
-    build_doors_and_walls()
+    build_board()
+    build_break_decor()
     build_ceiling_infra()
-    build_floor_details()
+    build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_break_room.glb"))
     print(f"\n[build_centro_break_room] exporting to {out}")
     export_glb(out)
-
 
 if __name__ == "__main__":
     main()

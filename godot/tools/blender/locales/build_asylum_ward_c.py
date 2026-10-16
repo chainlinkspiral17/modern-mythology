@@ -25,6 +25,10 @@ COL_GURNEY = (0.86, 0.86, 0.82, 1.0); COL_CUPOLA_GLASS = (0.74, 0.84, 0.86, 0.55
 ROOM_W = 5.0; ROOM_D = 14.0; CEIL = 3.40
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR_TILE, "seam": COL_FLOOR_SEAM})
@@ -42,13 +46,20 @@ def build_shell():
             make_wall(f"Wall_W_{di}_b", (-ROOM_W/2.0, (seg_y_start+seg_y_end)/2.0, 0),
                       length=seg_len, height=CEIL, axis='Y',
                       palette=PAL, baseboard_face_sign=+1)
+        # the 1.6 m opening around a 1.2 m door: jambs each side and the
+        # wall over it to the ceiling (2026-09-24, the user: "doorways ...
+        # misaligned" — 20 cm slots and a 1.3 m hole above every door)
+        for js in (-1, 1):
+            make_wall(f"Wall_W_{di}_Jamb_{js:+d}", (-ROOM_W/2.0, dy + js * 0.70, 0), length=0.20, height=CEIL,
+                      axis='Y', palette=PAL, baseboard_face_sign=+1)
+        make_box(f"Wall_W_{di}_Header", (-ROOM_W/2.0, dy, (2.10 + CEIL) / 2.0), (0.20, 1.20, CEIL - 2.10), PAL["wall"])
         # Door
         make_box(f"Door_{di}", (-ROOM_W/2.0 + 0.04, dy, 1.05), (0.08, 1.20, 2.10), COL_DOOR)
         # Small wire-glass window in each door
-        make_box(f"Door_Glass_{di}", (-ROOM_W/2.0 + 0.02, dy, 1.60),
+        make_box(f"Door_Glass_{di}", (-ROOM_W/2.0 + 0.02 - 0.0231, dy, 1.60),
                  (0.005, 0.30, 0.40), COL_DOOR_GLASS)
         # Room number plate
-        make_box(f"Door_Plate_{di}", (-ROOM_W/2.0 + 0.06, dy-0.70, 2.00),
+        make_box(f"Door_Plate_{di}", (-ROOM_W/2.0 + 0.103, dy-0.70, 2.00),
                  (0.005, 0.20, 0.10), (0.32, 0.42, 0.30, 1.0))
     # E wall — two large window bays + wall segments
     make_wall("Wall_E_S", (+ROOM_W/2.0, 1.40, 0), length=2.40, height=CEIL,
@@ -59,7 +70,7 @@ def build_shell():
               axis='Y', palette=PAL, baseboard_face_sign=-1)
     # Window bay glass
     for bi, by in enumerate([4.20, 9.80]):
-        make_box(f"WindowBay_{bi}_Frame", (+ROOM_W/2.0-0.04, by, 1.60),
+        make_frame_ring(f"WindowBay_{bi}_Frame", (+ROOM_W/2.0-0.04, by, 1.60),
                  (0.04, 2.20, 1.40), (0.42, 0.32, 0.22, 1.0))
         make_box(f"WindowBay_{bi}_Glass", (+ROOM_W/2.0-0.06, by, 1.60),
                  (0.005, 2.00, 1.20), COL_CUPOLA_GLASS)
@@ -88,40 +99,45 @@ def build_nurses_station():
     make_box("Nurse_Counter_Body", (0.0, ny - 0.40, 0.55), (2.40, 0.60, 1.10), COL_NURSE_DESK)
     # Desk behind (lower)
     make_box("Nurse_Desk", (0.0, ny + 0.40, 0.74), (2.20, 0.60, 0.04), COL_NURSE_DESK)
+    make_box("Nurse_Desk_Body", (0.0, ny + 0.40, 0.36), (2.10, 0.50, 0.72), COL_NURSE_DESK)   # (2026-09-22: a top slab on nothing)
     # Chart binder + clipboard
     make_box("Chart_Binder", (-0.40, ny - 0.40, 1.16), (0.30, 0.40, 0.04), COL_CHART)
     make_box("Chart_Stack", (+0.40, ny - 0.40, 1.16), (0.30, 0.40, 0.06), COL_CHART)
     # File cabinet to the N
-    make_box("FileCab", (-1.00, ny + 0.50, 0.70), (0.50, 0.50, 1.40), COL_FILE_CAB)
+    make_box("FileCab", (-1.45, ny + 0.50, 0.70), (0.50, 0.50, 1.40), COL_FILE_CAB)
     for di in range(3):
-        make_box(f"FileCab_Drawer_{di}", (-1.00, ny + 0.26, 0.30 + di*0.46),
+        make_box(f"FileCab_Drawer_{di}", (-1.45, ny + 0.26, 0.30 + di*0.46),
                  (0.50, 0.005, 0.40), (0.42, 0.42, 0.40, 1.0))
-        make_box(f"FileCab_Handle_{di}", (-1.00, ny + 0.25, 0.30 + di*0.46),
+        make_box(f"FileCab_Handle_{di}", (-1.45, ny + 0.25, 0.30 + di*0.46),
                  (0.10, 0.005, 0.04), (0.62, 0.62, 0.58, 1.0))
 
 
 def build_gurney_and_wheelchair():
     # An abandoned gurney parked diagonally
     gx, gy = +0.40, 11.00
-    make_box("Gurney_Mattress", (gx, gy, 0.74), (0.70, 1.80, 0.10), COL_GURNEY)
+    make_box("Gurney_Mattress", (gx, gy, 0.72), (0.70, 1.80, 0.10), COL_GURNEY)   # on the frame
     make_box("Gurney_Frame", (gx, gy, 0.62), (0.74, 1.84, 0.10), (0.42, 0.42, 0.42, 1.0))
     # Side rail
-    make_box("Gurney_Rail_E", (gx + 0.40, gy, 1.00), (0.04, 1.40, 0.30), (0.62, 0.62, 0.58, 1.0))
+    make_box("Gurney_Rail_E", (gx + 0.40, gy, 0.80), (0.04, 1.40, 0.30), (0.62, 0.62, 0.58, 1.0))   # bolted to the frame
     # Wheels
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):
             make_cyl(f"Gurney_Wheel_{sgn_x:+d}_{sgn_y:+d}",
-                     (gx + sgn_x*0.30, gy + sgn_y*0.80, 0.10), 0.08, 0.06,
+                     (gx + sgn_x*0.30, gy + sgn_y*0.80, 0.08), 0.08, 0.06,
                      P.METAL_BLACK, axis='X')
+            # a post from each wheel to the frame (2026-09-22: the frame hung 40 cm over its wheels)
+            make_box(f"Gurney_Post_{sgn_x:+d}_{sgn_y:+d}", (gx + sgn_x*0.30, gy + sgn_y*0.80, 0.37), (0.04, 0.04, 0.46), (0.42, 0.42, 0.42, 1.0))
     # Wheelchair near the S end
     wx, wy = -1.20, 1.50
     make_box("WC_Seat", (wx, wy, 0.46), (0.50, 0.50, 0.06), COL_WHEELCHAIR)
-    make_box("WC_Back", (wx, wy-0.22, 0.96), (0.50, 0.06, 0.70), COL_WHEELCHAIR)
+    for sgn in (-1, +1):   # side frame: seat to wheel (2026-09-22: the seat floated between its wheels)
+        make_box(f"WC_Frame_{sgn:+d}", (wx+sgn*0.27, wy, 0.40), (0.03, 0.50, 0.08), COL_WHEELCHAIR)
+    make_box("WC_Back", (wx, wy-0.22, 0.84), (0.50, 0.06, 0.70), COL_WHEELCHAIR)
     for ari, (sgn) in enumerate([-1, +1]):
-        make_box(f"WC_Arm_{ari}", (wx+sgn*0.27, wy, 0.66), (0.04, 0.40, 0.20), COL_WHEELCHAIR)
+        make_box(f"WC_Arm_{ari}", (wx+sgn*0.27, wy, 0.59), (0.04, 0.40, 0.20), COL_WHEELCHAIR)
     # Big wheels
     for sgn in (-1, +1):
-        make_cyl(f"WC_BigWheel_{sgn:+d}", (wx + sgn*0.30, wy, 0.30), 0.28, 0.04,
+        make_cyl(f"WC_BigWheel_{sgn:+d}", (wx + sgn*0.30, wy, 0.28), 0.28, 0.04,
                  P.METAL_BLACK, axis='X', segments=14)
     # Small front wheels
     for sgn in (-1, +1):
@@ -133,7 +149,7 @@ def build_cupola():
     # Broken-paned cupola at the N end — a small square skylight
     # tower above the ceiling, visible through a hatch
     cx, cy = 0.0, ROOM_D - 0.80
-    make_box("Cupola_Hatch", (cx, cy, CEIL-0.04), (1.80, 1.80, 0.04), (0.10, 0.10, 0.10, 1.0))
+    make_box("Cupola_Hatch", (cx, cy - 0.10, CEIL-0.04), (1.80, 1.60, 0.04), (0.10, 0.10, 0.10, 1.0))   # to the N wall face (2026-09-24: 20 cm into it)
     # Cupola tower above
     make_box("Cupola_Walls_N", (cx, cy+0.80, CEIL+0.80), (1.80, 0.10, 1.40), COL_WALL_GROUT)
     make_box("Cupola_Walls_S", (cx, cy-0.80, CEIL+0.80), (1.80, 0.10, 1.40), COL_WALL_GROUT)
@@ -152,6 +168,40 @@ def build_cupola():
     make_box("Cupola_Roof", (cx, cy, CEIL+1.60), (1.80, 1.80, 0.30), (0.32, 0.42, 0.30, 1.0))
 
 
+def build_ward_hardening():
+    """Institutional hardening per the ward brief: reinforced bars over
+    the window bays, a cast-iron radiator, and a single hard chair."""
+    COL_BAR = (0.32, 0.36, 0.32, 1.0)
+    COL_RAD = (0.52, 0.56, 0.52, 1.0)
+    # Security bars over both E-wall window bays (bays at y=4.20, 9.80)
+    for bi, by in enumerate([4.20, 9.80]):
+        bx = +ROOM_W/2.0 - 0.10
+        # Vertical bars
+        for vi in range(6):
+            vy = by - 0.90 + vi * 0.36
+            make_cyl(f"WindowBar_{bi}_V_{vi}", (bx, vy, 1.60), 0.022, 1.40,
+                     COL_BAR, segments=8, axis='Z')
+        # Two horizontal cross bars
+        for hi, hz in enumerate([1.10, 2.10]):
+            make_cyl(f"WindowBar_{bi}_H_{hi}", (bx, by, hz), 0.022, 2.00,
+                     COL_BAR, segments=8, axis='Y')
+    # Cast-iron radiator under the south window bay (y=4.20)
+    rx, ry = +ROOM_W/2.0 - 0.18, 4.20
+    make_box("Radiator_Body", (rx, ry, 0.42), (0.16, 1.60, 0.72), COL_RAD)
+    make_box("Radiator_Cap", (rx, ry, 0.80), (0.20, 1.64, 0.06), (0.42, 0.46, 0.42, 1.0))
+    for fi in range(11):
+        fy = ry - 0.72 + fi * 0.145
+        make_box(f"Radiator_Fin_{fi}", (rx - 0.02, fy, 0.42), (0.14, 0.05, 0.68), (0.44, 0.48, 0.44, 1.0))
+    make_cyl("Radiator_Valve", (rx, ry - 0.82, 0.20), 0.03, 0.10, (0.62, 0.62, 0.58, 1.0), segments=8, axis='Z')
+    # A single hard institutional chair by the nurses' station
+    cx, cy = +1.40, 6.60
+    make_box("HardChair_Seat", (cx, cy, 0.46), (0.42, 0.42, 0.05), COL_DOOR)
+    make_box("HardChair_Back", (cx, cy + 0.19, 0.76), (0.42, 0.05, 0.56), COL_DOOR)
+    for li, (lx, ly) in enumerate([(cx-0.17, cy-0.17), (cx+0.17, cy-0.17),
+                                    (cx-0.17, cy+0.17), (cx+0.17, cy+0.17)]):
+        make_box(f"HardChair_Leg_{li}", (lx, ly, 0.23), (0.04, 0.04, 0.46), (0.30, 0.26, 0.20, 1.0))
+
+
 def build_ceiling_infra():
     # Fluorescent strip every ~3m down the corridor (some flickering)
     for j, ypos in enumerate([2.0, 5.0, 8.0, 11.0]):
@@ -162,12 +212,13 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke_N", (0.0, 10.0, CEIL))
     make_sprinkler("Spr_S", (0.0, 4.0, CEIL))
     make_sprinkler("Spr_N", (0.0, 10.0, CEIL))
-    make_security_camera("Cam", (+ROOM_W/2.0-0.10, 7.0, CEIL-0.10))
+    # on the ceiling, off the E wall (2026-09-23: 10 cm into the wall, 10-20 cm under the ceiling)
+    make_security_camera("Cam", (+ROOM_W/2.0-0.22, 7.0, CEIL))
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 7.0, 2.50), frozen_hour=4, frozen_min=15)
-    make_faded_poster("PSA_Notice", (-ROOM_W/2.0+0.05, 12.5, 1.80))
+    make_wall_clock("Clock", (-2.400, 7.0, 2.50), frozen_hour=4, frozen_min=15, facing='+X')
+    make_faded_poster("PSA_Notice", (-ROOM_W/2.0+0.05 + 0.0535, 12.5, 1.80), into_room=+1)
 
 
 def build_death_dressing():
@@ -182,11 +233,14 @@ def build_death_dressing():
         five patients transferred Wednesday — names visible
         but the slots empty)
     """
-    # Nurses' station is at roughly (0, 0). Counter top approx z=1.05.
+    # The nurses' station (build_nurse_station): counter at (0, 6.6),
+    # 2.4 × 0.6, top surface 1.15. (2026-09-10: this pass had it "at
+    # roughly (0, 0)" — the corridor's south end — so the binder and
+    # Sister Beatrice's votive hung a metre up in open corridor.)
     # The CHART BINDER closed on the counter.
     binder_x = +0.40
-    binder_y = -0.10
-    binder_z = 1.06
+    binder_y = 6.50
+    binder_z = 1.16
     # Binder body (oxblood leather, three-ring style)
     make_box("ChartBinder_Body",
              (binder_x, binder_y, binder_z + 0.025),
@@ -210,56 +264,61 @@ def build_death_dressing():
              (0.94, 0.90, 0.80, 1.0))
 
     # Sister Beatrice's votive candle on the counter
-    votive_x = -0.10
-    votive_y = -0.08
+    votive_x = -0.60
+    votive_y = 6.55
+    votive_z = 1.13   # the counter top (2026-09-22: keyed to the binder, it hung 3 cm over the counter)
     # Glass jar
     make_cyl("BeatriceVotive_Jar",
-             (votive_x, votive_y, binder_z + 0.05),
+             (votive_x, votive_y, votive_z + 0.05),
              0.030, 0.10,
              (0.86, 0.86, 0.92, 0.6),
              segments=10, axis='Z')
     # Wax inside (cream, partial level)
     make_cyl("BeatriceVotive_Wax",
-             (votive_x, votive_y, binder_z + 0.025),
+             (votive_x, votive_y, votive_z + 0.025),
              0.026, 0.05,
              (0.92, 0.88, 0.74, 1.0),
              segments=10, axis='Z')
     # Wick
     make_box("BeatriceVotive_Wick",
-             (votive_x, votive_y, binder_z + 0.06),
+             (votive_x + 0.0316, votive_y, votive_z + 0.06),
              (0.002, 0.002, 0.020),
              (0.18, 0.14, 0.10, 1.0))
     # Tiny flame above (warm amber)
     make_box("BeatriceVotive_Flame",
-             (votive_x, votive_y, binder_z + 0.085),
+             (votive_x, votive_y, votive_z + 0.085),
              (0.008, 0.008, 0.022),
              (0.96, 0.74, 0.32, 1.0))
 
     # Row of empty patient charts on the wall mount behind the
     # station — five wall pockets, names visible, the actual chart
     # papers missing (the five patients were transferred Wednesday)
-    wall_mount_y = +0.80   # behind the station, against the back wall
+    # (2026-09-10: the station is mid-corridor with no wall behind it;
+    # the pockets hung in the air at y 0.8. They are on the EAST wall
+    # beside the station now — Wall_E_Mid, x 2.40, y 4.6..8.2 — turned
+    # to face west.)
+    wall_mount_x = 2.38
     wall_mount_z = 1.40
     for ci in range(5):
-        cx = -0.80 + ci * 0.30
+        cy = 5.80 + ci * 0.30
         # Pocket frame
         make_box("ChartPocket_%d_Frame" % ci,
-                 (cx, wall_mount_y, wall_mount_z),
-                 (0.22, 0.04, 0.30),
+                 (wall_mount_x, cy, wall_mount_z),
+                 (0.04, 0.22, 0.30),
                  (0.62, 0.62, 0.58, 1.0))
         # Name plate at the top (cream sticker with a dark name line)
         make_box("ChartPocket_%d_NamePlate" % ci,
-                 (cx, wall_mount_y - 0.022, wall_mount_z + 0.12),
-                 (0.18, 0.005, 0.04),
+                 (wall_mount_x - 0.022, cy, wall_mount_z + 0.12),
+                 (0.005, 0.18, 0.04),
                  (0.92, 0.88, 0.78, 1.0))
         make_box("ChartPocket_%d_NameLine" % ci,
-                 (cx, wall_mount_y - 0.024, wall_mount_z + 0.12),
-                 (0.14, 0.001, 0.012),
+                 (wall_mount_x - 0.024, cy, wall_mount_z + 0.12),
+                 (0.001, 0.14, 0.012),
                  (0.20, 0.18, 0.16, 1.0))
         # Empty slot below (a darker recess where the chart used to be)
         make_box("ChartPocket_%d_EmptySlot" % ci,
-                 (cx, wall_mount_y - 0.022, wall_mount_z - 0.06),
-                 (0.18, 0.005, 0.18),
+                 (wall_mount_x - 0.022, cy, wall_mount_z - 0.06),
+                 (0.005, 0.18, 0.18),
                  (0.18, 0.20, 0.18, 1.0))
 
     # The missing cupola pane — find the cupola geometry's center,
@@ -269,7 +328,7 @@ def build_death_dressing():
     # cracking its code we approximate via standard ward dims —
     # cupola at (0, 0, ceiling_z+1.0) facing south.
     cup_cz = 4.20   # approximate cupola pane height
-    cup_y = +0.0
+    cup_y = ROOM_D - 0.80   # build_cupola's cy (2026-09-22: the boards were at the room's OTHER end)
     # Boarded gap on the SE pane of the cupola
     make_box("Cupola_MissingPane_Board",
              (+0.80, cup_y - 0.74, cup_cz),
@@ -307,8 +366,8 @@ def build_death_wave2_props():
         pink stripe on the corridor floor)
     """
     ns_x = 0.0
-    ns_y = +7.00
-    desk_z = 0.90
+    ns_y = +6.60    # the counter (Nurse_Counter_Top y 6.3..6.9); 7.0 was the gap before the desk
+    desk_z = 1.15   # counter TOP surface
 
     # ── The Bishop's letter on the nurse-station desk ──────────
     bl_x = ns_x + 0.30
@@ -353,53 +412,56 @@ def build_death_wave2_props():
     ec_y = 0.40
     # Cart chassis
     make_box("EmileCart_Chassis",
-             (ec_x, ec_y, 0.60),
+             (ec_x, ec_y, 0.53),   # on its wheels (2026-09-22: 15 cm up)
              (0.40, 0.28, 0.90),
              (0.42, 0.42, 0.44, 1.0))
     # Top tray
     make_box("EmileCart_TopTray",
-             (ec_x, ec_y, 1.06),
+             (ec_x, ec_y, 0.995),
              (0.40, 0.28, 0.03),
              (0.62, 0.62, 0.64, 1.0))
     # Rags folded on the top tray (two stacked)
     make_box("EmileCart_Rags_1",
-             (ec_x - 0.08, ec_y, 1.10),
+             (ec_x - 0.08, ec_y, 1.02),
              (0.14, 0.10, 0.02),
              (0.72, 0.66, 0.42, 1.0))
     make_box("EmileCart_Rags_2",
-             (ec_x + 0.08, ec_y, 1.11),
+             (ec_x + 0.08, ec_y, 1.02),
              (0.12, 0.10, 0.02),
              (0.62, 0.58, 0.42, 1.0))
     # Two spray bottles standing on the tray
     for si, dx in enumerate([-0.08, +0.08]):
         make_cyl("EmileCart_SprayBottle_%d" % si,
-                 (ec_x + dx, ec_y - 0.06, 1.20),
+                 (ec_x + dx, ec_y - 0.06, 1.08),
                  0.030, 0.14,
                  (0.24, 0.42, 0.68, 0.85), segments=8, axis='Z')
         # Trigger head
         make_box("EmileCart_SprayHead_%d" % si,
-                 (ec_x + dx, ec_y - 0.06, 1.32),
+                 (ec_x + dx, ec_y - 0.06, 1.17),
                  (0.04, 0.05, 0.04),
                  (0.20, 0.20, 0.22, 1.0))
     # Paper bag of cleaning supplies
     make_box("EmileCart_PaperBag",
-             (ec_x + 0.12, ec_y + 0.10, 1.14),
+             (ec_x + 0.12, ec_y + 0.10, 1.08),
              (0.14, 0.10, 0.14),
              (0.72, 0.60, 0.34, 1.0))
     # Four cart wheels
     for wx in (-0.16, +0.16):
         for wy in (-0.12, +0.12):
             make_cyl("EmileCart_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
-                     (ec_x + wx, ec_y + wy, 0.05),
+                     (ec_x + wx, ec_y + wy, 0.04),
                      0.04, 0.02,
                      (0.10, 0.08, 0.08, 1.0), segments=8, axis='Y')
 
     # ── Mrs Hadley's paper bag of peppermints on ward 4 window ──
-    # Ward 4 approx at (-2.40, +8.60). Windowsill at ~1.20
-    ward4_x = -2.40
-    ward4_y = +8.60
+    # (2026-09-10: "ward 4" at (-2.4, 8.6) is Door_3 on the WEST wall;
+    # the corridor's windows are the two east bays. The bag sits on
+    # the north bay's sill — WindowBay_1 at (2.46, 9.8), frame from
+    # z 0.9.)
+    ward4_x = +2.16
+    ward4_y = +9.96
     make_box("MrsHadley_PaperBag",
-             (ward4_x + 0.20, ward4_y - 0.16, 1.20),
+             (ward4_x + 0.20, ward4_y - 0.16, 0.96),
              (0.14, 0.10, 0.12),
              (0.72, 0.60, 0.34, 1.0))
     # Rolled-top on the bag
@@ -409,18 +471,21 @@ def build_death_wave2_props():
              (0.58, 0.48, 0.30, 1.0))
     # A red-striped peppermint visible at the opening
     make_cyl("MrsHadley_Peppermint",
-             (ward4_x + 0.20, ward4_y - 0.16, 1.30),
+             (ward4_x + 0.20, ward4_y - 0.16, 1.283),   # on the bag's rolled top
              0.014, 0.006,
              (0.94, 0.16, 0.16, 1.0), segments=8, axis='Z')
 
     # ── Ward 5's unstripped bed · sheets still on ──────────────
-    ward5_x = -2.40
-    ward5_y = +11.00
+    ward5_x = -1.85
+    ward5_y = +12.85          # head frame at the N wall (2026-09-10: mid-corridor, pillow at the foot)
     # Bed frame
     make_box("Ward5_BedFrame",
              (ward5_x, ward5_y, 0.30),
              (0.90, 2.00, 0.14),
              (0.62, 0.62, 0.64, 1.0))
+    for lx_ in (-1, 1):   # legs (2026-09-22: the frame hung 23 cm over the floor)
+        for ly_ in (-1, 1):
+            make_box(f"Ward5_BedLeg_{lx_:+d}_{ly_:+d}", (ward5_x + lx_ * 0.40, ward5_y + ly_ * 0.92, 0.15), (0.05, 0.05, 0.30), (0.62, 0.62, 0.64, 1.0))
     # Mattress
     make_box("Ward5_Mattress",
              (ward5_x, ward5_y, 0.42),
@@ -433,12 +498,12 @@ def build_death_wave2_props():
              (0.94, 0.94, 0.94, 1.0))
     # Pillow at head
     make_box("Ward5_Pillow",
-             (ward5_x, ward5_y - 0.80, 0.52),
+             (ward5_x, ward5_y + 0.80, 0.52),
              (0.60, 0.30, 0.06),
              (0.96, 0.96, 0.96, 1.0))
     # A slight body-shape indent in the mattress (implied absence)
     make_box("Ward5_BodyImpression",
-             (ward5_x, ward5_y - 0.10, 0.44),
+             (ward5_x, ward5_y - 0.10, 0.4831),
              (0.34, 0.80, 0.005),
              (0.72, 0.72, 0.74, 1.0))
 
@@ -451,16 +516,126 @@ def build_death_wave2_props():
              (0.94, 0.72, 0.62, 0.50))
 
 
+def build_wheelchair_2026_08():
+    """THE WHEELCHAIR (gauntlet board station, kind "threshold").
+
+    The board names a station WHEELCHAIR and keeps it
+    always_visible; the builder had no wheelchair. An empty one,
+    parked against the east wall a little off true, chrome dulled,
+    with ONE footrest flipped up — the detail that says somebody
+    left it, one way or the other. Wheels per playbook rule 6:
+    circles perpendicular to the X axle, one assembly prefix.
+    """
+    chrome = (0.62, 0.64, 0.66, 1.0)
+    chrome_dk = (0.46, 0.48, 0.50, 1.0)
+    vinyl = (0.24, 0.28, 0.34, 1.0)
+    wx, wy = 2.02, 8.2         # against the east wall, mid-ward
+    # Big rear wheels · axle along X → circle in the YZ plane
+    for sgn in (-1, 1):
+        make_cyl("Wheelchair_Wheel_%+d" % sgn, (wx + sgn * 0.30, wy - 0.05, 0.30),
+                 0.30, 0.03, chrome_dk, segments=14, axis='X')
+        make_cyl("Wheelchair_Hub_%+d" % sgn, (wx + sgn * 0.30, wy - 0.05, 0.30),
+                 0.05, 0.06, chrome, segments=8, axis='X')
+        make_cyl("Wheelchair_HandRim_%+d" % sgn, (wx + sgn * 0.345, wy - 0.05, 0.30),
+                 0.25, 0.015, chrome, segments=14, axis='X')
+    # Front casters
+    for sgn in (-1, 1):
+        make_cyl("Wheelchair_Caster_%+d" % sgn, (wx + sgn * 0.24, wy + 0.32, 0.09),
+                 0.09, 0.025, chrome_dk, segments=10, axis='X')
+    # Seat, back, arms — parked a few degrees off true (the frame
+    # sits square; the off-true reads in the pose of the parts)
+    make_box("Wheelchair_Seat", (wx, wy + 0.06, 0.52), (0.46, 0.42, 0.05), vinyl)
+    for sgn in (-1, 1):   # side frame rails: seat to wheel (2026-09-22: the seat floated between its wheels)
+        make_box("Wheelchair_Frame_%+d" % sgn, (wx + sgn * 0.25, wy + 0.06, 0.45), (0.05, 0.44, 0.10), chrome)
+    make_box("Wheelchair_Back", (wx + 0.02, wy - 0.18, 0.86), (0.44, 0.05, 0.52), vinyl)
+    for sgn in (-1, 1):
+        make_box("Wheelchair_Arm_%+d" % sgn, (wx + sgn * 0.25, wy + 0.04, 0.70),
+                 (0.04, 0.38, 0.04), chrome)
+        make_box("Wheelchair_ArmPost_%+d" % sgn, (wx + sgn * 0.25, wy + 0.18, 0.61),
+                 (0.035, 0.035, 0.16), chrome)
+    make_box("Wheelchair_PushBar", (wx + 0.01, wy - 0.22, 1.14), (0.42, 0.04, 0.035), chrome)
+    # Footrests: one DOWN, one FLIPPED UP.
+    make_box("Wheelchair_Footrest_Down", (wx - 0.15, wy + 0.44, 0.14),
+             (0.16, 0.14, 0.02), chrome_dk)
+    make_box("Wheelchair_Footrest_Up", (wx + 0.15, wy + 0.40, 0.25),
+             (0.16, 0.02, 0.14), chrome_dk)
+
+
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the ward (wear pass 4).
+
+    Institutional linoleum inverts like the warehouse dust did:
+    the floor is WAXED, so traffic dulls it — the nurses' lane
+    reads paler and flatter than the sheen around it. The lane is
+    the deepest wear in the game because nurses walk miles:
+    station to every bay, thousands of rounds. Over it, the
+    gurney's two rubber wheel-lines run the corridor's center.
+    The VIGIL is the new wear: a family chair's four-foot marks
+    beside Ward 5's unstripped bed, a hand-worn patch on the bed
+    rail near the head, and the votive's wax history below the
+    binder shelf. The wheelchair against the east wall has stood
+    long enough to leave its four tire shadows.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    lane = (0.66, 0.67, 0.64, 1.0)     # de-waxed linoleum, duller-pale
+    rubber = (0.20, 0.20, 0.21, 1.0)
+    hand = (0.60, 0.55, 0.44, 1.0)
+    wax = (0.88, 0.84, 0.72, 1.0)
+    # The nurses' lane: station (y 7) sweeping both directions,
+    # widening at the station itself.
+    make_traffic_wear("Wear_Nurse_Lane_N",
+                      [(0.0, 7.2), (-0.4, 9.5), (-0.9, 11.0), (-0.4, 13.0)],
+                      width=0.62, tint=lane)
+    make_traffic_wear("Wear_Nurse_Lane_S",
+                      [(0.0, 6.8), (-0.4, 4.5), (-0.9, 2.5), (-0.3, 1.0)],
+                      width=0.62, tint=lane)
+    make_floor_stain("Wear_Station_Apron", (0.0, 6.6), radius=0.85,
+                     tint=lane, segments=12)
+    # Gurney wheel-lines down the corridor center: two rubber
+    # traces with one swerve where it always misses the radiator.
+    for sgn in (-1, 1):
+        make_box("Wear_GurneyLine_%+d" % sgn, (0.35 + sgn * 0.28, 6.0, 0.012),
+                 (0.05, 11.0, 0.004), rubber)
+    make_box("Wear_GurneyLine_Swerve", (0.55, 12.0, 0.012), (0.35, 1.6, 0.004),
+             rubber)
+    # THE VIGIL · beside Ward 5's unstripped bed (-1.85, 11.0):
+    # four chair-foot marks (the chair gets carried back to the
+    # station each morning; the marks stay), and the hand patch on
+    # the rail near the head of the bed.
+    for fi2, (fx2, fy2) in enumerate(((-2.55, 10.75), (-2.25, 10.75),
+                                      (-2.55, 11.15), (-2.25, 11.15))):
+        make_cyl("Wear_VigilFoot_%d" % fi2, (fx2, fy2, 0.008), 0.035, 0.004,
+                 (0.58, 0.58, 0.56, 1.0), segments=6)
+    make_box("Wear_BedRail_Hand", (-1.75, 11.845, 0.32), (0.22, 0.01, 0.035), hand)   # on the frame's foot rail (2026-09-22: 20 cm past the bed in the air)
+    # Wax history beside the votive ON THE COUNTER (2026-09-25: these
+    # were left at the S wall from the draft that hung the votive in
+    # the corridor — the pool 1.1 m inside Wall_S): two old wax runs
+    # across the counter top and one dried pool at the jar's foot.
+    make_box("Wear_Votive_Run_A", (-0.635, 6.595, 1.1306), (0.015, 0.10, 0.001), wax)
+    make_box("Wear_Votive_Run_B", (-0.660, 6.500, 1.1306), (0.012, 0.06, 0.001), wax)
+    make_cyl("Wear_Votive_Pool", (-0.525, 6.53, 1.1331), 0.045, 0.005, wax, segments=8)
+    # The wheelchair's four tire shadows — it has stood a while.
+    for si3, (sx3, sy3) in enumerate(((1.72, 8.15), (2.32, 8.15),
+                                      (1.78, 8.52), (2.26, 8.52))):
+        make_cyl("Wear_WheelShadow_%d" % si3, (sx3, sy3, 0.006), 0.05, 0.003,
+                 (0.60, 0.60, 0.58, 1.0), segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
     build_nurses_station()
     build_gurney_and_wheelchair()
+    build_ward_hardening()
     build_cupola()
     build_ceiling_infra()
     build_decor()
     build_death_dressing()
     build_death_wave2_props()
+    build_wheelchair_2026_08()
+    build_wear_personality_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_E", "E", ROOM_W/2.0, 7.0, kind="back", ground_z=0.0, span=28.0, seed=28)   # the hospital grounds past the window bays
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/asylum_ward_c.glb"))
     print(f"\n[build_asylum_ward_c] exporting to {out}")

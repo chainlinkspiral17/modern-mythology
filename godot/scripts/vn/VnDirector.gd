@@ -1,0 +1,562 @@
+# VnDirector.gd
+# ════════════════════════════════════════════════════════════════
+# The VN's camera direction — a 3D COMIC, not a film. Hard cuts
+# between held frames; drift is the marked exception. Grammar and
+# authoring rules live in lore/_VN_DIRECTION_PLAYBOOK.md.
+#
+# Owned by GameEngine. Drives the Background3D SubViewport camera:
+#
+#   apply_shot("establish")          cut to the locale wide
+#   apply_shot("closeup jen")        cut to Marker3D shot_closeup_jen
+#   apply_shot("insert register~")   cut to shot_insert_register, drifting
+#   apply_panel("receipt_47")        overlay resources/vn/panels/receipt_47.json
+#   apply_panel("off")               dismiss the panel
+#   release()                        restore establish vantage, bars off
+#
+# Shots are Marker3D nodes authored IN the locale .tscn, named
+# shot_<type>_<id>, group "vn_shot", optional metadata/fov.
+# "establish" falls back to the Background3D camera preset when no
+# shot_establish marker exists — so every existing locale supports
+# [shot:establish] with zero markup. Unknown marker / panel id is a
+# silent no-op: a script must never crash the reader.
+# ════════════════════════════════════════════════════════════════
+extends Node
+
+# Preload-by-path: HeroImage's class_name may miss the first editor
+# scan after a pull; the explicit path always resolves.
+const HeroImageScript := preload("res://scenes/games/estuary_3/HeroImage.gd")
+
+const PANEL_DIR := "res://resources/vn/panels/"
+
+# Letterbox bars — the comic's panel crop on closeup/insert.
+const BAR_HEIGHT := 54.0       # px at 720p reference
+const BAR_TWEEN  := 0.12       # fast — a cut, not a curtain
+
+# Drift — slow push-in via FOV tighten, ~2%/sec, floored so a held
+# shot never zooms into soup.
+const DRIFT_RATE      := 0.02
+const DRIFT_MIN_RATIO := 0.86
+
+# Default FOV per shot type when the marker carries no metadata/fov.
+const TYPE_FOV := {"closeup": 45.0, "insert": 35.0}
+
+# ── Coverage rotation (2026-08-04, "directing the scenes") ──────
+# A locale like louisiana_road appears in 37 scenes through ONE
+# photograph: every [shot:establish] is the same frame. When a
+# locale authors shot_establish_b / _c / _d markers, the director
+# picks ONE per chapter (hash of the scene key) — a chapter holds
+# its angle consistently, but across the volume the same road is
+# seen from different setups. Zero scene-JSON edits; locales opt in
+# simply by carrying the extra markers.
+var scene_key: String = ""
+
+var _bg3d: Node = null              # Background3D (SubViewportContainer)
+# Which side of the room each speaker owns, for as long as this locale
+# holds (2026-09-11). A closeup of a person almost never has a marker of
+# its own — 561 such cues across 112 presets — so the room's GENERIC pair
+# (shot_closeup_person + _b, authored by marker_author --closeup) is the
+# face vocabulary. Hashing the character id onto that pair put two
+# speakers on the same frame half the time; first-seen order gives them a
+# side each and keeps it, which is the film rule, not a coin toss.
+var _face_side: Dictionary = {}
+var _bar_top: ColorRect = null
+var _bar_bottom: ColorRect = null
+var _panel_card: Control = null
+var _overlay_parent: Control = null
+
+var _drifting: bool = false
+var _drift_floor: float = 50.0
+
+# A [shot:] can land one line after a bg directive whose deferred
+# load_location hasn't run yet — park it and retry a few frames.
+var _pending_shot: String = ""
+var _pending_frames: int = 0
+const PENDING_MAX_FRAMES := 60
+
+# [stage:] and [mood:] race the deferred locale load the same way —
+# park them in order and drain once the locale exists.
+var _pending_ops: Array[Dictionary] = []
+var _pending_op_frames: int = 0
+const PENDING_OP_MAX_FRAMES := 120
+
+# Letterbox bookkeeping for beats: _letterbox_on mirrors the bars'
+# logical state; _lb_seq bumps on every _set_letterbox so a beat's
+# delayed release can tell whether a later shot re-claimed the bars.
+var _letterbox_on: bool = false
+var _lb_seq: int = 0
+
+
+func setup(overlay_parent: Control) -> void:
+	_overlay_parent = overlay_parent
+	_bar_top = _make_bar()
+	_bar_top.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	_bar_bottom = _make_bar()
+	_bar_bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	overlay_parent.add_child(_bar_top)
+	overlay_parent.add_child(_bar_bottom)
+
+
+func _make_bar() -> ColorRect:
+	var bar := ColorRect.new()
+	bar.color = Color(0.0, 0.0, 0.0, 1.0)
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Above the 3D bg + composition layers, below portraits/dialog
+	# (which pin at GameEngine.UI_Z = 100).
+	bar.z_index = 95
+	bar.custom_minimum_size = Vector2(0, 0)
+	bar.visible = false
+	return bar
+
+
+func set_bg3d(bg3d: Node) -> void:
+	_bg3d = bg3d
+
+
+# Called by GameEngine whenever the bg changes (new 3D preset or a
+# 2D bg) — a page turn resets the direction state.
+func on_locale_changed() -> void:
+	_pending_shot = ""
+	_pending_ops.clear()
+	_drifting = false
+	_face_side.clear()
+	_set_letterbox(false)
+	_dismiss_panel()
+
+
+func release() -> void:
+	on_locale_changed()
+	if _bg3d != null and is_instance_valid(_bg3d) and _bg3d.has_method("restore_preset_vantage"):
+		_bg3d.restore_preset_vantage()
+
+
+# ── Cast staging + mood ───────────────────────────────────────────
+# [stage:john counter_post] → Background3D.stage_character("john",
+# "counter_post"); [stage:john off] removes him. [mood:<name>] →
+# the locale MoodCycler's style pack / mood by name (lighting +
+# post-process as one look). Both park until the locale loads.
+
+func apply_stage(spec: String) -> void:
+	_pending_ops.append({"kind": "stage", "arg": spec.strip_edges().to_lower()})
+	_pending_op_frames = 0
+	_try_apply_ops()
+
+
+func apply_mood(spec: String) -> void:
+	_pending_ops.append({"kind": "mood", "arg": spec.strip_edges().to_lower()})
+	_pending_op_frames = 0
+	_try_apply_ops()
+
+
+# ── Beats · [beat:x] · synchronized emphasis in one directive ─────
+# The producer discipline at line level: a sting (with its haptic,
+# free via SFXBank.RUMBLE_MAP), a camera breath (quick push or pull,
+# easing home), and a letterbox pulse fire TOGETHER. Four house
+# beats — a small vocabulary on purpose; a beat that appears twice a
+# chapter stays an event.
+#
+#   still · a held hush — letterbox + the gentlest push, no sting
+#   hit   · the hard beat — thud sting, sharp push-in
+#   chill · the uncanny — cold sting, slow push, longest hold
+#   lift  · wonder/relief — warm sting, a pull BACK (fov opens)
+const BEATS := {
+	"still": {"sting": "",                   "vol": 0.0,  "punch": 0.94, "hold": 1.8},
+	"hit":   {"sting": "loss_thud",          "vol": 0.55, "punch": 0.88, "hold": 1.2},
+	"chill": {"sting": "tier_crossing_close", "vol": 0.5, "punch": 0.93, "hold": 2.2},
+	"lift":  {"sting": "interlude_earned",   "vol": 0.5,  "punch": 1.06, "hold": 1.6},
+}
+
+
+func apply_beat(spec: String) -> void:
+	_pending_ops.append({"kind": "beat", "arg": spec.strip_edges().to_lower()})
+	_pending_op_frames = 0
+	_try_apply_ops()
+
+
+func _do_beat(beat_name: String) -> bool:
+	if not BEATS.has(beat_name):
+		return false
+	var b: Dictionary = BEATS[beat_name]
+	var sting := String(b["sting"])
+	if sting != "":
+		SFXBank.play(sting, float(b["vol"]))
+	var hold := float(b["hold"])
+	# Letterbox pulse. If a shot already has the bars in, they stay —
+	# the beat only borrows them, tracked by _lb_seq so a shot fired
+	# during the hold cancels the stale release.
+	var was_on := _letterbox_on
+	_set_letterbox(true)
+	var my_seq := _lb_seq
+	if not was_on:
+		var tw2 := create_tween()
+		tw2.tween_interval(hold)
+		tw2.tween_callback(func() -> void:
+			if _lb_seq == my_seq:
+				_set_letterbox(false))
+	# Camera breath: quick punch (in, or OUT for lift), ease home.
+	var cam: Camera3D = _bg3d.get_camera() if _bg3d.has_method("get_camera") else null
+	if cam != null:
+		_drifting = false
+		var fov0 := cam.fov
+		var tw := create_tween()
+		tw.tween_property(cam, "fov", fov0 * float(b["punch"]), 0.12)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tw.tween_property(cam, "fov", fov0, maxf(0.4, hold * 0.6))\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	return true
+
+
+func _try_apply_ops() -> void:
+	if _pending_ops.is_empty():
+		return
+	if _bg3d == null or not is_instance_valid(_bg3d):
+		_pending_ops.clear()
+		return
+	if not _locale_ready():
+		_pending_op_frames += 1
+		if _pending_op_frames > PENDING_OP_MAX_FRAMES:
+			_pending_ops.clear()
+		return
+	for op: Dictionary in _pending_ops:
+		var arg := String(op.get("arg", ""))
+		if op.get("kind") == "beat":
+			var bok := _do_beat(arg)
+			print("[VnDirector] BEAT → %s%s" % [arg, "" if bok else " · MISS"])
+		elif op.get("kind") == "stage":
+			var parts := arg.split(" ", false)
+			if parts.size() < 2:
+				continue
+			var ok := false
+			if _bg3d.has_method("stage_character"):
+				ok = bool(_bg3d.stage_character(String(parts[0]), String(parts[1])))
+			print("[VnDirector] STAGE %s → %s%s" % [parts[0], parts[1], "" if ok else " · MISS"])
+		else:
+			var mc: Node = _bg3d.get_locale_mood_cycler() if _bg3d.has_method("get_locale_mood_cycler") else null
+			var ok := false
+			if mc != null and mc.has_method("apply_style_or_mood"):
+				ok = bool(mc.apply_style_or_mood(arg))
+			print("[VnDirector] MOOD → %s%s" % [arg, "" if ok else " · MISS"])
+	_pending_ops.clear()
+
+
+# ── Shots ─────────────────────────────────────────────────────────
+func _rotation_marker() -> Node3D:
+	if _bg3d == null or not _bg3d.has_method("find_shot_marker"):
+		return null
+	# Variant 0 is ALWAYS the locale's default view — the authored
+	# shot_establish marker if present, else null meaning "the
+	# Background3D preset vantage". Alternates extend the deck; they
+	# never evict the original framing from rotation.
+	var variants: Array = [_bg3d.find_shot_marker("shot_establish")]
+	for suffix in ["b", "c", "d", "e"]:
+		var m: Node3D = _bg3d.find_shot_marker("shot_establish_" + suffix)
+		if m != null:
+			variants.append(m)
+	if variants.size() <= 1 or scene_key == "":
+		return variants[0]
+	var idx: int = posmod(scene_key.hash(), variants.size())
+	return variants[idx]
+
+
+func apply_shot(spec: String) -> void:
+	_pending_shot = spec.strip_edges()
+	_pending_frames = 0
+	_try_apply_shot()
+
+
+func _try_apply_shot() -> void:
+	if _pending_shot == "":
+		return
+	if _bg3d == null or not is_instance_valid(_bg3d):
+		_pending_shot = ""
+		return
+	var spec := _pending_shot
+	var drift := spec.ends_with("~")
+	if drift:
+		spec = spec.substr(0, spec.length() - 1).strip_edges()
+	var parts := spec.split(" ", false)
+	if parts.is_empty():
+		_pending_shot = ""
+		return
+	var shot_type := String(parts[0]).to_lower()
+	var shot_id := String(parts[1]).to_lower() if parts.size() > 1 else ""
+	var marker_name := "shot_" + shot_type + (("_" + shot_id) if shot_id != "" else "")
+
+	# Locale still loading (deferred load_location) → retry next frame.
+	if not _locale_ready():
+		_pending_frames += 1
+		if _pending_frames > PENDING_MAX_FRAMES:
+			_pending_shot = ""
+		return
+	_pending_shot = ""
+
+	var marker: Node3D = null
+	if _bg3d.has_method("find_shot_marker"):
+		marker = _bg3d.find_shot_marker(marker_name)
+
+	if shot_type == "establish" and shot_id == "":
+		# Coverage rotation: prefer this chapter's assigned variant
+		# when the locale authors alternates.
+		var rot := _rotation_marker()
+		if rot != null:
+			marker = rot
+
+	if shot_type == "establish":
+		_set_letterbox(false)
+		if marker != null:
+			_cut_to_marker(marker, shot_type, drift)
+			print("[VnDirector] CUT establish → marker%s" % (" ~drift" if drift else ""))
+		else:
+			if _bg3d.has_method("restore_preset_vantage"):
+				_bg3d.restore_preset_vantage()
+			_start_drift(drift)
+			print("[VnDirector] CUT establish → preset vantage%s" % (" ~drift" if drift else ""))
+		return
+
+	# closeup / insert (and any future marker-backed type)
+	if marker == null:
+		# A WIDE with no marker must never fall into the punch-in —
+		# the zoom fallback would cut TIGHTER for a cue that asks
+		# for the opposite. The widest framing we always have is the
+		# preset vantage.
+		if shot_type == "wide":
+			if _bg3d.has_method("restore_preset_vantage"):
+				_bg3d.restore_preset_vantage()
+			_set_letterbox(true)
+			_start_drift(drift)
+			print("[VnDirector] CUT wide (preset vantage, no %s)%s" % [marker_name, " ~drift" if drift else ""])
+			return
+		# ── No authored marker for this cue ────────────────────
+		# The blind punch-in used to fire here, and it is the reason
+		# whole chapters read as "mostly just solid color scenes"
+		# (user, 2026-08-12): zooming fov 35 into the middle of the
+		# establishing wide fills the frame with whatever flat
+		# surface happens to be there. A repo-wide audit found 453
+		# such cues across 79 presets.
+		#
+		# A director without the exact insert shoots a DIFFERENT
+		# real detail rather than pushing the lens into a wall. So:
+		# borrow a same-type marker from this locale, chosen
+		# deterministically from the cue id so the same line always
+		# frames the same object (consistency beats variety here).
+		var subs: Array = []
+		if _bg3d.has_method("shot_markers_of_type"):
+			subs = _bg3d.call("shot_markers_of_type", shot_type)
+		if subs.is_empty() and shot_type == "closeup" \
+				and _bg3d.has_method("shot_markers_of_type"):
+			# A closeup of an unstaged THING can borrow an insert.
+			subs = _bg3d.call("shot_markers_of_type", "insert")
+		if not subs.is_empty():
+			var pick: Node3D = null
+			if shot_type == "closeup":
+				var faces: Array[Node3D] = []
+				for s_v in subs:
+					var s_n: Node3D = s_v as Node3D
+					if s_n != null and String(s_n.name).begins_with("shot_closeup_person"):
+						faces.append(s_n)
+				if not faces.is_empty():
+					faces.sort_custom(_by_name)
+					if not _face_side.has(shot_id):
+						_face_side[shot_id] = _face_side.size() % faces.size()
+					pick = faces[int(_face_side[shot_id])]
+			if pick == null:
+				pick = subs[abs(shot_id.hash()) % subs.size()] as Node3D
+			if pick != null:
+				_set_letterbox(true)
+				_cut_to_marker(pick, shot_type, drift)
+				print("[VnDirector] CUT %s → %s (substitute for %s)%s"
+					% [shot_type, pick.name, marker_name,
+					   " ~drift" if drift else ""])
+				return
+		# Nothing authored in this locale at all: hold the wide. An
+		# honest establishing frame beats a zoom into a flat wall.
+		if _bg3d.has_method("restore_preset_vantage"):
+			_bg3d.restore_preset_vantage()
+		_start_drift(drift)
+		print("[VnDirector] %s has no marker pool → holding the wide (was %s)"
+			% [shot_type, marker_name])
+		return
+	_set_letterbox(true)
+	_cut_to_marker(marker, shot_type, drift)
+	print("[VnDirector] CUT %s → %s%s" % [shot_type, marker_name, " ~drift" if drift else ""])
+
+
+func _by_name(a: Node3D, b: Node3D) -> bool:
+	return String(a.name) < String(b.name)
+
+
+func _locale_ready() -> bool:
+	if _bg3d.has_method("has_locale_loaded"):
+		return _bg3d.has_locale_loaded()
+	return true
+
+
+# Marker-free comic punch-in: a tighter FOV on the establish
+# vantage's axis, derived from the PRESET (not the live camera) so
+# repeated shots never compound.
+#
+# RETIRED as a fallback 2026-08-12 — kept because it is the correct
+# behavior for a locale that WANTS a lens-only push (a future
+# `[shot:push]` cue), but a missing marker no longer routes here:
+# zooming into the middle of a wide was manufacturing the flat
+# single-color frames the user reported. See apply_shot().
+func _punch_in(shot_type: String, drift: bool) -> bool:
+	if not _bg3d.has_method("get_preset_vantage") or not _bg3d.has_method("get_camera"):
+		return false
+	var v: Dictionary = _bg3d.get_preset_vantage()
+	if v.is_empty():
+		return false
+	var cam: Camera3D = _bg3d.get_camera()
+	if cam == null:
+		return false
+	var rot: Vector3 = v["rotation"]
+	# ZOOM, don't dolly. The old fallback moved the camera 1.2-1.8m
+	# forward along the view — with no collision data that landed
+	# INSIDE shelving in tight interiors (a screen-filling product
+	# box where a scene should be). A lens push can never enter
+	# geometry; locales that want true dollied framings author
+	# closeup/insert markers.
+	cam.position = v["origin"] as Vector3
+	cam.rotation = rot
+	cam.fov = 30.0 if shot_type == "closeup" else 24.0
+	cam.make_current()
+	_set_letterbox(true)
+	_start_drift(drift)
+	return true
+
+
+func _cut_to_marker(marker: Node3D, shot_type: String, drift: bool) -> void:
+	var cam: Camera3D = _bg3d.get_camera() if _bg3d.has_method("get_camera") else null
+	if cam == null:
+		return
+	cam.global_transform = marker.global_transform
+	var fov := float(TYPE_FOV.get(shot_type, 50.0))
+	if marker.has_meta("fov"):
+		fov = float(marker.get_meta("fov"))
+	cam.fov = fov
+	cam.make_current()
+	_start_drift(drift)
+
+
+func _start_drift(drift: bool) -> void:
+	_drifting = drift
+	if drift:
+		var cam: Camera3D = _bg3d.get_camera() if _bg3d != null and _bg3d.has_method("get_camera") else null
+		if cam != null:
+			_drift_floor = cam.fov * DRIFT_MIN_RATIO
+
+
+func _process(delta: float) -> void:
+	if _pending_shot != "":
+		_try_apply_shot()
+	if not _pending_ops.is_empty():
+		_try_apply_ops()
+	if not _drifting:
+		return
+	if _bg3d == null or not is_instance_valid(_bg3d) or not _bg3d.has_method("get_camera"):
+		_drifting = false
+		return
+	var cam: Camera3D = _bg3d.get_camera()
+	if cam == null:
+		_drifting = false
+		return
+	cam.fov = maxf(_drift_floor, cam.fov * (1.0 - DRIFT_RATE * delta))
+
+
+# ── Letterbox ─────────────────────────────────────────────────────
+func _set_letterbox(on: bool) -> void:
+	if _bar_top == null:
+		return
+	_letterbox_on = on
+	_lb_seq += 1
+	var h := BAR_HEIGHT if on else 0.0
+	_bar_top.visible = true
+	_bar_bottom.visible = true
+	var tw := create_tween().set_parallel(true)
+	tw.tween_property(_bar_top, "offset_bottom", h, BAR_TWEEN)
+	tw.tween_property(_bar_bottom, "offset_top", -h, BAR_TWEEN)
+	if not on:
+		tw.chain().tween_callback(func() -> void:
+			_bar_top.visible = false
+			_bar_bottom.visible = false)
+
+
+# ── Panels ────────────────────────────────────────────────────────
+func apply_panel(id: String) -> void:
+	id = id.strip_edges().to_lower()
+	if id == "off" or id == "":
+		_dismiss_panel()
+		return
+	_dismiss_panel()
+	var card := _build_panel_card(id)
+	if card == null:
+		return
+	_panel_card = card
+	_overlay_parent.add_child(card)
+
+
+func _dismiss_panel() -> void:
+	if _panel_card != null and is_instance_valid(_panel_card):
+		_panel_card.queue_free()
+	_panel_card = null
+
+
+func _build_panel_card(id: String) -> Control:
+	var card := PanelContainer.new()
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.055, 0.05, 0.045, 0.97)
+	st.border_color = Color(0.83, 0.79, 0.69, 0.9)
+	st.set_border_width_all(2)
+	st.content_margin_left = 10
+	st.content_margin_right = 10
+	st.content_margin_top = 10
+	st.content_margin_bottom = 10
+	card.add_theme_stylebox_override("panel", st)
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var path := PANEL_DIR + id + ".json"
+	var hero = HeroImageScript.new()
+	var content: Control = null
+	if FileAccess.file_exists(path) and hero.load_from(path):
+		var texr := TextureRect.new()
+		# Integer-ish upscale of the pixel doc. Height cap 300 keeps
+		# the card INSIDE the upper field — the dialogue text zone
+		# starts around y≈390 (box is ~46% of a 720 viewport) and the
+		# old 420 cap was landing the card right on top of the prose.
+		var scale_i: int = maxi(1, mini(int(700.0 / maxf(1.0, float(hero.w))), int(300.0 / maxf(1.0, float(hero.h)))))
+		var target := Vector2i(hero.w * scale_i, hero.h * scale_i)
+		texr.texture = hero.texture(target)
+		texr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		texr.custom_minimum_size = Vector2(target)
+		texr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		content = texr
+	else:
+		# Fallback discipline: bordered text card with the id, so a
+		# missing panel asset reads as a note, not a crash.
+		var lbl := Label.new()
+		lbl.text = id.replace("_", " ").to_upper()
+		lbl.add_theme_font_size_override("font_size", 20)
+		lbl.add_theme_color_override("font_color", Color(0.83, 0.79, 0.69))
+		lbl.custom_minimum_size = Vector2(360, 80)
+		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		content = lbl
+	card.add_child(content)
+	# Center in the upper field — and STAY there. The dialogue text
+	# zone begins ≈y390 (the box is ~46% of a 720 viewport), so the
+	# band ends at 370. And the card sits BELOW the dialogue z
+	# (UI_Z=100): if they ever do touch, the prose reads over the
+	# image, never the reverse (user report 2026-07: "image over
+	# text" — the old band reached 480 at z 101).
+	var holder := CenterContainer.new()
+	holder.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	holder.offset_top = 36.0
+	holder.offset_bottom = 370.0
+	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	holder.z_index = 99
+	holder.add_child(card)
+	# Arrive like a document laid on the table, not a popup.
+	card.modulate.a = 0.0
+	var tw := card.create_tween()
+	tw.tween_property(card, "modulate:a", 1.0, 0.25)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	return holder

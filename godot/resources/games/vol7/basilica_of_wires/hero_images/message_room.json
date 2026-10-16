@@ -1,0 +1,136 @@
+{
+ "id": "message_room",
+ "notes": "The message room \u00b7 a teletype page in QA annotation format, addressed to no one.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#000000",
+  "#38c8d8",
+  "#e8f4f8",
+  "#e8a830",
+  "#7a3868",
+  "#3a3a3a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    50,
+    20,
+    60,
+    56
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    52,
+    22,
+    56,
+    52
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 28,
+   "x_range": [
+    56,
+    104
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 35,
+   "x_range": [
+    56,
+    91
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 42,
+   "x_range": [
+    56,
+    98
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 49,
+   "x_range": [
+    56,
+    85
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    56,
+    92
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 63,
+   "x_range": [
+    56,
+    99
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     40,
+     84
+    ],
+    [
+     120,
+     84
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     60,
+     84
+    ],
+    [
+     60,
+     76
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     100,
+     84
+    ],
+    [
+     100,
+     76
+    ]
+   ],
+   "color": 1
+  }
+ ]
+}

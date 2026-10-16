@@ -1,0 +1,514 @@
+{
+  "id": "moment_boathouse_1988_logbook",
+  "notes": "HeroImage \u00b7 Wilson's chest opened in the boathouse \u00b7 leather-bound logbook dated 1988 gold-stamped \u00b7 red bookmark \u00b7 a young Wilson's photo, a marlin spike \u00b7 lantern warm on the wood.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#141018",
+    "#241a10",
+    "#4a3020",
+    "#7a5030",
+    "#a86a40",
+    "#28180a",
+    "#4a2818",
+    "#7a4028",
+    "#c8a848",
+    "#8a7048",
+    "#e8dcc0",
+    "#181410",
+    "#3a2418",
+    "#5a3820",
+    "#c8a848",
+    "#e8dcc0",
+    "#c8b498",
+    "#584030",
+    "#3a3a3a",
+    "#8a8a8a",
+    "#78585a",
+    "#284878",
+    "#c8b478",
+    "#c8a848",
+    "#a83e2a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 12,
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 42,
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 76,
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 108,
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 140,
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        40
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        10,
+        40
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 24,
+      "y_range": [
+        0,
+        40
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 58,
+      "y_range": [
+        0,
+        40
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 92,
+      "y_range": [
+        0,
+        40
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 130,
+      "y_range": [
+        0,
+        40
+      ],
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        12
+      ],
+      "size": 24,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        12
+      ],
+      "size": 20,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        12
+      ],
+      "size": 16,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        12
+      ],
+      "size": 4,
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        30,
+        116,
+        46
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        30,
+        116,
+        4
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        72,
+        116,
+        4
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        30,
+        3,
+        46
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        135,
+        30,
+        3,
+        46
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        21,
+        29,
+        4,
+        4
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        136,
+        29,
+        4,
+        4
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        21,
+        74,
+        4,
+        4
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        136,
+        74,
+        4,
+        4
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        28,
+        8,
+        6
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        28,
+        8,
+        2
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        14,
+        116,
+        12
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        14,
+        116,
+        3
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        26,
+        34,
+        108,
+        38
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        38,
+        72,
+        28
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        38,
+        72,
+        3
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        63,
+        72,
+        3
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 80,
+      "y_range": [
+        38,
+        66
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        52,
+        46,
+        26,
+        4
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        52,
+        54,
+        22,
+        3
+      ],
+      "color": 14
+    },
+    {
+      "op": "vline",
+      "x": 84,
+      "y_range": [
+        34,
+        68
+      ],
+      "color": 24
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        42,
+        20,
+        16
+      ],
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        31,
+        43,
+        18,
+        14
+      ],
+      "color": 20
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        37,
+        47,
+        6,
+        9
+      ],
+      "color": 21
+    },
+    {
+      "op": "dot",
+      "xy": [
+        39,
+        45
+      ],
+      "size": 3,
+      "color": 16
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          124,
+          68
+        ],
+        [
+          132,
+          60
+        ]
+      ],
+      "color": 18
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          124,
+          67
+        ],
+        [
+          132,
+          59
+        ]
+      ],
+      "color": 19
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        82,
+        41,
+        30,
+        18
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        45,
+        46
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        48,
+        49
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        51,
+        52
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        54,
+        55
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        57,
+        58
+      ],
+      "color": 17
+    },
+    {
+      "op": "text",
+      "xy": [
+        16,
+        84
+      ],
+      "s": "WILSON'S  LOGBOOK  \u00b7  1988  \u00b7  READ",
+      "color": 23
+    }
+  ]
+}

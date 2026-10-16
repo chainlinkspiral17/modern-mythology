@@ -137,3 +137,17 @@ etc.):
 6. Document the moods + cameras in this README.
 
 The pattern stays the same. The locales accumulate.
+
+## VN shot markers (scene direction)
+
+Locales used as VN backgrounds can carry `Marker3D` shot nodes for
+the 3D-comic direction system (`lore/_VN_DIRECTION_PLAYBOOK.md`):
+
+- Name `shot_<type>_<id>` — types: `closeup`, `insert` (plus an
+  optional `shot_establish` override; the Background3D camera
+  preset is the implicit establish).
+- Group `vn_shot`, optional `metadata/fov` (inserts ~35,
+  closeups ~45).
+- The marker's transform IS the camera framing. In .tscn text,
+  `position` + `rotation` lines are enough — yaw cheat-sheet in
+  the playbook. First marked-up locale: `kwik_stop.tscn`.

@@ -1,0 +1,219 @@
+{
+ "notes": "Moth in her candlelit tent. She puts a moth on your palm. She has been editing one specific memory for years.",
+ "palette": [
+  "#2a2418",
+  "#f8c848",
+  "#f0e8e0",
+  "#d0c0b8",
+  "#3a5a2a",
+  "#e8e0d8",
+  "#b0a098"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     6,
+     10
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     6,
+     26
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     26,
+     10
+    ],
+    [
+     20,
+     16
+    ],
+    [
+     26,
+     26
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    15
+   ],
+   "size": 2,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    24,
+    15
+   ],
+   "size": 2,
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    11,
+    9,
+    10,
+    16
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    18,
+    9,
+    3,
+    16
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    6,
+    12,
+    4
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     13,
+     6
+    ],
+    [
+     12,
+     3
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     19,
+     6
+    ],
+    [
+     20,
+     3
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    14
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    14
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    20
+   ],
+   "size": 1,
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    11,
+    25,
+    10,
+    11
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    31
+   ],
+   "size": 2,
+   "color": 6
+  }
+ ],
+ "id": "portrait_moth",
+ "w": 32,
+ "h": 40
+}

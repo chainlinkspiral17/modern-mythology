@@ -1,0 +1,376 @@
+{
+  "id": "moment_federal_boat_pass",
+  "notes": "HeroImage \u00b7 the gray twin-hull passing offshore \u00b7 overcast \u00b7 red waterline \u00b7 antennas \u00b7 unmarked but for '204'.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#3a4a5a",
+    "#4a5a6a",
+    "#5a6a78",
+    "#68788a",
+    "#182838",
+    "#284858",
+    "#3a5a6a",
+    "#5a7a88",
+    "#e8e8e8",
+    "#1a1e20",
+    "#3a3a3a",
+    "#5a5a5a",
+    "#8a8a8a",
+    "#c8c8c8",
+    "#a83828",
+    "#282828",
+    "#c8a848",
+    "#98a8b8",
+    "#4a5a6a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        20
+      ],
+      "color": 3
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        20,
+        40
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        40,
+        52
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        52,
+        62
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        62,
+        78
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        78,
+        90
+      ],
+      "color": 4
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        67
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        72,
+        73
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        82,
+        83
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        88,
+        89
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        52,
+        44,
+        14
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        86,
+        52,
+        44,
+        14
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        46,
+        100,
+        8
+      ],
+      "color": 10
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        64,
+        65
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        64,
+        44,
+        1
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        86,
+        64,
+        44,
+        1
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        30,
+        32,
+        16
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        30,
+        32,
+        2
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        66,
+        34,
+        4,
+        4
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        34,
+        4,
+        4
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        78,
+        34,
+        4,
+        4
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        84,
+        34,
+        4,
+        4
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        90,
+        34,
+        4,
+        4
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 72,
+      "y_range": [
+        20,
+        30
+      ],
+      "color": 15
+    },
+    {
+      "op": "vline",
+      "x": 88,
+      "y_range": [
+        16,
+        30
+      ],
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        72,
+        20
+      ],
+      "size": 2,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        88,
+        16
+      ],
+      "size": 2,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        38,
+        58
+      ],
+      "size": 2,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        42,
+        58
+      ],
+      "size": 2,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        46,
+        58
+      ],
+      "size": 2,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        50,
+        58
+      ],
+      "size": 2,
+      "color": 13
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          24,
+          66
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          66
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          130,
+          66
+        ],
+        [
+          136,
+          60
+        ],
+        [
+          130,
+          62
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        24,
+        66
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        136,
+        62
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "text",
+      "xy": [
+        12,
+        84
+      ],
+      "s": "EVERY  NINETY  MINUTES  \u00b7  UNMARKED",
+      "color": 16
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "estuary_1",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "The original ESTUARY (Oneironautics, 2001). Two-hour school-library sim: one fixed screen, one lever, twelve weeks. Team of three: Ines Rocha (tide-gate math, her first job), Marc Ostrom (score), Sarah Delahaye (every sprite). Playing it reveals what the studio was iterating on when they made 2 and 3.",
+  "shelf": {
+    "label_title": "ESTUARY",
+    "label_subtitle": "the very small first one",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 2001,
+    "release_month": "April",
+    "hardware": "Oneironautics Slowstick \u00b7 Rev 2",
+    "genre_stamp": "SIMULATION / SCHOOL LIBRARY",
+    "shelf_condition": "worn \u00b7 label edges yellowed \u00b7 Olaf's public-radio-pledge-drive sticker still on the back",
+    "prior_owner": "Olaf, from OPB's 2001 pledge drive premium level",
+    "provenance_note": "OPB, at Level 3 giving in April 2001, gave donors a copy of Estuary 1. Olaf was giving Level 3 that year. His copy of Estuary 1 has the OPB donor sticker on the back of the cartridge sleeve and it has been there ever since.",
+    "cover_blurb": "A small game about a small estuary.  From Oneironautics Inc., a new game studio in Portland, Oregon.  Recommended for players 10 and up.  Fits in a Trapper Keeper.  Takes about two hours.",
+    "back_of_case": [
+      "\u00b7 Three species (chum fry, mud shrimp, heron).",
+      "\u00b7 Twelve weeks of Pacific weather.",
+      "\u00b7 One control (the tide gate).",
+      "\u00b7 No fail state.",
+      "\u00b7 Save any time.",
+      "",
+      "A public-radio project.  Written for kids.  Meant for classrooms.",
+      "",
+      "'They put a game on a stick and mailed it to me.  I have played it seven times.  I do not know why.'",
+      "    \u2014 a reader, in a letter to OPB, June 2001."
+    ],
+    "in_fiction_dev_note": "Ines Rocha's very first job. She wrote the tide-gate math. Marc Ostrom composed the drone that IS the whole score \u2014 a voice per species doing well. Sarah Delahaye did every pixel of every sprite; fourteen drawings, the game. The three of them were, in 2001, the entire team.\n\nThe school-library run of Estuary 1 was ~3,000 copies. The OPB pledge-drive run was another ~2,000. Olaf's copy is one of the OPB ones.",
+    "meta_note": "The 2001 press called it 'a screensaver you're responsible for.' Ostrom's surviving design-doc sentence: 'the player should end the game knowing they were RESPONSIBLE for something, without once being told they were.'"
+  },
+  "lore_tokens_awarded_on_completion": [
+    "estuary_1_finished",
+    "the_dna_of_the_series"
+  ],
+  "lore_tokens_conditional": {
+    "estuary_1_patience_a": "PATIENCE grade A (gate touched no more than twice)",
+    "estuary_1_week_13_seen": "the hidden Week 13 night screen"
+  },
+  "acts": [
+    {
+      "id": "twelve_weeks",
+      "scene": "res://scenes/games/estuary_1/EstuaryOneLoop.tscn"
+    }
+  ]
+}

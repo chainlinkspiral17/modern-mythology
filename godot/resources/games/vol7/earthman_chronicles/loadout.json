@@ -1,0 +1,70 @@
+{
+  "notes": [
+    "THE TRAVELING CASE · Earthman Chronicles' half of the StickLoop",
+    "contract. EARN: shenin notes for a finished reading — 6 for the",
+    "chapters + corrections found + workings performed. CARRY:",
+    "EarthmanChroniclesHost reads at start_new_run. ≥1 FLAG per tier."
+  ],
+  "currency": {
+    "id": "notes",
+    "name": "SHENIN NOTES",
+    "earn_line": "a finished reading pays notes · corrections found and workings performed count"
+  },
+  "upgrades": [
+    {
+      "id": "coin_purse",
+      "name": "A KYRINDI COIN PURSE",
+      "cost": 5,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "twelve shenin saved from a reading already taken. the Talikan market recognizes old money.",
+      "effects": {"start_shenin": 12},
+      "flags": []
+    },
+    {
+      "id": "underlines",
+      "name": "ROCHA'S UNDERLINES",
+      "cost": 8,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "her pencil is already in your copy. you begin holding the first correction — the Pasadena fire — with four still findable.",
+      "effects": {},
+      "flags": ["underlines"]
+    },
+    {
+      "id": "heavier_purse",
+      "name": "A LETTER OF CREDIT",
+      "cost": 9,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": ["coin_purse"],
+      "blurb": "drawn on a Culver City bank that does not exist on Barsoom, honored anyway. twelve more shenin at the first page.",
+      "effects": {"start_shenin": 12},
+      "flags": []
+    },
+    {
+      "id": "field_altar",
+      "name": "THE FIELD ALTAR",
+      "cost": 11,
+      "tier": 2,
+      "needs_mastery": 2,
+      "requires": [],
+      "blurb": "folding brass, consecrated once, stays consecrated. Working I begins the reading already performed — its recognitions open from page one.",
+      "effects": {},
+      "flags": ["field_altar"]
+    },
+    {
+      "id": "saras_bookmark",
+      "name": "SARA'S RIBBON",
+      "cost": 12,
+      "tier": 3,
+      "needs_mastery": 3,
+      "requires": [],
+      "blurb": "she marked a page for you in a reading that has already happened. carrying it, the finale opens on her private word to you — she knows you have heard the refusal before, and says so.",
+      "effects": {},
+      "flags": ["ribbon"]
+    }
+  ]
+}

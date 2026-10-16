@@ -1,0 +1,924 @@
+{
+  "id": "moment_north_bluff_view",
+  "notes": "HeroImage \u00b7 the north bluff \u00b7 wide ocean, Delisle a smudge on the far horizon, dune grass, a wooden NORTH BLUFF sign \u00b7 The Old Man log tiny in the far corner \u00b7 Sam a silhouette on the bluff.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#98a8c8",
+    "#c8b898",
+    "#e8c8a8",
+    "#f4d8b8",
+    "#282838",
+    "#385860",
+    "#284858",
+    "#183848",
+    "#0a1820",
+    "#78a0b0",
+    "#c8dce8",
+    "#48684a",
+    "#68884a",
+    "#88a860",
+    "#c8b878",
+    "#8a6a30",
+    "#584028",
+    "#4a2818",
+    "#7a4830",
+    "#a86840",
+    "#282018",
+    "#241408",
+    "#484858",
+    "#c8b478",
+    "#f4e8c8"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        8
+      ],
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        8,
+        18
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        18,
+        28
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        28,
+        36
+      ],
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        116,
+        14
+      ],
+      "size": 6,
+      "color": 24
+    },
+    {
+      "op": "dot",
+      "xy": [
+        116,
+        14
+      ],
+      "size": 4,
+      "color": 3
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          120,
+          40
+        ],
+        [
+          130,
+          34
+        ],
+        [
+          150,
+          36
+        ],
+        [
+          160,
+          38
+        ],
+        [
+          160,
+          42
+        ]
+      ],
+      "color": 22
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        38,
+        40
+      ],
+      "color": 22
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        36,
+        42
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        42,
+        50
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        50,
+        58
+      ],
+      "color": 7
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        58,
+        66
+      ],
+      "color": 8
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        46,
+        47
+      ],
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        52,
+        53
+      ],
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        58,
+        59
+      ],
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        63,
+        64
+      ],
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        64,
+        50
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        54
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        46
+      ],
+      "size": 1,
+      "color": 10
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        76
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        76,
+        90
+      ],
+      "color": 16
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        70
+      ],
+      "color": 14
+    },
+    {
+      "op": "vline",
+      "x": 8,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 9,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          8,
+          66
+        ],
+        [
+          10,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          8,
+          66
+        ],
+        [
+          6,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 20,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 21,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          20,
+          66
+        ],
+        [
+          22,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          20,
+          66
+        ],
+        [
+          18,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 32,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 33,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          32,
+          66
+        ],
+        [
+          34,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          32,
+          66
+        ],
+        [
+          30,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 44,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 45,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          44,
+          66
+        ],
+        [
+          46,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          44,
+          66
+        ],
+        [
+          42,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 58,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 59,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          58,
+          66
+        ],
+        [
+          60,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          58,
+          66
+        ],
+        [
+          56,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 72,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 73,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          72,
+          66
+        ],
+        [
+          74,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          72,
+          66
+        ],
+        [
+          70,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 86,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 87,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          86,
+          66
+        ],
+        [
+          88,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          86,
+          66
+        ],
+        [
+          84,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 100,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 101,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          100,
+          66
+        ],
+        [
+          102,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          100,
+          66
+        ],
+        [
+          98,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 116,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 117,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          116,
+          66
+        ],
+        [
+          118,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          116,
+          66
+        ],
+        [
+          114,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 132,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 133,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          132,
+          66
+        ],
+        [
+          134,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          132,
+          66
+        ],
+        [
+          130,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 148,
+      "y_range": [
+        64,
+        74
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 149,
+      "y_range": [
+        66,
+        74
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          148,
+          66
+        ],
+        [
+          150,
+          62
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          148,
+          66
+        ],
+        [
+          146,
+          62
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        20,
+        46,
+        4,
+        32
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        20,
+        46,
+        1,
+        32
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        6,
+        44,
+        32,
+        12
+      ],
+      "color": 19
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        6,
+        44,
+        32,
+        2
+      ],
+      "color": 20
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        6,
+        54,
+        32,
+        2
+      ],
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        9,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        12,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        15,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        18,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        21,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        24,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        27,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        50
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        128,
+        68,
+        22,
+        4
+      ],
+      "color": 21
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        128,
+        68,
+        22,
+        1
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        86,
+        60,
+        3,
+        8
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        86,
+        56,
+        3,
+        4
+      ],
+      "color": 4
+    },
+    {
+      "op": "text",
+      "xy": [
+        16,
+        84
+      ],
+      "s": "NORTH  BLUFF  \u00b7  YOU  CAN  SEE  FOR  MILES",
+      "color": 23
+    }
+  ]
+}

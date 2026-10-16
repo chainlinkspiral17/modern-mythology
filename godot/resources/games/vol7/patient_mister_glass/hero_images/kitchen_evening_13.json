@@ -1,0 +1,246 @@
+{
+ "id": "kitchen_evening_13",
+ "notes": "The kitchen at evening 13 \u00b7 lit only by the stove. Same angle. Same kettle.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#100c0a",
+  "#e8a038",
+  "#6a4a30",
+  "#8a98a8",
+  "#c8442c",
+  "#d8ccb8",
+  "#3a4438"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    116,
+    12,
+    34,
+    30
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 132,
+   "y_range": [
+    12,
+    42
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 26,
+   "x_range": [
+    116,
+    150
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    10,
+    100,
+    26
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 40,
+   "y_range": [
+    10,
+    36
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 74,
+   "y_range": [
+    10,
+    36
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    52,
+    144,
+    8
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    60,
+    144,
+    30
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    96,
+    44,
+    36,
+    10
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    100,
+    46,
+    12,
+    4
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    20,
+    44
+   ],
+   "size": 6,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    34,
+    45
+   ],
+   "size": 5,
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    48,
+    40,
+    8,
+    10
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    104,
+    34,
+    18,
+    12
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     122,
+     36
+    ],
+    [
+     128,
+     32
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    113,
+    32
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     112,
+     28
+    ],
+    [
+     110,
+     22
+    ],
+    [
+     114,
+     16
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    64,
+    8
+   ],
+   "size": 4,
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    58,
+    30,
+    16,
+    22
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    66,
+    24
+   ],
+   "size": 8,
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     100,
+     46
+    ],
+    [
+     112,
+     46
+    ],
+    [
+     124,
+     60
+    ],
+    [
+     92,
+     60
+    ]
+   ],
+   "color": 3
+  }
+ ]
+}

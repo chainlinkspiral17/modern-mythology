@@ -1,0 +1,29 @@
+{
+  "id": "schedule",
+  "notes": "Camp Sweetgum's daily schedule.  Ten time blocks per day, keyed by time_index (0-9).  Structure gives shape · Sam can arrive late, skip, or explore during any block, but the world responds:\n  · During BREAKFAST, all campers who aren't Sam are in the mess hall.\n  · During MORNING_ACTIVITY, they're at that activity's zone.\n  · During FREE_TIME, campers scatter to their cabins, the boathouse, Alder Pond, or the north bluff.\n  · Skipping meals raises Sam's hunger meter (currently a soft cap only).\n  · Sleeping in Sam's bunk advances time to the next morning's WAKE (index 0 of the next day).\n\nActivity blocks vary by day (see days.json anchor_event).  Meals are the same time every day.  Evening events land in EVENING_EVENT.  QUIET_TIME and LIGHTS_OUT are wind-down.\n\nWave G ships the schedule shape + the block-boundary logic in CampOverworld.  NPC-position-by-block is Wave G-tail (needs cabins Beaver/Osprey/Kestrel and the activity zones authored first).  For now, the schedule is a legible clock that gates content later waves will hook into.",
+
+  "blocks": [
+    { "index": 0, "id": "wake",             "start": "06:30", "end": "07:00", "label": "wake up",              "location_hint": "cabin" },
+    { "index": 1, "id": "breakfast",        "start": "07:00", "end": "08:30", "label": "breakfast",            "location_hint": "mess_hall" },
+    { "index": 2, "id": "morning_activity", "start": "09:00", "end": "11:30", "label": "morning activity",     "location_hint": "activity_zone_am" },
+    { "index": 3, "id": "lunch",            "start": "12:00", "end": "13:00", "label": "lunch",                "location_hint": "mess_hall" },
+    { "index": 4, "id": "afternoon_activity","start":"13:30", "end": "16:00", "label": "afternoon activity",   "location_hint": "activity_zone_pm" },
+    { "index": 5, "id": "free_time",        "start": "16:00", "end": "18:00", "label": "free time",            "location_hint": "scatter" },
+    { "index": 6, "id": "dinner",           "start": "18:00", "end": "19:30", "label": "dinner",               "location_hint": "mess_hall" },
+    { "index": 7, "id": "evening_event",    "start": "20:00", "end": "21:00", "label": "evening event",        "location_hint": "campfire_ring" },
+    { "index": 8, "id": "quiet_time",       "start": "21:00", "end": "22:00", "label": "quiet time",           "location_hint": "cabin" },
+    { "index": 9, "id": "lights_out",       "start": "22:00", "end": "06:30", "label": "lights out",           "location_hint": "cabin" }
+  ],
+
+  "meal_blocks":         ["breakfast", "lunch", "dinner"],
+  "activity_blocks":     ["morning_activity", "afternoon_activity"],
+  "day_activity_zones": {
+    "sunday":    { "morning_activity": null,               "afternoon_activity": null                 },
+    "monday":    { "morning_activity": "alder_pond",       "afternoon_activity": "archery_range"      },
+    "tuesday":   { "morning_activity": "alder_pond",       "afternoon_activity": "tie_dye_tables"     },
+    "wednesday": { "morning_activity": "north_bluff_trail","afternoon_activity": "camp_wide_scavenger"},
+    "thursday":  { "morning_activity": "alder_pond",       "afternoon_activity": null                 },
+    "friday":    { "morning_activity": "archery_range",    "afternoon_activity": "rehearsal"          },
+    "saturday":  { "morning_activity": null,               "afternoon_activity": null                 }
+  }
+}

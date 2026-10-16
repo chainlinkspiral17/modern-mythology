@@ -11,15 +11,31 @@
     },
     {
       "t": "narrate",
-      "text": "Cale was not at the counter. The lights were on. The bell rang as she came in and she stood there a count and then walked around the counter and through the doorway to the back, because Cale had told her two years ago that if she ever needed something from the back when he was not at the counter she should just go and get it. She had never, until now, taken him up on it."
+      "text": "[mood:studio]Cale was not at the counter. The lights were on."
     },
     {
       "t": "narrate",
-      "text": "The back was where the inventory lived. Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in."
+      "text": "The bell rang as she came in and she stood there a count and then walked around the counter and through the doorway to the back, because Cale had told her two years ago that if she ever needed something from the back when he was not at the counter she should just go and get it."
     },
     {
       "t": "narrate",
-      "text": "He was at the workbench."
+      "text": "She had never, until now, taken him up on it."
+    },
+    {
+      "t": "bg",
+      "src": "3d:chillwave_backroom"
+    },
+    {
+      "t": "narrate",
+      "text": "The back was where the inventory lived."
+    },
+    {
+      "t": "narrate",
+      "text": "Cedar shelves alphabetized by designer, a wooden crate by the door for new arrivals, a workbench in the corner with a soldering iron and the small precision tools Cale used on the older readers when somebody brought one in."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert workbench]He was at the workbench."
     },
     {
       "t": "show",
@@ -29,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looked up."
+      "text": "[shot:closeup cale]He looked up."
     },
     {
       "t": "say",
@@ -63,7 +79,11 @@
     },
     {
       "t": "narrate",
-      "text": "He set down the small thing he had been working on. He was not surprised to see her. There was something on his face she had not seen there before — not relief exactly, more like the held breath of somebody who had been counting how long they were going to have to keep holding it."
+      "text": "He set down the small thing he had been working on. He was not surprised to see her."
+    },
+    {
+      "t": "narrate",
+      "text": "There was something on his face she had not seen there before — not relief exactly, more like the held breath of somebody who had been counting how long they were going to have to keep holding it."
     },
     {
       "t": "say",
@@ -79,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "He raised an eyebrow."
+      "text": "[shot:establish]He raised an eyebrow."
     },
     {
       "t": "say",
@@ -95,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "She told him. The phone call. Roy at the shop. The materials question. Tem saying it might be that bad. Lena needing to be somewhere that was not her apartment, the studio, or the bookstore for the eight hours until they all met at six."
+      "text": "[shot:establish]She told him. The phone call. Roy at the shop. The materials question. Tem saying it might be that bad. Lena needing to be somewhere that was not her apartment, the studio, or the bookstore for the eight hours until they all met at six."
     },
     {
       "t": "narrate",

@@ -1,0 +1,1230 @@
+{
+  "id": "moment_wu_kai_solder",
+  "notes": "HeroImage \u00b7 Wu Kai's magnifying glass over the Chapter 2 cartridge's Y-shaped solder joint \u00b7 red-ring highlight \u00b7 circuit board green \u00b7 tools scattered on the boathouse workbench.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#1a1210",
+    "#3a2818",
+    "#5a3820",
+    "#7a4830",
+    "#0a2418",
+    "#144830",
+    "#3a8a48",
+    "#c8b898",
+    "#181818",
+    "#a86828",
+    "#c8a848",
+    "#8a5028",
+    "#c8a848",
+    "#284848",
+    "#78a0a8",
+    "#f4e8c8",
+    "#584030",
+    "#4a6238",
+    "#3a3a3a",
+    "#c8b478",
+    "#a83e2a",
+    "#c8c8c8"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        42
+      ],
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        42,
+        90
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 16,
+      "y_range": [
+        42,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 48,
+      "y_range": [
+        42,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 88,
+      "y_range": [
+        42,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 128,
+      "y_range": [
+        42,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "vline",
+      "x": 152,
+      "y_range": [
+        42,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        46,
+        116,
+        40
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        48,
+        112,
+        36
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        48,
+        112,
+        3
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        81,
+        112,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        56,
+        57
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        67
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        76,
+        77
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 40,
+      "y_range": [
+        50,
+        82
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 60,
+      "y_range": [
+        50,
+        82
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 80,
+      "y_range": [
+        50,
+        82
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 100,
+      "y_range": [
+        50,
+        82
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 120,
+      "y_range": [
+        50,
+        82
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        52,
+        12,
+        8
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        29,
+        53,
+        10,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        36,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        36,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        39,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        39,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        50,
+        52,
+        12,
+        8
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        51,
+        53,
+        10,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        52,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        52,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        55,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        55,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        58,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        58,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        61,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        61,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        52,
+        12,
+        8
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        73,
+        53,
+        10,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        83,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        83,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        94,
+        52,
+        12,
+        8
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        95,
+        53,
+        10,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        96,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        96,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        99,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        99,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        105,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        105,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        116,
+        52,
+        12,
+        8
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        117,
+        53,
+        10,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        118,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        118,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        121,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        121,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        127,
+        60
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        127,
+        51
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        70
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        72
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        74
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        76,
+        68
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        68
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        75,
+        67
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        81,
+        67
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        71
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        73
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        69
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        79,
+        69
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        76,
+        68
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        68
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        72,
+        64
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        62
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        61
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        82,
+        62
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        84,
+        64
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        85,
+        68
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        85,
+        74
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        83,
+        78
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        79
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        73,
+        78
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        71,
+        74
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        71,
+        68
+      ],
+      "size": 1,
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        70
+      ],
+      "size": 14,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        70
+      ],
+      "size": 12,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        70
+      ],
+      "size": 10,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        70
+      ],
+      "size": 8,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        70
+      ],
+      "size": 6,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        68,
+        62
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        70,
+        60
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        58
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        57
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        82,
+        58
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        86,
+        60
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        88,
+        62
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        90,
+        66
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        91,
+        70
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        90,
+        74
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        88,
+        78
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        86,
+        80
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        82,
+        82
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        83
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        82
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        70,
+        80
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        68,
+        78
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        66,
+        74
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        65,
+        70
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        66,
+        66
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          91,
+          66
+        ],
+        [
+          100,
+          56
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          91,
+          68
+        ],
+        [
+          100,
+          58
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        100,
+        52,
+        8,
+        6
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        106,
+        46,
+        8,
+        8
+      ],
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        108,
+        38,
+        8,
+        12
+      ],
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        112,
+        40
+      ],
+      "size": 2,
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        8,
+        34,
+        12,
+        3
+      ],
+      "color": 21
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          8,
+          34
+        ],
+        [
+          4,
+          30
+        ]
+      ],
+      "color": 21
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          8,
+          37
+        ],
+        [
+          4,
+          40
+        ]
+      ],
+      "color": 21
+    },
+    {
+      "op": "text",
+      "xy": [
+        12,
+        84
+      ],
+      "s": "Y-SOLDER  \u00b7  POST-FACTORY  \u00b7  DELIBERATE",
+      "color": 19
+    }
+  ]
+}

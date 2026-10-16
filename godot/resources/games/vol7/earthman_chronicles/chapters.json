@@ -1,0 +1,526 @@
+{
+  "id": "chapters",
+  "notes": "Earthman Chronicles · the six chapters of the game's playable structure.  Each chapter has: title, setting, sub-zones (each sub-zone is a first-person grid or tactical scene), critical-path beats (linear story progression), branch beats (player-choice inflections), boss encounters, key NPCs met, Workings available, Corrections findable.  Manuscript-vs-game comparison: manuscript has 12 chapters, game compresses to 6.  Astro-Cortex's compression decisions matter · what was cut, what was condensed, what was expanded.",
+
+  "schema_notes": {
+    "sub_zones": "cells/locations within the chapter · each is a distinct explorable space",
+    "critical_path": "beats every playthrough hits · linear",
+    "branches": "player-choice moments that fork or gate content",
+    "workings_available": "which Thelemic Workings can be performed during this chapter",
+    "corrections_findable": "which of the six Corrections can be discovered in this chapter"
+  },
+
+  "chapters": [
+    {
+      "id": "ch1_pasadena",
+      "number": 1,
+      "title": "Pasadena · 1946",
+      "setting": "January 17, 1946.  Jack Whiteside's home laboratory in the coach-house at 1071 South Orange Grove Boulevard, Pasadena, California.  A rainy Thursday evening.  Two hours before the ritual begins.",
+      "manuscript_chapters_covered": ["I. The Laboratory"],
+      "tone": "cold indoors · warm laboratory light · specific 1946 California mundanity punctuated by the imminent.  The player is in Jack's actual life for the last time.",
+      "sub_zones": [
+        {
+          "id": "coach_house_workshop",
+          "type": "first_person_grid",
+          "cells": 8,
+          "features": "Jack's chemistry bench · the propellant compound is here · three white candles in a drawer · the specific old book on a specific high shelf · a specific spectrum analyzer Jack built himself (this is the item that visualizes 220 Hz later)",
+          "notable": "the coach-house workshop's north window looks out on the San Gabriels · a specific still image · this is the last thing Jack sees before Parsa"
+        },
+        {
+          "id": "coach_house_library",
+          "type": "first_person_grid",
+          "cells": 4,
+          "features": "Jack's personal library · Crowley volumes · Ordo Templi Orientis pamphlets · a filing cabinet with the OTO Contract in it (findable in Chapter 3, but visible here) · a specific photograph on the desk of a woman labeled 'HELEN 1942' who is not Sara",
+          "notable": "reading specific books here grants specific dialogue-tree unlocks later"
+        },
+        {
+          "id": "coach_house_kitchen",
+          "type": "first_person_grid",
+          "cells": 3,
+          "features": "specific 1946 kitchen · a coffee percolator · a specific loaf of bread · Jack can eat here (delays the ritual by one hour · gives +5 SP) · a specific unopened letter from his mother",
+          "notable": "the letter from his mother is the only place in the game she is mentioned · reading it is optional but unlocks a specific Chapter 6 dialogue"
+        },
+        {
+          "id": "coach_house_bedroom",
+          "type": "first_person_grid",
+          "cells": 2,
+          "features": "Jack's bed · a specific nightstand · a specific book he's currently reading · a specific medicine (contains a specific 1946 barbiturate · picking it up is a choice that has narrative consequences)",
+          "notable": "sleeping in the bed advances to the ritual · not sleeping means Jack is tired at the ritual · specific difficulty implication"
+        },
+        {
+          "id": "coach_house_ritual_chamber",
+          "type": "first_person_grid",
+          "cells": 6,
+          "features": "the actual room where the ritual occurs · specific chalk marks on the floor · a specific altar · the four cardinal points marked · Rafaton is waiting here",
+          "notable": "the arc-based chalk-drawing minigame occurs here · a specific rhythm minigame follows"
+        }
+      ],
+      "critical_path": [
+        "Jack wakes in his bedroom · reads book briefly · specific establishing dialogue with the audience",
+        "Jack collects ritual components across the coach-house · propellant compound, candles, old book, bowl",
+        "Rafaton arrives at the door · Jack lets him in · specific establishing dialogue",
+        "Jack chalks the ritual sigil (arc-based minigame · fail = re-chalk · frustrating = flavor)",
+        "The three options for the working manifest as menu (see branches below)",
+        "The ritual is performed (rhythm minigame · Rafaton keeps time)",
+        "The Working completes · SEE branches for outcome",
+        "Chapter ends with Jack on the desert of Parsa"
+      ],
+      "branches": [
+        {
+          "id": "ritual_variant_choice",
+          "moment": "before the ritual · menu · three options",
+          "choices": [
+            {"id": "working_hubbard_version", "consequence": "Jack meets a hostile Delvanni scout in Chapter 2 · combat opens Chapter 2"},
+            {"id": "working_parsons_version", "consequence": "Jack meets Hel Velli in Chapter 2 · dialogue opens Chapter 2"},
+            {"id": "working_ad_hoc_jack_version", "consequence": "Jack meets a Kelait child in Chapter 2 · different Chapter 2 pacing"}
+          ]
+        },
+        {
+          "id": "rafaton_crossing_choice",
+          "moment": "at the moment of transit",
+          "choices": [
+            {"id": "invite_rafaton_across", "consequence": "Rafaton becomes a party-adjacent NPC in Chapter 3+ · his true role revealed EARLIER"},
+            {"id": "send_rafaton_home", "consequence": "Rafaton is absent Chapter 3-4 · returns Chapter 5 as expected reveal"}
+          ]
+        }
+      ],
+      "boss_encounters": [],
+      "key_npcs_met": ["rafaton"],
+      "workings_available": ["star_ruby (available AFTER chapter · Ch. 2 opens the Workings menu)"],
+      "corrections_findable": [],
+      "cross_oneironautics_hooks": []
+    },
+    {
+      "id": "ch2_approach",
+      "number": 2,
+      "title": "The Approach",
+      "setting": "Parsa's outer wastelands.  Rust-red sand, two moons (one dying).  Jack wakes with no water and no bearings.",
+      "manuscript_chapters_covered": ["II. The Passage", "III. The Sand", "IV. The Circle"],
+      "tone": "vast · disorienting · genuinely wild.  The scale of Parsa is what hits.  Jack is small here.",
+      "sub_zones": [
+        {
+          "id": "wasteland_1_landing",
+          "type": "overworld_tile",
+          "cells": 20,
+          "features": "the specific spot Jack landed · a specific rock formation nearby · a specific dune-cactus of note · a specific corpse of a Parsan creature",
+          "notable": "the corpse is the first place Jack learns about Parsan biology · Sara Nai later comments on it (she reads about it later in a Kyrindi archive)"
+        },
+        {
+          "id": "wasteland_2_first_delvanni",
+          "type": "overworld_tile",
+          "cells": 12,
+          "features": "the specific dune Jack climbs · at the top he can see for the first time · Hel Velli is at the bottom of the dune · looking up",
+          "notable": "specific establishing shot · the animation of Hel Velli looking up when Jack appears is authored"
+        },
+        {
+          "id": "delvanni_tribal_circle",
+          "type": "combat_and_dialogue",
+          "cells": 6,
+          "features": "the Kel-Danari tribal camp · fifteen Delvanni present · a specific fire ring · a specific corral of Parsan mounts",
+          "notable": "Jack's introduction to Delvanni culture · the tribal circle etiquette must be learned · a specific first-taste-of-food ceremony"
+        },
+        {
+          "id": "delvanni_tribal_duel",
+          "type": "tactical_combat",
+          "cells": "5x3 grid",
+          "features": "the duel arena · a specific packed-dirt circle · Murg of the Kel-Karai · a specific weapons rack",
+          "notable": "the briefcase joke option is here · combat gameplay properly introduced"
+        }
+      ],
+      "critical_path": [
+        "Jack wakes on Parsa · initial exploration · learns temperature/thirst basics",
+        "Meets Hel Velli · initial dialogue (respect must be earned)",
+        "Follows Hel Velli to the Kel-Danari tribal circle",
+        "Tribal circle etiquette · a specific dialogue tree · succeeds or fails",
+        "Duel with Murg (opposing tribe's champion) · combat proper introduction",
+        "Duel resolution · joke option, respect earned, or beaten",
+        "Hel Velli joins the party formally",
+        "Chapter ends with the party departing toward Talikan"
+      ],
+      "branches": [
+        {
+          "id": "delvanni_duel_approach",
+          "moment": "before the duel · weapon menu",
+          "choices": [
+            {"id": "brief_case_option", "consequence": "the briefcase joke · Murg laughs · duel becomes friendly · Hel Velli's respect earned via humor"},
+            {"id": "traditional_weapon_option", "consequence": "traditional duel · win or lose changes Hel Velli's respect direction"},
+            {"id": "rafaton_dream_advice", "consequence": "use Rafaton's coaching (if he crossed with Jack) · easy win but Hel Velli's respect drops"}
+          ]
+        }
+      ],
+      "boss_encounters": ["murg_of_the_kel_karai"],
+      "key_npcs_met": ["hel_velli", "murg"],
+      "workings_available": ["star_ruby", "lesser_ritual_pentagram"],
+      "corrections_findable": [],
+      "cross_oneironautics_hooks": []
+    },
+    {
+      "id": "ch3_talikan",
+      "number": 3,
+      "title": "Talikan",
+      "setting": "The Kyrindi capital.  A city of white marble and green-tinted glass, built into a specific mesa.  Two rivers meet here (both fresh, both cold, both drinkable).  Population approximately 140,000.  Sara Nai's home.",
+      "manuscript_chapters_covered": ["V. The Court of the Kyrindi", "VI. The First Working", "VII. The Hunt"],
+      "tone": "civilized · elegant · specifically educated.  Jack is impressed and slightly out of his depth.  Sara Nai is at ease here in a way she is not later.",
+      "sub_zones": [
+        {
+          "id": "talikan_gate",
+          "type": "first_person_grid",
+          "cells": 6,
+          "features": "the specific main gate of Talikan · four Kyrindi guards · a specific inscription in Kyrindi that Jack cannot read (yet)",
+          "notable": "the inscription is translated in a specific Chapter 3-late scene · reads: 'we welcome the specific stranger who knows what he does not know'"
+        },
+        {
+          "id": "talikan_market",
+          "type": "first_person_grid",
+          "cells": 10,
+          "features": "the main market · booths selling specific Kyrindi crafts · a specific Kelait musician (Yr's grandfather) · a specific bakery run by a specific Kyrindi widow · a specific gold-money-exchange booth",
+          "notable": "Jack can buy specific items here · the Kelait musician plays a fragment of the mourning song (subconscious cross-Oneironautics tie)"
+        },
+        {
+          "id": "talikan_library",
+          "type": "first_person_grid",
+          "cells": 8,
+          "features": "the great library of Talikan · fifteen thousand Kelait ancient texts preserved here · a specific reading room · a specific Kyrindi scholar (Sara Nai's mentor, High Scribe Arentha)",
+          "notable": "the OTO Contract is here in a specific hidden desk drawer marked with the eight-pointed star · Correction 3 unlockable"
+        },
+        {
+          "id": "talikan_palace",
+          "type": "first_person_grid",
+          "cells": 12,
+          "features": "the royal palace · specific state rooms · King Vessel's throne room · Sara Nai's personal chambers (accessible after her permission)",
+          "notable": "Sara Nai's introduction happens here · her chambers include her personal library · Kelait fragments she has been studying"
+        },
+        {
+          "id": "talikan_ritual_chamber",
+          "type": "first_person_grid",
+          "cells": 5,
+          "features": "a specific dedicated ritual space Sara Nai maintains · she offers it to Jack for his Workings",
+          "notable": "Working I (Star Ruby) is performed here · Working IV (Hymn of Pan) available here"
+        }
+      ],
+      "critical_path": [
+        "Party arrives at Talikan · gate scene · Kyrindi guards let them pass (Hel Velli's tribal ID token gets them through)",
+        "Market exploration · Jack meets specific NPCs · finds specific items",
+        "Palace audience · Jack meets King Vessel · Sara Nai present but not formally introduced",
+        "Sara Nai deliberately encounters Jack in the library later that night · SHE has arranged the meeting · this is a specific reveal",
+        "First Working (Star Ruby) performed in Sara's ritual chamber · Sara Nai formally joins the party",
+        "Chapter 3-mid · the Delvanni conflict news arrives · a specific tribal war is being staged by an unknown party",
+        "Party investigates · discovers Kelait settlement in the crossfire · the Delvanni conflict is being STAGED to raid the Kelait",
+        "Chapter ends with the party planning to descend into the mines to free the Kelait"
+      ],
+      "branches": [
+        {
+          "id": "sara_nai_introduction",
+          "moment": "library scene · Sara approaches Jack",
+          "choices": [
+            {"id": "recognize_the_setup", "consequence": "Jack acknowledges Sara arranged the meeting · unlocks specific Sara dialogue where she admits she summoned him academically"},
+            {"id": "accept_the_manuscript_frame", "consequence": "Jack plays along with fate-narrative · Sara's disposition slightly lower · specific Chapter 5 dialog changes"}
+          ]
+        },
+        {
+          "id": "high_scribe_arentha_meeting",
+          "moment": "library scene · scholar dialog",
+          "choices": [
+            {"id": "ask_about_the_star", "consequence": "Arentha shows Jack the OTO Contract · Correction 3 available"},
+            {"id": "ask_about_kelait", "consequence": "Arentha refers Jack to Mother Kanel · sets up Chapter 4 arrival"},
+            {"id": "ask_about_sara", "consequence": "Arentha talks about Sara as scholar · unlocks her academic-collaboration dialogue tree"}
+          ]
+        }
+      ],
+      "boss_encounters": [],
+      "key_npcs_met": ["king_vessel", "sara_nai", "high_scribe_arentha"],
+      "workings_available": ["star_ruby", "lesser_ritual_pentagram", "bornless_one", "hymn_of_pan"],
+      "corrections_findable": ["correction_oto_contract"],
+      "cross_oneironautics_hooks": ["kelait_musician_plays_wilson_song_fragment"]
+    },
+    {
+      "id": "ch4_mines_of_delvan",
+      "number": 4,
+      "title": "The Mines of Delvan",
+      "setting": "The vast Delvanni mining operation of the Kel-Rethani tribe (not Hel Velli's Kel-Danari · a different tribe · larger, richer, more industrial).  Underground.  Extensive.  Home to approximately 800 enslaved Kelait.  Mother Kanel is here.  Yr is here.",
+      "manuscript_chapters_covered": ["VIII. The Mountain"],
+      "tone": "underground · claustrophobic · the tone shift is intentional.  The manuscript rendered this as mountain-monastery uplifting; the game renders it as industrial-slavery grim.  The change matters.",
+      "sub_zones": [
+        {
+          "id": "mine_entrance",
+          "type": "first_person_grid",
+          "cells": 6,
+          "features": "the outer approach · Delvanni guards · a specific bribable overseer named DALEV · a specific hidden Kelait signal-lantern",
+          "notable": "the signal-lantern is the game's introduction to Kelait aphorism-as-cipher · Sara Nai can read it if the player has unlocked her Kelait tree"
+        },
+        {
+          "id": "mine_level_1",
+          "type": "first_person_grid",
+          "cells": 12,
+          "features": "the main working level · Kelait mining ore under Delvanni supervision · specific dangerous chambers · a specific unattended smelting furnace",
+          "notable": "Jack witnesses the enslavement here · Mother Kanel is not yet accessible"
+        },
+        {
+          "id": "mine_level_2_kanels_kitchen",
+          "type": "first_person_grid",
+          "cells": 8,
+          "features": "the enslaved Kelait have a specific kitchen where Mother Kanel presides · a specific pot on a specific fire · a specific salt jar next to a specific pot",
+          "notable": "the aphorism 'the salt in the pot is not the same salt as in the sea' is literalized here · Jack can figure out it's a recipe · trust with Mother Kanel opens"
+        },
+        {
+          "id": "mine_level_3_kelait_quarters",
+          "type": "first_person_grid",
+          "cells": 10,
+          "features": "the enslaved Kelait live here · Yr is here · a specific hidden library of Kelait texts (they've saved fragments over centuries)",
+          "notable": "Yr's introduction happens here · specific Rocha-team emotional-work animation of him looking at a specific something"
+        },
+        {
+          "id": "mine_deep_kelait_secret",
+          "type": "first_person_grid",
+          "cells": 6,
+          "features": "the Kelait's actual mystical practice space · never seen by Delvanni · a specific pool of underground water · a specific Kelait sage NPC (Mother Kanel's own teacher, still alive at 200+)",
+          "notable": "the game's deepest Kelait wisdom is delivered here · Mother Kanel's mortality speech happens here · this is the emotional apex of Chapter 4"
+        },
+        {
+          "id": "mine_boss_confrontation",
+          "type": "tactical_combat",
+          "cells": "5x3 grid",
+          "features": "the Kel-Rethani overseer's chamber · the specific overseer (a Delvanni named THAR-KRAI-TAM · morally complex · has a family, has been doing this for years, is a real character not a monster)",
+          "notable": "the Chapter 4 boss can be BEATEN or NEGOTIATED · both outcomes canonical · Rocha's team wrote a specific empathy dialogue tree with Thar-Krai-Tam that if pursued fully lets you free the Kelait without killing him"
+        }
+      ],
+      "critical_path": [
+        "Party arrives at the mine entrance · bribes DALEV OR sneaks past OR fights",
+        "Descent through Level 1 · witness enslavement",
+        "Enter Kanel's Kitchen · initial mistrust · earn trust via the salt-pot puzzle",
+        "Mother Kanel opens · the Kelait aphorism-cipher explained",
+        "Party plans the escape · specific tactical decisions (who leaves first, how, when)",
+        "Meet Yr · establish emotional stakes",
+        "Descend to the Kelait secret · Mother Kanel's mortality speech",
+        "Working V (Mass of the Phoenix) available here IF the player chooses · Hel Velli refuses",
+        "Chapter 4 climax · confrontation with Thar-Krai-Tam · combat OR empathy path",
+        "Rescue succeeds (canonical if empathy path) OR partially succeeds (canonical if combat path with specific damage) OR fails (specific rare outcome · Yr dies · Chapter 6 references)",
+        "Rocha can be recruited here · specific dialogue: 'Are you SURE you're just a cartographer's assistant?'",
+        "Chapter ends with the party emerging from the mines, Yr in tow OR Yr not, depending on outcome"
+      ],
+      "branches": [
+        {
+          "id": "kanel_trust_speed",
+          "moment": "Kanel's kitchen · aphorism puzzle",
+          "choices": [
+            {"id": "figure_it_out_yourself", "consequence": "high trust · unlocks all Kelait dialogue trees"},
+            {"id": "ask_sara_to_read_it", "consequence": "medium trust · Sara Nai's disposition slightly rises · some dialogue locked"},
+            {"id": "give_up_and_bribe_kanel", "consequence": "low trust · specific Chapter 4 ending changes · Kelait wisdom delivered ironically"}
+          ]
+        },
+        {
+          "id": "thar_krai_tam_confrontation",
+          "moment": "Chapter 4 climax",
+          "choices": [
+            {"id": "combat_path", "consequence": "boss fight · Thar-Krai-Tam dies · Kelait freed · his family mentioned later in Chapter 6 as a specific consequence"},
+            {"id": "empathy_path", "consequence": "empathy dialogue · Thar-Krai-Tam ACCEPTS his own complicity and helps free the Kelait · he retires · Chapter 6 references"},
+            {"id": "mixed_path", "consequence": "combat happens but Thar-Krai-Tam survives at critical HP · negotiated outcome · specific Chapter 6 references"}
+          ]
+        },
+        {
+          "id": "rocha_recruitment",
+          "moment": "in mine_level_3_kelait_quarters · Jack meets a small Parsan-looking cartographer's assistant",
+          "choices": [
+            {"id": "ask_directly", "consequence": "Rocha joins the party · her fourth-wall dialogue begins"},
+            {"id": "let_her_alone", "consequence": "Rocha absent · specific late-game Corrections harder to find"}
+          ]
+        }
+      ],
+      "boss_encounters": ["thar_krai_tam_or_empathy"],
+      "key_npcs_met": ["mother_kanel", "yr", "rocha (if recruited)", "thar_krai_tam", "kelaits_own_sage_unnamed"],
+      "workings_available": ["star_ruby", "lesser_ritual_pentagram", "bornless_one", "hymn_of_pan", "mass_of_the_phoenix (Hel refuses)"],
+      "corrections_findable": ["correction_rochas_signature (if Rocha recruited)"],
+      "cross_oneironautics_hooks": ["kelait_mourning_song_full_reveal_shared_bar_with_wilson_pirate_summer"]
+    },
+    {
+      "id": "ch5_the_academy",
+      "number": 5,
+      "title": "The Academy",
+      "setting": "The ORDER OF THE PROPHET's central training facility · a specific mountain-set complex Jack is INVITED to.  The invitation comes from Rafaton via a specific Delvanni courier.  Jack arrives thinking this is his 'graduation.'  It is not.",
+      "manuscript_chapters_covered": ["IX. The Oracle", "X. The Betrayal", "XI. The Great Work"],
+      "tone": "reveal · shift · the game's actual antagonist is unveiled here · the whole story recontextualizes.  Rocha's team labeled this chapter 'THE PIVOT' in production docs.",
+      "sub_zones": [
+        {
+          "id": "academy_approach",
+          "type": "overworld_tile",
+          "cells": 10,
+          "features": "the mountain approach · specific Order-of-the-Prophet architecture (built in the last 200 years · stone with metal inlays · eight-pointed star motifs everywhere · not native to any Parsan species)",
+          "notable": "Sara Nai's dialogue in this zone begins to shift · she recognizes architecture · she has been to a similar place · she does not tell Jack yet"
+        },
+        {
+          "id": "academy_grand_hall",
+          "type": "first_person_grid",
+          "cells": 8,
+          "features": "the great entrance · Rafaton greets the party · a specific ceremonial welcome · food, wine, respect · everything comfortable · everything wrong",
+          "notable": "the specific dialogue here is careful · Rafaton is being warm · warmth is uncanny · the player who is paying attention notices"
+        },
+        {
+          "id": "academy_scarlet_womans_chamber",
+          "type": "first_person_grid",
+          "cells": 4,
+          "features": "a specific chamber where Jack meets the Scarlet Woman · velvet-draped · photoluminescent moss lighting · a specific tea service",
+          "notable": "the three canonical readings dialogue tree happens here · player picks their interpretation"
+        },
+        {
+          "id": "academy_meeting_of_the_order",
+          "type": "first_person_grid",
+          "cells": 6,
+          "features": "the Order's central meeting chamber · nine members visible · eight of them are Rafaton-adjacent figures · the ninth is RONSON",
+          "notable": "the reveal happens here · Rafaton is revealed to be Nalat, senior Order member · Jack has been guided all along · Sara Nai's face is a specific animation the writers noted"
+        },
+        {
+          "id": "academy_ronsons_room",
+          "type": "first_person_grid",
+          "cells": 5,
+          "features": "Ronson's private study · specific Earth-manufactured objects (a specific California postcard, a specific 1930s book, a specific ashtray from a specific Los Angeles restaurant)",
+          "notable": "Ronson is a Hubbard-analog · has been on Parsa 14 years · arrived via an earlier ritual · specific climactic soliloquy happens here"
+        },
+        {
+          "id": "academy_hidden_correction_room",
+          "type": "first_person_grid",
+          "cells": 3,
+          "features": "a hidden room accessible only via 220-Hz-marked scene · Jack's spectrum analyzer visualizes it · a specific closet · the Pasadena Fire Correction is here",
+          "notable": "Correction 1 unlockable · requires Jack to have the spectrum analyzer from Chapter 1"
+        },
+        {
+          "id": "academy_boss_arena",
+          "type": "tactical_combat",
+          "cells": "5x3 grid",
+          "features": "the Chapter 5 boss encounter · Nalat-as-Rafaton · optionally supplemented by two lesser Order members · optionally Ronson if the player has provoked him",
+          "notable": "combat OR negotiation · Nalat can be talked down if the player has the OTO Contract Correction and specific dialogue lines · a specific 'you have completed six Workings on my instruction, Jack. Do you not wonder why? Well. I get a specific bonus for each' line lands here"
+        }
+      ],
+      "critical_path": [
+        "Party arrives at the Academy · welcomed",
+        "Rafaton's warm greeting · specific unsettling comfort",
+        "Meeting the Scarlet Woman · three canonical readings dialogue",
+        "Working VI (Liber Reguli) offered · player accepts or refuses",
+        "The Order meeting · Nalat/Rafaton reveal",
+        "Ronson's soliloquy · specific fatal aphorism · Jack (via party dialogue) can respond with the nine-word deflation",
+        "Working VII (The Great Work) offered · Sara Nai's transformation · three canonical readings",
+        "Working IX (Babalon Working) OFFERED · requires all previous Workings · party consent gate fires · Sara defaults REFUSAL",
+        "Chapter 5 climax · boss encounter with Nalat · combat OR negotiation",
+        "Chapter ends with the party choosing to proceed to Chapter 6 OR to depart"
+      ],
+      "branches": [
+        {
+          "id": "scarlet_woman_interpretation",
+          "moment": "meeting the Scarlet Woman · Chapter 5 dialogue tree",
+          "choices": [
+            {"id": "reading_literal_babalon", "consequence": "manuscript-canonical interpretation · specific Sara dialogue in Chapter 6 · locks certain endings"},
+            {"id": "reading_priestess_ghyra_playing_role", "consequence": "alternative interpretation · Sara Nai's Kelait-scholarship acknowledged · specific Chapter 6 dialogue"},
+            {"id": "reading_jack_projecting", "consequence": "the game's meta interpretation · unlocks the deepest Sara dialogue tree in Chapter 6 · reframes the whole relationship"}
+          ]
+        },
+        {
+          "id": "working_vii_transformation",
+          "moment": "Working VII scene · Sara transforms",
+          "choices": [
+            {"id": "poem_ishra_elemental", "consequence": "Kyrindi ancient elemental · Sara transforms to Ishra (a real historical figure Sara has been studying) · empathetic reading"},
+            {"id": "poem_babalon_manuscript", "consequence": "manuscript-canonical Babalon · Sara transforms as Hubbard wrote · reverent-tone reading"},
+            {"id": "refuse_the_working", "consequence": "Working VII not performed · specific Chapter 6 ending doors open"}
+          ]
+        },
+        {
+          "id": "nalat_confrontation",
+          "moment": "Chapter 5 climax",
+          "choices": [
+            {"id": "combat", "consequence": "boss fight · Nalat dies · specific consequences · Order weakened but not stopped"},
+            {"id": "negotiation_with_correction", "consequence": "if player has OTO Contract Correction · specific dialogue · Nalat admits the scheme · Order's plans exposed"},
+            {"id": "empathy_path_specific", "consequence": "Nalat can be BROKEN as a Kelait · his own oppression realized · he defects · specific rare outcome"}
+          ]
+        }
+      ],
+      "boss_encounters": ["nalat_or_rafaton", "ronson_optional"],
+      "key_npcs_met": ["scarlet_woman", "nalat (Rafaton revealed)", "ronson", "other_order_members"],
+      "workings_available": ["all previous workings", "liber_reguli", "the_great_work", "star_sapphire (if quest completed)", "babalon_working (offered)"],
+      "corrections_findable": ["correction_pasadena_fire", "correction_saras_letter (if Working VII performed with specific pattern)"],
+      "cross_oneironautics_hooks": ["eight_pointed_star_symbol_visible_throughout"]
+    },
+    {
+      "id": "ch6_the_finale",
+      "number": 6,
+      "title": "The Finale",
+      "setting": "Depends on the ending path.  For REFUSED THE WORK · a Kyrindi city called TALIKAN or a Delvanni settlement or the deep Kelait wisdom cave.  For LIBERATOR · Kyrindi great hall at the coronation.  For BABALON COMES · an unspecified higher plane.  For RETURN TO EARTH · the Pasadena laboratory.  For THE CORRECTION · the Trailer's compendium.  For HUBBARD TAKES THE CREDIT · the Order's main chamber.",
+      "manuscript_chapters_covered": ["XII. The Babalon Working"],
+      "tone": "conclusion · earned · varies per ending",
+      "sub_zones": [
+        {
+          "id": "finale_variant_liberator",
+          "type": "cutscene",
+          "features": "Kyrindi great hall · coronation · Sara Nai at Jack's side · Hel Velli standing behind · the Delvanni tribes gathered · Rafaton (if not defeated) whispers congratulations · Sara's crown is slightly too small · she adjusts it",
+          "notable": "Ending 1 · THE WARLORD OF PARSA"
+        },
+        {
+          "id": "finale_variant_return_earth",
+          "type": "cutscene",
+          "features": "Pasadena · January 20 1946 · Jack in his laboratory · holding a book · Sara Northrup on the porch · then 1947 · 1948 · 1949 · 1950 · 1951 · 1952 · then the specific 5:57 PM June 17 image",
+          "notable": "Ending 2 · RETURN TO EARTH"
+        },
+        {
+          "id": "finale_variant_babalon_comes",
+          "type": "cutscene",
+          "features": "Working IX completes · Sara Nai transforms and remains transformed · Los Angeles 1946 from above · new star in the sky · specific voice · specific closed door",
+          "notable": "Ending 3 · BABALON COMES"
+        },
+        {
+          "id": "finale_variant_refused_the_work",
+          "type": "playable_and_cutscene",
+          "features": "Jack refuses Working IX · stays on Parsa · lives in Talikan · Sara Nai with him · Hel Velli visits · Kelait mourning song plays · specific montage · Jack dies of age at 70 · Sara mourns in untranslated Kyrindi · Mother Kanel appears one last time",
+          "notable": "Ending 4 · REFUSED THE WORK · Rocha's team's preferred ending"
+        },
+        {
+          "id": "finale_variant_the_correction",
+          "type": "cutscene",
+          "features": "the game breaks its own frame · Rocha's handwritten note scrolls white on black · dedication 'For Jack' · specific image of the actual Parsonage in Pasadena on June 18 1952 · fade to black · credits with dedication",
+          "notable": "Ending 5 · THE CORRECTION · TRUE ending · requires all 6 Corrections and Working IX refused"
+        },
+        {
+          "id": "finale_variant_hubbard_takes_credit",
+          "type": "cutscene",
+          "features": "Working IX completed · no Corrections found · Rafaton delivers the specific 'you have done what I could not, Jack' soliloquy · credits under Hubbardish self-praise monologue · then the specific SCREEN CRACK effect · 'PLEASE INSERT CORRECTED CARTRIDGE'",
+          "notable": "Ending 6 · HUBBARD TAKES THE CREDIT · worst ending · game tells the player they missed something"
+        }
+      ],
+      "critical_path": [
+        "Chapter 6 opens with the party gathered · Sara Nai's default REFUSAL for Working IX presents",
+        "Jack's decision · which ending path opens",
+        "Working IX performed (Endings 1, 3, 6) OR refused (Endings 2, 4, 5)",
+        "Specific consequences trigger",
+        "Ending fires · one of six",
+        "Credits · specific dedication if THE CORRECTION"
+      ],
+      "branches": [
+        {
+          "id": "working_ix_final_decision",
+          "moment": "Chapter 6 climax",
+          "choices": [
+            {"id": "perform_working_ix", "consequence": "Endings 1, 3, or 6 · depending on Corrections + Sara's specific transformation reading"},
+            {"id": "refuse_working_ix", "consequence": "Endings 2, 4, or 5 · depending on Corrections completeness"}
+          ]
+        }
+      ],
+      "boss_encounters": [],
+      "key_npcs_met": ["everyone_previously_met_returns_briefly"],
+      "workings_available": ["babalon_working_offered_or_refused"],
+      "corrections_findable": ["correction_autopsy_report (if visit Pasadena via specific dream-return · Ending 2 or 5)", "correction_the_dedication (Ending 5 only)"],
+      "cross_oneironautics_hooks": ["the_manuscript_keepsake_unlocks_via_correction_ending"]
+    }
+  ],
+
+  "compression_notes": {
+    "notes": "How Astro-Cortex compressed 12 manuscript chapters into 6 game chapters",
+    "compressions": [
+      "Manuscript Ch. II (The Passage · 3 pages) → 15 seconds of screen time · Rocha's team decided the ellipsis was in character for Hubbard and let it stand",
+      "Manuscript Ch. VII (The Hunt · staged tribal war between Delvanni tribes) → Chapter 4 (The Mines) · Rocha's team recontextualized · the staged war is now known to be by the Order and its goal is Kelait raid",
+      "Manuscript Chs. IX-XI (Oracle, Betrayal, Great Work) → Chapter 5 (The Academy) · condensed three chapters into one location · reveal-heavy",
+      "Manuscript Ch. XII (Babalon Working) → Chapter 6 (The Finale) · expanded from single climactic chapter to six possible endings"
+    ]
+  },
+
+  "playtime_estimates": {
+    "first_playthrough": "18-25 hours to any ending",
+    "completionist_run": "40-50 hours to see all six endings and all six Corrections",
+    "speedrun_correction_ending": "6-8 hours (NG+ with prior knowledge)"
+  }
+}

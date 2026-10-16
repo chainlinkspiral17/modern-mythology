@@ -29,11 +29,18 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, Maya, and Jesse are not at the safehouse."
+      "text": "[mood:day_bright]Sam, Maya, and Jesse are not at the safehouse.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio. She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular."
+      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/006.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/007.ogg"
     },
     {
       "t": "show",
@@ -42,32 +49,59 @@
       "pos": "left"
     },
     {
-      "t": "narrate",
-      "text": "Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone."
+      "t": "bg",
+      "src": "3d:safehouse_porch"
     },
     {
       "t": "narrate",
-      "text": "She is on the phone with Sam."
+      "text": "[shot:closeup graciela]Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has been talking with Sam for forty minutes."
+      "text": "She is on the phone with Sam.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it. Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam. The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry."
+      "text": "She has been talking with Sam for forty minutes.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/011.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/012.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/013.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/014.ogg"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "Diego asked about you again this morning. He asked twice. He asked when he could see you. The doctor said Monday, maybe Tuesday. Diego said Monday. The doctor said we will see how Diego feels.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/015.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
-      "text": "Diego asked about your father, mija. I told him your father turned himself in yesterday. Diego cried. He cried because he had been afraid your father had — I will not say it. I will say only: Diego cried because he had been afraid for you, even in there. Even in the room they kept him in. He had been carrying you, mija. He had been carrying the worry about you. Now he can put it down.",
-      "expr": "sad"
+      "text": "[shot:closeup person]Diego asked about your father, mija. I told him your father turned himself in yesterday. Diego cried. He cried because he had been afraid your father had — I will not say it.",
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/016.ogg"
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "I will say only: Diego cried because he had been afraid for you, even in there. Even in the room they kept him in. He had been carrying you, mija. He had been carrying the worry about you. Now he can put it down.",
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/017.ogg"
     },
     {
       "t": "show",
@@ -76,60 +110,89 @@
       "pos": "right"
     },
     {
+      "t": "bg",
+      "src": "3d:vehicle_cab_corolla"
+    },
+    {
       "t": "narrate",
-      "text": "Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly."
+      "text": "[shot:closeup sam~]Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/019.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Graciela. Tell him. Tell him I love him. Tell him he should not have been carrying me. Tell him I have been carrying him too. Tell him — tell him Monday.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/020.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "I will, mija.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/021.mp3"
+    },
+    {
+      "t": "say",
+      "who": "Graciela",
+      "when_flag": "graciela_answer",
+      "is": "said_yes",
+      "text": "Mija. On Sunday, in my kitchen. You said I'll do it before I had finished asking. Did you know that? I prayed on how to ask you for eleven hours, and you spent none. I have thought about that every day of this week."
+    },
+    {
+      "t": "say",
+      "who": "Graciela",
+      "when_flag": "graciela_answer",
+      "is": "sat_with_it",
+      "text": "Mija. On Sunday, in my kitchen. You did not answer me right away. You looked at me and you counted my hours first — I watched you do it. Diego does the same thing. I have thought about that every day of this week."
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Graciela.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/024.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
-      "text": "Yes.",
-      "expr": "neutral"
+      "text": "[shot:closeup person]Yes.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/025.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Thank you.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/026.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "Mija. Always.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "They hang up."
+      "text": "They hang up.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam sits in the car for another five minutes."
+      "text": "[shot:establish]Sam sits in the car for another five minutes.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then she goes back into the Kwik Stop. She finishes her break. She works her shift."
+      "text": "Then she goes back into the Kwik Stop. She finishes her break. She works her shift.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "The shift is, today, easy. The shift is, today, just a shift."
+      "text": "The shift is, today, easy. The shift is, today, just a shift.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/031.mp3"
     },
     {
       "t": "hide",

@@ -4,7 +4,7 @@ locale .tscn files.
 Per `_VOL5_LOCALES_MANIFEST.md`'s hard rule, every locale must
 include all 8 elements (WorldEnvironment + three-light foundation
 + GLB + PostProcess+MoodCycler+9-shader stack + LiminalProximity
-+ PDPRiffmaster + HUD+DebugMenu). Hand-writing each one is ~260
++ PDRiffrocker + HUD+DebugMenu). Hand-writing each one is ~260
 lines of mechanical boilerplate. This generator takes a config
 dict and renders the canonical .tscn.
 
@@ -40,7 +40,7 @@ TEMPLATE = '''[gd_scene load_steps=24 format=3 uid="{uid}"]
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -285,7 +285,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -313,14 +313,19 @@ def col(rgb):
 
 def write_locale_tscn(cfg):
     lights = []
-    for (nm, t, xform, c, energy) in cfg["lights"]:
+    for light in cfg["lights"]:
+        nm, t, xform, c, energy = light[:5]
+        extra = light[5] if len(light) > 5 else {}
         s = (f'[node name="{nm}" type="{t}" parent="."]\n'
              f'transform = {xform}\n'
              f'light_color = {c}\n'
              f'light_energy = {energy}\n'
              f'shadow_enabled = false')
         if t == "OmniLight3D":
-            s += "\nomni_range = 4.0"
+            s += "\nomni_range = {}".format(extra.get("omni_range", 4.0))
+        for k, v in extra.items():
+            if k != "omni_range":
+                s += f"\n{k} = {v}"
         lights.append(s)
     sh = cfg["shader"]
     env = cfg["env"]
@@ -346,7 +351,7 @@ def write_locale_tscn(cfg):
         env_glow_i=env.get("glow_i", 0.70),
         env_glow_b=env.get("glow_b", 0.12),
         lights_block="\n\n".join(lights),
-        mood_strata=str(cfg["mood_strata"]),
+        mood_strata="[" + ", ".join(f'"{m}"' for m in cfg["mood_strata"]) + "]",
     )
     with open(cfg["out_path"], "w") as f:
         f.write(content)

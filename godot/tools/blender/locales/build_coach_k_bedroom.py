@@ -1,0 +1,231 @@
+"""Coach K's master bedroom — vol6 placement script.
+
+Canon (vol6 ch19 "The Chains", final beat): "In a different bedroom
+in a different house in a different cul-de-sac, Coach K is in his bed
+beside Eileen. Eileen is asleep. Coach K is not. Coach K is lying on
+his back looking at the ceiling," running the depth chart the way he
+has every Friday night before a game for twenty years.
+
+A grown couple's room — deliberately DIFFERENT from every teen room:
+queen bed centered on the NORTH wall, matched nightstands, a ceiling
+fan (he is looking up at it), a dresser with twenty years of small
+domestic sediment, reading glasses and a folded newspaper on his
+side. Dark; the only lights are the clock digits and the moon seam
+at the curtains.
+
+Coordinate frame: Blender Z-up. y=0 south wall (door), +Y north,
+walls x=±ROOM_W/2. glTF export remaps to Godot (x, z, -y).
+"""
+import math
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling
+from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+
+ROOM_W = 4.4      # x ∈ [-2.2, 2.2]
+ROOM_D = 4.6      # y ∈ [0, 4.6]
+CEIL = 2.6
+
+COL_WALL = (0.44, 0.40, 0.34, 1.0)      # warm taupe
+COL_BASE = (0.30, 0.27, 0.22, 1.0)
+COL_FLOOR = (0.30, 0.26, 0.22, 1.0)     # carpet
+COL_SEAM = (0.26, 0.22, 0.19, 1.0)
+COL_FRAME = (0.26, 0.18, 0.12, 1.0)     # dark cherry furniture
+COL_FRAME_DK = (0.18, 0.12, 0.08, 1.0)
+COL_SHEET = (0.68, 0.66, 0.62, 1.0)
+COL_QUILT = (0.34, 0.30, 0.24, 1.0)     # tan quilt
+COL_PILLOW = (0.78, 0.76, 0.72, 1.0)
+COL_SLEEPER = (0.42, 0.38, 0.34, 1.0)   # Eileen under the quilt
+COL_CURTAIN = (0.36, 0.32, 0.26, 1.0)
+COL_MOON = (0.62, 0.68, 0.80, 1.0)      # the seam of night at the gap
+COL_CLOCK = (0.90, 0.24, 0.16, 1.0)
+COL_PAPER = (0.78, 0.76, 0.68, 1.0)
+COL_FAN = (0.55, 0.50, 0.42, 1.0)
+
+
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
+               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    pal = {"wall": COL_WALL, "baseboard": COL_BASE}
+    # (2026-10-07, window_backing_audit) the loop unrolled: Wall_W is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1, openings=[(2.600, 1.550, 1.100, 1.000)])
+    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
+              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
+              axis='X', palette=pal, baseboard_face_sign=+1)
+    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
+                 size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
+    # THE CEILING FAN — what he is looking at. Center of the room.
+    make_cyl("Fan_Mount", (0.0, 2.3, CEIL - 0.06), 0.05, 0.10, COL_FRAME_DK, segments=8)
+    make_cyl("Fan_Motor", (0.0, 2.3, CEIL - 0.18), 0.12, 0.14, COL_FAN, segments=10)
+    for bi in range(4):
+        ang = bi * 1.5708
+        bx, by = 0.42 * math.cos(ang), 0.42 * math.sin(ang)
+        make_box(f"Fan_Blade_{bi}", (bx, 2.3 + by, CEIL - 0.24),
+                 (0.61 if bi % 2 == 0 else 0.16, 0.16 if bi % 2 == 0 else 0.61, 0.02),   # into the motor (2026-09-23: 2.5 cm short)
+                 COL_FAN)
+    # Curtained window WEST — closed but for a seam of night
+    make_box("Curtain_L", (-ROOM_W / 2.0 + 0.08, 2.3, 1.5), (0.06, 0.70, 1.6), COL_CURTAIN)
+    make_box("Curtain_R", (-ROOM_W / 2.0 + 0.08, 3.15, 1.5), (0.06, 0.60, 1.6), COL_CURTAIN)
+    make_box("Curtain_Seam", (-ROOM_W / 2.0 + 0.06, 2.78, 1.5), (0.02, 0.06, 1.5), COL_MOON)
+    make_cyl("Curtain_Rod", (-ROOM_W / 2.0 + 0.10, 2.72, 2.36), 0.02, 1.6, COL_FRAME_DK,
+             segments=6, axis='Y')
+
+
+def build_bed():
+    from _props.furniture import make_bed
+    """Queen centered on the NORTH wall — two sleepers' sides, only
+    one asleep."""
+    by = ROOM_D - 1.15
+    make_box("Bed_Head", (0.0, ROOM_D - 0.15, 0.68), (1.7, 0.10, 0.95), COL_FRAME_DK)   # on the N wall face (2026-09-24: 7 cm into it)
+    make_box("Bed_Foot", (0.0, by - 1.07, 0.42), (1.7, 0.06, 0.35), COL_FRAME_DK)   # on the foot rail (2026-09-23: 1.5 cm off it)
+    # the shared bed under the two sleepers (2026-09-07); the quilt is
+    # its made blanket, the pillows below are theirs
+    make_bed("Bed", 0.0, by, head="+Y", w=1.7, d=2.1, style="frame",
+             frame_col=COL_FRAME, mattress_col=COL_SHEET, sheet_col=COL_SHEET,
+             blanket_col=COL_QUILT, pillows=0, made=True, headboard=False)
+    # Eileen — asleep, her side (west), a long low mound under the quilt
+    make_box("Sleeper_Eileen", (-0.45, by - 0.1, 0.64), (0.5, 1.5, 0.12), COL_SLEEPER)
+    make_box("Pillow_Eileen", (-0.45, ROOM_D - 0.35, 0.60), (0.55, 0.4, 0.10), COL_PILLOW)
+    # Coach K's side: pillow dented, quilt folded back (he is on his
+    # back on TOP of the covers, abstracted as a flatter mound)
+    make_box("Sleeper_CoachK", (0.45, by - 0.15, 0.62), (0.5, 1.7, 0.08), COL_QUILT)
+    make_box("Pillow_CoachK", (0.45, ROOM_D - 0.35, 0.59), (0.55, 0.4, 0.08), COL_PILLOW)   # on the sheet (2026-09-22: 1 cm up)
+
+
+def build_nightstands():
+    by = ROOM_D - 0.45
+    for sgn, side in ((-1, "W"), (1, "E")):
+        nx = sgn * 1.25
+        make_box(f"Nightstand_{side}", (nx, by, 0.2875), (0.45, 0.42, 0.575), COL_FRAME)   # to the floor, same top (2026-09-23: 2.5 cm up)
+        make_box(f"Nightstand_{side}_Drawer", (nx, by - 0.23, 0.38), (0.36, 0.02, 0.14), COL_FRAME_DK)
+    # Her side: a book, her glasses case
+    make_box("Book_Eileen", (-1.25, by - 0.05, 0.595), (0.16, 0.22, 0.04), (0.40, 0.24, 0.22, 1.0))   # on the nightstand
+    # His side: THE CLOCK (glowing digits — Friday night is long),
+    # reading glasses, folded newspaper sports section
+    make_box("Clock_Body", (1.25, by - 0.02, 0.63), (0.22, 0.11, 0.10), (0.10, 0.10, 0.11, 1.0))
+    make_box("Clock_Digits", (1.25, by - 0.08, 0.63), (0.15, 0.005, 0.05), COL_CLOCK)
+    make_box("Glasses", (1.15, by + 0.12, 0.585), (0.14, 0.06, 0.015), COL_FRAME_DK)
+    make_box("Newspaper", (1.38, by + 0.08, 0.59), (0.18, 0.26, 0.02), COL_PAPER)
+
+
+def build_dresser():
+    """Dresser on the EAST wall + twenty years of sediment: framed
+    photos, a dish of keys and whistles, folded laundry."""
+    dx = ROOM_W / 2.0 - 0.375   # against the E wall face (2026-09-24: 7.5 cm into it)
+    dy = 1.4
+    make_box("Dresser", (dx, dy, 0.52), (0.55, 1.5, 1.0), COL_FRAME)
+    for r in range(3):
+        make_box(f"Dresser_Drawer_{r}", (dx - 0.28, dy, 0.28 + r * 0.28),
+                 (0.02, 1.35, 0.20), COL_FRAME_DK)
+        for kx in (dy - 0.35, dy + 0.35):
+            make_cyl(f"Dresser_Knob_{r}_{kx:.1f}", (dx - 0.30, kx, 0.28 + r * 0.28),
+                     0.02, 0.03, COL_BASE, segments=6, axis='X')
+    # Framed photos, staggered
+    for pi, (py, ph) in enumerate(((dy - 0.5, 0.22), (dy - 0.1, 0.28), (dy + 0.45, 0.20))):
+        make_box(f"Photo_{pi}", (dx + 0.05, py, 1.02 + ph / 2.0),   # standing ON the dresser (2026-09-23: 2 cm over it)
+                 (0.02, 0.16, ph), COL_FRAME_DK)
+        make_box(f"Photo_{pi}_Img", (dx + 0.03, py, 1.02 + ph / 2.0),
+                 (0.015, 0.12, ph - 0.05), (0.55, 0.52, 0.46, 1.0))
+    # The dish: keys + the whistle he has carried for twenty years
+    make_cyl("Dish", (dx - 0.05, dy + 0.15, 1.05), 0.09, 0.04, (0.55, 0.55, 0.58, 1.0),
+             segments=10)
+    make_cyl("Whistle", (dx - 0.05, dy + 0.15, 1.08), 0.025, 0.05, (0.72, 0.60, 0.24, 1.0),
+             segments=6, axis='Y')
+    # Folded laundry stack
+    for li in range(3):
+        make_box(f"Laundry_{li}", (dx - 0.12, dy - 0.55, 1.0475 + li * 0.06),   # on the dresser, clear of photo 0 (2026-09-23: the photo stood inside the stack)
+                 (0.30, 0.26, 0.055), (0.5 + 0.08 * li, 0.5, 0.46, 1.0))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: the nightstand lamp he turns off, and
+    real glass + a visible moon seam behind the curtains (the old
+    seam was buried inside the wall slab)."""
+    make_cyl("Lamp_Base", (1.25, ROOM_D-0.62, 0.60), 0.06, 0.04, (0.42, 0.30, 0.20, 1.0), segments=10)
+    make_cyl("Lamp_Stem", (1.25, ROOM_D-0.62, 0.72), 0.012, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Lamp_Shade", (1.25, ROOM_D-0.62, 0.86), 0.10, 0.14, (0.82, 0.74, 0.58, 1.0), segments=10)
+    make_box("W_Window_Glass", (-2.09, 2.6, 1.55), (0.02, 1.10, 1.00), (0.14, 0.18, 0.26, 0.6))
+    make_box("Moon_Seam", (-2.0725, 2.6, 1.55), (0.015, 0.05, 0.96), (0.72, 0.76, 0.84, 1.0))   # on the glass
+
+
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0))
+    pw = COL_WALL
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
+
+def build_twenty_years_2026_10():
+    """THE COACH'S BEDROOM, TWENTY YEARS IN (2026-10-08; "too bare and
+    empty"): the wedding photograph over the headboard, a framed team
+    picture and a plaque on the east wall, a cedar chest at the foot of
+    the bed, the reading chair by the window with his sweater over it,
+    the hamper."""
+    from _props.geometry import make_chamfer_box, make_lathe
+    EF, NF, SF, WF = ROOM_W/2.0 - 0.10, ROOM_D - 0.10, 0.10, -ROOM_W/2.0 + 0.10
+    frame = (0.30, 0.22, 0.16, 1.0)
+    make_box("Wedding_Photo", (0.0, NF - 0.015, 1.65), (0.50, 0.03, 0.40), frame)
+    make_box("Wedding_Photo_Print", (0.0, NF - 0.031, 1.65), (0.42, 0.002, 0.32), (0.66, 0.62, 0.56, 1.0))
+    for fi, (fx, fw) in enumerate(((-0.65, 0.24), (0.65, 0.24))):
+        make_box(f"Over_Bed_Frame_{fi}", (fx, NF - 0.015, 1.62), (fw, 0.03, 0.30), frame)
+        make_box(f"Over_Bed_Frame_{fi}_Print", (fx, NF - 0.031, 1.62), (fw - 0.06, 0.002, 0.24), (0.54, 0.50, 0.46, 1.0))
+    make_box("Team_Picture", (EF - 0.015, 3.10, 1.65), (0.03, 0.70, 0.46), frame)
+    make_box("Team_Picture_Print", (EF - 0.031, 3.10, 1.65), (0.002, 0.62, 0.38), (0.40, 0.46, 0.38, 1.0))
+    make_box("Coach_Plaque", (EF - 0.012, 3.10, 1.22), (0.024, 0.30, 0.22), (0.42, 0.28, 0.18, 1.0))
+    make_box("Coach_Plaque_Brass", (EF - 0.025, 3.10, 1.22), (0.002, 0.22, 0.14), (0.86, 0.70, 0.30, 1.0))
+    make_chamfer_box("Cedar_Chest", (0.0, 2.05, 0.24), (1.10, 0.48, 0.48), (0.54, 0.34, 0.22, 1.0), chamfer=0.02)
+    make_box("Cedar_Chest_Quilt", (0.0, 2.05, 0.485), (1.00, 0.40, 0.03), (0.42, 0.50, 0.60, 1.0))
+    ax, ay = WF + 0.45, 1.20
+    upholstery = (0.36, 0.34, 0.30, 1.0)
+    make_chamfer_box("Reading_Chair_Base", (ax, ay, 0.20), (0.74, 0.74, 0.40), upholstery, chamfer=0.04)
+    make_chamfer_box("Reading_Chair_Seat", (ax + 0.04, ay, 0.46), (0.56, 0.56, 0.12), (0.42, 0.40, 0.36, 1.0), chamfer=0.04)
+    make_chamfer_box("Reading_Chair_Back", (ax - 0.30, ay, 0.78), (0.14, 0.70, 0.64), upholstery, chamfer=0.05)
+    for e in (-1, 1):
+        make_chamfer_box(f"Reading_Chair_Arm_{e:+d}", (ax, ay + e * 0.31, 0.56), (0.74, 0.12, 0.32), upholstery, chamfer=0.04)
+    make_box("Reading_Chair_Sweater", (ax - 0.22, ay, 0.96), (0.08, 0.60, 0.30), (0.30, 0.36, 0.28, 1.0))
+    make_lathe("Hamper", (EF - 0.30, NF - 0.30, 0.0), [(0.20, 0.0), (0.22, 0.55), (0.0, 0.55)], (0.62, 0.56, 0.46, 1.0), segments=12)
+
+def main():
+    clear_scene()
+    build_shell()
+    build_bed()
+    build_nightstands()
+    build_dresser()
+    build_hero_props()
+    build_detail_pass_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_W", "W", -ROOM_W / 2.0, 2.6, kind="side", ground_z=0.0, seed=22)   # the seam of night past the curtain: the side yard
+    build_twenty_years_2026_10()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/coach_k_bedroom.glb"))
+    print(f"\n[build_coach_k_bedroom] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()

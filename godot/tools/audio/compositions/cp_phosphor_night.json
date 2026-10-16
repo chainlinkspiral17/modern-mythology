@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "title": "phosphor night",
+    "composer": "authored for COMMUNITY PLANNED",
+    "for": "CommunityPlannedGame \u00b7 Sunday BBS-night bed (rotates with vol5_cicadas_dusk)",
+    "notes": "The cathedral office at 11 PM, screen glow on the desk. 24 bars at 58 BPM in A minor \u00b7 low drone, CRT hum forward, a dark three-chord pad (Am \u2013 F \u2013 Em), and a carrier-tone figure \u2014 two notes, like a handshake finding its speed \u2014 that returns three times and never resolves. The line stays up."
+  },
+  "tempo_bpm": 58,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.28,
+      "notes": [
+        {
+          "pitch": "A1",
+          "bar": 1,
+          "beat": 1,
+          "dur": 96.0,
+          "vel": 0.42
+        }
+      ]
+    },
+    {
+      "instrument": "fluorescent_hum",
+      "gain": 0.12,
+      "notes": [
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 96.0,
+          "vel": 0.35
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "A2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "C3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "E3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "F2",
+          "bar": 9,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "A2",
+          "bar": 9,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "C3",
+          "bar": 9,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "E2",
+          "bar": 17,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "G2",
+          "bar": 17,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "B2",
+          "bar": 17,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.18
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.13,
+      "notes": [
+        {
+          "pitch": "E5",
+          "bar": 3,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A4",
+          "bar": 3,
+          "beat": 2,
+          "dur": 3.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "E5",
+          "bar": 11,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "A4",
+          "bar": 11,
+          "beat": 2,
+          "dur": 3.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "E5",
+          "bar": 19,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "B4",
+          "bar": 19,
+          "beat": 2,
+          "dur": 5.0,
+          "vel": 0.22
+        }
+      ]
+    }
+  ]
+}

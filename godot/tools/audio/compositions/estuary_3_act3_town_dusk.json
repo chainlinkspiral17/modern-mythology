@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "the town, 6:12 PM",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Act 3 · Return-to-Kwik-Stop underscore",
+    "notes": "The clock past 18:00. Sam is back at the counter. Jules is somewhere behind him with the keys. 8 bars at 72 BPM. F minor now · the same key as morning but flattened. slowstick_bass carries the low weight, a single slowstick_lead phrase across bars 4-7 is the internal question Sam is asking about the summer."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.55,
+      "notes": [ {"pitch": "C3", "bar": 1, "beat": 1, "dur": 32.0, "vel": 0.60} ] },
+
+    { "instrument": "slowstick_bass", "gain": 0.40, "notes": [
+      {"pitch": "F2",  "bar": 1, "beat": 1, "dur": 8.0, "vel": 0.55},
+      {"pitch": "Ab2", "bar": 3, "beat": 1, "dur": 8.0, "vel": 0.50},
+      {"pitch": "Bb2", "bar": 5, "beat": 1, "dur": 8.0, "vel": 0.55},
+      {"pitch": "F2",  "bar": 7, "beat": 1, "dur": 8.0, "vel": 0.60}
+    ] },
+
+    { "instrument": "slowstick_pad", "gain": 0.36, "notes": [
+      {"pitch": "F3",  "bar": 1, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "Ab3", "bar": 1, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "C4",  "bar": 3, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "Eb4", "bar": 3, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "Bb3", "bar": 5, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "F4",  "bar": 5, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "F3",  "bar": 7, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "C4",  "bar": 7, "beat": 3, "dur": 4.0, "vel": 0.60}
+    ] },
+
+    { "instrument": "slowstick_lead", "gain": 0.30, "notes": [
+      {"pitch": "Ab4", "bar": 4, "beat": 1,   "dur": 2.0, "vel": 0.55},
+      {"pitch": "F4",  "bar": 5, "beat": 1,   "dur": 1.5, "vel": 0.50},
+      {"pitch": "Eb4", "bar": 5, "beat": 2.5, "dur": 1.5, "vel": 0.50},
+      {"pitch": "F4",  "bar": 7, "beat": 1,   "dur": 3.5, "vel": 0.60}
+    ] }
+  ]
+}

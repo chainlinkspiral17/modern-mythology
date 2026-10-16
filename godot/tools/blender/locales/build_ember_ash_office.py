@@ -41,7 +41,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.decor import make_wall_clock, make_faded_poster
 from _props.safety import make_smoke_detector
@@ -162,12 +162,14 @@ def build_corner_across_window():
     Corner Across threshold becomes visible when the man arrives.")
     """
     # Window on the east wall, mid-height
-    make_window("CornerAcross", (ROOM_W/2.0 - 0.01, 2.4, 1.40),
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("CornerAcross", (ROOM_W/2.0 - 0.10, 2.4, 1.40),
                 width=1.20, height=1.20, axis='Y')
     # Frame trim (warmer wood)
-    make_box("CornerAcross_FrameTop", (ROOM_W/2.0 - 0.01, 2.4, 2.06),
+    # the trim on the wall face too (2026-09-23: inside the wall)
+    make_box("CornerAcross_FrameTop", (ROOM_W/2.0 - 0.12, 2.4, 2.06),
              (0.04, 1.30, 0.08), (0.34, 0.26, 0.18, 1.0))
-    make_box("CornerAcross_FrameBot", (ROOM_W/2.0 - 0.01, 2.4, 0.78),
+    make_box("CornerAcross_FrameBot", (ROOM_W/2.0 - 0.12, 2.4, 0.78),
              (0.04, 1.30, 0.08), (0.34, 0.26, 0.18, 1.0))
     # A small brass radiator under the window (the cool-side option
     # — radiator on east wall, AC on south wall)
@@ -329,7 +331,7 @@ def build_office_chair():
     # Seat
     make_box("OfficeChair_Seat", (cx, cy, 0.48), (0.50, 0.50, 0.08), COL_LEATHER_OX)
     # Back
-    make_box("OfficeChair_Back", (cx, cy + 0.22, 0.86), (0.50, 0.06, 0.60), COL_LEATHER_OX)
+    make_box("OfficeChair_Back", (cx, cy + 0.22, 0.830), (0.50, 0.06, 0.60), COL_LEATHER_OX)
     # Central post
     make_cyl("OfficeChair_Post", (cx, cy, 0.24), 0.030, 0.44, COL_DESK_LEG, segments=6, axis='Z')
     # 5-star base
@@ -339,6 +341,9 @@ def build_office_chair():
         fy = cy + 0.24 * math.sin(a)
         make_box("OfficeChair_Foot_%d" % s, (fx, fy, 0.04),
                  (0.08, 0.08, 0.06), COL_DESK_LEG)
+        # the spoke from the post to the foot (2026-09-24: five feet and a
+        # post that stopped 2 cm off the floor, none of them joined)
+        make_tube("OfficeChair_Spoke_%d" % s, [(cx, cy, 0.05), (fx, fy, 0.05)], 0.018, COL_DESK_LEG, segments=5)
 
 
 def build_back_stair_opening():
@@ -391,24 +396,60 @@ def build_back_stair_opening():
 def build_wall_photo_and_clock():
     # Wall photograph of an early ember-and-ash crew on the north
     # wall (above the desk, behind Antonio's chair)
-    make_box("CrewPhoto_Frame", (-0.50, ROOM_D - 0.05, 1.94),
+    make_box("CrewPhoto_Frame", (-0.50, ROOM_D - 0.12, 1.94),
              (0.72, 0.04, 0.50), COL_DESK_LEG)
-    make_box("CrewPhoto_Mat", (-0.50, ROOM_D - 0.06, 1.94),
+    make_box("CrewPhoto_Mat", (-0.50, ROOM_D - 0.1425, 1.94),
              (0.66, 0.005, 0.44), COL_PAPER)
     # 5 darker rectangles · stylized crew members in the photo
     for ci in range(5):
         cx_off = -0.30 + ci * 0.15
         make_box("CrewPhoto_Person_%d" % ci,
-                 (-0.50 + cx_off, ROOM_D - 0.063, 1.94),
+                 (-0.50 + cx_off, ROOM_D - 0.1455, 1.94),
                  (0.06, 0.001, 0.16),
                  (0.38, 0.30, 0.22, 1.0))
     # Brass plaque under the photo
-    make_box("CrewPhoto_Plaque", (-0.50, ROOM_D - 0.06, 1.66),
+    make_box("CrewPhoto_Plaque", (-0.50, ROOM_D - 0.1015, 1.66),
              (0.36, 0.003, 0.04), COL_BRASS)
 
     # Wall clock — stopped at the canonical morning hour
-    make_wall_clock("OfficeClock", (-ROOM_W/2.0 + 0.05, 3.0, 2.10),
-                    frozen_hour=11, frozen_min=14)
+    make_wall_clock("OfficeClock", (-2.900, 3.0, 2.10),
+                    frozen_hour=11, frozen_min=14, facing='+X')
+
+
+def build_guest_seating_and_filing():
+    """Round out the office: two guest chairs (Jimmy / the older man
+    come here) and a lateral filing cabinet against the west wall."""
+    # Two guest chairs facing the desk (desk at cy=3.20; chairs south)
+    for gi, gx in enumerate([-1.10, -0.10]):
+        gy = 2.10
+        make_box("Guest_%d_Seat" % gi, (gx, gy, 0.46), (0.46, 0.46, 0.06), COL_LEATHER_OX)
+        make_box("Guest_%d_Back" % gi, (gx, gy - 0.22, 0.80), (0.46, 0.06, 0.62), COL_LEATHER_OX)
+        for li, (lx, ly) in enumerate([(gx-0.19, gy-0.19), (gx+0.19, gy-0.19),
+                                        (gx-0.19, gy+0.19), (gx+0.19, gy+0.19)]):
+            make_box("Guest_%d_Leg_%d" % (gi, li), (lx, ly, 0.23),
+                     (0.04, 0.04, 0.46), COL_DESK_LEG)
+    # Lateral filing cabinet against the west wall
+    fx, fy = -ROOM_W/2.0 + 0.32, 1.15
+    make_box("Filing_Body", (fx, fy, 0.62), (0.50, 1.00, 1.24), (0.46, 0.42, 0.36, 1.0))
+    for di in range(3):
+        dz = 0.28 + di * 0.42
+        make_box("Filing_Drawer_%d" % di, (fx + 0.24, fy, dz), (0.02, 0.90, 0.36),
+                 (0.56, 0.52, 0.46, 1.0))
+        make_box("Filing_Pull_%d" % di, (fx + 0.26, fy, dz), (0.02, 0.24, 0.03), COL_BRASS)
+    # A stack of folders on top of the cabinet
+    for si in range(3):
+        make_box("Filing_Folder_%d" % si, (fx, fy - 0.10 + si*0.06, 1.26 + si*0.02),
+                 (0.44, 0.34, 0.02), (0.72, 0.62, 0.42 - si*0.06, 1.0))
+    # A small desk fan on the corner of the desk (blowing at the AC-hot room)
+    fanx, fany = 0.30, 3.55
+    make_cyl("DeskFan_Base", (fanx, fany, 0.78), 0.08, 0.04, COL_PHONE, segments=10, axis='Z')
+    make_cyl("DeskFan_Post", (fanx, fany, 0.90), 0.02, 0.20, COL_PHONE, segments=6, axis='Z')
+    make_cyl("DeskFan_Cage", (fanx, fany - 0.06, 1.02), 0.13, 0.06, COL_AC_GRILLE, segments=12, axis='Y')
+    for bi in range(3):
+        a = math.radians(120 * bi)
+        make_box("DeskFan_Blade_%d" % bi,
+                 (fanx + 0.05*math.cos(a), fany - 0.03, 1.02 + 0.05*math.sin(a)),
+                 (0.09, 0.01, 0.04), (0.32, 0.30, 0.26, 1.0))
 
 
 def build_ceiling_infra():
@@ -416,8 +457,208 @@ def build_ceiling_infra():
     # Pendant light over the desk
     make_cyl("Pendant_Cord", (-0.50, 3.20, CEIL - 0.40),
              0.012, 0.80, (0.18, 0.16, 0.14, 1.0), segments=4, axis='Z')
-    make_cyl("Pendant_Shade", (-0.50, 3.20, CEIL - 0.96),
+    make_cyl("Pendant_Shade", (-0.50, 3.20, CEIL - 0.85),   # on the cord (2026-09-24: 11 cm under it)
              0.20, 0.10, (0.86, 0.78, 0.62, 1.0), segments=12, axis='Z')
+
+
+def build_warehouse_2026_08():
+    """THE WAREHOUSE BELOW (gauntlet FP draft 2, 2026-08-19).
+
+    Six of the Chariot board's stations had no geometry — the
+    office floated in a void. The board's own flavor text is the
+    spec: "the warehouse below the office · exposed brick scarred
+    with generations of graffiti · towering ceilings lost in
+    shadow"; the kitchen rough-in "equipment ordered in march,
+    arrived in june, wrong gauge for the gas line"; the salvage
+    "reclaimed lumber, bricks pulled from a torn-down convent,
+    copper pipe that turned out to be the wrong gauge"; the front
+    stair, "the route clients will eventually take"; the Marigny
+    sidewalk with its oaks and moss; and the corner across — "the
+    streetlight, the dumpster shadow where the dark sedan parks."
+    The sedan is NOT modeled; its absence is the point.
+
+    Frame: the office (z 0..2.8) is a MEZZANINE box inside the
+    warehouse volume; the warehouse floor — street level — is at
+    z = -4.5.
+    """
+    WF = -4.5                      # warehouse floor z
+    brick = (0.46, 0.32, 0.26, 1.0)
+    brick_dk = (0.38, 0.26, 0.22, 1.0)
+    slab = (0.40, 0.39, 0.37, 1.0)
+    iron = (0.30, 0.26, 0.24, 1.0)
+    rust = (0.48, 0.30, 0.22, 1.0)
+    lumber = (0.56, 0.44, 0.30, 1.0)
+    copper = (0.62, 0.38, 0.26, 1.0)
+    # ── Shell · x -8..8, y 0..14, roof above the office roof ──
+    make_box("WH_Slab", (0.0, 7.0, WF - 0.10), (16.6, 14.6, 0.20), slab)
+    make_box("WH_Wall_W", (-8.0, 7.0, (WF + 4.2) / 2.0), (0.30, 14.0, 8.7), brick)
+    make_box("WH_Wall_E", (8.0, 7.0, (WF + 4.2) / 2.0), (0.30, 14.0, 8.7), brick)
+    make_box("WH_Wall_N", (0.0, 14.0, (WF + 4.2) / 2.0), (16.3, 0.30, 8.7), brick)
+    # South wall carries the street face; a roll gate + man door.
+    make_box("WH_Wall_S_W", (-5.2, -0.15, (WF + 4.2) / 2.0), (5.9, 0.30, 8.7), brick)
+    make_box("WH_Wall_S_E", (5.2, -0.15, (WF + 4.2) / 2.0), (5.9, 0.30, 8.7), brick)
+    make_box("WH_Wall_S_Header", (0.0, -0.15, 2.6), (4.6, 0.30, 3.2), brick)
+    make_box("WH_RollGate", (0.0, -0.10, WF + 1.75), (4.4, 0.10, 3.5), iron)
+    for gi in range(6):
+        make_box("WH_RollGate_Rib_%d" % gi, (0.0, -0.04, WF + 0.45 + gi * 0.58),
+                 (4.4, 0.02, 0.06), (0.24, 0.21, 0.20, 1.0))
+    make_box("WH_Roof", (0.0, 7.0, 4.25), (16.6, 14.6, 0.25), (0.30, 0.28, 0.26, 1.0))
+    # Clerestory band under the roof — the towering dark reads as
+    # shadow with a thin light seam.
+    for cw, cx2 in ((-1, -8.0), (1, 8.0)):
+        make_box("WH_Clerestory_%+d" % cw, (cx2, 7.0, 3.55), (0.10, 12.0, 0.55),
+                 (0.72, 0.70, 0.62, 0.55))
+    # Graffiti strata on the brick — generations of it, low.
+    for gi2, (gy, gw, gz2, col) in enumerate((
+            (3.2, 2.6, WF + 1.3, (0.68, 0.30, 0.40, 1.0)),
+            (6.8, 1.8, WF + 1.7, (0.30, 0.44, 0.62, 1.0)),
+            (9.6, 3.1, WF + 1.1, (0.78, 0.66, 0.30, 1.0)),
+            (12.0, 1.4, WF + 1.9, (0.40, 0.58, 0.36, 1.0)))):
+        make_box("WH_Graffiti_W_%d" % gi2, (-7.83, gy, gz2), (0.02, gw, 0.85), col)
+    for gi3, (gy3, gw3, col3) in enumerate((
+            (4.6, 2.2, (0.62, 0.34, 0.52, 1.0)), (10.4, 2.8, (0.34, 0.36, 0.40, 1.0)))):
+        make_box("WH_Graffiti_E_%d" % gi3, (7.83, gy3, WF + 1.5), (0.02, gw3, 0.9), col3)
+    # ── Mezzanine support · steel posts under the office box ──
+    for pi4, (px4, py4) in enumerate(((-2.8, 0.6), (2.8, 0.6), (-2.8, 4.6), (2.8, 4.6))):
+        make_box("WH_MezzPost_%d" % pi4, (px4, py4, WF / 2.0), (0.24, 0.24, -WF), iron)
+    make_box("WH_MezzDeck_Lip", (0.0, 2.5, -0.16), (6.8, 5.6, 0.12), iron)
+    # ── FRONT STAIR · rusted iron, warehouse floor → office ──
+    # Along the office's east flank; the client route.
+    fs_x = 4.1
+    n_steps = 12
+    for si5 in range(n_steps):
+        sz5 = WF + (si5 + 0.5) * (4.5 / n_steps)
+        sy5 = 6.8 - si5 * 0.42
+        make_box("FrontStair_Tread_%d" % si5, (fs_x, sy5, sz5), (1.0, 0.34, 0.05), rust)
+    make_box("FrontStair_Stringer_W", (fs_x - 0.52, 4.5, WF / 2.0 + 0.2), (0.06, 5.4, 0.16), iron)
+    make_box("FrontStair_Stringer_E", (fs_x + 0.52, 4.5, WF / 2.0 + 0.2), (0.06, 5.4, 0.16), iron)
+    make_box("FrontStair_Rail", (fs_x + 0.55, 4.4, WF / 2.0 + 1.15), (0.04, 5.2, 0.05), rust)
+    make_box("FrontStair_Landing", (fs_x, 1.8, -0.05), (1.2, 1.6, 0.10), iron)
+    # ── SALVAGE PILES · NW quarter of the floor ──
+    for li6, (lx6, ly6, lw6, ln6, lh6) in enumerate((
+            (-5.8, 10.8, 0.5, 3.4, 0.55), (-5.1, 10.6, 0.45, 3.0, 0.38),
+            (-6.3, 11.4, 0.4, 2.6, 0.30))):
+        make_box("Salvage_Lumber_%d" % li6, (lx6, ly6, WF + lh6 / 2.0),
+                 (lw6, ln6, lh6), lumber)
+    # Convent bricks on a pallet, one course tumbled.
+    make_box("Salvage_Pallet", (-5.6, 8.2, WF + 0.07), (1.3, 1.1, 0.14), lumber)
+    make_box("Salvage_ConventBrick", (-5.6, 8.2, WF + 0.42), (1.1, 0.9, 0.56), brick_dk)
+    make_box("Salvage_ConventBrick_Tumbled", (-4.8, 7.7, WF + 0.10), (0.5, 0.4, 0.20), brick_dk)
+    # Copper pipe — the wrong gauge — bundled and leaning.
+    for ci7 in range(4):
+        make_cyl("Salvage_Copper_%d" % ci7, (-6.9 + ci7 * 0.10, 6.4, WF + 1.05),
+                 0.035, 2.3, copper, segments=6)
+    # ── KITCHEN ROUGH-IN · NE corner ──
+    make_box("KitchenRough_Stub_N", (5.6, 13.4, WF + 0.60), (4.2, 0.12, 1.20), (0.82, 0.80, 0.76, 1.0))
+    make_box("KitchenRough_Stub_E", (7.6, 12.0, WF + 0.60), (0.12, 2.8, 1.20), (0.82, 0.80, 0.76, 1.0))
+    make_cyl("KitchenRough_GasLine", (6.2, 13.25, WF + 0.45), 0.03, 0.9, iron, segments=6, axis='Z')
+    make_box("KitchenRough_GasCap", (6.2, 13.25, WF + 0.95), (0.10, 0.10, 0.08),
+             (0.72, 0.20, 0.16, 1.0))
+    for ki8, (kx8, ky8) in enumerate(((5.0, 12.2), (6.4, 11.6))):
+        make_box("KitchenRough_Crate_%d" % ki8, (kx8, ky8, WF + 0.55), (1.1, 0.9, 1.10), lumber)
+        make_box("KitchenRough_CrateLabel_%d" % ki8, (kx8, ky8 - 0.47, WF + 0.80),
+                 (0.5, 0.01, 0.25), (0.90, 0.88, 0.82, 1.0))
+    # ── BACK ALLEY · north of the shell ──
+    make_box("Alley_Ground", (0.0, 15.6, WF - 0.09), (16.6, 3.0, 0.18), (0.30, 0.29, 0.28, 1.0))
+    make_box("Alley_OppositeWall", (0.0, 17.2, WF + 3.0), (16.6, 0.25, 7.5), brick_dk)
+    make_box("Alley_Door", (2.4, 14.02, WF + 1.05), (0.9, 0.08, 2.10), iron)
+    make_box("Alley_DoorLamp", (2.4, 13.90, WF + 2.45), (0.16, 0.10, 0.14), (0.88, 0.76, 0.48, 1.0))
+    make_box("Alley_SmokeCrate", (3.4, 14.7, WF + 0.22), (0.5, 0.5, 0.44), lumber)
+    make_cyl("Alley_ButtCan", (3.0, 14.5, WF + 0.30), 0.09, 0.60, iron, segments=8)
+    # ── SIDEWALK + CORNER ACROSS · south, street level ──
+    make_box("Sidewalk_Band", (0.0, -1.6, WF - 0.08), (16.6, 2.4, 0.16), (0.62, 0.60, 0.56, 1.0))
+    make_box("Street_Band", (0.0, -5.2, WF - 0.12), (16.6, 4.8, 0.12), (0.22, 0.22, 0.23, 1.0))
+    # Ancient oaks dripping moss (two, flanking).
+    for oi9, ox9 in enumerate((-7.4, 6.5)):
+        make_cyl("Oak_%d_Trunk" % oi9, (ox9, -1.5, WF + 1.6), 0.35, 3.2, (0.36, 0.28, 0.22, 1.0), segments=8)
+        make_cyl("Oak_%d_Crown" % oi9, (ox9, -1.7, WF + 4.4), 2.6, 2.4, (0.30, 0.40, 0.24, 1.0), segments=10)
+        make_box("Oak_%d_Moss_A" % oi9, (ox9 - 1.2, -2.4, WF + 2.9), (0.10, 0.16, 1.1), (0.52, 0.56, 0.42, 1.0))
+        make_box("Oak_%d_Moss_B" % oi9, (ox9 + 1.0, -1.0, WF + 3.1), (0.10, 0.14, 0.9), (0.52, 0.56, 0.42, 1.0))
+    # Wrought-iron balcony rusting into lacework, on the facade.
+    make_box("Balcony_Deck", (-3.0, -0.55, 0.35), (3.6, 0.9, 0.08), iron)
+    for bi10 in range(9):
+        make_box("Balcony_Baluster_%d" % bi10, (-4.6 + bi10 * 0.4, -0.98, 0.85), (0.03, 0.03, 0.95), rust)
+    make_box("Balcony_Rail", (-3.0, -0.98, 1.35), (3.7, 0.05, 0.05), rust)
+    # THE CORNER ACROSS · streetlight + dumpster; the sedan absent.
+    make_cyl("Corner_Streetlight_Pole", (-9.5, -6.8, WF + 2.6), 0.10, 5.2, iron, segments=8)
+    make_box("Corner_Streetlight_Head", (-9.2, -6.8, WF + 5.1), (0.7, 0.25, 0.20), (0.92, 0.86, 0.62, 1.0))
+    make_box("Corner_Dumpster", (-10.6, -5.6, WF + 0.65), (1.9, 1.1, 1.30), (0.24, 0.34, 0.30, 1.0))
+    make_box("Corner_Dumpster_Lid", (-10.6, -5.6, WF + 1.34), (1.95, 1.15, 0.08), (0.20, 0.28, 0.26, 1.0))
+    make_box("Corner_Curb", (-9.0, -4.1, WF - 0.02), (3.6, 0.5, 0.18), (0.58, 0.56, 0.52, 1.0))
+    # The tripod work light by the salvage — a renovation's one
+    # honest interior fixture, and the practical the scene needs.
+    make_cyl("WorkLight_Leg_A", (-4.15, 6.65, WF + 0.55), 0.025, 1.10,
+             (0.80, 0.62, 0.16, 1.0), segments=6)
+    make_cyl("WorkLight_Leg_B", (-3.85, 6.70, WF + 0.55), 0.025, 1.10,
+             (0.80, 0.62, 0.16, 1.0), segments=6)
+    make_cyl("WorkLight_Leg_C", (-4.00, 6.95, WF + 0.55), 0.025, 1.10,
+             (0.80, 0.62, 0.16, 1.0), segments=6)
+    make_box("WorkLight_Head", (-4.0, 6.75, WF + 1.22), (0.34, 0.20, 0.24),
+             (0.90, 0.86, 0.72, 1.0))
+    make_box("WorkLight_Cage", (-4.0, 6.63, WF + 1.22), (0.30, 0.02, 0.20),
+             (0.30, 0.28, 0.26, 1.0))
+
+
+
+def build_warehouse_d2_2026_08():
+    """D2 SURFACE BREAKUP for the warehouse (draft 2 of the set).
+
+    A renovation floor wears BACKWARDS: concrete dust settles
+    everywhere, so the traffic lines are the PALE-CLEAN part —
+    boots clear the dust where work actually moves (gate → stair,
+    stair → salvage, door → alley). Standing zones go the other
+    way: sawdust builds up around the lumber, mortar dust around
+    the brick pallet, and the roll gate's threshold carries the
+    water stain of every rain that blew under it.
+    """
+    WF = -4.5
+    dust = (0.52, 0.50, 0.47, 1.0)       # settled concrete dust
+    cleared = (0.42, 0.41, 0.39, 1.0)    # slab where boots cleared it
+    sawdust = (0.62, 0.52, 0.36, 1.0)
+    mortar = (0.56, 0.50, 0.44, 1.0)
+    rain = (0.30, 0.29, 0.28, 1.0)
+    # The dust field: big soft patches of settle, heaviest in the
+    # corners nobody works.
+    for di2, (dx3, dy3, dr3) in enumerate((
+            (-6.4, 12.6, 1.6), (6.6, 3.2, 1.4), (-6.2, 2.8, 1.3),
+            (2.0, 12.6, 1.2), (-3.0, 12.0, 1.0))):
+        make_cyl("WH_Dust_%d" % di2, (dx3, dy3, WF + 0.006), dr3, 0.004,
+                 dust, segments=10)
+    # The cleared lanes — where the work walks.
+    from _props.detail import make_traffic_wear, make_floor_stain
+    make_traffic_wear("WH_Lane_GateStair",
+                      [(0.0, 1.0), (2.0, 3.5), (3.8, 6.0)],
+                      width=0.9, floor_z=WF + 0.01, tint=cleared)
+    make_traffic_wear("WH_Lane_Salvage",
+                      [(2.5, 5.5), (-1.5, 7.0), (-4.8, 8.8)],
+                      width=0.8, floor_z=WF + 0.01, tint=cleared)
+    make_traffic_wear("WH_Lane_Alley",
+                      [(1.5, 9.0), (2.3, 12.0), (2.4, 13.8)],
+                      width=0.7, floor_z=WF + 0.01, tint=cleared)
+    # Sawdust around the lumber; mortar dust around the pallet.
+    make_floor_stain("WH_Sawdust", (-5.6, 10.6), radius=0.9,
+                     floor_z=WF + 0.012, tint=sawdust, segments=10)
+    make_floor_stain("WH_MortarDust", (-5.5, 8.1), radius=0.55,
+                     floor_z=WF + 0.012, tint=mortar, segments=9)
+    # The roll gate's rain line — a dark threshold band and two
+    # finger stains reaching in where water found the slope.
+    make_box("WH_RainBand", (0.0, 0.35, WF + 0.008), (4.6, 0.5, 0.005), rain)
+    make_floor_stain("WH_RainFinger_A", (-1.2, 1.0), radius=0.35,
+                     floor_z=WF + 0.007, tint=rain, segments=8)
+    make_floor_stain("WH_RainFinger_B", (0.9, 1.2), radius=0.28,
+                     floor_z=WF + 0.007, tint=rain, segments=8)
+    # Wall tint: a damp-rise band at the brick base (old warehouse
+    # walls wick), and the ghost line of a demolished partition —
+    # a pale stripe across the slab where a wall stood for decades.
+    for wname, wx3, wl in (("W", -7.82, 13.6), ("E", 7.82, 13.6)):
+        make_box("WH_DampRise_%s" % wname, (wx3, 7.0, WF + 0.5),
+                 (0.03, wl, 1.0), (0.40, 0.29, 0.24, 1.0))
+    make_box("WH_GhostWall", (1.5, 8.6, WF + 0.005), (0.24, 6.8, 0.004),
+             (0.58, 0.56, 0.52, 1.0))
+    # Mezzanine kick scuffs where ladders and shoulders hit the
+    # office box's underside edge.
+    make_box("WH_Mezz_Scuff", (0.0, 0.55, -0.28), (5.6, 0.03, 0.14),
+             (0.30, 0.27, 0.25, 1.0))
 
 
 def main():
@@ -428,9 +669,12 @@ def main():
     build_corner_across_window()
     build_desk_and_props()
     build_office_chair()
+    build_guest_seating_and_filing()
     build_back_stair_opening()
     build_wall_photo_and_clock()
     build_ceiling_infra()
+    build_warehouse_2026_08()
+    build_warehouse_d2_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/ember_ash_office.glb"))
     print(f"\n[build_ember_ash_office] exporting to {out}")

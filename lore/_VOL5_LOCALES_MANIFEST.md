@@ -18,7 +18,7 @@ contains all of:
 5. **`mood_strata` array** — locale-appropriate mood IDs that F3
    cycles through during play
 6. **LiminalProximityController** Node3D
-7. **PDPRiffmaster** Node
+7. **PDRiffrocker** Node
 8. **HUD CanvasLayer** (`groups=["ui"]`, layer 100) with DebugHUD
    Label + DebugMenu VBoxContainer
 

@@ -1,0 +1,134 @@
+{
+  "id": "salmonberry_ending_listener",
+  "notes": "THE LISTENER \u00b7 the cafe window warm at dusk, the town's figures inside, rain on the glass.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#23282a",
+    "#c8cec4",
+    "#3b5a6b",
+    "#b8a882",
+    "#33452f",
+    "#9c5a3a",
+    "#d8b048",
+    "#eef0ec",
+    "#caa25a",
+    "#e8c060",
+    "#6c7f8a",
+    "#d98a9a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hatch",
+      "xywh": [
+        0,
+        0,
+        160,
+        90
+      ],
+      "spacing": 9,
+      "angle_deg": 74,
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        28,
+        80,
+        44
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        32,
+        72,
+        36
+      ],
+      "color": 9
+    },
+    {
+      "op": "glow",
+      "xy": [
+        80,
+        50
+      ],
+      "r": 26,
+      "color": 9,
+      "strength": 0.3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        58,
+        44,
+        8,
+        24
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        80,
+        44,
+        8,
+        24
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        102,
+        44,
+        8,
+        24
+      ],
+      "color": 5
+    },
+    {
+      "op": "disk",
+      "xy": [
+        62,
+        42
+      ],
+      "r": 3,
+      "color": 0
+    },
+    {
+      "op": "disk",
+      "xy": [
+        84,
+        42
+      ],
+      "r": 3,
+      "color": 0
+    },
+    {
+      "op": "disk",
+      "xy": [
+        106,
+        42
+      ],
+      "r": 3,
+      "color": 0
+    },
+    {
+      "op": "text",
+      "xy": [
+        50,
+        82
+      ],
+      "s": "THE LISTENER",
+      "color": 7
+    }
+  ]
+}

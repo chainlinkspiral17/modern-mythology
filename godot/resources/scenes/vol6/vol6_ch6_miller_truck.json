@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:new_auburn_bypass"
     },
     {
       "t": "hide",
@@ -29,28 +29,54 @@
     },
     {
       "t": "narrate",
-      "text": "He has not been to the New Auburn Police Department substation in nine years. The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer. Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for."
+      "text": "[trip:1.2][mood:dawn_warm]He has not been to the New Auburn Police Department substation in nine years.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits."
+      "text": "The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave. Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be."
+      "text": "Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift. She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her."
+      "text": "[shot:closeup miller~]Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/008.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/009.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/010.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/011.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/012.ogg"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I love her. Whatever else is true, I love her."
+      "text": "I love her. Whatever else is true, I love her.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee."
+      "text": "[shot:establish]He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/014.mp3"
     },
     {
       "t": "show",
@@ -68,55 +94,71 @@
       "t": "say",
       "char": "Ramirez",
       "text": "Morning, Mike.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/017.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Morning, Hernando.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/018.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "Lawyer's inside. Came up from Houston last night. She's good. She's been doing this twenty-six years. She is not going to let you hang yourself.",
-      "expr": "neutral"
+      "text": "[shot:closeup person]Lawyer's inside. Came up from Houston last night. She's good. She's been doing this twenty-six years. She is not going to let you hang yourself.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miller nods."
+      "text": "Miller nods.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/020.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/021.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "Mike. Last thing before we go in. You know that whatever you say in there, in the next four hours, becomes the rest of your life. There is no take-back. If you want one more night to think it over, I will lose this morning's coffee and we'll do it tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miller looks at him."
+      "text": "[shot:closeup miller]Miller looks at him.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/023.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Hernando. Sammy needs to come home from her shift today and find her mother and her father in the kitchen. She needs to have one more dinner. Then I need this to be done. Tomorrow is one more day she has to spend pretending. I am not going to make her spend it.",
+      "text": "Hernando. Sammy needs to come home from her shift today and find her mother and her father in the kitchen. She needs to have one more dinner. Then I need this to be done. Tomorrow is one more day she has to spend pretending.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/024.mp3"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I am not going to make her spend it.",
       "expr": "neutral"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "Okay, Mike. Let's go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "They go inside."
+      "text": "[shot:establish]They go inside.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/027.mp3"
     },
     {
       "t": "hide",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://diego_bedroom_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://diego_bedroom_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/diego_bedroom.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,16 +128,31 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.42, 0.62, 0.96, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.08, 0.10, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.78, 0.86, 1)
-ambient_light_energy = 0.65
+ambient_light_energy = 0.62
 fog_enabled = true
 fog_light_color = Color(0.42, 0.46, 0.62, 1)
 fog_light_energy = 0.4
 fog_density = 0.004
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.04
@@ -154,23 +169,42 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
+; (pass 60, 2026-10-11) the authored rig is suffixed to diego_bedroom: its time-of-day twin below brings its own
+[node name="Key_DeskLamp__diego_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.86, 0.88, 0.96, 1)
-light_energy = 0.55
+light_energy = 0.80
 shadow_enabled = false
 
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
+[node name="Fill_Window__diego_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.92, 1)
-light_energy = 0.35
+light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back_Mood" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, -3, 4, 2)
+; Practical at the desk lamp head (blender 0.8,1.70,1.16 → godot 0.8,1.16,-1.70)
+
+
+[node name="Back_Mood__diego_bedroom" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.42, 0.52, 0.74, 1)
 light_energy = 0.2
 shadow_enabled = false
+
+; ── THE NIGHT (pass 60): diego_bedroom_night — the moon and the street through the N window;
+; the desk lamp (unsuffixed) is the room's light
+[node name="Moon_Window__diego_bedroom_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.4056, 0.5792, 0.0000, 0.8192, 0.5736, -0.7071, 0.4056, -0.5792, 0, 5, -6)
+light_color = Color(0.60, 0.68, 0.90, 1)
+light_energy = 0.3
+shadow_enabled = false
+
+[node name="Street_Glow__diego_bedroom_night" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.600, -6.000)
+light_color = Color(1.00, 0.72, 0.38, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 7.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +306,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +325,123 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; DRAFT 5 (2026-10-09): Diego's room as the prose has it — the desk lamp, the fan's light, his cues
+[node name="Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.950, 1.020, -3.070)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 3.0
+
+[node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.280, 1.300, -2.300)
+rotation = Vector3(-0.8179, -0.9048, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.380, 1.200, -2.000)
+rotation = Vector3(-0.5228, -0.8635, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_photo" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.620, 1.720, -0.580)
+rotation = Vector3(-0.0227, 3.0962, 0.0)
+metadata/fov = 32.0
+
+[node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.250, -1.100)
+rotation = Vector3(-0.7702, -0.8885, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.550, -3.400)
+rotation = Vector3(-0.0706, 0.1419, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.450, 1.300, -1.900)
+rotation = Vector3(-0.3810, 0.9754, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_glass" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.280, 1.200, -3.550)
+rotation = Vector3(-0.7641, -2.0446, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.500, 1.650, -4.400)
+rotation = Vector3(-0.1537, -2.4733, 0.0)
+metadata/fov = 60.0
+
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.400, -1.800)
+rotation = Vector3(-0.1280, 0.9420, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.900, 1.450, -3.800)
+rotation = Vector3(-0.0832, -2.0195, 0.0)
+metadata/fov = 45.0
+
+; insert (2026-10-10, ch10 Home): his phone on the charger on the nightstand, in the dark
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.100, 1.150, -3.000)
+rotation = Vector3(-0.4882, 0.7076, 0.0)
+metadata/fov = 38.0
+
+; ── THE DIRECTOR FOLLOWS THE NARRATOR (pass 96): an insert per object the prose names
+; "Three shirts, a phone charger, a pair of boots" — into the open bag, the boots beside it
+[node name="shot_insert_boots" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.800, 0.900, -2.600)
+rotation = Vector3(-0.7510, 2.9060, 0.0)
+metadata/fov = 38.0
+
+; the window's two curtain pairs, the blackout on the outer rod
+[node name="shot_insert_curtains" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.500, -2.550)
+rotation = Vector3(-0.0727, 0.0973, 0.0)
+metadata/fov = 50.0
+
+; "The fan, on the ceiling, clicks on the third rotation" — from the bed, looking up
+[node name="shot_insert_fan" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.100, -1.700)
+rotation = Vector3(0.8464, -0.6435, 0.0)
+metadata/fov = 45.0
+
+; "The clock on the dresser says three eleven"
+[node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.250, -1.300)
+rotation = Vector3(-0.3679, 2.8706, 0.0)
+metadata/fov = 35.0
+
+; the plain white paper and the blue pen at the desk
+[node name="shot_insert_pen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.150, 1.250, -2.150)
+rotation = Vector3(-0.5810, -0.9197, 0.0)
+metadata/fov = 35.0
+
+; "He turns off the lamp" — the desk lamp
+[node name="shot_insert_lamp" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.050, 1.350, -2.550)
+rotation = Vector3(-0.3248, -1.0469, 0.0)
+metadata/fov = 38.0
+
+; the laptop open on the desk, the school schedule
+[node name="shot_insert_laptop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.050, 1.300, -2.400)
+rotation = Vector3(-0.4874, -1.0122, 0.0)
+metadata/fov = 38.0
+
+; "the desk that has been his desk since he was nine"
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.750, 1.450, -2.450)
+rotation = Vector3(-0.5502, -1.1372, 0.0)
+metadata/fov = 45.0
+
+; "He closes the desk drawer"
+[node name="shot_insert_drawer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 1.000, -3.400)
+rotation = Vector3(-0.4057, -1.8737, 0.0)
+metadata/fov = 35.0
+

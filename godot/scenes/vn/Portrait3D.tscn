@@ -45,6 +45,7 @@ shader_parameter/tint = Color(0.85, 1.0, 0.85, 1.0)
 ; PNG/composition portrait pipeline.
 
 [sub_resource type="Environment" id="Env_Portrait"]
+resource_local_to_scene = true
 background_mode = 1
 background_color = Color(0, 0, 0, 0)
 ambient_light_source = 2
@@ -80,7 +81,10 @@ render_target_update_mode = 4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
 environment = SubResource("Env_Portrait")
 
-; KEY · cool moonlight from camera-left high
+; KEY · cool moonlight. ALL THREE LIGHTS ARE RE-PLACED IN CODE on _ready
+; and on every load (Portrait3D.RIG, 2026-10-13): these transforms are
+; the editor's preview only — read back, the old fill shone from below
+; and behind the figure and the rim from below.
 [node name="Key" type="DirectionalLight3D" parent="SubViewport"]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 0, 0)
 light_color = Color(0.78, 0.84, 0.96, 1)
@@ -106,8 +110,13 @@ shadow_enabled = false
 ; eye-level looking slightly down to catch the head + chest
 ; without the character's feet.
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 1.30)
-fov = 32.0
+; Modern-VN 3/4 (2026-07-12, enlarged): offset on +X for a 3/4 view,
+; at hip height (y=0.95) and pulled back to 2.7m so the frame shows
+; thigh-to-head — "more of the character" than the earlier waist crop.
+; The upward look-angle is derived in code (look_at ~lower-chest).
+; fov 41 for the wider zoomed-out crop.
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 0.95, 2.7)
+fov = 41.0
 near = 0.05
 far = 8.0
 

@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "title": "highway summer",
+    "composer": "RANCH audio room \u00b7 1998 masters, 2002 cart",
+    "for": "KWIK STOP MANAGER \u00b7 the weekly loop",
+    "notes": "Bright, forward, a little proud of its own hooks \u00b7 RANCH scores like the numbers are good news."
+  },
+  "tempo_bpm": 96,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "C4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 0.5,
+          "vel": 0.45
+        },
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 1.5,
+          "dur": 0.5,
+          "vel": 0.45
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "F4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 0.5,
+          "vel": 0.45
+        },
+        {
+          "pitch": "A4",
+          "bar": 2,
+          "beat": 1.5,
+          "dur": 0.5,
+          "vel": 0.45
+        },
+        {
+          "pitch": "C5",
+          "bar": 2,
+          "beat": 2,
+          "dur": 2.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "A4",
+          "bar": 2,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "G4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 0.5,
+          "vel": 0.45
+        },
+        {
+          "pitch": "E4",
+          "bar": 3,
+          "beat": 1.5,
+          "dur": 0.5,
+          "vel": 0.45
+        },
+        {
+          "pitch": "C4",
+          "bar": 3,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "D4",
+          "bar": 3,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "E4",
+          "bar": 3,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "C4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.45
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_bass",
+      "gain": 0.16,
+      "notes": [
+        {
+          "pitch": "C2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C2",
+          "bar": 1,
+          "beat": 2.5,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C2",
+          "bar": 1,
+          "beat": 3,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F2",
+          "bar": 2,
+          "beat": 1,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F2",
+          "bar": 2,
+          "beat": 2.5,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F2",
+          "bar": 2,
+          "beat": 3,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G2",
+          "bar": 3,
+          "beat": 1,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G2",
+          "bar": 3,
+          "beat": 2.5,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G2",
+          "bar": 3,
+          "beat": 3,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C2",
+          "bar": 4,
+          "beat": 1,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C2",
+          "bar": 4,
+          "beat": 2.5,
+          "dur": 0.9,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C2",
+          "bar": 4,
+          "beat": 3,
+          "dur": 0.9,
+          "vel": 0.5
+        }
+      ]
+    },
+    {
+      "instrument": "chiptune_arp",
+      "gain": 0.06,
+      "notes": [
+        {
+          "pitch": "E6",
+          "bar": 1,
+          "beat": 2,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 1,
+          "beat": 4,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 2,
+          "beat": 2,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 2,
+          "beat": 4,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 3,
+          "beat": 2,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 3,
+          "beat": 4,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 4,
+          "beat": 2,
+          "dur": 0.15,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E6",
+          "bar": 4,
+          "beat": 4,
+          "dur": 0.15,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "id": "week_13_night",
+  "notes": "Week 13 \u00b7 the hidden thirteenth screen. Night over the estuary \u00b7 the six colors plus one star (the seventh color, earned by touching the lever at most twice all game). No UI. The fifth season of Estuary 3, seeded three games early.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#2a3038",
+    "#6a7a72",
+    "#4a5a3a",
+    "#b8c0c0",
+    "#d8b048",
+    "#a8b4a0",
+    "#f8f8f0"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        52,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        50,
+        52
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        56,
+        62
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          104,
+          56
+        ],
+        [
+          118,
+          56
+        ],
+        [
+          124,
+          62
+        ],
+        [
+          98,
+          62
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        18,
+        22
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 19,
+      "y_range": [
+        40,
+        74
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "color": 2,
+      "xywh": [
+        14,
+        44,
+        14,
+        6
+      ]
+    },
+    {
+      "op": "hline",
+      "y": 66,
+      "x_range": [
+        70,
+        112
+      ],
+      "color": 4
+    },
+    {
+      "op": "hline",
+      "y": 70,
+      "x_range": [
+        78,
+        100
+      ],
+      "color": 4
+    },
+    {
+      "op": "vline",
+      "x": 30,
+      "y_range": [
+        48,
+        56
+      ],
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        46
+      ],
+      "size": 2,
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        118,
+        12
+      ],
+      "size": 1,
+      "color": 6
+    }
+  ]
+}

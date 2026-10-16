@@ -1,0 +1,125 @@
+{
+ "meta": {
+  "title": "vol5_broadcast_night",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_broadcast_night",
+  "notes": "Hierophant \u00b7 hard \u2014 THE SECOND PHONE CALL. The park bandstand, 3:18 PM, after brunch. Open air, a band shell with nothing in it, and a two-note ring that comes back once \u2014 the first call you could let go."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": true,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A#2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "A5",
+     "bar": 5,
+     "beat": 1,
+     "dur": 0.7,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F5",
+     "bar": 5,
+     "beat": 1.9,
+     "dur": 0.9,
+     "vel": 0.18
+    },
+    {
+     "pitch": "A5",
+     "bar": 12,
+     "beat": 1,
+     "dur": 0.7,
+     "vel": 0.18
+    },
+    {
+     "pitch": "F5",
+     "bar": 12,
+     "beat": 1.9,
+     "dur": 1.1,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

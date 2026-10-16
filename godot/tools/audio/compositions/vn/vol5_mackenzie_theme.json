@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "title": "vol5_mackenzie_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_mackenzie_theme",
+  "notes": "Mackenzie \u00b7 Receiver. Phone-line static + a single piano left-hand figure, A minor, played twice and then left on the A."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.144,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.264,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E2",
+     "bar": 1,
+     "beat": 2.5,
+     "dur": 1,
+     "vel": 0.28
+    },
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 3.5,
+     "dur": 2.5,
+     "vel": 0.3
+    },
+    {
+     "pitch": "A1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E2",
+     "bar": 3,
+     "beat": 2.5,
+     "dur": 1,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C2",
+     "bar": 3,
+     "beat": 3.5,
+     "dur": 2.5,
+     "vel": 0.28
+    },
+    {
+     "pitch": "A1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.096,
+   "notes": [
+    {
+     "pitch": "A3",
+     "bar": 3,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

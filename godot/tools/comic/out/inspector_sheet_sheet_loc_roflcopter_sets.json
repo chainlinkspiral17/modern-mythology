@@ -1,0 +1,23 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_roflcopter_sets",
+      "kind": "location",
+      "era": "era4",
+      "tags": [
+        "location",
+        "era4",
+        "dw_library_back_room",
+        "dw_stone_head",
+        "dw_the_ridge"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. an environment sheet for private late pages: a library back room with archive boxes, an empty chair and reading-room glass; a moss-grown carved stone face half sunk in grass beside a bench by a shingle wall; a yellow square street sign bearing a single eye on a pole with a fish weathervane above; a forested ridge east of a town with a faint glow on it; soft watercolor; labeled ROFLCOPTER SETS. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

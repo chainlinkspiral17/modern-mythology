@@ -26,14 +26,26 @@ LOT_W = 24.0; LOT_D = 18.0
 def build_ground():
     # Grass field
     make_box("Ground_Grass", (0.0, 0.0, 0.0), (LOT_W + 4.0, LOT_D + 4.0, 0.04), COL_GRASS)
-    # Sky dome
-    for sx, sy in [(0.0, LOT_D), (0.0, -LOT_D), (LOT_W, 0.0), (-LOT_W, 0.0)]:
-        if sy != 0:
-            make_box(f"Sky_NS_{sy:+.0f}", (sx, sy + (LOT_D if sy>0 else -LOT_D)*0.6, 8.0),
-                     (60.0, 0.04, 16.0), COL_SKY)
-        else:
-            make_box(f"Sky_EW_{sx:+.0f}", (sx + (LOT_W if sx>0 else -LOT_W)*0.6, sy, 8.0),
-                     (0.04, 60.0, 16.0), COL_SKY)
+    # 2026-08-04 · this was four 120m sky panels boxing the lot in at
+    # 20m — a painted room, not a cemetery on a parish road. Same
+    # failure as louisiana_road. The sky belongs to the environment;
+    # what geometry owes the view is DEPTH: treelines and the parish
+    # roofline receding past the wall until fog takes them.
+    # GROUND out past the treelines (2026-08-09 ground wave):
+    # parish lawn and pasture, not a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1200.0, 1200.0, 0.02),
+             (0.20, 0.28, 0.16, 1.0))
+    for i, (dist, bw, bh, shade) in enumerate([
+            (70.0, 70.0, 6.0, 0.86), (150.0, 120.0, 7.5, 0.72),
+            (300.0, 200.0, 9.0, 0.58), (520.0, 320.0, 11.0, 0.46)]):
+        c = (COL_TREE[0] * shade, COL_TREE[1] * shade,
+             COL_TREE[2] * shade, 1.0) if "COL_TREE" in globals() else \
+            (COL_SKY[0] * shade, COL_SKY[1] * shade, COL_SKY[2] * shade, 1.0)
+        for sgn in (-1, +1):
+            make_box(f"FarTree_NS_{i}_{sgn:+d}", (0.0, sgn * dist, bh * 0.5),
+                     (bw, 6.0, bh), c)
+            make_box(f"FarTree_EW_{i}_{sgn:+d}", (sgn * dist, 0.0, bh * 0.5),
+                     (6.0, bw, bh), c)
 
 
 def build_paths():
@@ -59,16 +71,16 @@ def build_vaults():
             sz_y = 0.80
             sz_z = 1.40 if (vi % 4) == 1 else 1.20
             vc = COL_VAULT_WHITE if (vi % 5) != 0 else COL_VAULT_SHADOW
-            make_box(f"Vault_{vi}_Base", (vx, vy, sz_z/2.0 + 0.10),
+            make_box(f"Vault_{vi}_Base", (vx, vy, sz_z/2.0 + 0.02),   # on the grass (2026-09-08)
                      (sz_x, sz_y, sz_z), vc)
             # Cap on top
-            make_box(f"Vault_{vi}_Cap", (vx, vy, sz_z + 0.16),
+            make_box(f"Vault_{vi}_Cap", (vx, vy, sz_z + 0.08),
                      (sz_x + 0.10, sz_y + 0.10, 0.12), COL_VAULT_SHADOW)
             # Cross on top for ~ 1 in 6
             if vi % 6 == 0:
-                make_box(f"Vault_{vi}_Cross_V", (vx, vy, sz_z + 0.50),
+                make_box(f"Vault_{vi}_Cross_V", (vx, vy, sz_z + 0.34),
                          (0.06, 0.06, 0.40), COL_BRASS)
-                make_box(f"Vault_{vi}_Cross_H", (vx, vy, sz_z + 0.56),
+                make_box(f"Vault_{vi}_Cross_H", (vx, vy, sz_z + 0.44),
                          (0.30, 0.06, 0.06), COL_BRASS)
             # Plaque on the S face
             make_box(f"Vault_{vi}_Plaque", (vx, vy - sz_y/2.0 - 0.01, sz_z*0.6 + 0.10),
@@ -93,17 +105,21 @@ def build_central_mausoleum():
     # Lintel inscription plaque
     make_box("Mauso_Inscription", (mx, my - 2.23, 2.80), (1.40, 0.02, 0.30), COL_BRASS)
     # Stepped roof — small pediment + pyramid spire
-    make_box("Mauso_Pediment", (mx, my, 3.80), (3.00, 4.60, 0.30), COL_VAULT_SHADOW)
-    make_box("Mauso_Cap", (mx, my, 4.30), (1.80, 1.80, 0.40), COL_MAUSOLEUM)
-    make_box("Mauso_Spire", (mx, my, 4.80), (0.40, 0.40, 0.80), COL_VAULT_SHADOW)
+    # (2026-09-22: every course of the roof hung 5–20 cm over the one below)
+    make_box("Mauso_Pediment", (mx, my, 3.75), (3.00, 4.60, 0.30), COL_VAULT_SHADOW)
+    make_box("Mauso_Cap", (mx, my, 4.10), (1.80, 1.80, 0.40), COL_MAUSOLEUM)
+    make_box("Mauso_Spire", (mx, my, 4.70), (0.40, 0.40, 0.80), COL_VAULT_SHADOW)
     # Cross atop
-    make_box("Mauso_Cross_V", (mx, my, 5.40), (0.06, 0.06, 0.40), COL_BRASS)
+    make_box("Mauso_Cross_V", (mx, my, 5.30), (0.06, 0.06, 0.40), COL_BRASS)
     make_box("Mauso_Cross_H", (mx, my, 5.50), (0.30, 0.06, 0.06), COL_BRASS)
 
 
 def build_iron_lampposts():
-    # 6 wrought-iron lampposts along the spine
-    for li, ly in enumerate([-8.0, -5.0, -2.0, +2.0, +5.0, +8.0]):
+    # 6 wrought-iron lampposts along the spine. The ±2.0 pair stood
+    # INSIDE the central mausoleum footprint (body y ∈ [-2.2,+2.2],
+    # x ∈ [-1.4,+1.4] — posts at x ±1.2 were embedded in the walls);
+    # pushed out past the base slab.
+    for li, ly in enumerate([-8.0, -5.0, -3.6, +3.6, +5.0, +8.0]):
         lx = +1.20 if li % 2 == 0 else -1.20
         make_cyl(f"Lamp_Post_{li}", (lx, ly, 1.50), 0.06, 3.00, COL_IRON, segments=8)
         make_box(f"Lamp_Top_Bracket_{li}", (lx, ly, 3.10), (0.40, 0.10, 0.10), COL_IRON)
@@ -137,7 +153,7 @@ def build_perimeter_iron_fence_and_gate():
         make_box(f"GatePier_{sgn:+d}", (sgn*1.50, fence_y, 1.50),
                  (0.40, 0.40, 3.00), COL_MAUSOLEUM)
         # Ball atop pier
-        make_cyl(f"GatePier_Ball_{sgn:+d}", (sgn*1.50, fence_y, 3.20),
+        make_cyl(f"GatePier_Ball_{sgn:+d}", (sgn*1.50, fence_y, 3.10),   # on the pier (2026-09-22)
                  0.20, 0.20, COL_VAULT_SHADOW, segments=10)
     # Gate leaves (half-open)
     make_box("Gate_Leaf_W", (-1.00, fence_y - 0.40, 1.00),
@@ -148,12 +164,17 @@ def build_perimeter_iron_fence_and_gate():
 
 def build_oaks_and_moss():
     # 3 oaks scattered through the rows
-    for oi, (ox, oy) in enumerate([(-8.5, -8.0), (+8.5, +6.0), (-3.0, +8.0)]):
+    # Oak 0 + 1 nudged off the vault rows (trunks were 0.35m inside
+    # Vault_0 / Vault_46 caps).
+    for oi, (ox, oy) in enumerate([(-9.1, -8.6), (+9.1, +6.6), (-3.0, +8.0)]):
         make_cyl(f"Oak_{oi}_Trunk", (ox, oy, 2.50), 0.40, 5.00, COL_OAK_TRUNK, segments=10)
+        # 2026-08-04: foliage was three flat discs. Blob lobes now.
+        from _props.geometry import make_blob
         for fi, (fdx, fdy, fdz) in enumerate([(0.0, 0.0, 5.50), (0.6, 0.3, 5.80),
                                                 (-0.4, -0.5, 5.60)]):
-            make_cyl(f"Oak_{oi}_Foliage_{fi}", (ox+fdx, oy+fdy, fdz),
-                     1.40, 1.20, COL_OAK_FOLIAGE, segments=10)
+            make_blob(f"Oak_{oi}_Foliage_{fi}", (ox+fdx, oy+fdy, fdz),
+                      1.55, COL_OAK_FOLIAGE, noise=0.20,
+                      seed=oi * 31 + fi, squash=0.78)
     # Moss patches on a few vault caps
     for mi, (mx, my) in enumerate([(-5.0, +1.5), (+7.0, -3.5), (-7.0, +5.5)]):
         make_box(f"Moss_{mi}", (mx, my, 1.36), (1.10, 0.70, 0.04), COL_MOSS)
@@ -176,21 +197,24 @@ def build_judgement_dressing():
     # Half-open gate · already built. Add an indicator showing the
     # right leaf is swung in.
     gate_x = 0.0
-    gate_y = -8.0
+    gate_y = -9.0   # fence_y (2026-09-22: the indicator used -8.0, a metre inside the gate)
     make_box("Gate_OpenLeaf_Indicator",
-             (gate_x + 0.30, gate_y + 0.20, 1.20),
+             (gate_x + 1.275, gate_y + 0.40, 1.20),   # swung in against the east pier (2026-09-22: it hung mid-gateway)
              (0.05, 0.40, 1.80),
              (0.18, 0.16, 0.14, 1.0))
 
-    # Central mausoleum approx at (0, 0); add the lectern at its
-    # south face
+    # Central mausoleum approx at (0, 0); the lectern stands on the
+    # south APPROACH. The body is solid stone spanning y ∈ [-2.2,
+    # +2.2] — the old y-1.50 placement buried this whole group
+    # (pedestal, list, missal) inside the mass. Left of the door;
+    # Beatrice's reading list stands center, the register right.
     mau_y = 0.0
-    lectern_x = 0.0
-    lectern_y = mau_y - 1.50
+    lectern_x = -1.60
+    lectern_y = mau_y - 2.90
     # Stone pedestal
     make_box("Lectern_Pedestal",
-             (lectern_x, lectern_y, 0.50),
-             (0.50, 0.50, 1.00),
+             (lectern_x, lectern_y, 0.53),
+             (0.50, 0.50, 1.06),   # up to the reading top (2026-09-22: 6 cm short)
              (0.72, 0.68, 0.60, 1.0))
     # Slanted reading top
     make_box("Lectern_Top",
@@ -303,27 +327,30 @@ def build_judgement_wave2_props():
         # Each slot has an existing vault; we add a small marker on top
         marker_names = ["Sylvie", "Emile", "Rose", "Charles"]
         name = marker_names[slot_i]
-        my = slot_offset
+        # standing on the grass against each vault's south face (the
+        # vaults are at y ±1.5, ±3.5 with 0.8 m bodies; 2026-09-22 the
+        # markers hung 40 cm up between them)
+        my = slot_offset + 0.07
         # Small headstone/plaque
         make_box("MenardPlot_%s_Marker" % name,
-                 (vre_x, my, 0.60),
+                 (5.0, my, 0.22),
                  (0.36, 0.06, 0.40),
                  (0.72, 0.68, 0.60, 1.0))
         # Engraved name (a darker rectangle)
         make_box("MenardPlot_%s_Engraving" % name,
-                 (vre_x, my - 0.031, 0.60),
+                 (5.0, my - 0.031, 0.22),
                  (0.28, 0.001, 0.10),
                  (0.20, 0.16, 0.12, 1.0))
 
     # Sylvie's wreath (evergreen circle with red bow)
     sylv_y = +3.0
     make_cyl("Sylvie_Wreath_Ring",
-             (vre_x + 0.20, sylv_y, 0.40),
+             (5.20, sylv_y + 0.07, 0.16),   # leaning on her marker, on the grass (2026-09-22)
              0.14, 0.03,
              (0.24, 0.38, 0.22, 1.0), segments=12, axis='Y')
     # Red satin bow on the wreath
     make_box("Sylvie_Wreath_Bow",
-             (vre_x + 0.20, sylv_y - 0.14, 0.34),
+             (5.20, sylv_y + 0.055, 0.10),
              (0.001, 0.06, 0.06),
              (0.72, 0.16, 0.14, 1.0))
     # Trimmed ivy at the base
@@ -357,42 +384,47 @@ def build_judgement_wave2_props():
     # Emile's small brass shovel-blade token
     em_y = +1.0
     make_box("EmilePlot_ShovelBladeToken",
-             (vre_x + 0.10, em_y - 0.20, 0.08),
+             (5.10, em_y - 0.10, 0.024),   # on the grass (2026-09-22: 6 cm up)
              (0.05, 0.03, 0.008),
              (0.78, 0.62, 0.30, 1.0))
 
     # ── the_reading_of_the_hard_names ─────────────────────────
 
-    # Sister Beatrice's second-hour lectern at central mausoleum
-    # Central mausoleum approx at (0, 0). Lectern in vestibule
+    # Sister Beatrice's second-hour lectern at central mausoleum.
+    # 2026-09-25: 15 cm further from the door — its post stood 3 cm inside the door's 0.9 m clearance
+    # The mausoleum body is SOLID stone (y in [-2.2,+2.2]) — the old
+    # "vestibule" placement at y=-0.60 buried the lectern and all 22
+    # names a meter inside the mass. It stands on the south approach
+    # in front of the bronze door (door face y=-2.21).
     make_box("Beatrice_Lectern_Post",
-             (0.0, -0.60, 0.60),
+             (0.0, -3.25, 0.60),
              (0.06, 0.06, 1.20),
              (0.62, 0.42, 0.26, 1.0))
     # Angled reading surface
+    # on the post (2026-09-23: 2.5 cm over it)
     make_box("Beatrice_Lectern_Surface",
-             (0.0, -0.62, 1.24),
+             (0.0, -3.27, 1.215),
              (0.32, 0.24, 0.03),
              (0.72, 0.56, 0.34, 1.0))
     # Bound reading list open on the surface
     make_box("Beatrice_ReadingList_Cover",
-             (0.0, -0.62, 1.26),
+             (0.0, -3.27, 1.237),
              (0.28, 0.22, 0.014),
              (0.42, 0.20, 0.16, 1.0))    # bookbinder maroon
     # Open page (cream)
     make_box("Beatrice_ReadingList_Page",
-             (0.0, -0.62, 1.27),
+             (0.0, -3.27, 1.2445),
              (0.26, 0.20, 0.001),
              (0.94, 0.90, 0.80, 1.0))
     # Twenty-two name lines (small dark stripes)
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_L_%d" % ni,
-                 (-0.06, -0.62 - 0.06 + ni * 0.013, 1.271),
+                 (-0.06, -3.27 - 0.06 + ni * 0.013, 1.2455),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_R_%d" % ni,
-                 (+0.06, -0.62 - 0.06 + ni * 0.013, 1.271),
+                 (+0.06, -3.27 - 0.06 + ni * 0.013, 1.2455),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
 
@@ -400,21 +432,21 @@ def build_judgement_wave2_props():
     vrw_x = -4.20
     wmf_y = +2.20   # slot 8 approximate
     make_box("WillaMay_Stone",
-             (vrw_x, wmf_y, 0.28),
+             (vrw_x, wmf_y, 0.14),   # on the grass (2026-09-22: 14 cm up)
              (0.20, 0.08, 0.24),
              (0.72, 0.68, 0.60, 1.0))
     # Engraved 'WILLA MAY FONTENOT · 1958-1958'
     make_box("WillaMay_Engraving",
-             (vrw_x, wmf_y - 0.041, 0.28),
+             (vrw_x, wmf_y - 0.041, 0.14),
              (0.16, 0.001, 0.06),
              (0.20, 0.16, 0.12, 1.0))
     # Cecile's stone adjacent (mother · relocated to be next to WMF in '94)
     make_box("Cecile_Stone_Adjacent",
-             (vrw_x, wmf_y - 0.40, 0.28),
+             (vrw_x, wmf_y - 0.40, 0.14),
              (0.20, 0.08, 0.24),
              (0.72, 0.68, 0.60, 1.0))
     make_box("Cecile_Engraving",
-             (vrw_x, wmf_y - 0.44, 0.28),
+             (vrw_x, wmf_y - 0.44, 0.14),
              (0.16, 0.001, 0.06),
              (0.20, 0.16, 0.12, 1.0))
 
@@ -422,7 +454,7 @@ def build_judgement_wave2_props():
     vrn_y = +4.20
     tab_x = +2.00
     make_box("TerryBertrand_SharedStone",
-             (tab_x, vrn_y, 0.30),
+             (tab_x, vrn_y, 0.16),   # on the path (2026-09-22: 14 cm up)
              (0.36, 0.08, 0.28),
              (0.72, 0.68, 0.60, 1.0))
     # Engraving 'love and rest · 1979'
@@ -433,28 +465,29 @@ def build_judgement_wave2_props():
     # Two small pale-pink zinnias at the base (from Natalie's reading)
     for zi, dx in enumerate([-0.06, +0.06]):
         make_cyl("TerryBertrand_Zinnia_%d" % zi,
-                 (tab_x + dx, vrn_y - 0.16, 0.06),
+                 (tab_x + dx, vrn_y - 0.16, 0.03),   # on the grass (2026-09-23: 3 cm over it)
                  0.024, 0.02,
                  (0.94, 0.72, 0.72, 1.0), segments=6, axis='Z')
 
-    # Louis Landry's stone at vault_row_e slot 22 (behind the family plots)
+    # Louis Landry's stone at vault_row_e slot 22 (behind the family
+    # plots). Pulled 16cm off the vault base it was sunk into.
     louis_x = +4.60
-    louis_y = -5.20
+    louis_y = -5.06     # against the vault base's face (2026-09-23: 2 cm off it)
     make_box("Louis_Stone",
-             (louis_x, louis_y, 0.28),
-             (0.24, 0.08, 0.32),
+             (louis_x, louis_y, 0.20),   # set in the ground (2026-09-23: 12 cm over it)
+             (0.24, 0.08, 0.40),
              (0.72, 0.68, 0.60, 1.0))
     make_box("Louis_Engraving",
-             (louis_x, louis_y - 0.041, 0.28),
+             (louis_x, louis_y + 0.041, 0.28),   # on the path face, not the face against the vault (2026-09-23)
              (0.20, 0.001, 0.09),
              (0.20, 0.16, 0.12, 1.0))
     # A small candle lit at the base (Cecile's · from the second-hour scene)
     make_cyl("Louis_LitCandle_Body",
-             (louis_x, louis_y - 0.16, 0.04),
+             (louis_x, louis_y + 0.16, 0.07),   # on the path in front (2026-09-23: inside the vault base)
              0.014, 0.06,
              (0.94, 0.92, 0.86, 1.0), segments=8, axis='Z')
     make_cyl("Louis_LitCandle_Flame",
-             (louis_x, louis_y - 0.16, 0.11),
+             (louis_x, louis_y + 0.16, 0.11),
              0.008, 0.02,
              (0.96, 0.72, 0.24, 1.0), segments=6, axis='Z')
 
@@ -493,26 +526,28 @@ def build_judgement_wave2_props():
              (0.14, 0.04, 0.20),
              (0.62, 0.62, 0.60, 1.0))
 
-    # The parish register on a small lectern at the central
-    # mausoleum vestibule (different from Beatrice's reading lectern)
-    reg_x = +0.60
-    reg_y = -0.60
+    # The parish register on a small lectern right of the mausoleum
+    # door (different from Beatrice's reading lectern). The old
+    # (+0.60, -0.60) "vestibule" stood inside the solid body.
+    reg_x = +1.60
+    reg_y = -2.90
     make_box("ParishRegister_Lectern_Post",
              (reg_x, reg_y, 0.60),
              (0.06, 0.06, 1.20),
              (0.62, 0.42, 0.26, 1.0))
+    # on the post (2026-09-23: 2.5 cm over it)
     make_box("ParishRegister_Lectern_Surface",
-             (reg_x, reg_y - 0.02, 1.24),
+             (reg_x, reg_y - 0.02, 1.215),
              (0.36, 0.28, 0.03),
              (0.72, 0.56, 0.34, 1.0))
     # The register itself · larger, thicker leather-bound book
     make_box("ParishRegister_Book_Cover",
-             (reg_x, reg_y - 0.02, 1.28),
+             (reg_x, reg_y - 0.02, 1.25),
              (0.32, 0.24, 0.04),
              (0.24, 0.14, 0.10, 1.0))    # aged leather
     # Gold-stamped 'REGISTER' on the cover
     make_box("ParishRegister_Book_GoldStamp",
-             (reg_x, reg_y - 0.041, 1.30),
+             (reg_x, reg_y - 0.041 - 0.1001, 1.25),
              (0.20, 0.001, 0.03),
              (0.86, 0.72, 0.20, 1.0))
 

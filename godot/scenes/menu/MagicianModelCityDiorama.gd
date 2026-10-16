@@ -130,7 +130,7 @@ func _build_content() -> void:
 	var lbl := Label.new()
 	lbl.text = ASCII_MODEL
 	lbl.add_theme_color_override("font_color", Color(0.70, 0.85, 0.80))
-	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.add_child(lbl)
 	for el_v in _MODEL_ELEMENTS:
@@ -147,7 +147,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_scribe.01 // cathedral.workshop.bbs // 9 elements indexed (1 unwired) // integrity 0.97]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 

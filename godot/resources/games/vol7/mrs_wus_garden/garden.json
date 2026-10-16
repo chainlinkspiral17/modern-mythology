@@ -1,0 +1,201 @@
+{
+ "id": "mrs_wus_garden_data",
+ "notes": "Nine beds, six evenings. needs[] indexes evenings 1-4 (evening 5 is the frost, evening 6 the aftermath). Stories fire at SIT keyed to the last-tended bed. Voice: Mrs. Wu, eighty-one, funny in the spare way.",
+ "evenings": [
+  {
+   "n": 1,
+   "date": "October 3",
+   "intro": "She hands you the gloves over the fence like they were always yours. 'Three things an evening,' she says. 'More than three and you are gardening at the garden. It notices.'"
+  },
+  {
+   "n": 2,
+   "date": "October 10",
+   "intro": "The kettle is already on when you come through the gate. She is somewhere in the beds, humming something in waltz time, three notes of it, over and over."
+  },
+  {
+   "n": 3,
+   "date": "October 17",
+   "intro": "Grey sky with its mind made up. 'Rain by Sunday,' she says. 'The radio disagrees. The radio is young.'"
+  },
+  {
+   "n": 4,
+   "date": "October 24",
+   "intro": "The maples two streets over have gone over all at once. She stands looking at the beds the way you look at a room before a trip."
+  },
+  {
+   "n": 5,
+   "date": "October 31 · THE FROST WARNING",
+   "intro": "The radio says tonight, hard, mid-twenties. She has the old bedsheets out on the porch rail, folded, counted, not enough. 'They are all somebody's,' she says, and will not say which. Four trips of your arms before dark. Choose."
+  },
+  {
+   "n": 6,
+   "date": "November 7 · after",
+   "intro": "White lace on the grass at the edges, melting off. She is on the porch with two cups already poured, watching you come through the gate before she looks at the beds. 'Walk it with me.'"
+  }
+ ],
+ "beds": [
+  {
+   "id": "dahlias",
+   "name": "Gong's dahlias",
+   "plant": "dinner-plate dahlias, dark red",
+   "person": "her husband · nine years gone",
+   "needs": [
+    "cut_back",
+    "look",
+    "water",
+    "cut_back"
+   ],
+   "hardy": false,
+   "story": "'Gong grew these to win. Every fair, every year, a grown man pacing in front of a vegetable table like a lawyer.' She turns her cup. 'He is nine years gone and they still come up the size of his opinions. I have stopped entering them. They know what they are.'"
+  },
+  {
+   "id": "camellia",
+   "name": "the coffee-can camellia",
+   "plant": "a camellia, taller than the fence",
+   "person": "her mother · it came west in a coffee can, 1947",
+   "needs": [
+    "water",
+    "mulch",
+    "look",
+    "mulch"
+   ],
+   "hardy": true,
+   "story": "'My mother carried this on her lap for eleven days in 1947 in a Folgers can. It was a stick with one leaf. Customs asked her what it was and she said BREAKFAST, and the man was tired, and here is a tree.' She pats the trunk once, like a shoulder."
+  },
+  {
+   "id": "pumpkin",
+   "name": "Marcus's pumpkin",
+   "plant": "one enormous pumpkin on a heroic vine",
+   "person": "the boy two doors down · has never once watered it",
+   "needs": [
+    "water",
+    "water",
+    "weed",
+    "water"
+   ],
+   "hardy": false,
+   "story": "'Marcus planted this in May and has visited it four times, like a rich uncle.' She looks at it without disapproval. 'It will go four hundred pounds and he will get his picture in the paper with it and that is correct. Gardens are not fair. They are generous, which is different.'"
+  },
+  {
+   "id": "bok_choy",
+   "name": "the practical rows",
+   "plant": "bok choy in soldier lines",
+   "person": "hers · simply hers",
+   "needs": [
+    "weed",
+    "water",
+    "weed",
+    "water"
+   ],
+   "hardy": false,
+   "story": "'Everything else in this yard is a story. This is DINNER.' She snaps a stem, hands you half. 'A garden with no dinner in it is a museum. Eat.'"
+  },
+  {
+   "id": "roses",
+   "name": "the anniversary rose",
+   "plant": "one rose bush, badly placed, unmovable",
+   "person": "planted for their thirtieth · in the wrong spot on purpose",
+   "needs": [
+    "cut_back",
+    "weed",
+    "look",
+    "cut_back"
+   ],
+   "hardy": true,
+   "story": "'Gong planted it in the wrong place for the light and I told him so and he said: it will grow toward you, you are always in the kitchen window.' She drinks her tea. 'It grows toward the kitchen window. I have no comment.'"
+  },
+  {
+   "id": "fig",
+   "name": "the impossible fig",
+   "plant": "a fig tree, fruiting, which it shouldn't",
+   "person": "nobody's · figs don't fruit this far north · nobody told it",
+   "needs": [
+    "look",
+    "water",
+    "mulch",
+    "look"
+   ],
+   "hardy": true,
+   "story": "'Three nurserymen have told me this tree is impossible. I bring them a bag of figs each September and they say microclimate in the voice men use instead of sorry.' The tree does nothing, impossibly."
+  },
+  {
+   "id": "mums",
+   "name": "the November chrysanthemums",
+   "plant": "chrysanthemums held back for November",
+   "person": "for the graves · hers to bring",
+   "needs": [
+    "water",
+    "weed",
+    "water",
+    "tie_up"
+   ],
+   "hardy": false,
+   "story": "'These are not for the yard. First week of November I cut every one and take the bus with two buckets.' She says it the way you say a standing appointment. 'Gong. My sister. Mr. Petersen from the store who had nobody. The bus driver knows the buckets now. He waits.'"
+  },
+  {
+   "id": "peas",
+   "name": "the calendar gamble",
+   "plant": "late snap peas racing the cold",
+   "person": "a bet she makes every year · against October itself",
+   "needs": [
+    "tie_up",
+    "water",
+    "tie_up",
+    "water"
+   ],
+   "hardy": false,
+   "story": "'Every year I plant peas in August and every year the frost wins and every year I do it again.' She shrugs with one shoulder. 'Twice I have eaten peas in November. TWICE. You do not stop buying the ticket after you have won the lottery twice.'"
+  },
+  {
+   "id": "moon_bed",
+   "name": "the moon garden",
+   "plant": "white flowers that open at dusk · nicotiana, moonflower, alyssum",
+   "person": "her sister's idea · her sister is gone",
+   "needs": [
+    "weed",
+    "look",
+    "water",
+    "look"
+   ],
+   "hardy": false,
+   "story": "She is quiet a while first. 'My sister said: you garden all day and then the evening comes and the garden is done being looked at. Plant white. White stays up late with you.' The nicotiana opens while she says it, on cue, which neither of you mentions."
+  }
+ ],
+ "need_lines": {
+  "water": "the can, twice, slow at the roots the way she showed you",
+  "weed": "you weed on your knees · the difference between a weed and a volunteer is her call, and she calls it from the porch without looking",
+  "mulch": "leaves and straw tucked to the crown · 'a blanket, not a burial,' she says",
+  "cut_back": "the good secateurs · cut to the joint, angled away from rain",
+  "tie_up": "soft twine, loose loops · 'tie like you might be wrong'",
+  "look": "you just look at it a while · this is a real instruction and it takes the whole minute"
+ },
+ "porch_default_story": "You didn't tend anything before sitting, and she notices, and approves of it more than anything you've done yet. 'Sometimes the visit IS the chore.' The tea is oolong. The evening does the rest.",
+ "melody": {
+  "fragment": "She hums while she works · three notes in waltz time, over and over, the way a pot simmers.",
+  "whole": "Tonight, without the gloves on, she hums the whole thing start to finish — a small tune in waltz time that keeps almost resolving and then going up instead. You have heard it somewhere before. You will hear it somewhere again. She catches you listening and does not stop, which from her is a door held open."
+ },
+ "visitor": {
+  "evening": 3,
+  "gate_token": "pirate_summer_finished",
+  "text": "A woman stands at the fence, forty or so, jacket zipped against the grey. There's a whistle on a red lanyard around her neck, the lanyard gone soft with age, and she holds it while she talks the way some people hold keys. She asks whether Mrs. Wu still does the fall open house. 'The camp girl,' Mrs. Wu says to you later, as if that were a name, and in some counties it is. She stays twenty minutes, looks at every bed, waters nothing, and leaves lighter than she came.",
+  "token": "wu_garden_the_counselor_visited"
+ },
+ "endings": {
+  "garden_goes_on": {
+   "title": "THE GARDEN GOES ON",
+   "body": "The frost took what frost takes and the garden shrugged and kept most of itself, because somebody had been there three evenings a week learning which beds were whose.\n\nIn the spring there is a new flier · FALL OPEN HOUSE · the date wrong again, a new wrong date, kept again, free again. On the back, in her hand, under 'parking' and 'no dogs': ASK THE NEIGHBOR.\n\nThat's you. That's the whole prize. It is enough."
+  },
+  "half_slept": {
+   "title": "HALF-SLEPT",
+   "body": "Some beds stood it and some went down, and the garden in November is a checkerboard of kept and lost.\n\n'Half a garden is a garden,' she says, which is true, and 'the other half is spring's problem,' which is also true, and neither one is what her face says while she says them.\n\nYou'll be here in March. You both know it. The gloves stay on your side of the fence."
+  },
+  "good_neighbor_anyway": {
+   "title": "A GOOD NEIGHBOR ANYWAY",
+   "body": "The frost was hard on the beds because you were mostly on the porch, and the strange thing — she would tell you if you asked — is that she wouldn't trade it back.\n\n'Gardens die back,' she says, pouring. 'Company doesn't.'\n\nThe stories you sat for are yours now. That was the crop. Some falls that IS the harvest, and only the garden minds."
+  },
+  "fliers_in_drawer": {
+   "title": "THE FLIERS STAY IN THE DRAWER",
+   "body": "The frost went through the beds like a bill collector and there is no open house in the spring flier drawer this year.\n\nShe is not angry. Eighty-one-year-olds are not angry at weather or at neighbors; both simply happen or don't.\n\nThe gate is unlatched, is the thing. All winter, it stays unlatched."
+  }
+ }
+}

@@ -45,6 +45,15 @@ make that demon portrait resolve once the visitor appears in a
 scene JSON. The static-shader gating is automatic — anything under
 `demons/` is treated as a demon.
 
+## Generating them
+
+All eight slots are in `godot/tools/meshy_roster.json` (`kind: "demon"`)
+with a bold-silhouette style preamble tuned for the static shader:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run demon --provider google --texture
+```
+
 ## Authoring tips
 
 - Demon meshes should stand at roughly the same scale as heroes

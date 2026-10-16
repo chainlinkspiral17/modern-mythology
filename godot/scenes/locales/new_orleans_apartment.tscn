@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://new_orleans_apartment_cameo"]
+[gd_scene load_steps=26 format=3 uid="uid://new_orleans_apartment_cameo"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/new_orleans_apartment.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.86, 0.62, 0.32, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.06, 0.04, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.62, 0.42, 1)
 ambient_light_energy = 0.78
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.30, 0.20, 1)
 fog_light_energy = 0.35
 fog_density = 0.004
@@ -157,17 +172,26 @@ environment = SubResource("Env_Locale")
 [node name="Key_ShutterSun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(1.00, 0.84, 0.52, 1)
-light_energy = 0.65
+light_energy = 1.0
 shadow_enabled = false
 
 [node name="Fill_CeilingFan" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.86, 0.66, 1)
-light_energy = 0.35
+light_energy = 0.45
+shadow_enabled = false
+
+; Warm ceiling-fan light (blender fan hub 0,3,CEIL-0.42 → godot 0,2.98,-3.0)
+; (2026-09-19: in the fan's light bowl, blender z 2.85 — it sat inside the hub)
+[node name="Practical_FanLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, -3.0)
+light_color = Color(1.0, 0.86, 0.58, 1)
+light_energy = 1.3
+omni_range = 5.5
 shadow_enabled = false
 
 [node name="Back_BalconyCool" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, 5)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, 5)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.25
 shadow_enabled = false
@@ -272,7 +296,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +315,39 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · the arcana sets get the markers their scripts call for) ────────
+; rotation B: from the bed corner - the rented sofa, the TV, the tall windows
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.4, 1.5, -4.6)
+rotation = Vector3(-0.206388, 2.39321, 0)
+metadata/fov = 54.0
+
+; closeup: Jimmy on the rented sofa
+; RE-AIMED 2026-10-03: the backdrop is the sofa he crashed on, the lace curtain
+; and the shutters behind it (it was the cushions at arm's length)
+[node name="shot_closeup_jimmy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.150, 1.420, -3.100)
+rotation = Vector3(-0.0942, 2.5682, 0.0)
+metadata/fov = 36.0
+
+; insert: the microwave on the kitchenette
+; (2026-09-19: the ajar door is on its hinge at the microwave now, blender
+; (1.01, 5.24); the lens turns north-east to it)
+; RE-AIMED 2026-10-03: the greasy door FACE ON (his reflection) — it was the side of the box
+[node name="shot_insert_microwave" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.300, 1.220, -4.500)
+rotation = Vector3(-0.1088, 0.1095, 0.0)
+metadata/fov = 30.0
+
+; insert: up at the ceiling fan
+[node name="shot_insert_ceiling_fan" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.6, 1.3, -2.6)
+rotation = Vector3(1.06435, 0.982794, 0)
+metadata/fov = 44.0
+
+; insert: the screen said Q. PAUL
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.0, -2.4)
+rotation = Vector3(-0.5727, 1.0201, 0.0)
+metadata/fov = 42.0

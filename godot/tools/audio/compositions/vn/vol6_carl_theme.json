@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "vol6_carl_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_carl_theme",
+  "notes": "Carl \u00b7 Lunch Pail. Tin-clasp pop + a thermos pour + the unhurried exhale of a man who has done this thirty thousand times."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.112,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.08,
+     "vel": 0.3
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1.15,
+     "dur": 0.06,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.288,
+   "notes": [
+    {
+     "pitch": "F2",
+     "bar": 3,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 3,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.192,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

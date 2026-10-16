@@ -1,0 +1,25 @@
+{
+  "id": "the_tideline",
+  "vol": 7,
+  "kind": "slowstick_stub",
+  "status": "stub",
+  "notes": "Rocha's first solo credit \u00b7 2004 \u00b7 a 2-hour meditation piece.  One beach, one tide cycle, one walk.",
+  "shelf": {
+    "label_title": "THE TIDELINE",
+    "label_subtitle": "walk until the water turns",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 2004,
+    "release_month": "Q1",
+    "hardware": "Oneironautics Slowstick \u00b7 Rev 2",
+    "genre_stamp": "MEDITATION / WALK",
+    "shelf_condition": "pristine except the spine, which is sun-faded to almost white \u00b7 it lived on a windowsill",
+    "prior_owner": "Olaf, gift, 2004",
+    "provenance_note": "A mutual friend told Olaf that Ines Rocha specifically wanted him to have a copy.  He never found out why.  He played it once a year, in October.",
+    "in_fiction_dev_note": "Rocha made it alone over six months of evenings after Estuary 3 shipped.  One beach rendered at four times of tide.  The only text in the game is the last line.  She has never said what the beach is, but the drift-line debris includes a specific child's shoe that also appears in Fey Faire's questionnaire art."
+  },
+  "acts_deferred_note": "Playable content authoring deferred.  Design intent: a 2-hour real-time walk, tide as the only clock, one ending.",
+  "lore_tokens_awarded_on_completion": [
+    "the_tideline_finished"
+  ]
+}

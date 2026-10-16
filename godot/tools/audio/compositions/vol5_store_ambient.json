@@ -1,0 +1,9 @@
+{
+  "meta": {"title":"a store that never closes","for":"VN locale ambient bed · kwik_stop / nexcorp / board_lords / centro / el_rancho / pit_stop","notes":"fluorescent hum, the low drone of a cooler wall, a faint HVAC hiss. flat retail air, under the Music Player."},
+  "tempo_bpm": 60, "time_sig": [4,4], "sample_rate": 44100,
+  "tracks": [
+    {"instrument":"ambient_drone","gain":0.22,"notes":[{"pitch":"A2","bar":1,"beat":1,"dur":64.0,"vel":0.34}]},
+    {"instrument":"fluorescent_hum","gain":0.16,"notes":[{"pitch":"A4","bar":1,"beat":1,"dur":64.0,"vel":0.5}]},
+    {"instrument":"rain","gain":0.08,"notes":[{"pitch":"E3","bar":1,"beat":1,"dur":64.0,"vel":0.4}]}
+  ]
+}

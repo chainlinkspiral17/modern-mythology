@@ -6,7 +6,7 @@
   "title": "Tem at the Cabin — Afternoon",
   "nodes": [
     {
-      "src": "3d:cabin_interior",
+      "src": "3d:cabin_interior_day",
       "t": "bg"
     },
     {
@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
+      "text": "[trip:1.2][mood:dusk][shot:closeup finn]Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
       "t": "narrate"
     },
     {
@@ -71,7 +71,7 @@
     },
     {
       "char": "tem",
-      "text": "Coffee's hot.",
+      "text": "[shot:closeup person]Coffee's hot.",
       "expr": "neutral",
       "t": "say"
     },
@@ -99,12 +99,12 @@
     },
     {
       "char": "finn",
-      "text": "They'll be on it tomorrow.",
+      "text": "[shot:closeup person_b]They'll be on it tomorrow.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "She looked at the package on the table and then back at him.",
+      "text": "[shot:insert package]She looked at the package on the table and then back at him.",
       "t": "narrate"
     },
     {
@@ -130,7 +130,7 @@
       "t": "say"
     },
     {
-      "text": "Finn's expression did not move.",
+      "text": "[shot:closeup finn]Finn's expression did not move.",
       "t": "narrate"
     },
     {
@@ -165,7 +165,7 @@
     },
     {
       "char": "tem",
-      "text": "I'm telling you now because I should have said something at the table yesterday. I didn't because I'd been awake too long and because saying it in front of all three of you on five hours' sleep felt wrong. The not-saying was a small dishonesty. I am sorry.",
+      "text": "[shot:closeup person]I'm telling you now because I should have said something at the table yesterday. I didn't because I'd been awake too long and because saying it in front of all three of you on five hours' sleep felt wrong. The not-saying was a small dishonesty. I am sorry.",
       "expr": "serious",
       "t": "say"
     },
@@ -188,18 +188,28 @@
       "t": "narrate"
     },
     {
-      "text": "A man had come into the reading room and sat in the chair across from her and read a book. After a long time he had said the bench is doing what you think it is doing, and when she had asked what he meant he had said he had been watching her sit on it and that in eight years at the museum he had watched maybe four people sit on the bench in a way the bench had responded to, and she was the fourth.",
+      "text": "A man had come into the reading room and sat in the chair across from her and read a book. After a long time he had said the bench is doing what you think it is doing,",
+      "t": "narrate"
+    },
+    {
+      "text": "and when she had asked what he meant he had said he had been watching her sit on it and that in eight years at the museum he had watched maybe four people sit on the bench in a way the bench had responded to, and she was the fourth.",
       "t": "narrate"
     },
     {
       "char": "finn",
-      "text": "What had the bench done.",
+      "text": "[shot:closeup person_b]What had the bench done.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "I didn't know what it had done at the time. I knew I'd been registering something. The bench had felt warm. Wood doesn't feel warm. The bench had a small carved spiral on the underside of the seat that I had been running my thumb across without noticing I was doing it.",
+      "text": "I didn't know what it had done at the time. I knew I'd been registering something. The bench had felt warm. Wood doesn't feel warm.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The bench had a small carved spiral on the underside of the seat that I had been running my thumb across without noticing I was doing it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -210,7 +220,7 @@
       "t": "say"
     },
     {
-      "text": "She looked at him.",
+      "text": "[shot:closeup tem]She looked at him.",
       "t": "narrate"
     },
     {
@@ -236,7 +246,7 @@
       "t": "say"
     },
     {
-      "text": "He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
+      "text": "[beat:chill][mood:candlelight_low][shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
       "t": "narrate"
     },
     {
@@ -265,7 +275,7 @@
     },
     {
       "char": "finn",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -276,7 +286,11 @@
       "t": "say"
     },
     {
-      "text": "He sat back down. He looked at his coffee for a minute. When he looked back up at her his face was not what she had expected. He was not annoyed and he was not concerned in the careful way Lena would have been concerned. He was just present. He was looking at her the way he looked at the crow on his fencepost.",
+      "text": "He sat back down. He looked at his coffee for a minute. When he looked back up at her his face was not what she had expected. He was not annoyed and he was not concerned in the careful way Lena would have been concerned.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was just present. He was looking at her the way he looked at the crow on his fencepost.",
       "t": "narrate"
     },
     {
@@ -291,12 +305,12 @@
     },
     {
       "char": "tem",
-      "text": "Because Lena is in love with me.",
+      "text": "[shot:closeup person][beat:still]Because Lena is in love with me.",
       "expr": "serious",
       "t": "say"
     },
     {
-      "text": "He did not move. He took the answer in the way he took weather.",
+      "text": "[mood:dusk][shot:closeup finn]He did not move. He took the answer in the way he took weather.",
       "t": "narrate"
     },
     {
@@ -323,7 +337,7 @@
     },
     {
       "char": "tem",
-      "text": "I am also afraid that what I want from her and what is happening in the town are about to be the same conversation, and I do not want them to be the same conversation, because she deserves the first one without the second one running underneath it.",
+      "text": "[shot:closeup person]I am also afraid that what I want from her and what is happening in the town are about to be the same conversation, and I do not want them to be the same conversation, because she deserves the first one without the second one running underneath it.",
       "expr": "serious",
       "t": "say"
     },
@@ -351,7 +365,7 @@
     },
     {
       "char": "tem",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "serious",
       "t": "say"
     },
@@ -361,13 +375,25 @@
     },
     {
       "char": "finn",
-      "text": "You were going to tell her about the bowl eventually.",
+      "text": "[shot:closeup person_b]You were going to tell her about the bowl eventually.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "I was going to tell all three of you tomorrow at the cabin. I am still going to tell all three of you tomorrow at the cabin. I'm telling you this afternoon because you came up alone and the cabin made the room for it and I would rather not do the telling for the first time in front of all three of you. I have done that twice already this week. It hasn't gone well.",
+      "text": "I was going to tell all three of you tomorrow at the cabin. I am still going to tell all three of you tomorrow at the cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'm telling you this afternoon because you came up alone and the cabin made the room for it and I would rather not do the telling for the first time in front of all three of you. I have done that twice already this week.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It hasn't gone well.",
       "expr": "neutral",
       "t": "say"
     },
@@ -379,7 +405,7 @@
     },
     {
       "char": "tem",
-      "text": "It's gone how it's gone. I want this one to go better.",
+      "text": "[shot:closeup person]It's gone how it's gone. I want this one to go better.",
       "expr": "neutral",
       "t": "say"
     },
@@ -401,7 +427,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },
@@ -410,11 +436,19 @@
       "t": "narrate"
     },
     {
-      "text": "She had, for two years, been thinking that the patches on the murals were leaking from the tower above old-Yachats. She had not gone to the tower. She had not, in two years of thinking about it, walked the access road. The man who had lived in the tower was Nate Dean. He had died in 2042. The tower had been sealed since.",
+      "text": "She had, for two years, been thinking that the patches on the murals were leaking from the tower above old-Yachats. She had not gone to the tower. She had not, in two years of thinking about it, walked the access road.",
       "t": "narrate"
     },
     {
-      "text": "She did not know what was in it. She had been afraid of it. Brandon Tillman had been investigating Dean — that was, she was fairly sure, why Brandon had moved to the museum-town in 2042, the year Dean died, though Brandon had not said it in those words and she had not asked.",
+      "text": "The man who had lived in the tower was Nate Dean. He had died in 2042. The tower had been sealed since.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know what was in it. She had been afraid of it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Brandon Tillman had been investigating Dean — that was, she was fairly sure, why Brandon had moved to the museum-town in 2042, the year Dean died, though Brandon had not said it in those words and she had not asked.",
       "t": "narrate"
     },
     {
@@ -422,11 +456,15 @@
       "t": "narrate"
     },
     {
-      "text": "She did not know what was leaking from the tower or how to stop it or whether stopping it was the right thing to do or whether there was someone living in the town now who was trying to stop them from stopping it. She did not know any of it. She had been pretending, badly, to know more than she did because the pretending had been the only way she had figured out to keep going.",
+      "text": "She did not know what was leaking from the tower or how to stop it or whether stopping it was the right thing to do or whether there was someone living in the town now who was trying to stop them from stopping it.",
       "t": "narrate"
     },
     {
-      "text": "Finn listened. When she was done he sat for a while looking at the table between them, not at her.",
+      "text": "She did not know any of it. She had been pretending, badly, to know more than she did because the pretending had been the only way she had figured out to keep going.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert table]Finn listened. When she was done he sat for a while looking at the table between them, not at her.",
       "t": "narrate"
     },
     {
@@ -460,7 +498,11 @@
       "t": "say"
     },
     {
-      "text": "She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry. She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
+      "text": "[shot:closeup tem]She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
       "t": "narrate"
     },
     {
@@ -470,7 +512,7 @@
       "t": "say"
     },
     {
-      "text": "He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
+      "text": "[shot:insert package]He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
       "t": "narrate"
     },
     {
@@ -489,7 +531,13 @@
     },
     {
       "char": "tem",
-      "text": "He said they were the only things that had survived an event he didn't want to describe. He said he thought they meant something and that he didn't, by 2050, know what. He said he was tired and dying. He said he was going to give them to whoever the next person was. He said he was going to figure out who that was before he went.",
+      "text": "He said they were the only things that had survived an event he didn't want to describe. He said he thought they meant something and that he didn't, by 2050, know what. He said he was tired and dying.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said he was going to give them to whoever the next person was. He said he was going to figure out who that was before he went.",
       "expr": "neutral",
       "t": "say"
     },
@@ -506,7 +554,7 @@
       "t": "say"
     },
     {
-      "text": "Finn looked at the three pieces. He put a finger to the joined edges, very lightly, and took it back.",
+      "text": "[shot:insert charred_wood]Finn looked at the three pieces. He put a finger to the joined edges, very lightly, and took it back.",
       "t": "narrate"
     },
     {
@@ -580,19 +628,27 @@
       "t": "narrate"
     },
     {
-      "text": "She told him she had finished re-reading the John Frank novel on Tuesday. He asked how it had ended this time. She said it had ended differently than the first two readings, and he asked her what that meant, and she said she did not know yet and would tell him when she had figured it out. He let her.",
+      "text": "She told him she had finished re-reading the John Frank novel on Tuesday. He asked how it had ended this time.",
       "t": "narrate"
     },
     {
-      "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much. The cabin held them at sixty-three by the thermometer. The rain on the roof did not change.",
+      "text": "She said it had ended differently than the first two readings, and he asked her what that meant, and she said she did not know yet and would tell him when she had figured it out. He let her.",
       "t": "narrate"
     },
     {
-      "text": "He left at five-twelve.",
+      "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much.",
       "t": "narrate"
     },
     {
-      "src": "3d:miller_back_porch",
+      "text": "The cabin held them at sixty-three by the thermometer. The rain on the roof did not change.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:establish]He left at five-twelve.",
+      "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_porch",
       "t": "bg"
     },
     {
@@ -600,7 +656,11 @@
       "t": "hide"
     },
     {
-      "text": "The crow flew off the dashboard as he opened the truck door, made one slow circle of the clearing, and landed on his right shoulder. He got into the truck. The crow stayed on his shoulder. He drove down the road, and Tem stood on the porch with her arms folded and watched the truck disappear into the cedars.",
+      "text": "The crow flew off the dashboard as he opened the truck door, made one slow circle of the clearing, and landed on his right shoulder. He got into the truck. The crow stayed on his shoulder.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drove down the road, and Tem stood on the porch with her arms folded and watched the truck disappear into the cedars.",
       "t": "narrate"
     },
     {
@@ -618,7 +678,11 @@
       "t": "show"
     },
     {
-      "text": "She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
+      "text": "[mood:candlelight_low][shot:insert bowl~]She came back inside. She banked the stove. She washed the cups.",
+      "t": "narrate"
+    },
+    {
+      "text": "She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
       "t": "narrate"
     },
     {
@@ -626,7 +690,7 @@
       "t": "narrate"
     },
     {
-      "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had something inside it.",
+      "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had [wave amp=6 freq=2]something inside it[/wave].",
       "t": "narrate"
     },
     {

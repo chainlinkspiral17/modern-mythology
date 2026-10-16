@@ -1,0 +1,339 @@
+{
+  "id": "moment_hollow_spruce",
+  "notes": "HeroImage \u00b7 the lightning-struck Sitka spruce with the hollow \u00b7 the ziploc bag on the nail \u00b7 afternoon light shaft \u00b7 a chipmunk on the boulder.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#141a10",
+    "#1a2812",
+    "#2a3a1a",
+    "#3a4a20",
+    "#0a0a08",
+    "#2a1e12",
+    "#4a3418",
+    "#6a4820",
+    "#9a7040",
+    "#c8ac68",
+    "#8a9098",
+    "#c8c8c8",
+    "#181818",
+    "#e8dcc0",
+    "#5a4030",
+    "#5a4a3a",
+    "#6a5a4a",
+    "#8a6248",
+    "#3a2418",
+    "#c8b478",
+    "#f4e8c8"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        14
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        14,
+        24
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          30,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          90,
+          90
+        ],
+        [
+          76,
+          90
+        ]
+      ],
+      "color": 20
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        76,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          8,
+          90
+        ],
+        [
+          16,
+          70
+        ],
+        [
+          26,
+          90
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        56,
+        0,
+        52,
+        90
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        58,
+        0,
+        4,
+        90
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        66,
+        0,
+        3,
+        90
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        0,
+        4,
+        90
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        88,
+        0,
+        3,
+        90
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        100,
+        0,
+        4,
+        90
+      ],
+      "color": 7
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          70,
+          4
+        ],
+        [
+          78,
+          22
+        ],
+        [
+          76,
+          40
+        ],
+        [
+          82,
+          46
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          72,
+          4
+        ],
+        [
+          80,
+          22
+        ],
+        [
+          78,
+          40
+        ],
+        [
+          84,
+          46
+        ]
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        40,
+        22,
+        20
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        40,
+        22,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        58,
+        22,
+        2
+      ],
+      "color": 5
+    },
+    {
+      "op": "vline",
+      "x": 82,
+      "y_range": [
+        42,
+        44
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        44,
+        14,
+        14
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        44,
+        14,
+        2
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        78,
+        48,
+        10,
+        8
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        79,
+        49,
+        8,
+        3
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        116,
+        60,
+        32,
+        20
+      ],
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        116,
+        60,
+        32,
+        2
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        128,
+        56,
+        8,
+        4
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 134,
+      "y_range": [
+        54,
+        56
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 132,
+      "y_range": [
+        57,
+        59
+      ],
+      "color": 18
+    },
+    {
+      "op": "text",
+      "xy": [
+        16,
+        84
+      ],
+      "s": "SHE  KEPT  IT  IN  THE  TREE",
+      "color": 19
+    }
+  ]
+}

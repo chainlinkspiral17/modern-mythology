@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -161,18 +161,40 @@ light_energy = 0.42
 shadow_enabled = false
 
 [node name="BarPendantHot" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.2, 1.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.9, -6.2)
 light_color = Color(0.96, 0.74, 0.42, 1)
 light_energy = 1.1
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="BoothCandleFill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 3.5, 1.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.2, -3.5)
 light_color = Color(0.96, 0.52, 0.32, 1)
 light_energy = 0.6
 shadow_enabled = false
 omni_range = 4.0
+
+; ── Rig pass 2026-08-04 (lighting playbook: three-light
+; foundation + practicals at the builder's real fixture
+; coordinates — a light with no visible source is a fault).
+[node name="Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9396926207859084, -0.2801664995932355, 0.1961746949690111, 0, 0.5735764363510462, 0.8191520442889918, -0.3420201433256687, -0.7697511313200572, 0.5389855446957563, 0, 5, -3)
+light_color = Color(0.96, 0.93, 0.86, 1)
+light_energy = 0.85
+shadow_enabled = false
+
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
+light_color = Color(0.88, 0.91, 0.95, 1)
+light_energy = 0.30
+shadow_enabled = false
+
+[node name="Prac_Neon_Open_BG" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40, 2.50, -8.40)
+light_color = Color(0.55, 0.85, 0.8, 1)
+light_energy = 0.9
+omni_range = 5.0
+shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -274,7 +296,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -293,3 +315,26 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Booth_0_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 0.800, -1.200)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 0.96
+
+[node name="Booth_1_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 0.800, -2.620)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 0.96
+
+[node name="Booth_3_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 0.800, -5.460)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 0.96

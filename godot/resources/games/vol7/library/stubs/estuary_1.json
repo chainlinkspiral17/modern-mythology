@@ -1,0 +1,45 @@
+{
+  "id": "estuary_1",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "authored_stub · playable acts deferred",
+  "notes": "The original ESTUARY (Oneironautics, 2001). Two-hour school-library curio. Wave 3 unlock. Playing it reveals what Rocha and Ostrom were iterating on when they made 2 and 3.\n\nStatus: manifest authored; playable acts deferred.",
+
+  "shelf": {
+    "label_title":       "ESTUARY",
+    "label_subtitle":    "the very small first one",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2001,
+    "release_month":     "April",
+    "hardware":          "Oneironautics Slowstick · Rev 2",
+    "genre_stamp":       "SIMULATION / SCHOOL LIBRARY",
+    "shelf_condition":   "worn · label edges yellowed · Olaf's public-radio-pledge-drive sticker still on the back",
+    "prior_owner":       "Olaf, from OPB's 2001 pledge drive premium level",
+    "provenance_note":   "OPB, at Level 3 giving in April 2001, gave donors a copy of Estuary 1. Olaf was giving Level 3 that year. His copy of Estuary 1 has the OPB donor sticker on the back of the cartridge sleeve and it has been there ever since.",
+
+    "cover_blurb":       "A small game about a small estuary.  From Oneironautics Inc., a new game studio in Portland, Oregon.  Recommended for players 10 and up.  Fits in a Trapper Keeper.  Takes about two hours.",
+
+    "back_of_case": [
+      "· Three species (coho, heron, otter).",
+      "· Twelve weeks of Pacific weather.",
+      "· One control (the tide gate).",
+      "· No fail state.",
+      "· Save any time.",
+      "",
+      "A public-radio project.  Written for kids.  Meant for classrooms.",
+      "",
+      "'They put a game on a stick and mailed it to me.  I have played it seven times.  I do not know why.'",
+      "    — a reader, in a letter to OPB, June 2001."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha's very first job. She wrote the tide-gate math. Marc Ostrom composed the loop that plays over the ending screen. Sarah Delahaye did every pixel of every sprite. The three of them were, in 2001, the entire team.\n\nThe school-library run of Estuary 1 was ~3,000 copies. The OPB pledge-drive run was another ~2,000. Olaf's copy is one of the OPB ones."
+  },
+
+  "acts_deferred_note": "Playable content authoring deferred. Design intent: 2-hour minimal sim. Three species, twelve weeks, one control. A curio, not a full game — but a curio that reveals the DNA of the series.",
+
+  "lore_tokens_awarded_on_completion": [
+    "estuary_1_finished",
+    "the_dna_of_the_series"
+  ]
+}

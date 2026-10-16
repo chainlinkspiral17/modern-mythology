@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "title": "dream states",
+  "composer": "the room, asleep",
+  "for": "vol1 ch4 \u00b7 Act One \u2014 Dream States \u00b7 INT. FAUST'S BEDROOM \u2014 NIGHT",
+  "notes": "Two drones a semitone apart, the lower one honest and the upper one wrong \u2014 the beating between them is the dream logic. Pad breathes between C minor and A-flat; three high tones arrive like images that don't explain themselves."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 44100,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.42
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "C#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.15,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.28
+    },
+    {
+     "pitch": "Eb3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "Ab2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.28
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "Eb3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "G5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 4.0,
+     "vel": 0.25
+    },
+    {
+     "pitch": "Eb5",
+     "bar": 9,
+     "beat": 2,
+     "dur": 4.0,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C6",
+     "bar": 14,
+     "beat": 1,
+     "dur": 4.0,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

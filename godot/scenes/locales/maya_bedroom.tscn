@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://maya_bedroom_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://maya_bedroom_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/maya_bedroom.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,8 +128,22 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.86, 0.62, 0.62, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.06, 0.08, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.62, 0.62, 1)
@@ -138,6 +152,7 @@ fog_enabled = true
 fog_light_color = Color(0.42, 0.32, 0.34, 1)
 fog_light_energy = 0.3
 fog_density = 0.004
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.06
@@ -154,23 +169,58 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
+; (pass 60, 2026-10-11) the authored rig is suffixed to maya_bedroom: its time-of-day twin below brings its own
+[node name="Key_DeskLamp__maya_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
-light_energy = 0.55
+light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
+[node name="Fill_Window__maya_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
-light_energy = 0.35
+light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back_Mood" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, -3, 4, 2)
+[node name="Back_Mood__maya_bedroom" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
-light_energy = 0.2
+light_energy = 0.28
 shadow_enabled = false
+
+; Practical at the desk lamp head (blender 0.8,1.70,1.16 → godot 0.8,1.16,-1.70)
+[node name="Practical_DeskLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.16, -1.7)
+light_color = Color(1.0, 0.76, 0.5, 1)
+light_energy = 1.5
+omni_range = 2.8
+shadow_enabled = false
+
+; ── vn_shot wave (2026-08-19) · positions authored, aim
+; computed by marker_reaim.py (the post-aim-gate discipline)
+[node name="shot_insert_laptop" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52, 1.39, -0.73)
+rotation = Vector3(-0.4687, -0.6234, 0.0)
+
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390, 1.024, -0.687)
+rotation = Vector3(-0.1992, -1.0525, 0.0)
+
+; ── THE DAY (pass 60): maya_bedroom_day — the sun past the N window (no direct sun through
+; a north window: a high cool sky through it, a warm sun from the NE skimming the sill)
+[node name="Day_Sun__maya_bedroom_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.5417, 0.4545, 0.0000, 0.6428, 0.7660, -0.7071, 0.5417, -0.4545, 0, 5, -6)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.9
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__maya_bedroom_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, 0)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.55
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +322,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +341,122 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
+; rotation B: reverse from the headboard corner - desk, laptop, door
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.7, 1.5, -4.3)
+rotation = Vector3(-0.219517, -2.61138, 0)
+metadata/fov = 56.0
+
+; rotation C: from the corkboard wall across the bed to the vanity
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.6, 1.45, -2.5)
+rotation = Vector3(-0.138588, -1.16957, 0)
+metadata/fov = 54.0
+
+; insert: the loose floorboard at the foot of the bed
+[node name="shot_insert_board" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.676, 0.382, -2.129)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 44.0
+
+; insert: the vanity mirror
+[node name="shot_insert_vanity" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.85, 1.35, -3.8)
+rotation = Vector3(-0.6553, -1.0182, 0.0)
+metadata/fov = 40.0
+
+; insert: three boards in from the window, the third looks no different
+[node name="shot_insert_floorboards" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350, 0.355, -1.994)
+rotation = Vector3(-0.2618, 0.2618, 0.0)
+metadata/fov = 42.0
+
+; insert: for whoever is ready — the envelope in the cavity
+[node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.350, 0.354, -1.994)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
+metadata/fov = 42.0
+
+; insert: the dock at dusk, 1978 — the photograph
+[node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.976, 0.379, -1.979)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.006, 1.612, -1.695)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.626, 1.612, -3.822)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; ── draft 4 (2026-09-18): the fairy string's wash, mid-string on the N wall ──
+; blender (0.0, 4.92, 2.05) → godot (0.0, 2.05, -4.92).
+[node name="Fairy_String_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.050, -4.920)
+light_color = Color(1.000, 0.840, 0.600, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 3.20
+
+; DRAFT 5 (2026-10-09): across the hall — Linda's room (vol6 ch2: the closeup grandmother, the hands, the radio on 1776 kHz)
+[node name="Shortwave_Dial_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.51, 0.72, 5.18)
+light_color = Color(1.0, 0.7, 0.32, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 1.9
+
+[node name="Hall_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.4, 2.45, 0.7)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 0.4
+shadow_enabled = false
+omni_range = 3.0
+
+[node name="Linda_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.8, 0.95, 5.33)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 0.5
+shadow_enabled = false
+omni_range = 2.4
+
+[node name="Moon_Linda_Window__maya_bedroom" type="OmniLight3D" parent="."]
+position = Vector3(-3.6, 1.8, 3.4)
+light_color = Color(0.62, 0.7, 0.92, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="shot_closeup_grandmother" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.750, 1.250, 3.200)
+rotation = Vector3(-0.1974, 2.4981, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.150, 3.550)
+rotation = Vector3(-0.5866, 2.3306, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.000, 1.050, 4.200)
+rotation = Vector3(-0.2787, -2.7595, 0.0)
+metadata/fov = 38.0
+
+; ── named closeup (pass 93): Maya on the bed under the north window, from the foot
+; closeup: Maya lying on the bedspread ("looks at the pale yellow ceiling"), from the foot of the bed
+[node name="shot_closeup_maya" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, -3.300)
+rotation = Vector3(-0.4884, 0.5730, 0.0)
+metadata/fov = 42.0
+

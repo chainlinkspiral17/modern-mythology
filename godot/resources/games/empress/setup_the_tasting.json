@@ -1,0 +1,190 @@
+{
+ "id": "the_tasting",
+ "arcana": "iii_empress",
+ "location": "riverboat_interior",
+ "hand": "nicola",
+ "title": "THE TASTING",
+ "subtitle": "The Riverboat · 4:44 PM · staff family meal, Hector's new dish",
+ "difficulty": "medium",
+ "epigraph_upright": "The Empress feeds the ones who feed everyone. The staff meal before service is the real dining room; the new dish tasted by tired family is the only review that was ever true.",
+ "epigraph_reversed": "You could say it's good because Hector's eyes are doing the thing. The dish would go on the menu, and the menu would know, and the third table to order it would know, and Hector, eventually, worst of all, would know.",
+ "scene_description": "Family meal at 4:44, service at 6. Hector has done the thing he does twice a year: made something that isn't on the menu and set it down in the middle of the staff table without a word, which in Hector is a symphony of asking. Sammy's already seated. Dante will drift down from the helm exactly once. The dish steams in the center of the table like a question everyone is politely not looking at. Somebody has to go first, and the somebody who runs this floor is you.",
+ "direction_hint": "Taste it first and say something TRUE — the dish can take it and Hector can't take anything less. Feed the family, keep the bloom up, connect three, and leave the table set for service.",
+ "opening_log_lines": [
+  "The staff table has eleven mismatched chairs. The good chair rotates. Tonight it's Sammy's.",
+  "Click [b]PHASE: ACTION[/b] for the rules. Bloom counts double at the staff table. It always has.",
+  "Hector set the dish down and walked back to the pass. He is polishing a clean counter. That's the tell."
+ ],
+ "starting_state": {
+  "player_pos": "maitre_d_stand",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 0,
+  "inertia_per_turn": 0,
+  "sanity": 4,
+  "sanity_max": 6,
+  "stagnation": 2,
+  "stagnation_per_turn": 1,
+  "doubt": 2,
+  "doubt_max": 7,
+  "harvest": 1,
+  "bloom": 2,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "greet_the_party",
+   "seat_at_the_table",
+   "smooth_the_apron",
+   "pour_water_for_the_table",
+   "the_infuriating_grace"
+  ]
+ },
+ "visitors_present_at_start": [
+  "sammy_at_the_bar"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "hector_at_the_pass",
+   "arrival_turn": 2,
+   "arrival_space": "helm"
+  },
+  {
+   "visitor": "dante_at_the_helm",
+   "arrival_turn": 5,
+   "arrival_space": "maitre_d_stand"
+  },
+  {
+   "visitor": "the_new_dish",
+   "arrival_turn": 1,
+   "arrival_space": "table_17"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_hard_mood_connections_min": 2,
+  "require_doubt_below": 7,
+  "require_stagnation_below": 10,
+  "require_bloom_at_least": 5,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "stagnation_max": 10,
+  "doubt_max": 7,
+  "visitors_claimed_max": 3
+ },
+ "stagnation_thresholds": [
+  {
+   "level": 0,
+   "label": "service holds. the apron is straight.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "table 14 has been waiting forty minutes for nothing.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the bus kid is on his second dropped tray.",
+   "tick_per_turn": 2,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the night rotted in the middle of service.",
+   "tick_per_turn": 2,
+   "effects": [
+    "reveal_stagnation_finale"
+   ]
+  }
+ ],
+ "doubt_thresholds": [
+  {
+   "level": 0,
+   "label": "nicola on the floor.",
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the suit at fourteen has not, in forty minutes, ordered.",
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "aria has asked the question for the third time. you have not, today, answered.",
+   "effects": [
+    "transcribe_cost_plus_1"
+   ]
+  },
+  {
+   "level": 7,
+   "label": "the static behind your eyes bloomed.",
+   "effects": [
+    "reveal_doubt_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "gangway",
+   "label": "GANGWAY",
+   "ending_lore_token": "leap_down_the_gangway_friday",
+   "visible_from_start": true
+  },
+  {
+   "id": "side_door",
+   "label": "SIDE DOOR",
+   "ending_lore_token": "leap_through_the_door_dean_used",
+   "visible_from_start": true
+  },
+  {
+   "id": "staff_exit",
+   "label": "STAFF EXIT",
+   "ending_lore_token": "leap_off_the_back_walkway",
+   "visible_from_start": true
+  }
+ ],
+ "sealed_arcanas_at_start": [],
+ "max_turns": 10,
+ "notes": "Fourth setup (Wave-3D, 2026-07-19) · mid-tier at a distinct hour. Wave-1 arcana: win/loss keys inherited VERBATIM from the medium sibling (bespoke engine schema); numbers between the easy and hard bookends.",
+ "ambient_pool": [
+  "the third kicked. low. insistent.",
+  "aria asked: where is my father. you have not, today, answered.",
+  "table 14 has been waiting forty minutes for nothing.",
+  "hector at the pass with the next two plates. he sees you. he does not, today, cross himself."
+ ],
+ "ambient_every_n": 2,
+ "scenario_visitors": [
+  {
+   "id": "the_new_dish",
+   "name": "the unnamed dish, center table, steaming",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 1,
+    "from": "helm",
+    "to": "helm"
+   },
+   "lore_token": "told_hector_the_truth",
+   "lore_text": "Twice a year Hector cooks the thing that isn't for the menu — it's for the question underneath the menu: am I still the cook I think I am. The dish is always almost right. The 'almost' is where the kitchen's next six months live.",
+   "accent": "#d0a868",
+   "mood": "intense",
+   "tutorial_note": "The dish connects through tasting FIRST, before anyone, and saying the true thing including the almost. Precision is the kindness. Vagueness is the insult.",
+   "steps": {
+    "greet": "It steams. The family looks at you looking at it. Somewhere behind the pass a clean counter is being polished to death.",
+    "listen": "First taste: the deep thing is THERE — the thing Hector's grandmother's pot knew. Second taste, because the first earned it: the acid is a half-step shy, hiding behind the richness like a kid behind a door.",
+    "deliver": "You say both. The there-thing first, by name. Then the half-step, as a question — 'lime at the end, or am I inventing it?' Hector's shoulders come down two inches. He wasn't inventing it either.",
+    "sit_with": "The dish goes around the table twice. By service, Hector has quartered limes into a sixth pan, unannounced. In October the dish will be on the menu with a name. Tonight it got something better: witnessed."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

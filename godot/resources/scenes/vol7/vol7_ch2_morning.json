@@ -6,7 +6,7 @@
   "title": "Smolvud, Friday",
   "nodes": [
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:smolvud_jetty",
       "t": "bg"
     },
     {
@@ -28,11 +28,15 @@
       "t": "interlude"
     },
     {
-      "text": "The drones came in off the bluff in the last hour before dawn.",
+      "text": "[trip:1.2][mood:dawn_warm][shot:establish~]The drones came in off the bluff in the last hour before dawn.",
       "t": "narrate"
     },
     {
-      "text": "They came in groups of four and five and one or two of them alone, the small ones first, the mid-sized ones after, the one or two larger ones that lifted the heavier loads bringing up the rear. They came up the cliff face from the staging point at the south end of Ona Beach and crossed over the rooftops and dropped down into the small park-pockets where the night's work was done by the time most of the town was awake.",
+      "text": "They came in groups of four and five and one or two of them alone, the small ones first, the mid-sized ones after, the one or two larger ones that lifted the heavier loads bringing up the rear.",
+      "t": "narrate"
+    },
+    {
+      "text": "They came up the cliff face from the staging point at the south end of Ona Beach and crossed over the rooftops and dropped down into the small park-pockets where the night's work was done by the time most of the town was awake.",
       "t": "narrate"
     },
     {
@@ -40,11 +44,19 @@
       "t": "narrate"
     },
     {
-      "text": "The salal along the cliff path between Ona Beach and the Cape Perpetua headland had been pruned back from the trail edges where the sword fern had grown into them. The bench at the second turnout above Ona Beach had been re-oiled. The brass plaque on the wave sculpture had been polished.",
+      "text": "The salal along the cliff path between Ona Beach and the Cape Perpetua headland had been pruned back from the trail edges where the sword fern had grown into them. The bench at the second turnout above Ona Beach had been re-oiled.",
       "t": "narrate"
     },
     {
-      "text": "The boardwalk planks on the spur trail down to the river mouth had been re-tarred where the rain had lifted them. The trash that had washed up on last night's tide had been gathered into the small biodegradable sacks the foundation used and lifted off the beach to the bluff-top staging point where the morning crew of two would, around seven, sort it.",
+      "text": "The brass plaque on the wave sculpture had been polished.",
+      "t": "narrate"
+    },
+    {
+      "text": "The boardwalk planks on the spur trail down to the river mouth had been re-tarred where the rain had lifted them.",
+      "t": "narrate"
+    },
+    {
+      "text": "The trash that had washed up on last night's tide had been gathered into the small biodegradable sacks the foundation used and lifted off the beach to the bluff-top staging point where the morning crew of two would, around seven, sort it.",
       "t": "narrate"
     },
     {
@@ -52,7 +64,7 @@
       "t": "narrate"
     },
     {
-      "text": "By six-thirty the drones were all docked and the sky over Smolvud was empty.",
+      "text": "[shot:insert drone]By six-thirty the drones were all docked and the sky over Smolvud was empty.",
       "t": "narrate"
     },
     {
@@ -70,11 +82,15 @@
       "t": "show"
     },
     {
-      "text": "Lena opened the Daily Grind at six oh-four.",
+      "text": "[mood:morning_bright][shot:closeup lena]Lena opened the Daily Grind at six oh-four.",
       "t": "narrate"
     },
     {
-      "text": "She unlocked the back door at six oh-four because the unlocking of the back door was the thing she did first. The unlocking woke the heat-pump compressor that ran the hot-water lines for the espresso bar; the compressor took twenty minutes to come up to temperature; the twenty minutes was the window in which she did the morning preparations.",
+      "text": "She unlocked the back door at six oh-four because the unlocking of the back door was the thing she did first.",
+      "t": "narrate"
+    },
+    {
+      "text": "The unlocking woke the heat-pump compressor that ran the hot-water lines for the espresso bar; the compressor took twenty minutes to come up to temperature; the twenty minutes was the window in which she did the morning preparations.",
       "t": "narrate"
     },
     {
@@ -86,7 +102,11 @@
       "t": "narrate"
     },
     {
-      "text": "She thought about the cabin. She had driven down with Kai at four AM, leaving Tem and Finn there. Tem had told them at three-thirty to go home, work the day, live their week. By Sunday morning, if the substrate was doing what Tem thought it was doing, they would each have something to bring back to the table.",
+      "text": "She thought about the cabin. She had driven down with Kai at four AM, leaving Tem and Finn there. Tem had told them at three-thirty to go home, work the day, live their week.",
+      "t": "narrate"
+    },
+    {
+      "text": "By Sunday morning, if the substrate was doing what Tem thought it was doing, they would each have something to bring back to the table.",
       "t": "narrate"
     },
     {
@@ -108,15 +128,23 @@
       "t": "show"
     },
     {
-      "text": "It was not, this morning, the cortado man. It was Wren.",
+      "text": "[shot:closeup wren]It was not, this morning, the cortado man. It was Wren.",
       "t": "narrate"
     },
     {
-      "text": "Wren was fifteen. Wren was the daughter of a climate-migrant family who had come up from a town in the Sacramento Valley in 2039, when Wren had been three. Wren had hair the color of the dye Margit's thrift store had been carrying since 2046 \u2014 a blue that fell, in the same color family as Tem's, somewhere between azure and slate.",
+      "text": "Wren was fifteen. Wren was the daughter of a climate-migrant family who had come up from a town in the Sacramento Valley in 2039, when Wren had been three.",
       "t": "narrate"
     },
     {
-      "text": "Wren did not, by Lena's reckoning, know Tem; the two of them had not, as far as Lena could tell, met. Wren was a regular at the Daily Grind on Friday mornings because the bus to the consolidated middle district school stopped two doors down at six forty-five and Wren came in at six-eleven for her hot chocolate and her ten minutes at the corner table.",
+      "text": "Wren had hair the color of the dye Margit's thrift store had been carrying since 2046 — a blue that fell, in the same color family as Tem's, somewhere between azure and slate.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wren did not, by Lena's reckoning, know Tem; the two of them had not, as far as Lena could tell, met.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wren was a regular at the Daily Grind on Friday mornings because the bus to the consolidated middle district school stopped two doors down at six forty-five and Wren came in at six-eleven for her hot chocolate and her ten minutes at the corner table.",
       "t": "narrate"
     },
     {
@@ -131,7 +159,7 @@
     },
     {
       "char": "lena",
-      "text": "Hi, Wren. Hot chocolate?",
+      "text": "[shot:closeup person]Hi, Wren. Hot chocolate?",
       "expr": "neutral",
       "t": "say"
     },
@@ -152,12 +180,20 @@
       "t": "narrate"
     },
     {
-      "text": "Lena pulled the hot chocolate. The cocoa was good. The marshmallow was a single small one, hand-cut from a slab that Hans the baker on Hemlock made and sold to the Daily Grind for a stack of tokens and a standing arrangement on Tuesday-morning bread. Lena brought the hot chocolate to the corner table.",
+      "text": "Lena pulled the hot chocolate. The cocoa was good.",
+      "t": "narrate"
+    },
+    {
+      "text": "The marshmallow was a single small one, hand-cut from a slab that Hans the baker on Hemlock made and sold to the Daily Grind for a stack of tokens and a standing arrangement on Tuesday-morning bread.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena brought the hot chocolate to the corner table.",
       "t": "narrate"
     },
     {
       "char": "wren",
-      "text": "Thanks.",
+      "text": "[shot:closeup person_b]Thanks.",
       "expr": "neutral",
       "t": "say"
     },
@@ -172,7 +208,11 @@
       "t": "say"
     },
     {
-      "text": "Wren held up the book. The book was a paperback. The cover was a hand-drawn radio dial in graphite on what looked like brown paper. The title and the author's name were in a typewritten font that had been retired by typewriter manufacturers in 1979. The title was The Frequency Beneath. The author was John Frank.",
+      "text": "[shot:insert book]Wren held up the book. The book was a paperback. The cover was a hand-drawn radio dial in graphite on what looked like brown paper.",
+      "t": "narrate"
+    },
+    {
+      "text": "The title and the author's name were in a typewritten font that had been retired by typewriter manufacturers in 2011. The title was The Frequency Beneath. The author was John Frank.",
       "t": "narrate"
     },
     {
@@ -193,19 +233,31 @@
     },
     {
       "char": "wren",
-      "text": "Petra at the Salty Tome had a copy in the new arrivals last week. She said it had come in on the estate-sale haul from the family up at the Tideway. She said the book felt like it was for somebody. I asked her if it was for me. She looked at me for a long beat and then she said yeah, kid, it's for you. She gave it to me for two tokens.",
-      "expr": "neutral",
-      "t": "say"
-    },
-    {
-      "char": "lena",
-      "text": "How is it.",
+      "text": "[shot:closeup person]Petra at the Salty Tome had a copy in the new arrivals last week. She said it had come in on the estate-sale haul from the family up at the Tideway. She said the book felt like it was for somebody. I asked her if it was for me.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "wren",
-      "text": "I'm seventy-something pages in. So far it's mostly a guy who fixes radios in a town in eastern Oregon and his cousin who lives in the woods. The cousin keeps hearing voices on a radio that's not plugged in. The guy who fixes radios has decided not to ask about it. The cousin starts answering the voices.",
+      "text": "She looked at me for a long beat and then she said yeah, kid, it's for you. She gave it to me for two tokens.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "[shot:closeup person]How is it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "I'm seventy-something pages in. So far it's mostly a guy who fixes radios in a town in eastern Oregon and his cousin who lives in the woods. The cousin keeps hearing voices on a radio that's not plugged in.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "wren",
+      "text": "The guy who fixes radios has decided not to ask about it. The cousin starts answering the voices.",
       "expr": "neutral",
       "t": "say"
     },
@@ -227,13 +279,13 @@
     },
     {
       "char": "lena",
-      "text": "Yes. Why.",
+      "text": "[shot:closeup person_b]Yes. Why.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "wren",
-      "text": "Because of the SCUMM machine at Pizza Pirate.",
+      "text": "[shot:closeup person_b]Because of the SCUMM machine at Pizza Pirate.",
       "expr": "neutral",
       "t": "say"
     },
@@ -245,12 +297,18 @@
     },
     {
       "char": "wren",
-      "text": "I was playing on it on Tuesday. I was about forty minutes into a stick I had been working on for a couple of weeks. The AI said something to me that I didn't write down because I thought I was misreading. Then on Wednesday after school I went back and the AI said the same thing again. I wrote it down this time.",
+      "text": "I was playing on it on Tuesday. I was about forty minutes into a stick I had been working on for a couple of weeks. The AI said something to me that I didn't write down because I thought I was misreading.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "She turned to a page in her notebook \u2014 the small spiral notebook she carried for her schoolwork \u2014 and showed Lena.",
+      "char": "wren",
+      "text": "Then on Wednesday after school I went back and the AI said the same thing again. I wrote it down this time.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "[shot:insert notebook~]She turned to a page in her notebook — the small spiral notebook she carried for her schoolwork — and showed Lena.",
       "t": "narrate"
     },
     {
@@ -275,7 +333,7 @@
     },
     {
       "char": "lena",
-      "text": "Wren.",
+      "text": "[shot:closeup person]Wren.",
       "expr": "serious",
       "t": "say"
     },
@@ -305,13 +363,13 @@
     },
     {
       "char": "lena",
-      "text": "Promise.",
+      "text": "[shot:closeup person_b]Promise.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "wren",
-      "text": "I promise.",
+      "text": "[shot:closeup person_b]I promise.",
       "expr": "neutral",
       "t": "say"
     },
@@ -341,7 +399,7 @@
     },
     {
       "char": "lena",
-      "text": "Good.",
+      "text": "[shot:closeup person]Good.",
       "expr": "neutral",
       "t": "say"
     },
@@ -362,7 +420,7 @@
       "t": "say"
     },
     {
-      "text": "She drank her hot chocolate. The bell rang. The cortado man came in.",
+      "text": "[shot:establish]She drank her hot chocolate. The bell rang. The cortado man came in.",
       "t": "narrate"
     },
     {
@@ -408,7 +466,7 @@
       "t": "narrate"
     },
     {
-      "text": "He looked at his hands. The first customer of the morning came in at ten-eleven.",
+      "text": "[mood:day_bright][shot:closeup kai]He looked at his hands. The first customer of the morning came in at ten-eleven.",
       "t": "narrate"
     },
     {
@@ -422,11 +480,11 @@
       "t": "say"
     },
     {
-      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter \u2014 a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
+      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter — a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
       "t": "narrate"
     },
     {
-      "text": "The graphics on the bottom were a piece by Lena \u2014 one of the Board Lords runs she had done in 2050, the Octopus Garden series, a hundred decks total, of which Jameson's was, by the small numbered stamp at the tail, deck number forty-one.",
+      "text": "The graphics on the bottom were a piece by Lena — one of the Board Lords runs she had done in 2050, the Octopus Garden series, a hundred decks total, of which Jameson's was, by the small numbered stamp at the tail, deck number forty-one.",
       "t": "narrate"
     },
     {
@@ -456,11 +514,11 @@
       "t": "say"
     },
     {
-      "text": "Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March \u2014 the Tide Pool Geometries series.",
+      "text": "[shot:insert deck]Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March — the Tide Pool Geometries series.",
       "t": "narrate"
     },
     {
-      "text": "He set it on the counter beside the broken deck. The new deck's graphics were a work in the same hand as Jameson's broken one but in a different mode: long curving black lines on a deep gray ground, the lines suggesting the patterns kelp made in moving water.",
+      "text": "[shot:insert deck]He set it on the counter beside the broken deck. The new deck's graphics were a work in the same hand as Jameson's broken one but in a different mode: long curving black lines on a deep gray ground, the lines suggesting the patterns kelp made in moving water.",
       "t": "narrate"
     },
     {
@@ -489,12 +547,12 @@
     },
     {
       "char": "kai",
-      "text": "Bring me twenty more next week. Take the deck.",
+      "text": "[shot:closeup person]Bring me twenty more next week. Take the deck.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "Jameson said thank you. He took the deck. He picked up the broken halves of the old deck and tucked them under his arm \u2014 Kai noted this with a small approval \u2014 and he left.",
+      "text": "Jameson said thank you. He took the deck. He picked up the broken halves of the old deck and tucked them under his arm — Kai noted this with a small approval — and he left.",
       "t": "narrate"
     },
     {
@@ -510,7 +568,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:main_street",
       "t": "bg"
     },
     {
@@ -518,7 +576,15 @@
       "t": "hide"
     },
     {
-      "text": "The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop. The wall had, since 2048, been painted with a mural by a woman named Janet Halfmoon \u2014 a wife-of-fisherman from old-Waldport who had taken up muralism in her sixties. The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide.",
+      "text": "[shot:insert patch~]The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop.",
+      "t": "narrate"
+    },
+    {
+      "text": "The wall had, since 2048, been painted with a mural by a woman named Janet Halfmoon — a wife-of-fisherman from old-Waldport who had taken up muralism in her sixties.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide.",
       "t": "narrate"
     },
     {
@@ -526,7 +592,7 @@
       "t": "narrate"
     },
     {
-      "text": "The patch was not a thing painted onto the wall. The patch was a hole in the wall that opened onto nothing. The eye registered it as an absence the wall was holding.",
+      "text": "[beat:chill]The patch was not a thing painted onto the wall. The patch was a hole in the wall that [wave amp=6 freq=2]opened onto nothing[/wave]. The eye registered it as an absence the wall was holding.",
       "t": "narrate"
     },
     {
@@ -538,7 +604,11 @@
       "t": "narrate"
     },
     {
-      "text": "Kai went outside. He crossed the street. Up close the patch did not get less wrong. Up close the patch got more wrong. The patch had, at its edges, a small shimmer that Kai registered as something he had felt with his hands when he had first put a SCUMM stick into a reader as a sixteen-year-old.",
+      "text": "[shot:closeup kai]Kai went outside. He crossed the street. Up close the patch did not get less wrong. Up close the patch got more wrong.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch had, at its edges, a small shimmer that Kai registered as something he had felt with his hands when he had first put a SCUMM stick into a reader as a sixteen-year-old.",
       "t": "narrate"
     },
     {
@@ -550,7 +620,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:cabin_interior_day",
       "t": "bg"
     },
     {
@@ -564,12 +634,24 @@
       "t": "narrate"
     },
     {
-      "text": "He had sat with Tem at the small wooden table beside the kerosene lamp and had drunk three cups of coffee and had talked with her about things that were not the substrate. They had talked about the headland trail. They had talked about his sister, who was in Portland. They had talked about the photograph in the inner pocket of the coat. They had talked about the crow.",
+      "text": "He had sat with Tem at the small wooden table beside the kerosene lamp and had drunk three cups of coffee and had talked with her about things that were not the substrate. They had talked about the headland trail.",
       "t": "narrate"
     },
     {
-      "text": "Around seven Tem had said he should drive down today. Whatever the substrate was doing in town, he and the others should be in town. She would be at the Daily Grind by four-thirty. He had nodded. He had eaten oatmeal and the last of the apples Lena had brought up. He had gathered his duffel.",
+      "text": "They had talked about his sister, who was in Portland. They had talked about the photograph in the inner pocket of the coat. They had talked about the crow.",
       "t": "narrate"
+    },
+    {
+      "text": "Around seven Tem had said he should drive down today. Whatever the substrate was doing in town, he and the others should be in town. She would be at the Daily Grind by four-thirty. He had nodded.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had eaten oatmeal and the last of the apples Lena had brought up. He had gathered his duffel.",
+      "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_road_truck",
+      "t": "bg"
     },
     {
       "text": "He went out to his truck at eleven oh-six. The crow was on the dashboard. The crow had not, since Wednesday afternoon when Finn had driven up, left the dashboard.",
@@ -586,11 +668,19 @@
       "t": "narrate"
     },
     {
-      "text": "The road down to Smolvud from the cabin took about forty minutes in good weather. The road climbed out of the cabin's small clearing through the Sitka stand, then through the alders, then through the cedars, then down the small switchbacks that brought the road to the highway just south of the connective stretch. The rain had been steady for thirty-six hours and Finn drove slowly.",
+      "text": "The road down to Smolvud from the cabin took about forty minutes in good weather.",
       "t": "narrate"
     },
     {
-      "text": "Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck \u2014 the shortwave receiver from his grandfather \u2014 turned itself on.",
+      "text": "The road climbed out of the cabin's small clearing through the Sitka stand, then through the alders, then through the cedars, then down the small switchbacks that brought the road to the highway just south of the connective stretch.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain had been steady for thirty-six hours and Finn drove slowly.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert radio]Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck — the shortwave receiver from his grandfather — turned itself on.",
       "t": "narrate"
     },
     {
@@ -598,7 +688,7 @@
       "t": "narrate"
     },
     {
-      "text": "After about ninety seconds the hum resolved into a voice. A man's voice. Older. Something in it Finn could not place but that landed as familiar \u2014 a Texan inflection, maybe, or just the inflection of somebody who had been a long time alone.",
+      "text": "After about ninety seconds the hum resolved into a voice. A man's voice. Older. Something in it Finn could not place but that landed as familiar — a Texan inflection, maybe, or just the inflection of somebody who had been a long time alone.",
       "t": "narrate"
     },
     {
@@ -606,15 +696,15 @@
       "t": "narrate"
     },
     {
-      "text": "\"\u2014 Brandon Tillman \u2014\"",
+      "text": "\"— Brandon Tillman —\"",
       "t": "narrate"
     },
     {
-      "text": "The voice cut. The static returned briefly. The radio turned itself off.",
+      "text": "[shot:insert radio]The voice cut. The static returned briefly. The radio turned itself off.",
       "t": "narrate"
     },
     {
-      "text": "Finn pulled over. He stopped the truck on the small gravel shoulder at the bend of the road where the alders thinned. He turned off the engine. He sat looking through the windshield at the rain coming down through the alders.",
+      "text": "[shot:insert radio]Finn pulled over. He stopped the truck on the small gravel shoulder at the bend of the road where the alders thinned. He turned off the engine. He sat looking through the windshield at the rain coming down through the alders.",
       "t": "narrate"
     },
     {
@@ -638,11 +728,19 @@
       "t": "narrate"
     },
     {
-      "text": "He thought about the piece of charred wood in the duffel. He had not, since Tem had taken it off the table at the cabin yesterday, held it again. Tem had wrapped it in a small cotton cloth and put it in the duffel because, she had said, she thought the wood was his to carry, but she wanted it wrapped while he carried it.",
+      "text": "He thought about the piece of charred wood in the duffel. He had not, since Tem had taken it off the table at the cabin yesterday, held it again.",
       "t": "narrate"
     },
     {
-      "text": "He pulled the duffel onto his lap. He unwrapped the cloth. The piece of wood was the piece of wood. Three inches long, irregular, charred on the ends, the grain visible in the unburnt parts. The grain was yellow in a way the local woods were not yellow. The wood smelled, faintly, of smoke that was not cedar smoke and was not woodstove smoke and was not any smoke he could place.",
+      "text": "Tem had wrapped it in a small cotton cloth and put it in the duffel because, she had said, she thought the wood was his to carry, but she wanted it wrapped while he carried it.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert charred_wood]He pulled the duffel onto his lap. He unwrapped the cloth. The piece of wood was the piece of wood. Three inches long, irregular, charred on the ends, the grain visible in the unburnt parts.",
+      "t": "narrate"
+    },
+    {
+      "text": "The grain was yellow in a way the local woods were not yellow. The wood smelled, faintly, of smoke that was not cedar smoke and was not woodstove smoke and was not any smoke he could place.",
       "t": "narrate"
     },
     {
@@ -654,7 +752,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:main_street",
       "t": "bg"
     },
     {
@@ -674,11 +772,19 @@
       "t": "show"
     },
     {
-      "text": "Lena came outside at eleven-eleven when Kai's text arrived. She crossed the four blocks to Board Lords at a pace that was faster than her normal pace. The rain had thinned briefly. By the time she got to the corner across from the laundromat the rain had thickened again.",
+      "text": "Lena came outside at eleven-eleven when Kai's text arrived. She crossed the four blocks to Board Lords at a pace that was faster than her normal pace. The rain had thinned briefly.",
       "t": "narrate"
     },
     {
-      "text": "She saw the patch on the sanderling mural before she saw Kai. She stopped on the corner. She looked at the patch. The patch was about three feet on a side, in the center of the sanderling's body. The bird's head and tail and feet were intact. The center was gone.",
+      "text": "By the time she got to the corner across from the laundromat the rain had thickened again.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert patch]She saw the patch on the sanderling mural before she saw Kai. She stopped on the corner. She looked at the patch. The patch was about three feet on a side, in the center of the sanderling's body.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bird's head and tail and feet were intact. The center was gone.",
       "t": "narrate"
     },
     {
@@ -705,7 +811,7 @@
     },
     {
       "char": "lena",
-      "text": "I have not heard from Finn since the cabin.",
+      "text": "[shot:closeup person]I have not heard from Finn since the cabin.",
       "expr": "neutral",
       "t": "say"
     },
@@ -729,7 +835,13 @@
     },
     {
       "char": "lena",
-      "text": "Wren the kid who comes into the Daily Grind. The fifteen-year-old. The one with the blue hair. She came in this morning with a copy of the John Frank book and she told me the SCUMM machine at Pizza Pirate told her, two days ago, Wren, the substrate is leaking, tell Tem.",
+      "text": "Wren the kid who comes into the Daily Grind. The fifteen-year-old. The one with the blue hair.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "She came in this morning with a copy of the John Frank book and she told me the SCUMM machine at Pizza Pirate told her, two days ago, Wren, the substrate is leaking, tell Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -745,7 +857,7 @@
     },
     {
       "char": "kai",
-      "text": "The machine told her.",
+      "text": "[shot:closeup person_b]The machine told her.",
       "expr": "serious",
       "t": "say"
     },
@@ -775,7 +887,7 @@
     },
     {
       "char": "lena",
-      "text": "Me either.",
+      "text": "[shot:closeup person]Me either.",
       "expr": "neutral",
       "t": "say"
     },
@@ -798,7 +910,11 @@
       "t": "say"
     },
     {
-      "text": "They stood on the corner in the rain looking at the patch. A drone passed overhead at eleven-thirty, north-to-south this time, lower than the morning drone, slower. The drone passed over the sanderling mural without altering its course. The drone did not, by any visible measure, register the patch. The drone disappeared over the roofline to the south.",
+      "text": "[shot:establish]They stood on the corner in the rain looking at the patch. A drone passed overhead at eleven-thirty, north-to-south this time, lower than the morning drone, slower.",
+      "t": "narrate"
+    },
+    {
+      "text": "The drone passed over the sanderling mural without altering its course. The drone did not, by any visible measure, register the patch. The drone disappeared over the roofline to the south.",
       "t": "narrate"
     },
     {
@@ -843,7 +959,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -873,7 +989,7 @@
     },
     {
       "char": "lena",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral",
       "t": "say"
     },
@@ -885,7 +1001,7 @@
     },
     {
       "char": "lena",
-      "text": "Just \u2014 I want to remember what the morning was like before the patch. I made thirty-two coffees. Wren told me what the machine said. Jameson got a deck. I want to keep that part of the morning. I don't know why.",
+      "text": "Just — I want to remember what the morning was like before the patch. I made thirty-two coffees. Wren told me what the machine said. Jameson got a deck. I want to keep that part of the morning. I don't know why.",
       "expr": "neutral",
       "t": "say"
     },
@@ -902,7 +1018,7 @@
       "t": "say"
     },
     {
-      "text": "She walked back to the Daily Grind.",
+      "text": "[shot:establish]She walked back to the Daily Grind.",
       "t": "narrate"
     },
     {

@@ -1,0 +1,86 @@
+{
+  "notes": "Four witches at the deep corners of a six-sided world under an eight-pointed compass. Nothing agrees; the disagreement is the weave. Three verbs each: PARLEY (she names a price) \u00b7 DRAW (iron + silver, costs grit either way) \u00b7 UNWEAVE (requires lore \u00b7 the thesis verb).",
+  "witches": [
+    {
+      "id": "north",
+      "name": "THE SISTER OF THE NORTH",
+      "seat": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "arrival": "the north seat is a winter that never spread \u00b7 one hex of snow in a hot territory, falling upward, slow. she sits in the middle of it mending a net no water ever saw. 'you rode the long way,' she says. everyone has.",
+      "parley_price": "your hat \u00b7 the one that has kept your face yours",
+      "parley_text": "she takes the hat and the snow stops falling up. 'the north is closed,' she says, like a shop. you feel the wind change six scales away.",
+      "draw_text": "iron in a snowfall. the silver round takes her net, not her, and she unravels WITH it, gracious as thread. your hands shake for two hexes after. the snow stays, but it falls down now, like it remembered.",
+      "unweave_lore": 4,
+      "unweave_text": "you find her thread where the net crosses itself and you pull it the way the campfire-builder should have \u00b7 with respect and without apology. the winter folds up like a letter. she goes the way a knot goes: still string, just no longer arguing.",
+      "refuse_text": "'not yet,' she says, to the question you hadn't decided to ask. the net creaks. you ride out the way you came."
+    },
+    {
+      "id": "east",
+      "name": "THE SISTER OF THE EAST",
+      "seat": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "arrival": "the east seat is a red dawn nailed in place \u00b7 light like an open wound that never gets on with the day. she stands in it casting three shadows. 'the peddler kept my mirror face-down,' she says. 'kind of her. cruel of you to come anyway.'",
+      "parley_price": "a memory of home \u00b7 she will pick which",
+      "parley_text": "she takes the porch at dusk. you know she took something; you can feel the shape of the absence, like a tooth. the dawn unsticks and slides into morning, and the east forgets you politely.",
+      "draw_text": "you draw on a woman with three shadows and shoot the middle one. the dawn goes through noon to dusk in one breath. she applauds, once, from somewhere the light can't say, and is gone. GRIT does not cover what that costs, but it's what gets charged.",
+      "unweave_lore": 5,
+      "unweave_text": "the mirror knew: the east looks BACK. you unweave her by standing where her light ends and refusing to cast the fourth shadow. the dawn closes like an eye. somewhere a salt peddler turns a mirror face-up and cries with relief.",
+      "refuse_text": "the light leans on you. you leave before it learns your name in red."
+    },
+    {
+      "id": "south",
+      "name": "THE SISTER OF THE SOUTH",
+      "seat": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "arrival": "the south seat is a drought with a house in it. she rocks on the porch of the driest place the territory owns and offers you water, and the water is real, and that is the frightening part. 'sit,' she says. 'everyone's in such a hurry to deal.'",
+      "parley_price": "one of your six directions \u00b7 you will never ride southwest again",
+      "parley_text": "you give up southwest. it doesn't hurt. that's the price working. she nods and the drought loosens its belt one notch, and somewhere it rains on somebody who'd stopped asking.",
+      "draw_text": "you draw on a woman in a rocking chair and she lets you, which is the oldest trap there is, and you fire anyway, which is the oldest answer. the house takes the round. the drought breaks over the sound. she leaves through the door of the house that now has a hole in it, and does not hurry.",
+      "unweave_lore": 4,
+      "unweave_text": "her thread is the rocking \u00b7 the one motion in a still hex. you match its rhythm with your breathing until the chair can't tell you apart, then stop breathing for six beats. the chair stops. the drought files for retirement. the water in the cup stays real, and you drink it, and it is the best water of your life.",
+      "refuse_text": "'take some water for the road,' she says. you don't. she smiles like you passed something."
+    },
+    {
+      "id": "west",
+      "name": "THE SISTER OF THE WEST",
+      "seat": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "arrival": "the west seat is a sunset with a gallows in it, empty, patient. she is younger than the others, or wears it better, or is lying. 'you counted the compass,' she says. 'eight points. four sisters. go on. ask.'",
+      "parley_price": "the question itself \u00b7 leave without asking and the west is settled",
+      "parley_text": "you tip your hat and don't ask. the not-asking costs like a broken bone and pays like one healed straight. she laughs, delighted, robbed. the sunset finally sets.",
+      "draw_text": "she is fast in a way that isn't speed. your silver takes her hat, her laugh takes your certainty, and the exchange stands. the gallows wood grows one loop lower everywhere, forever. call it a win. keep calling it that.",
+      "unweave_lore": 6,
+      "unweave_text": "her thread is the question \u00b7 she is woven from everyone who ever asked about the other four points. you unweave her by answering instead: you name the four unlabeled points OUT LOUD, the names you've been assembling all game without being told you were. the sunset goes down like a curtain. what you said hangs in the air one second too long. the game does not write it down.",
+      "refuse_text": "'come back when you're heavier,' she says, meaning lore, meaning grief, meaning the same thing."
+    }
+  ],
+  "loom": {
+    "gate_line": "home. the porch. and under the porch light, where a door was never: THE LOOM.",
+    "text": "the center hex opens. the loom is the size of a room and the size of the territory, both, comfortably. four threads hang cut, the way you cut them. four more run taut into the dark, unlabeled, unweavable, working. the compass card on the wall has eight points and you can now read every one, and the game asks its only out-loud question:\n\nWAS IT HOME BEFORE, OR IS IT HOME NOW?\n\nit does not take an answer. it takes that you heard it.",
+    "hang_up_text": "you ride home with iron still warm and sisters still seated. the porch takes your boots the way it always did. the territory keeps. some drifters call that losing. the porch does not."
+  }
+}

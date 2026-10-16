@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="13_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="14_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="14_riff"]
 [ext_resource type="Script" path="res://scripts/BungalowGauntletHost.gd" id="15_bgh"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="17_lim"]
@@ -150,8 +150,8 @@ shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
 background_mode = 1
 background_color = Color(0.05, 0.04, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.32, 0.28, 0.32, 1)
-ambient_light_energy = 0.30
+ambient_light_color = Color(0.40, 0.34, 0.28, 1)
+ambient_light_energy = 0.55
 fog_enabled = true
 fog_light_color = Color(0.16, 0.14, 0.18, 1)
 fog_light_energy = 0.5
@@ -194,7 +194,7 @@ shadow_enabled = false
 
 ; BACK RIM · cool cyan from the back-yard side, silhouette separation
 [node name="Back_CyanRim" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)
 light_color = Color(0.48, 0.66, 0.78, 1)
 light_energy = 0.30
 shadow_enabled = false
@@ -303,7 +303,7 @@ far = 100.0
 layer = 50
 script = ExtResource("7_mood")
 mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "psychedelic_substrate", "silent_film_24", "silent_film_18", "silent_film_12", "pomegranate_hour_open", "whispers_take", "vn_clean", "tv_glow_blue", "rain_interior", "dawn_warm", "candlelight_low"])
-default_style_pack = "bungalow_dusk"
+default_style_pack = "bungalow_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
@@ -401,7 +401,7 @@ location_json = "res://resources/games/locations/elicia_bungalow.json"
 inner_metres = 1.4
 falloff_metres = 4.0
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("14_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -420,7 +420,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 1260.0
 offset_bottom = 360.0
-text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffrocker
 F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
 autowrap_mode = 2
 theme_override_font_sizes/font_size = 18
@@ -445,3 +445,96 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; ── VN direction markers (lore/_VN_DIRECTION_PLAYBOOK.md) ──
+; Coordinates from build_bungalow.py (gz=-by): boxes (0.4,+2.6),
+; bookshelf x=+1.4 y=+2.6 (mirror shard shelf 3 z=1.66), studio
+; doorway (1.5,1.5), editing desk (3.7,1.2) top 0.74 with the Anya
+; CRT at (3.38,1.16), kitchen counter/basil window north wall y=6.
+
+[node name="cast_living" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-1.6, 0, -1.35)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="cast_doorway" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(1.8, 0, -1.5)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="cast_bookshelf" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(0.7, 0, -2.05)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="cast_desk" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(3.0, 0, -1.2)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="shot_insert_boxes" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.4, 1.3, -1.5)
+rotation = Vector3(-0.55, 0, 0)
+metadata/fov = 40.0
+
+[node name="shot_closeup_elicia" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.65, -0.5)
+rotation = Vector3(0, -0.1, 0)
+metadata/fov = 36.0
+
+[node name="shot_insert_mirror_shard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.7, 1.66, -2.1)
+rotation = Vector3(0, -1.5708, 0)
+metadata/fov = 24.0
+
+[node name="shot_insert_script_page" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.2, 1.2, -1.35)
+rotation = Vector3(-0.75, 0, 0)
+metadata/fov = 32.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.677, 0.904, -2.358)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 32.0
+
+[node name="shot_insert_basil" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.8, 1.45, -4.9)
+rotation = Vector3(-0.5, 0, 0)
+metadata/fov = 30.0
+
+[node name="shot_closeup_elicia_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.35, 1.7, -1.2)
+rotation = Vector3(0, 1.5708, 0)
+metadata/fov = 34.0
+
+[node name="shot_insert_screen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.38, 1.15, -0.55)
+rotation = Vector3(-0.25, 0, 0)
+metadata/fov = 26.0
+
+; ── Asset-improvement pass: floor lamp beside the reading chair
+; (fixture from build_packing_dressing — rebuild bungalow.glb).
+[node name="FloorLampGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 1.55, -0.9)
+light_color = Color(0.94, 0.80, 0.55, 1)
+light_energy = 1.3
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="StringLightsGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 2.1, -1.6)
+light_color = Color(0.96, 0.84, 0.52, 1)
+light_energy = 0.8
+omni_range = 3.0
+shadow_enabled = false
+
+; insert: the mirror shard — the fractal Elicias
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40, 1.9, -2.4)
+rotation = Vector3(-0.2448, -1.7802, 0.0)
+metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="StringLight_Bulb_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.380, 2.285, -0.350)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.57

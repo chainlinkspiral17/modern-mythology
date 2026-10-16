@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bayou_lighthouse_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://bayou_lighthouse_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/bayou_lighthouse.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.84, 0.62, 1.0)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a dusk sky past it, not a flat backdrop)
+sky_top_color = Color(0.22, 0.24, 0.42, 1)
+sky_horizon_color = Color(0.86, 0.60, 0.46, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.12, 0.11, 0.12, 1)
+ground_horizon_color = Color(0.34, 0.28, 0.28, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.18, 0.18, 0.18, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.38, 0.34, 1.0)
-ambient_light_energy = 0.3
+ambient_light_energy = 0.42
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.32, 0.34, 0.36, 1.0)
 fog_light_energy = 0.1
 fog_density = 0.012
@@ -157,7 +172,19 @@ environment = SubResource("Env_Locale")
 [node name="Moonlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9396926207859084, -0.21984631039295416, 0.2620026302293849, 0, 0.766044443118978, 0.6427876096865393, -0.3420201433256687, -0.6040227735550536, 0.7198463103929542, 0.0, 4.0, 8.0)
 light_color = Color(0.74, 0.78, 0.86, 1)
-light_energy = 0.42
+light_energy = 0.5
+shadow_enabled = false
+
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(0.98, 0.82, 0.62, 1)
+light_energy = 0.2
+shadow_enabled = false
+
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)
+light_color = Color(0.58, 0.74, 0.90, 1)
+light_energy = 0.28
 shadow_enabled = false
 
 [node name="OilLampWarm" type="OmniLight3D" parent="."]
@@ -168,7 +195,7 @@ shadow_enabled = false
 omni_range = 4.0
 
 [node name="LensTopGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 0.8, 6.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.2, -0.8)
 light_color = Color(0.96, 0.86, 0.62, 1)
 light_energy = 0.65
 shadow_enabled = false
@@ -274,7 +301,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -293,3 +320,19 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Lamp_Reservoir_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.880, 0.920, 0.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00
+
+[node name="TheriotSkiff_BowLamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.000, 0.600, 3.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00

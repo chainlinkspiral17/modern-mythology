@@ -198,6 +198,74 @@ and document where it's used. **Do not** scale, only remap axes.
 
 ### Primitive selection — never reach for `make_box` first
 
+**2026-08-04 — the vocabulary finally exists.** This section used to
+name helpers (`make_sphere`…) that `_props/geometry.py` never had —
+so every builder fell back to axis-aligned boxes and the whole game
+read as Minecraft ("lighting won't fix the minecraft, blender
+will"). The real set now, all pure pydata, deterministic, winding
+auto-fixed, all accepting `yaw` (Z-rotation about the object's own
+center — yaw-only keeps plan-view reasoning intact):
+
+| Helper | Use for |
+|---|---|
+| `make_chamfer_box(…, chamfer=0.05, yaw=0)` | ANY box a camera gets near — counters, appliances, vehicles, machines. The cut edge catches a highlight; a zero-radius edge reads as CAD. |
+| `make_wedge(…, high_end='+Y')` | ramps, hoods, lean-tos, embankments |
+| `make_gable(…, ridge_axis='X')` | ROOFS — every flat slab lid should become one |
+| `make_taper_cyl(r_bottom, r_top)` | trunks, shades, funnels; `r_top=0` = cone |
+| `make_dome(radius, squash)` | tanks, hills, awning crowns |
+| `make_blob(radius, noise, seed)` | tree crowns, bushes, rocks, hay — the organic silhouette a box cannot make |
+| `_props.trees` | `make_conifer` / `make_broadleaf` / `make_cypress` — assembled trees; cabin_road + louisiana already converted |
+
+Rollout rule: NEW geometry uses this vocabulary from day one.
+Existing builders convert opportunistically — hero objects and
+anything within ~10m of a camera preset first.
+
+Conversion ledger (2026-08-04, wave 1): cabin_road conifers (were
+stacked cubes) · louisiana cypress (layer-cake discs) · skatepark
+box crowns · solenade_garden's great oak (disc stack) ·
+parish_cemetery oaks · kowalski_backyard canopy — all real
+silhouettes now. kowalski_backyard + henderson_porch_front houses
+were ROOFLESS BILLBOARDS (a 0.3m siding slab against the sky):
+both carry a make_gable roof + eave fascia now. harmony_terrain
+and riverfront were already fine — they'd hand-rolled LOCAL sphere
+helpers because the shared module lacked one, which was this whole
+problem in miniature. Wave 3 (same day)
+closed the class COMPLETELY: salty_tome + chillwave street trees,
+miller_back_porch crepe myrtle + oak, hierophant_circuit (whose
+comment said "3 overlapping spheres" but drew cylinders),
+bayou_lighthouse distant cypress (+ its unaudited Sky_Panel
+deleted), cabin_road alders, cedar_tower box-crown sitkas,
+christian_ice magnolia (comment: "spheres approximated as
+cylinders"), henderson's front-yard oak. A residual grep for
+box/cyl Crown|Canopy|Foliage now matches ONLY hardware (gas
+canopies, lamp canopies, register crowns). THREE builders carried
+comments confessing they wanted spheres the module didn't have.
+Still to convert: harmony/riverfront local sphere helpers retire
+onto _props.geometry in a later pass.
+
+Wave 4 (2026-08-08) — HERO FURNITURE: 118 make_box→make_chamfer_box
+swaps across the 14 decked interiors, targeted at exactly the
+objects the new insert shots frame from ~1m: every kitchen fridge
+(miller/henderson/kowalski + doors), stoves, microwaves,
+grandmother's hutch + radio, the missing-link jukebox + pie case +
+counters, cosmic's display case/tower/safe/filing/mini-fridge,
+centro's meat + deli cases + freezer + produce base, finn's
+counter/dresser/kitchen table, board-lords' repair bench + Devon's
+desk + wheel bin, caldwell's side table + bike seat/basket, the
+bakery oven/proofer/mixer/flour bin, both bedrooms' mattress +
+pillow + comforter stacks, dressers, monitor, console, skateboard.
+Soft goods went BLOB, not chamfer: finn's nine-month duffel and
+the bakery's three flour sacks (noise-displaced, per-sack seeds).
+Chamfer default 0.05 self-clamps to 45% of the smallest
+half-extent, so a pillow rounds subtly while a fridge takes a
+visible edge cut. Verified: all 14 builders re-run through the
+audit stub with byte-identical object-name sets.
+Deliberately NOT done: retiring harmony/riverfront's local sphere
+helpers — they draw correct spheres today; a refactor of two
+model-scale builders for zero visual delta is not a drafting pass.
+
+
+
 The project's lowpoly aesthetic looks like Atari 2600 if everything is
 axis-aligned boxes. Pick the right primitive for the shape:
 
@@ -330,6 +398,1148 @@ the reference in a code comment ("modeled after the Belle of
 Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
+
+### 2026-10-12 · a picture on a wall is a texture, not more boxes
+
+- **The alley mural was nineteen coloured boxes** (face bands, eyes, a
+  mouth, hair sheets) standing in for a painted face — the honest ceiling
+  of a vertex-colour pipeline. A picture the prose dwells on (the mural,
+  a photo, a poster, a calendar) is now an `art` roster entry: a
+  generated image, installed as a PNG, laid on the surface by
+  `scripts/vn/HeroArt.gd` as a matte quad, the box stand-in hidden.
+- **Keep the stand-in in the builder.** It is the fallback when the
+  picture is not installed and it is the size and position reference for
+  the `apply` row (centre and size read straight off the builder's box).
+- **`facing` is the viewer's side**, in Blender axes; put the quad 1-2 mm
+  proud of the surface. Test with a labelled placeholder that says TOP
+  LEFT and has an arrow pointing up: a mirrored or upside-down quad is
+  obvious at once.
+- **Check what already lives in a folder before ignoring it.** The first
+  draft ignored `godot/assets/art/*` and would have hidden the slowsticks'
+  tracked art in its subfolders; hero art has its own `art/hero/`.
+
+### 2026-10-12 · a failed load must clear the screen, or the last room lies
+
+**What happened.** The user, after a fresh pull: "maya and sam's room have
+the same decorations, diego's room is missing all the items the narration
+calls out." Both builders were correct. The Deck lacked the GLBs, and
+`Background3D.load_location` returned on the missing file BEFORE tearing
+down the previous location — so the last room that loaded kept playing
+under the next chapter. A missing asset looked like a wrong asset, and a
+correct builder looked like a broken one.
+
+**Rules.**
+- **Every early return from a loader unloads what it replaces.** A
+  fallback that leaves the previous state on screen is worse than a blank
+  frame: it hides the failure inside a plausible picture.
+- **Name the fix on screen.** The notice prints the preset and the
+  builder to run; it lives in a CanvasLayer in the "ui" group so F4 hides
+  it, and a successful load clears it.
+- **Locale GLBs are build outputs.** They are gitignored and never on the
+  Drive (SAVE uploads heroes, demons, props, concepts, video, voice and
+  audio only). After a pull on a new or old checkout,
+  `godot/tools/blender/build_scenes.sh` (everything) or
+  `list_stale_builds.sh` (what changed) is the only way to have them.
+- **When a user reports a room "missing what the prose says", check the
+  builder against the prose first.** If the builder has the objects, the
+  picture is not this room.
+
+### 2026-10-11 · a post that stands NEAR furniture reads as a post THROUGH it
+
+**What happened.** The loft's two turned posts were placed "clear of the
+table's chair ring and the counter" — 0.35 m off the counter's corner, in
+the recorder a clean miss. The user, three times: "Loft pillars going
+through furniture … Still not fixing the pillar through the furniture.
+The island." From every camera in the room the post and the counter's
+corner overlapped in the frame; the audit's zero-overlap was not the
+picture's. The fix was not a bigger gap: the posts are gone and the loft
+hangs from the roof on steel rods.
+
+**Rules.**
+- **Judge a post by the frame, not the plan.** A column within ~0.6 m of
+  a counter, a table or a bed will read as standing in it from most of
+  the room's cameras. Either put it in open floor with air on every side
+  in the renders, or do not put it on the floor at all.
+- **A mezzanine can hang.** Ledgers on its walls + rods from a strongback
+  across the rafters (or from a rafter line) carry a loft with nothing
+  on the floor beneath. The rods hang from RAFTER LINES or a strongback,
+  never from a bare plank, and never through a collar tie (check x
+  against the tie positions before placing one).
+- **When furniture is "arranged strangely around" a structural member,
+  move the member.** The furniture is the prose's; the structure is ours.
+- **Solar on a gable roof:** prisms along the slope with the slab's own
+  `top(y)` function, ROOFISH names (`Roof_Solar_*`) so the stacking on the
+  slab passes the overlap gate, rails on standoffs so the panels stand
+  off the shakes. Keep the skylight's cut clear.
+
+### 2026-10-11 · Meshy props land through a runtime fitter, never a transform
+
+**What happened.** The first Hero Studio PROP (the steamboat model, 106 MB
+on the Drive) had to sit on Frasier's workbench. The GLBs are gitignored
+(the Drive holds them; `meshy_pipeline.py drive-pull` fetches them), so a
+session without the files cannot measure one, and Meshy's frame and
+scale are its own — the heroes already auto-orient and scale to 1.80 m
+in Portrait3D for that reason.
+
+**Rules.**
+- **Place a prop with `scripts/HeroProp.gd`, not an ext_resource.** The
+  node sits where the prop stands (y = the surface); the script loads
+  the GLB if it exists, lays the longest extent along `length_axis` (or
+  stands it up with `upright`), scales it to `size_m`, centres and seats
+  it, mattes the materials, and hides the procedural stand-in by name
+  prefix under the locale GLB instance. No file = a warning and the
+  stand-in stays, so a fresh clone renders as before.
+- **Load deferred in any scene with a setup pass.** CathedralSetup puts a
+  flat vertex-colour `material_override` on EVERY MeshInstance3D it finds
+  on `_ready`; a textured prop added by a child's `_ready` is walked too
+  and comes out white. `call_deferred` lands the model after the pass.
+- **Keep the stand-in in the builder.** The procedural fragment is the
+  fallback and the size reference (the steamboat's 0.90 m hull along
+  blender Y told the fitter `length_axis = "z"`, 0.9 m). Name the
+  stand-in's parts with one prefix so the fitter can hide them all.
+- **Heroes need no scene work.** CharLayer resolves speakers through the
+  roster's keys and volumes; a new hero GLB named by its roster `file`
+  is in the game the moment it is pulled. Check coverage by scanning the
+  scripts' `char` keys against the roster + Drive manifest (pass 83's
+  roadmap entry has the list) — the gaps are roster entries to write,
+  not code.
+
+### 2026-10-11 · opening a room to its roof (the cabin, interior drafts 10–11)
+
+**What happened.** The user: "Cabin needs more windows, more consideration
+to the space, a better architecture. Not a box." / "The cabin exists in
+nature but lets it in through windows, lighting, art and wood sculpture in
+the build itself." The flat `make_ceiling` went; the room is open to the
+gable's underside with exposed rafters, a ridge beam, collar ties, three
+tie beams at the eave height, knee braces, a mezzanine loft on carved
+posts, windows in both gables, two more windows, and the carving in the
+frame. Rules that came out of it:
+- **A roof slab's underside is already there.** The exterior `slab()`
+  prisms are closed solids: drop the ceiling and you see their undersides.
+  Add a 3 cm "plank" prism a hair under them (`under(y) - 0.035 ..
+  under(y) - 0.005`) in a planed tone so the inside reads as cedar, not
+  shakes, and never coplanar (z-fight).
+- **The eave walls need a plate.** A wall box stops at `CEIL`; the roof's
+  underside at the wall's INNER face is `CEIL + pitch * thickness`
+  higher — a visible slit the exterior frieze does not cover. One box
+  `(ROOM_W, 0.22, 0.26)` at `CEIL + 0.13` on each eave wall.
+- **Name every member that touches the roof as a roof member.**
+  `prop_overlap_audit` reads a prism as its bounding box, so sloped
+  rafters "clip" the slab they sit under by metres. ROOFISH names
+  (`eave|ridge|roof|gable|chimney|awning`) JOIN each other:
+  `Roof_Rafter_*`, `Roof_Plank_*`, `Roof_Collar_Tie_*`, `Wall_S_Eave_Plate`.
+  Rafters must still stop at the eave walls' inner faces (`y 0.12 ..
+  ROOM_D - 0.12`), or they clip the wall tops for real.
+- **A gable with a window is four prisms.** `make_wall_with_openings`
+  only cuts rectangles; a triangle round an opening is a bottom
+  trapezoid, two side trapezoids and the peak, every slanted edge on the
+  roof line `y_lo(z) = (z - CEIL) / pitch - 0.2`, `y_hi(z) = ROOM_D + 0.2
+  - (z - CEIL) / pitch`. Frame + glass + muntins go on the room face.
+- **A mezzanine is a ceiling for what is under it** (the pot rack's
+  straps reached `CEIL` through the deck) and a floor for what is on it
+  (a knee brace under the beam over the loft hung 6 cm above the
+  mattress — skip braces over a sleeping deck). Posts must clear the
+  table's chair ring (r 1.22 + a chair's half-width); check the closeup
+  markers afterwards — a post at a frame's edge is not an obstruction
+  the audit sees.
+- **A scene's `default_style_pack` overrides a preset's `env`.** The
+  cabin's `kitchen_clean` pack (lighting `dawn_diner`: dir_mult 3, warm
+  tint, sun re-aimed to pitch −10, a dusk sky, ambient 0.78) rewrote the
+  day twin's env at load. A preset may now name `"style_pack"`
+  (Background3D sets the PostProcess `default_style_pack` before
+  add_child); `raw_observation` (mood raw, lighting scene_default) keeps
+  the preset's own light.
+- **A scene variant shares the GLB and copies the markers.**
+  `cabin_interior_bed.tscn` loads the same cabin GLB with its own copy
+  of the markers. Widening the kitchen window put a mullion across the
+  crow insert's line; the fix in `cabin_interior.tscn` passed the
+  per-locale gate, and the repo-wide suite failed on the variant's copy.
+  When a builder change moves a sightline, grep every `.tscn` that
+  references the GLB and fix the marker in each.
+- **Carving is geometry the kit already has.** The cedar face is a
+  chamfered oval + a brow box + a nose box + two dark eye slots; a crow is
+  a blob, a small lathe head, a tapered beak; a knee brace is one concave
+  prism; a salmon in relief is a 9-point prism 2.4 cm proud of its panel.
+
+### 2026-10-10 · a raised floor, a stocked store, and helpers that guess the wall
+
+**What happened.** The drugstore (draft 2, 26 x 22 m) put its pharmacy
+on a 45 cm platform with an office on it, and stocked seven gondolas.
+- **The office walls clipped the platform.** `make_wall` and
+  `make_wall_with_openings` ignore the anchor's z and always build from
+  the slab. A wall that crosses the platform's edge counts as a join; one
+  wholly inside its footprint is a CLIP.
+- **The first export was 31 MB.** The packages used `geometry.make_box`,
+  which auto-chamfers.
+- **The office calendar printed its grid into the wall.** `make_calendar`
+  decides which way the room is from the sign of x (or y): `x > 0` means
+  an east wall.
+
+**Rules.**
+1. Walls standing on a platform are boxes from `PLAT` to the ceiling:
+   piers, a lintel over the door, and a baseboard on the room face.
+2. Stock packages are always sharp-edged (`chamfer=0.0`, ≤ 8-segment
+   cylinders, named `<fixture>_Stock_…` so `join_stock` merges them).
+   Budget about two parts per facing item. Cosmetics at four boxes per
+   7 cm was a third of the store. With those, 10k parts export to 15 MB.
+3. Before hanging decor with a position-guessing helper, check its
+   heuristic against where the wall really is. Otherwise put it on a wall
+   where the guess holds: an N wall at y > 1, or an E wall at x > 0.
+
+### 2026-09-30 · a hole is four boxes per layer; a bowl is seen from inside
+
+**What happened.** The skatepark's pool had been "suggested without
+booleans" since draft 1 — a darker patch and a coping ring on a flat
+slab — and read on the sheet as a painted outline. A pit needs a hole
+through EVERY horizontal layer under it: the slab, the grass base and
+the far ground plane all covered the opening.
+
+**Rules.** (1) Cut a rectangular hole with one helper applied to every
+ground layer (`holed_box` in build_skatepark: S and N full width, W and
+E between); the pit's walls are boxes OUTSIDE the hole whose inner
+faces are its sides, topped just under the lowest ground layer so
+nothing clips. (2) Do not lathe a bowl you look INTO: `make_lathe`
+fixes winding outward from its centre, so the inside of a bowl is back
+faces, and its top ring gets a cap — a lid. Curves inside a pit are
+quarter-round `make_prism` fillets along each wall base, corner at the
+prism origin, stopping R short of the corners so they never cross.
+(3) A far shore is not a box: at 260 m an 8 m box is 1.8° tall and the
+fog takes it. Bring the shore to the width the prose gives (a cove,
+~150 m) and line it with the locale's own tree primitive.
+
+### 2026-09-25 · rings, rakes and the thing you cannot see through glass
+
+- **A rim is a RING, not a disc.** The cabin's turned bowls had a
+  solid "rim" cylinder over a "hollow" disc that sat under it, inside
+  the body — flat-topped cylinders on the sheet, the water buried.
+  `make_lathe` takes a closed profile with an inner radius (the
+  Wheel precedent): `[(0.104, 0), (0.122, 0), (0.122, 0.02),
+  (0.104, 0.02), (0.104, 0)]` is a lip; the hollow is a thin dark
+  disc on the body's top INSIDE it, the water a thinner disc on
+  that. Same for the Roberts sink: the chrome "rim" was a plate over
+  the basin — four strips on the basin's top edge now.
+- **A sheen on a sloped surface is a rotated box.** Ben's truck hood
+  rises 4 cm over 1.47 m (vehicles.py profile); a flat 1 mm sheet at
+  one height lies inside the body for most of its length.
+  `make_rot_box(..., pitch=atan(rise/run))` — positive pitch drops
+  the +x end; positive roll raises the +y end (`_rot3`). The same for
+  glows on windshield rakes: for a hatch nosed north the rake runs
+  from (nose-1.10, 0.99) up to (nose-1.85, 1.47); roll =
+  -atan2(0.48, 0.75), the patch's centre 1 mm along the normal.
+- **Nothing in this pipeline is transparent — do not build what only
+  glass would show.** The Civic's lit phone "between the dash and the
+  windshield" was 1.2 m inside the body's box: invisible, and the
+  buried-detail audit's biggest hit. What a lit phone in a dark car
+  looks like from outside is a glow on the glass, so that is the
+  object: one patch on the rake. Ask what the camera sees, then
+  build that.
+- **A detail keyed to an old draft's anchor stays behind when the
+  anchor moves.** The asylum votive went from the corridor wall to
+  the counter (09-22); its wax runs and pool stayed at the S wall,
+  1.1 m inside it. Keep a detail's coordinates on the anchor's
+  variables (`votive_x, votive_y, votive_z`) so it travels.
+
+### 2026-09-24 · the exporter update that made 30 rooms white
+
+- **Vertex colours are not exported by default any more.** Newer
+  glTF exporters dropped `export_colors` for `export_vertex_color`
+  (default 'MATERIAL': colours only for meshes whose material reads
+  them). This pipeline has NO materials, so a rebuilt GLB came out
+  colourless and Godot drew it white. Every export path now asks for
+  'ACTIVE' and for colours on material-less meshes
+  (`_props.geometry.gltf_color_kwargs`); `glb_color_check.py` proves a
+  built GLB carries COLOR_0. Any NEW export path must use the helper.
+- **…and then the colours came back WASHED (same day).** COLOR_0 is
+  linear by the glTF spec; after the update the chain wrote our
+  colours unconverted, so everything rendered lifted toward white
+  (0.5 → 0.73). Measure, don't guess the version: every export now
+  goes through `_props.glb_colorfix.postfix(path, bpy)`, which reads
+  the file back and linearises COLOR_0 only when it is unconverted.
+- **Correction (same day): the files were right.** Blender 5.2's
+  exporter writes COLOR_0 correctly (normalised u16, linear). What
+  changed is Godot's import DEFAULT material for a material-less
+  primitive: it no longer uses the vertex colours. Every locale now
+  runs `scripts/VertexColorGuard.gd` (from MoodCycler) to switch
+  vertex_color_use_as_albedo on for surfaces that carry colours. A
+  locale scene without a MoodCycler must call it itself.
+
+### 2026-09-24 · the glass cases were solid blocks with the product inside
+
+- **The picture-window rule applies to every case.** A (r,g,b,0.35)
+  "glass" slab renders opaque — and most glass-front fixtures were
+  worse: a SOLID body with the product modelled inside it. The kwik
+  stop's four cooler doors hid 95 objects each; the kits' hot-food
+  case, pizza warmer and donut case (15 rooms), the Board Lords deck
+  wall (28 decks behind a lavender wall), Jiggles in the crumpled
+  barn's cabinet, the proofer, the vending machine, the file cabinet.
+- **Build the shell, seat the product, leave the glass out.**
+  `_props.structure.make_case_shell(prefix, center, size, color,
+  open_face=…)` builds five panels with the same outer extents as the
+  old solid box (top/bottom full, sides between them, back between
+  the sides — faces touch, nothing overlaps). Shelves span side to
+  side (and to the back panel) so they are supported; the product
+  sits ON them (six-packs had hung 4 cm over their shelves, pizzas
+  overlapped, pies overlapped — all hidden while the body was solid).
+  The glass is two thin pale GLINT strips running frame to frame.
+- **What hung on the glass goes with it.** Emile's photograph and its
+  plaque were on the ice freezer's glass; the fog overlay and the
+  wiped streak were decals on it. A centre mullion now carries the
+  photo; the decals are gone (the support audit exempts decals — grep
+  for "on the glass" when a pane goes).
+- `make_window(see_through=True)` — frame + mullions + glints, no
+  glass, no warm pane — for a window something must be SEEN through
+  (the cabin's crow on the outside sill).
+
+### 2026-09-19 · THE BAKERY, DRAFT 4 — the helper that drew slabs, and the clips the recorder waves through
+
+The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
+§3): hans_bakery_back_kitchen, THE TABLE of vol 7.
+
+- **A helper's output is geometry; read it before trusting it.**
+  `make_cord_run` built each of its two segments as an axis-aligned
+  box sized (|dx|, |dy|, |dz|) — a cord from a desk to an outlet was
+  a SLAB on the wall, and its midpoint sat at half the lower end's
+  height, so a counter-to-outlet run was a 0.4 m plank behind the
+  counter. Eleven rooms shipped that way this week. The recorder
+  boxes a straight tube by the same bbox, so no audit could tell the
+  difference: the audit sees envelopes, not shapes. Fixed in the
+  helper (two straight `make_tube` runs meeting `sag` below the
+  lower end; sag 0 → one run), which fixed every room at once — the
+  kit is the place to fix a kit defect, never the call sites.
+- **"clean (403 objects)" is not "no clips."** The overlap gate has a
+  threshold, and this room passed it with the counter's corner inside
+  the table's north end, the prep table's edge inside the side chairs,
+  the speed rack under the window chair and a floor plant standing in
+  the counter. Before a draft pass, walk the footprints by hand for
+  the big pieces (table · counter · racks · chairs) — extents on a
+  line each, the way the counter comment does — and move what shares
+  floor. The gate catches props into props; it does not catch a room
+  that was laid out twice.
+- **Cut the wall for the window that reads through.** The pass window
+  was a steel frame on a solid wall. Cutting the segment (two piers,
+  a spandrel, a lintel) and building the closed front of house behind
+  it — the display case, one table, the street pane's pre-dawn grey,
+  a floor and a ceiling of its own — gives shot_establish_b (down the
+  table to the door) a second room in depth for the price of ten
+  boxes. The FOH floor and ceiling start where the room's slabs end
+  (y -0.2), or the recorder reports the seam.
+- **Chairs at a long table need their own spacing pass.** Ten box
+  seats 0.40 wide at 0.65 spacing with the fifth pair 0.40 from the
+  fourth; the kit chair is 0.42. Space by the seat width the KIT
+  emits, not the width the boxes had; and Roy's chair is w=0.44 in
+  the dark wood so the head of the table reads at a glance.
+- **A grade is a sloped top, not a staircase (cabin_road, same day).**
+  Four gravel slabs at four heights had 20–40 cm risers between
+  them, and every flat wear disc on them floated at one edge. A road
+  section is a `make_prism` along X whose (y, z) polygon slopes from
+  the last section's edge height to the next (`road_prism`), and a
+  wear sheet on it is a thin parallelogram prism riding the same
+  slope (`road_sheet`). Yawed sections are laid END TO END along
+  the heading (centre = last end + half-length · (sin, cos)), never
+  at eyeballed centres — the first try left the bend and the upper
+  run 1.6 m apart laterally and a Sitka standing in the road. The
+  recorder boxes a yawed prism unyawed, so its envelope is loose:
+  read the printed boxes, don't trust a "clean" for the joints.
+- **Anything lying on the road gets buried when the road rises.**
+  The tire-line boxes (z 0.033) ran 2.7 m into the new fill. When a
+  surface moves, grep for every object that sat on it.
+- **A road box ends at the curb (board_lords, same day).** Main ran
+  under both sidewalks (y -8.7..-0.2), so the LANE rule — a car's
+  centre within 1.4 m of the road's long edge — could not be met by
+  any car that was not on the sidewalk, and the 09-07 "move it to the
+  curb" had put Finn's truck ON the sidewalk to satisfy it. The road
+  is the strip between the curbs; sidewalks and curbs are their own
+  slabs beside it.
+- **A squashed blob is a full sphere to the recorder.** `make_blob`
+  with squash 0.22 on a floor is a 0.15 m clip in the gate. A shallow
+  mound is a lathe (`[(0,0),(r,0),(0.9r,h/3),(0.6r,0.75h),(0,h)]`).
+- **Props are placed against furniture by COORDINATE, and furniture
+  moves (finn_apartment, same day).** The desk moved to the east
+  wall on 09-07, the bed north on 09-10; the phone, the notebook,
+  the reader and the headset stayed at the old numbers — two beside
+  the desk in the air, two hovering 10 cm over the perch chair — and
+  the desk-lamp practical stayed at the old lamp. Nothing gated it:
+  a floating prop overlaps nothing, and the orphan gate's 1.5 m
+  drift is wider than a desk. When a piece of furniture moves, grep
+  the builder AND the tscn for everything that was set against it;
+  better, anchor props to the furniture's variables (`DESK_X`,
+  `BED_Y`) so they move with it.
+- **Two builders of one building must share a plan (the Missing
+  Link, same day).** The interior's door is centred in a 7 m front;
+  the exterior's door is at the east end of an 8 m front; the
+  interior's east pump stood in front of its own entrance while the
+  exterior's pumps sit west of the door. Each scene passed every
+  gate alone. When a place has an inside and an outside builder,
+  write the plan once (front width, door x, window x's, the pump
+  island) as shared constants and let both read it — recorded as
+  both rooms' draft-4 target.
+- **The arcana sets were dressed by coordinate and never walked
+  (six rooms, one afternoon).** Natalie's sofa in the door's swing;
+  the New Orleans office's modesty panel at the sitter's knees and
+  its cabinet across the back door; the Tower apartment's whole
+  window wall inside the wall; Houston's glass office drawn inside
+  out; the bungalow's laptop inside a CRT and its two floor lamps
+  sharing names. None of it gated: a thing inside a wall overlaps
+  only the wall (exempt), a thing in the air overlaps nothing, a
+  chair facing the wrong way is geometry like any other. Before a
+  primitive pass on a template room, walk the plan on paper: each
+  big piece's extents on a line, the door swing, which way every
+  chair faces, what each practical sits on. Ten minutes; it found
+  more than the pass itself in every room today.
+- **A vendored builder can still use the kit.** build_bungalow
+  carries its own make_box/make_cyl so the recorder can rebind
+  them; `from _props.geometry import make_lathe, make_tube` beside
+  them works, and the stubs record the kit's meshes as usual.
+- **TETHER EVERYTHING (2026-09-22, the user's sentence: "lots of
+  objects floating, not tethered to walls or tables or floors").**
+  A cord reaches the ceiling PLANE (z = ceil_z, not ceil_z − 0.05).
+  A wall-hung thing's back face is at the wall's FACE (wall plane
+  ± 0.10 − its own half-depth), not at the wall plane. A shelf has
+  uprights or brackets; a hanging pot has a hook that reaches the
+  bar; a stool seat has a post and a foot; a sign on a roof has
+  posts. Before committing a room, run `support_audit.py <locale>`
+  — it lists what hangs on nothing, lowest member first.
+- Cue-word discipline, again: `matches_for` splits names on `_` and
+  CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
+  Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/
+  light/coffee/brioche/brotchen/chapbook, and the marker gate stayed
+  at 0 misaims across 18 markers.
+
+### 2026-09-17 · THE CABIN, DRAFT 5 — the primitive upgrade on the most-seen room
+
+The visual program's first background pass (lore/_VISUAL_PROGRAM.md
+§3): cabin_interior, 31 placements, one locale deep.
+
+- **A fixture is a PROFILE, not a stack.** The stove was three
+  cylinders (a water heater); it is one `make_lathe` — ash lip, the
+  belly's swell, the waist, the plate — on four turned legs, with a
+  pipe that rises, elbows (`make_tube`) and enters the wall through
+  a thimble. The same move for the kettle (shoulder, knob, spout and
+  bail as tubes), the oil lamp (font, flared chimney, a tin shade on
+  three chains), the hurricane lantern (globe, vented cap, bail), the
+  basin and pitcher, the firewood basket, the mason jars (with
+  contents at four levels). Ten profiles replaced twenty-two boxes
+  and cylinders and the room's silhouettes changed more than any
+  prop pass did.
+- **Use the kit before building the thing again.** The east bed and
+  the desk came from `_props/furniture` (`make_bed`, `make_table`) —
+  turned legs, aprons, a stretcher, a made bed — and the vigil chair
+  from `make_chair`. Upholstery is chamfered boxes with rolled arms
+  (`make_cyl` along X) on turned feet.
+- **A kit piece can stand in a marker's line.** `make_bed`'s default
+  headboard rose at the head of the east bed and stood between
+  `shot_insert_chest` and the chest (vantage_obstruction --markers
+  caught it: OCCLUDED by EBed_Headboard). `headboard=False`; the
+  marker gate is the reason a rebuild is safe.
+- **Same-assembly parts share the prefix, or the clip hunt flags
+  them.** `Kettle_Bail` × `Copper_Kettle` was the pass's one clip;
+  `Copper_Kettle_Bail` is not. Name the parts after the assembly
+  before running the audit, not after.
+- **A narrow table found the kit's stretcher floating.** `make_table`'s
+  single centre rail ran between no legs — it hung at 16 cm and passed
+  in four kitchens because their tables were wide enough for the
+  grammar's nearest-support search to find something. The cabin desk
+  (d 0.60) failed it. The kit has an H-stretcher now (two side rails
+  leg-to-leg, a cross rail between them); five locales re-audited at
+  FLOAT 0. A gate that trips on the fifth use of a helper is telling
+  you about the helper.
+- **D3 for a room with no wires is what it burns.** The kerosene can
+  and funnel inside the door, the match tin and wick scissors on the
+  side table, the spare chimney in its paper, the lamp's shade, the
+  stovepipe thimble. The infrastructure pass is the same question in
+  every room: what is this plugged into.
+- **Lena's apartment, draft 4, same day, same method.** Kettle,
+  faucet (a gooseneck tube), coffee cone, grinder hopper and crank,
+  stove knobs and oven bar, the seventies pedestal, the side-table
+  post, the nightstand pull — lathes and tubes; couch and window
+  chair chamfered with rolled arms on turned feet; the fridge's seam,
+  pull, and a photo under a magnet. D3 here is WIRES: a switch by the
+  door, outlets at 0.30, and a cord from every electric thing (the
+  heater, the fairy string, the fridge, the floor lamp the dressing
+  pass had named and never built). Bedroom wear is one side of a
+  shared bed. The switch first landed in the door opening (x 0.65;
+  the opening runs −1..1) — a plate belongs on a wall segment, and the
+  shell's own numbers say where those are.
+- **The Millers' porch, draft 3 (2026-09-18): a draft-2 set has props
+  and no history.** Turned balusters on a bottom rail, the rocker on
+  curved runners (a `make_tube` arc, legs down to it), the wicker's
+  weave as alternating bands, a globe lamp on its canopy, the pickup
+  from the vehicle kit. Then the three passes the set had never had:
+  WEAR (three worn paths to the porch's three destinations, the
+  runners' pale arcs, cup rings, the mat's scuff, bark litter), D3
+  (the porch light's switch, the fan's pull chain, a hose bib with
+  its coil — a 25-point `make_tube` spiral), D5 (wire fences down
+  both property lines, a treeline past the yard so the screens look
+  at something). A rocker's cross-stretcher between no legs floated
+  the same way the table's did: rails go leg to leg.
+- **Cosmic Comics, draft 4 (2026-09-18): density is not history.** The
+  shop had 700 objects and no wear, no wires, no street. The spinner
+  pockets are U-wires now, the grail dome a dome, the bell a bell, the
+  stool and the new-arrivals table from the kit; the first wear pass
+  (door→bins→register worn into the checkerboard, the counter's elbow
+  strip, bin-base scuffs, the stool's ring, tape ghosts on the glass);
+  the switch, the register's cord, and the corner CRT that the scene's
+  blue fill light had been standing in for since the rig pass — built,
+  plugged in, glowing; sidewalk, curb, a parked car, a streetlamp and
+  the storefronts across, so the window looks at a street.
+- **The back office, draft 4, same day.** Turned desk legs and an
+  apron, the monitor on a foot and neck, drawer pulls and labels, the
+  bulb as a bulb on its socket with a chain and a pull, the carafe and
+  the chair seat as profiles; the first wear (entry paths, the casters'
+  oval, the forearm patch, coffee rings, ink, pin holes); a power strip
+  under the desk and a cord from everything that plugs in. A handle
+  added to the safe's door stood behind the longbox stack from the
+  `insert safe` lens and became the insert's subject — dropped; a new
+  part on a cued object is a new subject for the cue's marker.
+- **Maya's and Sam's bedrooms, draft 4 (2026-09-18), the same day.**
+  Turned desk legs and aprons, real lamps (weighted base, neck, cone
+  head, bulb), pulls on every drawer, Maya's perfume bottles as
+  bottles and her record player with a record and a tonearm, her
+  hamper a lidded basket, HER DOOR (the shell had an opening and no
+  leaf — stickers on it); Sam's kit chair, one sat-in beanbag, the
+  skateboard leaning on trucks and wheels, the fan's pull chain.
+  First wear in both; a switch, outlets and five cords each; and the
+  backyard through both north windows from one new helper
+  (`detail.make_backyard_view`: lawn, board fence, a tree, a
+  roofline) — the vol 6 bedrooms all look at the same yard.
+- **Centro Grocery and the school field, draft 4 (2026-09-18).** The
+  store: wire shopping carts (a local helper; the class goes to
+  `_props` on its third room), a cone that is a cone, round fruit, the
+  produce scale with dial, pan and chains, lathed queue posts, wheels
+  on the hand truck; the first wear (entry path, both aisle lanes,
+  endcap scuffs, the belt's centre, the wet spot, cart lines, the
+  cooler door's arc); cords to a floor box, the EXIT sign, the
+  compressor grille, a floor drain; the lot outside the storefront.
+  The field: tapered light poles on base plates with conduit and a
+  transformer box, hooded lamps, chain-link that reads, four kit
+  vehicles, Eileen's chair a folding chair; an exterior's wear is
+  where the grass is gone (the band between the hashes, the goal
+  mouths, the dirt under the benches, the sideline path, the gate's
+  tread); the field house's door light, so the corkboard is read
+  under it.
+- **The Kowalski kitchen, the Caldwell porch and the vehicle cab
+  (2026-09-18).** The kitchen: a gooseneck faucet, burners and knobs
+  and an oven bar, the pendant as canopy + cord + shade + bulb, a
+  pull and a photo on the fridge, shakers; Daisy's spot and her hair
+  on the couch; two switches and three cords; the backyard through
+  the sink window and the neighbour's mower through the east one —
+  and the scene's "overhead fluorescent" practical, in a kitchen with
+  no tubes, became the pendant's bulb, with the under-cabinet light
+  Anita sits by (the only light in ch19) lit at last. The porch: the
+  same rocker and baluster grammar as the Millers', the carriage lamp
+  caged, spokes on Maya's bike, the slow car from the kit, a hedge
+  and a streetlamp. The cab: treads and lugs, the sedan from the kit,
+  a planked picnic table with initials, the heel-worn mat, the
+  bolster's shine, the dust line, a door ding, the charger cord.
+- **Things outside stand on the ground they were given.** A mower set
+  at a cabin-floor height floated over a lawn at −0.03; FLOAT caught
+  it. Exterior props take their z from the slab under them.
+- **The recorder boxes a `make_tube` by its whole path.** An L-shaped
+  cord over a counter's edge and down its back has a bounding box
+  that swallows the counter, and the clip hunt says so. Cords and
+  pipes that turn are several straight tubes, one per leg.
+- **A kit vehicle is longer than the boxes it replaces.** Dale's truck
+  from the kit put `shot_insert_truck`'s lens inside the body, and the
+  Tacoma's nose reached into the field house; both moved. Re-run the
+  marker gate after every kit swap — the kit's silhouette is the
+  point, and it is bigger.
+- **The cue-word rule is general, and it is about every SECONDARY
+  object.** `Cord_Laptop` joined the laptop's cluster and dragged its
+  centre to the floor, so the desk top stood between the lens and the
+  laptop; a kit chair's back rail stood between the lens and the
+  monitor after the chair got taller. Cords, outlets, switches, wear,
+  stickers and patches are now named `Cord_1`, `Outlet_N_1`,
+  `Wear_Forearm`, `Sticker_0` — never for the thing they serve — in
+  all seven rooms this week; and a chair that stands in a cue's line
+  gets pushed out and turned, the way a chair is left.
+- **A wear object must not carry a cue word.** `Wear_Path_Door_Bins`
+  made `[shot:insert door]` resolve to a floor stain, and the marker
+  gate reported the door insert OCCLUDED by a comic. Wear, stains and
+  bands are named for the wear (`Wear_Path_Entry_Bins`), never for
+  the object they lead to.
+- **Draft 6 is in the builder's docstring** (the loft, the counter's
+  face, the seven chairs told apart) and the contact sheet decides
+  what draft 7 is.
+
+### 2026-09-05 · DETAIL DRAFT 1 — the primitive layer was the ceiling
+
+User: "3d scenes are still feeling real primitive. basic cubes and
+rectangles when the objects and environments need far more detail
+and complexity." Diagnosis: `_props/geometry.py` offered a box, a
+cylinder, a chamfer box, a wedge, a gable, a taper and a blob. Every
+locale — model chapters included — is a pile of those. The diner is
+910 calls of the same two shapes; it reads because of DENSITY, not
+because anything in it has a silhouette.
+
+- **Five primitives now exist. Use them before reaching for a box.**
+  `make_lathe(name, center, [(r, z)...])` for anything round in
+  plan (bottles, basins, posts with caps, insulators, balusters,
+  shrubs, tires); `make_prism(name, center, polygon, length, axis=)`
+  for anything with a PROFILE (a car body from the side, a W-beam,
+  a roof with eaves, an L-plan, a stair stringer) — the profile
+  plane is perpendicular to the axis (Z→xy, X→yz, Y→xz);
+  `make_tube(name, path, r)` + `catenary(a, b, sag)` for lines with
+  thickness (wires that sag, pipes, rails, limbs, chains, hoses);
+  `make_rot_box(..., yaw, pitch, roll)` for anything not square to
+  the world (leaning posts, slumped planks, a door standing open);
+  `make_heightfield(name, origin, cell, heights)` + `rolling_heights`
+  for ground that is not a plane.
+- **A primitive that is not in `_RECORDERS` does not exist.** The
+  audit recorder maps helper names to bbox recorders; an
+  unregistered `make_*` resolves to a no-op stub and the object is
+  invisible to overlap, aim, vantage and obstruction. Same for a new
+  `_props` module: it must be on the recorder's composite whitelist
+  (vehicles and buildings were added this pass). Register first,
+  model second.
+- **Composites are where the detail multiplies.** One car helper
+  rebuilt (`vehicles.make_car`: profile body, lathed wheels, seams,
+  handles, mirrors, lights, grille, wipers) upgraded eleven vehicles
+  across five sets in one commit. `buildings.make_ranch_house`
+  (gable prism with eaves and shingle courses, siding courses,
+  trimmed windows with sills and shutters, paneled door, turned
+  porch posts, chimney, gutters, downspouts, garage) upgraded
+  fourteen houses. When a class of object appears in three locales,
+  it belongs in `_props`, and the pass is made there.
+- **Same-assembly parts are exempt from the overlap gate; name them
+  so.** A prism body's bbox is the whole car, so a phone "on the
+  dash" clips unless it shares the car's prefix (`Civic_Phone`).
+  The grammar forgives parts that share a name prefix; a detail that
+  lives inside an assembly's bbox takes the assembly's prefix.
+- **Detail draft 2 targets** (recorded in the roadmap): the cab's
+  interior (lathe the wheel as a loop, the cup, the knobs; chamfer
+  the seats and dash), a furniture kit (chair with turned legs,
+  table with apron, lamp with shade) for the nine new interiors, the
+  Meadowlark water tower and streetlamps lathed, road bends as
+  yawed prisms, ground as heightfields under the road sets, and a
+  chamfer pass on every interior's furniture boxes.
+
+### 2026-08-12 · SHARED-HELPER AXIS CONVENTIONS — twelve counters and six windows were built rotated 90°
+
+- **`make_counter(prefix, anchor, length=, depth=)` puts `depth` on
+  X and `length` on Y.** Read casually, "length 2.40, depth 0.70"
+  sounds like a 2.4m run against the wall — it builds the opposite:
+  0.7m along the wall and 2.4m jutting into the room. **Twelve
+  counters across the game were authored that way**, including the
+  New Orleans bar (7m of it running north-south, 1.65m through the
+  wall, all five stools embedded in its flank), the Pit Stop's
+  lunch counter (through the pass-through partition AND the prep
+  table) and the shared kitchen template replicated in eight
+  houses.
+- **`make_window` spans X — it is built for a NORTH or SOUTH wall.**
+  Six locales put windows on east/west walls, where the glass laid
+  itself across the room and 0.6m into the plaster. Both helpers
+  now take `axis=` ('X'/'Y'), defaulting to the old behavior, and
+  `make_counter_bullnose` matches.
+- **How to not repeat it:** when calling a shared helper that takes
+  two horizontal dimensions, work out which is X and which is Y
+  from the SOURCE, then sanity-check against the fixture's own
+  satellites — if the stools/sink/register spread along X, the
+  counter runs along X. The overlap audit catches the collision
+  cases, and a geometric check (a counter against a wall must run
+  PARALLEL to it) catches the rest in one pass.
+- Related, same day: eleven `make_window` calls passed `center_z=0`
+  — the anchor is a CENTER, so those windows sat half-buried in the
+  floor. Helper docstrings now say so explicitly.
+
+
+
+### 2026-08-11 · ROTATING MACHINERY — the circle must be perpendicular to the axle
+
+- **Three distinct paddlewheel bugs shipped in three builders.**
+  Riverfront: axle along X but the blade circle built in the XZ
+  plane (rotating about Y) — a quarter of every revolution swung
+  blades 1.1m through the stern into the dining room. Diner: the
+  fore-aft circle offset (`rx`) was computed and NEVER USED — all
+  8 blades stacked in a vertical column through the hub, diving
+  under River Road. Graustark: the paddlebox named outside the
+  hull's assembly prefix. **Rule: for any wheel/fan/turbine, write
+  the axle axis in a comment, then place every blade at
+  `center + r*cos(ang)` and `r*sin(ang)` on the two axes
+  PERPENDICULAR to it — and check that both offsets are actually
+  used.** The overlap audit catches the failure as blades in
+  walls/roads.
+- Corollary: name every part of a machine into ONE assembly prefix
+  (PW_*, Carousel_*, Wagon_*) — the audit excuses same-assembly
+  contact, and a machine split across prefixes drowns real finds
+  in its own construction.
+
+### 2026-08-11 · AUDIT STUBS — a recorded object must survive being USED
+
+- **The overlap/geometry audit's recorder returns stood in for real
+  Blender objects with a bare `SimpleNamespace(name=...)` — and any
+  builder that then TOUCHED the return (`obj.data`, `obj[i] = x`,
+  `palette[helper_return]`) crashed out of main(), silently dropping
+  the rest of that builder's geometry from the audit.** Graustark,
+  riverfront and the DINER all measured through the crash-fallback
+  path for the audit's whole life — riverfront was recording 141 of
+  its 4639 objects. Fix: `_obj_stub()` returns a `_StubVal` (the
+  universal float-subclass stub) with `.name` pinned; `_StubVal`
+  grew `__setitem__` and `__index__`. All 110 builders now complete
+  main() with zero partials — treat any future "partial:" line as a
+  stub-fidelity bug to fix THAT DAY, not noise to read around.
+- **Corollary: coverage jumps cost O(n²).** 4639 objects = ~10M
+  pairs; the per-pair regex battery ran minutes per locale. Classify
+  each NAME once (hoisted flag tuple), then sweep-and-prune on
+  sorted min-x with early break. --all over 110 builders ≈ 1 min.
+- **Calibrate grammar against the model chapter, then trust it
+  elsewhere.** The diner (best-verified space in the game) reporting
+  130 clips meant the grammar was missing construction classes, not
+  that the diner was broken: funnels pass through decks, tubs sit in
+  sinks, partitions join stall walls, seats tuck under counters,
+  ruins are rubble. Each excuse is BOUNDED (tuck ≤0.30, wall-join
+  ≤0.30) so waist-deep burial still reports.
+
+### 2026-08-09 · RECOGNIZABLE OBJECTS — a bottle is a silhouette, not a tube
+
+- **User: "the bar, all the bottles are cubes. make bottles, make
+  cans, make recognizable objects for all the scenes."** The bars'
+  bottles were single fat cylinders (r 0.05 × h 0.30 — a 10cm-wide
+  tube) — under the dither they read as extruded blocks. The new
+  `_props/objects.py` vocabulary: make_bottle / make_liquor_bottle /
+  make_wine_bottle (body + shoulder taper + neck + cap),
+  make_can (body + chamfered rims + lid), make_drinking_glass /
+  make_pint_glass (tapered walls), make_mug (+ handle), make_jar,
+  make_plate, make_bowl. Real-world sizes; callers pass the surface
+  z the object STANDS on.
+- **Converted this pass**: new_orleans_bar (60 shelf bottles),
+  foxhole_bar (42), daigles_roadhouse, el_rancho table bottles,
+  foxhole dressing-room vanity, carnival lot Roy's bottle, faust's
+  vitamin bottle, kwik_stop's soda pyramid (2-liter silhouettes),
+  and the DINER's three bar shelves inline (vendored builder — no
+  _props import; body/neck/cap stacks with its local make_cyl).
+- **Already good, left alone**: bungalow wine bottles, ember_ash
+  bourbon, darkroom chemistry jugs — they had real silhouettes.
+  Pill bottles and spray bottles ARE plain cylinders; don't "fix"
+  them into liquor bottles.
+- **The rule going forward: any object a hand can hold gets a
+  silhouette with at least one diameter change.** A tube is a pipe;
+  a box is a carton. If the name says bottle/can/glass/mug/jar, it
+  comes from _props.objects.
+
+
+
+### 2026-08-04 · de-Minecraft vocabulary + the view-direction sign bug
+
+- **The playbook demanded shapes the module didn't have.** The
+  primitive-selection table named `make_sphere` for years while
+  geometry.py shipped exactly two axis-aligned prims — so every
+  "wrong" column in that table was what actually got built. When a
+  doc says never-do-X and the tooling only offers X, the tooling is
+  the bug. Six new prims + `_props/trees.py` close it.
+- **Winding is computed, not hand-tracked.** Every new prim runs
+  `_fix_winding` (face normal vs outward-from-center) — validated
+  headlessly: 9 prims, all closed manifolds, 0 inward faces, 0 open
+  edges, without opening Blender once.
+- **The audit's camera forward had a sign error** (`-cos` for
+  `+cos`): every preset except yaw-180 was measured looking
+  BACKWARD. Fixed and validated two independent ways (a preset
+  comment naming its subject NW; the louisiana screenshot's void
+  matching the true south view). Consequence found immediately:
+  **14 'fixed' exteriors still had their old Sky wall standing
+  9-36m out IN FRONT of the new far bands** — deleted in all of
+  them, plus two paper-thin cardboard ridges. Occluder detection
+  (thin horizon slab WITH geometry behind it) is now a permanent
+  audit check.
+- **louisiana's preset faces SOUTH** — the 1200m extension went
+  north, behind the camera. The highway now runs -1200..+1200 with
+  poles, guardrail and treelines both ways: cuts in either
+  direction read.
+
+
+
+### 2026-08-03 · tail wave · wholesale re-themes and the stale-preset class
+
+**What happened.** The closing tail of the hero-prop arc (final 40
+low-traffic locales) surfaced two failure classes ABOVE the prop
+level:
+
+1. **Wholesale wrong building.** `pit_stop_interior` was a
+   convenience store while every scene in it is a diner (grill,
+   pass-through, back booth, waitress). `chillwave_interior` was a
+   synthwave cocktail lounge while the scenes are a cedar slowstick
+   shop. A generated template can be internally rich and still be
+   the WRONG BUILDING — prop-level patching can't fix it; re-theme
+   the whole build from the prose and re-light the tscn to match
+   (the lounge's neon practicals + purple ambient would have made
+   the cedar shop look haunted).
+2. **Preset aimed at a disabled builder.** `dambrosios_formal`
+   framed the NE formal-dining annex — whose builder had been
+   commented out of `main()` weeks earlier when formal dining moved
+   to the west extension. The camera was pointing at an empty room
+   and nothing warned. When a builder is disabled, grep
+   `Background3D.gd` for presets that reference its coordinates in
+   their comments; when adding a preset, note WHICH build function
+   dresses the framed zone.
+
+**Also proven again:** scenes that move between rooms of one build
+want per-room presets (`pit_stop_kitchen`, `salty_tome_kitchenette`,
+`chillwave_backroom`) + per-node bg retags, not one wide default.
+Cheap: annex zones (Salty Tome's kitchenette/office/alley) can be
+appended to an existing build beyond its N wall — split the wall
+for a doorway, extend floor/ceiling, and the single GLB carries
+front + back + exterior exactly like the multi-floor towers.
+
+### 2026-08-03 · vols 5-7 hero-prop sweep · parallel agents, every locale failed
+
+- **The audit scales as a fan-out.** Four parallel read-only agents
+  each took 4-5 locales with the same brief: grep the volume dirs
+  for `3d:<preset>`, read every matching scene's FULL text, list
+  named physical props, read the build script, report ONLY what's
+  missing (with canon quote + suggested blender coords) plus
+  contradictions. All sixteen top-traffic locales failed — three
+  were the wrong ROOM entirely (Lena's "apartment" was a dorm cell,
+  Board Lords was a board-game store instead of Kai's skate shop,
+  vol7's Oregon road played over the Louisiana swamp set). Traffic
+  rank is the right priority order; the next tier gets the same
+  sweep.
+- **Recurring failure classes to check first on any locale:**
+  (1) office fluorescent tubes in homes/porches/cabins — the
+  generated-script boilerplate leaks `build_ceiling_infra()`
+  everywhere; the prose almost always names the real light (lamp,
+  under-cabinet, oil lamp, pull-chain bulb, ceiling fan).
+  (2) Round pedestal tables where the prose stages seating
+  positions ("Mike's chair on the short side near the window") —
+  a seating motif needs a RECTANGULAR table.
+  (3) Props floated outside the walls or buried in them — comment
+  says "room y 0..6.4" while ROOM_D=6.0; re-derive, don't trust.
+  (4) The named hero object simply absent (Speak & Spell, Morse
+  key, loose floorboard, clicking fan, communal table).
+- **Wire the orphan twin before patching the wrong one.** The Gas &
+  Go had a rich 21 KB build with NO tscn while its three scenes
+  played over the FM-3411 fueling station. Same lesson as
+  carnival_lot/parish_cemetery: check for unwired builds/tscn
+  before adding geometry to a mismatched set.
+
+### 2026-08-03 · hero-prop pass · the prose is the set dressing spec
+
+- **Before calling a locale done, dump the FULL text of every scene
+  that plays over it and list the named props.** The user's "polish:
+  make sure hero props and scene details are in the scenes" pass
+  found the prose specifies sets to a degree the build headers
+  guessed at: the Missing Link canon names "two gas pumps, one of
+  them retired in place," a WET ASPHALT apron, and the bench "under
+  a metal awning" attached to the diner (I'd built a freestanding
+  municipal shelter on gravel). Briar Falls names the brown-brick
+  building, the vending machine, the dangling pay-phone receiver,
+  the trailhead sign-in box THE DOG IS STARING AT, the three-table
+  shelter with one table off-square, the falls "in two stages" right
+  below the rail with a red ribbon + 707 key tied to it, and the
+  blue minivan with faux wood trim. None of that is optional — the
+  camera line and the prose line land in the same frame.
+- **Set-reuse has a canon ceiling.** carnival_lot (sun-bleached
+  midwest lot) served the Cliffside Circus refs structurally but the
+  prose says "more like a bordello or gaming parlor… built up along
+  the edge of a cliff" with the mermaid pool + rail — a bespoke
+  build_cliffside_circus.py replaced the reuse. Same with Sapo
+  Falls: the dream is CANAIMA (tepuis, dense dark green), not a
+  temperate gorge — the backdrop is now a flat-topped tepui. Reuse
+  by room type is the right first pass; upgrade to bespoke when the
+  prose names features the borrowed set contradicts.
+- **Interior hero props deserve their own vantage.** The crumpled
+  barn's marionette cabinet (Jiggles the Juggler) + carved mermaid
+  sign are the origin of vol2's whole Delores thread and were
+  invisible in the exterior shot — crumpled_barn_int now frames them
+  against the gable's inner face, and the interior ref dropped its
+  equipment_shed reuse. When one location carries both an establish
+  and a relic, that's two presets, not one.
+- **Moving a hero prop moves the camera.** Every relocation above
+  came with its preset re-derived in the same commit (bench →
+  shuttle_bench origin/yaw; minivan parked on the old rest_stop
+  camera spot → camera moved east; falls under the rail → pitch
+  down). Geometry edits and CAMERA_PRESETS edits are one atomic
+  change.
+
+### 2026-08-03 · vols 1-2 3D migration · "VN backgrounds are 3d scenes"
+
+- **The 2D-plate direction was rejected by the user** ("visual novel
+  backgrounds are 3d scenes"). Never author a flat background image
+  for a VN scene again — every bg is a `3d:` preset. If a locale
+  doesn't exist, that's a build script to write, not a JPEG to
+  generate. `vn_asset_audit.py` now prints every remaining 2D bg
+  src as a per-ref migration-debt line so the estate is visible.
+- **Set-reuse by room type is the cheap half of a migration.** 17 of
+  28 refs landed on EXISTING locales (bar → new_orleans_bar, roads →
+  louisiana_road, football → school_field_evening…) — instant wins
+  on the Deck since those GLBs are already built. Match on room
+  TYPE, not name; note the reuse in the audit doc.
+- **One build, many presets.** New builders were chosen by cluster
+  traffic and every one carries multiple CAMERA_PRESETS vantages:
+  missing_link_exterior serves the diner front AND the shuttle
+  bench (vol1's ×8 hottest bg); briar_falls serves five presets
+  (lot/building/trail/overlook/picnic). An outdoor set with distinct
+  zones is five backgrounds for one build's cost — design the zone
+  layout around the shots before placing geometry.
+- **make_locale_tscn.py had rotted while unused** — it referenced
+  `PDPRiffmaster.gd` (doesn't exist; real script is PDRiffrocker.gd)
+  and serialized mood_strata via `str(list)` (single quotes, invalid
+  in .tscn). Fixed + extended with per-light `omni_range` overrides.
+  Lesson: a generator no shipped file exercises is a generator that
+  drifts — smoke-run it against a known-good donor before trusting.
+- **Second wave closed the estate (same day): debt zero.** Nine more
+  builds covered the last 12 refs; the whole vols 1-2 estate now
+  runs on 24 new presets over 12 new builds + reuse. Two transfer
+  rules that held: (a) an unreachable tscn is free coverage — check
+  the unwired list (carnival_lot, parish_cemetery both got wired
+  before any new geometry was considered); (b) "no bg node" legacy
+  scenes split cleanly into inherits-by-accident (give them the
+  obvious home: the six link_* diner sub-scenes) and black-on-
+  purpose (montage/finale codas — leave them; the audit carries
+  them as the known baseline, now 10).
+
+### 2026-07-19 · wrong-room sweep CLOSED · seven builds + eight repoints
+
+- **The sweep is done.** vol6's cosmic_comics_back_office reuse went
+  29 → 10, and the surviving 10 (ch12/ch21/ch3_back_room/ch4) are
+  scenes genuinely SET in Rick's back office. Verified by narrate-
+  dump, not by grep. Any future "same room again" complaint in vol6
+  starts from a clean slate.
+- **A multi-segment scene can need FOUR different rooms.** ch19
+  "The Chains" cut drive→porch→Ben's bed→Coach K's bed, all on the
+  comic shop. Repoint scripts must assign per-SEGMENT in order, not
+  per-file — a single find/replace would have put Coach K in a
+  Civic. Sequence-list assignment (seq[i] on each match) is the
+  pattern.
+- **Dream rooms get dream proportions.** nightmare_cell ships a 3.4m
+  ceiling on a 3.4×4.2 floor, a door slightly too small with NO
+  inside handle, and a low camera angled UP (+0.183 pitch) — the
+  wrongness is composed, not shaded. One caged-tube practical, a
+  fill at 0.06, saturation 0.75. Single-source dread needs the pack
+  fully clean (nightmare_hum = raw, neon OFF).
+- **Emotional-center lighting: build the story's light first.** The
+  Henderson porch's entire design brief was "the kitchen light left
+  on" — one LITGLASS window among dark ones, with the Omni sitting
+  in it at 2.2 while the porch lamp is OFF geometry. When a chapter
+  names a light source, that fixture is the hero prop.
+- **Deterministic scatter without RNG:** the red-dot wall uses a
+  golden-angle spiral (i*2.39996, r=0.085√i) — organic clustering,
+  reproducible builds, no random module (which would break the
+  rebuild-equality check).
+- **Batch donor-transform scales to 7.** One python pass generated
+  all seven tscns from five donors (bedrooms←jesse, yard←school
+  field, porch←caldwell, gym+cell←stockroom, shed←garage), with the
+  same assert suite (1 Environment, exact light count, no donor
+  string leaks, fresh uid). Keep picking donors by LOOK.
+
+### 2026-07-19 · wrong-room sweep round 2 · three locales in one pass
+
+- **The audit names lie; the scene text doesn't.** The reuse list
+  said "Substation Nine" and "Ben's room" — the actual rooms behind
+  those segments were the HENDERSON GARAGE (band practice, 6 segments
+  across ch5/ch14/ch20 — Substation Nine is the bill they're playing)
+  and the Kowalski BACKYARD. Always dump the narrate lines under each
+  reused bg before designing the replacement locale, or you'll build
+  the wrong room with full confidence.
+- **One GLB, two presets is the cheap win for inside/outside pairs.**
+  centro_stockroom carries both the ch18 2AM interior AND the ch10/
+  ch16 dock-break exterior: build the apron + bumpers + dock face
+  outside the open roll-up, then add a second CAMERA_PRESETS entry
+  (`centro_dock`) on the apron looking back at the light spilling
+  out. Two rooms of story coverage for one Deck rebuild slot.
+- **Generate sibling tscns by transforming an existing one, not by
+  hand.** The post-process stack is ~200 lines of boilerplate that
+  must stay in exact BackBufferCopy order. A python transform of
+  miller_garage.tscn (swap uid / glb path / node name / Environment
+  block / light blocks / strata+pack via regex) produced all three
+  scenes; assert-check count of Environment blocks, light count, and
+  that no donor-name string survives. Pick the DONOR by look: the
+  dusk garage donated to a dusk garage (accent colors carry over
+  sensibly); darkroom's red-accent shader params would have leaked
+  red into every mood of the bookshop.
+- **Reuse an existing style pack when the recipe matches.**
+  henderson_garage ships `garage_dusk` (built for miller_garage) —
+  same dusk-through-open-door recipe, zero new MoodCycler surface.
+  Only bindery_day and stockroom_fluorescent were genuinely new.
+- **Open-door locales need the outside built.** The garage's
+  establishing shot is FROM the driveway; the dock preset is FROM the
+  apron. Budget geometry beyond the doorway (driveway + lawn +
+  hoop; apron + lane stripes + waiting pallets) or the framing
+  vantage stares at void.
+
+### 2026-07-16 · Anny full-body base under the GNM heads
+
+- **naver/anny is the licensed realistic-body answer** (Apache 2.0
+  code, CC0 MakeHuman-derived assets in the native topology; PyTorch,
+  runs CPU). `gnm_portrait.py` now forwards MakeHuman-style phenotypes
+  (gender/age/height/weight/muscle/cupsize — needs
+  `all_phenotypes=True`; gender axis: 0=male, 1=female) and welds the
+  GNM head on. 13.7k verts, metric, A-pose, height along +Z in its
+  native frame → godot (x, z, -y).
+- **Its bone names lie about position** — the "head" bone origin sits
+  at EYE level, neck03 at the chin. Never cut/anchor by bone position;
+  find the neck GEOMETRICALLY (narrowest cross-section band between
+  0.80H and 0.93H) and take anchors as fixed drops below that cut.
+  A widest-band "shoulder" scan also fails: the spread A-pose arms
+  win. Fixed offsets below the neck cut are the reliable anchors.
+- **Skinning weights are the garment segmentation** — ARGMAX over
+  summed zone-bone weights (torso/upperarm/forearm/hand/legs/feet/
+  neck+head) gives every vertex exactly one zone; independent >0.5
+  thresholds spike. Then cut CLEAN HORIZONTAL lines (hem/ankle/crew)
+  in BOTH directions after decimation, snap nearby verts onto each
+  line (real edge loops), and give every triangle ONE color at
+  flat-shade time — per-corner colors fringe every boundary.
+- **Weld = geometric cut + skin bridge loft**, not radius-matching:
+  cut GNM at chin-0.032, cut anny just above its narrowest neck, seat
+  with 12mm overlap, and loft a tapered skin tube from the anny neck
+  up into the hollow GNM head. Auto-scaling the head to match neck
+  radii distorts it — the bridge absorbs the mismatch instead.
+
+### 2026-07-16 · GNM parametric heads → stylized hero portraits
+
+- **Google GNM (github.com/google/GNM, Apache 2.0) works as an
+  OFFLINE portrait-face generator for the Portrait3D GLB tier.**
+  `godot/tools/portraits/gnm_portrait.py` samples its statistical
+  head model with a crc32-seeded identity per character (same
+  character = same face, forever), strips interior anatomy, paints
+  flat vertex-color zones from GNM's SEMANTIC VERTEX GROUPS (skin /
+  lips / scleras / irises / pupils / brow cores / a computed scalp
+  mask + offset hair shell), then vertex-cluster-decimates and
+  flat-shades. Decimation IS the stylization step — full-res smooth
+  GNM is photoreal-adjacent and clashes; 6 mm clustering + flat
+  shading lands it in the faceted diorama look.
+- **The head rides a procedural anatomical body.** Portrait3D's
+  auto-scale expects a ~1.8 m Y-up figure framed thigh-to-head, so a
+  bare head won't frame. v1 hex-prism slabs read "too primitive" —
+  v2 is LOFTED octagonal cross-sections on real anthropometry:
+  sloped trapezius shoulders, chest→waist→hip taper (separate female
+  measurement table: narrower shoulders, waist, hip flare), visible
+  neck, tapered limbs with elbows/wrists, thigh-thicker-than-calf
+  legs. Garment boundaries are crisp because each loft band is its
+  own vertex group colored by the LOWER ring — no gradient bleed.
+  Wardrobe is data: outfit tables ("waiter" shirt/tie/half-apron,
+  "kwikstop" short-sleeve polo + name tag, "bomber" ribbed jacket +
+  patches incl. a boxed alien-head) with a front_z(y) interpolator
+  so chest dressing follows the torso taper instead of floating.
+- **Software-raster previews catch winding bugs before Godot does.**
+  The first pass shipped a black-fronted torso (hex prism side quads
+  wound inward → lambert 0). The tool's --preview PNG made it obvious
+  in seconds. Never write preview PNGs into assets/ — Godot imports
+  any PNG it sees; previews default to system temp.
+- **Hero GLBs are COMMITTED (not gitignored like locale GLBs),** so
+  generated portraits ship on pull with no Deck rebuild. New files go
+  in as `<name>_gnm.glb` beside the old art; the CharLayer mapping is
+  the switch, so rollback is a two-line revert.
+- **GNM is a build-time dep only** — clone it anywhere, pass
+  --gnm-path (weights are bundled in its repo, ~53 MB; deps: numpy,
+  absl-py, etils[enp], pillow for previews). Nothing of it is
+  vendored here and the runtime never sees Python.
+- **Lighting rigs key on GLB basename** — Portrait3D now strips a
+  `_gnm` suffix before the CHARACTER_LIGHTING lookup so variants
+  inherit their character's rig (Sam's sodium Kwik-Stop key).
+
+### 2026-07-15 · killing shared-bed clones + the verify-before-repoint rule
+
+- **One bed model copy-pasted across N rooms reads as one room
+  reskinned.** An audit found the exact bed (frame+mattress+pillow+
+  headboard at `-ROOM_W/4, ROOM_D/2`, headboard N) byte-identical
+  across finn / kai / diego / lena, with maya on the same footprint —
+  finn and kai were line-for-line clones. Palette + dressing had been
+  varied in an earlier pass; that is NOT enough. Re-arrange the
+  SILHOUETTE: change the WALL, the ORIENTATION (rotate 90°), the
+  MODEL (platform vs floor futon vs queen-with-footboard vs
+  captain's), and the HEIGHT. finn→raised platform on posts w/ under-
+  bed crates; kai→floor futon (lowest); diego→NW-corner E–W; lena→
+  queen+footboard; maya→under the N window. The ex-clone pair must
+  become the two most-different beds, not two shades of the same one.
+- **Move the bed → move its satellites.** Each room re-declared
+  `bx, by` in `build_dressing` to hang a nightstand/clock off the
+  bed; a bed move that forgets this strands the nightstand at the old
+  spot. Grep every `bx`/`by`/`nsx` reference, not just `build_bed`.
+- **Fixed VN cameras: check the new bed is still in frame.** These
+  rooms use a fixed SE-corner cam looking NW. Beds pushed to the N/
+  centre land centre-back (good); a floor bed in the SW corner reads
+  as foreground (acceptable). If you shove furniture to a wall the cam
+  can't see, you've hidden it — reason the vantage before committing.
+- **A multi-bg scene on `louisiana_road` is usually a LEGIT exterior→
+  interior transition, not a wrong-room bug.** The audit flagged
+  ch22_foxhole / ch16_el_rancho as "road standing in for an interior";
+  inspection showed they cut road→`foxhole_bar`→stage, road→
+  `el_rancho_taqueria` — the road IS the arrival beat. Read the FULL
+  bg list of a scene before repointing. The real reuse bugs are
+  SINGLE-bg scenes sitting on a generic fallback (the whole beat is
+  the wrong room, it never cuts away).
+- **Repoint to an EXISTING correct preset before building new.**
+  Graciela's ch1 kitchen (892 Ashberry = the Ramos house) sat on
+  `cosmic_comics_back_office`; `ramos_kitchen_morning` already exists
+  with a built GLB and is the same household. One-line bg swap, right
+  room, and — because the GLB ships — it's live on pull with no Deck
+  rebuild. Always check the preset table for a real match before
+  authoring a whole locale.
+
+### 2026-07-15 · the darkroom — a bespoke locale to kill a shared-bg bug
+
+- **One `3d:` bg reused for two different rooms is a bug the player
+  WILL name.** `cosmic_comics_back_office` had become the catch-all
+  small-interior fallback for 29 vol6 scenes. Two of them sit
+  back-to-back in the ch0 prelude: "Graciela's Bedroom" (892
+  Ashberry) and "The Darkroom" (3017 Verbena). Same bg → the user's
+  exact words: "the darkroom is the same as graciela's bedroom."
+  Fix: build ONE of the confused pair as a bespoke locale and
+  repoint just that segment's bg node — they become distinct and the
+  complaint dissolves. You don't have to re-home all 29 reuses; you
+  have to break the specific collision the player saw.
+- **Find the real bg the JSON uses, not the text that MENTIONS it.**
+  `grep "darkroom"` matched a dozen scenes that only TALK about the
+  darkroom. The scene that's SET there is the one whose `interlude`
+  label is "The Darkroom" and whose next `{"t":"bg"}` node names the
+  reused preset. Scan `nodes[]` for `t==interlude` (setting label) +
+  the following `t==bg` (`src`), not raw substring hits.
+- **Red-and-black comes from the tscn, NOT the geometry vertex
+  colors.** Give the GLB believable albedo (white enamel trays,
+  steel enlarger, amber chemistry, near-white prints, matte-black
+  walls) and let darkroom.tscn do the tint: Environment bg near-black
+  + deep-red ambient (0.56,0.10,0.08 @0.5) + red fog, and a single
+  red practical `OmniLight3D` (1,0.16,0.12 @3.0, range 5.2) sitting
+  exactly on the visible `Safelight_Dome` mesh. Paint the walls red
+  in vertex color and the red light has nothing left to do; keep them
+  black and the safelight reads.
+- **Bloom the fixture, don't brighten the room.** Set the safelight
+  dome/lens and the enlarger red filter to near-pure red
+  (0.90,0.11,0.09) and lean on the env glow (hdr_threshold 0.85,
+  intensity 0.85) so those small parts halo. That sells "the only
+  light in here is red" without raising the ambient floor.
+- **Small room ⇒ mood must be clean, never a heavy filter.** The
+  darkroom ships `default_style_pack = "darkroom_safelight"` (mood
+  `raw`, lighting `scene_default`, blend_mode 0 = neon fully OFF) and
+  a `mood_strata` of safe moods only. A neon/linework mood over a dim
+  red set is the wireframe-nightmare failure again — the post-process
+  must stay out of the way and let the practical carry it.
+- **Cross-runtime camera math held.** SE-corner vantage: cam blender
+  (1.05, 0.5) inside the light-tight door, target the enlarger at
+  blender (-0.3, 3.4); godot yaw = atan2(cam_x-tgt_x, cam_z-tgt_z) ≈
+  24.5°, pitch ~-6°. Wet trays land frame-left, enlarger centre-back,
+  drying line overhead — all in one 64° frame in a 2.6×3.4 room.
+- **New `.py` locale = Deck rebuild before it shows.** darkroom.glb
+  is gitignored; until `build_scenes.sh` runs on the Deck the bg3d
+  preset's `requires_glb` misses and the scene falls back to 2D
+  black — WORSE than the reuse it replaced. Always ship the repoint
+  and the rebuild command together.
+
+### 2026-07-11 · compound-silhouette detail passes, headless-verified
+
+- **"Not just boxes" is achievable in this pipeline.** A prop reads
+  as a THING when it's 4-10 primitives with silhouette variety and
+  per-part color: tripod = splayed leg cylinders + hub + body box +
+  lens cylinder + glass disc; kudzu = wandering stem-cylinder chain
+  + leaf-cluster spheres; gantry hoist = beam + trolley + chain of
+  alternating-axis small cylinders + three-box hook. Single-box
+  props are placeholders, not set dressing.
+- **Author blind, verify headless.** godot/tools/blender/survey.py
+  executes any build script with a stubbed bpy (AABB dump, top-down
+  maps, spatial queries) and the scratchpad check_shots.py
+  ray-marches every VN camera through the result. New dressing is
+  only committed after the checker shows no camera-inside-object
+  and no blocked hero shot. This is how detail passes ship without
+  a Blender render loop.
+- **A window is a wall segment, rebuilt in bands.** The booth row's
+  river view (pass 5): replace the one solid segment box with lower
+  band + glass band in mullioned bays + upper band + sill/header
+  trim. The tscn collision wall stays untouched — you still can't
+  walk through glass, and no collider edit means no gauntlet risk.
+- **Two builders can silently share a footprint.** The regional
+  dioramas land on plinth pads that the arcana-station sweep later
+  built props on top of (Graustark city under the Chariot's truck).
+  Before placing anything, query the ASSEMBLED scene (all GLB
+  builders merged), not just the one script you're editing.
 
 ### 2026-07-02 · hero-pass wave 2 (diner / Gas & Go / Cosmic Comics)
 
@@ -1946,3 +3156,66 @@ and toddler at the plaza, etc.). Same for the chapter-one cast.
   what we learned, plus the rule that came out of it>.
 - ...
 ```
+
+---
+
+### 2026-07-21 · Meshy image-to-3D hero-asset pipeline (untextured T2)
+
+Added an external-API path to the 3D pipeline for HERO objects (statement
+pieces a locale can't reach with procedural cubes) — image → low-poly
+untextured GLB → normalized into the vertex-color pipeline. Two halves,
+mirroring the house `runway_render.py` / `elevenlabs_render.py` pattern:
+
+- `godot/tools/meshy_render.py` — stdlib runner. `POST /openapi/v1/
+  image-to-3d`, poll, download `model_urls.glb` to `assets/3d/meshy/`.
+  Auth via `MESHY_API_KEY` env or gitignored `.meshy_key`. Every request
+  field passes through the queue's `params`, so the **T2 model id** and any
+  new Meshy fields are data, not code. Defaults are the untextured low-poly
+  workflow (`should_texture:false`, low `target_polycount`, triangle topo).
+- `godot/tools/blender/build_meshy_import.py` — Deck-run normalizer:
+  join → recenter (min Z→0) → scale to a real metre height → optional
+  decimate → **bake a flat vertex-color layer + minimal material** (the T2
+  output is untextured, so we give it the pipeline's flat identifier) →
+  re-export GLB. Runs via `run_cathedral.sh` like every `build_*.py`.
+
+Lessons worth keeping:
+- **Keep the network half Blender-free and the Blender half network-free.**
+  The runner runs anywhere (CI, this container); the normalizer runs on the
+  Deck. Neither imports the other's world. Same split the audio/video tools use.
+- **Pass API fields through as data.** A new model tier ("T2") or a renamed
+  field shouldn't need a code edit — the queue's `params` dict is merged over
+  defaults straight into the request body.
+- **Untextured is the feature, not a gap.** T2's no-texture output drops
+  cleanly into the vertex-color / Light3D / screen-space stack; the normalizer
+  bakes one flat vertex color so it reads like every other locale mesh. Hero
+  objects raise the silhouette ceiling, not the texture rule.
+- Verified the Blender script with the STOP-RULE stubbed-bpy smoke test
+  (main()/helpers run clean); real bpy-API correctness still needs a Deck run.
+  Gitignore the key + raw `assets/3d/meshy/**/*.glb`; keep the manifest.
+
+---
+
+### 2026-07-21 · SlowstickDiorama · shallow 3D behind a 2D stick
+
+`SlowstickDiorama.gd` (scenes/games/estuary_3/) puts a shallow 3D
+diorama behind a slowstick's UI: a SubViewport with a slow-turning
+UNTEXTURED low-poly hero object under a key+fill Light3D rig and a soft
+ambient Environment. The flagship of the graphics program and the first
+consumer of the Meshy pipeline — point `glb_path` at a normalized
+assets/3d hero and it renders; with none it builds a procedural
+"resonator" (stacked torus rings + core, one flat material) so the
+pilot works before any asset exists.
+
+Lessons / gotchas (Deck-verify — SubViewport 3D can't render in CI):
+- **`show_behind_parent` on the SubViewportContainer** is how the 3D
+  renders BEHIND a host Control's own `_draw` (e.g. Basilica's
+  wireframe) instead of over it. A `_draw` parent draws beneath its
+  children by default, so without this the diorama would cover the game.
+- **`msaa_3d = DISABLED`** keeps the chunky low-fi silhouette — smoothing
+  fights the silkscreen look. Tint/material come from the host's
+  SlowstickLook on top; the diorama is the picture, joins "world_render"
+  so F4 leaves it.
+- Untextured is the point: a StandardMaterial3D flat albedo + Light3D
+  gives the vertex-color-era read without any texture asset.
+- Verify path: SlowstickDioramaDemo.tscn opens standalone (F6) to prove
+  the diorama in isolation before any risky wire into a live stick.

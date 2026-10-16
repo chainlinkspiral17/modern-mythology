@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://sam_bedroom_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://sam_bedroom_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/sam_bedroom.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,8 +128,22 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.86, 0.62, 0.62, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.06, 0.08, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.62, 0.62, 1)
@@ -138,6 +152,7 @@ fog_enabled = true
 fog_light_color = Color(0.42, 0.32, 0.34, 1)
 fog_light_energy = 0.3
 fog_density = 0.004
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.06
@@ -157,20 +172,22 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
-light_energy = 0.55
+light_energy = 1.0
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
-light_energy = 0.35
+light_energy = 0.45
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, -3, 4, 2)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
-light_energy = 0.2
+light_energy = 0.28
 shadow_enabled = false
+
+; Practical at the desk lamp head (blender 0.8,1.70,1.16 → godot 0.8,1.16,-1.70)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +289,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +308,99 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; DRAFT 5 (2026-10-09): Sam MILLER's room — the bedside lamp, the desk lamp, the fan's light kit; her cues
+[node name="Bedside_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.0999999999999996, 0.93, -4.56)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 3.2
+
+[node name="Desk_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.1199999999999997, 1.1, -3.12)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 3.0
+
+[node name="Fan_Light_Kit_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.0, 2.0, -2.9)
+light_color = Color(1.0, 0.9, 0.7, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.650, -4.300)
+rotation = Vector3(-0.1488, 0.2268, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_sprinklers" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.050, 1.750, -5.150)
+rotation = Vector3(-0.6583, -0.1277, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.850, 1.350, -1.050)
+rotation = Vector3(-0.5153, 3.0741, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.450, 1.150, -4.200)
+rotation = Vector3(-0.7440, 1.2161, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_list" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.200, 1.600, -2.300)
+rotation = Vector3(-0.7667, -1.1903, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_legal_pad" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.500, 1.350, -2.850)
+rotation = Vector3(-0.8225, -1.9513, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.550, -2.400)
+rotation = Vector3(-0.1194, -2.8578, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_fan" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.350, -1.800)
+rotation = Vector3(0.6229, -0.4993, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 1.650, -4.900)
+rotation = Vector3(-0.1207, -2.5018, 0.0)
+metadata/fov = 60.0
+
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.800, 1.550, -4.800)
+rotation = Vector3(-0.1344, 2.3562, 0.0)
+metadata/fov = 60.0
+
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.300, -3.400)
+rotation = Vector3(-0.2102, 1.4758, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.000, 1.400, -3.600)
+rotation = Vector3(-0.0498, -1.9451, 0.0)
+metadata/fov = 45.0
+
+; the bed, the sheets pushed aside (vol6 ch0)
+[node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.350, 1.350, -2.550)
+rotation = Vector3(-0.4010, 1.0122, 0.0)
+metadata/fov = 42.0
+
+; ── named closeup (pass 87): Sam at the desk with the WEDNESDAY LIST (the plain pair frames the bed)
+; closeup: Sam at the desk chair, from the north-west across the desk corner (from the west the E wall filled the frame)
+[node name="shot_closeup_sam" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.400, -3.750)
+rotation = Vector3(-0.2631, -2.4488, 0.0)
+metadata/fov = 42.0
+

@@ -1,0 +1,159 @@
+{
+ "id": "the_split_shift",
+ "arcana": "0_fool",
+ "location": "dambrosios",
+ "hand": "john_frank",
+ "title": "THE SPLIT SHIFT",
+ "subtitle": "D'Ambrosio's · 3:12 PM · between lunches and dinners",
+ "difficulty": "medium",
+ "epigraph_upright": "The Fool between acts is still on the clock. The split shift is the diner with its jacket off: silverware to roll, one booth occupied, the fryer resting. Nothing happens. Everything is decided.",
+ "epigraph_reversed": "Three hours of nothing is where a person either becomes furniture or becomes ready. The silverware doesn't care which. Roll it anyway.",
+ "scene_description": "The lunch rush left at 2:20 like weather. Dinner starts warming at five. In between: John, a bin of forks, the bus kid doing homework in booth two because home is loud on Tuesdays, and Faith cashing out slow because her ride is late and she isn't saying so. The radio is allowed on at this hour. That's the whole personality of the split shift — the radio is allowed on.",
+ "direction_hint": "Roll the silver. Let the kid's homework be the kid's homework until it asks not to be. Faith's ride situation is solvable if you hear it — connect what shows up, keep Inertia under 7, keep faith adjacent, and be at a threshold when the dinner prep bell goes.",
+ "opening_log_lines": [
+  "The radio is on. The hour permits it. The hour is the only one that does.",
+  "Click [b]PHASE: ACTION[/b] for the rules. Rolled silverware counts toward something. It always did.",
+  "Booth two has a math book open in it. Fractions. Tuesday fractions."
+ ],
+ "starting_state": {
+  "player_pos": "counter",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 0,
+  "inertia_per_turn": 2,
+  "sanity": 5,
+  "sanity_max": 6,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "clean",
+   "greet",
+   "listen",
+   "deliver"
+  ]
+ },
+ "visitors_present_at_start": [
+  "bus_kid"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "faith",
+   "arrival_turn": 2,
+   "arrival_space": "booth_4"
+  },
+  {
+   "visitor": "dawn_cook",
+   "arrival_turn": 4,
+   "arrival_space": "counter"
+  },
+  {
+   "visitor": "the_late_ride",
+   "arrival_turn": 5,
+   "arrival_space": "hostess_stand"
+  }
+ ],
+ "win_conditions": {
+  "require_bindle_assembled": false,
+  "require_faith_adjacent": false,
+  "require_visitors_connected_min": 3,
+  "require_orders_delivered_min": 4,
+  "require_inertia_below": 7,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "visitors_claimed_max": 4
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the floor is moving",
+   "tick_per_turn": 2,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "two voices calling you at once",
+   "tick_per_turn": 2,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the wheel keeps spinning",
+   "tick_per_turn": 2,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 9,
+   "label": "you forgot a table",
+   "tick_per_turn": 2,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "the room is in the weeds",
+   "tick_per_turn": 2,
+   "effects": [
+    "claim_next_closest_visitor",
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "in the weeds",
+   "tick_per_turn": 2,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "parking_lot",
+   "label": "PARKING LOT",
+   "ending_lore_token": "leap_into_graustark_lunch",
+   "visible_from_start": true
+  },
+  {
+   "id": "river_window",
+   "label": "RIVER WINDOW",
+   "ending_lore_token": "leap_into_substrate_lunch",
+   "visible_from_start": true
+  }
+ ],
+ "max_turns": 10,
+ "notes": "Fourth setup (Wave-3D, 2026-07-19) · mid-tier at a distinct hour. Wave-1 arcana: win/loss keys inherited VERBATIM from the medium sibling (bespoke engine schema); numbers between the easy and hard bookends.",
+ "scenario_visitors": [
+  {
+   "id": "the_late_ride",
+   "name": "Faith's ride, twenty minutes late and counting",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 5,
+    "from": "booth_4",
+    "to": "booth_4"
+   },
+   "lore_token": "sorted_faiths_ride",
+   "lore_text": "Faith's cousin drives her Tuesdays. The cousin's shift ran over at the plant. Faith has checked the window four times and said nothing four times, because asking for help on a split shift feels like spending money she doesn't have.",
+   "accent": "#c8a0b8",
+   "mood": "preoccupied",
+   "tutorial_note": "The ride connects through the window — notice the fourth check, and offer the phone before she asks. The offering-first is the entire move.",
+   "steps": {
+    "greet": "It isn't here. That's the greeting: a car that isn't in the lot, checked again.",
+    "listen": "Faith, given one soft opening, says it's fine three ways, then says the plant ran over, then says the actual thing: she hates this part. The waiting part. Everyone's got a part.",
+    "deliver": "You hand her the diner phone and flip the CLOSED side of your face toward the empty floor: take your time. The cousin answers on two.",
+    "sit_with": "The car comes at 3:40. Faith flicks the booth-two kid's ear on the way out, gently, an aunt's toll. The split shift absorbs the whole event like it absorbs everything: without comment, into the permanent record."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "hane_no_niwa",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "Yumemi Denshi, Kyoto (1993) \u00b7 SHRINE-KEEPING / EPISTOLARY. Four seasons, a neglected hilltop shrine, letters from something unseen. Designed by Sachiko Ono. The Ono\u2013Rocha correspondence (1991\u2013) is why Fey Faire's roster crosses the Pacific; this game is Ono's half of that conversation.",
+  "shelf": {
+    "label_title": "HANE NO NIWA",
+    "label_subtitle": "\u7fbd\u306e\u5ead \u00b7 the feather garden \u00b7 four seasons, one shrine",
+    "publisher": "Yumemi Denshi",
+    "publisher_locale": "Kyoto, Japan",
+    "release_year": 1993,
+    "release_month": "March",
+    "hardware": "Yumemi 'Yume-kan' stick \u00b7 Slowstick-compatible via the grey-import shim",
+    "genre_stamp": "SHRINE-KEEPING / EPISTOLARY",
+    "shelf_condition": "1995 US grey import \u00b7 a photocopied fan translation folded into the case, annotated in two hands",
+    "prior_owner": "Olaf \u00b7 the fan translation came with it",
+    "provenance_note": "One of the two annotating hands on the fan translation is Am\u00e9lie Rocha's. Her note against the fourth letter's English sentence reads: 'she spelled it like that on purpose. ask her yourself.' Nothing else in either hand explains it.",
+    "cover_blurb": "A shrine on a hill has been alone too long. Sweep. Mend. Offer. Sit. Something is reading what you leave on the shelf, and once a season, it writes back.",
+    "back_of_case": [
+      "\u00b7 Four seasons \u00d7 nine visits.",
+      "\u00b7 Four verbs. SWEEP \u00b7 MEND \u00b7 OFFER \u00b7 SIT.",
+      "\u00b7 Twenty offerable things. What you give it is the language.",
+      "\u00b7 One letter per season. Written to you. Composed FROM you.",
+      "\u00b7 The honden door never opens.",
+      "",
+      "(grey import \u00b7 fan translation included \u00b7 two hands)"
+    ],
+    "in_fiction_dev_note": "Sachiko Ono founded Yumemi Denshi ('dream-seeing electronics') as the Pacific's answer to Oneironautics' Greek. She and Am\u00e9lie Rocha corresponded from 1991 about whether the numinous localizes. The Faire travels; the shrine stays; both are visited.",
+    "meta_note": "The fourth letter contains, regardless of lexicon, one sentence in English, uncommented: 'your carrnival is known here also.' \u2014 with the doubled r. The catalog's loudest unexplained object."
+  },
+  "acts": [
+    {
+      "id": "four_seasons",
+      "scene": "res://scenes/games/hane_no_niwa/ShrineVisit.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "hane_no_niwa_finished"
+  ],
+  "lore_tokens_conditional": {
+    "hnn_gold_feather": "the blank letter \u00b7 the only letter that says everything \u00b7 consumed by Fey Faire (Moth's solo line)"
+  }
+}

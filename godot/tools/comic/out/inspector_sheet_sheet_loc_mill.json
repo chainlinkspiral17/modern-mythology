@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_mill",
+      "kind": "location",
+      "era": "era3",
+      "tags": [
+        "location",
+        "era3",
+        "dw_cedar_mill"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. an environment sheet of an abandoned cedar mill: a long sagging shed, a brick smokestack, blackberry over the loading dock, a rusted chain across the drive; interior with light in long bars through missing roof panels onto a rusted saw and sawdust; inset: a small cedar sapling growing from the smokestack's rim; labeled THE CEDAR MILL. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

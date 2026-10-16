@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "title": "Crossroads · Title (temp)",
+ "temp": true,
+ "format": "ogg",
+ "length_sec": 109.667,
+ "frames": 4836300,
+ "sample_rate": 44100,
+ "loop": false,
+ "loop_offset": 0,
+ "loop_start": 0,
+ "bpm": 72,
+ "bars": 32,
+ "lufs": -14.1,
+ "credits": "",
+ "approved": {
+  "take": "20261013-150439-s4016274972",
+  "seed": 4016274972,
+  "date": "2026-10-13T22:08:09.843Z"
+ },
+ "mix": "assets/audio/bgm/vol1_title.temp.ogg",
+ "quality": {
+  "mix": 4,
+  "stem": 1
+ },
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/vol1_title.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/vol1_title.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/vol1_title.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/vol1_title.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/vol1_title.stems/pad.ogg",
+   "layer": 0
+  }
+ ],
+ "bytes": {
+  "mix": 1606759,
+  "stems": 3421023
+ }
+}

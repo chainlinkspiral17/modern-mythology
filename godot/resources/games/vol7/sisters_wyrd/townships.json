@@ -1,0 +1,247 @@
+{
+ "notes": "Wave 1 of the v3 depth pass. Five authored townships (fixed axial hexes, one per quadrant + one near home) and the notice-board bounty deck. Townships override terrain at their hex and open the trading post on arrival. Bounties are the silver income and the destination engine: take a notice, ride to the marked hex, deal with what you find, collect at any board. One active at a time.",
+ "townships": [
+  {
+   "id": "wet_mercy",
+   "name": "WET MERCY",
+   "hex": [
+    1,
+    -8
+   ],
+   "arrive": "wet mercy. the well is the whole reason for the town, and the town knows it. lamps in four windows.",
+   "rumor": "word at the rail: '%s' \u00b7 the barkeep polishes a glass that was already clean."
+  },
+  {
+   "id": "providencia",
+   "name": "PROVIDENCIA",
+   "hex": [
+    8,
+    -1
+   ],
+   "arrive": "providencia. the mission bell is cracked and rings anyway, out of stubbornness or faith \u00b7 the town has stopped distinguishing.",
+   "rumor": "an old man at the end of the bar says '%s' and then pretends he didn't."
+  },
+  {
+   "id": "ninemile",
+   "name": "NINEMILE",
+   "hex": [
+    -2,
+    9
+   ],
+   "arrive": "ninemile. nine miles from what, nobody says. the boards of the walk are new \u00b7 the town is younger than its dust.",
+   "rumor": "the card table goes quiet long enough for somebody to say '%s'."
+  },
+  {
+   "id": "coffin_flats",
+   "name": "COFFIN FLATS",
+   "hex": [
+    -8,
+    2
+   ],
+   "arrive": "coffin flats. the carpenter does the town's only steady trade and keeps the measurements of everyone who's ever bought him a drink.",
+   "rumor": "the carpenter, without looking up: '%s'. he planes another curl off the board."
+  },
+  {
+   "id": "dogtooth",
+   "name": "DOGTOOTH",
+   "hex": [
+    2,
+    1
+   ],
+   "arrive": "dogtooth. close enough to home that the porch dogs know your horse. the store sells everything, mostly rope.",
+   "rumor": "the storekeep leans on the word like a fencepost: '%s'."
+  }
+ ],
+ "services": {
+  "hotel_cost": 2,
+  "hotel_text": "the bed is honest and the sheets nearly are. you sleep without dreaming, which out here is a paid service.",
+  "saloon_cost": 1,
+  "saloon_text": "the whiskey is brown and the water is browner. you feel realigned with the territory's opinion of you.",
+  "bookstall_cost": 2,
+  "bookstall_cap": 2,
+  "bookstall_text": "a dime novel \u00b7 TRUE TALES OF THE TERRITORY \u00b7 wrong about the geography, wrong about the sisters, right about one thing in a way the author clearly didn't notice. that is lore, if you can hold it."
+ },
+ "bounties": [
+  {
+   "id": "rib_counter",
+   "notice": "NOTICE \u00b7 a man out on the bone flats counting ribs that aren't his to count \u00b7 the town would like him counted \u00b7 3 silver",
+   "target": [
+    6,
+    -12
+   ],
+   "reward": 3,
+   "arrive": "he's there, kneeling in the bone, lips moving. he has reached a number no honest count arrives at. he looks up without stopping.",
+   "choices": [
+    {
+     "label": "bring him in",
+     "text": "he comes along quietly, still counting. by the second hex he is counting your buttons. the town can have the arithmetic.",
+     "capture": true
+    },
+    {
+     "label": "let him count",
+     "text": "you leave him to it. some sums want finishing more than towns want justice. he nods you a number as you go \u00b7 that is lore, if you can hold it.",
+     "lore": 1
+    }
+   ]
+  },
+  {
+   "id": "rain_seller",
+   "notice": "NOTICE \u00b7 a woman selling rain by the jarful out past the salt \u00b7 the jars are real, the rain is somebody's \u00b7 3 silver",
+   "target": [
+    -4,
+    -8
+   ],
+   "reward": 3,
+   "arrive": "her cart is ranked with sealed jars, each one raining privately on the inside. 'every jar honest,' she says. 'the question is whose weather it was.'",
+   "choices": [
+    {
+     "label": "bring her in",
+     "text": "she comes willingly and sells two jars on the ride. you deliver her, richer in ways the notice didn't cover.",
+     "capture": true
+    },
+    {
+     "label": "buy a jar instead",
+     "text": "you pay her and she picks the jar for you \u00b7 'this one's yours anyway.' it rains a childhood afternoon. you let the bounty spoil.",
+     "silver": -1,
+     "grit": 2
+    }
+   ]
+  },
+  {
+   "id": "false_surveyor",
+   "notice": "NOTICE \u00b7 a surveyor chaining the scrub with instruments nobody issued \u00b7 his maps are changing the distances \u00b7 4 silver",
+   "target": [
+    -9,
+    7
+   ],
+   "reward": 4,
+   "arrive": "he has a theodolite aimed at nothing and a ledger of bearings that disagree with the ground on purpose. 'the territory is negotiable,' he says. 'i negotiate.'",
+   "choices": [
+    {
+     "label": "bring him in",
+     "text": "you fold his tripod for him. the ride back is one hex shorter than the ride out, which you decide not to mention to anybody.",
+     "capture": true
+    },
+    {
+     "label": "read the ledger",
+     "text": "you make him show you. the bearings spell a sentence about the weave that the manual would rather you hadn't read. you let him wander \u00b7 that is lore, and it is heavy.",
+     "lore": 2,
+     "grit": -1
+    }
+   ]
+  },
+  {
+   "id": "borrowed_name",
+   "notice": "NOTICE \u00b7 a man in the gallows wood answering to a dead man's name \u00b7 the widow is owed either the name back or the man \u00b7 3 silver",
+   "target": [
+    -12,
+    6
+   ],
+   "reward": 3,
+   "arrive": "he wears the name like a coat cut for a bigger man. 'it was going spare,' he says. 'names shouldn't sit empty. they let things in.'",
+   "choices": [
+    {
+     "label": "bring him in",
+     "text": "he gives the name up a hex outside town \u00b7 you watch it leave him, and he is smaller and easier to lead after.",
+     "capture": true
+    },
+    {
+     "label": "let him keep it",
+     "text": "maybe he's right about empty names. you ride off. behind you he says thank you with somebody else's gratitude \u00b7 grit for that costs, lore for what you saw.",
+     "grit": -1,
+     "lore": 1
+    }
+   ]
+  },
+  {
+   "id": "bell_thief",
+   "notice": "NOTICE \u00b7 providencia's second bell went missing before it was ever hung \u00b7 a rider was seen carrying a shape of quiet \u00b7 3 silver",
+   "target": [
+    11,
+    -5
+   ],
+   "reward": 3,
+   "arrive": "the rider has the bell wrapped in wool on a travois \u00b7 it rings anyway, muffled, on the offbeat of the horse. 'i'm not stealing it,' she says. 'i'm keeping it from saying something.'",
+   "choices": [
+    {
+     "label": "bring her in",
+     "text": "bell and thief both. the whole ride back it rings the offbeat, and by town you almost hear the word it was building toward.",
+     "capture": true
+    },
+    {
+     "label": "help her bury it",
+     "text": "you dig where she says. the quiet afterward has a shape, and the shape is the word unsaid. that is lore \u00b7 the town is owed an apology you won't be delivering.",
+     "lore": 1
+    }
+   ]
+  },
+  {
+   "id": "widow_gun",
+   "notice": "NOTICE \u00b7 a pistol going door to door on its own recognizance out past ninemile \u00b7 owner deceased \u00b7 the gun disagrees \u00b7 4 silver",
+   "target": [
+    3,
+    11
+   ],
+   "reward": 4,
+   "arrive": "it sits on a fence post, hammer politely down, waiting the way dogs wait. whoever it's waiting for is not you, and you both know it.",
+   "choices": [
+    {
+     "label": "bring it in",
+     "text": "it rides in your saddlebag without complaint, which is somehow worse. the town locks it in the safe and everyone agrees to say the matter is settled.",
+     "capture": true
+    },
+    {
+     "label": "point it home",
+     "text": "you turn it on the post to face the widow's house. it considers. by morning it will be on her porch, and that is between them. you keep one of its rounds for your trouble.",
+     "silver": 1
+    }
+   ]
+  },
+  {
+   "id": "backward_choir",
+   "notice": "NOTICE \u00b7 singing heard from the mesa country on nights with no moon \u00b7 the words arrive before the voices \u00b7 wet mercy will pay to know \u00b7 3 silver",
+   "target": [
+    9,
+    -13
+   ],
+   "reward": 3,
+   "arrive": "you find the choir \u00b7 five stones in a ring, humming the sisters' motif backward. played backward, it is a lullaby. somebody wove a comfort in under the theology.",
+   "choices": [
+    {
+     "label": "report it to the board",
+     "text": "you carry the shape of the song back in your chest. the town writes it down wrong, pays you anyway, and sleeps better for the wrong version.",
+     "capture": true
+    },
+    {
+     "label": "keep it for yourself",
+     "text": "some songs are owed to the first person who hears them right. you hum it on the ride and your grit settles like dust after wind.",
+     "grit": 2,
+     "lore": 1
+    }
+   ]
+  },
+  {
+   "id": "unwept_funeral",
+   "notice": "NOTICE \u00b7 a funeral procession crossing the dust for nine days \u00b7 no mourners, no deceased, one empty box \u00b7 somebody should ask it to stop \u00b7 4 silver",
+   "target": [
+    -11,
+    -2
+   ],
+   "reward": 4,
+   "arrive": "the procession walks itself \u00b7 six pallbearers of heat-shimmer under an empty box, patient as noon. it is rehearsing, you understand suddenly, and it has not yet been told for whom.",
+   "choices": [
+    {
+     "label": "turn it back",
+     "text": "you ride ahead of it and stop your horse crosswise, the way you'd turn cattle. it considers you a long moment \u00b7 measuring \u00b7 then folds up like heat does at dusk. you don't tell the town what it was measuring.",
+     "capture": true
+    },
+    {
+     "label": "walk with it a while",
+     "text": "you fall in behind the box, hat off. after a mile it stops on its own, satisfied \u00b7 all it wanted was one mourner willing. what you learned about the empty box is lore, and you'd give it back if you could.",
+     "lore": 2,
+     "grit": -1
+    }
+   ]
+  }
+ ]
+}

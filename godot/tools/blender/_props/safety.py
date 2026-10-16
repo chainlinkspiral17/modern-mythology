@@ -14,9 +14,10 @@ def make_security_camera(prefix, anchor, *, palette=None):
     body = palette.get("body", P.METAL_BLACK)
     glass = palette.get("glass", (0.18, 0.20, 0.22, 0.70))
     cx, cy, ceil_z = anchor
-    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.10),
+    # the dome's base ON the ceiling (2026-09-23: every dome hung 4 cm under it)
+    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.06),
              0.12, 0.12, body)
-    make_cyl(f"{prefix}_Glass", (cx, cy, ceil_z - 0.16),
+    make_cyl(f"{prefix}_Glass", (cx, cy, ceil_z - 0.14),
              0.10, 0.04, glass)
 
 
@@ -26,9 +27,9 @@ def make_smoke_detector(prefix, anchor, *, palette=None):
     body = palette.get("body", P.PAPER)
     led = palette.get("led", (0.86, 0.42, 0.32, 1.0))
     cx, cy, ceil_z = anchor
-    make_cyl(f"{prefix}_Body", (cx, cy, ceil_z - 0.04),
+    make_cyl(f"{prefix}_Body", (cx, cy, ceil_z - 0.02),   # ON the ceiling (2026-09-22: 2 cm under it, in 22 rooms)
              0.10, 0.04, body)
-    make_box(f"{prefix}_LED", (cx + 0.04, cy, ceil_z - 0.06),
+    make_box(f"{prefix}_LED", (cx + 0.04, cy, ceil_z - 0.045),
              (0.012, 0.012, 0.012), led)
 
 
@@ -65,7 +66,8 @@ def make_ceiling_speaker(prefix, anchor, *, palette=None):
     palette = palette or {}
     body = palette.get("body", P.PAPER)
     cx, cy, ceil_z = anchor
-    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.08),
+    # dome top ON the ceiling (2026-09-22: it hung 4 cm under it)
+    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.04),
              0.16, 0.08, body)
 
 
@@ -119,10 +121,13 @@ def make_fluorescent_tube_fixture(prefix, anchor, *,
     diffuser = palette.get("diffuser", (1.0, 0.96, 0.86, 1.0))
     frame = palette.get("frame", P.METAL_STEEL)
     cx, cy, ceil_z = anchor
-    make_box(f"{prefix}_Tube", (cx, cy, ceil_z - 0.08),
-             (length, width, 0.06), tube)
-    make_box(f"{prefix}_Frame", (cx, cy, ceil_z - 0.10),
+    # Recessed means FLUSH: the frame's top touches the ceiling plane
+    # (2026-09-22 support audit: every fixture from this helper hung
+    # 9 cm below its ceiling, in the air, in seventeen rooms).
+    make_box(f"{prefix}_Frame", (cx, cy, ceil_z - 0.01),
              (length + 0.10, width + 0.08, 0.02), frame)
+    make_box(f"{prefix}_Tube", (cx, cy, ceil_z - 0.05),
+             (length, width, 0.06), tube)
     # Brighter under-strip
-    make_box(f"{prefix}_Glow", (cx, cy, ceil_z - 0.14),
+    make_box(f"{prefix}_Glow", (cx, cy, ceil_z - 0.085),
              (length - 0.10, width * 0.45, 0.02), diffuser)

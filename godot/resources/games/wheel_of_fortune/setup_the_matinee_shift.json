@@ -1,0 +1,191 @@
+{
+ "id": "the_matinee_shift",
+ "arcana": "x_wheel_of_fortune",
+ "location": "le_roulant_casino",
+ "hand": "mickey",
+ "title": "THE MATINEE SHIFT",
+ "subtitle": "Le Roulant Casino · 2:24 PM Tuesday · the floor at its most honest",
+ "difficulty": "medium",
+ "epigraph_upright": "The Wheel at two in the afternoon spins for nobody and spins anyway. This is the hour the house is just a building and the odds are just arithmetic and Mickey can hear the felt.",
+ "epigraph_reversed": "An empty floor is a mirror. Every table you walk past deals you the same hand: what are you still doing here. The matinee shift is when people decide things.",
+ "scene_description": "Tuesday, 2:24 PM. Three slots blinking to themselves, one regular at the far table nursing a comped coffee, and Maddox in the pit doing the crossword he does not acknowledge doing. A tour bus slowed on the plaza at 2:10 and did not stop, and the whole building felt it. There is nothing to run. There is everything to keep — the felt brushed, the regular seen, the practice deals clean — because the house you keep at 2 PM is the house you have at 2 AM.",
+ "direction_hint": "Keep the floor like it's full. Deal the practice shoe clean. The regular is not here for the coffee — connect three, keep Inertia under 7, and be at a threshold when the bus that DOES stop pulls in.",
+ "opening_log_lines": [
+  "The slot bank plays its attract loop to nobody, faithfully.",
+  "Click [b]PHASE: ACTION[/b] for the rules. Practice deals count. They always counted.",
+  "Maddox filled in 14-across and pretended not to. Seven letters. 'PATIENCE.'"
+ ],
+ "starting_state": {
+  "player_pos": "roulette_table",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 2,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 6,
+  "tension_stat": "tilt",
+  "tension_label": "TILT",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "bet",
+   "hedge",
+   "double_down",
+   "cash_out"
+  ]
+ },
+ "visitors_present_at_start": [
+  "the_regular_at_the_table"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "maddox_in_the_pit",
+   "arrival_turn": 2,
+   "arrival_space": "roulette_table"
+  },
+  {
+   "visitor": "the_practice_shoe",
+   "arrival_turn": 3,
+   "arrival_space": "roulette_table"
+  },
+  {
+   "visitor": "the_two_forty_bus",
+   "arrival_turn": 5,
+   "arrival_space": "front_door"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_practice_shoe_dealt": true,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "visitors_claimed_max": 2,
+  "floor_unkept_at_the_bus": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the wheel turns",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the third-quadrant hesitation again",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the float is light by $400",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "Maddox doesn't look at you when you cross",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the regular orders a fourth scotch",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the slot bank pays a jackpot to the bachelor party",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "the neon hum lands on a chord",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "the night writes itself",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "front_door",
+   "label": "FRONT DOOR",
+   "ending_lore_token": "mickey_walked_out_at_close",
+   "visible_from_start": true,
+   "flavor": "Brass doors onto Decatur Street. You haven't walked through them as the owner yet. Six months. You walk through every Friday as the pit boss. Tonight you have to walk through as the owner."
+  }
+ ],
+ "max_turns": 12,
+ "notes": "Fourth setup (Wave-3B, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_practice_shoe",
+   "name": "the practice shoe, six decks, yours",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "roulette_table",
+    "to": "roulette_table"
+   },
+   "lore_token": "dealt_the_practice_shoe_clean",
+   "lore_text": "Six decks, cut card at the half. Mickey's teacher made him deal to an empty table for a month before a single live hand. 'The empty table is the real table,' she said. 'The people are decoration.'",
+   "accent": "#c8a858",
+   "mood": "preoccupied",
+   "tutorial_note": "The shoe connects through FOCUS at the roulette_table — deal it clean, all the way to the cut card, witnesses or none.",
+   "steps": {
+    "greet": "The cellophane sound of a fresh shuffle in an empty room. Loudest sound in the building.",
+    "listen": "The rhythm comes back by the third hand. Burn, pitch, pitch, pitch. The felt takes each card the way good felt does.",
+    "deliver": "You deal to the cut card. Every hand played out, every push counted, for nobody. For the shoe. For her.",
+    "sit_with": "Maddox looks up from the crossword exactly once, at the cut card, and gives you the nod. The nod is the whole certification."
+   }
+  },
+  {
+   "id": "the_two_forty_bus",
+   "name": "the 2:40 bus from Slidell, actually stopping",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 5,
+    "from": "front_door",
+    "to": "front_door"
+   },
+   "lore_token": "the_two_forty_stopped",
+   "lore_text": "The 2:10 slowed and went on. The 2:40 has its blinker on. Eleven retirees and a driver who needs the bathroom — which is, at 2:40 on a Tuesday, the entire economy.",
+   "accent": "#88b8d0",
+   "mood": "intense",
+   "tutorial_note": "The bus connects through SEARCH at the front_door — be there when the doors sigh open. First face they see is the house.",
+   "steps": {
+    "greet": "Air brakes, then the doors, then eleven people blinking at the neon like it's noon on the moon.",
+    "listen": "The driver asks where the restroom is and the eleven ask, collectively, without words, whether this is a place where an afternoon can be spent.",
+    "deliver": "You hold the door. You point out the coffee. You say the slot bank's loosest machine out loud, which Maddox will pretend he didn't hear.",
+    "sit_with": "By 3:05 the floor sounds like a floor. The regular has company at the far table. The matinee shift did its quiet job: it was ready."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

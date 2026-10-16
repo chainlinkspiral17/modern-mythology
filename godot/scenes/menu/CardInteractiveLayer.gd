@@ -194,7 +194,7 @@ func _build_overlay() -> void:
 		var sub := Label.new()
 		sub.text = str(hooks.get("subtitle", ""))
 		sub.add_theme_color_override("font_color", C_TEXT)
-		sub.add_theme_font_size_override("font_size", 9)
+		sub.add_theme_font_size_override("font_size", 12)
 		info_box.add_child(sub)
 
 	var meta_lbl := Label.new()
@@ -209,7 +209,7 @@ func _build_overlay() -> void:
 		meta_bits.append("hotspots: %d" % (hooks["hotspots"] as Array).size())
 	meta_lbl.text = " · ".join(meta_bits)
 	meta_lbl.add_theme_color_override("font_color", C_TEXT_DIM)
-	meta_lbl.add_theme_font_size_override("font_size", 9)
+	meta_lbl.add_theme_font_size_override("font_size", 12)
 	info_box.add_child(meta_lbl)
 
 	note_btn = Button.new()
@@ -223,14 +223,14 @@ func _build_overlay() -> void:
 		var xref_lbl := Label.new()
 		xref_lbl.text = "↔ connects:"
 		xref_lbl.add_theme_color_override("font_color", C_TEXT_DIM)
-		xref_lbl.add_theme_font_size_override("font_size", 9)
+		xref_lbl.add_theme_font_size_override("font_size", 12)
 		info_box.add_child(xref_lbl)
 		var xref: Dictionary = hooks["cross_references"]
 		for k in xref.keys():
 			var refrow := Label.new()
 			refrow.text = "  • %s: %s" % [k, str(xref[k])]
 			refrow.add_theme_color_override("font_color", C_TEXT)
-			refrow.add_theme_font_size_override("font_size", 9)
+			refrow.add_theme_font_size_override("font_size", 12)
 			refrow.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			refrow.custom_minimum_size.x = 280
 			info_box.add_child(refrow)
@@ -332,14 +332,14 @@ func _render_cipher_panel(hs: Dictionary, cipher: Dictionary) -> void:
 	var head := Label.new()
 	head.text = "▷ " + str(hs.get("interact", hs.get("id", "")))
 	head.add_theme_color_override("font_color", C_GOLD_HI)
-	head.add_theme_font_size_override("font_size", 10)
+	head.add_theme_font_size_override("font_size", 12)
 	vbox.add_child(head)
 
 	if cipher.has("text"):
 		var t := Label.new()
 		t.text = str(cipher["text"])
 		t.add_theme_color_override("font_color", C_TEXT)
-		t.add_theme_font_size_override("font_size", 9)
+		t.add_theme_font_size_override("font_size", 12)
 		t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		t.custom_minimum_size.x = 320
 		vbox.add_child(t)
@@ -348,13 +348,13 @@ func _render_cipher_panel(hs: Dictionary, cipher: Dictionary) -> void:
 			var l := Label.new()
 			l.text = "  " + str(line)
 			l.add_theme_color_override("font_color", C_TEXT)
-			l.add_theme_font_size_override("font_size", 9)
+			l.add_theme_font_size_override("font_size", 12)
 			vbox.add_child(l)
 	if cipher.has("encoding_hint"):
 		var eh := Label.new()
 		eh.text = "↳ " + str(cipher["encoding_hint"])
 		eh.add_theme_color_override("font_color", C_TEXT_DIM)
-		eh.add_theme_font_size_override("font_size", 8)
+		eh.add_theme_font_size_override("font_size", 12)
 		eh.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		eh.custom_minimum_size.x = 320
 		vbox.add_child(eh)
@@ -362,7 +362,7 @@ func _render_cipher_panel(hs: Dictionary, cipher: Dictionary) -> void:
 		var r := Label.new()
 		r.text = "→ unlocks: " + str(cipher["reveals"])
 		r.add_theme_color_override("font_color", C_GOLD)
-		r.add_theme_font_size_override("font_size", 9)
+		r.add_theme_font_size_override("font_size", 12)
 		vbox.add_child(r)
 		# actually flip the unlock flag
 		SaveSystem.mark_unlocked(str(cipher["reveals"]))

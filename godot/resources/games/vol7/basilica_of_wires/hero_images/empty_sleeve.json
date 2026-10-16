@@ -1,0 +1,113 @@
+{
+ "id": "empty_sleeve",
+ "notes": "Olaf's hand-labeled empty sleeve \u00b7 'still looking \u00b7 30 yrs' \u00b7 the only stick rendered as a hole. Ships as the shelf art.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#000000",
+  "#38c8d8",
+  "#e8f4f8",
+  "#e8a830",
+  "#7a3868",
+  "#3a3a3a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    40,
+    10,
+    80,
+    70
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    44,
+    14,
+    72,
+    62
+   ],
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     44,
+     14
+    ],
+    [
+     116,
+     76
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     116,
+     14
+    ],
+    [
+     44,
+     76
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    48,
+    26
+   ],
+   "s": "BASILICA",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    48,
+    36
+   ],
+   "s": "OF WIRES",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    50,
+    56
+   ],
+   "s": "STILL",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    50,
+    64
+   ],
+   "s": "LOOKING",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    52,
+    72
+   ],
+   "s": "30 YRS",
+   "color": 3
+  }
+ ]
+}

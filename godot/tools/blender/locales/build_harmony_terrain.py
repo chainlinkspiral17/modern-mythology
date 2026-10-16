@@ -2024,9 +2024,31 @@ def export_glb():
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     legacy = {}
     if 'export_colors' in rna.properties: legacy['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     try:
         result = bpy.ops.export_scene.gltf(**base, **legacy)
+        try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+            import sys as _s, os as _o
+            _d = _o.path.dirname(_o.path.abspath(__file__))
+            for _c in (_d, _o.path.dirname(_d)):
+                if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                    _s.path.insert(0, _c)
+            from _props.glb_colorfix import postfix as _colorfix
+            _colorfix(base["filepath"], bpy)
+        except Exception as _e:
+            print("[glb_colorfix] skipped:", _e)
         print(f"[build_harmony_terrain] export result: {result}")
     except Exception as e:
         print(f"[build_harmony_terrain] ✗ EXPORT FAILED: {e}")
@@ -2370,9 +2392,15 @@ def build_pond_water():
             _make_box_local(f"PondBench_{name}_{bi}_Seat",
                             (bx, by, bz + 0.43), seat_sz,
                             (0.42, 0.30, 0.20, 1.0))
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    _make_box_local(f"PondBench_{name}_{bi}_Leg_{lx_:+d}_{ly_:+d}",
+                             (bx + lx_ * (seat_sz[0] / 2 - 0.08), by + ly_ * (seat_sz[1] / 2 - 0.08), bz + 0.21),
+                             (0.035, 0.035, 0.42), (0.30, 0.22, 0.16, 1.0))
             _make_box_local(f"PondBench_{name}_{bi}_Back",
                             (bx + back_off[0], by + back_off[1],
-                             bz + 0.82),
+                             bz + 0.66),
                             back_sz, (0.42, 0.30, 0.20, 1.0))
 
         # Brown park sign on the south-side of the path
@@ -3055,7 +3083,7 @@ def build_oliver_tree_memorial_park():
             back_sz = (1.5, 0.06, 0.45)
         _make_box_local(f"OTPark_Bench_{i}_Back",
                         (bx + back_off_x, by + back_off_y,
-                         bz + 0.85),
+                         bz + 0.68),
                         back_sz, COL_BENCH)
     # Gazebo on the top terrace step · floor matches the REAL
     # terrace_top_z (computed from mesh_z, not the analytic park_z)
@@ -4169,8 +4197,14 @@ def build_oliver_tree_skatepark():
         _make_box_local(f"Skp_Bench_{i}_Seat",
                         (bx, by, pz + 0.43), seat_sz,
                         (0.42, 0.30, 0.20, 1.0))
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                _make_box_local(f"Skp_Bench_{i}_Leg_{lx_:+d}_{ly_:+d}",
+                         (bx + lx_ * (seat_sz[0] / 2 - 0.08), by + ly_ * (seat_sz[1] / 2 - 0.05), pz + 0.21),
+                         (0.035, 0.035, 0.42), (0.30, 0.22, 0.16, 1.0))
         _make_box_local(f"Skp_Bench_{i}_Back",
-                        (bx + bx_back, by + by_back, pz + 0.85),
+                        (bx + bx_back, by + by_back, pz + 0.68),
                         back_sz, (0.42, 0.30, 0.20, 1.0))
 
     # ── PERIMETER TREES · 10 old-growth oaks ringing the park ──
@@ -4264,7 +4298,7 @@ def build_oliver_tree_skatepark():
                         (bx, by, pz + 0.43),
                         (1.6, 0.42, 0.06), (0.42, 0.30, 0.20, 1.0))
         _make_box_local(f"Skp_EntryBench_{i}_Back",
-                        (bx, by + 0.18, pz + 0.85),
+                        (bx, by + 0.18, pz + 0.68),
                         (1.6, 0.06, 0.45), (0.42, 0.30, 0.20, 1.0))
 
     # ── ENTRY MARKER · small post with cyan beacon top so the
@@ -5033,17 +5067,23 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
 
     # ── 2 LONG E-W aisles (snack + drinks) running across most
     # of the bay width. Wider now (12m) to fill the new 16m bay.
-    aisle_w = 12.0       # X span (centered on bay)
+    # 2026-09-08: the aisles run 11 m centred 1 m EAST of the bay so
+    # their west endcaps stand 1 m clear of the counter (the old 12 m
+    # aisles' endcaps sat inside the counter's box, and at the wrong
+    # y — between the aisles, not at their ends).
+    aisle_w = 11.0       # X span
+    aisle_cx = kw_cx + 1.0
     aisle_d = 0.40       # shelf thickness (Y axis)
     aisle_h = 1.8
-    for k, aisle_y in enumerate((cy - 1.0, cy + 1.5)):
+    aisle_ys = (cy - 1.0, cy + 1.5)
+    for k, aisle_y in enumerate(aisle_ys):
         # Main shelf body
         _make_box_local(f"KwikShop_KwikStop_Aisle_{k}",
-                        (kw_cx, aisle_y, ground_z + aisle_h / 2),
+                        (aisle_cx, aisle_y, ground_z + aisle_h / 2),
                         (aisle_w, aisle_d, aisle_h), col_shelf)
         # Top horizontal "shelf" panel
         _make_box_local(f"KwikShop_KwikStop_AisleTop_{k}",
-                        (kw_cx, aisle_y, ground_z + aisle_h),
+                        (aisle_cx, aisle_y, ground_z + aisle_h),
                         (aisle_w, aisle_d + 0.08, 0.04),
                         col_shelf_dark)
         # Per-side stacked product boxes — alternating colours
@@ -5056,7 +5096,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
             # 14 product bags per side at top (more bags for the
             # wider aisle)
             for j in range(14):
-                px = kw_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 13
+                px = aisle_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 13
                 _make_box_local(
                     f"KwikShop_KwikStop_Goods_{k}_{sgn:+d}_{j}",
                     (px,
@@ -5066,7 +5106,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     product_palettes[(j + k * 3) % len(product_palettes)])
             # Mid-shelf row of products (smaller boxes)
             for j in range(9):
-                px = kw_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 8
+                px = aisle_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 8
                 _make_box_local(
                     f"KwikShop_KwikStop_GoodsMid_{k}_{sgn:+d}_{j}",
                     (px,
@@ -5371,15 +5411,9 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (kw_cx, cy - depth / 2 + 0.6,
                      ground_z + 0.06),
                     (2.4, 1.2, 0.02), col_floor_mat)
-    # ── CEILING FLUORESCENT FIXTURES — 4 long boxes hanging
-    # below the roof (visual only, no Light3D — those go in the
-    # scene file)
-    for k in range(4):
-        fx_l = kw_cx - 3.0 + k * 2.0
-        _make_box_local(f"KwikShop_KwikStop_Fluo_{k}",
-                        (fx_l, cy, ground_z + 3.4),
-                        (1.6, 0.20, 0.10),
-                        (0.95, 0.94, 0.90, 1.0))
+    # (Ceiling fluorescents live in the later FloLight pass —
+    # housing + glow tube. The original 4 plain "Fluo" boxes here
+    # were a DUPLICATE light grid overlapping the FloLight tubes.)
 
     # ── SLOPED CANOPY OVER THE STOREFRONT (matches the
     # user-provided Kwik Stop reference photo). A wide canopy
@@ -5555,7 +5589,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     for k, col in enumerate(((0.85, 0.20, 0.18, 1.0),     # red
                               (0.32, 0.55, 0.78, 1.0),     # blue
                               (0.95, 0.85, 0.30, 1.0))):    # yellow
-        gx = kw_cx - 3.5 + k * 0.5
+        gx = kw_cx - 4.8 + k * 0.5
         gz = mesh_z(gx, gum_y)
         # Pedestal
         _make_cyl_local(f"KwikShop_KwikStop_Gum_Stand_{k}",
@@ -5744,7 +5778,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
 
     # ── MAGAZINE / TABLOID RACK · 3-tier wire rack on the customer
     # side of the impulse area, between counter and entry door
-    mag_x = counter_x - counter_w / 2 - 0.8
+    mag_x = counter_x - counter_w / 2 - 0.35
     mag_y = counter_y - counter_d / 2 - 0.50
     mag_z = ground_z + 0.50
     # Frame stand (chrome)
@@ -5848,7 +5882,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     _make_box_local("KwikShop_KwikStop_SamPhone_Screen",
                     (counter_x + counter_w / 2 - 0.45,
                      counter_y - counter_d / 2 + 0.18,
-                     ground_z + counter_h + 0.018),
+                     ground_z + counter_h + 0.018 - 0.0196),
                     (0.06, 0.14, 0.002),
                     (0.42, 0.68, 0.78, 1.0))
 
@@ -5860,10 +5894,9 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         (0.18, 0.32, 0.55, 1.0),   # blue (cereal)
         (0.85, 0.22, 0.20, 1.0),   # red (soup)
     ]
-    aisle_y_positions = (cy - 1.5, cy + 1.0)
-    for ka, ay in enumerate(aisle_y_positions):
+    for ka, ay in enumerate(aisle_ys):
         for kx, sgn in enumerate((-1, 1)):
-            ec_x = kw_cx + sgn * (aisle_w / 2 + 0.4)
+            ec_x = aisle_cx + sgn * (aisle_w / 2 + 0.4)
             # Endcap stack (3 layers of varying products)
             for layer in range(3):
                 _make_box_local(
@@ -6159,7 +6192,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         ((0.85, 0.20, 0.18, 1.0), "USAToday"),
         ((0.42, 0.42, 0.45, 1.0), "PennySaver"),
     ]):
-        nx = kw_cx + 2.0 + k * 0.50
+        nx = kw_cx + 1.70 + k * 0.50
         nz = mesh_z(nx, news_y)
         # Stand legs
         for sgn in (-1, 1):
@@ -6367,7 +6400,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     # eyes. The eye is somewhere in the decal's adhesive layer,
     # drifting"). Brown burger circle + cream sign + ONE eye on
     # the right (the other is missing).
-    th_x = kw_cx - 1.6
+    th_x = kw_cx - 1.15
     th_y = glass_y
     th_z = ground_z + 1.15
     # Burger body (brown circle)
@@ -7181,7 +7214,7 @@ def _build_cosmic_comics(cx, cy, ground_z):
         fy = bb_y - 0.50 + (k_f % 3) * 0.50
         fz = bb_z + 0.35 - (k_f // 3) * 0.50
         _make_box_local(f"{name_prefix}_Bulletin_Flyer_{k_f}",
-                        (bb_x + 0.04, fy, fz),
+                        (bb_x + 0.04 + 0.0431, fy, fz),
                         (0.005, 0.32, 0.32), col_f)
 
 
@@ -7613,7 +7646,10 @@ def build_commercial_cluster():
     # to the road.
     # Cart corral near the EAST end of the Kwik Stop centre bay's
     # parking allocation. Inside the Kwik Shop strip's wider lot.
-    co_x = ks_x + 12.0
+    # East MARGIN of the lot (stalls end at ks_x+13.5, lot edge at
+    # ks_x+15) — at ks_x+12 the corral stood in stall 9, with car 7
+    # parked through its posts and carts.
+    co_x = ks_x + 14.2
     co_y = ks_y - 17.0 + 5.0   # north end of the lot at lot_y + lot_d/2
     co_z = mesh_z(co_x, co_y)
     COL_CORRAL = (0.62, 0.62, 0.64, 1.0)
@@ -7686,7 +7722,7 @@ def build_commercial_cluster():
                         (2.2, 0.16, 0.16), COL_POLE_BAR)
         # Three insulator stubs on top of the bar
         for sgn_off in (-0.9, 0.0, 0.9):
-            _make_cyl_local(f"CommUtilIns_{k}_{int(sgn_off*10):+d}",
+            _make_cyl_local(f"CommUtilPole_{k}_Ins_{int(sgn_off*10):+d}",
                             (ux + sgn_off, pole_y,
                              uz + UTIL_POLE_H - 0.10),
                             0.05, 0.20,
@@ -7730,7 +7766,7 @@ def build_commercial_cluster():
         (nc_x + ks_x) / 2,              # between NexCorp & Kwik Shop (-37.5)
         (ks_x + dn_x) / 2,              # between Kwik Shop & Diner (10)
         (dn_x + cc_x) / 2,              # between Diner & Cosmic (52.5)
-        cc_x + 8,                       # east of Cosmic (open end)
+        cc_x + 12,                      # east of Cosmic (open end); clear of Comm_Lamp_6 at cc_x + 6 (2026-09-23: its globe was in the canopy)
     ]
     for k, stx in enumerate(street_tree_xs):
         sty = walk_strip_y - 2.5      # south of the sidewalk, planted
@@ -8547,8 +8583,30 @@ def _make_cyl_local(name, center, radius, height, color, segments=6):
     return _finalize_mesh(name, verts, faces, color)
 
 
+def _seg_road_edge(x0, y0, x1, y1, edge):
+    """Clearance function for a straight road segment: returns how
+    far a point (px, py) lies OUTSIDE the road+curb band of half-width
+    `edge` around the segment (positive = clear of the road)."""
+    dx = x1 - x0
+    dy = y1 - y0
+    L2 = dx * dx + dy * dy or 1.0
+    def fn(px, py):
+        t = max(0.0, min(1.0, ((px - x0) * dx + (py - y0) * dy) / L2))
+        qx = x0 + dx * t
+        qy = y0 + dy * t
+        return math.hypot(px - qx, py - qy) - edge
+    return fn
+
+
+def _circle_road_edge(cx, cy, r):
+    """Clearance function for a cul-de-sac bulb of radius r."""
+    def fn(px, py):
+        return math.hypot(px - cx, py - cy) - r
+    return fn
+
+
 def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
-                           palette=None):
+                           palette=None, road_edge=None):
     """Mid-sized single-family suburban house — rectangular
     footprint with pitched gable roof, attached garage, front
     door + porch, two front windows and one over the garage.
@@ -8559,6 +8617,14 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     palette: dict with keys 'wall', 'trim', 'roof', 'door',
              'garage_door', 'porch_post'. Defaults to a beige/cream
              palette if not supplied.
+
+    road_edge: optional callable (px, py) -> metres OUTSIDE the road
+             band (positive = clear). When given, the driveway car
+             is pulled back toward the garage until every corner
+             clears the road by CAR_ROAD_CLEAR, and skipped when the
+             driveway is too short for that (2026-09-07: cars stood
+             in the travel lanes of every diagonal Phase II street
+             because the pull-out was a fixed 2.7 m along an axis).
     """
     if palette is None:
         palette = {}
@@ -9083,15 +9149,38 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
         ]
         car_color = car_palette[seed_car % len(car_palette)]
         car_pull = 0.5 + 4.4 / 2
-        car_cx = gar_cx + fx * (gar_d / 2 + car_pull)
-        car_cy = gar_cy + fy * (gar_d / 2 + car_pull)
         # Car facing maps from house facing (nose points OUT, away
         # from the garage, which is the same direction the house
         # faces — fx, fy).
         car_face = facing      # '+X' / '-X' / '+Y' / '-Y'
-        _build_parked_car(f"{name}_DwayCar",
-                          car_cx, car_cy, ground_z,
-                          car_color, facing=car_face)
+        car_ok = True
+        if road_edge is not None:
+            # Cars park in DRIVEWAYS: walk the pull-out back toward
+            # the garage door until all four corners clear the road
+            # band. A driveway too short to hold a car gets no car.
+            CAR_ROAD_CLEAR = 0.5
+            MIN_PULL = 0.3 + 4.4 / 2
+            perp_cx = -fy
+            perp_cy = fx
+            car_ok = False
+            pull = car_pull
+            while pull >= MIN_PULL - 1e-6:
+                ccx = gar_cx + fx * (gar_d / 2 + pull)
+                ccy = gar_cy + fy * (gar_d / 2 + pull)
+                corners = [(ccx + fx * sl * 2.2 + perp_cx * sw * 0.9,
+                            ccy + fy * sl * 2.2 + perp_cy * sw * 0.9)
+                           for sl in (-1, 1) for sw in (-1, 1)]
+                if min(road_edge(px, py) for px, py in corners) >= CAR_ROAD_CLEAR:
+                    car_ok = True
+                    car_pull = pull
+                    break
+                pull -= 0.1
+        if car_ok:
+            car_cx = gar_cx + fx * (gar_d / 2 + car_pull)
+            car_cy = gar_cy + fy * (gar_d / 2 + car_pull)
+            _build_parked_car(f"{name}_DwayCar",
+                              car_cx, car_cy, ground_z,
+                              car_color, facing=car_face)
 
     # ── CURBSIDE TRASH BINS · ~40% of houses are on trash day.
     # Black trash + blue recycling, side by side at the end of
@@ -9326,6 +9415,12 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
             _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Seat",
                             (ch_x, ch_y, p_z + 0.45),
                             (0.45, 0.45, 0.06), col_chair)
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Leg_{lx_:+d}_{ly_:+d}",
+                             (ch_x + lx_ * 0.18, ch_y + ly_ * 0.18, p_z + 0.22),
+                             (0.035, 0.035, 0.44), col_chair)
             _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Back",
                             (ch_x + perp_x * ch_sgn * 0.20,
                              ch_y + perp_y * ch_sgn * 0.20,
@@ -10122,7 +10217,7 @@ def build_water_tower_and_lines():
                     tank_r * 0.8, 1.0, col_tank, segments=12)
     # Red beacon on top
     _make_box_local("WT_Beacon",
-                    (wt_x, wt_y, wt_z + leg_h + tank_h + 1.3),
+                    (wt_x, wt_y, wt_z + leg_h + tank_h + 1.2),
                     (0.40, 0.40, 0.40),
                     (0.85, 0.20, 0.18, 1.0))
 
@@ -10401,7 +10496,7 @@ def build_church_cemetery():
             # Path is between cols 2 and 3 — skip
             if col == 2:
                 continue
-            hx = cm_cx - cm_w / 2 + 2.0 + col * 3.5
+            hx = cm_cx - cm_w / 2 + 2.45 + col * 3.5
             hy = cm_cy - cm_d / 2 + 3.0 + row * 6.0
             hz = mesh_z(hx, hy)
             stone_w = 0.50
@@ -10655,7 +10750,7 @@ def build_dumpsters():
     _dumpster("Dump_KS_Kwik",    -15,       -360 + 6.0, COL_DUMP_BROWN)
     _dumpster("Dump_KS_Laundro", -15 + 9.0, -360 + 6.0, COL_DUMP_GREEN)
     # Behind NexCorp Gas & Go
-    _dumpster("Dump_NC", -60, -360 + 6.0, COL_DUMP_GREEN)
+    _dumpster("Dump_NC", -60, -360 + 5.88, COL_DUMP_GREEN)   # clear of the car wash's S wall (2026-09-24: its lid 10 cm in)
     # Behind the Diner
     _dumpster("Dump_Diner", 35, -360 + 5.5, COL_DUMP_BROWN)
     # Behind Cosmic Comics
@@ -11849,6 +11944,13 @@ def build_arterial_trees():
                 perp_y =  dxs / seg_len
                 tx = mx + side_sgn * perp_x * RES_TREE_OFFSET
                 ty = my + side_sgn * perp_y * RES_TREE_OFFSET
+                # keep clear of the stop signs (2026-09-23: WEMag tree 6's cone
+                # stood around X_Stop_WE_MagLoop_S's pole) — push to 3 m
+                for kx_, ky_ in ((-324.5, -194.5),):
+                    d_ = math.hypot(tx - kx_, ty - ky_)
+                    if 1e-6 < d_ < 3.0:
+                        tx = kx_ + (tx - kx_) / d_ * 3.0
+                        ty = ky_ + (ty - ky_) / d_ * 3.0
                 tz = mesh_z(tx, ty)
                 # Tree variety — cycle 4 species deterministically
                 # so each block has a mix instead of uniform oaks
@@ -12075,11 +12177,17 @@ def build_commercial_rooftop_mech():
         # Halsey film studios — 6 HVAC units (it's a big building)
         ("Halsey",       480, -100, 13.0, 18, 14, 6),
         # Self Storage — 4 (long building)
-        ("SelfStorage",  480, -180,  6.5, 12, 60, 5),
+        # Storage ROWS run E-W at y -192/-184/-176, tops at
+        # mesh(5.0)+3.0=8.0 — the old (6.5, 12x60) spec sank every
+        # unit 1.5m into row bodies. Narrow footprint pins the
+        # mech line onto row 1's roof.
+        ("SelfStorage",  486, -184,  8.0, 48, 0.4, 4),
         # Auto Showroom — 4
         ("AutoShowroom", 480, -260,  7.5, 30, 14, 4),
         # Big Box — 8 (huge box)
-        ("BigBox",       480,   60,  9.5, 60, 24, 8),
+        # Dept store: mesh(5.0) + 7.0 + slab = 12.2 (old 9.5
+        # floated the units inside the hollow shell).
+        ("BigBox",       480,   60, 12.2, 60, 24, 8),
         # ── Chapter 1 frontage
         # Kwik Stop strip (arcade + laundromat + kwik shop, 28m total)
         ("KwikShopStrip", -15, -360,  4.5, 28, 10, 4),
@@ -12104,9 +12212,11 @@ def build_commercial_rooftop_mech():
         # Library
         ("Library",       40,   80,  4.5, 16, 14, 2),
         # NexCorp HQ
-        ("NexCorpHQ",      0,  300, 17.0, 30, 24, 6),
+        # Tower: mesh(14.0) + 10.5 stories + slab = 24.7. The old
+        # 17.0 put all six units INSIDE the tower at level 1.
+        ("NexCorpHQ",      0,  300, 24.7, 30, 24, 6),
         # Horizon Plaza
-        ("HorizonPlaza",-100,   30,  4.5, 24, 12, 3),
+        ("HorizonPlaza",-100,   30,  5.2, 24, 12, 3),
         # Minimart
         ("Minimart",    -260,  -50,  4.5, 15, 12, 2),
     ]
@@ -12218,11 +12328,14 @@ def build_arterial_berms():
                 0.55, COL_BERM_SHRUB,
                 rings=2, segments=6)
         # 1 specimen tree at the berm midpoint
+        # (2026-09-23) HZ_W_N's midpoint is HorizonDr lamp 260's spot —
+        # the pole stood in the trunk. That specimen moves 4 m along.
+        tcx_ = cx + (4.0 if tag == "HZ_W_N" else 0.0)
         _make_cyl_local(f"Berm_{tag}_TreeTrunk",
-                        (cx, cy, z + 0.55 + 1.8),
+                        (tcx_, cy, z + 0.55 + 1.8),
                         0.18, 3.6, COL_TRUNK, segments=6)
         _make_sphere_low_local(f"Berm_{tag}_TreeCanopy",
-                                (cx, cy, z + 0.55 + 3.8),
+                                (tcx_, cy, z + 0.55 + 3.8),
                                 1.8, COL_CANOPY,
                                 rings=3, segments=8)
         # Flower clusters at the berm ends
@@ -12258,11 +12371,11 @@ def build_commercial_pole_signs():
         # (name, x, y, panel_w, panel_h, top_z, face_color, accent_color)
         ("Halsey",       452, -110, 4.6, 1.8, 6.5,
          (0.18, 0.18, 0.20, 1.0), (0.95, 0.85, 0.20, 1.0)),
-        ("SelfStorage",  452, -180, 3.8, 1.6, 5.5,
+        ("SelfStorage",  447, -180, 3.8, 1.6, 5.5,
          (0.95, 0.42, 0.18, 1.0), (0.92, 0.90, 0.84, 1.0)),
         ("AutoShowroom", 452, -260, 4.4, 2.0, 7.0,
          (0.18, 0.32, 0.55, 1.0), (0.92, 0.90, 0.84, 1.0)),
-        ("BigBox",       452,   60, 5.6, 2.4, 8.0,
+        ("BigBox",       447,   60, 5.6, 2.4, 8.0,
          (0.78, 0.18, 0.18, 1.0), (0.95, 0.92, 0.84, 1.0)),
     ]
     for tag, sx, sy, pw, ph, top_z, face_col, accent in sign_specs:
@@ -12731,7 +12844,10 @@ def build_residential_mailboxes():
     corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
                     for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
 
-    def _emit_mailboxes(pts, prefix):
+    def _emit_mailboxes(pts, prefix, skip=()):
+        # skip: indices paced over but not emitted — used where the
+        # 22m cadence lands a box inside a driveway (P2Main #3 stood
+        # in House C's parked car).
         accumulated = 0.0
         next_mb = 11.0      # first one at half a spacing in
         side_sgn = 1
@@ -12747,6 +12863,11 @@ def build_residential_mailboxes():
                 dxs = x1 - x0; dys = y1 - y0
                 perp_x = -dys / seg_len
                 perp_y =  dxs / seg_len
+                if idx in skip:
+                    idx += 1
+                    side_sgn = -side_sgn
+                    next_mb += mb_spacing
+                    continue
                 bx = mx + side_sgn * perp_x * mb_offset
                 by = my + side_sgn * perp_y * mb_offset
                 bz = mesh_z(bx, by)
@@ -12798,7 +12919,8 @@ def build_residential_mailboxes():
         if cname in corridor_xys:
             _emit_mailboxes(_catmull_rom_2d(corridor_xys[cname],
                                               samples_per_seg=4),
-                            prefix)
+                            prefix,
+                            skip=(3,) if cname == "P2Main" else ())
 
 
 def build_bus_stops():
@@ -13594,7 +13716,7 @@ def build_hs_stadium_overflow_lot():
     # of the lot, where the field is just north)
     for sgn, tag in ((-1, 'L'), (1, 'R')):
         tx = cx + sgn * 5.0
-        ty = cy + hd_lot + 2.0
+        ty = cy + hd_lot   # on the lot's N edge (2026-09-24: 2 m further N they stood on the end zone)
         tz = mesh_z(tx, ty)
         # Body
         _make_box_local(f"HS_TicketBooth_{tag}_Body",
@@ -13869,7 +13991,7 @@ def build_community_landmarks():
                     (0.4, 0.4, 0.4), col_ch_roof)
     # Cross at the top
     _make_box_local("Ch_CrossV",
-                    (st_x, st_y, st_base_z + 6.4),
+                    (st_x, st_y, st_base_z + 6.3),
                     (0.06, 0.06, 0.80), col_ch_cross)
     _make_box_local("Ch_CrossH",
                     (st_x, st_y, st_base_z + 6.7),
@@ -14305,7 +14427,7 @@ def build_wild_zone_trees():
         # E wild east of EastCDS
         (480, 200, 'oak'), (480, 140, 'pine'),
         # SE wild between Phase 2 and EastComm
-        (300, -80, 'oak'), (380, -80, 'pine'),
+        (300, -80, 'oak'), (415, -80, 'pine'),
         (300, -200, 'oak'), (380, -200, 'oak'),
         # S wild between Phase 2 and SouthComm
         (100, -300, 'pine'), (180, -300, 'oak'),
@@ -14504,8 +14626,11 @@ def build_harmony_park():
     _finalize_mesh("HP_PoolDeck", deck_verts, deck_faces,
                     (0.78, 0.74, 0.66, 1.0))
 
-    # CHANGING ROOM building — east of the pool
-    cr_cx = pool_cx + deck_outer + 12.0
+    # CHANGING ROOM building — WEST of the pool, inside the park.
+    # East placement (pool_cx + deck_outer + 12 = x 77) put it
+    # ACROSS Harmony Blvd, overlapping the HS bus-stop shelter on
+    # the east sidewalk.
+    cr_cx = pool_cx - deck_outer - 12.0
     cr_cy = pool_cy
     cr_z = mesh_z(cr_cx, cr_cy)
     cr_w, cr_d, cr_h = 18.0, 10.0, 3.6
@@ -14752,7 +14877,7 @@ def build_harmony_park():
         _path_strip(f"HP_Path_CGSpur_{i}", x0, y0, x1, y1, 1.6)
 
     # ── GAZEBO · hexagonal white-painted pavilion at (-60, 150)
-    gz_cx, gz_cy = -60.0, 150.0
+    gz_cx, gz_cy = -62.0, 156.5
     gz_z = mesh_z(gz_cx, gz_cy)
     gz_r = 4.0           # hexagon radius
     gz_post_h = 3.2
@@ -14866,7 +14991,7 @@ def build_harmony_park():
 
     # ── FLOWER BEDS · 3 strategic spots
     flower_specs = [
-        (gz_cx, gz_cy - gz_r - 3.0, 2.4, COL_FLOWER_PINK),   # gazebo entry
+        (gz_cx, gz_cy - gz_r - 2.2, 1.6, COL_FLOWER_PINK),   # gazebo entry; clear of the church lot's north stall line (2026-09-23: in the stalls)
         ( -30,   175,              2.0, COL_FLOWER_YELLOW),  # north arc
         (  60,    95,              1.8, COL_FLOWER_PURPLE),  # NE pool corner
         (  -5,    25,              1.6, COL_FLOWER_PINK),    # SW pool
@@ -15075,9 +15200,11 @@ def build_country_club_lot():
     # ── VALET LOT east of the clubhouse
     cc_lot_cx = 30.0   # clubhouse spans cx-18..+18, lot east of that
     cc_lot_cy = 370.0
-    _build_parking_lot("CCValet", cc_lot_cx + 30.0, cc_lot_cy - 4.0,
+    # (2026-09-24: 3.2 m further east — the lot's W edge ran 3 m over
+    # tennis court 1, curb stops on its baseline)
+    _build_parking_lot("CCValet", cc_lot_cx + 33.2, cc_lot_cy - 4.0,
                         lot_w=22.0, lot_d=18.0,
-                        ground_z=mesh_z(cc_lot_cx + 30.0,
+                        ground_z=mesh_z(cc_lot_cx + 33.2,
                                          cc_lot_cy - 4.0),
                         building_y_north=cc_lot_cy,
                         car_palette=[
@@ -15345,7 +15472,8 @@ def build_phase3_neighborhood():
 
     # 2 framed-only houses · just a slab + 4 corner studs + a
     # stack of lumber on top of the slab
-    for k, (fcx, fcy) in enumerate(((-410, -240), (-400, -195))):
+    # (2026-09-24: slab 1 at x -400 ran 0.5 m under WE_House_A1 — 0.6 m east)
+    for k, (fcx, fcy) in enumerate(((-410, -240), (-399.4, -195))):
         fz = mesh_z(fcx, fcy)
         # Slab
         _make_box_local(f"P3_Framed_Slab_{k}",
@@ -15480,7 +15608,8 @@ def build_east_cds_neighborhood():
             palette = cds_palette[house_idx % len(cds_palette)]
             _build_suburban_house(
                 f"ECDS_Coll_House_{pidx}_{side_sgn:+d}",
-                hcx, hcy, hcz, facing=facing, palette=palette)
+                hcx, hcy, hcz, facing=facing, palette=palette,
+                road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
             curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
             curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
             _build_driveway(
@@ -15973,6 +16102,14 @@ def build_north_ranch_neighborhood():
         ('Cedar', 0, -1),     # straddles NR settlement south
         ('Cedar', 1, -1),
         ('Cedar', 2, -1),
+        ('Birch', 2, -1),     # INSIDE the skatepark (cx -280, cy 82): the
+                              # house stood on the bowl floor, its shrubs
+                              # in the manual pad (2026-09-23 — found when
+                              # the recorder learned spheres)
+        ('Birch', 2, +1),     # north side at x≈-250 is INSIDE
+                              # OTPark: house + shed stood on the W
+                              # radial lamp, the drinking fountain
+                              # and the path edge stones
         ('Cedar', 2, +1),     # x=-280 is INSIDE OTPark x range
                               # (-300..-220), house at y=58 straddles
                               # OTPark south boundary (y=60) →
@@ -15999,7 +16136,10 @@ def build_north_ranch_neighborhood():
                 _build_suburban_house(
                     f"NR_{street_name}_House_{k}_{side_sgn:+d}",
                     hcx, hcy, hcz,
-                    facing=facing, palette=palette)
+                    facing=facing, palette=palette,
+                    road_edge=_seg_road_edge(street_pts[k][0], y_mid,
+                                             street_pts[k + 1][0], y_mid,
+                                             hw + curb_w))
                 # Driveway to the curb
                 curb_x = x_mid
                 curb_y = y_mid + side_sgn * (hw + curb_w + 0.5)
@@ -16259,7 +16399,8 @@ def build_west_estates_neighborhood():
         hcy = mid_y + side_sgn * perp_y * 18.0
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
         curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
         curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
         _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
@@ -16294,7 +16435,8 @@ def build_west_estates_neighborhood():
         hcy = mid_y + side_sgn * perp_y * 18.0
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
         curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
         curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
         _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
@@ -16411,7 +16553,8 @@ def build_phase2_neighborhood():
         hcy = cul_y + math.sin(ang_r) * cul_setback
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(f"P2_Cul_House_{k}", hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_circle_road_edge(cul_x, cul_y, cul_r + 0.5))
         # Driveway to the cul-de-sac edge
         curb_x = cul_x + math.cos(ang_r) * (cul_r + 0.5)
         curb_y = cul_y + math.sin(ang_r) * (cul_r + 0.5)
@@ -16451,7 +16594,8 @@ def build_phase2_neighborhood():
         hcy = mid_y + side_sgn * perp_y * arterial_setback
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
         # Driveway from house's garage to a curb point on the road
         curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
         curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
@@ -16951,6 +17095,394 @@ def build_strip_mall_nightclub():
                            col, facing='+Y')
 
 
+
+def build_highway9_2026_08():
+    """DRAFT 1 of Highway 9 — the west-side divided highway.
+
+    User note (2026-08-03): "the highway stretch feels like a small
+    set, it cuts off, the highway doesn't run for miles off into the
+    horizon. there will be an action scene of sorts here — it needs
+    to be staged like that, using still camera set-ups and camera
+    motion." Until now there was NO real highway geometry at all —
+    only arterials that die at the world edge.
+
+    This pass lays the bones: a 4-lane divided highway at x=-510
+    running y -1400..+1400 (3.4x the world's north-south extent),
+    terrain-following inside the world and easing to flat beyond it,
+    with median, shoulders, guardrails, lane paint, two sign
+    gantries, an overpass + a far silhouette overpass, embankment
+    fill + berm silhouettes past the world edge, and sparse traffic.
+    Distance haze comes from the scene fog; the far treelines stop
+    the ribbon reading as a cut plane if fog is thin.
+
+    LATER PASSES (scheduled — see the roadmap's Drafting Program):
+    2) action dressing (skid marks, debris lane, crash barrier
+       scars, rest-stop turnout, reflector posts, exit ramp)
+    3) vn_shot still camera coverage + camera-motion capability
+       (dolly / chase) for the action scene
+    4+) Deck screenshot loops against the model chapters.
+    """
+    HX = -510.0                 # highway centerline
+    MED_HW = 1.5                # median half-width
+    LANE_W = 7.2                # one carriageway (2 x 3.6)
+    SHLD_W = 2.5
+    Y0, Y1 = -1400.0, 1400.0
+    SEG = 50.0
+    COL_ASPH = (0.20, 0.20, 0.22, 1.0)
+    COL_SHLD = (0.30, 0.29, 0.28, 1.0)
+    COL_MED = (0.30, 0.40, 0.24, 1.0)
+    COL_WHITE = (0.92, 0.90, 0.84, 1.0)
+    COL_RAIL = (0.62, 0.63, 0.65, 1.0)
+    COL_EMB = (0.26, 0.33, 0.21, 1.0)
+    COL_BERM = (0.16, 0.22, 0.14, 1.0)
+    COL_CONC = (0.60, 0.58, 0.54, 1.0)
+    COL_SIGN = (0.10, 0.35, 0.20, 1.0)
+
+    def hz(px, py):
+        # Terrain-following in-world; eased to the flat -2 WestComm
+        # datum beyond the edge so the extension never steps.
+        if -415.0 <= py <= 415.0:
+            return mesh_z(px, py)
+        edge_y = 415.0 if py > 0 else -415.0
+        ze = mesh_z(px, edge_y)
+        t = min(1.0, (abs(py) - 415.0) / 150.0)
+        return ze + (-2.0 - ze) * t
+
+    def ribbon(prefix, x_lo, x_hi, col, lift, y_step=SEG):
+        i = 0
+        yy = Y0
+        while yy < Y1 - 0.01:
+            y_next = min(yy + y_step, Y1)
+            v = [(x_lo, yy, hz(x_lo, yy) + lift),
+                 (x_hi, yy, hz(x_hi, yy) + lift),
+                 (x_hi, y_next, hz(x_hi, y_next) + lift),
+                 (x_lo, y_next, hz(x_lo, y_next) + lift)]
+            _finalize_mesh(f"{prefix}_{i}", v, [[0, 1, 2, 3]], col)
+            i += 1
+            yy = y_next
+
+    # ── Roadbed: median, two carriageways, two shoulders ──
+    ribbon("Hwy9_Median", HX - MED_HW, HX + MED_HW, COL_MED, 0.05)
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        lane_lo = HX + sgn * MED_HW
+        lane_hi = HX + sgn * (MED_HW + LANE_W)
+        ribbon(f"Hwy9_Lanes_{tag}", min(lane_lo, lane_hi),
+               max(lane_lo, lane_hi), COL_ASPH, 0.06)
+        sh_lo = lane_hi
+        sh_hi = lane_hi + sgn * SHLD_W
+        ribbon(f"Hwy9_Shoulder_{tag}", min(sh_lo, sh_hi),
+               max(sh_lo, sh_hi), COL_SHLD, 0.05)
+        # Solid edge lines (outer white, inner yellow-white kept
+        # white in draft 1 — paint pass is scheduled).
+        for ex, ltag in ((lane_hi - sgn * 0.18, "Out"),
+                         (lane_lo + sgn * 0.18, "In")):
+            ribbon(f"Hwy9_Edge_{tag}_{ltag}", ex - 0.09, ex + 0.09,
+                   COL_WHITE, 0.075, y_step=SEG)
+        # Dashed centre line of each carriageway, every 25 m.
+        dash_x = HX + sgn * (MED_HW + LANE_W / 2.0)
+        di = 0
+        yy = Y0 + 6.0
+        while yy < Y1 - 6.0:
+            v = [(dash_x - 0.09, yy, hz(dash_x, yy) + 0.075),
+                 (dash_x + 0.09, yy, hz(dash_x, yy) + 0.075),
+                 (dash_x + 0.09, yy + 3.0, hz(dash_x, yy + 3.0) + 0.075),
+                 (dash_x - 0.09, yy + 3.0, hz(dash_x, yy + 3.0) + 0.075)]
+            _finalize_mesh(f"Hwy9_Dash_{tag}_{di}", v, [[0, 1, 2, 3]],
+                            COL_WHITE)
+            di += 1
+            yy += 25.0
+        # Guardrail: a low w-beam ribbon floating at rail height
+        # along the outer shoulder edge (posts are pass-2 dressing).
+        rail_x = lane_hi + sgn * (SHLD_W + 0.2)
+        ri = 0
+        yy = Y0
+        while yy < Y1 - 0.01:
+            y_next = min(yy + SEG, Y1)
+            z0 = hz(rail_x, yy); z1 = hz(rail_x, y_next)
+            v = [(rail_x, yy, z0 + 0.45),
+                 (rail_x, y_next, z1 + 0.45),
+                 (rail_x, y_next, z1 + 0.78),
+                 (rail_x, yy, z0 + 0.78)]
+            _finalize_mesh(f"Hwy9_Rail_{tag}_{ri}", v, [[0, 1, 2, 3]],
+                            COL_RAIL)
+            ri += 1
+            yy = y_next
+
+    # ── Embankment fill + berm silhouettes beyond the world edge ──
+    for (ey0, ey1, tag) in ((Y0, -420.0, "S"), (420.0, Y1, "N")):
+        i = 0
+        yy = ey0
+        while yy < ey1 - 0.01:
+            y_next = min(yy + 100.0, ey1)
+            v = [(-548.0, yy, hz(-548.0, yy) - 0.1),
+                 (-472.0, yy, hz(-472.0, yy) - 0.1),
+                 (-472.0, y_next, hz(-472.0, y_next) - 0.1),
+                 (-548.0, y_next, hz(-548.0, y_next) - 0.1)]
+            _finalize_mesh(f"Hwy9_Emb_{tag}_{i}", v, [[0, 1, 2, 3]],
+                            COL_EMB)
+            for bx, btag in ((-552.0, "W"), (-468.0, "E")):
+                bv = [(bx, yy, hz(bx, yy) - 0.1),
+                      (bx, y_next, hz(bx, y_next) - 0.1),
+                      (bx, y_next, hz(bx, y_next) + 2.8),
+                      (bx, yy, hz(bx, yy) + 2.8)]
+                _finalize_mesh(f"Hwy9_Berm_{tag}_{btag}_{i}", bv,
+                                [[0, 1, 2, 3]], COL_BERM)
+            i += 1
+            yy = y_next
+    # Terminal treelines — the last thing before full fog.
+    for ty, tag in ((Y0 + 5.0, "S"), (Y1 - 5.0, "N")):
+        v = [(-560.0, ty, -2.1), (-460.0, ty, -2.1),
+             (-460.0, ty, 4.5), (-560.0, ty, 4.5)]
+        _finalize_mesh(f"Hwy9_Treeline_{tag}", v, [[0, 1, 2, 3]],
+                        (0.10, 0.14, 0.10, 1.0))
+
+    # ── Overpass at y=+300 (the action scene's high vantage) +
+    # a far silhouette twin at y=-800 for depth ──
+    for (oy, deep) in ((300.0, False), (-800.0, True)):
+        base = hz(HX, oy)
+        deck_z = base + 5.6
+        col = COL_CONC if not deep else (0.42, 0.41, 0.38, 1.0)
+        tagp = "Near" if not deep else "Far"
+        # Deck: top + south/north fascia.
+        v = [(-528.0, oy - 5.0, deck_z), (-492.0, oy - 5.0, deck_z),
+             (-492.0, oy + 5.0, deck_z), (-528.0, oy + 5.0, deck_z)]
+        _finalize_mesh(f"Hwy9_Ovp_{tagp}_Deck", v, [[0, 1, 2, 3]], col)
+        for fy, ftag in ((oy - 5.0, "S"), (oy + 5.0, "N")):
+            fv = [(-528.0, fy, deck_z - 1.1), (-492.0, fy, deck_z - 1.1),
+                  (-492.0, fy, deck_z), (-528.0, fy, deck_z)]
+            _finalize_mesh(f"Hwy9_Ovp_{tagp}_Fascia_{ftag}", fv,
+                            [[0, 1, 2, 3]], col)
+        # Piers: median + both ends beyond the shoulders.
+        for px2, ptag in ((HX, "Mid"), (-526.0, "W"), (-494.0, "E")):
+            pz = hz(px2, oy)
+            pv = [(px2 - 0.8, oy - 0.8, pz), (px2 + 0.8, oy - 0.8, pz),
+                  (px2 + 0.8, oy - 0.8, deck_z - 0.1),
+                  (px2 - 0.8, oy - 0.8, deck_z - 0.1)]
+            _finalize_mesh(f"Hwy9_Ovp_{tagp}_Pier_{ptag}", pv,
+                            [[0, 1, 2, 3]], col)
+        # Guard parapet on the deck.
+        for fy, ftag in ((oy - 4.6, "S"), (oy + 4.6, "N")):
+            gv = [(-528.0, fy, deck_z), (-492.0, fy, deck_z),
+                  (-492.0, fy, deck_z + 1.0), (-528.0, fy, deck_z + 1.0)]
+            _finalize_mesh(f"Hwy9_Ovp_{tagp}_Parapet_{ftag}", gv,
+                            [[0, 1, 2, 3]], col)
+
+    # ── Sign gantries at y=+100 and y=-500 ──
+    for gy in (100.0, -500.0):
+        gz = hz(HX, gy)
+        for gx in (HX - 12.0, HX + 12.0):
+            pv = [(gx - 0.25, gy, gz), (gx + 0.25, gy, gz),
+                  (gx + 0.25, gy, gz + 7.0), (gx - 0.25, gy, gz + 7.0)]
+            _finalize_mesh(f"Hwy9_Gantry_{gy:+.0f}_Post_{gx:+.0f}", pv,
+                            [[0, 1, 2, 3]], COL_RAIL)
+        bv = [(HX - 12.0, gy, gz + 6.4), (HX + 12.0, gy, gz + 6.4),
+              (HX + 12.0, gy, gz + 7.0), (HX - 12.0, gy, gz + 7.0)]
+        _finalize_mesh(f"Hwy9_Gantry_{gy:+.0f}_Beam", bv,
+                        [[0, 1, 2, 3]], COL_RAIL)
+        for sx_off, stag in ((-6.0, "L"), (4.0, "R")):
+            sv = [(HX + sx_off, gy - 0.1, gz + 4.6),
+                  (HX + sx_off + 4.5, gy - 0.1, gz + 4.6),
+                  (HX + sx_off + 4.5, gy - 0.1, gz + 6.4),
+                  (HX + sx_off, gy - 0.1, gz + 6.4)]
+            _finalize_mesh(f"Hwy9_Gantry_{gy:+.0f}_Sign_{stag}", sv,
+                            [[0, 1, 2, 3]], COL_SIGN)
+
+    # ── Sparse traffic (draft 1: parked-car boxes as stand-ins;
+    # motion is a camera problem, not a geometry one) ──
+    traffic = [(-1100.0, "W", (0.72, 0.70, 0.66, 1.0)),
+               (-620.0, "E", (0.18, 0.18, 0.20, 1.0)),
+               (-180.0, "W", (0.55, 0.12, 0.12, 1.0)),
+               (90.0, "E", (0.80, 0.78, 0.72, 1.0)),
+               (480.0, "W", (0.20, 0.28, 0.45, 1.0)),
+               (940.0, "E", (0.30, 0.30, 0.32, 1.0))]
+    for (ty2, side, col) in traffic:
+        cx2 = HX + (-1 if side == "W" else 1) * (MED_HW + LANE_W / 2.0)
+        cz2 = hz(cx2, ty2) + 0.06
+        _build_parked_car(f"Hwy9_Car_{ty2:+.0f}", cx2, ty2, cz2, col,
+                           facing='-Y' if side == "W" else '+Y')
+
+
+
+def build_highway9_draft2_2026_08():
+    """DRAFT 2 of Highway 9 — action dressing (see the workstream in
+    _IMPROVEMENT_ROADMAP.md). Adds the layer the action scene reads
+    off: reflector posts, skid marks into a crash-scarred guardrail
+    section, debris field, an exit ramp + turnout, a rest-stop
+    pull-off with a semi stand-in, and grime bands down the lane
+    centers. DRAFT 3 (scheduled): vn_shot still coverage + camera
+    motion. DRAFT 4+: Deck loops."""
+    HX = -510.0
+    MED_HW = 1.5
+    LANE_W = 7.2
+    SHLD_W = 2.5
+    COL_POST = (0.85, 0.83, 0.78, 1.0)
+    COL_REFL = (0.90, 0.30, 0.20, 1.0)
+    COL_SKID = (0.10, 0.10, 0.11, 1.0)
+    COL_GRIME = (0.16, 0.16, 0.18, 1.0)
+    COL_DEBRIS = (0.35, 0.33, 0.30, 1.0)
+    COL_RAIL_SCAR = (0.38, 0.36, 0.34, 1.0)
+    COL_GRAVEL = (0.44, 0.42, 0.38, 1.0)
+
+    def hz(px, py):
+        if -415.0 <= py <= 415.0:
+            return mesh_z(px, py)
+        edge_y = 415.0 if py > 0 else -415.0
+        ze = mesh_z(px, edge_y)
+        t = min(1.0, (abs(py) - 415.0) / 150.0)
+        return ze + (-2.0 - ze) * t
+
+    # ── Reflector posts every 100 m along both outer shoulders ──
+    for sgn in (-1, 1):
+        px2 = HX + sgn * (MED_HW + LANE_W + SHLD_W + 0.6)
+        yy = -1400.0 + 50.0
+        pi = 0
+        while yy < 1400.0:
+            z0 = hz(px2, yy)
+            v = [(px2 - 0.05, yy, z0), (px2 + 0.05, yy, z0),
+                 (px2 + 0.05, yy, z0 + 1.0), (px2 - 0.05, yy, z0 + 1.0)]
+            _finalize_mesh(f"Hwy9_ReflPost_{sgn:+d}_{pi}", v,
+                            [[0, 1, 2, 3]], COL_POST)
+            rv = [(px2 - 0.05, yy, z0 + 0.82), (px2 + 0.05, yy, z0 + 0.82),
+                  (px2 + 0.05, yy, z0 + 0.94), (px2 - 0.05, yy, z0 + 0.94)]
+            _finalize_mesh(f"Hwy9_Refl_{sgn:+d}_{pi}", rv,
+                            [[0, 1, 2, 3]], COL_REFL)
+            pi += 1
+            yy += 100.0
+
+    # ── Lane-center grime bands (tire polish + drip line) ──
+    for sgn in (-1, 1):
+        gx = HX + sgn * (MED_HW + LANE_W / 2.0)
+        i = 0
+        yy = -1400.0
+        while yy < 1400.0 - 0.01:
+            y_next = min(yy + 100.0, 1400.0)
+            v = [(gx - 0.45, yy, hz(gx, yy) + 0.065),
+                 (gx + 0.45, yy, hz(gx, yy) + 0.065),
+                 (gx + 0.45, y_next, hz(gx, y_next) + 0.065),
+                 (gx - 0.45, y_next, hz(gx, y_next) + 0.065)]
+            _finalize_mesh(f"Hwy9_Grime_{sgn:+d}_{i}", v,
+                            [[0, 1, 2, 3]], COL_GRIME)
+            i += 1
+            yy = y_next
+
+    # ── THE SCAR · skid marks curving off the northbound lane into
+    # a deformed guardrail section at y=+210, debris fanned past it.
+    # This is the action scene's anchor mark — something already
+    # HAPPENED on this road before the story gets there. ──
+    sk_x0 = HX + MED_HW + LANE_W / 2.0
+    rail_x = HX + (MED_HW + LANE_W + SHLD_W + 0.2)
+    for si in range(6):
+        t = si / 5.0
+        yA = 165.0 + t * 40.0
+        yB = yA + 7.0
+        xA = sk_x0 + t * t * (rail_x - 0.6 - sk_x0)
+        xB = sk_x0 + ((si + 1) / 5.0) ** 2 * (rail_x - 0.6 - sk_x0)
+        for lo, tag in ((-0.35, "L"), (0.35, "R")):
+            v = [(xA + lo - 0.10, yA, hz(xA, yA) + 0.07),
+                 (xA + lo + 0.10, yA, hz(xA, yA) + 0.07),
+                 (xB + lo + 0.10, yB, hz(xB, yB) + 0.07),
+                 (xB + lo - 0.10, yB, hz(xB, yB) + 0.07)]
+            _finalize_mesh(f"Hwy9_Skid_{tag}_{si}", v,
+                            [[0, 1, 2, 3]], COL_SKID)
+    # Deformed rail: a section bowed outward + dented tone.
+    z0 = hz(rail_x, 212.0)
+    v = [(rail_x + 0.55, 206.0, z0 + 0.40), (rail_x + 0.9, 212.0, z0 + 0.35),
+         (rail_x + 0.9, 212.0, z0 + 0.72), (rail_x + 0.55, 206.0, z0 + 0.75)]
+    _finalize_mesh("Hwy9_RailScar_A", v, [[0, 1, 2, 3]], COL_RAIL_SCAR)
+    v = [(rail_x + 0.9, 212.0, z0 + 0.35), (rail_x + 0.5, 218.0, z0 + 0.42),
+         (rail_x + 0.5, 218.0, z0 + 0.76), (rail_x + 0.9, 212.0, z0 + 0.72)]
+    _finalize_mesh("Hwy9_RailScar_B", v, [[0, 1, 2, 3]], COL_RAIL_SCAR)
+    # Debris fan beyond the scar: glass glitter patch + part shapes.
+    for di, (dx2, dy2, s) in enumerate(((1.6, 214.0, 0.5), (2.4, 216.5, 0.35),
+                                        (2.0, 210.5, 0.4), (3.1, 213.0, 0.25))):
+        px3 = rail_x + dx2
+        zd = hz(px3, dy2)
+        v = [(px3 - s, dy2 - s, zd + 0.03), (px3 + s, dy2 - s, zd + 0.03),
+             (px3 + s, dy2 + s, zd + 0.03), (px3 - s, dy2 + s, zd + 0.03)]
+        _finalize_mesh(f"Hwy9_Debris_{di}", v, [[0, 1, 2, 3]], COL_DEBRIS)
+    gl = [(rail_x + 0.8, 211.0), (rail_x + 1.1, 215.0)]
+    for gi, (gx2, gy2) in enumerate(gl):
+        zg = hz(gx2, gy2)
+        v = [(gx2 - 0.6, gy2 - 0.25, zg + 0.035),
+             (gx2 + 0.6, gy2 - 0.25, zg + 0.035),
+             (gx2 + 0.6, gy2 + 0.25, zg + 0.035),
+             (gx2 - 0.6, gy2 + 0.25, zg + 0.035)]
+        _finalize_mesh(f"Hwy9_Glass_{gi}", v, [[0, 1, 2, 3]],
+                        (0.72, 0.78, 0.80, 1.0))
+
+    # ── EXIT RAMP at y=-60 (northbound off toward WestComm strip /
+    # the SCRATCH club): a widening gore then a curving one-lane
+    # ramp descending east. ──
+    ramp_x0 = HX + MED_HW + LANE_W
+    for ri in range(8):
+        t = ri / 7.0
+        yA = -60.0 + ri * 14.0
+        yB = yA + 14.0
+        wA = 0.5 + t * 3.4
+        wB = 0.5 + min(1.0, (ri + 1) / 7.0) * 3.4
+        v = [(ramp_x0, yA, hz(ramp_x0, yA) + 0.06),
+             (ramp_x0 + wA, yA, hz(ramp_x0 + wA, yA) + 0.06),
+             (ramp_x0 + wB, yB, hz(ramp_x0 + wB, yB) + 0.06),
+             (ramp_x0, yB, hz(ramp_x0, yB) + 0.06)]
+        _finalize_mesh(f"Hwy9_Ramp_{ri}", v, [[0, 1, 2, 3]],
+                        (0.20, 0.20, 0.22, 1.0))
+    # Gore chevron paint at the split.
+    gz = hz(ramp_x0 + 0.8, -46.0)
+    v = [(ramp_x0 + 0.15, -58.0, gz + 0.075),
+         (ramp_x0 + 0.55, -58.0, gz + 0.075),
+         (ramp_x0 + 2.6, -6.0, gz + 0.075),
+         (ramp_x0 + 2.2, -6.0, gz + 0.075)]
+    _finalize_mesh("Hwy9_Gore_Line", v, [[0, 1, 2, 3]],
+                    (0.92, 0.90, 0.84, 1.0))
+    # Ramp continues east as a short connector to the WestComm edge.
+    for ci in range(4):
+        xA = ramp_x0 + 3.9 + ci * 12.0
+        xB = xA + 12.0
+        yc = 56.0 + ci * 6.0
+        v = [(xA, yc - 2.5, hz(xA, yc) + 0.05),
+             (xB, yc + 4.0 - 2.5, hz(xB, yc + 4.0) + 0.05),
+             (xB, yc + 4.0 + 2.5, hz(xB, yc + 4.0) + 0.05),
+             (xA, yc + 2.5, hz(xA, yc) + 0.05)]
+        _finalize_mesh(f"Hwy9_RampConn_{ci}", v, [[0, 1, 2, 3]],
+                        (0.21, 0.21, 0.23, 1.0))
+
+    # ── REST TURNOUT at y=-330 (southbound side): gravel pull-off
+    # with a parked SEMI stand-in — scale anchor for the whole
+    # stretch (nothing sells highway distance like a truck). ──
+    to_x = HX - (MED_HW + LANE_W + SHLD_W)
+    for ti in range(4):
+        yA = -370.0 + ti * 20.0
+        yB = yA + 20.0
+        w = 6.0 if ti in (1, 2) else 3.5
+        v = [(to_x - w, yA, hz(to_x - w, yA) + 0.04),
+             (to_x, yA, hz(to_x, yA) + 0.04),
+             (to_x, yB, hz(to_x, yB) + 0.04),
+             (to_x - w, yB, hz(to_x - w, yB) + 0.04)]
+        _finalize_mesh(f"Hwy9_Turnout_{ti}", v, [[0, 1, 2, 3]],
+                        COL_GRAVEL)
+    # Semi: tractor + trailer as two boxes (draft-2 stand-in; a
+    # real cab profile is a later-pass model).
+    sx2 = to_x - 3.2
+    sz2 = hz(sx2, -340.0) + 0.05
+    for (name2, cy2, sy2, szh, col2) in (
+            ("Hwy9_Semi_Trailer", -344.0, 14.0, 3.6, (0.82, 0.82, 0.84, 1.0)),
+            ("Hwy9_Semi_Cab", -334.0, 4.5, 2.9, (0.45, 0.10, 0.12, 1.0))):
+        half_w = 1.3
+        base = sz2 + (0.9 if "Trailer" in name2 else 0.4)
+        top = sz2 + szh
+        for (fy, tag) in ((cy2 - sy2 / 2, "S"), (cy2 + sy2 / 2, "N")):
+            v = [(sx2 - half_w, fy, base), (sx2 + half_w, fy, base),
+                 (sx2 + half_w, fy, top), (sx2 - half_w, fy, top)]
+            _finalize_mesh(f"{name2}_{tag}", v, [[0, 1, 2, 3]], col2)
+        for (fx, tag) in ((sx2 - half_w, "W"), (sx2 + half_w, "E")):
+            v = [(fx, cy2 - sy2 / 2, base), (fx, cy2 + sy2 / 2, base),
+                 (fx, cy2 + sy2 / 2, top), (fx, cy2 - sy2 / 2, top)]
+            _finalize_mesh(f"{name2}_{tag}", v, [[0, 1, 2, 3]], col2)
+        v = [(sx2 - half_w, cy2 - sy2 / 2, top), (sx2 + half_w, cy2 - sy2 / 2, top),
+             (sx2 + half_w, cy2 + sy2 / 2, top), (sx2 - half_w, cy2 + sy2 / 2, top)]
+        _finalize_mesh(f"{name2}_Top", v, [[0, 1, 2, 3]], col2)
+
+
 def build_high_school_field():
     """Harmony Creek High School football field + stadium. Carved
     out of the new HighSchoolField settlement zone (240..440 x,
@@ -17343,6 +17875,8 @@ def main():
     build_community_garden()
     build_wild_zone_trees()
     build_district_arterials()
+    build_highway9_2026_08()
+    build_highway9_draft2_2026_08()
     build_community_landmarks()
     build_connector_roads()
     build_chapter1_pedestrian_network()

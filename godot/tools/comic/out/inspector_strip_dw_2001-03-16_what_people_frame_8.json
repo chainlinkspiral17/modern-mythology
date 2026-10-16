@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2001-03-16_what_people_frame_8",
+      "strip_id": "dw_2001-03-16_what_people_frame_8",
+      "title": "What people frame, viii",
+      "date": "2001-03-16",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 21, thin young man with a slouch, three days' stubble, dark hair grown longer; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Friday, the last: a man buys a frame with nothing to put in it. 8×10. 'I'll know when I see it.' Wood sells it. The arc ends on an empty frame. Panel 1: brush-pen over blue pencil, xerox grain, stark black spotting, a plain man in his sixties at a frame-shop counter with empty hands asking for a frame, a young clerk, a dog (in this panel: WOOD, BARNABY (the dog)). Customer says \"Eight by ten. Plain. Black.\". Wood says \"What's it for?\". Customer says \"Don't know yet.\". Panel 2: brush-pen over blue pencil, xerox grain, stark black spotting, close-up of an empty black eight-by-ten frame with glass and backing and nothing between them on a counter. No dialogue in this panel. Panel 3: brush-pen over blue pencil, xerox grain, stark black spotting, a man holding an empty frame up and looking through it at a young clerk and a dog (in this panel: WOOD, BARNABY (the dog)). Customer says \"I'll know when I see it.\". Wood says \"Most people bring the thing first.\". Customer says \"Most people already had the thing.\". Panel 4: brush-pen over blue pencil, xerox grain, stark black spotting, a man walking out of a frame shop with an empty frame under his arm, a young clerk, a dog and an older woman watching him go, no words (in this panel: WOOD, BARNABY (the dog)). caption box: \"Friday.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @supporting is the model sheet for THE EDITOR: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby; @supporting for the character the editor.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 21, thin young man with a slouch, three days' stubble, dark hair grown longer; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: a plain man in his sixties at a frame-shop counter with empty hands asking for a frame, a young clerk, a dog (in this panel: WOOD, BARNABY (the dog)). Customer: \"Eight by ten. Plain. Black.\"; Wood: \"What's it for?\"; Customer: \"Don't know yet.\". Panel 2: close-up of an empty black eight-by-ten frame with glass and backing and nothing between them on a counter. No text. Panel 3: a man holding an empty frame up and looking through it at a young clerk and a dog (in this panel: WOOD, BARNABY (the dog)). Customer: \"I'll know when I see it.\"; Wood: \"Most people bring the thing first.\"; Customer: \"Most people already had the thing.\". Panel 4: a man walking out of a frame shop with an empty frame under his arm, a young clerk, a dog and an older woman watching him go, no words (in this panel: WOOD, BARNABY (the dog)). caption \"Friday.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog). Reference @supporting is the model sheet for THE EDITOR.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "supporting",
+          "id": "sheet_supporting",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_supporting.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "extra_owner_heceta"
+          ]
+        }
+      ]
+    }
+  ]
+}

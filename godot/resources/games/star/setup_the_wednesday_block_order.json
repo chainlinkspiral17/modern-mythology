@@ -1,0 +1,184 @@
+{
+ "id": "the_wednesday_block_order",
+ "arcana": "xvii_star",
+ "location": "christian_ice_co",
+ "hand": "delphine",
+ "title": "THE WEDNESDAY BLOCK ORDER",
+ "subtitle": "Christian Ice Co. · 7:44 AM Wednesday · the restaurants call before eight",
+ "difficulty": "medium",
+ "epigraph_upright": "The Star is a schedule of small lights. Wednesday the restaurants call in their block orders, and Delphine writes them on the board, and the week has a shape again.",
+ "epigraph_reversed": "Two restaurants closed this year and their line on the board is still there, blank, because erasing a line is a thing you have to be ready to do.",
+ "scene_description": "Wednesday, 7:44. The phone will ring three, maybe four times before eight — Robichaux's, the oyster place, Miss Vi if her cousin's crawfish thing is on. The block freezer is at temperature and singing its one low note. Mr. Couvillon arrives at 6:14 daily but Wednesdays he stays, because Wednesdays there's a board to watch fill up, and a man likes to see a week get a shape. The chalk is down to a stub. There's a fresh box somewhere. There's always a fresh box somewhere.",
+ "direction_hint": "Answer before the third ring. Write the orders on the board in the order they call. The blank lines stay blank one more week — connect three, keep Inertia under 7, and have the board full by eight.",
+ "opening_log_lines": [
+  "The block freezer holds its note. B-flat, Couvillon says. Nobody has checked. Nobody will.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The phone cord reaches the board. That's not luck; that's 1962 planning.",
+  "The chalk stub has maybe two orders left in it. Live dangerously or find the box."
+ ],
+ "starting_state": {
+  "player_pos": "retail_counter",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 2,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 7,
+  "tension_stat": "fog",
+  "tension_label": "RECEIVING THE CEREMONY",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "pull_block",
+   "wipe_glass",
+   "check_compressor",
+   "bag_ice"
+  ]
+ },
+ "visitors_present_at_start": [
+  "mr_couvillon_at_six_fourteen"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_first_call",
+   "arrival_turn": 2,
+   "arrival_space": "retail_counter"
+  },
+  {
+   "visitor": "the_kid_at_the_glass",
+   "arrival_turn": 4,
+   "arrival_space": "storefront"
+  },
+  {
+   "visitor": "the_order_board",
+   "arrival_turn": 3,
+   "arrival_space": "retail_counter"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_board_full_by_eight": true,
+  "require_blank_lines_left_alone": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "missed_a_call_past_third_ring": true,
+  "erased_a_line_alone": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the plant is full of people",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 2,
+   "label": "the étouffée smell fills the retail floor",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "the fifth story · Mrs Fontenot's father at V-E day",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 6,
+   "label": "5:00 · Mr Theriot has the shovel",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "5:30 · the room is waiting for your one sentence",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "6:04 · you're still in the plant · people are still here",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "parking_lot",
+   "label": "PARKING LOT",
+   "ending_lore_token": "delphine_planted_the_sapling",
+   "visible_from_start": true,
+   "flavor": "The parking-lot planter that has been empty since '78 · Delphine's father took out the previous magnolia when it died in the freeze. The sapling goes in this planter. Someone brought soil in a bag."
+  },
+  {
+   "id": "the_truck",
+   "label": "THE TRUCK",
+   "ending_lore_token": "delphine_drove_away_with_the_records",
+   "visible_from_start": true,
+   "flavor": "Your truck. Parked on Calliope. Passenger seat has three cardboard boxes of your grandfather's records · ledgers, receipts, the 1949 building permit. You will drive them home. You will not, tonight, open the boxes."
+  }
+ ],
+ "max_turns": 14,
+ "notes": "Fourth setup (Wave-3C, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_first_call",
+   "name": "Robichaux's, calling at 7:51 like clockwork",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 2,
+    "from": "retail_counter",
+    "to": "retail_counter"
+   },
+   "lore_token": "took_robichauxs_order_by_heart",
+   "lore_text": "Robichaux's has ordered the same Wednesday block order for eleven years: four blocks, two crushed, one for the oyster table. The call takes ninety seconds and eighty of them are Etienne asking after the freezer, the truck, and Delphine's mother, in that order.",
+   "accent": "#88b8d8",
+   "mood": "preoccupied",
+   "tutorial_note": "The call connects through FOCUS at the retail_counter — answer before the third ring and say the order back before Etienne gives it. The knowing-by-heart IS the service.",
+   "steps": {
+    "greet": "Ring one. Ring two. The cord reaches. It always reaches.",
+    "listen": "Etienne asks after the freezer (singing), the truck (fine), your mother (fine, and she says hello, which she did, on Sunday, generally).",
+    "deliver": "You say the order back before he gives it. Four, two crushed, one oyster. He laughs the laugh of a man correctly known.",
+    "sit_with": "'Same next week,' he says, which he has said five hundred times, and which means: may there be a next week, for both our houses. The oldest toast in commerce."
+   }
+  },
+  {
+   "id": "the_order_board",
+   "name": "the chalk board, two lines blank",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "retail_counter",
+    "to": "retail_counter"
+   },
+   "lore_token": "left_the_blank_lines_blank",
+   "lore_text": "The board has a line per standing customer, painted rules, chalk names. Broussard's line and the Twin Pines line have been blank since spring. Erasing a painted line takes solvent and a decision. Delphine has the solvent.",
+   "accent": "#c8c8b0",
+   "mood": "lonely",
+   "tutorial_note": "The board connects through FOCUS — write the morning's orders in call order, and leave the blank lines alone one more week. That's not denial. That's Wednesday.",
+   "steps": {
+    "greet": "The chalk stub does its dry click against the paint. Two orders of life left in it, maybe.",
+    "listen": "Read top to bottom the board is a census: who's cooking this week, who's crawfishing, who is quietly gone.",
+    "deliver": "You fill the live lines in call order. The blank lines stay. The stub survives, barely, a hero.",
+    "sit_with": "Couvillon reads the finished board from his chair like a man reading a paper with only good news in it. 'Decent week,' he says. It is. That's the miracle nobody prints."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

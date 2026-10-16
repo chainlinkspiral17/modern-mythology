@@ -1,1277 +1,564 @@
-"""Board Lords — Kai's skate shop, Main St, Smolvud OR — vol7 locale.
+"""board_lords_interior — Kai's SKATEBOARD shop on Main (vol7).
 
-The building's century of retail is fixed canon (lore/_VOL7_WIKI.md):
-Wagner's Hardware 1962-2011, general store 2014-2031, nothing
-2031-2034, Board Lords 2034-present. The hardware past must stay
-legible in the geometry — original fir plank floor with the ghost
-footprints of the old gondola aisles, the tall 1962 hardware
-shelving reused for skate inventory, the parts-drawer cabinet
-behind the counter, the rolling-ladder rail, and the faded painted
-WAGNER'S HARDWARE ghost sign across the upper back wall (Kai's new
-BOARD LORDS panel hangs over its east end).
+REBUILT 2026-08-03 hero-prop pass: the previous build was a
+board-GAME store (gondolas of boxed games, dice case, demo table) —
+a wrong-shop read of the name. All five vol7 scenes are a skate
+shop: "He cleaned the glass on the deck wall" · "Kai took the board
+to the back bench, turned on the work lamp" · "Woke the lathe" ·
+"the small drawer under the register where he kept the pieces of
+paper" · "The three kids sat on the small bench against the front
+window that Kai kept for parents waiting on repairs" · "pulled the
+kettle out from under the counter… put it on the small electric
+burner" · Devon's old desk in the back office with two boxes of
+bearings.
 
-Canon sources for the dressing:
-  · godot/resources/scenes/vol7/vol7_ch5_roy.json — the bell over
-    the door; the CLOSED/OPEN flip sign; "the small fluorescent
-    over the repair counter in the back"; the kettle; "Woke the
-    lathe"; the glass on the deck wall (rendered as an open-front
-    heritage case per the no-transparency rule); the counter Roy
-    puts a hand on; Kai's phone on the counter; the board a kid
-    left for a tune-up.
-  · vol7_ch9_tuesday.json — the small electric burner (gas cut
-    2049); the chipped Tidewater mug; the bench against the front
-    window "for parents waiting on repairs"; the back bench + work
-    lamp; palette knife / glue syringe / clamps / the maple kept
-    since 2049 for repairs; the stool behind the counter; Roy on
-    the sidewalk past the laundromat across Main.
-  · vol7_ch12_kai.json — the back office (Devon's old desk, a
-    chair, two cardboard boxes of bearings on the floor); the kid
-    on the bench by the front window.
-  · vol7_ch16_shop.json — the small drawer under the register
-    where the door notes live; deck wax; bearings sold to a
-    vacation renter; the sanderling mural across Main with the
-    substrate patch (painted by Janet Halfmoon in '46).
-  · lore/_VOL6_VOL7_LOCALES_MANIFEST.md — "Skate gear + zine wall
-    + Kai's permanent perch on the counter."
+Frame: Blender Z-up, y=0 south storefront wall (Main — the
+laundromat's sanderling mural across the street), +Y to the back
+wall at y=7, x=±4.5, ceiling 2.8. glTF export remaps to Godot
+(x, z, -y).
 
-No transparency: storefront windows are OPENINGS with fir frames +
-mullions (diner-window rule); the heritage case is frame + open
-front; the door is stiles + rails, no glass slab. Text lettering is
-scene-side Label3D per the playbook — this script bakes named
-vertex-colored panels only (Ghost_LetterBand, BoardLords_SignPanel,
-Zine_StaticTruths, ShoeWall_SignBand, ...).
+DRAFT 3 (2026-09-19, lore/_VISUAL_PROGRAM.md §3 backgrounds pass; this
+scene serves board_lords_interior AND the main_street preset — 15
+placements together). Kit furniture (Devon's chair, the counter stool,
+the parents' bench); the kettle as a profile with spout and bail on a
+coil burner; the work lamp as a clamp, two arms and a cone; the lathe
+with a tailstock, tool rest, motor and belt cover and its shavings;
+the decks chamfered (a kicked nose is not a plank); pegs under the
+parts; the wheels as wheels; the bearings boxes with one flap open;
+the front door's push bar and kick plate. THE STREET: Finn's truck is
+the kit pickup in the parking lane (it stood on the sidewalk); the
+far facade runs the block (30 m) with a corner building each end,
+the bookstore window, two parked cars at the far curb, a second
+streetlamp, three rain puddles on Main; the near streetlamp on the
+sidewalk, not the road. LAYOUT fixes: the repair bench's east end
+inside the counter, the office partition through the counter's back,
+the wheel bin in the east wall, the bearings boxes in Devon's chair,
+the truck on the sidewalk. WEAR: the entry path, two roll-in wheel
+lines from the door, three sit patches on the parents' bench, Kai's
+stand spot at the deck-wall glass, the kid-height smudge on the front
+window, the counter's elbow strip, the bench top's scars. D3: the
+door switch, two outlets, cords from the lathe and the lamp, the
+EXIT sign over the alley door (lit).
+Draft 4 targets: trucks + wheels under three wall decks (complete
+boards); a griptape sheet roll; the register's cord; a bell on a
+spring over the door; the awning's valance scallops; the laundromat's
+interior glow through its window at dusk; Deck: main_street preset +
+shot_establish_b for the street's depth.
 """
 import os, sys
+import math as _cm
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import (make_wall, make_ceiling, make_crown_molding,
-                              make_door_hinges)
-from _props.store_fixtures import make_register, make_credit_card_terminal
-from _props.decor import make_wall_clock, make_floor_plant
-from _props.safety import (make_smoke_detector, make_hvac_vent,
-                           make_fluorescent_tube_fixture,
-                           make_ceiling_speaker)
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe, make_tube, make_rot_box, make_blob, export_glb
+from _props.furniture import make_chair, make_stool, make_bench
+from _props.detail import make_traffic_wear, make_floor_stain, make_light_switch, make_wall_outlet
+from _props.vehicles import make_car
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
+from _props.store_fixtures import make_counter, make_register
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
+from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 
-# ── Shell (kept from the original scaffold — .tscn camera + lights
-#    are tuned to this footprint) ─────────────────────────────────
-ROOM_W = 9.0; ROOM_D = 7.0; CEIL = 2.8
-PAL_WALL = {"wall": (0.42, 0.32, 0.46, 1.0), "baseboard": (0.18, 0.12, 0.20, 1.0)}
-COL_WOOD = (0.42, 0.30, 0.52, 1.0)           # purple-stained trim (house style)
-
-# ── 1962 building bones ──────────────────────────────────────────
-COL_FIR_FLOOR   = (0.55, 0.42, 0.28, 1.0)    # original fir planks, 90 yrs of finish
-COL_FIR_SEAM    = (0.38, 0.28, 0.18, 1.0)
-COL_FIR_WORN    = (0.63, 0.51, 0.36, 1.0)    # traffic lane, finish walked off
-COL_FIR_SHADOW  = (0.44, 0.32, 0.20, 1.0)    # unfaded floor under the old aisles
-COL_OLD_FIR     = (0.34, 0.25, 0.17, 1.0)    # 1962 shelving / storefront frames
-COL_OLD_FIR_LT  = (0.48, 0.37, 0.25, 1.0)    # worn edges on the old wood
-COL_BRASS       = (0.72, 0.58, 0.28, 1.0)
-COL_GHOST_FIELD = (0.72, 0.63, 0.49, 1.0)    # aged sign-paint field
-COL_GHOST_INK   = (0.50, 0.27, 0.21, 1.0)    # oxblood letter paint, faded
-COL_GHOST_SUB   = (0.42, 0.35, 0.30, 1.0)    # smaller sub-line paint
-COL_PAINT_SPILL = (0.44, 0.50, 0.56, 1.0)    # Wagner's paint-dept spill, faded
-
-# ── Board Lords palette (PNW coastal, muted per house rule) ──────
-COL_BL_TEAL     = (0.30, 0.52, 0.46, 1.0)    # shop brand
-COL_BL_CREAM    = (0.92, 0.88, 0.76, 1.0)
-COL_GRIP        = (0.14, 0.13, 0.14, 1.0)
-COL_DECK_WOOD   = (0.72, 0.58, 0.40, 1.0)    # natural maple deck
-COL_SLAT        = (0.30, 0.26, 0.24, 1.0)    # deck-wall slatwall
-COL_SLAT_GROOVE = (0.20, 0.17, 0.16, 1.0)
-COL_KRAFT       = (0.74, 0.56, 0.34, 1.0)
-COL_STEEL_WORN  = (0.52, 0.52, 0.54, 1.0)
-COL_GUM_SOLE    = (0.62, 0.48, 0.32, 1.0)
-COL_TIDEWATER   = (0.62, 0.72, 0.76, 1.0)    # the chipped Tidewater mug
-COL_CRT_SHELL   = (0.28, 0.27, 0.26, 1.0)
-COL_CRT_SCREEN  = (0.16, 0.22, 0.30, 1.0)
-COL_CRT_STATIC  = (0.62, 0.68, 0.72, 1.0)
-
-# Deck-art / apparel tints — muted warm-sunset + PNW cool accents
-DECK_TINTS = [
-    (0.30, 0.52, 0.46, 1.0),   # teal
-    (0.78, 0.42, 0.22, 1.0),   # rust
-    (0.94, 0.82, 0.52, 1.0),   # cream wheat
-    (0.34, 0.42, 0.54, 1.0),   # dusty blue
-    (0.32, 0.44, 0.30, 1.0),   # forest
-    (0.52, 0.24, 0.20, 1.0),   # oxblood
-    (0.24, 0.22, 0.24, 1.0),   # charcoal
-    (0.92, 0.62, 0.28, 1.0),   # warm amber
-]
+ROOM_W = 9.0; ROOM_D = 7.6; CEIL = 2.8   # 2026-09-25: 7.0 → 7.6 so the back office (north of the register's back at y 5.93) holds the alley door's swing AND Devon's desk
+PAL_WALL = {"wall": (0.50, 0.46, 0.42, 1.0), "baseboard": (0.24, 0.20, 0.16, 1.0)}
+COL_FLOOR = (0.44, 0.34, 0.24, 1.0); COL_SEAM = (0.28, 0.20, 0.14, 1.0)
+COL_WOOD = (0.42, 0.30, 0.18, 1.0)
+COL_STEEL = (0.58, 0.60, 0.62, 1.0)
+COL_GLASS = (0.80, 0.86, 0.90, 0.35)   # daylight in the pane — nothing is transparent here, and shot_insert_door read black off the old dark slab (2026-09-25)
+CROW_X = 4.3   # the kit pickup's cab centre (rear glass 3.61 .. windshield 5.02, recorded)
+# Deck graphics — a mixed wall of boards
+DECK_TINTS = [(0.72, 0.26, 0.22, 1.0), (0.26, 0.44, 0.62, 1.0), (0.86, 0.72, 0.26, 1.0),
+              (0.30, 0.52, 0.36, 1.0), (0.56, 0.34, 0.60, 1.0), (0.88, 0.86, 0.80, 1.0),
+              (0.20, 0.22, 0.26, 1.0), (0.80, 0.48, 0.24, 1.0)]
 
 
-# ═════════════════════════════════════════════════════════════════
-# SHELL — floor slab is replaced by the wood-floor history pass
-# below; walls keep the scaffold footprint. South wall becomes a
-# real storefront (openings, not solid wall) in build_storefront.
-# North wall splits around the back-office doorway (ch12 canon).
-# ═════════════════════════════════════════════════════════════════
 def build_shell():
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL,
-                  axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
-    # North wall split around the office doorway (gap x 2.45..3.35)
-    make_wall("Wall_N_W", (-1.125, ROOM_D, 0), length=7.15, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_E", (+4.025, ROOM_D, 0), length=1.35, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_box("Wall_N_AboveOfficeDoor", (2.90, ROOM_D, CEIL-0.30),
-             (0.90, 0.20, 0.60), PAL_WALL["wall"])
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # Back wall with a gap for the alley door (x ~ +3.4)
+    make_wall("Wall_N_W", (-1.0, ROOM_D, 0), length=7.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Wall_N_E", (4.15, ROOM_D, CEIL/2.0), (0.9, 0.20, CEIL), PAL_WALL["wall"])
+    make_box("Wall_N_AboveAlley", (3.10, ROOM_D, CEIL-0.30), (1.2, 0.20, 0.60), PAL_WALL["wall"])   # x 2.5..3.7, wall to wall (2026-09-25)
+    # the opening under it is 2.5..3.7 and the leaf 2.70..3.60: the wall
+    # closes the 20 cm and 10 cm of daylight either side and the 15 cm
+    # over the leaf (2026-09-25, doorway_audit OPENING)
+    make_wall("Alley_Door_Fill_W", (2.60, ROOM_D, 0), length=0.20, height=CEIL-0.60, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Alley_Door_Fill_E", (3.65, ROOM_D, 0), length=0.10, height=CEIL-0.60, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Alley_Door_Header", (3.15, ROOM_D, 2.125), (0.90, 0.20, 0.15), PAL_WALL["wall"])
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.75, 1.55, 2.60, 1.50)])   # cut 2026-10-07: its window was a pane on a solid wall
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
-    for nm, ax, length, wx, wy in [
-            ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
-            ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
-            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10),
-            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
-        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
-                           ceil_z=CEIL, palette={"wood": COL_WOOD})
+    # Alley door leaf ("He pulled the truck out of the alley")
+    make_box("Alley_Door", (3.15, ROOM_D-0.04, 1.03), (0.90, 0.05, 2.05), (0.34, 0.30, 0.28, 1.0))
+    # Front door: bell + reversible OPEN/CLOSED + the taped note
+    make_box("Front_Door", (0.0, 0.04, 1.02), (1.90, 0.04, 2.04), (0.30, 0.28, 0.26, 1.0))
+    make_box("Front_Door_Glass", (0.0, 0.03, 1.20), (1.50, 0.02, 1.55), COL_GLASS)
+    # (2026-09-22: the bell hangs from a bracket under the header — it
+    # floated over the door with nothing holding it)
+    make_box("Door_Bell_Bracket", (0.0, 0.16, 2.44), (0.03, 0.12, 0.12), (0.22, 0.20, 0.18, 1.0))
+    # (draft 4) a turned brass bell on a coiled spring — "The bell rang"
+    make_tube("Door_Bell_Spring", [(0.012 * _cm.sin(t * 1.2), 0.16 + 0.012 * _cm.cos(t * 1.2), 2.38 - t * 0.0055) for t in range(14)],
+              0.003, (0.60, 0.60, 0.58, 1.0), segments=4)
+    make_lathe("Door_Bell", (0.0, 0.16, 2.225), [(0.05, 0.0), (0.046, 0.01), (0.032, 0.045), (0.018, 0.068), (0.010, 0.078), (0.0, 0.078)],
+               (0.74, 0.58, 0.28, 1.0), segments=12)
+    make_cyl("Door_Bell_Clapper", (0.0, 0.16, 2.22), 0.007, 0.03, (0.30, 0.26, 0.18, 1.0), segments=5)
+    # (draft 3) the push bar and the kick plate
+    make_tube("Front_Door_Bar", [(-0.70, 0.085, 1.02), (0.70, 0.085, 1.02)], 0.016, COL_STEEL, segments=6)
+    for bx in (-0.66, 0.66):
+        make_box(f"Front_Door_Bar_Post_{bx:+.1f}", (bx, 0.07, 1.02), (0.03, 0.03, 0.03), COL_STEEL)
+    make_box("Front_Door_Kick", (0.0, 0.065, 0.16), (1.70, 0.006, 0.24), COL_STEEL)
+    make_box("Open_Sign", (0.35, 0.06, 1.55), (0.24, 0.01, 0.16), (0.86, 0.82, 0.72, 1.0))
+    make_box("Taped_Note", (0.35, 0.06, 1.74), (0.14, 0.008, 0.10), (0.94, 0.92, 0.84, 1.0))
 
-
-# ═════════════════════════════════════════════════════════════════
-# FLOOR HISTORY — the original 1962 fir plank floor. Wear lane from
-# the door to the counter, two darker "ghost aisle" footprints where
-# Wagner's gondola shelving stood for five decades (the floor under
-# them never sun-faded), bolt holes at the old rack feet, a faded
-# blue-gray paint spill from the hardware store's paint department,
-# and the brass WAGNER'S threshold plate still set in the doorway.
-# ═════════════════════════════════════════════════════════════════
-def build_floor_history():
-    # Slab
-    make_box("Floor_Slab", (0.0, ROOM_D/2.0, -0.05),
-             (ROOM_W+0.4, ROOM_D+0.4, 0.10), COL_FIR_FLOOR)
-    # Plank seams — planks run N-S, seams every 0.30 m
-    n_seams = 29
-    for i in range(n_seams):
-        sx = -4.2 + i * 0.30
-        make_box(f"Floor_PlankSeam_{i}", (sx, ROOM_D/2.0, 0.0025),
-                 (0.014, ROOM_D+0.4, 0.0015), COL_FIR_SEAM)
-    # Deterministic butt joints (short cross seams between planks)
-    for j in range(12):
-        bx = -4.05 + (j * 7 % n_seams) * 0.30
-        by = 0.6 + ((j * 5 + 2) % 11) * 0.55
-        make_box(f"Floor_ButtJoint_{j}", (bx + 0.15, by, 0.0025),
-                 (0.30, 0.012, 0.0015), COL_FIR_SEAM)
-    # Wear lane — door to counter, finish walked off since 1962
-    make_box("Floor_WearLane_Main", (0.0, 2.6, 0.005),
-             (1.30, 4.40, 0.003), COL_FIR_WORN)
-    make_box("Floor_WearLane_DeckWall", (-2.10, 3.55, 0.005),
-             (2.90, 0.90, 0.003), COL_FIR_WORN)
-    make_box("Floor_WearLane_Counter", (1.60, 4.55, 0.005),
-             (1.10, 0.90, 0.003), COL_FIR_WORN)
-    # Ghost aisle footprints — richer, unfaded floor where the
-    # hardware gondolas sat (Wagner's Hardware 1962-2011)
-    make_box("Floor_GhostAisle_W", (-2.40, 3.40, 0.0035),
-             (0.90, 3.20, 0.002), COL_FIR_SHADOW)
-    make_box("Floor_GhostAisle_E", (2.20, 2.20, 0.0035),
-             (0.90, 3.00, 0.002), COL_FIR_SHADOW)
-    # Bolt holes at the old rack feet — corners + midpoints
-    hole_pts = [(-2.80, 1.85), (-2.00, 1.85), (-2.80, 3.40), (-2.00, 3.40),
-                (-2.80, 4.95), (-2.00, 4.95),
-                (1.80, 0.75), (2.60, 0.75), (1.80, 2.20), (2.60, 2.20),
-                (1.80, 3.65), (2.60, 3.65)]
-    for hi, (hx, hy) in enumerate(hole_pts):
-        make_cyl(f"Floor_BoltHole_{hi}", (hx, hy, 0.004), 0.014, 0.006,
-                 (0.12, 0.09, 0.07, 1.0), segments=6)
-    # Paint spill — the paint department was along the east wall;
-    # a dusty blue-gray splotch soaked into the grain, faded now
-    make_box("Floor_PaintSpill_A", (3.45, 1.15, 0.0045),
-             (0.42, 0.30, 0.002), COL_PAINT_SPILL)
-    make_box("Floor_PaintSpill_B", (3.30, 1.32, 0.0055),
-             (0.22, 0.18, 0.001), COL_PAINT_SPILL)
-    # Brass threshold plate — "WAGNER'S HDW. CO." cast into the
-    # doorway sill in 1962; Kai never took it out
-    make_box("Floor_WagnerThreshold", (0.0, 0.28, 0.010),
-             (1.70, 0.30, 0.016), COL_BRASS)
-    make_box("Floor_WagnerThreshold_Letters", (0.0, 0.28, 0.019),
-             (1.10, 0.12, 0.002), (0.48, 0.38, 0.20, 1.0))
-    # Entry mat north of the plate
-    make_box("EntryMat_Under", (0.0, 1.05, 0.006), (1.90, 1.05, 0.006),
-             (0.14, 0.13, 0.13, 1.0))
-    make_box("EntryMat", (0.0, 1.05, 0.013), (1.76, 0.92, 0.008), P.RUBBER_MAT)
-    make_box("EntryMat_Grit", (0.0, 0.62, 0.017), (1.20, 0.10, 0.002),
-             (0.50, 0.44, 0.36, 1.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# STOREFRONT — real window OPENINGS (diner-window rule: no glass
-# slab, frame + mullions only) in the original 1962 fir surrounds.
-# Door with stiles/rails, the brass bell (ch5/ch9/ch16: "the bell
-# over the door rang"), the CLOSED/OPEN flip sign Kai turns every
-# morning at ten, and the bench inside the east window "for parents
-# waiting on repairs" (ch9).
-# ═════════════════════════════════════════════════════════════════
-def build_storefront():
-    # Wall pieces around the two window openings + door gap x -1..1
-    for tag, sgn in (("W", -1), ("E", +1)):
-        make_box(f"Storefront_Bulkhead_{tag}", (sgn * 2.75, 0.0, 0.275),
-                 (3.50, 0.20, 0.55), PAL_WALL["wall"])
-        make_box(f"Storefront_Bulkhead_{tag}_Base", (sgn * 2.75, 0.13, 0.08),
-                 (3.50, 0.06, 0.16), PAL_WALL["baseboard"])
-        make_box(f"Storefront_CornerPier_{tag}", (sgn * 4.25, 0.0, 1.45),
-                 (0.50, 0.20, 1.80), PAL_WALL["wall"])
-        make_box(f"Storefront_DoorPier_{tag}", (sgn * 1.20, 0.0, 1.45),
-                 (0.40, 0.20, 1.80), PAL_WALL["wall"])
-        make_box(f"Storefront_Header_{tag}", (sgn * 2.75, 0.0, 2.575),
-                 (3.50, 0.20, 0.45), PAL_WALL["wall"])
-    make_box("Storefront_AboveDoor", (0.0, 0.0, 2.50), (2.00, 0.20, 0.60),
-             PAL_WALL["wall"])
-    # Window frames — original old-growth fir, dark with age
-    for tag, sgn in (("W", -1), ("E", +1)):
-        wx = sgn * 2.70
-        make_box(f"Window_{tag}_Sill", (wx, 0.0, 0.585), (2.72, 0.16, 0.07), COL_OLD_FIR)
-        make_box(f"Window_{tag}_Head", (wx, 0.0, 2.315), (2.72, 0.16, 0.07), COL_OLD_FIR)
-        for jsgn in (-1, +1):
-            make_box(f"Window_{tag}_Jamb_{jsgn:+d}", (wx + jsgn * 1.325, 0.0, 1.45),
-                     (0.07, 0.16, 1.80), COL_OLD_FIR)
-        make_box(f"Window_{tag}_Transom", (wx, 0.0, 1.95), (2.60, 0.10, 0.05), COL_OLD_FIR)
-        for msgn in (-1, +1):
-            make_box(f"Window_{tag}_MullV_{msgn:+d}", (wx + msgn * 0.65, 0.0, 1.45),
-                     (0.05, 0.10, 1.73), COL_OLD_FIR)
-        # Worn interior stool cap — elbows and shop dogs since 1962
-        make_box(f"Window_{tag}_StoolCap", (wx, 0.14, 0.605), (2.60, 0.12, 0.03),
-                 COL_OLD_FIR_LT)
-    # Door surround + west-hinged leaf (frame + rails, NO glass)
-    for sgn in (-1, +1):
-        make_box(f"Door_Post_{sgn:+d}", (sgn * 0.96, 0.0, 1.10),
-                 (0.08, 0.16, 2.20), COL_OLD_FIR)
-    make_box("Door_Transom", (0.0, 0.0, 2.24), (2.00, 0.16, 0.08), COL_OLD_FIR)
-    make_box("Door_Stile_W", (-0.88, 0.0, 1.08), (0.07, 0.05, 2.10), COL_OLD_FIR)
-    make_box("Door_Stile_E", (-0.12, 0.0, 1.08), (0.07, 0.05, 2.10), COL_OLD_FIR)
-    make_box("Door_Rail_Top", (-0.50, 0.0, 2.08), (0.83, 0.05, 0.09), COL_OLD_FIR)
-    make_box("Door_Rail_Mid", (-0.50, 0.0, 0.92), (0.83, 0.05, 0.07), COL_OLD_FIR)
-    make_box("Door_KickPlate", (-0.50, 0.0, 0.15), (0.83, 0.05, 0.26), P.METAL_STEEL)
-    make_cyl("Door_PushBar", (-0.50, 0.07, 1.00), 0.020, 0.62, COL_BRASS, axis='X')
-    make_door_hinges("Door_Hinge", edge_x=-0.92, edge_y=0.0,
-                     edge_z_centers=[0.35, 1.05, 1.80], axis='X')
-    # The CLOSED/OPEN flip sign on a cord (ch5: "He flipped the
-    # CLOSED to OPEN") — teal board, cream text band, both faces
-    make_cyl("Door_FlipSign_Cord", (-0.50, 0.045, 1.86), 0.004, 0.30, P.TWINE, axis='Z')
-    make_box("Door_FlipSign_Board", (-0.50, 0.045, 1.60), (0.36, 0.020, 0.22), COL_BL_TEAL)
-    make_box("Door_FlipSign_Text_In", (-0.50, 0.058, 1.60), (0.28, 0.006, 0.09), COL_BL_CREAM)
-    make_box("Door_FlipSign_Text_Out", (-0.50, 0.032, 1.60), (0.28, 0.006, 0.09), COL_BL_CREAM)
-    # Brass bell above the door — every arrival in ch5/ch9/ch16
-    make_box("Bell_Mount", (0.55, 0.13, 2.32), (0.06, 0.10, 0.06), P.METAL_BLACK)
-    make_cyl("Bell_Arm", (0.55, 0.24, 2.32), 0.012, 0.16, COL_BRASS, axis='Y')
-    make_cyl("Bell_Body", (0.55, 0.32, 2.27), 0.050, 0.07, COL_BRASS)
-    make_cyl("Bell_Flare", (0.55, 0.32, 2.22), 0.068, 0.025, COL_BRASS)
-    make_cyl("Bell_Clapper", (0.55, 0.32, 2.18), 0.012, 0.05, P.METAL_BLACK)
-    # Waiting bench inside the east window (ch9: "the small bench
-    # against the front window that Kai kept for parents waiting on
-    # repairs"; ch12: the kid with the board across his lap)
-    make_box("Bench_Seat", (2.45, 0.42, 0.45), (1.70, 0.38, 0.05), COL_OLD_FIR_LT)
-    for lsgn in (-1, +1):
-        make_box(f"Bench_Leg_{lsgn:+d}", (2.45 + lsgn * 0.72, 0.42, 0.21),
-                 (0.06, 0.34, 0.42), COL_OLD_FIR)
-    make_box("Bench_Stretcher", (2.45, 0.42, 0.12), (1.40, 0.05, 0.04), COL_OLD_FIR)
-    make_box("Bench_Backpack", (2.95, 0.42, 0.60), (0.26, 0.22, 0.26),
-             (0.40, 0.46, 0.34, 1.0))
-    make_box("Bench_Backpack_Pocket", (2.95, 0.30, 0.53), (0.18, 0.03, 0.12),
-             (0.32, 0.38, 0.28, 1.0))
-    make_cyl("Bench_Helmet", (1.95, 0.42, 0.51), 0.11, 0.08, DECK_TINTS[6])
-    make_cyl("Bench_Helmet_Crown", (1.95, 0.42, 0.565), 0.08, 0.04, DECK_TINTS[6])
-    # Window display platform inside the west window — two decks on
-    # stands, a shoe, a fanned sticker pack
-    make_box("WinDisp_Platform", (-2.70, 0.50, 0.11), (2.30, 0.70, 0.22), COL_SLAT)
-    for di, dx in enumerate((-3.30, -2.35)):
-        tint = DECK_TINTS[(di * 3 + 1) % len(DECK_TINTS)]
-        make_box(f"WinDisp_Deck_{di}", (dx, 0.50, 0.61), (0.026, 0.205, 0.78), tint)
-        make_box(f"WinDisp_Deck_{di}_Art", (dx - 0.015, 0.50, 0.61),
-                 (0.004, 0.16, 0.30), DECK_TINTS[(di * 3 + 4) % len(DECK_TINTS)])
-        for psgn in (-1, +1):
-            make_cyl(f"WinDisp_Stand_{di}_{psgn:+d}", (dx + 0.05, 0.50 + psgn * 0.09, 0.36),
-                     0.012, 0.28, P.METAL_BLACK)
-    make_box("WinDisp_Shoe_Sole", (-1.75, 0.45, 0.24), (0.28, 0.11, 0.035), COL_GUM_SOLE)
-    make_box("WinDisp_Shoe_Upper", (-1.77, 0.45, 0.28), (0.23, 0.10, 0.08), DECK_TINTS[3])
-    make_box("WinDisp_PriceCard", (-2.05, 0.38, 0.255), (0.10, 0.014, 0.07), P.PAPER)
-    make_box("WinDisp_StickerFan_A", (-3.05, 0.32, 0.225), (0.10, 0.07, 0.004), DECK_TINTS[0])
-    make_box("WinDisp_StickerFan_B", (-2.98, 0.36, 0.228), (0.10, 0.07, 0.004), DECK_TINTS[5])
-    make_floor_plant("FloorPlant", (3.95, 0.80, 0.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# MAIN STREET THROUGH THE WINDOWS — the laundromat directly across
-# Main with Janet Halfmoon's sanderling mural ('46) and the gray
-# substrate patch eating its lower corner (ch5/ch9: "the patch on
-# the sanderling mural across from Board Lords"), the downspout the
-# drone fixed in ch9, sidewalks, the road, one streetlight on the
-# buffer strip (public right-of-way rule).
-# ═════════════════════════════════════════════════════════════════
-def build_exterior_main_street():
-    make_box("Ext_Sidewalk_Near", (0.0, -1.35, -0.06), (16.0, 2.50, 0.12),
-             (0.58, 0.56, 0.52, 1.0))
-    for si in range(5):
-        make_box(f"Ext_Sidewalk_Near_Seam_{si}", (-6.0 + si * 3.0, -1.35, 0.001),
-                 (0.03, 2.40, 0.002), (0.42, 0.40, 0.37, 1.0))
-    make_box("Ext_Road", (0.0, -4.85, -0.10), (16.0, 4.50, 0.08),
-             (0.30, 0.29, 0.30, 1.0))
-    for di in range(4):
-        make_box(f"Ext_Road_CenterDash_{di}", (-5.4 + di * 3.6, -4.85, -0.058),
-                 (1.40, 0.12, 0.004), (0.82, 0.72, 0.36, 1.0))
-    make_box("Ext_Road_Patch", (2.6, -3.9, -0.058), (1.60, 0.90, 0.004),
-             (0.24, 0.23, 0.24, 1.0))
-    make_box("Ext_Sidewalk_Far", (0.0, -7.75, -0.06), (16.0, 1.30, 0.12),
-             (0.58, 0.56, 0.52, 1.0))
-    # Streetlight at the road edge on the far buffer strip
-    make_cyl("Ext_Streetlight_Pole", (-4.5, -7.35, 2.3), 0.06, 4.6,
-             (0.24, 0.26, 0.28, 1.0))
-    make_box("Ext_Streetlight_Arm", (-4.15, -7.35, 4.55), (0.80, 0.08, 0.06),
-             (0.24, 0.26, 0.28, 1.0))
-    make_box("Ext_Streetlight_Lens", (-3.85, -7.35, 4.47), (0.30, 0.16, 0.08),
-             (0.96, 0.88, 0.62, 1.0))
-    # Laundromat — brick, parapet, storefront band
-    make_box("Ext_Laundromat_Facade", (0.0, -8.75, 2.2), (16.0, 0.50, 4.4),
-             (0.52, 0.38, 0.31, 1.0))
-    make_box("Ext_Laundromat_Parapet", (0.0, -8.75, 4.46), (16.2, 0.60, 0.14),
-             (0.40, 0.30, 0.25, 1.0))
-    make_box("Ext_Laundromat_Band", (0.0, -8.48, 0.30), (16.0, 0.04, 0.60),
-             (0.36, 0.32, 0.30, 1.0))
-    # Laundromat door + windows (dark openings-with-frames, distant)
-    make_box("Ext_Laundromat_Door", (4.1, -8.46, 1.05), (0.95, 0.04, 2.10),
-             (0.12, 0.11, 0.12, 1.0))
-    make_box("Ext_Laundromat_DoorFrame", (4.1, -8.45, 2.16), (1.10, 0.04, 0.10),
-             (0.70, 0.68, 0.62, 1.0))
-    for wi, wx in enumerate((5.6, 2.5)):
-        make_box(f"Ext_Laundromat_Win_{wi}", (wx, -8.46, 1.45), (1.10, 0.04, 1.30),
-                 (0.14, 0.14, 0.16, 1.0))
-        make_box(f"Ext_Laundromat_WinFrame_{wi}", (wx, -8.45, 2.14), (1.22, 0.04, 0.08),
-                 (0.70, 0.68, 0.62, 1.0))
-    # The sanderling mural — small shorebird, wet-sand band, painted
-    # by Janet Halfmoon in '46 on the wall Kai checks every morning
-    make_box("Ext_Mural_Sky", (-1.6, -8.46, 2.35), (4.20, 0.04, 1.90),
-             (0.55, 0.62, 0.64, 1.0))
-    make_box("Ext_Mural_SandBand", (-1.6, -8.44, 1.62), (4.20, 0.04, 0.44),
-             (0.70, 0.62, 0.50, 1.0))
-    make_box("Ext_Mural_Sanderling_Body", (-1.35, -8.42, 2.30), (0.90, 0.03, 0.48),
-             (0.88, 0.86, 0.80, 1.0))
-    make_box("Ext_Mural_Sanderling_Head", (-0.80, -8.42, 2.62), (0.34, 0.03, 0.30),
-             (0.88, 0.86, 0.80, 1.0))
-    make_box("Ext_Mural_Sanderling_Beak", (-0.52, -8.42, 2.60), (0.28, 0.03, 0.06),
-             (0.20, 0.18, 0.16, 1.0))
-    make_box("Ext_Mural_Sanderling_Eye", (-0.76, -8.41, 2.66), (0.05, 0.02, 0.05),
-             (0.20, 0.18, 0.16, 1.0))
-    make_box("Ext_Mural_Sanderling_Wing", (-1.45, -8.41, 2.32), (0.55, 0.02, 0.26),
-             (0.68, 0.64, 0.58, 1.0))
-    for li, lx in enumerate((-1.55, -1.15)):
-        make_box(f"Ext_Mural_Sanderling_Leg_{li}", (lx, -8.42, 1.95),
-                 (0.05, 0.03, 0.26), (0.20, 0.18, 0.16, 1.0))
-    # The substrate patch — flat gray-brown, eating the lower-west
-    # corner of the mural, "bigger today, maybe" (ch5)
-    make_box("Ext_Mural_Patch_A", (-3.05, -8.40, 1.85), (1.30, 0.03, 1.00),
-             (0.42, 0.40, 0.38, 1.0))
-    make_box("Ext_Mural_Patch_B", (-2.45, -8.39, 1.58), (0.90, 0.03, 0.55),
-             (0.45, 0.43, 0.41, 1.0))
-    make_box("Ext_Mural_Patch_C", (-3.30, -8.39, 2.45), (0.55, 0.03, 0.45),
-             (0.40, 0.38, 0.36, 1.0))
-    # The downspout the drone re-hung in ch9
-    make_cyl("Ext_Laundromat_Downspout", (6.9, -8.44, 2.1), 0.05, 4.0,
-             (0.55, 0.53, 0.50, 1.0))
-    for bi in range(3):
-        make_box(f"Ext_Downspout_Bracket_{bi}", (6.9, -8.48, 0.8 + bi * 1.5),
-                 (0.14, 0.06, 0.05), (0.42, 0.40, 0.38, 1.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# THE GHOST SIGN — WAGNER'S HARDWARE, painted on the upper back wall
-# in 1962, uncovered when the general store's paneling came down.
-# Aged paint field, oxblood letter band (Label3D scene-side),
-# PAINT · TOOLS · GLASS sub-line, chipped patches where the plaster
-# shows through. Kai's BOARD LORDS panel hangs over its east end —
-# the new sign literally mounted on the old one.
-# ═════════════════════════════════════════════════════════════════
-def build_ghost_sign():
-    wall_face = ROOM_D - 0.10   # 6.90
-    make_box("Ghost_Field", (-0.70, wall_face - 0.015, 2.30),
-             (6.40, 0.03, 0.70), COL_GHOST_FIELD)
-    make_box("Ghost_LetterBand", (-0.70, wall_face - 0.032, 2.42),
-             (5.60, 0.006, 0.30), COL_GHOST_INK)
-    make_box("Ghost_SubBand", (-0.70, wall_face - 0.032, 2.10),
-             (4.20, 0.006, 0.14), COL_GHOST_SUB)
-    # Chips — wall paint showing through the sign field
-    chips = [(-3.45, 2.52, 0.40, 0.18), (-2.20, 2.06, 0.30, 0.14),
-             (-0.15, 2.58, 0.55, 0.12), (1.30, 2.14, 0.26, 0.20),
-             (-1.30, 2.36, 0.18, 0.10)]
-    for ci, (cx, cz, w, h) in enumerate(chips):
-        make_box(f"Ghost_Chip_{ci}", (cx, wall_face - 0.038, cz),
-                 (w, 0.004, h), PAL_WALL["wall"])
-    # Water-stain drip down from the crown, across the sign's west end
-    make_box("Ghost_WaterStain", (-3.70, wall_face - 0.036, 2.35),
-             (0.22, 0.004, 0.72), (0.60, 0.52, 0.40, 1.0))
-    # Kai's BOARD LORDS panel — hung 2034, overlapping the ghost
-    # sign's east end. Teal field, cream letter band, two brackets.
-    make_box("BoardLords_SignPanel", (2.75, wall_face - 0.075, 2.32),
-             (2.30, 0.05, 0.52), COL_BL_TEAL)
-    make_box("BoardLords_SignLetters", (2.75, wall_face - 0.105, 2.36),
-             (1.90, 0.006, 0.24), COL_BL_CREAM)
-    make_box("BoardLords_SignRule", (2.75, wall_face - 0.105, 2.16),
-             (1.30, 0.006, 0.03), COL_BL_CREAM)
-    for bsgn in (-1, +1):
-        make_box(f"BoardLords_SignBracket_{bsgn:+d}",
-                 (2.75 + bsgn * 0.95, wall_face - 0.045, 2.62),
-                 (0.05, 0.09, 0.14), P.METAL_BLACK)
-
-
-# ═════════════════════════════════════════════════════════════════
-# THE DECK WALL — west wall. Slatwall with three rows of six
-# face-out decks, varied deck-art blocks (position-seeded pattern
-# variety), mounting pegs, price tags. The signature fixture of the
-# shop (ch5: Kai cleans it during the first empty hour).
-# ═════════════════════════════════════════════════════════════════
-def _deck_art(prefix, ax, ay, az, k, tint_b, tint_c):
-    """Art blocks proud of a face-out deck at (ax, ay, az). Five
-    pattern families keyed by k."""
-    if k == 0:      # three horizontal stripes
-        for si, dz in enumerate((-0.18, 0.0, +0.18)):
-            make_box(f"{prefix}_Stripe_{si}", (ax, ay, az + dz),
-                     (0.004, 0.185, 0.07), tint_b)
-    elif k == 1:    # split two-tone lower half
-        make_box(f"{prefix}_Split", (ax, ay, az - 0.19),
-                 (0.004, 0.185, 0.36), tint_b)
-        make_box(f"{prefix}_SplitRule", (ax - 0.002, ay, az - 0.005),
-                 (0.004, 0.185, 0.025), tint_c)
-    elif k == 2:    # center dot
-        make_box(f"{prefix}_Dot", (ax, ay, az), (0.004, 0.11, 0.11), tint_b)
-        make_box(f"{prefix}_DotCore", (ax - 0.002, ay, az),
-                 (0.004, 0.055, 0.055), tint_c)
-    elif k == 3:    # border ring
-        for bi, (dy, dz, w, h) in enumerate([
-                (0.0, +0.34, 0.17, 0.03), (0.0, -0.34, 0.17, 0.03),
-                (+0.082, 0.0, 0.025, 0.70), (-0.082, 0.0, 0.025, 0.70)]):
-            make_box(f"{prefix}_Border_{bi}", (ax, ay + dy, az + dz),
-                     (0.004, w, h), tint_b)
-    else:           # nose band + tail band
-        make_box(f"{prefix}_NoseBand", (ax, ay, az + 0.28),
-                 (0.004, 0.185, 0.12), tint_b)
-        make_box(f"{prefix}_TailBand", (ax, ay, az - 0.28),
-                 (0.004, 0.185, 0.12), tint_c)
 
 def build_deck_wall():
-    wall_face = -ROOM_W / 2.0 + 0.10   # -4.40
-    make_box("Deck_Slatwall", (-4.36, 4.70, 1.41), (0.07, 3.60, 2.62), COL_SLAT)
-    for gi in range(8):
-        gz = 0.35 + gi * 0.30
-        make_box(f"Deck_SlatGroove_{gi}", (-4.322, 4.70, gz),
-                 (0.006, 3.55, 0.02), COL_SLAT_GROOVE)
-    rows_z = (0.72, 1.50, 2.28)
-    for col in range(6):
-        cy = 3.15 + col * 0.62
-        for row, rz in enumerate(rows_z):
-            idx = col * 3 + row
-            base = DECK_TINTS[idx % len(DECK_TINTS)]
-            if idx % 7 == 3:
-                base = COL_DECK_WOOD   # a few natural-maple decks
-            make_box(f"Deck_{col}_{row}", (-4.300, cy, rz),
-                     (0.026, 0.205, 0.78), base)
-            _deck_art(f"DeckArt_{col}_{row}", -4.285, cy, rz, idx % 5,
-                      DECK_TINTS[(idx * 3 + 2) % len(DECK_TINTS)],
-                      DECK_TINTS[(idx * 5 + 5) % len(DECK_TINTS)])
-            for psgn in (-1, +1):
-                make_cyl(f"Deck_Peg_{col}_{row}_{psgn:+d}",
-                         (-4.335, cy + psgn * 0.06, rz - 0.30),
-                         0.006, 0.06, P.METAL_STEEL, axis='X', segments=6)
-            if idx % 4 == 1:
-                make_box(f"Deck_PriceTag_{col}_{row}", (-4.315, cy, rz - 0.46),
-                         (0.008, 0.09, 0.05), P.PAPER)
+    """The glass-fronted DECK WALL along the west side — the thing
+    Kai cleans the glass on."""
+    make_box("DeckWall_Back", (-4.44, 3.8, 1.30), (0.06, 4.4, 2.30), (0.30, 0.26, 0.22, 1.0))
+    for r in range(2):
+        for c in range(7):
+            dy = 1.85 + c * 0.62
+            dz = 0.85 + r * 1.05
+            tint = DECK_TINTS[(r * 7 + c) % len(DECK_TINTS)]
+            make_chamfer_box(f"Deck_{r}_{c}", (-4.36, dy, dz), (0.05, 0.22, 0.82), tint, chamfer=0.03)
+            make_box(f"Deck_{r}_{c}_Stripe", (-4.33, dy, dz + 0.15), (0.04, 0.18, 0.10),
+                     DECK_TINTS[(r * 7 + c + 3) % len(DECK_TINTS)])
+    # The glass front Kai cleans — its frame on two end posts, the glass
+    # itself as two glints (2026-09-24: a 4.3 x 2.2 m "glass" slab — this
+    # pipeline has no alpha, so it rendered as a lavender wall over every
+    # deck; the insert_decks / insert_deckwall frames were one flat colour)
+    for pe, py_ in (("S", 1.625), ("N", 5.975)):
+        make_box(f"DeckWall_Glass_Post_{pe}", (-4.10, py_, 1.225), (0.05, 0.05, 2.45), COL_STEEL)
+    make_box("DeckWall_Glass_Frame_T", (-4.10, 3.8, 2.42), (0.05, 4.30, 0.06), COL_STEEL)
+    make_box("DeckWall_Glass_Frame_B", (-4.10, 3.8, 0.18), (0.05, 4.30, 0.06), COL_STEEL)
+    for gi, (gy, gw) in enumerate(((2.3, 0.03), (2.45, 0.012), (4.9, 0.02))):
+        make_box(f"DeckWall_Glint_{gi}", (-4.10, gy, 1.30), (0.004, gw, 2.18), (0.86, 0.90, 0.92, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# HERITAGE CASE + VIDEO CORNER — "the glass on the deck wall" (ch5)
-# rendered as an open-front display cabinet per the no-glass rule.
-# Wagner's relics inside (the shop yardstick, a hand-crank drill)
-# next to the first Board Lords deck from 2034. On top: the CRT +
-# tape deck running skate videos all day, screen facing the room.
-# ═════════════════════════════════════════════════════════════════
-def build_heritage_case():
-    cx, cy = -4.15, 2.20
-    make_box("Heritage_Cabinet", (cx, cy, 0.55), (0.50, 1.00, 1.10),
-             COL_OLD_FIR, open_faces={'+X'})
-    make_box("Heritage_Shelf_Mid", (cx + 0.02, cy, 0.58), (0.44, 0.92, 0.03),
-             COL_OLD_FIR_LT)
-    make_box("Heritage_Shelf_Low", (cx + 0.02, cy, 0.22), (0.44, 0.92, 0.03),
-             COL_OLD_FIR_LT)
-    for rsgn in (-1, +1):
-        make_box(f"Heritage_Rim_{rsgn:+d}", (cx + 0.24, cy + rsgn * 0.48, 0.55),
-                 (0.04, 0.04, 1.10), COL_OLD_FIR)
-    make_box("Heritage_Rim_Top", (cx + 0.24, cy, 1.08), (0.04, 1.00, 0.04),
-             COL_OLD_FIR)
-    # Relics: Wagner's wooden yardstick, the hand-crank drill, and
-    # the first Board Lords deck (2034), worn at the tail
-    make_box("Heritage_Yardstick", (cx + 0.10, cy, 0.63), (0.05, 0.88, 0.015),
-             P.PAPER_AGED)
-    make_box("Heritage_Drill_Body", (cx + 0.06, cy - 0.28, 0.68),
-             (0.06, 0.22, 0.05), (0.30, 0.28, 0.30, 1.0))
-    make_cyl("Heritage_Drill_Wheel", (cx + 0.06, cy - 0.32, 0.72), 0.045, 0.02,
-             (0.44, 0.20, 0.16, 1.0), axis='Y')
-    make_cyl("Heritage_Drill_Handle", (cx + 0.06, cy - 0.16, 0.70), 0.012, 0.08,
-             COL_OLD_FIR_LT, axis='Y', segments=6)
-    make_box("Heritage_FirstDeck", (cx + 0.14, cy + 0.22, 0.28),
-             (0.026, 0.205, 0.50), DECK_TINTS[5])
-    make_box("Heritage_FirstDeck_Wear", (cx + 0.155, cy + 0.22, 0.08),
-             (0.004, 0.16, 0.08), COL_DECK_WOOD)
-    make_box("Heritage_Card", (cx + 0.20, cy - 0.10, 0.28), (0.008, 0.14, 0.09),
-             P.PAPER)
-    # CRT + tape deck on top — skate tapes on loop, screen faces east
-    make_box("CRT_Body", (cx + 0.02, cy - 0.12, 1.335), (0.44, 0.46, 0.42),
-             COL_CRT_SHELL)
-    make_box("CRT_Screen", (cx + 0.245, cy - 0.12, 1.36), (0.012, 0.35, 0.28),
-             COL_CRT_SCREEN)
-    make_box("CRT_Screen_Static", (cx + 0.253, cy - 0.12, 1.44), (0.006, 0.32, 0.03),
-             COL_CRT_STATIC)
-    make_box("CRT_Screen_Skater", (cx + 0.253, cy - 0.20, 1.33), (0.006, 0.05, 0.09),
-             COL_CRT_STATIC)
-    make_box("CRT_Screen_RampLine", (cx + 0.253, cy - 0.04, 1.29), (0.006, 0.16, 0.02),
-             (0.48, 0.54, 0.58, 1.0))
-    make_cyl("CRT_Knob", (cx + 0.245, cy + 0.13, 1.24), 0.020, 0.02,
-             P.METAL_BLACK, axis='X', segments=6)
-    make_box("CRT_TapeDeck", (cx + 0.02, cy + 0.32, 1.155), (0.40, 0.28, 0.09),
-             (0.20, 0.19, 0.20, 1.0))
-    make_box("CRT_TapeDeck_Slot", (cx + 0.225, cy + 0.32, 1.16), (0.005, 0.18, 0.03),
-             (0.08, 0.08, 0.09, 1.0))
-    for vi in range(3):
-        make_box(f"CRT_Tape_{vi}", (cx + 0.02, cy + 0.44 - vi * 0.0, 1.24 + vi * 0.045),
-                 (0.19, 0.11, 0.038),
-                 (0.20, 0.18, 0.22, 1.0) if vi % 2 == 0 else (0.26, 0.20, 0.30, 1.0))
-    make_box("CRT_Cable", (cx + 0.02, cy + 0.18, 1.14), (0.012, 0.16, 0.012),
-             P.METAL_BLACK)
+def build_counter():
+    """Sales counter, the stool behind it, the small drawer under
+    the register, the kettle + electric burner underneath."""
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    top_z = make_counter("Register", (2.25, 5.380, 0.0), length=1.00, depth=2.40, height=0.95,
+                         palette={"formica": (0.52, 0.42, 0.30, 1.0),
+                                  "top": (0.30, 0.22, 0.14, 1.0), "kick": (0.24, 0.18, 0.12, 1.0)})
+    make_register("Register", (2.6, 5.280, top_z))
+    # The small drawer under the register (the pieces of paper live here)
+    make_box("Register_Drawer", (1.75, 4.900, 0.72), (0.40, 0.02, 0.14), (0.34, 0.24, 0.16, 1.0))
+    make_box("Register_Drawer_Pull", (1.75, 4.880, 0.72), (0.10, 0.015, 0.03), COL_STEEL)
+    # The stool behind the counter
+    # (draft 3: the kit stool — turned legs, a foot ring)
+    make_stool("Counter_Stool", 2.25, 6.15, h=0.72, wood=COL_WOOD)
+    # Kettle on its small electric burner, the low shelf at the
+    # counter's west end (draft 3: a profile with spout + bail, a coil)
+    make_box("Under_Shelf", (0.75, 5.5, 0.28), (0.60, 0.60, 0.03), COL_WOOD)
+    make_box("Electric_Burner", (0.75, 5.5, 0.325), (0.26, 0.26, 0.06), (0.22, 0.22, 0.24, 1.0))
+    make_lathe("Electric_Burner_Coil", (0.75, 5.5, 0.358), [(0.075, 0.0), (0.085, 0.006), (0.075, 0.012)], (0.30, 0.28, 0.28, 1.0), segments=14, loop=True)
+    make_lathe("Kettle", (0.75, 5.5, 0.365), [(0.0, 0.0), (0.085, 0.0), (0.095, 0.05), (0.09, 0.13), (0.06, 0.17), (0.035, 0.175), (0.035, 0.19), (0.0, 0.19)], COL_STEEL, segments=12)
+    make_tube("Kettle_Spout", [(0.83, 5.5, 0.45), (0.90, 5.5, 0.52), (0.93, 5.5, 0.56)], 0.012, COL_STEEL, segments=6)
+    make_tube("Kettle_Bail", [(0.75, 5.44, 0.53), (0.75, 5.46, 0.62), (0.75, 5.54, 0.62), (0.75, 5.56, 0.53)], 0.008, (0.18, 0.17, 0.16, 1.0), segments=5)
 
 
-# ═════════════════════════════════════════════════════════════════
-# ZINE WALL — pocket rack by the window end of the west wall
-# (locales manifest: "zine wall"). Local photocopied stock; Lena's
-# STATIC TRUTHS face-out on the top rail (Label3D scene-side).
-# ═════════════════════════════════════════════════════════════════
-def build_zine_wall():
-    wall_face = -ROOM_W / 2.0 + 0.10
-    make_box("Zine_Back", (wall_face + 0.02, 0.90, 1.15), (0.04, 0.85, 1.10),
-             COL_OLD_FIR)
+def build_repair_back():
+    """The back of the shop: repair bench + work lamp + the lathe,
+    each with its own light — 'turned on the back light over the
+    repair bench.'"""
+    # (draft 3: the bench at x -0.2 — its east end sat 5 cm inside the
+    # counter's west end)
+    bx = -0.2
+    make_chamfer_box("Repair_Bench", (bx, 6.2, 0.45), (2.20, 0.70, 0.90), COL_WOOD)
+    make_chamfer_box("Repair_Bench_Top", (bx, 6.2, 0.92), (2.26, 0.76, 0.05), (0.32, 0.24, 0.16, 1.0))
+    # A board mid-repair on the bench, trucks off
+    make_box("Repair_Board", (bx + 0.15, 6.15, 0.96), (0.80, 0.22, 0.03), DECK_TINTS[1])   # on the bench
+    make_box("Repair_Truck_Loose", (bx - 0.45, 6.3, 0.96), (0.16, 0.10, 0.06), COL_STEEL)
+    # the bench vise at the east end, the top's scars
+    make_box("Repair_Vise_Body", (bx + 0.95, 6.02, 1.00), (0.16, 0.14, 0.11), (0.28, 0.30, 0.32, 1.0))
+    make_box("Repair_Vise_Jaw", (bx + 0.95, 5.90, 1.00), (0.16, 0.05, 0.11), (0.28, 0.30, 0.32, 1.0))
+    make_cyl("Repair_Vise_Screw", (bx + 0.95, 5.815, 1.00), 0.012, 0.12, COL_STEEL, axis='Y', segments=6)
+    for si, (sx, sy, sl, syaw) in enumerate(((bx - 0.6, 6.05, 0.30, 0.3), (bx + 0.4, 6.40, 0.22, -0.5), (bx - 0.1, 6.45, 0.18, 1.1))):
+        make_rot_box(f"Wear_Bench_Scar_{si}", (sx, sy, 0.9465), (sl, 0.012, 0.003), (0.22, 0.16, 0.10, 1.0), yaw=syaw)
+    # The clamp work lamp (draft 3: a clamp at the bench's back edge,
+    # two arms with an elbow, a cone head — the head where its
+    # practical already is)
+    make_box("Work_Lamp_Clamp", (bx, 6.56, 0.98), (0.06, 0.08, 0.10), (0.20, 0.19, 0.20, 1.0))
+    make_tube("Work_Lamp_Arm", [(bx, 6.56, 1.03), (bx + 0.05, 6.50, 1.45), (bx, 6.30, 1.72)], 0.012, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_lathe("Work_Lamp_Head", (bx, 6.25, 1.52), [(0.03, 0.0), (0.035, 0.05), (0.09, 0.16), (0.0, 0.16)], (0.96, 0.86, 0.55, 1.0), segments=10)
+    # The single small tube over the bench (its own light)
+    make_fluorescent_tube_fixture("Bench_Light", (bx, 6.2, CEIL), length=1.00, width=0.20)
+    # The lathe, west of the bench against the N wall (draft 3: a
+    # tailstock, a tool rest, the motor under the bed with its belt
+    # cover, shavings on the floor)
+    make_chamfer_box("Lathe_Bed", (-2.6, 6.35, 1.00), (1.40, 0.40, 0.25), COL_STEEL)
+    for lx in (-3.15, -2.05):
+        make_box(f"Lathe_Leg_{lx:.2f}", (lx, 6.35, 0.45), (0.14, 0.34, 0.90), (0.30, 0.32, 0.34, 1.0))
+    make_cyl("Lathe_Head", (-3.05, 6.35, 1.20), 0.14, 0.24, (0.30, 0.32, 0.34, 1.0), axis='X', segments=10)
+    make_cyl("Lathe_Stock", (-2.5, 6.35, 1.18), 0.05, 0.70, COL_WOOD, axis='X', segments=8)
+    make_box("Lathe_Tailstock", (-2.05, 6.35, 1.20), (0.14, 0.16, 0.16), (0.30, 0.32, 0.34, 1.0))
+    make_cyl("Lathe_Tail_Centre", (-2.16, 6.35, 1.18), 0.012, 0.10, COL_STEEL, axis='X', segments=6)
+    make_box("Lathe_Tool_Rest", (-2.55, 6.14, 1.16), (0.30, 0.03, 0.02), (0.30, 0.32, 0.34, 1.0))
+    make_box("Lathe_Tool_Rest_Post", (-2.55, 6.14, 1.05), (0.03, 0.03, 0.20), (0.30, 0.32, 0.34, 1.0))   # on the bed (2026-09-22)
+    make_box("Lathe_Motor", (-2.85, 6.35, 0.45), (0.28, 0.24, 0.24), (0.24, 0.24, 0.26, 1.0))
+    make_box("Lathe_Belt_Cover", (-3.05, 6.35, 0.80), (0.10, 0.14, 0.50), (0.30, 0.32, 0.34, 1.0))
+    # (a shallow lathed mound: the recorder boxes a blob by its full
+    # radius, squash or not, so a squashed blob on a floor is a clip)
+    make_lathe("Lathe_Shavings", (-2.45, 6.05, 0.004), [(0.0, 0.0), (0.24, 0.0), (0.21, 0.02), (0.13, 0.045), (0.0, 0.06)], (0.70, 0.56, 0.36, 1.0), segments=10)
+    for ci in range(4):
+        make_tube(f"Lathe_Curl_{ci}", [(-2.7 + ci * 0.16, 5.92 + (ci % 2) * 0.07, 0.01), (-2.66 + ci * 0.16, 5.97 + (ci % 2) * 0.07, 0.04), (-2.6 + ci * 0.16, 5.93 + (ci % 2) * 0.07, 0.02)], 0.006, (0.78, 0.64, 0.42, 1.0), segments=4)
+
+
+def build_office():
+    """The back office: Devon's old desk, the chair Devon also left,
+    two cardboard boxes of bearings on the floor."""
+    # (draft 3: the partition at y 6.1 — at 6.0 it ran through the
+    # counter's back edge, which is at 5.93. 2026-09-25: with the N wall
+    # at 7.0 the office was 0.85 m deep and the alley door opened onto
+    # Devon's chair; the building is 7.6 deep now, the office 1.4 m,
+    # the desk against the E wall SOUTH of the door's swing (y 6.64..
+    # 7.54, x 2.70..3.60), Devon's chair north of it with its back to
+    # the alley door, the bearings boxes on the floor at the counter's
+    # east end)
+    make_box("Office_Part", (3.55, 6.1, CEIL/2.0), (1.90, 0.10, CEIL), PAL_WALL["wall"])
+    make_chamfer_box("Devon_Desk", (4.000, 6.375, 0.37), (0.80, 0.55, 0.74), COL_WOOD)
+    make_box("Devon_Desk_Drawer", (4.000, 6.660, 0.55), (0.36, 0.02, 0.12), (0.34, 0.24, 0.16, 1.0))
+    make_box("Devon_Desk_Drawer_Pull", (4.000, 6.675, 0.55), (0.08, 0.01, 0.02), COL_STEEL)
+    # the chair Devon also left — a kit chair facing the desk (-Y)
+    import math as _m
+    make_chair("Devon_Chair", 4.00, 6.95, yaw=_m.pi, wood=COL_WOOD, w=0.40)
+    # two cardboard boxes of bearings — on the floor at the counter's
+    # east end (ch12: Kai sits on one and looks at the hexagon), one flap open
+    # (pass 68, 2026-10-11) INSIDE the office, along its west end — "two cardboard
+    # boxes of bearings on the floor" in the room Kai closes the door of, the one he
+    # sits on to look at the hexagon (they stood at the counter's east end, outside)
+    for bi, bx in enumerate((2.85, 3.22)):   # side by side against the partition, clear of the alley door's 0.9 m
+        make_box(f"Bearings_Box_{bi}", (bx, 6.32, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
+    make_rot_box("Bearings_Box_1_Flap", (3.22, 6.19, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
+    make_box("Bearings_Box_0_Label", (2.68, 6.32, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
+    # (pass 68) the office's own light: Devon's gooseneck desk lamp, a bare bulb over the nook
+    make_cyl("Devon_Desk_Lamp_Base", (4.25, 6.22, 0.755), 0.07, 0.03, COL_STEEL, segments=10)
+    make_box("Devon_Desk_Lamp_Arm", (4.25, 6.22, 0.92), (0.02, 0.02, 0.30), COL_STEEL)
+    make_box("Devon_Desk_Lamp_Head", (4.17, 6.30, 1.08), (0.14, 0.12, 0.08), (0.30, 0.30, 0.32, 1.0))
+    make_box("Devon_Desk_Lamp_Bulb", (4.17, 6.30, 1.035), (0.08, 0.07, 0.01), (1.0, 0.92, 0.72, 1.0))
+    make_cyl("Office_Bulb_Cord", (3.55, 6.85, CEIL - 0.15), 0.006, 0.30, (0.20, 0.20, 0.22, 1.0), segments=4)
+    make_lathe("Office_Bulb", (3.55, 6.85, CEIL - 0.40), [(0.015, 0.0), (0.03, 0.03), (0.035, 0.08), (0.02, 0.10), (0.0, 0.10)], (1.0, 0.92, 0.72, 1.0), segments=8)
+
+
+def build_retail():
+    """Small-parts retail: bearings/trucks/wheels/wax pegwall on the
+    E wall, plus the waiting bench under the front window."""
+    make_box("Parts_Pegboard", (4.375, 4.0, 1.35), (0.05, 2.00, 0.95), (0.62, 0.56, 0.46, 1.0))
     for r in range(3):
-        rz = 0.78 + r * 0.36
-        make_box(f"Zine_Rail_{r}", (wall_face + 0.10, 0.90, rz - 0.12),
-                 (0.05, 0.85, 0.04), COL_OLD_FIR_LT)
-        for c in range(2):
-            zy = 0.70 + c * 0.40
-            tint = (P.NEWSPRINT, P.PAPER, P.PAPER_AGED)[(r * 2 + c) % 3]
-            make_box(f"Zine_{r}_{c}", (wall_face + 0.08, zy, rz),
-                     (0.012, 0.22, 0.30), tint)
-            make_box(f"Zine_{r}_{c}_Print", (wall_face + 0.088, zy, rz + 0.05),
-                     (0.006, 0.16, 0.09), P.METAL_BLACK)
-    make_box("Zine_StaticTruths", (wall_face + 0.08, 0.90, 1.62),
-             (0.014, 0.24, 0.34), P.PAPER)
-    make_box("Zine_StaticTruths_Print", (wall_face + 0.09, 0.90, 1.69),
-             (0.006, 0.18, 0.11), P.METAL_BLACK)
-
-
-# ═════════════════════════════════════════════════════════════════
-# REPAIR ZONE — north wall, west side. The back bench with the work
-# lamp (ch9), the lathe Kai "wakes" every morning (ch5), the vise,
-# the deck mid-repair under two C-clamps, glue bottle + syringe +
-# palette knife (the ch9 Tess Mariana repair kit), the maple blank
-# kept since 2049, the pegboard with painted tool silhouettes
-# (hardware-store discipline that never left the building), and the
-# repair-queue rack holding the board a kid left for a tune-up (ch5).
-# ═════════════════════════════════════════════════════════════════
-def build_repair_zone():
-    wall_face = ROOM_D - 0.10   # 6.90
-    bx, by = -2.80, 6.60
-    # Bench — heavy fir top on old frame legs, lower shelf
-    make_box("Repair_BenchTop", (bx, by, 0.95), (2.80, 0.62, 0.06), COL_OLD_FIR_LT)
-    make_box("Repair_BenchApron", (bx, by - 0.26, 0.86), (2.70, 0.05, 0.10), COL_OLD_FIR)
-    for li, (lx, ly) in enumerate([(-4.05, 6.38), (-1.55, 6.38),
-                                   (-4.05, 6.82), (-1.55, 6.82)]):
-        make_box(f"Repair_BenchLeg_{li}", (lx, ly, 0.46), (0.08, 0.08, 0.92), COL_OLD_FIR)
-    make_box("Repair_BenchShelf", (bx, by, 0.26), (2.60, 0.54, 0.04), COL_OLD_FIR)
-    # Lower shelf stock: the maple kept since 2049, clamp bin, grip sheets
-    make_box("Repair_MapleBlank", (-3.60, by, 0.32), (0.60, 0.18, 0.08), COL_DECK_WOOD)
-    make_box("Repair_MapleBlank_Label", (-3.60, by - 0.095, 0.32), (0.10, 0.008, 0.05),
-             P.PAPER_AGED)
-    make_box("Repair_ClampBin", (-2.75, by, 0.36), (0.44, 0.34, 0.16), COL_KRAFT,
-             open_faces={'+Z'})
-    for ci in range(3):
-        make_box(f"Repair_BinClamp_{ci}", (-2.88 + ci * 0.14, by, 0.42),
-                 (0.05, 0.26, 0.05), COL_STEEL_WORN)
-    make_box("Repair_GripSheets", (-2.05, by, 0.31), (0.55, 0.24, 0.05), COL_GRIP)
-    # Vise at the west end
-    make_box("Repair_Vise_Base", (-3.90, by - 0.10, 1.01), (0.16, 0.20, 0.06),
-             COL_STEEL_WORN)
-    make_box("Repair_Vise_Jaws", (-3.90, by - 0.14, 1.10), (0.14, 0.16, 0.12),
-             (0.38, 0.38, 0.42, 1.0))
-    make_cyl("Repair_Vise_Handle", (-3.90, by - 0.26, 1.06), 0.010, 0.18,
-             COL_STEEL_WORN, axis='X', segments=6)
-    # The lathe (ch5: "Woke the lathe") — benchtop unit, east end
-    make_box("Lathe_Bed", (-1.75, by, 1.005), (0.62, 0.16, 0.05), COL_STEEL_WORN)
-    make_box("Lathe_Headstock", (-2.00, by, 1.11), (0.12, 0.16, 0.16),
-             (0.34, 0.36, 0.40, 1.0))
-    make_cyl("Lathe_Spindle", (-1.88, by, 1.14), 0.020, 0.14, COL_STEEL_WORN,
-             axis='X')
-    make_box("Lathe_Tailstock", (-1.52, by, 1.09), (0.09, 0.14, 0.12),
-             (0.34, 0.36, 0.40, 1.0))
-    make_box("Lathe_ToolRest", (-1.76, by - 0.11, 1.09), (0.22, 0.03, 0.03),
-             COL_STEEL_WORN)
-    make_box("Lathe_Motor", (-2.02, by + 0.14, 1.05), (0.14, 0.10, 0.10),
-             P.METAL_BLACK)
-    make_box("Lathe_Sawdust", (-1.75, by - 0.16, 0.985), (0.50, 0.16, 0.008),
-             (0.80, 0.68, 0.48, 1.0))
-    make_box("Lathe_Sawdust_Floor", (-1.75, 6.20, 0.006), (0.40, 0.30, 0.004),
-             (0.80, 0.68, 0.48, 1.0))
-    # Deck mid-repair, clamped (the ch9 pattern: glue, clamp, wait)
-    make_box("Repair_Deck", (-3.05, by - 0.02, 0.99), (0.78, 0.205, 0.02),
-             COL_DECK_WOOD)
-    make_box("Repair_Deck_CrackLine", (-2.95, by - 0.02, 1.001), (0.30, 0.012, 0.002),
-             (0.30, 0.22, 0.14, 1.0))
-    for csgn in (-1, +1):
-        ccx = -3.05 + csgn * 0.26
-        make_box(f"Repair_CClamp_Spine_{csgn:+d}", (ccx, by - 0.02, 1.03),
-                 (0.03, 0.05, 0.14), COL_STEEL_WORN)
-        make_box(f"Repair_CClamp_TopJaw_{csgn:+d}", (ccx + 0.03, by - 0.02, 1.085),
-                 (0.09, 0.05, 0.03), COL_STEEL_WORN)
-        make_box(f"Repair_CClamp_BotJaw_{csgn:+d}", (ccx + 0.03, by - 0.02, 0.965),
-                 (0.09, 0.05, 0.03), COL_STEEL_WORN)
-        make_cyl(f"Repair_CClamp_Screw_{csgn:+d}", (ccx + 0.06, by - 0.02, 0.93),
-                 0.008, 0.07, P.METAL_BLACK, segments=6)
-    # Glue bottle, syringe, palette knife, rag
-    make_cyl("Repair_GlueBottle", (-2.55, by + 0.12, 1.05), 0.035, 0.14,
-             (0.86, 0.78, 0.52, 1.0))
-    make_cyl("Repair_GlueCap", (-2.55, by + 0.12, 1.135), 0.014, 0.03,
-             (0.78, 0.42, 0.22, 1.0), segments=6)
-    make_cyl("Repair_Syringe", (-2.38, by + 0.10, 0.995), 0.008, 0.14,
-             (0.82, 0.84, 0.86, 1.0), axis='X', segments=6)
-    make_box("Repair_PaletteKnife_Blade", (-2.22, by + 0.16, 0.99),
-             (0.12, 0.03, 0.004), COL_STEEL_WORN)
-    make_box("Repair_PaletteKnife_Handle", (-2.13, by + 0.16, 0.995),
-             (0.06, 0.025, 0.02), COL_OLD_FIR)
-    make_box("Repair_Rag", (-3.55, by + 0.14, 0.99), (0.20, 0.16, 0.025),
-             (0.56, 0.50, 0.44, 1.0))
-    # Work lamp (ch9: "turned on the work lamp") — post + arm + shade
-    make_cyl("Repair_Lamp_Post", (-3.35, by + 0.22, 1.20), 0.014, 0.44,
-             P.METAL_BLACK, segments=6)
-    make_box("Repair_Lamp_Arm", (-3.22, by + 0.22, 1.42), (0.28, 0.03, 0.03),
-             P.METAL_BLACK)
-    make_cyl("Repair_Lamp_Shade", (-3.08, by + 0.22, 1.37), 0.085, 0.11,
-             (0.24, 0.30, 0.28, 1.0))
-    make_cyl("Repair_Lamp_Bulb", (-3.08, by + 0.22, 1.315), 0.055, 0.015,
-             (1.0, 0.94, 0.78, 1.0))
-    # Pegboard with painted tool silhouettes (Wagner's habit)
-    make_box("Peg_Board", (bx, wall_face - 0.015, 1.85), (2.60, 0.03, 1.10),
-             (0.52, 0.44, 0.34, 1.0))
-    make_box("Peg_Board_Frame_T", (bx, wall_face - 0.02, 2.42), (2.66, 0.03, 0.05),
-             COL_OLD_FIR)
-    make_box("Peg_Board_Frame_B", (bx, wall_face - 0.02, 1.28), (2.66, 0.03, 0.05),
-             COL_OLD_FIR)
-    # Screwdrivers ×3 — shaft + handle, hanging vertical
-    for si in range(3):
-        sx = -3.85 + si * 0.22
-        make_box(f"Peg_Shadow_SD_{si}", (sx, wall_face - 0.032, 1.95),
-                 (0.05, 0.004, 0.30), (0.40, 0.33, 0.25, 1.0))
-        make_cyl(f"Peg_SD_Shaft_{si}", (sx, wall_face - 0.05, 1.88), 0.006, 0.16,
-                 COL_STEEL_WORN, segments=6)
-        make_cyl(f"Peg_SD_Handle_{si}", (sx, wall_face - 0.05, 2.02), 0.016, 0.09,
-                 DECK_TINTS[(si * 2 + 1) % len(DECK_TINTS)], segments=6)
-    # Wrenches ×2
-    for wi in range(2):
-        wx2 = -3.10 + wi * 0.20
-        make_box(f"Peg_Shadow_WR_{wi}", (wx2, wall_face - 0.032, 1.90),
-                 (0.06, 0.004, 0.36), (0.40, 0.33, 0.25, 1.0))
-        make_box(f"Peg_WR_Bar_{wi}", (wx2, wall_face - 0.05, 1.88),
-                 (0.03, 0.015, 0.28), COL_STEEL_WORN)
-        make_box(f"Peg_WR_Head_{wi}", (wx2, wall_face - 0.05, 2.045),
-                 (0.055, 0.015, 0.05), COL_STEEL_WORN)
-    # Skate T-tool
-    make_box("Peg_Shadow_TT", (-2.55, wall_face - 0.032, 1.92),
-             (0.16, 0.004, 0.22), (0.40, 0.33, 0.25, 1.0))
-    make_box("Peg_TT_Bar", (-2.55, wall_face - 0.05, 2.00), (0.14, 0.02, 0.03),
-             DECK_TINTS[0])
-    make_box("Peg_TT_Stem", (-2.55, wall_face - 0.05, 1.90), (0.03, 0.02, 0.17),
-             DECK_TINTS[0])
-    # Hammer
-    make_box("Peg_Shadow_HM", (-2.20, wall_face - 0.032, 1.92),
-             (0.10, 0.004, 0.34), (0.40, 0.33, 0.25, 1.0))
-    make_box("Peg_HM_Handle", (-2.20, wall_face - 0.05, 1.88), (0.03, 0.02, 0.28),
-             COL_OLD_FIR_LT)
-    make_box("Peg_HM_Head", (-2.20, wall_face - 0.05, 2.045), (0.10, 0.035, 0.05),
-             COL_STEEL_WORN)
-    # Hand saw
-    make_box("Peg_Shadow_SAW", (-1.80, wall_face - 0.032, 1.90),
-             (0.14, 0.004, 0.42), (0.40, 0.33, 0.25, 1.0))
-    make_box("Peg_SAW_Blade", (-1.80, wall_face - 0.05, 1.84), (0.07, 0.006, 0.34),
-             COL_STEEL_WORN)
-    make_box("Peg_SAW_Handle", (-1.80, wall_face - 0.05, 2.08), (0.09, 0.025, 0.10),
-             COL_OLD_FIR)
-    # Blue painter's tape + bearing grease tin on the low rail
-    make_cyl("Peg_TapeRoll", (-3.55, wall_face - 0.07, 1.42), 0.05, 0.045,
-             (0.34, 0.42, 0.54, 1.0), axis='Y')
-    make_cyl("Peg_GreaseTin", (-2.05, wall_face - 0.08, 1.40), 0.045, 0.06,
-             (0.44, 0.46, 0.42, 1.0), axis='Y')
-    # Repair-queue rack, NW corner of the west wall — the tune-up
-    # board from ch5 + one more, kraft claim tags
-    make_box("Queue_Rail", (-4.34, 6.45, 1.55), (0.06, 0.70, 0.05), COL_OLD_FIR)
-    for qi, qy in enumerate((6.25, 6.62)):
-        make_box(f"Queue_Deck_{qi}", (-4.30, qy, 1.10), (0.026, 0.205, 0.78),
-                 DECK_TINTS[(qi * 4 + 3) % len(DECK_TINTS)])
-        make_box(f"Queue_Tag_{qi}", (-4.28, qy + 0.05, 1.44), (0.010, 0.07, 0.09),
-                 COL_KRAFT)
-    # Grip-tape roll rack on the wall east of the pegboard — rods
-    # face the room so the rolls read as circles at eye level
-    make_box("Grip_Backplate", (-0.95, wall_face - 0.015, 1.50), (0.95, 0.03, 0.55),
-             COL_SLAT)
-    for gi in range(3):
-        gx = -1.23 + gi * 0.28
-        make_cyl(f"Grip_Rod_{gi}", (gx, wall_face - 0.18, 1.50), 0.010, 0.32,
-                 P.METAL_STEEL, axis='Y', segments=6)
-        make_cyl(f"Grip_Roll_{gi}", (gx, wall_face - 0.24, 1.50),
-                 0.13 if gi != 1 else 0.115, 0.10, COL_GRIP, axis='Y')
-        make_cyl(f"Grip_Core_{gi}", (gx, wall_face - 0.295, 1.50), 0.045, 0.012,
-                 COL_KRAFT, axis='Y', segments=6)
-
-
-# ═════════════════════════════════════════════════════════════════
-# COUNTER ZONE — the counter Roy put a hand on (ch5). Register with
-# the note drawer under it (ch16: the folded pieces of paper taken
-# off the door over the years), Kai's phone, the token terminal,
-# deck-wax crate, sticker jar, Kai's permanent perch cushion
-# (locales manifest), the stool (ch9), and behind it the side table
-# with the electric burner (gas cut 2049), the kettle, and the
-# chipped Tidewater mug Devon left.
-# ═════════════════════════════════════════════════════════════════
-def build_counter_zone():
-    cx, cy = 2.35, 5.40
-    make_box("Counter_Body", (cx, cy, 0.475), (1.50, 0.80, 0.95), COL_OLD_FIR)
-    make_box("Counter_Top", (cx, cy, 0.98), (1.66, 0.92, 0.06), COL_OLD_FIR_LT)
-    make_box("Counter_Kick", (cx, cy - 0.41, 0.10), (1.50, 0.02, 0.20),
-             P.COUNTER_DARK)
-    make_cyl("Counter_Bullnose", (cx, cy - 0.46, 0.96), 0.025, 1.60,
-             COL_OLD_FIR_LT, axis='X')
-    top_z = 1.01
-    make_register("RegisterMachine", (2.00, cy - 0.05, top_z),
-                  palette={"body": (0.30, 0.29, 0.30, 1.0)})
-    make_credit_card_terminal("TokenTerminal", (2.55, cy - 0.25, top_z))
-    # The note drawer under the register — slightly open, clerk
-    # side, folded paper slips inside (ch16 canon)
-    make_box("Counter_NoteDrawer", (2.00, cy + 0.44, 0.70), (0.32, 0.10, 0.16),
-             COL_OLD_FIR_LT, open_faces={'+Z'})
-    make_cyl("Counter_NoteDrawer_Knob", (2.00, cy + 0.50, 0.70), 0.012, 0.03,
-             COL_BRASS, axis='Y', segments=6)
-    for ni in range(3):
-        make_box(f"Counter_NoteSlip_{ni}", (1.93 + ni * 0.07, cy + 0.44, 0.775),
-                 (0.05, 0.07, 0.012), P.PAPER_AGED if ni % 2 else P.PAPER)
-    # Kai's phone, face-up by the register (ch5: "picked up his
-    # phone from the counter")
-    make_box("Counter_Phone", (2.85, cy - 0.20, top_z + 0.006),
-             (0.075, 0.155, 0.012), P.METAL_BLACK)
-    make_box("Counter_Phone_Screen", (2.85, cy - 0.20, top_z + 0.013),
-             (0.065, 0.135, 0.002), (0.12, 0.14, 0.18, 1.0))
-    # Deck-wax crate + pucks (ch16: the Saturday rush bought wax)
-    make_box("Counter_WaxCrate", (1.78, cy - 0.28, top_z + 0.045),
-             (0.22, 0.22, 0.09), COL_KRAFT, open_faces={'+Z'})
+        for c in range(5):
+            py = 3.2 + c * 0.40
+            pz = 1.05 + r * 0.30
+            make_box(f"Part_{r}_{c}", (4.315, py, pz), (0.07, 0.16, 0.14),
+                     [(0.72, 0.26, 0.22, 1.0), COL_STEEL, (0.86, 0.72, 0.26, 1.0)][(r + c) % 3])
+            make_cyl(f"Parts_Peg_{r}_{c}", (4.33, py, pz + 0.09), 0.005, 0.05, COL_STEEL, axis='X', segments=5)
+    # Wheels in a low bin (draft 3: the bin off the east wall; the
+    # wheels as wheels — rounded edges, a bearing seat)
+    make_chamfer_box("Wheel_Bin", (4.1, 2.4, 0.275), (0.55, 0.55, 0.55), COL_WOOD)   # on the floor
     for wi in range(4):
-        make_cyl(f"Counter_WaxPuck_{wi}", (1.72 + (wi % 2) * 0.11,
-                 cy - 0.33 + (wi // 2) * 0.10, top_z + 0.075), 0.038, 0.035,
-                 DECK_TINTS[(wi * 3 + 2) % len(DECK_TINTS)], segments=6)
-    # Sticker tin — open tin of slaps by the terminal
-    make_cyl("Counter_StickerTin", (2.28, cy - 0.30, top_z + 0.055), 0.065, 0.11,
-             (0.58, 0.60, 0.62, 1.0))
-    for si2 in range(3):
-        make_box(f"Counter_TinSticker_{si2}", (2.24 + si2 * 0.04, cy - 0.30,
-                 top_z + 0.12 + si2 * 0.008), (0.06, 0.045, 0.004),
-                 DECK_TINTS[(si2 * 2 + 1) % len(DECK_TINTS)])
-    # Kai's perch — the flattened cushion on the counter's east end
-    make_box("Counter_KaiPerch_Cushion", (2.98, cy + 0.18, top_z + 0.016),
-             (0.36, 0.36, 0.032), (0.30, 0.28, 0.30, 1.0))
-    make_box("Counter_KaiPerch_Dent", (2.98, cy + 0.18, top_z + 0.034),
-             (0.24, 0.24, 0.004), (0.24, 0.22, 0.24, 1.0))
-    # Stool behind the counter (ch9: "sat down on the stool")
-    make_cyl("Counter_Stool_Seat", (2.00, 6.10, 0.72), 0.17, 0.05,
-             (0.36, 0.28, 0.24, 1.0))
-    for li2, (lx2, ly2) in enumerate([(-0.10, -0.10), (0.10, -0.10),
-                                      (-0.10, 0.10), (0.10, 0.10)]):
-        make_cyl(f"Counter_Stool_Leg_{li2}", (2.00 + lx2, 6.10 + ly2, 0.35),
-                 0.014, 0.70, P.METAL_BLACK, segments=6)
-    make_box("Counter_Stool_Ring", (2.00, 6.10, 0.22), (0.26, 0.26, 0.02),
-             P.METAL_BLACK, open_faces={'+Z', '-Z'})
-    # Back table — burner + kettle + the chipped Tidewater mug
-    make_box("BackTable_Top", (1.00, 6.60, 0.78), (0.70, 0.50, 0.04), COL_OLD_FIR_LT)
-    for bli, (blx, bly) in enumerate([(0.72, 6.42), (1.28, 6.42),
-                                      (0.72, 6.78), (1.28, 6.78)]):
-        make_box(f"BackTable_Leg_{bli}", (blx, bly, 0.39), (0.05, 0.05, 0.78),
-                 COL_OLD_FIR)
-    make_cyl("BackTable_Burner", (0.88, 6.60, 0.825), 0.11, 0.05,
-             (0.22, 0.21, 0.22, 1.0))
-    make_cyl("BackTable_Burner_Coil", (0.88, 6.60, 0.853), 0.08, 0.008,
-             (0.34, 0.30, 0.30, 1.0))
-    make_cyl("Kettle_Body", (0.88, 6.60, 0.94), 0.10, 0.16,
-             (0.62, 0.64, 0.66, 1.0), segments=10)
-    make_cyl("Kettle_Lid", (0.88, 6.60, 1.03), 0.045, 0.03,
-             (0.52, 0.54, 0.56, 1.0), segments=8)
-    make_box("Kettle_Spout", (1.00, 6.60, 0.99), (0.09, 0.03, 0.03),
-             (0.62, 0.64, 0.66, 1.0))
-    make_box("Kettle_Handle_A", (0.80, 6.60, 1.06), (0.03, 0.02, 0.05),
-             P.METAL_BLACK)
-    make_box("Kettle_Handle_B", (0.865, 6.60, 1.085), (0.16, 0.02, 0.02),
-             P.METAL_BLACK)
-    # The chipped Tidewater mug (ch9) — chip = bare ceramic at the rim
-    make_cyl("Mug_Tidewater", (1.22, 6.55, 0.845), 0.042, 0.09, COL_TIDEWATER)
-    make_box("Mug_Tidewater_Band", (1.22, 6.508, 0.85), (0.05, 0.006, 0.03),
-             COL_BL_CREAM)
-    make_box("Mug_Tidewater_Chip", (1.255, 6.55, 0.885), (0.014, 0.02, 0.014),
-             (0.90, 0.88, 0.84, 1.0))
-    make_box("Mug_Tidewater_Handle", (1.28, 6.55, 0.845), (0.02, 0.014, 0.055),
-             COL_TIDEWATER)
+        make_lathe(f"Wheel_{wi}", (4.0 + (wi % 2) * 0.18, 2.3 + (wi // 2) * 0.18, 0.545),   # on the bin (2026-09-22: 7 cm over it)
+                   [(0.03, 0.0), (0.06, 0.0), (0.07, 0.012), (0.07, 0.078), (0.06, 0.09), (0.03, 0.09), (0.03, 0.0)],
+                   (0.92, 0.88, 0.66, 1.0), segments=12)
+    # Front window + the parents' bench under it (NO staged board
+    # games — the mural across Main does the window's work)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_S", (-2.75, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True)
+    # (draft 3: the kit bench)
+    make_bench("Wait_Bench", -2.75, 0.55, length=1.80, wood=COL_WOOD, h=0.45)
 
 
-# ═════════════════════════════════════════════════════════════════
-# BACK OFFICE DOORWAY — ch12: Devon's old desk against the wall,
-# the chair Devon also left, two cardboard boxes of bearings on the
-# floor. Door standing open against the recess wall; the bearings
-# boxes sit just inside where the doorway sightline catches them.
-# ═════════════════════════════════════════════════════════════════
-def build_office_door():
-    dx = 2.90
-    for psgn in (-1, +1):
-        make_box(f"Office_Post_{psgn:+d}", (dx + psgn * 0.49, ROOM_D - 0.05, 1.10),
-                 (0.08, 0.14, 2.20), COL_OLD_FIR)
-    make_box("Office_Header", (dx, ROOM_D - 0.06, 2.26), (1.10, 0.10, 0.12),
-             COL_OLD_FIR)
-    make_box("Office_Recess", (dx, ROOM_D + 0.55, 1.10), (0.94, 0.90, 2.20),
-             (0.07, 0.06, 0.09, 1.0))
-    # Door leaf standing open, flat against the recess's east side
-    make_box("Office_DoorLeaf", (3.32, ROOM_D + 0.42, 1.08), (0.04, 0.72, 2.10),
-             COL_WOOD)
-    make_cyl("Office_DoorKnob", (3.29, ROOM_D + 0.68, 1.02), 0.022, 0.04,
-             COL_BRASS, axis='X', segments=6)
-    # Devon's desk edge + the two bearings boxes (ch12), catching
-    # the light just inside the doorway
-    make_box("Office_DeskEdge", (2.62, ROOM_D + 0.35, 0.37), (0.42, 0.30, 0.05),
-             (0.24, 0.19, 0.15, 1.0))
-    make_box("Office_DeskLeg", (2.46, ROOM_D + 0.30, 0.17), (0.05, 0.05, 0.34),
-             (0.20, 0.16, 0.13, 1.0))
-    make_box("Office_BearingsBox_0", (2.72, ROOM_D + 0.16, 0.11),
-             (0.30, 0.26, 0.22), COL_KRAFT)
-    make_box("Office_BearingsBox_1", (2.72, ROOM_D + 0.16, 0.27),
-             (0.26, 0.22, 0.10), (0.66, 0.48, 0.28, 1.0))
+def build_decor():
+    make_wall_clock("Clock", (0.0, ROOM_D - 0.100, CEIL-0.45), frozen_hour=10, frozen_min=5, facing='-Y')   # on the N wall's face (2026-09-25: literal 6.9 floated when the room grew)
+    make_floor_plant("Plant", (-4.0, 0.8, 0.0),
+                     palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
+    for pi, py in enumerate((1.5, 2.6)):
+        make_faded_poster(f"Poster_E_{pi}", (ROOM_W/2.0-0.05 - 0.0535, py, 1.55), into_room=-1)
+    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    make_hvac_vent("HVAC", (-2.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+    # Shop lighting: two tubes over the retail floor (a shop earns
+    # them; the bench has its own)
+    for j, ypos in enumerate((1.8, 4.0)):
+        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
 
 
-# ═════════════════════════════════════════════════════════════════
-# TRUCKS / WHEELS CASE — open-front display case west of the
-# counter (frame + rims, no glass). Trucks on the top shelf, wheel
-# four-packs and bearings tins below, paper price cards.
-# ═════════════════════════════════════════════════════════════════
-def build_wheels_case():
-    cx, cy = 0.70, 5.375
-    make_box("Wheels_Base", (cx, cy, 0.14), (1.20, 0.55, 0.28), P.COUNTER_DARK)
-    for pi, (px, py) in enumerate([(0.13, 5.13), (1.27, 5.13),
-                                   (0.13, 5.62), (1.27, 5.62)]):
-        make_box(f"Wheels_Post_{pi}", (px, py, 0.61), (0.05, 0.05, 0.66),
-                 COL_OLD_FIR)
-    make_box("Wheels_Rim_F", (cx, 5.13, 0.955), (1.19, 0.04, 0.04), COL_OLD_FIR)
-    make_box("Wheels_Rim_B", (cx, 5.62, 0.955), (1.19, 0.04, 0.04), COL_OLD_FIR)
-    for rsgn in (-1, +1):
-        make_box(f"Wheels_Rim_Side_{rsgn:+d}", (cx + rsgn * 0.57, cy, 0.955),
-                 (0.04, 0.53, 0.04), COL_OLD_FIR)
-    make_box("Wheels_BackPanel", (cx, 5.635, 0.60), (1.14, 0.03, 0.63), COL_SLAT)
-    make_box("Wheels_Shelf_Low", (cx, cy, 0.50), (1.10, 0.48, 0.03),
-             COL_OLD_FIR_LT)
-    make_box("Wheels_Shelf_Top", (cx, cy, 0.84), (1.10, 0.48, 0.03),
-             COL_OLD_FIR_LT)
-    # Trucks ×4 on the top shelf — baseplate + hanger + axle + kingpin
-    for ti in range(4):
-        tx = 0.28 + ti * 0.28
-        make_box(f"Truck_Base_{ti}", (tx, cy, 0.87), (0.10, 0.07, 0.02),
-                 COL_STEEL_WORN)
-        make_box(f"Truck_Hanger_{ti}", (tx, cy - 0.02, 0.905), (0.13, 0.035, 0.035),
-                 (0.60, 0.62, 0.66, 1.0))
-        make_cyl(f"Truck_Axle_{ti}", (tx, cy - 0.02, 0.905), 0.007, 0.20,
-                 P.METAL_STEEL, axis='X', segments=6)
-        make_cyl(f"Truck_Kingpin_{ti}", (tx, cy + 0.015, 0.90), 0.008, 0.05,
-                 P.METAL_BLACK, segments=6)
-    # Wheel four-packs ×5 on the lower shelf — faces toward the room
-    for wi in range(5):
-        wx = 0.22 + wi * 0.24
-        tint = DECK_TINTS[(wi * 3 + 2) % len(DECK_TINTS)]
-        for wj in range(4):
-            make_cyl(f"Wheel_{wi}_{wj}", (wx - 0.054 + wj * 0.036, cy - 0.10, 0.545),
-                     0.028, 0.032, tint, axis='Y')
-        make_box(f"Wheel_Band_{wi}", (wx, cy - 0.10, 0.575), (0.15, 0.07, 0.014),
-                 P.PAPER)
-    # Bearings tins ×3 at the back of the lower shelf
-    for bi in range(3):
-        make_cyl(f"Bearings_Tin_{bi}", (0.35 + bi * 0.35, cy + 0.14, 0.535),
-                 0.035, 0.035, COL_STEEL_WORN, segments=8)
-        make_box(f"Bearings_Label_{bi}", (0.35 + bi * 0.35, cy + 0.10, 0.535),
-                 (0.05, 0.006, 0.03), P.PAPER_AGED)
-    make_box("Wheels_PriceCard_A", (0.24, 5.115, 0.99), (0.09, 0.012, 0.06), P.PAPER)
-    make_box("Wheels_PriceCard_B", (1.10, 5.115, 0.99), (0.09, 0.012, 0.06), P.PAPER)
+def build_hero_props():
+    """The prose-anchored objects (2026-08-31 wave · 5 blind cue ids):
+
+    · THE SANDERLING MURAL + THE PATCH — Janet Halfmoon's thirty-foot
+      sanderling on the brick wall ACROSS Main, seen through Win_S.
+      Built at the ch10 state: the center patch has taken most of the
+      body and, this week, the head ("mostly a flat black shape with
+      a beak and one foot"). The street ground plane rides along so
+      the far facade doesn't float (ground-plane rule).
+    · THE HEXAGON — Olaf's eight cedar pieces on a cloth on the
+      counter: six in the ring, the face in the center, the AR I A
+      piece beside (ch12: Kai sits on the bearings box and looks).
+    · THE BREAD — Hans's Wednesday rye on its board, one cut slice
+      (ch10: "The bread was good. The bread was always good.")
+    · THE PHONE — Kai's phone face-up on the counter (the patch
+      photos, Tem's midnight message).
+    """
+    # ── Main street + the far facade (through the front window) ──
+    # (draft 3: the road ends at the curbs — y -8.0..-2.3; it used to run
+    # under both sidewalks, so a car at the curb read as mid-lane)
+    make_box("Main_Street", (0.0, -5.15, -0.03), (30.0, 5.7, 0.06),
+             (0.30, 0.30, 0.32, 1.0))
+    make_box("Main_Sidewalk_Near", (0.0, -1.10, 0.02), (30.0, 1.80, 0.10),
+             (0.55, 0.54, 0.50, 1.0))
+    make_box("Main_Curb_Near", (0.0, -2.15, 0.03), (30.0, 0.30, 0.12),
+             (0.52, 0.52, 0.50, 1.0))
+    make_box("Main_Sidewalk_Far", (0.0, -8.45, 0.02), (30.0, 0.90, 0.10),
+             (0.55, 0.54, 0.50, 1.0))
+    make_box("Across_Facade", (0.0, -9.05, 2.20), (18.0, 0.25, 4.40),
+             (0.46, 0.32, 0.26, 1.0))
+    # the mural panel: beach bands, then the bird, then the substrate's patch
+    make_box("Sanderling_Mural_Sky", (-2.75, -8.90, 2.55), (6.0, 0.06, 1.30),
+             (0.72, 0.76, 0.78, 1.0))
+    make_box("Sanderling_Mural_Wet", (-2.75, -8.90, 1.62), (6.0, 0.06, 0.60),
+             (0.56, 0.62, 0.64, 1.0))
+    make_box("Sanderling_Mural_Sand", (-2.75, -8.90, 1.02), (6.0, 0.06, 0.65),
+             (0.74, 0.68, 0.56, 1.0))
+    make_chamfer_box("Sanderling_Body", (-3.30, -8.845, 1.80), (1.60, 0.05, 0.78),
+                     (0.88, 0.87, 0.84, 1.0))
+    make_chamfer_box("Sanderling_Head", (-2.32, -8.845, 2.24), (0.46, 0.05, 0.42),
+                     (0.88, 0.87, 0.84, 1.0))
+    make_box("Sanderling_Beak", (-1.98, -8.85, 2.22), (0.30, 0.04, 0.07),
+             (0.28, 0.26, 0.24, 1.0))
+    make_box("Sanderling_Leg", (-3.05, -8.85, 1.22), (0.06, 0.04, 0.44),
+             (0.30, 0.28, 0.26, 1.0))
+    # the patch · flat, black, wrong · body first, the head this week
+    make_box("Mural_Patch", (-3.30, -8.855, 1.80), (1.15, 0.03, 1.02),   # on the mural (2026-09-22: 10 cm off it)
+             (0.06, 0.06, 0.07, 1.0))
+    make_box("Mural_Patch_Head", (-2.32, -8.855, 2.24), (0.52, 0.03, 0.46),
+             (0.06, 0.06, 0.07, 1.0))
+
+    # ── the counter still life ──
+    top = 0.95
+    make_box("Bread_Board", (1.45, 5.35, top + 0.015), (0.46, 0.32, 0.03),
+             (0.56, 0.42, 0.26, 1.0))
+    make_chamfer_box("Bread_Loaf", (1.42, 5.38, top + 0.10), (0.32, 0.17, 0.13),
+                     (0.46, 0.32, 0.18, 1.0))
+    make_box("Bread_Slice", (1.66, 5.26, top + 0.05), (0.03, 0.15, 0.11),
+             (0.62, 0.50, 0.34, 1.0))
+    make_box("Bread_Knife", (1.45, 5.18, top + 0.035), (0.34, 0.035, 0.012),
+             COL_STEEL)
+
+    make_box("Hexagon_Cloth", (2.95, 5.50, top + 0.006), (0.64, 0.64, 0.012),
+             (0.82, 0.78, 0.70, 1.0))
+    import math as _m
+    for hi in range(6):
+        a = _m.pi / 3.0 * hi + _m.pi / 6.0
+        hx = 2.95 + 0.19 * _m.cos(a)
+        hy = 5.50 + 0.19 * _m.sin(a)
+        make_box(f"Hexagon_Ring_{hi}", (hx, hy, top + 0.03), (0.085, 0.07, 0.036),
+                 (0.60, 0.44, 0.28, 1.0))
+    make_box("Hexagon_Center_Face", (2.95, 5.50, top + 0.038), (0.10, 0.10, 0.05),
+             (0.66, 0.48, 0.30, 1.0))
+    make_box("Hexagon_Face_Inlay", (2.95, 5.52, top + 0.066), (0.06, 0.05, 0.008),
+             (0.38, 0.26, 0.16, 1.0))
+    make_box("Hexagon_Aria_Piece", (2.95, 5.86, top + 0.03), (0.16, 0.06, 0.036),
+             (0.60, 0.44, 0.28, 1.0))
+
+    make_box("Shop_Phone", (1.90, 5.78, top + 0.008), (0.16, 0.075, 0.014),
+             (0.10, 0.10, 0.12, 1.0))
+    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.017 - 0.0196), (0.14, 0.062, 0.004),
+             (0.42, 0.50, 0.58, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# CENTER ISLAND — the oak display table left over from Wagner's
-# Hardware, now carrying folded tees, beanies, and the odd-wheels
-# basket. Worn edges where seventy years of hands have been.
-# ═════════════════════════════════════════════════════════════════
-def build_center_island():
-    ix, iy = 0.0, 3.0
-    make_box("Island_Top", (ix, iy, 0.75), (2.40, 1.00, 0.05), COL_OLD_FIR)
-    make_box("Island_TopWear", (ix, iy - 0.47, 0.777), (2.30, 0.05, 0.004),
-             COL_OLD_FIR_LT)
-    make_box("Island_Apron", (ix, iy, 0.68), (2.28, 0.90, 0.06), COL_OLD_FIR)
-    for li, (lx, ly) in enumerate([(-1.08, 2.62), (1.08, 2.62),
-                                   (-1.08, 3.38), (1.08, 3.38)]):
-        make_box(f"Island_Leg_{li}", (lx, ly, 0.36), (0.09, 0.09, 0.72), COL_OLD_FIR)
-    make_box("Island_LowShelf", (ix, iy, 0.18), (2.20, 0.84, 0.04), COL_OLD_FIR_LT)
-    # Folded tee stacks ×4
-    for si in range(4):
-        sx = -0.85 + si * 0.56
-        for layer in range(3):
-            tint = DECK_TINTS[(si * 3 + layer * 2 + 1) % len(DECK_TINTS)]
-            make_box(f"Island_TeeStack_{si}_{layer}",
-                     (sx, iy - 0.22, 0.80 + layer * 0.05),
-                     (0.34, 0.28, 0.045), tint)
-    # Beanie stack
-    for bi in range(3):
-        make_cyl(f"Island_Beanie_{bi}", (0.95, iy + 0.26, 0.80 + bi * 0.055),
-                 0.085, 0.05, DECK_TINTS[(bi * 2 + 4) % len(DECK_TINTS)])
-    # Odd-wheels basket — "2 FOR 1" card scene-side
-    make_box("Island_WheelBasket", (-0.78, iy + 0.24, 0.84), (0.44, 0.36, 0.17),
-             COL_KRAFT, open_faces={'+Z'})
-    for wi in range(6):
-        wx = -0.92 + (wi % 3) * 0.14
-        wy = iy + 0.17 + (wi // 3) * 0.14
-        make_cyl(f"Island_OddWheel_{wi}", (wx, wy, 0.895 + (wi % 2) * 0.02),
-                 0.028, 0.032, DECK_TINTS[(wi * 5 + 2) % len(DECK_TINTS)],
-                 axis='Y' if wi % 2 == 0 else 'X')
-    make_box("Island_SaleCard", (-0.78, iy + 0.05, 0.945), (0.14, 0.012, 0.09),
-             P.PAPER)
-    # Overstock kraft box on the low shelf
-    make_box("Island_Overstock", (0.55, iy, 0.32), (0.60, 0.44, 0.24), COL_KRAFT)
+def build_main_street_2026_09():
+    """MAIN STREET, SMOLVUD (re-homing pass, 2026-09-01). Eight vol7
+    segments walk this block on a road backdrop; the interior builder
+    already carries Main + the mural. This gives the street a face
+    from the sidewalk side: Board Lords' awning and sign, the CLOSED
+    sign in the door, the laundromat door + window and the shoe-repair
+    window flanking the mural on the far facade, a streetlamp at the
+    curb, Finn's truck at the curb (ch5: "Finn's truck was at the
+    curb"). Presets: main_street (sidewalk, looking across).
+    Draft 2: the Daily Grind's corner four blocks down as a far band,
+    rain puddles on Main, the bookstore window.
+    """
+    # Board Lords' front: awning + sign on the parapet, CLOSED sign
+    make_box("Shop_Awning", (0.0, -0.62, 2.55), (4.0, 1.00, 0.06), (0.30, 0.34, 0.42, 1.0))
+    for ai, ax in enumerate((-1.85, 1.85)):
+        make_box(f"Shop_Awning_Arm_{ai}", (ax, -0.60, 2.50), (0.04, 1.02, 0.04), (0.20, 0.20, 0.22, 1.0))   # reaches the wall face and the awning
+    make_box("Shop_Sign", (0.0, -0.13, 2.85), (2.40, 0.06, 0.50), (0.22, 0.18, 0.16, 1.0))
+    make_box("Shop_Sign_Letters", (0.0, -0.165, 2.85), (2.00, 0.01, 0.22), (0.88, 0.80, 0.52, 1.0))
+    make_box("Closed_Sign", (0.55, 0.014, 1.35), (0.22, 0.008, 0.14), (0.90, 0.88, 0.82, 1.0))   # on the door glass, street side
+    # the far facade's breaks: laundromat (east of the mural), shoe repair (west)
+    make_box("Laundromat_Door", (2.4, -8.92, 1.05), (0.95, 0.04, 2.10), (0.66, 0.64, 0.60, 1.0))
+    make_box("Laundromat_Window", (4.2, -8.92, 1.55), (2.00, 0.03, 1.40), (0.55, 0.62, 0.66, 0.6))
+    make_box("Laundromat_Sign", (3.3, -8.90, 3.05), (3.60, 0.04, 0.50), (0.24, 0.40, 0.52, 1.0))
+    make_box("Shoe_Repair_Window", (-6.0, -8.92, 1.50), (1.40, 0.03, 1.30), (0.50, 0.46, 0.40, 0.6))
+    make_box("Shoe_Repair_Sign", (-6.0, -8.90, 2.85), (1.60, 0.04, 0.40), (0.42, 0.30, 0.22, 1.0))
+    # streetlamp on the near sidewalk (draft 3: it stood in the road,
+    # just off the curb), a lathed base, the arm as a tube
+    make_lathe("Streetlamp_Pole", (-4.0, -1.6, 0.07), [(0.14, 0.0), (0.14, 0.06), (0.08, 0.10), (0.06, 0.6), (0.05, 4.3), (0.0, 4.3)], (0.28, 0.28, 0.30, 1.0), segments=8)
+    make_tube("Streetlamp_Arm", [(-4.0, -1.6, 4.30), (-3.7, -1.6, 4.36), (-3.3, -1.6, 4.36)], 0.03, (0.28, 0.28, 0.30, 1.0), segments=6)
+    make_box("Streetlamp_Head", (-3.2, -1.6, 4.25), (0.40, 0.22, 0.14), (0.92, 0.88, 0.72, 1.0))
+    # Finn's truck in the parking lane along Main (draft 3: the kit
+    # pickup; the 09-07 move to "the curb" put the old box body on the
+    # sidewalk, y -2.15..-0.35 — the sidewalk is -2.0..-0.2)
+    make_car("Finn_Truck", 4.6, -3.25, 4.9, (0.44, 0.48, 0.42, 1.0), pickup=True, along="X")
+    # the crow rides the cab roof while they get in (ch5: "The crow
+    # stayed on Finn's shoulder" — then the truck)
+    from _props.creatures import make_crow
+    make_crow("Crow", CROW_X, -3.25, 1.70, facing=1.0)
+    # ── draft 3 · the block ──
+    # the far facade's corner buildings (taller, other brick), the
+    # bookstore window west of the shoe repair
+    make_box("Across_Corner_W", (-12.0, -9.10, 2.75), (6.0, 0.35, 5.50), (0.52, 0.40, 0.34, 1.0))
+    make_box("Across_Corner_E", (12.0, -9.10, 2.60), (6.0, 0.35, 5.20), (0.40, 0.36, 0.34, 1.0))
+    make_box("Across_Corner_W_Cornice", (-12.0, -8.90, 5.40), (6.2, 0.10, 0.20), (0.62, 0.50, 0.42, 1.0))
+    make_box("Bookstore_Window", (-8.0, -8.92, 1.45), (1.60, 0.03, 1.30), (0.42, 0.36, 0.30, 0.6))
+    make_box("Bookstore_Sign", (-8.0, -8.90, 2.70), (1.80, 0.04, 0.40), (0.26, 0.22, 0.30, 1.0))
+    for ci, (cx_, col_) in enumerate(((-6.8, (0.30, 0.32, 0.36, 1.0)), (9.2, (0.62, 0.20, 0.16, 1.0)))):
+        make_car(f"Far_Car_{ci}", cx_, -7.0, 4.3, col_, along="X")
+    make_lathe("Streetlamp_Far_Pole", (6.0, -8.3, 0.07), [(0.14, 0.0), (0.14, 0.06), (0.08, 0.10), (0.06, 0.6), (0.05, 4.3), (0.0, 4.3)], (0.28, 0.28, 0.30, 1.0), segments=8)
+    make_tube("Streetlamp_Far_Arm", [(6.0, -8.3, 4.30), (6.0, -8.0, 4.36), (6.0, -7.6, 4.36)], 0.03, (0.28, 0.28, 0.30, 1.0), segments=6)
+    make_box("Streetlamp_Far_Head", (6.0, -7.5, 4.25), (0.22, 0.40, 0.14), (0.92, 0.88, 0.72, 1.0))
+    for pi_, (px_, py_, pr_) in enumerate(((-3.0, -5.5, 0.7), (2.2, -6.6, 0.55), (-7.5, -3.6, 0.8))):
+        make_cyl(f"Main_Puddle_{pi_}", (px_, py_, 0.003), pr_, 0.004, (0.30, 0.32, 0.36, 1.0), segments=20)   # (draft 4) dark wet, not pale discs
 
 
-# ═════════════════════════════════════════════════════════════════
-# APPAREL RACK — single rail, west-center floor. Tees and two
-# hoodies on hangers, PNW-muted tints, chest prints on a few.
-# ═════════════════════════════════════════════════════════════════
-def build_apparel_rack():
-    ry, rz = 4.70, 1.48
-    for psgn, px in ((-1, -2.65), (+1, -0.75)):
-        make_cyl(f"Rack_Post_{psgn:+d}", (px, ry, 0.74), 0.020, 1.48,
-                 P.METAL_BLACK, segments=6)
-        make_box(f"Rack_Foot_{psgn:+d}", (px, ry, 0.02), (0.10, 0.55, 0.04),
-                 P.METAL_BLACK)
-    make_cyl("Rack_Rail", (-1.70, ry, rz), 0.016, 1.90, P.METAL_STEEL, axis='X')
-    for gi in range(8):
-        gx = -2.44 + gi * 0.21
-        tint = DECK_TINTS[(gi * 3 + 2) % len(DECK_TINTS)]
-        make_cyl(f"Rack_Hanger_{gi}", (gx, ry, rz - 0.03), 0.006, 0.06,
-                 P.METAL_STEEL, segments=6)
-        make_box(f"Rack_Shoulders_{gi}", (gx, ry, rz - 0.09), (0.03, 0.38, 0.05),
-                 tint)
-        make_box(f"Rack_GarmentBody_{gi}", (gx, ry, rz - 0.40), (0.028, 0.34, 0.56),
-                 tint)
-        if gi in (2, 6):   # hoodies get a hood bump
-            make_box(f"Rack_Hood_{gi}", (gx, ry + 0.05, rz - 0.02),
-                     (0.032, 0.16, 0.10), tint)
-        if gi in (1, 4, 7):    # chest print
-            make_box(f"Rack_Print_{gi}", (gx + 0.016, ry, rz - 0.28),
-                     (0.004, 0.14, 0.10), COL_BL_CREAM)
-    make_box("Rack_SizeCard", (-1.70, ry, rz + 0.10), (0.16, 0.012, 0.08), P.PAPER)
+def build_draft3_2026_09():
+    """DRAFT 3 (2026-09-19) · wear and infrastructure — see the module
+    docstring. Names carry none of the scene's cue words (deck · door ·
+    lathe · bread · hexagon · phone · sanderling · patch · note ·
+    window · crow)."""
+    floor_dk = (0.38, 0.29, 0.20, 1.0)
+    make_traffic_wear("Wear_Path_Entry", [(0.0, 0.4), (0.0, 3.0), (1.8, 3.0), (1.8, 4.6)], width=0.55, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Back", [(-0.6, 4.6), (-0.6, 5.5)], width=0.45, tint=floor_dk)
+    # two roll-in wheel lines from the door (kids ride in)
+    for ri, rx in enumerate((-0.09, 0.09)):
+        make_box(f"Wear_Roll_{ri}", (rx + 0.5, 1.7, 0.012), (0.03, 2.6, 0.003), (0.30, 0.23, 0.16, 1.0))
+    # three sit patches on the parents' bench, Kai's stand spot at the
+    # deck-wall glass, the smudge at kid height on the front window
+    for si, sx in enumerate((-3.35, -2.75, -2.15)):
+        make_box(f"Wear_Sit_{si}", (sx, 0.55, 0.4515), (0.42, 0.30, 0.003), (0.36, 0.26, 0.16, 1.0))
+    make_floor_stain("Wear_Stand_Glass", (-3.75, 3.8), radius=0.30, tint=floor_dk, segments=10)
+    make_box("Wear_Win_Smudge", (-2.75, 0.104, 1.05), (1.40, 0.004, 0.10), (0.62, 0.66, 0.68, 0.5))
+    make_box("Wear_Elbow", (2.25, 5.03, 0.9479), (2.20, 0.06, 0.003), (0.24, 0.17, 0.11, 1.0))
+    # D3
+    make_light_switch("Switch_1", (1.15, 0.0), axis='X', face_sign=1, z=1.25, aged=True)
+    make_wall_outlet("Outlet_N_1", (-2.4, ROOM_D), axis='X', face_sign=-1, z=0.35, aged=True)
+    make_tube("Cord_1", [(-2.85, 6.47, 0.35), (-2.4, ROOM_D - 0.14, 0.35)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
+    make_wall_outlet("Outlet_N_2", (-0.6, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
+    make_tube("Cord_2", [(-0.23, 6.60, 0.98), (-0.6, ROOM_D - 0.14, 1.10)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
+    # the EXIT sign over the alley door (its practical is in the tscn)
+    make_box("Exit_Sign", (3.15, ROOM_D - 0.13, 2.62), (0.32, 0.06, 0.16), (0.30, 0.10, 0.08, 1.0))   # on the wall (2026-09-22: 3 cm off it)
+    make_box("Exit_Sign_Face", (3.15, ROOM_D - 0.162, 2.62), (0.26, 0.004, 0.10), (0.96, 0.30, 0.22, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# SHOE WALL — east wall, south section. Flat fir shelves with nine
-# display shoes, shoebox stacks below, teal SHOES band (Label3D
-# scene-side).
-# ═════════════════════════════════════════════════════════════════
-def build_shoe_wall():
-    wall_face = ROOM_W / 2.0 - 0.10   # 4.40
-    make_box("Shoe_BackPanel", (wall_face - 0.015, 1.50, 1.30), (0.03, 1.60, 1.60),
-             COL_SLAT)
-    make_box("ShoeWall_SignBand", (wall_face - 0.035, 1.50, 2.02),
-             (0.006, 1.10, 0.16), COL_BL_TEAL)
-    for sh in range(3):
-        shz = 0.68 + sh * 0.46
-        make_box(f"Shoe_Shelf_{sh}", (wall_face - 0.16, 1.50, shz),
-                 (0.32, 1.55, 0.03), COL_OLD_FIR_LT)
-        for c in range(3):
-            sy = 1.05 + c * 0.45
-            tint = DECK_TINTS[(sh * 3 + c * 2 + 1) % len(DECK_TINTS)]
-            make_box(f"Shoe_Sole_{sh}_{c}", (wall_face - 0.17, sy, shz + 0.033),
-                     (0.28, 0.115, 0.035), COL_GUM_SOLE)
-            make_box(f"Shoe_Upper_{sh}_{c}", (wall_face - 0.155, sy, shz + 0.09),
-                     (0.235, 0.10, 0.08), tint)
-            make_box(f"Shoe_Toe_{sh}_{c}", (wall_face - 0.27, sy, shz + 0.075),
-                     (0.06, 0.095, 0.05), (0.86, 0.82, 0.74, 1.0))
-            make_box(f"Shoe_Laces_{sh}_{c}", (wall_face - 0.20, sy, shz + 0.128),
-                     (0.10, 0.08, 0.008), (0.90, 0.88, 0.82, 1.0))
-            if (sh + c) % 3 == 0:
-                make_box(f"Shoe_PriceCard_{sh}_{c}", (wall_face - 0.31, sy, shz + 0.02),
-                         (0.012, 0.07, 0.045), P.PAPER)
-    # Shoebox stacks under the bottom shelf
-    for bi in range(3):
-        bx2 = 1.05 + bi * 0.45
-        make_box(f"Shoe_BoxStack_A_{bi}", (wall_face - 0.18, bx2, 0.12),
-                 (0.30, 0.34, 0.12), COL_KRAFT)
-        make_box(f"Shoe_BoxStack_B_{bi}", (wall_face - 0.18, bx2, 0.25),
-                 (0.30, 0.32, 0.11), DECK_TINTS[(bi * 3 + 6) % len(DECK_TINTS)])
-        make_box(f"Shoe_BoxLabel_{bi}", (wall_face - 0.34, bx2, 0.19),
-                 (0.012, 0.10, 0.05), P.PAPER)
 
+def build_door_infill_alley_door_2026_09():
+    """Alley_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Alley_Door_W", (2.600, 7.000, 0), length=0.200, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Wall_Fill_Alley_Door_E", (3.650, 7.000, 0), length=0.100, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
 
-# ═════════════════════════════════════════════════════════════════
-# WAGNER'S HARDWARE SHELVING — the original 1962 tall fir shelving
-# unit, east wall, reused for skate inventory. Worn shelf edges,
-# steel label holders with aged paper, a stencilled AISLE 3 still
-# on the upright, two leftover paint cans on the top shelf, and the
-# rolling-ladder rail with the ladder stowed at its north end.
-# ═════════════════════════════════════════════════════════════════
-def build_hardware_shelving():
-    wall_face = ROOM_W / 2.0 - 0.10   # 4.40
-    ux = 4.19                          # unit centerline x
-    for ui, uy in enumerate((2.75, 4.00, 5.25)):
-        make_box(f"HW_Upright_{ui}", (ux, uy, 1.275), (0.42, 0.06, 2.55),
-                 COL_OLD_FIR)
-    make_box("HW_TopCap", (ux, 4.00, 2.565), (0.44, 2.56, 0.05), COL_OLD_FIR)
-    make_box("HW_Kick", (ux - 0.19, 4.00, 0.07), (0.03, 2.45, 0.14),
-             (0.22, 0.16, 0.11, 1.0))
-    # Stencil on the south upright — AISLE 3 in worn paint
-    make_box("HW_AisleStencil", (ux - 0.215, 2.75, 1.80), (0.006, 0.05, 0.30),
-             COL_GHOST_INK)
-    shelf_zs = (0.30, 0.90, 1.50, 2.10)
-    for si, shz in enumerate(shelf_zs):
-        make_box(f"HW_Shelf_{si}", (ux, 4.00, shz), (0.40, 2.42, 0.04),
-                 COL_OLD_FIR)
-        make_box(f"HW_ShelfWearEdge_{si}", (ux - 0.195, 4.00, shz + 0.012),
-                 (0.012, 2.36, 0.016), COL_OLD_FIR_LT)
-        make_box(f"HW_LabelHolder_{si}", (ux - 0.205, 4.00, shz - 0.035),
-                 (0.006, 2.30, 0.035), COL_STEEL_WORN)
-        for lj in range(3):
-            make_box(f"HW_Label_{si}_{lj}", (ux - 0.210, 3.05 + lj * 0.95,
-                     shz - 0.035), (0.004, 0.18, 0.028), P.PAPER_AGED)
-    # Shelf 0 (z 0.30): flat deck stack + kraft cartons
+def build_draft4_2026_10():
+    """DRAFT 4 (2026-10-09, the overnight run), from vol 7 ch 2/5/9/10/12/16.
+
+    The retail floor was empty linoleum between the deck wall and the
+    counter. A skate shop's floor:
+    - THE RACK of complete boards ("The board was in the rack. The rack
+      was full. The board was on the bottom.") — a floor rack, boards
+      standing on their tails, trucks and wheels on, the customers'
+      repairs among the stock;
+    - the NEW DECKS on the wall behind the counter ("Kai went to the wall
+      behind the counter where the new decks were") — the office
+      partition's face, Lena's Tide Pool Geometries run among them;
+    - a rounder of hoodies on the floor's east side;
+    - the counter's things: Devon's chipped Tidewater mug, the small
+      wooden box under the counter Jameson's tokens went into;
+    - a roll of griptape on the repair bench;
+    - across Main, the drone at the laundromat's downspout ("The drone
+      over the laundromat was, this morning, fixing a downspout").
+    """
+    from _props.drones import make_drone
+    steel_dk = (0.30, 0.32, 0.34, 1.0)
+    urethane = (0.92, 0.88, 0.66, 1.0)
+    # ── the rack ──
+    rx0, rx1, ry = -2.40, -0.60, 3.40
+    make_box("Board_Rack_Base", ((rx0 + rx1) / 2.0, ry, 0.025), (rx1 - rx0, 0.45, 0.05), COL_WOOD)
+    for ui, ux in enumerate((rx0 + 0.025, rx1 - 0.025)):
+        make_box(f"Board_Rack_Upright_{ui}", (ux, ry + 0.17, 0.50), (0.05, 0.05, 0.90), COL_WOOD)
+    make_box("Board_Rack_Rail", ((rx0 + rx1) / 2.0, ry + 0.17, 0.93), (rx1 - rx0, 0.05, 0.05), COL_WOOD)
+    for bi in range(7):
+        bx = rx0 + 0.18 + bi * 0.24
+        tint = DECK_TINTS[(bi * 3 + 1) % len(DECK_TINTS)]
+        make_chamfer_box(f"Rack_Board_{bi}_Deck", (bx, ry + 0.11, 0.47), (0.20, 0.015, 0.80), tint, chamfer=0.006)
+        make_box(f"Rack_Board_{bi}_Grip", (bx, ry + 0.1015, 0.47), (0.18, 0.002, 0.76), (0.12, 0.12, 0.13, 1.0))
+        for ti, tz in enumerate((0.20, 0.74)):
+            make_box(f"Rack_Board_{bi}_Truck_{ti}", (bx, ry + 0.135, tz), (0.16, 0.035, 0.04), steel_dk)
+            for wi, wx in enumerate((-0.09, 0.09)):
+                make_cyl(f"Rack_Board_{bi}_Wheel_{ti}_{wi}", (bx + wx, ry + 0.165, tz), 0.026, 0.028, urethane, axis='X', segments=10)
+    # the bottom board — the old Tess Mariana from 2034, the crack in its deck
+    make_box("Rack_Board_0_Crack", (rx0 + 0.18, ry + 0.102, 0.62), (0.006, 0.002, 0.22), (0.30, 0.22, 0.14, 1.0))
+    # ── the new decks on the partition behind the counter ──
     for di in range(6):
-        make_box(f"HW_DeckStack_{di}", (ux - 0.02, 3.35 + (di % 2) * 0.02,
-                 0.335 + di * 0.017), (0.21, 0.79, 0.014),
-                 DECK_TINTS[(di * 3 + 1) % len(DECK_TINTS)])
-    make_box("HW_Carton_0", (ux - 0.01, 4.65, 0.46), (0.34, 0.55, 0.28), COL_KRAFT)
-    # Shelf 1 (z 0.90): shoeboxes + bearings cartons + a jar of odd bolts
-    for bi2 in range(3):
-        make_box(f"HW_ShoeBox_{bi2}", (ux - 0.01, 3.10 + bi2 * 0.40, 0.985),
-                 (0.32, 0.34, 0.125), DECK_TINTS[(bi2 * 2 + 3) % len(DECK_TINTS)])
-    make_box("HW_BearingsCarton_0", (ux - 0.01, 4.55, 0.98), (0.28, 0.24, 0.12),
-             COL_KRAFT)
-    make_box("HW_BearingsCarton_1", (ux - 0.01, 4.85, 0.98), (0.28, 0.24, 0.12),
-             (0.66, 0.48, 0.28, 1.0))
-    make_cyl("HW_BoltJar", (ux - 0.05, 3.55, 1.00), 0.055, 0.14,
-             (0.55, 0.50, 0.42, 1.0), segments=8)
-    # Shelf 2 (z 1.50): wheel boxes + spray cans
-    for wi2 in range(4):
-        make_box(f"HW_WheelBox_{wi2}", (ux - 0.01, 3.05 + wi2 * 0.32, 1.585),
-                 (0.26, 0.26, 0.13), P.PAPER if wi2 % 2 == 0 else COL_KRAFT)
-        make_box(f"HW_WheelBoxBand_{wi2}", (ux - 0.145, 3.05 + wi2 * 0.32, 1.585),
-                 (0.006, 0.20, 0.06), DECK_TINTS[(wi2 * 5 + 2) % len(DECK_TINTS)])
-    for ci2 in range(4):
-        make_cyl(f"HW_SprayCan_{ci2}", (ux - 0.05, 4.45 + ci2 * 0.15, 1.60),
-                 0.030, 0.16, DECK_TINTS[(ci2 * 3 + 4) % len(DECK_TINTS)],
-                 segments=8)
-        make_cyl(f"HW_SprayCap_{ci2}", (ux - 0.05, 4.45 + ci2 * 0.15, 1.70),
-                 0.020, 0.03, (0.80, 0.80, 0.78, 1.0), segments=6)
-    # Shelf 3 (z 2.10): overstock + the two Wagner's paint cans
-    make_box("HW_Overstock_0", (ux - 0.01, 3.30, 2.25), (0.34, 0.60, 0.26),
-             COL_KRAFT)
-    make_box("HW_Overstock_1", (ux - 0.01, 4.10, 2.22), (0.32, 0.50, 0.20),
-             (0.68, 0.50, 0.30, 1.0))
-    for pi2 in range(2):
-        pcy = 4.70 + pi2 * 0.22
-        make_cyl(f"HW_PaintCan_{pi2}", (ux - 0.03, pcy, 2.21), 0.075, 0.17,
-                 COL_STEEL_WORN, segments=8)
-        make_box(f"HW_PaintCan_Label_{pi2}", (ux - 0.11, pcy, 2.21),
-                 (0.006, 0.10, 0.10), P.PAPER_AGED)
-        make_box(f"HW_PaintCan_Drip_{pi2}", (ux - 0.108, pcy + 0.03, 2.15),
-                 (0.004, 0.03, 0.05), COL_PAINT_SPILL)
-    # Rolling-ladder rail + stowed ladder (hardware bones)
-    make_cyl("HW_LadderRail", (ux - 0.26, 4.00, 2.46), 0.018, 2.40, COL_BRASS,
-             axis='Y')
-    for bi3, byy in enumerate((2.90, 4.00, 5.10)):
-        make_box(f"HW_RailBracket_{bi3}", (ux - 0.14, byy, 2.46),
-                 (0.22, 0.04, 0.04), P.METAL_BLACK)
-    for ssgn, sy2 in ((-1, 4.83), (+1, 5.07)):
-        make_box(f"HW_Ladder_Stile_{ssgn:+d}", (ux - 0.30, sy2, 1.38),
-                 (0.035, 0.05, 1.90), COL_OLD_FIR_LT)
-    for ri in range(6):
-        make_cyl(f"HW_Ladder_Rung_{ri}", (ux - 0.30, 4.95, 0.60 + ri * 0.32),
-                 0.013, 0.20, COL_OLD_FIR_LT, axis='Y', segments=6)
-    for hsgn, hy in ((-1, 4.83), (+1, 5.07)):
-        make_box(f"HW_Ladder_Hook_{hsgn:+d}", (ux - 0.28, hy, 2.38),
-                 (0.05, 0.04, 0.10), P.METAL_BLACK)
-
-
-# ═════════════════════════════════════════════════════════════════
-# PARTS-DRAWER CABINET — Wagner's small-parts cabinet behind the
-# counter, 24 drawers relabelled for bearings / bolts / bushings /
-# kingpins. One drawer open with bearings inside. The old counter
-# scale still sits on top.
-# ═════════════════════════════════════════════════════════════════
-def build_parts_cabinet():
-    wall_face = ROOM_W / 2.0 - 0.10
-    px, py = 4.22, 6.15
-    make_box("Parts_Body", (px, py, 0.75), (0.35, 1.10, 1.50), COL_OLD_FIR)
-    make_box("Parts_TopCap", (px, py, 1.515), (0.38, 1.14, 0.03), COL_OLD_FIR_LT)
-    for r in range(6):
-        for c in range(4):
-            dy = py - 0.405 + c * 0.27
-            dz = 0.22 + r * 0.22
-            tone = COL_OLD_FIR_LT if (r + c) % 2 == 0 else (0.42, 0.32, 0.22, 1.0)
-            make_box(f"Parts_Drawer_{r}_{c}", (px - 0.185, dy, dz),
-                     (0.02, 0.24, 0.19), tone)
-            make_cyl(f"Parts_Knob_{r}_{c}", (px - 0.20, dy, dz), 0.010, 0.02,
-                     COL_BRASS, axis='X', segments=6)
-            make_box(f"Parts_LabelFrame_{r}_{c}", (px - 0.197, dy, dz + 0.055),
-                     (0.004, 0.09, 0.035), P.PAPER_AGED)
-    # One drawer pulled open — bearings visible
-    make_box("Parts_OpenDrawer", (px - 0.32, py + 0.135, 1.10), (0.24, 0.24, 0.17),
-             (0.42, 0.32, 0.22, 1.0), open_faces={'+Z'})
-    for bi in range(3):
-        make_cyl(f"Parts_OpenBearing_{bi}", (px - 0.38 + bi * 0.06, py + 0.135, 1.185),
-                 0.016, 0.008, COL_STEEL_WORN, segments=8)
-    # The old counter scale on top — base, column, pan, dial face
-    make_box("Scale_Base", (px - 0.02, py - 0.25, 1.565), (0.24, 0.30, 0.07),
-             (0.44, 0.20, 0.16, 1.0))
-    make_cyl("Scale_Column", (px - 0.02, py - 0.14, 1.70), 0.022, 0.20,
-             (0.44, 0.20, 0.16, 1.0), segments=8)
-    make_cyl("Scale_Pan", (px - 0.02, py - 0.34, 1.635), 0.10, 0.02,
-             COL_STEEL_WORN, segments=10)
-    make_cyl("Scale_Dial", (px - 0.02, py - 0.135, 1.82), 0.075, 0.03,
-             (0.90, 0.88, 0.80, 1.0), axis='Y')
-    make_box("Scale_Needle", (px - 0.02, py - 0.155, 1.84), (0.008, 0.006, 0.05),
-             P.METAL_BLACK)
-
-
-# ═════════════════════════════════════════════════════════════════
-# WALL DRESSING — the shop clock frozen at 10:00 (Kai opens at ten,
-# every day, ch5/ch9), a skate poster, the framed black-and-white
-# photo of the building as Wagner's Hardware (1975), and the
-# opening-day Polaroid from 2034 beside it.
-# ═════════════════════════════════════════════════════════════════
-def build_wall_dressing():
-    wall_face = ROOM_D - 0.10
-    make_wall_clock("Clock", (4.00, wall_face - 0.03, 2.45),
-                    frozen_hour=10, frozen_min=0)
-    # Skate poster — sky band, ramp, rider (baked blocks)
-    make_box("Poster_Skate_Body", (0.35, wall_face - 0.02, 1.50),
-             (0.50, 0.010, 0.70), (0.24, 0.28, 0.34, 1.0))
-    make_box("Poster_Skate_Sky", (0.35, wall_face - 0.028, 1.68),
-             (0.44, 0.006, 0.28), (0.55, 0.62, 0.64, 1.0))
-    make_box("Poster_Skate_Ramp", (0.42, wall_face - 0.028, 1.36),
-             (0.28, 0.006, 0.18), (0.42, 0.40, 0.38, 1.0))
-    make_box("Poster_Skate_Rider", (0.28, wall_face - 0.034, 1.62),
-             (0.06, 0.004, 0.10), COL_BL_CREAM)
-    make_box("Poster_Skate_Title", (0.35, wall_face - 0.034, 1.22),
-             (0.36, 0.004, 0.08), COL_BL_TEAL)
-    # The building as Wagner's Hardware, 1975 — B&W print, fir frame
-    make_box("Photo_Wagner1975_Frame", (1.75, wall_face - 0.015, 1.55),
-             (0.42, 0.012, 0.34), COL_OLD_FIR)
-    make_box("Photo_Wagner1975_Print", (1.75, wall_face - 0.025, 1.55),
-             (0.36, 0.006, 0.28), (0.78, 0.76, 0.72, 1.0))
-    make_box("Photo_Wagner1975_Building", (1.73, wall_face - 0.030, 1.51),
-             (0.24, 0.004, 0.14), (0.38, 0.37, 0.36, 1.0))
-    make_box("Photo_Wagner1975_Awning", (1.73, wall_face - 0.033, 1.575),
-             (0.26, 0.003, 0.03), (0.52, 0.50, 0.48, 1.0))
-    # Opening-day Polaroid, 2034
-    make_box("Photo_Opening2034_Frame", (2.12, wall_face - 0.015, 1.44),
-             (0.11, 0.010, 0.13), P.PAPER)
-    make_box("Photo_Opening2034_Print", (2.12, wall_face - 0.022, 1.455),
-             (0.09, 0.004, 0.09), (0.40, 0.44, 0.42, 1.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# STICKERS EVERYWHERE — slaps on the door leaf, the window piers,
-# the counter face, the wheels case, the island apron, the bench
-# apron, the parts cabinet and the CRT. Position-seeded sizes and
-# tints; a third get a contrast core block.
-# ═════════════════════════════════════════════════════════════════
-def build_stickers():
-    # (x, y, z, plane) — plane is the axis the sticker faces along
-    spots = [
-        # door leaf, interior face (below the mid rail)
-        (-0.72, 0.030, 0.62, 'Y'), (-0.50, 0.030, 0.48, 'Y'),
-        (-0.30, 0.030, 0.70, 'Y'), (-0.58, 0.030, 0.30, 'Y'),
-        # door piers, interior faces
-        (-1.20, 0.105, 1.10, 'Y'), (-1.20, 0.105, 1.60, 'Y'),
-        (+1.20, 0.105, 1.25, 'Y'), (+1.20, 0.105, 1.78, 'Y'),
-        # counter customer face
-        (1.85, 4.995, 0.72, 'Y'), (2.10, 4.995, 0.50, 'Y'),
-        (2.38, 4.995, 0.80, 'Y'), (2.62, 4.995, 0.38, 'Y'),
-        (2.90, 4.995, 0.66, 'Y'), (2.25, 4.995, 0.26, 'Y'),
-        # wheels case base front
-        (0.42, 5.095, 0.20, 'Y'), (0.78, 5.095, 0.12, 'Y'),
-        (1.05, 5.095, 0.22, 'Y'),
-        # island apron, south face
-        (-0.55, 2.545, 0.68, 'Y'), (0.62, 2.545, 0.66, 'Y'),
-        # repair bench apron
-        (-3.35, 6.315, 0.86, 'Y'), (-2.30, 6.315, 0.86, 'Y'),
-        # parts cabinet south side
-        (4.22, 5.595, 1.05, 'Y'), (4.22, 5.595, 0.72, 'Y'),
-        # CRT south side + shoe shelf edge (faces west)
-        (-4.13, 1.905, 1.30, 'Y'), (4.075, 1.85, 0.665, 'X'),
-    ]
-    for i, (sx, sy, sz, plane) in enumerate(spots):
-        w = 0.07 + (i * 3 % 5) * 0.012
-        h = 0.05 + (i * 7 % 4) * 0.014
-        tint = DECK_TINTS[(i * 5 + 1) % len(DECK_TINTS)]
-        core = DECK_TINTS[(i * 3 + 4) % len(DECK_TINTS)]
-        if plane == 'Y':
-            face_sgn = -1.0 if sy > 3.0 else +1.0
-            make_box(f"Sticker_{i}", (sx, sy + face_sgn * 0.004, sz),
-                     (w, 0.006, h), tint)
-            if i % 3 == 0:
-                make_box(f"Sticker_{i}_Core", (sx, sy + face_sgn * 0.008, sz),
-                         (w * 0.5, 0.004, h * 0.5), core)
-        else:
-            make_box(f"Sticker_{i}", (sx - 0.004, sy, sz), (0.006, w, h), tint)
-            if i % 3 == 0:
-                make_box(f"Sticker_{i}_Core", (sx - 0.008, sy, sz),
-                         (0.004, w * 0.5, h * 0.5), core)
-
-
-# ═════════════════════════════════════════════════════════════════
-# CEILING INFRASTRUCTURE — four tube banks for the floor, plus the
-# small fluorescent over the repair counter that Kai turns on first
-# thing every morning (ch5/ch16: "turned on the back light over the
-# repair bench"). Smoke detector, HVAC, the speaker that plays
-# whatever tape is in the deck.
-# ═════════════════════════════════════════════════════════════════
-def build_ceiling_infra():
-    for j, (fx, fy) in enumerate([(-2.4, 2.4), (+2.4, 2.4),
-                                  (-2.4, 4.9), (+2.4, 4.9)]):
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (fx, fy, CEIL),
-                                      length=1.40, width=0.34)
-    make_fluorescent_tube_fixture("Fluor_RepairBench", (-2.8, 6.55, CEIL),
-                                  length=1.10, width=0.26)
-    make_smoke_detector("Smoke", (0.0, 3.5, CEIL))
-    make_hvac_vent("HVAC", (-3.85, 6.30, CEIL), width=0.80, depth=0.40)
-    make_ceiling_speaker("Speaker", (3.0, 3.2, CEIL))
+        dx = 2.85 + di * 0.30
+        tint = (0.24, 0.26, 0.28, 1.0) if di in (2, 3) else DECK_TINTS[(di * 5 + 2) % len(DECK_TINTS)]
+        make_chamfer_box(f"NewDeck_{di}", (dx, 6.035, 1.55), (0.22, 0.03, 0.82), tint, chamfer=0.01)
+        if di in (2, 3):   # Lena's Tide Pool Geometries: long black curves on a deep gray ground
+            make_box(f"NewDeck_{di}_Line", (dx, 6.018, 1.55), (0.02, 0.004, 0.70), (0.06, 0.06, 0.07, 1.0))
+        make_box(f"NewDeck_{di}_Peg", (dx, 6.035, 1.975), (0.04, 0.03, 0.03), COL_STEEL)
+    # ── the hoodie rounder ──
+    hx, hy = 1.30, 2.40
+    make_lathe("Rounder_Base", (hx, hy, 0.0), [(0.32, 0.0), (0.30, 0.04), (0.05, 0.06), (0.0, 0.06)], COL_STEEL, segments=14)
+    make_cyl("Rounder_Pole", (hx, hy, 0.68), 0.02, 1.24, COL_STEEL, segments=8)
+    make_lathe("Rounder_Ring", (hx, hy, 1.30), [(0.52, 0.0), (0.55, 0.015), (0.52, 0.03), (0.49, 0.015)], COL_STEEL, segments=24, loop=True)
+    for ki in range(4):
+        a = ki * _cm.pi / 2.0
+        make_tube(f"Rounder_Spoke_{ki}", [(hx, hy, 1.30), (hx + 0.52 * _cm.cos(a), hy + 0.52 * _cm.sin(a), 1.30)], 0.008, COL_STEEL, segments=4)
+    hood = [(0.20, 0.22, 0.26, 1.0), (0.52, 0.18, 0.16, 1.0), (0.30, 0.40, 0.30, 1.0), (0.78, 0.74, 0.66, 1.0)]
+    for si in range(8):
+        a = si * _cm.pi / 4.0 + 0.2
+        make_chamfer_box(f"Rounder_Shirt_{si}", (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 0.97), (0.08, 0.40, 0.62),
+                         hood[si % 4], chamfer=0.03, yaw=a)
+        # its hanger: the hook over the ring, the shoulders into the hood
+        make_tube(f"Rounder_Shirt_{si}_Hanger", [(hx + 0.52 * _cm.cos(a), hy + 0.52 * _cm.sin(a), 1.33),
+                                                 (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 1.32),
+                                                 (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 1.25)], 0.005, COL_STEEL, segments=4)
+    # ── the counter's things ──
+    make_lathe("Tidewater_Mug", (1.55, 5.10, 0.95), [(0.040, 0.0), (0.043, 0.01), (0.045, 0.10), (0.0, 0.095)], (0.88, 0.86, 0.80, 1.0), segments=12)
+    make_box("Tidewater_Mug_Chip", (1.55 - 0.044, 5.10, 1.045), (0.008, 0.02, 0.012), (0.70, 0.56, 0.40, 1.0))
+    make_box("Tidewater_Mug_Band", (1.55, 5.10, 1.00), (0.092, 0.092, 0.012), (0.24, 0.40, 0.52, 1.0))
+    make_box("Token_Box", (0.52, 5.66, 0.33), (0.16, 0.10, 0.07), (0.50, 0.34, 0.20, 1.0))
+    make_box("Token_Box_Lid", (0.52, 5.66, 0.37), (0.17, 0.11, 0.01), (0.42, 0.28, 0.16, 1.0))
+    # ── griptape on the repair bench ──
+    make_cyl("Griptape_Roll", (-1.05, 6.40, 1.005), 0.06, 0.26, (0.10, 0.10, 0.11, 1.0), axis='X', segments=12)
+    make_box("Griptape_Sheet", (-0.85, 6.02, 0.948), (0.24, 0.40, 0.003), (0.12, 0.12, 0.13, 1.0))
+    # ── across Main: the laundromat's downspout and the drone at it ──
+    make_tube("Laundromat_Downspout", [(5.6, -8.88, 4.35), (5.6, -8.88, 0.30), (5.6, -8.70, 0.14)], 0.05, (0.46, 0.46, 0.46, 1.0), segments=8)
+    make_drone("Drone_Laundromat", 5.6, -8.15, 3.30, arm_down=True)
 
 
 def main():
     clear_scene()
     build_shell()
-    build_floor_history()
-    build_storefront()
-    build_exterior_main_street()
-    build_ghost_sign()
     build_deck_wall()
-    build_heritage_case()
-    build_zine_wall()
-    build_repair_zone()
-    build_counter_zone()
-    build_office_door()
-    build_wheels_case()
-    build_center_island()
-    build_apparel_rack()
-    build_shoe_wall()
-    build_hardware_shelving()
-    build_parts_cabinet()
-    build_wall_dressing()
-    build_stickers()
-    build_ceiling_infra()
+    build_counter()
+    build_repair_back()
+    build_office()
+    build_retail()
+    build_hero_props()
+    build_main_street_2026_09()
+    build_decor()
+    build_draft3_2026_09()
+    build_draft4_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/board_lords_interior.glb"))
+    build_door_infill_alley_door_2026_09()
     print(f"\n[build_board_lords_interior] exporting to {out}")
     export_glb(out)
 

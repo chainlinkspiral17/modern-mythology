@@ -122,7 +122,7 @@ func _rebuild() -> void:
 	footer.add_child(save_btn)
 	_status_lbl = Label.new()
 	_status_lbl.add_theme_color_override("font_color", C_DIM)
-	_status_lbl.add_theme_font_size_override("font_size", 10)
+	_status_lbl.add_theme_font_size_override("font_size", 12)
 	_status_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_status_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	footer.add_child(_status_lbl)
@@ -148,7 +148,7 @@ func _make_window_editor(win: Control, manifest: Dictionary) -> Control:
 		title += "  ·  " + str(manifest.get("path", ""))
 	label.text = title
 	label.add_theme_color_override("font_color", C_TXT)
-	label.add_theme_font_size_override("font_size", 11)
+	label.add_theme_font_size_override("font_size", 12)
 	v.add_child(label)
 
 	# Common controls: position, z, alpha

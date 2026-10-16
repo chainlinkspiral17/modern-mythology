@@ -42,10 +42,19 @@ var _unlock_overlay:   Control = null
 
 
 func _ready() -> void:
+	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks light on menu return
+	add_to_group("trip_soft")   # THE TRIP runs at ×0.45 over the text-heavy menu
 	_build_ui()
 	_build_overlays()
 	_select_vol(1)
 	_play_title_music()
+	# Pad support · give the d-pad somewhere to start.
+	GamepadMgr.focus_first.call_deferred(self)
+	# Fade in from black — the book opens.
+	modulate = Color(1, 1, 1, 0)
+	var tw := create_tween()
+	tw.tween_property(self, "modulate:a", 1.0, 0.7)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func _build_ui() -> void:
@@ -54,6 +63,19 @@ func _build_ui() -> void:
 	bg.color = C_BG
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+
+	# Procedural frontispiece over the flat fill: lamplight from the
+	# upper left, paper-tooth grain, a dim compass ring behind the
+	# volumes panel. Drawn once at boot, deterministic.
+	var backdrop := TextureRect.new()
+	backdrop.texture = _make_backdrop_tex()
+	backdrop.stretch_mode = TextureRect.STRETCH_SCALE
+	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(backdrop)
+	# Frontispiece motion — grain drifting in the lamplight
+	# (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(self, "shelf")
 
 	# Gradient rule at top
 	var rule_stops: Array = [
@@ -114,6 +136,9 @@ func _build_ui() -> void:
 		title.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", C_GOLD)
+	title.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.85))
+	title.add_theme_constant_override("shadow_offset_x", 2)
+	title.add_theme_constant_override("shadow_offset_y", 2)
 	title.custom_minimum_size.y = 100
 	left_inner.add_child(title)
 
@@ -125,7 +150,23 @@ func _build_ui() -> void:
 	edition.custom_minimum_size.y = 32
 	left_inner.add_child(edition)
 
-	left_inner.add_child(_make_rule_rect())
+	# Ornament rule — rule · diamond · rule, a book plate's divider.
+	var orn_row := HBoxContainer.new()
+	orn_row.add_theme_constant_override("separation", 8)
+	var orn_r1 := _make_rule_rect()
+	orn_r1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	orn_r1.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	orn_row.add_child(orn_r1)
+	var orn := Label.new()
+	orn.text = "◆"
+	orn.add_theme_font_size_override("font_size", 12)
+	orn.add_theme_color_override("font_color", C_GOLD_DIM)
+	orn_row.add_child(orn)
+	var orn_r2 := _make_rule_rect()
+	orn_r2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	orn_r2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	orn_row.add_child(orn_r2)
+	left_inner.add_child(orn_row)
 
 	var spacer0 := Control.new()
 	spacer0.custom_minimum_size.y = 12
@@ -140,12 +181,6 @@ func _build_ui() -> void:
 	_continue_btn.pressed.connect(_on_continue)
 	_continue_btn.disabled = not SaveSystem.has_any_save()
 	left_inner.add_child(_continue_btn)
-	# A save written mid-session (incl. the autosave) enables CONTINUE
-	# without restarting — the disabled state was previously set once
-	# at build and never refreshed.
-	SaveSystem.save_written.connect(func(_slot: int) -> void:
-		if _continue_btn != null and is_instance_valid(_continue_btn):
-			_continue_btn.disabled = false)
 
 	var spacer1 := Control.new()
 	spacer1.custom_minimum_size.y = 8
@@ -159,12 +194,18 @@ func _build_ui() -> void:
 
 	# Secondary buttons
 	for btn_data: Array in [
-		["GALLERY",      _on_gallery],
-		["MUSIC PLAYER", _on_music],
-		["ACHIEVEMENTS", _on_achievements],
-		["SCRAPBOOK",    _on_scrapbook],
-		["SETTINGS",     _on_settings],
-		["SCENE EDITOR", _on_editor],
+		["THE ALMANAC",       _on_almanac],
+		["THE EVIDENCE BOARD", _on_evidence_board],
+		["THE MAJOR ARCANA",  _on_major_arcana],
+		["THE CATALOG",       _on_catalog],
+		["GALLERY",           _on_gallery],
+		["MUSIC PLAYER",      _on_music],
+		["ACHIEVEMENTS",      _on_achievements],
+		["SCRAPBOOK",         _on_scrapbook],
+		["PROFILE",           _on_profile],
+		["SLOWSTOCK LIBRARY", _on_slowstock_library],
+		["SETTINGS",          _on_settings],
+		["SCENE EDITOR",      _on_editor],
 	]:
 		var btn := _nav_btn_small(btn_data[0] as String)
 		btn.pressed.connect(btn_data[1] as Callable)
@@ -329,7 +370,7 @@ func _populate_chapters(vol: int) -> void:
 	var chapters := SceneDataDB.get_volume_chapters(vol)
 	if chapters.is_empty():
 		var lbl := Label.new()
-		lbl.text = "No scenes loaded.\nRun tools/import_scenes.py first."
+		lbl.text = "The book is empty — no chapters found.\n(dev: run tools/import_scenes.py)"
 		lbl.add_theme_font_size_override("font_size", 14)
 		lbl.add_theme_color_override("font_color", C_DIM)
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -381,9 +422,10 @@ func _populate_chapters(vol: int) -> void:
 		title_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		title_lbl.clip_text = true
 		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		if ResourceLoader.exists(SkinDB.F_IMFELL_R):
-			title_lbl.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
-		title_lbl.add_theme_font_size_override("font_size", 15)
+		# (pass 89) the chapter list in the reading face
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			title_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+		title_lbl.add_theme_font_size_override("font_size", 17)
 		title_lbl.add_theme_color_override("font_color", C_TXT)
 		row.add_child(title_lbl)
 
@@ -400,7 +442,7 @@ func _populate_chapters(vol: int) -> void:
 			badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			if ResourceLoader.exists(SkinDB.F_CINZEL):
 				badge.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-			badge.add_theme_font_size_override("font_size", 9)
+			badge.add_theme_font_size_override("font_size", 12)
 			badge.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.45))
 			row.add_child(badge)
 
@@ -465,6 +507,60 @@ func _on_achievements() -> void:
 		existing.queue_free()
 	var panel := _build_achievements_panel()
 	panel.name = "AchievementsPanel"
+	add_child(panel)
+
+
+func _on_profile() -> void:
+	# The whole reading in one place — VN slots, gauntlet record,
+	# sticks finished, tokens held. Same fresh-build pattern.
+	var existing: Node = get_node_or_null("ProfilePanel")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var ProfilePanel := load("res://scenes/menu/ProfilePanel.gd")
+	var panel: Control = ProfilePanel.build(self)
+	add_child(panel)
+
+
+func _on_almanac() -> void:
+	# The cross-pillar compendium — chapters + threads that light up
+	# as you play across VN / gauntlet / CP / slowsticks. Fresh build.
+	var existing: Node = get_node_or_null("Almanac")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Almanac := load("res://scenes/menu/Almanac.gd")
+	var panel: Control = Almanac.build(self)
+	add_child(panel)
+
+
+func _on_evidence_board() -> void:
+	# The interactive meta-mystery — pin two discovered stick-secrets and
+	# assemble a cross-shelf thread. Fresh build each open.
+	var existing: Node = get_node_or_null("EvidenceBoard")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Board := load("res://scenes/menu/EvidenceBoard.gd")
+	var panel: Control = Board.build(self)
+	add_child(panel)
+
+
+func _on_major_arcana() -> void:
+	# The Fool's Journey — the 22 gauntlets in order as one run.
+	var existing: Node = get_node_or_null("MajorArcanaCampaign")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Campaign := load("res://scenes/menu/MajorArcanaCampaign.gd")
+	var panel: Control = Campaign.build(self)
+	add_child(panel)
+
+
+func _on_catalog() -> void:
+	# The collector's shelf — the slowstick catalog lattice as liner
+	# notes, grouped by studio, with cross-cart achievements.
+	var existing: Node = get_node_or_null("CatalogShelf")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Catalog := load("res://scenes/menu/CatalogShelf.gd")
+	var panel: Control = Catalog.build(self)
 	add_child(panel)
 
 
@@ -571,13 +667,17 @@ func _build_achievements_panel() -> Control:
 		row.add_child(meta)
 		var name_lbl := Label.new()
 		name_lbl.text = String(a.get("title", a.get("id", "?")))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			name_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+		name_lbl.add_theme_font_size_override("font_size", 14)
 		name_lbl.add_theme_color_override("font_color",
 			Color(0.83, 0.79, 0.69) if unlocked else Color(0.45, 0.43, 0.36, 0.85))
 		meta.add_child(name_lbl)
 		var desc_lbl := Label.new()
 		desc_lbl.text = String(a.get("desc", ""))
-		desc_lbl.add_theme_font_size_override("font_size", 10)
+		if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+			desc_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+		desc_lbl.add_theme_font_size_override("font_size", 13)
 		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		desc_lbl.custom_minimum_size = Vector2(620, 0)
 		desc_lbl.add_theme_color_override("font_color",
@@ -590,9 +690,139 @@ func _on_editor() -> void:
 	_editor_overlay.call("open")
 
 
+# Slowstock Library · opens the cabin shelf (Vol 7's Estuary 3 +
+# the ten authored cartridge spines) as a full-screen overlay.
+# Uses SlowstockBoot's flow directly · shelf → pick → host → back.
+# When the boot flow's overlay closes (via BACK-TO-SHELF or the
+# host's `finished` signal), we free it and land back on the
+# main menu.
+var _slowstock_root: Node = null
+
+func _on_slowstock_library() -> void:
+	if _slowstock_root != null and is_instance_valid(_slowstock_root):
+		return   # already open
+	_slowstock_root = load("res://scenes/games/estuary_3/SlowstockBoot.tscn").instantiate()
+	# Full-screen OPAQUE container styled as the cabin's console TV —
+	# a diegetic physical prop (Olaf's set, 2048), not a filter. The
+	# menu can no longer bleed through, and every slowstick plays
+	# inside the television it canonically plays on.
+	# InputBlocker: a modal fence — swallows whatever the slowstick
+	# UI doesn't consume, releases menu focus, and flags itself so
+	# _input-level handlers (the VN's advance key) stand down.
+	# Without it, keys leak through and navigate the menu and the
+	# visual novel underneath the TV.
+	var wrap: Control = preload("res://scripts/InputBlocker.gd").new()
+	wrap.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	wrap.mouse_filter = Control.MOUSE_FILTER_STOP
+	# The TV is the GAME, not HUD: joining "ui" alone made F4 hide
+	# the whole set mid-play (and left this fence invisibly eating
+	# keys). "game_surface" keeps it out of the sweep; debug HUD
+	# inside a stick still toggles.
+	wrap.add_to_group("ui")
+	wrap.add_to_group("game_surface")
+	# The dark room behind the set.
+	var room := ColorRect.new()
+	room.color = Color(0.014, 0.011, 0.009, 1.0)
+	room.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	room.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrap.add_child(room)
+	# The set's plastic shell.
+	var bezel := Panel.new()
+	bezel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bezel.offset_left = 10
+	bezel.offset_top = 8
+	bezel.offset_right = -10
+	bezel.offset_bottom = -8
+	bezel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var bsb := StyleBoxFlat.new()
+	bsb.bg_color = Color(0.095, 0.085, 0.080, 1.0)
+	bsb.border_color = Color(0.030, 0.026, 0.024, 1.0)
+	bsb.set_border_width_all(3)
+	bsb.set_corner_radius_all(16)
+	bezel.add_theme_stylebox_override("panel", bsb)
+	wrap.add_child(bezel)
+	# The screen — inset glass the whole library flow lives inside.
+	var screen := Panel.new()
+	screen.name = "TvScreen"
+	screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	screen.offset_left = 30
+	screen.offset_top = 26
+	screen.offset_right = -30
+	screen.offset_bottom = -46
+	screen.clip_contents = true
+	var ssb := StyleBoxFlat.new()
+	ssb.bg_color = Color(0.008, 0.009, 0.012, 1.0)
+	ssb.border_color = Color(0.020, 0.018, 0.016, 1.0)
+	ssb.set_border_width_all(2)
+	ssb.set_corner_radius_all(8)
+	screen.add_theme_stylebox_override("panel", ssb)
+	wrap.add_child(screen)
+	# ── The fit frame (2026-08-03) ──────────────────────────────
+	# Every slowstick lays out in an absolute 1280x720 design space.
+	# The screen panel is the window MINUS the bezel insets — so
+	# mounting hosts directly on it CLIPPED the bottom 72px of every
+	# stick (Northwind's walk signs, pockets and HEARD rendered into
+	# the void — the "still can't play" screenshot). The fit frame
+	# is a fixed 1280x720 Control letterboxed into the glass:
+	# uniform scale, centered, input transforms included.
+	var fit := Control.new()
+	fit.name = "FitFrame"
+	fit.size = Vector2(1280, 720)
+	fit.mouse_filter = Control.MOUSE_FILTER_PASS
+	screen.add_child(fit)
+	var refit := func() -> void:
+		var ss: Vector2 = screen.size
+		if ss.x < 2.0 or ss.y < 2.0:
+			return
+		var k: float = minf(ss.x / 1280.0, ss.y / 720.0)
+		fit.scale = Vector2(k, k)
+		fit.position = Vector2((ss.x - 1280.0 * k) * 0.5,
+				(ss.y - 720.0 * k) * 0.5)
+	screen.resized.connect(refit)
+	fit.add_child(_slowstock_root)
+	# Chin plate: brand + power LED.
+	var brand := Label.new()
+	brand.text = "S L O W S T O C K"
+	if ResourceLoader.exists(SkinDB.F_CINZEL):
+		brand.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
+	brand.add_theme_font_size_override("font_size", 12)
+	brand.add_theme_color_override("font_color", Color(0.44, 0.40, 0.34, 1.0))
+	brand.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	brand.offset_top = -34
+	brand.offset_bottom = -14
+	brand.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	brand.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrap.add_child(brand)
+	var led := ColorRect.new()
+	led.color = Color(0.35, 0.85, 0.45, 0.9)
+	led.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	led.offset_left = -52
+	led.offset_right = -44
+	led.offset_top = -28
+	led.offset_bottom = -20
+	led.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrap.add_child(led)
+	add_child(wrap)
+	# The tree-entry resized signal is not guaranteed on every layout
+	# path — a missed one leaves fit.scale at 1.0 and the bottom of
+	# every stick crops again. One deferred refit after the layout
+	# pass makes the letterbox unconditional.
+	refit.call_deferred()
+	# ESC on the shelf's dim-click / closed signal frees the wrap.
+	# We poll for it by listening on the SlowstockBoot's tree exit.
+	_slowstock_root.tree_exited.connect(func() -> void:
+		if is_instance_valid(wrap): wrap.queue_free()
+		_slowstock_root = null)
+	# Also allow the wrap to intercept ESC as a global close.
+	wrap.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventKey and ev.pressed and (ev as InputEventKey).keycode == KEY_ESCAPE:
+			if _slowstock_root != null and is_instance_valid(_slowstock_root):
+				_slowstock_root.queue_free())
+
+
 func _play_title_music() -> void:
 	const SRC := "assets/audio/bgm/title_theme.ogg"
-	AudioMgr.play_bgm(SRC)
+	AudioMgr.request_scene_bgm(SRC)
 	var is_new := SaveSystem.mark_unlocked("music:title_theme")
 	if is_new:
 		_unlock_overlay.call("show_unlock", {
@@ -644,7 +874,7 @@ func _nav_btn(text: String) -> Button:
 func _nav_btn_small(text: String) -> Button:
 	var btn := _nav_btn(text)
 	btn.custom_minimum_size.y = 34
-	btn.add_theme_font_size_override("font_size", 13)
+	btn.add_theme_font_size_override("font_size", 14)
 	btn.add_theme_color_override("font_color", C_DIM)
 	return btn
 
@@ -680,3 +910,64 @@ func _make_rule_rect() -> ColorRect:
 	r.color = C_BORDER
 	r.custom_minimum_size.y = 1
 	return r
+
+
+# ── Procedural frontispiece backdrop ─────────────────────────────
+
+func _hash01_menu(x: int, y: int) -> float:
+	var n: int = x * 374761393 + y * 668265263
+	n = (n ^ (n >> 13)) * 1274126177
+	n = n ^ (n >> 16)
+	return float(n & 0xFFFF) / 65536.0
+
+
+func _make_backdrop_tex() -> ImageTexture:
+	# Half-res canvas, scaled to the viewport by the TextureRect.
+	# ~230k pixels once at boot; deterministic, no RNG.
+	var w := 640
+	var h := 360
+	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	for y in range(h):
+		for x in range(w):
+			# Lamplight: soft radial falloff from behind the title.
+			var dx: float = (float(x) - 150.0) / 460.0
+			var dy: float = (float(y) - 80.0) / 330.0
+			var glow: float = clampf(1.0 - sqrt(dx * dx + dy * dy), 0.0, 1.0)
+			var c := Color(
+				C_BG.r + glow * 0.034,
+				C_BG.g + glow * 0.024,
+				C_BG.b + glow * 0.010, 1.0)
+			# Paper tooth — sparse up-flecks and down-flecks.
+			var g: float = _hash01_menu(x, y)
+			if g > 0.94:
+				c = Color(c.r + 0.014, c.g + 0.012, c.b + 0.008, 1.0)
+			elif g < 0.05:
+				c = Color(maxf(0.0, c.r - 0.010), maxf(0.0, c.g - 0.009),
+					maxf(0.0, c.b - 0.006), 1.0)
+			img.set_pixel(x, y, c)
+	# Compass ring watermark behind the volumes panel — a book
+	# plate, barely there.
+	var cx := 470
+	var cy := 195
+	for ri in [132, 126]:
+		var r_f: float = float(ri)
+		for i in range(1080):
+			var ang: float = float(i) * TAU / 1080.0
+			var px: int = cx + int(cos(ang) * r_f)
+			var py: int = cy + int(sin(ang) * r_f)
+			if px >= 0 and px < w and py >= 0 and py < h:
+				img.set_pixel(px, py, img.get_pixel(px, py).lerp(C_GOLD, 0.055))
+	# Eight radial ticks.
+	for t in range(8):
+		var ang2: float = float(t) * TAU / 8.0
+		for rr in range(112, 122):
+			var px2: int = cx + int(cos(ang2) * float(rr))
+			var py2: int = cy + int(sin(ang2) * float(rr))
+			if px2 >= 0 and px2 < w and py2 >= 0 and py2 < h:
+				img.set_pixel(px2, py2, img.get_pixel(px2, py2).lerp(C_GOLD, 0.07))
+	# Small diamond at the ring's heart.
+	for yy in range(cy - 6, cy + 7):
+		for xx in range(cx - 6, cx + 7):
+			if absi(xx - cx) + absi(yy - cy) <= 6 and xx >= 0 and xx < w and yy >= 0 and yy < h:
+				img.set_pixel(xx, yy, img.get_pixel(xx, yy).lerp(C_GOLD, 0.05))
+	return ImageTexture.create_from_image(img)

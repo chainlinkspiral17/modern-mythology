@@ -1,0 +1,480 @@
+{
+ "_doc": "Written by godot/tools/audio_director.html — never hand-edit. Per catalog track id: the APPROVED temp take (take id, mood {style, form, mode, key, bpm, density, seed}, the request it was made with, instruments, date, who, notes, loudness, files it wrote) so it can be regenerated identically, every REJECTED seed (new takes skip them) and the history. The audio itself lives in Google Drive (godot/tools/music_drive.sh), never in git. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.",
+ "v": 1,
+ "tracks": {
+  "credits_theme": {
+   "approved": {
+    "take": "20261011-152551-s1004813095",
+    "seed": 1004813095,
+    "mood": {
+     "style": "noir",
+     "form": "song",
+     "mode": "major",
+     "key": 9,
+     "bpm": 64,
+     "density": 0.62,
+     "seed": 1004813095
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:bass_fretless",
+     "chords": "forge:keys_ep",
+     "lead": "forge:keys_vibes",
+     "pad": "forge:drone_dark"
+    },
+    "date": "2026-10-11T23:56:48.366Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14.1,
+    "true_peak": -1.47,
+    "seconds": 123,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/credits_theme.temp.ogg",
+     "assets/audio/bgm/credits_theme.stems/drums.ogg",
+     "assets/audio/bgm/credits_theme.stems/bass.ogg",
+     "assets/audio/bgm/credits_theme.stems/chords.ogg",
+     "assets/audio/bgm/credits_theme.stems/lead.ogg",
+     "assets/audio/bgm/credits_theme.stems/pad.ogg",
+     "assets/audio/bgm/credits_theme.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5372871,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261011-152551-s1004813095",
+     "seed": 1004813095,
+     "date": "2026-10-11T23:56:48.366Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol1_ambient": {
+   "approved": {
+    "take": "20261011-155743-s221017574",
+    "seed": 221017574,
+    "mood": {
+     "style": "ambient",
+     "form": "song",
+     "mode": "mixolydian",
+     "key": 0,
+     "bpm": 68,
+     "density": 0.62,
+     "seed": 221017574
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:drone_cathedral",
+     "chords": "forge:pad_shimmer",
+     "lead": "forge:lead_theremin",
+     "pad": "forge:pad_bowed_metal"
+    },
+    "date": "2026-10-12T00:05:52.706Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14.1,
+    "true_peak": -1.68,
+    "seconds": 115.941,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol1_ambient.temp.ogg",
+     "assets/audio/bgm/vol1_ambient.stems/drums.ogg",
+     "assets/audio/bgm/vol1_ambient.stems/bass.ogg",
+     "assets/audio/bgm/vol1_ambient.stems/chords.ogg",
+     "assets/audio/bgm/vol1_ambient.stems/lead.ogg",
+     "assets/audio/bgm/vol1_ambient.stems/pad.ogg",
+     "assets/audio/bgm/vol1_ambient.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5182434,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261011-155743-s221017574",
+     "seed": 221017574,
+     "moved_aside": [
+      "assets/audio/bgm/vol1_ambient.wav → assets/audio/replaced/vol1_ambient.20261012-000524.wav"
+     ],
+     "date": "2026-10-12T00:05:52.706Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol1_dream_drone": {
+   "approved": {
+    "take": "20261011-170844-s643066080",
+    "seed": 643066080,
+    "mood": {
+     "style": "ambient",
+     "form": "bed",
+     "mode": "lydian",
+     "key": 0,
+     "bpm": 60,
+     "density": 0.62,
+     "seed": 643066080
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:drone_cathedral",
+     "chords": "forge:choir_angel",
+     "lead": "forge:pluck_kalimba",
+     "pad": "forge:choir_angel"
+    },
+    "date": "2026-10-12T00:11:12.475Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14,
+    "true_peak": -1.77,
+    "seconds": 131,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol1_dream_drone.temp.ogg",
+     "assets/audio/bgm/vol1_dream_drone.stems/drums.ogg",
+     "assets/audio/bgm/vol1_dream_drone.stems/bass.ogg",
+     "assets/audio/bgm/vol1_dream_drone.stems/chords.ogg",
+     "assets/audio/bgm/vol1_dream_drone.stems/lead.ogg",
+     "assets/audio/bgm/vol1_dream_drone.stems/pad.ogg",
+     "assets/audio/bgm/vol1_dream_drone.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 6674261,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261011-170844-s643066080",
+     "seed": 643066080,
+     "moved_aside": [
+      "assets/audio/bgm/vol1_dream_drone.wav → assets/audio/replaced/vol1_dream_drone.20261012-001044.wav"
+     ],
+     "date": "2026-10-12T00:11:12.475Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol1_sharp_theme": {
+   "approved": {
+    "take": "20261013-151659-s890319104",
+    "seed": 890319104,
+    "mood": {
+     "style": "noir",
+     "form": "song",
+     "mode": "minor",
+     "key": 6,
+     "bpm": 72,
+     "density": 0.45,
+     "seed": 890319104
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:bass_upright",
+     "chords": "forge:keys_vibes",
+     "lead": "forge:pluck_nylon",
+     "pad": "forge:choir_crypt"
+    },
+    "date": "2026-10-13T22:19:12.000Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14.4,
+    "true_peak": -1.6,
+    "seconds": 109.667,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol1_sharp_theme.temp.ogg",
+     "assets/audio/bgm/vol1_sharp_theme.stems/drums.ogg",
+     "assets/audio/bgm/vol1_sharp_theme.stems/bass.ogg",
+     "assets/audio/bgm/vol1_sharp_theme.stems/chords.ogg",
+     "assets/audio/bgm/vol1_sharp_theme.stems/lead.ogg",
+     "assets/audio/bgm/vol1_sharp_theme.stems/pad.ogg",
+     "assets/audio/bgm/vol1_sharp_theme.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5250313,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261013-151659-s890319104",
+     "seed": 890319104,
+     "date": "2026-10-13T22:19:12.000Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol1_title": {
+   "approved": {
+    "take": "20261013-150439-s4016274972",
+    "seed": 4016274972,
+    "mood": {
+     "style": "noir",
+     "form": "song",
+     "mode": "dorian",
+     "key": 11,
+     "bpm": 72,
+     "density": 0.55,
+     "seed": 4016274972
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:bass_fretless",
+     "chords": "forge:keys_felt",
+     "lead": "forge:pluck_nylon",
+     "pad": "forge:pad_sub_drone"
+    },
+    "date": "2026-10-13T22:08:31.911Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14.1,
+    "true_peak": -1.6,
+    "seconds": 109.667,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol1_title.temp.ogg",
+     "assets/audio/bgm/vol1_title.stems/drums.ogg",
+     "assets/audio/bgm/vol1_title.stems/bass.ogg",
+     "assets/audio/bgm/vol1_title.stems/chords.ogg",
+     "assets/audio/bgm/vol1_title.stems/lead.ogg",
+     "assets/audio/bgm/vol1_title.stems/pad.ogg",
+     "assets/audio/bgm/vol1_title.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5027782,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261013-150439-s4016274972",
+     "seed": 4016274972,
+     "moved_aside": [
+      "assets/audio/bgm/vol1_title.wav → assets/audio/replaced/vol1_title.20261013-220809.wav"
+     ],
+     "date": "2026-10-13T22:08:31.911Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol2_ambient": {
+   "approved": {
+    "take": "20261013-145636-s920146443",
+    "seed": 920146443,
+    "mood": {
+     "style": "ambient",
+     "form": "bed",
+     "mode": "lydian",
+     "key": 2,
+     "bpm": 68,
+     "density": 0.62,
+     "seed": 920146443
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:drone_cathedral",
+     "chords": "forge:pad_shimmer",
+     "lead": "forge:lead_theremin",
+     "pad": "forge:pad_bowed_metal"
+    },
+    "date": "2026-10-13T22:03:38.127Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14,
+    "true_peak": -1.77,
+    "seconds": 115.941,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol2_ambient.temp.ogg",
+     "assets/audio/bgm/vol2_ambient.stems/drums.ogg",
+     "assets/audio/bgm/vol2_ambient.stems/bass.ogg",
+     "assets/audio/bgm/vol2_ambient.stems/chords.ogg",
+     "assets/audio/bgm/vol2_ambient.stems/lead.ogg",
+     "assets/audio/bgm/vol2_ambient.stems/pad.ogg",
+     "assets/audio/bgm/vol2_ambient.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5259467,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261013-145636-s920146443",
+     "seed": 920146443,
+     "moved_aside": [
+      "assets/audio/bgm/vol2_ambient.wav → assets/audio/replaced/vol2_ambient.20261013-220314.wav"
+     ],
+     "date": "2026-10-13T22:03:38.127Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol2_briar_falls_night": {
+   "approved": {
+    "take": "20261013-150958-s1644107555",
+    "seed": 1644107555,
+    "mood": {
+     "style": "ambient",
+     "form": "bed",
+     "mode": "minor",
+     "key": 10,
+     "bpm": 60,
+     "density": 0.45,
+     "seed": 1644107555
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:pad_sub_drone",
+     "chords": "forge:pad_bowed_glass",
+     "lead": "forge:pluck_bell",
+     "pad": "forge:drone_horizon"
+    },
+    "date": "2026-10-13T22:11:56.305Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14,
+    "true_peak": -1.96,
+    "seconds": 131,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol2_briar_falls_night.temp.ogg",
+     "assets/audio/bgm/vol2_briar_falls_night.stems/drums.ogg",
+     "assets/audio/bgm/vol2_briar_falls_night.stems/bass.ogg",
+     "assets/audio/bgm/vol2_briar_falls_night.stems/chords.ogg",
+     "assets/audio/bgm/vol2_briar_falls_night.stems/lead.ogg",
+     "assets/audio/bgm/vol2_briar_falls_night.stems/pad.ogg",
+     "assets/audio/bgm/vol2_briar_falls_night.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5741249,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261013-150958-s1644107555",
+     "seed": 1644107555,
+     "moved_aside": [
+      "assets/audio/bgm/vol2_briar_falls_night.wav → assets/audio/replaced/vol2_briar_falls_night.20261013-221126.wav"
+     ],
+     "date": "2026-10-13T22:11:56.305Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  },
+  "vol2_graveyard_solo": {
+   "approved": {
+    "take": "20261013-151331-s3719752444",
+    "seed": 3719752444,
+    "mood": {
+     "style": "ambient",
+     "form": "bed",
+     "mode": "minor",
+     "key": 4,
+     "bpm": 60,
+     "density": 0.45,
+     "seed": 3719752444
+    },
+    "request": {},
+    "instruments": {
+     "drums": "kit",
+     "bass": "forge:drone_horizon",
+     "chords": "forge:pad_bowed_glass",
+     "lead": "forge:pluck_harp",
+     "pad": "forge:pad_hollow"
+    },
+    "date": "2026-10-13T22:15:58.013Z",
+    "by": "andy",
+    "notes": "",
+    "lufs": -14,
+    "true_peak": -1.62,
+    "seconds": 131,
+    "bars": 32,
+    "credits": "",
+    "files": [
+     "assets/audio/bgm/vol2_graveyard_solo.temp.ogg",
+     "assets/audio/bgm/vol2_graveyard_solo.stems/drums.ogg",
+     "assets/audio/bgm/vol2_graveyard_solo.stems/bass.ogg",
+     "assets/audio/bgm/vol2_graveyard_solo.stems/chords.ogg",
+     "assets/audio/bgm/vol2_graveyard_solo.stems/lead.ogg",
+     "assets/audio/bgm/vol2_graveyard_solo.stems/pad.ogg",
+     "assets/audio/bgm/vol2_graveyard_solo.stems.json"
+    ],
+    "format": "ogg",
+    "bytes": 5781319,
+    "quality": {
+     "mix": 4,
+     "stem": 1
+    }
+   },
+   "rejected": [],
+   "history": [
+    {
+     "action": "approve",
+     "take": "20261013-151331-s3719752444",
+     "seed": 3719752444,
+     "moved_aside": [
+      "assets/audio/bgm/vol2_graveyard_solo.wav → assets/audio/replaced/vol2_graveyard_solo.20261013-221532.wav"
+     ],
+     "date": "2026-10-13T22:15:58.013Z",
+     "by": "andy",
+     "notes": ""
+    }
+   ]
+  }
+ }
+}

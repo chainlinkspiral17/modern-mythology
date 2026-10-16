@@ -1,0 +1,170 @@
+{
+ "id": "surveillance",
+ "notes": "The pole camera and its cone of view over the cul-de-sac.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 20,
+   "y_range": [
+    12,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 14,
+   "x_range": [
+    14,
+    26
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    22,
+    16,
+    6,
+    4
+   ],
+   "color": 7
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     22,
+     16
+    ],
+    [
+     28,
+     16
+    ],
+    [
+     28,
+     20
+    ],
+    [
+     22,
+     20
+    ],
+    [
+     22,
+     16
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     28,
+     18
+    ],
+    [
+     84,
+     8
+    ],
+    [
+     84,
+     40
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     28,
+     18
+    ],
+    [
+     84,
+     8
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     28,
+     18
+    ],
+    [
+     84,
+     40
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    60,
+    24
+   ],
+   "size": 2,
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    56,
+    28,
+    12,
+    8
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     56,
+     28
+    ],
+    [
+     62,
+     23
+    ],
+    [
+     68,
+     28
+    ]
+   ],
+   "color": 2
+  }
+ ]
+}

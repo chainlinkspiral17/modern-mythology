@@ -21,6 +21,17 @@ const F_ELITE     := "res://resources/fonts/SpecialElite-Regular.ttf"
 const F_COURIER   := "res://resources/fonts/CourierPrime-Regular.ttf"
 const F_ANONPRO   := "res://resources/fonts/AnonymousPro-Regular.ttf"
 const F_RAJDHANI  := "res://resources/fonts/Rajdhani-Medium.ttf"
+# ── THE READING FACES (2026-10-11, pass 82). User: "clean, elegant ereader
+# type fonts for the visual novel. I don't like the courier like
+# presentation in Planned Community." Literata (Google Play Books' face,
+# OFL, variable opsz 7-72) carries every non-diegetic running text; Inter
+# is the UI sans of the suburban (vol 6) chrome. Space Mono stays only
+# where the screen is diegetic (signal = a terminal) and Special Elite
+# where the paper is (zine). Cinzel / IM Fell remain the BOOK chrome —
+# plates, kickers, speaker caps — never the body again.
+const F_LITERATA   := "res://resources/fonts/Literata-Variable.ttf"
+const F_LITERATA_I := "res://resources/fonts/Literata-Italic-Variable.ttf"
+const F_INTER      := "res://resources/fonts/Inter-Variable.ttf"
 
 # Dialogue box variants
 const DLG_STANDARD := "standard"
@@ -28,6 +39,32 @@ const DLG_PAPER    := "paper"
 const DLG_TERMINAL := "terminal"
 
 var skins: Dictionary = {}
+
+# (pass 85) variable-font instances, cached: Literata and Inter carry a
+# wght axis, so a bold or a semibold is a FontVariation on the one file,
+# not a second file. Non-variable faces come back as themselves.
+var _font_cache: Dictionary = {}
+
+
+func weighted(path: String, wght: float = 600.0) -> Font:
+	var key: String = "%s@%d" % [path, int(wght)]
+	if _font_cache.has(key):
+		return _font_cache[key]
+	var base: Font = load(path) as Font
+	if base == null:
+		return null
+	var fv := FontVariation.new()
+	fv.base_font = base
+	fv.variation_opentype = {TextServerManager.get_primary_interface().name_to_tag("wght"): wght}
+	_font_cache[key] = fv
+	return fv
+
+
+## The italic companion of a reading face, or "" when the face has none.
+func italic_of(path: String) -> String:
+	if path == F_LITERATA:
+		return F_LITERATA_I
+	return ""
 
 
 func _ready() -> void:
@@ -79,9 +116,9 @@ func _build() -> void:
 		],
 		"spk_font":   F_CINZEL, "spk_size": 11,
 		"spk_color":  Color(0.784, 0.659, 0.290),
-		"txt_font":   F_IMFELL_I, "txt_size": 18,
+		"txt_font":   F_LITERATA, "txt_size": 18,
 		"txt_color":  Color(0.831, 0.788, 0.690),
-		"ch_font":    F_CINZEL,  "ch_size":  13,
+		"ch_font":    F_LITERATA, "ch_size": 22,
 		"ch_color":   Color(0.722, 0.659, 0.533),
 		"ch_border":  Color(0.706, 0.549, 0.235, 0.2),
 		"ch_bg":      Color(0.706, 0.549, 0.235, 0.05),
@@ -184,9 +221,9 @@ func _build() -> void:
 		],
 		"spk_font":   F_CINZEL, "spk_size": 11,
 		"spk_color":  Color(0.784, 0.643, 0.910),
-		"txt_font":   F_IMFELL_I, "txt_size": 18,
+		"txt_font":   F_LITERATA, "txt_size": 18,
 		"txt_color":  Color(0.831, 0.784, 0.910),
-		"ch_font":    F_CINZEL,  "ch_size":  13,
+		"ch_font":    F_LITERATA, "ch_size": 22,
 		"ch_color":   Color(0.706, 0.588, 0.831),
 		"ch_border":  Color(0.627, 0.392, 0.863, 0.2),
 		"ch_bg":      Color(0.627, 0.392, 0.863, 0.05),
@@ -212,11 +249,11 @@ func _build() -> void:
 		"dlg_min_h":  200.0,
 		"dlg_pad":    [24.0, 40.0, 20.0, 40.0],
 		"rule": [],  # no rule for suburban
-		"spk_font":   F_RAJDHANI, "spk_size": 14,
+		"spk_font":   F_INTER, "spk_size": 14,
 		"spk_color":  Color(0.165, 0.141, 0.125),
-		"txt_font":   F_COURIER,  "txt_size": 15,
+		"txt_font":   F_LITERATA, "txt_size": 18,
 		"txt_color":  Color(0.227, 0.204, 0.188),
-		"ch_font":    F_COURIER,  "ch_size":  14,
+		"ch_font":    F_LITERATA, "ch_size": 22,
 		"ch_color":   Color(0.361, 0.325, 0.298),
 		"ch_border":  Color(0.0, 0.0, 0.0, 0.12),
 		"ch_bg":      Color(0.0, 0.0, 0.0, 0.03),
@@ -224,7 +261,7 @@ func _build() -> void:
 		"ch_hbg":     Color(0.0, 0.0, 0.0, 0.07),
 		"ch_hcolor":  Color(0.165, 0.141, 0.125),
 		"cursor_col": Color(0.784, 0.353, 0.227),
-		"hud_font":   F_RAJDHANI,
+		"hud_font":   F_INTER,
 		"hud_color":  Color(0.165, 0.141, 0.125, 0.75),
 		"hud_bg":     Color(0.847, 0.827, 0.808, 0.9),
 		"hud_border": Color(0.0, 0.0, 0.0, 0.15),
@@ -252,9 +289,9 @@ func _build() -> void:
 		],
 		"spk_font":   F_CINZEL, "spk_size": 10,
 		"spk_color":  Color(0.659, 0.784, 0.392),
-		"txt_font":   F_IMFELL_I, "txt_size": 20,
+		"txt_font":   F_LITERATA, "txt_size": 20,
 		"txt_color":  Color(0.831, 0.878, 0.722),
-		"ch_font":    F_CINZEL,  "ch_size":  13,
+		"ch_font":    F_LITERATA, "ch_size": 22,
 		"ch_color":   Color(0.549, 0.659, 0.345),
 		"ch_border":  Color(0.471, 0.627, 0.235, 0.2),
 		"ch_bg":      Color(0.471, 0.627, 0.235, 0.05),

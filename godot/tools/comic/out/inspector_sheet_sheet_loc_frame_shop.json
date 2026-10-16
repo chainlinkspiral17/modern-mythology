@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_loc_frame_shop",
+      "kind": "location",
+      "era": "era1",
+      "tags": [
+        "location",
+        "era1",
+        "dw_frame_shop"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. an environment sheet of a small roadside picture-framing shop: exterior as a low building on a coastal highway with a hand-lettered hours card in the window; interior with sample frames covering the walls, a mat cutter on a green vinyl mat, foam core, a counter; and the side alley with two upturned spackle buckets in rain; labeled HECETA FRAME & MATTING. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

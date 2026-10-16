@@ -1,0 +1,328 @@
+{
+ "id": "loc_jetty",
+ "notes": "Northwind Harbor tableau \u00b7 one held wide shot \u00b7 the dawn palette, six colors.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#16202e",
+  "#7a8894",
+  "#4a5a52",
+  "#30281e",
+  "#d88a30",
+  "#c8ccd4"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    33,
+    36
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    36,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 42,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 50,
+   "x_range": [
+    20,
+    140
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 8,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 24,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 40,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 56,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 72,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 88,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 104,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 120,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 136,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 152,
+   "y_range": [
+    58,
+    72
+   ],
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    72,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 84,
+   "x_range": [
+    30,
+    120
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     24,
+     54
+    ],
+    [
+     34,
+     48
+    ],
+    [
+     46,
+     56
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    120,
+    46,
+    14,
+    12
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    104,
+    50,
+    8,
+    8
+   ],
+   "color": 3
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    8,
+    11
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    8,
+    11
+   ],
+   "color": 5
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    48,
+    51
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    48,
+    51
+   ],
+   "color": 5
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    88,
+    91
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    88,
+    91
+   ],
+   "color": 5
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    128,
+    131
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    128,
+    131
+   ],
+   "color": 5
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    150,
+    153
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    150,
+    153
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    70,
+    12
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    84,
+    8
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    96,
+    16
+   ],
+   "size": 1,
+   "color": 5
+  }
+ ]
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://pit_stop_interior_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://pit_stop_interior_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/pit_stop_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.62, 0.86, 0.42, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.10, 0.10, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.92, 0.92, 0.88, 1)
 ambient_light_energy = 0.95
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.78, 0.78, 0.72, 1)
 fog_light_energy = 0.3
 fog_density = 0.003
@@ -155,7 +170,7 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 8, 0)
 light_color = Color(0.96, 0.98, 0.92, 1)
 light_energy = 0.9
 shadow_enabled = false
@@ -172,12 +187,20 @@ light_color = Color(0.78, 0.86, 0.92, 1)
 light_energy = 0.25
 shadow_enabled = false
 
+; (pass 65) the wall-pack over the back door — on all day, like every diner's
+[node name="Back_Door_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.700, 2.40, -11.300)
+light_color = Color(1.0, 0.90, 0.68, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 3.5
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["raw", "substrate_press", "fluorescent_corridor", "fluorescent_panic", "convenience_night"])
+mood_strata = Array[String](["raw", "lunch", "kitchen_practical", "dawn_warm", "lithograph", "noir", "fluorescent_corridor"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
@@ -272,7 +295,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +314,259 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+[node name="Pendant_Booths_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 2.55, -2.5)
+light_color = Color(0.98, 0.9, 0.72, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Pendant_Counter_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.55, -3.9)
+light_color = Color(0.98, 0.9, 0.72, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 5.0
+
+; front door establish: booths + counter + pass-through
+[node name="shot_establish_diner" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.8, 1.65, -0.9)
+rotation = Vector3(-0.0399997, 0.82, 0)
+metadata/fov = 62.0
+
+; the back corner booth, seated eye-line (ch7)
+[node name="shot_closeup_booth" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.6, 1.35, -1.6)
+rotation = Vector3(-0.9377, -1.9890, 0.0)
+metadata/fov = 45.0
+
+; down the counter to the register + pie case
+[node name="shot_wide_counter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.3, 1.6, -2.2)
+rotation = Vector3(-0.0399997, 0.89, 0)
+metadata/fov = 58.0
+
+; the pass-through: sill, bell, tickets, grill beyond (ch4)
+[node name="shot_closeup_passthrough" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.7, 1.5, -4.6)
+rotation = Vector3(-0.0200003, 0, 0)
+metadata/fov = 48.0
+
+; Ben's side: down the line past fryer to walk-in (ch2/ch6)
+[node name="shot_wide_grill" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.900, 1.650, -9.300)
+rotation = Vector3(-0.0931, 1.4411, 0.0)
+metadata/fov = 60.0
+
+; the milk crate by the walk-in, Jesse's seat (ch4)
+[node name="shot_closeup_walkin" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.500, 1.400, -7.900)
+rotation = Vector3(-0.3657, 2.2356, 0.0)
+metadata/fov = 50.0
+
+; The lot pole the D5 pass planted outside the booth windows.
+[node name="Lot_Pole_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2, 5.8, -4.5)
+light_color = Color(0.95, 0.78, 0.5, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 8.0
+
+; insert: the grill line — the grease hisses (ch2/ch6)
+[node name="shot_insert_grill" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.720, -9.350)
+rotation = Vector3(-0.5917, 0.0454, 0.0)
+metadata/fov = 42.0
+
+; insert: the kitchen window — cataloguing the lot (ch2)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.900, 1.600, -9.600)
+rotation = Vector3(-0.1245, -0.4076, 0.0)
+metadata/fov = 42.0
+
+; insert: the bell over the diner door chimes (ch4)
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.3, -1.1)
+rotation = Vector3(0.1977, 2.8506, 0.0)
+metadata/fov = 42.0
+
+; insert: the ten-dollar bill — "The red light lies." (ch4)
+[node name="shot_insert_bill" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1.35, -3.95)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: Ben's phone buzzes at 09:18 (ch6)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.750, 1.400, -7.550)
+rotation = Vector3(-0.5635, -0.6119, 0.0)
+metadata/fov = 42.0
+
+; insert: three eight-by-tens from the paper bag
+[node name="shot_insert_prints" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.4, -4.0)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Pendant_4_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.600, 2.560, -1.700)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Pendant_2_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.400, 2.560, -3.900)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Pendant_3_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.400, 2.560, -3.900)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.400, 2.560, -3.600)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.400, 2.560, -1.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.565, 1.612, -1.989)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.348, 1.612, -3.901)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; KITCHEN DRAFT 2 (2026-10-09): the line's own light, the pass heat lamp, the tubes moved with the bigger room
+
+[node name="Fluor_K1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.8, 2.85, -7.4)
+light_color = Color(0.88, 0.92, 0.9, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 6.0
+
+[node name="Fluor_K2_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.6, 2.85, -9.1)
+light_color = Color(0.88, 0.92, 0.9, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 6.0
+
+[node name="Fluor_K3_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.2, 2.85, -9.4)
+light_color = Color(0.88, 0.92, 0.9, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 5.0
+
+[node name="Hood_Light_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.3, 1.96, -10.25)
+light_color = Color(1.0, 0.86, 0.64, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 4.2
+
+[node name="Pass_HeatLamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.7, 1.76, -6.2)
+light_color = Color(1.0, 0.5, 0.25, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 1.8
+
+; the kitchen's own closeup pair: Ben at the flat-top, Jesse at the swing door
+[node name="shot_closeup_person__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.900, 1.550, -8.200)
+rotation = Vector3(-0.1067, -0.1722, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.620, -9.550)
+rotation = Vector3(-0.0534, -2.2440, 0.0)
+metadata/fov = 45.0
+
+; ── vn_shot coverage (pass 65) — the back lot, suffixed __pit_stop_back_lot
+; closeup (back lot): Ben at the dumpster, the first Powerade
+[node name="shot_closeup_ben__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.800, 1.550, -12.300)
+rotation = Vector3(-0.0354, 1.1706, 0.0)
+metadata/fov = 45.0
+
+; closeup (back lot): the same frame — whoever is at the dumpster
+[node name="shot_closeup_person__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.800, 1.550, -12.300)
+rotation = Vector3(-0.0354, 1.1706, 0.0)
+metadata/fov = 45.0
+
+; closeup (back lot): Jesse leaning on the dumpster, then crouched at its foot
+[node name="shot_closeup_jesse__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.600, 1.550, -12.300)
+rotation = Vector3(-0.0354, -1.1706, 0.0)
+metadata/fov = 45.0
+
+; closeup (back lot): the reverse
+[node name="shot_closeup_person_b__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.600, 1.550, -12.300)
+rotation = Vector3(-0.0354, -1.1706, 0.0)
+metadata/fov = 45.0
+
+; establish (back lot): from the back door, the enclosure and the lot
+[node name="shot_establish_b__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.000, 1.600, -12.600)
+rotation = Vector3(-0.0983, 1.4056, 0.0)
+metadata/fov = 60.0
+
+; insert (back lot): the back door, the screen door shut in it
+[node name="shot_insert_door__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.900, 1.500, -12.700)
+rotation = Vector3(-0.1489, 2.4981, 0.0)
+metadata/fov = 42.0
+
+; insert (back lot): Ben's truck in the employee spots
+[node name="shot_insert_truck__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.500, -13.200)
+rotation = Vector3(-0.1354, -0.6889, 0.0)
+metadata/fov = 42.0
+
+; ── named closeups (pass 93): the back corner booth and the kitchen line, per preset
+; closeup: Eileen in the back corner booth, from the aisle
+[node name="shot_closeup_eileen__pit_stop_back_booth" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.000, 1.350, -1.200)
+rotation = Vector3(-0.1512, 1.9617, 0.0)
+metadata/fov = 42.0
+
+; closeup: Ben on the grill ("on the grill since eleven"), from the line's east end
+[node name="shot_closeup_ben__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 1.600, -9.000)
+rotation = Vector3(-0.0672, 1.2278, 0.0)
+metadata/fov = 42.0
+
+; closeup: Jesse through the kitchen's swinging door, from inside the kitchen
+[node name="shot_closeup_jesse__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.600, -7.600)
+rotation = Vector3(-0.0523, -2.3192, 0.0)
+metadata/fov = 42.0
+

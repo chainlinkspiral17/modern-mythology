@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "rain, mid-interview",
+    "for": "PATIENT MISTER GLASS \u00b7 rainy evenings \u00b7 under the foley",
+    "notes": "Real-time rain starting mid-interview some nights. Changes his mood. Sits UNDER the kettle."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "rain",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 48.0,
+          "vel": 0.6
+        }
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.08,
+      "notes": [
+        {
+          "pitch": "A1",
+          "bar": 1,
+          "beat": 1,
+          "dur": 48.0,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

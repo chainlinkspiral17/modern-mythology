@@ -7,6 +7,32 @@ const DUCK_RATIO     := 0.32   # BGM ducks to 32% when dialogue is showing
 const DUCK_FADE      := 0.35
 const UNDUCK_FADE    := 0.70
 
+# ── Per-locale ambient bed ("the world hum") ──────────────────────
+# When a 3D locale that owns an ambient bed loads, the dominant
+# Music Player track ducks WAY down (to AMBIENT_DUCK) and an
+# inverted ambient soundtrack — a looping room-tone/drone on its
+# own Ambient bus — rises to take the room. Leaving the locale
+# crossfades back: ambient falls, BGM returns. The two are
+# inversely coupled, driven from the same enter/exit calls.
+const AMBIENT_DUCK   := 0.14   # BGM sinks to 14% under an active locale bed
+const AMBIENT_FADE   := 1.4    # slow, atmospheric crossfade (s)
+const AMBIENT_CFG    := "res://resources/audio/locale_ambient.json"
+
+# ── Signatures (2026-09-12) ───────────────────────────────────────
+# A catalog entry that names a character in `chars` and carries
+# "theme" in its id is that character's SIGNATURE: a 12-20 s figure
+# ("Sharp's signature, played whenever Sharp shows up"). GameEngine
+# cues it once per scene on the character's first show or line; it
+# plays as a one-shot on the Music Player and hands back whatever was
+# playing. While it plays under a world hum the duck INVERTS — the
+# hum sinks to SIGNATURE_HUM of its gain and the signature rises to
+# full — then both return when it ends. "Full" is still under the
+# dialogue duck (DUCK_RATIO, always on in the VN), so the hum has to
+# go well below that for the signature to read as foreground: 0.20
+# puts it ~5 dB above the room.
+const SIGNATURE_HUM  := 0.20
+const SIGNATURE_FADE := 0.5
+
 signal track_changed(src: String)
 
 var _bgm:   AudioStreamPlayer
@@ -21,8 +47,32 @@ var _current_src: String = ""
 var _paused:      bool   = false
 var _shuffle:     bool   = true
 
+# ── Jukebox mode ──────────────────────────────────────────────────
+# ON (default): the Music Player owns playback. The FULL catalog
+# rotates continuously; scene BGM requests only mark the track heard
+# (or seed the rotation when nothing is playing yet). Looping is
+# defeated so no track plays twice in a row.
+# OFF: classic behavior — scenes set their own looping BGM and the
+# VN queue/chapter logic drives track changes.
+# Toggled from the Music Player overlay; persisted in Settings.
+var jukebox_on: bool = true
+var _scene_src:  String = ""    # last BGM a scene asked for
+var _scene_loop: bool   = true  # whether that scene bed should loop
+
 var _duck_tween: Tween    = null
 var _is_ducked:  bool     = false
+
+# Per-locale ambient bed state.
+var _ambient:         AudioStreamPlayer = null
+var _ambient_tween:   Tween             = null
+var _ambient_active:  bool              = false
+var _ambient_locale:  String            = ""
+var _ambient_bed: String = ""      # the hum's src, un-prefixed — compared with _current_src
+var _ambient_gain: float = 1.0     # the locale's configured hum gain (locale_ambient.json)
+var _signature_srcs: Dictionary = {}   # src -> true, built lazily from the catalog
+var _signature_srcs_built: bool = false
+var _ambient_cfg:     Dictionary        = {}
+var _ambient_cfg_loaded: bool           = false
 
 var _music_heard: Dictionary = {}
 
@@ -48,10 +98,11 @@ func _ready() -> void:
 	_setup_buses()
 	_setup_players()
 	_load_heard()
+	jukebox_on = Settings.music_jukebox
 
 
 func _setup_buses() -> void:
-	for bus_name in ["BGM", "SFX", "Voice"]:
+	for bus_name in ["BGM", "SFX", "Voice", "Ambient"]:
 		if AudioServer.get_bus_index(bus_name) == -1:
 			AudioServer.add_bus()
 			var idx := AudioServer.get_bus_count() - 1
@@ -60,6 +111,9 @@ func _setup_buses() -> void:
 	set_bus_volume("BGM",   Settings.bgm_vol)
 	set_bus_volume("SFX",   Settings.sfx_vol)
 	set_bus_volume("Voice", Settings.voice_vol)
+	# Ambient starts silent — a locale bed fades it up when it takes
+	# the room, and back to silence on exit.
+	set_bus_volume("Ambient", 0.0001)
 	# Add panner to SFX bus for positional dialogue audio
 	var sfx_idx := AudioServer.get_bus_index("SFX")
 	if sfx_idx != -1 and AudioServer.get_bus_effect_count(sfx_idx) == 0:
@@ -106,6 +160,10 @@ func _setup_players() -> void:
 	_voice.bus = "Voice"
 	add_child(_voice)
 
+	_ambient = AudioStreamPlayer.new()
+	_ambient.bus = "Ambient"
+	add_child(_ambient)
+
 
 func _process(delta: float) -> void:
 	if _fade_timer <= 0.0:
@@ -133,10 +191,15 @@ func set_bus_volume(bus_name: String, vol: float) -> void:
 
 
 func play_bgm(src: String) -> void:
+	# Normalize: callers pass both "assets/audio/…" (catalog srcs)
+	# and "res://assets/audio/…" (host literals). Everything internal
+	# — heard-marking, catalog matching, _load_audio — expects the
+	# un-prefixed form. Without this, res://-prefixed requests got
+	# double-prefixed in _load_audio and silently never played.
+	src = src.trim_prefix("res://")
 	if src == _current_src and _bgm.playing and not _paused:
 		return
-	# heard-marking happens in _start_bgm once the stream actually
-	# loads — marking here branded missing files as "heard" forever.
+	_mark_heard(src)
 	if _bgm.playing or _paused:
 		_paused = false
 		_bgm.stream_paused = false
@@ -144,6 +207,50 @@ func play_bgm(src: String) -> void:
 		_fade_out()
 	else:
 		_start_bgm(src)
+
+
+# Scene-driven BGM. Gameplay scenes (slowstick hosts, the VN, the
+# gauntlet) call THIS instead of play_bgm. With the jukebox off it
+# behaves exactly like play_bgm (plus looping the bed when `loop`).
+# With the jukebox on, the request is remembered + marked heard but
+# playback stays with the rotating catalog — the player said who
+# controls the music.
+func request_scene_bgm(src: String, loop: bool = true) -> void:
+	src = src.trim_prefix("res://")
+	_scene_src  = src
+	_scene_loop = loop
+	if not jukebox_on:
+		play_bgm(src)
+		return
+	_mark_heard(src)
+	# Seed the rotation if we're sitting in silence.
+	if not _bgm.playing and not _paused and _pending_src == "" and _fade_timer <= 0.0:
+		play_bgm(src)
+
+
+# Scene-driven stop (VN scene end, host quit). A no-op while the
+# jukebox owns playback — the rotation keeps rolling.
+func stop_scene_bgm() -> void:
+	_scene_src = ""
+	if not jukebox_on:
+		stop_bgm()
+
+
+func set_jukebox(on: bool) -> void:
+	if jukebox_on == on:
+		return
+	jukebox_on = on
+	Settings.music_jukebox = on
+	if on:
+		# Player takes over: keep whatever is playing (rotation picks
+		# up at track end), or start rolling from silence.
+		if not is_playing() and not _paused:
+			play_next()
+	else:
+		# Hand control back to the scene: return to its bed if the
+		# rotation had wandered off it.
+		if _scene_src != "" and _scene_src != _current_src:
+			play_bgm(_scene_src)
 
 
 # Play `src` once, then snap back to `resume_src` when it ends.
@@ -189,14 +296,249 @@ func duck() -> void:
 	if _is_ducked:
 		return
 	_is_ducked = true
-	_tween_bgm_bus(Settings.bgm_vol * DUCK_RATIO, DUCK_FADE)
+	_retarget_bgm_bus(DUCK_FADE)
 
 
 func unduck() -> void:
 	if not _is_ducked:
 		return
 	_is_ducked = false
-	_tween_bgm_bus(Settings.bgm_vol, UNDUCK_FADE)
+	_retarget_bgm_bus(UNDUCK_FADE)
+
+
+# The BGM bus target is the product of every active attenuation:
+# the dialogue duck and the locale-ambient duck compose so that,
+# e.g., dialogue shown inside a locale bed doesn't fight over the
+# bus (both pull it down, we take the combined target).
+func _bgm_bus_target() -> float:
+	var duck_mult: float = DUCK_RATIO if _is_ducked else 1.0
+	var amb_mult:  float = AMBIENT_DUCK if _ambient_active else 1.0
+	# The hum and the Music Player track are, since 2026-09-12, usually
+	# the SAME bed (one locale→bed table feeds both layers). A 14% ghost
+	# of the file playing under itself, out of phase, is a chorus effect
+	# nobody asked for: when they coincide the Music Player goes to the
+	# floor and the hum carries the room alone.
+	if _ambient_active and _ambient_bed != "" and _current_src == _ambient_bed:
+		amb_mult = 0.0
+	# A signature is the one Music Player track that OUTRANKS the hum:
+	# it comes up to full and the hum sinks instead (see _ambient_target).
+	if _ambient_active and _is_signature(_current_src):
+		amb_mult = 1.0
+	return Settings.bgm_vol * duck_mult * amb_mult
+
+
+func _retarget_bgm_bus(duration: float) -> void:
+	_tween_bgm_bus(_bgm_bus_target(), duration)
+
+
+# The Ambient bus target while a hum is active: the locale's gain,
+# pulled down to SIGNATURE_HUM of itself for as long as a signature
+# is the Music Player track.
+func _ambient_target() -> float:
+	var sig_mult: float = SIGNATURE_HUM if _is_signature(_current_src) else 1.0
+	return Settings.bgm_vol * _ambient_gain * sig_mult
+
+
+func _retarget_ambient_bus(duration: float) -> void:
+	if _ambient_active:
+		_tween_ambient_bus(_ambient_target(), duration)
+
+
+func _is_signature(src: String) -> bool:
+	if src == "":
+		return false
+	if not _signature_srcs_built:
+		_signature_srcs_built = true
+		for entry: Dictionary in SceneDataDB.get_music_catalog():
+			var chars: Array = entry.get("chars", [])
+			var id: String = String(entry.get("id", ""))
+			if not chars.is_empty() and id.contains("theme"):
+				_signature_srcs[String(entry.get("src", ""))] = true
+	return _signature_srcs.has(src)
+
+
+# Play `char_key`'s signature now, once, then return to whatever was
+# playing. Returns the src cued, or "" when the character has no
+# signature in the current volume, its file is missing, or one is
+# already on its way (a queued unlock still catches it later).
+# `any_volume` lifts the volume scope — the gauntlet board cues its
+# visitors' themes from vol 5 and the Stranger's is vol 1's.
+func cue_signature(char_key: String, any_volume: bool = false) -> String:
+	if char_key == "":
+		return ""
+	if _pending_src != "" or _is_signature(_current_src):
+		return ""
+	for entry: Dictionary in SceneDataDB.get_music_catalog():
+		var chars: Array = entry.get("chars", [])
+		var id: String = String(entry.get("id", ""))
+		if not (char_key in chars) or not id.contains("theme"):
+			continue
+		if not any_volume and not _entry_in_current_volume(entry):
+			continue
+		var src: String = String(entry.get("src", ""))
+		if src == "" or src in _failed_srcs:
+			continue
+		var p := "res://" + src
+		if not ResourceLoader.exists(p) and not FileAccess.file_exists(ProjectSettings.globalize_path(p)):
+			_failed_srcs[src] = true
+			continue
+		# unlock_tracks_for_character queued it as well — one hearing, not two.
+		if src in _queue:
+			_queue.erase(src)
+			queue_changed.emit()
+		play_oneshot_bgm(src)
+		return src
+	return ""
+
+
+# ── Per-locale ambient bed ────────────────────────────────────────
+
+# Called by GameEngine when a 3D locale background loads. If the
+# locale has an ambient bed configured, duck the dominant BGM way
+# down and raise the inverted ambient soundtrack; otherwise ensure
+# any previous locale's bed is retired.
+func enter_locale_ambient(locale_id: String) -> void:
+	_ensure_ambient_cfg()
+	if locale_id == "":
+		exit_locale_ambient()
+		return
+	var entry: Variant = _ambient_cfg.get(locale_id, null)
+	if not (entry is Dictionary):
+		# No bed for this locale — retire any prior one.
+		exit_locale_ambient()
+		return
+	var cfg := entry as Dictionary
+	var bed: String = String(cfg.get("bed", ""))
+	if bed == "":
+		exit_locale_ambient()
+		return
+	if _ambient_active and _ambient_locale == locale_id:
+		return   # already humming this room
+	var stream := _load_audio(bed)
+	if stream == null:
+		exit_locale_ambient()
+		return
+	_set_stream_loop(stream, true)
+	_ambient.stream = stream
+	_ambient.volume_db = linear_to_db(0.0001)
+	_ambient.play()
+	_ambient_active = true
+	_ambient_locale = locale_id
+	_ambient_bed = bed.trim_prefix("res://")
+	_ambient_gain = float(cfg.get("gain", 1.0))
+	_tween_ambient_bus(_ambient_target(), AMBIENT_FADE)
+	_retarget_bgm_bus(AMBIENT_FADE)
+
+
+# Crossfade back to the Music Player: ambient falls to silence and
+# stops, BGM returns to its (possibly dialogue-ducked) level.
+func exit_locale_ambient() -> void:
+	if not _ambient_active:
+		return
+	_ambient_active = false
+	_ambient_locale = ""
+	_ambient_bed = ""
+	_tween_ambient_bus(0.0, AMBIENT_FADE, true)
+	_retarget_bgm_bus(UNDUCK_FADE)
+
+
+func _tween_ambient_bus(target_linear: float, duration: float, stop_at_end: bool = false) -> void:
+	var idx := AudioServer.get_bus_index("Ambient")
+	if idx == -1:
+		return
+	var current := db_to_linear(AudioServer.get_bus_volume_db(idx))
+	if _ambient_tween and _ambient_tween.is_valid():
+		_ambient_tween.kill()
+	_ambient_tween = create_tween()
+	_ambient_tween.tween_method(
+		func(v: float) -> void:
+			AudioServer.set_bus_volume_db(idx, linear_to_db(maxf(v, 0.0001))),
+		current, target_linear, duration
+	)
+	if stop_at_end:
+		_ambient_tween.tween_callback(func() -> void:
+			if not _ambient_active:
+				_ambient.stop())
+
+
+func _set_stream_loop(stream: AudioStream, on: bool) -> void:
+	if stream is AudioStreamOggVorbis:
+		(stream as AudioStreamOggVorbis).loop = on
+	elif stream is AudioStreamMP3:
+		(stream as AudioStreamMP3).loop = on
+	elif stream is AudioStreamWAV:
+		var w: AudioStreamWAV = stream as AudioStreamWAV
+		w.loop_mode = AudioStreamWAV.LOOP_FORWARD if on else AudioStreamWAV.LOOP_DISABLED
+		# A runtime-set loop needs a loop REGION: loop_end is 0 unless the
+		# importer wrote one, and an empty region does not loop. The
+		# world-hum beds are WAVs now (2026-09-12) and must loop.
+		if on and w.loop_end <= w.loop_begin:
+			w.loop_begin = 0
+			w.loop_end = _last_audible_frame(w)
+
+
+# The loop end for a WAV that was rendered as a one-shot: the last
+# frame above the noise floor, not the file's end. Every legacy bed
+# ends in a second of digital silence — the release tail's padding —
+# and looping the whole file put that silence in every room every
+# 40-70 s. Beds rendered with the synth's `loop` fold have no such
+# tail and come back unchanged. Scans at most the last four seconds.
+func _last_audible_frame(w: AudioStreamWAV) -> int:
+	var frames: int = int(w.get_length() * float(w.mix_rate))
+	if w.format != AudioStreamWAV.FORMAT_16_BITS:
+		return frames
+	var channels: int = 2 if w.stereo else 1
+	var bytes_per_frame: int = 2 * channels
+	var data: PackedByteArray = w.data
+	var total: int = data.size() / bytes_per_frame
+	if total <= 0:
+		return frames
+	var floor_frame: int = maxi(0, total - int(4.0 * float(w.mix_rate)))
+	var f: int = total - 1
+	while f > floor_frame:
+		var off: int = f * bytes_per_frame
+		var loud := false
+		for c in channels:
+			if absi(data.decode_s16(off + 2 * c)) > 16:
+				loud = true
+				break
+		if loud:
+			break
+		f -= 1
+	if f <= floor_frame:
+		return frames
+	return f + 1
+
+
+func _ensure_ambient_cfg() -> void:
+	if _ambient_cfg_loaded:
+		return
+	_ambient_cfg_loaded = true
+	if not FileAccess.file_exists(AMBIENT_CFG):
+		return
+	var f := FileAccess.open(AMBIENT_CFG, FileAccess.READ)
+	if f == null:
+		return
+	var txt := f.get_as_text()
+	f.close()
+	var parsed: Variant = JSON.parse_string(txt)
+	if not (parsed is Dictionary):
+		return
+	var root := parsed as Dictionary
+	# Support both a bare {locale: {...}} map and a wrapped
+	# {"locales": {...}} form (leaving room for future globals).
+	if root.has("locales") and root["locales"] is Dictionary:
+		_ambient_cfg = root["locales"] as Dictionary
+	else:
+		_ambient_cfg = root
+
+
+func is_ambient_active() -> bool:
+	return _ambient_active
+
+
+func current_ambient_locale() -> String:
+	return _ambient_locale
 
 
 func set_sfx_pan(pan: float) -> void:
@@ -235,34 +577,6 @@ func is_playing() -> bool:
 
 func is_paused() -> bool:
 	return _paused
-
-
-# Current playback head in seconds (0 if nothing is loaded).
-func get_playback_position() -> float:
-	if _bgm.stream == null:
-		return 0.0
-	return _bgm.get_playback_position()
-
-
-# Length of the loaded BGM stream in seconds (0 if unknown/none).
-func get_stream_length() -> float:
-	if _bgm.stream == null:
-		return 0.0
-	return _bgm.stream.get_length()
-
-
-# Seek the loaded BGM stream to an absolute position in seconds.
-func seek(pos: float) -> void:
-	if _bgm.stream == null:
-		return
-	var length := _bgm.stream.get_length()
-	if length > 0.0:
-		pos = clampf(pos, 0.0, length - 0.05)
-	_bgm.seek(maxf(pos, 0.0))
-
-
-func is_shuffle() -> bool:
-	return _shuffle
 
 
 func is_heard(src: String) -> bool:
@@ -376,8 +690,32 @@ func _unlock_tracks_matching(predicate: Callable) -> int:
 			# equivalent to having heard the track for catalog purposes.
 			_mark_heard(src)
 			track_unlocked.emit(src, entry.get("title", id))
-		enqueue_music(src)
+		# ENQUEUE ONLY WITHIN THE CURRENT VOLUME (2026-09-12). A character
+		# carries every entry that names them: Lena is on vol2_ambient
+		# (Small Wood Variations) and vol7_apartment_rain, Nicola and
+		# Dante on vol4_standoff_strings and vol5_riverboat_drone. While
+		# those files did not exist the failed load advanced past them
+		# and nobody noticed; now that they do, a `show` of Lena in
+		# Smolvud put vol 2's bed at the head of the queue and it played
+		# next, over the cabin. The unlock (the Music Player's dot) is
+		# still volume-blind; what plays next is not.
+		if _entry_in_current_volume(entry):
+			enqueue_music(src)
 	return newly_unlocked
+
+
+# The chapter id is "<scene_id>::<chapter>" and scene ids start with
+# "vol<N>_"; an entry with no `vol`, or no chapter context, passes.
+func _entry_in_current_volume(entry: Dictionary) -> bool:
+	if _chapter_id == "" or not entry.has("vol"):
+		return true
+	var m: RegExMatch = _VOL_RX.search(_chapter_id)
+	if m == null:
+		return true
+	return int(entry.get("vol", -1)) == int(m.get_string(1))
+
+
+var _VOL_RX: RegEx = RegEx.create_from_string("^vol(\\d+)_")
 
 
 func play_next() -> void:
@@ -418,7 +756,7 @@ func _tween_bgm_bus(target_linear: float, duration: float) -> void:
 	)
 
 
-func _start_bgm(src: String) -> void:
+func _start_bgm(src: String, fade: bool = true) -> void:
 	var stream := _load_audio(src)
 	if not stream:
 		# Don't double-log when _load_audio already warned about a
@@ -431,13 +769,59 @@ func _start_bgm(src: String) -> void:
 		if next != "" and next != src and not (next in _failed_srcs):
 			_start_bgm(next)
 		return
+	# Jukebox rotation only advances when `finished` fires — a stream
+	# that loops at the import level would trap the rotation on one
+	# track forever. Defeat the loop on a duplicate so the import
+	# settings themselves stay untouched.
+	if jukebox_on:
+		stream = _with_loop(stream, false)
+	elif src == _scene_src and _scene_loop:
+		stream = _with_loop(stream, true)
 	_current_src = src
-	_mark_heard(src)
 	_bgm.stream = stream
-	_bgm.volume_db = linear_to_db(0.0001)
-	_bgm.play()
-	_fade_in()
+	# the bus level depends on which track this is (see _bgm_bus_target),
+	# and so does the hum's (a signature pushes it down; its end lets it back)
+	_retarget_bgm_bus(SIGNATURE_FADE)
+	_retarget_ambient_bus(SIGNATURE_FADE)
+	if fade:
+		_bgm.volume_db = linear_to_db(0.0001)
+		_bgm.play()
+		_fade_in()
+	else:
+		_fade_timer = 0.0
+		_bgm.volume_db = 0.0
+		_bgm.play()
 	track_changed.emit(src)
+
+
+# Returns a duplicate of `stream` with looping forced on/off, for the
+# stream types we ship (ogg / mp3 / wav). Anything else is returned
+# unchanged.
+func _with_loop(stream: AudioStream, loop: bool) -> AudioStream:
+	if stream is AudioStreamOggVorbis:
+		var ogg := stream.duplicate() as AudioStreamOggVorbis
+		ogg.loop = loop
+		return ogg
+	if stream is AudioStreamMP3:
+		var mp3 := stream.duplicate() as AudioStreamMP3
+		mp3.loop = loop
+		return mp3
+	if stream is AudioStreamWAV:
+		var wav := stream.duplicate() as AudioStreamWAV
+		if loop:
+			wav.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			wav.loop_begin = 0
+			var bytes_per_frame: int = 1
+			if wav.format == AudioStreamWAV.FORMAT_16_BITS:
+				bytes_per_frame = 2
+			if wav.stereo:
+				bytes_per_frame *= 2
+			@warning_ignore("integer_division")
+			wav.loop_end = wav.data.size() / bytes_per_frame
+		else:
+			wav.loop_mode = AudioStreamWAV.LOOP_DISABLED
+		return wav
+	return stream
 
 
 func _fade_in() -> void:
@@ -463,11 +847,41 @@ func _on_bgm_finished() -> void:
 		if resume != "":
 			_start_bgm(resume)
 			return
+	# Scene mode + looping scene bed: belt-and-braces replay in case
+	# the stream's own loop flag couldn't be set (unknown type).
+	if not jukebox_on and _scene_src != "" and _scene_src == _current_src and _scene_loop:
+		_start_bgm(_scene_src, false)
+		return
 	var next := _pick_next(_current_src)
 	_start_bgm(next if next != "" else _current_src)
 
 
 func _pick_next(current_src: String) -> String:
+	# 0) Jukebox mode: rotate the ENTIRE catalog in order, wrapping.
+	#    Queue and chapter context are bypassed — the Music Player
+	#    owns playback until the user toggles it off.
+	if jukebox_on:
+		var jcat: Array = SceneDataDB.get_music_catalog()
+		if not jcat.is_empty():
+			var cur_idx := -1
+			for i in jcat.size():
+				if String((jcat[i] as Dictionary).get("src", "")) == current_src:
+					cur_idx = i
+					break
+			for step in range(1, jcat.size() + 1):
+				var entry: Dictionary = jcat[(cur_idx + step) % jcat.size()]
+				var s := String(entry.get("src", ""))
+				if s == "" or s in _failed_srcs:
+					continue
+				# Much of the catalog is registered ahead of its
+				# audio — skip file-less entries here so the rotation
+				# never has to bounce off a failed load.
+				var p := "res://" + s
+				if not ResourceLoader.exists(p) and not FileAccess.file_exists(ProjectSettings.globalize_path(p)):
+					_failed_srcs[s] = true
+					continue
+				return s
+
 	# 1) Queue head wins — that's what GameEngine has enqueued via
 	#    character shows + scene loads + volume opens.
 	if not _queue.is_empty():
@@ -545,6 +959,7 @@ func _load_audio(src: String) -> AudioStream:
 	# Short-circuit known-bad sources so a corrupt entry in the
 	# catalog (or a missing .ogg that still has an .import sidecar)
 	# doesn't re-emit decode errors every time the queue lands on it.
+	src = src.trim_prefix("res://")
 	if src in _failed_srcs:
 		return null
 	var path := "res://" + src
@@ -572,8 +987,8 @@ func _load_audio(src: String) -> AudioStream:
 		"ogg":
 			return AudioStreamOggVorbis.load_from_buffer(bytes)
 		"wav":
-			var w := AudioStreamWAV.new()
-			w.data = bytes
-			return w
+			# load_from_buffer parses the RIFF header — assigning the
+			# raw file bytes to .data would misread header as samples.
+			return AudioStreamWAV.load_from_buffer(bytes)
 	push_warning("AudioMgr: unsupported audio extension '%s' for %s" % [ext, src])
 	return null

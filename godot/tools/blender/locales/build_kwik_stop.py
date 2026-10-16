@@ -73,7 +73,7 @@ COL_CEILING_TILE    = (0.94, 0.92, 0.84, 1.0)
 COL_CEILING_GRID    = (0.58, 0.54, 0.46, 1.0)
 COL_CEILING_STAIN   = (0.72, 0.62, 0.42, 1.0)
 COL_GLASS           = (0.78, 0.84, 0.86, 0.45)
-COL_GLASS_WARM      = (0.96, 0.84, 0.62, 0.70)   # sunset-through-window
+COL_GLASS_WARM      = (0.96, 0.84, 0.62, 0.35)   # sunset-through-window (2026-10-07: 0.70 → 0.35, the walls are cut and the lot is meant to be SEEN)
 COL_METAL_STEEL     = (0.66, 0.68, 0.70, 1.0)
 COL_METAL_BLACK     = (0.18, 0.16, 0.14, 1.0)
 COL_BRAND_NAVY      = (0.18, 0.32, 0.50, 1.0)    # Harmony Creek Estates banner
@@ -135,7 +135,7 @@ def _finalize_mesh(name, verts, faces, base_color):
     return obj
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+def _make_box_vendored(name, center, size, base_color, open_faces=None):
     open_faces = open_faces or set()
     cx, cy, cz = center
     sx, sy, sz = size
@@ -151,6 +151,24 @@ def make_box(name, center, size, base_color, open_faces=None):
                  ('-X',(3,0,4,7)),('+X',(1,2,6,5))]
     out_faces = [vids for tag, vids in face_defs if tag not in open_faces]
     return _finalize_mesh(name, verts, out_faces, base_color)
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, base_color, segments=8, axis='Z'):
@@ -176,6 +194,32 @@ def make_cyl(name, center, radius, height, base_color, segments=8, axis='Z'):
     faces.append(list(reversed(range(segments))))
     faces.append(list(range(segments, segments * 2)))
     return _finalize_mesh(name, verts, faces, base_color)
+
+
+def case_shell(prefix, center, size, color, open_face, wall=0.02):
+    """Five panels, one face open — _props.structure.make_case_shell's
+    twin for this self-contained builder (2026-09-24: every glass case
+    here was a SOLID body with its food inside it, behind a "glass" slab
+    that renders opaque — the pipeline has no alpha)."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    hx, hy, hz = sx / 2.0, sy / 2.0, sz / 2.0
+    w, ih = wall, sz - 2.0 * wall
+    make_box(f"{prefix}_Top", (cx, cy, cz + hz - w / 2.0), (sx, sy, w), color)
+    make_box(f"{prefix}_Bottom", (cx, cy, cz - hz + w / 2.0), (sx, sy, w), color)
+    if open_face in ('-Y', '+Y'):
+        sg = 1.0 if open_face == '-Y' else -1.0
+        make_box(f"{prefix}_Side_L", (cx - hx + w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Side_R", (cx + hx - w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Back", (cx, cy + sg * (hy - w / 2.0), cz), (sx - 2.0 * w, w, ih), color)
+    else:
+        sg = 1.0 if open_face == '-X' else -1.0
+        make_box(f"{prefix}_Side_L", (cx, cy - hy + w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Side_R", (cx, cy + hy - w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Back", (cx + sg * (hx - w / 2.0), cy, cz), (w, sy - 2.0 * w, ih), color)
+
+
+COL_GLINT = (0.86, 0.90, 0.92, 1.0)   # where a glass pane is: two pale strips
 
 
 CEIL_Z   = 3.00
@@ -208,18 +252,31 @@ def build_shell():
         make_box(f"Wall_X{sgn:+d}", (xpos, 4.5, CEIL_Z/2.0),
                  (WALL_THICK, 9.4, CEIL_Z), COL_WALL_CREAM)
         # Baseboard run
-        make_box(f"Wall_X{sgn:+d}_Base", (xpos - sgn*0.06, 4.5, 0.08),
-                 (0.06, 9.4, 0.16), COL_WALL_BASEBOARD)
+        # on the wall face, 1.2 cm proud (2026-09-23: inside the wall —
+        # the same 0.06/0.06 pattern that buried 398 kit baseboards)
+        make_box(f"Wall_X{sgn:+d}_Base", (xpos - sgn*(WALL_THICK/2.0 + 0.006), 4.5, 0.08),
+                 (0.012, 9.4, 0.16), COL_WALL_BASEBOARD)
     # North wall (back, beer cooler runs along it)
     make_box("Wall_N", (0.0, 9.0, CEIL_Z/2.0),
              (12.4, WALL_THICK, CEIL_Z), COL_WALL_CREAM)
-    make_box("Wall_N_Base", (0.0, 9.0 - 0.06, 0.08),
-             (12.4, 0.06, 0.16), COL_WALL_BASEBOARD)
+    make_box("Wall_N_Base", (0.0, 9.0 - (WALL_THICK/2.0 + 0.006), 0.08),
+             (12.4, 0.012, 0.16), COL_WALL_BASEBOARD)
     # South wall — door at centre, brand-red panel either side
-    make_box("Wall_S_W", (-3.75, 0.0, CEIL_Z/2.0),
-             (4.50, WALL_THICK, CEIL_Z), COL_BRAND_RED)
-    make_box("Wall_S_E", (+3.75, 0.0, CEIL_Z/2.0),
-             (4.50, WALL_THICK, CEIL_Z), COL_BRAND_RED)
+    # (2026-10-07: these were solid boxes — the picture windows were
+    # panes on a red wall and the canopy, pumps and NexCorp across the
+    # intersection were never seen. Cut: two piers, a spandrel under
+    # the glass and a lintel over it, each side.)
+    for nm, wc, gx in (("Wall_S_W", -3.75, -3.50), ("Wall_S_E", +3.75, +3.50)):
+        x0, x1, g0, g1 = wc - 2.25, wc + 2.25, gx - 1.20, gx + 1.20
+        z0, z1 = 0.85, 2.25                     # the glass's sill and head
+        make_box(f"{nm}_Pier_0", ((x0 + g0) / 2.0, 0.0, CEIL_Z/2.0),
+                 (g0 - x0, WALL_THICK, CEIL_Z), COL_BRAND_RED)
+        make_box(f"{nm}_Pier_1", ((g1 + x1) / 2.0, 0.0, CEIL_Z/2.0),
+                 (x1 - g1, WALL_THICK, CEIL_Z), COL_BRAND_RED)
+        make_box(f"{nm}_Spandrel", (gx, 0.0, z0 / 2.0),
+                 (2.40, WALL_THICK, z0), COL_BRAND_RED)
+        make_box(f"{nm}_Lintel", (gx, 0.0, (z1 + CEIL_Z) / 2.0),
+                 (2.40, WALL_THICK, CEIL_Z - z1), COL_BRAND_RED)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, WALL_THICK, 0.60), COL_BRAND_RED)
 
@@ -257,16 +314,18 @@ def build_shell():
     # the parking lot + NexCorp across the intersection. Warm
     # sunset-through-glass colour.
     for sgn, cx in [(-1, -3.50), (+1, +3.50)]:
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
         # Glass
-        make_box(f"Window_S_{sgn:+d}_Glass", (cx, -0.02, 1.55),
+        make_box(f"Window_S_{sgn:+d}_Glass", (cx, 0.12, 1.55),
                  (2.40, 0.04, 1.40), COL_GLASS_WARM)
         # Frame T + B
-        make_box(f"Window_S_{sgn:+d}_Frame_T", (cx, -0.04, 2.30),
+        make_box(f"Window_S_{sgn:+d}_Frame_T", (cx, 0.13, 2.30),
                  (2.50, 0.06, 0.10), COL_METAL_STEEL)
-        make_box(f"Window_S_{sgn:+d}_Frame_B", (cx, -0.04, 0.80),
+        make_box(f"Window_S_{sgn:+d}_Frame_B", (cx, 0.13, 0.80),
                  (2.50, 0.06, 0.10), COL_METAL_STEEL)
         # Mullion in middle (vertical)
-        make_box(f"Window_S_{sgn:+d}_Mull", (cx, -0.06, 1.55),
+        make_box(f"Window_S_{sgn:+d}_Mull", (cx, 0.165, 1.55),
                  (0.05, 0.05, 1.40), COL_METAL_STEEL)
 
     # ── Outdoor thermometer (canon — Texas heat cue) ────────────
@@ -295,30 +354,33 @@ def build_shell():
              (12.4, 9.4, 0.10), COL_CEILING_TILE)
     # Tile grid divider strips
     for i in range(-5, 6):
-        make_box(f"Ceiling_GridX_{i}", (i*1.0, 4.5, CEIL_Z + 0.02),
-                 (0.04, 9.4, 0.005), COL_CEILING_GRID)
+        make_box(f"Ceiling_GridX_{i}", (i*1.0, 4.5, CEIL_Z - 0.010),
+                 (0.04, 9.4, 0.012), COL_CEILING_GRID)
     for j in range(0, 10):
-        make_box(f"Ceiling_GridY_{j}", (0.0, float(j), CEIL_Z + 0.02),
-                 (12.4, 0.04, 0.005), COL_CEILING_GRID)
+        make_box(f"Ceiling_GridY_{j}", (0.0, float(j), CEIL_Z - 0.010),
+                 (12.4, 0.04, 0.012), COL_CEILING_GRID)
     # Water stains on ceiling tiles — canonical convenience-store
     # detail. Three darker patches at specific tile centres.
     for stain_i, (sx, sy) in enumerate([
         (-2.0, 2.5), (+1.0, 5.5), (+3.0, 7.5),
     ]):
+        # a faint blotch, not a dark 0.8 m board (2026-09-24, the user:
+        # "furniture on ceilings" — the stains read as slabs)
         make_box(f"Ceiling_Stain_{stain_i}",
-                 (sx, sy, CEIL_Z + 0.025),
-                 (0.80, 0.80, 0.003), COL_CEILING_STAIN)
+                 (sx, sy, CEIL_Z - 0.004),
+                 (0.46, 0.38, 0.004),
+                 tuple(COL_CEILING_TILE[k] * 0.72 + COL_CEILING_STAIN[k] * 0.28 for k in range(3)) + (1.0,))
 
     # ── Fluorescent tube fixtures (3 rows of 2 each) ────────────
     for j, ypos in enumerate([2.5, 5.0, 7.5]):
         for i in range(-1, 2):
             xp = i * 2.4
             make_box(f"FluorTube_{j}_{i}",
-                     (xp, ypos, CEIL_Z - 0.08),
+                     (xp, ypos, CEIL_Z - 0.05),
                      (1.6, 0.36, 0.06), (0.96, 0.96, 0.92, 1.0))
-            # Diffuser frame
+            # Diffuser frame — flush with the ceiling (2026-09-22)
             make_box(f"FluorFrame_{j}_{i}",
-                     (xp, ypos, CEIL_Z - 0.10),
+                     (xp, ypos, CEIL_Z - 0.01),
                      (1.70, 0.44, 0.02), COL_METAL_STEEL)
 
 
@@ -343,38 +405,40 @@ def build_counter():
              (0.02, 4.40, 0.20), COL_COUNTER_DARK)
 
     # ── Register on counter top, southern half ──────────────────
+    # (2026-09-22: the drawer was buried in the counter, the body 2 cm over it)
+    make_box("Register_Drawer",
+             (cx, cy - 1.20, 1.12),
+             (0.50, 0.40, 0.10), (0.22, 0.20, 0.22, 1.0))
     make_box("Register_Body",
-             (cx, cy - 1.20, 1.25),
+             (cx, cy - 1.20, 1.33),
              (0.42, 0.40, 0.32), (0.22, 0.20, 0.22, 1.0))
     make_box("Register_Display",
-             (cx - 0.22, cy - 1.20, 1.42),
+             (cx - 0.22, cy - 1.20, 1.50),
              (0.04, 0.34, 0.14), (0.10, 0.32, 0.16, 1.0))
     make_box("Register_Keypad",
-             (cx, cy - 1.20, 1.10),
+             (cx, cy - 1.20, 1.18),
              (0.36, 0.36, 0.02), (0.32, 0.32, 0.34, 1.0))
-    make_box("Register_Drawer",
-             (cx, cy - 1.20, 0.94),
-             (0.50, 0.40, 0.10), (0.22, 0.20, 0.22, 1.0))
 
     # ── Hot food case beside register (Hot Pockets canon) ───────
     hcx, hcy = cx, cy - 0.10
-    make_box("HotCase_Body", (hcx, hcy, 1.30),
-             (0.50, 0.70, 0.60), (0.94, 0.92, 0.84, 1.0))
-    make_box("HotCase_Glass", (hcx - 0.22, hcy, 1.30),
-             (0.04, 0.70, 0.58), COL_GLASS)
-    # Warm lamp inside (amber glow visible through glass)
-    make_box("HotCase_Lamp", (hcx, hcy, 1.55),
-             (0.50, 0.70, 0.04), (1.0, 0.78, 0.32, 1.0))
-    # Hot Pockets visible (3 of them at different angles)
+    # open to the customer (-X); the glass is two glints
+    case_shell("HotCase_Body", (hcx, hcy, 1.30), (0.50, 0.70, 0.60), (0.94, 0.92, 0.84, 1.0), '-X')
+    for gi, (gy, gw) in enumerate(((-0.18, 0.02), (-0.10, 0.01))):
+        make_box(f"HotCase_Glint_{gi}", (hcx - 0.22, hcy + gy, 1.30), (0.004, gw, 0.56), COL_GLINT)
+    # Warm lamp under the top panel (amber glow over the food)
+    make_box("HotCase_Lamp", (hcx, hcy, 1.56),
+             (0.46, 0.66, 0.04), (1.0, 0.78, 0.32, 1.0))
+    # Hot Pockets on the case floor (3 of them)
     for i in range(3):
         hp_y = hcy - 0.24 + i * 0.24
-        make_box(f"HotPocket_{i}", (hcx - 0.08, hp_y, 1.18),
+        make_box(f"HotPocket_{i}", (hcx - 0.08, hp_y, 1.06),
                  (0.20, 0.14, 0.08), (0.78, 0.58, 0.40, 1.0))
-    # Taquito roller (canon convenience-store fixture)
+    # Taquito roller (canon convenience-store fixture) — rods from the
+    # back panel toward the opening (they ran 5 cm out through the back)
     for i in range(2):
         make_cyl(f"TaquitoRoller_{i}",
-                 (hcx + 0.05, hcy + 0.20 - i * 0.10, 1.42),
-                 0.04, 0.50, (0.42, 0.32, 0.20, 1.0), segments=8, axis='X')
+                 (hcx + 0.015, hcy + 0.20 - i * 0.10, 1.42),
+                 0.04, 0.43, (0.42, 0.32, 0.20, 1.0), segments=8, axis='X')
 
     # ── Wire basket on counter (left-behind objects) ────────────
     # The canon motif. Small steel basket with miscellaneous items
@@ -433,32 +497,36 @@ def build_counter():
     # we card under 30, $1.29 tallboys, no loitering, shift sched,
     # food stamps accepted.
     base_y = cy - 1.4
+    # TAPED TO THE EAST WALL above the cig rack (which tops at 2.22):
+    # 2026-09-22 they hung half a metre off the wall, in front of the
+    # rack, at nothing.
+    notice_x = 6.0 - WALL_THICK / 2.0 - 0.01
     notices_data = [
         # (dy_offset, dz_offset, width, height, tint)
-        (-1.4, 2.00, 0.28, 0.36, COL_PAPER),         # employment
-        (-1.0, 2.00, 0.30, 0.40, COL_PAPER),         # lottery odds
-        (-0.6, 2.00, 0.18, 0.20, COL_PAPER_AGED),    # we card
-        (-0.2, 2.00, 0.22, 0.28, (0.96, 0.96, 0.62, 1.0)),  # tallboys yellow
-        (+0.2, 2.00, 0.16, 0.22, COL_PAPER_AGED),    # no loitering
-        (+0.6, 2.00, 0.20, 0.26, (0.86, 0.46, 0.22, 1.0)),  # security cam orange
-        (+1.0, 2.00, 0.30, 0.42, COL_PAPER),         # shift schedule
-        (+1.4, 2.00, 0.24, 0.30, COL_PAPER),         # food stamps
+        (-1.4, 2.66, 0.28, 0.36, COL_PAPER),         # employment
+        (-1.0, 2.66, 0.30, 0.40, COL_PAPER),         # lottery odds
+        (-0.6, 2.66, 0.18, 0.20, COL_PAPER_AGED),    # we card
+        (-0.2, 2.66, 0.22, 0.28, (0.96, 0.96, 0.62, 1.0)),  # tallboys yellow
+        (+0.2, 2.66, 0.16, 0.22, COL_PAPER_AGED),    # no loitering
+        (+0.6, 2.66, 0.20, 0.26, (0.86, 0.46, 0.22, 1.0)),  # security cam orange
+        (+1.0, 2.66, 0.30, 0.42, COL_PAPER),         # shift schedule
+        (+1.4, 2.66, 0.24, 0.30, COL_PAPER),         # food stamps
         # Lower row
-        (-1.0, 1.60, 0.22, 0.18, COL_PAPER_AGED),
-        (+0.0, 1.60, 0.18, 0.16, COL_PAPER),
-        (+0.8, 1.60, 0.20, 0.20, (0.92, 0.74, 0.42, 1.0)),
+        (-1.0, 2.34, 0.22, 0.18, COL_PAPER_AGED),
+        (+0.0, 2.34, 0.18, 0.16, COL_PAPER),
+        (+0.8, 2.34, 0.20, 0.20, (0.92, 0.74, 0.42, 1.0)),
     ]
     for i, (dy, dz, w, h, tint) in enumerate(notices_data):
         make_box(f"Notice_{i}_Bg",
-                 (cx + 0.40, base_y + dy + 1.4, dz),
+                 (notice_x, base_y + dy + 1.4, dz),
                  (0.02, w, h), tint)
         # Tiny dark print band (the actual text, abstracted)
         make_box(f"Notice_{i}_Print",
-                 (cx + 0.40 - 0.005, base_y + dy + 1.4, dz - 0.04),
+                 (notice_x - 0.0105, base_y + dy + 1.4, dz - 0.04),
                  (0.001, w * 0.7, h * 0.45), COL_METAL_BLACK)
         # Tape strips at corners (just a couple)
         make_box(f"Notice_{i}_TapeTop",
-                 (cx + 0.40 - 0.001, base_y + dy + 1.4, dz + h * 0.5 - 0.01),
+                 (notice_x - 0.0105, base_y + dy + 1.4, dz + h * 0.5 - 0.01),
                  (0.001, 0.06, 0.02), (0.86, 0.84, 0.78, 0.7))
 
     # ── Receipt paper / printer at register edge ────────────────
@@ -483,15 +551,26 @@ def build_counter():
     cig_x = 5.87
     for sh in range(3):
         shz = 1.40 + sh * 0.32
+        # a shelf PLATE off the wall face (it was a 2 cm rail and the packs
+        # stood 4 cm inside the wall)
         make_box(f"CigShelf_{sh}",
-                 (cig_x, cy, shz),
-                 (0.02, 3.20, 0.04), COL_METAL_STEEL)
+                 (cig_x - 0.005, cy, shz + 0.01),
+                 (0.07, 3.20, 0.02), COL_METAL_STEEL)
+        # the packs (2026-10-07: they were 18 x 16 cm bricks in snack
+        # colours) — flip-top packs faced out, two high, a brand per slot:
+        # a white body under its colour band, the gold foil, the menthol green
+        brands = (((0.96, 0.95, 0.92, 1.0), (0.78, 0.12, 0.12, 1.0)), ((0.92, 0.84, 0.52, 1.0), (0.62, 0.48, 0.18, 1.0)),
+                  ((0.94, 0.95, 0.94, 1.0), (0.12, 0.46, 0.30, 1.0)), ((0.96, 0.95, 0.92, 1.0), (0.18, 0.30, 0.62, 1.0)),
+                  ((0.18, 0.18, 0.20, 1.0), (0.80, 0.70, 0.40, 1.0)))
         for c in range(12):
             cy_pos = cy - 1.50 + c * 0.28
-            tint = SNACK_TINTS[(sh + c) % len(SNACK_TINTS)]
-            make_box(f"CigBox_{sh}_{c}",
-                     (cig_x + 0.04, cy_pos, shz + 0.10),
-                     (0.06, 0.18, 0.16), tint)
+            body, band = brands[(sh * 5 + c) % len(brands)]
+            for pk in range(4):
+                py_ = cy_pos - 0.0975 + pk * 0.065
+                for st in range(2):
+                    z = shz + 0.02 + 0.0425 + st * 0.085
+                    make_box(f"CigRack_Stock_{sh}_{c}_{pk}_{st}", (cig_x - 0.026, py_, z), (0.032, 0.058, 0.085), body)
+                    make_box(f"CigRack_Stock_{sh}_{c}_{pk}_{st}_Band", (cig_x - 0.0425, py_, z + 0.025), (0.001, 0.058, 0.03), band)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -533,19 +612,21 @@ def build_beer_cooler():
     # 4 cooler doors evenly spaced
     door_centres = [-2.40, -0.80, +0.80, +2.40]
     for i, cx in enumerate(door_centres):
-        # Interior box (recessed into the wall area)
-        make_box(f"Cooler_{i}_Interior",
-                 (cx, cy + 0.30, 1.30),
-                 (1.30, 0.40, 2.20), COL_COOLER_INTERIOR)
-        # The "infinite recursion" inner mirror — placed at the
-        # back of the interior with a slight tint shift
+        # The case: five panels open to the room, frame foot to top
+        # (2026-09-24: a SOLID interior box with every shelf and six-pack
+        # modelled inside it, behind an opaque "glass" door — 95 objects
+        # per door the camera could never see)
+        case_shell(f"Cooler_{i}_Interior", (cx, cy + 0.30, 1.32),
+                   (1.30, 0.40, 2.16), COL_COOLER_INTERIOR, '-Y')
+        # The "infinite recursion" inner mirror — on the back panel's
+        # face, with a slight tint shift
         make_box(f"Cooler_{i}_BackMirror",
-                 (cx, cy + 0.485, 1.30),
-                 (1.20, 0.005, 2.10), (0.18, 0.30, 0.42, 0.85))
-        # Glass door (front)
-        make_box(f"Cooler_{i}_Glass",
-                 (cx, cy + 0.06, 1.30),
-                 (1.24, 0.04, 2.10), COL_COOLER_GLASS)
+                 (cx, cy + 0.4775 - 0.0806, 1.31),
+                 (1.20, 0.005, 2.00), (0.18, 0.30, 0.42, 0.85))
+        # Glass door: two glints frame to frame (no glass slab)
+        for gi, (gx, gw) in enumerate(((-0.34, 0.03), (-0.26, 0.012))):
+            make_box(f"Cooler_{i}_Glint_{gi}", (cx + gx, cy + 0.06, 1.30),
+                     (gw, 0.004, 2.08), COL_GLINT)
         # Door frame
         for sgn, sz in [(-1, 'L'), (+1, 'R')]:
             make_box(f"Cooler_{i}_Frame_{sz}",
@@ -557,6 +638,11 @@ def build_beer_cooler():
         make_box(f"Cooler_{i}_Frame_B",
                  (cx, cy + 0.04, 0.24),
                  (1.30, 0.08, 0.04), COL_METAL_STEEL)
+        # the plinth to the floor under the box and its door (2026-09-22:
+        # the whole cooler hung 20 cm up)
+        make_box(f"Cooler_{i}_Plinth",
+                 (cx, cy + 0.25, 0.12),
+                 (1.30, 0.50, 0.24), (0.20, 0.20, 0.22, 1.0))
         # Handle
         make_box(f"Cooler_{i}_Handle",
                  (cx + 0.60, cy + 0.02, 1.30),
@@ -566,18 +652,20 @@ def build_beer_cooler():
             shz = 0.40 + sh * 0.42
             make_box(f"Cooler_{i}_Shelf_{sh}",
                      (cx, cy + 0.30, shz),
-                     (1.20, 0.30, 0.02), COL_METAL_STEEL)
+                     (1.26, 0.36, 0.02), COL_METAL_STEEL)   # side panel to side panel
             for b in range(5):
                 bx = cx - 0.48 + b * 0.24
                 tint = SNACK_TINTS[(i + sh + b) % len(SNACK_TINTS)]
                 make_box(f"Cooler_{i}_Sixpack_{sh}_{b}",
-                         (bx, cy + 0.30, shz + 0.20),
-                         (0.20, 0.22, 0.30), tint)
+                         (bx, cy + 0.30, shz + 0.01 + 0.13),
+                         (0.20, 0.22, 0.26), tint)   # on the shelf (it hung 4 cm over it)
 
     # ── Price tag strip across the top of all coolers ───────────
     for i, cx in enumerate(door_centres):
+        # on the top shelf's front lip (2026-09-24: it was stuck to the
+        # door glass, which is gone — the glass never rendered as glass)
         make_box(f"Cooler_PriceTag_{i}",
-                 (cx, cy + 0.03, 2.18),
+                 (cx, cy + 0.1175, 2.03),
                  (0.36, 0.005, 0.10), COL_PAPER)
 
 
@@ -596,7 +684,7 @@ def build_coffee_station():
              (1.20, 3.20, 0.84), COL_COUNTER_DARK)
     # Backsplash
     make_box("Coffee_Backsplash",
-             (cx - 0.55, cy, 1.40),
+             (cx - 0.58, cy, 1.40),   # on the wall (2026-09-22: 3 cm off it)
              (0.04, 3.20, 1.00), (0.86, 0.84, 0.78, 1.0))
 
     # ── 3 coffee pots (dark / medium / decaf) ───────────────────
@@ -606,50 +694,37 @@ def build_coffee_station():
             (0.42, 0.32, 0.20, 1.0)]):
         py = cy - 1.20 + i * 0.50
         # Pot
+        # (2026-09-22: the pot ON its burner, the burner on the counter —
+        # the pot hung 5 cm over the burner; the label goes on the backsplash)
         make_cyl(f"Coffee_Pot_{i}_Body",
-                 (cx + 0.05, py, 1.10),
+                 (cx + 0.05, py, 1.05),
                  0.08, 0.26, COL_GLASS, segments=8)
         make_cyl(f"Coffee_Pot_{i}_Liquid",
-                 (cx + 0.05, py, 1.04),
+                 (cx + 0.05, py, 0.99),
                  0.068, 0.16, tint, segments=8)
         make_cyl(f"Coffee_Pot_{i}_Burner",
-                 (cx + 0.05, py, 0.91),
+                 (cx + 0.05, py, 0.90),
                  0.10, 0.02, COL_METAL_BLACK, segments=10)
         # Handle (small protrusion)
         make_box(f"Coffee_Pot_{i}_Handle",
-                 (cx + 0.16, py, 1.10),
+                 (cx + 0.16, py, 1.05),
                  (0.06, 0.04, 0.10), COL_METAL_BLACK)
         # Label / brand panel above (matching dark/med/decaf labels)
         label_tint = [(0.32, 0.20, 0.10, 1.0),
                        (0.62, 0.42, 0.20, 1.0),
                        (0.96, 0.96, 0.86, 1.0)][i]
         make_box(f"Coffee_Pot_{i}_Label",
-                 (cx + 0.05, py, 1.42),
-                 (0.20, 0.18, 0.10), label_tint)
+                 (cx - 0.5475, py, 1.42),
+                 (0.005, 0.18, 0.10), label_tint)
 
-    # ── Slurpee twin barrels ────────────────────────────────────
-    for i, tint in enumerate([
-            (0.62, 0.20, 0.78, 1.0),   # blue raspberry
-            (0.92, 0.30, 0.18, 1.0)]):  # cherry
-        sy = cy + 0.80 + i * 0.50
-        make_cyl(f"Slurpee_{i}_Barrel",
-                 (cx + 0.05, sy, 1.32),
-                 0.14, 0.44, tint, segments=10)
-        make_cyl(f"Slurpee_{i}_TopCap",
-                 (cx + 0.05, sy, 1.58),
-                 0.16, 0.10, COL_METAL_STEEL, segments=10)
-        make_cyl(f"Slurpee_{i}_Spout",
-                 (cx + 0.05, sy - 0.14, 1.16),
-                 0.020, 0.10, COL_METAL_BLACK, segments=6, axis='Z')
-        # Drip tray below
-        make_box(f"Slurpee_{i}_Tray",
-                 (cx + 0.10, sy - 0.20, 0.95),
-                 (0.20, 0.30, 0.04), COL_METAL_STEEL)
+    # (2026-09-23: the twin Slurpee barrels that stood here were a SECOND
+    # machine built into build_slurpee_fountain's — barrels through its
+    # base. The fountain is the machine; it sits on this counter.)
 
     # ── Cup stack (next to coffee pots) ─────────────────────────
     for i in range(8):
         make_cyl(f"Coffee_Cup_{i}",
-                 (cx + 0.30, cy - 1.45, 0.90 + i * 0.04),
+                 (cx + 0.30, cy - 1.10, 0.90 + i * 0.04),   # between the microwave and the lids (2026-09-22)
                  0.04, 0.04, (0.92, 0.86, 0.74, 1.0), segments=10)
 
     # ── Lid dispenser ───────────────────────────────────────────
@@ -658,30 +733,32 @@ def build_coffee_station():
              0.07, 0.18, COL_METAL_STEEL, segments=8)
 
     # ── Cream + sugar caddy ─────────────────────────────────────
+    # (2026-09-22: it overhung the counter's north AND east edges and
+    # sat 4 cm into the top; the pumps stood beside it on air)
     make_box("Coffee_CSC_Body",
-             (cx + 0.30, cy + 1.40, 0.92),
-             (0.36, 0.40, 0.16), (0.78, 0.68, 0.52, 1.0))
+             (cx + 0.44, cy + 1.38, 0.96),
+             (0.28, 0.40, 0.16), (0.78, 0.68, 0.52, 1.0))
     for i in range(3):
         col = [(0.94, 0.94, 0.94, 1.0),
                (0.32, 0.22, 0.16, 1.0),
                (0.78, 0.74, 0.60, 1.0)][i]
         make_box(f"Coffee_CSC_{i}",
-                 (cx + 0.30, cy + 1.30 + i * 0.10, 1.04),
+                 (cx + 0.44, cy + 1.28 + i * 0.10, 1.08),
                  (0.10, 0.08, 0.06), col)
 
     # ── Squeegee + bucket near the coffee station ──────────────
     make_cyl("Mop_Bucket",
-             (cx + 0.60, cy + 1.80, 0.20),
+             (cx + 0.60 + 0.550, cy + 1.80, 0.20),
              0.18, 0.40, (0.92, 0.86, 0.36, 1.0), segments=10)
     make_box("Mop_Wringer",
-             (cx + 0.60, cy + 1.80, 0.42),
+             (cx + 0.60 + 0.550, cy + 1.80, 0.42),
              (0.30, 0.30, 0.06), COL_METAL_BLACK)
     # Squeegee handle
     make_cyl("Squeegee_Handle",
-             (cx + 0.60, cy + 1.80, 1.20),
+             (cx + 0.60 + 0.550, cy + 1.80, 1.20),
              0.020, 1.60, (0.62, 0.32, 0.20, 1.0), segments=8)
     make_box("Squeegee_Head",
-             (cx + 0.60, cy + 1.80, 0.42),
+             (cx + 0.60 + 0.550, cy + 1.80, 0.42),
              (0.08, 0.30, 0.06), (0.18, 0.18, 0.20, 1.0))
 
 
@@ -692,30 +769,17 @@ def build_snack_aisles():
     # Two aisles E-W, at Y=3.5 and Y=5.5. Narrower than v1, with
     # end-caps that lean forward (slanted feel from the reference).
     for j, ay in enumerate([3.5, 5.5]):
-        # Base support
-        make_box(f"Aisle_{j}_Base", (0.0, ay, 0.10),
-                 (6.0, 0.70, 0.20), COL_COUNTER_DARK)
-        # 5 product shelves
-        for sh in range(5):
-            shz = 0.34 + sh * 0.40
-            for sy_sgn in (-1, +1):
-                # Shelf plank
-                make_box(f"Aisle_{j}_Shelf_{sh}_y{sy_sgn:+d}",
-                         (0.0, ay + sy_sgn * 0.32, shz),
-                         (6.0, 0.04, 0.32), COL_METAL_STEEL)
-                # Price-tag strip
-                make_box(f"Aisle_{j}_PriceTag_{sh}_y{sy_sgn:+d}",
-                         (0.0, ay + sy_sgn * 0.32, shz - 0.10),
-                         (6.0, 0.001, 0.04), COL_PAPER)
-                # Products — vary height for visual interest
-                for p in range(12):
-                    px = -2.75 + p * 0.50
-                    tint = SNACK_TINTS[(j * 11 + sh * 3 + p) % len(SNACK_TINTS)]
-                    # Vary heights: tall bottles, short bags, etc.
-                    base_h = [0.18, 0.22, 0.26, 0.30, 0.16, 0.20][(j + sh + p) % 6]
-                    make_box(f"Aisle_{j}_Snack_{sh}_y{sy_sgn:+d}_{p}",
-                             (px, ay + sy_sgn * 0.26, shz + base_h / 2.0 + 0.02),
-                             (0.20, 0.20, base_h), tint)
+        # (2026-10-07) the gondola from the shared merchandise grammar:
+        # a spine, five horizontal plates a side, the stock as PACKAGING
+        # — the "shelves" were 32 cm vertical fins and every product a
+        # floating saturated block (the vol 6 sheet's "toy blocks").
+        # make_box's delegate has put _props on the path by now.
+        from _props.merch import stock_gondola
+        stock_gondola(f"Aisle_{j}", (0.0, ay, 0.0), length=6.0,
+                      levels=[0.34 + sh * 0.40 for sh in range(5)],
+                      plan=("chips", "candy")[j], seed=j * 7,
+                      base_col=COL_COUNTER_DARK, metal=COL_METAL_STEEL, tag_col=COL_PAPER,
+                      end_panels=False)
         # Top aisle-label sign (CHIPS / SNACKS / etc.)
         # Two different brand-coloured labels per aisle, hung from
         # the ceiling structure (NS faces)
@@ -726,34 +790,43 @@ def build_snack_aisles():
             make_box(f"Aisle_{j}_TopSign_BG_{k}",
                      (0.0, ay + lbl_y_off, 2.50),
                      (5.6, 0.06, 0.24), COL_BRAND_RED)
+            for hi, hx in enumerate((-2.4, 2.4)):   # hangers to the ceiling (2026-09-22)
+                make_box(f"Aisle_{j}_TopSign_Hanger_{k}_{hi}",
+                         (hx, ay + lbl_y_off, (2.62 + CEIL_Z) / 2.0),
+                         (0.01, 0.01, CEIL_Z - 2.62), COL_METAL_STEEL)
             # Letter band (cream)
             make_box(f"Aisle_{j}_TopSign_Text_{k}",
-                     (0.0, ay + lbl_y_off + (0.001 if k == 0 else -0.001), 2.50),
+                     (0.0, ay + lbl_y_off + (0.033 if k == 0 else -0.033), 2.50),   # on the sign's face (2026-09-25: at ±1 mm the band lay inside the 6 cm sign)
                      (4.6, 0.005, 0.12), label_text_tint)
 
     # ── End-caps (the small slanted stands near windows, per ref) ──
     # Two end-caps placed near the south windows for cross-traffic
-    for sgn, sx in [(-1, -3.40), (+1, +3.40)]:
+    # (2026-10-07, the user: "shelves blocking shelves and aisles too
+    # cramped for pedestrians" — they stood 0.42 m off aisle 0's corners
+    # at x ±3.4. On the WEST ends of the two aisles now, as end caps are:
+    # 1.08 m to the coffee bar, the entry zone left open)
+    for sgn, sx, ecy in [(-1, -3.32, 3.5), (+1, -3.32, 5.5)]:
         # Body (slightly angled — we fake angle with a thinner base)
         make_box(f"EndCap_{sgn:+d}_Base",
-                 (sx, 1.70, 0.12),
+                 (sx, ecy, 0.12),
                  (0.60, 0.80, 0.24), COL_COUNTER_DARK)
+        for ui, uy in enumerate((ecy - 0.36, ecy + 0.36)):   # uprights (2026-09-22)
+            make_box(f"EndCap_{sgn:+d}_Upright_{ui}", (sx, uy, (0.24 + 2.02) / 2.0),
+                     (0.04, 0.04, 2.02 - 0.24), COL_METAL_STEEL)
         # 4 narrow shelves stacked
         for sh in range(4):
             shz = 0.40 + sh * 0.34
             make_box(f"EndCap_{sgn:+d}_Shelf_{sh}",
-                     (sx, 1.70, shz),
+                     (sx, ecy, shz),
                      (0.62, 0.70, 0.02), COL_METAL_STEEL)
-            # 4 products per shelf (smaller than aisle products)
-            for p in range(4):
-                px = sx - 0.20 + p * 0.14
-                tint = SNACK_TINTS[(sgn + sh + p) % len(SNACK_TINTS)]
-                make_box(f"EndCap_{sgn:+d}_Product_{sh}_{p}",
-                         (px, 1.70, shz + 0.14),
-                         (0.10, 0.50, 0.18), tint)
+            # stocked from both faces (2026-10-07: four floating blocks)
+            from _props.merch import merch_section
+            for fs in (-1, 1):
+                merch_section(f"EndCap_{sgn:+d}_Stock_{sh}_{fs:+d}", ("tubes", "candy", "nuts", "cookies")[sh],
+                              sx - 0.30, ecy + fs * 0.35, fs, shz + 0.01, sh * 3 + sgn + fs, width=0.60)
         # Top header
         make_box(f"EndCap_{sgn:+d}_Header",
-                 (sx, 1.70, 1.92),
+                 (sx, ecy, 1.92),
                  (0.62, 0.78, 0.20), COL_BRAND_RED)
 
 
@@ -792,25 +865,34 @@ def build_newspaper_stack():
 
 
 def build_magazine_rack():
-    # Slanted magazine rack against the west wall, near windows
-    mrx, mry = -5.30, 1.80
-    # Body
-    make_box("MagRack_Body", (mrx, mry, 0.92),
-             (0.36, 1.10, 1.84), COL_METAL_BLACK)
-    # 5 slanted shelves with magazines
+    # A stepped magazine rack against the west wall, near the windows
+    # (2026-10-07: it was a solid black 0.36 x 1.10 x 1.84 box with its
+    # shelves and magazines modelled INSIDE it). Now: a plinth, two side
+    # panels and a back on the wall face, five tiers stepping back as
+    # they rise, each a ledge with a lip and a riser, and the covers faced
+    # out four to a tier — masthead band, cover photo.
+    mrx_front, mry, L = -5.30, 2.35, 1.10
+    back = -5.886                                  # on the baseboard's face
+    blk = COL_METAL_BLACK
+    make_box("MagRack_Plinth", ((back + mrx_front) / 2.0, mry, 0.105), (mrx_front - back, L, 0.21), blk)
+    make_box("MagRack_Back", (back + 0.015, mry, 0.95), (0.03, L, 1.90), blk)
+    for e in (-1, 1):
+        make_box(f"MagRack_Side_{e:+d}", ((back + mrx_front) / 2.0, mry + e * (L / 2.0 + 0.015), 0.95),
+                 (mrx_front - back, 0.03, 1.90), blk)
+    masts = ((0.96, 0.96, 0.94, 1.0), (0.82, 0.16, 0.14, 1.0), (0.14, 0.14, 0.16, 1.0), (0.96, 0.84, 0.20, 1.0))
     for i in range(5):
-        sy = mry - 0.46 + i * 0.24
-        # Shelf
-        make_box(f"MagRack_Shelf_{i}",
-                 (mrx, sy, 0.46 + i * 0.24),
-                 (0.36, 0.24, 0.02), COL_METAL_STEEL)
-        # Magazines (slanted so we see the cover)
-        for m in range(2):
-            mx = mrx + 0.04 - m * 0.04
-            col = SNACK_TINTS[(i + m * 2) % len(SNACK_TINTS)]
-            make_box(f"MagRack_Mag_{i}_{m}",
-                     (mx, sy + 0.02, 0.62 + i * 0.24),
-                     (0.10, 0.18, 0.26), col)
+        xf = mrx_front - 0.02 - i * 0.11            # this tier's front edge
+        z = 0.22 + i * 0.30                         # its ledge top
+        make_box(f"MagRack_Shelf_{i}", (xf - 0.05, mry, z - 0.01), (0.10, L, 0.02), COL_METAL_STEEL)
+        make_box(f"MagRack_Lip_{i}", (xf + 0.005, mry, z + 0.015), (0.01, L, 0.05), COL_METAL_STEEL)
+        make_box(f"MagRack_Riser_{i}", (xf - 0.105, mry, z + 0.15), (0.01, L, 0.30), blk)
+        for m in range(4):
+            y = mry - 0.405 + m * 0.27
+            tag = f"MagRack_Stock_{i}_{m}"
+            make_box(tag, (xf - 0.03, y, z + 0.14), (0.012, 0.21, 0.28), SNACK_TINTS[(i * 3 + m) % len(SNACK_TINTS)])
+            make_box(f"{tag}_Masthead", (xf - 0.0235, y, z + 0.245), (0.001, 0.21, 0.05), masts[(i + m) % len(masts)])
+            make_box(f"{tag}_Photo", (xf - 0.0235, y + 0.01, z + 0.12), (0.001, 0.15, 0.13),
+                     ((0.62, 0.48, 0.40, 1.0), (0.30, 0.38, 0.52, 1.0), (0.48, 0.56, 0.36, 1.0))[(i + 2 * m) % 3])
 
 
 # ════════════════════════════════════════════════════════════════
@@ -821,11 +903,14 @@ def build_floor_props():
     atm_x, atm_y = 4.80, 1.00
     make_box("ATM_Body", (atm_x, atm_y, 0.75),
              (0.50, 0.42, 1.50), (0.42, 0.42, 0.46, 1.0))
-    make_box("ATM_Screen", (atm_x, atm_y - 0.20, 1.16),
+    # screen + keypad on the NORTH face — the machine faces the store
+    # (2026-09-22: they faced the south wall 70 cm away, and the queue
+    # tape line was always on the north side)
+    make_box("ATM_Screen", (atm_x, atm_y + 0.20, 1.16),
              (0.32, 0.04, 0.22), (0.18, 0.32, 0.46, 1.0))
-    make_box("ATM_Keypad", (atm_x, atm_y - 0.20, 0.92),
+    make_box("ATM_Keypad", (atm_x, atm_y + 0.20, 0.92),
              (0.22, 0.04, 0.16), (0.22, 0.22, 0.24, 1.0))
-    make_box("ATM_Slot", (atm_x, atm_y - 0.22, 0.74),
+    make_box("ATM_Slot", (atm_x, atm_y + 0.22, 0.74),
              (0.20, 0.02, 0.02), COL_METAL_BLACK)
     # Tape line under the ATM (don't stand here)
     make_box("ATM_Line", (atm_x, atm_y + 0.30, 0.012),
@@ -843,7 +928,7 @@ def build_floor_props():
     make_box("Entry_Mat", (0.0, 0.85, 0.012),
              (3.20, 1.30, 0.02), COL_RUBBER_MAT)
     # WELCOME letter band (lighter rectangle)
-    make_box("Entry_Mat_Text", (0.0, 0.85, 0.014),
+    make_box("Entry_Mat_Text", (0.0, 0.85, 0.0236),
              (1.80, 0.20, 0.002), COL_RUBBER_MAT_TXT)
     # Mat edge — slightly darker line around the perimeter
     for sgn, ax in [('+X', +1.60), ('-X', -1.60)]:
@@ -864,7 +949,7 @@ def build_floor_props():
              (0.04, 0.96, 0.10), COL_COUNTER_DARK)
     # STOCK ROOM sign (small paper above)
     make_box("BackDoor_Sign",
-             (bdx + 0.25, bdy, 2.30),
+             (bdx + 0.27, bdy, 2.02),   # on the door's upper panel (2026-09-22)
              (0.02, 0.30, 0.10), COL_PAPER)
     # Door handle
     make_box("BackDoor_Knob",
@@ -967,9 +1052,12 @@ def build_ice_machine():
     make_box("IceMachine_Lid",  (cx + 0.10, cy, 1.66),
              (0.94, 1.04, 0.04), COL_ICE_BLUE)
     # ICE label
-    make_box("IceMachine_Sign", (cx - 0.50, cy, 1.20),
+    # on the machine's EAST face — the loader side, toward the room
+    # (2026-09-25: the sign sat 4 cm inside the west edge against the W
+    # wall, and its text had been pushed into the wall)
+    make_box("IceMachine_Sign", (cx + 0.56, cy, 1.20),
              (0.02, 0.80, 0.30), COL_ICE_BLUE)
-    make_box("IceMachine_SignText", (cx - 0.51, cy, 1.20),
+    make_box("IceMachine_SignText", (cx + 0.5731, cy, 1.20),
              (0.005, 0.40, 0.16), COL_PAPER)
     # Floor drain pan at base
     make_box("IceMachine_DrainPan", (cx, cy, 0.04),
@@ -979,7 +1067,7 @@ def build_ice_machine():
 def build_lottery_display():
     # Lottery scratch-off / Powerball display behind counter, mounted
     # on the east wall above the cig rack (which tops at ~1.95m).
-    cx = 5.45 + 0.04  # just in front of east wall
+    cx = 6.0 - WALL_THICK / 2.0 - 0.01  # ON the east wall (2026-09-22: it hung 0.4 m off it)
     cy = 4.50 - 2.10  # south end of counter, opposite the register
     base_z = 2.16
     make_box("Lottery_Box", (cx, cy, base_z),
@@ -988,7 +1076,7 @@ def build_lottery_display():
     make_box("Lottery_BannerYellow", (cx - 0.005, cy, base_z + 0.16),
              (0.005, 0.56, 0.10), COL_LOTTERY_YEL)
     # Red Powerball stripe
-    make_box("Lottery_BannerRed", (cx - 0.005, cy, base_z + 0.04),
+    make_box("Lottery_BannerRed", (cx - 0.005 - 0.0081, cy, base_z + 0.04),
              (0.005, 0.56, 0.10), COL_LOTTERY_RED)
     # Five scratch-off tickets in a row, dispensed from below
     for t in range(5):
@@ -1025,7 +1113,7 @@ def build_newspaper_rack_exterior():
 
 def build_trash_can():
     # KWIK-branded trash bin between counter and east window
-    cx, cy = 5.20, 1.40
+    cx, cy = 5.20, 1.72
     make_cyl("Trash_Body", (cx, cy, 0.50), 0.30, 1.00, COL_BRAND_RED)
     # Brand band
     make_cyl("Trash_BrandBand", (cx, cy, 0.70), 0.31, 0.16, COL_PAPER)
@@ -1037,14 +1125,22 @@ def build_trash_can():
 
 def build_strip_curtain():
     # Plastic strip curtain hanging in stockroom doorway
-    door_x = 5.0
-    door_y = 8.78  # at back-room door near north end of east wall
+    # (2026-09-23: the curtain hung at x 4.88, y 8.28-9.28 — a metre from
+    # the E wall, 1.3 m north of the only door in it, through the break
+    # nook's locker and on into the N wall. The back door is BackDoor, in
+    # the E wall at y 7.05-7.95; the curtain hangs in front of it.)
+    door_x = 5.90
+    door_y = 7.50
     # The stockroom door is built elsewhere; the strip curtain hangs
     # in FRONT of it as 6 PVC slats.
+    # (2026-09-22: the doorway is IN the east wall, so the slats hang
+    # along Y across it from a rail on the wall's inside face; they used
+    # to be spread across the wall's thickness, in the air)
+    make_box("StripCurtain_Rail", (door_x - 0.04, door_y, 2.22), (0.04, 1.00, 0.04), COL_METAL_STEEL)   # on the door frame
     for s in range(6):
-        sx = door_x - 0.40 + s * 0.16
-        make_box(f"StripCurtain_{s}", (sx, door_y, 1.40),
-                 (0.12, 0.005, 1.60), COL_STRIP_PVC)
+        sy = door_y - 0.40 + s * 0.16
+        make_box(f"StripCurtain_{s}", (door_x - 0.04, sy, 1.40),
+                 (0.005, 0.12, 1.60), COL_STRIP_PVC)
 
 
 def build_counter_impulse_buys():
@@ -1052,7 +1148,7 @@ def build_counter_impulse_buys():
     # register, where Sam can reach them but the customer must
     # cross the counter to grab. Canon convenience-store layout.
     base_y = 4.5
-    base_z = 1.10
+    base_z = 1.10   # the counter's top face is 1.07; trays centred here sit on it
     # Mint dispenser
     make_box("Counter_MintsTray", (5.10, base_y + 1.20, base_z),
              (0.36, 0.30, 0.06), COL_METAL_STEEL)
@@ -1062,7 +1158,7 @@ def build_counter_impulse_buys():
                   base_z + 0.06),
                  (0.04, 0.04, 0.12), SNACK_TINTS[m % len(SNACK_TINTS)])
     # Gum strip rack
-    make_box("Counter_GumStrip", (5.10, base_y + 1.65, base_z + 0.06),
+    make_box("Counter_GumStrip", (5.10, base_y + 1.65, base_z + 0.02),   # on the counter
              (0.32, 0.20, 0.10), COL_METAL_BLACK)
     for g in range(4):
         gy = base_y + 1.58 + g * 0.06
@@ -1071,7 +1167,7 @@ def build_counter_impulse_buys():
                  (0.05, 0.05, 0.10), SNACK_TINTS[g % len(SNACK_TINTS)])
     # Slim Jim jar — tall clear cylinder on the counter top, jerky
     # sticks visible inside
-    make_cyl("Counter_SlimJimJar", (4.80, base_y - 1.70, base_z + 0.18),
+    make_cyl("Counter_SlimJimJar", (4.80, base_y - 1.70, base_z + 0.14),   # on the counter
              0.07, 0.34, COL_GLASS)
     for s in range(8):
         ang = s * 0.78
@@ -1087,12 +1183,12 @@ def build_counter_impulse_buys():
 def build_ceiling_infrastructure():
     # Security camera dome (over register, looking down-and-west)
     cam_x, cam_y = 4.0, 4.0
-    make_cyl("Cam_Dome", (cam_x, cam_y, CEIL_Z - 0.10),
+    make_cyl("Cam_Dome", (cam_x, cam_y, CEIL_Z - 0.06),   # on the ceiling (2026-09-22: 4 cm under it)
              0.12, 0.12, COL_METAL_BLACK)
-    make_cyl("Cam_DomeGlass", (cam_x, cam_y, CEIL_Z - 0.16),
+    make_cyl("Cam_DomeGlass", (cam_x, cam_y, CEIL_Z - 0.12),
              0.10, 0.04, (0.18, 0.20, 0.22, 0.70))
     # Second cam over door
-    make_cyl("Cam_Dome2", (0.0, 1.0, CEIL_Z - 0.10),
+    make_cyl("Cam_Dome2", (0.0, 1.0, CEIL_Z - 0.05),
              0.10, 0.10, COL_METAL_BLACK)
     # Smoke detectors (two, distributed)
     for d_i, (dx, dy) in enumerate([(-2.5, 6.0), (+2.5, 2.5)]):
@@ -1155,7 +1251,7 @@ def build_wet_floor_cone():
     # Text band ("WET FLOOR")
     for sgn in (-1, +1):
         make_box(f"WetFloor_Text_{sgn:+d}",
-                 (cx + sgn * 0.19, cy, 0.40),
+                 (cx + sgn * 0.2025, cy, 0.40),   # on the panel's outer face (2026-09-25: inside it)
                  (0.004, 0.26, 0.10), COL_METAL_BLACK)
     # Foot
     make_box("WetFloor_Foot", (cx, cy, 0.02),
@@ -1182,7 +1278,7 @@ def build_exterior_through_windows():
     make_box("Canopy_Skirt", (0.0, canopy_y - 2.10, canopy_z - 0.05),
              (10.0, 0.10, 0.40), COL_CANOPY_TRIM)
     make_box("Canopy_Skirt_Branding",
-             (0.0, canopy_y - 2.11, canopy_z + 0.05),
+             (0.0, canopy_y - 2.11 - 0.0431, canopy_z + 0.05),
              (3.20, 0.005, 0.18), COL_PAPER)
     # Canopy support columns (2)
     for sgn, sx in [(-1, -3.6), (+1, +3.6)]:
@@ -1195,8 +1291,12 @@ def build_exterior_through_windows():
         make_box(f"Pump_{sgn:+d}_Base", (px, canopy_y, 0.30),
                  (0.50, 0.60, 0.60), COL_PUMP_BODY)
         # Pump screen + buttons
-        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.31, 1.20),
+        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.26 - 0.0131, 1.20),   # on the body's face
                  (0.40, 0.005, 0.50), COL_PUMP_FACE)
+        # Pump body between base and head (2026-09-09: the head hung
+        # 1 m above the base with only the display between them)
+        make_box(f"Pump_{sgn:+d}_Body", (px, canopy_y, 1.11),
+                 (0.44, 0.54, 1.02), COL_PUMP_BODY)
         # Pump head (handle housing)
         make_box(f"Pump_{sgn:+d}_Head", (px, canopy_y, 1.80),
                  (0.50, 0.60, 0.36), COL_PUMP_BODY)
@@ -1207,7 +1307,7 @@ def build_exterior_through_windows():
         # Price-display LEDs (three digits)
         for d_i in range(3):
             make_box(f"Pump_{sgn:+d}_LED_{d_i}",
-                     (px - 0.15 + d_i * 0.15, canopy_y - 0.32, 1.40),
+                     (px - 0.15 + d_i * 0.15, canopy_y - 0.265 - 0.0081, 1.40),   # on the display's face
                      (0.10, 0.005, 0.14), (0.94, 0.18, 0.08, 1.0))
     # ── Parked sedan silhouette beside the right pump ───────────
     car_x, car_y = +3.20, -1.40
@@ -1229,11 +1329,11 @@ def build_exterior_through_windows():
                    (car_x - 0.60, car_y + 0.48),
                    (car_x + 0.60, car_y + 0.48)]:
         make_cyl(f"Car_Wheel_{wx:+.1f}_{wy:+.1f}",
-                 (wx, wy, 0.30), 0.26, 0.20, COL_METAL_BLACK, axis='Y')
+                 (wx, wy, 0.26), 0.26, 0.20, COL_METAL_BLACK, axis='Y')   # on the asphalt
     # Headlights
     for ws in (-1, +1):
         make_box(f"Car_Headlight_{ws:+d}",
-                 (car_x + 0.92, car_y + ws * 0.32, 0.55),
+                 (car_x + 0.9025, car_y + ws * 0.32, 0.55),   # on the nose
                  (0.005, 0.18, 0.14), COL_STREETLAMP_LIT)
     # ── Streetlamp at southwest corner ──────────────────────────
     lp_x, lp_y = -5.40, -2.80
@@ -1247,26 +1347,11 @@ def build_exterior_through_windows():
     # Lamp head (sodium-warm)
     make_box("Streetlamp_Head", (lp_x + 1.30, lp_y, 4.50),
              (0.50, 0.20, 0.20), COL_STREETLAMP_LIT)
-    # ── End-cap product display facing the south windows ────────
-    # A cardboard end-cap pyramid of stacked product cases — adds
-    # density between the registers and the windows.
-    ec_x, ec_y = -3.20, 2.60
-    for ec_tier in range(3):
-        tier_w = 1.20 - ec_tier * 0.30
-        tier_y = ec_y + ec_tier * 0.20
-        tier_z = 0.40 + ec_tier * 0.30
-        make_box(f"EndCap_Box_{ec_tier}",
-                 (ec_x, tier_y, tier_z),
-                 (tier_w, 0.60, 0.30), (0.84, 0.62, 0.30, 1.0))
-    # End-cap signage
-    make_box("EndCap_Sign", (ec_x, ec_y - 0.42, 1.40),
-             (1.20, 0.005, 0.22), COL_LOTTERY_RED)
-    # Stacked products visible on top of the smallest tier
-    for p_i in range(4):
-        make_box(f"EndCap_Product_{p_i}",
-                 (ec_x - 0.30 + p_i * 0.20, ec_y + 0.40, 1.32),
-                 (0.14, 0.14, 0.20),
-                 SNACK_TINTS[(p_i + 3) % len(SNACK_TINTS)])
+    # (2026-09-23: the cardboard end-cap pyramid is gone — it was built
+    # on the SAME spot as the aisle's end-cap shelving (EndCap_-1), its
+    # boxes through the shelves and uprights, its bottom tier hanging
+    # 25 cm off the floor; and the floor south of it is the window
+    # seating. The shelving end cap is the display.)
 
 
 def build_polish_pass():
@@ -1343,7 +1428,7 @@ def build_window_neon():
     # ICE COLD BEER (blue, multi-line) on the right. Tiny tubes —
     # geometry only; the shader stack does the bloom-on-edges.
     # Left window (Blender X≈-3 center). OPEN sign.
-    open_x, open_y, open_z = -3.0, 0.30, 2.00
+    open_x, open_y, open_z = -3.0, 0.1125, 2.00   # the border tube against the glass at y 0.10
     # Outer "OPEN" rectangle
     for stroke in [
         # (cx_off, cz_off, w, h)
@@ -1358,10 +1443,10 @@ def build_window_neon():
     # Inner OPEN text (4 letters as small boxes)
     for li, lx in enumerate([-0.32, -0.10, +0.10, +0.32]):
         make_box(f"Neon_OPEN_Letter_{li}",
-                 (open_x + lx, open_y, open_z),
+                 (open_x + lx, open_y - 0.007, open_z),
                  (0.16, 0.005, 0.18), COL_NEON_RED)
     # Right window — ICE COLD BEER, two lines
-    beer_x, beer_y, beer_z = +3.0, 0.30, 1.70
+    beer_x, beer_y, beer_z = +3.0, 0.1055, 1.70   # against the glass at y 0.10
     # "ICE COLD" line — blue
     for li, lx in enumerate([-0.40, -0.20, 0.0, +0.20, +0.40]):
         make_box(f"Neon_ICECOLD_{li}",
@@ -1375,7 +1460,7 @@ def build_window_neon():
     # ATM sign in left window above OPEN — green neon
     for li, lx in enumerate([-0.20, 0.0, +0.20]):
         make_box(f"Neon_ATM_{li}",
-                 (open_x + lx, open_y, open_z + 0.62),
+                 (open_x + lx, open_y - 0.007, open_z + 0.62),
                  (0.16, 0.005, 0.14), COL_NEON_GREEN)
 
 
@@ -1390,7 +1475,7 @@ def build_wall_ornaments():
     for ang_i, (mx, mz) in enumerate([(0.0, +0.13), (+0.13, 0.0),
                                        (0.0, -0.13), (-0.13, 0.0)]):
         make_box(f"Clock_Tick_{ang_i}",
-                 (clock_x + mx, clock_y - 0.025, clock_z + mz),
+                 (clock_x + mx, clock_y - 0.025 - 0.0101, clock_z + mz),
                  (0.02, 0.005, 0.02), COL_METAL_BLACK)
     # Hour + minute hands (frozen at 11:47, vol6's canonical hour)
     make_box("Clock_HourHand",
@@ -1400,22 +1485,22 @@ def build_wall_ornaments():
              (clock_x + 0.080, clock_y - 0.030, clock_z + 0.020),
              (0.16, 0.004, 0.018), COL_METAL_BLACK)
     # ── Fire extinguisher — west wall corner
-    ext_x, ext_y = -5.88, 8.20
+    ext_x, ext_y = -5.80, 8.20   # against the wall (2026-09-22: 8 cm into it)
     make_cyl("FireExt_Body", (ext_x, ext_y, 0.86), 0.10, 0.50,
              COL_FIRE_RED)
     make_cyl("FireExt_Top", (ext_x, ext_y, 1.20), 0.08, 0.18,
              COL_METAL_BLACK)
     make_box("FireExt_Bracket", (ext_x - 0.04, ext_y, 0.86),
              (0.04, 0.18, 0.50), COL_METAL_STEEL)
-    make_box("FireExt_Sign", (ext_x - 0.02, ext_y - 0.40, 1.60),
+    make_box("FireExt_Sign", (-5.8975, ext_y - 0.40, 1.60),   # on the wall
              (0.005, 0.30, 0.30), COL_FIRE_RED)
     # ── Employees-Must-Wash-Hands sign by stockroom door
-    make_box("Sign_HandWash", (5.88, 8.40, 1.80),
+    make_box("Sign_HandWash", (5.8975, 8.40, 1.80),   # on the wall
              (0.005, 0.40, 0.20), COL_PAPER)
     # ── Calendar (girl, beach, faded — corner-store classic)
     make_box("Calendar", (-5.88, 5.40, 1.70),
              (0.005, 0.40, 0.50), COL_POSTER_FADED)
-    make_box("Calendar_GridTop", (-5.88 + 0.002, 5.40, 1.55),
+    make_box("Calendar_GridTop", (-5.88 + 0.002 + 0.0191, 5.40, 1.55),
              (0.001, 0.34, 0.20), COL_PAPER)
     # ── Sun-faded vintage movie poster, east wall above HotCase
     make_box("Poster_Faded", (5.88, 3.20, 2.00),
@@ -1431,54 +1516,42 @@ def build_slurpee_fountain():
     # Blue cherry + red cola. Sits next to the existing coffee
     # station; reads as the "drinks" pole of the west wall.
     cx, cy = -5.30, 5.40
-    base_z = 1.30
+    base_z = 1.03   # the base ON the coffee counter's top at 0.88 (2026-09-23: 27 cm over it)
     # Stainless base
     make_box("Slurpee_Base", (cx, cy, base_z),
              (0.86, 0.50, 0.30), COL_METAL_STEEL)
     # Two clear barrels
     for bs, by_off in [(-1, -0.18), (+1, +0.18)]:
         make_cyl(f"Slurpee_Barrel_{bs:+d}",
-                 (cx, cy + by_off, base_z + 0.46),
+                 (cx, cy + by_off, base_z + 0.40),   # on the base (2026-09-23: 6 cm over it)
                  0.16, 0.50, COL_SLURPEE_CASE)
         # Liquid inside (different colour each barrel)
         col = COL_SLURPEE_BLUE if bs < 0 else COL_SLURPEE_RED
         make_cyl(f"Slurpee_Liquid_{bs:+d}",
-                 (cx, cy + by_off, base_z + 0.36),
+                 (cx, cy + by_off, base_z + 0.30),
                  0.14, 0.28, col)
         # Top auger cap
         make_cyl(f"Slurpee_Top_{bs:+d}",
-                 (cx, cy + by_off, base_z + 0.74),
+                 (cx, cy + by_off, base_z + 0.68),
                  0.16, 0.06, COL_METAL_BLACK)
         # Dispense handle on the customer side (south)
         make_box(f"Slurpee_Handle_{bs:+d}",
-                 (cx + 0.20, cy + by_off, base_z + 0.30),
+                 (cx + 0.16, cy + by_off, base_z + 0.30),   # on the barrel
                  (0.04, 0.06, 0.20), COL_METAL_BLACK)
         # Drip catch tray
         make_box(f"Slurpee_DripTray_{bs:+d}",
                  (cx + 0.18, cy + by_off, base_z + 0.16),
                  (0.16, 0.20, 0.04), COL_METAL_STEEL)
     # Flavor-label header strip across both barrels
-    make_box("Slurpee_LabelHeader", (cx - 0.18, cy, base_z + 0.86),
+    make_box("Slurpee_LabelHeader", (cx - 0.18, cy, base_z + 0.76),   # meets the top caps (2026-09-22)
              (0.04, 0.50, 0.12), COL_BRAND_NAVY)
 
 
 def build_price_tag_strips():
-    # Edge-of-shelf white price strips on each snack aisle shelf.
-    # The aisles are at Y=3.5 and Y=5.5 with 5 shelves each. Strips
-    # face south on the south aisle, north on the north aisle.
-    for ai, ay in enumerate([3.5, 5.5]):
-        face_y = ay + (-0.36 if ai == 0 else +0.36)
-        for sh in range(5):
-            shz = 0.30 + sh * 0.36
-            make_box(f"PriceStrip_Aisle{ai}_S{sh}",
-                     (0.0, face_y, shz),
-                     (5.0, 0.005, 0.04), COL_PRICE_TAG)
-            # Small dollar-amount marks (3 visible per shelf)
-            for d_i, dx in enumerate([-1.6, 0.0, +1.6]):
-                make_box(f"PriceMark_Aisle{ai}_S{sh}_T{d_i}",
-                         (dx, face_y + 0.003 * (1 if ai == 0 else -1),
-                          shz),
-                         (0.16, 0.001, 0.02), COL_METAL_BLACK)
+    """Retired 2026-10-07: the aisles are _props.merch gondolas now and
+    carry their own price strips and tags at their real shelf heights
+    (these sat at the old 0.36 pitch, on fins that are gone)."""
+    return
 
 
 def build_customer_detritus():
@@ -1499,7 +1572,7 @@ def build_customer_detritus():
              (0.005, 0.22, 0.002), COL_NEWSPRINT)
     # Candy wrapper on the floor near the south door
     make_box("Detritus_CandyWrap",
-             (1.20, 0.60, 0.014),
+             (1.20, 0.60, 0.0236),
              (0.10, 0.06, 0.002), (0.92, 0.32, 0.20, 1.0))
     # Crumpled receipt under the magazine rack (existing rack at south)
     make_box("Detritus_Receipt",
@@ -1518,7 +1591,7 @@ def build_payphone():
     make_box("Payphone_Box", (px, py, 1.30),
              (0.06, 0.34, 0.60), COL_PAYPHONE)
     # Privacy hood
-    make_box("Payphone_Hood", (px - 0.16, py, 1.74),
+    make_box("Payphone_Hood", (px - 0.16, py, 1.65),   # on the box's top (2026-09-22: 9 cm over it)
              (0.30, 0.36, 0.10), COL_PAYPHONE_TRIM)
     # Receiver (handset) hanging on left side
     make_box("Payphone_Handset", (px - 0.06, py - 0.20, 1.30),
@@ -1543,107 +1616,104 @@ def build_payphone():
 
 
 def build_stockroom_through_curtain():
-    # Stack of cardboard boxes visible THROUGH the strip curtain.
-    # Sits just inside the stockroom door — the door opens at
-    # (5.0, 8.78) per build_floor_props; we put the boxes a bit
-    # past it (Blender Y=9.2 — outside the interior wall but the
-    # SubViewport renders the open world, no occlusion check).
-    # Actually safer: keep them inside the building, on the inner
-    # face of the stockroom-door cutout — visible because the door
-    # is implied (no actual closed door geometry, just the strip
-    # curtain). Place at Y≈8.8 just behind the curtain.
-    box_x = 5.0
-    box_y = 8.95  # slightly past the strip curtain
-    # Stack of three cardboard cartons
-    for ti in range(3):
-        make_box(f"Stockroom_Box_{ti}",
-                 (box_x - 0.20 + (ti % 2) * 0.40,
-                  box_y,
-                  0.25 + (ti // 2) * 0.50),
-                 (0.36, 0.30, 0.40), COL_BOX_KRAFT)
-    # A shelving unit visible behind the boxes
-    make_box("Stockroom_Shelf",
-             (box_x, box_y + 0.20, 1.40),
-             (1.20, 0.04, 1.60), COL_METAL_STEEL)
-    # Three loose products on the shelf
-    for pi in range(3):
-        make_box(f"Stockroom_Product_{pi}",
-                 (box_x - 0.40 + pi * 0.40,
-                  box_y + 0.22,
-                  1.20),
-                 (0.30, 0.20, 0.30),
-                 SNACK_TINTS[pi % len(SNACK_TINTS)])
+    # (2026-09-24 re-plan of the NE corner: this stack was placed to be
+    # seen "through the strip curtain" into a stockroom the model does
+    # not have — the back door is a closed leaf in the E wall — and with
+    # a steel backboard and three products half into the N wall, a
+    # locker and the trash bag, it was a heap. Three cartons now, stacked
+    # in the corner N of the back door, clear of its swing.)
+    for ti, (bx_, by_, bz_) in enumerate(((5.66, 8.35, 0.20), (5.66, 8.68, 0.20), (5.66, 8.35, 0.60))):
+        make_box(f"Stockroom_Box_{ti}", (bx_, by_, bz_), (0.36, 0.30, 0.40), COL_BOX_KRAFT)
 
 
 def build_more_floor_displays():
     # Beer 30-rack pyramid south of the cooler row
-    bx, by = -2.40, 7.20
-    for layer_i in range(3):
-        layer_w = 1.20 - layer_i * 0.30
-        layer_d = 0.60 - layer_i * 0.10
-        make_box(f"BeerStack_Layer_{layer_i}",
-                 (bx, by, 0.30 + layer_i * 0.32),
-                 (layer_w, layer_d, 0.30), COL_BRAND_NAVY)
-        # White label band on each layer
-        make_box(f"BeerStack_Band_{layer_i}",
-                 (bx, by - layer_d / 2 - 0.005, 0.30 + layer_i * 0.32),
-                 (layer_w * 0.80, 0.005, 0.08), COL_PAPER)
+    bx, by = -2.65, 7.20   # clear of the novelty cooler (2026-09-22: 20 cm into it)
+    # (2026-10-07: three solid navy slabs — now the 30-racks themselves,
+    # two courses a layer, each case with its white band on the face and
+    # the handle cut in its end; joined as stock)
+    for course in range(6):
+        li = course // 2
+        nx, ny = 4 - li, (2 if li < 2 else 1)
+        z = 0.0725 + course * 0.145
+        for ix in range(nx):
+            for iy in range(ny):
+                x = bx + (ix - (nx - 1) / 2.0) * 0.30
+                y = by + (iy - (ny - 1) / 2.0) * 0.28
+                tag = f"BeerStack_Stock_{course}_{ix}_{iy}"
+                make_box(tag, (x, y, z), (0.29, 0.27, 0.145), COL_BRAND_NAVY)
+                if iy == 0:
+                    make_box(f"{tag}_Band", (x, y - 0.1355, z + 0.02), (0.26, 0.001, 0.05), COL_PAPER)
+                if ix in (0, nx - 1):
+                    sx = -1 if ix == 0 else 1
+                    make_box(f"{tag}_Handle", (x + sx * 0.1455, y, z + 0.03), (0.001, 0.10, 0.025), (0.08, 0.08, 0.10, 1.0))
     # Charcoal-bag pyramid near west window
-    cx, cy = -3.40, 1.80
+    cx, cy = -4.55, 2.30
+    # (2026-10-07: three black slabs — now bags, three, two, one, each
+    # with its red label and the crimped fold at the top)
     for li in range(3):
-        lw = 0.96 - li * 0.24
-        make_box(f"CharcoalStack_{li}",
-                 (cx, cy, 0.20 + li * 0.30),
-                 (lw, 0.50, 0.28), COL_METAL_BLACK)
-        make_box(f"CharcoalLabel_{li}",
-                 (cx, cy - 0.255, 0.20 + li * 0.30),
-                 (lw * 0.7, 0.005, 0.10), COL_LOTTERY_RED)
+        n = 3 - li
+        for bi in range(n):
+            x = cx + (bi - (n - 1) / 2.0) * 0.32
+            z = 0.14 + li * 0.28
+            tag = f"CharcoalStack_Stock_{li}_{bi}"
+            make_box(tag, (x, cy, z), (0.31, 0.50, 0.25), COL_METAL_BLACK)
+            make_box(f"{tag}_Crimp", (x, cy, z + 0.135), (0.29, 0.06, 0.02), COL_METAL_BLACK)
+            make_box(f"{tag}_Label", (x, cy - 0.2505, z), (0.22, 0.001, 0.10), COL_LOTTERY_RED)
     # Cardboard pyramid of red-cup 12-packs near east window
-    cup_x, cup_y = 3.20, 1.80
-    for li in range(2):
-        lw = 0.80 - li * 0.24
-        make_box(f"CupStack_{li}",
-                 (cup_x, cup_y, 0.18 + li * 0.26),
-                 (lw, 0.40, 0.24), COL_BRAND_RED)
+    cup_x, cup_y = 3.55, 1.55
+    # (2026-10-07: two solid red slabs — now kraft cases printed with the
+    # red band, two below and one on top, three loose sleeves of cups
+    # beside the SALE topper)
+    for li, xs in enumerate(((-0.205, 0.205), (0.0,))):
+        for ci, dx in enumerate(xs):
+            z = 0.12 + li * 0.24
+            tag = f"CupStack_Stock_{li}_{ci}"
+            make_box(tag, (cup_x + dx, cup_y, z), (0.40, 0.40, 0.24), COL_BOX_KRAFT)
+            make_box(f"{tag}_Band", (cup_x + dx, cup_y - 0.2005, z + 0.03), (0.40, 0.001, 0.09), COL_BRAND_RED)
+    for si in range(3):
+        make_cyl(f"CupStack_Stock_Sleeve_{si}", (cup_x - 0.05 + si * 0.09 - 0.09, cup_y + 0.10, 0.48 + 0.045), 0.045, 0.30,
+                 COL_BRAND_RED, axis='Y', segments=8)
     # SALE topper sign
-    make_box("CupStack_SaleSign", (cup_x, cup_y, 0.94),
+    make_box("CupStack_SaleSign", (cup_x, cup_y - 0.2, 0.57),   # stands on the top case
              (0.40, 0.005, 0.18), COL_LOTTERY_YEL)
 
 
 def build_atm_detail():
-    # The ATM lives in build_floor_props elsewhere — augment it
-    # with a keypad, slot detail, and a small overhead sign. We
-    # place these by absolute coords because the existing ATM is
-    # at roughly (cx=-5.0, cy=2.10, cz_top=1.40) per the v2 build.
-    ax, ay = -5.40, 2.10
-    # Keypad and display
-    make_box("ATM_Display", (ax + 0.32, ay, 1.40),
-             (0.005, 0.32, 0.18), (0.18, 0.32, 0.42, 1.0))
-    make_box("ATM_DisplayHighlight", (ax + 0.322, ay, 1.42),
-             (0.001, 0.20, 0.04), COL_LOTTERY_YEL)
-    # 4×3 keypad
+    # Dresses THE ATM from build_floor_props — (4.80, 1.00), body
+    # 0.50 x 0.42 x 1.50, screen + keypad on its north face.
+    # 2026-09-22: this pass used to draw a phantom keypad, slots and
+    # an overhead sign at (-5.4, 2.1) against the west wall, where
+    # no machine has stood since v2 — fourteen keys in mid-air.
+    ax, ay = 4.80, 1.00
+    face_y = ay + 0.21          # the body's north face
+    pad_y = ay + 0.22           # the screen/keypad slabs' north face
+    # Display highlight on the screen
+    make_box("ATM_DisplayHighlight", (ax, pad_y + 0.0025, 1.18),
+             (0.20, 0.005, 0.04), COL_LOTTERY_YEL)
+    # 4×3 keypad on the keypad slab (z 0.84..1.00)
     for r in range(4):
         for c in range(3):
             make_box(f"ATM_Key_{r}_{c}",
-                     (ax + 0.32,
-                      ay - 0.12 + c * 0.08,
-                      1.16 + r * 0.06),
-                     (0.005, 0.06, 0.05), COL_METAL_BLACK)
-    # Card slot + receipt slot
-    make_box("ATM_CardSlot", (ax + 0.32, ay - 0.12, 1.06),
-             (0.005, 0.10, 0.012), COL_METAL_STEEL)
-    make_box("ATM_ReceiptSlot", (ax + 0.32, ay + 0.12, 1.06),
-             (0.005, 0.10, 0.012), COL_METAL_STEEL)
+                     (ax - 0.07 + c * 0.07,
+                      pad_y + 0.0025,
+                      0.87 + r * 0.04),
+                     (0.06, 0.005, 0.03), COL_METAL_BLACK)
+    # Card slot + receipt slot on the body face
+    make_box("ATM_CardSlot", (ax - 0.12, face_y + 0.0025, 0.66),
+             (0.10, 0.005, 0.012), COL_METAL_STEEL)
+    make_box("ATM_ReceiptSlot", (ax + 0.12, face_y + 0.0025, 0.66),
+             (0.10, 0.005, 0.012), COL_METAL_STEEL)
     # Cash dispense slot
-    make_box("ATM_CashSlot", (ax + 0.32, ay, 0.86),
-             (0.005, 0.22, 0.020), COL_METAL_BLACK)
-    # Overhead "ATM" sign on a thin bracket
-    make_box("ATM_OverheadBracket", (ax, ay, 2.10),
-             (0.04, 0.04, 0.40), COL_METAL_BLACK)
-    make_box("ATM_OverheadSign", (ax + 0.02, ay, 2.30),
-             (0.20, 0.30, 0.12), COL_LOTTERY_YEL)
-    make_box("ATM_OverheadSignText", (ax + 0.025, ay, 2.30),
-             (0.005, 0.22, 0.06), COL_METAL_BLACK)
+    make_box("ATM_CashSlot", (ax, face_y + 0.0025, 0.50),
+             (0.22, 0.005, 0.020), COL_METAL_BLACK)
+    # Overhead "ATM" sign on a thin bracket from the body's top (1.50)
+    make_box("ATM_OverheadBracket", (ax, ay, 1.87),
+             (0.04, 0.04, 0.74), COL_METAL_BLACK)
+    make_box("ATM_OverheadSign", (ax, ay, 2.30),
+             (0.30, 0.04, 0.12), COL_LOTTERY_YEL)
+    make_box("ATM_OverheadSignText", (ax, ay + 0.0225, 2.30),
+             (0.22, 0.005, 0.06), COL_METAL_BLACK)
 
 
 def build_air_freshener_tree():
@@ -1653,8 +1723,8 @@ def build_air_freshener_tree():
     base_z = 1.90
     # Suspension wire
     make_box("AirFresh_Wire",
-             (base_x, base_y, base_z + 0.18),
-             (0.005, 0.005, 0.36), COL_METAL_BLACK)
+             (base_x, base_y, (base_z + CEIL_Z) / 2.0),
+             (0.005, 0.005, CEIL_Z - base_z), COL_METAL_BLACK)   # to the ceiling (2026-09-22)
     # Three tree-shaped fresheners at different rotations
     tree_colors = [
         (0.40, 0.72, 0.42, 1.0),    # pine green
@@ -1671,7 +1741,7 @@ def build_air_freshener_tree():
                      (0.005, scale, 0.04), col)
         # Trunk
         make_box(f"AirFresh_{ti}_Trunk",
-                 (base_x, ty, base_z - 0.18),
+                 (base_x, ty, base_z - 0.09),   # meets the lowest tier (2026-09-22)
                  (0.005, 0.02, 0.06), (0.42, 0.30, 0.20, 1.0))
 
 
@@ -1723,7 +1793,7 @@ def build_cigarette_pack_faces():
     # darker stripe along their forward face — reads as a brand band
     # at distance. Cig rack lives at X=5.87 (build_counter) — boxes
     # face WEST, so bands sit slightly west of the rack at 5.83.
-    cig_x = 5.87 - 0.04  # slightly forward (west) of the box face
+    cig_x = 5.87   # the boxes' west faces are at 5.88 (2026-09-22: the bands hung 4 cm in front of them)
     cy = 4.50
     for sh in range(3):
         shz = 1.40 + sh * 0.32 + 0.10  # match CigBox center z
@@ -1742,20 +1812,23 @@ def build_cigarette_pack_faces():
 def build_donut_display():
     # Glass-front donut case on the coffee counter, west wall.
     # coffee counter is at cx=-5.30, cy=4.50 (per build_coffee_station).
-    dx, dy = -5.20, 6.70  # north end of coffee counter run
-    base_z = 0.92  # just above coffee counter top (0.86)
+    # Mid-counter between the lid dispenser and the slurpee trays, long
+    # axis along the counter, glass to the east (2026-09-22: it stood
+    # 0.6 m past the counter's north end, on air; the north end is
+    # the slurpee's cups + the cream/sugar unit)
+    dx, dy = -4.92, 4.52
+    base_z = 0.88  # ON the coffee counter top
     # Case body (metal/glass front)
-    make_box("Donut_CaseBody", (dx, dy, base_z + 0.30),
-             (0.86, 0.40, 0.60), COL_METAL_STEEL)
-    # Front glass
-    make_box("Donut_CaseGlass", (dx + 0.21, dy, base_z + 0.30),
-             (0.04, 0.36, 0.56), COL_GLASS)
+    case_shell("Donut_CaseBody", (dx, dy, base_z + 0.30), (0.40, 0.86, 0.60), COL_METAL_STEEL, '+X')
+    # Front glass: two glints at the opening
+    for gi, (gy, gw) in enumerate(((-0.30, 0.02), (-0.22, 0.01))):
+        make_box(f"Donut_CaseGlint_{gi}", (dx + 0.18, dy + gy, base_z + 0.30), (0.004, gw, 0.56), COL_GLINT)
     # 3 tiers of donuts inside
     for tier in range(3):
         tray_z = base_z + 0.12 + tier * 0.18
         # Tray
-        make_box(f"Donut_Tray_{tier}", (dx, dy, tray_z),
-                 (0.74, 0.34, 0.02), COL_DONUT_TRAY)
+        make_box(f"Donut_Tray_{tier}", (dx - 0.01, dy, tray_z),
+                 (0.34, 0.82, 0.02), COL_DONUT_TRAY)   # wall to wall, on the side panels
         # 4 donuts per tier — vary by tier
         donut_colors = [
             [COL_DONUT_GLAZE, COL_DONUT_GLAZE, COL_DONUT_PINK, COL_DONUT_GLAZE],
@@ -1764,23 +1837,23 @@ def build_donut_display():
         ][tier]
         for di, dcol in enumerate(donut_colors):
             d_off_y = -0.12 + di * 0.08
-            make_cyl(f"Donut_{tier}_{di}", (dx, dy + d_off_y, tray_z + 0.04),
+            make_cyl(f"Donut_{tier}_{di}", (dx, dy + d_off_y, tray_z + 0.0225),
                      0.035, 0.025, dcol)
             # Hole in middle (just a darker small box)
             make_cyl(f"Donut_{tier}_{di}_Hole",
-                     (dx, dy + d_off_y, tray_z + 0.05),
+                     (dx, dy + d_off_y, tray_z + 0.0235),
                      0.012, 0.025, COL_METAL_BLACK)
-    # DONUTS sign on top of case
-    make_box("Donut_Sign", (dx, dy, base_z + 0.66),
-             (0.84, 0.04, 0.16), COL_BRAND_RED)
-    make_box("Donut_SignText", (dx, dy - 0.022, base_z + 0.66),
-             (0.60, 0.005, 0.08), COL_PAPER)
+    # DONUTS sign on top of case, reading east
+    make_box("Donut_Sign", (dx, dy, base_z + 0.68),
+             (0.04, 0.84, 0.16), COL_BRAND_RED)
+    make_box("Donut_SignText", (dx + 0.022, dy, base_z + 0.68),
+             (0.005, 0.60, 0.08), COL_PAPER)
 
 
 def build_creamer_sugar_caddy():
     # On the coffee counter — coffee station is at cx=-5.30, cy=4.50.
-    cx, cy = -5.20, 3.70  # south end of coffee counter
-    base_z = 0.94  # just above coffee counter top
+    cx, cy = -5.30, 5.92  # the coffee counter's north end (2026-09-22: it shared space with pot 1, then the lid dispenser; 2026-09-25: then the Slurpee base)
+    base_z = 0.92  # ON the coffee counter top (0.88)
     # Sugar caddy — a tray with sugar packet slots and creamer cups
     make_box("Caddy_Tray", (cx, cy, base_z),
              (0.40, 0.30, 0.08), COL_SUGAR_CADDY)
@@ -1795,10 +1868,10 @@ def build_creamer_sugar_caddy():
                       (0.82, 0.58, 0.34, 1.0),  # brown
                       (0.42, 0.62, 0.92, 1.0)][di]  # blue (equal)
         for stack in range(4):
-            make_box(f"Caddy_Sugar_{di}_{stack}",
+            make_box(f"Caddy_Sugar_{di}_{stack}",   # standing in the slot, on the tray (2026-09-22)
                      (cx + dx_off + 0.06, cy - 0.10 + stack * 0.06,
-                      base_z + 0.06),
-                     (0.06, 0.05, 0.005), packet_col)
+                      base_z + 0.07),
+                     (0.005, 0.05, 0.06), packet_col)
     # Stirrer cup
     make_cyl("Caddy_StirrerCup", (cx + 0.16, cy + 0.08, base_z + 0.10),
              0.04, 0.16, COL_METAL_STEEL)
@@ -1821,23 +1894,26 @@ def build_endcap_soccer():
     # in a wire bin. Convenience-store impulse-buy classic.
     bx, by = -1.40, 1.00
     # Wire bin
-    make_box("Soccer_Bin", (bx, by, 0.30),
+    make_box("Soccer_Bin", (bx, by, 0.25),   # on the floor
              (0.60, 0.40, 0.50), COL_METAL_STEEL)
     # Three balls poking out the top
     for bi in range(3):
         bx_off = -0.16 + bi * 0.16
         # Use cylinders as approximate spheres
         make_cyl(f"Soccer_Ball_{bi}_Lower",
-                 (bx + bx_off, by, 0.56),
+                 (bx + bx_off, by, 0.54),
                  0.10, 0.08, COL_SOCCER_WHT)
         # Black pentagon patches — abstracted as a contrasting cap
         make_cyl(f"Soccer_Ball_{bi}_Cap",
-                 (bx + bx_off, by, 0.60),
+                 (bx + bx_off, by, 0.58),
                  0.08, 0.04, COL_SOCCER_BLK)
-    # Sign topper
-    make_box("Soccer_Sign", (bx, by, 0.84),
+    # Sign topper on two wire posts from the bin's rim (2026-09-22)
+    for sgn in (-1, +1):
+        make_box(f"Soccer_SignPost_{sgn:+d}", (bx + sgn * 0.27, by, 0.61),
+                 (0.02, 0.02, 0.22), COL_METAL_STEEL)
+    make_box("Soccer_Sign", (bx, by, 0.79),
              (0.60, 0.04, 0.14), COL_BRAND_RED)
-    make_box("Soccer_SignText", (bx, by - 0.022, 0.84),
+    make_box("Soccer_SignText", (bx, by - 0.022, 0.79),
              (0.42, 0.005, 0.06), COL_PAPER)
 
 
@@ -1850,7 +1926,7 @@ def build_diffuser_strips():
         for i in range(-1, 2):
             xp = i * 2.4
             make_box(f"DiffuserGlow_{j}_{i}",
-                     (xp, ypos, CEIL_Z - 0.14),
+                     (xp, ypos, CEIL_Z - 0.095),   # under the tube, which is flush now
                      (1.50, 0.16, 0.02), (1.0, 0.96, 0.86, 1.0))
 
 
@@ -1862,7 +1938,7 @@ def build_cooler_price_windows():
     door_centres = [-2.40, -0.80, +0.80, +2.40]
     for i, cx in enumerate(door_centres):
         make_box(f"Cooler_PriceBand_{i}",
-                 (cx, cy + 0.02, 2.12),
+                 (cx, cy + 0.1175, 1.96),   # under the price tag, on the shelf lip
                  (0.32, 0.005, 0.04), COL_BRAND_RED)
 
 
@@ -1871,16 +1947,17 @@ def build_dust_stripes():
     # reads as dust under the fluorescent overhead glare.
     for j, ay in enumerate([3.5, 5.5]):
         for sy_sgn in (-1, +1):
-            shz = 0.34 + 4 * 0.40 + 0.01   # top shelf altitude
+            shz = 0.34 + 4 * 0.40   # top shelf centre; its top face is +0.16
             make_box(f"DustStripe_Aisle{j}_y{sy_sgn:+d}",
-                     (0.0, ay + sy_sgn * 0.32, shz + 0.34),
+                     (0.0, ay + sy_sgn * 0.32, shz + 0.1605),
                      (6.0, 0.04, 0.001), COL_DUST)
 
 
 def build_trashbag_at_stockroom():
     # Tied-off black trash bag at the stockroom door threshold —
     # Sam's mid-shift "still need to take this out" prop.
-    bx, by = 4.50, 8.80
+    # between the lockers and the cartons (2026-09-24: it stood in a locker)
+    bx, by = 5.20, 8.62
     make_cyl("Trashbag_Body", (bx, by, 0.30), 0.20, 0.60, COL_BAG_BLACK)
     # Tied top
     make_cyl("Trashbag_Tie", (bx, by, 0.60), 0.04, 0.06, COL_BAG_BLACK)
@@ -1904,7 +1981,7 @@ def build_propane_cage_outside():
     for ti in range(6):
         tcol = ti % 3
         tx = cx - 0.40 + (ti % 3) * 0.40
-        tz = 0.40 + (ti // 3) * 0.60
+        tz = 0.20 + (ti // 3) * 0.40      # on the cage floor, stacked
         make_cyl(f"PropaneTank_{ti}", (tx, cy, tz),
                  0.14, 0.40, COL_PROPANE_TANK)
         # Blue collar / brand band
@@ -1920,7 +1997,7 @@ def build_pickup_truck_outside():
     # a small pickup truck. Adds depth to the parking-lot scene
     # visible through the south windows. Position chosen to NOT
     # overlap the existing sedan (which is on the right side).
-    tx, ty = -3.60, -1.40
+    tx, ty = -3.05, -2.30
     # Cab
     make_box("Truck_Cab", (tx, ty, 0.80),
              (1.20, 1.00, 0.70), COL_TRUCK_BODY)
@@ -1943,35 +2020,35 @@ def build_pickup_truck_outside():
                    (tx - 1.40, ty - 0.48), (tx - 0.50, ty + 0.48),
                    (tx + 0.50, ty + 0.48), (tx - 1.40, ty + 0.48)]:
         make_cyl(f"Truck_Wheel_{wx:+.1f}_{wy:+.1f}",
-                 (wx, wy, 0.30), 0.24, 0.20, COL_METAL_BLACK, axis='Y')
+                 (wx, wy, 0.24), 0.24, 0.20, COL_METAL_BLACK, axis='Y')   # on the asphalt
     # Headlights
     for ws in (-1, +1):
         make_box(f"Truck_Headlight_{ws:+d}",
-                 (tx + 0.62, ty + ws * 0.32, 0.80),
+                 (tx + 0.6025, ty + ws * 0.32, 0.80),
                  (0.005, 0.16, 0.12), COL_STREETLAMP_LIT)
 
 
 def build_squeegee_bucket():
     # Squeegee + bucket beside the right pump — gas-station prop.
     px, py = +2.20, -2.80
-    make_cyl("Squeegee_Bucket", (px, py, 0.20), 0.18, 0.40, COL_METAL_STEEL)
+    make_cyl("Squeegee_Bucket", (px + 0.550, py, 0.20), 0.18, 0.40, COL_METAL_STEEL)
     # Water-blue inside
-    make_cyl("Squeegee_Water", (px, py, 0.32), 0.16, 0.10, COL_ICE_BLUE)
+    make_cyl("Squeegee_Water", (px + 0.550, py, 0.32), 0.16, 0.10, COL_ICE_BLUE)
     # Two squeegee handles sticking out
     for s_off in (-0.06, +0.06):
         make_box(f"Squeegee_Handle_{s_off:+.2f}",
-                 (px + s_off, py, 0.70),
-                 (0.02, 0.02, 0.50), COL_METAL_BLACK)
+                 (px + s_off + 0.550, py, 0.55),
+                 (0.02, 0.02, 0.50), COL_METAL_BLACK)   # in the bucket (started 5 cm above it)
         # Squeegee head
         make_box(f"Squeegee_Head_{s_off:+.2f}",
-                 (px + s_off, py, 0.96),
+                 (px + s_off + 0.550, py, 0.81),
                  (0.06, 0.20, 0.06), COL_METAL_STEEL)
 
 
 def build_ice_chest_outside():
     # Chest-style ICE cooler beside the south door (Visi-Cool style),
     # visible through the window. Outdoor merchandising.
-    cx, cy = +1.40, -0.90
+    cx, cy = +0.85, -0.90
     make_box("IceChest_Body", (cx, cy, 0.40),
              (1.20, 0.80, 0.80), COL_ICE_BLUE)
     make_box("IceChest_Lid", (cx, cy, 0.82),
@@ -1984,7 +2061,7 @@ def build_ice_chest_outside():
 
 
 def build_polish_pass_3():
-    build_cigarette_pack_faces()
+    # build_cigarette_pack_faces() — retired 2026-10-07: the packs carry their own bands
     build_donut_display()
     build_creamer_sugar_caddy()
     build_endcap_soccer()
@@ -2029,12 +2106,13 @@ def build_credit_card_terminal():
     # Screen
     make_box("CCTerm_Screen", (cx, cy - 0.131, base_z + 0.10),
              (0.12, 0.005, 0.06), COL_TERMINAL_SCRN)
-    # PIN pad — 4 rows × 3 cols
+    # PIN pad — 4 rows × 3 cols, laid on the body's top face
+    # (2026-09-25: the keys hung in the body's middle, 13 cm inside it)
     for r in range(4):
         for c in range(3):
             make_box(f"CCTerm_Key_{r}_{c}",
-                     (cx - 0.05 + c * 0.05, cy, base_z + 0.04 - r * 0.018),
-                     (0.04, 0.005, 0.012), COL_PAPER_AGED)
+                     (cx - 0.05 + c * 0.05, cy - 0.06 + r * 0.035, base_z + 0.12 + 0.0031),
+                     (0.04, 0.012, 0.005), COL_PAPER_AGED)
     # Card swipe slot
     make_box("CCTerm_Slot", (cx, cy + 0.13, base_z + 0.06),
              (0.14, 0.005, 0.012), COL_METAL_BLACK)
@@ -2051,7 +2129,7 @@ def build_receipt_paper_curl():
     # Paper curl emerging from the existing Receipt_Printer (at
     # cx=5.0, cy-1.50, 1.18 per build_counter)
     rx, ry = 5.0, 4.5 - 1.50
-    rz = 1.28
+    rz = 1.2325   # the printer's top (1.23) — 2026-09-22: the strip hung 5 cm above it
     # Strip of paper sticking out south then curling
     make_box("ReceiptCurl_Strip",
              (rx, ry - 0.10, rz),
@@ -2099,31 +2177,31 @@ def build_pizza_warmer():
     # (HotCase at cx, cy-0.10, 1.30 in build_counter)
     px, py = 5.0, 4.5 + 0.70
     base_z = 1.20
-    make_box("Pizza_CaseBody", (px, py, base_z),
-             (0.50, 0.50, 0.42), COL_METAL_STEEL)
-    # Glass front (south face)
-    make_box("Pizza_Glass", (px - 0.26, py, base_z),
-             (0.04, 0.50, 0.38), COL_GLASS)
-    # 3 round pizza pans visible inside
-    for pi, py_off in enumerate([-0.16, 0.0, +0.16]):
-        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.10),
-                 0.14, 0.02, COL_METAL_STEEL)
+    case_shell("Pizza_CaseBody", (px, py, base_z), (0.50, 0.50, 0.42), COL_METAL_STEEL, '-X')
+    # Glass front: two glints at the opening
+    for gi, (gy, gw) in enumerate(((-0.14, 0.02), (-0.07, 0.01))):
+        make_box(f"Pizza_Glint_{gi}", (px - 0.24, py + gy, base_z), (0.004, gw, 0.38), COL_GLINT)
+    # 3 round pizzas on the case floor, side by side (28 cm pans on
+    # 16 cm centres overlapped each other and the case sides)
+    for pi, py_off in enumerate([-0.15, 0.0, +0.15]):
+        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.18),
+                 0.07, 0.02, COL_METAL_STEEL)
         # Pizza (cheese-orange)
-        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.085),
-                 0.13, 0.012, COL_PIZZA_ORANGE)
+        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.164),
+                 0.06, 0.012, COL_PIZZA_ORANGE)
         # 4 pepperoni dots
         for di in range(4):
             ang = di * 1.57
-            dx2 = math.cos(ang) * 0.06
-            dy2 = math.sin(ang) * 0.06
+            dx2 = math.cos(ang) * 0.032
+            dy2 = math.sin(ang) * 0.032
             make_cyl(f"Pizza_Pep_{pi}_{di}",
-                     (px + dx2, py + py_off + dy2, base_z - 0.07),
-                     0.018, 0.005, (0.74, 0.18, 0.16, 1.0))
-    # Heat lamp glow (top)
-    make_box("Pizza_HeatLamp", (px, py, base_z + 0.25),
+                     (px + dx2, py + py_off + dy2, base_z - 0.1555 + 0.0286),
+                     0.014, 0.005, (0.74, 0.18, 0.16, 1.0))
+    # Heat lamp glow, under the top panel
+    make_box("Pizza_HeatLamp", (px, py, base_z + 0.17),
              (0.46, 0.46, 0.04), (1.0, 0.74, 0.34, 1.0))
-    # PIZZA label
-    make_box("Pizza_Sign", (px, py, base_z + 0.30),
+    # PIZZA label, on the case top
+    make_box("Pizza_Sign", (px, py, base_z + 0.23),
              (0.50, 0.50, 0.04), COL_BRAND_RED)
 
 
@@ -2160,9 +2238,11 @@ def build_hanging_chip_rack():
                      0.005, 0.06, COL_METAL_STEEL, axis='Y')
             # Chip bag (varies by tint cycle)
             tint = SNACK_TINTS[(r * 4 + c) % len(SNACK_TINTS)]
-            make_box(f"PegBag_{r}_{c}",
-                     (cx + 0.06, hook_y, hook_z - 0.06),
-                     (0.005, 0.16, 0.20), tint)
+            # a BAG (2026-10-07: a 5 mm card): pillowed body off the panel
+            # face, the brand band across it, the crimp at the top under the hook
+            make_box(f"PegBag_{r}_{c}", (cx + 0.04, hook_y, hook_z - 0.11), (0.04, 0.16, 0.20), tint)
+            make_box(f"PegBag_{r}_{c}_Band", (cx + 0.0605, hook_y, hook_z - 0.13), (0.001, 0.16, 0.06), (0.96, 0.92, 0.80, 1.0))
+            make_box(f"PegBag_{r}_{c}_Crimp", (cx + 0.04, hook_y, hook_z + 0.0), (0.012, 0.16, 0.02), tint)
 
 
 def build_prepaid_card_spinner():
@@ -2171,15 +2251,19 @@ def build_prepaid_card_spinner():
     sx, sy = 1.50, 1.20
     base_z = 0.40
     # Vertical pole
-    make_box("Spinner_Pole", (sx, sy, base_z + 0.50),
-             (0.04, 0.04, 1.00), COL_METAL_STEEL)
+    # (2026-09-22: the pole stands ON its base — it started 34 cm above it)
+    make_box("Spinner_Pole", (sx, sy, (base_z - 0.34 + base_z + 1.00) / 2.0),
+             (0.04, 0.04, 1.34), COL_METAL_STEEL)
     # Base
     make_box("Spinner_Base", (sx, sy, base_z - 0.36),
              (0.30, 0.30, 0.04), COL_METAL_STEEL)
     # 4 rows of card carriers
     for r in range(4):
         rz = base_z + 0.20 + r * 0.22
-        # Wire ring at each level
+        # Wire ring at each level (2026-09-22: it exists now — the cards
+        # hung on the idea of one)
+        from _props.geometry import make_lathe as _ml
+        _ml(f"Spinner_Ring_{r}", (sx, sy, rz + 0.04), [(0.175, 0.0), (0.185, 0.006), (0.175, 0.012)], COL_METAL_STEEL, segments=16, loop=True)
         for ai in range(8):
             ang = ai * (math.pi * 2 / 8)
             cx2 = sx + math.cos(ang) * 0.18
@@ -2194,8 +2278,8 @@ def build_prepaid_card_spinner():
 def build_quarter_machines():
     # Three quarter-machines (gumball / sticker / temporary tattoo)
     # in a row near the south door, west of the entry mat.
-    for mi, mx in enumerate([-3.20, -2.70, -2.20]):
-        my = 0.60
+    for mi, mx in enumerate([1.90, 2.30, 2.70]):   # east of the entry mat (2026-09-22: they stood in the window tables' chairs)
+        my = 0.30   # clear of the wall's inner face (2026-09-22: 6 cm into it, the coin slot inside the plaster)
         # Body
         make_box(f"Quarter_{mi}_Body", (mx, my, 0.50),
                  (0.36, 0.36, 1.00), COL_GUMBALL_BODY)
@@ -2225,11 +2309,11 @@ def build_vape_smoke_kiosk():
     kx, ky = 5.84, 5.80
     base_z = 1.20
     # Body
-    make_box("Vape_KioskBody", (kx, ky, base_z),
-             (0.06, 0.80, 1.10), COL_VAPE_DARK)
-    # Glass front (west-facing)
-    make_box("Vape_Glass", (kx - 0.04, ky, base_z),
-             (0.005, 0.76, 1.06), COL_GLASS)
+    # a shallow shell open to the west (the pens were INSIDE a solid 6 cm
+    # body, behind an opaque glass slab)
+    case_shell("Vape_KioskBody", (kx, ky, base_z), (0.06, 0.80, 1.10), COL_VAPE_DARK, '-X', wall=0.015)
+    for gi, (gy, gw) in enumerate(((-0.30, 0.02), (-0.22, 0.01))):
+        make_box(f"Vape_Glint_{gi}", (kx - 0.028, ky + gy, base_z), (0.004, gw, 1.07), COL_GLINT)
     # Stacked vape pens on 3 shelves
     for sh in range(3):
         shz = base_z - 0.40 + sh * 0.34
@@ -2237,10 +2321,10 @@ def build_vape_smoke_kiosk():
             cx2 = ky - 0.32 + c * 0.16
             tint = SNACK_TINTS[(sh + c) % len(SNACK_TINTS)]
             make_box(f"VapePen_{sh}_{c}",
-                     (kx - 0.02, cx2, shz),
+                     (kx + 0.0125, cx2, shz),   # on the back panel
                      (0.005, 0.04, 0.16), tint)
     # Neon green VAPE sign
-    make_box("Vape_NeonSign", (kx - 0.02, ky, base_z + 0.62),
+    make_box("Vape_NeonSign", (kx - 0.02, ky, base_z + 0.60),   # on the kiosk's top
              (0.005, 0.60, 0.10), COL_VAPE_NEON)
 
 
@@ -2254,7 +2338,7 @@ def build_bug_zapper():
     # Blue tubes inside (2)
     for ti in range(2):
         make_box(f"BugZap_Tube_{ti}",
-                 (bx, by - 0.04, bz + 0.06 - ti * 0.12),
+                 (bx, by - 0.04 - 0.0131, bz + 0.06 - ti * 0.12),
                  (0.46, 0.005, 0.04), COL_BLACKLIGHT_BLU)
     # Wire grille (4 horizontal bars)
     for wi in range(4):
@@ -2319,13 +2403,13 @@ def build_entry_mat_grime():
     make_box("EntryMat_Body", (mx, my, 0.012),
              (3.00, 1.20, 0.010), COL_BLACK_RUBBER)
     # WELCOME text band (light tan)
-    make_box("EntryMat_Welcome", (mx, my, 0.015),
+    make_box("EntryMat_Welcome", (mx, my, 0.0231),
              (2.20, 0.20, 0.001), (0.72, 0.62, 0.42, 1.0))
     # Dirt streaks (3 darker patches)
     for di in range(6):
         sx = (di - 2.5) * 0.40
         make_box(f"EntryMat_Dirt_{di}",
-                 (sx, my + (di % 2) * 0.20 - 0.10, 0.013),
+                 (sx, my + (di % 2) * 0.20 - 0.10, 0.0236),
                  (0.18, 0.14, 0.002), (0.32, 0.26, 0.18, 1.0))
 
 
@@ -2431,8 +2515,11 @@ def build_baseboard_quarter_round():
 def build_soda_bottle_pyramid():
     # 2L bottle pyramid on a foreground end-cap — replaces a generic
     # cardboard pyramid with proper cylindrical bottle stack.
-    bx, by = -1.40, 2.60
+    bx, by = -2.40, 1.60      # (2026-10-07: 0.40 m off aisle 0's face at -1.40, 2.60 — the entry zone, clear all round)
     base_z = 0.40
+    # the riser the bottom tier stands on (2026-09-22: the pyramid
+    # began 25 cm above the floor)
+    make_box("SodaPyr_Riser", (bx, by, 0.125), (0.84, 0.30, 0.25), COL_BOX_KRAFT)
     bottles = [
         (COL_BOTTLE_COKE,   COL_BOTTLE_CAP),
         (COL_BOTTLE_PEPSI,  COL_BOTTLE_CAP),
@@ -2441,26 +2528,41 @@ def build_soda_bottle_pyramid():
     # Tier 0 — 4 bottles
     for i in range(4):
         col, capcol = bottles[i % 3]
-        make_cyl(f"SodaPyr_T0_{i}", (bx - 0.30 + i * 0.20, by, base_z),
-                 0.07, 0.30, col)
-        make_cyl(f"SodaPyr_T0_Cap_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.16),
-                 0.05, 0.06, capcol)
+        # 2-liter silhouette: body + shoulder-neck + cap (was a fat
+        # straight tube - "all the bottles are cubes")
+        make_cyl(f"SodaPyr_T0_{i}", (bx - 0.30 + i * 0.20, by, base_z - 0.045),
+                 0.048, 0.21, col)
+        make_cyl(f"SodaPyr_T0_Neck_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.095),
+                 0.020, 0.07, col)
+        make_cyl(f"SodaPyr_T0_Cap_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.145),
+                 0.022, 0.025, capcol)
+    # boards the upper tiers stand on (over the caps below; 2026-09-22)
+    make_box("SodaPyr_Board_0", (bx - 0.05, by, base_z + 0.16), (0.76, 0.24, 0.02), COL_BOX_KRAFT)
+    make_box("SodaPyr_Board_1", (bx, by, base_z + 0.48), (0.56, 0.24, 0.02), COL_BOX_KRAFT)
     # Tier 1 — 3 bottles (offset)
     for i in range(3):
         col, capcol = bottles[(i + 1) % 3]
-        make_cyl(f"SodaPyr_T1_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32),
-                 0.07, 0.30, col)
-        make_cyl(f"SodaPyr_T1_Cap_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.48),
-                 0.05, 0.06, capcol)
+        # 2-liter silhouette: body + shoulder-neck + cap (was a fat
+        # straight tube - "all the bottles are cubes")
+        make_cyl(f"SodaPyr_T1_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32 - 0.045),
+                 0.048, 0.21, col)
+        make_cyl(f"SodaPyr_T1_Neck_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32 + 0.095),
+                 0.020, 0.07, col)
+        make_cyl(f"SodaPyr_T1_Cap_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32 + 0.145),
+                 0.022, 0.025, capcol)
     # Tier 2 — 2 bottles
     for i in range(2):
         col, capcol = bottles[i]
-        make_cyl(f"SodaPyr_T2_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64),
-                 0.07, 0.30, col)
-        make_cyl(f"SodaPyr_T2_Cap_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.80),
-                 0.05, 0.06, capcol)
+        # 2-liter silhouette: body + shoulder-neck + cap (was a fat
+        # straight tube - "all the bottles are cubes")
+        make_cyl(f"SodaPyr_T2_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 - 0.045),
+                 0.048, 0.21, col)
+        make_cyl(f"SodaPyr_T2_Neck_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 + 0.095),
+                 0.020, 0.07, col)
+        make_cyl(f"SodaPyr_T2_Cap_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 + 0.145),
+                 0.022, 0.025, capcol)
     # Topper SALE banner
-    make_box("SodaPyr_Topper", (bx, by, base_z + 1.04),
+    make_box("SodaPyr_Topper", (bx, by, base_z + 0.88),      # on the top tier's caps
              (0.50, 0.30, 0.16), COL_LOTTERY_YEL)
 
 
@@ -2540,7 +2642,7 @@ def build_drink_fridge_handles():
 def build_floor_plant():
     # Decorative potted plant near the front door — fake green plant
     # in a terracotta pot. Cheap convenience-store dressing.
-    px, py = -3.40, 0.80
+    px, py = -5.00, 0.45
     # Pot
     for r_layer in range(3):
         make_cyl(f"Plant_Pot_{r_layer}",
@@ -2559,22 +2661,24 @@ def build_floor_plant():
 
 
 def build_broom_and_mop():
-    # Broom + mop leaning in the corner near the stockroom door.
-    bx, by = 4.40, 8.40
+    # Broom + mop against the N wall between the last cooler and the break
+    # bench (2026-09-24: at (4.40, 8.40) both stood through the bench)
+    bx, by = 3.70, 8.78
     # Broom
-    make_cyl("Broom_Handle", (bx, by, 0.80),
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_cyl("Broom_Handle", (bx + 0.550, by, 0.80),
              0.018, 1.60, COL_BROOM_HANDLE, axis='Z')
     # Slight lean (offset along Y at top — abstracted by a second cylinder)
-    make_cyl("Broom_HandleTop", (bx + 0.04, by, 1.46),
+    make_cyl("Broom_HandleTop", (bx + 0.04 + 0.550, by, 1.46),
              0.018, 0.30, COL_BROOM_HANDLE, axis='Z')
     # Brush head
-    make_box("Broom_Brush", (bx, by, 0.06),
+    make_box("Broom_Brush", (bx + 0.550, by, 0.06),
              (0.28, 0.06, 0.10), COL_BROOM_BRUSH)
     # Mop (next to broom)
     mx = bx - 0.16
-    make_cyl("Mop_Handle", (mx, by, 0.80),
+    make_cyl("Mop_Handle", (mx + 0.550, by, 0.80),
              0.018, 1.60, COL_METAL_STEEL, axis='Z')
-    make_box("Mop_Head", (mx, by, 0.08),
+    make_box("Mop_Head", (mx + 0.550, by, 0.08),
              (0.18, 0.20, 0.10), (0.82, 0.78, 0.72, 1.0))
 
 
@@ -2638,13 +2742,13 @@ def build_cup_stack_lid_dispenser():
     # check if I need this. Adding a SECOND stack near the slurpee
     # fountain so the west wall reads as a serving station.
     sx, sy = -5.20, 5.90
-    base_z = 0.90
+    base_z = 0.887   # on the counter top at 0.88 (2026-09-23: 1.3 cm over it)
     # Cup stack (40 cups tall)
     for ci in range(20):
         make_cyl(f"CupStackSlurp_{ci}", (sx, sy, base_z + ci * 0.012),
                  0.045, 0.014, COL_PAPER)
     # Lid dispenser (cylinder)
-    make_cyl("LidDisp_Slurp", (sx + 0.14, sy, base_z + 0.08),
+    make_cyl("LidDisp_Slurp", (sx + 0.14, sy, base_z + 0.083),
              0.05, 0.18, COL_METAL_BLACK)
     # Single visible lid on top
     make_cyl("LidDisp_Slurp_TopLid", (sx + 0.14, sy, base_z + 0.18),
@@ -2678,9 +2782,11 @@ def build_door_hinges():
                      0.018, 0.10, COL_METAL_BLACK, axis='X')
     # Back door (north-east, near stockroom)
     for hi in range(3):
+        # on the back door's N edge (2026-09-24: three hinges stood in
+        # mid-air at (4.40, 8.78), where an older back door once was)
         make_cyl(f"BackDoor_Hinge_{hi}",
-                 (4.40, 8.78, 0.30 + hi * 0.70),
-                 0.018, 0.08, COL_METAL_BLACK, axis='Y')
+                 (5.862, 7.94, 0.30 + hi * 0.70),
+                 0.018, 0.08, COL_METAL_BLACK, axis='Z')
 
 
 def build_paper_towel_dispenser():
@@ -2695,26 +2801,28 @@ def build_paper_towel_dispenser():
     make_cyl("PaperTowel_Roll", (px + 0.04, py, base_z - 0.12),
              0.06, 0.26, COL_PAPER, axis='Y')
     # Sheet hanging down
-    make_box("PaperTowel_Sheet", (px + 0.05, py, base_z - 0.30),
+    make_box("PaperTowel_Sheet", (px + 0.05, py, base_z - 0.27),   # from the roll
              (0.005, 0.24, 0.18), COL_PAPER)
 
 
 def build_outside_hose_reel():
     # Coiled water-hose reel mounted on the south wall outside,
     # west of the door. Concentric cylinders simulate the coil.
-    hx, hy = -4.20, -0.18
+    hx, hy = -5.70, -0.30   # (2026-09-22: the coil sat 8 cm into the wall, the bracket 3 cm off it; 2026-10-07: onto the pier — x -4.2 is the cut window now)
     base_z = 1.20
-    # Mount bracket
-    make_box("HoseReel_Bracket", (hx, hy, base_z),
+    # Mount bracket, on the wall's outer face (y -0.10)
+    make_box("HoseReel_Bracket", (hx, hy + 0.15, base_z),
              (0.04, 0.10, 0.30), COL_METAL_STEEL)
     # Coil — 4 concentric rings simulated as cylinders of increasing
     # radius, same Z. Color: dark green hose.
-    for ri in range(4):
-        make_cyl(f"HoseReel_Coil_{ri}", (hx + 0.16, hy, base_z),
+    for ri in range(4):   # the coil on the bracket's axle (2026-09-22: 11 cm out from it)
+        make_cyl(f"HoseReel_Coil_{ri}", (hx + 0.05, hy, base_z),
                  0.04 + ri * 0.04, 0.06, (0.18, 0.32, 0.20, 1.0),
                  axis='X', segments=12)
-    # Nozzle dangling
-    make_cyl("HoseReel_Nozzle", (hx + 0.16, hy, base_z - 0.34),
+    # Nozzle dangling on a drop of hose from the coil (2026-09-22)
+    make_cyl("HoseReel_Drop", (hx + 0.05, hy, base_z - 0.215),
+             0.012, 0.15, (0.18, 0.32, 0.20, 1.0))
+    make_cyl("HoseReel_Nozzle", (hx + 0.05, hy, base_z - 0.34),
              0.025, 0.10, COL_METAL_STEEL)
 
 
@@ -2766,8 +2874,8 @@ def build_aisle_label_signs():
     for ai, ay in enumerate([3.5, 5.5]):
         sign_x = -2.80
         # Mount rod
-        make_cyl(f"AisleNumRod_{ai}", (sign_x, ay, CEIL_Z - 0.30),
-                 0.008, 0.20, COL_METAL_STEEL)
+        make_cyl(f"AisleNumRod_{ai}", (sign_x, ay, CEIL_Z - 0.20),
+                 0.008, 0.40, COL_METAL_STEEL)   # reaches the ceiling
         # Disc
         make_cyl(f"AisleNumDisc_{ai}", (sign_x, ay, CEIL_Z - 0.42),
                  0.16, 0.04, COL_BRAND_RED, axis='X')
@@ -2809,6 +2917,11 @@ def export_glb():
     out_path = os.path.join(out_dir, OUTPUT_NAME)
     print(f"\n[build_kwik_stop] exporting to {out_path}")
     print(f"[build_kwik_stop] scene objects: {len(bpy.context.scene.objects)}")
+    try:    # one mesh per stocked fixture (2026-10-07, _props.geometry.join_stock)
+        from _props.geometry import join_stock
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
     bpy.ops.object.select_all(action='SELECT')
     base = {'filepath': out_path, 'export_format': 'GLB',
             'use_selection': False, 'export_apply': True,
@@ -2816,15 +2929,166 @@ def export_glb():
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     legacy = {}
     if 'export_colors' in rna.properties: legacy['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     try:
         bpy.ops.export_scene.gltf(**base, **legacy)
+        try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+            import sys as _s, os as _o
+            _d = _o.path.dirname(_o.path.abspath(__file__))
+            for _c in (_d, _o.path.dirname(_d)):
+                if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                    _s.path.insert(0, _c)
+            from _props.glb_colorfix import postfix as _colorfix
+            _colorfix(base["filepath"], bpy)
+        except Exception as _e:
+            print("[glb_colorfix] skipped:", _e)
     except Exception as e:
         print(f"[build_kwik_stop] ✗ EXPORT FAILED: {e}")
         raise
     if os.path.exists(out_path):
         size = os.path.getsize(out_path)
         print(f"[build_kwik_stop] ✓ wrote {out_path} ({size} bytes)")
+
+
+def build_hero_props_2026_08():
+    """2026-08-03 hero-prop pass — vol6's most-repeated fixtures.
+    Frame: x -6..6, y 0 storefront .. 9 north wall, counter L at
+    east (cx 5.0, cy 4.5, top 1.04)."""
+    wood = (0.42, 0.30, 0.18, 1.0)
+    steel = (0.60, 0.62, 0.63, 1.0)
+    # THE THREE TABLES BY THE WINDOW (the Red Peugeot chapter lives
+    # here). One aligned to the existing west outlet.
+    for ti, tx in enumerate((-4.5, -3.65, -2.8)):
+        make_box(f"WinTable_{ti}_Top", (tx, 1.05, 0.74), (0.70, 0.70, 0.04), wood)
+        make_cyl(f"WinTable_{ti}_Post", (tx, 1.05, 0.37), 0.05, 0.70, steel, segments=8)
+        make_cyl(f"WinTable_{ti}_Foot", (tx, 1.05, 0.03), 0.24, 0.03, steel, segments=10)
+        for ci, cy in enumerate((0.55, 1.55)):
+            make_box(f"WinChair_{ti}_{ci}_Seat", (tx, cy, 0.44), (0.38, 0.38, 0.04), (0.62, 0.28, 0.24, 1.0))
+            make_box(f"WinChair_{ti}_{ci}_Back", (tx, cy + (0.17 if ci else -0.17), 0.70),
+                     (0.38, 0.04, 0.48), (0.55, 0.24, 0.20, 1.0))
+            # four legs (2026-09-08: the seats hung 0.42 m above the floor)
+            for lx in (-1, 1):
+                for ly in (-1, 1):
+                    make_box(f"WinChair_{ti}_{ci}_Leg_{lx:+d}_{ly:+d}",
+                             (tx + lx * 0.16, cy + ly * 0.16, 0.22),
+                             (0.03, 0.03, 0.44), steel)
+    # THE MICROWAVE, its clock set nine minutes fast on purpose —
+    # green LED face, on the coffee/food counter
+    # (2026-09-22: it hung 19 cm above the counter, half past its edge)
+    make_box("Microwave", (-5.05, 3.06, 1.03), (0.50, 0.36, 0.30), (0.26, 0.26, 0.28, 1.0))
+    make_box("Microwave_Door", (-5.05, 2.87, 1.03), (0.38, 0.02, 0.24), (0.12, 0.12, 0.14, 1.0))
+    make_box("Microwave_ClockLED", (-4.87, 2.865, 1.11), (0.10, 0.015, 0.035), (0.30, 0.92, 0.42, 1.0))
+    # THE ACTUAL CLOCK — second face by the office door, east wall.
+    # The pairing with the fast microwave clock is the point.
+    make_cyl("Clock_Office_Face", (5.88, 8.05, 2.10), 0.16, 0.04, (0.92, 0.90, 0.84, 1.0), axis='X', segments=14)
+    make_box("Clock_Office_HandH", (5.85, 8.02, 2.12), (0.02, 0.015, 0.08), (0.14, 0.14, 0.15, 1.0))
+    make_box("Clock_Office_HandM", (5.85, 8.09, 2.11), (0.02, 0.10, 0.015), (0.14, 0.14, 0.15, 1.0))
+    # The back office door (Jen's deposit paperwork) + lit pocket
+    make_box("Office_Doorframe", (5.94, 7.2, 1.08), (0.10, 0.98, 2.16), wood)
+    make_box("Office_Door_Open", (5.90, 7.2, 1.05), (0.05, 0.85, 2.05), (0.50, 0.40, 0.28, 1.0))
+    make_box("Office_Light_Pocket", (5.89, 7.2, 1.30), (0.02, 0.70, 1.70), (0.98, 0.92, 0.72, 1.0))
+    # The employee bathroom door, north wall — RESTROOM plaque
+    make_box("Restroom_Door", (3.6, 8.87, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
+    make_box("Restroom_Plaque", (3.6, 8.83, 1.75), (0.24, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
+    # The layered window decals on the west picture window: lottery,
+    # dead cigarette brand, and the TASTE HOME hamburger missing an
+    # eye (ported in from the exterior shell where it was hiding)
+    make_box("Decal_Lottery", (-4.1, 0.105, 1.62), (0.55, 0.01, 0.40), (0.90, 0.72, 0.24, 0.85))   # on the panel's inner face (2026-09-22: inside the wall)
+    make_box("Decal_Cigs", (-3.4, 0.105, 1.45), (0.50, 0.01, 0.35), (0.70, 0.28, 0.24, 0.85))
+    make_box("Decal_Burger", (-2.9, 0.105, 1.30), (0.45, 0.01, 0.45), (0.88, 0.62, 0.30, 0.9))
+    make_box("Decal_Burger_Sign", (-2.9, 0.112, 1.10), (0.30, 0.008, 0.12), (0.94, 0.90, 0.80, 0.9))
+    make_box("Decal_Burger_Eye", (-2.98, 0.111, 1.40), (0.05, 0.008, 0.05), (0.14, 0.14, 0.15, 1.0))
+    # Convex security mirror above the door, angled at the counter
+    make_cyl("Convex_Mirror", (0.0, 0.30, 2.55), 0.28, 0.06, (0.62, 0.68, 0.72, 1.0), axis='Y', segments=14)
+    make_cyl("Convex_Mirror_Rim", (0.0, 0.27, 2.55), 0.30, 0.02, (0.94, 0.42, 0.20, 1.0), axis='Y', segments=14)
+    make_box("Convex_Mirror_Bracket", (0.0, 0.185, 2.55), (0.04, 0.17, 0.04), COL_METAL_BLACK)   # to the wall (2026-09-22)
+    # Rubber anti-fatigue mat on the working side of the counter
+    make_box("AntiFatigue_Mat", (5.55, 4.5, 0.010), (0.80, 3.60, 0.015), (0.14, 0.14, 0.15, 1.0))
+    # Employee break nook, NE corner: bench + two lockers
+    # (2026-09-24: lockers flush on the N wall, W of the corner; the bench
+    # in front of them, on legs — it was a board at 42 cm on nothing)
+    make_box("Break_Bench", (4.45, 8.25, 0.42), (1.00, 0.36, 0.06), wood)
+    for bi, (lx, ly) in enumerate(((-0.44, -0.14), (0.44, -0.14), (-0.44, 0.14), (0.44, 0.14))):
+        make_box(f"Break_Bench_Leg_{bi}", (4.45 + lx, 8.25 + ly, 0.195), (0.04, 0.04, 0.39), wood)
+    for li, lx in enumerate((4.25, 4.65)):
+        make_box(f"Break_Locker_{li}", (lx, 8.70, 0.95), (0.38, 0.35, 1.90), (0.44, 0.50, 0.54, 1.0))
+    # Indoor ice-cream novelty cooler (the one acting up). (2026-10-07, the
+    # user: "the glass case can't be opened by the island obstructing it" —
+    # at y 7.4 it stood 0.70 m in front of beer-cooler doors 0 and 1; a 0.70 m
+    # chest now, centred in the lane: 0.98 m to the doors, 0.98 m to aisle 1)
+    make_box("Novelty_Cooler", (-1.2, 7.175, 0.45), (1.60, 0.70, 0.90), (0.86, 0.88, 0.90, 1.0))
+    make_box("Novelty_Cooler_Lid", (-1.2, 7.175, 0.92), (1.55, 0.65, 0.04), (0.55, 0.62, 0.66, 0.6))
+    make_box("Novelty_Cooler_Decal", (-1.2, 6.82, 0.55), (1.20, 0.01, 0.40), (0.92, 0.56, 0.62, 1.0))
+    # Tip cup at the register
+    make_cyl("Tip_Cup", (4.55, 3.6, 1.12), 0.05, 0.14, (0.80, 0.82, 0.72, 0.7), segments=8)
+
+
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    The kwik_stop_interior preset fires five distinct cues; the
+    window cue aims at the existing south glass. Built here:
+
+    - SAM'S PHONE (x2 — "Sam's phone buzzes" / "At 12:31, her
+      phone buzzes"): face-up on the counter west of the impulse
+      row. The payphone by the door is NOT her phone; the marker
+      sits close so this one wins the nearest-match race.
+    - THE SLUSHIE ("Sam drinks the slushie at one of the three
+      tables by the window"): cup + lid + straw on WinTable_1,
+      with the day-old paper Jen folded there beside it.
+    - THE CARD ("MARTINEZ RE-ROOFING & SIDING with a phone
+      number"): on the counter by the register where she set it
+      before it went into the apron pocket.
+    - THE NEXCORP VAN ("The van's engine is running. The van is
+      facing her direction."): parked on a Linden street strip
+      south of the forecourt, teal livery stripe toward the
+      store, visible through the south glass past the pumps.
+
+    Draft note: draft N+1 could idle the van (exhaust as a mood,
+    not a mesh) and give the card its phone-number line.
+    """
+    white = (0.88, 0.88, 0.86, 1.0)
+    # ── SAM'S PHONE · counter top (Z=1.07) ──
+    make_box("Counter_Phone", (4.90, 4.05, 1.0755), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+    make_box("Counter_Phone_Screen", (4.90, 4.05, 1.0820), (0.058, 0.124, 0.002),
+             (0.32, 0.40, 0.48, 1.0))
+    # ── THE CARD · by the register ──
+    make_box("Roofing_Card", (5.00, 3.75, 1.0705), (0.089, 0.051, 0.001),
+             (0.93, 0.91, 0.84, 1.0))
+    # ── THE SLUSHIE · WinTable_1 (top 0.76) ──
+    make_cyl("Slushie_Cup", (-3.55, 0.98, 0.832), 0.045, 0.140,
+             (0.20, 0.35, 0.75, 0.9), segments=10)
+    make_cyl("Slushie_Lid", (-3.55, 0.98, 0.912), 0.047, 0.020,
+             (0.90, 0.89, 0.86, 1.0), segments=10)
+    make_cyl("Slushie_Straw", (-3.54, 0.97, 0.972), 0.006, 0.100,
+             (0.86, 0.24, 0.20, 1.0), segments=6)
+    make_box("Folded_Paper", (-3.78, 1.12, 0.766), (0.200, 0.140, 0.008),
+             (0.86, 0.84, 0.78, 1.0))
+    # ── THE NEXCORP VAN · Linden strip past the forecourt ──
+    make_box("Street_Linden", (2.0, -7.2, -0.03), (8.0, 3.0, 0.05),
+             (0.30, 0.30, 0.31, 1.0))
+    make_box("NexCorp_Van_Body", (2.9, -7.2, 1.02), (4.60, 1.90, 1.50), white)
+    make_box("NexCorp_Van_Windows", (2.9, -6.235, 1.35), (1.40, 0.030, 0.50),
+             (0.28, 0.32, 0.38, 1.0))
+    make_box("NexCorp_Van_Stripe", (2.9, -6.235, 0.85), (3.80, 0.030, 0.25),
+             (0.20, 0.45, 0.48, 1.0))
+    for wi, (wx2, wy2) in enumerate(((1.6, -6.375), (4.2, -6.375),
+                                     (1.6, -8.025), (4.2, -8.025))):
+        make_cyl(f"NexCorp_Van_Wheel_{wi}", (wx2, wy2, 0.35), 0.35, 0.25,
+                 (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
 
 
 def main():
@@ -2844,6 +3108,8 @@ def main():
     build_polish_pass_3()
     build_polish_pass_4()
     build_polish_pass_5()
+    build_hero_props_2026_08()
+    build_hero_props_2026_09()
     export_glb()
 
 

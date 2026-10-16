@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://hans_bakery_back_kitchen_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://hans_bakery_back_kitchen_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/hans_bakery_back_kitchen.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(1.00, 0.86, 0.52, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a dusk sky past it, not a flat backdrop)
+sky_top_color = Color(0.22, 0.24, 0.42, 1)
+sky_horizon_color = Color(0.86, 0.60, 0.46, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.12, 0.11, 0.12, 1)
+ground_horizon_color = Color(0.34, 0.28, 0.28, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.12, 0.10, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.96, 0.84, 0.62, 1)
-ambient_light_energy = 0.95
+ambient_light_color = Color(0.88, 0.80, 0.68, 1)
+ambient_light_energy = 0.58
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
 fog_density = 0.004
@@ -156,8 +171,8 @@ environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 12, 4)
-light_color = Color(1.00, 0.92, 0.68, 1)
-light_energy = 1.1
+light_color = Color(1.00, 0.92, 0.72, 1)
+light_energy = 0.62
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -167,10 +182,38 @@ light_energy = 0.45
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -6)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.2
 shadow_enabled = false
+
+; Warm glow from the commercial oven door (blender 1.5,4.0,0.7 →
+; godot 1.5, 0.7, -4.0) — the bakery's hearth.
+[node name="Practical_OvenGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.7, -6.6)
+light_color = Color(1.0, 0.6, 0.26, 1)
+light_energy = 1.8
+omni_range = 3.2
+shadow_enabled = false
+
+; ── vn_shot (2026-08) · Per's box + the chapbook drawer ────────
+; Box on the bench by the south door: blender (1.13, 0.42, 0.55)
+; → godot (1.13, 0.55, -0.42).
+[node name="shot_insert_box" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13, 0.95, -1.05)
+rotation = Vector3(-0.5466, -3.0924, 0.0)
+
+[node name="shot_insert_chapbook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.1, -4.2)
+rotation = Vector3(-0.1923, 0.7548, 0.0)
+
+; (pass 69) the wall-pack over the back door
+[node name="Bakery_Back_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.820, 2.380, -5.600)
+light_color = Color(1.0, 0.90, 0.68, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 3.5
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +315,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +334,218 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the oven end looking south down the communal table
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.650, -6.000)
+rotation = Vector3(-0.1743, 3.0378, 0)
+metadata/fov = 56.0
+
+; rotation C: from the prep corner to the oven and proofer
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.200, 1.600, -1.300)
+rotation = Vector3(-0.0711, -0.8274, 0)
+metadata/fov = 58.0
+
+; insert: the brotchen basket on the communal table
+[node name="shot_insert_brotchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.700, 1.200, -2.700)
+rotation = Vector3(-0.362822, 0.86217, 0)
+metadata/fov = 42.0
+
+; insert: the stand mixer
+[node name="shot_insert_mixer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.700, 1.350, -5.900)
+rotation = Vector3(-0.0470014, 0.851966, 0)
+metadata/fov = 42.0
+
+; insert: the Hemlock window, her hands flat on the sill (ch15_bread)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.802, 1.525, -3.848)
+rotation = Vector3(-0.4957, 1.6051, 0.0)
+metadata/fov = 42.0
+
+; insert: the back-kitchen light over the south door (ch15_loft)
+[node name="shot_insert_bakery_light" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.6, -1.1)
+rotation = Vector3(0.6761, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the substrate-bowl close (ch17_aria "He took the bowl out")
+[node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.3, -3.95)
+rotation = Vector3(-0.6888, 0.6478, 0.0)
+metadata/fov = 42.0
+
+; insert: the four bowls from above, beginning to align (ch17_aria)
+[node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4.1)
+rotation = Vector3(-1.2458, 0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: the crow on the substrate-bowl's rim (ch17_aria)
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.2, -3.85)
+rotation = Vector3(-0.5227, 0.8454, 0.0)
+metadata/fov = 42.0
+
+; insert: Aud's hand on Marit's hand on the table (ch17_bakery)
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.15, -2.45)
+rotation = Vector3(-0.5385, -0.8417, 0.0)
+metadata/fov = 42.0
+
+; insert: the brioche on the table held the room (vol7)
+[node name="shot_insert_brioche" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.15, -2.8)
+rotation = Vector3(-0.6163, 0.7560, 0.0)
+metadata/fov = 42.0
+
+; insert: the coffee cup Greta set in front of Roy (vol7)
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.25, -3.55)
+rotation = Vector3(-0.6155, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: she handed him the bag (vol7)
+[node name="shot_insert_bag" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.95, -0.95)
+rotation = Vector3(-0.4891, -2.5321, 0.0)
+metadata/fov = 42.0
+
+; insert: Per's wooden box from the bench by the door, the spiral carved in the lid (vol7 ch10)
+[node name="shot_insert_wooden_box" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.1, -1.2)
+rotation = Vector3(-0.5605, 2.7316, 0.0)
+metadata/fov = 42.0
+
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.819, 1.612, -3.037)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.093, 1.612, -4.949)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Bakery_Light_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.320, -0.245)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.64
+
+[node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.200, 2.920, -6.100)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.35
+
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.200, 2.920, -6.100)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.35
+
+; draft 5 fill (2026-10-09): the two warm pendants over the table
+[node name="Table_Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 1.980, -2.600)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.7
+shadow_enabled = false
+omni_range = 5.0
+
+[node name="Table_Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 1.980, -4.400)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.7
+shadow_enabled = false
+omni_range = 5.0
+
+; ── vn_shot coverage (pass 69) — the back door and the side lot, suffixed __hans_bakery_back_door
+; closeup (back door): Tem in the door with the bag
+[node name="shot_closeup_tem__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.300, 1.550, -4.900)
+rotation = Vector3(-0.0319, -1.1071, 0.0)
+metadata/fov = 42.0
+
+; closeup (back door): the same frame
+[node name="shot_closeup_person__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.300, 1.550, -4.900)
+rotation = Vector3(-0.0319, -1.1071, 0.0)
+metadata/fov = 42.0
+
+; closeup (back door): the reverse — Finn, from the door
+[node name="shot_closeup_person_b__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.600, 1.550, -6.900)
+rotation = Vector3(-0.0265, 2.5830, 0.0)
+metadata/fov = 42.0
+
+; closeup (back door): Finn beside his truck
+[node name="shot_closeup_finn__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.000, 1.550, -4.600)
+rotation = Vector3(-0.0274, 0.1651, 0.0)
+metadata/fov = 42.0
+
+; establish (back door): from the stoop, the lot, the truck, Hemlock and the wagon
+[node name="shot_establish_b__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.000, 1.600, -5.600)
+rotation = Vector3(-0.1300, 1.3734, 0.0)
+metadata/fov = 60.0
+
+; insert (back door): the brown paper bag on the truck's hood
+[node name="shot_insert_bag__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.000, 1.300, -6.600)
+rotation = Vector3(-0.4383, -0.9332, 0.0)
+metadata/fov = 38.0
+
+; ── named closeups at the communal table (pass 86): the table is at (0, 3.5) in the 7.6 m room (the
+; group sits +1.2 from its authored frame — read the seats from the recorder, not the builder's
+; literals); the near head (0, 1.65) is Tem's, the far head (0, 5.35) ROY'S CHAIR; side chairs at
+; x ±0.85, y 2.20 / 2.85 / 3.50 / 4.15 / 4.80. Each seat from across; Roy end-on (his named chair).
+; closeup: Hans at the far head ("Hans at the other" end), from the east side of the table
+[node name="shot_closeup_hans" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.450, -3.700)
+rotation = Vector3(-0.1563, 0.5224, 0.0)
+metadata/fov = 42.0
+
+; closeup: Roy in ROY'S CHAIR, the far head, end-on from the east (the top hides a named chair's legs from across)
+[node name="shot_closeup_roy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.450, 1.450, -5.550)
+rotation = Vector3(-0.2022, 1.7079, 0.0)
+metadata/fov = 42.0
+
+; closeup: Marit at the west seat of row 1 (y 2.85 — her floured hand-prints are there), from the east
+[node name="shot_closeup_marit" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.420, -3.350)
+rotation = Vector3(-0.1592, 1.8417, 0.0)
+metadata/fov = 42.0
+
+; closeup: Aud, the same west seat (her prints beside Marit's), named for the cue
+[node name="shot_closeup_aud" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.420, -3.350)
+rotation = Vector3(-0.1592, 1.8417, 0.0)
+metadata/fov = 42.0
+
+; closeup: Marina on the west side, row 3, from the east
+[node name="shot_closeup_marina" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.420, -4.500)
+rotation = Vector3(-0.1622, 1.7628, 0.0)
+metadata/fov = 42.0
+
+; closeup: Tem at the near head ("Tem at one end"), from the north over the table
+[node name="shot_closeup_tem" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.450, -3.250)
+rotation = Vector3(-0.1738, 2.7828, 0.0)
+metadata/fov = 42.0

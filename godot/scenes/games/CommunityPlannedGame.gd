@@ -17,6 +17,148 @@
 # ════════════════════════════════════════════════════════════════
 extends Control
 
+const BUST_PORTRAIT := preload("res://scripts/vn/VnBustPortrait.gd")
+
+# Agents with REAL painted face art in the gallery use it on the board;
+# everyone else gets the procedural bust. (Mackenzie has no face plate
+# yet — only phone frames — so she stays on the bust.)
+const _AGENT_FACE_ART: Dictionary = {
+	"john_frank": "res://assets/gallery/johnfrank_face.png",
+	"elicia":     "res://assets/gallery/elicia_face.png",
+	"nicola":     "res://assets/gallery/nicola_face.png",
+}
+
+
+func _agent_portrait(a_id: String, expr: String, accent: Color) -> Texture2D:
+	if _AGENT_FACE_ART.has(a_id):
+		var path: String = _AGENT_FACE_ART[a_id]
+		if ResourceLoader.exists(path):
+			var tex: Texture2D = load(path) as Texture2D
+			if tex != null:
+				return tex
+	# Demons are electronic (agents.json rule): a sigil, not a face.
+	var a: Dictionary = _agents.get(a_id, {})
+	if String(a.get("class", "")) == "demon":
+		return _demon_sigil_tex(a_id)
+	return BUST_PORTRAIT.texture(a_id, expr, accent)
+
+
+# ── Demon sigils ────────────────────────────────────────────────
+# 20x22 deterministic per-id glyph in the class violet: a waveform /
+# circuit reading, never a body. Authored motifs for the nine core
+# demons; the hash cross-hatch covers future recruits.
+const _SIGIL_W := 20
+const _SIGIL_H := 22
+var _sigil_cache: Dictionary = {}
+
+
+func _demon_sigil_tex(a_id: String) -> ImageTexture:
+	if _sigil_cache.has(a_id):
+		return _sigil_cache[a_id]
+	var img := Image.create(_SIGIL_W, _SIGIL_H, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0.06, 0.05, 0.09, 0.9))
+	var violet := Color("#a877c8")
+	var dim := Color(0.42, 0.30, 0.52, 1.0)
+	var seed_v: int = posmod(a_id.hash(), 9973)
+	# faint static field
+	for y in range(_SIGIL_H):
+		for x in range(_SIGIL_W):
+			var h: int = posmod((x * 73856093) ^ (y * 19349663) ^ seed_v, 1000)
+			if h < 55:
+				img.set_pixel(x, y, Color(dim.r, dim.g, dim.b, 0.45))
+	match a_id:
+		"vagrant":
+			# dotted meander — a route read off a trunk line
+			var yy := 6
+			for x in range(2, 18):
+				if x % 3 != 0:
+					_sig_px(img, x, yy, violet)
+				if x % 5 == 0:
+					yy = clampi(yy + (1 if posmod(x ^ seed_v, 2) == 0 else 5), 4, 18)
+		"cicada":
+			# nested arcs — the hum under the bridge
+			for r in [3, 6, 9]:
+				for x in range(_SIGIL_W):
+					for y in range(12):
+						var d: float = Vector2(x - 10, y - 12).length()
+						if absf(d - float(r)) < 0.7:
+							_sig_px(img, x, y + 2, violet if r != 6 else dim)
+		"moth":
+			# twin wing triangles around a bright spine
+			for i in range(6):
+				_sig_px(img, 9 - i, 8 + i, dim)
+				_sig_px(img, 11 + i, 8 + i, dim)
+				for x2 in range(9 - i, 12 + i):
+					if posmod(x2 + i, 2) == 0:
+						_sig_px(img, x2, 8 + i, dim)
+			for y in range(4, 18):
+				_sig_px(img, 10, y, violet)
+		"steamboat":
+			# three heavy bars — the wake in telemetry
+			for bar in range(3):
+				var hw: int = (14 - bar * 4) >> 1
+				for x in range(10 - hw, 10 + hw):
+					_sig_px(img, x, 6 + bar * 5, violet if bar == 0 else dim)
+					_sig_px(img, x, 7 + bar * 5, violet if bar == 0 else dim)
+		"weir":
+			# chevrons pointing down — the current's shape
+			for c in range(3):
+				for i in range(5):
+					_sig_px(img, 5 + i, 5 + c * 5 + i, violet if c == 1 else dim)
+					_sig_px(img, 15 - i, 5 + c * 5 + i, violet if c == 1 else dim)
+		"filly":
+			# one lightning stroke — switching speed
+			var pts := [Vector2i(13, 3), Vector2i(7, 10), Vector2i(11, 10),
+					Vector2i(6, 19)]
+			for i in range(pts.size() - 1):
+				_sig_line(img, pts[i], pts[i + 1], violet)
+		"starling":
+			# seven quiet loads in a loose V
+			var offs := [Vector2i(3, 6), Vector2i(6, 9), Vector2i(9, 12),
+					Vector2i(12, 9), Vector2i(15, 6), Vector2i(7, 15),
+					Vector2i(12, 15)]
+			for o in offs:
+				_sig_px(img, o.x, o.y, violet)
+				_sig_px(img, o.x + 1, o.y, dim)
+		"husk":
+			# mostly dark — one dim column that should not be there
+			for y in range(3, 19):
+				for x in range(5, 15):
+					img.set_pixel(x, y, Color(0.04, 0.03, 0.06, 1.0))
+			for y in range(5, 17):
+				_sig_px(img, 10, y, dim)
+			_sig_px(img, 10, 11, violet)
+		"lantern":
+			# radiating spokes — everyone watches it work
+			for ang in range(8):
+				var v := Vector2.RIGHT.rotated(float(ang) * PI / 4.0)
+				for r in range(2, 8):
+					var p := Vector2(10, 11) + v * float(r)
+					_sig_px(img, int(p.x), int(p.y), violet if r < 5 else dim)
+			_sig_px(img, 10, 11, Color(1, 0.95, 0.8, 1))
+		_:
+			# hash cross-hatch fallback for recruits
+			for y in range(4, 18):
+				for x in range(4, 16):
+					if posmod((x * 31) ^ (y * 17) ^ seed_v, 7) == 0:
+						_sig_px(img, x, y, violet if posmod(x + y, 3) == 0 else dim)
+	var tex := ImageTexture.create_from_image(img)
+	_sigil_cache[a_id] = tex
+	return tex
+
+
+func _sig_px(img: Image, x: int, y: int, c: Color) -> void:
+	if x >= 0 and x < _SIGIL_W and y >= 0 and y < _SIGIL_H:
+		img.set_pixel(x, y, c)
+
+
+func _sig_line(img: Image, a: Vector2i, b: Vector2i, c: Color) -> void:
+	var steps: int = maxi(absi(b.x - a.x), absi(b.y - a.y))
+	for i in range(steps + 1):
+		var t: float = float(i) / float(maxi(steps, 1))
+		_sig_px(img, int(roundf(lerpf(float(a.x), float(b.x), t))),
+				int(roundf(lerpf(float(a.y), float(b.y), t))), c)
+
 const DATA_ROOT := "res://resources/games/community_planned/"
 # Three-slot save system. The active slot is persisted in
 # user://saves/community_planned_active_slot.txt so the next game
@@ -29,8 +171,21 @@ const NUM_SAVE_SLOTS := 3
 var _current_slot: int = 0
 
 
+# SEPTEMBER AND AFTER · post-campaign endless mode (design:
+# lore/_COMMUNITY_PLANNED_PLAYBOOK.md). When active, all saves route
+# to a sibling file so the finished campaign save stays untouched.
+var _endless: bool = false
+const ENDLESS_LEDGER_PATH := "user://saves/community_planned_endless_ledger.json"
+
+
 func _save_path_for_slot(slot: int) -> String:
+	if _endless:
+		return _endless_path_for_slot(slot)
 	return SAVE_DIR + "community_planned_slot_%d.json" % slot
+
+
+func _endless_path_for_slot(slot: int) -> String:
+	return SAVE_DIR + "community_planned_slot_%d_endless.json" % slot
 
 
 # Compatibility shim. Reads the *current* slot's path; older code
@@ -63,10 +218,17 @@ var _agents: Dictionary = {}     # id → agent def
 var _problem_templates: Dictionary = {}  # id → template def
 var _dean: Dictionary = {}                # full dean.json
 var _interludes_def: Dictionary = {}      # full interludes.json
+var _pair_lines_def: Dictionary = {}      # full pair_dispatch_lines.json (B2)
 var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
 var _regional_events_pool: Array = []     # regional_events.json events[]
+var _regional_rhythm: Dictionary = {}     # regional_events.json rhythm{} — the never-exhausted floor
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
 var _active_regional_markers: Array = []  # [{marker_id, region_id, expires_on_day, log_line, expiry_line}]
+var _ever_set_markers: Array = []         # marker_ids that were EVER set this summer (superset of _active_regional_markers)
+var _demon_pair_fires: int = 0            # count of demon-pair interactions that fired this summer
+var _human_pair_fires: int = 0            # count of human-pair interactions that fired this summer
+var _basement_rite_fires: int = 0         # count of basement visits that actually reduced corruption
+var _quiet_week_fires: int = 0            # count of times a human's home_days_streak triggered obligation-1
 var _vignettes_fired: Array = []          # ids of one-shots already fired
 var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
@@ -129,7 +291,7 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 @onready var _dispatches_label: Label = $VBox/HeaderBar/DispatchesLabel
 @onready var _region_panels_box: HBoxContainer = $VBox/RegionsRow
 @onready var _agent_list_box: VBoxContainer = $VBox/BottomRow/AgentScroll/AgentList
-@onready var _log_label: RichTextLabel = $VBox/BottomRow/LogScroll/LogLabel
+@onready var _log_label: RichTextLabel = $VBox/BottomRow/LogLabel
 @onready var _advance_button: Button = $VBox/BottomRow/Actions/AdvanceDayButton
 @onready var _new_game_button: Button = $VBox/BottomRow/Actions/NewGameButton
 @onready var _back_button: Button = $VBox/BottomRow/Actions/BackButton
@@ -140,8 +302,16 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 
 
 func _ready() -> void:
+	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
+	# THE TRIP register for this pillar; pops when the game leaves the tree.
+	var trip_reg: Node = get_node_or_null("/root/TripSync")
+	if trip_reg != null and trip_reg.has_method("push_register"):
+		trip_reg.call("push_register", "community", self)
+	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks (e.g. almanac_intel_subfloor) before setup
+	_install_backdrop()
 	_load_data()
 	_build_ui()
+	_install_bottom_plates()
 	# Three-slot save picker fires before any state load. The player
 	# picks a slot; the slot's save is loaded (or a new game starts
 	# in that slot). The picker remembers the active slot via
@@ -151,11 +321,55 @@ func _ready() -> void:
 	call_deferred("_show_slot_picker")
 
 
+# Drafting-table backdrop over the flat Background ColorRect: a
+# faint survey grid, paper grain, and corner shade. The strategic
+# layer is Frasier's planning document — it should sit on a desk,
+# not float on a color fill. Deterministic; drawn once at boot.
+func _install_backdrop() -> void:
+	var bg: Node = get_node_or_null("Background")
+	if bg == null:
+		return
+	var w := 640
+	var h := 360
+	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	for y in range(h):
+		for x in range(w):
+			var c := Color(0.040, 0.050, 0.070, 1.0)
+			# Corner shade — the desk lamp is over the middle.
+			var dx: float = (float(x) / float(w) - 0.5) * 2.0
+			var dy: float = (float(y) / float(h) - 0.5) * 2.0
+			var edge: float = clampf(sqrt(dx * dx + dy * dy) - 0.55, 0.0, 0.6)
+			c = Color(c.r - edge * 0.022, c.g - edge * 0.026, c.b - edge * 0.032, 1.0)
+			# Paper grain.
+			var n: int = x * 374761393 + y * 668265263
+			n = (n ^ (n >> 13)) * 1274126177
+			var g: float = float((n ^ (n >> 16)) & 0xFFFF) / 65536.0
+			if g > 0.95:
+				c = Color(c.r + 0.010, c.g + 0.011, c.b + 0.013, 1.0)
+			img.set_pixel(x, y, c)
+	# Survey grid, barely there.
+	var grid := Color(0.30, 0.40, 0.52, 1.0)
+	for gy in range(0, h, 45):
+		for x in range(w):
+			img.set_pixel(x, gy, img.get_pixel(x, gy).lerp(grid, 0.06))
+	for gx in range(0, w, 45):
+		for y in range(h):
+			img.set_pixel(gx, y, img.get_pixel(gx, y).lerp(grid, 0.06))
+	var tr := TextureRect.new()
+	tr.name = "BackdropTex"
+	tr.texture = ImageTexture.create_from_image(img)
+	tr.stretch_mode = TextureRect.STRETCH_SCALE
+	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(tr)
+	move_child(tr, bg.get_index() + 1)
+
+
 func _begin_session_with_slot(slot: int) -> void:
 	_current_slot = slot
 	_write_active_slot(slot)
 	if _try_load_save():
-		_log("[color=#a8c0a8]Loaded slot %d — day %d.[/color]" % [slot + 1, _day])
+		_log("[color=#a8c0a8]The ledger opens where you left it — slot %d, day %d.[/color]" % [slot + 1, _day])
 	else:
 		_init_state()
 		_log("Slot %d · Day %d · Memorial Day. The summer begins." % [slot + 1, _day])
@@ -167,6 +381,436 @@ func _begin_session_with_slot(slot: int) -> void:
 	# BBS-night overlay's own BGM when the overlay opens (Sunday nights)
 	# and returns to this track when the BBS overlay hangs up.
 	_audio_play_bgm_for_current_state()
+
+
+# ── SEPTEMBER AND AFTER · endless mode ───────────────────────────
+
+func _endless_save_day(slot: int) -> int:
+	var f := FileAccess.open(_endless_path_for_slot(slot), FileAccess.READ)
+	if f == null:
+		return TURNS_TOTAL
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return TURNS_TOTAL
+	return int((parsed as Dictionary).get("day", TURNS_TOTAL))
+
+
+func _begin_endless_with_slot(slot: int) -> void:
+	_endless = true
+	_current_slot = slot
+	_write_active_slot(slot)
+	if _try_load_save():
+		_log("[color=#a8a8c0]SEPTEMBER · endless save loaded · day %d.[/color]" % _day)
+	else:
+		# Seed from the finished campaign save · same board, same
+		# roster, same regional state · seasonless from here. The
+		# campaign file is only READ; endless writes to its sibling.
+		_endless = false
+		var seeded: bool = _try_load_save()
+		_endless = true
+		if not seeded:
+			_init_state()
+		_flags["endless_mode"] = true
+		_flags["endless_start_day"] = _day
+		_flags["endless_brightness_log"] = []
+		# The campaign's Labor Day tower state carries over — and a
+		# campaign that ended WHITE would end the endless run on
+		# its first day (the QA chain hit exactly that: a
+		# zero-length run, stopped at day 101). September opens
+		# with the tower banked: whatever the summer ended on, the
+		# season's turn dims it, and the ratchet re-earns it.
+		_tower_brightness = "dim"
+		_last_brightness_change_day = _day
+		_log("[color=#a8a8c0][b]SEPTEMBER AND AFTER.[/b] The summer resolved. The board did not. Days keep counting, the Sunday spawns only ratchet up, and if the tower ever goes white the run is over. Retire from the slot desk whenever the board is done with you.[/color]")
+		# SEPTEMBER includes the courthouse · endless force-opens the
+		# County Seat and its offense palette even if the campaign
+		# ended before day 66.
+		if _regions.has("county_seat") and not _visible_regions.has("county_seat"):
+			_visible_regions.append("county_seat")
+			for ty in ["records_request", "filing_deadline", "countersuit", "public_comment_period", "registry_pull"]:
+				if not _eligible_problem_types.has(ty):
+					_eligible_problem_types.append(ty)
+			_log("[color=#a8a8c0]The County Seat keeps fall hours. The offense folder is open.[/color]")
+		_write_save()
+	_render()
+	_audio_play_bgm_for_current_state()
+
+
+# ── SEPTEMBER STRUCTURES (B3) · endless milestones ───────────────
+# Every 8 endless weeks a chapter marker lands: a letter, the map
+# redrawn, the ledger annotated. Authored in endless_milestones.json,
+# cycling after the last. {agent} = the run's most-dispatched agent.
+
+var _endless_milestones_def: Dictionary = {}
+
+
+func _maybe_fire_endless_milestone() -> void:
+	var week: int = int(ceil(float(_day) / 7.0))
+	var endless_weeks: int = week - 15
+	if endless_weeks < 8:
+		return
+	@warning_ignore("integer_division")
+	var due: int = endless_weeks / 8
+	var fired: int = int(_flags.get("endless_milestones_fired", 0))
+	if due <= fired:
+		return
+	_flags["endless_milestones_fired"] = due
+	if _endless_milestones_def.is_empty():
+		_endless_milestones_def = _load_json(DATA_ROOT + "endless_milestones.json")
+	var pool: Array = _endless_milestones_def.get("milestones", [])
+	if pool.is_empty():
+		return
+	var m: Dictionary = pool[(due - 1) % pool.size()]
+	# The run's most-dispatched agent carries the letter.
+	var best_id := ""
+	var best_n: int = -1
+	for a_id in _agent_dispatch_counts:
+		if int(_agent_dispatch_counts[a_id]) > best_n:
+			best_n = int(_agent_dispatch_counts[a_id])
+			best_id = String(a_id)
+	var agent_name: String = String(_agents.get(best_id, {}).get("name", "an old friend"))
+	var body: String = String(m.get("body", "")).replace("{agent}", agent_name)
+	_log("[color=#c8b8e8][b]· ENDLESS WEEK %d · %s ·[/b][/color]" % [endless_weeks, String(m.get("title", ""))])
+	_log("[color=#b0a8c8][i]%s[/i][/color]" % body)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("page_turn", 0.6)
+	# The chapter marker as a modal · same shape as the spike events.
+	var dlg := AcceptDialog.new()
+	dlg.title = "Endless week %d" % endless_weeks
+	dlg.min_size = Vector2(880, 520)
+	dlg.get_ok_button().text = "back to the board"
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % String(m.get("title", ""))
+	hdr.add_theme_font_size_override("font_size", 24)
+	hdr.add_theme_color_override("font_color", Color(0.78, 0.72, 0.91, 1))
+	col.add_child(hdr)
+	var body_lbl := Label.new()
+	body_lbl.text = body
+	body_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body_lbl.custom_minimum_size = Vector2(820, 0)
+	body_lbl.add_theme_font_size_override("font_size", 20)
+	col.add_child(body_lbl)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+	GamepadMgr.focus_first.call_deferred(dlg)
+
+
+# ── ENDLESS V2 · THE APPRENTICE ──────────────────────────────────
+# m7 and m11 narrate succession; this plays it. Offer → training
+# (mis-routes cost real severity) → the small ones are hers →
+# at 16 apprentice-weeks, retiring becomes THE HANDOFF.
+
+func _apprentice_def() -> Dictionary:
+	if _endless_milestones_def.is_empty():
+		_endless_milestones_def = _load_json(DATA_ROOT + "endless_milestones.json")
+	return _endless_milestones_def.get("apprentice", {})
+
+
+func _apprentice_weeks() -> int:
+	var since: int = int(_flags.get("apprentice_since_week", -1))
+	if since < 0:
+		return 0
+	var week: int = int(ceil(float(_day) / 7.0)) - 15
+	return maxi(0, week - since)
+
+
+func _apprentice_sunday() -> void:
+	var ad: Dictionary = _apprentice_def()
+	if ad.is_empty():
+		return
+	var endless_week: int = int(ceil(float(_day) / 7.0)) - 15
+	var since: int = int(_flags.get("apprentice_since_week", -1))
+	if since < 0:
+		# Not taken on yet · offer at week 10, re-offer on a cadence.
+		var next_offer: int = int(_flags.get("apprentice_next_offer", int(ad.get("offer_week", 10))))
+		if endless_week >= next_offer:
+			_offer_apprentice(ad, endless_week)
+		return
+	var aw: int = _apprentice_weeks()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = int(_flags.get("endless_start_day", 100)) * 131 + endless_week * 17
+	var training: int = int(ad.get("training_weeks", 4))
+	if aw <= training:
+		# Training · a lesson line, and a real chance the lesson costs.
+		var tl: Array = ad.get("training_lines", [])
+		if not tl.is_empty():
+			_log("[color=#c8b8e8][i]%s[/i][/color]" % String(tl[(aw - 1) % tl.size()]))
+		if rng.randf() < 0.25:
+			_apprentice_misroute(ad, rng)
+		if aw == training:
+			_log("[color=#c8b8e8][i]%s[/i][/color]" % String(ad.get("graduate_line", "")))
+		return
+	# Graduated · she takes the board's smallest problem, if any
+	# qualifies (severity ≤ 2, nobody already on it).
+	_apprentice_take_small_one(ad, rng)
+
+
+func _offer_apprentice(ad: Dictionary, endless_week: int) -> void:
+	var dlg := ConfirmationDialog.new()
+	dlg.title = "Endless week %d" % endless_week
+	dlg.min_size = Vector2(880, 480)
+	dlg.get_ok_button().text = String(ad.get("accept_btn", "yes"))
+	dlg.get_cancel_button().text = String(ad.get("decline_btn", "not yet"))
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % String(ad.get("offer_title", ""))
+	hdr.add_theme_font_size_override("font_size", 24)
+	hdr.add_theme_color_override("font_color", Color(0.78, 0.72, 0.91, 1))
+	col.add_child(hdr)
+	var body := Label.new()
+	body.text = String(ad.get("offer_body", ""))
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.custom_minimum_size = Vector2(820, 0)
+	body.add_theme_font_size_override("font_size", 18)
+	col.add_child(body)
+	dlg.confirmed.connect(func() -> void:
+		_flags["apprentice_since_week"] = int(ceil(float(_day) / 7.0)) - 15
+		_log("[color=#c8b8e8][b]· THE APPRENTICE ·[/b] [i]%s[/i][/color]" % String(ad.get("accept_line", ""))))
+	dlg.canceled.connect(func() -> void:
+		_flags["apprentice_next_offer"] = (int(ceil(float(_day) / 7.0)) - 15) + int(ad.get("reoffer_every", 8))
+		_log("[color=#b0a8c8][i]%s[/i][/color]" % String(ad.get("decline_line", ""))))
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+	GamepadMgr.focus_first.call_deferred(dlg)
+
+
+func _apprentice_misroute(ad: Dictionary, rng: RandomNumberGenerator) -> void:
+	# One random active problem grows a ring · the tuition.
+	var picks: Array = []
+	for r_id in _region_state:
+		if String(r_id).begins_with("_") or not _regions.has(r_id):
+			continue
+		var probs: Array = (_region_state[r_id] as Dictionary).get("active_problems", [])
+		for p_v in probs:
+			picks.append(p_v)
+	if picks.is_empty():
+		return
+	var p: Dictionary = picks[rng.randi() % picks.size()]
+	p["severity"] = float(p.get("severity", 1.0)) + 1.0
+	var ml: Array = ad.get("misroute_lines", [])
+	if not ml.is_empty():
+		_log("[color=#c8a842][i]%s[/i][/color]" % String(ml[rng.randi() % ml.size()]))
+
+
+func _apprentice_take_small_one(ad: Dictionary, rng: RandomNumberGenerator) -> void:
+	var best_r: String = ""
+	var best_i: int = -1
+	# "Small" is relative to a ratcheted board: by any Sunday even a
+	# fresh spawn has ticked past 2, so her ceiling is 3 — the probe
+	# proved a 2.0 bar meant she never found work at all.
+	var best_sev: float = 3.01
+	for r_id in _region_state:
+		if String(r_id).begins_with("_") or not _regions.has(r_id):
+			continue
+		var probs: Array = (_region_state[r_id] as Dictionary).get("active_problems", [])
+		for i in range(probs.size()):
+			var p: Dictionary = probs[i]
+			if String(p.get("in_progress_by", "")) != "":
+				continue
+			var sev: float = float(p.get("severity", 1.0))
+			if sev <= 3.0 and sev < best_sev:
+				best_sev = sev
+				best_r = String(r_id)
+				best_i = i
+	if best_r == "":
+		return
+	# Don't yank a problem a dispatch is bound to (same index-shift
+	# hazard the anomaly resolver guards).
+	for ad_v in _active_dispatches:
+		if String((ad_v as Dictionary).get("region_id", "")) == best_r \
+				and int((ad_v as Dictionary).get("problem_index", -1)) == best_i:
+			return
+	var probs_r: Array = (_region_state[best_r] as Dictionary)["active_problems"]
+	var p_ref: Dictionary = probs_r[best_i]
+	var template_id: String = String(p_ref.get("template_id", ""))
+	probs_r.remove_at(best_i)
+	for ad_v in _active_dispatches:
+		var d_d: Dictionary = ad_v
+		if String(d_d.get("region_id", "")) == best_r and int(d_d.get("problem_index", -1)) > best_i:
+			d_d["problem_index"] = int(d_d["problem_index"]) - 1
+	_problem_resolved_by_region[best_r] = int(_problem_resolved_by_region.get(best_r, 0)) + 1
+	if template_id != "":
+		_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
+	var sl: Array = ad.get("small_ones_lines", [])
+	if not sl.is_empty():
+		_log("[color=#a8d8b8][i]%s[/i][/color]" % String(sl[rng.randi() % sl.size()]))
+
+
+func _end_endless_run(reason: String) -> void:
+	var start_day: int = int(_flags.get("endless_start_day", TURNS_TOTAL))
+	var resolved_total: int = 0
+	for k in _problem_resolved_counts:
+		resolved_total += int(_problem_resolved_counts[k])
+	var entry: Dictionary = {
+		"slot": _current_slot,
+		"reason": reason,
+		"final_day": _day,
+		"endless_days": _day - start_day,
+		"problems_resolved_total": resolved_total,
+		"resolved_by_region": _problem_resolved_by_region.duplicate(),
+		"anomalies_observed": _anomalies_observed,
+		"brightness_log": _flags.get("endless_brightness_log", []),
+		"apprentice_weeks": _apprentice_weeks(),
+	}
+	_append_endless_ledger(entry)
+	var path: String = _endless_path_for_slot(_current_slot)
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+	_endless = false
+	_show_endless_end_screen(entry)
+
+
+func _retire_endless_slot(slot: int) -> void:
+	# Retire without loading · the ledger entry is computed straight
+	# off the endless save file, then the file is removed.
+	var path: String = _endless_path_for_slot(slot)
+	if not FileAccess.file_exists(path):
+		return
+	var f := FileAccess.open(path, FileAccess.READ)
+	if f == null:
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) == TYPE_DICTIONARY:
+		var d: Dictionary = parsed
+		var flags: Dictionary = d.get("flags", {})
+		var prc: Dictionary = d.get("problem_resolved_counts", {})
+		var resolved_total: int = 0
+		for k in prc:
+			resolved_total += int(prc[k])
+		var final_day: int = int(d.get("day", TURNS_TOTAL))
+		# THE HANDOFF · retiring with a long-standing apprentice is a
+		# different ending — the board changes hands, it doesn't stop.
+		var since_w: int = int(flags.get("apprentice_since_week", -1))
+		var final_w: int = int(ceil(float(final_day) / 7.0)) - 15
+		var app_weeks: int = maxi(0, final_w - since_w) if since_w >= 0 else 0
+		var reason: String = "handoff" if app_weeks >= 16 else "retired"
+		_append_endless_ledger({
+			"slot": slot,
+			"reason": reason,
+			"final_day": final_day,
+			"endless_days": final_day - int(flags.get("endless_start_day", TURNS_TOTAL)),
+			"problems_resolved_total": resolved_total,
+			"resolved_by_region": d.get("problem_resolved_by_region", {}),
+			"anomalies_observed": int(d.get("anomalies_observed", 0)),
+			"brightness_log": flags.get("endless_brightness_log", []),
+			"apprentice_weeks": app_weeks,
+		})
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+
+
+func _read_endless_ledger() -> Array:
+	var f := FileAccess.open(ENDLESS_LEDGER_PATH, FileAccess.READ)
+	if f == null:
+		return []
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return []
+	return (parsed as Dictionary).get("runs", [])
+
+
+func _append_endless_ledger(entry: Dictionary) -> void:
+	var runs: Array = _read_endless_ledger()
+	runs.append(entry)
+	DirAccess.make_dir_recursive_absolute("user://saves")
+	var f := FileAccess.open(ENDLESS_LEDGER_PATH, FileAccess.WRITE)
+	if f == null:
+		return
+	f.store_string(JSON.stringify({"runs": runs}, "  "))
+
+
+func _brightness_glyphs(log_arr: Array) -> String:
+	# Text sparkline · one glyph per recorded day, most recent 56.
+	var glyph: Dictionary = {"dim": ".", "warming": "·", "bright": ":", "white": "█"}
+	var start: int = maxi(0, log_arr.size() - 56)
+	var out: String = ""
+	for i in range(start, log_arr.size()):
+		out += String(glyph.get(String(log_arr[i]), "?"))
+	return out
+
+
+func _show_endless_end_screen(entry: Dictionary) -> void:
+	var reason := String(entry.get("reason", ""))
+	var retired: bool = reason == "retired"
+	var handoff: bool = reason == "handoff"
+	var dlg := AcceptDialog.new()
+	dlg.title = "THE HANDOFF" if handoff else ("THE BOARD RETIRES" if retired else "THE TOWER FINISHES")
+	dlg.min_size = Vector2(900, 540)
+	dlg.get_ok_button().text = "back to the slot desk"
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 8)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	if handoff:
+		hdr.text = String(_apprentice_def().get("handoff_header",
+			"You set the pencil down. She picks it up before it stops rolling."))
+	elif retired:
+		hdr.text = "You set the pencil down."
+	else:
+		hdr.text = "The window in Small Wood goes white and stays white. Whatever the tower was for, it is finished being for it."
+	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hdr.add_theme_font_size_override("font_size", 20)
+	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	var lines: Array = []
+	lines.append("september days held · %d" % int(entry.get("endless_days", 0)))
+	lines.append("problems resolved (whole board) · %d" % int(entry.get("problems_resolved_total", 0)))
+	var by_region: Dictionary = entry.get("resolved_by_region", {})
+	for r_id in by_region:
+		lines.append("    %s · %d" % [String(r_id), int(by_region[r_id])])
+	lines.append("anomalies observed · %d" % int(entry.get("anomalies_observed", 0)))
+	if int(entry.get("apprentice_weeks", 0)) > 0:
+		lines.append("apprentice weeks · %d" % int(entry.get("apprentice_weeks", 0)))
+	if handoff:
+		for hl_v in _apprentice_def().get("handoff_lines", []):
+			lines.append(String(hl_v))
+	lines.append("tower curve · %s" % _brightness_glyphs(entry.get("brightness_log", [])))
+	var body := Label.new()
+	body.text = "\n".join(lines)
+	body.add_theme_font_size_override("font_size", 19)
+	body.add_theme_color_override("font_color", Color(0.84, 0.86, 0.84, 1))
+	col.add_child(body)
+	# The run ledger · past runs, so replays have a target.
+	var runs: Array = _read_endless_ledger()
+	if runs.size() > 1:
+		var prev_hdr := Label.new()
+		prev_hdr.text = "· past septembers ·"
+		prev_hdr.add_theme_font_size_override("font_size", 19)
+		prev_hdr.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
+		col.add_child(prev_hdr)
+		var prev_lines: Array = []
+		for run_v in runs:
+			var run: Dictionary = run_v
+			prev_lines.append("slot %d · %d days · %d resolved · %s" % [
+				int(run.get("slot", 0)) + 1, int(run.get("endless_days", 0)),
+				int(run.get("problems_resolved_total", 0)),
+				String(run.get("reason", ""))])
+		var prev := Label.new()
+		prev.text = "\n".join(prev_lines)
+		prev.add_theme_font_size_override("font_size", 19)
+		prev.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
+		col.add_child(prev)
+	dlg.confirmed.connect(func() -> void:
+		dlg.queue_free()
+		_show_slot_picker())
+	dlg.canceled.connect(func() -> void:
+		dlg.queue_free()
+		_show_slot_picker())
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
 
 
 func _read_active_slot() -> int:
@@ -225,15 +869,29 @@ func _day_label_short(day_n: int) -> String:
 func _show_slot_picker() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "COMMUNITY PLANNED · slot"
-	dlg.min_size = Vector2(560, 420)
-	dlg.get_ok_button().visible = false  # No OK — pick a slot or close window.
+	dlg.min_size = Vector2(900, 540)
+	dlg.get_ok_button().visible = false  # No OK — the picker resolves via a slot.
+	# Soft-lock guard (audit): ESC / window-close used to dismiss the
+	# picker and leave a live board with no slot state behind it. The
+	# picker can only resolve through a slot choice — any close attempt
+	# re-shows it. The "settled" meta marks intentional resolutions so
+	# the reopen handler never double-fires against them.
+	dlg.dialog_close_on_escape = false
+	var reopen_picker := func() -> void:
+		if dlg.has_meta("settled"):
+			return
+		dlg.set_meta("settled", true)
+		dlg.queue_free()
+		call_deferred("_show_slot_picker")
+	dlg.close_requested.connect(reopen_picker)
+	dlg.canceled.connect(reopen_picker)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	dlg.add_child(col)
 	var hdr := Label.new()
 	hdr.text = "Pick a slot. Three summers fit on the desk."
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 20)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	for slot in range(NUM_SAVE_SLOTS):
@@ -245,9 +903,10 @@ func _show_slot_picker() -> void:
 		btn.text = "Slot %d · %s" % [slot + 1, String(summary["season_label"])]
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.add_theme_font_size_override("font_size", 12)
+		btn.add_theme_font_size_override("font_size", 19)
 		var slot_capture: int = slot
 		btn.pressed.connect(func() -> void:
+			dlg.set_meta("settled", true)
 			dlg.queue_free()
 			_begin_session_with_slot(slot_capture))
 		row.add_child(btn)
@@ -256,14 +915,51 @@ func _show_slot_picker() -> void:
 			var wipe_btn := Button.new()
 			wipe_btn.text = "wipe"
 			wipe_btn.focus_mode = Control.FOCUS_NONE
-			wipe_btn.add_theme_font_size_override("font_size", 10)
+			wipe_btn.add_theme_font_size_override("font_size", 19)
 			var slot_w: int = slot
 			wipe_btn.pressed.connect(func() -> void:
 				_confirm_wipe_slot(slot_w, dlg))
 			row.add_child(wipe_btn)
+		# SEPTEMBER AND AFTER · a finished summer reopens seasonless
+		# on a sibling save. The campaign slot above stays untouched.
+		if bool(summary["finale_done"]):
+			var e_row := HBoxContainer.new()
+			e_row.add_theme_constant_override("separation", 10)
+			col.add_child(e_row)
+			var e_btn := Button.new()
+			var e_active: bool = FileAccess.file_exists(_endless_path_for_slot(slot))
+			if e_active:
+				var e_day: int = _endless_save_day(slot)
+				e_btn.text = "    ↳ SEPTEMBER AND AFTER · week %d · continue" % int(ceil(float(e_day) / 7.0))
+			else:
+				e_btn.text = "    ↳ SEPTEMBER AND AFTER · reopen the board, seasonless"
+			e_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			e_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			e_btn.add_theme_font_size_override("font_size", 19)
+			e_btn.add_theme_color_override("font_color", Color(0.72, 0.80, 0.94, 1))
+			var slot_e: int = slot
+			e_btn.pressed.connect(func() -> void:
+				dlg.set_meta("settled", true)
+				dlg.queue_free()
+				_begin_endless_with_slot(slot_e))
+			e_row.add_child(e_btn)
+			if e_active:
+				var retire_btn := Button.new()
+				retire_btn.text = "retire"
+				retire_btn.focus_mode = Control.FOCUS_NONE
+				retire_btn.add_theme_font_size_override("font_size", 19)
+				var slot_r: int = slot
+				retire_btn.pressed.connect(func() -> void:
+					_retire_endless_slot(slot_r)
+					dlg.set_meta("settled", true)
+					dlg.queue_free()
+					_show_slot_picker())
+				e_row.add_child(retire_btn)
 	dlg.add_to_group("ui")
 	add_child(dlg)
 	dlg.popup_centered()
+	# Pad support · land the d-pad on slot 1.
+	GamepadMgr.focus_first.call_deferred(dlg)
 
 
 func _confirm_wipe_slot(slot: int, parent_dlg: AcceptDialog) -> void:
@@ -275,7 +971,9 @@ func _confirm_wipe_slot(slot: int, parent_dlg: AcceptDialog) -> void:
 		if FileAccess.file_exists(path):
 			DirAccess.remove_absolute(path)
 		confirm.queue_free()
-		# Refresh the picker.
+		# Refresh the picker. Mark the old one settled so its reopen
+		# guard doesn't fire a second picker on top of this one.
+		parent_dlg.set_meta("settled", true)
 		parent_dlg.queue_free()
 		_show_slot_picker())
 	confirm.canceled.connect(func() -> void: confirm.queue_free())
@@ -302,11 +1000,14 @@ func _load_data() -> void:
 	_last_brightness_change_day = 0
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
+	_pair_lines_def = _load_json(DATA_ROOT + "pair_dispatch_lines.json")
 	_vignettes_def = _load_json(DATA_ROOT + "daily_vignettes.json")
+	_spike_events_def = _load_json(DATA_ROOT + "between_spike_events.json")
 	# Weekly regional events (2026-07-02) · JSON-driven pool.
 	# Replaces the earlier 5-week cycle of hardcoded flavor lines.
 	var regional_events_json: Dictionary = _load_json(DATA_ROOT + "regional_events.json")
 	_regional_events_pool = regional_events_json.get("events", [])
+	_regional_rhythm = regional_events_json.get("rhythm", {})
 	_validate_canonical_character_links()
 
 
@@ -484,6 +1185,11 @@ func _collect_state() -> Dictionary:
 		"last_vignette_id": _last_vignette_id,
 		"fired_regional_events": _fired_regional_events,
 		"active_regional_markers": _active_regional_markers,
+		"ever_set_markers": _ever_set_markers,
+		"demon_pair_fires": _demon_pair_fires,
+		"human_pair_fires": _human_pair_fires,
+		"basement_rite_fires": _basement_rite_fires,
+		"quiet_week_fires": _quiet_week_fires,
 	}
 
 
@@ -492,6 +1198,23 @@ func _apply_state(d: Dictionary) -> void:
 	_dispatches_this_day = int(d.get("dispatches_this_day", 0))
 	_active_dispatches = d.get("active_dispatches", [])
 	_region_state = d.get("region_state", {})
+	# Backfill state for regions added to regions.json after this
+	# save was written (the agents.json old-save lesson, applied to
+	# regions · County Seat shipped mid-campaign for many saves).
+	for r_id_bf in _regions:
+		if not _region_state.has(r_id_bf):
+			var r_bf: Dictionary = _regions[r_id_bf]
+			_region_state[r_id_bf] = {
+				"held_nodes": (r_bf.get("starting_nodes", []) as Array).duplicate(),
+				"contested_nodes": (r_bf.get("contested_nodes_at_start", []) as Array).duplicate(),
+				"target_nodes": (r_bf.get("target_nodes", []) as Array).duplicate(),
+				"insight": int(r_bf.get("starting_insight", 0)),
+				"cover": int(r_bf.get("starting_cover", 0)),
+				"courier_capacity": int(r_bf.get("starting_courier_capacity", 0)),
+				"escalation_progress": 0.0,
+				"active_problems": [],
+				"failed_plants": 0,
+			}
 	_agent_state = d.get("agent_state", {})
 	_log_lines = PackedStringArray(d.get("log_lines", []))
 	_interlude_shelf = d.get("interlude_shelf", [])
@@ -526,6 +1249,11 @@ func _apply_state(d: Dictionary) -> void:
 	_last_vignette_id = String(d.get("last_vignette_id", ""))
 	_fired_regional_events = d.get("fired_regional_events", [])
 	_active_regional_markers = d.get("active_regional_markers", [])
+	_ever_set_markers = d.get("ever_set_markers", [])
+	_demon_pair_fires = int(d.get("demon_pair_fires", 0))
+	_human_pair_fires = int(d.get("human_pair_fires", 0))
+	_basement_rite_fires = int(d.get("basement_rite_fires", 0))
+	_quiet_week_fires = int(d.get("quiet_week_fires", 0))
 
 
 func _write_save() -> void:
@@ -673,7 +1401,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			var template: String = String(eff.get("template", eff.get("problem_template", "")))
 			if r_id3 != "" and template != "":
 				_seed_problem(r_id3, template)
-				_log("[i]Cascade:[/i] %s spawned in %s." %
+				_log("[i]Cascade ·[/i] untreated, it spread: [b]%s[/b] opens in %s." %
 					[_problem_templates.get(template, {}).get("title", template),
 					 _regions.get(r_id3, {}).get("name", r_id3)])
 		"spawn_problem_in_neighbor":
@@ -687,7 +1415,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			var tpl: String = String(eff.get("problem_template", eff.get("template", "")))
 			if tpl != "":
 				_seed_problem(pick, tpl)
-				_log("[i]Spillover:[/i] %s in %s." %
+				_log("[i]Spillover ·[/i] trouble travels: [b]%s[/b] crosses into %s." %
 					[_problem_templates.get(tpl, {}).get("title", tpl),
 					 _regions.get(pick, {}).get("name", pick)])
 		"spawn_problem_in_all_regions":
@@ -695,7 +1423,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if tpl2 == "": return
 			for k in _regions.keys():
 				_seed_problem(k, tpl2)
-			_log("[i]Wide spillover:[/i] %s landed in all three regions." %
+			_log("[i]Wide spillover ·[/i] [b]%s[/b] landed in all three regions the same week. That is not weather; that is a campaign." %
 				_problem_templates.get(tpl2, {}).get("title", tpl2))
 		"lose_node":
 			var r_id4 := _resolve_region(String(eff.get("region", "current")), ctx)
@@ -712,7 +1440,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 						st["dark_nodes"] = []
 					(st["dark_nodes"] as Array).append({"node": node, "until_day": _day + days})
 					_log("[color=#ff9090]%s went dark in %s for %d days.[/color]" %
-						[node, _regions[r_id4]["name"], days])
+						[_node_display(node), _regions[r_id4]["name"], days])
 		"temporarily_lose_node":
 			# Like lose_node but picks from a pool when node isn't named.
 			var r_id5 := _resolve_region(String(eff.get("region", "current")), ctx)
@@ -727,8 +1455,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 					if not st2.has("dark_nodes"):
 						st2["dark_nodes"] = []
 					(st2["dark_nodes"] as Array).append({"node": pick_node, "until_day": _day + days2})
-					_log("[color=#ff9090]%s (%s pool) dark in %s for %d days.[/color]" %
-						[pick_node, pool, _regions[r_id5]["name"], days2])
+					_log("[color=#ff9090]%s went dark in %s for %d days.[/color]" %
+						[_node_display(pick_node), _regions[r_id5]["name"], days2])
 		"lose_contested_node":
 			var r_id6 := _resolve_region(String(eff.get("region", "current")), ctx)
 			var node2: String = String(eff.get("node", ""))
@@ -740,7 +1468,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 					_region_state[r_id6]["dean_held_nodes"] = []
 				(_region_state[r_id6]["dean_held_nodes"] as Array).append(node2)
 				_log("[color=#ff9090]%s in %s lost to the resistance.[/color]" %
-					[node2, _regions[r_id6]["name"]])
+					[_node_display(node2), _regions[r_id6]["name"]])
 		"remove_target_node":
 			var r_id7 := _resolve_region(String(eff.get("region", "current")), ctx)
 			var targets: Array = _region_state[r_id7].get("target_nodes", [])
@@ -870,6 +1598,14 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				var entry_line: String = String(eff.get("log_line", ""))
 				if entry_line != "":
 					_log(entry_line)
+				var bank_m := get_node_or_null("/root/SFXBank")
+				if bank_m: bank_m.play("marker_set", 0.7)
+			# Regardless of extend-vs-append, record this marker as
+			# ever-set so end-of-summer interludes can gate on "was
+			# this ever true this summer" instead of "is this true
+			# right now."
+			if not _ever_set_markers.has(mk_id):
+				_ever_set_markers.append(mk_id)
 		"unlock_gauntlet_scenario":
 			# Community Planned → Gauntlet crossover. This stage choice
 			# records a scenario as unlocked in GauntletState.state
@@ -889,6 +1625,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if newly:
 				var g_name: String = String(eff.get("display_name", "%s/%s" % [g_arc, g_scn]))
 				_log("[color=#e0c862][b]Gauntlet unlocked:[/b] %s[/color]" % g_name)
+				var bank_scn := get_node_or_null("/root/SFXBank")
+				if bank_scn: bank_scn.play("scenario_unlock", 0.9)
 		"demon_tip_off", "ally_goes_silent", "reveal_dial_up_clue":
 			# Logged for now; mechanically wired in sprint 3.
 			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])
@@ -933,6 +1671,9 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				if not rite_lowered.is_empty():
 					_log("[color=#86d0a8][b]the rite:[/b] corruption −1 on %s.[/color]" %
 						", ".join(rite_lowered))
+					_basement_rite_fires += 1
+					var bank_rite := get_node_or_null("/root/SFXBank")
+					if bank_rite: bank_rite.play("basement_rite", 0.75)
 		"the_grove_intel":
 			# Reveal one queued substrate-anomaly the engine intended
 			# to roll. Soft information; the player gets a sentence
@@ -1016,6 +1757,98 @@ func _build_ui() -> void:
 	_new_game_button.pressed.connect(_on_new_game_pressed)
 	_back_button.pressed.connect(_on_back_pressed)
 	_shelf_button.pressed.connect(_open_interlude_shelf)
+	# Advance Day is the game's primary verb — filled amber. The
+	# rest of the chrome stays flat so it can't compete.
+	_style_primary_btn(_advance_button)
+	_style_flat_btn(_new_game_button)
+	_style_flat_btn(_back_button)
+	_style_flat_btn(_shelf_button)
+
+
+# Bottom-strip plates (audit): the roster and log sit on the same
+# StyleBoxFlat family as the region folders — the roster carries an
+# agent-amber accent stripe, the log a neutral slate one. Wrapped in
+# code at build time because both areas come from the .tscn.
+func _install_bottom_plates() -> void:
+	var bottom: HBoxContainer = get_node_or_null("VBox/BottomRow") as HBoxContainer
+	if bottom == null:
+		return
+	var roster: Control = bottom.get_node_or_null("AgentScroll") as Control
+	if roster != null:
+		_wrap_in_plate(bottom, roster, Color(0.80, 0.66, 0.30, 0.9))
+	var log_area: Control = bottom.get_node_or_null("LogLabel") as Control
+	if log_area != null:
+		_wrap_in_plate(bottom, log_area, Color(0.42, 0.52, 0.62, 0.6))
+
+
+func _wrap_in_plate(parent: Control, child: Control, accent: Color) -> void:
+	var plate := PanelContainer.new()
+	plate.name = String(child.name) + "Plate"
+	plate.size_flags_horizontal = child.size_flags_horizontal
+	plate.size_flags_vertical = child.size_flags_vertical
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.08, 0.09, 0.12, 0.95)
+	sb.border_color = accent
+	sb.set_border_width_all(1)
+	sb.border_width_left = 4
+	sb.set_corner_radius_all(2)
+	sb.content_margin_left = 10
+	sb.content_margin_right = 8
+	sb.content_margin_top = 8
+	sb.content_margin_bottom = 8
+	plate.add_theme_stylebox_override("panel", sb)
+	var idx: int = child.get_index()
+	parent.remove_child(child)
+	parent.add_child(plate)
+	parent.move_child(plate, idx)
+	plate.add_child(child)
+	child.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	child.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
+
+func _style_primary_btn(btn: Button) -> void:
+	if btn == null:
+		return
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.52, 0.40, 0.17, 0.95)
+	st.border_color = Color(0.92, 0.78, 0.42, 0.8)
+	st.set_border_width_all(1)
+	st.set_corner_radius_all(3)
+	st.content_margin_left = 14
+	st.content_margin_right = 14
+	st.content_margin_top = 6
+	st.content_margin_bottom = 6
+	btn.add_theme_stylebox_override("normal", st)
+	var hov: StyleBoxFlat = st.duplicate() as StyleBoxFlat
+	hov.bg_color = Color(0.64, 0.50, 0.22, 1.0)
+	btn.add_theme_stylebox_override("hover", hov)
+	btn.add_theme_stylebox_override("focus", hov)
+	btn.add_theme_stylebox_override("pressed", hov)
+	btn.add_theme_color_override("font_color", Color(0.98, 0.94, 0.84, 1.0))
+	btn.add_theme_color_override("font_hover_color", Color(1.0, 0.98, 0.90, 1.0))
+
+
+func _style_flat_btn(btn: Button) -> void:
+	if btn == null:
+		return
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0, 0, 0, 0)
+	st.border_color = Color(0.42, 0.52, 0.62, 0.45)
+	st.set_border_width_all(1)
+	st.set_corner_radius_all(2)
+	st.content_margin_left = 10
+	st.content_margin_right = 10
+	st.content_margin_top = 4
+	st.content_margin_bottom = 4
+	btn.add_theme_stylebox_override("normal", st)
+	var hov: StyleBoxFlat = st.duplicate() as StyleBoxFlat
+	hov.bg_color = Color(0.42, 0.52, 0.62, 0.12)
+	hov.border_color = Color(0.62, 0.72, 0.82, 0.8)
+	btn.add_theme_stylebox_override("hover", hov)
+	btn.add_theme_stylebox_override("focus", hov)
+	btn.add_theme_stylebox_override("pressed", hov)
+	btn.add_theme_color_override("font_color", Color(0.78, 0.80, 0.82, 1.0))
+	btn.add_theme_color_override("font_hover_color", Color(0.92, 0.94, 0.96, 1.0))
 
 
 func _on_new_game_pressed() -> void:
@@ -1045,7 +1878,14 @@ func _make_region_panel(r_id: String) -> Control:
 	sb.bg_color = Color(0.08, 0.09, 0.12, 0.95)
 	sb.border_color = Color(0.42, 0.52, 0.62, 0.6)
 	sb.set_border_width_all(1)
-	sb.content_margin_left = 8
+	# File-folder tab: each region carries an accent stripe on the
+	# left edge, derived from the region id — stable forever, and the
+	# eye learns which folder is which without reading the title.
+	sb.border_width_left = 4
+	var hue: float = float(posmod(r_id.hash(), 360)) / 360.0
+	sb.border_color = Color.from_hsv(hue, 0.35, 0.62, 0.9)
+	sb.set_corner_radius_all(2)
+	sb.content_margin_left = 10
 	sb.content_margin_right = 8
 	sb.content_margin_top = 8
 	sb.content_margin_bottom = 8
@@ -1054,36 +1894,130 @@ func _make_region_panel(r_id: String) -> Control:
 	col.name = "Col"
 	col.add_theme_constant_override("separation", 4)
 	panel.add_child(col)
+	# Region banner vignette — the folder's picture. Small Wood
+	# starts at the dim tower; _render_tower_strip swaps variants as
+	# the brightness changes. Missing JSON → no banner, the panel
+	# reads exactly as before (fallback discipline).
+	var banner_id: String = r_id if r_id != "small_wood" else "small_wood_dim"
+	var btex: ImageTexture = _banner_tex(banner_id)
+	if btex != null:
+		var bwrap := Control.new()
+		bwrap.name = "BannerWrap"
+		bwrap.clip_contents = true
+		bwrap.custom_minimum_size = Vector2(0, 72)
+		bwrap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		col.add_child(bwrap)
+		var btr := TextureRect.new()
+		btr.name = "Banner"
+		btr.texture = btex
+		btr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		btr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		btr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		btr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		btr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		bwrap.add_child(btr)
 	var title := Label.new()
 	title.name = "Title"
 	title.text = r["name"]
-	title.add_theme_font_size_override("font_size", 16)
+	title.add_theme_font_size_override("font_size", 24)
 	title.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 	col.add_child(title)
 	var subtitle := Label.new()
 	subtitle.name = "Subtitle"
 	subtitle.text = r.get("subtitle", "")
-	subtitle.add_theme_font_size_override("font_size", 10)
+	subtitle.add_theme_font_size_override("font_size", 19)
 	subtitle.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(subtitle)
 	var stats := Label.new()
 	stats.name = "Stats"
-	stats.add_theme_font_size_override("font_size", 11)
+	stats.add_theme_font_size_override("font_size", 19)
 	col.add_child(stats)
 	var nodes_label := Label.new()
 	nodes_label.name = "Nodes"
-	nodes_label.add_theme_font_size_override("font_size", 10)
+	nodes_label.add_theme_font_size_override("font_size", 19)
 	nodes_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(nodes_label)
 	var problems_header := Label.new()
 	problems_header.text = "PROBLEMS"
-	problems_header.add_theme_font_size_override("font_size", 10)
+	problems_header.add_theme_font_size_override("font_size", 19)
 	problems_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(problems_header)
 	var problems_box := VBoxContainer.new()
 	problems_box.name = "ProblemsBox"
 	col.add_child(problems_box)
 	return panel
+
+
+# Banner texture cache — HeroImage JSONs under banners/, rasterized
+# once at 4x (nearest). A missing file caches null so the warning
+# fires once, not per render.
+var _banner_cache: Dictionary = {}
+
+
+func _banner_tex(banner_id: String) -> ImageTexture:
+	if _banner_cache.has(banner_id):
+		return _banner_cache[banner_id]
+	var hero := HeroImage.new()
+	var path := "res://resources/games/community_planned/banners/%s.json" % banner_id
+	if not hero.load_from(path):
+		_banner_cache[banner_id] = null
+		return null
+	var tex: ImageTexture = hero.texture(Vector2i(640, 144))
+	_banner_cache[banner_id] = tex
+	return tex
+
+
+# Problem-type stamp cache — HeroImage JSONs under stamps/, one per
+# problem_type (gen_cp_problem_stamps.py). Same missing-file
+# discipline as the banners: null is cached, warning fires once.
+var _stamp_cache: Dictionary = {}
+
+
+func _stamp_tex(ptype: String) -> ImageTexture:
+	if _stamp_cache.has(ptype):
+		return _stamp_cache[ptype]
+	var hero := HeroImage.new()
+	var path := "res://resources/games/community_planned/stamps/%s.json" % ptype
+	if not hero.load_from(path):
+		_stamp_cache[ptype] = null
+		return null
+	var tex: ImageTexture = hero.texture(Vector2i(384, 216))
+	_stamp_cache[ptype] = tex
+	return tex
+
+
+func _problem_stamp(p: Dictionary) -> ImageTexture:
+	var t: Dictionary = _problem_templates.get(String(p.get("template_id", "")), {})
+	var ptype: String = String(t.get("problem_type", ""))
+	if ptype == "":
+		return null
+	return _stamp_tex(ptype)
+
+
+# Severity tint for a problem's stamp: parchment-neutral while it
+# simmers, warming through amber to a red heat as it climbs. Applied
+# as modulate wherever a stamp renders (row, dossier, picker), so
+# the SAME stamp reads hotter as the problem worsens - the picture
+# carries the number.
+func _stamp_severity_tint(p: Dictionary) -> Color:
+	var sev: float = float(p.get("severity", 0.0))
+	if sev >= 7.0:
+		return Color(1.0, 0.62, 0.55, 1.0)     # red heat - crisis
+	if sev >= 5.0:
+		return Color(1.0, 0.78, 0.58, 1.0)     # orange - urgent
+	if sev >= 3.0:
+		return Color(1.0, 0.92, 0.72, 1.0)     # amber - worsening
+	return Color(1, 1, 1, 1)                   # neutral - simmering
+
+
+# Accent color for an agent's procedural bust. Demons share one
+# sickly violet so they read as a class at a glance; humans get a
+# stable hash hue.
+func _agent_accent(a_id: String, a: Dictionary) -> Color:
+	if String(a.get("class", "")) == "demon":
+		return Color("#8a5aa8")
+	var h: int = posmod(a_id.hash(), 360)
+	return Color.from_hsv(float(h) / 360.0, 0.5, 0.8)
 
 
 # ── Render ───────────────────────────────────────────────────────
@@ -1095,7 +2029,7 @@ func _render() -> void:
 		_day_label.text = "DAY %d / %d  ·  %s" % [_day, TURNS_TOTAL, dow]
 	else:
 		_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
-	_dispatches_label.text = "Dispatches today: %d / %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
+	_dispatches_label.text = "Roads taken today · %d of %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
 	# Shelf button is hidden until the dean_interludes_visible reveal
 	# fires at day 60 — the interlude shelf is part of the late-summer
 	# legibility, not an ever-present UI element.
@@ -1140,16 +2074,27 @@ func _render_tower_strip() -> void:
 		col.move_child(tower_row, 3)
 		var lbl := Label.new()
 		lbl.name = "TowerLine"
-		lbl.add_theme_font_size_override("font_size", 11)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		tower_row.add_child(lbl)
 		var btn := Button.new()
 		btn.name = "TowerBtn"
 		btn.text = "send to tower"
 		btn.focus_mode = Control.FOCUS_NONE
-		btn.add_theme_font_size_override("font_size", 9)
+		btn.add_theme_font_size_override("font_size", 19)
+		_style_flat_btn(btn)
 		btn.pressed.connect(_open_tower_dispatch)
 		tower_row.add_child(btn)
+	# Dispatch cap reads as control state here too (audit): the tower
+	# button disables at 3/3 instead of logging a refusal on click.
+	var tower_btn: Button = tower_row.get_node("TowerBtn") as Button
+	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+		tower_btn.disabled = true
+		tower_btn.tooltip_text = "%d/%d dispatched today — advance the day." % [
+			MAX_DISPATCHES_PER_DAY, MAX_DISPATCHES_PER_DAY]
+	else:
+		tower_btn.disabled = false
+		tower_btn.tooltip_text = ""
 	var tower_label: Label = tower_row.get_node("TowerLine") as Label
 	var color_map: Dictionary = {
 		"dim":     Color(0.42, 0.42, 0.50, 1),
@@ -1160,6 +2105,13 @@ func _render_tower_strip() -> void:
 	var color: Color = color_map.get(_tower_brightness, Color(0.62, 0.62, 0.62, 1))
 	tower_label.add_theme_color_override("font_color", color)
 	tower_label.text = "tower: %s" % _tower_brightness
+	# The banner is the picture of the same fact — swap the Small
+	# Wood vignette to the current brightness variant.
+	var banner: Node = panel.get_node_or_null("Col/BannerWrap/Banner")
+	if banner is TextureRect:
+		var vtex: ImageTexture = _banner_tex("small_wood_" + _tower_brightness)
+		if vtex != null:
+			(banner as TextureRect).texture = vtex
 
 
 func _render_region(r_id: String) -> void:
@@ -1167,7 +2119,7 @@ func _render_region(r_id: String) -> void:
 	var st: Dictionary = _region_state[r_id]
 	var stats_label: Label = panel.get_node("Col/Stats") as Label
 	if bool(_ui_flags.get("show_resource_economy_numbers", false)):
-		stats_label.text = "insight %d  ·  cover %d  ·  courier %d  ·  esc %.0f%%" % [
+		stats_label.text = "insight %d  ·  cover %d  ·  courier %d  ·  escalation %.0f%%" % [
 			st["insight"], st["cover"], st["courier_capacity"],
 			clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
 		]
@@ -1175,7 +2127,7 @@ func _render_region(r_id: String) -> void:
 		# Pre-reveal: just hint at the rhythm without naming the
 		# resource columns. Once the numbers reveal fires at day 5
 		# they read in numbers.
-		stats_label.text = "running steady  ·  esc %.0f%%" % clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
+		stats_label.text = "running steady  ·  escalation %.0f%%" % clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
 	var nodes_label: Label = panel.get_node("Col/Nodes") as Label
 	var held: Array = st["held_nodes"]
 	var contested: Array = st["contested_nodes"]
@@ -1199,14 +2151,27 @@ func _render_region(r_id: String) -> void:
 	var probs: Array = st["active_problems"]
 	if probs.is_empty():
 		var none := Label.new()
-		none.text = "(none active)"
+		none.text = "(quiet. read the quiet too.)"
 		none.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
-		none.add_theme_font_size_override("font_size", 10)
+		none.add_theme_font_size_override("font_size", 19)
 		box.add_child(none)
 	for pi in range(probs.size()):
 		var p: Dictionary = probs[pi]
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 4)
+		# Problem-type stamp: the row leads with a picture of the
+		# problem's shape, not just its words.
+		var row_stamp: ImageTexture = _problem_stamp(p)
+		if row_stamp != null:
+			var icon := TextureRect.new()
+			icon.texture = row_stamp
+			icon.modulate = _stamp_severity_tint(p)
+			icon.custom_minimum_size = Vector2(38, 21)
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			row.add_child(icon)
 		# Problem label is a flat button that opens the dossier. The
 		# title + severity dots + effort read the same as before, but
 		# clicking now surfaces the template flavor + threshold info
@@ -1214,13 +2179,29 @@ func _render_region(r_id: String) -> void:
 		var lbl := Button.new()
 		var sev_dots := ""
 		var sev_int: int = int(round(p["severity"]))
-		for i in range(min(sev_int, 9)):
+		# Clamp the dot string so a runaway severity can't stretch the
+		# row — six dots then a "+" (audit: horizontal overflow).
+		for i in range(min(sev_int, 6)):
 			sev_dots += "●"
+		if sev_int > 6:
+			sev_dots += "+"
 		lbl.text = "%s  %s  (effort %.1f)" % [p["title"], sev_dots, p["effort_remaining"]]
 		lbl.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		lbl.flat = true
+		# Long titles trim inside the row instead of pushing the region
+		# panels past the screen edge with four folders open.
+		lbl.clip_text = true
+		lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		lbl.focus_mode = Control.FOCUS_NONE
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 19)
+		# Severity reads at a glance: calm tan → amber → alarm red.
+		var sev_col := Color(0.78, 0.74, 0.62, 1.0)
+		if sev_int >= 7:
+			sev_col = Color(0.90, 0.38, 0.28, 1.0)
+		elif sev_int >= 4:
+			sev_col = Color(0.88, 0.66, 0.32, 1.0)
+		lbl.add_theme_color_override("font_color", sev_col)
+		lbl.add_theme_color_override("font_hover_color", sev_col.lightened(0.25))
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var r_id_d: String = String(r_id)
 		var pi_d: int = int(pi)
@@ -1230,13 +2211,20 @@ func _render_region(r_id: String) -> void:
 			var ag := Label.new()
 			ag.text = "↳ %s" % p["in_progress_by"]
 			ag.add_theme_color_override("font_color", Color(0.62, 0.86, 0.62, 1))
-			ag.add_theme_font_size_override("font_size", 10)
+			ag.add_theme_font_size_override("font_size", 19)
 			row.add_child(ag)
 		else:
 			var btn := Button.new()
 			btn.text = "dispatch"
 			btn.focus_mode = Control.FOCUS_NONE
-			btn.add_theme_font_size_override("font_size", 10)
+			btn.add_theme_font_size_override("font_size", 19)
+			_style_flat_btn(btn)
+			# Dispatch cap reads as control state, not as a log line
+			# after the click: the button disables at 3/3.
+			if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+				btn.disabled = true
+				btn.tooltip_text = "%d/%d dispatched today — advance the day." % [
+					MAX_DISPATCHES_PER_DAY, MAX_DISPATCHES_PER_DAY]
 			var r_id_capture: String = String(r_id)
 			var pi_capture: int = int(pi)
 			btn.pressed.connect(func() -> void: _open_dispatch_picker(r_id_capture, pi_capture))
@@ -1250,7 +2238,7 @@ func _render_agent_list() -> void:
 	var header := Label.new()
 	header.text = "AGENT ROSTER"
 	header.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-	header.add_theme_font_size_override("font_size", 12)
+	header.add_theme_font_size_override("font_size", 19)
 	_agent_list_box.add_child(header)
 	# Only show agents the reveal schedule has surfaced.
 	var ids: Array = _visible_agents.duplicate()
@@ -1269,7 +2257,7 @@ func _render_agent_list() -> void:
 		var st: Dictionary = _agent_state[a_id]
 		var status := ""
 		if bool(st["on_dispatch"]):
-			status = "  · ON DISPATCH (returns day %d)" % int(st["return_day"])
+			status = "  · OUT (back day %d)" % int(st["return_day"])
 		elif _agent_is_resting(a_id):
 			status = "  · AT REST (%d/%d)" % [
 				int(st.get("home_days_used", 0)),
@@ -1321,11 +2309,32 @@ func _render_agent_list() -> void:
 			a["name"], econ, tier_tag, status]
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.flat = true
+		# Long roster lines trim inside the strip instead of widening
+		# the bottom row (audit: horizontal overflow).
+		btn.clip_text = true
+		btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		btn.focus_mode = Control.FOCUS_NONE
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 19)
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var ag_capture: String = String(a_id)
 		btn.pressed.connect(func() -> void: _open_agent_dossier(ag_capture))
-		_agent_list_box.add_child(btn)
+		# Roster row: procedural bust + the button. Dimmed while the
+		# agent is away so presence reads without parsing text.
+		var arow := HBoxContainer.new()
+		arow.add_theme_constant_override("separation", 6)
+		var bust := TextureRect.new()
+		bust.texture = _agent_portrait(String(a_id), "neutral",
+			_agent_accent(String(a_id), a))
+		bust.custom_minimum_size = Vector2(40, 44)
+		bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		bust.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		bust.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		bust.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if bool(st["on_dispatch"]):
+			bust.modulate = Color(0.55, 0.55, 0.60, 0.7)
+		arow.add_child(bust)
+		arow.add_child(btn)
+		_agent_list_box.add_child(arow)
 
 
 # ── Agent dossier modal ─────────────────────────────────────────
@@ -1343,23 +2352,38 @@ func _open_agent_dossier(agent_id: String) -> void:
 	var st: Dictionary = _agent_state[agent_id]
 	var dlg := AcceptDialog.new()
 	dlg.title = "Dossier — %s" % String(a["name"])
-	dlg.min_size = Vector2(560, 480)
+	dlg.min_size = Vector2(900, 620)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 440)
+	scroll.custom_minimum_size = Vector2(880, 580)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 6)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(col)
 
-	# Header line
+	# Header row: bust portrait + name/class. Demons get the harder
+	# face on top of the class-violet accent.
+	var hdr_row := HBoxContainer.new()
+	hdr_row.add_theme_constant_override("separation", 10)
+	col.add_child(hdr_row)
+	var d_bust := TextureRect.new()
+	var d_expr: String = "angry" if a["class"] == "demon" else "neutral"
+	d_bust.texture = _agent_portrait(agent_id, d_expr,
+		_agent_accent(agent_id, a))
+	d_bust.custom_minimum_size = Vector2(100, 108)
+	d_bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	d_bust.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	d_bust.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	d_bust.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hdr_row.add_child(d_bust)
 	var hdr := Label.new()
 	hdr.text = "%s · %s" % [String(a["name"]), "DEMON" if a["class"] == "demon" else "HUMAN"]
-	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-	col.add_child(hdr)
+	hdr.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	hdr_row.add_child(hdr)
 
 	# Handle + home region
 	var sub := Label.new()
@@ -1367,7 +2391,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 		String(a.get("handle_on_bbs", "—")),
 		_regions.get(String(a.get("home_region", "")), {}).get("name", String(a.get("home_region", "—")))
 	]
-	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_font_size_override("font_size", 19)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 
@@ -1378,7 +2402,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 		var flavor := Label.new()
 		flavor.text = String(a["flavor"])
 		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		flavor.add_theme_font_size_override("font_size", 11)
+		flavor.add_theme_font_size_override("font_size", 19)
 		flavor.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(flavor)
 		col.add_child(_dossier_rule())
@@ -1386,20 +2410,20 @@ func _open_agent_dossier(agent_id: String) -> void:
 	# Specialty + competence
 	var sp_header := Label.new()
 	sp_header.text = "SPECIALTY"
-	sp_header.add_theme_font_size_override("font_size", 10)
+	sp_header.add_theme_font_size_override("font_size", 19)
 	sp_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(sp_header)
 	var sp := Label.new()
 	var specs: Array = a.get("specialty_problem_types", [])
 	sp.text = (", ".join(specs) if not specs.is_empty() else "—")
 	sp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	sp.add_theme_font_size_override("font_size", 10)
+	sp.add_theme_font_size_override("font_size", 19)
 	col.add_child(sp)
 	var comp := Label.new()
 	comp.text = "competence  %.2fx  ·  speed  %.2fx" % [
 		float(a.get("competence_modifier", 1.0)),
 		float(a.get("dispatch_speed_modifier", 1.0))]
-	comp.add_theme_font_size_override("font_size", 10)
+	comp.add_theme_font_size_override("font_size", 19)
 	comp.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(comp)
 
@@ -1418,7 +2442,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	# checkmark; locked traits are dimmed.
 	var ev_header := Label.new()
 	ev_header.text = "EVOLUTION"
-	ev_header.add_theme_font_size_override("font_size", 10)
+	ev_header.add_theme_font_size_override("font_size", 19)
 	ev_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
 	col.add_child(ev_header)
 	var paths: Array = a.get("evolution_paths", [])
@@ -1432,11 +2456,11 @@ func _open_agent_dossier(agent_id: String) -> void:
 		mark.text = "✓" if is_earned else "○"
 		mark.add_theme_color_override("font_color",
 			Color(0.42, 0.86, 0.62, 1) if is_earned else Color(0.42, 0.42, 0.42, 1))
-		mark.add_theme_font_size_override("font_size", 12)
+		mark.add_theme_font_size_override("font_size", 19)
 		row.add_child(mark)
 		var name_lbl := Label.new()
 		name_lbl.text = trait_str
-		name_lbl.add_theme_font_size_override("font_size", 10)
+		name_lbl.add_theme_font_size_override("font_size", 19)
 		name_lbl.add_theme_color_override("font_color",
 			Color(0.86, 0.86, 0.86, 1) if is_earned else Color(0.55, 0.55, 0.55, 1))
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -1453,7 +2477,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 			var desc := Label.new()
 			desc.text = String(catalog[trait_str])
 			desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			desc.add_theme_font_size_override("font_size", 9)
+			desc.add_theme_font_size_override("font_size", 19)
 			desc.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
 			col.add_child(desc)
 
@@ -1462,19 +2486,19 @@ func _open_agent_dossier(agent_id: String) -> void:
 	var status_label := Label.new()
 	var status_text: String
 	if bool(st.get("on_dispatch", false)):
-		status_text = "ON DISPATCH · returns day %d" % int(st.get("return_day", 0))
+		status_text = "OUT · the road has them till day %d" % int(st.get("return_day", 0))
 	elif bool(st.get("locked_for_saga", false)):
 		status_text = "LOCKED FOR THE SAGA"
 	elif bool(st.get("turned", false)):
 		status_text = "TURNED · on the resistance's side"
 	elif _agent_is_resting(agent_id):
-		status_text = "AT REST · %d/%d days" % [
+		status_text = "ON THE PORCH · day %d of %d" % [
 			int(st.get("home_days_used", 0)),
 			int(st.get("home_days_needed", 0))]
 	else:
 		status_text = "available"
 	status_label.text = "STATUS  ·  %s" % status_text
-	status_label.add_theme_font_size_override("font_size", 10)
+	status_label.add_theme_font_size_override("font_size", 19)
 	status_label.add_theme_color_override("font_color", Color(0.86, 0.86, 0.62, 1))
 	col.add_child(status_label)
 
@@ -1486,14 +2510,14 @@ func _open_agent_dossier(agent_id: String) -> void:
 func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) -> void:
 	var econ_hdr := Label.new()
 	econ_hdr.text = "DEMON ECONOMY"
-	econ_hdr.add_theme_font_size_override("font_size", 10)
+	econ_hdr.add_theme_font_size_override("font_size", 19)
 	econ_hdr.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(econ_hdr)
 	# Burn line
 	var burn_lbl := Label.new()
 	burn_lbl.text = "burn  %d  ·  +%d per dispatch  ·  dark at 5, gone at 10" % [
 		int(st.get("burn", 0)), int(a.get("burn_per_dispatch", 1))]
-	burn_lbl.add_theme_font_size_override("font_size", 10)
+	burn_lbl.add_theme_font_size_override("font_size", 19)
 	col.add_child(burn_lbl)
 	# Corruption (gated) · tier tag makes the number legible, and
 	# the spillover-chance line tells the player what they're
@@ -1507,20 +2531,20 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		corr_lbl.text = "%s corruption  %d  ·  %s  ·  resistance: %s" % [
 			d_glyph, corr_val, d_tier.replace("_", " "),
 			String(a.get("corruption_resistance", "—"))]
-		corr_lbl.add_theme_font_size_override("font_size", 10)
+		corr_lbl.add_theme_font_size_override("font_size", 19)
 		corr_lbl.add_theme_color_override("font_color", _demon_tier_color(d_tier))
 		col.add_child(corr_lbl)
 		if d_chance > 0.0:
 			var spill_lbl := Label.new()
 			spill_lbl.text = "  signature-spillover chance on dispatch: %d%%" % int(round(d_chance * 100.0))
-			spill_lbl.add_theme_font_size_override("font_size", 9)
+			spill_lbl.add_theme_font_size_override("font_size", 19)
 			spill_lbl.add_theme_color_override("font_color", Color(0.86, 0.62, 0.42, 1))
 			col.add_child(spill_lbl)
 	# Complexity (gated)
 	if bool(_ui_flags.get("show_complexity_values", false)):
 		var cmplx_lbl := Label.new()
 		cmplx_lbl.text = "complexity  %d  ·  the longer they work, the more they are themselves" % int(st.get("complexity", 0))
-		cmplx_lbl.add_theme_font_size_override("font_size", 10)
+		cmplx_lbl.add_theme_font_size_override("font_size", 19)
 		cmplx_lbl.add_theme_color_override("font_color", Color(0.86, 0.62, 0.96, 1))
 		col.add_child(cmplx_lbl)
 	# Signature failure
@@ -1528,7 +2552,7 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		var fail := Label.new()
 		fail.text = "signature failure: " + String(a["signature_failure"])
 		fail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		fail.add_theme_font_size_override("font_size", 9)
+		fail.add_theme_font_size_override("font_size", 19)
 		fail.add_theme_color_override("font_color", Color(0.62, 0.42, 0.42, 1))
 		col.add_child(fail)
 	# Region restrictions
@@ -1539,7 +2563,7 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		for rid in restrictions:
 			names.append(String(_regions.get(rid, {}).get("name", rid)))
 		rest_lbl.text = "region-locked to: " + ", ".join(names)
-		rest_lbl.add_theme_font_size_override("font_size", 9)
+		rest_lbl.add_theme_font_size_override("font_size", 19)
 		rest_lbl.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		col.add_child(rest_lbl)
 
@@ -1547,7 +2571,7 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) -> void:
 	var econ_hdr := Label.new()
 	econ_hdr.text = "HUMAN COSTS"
-	econ_hdr.add_theme_font_size_override("font_size", 10)
+	econ_hdr.add_theme_font_size_override("font_size", 19)
 	econ_hdr.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(econ_hdr)
 	if bool(_ui_flags.get("show_obligation_values", false)):
@@ -1556,7 +2580,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		var cur: int = int(st.get("obligation", 0))
 		obl_lbl.text = "obligation  %d / %d  ·  +%d per dispatch" % [
 			cur, cap, int(a.get("obligation_per_dispatch", 1))]
-		obl_lbl.add_theme_font_size_override("font_size", 10)
+		obl_lbl.add_theme_font_size_override("font_size", 19)
 		var col_color := Color(0.86, 0.86, 0.62, 1)
 		if cap > 0 and float(cur) / float(cap) >= 0.6:
 			col_color = Color(0.96, 0.62, 0.42, 1)
@@ -1567,7 +2591,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 	# Time-at-home cost
 	var th_lbl := Label.new()
 	th_lbl.text = "time-at-home cost  %.1f days per dispatch" % float(a.get("time_at_home_cost_days", 1.0))
-	th_lbl.add_theme_font_size_override("font_size", 9)
+	th_lbl.add_theme_font_size_override("font_size", 19)
 	th_lbl.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(th_lbl)
 	# Life cost thresholds
@@ -1575,7 +2599,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 	if not life.is_empty():
 		var life_hdr := Label.new()
 		life_hdr.text = "LIFE COSTS"
-		life_hdr.add_theme_font_size_override("font_size", 9)
+		life_hdr.add_theme_font_size_override("font_size", 19)
 		life_hdr.add_theme_color_override("font_color", Color(0.86, 0.62, 0.42, 1))
 		col.add_child(life_hdr)
 		var keys: Array = life.keys()
@@ -1590,7 +2614,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 				n,
 				String(life[k])]
 			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			line.add_theme_font_size_override("font_size", 9)
+			line.add_theme_font_size_override("font_size", 19)
 			line.add_theme_color_override("font_color",
 				Color(0.96, 0.62, 0.42, 1) if crossed else Color(0.62, 0.62, 0.62, 1))
 			col.add_child(line)
@@ -1608,24 +2632,36 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	var region_name: String = String(_regions.get(region_id, {}).get("name", region_id))
 	var dlg := AcceptDialog.new()
 	dlg.title = "Problem — %s" % String(p["title"])
-	dlg.min_size = Vector2(560, 440)
+	dlg.min_size = Vector2(900, 580)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 400)
+	scroll.custom_minimum_size = Vector2(880, 540)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 6)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(col)
+	# Problem-type stamp leads the dossier.
+	var dossier_art: ImageTexture = _problem_stamp(p)
+	if dossier_art != null:
+		var art_tr := TextureRect.new()
+		art_tr.texture = dossier_art
+		art_tr.modulate = _stamp_severity_tint(p)
+		art_tr.custom_minimum_size = Vector2(240, 135)
+		art_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		art_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		art_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		art_tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		col.add_child(art_tr)
 	var hdr := Label.new()
 	hdr.text = String(p["title"])
-	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var sub := Label.new()
 	sub.text = "in %s  ·  age %d days" % [region_name, _day - int(p.get("day_spawned", _day))]
-	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_font_size_override("font_size", 19)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 	col.add_child(_dossier_rule())
@@ -1633,7 +2669,7 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 		var flavor := Label.new()
 		flavor.text = String(template["flavor"])
 		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		flavor.add_theme_font_size_override("font_size", 11)
+		flavor.add_theme_font_size_override("font_size", 19)
 		flavor.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(flavor)
 		col.add_child(_dossier_rule())
@@ -1642,25 +2678,25 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	var tick: float = float(template.get("tick_per_day", 0.0))
 	var econ_header := Label.new()
 	econ_header.text = "STATE"
-	econ_header.add_theme_font_size_override("font_size", 10)
+	econ_header.add_theme_font_size_override("font_size", 19)
 	econ_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(econ_header)
 	var econ := Label.new()
 	econ.text = "severity %.1f  ·  effort %.1f  ·  tick +%.2f/day" % [sev, eff, tick]
-	econ.add_theme_font_size_override("font_size", 10)
+	econ.add_theme_font_size_override("font_size", 19)
 	col.add_child(econ)
 	if String(p.get("in_progress_by", "")) != "":
 		var ip := Label.new()
 		ip.text = "in progress by %s" % String(p["in_progress_by"])
 		ip.add_theme_color_override("font_color", Color(0.62, 0.86, 0.62, 1))
-		ip.add_theme_font_size_override("font_size", 10)
+		ip.add_theme_font_size_override("font_size", 19)
 		col.add_child(ip)
 	col.add_child(_dossier_rule())
 	var thresh: Array = template.get("if_unresolved_at_severity_7", [])
 	if not thresh.is_empty():
 		var th_header := Label.new()
 		th_header.text = "IF IT CROSSES SEVERITY 7"
-		th_header.add_theme_font_size_override("font_size", 10)
+		th_header.add_theme_font_size_override("font_size", 19)
 		th_header.add_theme_color_override("font_color", Color(0.96, 0.62, 0.42, 1))
 		col.add_child(th_header)
 		for ef in thresh:
@@ -1672,7 +2708,7 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 			else:
 				line.text = "· %s" % String(ed.get("kind", "")).replace("_", " ")
 			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			line.add_theme_font_size_override("font_size", 10)
+			line.add_theme_font_size_override("font_size", 19)
 			line.add_theme_color_override("font_color", Color(0.86, 0.74, 0.62, 1))
 			col.add_child(line)
 		col.add_child(_dossier_rule())
@@ -1683,15 +2719,36 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	if shape_hint != "":
 		var sh_header := Label.new()
 		sh_header.text = "WHAT IT WANTS"
-		sh_header.add_theme_font_size_override("font_size", 10)
+		sh_header.add_theme_font_size_override("font_size", 19)
 		sh_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
 		col.add_child(sh_header)
 		var sh := Label.new()
 		sh.text = shape_hint
 		sh.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		sh.add_theme_font_size_override("font_size", 10)
+		sh.add_theme_font_size_override("font_size", 19)
 		sh.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(sh)
+	# Primary action (audit): dispatch straight from the dossier —
+	# closes this modal and opens the picker for the same problem.
+	# Hidden while someone is already on it; disabled at the day cap.
+	if String(p.get("in_progress_by", "")) == "":
+		col.add_child(_dossier_rule())
+		var go_btn := Button.new()
+		go_btn.text = "Dispatch…"
+		go_btn.focus_mode = Control.FOCUS_NONE
+		go_btn.custom_minimum_size = Vector2(160, 36)
+		_style_primary_btn(go_btn)
+		if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+			go_btn.disabled = true
+			go_btn.tooltip_text = "%d/%d dispatched today — advance the day." % [
+				MAX_DISPATCHES_PER_DAY, MAX_DISPATCHES_PER_DAY]
+		var rg_capture: String = region_id
+		var pi_capture: int = problem_index
+		go_btn.pressed.connect(func() -> void:
+			dlg.hide()
+			dlg.queue_free()
+			_open_dispatch_picker(rg_capture, pi_capture))
+		col.add_child(go_btn)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
@@ -1728,7 +2785,7 @@ func _render_todays_dispatches() -> void:
 		var lbl := Label.new()
 		lbl.text = "%s → %s" % [String(a["name"]),
 			String(_regions.get(String(d.get("region_id", "")), {}).get("name", "?"))]
-		lbl.add_theme_font_size_override("font_size", 9)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(lbl)
 		var btn := Button.new()
@@ -1736,7 +2793,8 @@ func _render_todays_dispatches() -> void:
 		btn.tooltip_text = "Revoke this dispatch"
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.custom_minimum_size = Vector2(28, 22)
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 19)
+		_style_flat_btn(btn)
 		var d_capture: Dictionary = d
 		btn.pressed.connect(func() -> void: _revoke_dispatch(d_capture))
 		row.add_child(btn)
@@ -1772,11 +2830,27 @@ func _revoke_dispatch(d: Dictionary) -> void:
 				p_ref["in_progress_by"] = ""
 				p_ref["dispatch_agent_id"] = ""
 				p_ref["dispatch_resolution_day"] = 0
+	# Pair rider (B2) · restore the partner from the extended snapshot.
+	var pair_id: String = String(d.get("pair_agent_id", ""))
+	if pair_id != "" and _agent_state.has(pair_id):
+		var p_a: Dictionary = _agents.get(pair_id, {})
+		var p_st: Dictionary = _agent_state[pair_id]
+		if String(p_a.get("class", "")) == "demon":
+			p_st["burn"] = int(snap.get("pair_burn", p_st.get("burn", 0)))
+			p_st["corruption"] = int(snap.get("pair_corruption", p_st.get("corruption", 0)))
+		else:
+			p_st["obligation"] = int(snap.get("pair_obligation", p_st.get("obligation", 0)))
+		p_st["on_dispatch"] = false
+		p_st["return_day"] = 0
+		p_st["days_away_since_dispatch"] = 0
+		p_st["home_node_strained_this_dispatch"] = false
+		_dispatches_this_day = max(0, _dispatches_this_day - 1)
+		_agent_dispatch_counts[pair_id] = max(0, int(_agent_dispatch_counts.get(pair_id, 1)) - 1)
 	# Decrement counters.
 	_active_dispatches.erase(d)
 	_dispatches_this_day = max(0, _dispatches_this_day - 1)
 	_agent_dispatch_counts[a_id] = max(0, int(_agent_dispatch_counts.get(a_id, 1)) - 1)
-	_log("[i]Revoked.[/i] %s came back from the road. The problem is unhandled again." % String(a["name"]))
+	_log("[i]Called back.[/i] %s turned around mid-road. The problem kept its shape." % String(a["name"]))
 	_render()
 
 
@@ -1795,7 +2869,7 @@ func _render_log() -> void:
 # But it always costs the agent for the rest of the summer.
 func _open_tower_dispatch() -> void:
 	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
-		_log("[color=#ff9090]Already dispatched %d agents today.[/color]" % MAX_DISPATCHES_PER_DAY)
+		_log("[color=#ff9090]The day carries %d roads and they are all taken. Tomorrow is a day too.[/color]" % MAX_DISPATCHES_PER_DAY)
 		return
 	var dlg := ConfirmationDialog.new()
 	dlg.title = "Send to the tower"
@@ -1824,7 +2898,7 @@ func _open_tower_dispatch() -> void:
 		has_any = true
 	if not has_any:
 		var none := Label.new()
-		none.text = "No agents available to send."
+		none.text = "Nobody to send. The porch is empty until somebody comes home."
 		picker.add_child(none)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
@@ -1841,15 +2915,7 @@ func _dispatch_to_tower(agent_id: String) -> void:
 	if a["class"] == "demon":
 		st["burn"] = int(st["burn"]) + int(a.get("burn_per_dispatch", 1))
 	else:
-		var prev_obl: int = int(st["obligation"])
-		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
-		st["obligation"] = new_obl
-		var life: Dictionary = a.get("life_cost_thresholds", {})
-		for k in life:
-			var n: int = int(String(k))
-			if prev_obl < n and new_obl >= n:
-				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
-					[String(a["name"]), n, String(life[k])])
+		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
 	_dispatches_this_day += 1
 	_log("[color=#c8a8ff]%s went to the tower. They do not return.[/color]" % String(a["name"]))
 	_render()
@@ -1920,28 +2986,41 @@ func _is_trait_earned(trait_id: String, st: Dictionary, a: Dictionary) -> bool:
 
 func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
-		_log("[color=#ff9090]Already dispatched %d agents today.[/color]" % MAX_DISPATCHES_PER_DAY)
+		_log("[color=#ff9090]The day carries %d roads and they are all taken. Tomorrow is a day too.[/color]" % MAX_DISPATCHES_PER_DAY)
 		_render_log()
 		return
 	var p: Dictionary = (_region_state[region_id]["active_problems"] as Array)[problem_index]
 	var dlg := AcceptDialog.new()
 	dlg.title = "Dispatch — %s" % p["title"]
-	dlg.min_size = Vector2(560, 420)
+	dlg.min_size = Vector2(900, 540)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 380)
+	scroll.custom_minimum_size = Vector2(880, 500)
 	dlg.add_child(scroll)
 	var vbox := VBoxContainer.new()
 	vbox.add_theme_constant_override("separation", 6)
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(vbox)
+	# The event's artwork leads the picker — the picture of what the
+	# agent is being sent into.
+	var picker_art: ImageTexture = _problem_stamp(p)
+	if picker_art != null:
+		var art_tr := TextureRect.new()
+		art_tr.texture = picker_art
+		art_tr.modulate = _stamp_severity_tint(p)
+		art_tr.custom_minimum_size = Vector2(200, 112)
+		art_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		art_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		art_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		art_tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		vbox.add_child(art_tr)
 	var hint := Label.new()
 	hint.text = "%s (%s) · severity %.1f · effort %.1f" % [
 		p["title"], _regions[region_id]["name"],
 		float(p["severity"]), float(p["effort_remaining"])]
 	hint.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_font_size_override("font_size", 19)
 	vbox.add_child(hint)
 	# Ideal handlers listed by the template — small caption that
 	# hints which agents the writer expected to land this problem.
@@ -1949,26 +3028,27 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	if not ideal.is_empty():
 		var hint2 := Label.new()
 		hint2.text = "ideal handlers: " + ", ".join(ideal)
-		hint2.add_theme_font_size_override("font_size", 9)
+		hint2.add_theme_font_size_override("font_size", 19)
 		hint2.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		vbox.add_child(hint2)
 	var any_eligible := false
 	for a_id in _visible_agents:
 		if not _agents.has(a_id): continue
-		var a: Dictionary = _agents[a_id]
 		var st: Dictionary = _agent_state[a_id]
+		# Agents already on the road show on the board as ↳ tags; the
+		# picker skips them. Everyone else HOME but ineligible renders
+		# as a disabled row that says why (audit: silent ineligibility).
 		if bool(st["on_dispatch"]):
 			continue
-		if a["class"] == "human" and int(st["obligation"]) >= int(a.get("obligation_cap_before_stops_picking_up", 999)):
-			continue
-		var restrictions: Array = a.get("region_restrictions", [])
-		if not restrictions.is_empty() and not restrictions.has(region_id):
-			continue
-		vbox.add_child(_make_dispatch_preview_row(a_id, region_id, problem_index, p, dlg))
-		any_eligible = true
+		var block_reason: String = _agent_dispatch_block_reason(String(a_id), region_id)
+		if block_reason == "":
+			vbox.add_child(_make_dispatch_preview_row(a_id, region_id, problem_index, p, dlg))
+			any_eligible = true
+		else:
+			vbox.add_child(_make_ineligible_agent_row(String(a_id), block_reason))
 	if not any_eligible:
 		var none := Label.new()
-		none.text = "No agents available."
+		none.text = "Nobody is home to send."
 		none.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		vbox.add_child(none)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
@@ -2019,7 +3099,7 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 		"D" if a["class"] == "demon" else "H",
 		String(a["name"]),
 		"  ★ specialty" if specialty else ""]
-	name_lbl.add_theme_font_size_override("font_size", 11)
+	name_lbl.add_theme_font_size_override("font_size", 19)
 	if specialty:
 		name_lbl.add_theme_color_override("font_color", Color(0.96, 0.86, 0.42, 1))
 	lcol.add_child(name_lbl)
@@ -2048,42 +3128,47 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 				detail_parts.append("crosses %d: %s" % [n, String(life[k])])
 	var detail_lbl := Label.new()
 	detail_lbl.text = "  " + "  ·  ".join(detail_parts)
-	detail_lbl.add_theme_font_size_override("font_size", 9)
+	detail_lbl.add_theme_font_size_override("font_size", 19)
 	detail_lbl.add_theme_color_override("font_color", Color(0.72, 0.72, 0.72, 1))
 	detail_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lcol.add_child(detail_lbl)
-	# Pair-preview: if this row is a demon and another demon is
-	# already on-dispatch to the same region, surface the pair
-	# entry inline so the player sees the consequence before
-	# they commit. Tone drives color: warm green, cold slate,
-	# loud amber.
+	# Pair-preview: if another agent of the same class is already
+	# on-dispatch to the same region, surface the pair entry
+	# inline so the player sees the consequence before commit.
+	# Tone drives color: warm green, cold slate, loud amber.
+	var pair_hint: Dictionary = {}
 	if a["class"] == "demon":
-		var pair_hint: Dictionary = _preview_demon_pair(agent_id, region_id)
-		if not pair_hint.is_empty():
-			var p_lbl := Label.new()
-			var p_tone: String = String(pair_hint.get("tone", "warm"))
-			var p_color := Color(0.53, 0.82, 0.66, 1)
-			if p_tone == "loud":
-				p_color = Color(0.86, 0.62, 0.42, 1)
-			elif p_tone == "cold":
-				p_color = Color(0.66, 0.68, 0.78, 1)
-			var mods: PackedStringArray = PackedStringArray()
-			var pc: int = int(pair_hint.get("cover", 0))
-			var pa: int = int(pair_hint.get("attention", 0))
-			if pc != 0: mods.append("cover %+d" % pc)
-			if pa != 0: mods.append("attention %+d" % pa)
-			var mod_tag := ""
-			if not mods.is_empty():
-				mod_tag = "  [" + "  ".join(mods) + "]"
-			p_lbl.text = "  pair with %s%s · %s" % [
-				String(pair_hint.get("partner_name", "")),
-				mod_tag,
-				String(pair_hint.get("log", ""))]
-			p_lbl.add_theme_font_size_override("font_size", 9)
-			p_lbl.add_theme_color_override("font_color", p_color)
-			p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			lcol.add_child(p_lbl)
-	# Right: dispatch button
+		pair_hint = _preview_demon_pair(agent_id, region_id)
+	else:
+		pair_hint = _preview_human_pair(agent_id, region_id)
+	if not pair_hint.is_empty():
+		var p_lbl := Label.new()
+		var p_tone: String = String(pair_hint.get("tone", "warm"))
+		var p_color := Color(0.53, 0.82, 0.66, 1)
+		if p_tone == "loud":
+			p_color = Color(0.86, 0.62, 0.42, 1)
+		elif p_tone == "cold":
+			p_color = Color(0.66, 0.68, 0.78, 1)
+		var mods: PackedStringArray = PackedStringArray()
+		var pc: int = int(pair_hint.get("cover", 0))
+		var pa: int = int(pair_hint.get("attention", 0))
+		if pc != 0: mods.append("cover %+d" % pc)
+		if pa != 0: mods.append("attention %+d" % pa)
+		var mod_tag := ""
+		if not mods.is_empty():
+			mod_tag = "  [" + "  ".join(mods) + "]"
+		p_lbl.text = "  pair with %s%s · %s" % [
+			String(pair_hint.get("partner_name", "")),
+			mod_tag,
+			String(pair_hint.get("log", ""))]
+		p_lbl.add_theme_font_size_override("font_size", 19)
+		p_lbl.add_theme_color_override("font_color", p_color)
+		p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lcol.add_child(p_lbl)
+	# Right: dispatch button + pair button
+	var bcol := VBoxContainer.new()
+	bcol.add_theme_constant_override("separation", 4)
+	row.add_child(bcol)
 	var btn := Button.new()
 	btn.text = "Dispatch"
 	btn.focus_mode = Control.FOCUS_NONE
@@ -2095,8 +3180,279 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 		_dispatch_agent(ag_capture, rg_capture, pi_capture)
 		dlg.hide()
 		dlg.queue_free())
-	row.add_child(btn)
+	bcol.add_child(btn)
+	# PAIR DISPATCH (B2) · send two on one problem. A pair burns two
+	# of the day's dispatch slots.
+	var pair_btn := Button.new()
+	pair_btn.text = "Pair…"
+	pair_btn.focus_mode = Control.FOCUS_NONE
+	pair_btn.custom_minimum_size = Vector2(96, 26)
+	pair_btn.add_theme_font_size_override("font_size", 19)
+	# Why-not tooltip (audit): the disabled state names its actual
+	# reason — slot math vs partner availability — at build time.
+	var pair_no_slot: bool = _dispatches_this_day + 2 > MAX_DISPATCHES_PER_DAY
+	var pair_partners: Array = _eligible_pair_partners(agent_id, region_id)
+	pair_btn.disabled = pair_no_slot or pair_partners.is_empty()
+	if pair_no_slot:
+		pair_btn.tooltip_text = "A pair burns two dispatch slots — only %d left today." % (
+			MAX_DISPATCHES_PER_DAY - _dispatches_this_day)
+	elif pair_partners.is_empty():
+		pair_btn.tooltip_text = "No eligible partner is free right now."
+	pair_btn.pressed.connect(func() -> void:
+		_open_pair_partner_picker(ag_capture, rg_capture, pi_capture, dlg))
+	bcol.add_child(pair_btn)
 	return panel
+
+
+# ── Pair dispatches (B2) ─────────────────────────────────────────
+# Two agents, one problem: combined competence (second at 75%),
+# combined cost, one shared return. Ruth refuses demon partners —
+# canon; she appears in the partner list only to decline.
+
+func _eligible_pair_partners(agent_id: String, region_id: String) -> Array:
+	var out: Array = []
+	for o_id in _visible_agents:
+		if String(o_id) == agent_id or not _agents.has(o_id):
+			continue
+		# One shared eligibility read: on-dispatch, resting, obligation-
+		# capped and region-restricted agents all filter out here (the
+		# rest breather previously leaked through pair dispatches).
+		if _agent_dispatch_block_reason(String(o_id), region_id) == "":
+			out.append(String(o_id))
+	return out
+
+
+# One-line reason an agent cannot take a NEW dispatch right now.
+# "" = eligible. Shared by the dispatch picker (disabled rows), the
+# pair-partner filter, and the Pair… why-not tooltip, so the four
+# gates can never drift apart again.
+func _agent_dispatch_block_reason(a_id: String, region_id: String) -> String:
+	if not _agents.has(a_id) or not _agent_state.has(a_id):
+		return "unknown agent"
+	var a: Dictionary = _agents[a_id]
+	var st: Dictionary = _agent_state[a_id]
+	if bool(st.get("on_dispatch", false)):
+		return "out · back day %d" % int(st.get("return_day", 0))
+	if _agent_is_resting(a_id):
+		var needed: int = int(st.get("home_days_needed", 0))
+		var used: int = int(st.get("home_days_used", 0))
+		return "resting · back day %d" % (_day + maxi(1, needed - used))
+	if String(a.get("class", "")) == "human" \
+			and int(st.get("obligation", 0)) >= int(a.get("obligation_cap_before_stops_picking_up", 999)):
+		return "obligation full (%d/%d) · stopped picking up" % [
+			int(st.get("obligation", 0)),
+			int(a.get("obligation_cap_before_stops_picking_up", 0))]
+	var restrictions: Array = a.get("region_restrictions", [])
+	if not restrictions.is_empty() and not restrictions.has(region_id):
+		var names: PackedStringArray = PackedStringArray()
+		for rr in restrictions:
+			names.append(String(_regions.get(String(rr), {}).get("name", String(rr))))
+		return "works only in %s" % ", ".join(names)
+	return ""
+
+
+# Disabled row in the dispatch picker: an agent who is home but can't
+# take this dispatch, with the one-line reason inline instead of the
+# agent silently vanishing from the list.
+func _make_ineligible_agent_row(agent_id: String, reason: String) -> Control:
+	var a: Dictionary = _agents[agent_id]
+	var panel := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.06, 0.07, 0.10, 0.35)
+	sb.border_color = Color(0.32, 0.42, 0.52, 0.3)
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 6
+	sb.content_margin_right = 6
+	sb.content_margin_top = 4
+	sb.content_margin_bottom = 4
+	panel.add_theme_stylebox_override("panel", sb)
+	var lcol := VBoxContainer.new()
+	lcol.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	panel.add_child(lcol)
+	var name_lbl := Label.new()
+	name_lbl.text = "[%s]  %s" % [
+		"D" if a["class"] == "demon" else "H", String(a["name"])]
+	name_lbl.add_theme_font_size_override("font_size", 19)
+	name_lbl.add_theme_color_override("font_color", Color(0.48, 0.50, 0.54, 1))
+	lcol.add_child(name_lbl)
+	var why := Label.new()
+	why.text = "  " + reason
+	why.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	why.add_theme_font_size_override("font_size", 19)
+	why.add_theme_color_override("font_color", Color(0.55, 0.50, 0.42, 1))
+	lcol.add_child(why)
+	return panel
+
+
+func _pair_is_ruth_refusal(a_id: String, b_id: String) -> bool:
+	var a: Dictionary = _agents.get(a_id, {})
+	var b: Dictionary = _agents.get(b_id, {})
+	if a_id == "ruth_the_archivist" and String(b.get("class", "")) == "demon":
+		return true
+	if b_id == "ruth_the_archivist" and String(a.get("class", "")) == "demon":
+		return true
+	return false
+
+
+func _pair_entry_for(a_id: String, b_id: String) -> Dictionary:
+	var key_ids: Array = [a_id, b_id]
+	key_ids.sort()
+	var key: String = "%s|%s" % [key_ids[0], key_ids[1]]
+	var pairs: Dictionary = _pair_lines_def.get("pairs", {})
+	if pairs.has(key):
+		var e: Dictionary = pairs[key]
+		return e
+	var ca: String = String(_agents.get(a_id, {}).get("class", "human"))
+	var cb: String = String(_agents.get(b_id, {}).get("class", "human"))
+	var fb_key := "human_demon"
+	if ca == "demon" and cb == "demon":
+		fb_key = "demon_demon"
+	elif ca == "human" and cb == "human":
+		fb_key = "human_human"
+	return {"line": String((_pair_lines_def.get("class_fallbacks", {}) as Dictionary).get(fb_key, ""))}
+
+
+func _open_pair_partner_picker(a1_id: String, region_id: String,
+		problem_index: int, parent_dlg: AcceptDialog) -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "Pair dispatch — who rides with %s?" % String(_agents[a1_id].get("name", a1_id))
+	dlg.min_size = Vector2(900, 520)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(880, 460)
+	dlg.add_child(scroll)
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 6)
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(vbox)
+	var note := Label.new()
+	note.text = "A pair burns two of today's dispatch slots. Second pair of hands works at 75%."
+	note.add_theme_font_size_override("font_size", 19)
+	note.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	vbox.add_child(note)
+	for b_id in _eligible_pair_partners(a1_id, region_id):
+		var b: Dictionary = _agents[b_id]
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+		vbox.add_child(row)
+		var lbl := Label.new()
+		var entry := _pair_entry_for(a1_id, String(b_id))
+		var mods: PackedStringArray = PackedStringArray()
+		if int(entry.get("cover", 0)) != 0: mods.append("cover %+d" % int(entry.get("cover", 0)))
+		if int(entry.get("attention", 0)) != 0: mods.append("attn %+d" % int(entry.get("attention", 0)))
+		lbl.text = "[%s]  %s  · comp %.2fx%s" % [
+			"D" if b["class"] == "demon" else "H",
+			String(b.get("name", b_id)),
+			float(b.get("competence_modifier", 1.0)),
+			("  [" + "  ".join(mods) + "]") if not mods.is_empty() else ""]
+		lbl.add_theme_font_size_override("font_size", 19)
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(lbl)
+		if _pair_is_ruth_refusal(a1_id, String(b_id)):
+			var no_lbl := Label.new()
+			no_lbl.text = "the archive has a policy"
+			no_lbl.add_theme_font_size_override("font_size", 19)
+			no_lbl.add_theme_color_override("font_color", Color(0.72, 0.58, 0.58, 1))
+			row.add_child(no_lbl)
+			var no_btn := Button.new()
+			no_btn.text = "Ask anyway"
+			no_btn.focus_mode = Control.FOCUS_NONE
+			no_btn.add_theme_font_size_override("font_size", 19)
+			no_btn.pressed.connect(func() -> void:
+				_log("[color=#c8a8a8][i]%s[/i][/color]" % String(_pair_lines_def.get("ruth_refusal", "")))
+				_render_log()
+				dlg.hide()
+				dlg.queue_free())
+			row.add_child(no_btn)
+			continue
+		var b_capture: String = String(b_id)
+		var go := Button.new()
+		go.text = "Send both"
+		go.focus_mode = Control.FOCUS_NONE
+		go.add_theme_font_size_override("font_size", 19)
+		go.pressed.connect(func() -> void:
+			_dispatch_pair(a1_id, b_capture, region_id, problem_index)
+			dlg.hide()
+			dlg.queue_free()
+			if is_instance_valid(parent_dlg):
+				parent_dlg.hide()
+				parent_dlg.queue_free())
+		row.add_child(go)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _dispatch_pair(a1_id: String, a2_id: String, region_id: String, problem_index: int) -> void:
+	# Primary rides the standard machinery (stages, undo, revoke);
+	# the partner is a rider on the same dispatch record.
+	_dispatch_agent(a1_id, region_id, problem_index)
+	if _active_dispatches.is_empty():
+		return
+	var d: Dictionary = _active_dispatches[_active_dispatches.size() - 1]
+	if String(d.get("agent_id", "")) != a1_id:
+		return
+	var a1: Dictionary = _agents[a1_id]
+	var a2: Dictionary = _agents[a2_id]
+	var st2: Dictionary = _agent_state[a2_id]
+	var r: Dictionary = _regions[region_id]
+	# Faster together: shrink the remaining days by the competence
+	# ratio. Staged dispatches instead get an effort head start —
+	# two sets of hands before the first check-in.
+	var comp1: float = float(a1.get("competence_modifier", 1.0))
+	var comp2: float = float(a2.get("competence_modifier", 1.0)) * 0.75
+	if bool(d.get("is_staged", false)):
+		d["effort_accumulated"] = float(d.get("effort_accumulated", 0.0)) + comp2
+	else:
+		var days_left: int = maxi(1, int(d.get("return_day", _day + 1)) - _day)
+		var new_days: int = maxi(1, int(ceil(float(days_left) * comp1 / maxf(0.1, comp1 + comp2))))
+		d["return_day"] = _day + new_days
+		var st1: Dictionary = _agent_state[a1_id]
+		st1["return_day"] = _day + new_days
+	d["pair_agent_id"] = a2_id
+	# The partner pays their own way.
+	st2["on_dispatch"] = true
+	st2["return_day"] = int(d.get("return_day", _day + 1))
+	var snap: Dictionary = d.get("undo_snapshot", {})
+	if a2["class"] == "demon":
+		snap["pair_burn"] = int(st2.get("burn", 0))
+		snap["pair_corruption"] = int(st2.get("corruption", 0))
+		st2["burn"] = int(st2.get("burn", 0)) + int(a2.get("burn_per_dispatch", 1))
+		if region_id == "small_wood":
+			var per_day: float = float(r.get("demon_corruption_per_day_in_region", 0.0))
+			var days_out: int = maxi(1, int(d.get("return_day", _day + 1)) - _day)
+			var add_corr: int = int(ceil(per_day * float(days_out)))
+			if add_corr > 0:
+				_apply_corruption_to_demon(a2_id, add_corr)
+	else:
+		snap["pair_obligation"] = int(st2.get("obligation", 0))
+		st2["days_away_since_dispatch"] = 0
+		st2["home_node_strained_this_dispatch"] = false
+		_apply_obligation_to_human(a2_id, int(a2.get("obligation_per_dispatch", 1)))
+	d["undo_snapshot"] = snap
+	# The problem carries both names.
+	var probs: Array = _region_state[region_id]["active_problems"]
+	if problem_index < probs.size():
+		var p_ref: Dictionary = probs[problem_index]
+		p_ref["in_progress_by"] = "%s & %s" % [String(a1.get("name", a1_id)), String(a2.get("name", a2_id))]
+	_dispatches_this_day += 1
+	_agent_dispatch_counts[a2_id] = int(_agent_dispatch_counts.get(a2_id, 0)) + 1
+	# The authored line + any cover/attention riders.
+	var entry := _pair_entry_for(a1_id, a2_id)
+	var line := String(entry.get("line", ""))
+	if line != "":
+		_log("[color=#a8c8a8][i]%s[/i][/color]" % line)
+	var d_cover: int = int(entry.get("cover", 0))
+	var d_attn: int = int(entry.get("attention", 0))
+	if d_cover != 0 and _region_state.has(region_id):
+		_region_state[region_id]["cover"] = float(_region_state[region_id].get("cover", 0)) + float(d_cover)
+	if d_attn != 0 and _region_state.has(region_id):
+		_region_state[region_id]["escalation_progress"] = maxf(0.0,
+			float(_region_state[region_id].get("escalation_progress", 0.0)) + float(d_attn) * 0.5)
+	_log("Day %d · [b]pair dispatch[/b] · %s and %s ride together · ETA day %d." %
+		[_day, String(a1.get("name", a1_id)), String(a2.get("name", a2_id)), int(d.get("return_day", _day))])
+	_render()
 
 
 func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) -> void:
@@ -2134,21 +3490,14 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 		# are flavor + a small mechanical bump (cover, attention).
 		_maybe_fire_demon_pair(agent_id, region_id)
 	else:
-		var prev_obl: int = int(st["obligation"])
-		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
-		st["obligation"] = new_obl
-		# Reset the time-at-home strain flag for this new dispatch.
+		# Reset the time-at-home strain flag for this new dispatch,
+		# then route the obligation bump through the helper so
+		# threshold crossings emit both a mechanical line and the
+		# per-human voice line.
 		st["days_away_since_dispatch"] = 0
 		st["home_node_strained_this_dispatch"] = false
-		# Fire any life_cost_thresholds the human just crossed.
-		# The threshold dict keys are stringified obligation levels
-		# ("3", "5"); values are the in-voice consequence.
-		var life: Dictionary = a.get("life_cost_thresholds", {})
-		for k in life:
-			var n: int = int(String(k))
-			if prev_obl < n and new_obl >= n:
-				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
-					[String(a["name"]), n, String(life[k])])
+		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
+		_maybe_fire_human_pair(agent_id, region_id)
 	p_ref["in_progress_by"] = String(a["name"])
 	p_ref["dispatch_agent_id"] = agent_id
 	p_ref["dispatch_resolution_day"] = _day + days
@@ -2207,6 +3556,17 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 
 # ── Day advance ──────────────────────────────────────────────────
 func _on_advance_day() -> void:
+	# HARD STOP once the run is over. Two states qualify: the
+	# campaign past Labor Day outside endless mode (the finale
+	# already played at day 100), and an endless run that _end_
+	# endless_run has closed (tower white / retirement). The QA
+	# endless sim caught the leak: after tower-white, advances kept
+	# working with _endless=false, and each day's autosave WROTE
+	# THE CAMPAIGN PATH — day 240 of junk over the player's
+	# finished summer. The end screen is not a wall; this is.
+	if not _endless and _day >= TURNS_TOTAL and \
+			bool(_flags.get("labor_day_finale_shown", false)):
+		return
 	_day += 1
 	_dispatches_this_day = 0
 	# Fire any reveals scheduled for this day BEFORE other ticks, so
@@ -2239,11 +3599,20 @@ func _on_advance_day() -> void:
 	_tick_queued_burns()
 	_tick_active_markers()
 	_tick_agent_home_rest()
+	_tick_roster_is_loud()
 	_fire_daily_vignette()
+	_maybe_fire_between_spike_event()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
 	# ...) per spec §Problems.
 	for r_id in _region_state:
+		# "_globals" is the effect interpreter's pseudo-region
+		# (set_global stores into _region_state["_globals"]). The
+		# QA summer sim caught the tick loops treating it as a real
+		# region: 108 script errors over the back half of a summer,
+		# one pair per day from the first set_global onward.
+		if String(r_id).begins_with("_"):
+			continue
 		_tick_region_problems(r_id)
 		_tick_region_escalation(r_id)
 	if _is_sunday(_day):
@@ -2266,6 +3635,28 @@ func _on_advance_day() -> void:
 	# Dean's tower: re-roll brightness on the cadence; fire anomalies
 	# when bright/white.
 	_tick_dean_tower()
+	# SEPTEMBER AND AFTER · daily brightness log feeds the run
+	# ledger's curve, and WHITE ends the run · endless has no Labor
+	# Day finale left to absorb a finished tower.
+	if _endless:
+		var blog: Array = _flags.get("endless_brightness_log", [])
+		blog.append(_tower_brightness)
+		if blog.size() > 400:
+			blog = blog.slice(blog.size() - 400, blog.size())
+		_flags["endless_brightness_log"] = blog
+		if _tower_brightness == "white":
+			_end_endless_run("tower_white")
+			return
+		# SEPTEMBER STRUCTURES (B3) · a milestone every 8 endless
+		# weeks, so long runs have chapters instead of pure ratchet.
+		_maybe_fire_endless_milestone()
+		# ENDLESS V2 · THE APPRENTICE — Sundays only. The succession
+		# the milestones narrate, mechanized: Maya Daigle (vol6's
+		# comic-shop kid, "can we help him. sometime. after this")
+		# knocks at week 10, trains at a cost, takes the small ones.
+		# (Not Aria — Aria belongs to the braid. THE ARIA RULE.)
+		if _is_sunday(_day):
+			_apprentice_sunday()
 	# Check Dean interlude unlock conditions.
 	_check_dean_interludes()
 	# Check the (non-Dean) interlude shelf earn conditions.
@@ -2273,6 +3664,8 @@ func _on_advance_day() -> void:
 	# Win/loss check.
 	if _day >= TURNS_TOTAL and not bool(_flags.get("labor_day_finale_shown", false)):
 		_flags["labor_day_finale_shown"] = true
+		var bank_ld := get_node_or_null("/root/SFXBank")
+		if bank_ld: bank_ld.play("labor_day_arrival", 0.85)
 		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
 			[_interlude_shelf.size(), _dean_interludes_earned.size()])
 		_show_labor_day_finale()
@@ -2315,6 +3708,10 @@ func _tick_dean_tower() -> void:
 			break
 	if _tower_brightness == "white":
 		_tower_state_revealed_white_once = true
+		# The dread beat has no sound · a long low roll in the hands.
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank != null and bank.has_method("rumble"):
+			bank.call("rumble", 0.15, 0.45, 0.8)
 	_maybe_fire_anomaly()
 
 
@@ -2361,20 +3758,28 @@ func _maybe_fire_anomaly() -> void:
 			String(chosen.get("fingerprint_text", "")))
 
 
+func _node_display(node_id: String) -> String:
+	# "the_model_home" → "The Model Home". Node ids are authored
+	# snake_case; the ledger never prints them raw.
+	return node_id.capitalize()
+
+
 func _apply_anomaly(a: Dictionary) -> void:
 	var eff: Dictionary = a.get("engine_effect", {})
 	var kind: String = String(eff.get("kind", ""))
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
-	# All anomaly effects log their flavor.
+	# The anomaly's authored `log` IS the ledger line (it carries its
+	# own "Anomaly ·" prefix). The `title` is design-facing — gluing
+	# it on shipped mashed lines like "Harmony Creek problem resolves
+	# overnight Anomaly · the problem…" into the summer transcript.
 	var log_str: String = String(eff.get("log", String(a.get("description", ""))))
 	match kind:
 		"freeze_problem_severity":
 			var r_id: String = String(eff.get("region", "small_wood"))
 			var st: Dictionary = _region_state.get(r_id, {})
 			st["substrate_freeze_until_day"] = _day + int(eff.get("duration_days", 7))
-			_log("[color=#a8a8c0][b]%s[/b] [i]Anomaly: severities in %s frozen for the week.[/i][/color]" %
-				[String(a["title"]), _regions[r_id]["name"]])
+			_log("[color=#a8a8c0]%s[/color]" % log_str)
 		"resolve_random_problem":
 			var r_id2: String = String(eff.get("region", "harmony_creek"))
 			var probs: Array = _region_state[r_id2]["active_problems"]
@@ -2390,7 +3795,7 @@ func _apply_anomaly(a: Dictionary) -> void:
 					free_indices.append(i)
 			if not free_indices.is_empty():
 				var idx: int = int(free_indices[rng.randi() % free_indices.size()])
-				_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+				_log("[color=#a8a8c0]%s[/color]" % log_str)
 				probs.remove_at(idx)
 				# Shift each later-than-idx dispatch's problem_index down 1.
 				for ad in _active_dispatches:
@@ -2412,8 +3817,8 @@ func _apply_anomaly(a: Dictionary) -> void:
 					continue
 				if int(_agent_state[ag_id]["corruption"]) > 0:
 					_agent_state[ag_id]["corruption"] = max(0, int(_agent_state[ag_id]["corruption"]) - amount)
-					_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i] (%s, −%d corruption)[/color]" %
-						[String(a["title"]), log_str, String(_agents[ag_id]["name"]), amount])
+					_log("[color=#a8a8c0]%s (%s, −%d corruption)[/color]" %
+						[log_str, String(_agents[ag_id]["name"]), amount])
 					break
 		"downgrade_random_held_node_to_contested":
 			var r_id3: String = String(eff.get("region", "graustark"))
@@ -2423,13 +3828,13 @@ func _apply_anomaly(a: Dictionary) -> void:
 				var node: String = String(held[idx2])
 				held.remove_at(idx2)
 				_region_state[r_id3]["contested_nodes"].append(node)
-				_log("[color=#a8a8c0][b]%s[/b] [i]%s (%s)[/i][/color]" %
-					[String(a["title"]), log_str, node])
+				_log("[color=#a8a8c0]%s (%s)[/color]" %
+					[log_str, _node_display(node)])
 		"redirect_dispatch", "set_region_escalation_modifier":
 			# Logged but not mechanically wired in phase 1.
-			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+			_log("[color=#a8a8c0]%s[/color]" % log_str)
 		_:
-			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+			_log("[color=#a8a8c0]%s[/color]" % log_str)
 
 
 # ── Interlude shelf ─────────────────────────────────────────────
@@ -2455,6 +3860,8 @@ func _check_interlude_earnings() -> void:
 					"title": String(entry["title"]),
 				}
 				_log("[color=#a8c0a8][b]Interlude:[/b] %s[/color]" % String(entry["title"]))
+				var bank_i := get_node_or_null("/root/SFXBank")
+				if bank_i: bank_i.play("interlude_earned", 0.65)
 
 
 func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
@@ -2569,7 +3976,101 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 		"aria_w11_choice_send_her_away_and_reached_labor_day":
 			return String(_canon_vars.get("aria_w11_choice", "")) == "send_her_away" \
 				and _day >= TURNS_TOTAL
+		# ─── Turned demon assignment outcomes ────────────────────
+		"turned_assignment_embedded_at_labor_day":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "embedded"
+		"turned_assignment_infiltration_survived":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "infiltration"
+		"turned_assignment_rest_at_labor_day":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "rest"
+		# ─── Marker-was-ever-set + roster history ────────────────
+		"basement_threads_read_min_5":
+			var bas_reads := 0
+			for tid in _bbs_read_thread_ids:
+				if String(tid).begins_with("TB_BAS_"):
+					bas_reads += 1
+			return bas_reads >= 5
+		"no_demon_ever_hungry_this_summer":
+			return _day >= TURNS_TOTAL and not bool(_flags.get("any_demon_ever_hungry", false))
+		"b6_fundraiser_pending_ever_set":
+			return _ever_set_markers.has("b6_fundraiser_pending")
+		"filly_at_safehouse_ever_set":
+			return _ever_set_markers.has("filly_at_safehouse")
+		"storm_hard_branch_and_relay_held":
+			# The W14 hard branch fired AND cathedral_relay_active
+			# was set (i.e. the player picked 'agent holds the desk'
+			# on the relay problem's the_desk stage).
+			return bool(_flags.get("w14_storm_hard_branch", false)) \
+				and _ever_set_markers.has("cathedral_relay_active")
+		# ─── Pair firings + basement rite + quiet-week counters ──
+		"demon_pair_fires_min_5":
+			return _demon_pair_fires >= 5
+		"human_pair_fires_min_4":
+			return _human_pair_fires >= 4
+		"basement_rite_fires_min_3":
+			return _basement_rite_fires >= 3
+		"quiet_week_fires_min_4":
+			return _quiet_week_fires >= 4
+		"all_regions_cover_min_5_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("cover", 0)) < 5:
+					return false
+			return true
+		"any_region_cover_at_zero_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("cover", 0)) <= 0:
+					return true
+			return false
+		"no_region_attention_over_3_all_summer":
+			# Approximation · check at Labor Day. A tighter version
+			# would require tracking max-ever-attention per region.
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("attention", 0)) > 3:
+					return false
+			return true
+		# ─── Cross-mode · CP reads GauntletState for wins/tokens ─
+		"gauntlet_wins_min_3_across_runs":
+			return _gauntlet_total_wins() >= 3
+		"gauntlet_wins_min_10_across_runs":
+			return _gauntlet_total_wins() >= 10
+		"lore_tokens_revealed_min_20":
+			var gs_st: Dictionary = _get_gauntlet_state_dict()
+			return (gs_st.get("lore_tokens_revealed", []) as Array).size() >= 20
+		"cp_scenario_unlocks_min_2":
+			var gs_st2: Dictionary = _get_gauntlet_state_dict()
+			return (gs_st2.get("cp_scenario_unlocks", []) as Array).size() >= 2
+		"won_magician_and_death":
+			var wins: Dictionary = _get_gauntlet_state_dict().get("wins_by_arcana_location", {})
+			var mag := false
+			var dth := false
+			for k in wins.keys():
+				var s: String = String(k)
+				if s.begins_with("magician@") and int(wins[k]) >= 1: mag = true
+				if s.begins_with("death@") and int(wins[k]) >= 1: dth = true
+			return mag and dth
 	return false
+
+
+# ── Cross-mode helpers · read from GauntletState autoload ──────
+func _get_gauntlet_state_dict() -> Dictionary:
+	var gs: Node = get_node_or_null("/root/GauntletState")
+	if gs == null:
+		return {}
+	var st: Variant = gs.get("state")
+	if st is Dictionary:
+		return st
+	return {}
+
+
+func _gauntlet_total_wins() -> int:
+	var wins: Dictionary = _get_gauntlet_state_dict().get("wins_by_arcana_location", {})
+	var total: int = 0
+	for k in wins.keys():
+		total += int(wins[k])
+	return total
 
 
 # Returns combined shelf entries (Dean + the other four sections)
@@ -2604,11 +4105,11 @@ func _all_earned_interludes() -> Array:
 func _open_interlude_shelf() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "Interlude Shelf"
-	dlg.min_size = Vector2(680, 540)
+	dlg.min_size = Vector2(960, 660)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(660, 500)
+	scroll.custom_minimum_size = Vector2(940, 620)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 14)
@@ -2624,7 +4125,7 @@ func _open_interlude_shelf() -> void:
 		var summary := Label.new()
 		summary.text = "%d entries on the shelf." % entries.size()
 		summary.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-		summary.add_theme_font_size_override("font_size", 12)
+		summary.add_theme_font_size_override("font_size", 19)
 		col.add_child(summary)
 		for entry in entries:
 			var rule := ColorRect.new()
@@ -2633,7 +4134,7 @@ func _open_interlude_shelf() -> void:
 			col.add_child(rule)
 			var title := Label.new()
 			title.text = String(entry["title"])
-			title.add_theme_font_size_override("font_size", 13)
+			title.add_theme_font_size_override("font_size", 20)
 			var section: String = String(entry.get("section", ""))
 			var title_color := Color(0.92, 0.86, 0.62, 1)
 			if section == "dean": title_color = Color(0.78, 0.62, 0.96, 1)
@@ -2647,7 +4148,7 @@ func _open_interlude_shelf() -> void:
 			var body := Label.new()
 			body.text = String(entry["flavor"])
 			body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			body.add_theme_font_size_override("font_size", 11)
+			body.add_theme_font_size_override("font_size", 19)
 			body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			col.add_child(body)
 	# BBS artifact section. Folded in below the interludes; the
@@ -2661,7 +4162,7 @@ func _open_interlude_shelf() -> void:
 		col.add_child(spacer)
 		var heading := Label.new()
 		heading.text = "BBS · UNLOCKED ARTIFACTS"
-		heading.add_theme_font_size_override("font_size", 12)
+		heading.add_theme_font_size_override("font_size", 19)
 		heading.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 		col.add_child(heading)
 		for aid in _unlocked_artifacts:
@@ -2671,7 +4172,7 @@ func _open_interlude_shelf() -> void:
 			col.add_child(arule)
 			var atitle := Label.new()
 			atitle.text = String(aid)
-			atitle.add_theme_font_size_override("font_size", 12)
+			atitle.add_theme_font_size_override("font_size", 19)
 			atitle.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(atitle)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
@@ -2709,12 +4210,12 @@ func _open_stage_modal(d: Dictionary) -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "%s · %s · stage %d/%d" % [
 		String(p_ref["title"]), agent_name, stage_index + 1, stages.size()]
-	dlg.min_size = Vector2(640, 480)
+	dlg.min_size = Vector2(920, 600)
 	dlg.get_ok_button().visible = false
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(620, 440)
+	scroll.custom_minimum_size = Vector2(900, 560)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
@@ -2722,7 +4223,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 	scroll.add_child(col)
 	var hdr := Label.new()
 	hdr.text = String(stage.get("title", "stage"))
-	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var sub := Label.new()
@@ -2731,19 +4232,29 @@ func _open_stage_modal(d: Dictionary) -> void:
 	sub.text = "%s is at %s · day %d  ·  effort %.1f of ~%.1f needed" % [agent_name,
 		String(_regions.get(region_id, {}).get("name", region_id)), _day,
 		_t_eff - _rem_eff, _t_eff * 0.95]
-	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_font_size_override("font_size", 19)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 	col.add_child(_dossier_rule())
-	var body_text: String = String(stage.get("body", "")).replace("{agent}", agent_name)
+	# Per-class stage bodies: a demon works the same mission through
+	# powered infrastructure — "body_demon" (and any future
+	# "body_<class>") overrides "body" when the dispatched agent's
+	# class matches and the author wrote one. Fallback is always the
+	# base body (additive schema; old saves and old JSON unaffected).
+	var agent_class: String = String(_agents.get(agent_id, {}).get("class", ""))
+	var body_key: String = "body"
+	if agent_class != "" and stage.has("body_" + agent_class):
+		body_key = "body_" + agent_class
+	var body_text: String = String(stage.get(body_key, "")).replace("{agent}", agent_name)
 	var body := Label.new()
 	body.text = body_text
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.add_theme_font_size_override("font_size", 11)
+	body.add_theme_font_size_override("font_size", 19)
 	body.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 	col.add_child(body)
 	col.add_child(_dossier_rule())
 	var choices: Array = stage.get("choices", [])
+	var enabled_choices: int = 0
 	for choice_v in choices:
 		var choice: Dictionary = choice_v as Dictionary
 		# BBS-lookup gate: a choice that requires the player to have
@@ -2753,13 +4264,15 @@ func _open_stage_modal(d: Dictionary) -> void:
 		# and the summary names the required thread + board.
 		var requires_thread: String = String(choice.get("requires_bbs_thread", ""))
 		var locked: bool = (requires_thread != "" and not _bbs_read_thread_ids.has(requires_thread))
+		if not locked:
+			enabled_choices += 1
 		var btn := Button.new()
 		btn.text = String(choice.get("label", "(choice)"))
 		if locked:
 			btn.text = "  🔒  " + btn.text
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 19)
 		btn.add_theme_color_override("font_color",
 			Color(0.42, 0.48, 0.42, 1) if locked else Color(0.86, 0.96, 0.74, 1))
 		btn.disabled = locked
@@ -2768,7 +4281,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 			var lock_lbl := Label.new()
 			lock_lbl.text = "        locked · needs to have read thread %s on the BBS" % requires_thread
 			lock_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			lock_lbl.add_theme_font_size_override("font_size", 10)
+			lock_lbl.add_theme_font_size_override("font_size", 19)
 			lock_lbl.add_theme_color_override("font_color", Color(0.62, 0.50, 0.32, 1))
 			col.add_child(lock_lbl)
 		var summary: String = String(choice.get("summary", ""))
@@ -2776,7 +4289,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 			var sm := Label.new()
 			sm.text = "        " + summary
 			sm.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			sm.add_theme_font_size_override("font_size", 10)
+			sm.add_theme_font_size_override("font_size", 19)
 			sm.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 			col.add_child(sm)
 		var d_capture: Dictionary = d
@@ -2784,6 +4297,31 @@ func _open_stage_modal(d: Dictionary) -> void:
 		btn.pressed.connect(func() -> void:
 			dlg.queue_free()
 			_apply_stage_choice(d_capture, choice_capture))
+	# Engine guard (audit): if every choice is gated — or a stage
+	# shipped with none — inject a fallback so the modal can never
+	# strand the dispatch with zero enabled buttons. The agent holds
+	# position and the same stage fires again tomorrow; no data change.
+	if enabled_choices == 0:
+		var hold_btn := Button.new()
+		hold_btn.text = "Hold position"
+		hold_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		hold_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		hold_btn.add_theme_font_size_override("font_size", 19)
+		hold_btn.add_theme_color_override("font_color", Color(0.86, 0.96, 0.74, 1))
+		col.add_child(hold_btn)
+		var hold_note := Label.new()
+		hold_note.text = "        wait a day · nothing here is open to %s yet" % agent_name
+		hold_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hold_note.add_theme_font_size_override("font_size", 19)
+		hold_note.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
+		col.add_child(hold_note)
+		var d_hold: Dictionary = d
+		var hold_name: String = agent_name
+		hold_btn.pressed.connect(func() -> void:
+			dlg.queue_free()
+			d_hold["next_stage_day"] = _day + 1
+			_log("[color=#c8e896]Day %d · [b]%s[/b] · holds position.[/color]" % [_day, hold_name])
+			_render())
 	dlg.add_to_group("ui")
 	add_child(dlg)
 	dlg.popup_centered()
@@ -2841,12 +4379,12 @@ func _show_summer_intro() -> void:
 	_flags["summer_intro_shown"] = true
 	var dlg := AcceptDialog.new()
 	dlg.title = "Memorial Day · 2026"
-	dlg.min_size = Vector2(640, 520)
+	dlg.min_size = Vector2(920, 640)
 	dlg.get_ok_button().text = "begin the summer"
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(620, 480)
+	scroll.custom_minimum_size = Vector2(900, 600)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
@@ -2855,13 +4393,13 @@ func _show_summer_intro() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "the cathedral office · Monday, May 25"
-	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_font_size_override("font_size", 19)
 	hdr.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(hdr)
 
 	var title := Label.new()
 	title.text = "what's on the desk this summer"
-	title.add_theme_font_size_override("font_size", 16)
+	title.add_theme_font_size_override("font_size", 24)
 	title.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(title)
 
@@ -2874,7 +4412,7 @@ func _show_summer_intro() -> void:
 		"[color=#a8e0a8]Sunday night — the modem.[/color] The cathedral office goes dark around 9 and the dial-up wakes up around 10. The circle is on the line. STEEPLE in Mobile. WIRE_MOTHER in Lubbock. PALOMINO in Santa Fe. THE_QUARRY in Pennsylvania. SNACKS, once the matriarch lets us back in. There is reading to do and a DM panel for the canon humans — pick a number to open a board, M for mail, B back, Q to hang up. Pace yourself; the circle doesn't reward speed.",
 		"[color=#a8e0a8]The shelf — what the summer leaves.[/color] Every choice that matters lands on a shelf at Labor Day. Interludes, artifacts, the canon facts the family will carry into the fall. The summer is the choice-making; the shelf is the record.",
 		"Three beats to mark on the calendar without circling them: W11, when the question that has been forming for fifteen years gets asked out loud; W14, when the gulf decides which way to come; Labor Day, when the cookout in the back lot of the storefront either happens or doesn't, depending on who is at booth four.",
-		"There will be days that read quiet. Read the quiet too. The boiler hums two semitones flat. Faith II brings coffee at 11:14. The cathedral bell pulls at 11 and three of the regulars are inside before the second pull. That's all the work too.",
+		"There will be days that read quiet. Read the quiet too. The boiler hums two semitones flat. Faith II makes her rounds at 11:14. The cathedral bell pulls at 11 and three of the regulars are inside before the second pull. That's all the work too.",
 		"  — F."
 	]
 	for p_text in paragraphs:
@@ -2882,7 +4420,7 @@ func _show_summer_intro() -> void:
 		p.bbcode_enabled = true
 		p.fit_content = true
 		p.text = p_text
-		p.add_theme_font_size_override("normal_font_size", 12)
+		p.add_theme_font_size_override("normal_font_size", 19)
 		p.add_theme_color_override("default_color", Color(0.86, 0.86, 0.86, 1))
 		p.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		col.add_child(p)
@@ -2891,7 +4429,7 @@ func _show_summer_intro() -> void:
 
 	var coda := Label.new()
 	coda.text = "press [begin the summer] to open the office."
-	coda.add_theme_font_size_override("font_size", 10)
+	coda.add_theme_font_size_override("font_size", 19)
 	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 	col.add_child(coda)
 
@@ -2961,13 +4499,15 @@ func _closing_line_for(canonical: String) -> String:
 
 
 func _show_labor_day_finale() -> void:
+	# The one CP track that resolves plays over the last day.
+	_audio_play_bgm_track(_CP_BGM_LABOR_DAY)
 	var dlg := AcceptDialog.new()
 	dlg.title = "Labor Day · September 6, 2026"
-	dlg.min_size = Vector2(820, 720)
+	dlg.min_size = Vector2(1060, 740)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(800, 680)
+	scroll.custom_minimum_size = Vector2(1040, 700)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 12)
@@ -2976,14 +4516,14 @@ func _show_labor_day_finale() -> void:
 	# Header
 	var title := Label.new()
 	title.text = "The summer's end."
-	title.add_theme_font_size_override("font_size", 18)
+	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(title)
 	# The cookout vignette
 	var vignette := Label.new()
 	vignette.text = _labor_day_cookout_vignette()
 	vignette.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	vignette.add_theme_font_size_override("font_size", 12)
+	vignette.add_theme_font_size_override("font_size", 19)
 	vignette.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 	col.add_child(vignette)
 	# Rule
@@ -2994,7 +4534,7 @@ func _show_labor_day_finale() -> void:
 	# Closing lines from each canon human
 	var lines_heading := Label.new()
 	lines_heading.text = "Closing lines"
-	lines_heading.add_theme_font_size_override("font_size", 14)
+	lines_heading.add_theme_font_size_override("font_size", 21)
 	lines_heading.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
 	col.add_child(lines_heading)
 	for canonical in ["frasier_temple", "the_surviving_son", "john_frank", "mackenzie", "elicia_duchane"]:
@@ -3003,7 +4543,7 @@ func _show_labor_day_finale() -> void:
 		if line.text == "":
 			continue
 		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		line.add_theme_font_size_override("font_size", 12)
+		line.add_theme_font_size_override("font_size", 19)
 		line.add_theme_color_override("font_color", Color(0.74, 0.84, 0.96, 1))
 		col.add_child(line)
 	# Rule
@@ -3014,26 +4554,26 @@ func _show_labor_day_finale() -> void:
 	# Shelf summary
 	var shelf_heading := Label.new()
 	shelf_heading.text = "On the shelf · %d entries" % (_interlude_shelf.size() + _dean_interludes_earned.size())
-	shelf_heading.add_theme_font_size_override("font_size", 14)
+	shelf_heading.add_theme_font_size_override("font_size", 21)
 	shelf_heading.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
 	col.add_child(shelf_heading)
 	for entry in _all_earned_interludes():
 		var ent_lbl := Label.new()
 		ent_lbl.text = "  · %s" % String(entry["title"])
-		ent_lbl.add_theme_font_size_override("font_size", 11)
+		ent_lbl.add_theme_font_size_override("font_size", 19)
 		ent_lbl.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 		col.add_child(ent_lbl)
 	# Artifacts
 	if not _unlocked_artifacts.is_empty():
 		var art_heading := Label.new()
 		art_heading.text = "Artifacts · %d unlocked" % _unlocked_artifacts.size()
-		art_heading.add_theme_font_size_override("font_size", 13)
+		art_heading.add_theme_font_size_override("font_size", 20)
 		art_heading.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 		col.add_child(art_heading)
 		for aid in _unlocked_artifacts:
 			var alabel := Label.new()
 			alabel.text = "  · %s" % String(aid)
-			alabel.add_theme_font_size_override("font_size", 11)
+			alabel.add_theme_font_size_override("font_size", 19)
 			alabel.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(alabel)
 	# Branch id (small, at the bottom — for the record)
@@ -3043,7 +4583,7 @@ func _show_labor_day_finale() -> void:
 	col.add_child(rule3)
 	var branch_lbl := Label.new()
 	branch_lbl.text = "branch: %s" % _compute_labor_day_branch_id()
-	branch_lbl.add_theme_font_size_override("font_size", 10)
+	branch_lbl.add_theme_font_size_override("font_size", 19)
 	branch_lbl.add_theme_color_override("font_color", Color(0.42, 0.42, 0.42, 1))
 	col.add_child(branch_lbl)
 	# Wire close → show outro
@@ -3056,14 +4596,14 @@ func _show_labor_day_finale() -> void:
 func _show_post_summer_outro() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "After the summer"
-	dlg.min_size = Vector2(620, 420)
+	dlg.min_size = Vector2(900, 540)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	dlg.add_child(col)
 	var heading := Label.new()
 	heading.text = "What you carried out of the summer"
-	heading.add_theme_font_size_override("font_size", 14)
+	heading.add_theme_font_size_override("font_size", 21)
 	heading.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(heading)
 	var items: Array = []
@@ -3129,7 +4669,7 @@ func _show_post_summer_outro() -> void:
 		var lbl := Label.new()
 		lbl.text = s
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		lbl.add_theme_font_size_override("font_size", 12)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(lbl)
 	var spacer := Control.new()
@@ -3138,7 +4678,7 @@ func _show_post_summer_outro() -> void:
 	var coda := Label.new()
 	coda.text = "The cathedral office is locked. The river is the river. The summer was the summer."
 	coda.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	coda.add_theme_font_size_override("font_size", 12)
+	coda.add_theme_font_size_override("font_size", 19)
 	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 	col.add_child(coda)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
@@ -3158,6 +4698,8 @@ func _check_dean_interludes() -> void:
 		match cond:
 			"observe_3_fingerprints":
 				earned = _fingerprints_observed >= 3
+			"observe_5_fingerprints":
+				earned = _fingerprints_observed >= 5
 			"see_tower_at_white_once":
 				earned = _tower_state_revealed_white_once
 			"summer_end_anomalies_observed_min_8":
@@ -3197,6 +4739,11 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	var pi: int = int(d["problem_index"])
 	var st: Dictionary = _agent_state[a_id]
 	var a: Dictionary = _agents[a_id]
+	# Pair rider (B2) · the partner comes home whichever way the
+	# primary's resolution goes.
+	var pair_home: String = String(d.get("pair_agent_id", ""))
+	if pair_home != "" and _agent_state.has(pair_home):
+		_finish_dispatch_and_set_breather(pair_home)
 	var probs: Array = _region_state[r_id]["active_problems"]
 	if pi >= probs.size():
 		_finish_dispatch_and_set_breather(a_id)
@@ -3218,7 +4765,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		var remaining_effort: float = float(p_ref.get("effort_remaining", target_effort))
 		var effort_accum: float = target_effort - remaining_effort
 		if remaining_effort <= target_effort * 0.05:
-			_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
+			_log("[color=#7cffb0]Day %d · [b]%s[/b] came home. [b]%s[/b] in %s is settled — a line through it in the ledger.[/color]" %
 				[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
 			var sf: String = _pick_resolution_flavor(template_for_staged, "resolution_flavor_success", a_id)
 			if sf != "":
@@ -3229,7 +4776,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 			if template_id != "":
 				_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
 		else:
-			_log("[color=#c8a842]Day %d · [b]%s[/b] left [b]%s[/b] partly handled (effort %.1f/%.1f).[/color]" %
+			_log("[color=#c8a842]Day %d · [b]%s[/b] came home early. [b]%s[/b] is half-carried — %.1f of the %.1f it wants. It will keep.[/color]" %
 				[_day, a["name"], p_ref["title"], effort_accum, target_effort])
 			p_ref["in_progress_by"] = ""
 		_finish_dispatch_and_set_breather(a_id)
@@ -3247,7 +4794,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	var roll: float = rng.randf()
 	var template: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
 	if roll < base_chance:
-		_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
+		_log("[color=#7cffb0]Day %d · [b]%s[/b] came home. [b]%s[/b] in %s is settled — a line through it in the ledger.[/color]" %
 			[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
 		var sf: String = _pick_resolution_flavor(template, "resolution_flavor_success", a_id)
 		if sf != "":
@@ -3292,7 +4839,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 			_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
 		_problem_resolved_by_region[r_id] = int(_problem_resolved_by_region.get(r_id, 0)) + 1
 	else:
-		_log("[color=#ff9090]Day %d · [b]%s[/b] failed at [b]%s[/b]. %s[/color]" %
+		_log("[color=#ff9090]Day %d · [b]%s[/b] came back without it. [b]%s[/b] stands. %s[/color]" %
 			[_day, a["name"], p_ref["title"], String(a.get("signature_failure", ""))])
 		var ff: String = _pick_resolution_flavor(template, "resolution_flavor_failure", a_id)
 		if ff != "":
@@ -3350,7 +4897,8 @@ func _tick_region_problems(r_id: String) -> void:
 		for entry in dark:
 			if int(entry.get("until_day", 0)) <= _day:
 				st["held_nodes"].append(entry["node"])
-				_log("%s came back online in %s." % [entry["node"], _regions[r_id]["name"]])
+				_log("%s came back online in %s. Nobody says who did the fixing." %
+					[_node_display(String(entry["node"])), _regions[r_id]["name"]])
 			else:
 				still_dark.append(entry)
 		st["dark_nodes"] = still_dark
@@ -3363,7 +4911,11 @@ func _tick_region_problems(r_id: String) -> void:
 		var t: Dictionary = _problem_templates.get(p["template_id"], {})
 		var tick: float = float(t.get("tick_per_day", 0.3)) * pressure
 		var prev_sev: float = float(p["severity"])
-		p["severity"] = prev_sev + tick
+		# Severity caps at 9: the highest authored threshold is 6, and
+		# an uncapped tick turned neglected endless boards into
+		# "severity 190" absurdities (probe-caught, 2026-08-31). Nine
+		# reads as "as bad as this gets" without breaking the scale.
+		p["severity"] = minf(9.0, prev_sev + tick)
 		# Fire any if_unresolved_at_severity_N effects whose threshold
 		# was crossed this tick. Keys look like "if_unresolved_at_severity_5".
 		# We track the highest threshold fired per-problem so each one
@@ -3376,8 +4928,8 @@ func _tick_region_problems(r_id: String) -> void:
 			if n <= last_fired:
 				continue
 			if p["severity"] >= float(n):
-				_log("[color=#ff9090][b]%s[/b] crossed severity %d in %s.[/color]" %
-					[p["title"], n, _regions[r_id]["name"]])
+				_log("[color=#ff9090][b]%s[/b] deepens in %s — severity %d and climbing.[/color]" %
+					[p["title"], _regions[r_id]["name"], n])
 				var ctx: Dictionary = {"region_id": r_id, "problem": p, "problem_template": t["id"]}
 				_exec_effects(t[key], ctx)
 				p["last_threshold_fired"] = n
@@ -3387,6 +4939,8 @@ func _tick_region_escalation(r_id: String) -> void:
 	# Per-day escalation accumulator. The weekly spawn pass on
 	# Sunday reads escalation_progress + active problem load to
 	# decide how many problems to spawn for this region (0-2).
+	if not _regions.has(r_id):
+		return
 	var r: Dictionary = _regions[r_id]
 	var st: Dictionary = _region_state[r_id]
 	var clock: float = float(r.get("escalation_clock_days", 6))
@@ -3470,6 +5024,8 @@ func _tick_active_markers() -> void:
 			var exp_line: String = String(mk_d.get("expiry_line", ""))
 			if exp_line != "":
 				_log(exp_line)
+			var bank_e := get_node_or_null("/root/SFXBank")
+			if bank_e: bank_e.play("marker_expire", 0.55)
 		else:
 			remaining.append(mk_d)
 	_active_regional_markers = remaining
@@ -3498,6 +5054,221 @@ func _tick_agent_home_rest() -> void:
 			st["home_days_used"] = 0
 			continue
 		st["home_days_used"] = used + 1
+
+
+# Per-human in-voice line surfaced on obligation-threshold
+# crossings. Kept inline for the same reason as the demon voice
+# lines: short, only fires on crossing, adds a shade of character
+# on the moment the player pays the human cost. Keyed by the
+# integer threshold (as string) so a human with thresholds {3, 5}
+# gets a "3" line and a "5" line.
+const _HUMAN_VOICE_LINES: Dictionary = {
+	"mackenzie": {
+		"3": "The loom stayed threaded overnight but she did not sit at it.",
+		"5": "She stopped answering the phone at night. Philip took the callback list off the fridge.",
+	},
+	"the_surviving_son": {
+		"3": "He turned the closed-Monday sign around on Sunday for the first time since '94.",
+		"4": "He asked Frasier at coffee if the restaurant was worth it. Frasier did not answer.",
+	},
+	"john_frank": {
+		"4": "The diner's grill was cold at 6:30 AM Thursday. The regulars noticed. Nobody said.",
+		"6": "He didn't pick up the 4 AM call from the cathedral basement. Sister Beatrice ran the boiler alone.",
+	},
+	"elicia": {
+		"3": "The Wednesday episode of the choose-your-own-adventure fell to Thursday. Nobody read it Thursday either.",
+		"4": "Her BBS handle went dark for a full seven days. The bungalow's dial rang out.",
+	},
+	"nicola": {
+		"2": "Aria came home to the empty kitchen and posted a paragraph about the empty kitchen.",
+		"3": "She stopped picking up. The storefront's back door was locked when T. arrived at 4 AM.",
+	},
+	"the_small_wood_contact_jules": {
+		"2": "Jules mentioned the room-for-rent to Mrs. Delacroix at the market. Mrs. Delacroix wrote nothing down but she remembered.",
+		"3": "The room above the yard went for rent officially. Jules put the sign in the window facing the parish road.",
+	},
+}
+
+
+# Human-pair table. Same shape as the demon pair table:
+# alphabetical-key ("id_a+id_b" sorted); {tone, log, cover?,
+# attention?, obligation_relief?}. Warm pairs of humans who work
+# well together grant cover; loud pairs lose it; obligation_relief
+# lets a partnership dispatch cost less than a solo dispatch on
+# the same problem.
+const _HUMAN_PAIR_INTERACTIONS: Dictionary = {
+	"john_frank+the_surviving_son": {
+		"tone": "warm",
+		"log": "JF at the boiler and the surviving son at the counter · the basement and the storefront ran on the same clock all week · the parish read it as normal-Sunday.",
+		"cover": 1,
+	},
+	"nicola+the_surviving_son": {
+		"tone": "warm",
+		"log": "Nicola in the kitchen, the surviving son at the front · the storefront had gumbo and coffee at 4 PM and the picnic table was full · Aria did her homework at booth 2.",
+		"cover": 2,
+	},
+	"elicia+mackenzie": {
+		"tone": "warm",
+		"log": "Elicia's Wednesday piece and Mackenzie's Tuesday HOA note aligned · the newsletter softened and the second-camera vote failed on the same page · the neighborhood breathed.",
+		"cover": 1,
+	},
+	"john_frank+nicola": {
+		"tone": "warm",
+		"log": "JF closed the diner at 9 and walked to the storefront · Nicola had a plate for him · they ate without speaking for eleven minutes.",
+	},
+	"the_small_wood_contact_jules+the_surviving_son": {
+		"tone": "warm",
+		"log": "Jules and the surviving son walked the room-above-the-yard together · the '94 protocol, done in six days · the planting took.",
+		"cover": 1,
+	},
+	"elicia+the_surviving_son": {
+		"tone": "warm",
+		"log": "Elicia dropped a print at the storefront's back door · the surviving son taped it above the cash register without comment · a customer asked about it Sunday.",
+	},
+	"john_frank+mackenzie": {
+		"tone": "loud",
+		"log": "JF came up from the cathedral basement and Mackenzie was at the HOA · the two of them at Salinas's back door made Salinas write a paragraph in her notebook · the notebook stays open.",
+		"cover": -1,
+	},
+	"the_small_wood_contact_jules+mackenzie": {
+		"tone": "cold",
+		"log": "Jules drove to Harmony Creek to see Mackenzie for the first time all summer · they talked twelve minutes at the model home's back stoop · a neighbor across the fence took two photos.",
+		"cover": -1,
+	},
+	"elicia+nicola": {
+		"tone": "warm",
+		"log": "Elicia and Nicola cooked at the storefront kitchen Sunday afternoon · the bungalow's dial was quiet and the storefront's back door was open · Aria fell asleep on the picnic table.",
+		"cover": 1,
+	},
+	"elicia+john_frank": {
+		"tone": "warm",
+		"log": "Elicia sent JF her Wednesday piece before it ran · JF read it at 6 AM at the counter and gave her one edit · she took the edit.",
+	},
+}
+
+
+func _preview_human_pair(agent_id: String, region_id: String) -> Dictionary:
+	var a: Dictionary = _agents.get(agent_id, {})
+	if String(a.get("class", "")) != "human":
+		return {}
+	for other_id in _agent_state:
+		if String(other_id) == agent_id:
+			continue
+		var other_a: Dictionary = _agents.get(other_id, {})
+		if String(other_a.get("class", "")) != "human":
+			continue
+		var other_st: Dictionary = _agent_state[other_id]
+		if not bool(other_st.get("on_dispatch", false)):
+			continue
+		var other_region: String = ""
+		for r_id in _region_state:
+			for p in _region_state[r_id].get("active_problems", []):
+				if String((p as Dictionary).get("dispatch_agent_id", "")) == String(other_id):
+					other_region = r_id
+					break
+			if other_region != "":
+				break
+		if other_region != region_id:
+			continue
+		var ids := [String(agent_id), String(other_id)]
+		ids.sort()
+		var key: String = ids[0] + "+" + ids[1]
+		var entry: Dictionary = _HUMAN_PAIR_INTERACTIONS.get(key, {})
+		if entry.is_empty():
+			continue
+		var out: Dictionary = entry.duplicate()
+		out["partner_name"] = String(other_a.get("name", other_id))
+		return out
+	return {}
+
+
+func _maybe_fire_human_pair(agent_id: String, region_id: String) -> void:
+	var pair: Dictionary = _preview_human_pair(agent_id, region_id)
+	if pair.is_empty():
+		return
+	var a: Dictionary = _agents.get(agent_id, {})
+	var tone: String = String(pair.get("tone", "warm"))
+	var color: String = "#86d0a8"
+	if tone == "loud":
+		color = "#c88070"
+	elif tone == "cold":
+		color = "#a8a8c0"
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank:
+		bank.play("pair_%s" % tone, 0.75)
+	_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
+		[color, String(a.get("name", agent_id)),
+		 String(pair.get("partner_name", "")),
+		 String(pair.get("log", ""))])
+	var cover_delta: int = int(pair.get("cover", 0))
+	if cover_delta != 0 and _region_state.has(region_id):
+		var cur: int = int(_region_state[region_id].get("cover", 0))
+		_region_state[region_id]["cover"] = max(0, cur + cover_delta)
+	var attn: int = int(pair.get("attention", 0))
+	if attn != 0 and _region_state.has(region_id):
+		var cur2: int = int(_region_state[region_id].get("attention", 0))
+		_region_state[region_id]["attention"] = max(0, cur2 + attn)
+	_human_pair_fires += 1
+
+
+func _human_voice_line(agent_id: String, threshold_key: String) -> String:
+	var by_agent: Dictionary = _HUMAN_VOICE_LINES.get(agent_id, {})
+	return String(by_agent.get(threshold_key, ""))
+
+
+# Add obligation to a human and log any life_cost_thresholds
+# crossed. Emits both the mechanical crossing line (already in
+# life_cost_thresholds authored on the agent) AND a per-human
+# in-voice line from _HUMAN_VOICE_LINES · character shade on the
+# moment the crossing happens.
+func _apply_obligation_to_human(agent_id: String, amount: int) -> void:
+	if not _agent_state.has(agent_id):
+		return
+	var st: Dictionary = _agent_state[agent_id]
+	var a: Dictionary = _agents.get(agent_id, {})
+	var prev: int = int(st.get("obligation", 0))
+	var new_val: int = prev + amount
+	st["obligation"] = new_val
+	var life: Dictionary = a.get("life_cost_thresholds", {})
+	# Sort thresholds so log order matches the crossing order · a
+	# single dispatch that jumps two thresholds emits the lower one
+	# first, then the higher one.
+	var keys: Array = life.keys()
+	keys.sort_custom(func(x, y): return int(String(x)) < int(String(y)))
+	for k in keys:
+		var n: int = int(String(k))
+		if prev < n and new_val >= n:
+			_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
+				[String(a.get("name", agent_id)), n, String(life[k])])
+			var vline: String = _human_voice_line(agent_id, String(k))
+			if vline != "":
+				_log("[color=#c8a8ff][i]%s[/i][/color]" % vline)
+
+
+# Fires a one-shot day interlude the FIRST day the roster has 3+
+# demons at hungry+ simultaneously. Records the count and the list;
+# does not fire again while the flag is set. Once every one of those
+# demons drops back to steady the flag clears so a second wave can
+# fire the beat again later in the summer.
+func _tick_roster_is_loud() -> void:
+	var loud_ids: PackedStringArray = PackedStringArray()
+	for a_id in _agent_state:
+		var a: Dictionary = _agents.get(a_id, {})
+		if String(a.get("class", "")) != "demon":
+			continue
+		var corr: int = int(_agent_state[a_id].get("corruption", 0))
+		if _demon_corruption_tier(corr) != "steady":
+			loud_ids.append(String(a.get("name", a_id)))
+	if loud_ids.size() >= 3:
+		if not bool(_flags.get("roster_is_loud_active", false)):
+			_flags["roster_is_loud_active"] = true
+			var bank_r := get_node_or_null("/root/SFXBank")
+			if bank_r: bank_r.play("roster_loud", 0.75)
+			_log("[color=#c88070][b]The roster is loud.[/b]  %d demons carry corruption at once.  Names: %s.  Basement Sunday is not going to be enough this week.[/color]" %
+				[loud_ids.size(), ", ".join(Array(loud_ids))])
+			_log("[color=#c88070][i]Frasier posted a note on THE_BASEMENT at 4:14 AM.  Subject: 'more than two of you.'  Body: 'read the room · read the second rule · and then read the first one again.  F.'[/i][/color]")
+	elif loud_ids.is_empty():
+		_flags["roster_is_loud_active"] = false
 
 
 # ── Demon corruption tiers ──────────────────────────────────────
@@ -3542,19 +5313,19 @@ func _demon_tier_color(tier: String) -> Color:
 # the mechanical warning.
 const _DEMON_VOICE_LINES: Dictionary = {
 	"vagrant": {
-		"hungry": "Vagrant sat too long at the picnic table.",
-		"restless": "Vagrant went to a diner they've been to before and did not order water.",
-		"close_to_turning": "Vagrant walked the same block three times before it was dark.",
+		"hungry": "Vagrant sat on the town's night exchange an hour past the last call it was listening for.",
+		"restless": "Vagrant came back up a line it had already read and would not say why.",
+		"close_to_turning": "Vagrant looped the same four numbers three times before dark, and none of them rang.",
 	},
 	"cicada": {
-		"hungry": "Cicada made a sound they can't take back.",
-		"restless": "Cicada surfaced under the parish road bridge and did not go back down.",
-		"close_to_turning": "Cicada stopped counting seconds between the sound and the far echo.",
+		"hungry": "Cicada put a hum on the daytime line that the daytime line can't take back.",
+		"restless": "Cicada surfaced in the parish road-bridge sensors and did not go back down.",
+		"close_to_turning": "Cicada stopped counting the seconds between the signal and the far echo.",
 	},
 	"moth": {
-		"hungry": "Moth stayed at the porch light past the bulb warming up.",
-		"restless": "Moth held the match a second longer than it needed the match held.",
-		"close_to_turning": "Moth's shape lengthened at dusk and it did not shorten by full dark.",
+		"hungry": "Moth stayed in the porch-light circuit past the bulb warming up.",
+		"restless": "Moth held the breaker open a second longer than it needed the breaker held.",
+		"close_to_turning": "Moth's flicker lengthened at dusk and it did not shorten by full dark.",
 	},
 	"steamboat": {
 		"hungry": "Steamboat's wake reached the drainage ditch three counties over.",
@@ -3568,18 +5339,18 @@ const _DEMON_VOICE_LINES: Dictionary = {
 	},
 	"filly": {
 		"hungry": "Filly took the long road twice.",
-		"restless": "Filly's hands stopped remembering which pocket the second envelope was in.",
-		"close_to_turning": "Filly said the wrong name at a diner she's been to sixty times.",
+		"restless": "Filly stopped remembering which line the second envelope goes down.",
+		"close_to_turning": "Filly signed the wrong name on a drop she's made sixty times.",
 	},
 	"starling": {
 		"hungry": "Starling counted the phone lines and forgot the middle one.",
-		"restless": "Starling scattered above the cul-de-sac at 6:47 PM and did not fully reassemble.",
+		"restless": "Starling scattered across the cul-de-sac's seven meters at 6:47 PM and did not fully reassemble.",
 		"close_to_turning": "Starling could not name the neighborhood watch chair for the first time all year.",
 	},
 	"husk": {
-		"hungry": "Husk kept the coat on inside the safehouse.",
-		"restless": "Husk drove the back roads at 2 AM without turning the headlights on.",
-		"close_to_turning": "Husk closed a door twice as hard as the door needed closed.",
+		"hungry": "Husk kept the coat on inside the rest line.",
+		"restless": "Husk walked the county's dark fiber at 2 AM with the repeaters off.",
+		"close_to_turning": "Husk closed a relay twice as hard as the relay needed closed.",
 	},
 }
 
@@ -3604,7 +5375,7 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"filly+husk": {
 		"tone": "warm",
-		"log": "Filly carried the letter and Husk carried the road behind her. Neither of them looked back. The state line was quiet.",
+		"log": "Filly carried the letter down the trunk line and Husk carried the dark behind her. Neither signal looked back. The state line was quiet.",
 		"cover": 1,
 	},
 	"moth+starling": {
@@ -3619,16 +5390,16 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"husk+steamboat": {
 		"tone": "cold",
-		"log": "Husk arrived at the parish dock while Steamboat's wake was still moving · the wake ended at the third plank · a jogger noticed but did not stop.",
+		"log": "Husk settled into the dock lights while Steamboat's wake was still moving · the wake ended at the third plank · the lights dropped a shade · a jogger noticed but did not stop.",
 	},
 	"vagrant+cicada": {
 		"tone": "warm",
-		"log": "Vagrant walked past the parish-road bridge at 3:14 AM while Cicada was under it · neither one of them acknowledged · both routines held.",
+		"log": "Vagrant rolled through the bridge's call box at 3:14 AM while Cicada was under it · neither routine acknowledged the other · both held.",
 		"cover": 1,
 	},
 	"filly+starling": {
 		"tone": "warm",
-		"log": "Filly carried and Starling counted · the two of them passed each other on the parish road and did not slow · the count matched the letter's weight to the ounce.",
+		"log": "Filly carried and Starling counted · the two of them crossed on the parish trunk and did not slow · the count matched the letter's weight to the ounce.",
 	},
 	"moth+weir": {
 		"tone": "warm",
@@ -3642,24 +5413,24 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"vagrant+starling": {
 		"tone": "warm",
-		"log": "Vagrant walked the phone-line route Starling had counted · pole 41's missing insulator read as a walking man's shadow twice from a mile away · the count adjusted.",
+		"log": "Vagrant ran the phone-line route Starling had counted · pole 41's missing insulator read as a walking man's shadow twice from a mile away · the count adjusted.",
 	},
 	"husk+weir": {
 		"tone": "cold",
-		"log": "Husk stood at the parish dock at 3 AM while Weir was underneath · a boat's engine died at the far bend and its owner rowed back rather than call · Husk did not offer.",
+		"log": "Husk sat in the dock's one sodium light at 3 AM while Weir was underneath · a boat's engine died at the far bend and its owner rowed back rather than call · Husk did not offer.",
 	},
 	"husk+moth": {
 		"tone": "cold",
-		"log": "Moth's porch light held while Husk was in the yard · the light stayed on the coat and did not touch the face · the neighbor's dog barked once and stopped.",
+		"log": "Moth's porch light held while Husk was in the yard's floodlight · the light stayed on the coat-shape and did not reach for a face · the neighbor's dog barked once and stopped.",
 	},
 	"filly+moth": {
 		"tone": "warm",
-		"log": "Moth held the light at the state line rest stop while Filly stopped for coffee · the second envelope moved from the second pocket to the third pocket and stayed there.",
+		"log": "Moth held the rest-stop light while Filly idled in the payphone circuit · the second envelope moved one drop down the route and stayed there.",
 		"cover": 1,
 	},
 	"vagrant+moth": {
 		"tone": "warm",
-		"log": "Vagrant took the same porch light Moth had been at the night before · Vagrant nodded at the light · the light was the light · nothing amplified.",
+		"log": "Vagrant came up in the same porch light Moth had held the night before · the light acknowledged the light · nothing amplified.",
 	},
 	"cicada+vagrant": {
 		"tone": "warm",
@@ -3667,17 +5438,17 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"filly+weir": {
 		"tone": "warm",
-		"log": "Filly crossed the river on the parish ferry while Weir sat under the ferry's third support · the letter did not get wet · the water did not lift.",
+		"log": "Filly crossed the river on the ferry's radio while Weir held the third support's sounder · the letter did not get wet · the water did not lift.",
 		"cover": 1,
 	},
 	"cicada+filly": {
 		"tone": "warm",
-		"log": "Cicada under the bridge as Filly crossed it · a hum long enough to cover Filly's footsteps · nobody at the diner heard either the hum or the walking.",
+		"log": "Cicada under the bridge as Filly crossed it · a hum long enough to cover Filly's passage on the line · nobody at the diner heard either the hum or the carrying.",
 		"cover": 1,
 	},
 	"husk+starling": {
 		"tone": "cold",
-		"log": "Starling counted the wires above Husk's parked car at the state-line rest stop · the count came out fifty-nine · fifty-nine is one under the number the count has been all summer.",
+		"log": "Starling counted the wires above Husk's dark stretch of the state-line rest stop · the count came out fifty-nine · fifty-nine is one under the number the count has been all summer.",
 	},
 	"cicada+steamboat": {
 		"tone": "loud",
@@ -3769,6 +5540,9 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 			color = "#c88070"
 		elif tone == "cold":
 			color = "#a8a8c0"
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank:
+			bank.play("pair_%s" % tone, 0.75)
 		_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
 			[color, String(a.get("name", agent_id)),
 			 String(other_a.get("name", other_id)),
@@ -3781,6 +5555,7 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 		if attn != 0 and _region_state.has(region_id):
 			var cur2: int = int(_region_state[region_id].get("attention", 0))
 			_region_state[region_id]["attention"] = max(0, cur2 + attn)
+		_demon_pair_fires += 1
 		return
 
 
@@ -3827,6 +5602,17 @@ func _apply_corruption_to_demon(agent_id: String, amount: int) -> void:
 	if prev_tier == new_tier:
 		return
 	var voice_line: String = _demon_voice_line(agent_id, new_tier)
+	# Latch any_demon_ever_hungry the first time any demon crosses
+	# out of steady. Read by end-of-summer interludes to reward the
+	# player who never let the roster get loud.
+	if new_tier != "steady":
+		_flags["any_demon_ever_hungry"] = true
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank:
+		var sfx_map := {"hungry": "tier_crossing_hungry", "restless": "tier_crossing_restless",
+			"close_to_turning": "tier_crossing_close", "turned": "tier_crossing_turned"}
+		if sfx_map.has(new_tier):
+			bank.play(String(sfx_map[new_tier]), 0.85)
 	match new_tier:
 		"hungry":
 			_log("[color=#c8c862][b]%s crossed into hungry.[/b]  Corruption sits at %d · signature-spillover chance on dispatch: 15%%.[/color]" %
@@ -3916,9 +5702,30 @@ func _tick_time_at_home() -> void:
 			continue
 		var st: Dictionary = _agent_state[a_id]
 		if not bool(st.get("on_dispatch", false)):
-			# Reset accrual when they're home.
+			# Reset the away-accrual, then advance the home-streak.
+			# Once a human has been home 7 consecutive days their
+			# obligation decays by 1 (the quiet-week recovery — a
+			# parallel to THE RITE for demons). Home-streak resets
+			# on any dispatch and on any threshold decay so a two-
+			# week vacation doesn't collapse obligation by 2 (it
+			# takes another full week for the second drop).
 			st["days_away_since_dispatch"] = 0
+			var streak: int = int(st.get("home_days_streak", 0)) + 1
+			st["home_days_streak"] = streak
+			if streak >= 7:
+				var cur_oblig: int = int(st.get("obligation", 0))
+				if cur_oblig > 0:
+					st["obligation"] = cur_oblig - 1
+					st["home_days_streak"] = 0
+					_log("[color=#86d0a8][b]%s had a quiet week.[/b]  Obligation %d → %d.[/color]" %
+						[String(a.get("name", a_id)), cur_oblig, cur_oblig - 1])
+					_quiet_week_fires += 1
+					var bank_q := get_node_or_null("/root/SFXBank")
+					if bank_q: bank_q.play("quiet_week", 0.65)
 			continue
+		# On dispatch: reset the streak so the counter starts fresh
+		# on the next return.
+		st["home_days_streak"] = 0
 		st["days_away_since_dispatch"] = int(st.get("days_away_since_dispatch", 0)) + 1
 		var cost_days: float = float(a.get("time_at_home_cost_days", 1.0))
 		# When days_away exceeds cost_days * 2, accrue a small
@@ -3953,10 +5760,24 @@ func _fire_weekly_region_flavor() -> void:
 	for r_id in _visible_regions:
 		var picked: Dictionary = _pick_regional_event(r_id, week, rng)
 		if picked.is_empty():
-			# Every event in this region's pool has fired. Emit a
-			# minimal fallback so the week's log has a beat.
-			_log("[color=#a8c0a8][i]%s:[/i] the region held its shape this week.[/color]" %
-				_regions.get(r_id, {}).get("name", r_id))
+			# Every one-shot in this region's pool has fired. The
+			# old fallback was ONE static line repeated verbatim
+			# every remaining Sunday (and all of endless). The
+			# rhythm pools carry the pulse instead — same lesson as
+			# the daily vignettes: a pool that fires on a clock
+			# needs a never-exhausted floor.
+			var r_lines: Array = _regional_rhythm.get(r_id, [])
+			if not r_lines.is_empty():
+				var r_idx: int = rng.randi() % r_lines.size()
+				# Avoid repeating last week's line when there's a choice.
+				var last_key: String = "rhythm_last_" + r_id
+				if r_lines.size() > 1 and int(_flags.get(last_key, -1)) == r_idx:
+					r_idx = (r_idx + 1) % r_lines.size()
+				_flags[last_key] = r_idx
+				_log(String(r_lines[r_idx]))
+			else:
+				_log("[color=#a8c0a8][i]%s:[/i] the region held its shape this week.[/color]" %
+					_regions.get(r_id, {}).get("name", r_id))
 			continue
 		var event_id: String = String(picked.get("id", ""))
 		_fired_regional_events.append(event_id)
@@ -4108,12 +5929,142 @@ func _fire_daily_vignette() -> void:
 		return
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
+	# One-shots are events; the vg_rhythm_* lines are the pulse.
+	# While unfired events remain they usually take the day (3 in
+	# 4), with the pulse breathing through now and then — and the
+	# pulse alone carries late summer and all of endless, so the
+	# town never goes silent.
+	var events: Array = eligible.filter(func(v: Dictionary) -> bool: return bool(v.get("one_shot", false)))
+	if not events.is_empty() and rng.randf() < 0.75:
+		eligible = events
 	var pick: Dictionary = eligible[rng.randi() % eligible.size()]
 	var pick_id: String = String(pick["id"])
 	_last_vignette_id = pick_id
 	if bool(pick.get("one_shot", false)) and not _vignettes_fired.has(pick_id):
 		_vignettes_fired.append(pick_id)
 	_log("[color=#86c896][i]%s[/i][/color]" % String(pick.get("body", "")))
+
+
+# ── Between-spike events (backlog §2 P2) ─────────────────────────
+# Rare one-shot CHOICE events in the quiet windows between the
+# pressure spikes, so mid-summer weeks aren't pure routing. Data:
+# between_spike_events.json. Fired ids persist in
+# _flags.spike_events_fired; at most one per day, ~30% per
+# eligible day. Effects ride existing verbs only (escalation
+# deltas, _seed_problem, _queued_burns, _log).
+var _spike_events_def: Dictionary = {}
+
+
+func _maybe_fire_between_spike_event() -> void:
+	if _endless:
+		return   # endless is the ratchet's show · campaign flavor stays campaign
+	var pool: Array = _spike_events_def.get("events", [])
+	if pool.is_empty():
+		return
+	var fired: Array = _flags.get("spike_events_fired", [])
+	var eligible: Array = []
+	for e_v in pool:
+		var e: Dictionary = e_v
+		var eid := String(e.get("id", ""))
+		if eid == "" or fired.has(eid):
+			continue
+		var w: Array = e.get("window", [0, 0])
+		if w.size() < 2 or _day < int(w[0]) or _day > int(w[1]):
+			continue
+		eligible.append(e)
+	if eligible.is_empty():
+		return
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	if rng.randf() > 0.30:
+		return
+	var pick: Dictionary = eligible[rng.randi() % eligible.size()]
+	fired.append(String(pick["id"]))
+	_flags["spike_events_fired"] = fired
+	_show_spike_event(pick)
+
+
+func _show_spike_event(ev: Dictionary) -> void:
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("menu_open", 0.7)
+	var dlg := AcceptDialog.new()
+	dlg.title = "COMMUNITY PLANNED · an interruption"
+	dlg.min_size = Vector2(880, 440)
+	dlg.get_ok_button().visible = false   # choose · there is no OK
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % String(ev.get("title", ""))
+	hdr.add_theme_font_size_override("font_size", 21)
+	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	var body := Label.new()
+	body.text = String(ev.get("body", ""))
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.custom_minimum_size = Vector2(520, 0)
+	body.add_theme_font_size_override("font_size", 20)
+	body.add_theme_color_override("font_color", Color(0.84, 0.86, 0.84, 1))
+	col.add_child(body)
+	for ch_v in ev.get("choices", []):
+		var ch: Dictionary = ch_v
+		var btn := Button.new()
+		btn.text = "  %s  " % String(ch.get("label", ""))
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		btn.add_theme_font_size_override("font_size", 19)
+		var effects: Dictionary = ch.get("effects", {})
+		btn.pressed.connect(func() -> void:
+			dlg.queue_free()
+			_apply_spike_effects(effects)
+			_render())
+		col.add_child(btn)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+	GamepadMgr.focus_first.call_deferred(dlg)
+
+
+func _apply_spike_effects(effects: Dictionary) -> void:
+	# Roster recruitment (backlog §2 P2 roster growth) · the choice
+	# IS the roster decision. Backfill _agent_state for saves written
+	# before the recruit existed in agents.json.
+	var arrive: String = String(effects.get("agent_arrives", ""))
+	if arrive != "" and _agents.has(arrive):
+		if not _visible_agents.has(arrive):
+			_visible_agents.append(arrive)
+		if not _agent_state.has(arrive):
+			_agent_state[arrive] = {
+				"burn": 0,
+				"corruption": 0,
+				"complexity": int(_agents[arrive].get("complexity", 0)),
+				"obligation": 0,
+				"on_dispatch": false,
+				"return_day": 0,
+			}
+		_log("[color=#62ff9c][b]%s joins the roster.[/b][/color]" % String(_agents[arrive].get("name", arrive)))
+	var esc: Dictionary = effects.get("escalation", {})
+	for r_id in esc:
+		if _region_state.has(String(r_id)):
+			var st: Dictionary = _region_state[String(r_id)]
+			st["escalation_progress"] = maxf(0.0,
+					float(st.get("escalation_progress", 0.0)) + float(esc[r_id]))
+	var sp: Array = effects.get("spawn_problem", [])
+	if sp.size() >= 2:
+		_seed_problem(String(sp[0]), String(sp[1]))
+	var qb: Dictionary = effects.get("queue_burn", {})
+	if not qb.is_empty():
+		_queued_burns.append({
+			"trigger_day": _day + int(qb.get("days", 7)),
+			"reason": String(qb.get("reason", "the bill comes due")),
+		})
+	var line := String(effects.get("log", ""))
+	if line != "":
+		_log("[color=#c8a86a][i]%s[/i][/color]" % line)
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("signing", 0.6)
+	_write_save()
 
 
 # Queued burns: DM choices and other deferred decisions schedule
@@ -4178,9 +6129,11 @@ func _open_bbs_night() -> void:
 		return
 	var overlay := ps.instantiate()
 	add_child(overlay)
-	# Switch BGM to the night-modem track for the duration of the
-	# overlay. The strategic-day BGM resumes after hung_up (see below).
-	_audio_play_bgm_track("res://assets/audio/bgm/vol5_cicadas_dusk.ogg")
+	# Switch BGM to a night track for the duration of the overlay —
+	# alternating weeks get the phosphor-night composition vs the
+	# cicadas. The strategic-day BGM resumes after hung_up (see below).
+	var bbs_week: int = int(ceil(float(_day) / 7.0))
+	_audio_play_bgm_track(_CP_BGM_PHOSPHOR if bbs_week % 2 == 1 else _CP_BGM_BBS_NIGHT)
 	var week: int = int(ceil(float(_day) / 7.0))
 	# Glossary unlock fires once the player has read >= 6 SNACKS
 	# bleached-counter threads and reached the unlock week.
@@ -4262,6 +6215,8 @@ func _run_weekly_spawn() -> void:
 		_spawn_weekly_problems_for_region(r_id)
 	# Reset all escalation accumulators after the weekly pass.
 	for r_id in _region_state:
+		if String(r_id).begins_with("_"):
+			continue
 		_region_state[r_id]["escalation_progress"] = 0.0
 	# Resume strategic-day BGM after Sunday BBS night. Safe to call
 	# every week — if the BGM's already this track, it's a no-op.
@@ -4318,6 +6273,11 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 	elif pressure >= 1.30:
 		# W6-W8 first bump: ensure at least 1 spawn if room
 		wanted = max(wanted, 1)
+	# SEPTEMBER AND AFTER · endless ratchet · +1 spawn per region per
+	# Sunday, plus another every 4 endless weeks. No easing — the
+	# ratchet IS the difficulty.
+	if _endless:
+		wanted += 1 + maxi(0, week - 15) / 4
 	wanted = min(wanted, room)
 	if wanted <= 0:
 		return
@@ -4346,7 +6306,13 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 			continue
 		if String(t.get("spawn_only_by", "")) != "":
 			continue
-		pool.append([t_id, float(weights[t_type])])
+		var t_weight: float = float(weights[t_type])
+		# Endless severity ratchet · from the 8th endless week, the
+		# heavy templates (sev 4+, the chain-starters) double their
+		# draw weight. This is where the severity-6 chains get to run.
+		if _endless and week - 15 >= 8 and int(t.get("base_severity", 1)) >= 4:
+			t_weight *= 2.0
+		pool.append([t_id, t_weight])
 	if pool.is_empty():
 		return
 	# Weighted-pick `wanted` distinct templates.
@@ -4370,7 +6336,19 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 		var chosen_id: String = String(pool[chosen_idx][0])
 		_seed_problem(r_id, chosen_id)
 		var t_chosen: Dictionary = _problem_templates[chosen_id]
-		_log("Sunday · [b]%s[/b] in %s." % [t_chosen["title"], r["name"]])
+		# Rotate the framing so three spawns in one Sunday don't read
+		# as three identical form letters. All templates take
+		# (title, region) in that order.
+		var frames: Array = [
+			"Sunday · [b]%s[/b] surfaces in %s.",
+			"Sunday · the ledger opens a page for [b]%s[/b] in %s.",
+			"Sunday · [b]%s[/b] starts its week in %s.",
+			"Sunday · a new entry, written small: [b]%s[/b], %s.",
+		]
+		var frame_idx: int = int(_flags.get("sunday_spawn_frame_idx", 0))
+		var frame: String = String(frames[frame_idx % frames.size()])
+		_flags["sunday_spawn_frame_idx"] = frame_idx + 1
+		_log(frame % [t_chosen["title"], r["name"]])
 		pool.remove_at(chosen_idx)
 		spawned += 1
 
@@ -4382,6 +6360,14 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 const _CP_BGM_STRATEGIC := "res://assets/audio/bgm/vol5_ambient.ogg"
 const _CP_BGM_BBS_NIGHT := "res://assets/audio/bgm/vol5_cicadas_dusk.ogg"
 const _CP_BGM_STORM     := "res://assets/audio/bgm/vol5_warehouse_drone.ogg"
+# Dedicated CP compositions (slowstick_synth · compositions/cp_*.json).
+# Day and night beds rotate weekly with the shared vol5 tracks so the
+# summer doesn't wear one groove; the tower and the last day get
+# their own pieces.
+const _CP_BGM_DRAFTING   := "res://assets/audio/bgm/cp/cp_drafting_table.wav"
+const _CP_BGM_PHOSPHOR   := "res://assets/audio/bgm/cp/cp_phosphor_night.wav"
+const _CP_BGM_TOWER      := "res://assets/audio/bgm/cp/cp_tower_watch.wav"
+const _CP_BGM_LABOR_DAY  := "res://assets/audio/bgm/cp/cp_labor_day_dusk.wav"
 
 
 func _audio_play_bgm_track(path: String) -> void:
@@ -4390,19 +6376,25 @@ func _audio_play_bgm_track(path: String) -> void:
 	var mgr: Node = get_node_or_null("/root/AudioMgr")
 	if mgr == null:
 		return
-	if mgr.has_method("play_bgm"):
-		mgr.call("play_bgm", path)
+	if mgr.has_method("request_scene_bgm"):
+		mgr.call("request_scene_bgm", path)
 
 
 func _audio_play_bgm_for_current_state() -> void:
 	# Route BGM by current pressure tier · storm window gets the
-	# warehouse-drone track for the W13-W14 crush; everything else
-	# gets the standard strategic-day ambient. BBS-night is handled
-	# separately by _open_bbs_night's explicit call.
+	# warehouse-drone track for the W13-W14 crush; endless mode and a
+	# bright/white tower get the tower-watch piece; ordinary days
+	# rotate weekly between the drafting-table composition and the
+	# shared vol5 ambient. BBS-night is handled separately by
+	# _open_bbs_night's explicit call.
 	var week: int = int(ceil(float(_day) / 7.0))
 	var pressure: float = _week_pressure_tier(week)
 	if pressure >= 1.80:
 		_audio_play_bgm_track(_CP_BGM_STORM)
+	elif _endless or _tower_brightness == "bright" or _tower_brightness == "white":
+		_audio_play_bgm_track(_CP_BGM_TOWER)
+	elif week % 2 == 1:
+		_audio_play_bgm_track(_CP_BGM_DRAFTING)
 	else:
 		_audio_play_bgm_track(_CP_BGM_STRATEGIC)
 

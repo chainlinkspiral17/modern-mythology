@@ -1,0 +1,237 @@
+{
+ "id": "the_walk_far",
+ "notes": "Tideline walk - FAR plane (sky/sea/shore/stakes/gulls), barely parallaxes.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#b8c0c4",
+  "#9aa6a8",
+  "#5c7076",
+  "#45565c",
+  "#8c8574",
+  "#b0a892",
+  "#4a4a44",
+  "#dfe4e2",
+  "#2a2e30",
+  "#e8e2d0",
+  "#3a4a3c",
+  "#6a5a48",
+  "transparent"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "vgrad",
+   "y_range": [
+    0,
+    33
+   ],
+   "stops": [
+    0,
+    1
+   ]
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    33,
+    45
+   ],
+   "color": 2
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    43,
+    46
+   ],
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    46,
+    54
+   ],
+   "color": 4
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    0,
+    46,
+    160,
+    6
+   ],
+   "color": 0,
+   "amount": 0.22
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     0,
+     48
+    ],
+    [
+     40,
+     46
+    ],
+    [
+     80,
+     49
+    ],
+    [
+     120,
+     46
+    ],
+    [
+     159,
+     48
+    ]
+   ],
+   "color": 7
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    0,
+    50,
+    160,
+    3
+   ],
+   "color": 10,
+   "density": 0.24,
+   "seed": 41
+  },
+  {
+   "op": "vline",
+   "x": 26,
+   "y_range": [
+    42,
+    47
+   ],
+   "color": 8
+  },
+  {
+   "op": "vline",
+   "x": 58,
+   "y_range": [
+    43,
+    47
+   ],
+   "color": 8
+  },
+  {
+   "op": "vline",
+   "x": 96,
+   "y_range": [
+    43,
+    46
+   ],
+   "color": 8
+  },
+  {
+   "op": "vline",
+   "x": 128,
+   "y_range": [
+    44,
+    46
+   ],
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    82,
+    43,
+    2,
+    7
+   ],
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    83,
+    42
+   ],
+   "size": 2,
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    82,
+    50,
+    2,
+    3
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    118,
+    16
+   ],
+   "size": 1,
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    124,
+    19
+   ],
+   "size": 1,
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    112,
+    21
+   ],
+   "size": 1,
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    131,
+    22
+   ],
+   "size": 1,
+   "color": 9
+  },
+  {
+   "op": "glow",
+   "xy": [
+    80,
+    44
+   ],
+   "r": 60,
+   "color": 7,
+   "strength": 0.16
+  },
+  {
+   "op": "streak",
+   "from": [
+    0,
+    49
+   ],
+   "to": [
+    159,
+    48
+   ],
+   "color": 7,
+   "width": 3,
+   "strength": 0.16,
+   "blend": "screen"
+  }
+ ]
+}

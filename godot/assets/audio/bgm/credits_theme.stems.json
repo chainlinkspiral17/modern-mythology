@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "title": "Credits — Modern Mythology (temp)",
+ "temp": true,
+ "format": "ogg",
+ "length_sec": 123,
+ "frames": 5424300,
+ "sample_rate": 44100,
+ "loop": false,
+ "loop_offset": 0,
+ "loop_start": 0,
+ "bpm": 64,
+ "bars": 32,
+ "lufs": -14.1,
+ "credits": "",
+ "approved": {
+  "take": "20261011-152551-s1004813095",
+  "seed": 1004813095,
+  "date": "2026-10-11T23:56:24.972Z"
+ },
+ "mix": "assets/audio/bgm/credits_theme.temp.ogg",
+ "quality": {
+  "mix": 4,
+  "stem": 1
+ },
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/credits_theme.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/credits_theme.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/credits_theme.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/credits_theme.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/credits_theme.stems/pad.ogg",
+   "layer": 0
+  }
+ ],
+ "bytes": {
+  "mix": 1892484,
+  "stems": 3480387
+ }
+}

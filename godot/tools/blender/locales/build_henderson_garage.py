@@ -1,0 +1,379 @@
+"""Henderson garage — vol6 placement script.
+
+Jesse Henderson's garage, home of Suburban Blight (band name on the
+flyer: SUBSTATION NINE bill at the Foxhole). The door is UP — August
+in Harmony Creek, the temperature threshold rule — so the establishing
+shot looks IN from the driveway at dusk: lit interior framed by the
+open door, drum kit and amps center, pegboard and paint shelf behind.
+Canon beats staged here: ch5 Garage Band Catharsis (swept floor —
+keep the floor CLEAN, one faint oil stain only), ch14 the flyer kid
+at the foot of the driveway, ch20 bridge practice with Carl / Nate /
+Em.
+
+Hero props: the drum kit (kick, snare, rack tom, floor tom, hi-hat,
+crash), two guitar amps + a bass amp, the Telecaster on a stand, the
+mic stand front-center, cable runs. Support: workbench + pegboard on
+the north wall, paint-can shelf, box fan, mini fridge, milk crates,
+the rolled-up door panel overhead, the driveway pad outside with a
+basketball hoop backboard on the eave.
+
+Coordinate frame: Blender Z-up. y=0 is the OPEN garage-door plane
+(south, to the driveway); +Y into the garage; walls at x=±ROOM_W/2.
+glTF export remaps to Godot (x, z, -y).
+"""
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling
+
+# ── Single-bay garage footprint ──
+ROOM_W = 5.6      # x ∈ [-2.8, 2.8]
+ROOM_D = 5.8      # y ∈ [0, 5.8]  (open door at y=0)
+CEIL = 2.7
+
+COL_WALL = (0.62, 0.60, 0.55, 1.0)      # unpainted drywall grey-tan
+COL_BASE = (0.40, 0.38, 0.34, 1.0)
+COL_FLOOR = (0.44, 0.44, 0.46, 1.0)     # sealed concrete (swept)
+COL_SEAM = (0.36, 0.36, 0.38, 1.0)
+COL_STAIN = (0.30, 0.29, 0.30, 1.0)     # one faint old oil stain
+COL_DOOR = (0.82, 0.81, 0.78, 1.0)      # white steel door panel
+COL_TRACK = (0.30, 0.31, 0.34, 1.0)
+COL_BENCH = (0.42, 0.30, 0.18, 1.0)     # plywood workbench
+COL_BENCH_DK = (0.30, 0.21, 0.13, 1.0)
+COL_PEG = (0.55, 0.42, 0.26, 1.0)       # pegboard tan
+COL_STEEL = (0.34, 0.35, 0.38, 1.0)
+COL_STEEL_DK = (0.18, 0.18, 0.20, 1.0)
+COL_AMP = (0.10, 0.10, 0.11, 1.0)       # tolex black
+COL_GRILLE = (0.52, 0.46, 0.34, 1.0)    # wheat grille cloth
+COL_KNOB = (0.78, 0.76, 0.70, 1.0)
+COL_DRUM = (0.55, 0.14, 0.14, 1.0)      # wine-red wrap kit
+COL_DRUM_DK = (0.38, 0.09, 0.09, 1.0)
+COL_HEAD = (0.88, 0.87, 0.82, 1.0)      # coated drumhead
+COL_CYMBAL = (0.76, 0.64, 0.30, 1.0)
+COL_TELE = (0.72, 0.60, 0.34, 1.0)      # butterscotch Telecaster
+COL_TELE_GUARD = (0.12, 0.12, 0.12, 1.0)
+COL_BASS = (0.16, 0.20, 0.34, 1.0)      # navy bass
+COL_CABLE = (0.08, 0.08, 0.09, 1.0)
+COL_PAINT = (0.70, 0.68, 0.62, 1.0)     # paint-can steel
+COL_FRIDGE = (0.80, 0.80, 0.78, 1.0)
+COL_CRATE = (0.68, 0.30, 0.14, 1.0)     # orange milk crate
+COL_DRIVE = (0.50, 0.49, 0.50, 1.0)     # driveway concrete (dusk)
+COL_LAWN = (0.22, 0.30, 0.16, 1.0)
+COL_BULB = (1.00, 0.88, 0.62, 1.0)      # bare bulb — blooms via glow
+COL_FLYER = (0.90, 0.88, 0.80, 1.0)
+
+
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
+               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    # One faint oil stain — the floor is otherwise swept (ch5 canon).
+    make_box("Floor_OilStain", (0.9, 4.2, 0.005), (0.7, 0.9, 0.004), COL_STAIN)
+    pal = {"wall": COL_WALL, "baseboard": COL_BASE}
+    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
+        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+                  axis='Y', palette=pal, baseboard_face_sign=bb)
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
+              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
+                 size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
+    # South header above the door opening
+    make_box("Door_Header", (0.0, 0.0, CEIL - 0.15), (ROOM_W + 0.4, 0.22, 0.30), COL_WALL)
+    # Side jambs
+    for sgn in (-1, 1):
+        make_box(f"Door_Jamb_{sgn:+d}", (sgn * (ROOM_W / 2.0 - 0.10), 0.0, CEIL / 2.0),
+                 (0.20, 0.22, CEIL), COL_WALL)
+    # The door itself is UP: rolled panel sections lying under the
+    # ceiling along the tracks, plus the curved track pair.
+    for k in range(4):
+        make_box(f"Door_Panel_{k}", (0.0, 0.55 + k * 0.42, CEIL - 0.10),
+                 (ROOM_W - 0.7, 0.40, 0.05), COL_DOOR)
+    for sgn in (-1, 1):
+        make_box(f"Door_Track_{sgn:+d}", (sgn * (ROOM_W / 2.0 - 0.32), 1.2, CEIL - 0.16),
+                 (0.05, 2.4, 0.05), COL_TRACK)
+        make_box(f"Door_Track_V_{sgn:+d}", (sgn * (ROOM_W / 2.0 - 0.32), 0.10, CEIL - 0.75),
+                 (0.05, 0.05, 1.3), COL_TRACK)
+    # Opener rail + motor box on the ceiling centerline
+    make_box("Opener_Rail", (0.0, 1.9, CEIL - 0.20), (0.06, 3.0, 0.06), COL_TRACK)
+    make_box("Opener_Motor", (0.0, 3.4, CEIL - 0.28), (0.34, 0.44, 0.22), COL_STEEL_DK)
+    make_box("Opener_Hanger", (0.0, 3.4, CEIL - 0.085), (0.04, 0.30, 0.17), COL_STEEL_DK)   # strap to the ceiling (2026-09-23: motor and rail hung on nothing)
+
+
+def build_driveway():
+    """Outside the open door: the driveway pad, a strip of lawn each
+    side, and the basketball backboard over the eave — enough world
+    that the from-the-driveway establishing shot has a foreground."""
+    make_box("Driveway", (0.0, -2.6, -0.02), (ROOM_W - 0.4, 5.2, 0.04), COL_DRIVE)
+    # Expansion joints
+    for k in range(3):
+        make_box(f"Driveway_Joint_{k}", (0.0, -1.2 - k * 1.5, 0.001),
+                 (ROOM_W - 0.4, 0.03, 0.006), COL_SEAM)
+    for sgn in (-1, 1):
+        make_box(f"Lawn_{sgn:+d}", (sgn * (ROOM_W / 2.0 + 0.9), -2.6, -0.03),
+                 (2.2, 5.2, 0.03), COL_LAWN)
+    # Basketball backboard + hoop on the eave over the door
+    make_box("Hoop_Backboard", (0.6, -0.14, CEIL + 0.45), (1.0, 0.05, 0.7),
+             (0.85, 0.85, 0.82, 1.0))
+    make_box("Hoop_Square", (0.6, -0.16, CEIL + 0.35), (0.4, 0.02, 0.3),
+             (0.70, 0.30, 0.16, 1.0))
+    make_cyl("Hoop_Rim", (0.6, -0.38, CEIL + 0.22), 0.23, 0.03,
+             (0.72, 0.28, 0.14, 1.0), segments=12)
+
+
+def build_band_gear():
+    """The hero cluster: kit at back-center facing the door, amps
+    flanking, Telecaster on its stand, mic front-center."""
+    # ── Drum kit (facing -Y / the door) ──
+    kx, ky = -0.3, 4.3
+    # Kick drum — cylinder lying on axis Y
+    make_cyl("Kick", (kx, ky, 0.30), 0.30, 0.45, COL_DRUM, segments=14, axis='Y')
+    make_cyl("Kick_HeadF", (kx, ky - 0.24, 0.30), 0.29, 0.02, COL_HEAD, segments=14, axis='Y')
+    make_box("Kick_Pedal", (kx, ky - 0.42, 0.05), (0.12, 0.20, 0.10), COL_STEEL_DK)
+    # Snare on a stand, left of kick (player's view)
+    make_cyl("Snare", (kx - 0.48, ky - 0.28, 0.62), 0.18, 0.14, COL_DRUM_DK, segments=12)
+    make_cyl("Snare_Head", (kx - 0.48, ky - 0.28, 0.695), 0.17, 0.01, COL_HEAD, segments=12)
+    make_cyl("Snare_Stand", (kx - 0.48, ky - 0.28, 0.30), 0.02, 0.60, COL_STEEL, segments=6)
+    # Rack tom on the kick
+    make_cyl("Tom_Rack", (kx + 0.10, ky - 0.05, 0.78), 0.16, 0.18, COL_DRUM, segments=12)
+    make_box("Tom_Rack_Mount", (kx + 0.10, ky - 0.05, 0.645), (0.03, 0.03, 0.09), COL_STEEL)   # on the kick (2026-09-23: 9 cm over it)
+    make_cyl("Tom_Rack_Head", (kx + 0.10, ky - 0.05, 0.875), 0.15, 0.01, COL_HEAD, segments=12)
+    # Floor tom right
+    make_cyl("Tom_Floor", (kx + 0.55, ky - 0.20, 0.48), 0.20, 0.30, COL_DRUM, segments=12)
+    make_cyl("Tom_Floor_Head", (kx + 0.55, ky - 0.20, 0.635), 0.19, 0.01, COL_HEAD, segments=12)
+    for li, lx in enumerate((-0.12, 0.0, 0.12)):
+        make_cyl(f"Tom_Floor_Leg_{li}", (kx + 0.55 + lx, ky - 0.20 + (0.12 if li == 1 else -0.08),
+                 0.17), 0.012, 0.34, COL_STEEL, segments=5)
+    # Hi-hat (two thin discs) left
+    make_cyl("HiHat_Stand", (kx - 0.85, ky - 0.30, 0.45), 0.015, 0.90, COL_STEEL, segments=6)
+    make_cyl("HiHat_Top", (kx - 0.85, ky - 0.30, 0.92), 0.16, 0.008, COL_CYMBAL, segments=14)
+    make_cyl("HiHat_Bot", (kx - 0.85, ky - 0.30, 0.90), 0.16, 0.008, COL_CYMBAL, segments=14)
+    # Crash cymbal right, higher
+    make_cyl("Crash_Stand", (kx + 0.85, ky + 0.05, 0.60), 0.015, 1.20, COL_STEEL, segments=6)
+    make_cyl("Crash", (kx + 0.85, ky + 0.05, 1.204), 0.20, 0.008, COL_CYMBAL, segments=14)   # on its stand
+    # Throne
+    make_cyl("Throne_Seat", (kx, ky + 0.55, 0.50), 0.17, 0.08, COL_AMP, segments=10)
+    make_cyl("Throne_Post", (kx, ky + 0.55, 0.25), 0.03, 0.50, COL_STEEL, segments=6)
+
+    # ── Amps: two guitar combos W side, bass amp E side ──
+    for ai, (ax, ay) in enumerate([(-2.05, 3.6), (-2.15, 2.6)]):
+        make_box(f"Amp_{ai}", (ax, ay, 0.30), (0.62, 0.30, 0.55), COL_AMP)
+        make_box(f"Amp_{ai}_Grille", (ax + 0.02, ay - 0.16, 0.26), (0.54, 0.02, 0.40), COL_GRILLE)
+        make_box(f"Amp_{ai}_Panel", (ax + 0.02, ay - 0.16, 0.52), (0.54, 0.02, 0.07), COL_STEEL_DK)
+        for k in range(4):
+            make_cyl(f"Amp_{ai}_Knob_{k}", (ax - 0.18 + k * 0.12, ay - 0.18, 0.52),
+                     0.018, 0.02, COL_KNOB, segments=6, axis='Y')
+    # Bass rig: head on cab
+    make_box("BassCab", (2.1, 3.7, 0.36), (0.60, 0.50, 0.70), COL_AMP)
+    make_box("BassCab_Grille", (2.1, 3.44, 0.34), (0.52, 0.02, 0.58), COL_GRILLE)
+    make_box("BassHead", (2.1, 3.7, 0.82), (0.56, 0.44, 0.20), COL_STEEL_DK)
+    for k in range(5):
+        make_cyl(f"BassHead_Knob_{k}", (1.92 + k * 0.09, 3.46, 0.82), 0.015, 0.02,
+                 COL_KNOB, segments=6, axis='Y')
+
+    # ── Telecaster on a stand (butterscotch, the ch14 hero) ──
+    gx, gy = -1.55, 2.2
+    make_box("Tele_Body", (gx, gy, 0.42), (0.30, 0.05, 0.38), COL_TELE)
+    make_box("Tele_Guard", (gx - 0.05, gy - 0.028, 0.40), (0.16, 0.006, 0.24), COL_TELE_GUARD)
+    make_box("Tele_Neck", (gx + 0.02, gy, 0.82), (0.055, 0.04, 0.46), COL_BENCH)
+    make_box("Tele_Head", (gx + 0.02, gy, 1.10), (0.08, 0.035, 0.14), COL_TELE)
+    # the stand's uprights under the body (2026-09-23: 4 cm behind it)
+    make_box("GStand_Leg_A", (gx - 0.10, gy + 0.02, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
+    make_box("GStand_Leg_B", (gx + 0.10, gy + 0.02, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
+    make_box("GStand_Foot", (gx, gy - 0.02, 0.015), (0.30, 0.26, 0.03), COL_STEEL_DK)
+    # Bass on a stand by the bass rig
+    make_box("Bass_Body", (1.55, 2.4, 0.44), (0.28, 0.05, 0.40), COL_BASS)
+    make_box("Bass_Neck", (1.57, 2.4, 0.92), (0.05, 0.04, 0.56), COL_BENCH_DK)
+    make_box("BStand_Foot", (1.55, 2.38, 0.015), (0.28, 0.26, 0.03), COL_STEEL_DK)
+    for sx_ in (1.45, 1.65):   # the stand's uprights (2026-09-23: the bass stood 20 cm over its stand's foot)
+        make_box(f"BStand_Leg_{sx_:.2f}", (sx_, 2.40, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
+
+    # ── Mic stand front-center (Em's portable one) ──
+    make_cyl("Mic_Post", (0.2, 1.35, 0.75), 0.018, 1.50, COL_STEEL_DK, segments=6)
+    make_box("Mic_Boom", (0.2, 1.20, 1.50), (0.03, 0.34, 0.03), COL_STEEL_DK)
+    make_cyl("Mic", (0.2, 1.02, 1.50), 0.028, 0.16, COL_STEEL, segments=8, axis='Y')
+    make_box("Mic_Base", (0.2, 1.35, 0.02), (0.34, 0.30, 0.03), COL_STEEL_DK)
+
+    # ── Cables snaking the floor ──
+    for ci, (x0, y0, x1, y1) in enumerate([
+            (-1.55, 2.0, -2.0, 3.4), (0.2, 1.5, -1.9, 2.6),
+            (1.55, 2.6, 2.05, 3.4), (-0.3, 3.9, -2.0, 3.7)]):
+        mx, my = (x0 + x1) / 2.0, (y0 + y1) / 2.0
+        make_box(f"Cable_{ci}", (mx, my, 0.012), (max(abs(x1 - x0), 0.02),
+                 max(abs(y1 - y0), 0.02), 0.008), COL_CABLE)
+
+
+def build_wall_dressing():
+    """Workbench + pegboard on the north wall, paint shelf, fridge,
+    box fan, crates, and the Foxhole flyer pinned by the door."""
+    ny = ROOM_D - 0.30
+    make_box("Bench_Top", (1.4, ny, 0.90), (2.2, 0.55, 0.05), COL_BENCH)
+    for lx in (0.45, 2.35):
+        make_box(f"Bench_Leg_{lx:.1f}", (lx, ny, 0.45), (0.06, 0.5, 0.90), COL_BENCH_DK)
+    make_box("Bench_Shelf", (1.4, ny, 0.30), (2.1, 0.45, 0.03), COL_BENCH_DK)
+    # Pegboard above the bench with hung tools
+    make_box("Pegboard", (1.4, ROOM_D - 0.115, 1.65), (2.0, 0.03, 0.95), COL_PEG)
+    make_box("Peg_Hammer_Handle", (0.8, ROOM_D - 0.145, 1.60), (0.035, 0.02, 0.30), COL_BENCH)
+    make_box("Peg_Hammer_Head", (0.8, ROOM_D - 0.145, 1.77), (0.14, 0.03, 0.05), COL_STEEL_DK)
+    make_box("Peg_Wrench", (1.15, ROOM_D - 0.145, 1.62), (0.04, 0.015, 0.26), COL_STEEL)
+    make_cyl("Peg_TapeRoll", (1.5, ROOM_D - 0.15, 1.62), 0.07, 0.04, COL_STEEL_DK,
+             segments=10, axis='Y')
+    make_box("Peg_Saw", (1.95, ROOM_D - 0.145, 1.60), (0.30, 0.015, 0.10), COL_STEEL)
+    make_box("Peg_Saw_Handle", (2.12, ROOM_D - 0.145, 1.60), (0.08, 0.02, 0.12), COL_BENCH_DK)
+    # Paint-can shelf on the west wall
+    make_box("PaintShelf", (-ROOM_W / 2.0 + 0.20, 4.6, 1.35), (0.36, 1.4, 0.03), COL_BENCH_DK)
+    for pi in range(4):
+        h = 0.20 if pi % 2 == 0 else 0.14
+        make_cyl(f"PaintCan_{pi}", (-ROOM_W / 2.0 + 0.20, 4.05 + pi * 0.36, 1.37 + h / 2.0),
+                 0.09, h, COL_PAINT, segments=10)
+    # Mini fridge (E wall, band supplies)
+    make_box("Fridge", (2.45, 1.4, 0.42), (0.55, 0.55, 0.84), COL_FRIDGE)
+    make_box("Fridge_Door_Seam", (2.44, 1.12, 0.42), (0.52, 0.01, 0.80), COL_STEEL)
+    make_box("Fridge_Handle", (2.20, 1.14, 0.60), (0.03, 0.02, 0.22), COL_STEEL_DK)
+    # Box fan pointed at the kit (it is August)
+    make_box("BoxFan", (-2.3, 1.5, 0.275), (0.14, 0.55, 0.55), COL_STEEL_DK)   # on the floor (2026-09-23: 7.5 cm up)
+    make_cyl("BoxFan_Grille", (-2.22, 1.5, 0.275), 0.24, 0.02, COL_STEEL, segments=14, axis='X')
+    # Milk crates stacked by the amps
+    for ci, (cx, cy, cz) in enumerate([(-2.45, 4.4, 0.16), (-2.45, 4.4, 0.48), (2.5, 4.5, 0.16)]):   # floor, and stacked (2026-09-23: 1-2 cm gaps)
+        make_box(f"Crate_{ci}", (cx, cy, cz), (0.33, 0.33, 0.32), COL_CRATE, open_faces={"+Z"})
+    # The Foxhole flyer pinned by the door jamb (ch14)
+    make_box("Flyer", (ROOM_W / 2.0 - 0.11, 0.35, 1.45), (0.02, 0.22, 0.28), COL_FLYER)   # on the wall (2026-09-23: 2 cm off it)
+    make_box("Flyer_Band", (ROOM_W / 2.0 - 0.1275, 0.35, 1.52), (0.015, 0.18, 0.05), COL_STEEL_DK)
+    # Bare-bulb ceiling fixture — the practical the tscn Omni sits on
+    make_cyl("Bulb_Base", (0.0, 2.6, CEIL - 0.06), 0.05, 0.06, COL_STEEL_DK, segments=8)
+    make_cyl("Bulb", (0.0, 2.6, CEIL - 0.14), 0.045, 0.09, COL_BULB, segments=10)
+
+
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues. The flyer and the whole band rig exist —
+    the drum kit answers via a new SYNONYMS entry (drum_kit ->
+    kick/snare/hihat; nothing in the kit was NAMED "drum"). Built:
+
+    - THE MAP (Ben's Rand McNally corridor print, annotations in
+      three colors of ballpoint): folded flat on the workbench,
+      three ink strokes showing — black, red, blue.
+    - BEN'S TRUCK ("Bench seat. Four people. It is tight."): at
+      the curb past the driveway on a new street strip — faded
+      red body, cab, four wheels.
+    """
+    # ── THE MAP · workbench top (z 0.92) ──
+    make_box("Corridor_Map", (1.0, 5.30, 0.9225), (0.28, 0.216, 0.003),
+             (0.92, 0.90, 0.85, 1.0))
+    for ai, (ax2, ay2, ac) in enumerate(((0.94, 5.26, (0.15, 0.15, 0.16, 1.0)),
+                                         (1.05, 5.33, (0.72, 0.20, 0.16, 1.0)),
+                                         (0.99, 5.37, (0.22, 0.30, 0.62, 1.0)))):
+        make_box(f"Map_Ink_{ai}", (ax2, ay2, 0.9245), (0.060, 0.008, 0.001), ac)
+    # ── BEN'S TRUCK · at the curb, past the driveway ──
+    make_box("Street_Curbline", (0.0, -6.5, -0.035), (8.00, 2.60, 0.05),
+             (0.32, 0.32, 0.33, 1.0))
+    make_box("Ben_Truck_Body", (0.6, -6.4, 0.62), (4.40, 1.80, 0.65),
+             (0.55, 0.28, 0.22, 1.0))
+    make_box("Ben_Truck_Cab", (-0.1, -6.4, 1.22), (1.60, 1.70, 0.55),
+             (0.48, 0.24, 0.19, 1.0))
+    for wi, (wx2, wy2) in enumerate(((-0.9, -5.375), (2.1, -5.375),
+                                     (-0.9, -7.425), (2.1, -7.425))):
+        make_cyl(f"Ben_Truck_Wheel_{wi}", (wx2, wy2, 0.32), 0.32, 0.25,
+                 (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+
+
+
+def build_fathers_garage_2026_10():
+    """THE FATHER'S GARAGE, LIVED IN (2026-10-08; "too bare and empty").
+    Ch5: "Jesse has always, privately, thought of the garage as his
+    father's territory"; his father "sweeps the garage, on the first
+    Saturday of each month, with the thoroughness of a man who believes
+    that a floor is a kind of moral statement"; it smells "of turpentine
+    and sawdust and cold metal". So: the steel shelving with labelled bins,
+    the toolbox, coffee cans of screws, the gas can; the garden tools on
+    their hooks; the push broom and dustpan Jesse swept with (twice); the
+    camping chairs folded under the bench ("the camping chairs Jesse pulls
+    out from under the workbench"); Nate's cooler with the Mountain Dew;
+    the mower in the corner; an overhead rack of boxes; two shop lights."""
+    from _props.geometry import make_chamfer_box, make_tube
+    steel = (0.56, 0.58, 0.60, 1.0); steel_dk = (0.36, 0.38, 0.40, 1.0)
+    EF, WF, NF = ROOM_W/2.0 - 0.10, -ROOM_W/2.0 + 0.10, ROOM_D - 0.10
+    # ── steel shelving on the E wall, between the fridge and the bass cab ──
+    sx0, sy0, sy1 = EF - 0.45, 1.85, 3.30
+    for e in ((sy0 + 0.02), (sy1 - 0.02)):
+        for xx in (sx0 + 0.02, EF - 0.02):
+            make_box(f"Shelving_Post_{xx:.2f}_{e:.2f}", (xx, e, 0.95), (0.03, 0.03, 1.90), steel_dk)
+    bins = ((0.30, 0.46, 0.70, 1.0), (0.84, 0.70, 0.22, 1.0), (0.34, 0.36, 0.38, 1.0), (0.72, 0.28, 0.22, 1.0))
+    for si, sz in enumerate((0.10, 0.55, 1.00, 1.45, 1.88)):
+        make_box(f"Shelving_Shelf_{si}", ((sx0 + EF) / 2.0, (sy0 + sy1) / 2.0, sz), (0.45, sy1 - sy0, 0.02), steel)
+        if si in (1, 2):
+            for bi in range(4):
+                by = sy0 + 0.20 + bi * 0.35
+                make_box(f"Shelving_Bin_{si}_{bi}", ((sx0 + EF) / 2.0, by, sz + 0.12), (0.38, 0.30, 0.22), bins[(si + bi) % 4])
+                make_box(f"Shelving_Bin_{si}_{bi}_Label", (sx0 + 0.035, by, sz + 0.17), (0.002, 0.12, 0.05), (0.96, 0.96, 0.92, 1.0))
+        elif si == 3:
+            make_box("Shelving_Toolbox", ((sx0 + EF) / 2.0, sy0 + 0.35, sz + 0.11), (0.30, 0.48, 0.20), (0.80, 0.18, 0.14, 1.0))
+            make_box("Shelving_Toolbox_Handle", ((sx0 + EF) / 2.0, sy0 + 0.35, sz + 0.23), (0.04, 0.30, 0.03), (0.16, 0.16, 0.18, 1.0))
+            for ci in range(3):
+                make_cyl(f"Shelving_ScrewCan_{ci}", ((sx0 + EF) / 2.0, sy0 + 0.80 + ci * 0.16, sz + 0.08), 0.06, 0.15, (0.66, 0.50, 0.30, 1.0), segments=10)
+        elif si == 0:
+            make_box("Shelving_GasCan", ((sx0 + EF) / 2.0, sy0 + 0.30, sz + 0.17), (0.20, 0.32, 0.32), (0.80, 0.16, 0.12, 1.0))
+            make_tube("Shelving_GasCan_Spout", [((sx0 + EF) / 2.0, sy0 + 0.40, sz + 0.33), ((sx0 + EF) / 2.0 - 0.06, sy0 + 0.46, sz + 0.40)], 0.012, (0.20, 0.20, 0.22, 1.0))
+            make_cyl("Shelving_Bucket", ((sx0 + EF) / 2.0, sy0 + 0.95, sz + 0.15), 0.14, 0.28, (0.92, 0.92, 0.88, 1.0), segments=12)
+    # ── the garden tools on their hooks on the W wall, by the door ──
+    for ti, (ty, nm, col, hd) in enumerate(((0.45, "Rake", (0.62, 0.48, 0.30, 1.0), (0.30, 0.04, 0.10)),
+                                            (0.70, "Shovel", (0.62, 0.48, 0.30, 1.0), (0.20, 0.03, 0.28)),
+                                            (0.95, "Hoe", (0.62, 0.48, 0.30, 1.0), (0.14, 0.03, 0.10)))):
+        make_box(f"Tool_Hook_{ti}", (WF + 0.04, ty, 1.80), (0.08, 0.02, 0.02), steel_dk)
+        make_cyl(f"Tool_{nm}_Handle", (WF + 0.06, ty, 1.12), 0.016, 1.40, col, segments=6)
+        hsz = hd if nm != "Rake" else (0.04, 0.30, 0.06)
+        make_box(f"Tool_{nm}_Head", (WF + 0.06, ty, 0.43 - hsz[2] / 2.0), hsz, steel_dk)   # on the handle's end
+    # the push broom and the dustpan against the wall by the bench (he swept twice)
+    make_tube("Push_Broom_Handle", [(0.10, NF - 0.12, 0.08), (0.12, NF - 0.03, 1.40)], 0.014, (0.62, 0.48, 0.30, 1.0))
+    make_box("Push_Broom_Head", (0.10, NF - 0.16, 0.05), (0.46, 0.08, 0.10), (0.22, 0.20, 0.18, 1.0))
+    make_box("Dustpan", (-0.20, NF - 0.10, 0.12), (0.26, 0.02, 0.24), (0.86, 0.68, 0.20, 1.0))
+    # the camping chairs folded under the workbench
+    for ci in range(2):
+        # in their bags, lying on the bench's lower shelf
+        make_chamfer_box(f"Camp_Chair_Folded_{ci}", (0.95 + ci * 0.80, 5.50, 0.315 + 0.09 + ci * 0.0), (0.72, 0.20, 0.18), ((0.20, 0.36, 0.30, 1.0), (0.70, 0.30, 0.18, 1.0))[ci], chamfer=0.03)
+    # Nate's cooler by the amp, the cans on its lid
+    make_chamfer_box("Cooler_Nate", (-1.55, 1.90, 0.20), (0.56, 0.36, 0.40), (0.24, 0.42, 0.70, 1.0), chamfer=0.03)
+    make_box("Cooler_Nate_Lid", (-1.55, 1.90, 0.415), (0.58, 0.38, 0.03), (0.92, 0.92, 0.88, 1.0))
+    for k in range(3):
+        make_cyl(f"Cooler_Nate_Can_{k}", (-1.72 + k * 0.12, 1.92, 0.49), 0.033, 0.12, (0.44, 0.72, 0.24, 1.0), segments=10)
+    # the mower in the NW corner
+    mx, my = -2.15, 5.30
+    make_chamfer_box("Mower_Deck", (mx, my, 0.24), (0.55, 0.55, 0.16), (0.70, 0.16, 0.12, 1.0), chamfer=0.04)
+    make_chamfer_box("Mower_Engine", (mx, my, 0.40), (0.26, 0.26, 0.18), (0.20, 0.20, 0.22, 1.0), chamfer=0.03)
+    for e in (-1, 1):
+        for f in (-1, 1):
+            make_cyl(f"Mower_Wheel_{e:+d}_{f:+d}", (mx + e * 0.27, my + f * 0.22, 0.09), 0.09, 0.05, (0.12, 0.12, 0.12, 1.0), axis='X', segments=10)
+    make_tube("Mower_Handle", [(mx - 0.20, my - 0.25, 0.30), (mx - 0.20, my - 0.75, 0.95), (mx + 0.20, my - 0.75, 0.95), (mx + 0.20, my - 0.25, 0.30)], 0.012, steel_dk)
+    # an overhead storage rack over the back west quarter, boxes on it
+    rx0, rx1, ry0, ry1, rz = -2.60, -1.20, 3.90, 5.60, 2.30
+    make_box("Overhead_Rack", ((rx0 + rx1) / 2.0, (ry0 + ry1) / 2.0, rz), (rx1 - rx0, ry1 - ry0, 0.04), steel)
+    for xx in (rx0 + 0.04, rx1 - 0.04):
+        for yy in (ry0 + 0.04, ry1 - 0.04):
+            make_box(f"Overhead_Rack_Rod_{xx:.2f}_{yy:.2f}", (xx, yy, (rz + CEIL) / 2.0), (0.03, 0.03, CEIL - rz), steel_dk)
+    for bi, (bx, by, bw, bd, bh) in enumerate(((-2.30, 4.20, 0.50, 0.40, 0.30), (-1.70, 4.25, 0.45, 0.45, 0.25),
+                                               (-2.25, 4.90, 0.55, 0.50, 0.32), (-1.60, 5.00, 0.40, 0.40, 0.28), (-2.00, 5.40, 0.60, 0.28, 0.24))):
+        make_box(f"Overhead_Box_{bi}", (bx, by, rz + 0.02 + bh / 2.0), (bw, bd, bh), (0.70, 0.56, 0.38, 1.0) if bi % 2 else (0.62, 0.50, 0.34, 1.0))
+    # two shop lights on their chains
+    for li, ly in enumerate((1.80, 4.00)):
+        make_box(f"Shop_Light_{li}", (1.30, ly, 2.38), (1.22, 0.18, 0.06), (0.86, 0.86, 0.84, 1.0))
+        make_box(f"Shop_Light_{li}_Tube", (1.30, ly, 2.346), (1.18, 0.06, 0.008), (0.98, 0.98, 0.94, 1.0))
+        for e in (-1, 1):
+            make_cyl(f"Shop_Light_{li}_Chain_{e:+d}", (1.30 + e * 0.55, ly, (2.41 + CEIL) / 2.0), 0.004, CEIL - 2.41, steel_dk, segments=4)
+
+def main():
+    clear_scene()
+    build_shell()
+    build_driveway()
+    build_band_gear()
+    build_wall_dressing()
+    build_hero_props_2026_09()
+    build_fathers_garage_2026_10()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/henderson_garage.glb"))
+    print(f"\n[build_henderson_garage] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()

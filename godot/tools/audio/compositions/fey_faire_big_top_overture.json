@@ -1,0 +1,370 @@
+{
+  "meta": {
+    "title": "the big top overture",
+    "composer": "attributed to the Faire itself",
+    "for": "Fey Faire \u00b7 big top shows / night-6 finale / endings",
+    "notes": "3/4 at 108 \u00b7 the waltz with its lights on. Same D-minor bones as the midway but the melody stands up straight and the last four bars resolve to D MAJOR \u00b7 the tierce de picardie the Faire only allows on stage."
+  },
+  "tempo_bpm": 108,
+  "time_sig": [
+    3,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_bass",
+      "gain": 0.32,
+      "notes": [
+        {
+          "pitch": "D2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "A1",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "A#1",
+          "bar": 3,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "F2",
+          "bar": 4,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "G1",
+          "bar": 5,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "D2",
+          "bar": 6,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "A1",
+          "bar": 7,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "A1",
+          "bar": 8,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D2",
+          "bar": 9,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "A1",
+          "bar": 10,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.45
+        },
+        {
+          "pitch": "A#1",
+          "bar": 11,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "G1",
+          "bar": 12,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D2",
+          "bar": 13,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.55
+        },
+        {
+          "pitch": "D2",
+          "bar": 15,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.5
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "D3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "A#2",
+          "bar": 3,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "F3",
+          "bar": 3,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "G2",
+          "bar": 5,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A2",
+          "bar": 7,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "D3",
+          "bar": 9,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A#2",
+          "bar": 11,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "D3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "F#3",
+          "bar": 15,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A3",
+          "bar": 15,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.28
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.22,
+      "notes": [
+        {
+          "pitch": "D5",
+          "bar": 1,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F5",
+          "bar": 1,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "A5",
+          "bar": 2,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A#5",
+          "bar": 3,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A5",
+          "bar": 3,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "F5",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.38
+        },
+        {
+          "pitch": "G5",
+          "bar": 5,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A#5",
+          "bar": 5,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "A5",
+          "bar": 6,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F5",
+          "bar": 6,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E5",
+          "bar": 7,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "C#5",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "D5",
+          "bar": 9,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A5",
+          "bar": 9,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "D6",
+          "bar": 10,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.44
+        },
+        {
+          "pitch": "C6",
+          "bar": 11,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A5",
+          "bar": 11,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A#5",
+          "bar": 12,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.38
+        },
+        {
+          "pitch": "A5",
+          "bar": 13,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E5",
+          "bar": 13,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "F#5",
+          "bar": 14,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A5",
+          "bar": 15,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.44
+        },
+        {
+          "pitch": "D6",
+          "bar": 15,
+          "beat": 3,
+          "dur": 4.0,
+          "vel": 0.46
+        }
+      ]
+    }
+  ]
+}

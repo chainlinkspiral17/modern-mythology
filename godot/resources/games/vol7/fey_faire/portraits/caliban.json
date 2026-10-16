@@ -1,0 +1,173 @@
+{
+ "notes": "Caliban in the freak show tent. The cage is a comfort. Do not gawk. Sit for the specific length of time.",
+ "palette": [
+  "#1c1024",
+  "#8a5aa8",
+  "#b0a088",
+  "#8a7860",
+  "#403020",
+  "#605040",
+  "#282018"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    10,
+    16,
+    18
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    19,
+    10,
+    5,
+    18
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    10,
+    16,
+    3
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 14,
+   "x_range": [
+    10,
+    15
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 14,
+   "x_range": [
+    17,
+    22
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    17
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    17
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 24,
+   "x_range": [
+    13,
+    19
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    9,
+    28,
+    14,
+    8
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 5,
+   "y_range": [
+    2,
+    38
+   ],
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 27,
+   "y_range": [
+    2,
+    38
+   ],
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 16,
+   "y_range": [
+    2,
+    8
+   ],
+   "color": 6
+  }
+ ],
+ "id": "portrait_caliban",
+ "w": 32,
+ "h": 40
+}

@@ -55,6 +55,7 @@ const VOLUME_TITLES: Dictionary = {
 func open() -> void:
 	_rebuild()
 	visible = true
+	GamepadMgr.focus_first.call_deferred(self)
 
 
 func _rebuild() -> void:
@@ -98,14 +99,8 @@ func _rebuild() -> void:
 	var seen_cgs := SaveSystem.get_seen_cgs()
 	var all_cgs  := SceneDataDB.get_all_cg_ids()
 	var subs     := _load_substrate_index()
-	# The seen set also stores "substrate:*" keys — count only real CGs
-	# or the "N / M" header can exceed M.
-	var seen_cg_count := 0
-	for key in seen_cgs:
-		if not str(key).begins_with("substrate:"):
-			seen_cg_count += 1
 	var count_lbl := Label.new()
-	count_lbl.text = "%d / %d   +%d ascii" % [seen_cg_count, all_cgs.size(), subs.size()]
+	count_lbl.text = "%d / %d   +%d ascii" % [seen_cgs.size(), all_cgs.size(), subs.size()]
 	_apply_font(count_lbl, SkinDB.F_CINZEL, 10, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.6))
 	count_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	count_lbl.horizontal_alignment  = HORIZONTAL_ALIGNMENT_RIGHT
@@ -151,6 +146,8 @@ func _rebuild() -> void:
 			games_flow.add_child(_make_community_planned_tile())
 		if gauntlet_unlocked:
 			games_flow.add_child(_make_tarot_gauntlet_tile())
+			games_flow.add_child(_make_spread_tile())
+			games_flow.add_child(_make_daily_draw_tile())
 		content.add_child(games_flow)
 	if not cp_unlocked or not gauntlet_unlocked:
 		# Dev hook: a small toggle to fire each gallery-game unlock
@@ -240,6 +237,25 @@ func _rebuild() -> void:
 				content.add_child(flow)
 				for it_v in by_set[sset]:
 					flow.add_child(_make_substrate_tile(it_v as Dictionary))
+
+	# Story panels · the [panel:] HeroImage JSONs double as the
+	# gallery's data source. Seen-state rides the same gallery.cfg
+	# store as CGs, keyed "panel:<id>".
+	var panel_ids := _list_panel_ids()
+	if not panel_ids.is_empty():
+		var panels_seen: int = 0
+		for pid: String in panel_ids:
+			if SaveSystem.is_cg_seen("panel:" + pid):
+				panels_seen += 1
+		content.add_child(_section_label("STORY PANELS  ·  %d / %d" % [panels_seen, panel_ids.size()]))
+		var pflow := FlowContainer.new()
+		pflow.alignment = FlowContainer.ALIGNMENT_BEGIN
+		pflow.add_theme_constant_override("h_separation", 10)
+		pflow.add_theme_constant_override("v_separation", 10)
+		pflow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		content.add_child(pflow)
+		for pid: String in panel_ids:
+			pflow.add_child(_make_panel_tile(pid, SaveSystem.is_cg_seen("panel:" + pid)))
 
 	# CG section
 	content.add_child(_section_label("CG IMAGES"))
@@ -505,6 +521,99 @@ func _make_tarot_gauntlet_tile() -> Control:
 	return tile
 
 
+const SPREAD_HOST_SCRIPT := preload("res://scenes/menu/SpreadHost.gd")
+
+func _make_spread_tile() -> Control:
+	# Violet-edged sibling of the gauntlet tile — the campaign shape.
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W * 2, THUMB_H)
+	tile.clip_contents = true
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.07, 0.05, 0.09, 1.0)
+	style.border_color = Color(0.65, 0.40, 0.85, 0.65)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(2)
+	tile.add_theme_stylebox_override("normal", style)
+	var hover_style: StyleBoxFlat = style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(0.65, 0.40, 0.85, 0.95)
+	hover_style.bg_color = Color(0.10, 0.07, 0.13, 1.0)
+	tile.add_theme_stylebox_override("hover", hover_style)
+	tile.add_theme_stylebox_override("focus", hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	var vbox := VBoxContainer.new()
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	tile.add_child(vbox)
+	var label := Label.new()
+	label.text = "THE SPREAD"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(label, SkinDB.F_CINZEL, 14, C_GOLD)
+	vbox.add_child(label)
+	var sub := Label.new()
+	var has_spread: bool = not GauntletState.get_spread().is_empty()
+	sub.text = "· a reading in progress ·" if has_spread else "three cards drawn · played in sequence"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(sub, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+	vbox.add_child(sub)
+	tile.pressed.connect(_open_spread_host)
+	return tile
+
+
+func _open_spread_host() -> void:
+	var host := Control.new()
+	host.set_script(SPREAD_HOST_SCRIPT)
+	host.z_index = 25
+	add_child(host)
+	host.connect("closed", func() -> void: _rebuild())
+
+
+func _make_daily_draw_tile() -> Control:
+	# Slim companion tile · one date-seeded card, same for everyone.
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W, THUMB_H)
+	tile.clip_contents = true
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.05, 0.07, 0.06, 1.0)
+	style.border_color = Color(0.55, 0.78, 0.45, 0.60)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(2)
+	tile.add_theme_stylebox_override("normal", style)
+	var hover_style: StyleBoxFlat = style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(0.55, 0.78, 0.45, 0.95)
+	tile.add_theme_stylebox_override("hover", hover_style)
+	tile.add_theme_stylebox_override("focus", hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	var vbox := VBoxContainer.new()
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	tile.add_child(vbox)
+	var label := Label.new()
+	label.text = "DAILY DRAW"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(label, SkinDB.F_CINZEL, 13, C_GOLD)
+	vbox.add_child(label)
+	var sub := Label.new()
+	var played: bool = SaveSystem.is_unlocked("daily:" + SPREAD_HOST_SCRIPT.daily_key())
+	sub.text = "· played today ✓ ·" if played else "one card · today's"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(sub, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+	vbox.add_child(sub)
+	tile.pressed.connect(func() -> void:
+		var host := Control.new()
+		host.set_script(SPREAD_HOST_SCRIPT)
+		host.set("daily_mode", true)
+		host.z_index = 25
+		add_child(host)
+		host.connect("closed", func() -> void: _rebuild()))
+	return tile
+
+
 func _scenarios_for_arcana(scenarios_const_name: String) -> Array:
 	# Look up the right constant by name. GDScript doesn't expose
 	# script-level constants by string lookup natively, so we map here.
@@ -545,7 +654,7 @@ func _open_gauntlet_chapter_picker() -> void:
 		col.add_child(hdr)
 		var host_lbl := Label.new()
 		host_lbl.text = String(ed["host"])
-		host_lbl.add_theme_font_size_override("font_size", 10)
+		host_lbl.add_theme_font_size_override("font_size", 12)
 		host_lbl.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 		col.add_child(host_lbl)
 		# Scenarios as buttons.
@@ -557,7 +666,7 @@ func _open_gauntlet_chapter_picker() -> void:
 			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			btn.flat = true
 			btn.focus_mode = Control.FOCUS_NONE
-			btn.add_theme_font_size_override("font_size", 11)
+			btn.add_theme_font_size_override("font_size", 12)
 			btn.add_theme_color_override("font_color", C_TXT)
 			var location: String = String(ed["location"])
 			var hand_override: String = String(scd.get("hand_override", ed["hand"]))
@@ -572,7 +681,7 @@ func _open_gauntlet_chapter_picker() -> void:
 			if String(scd.get("flavor", "")) != "":
 				var fl := Label.new()
 				fl.text = "        " + String(scd["flavor"])
-				fl.add_theme_font_size_override("font_size", 10)
+				fl.add_theme_font_size_override("font_size", 12)
 				fl.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.55))
 				fl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				col.add_child(fl)
@@ -583,13 +692,13 @@ func _open_gauntlet_chapter_picker() -> void:
 	# Wave-2 placeholders (dim, no buttons).
 	var w2_header := Label.new()
 	w2_header.text = "TO BE AUTHORED · WAVE 2"
-	w2_header.add_theme_font_size_override("font_size", 11)
+	w2_header.add_theme_font_size_override("font_size", 12)
 	w2_header.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.42))
 	col.add_child(w2_header)
 	for placeholder in GAUNTLET_WAVE2_PLACEHOLDERS:
 		var pl := Label.new()
 		pl.text = "  " + String(placeholder)
-		pl.add_theme_font_size_override("font_size", 10)
+		pl.add_theme_font_size_override("font_size", 12)
 		pl.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.35))
 		col.add_child(pl)
 	dlg.add_to_group("ui")
@@ -1203,7 +1312,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	vb.add_child(title)
 	var sub := Label.new()
 	sub.text = arcana_sub
-	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_font_size_override("font_size", 12)
 	sub.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vb.add_child(sub)
@@ -1237,7 +1346,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		if scn.has("divider"):
 			var div := Label.new()
 			div.text = String(scn["divider"])
-			div.add_theme_font_size_override("font_size", 10)
+			div.add_theme_font_size_override("font_size", 12)
 			div.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.40))
 			div.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			vb.add_child(div)
@@ -1270,7 +1379,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		if diff_str != "":
 			var chip := Label.new()
 			chip.text = diff_str.to_upper()
-			chip.add_theme_font_size_override("font_size", 9)
+			chip.add_theme_font_size_override("font_size", 12)
 			chip.add_theme_color_override("font_color", Color(0.05, 0.045, 0.03, 1.0))
 			var cs := StyleBoxFlat.new()
 			cs.bg_color = _difficulty_color(diff_str)
@@ -1290,12 +1399,12 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		title_row.add_child(t_title)
 		var t_sub := Label.new()
 		t_sub.text = String(scn.get("subtitle", ""))
-		t_sub.add_theme_font_size_override("font_size", 10)
+		t_sub.add_theme_font_size_override("font_size", 12)
 		t_sub.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.65))
 		tile_vb.add_child(t_sub)
 		var t_flavor := Label.new()
 		t_flavor.text = String(scn.get("flavor", ""))
-		t_flavor.add_theme_font_size_override("font_size", 11)
+		t_flavor.add_theme_font_size_override("font_size", 12)
 		t_flavor.add_theme_color_override("font_color", C_TXT)
 		t_flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		t_flavor.custom_minimum_size = Vector2(600, 0)
@@ -1313,7 +1422,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	# arcana's visualizer behind it.
 	var cancel := Button.new()
 	cancel.text = "← Back to Gallery"
-	cancel.add_theme_font_size_override("font_size", 11)
+	cancel.add_theme_font_size_override("font_size", 12)
 	cancel.custom_minimum_size = Vector2(160, 28)
 	cancel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	cancel.pressed.connect(dim.queue_free)
@@ -1368,8 +1477,20 @@ func _launch_gauntlet(visualizer: Control, arcana: String, location: String, han
 		# Re-open the same visualizer the player launched from so
 		# they're back where they were, not at the top-level picker.
 		if visualizer_script != null:
-			var v2 := _spawn_visualizer(visualizer_script)
-			_add_play_button_overlay(v2, arcana, location, hand))
+			_respawn_gauntlet_visualizer(visualizer_script, arcana, location, hand))
+
+
+# Deferred a frame so the gauntlet's SubViewport tree (a full 3D
+# locale) is actually freed before the visualizer starts painting —
+# tearing both down/up in the same frame crashed the Compatibility
+# renderer on the Deck when leaving a gauntlet.
+func _respawn_gauntlet_visualizer(vis_script: Script, arcana: String, location: String, hand: String) -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_inside_tree():
+		return
+	var v2 := _spawn_visualizer(vis_script)
+	_add_play_button_overlay(v2, arcana, location, hand)
 
 
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:
@@ -1546,6 +1667,110 @@ func _make_tile(src: String, is_seen: bool) -> Control:
 		tile.disabled = true
 
 	return tile
+
+
+const PANELS_DIR := "res://resources/vn/panels"
+
+func _list_panel_ids() -> Array:
+	var out: Array = []
+	var d := DirAccess.open(PANELS_DIR)
+	if d == null:
+		return out
+	d.list_dir_begin()
+	var fn := d.get_next()
+	while fn != "":
+		if not d.current_is_dir() and fn.ends_with(".json"):
+			out.append(fn.trim_suffix(".json"))
+		fn = d.get_next()
+	d.list_dir_end()
+	out.sort()
+	return out
+
+
+func _panel_texture(pid: String, size: Vector2i) -> Texture2D:
+	var hero := HeroImage.new()
+	if not hero.load_from(PANELS_DIR + "/" + pid + ".json"):
+		return null
+	return hero.texture(size)
+
+
+func _make_panel_tile(pid: String, is_seen: bool) -> Control:
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W, THUMB_H)
+	tile.clip_contents = true
+	var tile_style := StyleBoxFlat.new()
+	tile_style.bg_color     = C_DIM if not is_seen else Color(0, 0, 0, 0.2)
+	tile_style.border_color = C_BORDER
+	tile_style.set_border_width_all(1)
+	tile.add_theme_stylebox_override("normal",  tile_style)
+	var hover_style: StyleBoxFlat = tile_style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7)
+	tile.add_theme_stylebox_override("hover",   hover_style)
+	tile.add_theme_stylebox_override("focus",   hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	if is_seen:
+		var tex := _panel_texture(pid, Vector2i(THUMB_W, THUMB_H))
+		if tex != null:
+			var img_rect := TextureRect.new()
+			img_rect.texture = tex
+			img_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			img_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			img_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			img_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tile.add_child(img_rect)
+		var p: String = pid
+		tile.pressed.connect(func() -> void: _view_fullscreen_panel(p))
+	else:
+		var lock_lbl := Label.new()
+		lock_lbl.text = "🔒"
+		lock_lbl.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		lock_lbl.add_theme_font_size_override("font_size", 24)
+		lock_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lock_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tile.add_child(lock_lbl)
+		tile.disabled = true
+	return tile
+
+
+func _view_fullscreen_panel(pid: String) -> void:
+	var viewer := ColorRect.new()
+	viewer.color = Color(0, 0, 0, 0.92)
+	viewer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	viewer.z_index = 10
+	add_child(viewer)
+	var tex := _panel_texture(pid, Vector2i(1080, 720))
+	if tex != null:
+		var img := TextureRect.new()
+		img.texture = tex
+		img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		img.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		viewer.add_child(img)
+	var name_lbl := Label.new()
+	name_lbl.text = pid.replace("_", " ")
+	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	name_lbl.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
+	name_lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	name_lbl.offset_left   = 16
+	name_lbl.offset_bottom = -16
+	_apply_font(name_lbl, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.5))
+	name_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	viewer.add_child(name_lbl)
+	var close_lbl := Label.new()
+	close_lbl.text = "CLICK TO CLOSE"
+	close_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	close_lbl.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
+	close_lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	close_lbl.offset_right  = -16
+	close_lbl.offset_bottom = -16
+	_apply_font(close_lbl, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.5))
+	close_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	viewer.add_child(close_lbl)
+	viewer.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			viewer.queue_free()
+	)
 
 
 func _view_fullscreen(src: String) -> void:

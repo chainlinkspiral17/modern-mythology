@@ -1,0 +1,28 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_town_1999",
+      "kind": "character",
+      "era": "era1",
+      "tags": [
+        "character",
+        "era1",
+        "extra_print_tech",
+        "extra_instructor",
+        "security_guard",
+        "laundromat_owner",
+        "extra_clerk",
+        "extra_librarian",
+        "extra_classmate",
+        "extra_reader"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. a lineup model sheet of a small coast town's people in 1999, front views and one profile each, labeled: THE PRINT TECH (wiry man of forty, gray crew cut, canvas shop apron over plaid, leaning on nothing), THE INSTRUCTOR (sharp woman in her forties, dark hair pulled back with reading glasses pushed into it, blazer over a turtleneck, a red pen), THE GUARD (broad man in his fifties in a navy windbreaker with a reflective strip and a cap, bent as if to a car window), THE LAUNDROMAT OWNER (woman in her fifties in a cardigan with reading glasses on a cord, folding a towel), THE CLERK (thin young man with a long neck and glasses in a drugstore uniform shirt), THE LIBRARIAN (a woman of sixty with a gray bob and half-moon glasses in a long gray cardigan, shown mostly as the cardigan at the sheet's edge), THE CLASSMATE (heavyset man of fifty with a gray mustache in a faded mill jacket), THE READER (small woman in her sixties with white hair pinned up, a wool coat kept on, a pen behind her ear). Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

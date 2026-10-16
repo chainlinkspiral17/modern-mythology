@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "sunday morning, lena's apartment",
+  "composer": "rain on the alley side",
+  "for": "vol7 ch6/ch7/ch8 \u00b7 apartment-with-rain bed",
+  "notes": "Rain carried warm: F major sevenths under a steady fall, the drone barely present. This bed serves three chapters \u2014 the letters not written, the bridge, six o'clock \u2014 so it holds one weather and lets the text change."
+ },
+ "tempo_bpm": 64,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 44100,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.6
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "F2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.15,
+   "notes": [
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.12
+    },
+    {
+     "pitch": "A2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.09,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 10,
+     "beat": 2,
+     "dur": 3.0,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "id": "hane_no_niwa_spine",
+ "notes": "Grey import \u00b7 paper tones \u00b7 a torii at the foot and one blossom.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#f4ece0",
+  "#d88a98",
+  "#8aa878",
+  "#38302a",
+  "#5a6a8a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    8
+   ],
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    120,
+    128
+   ],
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "H",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "A",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "N",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "E",
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 14,
+   "y_range": [
+    100,
+    116
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 30,
+   "y_range": [
+    100,
+    116
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 100,
+   "x_range": [
+    10,
+    34
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 104,
+   "x_range": [
+    12,
+    32
+   ],
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    90
+   ],
+   "size": 2,
+   "color": 1
+  }
+ ]
+}

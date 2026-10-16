@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "northwind harbor \u00b7 title",
+    "composer": "Marc Ostrom \u00b7 Oneironautics Inc. \u00b7 1988",
+    "for": "NorthwindHarborHost title screen",
+    "notes": "Fourteen seconds of soft slowstick pad in F major. Sam knows it by heart."
+  },
+  "tempo_bpm": 68,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.22,
+      "notes": [
+        {
+          "pitch": "F2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.26,
+      "notes": [
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "C4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "E4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "F4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.14,
+      "notes": [
+        {
+          "pitch": "C5",
+          "bar": 2,
+          "beat": 3,
+          "dur": 3.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A4",
+          "bar": 4,
+          "beat": 2,
+          "dur": 3.0,
+          "vel": 0.28
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 # InGameMusicPlayer.gd · AUTOLOAD
 # ════════════════════════════════════════════════════════════════
 # Scans user://music/ for .ogg / .mp3 files at startup, plays them
-# through the Master bus. The MoodCycler's _audio_level reads Master
-# peak, so playing tracks automatically drives the visualizer with
-# zero extra wiring.
+# through the BGM bus. The MoodCycler's _audio_level reads Master
+# peak and TripSync reads the BGM spectrum, so playing tracks
+# automatically drives both visual layers with zero extra wiring.
 #
 #   user-data path on Steam Deck:
 #     ~/.local/share/godot/app_userdata/Modern Mythology (Copy)/music/
@@ -143,7 +143,10 @@ func _load_audio_stream(path: String, lower_name: String) -> AudioStream:
 
 func _spawn_player() -> void:
 	_player = AudioStreamPlayer.new()
-	_player.bus = "Master"
+	# BGM bus, not Master (2026-09-07): the spectrum analyzer that
+	# drives THE TRIP (TripSync) listens on BGM, and the BGM volume
+	# setting now applies to user-dropped tracks too.
+	_player.bus = "BGM"
 	_player.volume_db = 0.0
 	_player.finished.connect(_on_track_finished)
 	add_child(_player)

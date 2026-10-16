@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "title": "vol5_gauntlet_loss",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_gauntlet_loss",
+  "notes": "TWENTY-FOUR HOURS (reversed). The shared loss sting. The same two chords as the win, taken the other way and left open: C major down to A minor and no third note."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A2",
+     "bar": 4,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 3,
+     "beat": 3,
+     "dur": 3,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A4",
+     "bar": 5,
+     "beat": 1,
+     "dur": 9,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://hospital_room_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://hospital_room_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/hospital_room.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,14 +128,29 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.62, 0.78, 0.86, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.74, 0.66, 0.52, 1)
-ambient_light_energy = 0.75
+ambient_light_color = Color(0.72, 0.77, 0.80, 1)
+ambient_light_energy = 0.62
 fog_enabled = true
-fog_light_color = Color(0.42, 0.36, 0.26, 1)
+fog_sky_affect = 0.0
+fog_light_color = Color(0.40, 0.44, 0.48, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
 adjustment_enabled = true
@@ -155,21 +170,73 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.88, 0.62, 1)
-light_energy = 0.7
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
+light_color = Color(0.9, 0.93, 0.96, 1)
+light_energy = 0.85
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 4, 0)
-light_color = Color(0.92, 0.74, 0.32, 1)
-light_energy = 0.3
+light_color = Color(0.8, 0.86, 0.9, 1)
+light_energy = 0.35
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, -4)
-light_color = Color(0.42, 0.42, 0.40, 1)
-light_energy = 0.18
+light_color = Color(0.6, 0.68, 0.76, 1)
+light_energy = 0.2
+shadow_enabled = false
+
+; Cool-white overhead fluorescents (blender fluor at y=1.5 & 3.5, CEIL 2.8)
+; (2026-10-08) the waiting room next door: its four troffers
+[node name="Wait_Fluor_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.000, 2.550, -1.400)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Wait_Fluor_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.600, 2.550, -1.400)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Wait_Fluor_2_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.000, 2.550, -3.700)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Wait_Fluor_3_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.600, 2.550, -3.700)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Practical_Overhead_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -1.5)
+light_color = Color(0.9, 0.94, 0.96, 1)
+light_energy = 1.5
+omni_range = 4.2
+shadow_enabled = false
+
+[node name="Practical_Overhead_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -3.5)
+light_color = Color(0.9, 0.94, 0.96, 1)
+light_energy = 1.5
+omni_range = 4.2
+shadow_enabled = false
+
+; Cyan-green glow from the vitals monitor screen (blender 1.1,3.5,1.42)
+[node name="Practical_Monitor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.42, -3.5)
+light_color = Color(0.4, 0.86, 0.78, 1)
+light_energy = 0.5
+omni_range = 1.3
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -272,7 +339,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +358,36 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the paper cup of coffee she has not drunk
+; (2026-10-08) her coffee, not drunk, on the seat beside hers — the waiting room next door
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.500, 1.100, -3.750)
+rotation = Vector3(-0.5707, 0.4834, 0.0)
+metadata/fov = 42.0
+
+; insert: she takes Linda's free hand in both of hers
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.05, -1.6)
+rotation = Vector3(-0.2120, 0.2753, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.675, 1.612, -1.999)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.958, 1.612, -4.126)
+rotation = Vector3(-0.2618, 2.6180, 0.0)
+metadata/fov = 45.0
+; (2026-10-07) out and down through the cut window: the street three storeys below
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.600, -3.300)
+rotation = Vector3(-0.2379, 0.0653, 0.0)
+metadata/fov = 52.0
+

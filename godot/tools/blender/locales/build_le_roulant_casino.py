@@ -35,8 +35,8 @@ def build_shell():
                   palette=PAL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-3.0, 0.0, 0), length=5.0, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+3.0, 0.0, 0), length=5.0, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-3.0, 0.0, 0), length=5.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+3.0, 0.0, 0), length=5.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),
                                     ("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),
@@ -57,7 +57,7 @@ def build_marble_columns():
 def build_roulette_table():
     rx, ry = 0.0, 4.50
     # Table base — long oval (approximated as box + rounded ends)
-    make_box("Roulette_Base", (rx, ry, 0.40), (2.40, 1.20, 0.80), COL_FELT)
+    make_box("Roulette_Base", (rx, ry, 0.41), (2.40, 1.20, 0.82), COL_FELT)   # up to the top (2026-09-23: 2 cm short — 94 things on the table floated)
     make_box("Roulette_Top",  (rx, ry, 0.84), (2.50, 1.30, 0.04), (0.32, 0.20, 0.16, 1.0))
     # Roulette wheel at the W end of the table
     wx, wy = rx - 0.85, ry
@@ -95,10 +95,10 @@ def build_slot_bank():
         sy = 1.50 + si * 1.20
         make_box(f"Slot_{si}_Pedestal", (sx, sy, 0.40), (0.60, 0.50, 0.80), COL_SLOT_BODY)
         make_box(f"Slot_{si}_Body", (sx, sy, 1.30, ), (0.60, 0.50, 1.00), COL_SLOT_BODY)
-        make_box(f"Slot_{si}_Screen", (sx+0.26, sy, 1.30), (0.005, 0.40, 0.40), COL_SLOT_SCREEN)
+        make_box(f"Slot_{si}_Screen", (sx+0.26 + 0.0431, sy, 1.30), (0.005, 0.40, 0.40), COL_SLOT_SCREEN)
         # Three reel windows
         for ri in range(3):
-            make_box(f"Slot_{si}_Reel_{ri}", (sx+0.27, sy - 0.16 + ri*0.16, 1.30),
+            make_box(f"Slot_{si}_Reel_{ri}", (sx+0.27 + 0.0331, sy - 0.16 + ri*0.16, 1.30),
                      (0.005, 0.12, 0.20), (0.92, 0.92, 0.86, 1.0))
         # Crank handle
         make_box(f"Slot_{si}_Crank", (sx+0.30, sy+0.28, 1.00), (0.06, 0.06, 0.20), COL_BRASS)
@@ -109,7 +109,7 @@ def build_cashier_cage():
     # Cashier window on N wall (right of column) with brass bars
     cx, cy = +3.50, ROOM_D - 0.10
     make_box("Cage_Window_Frame", (cx, cy, 1.60), (1.80, 0.06, 1.20), COL_BRASS)
-    make_box("Cage_Counter_Top",   (cx, cy - 0.30, 1.06), (1.80, 0.50, 0.04), COL_BRASS)
+    make_box("Cage_Counter_Top",   (cx, cy - 0.28, 1.06), (1.80, 0.50, 0.04), COL_BRASS)   # against the window frame
     # Vertical brass bars
     for bi in range(8):
         bx = cx - 0.78 + bi * 0.22
@@ -129,6 +129,7 @@ def build_neon_wheel_sign():
         ey = sy + math.sin(ang) * 0.40
         make_box(f"NeonSign_Spoke_{i}", (ex, ey, CEIL-0.30), (0.04, 0.04, 0.04), COL_NEON)
     make_cyl("NeonSign_Hub", (sx, sy, CEIL-0.30), 0.10, 0.04, COL_BRASS, segments=10)
+    make_cyl("NeonSign_Rod", (sx, sy, CEIL-0.14), 0.015, 0.28, COL_BRASS, segments=6)   # hub to ceiling (2026-09-23: the sign hung from nothing)
 
 
 def build_ceiling_infra():
@@ -139,11 +140,12 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 5.0, CEIL))
     make_sprinkler("Spr_W", (-3.0, 4.5, CEIL))
     make_sprinkler("Spr_E", (+3.0, 4.5, CEIL))
-    make_security_camera("Cam", (ROOM_W/2.0-0.10, 4.5, CEIL-0.10))
+    # on the ceiling, off the E wall (2026-09-23: 10 cm into the wall, 10-20 cm under the ceiling)
+    make_security_camera("Cam", (ROOM_W/2.0-0.22, 4.5, CEIL))
 
 
 def build_decor():
-    make_wall_clock("Clock", (ROOM_W/2.0-0.05, 7.0, 2.30), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (5.400, 7.0, 2.30), frozen_hour=4, frozen_min=15, facing='-X')
     make_floor_plant("Plant_SE", (ROOM_W/2.0-0.50, 0.50, 0.0), palette={"leaf": (0.42, 0.30, 0.20, 1.0)})
     make_floor_plant("Plant_SW", (-ROOM_W/2.0+0.50, 0.50, 0.0), palette={"leaf": (0.42, 0.30, 0.20, 1.0)})
 
@@ -167,35 +169,39 @@ def build_wheel_dressing():
     # Most Le Roulant builds put the wheel at the center of the
     # roulette table; nudging coordinates here so the scuff lands
     # ON the wheel regardless of exact rotation.
-    wheel_cx = +2.50
-    wheel_cy = +1.50
-    wheel_top_z = 1.06
+    # The roulette table (Roulette_Top): (0, 4.5), 2.5 × 1.3, top 0.86;
+    # the wheel end is west of the felt grid. (2026-09-10: the scuff
+    # was at (2.5, 1.5, 1.06) — open carpet.)
+    wheel_cx = -0.85
+    wheel_cy = +4.50
+    wheel_top_z = 0.86
     # Third-quadrant scuff — a darker arc on the wheel surface,
     # SE side of the wheel (the canonical "hesitates here" spot)
     make_box("RouletteWheel_ThirdQuadrantScuff",
-             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002),
+             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002 - 0.0131 + 0.0122),
              (0.18, 0.10, 0.001),
              (0.18, 0.14, 0.10, 1.0))   # darker scuff
     # A scratch streak radiating outward from the scuff
     make_box("RouletteWheel_ScuffStreak",
-             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003),
+             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003 - 0.0139 + 0.0118),
              (0.04, 0.04, 0.0005),
              (0.32, 0.24, 0.16, 1.0))
 
     # Bachelor party at the slot bank · streamers + a plastic crown
-    # Slot bank approx at (-3.0, -2.0)
-    slot_cx = -3.0
-    slot_cy = -2.0
+    # the slot bank (build_slots): x -4.95, slots at y 1.5 … 6.3, tops z 1.80
+    # (2026-09-23: "approx at (-3.0, -2.0)" — 1.7 m up in the open floor)
+    slot_cx = -4.95
+    slot_cy = 2.70
     # Two streamers draped (small horizontal box at slot-top height)
     for si, sox in enumerate([-0.6, +0.4]):
         make_box("BachelorParty_Streamer_%d" % si,
-                 (slot_cx + sox, slot_cy + 0.10, 1.95),
+                 (slot_cx, 1.50 + si * 2.40, 1.807),   # across a slot top
                  (0.50, 0.04, 0.014),
                  (0.96, 0.42, 0.62, 1.0) if si == 0 else (0.42, 0.74, 0.96, 1.0))
     # Plastic crown on top of one of the slots
-    crown_x = slot_cx + 0.30
-    crown_y = slot_cy - 0.04
-    crown_z = 1.66
+    crown_x = slot_cx
+    crown_y = slot_cy
+    crown_z = 1.82
     # Crown base (small ring band)
     make_cyl("BachelorParty_CrownBase",
              (crown_x, crown_y, crown_z),
@@ -214,9 +220,9 @@ def build_wheel_dressing():
 
     # Cashier-cage slip showing takings light
     # Cashier cage approx at (+4.0, -3.0) per build_cashier_cage
-    cage_x = +4.0
-    cage_y = -3.0
-    counter_z = 1.10
+    cage_x = +3.6             # Cage_Counter_Top: (3.5, 8.6), 1.8 × 0.5, top 1.08
+    cage_y = +8.6             # (2026-09-10: was (4, -3) — open floor)
+    counter_z = 1.08
     # Small cream slip on the counter
     make_box("CashierSlip_Paper",
              (cage_x - 0.20, cage_y - 0.30, counter_z + 0.003),
@@ -244,25 +250,27 @@ def build_wheel_dressing():
              (clip_x, clip_y, 1.00),
              (0.20, 0.04, 0.04),
              (0.32, 0.22, 0.14, 1.0))
+    for sgn in (-1, 1):   # posts (2026-09-23: a rail stub in the air)
+        make_box("PitRail_Post_%+d" % sgn, (clip_x + sgn * 0.085, clip_y, 0.49), (0.03, 0.03, 0.98), (0.32, 0.22, 0.14, 1.0))
     # Clipboard body
     make_box("Maddox_Clipboard_Body",
-             (clip_x, clip_y - 0.04, 1.04),
+             (clip_x, clip_y - 0.0225, 1.04),   # on the rail's face
              (0.16, 0.005, 0.22),
              (0.42, 0.32, 0.20, 1.0))
     # Cream paper on the clipboard
     make_box("Maddox_Clipboard_Paper",
-             (clip_x, clip_y - 0.043, 1.04),
+             (clip_x, clip_y - 0.0255, 1.04),
              (0.14, 0.001, 0.20),
              (0.94, 0.90, 0.80, 1.0))
     # 4 dark ruled lines (the tally Maddox keeps)
     for li in range(4):
         make_box("Maddox_Clipboard_Line_%d" % li,
-                 (clip_x, clip_y - 0.045, 1.10 - li * 0.04),
+                 (clip_x, clip_y - 0.0265, 1.10 - li * 0.04),
                  (0.10, 0.0005, 0.012),
                  (0.20, 0.16, 0.10, 1.0))
     # Brass clip at the top
     make_box("Maddox_Clipboard_Clip",
-             (clip_x, clip_y - 0.045, 1.14),
+             (clip_x, clip_y - 0.0265, 1.14),
              (0.12, 0.001, 0.02),
              (0.78, 0.62, 0.30, 1.0))
 
@@ -270,13 +278,13 @@ def build_wheel_dressing():
     # "bad ballast" that explains the hum being wrong
     # Neon wheel sign approx at (0, +4.0, ceiling-side)
     make_box("NeonWheel_BadBallast",
-             (-1.20, +4.00, 2.50),
+             (-0.95, +3.00, 3.70),   # on the ceiling by the sign (2026-09-23: in the air at (-1.2, 4.0))
              (0.10, 0.08, 0.20),
              (0.42, 0.32, 0.20, 1.0))
     # A dark wire snake running down from the bracket
     make_box("NeonWheel_BadBallast_Wire",
-             (-1.20, +4.04, 2.20),
-             (0.012, 0.012, 0.40),
+             (-0.85, +3.00, 3.61),   # ballast to the ring
+             (0.12, 0.012, 0.012),
              (0.10, 0.08, 0.06, 1.0))
 
 
@@ -318,6 +326,9 @@ def build_wheel_wave2_props():
              (cr_x, cr_y, ct_z),
              (1.20, 0.70, 0.04),
              (0.32, 0.22, 0.16, 1.0))
+    for lx_ in (-0.55, 0.55):   # legs (2026-09-23: a top on nothing)
+        for ly_ in (-0.30, 0.30):
+            make_box("CountRoom_Table_Leg_%+d_%+d" % (int(lx_ * 10), int(ly_ * 10)), (cr_x + lx_, cr_y + ly_, (ct_z - 0.02) / 2.0), (0.04, 0.04, ct_z - 0.02), (0.32, 0.22, 0.16, 1.0))
     # Two banker's trays
     for ti, dx in enumerate([-0.40, +0.40]):
         make_box("CountRoom_BankersTray_%d" % ti,
@@ -332,7 +343,7 @@ def build_wheel_wave2_props():
 
     # Form 47.C closing sheet on the table
     make_box("CountRoom_Form47C",
-             (cr_x, cr_y - 0.20, ct_z + 0.014),
+             (cr_x, cr_y - 0.20, ct_z + 0.014 + 0.0076),
              (0.22, 0.28, 0.002),
              (0.94, 0.90, 0.80, 1.0))
     # Three signature lines
@@ -349,17 +360,17 @@ def build_wheel_wave2_props():
                  (0.14, 0.16, 0.44, 1.0))
     # Wheel-service ticket #7794 stapled to top edge
     make_box("CountRoom_ServiceTicket7794",
-             (cr_x, cr_y - 0.06, ct_z + 0.017),
+             (cr_x, cr_y - 0.06, ct_z + 0.017 + 0.0041),
              (0.14, 0.09, 0.001),
              (0.94, 0.86, 0.42, 1.0))
     # Staple mark
     make_box("CountRoom_ServiceTicket7794_Staple",
-             (cr_x, cr_y - 0.02, ct_z + 0.018),
+             (cr_x, cr_y - 0.02, ct_z + 0.018 + 0.0030),
              (0.008, 0.02, 0.0008),
              (0.72, 0.72, 0.72, 1.0))
     # Ticket number in dark block
     make_box("CountRoom_ServiceTicket_Number",
-             (cr_x - 0.02, cr_y - 0.07, ct_z + 0.0185),
+             (cr_x - 0.02, cr_y - 0.07, ct_z + 0.0185 + 0.0024),
              (0.05, 0.010, 0.0005),
              (0.20, 0.16, 0.12, 1.0))
 
@@ -382,8 +393,8 @@ def build_wheel_wave2_props():
     # Neon wheel sign · OFF · (transformer cut at 2:15)
     # We add a small overlay square that mutes the neon color
     make_box("Wave2_NeonWheelSign_OffOverlay",
-             (0.0, +4.00, 3.20),
-             (2.10, 0.001, 0.90),
+             (0.0, +3.00, 3.475),   # under the ring itself (2026-09-23: a pane 1 m from the sign)
+             (1.62, 1.62, 0.001),
              (0.10, 0.08, 0.08, 0.60))
 
     # ── the_service_call_saturday ─────────────────────────────
@@ -391,7 +402,7 @@ def build_wheel_wave2_props():
     # Wheel disassembled on the roulette layout · bearing cage
     # Roulette table at approximately (0, +1.00) · felt height 0.86
     rt_x = 0.0
-    rt_y = +1.00
+    rt_y = +4.50              # the real table (was y 1.0 — carpet)
     felt_z = 0.86
     # A protective cloth (dark blue) on which the parts rest
     make_box("ServiceCloth_OnFelt",
@@ -431,34 +442,42 @@ def build_wheel_wave2_props():
              (0.20, 0.14, 0.10, 1.0))
 
     # Terry's Gulf Coast Gaming service case (silver, marked)
+    # on the floor at the table's front face (2026-09-25: at rt_y - 0.60
+    # and z 0.40 its back half stood inside the table's base, in the
+    # air; the decal on its back was 16 cm inside the base)
     tc_x = rt_x + 0.60
-    tc_y = rt_y - 0.60
+    tc_y = rt_y - 0.751
     make_box("Terry_ServiceCase_Body",
-             (tc_x, tc_y, 0.40),
+             (tc_x, tc_y, 0.07),
              (0.44, 0.30, 0.14),
              (0.86, 0.86, 0.88, 1.0))
     # Two silver latches
     for cx in (-0.16, +0.16):
         make_box("Terry_ServiceCase_Latch_%d" % int(cx*100),
-                 (tc_x + cx, tc_y - 0.16, 0.44),
+                 (tc_x + cx, tc_y - 0.1525, 0.11),
                  (0.02, 0.005, 0.02),
                  (0.62, 0.62, 0.64, 1.0))
-    # Gulf Coast Gaming decal (small blue rectangle)
+    # Gulf Coast Gaming decal (small blue rectangle) on the front face
     make_box("Terry_ServiceCase_Decal",
-             (tc_x, tc_y + 0.16, 0.46),
+             (tc_x, tc_y - 0.1505, 0.07),
              (0.14, 0.001, 0.06),
              (0.24, 0.42, 0.68, 1.0))
     # White stencil letters on decal
     make_box("Terry_ServiceCase_Decal_Letters",
-             (tc_x, tc_y + 0.161, 0.46),
+             (tc_x, tc_y - 0.15125, 0.07),
              (0.10, 0.0005, 0.020),
              (0.94, 0.92, 0.86, 1.0))
 
     # Service history folder open on the pit desk with pages 4 and 7 missing
     # Pit desk at approximately (-2.60, +2.00) · desk_z 0.78
-    pit_x = -2.60
+    pit_x = -1.95   # east of Column_0 (2026-09-23: at -2.60 the folder lay inside the column's shaft)
     pit_y = +2.00
     pit_z = 0.78
+    # the desk itself (2026-09-23: "pit desk at approximately" — never built)
+    make_box("Pit_Desk_Top", (pit_x + 0.05, pit_y - 0.18, 0.77), (0.80, 0.76, 0.04), (0.30, 0.20, 0.14, 1.0))
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box("Pit_Desk_Leg_%+d_%+d" % (lx_, ly_), (pit_x + 0.05 + lx_ * 0.36, pit_y - 0.18 + ly_ * 0.34, 0.375), (0.04, 0.04, 0.75), (0.30, 0.20, 0.14, 1.0))
     make_box("ServiceHistory_Folder_Left",
              (pit_x - 0.12, pit_y, pit_z + 0.014),
              (0.20, 0.28, 0.002),
@@ -517,6 +536,53 @@ def build_wheel_wave2_props():
              (0.82, 0.86, 0.90, 0.50), segments=12, axis='Z')
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the Wheel (wear pass 7).
+
+    A casino's wear is DESIGNED: the house routes you, so the
+    carpet lanes run door → roulette → slots → cage in a loop
+    that was planned before any foot took it — the one locale
+    where the traffic pattern is the ARCHITECT'S wear, not the
+    users'. On top of the plan, the users add their tells: the
+    roulette rail rubbed bright where the bettors lean at the
+    wheel end (nobody leans at the payout end), the third slot's
+    floor worn double (every room has a lucky machine and it is
+    never lucky), and the cage counter's brass sill worn pale in
+    the middle where forty years of chips slide UNDER the bars.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    lane = (0.34, 0.16, 0.16, 1.0)     # crushed casino-red carpet
+    brass_bright = (0.92, 0.80, 0.48, 1.0)
+    worn_pale = (0.72, 0.62, 0.44, 1.0)
+    # THE HOUSE'S LOOP · door (S) → roulette → slots → cage → door
+    make_traffic_wear("Wear_House_Loop_A",
+                      [(0.0, 0.8), (0.0, 3.2)],
+                      width=0.9, tint=lane)
+    make_traffic_wear("Wear_House_Loop_B",
+                      [(-0.8, 4.6), (-3.0, 4.2), (-4.4, 3.4)],
+                      width=0.7, tint=lane)
+    make_traffic_wear("Wear_House_Loop_C",
+                      [(-4.4, 5.0), (-1.5, 7.2), (3.4, 8.2)],
+                      width=0.7, tint=lane)
+    make_traffic_wear("Wear_House_Loop_D",
+                      [(3.5, 7.8), (2.0, 4.5), (0.5, 1.2)],
+                      width=0.6, tint=lane)
+    # The bettors' lean: rail bright at the WHEEL end only.
+    make_box("Wear_Rail_Lean", (-0.85, 4.50, 0.865), (0.6, 1.28, 0.006),
+             brass_bright)
+    # The lucky third slot: floor worn double, and its lever-side
+    # edge rubbed pale.
+    make_floor_stain("Wear_Slot2_Floor", (-4.35, 3.90), radius=0.30,
+                     tint=(0.28, 0.13, 0.13, 1.0), segments=9)
+    make_floor_stain("Wear_Slot2_Floor_Deep", (-4.35, 3.90), radius=0.16,
+                     tint=(0.24, 0.11, 0.11, 1.0), segments=8)
+    make_box("Wear_Slot2_Edge", (-4.647, 3.90, 1.30), (0.006, 0.30, 0.25),   # on the cabinet face
+             worn_pale)
+    # The cage sill: brass worn pale mid-span where the chips slide.
+    make_box("Wear_Cage_Sill", (3.50, 8.62, 1.083), (0.7, 0.44, 0.005),
+             worn_pale)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -529,6 +595,7 @@ def main():
     build_decor()
     build_wheel_dressing()
     build_wheel_wave2_props()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/le_roulant_casino.glb"))
     print(f"\n[build_le_roulant_casino] exporting to {out}")

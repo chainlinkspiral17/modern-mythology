@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://caldwell_porch_night_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://caldwell_porch_night_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/caldwell_porch_night.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,30 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.06, 0.04, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.42, 0.28, 1)
-ambient_light_energy = 0.55
+ambient_light_color = Color(0.64, 0.48, 0.34, 1)
+ambient_light_energy = 1.0
+; (2026-09-24, sheet 28: was 0.65 — dark-albedo set under the night/dusk
+; palette moods rendered black; the shader playbook's 2026-07-12 rule: ambient 1.0-1.8)
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.28, 0.20, 1)
 fog_light_energy = 0.5
 fog_density = 0.007
@@ -154,23 +171,62 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.5
+[node name="Key__caldwell_porch_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
+light_color = Color(0.96, 0.66, 0.34, 1)
+light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
+[node name="Fill__caldwell_porch_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.35
+light_color = Color(0.96, 0.66, 0.34, 1)
+light_energy = 0.55
 shadow_enabled = false
 
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__caldwell_porch_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
 shadow_enabled = false
+
+; Warm carriage porch-lamp at the visible wall fixture (blender -1.5,0.30,2.14)
+[node name="Practical_PorchLamp__caldwell_porch_night" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.725, 2.14, -0.3)
+light_color = Color(0.98, 0.82, 0.56, 1)
+light_energy = 2.2
+omni_range = 4.2
+shadow_enabled = false
+
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 1.68, -1.13)
+rotation = Vector3(-0.4666, -2.5502, 0.0)
+
+[node name="shot_insert_blanket" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.03, -1.72)
+rotation = Vector3(-0.4608, 1.8788, 0.0)
+
+[node name="shot_insert_cake" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 1.08, -1.54)
+rotation = Vector3(-0.4589, 0.9610, 0.0)
+
+[node name="shot_insert_photo" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78, 1.09, -1.75)
+rotation = Vector3(-0.4614, 1.1831, 0.0)
+
+[node name="shot_insert_iced_tea" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 1.14, -1.82)
+rotation = Vector3(-0.4682, 1.4402, 0.0)
+
+; ── the yard party's day (2026-10-10, preset caldwell_yard_afternoon) — row-major
+; 3:45 PM in mid-August: a high sun out of the WSW, travelling east, north and down
+[node name="Sun_Afternoon__caldwell_yard_afternoon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.6374, 0.5391, -0.5505, 0.0000, 0.7145, 0.6997, 0.7705, -0.4460, 0.4554, 6, 10, 2)
+light_color = Color(1.0, 0.94, 0.82, 1)
+light_energy = 1.25
+shadow_enabled = true
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +328,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +347,105 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the porch edge back at the screen door and lamp
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.4, 1.5, -2.9)
+rotation = Vector3(-0.109472, -2.99451, 0)
+metadata/fov = 56.0
+
+; rotation C: along the porch from the bike end to the rockers
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.7, 1.45, -1.3)
+rotation = Vector3(-0.173651, 1.38257, 0)
+metadata/fov = 54.0
+
+; insert: the iced tea and folded paper on the side table
+[node name="shot_insert_tea" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.6, 1.1, -1.4)
+rotation = Vector3(-0.549797, 0.785398, 0)
+metadata/fov = 42.0
+
+; insert: Maya's bike at the porch steps
+[node name="shot_insert_bike" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2, 1.1, -1.4)
+rotation = Vector3(-0.4463, -2.7599, 0.0)
+metadata/fov = 44.0
+
+; insert: her phone buzzes at the stoplight
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.35, -0.75)
+rotation = Vector3(-0.4506, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: a car comes down the street, slow
+[node name="shot_insert_car" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.180, 1.373, 2.726)
+rotation = Vector3(-0.2618, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.848, 1.612, -2.628)
+rotation = Vector3(-0.2618, 2.0944, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.494, 1.612, -1.276)
+rotation = Vector3(-0.2618, -1.0472, 0.0)
+metadata/fov = 45.0
+
+; ── vn_shot coverage (2026-10-10) — the yard party (caldwell_yard_afternoon)
+; insert: GRACIE — STICKER QUEEN, the sheet cake on the folding table
+[node name="shot_insert_cake__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.000, 1.350, 0.100)
+rotation = Vector3(-0.6293, -0.2783, 0.0)
+metadata/fov = 40.0
+
+; insert: Anita's phone on the table, for the picture
+[node name="shot_insert_photo__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.400, 1.300, 0.150)
+rotation = Vector3(-0.7537, -0.4408, 0.0)
+metadata/fov = 40.0
+
+; closeup: Bill by the cake, the pecan and the house behind him
+[node name="shot_closeup_person__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(8.600, 1.700, 1.400)
+rotation = Vector3(0.0282, -0.7056, 0.0)
+metadata/fov = 42.0
+
+; closeup: Anita at the lemonade end of the table
+[node name="shot_closeup_person_b__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(12.400, 1.620, 1.300)
+rotation = Vector3(0.0000, 0.8050, 0.0)
+metadata/fov = 42.0
+
+; closeup: Gracie beside the table, beside her sticker book
+[node name="shot_closeup_gracie__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.900, 1.300, 1.500)
+rotation = Vector3(-0.0541, 0.4182, 0.0)
+metadata/fov = 42.0
+
+; reverse: from under the pecan back to the porch and the street
+[node name="shot_establish_b__caldwell_yard_afternoon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(12.600, 1.700, -2.600)
+rotation = Vector3(-0.0268, 1.8982, 0.0)
+metadata/fov = 60.0
+
+; ── named closeups (pass 93): the two porch chairs, each from its outer side along the porch
+; closeup: Maya in her porch chair with the iced tea, from the east along the porch
+[node name="shot_closeup_maya" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.600, 1.400, -1.600)
+rotation = Vector3(-0.2217, 1.3102, 0.0)
+metadata/fov = 42.0
+
+; closeup: Linda in the wicker chair, from the west along the porch
+[node name="shot_closeup_linda" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.900, 1.400, -1.600)
+rotation = Vector3(-0.2228, -1.3290, 0.0)
+metadata/fov = 42.0
+

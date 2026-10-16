@@ -1,0 +1,1951 @@
+{
+  "id": "academy_gate",
+  "notes": "Ch5 reveal \u00b7 HD-divergent. The Order of the Prophet's mountain Academy at purple dusk: a carved facade set in the massif, an eight-pointed gold star blazing on the pediment, a tall gate of hot light, processional stair, order banners, tall Kyrindi guards. A false cathedral.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#0e0818",
+    "#1c1030",
+    "#2e1a44",
+    "#4a2860",
+    "#6a3a74",
+    "#8a4a6a",
+    "#241830",
+    "#3a2c48",
+    "#5a4a66",
+    "#7a6a86",
+    "#c8a058",
+    "#f4d878",
+    "#fff0b0",
+    "#f4c848",
+    "#b8c4e0",
+    "#c02830",
+    "#0a0610",
+    "#c8a058",
+    "#5a4a30",
+    "#e8d8ff"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        0,
+        46
+      ],
+      "stops": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "op": "noise",
+      "xywh": [
+        0,
+        0,
+        160,
+        26
+      ],
+      "color": 12,
+      "density": 0.03,
+      "seed": 7
+    },
+    {
+      "op": "disk",
+      "xy": [
+        28,
+        16
+      ],
+      "r": 9,
+      "color": 13
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        20,
+        8,
+        18,
+        18
+      ],
+      "color": 3,
+      "amount": 0.25
+    },
+    {
+      "op": "ring",
+      "xy": [
+        28,
+        16
+      ],
+      "r": 10,
+      "color": 11
+    },
+    {
+      "op": "disk",
+      "xy": [
+        134,
+        12
+      ],
+      "r": 5,
+      "color": 14
+    },
+    {
+      "op": "ring",
+      "xy": [
+        134,
+        12
+      ],
+      "r": 6,
+      "color": 14
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          44
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          80,
+          30
+        ],
+        [
+          120,
+          18
+        ],
+        [
+          160,
+          40
+        ],
+        [
+          160,
+          90
+        ],
+        [
+          0,
+          90
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          0,
+          44
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          80,
+          30
+        ],
+        [
+          120,
+          18
+        ],
+        [
+          160,
+          40
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          60
+        ],
+        [
+          50,
+          44
+        ],
+        [
+          110,
+          50
+        ],
+        [
+          160,
+          46
+        ],
+        [
+          160,
+          90
+        ],
+        [
+          0,
+          90
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          0,
+          60
+        ],
+        [
+          50,
+          44
+        ],
+        [
+          110,
+          50
+        ],
+        [
+          160,
+          46
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        52,
+        40,
+        56,
+        46
+      ],
+      "color": 7
+    },
+    {
+      "op": "vgrad",
+      "x_range": [
+        52,
+        108
+      ],
+      "y_range": [
+        40,
+        86
+      ],
+      "stops": [
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "op": "hline",
+      "y": 40,
+      "x_range": [
+        52,
+        108
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 52,
+      "y_range": [
+        40,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 107,
+      "y_range": [
+        40,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        58,
+        48,
+        3,
+        38
+      ],
+      "color": 8
+    },
+    {
+      "op": "vline",
+      "x": 58,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 60,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        67,
+        48,
+        3,
+        38
+      ],
+      "color": 8
+    },
+    {
+      "op": "vline",
+      "x": 67,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 69,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        48,
+        3,
+        38
+      ],
+      "color": 8
+    },
+    {
+      "op": "vline",
+      "x": 76,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 78,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        85,
+        48,
+        3,
+        38
+      ],
+      "color": 8
+    },
+    {
+      "op": "vline",
+      "x": 85,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 87,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        94,
+        48,
+        3,
+        38
+      ],
+      "color": 8
+    },
+    {
+      "op": "vline",
+      "x": 94,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 96,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        103,
+        48,
+        3,
+        38
+      ],
+      "color": 8
+    },
+    {
+      "op": "vline",
+      "x": 103,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 105,
+      "y_range": [
+        48,
+        86
+      ],
+      "color": 6
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          50,
+          40
+        ],
+        [
+          80,
+          26
+        ],
+        [
+          110,
+          40
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          50,
+          40
+        ],
+        [
+          80,
+          26
+        ],
+        [
+          110,
+          40
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        70,
+        24,
+        20,
+        20
+      ],
+      "color": 12,
+      "amount": 0.4
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          80,
+          28
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          80,
+          40
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          74,
+          34
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          86,
+          34
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          76,
+          30
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          84,
+          30
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          76,
+          38
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          80,
+          34
+        ],
+        [
+          84,
+          38
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        34
+      ],
+      "size": 3,
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        74,
+        58,
+        12,
+        28
+      ],
+      "color": 0
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          74,
+          58
+        ],
+        [
+          80,
+          52
+        ],
+        [
+          86,
+          58
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        60,
+        86
+      ],
+      "x_range": [
+        76,
+        84
+      ],
+      "stops": [
+        19,
+        12,
+        11,
+        10
+      ]
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        70,
+        56,
+        20,
+        32
+      ],
+      "color": 12,
+      "amount": 0.25
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        70,
+        86,
+        20,
+        2
+      ],
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 86,
+      "x_range": [
+        70,
+        90
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        67,
+        88,
+        26,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "hline",
+      "y": 88,
+      "x_range": [
+        67,
+        93
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        90,
+        32,
+        2
+      ],
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 90,
+      "x_range": [
+        64,
+        96
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        61,
+        92,
+        38,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "hline",
+      "y": 92,
+      "x_range": [
+        61,
+        99
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        58,
+        94,
+        44,
+        2
+      ],
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 94,
+      "x_range": [
+        58,
+        102
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        55,
+        96,
+        50,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "hline",
+      "y": 96,
+      "x_range": [
+        55,
+        105
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        56,
+        46,
+        4,
+        30
+      ],
+      "color": 15
+    },
+    {
+      "op": "vline",
+      "x": 56,
+      "y_range": [
+        46,
+        76
+      ],
+      "color": 11
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          56,
+          76
+        ],
+        [
+          60,
+          76
+        ],
+        [
+          58,
+          80
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        58,
+        60
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        100,
+        46,
+        4,
+        30
+      ],
+      "color": 15
+    },
+    {
+      "op": "vline",
+      "x": 100,
+      "y_range": [
+        46,
+        76
+      ],
+      "color": 11
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          100,
+          76
+        ],
+        [
+          104,
+          76
+        ],
+        [
+          102,
+          80
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        60
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        66,
+        92,
+        3,
+        10
+      ],
+      "color": 16
+    },
+    {
+      "op": "disk",
+      "xy": [
+        67,
+        90
+      ],
+      "r": 2,
+      "color": 16
+    },
+    {
+      "op": "vline",
+      "x": 69,
+      "y_range": [
+        92,
+        100
+      ],
+      "color": 4
+    },
+    {
+      "op": "vline",
+      "x": 67,
+      "y_range": [
+        84,
+        92
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        91,
+        92,
+        3,
+        10
+      ],
+      "color": 16
+    },
+    {
+      "op": "disk",
+      "xy": [
+        92,
+        90
+      ],
+      "r": 2,
+      "color": 16
+    },
+    {
+      "op": "vline",
+      "x": 90,
+      "y_range": [
+        92,
+        100
+      ],
+      "color": 4
+    },
+    {
+      "op": "vline",
+      "x": 92,
+      "y_range": [
+        84,
+        92
+      ],
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        9
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        13
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        17
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        21
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        25
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        29
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        33
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        37
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        41
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        49
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        53
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        57
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        61
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        65
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        69
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        73
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        77
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        81
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        9,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        13,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        17,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        21,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        25,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        29,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        37,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        41,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        45,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        49,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        53,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        57,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        61,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        65,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        69,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        73,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        81,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        85,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        89,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        93,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        97,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        101,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        105,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        109,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        113,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        117,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        121,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        125,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        129,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        133,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        137,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        141,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        145,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        149,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        153,
+        45
+      ],
+      "size": 1,
+      "color": 18
+    },
+    {
+      "op": "ring",
+      "xy": [
+        80,
+        45
+      ],
+      "r": 3,
+      "color": 18
+    },
+    {
+      "op": "hline",
+      "y": 3,
+      "x_range": [
+        3,
+        157
+      ],
+      "color": 17
+    },
+    {
+      "op": "hline",
+      "y": 86,
+      "x_range": [
+        3,
+        157
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 3,
+      "y_range": [
+        3,
+        87
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 156,
+      "y_range": [
+        3,
+        87
+      ],
+      "color": 17
+    },
+    {
+      "op": "hline",
+      "y": 5,
+      "x_range": [
+        5,
+        155
+      ],
+      "color": 18
+    },
+    {
+      "op": "hline",
+      "y": 84,
+      "x_range": [
+        5,
+        155
+      ],
+      "color": 18
+    },
+    {
+      "op": "vline",
+      "x": 5,
+      "y_range": [
+        5,
+        85
+      ],
+      "color": 18
+    },
+    {
+      "op": "vline",
+      "x": 154,
+      "y_range": [
+        5,
+        85
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        3,
+        10,
+        2
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        3,
+        2,
+        10
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        147,
+        3,
+        10,
+        2
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        156,
+        3,
+        2,
+        10
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        86,
+        10,
+        2
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        77,
+        2,
+        10
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        147,
+        86,
+        10,
+        2
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        156,
+        77,
+        2,
+        10
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 9,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 9,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 17,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 17,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 25,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 25,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 33,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 33,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 41,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 41,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 49,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 49,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 57,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 57,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 65,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 65,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 73,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 73,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 81,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 81,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 89,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 89,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 97,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 97,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 105,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 105,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 113,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 113,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 121,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 121,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 129,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 129,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 137,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 137,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 145,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 145,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 11
+    },
+    {
+      "op": "text",
+      "xy": [
+        9,
+        78
+      ],
+      "s": "ACADEMY",
+      "color": 11
+    },
+    {
+      "op": "text",
+      "xy": [
+        120,
+        8
+      ],
+      "s": "ORDER 05",
+      "color": 11
+    }
+  ]
+}

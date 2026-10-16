@@ -1,0 +1,62 @@
+{
+  "id": "manuscript",
+  "notes": "THE PROPHET OF THE RED WORLD \u00b7 L. Rafayette Hubbard, 1948, unsent \u00b7 Rocha's coffee-stained copy, marginalia in blue. Runtime excerpts for the Codex MANUSCRIPT tab. Each entry unlocks with the game chapter that adapts it. The endpaper unlocks only with THE CORRECTION.",
+  "front_matter": [
+    {
+      "id": "title_page",
+      "heading": "TITLE PAGE",
+      "typescript": "THE PROPHET OF THE RED WORLD\n\na novel by L. RAFAYETTE HUBBARD\nPasadena, California \u00b7 1948\n\nManuscript \u00b7 78,432 words\nFor consideration by Street & Smith Publications",
+      "marginalia": "he never sent it.  street & smith never saw it.  he shelved it in september '48.  we found it in a box marked 'personal, do not repub' in the estate sale.  the estate never checked the box."
+    },
+    {
+      "id": "dedication_page",
+      "heading": "DEDICATION",
+      "typescript": "For M.,\nwho saw more of me than most\nand stayed anyway.",
+      "marginalia": "M is Marjorie Cameron.  hubbard dedicated this book to her while he was busy with Parsons' actual partner.  which is a specific level of gall.  we kept the dedication in the title card \u00b7 our sara nai's arc is what we did about it."
+    }
+  ],
+  "chapters": [
+    {
+      "game_chapter": 1,
+      "covers": "I. The Laboratory \u00b7 II. The Passage",
+      "typescript": "John Whiteside stood before the assembled instruments of his art, and knew, as few men have ever known anything, that he stood at the hinge of the ages.  The lesser minds of the Institute had laughed.  They would not laugh long.  The candle flames stood erect as soldiers as he spoke the first syllable of the Operation, and it may be said without exaggeration that the room itself inclined toward him, as toward a king.",
+      "marginalia": "the real parsons' notebooks from this period are full of DOUBT.  crossed-out lines.  'try again.'  hubbard writes him as a man who has never once been unsure.  we gave the game's jack the crossed-out lines back.  see: the text box where you get most of the words right."
+    },
+    {
+      "game_chapter": 2,
+      "covers": "III. The Sand \u00b7 IV. The Circle",
+      "typescript": "The red sands of that elder world received him as a rightful heir.  The four-armed barbarian chieftain, seeing at once the natural authority in the Earthman's bearing, knelt \u00b7 for command is written on some men in a script every race can read.",
+      "marginalia": "we made hel velli NOT kneel.  he watches jack for three days and makes him fight a joke-duel about a briefcase.  authority you have to earn is the only kind our game respects.  also 'barbarian' \u00b7 hel velli reads three languages."
+    },
+    {
+      "game_chapter": 3,
+      "covers": "V. The Court of the Kyrindi \u00b7 VI. The First Working",
+      "typescript": "The silver princess of the Kyrindi had known many suitors, but none like this stranger from beyond the sky, who spoke of powers her philosophers had only guessed at.  Her eyes were pools a man might drown in gladly, and she attended his every word as a student attends a master.",
+      "marginalia": "sara nai is a SCHOLAR.  in our version SHE teaches HIM \u00b7 the kelait manuscripts, the mourning cycle, what the mines are.  'pools a man might drown in' is doing a lot of work for a man who never once wrote what she was reading."
+    },
+    {
+      "game_chapter": 4,
+      "covers": "VII. The Hunt \u00b7 VIII. The Mountain",
+      "typescript": "Of the small folk of the mines little need be said, save that they were grateful, in their fashion, and that their gratitude took the form of service gladly rendered to the man who had broken their chains with his arts.",
+      "marginalia": "'little need be said.'  ONE SENTENCE.  he freed them in one sentence for the applause and moved on.  mother kanel, yr, the kitchen, the salt \u00b7 all of chapter 4 is us saying MUCH needs to be said.  this chapter is why i took the QA job seriously."
+    },
+    {
+      "game_chapter": 5,
+      "covers": "IX. The Oracle \u00b7 X. The Betrayal \u00b7 XI. The Great Work",
+      "typescript": "That a lesser man had sought to claim the Prophet's rightful place among the Order will surprise no student of human nature.  Envy attends greatness as the shadow attends the flame.  But the Earthman saw through the usurper as through window-glass, for no deception can long survive the gaze of an awakened will.",
+      "marginalia": "the 'usurper' chapter is hubbard yelling at parsons for noticing.  in the real 1946, the money left with hubbard and so did sara northrup.  we built RONSON out of this chapter \u00b7 fourteen years on parsa, a religion that finally sells, twelve minutes to pitch you.  the soliloquy is his own letters, rearranged."
+    },
+    {
+      "game_chapter": 6,
+      "covers": "XII. The Babalon Working",
+      "typescript": "And so the Great Work was accomplished, and the Prophet ascended to his reward, and the red world knew ever after that it had been visited by the greatest of the men of Earth \u00b7 whose name, in their reverent tongue, they speak still.",
+      "marginalia": "his name, in their reverent tongue.  jack dies in this book so the narrator can inherit the applause.  our six endings are six different answers to this one paragraph.  the true one is the game itself."
+    }
+  ],
+  "endpaper": {
+    "requires_token": "earthman_correction_ending_seen",
+    "heading": "ENDPAPER \u00b7 ROCHA'S FINAL NOTE",
+    "typescript": "",
+    "marginalia": "for jack"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "archery_range",
+  "display_name": "the archery range",
+  "size": [26, 14],
+
+  "tileset": {
+    ".": { "kind": "grass",    "color": "#3a5c2c", "walkable": true },
+    ",": { "kind": "path",     "color": "#8c7a54", "walkable": true },
+    "T": { "kind": "tree",     "color": "#1a3a1c", "walkable": false, "label": "a tree at the range edge" },
+    "H": { "kind": "hay",      "color": "#c4a468", "walkable": false, "label": "a hay-bale bench for waiting archers" },
+    "L": { "kind": "line",     "color": "#e4d0a4", "walkable": false, "label": "the shooting line · a chalked stripe on the ground" },
+    "F": { "kind": "fence",    "color": "#6a4e2e", "walkable": false, "label": "a low split-rail fence" },
+    "R": { "kind": "rack",     "color": "#4a3222", "walkable": false, "label": "the bow rack · six bows in various states of use" },
+    "s": { "kind": "shoot_spot","color": "#5c8438", "walkable": true, "label": "the shooting line · press space to nock an arrow", "interact": "shoot_arrow" },
+    "t": { "kind": "target",   "color": "#c4c0a8", "walkable": false, "label": "a straw target · white with a red center" },
+    "p": { "kind": "back_path","color": "#8c7a54", "walkable": true, "exit": {"zone": "camp_path", "spawn": "from_archery_range"}, "label": "the path back toward camp" }
+  },
+
+  "tiles": [
+    "T.T.T.T.T.T.T.T.T.T.T.T.T.",
+    "T........................T",
+    "T........................T",
+    "TF.F.F.F.F.F.F.F.F.F.F.F.T",
+    ".s.................t.....T",
+    "L.s................t.....T",
+    ".s.................t.....T",
+    "L.s................t.....T",
+    ".s.................t.....T",
+    "L.s................t.....T",
+    "TF.F.F.F.F.F.F.F.F.F.F.F.T",
+    "TR.R.R.....HHHHHHH.......T",
+    "T.....,,,,,,,,,,,,,,,,,,,T",
+    "T.T.T.p.T.T.T.T.T.T.T.T.T."
+  ],
+
+  "spawns": {
+    "start":         [6, 13],
+    "from_camp_path":[6, 13]
+  },
+
+  "npcs": [],
+
+  "notes": "The archery range · six targets, six shooting spots, hay-bale benches for waiting archers, a bow rack west of the benches, a low fence separating the shooting side from the target side.  Bear teaches Monday afternoon and Friday morning.  Marisol Cortez wins both times."
+}

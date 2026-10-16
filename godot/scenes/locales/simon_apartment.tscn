@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://simon_apartment_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://simon_apartment_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/simon_apartment.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.74, 0.42, 1.0)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.10, 0.12, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.36, 0.34, 0.32, 1.0)
-ambient_light_energy = 0.32
+ambient_light_energy = 0.42
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.32, 0.34, 0.38, 1.0)
 fog_light_energy = 0.1
 fog_density = 0.012
@@ -157,22 +172,48 @@ environment = SubResource("Env_Locale")
 [node name="WindowBlueKey" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.984807753012208, -0.09960050292505117, 0.14224425972292398, 0, 0.8191520442889918, 0.573576436351046, -0.17364817766693028, 0.5648625214636234, -0.8067072841115988, 0.0, -2.0, 4.0)
 light_color = Color(0.62, 0.74, 0.92, 1)
-light_energy = 0.42
+light_energy = 0.5
 shadow_enabled = false
 
+; Low warm fill so the shadow side doesn't crush to black (mood kept low)
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(0.92, 0.80, 0.62, 1)
+light_energy = 0.18
+shadow_enabled = false
+
+; Cool cyan rim for depth (behind, low energy)
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)
+light_color = Color(0.58, 0.72, 0.90, 1)
+light_energy = 0.22
+shadow_enabled = false
+
+; Bare overhead bulb (blender 0,3.5,2.14 → godot 0,2.14,-3.5); was at
+; +Z (outside the room, which sits at -Z) — moved over the real bulb
 [node name="BareBulb" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.5, 2.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.14, -3.5)
 light_color = Color(0.96, 0.86, 0.62, 1)
-light_energy = 0.85
+light_energy = 1.15
+shadow_enabled = false
+omni_range = 4.5
+
+; Kitchenette fluorescent (blender -1.9,2.4,2.8 → godot -1.9,2.8,-2.4);
+; was at +Z (outside room) — moved over the real fixture
+[node name="KitchenFluor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2.8, -2.4)
+light_color = Color(0.96, 0.94, 0.86, 1)
+light_energy = 0.75
 shadow_enabled = false
 omni_range = 4.0
 
-[node name="KitchenFluor" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 2.4, 2.5)
-light_color = Color(0.96, 0.94, 0.86, 1)
-light_energy = 0.55
+; Warm bedside crate-lamp glow (blender 1.4,4.3,1.04 → godot 1.4,1.04,-4.3)
+[node name="CrateLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.04, -4.3)
+light_color = Color(1.0, 0.82, 0.54, 1)
+light_energy = 0.7
 shadow_enabled = false
-omni_range = 4.0
+omni_range = 2.2
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -274,7 +315,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -293,3 +334,30 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot · simon_apartment (2026-09-27, draft 40) ──
+; The room had no shot markers and no preset: it was built (the support
+; pass) and never framed. Godot = (blender x, blender z, -blender y).
+; insert: the TV on its crate against the E wall, snow on the screen, from the armchair
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.2, -2.4)
+rotation = Vector3(-0.15, -1.5708, 0.0)
+metadata/fov = 42.0
+
+; insert: the one boot hanging by its laces from the peg on the W wall
+[node name="shot_insert_boot" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.5, -5.2)
+rotation = Vector3(-0.05, 1.35, 0.0)
+metadata/fov = 40.0
+
+; the room's one closeup frame: a person mid-room by the armchair, the window behind
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.2, 1.612, -1.6)
+rotation = Vector3(-0.2618, -0.6435, 0.0)
+metadata/fov = 45.0
+
+; the REVERSE closeup, from the bed's side of the room
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.2, 1.612, -4.6)
+rotation = Vector3(-0.2618, 2.43, 0.0)
+metadata/fov = 45.0

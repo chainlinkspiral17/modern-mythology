@@ -1,0 +1,162 @@
+{
+ "id": "infrastructure_failing",
+ "notes": "The water tower with the seam letting go \u2014 three drips.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    40,
+    10,
+    18,
+    12
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     40,
+     10
+    ],
+    [
+     58,
+     10
+    ],
+    [
+     58,
+     22
+    ],
+    [
+     40,
+     22
+    ],
+    [
+     40,
+     10
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 43,
+   "y_range": [
+    22,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 55,
+   "y_range": [
+    22,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     43,
+     30
+    ],
+    [
+     55,
+     36
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     55,
+     30
+    ],
+    [
+     43,
+     36
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 49,
+   "y_range": [
+    14,
+    20
+   ],
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    49,
+    26
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    50,
+    32
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    49,
+    39
+   ],
+   "size": 2,
+   "color": 5
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    0,
+    0,
+    96,
+    54
+   ],
+   "color": 7,
+   "strength": 0.25
+  }
+ ]
+}

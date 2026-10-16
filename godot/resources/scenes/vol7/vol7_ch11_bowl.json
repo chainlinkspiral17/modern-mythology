@@ -39,11 +39,19 @@
       "t": "show"
     },
     {
-      "text": "The cabin was at sixty-three. Tem was in the chair beside the daybed. Lena was at the door, having come in from the porch some count before the ninety. Per had come back from Hans's at some point. Per was at the table by the kerosene lamp. The three of them were watching him.",
+      "text": "[trip:1.2][mood:candlelight_low]The cabin was at sixty-three. Tem was in the chair beside the daybed. Lena was at the door, having come in from the porch some count before the ninety. Per had come back from Hans's at some point.",
       "t": "narrate"
     },
     {
-      "text": "Kai opened his eyes. The fluorescents of the basement were the fluorescents of the basement. The desk and the boy and the rack of servers and the boy's notebook were the things he had just been with. The cabin was — the cabin was where he was now. The wool blanket was over him. The cap was on his forehead.",
+      "text": "[shot:insert table]Per was at the table by the kerosene lamp. The three of them were watching him.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert notebook]Kai opened his eyes. The fluorescents of the basement were the fluorescents of the basement. The desk and the boy and the rack of servers and the boy's notebook were the things he had just been with.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin was — the cabin was where he was now. The wool blanket was over him. The cap was on his forehead.",
       "t": "narrate"
     },
     {
@@ -66,13 +74,13 @@
     },
     {
       "char": "kai",
-      "text": "I'm back.",
+      "text": "[shot:closeup person]I'm back.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "How long did it feel.",
+      "text": "[shot:closeup person]How long did it feel.",
       "expr": "neutral",
       "t": "say"
     },
@@ -102,7 +110,7 @@
     },
     {
       "char": "kai",
-      "text": "The bowl.",
+      "text": "[shot:closeup person_b]The bowl.",
       "expr": "neutral",
       "t": "say"
     },
@@ -111,11 +119,23 @@
       "t": "narrate"
     },
     {
-      "text": "The bowl was in his shirt pocket where the second-station bowl had been in the inside pocket of the green wool coat. He pulled it out. It came out warm in his hand. It was the size of his palm. It had the spiral on the outside. Inside the spiral were the figures he had only had time to read in glimpses at the stream — the crow, the octopus with the seven-and-a-half arms, the ferret on a cedar floor, the woman in the slicker walking, the tower with one floor more than Cale had drawn.",
+      "text": "[shot:insert bowl]The bowl was in his shirt pocket where the second-station bowl had been in the inside pocket of the green wool coat. He pulled it out. It came out warm in his hand. It was the size of his palm. It had the spiral on the outside.",
       "t": "narrate"
     },
     {
-      "text": "He had not, on the path or in the basement, had time to read it more carefully than that. Looking at it now in the kerosene light he registered for the first time the smallness of some of the figures — a hand he had taken for empty cedar at the stream was carrying a wand with a star at the tip; what he had taken for a knot in the wood was a chariot with two horses pulling in opposite directions; what he had not been able to see in the substrate-rendering at all was a hexagon on the underside of the rim, six pieces fitted together, four of them dark with what looked like char.",
+      "text": "Inside the spiral were the figures he had only had time to read in glimpses at the stream — the crow, the octopus with the seven-and-a-half arms, the ferret on a cedar floor, the woman in the slicker walking, the tower with one floor more than Cale had drawn.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, on the path or in the basement, had time to read it more carefully than that.",
+      "t": "narrate"
+    },
+    {
+      "text": "Looking at it now in the kerosene light he registered for the first time the smallness of some of the figures — a hand he had taken for empty cedar at the stream was carrying a wand with a star at the tip;",
+      "t": "narrate"
+    },
+    {
+      "text": "what he had taken for a knot in the wood was a chariot with two horses pulling in opposite directions; what he had not been able to see in the substrate-rendering at all was a hexagon on the underside of the rim, six pieces fitted together, four of them dark with what looked like char.",
       "t": "narrate"
     },
     {
@@ -128,7 +148,7 @@
     },
     {
       "char": "per",
-      "text": "Kai.",
+      "text": "[shot:closeup person_b]Kai.",
       "expr": "serious",
       "t": "say"
     },
@@ -140,7 +160,7 @@
     },
     {
       "char": "per",
-      "text": "That is my father's hand.",
+      "text": "[beat:hit][shot:closeup per]That is my father's hand.",
       "expr": "serious",
       "t": "say"
     },
@@ -151,15 +171,27 @@
       "t": "say"
     },
     {
-      "text": "Per went to the wooden box on the table. He opened it. He took out his mother's bowl. He brought it over. He set the bowl Marit had given him beside the bowl Kai had brought out.",
+      "text": "[shot:establish]Per went to the wooden box on the table. He opened it. He took out his mother's bowl. He brought it over. He set the bowl Marit had given him beside the bowl Kai had brought out.",
       "t": "narrate"
     },
     {
-      "text": "The two bowls had been carved by one hand.",
+      "text": "[shot:insert bowls]The two bowls had been carved by one hand.",
       "t": "narrate"
     },
     {
-      "text": "The grain on the cedar was the same grain on both. The depth of the spiral on the outside was the same depth. The flame-mark pressed into the base with a heated iron was on both — Olaf's mark for the family. The hand was unmistakably Olaf's hand. The two bowls were, by every measure of the carving, by the rhythm of the spiral, by the way the carver had let the spiral end short of the rim by perhaps a quarter inch and had finished the rim with a curve back to the cut, by the angle at which the flame had been pressed into the base — the two bowls were the work of a man who had carved one bowl in 2006 and a man who, fifty years and three months later, had carved another.",
+      "text": "The grain on the cedar was the same grain on both. The depth of the spiral on the outside was the same depth. The flame-mark pressed into the base with a heated iron was on both — Olaf's mark for the family.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hand was unmistakably Olaf's hand.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls were, by every measure of the carving, by the rhythm of the spiral, by the way the carver had let the spiral end short of the rim by perhaps a quarter inch and had finished the rim with a curve back to the cut,",
+      "t": "narrate"
+    },
+    {
+      "text": "by the angle at which the flame had been pressed into the base — the two bowls were the work of a man who had carved one bowl in 2006 and a man who, fifty years and three months later, had carved another.",
       "t": "narrate"
     },
     {
@@ -185,19 +217,63 @@
       "t": "say"
     },
     {
-      "text": "The imagery on the outside of Marit's bowl, within the spiral, was the imagery Kai had read for the first time at eleven-twenty. The crow on the fencepost. The octopus with eight arms. The ferret on the stair-rail. The young woman in the hooded coat with the hood up. The tower with too many windows. The hanged man hanging by one foot. Smaller figures Kai had not had time to read — what might have been a hand holding a wand, what might have been a star, what might have been a chariot. Olaf had carved this bowl for his wife in 2006 and had put, in the cedar he had been working on every Sunday afternoon for three years, the figures the carver in Bergen had taught Olaf were the figures of the listening.",
+      "text": "The imagery on the outside of Marit's bowl, within the spiral, was the imagery Kai had read for the first time at eleven-twenty. The crow on the fencepost. The octopus with eight arms. The ferret on the stair-rail.",
       "t": "narrate"
     },
     {
-      "text": "The imagery on the outside of the bowl Kai had brought out of the experience was Marit's bowl's imagery and was not Marit's bowl's imagery.",
+      "text": "The young woman in the hooded coat with the hood up. The tower with too many windows. The hanged man hanging by one foot.",
       "t": "narrate"
     },
     {
-      "text": "The crow on the fencepost was on the bowl Kai had brought out, but the crow's head was turned the other way. The crow that had been three-quarters to the viewer on Marit's bowl was three-quarters away on the substrate's bowl, looking off to the right at a thing the carver had not put on the cedar but had let the curve of the bowl imply was there. The octopus was the octopus, but the octopus on the substrate's bowl had seven arms and a half-arm where Marit's bowl had eight whole arms — Lena's octopus, the one she had painted into Starfish Nebula in spring 2050, the one the substrate-patch had eaten in town this past Monday, the one that had come back in cedar on the bowl the substrate had given Kai at the second station of an experience designed in 2034 by a man named Diego who had had nothing to do with Lena or her mural or her arms.",
+      "text": "Smaller figures Kai had not had time to read — what might have been a hand holding a wand, what might have been a star, what might have been a chariot.",
       "t": "narrate"
     },
     {
-      "text": "The ferret was the ferret, but the ferret on the substrate's bowl was on a cedar floor instead of a stair-rail, and the floor was the floor of Tem's grandfather's cabin, which Olaf had built with Eddvard in '11, and which Olaf had never seen the floor of finished because Olaf had been dead a year before Eddvard had laid the floorboards in. The young woman in the hooded coat was on the substrate's bowl, but the woman on the substrate's bowl was walking past a doorway, and the doorway had on it the stenciled letters NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL, and the woman's slicker was the yellow of a slicker Kai had not, fifteen minutes ago, seen carved into any bowl. The tower was the tower, but the tower on the substrate's bowl was — by what Kai could read at this angle — seven floors and not six, with a small open seventh that had not been on Cale's airport napkin from 2006. The hanged man was the hanged man.",
+      "text": "Olaf had carved this bowl for his wife in 2006 and had put, in the cedar he had been working on every Sunday afternoon for three years, the figures the carver in Bergen had taught Olaf were the figures of the listening.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert bowl]The imagery on the outside of the bowl Kai had brought out of the experience was Marit's bowl's imagery and was not Marit's bowl's imagery.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow on the fencepost was on the bowl Kai had brought out, but the crow's head was turned the other way.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow that had been three-quarters to the viewer on Marit's bowl was three-quarters away on the substrate's bowl, looking off to the right at a thing the carver had not put on the cedar but had let the curve of the bowl imply was there.",
+      "t": "narrate"
+    },
+    {
+      "text": "The octopus was the octopus, but the octopus on the substrate's bowl had seven arms and a half-arm where Marit's bowl had eight whole arms — Lena's octopus, the one she had painted into Starfish Nebula in spring 2050,",
+      "t": "narrate"
+    },
+    {
+      "text": "the one the substrate-patch had eaten in town this past Monday, the one that had come back in cedar on the bowl the substrate had given Kai at the second station of an experience designed in 2034 by a man named Diego who had had nothing to do with Lena or her mural or her arms.",
+      "t": "narrate"
+    },
+    {
+      "text": "The ferret was the ferret, but the ferret on the substrate's bowl was on a cedar floor instead of a stair-rail, and the floor was the floor of Tem's grandfather's cabin,",
+      "t": "narrate"
+    },
+    {
+      "text": "which Olaf had built with Eddvard in '11, and which Olaf had never seen the floor of finished because Olaf had been dead a year before Eddvard had laid the floorboards in.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman in the hooded coat was on the substrate's bowl, but the woman on the substrate's bowl was walking past a doorway,",
+      "t": "narrate"
+    },
+    {
+      "text": "and the doorway had on it the stenciled letters NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL, and the woman's slicker was the yellow of a slicker Kai had not, fifteen minutes ago, seen carved into any bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The tower was the tower, but the tower on the substrate's bowl was — by what Kai could read at this angle — seven floors and not six, with a small open seventh that had not been on Cale's airport napkin from 2006.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hanged man was the hanged man.",
       "t": "narrate"
     },
     {
@@ -214,7 +290,7 @@
     },
     {
       "char": "per",
-      "text": "The substrate updated the imagery to include things that have happened since my father was alive.",
+      "text": "[shot:closeup person]The substrate updated the imagery to include things that have happened since my father was alive.",
       "expr": "serious",
       "t": "say"
     },
@@ -267,11 +343,19 @@
       "t": "say"
     },
     {
-      "text": "He sat down at the table.",
+      "text": "[shot:insert table]He sat down at the table.",
       "t": "narrate"
     },
     {
-      "text": "The two bowls were on the table side by side. The kerosene lamp gave them both the same light. Kai looked at them. Marit's bowl was the bowl the carver in 2006 had been waiting to make. The substrate's bowl was the bowl the substrate had been listening for. The two bowls together were the carving of a hand that had been at the rest of it from a place sixty years ago and the substrate's reading of what the listening had brought into the room since.",
+      "text": "The two bowls were on the table side by side. The kerosene lamp gave them both the same light. Kai looked at them. Marit's bowl was the bowl the carver in 2006 had been waiting to make.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate's bowl was the bowl the substrate had been listening for.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two bowls together were the carving of a hand that had been at the rest of it from a place sixty years ago and the substrate's reading of what the listening had brought into the room since.",
       "t": "narrate"
     },
     {
@@ -294,19 +378,37 @@
     },
     {
       "char": "tem",
-      "text": "Per. The bowl the substrate gave Kai is — by what Kai is going to tell us when he can — your mother's bowl as the carver would have made it now. The substrate gave him a bowl shaped by your father's hand in 2006 and updated, in the cedar, with the figures the listening has been bringing into the room since.",
+      "text": "[shot:closeup person]Per. The bowl the substrate gave Kai is — by what Kai is going to tell us when he can — your mother's bowl as the carver would have made it now.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The substrate gave the bowl to Kai because the substrate was — the substrate was using Kai as the player who could carry it back. The bowl came back with him because the substrate has done a thing the substrate has not done in any of the playings I have been in.",
+      "text": "The substrate gave him a bowl shaped by your father's hand in 2006 and updated, in the cedar, with the figures the listening has been bringing into the room since.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The substrate has — Per, the substrate has carved a bowl. The substrate took the carver and the carver's hand and the cedar in this cabin and put a bowl on the second station of Kestrel Mountain that did not exist this morning and that exists now, in the cabin, on this table, as a thing you can pick up.",
+      "text": "The substrate gave the bowl to Kai because the substrate was — the substrate was using Kai as the player who could carry it back.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The bowl came back with him because the substrate has done a thing the substrate has not done in any of the playings I have been in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has — Per, the substrate has carved a bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate took the carver and the carver's hand and the cedar in this cabin and put a bowl on the second station of Kestrel Mountain that did not exist this morning and that exists now, in the cabin, on this table, as a thing you can pick up.",
       "expr": "serious",
       "t": "say"
     },
@@ -330,13 +432,19 @@
     },
     {
       "char": "lena",
-      "text": "The substrate is in the cabin now.",
+      "text": "[shot:closeup person_b]The substrate is in the cabin now.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The substrate has been in the cabin since the bowl on the shelf has been warm. The substrate is the same listening apparatus the wood is. The wood is in the cabin. The silicon is in the cabin. The substrate is — the substrate is the relationship between them. The substrate is in the cabin. It has been in the cabin. We are — we are just seeing it now.",
+      "text": "The substrate has been in the cabin since the bowl on the shelf has been warm. The substrate is the same listening apparatus the wood is. The wood is in the cabin. The silicon is in the cabin.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate is — the substrate is the relationship between them. The substrate is in the cabin. It has been in the cabin. We are — we are just seeing it now.",
       "expr": "serious",
       "t": "say"
     },
@@ -360,7 +468,19 @@
     },
     {
       "char": "tem",
-      "text": "Your father carved one bowl in 2006. The substrate has, by the playing Kai just did, given us a second. Not the same bowl. The second bowl is what your father would have carved, today, if your father had been at the bench today with the figures the listening is putting into the cabin. The substrate has carved the bowl your father did not live to carve.",
+      "text": "[shot:closeup person]Your father carved one bowl in 2006. The substrate has, by the playing Kai just did, given us a second. Not the same bowl.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The second bowl is what your father would have carved, today, if your father had been at the bench today with the figures the listening is putting into the cabin.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has carved the bowl your father did not live to carve.",
       "expr": "serious",
       "t": "say"
     },
@@ -379,7 +499,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai sat up on the daybed. He pulled the cap off his forehead. He set the cap on the side table beside the reader. He looked at Lena. Lena was at the door with her hand on the frame.",
+      "text": "[shot:establish]Kai sat up on the daybed. He pulled the cap off his forehead. He set the cap on the side table beside the reader. He looked at Lena. Lena was at the door with her hand on the frame.",
       "t": "narrate"
     },
     {
@@ -396,7 +516,7 @@
     },
     {
       "char": "kai",
-      "text": "Lena. I met the imprint of Nate. The boy in the basement. The boy at sixteen at the desk. He told me — he told me the conversation he had with a Bergen carver in 1993 about the silicon and the bowls and the listening. He told me about the daughter.",
+      "text": "[shot:closeup kai]Lena. I met the imprint of Nate. The boy in the basement. The boy at sixteen at the desk. He told me — he told me the conversation he had with a Bergen carver in 1993 about the silicon and the bowls and the listening. He told me about the daughter.",
       "expr": "serious",
       "t": "say"
     },
@@ -430,7 +550,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. The carver.",
+      "text": "[shot:closeup person]Kai. The carver.",
       "expr": "neutral",
       "t": "say"
     },
@@ -460,13 +580,19 @@
     },
     {
       "char": "tem",
-      "text": "Inga's father — Inga's father carved in Bergen from the '40s through the early '70s. Inga's father — by what is in the Inga monograph, by what I have been reading about Inga since spring — Inga's father was a man named Anders Vestergaard.",
+      "text": "[shot:closeup tem]Inga's father — Inga's father carved in Bergen from the '40s through the early '70s. Inga's father — by what is in the Inga monograph, by what I have been reading about Inga since spring — Inga's father was a man named Anders Vestergaard.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "Anders Vestergaard apprenticed under a Norwegian named Karl Halvorsen in the late '30s. Karl Halvorsen apprenticed under a Swiss carver named Friedrich Schenck in the 1910s. The line goes back to Bern. The line goes back to the same place Hans's family came from. The line goes back to Werner Senior's family, by some number of generations.",
+      "text": "Anders Vestergaard apprenticed under a Norwegian named Karl Halvorsen in the late '30s. Karl Halvorsen apprenticed under a Swiss carver named Friedrich Schenck in the 1910s. The line goes back to Bern.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The line goes back to the same place Hans's family came from. The line goes back to Werner Senior's family, by some number of generations.",
       "expr": "serious",
       "t": "say"
     },
@@ -496,7 +622,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah. I think so.",
+      "text": "[shot:closeup person_b]Yeah. I think so.",
       "expr": "serious",
       "t": "say"
     },
@@ -514,7 +640,13 @@
     },
     {
       "char": "tem",
-      "text": "Inga is dead. Anders is dead. Nate is dead. The substrate is — the substrate has been keeping the three of them in the basement of Kestrel Mountain for some number of years. The substrate has been holding the conversation. The substrate held the conversation for you to walk into.",
+      "text": "Inga is dead. Anders is dead. Nate is dead. The substrate is — the substrate has been keeping the three of them in the basement of Kestrel Mountain for some number of years. The substrate has been holding the conversation.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate held the conversation for you to walk into.",
       "expr": "serious",
       "t": "say"
     },
@@ -530,7 +662,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I have been playing this stick for nine years.",
+      "text": "[shot:closeup person]Kai. I have been playing this stick for nine years.",
       "expr": "serious",
       "t": "say"
     },
@@ -589,7 +721,7 @@
       "t": "say"
     },
     {
-      "text": "She did not, for a count, do anything with her face.",
+      "text": "[shot:establish]She did not, for a count, do anything with her face.",
       "t": "narrate"
     },
     {
@@ -618,13 +750,19 @@
     },
     {
       "char": "tem",
-      "text": "I am — I am not going to make this go faster than it needs to. The substrate is going to give us what the substrate is going to give us at the pace the substrate gives. I am going to honor the pace.",
+      "text": "[shot:closeup person_b]I am — I am not going to make this go faster than it needs to. The substrate is going to give us what the substrate is going to give us at the pace the substrate gives. I am going to honor the pace.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "But I am also going to get Marina up here because Marina is now the person whose grandfather got a bowl from Per's father in 2008 and who is the granddaughter of the line my grandfather was in. Marina is the person who needs to be in the room. Marina is — Marina is overdue.",
+      "text": "But I am also going to get Marina up here because Marina is now the person whose grandfather got a bowl from Per's father in 2008 and who is the granddaughter of the line my grandfather was in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Marina is the person who needs to be in the room. Marina is — Marina is overdue.",
       "expr": "serious",
       "t": "say"
     },
@@ -654,7 +792,7 @@
     },
     {
       "char": "kai",
-      "text": "He did.",
+      "text": "[shot:closeup person]He did.",
       "expr": "neutral",
       "t": "say"
     },
@@ -690,7 +828,7 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -715,11 +853,15 @@
       "t": "narrate"
     },
     {
-      "text": "The two bowls on the table were warm. The kerosene-lamp light moved over them. The crow on Marit's bowl looked, Kai thought, slightly more to the right than it had at twenty past eleven. The young woman on the substrate's bowl had walked, in the time he had been out of the experience, perhaps a quarter inch past the stenciled doorway.",
+      "text": "[shot:insert bowls~]The two bowls on the table were warm. The kerosene-lamp light moved over them. The crow on Marit's bowl looked, Kai thought, slightly more to the right than it had at twenty past eleven.",
       "t": "narrate"
     },
     {
-      "text": "The figures in the cedar were not staying still. The figures were moving at the pace cedar moves at, which is slow, and patient, and beyond the attention of a person who is not looking. Kai was looking. He saw.",
+      "text": "The young woman on the substrate's bowl had walked, in the time he had been out of the experience, perhaps a quarter inch past the stenciled doorway.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figures in the cedar were [wave amp=6 freq=2]not staying still[/wave]. The figures were moving at the pace cedar moves at, which is slow, and patient, and beyond the attention of a person who is not looking. Kai was looking. He saw.",
       "t": "narrate"
     },
     {

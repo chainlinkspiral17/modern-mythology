@@ -1,0 +1,353 @@
+{
+  "id": "spiderdrops_2_eaves",
+  "notes": "UNDER THE EAVES \u00b7 the wind brings the spider in under a low roof; the eight points are already there. It is this cabin. No one says so.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#18202e",
+    "#3a4d6b",
+    "#6c7fa0",
+    "#e8ecef",
+    "#b9c4cf",
+    "#6fb7e0",
+    "#f2c14e",
+    "#9c7a24",
+    "#241c18",
+    "#5a8a4a",
+    "#ffffff",
+    "#6b4a2e",
+    "#e8b860"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        0,
+        160,
+        12
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        0,
+        10,
+        90
+      ],
+      "color": 11
+    },
+    {
+      "op": "glow",
+      "xy": [
+        122,
+        74
+      ],
+      "r": 20,
+      "color": 12,
+      "strength": 0.22
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        37,
+        26
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        34,
+        34
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        26,
+        37
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        18,
+        34
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        15,
+        26
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        18,
+        18
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        26,
+        15
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        26,
+        26
+      ],
+      "to": [
+        34,
+        18
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "glow",
+      "xy": [
+        26,
+        26
+      ],
+      "r": 10,
+      "color": 6,
+      "strength": 0.4
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        34,
+        40
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        32,
+        43
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        28,
+        44
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        24,
+        43
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        22,
+        40
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        24,
+        37
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        28,
+        36
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        40
+      ],
+      "to": [
+        32,
+        37
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        28,
+        42
+      ],
+      "r": 4,
+      "color": 6
+    },
+    {
+      "op": "disk",
+      "xy": [
+        28,
+        40
+      ],
+      "r": 3,
+      "color": 7
+    },
+    {
+      "op": "disk",
+      "xy": [
+        28,
+        42
+      ],
+      "r": 1,
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        34,
+        78,
+        92,
+        9
+      ],
+      "color": 0
+    },
+    {
+      "op": "text",
+      "xy": [
+        36,
+        80
+      ],
+      "s": "UNDER THE EAVES",
+      "color": 3
+    }
+  ]
+}

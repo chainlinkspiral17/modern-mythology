@@ -1,0 +1,135 @@
+{
+  "id": "spiderdrops_ending_storm",
+  "notes": "THE STORM \u00b7 the web came down; the storm does not know you were there.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#18202e",
+    "#2b3a52",
+    "#47597a",
+    "#e8ecef",
+    "#b9c4cf",
+    "#6fb7e0",
+    "#f2c14e",
+    "#9c7a24",
+    "#241c18",
+    "#ff7a5c",
+    "#ffffff",
+    "#6b5535"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hatch",
+      "xywh": [
+        0,
+        0,
+        160,
+        90
+      ],
+      "spacing": 5,
+      "angle_deg": 70,
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        20,
+        10
+      ],
+      "to": [
+        60,
+        44
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        60,
+        44
+      ],
+      "to": [
+        52,
+        70
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        140,
+        8
+      ],
+      "to": [
+        104,
+        40
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        104,
+        40
+      ],
+      "to": [
+        118,
+        66
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        52,
+        70
+      ],
+      "r": 2,
+      "color": 5
+    },
+    {
+      "op": "disk",
+      "xy": [
+        118,
+        66
+      ],
+      "r": 2,
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        58,
+        78,
+        46,
+        9
+      ],
+      "color": 0
+    },
+    {
+      "op": "text",
+      "xy": [
+        62,
+        80
+      ],
+      "s": "THE STORM",
+      "color": 3
+    }
+  ]
+}

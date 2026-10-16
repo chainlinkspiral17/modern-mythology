@@ -1,0 +1,92 @@
+{
+ "meta": {
+  "title": "vol5_bus_kid_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_bus_kid_theme",
+  "notes": "The Bus Kid. A bright wood-block tap + a smile of brass. The helper's signature."
+ },
+ "tempo_bpm": 72,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.252,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.08,
+     "vel": 0.34
+    },
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.08,
+     "vel": 0.3
+    },
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 3.5,
+     "dur": 0.08,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1.2,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1.2,
+     "vel": 0.18
+    },
+    {
+     "pitch": "G4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1.2,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

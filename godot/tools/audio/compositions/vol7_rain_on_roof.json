@@ -1,0 +1,103 @@
+{
+ "meta": {
+  "title": "the dark, rain on the roof",
+  "composer": "the storm, closer now",
+  "for": "vol7 ch7/ch8 \u00b7 The Dark \u00b7 candlelight bed",
+  "notes": "The same rain as sunday morning but heavier and above you. D minor low voicings, one A4 near the end like a candle relit. The darkest bed in the set; the apartment is hers again and the weather knows it."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 44100,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.7
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.19,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.14
+    },
+    {
+     "pitch": "Bb2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.16
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.08,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 12,
+     "beat": 1,
+     "dur": 4.0,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

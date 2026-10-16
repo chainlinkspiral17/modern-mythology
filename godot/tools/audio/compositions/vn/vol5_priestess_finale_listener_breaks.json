@@ -1,0 +1,90 @@
+{
+ "meta": {
+  "title": "vol5_priestess_finale_listener_breaks",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_priestess_finale_listener_breaks",
+  "notes": "POMEGRANATE HOUR RETURNED (doubt). The thing she made comes back at her through the room, and she lets it record her instead."
+ },
+ "tempo_bpm": 48,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "D#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "B4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 7,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

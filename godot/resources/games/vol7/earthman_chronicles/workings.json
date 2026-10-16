@@ -1,0 +1,232 @@
+{
+  "id": "workings",
+  "notes": "Earthman Chronicles · Thelemic Progression Ladder · nine Workings.  Each is a ritual Jack Whiteside can perform during the game to unlock combat/utility power.  Drawn from Aleister Crowley's public-domain published rituals · rendered with respect · neither endorsed nor mocked.  Each Working has components (specific items · found via exploration and combat), a fasting cost (Jack must skip N in-game meals), a party consent gate (specific companions REFUSE specific Workings and object loudly), and a specific effect · plus specific narrative consequences.  Manuscript Hubbard describes each Working reverently.  Game Rocha team adds specific party-member commentary that undercuts the reverence at moments and preserves it at others.",
+
+  "schema_notes": {
+    "type": "defensive | offensive | summoning | alignment | terminal",
+    "party_consent_required": "companions in the party must all consent · if any refuse, the Working cannot begin",
+    "party_refuses": "companion IDs who will vocally object during casting · +1 objection reduces effect · 3+ objections aborts",
+    "sp_cost": "SP cost the Working consumes at cast time",
+    "hp_cost": "permanent HP cost paid at cast time (Working V and IX only)",
+    "manuscript_notes": "what Hubbard wrote about this Working",
+    "game_notes": "what Rocha's team added or changed"
+  },
+
+  "workings": [
+    {
+      "id": "star_ruby",
+      "roman": "I",
+      "name": "The Star Ruby",
+      "type": "defensive",
+      "description": "A banishing ritual of the Pentagram.  Establishes a protective circle around the party for the duration of one combat encounter.  Prevents PANIC status effects and reduces incoming Song damage.",
+      "components": [
+        {"item": "three white candles", "location": "Pasadena laboratory · Chapter 1 · always available"},
+        {"item": "a Kelait ceremonial chalk", "location": "Chapter 3 · earned from Mother Kanel via Kitchen puzzle"},
+        {"item": "a mental image of the four cardinal directions", "location": "no in-game item · Jack must have visited all four Talikan corners"}
+      ],
+      "fasting_days": 1,
+      "party_consent_required": ["hel_velli", "sara_nai"],
+      "party_refuses": [],
+      "sp_cost": 10,
+      "hp_cost": 0,
+      "duration": "one battle",
+      "unlock_effect": "party immune to PANIC status · -25% Song damage taken",
+      "unlock_narrative": "The candles flicker at each cardinal point in sequence.  Jack speaks the specific consecration in a voice steadier than he expected.  Hel Velli watches with interest · he has never seen a human ritual before.",
+      "manuscript_notes": "Manuscript Ch. VI · Hubbard describes Rafaton teaching Jack the ritual · Jack performs it flawlessly on first try · 'a lesser man's would have faltered'",
+      "game_notes": "Jack performs it with slight nervousness · a specific text box reads 'You get most of the words right.'  Hel Velli mutters 'the west candle is closer to south' and adjusts it without asking.  Working still succeeds.  Different party dialogue if Rafaton is present (he tells Jack he did well · flattering) versus Sara Nai (she tells Jack the Kelait version is actually different · she has a specific correction he can accept or not)."
+    },
+    {
+      "id": "lesser_ritual_pentagram",
+      "roman": "II",
+      "name": "The Lesser Ritual of the Pentagram",
+      "type": "defensive",
+      "description": "A banishing rite.  Dispels one hostile status effect from any party member.  Instant, no combat time consumed.",
+      "components": [
+        {"item": "a specific cardinal-marker (any four)", "location": "any zone · earn one per cardinal from specific NPCs"},
+        {"item": "Jack's ritual dagger", "location": "Chapter 1 · Pasadena laboratory · always available"}
+      ],
+      "fasting_days": 0,
+      "party_consent_required": [],
+      "party_refuses": [],
+      "sp_cost": 8,
+      "hp_cost": 0,
+      "duration": "instant",
+      "unlock_effect": "removes one status effect from one party member · usable in combat as an ACTION",
+      "unlock_narrative": "Jack traces the pentagram in the air with the dagger.  The gesture is small.  The effect is precise.",
+      "manuscript_notes": "Manuscript Ch. VI-B · a companion piece to Working I · Hubbard renders it as 'a scholar's tool for daily use'",
+      "game_notes": "The dagger has a specific mundane origin · Jack bought it at a Pasadena army-surplus store in 1943.  Rocha's marginalia in the manuscript scan notes this.  Sara Nai's dialogue: 'That's not a ritual blade, Jack.  It's a Boy Scout knife with a specific mark you added.'  Jack: 'It is now a ritual blade.'  She accepts this without further comment."
+    },
+    {
+      "id": "bornless_one",
+      "roman": "III",
+      "name": "The Bornless One",
+      "type": "summoning",
+      "description": "Summons a Delvanni ally-spirit for one battle.  The spirit fights alongside the party and returns to its plane at battle's end.  Cannot summon the same ally twice per chapter.",
+      "components": [
+        {"item": "a Delvanni tribal token (any)", "location": "Chapter 2-3 · earned from Hel Velli after specific respect-earning"},
+        {"item": "the recitation of the Bornless One invocation", "location": "learned from Rafaton OR from Kelait Mother Kanel · different versions"}
+      ],
+      "fasting_days": 1,
+      "party_consent_required": ["hel_velli"],
+      "party_refuses": [],
+      "sp_cost": 15,
+      "hp_cost": 0,
+      "duration": "one battle",
+      "unlock_effect": "one Delvanni ally-fighter joins the party as a fifth combatant for one encounter",
+      "unlock_narrative": "Jack recites the invocation.  Hel Velli's expression is unreadable during the ritual · he later says 'you called my dead cousin, Jack.  He is a good fighter.'  Which raises specific questions Jack does not ask.",
+      "manuscript_notes": "Manuscript Ch. VI-C · Hubbard renders the Bornless One as 'a nameless power' · vague · portentous",
+      "game_notes": "Rocha's team named the summoned spirit specifically for each summon · Jack's first summon is HEL VELLI'S ACTUAL DEAD COUSIN KERAN · a specific Delvanni warrior who died five years ago in a specific mine collapse.  Hel Velli's face during the summon is a specific animation the writers noted as 'the most character-work in the game.'  Rafaton's version of the invocation summons a random spirit; Mother Kanel's version summons a specific named ally · so the player who cultivates the Kelait wisdom line gets stronger summons."
+    },
+    {
+      "id": "hymn_of_pan",
+      "roman": "IV",
+      "name": "The Hymn of Pan",
+      "type": "self-buff",
+      "description": "A Crowleyan poem-invocation.  Grants Jack +2 to all stats (Kinetic, Heat, Blade, Ritual damage; strike; resist; charm; wit) for one battle.  Party members watching Jack perform this Working may have small dispositional shifts.",
+      "components": [
+        {"item": "the Hymn of Pan (memorized)", "location": "Chapter 3 · learned from a specific Talikan library scroll"},
+        {"item": "a set of reed pipes", "location": "Chapter 4 · purchased or bartered from a Kelait musician"}
+      ],
+      "fasting_days": 2,
+      "party_consent_required": [],
+      "party_refuses": ["rocha"],
+      "sp_cost": 12,
+      "hp_cost": 0,
+      "duration": "one battle",
+      "unlock_effect": "+2 to all Jack's stats for one battle",
+      "unlock_narrative": "Jack plays the pipes.  It's not good.  He knows it's not good.  He plays anyway.  The Hymn works on internal state, not audience judgment.  Sara Nai claps once at the end regardless.",
+      "manuscript_notes": "Manuscript Ch. VI-D · Hubbard describes Jack's pipe-playing as 'masterful, in the manner of the ancients'",
+      "game_notes": "Rocha's game reverses this specifically.  Jack's pipe-playing is BAD and the game acknowledges it.  Hel Velli, if in the party, offers to teach him in a Chapter 4 side-scene · Delvanni piping technique.  If Jack accepts the lesson, the ritual's music becomes technically better · which is entirely irrelevant to its effect.  It's the point that matters."
+    },
+    {
+      "id": "mass_of_the_phoenix",
+      "roman": "V",
+      "name": "The Mass of the Phoenix",
+      "type": "offensive",
+      "description": "A blood-adjacent working.  Costs 1 permanent Jack HP.  Grants an offensive Ritual damage strike that ignores enemy resistance · single-target massive.  Cannot be re-cast in the same chapter.",
+      "components": [
+        {"item": "a specific propellant-oil compound", "location": "Chapter 1 · Pasadena · Jack can mix it before departure"},
+        {"item": "a strand of Jack's own hair", "location": "no cost · always available"},
+        {"item": "willingness", "location": "not always available"}
+      ],
+      "fasting_days": 3,
+      "party_consent_required": [],
+      "party_refuses": ["hel_velli", "rocha"],
+      "sp_cost": 20,
+      "hp_cost": 1,
+      "duration": "one strike",
+      "unlock_effect": "one Ritual-typed attack · 80 damage · ignores enemy resistance",
+      "unlock_narrative": "Jack burns a strand of his hair in the propellant-oil.  A specific flame.  A specific scream · not Jack's, not audible, but present.  The next enemy Jack strikes takes the hit.  Hel Velli, if watching, will not meet Jack's eyes for the rest of the battle.",
+      "manuscript_notes": "Manuscript Ch. VI-E · Hubbard writes this ritual as 'the price a Prophet pays'",
+      "game_notes": "Rocha's team preserved the HP cost as a permanent thing.  A player who casts Working V three times has 3 fewer permanent HP.  The game DOES NOT tell you this until you've already cast it.  When you do notice, a specific Rocha-hand marginalia appears in the compendium: 'we could have made this reversible.  we chose not to.  parsons would not have wanted us to soften it.'  Hel Velli's refusal · he witnessed a specific Delvanni warrior use similar magic and does not want that for Jack.  His refusal fires as combat dialogue and reduces the Working's effect by 20% per objection."
+    },
+    {
+      "id": "liber_reguli",
+      "roman": "VI",
+      "name": "Liber Reguli",
+      "type": "alignment",
+      "description": "The Reguli Working.  Locks Jack's path toward THELEMIC MASTER progression (unlocks Chapter 5's Academy · unlocks Workings VII-IX).  Reversible ONLY by refusing Working VII when offered.",
+      "components": [
+        {"item": "the completed Star Ruby, Bornless One, and Hymn (Workings I, III, IV)", "location": "prerequisite"},
+        {"item": "a specific Kyrindi ceremonial gown", "location": "Chapter 3 · gifted by Sara Nai or purchased"},
+        {"item": "the sixty-fourth of a specific hour", "location": "must be performed during a specific in-game time window"}
+      ],
+      "fasting_days": 4,
+      "party_consent_required": ["sara_nai"],
+      "party_refuses": ["rocha"],
+      "sp_cost": 25,
+      "hp_cost": 0,
+      "duration": "permanent",
+      "unlock_effect": "unlocks the Academy · Chapter 5 · and Workings VII-IX",
+      "unlock_narrative": "Jack recites Reguli aloud in the specific ceremonial gown Sara Nai has helped him into.  It fits imperfectly · Kyrindi tall, Jack short-by-Kyrindi-standards.  Sara Nai tells him it looks fine.  The Working takes.  A specific eight-pointed star briefly manifests in the air.  It is the same star that appears elsewhere.",
+      "manuscript_notes": "Manuscript Ch. VI-F · Hubbard's most reverent Working-description · describes the moment as 'the crossing of the threshold'",
+      "game_notes": "The eight-pointed star that manifests IS the symbol of the Order of the Prophet (revealed later).  Jack does not recognize it in this moment.  Neither does Sara Nai.  Rafaton, if present, does · his expression during this scene is a specific pre-authored micro-animation.  Rocha's team called this scene 'THE PIVOT' in production docs.  It's the moment the game starts revealing what the manuscript was really doing.  A player who is paying attention can catch it here.  Most miss it and see it in Chapter 5."
+    },
+    {
+      "id": "the_great_work",
+      "roman": "VII",
+      "name": "The Great Work",
+      "type": "summoning",
+      "description": "Terminal-adjacent · summons Sara Nai's 'true form' for one battle.  Sara Nai briefly becomes an elemental entity ('BABALON' in the manuscript, ambiguous in the game).  Massive combat power for that battle.  Sara Nai remembers what she did during the transformation and this affects her future dialogue.",
+      "components": [
+        {"item": "a specific propellant flame-signature (Jack must have completed the Mass of the Phoenix)", "location": "prerequisite · Working V"},
+        {"item": "Sara Nai's consent, freshly given for THIS working", "location": "prompt · she can say no"},
+        {"item": "a specific poem Sara Nai must recite herself", "location": "she chooses the poem · which one affects the transformation type"}
+      ],
+      "fasting_days": 5,
+      "party_consent_required": ["sara_nai"],
+      "party_refuses": ["rocha", "hel_velli"],
+      "sp_cost": 30,
+      "hp_cost": 0,
+      "duration": "one battle",
+      "unlock_effect": "Sara Nai becomes an elemental (specifics based on her chosen poem) for one battle · +40 to all stats · combat auto-wins any single encounter she starts in this state",
+      "unlock_narrative": "Sara Nai recites her chosen poem.  Her form shifts.  In the manuscript's reading she becomes Babalon.  In the game's alternative reading she becomes a Kyrindi elemental named ISHRA (a specific historical figure Sara has been studying).  In the third reading (Jack projecting) she does not actually transform · Jack sees her transformed · Sara sees Jack seeing her transformed · the game shows both.  Sara Nai after the battle is quieter.  Not sad · thoughtful.  A specific dialogue tree opens.",
+      "manuscript_notes": "Manuscript Ch. XI · the ONLY chapter Hubbard reworked five times · his personal fixation · Sara is Babalon and the transformation is total",
+      "game_notes": "The three-canonical-readings framework was Rocha's team's largest single narrative innovation.  The player who chooses the third reading (projection) unlocks specific Sara dialogue in Chapter 6 that reframes the whole relationship.  All three readings are equally CANONICAL.  A player can replay to see all three.  Sara Nai's poem selection is authored by three of Rocha's team members · they credited themselves in the compendium."
+    },
+    {
+      "id": "star_sapphire",
+      "roman": "VIII",
+      "name": "The Star Sapphire",
+      "type": "defensive",
+      "description": "A terminal defensive Working.  Protects the party from one specific fatal blow · redirects it back to the attacker at 50% damage.  Once per run.",
+      "components": [
+        {"item": "the completion of Workings I through VII", "location": "prerequisite"},
+        {"item": "a Kelait mourning-song fragment", "location": "Chapter 4 · Mother Kanel · she teaches it if trust ≥ LIKED"},
+        {"item": "a specific whispered promise to a specific person", "location": "the player chooses · Rocha's team wrote 45 different promise templates depending on player state"}
+      ],
+      "fasting_days": 2,
+      "party_consent_required": [],
+      "party_refuses": [],
+      "sp_cost": 20,
+      "hp_cost": 0,
+      "duration": "activates on next fatal blow to any party member",
+      "unlock_effect": "prevents one party death · reflects 50% damage to attacker · single use per run",
+      "unlock_narrative": "Jack sings the fragment.  Sara Nai joins him on the second verse without asking.  Hel Velli hums the third · he learned it from a Delvanni ally-fey summoning years ago.  Rocha, if present, does not sing but says quietly 'this is good work, Jack.'  The Working takes.  A specific sapphire-blue thread of light joins each party member briefly.  Nobody says anything about it.",
+      "manuscript_notes": "Manuscript Ch. VI-H · Hubbard describes this Working with unusual restraint · one of the manuscript's better-written scenes",
+      "game_notes": "Rocha's team preserved Hubbard's restraint here mostly · this Working is one of only two the manuscript renders well.  Their small additions: Sara Nai joining unbidden, Hel Velli humming from experience.  The Kelait mourning-song FRAGMENT played here is the SAME melody as Wilson's Portuguese folk tune in Pirate Summer · the cross-Oneironautics chain fact fires when a player who has played both games hears it and recognizes."
+    },
+    {
+      "id": "babalon_working",
+      "roman": "IX",
+      "name": "The Babalon Working",
+      "type": "terminal",
+      "description": "The Working Jack actually did in 1946.  Triggers the endgame · locks the LIBERATOR / BABALON COMES / HUBBARD TAKES THE CREDIT endings.  Refusing this Working locks the REFUSED THE WORK / THE CORRECTION / RETURN TO EARTH endings instead.  Once cast, cannot be un-cast.",
+      "components": [
+        {"item": "the completion of all previous Workings", "location": "prerequisite"},
+        {"item": "the propellant compound used in the Pasadena lab · fresh-mixed on Parsa", "location": "Chapter 6 · Jack must remake it"},
+        {"item": "a specific consent from EACH party member", "location": "prompted individually · any refusal aborts"},
+        {"item": "the actual poem Parsons wrote for the working in 1946", "location": "Chapter 6 · found in a Correction · reading it is optional but recommended"}
+      ],
+      "fasting_days": 7,
+      "party_consent_required": ["hel_velli", "sara_nai", "scarlet_woman"],
+      "party_refuses": ["rocha", "sara_nai (default refusal · specific override required)"],
+      "sp_cost": 50,
+      "hp_cost": 5,
+      "duration": "permanent",
+      "unlock_effect": "triggers Chapter 6 endgame · specific ending fires based on cumulative choices",
+      "unlock_narrative": "Jack performs the terminal Working.  This is the moment Parsons attempted in 1946.  This is the moment the manuscript was written to celebrate.  This is the moment Rocha's team refused to celebrate uncritically.  The player has this power.  What they do with it decides five of the six endings.",
+      "manuscript_notes": "Manuscript Ch. XII · the manuscript's terminal chapter · Hubbard's climax · his greatest self-aggrandizement · his most elaborate prose · his fixation",
+      "game_notes": "The party consent gate is the game's most important mechanic.  Sara Nai's default is REFUSAL · she has read the Kelait interpretation and knows what this Working summons.  Convincing her requires: at least 3 kept promises AND the Ishra-elemental reading of Working VII AND Sara's personal disposition LOVED.  Even then she says 'okay, but I do not want you to say I made you do this.'  A player who reads Sara's warning is unlikely to proceed.  A player who proceeds anyway is exactly who Hubbard was writing for · and gets exactly the ending Hubbard wrote."
+    }
+  ],
+
+  "companion_refusal_dialogue": {
+    "notes": "When a companion REFUSES a specific Working, they say a specific line in-scene.  Multiple refusals compound.",
+    "hel_velli_refuses": {
+      "working_v_mass_of_phoenix": "Jack.  There is a way to fight without spending yourself.  I have twenty-two years of combat memory and this is not any of them.  Please do not.",
+      "working_vii_great_work": "Sara has said she will do this.  I will not stop her.  But I will not participate.  I will wait outside.",
+      "working_ix_babalon": "Jack.  We have won everything we have needed to win.  This is not victory.  I am your friend and I am telling you no.  I will not stand at your right hand tonight."
+    },
+    "sara_nai_refuses": {
+      "working_ix_babalon": "Jack.  I have read the Kelait commentary on this Working.  I have read the manuscript you brought with you.  I have read Rafaton's introduction.  I am telling you: I do not want to be Babalon.  I do not want you to summon her through me.  I do not want us to become what this ritual makes.  I love you.  Refuse.  Refuse it."
+    },
+    "rocha_refuses": {
+      "working_iv_hymn_of_pan": "You don't have to keep going, Jack.",
+      "working_v_mass_of_phoenix": "This is the one where he loses a piece of himself, right?  Don't.",
+      "working_ix_babalon": "Jack.  You know what I am going to say."
+    }
+  },
+
+  "manuscript_vs_game_summary": "In the manuscript, Jack performs all nine Workings enthusiastically and successfully.  In the game, a player is expected to STOP at some point · Working IV, V, or VI are the natural stopping points.  Continuing past Working VI without deliberate reason is a specific type of playing that the game notices."
+}

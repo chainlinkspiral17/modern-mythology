@@ -1,0 +1,7 @@
+# Generated audio artifacts. Regenerate any time via
+# `python3 slowstick_synth.py compose <name>.json`
+# or `python3 slowstick_synth.py sfx <preset>`.
+# The JSON compositions and this tool are the source of truth.
+*.wav
+compositions/*.wav
+sfx/*.wav

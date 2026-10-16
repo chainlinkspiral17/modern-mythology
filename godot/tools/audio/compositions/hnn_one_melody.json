@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "title": "hane no niwa \u00b7 the one melody",
+    "for": "the fourth letter",
+    "composer": "Sachiko Ono",
+    "notes": "The four quarter-phrases, consecutive \u00b7 they were one melody all along."
+  },
+  "tempo_bpm": 58,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "soft_sine",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E4",
+          "bar": 2,
+          "beat": 2,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "C5",
+          "bar": 3,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "B4",
+          "bar": 3,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 4,
+          "beat": 2,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 5,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E4",
+          "bar": 5,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "D4",
+          "bar": 5,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E4",
+          "bar": 6,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 6,
+          "beat": 2,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A4",
+          "bar": 7,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 7,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E4",
+          "bar": 7,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "D4",
+          "bar": 7,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E4",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.08,
+      "notes": [
+        {
+          "pitch": "E2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 36.0,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

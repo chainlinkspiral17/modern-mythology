@@ -1,0 +1,46 @@
+{
+  "id": "kwik_stop_manager",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "authored_stub · playable acts deferred",
+  "notes": "Kwik Stop Manager, RANCH 2002. The competitor stick Oneironautics's failed 2003 project was chasing. Wave 3 unlock. Reads in the Vol 7 present as the first mainstream success in the manager-game subgenre · the game a lot of the next decade's convenience-store-management sticks copied.\n\nStatus: manifest authored; playable acts deferred.",
+
+  "shelf": {
+    "label_title":       "KWIK STOP MANAGER",
+    "label_subtitle":    "run the counter, watch the summer",
+    "publisher":         "RANCH",
+    "publisher_locale":  "San Francisco, CA",
+    "release_year":      2002,
+    "release_month":     "Q3",
+    "hardware":          "RANCH Slowbox · Rev 2 (Oneironautics-compatible sleeve)",
+    "genre_stamp":       "MANAGER / SIMULATION",
+    "shelf_condition":   "played · sleeve creased at the top-left corner from being pulled off the shelf too many times · Olaf's fault",
+    "prior_owner":       "Olaf, used, 2002",
+    "provenance_note":   "Olaf bought it used at a Portland game store called Rip Van Winkle's that closed in 2009. He was curious about the buzz. He finished it in three weeks. He kept it because the ending was better than he expected.",
+
+    "cover_blurb":       "You are the summer manager at a KWIK STOP on Highway 101, in the summer of 1998.  Twelve weeks.  Nine employees.  One landlord.  Six shifts a day.  From RANCH, the studio that made HARBORLIGHTS and THE WATER TOWER.  Recommended for players 12 and up.  Takes about ten hours.",
+
+    "back_of_case": [
+      "· Twelve summer weeks, six shifts each.",
+      "· Nine hireable employees, all of them with lives.",
+      "· Cash flow · inventory · landlord relations.",
+      "· One armed robbery in Week 8 you cannot prevent.",
+      "· Three endings depending on how the fall reopening reads.",
+      "",
+      "'The first game to make me care about a stockroom.'",
+      "    — SLOWSTICK REVIEW QUARTERLY, October 2002."
+    ],
+
+    "in_fiction_dev_note": "RANCH was, in the Vol 7 world, the mid-Aughts slowstick studio that made the manager-sim subgenre commercial. Their staff included two former Oneironautics designers who left in 2000 after ESTUARY 1's underperformance. This is why the Oneironautics team's 2003 Kwik Stop competitor felt personal · it was literally against their old colleagues.\n\nOlaf's copy is on the shelf because he read a Slowstick Review Quarterly review that called Kwik Stop Manager 'the first slowstick that respects the reader.' He wanted to see what that meant.",
+
+    "meta_note": "Sam's Summer Shifts (2003) is the direct sequel."
+  },
+
+  "acts_deferred_note": "Playable content authoring deferred. Design intent: 10-hour twelve-week manager sim with a real armed-robbery beat mid-summer. Three endings.",
+
+  "lore_tokens_awarded_on_completion": [
+    "kwik_stop_manager_finished",
+    "the_first_manager_sim",
+    "olafs_taste_confirmed"
+  ]
+}

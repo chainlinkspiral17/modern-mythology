@@ -1,0 +1,176 @@
+{
+ "id": "newsletter_item",
+ "notes": "The stapled newsletter with the masthead band and the item circled.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    30,
+    8,
+    36,
+    32
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     30,
+     8
+    ],
+    [
+     66,
+     8
+    ],
+    [
+     66,
+     40
+    ],
+    [
+     30,
+     40
+    ],
+    [
+     30,
+     8
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 12,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 13,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 18,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 21,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 24,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 33,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 36,
+   "x_range": [
+    33,
+    63
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    31,
+    9
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     40,
+     27
+    ],
+    [
+     58,
+     27
+    ],
+    [
+     58,
+     31
+    ],
+    [
+     40,
+     31
+    ],
+    [
+     40,
+     27
+    ]
+   ],
+   "color": 9
+  }
+ ]
+}

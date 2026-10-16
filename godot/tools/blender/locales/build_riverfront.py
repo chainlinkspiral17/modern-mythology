@@ -157,7 +157,7 @@ def clear_scene():
                 c.remove(item)
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+def _make_box_vendored(name, center, size, base_color, open_faces=None):
     open_faces = open_faces or set()
     cx, cy, cz = center
     sx, sy, sz = size
@@ -202,6 +202,24 @@ def make_box(name, center, size, base_color, open_faces=None):
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     return obj
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, base_color, segments=8, axis='Z', caps=True):
@@ -1093,7 +1111,7 @@ def build_riverboat():
     # ════════════════════════════════════════════════════════════
     # PADDLE WHEEL — bigger, with proper housing
     # ════════════════════════════════════════════════════════════
-    pw_y = -BOAT_L / 2 - 2.0   # AFT of stern (stern-wheeler)
+    pw_y = -BOAT_L / 2 - 2.6   # AFT of stern (stern-wheeler)
     pw_z = RIVER_LEVEL_Z + 2.4
     pw_radius = 2.4
     pw_blade_n = 12
@@ -1102,13 +1120,13 @@ def build_riverboat():
     house_h_total = 5.4
     house_w = BOAT_W * 0.85
     for ti, (zoff, wfrac) in enumerate([(-2.5, 0.85), (-1.4, 0.95), (0.0, 1.0), (1.4, 0.95), (2.5, 0.85)]):
-        make_box(f"PWHouse_tier_{ti}", (0, pw_y, pw_z + zoff), (house_w * wfrac, 0.50, 1.20), COL_PADDLE_HOUSING)
+        make_box(f"PW_House_tier_{ti}", (0, pw_y, pw_z + zoff), (house_w * wfrac, 0.50, 1.20), COL_PADDLE_HOUSING)
     # back wall of housing
-    make_box("PWHouse_Back", (0, pw_y + 0.35, pw_z), (house_w, 0.10, house_h_total), COL_PADDLE_HOUSING)
+    make_box("PW_House_Back", (0, pw_y + 0.35, pw_z), (house_w, 0.10, house_h_total), COL_PADDLE_HOUSING)
     # housing crown — decorative top ridge
     for i in range(int(house_w / 0.50)):
         cx = -house_w/2 + 0.25 + i * 0.50
-        make_box(f"PWHouse_Crest_{i}", (cx, pw_y, pw_z + 2.85), (0.12, 0.50, 0.20), col_crest)
+        make_box(f"PW_House_Crest_{i}", (cx, pw_y, pw_z + 2.85), (0.12, 0.50, 0.20), col_crest)
 
     # Hub and axle (cylinder along X)
     make_cyl("PW_Axle", (0, pw_y, pw_z), 0.30, BOAT_W * 0.75, COL_BRASS, segments=8, axis='X')
@@ -1117,38 +1135,43 @@ def build_riverboat():
 
     # Outer rims — proper toruses around the hub on each side of the
     # wheel (left + right end-caps of the paddle assembly).
-    rim_y_L = pw_y - BOAT_W * 0.30
-    rim_y_R = pw_y + BOAT_W * 0.30
-    make_torus("PW_Rim_L", (0, rim_y_L, pw_z),
+    # The wheel SPINS ABOUT THE X AXLE, so its circle lives in the
+    # YZ plane and the rims cap the two axle ENDS. The old frame had
+    # the circle in XZ (rotating about Y) — a quarter of every
+    # revolution swung the blades fore through the stern into the
+    # dining-room wall by 1.1m.
+    rim_x_L = -BOAT_W * 0.30
+    rim_x_R = +BOAT_W * 0.30
+    make_torus("PW_Rim_L", (rim_x_L, pw_y, pw_z),
                major_r=pw_radius, minor_r=0.08, base_color=COL_PADDLE_BLADES,
-               major_seg=pw_blade_n, minor_seg=6, axis='Y')
-    make_torus("PW_Rim_R", (0, rim_y_R, pw_z),
+               major_seg=pw_blade_n, minor_seg=6, axis='X')
+    make_torus("PW_Rim_R", (rim_x_R, pw_y, pw_z),
                major_r=pw_radius, minor_r=0.08, base_color=COL_PADDLE_BLADES,
-               major_seg=pw_blade_n, minor_seg=6, axis='Y')
+               major_seg=pw_blade_n, minor_seg=6, axis='X')
     # Spokes (real angled cylinders from hub to rim, not axis-aligned
     # box hacks) + blades at the rim
     blade_len = BOAT_W * 0.75
     for i in range(pw_blade_n):
         ang = 2.0 * math.pi * i / pw_blade_n
-        bx = math.cos(ang) * pw_radius
+        by = pw_y + math.cos(ang) * pw_radius
         bz = math.sin(ang) * pw_radius + pw_z
         # Spoke L (left end of axle to rim L)
         make_tube_segment(f"PW_Spoke_L_{i}",
-                          (0, rim_y_L, pw_z),
-                          (bx, rim_y_L, bz),
+                          (rim_x_L, pw_y, pw_z),
+                          (rim_x_L, by, bz),
                           0.05, COL_PADDLE_BLADES, segments=5)
         # Spoke R
         make_tube_segment(f"PW_Spoke_R_{i}",
-                          (0, rim_y_R, pw_z),
-                          (bx, rim_y_R, bz),
+                          (rim_x_R, pw_y, pw_z),
+                          (rim_x_R, by, bz),
                           0.05, COL_PADDLE_BLADES, segments=5)
         # Blade plank at the rim, running along the axle
-        make_box(f"PW_Blade_{i}", (bx, pw_y, bz),
-                 (0.10, blade_len, 0.55), COL_PADDLE_BLADES)
+        make_box(f"PW_Blade_{i}", (0, by, bz),
+                 (blade_len, 0.10, 0.55), COL_PADDLE_BLADES)
         # Cross-brace between the two rims at this blade position
         make_tube_segment(f"PW_Brace_{i}",
-                          (bx, rim_y_L, bz),
-                          (bx, rim_y_R, bz),
+                          (rim_x_L, by, bz),
+                          (rim_x_R, by, bz),
                           0.04, COL_BRASS, segments=4)
 
     # ════════════════════════════════════════════════════════════
@@ -1956,14 +1979,16 @@ def build_road_network():
         for side_label, gx in (("W", FRONTAGE_X - road_w/2 + 0.30),
                                 ("E", FRONTAGE_X + road_w/2 - 0.30)):
             # the grate frame
+            # long side ALONG the curb (2026-09-23: laid 1.2 m across the
+            # road, every E grate ran 30 cm up into the raised sidewalk)
             make_box(f"SewerGrate_{side_label}_{gi}", (gx, gy, road_paint_z - 0.02),
-                     (1.2, 0.6, 0.03), grate_col)
+                     (0.6, 1.2, 0.03), grate_col)
             # parallel slats
             for sj in range(6):
-                sy_o = -0.22 + sj * 0.09
+                sx_o = -0.22 + sj * 0.09
                 make_box(f"SewerGrate_{side_label}_{gi}_slat_{sj}",
-                         (gx, gy + sy_o, road_paint_z + 0.005),
-                         (1.0, 0.04, 0.005), slat_col)
+                         (gx + sx_o, gy, road_paint_z + 0.005),
+                         (0.04, 1.0, 0.005), slat_col)
 
     # ── SIDEWALKS along both sides of the frontage road, full length
     side_w = 2.2
@@ -2143,8 +2168,10 @@ def build_road_network():
                          0.04, 0.36 * bs, grass_a, segments=4)
         else:  # palmetto — bigger feature plant, 1.5m tall fan
             # short trunk
-            make_cyl(f"Palmetto_{bi}_trunk", (bx, by, bz_base + 0.25 * bs),
-                     0.10, 0.50 * bs, (0.32, 0.24, 0.16, 1.0), segments=6)
+            # trunk rooted 0.25·bs below the sampled ground so a plant on a
+            # lot apron or lawn box never shows daylight under it (2026-09-10)
+            make_cyl(f"Palmetto_{bi}_trunk", (bx, by, bz_base + 0.125 * bs),
+                     0.10, 0.75 * bs, (0.32, 0.24, 0.16, 1.0), segments=6)
             # fan fronds — three flattened spheres
             crown_z = bz_base + 0.55 * bs
             make_sphere(f"Palmetto_{bi}_frond_a", (bx - 0.35 * bs, by, crown_z),
@@ -2158,13 +2185,13 @@ def build_road_network():
     crosswalk_col = (0.92, 0.88, 0.78, 1.0)
     for ci in range(8):
         cx_o = FRONTAGE_X - 5.0 + ci * 1.4
-        make_box(f"Crosswalk_NS_{ci}_a", (cx_o, cross_y - 4.5, 0.008),
+        make_box(f"Crosswalk_NS_{ci}_a", (cx_o, cross_y - 4.5, -0.0031),
                  (0.50, 0.20, 0.005), crosswalk_col)
-        make_box(f"Crosswalk_NS_{ci}_b", (cx_o, cross_y + 4.5, 0.008),
+        make_box(f"Crosswalk_NS_{ci}_b", (cx_o, cross_y + 4.5, -0.0031),
                  (0.50, 0.20, 0.005), crosswalk_col)
 
     # ── STOP BAR + STOP SIGN at the intersection
-    make_box("StopBar_S", (FRONTAGE_X, cross_y - 5.5, 0.008),
+    make_box("StopBar_S", (FRONTAGE_X, cross_y - 5.5, -0.0031),
              (road_w - 0.6, 0.40, 0.005), white_line)
     # Stop sign on a pole
     ss_x = FRONTAGE_X + road_w/2 + side_w + 0.4
@@ -2231,7 +2258,7 @@ def build_road_network():
     for ti, ty in enumerate(tree_ys):
         # Skip positions where buildings sit (gas station / strip mall /
         # parking-lot driveway zones)
-        if -50 < ty < -28 or 14 < ty < 48 or -20 < ty < 20:
+        if -52 < ty < -26 or 14 < ty < 48 or -20 < ty < 20:
             continue
         is_cypress = (ti % 2 == 0)
         canopy_col = (0.22, 0.32, 0.18, 1.0) if is_cypress else (0.30, 0.36, 0.22, 1.0)
@@ -2345,7 +2372,7 @@ def build_road_network():
     _make_speed_limit("SpeedLimit_N",
                        FRONTAGE_X - road_w/2 - side_w - 0.4, 95.0)
     _make_speed_limit("SpeedLimit_S",
-                       FRONTAGE_X + road_w/2 + side_w + 0.4, -95.0)
+                       FRONTAGE_X + road_w/2 + side_w + 0.4, -78.0)
 
     # ── "D'AMBROSIO'S → " EXIT ARROW SIGN at the road
     # Two-line sign on a tall post — points east toward the lot entry.
@@ -2665,7 +2692,7 @@ def build_dock():
 
     # Lobster trap stack
     trap_col = (0.40, 0.30, 0.18, 1.0)
-    for ti, ox in enumerate([0, 0.85, 1.7]):
+    for ti, ox in enumerate([0, 0.85, -0.85]):
         tx_p = dock_cx - 2.5
         ty_p = dock_cy - 3.5
         make_box(f"LobsterTrap_{ti}", (tx_p + ox, ty_p, dock_z + 0.10 + 0.20), (0.70, 0.90, 0.40), trap_col)
@@ -3395,10 +3422,32 @@ def export_glb():
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     legacy = {}
     if 'export_colors' in rna.properties: legacy['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
 
     try:
         result = bpy.ops.export_scene.gltf(**base, **legacy)
+        try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+            import sys as _s, os as _o
+            _d = _o.path.dirname(_o.path.abspath(__file__))
+            for _c in (_d, _o.path.dirname(_d)):
+                if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                    _s.path.insert(0, _c)
+            from _props.glb_colorfix import postfix as _colorfix
+            _colorfix(base["filepath"], bpy)
+        except Exception as _e:
+            print("[glb_colorfix] skipped:", _e)
         print(f"[build_riverfront] export result: {result}")
     except Exception as e:
         print(f"[build_riverfront] ✗ EXPORT FAILED: {e}")
@@ -4269,6 +4318,103 @@ def build_distant_atmosphere():
                  (0.4, 0.4, 0.2), (0.42, 0.38, 0.32, 1.0))
 
 
+def build_park_draft2_2026_08():
+    """DRAFT 2 (drafting-program ledger): silhouette shaping +
+    mid-ground bands. Draft 1 was bench/bandstand/armory-mass on a
+    lawn; this pass gives the park the three distance bands the
+    set-detail playbook asks for — near detail, a mid-ground rhythm
+    (trees, lamps, hedge, fence), and a shaped skyline instead of
+    one crenellated box. Draft 3: Deck reframe of riverfront_park.
+    """
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    import math as _m
+    # ── Near band: park furniture beyond the bench ──
+    _mc("Park_Bin", (-47.2, 21.0, 0.45), 0.28, 0.9, (0.24, 0.30, 0.26, 1.0), segments=10)
+    _mb("Park_Bin_Rim", (-47.2, 21.0, 0.92), (0.62, 0.62, 0.05), (0.20, 0.24, 0.20, 1.0))
+    _mb("Park_Sign_Post", (-51.5, 16.5, 1.0), (0.10, 0.10, 2.0), (0.30, 0.30, 0.32, 1.0))
+    _mb("Park_Sign_Board", (-51.5, 16.5, 2.15), (0.9, 0.06, 0.55), (0.32, 0.40, 0.30, 1.0))
+    # Lamp posts pacing the jog path arc.
+    for li, (lx, ly) in enumerate(((-52.5, 18.0), (-47.5, 30.0), (-44.5, 24.0))):
+        _mc(f"Park_Lamp_{li}_Post", (lx, ly, 1.9), 0.07, 3.8, (0.26, 0.26, 0.28, 1.0), segments=8)
+        _mc(f"Park_Lamp_{li}_Head", (lx, ly, 3.95), 0.18, 0.3, (0.92, 0.86, 0.66, 1.0), segments=10)
+    # ── Mid-ground band: tree clumps + hedge + park fence ──
+    for ti, (tx, ty, th) in enumerate(((-54.0, 30.0, 4.2), (-44.0, 33.5, 3.6),
+                                       (-55.0, 13.0, 3.8), (-43.5, 15.5, 3.2))):
+        _mc(f"Park_Tree_{ti}_Trunk", (tx, ty, th * 0.25), 0.16, th * 0.5, (0.30, 0.24, 0.18, 1.0), segments=8)
+        _mc(f"Park_Tree_{ti}_Crown", (tx, ty, th * 0.75), th * 0.35, th * 0.6, (0.22, 0.32, 0.20, 1.0), segments=10)
+    # Hedge along the armory side — the park's mid-ground floor line.
+    for hi in range(6):
+        _mb(f"Park_Hedge_{hi}", (-58.5, 16.0 + hi * 3.4, 0.6), (1.2, 3.0, 1.2), (0.24, 0.34, 0.22, 1.0))
+    # Low iron fence along River Road (west edge treatment).
+    for fi in range(9):
+        fy = 12.0 + fi * 3.0
+        _mb(f"Park_Fence_Rail_{fi}", (-55.6, fy, 0.85), (0.05, 3.0, 0.06), (0.18, 0.18, 0.20, 1.0))
+        _mb(f"Park_Fence_Post_{fi}", (-55.6, fy - 1.4, 0.5), (0.08, 0.08, 1.0), (0.16, 0.16, 0.18, 1.0))
+    # ── Skyline band: shape the armory + add rooftops behind ──
+    _mb("Armory_Tower", (-88.5, 30.0, 6.5), (5.0, 5.0, 13.0), (0.42, 0.30, 0.24, 1.0))
+    _mb("Armory_Tower_Cap", (-88.5, 30.0, 13.4), (5.6, 5.6, 0.8), (0.38, 0.27, 0.22, 1.0))
+    _mb("Armory_Arch_Shadow", (-81.0, 28.05, 2.2), (3.2, 0.1, 4.4), (0.16, 0.13, 0.11, 1.0))
+    for ci, cx in enumerate((-86.0, -83.5)):
+        _mb(f"Armory_Chimney_{ci}", (cx, 36.0, 10.2), (0.9, 0.9, 2.4), (0.38, 0.28, 0.22, 1.0))
+    # Rooftop rhythm behind the armory gap — the town continues.
+    for ri, (rx, ry, rh, rw) in enumerate(((-96.0, 20.0, 6.5, 6.0), (-99.0, 30.0, 8.0, 5.0),
+                                           (-95.0, 40.0, 5.5, 7.0))):
+        _mb(f"Skyline_Block_{ri}", (rx, ry, rh / 2.0), (rw, 6.0, rh), (0.40, 0.33, 0.28, 1.0))
+        _mb(f"Skyline_Roof_{ri}", (rx, ry, rh + 0.4), (rw + 0.4, 6.4, 0.8), (0.30, 0.24, 0.20, 1.0))
+
+
+def build_park_2026_08():
+    """2026-08-03 tail pass: the park the Hierophant's §IV and
+    vol1's jog play in — lawn, jogging path, the chipped bench, the
+    bandstand, the armory silhouette, the old-church steeple, the
+    idling black car. World coords in the green buffer between
+    River Road (x=-55) and the lot curb (x=-41)."""
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    import math as _m
+    _mb("Park_Lawn", (-49.0, 24.0, 0.01), (13.0, 26.0, 0.04), (0.40, 0.50, 0.30, 1.0))
+    # Jogging path arc (segments)
+    for i in range(7):
+        t = i / 6.0
+        px = -52.0 + 6.0 * t
+        py = 14.0 + 20.0 * t
+        _mb(f"Jog_Path_{i}", (px, py, 0.03), (3.0, 3.6, 0.04), (0.60, 0.54, 0.44, 1.0))
+    # The chipped park bench, facing the bandstand
+    _mb("Park_Bench_Seat", (-50.5, 22.0, 0.45), (0.5, 1.6, 0.06), (0.48, 0.38, 0.26, 1.0))
+    _mb("Park_Bench_Back", (-50.24, 22.0, 0.75), (0.06, 1.6, 0.5), (0.44, 0.34, 0.23, 1.0))
+    _mb("Park_Bench_Chip", (-50.5, 22.6, 0.48), (0.2, 0.12, 0.04), (0.62, 0.55, 0.44, 1.0))
+    for ly in (21.4, 22.6):
+        _mb(f"Park_Bench_Leg_{ly:.1f}", (-50.4, ly, 0.22), (0.4, 0.08, 0.44), (0.30, 0.30, 0.32, 1.0))
+    # The bandstand (octagonal-read deck + posts + roof)
+    bx, by = -48.0, 26.0
+    _mc("Bandstand_Deck", (bx, by, 0.45), 3.0, 0.25, (0.55, 0.44, 0.30, 1.0), segments=8)
+    for pi in range(8):
+        a = pi * (_m.pi / 4.0)
+        _mc(f"Bandstand_Post_{pi}", (bx + _m.cos(a) * 2.6, by + _m.sin(a) * 2.6, 2.0),
+            0.08, 3.0, (0.70, 0.66, 0.58, 1.0), segments=6)
+    _mc("Bandstand_Roof", (bx, by, 3.9), 3.4, 0.6, (0.38, 0.30, 0.24, 1.0), segments=8)
+    _mc("Bandstand_Finial", (bx, by, 4.6), 0.5, 0.8, (0.32, 0.26, 0.20, 1.0), segments=8)
+    # The Old Armory silhouette behind the park
+    _mb("Armory_Mass", (-82.0, 34.0, 4.5), (18.0, 12.0, 9.0), (0.44, 0.32, 0.26, 1.0))
+    for ci in range(7):
+        _mb(f"Armory_Crenel_{ci}", (-89.5 + ci * 2.5, 28.2, 9.4), (1.2, 0.6, 0.8), (0.40, 0.29, 0.23, 1.0))
+    # The old church three blocks off
+    _mb("Old_Church_Mass", (-90.0, 12.0, 3.75), (8.0, 12.0, 7.5), (0.72, 0.70, 0.62, 1.0))
+    _mb("Old_Church_Steeple", (-90.0, 8.5, 10.5), (1.6, 1.6, 6.5), (0.66, 0.64, 0.56, 1.0))
+    # The long black car idling on the River Road shoulder
+    _mb("Black_Car_Body", (-54.0, 24.0, 0.55), (1.75, 4.6, 0.55), (0.08, 0.08, 0.10, 1.0))
+    _mb("Black_Car_Cabin", (-54.0, 23.7, 1.02), (1.6, 2.4, 0.45), (0.08, 0.08, 0.10, 1.0))
+
+
+def build_park_notebook_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    JOHN'S NOTEBOOK ("John scribbled in his notebook: Hierophant.
+    Tradition. Institution.") on the park bench the riverfront_park
+    preset already frames."""
+    make_box("Johns_Notebook", (-50.35, 22.0, 0.487), (0.15, 0.20, 0.012), (0.24, 0.22, 0.20, 1.0))
+    make_box("Johns_Notebook_Page", (-50.35, 22.0, 0.4945), (0.13, 0.18, 0.003), (0.92, 0.90, 0.84, 1.0))
+
+
 def main():
     clear_scene()
     # Build order matters: ground & roads first so features sit ON
@@ -4288,7 +4434,37 @@ def main():
     build_bayou()
     build_far_horizons()
     build_distant_atmosphere()
+    build_park_2026_08()
+    build_park_draft2_2026_08()
+    build_park_horizon_2026_08()
+    build_park_notebook_2026_09()
     export_glb()
+
+
+
+def build_park_horizon_2026_08():
+    """STUMP HUNT (locale_geometry_audit): the riverfront_park camera
+    looks NW across bench / bandstand / armory — and the world ended
+    4m past the armory (28m total). Graustark continues behind it:
+    the west side's rooflines stepping away, water tower, then the
+    tree country the town sits in. Anchored on the park at blender
+    (-49, 24), marching N and W so the NW sightline never hits air.
+    """
+    from _props.detail import make_far_bands
+    from _props.geometry import make_cyl as _mc
+    # (2026-09-24: WEST only — the north bands stood across the frontage
+    # road and through the real north town (church, houses), floating over
+    # both until the far-band kit grounded its bands; the north has its town)
+    make_far_bands("ParkFarTown", (0.34, 0.31, 0.29),
+                   [(55.0, 60.0, 6.5, 0.92), (110.0, 95.0, 8.0, 0.76)],
+                   sides="W", cx=-49.0, cy=24.0, profile="roofline")
+    make_far_bands("ParkFarWood", (0.18, 0.26, 0.16),
+                   [(210.0, 170.0, 11.0, 0.58), (400.0, 290.0, 14.0, 0.44)],
+                   sides="NW", cx=-49.0, cy=24.0, profile="treeline")
+    _mc("ParkFar_WaterTower", (-120.0, 105.0, 24.0), 6.0, 7.0,
+        (0.32, 0.31, 0.33, 1.0), segments=10)
+    _mc("ParkFar_WaterTower_Stem", (-120.0, 105.0, 10.0), 1.0, 21.0,
+        (0.26, 0.26, 0.28, 1.0), segments=8)
 
 
 if __name__ == "__main__":

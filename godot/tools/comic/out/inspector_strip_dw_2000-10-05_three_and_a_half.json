@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-10-05_three_and_a_half",
+      "strip_id": "dw_2000-10-05_three_and_a_half",
+      "title": "Three and a half",
+      "date": "2000-10-05",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Thursday. Wood measures main street with his feet. It is three and a half blocks. The strip draws it that way: the panel is three and a half panels wide, and the fourth is cut. Panel 1: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man walking heel-to-toe down a rainy small-town street counting under his breath, a small dog behind him (in this panel: WOOD, BARNABY (the dog)). Wood says \"...two hundred and eleven, two hundred and twelve —\". Panel 2: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man stopped at a seawall in rain speaking to a small dog (in this panel: WOOD). Wood says \"Three and a half. It was four in September.\". Wood says \"(to the dog) You were here. You saw it.\". Panel 3: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a small dog looking at a concrete seawall in rain, no words (in this panel: BARNABY (the dog)). No dialogue in this panel. Panel 4: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a half-width panel of a rainy street with a young man and a small dog partly cut off by the panel's right border, no words (in this panel: WOOD, BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_main_street shows the setting; keep its architecture and props. Match the attached references: @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby; @loc_main_street for the setting.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: a young man walking heel-to-toe down a rainy small-town street counting under his breath, a small dog behind him (in this panel: WOOD, BARNABY (the dog)). Wood: \"...two hundred and eleven, two hundred and twelve —\". Panel 2: a young man stopped at a seawall in rain speaking to a small dog (in this panel: WOOD). Wood: \"Three and a half. It was four in September.\"; Wood: \"(to the dog) You were here. You saw it.\". Panel 3: a small dog looking at a concrete seawall in rain, no words (in this panel: BARNABY (the dog)). No text. Panel 4: a half-width panel of a rainy street with a young man and a small dog partly cut off by the panel's right border, no words (in this panel: WOOD, BARNABY (the dog)). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog). Reference @loc_main_street shows the setting; keep its architecture and props..",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "loc_main_street",
+          "id": "sheet_loc_main_street",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_main_street.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "dw_main_street",
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

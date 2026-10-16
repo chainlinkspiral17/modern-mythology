@@ -1,0 +1,220 @@
+{
+  "notes": "The twelve tableaux of Northwind Harbor \u00b7 one held wide shot each. Adjacency is the walkable graph; sound_cue is what the location sounds like from one screen away (Chapter 6 fog navigation swaps nav labels for these). worker/ambient_lines are the town talking AT you while working.",
+  "start": "maddox_porch",
+  "locations": [
+    {
+      "id": "maddox_porch",
+      "name": "UNCLE MADDOX'S PORCH",
+      "adjacent": [
+        "church_steps"
+      ],
+      "sound_cue": "a screen door on a spring",
+      "bosun_anchor": [
+        180,
+        470
+      ],
+      "worker": "Uncle Maddox",
+      "ambient_lines": [
+        "maddox, not looking up from the nets \u00b7 'back by the horns.'",
+        "maddox \u00b7 'dog knows the route better than you. let him think he's deciding.'"
+      ]
+    },
+    {
+      "id": "church_steps",
+      "name": "THE CHURCH STEPS",
+      "adjacent": [
+        "maddox_porch",
+        "bait_shop"
+      ],
+      "sound_cue": "a bell rope knocking its post",
+      "bosun_anchor": [
+        640,
+        500
+      ],
+      "worker": "Mrs. Ansel, sweeping",
+      "ambient_lines": [
+        "mrs. ansel, sweeping the steps \u00b7 'fog by thursday. my knee says.'",
+        "mrs. ansel \u00b7 'nobody rings it before seven. town rule older than the church.'"
+      ]
+    },
+    {
+      "id": "bait_shop",
+      "name": "THE BAIT SHOP",
+      "adjacent": [
+        "church_steps",
+        "chandlery"
+      ],
+      "sound_cue": "a coffee pot going on a camp stove",
+      "bosun_anchor": [
+        900,
+        480
+      ],
+      "worker": "Ruthie, at the counter",
+      "ambient_lines": [
+        "ruthie \u00b7 'pot's always on. that's the whole business model, kid.'",
+        "ruthie \u00b7 'herring under the lamp, sand shrimp off the flat. write it down or don't.'"
+      ]
+    },
+    {
+      "id": "chandlery",
+      "name": "THE CHANDLERY",
+      "adjacent": [
+        "bait_shop",
+        "fish_station",
+        "ferry_slip"
+      ],
+      "sound_cue": "a lamp ballast buzzing over the door",
+      "bosun_anchor": [
+        220,
+        500
+      ],
+      "worker": "Holt, the chandler",
+      "ambient_lines": [
+        "holt, restocking shackles \u00b7 'everything on this wall fits something in this harbor. that's the inventory system.'",
+        "holt \u00b7 'the chart's older than the paint. don't lean on it.'"
+      ]
+    },
+    {
+      "id": "ferry_slip",
+      "name": "THE FERRY SLIP",
+      "adjacent": [
+        "chandlery"
+      ],
+      "sound_cue": "a ticket window sliding open and shut",
+      "bosun_anchor": [
+        1000,
+        500
+      ],
+      "worker": "the young clerk (GLASS, the badge says)",
+      "ambient_lines": [
+        "the clerk, GLASS on the badge, squaring a stack of forms \u00b7 'ferry's at ten past. it was at ten past yesterday. it will be at ten past tomorrow.'",
+        "glass \u00b7 'i keep everything people leave. someone always comes back. usually.'"
+      ]
+    },
+    {
+      "id": "fish_station",
+      "name": "THE FISH-CLEANING STATION",
+      "adjacent": [
+        "chandlery",
+        "cannery_wall"
+      ],
+      "sound_cue": "knives on steel and gulls fighting over it",
+      "bosun_anchor": [
+        420,
+        510
+      ],
+      "worker": "Dot and Vera, cleaning the night boat's catch",
+      "ambient_lines": [
+        "dot, not slowing \u00b7 'gull gets one in three. that's the arrangement. nobody signed it.'",
+        "vera \u00b7 'you can tell the year by the knife. this one's my mother's. it remembers bigger fish.'"
+      ]
+    },
+    {
+      "id": "cannery_wall",
+      "name": "THE CANNERY WALL",
+      "adjacent": [
+        "fish_station",
+        "ice_house"
+      ],
+      "sound_cue": "wind working a sheet of tin somewhere high",
+      "bosun_anchor": [
+        820,
+        510
+      ],
+      "worker": "",
+      "ambient_lines": [
+        "the cannery's been shut since before you were born. the wall keeps its posters anyway.",
+        "layers of paper on the brick \u00b7 auctions, boats for sale, a dance. years of it."
+      ]
+    },
+    {
+      "id": "ice_house",
+      "name": "THE CO-OP ICE HOUSE",
+      "adjacent": [
+        "cannery_wall",
+        "fuel_dock"
+      ],
+      "sound_cue": "the compressor's low steady rumble",
+      "bosun_anchor": [
+        200,
+        520
+      ],
+      "worker": "Big Andersen, the ice man",
+      "ambient_lines": [
+        "andersen, moving a block with tongs like it's nothing \u00b7 'cold keeps everything. that's its one idea.'",
+        "andersen \u00b7 'co-op owns the ice, the scale-weights, and one truck. everything else is borrowed.'"
+      ]
+    },
+    {
+      "id": "fuel_dock",
+      "name": "THE FUEL DOCK",
+      "adjacent": [
+        "ice_house",
+        "jetty"
+      ],
+      "sound_cue": "the sodium lamp's buzz over the pumps",
+      "bosun_anchor": [
+        1020,
+        510
+      ],
+      "worker": "Karl, the hauler",
+      "ambient_lines": [
+        "karl, coiling line with raw hands \u00b7 'tide does the real work. we just stand near it and complain.'",
+        "karl \u00b7 'lamp's been buzzing that same note since '79. i'd miss it.'"
+      ]
+    },
+    {
+      "id": "jetty",
+      "name": "THE JETTY",
+      "adjacent": [
+        "fuel_dock",
+        "breakwater",
+        "clara_b"
+      ],
+      "sound_cue": "water slapping the pilings",
+      "bosun_anchor": [
+        520,
+        520
+      ],
+      "worker": "",
+      "ambient_lines": [
+        "the planks give a little. they always have. nobody's fallen through yet.",
+        "rope coils, crab pots, a bucket someone will come back for."
+      ]
+    },
+    {
+      "id": "clara_b",
+      "name": "THE SEINER CLARA B.",
+      "adjacent": [
+        "jetty"
+      ],
+      "sound_cue": "a diesel trying, or refusing",
+      "bosun_anchor": [
+        260,
+        500
+      ],
+      "worker": "Skipper Byrne",
+      "ambient_lines": [
+        "byrne, up to his elbows in the engine box \u00b7 'she's older than my marriage and runs better. usually.'",
+        "byrne \u00b7 'you hear the horns, that's us or the ferry. learn the difference and you'll never be lost.'"
+      ]
+    },
+    {
+      "id": "breakwater",
+      "name": "THE BREAKWATER",
+      "adjacent": [
+        "jetty"
+      ],
+      "sound_cue": "the open water, unbroken",
+      "bosun_anchor": [
+        900,
+        490
+      ],
+      "worker": "Anna Vail, at the light",
+      "ambient_lines": [
+        "anna vail, trimming the breakwater light \u00b7 'harbor's a room. this is the door. somebody has to hold it.'",
+        "anna \u00b7 'i had a boat once. now i have the light. it's the same job from the other side.'"
+      ]
+    }
+  ]
+}

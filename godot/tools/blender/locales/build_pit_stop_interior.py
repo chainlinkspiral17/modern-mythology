@@ -1,820 +1,757 @@
-"""Pit Stop Diner — dining room + kitchen line — vol6 hero pass.
+"""pit_stop_interior — the Pit Stop DINER (vol6), front + kitchen.
 
-The Pit Stop is Ben Kowalski's diner (lore/planned_community/
-suburban_blight.md L13: "Ben Kowalski (the Pit Stop, observer)") in
-the Harmony Creek strip mall, next door to the Coin Wash. Register
-per the music catalog (music_catalog.json L1866, "the Pit Stop's
-lunch-shuffle grill"): a worn family lunch counter — HOA maintenance
-guys, retirees, NexCorp van drivers — the personal-clutter OPPOSITE
-of the Gas & Go's corporate planogram. NOT a convenience store: the
-scaffold's Kwik Stop vocabulary (two snack aisles, endcap imports)
-is removed per the wave-2 "wrong fixture vocabulary" lesson.
+2026-08-03 tail-wave RE-THEME. The old build here was a convenience
+store — aisles, coolers, a lottery rack — but every vol6 scene set
+in this locale is a DINER: Ben works the grill line (ch2, ch6), the
+pass-through with a sightline to the grill (ch4), the back corner
+booth "three from the kitchen, with a window" (ch7), the milk crate
+by the walk-in that Jesse sits on (ch4), waitress service (ch7),
+the back office door (ch4). Rebuilt to match the prose:
 
-Binding scenes (grep "3d:pit_stop_interior" — 5 VN scenes):
-  · vol6_ch2_pit_stop_kitchen (Mon 12:22) — Ben on the grill through
-    the lunch shuffle; the swinging kitchen door Jesse pushes
-    through; "cataloguing the specific cars in the parking lot from
-    the kitchen window"; "a black pickup with Louisiana plates ...
-    parked at the edge of the Pit Stop lot" (L78) — so the kitchen
-    gets a real window onto the west lot, and the pickup is parked
-    out there.
-  · vol6_ch2_dumpster (Mon 14:17) — the back dumpster with Ben's
-    grease patina Jesse hates leaning on, the back screen door that
-    "slapped shut behind him" — screen door in the kitchen's north
-    wall, dumpster in the north exterior slice beyond it.
-  · vol6_ch4_pit_stop — the back booth by the window where Mr.
-    Henderson sits 41 minutes; "through the pass-through" Jesse sees
-    him; Henderson "was sitting at an angle that could see the
-    grill"; the milk crate by the walk-in Jesse sits on; the bell
-    over the diner door; the back-office door Ben stands at with a
-    sightline to the booth.
-  · vol6_ch6_pit_stop (Fri 09:18) — Ben wiping down the line;
-    Brenda (morning manager) in the office behind the office door.
-  · vol6_ch7_pit_stop (Sat 09:14) — "The back booth at the Pit Stop
-    is the corner one, three from the kitchen, with a window that
-    looks out on the strip-mall parking lot and the Coin Wash next
-    door" (L32); Ben "taps the bell on the pass-through twice";
-    Lydia pours coffee; short stack / egg-white scramble.
+- Front of house: booth row along the W window wall with the BACK
+  CORNER booth at SW (window + sightline to the pass-through),
+  lunch counter + stools, two square 4-tops, register, pie case,
+  waitress station.
+- Partition at y=6.0 with the PASS-THROUGH (sill + ticket rail +
+  service bell), the swing door, and a menu board above.
+- Kitchen: flat-top grill + vent hood on the N wall, fryer, prep
+  line, the WALK-IN cooler at the W end with the milk crate beside
+  its door, the OFFICE door in the E wall, and the N kitchen
+  window Ben catalogues parking-lot cars through.
 
-Adjudications:
-  · The corner booth: prose wants "back" + "corner" + window +
-    angle-to-the-grill all at once. Booths run down the west wall;
-    the Henderson booth is the NORTH one (Booth T3) — the corner
-    against the kitchen partition, deepest into the establishing
-    frame, window beside it, diagonal sightline through the
-    pass-through to the flat-top. "Three from the kitchen" is read
-    as the third table of the row (it is the third table counting
-    from the entry; the row has exactly three).
-  · Coin Wash "next door": the Pit Stop's east wall is the shared
-    strip-mall party wall (NO windows east — canon-consistent); the
-    Coin Wash storefront the booth window actually SEES sits across
-    the west side lot (CoinWash_Facade, porthole washers,
-    CoinWash_SignBand for scene-side Label3D).
-  · ch0 note: the "ch0 Pit Stop office" beat used to be served by
-    the cosmic_comics_back_office GLB (see that file's docstring);
-    vol6_ch0_prelude L64 now binds 3d:pit_stop_office directly, so
-    this venue owns both of its rooms.
+Room: door/S wall at blender y=0, extends +Y; interior lands at
+godot -Z. Footprint 11.0 x 11.0, ceiling 3.0.
 
-Canon-negatives (as load-bearing as the props):
-  · NO Suburban Blight sticker under the counter — Ben puts it
-    there "by mid-August" (suburban_blight.md L257), after every
-    scene this GLB backs. Leave the counter underside bare.
-  · NO stage/band gear — the diner-deck show is August 8, outside.
-  · NO jukebox, NO TV — never named at the Pit Stop.
-  · East wall windowless (party wall with the Coin Wash).
-
-Scaffold audit (playbook 2026-07-02 — openings/intersections first):
-  · Two snack aisles + convenience register in a DINER — removed.
-  · Zero window openings anywhere (solid walls) — west booth
-    windows, kitchen window and south storefront windows are now
-    REAL openings (frame + mullions, NO glass slab, bright day
-    boxes / exterior slice beyond) per the no-transparency rule.
-  · No kitchen, no booths, no counter stools, no doors — built.
-
-Shell footprint kept from the scaffold (7 x 6 x 2.8) — the .tscn
-camera preset (Background3D.gd "pit_stop_interior": south-doorway
-establishing shot at 2.30 m, fov 60) is tuned to it; the south
-door gap x -1..+1 stays clear for the camera.
-
-Text is scene-side Label3D; this script bakes only named panels:
-MenuBoard_Panel_{0..2}, CoinWash_SignBand, Pickup_PlatePanel,
-Office_DoorSign, Corkboard notices, Window day boxes.
+KITCHEN DRAFT 2 (2026-10-09, the overnight run; CLAUDE.md "build big"):
+the kitchen was a 3 m galley behind the partition — grill, fryer, one
+prep table, washed out under a white key, and the grill insert framed
+the backsplash. The building now runs 2 m further north (kitchen
+y 6.1..10.9) and the kitchen is a working line:
+  - the COOK LINE on the N wall under one long hood (range, flat-top on
+    a chef base, two-well fryer, lowboy), hood lights, a ticket rail on
+    the hood lip, the anti-fatigue mat;
+  - Ben's WINDOW to the line's left, a hand sink under it — he glances
+    left from the flat-top to catalogue the back lot (the dumpster
+    enclosure out there: "Dumpster at two-fifteen");
+  - a plating ISLAND mid-kitchen (Ben's phone face-up on it), the pass
+    counter + heat lamp on the kitchen side of the pass-through;
+  - dry storage + a speed rack by the walk-in; the DISH PIT on the E
+    wall past the office door; paper-goods shelving on the N wall;
+  - quarry-tile floor, sage FRP to 2 m, so the kitchen stops reading
+    as one white field.
+Draft 3 targets: steam and smoke over the flat-top (a particle pass),
+grease on the hood filters, the back door to the dumpster, Deck
+framing of the line from the swing door.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_table, make_chair
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import (make_floor, make_wall, make_ceiling,
-                              make_crown_molding, make_door_hinges)
-from _props.store_fixtures import make_register
-from _props.signage import make_paper_notices_wall
-from _props.decor import make_wall_clock
-from _props.safety import (make_smoke_detector, make_hvac_vent,
-                           make_fluorescent_tube_fixture,
-                           make_ceiling_speaker)
+from _props.vehicles import make_car
+from _props.geometry import make_blob, make_lathe,  clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.views import make_view
+from _props.structure import make_frame_ring,  make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.store_fixtures import (make_counter, make_counter_bullnose, make_register,
+                                   make_credit_card_terminal)
+from _props.food_service import (make_coffee_pots, make_donut_display,
+                                 make_paper_cup_stack, make_sugar_creamer_caddy)
 from _props.cleaning import make_trash_can
+from _props.decor import make_wall_clock, make_faded_poster, make_calendar, make_fire_extinguisher
+from _props.safety import (make_smoke_detector, make_hvac_vent,
+                           make_fluorescent_tube_fixture)
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
+                           make_wall_tint_band, make_threshold, make_wall_outlet,
+                           make_light_switch, make_cord_run, make_thermostat,
+                           make_corner_guard)
 
-# ── Shell (kept from the scaffold — camera + lights tuned to it) ──
-ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 2.8
-
-# ═════════════════════════════════════════════════════════════════
-# PITSTOP_* — Pit Stop Diner venue palette. KEEP IN SYNC: this block
-# is byte-identical in build_pit_stop_interior.py and
-# build_pit_stop_office.py (one venue, two GLBs — md5-verify after
-# any edit, per the Miller-house / Foxhole multi-room rule).
-# ═════════════════════════════════════════════════════════════════
-PITSTOP_CREAM      = (0.93, 0.88, 0.76, 1.0)   # painted walls
-PITSTOP_CREAM_AGED = (0.85, 0.78, 0.64, 1.0)   # grease-adjacent wall tone
-PITSTOP_RED        = (0.62, 0.18, 0.16, 1.0)   # booth vinyl / brand oxblood
-PITSTOP_RED_WORN   = (0.70, 0.34, 0.26, 1.0)   # sun-worn vinyl / table edging
-PITSTOP_FORMICA    = (0.76, 0.66, 0.46, 1.0)   # counter + table tops
-PITSTOP_TOP_DARK   = (0.20, 0.15, 0.13, 1.0)   # counter top laminate
-PITSTOP_WOOD       = (0.52, 0.36, 0.22, 1.0)   # oak trim / the office desk
-PITSTOP_WOOD_DARK  = (0.33, 0.22, 0.14, 1.0)
-PITSTOP_STAINLESS  = (0.70, 0.71, 0.72, 1.0)   # kitchen line steel
-PITSTOP_STEEL_DK   = (0.44, 0.45, 0.47, 1.0)
-PITSTOP_FLOOR      = (0.82, 0.76, 0.62, 1.0)   # tan linoleum
-PITSTOP_FLOOR_SEAM = (0.58, 0.51, 0.40, 1.0)
-PITSTOP_CHECKER    = (0.48, 0.16, 0.14, 1.0)   # dark-red checker tiles
-PITSTOP_MINT       = (0.62, 0.76, 0.68, 1.0)   # 50s mint accent trim
-PITSTOP_LEGAL_PAD  = (0.94, 0.86, 0.44, 1.0)   # Ben's legal pad (ch0/ch3)
-PITSTOP_APRON      = (0.90, 0.88, 0.82, 1.0)   # bib aprons
-PITSTOP_BRASS      = (0.78, 0.62, 0.30, 1.0)   # door bell + pass bell
-PITSTOP_DAY_SKY    = (0.98, 0.92, 0.72, 1.0)   # Texas summer daylight outside
-PITSTOP_ASPHALT    = (0.30, 0.30, 0.32, 1.0)   # strip-mall lot
-PITSTOP_STRIPE     = (0.88, 0.86, 0.78, 1.0)   # lot striping
-PITSTOP_PICKUP_BLK = (0.10, 0.10, 0.11, 1.0)   # the Louisiana pickup (ch2/ch3)
-PITSTOP_COINWASH   = (0.70, 0.78, 0.82, 1.0)   # Coin Wash facade next door (ch7)
-PITSTOP_GREASE     = (0.34, 0.28, 0.20, 1.0)   # grill patina / dumpster grime
-# ═══════════════════════ end shared block ════════════════════════
-
-PAL_WALL = {"wall": PITSTOP_CREAM, "baseboard": PITSTOP_WOOD_DARK}
-
-# Locals (this room only)
-COL_SIDEWALK  = (0.62, 0.60, 0.56, 1.0)
-COL_DUMPSTER  = (0.30, 0.38, 0.30, 1.0)   # the back dumpster (ch2)
-COL_CAB_GLASS = (0.25, 0.28, 0.30, 1.0)   # pickup glass band, opaque
-COL_GRIDDLE   = (0.16, 0.14, 0.12, 1.0)
-COL_PATTY     = (0.35, 0.22, 0.14, 1.0)
-COL_PIE       = (0.82, 0.62, 0.34, 1.0)
-COL_KETCHUP   = (0.70, 0.16, 0.12, 1.0)
-COL_MUSTARD   = (0.86, 0.70, 0.22, 1.0)
-COL_CORK      = (0.72, 0.58, 0.38, 1.0)
-
-# Partition between dining room and kitchen (y = 4.7, 0.15 thick)
-PART_Y = 4.70; PART_T = 0.15
-# Booth row geometry (west wall). Three tables; T3 (north, corner
-# against the partition) is the Henderson booth (ch4 / ch7).
-BOOTH_TABLE_Y = [0.86, 2.30, 3.74]
-BOOTH_WIN_Z0, BOOTH_WIN_Z1 = 1.0, 2.0
+ROOM_W = 11.0; ROOM_D = 11.0; CEIL = 3.0   # kitchen deepened 2.0 m (2026-10-09: it was a 3 m galley)
+PART_Y = 6.0          # FOH/kitchen partition
+PAL_WALL = {"wall": (0.90, 0.87, 0.80, 1.0), "baseboard": (0.40, 0.34, 0.30, 1.0)}
+COL_FLOOR = (0.80, 0.78, 0.72, 1.0); COL_SEAM = (0.44, 0.42, 0.38, 1.0)
+COL_WOOD = (0.52, 0.40, 0.28, 1.0)
+COL_BOOTH = (0.62, 0.26, 0.22, 1.0)       # oxblood vinyl
+COL_TABLETOP = (0.82, 0.78, 0.68, 1.0)    # worn formica
+COL_STEEL = (0.68, 0.70, 0.72, 1.0)
+COL_STEEL_DK = (0.46, 0.48, 0.50, 1.0)
+COL_GLASS = (0.62, 0.72, 0.76, 0.6)
 
 
-# ═════════════════════════════════════════════════════════════════
-# SHELL — floor + checker field, four walls with REAL window
-# openings (west booth windows, kitchen window, south storefront),
-# the kitchen partition, ceiling.
-# ═════════════════════════════════════════════════════════════════
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
-               size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
-               palette={"vinyl": PITSTOP_FLOOR, "seam": PITSTOP_FLOOR_SEAM})
-    # Checkerboard accent tiles across the dining floor (diner read)
-    tile = 0.55
-    for ix in range(12):
-        for iy in range(8):
-            if (ix + iy) % 2:
-                continue
-            tx = -3.3 + tile / 2.0 + ix * tile
-            ty = 0.30 + tile / 2.0 + iy * tile
-            make_box(f"Checker_{ix}_{iy}", (tx, ty, 0.008),
-                     (tile - 0.03, tile - 0.03, 0.004), PITSTOP_CHECKER)
-    # High-traffic scuffs — door-to-counter lane + stool line
-    for i, (sx, sy) in enumerate([(0.0, 0.9), (-0.3, 1.6), (0.3, 2.3),
-                                  (0.6, 2.8), (1.3, 2.8)]):
-        make_box(f"Floor_Scuff_{i}", (sx, sy, 0.010),
-                 (0.30, 0.20, 0.001), P.FLOOR_SCUFF)
-
-    # ── West wall — sill band / header band / piers around the
-    #    three booth-window openings + the kitchen window (ch2:
-    #    Ben catalogues the lot "from the kitchen window").
-    make_box("Wall_W_Sill", (-3.5, 3.0, 0.5), (0.2, 6.4, 1.0), PITSTOP_CREAM)
-    make_box("Wall_W_Header", (-3.5, 3.0, 2.4), (0.2, 6.4, 0.8), PITSTOP_CREAM)
-    for i, (yc, ln) in enumerate([(0.08, 0.56), (1.58, 0.44), (3.02, 0.44),
-                                  (4.595, 0.71), (5.975, 0.45)]):
-        make_box(f"Wall_W_Pier_{i}", (-3.5, yc, 1.5), (0.2, ln, 1.0),
-                 PITSTOP_CREAM)
-    make_box("Wall_W_Base", (-3.37, 3.0, 0.08), (0.06, 6.4, 0.16),
-             PITSTOP_WOOD_DARK)
-
-    # ── East wall — SOLID: shared party wall with the Coin Wash
-    #    next door (ch7). No windows here, canon-consistent.
-    make_wall("Wall_E", (+3.5, 3.0, 0), length=6.4, height=CEIL,
-              axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-
-    # ── North wall — solid except the back screen-door opening
-    #    (x 1.7..2.5) to the dumpster (ch2_dumpster).
-    make_box("Wall_N_W", (-1.0, 6.0, CEIL / 2.0), (5.4, 0.2, CEIL),
-             PITSTOP_CREAM_AGED)
-    make_box("Wall_N_E", (3.1, 6.0, CEIL / 2.0), (1.2, 0.2, CEIL),
-             PITSTOP_CREAM_AGED)
-    make_box("Wall_N_DoorHead", (2.1, 6.0, 2.45), (0.8, 0.2, 0.7),
-             PITSTOP_CREAM_AGED)
-    make_box("Wall_N_Base_W", (-1.0, 5.94, 0.08), (5.4, 0.06, 0.16),
-             PITSTOP_WOOD_DARK)
-    make_box("Wall_N_Base_E", (3.1, 5.94, 0.08), (1.2, 0.06, 0.16),
-             PITSTOP_WOOD_DARK)
-
-    # ── South (storefront) wall — door gap x -1..+1 stays CLEAR
-    #    (camera shoots through it); window openings either side.
-    for nm, cx, w in [("Wall_S_Pier_WW", -3.375, 0.65),
-                      ("Wall_S_Pier_WM", -1.225, 0.45),
-                      ("Wall_S_Pier_EM", +1.225, 0.45),
-                      ("Wall_S_Pier_EE", +3.375, 0.65)]:
-        make_box(nm, (cx, 0.0, CEIL / 2.0), (w, 0.2, CEIL), PITSTOP_CREAM)
-    for nm, cx in [("Wall_S_Sill_W", -2.25), ("Wall_S_Sill_E", +2.25)]:
-        make_box(nm, (cx, 0.0, 0.375), (1.6, 0.2, 0.75), PITSTOP_CREAM)
-    make_box("Wall_S_Header", (0.0, 0.0, 2.5), (ROOM_W + 0.4, 0.2, 0.6),
-             PITSTOP_CREAM)
-    for nm, cx in [("Wall_S_Base_W", -2.25), ("Wall_S_Base_E", +2.25)]:
-        make_box(nm, (cx, 0.13, 0.08), (1.6, 0.06, 0.16), PITSTOP_WOOD_DARK)
-
-    # ── Kitchen partition (y = 4.7): pass-through opening
-    #    (x -0.9..+1.1, z 1.1..1.7), swinging kitchen door opening
-    #    (x 1.6..2.4), back-office door (x 2.6..3.4 — ch4: Ben at
-    #    the office door has a clean SW sightline to Booth T3).
-    make_box("Part_W", (-2.2, PART_Y, CEIL / 2.0), (2.6, PART_T, CEIL),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_PassSill", (0.1, PART_Y, 0.55), (2.0, PART_T, 1.1),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_PassHead", (0.1, PART_Y, 2.25), (2.0, PART_T, 1.1),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_Pier_M", (1.35, PART_Y, CEIL / 2.0), (0.5, PART_T, CEIL),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_SwingHead", (2.0, PART_Y, 2.45), (0.8, PART_T, 0.7),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_Pier_E", (2.5, PART_Y, CEIL / 2.0), (0.2, PART_T, CEIL),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_OfficeHead", (3.0, PART_Y, 2.45), (0.8, PART_T, 0.7),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_Pier_EE", (3.45, PART_Y, CEIL / 2.0), (0.1, PART_T, CEIL),
-             PITSTOP_CREAM_AGED)
-    make_box("Part_Base_S", (-2.2, PART_Y - PART_T / 2.0 - 0.03, 0.08),
-             (2.6, 0.06, 0.16), PITSTOP_WOOD_DARK)
-
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL),
-                 size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4)
-    # Mint cove trim around the dining room (50s diner register)
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    # (2026-10-07) Wall_W out of the loop: its window is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.55, 1.60, 1.54, 1.40), (3.55, 1.60, 1.54, 1.40)])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',   # cut 2026-10-07: its window was a pane on a solid wall
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(-3.2, 1.65, 1.40, 1.10), (4.70, 1.05, 0.95, 2.10)])   # (pass 65) the back door, E end
+    # South wall with a centred entry-door gap.
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-3.18, 1.60, 1.96, 1.50)])
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(3.18, 1.60, 1.96, 1.50)])
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [
-            ("Crown_W", 'Y', 4.6, -3.4, 2.3),
-            ("Crown_E", 'Y', 4.6, +3.4, 2.3),
-            ("Crown_S", 'X', ROOM_W, 0.0, 0.10)]:
-        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length,
-                           axis=ax, ceil_z=CEIL, palette={"wood": PITSTOP_MINT})
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
+                           ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 
-def _alum_window(tag, *, cx, cy_face, width, z0, z1, axis='X'):
-    """Storefront aluminum frame + mullions for a REAL wall opening.
-    axis='X': opening in an E-W (south) wall; axis='Y': in a N-S
-    (west) wall — cx is then the wall plane, cy_face the run center."""
-    zc = (z0 + z1) / 2.0
-    h = z1 - z0
-    if axis == 'X':
-        make_box(f"Window_{tag}_Head", (cx, cy_face, z1 + 0.04),
-                 (width + 0.12, 0.22, 0.08), PITSTOP_STEEL_DK)
-        make_box(f"Window_{tag}_SillCap", (cx, cy_face, z0 - 0.04),
-                 (width + 0.12, 0.26, 0.08), PITSTOP_STEEL_DK)
-        for sgn in (-1, +1):
-            make_box(f"Window_{tag}_Jamb_{sgn:+d}",
-                     (cx + sgn * (width / 2.0 + 0.03), cy_face, zc),
-                     (0.08, 0.22, h), PITSTOP_STEEL_DK)
-        make_box(f"Window_{tag}_MullH", (cx, cy_face, zc),
-                 (width, 0.05, 0.05), PITSTOP_STEEL_DK)
-        make_box(f"Window_{tag}_MullV", (cx, cy_face, zc),
-                 (0.05, 0.05, h), PITSTOP_STEEL_DK)
-    else:
-        make_box(f"Window_{tag}_Head", (cx, cy_face, z1 + 0.04),
-                 (0.22, width + 0.12, 0.08), PITSTOP_STEEL_DK)
-        make_box(f"Window_{tag}_SillCap", (cx, cy_face, z0 - 0.04),
-                 (0.26, width + 0.12, 0.08), PITSTOP_STEEL_DK)
-        for sgn in (-1, +1):
-            make_box(f"Window_{tag}_Jamb_{sgn:+d}",
-                     (cx, cy_face + sgn * (width / 2.0 + 0.03), zc),
-                     (0.22, 0.08, h), PITSTOP_STEEL_DK)
-        make_box(f"Window_{tag}_MullH", (cx, cy_face, zc),
-                 (0.05, width, 0.05), PITSTOP_STEEL_DK)
-        make_box(f"Window_{tag}_MullV", (cx, cy_face, zc),
-                 (0.05, 0.05, h), PITSTOP_STEEL_DK)
+def build_windows():
+    # Storefront glass either side of the door (S wall, Y-thin).
+    # built toward the room (2026-09-23: into the S wall, invisible);
+    # 1.96 wide so the SW frame clears the corner booth's back
+    for tag, wx in [("SW", -3.18), ("SE", 3.18)]:
+        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.96, height=1.50, room_dir=+1, see_through=True)
+    # W wall windows beside the booth row — the lot is out the W
+    # glass (hand-built X-thin panes).
+    for tag, wy in [("W_Front", 1.55), ("W_Mid", 3.55)]:
+        wx = -ROOM_W/2.0 + 0.10
+        # (2026-10-07: the "frame" was one solid 1.70 x 1.55 slab — a
+        # brown board over the cut; now head, sill and two jambs)
+        for fn, fy, fz, fsy, fsz in (("Head", wy, 2.335, 1.70, 0.08), ("Sill", wy, 0.865, 1.70, 0.08),
+                                     ("JambS", wy - 0.81, 1.60, 0.08, 1.55), ("JambN", wy + 0.81, 1.60, 0.08, 1.55)):
+            make_box(f"Win_{tag}_Frame_{fn}", (wx, fy, fz), (0.06, fsy, fsz), COL_WOOD)
+        # (2026-10-07: the wall is cut; the opaque glass box went — the lot is SEEN)
+        make_box(f"Win_{tag}_Mullion", (wx+0.02, wy, 1.60), (0.03, 0.05, 1.40), COL_WOOD)
+        make_box(f"Win_{tag}_Glint", (wx, wy - 0.40, 1.60), (0.004, 0.03, 1.40), (0.84, 0.88, 0.92, 1.0))   # sill to head
+    # Kitchen window on the N wall — Ben catalogues the parking-lot
+    # cars through this from the grill (vol6_ch2).
+    make_window("Win_Kitchen", (-3.2, ROOM_D-0.10, 1.65), width=1.40, height=1.10, see_through=True)
 
 
-# ═════════════════════════════════════════════════════════════════
-# STOREFRONT — south door (frame + west leaf, gap stays open for
-# the camera), the bell over the diner door (ch4), entry mat,
-# window frames + day boxes, trash can.
-# ═════════════════════════════════════════════════════════════════
-def build_storefront():
-    for tag, wx in [("SW", -2.25), ("SE", +2.25)]:
-        _alum_window(tag, cx=wx, cy_face=0.0, width=1.6,
-                     z0=0.75, z1=2.20, axis='X')
-        # Bright Texas-summer day box beyond the opening (all bound
-        # scenes are 09:14-15:15 — day, not el Rancho's 4 AM night)
-        make_box(f"Window_{tag}_Day", (wx, -0.55, 1.475),
-                 (1.9, 0.7, 1.75), PITSTOP_DAY_SKY)
-    # Door surround
-    for sgn in (-1, +1):
-        make_box(f"DoorPost_{sgn:+d}", (sgn * 0.96, 0.0, 1.10),
-                 (0.08, 0.24, 2.20), PITSTOP_STEEL_DK)
-    make_box("DoorTransom", (0.0, 0.0, 2.16), (2.0, 0.24, 0.09),
-             PITSTOP_STEEL_DK)
-    # West-half aluminum leaf (east half open — the camera lane)
-    make_box("Door_Stile_W", (-0.88, 0.0, 1.08), (0.07, 0.05, 2.10),
-             PITSTOP_STEEL_DK)
-    make_box("Door_Stile_E", (-0.12, 0.0, 1.08), (0.07, 0.05, 2.10),
-             PITSTOP_STEEL_DK)
-    make_box("Door_Rail_Top", (-0.50, 0.0, 2.09), (0.83, 0.05, 0.08),
-             PITSTOP_STEEL_DK)
-    make_box("Door_Rail_Mid", (-0.50, 0.0, 1.02), (0.83, 0.05, 0.08),
-             PITSTOP_STEEL_DK)
-    make_box("Door_Panel_Lower", (-0.50, 0.0, 0.55), (0.79, 0.035, 0.86),
-             PITSTOP_MINT)
-    make_box("Door_KickPlate", (-0.50, 0.0, 0.16), (0.83, 0.05, 0.24),
-             PITSTOP_STEEL_DK)
-    make_cyl("Door_PushBar", (-0.50, 0.07, 1.02), 0.020, 0.62,
-             PITSTOP_STEEL_DK, axis='X')
-    make_door_hinges("Door_Hinge", edge_x=-0.92, edge_y=0.0,
-                     edge_z_centers=[0.35, 1.05, 1.80], axis='X')
-    # The bell over the diner door (ch4: "the bell over the diner
-    # door chimes") — brass dome on a curl bracket, inside face
-    make_box("DoorBell_Bracket", (0.42, 0.14, 2.06), (0.03, 0.16, 0.03),
-             PITSTOP_STEEL_DK)
-    make_cyl("DoorBell_Dome", (0.42, 0.20, 1.99), 0.05, 0.08,
-             PITSTOP_BRASS)
-    make_cyl("DoorBell_Clapper", (0.42, 0.20, 1.93), 0.012, 0.05,
-             PITSTOP_STEEL_DK)
-    # Entry mat
-    make_box("EntryMat_Under", (0.0, 0.80, 0.012), (1.90, 1.05, 0.006),
-             (0.14, 0.13, 0.13, 1.0))
-    make_box("EntryMat", (0.0, 0.80, 0.018), (1.76, 0.92, 0.008),
-             P.RUBBER_MAT)
-    make_box("EntryMat_Text", (0.0, 0.80, 0.023), (1.00, 0.18, 0.002),
-             (0.42, 0.40, 0.38, 1.0))
-    make_trash_can("DoorTrash", (3.05, 0.55, 0.0),
-                   palette={"body": PITSTOP_RED_WORN})
-
-
-# ═════════════════════════════════════════════════════════════════
-# BOOTH ROW — west wall. Single bench / three tables / two shared
-# double-backs / single bench against the partition. Booth T3
-# (north corner) is the Henderson booth (ch4 41 minutes / ch7
-# Eileen breakfast). Window openings above each table.
-# ═════════════════════════════════════════════════════════════════
-def _booth_single_bench(tag, cy, back_sign):
-    """Bench with its tall back on the back_sign side (-1 = south)."""
-    make_box(f"Booth_{tag}_Base", (-2.95, cy, 0.20), (0.90, 0.42, 0.40),
-             PITSTOP_WOOD_DARK)
-    make_box(f"Booth_{tag}_Seat", (-2.95, cy + 0.02 * -back_sign, 0.46),
-             (0.90, 0.46, 0.10), PITSTOP_RED)
-    make_box(f"Booth_{tag}_Back", (-2.95, cy + back_sign * 0.16, 0.82),
-             (0.90, 0.10, 0.76), PITSTOP_RED)
-    make_box(f"Booth_{tag}_BackCap", (-2.95, cy + back_sign * 0.16, 1.22),
-             (0.90, 0.14, 0.04), PITSTOP_WOOD)
-
-
-def _booth_double_bench(tag, cy):
-    make_box(f"Booth_{tag}_Base", (-2.95, cy, 0.20), (0.90, 0.84, 0.40),
-             PITSTOP_WOOD_DARK)
-    make_box(f"Booth_{tag}_Seat_S", (-2.95, cy - 0.24, 0.46),
-             (0.90, 0.40, 0.10), PITSTOP_RED)
-    make_box(f"Booth_{tag}_Seat_N", (-2.95, cy + 0.24, 0.46),
-             (0.90, 0.40, 0.10), PITSTOP_RED)
-    make_box(f"Booth_{tag}_Back", (-2.95, cy, 0.82), (0.90, 0.12, 0.76),
-             PITSTOP_RED)
-    make_box(f"Booth_{tag}_BackCap", (-2.95, cy, 1.22), (0.90, 0.16, 0.04),
-             PITSTOP_WOOD)
-
-
-def _booth_table(tag, cy):
-    make_box(f"Booth_{tag}_Top", (-2.925, cy, 0.74), (0.95, 0.62, 0.05),
-             PITSTOP_FORMICA)
-    make_box(f"Booth_{tag}_EdgeBand", (-2.4525, cy, 0.74),
-             (0.035, 0.62, 0.055), PITSTOP_RED_WORN)
-    make_cyl(f"Booth_{tag}_Pedestal", (-2.95, cy, 0.36), 0.05, 0.70,
-             PITSTOP_STEEL_DK)
-    make_cyl(f"Booth_{tag}_Foot", (-2.95, cy, 0.02), 0.12, 0.03,
-             PITSTOP_STEEL_DK)
-    make_box(f"Booth_{tag}_WallCleat", (-3.36, cy, 0.70), (0.08, 0.50, 0.04),
-             PITSTOP_WOOD)
-    # Table set: napkin dispenser + ketchup/mustard pair
-    make_box(f"Booth_{tag}_Napkins", (-3.16, cy + 0.14, 0.83),
-             (0.14, 0.08, 0.13), PITSTOP_STEEL_DK)
-    make_box(f"Booth_{tag}_NapkinPaper", (-3.16, cy + 0.14, 0.90),
-             (0.10, 0.05, 0.02), P.PAPER)
-    make_cyl(f"Booth_{tag}_Ketchup", (-3.18, cy - 0.10, 0.835), 0.030,
-             0.14, COL_KETCHUP)
-    make_cyl(f"Booth_{tag}_Mustard", (-3.10, cy - 0.16, 0.825), 0.026,
-             0.12, COL_MUSTARD)
+def _booth(tag, by, corner=False):
+    """One W-wall booth: two facing vinyl benches + formica table."""
+    bx = -ROOM_W/2.0 + 0.68   # flush with the window frames (2026-09-23: the backs sat 10 cm in the wall, 13 in the frames)
+    for si, (yo, back_yo) in enumerate([(-0.52, -0.72), (0.52, 0.72)]):
+        make_box(f"Booth_{tag}_Seat_{si}", (bx, by+yo, 0.44), (1.10, 0.42, 0.10), COL_BOOTH)
+        make_box(f"Booth_{tag}_Back_{si}", (bx, by+back_yo, 0.80), (1.10, 0.10, 0.85), COL_BOOTH)
+        make_box(f"Booth_{tag}_Base_{si}", (bx, by+yo, 0.20), (1.05, 0.40, 0.38), (0.30, 0.16, 0.14, 1.0))
+    make_box(f"Booth_{tag}_Table", (bx+0.10, by, 0.74), (1.30, 0.70, 0.05), COL_TABLETOP)
+    make_box(f"Booth_{tag}_TableEdge", (bx+0.10, by, 0.71), (1.32, 0.72, 0.02), (0.50, 0.48, 0.44, 1.0))
+    make_cyl(f"Booth_{tag}_Ped", (bx+0.10, by, 0.36), 0.06, 0.70, COL_STEEL_DK, segments=8)
+    # Table dress: napkin dispenser + ketchup.
+    make_box(f"Booth_{tag}_Napkins", (bx-0.25, by+0.18, 0.82), (0.14, 0.06, 0.12), COL_STEEL)
+    make_cyl(f"Booth_{tag}_Ketchup", (bx-0.22, by-0.18, 0.84), 0.035, 0.16, (0.72, 0.14, 0.10, 1.0), segments=8)
+    if corner:
+        # The back corner booth (vol6_ch7): a water glass + the
+        # check folder Lydia leaves without being asked.
+        make_cyl(f"Booth_{tag}_WaterGlass", (bx+0.35, by+0.20, 0.82), 0.04, 0.13, (0.80, 0.86, 0.88, 0.7), segments=8)
+        make_box(f"Booth_{tag}_CheckFolder", (bx+0.30, by-0.22, 0.775), (0.16, 0.22, 0.015), (0.16, 0.16, 0.18, 1.0))
 
 
 def build_booths():
-    _booth_single_bench("B0", 0.35, -1)          # entry-end bench
-    _booth_table("T1", BOOTH_TABLE_Y[0])
-    _booth_double_bench("D1", 1.58)
-    _booth_table("T2", BOOTH_TABLE_Y[1])
-    _booth_double_bench("D2", 3.02)
-    _booth_table("T3", BOOTH_TABLE_Y[2])         # HENDERSON booth (ch4/ch7)
-    _booth_single_bench("B3", 4.25, +1)          # back against the partition
-    # Window openings above each table + the kitchen window
-    for k, cy in enumerate(BOOTH_TABLE_Y):
-        _alum_window(f"B{k}", cx=-3.5, cy_face=cy, width=1.0,
-                     z0=BOOTH_WIN_Z0, z1=BOOTH_WIN_Z1, axis='Y')
-    _alum_window("K", cx=-3.5, cy_face=5.35, width=0.8,
-                 z0=BOOTH_WIN_Z0, z1=BOOTH_WIN_Z1, axis='Y')
-    # Framed regulars' photos on the piers between windows
-    for i, py in enumerate([1.58, 3.02]):
-        make_box(f"PierPhoto_{i}_Frame", (-3.385, py, 1.60),
-                 (0.02, 0.26, 0.32), PITSTOP_WOOD)
-        make_box(f"PierPhoto_{i}_Print", (-3.375, py, 1.60),
-                 (0.006, 0.20, 0.26), P.PAPER_AGED)
+    # Booth row down the W wall. The SW one is THE back corner booth
+    # — "the corner one, three from the kitchen, with a window"
+    # (vol6_ch7); its bench sightline runs N to the pass-through
+    # (how Jim Wagner could see the grill in vol6_ch4).
+    _booth("N", 4.90)
+    _booth("Mid", 3.55)
+    _booth("S", 2.20)
+    _booth("Back_Corner", 0.85, corner=True)
 
 
-# ═════════════════════════════════════════════════════════════════
-# LUNCH COUNTER — mid-frame hero: formica counter facing the door,
-# four vinyl stools, register, cake dome, backbar with the coffee
-# Lydia pours (ch7). The counter UNDERSIDE stays bare: the Suburban
-# Blight sticker Ben puts there arrives mid-August (canon-negative).
-# ═════════════════════════════════════════════════════════════════
 def build_counter():
-    cx, cy = 0.9, 3.55
-    make_box("Counter_Body", (cx, cy, 0.46), (3.2, 0.65, 0.92),
-             PITSTOP_FORMICA)
-    make_box("Counter_Top", (cx, cy, 0.955), (3.36, 0.80, 0.07),
-             PITSTOP_TOP_DARK)
-    make_box("Counter_Kick", (cx, cy - 0.335, 0.10), (3.2, 0.02, 0.20),
-             PITSTOP_WOOD_DARK)
-    make_cyl("Counter_Bullnose", (cx, cy - 0.40, 0.92), 0.030, 3.2,
-             PITSTOP_TOP_DARK, axis='X')
-    # Stools — red vinyl, chrome posts, foot rings
-    for i, sx in enumerate([-0.30, 0.50, 1.30, 2.10]):
-        make_cyl(f"Stool_{i}_Seat", (sx, 2.82, 0.68), 0.17, 0.07,
-                 PITSTOP_RED, segments=10)
-        make_cyl(f"Stool_{i}_Post", (sx, 2.82, 0.34), 0.030, 0.60,
-                 PITSTOP_STAINLESS)
-        make_cyl(f"Stool_{i}_Base", (sx, 2.82, 0.02), 0.19, 0.04,
-                 PITSTOP_STEEL_DK, segments=10)
-        make_cyl(f"Stool_{i}_FootRing", (sx, 2.82, 0.25), 0.12, 0.015,
-                 PITSTOP_STAINLESS, segments=10)
-    # Counter top dressing
-    make_register("Register", (2.10, 3.62, 0.99))
-    make_cyl("CakeDome_Plate", (-0.35, 3.62, 0.995), 0.18, 0.02,
-             PITSTOP_STAINLESS, segments=12)
-    make_cyl("CakeDome_Dome", (-0.35, 3.62, 1.10), 0.16, 0.18,
-             (0.85, 0.88, 0.86, 1.0), segments=12)
-    make_cyl("CakeDome_Knob", (-0.35, 3.62, 1.21), 0.025, 0.04,
-             PITSTOP_STAINLESS)
-    for i, nx in enumerate([0.20, 1.60]):
-        make_box(f"Counter_Napkins_{i}", (nx, 3.50, 1.06),
-                 (0.15, 0.09, 0.14), PITSTOP_STEEL_DK)
-        make_box(f"Counter_NapkinPaper_{i}", (nx, 3.50, 1.14),
-                 (0.11, 0.05, 0.02), P.PAPER)
-    make_cyl("Counter_Ketchup", (0.62, 3.48, 1.06), 0.030, 0.14,
-             COL_KETCHUP)
-    make_cyl("Counter_Mustard", (0.72, 3.42, 1.05), 0.026, 0.12,
-             COL_MUSTARD)
-    make_box("Counter_SugarRack", (1.05, 3.46, 1.02), (0.16, 0.10, 0.06),
-             PITSTOP_STEEL_DK)
-    make_box("Counter_SugarPax", (1.05, 3.46, 1.06), (0.12, 0.07, 0.03),
-             P.PAPER)
-    # The line rag — ch6: "He keeps wiping the line."
-    make_box("Counter_LineRag", (1.75, 3.42, 1.00), (0.18, 0.12, 0.02),
-             PITSTOP_MINT)
-    # Backbar against the partition — coffee station (Lydia's pot),
-    # mug pyramid, saucers, pie stand, order spike
-    make_box("Backbar_Base", (0.45, 4.42, 0.44), (2.1, 0.45, 0.88),
-             PITSTOP_WOOD_DARK)
-    make_box("Backbar_Top", (0.45, 4.42, 0.90), (2.2, 0.50, 0.04),
-             PITSTOP_STAINLESS)
-    make_box("Coffee_Brewer", (-0.32, 4.50, 1.10), (0.36, 0.30, 0.36),
-             PITSTOP_STEEL_DK)
-    for i, px in enumerate([-0.42, -0.20]):
-        make_cyl(f"Coffee_Warmer_{i}", (px, 4.38, 0.925), 0.085, 0.015,
-                 P.METAL_BLACK)
-        make_cyl(f"Coffee_Pot_{i}", (px, 4.38, 1.01), 0.075, 0.16,
-                 (0.24, 0.15, 0.10, 1.0))
-        make_box(f"Coffee_PotHandle_{i}", (px + 0.10, 4.38, 1.02),
-                 (0.05, 0.03, 0.09), P.METAL_BLACK)
-    for i, (mx, my) in enumerate([(0.28, 4.36), (0.37, 4.48), (0.46, 4.38),
-                                  (0.33, 4.42), (0.42, 4.46)]):
-        make_cyl(f"Backbar_Mug_{i}", (mx, my, 0.965), 0.040,
-                 0.085, (0.92, 0.90, 0.84, 1.0), segments=10)
-    make_cyl("Backbar_Saucers", (0.70, 4.42, 0.97), 0.070, 0.10,
-             (0.92, 0.90, 0.84, 1.0), segments=12)
-    make_cyl("PieStand_Pedestal", (1.10, 4.44, 0.965), 0.035, 0.09,
-             PITSTOP_STAINLESS)
-    make_cyl("PieStand_Plate", (1.10, 4.44, 1.02), 0.15, 0.02,
-             PITSTOP_STAINLESS, segments=12)
-    make_cyl("PieStand_Pie", (1.10, 4.44, 1.07), 0.12, 0.07, COL_PIE,
-             segments=12)
-    make_cyl("OrderSpike_Base", (1.42, 4.44, 0.935), 0.045, 0.02,
-             PITSTOP_STEEL_DK)
-    make_cyl("OrderSpike_Needle", (1.42, 4.44, 1.02), 0.006, 0.15,
-             PITSTOP_STAINLESS)
-    make_box("OrderSpike_Tickets", (1.42, 4.44, 0.97), (0.09, 0.09, 0.015),
-             P.PAPER)
+    # Lunch counter parallel to the partition, register at the E end.
+    ccy = 4.55
+    # make_counter's `depth` is X and `length` is Y. This counter's
+    # stools, register, pie case and cup stack all spread along X,
+    # so it was authored 90 DEGREES ROTATED: a 6m counter running
+    # north-south through the pass-through partition and the prep
+    # table, with the dining chairs inside its flank. Same bug as
+    # the New Orleans bar (2026-08-12).
+    top_z = make_counter("Lunch", (1.4, ccy, 0.0), length=0.75, depth=6.0, height=0.95,
+                         palette={"formica": (0.74, 0.68, 0.58, 1.0),
+                                  "top": COL_TABLETOP,
+                                  "kick": (0.30, 0.26, 0.24, 1.0)})
+    make_counter_bullnose("Lunch", (1.4, ccy-0.40, top_z), length=6.0,
+                          palette={"top": COL_TABLETOP}, axis='X')
+    # Stools bolted along the customer side.
+    for si in range(6):
+        sx = -1.0 + si * 0.96
+        make_cyl(f"Stool_{si}_Post", (sx, ccy-0.95, 0.28), 0.05, 0.56, COL_STEEL_DK, segments=8)
+        make_cyl(f"Stool_{si}_Seat", (sx, ccy-0.95, 0.60), 0.19, 0.07, COL_BOOTH, segments=10)
+    make_register("RegisterMachine", (4.0, ccy+0.05, top_z))
+    make_credit_card_terminal("CardTerm", (3.4, ccy-0.25, top_z))
+    make_donut_display("PieCase", (-0.9, ccy+0.05, top_z))
+    make_paper_cup_stack("CupStack", (0.2, ccy+0.10, top_z), count=12)
+    make_sugar_creamer_caddy("Caddy", (1.4, ccy-0.15, top_z))
+    # Coffee station on the back line between counter and partition.
+    bz = make_counter("BackLine", (0.6, PART_Y-0.45, 0.0), length=0.60, depth=3.2, height=0.90,
+                      palette={"formica": COL_STEEL_DK, "top": COL_STEEL,
+                               "kick": (0.26, 0.26, 0.28, 1.0)})
+    make_coffee_pots("CoffeePots", (0.0, PART_Y-0.45, bz), pots=2)
 
 
-# ═════════════════════════════════════════════════════════════════
-# PASS-THROUGH + PARTITION FACE — stainless sill shelf, the tap
-# bell (ch7: "taps the bell on the pass-through twice"), order
-# wheel, heat lamps, menu board panels (Label3D), the wall clock
-# frozen at 12:22 (the lunch shuffle, ch2 / music catalog).
-# ═════════════════════════════════════════════════════════════════
-def build_pass_through():
-    make_box("Pass_SillShelf", (0.1, PART_Y, 1.13), (2.1, 0.50, 0.06),
-             PITSTOP_STAINLESS)
-    # The bell — dining-side edge of the shelf, where Ben taps it
-    make_cyl("PassBell_Dome", (0.85, 4.52, 1.185), 0.045, 0.05,
-             PITSTOP_BRASS, segments=10)
-    make_cyl("PassBell_Button", (0.85, 4.52, 1.215), 0.010, 0.02,
-             PITSTOP_STEEL_DK)
-    # Order wheel hanging in the opening
-    make_cyl("OrderWheel", (0.45, PART_Y, 1.58), 0.12, 0.04,
-             PITSTOP_STEEL_DK, axis='Y', segments=12)
-    for i, tx in enumerate([0.34, 0.52]):
-        make_box(f"OrderWheel_Ticket_{i}", (tx, PART_Y, 1.46),
-                 (0.10, 0.012, 0.14), P.PAPER)
-    # Heat lamps under the pass head
-    for i, lx in enumerate([-0.35, 0.55]):
-        make_box(f"Pass_HeatLamp_{i}", (lx, PART_Y, 1.73),
-                 (0.40, 0.20, 0.05), (1.0, 0.78, 0.32, 1.0))
-    # Menu boards above the pass — lettering is scene-side Label3D
-    for i, mx in enumerate([-0.58, 0.10, 0.78]):
-        make_box(f"MenuBoard_Panel_{i}", (mx, PART_Y - PART_T / 2.0 - 0.01,
-                 2.25), (0.62, 0.02, 0.46), PITSTOP_TOP_DARK)
-        make_box(f"MenuBoard_Trim_{i}", (mx, PART_Y - PART_T / 2.0 - 0.015,
-                 2.50), (0.62, 0.02, 0.05), PITSTOP_MINT)
-    # Clock on the partition face west of the boards — frozen at
-    # 12:22, the ch2 lunch-shuffle minute
-    make_wall_clock("DinerClock", (-2.2, PART_Y - PART_T / 2.0, 2.25),
-                    frozen_hour=12, frozen_min=22)
-    # Swinging kitchen door (ch2: "Jesse pushed through the
-    # kitchen's swinging door") — double-action leaf, upper window
-    # left EMPTY (see-through to the kitchen), steel kick plate
-    make_box("SwingDoor_Stile_W", (1.66, PART_Y, 1.05), (0.06, 0.06, 2.10),
-             PITSTOP_WOOD)
-    make_box("SwingDoor_Stile_E", (2.34, PART_Y, 1.05), (0.06, 0.06, 2.10),
-             PITSTOP_WOOD)
-    make_box("SwingDoor_Rail_Top", (2.0, PART_Y, 2.07), (0.74, 0.06, 0.06),
-             PITSTOP_WOOD)
-    make_box("SwingDoor_Rail_Mid", (2.0, PART_Y, 1.28), (0.74, 0.06, 0.08),
-             PITSTOP_WOOD)
-    make_box("SwingDoor_Panel", (2.0, PART_Y, 0.72), (0.70, 0.045, 1.04),
-             PITSTOP_WOOD)
-    make_box("SwingDoor_Kick", (2.0, PART_Y - 0.0225, 0.32),
-             (0.70, 0.01, 0.28), PITSTOP_STAINLESS)
-    # Back-office door — CLOSED leaf (ch3/ch6: Ben's and Brenda's
-    # room lives in the pit_stop_office GLB; here it's the door
-    # Ben stands at in ch4)
-    make_box("OfficeDoor_Leaf", (3.0, PART_Y, 1.03), (0.78, 0.06, 2.06),
-             PITSTOP_WOOD)
-    make_cyl("OfficeDoor_Knob", (3.28, PART_Y - 0.035, 1.02), 0.022, 0.05,
-             PITSTOP_BRASS, axis='Y')
-    make_door_hinges("OfficeDoor_Hinge", edge_x=2.62, edge_y=PART_Y,
-                     edge_z_centers=[0.35, 1.05, 1.78], axis='X')
-    make_box("Office_DoorSign", (3.0, PART_Y - PART_T / 2.0 - 0.005, 1.72),
-             (0.18, 0.01, 0.12), P.PAPER_AGED)
+def build_tables():
+    # Two square freestanding 4-tops mid-floor (square, not pedestal
+    # rounds — seating is staged here in ch7's lunch crowd).
+    for tag, tx, ty in [("A", 1.6, 1.6), ("B", 3.6, 2.9)]:
+        make_table(f"Table_{tag}", tx, ty, w=0.90, d=0.90, h=0.765, wood=COL_WOOD, top_col=COL_TABLETOP)
+        for ci, (cxo, cyo) in enumerate([(0.0, -0.75), (0.0, 0.75)]):
+            make_chair(f"Chair_{tag}_{ci}", tx+cxo, ty+cyo, yaw=(3.1416 if cyo > 0 else 0.0), wood=COL_WOOD, w=0.42)
 
 
-# ═════════════════════════════════════════════════════════════════
-# KITCHEN — behind the partition: the flat-top (ch2 burgers +
-# spatula), hood, fryer, prep table under the kitchen window,
-# walk-in with the milk crate by it (ch4), back screen door to the
-# dumpster (ch2_dumpster), grease patina.
-# ═════════════════════════════════════════════════════════════════
+def build_partition():
+    # FOH/kitchen partition: pass-through + swing door + menu board.
+    # Pass-through opening spans x -0.6..+2.0, sill 1.05, head 1.95.
+    make_wall("Part_W", (-3.05, PART_Y, 0), length=4.9, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Part_UnderPass", (0.7, PART_Y, 0.525), (2.6, 0.20, 1.05), PAL_WALL["wall"])
+    make_box("Part_AbovePass", (0.7, PART_Y, (1.95+CEIL)/2.0), (2.6, 0.20, CEIL-1.95), PAL_WALL["wall"])
+    make_wall("Part_Mid", (2.45, PART_Y, 0), length=0.9, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Part_E", (4.75, PART_Y, 0), length=1.5, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Part_AboveSwing", (3.65, PART_Y, CEIL-0.45), (1.3, 0.20, 0.90), PAL_WALL["wall"])
+    # Pass-through dress: stainless sill shelf, ticket rail, and THE
+    # BELL (vol6 kitchen rhythm — order up).
+    make_box("Pass_Sill", (0.7, PART_Y, 1.08), (2.7, 0.44, 0.05), COL_STEEL)
+    make_box("Pass_TicketRail", (0.7, PART_Y-0.08, 1.92), (2.4, 0.03, 0.05), COL_STEEL_DK)
+    for ti, tx in enumerate([-0.2, 0.5, 1.2]):
+        make_box(f"Pass_Ticket_{ti}", (tx, PART_Y-0.10, 1.82), (0.12, 0.005, 0.16), (0.94, 0.92, 0.84, 1.0))   # clipped IN the rail (2026-09-23: 1.5 cm under it)
+    make_cyl("Service_Bell_Base", (1.75, PART_Y-0.16, 1.115), 0.05, 0.02, COL_STEEL_DK, segments=10)
+    make_cyl("Service_Bell_Dome", (1.75, PART_Y-0.16, 1.15), 0.045, 0.05, (0.85, 0.80, 0.55, 1.0), segments=10)
+    # Swing door, slightly ajar, at x=3.65.
+    make_box("Swing_Door", (3.65, PART_Y+0.06, 1.05), (1.05, 0.05, 2.10), (0.58, 0.56, 0.52, 1.0))
+    make_box("Swing_Door_Porthole", (3.65, PART_Y+0.03, 1.55), (0.30, 0.03, 0.40), COL_GLASS)
+    make_box("Swing_Door_Kick", (3.65, PART_Y+0.09, 0.35), (1.00, 0.02, 0.50), COL_STEEL)
+    # Menu board over the pass-through, FOH side.
+    make_box("MenuBoard", (0.7, PART_Y-0.12, 2.45), (2.8, 0.04, 0.60), (0.14, 0.14, 0.14, 1.0))
+    for mi in range(4):
+        make_box(f"MenuBoard_Line_{mi}", (0.7-1.0+mi*0.7, PART_Y-0.145, 2.45),
+                 (0.55, 0.005, 0.42), (0.86, 0.84, 0.76, 1.0))
+
+
 def build_kitchen():
-    # Flat-top grill against the north wall — the hero through the
-    # pass-through (and Booth T3's diagonal sightline, ch4)
-    make_box("Grill_Body", (0.15, 5.50, 0.475), (1.5, 0.75, 0.95),
-             PITSTOP_STAINLESS)
-    make_box("Grill_Surface", (0.15, 5.50, 0.965), (1.4, 0.65, 0.02),
-             COL_GRIDDLE)
-    make_box("Grill_GreaseTrough", (0.15, 5.11, 0.94), (1.4, 0.05, 0.05),
-             PITSTOP_STEEL_DK)
-    make_box("Grill_Backsplash", (0.15, 5.86, 1.35), (1.5, 0.06, 0.75),
-             PITSTOP_STAINLESS)
-    # Two patties on (ch2: "He slid the spatula under a burger.")
-    make_cyl("Grill_Patty_0", (-0.12, 5.44, 0.985), 0.065, 0.02, COL_PATTY)
-    make_cyl("Grill_Patty_1", (0.24, 5.56, 0.985), 0.065, 0.02, COL_PATTY)
-    make_box("Grill_Spatula_Blade", (0.52, 5.42, 0.99), (0.10, 0.12, 0.008),
-             PITSTOP_STAINLESS)
-    make_box("Grill_Spatula_Handle", (0.52, 5.28, 1.00), (0.03, 0.16, 0.02),
-             PITSTOP_WOOD_DARK)
-    # Hood + duct
-    make_box("Grill_Hood", (0.15, 5.55, 2.32), (1.8, 0.95, 0.45),
-             PITSTOP_STEEL_DK)
-    make_box("Grill_HoodDuct", (0.15, 5.55, 2.66), (0.5, 0.5, 0.24),
-             PITSTOP_STEEL_DK)
-    # Ticket rail on the hood lip
-    make_box("TicketRail", (0.15, 5.06, 1.98), (1.6, 0.03, 0.03),
-             PITSTOP_STAINLESS)
-    for i, tx in enumerate([-0.30, 0.15, 0.55]):
-        make_box(f"TicketRail_Ticket_{i}", (tx, 5.05, 1.90),
-                 (0.10, 0.01, 0.14), P.PAPER)
-    # Fryer
-    make_box("Fryer_Body", (1.15, 5.55, 0.45), (0.55, 0.70, 0.90),
-             PITSTOP_STAINLESS)
-    for i, fx in enumerate([1.03, 1.28]):
-        make_box(f"Fryer_Basket_{i}", (fx, 5.45, 0.95), (0.18, 0.28, 0.10),
-                 PITSTOP_STEEL_DK)
-        make_cyl(f"Fryer_BasketHandle_{i}", (fx, 5.24, 0.98), 0.012, 0.16,
-                 P.METAL_BLACK, axis='Y')
-    # Prep table under the kitchen window (ch2: the lot watch)
-    make_box("PrepTable_Top", (-2.90, 5.35, 0.87), (0.90, 0.60, 0.04),
-             PITSTOP_STAINLESS)
-    for i, (lx, ly) in enumerate([(-0.40, -0.25), (+0.40, -0.25),
-                                  (-0.40, +0.25), (+0.40, +0.25)]):
-        make_cyl(f"PrepTable_Leg_{i}", (-2.90 + lx, 5.35 + ly, 0.435),
-                 0.020, 0.83, PITSTOP_STEEL_DK)
-    make_box("PrepTable_LowerShelf", (-2.90, 5.35, 0.25), (0.85, 0.55, 0.03),
-             PITSTOP_STEEL_DK)
-    make_box("PrepTable_Board", (-2.90, 5.30, 0.905), (0.40, 0.30, 0.03),
-             PITSTOP_WOOD)
-    make_box("PrepTable_BusTub", (-2.90, 5.35, 0.34), (0.50, 0.35, 0.15),
-             (0.55, 0.58, 0.60, 1.0))
-    # Wall shelf with plate stacks
-    make_box("KitchenShelf", (-2.90, 5.78, 1.90), (0.90, 0.32, 0.04),
-             PITSTOP_STAINLESS)
-    for i, px in enumerate([-3.10, -2.70]):
-        make_cyl(f"KitchenShelf_Plates_{i}", (px, 5.78, 1.98), 0.09, 0.12,
-                 (0.92, 0.90, 0.84, 1.0), segments=12)
-    # Walk-in cooler + the milk crate by it (ch4: "Jesse ... sits
-    # down, heavily, on the milk crate by the walk-in")
-    make_box("WalkIn_Body", (-1.10, 5.55, 1.18), (1.20, 0.80, 2.36),
-             (0.62, 0.64, 0.66, 1.0))
-    make_box("WalkIn_Door", (-1.10, 5.12, 1.00), (0.70, 0.06, 1.90),
-             PITSTOP_STEEL_DK)
-    make_box("WalkIn_Latch", (-0.84, 5.08, 1.02), (0.06, 0.04, 0.16),
-             P.METAL_BLACK)
-    for i, hz in enumerate([0.45, 1.55]):
-        make_box(f"WalkIn_HingeStrap_{i}", (-1.38, 5.10, hz),
-                 (0.10, 0.03, 0.08), PITSTOP_STEEL_DK)
-    make_box("MilkCrate", (-0.68, 5.02, 0.17), (0.34, 0.34, 0.34),
-             (0.70, 0.30, 0.20, 1.0))
-    make_box("MilkCrate_Rim", (-0.68, 5.02, 0.335), (0.36, 0.36, 0.02),
-             (0.55, 0.22, 0.15, 1.0))
-    # Back screen door (ch2_dumpster: "The screen door slapped shut")
-    make_box("ScreenDoor_Jamb_W", (1.66, 6.0, 1.05), (0.08, 0.22, 2.10),
-             PITSTOP_WOOD)
-    make_box("ScreenDoor_Jamb_E", (2.54, 6.0, 1.05), (0.08, 0.22, 2.10),
-             PITSTOP_WOOD)
-    make_box("ScreenDoor_Head", (2.10, 6.0, 2.13), (0.96, 0.22, 0.07),
-             PITSTOP_WOOD)
-    make_box("ScreenDoor_Stile_W", (1.74, 5.98, 1.02), (0.05, 0.04, 2.02),
-             PITSTOP_WOOD_DARK)
-    make_box("ScreenDoor_Stile_E", (2.46, 5.98, 1.02), (0.05, 0.04, 2.02),
-             PITSTOP_WOOD_DARK)
-    make_box("ScreenDoor_Rail_Mid", (2.10, 5.98, 0.95), (0.70, 0.04, 0.07),
-             PITSTOP_WOOD_DARK)
-    make_box("ScreenDoor_Mesh_Top", (2.10, 5.98, 1.53), (0.68, 0.015, 1.02),
-             (0.24, 0.24, 0.25, 1.0))
-    make_box("ScreenDoor_Mesh_Bot", (2.10, 5.98, 0.47), (0.68, 0.015, 0.86),
-             (0.24, 0.24, 0.25, 1.0))
-    make_box("ScreenDoor_Spring", (1.78, 5.90, 1.30), (0.03, 0.14, 0.03),
-             PITSTOP_STEEL_DK)
-    # Kitchen floor: rubber mats + the grease patina (ch2: "The
-    # grease hissed.")
-    make_box("Kitchen_Mat_Grill", (0.15, 5.05, 0.010), (1.6, 0.50, 0.015),
-             P.RUBBER_MAT)
-    make_box("Kitchen_Mat_Prep", (-2.90, 4.95, 0.010), (0.9, 0.40, 0.015),
-             P.RUBBER_MAT)
-    make_box("Kitchen_GreasePatina", (0.15, 5.32, 0.020), (1.2, 0.30, 0.002),
-             PITSTOP_GREASE)
+    """KITCHEN DRAFT 2 (2026-10-09). Kitchen y 6.1..10.9 (partition N
+    face to N wall face), x -5.4..5.4. See the module docstring."""
+    KN, KS, XE, XW = ROOM_D - 0.10, PART_Y + 0.10, ROOM_W / 2.0 - 0.10, -ROOM_W / 2.0 + 0.10
+    steel, steel_dk = COL_STEEL, COL_STEEL_DK
+    knob = (0.14, 0.14, 0.15, 1.0)
+    # ── surfaces: quarry tile floor, sage FRP to 2 m ──
+    quarry, grout = (0.50, 0.30, 0.22, 1.0), (0.36, 0.24, 0.19, 1.0)
+    make_box("Kitchen_Floor_Quarry", (0.0, (KS + KN) / 2.0, 0.004), (XE - XW, KN - KS, 0.008), quarry)
+    gx = XW + 0.6
+    while gx < XE - 0.1:
+        make_box(f"Kitchen_Floor_Grout_X_{gx:+.1f}", (gx, (KS + KN) / 2.0, 0.009), (0.012, KN - KS, 0.002), grout)
+        gx += 0.6
+    gy = KS + 0.6
+    while gy < KN - 0.1:
+        make_box(f"Kitchen_Floor_Grout_Y_{gy:.1f}", (0.0, gy, 0.009), (XE - XW, 0.012, 0.002), grout)
+        gy += 0.6
+    frp, cap = (0.62, 0.68, 0.58, 1.0), (0.48, 0.52, 0.46, 1.0)
+    for nm, x0, x1, z1 in (("N_W", XW, -3.9, 2.0), ("N_Sill", -3.9, -2.5, 1.10), ("N_E", -2.5, 4.225, 2.0), ("N_E2", 5.175, XE, 2.0)):   # (pass 65) a gap at the back door
+        make_box(f"Kitchen_FRP_{nm}", ((x0 + x1) / 2.0, KN - 0.005, z1 / 2.0), (x1 - x0, 0.01, z1), frp)
+    make_box("Kitchen_FRP_Cap_N", ((XW + 4.225) / 2.0, KN - 0.01, 2.01), (4.225 - XW, 0.02, 0.03), cap)
+    make_box("Kitchen_FRP_Cap_N_E", ((5.175 + XE) / 2.0, KN - 0.01, 2.01), (XE - 5.175, 0.02, 0.03), cap)
+    make_box("Kitchen_FRP_W", (XW + 0.005, (KS + KN) / 2.0, 1.0), (0.01, KN - KS, 2.0), frp)
+    for nm, y0, y1 in (("E_S", KS, 6.85), ("E_N", 7.95, KN)):
+        make_box(f"Kitchen_FRP_{nm}", (XE - 0.005, (y0 + y1) / 2.0, 1.0), (0.01, y1 - y0, 2.0), frp)
+    for nm, x0, x1, z1 in (("S_W", XW, -0.6, 2.0), ("S_Mid", 2.0, 2.9, 2.0), ("S_E", 4.3, XE, 2.0)):
+        make_box(f"Kitchen_FRP_{nm}", ((x0 + x1) / 2.0, KS + 0.005, z1 / 2.0), (x1 - x0, 0.01, z1), frp)
+
+    # ── THE COOK LINE · N wall, under one hood ──
+    ly, ld = KN - 0.425, 0.85                       # equipment centre-line, depth
+    make_box("Line_Backsplash", (0.25, KN - 0.015, 1.475), (5.5, 0.01, 1.15), steel)
+    # six-burner range with its oven
+    rx = -1.90
+    make_box("Range_Body", (rx, ly, 0.45), (0.90, ld, 0.90), steel)
+    make_box("Range_Grate", (rx, ly - 0.03, 0.915), (0.86, 0.76, 0.03), knob)
+    for bi in range(6):
+        bx_, by_ = rx - 0.27 + (bi % 3) * 0.27, ly - 0.22 + (bi // 3) * 0.36
+        make_cyl(f"Range_Burner_{bi}", (bx_, by_, 0.935), 0.09, 0.01, (0.24, 0.22, 0.20, 1.0), segments=10)
+    make_cyl("Range_Stockpot", (rx - 0.27, ly + 0.14, 1.09), 0.16, 0.30, steel, segments=14)
+    make_cyl("Range_Stockpot_Lid", (rx - 0.27, ly + 0.14, 1.245), 0.165, 0.01, steel_dk, segments=14)
+    make_cyl("Range_Saucepan", (rx + 0.27, ly - 0.22, 0.99), 0.10, 0.10, steel_dk, segments=12)
+    make_box("Range_Saucepan_Handle", (rx + 0.27, ly - 0.42, 1.02), (0.03, 0.22, 0.02), knob)
+    make_box("Range_Oven_Door", (rx, ly - ld / 2.0 - 0.006, 0.42), (0.76, 0.012, 0.50), (0.60, 0.62, 0.64, 1.0))
+    make_box("Range_Oven_Handle", (rx, ly - ld / 2.0 - 0.02, 0.62), (0.60, 0.03, 0.025), steel_dk)
+    for ki in range(6):
+        make_cyl(f"Range_Knob_{ki}", (rx - 0.33 + ki * 0.132, ly - ld / 2.0 - 0.02, 0.80), 0.022, 0.03, knob, segments=8, axis='Y')
+    # flat-top griddle on a refrigerated chef base — Ben's station
+    gxc = -0.50
+    make_box("Grill_ChefBase", (gxc, ly, 0.30), (1.80, ld, 0.60), steel)
+    for di, ox in enumerate((-0.45, 0.45)):
+        make_box(f"Grill_ChefBase_Drawer_{di}", (gxc + ox, ly - ld / 2.0 - 0.006, 0.30), (0.84, 0.012, 0.50), (0.60, 0.62, 0.64, 1.0))
+        make_box(f"Grill_ChefBase_Pull_{di}", (gxc + ox, ly - ld / 2.0 - 0.025, 0.50), (0.50, 0.025, 0.025), steel_dk)
+    make_box("Grill_Body", (gxc, ly, 0.78), (1.80, ld, 0.36), steel_dk)
+    make_box("Grill_FlatTop", (gxc, ly + 0.025, 0.98), (1.72, 0.70, 0.04), (0.20, 0.20, 0.22, 1.0))
+    make_box("Grill_Trough", (gxc, ly - 0.36, 0.97), (1.72, 0.08, 0.04), steel)
+    for nm, ox in (("W", -0.89), ("E", 0.89)):
+        make_box(f"Grill_Splash_{nm}", (gxc + ox, ly + 0.025, 1.08), (0.02, 0.70, 0.24), steel)
+    for ki in range(5):
+        make_cyl(f"Grill_Knob_{ki}", (gxc - 0.70 + ki * 0.35, ly - ld / 2.0 - 0.02, 0.86), 0.022, 0.03, knob, segments=8, axis='Y')
+    for bi, ox in enumerate((0.25, 0.42)):
+        make_cyl(f"Grill_Bun_{bi}", (gxc + ox, ly + 0.15, 1.012), 0.055, 0.025, (0.80, 0.60, 0.34, 1.0), segments=10)
+    make_cyl("Grill_Press", (gxc - 0.62, ly + 0.20, 1.02), 0.09, 0.04, knob, segments=10)
+    # two-well fryer, baskets on the rail
+    fx = 0.85
+    make_box("Fryer_Body", (fx, ly, 0.45), (0.80, ld, 0.90), steel)
+    for wi, ox in enumerate((-0.20, 0.20)):
+        make_box(f"Fryer_Well_{wi}", (fx + ox, ly + 0.02, 0.905), (0.34, 0.55, 0.012), (0.46, 0.34, 0.12, 1.0))
+        make_box(f"Fryer_Basket_{wi}", (fx + ox, KN - 0.165, 1.03), (0.30, 0.22, 0.14), (0.30, 0.30, 0.32, 1.0))
+    make_box("Fryer_Basket_Rail", (fx, KN - 0.04, 1.10), (0.76, 0.04, 0.03), steel)
+    make_box("Fryer_Drain_Door", (fx, ly - ld / 2.0 - 0.006, 0.40), (0.70, 0.012, 0.56), (0.60, 0.62, 0.64, 1.0))
+    # lowboy: refrigerated work top with the cut veg and the ticket printer
+    lx = 2.10
+    make_box("Lowboy_Body", (lx, ly, 0.43), (1.60, ld, 0.86), steel)
+    make_box("Lowboy_Top", (lx, ly, 0.875), (1.62, ld + 0.02, 0.03), steel)
+    for di, ox in enumerate((-0.40, 0.40)):
+        make_box(f"Lowboy_Drawer_{di}", (lx + ox, ly - ld / 2.0 - 0.006, 0.45), (0.74, 0.012, 0.60), (0.60, 0.62, 0.64, 1.0))
+        make_box(f"Lowboy_Pull_{di}", (lx + ox, ly - ld / 2.0 - 0.025, 0.70), (0.50, 0.025, 0.025), steel_dk)
+    make_box("Lowboy_CuttingBoard", (lx - 0.25, ly - 0.10, 0.90), (0.50, 0.35, 0.02), (0.92, 0.92, 0.88, 1.0))
+    make_box("Lowboy_Knife", (lx - 0.20, ly - 0.08, 0.915), (0.26, 0.03, 0.01), steel)
+    for pi, (ox, fill) in enumerate(((-0.10, (0.46, 0.66, 0.30, 1.0)), (0.08, (0.80, 0.24, 0.18, 1.0)), (0.26, (0.90, 0.86, 0.74, 1.0)))):
+        make_box(f"Lowboy_Bain_{pi}", (lx + ox, KN - 0.18, 0.94), (0.16, 0.26, 0.10), steel)
+        make_box(f"Lowboy_Bain_{pi}_Fill", (lx + ox, KN - 0.18, 0.993), (0.14, 0.24, 0.006), fill)
+    make_box("Ticket_Printer", (lx + 0.62, KN - 0.20, 0.96), (0.18, 0.20, 0.14), knob)
+    make_box("Ticket_Printer_Paper", (lx + 0.62, KN - 0.31, 1.0), (0.08, 0.02, 0.10), (0.94, 0.92, 0.84, 1.0))
+    # the hood: canopy, filters, lip, lights, duct to the roof
+    make_box("Vent_Hood", (0.25, KN - 0.525, 2.33), (5.6, 1.05, 0.55), steel)
+    make_box("Vent_Hood_Filters", (0.25, KN - 0.30, 2.04), (5.4, 0.45, 0.03), (0.36, 0.36, 0.36, 1.0))
+    make_box("Vent_Hood_Lip", (0.25, KN - 1.03, 2.00), (5.6, 0.04, 0.12), steel)
+    for hi, hx in enumerate((-1.5, 0.3, 2.1)):
+        make_box(f"Hood_Light_{hi}", (hx, KN - 0.65, 2.045), (0.30, 0.20, 0.02), (1.0, 0.90, 0.70, 1.0))
+    make_box("Vent_Duct", (0.25, KN - 0.45, 2.80), (0.70, 0.60, 0.39), steel_dk)
+    # the ticket rail on the hood lip, three tickets riding it
+    make_box("Line_TicketRail", (0.0, KN - 1.07, 1.97), (2.4, 0.03, 0.04), steel_dk)
+    for ti, tx in enumerate((-0.8, -0.1, 0.5)):
+        make_box(f"Line_Ticket_{ti}", (tx, KN - 1.075, 1.875), (0.10, 0.004, 0.16), (0.96, 0.94, 0.86, 1.0))
+    make_box("Line_Mat", (0.2, KN - 1.35, 0.018), (4.6, 0.80, 0.016), (0.10, 0.10, 0.11, 1.0))
+    # ── Ben's window: a hand sink under it ──
+    make_box("Hand_Sink", (-3.2, KN - 0.20, 0.86), (0.45, 0.40, 0.18), steel)
+    make_box("Hand_Sink_Bowl", (-3.2, KN - 0.22, 0.952), (0.36, 0.30, 0.006), (0.40, 0.42, 0.44, 1.0))
+    make_box("Hand_Sink_Bracket", (-3.2, KN - 0.03, 0.66), (0.30, 0.06, 0.22), steel_dk)
+    make_cyl("Hand_Sink_Faucet", (-3.2, KN - 0.04, 1.00), 0.015, 0.10, steel, segments=6)
+    make_box("Hand_Sink_Spout", (-3.2, KN - 0.10, 1.045), (0.025, 0.12, 0.02), steel)
+    make_box("Hand_Sink_Soap", (-2.92, KN - 0.025, 1.02), (0.08, 0.05, 0.12), (0.90, 0.88, 0.84, 1.0))
+    make_box("Hand_Sink_Sign", (-3.62, KN - 0.006, 1.00), (0.18, 0.004, 0.12), (0.92, 0.92, 0.88, 1.0))
+    # ── W end: the walk-in (door E, the milk crates beside it) ──
+    make_box("WalkIn_Body", (-4.55, 7.45, 1.30), (1.70, 2.50, 2.60), (0.60, 0.62, 0.64, 1.0))
+    make_box("WalkIn_Door", (-3.68, 7.05, 1.05), (0.06, 0.90, 2.10), steel)
+    make_box("WalkIn_Latch", (-3.64, 7.35, 1.05), (0.05, 0.12, 0.10), (0.30, 0.30, 0.32, 1.0))
+    make_box("WalkIn_Hinge_T", (-3.66, 6.68, 1.75), (0.04, 0.06, 0.14), steel_dk)
+    make_box("WalkIn_Hinge_B", (-3.66, 6.68, 0.45), (0.04, 0.06, 0.14), steel_dk)
+    make_box("WalkIn_Condenser", (-4.55, 7.45, 2.75), (0.80, 0.60, 0.30), steel_dk)
+    make_box("WalkIn_Thermo", (-3.69, 7.90, 1.60), (0.02, 0.10, 0.10), (0.92, 0.92, 0.88, 1.0))
+    make_box("WalkIn_TempLog", (-3.69, 8.25, 1.45), (0.02, 0.22, 0.30), (0.94, 0.92, 0.84, 1.0))
+    make_box("Milk_Crate", (-3.35, 6.275, 0.17), (0.35, 0.35, 0.33), (0.72, 0.28, 0.20, 1.0))   # against the partition's N face at 6.1 (2026-09-25: 18 cm off it)
+    make_box("Milk_Crate_Rim", (-3.35, 6.45, 0.335), (0.37, 0.37, 0.03), (0.62, 0.22, 0.16, 1.0))
+    # dry storage: wire shelving on the W wall N of the walk-in
+    sx0, sy0, sy1 = XW + 0.25, 8.95, 10.75
+    for pi, (ox, py) in enumerate(((-0.22, sy0 + 0.02), (0.22, sy0 + 0.02), (-0.22, sy1 - 0.02), (0.22, sy1 - 0.02))):
+        make_cyl(f"DryShelf_Post_{pi}", (sx0 + ox, py, 0.90), 0.012, 1.80, steel, segments=6)
+    for zi, z in enumerate((0.25, 0.75, 1.25, 1.75)):
+        make_box(f"DryShelf_{zi}", (sx0, (sy0 + sy1) / 2.0, z), (0.46, sy1 - sy0, 0.02), steel)
+        for ci in range(5):
+            cy_ = sy0 + 0.20 + ci * 0.34
+            if zi == 0:
+                make_box(f"Flour_Sack_{ci}", (sx0, cy_, z + 0.13), (0.36, 0.28, 0.24), (0.86, 0.82, 0.72, 1.0))
+            elif zi == 3 and ci % 2:
+                make_box(f"DryBox_{zi}_{ci}", (sx0, cy_, z + 0.12), (0.30, 0.26, 0.22), (0.66, 0.52, 0.34, 1.0))
+            else:
+                for k in range(2):
+                    make_cyl(f"DryCan_{zi}_{ci}_{k}", (sx0 - 0.09 + k * 0.18, cy_, z + 0.10), 0.08, 0.18,
+                             P.SNACK_TINTS[(zi + ci + k) % len(P.SNACK_TINTS)], segments=8)
+    # speed rack of sheet pans in the NW corner, by the window
+    rkx, rky = -4.20, KN - 0.34
+    for pi, (ox, oy) in enumerate(((-0.25, -0.31), (0.25, -0.31), (-0.25, 0.31), (0.25, 0.31))):
+        make_cyl(f"SpeedRack_Post_{pi}", (rkx + ox, rky + oy, 0.87), 0.012, 1.74, steel, segments=6)
+    for k in range(9):
+        make_box(f"SpeedRack_Pan_{k}", (rkx, rky, 0.30 + k * 0.16), (0.46, 0.64, 0.02), (0.70, 0.66, 0.58, 1.0) if k % 3 else steel)
+    # ── mid-kitchen: the plating island ──
+    ix, iy = 0.65, 8.30
+    make_box("Prep_Top", (ix, iy, 0.925), (2.5, 0.76, 0.05), steel)
+    make_box("Prep_Undershelf", (ix, iy, 0.25), (2.36, 0.62, 0.03), steel_dk)
+    for li, (ox, oy) in enumerate(((-1.20, -0.33), (1.20, -0.33), (-1.20, 0.33), (1.20, 0.33))):
+        make_box(f"Prep_Leg_{li}", (ix + ox, iy + oy, 0.45), (0.04, 0.04, 0.90), steel)
+    for si, ox in enumerate((0.85, 1.05)):
+        make_cyl(f"Prep_Plates_{si}", (ix + ox, iy + 0.12, 1.00), 0.13, 0.10, (0.92, 0.90, 0.86, 1.0), segments=14)
+    for bi, (ox, col) in enumerate(((-0.95, (0.74, 0.14, 0.10, 1.0)), (-0.87, (0.90, 0.72, 0.16, 1.0)), (-0.79, (0.94, 0.92, 0.88, 1.0)))):
+        make_cyl(f"Prep_Squeeze_{bi}", (ix + ox, iy + 0.25, 1.04), 0.03, 0.18, col, segments=8)
+    make_box("Prep_CuttingBoard", (ix - 0.35, iy - 0.05, 0.96), (0.45, 0.32, 0.02), (0.92, 0.92, 0.88, 1.0))
+    make_cyl("Prep_Tomato", (ix - 0.30, iy - 0.02, 0.995), 0.04, 0.05, (0.80, 0.22, 0.16, 1.0), segments=8)
+    make_cyl("Prep_Wrap_Roll", (ix + 0.30, iy + 0.25, 0.995), 0.04, 0.46, (0.80, 0.84, 0.86, 1.0), segments=8, axis='X')
+    for k in range(3):
+        make_box(f"Prep_Undershelf_Box_{k}", (ix - 0.8 + k * 0.6, iy, 0.33), (0.40, 0.50, 0.14), (0.66, 0.54, 0.38, 1.0))
+    # ── the pass, kitchen side: plating counter, heat lamp, an order up ──
+    make_box("Pass_Counter_K", (0.7, KS + 0.35, 0.44), (2.6, 0.70, 0.88), steel)
+    make_box("Pass_Counter_K_Top", (0.7, KS + 0.35, 0.89), (2.62, 0.72, 0.02), steel)
+    for pi, px in enumerate((0.15, 0.55)):
+        make_cyl(f"Pass_Plate_{pi}", (px, KS + 0.30, 0.906), 0.13, 0.012, (0.94, 0.92, 0.88, 1.0), segments=14)
+        make_cyl(f"Pass_Plate_{pi}_Burger", (px - 0.03, KS + 0.30, 0.935), 0.065, 0.045, (0.72, 0.50, 0.28, 1.0), segments=10)
+        make_box(f"Pass_Plate_{pi}_Fries", (px + 0.07, KS + 0.33, 0.925), (0.08, 0.10, 0.025), (0.90, 0.74, 0.34, 1.0))
+    make_box("Pass_HeatLamp", (0.7, KS + 0.10, 1.90), (2.4, 0.20, 0.09), steel_dk)
+    make_box("Pass_HeatLamp_Glow", (0.7, KS + 0.10, 1.852), (2.2, 0.14, 0.006), (1.0, 0.48, 0.22, 1.0))
+    for bi, bx_ in enumerate((-0.4, 1.8)):
+        make_box(f"Pass_HeatLamp_Bracket_{bi}", (bx_, KS + 0.05, 1.97), (0.03, 0.10, 0.06), steel_dk)
+    # ── E side: the BACK OFFICE door (vol6_ch4), the dish pit past it ──
+    make_box("Office_Door", (ROOM_W/2.0-0.12, 7.4, 1.05), (0.06, 0.95, 2.10), (0.48, 0.38, 0.28, 1.0))
+    make_box("Office_Door_Frame", (ROOM_W/2.0-0.10, 7.4, 2.16), (0.08, 1.10, 0.10), COL_WOOD)
+    make_cyl("Office_Door_Knob", (ROOM_W/2.0-0.16, 7.05, 1.05), 0.035, 0.04, (0.72, 0.66, 0.40, 1.0), segments=8)
+    dy0, dy1 = 8.30, 10.05   # (pass 65) clear of the back door's 0.9 m
+    dyc = (dy0 + dy1) / 2.0
+    make_box("Dish_Sink_Body", (XE - 0.35, dyc, 0.42), (0.70, dy1 - dy0, 0.84), steel)
+    make_box("Dish_Sink_Top", (XE - 0.36, dyc, 0.855), (0.72, dy1 - dy0 + 0.04, 0.03), steel)
+    for bi, by_ in enumerate((8.75, 9.20, 9.65)):   # (pass 65) on the shortened sink
+        make_box(f"Dish_Sink_Basin_{bi}", (XE - 0.36, by_, 0.873), (0.50, 0.44, 0.006), (0.40, 0.46, 0.50, 1.0))
+        make_cyl(f"Dish_Sink_Faucet_{bi}", (XE - 0.03, by_, 1.05), 0.015, 0.36, steel, segments=6)
+        make_box(f"Dish_Sink_Spout_{bi}", (XE - 0.14, by_, 1.22), (0.22, 0.025, 0.025), steel)
+    make_box("Dish_Backsplash", (XE - 0.015, dyc, 1.085), (0.01, dy1 - dy0 + 0.04, 0.43), steel)
+    make_cyl("Dish_Sprayer_Riser", (XE - 0.08, 9.85, 1.32), 0.015, 0.92, steel, segments=6)
+    make_tube("Dish_Sprayer_Hose", [(XE - 0.08, 9.85, 1.78), (XE - 0.30, 9.85, 1.70), (XE - 0.36, 9.85, 1.20)], 0.012, knob, segments=5)
+    make_box("Dish_Shelf", (XE - 0.20, dyc, 1.75), (0.40, 2.0, 0.03), steel)
+    for bi, by_ in enumerate((dyc - 0.70, dyc + 0.70)):
+        make_box(f"Dish_Shelf_Bracket_{bi}", (XE - 0.12, by_, 1.66), (0.24, 0.03, 0.15), steel_dk)
+    for ri, by_ in enumerate((8.70, 9.20, 9.70)):   # (pass 65) clear of the back door
+        make_box(f"Dish_Rack_{ri}", (XE - 0.20, by_, 1.815), (0.38, 0.50, 0.10), (0.30, 0.40, 0.56, 1.0))
+    make_box("Bus_Tub", (XE - 0.36, 8.55, 0.93), (0.40, 0.30, 0.12), (0.44, 0.44, 0.46, 1.0))
+    make_box("Bus_Tub_Dishes", (XE - 0.36, 8.55, 1.0), (0.32, 0.22, 0.02), (0.90, 0.88, 0.84, 1.0))
+    make_box("Floor_Drain", (XE - 0.95, dyc, 0.011), (0.25, 0.25, 0.004), (0.20, 0.20, 0.20, 1.0))
+    make_trash_can("Trash_K", (3.15, 8.60, 0.0), branded=False, palette={"body": (0.30, 0.34, 0.30, 1.0)})
+    # paper goods shelving on the N wall's E end; the K-class extinguisher
+    px0, px1 = 3.25, 4.05   # (pass 65) two columns: the back door is at x 4.225..5.175
+    for pi, (ox, oy) in enumerate(((px0 + 0.02, -0.20), (px1 - 0.02, -0.20), (px0 + 0.02, 0.20), (px1 - 0.02, 0.20))):
+        make_cyl(f"Paper_Shelf_Post_{pi}", (ox, KN - 0.225 + oy, 0.90), 0.012, 1.80, steel, segments=6)
+    for zi, z in enumerate((0.30, 0.85, 1.40)):
+        make_box(f"Paper_Shelf_{zi}", ((px0 + px1) / 2.0, KN - 0.225, z), (px1 - px0, 0.44, 0.02), steel)
+        for ci in range(2):
+            make_box(f"Paper_Goods_{zi}_{ci}", (px0 + 0.22 + ci * 0.38, KN - 0.225, z + 0.13),
+                     (0.36, 0.34, 0.24), ((0.86, 0.84, 0.78, 1.0), (0.62, 0.48, 0.32, 1.0), (0.80, 0.80, 0.82, 1.0))[(zi + ci) % 3])
+    make_fire_extinguisher("Extinguisher_K", (2.45, KS + 0.11, 0.30), palette={"red": (0.70, 0.72, 0.74, 1.0)})
 
 
-# ═════════════════════════════════════════════════════════════════
-# EAST WALL DRESSING — community corkboard (custom notice set — the
-# Kwik Stop tallboy/we-card defaults would be the wrong register),
-# faded poster, coat hooks.
-# ═════════════════════════════════════════════════════════════════
-def build_east_wall():
-    make_box("Corkboard_Panel", (3.41, 1.60, 1.70), (0.02, 1.30, 0.90),
-             COL_CORK)
-    for i, (fy, fz, fl) in enumerate([(0.93, 1.70, 0.9), (2.27, 1.70, 0.9)]):
-        make_box(f"Corkboard_FrameV_{i}", (3.40, fy, fz), (0.03, 0.04, fl),
-                 PITSTOP_WOOD)
-    for i, fz in enumerate([1.23, 2.17]):
-        make_box(f"Corkboard_FrameH_{i}", (3.40, 1.60, fz), (0.03, 1.38, 0.04),
-                 PITSTOP_WOOD)
-    make_paper_notices_wall(
-        "Corkboard_Notice", wall_x=3.42, wall_face_sign=-1,
-        run_center_y=1.60, base_z=0.0,
-        notices=[
-            # community board, not convenience-store compliance:
-            # church pancake breakfast / HOA newsletter (navy) /
-            # youth-league signup / lost cat / plumber's card /
-            # week's specials / handwritten shift swap
-            (-0.48, 1.86, 0.24, 0.30, P.PAPER),
-            (-0.12, 1.90, 0.26, 0.32, P.BRAND_NAVY_HCE),
-            (+0.26, 1.86, 0.22, 0.28, P.PAPER),
-            (-0.34, 1.48, 0.20, 0.24, P.PAPER_AGED),
-            (+0.04, 1.44, 0.16, 0.12, P.PAPER),
-            (+0.38, 1.48, 0.22, 0.26, (0.96, 0.96, 0.62, 1.0)),
-            (+0.02, 1.70, 0.14, 0.16, P.PAPER_AGED),
-        ])
-    # Faded poster (hand-built — decor helper faces the wrong way
-    # on an east wall)
-    make_box("Poster_Body", (3.394, 3.40, 1.72), (0.012, 0.60, 0.80),
-             P.PAPER_AGED)
-    make_box("Poster_Figure", (3.386, 3.40, 1.88), (0.005, 0.42, 0.34),
-             (0.32, 0.24, 0.20, 1.0))
-    make_box("Poster_TitleBand", (3.386, 3.40, 1.44), (0.005, 0.46, 0.10),
-             PITSTOP_RED_WORN)
-    # Coat hooks by the door
-    make_box("CoatHook_Rail", (3.385, 0.70, 1.60), (0.03, 0.50, 0.06),
-             PITSTOP_WOOD)
-    for i, hy in enumerate([0.52, 0.70, 0.88]):
-        make_cyl(f"CoatHook_{i}", (3.34, hy, 1.57), 0.012, 0.08,
-                 PITSTOP_BRASS, axis='X')
+def build_decor():
+    make_wall_clock("Clock", (-2.0, 5.900, CEIL-0.55), frozen_hour=9, frozen_min=18, facing='-Y')
+    make_calendar("Calendar_Kitchen", (ROOM_W/2.0-0.11, 8.10, 1.50), axis='Y')   # E wall by the office door (2026-10-09: the hood took the N wall)
+    make_faded_poster("Poster_E", (ROOM_W/2.0-0.05 - 0.0535, 2.6, 1.60), into_room=-1)
+    make_trash_can("Trash", (4.9, 0.9, 0.0), branded=False,
+                   palette={"body": (0.30, 0.30, 0.32, 1.0)})
+    make_box("FloorMat", (0.0, 0.7, 0.02), (1.60, 1.00, 0.02), P.RUBBER_MAT)
+    # Waitress station against the E wall — coffee refills, pads.
+    wz = make_counter("WaitStation", (ROOM_W/2.0-0.45, 3.4, 0.0), length=1.10, depth=0.55, height=0.90,
+                      palette={"formica": COL_WOOD, "top": COL_TABLETOP,
+                               "kick": (0.30, 0.26, 0.24, 1.0)})
+    make_box("WaitStation_Pads", (ROOM_W/2.0-0.45, 3.2, wz+0.02), (0.18, 0.13, 0.03), (0.94, 0.92, 0.84, 1.0))
+    make_paper_cup_stack("WaitStation_Cups", (ROOM_W/2.0-0.45, 3.7, wz), count=8)
 
 
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR SLICES — what the real openings look out on.
-# West: sidewalk, strip-mall lot, the black Louisiana pickup parked
-# at the lot edge (ch2 L78; plate LA 7R3-G92 per ch3 — lettering is
-# Label3D on Pickup_PlatePanel), the Coin Wash across the side lot
-# (ch7), day-sky backdrop. North: the dumpster (ch2_dumpster).
-# ═════════════════════════════════════════════════════════════════
-def build_exterior():
-    # West slice
-    make_box("Sidewalk_W", (-3.85, 3.0, 0.01), (0.5, 6.4, 0.08),
-             COL_SIDEWALK)
-    make_box("Asphalt_W", (-5.35, 3.0, -0.02), (2.5, 6.4, 0.06),
-             PITSTOP_ASPHALT)
-    for i, sy in enumerate([1.1, 2.3, 3.5]):
-        make_box(f"LotStripe_{i}", (-4.55, sy, 0.013), (0.90, 0.10, 0.002),
-                 PITSTOP_STRIPE)
-    # The pickup — nose north, parked at the lot edge, driver never
-    # coming in (ch2/ch3). Box-slab tiers per the playbook car rule.
-    px, py = -5.2, 2.3
-    make_box("Pickup_BodyLower", (px, py, 0.75), (1.8, 4.4, 0.50),
-             PITSTOP_PICKUP_BLK)
-    make_box("Pickup_Cab", (px, py + 0.6, 1.28), (1.70, 1.60, 0.55),
-             PITSTOP_PICKUP_BLK)
-    make_box("Pickup_CabGlass", (px, py + 0.6, 1.33), (1.74, 1.20, 0.30),
-             COL_CAB_GLASS)
-    make_box("Pickup_BedFloor", (px, py - 1.0, 1.02), (1.60, 2.20, 0.04),
-             (0.06, 0.06, 0.07, 1.0))
-    for i, (wx, wy) in enumerate([(-0.80, +1.35), (+0.80, +1.35),
-                                  (-0.80, -1.35), (+0.80, -1.35)]):
-        make_cyl(f"Pickup_Wheel_{i}", (px + wx, py + wy, 0.34), 0.34, 0.26,
-                 (0.08, 0.08, 0.09, 1.0), axis='X', segments=10)
-        make_cyl(f"Pickup_Hub_{i}", (px + wx, py + wy, 0.34), 0.10, 0.28,
-                 PITSTOP_STEEL_DK, axis='X', segments=8)
-    make_box("Pickup_PlatePanel", (px, py - 2.21, 0.75), (0.30, 0.02, 0.15),
-             (0.92, 0.92, 0.88, 1.0))
-    # Coin Wash across the side lot (the booth window sees it, ch7)
-    make_box("CoinWash_Facade", (-6.8, 5.1, 1.5), (0.16, 2.6, 3.0),
-             PITSTOP_COINWASH)
-    make_box("CoinWash_SignBand", (-6.70, 5.1, 2.60), (0.02, 2.0, 0.42),
-             PITSTOP_RED)
-    for i, wy in enumerate([4.45, 5.10, 5.75]):
-        make_cyl(f"CoinWash_Porthole_{i}", (-6.70, wy, 1.15), 0.20, 0.06,
-                 PITSTOP_STEEL_DK, axis='X', segments=12)
-        make_cyl(f"CoinWash_PortholeGlass_{i}", (-6.68, wy, 1.15), 0.15,
-                 0.05, (0.18, 0.22, 0.26, 1.0), axis='X', segments=12)
-    make_box("Day_Backdrop_W", (-7.3, 3.0, 1.8), (0.12, 7.6, 3.6),
-             PITSTOP_DAY_SKY)
-    # North slice — the dumpster (ch2: Jesse "leans against the
-    # dumpster, which he has never leaned against before"; the
-    # grease streak is why)
-    make_box("Asphalt_N", (1.9, 7.0, -0.02), (4.0, 1.8, 0.06),
-             PITSTOP_ASPHALT)
-    make_box("Dumpster_Body", (2.7, 6.9, 0.68), (1.7, 0.95, 1.15),
-             COL_DUMPSTER)
-    for i, lx in enumerate([2.30, 3.10]):
-        make_box(f"Dumpster_Lid_{i}", (lx, 6.9, 1.28), (0.76, 0.98, 0.05),
-                 (0.22, 0.28, 0.22, 1.0))
-    make_box("Dumpster_GreaseStreak", (2.7, 6.41, 0.55), (1.30, 0.012, 0.45),
-             PITSTOP_GREASE)
-    make_box("Day_Backdrop_N", (1.9, 7.95, 1.7), (4.4, 0.12, 3.4),
-             PITSTOP_DAY_SKY)
-
-
-# ═════════════════════════════════════════════════════════════════
-# CEILING INFRA — fluorescents, mint pendants over the counter,
-# smoke detector, HVAC, Muzak speaker.
-# ═════════════════════════════════════════════════════════════════
 def build_ceiling_infra():
-    for j, (fx, fy) in enumerate([(-1.8, 1.6), (1.8, 1.6),
-                                  (-1.8, 3.6), (2.6, 3.4)]):
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (fx, fy, CEIL),
-                                      length=1.30, width=0.32)
-    for j, (fx, fy) in enumerate([(-2.2, 5.35), (0.9, 5.35)]):
-        make_fluorescent_tube_fixture(f"Fluor_K{j}", (fx, fy, CEIL),
-                                      length=1.30, width=0.32)
-    # Pendants over the counter
-    for i, px in enumerate([0.2, 1.6]):
-        make_cyl(f"Pendant_{i}_Rod", (px, 3.55, 2.65), 0.015, 0.30,
-                 PITSTOP_STEEL_DK)
-        make_cyl(f"Pendant_{i}_Shade", (px, 3.55, 2.44), 0.14, 0.12,
-                 PITSTOP_MINT, segments=12)
-        make_cyl(f"Pendant_{i}_Bulb", (px, 3.55, 2.36), 0.05, 0.05,
-                 (1.0, 0.90, 0.66, 1.0), segments=10)
-    make_smoke_detector("Smoke", (-0.9, 2.6, CEIL))
-    make_hvac_vent("HVAC", (2.6, 2.0, CEIL), width=0.80, depth=0.40)
-    make_ceiling_speaker("MuzakSpeaker", (-2.6, 1.2, CEIL))
+    # Kitchen keeps commercial fluorescents; FOH gets warm pendants
+    # over the booth row and the counter (it's a diner, not a store).
+    for j, (fx_, fy_) in enumerate([(-2.6, 7.4), (1.8, 7.4), (-2.6, 9.1), (4.2, 9.4)]):
+        make_fluorescent_tube_fixture(f"Fluor_K{j}", (fx_, fy_, CEIL), length=1.60, width=0.36)
+    for pi, (px, py) in enumerate([(-4.4, 1.5), (-4.4, 3.6), (0.4, 3.9), (2.4, 3.9), (2.6, 1.7)]):
+        make_cyl(f"Pendant_{pi}_Cord", (px, py, CEIL-0.15), 0.015, 0.30, (0.20, 0.20, 0.20, 1.0), segments=6)
+        make_cyl(f"Pendant_{pi}_Shade", (px, py, CEIL-0.38), 0.16, 0.16, (0.30, 0.42, 0.30, 1.0), segments=10)
+        make_cyl(f"Pendant_{pi}_Bulb", (px, py, CEIL-0.44), 0.05, 0.06, (0.98, 0.92, 0.72, 1.0), segments=8)
+    make_smoke_detector("Smoke", (-1.5, 4.5, CEIL))
+    make_hvac_vent("HVAC", (3.5, 1.0, CEIL), width=0.80, depth=0.40)
+
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + D3 infrastructure (set-detail playbook).
+    The diner's wear is 30 years of boots: traffic ribbon from the
+    door past the counter to the pass-through, kick scuffs, grease
+    shadow at the grill, plugged-in everything. D4 (use states) and
+    D5 (through-the-windows) are the next passes."""
+    wear = (0.70, 0.68, 0.62, 1.0)         # floor darkened ~12%
+    scuff = (0.20, 0.17, 0.16, 1.0)
+    # D2 · the path feet actually take: door -> counter front ->
+    # swing door (L-shaped axis-aligned runs).
+    make_traffic_wear("Wear_Main", [(0.0, 0.6), (0.0, 3.6), (3.2, 3.6)],
+                      width=0.9, tint=wear)
+    make_traffic_wear("Wear_Booths", [(0.0, 1.2), (-3.4, 1.2)],
+                      width=0.7, tint=wear)
+    make_traffic_wear("Wear_Kitchen", [(3.65, 7.0), (3.65, 7.45), (-1.6, 7.45), (-1.6, 9.0)],
+                      width=0.8, floor_z=0.010, tint=(0.44, 0.27, 0.20, 1.0))
+    # Stains: grill grease shadow, fryer drips, counter coffee ring.
+    make_floor_stain("Stain_Grill", (-0.5, 9.75), radius=0.55, floor_z=0.021,
+                     tint=(0.20, 0.18, 0.16, 1.0))
+    make_floor_stain("Stain_Fryer", (0.85, 9.80), radius=0.30, floor_z=0.021,
+                     tint=(0.24, 0.20, 0.14, 1.0))
+    make_floor_stain("Stain_Counter", (1.2, 3.75), radius=0.28, tint=wear)
+    # Kick scuffs: counter customer face + swing door + booth bases.
+    make_scuff_band("Scuff_Counter", (1.4, 4.169), length=5.6, axis='X',   # on the front, from the floor (2026-09-23: 6 cm off it, 4 cm up)
+                    band_z=0.08, tint=scuff)
+    make_scuff_band("Scuff_SwingDoor", (3.65, PART_Y+0.13), length=1.0,
+                    axis='X', band_z=0.10, tint=scuff)
+    # Ceiling-shadow gather at the top of the big walls (proud 5mm).
+    make_wall_tint_band("Band_N", (0.0, ROOM_D-0.105, 0.0), length=ROOM_W-0.4,
+                        axis='X', band_z=CEIL-0.18, tint=(0.82, 0.79, 0.72, 1.0))
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, ROOM_D/2.0, 0.0),
+                        length=ROOM_D-0.4, axis='Y', band_z=CEIL-0.18,
+                        tint=(0.82, 0.79, 0.72, 1.0))
+    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X')
+    # D3 · the room is plugged in.
+    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_Booths", (-ROOM_W/2.0, 2.9), axis='Y', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_BackLine", (0.6, PART_Y), axis='X', face_sign=-1, aged=True)
+    make_wall_outlet("Outlet_Kitchen", (ROOM_W/2.0, 8.12), axis='Y', face_sign=-1, aged=True, z=1.10)
+    make_thermostat("Thermostat", (2.2, PART_Y), axis='X', face_sign=-1)
+    # Cords: register + coffee station reach real outlets.
+    make_cord_run("Cord_Register", (4.0, 4.85, 0.90), (4.55, 5.45, 0.12))
+    make_cord_run("Cord_Coffee", (0.0, PART_Y-0.45, 0.85), (0.6, PART_Y-0.11, 0.30))
+    make_corner_guard("CornerGuard_Swing", (2.9, PART_Y-0.12))
+
+
+def build_use_states_2026_08():
+    """D4 · mid-task, not showroom (set-detail playbook). The diner
+    is CAUGHT WORKING: the wipe-rag still on the counter, an order
+    up on the grill, one table half-bussed, the trash telling the
+    truth. D6 (coverage + light) is the next pass."""
+    # Counter mid-wipe: the rag where Brenda left it + a customer's
+    # half-finished coffee two stools down from the register.
+    make_box("Counter_Rag", (0.2, 4.42, 1.005), (0.24, 0.18, 0.02), (0.72, 0.74, 0.70, 1.0))
+    make_cyl("Counter_Coffee", (2.4, 4.40, 1.05), 0.04, 0.09, (0.92, 0.90, 0.86, 1.0), segments=8)
+    make_cyl("Counter_Coffee_Ring", (2.55, 4.36, 1.0121), 0.05, 0.003, (0.66, 0.60, 0.52, 1.0), segments=8)
+    # The grill mid-order: two patties, the spatula resting on the
+    # flat-top edge, a side towel over the hood bar.
+    for pi, pxo in enumerate([-0.25, 0.05]):
+        make_cyl(f"Grill_Patty_{pi}", (-0.6+pxo, 10.45, 1.01), 0.07, 0.02, (0.36, 0.22, 0.14, 1.0), segments=10)
+    make_box("Grill_Spatula_Blade", (0.0, 10.30, 1.005), (0.09, 0.11, 0.008), P.METAL_STEEL)
+    make_box("Grill_Spatula_Handle", (0.0, 10.15, 1.008), (0.03, 0.22, 0.02), (0.20, 0.20, 0.22, 1.0))   # into the blade, over the trough
+    make_box("Hood_Towel", (2.4, 9.835, 1.86), (0.30, 0.03, 0.26), (0.80, 0.80, 0.76, 1.0))   # over the hood's front lip
+    # Ticket on the pass-through rail mid-order (one more than the
+    # static three — this one's crooked).
+    make_box("Pass_Ticket_Live", (1.05, PART_Y-0.10, 1.82), (0.13, 0.005, 0.15), (0.96, 0.94, 0.86, 1.0))   # in the rail
+    # Table A half-bussed: two plates stacked, crumpled napkin, one
+    # chair shoved out of true.
+    make_cyl("TableA_Plate_Stack", (1.45, 1.55, 0.79), 0.11, 0.035, (0.90, 0.88, 0.84, 1.0), segments=10)
+    make_box("TableA_Napkin_Crumple", (1.85, 1.70, 0.78), (0.07, 0.06, 0.045), (0.86, 0.86, 0.82, 1.0))
+    make_box("TableA_Chair_Shoved_Seat", (1.6, 0.62, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
+    make_box("TableA_Chair_Shoved_Back", (1.6, 0.44, 0.72), (0.42, 0.05, 0.50), COL_WOOD)
+    # Pie case truth: one slice already out, on a plate beside it.
+    make_cyl("Pie_Slice_Plate", (-0.35, 4.65, 1.005), 0.09, 0.015, (0.90, 0.88, 0.84, 1.0), segments=10)
+    make_box("Pie_Slice", (-0.35, 4.65, 1.035), (0.09, 0.06, 0.045), (0.78, 0.56, 0.30, 1.0))
+    # The trash tells the truth: two crumples NEAR the can.
+    for ci, (cxo, cyo) in enumerate([(-0.35, 0.15), (0.28, -0.22)]):
+        make_box(f"Trash_Crumple_{ci}", (4.9+cxo, 0.9+cyo, 0.035), (0.07, 0.06, 0.06), (0.88, 0.87, 0.82, 1.0))
+    # Second milk crate stacked askew by the walk-in (Jesse's seat
+    # has a spare — crates accumulate).
+    make_box("Milk_Crate_2", (-3.30, 6.245, 0.50), (0.35, 0.35, 0.33), (0.24, 0.36, 0.62, 1.0))   # stacked on the first, which moved (2026-09-25)
+    # Swing-door wedge kicked half under the door.
+    make_box("Swing_Door_Wedge", (3.35, PART_Y-0.18, 0.03), (0.10, 0.14, 0.06), (0.52, 0.40, 0.28, 1.0))
+
+
+def build_beyond_glass_2026_08():
+    """D5 · something through every window. W + N glass show the
+    PARKING LOT — including the Louisiana pickup that sits in the
+    Pit Stop lot with a driver who never enters (Ben's list, item
+    2, vol6_ch3). S glass shows the road + the strip across it.
+    Cheap silhouette band geometry; fog and glass do the rest."""
+    # ── The lot, west of the building (out the booth windows) ──
+    make_box("Lot_Asphalt_W", (-9.5, 8.05, -0.02), (7.6, 18.1, 0.04), (0.30, 0.30, 0.32, 1.0))
+    for si, sy in enumerate([2.0, 4.4, 6.8]):
+        make_box(f"Lot_Stripe_W_{si}", (-7.2, sy, 0.005), (0.10, 1.8, 0.01), (0.86, 0.84, 0.78, 1.0))
+    # Two parked cars + THE LOUISIANA PICKUP (nose-in, engine cold,
+    # driver never enters) framed by the W_Mid booth window.
+    # (pass 71, 2026-10-11) the two cars and THE LOUISIANA PICKUP ("a black pickup with
+    # Louisiana plates", vol6_ch2 — the driver never enters) as vehicles, nose-in to
+    # the building, where the booth windows look at them (they were box silhouettes)
+    make_car("Lot_Car_A", -7.95, 1.9, 4.2, (0.32, 0.34, 0.40, 1.0), along="X")
+    make_car("Lot_Car_B", -7.95, 6.6, 4.2, (0.62, 0.60, 0.56, 1.0), along="X", hatch=True)
+    make_car("Lot_LA_Pickup", -8.3, 4.35, 4.8, (0.10, 0.10, 0.11, 1.0), pickup=True, along="X")
+    # Lot light pole + far treeline wall (edge-of-set).
+    make_cyl("Lot_Pole", (-11.5, 4.5, 3.0), 0.09, 6.0, (0.40, 0.40, 0.42, 1.0), segments=8)
+    make_box("Lot_Pole_Head", (-11.2, 4.5, 6.0), (0.7, 0.25, 0.18), (0.30, 0.30, 0.32, 1.0))
+    # (2026-10-07: the windows are cut — a 4.4 m slab at 8 m filled them;
+    # a field past the lot and a low treeline far enough back for sky)
+    make_box("Lot_Field_W", (-23.95, 10.5, -0.03), (21.1, 52.0, 0.04), (0.36, 0.40, 0.26, 1.0))
+    make_box("Lot_Treeline_W", (-34.6, 10.5, 1.0), (0.6, 52.0, 2.0), (0.22, 0.28, 0.19, 1.0))
+    # ── North strip (out the kitchen window): the lot corner Ben
+    # catalogues + the same treeline running behind ──
+    # (2026-10-09: the building runs 2 m further N; the back lot with it)
+    make_box("Lot_Asphalt_N", (0.65, ROOM_D + 5.6, -0.02), (14.0, 11.0, 0.04), (0.30, 0.30, 0.32, 1.0))   # (pass 65) y 11.1..22.1
+    make_box("Lot_Field_N", (-0.15, ROOM_D + 17.6, -0.03), (26.5, 13.0, 0.04), (0.36, 0.40, 0.26, 1.0))   # (pass 65) past the fence at 22.1
+    make_box("Lot_Treeline_N", (-2.0, ROOM_D + 24.3, 1.0), (30.0, 0.6, 2.0), (0.22, 0.28, 0.19, 1.0))
+    # "Dumpster at two-fifteen": the enclosure out back, framed by Ben's window
+    dmx, dmy = -1.0, ROOM_D + 3.0
+    make_box("Lot_Dumpster_Body", (dmx, dmy, 0.65), (1.9, 1.1, 1.3), (0.22, 0.36, 0.26, 1.0))
+    make_box("Lot_Dumpster_Lid", (dmx, dmy, 1.33), (1.95, 1.15, 0.06), (0.12, 0.12, 0.12, 1.0))
+    make_box("Lot_Enclosure_N", (dmx, dmy + 0.85, 0.9), (3.0, 0.2, 1.8), (0.60, 0.58, 0.54, 1.0))
+    for nm, ox in (("W", -1.40), ("E", 1.40)):
+        make_box(f"Lot_Enclosure_{nm}", (dmx + ox, dmy + 0.10, 0.9), (0.2, 1.3, 1.8), (0.60, 0.58, 0.54, 1.0))
+    make_box("Lot_Pallet", (dmx + 2.2, dmy + 0.3, 0.07), (1.2, 1.0, 0.14), (0.58, 0.46, 0.30, 1.0))
+    # a sedan nose-in to the back wall, the NexCorp van's empty bay beside it
+    cx_, cy_ = -6.6, ROOM_D + 3.6
+    make_box("Lot_Car_C_Body", (cx_, cy_, 0.55), (1.75, 4.2, 0.55), (0.56, 0.54, 0.50, 1.0))
+    make_box("Lot_Car_C_Cabin", (cx_, cy_ + 0.30, 1.02), (1.6, 2.2, 0.45), (0.56, 0.54, 0.50, 1.0))
+    for wx_ in (-0.80, 0.80):
+        for wy_ in (-1.45, 1.45):
+            make_cyl(f"Lot_Car_C_Wheel_{wx_:+.1f}_{wy_:+.1f}", (cx_ + wx_, cy_ + wy_, 0.30), 0.30, 0.24, (0.10, 0.10, 0.11, 1.0), axis='X', segments=10)
+    for si, sx_ in enumerate((-7.8, -5.4, 2.2)):
+        make_box(f"Lot_Stripe_N_{si}", (sx_, ROOM_D + 3.4, 0.005), (0.10, 4.4, 0.01), (0.86, 0.84, 0.78, 1.0))
+    # ── South: the state-highway strip + the building across it ──
+    make_box("Road_S", (0.0, -3.2, -0.02), (16.0, 3.0, 0.04), (0.26, 0.26, 0.28, 1.0))
+    make_box("Road_S_Centerline", (0.0, -3.2, 0.005), (14.0, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
+    make_box("Strip_Across", (1.5, -6.4, 1.7), (10.0, 0.8, 3.4), (0.42, 0.38, 0.34, 1.0))
+    make_box("Strip_Across_Sign", (-2.0, -5.94, 3.0), (1.6, 0.12, 0.7), (0.66, 0.58, 0.42, 1.0))   # on the facade (2026-09-23: 4 cm off it)
+
+
+def build_back_lot_2026_10():
+    """THE BACK LOT (pass 65, 2026-10-11): vol6 ch2 Dumpster — a whole
+    chapter at the dumpster behind the kitchen, played on the diner's
+    interior. "Ben has been off shift for four minutes. He is at the
+    dumpster... Jesse leans against the dumpster... slides down the side of
+    the dumpster until he is crouched at the base of it... At the back door
+    he paused... The screen door slapped shut behind him. Ben stood at the
+    dumpster for another minute... crushed the Powerade bottle one more
+    time... and walked to his truck."
+    The BACK DOOR in the N wall's east end (the steel leaf standing open
+    outward, the screen door closed in the opening, the wall-pack light
+    over it, the rubber mat, the crates and the bread rack beside it); the
+    ENCLOSURE's gates swung open, a second (recycling) dumpster, the grease
+    bin, the crushed Powerade bottle, the butt can; BEN'S TRUCK in the
+    employee spots; the parapet and the roof units (the hood's exhaust fan,
+    the condenser); the pole with its transformer; the slatted fence on the
+    lot's north edge. Draft 2 targets: the dumpster's stencil and sliding
+    side door; the screen door's spring and the latch; the kitchen's exhaust
+    fan over the window; a delivery truck's tire marks; the heat shimmer
+    (a mood); the lot at night for the ch4 rain scene if it ever cuts out."""
+    steel, steel_dk = (0.60, 0.62, 0.64, 1.0), (0.30, 0.31, 0.34, 1.0)
+    dmx, dmy = -1.0, ROOM_D + 3.0
+    # ── the back door: steel leaf open outward on its W hinge, the screen door shut in the opening ──
+    dx = 4.70
+    make_box("Back_Door_Frame_Head", (dx, ROOM_D, 2.13), (1.07, 0.24, 0.06), steel_dk)
+    for e, nm in ((-1, "W"), (1, "E")):
+        make_box(f"Back_Door_Jamb_{nm}", (dx + e * 0.505, ROOM_D, 1.05), (0.06, 0.24, 2.10), steel_dk)
+    make_box("Back_Door", (dx - 0.475 + 0.025, ROOM_D + 0.12 + 0.475, 1.05), (0.045, 0.95, 2.10), (0.52, 0.54, 0.50, 1.0))   # open to 90, out
+    make_box("Back_Door_Push_Bar", (dx - 0.475 + 0.06, ROOM_D + 0.12 + 0.475, 1.02), (0.03, 0.70, 0.05), steel)
+    make_frame_ring("Screen_Door_Frame", (dx, ROOM_D + 0.13, 1.05), (0.95, 0.04, 2.10), (0.42, 0.42, 0.44, 1.0), bar=0.05)
+    make_box("Screen_Door_Mesh", (dx, ROOM_D + 0.13, 1.05), (0.85, 0.006, 2.00), (0.16, 0.16, 0.18, 0.35))
+    make_box("Screen_Door_Kick", (dx, ROOM_D + 0.125, 0.30), (0.85, 0.02, 0.40), (0.42, 0.42, 0.44, 1.0))
+    make_box("Back_Door_Mat", (dx, ROOM_D + 0.70, -0.005), (1.10, 0.80, 0.03), (0.14, 0.14, 0.15, 1.0))
+    make_box("Back_Door_Light", (dx, ROOM_D + 0.17, 2.45), (0.26, 0.14, 0.18), (1.0, 0.92, 0.70, 1.0))
+    make_box("Back_Door_Light_Hood", (dx, ROOM_D + 0.19, 2.56), (0.30, 0.20, 0.03), steel_dk)
+    # milk crates and the bread rack beside the door
+    for ci, (cx_, cy_, cz_, col) in enumerate(((3.0, ROOM_D + 0.275, 0.17, (0.68, 0.30, 0.14, 1.0)), (3.0, ROOM_D + 0.275, 0.49, (0.30, 0.40, 0.62, 1.0)), (3.0, ROOM_D + 0.665, 0.17, (0.68, 0.30, 0.14, 1.0)))):
+        make_box(f"Milk_Crate_{ci}", (cx_, cy_, cz_), (0.33, 0.33, 0.32), col)
+    make_box("Bread_Rack_Base", (2.3, ROOM_D + 0.55, 0.02), (0.70, 0.60, 0.04), steel)
+    for pi_, (ox, oy) in enumerate(((-0.32, -0.27), (0.32, -0.27), (-0.32, 0.27), (0.32, 0.27))):
+        make_cyl(f"Bread_Rack_Post_{pi_}", (2.3 + ox, ROOM_D + 0.55 + oy, 0.81), 0.012, 1.54, steel, segments=6)
+    for zi, z in enumerate((0.45, 0.85, 1.25)):
+        make_box(f"Bread_Rack_Tray_{zi}", (2.3, ROOM_D + 0.55, z), (0.66, 0.56, 0.02), steel)
+    # ── the enclosure's gates swung open against its sides; a second dumpster; the grease bin ──
+    # (the enclosure is three-sided, open to the lot: gates here corralled every closeup)
+    make_box("Lot_Dumpster_Skid_W", (dmx - 0.80, dmy, 0.05), (0.10, 1.0, 0.10), (0.12, 0.12, 0.12, 1.0))
+    make_box("Lot_Dumpster_Skid_E", (dmx + 0.80, dmy, 0.05), (0.10, 1.0, 0.10), (0.12, 0.12, 0.12, 1.0))
+    make_box("Lot_Recycling_Body", (dmx + 3.6, dmy, 0.55), (1.4, 1.0, 1.1), (0.26, 0.34, 0.52, 1.0))
+    make_box("Lot_Recycling_Lid", (dmx + 3.6, dmy, 1.13), (1.45, 1.05, 0.06), (0.14, 0.18, 0.30, 1.0))
+    make_box("Grease_Bin", (dmx + 2.3, dmy + 0.2, 0.50), (0.80, 0.80, 1.00), (0.20, 0.18, 0.14, 1.0))
+    make_box("Grease_Bin_Lid", (dmx + 2.3, dmy + 0.2, 1.03), (0.84, 0.84, 0.06), (0.14, 0.12, 0.10, 1.0))
+    make_box("Grease_Bin_Stain", (dmx + 2.3, dmy - 0.5, -0.015), (0.9, 0.6, 0.01), (0.20, 0.18, 0.14, 1.0))
+    # the crushed Powerade bottle by the dumpster's foot; the butt can by the door
+    make_cyl("Powerade_Bottle", (dmx + 0.6, dmy - 0.85, 0.03), 0.034, 0.20, (0.30, 0.46, 0.80, 0.8), segments=8, axis='X')
+    make_cyl("Butt_Can", (1.7, ROOM_D + 0.30, 0.08), 0.07, 0.16, (0.72, 0.60, 0.42, 1.0), segments=10)
+    # ── Ben's truck in the employee spots east of the door ──
+    make_car("Pickup_Truck", 3.4, ROOM_D + 6.6, 5.2, (0.40, 0.44, 0.40, 1.0), pickup=True, along="Y")
+    make_box("Lot_Stripe_N_3", (5.4, ROOM_D + 6.6, 0.005), (0.10, 5.0, 0.01), (0.86, 0.84, 0.78, 1.0))
+    make_box("Lot_Stripe_N_4", (1.4, ROOM_D + 6.6, 0.005), (0.10, 5.0, 0.01), (0.86, 0.84, 0.78, 1.0))
+    make_box("Lot_Wheel_Stop_0", (3.4, ROOM_D + 3.9, 0.07), (1.6, 0.18, 0.14), (0.56, 0.55, 0.52, 1.0))
+    make_box("Lot_Wheel_Stop_1", (-6.6, ROOM_D + 1.3, 0.07), (1.6, 0.18, 0.14), (0.56, 0.55, 0.52, 1.0))
+    # ── the parapet and the roof units ──
+    make_box("Parapet_N", (0.0, ROOM_D + 0.05, CEIL + 0.40), (ROOM_W + 0.4, 0.30, 0.60), PAL_WALL["wall"])
+    make_box("Parapet_N_Cap", (0.0, ROOM_D + 0.05, CEIL + 0.72), (ROOM_W + 0.5, 0.36, 0.04), steel_dk)
+    make_box("Roof_Condenser", (3.6, ROOM_D - 1.6, CEIL + 0.10 + 0.45), (1.10, 1.10, 0.90), (0.62, 0.62, 0.60, 1.0))
+    make_cyl("Roof_Condenser_Fan", (3.6, ROOM_D - 1.6, CEIL + 0.10 + 0.905), 0.42, 0.01, (0.20, 0.20, 0.22, 1.0), segments=16)
+    make_lathe("Roof_Hood_Fan", (0.25, ROOM_D - 0.9, CEIL + 0.10),
+               [(0.45, 0.0), (0.45, 0.25), (0.55, 0.42), (0.50, 0.55), (0.0, 0.55)], (0.52, 0.52, 0.50, 1.0), segments=14)
+    make_box("Roof_Vent_Pipe", (-3.2, ROOM_D - 0.6, CEIL + 0.10 + 0.40), (0.14, 0.14, 0.80), steel_dk)
+    # ── the pole, the fence on the lot's north edge, what the fence keeps out ──
+    make_cyl("Lot_Pole_N", (6.9, ROOM_D + 7.5, 3.6), 0.14, 7.2, (0.38, 0.32, 0.26, 1.0), segments=8)
+    make_box("Lot_Pole_N_Crossarm", (6.9, ROOM_D + 7.5, 6.6), (1.60, 0.10, 0.10), (0.38, 0.32, 0.26, 1.0))
+    make_cyl("Lot_Pole_N_Transformer", (6.9, ROOM_D + 7.1, 5.6), 0.28, 0.70, (0.40, 0.42, 0.40, 1.0), segments=10)
+    fy = ROOM_D + 11.0
+    for pi_, px in enumerate([-6.4 + 2.3 * i for i in range(7)]):
+        make_cyl(f"Lot_Fence_Post_{pi_}", (px, fy, 0.9), 0.03, 1.8, (0.50, 0.52, 0.54, 1.0), segments=6)
+    make_box("Lot_Fence_Rail", (0.5, fy, 1.78), (13.9, 0.03, 0.03), (0.50, 0.52, 0.54, 1.0))
+    make_box("Lot_Fence_Slats", (0.5, fy, 0.88), (13.9, 0.02, 1.72), (0.36, 0.40, 0.34, 0.6))
+    for bi, (bx, by, br) in enumerate(((-4.0, fy + 2.6, 1.1), (2.6, fy + 3.1, 1.3), (6.8, fy + 2.4, 0.9))):
+        make_blob(f"Lot_Scrub_{bi}", (bx, by, -0.03 + br * 0.55), br, (0.28, 0.36, 0.22, 1.0), noise=0.3, seed=50 + bi, squash=0.6)
+
+
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    The pit_stop_kitchen preset fires five distinct cues; grill and
+    the kitchen window existed (markers only). Built here:
+
+    - THE DINER DOOR + BELL ("the bell over the diner door
+      chimes"): the centred entry gap had NO DOOR — a glass diner
+      door now fills it (stiles, rails, glass, push bar) with the
+      brass bell on a bracket at the transom, inside.
+    - THE TEN ("Ben ... picks up the ten-dollar bill. On the back
+      of it, in pencil: The red light lies. I am sorry. I will
+      come back when I can."): flat on the lunch counter where the
+      stranger left it, one faint pencil line showing.
+    - BEN'S PHONE ("The phone, at 09:18, buzzes."): face-up on the
+      prep line.
+
+    Draft note: draft N+1 could swing the door ajar the day the
+    pipeline gets rotation, and give the bell its leather strap.
+    """
+    steel = COL_STEEL
+    door_al = (0.55, 0.57, 0.60, 1.0)
+    glass = (0.62, 0.72, 0.76, 0.45)
+    brass = (0.72, 0.58, 0.28, 1.0)
+    # ── THE DINER DOOR · centred gap, south wall ──
+    for sgn in (-1, 1):
+        make_box(f"Diner_Door_Stile_{'L' if sgn < 0 else 'R'}",
+                 (0.42 * sgn, 0.06, 1.02), (0.05, 0.05, 2.04), door_al)
+    make_box("Diner_Door_Rail_T", (0.0, 0.06, 2.01), (0.79, 0.05, 0.06), door_al)
+    make_box("Diner_Door_Rail_B", (0.0, 0.06, 0.14), (0.79, 0.05, 0.20), door_al)
+    make_box("Diner_Door_Glass", (0.0, 0.06, 1.11), (0.79, 0.02, 1.74), glass)
+    make_box("Diner_Door_PushBar", (0.0, 0.085, 1.05), (0.70, 0.030, 0.050), steel)
+    # The bell over the door, on its bracket at the transom
+    make_box("Door_Bell_Bracket", (0.30, 0.14, 2.45), (0.030, 0.080, 0.030), door_al)
+    make_cyl("Door_Bell", (0.30, 0.18, 2.41), 0.035, 0.050, brass, segments=8)
+    make_cyl("Door_Bell_Clapper", (0.30, 0.18, 2.375), 0.008, 0.020,
+             (0.30, 0.26, 0.20, 1.0), segments=6)
+    # ── THE TEN · flat on the lunch counter (top 1.005) ──
+    make_box("Ten_Dollar_Bill", (1.7, 4.45, 1.0113), (0.156, 0.066, 0.0015),
+             (0.66, 0.66, 0.58, 1.0))
+    make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0109), (0.100, 0.008, 0.0005),
+             (0.38, 0.37, 0.36, 1.0))
+    # ── BEN'S PHONE · on the prep line (top 0.95) ──
+    make_box("Island_Phone", (1.15, 8.12, 0.9555), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+
+
+def build_prints_2026_09():
+    """THE PRINTS ("Jesse opens the paper bag. He takes out three
+    eight-by-tens. He hands them to Ben.") — the bag and the three
+    prints fanned on the lunch counter west of the card terminal."""
+    for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.035, 0.02), (0.07, 0.04))):
+        make_box(f"Print_8x10_{pi}", (2.80 + dx, 4.52 + dy, 1.0118 + pi * 0.0015), (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0))   # on the lunch table's top (2026-09-25: 5 mm inside it)
+    make_box("Prints_Paper_Bag", (2.95, 4.82, 1.115), (0.16, 0.10, 0.22), (0.72, 0.60, 0.42, 1.0))
 
 
 def main():
     clear_scene()
     build_shell()
-    build_storefront()
+    build_windows()
     build_booths()
     build_counter()
-    build_pass_through()
+    build_tables()
+    build_partition()
     build_kitchen()
-    build_east_wall()
-    build_exterior()
+    build_decor()
     build_ceiling_infra()
+    build_detail_pass_2026_08()
+    build_use_states_2026_08()
+    build_beyond_glass_2026_08()
+    build_back_lot_2026_10()
+    build_hero_props_2026_09()
+    build_prints_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=12)   # the road past the front lot
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")

@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.06, 0.06, 0.08, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.62, 0.72, 1)
-ambient_light_energy = 0.7
+ambient_light_energy = 0.76
 fog_enabled = true
 fog_light_color = Color(0.42, 0.46, 0.58, 1)
 fog_light_energy = 0.4
@@ -157,27 +157,46 @@ environment = SubResource("Env_Locale")
 [node name="Key_RingLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 8, 5)
 light_color = Color(1.00, 0.88, 0.62, 1)
-light_energy = 0.55
+light_energy = 0.95
 shadow_enabled = false
 
 [node name="Fill_Window" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 3)
 light_color = Color(0.78, 0.82, 0.92, 1)
-light_energy = 0.4
+light_energy = 0.5
 shadow_enabled = false
 
 [node name="Back_Cool" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -6)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.28
 shadow_enabled = false
 
+; Warm ring-light practical at the studio nook (blender 3.2,4.5,1.2)
 [node name="Practical_Ring" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.20, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 1.20, -4.5)
 light_color = Color(1.00, 0.88, 0.62, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
+
+; Cool daylight spill through the W window (blender -3.48,3.0,1.4)
+; (2026-10-03: 50 cm into the room, off the pane — at -3.2 it lit the glass from
+; 20 cm and the skyline beyond read as a white glare)
+[node name="Practical_WindowW" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 1.40, -3.0)
+light_color = Color(0.74, 0.82, 0.94, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.5
+
+; ── vn_shot (2026-08-12) · the eviction notice ─────────────────
+; Taped to the front door at blender (-0.42, 0.075, 1.44) → godot
+; (-0.42, 1.44, -0.075). The insert wants the envelope AND the pale
+; ghost of the lease renewal beside it.
+[node name="shot_insert_eviction_notice" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061, 1.638, -0.556)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -279,7 +298,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -298,3 +317,43 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · the arcana sets get the markers their scripts call for) ────────
+; rotation B: from the kitchen corner over the sofa to the lamp and coffee table
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.8, 1.5, -4.9)
+rotation = Vector3(-0.179446, 2.56617, 0)
+metadata/fov = 54.0
+
+; closeup: Elicia at the desk
+[node name="shot_closeup_elicia" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.3, -3.6)
+rotation = Vector3(-0.266789, -0.896055, 0)
+metadata/fov = 36.0
+
+; insert: the laptop on the desk
+[node name="shot_insert_laptop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.1, 1.15, -3.7)
+rotation = Vector3(-0.513856, -0.71883, 0)
+metadata/fov = 40.0
+
+; insert: the teacup on the coffee table
+; RE-AIMED 2026-10-03: her mother's teacup on the counter, 0.7 m off (it was a speck
+; across the room behind the ring light)
+[node name="shot_insert_teacup" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.550, 1.220, -4.650)
+rotation = Vector3(-0.3255, -0.5667, 0.0)
+metadata/fov = 30.0
+
+; insert: the little red light, a baleful eye
+; insert: the city through the west window — "watching the indifferent city lights
+; prick the bruise-colored Montreal dusk. Lights of the harbour gleam red and gold afar" (2026-10-03)
+[node name="shot_insert_skyline" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.200, 1.500, -3.000)
+rotation = Vector3(-0.0681, 1.5708, 0.0)
+metadata/fov = 50.0
+
+[node name="shot_insert_camera" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.2, -0.75)
+rotation = Vector3(-0.1664, -2.5679, 0.0)
+metadata/fov = 42.0

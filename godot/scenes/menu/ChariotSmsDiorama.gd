@@ -143,13 +143,13 @@ func _build_content() -> void:
 	var to := Label.new()
 	to.text = "to:  Q (Quentin)"
 	to.add_theme_color_override("font_color", C_GOLD_HI)
-	to.add_theme_font_size_override("font_size", 10)
+	to.add_theme_font_size_override("font_size", 12)
 	to.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hrow.add_child(to)
 	_time_label = Label.new()
 	_time_label.text = "06:42:00"
 	_time_label.add_theme_color_override("font_color", C_GOLD)
-	_time_label.add_theme_font_size_override("font_size", 10)
+	_time_label.add_theme_font_size_override("font_size", 12)
 	hrow.add_child(_time_label)
 
 	# Chat scroll area
@@ -182,7 +182,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_courier.07 // ember.ash.rest.bbs // 18 messages relayed // integrity 0.91]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -196,7 +196,7 @@ func _build_content() -> void:
 	var ctrl_title := Label.new()
 	ctrl_title.text = "PLAYBACK"
 	ctrl_title.add_theme_color_override("font_color", C_GOLD)
-	ctrl_title.add_theme_font_size_override("font_size", 10)
+	ctrl_title.add_theme_font_size_override("font_size", 12)
 	ctrls.add_child(ctrl_title)
 	var pause_btn := Button.new()
 	pause_btn.text = "[ ▸ play / pause ]"
@@ -219,7 +219,7 @@ func _build_content() -> void:
 	var speed_lbl := Label.new()
 	speed_lbl.text = "speed: 8× real"
 	speed_lbl.add_theme_color_override("font_color", C_TEXT_DIM)
-	speed_lbl.add_theme_font_size_override("font_size", 9)
+	speed_lbl.add_theme_font_size_override("font_size", 12)
 	ctrls.add_child(speed_lbl)
 
 
@@ -261,7 +261,7 @@ func _deliver_message(idx: int) -> void:
 	var ts := Label.new()
 	ts.text = "%s  ·  %s" % [_format_timestamp(int(msg["ts"])), from_id]
 	ts.add_theme_color_override("font_color", C_TEXT_DIM)
-	ts.add_theme_font_size_override("font_size", 8)
+	ts.add_theme_font_size_override("font_size", 12)
 	rvb.add_child(ts)
 	var body := Label.new()
 	body.text = str(msg["text"])
@@ -269,7 +269,7 @@ func _deliver_message(idx: int) -> void:
 		body.add_theme_color_override("font_color", Color(1.0, 0.6, 0.6))
 	else:
 		body.add_theme_color_override("font_color", C_TEXT)
-	body.add_theme_font_size_override("font_size", 10)
+	body.add_theme_font_size_override("font_size", 12)
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body.custom_minimum_size.x = 460
 	rvb.add_child(body)

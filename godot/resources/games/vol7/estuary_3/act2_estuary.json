@@ -1,0 +1,122 @@
+{
+  "id": "act2_estuary",
+  "act": 2,
+  "title": "The Estuary Was Underneath It",
+  "duration_minutes_est": 10,
+  "notes": "The 2 AM customer opened the backroom door and the door was the estuary at first light. Top-down 640x480 view of the estuary the town sits on. The Kwik Stop is still visible in the top-right at pixel (384, 210) as a two-tone 8x8 square — 'the register' the player was standing behind an hour ago. Four seasons cycle at compressed pace; the player has three axes of control per season.\n\nThis is authored as a discrete-state planner rather than a real-time sim so the JSON stays legible. Each season has a soft-target the player either meets or doesn't; the ending screen tallies against the seasons.",
+
+  "map": {
+    "size_px": [640, 480],
+    "coordinate_system": "top-left origin. y increases downward.",
+    "kwik_stop_marker": { "pos_xy": [384, 210], "size_px": [8, 8], "color": [0.96, 0.86, 0.42] },
+    "tide_gate_pos":    { "pos_xy": [80, 260],  "size_px": [12, 12] },
+    "estuary_center":   [320, 240],
+    "notes": "The estuary opens to the Pacific to the west (left of frame). The Kwik Stop sits at the base of the coastal-highway rise to the northeast. The river drops into the estuary from the east. Salt marsh is the northern half; mudflat is the southern half; the deepwater channel runs the western edge."
+  },
+
+  "controls": [
+    {
+      "id": "tide_gate",
+      "label": "Tide Gate",
+      "notes": "Physical gate at the mouth of the estuary. Open = free tidal exchange; partial = damped; closed = the estuary becomes brackish then fresh.",
+      "options": [
+        { "id": "open",    "label": "OPEN",    "hotkey": "1" },
+        { "id": "partial", "label": "PARTIAL", "hotkey": "2" },
+        { "id": "closed",  "label": "CLOSED",  "hotkey": "3" }
+      ]
+    },
+    {
+      "id": "riparian_buffer",
+      "label": "Riparian Buffer",
+      "notes": "How much of the shoreline is protected wild. More wild = better species outcome, worse tourism.",
+      "options": [
+        { "id": "minimal",  "label": "MINIMAL · 10%",  "hotkey": "q" },
+        { "id": "moderate", "label": "MODERATE · 40%", "hotkey": "w" },
+        { "id": "wide",     "label": "WIDE · 70%",     "hotkey": "e" }
+      ]
+    },
+    {
+      "id": "species_boost",
+      "label": "Species Seasonal Boost",
+      "notes": "Which of the eight local species gets protective policy this season. Only two can be boosted at a time. Fish and mammals boost separately; the pick this season carries into next season's baseline.",
+      "options": [
+        { "id": "coho",           "label": "Coho salmon" },
+        { "id": "chum",           "label": "Chum salmon" },
+        { "id": "sturgeon",       "label": "Green sturgeon" },
+        { "id": "cutthroat",      "label": "Cutthroat trout" },
+        { "id": "otter",          "label": "River otter" },
+        { "id": "heron",          "label": "Great blue heron" },
+        { "id": "sedge_wren",     "label": "Sedge wren" },
+        { "id": "tidewater_goby", "label": "Tidewater goby" }
+      ]
+    }
+  ],
+
+  "seasons": [
+    {
+      "id": "spring",
+      "label": "Spring · March through May",
+      "week_range": [1, 13],
+      "narration_intro": "The mudflats warm.  The gulls come back to the north bank.  Snowmelt from the coast range starts pushing the salinity gradient west.  The player sets policy for the season.",
+      "soft_targets": {
+        "tide_gate_should": "open",
+        "riparian_buffer_should": "moderate_or_wide",
+        "species_boost_should_include_any_of": ["coho", "chum", "sturgeon"]
+      },
+      "kwik_stop_echo": "The parking lot needs sweeping.  The kid on the bike passed by twice this week and did not come in.",
+      "narration_out_on_success": "The salinity gradient settled at the right shape.  Two coho ran up-river in early April, weeks ahead of schedule; the fisheries office called about it.  The buffer held.  The estuary is entering summer with its bones in the right place.",
+      "narration_out_on_failure": "The gate was in the wrong position for the snowmelt push.  Salinity spiked in the third week of April.  The coho did not run.  The fisheries office called.  You did not, this time, call back."
+    },
+    {
+      "id": "summer",
+      "label": "Summer · June through August",
+      "week_range": [14, 26],
+      "narration_intro": "The mudflats sun-bake in July.  Tourists come.  The kwik stop is busier than the estuary technically should be.  The player sets policy for the season.",
+      "soft_targets": {
+        "tide_gate_should": "partial",
+        "riparian_buffer_should": "any",
+        "species_boost_should_include_any_of": ["heron", "sedge_wren", "otter"]
+      },
+      "kwik_stop_echo": "You sold 44% more energy drinks in July than in June.  The 2 AM customer sat in the corner booth twenty-two of thirty-one nights.  Tem's grandfather came in once and bought a scratcher.",
+      "narration_out_on_success": "The heron colony on the north bank fledged eleven this year — a good count.  The sedge wren is nesting in the reeds behind the tide gate for the first time in five summers.  The mudflats held their crab population.  The tourism dollars came in even with the wide buffer because the kwik stop's parking lot handled overflow.",
+      "narration_out_on_failure": "The heron colony fledged three.  Something in the water in late July made two of the older birds move north.  The tourism dollars came in but the estuary took the hit for them.  The kwik stop's cash-drawer was up nineteen percent; the estuary was down thirty-one."
+    },
+    {
+      "id": "fall",
+      "label": "Fall · September through November",
+      "week_range": [27, 39],
+      "narration_intro": "Rain returns the first week of October.  The tourists leave.  The kwik stop's night shift goes back to being the night shift the player worked in Act 1.  The player sets policy for the season.",
+      "soft_targets": {
+        "tide_gate_should": "open",
+        "riparian_buffer_should": "wide",
+        "species_boost_should_include_any_of": ["chum", "cutthroat"]
+      },
+      "kwik_stop_echo": "The trucker at pump 3 came in seventeen times in October.  The other clerk from up the road quit in November; the shell station is closing at midnight now.  The 2 AM customer is still there.",
+      "narration_out_on_success": "The chum run peaked the second week of November.  Twelve hundred fish, per the fisheries office.  A three-year high.  The cutthroat overwintered in the upper reaches where the buffer had stayed wide.",
+      "narration_out_on_failure": "The chum run peaked at four hundred.  A ten-year low.  The cutthroat did not overwinter in the upper reaches.  The buffer was not wide enough."
+    },
+    {
+      "id": "winter",
+      "label": "Winter · December through February",
+      "week_range": [40, 52],
+      "narration_intro": "The estuary quiets.  The kwik stop stays open twenty-four hours.  The player sets policy for the season.",
+      "soft_targets": {
+        "tide_gate_should": "closed_or_partial",
+        "riparian_buffer_should": "wide",
+        "species_boost_should_include_any_of": ["sturgeon", "tidewater_goby"]
+      },
+      "kwik_stop_echo": "The register tape ran out in December and you replaced it.  Mr. Aandahl bought a scratcher on Christmas Eve and won two hundred dollars.  He tipped forty cents.",
+      "narration_out_on_success": "The green sturgeon overwintered in the deepwater channel for the fifth year running.  The tidewater goby population held in the marsh pools; the state fisheries survey in February counted more than a thousand.  A quiet, held winter.",
+      "narration_out_on_failure": "The green sturgeon moved south for the winter.  The tidewater goby population dropped below the survey threshold.  The winter did what winters do to estuaries the summer didn't hold."
+    },
+    {
+      "id": "second_spring",
+      "label": "Spring, Again",
+      "week_range": [53, 53],
+      "narration_intro": "The first day of the second spring.  The player sees the estuary from the tide gate, looking east.  The Kwik Stop is a small yellow square in the upper right.  Sam is still working there.  The 2 AM customer is not, this morning, at the booth.  The shift ended.",
+      "narration_out": "The Estuary Two continues, at its own pace, into the second year.  The game — this game, Estuary 3 — asks the player one last question."
+    }
+  ],
+
+  "final_choice_setup_line": "The screen dims to a single line of text: 'Sam is on shift tonight.  Should Sam keep working here next summer?'"
+}

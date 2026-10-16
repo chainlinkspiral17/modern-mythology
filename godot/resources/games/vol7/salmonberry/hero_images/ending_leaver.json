@@ -1,0 +1,213 @@
+{
+  "id": "salmonberry_ending_leaver",
+  "notes": "THE LEAVER \u00b7 the bus going out on the coast road into fog, the town small behind.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#23282a",
+    "#c8cec4",
+    "#3b5a6b",
+    "#b8a882",
+    "#33452f",
+    "#9c5a3a",
+    "#d8b048",
+    "#eef0ec",
+    "#caa25a",
+    "#e8c060",
+    "#6c7f8a",
+    "#d98a9a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        0,
+        90
+      ],
+      "x_range": [
+        0,
+        160
+      ],
+      "stops": [
+        1,
+        10
+      ]
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        66,
+        160,
+        24
+      ],
+      "color": 4
+    },
+    {
+      "op": "streak",
+      "from": [
+        0,
+        78
+      ],
+      "to": [
+        160,
+        74
+      ],
+      "color": 3,
+      "width": 2.0,
+      "strength": 0.7,
+      "blend": "screen"
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        10,
+        58,
+        10,
+        8
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        9,
+        55,
+        12,
+        3
+      ],
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        9,
+        55
+      ],
+      "to": [
+        15,
+        49
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        15,
+        49
+      ],
+      "to": [
+        21,
+        55
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        60,
+        8,
+        6
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        23,
+        57,
+        10,
+        3
+      ],
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        23,
+        57
+      ],
+      "to": [
+        28,
+        51
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        28,
+        51
+      ],
+      "to": [
+        33,
+        57
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        120,
+        60,
+        26,
+        12
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        62,
+        10,
+        6
+      ],
+      "color": 9
+    },
+    {
+      "op": "disk",
+      "xy": [
+        145,
+        70
+      ],
+      "r": 1,
+      "color": 5
+    },
+    {
+      "op": "disk",
+      "xy": [
+        145,
+        66
+      ],
+      "r": 1,
+      "color": 5
+    },
+    {
+      "op": "text",
+      "xy": [
+        56,
+        84
+      ],
+      "s": "THE LEAVER",
+      "color": 4
+    }
+  ]
+}

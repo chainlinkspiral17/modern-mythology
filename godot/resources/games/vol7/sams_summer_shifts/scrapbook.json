@@ -1,0 +1,19 @@
+{
+ "id": "sams_summer_shifts_scrapbook",
+ "title": "Sam's Summer Shifts · the sequel",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "sams_summer_shifts_finished",
+   "tier": "finished",
+   "title": "The summer, shifted",
+   "blurb": "The Kwik Stop again, a generation on, with the ghost of the first manager sim in the walls. Shifts got worked. The cooler hummed the same hum."
+  },
+  {
+   "token": "sam_vs_sam_rivalry_understood",
+   "tier": "secrets",
+   "title": "Sam vs. Sam",
+   "blurb": "Two Sams, one store, thirty years apart. You understood the rivalry the game never states: the store is the third Sam, and it always wins on points."
+  }
+ ]
+}

@@ -13,7 +13,7 @@
       "available_from_week": 1,
       "in_public_directory": true,
       "board_list_path": "res://resources/games/community_planned/bbs/rust_code/board_list.json",
-      "masthead_ascii": "  ___ _   _ ___ _____    ___ ___  ___  ___   ___ ___  ___\n | _ \\ | | / __|_   _|  / __/ _ \\|   \\| __| | _ ) _ )/ __|\n |   / |_| \\__ \\ | |   | (_| (_) | |) | _|  | _ \\ _ \\\\__ \\\n |_|_\\\\___/|___/ |_|    \\___\\___/|___/|___|.|___/___/|___/\n             frasier @ graustark · 14400 baud · since 1991",
+      "masthead_ascii": "  r u s t _ c o d e . b b s\n  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  news from harmony creek  ·  the letters column lives here\n  frasier @ graustark  ·  14400 baud  ·  since 1991\n  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  cut · pasted · photocopied · two inks you can't see from here",
       "flavor": "The busiest. Dense with prehistory. The board the rest of the network treats as the hub."
     },
     {

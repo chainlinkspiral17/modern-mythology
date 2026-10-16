@@ -1,0 +1,28 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_objects_tools",
+      "kind": "objects",
+      "era": "era3",
+      "tags": [
+        "objects",
+        "era3",
+        "lamp",
+        "brush",
+        "nib",
+        "bristol",
+        "jars",
+        "dog bed",
+        "mug",
+        "drafting table"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. a reference sheet of a cartoonist's tools laid on a green vinyl drafting mat: a green enameled swing-arm lamp, a crow-quill pen, a sable brush, a wooden pen holder with teeth marks near the ferrule, bristol board taped down with brown kraft tape and a faint blue-pencil four-panel grid, three jars holding brushes, rusted nibs and a sand dollar, a braided wool dog bed worn into a crescent, a chipped white enamel mug. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

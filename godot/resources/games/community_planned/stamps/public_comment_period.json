@@ -1,0 +1,258 @@
+{
+ "id": "public_comment_period",
+ "notes": "The podium mic and the sign-in sheet, the room packed politely.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 24,
+   "y_range": [
+    24,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    18,
+    20,
+    12,
+    6
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     18,
+     20
+    ],
+    [
+     30,
+     20
+    ],
+    [
+     30,
+     26
+    ],
+    [
+     18,
+     26
+    ],
+    [
+     18,
+     20
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     24,
+     20
+    ],
+    [
+     24,
+     14
+    ],
+    [
+     27,
+     12
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    28,
+    12
+   ],
+   "size": 1,
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    40,
+    26,
+    16,
+    12
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     40,
+     26
+    ],
+    [
+     56,
+     26
+    ],
+    [
+     56,
+     38
+    ],
+    [
+     40,
+     38
+    ],
+    [
+     40,
+     26
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 29,
+   "x_range": [
+    42,
+    54
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 32,
+   "x_range": [
+    42,
+    54
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 35,
+   "x_range": [
+    42,
+    54
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    66,
+    32
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 66,
+   "y_range": [
+    34,
+    40
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    72,
+    33
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 72,
+   "y_range": [
+    35,
+    40
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    78,
+    32
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 78,
+   "y_range": [
+    34,
+    40
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    84,
+    33
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 84,
+   "y_range": [
+    35,
+    40
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    90,
+    32
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 90,
+   "y_range": [
+    34,
+    40
+   ],
+   "color": 3
+  }
+ ]
+}

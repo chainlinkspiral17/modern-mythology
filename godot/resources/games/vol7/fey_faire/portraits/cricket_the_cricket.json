@@ -1,0 +1,227 @@
+{
+ "notes": "Cricket at the ticket counter. A cricket. On a stool. She bites the corner off tickets. She has been here a very long time.",
+ "palette": [
+  "#1c2014",
+  "#c8983a",
+  "#587038",
+  "#3a4a28",
+  "#f8c848",
+  "#8a7458",
+  "#2a3018"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    30,
+    16,
+    3
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 10,
+   "y_range": [
+    33,
+    38
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 21,
+   "y_range": [
+    33,
+    38
+   ],
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     12,
+     22
+    ],
+    [
+     20,
+     22
+    ],
+    [
+     22,
+     28
+    ],
+    [
+     10,
+     28
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    18
+   ],
+   "size": 5,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    14,
+    17
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    18,
+    17
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     13,
+     14
+    ],
+    [
+     10,
+     8
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     19,
+     14
+    ],
+    [
+     22,
+     8
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     11,
+     26
+    ],
+    [
+     6,
+     30
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     21,
+     26
+    ],
+    [
+     26,
+     30
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     22,
+     24
+    ],
+    [
+     27,
+     18
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    3,
+    5,
+    6,
+    4
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    6,
+    7
+   ],
+   "size": 1,
+   "color": 0
+  }
+ ],
+ "id": "portrait_cricket_the_cricket",
+ "w": 32,
+ "h": 40
+}

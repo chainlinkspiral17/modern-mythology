@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "title": "hane no niwa \u00b7 summer phrase",
+    "composer": "Sachiko Ono \u00b7 Yumemi Denshi \u00b7 1993",
+    "for": "HANE NO NIWA \u00b7 summer visits",
+    "notes": "Four phrases, quarter answers to each other. Only a player who reaches winter hears that the four are one melody."
+  },
+  "tempo_bpm": 58,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "soft_sine",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "C5",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "B4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 2,
+          "beat": 2,
+          "dur": 2.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.08,
+      "notes": [
+        {
+          "pitch": "E2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 12.0,
+          "vel": 0.3
+        }
+      ]
+    },
+    {
+      "instrument": "chiptune_arp",
+      "gain": 0.07,
+      "notes": [
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 1.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 1.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 1.5,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 2.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 2.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 3.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 3.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 1,
+          "beat": 3.5,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 1.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 1.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 1.5,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 2.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 2.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 3.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 3.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 2,
+          "beat": 3.5,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 1.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 1.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 1.5,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 2.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 2.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 3.0,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 3.25,
+          "dur": 0.08,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E7",
+          "bar": 3,
+          "beat": 3.5,
+          "dur": 0.08,
+          "vel": 0.4
+        }
+      ]
+    }
+  ]
+}

@@ -117,13 +117,13 @@ func _build_content() -> void:
 	var head := Label.new()
 	head.text = "DAIGLE'S BAR — after closing"
 	head.add_theme_color_override("font_color", Color(0.95, 0.70, 0.30))
-	head.add_theme_font_size_override("font_size", 11)
+	head.add_theme_font_size_override("font_size", 12)
 	head.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head_row.add_child(head)
 	_time_label = Label.new()
 	_time_label.text = "00:00 / 11:38"
 	_time_label.add_theme_color_override("font_color", C_TEXT_DIM)
-	_time_label.add_theme_font_size_override("font_size", 10)
+	_time_label.add_theme_font_size_override("font_size", 12)
 	head_row.add_child(_time_label)
 	var rule := ColorRect.new()
 	rule.color = Color(0.95, 0.65, 0.25, 0.5)
@@ -143,7 +143,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_listener.15 // daigles_bar.bbs (archived post-hoc by sysop request) // 11:38 // integrity 0.96]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -177,7 +177,7 @@ func _emit_line(line: Dictionary) -> void:
 		var lbl := Label.new()
 		lbl.text = prefix + text
 		lbl.add_theme_color_override("font_color", col)
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 12)
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_dialogue_vbox.add_child(lbl)
 	else:
@@ -187,7 +187,7 @@ func _emit_line(line: Dictionary) -> void:
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.text = "  ✦  " + prefix + text
 		btn.add_theme_color_override("font_color", col)
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var bsb := StyleBoxFlat.new()
 		bsb.bg_color = Color(col.r * 0.3, col.g * 0.3, col.b * 0.3, 0.4)

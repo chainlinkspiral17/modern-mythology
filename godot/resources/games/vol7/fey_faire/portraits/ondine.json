@@ -1,0 +1,213 @@
+{
+ "notes": "Ondine at the ring-toss. Nineteen. Hair the color of salt-washed rope. If you look closely the skin holds seawater.",
+ "palette": [
+  "#2a2418",
+  "#f8c848",
+  "#f0d8b0",
+  "#c8a878",
+  "#3a5a8a",
+  "#d8c8a0",
+  "#5a7a9a",
+  "#8a98b0"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    9,
+    8,
+    14,
+    18
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    19,
+    8,
+    4,
+    18
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    5,
+    16,
+    5
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    7,
+    8,
+    3,
+    16
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    22,
+    8,
+    3,
+    16
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 12,
+   "x_range": [
+    7,
+    10
+   ],
+   "color": 7
+  },
+  {
+   "op": "hline",
+   "y": 18,
+   "x_range": [
+    22,
+    25
+   ],
+   "color": 7
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    15
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    15
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 21,
+   "x_range": [
+    14,
+    18
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    24
+   ],
+   "size": 1,
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    26,
+    12,
+    10
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    26,
+    12,
+    2
+   ],
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    5,
+    34
+   ],
+   "size": 2,
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    27,
+    34
+   ],
+   "size": 2,
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    37
+   ],
+   "size": 1,
+   "color": 1
+  }
+ ],
+ "id": "portrait_ondine",
+ "w": 32,
+ "h": 40
+}

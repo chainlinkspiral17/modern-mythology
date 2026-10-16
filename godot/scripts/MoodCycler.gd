@@ -16,10 +16,12 @@
 
 extends CanvasLayer
 
+const _VERTEX_COLOR_GUARD := preload("res://scripts/VertexColorGuard.gd")
+
 const MOODS: Array = [
 	# ── naturalistic time-of-day ─────────────────────────────────
 	{
-		"name": "lunch",
+		"name": "lunch", "trip_scale": 0.75,
 		"palette": 22.0, "dither": 0.04, "scanline": 0.10, "aberration": 0.0006,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.82, 0.55, 1), "ascii_bg": Color(0.04, 0.03, 0.02, 1),
@@ -28,7 +30,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "dusk",
+		"name": "dusk", "trip_scale": 1.00, "shadow_lift": 0.3,
 		"palette": 14.0, "dither": 0.18, "scanline": 0.40, "aberration": 0.0016,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -417,7 +419,7 @@ const MOODS: Array = [
 	{
 		# DREAM BLUR — Gaussian, omnidirectional. Soft fall-off. Use
 		# for memory / dream-state scenes.
-		"name": "dream_blur",
+		"name": "dream_blur", "trip_scale": 1.35,
 		"palette": 20.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -429,7 +431,7 @@ const MOODS: Array = [
 	{
 		# MACRO HAZE — radial DOF-mimic. Centre stays crisp; edges
 		# bleed outward. Cinematic "subject in focus" preset.
-		"name": "macro_haze",
+		"name": "macro_haze", "trip_scale": 1.20,
 		"palette": 16.0, "dither": 0.02, "scanline": 0.05, "aberration": 0.0004,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -442,7 +444,7 @@ const MOODS: Array = [
 		# STUDIO SOFTBOX — even, low-contrast, no edge stylization.
 		# Wide palette, no dither, no scanline. Reads as a controlled
 		# studio shot — useful for portrait-ish camera positions.
-		"name": "studio",
+		"name": "studio", "trip_scale": 0.60,
 		"palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -453,7 +455,7 @@ const MOODS: Array = [
 	{
 		# DAY BRIGHT — high-key, faint scanline, no stylized edges.
 		# The "this is morning, nothing weird here" baseline.
-		"name": "day_bright",
+		"name": "day_bright", "trip_scale": 0.70,
 		"palette": 24.0, "dither": 0.02, "scanline": 0.04, "aberration": 0.0002,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -589,7 +591,7 @@ const MOODS: Array = [
 	},
 	# ── deep moods: code substrate states ────────────────────────
 	{
-		"name": "night",
+		"name": "night", "trip_scale": 1.00, "shadow_lift": 0.6,
 		"palette": 9.0, "dither": 0.26, "scanline": 0.50, "aberration": 0.0022,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -598,7 +600,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "3_47_am",
+		"name": "3_47_am", "trip_scale": 1.40, "shadow_lift": 0.6,
 		"palette": 7.0, "dither": 0.36, "scanline": 0.62, "aberration": 0.0030,
 		"ascii": 0.55, "ascii_cell": 9.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -607,7 +609,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "precipice",
+		"name": "precipice", "trip_scale": 1.40,
 		"palette": 5.0, "dither": 0.50, "scanline": 0.78, "aberration": 0.0042,
 		"ascii": 0.90, "ascii_cell": 7.0, "ascii_gamma": 0.75, "ascii_tint": true,
 		"ascii_fg": Color(0.95, 0.32, 0.32, 1),    # red shift
@@ -676,7 +678,7 @@ const MOODS: Array = [
 		# Mild Gaussian blur sands surfaces; warm low-key palette; no
 		# edge stylization. Reads like the memory of a room, not the
 		# room itself. Pairs with the liminal_night lighting preset.
-		"name": "liminal_interior",
+		"name": "liminal_interior", "trip_scale": 1.35,
 		"palette": 18.0, "dither": 0.06, "scanline": 0.10, "aberration": 0.0010,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.95, 0.86, 0.62, 1), "ascii_bg": Color(0.10, 0.08, 0.06, 1),
@@ -686,7 +688,7 @@ const MOODS: Array = [
 		"blur": 0.35, "blur_mode": 0, "blur_radius": 3.0,
 	},
 	{
-		"name": "raw",
+		"name": "raw", "trip_scale": 0.90,
 		"palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -702,7 +704,7 @@ const MOODS: Array = [
 	{
 		# Diner galley / restaurant kitchen — harsh fluorescent-cool,
 		# slight green-cast, hum-in-the-walls grit
-		"name": "kitchen_practical",
+		"name": "kitchen_practical", "trip_scale": 0.80,
 		"palette": 12.0, "dither": 0.10, "scanline": 0.22, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.95, "ascii_tint": true,
 		"ascii_fg": Color(0.86, 0.92, 0.88, 1), "ascii_bg": Color(0.06, 0.08, 0.07, 1),
@@ -739,7 +741,7 @@ const MOODS: Array = [
 	{
 		# Staff corridor / lower-deck back hallway — long fluorescent
 		# tubes, cold even, the hum you stop hearing
-		"name": "fluorescent_corridor",
+		"name": "fluorescent_corridor", "trip_scale": 0.70,
 		"palette": 14.0, "dither": 0.05, "scanline": 0.30, "aberration": 0.0006,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.90, "ascii_tint": true,
 		"ascii_fg": Color(0.86, 0.90, 0.96, 1), "ascii_bg": Color(0.06, 0.07, 0.09, 1),
@@ -750,7 +752,7 @@ const MOODS: Array = [
 	{
 		# Candlelight — warm low, deep darks. Pairs with candlelight
 		# lighting preset for cathedral workbench + private dining
-		"name": "candlelight_low",
+		"name": "candlelight_low", "trip_scale": 1.15,
 		"palette": 6.0, "dither": 0.30, "scanline": 0.48, "aberration": 0.0020,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.80, "ascii_tint": true,
 		"ascii_fg": Color(1.0, 0.78, 0.42, 1), "ascii_bg": Color(0.04, 0.02, 0.01, 1),
@@ -762,7 +764,7 @@ const MOODS: Array = [
 		# TV glow — cool blue from one direction. The screen-watching
 		# look (Elicia at the laptop, John at booth 6 watching the
 		# silent TV behind the counter)
-		"name": "tv_glow_blue",
+		"name": "tv_glow_blue", "trip_scale": 1.15,
 		"palette": 8.0, "dither": 0.20, "scanline": 0.55, "aberration": 0.0016,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.62, 0.78, 0.96, 1), "ascii_bg": Color(0.02, 0.04, 0.08, 1),
@@ -773,7 +775,7 @@ const MOODS: Array = [
 	{
 		# Pre-dawn warm windows + cool moonlight bleed. The 4 AM
 		# diner with the sodium lot light leaking in
-		"name": "dawn_warm",
+		"name": "dawn_warm", "trip_scale": 0.85,
 		"palette": 16.0, "dither": 0.08, "scanline": 0.22, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.96, 0.82, 0.62, 1), "ascii_bg": Color(0.10, 0.10, 0.14, 1),
@@ -784,7 +786,7 @@ const MOODS: Array = [
 	{
 		# Bright morning interior — slight bloom, clean. The bungalow
 		# at 9 AM, the riverboat after the breakfast rush
-		"name": "morning_bright",
+		"name": "morning_bright", "trip_scale": 0.70,
 		"palette": 24.0, "dither": 0.04, "scanline": 0.12, "aberration": 0.0005,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
 		"ascii_fg": Color(0.96, 0.92, 0.84, 1), "ascii_bg": Color(0.12, 0.14, 0.16, 1),
@@ -795,7 +797,7 @@ const MOODS: Array = [
 	{
 		# Rain interior — looking out through a wet window, cool light,
 		# gentle blur. The bungalow porch with the storm coming in
-		"name": "rain_interior",
+		"name": "rain_interior", "trip_scale": 1.10,
 		"palette": 12.0, "dither": 0.12, "scanline": 0.32, "aberration": 0.0010,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.90, "ascii_tint": true,
 		"ascii_fg": Color(0.72, 0.82, 0.92, 1), "ascii_bg": Color(0.06, 0.08, 0.10, 1),
@@ -889,6 +891,63 @@ const MOODS: Array = [
 		"neon_high": Color(0.02, 0.04, 0.02, 1),
 		"neon_grad": 1.0, "neon_blend": 0.22, "neon_glow": 0.5,
 	},
+	{
+		# ARCANA — the Magician's cyberpunk-magickal playground. Warm
+		# base + violet edges + light-green fill floor over deep purple-
+		# black; saturated scene bits (red neon sign, white bulbs) bleed
+		# through as themselves = the flashes of white/red the prose
+		# asks for. GPU-SAFE: neon-edge only, NO full-frame ASCII /
+		# starscape / motion (the green-crash lesson) — safe on the Deck.
+		# SUBTLE by design (2026-07-13): the room must read as a REAL
+		# place, not a wireframe. neon (edge outline) is a faint kiss,
+		# not full linework; the mood is carried by the colour grade +
+		# the arcana_magick lighting. High neon_thresh so only the
+		# strongest silhouette edges glow, never every tiny facet.
+		"name": "arcana", "trip_scale": 1.20,
+		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.06, 0.02, 0.12, 1),
+		"neon": 0.14, "neon_thresh": 0.09,
+		"neon_edge": Color(0.74, 0.36, 1.0, 1),
+		"neon_low":  Color(0.45, 0.30, 0.55, 1),
+		"neon_high": Color(0.06, 0.03, 0.10, 1),
+		"neon_grad": 1.0, "neon_blend": 0.16, "neon_glow": 0.22,
+		"neon_bleed_lo": 0.75, "neon_bleed_hi": 0.97,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.35, "neon_sat_hi": 0.62,
+		"neon_red_only": false,
+	},
+	{
+		# Subtle light-green grade (the "light green" the brief asked
+		# for) — a lens for the model-city / workbench inserts.
+		"name": "arcana_cool", "trip_scale": 1.25,
+		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.04, 0.10, 0.08, 1),
+		"neon": 0.14, "neon_thresh": 0.09,
+		"neon_edge": Color(0.55, 0.95, 0.62, 1),
+		"neon_low":  Color(0.30, 0.55, 0.42, 1),
+		"neon_high": Color(0.04, 0.10, 0.08, 1),
+		"neon_grad": 1.0, "neon_blend": 0.16, "neon_glow": 0.22,
+		"neon_bleed_lo": 0.75, "neon_bleed_hi": 0.97,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.35, "neon_sat_hi": 0.62,
+		"neon_red_only": false,
+	},
+	{
+		# Subtle warm/amber grade (the "flashes of white and red") — a
+		# lens for the phone / riverboat close inserts.
+		"name": "arcana_warm", "trip_scale": 1.15,
+		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.95, 0.82, 0.62, 1), "ascii_bg": Color(0.10, 0.05, 0.05, 1),
+		"neon": 0.15, "neon_thresh": 0.09,
+		"neon_edge": Color(1.0, 0.72, 0.50, 1),
+		"neon_low":  Color(0.50, 0.35, 0.28, 1),
+		"neon_high": Color(0.10, 0.05, 0.05, 1),
+		"neon_grad": 1.0, "neon_blend": 0.16, "neon_glow": 0.22,
+		"neon_bleed_lo": 0.75, "neon_bleed_hi": 0.97,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.35, "neon_sat_hi": 0.62,
+		"neon_red_only": false,
+	},
 ]
 
 var current_index: int = 8   # start on linework — pure visible-edges-only render
@@ -967,9 +1026,11 @@ const LIGHTING_PRESETS: Array = [
 	{"name": "scene_default", "dir_mult": 1.0, "practical_mult": 1.0,
 	"dir_tint": Color.WHITE, "tint_mix": 0.0,
 	"sun_pitch_deg": NAN, "sun_yaw_deg": NAN,
-	"ambient_color": Color.WHITE, "ambient_energy": -1.0,
-	"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.10, 0.12, 0.18, 1),
-	"sky_energy": 1.0, "fog_color": Color(0.05, 0.06, 0.08, 1)},
+	"ambient_color": Color.WHITE, "ambient_energy": -1.0},
+	# (2026-10-07: scene_default carried a hard-coded NIGHT sky + fog
+	# tint — F11 back to it, or stepping out of lightshow_extreme, turned
+	# every authored ProceduralSky night. No sky_* / fog_color keys =
+	# keep the scene's own.)
 	{"name": "midday",        "dir_mult": 14.0, "practical_mult": 0.0,
 	"dir_tint": Color(1.0, 0.97, 0.92, 1), "tint_mix": 0.95,
 	"sun_pitch_deg": -78.0, "sun_yaw_deg": 18.0,
@@ -1075,6 +1136,16 @@ const LIGHTING_PRESETS: Array = [
 	"ambient_color": Color(0.62, 0.55, 0.62, 1), "ambient_energy": 0.78,
 	"sky_top": Color(0.18, 0.20, 0.32, 1), "sky_horizon": Color(0.78, 0.55, 0.42, 1),
 	"sky_energy": 0.85, "fog_color": Color(0.48, 0.42, 0.42, 1)},
+	# ARCANA MAGICK — the Magician's warehouse. Violet directional tint,
+	# warm-magenta ambient, practicals BOOSTED (fluorescent seraphim +
+	# the model-city LEDs pop as the practical sources). Pairs with the
+	# arcana* moods.
+	{"name": "arcana_magick", "dir_mult": 1.4, "practical_mult": 1.6,
+	"dir_tint": Color(0.74, 0.44, 0.96, 1), "tint_mix": 0.55,
+	"sun_pitch_deg": -30.0, "sun_yaw_deg": 15.0,
+	"ambient_color": Color(0.40, 0.30, 0.48, 1), "ambient_energy": 0.60,
+	"sky_top": Color(0.06, 0.03, 0.12, 1), "sky_horizon": Color(0.16, 0.10, 0.22, 1),
+	"sky_energy": 0.6, "fog_color": Color(0.12, 0.08, 0.18, 1)},
 ]
 var lighting_index: int = 0   # 0 = scene_default
 
@@ -1120,15 +1191,80 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "dambrosios_brunch",  "mood": "studio",            "lighting": "dawn_diner",
 	"blend_mode": -1, "blend_amt": -1},
+	# ── CLEAN ESTABLISHING PACKS (2026-07-12, user: "weird shader
+	#    choice for establishing shots... always a weird effect").
+	#    raw mood = palette quantize only, no edge/ascii/neon/scan
+	#    distortion (the diner's dambrosios_3am look the user is fine
+	#    with). One per locale so the SCENE OPENS naturalistic; the
+	#    stylized moods stay available via [mood:] mid-scene and the
+	#    F-key strata. ────────────────────────────────────────────
+	{"name": "riverfront_clean", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "road_clean",       "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "cathedral_clean",  "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "bungalow_clean",   "mood": "raw", "lighting": "golden_hour",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "riverboat_clean",  "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "kitchen_clean",    "mood": "raw", "lighting": "dawn_diner",
+	"blend_mode": 0, "blend_amt": 0},
+	# ── DARKROOM (2026-07-15) — Mr. Henderson's converted-closet
+	#    darkroom. The red-and-black look is carried ENTIRELY by
+	#    darkroom.tscn's environment + red safelight Omni; the mood is
+	#    'raw' (palette quantize only, neon fully OFF) so the post-
+	#    process never washes the red out or draws a wireframe.
+	#    'scene_default' lighting = leave the safelight rig untouched.
+	{"name": "darkroom_safelight", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	# ── GRACIELA'S BEDROOM (2026-07-15) — devout abuela's room. The
+	#    warm-dim candlelit look is carried by graciela_bedroom.tscn's
+	#    environment + the votive-candle & lamp Omnis; mood is
+	#    'candlelight_low' (dim warm, neon OFF) so the altar glow reads
+	#    for the ch0 "on the edge of her bed in the dark" beat.
+	{"name": "graciela_altar", "mood": "candlelight_low", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	# ── vol6 wrong-room replacements (2026-07-15) — bespoke locales that
+	#    retire cosmic_comics_back_office reuse. Each carries its own
+	#    lighting rig in-scene; mood stays clean (neon OFF).
+	{"name": "miller_office_rain", "mood": "rain_interior", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "garage_dusk", "mood": "dusk", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	# ── vol6 wrong-room sweep round 2 (2026-07-19) — henderson_garage
+	#    reuses garage_dusk above; these two are new. Both keep the
+	#    neon OFF and let the in-scene practicals carry the look:
+	#    bindery = warm pendant bookshop daylight, stockroom = bare
+	#    fluorescent tubes over concrete.
+	{"name": "bindery_day", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "stockroom_fluorescent", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	# ── NIGHTMARE CELL (2026-07-19) — Diego's ch9 dream cell. One
+	#    caged tube is the entire light; the pack stays fully clean so
+	#    the single-source dread and the red-dot wall read untouched.
+	{"name": "nightmare_hum", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
+	#    directed chapters. Lesson from the playtest: edge-only and
+	#    press moods (linework, substrate_press) render an ESTABLISH
+	#    as near-black; the diner's raw+midnight recipe is the one
+	#    that reads. These pair naturalistic moods with the practical
+	#    light rigs. ─────────────────────────────────────────────
+	{"name": "warehouse_nave",     "mood": "raw",               "lighting": "scene_default",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "bungalow_packing",   "mood": "dusk",              "lighting": "blue_hour",
+	"blend_mode": -1, "blend_amt": -1},
 	# ── CATHEDRAL — Magician work-mode + devil-station threat ──
-	{"name": "cathedral_workbench","mood": "substrate_press",   "lighting": "candlelight",
+	{"name": "cathedral_workbench","mood": "raw",               "lighting": "scene_default",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "cathedral_devil",    "mood": "back_room_signal",  "lighting": "tv_glow",
 	"blend_mode": -1, "blend_amt": -1},
 	# ── BUNGALOW — Priestess packing dusk + comforting-void late ──
 	{"name": "bungalow_dusk",      "mood": "linework",          "lighting": "blue_hour",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "bungalow_late",      "mood": "noir",              "lighting": "midnight",
+	{"name": "bungalow_late",      "mood": "night",             "lighting": "midnight",
 	"blend_mode": -1, "blend_amt": -1},
 	# ── RIVERBOAT — Emperor at helm (10 PM Friday) ──
 	{"name": "riverboat_helm",     "mood": "lithograph",        "lighting": "midnight",
@@ -1144,11 +1280,11 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "glitch_art_chaos",   "mood": "back_room_signal",  "lighting": "tv_glow",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "cyberpunk_neon",     "mood": "noir",              "lighting": "neon_signage",
+	{"name": "cyberpunk_neon",     "mood": "noir",              "lighting": "liminal_night",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "film_noir_extreme",  "mood": "high_contrast_bw",  "lighting": "midnight",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "night_vision_green", "mood": "ink_blue",          "lighting": "candlelight_low",
+	{"name": "night_vision_green", "mood": "ink_blue",          "lighting": "candlelight",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "thermal_heatmap",    "mood": "blueprint_red",     "lighting": "tv_glow",
 	"blend_mode": -1, "blend_amt": -1},
@@ -1156,19 +1292,38 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "watercolor_soft",    "mood": "macro_haze",        "lighting": "dawn",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "analog_tape_warp",   "mood": "silent_film_24",    "lighting": "tv_glow_blue",
+	{"name": "analog_tape_warp",   "mood": "silent_film_24",    "lighting": "tv_glow",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "broken_signal_tv",   "mood": "back_room_signal",  "lighting": "tv_glow",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "convenience_night",  "mood": "fluorescent_corridor", "lighting": "sodium_streetlamp",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "smoky_bar",          "mood": "macro_haze",        "lighting": "bar_pendant_amber",
+	{"name": "smoky_bar", "trip_scale": 1.20,          "mood": "macro_haze",        "lighting": "bar_pendant_amber",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "rainy_window",       "mood": "dream_blur",        "lighting": "rain_interior",
+	{"name": "rainy_window",       "mood": "dream_blur",        "lighting": "storm_front",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "memory_warm",        "mood": "silent_film_12",    "lighting": "candlelight",
+	{"name": "memory_warm", "trip_scale": 1.10,        "mood": "silent_film_12",    "lighting": "candlelight",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "fluorescent_panic",  "mood": "anime_motion",      "lighting": "fluorescent_corridor",
+	{"name": "fluorescent_panic",  "mood": "anime_motion",      "lighting": "kitchen_overhead",
+	"blend_mode": -1, "blend_amt": -1},
+	# ── ARCANA FAMILY (2026-07-12) — the Magician's cyberpunk-magickal
+	# playground, a set of fitting lenses so ch1 direction can vary the
+	# filter per described bit. All GPU-safe (neon-edge moods, no ASCII).
+	# arcana_warehouse = the establishing baseline grade.
+	{"name": "arcana_warehouse", "trip_scale": 1.20, "mood": "arcana",       "lighting": "arcana_magick",
+	"blend_mode": -1, "blend_amt": -1},
+	# green lens — kudzu, phosphor screens, the model-city LEDs.
+	# SUBTLE grade now (arcana_cool), NOT the neon-1.0 ink_green
+	# linework that made the room read as a wireframe.
+	{"name": "arcana_green",     "mood": "arcana_cool",  "lighting": "arcana_magick",
+	"blend_mode": -1, "blend_amt": -1},
+	# cool lens — the workbench glow, the model city (shares the subtle
+	# green-cyan grade; the lighting tint carries the difference)
+	{"name": "arcana_neon", "trip_scale": 1.30,      "mood": "arcana_cool",  "lighting": "arcana_magick",
+	"blend_mode": -1, "blend_amt": -1},
+	# warm lens — the phone's wrong glow, the riverboat close; a subtle
+	# amber grade (was neon-1.0 lithograph linework)
+	{"name": "arcana_ink", "trip_scale": 1.10,       "mood": "arcana_warm",  "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
 ]
 var style_pack_index: int = -1   # -1 = none applied (manual mode)
@@ -1177,6 +1332,10 @@ var _world_env: WorldEnvironment = null
 var _world_env_base_energy: float = 0.50
 var _world_env_base_color: Color = Color.WHITE
 var _sky_material: ProceduralSkyMaterial = null
+var _sky_base_top: Color = Color(0.04, 0.05, 0.10, 1)
+var _sky_base_horizon: Color = Color(0.10, 0.12, 0.18, 1)
+var _sky_base_energy: float = 1.0
+var _fog_base_color: Color = Color(0.05, 0.06, 0.08, 1)
 
 # ── LIGHTING TRANSITION STATE ─────────────────────────────────────
 # Natural day → night transitions: when the user cycles F11 or
@@ -1189,6 +1348,26 @@ var _light_lerp_target: Dictionary = {}   # the "to" preset
 # Two parallel arrays so we can scale directional vs practical
 # differently — sodium lamps off at midday, key sun pumped up.
 var _directional_lights: Array = []     # Array[DirectionalLight3D]
+# DAYLIGHT (2026-10-08): a light carrying `metadata/daylight` is the sun
+# of an OUTSIDE area of a set (the cabin's porch). [mood:] moods are a
+# post-process look and never touched the lights, so a porch sun shone
+# through every night scene. Such lights stay out of the lighting-preset
+# rig and follow the mood's time of day instead (DAYLIGHT_BY_MOOD; 1.0
+# for any mood not listed).
+var _daylight_lights: Array = []        # Array[Light3D]
+var _daylight_base_energy: Array = []   # Array[float]
+# NIGHTLIGHT (2026-10-11): the mirror — a light carrying `metadata/nightlight`
+# (a moon, a lot's sodium) follows 1 - the mood's daylight: full under night,
+# 0.65 at dusk, off under any day mood. A set authored for its nights can
+# then carry an unsuffixed daylight sun for its day presets (New Auburn Road).
+var _nightlight_lights: Array = []      # Array[Light3D]
+var _nightlight_base_energy: Array = [] # Array[float]
+const DAYLIGHT_BY_MOOD := {
+	"dusk": 0.35, "golden_hour": 0.70, "blue_hour": 0.12, "dawn_warm": 0.55,
+	"night": 0.0, "midnight": 0.0, "3_47_am": 0.0, "candlelight_low": 0.0,
+	"liminal_night": 0.0, "sodium_streetlamp": 0.0, "convenience_night": 0.0,
+	"rain_interior": 0.25, "rainy_window": 0.25, "tv_glow_blue": 0.0,
+}
 var _directional_base_energy: Array[float] = []
 var _directional_base_color: Array[Color] = []
 var _directional_base_rotation: Array[Vector3] = []  # euler degrees, original
@@ -1206,6 +1385,21 @@ var _practical_base_color: Array[Color] = []
 # through ONLY the strata, not the global mood list. Empty strata
 # falls back to every mood.
 @export var mood_strata: Array[String] = []
+# GPU-killer moods kept OUT of the blind F3 / RMB-look cycle. These are
+# full-frame, per-cell, time-animated visualizers (phosphor-green ASCII
+# substrate churn + live starscape + the everything-on lightshow) that
+# slow to a crawl and can halt the game on modest GPUs (Steam Deck),
+# especially layered over the VN's SubViewport portraits. They stay
+# fully reachable via an explicit [mood:] directive, a style pack, or
+# apply_style_or_mood() — this filter only trims the cyclable strata so
+# tapping F3 can never wander into a machine-halting look.
+const HEAVY_MOODS := {
+	"psychedelic_substrate": true,
+	"lightshow_extreme":     true,
+	"substrate":             true,
+	"skybox":                true,
+	"demoscene_ascii":       true,
+}
 # Per-scene starting style pack. If non-empty AND a STYLE_PACKS
 # entry exists with this name, the scene applies it on _ready
 # instead of defaulting to current_index's mood. This is how each
@@ -1296,6 +1490,18 @@ var _strobe_frames_active: int = 2
 
 
 func _ready() -> void:
+	# Default to a CLEAN render — NEVER the edges-only linework mood.
+	# A scene/locale with no explicit [mood:] and an empty
+	# default_style_pack must show its real lit geometry, not a black
+	# wireframe. (2026-07-13: 69/80 locales shipped default_style_pack
+	# = "" and were falling through to the linework default = black.)
+	var _by_name_boot: Dictionary = {}
+	for _i in range(MOODS.size()):
+		_by_name_boot[MOODS[_i]["name"]] = _i
+	for _clean_name in ["raw", "day_bright", "studio", "lunch"]:
+		if _by_name_boot.has(_clean_name):
+			current_index = int(_by_name_boot[_clean_name])
+			break
 	_apply(MOODS[current_index])
 	print("[Mood] %s · F3 mood · F5/F6 strobe · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata" % MOODS[current_index]["name"])
 	var by_name: Dictionary = {}
@@ -1309,11 +1515,16 @@ func _ready() -> void:
 			_strobe_indices_rift.append(by_name[name])
 	# Resolve the scene-configured mood_strata to indices. Empty
 	# strata falls back to the full mood list so F3 / RMB still work.
+	# HEAVY_MOODS are filtered out of BOTH the configured strata and the
+	# full-list fallback — F3 / RMB can never wander into a machine-
+	# halting look, no matter what a scene's mood_strata lists.
 	for name in mood_strata:
-		if by_name.has(name):
+		if by_name.has(name) and not HEAVY_MOODS.has(name):
 			_strata_indices.append(by_name[name])
 	if _strata_indices.is_empty():
 		for i in range(MOODS.size()):
+			if HEAVY_MOODS.has(MOODS[i]["name"]):
+				continue
 			_strata_indices.append(i)
 	if current_index in _strata_indices:
 		pass
@@ -1329,6 +1540,16 @@ func _ready() -> void:
 		_collect_lights(root)
 	for i in range(_scene_lights.size()):
 		_scene_light_phase.append(float(i) * 1.273)   # ~irrational so they don't sync
+	# Vertex colours ON for every locale mesh that carries them (2026-09-24:
+	# after the Deck's Blender update the imported default material stopped
+	# reading COLOR_0 and ~80 rooms rendered white — see VertexColorGuard).
+	# This node's parent is the locale root, in a walkable scene and as a
+	# VN background alike.
+	var vc_root: Node = get_parent()
+	if vc_root != null:
+		var vc_fixed: int = _VERTEX_COLOR_GUARD.apply(vc_root)
+		if vc_fixed > 0:
+			print("[Mood] vertex colours switched on for %d surface(s)" % vc_fixed)
 
 	# Per-scene starting style pack — applied AFTER strata + lights are
 	# resolved so the lighting transition has somewhere to lerp from.
@@ -1347,7 +1568,13 @@ func _ready() -> void:
 
 
 func _collect_lights(node: Node) -> void:
-	if node is DirectionalLight3D:
+	if node is Light3D and node.has_meta("daylight"):
+		_daylight_lights.append(node)
+		_daylight_base_energy.append((node as Light3D).light_energy)
+	elif node is Light3D and node.has_meta("nightlight"):
+		_nightlight_lights.append(node)
+		_nightlight_base_energy.append((node as Light3D).light_energy)
+	elif node is DirectionalLight3D:
 		_directional_lights.append(node)
 		_directional_base_energy.append((node as Light3D).light_energy)
 		_directional_base_color.append((node as Light3D).light_color)
@@ -1368,9 +1595,13 @@ func _collect_lights(node: Node) -> void:
 		if _world_env.environment:
 			_world_env_base_energy = _world_env.environment.ambient_light_energy
 			_world_env_base_color = _world_env.environment.ambient_light_color
+			_fog_base_color = _world_env.environment.fog_light_color
 			var sky: Sky = _world_env.environment.sky
 			if sky and sky.sky_material is ProceduralSkyMaterial:
 				_sky_material = sky.sky_material as ProceduralSkyMaterial
+				_sky_base_top = _sky_material.sky_top_color
+				_sky_base_horizon = _sky_material.sky_horizon_color
+				_sky_base_energy = _sky_material.sky_energy_multiplier
 	for child in node.get_children():
 		_collect_lights(child)
 
@@ -1423,6 +1654,25 @@ func _apply_style_pack(pack: Dictionary) -> void:
 	_apply(MOODS[current_index])
 
 
+# VN direction hook — the [mood:<name>] scene directive. Accepts a
+# STYLE_PACKS name first (preferred: mood + lighting as one look),
+# falling back to a bare MOODS name. Unknown name returns false so
+# the director can no-op silently (a script must never crash the
+# reader).
+func apply_style_or_mood(look_name: String) -> bool:
+	for i in range(STYLE_PACKS.size()):
+		if STYLE_PACKS[i]["name"] == look_name:
+			style_pack_index = i
+			_apply_style_pack(STYLE_PACKS[i])
+			return true
+	var mi := _mood_index_by_name(look_name)
+	if mi >= 0:
+		current_index = mi
+		_apply(MOODS[current_index])
+		return true
+	return false
+
+
 func _mood_index_by_name(name: String) -> int:
 	for i in range(MOODS.size()):
 		if MOODS[i]["name"] == name:
@@ -1435,40 +1685,6 @@ func _lighting_index_by_name(name: String) -> int:
 		if LIGHTING_PRESETS[i]["name"] == name:
 			return i
 	return -1
-
-
-# Prune freed nodes from the parallel light arrays so cached
-# references left over from a torn-down locale can't be dereferenced.
-# Keeps each light's base energy/color/rotation aligned by rebuilding
-# all parallel arrays together.
-func _prune_freed_lights() -> void:
-	var d_l: Array = []
-	var d_e: Array[float] = []
-	var d_c: Array[Color] = []
-	var d_r: Array[Vector3] = []
-	for i in range(_directional_lights.size()):
-		if is_instance_valid(_directional_lights[i]):
-			d_l.append(_directional_lights[i])
-			d_e.append(_directional_base_energy[i])
-			d_c.append(_directional_base_color[i])
-			d_r.append(_directional_base_rotation[i])
-	if d_l.size() != _directional_lights.size():
-		_directional_lights = d_l
-		_directional_base_energy = d_e
-		_directional_base_color = d_c
-		_directional_base_rotation = d_r
-	var p_l: Array = []
-	var p_e: Array[float] = []
-	var p_c: Array[Color] = []
-	for i in range(_practical_lights.size()):
-		if is_instance_valid(_practical_lights[i]):
-			p_l.append(_practical_lights[i])
-			p_e.append(_practical_base_energy[i])
-			p_c.append(_practical_base_color[i])
-	if p_l.size() != _practical_lights.size():
-		_practical_lights = p_l
-		_practical_base_energy = p_e
-		_practical_base_color = p_c
 
 
 func _apply_lighting(preset: Dictionary) -> void:
@@ -1485,10 +1701,6 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 	# lightshow_extreme already owns the lights — don't fight it.
 	if MOODS[current_index]["name"] == "lightshow_extreme":
 		return
-	# Drop any lights freed since collection (e.g. the locale was torn
-	# down when the VN cut to a chapter with no 3D background). A mid-
-	# transition _process would otherwise cast a freed object and crash.
-	_prune_freed_lights()
 	var ts: float = smoothstep(0.0, 1.0, t)   # ease in/out
 	var dm: float = lerp(float(src["dir_mult"]), float(dst["dir_mult"]), ts)
 	var pm: float = lerp(float(src["practical_mult"]), float(dst["practical_mult"]), ts)
@@ -1500,6 +1712,8 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 	# present, else fall back to first directional.
 	var key_idx: int = -1
 	for i in range(_directional_lights.size()):
+		if not is_instance_valid(_directional_lights[i]):
+			continue
 		var n: String = String((_directional_lights[i] as Node).name)
 		if n.ends_with("_Key") or n.ends_with("Key"):
 			key_idx = i
@@ -1519,9 +1733,13 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 		sun_pitch = lerp(sun_pitch_src, sun_pitch_dst, ts)
 		sun_yaw = lerp(sun_yaw_src, sun_yaw_dst, ts)
 	for i in range(_directional_lights.size()):
-		var light: DirectionalLight3D = _directional_lights[i]
-		if light == null:
+		# is_instance_valid BEFORE the typed assignment — when the VN
+		# swaps 3D backgrounds the old locale's lights are freed while
+		# this cache still holds them, and casting a freed object
+		# throws before any null check can run (crashed the VN).
+		if not is_instance_valid(_directional_lights[i]):
 			continue
+		var light: DirectionalLight3D = _directional_lights[i]
 		light.light_energy = _directional_base_energy[i] * dm
 		light.light_color = _directional_base_color[i].lerp(dir_tint, tm)
 		if i == key_idx and sun_has_rotation:
@@ -1532,9 +1750,9 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 		else:
 			light.rotation_degrees = _directional_base_rotation[i]
 	for i in range(_practical_lights.size()):
-		var p: Light3D = _practical_lights[i]
-		if p == null:
+		if not is_instance_valid(_practical_lights[i]):
 			continue
+		var p: Light3D = _practical_lights[i]
 		p.light_energy = _practical_base_energy[i] * pm
 		p.light_color = _practical_base_color[i]
 	if is_instance_valid(_world_env) and _world_env.environment:
@@ -1552,19 +1770,22 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 		_world_env.environment.ambient_light_energy = lerp(amb_e_src, amb_e_dst, ts)
 		_world_env.environment.ambient_light_color = amb_c_src.lerp(amb_c_dst, ts)
 		# Fog tint follows the sky horizon so haze reads consistently.
-		if src.has("fog_color") and dst.has("fog_color"):
-			_world_env.environment.fog_light_color = (
-				(src["fog_color"] as Color).lerp(dst["fog_color"], ts)
-			)
-	# Sky cross-fade: ProceduralSkyMaterial colours + energy.
-	if _sky_material and src.has("sky_top") and dst.has("sky_top"):
-		_sky_material.sky_top_color = (src["sky_top"] as Color).lerp(dst["sky_top"], ts)
-		_sky_material.sky_horizon_color = (
-			(src["sky_horizon"] as Color).lerp(dst["sky_horizon"], ts)
-		)
-		_sky_material.sky_energy_multiplier = lerp(
-			float(src["sky_energy"]), float(dst["sky_energy"]), ts
-		)
+		# A preset without fog_color (scene_default) keeps the scene's.
+		var fog_src: Color = src.get("fog_color", _fog_base_color)
+		var fog_dst: Color = dst.get("fog_color", _fog_base_color)
+		_world_env.environment.fog_light_color = fog_src.lerp(fog_dst, ts)
+	# Sky cross-fade: ProceduralSkyMaterial colours + energy. A preset
+	# without sky_* keys (scene_default) keeps the scene's authored sky.
+	if _sky_material:
+		var top_src: Color = src.get("sky_top", _sky_base_top)
+		var top_dst: Color = dst.get("sky_top", _sky_base_top)
+		var hor_src: Color = src.get("sky_horizon", _sky_base_horizon)
+		var hor_dst: Color = dst.get("sky_horizon", _sky_base_horizon)
+		var en_src: float = float(src.get("sky_energy", _sky_base_energy))
+		var en_dst: float = float(dst.get("sky_energy", _sky_base_energy))
+		_sky_material.sky_top_color = top_src.lerp(top_dst, ts)
+		_sky_material.sky_horizon_color = hor_src.lerp(hor_dst, ts)
+		_sky_material.sky_energy_multiplier = lerp(en_src, en_dst, ts)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -1785,7 +2006,45 @@ func _apply_warble(strata_warble: float, osc: float, pulse: float) -> void:
 	})
 
 
-func _apply(preset: Dictionary) -> void:
+# UNDER THE PAINT (2026-10-02): when the VN paints the room, a mood's
+# SIGNAL artifacts — colour quantization, dither, scanlines, fringe, the
+# shadow lift — go quiet: they posterize what the painter then layers
+# again (ch 0's "night": palette 9, scanline 0.5, shadow_lift 0.6 read
+# as "too bright and contrasty"), and scanlines are retro cosplay the
+# design bible bars anyway. The mood's neon, ASCII, film and blur — its
+# tenor — stay exactly as authored. Background3D sets it.
+var painted: bool = false
+
+
+func set_painted(on: bool) -> void:
+	painted = on
+	if current_index >= 0 and current_index < MOODS.size():
+		_apply(MOODS[current_index])
+
+
+func _apply(preset_in: Dictionary) -> void:
+	var preset: Dictionary = preset_in
+	var day: float = float(DAYLIGHT_BY_MOOD.get(String(preset_in.get("name", "")), 1.0))
+	for i in range(_daylight_lights.size()):
+		if not is_instance_valid(_daylight_lights[i]):
+			continue
+		var dl: Light3D = _daylight_lights[i]
+		dl.light_energy = float(_daylight_base_energy[i]) * day
+		dl.visible = day > 0.0
+	var night: float = 1.0 - day
+	for i in range(_nightlight_lights.size()):
+		if not is_instance_valid(_nightlight_lights[i]):
+			continue
+		var nl: Light3D = _nightlight_lights[i]
+		nl.light_energy = float(_nightlight_base_energy[i]) * night
+		nl.visible = night > 0.0
+	if painted:
+		preset = preset_in.duplicate()
+		preset["palette"] = maxf(float(preset.get("palette", 12.0)), 24.0)
+		preset["dither"] = 0.0
+		preset["scanline"] = 0.0
+		preset["aberration"] = 0.0
+		preset["shadow_lift"] = minf(float(preset.get("shadow_lift", 0.0)), 0.15)
 	# Global shader-strength scaler: when the per-percent tuner is
 	# active OR the F10 cycle is set, multiply EVERY shader's
 	# strength by the same factor — that way the user gets a single
@@ -1883,10 +2142,21 @@ func _apply(preset: Dictionary) -> void:
 	})
 	_set_params("Quad", {
 		"palette_size":         preset["palette"],
+		"shadow_lift":          preset.get("shadow_lift", 0.0),
 		"dither_strength":      preset["dither"],
 		"scanline_strength":    preset["scanline"]   * vn.call("scanline"),
 		"chromatic_aberration": preset["aberration"] * vn.call("aberration"),
 	})
+	# THE TRIP (2026-09-07): the music-synced layer (TripSync autoload)
+	# rides on top of this stack. Edge / ascii moods are already a
+	# stylization, so the trip drops to 0.35 under them; a preset can
+	# override with its own "trip_scale" key.
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("set_mood_scale"):
+		var auto_scale: float = 1.0
+		if float(preset.get("neon", 0.0)) >= 1.0 or float(preset.get("ascii", 0.0)) >= 0.5:
+			auto_scale = 0.35
+		trip.call("set_mood_scale", float(preset.get("trip_scale", auto_scale)))
 	var label: Node = get_node_or_null(mood_label_path)
 	if label is Label:
 		var prefix: String = ""

@@ -1,0 +1,24 @@
+{
+  "id": "sams_summer_shifts",
+  "notes": "Sam's Summer Shifts · RANCH · 2003. Sequel to Kwik Stop Manager. Same RANCH red band but with an added yellow accent · 'summer'.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#080808",
+    "#e83848",
+    "#f4f0e8",
+    "#404040",
+    "#e8c840"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "hband", "y_range": [0, 8], "color": 2 },
+    { "op": "hband", "y_range": [120, 128], "color": 2 },
+    { "op": "text",  "xy": [10, 2], "s": "RANCH", "color": 0 },
+    { "op": "hband", "y_range": [26, 30], "color": 4 },
+    { "op": "rect",  "xywh": [8, 32, 28, 40], "color": 2 },
+    { "op": "text",  "xy": [10, 38], "s": "SAMS", "color": 0 },
+    { "op": "text",  "xy": [10, 46], "s": "SHIFT",  "color": 0 },
+    { "op": "text",  "xy": [14, 58], "s": "03",   "color": 4 },
+    { "op": "hband", "y_range": [80, 84], "color": 4 }
+  ]
+}

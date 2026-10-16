@@ -1,0 +1,98 @@
+{
+ "meta": {
+  "title": "vol7_marit_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_marit_theme",
+  "notes": "Marit. An older voice humming a hymn fragment, very close to the mic \u2014 a sine in the low alto, eight notes, G."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.36,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 3,
+     "dur": 1,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D4",
+     "bar": 2,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B3",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A3",
+     "bar": 3,
+     "beat": 3,
+     "dur": 1,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G3",
+     "bar": 3,
+     "beat": 4,
+     "dur": 3,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "G2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.16
+    },
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "title": "vol5_drifter_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_drifter_theme",
+  "notes": "The Drifter. Gravel under boot. A far-away match-strike. He doesn't stay long enough to leave a melody."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 1.0,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.25,
+     "vel": 0.25
+    },
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.25,
+     "vel": 0.24000000000000002
+    },
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 3,
+     "dur": 0.25,
+     "vel": 0.23
+    },
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 4,
+     "dur": 0.25,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A2",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.25,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A2",
+     "bar": 2,
+     "beat": 2,
+     "dur": 0.25,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.6,
+   "notes": [
+    {
+     "pitch": "A5",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.15,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

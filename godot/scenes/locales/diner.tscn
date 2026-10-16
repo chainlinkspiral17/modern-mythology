@@ -14,7 +14,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="12_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="13_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="14_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="15_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="15_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
 [ext_resource type="Script" path="res://scripts/DinerGauntletHost.gd" id="17_gauntlet"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="18_lim"]
@@ -161,12 +161,12 @@ background_mode = 1
 background_color = Color(0.05, 0.04, 0.03, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.45, 0.36, 0.26, 1)
-ambient_light_energy = 1.0
+ambient_light_energy = 0.75
 fog_enabled = true
 fog_light_color = Color(0.30, 0.22, 0.14, 1)
 fog_density = 0.006
 glow_enabled = true
-glow_intensity = 0.85
+glow_intensity = 0.55
 glow_bloom = 0.15
 glow_blend_mode = 1
 glow_hdr_threshold = 0.9
@@ -190,14 +190,14 @@ shadow_enabled = false
 [node name="CounterFluorescent_N" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, -2)
 light_color = Color(0.95, 0.92, 0.80, 1)
-light_energy = 8.0
+light_energy = 4.5
 omni_range = 12.0
 shadow_enabled = false
 
 [node name="CounterFluorescent_S" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, 2)
 light_color = Color(0.95, 0.92, 0.80, 1)
-light_energy = 8.0
+light_energy = 4.5
 omni_range = 12.0
 shadow_enabled = false
 
@@ -329,6 +329,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 2.50, 3.5)
 light_color = Color(0.98, 0.78, 0.42, 1)
 light_energy = 3.4
 omni_range = 5.5
+shadow_enabled = false
+
+; The Empress's floor at table height (2026-10-05): seven votives — Tables
+; 3, 6, 7 in the middle, 4, 9, 12, 14 in the corners — carried by ONE low
+; warm wash over the floor rather than seven lights (the diner is far past
+; the ~12-light guideline). Blender (-12.0, -3.6, 0.95) → godot below.
+[node name="WestFormalVotiveGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 0.95, 3.6)
+light_color = Color(1.0, 0.70, 0.36, 1)
+light_energy = 0.9
+omni_range = 3.4
 shadow_enabled = false
 
 ; Sideboard candelabra glow (interior sideboard against east wall of formal)
@@ -645,7 +656,7 @@ location_json = "res://resources/games/locations/dambrosios.json"
 inner_metres = 1.4
 falloff_metres = 4.0
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("15_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -664,7 +675,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 1260.0
 offset_bottom = 360.0
-text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffrocker
 F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
 autowrap_mode = 2
 theme_override_font_sizes/font_size = 18
@@ -689,3 +700,210 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; ── VN direction markers (lore/_VN_DIRECTION_PLAYBOOK.md) ──
+; shot_* Marker3D = camera framing (group "vn_shot", metadata/fov).
+; cast_* Marker3D = character blocking anchors at FLOOR level for
+; the [stage:<char> <spot>] directive — the marker's yaw is the
+; direction the staged model faces. Coordinates derived from
+; build_diner.py geometry (Blender→Godot: gx=bx, gy=bz, gz=-by).
+
+[node name="cast_counter_post" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-0.85, 0, 4.35)
+
+[node name="cast_stool" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-1.4, 0, 2.35)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="cast_floor" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(2.6, 0, 1.2)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="cast_door" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(7.6, 0, 1.5)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="cast_booth6" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-6.8, 0, -3.75)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="cast_kitchen_door" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(4.2, 0, 3.6)
+
+; the clock on the galley's east wall (x 4.91, facing west) — 2026-10-02
+[node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.15, 2.55, 3.25)
+rotation = Vector3(0.155, -1.5708, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_booth6" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.2, 1.45, -3.75)
+rotation = Vector3(0.7782, 1.5708, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.7, 1.45, -3.55)
+rotation = Vector3(-0.5, 1.5708, 0)
+metadata/fov = 32.0
+
+[node name="shot_insert_napkin" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-8.782, 2.257, -5.100)
+rotation = Vector3(-0.5236, -2.6180, 0.0)
+metadata/fov = 28.0
+
+[node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.6, 1.75, 2.35)
+rotation = Vector3(-0.35, 3.1416, 0)
+metadata/fov = 36.0
+
+[node name="shot_insert_jukebox" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-10.445, 1.632, -2.950)
+rotation = Vector3(-0.2618, -0.0000, 0.0)
+metadata/fov = 36.0
+
+; RE-AIMED 2026-10-03: John's notebook on Booth 6's table (it looked at the formal
+; room's folded note across the building — the only "note" there was)
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.100, 1.300, -3.450)
+rotation = Vector3(-0.4749, 1.1723, 0.0)
+metadata/fov = 32.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.5, 1.65, 2.9)
+rotation = Vector3(-0.65, 3.1416, 0)
+metadata/fov = 32.0
+
+[node name="shot_closeup_frasier" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.68, 4.1)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 34.0
+
+[node name="shot_closeup_frasier_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.9, 1.7, 2.6)
+rotation = Vector3(0, 2.10, 0)
+metadata/fov = 38.0
+
+[node name="shot_closeup_john" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.66, 4.05)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 34.0
+
+[node name="shot_closeup_stranger" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.2, 1.7, 1.5)
+rotation = Vector3(0, -1.5708, 0)
+metadata/fov = 40.0
+
+; ── Empress-chapter markers (formal dining annex + vestibule) ──
+; Hostess stand blender (7.0,-0.7) top 1.08; formal room center
+; (7.0,+3.5) with the long E-W table.
+
+[node name="cast_hostess_stand" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(6.5, 0, 0.7)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="cast_formal_floor" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(6.4, 0, -2.6)
+rotation = Vector3(0, -1.5708, 0)
+
+; RE-AIMED 2026-10-03 (the Empress on the restaurant floor): Nicola at the hostess
+; stand from the archway; Dean at Table 14 by the port window; the note on Table 14;
+; the room's two close-up frames INSIDE the west room (they stood past the port wall)
+[node name="shot_closeup_nicola" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.550, 1.480, 0.950)
+rotation = Vector3(-0.1583, -1.2588, 0.0)
+metadata/fov = 36.0
+
+[node name="shot_closeup_dean" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.400, 1.450, 3.900)
+rotation = Vector3(-0.1076, -2.0989, 0.0)
+metadata/fov = 36.0
+
+; Hierophant §II — Quentin Paul's corner booth on the river side.
+[node name="shot_closeup_paul" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.4, 1.62, 2.25)
+rotation = Vector3(-0.06, 1.5708, 0)
+metadata/fov = 36.0
+
+; insert: the folded paper sat on the table (dambrosios_formal)
+[node name="shot_insert_note" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.600, 1.100, 4.950)
+rotation = Vector3(-0.4815, -2.3779, 0.0)
+metadata/fov = 36.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Booth6_Fluor_Cap_-1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-8.470, 3.160, -3.750)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.06
+
+[node name="Booth6_Fluor_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-7.950, 3.220, -3.750)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.15
+
+[node name="Galley_HeatLamp_3_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.225, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+[node name="Galley_HeatLamp_4_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.450, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+[node name="Galley_HeatLamp_2_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.000, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+[node name="Galley_HeatLamp_1_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.225, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__dambrosios_formal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-13.600, 1.550, 5.000)
+rotation = Vector3(-0.0672, -0.8013, 0.0)
+metadata/fov = 42.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__dambrosios_formal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-10.400, 1.550, 1.900)
+rotation = Vector3(-0.0672, 2.3403, 0.0)
+metadata/fov = 42.0
+
+; the formal room's Nicola frame = its person frame (2026-09-12): the counter's shot_closeup_nicola is 23 m away
+; (2026-10-03: these per-preset overrides WIN while the Empress preset is loaded — they
+; stood past the port wall at x -16/-17, copied from the auto person frames; now Nicola
+; at the hostess stand and Dean at Table 14, the same aims as the plain markers)
+[node name="shot_closeup_nicola__dambrosios_formal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.550, 1.480, 0.950)
+rotation = Vector3(-0.1583, -1.2588, 0.0)
+metadata/fov = 36.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+
+; the formal room's Dean frame = its reverse frame, so Nicola and Dean sit across from each other
+[node name="shot_closeup_dean__dambrosios_formal" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-12.400, 1.450, 3.900)
+rotation = Vector3(-0.1076, -2.0989, 0.0)
+metadata/fov = 36.0
+
+; the formal room's Nicola frame = its person frame (2026-09-12): the counter's shot_closeup_nicola is 23 m away

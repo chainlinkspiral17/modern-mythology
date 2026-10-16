@@ -1,0 +1,23 @@
+{
+ "created": 1791738722560,
+ "kind": "daw-bounce",
+ "name": "lo-fi coast1 loop · 20261011_101202",
+ "sampleRate": 44100,
+ "loop": {
+  "start": 0,
+  "end": 4342153
+ },
+ "meta": {
+  "title": "lo-fi coast1 loop",
+  "bpm": 78,
+  "tags": [
+   "daw",
+   "loop"
+  ],
+  "key": "Eb major"
+ },
+ "id": "tk_mv42z2f4_opjyfq",
+ "channels": 2,
+ "frames": 4342154,
+ "durationSec": 98.46154195011339
+}

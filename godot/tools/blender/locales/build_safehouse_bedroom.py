@@ -1,590 +1,256 @@
-"""Safehouse Bedroom — the recovery room, vol6 hero locale (3 VN bg
-refs: vol6_ch6_safehouse "Yes" / Fri 19:46, vol6_ch7_safehouse
-"Family Only" / Sat 14:22, vol6_ch9_safehouse "Hi, Sam" / Tue 09:47).
+"""safehouse_bedroom — the back bedroom of the safehouse (vol6 ch6, 7, 9).
 
-THE ROOM THAT IS THE OPPOSITE OF THE ROOM. This is where Diego is
-brought to RECOVER after he is pulled out of the Phase III building —
-NOT the building itself. Canon is explicit and this pass turns on the
-distinction (diego_ramos.md:238: "the building on the east side of the
-Harmony Creek Phase III site... is where Diego is being held"; the
-captivity room has "the device on the wall," ch9:323/:472). The
-safehouse is the anti-room: care instead of restraint, an open door
-instead of a locked one, a hand held for two hours instead of five
-days alone. Getting the two rooms NOT confused is the whole job.
+DRAFT 3 (2026-10-10) — the wrong REGISTER. Drafts 1-2 dressed a spy's
+hideout: a corkboard "conspiracy" wall with red string, a CRT, a boarded
+window, a pizza box. The chapters describe a quiet sickroom in an old
+country house: "The safehouse is a small frame house on a county road
+thirty-two miles southeast of the FM-3411 exit, on a property owned, on
+paper, by a woman named Linda Caldwell ... Diego is in the back bedroom.
+A doctor ... is at his bedside. She has set the IV." "Diego's
+grandmother is in the front room, on the phone ... Hal is in the
+kitchen, making sandwiches ... Claire is on the back porch." (ch6) —
+"Diego's grandmother — Graciela Ramos ... Outside, on the porch ... is on
+the phone." (ch7) — "She sets the slushie on the bedside table. She sits
+in the chair beside the bed ... Dr. Patel comes in once and out once.
+Diego's grandmother is on the back porch. Doyle is in the kitchen making
+coffee." (ch9)
 
-WHOSE / WHERE (ch6:32): "a small frame house on a county road thirty-
-two miles southeast of the FM-3411 exit, on a property owned, on
-paper, by a woman named Linda Caldwell — Maya's grandmother — through
-a trust that had been set up in 1991." Diego is in "the back bedroom"
-(ch6:34). A single-story rural frame house; the back bedroom is a
-spare room pressed into service as a sickroom. It is NOT the Ramos
-house (that is build_diego_bedroom.py — the drum kit, the desk-since-
-nine, the pencil layouts live THERE and canon keeps Diego's
-accumulation out of any safehouse — see canon-negatives).
+Plan (5.2 x 4.8 m, ceiling 2.7, an old frame house's back bedroom):
+the bed head to the W wall with a patchwork quilt, the IV pole and its
+bag at the head, the line down to the bed; the bedside table on the
+room side (the lamp, the slushie with its taped lid and red spoon, the
+water glass, his phone, Sam's spiral notebook, the pill bottles); the
+chair beside the bed; the dresser on the E wall with a doily, Linda
+Caldwell's old photographs and Dr. Patel's supplies (gauze, the saline
+bags, gloves); a rag rug; the ceiling fan with its light; painted walls
+and a picture rail; the N window onto the BACK PORCH (Graciela's chair,
+her phone calls) and the yard, the clothesline, the post oaks, the field;
+the door to the hall, its bulb, the kitchen's light at the hall's end.
 
-REGISTER: a safehouse is defined by what it LACKS and what it
-IMPROVISES. This is a grandmother's spare room, kept ready but not
-lived in — mismatched furniture pulled from three rooms, a doctor's
-kit set on a chest of drawers, an IV bag improvised onto a hall tree
-because a pediatrician making a house call in a farmhouse does not
-travel with a hospital pole. The one saturated color in the whole
-warm-neutral room is a blue raspberry slushie. Everything else is
-soft, dated, clean, and borrowed.
-
-BAKED MINUTE — Tuesday 09:47, ch9 "Hi, Sam." The richest inspectable
-minute and a strict superset of the three bindings' props: the IV is
-set (ch6:36, persists), the bedside table is here (ch9:64/:258), and
-ONLY ch9 supplies the chair beside the bed (ch9:68), the slushie
-(ch9:60), and the Kwik Stop notebook (ch9:60). The other two minutes
-are the mood presets' job (evening ch6, afternoon ch7); geometry
-bakes the morning Sam walks in. Diego himself is the VN sprite — the
-bed is a made, slept-in sickbed with the covers turned down and no
-body in it (the sprite carries the boy, as every bg does).
-
-Canon baked in:
-
-  · ch6:32 — THE FRAME HOUSE: plank floor, plain faded-sage plaster
-    walls, a plaster ceiling (house, not ward: no grid, no
-    fluorescents, no stains). Kept-ready spare-room plainness.
-  · ch6:36 — THE IV, "She has set the IV" (Dr. Sajna Patel,
-    pediatrician, house call). IMPROVISED: a saline bag hung from a
-    bent wire hanger looped over a wooden hall tree stood at the bed
-    head — the "what it improvises" register made literal. Drip
-    chamber + line draping to the mattress where the arm rests.
-  · ch9:64 / ch9:258 — THE BEDSIDE TABLE (a mismatched small stand;
-    this room, unlike the Ramos room, HAS one). On it at 09:47:
-    THE SLUSHIE (ch9:60 — blue raspberry, paper cup, lid taped on,
-    red plastic spoon already through the cross-cut; "slowly melts"
-    over the two hours — at 09:47 it is fresh, the one bright thing);
-    the jelly-jar WATER GLASS (ch7:36 "drinking water," ch6 fluids);
-    THE NOTEBOOK (ch9:60 — "a small spiral-bound notebook from the
-    Kwik Stop" Sam brought; the notebook Diego will fill over four
-    months — its future is Sam's blue-bedroom shelf, ch9:397, not
-    here). Cheap store cover, wire spiral.
-  · ch9:68 — THE CHAIR BESIDE THE BED, where Sam sits for two hours
-    and does not let go. A kitchen chair carried in — a lighter wood
-    than the bed, on purpose (the mismatch is the safehouse).
-  · ch6 / ch7 / ch9 — THE SICKBED: clean white sheet, a pale
-    blanket turned down, one dented pillow, a faint lain-on shade
-    (eighteen of every twenty-four hours asleep, ch9:42). A BORROWED
-    QUILT folded at the foot — the improvised linen a grandmother's
-    house keeps in a closet.
-  · ch6:36 / ch9:258 — DR. PATEL'S KIT on the chest of drawers: a
-    hard case, gauze rolls, a tape roll, a saline bottle (she "set
-    the IV... cleaned the worst of the cuts"). A jar lamp and a
-    folded stack of borrowed linens share the top.
-  · ch6:36 (cuts cleaned) — THE WASTEBASKET, lined with a grocery
-    bag, a few gauze wrappers poking out. Present, not announced —
-    the quiet evidence a doctor was here (the register's occlusion,
-    NOT a Philip's box; see canon-negatives).
-  · A generic came-with-the-house FRAMED PRINT (a faded landscape)
-    on the east wall — the room's only wall decor, chosen by nobody
-    in the story. It reads "spare room," which is exactly right, and
-    it obeys the negative: no character's art hangs here.
-  · THE DOOR, OPEN to the hall (ch6/7/9 — Dr. Patel comes in and
-    out, the mother comes in, Sam comes in; ch9:428 Sam "closes the
-    bedroom door" — but that is the FUTURE blue bedroom, not here).
-    Nothing in this room is locked. The open door is load-bearing:
-    it is the exact negative of the captivity room's door.
-  · EXTERIOR (ground floor, WEST window): dry morning pasture, a
-    wood fence line, a distant tree line, a pale morning sky band,
-    the frame house's own weathered clapboard skin around the
-    opening. County road, thirty-two miles from anywhere.
-
-Canon-NEGATIVES honored (the absences carry the room):
-
-  · NOT THE CAPTIVITY ROOM. NO "device on the wall" (ch9:323/:472 —
-    the three-pulse device is in the building Diego is HELD in, the
-    thing he takes four months to be able to write down). NO
-    restraints, NO lock on the inside, NO bare institutional
-    surfaces. The safehouse is built as the device room's negative
-    on every axis: warmth, care, an open door, a held hand.
-  · NOT DIEGO'S RAMOS BEDROOM. NO drum kit / pantry-door practice
-    pad, NO desk-since-nine, NO issue-#12 pencil layouts, NO band
-    gear, NO Centro polo. Canon keeps Diego's dangerous and personal
-    accumulation OUT of any house that is not his own
-    (diego_ramos.md:158 discipline); a borrowed spare room holds
-    none of it. This is not his room and nothing in it is his except
-    the boy and, briefly, the slushie and the notebook Sam brought.
-  · NOT A HOSPITAL. A pediatrician's house call in a farmhouse — the
-    medical gear is portable and set against domestic furniture, the
-    IV improvised onto a hall tree. NO ward bed, NO monitors, NO
-    call button, NO fluorescents (the scaffold's twin fluorescent
-    tubes + store HVAC vent + snack-aisle/register imports were
-    Kwik-Stop codegen and are GONE with their imports).
-  · NO NEW SOCKS yet — ch9:258 has Diego's mother "in town buying
-    him new socks" at this exact minute; they are not in the room.
-    The gray five-days-of-sweat socks were pulled off in the van
-    (ch9:258) and are not here either.
-  · NO PHONE on the table — Doyle has Diego's phone (ch6:85); at the
-    09:47 minute it is not a fixture of the room.
-  · NO PHILIP'S-BOX hidden item. The register does not supply an
-    occluded canon object the way the Ramos room did (the #12 page).
-    This room's discipline is openness, not secrecy — inventing a
-    hidden cache would betray the exact thing that makes it the
-    anti-captivity-room. The gauze wrappers in the bin are present-
-    but-unannounced dressing, not a withheld secret.
-
-NAME-DEPENDENCY: the scene binds the whole GLB ("3d:safehouse_bedroom"
-in ch6/7/9) as the Interior node; safehouse_bedroom.tscn has no
-LocaleSetup / Label3D name-lookup and no runtime code keys off any
-mesh name here (verified: only Background3D.gd references the preset,
-by scene/glb path, not by mesh). Mesh names are therefore free — kept
-unique for a clean export.
-
-Shell footprint kept from the scaffold (4 x 5 m, CEIL 2.6, door gap
-in the south wall x -1..+1) — the Background3D camera preset
-(0, 2.30, +0.5 / yaw 180 / fov 60) is tuned to it. The west window is
-a REAL OPENING with frame + sash + muntins, no glass (playbook
-no-transparency rule); the walls split around it.
+Draft 4 targets: the front room and the kitchen (Hal's sandwiches,
+Doyle's coffee) as their own presets; night on the porch (ch6 is
+candlelight_low) with the porch bulb as a practical; Deck framing.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_wall, make_ceiling
-from _props.safety import make_smoke_detector
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, make_lathe, make_chamfer_box, make_rot_box, make_blob, export_glb
+from _props.structure import make_floor, make_wall, make_wall_with_openings
+from _props.furniture import make_bed, make_chair, make_lamp
+from _props.detail import make_wall_outlet, make_light_switch, make_traffic_wear, make_far_bands
+from _props.trees import make_broadleaf
 
-# ── Shell (footprint kept from the scaffold — camera-safe) ───────
-ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
-
-# ── Palette — spare rural frame room, warm-neutral, a little dated,
-#    kept clean. The slushie is the only saturated color on purpose.
-COL_PLANK       = (0.60, 0.46, 0.32, 1.0)   # warm pine plank floor
-COL_PLANK_SEAM  = (0.44, 0.32, 0.22, 1.0)
-COL_RUG         = (0.52, 0.34, 0.28, 1.0)   # faded rust braided rag rug
-COL_RUG_RING    = (0.46, 0.46, 0.42, 1.0)   # muted gray-blue braid ring
-COL_WALL        = (0.74, 0.78, 0.72, 1.0)   # faded sage plaster (spare room)
-COL_BASE        = (0.84, 0.82, 0.76, 1.0)   # painted baseboard / trim
-COL_TRIM        = (0.88, 0.86, 0.80, 1.0)   # white-ish casing
-COL_CEIL        = (0.90, 0.88, 0.82, 1.0)
-COL_DOOR        = (0.84, 0.82, 0.76, 1.0)   # painted door leaf
-COL_BEDWOOD     = (0.50, 0.36, 0.24, 1.0)   # bed frame (wood A)
-COL_BEDWOOD_DK  = (0.34, 0.24, 0.16, 1.0)
-COL_SHEET       = (0.93, 0.92, 0.88, 1.0)   # clean white sickbed sheet
-COL_BLANKET     = (0.80, 0.82, 0.79, 1.0)   # pale blanket
-COL_BLANKET_SH  = (0.71, 0.73, 0.70, 1.0)   # the lain-on shade
-COL_PILLOW      = (0.95, 0.94, 0.90, 1.0)
-COL_QUILT       = (0.46, 0.42, 0.52, 1.0)   # borrowed muted patchwork quilt
-COL_QUILT_B     = (0.58, 0.46, 0.40, 1.0)   # second patchwork tone
-COL_TABLE       = (0.56, 0.42, 0.30, 1.0)   # bedside table (wood B — mismatch)
-COL_CHAIR       = (0.64, 0.52, 0.36, 1.0)   # kitchen chair (wood C — mismatch)
-COL_DRESSER     = (0.44, 0.32, 0.24, 1.0)   # chest of drawers (wood D)
-COL_CUP         = (0.90, 0.90, 0.86, 1.0)   # white paper slushie cup
-COL_LID         = (0.86, 0.86, 0.82, 1.0)   # the dome lid
-COL_SLUSH       = (0.18, 0.52, 0.88, 1.0)   # BLUE RASPBERRY — the one pop of color
-COL_SPOON_RED   = (0.86, 0.20, 0.18, 1.0)   # the red plastic spoon
-COL_TAPE        = (0.82, 0.78, 0.62, 1.0)   # the strip of tape holding the lid
-COL_GLASS_WATER = (0.80, 0.86, 0.88, 1.0)   # jelly-jar glass (light, no alpha)
-COL_NOTE_COVER  = (0.74, 0.30, 0.24, 1.0)   # cheap Kwik Stop spiral cover
-COL_IV_STAND    = (0.42, 0.30, 0.22, 1.0)   # the hall tree, improvised into a pole
-COL_IV_BAG      = (0.88, 0.90, 0.90, 1.0)   # saline bag (pale, no alpha)
-COL_IV_FLUID    = (0.85, 0.90, 0.93, 1.0)
-COL_IV_LINE     = (0.82, 0.84, 0.84, 1.0)
-COL_KIT_CASE    = (0.24, 0.26, 0.30, 1.0)   # Dr. Patel's hard case
-COL_GAUZE       = (0.94, 0.93, 0.90, 1.0)
-COL_TAPE_ROLL   = (0.90, 0.88, 0.82, 1.0)
-COL_SALINE      = (0.86, 0.90, 0.90, 1.0)
-COL_BASKET      = (0.30, 0.34, 0.36, 1.0)   # enamel wastebasket
-COL_BAGLINER    = (0.86, 0.84, 0.76, 1.0)   # grocery-bag liner
-COL_LAMP_BASE   = (0.72, 0.66, 0.52, 1.0)   # the jar lamp
-COL_LAMP_SHADE  = (0.88, 0.84, 0.72, 1.0)
-COL_CEIL_FIX    = (0.92, 0.90, 0.84, 1.0)   # flush dome light
-COL_PRINT_FRAME = (0.40, 0.30, 0.22, 1.0)   # generic came-with-the-house print
-COL_PRINT_IMG   = (0.62, 0.64, 0.58, 1.0)   # faded landscape
-# Exterior — dry morning pasture off a county road
-COL_SIDING      = (0.80, 0.78, 0.70, 1.0)   # weathered clapboard
-COL_SIDING_SH   = (0.66, 0.64, 0.56, 1.0)
-COL_FIELD       = (0.60, 0.62, 0.40, 1.0)   # dry pasture, morning
-COL_FENCE_W     = (0.58, 0.50, 0.38, 1.0)   # wood fence line
-COL_TREELINE    = (0.34, 0.42, 0.30, 1.0)   # distant tree line
-COL_SKY_LOW     = (0.80, 0.83, 0.85, 1.0)   # pale morning sky band
-COL_CURTAIN     = (0.86, 0.84, 0.76, 1.0)   # plain cotton (came with the room)
-COL_CURTAIN_SH  = (0.74, 0.72, 0.64, 1.0)
-
-GRADE_Z = -0.55               # low pier foundation; pasture grade below
-
-# West window — the room's one window, ground floor, morning pasture
-WWIN_CY   = 2.60              # opening y 2.05..3.15
-WWIN_W    = 1.10
-WWIN_SILL = 0.95
-WWIN_HEAD = 2.05
-
-PAL_WALL = {"wall": COL_WALL, "baseboard": COL_BASE}
-
-# Layout anchors
-BED_CX = 1.32                 # frame x 0.83..1.81 (east face at 1.9 clear)
-BED_Y0, BED_Y1 = 1.65, 3.70   # foot (south) .. head (north)
-BST_X, BST_Y = 0.52, 3.42     # bedside table, west of the bed head
-CHAIR_X, CHAIR_Y = 0.42, 2.75 # the chair beside the bed (where Sam sits)
-IV_X, IV_Y = 1.28, 3.98       # the hall-tree IV, at the bed head
-DR_X, DR_Y = -0.85, 4.66      # chest of drawers on the north wall
+ROOM_W = 5.2; ROOM_D = 4.8; CEIL = 2.7
+XW, XE, YS, YN = -ROOM_W / 2.0, ROOM_W / 2.0, 0.0, ROOM_D
+FW, FE, FS, FN = XW + 0.10, XE - 0.10, YS + 0.10, YN - 0.10     # wall faces
+DOOR_X, DOOR_W, DOOR_H = -1.55, 0.90, 2.05
+WIN_X, WIN_W, WIN_Z, WIN_H = 0.65, 1.20, 1.45, 1.25
+WIN_E_Y = 3.10
+HALL_Y0 = -1.35
+GROUND_Z = -0.60                     # the house stands on piers
+PAL = {"wall": (0.78, 0.82, 0.72, 1.0), "baseboard": (0.86, 0.84, 0.78, 1.0)}
+WOOD = (0.46, 0.32, 0.20, 1.0); WOOD_DK = (0.34, 0.23, 0.14, 1.0)
+WHITE = (0.94, 0.93, 0.89, 1.0); STEEL = (0.72, 0.74, 0.76, 1.0)
 
 
-# ═════════════════════════════════════════════════════════════════
-# SHELL — plank floor (a braided rag rug beside the bed), faded-sage
-# plaster walls, plaster ceiling. South door gap kept x -1..+1 for
-# the camera; a REAL west window opening (walls split around it).
-# ═════════════════════════════════════════════════════════════════
 def build_shell():
-    make_box("Floor_Planks", (0.0, ROOM_D / 2.0, -0.05),
-             (ROOM_W + 0.4, ROOM_D + 0.4, 0.10), COL_PLANK)
-    for i in range(-6, 7):
-        make_box(f"Floor_Seam_{i}", (i * 0.32, ROOM_D / 2.0, 0.004),
-                 (0.02, ROOM_D + 0.4, 0.001), COL_PLANK_SEAM)
-    # East wall — solid (the bed runs along it)
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    # North wall — solid (the chest sits against it)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    # West wall — split around the window (y 2.05..3.15)
-    w_s_c = (WWIN_CY - WWIN_W / 2.0 + (-0.2)) / 2.0     # -0.2 .. 2.05
-    w_s_l = (WWIN_CY - WWIN_W / 2.0) - (-0.2)
-    w_n_c = ((WWIN_CY + WWIN_W / 2.0) + (ROOM_D + 0.2)) / 2.0
-    w_n_l = (ROOM_D + 0.2) - (WWIN_CY + WWIN_W / 2.0)
-    make_wall("Wall_W_S", (-ROOM_W / 2.0, w_s_c, 0), length=w_s_l, height=CEIL,
-              axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_W_N", (-ROOM_W / 2.0, w_n_c, 0), length=w_n_l, height=CEIL,
-              axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_box("Wall_W_SillFill", (-ROOM_W / 2.0, WWIN_CY, WWIN_SILL / 2.0),
-             (0.20, WWIN_W, WWIN_SILL), COL_WALL)
-    make_box("Wall_W_HeadFill", (-ROOM_W / 2.0, WWIN_CY, (WWIN_HEAD + CEIL) / 2.0),
-             (0.20, WWIN_W, CEIL - WWIN_HEAD), COL_WALL)
-    # South wall — scaffold door gap x -1..+1 kept (camera preset)
-    make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0), length=ROOM_W / 2.0 - 1.0,
-              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.5), 0.0, 0), length=ROOM_W / 2.0 - 1.0,
-              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.30), (2.0, 0.20, 0.60), COL_WALL)
-    # Plaster ceiling — house, not ward
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
-                 size_y=ROOM_D + 0.4, palette={"tile": COL_CEIL},
-                 with_grid=False, with_stains=False)
-    # The braided rag rug beside the bed (tucks under the near edge)
-    make_cyl("Rug_Outer", (0.45, 2.70, 0.008), 0.85, 0.016, COL_RUG, segments=20)
-    make_cyl("Rug_Ring", (0.45, 2.70, 0.011), 0.55, 0.014, COL_RUG_RING, segments=20)
-    make_cyl("Rug_Core", (0.45, 2.70, 0.013), 0.28, 0.012, COL_RUG, segments=16)
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
+               palette={"vinyl": (0.56, 0.42, 0.28, 1.0), "seam": (0.36, 0.26, 0.16, 1.0)})
+    make_wall("Wall_W", (XW, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (XE, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL,
+                            baseboard_face_sign=-1, openings=[(WIN_E_Y, 1.45, 0.80, 1.10)])
+    make_wall_with_openings("Wall_N", (0.0, YN, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
+                            baseboard_face_sign=-1, openings=[(WIN_X, WIN_Z, WIN_W, WIN_H)])
+    make_wall_with_openings("Wall_S", (0.0, YS, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
+                            baseboard_face_sign=+1, openings=[(DOOR_X, DOOR_H / 2.0, DOOR_W, DOOR_H)])
+    make_box("Ceil", (0.0, ROOM_D / 2.0, CEIL + 0.05), (ROOM_W + 0.4, ROOM_D + 0.4, 0.10), (0.92, 0.91, 0.86, 1.0))
+    # the picture rail round the room
+    for tag, c, s in (("N", (0.0, FN - 0.015, 2.20), (ROOM_W - 0.2, 0.03, 0.04)), ("S", (0.0, FS + 0.015, 2.20), (ROOM_W - 0.2, 0.03, 0.04)),
+                      ("W", (FW + 0.015, ROOM_D / 2.0, 2.20), (0.03, ROOM_D - 0.26, 0.04)), ("E", (FE - 0.015, ROOM_D / 2.0, 2.20), (0.03, ROOM_D - 0.26, 0.04))):
+        make_box(f"Picture_Rail_{tag}", c, s, WHITE)
+    # window frames, sashes, sills; the door casing; the door leaf open into the room
+    wx0, wx1, wz0, wz1 = WIN_X - WIN_W / 2.0, WIN_X + WIN_W / 2.0, WIN_Z - WIN_H / 2.0, WIN_Z + WIN_H / 2.0
+    for nm, c, s in (("Window_N_Frame_L", (wx0 + 0.03, FN, WIN_Z), (0.06, 0.08, WIN_H)), ("Window_N_Frame_R", (wx1 - 0.03, FN, WIN_Z), (0.06, 0.08, WIN_H)),
+                     ("Window_N_Frame_T", (WIN_X, FN, wz1 - 0.03), (WIN_W, 0.08, 0.06)), ("Window_N_Meeting_Rail", (WIN_X, FN, WIN_Z), (WIN_W - 0.12, 0.05, 0.05))):
+        make_box(nm, c, s, WHITE)
+    make_box("Window_N_Sill", (WIN_X, FN - 0.07, wz0 - 0.02), (WIN_W + 0.12, 0.16, 0.04), WHITE)
+    make_box("Window_N_Glass", (WIN_X, YN, WIN_Z), (WIN_W, 0.01, WIN_H), (0.74, 0.80, 0.84, 0.18))
+    for i, cx in enumerate((wx0 - 0.10, wx1 + 0.10)):
+        make_box(f"Curtain_N_{i}", (cx, FN - 0.05, 1.50), (0.30, 0.04, 1.60), (0.92, 0.88, 0.76, 1.0))
+    make_cyl("Curtain_Rod_N", (WIN_X, FN - 0.05, 2.33), 0.012, WIN_W + 0.80, STEEL, axis='X', segments=6)
+    for i, cx in enumerate((WIN_X - WIN_W / 2.0 - 0.36, WIN_X + WIN_W / 2.0 + 0.36)):
+        make_box(f"Curtain_Rod_Bracket_{i}", (cx, FN - 0.03, 2.33), (0.02, 0.06, 0.03), STEEL)
+    make_box("Window_E_Sill", (FE - 0.07, WIN_E_Y, 0.88), (0.16, 0.92, 0.04), WHITE)
+    make_box("Window_E_Glass", (XE, WIN_E_Y, 1.45), (0.01, 0.80, 1.10), (0.74, 0.80, 0.84, 0.18))
+    make_box("Window_E_Meeting_Rail", (XE, WIN_E_Y, 1.45), (0.05, 0.80, 0.05), WHITE)
+    for i, (x0, x1) in enumerate(((DOOR_X - DOOR_W / 2.0 - 0.05, DOOR_X - DOOR_W / 2.0), (DOOR_X + DOOR_W / 2.0, DOOR_X + DOOR_W / 2.0 + 0.05))):
+        make_box(f"Door_Casing_{i}", ((x0 + x1) / 2.0, FS + 0.01, DOOR_H / 2.0), (0.05, 0.02, DOOR_H), WHITE)
+    make_box("Door_Casing_Head", (DOOR_X, FS + 0.01, DOOR_H + 0.03), (DOOR_W + 0.10, 0.02, 0.06), WHITE)
+    hx = DOOR_X + DOOR_W / 2.0
+    ang = math.radians(80.0)
+    make_rot_box("Door_Leaf", (hx - math.cos(ang) * 0.42, FS + math.sin(ang) * 0.42 + 0.02, 1.01), (0.84, 0.04, 2.00), WHITE, yaw=-ang)
+    make_cyl("Door_Knob", (hx - math.cos(ang) * 0.76 + 0.03, FS + math.sin(ang) * 0.76, 0.95), 0.025, 0.05, (0.72, 0.62, 0.36, 1.0), axis='X', segments=8)
 
 
-# ═════════════════════════════════════════════════════════════════
-# DOORWAY — the hall door, OPEN (the load-bearing negative of the
-# captivity room's locked one). Painted casing on the gap; the leaf
-# swung inward against the west jamb; brass-plain knob, hinges.
-# ═════════════════════════════════════════════════════════════════
-def build_doorway():
-    for sgn in (-1, +1):
-        make_box(f"Doorway_Jamb_{sgn:+d}", (sgn * 1.03, 0.0, 1.00),
-                 (0.10, 0.26, 2.00), COL_TRIM)
-    make_box("Doorway_Head", (0.0, 0.0, 2.05), (2.26, 0.26, 0.10), COL_TRIM)
-    # Open leaf — hinged at the west jamb (x -1.0), swung 90° into the
-    # room, so it runs north along x -1.03 (leaf y 0.14..0.96)
-    make_box("Door_Leaf", (-1.03, 0.55, 1.02), (0.04, 0.82, 2.02), COL_DOOR)
-    for ci, py in enumerate((0.36, 0.74)):
-        for ri, pz in enumerate((0.55, 1.05, 1.55)):
-            make_box(f"Door_Panel_{ci}_{ri}", (-1.008, py, pz),
-                     (0.010, 0.30, 0.40), (0.88, 0.86, 0.80, 1.0))
-    make_cyl("Door_Knob", (-0.98, 0.90, 1.00), 0.026, 0.045, P.METAL_STEEL, axis='X')
-    for hi, hz in enumerate((0.35, 1.00, 1.65)):
-        make_box(f"Door_Hinge_{hi}", (-1.03, 0.14, hz), (0.022, 0.012, 0.09),
-                 P.METAL_STEEL)
-
-
-# ═════════════════════════════════════════════════════════════════
-# WEST WINDOW — the room's one window, morning pasture beyond. Real
-# opening, painted double-hung joinery, plain cotton curtains DRAWN
-# most of the way with a center gap someone opened for the morning
-# visit (the patient sleeps eighteen of twenty-four; the day is let
-# in only a little).
-# ═════════════════════════════════════════════════════════════════
-def build_window_west():
-    wx = -ROOM_W / 2.0
-    w_mid = (WWIN_SILL + WWIN_HEAD) / 2.0
-    make_box("WWin_FrameT", (wx, WWIN_CY, WWIN_HEAD - 0.03), (0.14, WWIN_W, 0.06),
-             COL_TRIM)
-    make_box("WWin_FrameB", (wx, WWIN_CY, WWIN_SILL + 0.03), (0.14, WWIN_W, 0.06),
-             COL_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"WWin_Jamb_{sgn:+d}", (wx, WWIN_CY + sgn * (WWIN_W / 2.0 - 0.03),
-                 w_mid), (0.14, 0.06, WWIN_HEAD - WWIN_SILL), COL_TRIM)
-    make_box("WWin_MeetingRail", (wx, WWIN_CY, w_mid), (0.10, WWIN_W - 0.08, 0.06),
-             COL_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"WWin_Muntin_{sgn:+d}", (wx + 0.02, WWIN_CY + sgn * 0.22, w_mid + 0.30),
-                 (0.06, 0.035, 0.40), COL_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"WWin_Casing_{sgn:+d}", (wx + 0.105, WWIN_CY + sgn * (WWIN_W / 2.0 + 0.09),
-                 w_mid), (0.05, 0.10, WWIN_HEAD - WWIN_SILL + 0.30), COL_TRIM)
-    make_box("WWin_CasingHead", (wx + 0.105, WWIN_CY, WWIN_HEAD + 0.08),
-             (0.05, WWIN_W + 0.28, 0.10), COL_TRIM)
-    make_box("WWin_Stool", (wx + 0.135, WWIN_CY, WWIN_SILL + 0.02),
-             (0.16, WWIN_W + 0.30, 0.04), COL_TRIM)
-    make_box("WWin_Apron", (wx + 0.105, WWIN_CY, WWIN_SILL - 0.05),
-             (0.05, WWIN_W + 0.16, 0.09), COL_TRIM)
-    # The rod + plain cotton panels, drawn with a center gap
-    make_cyl("Curtain_Rod", (wx + 0.30, WWIN_CY, WWIN_HEAD + 0.14), 0.010,
-             WWIN_W + 0.34, P.METAL_STEEL, axis='Y', segments=8)
-    for sgn, nm in ((-1, "S"), (+1, "N")):
-        make_box(f"Curtain_Panel_{nm}", (wx + 0.30, WWIN_CY + sgn * 0.40, w_mid + 0.05),
-                 (0.035, 0.44, WWIN_HEAD - WWIN_SILL + 0.30), COL_CURTAIN)
-        for pi in range(2):
-            make_box(f"Curtain_Pleat_{nm}_{pi}",
-                     (wx + 0.32, WWIN_CY + sgn * (0.24 + pi * 0.26), w_mid + 0.05),
-                     (0.012, 0.035, WWIN_HEAD - WWIN_SILL + 0.26), COL_CURTAIN_SH)
-
-
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR (WEST) — ground-floor morning pasture off the county road:
-# the frame house's clapboard skin around the opening, a dry field,
-# a wood fence line, a distant tree line, a pale sky band. Morning
-# sun is scene-side.
-# ═════════════════════════════════════════════════════════════════
-def build_exterior_west():
-    wx = -(ROOM_W / 2.0 + 0.10)
-    skin_h = CEIL - GRADE_Z
-    make_box("ExtW_Skin_S", (wx - 0.02, 0.95, (CEIL + GRADE_Z) / 2.0),
-             (0.06, 2.30, skin_h), COL_SIDING)
-    make_box("ExtW_Skin_N", (wx - 0.02, 4.10, (CEIL + GRADE_Z) / 2.0),
-             (0.06, 1.80, skin_h), COL_SIDING)
-    make_box("ExtW_Skin_Sill", (wx - 0.02, WWIN_CY, (WWIN_SILL + GRADE_Z) / 2.0),
-             (0.06, WWIN_W, WWIN_SILL - GRADE_Z), COL_SIDING)
-    make_box("ExtW_Skin_Head", (wx - 0.02, WWIN_CY, (WWIN_HEAD + CEIL) / 2.0),
-             (0.06, WWIN_W, CEIL - WWIN_HEAD), COL_SIDING)
-    for si, sz in enumerate((-0.35, 0.35, 1.10, 1.85)):
-        make_box(f"ExtW_ClapSeam_{si}", (wx - 0.052, 2.25, sz),
-                 (0.006, ROOM_D + 0.4, 0.02), COL_SIDING_SH)
-    make_box("ExtW_WinTrimHead", (wx - 0.06, WWIN_CY, WWIN_HEAD + 0.06),
-             (0.05, WWIN_W + 0.24, 0.10), COL_TRIM)
-    make_box("ExtW_WinTrimSill", (wx - 0.06, WWIN_CY, WWIN_SILL - 0.05),
-             (0.05, WWIN_W + 0.24, 0.09), COL_TRIM)
-    # The pasture, fence line, distant trees, sky band
-    make_box("ExtW_Field", (-6.0, 2.5, GRADE_Z - 0.05), (7.0, 8.0, 0.10), COL_FIELD)
-    make_box("ExtW_Fence_Rail", (-3.4, 2.5, GRADE_Z + 0.75), (0.05, 8.0, 0.10),
-             COL_FENCE_W)
-    make_box("ExtW_Fence_RailLo", (-3.4, 2.5, GRADE_Z + 0.42), (0.05, 8.0, 0.10),
-             COL_FENCE_W)
-    for pi in range(5):
-        make_box(f"ExtW_Fence_Post_{pi}", (-3.4, 0.2 + pi * 1.15, GRADE_Z + 0.50),
-                 (0.09, 0.09, 1.10), COL_FENCE_W)
-    make_box("ExtW_TreeLine", (-7.4, 2.5, GRADE_Z + 1.9), (1.20, 8.6, 3.8),
-             COL_TREELINE)
-    make_box("ExtW_Sky", (-8.4, 2.5, GRADE_Z + 4.4), (0.20, 9.0, 3.6), COL_SKY_LOW)
-
-
-# ═════════════════════════════════════════════════════════════════
-# THE SICKBED — east side, head at the north. Made, slept-in, no
-# body (Diego is the VN sprite). Clean white sheet, a pale blanket
-# turned down with the faint lain-on shade of eighteen-hour days,
-# one dented pillow, a borrowed quilt folded at the foot.
-# ═════════════════════════════════════════════════════════════════
 def build_bed():
-    bx = BED_CX
-    by = (BED_Y0 + BED_Y1) / 2.0
-    make_box("Bed_Rail", (bx, by, 0.30), (0.98, 2.05, 0.12), COL_BEDWOOD)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"Bed_Leg_{li}", (bx + sx * 0.45, by + sy * 0.97, 0.14), 0.030, 0.28,
-                 COL_BEDWOOD_DK)
-    make_box("Bed_Headboard", (bx, BED_Y1 - 0.02, 0.58), (0.98, 0.06, 0.60), COL_BEDWOOD)
-    make_box("Bed_HeadboardCap", (bx, BED_Y1 - 0.02, 0.885), (1.02, 0.09, 0.05),
-             COL_BEDWOOD_DK)
-    make_box("Bed_Footboard", (bx, BED_Y0 + 0.02, 0.44), (0.98, 0.06, 0.34), COL_BEDWOOD)
-    make_box("Bed_BoxSpring", (bx, by, 0.415), (0.92, 1.98, 0.13), COL_SHEET)
-    make_box("Bed_Mattress", (bx, by, 0.545), (0.92, 1.98, 0.14), COL_SHEET)
-    # Blanket pulled up over foot..mid, turned-down cuff, lain-on shade
-    make_box("Bed_Blanket", (bx, by - 0.20, 0.625), (0.94, 1.52, 0.05), COL_BLANKET)
-    make_box("Bed_Blanket_DrapeW", (bx - 0.475, by - 0.20, 0.47), (0.025, 1.52, 0.28),
-             COL_BLANKET)
-    make_box("Bed_SheetCuff", (bx, 3.05, 0.64), (0.94, 0.18, 0.02), COL_SHEET)
-    make_box("Bed_Lain", (bx - 0.04, 3.05, 0.655), (0.60, 1.05, 0.006), COL_BLANKET_SH)
-    make_box("Bed_Pillow", (bx, BED_Y1 - 0.26, 0.68), (0.80, 0.34, 0.11), COL_PILLOW)
-    make_box("Bed_Pillow_Dent", (bx, BED_Y1 - 0.26, 0.735), (0.30, 0.20, 0.010),
-             COL_BLANKET_SH)
-    # The borrowed quilt, folded at the foot
-    make_box("Bed_QuiltFold", (bx, BED_Y0 + 0.22, 0.605), (0.90, 0.34, 0.10), COL_QUILT)
-    make_box("Bed_QuiltFold_Band", (bx, BED_Y0 + 0.22, 0.66), (0.90, 0.11, 0.008),
-             COL_QUILT_B)
+    bx, by = FW + 1.02, 2.55
+    make_bed("Bed", bx, by, head="-X", w=1.40, d=2.00, style="frame", frame_col=WOOD_DK,
+             blanket_col=(0.62, 0.44, 0.42, 1.0), pillows=2, made=False, headboard=True)
+    # where her hand holds his on the quilt (ch9 "She takes his hand. He sleeps, holding her hand.")
+    make_box("Hands_Sheet_Crease", (bx - 0.22, by - 0.45, 0.551), (0.16, 0.12, 0.002), (0.84, 0.82, 0.78, 1.0))
+    # the IV pole at the head on the window side, its bag, the line down to his arm
+    px, py = FW + 0.42, by + 0.98
+    make_cyl("IV_Pole_Base", (px, py, 0.02), 0.26, 0.04, STEEL, segments=5)
+    make_cyl("IV_Pole", (px, py, 0.98), 0.014, 1.88, STEEL, segments=8)
+    make_tube("IV_Pole_Hooks", [(px - 0.10, py, 1.90), (px, py, 1.93), (px + 0.10, py, 1.90)], 0.006, STEEL, segments=4)
+    make_box("IV_Bag", (px + 0.06, py, 1.74), (0.10, 0.03, 0.24), (0.88, 0.92, 0.94, 0.65))
+    make_box("IV_Bag_Label", (px + 0.06, py - 0.016, 1.76), (0.06, 0.002, 0.06), WHITE)
+    make_tube("IV_Line", [(px + 0.06, py, 1.61), (px + 0.20, py - 0.20, 1.20), (px + 0.45, py - 0.55, 0.80), (bx - 0.40, by + 0.35, 0.69)], 0.004,
+              (0.86, 0.90, 0.92, 0.7), segments=4)
+    make_cyl("IV_Drip_Chamber", (px + 0.06, py, 1.58), 0.012, 0.05, (0.86, 0.90, 0.92, 0.7), segments=6)
 
 
-# ═════════════════════════════════════════════════════════════════
-# BEDSIDE TABLE — the mismatched stand west of the bed head (this
-# room HAS one). On it at 09:47: THE SLUSHIE (blue raspberry, paper
-# cup, taped lid, red spoon through the cross-cut), the jelly-jar
-# WATER GLASS, and the Kwik Stop spiral NOTEBOOK Sam carried in.
-# ═════════════════════════════════════════════════════════════════
-def build_bedside_table():
-    x, y = BST_X, BST_Y
-    top = 0.59
-    make_box("Bedside_Body", (x, y, 0.29), (0.40, 0.36, 0.50), COL_TABLE)
-    make_box("Bedside_Top", (x, y, top - 0.015), (0.46, 0.42, 0.03), COL_TABLE)
-    make_box("Bedside_Drawer", (x, y - 0.185, 0.44), (0.34, 0.02, 0.16), COL_BEDWOOD_DK)
-    make_cyl("Bedside_Knob", (x, y - 0.20, 0.44), 0.014, 0.03, P.METAL_STEEL, axis='Y')
-    # THE SLUSHIE — paper cup, blue mound, dome lid, taped, red spoon
-    scx, scy = x - 0.10, y - 0.06
-    make_cyl("Slush_Cup", (scx, scy, top + 0.075), 0.046, 0.15, COL_CUP, segments=12)
-    make_cyl("Slush_Mound", (scx, scy, top + 0.165), 0.044, 0.05, COL_SLUSH, segments=12)
-    make_cyl("Slush_Lid", (scx, scy, top + 0.19), 0.050, 0.02, COL_LID, segments=12)
-    make_box("Slush_Tape", (scx, scy + 0.04, top + 0.205), (0.09, 0.02, 0.004), COL_TAPE)
-    make_box("Slush_Spoon", (scx, scy, top + 0.30), (0.012, 0.012, 0.20), COL_SPOON_RED)
-    make_box("Slush_Spoon_Paddle", (scx, scy, top + 0.41), (0.020, 0.008, 0.03),
-             COL_SPOON_RED)
-    # THE WATER GLASS — a jelly jar
-    make_cyl("Water_Glass", (x + 0.11, y + 0.10, top + 0.055), 0.035, 0.11,
-             COL_GLASS_WATER, segments=12)
-    # THE NOTEBOOK — Kwik Stop spiral, flat, wire spiral on the west edge
-    ncx, ncy = x + 0.03, y + 0.11
-    make_box("Notebook_Cover", (ncx, ncy, top + 0.008), (0.15, 0.20, 0.012),
-             COL_NOTE_COVER)
-    make_box("Notebook_Pages", (ncx + 0.005, ncy, top + 0.006), (0.14, 0.19, 0.010),
-             P.PAPER)
-    make_cyl("Notebook_Spiral", (ncx - 0.076, ncy, top + 0.012), 0.008, 0.20,
-             P.METAL_STEEL, axis='Y', segments=8)
+def build_bedside():
+    """The bedside table on the room side of the head, the chair beside
+    the bed facing it — Sam's chair."""
+    tx, ty = FW + 0.30, 1.48
+    make_box("Bedside_Table_Top", (tx, ty, 0.62), (0.46, 0.42, 0.03), WOOD)
+    make_box("Bedside_Table_Body", (tx, ty, 0.36), (0.42, 0.38, 0.50), WOOD_DK)
+    make_box("Bedside_Table_Drawer", (tx + 0.212, ty, 0.50), (0.006, 0.32, 0.14), WOOD)
+    make_cyl("Bedside_Table_Drawer_Knob", (tx + 0.222, ty, 0.50), 0.012, 0.02, (0.72, 0.62, 0.36, 1.0), axis='X', segments=6)
+    for i, (lx, ly) in enumerate(((-0.18, -0.16), (0.18, -0.16), (-0.18, 0.16), (0.18, 0.16))):
+        make_box(f"Bedside_Table_Leg_{i}", (tx + lx, ty + ly, 0.055), (0.04, 0.04, 0.11), WOOD_DK)
+    top = 0.635
+    make_lamp("Bedside_Lamp", tx - 0.10, ty + 0.10, base_z=top, h=0.46, shade_col=(0.94, 0.88, 0.72, 1.0), body_col=(0.64, 0.56, 0.44, 1.0))
+    # the slushie: blue raspberry, the lid taped, the red spoon through the cross-cut
+    make_lathe("Slushie_Cup", (tx + 0.12, ty - 0.10, top), [(0.0, 0.0), (0.035, 0.0), (0.045, 0.15), (0.0, 0.15)], WHITE, segments=12)
+    make_cyl("Slushie_Fill", (tx + 0.12, ty - 0.10, top + 0.152), 0.044, 0.004, (0.24, 0.46, 0.86, 1.0), segments=12)
+    make_cyl("Slushie_Lid", (tx + 0.12, ty - 0.10, top + 0.158), 0.047, 0.008, (0.88, 0.90, 0.92, 0.8), segments=12)
+    make_box("Slushie_Tape", (tx + 0.12, ty - 0.10, top + 0.1625), (0.10, 0.02, 0.001), (0.92, 0.90, 0.80, 1.0))
+    make_rot_box("Slushie_Spoon", (tx + 0.12, ty - 0.10, top + 0.21), (0.012, 0.004, 0.12), (0.86, 0.18, 0.16, 1.0), roll=0.15)
+    make_lathe("Water_Glass", (tx - 0.06, ty - 0.12, top), [(0.0, 0.0), (0.03, 0.0), (0.034, 0.11), (0.0, 0.11)], (0.80, 0.86, 0.90, 0.5), segments=10)
+    make_box("Diego_Phone", (tx + 0.04, ty + 0.12, top + 0.005), (0.07, 0.14, 0.01), (0.10, 0.10, 0.12, 1.0))
+    make_box("Sam_Notebook", (tx - 0.02, ty - 0.02, top + 0.006), (0.15, 0.20, 0.012), (0.30, 0.46, 0.70, 1.0))
+    make_box("Sam_Notebook_Wire", (tx - 0.095, ty - 0.02, top + 0.007), (0.01, 0.20, 0.014), STEEL)
+    for i, (dx, dy) in enumerate(((0.16, 0.12), (0.19, 0.06))):
+        make_lathe(f"Pill_Bottle_{i}", (tx + dx, ty + dy, top), [(0.0, 0.0), (0.018, 0.0), (0.018, 0.06), (0.0, 0.06)], (0.86, 0.52, 0.22, 0.85), segments=8)
+    # the chair beside the bed, facing it
+    make_chair("Bedside_Chair", FW + 1.30, 1.18, yaw=0.0, wood=WOOD, seat_col=(0.56, 0.40, 0.30, 1.0), w=0.44)
 
 
-# ═════════════════════════════════════════════════════════════════
-# THE CHAIR beside the bed (ch9:68) — a kitchen chair carried in, a
-# lighter wood than the bed on purpose. This is where Sam sits for
-# two hours and does not let go.
-# ═════════════════════════════════════════════════════════════════
-def build_chair():
-    x, y = CHAIR_X, CHAIR_Y
-    make_box("Chair_Seat", (x, y, 0.455), (0.40, 0.40, 0.04), COL_CHAIR)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"Chair_Leg_{li}", (x + sx * 0.16, y + sy * 0.16, 0.225),
-                 0.018, 0.45, COL_BEDWOOD_DK)
-    # Backrest on the west (person faces east, toward the bed)
-    for pi, sy in enumerate((-1, +1)):
-        make_cyl(f"Chair_Post_{pi}", (x - 0.16, y + sy * 0.16, 0.68), 0.017, 0.46,
-                 COL_CHAIR)
-    for si, sz in enumerate((0.70, 0.86)):
-        make_box(f"Chair_Slat_{si}", (x - 0.16, y, sz), (0.032, 0.34, 0.07), COL_CHAIR)
+def build_dresser_and_room():
+    dx = FE - 0.26
+    dy = 1.30
+    make_box("Dresser_Body", (dx, dy, 0.45), (0.48, 1.10, 0.90), WOOD)
+    make_box("Dresser_Top", (dx - 0.01, dy, 0.915), (0.52, 1.14, 0.03), WOOD_DK)
+    for r in range(3):
+        for c in range(2):
+            make_box(f"Dresser_Drawer_{r}_{c}", (dx - 0.243, dy - 0.27 + c * 0.54, 0.20 + r * 0.26), (0.006, 0.50, 0.22), WOOD_DK)
+            make_cyl(f"Dresser_Knob_{r}_{c}", (dx - 0.252, dy - 0.27 + c * 0.54, 0.20 + r * 0.26), 0.015, 0.02, (0.72, 0.62, 0.36, 1.0), axis='X', segments=6)
+    make_box("Dresser_Mirror", (FE - 0.03, dy, 1.45), (0.02, 0.70, 0.80), (0.70, 0.74, 0.76, 0.85))
+    make_box("Dresser_Mirror_Frame", (FE - 0.015, dy, 1.45), (0.01, 0.80, 0.90), WOOD_DK)
+    top = 0.93
+    make_box("Dresser_Doily", (dx - 0.02, dy + 0.20, top + 0.001), (0.34, 0.46, 0.002), WHITE)
+    # Linda Caldwell's old photographs, standing in frames
+    for i, (py, h, col) in enumerate(((dy + 0.32, 0.22, (0.60, 0.54, 0.44, 1.0)), (dy + 0.10, 0.16, (0.52, 0.48, 0.42, 1.0)))):
+        make_rot_box(f"Old_Photo_{i}", (dx - 0.02, py, top + h / 2.0), (0.03, 0.14, h), WOOD_DK, yaw=0.2, pitch=0.0)
+        make_rot_box(f"Old_Photo_{i}_Print", (dx - 0.037, py, top + h / 2.0), (0.002, 0.10, h - 0.05), col, yaw=0.2)
+    # Dr. Patel's supplies: the gauze, two saline bags, the gloves box, tape
+    make_box("Med_Tray", (dx - 0.02, dy - 0.28, top + 0.01), (0.34, 0.44, 0.02), STEEL)
+    make_box("Gauze_Box", (dx - 0.06, dy - 0.40, top + 0.06), (0.12, 0.14, 0.08), WHITE)
+    for i in range(2):
+        make_box(f"Saline_Bag_{i}", (dx + 0.04, dy - 0.18 + i * 0.05, top + 0.035 + i * 0.03), (0.16, 0.10, 0.03), (0.86, 0.92, 0.94, 0.7))
+    make_box("Gloves_Box", (dx + 0.10, dy + 0.42, top + 0.05), (0.12, 0.24, 0.10), (0.30, 0.52, 0.72, 1.0))
+    make_cyl("Med_Tape", (dx + 0.08, dy - 0.48, top + 0.035), 0.03, 0.025, WHITE, segments=10)
+    # the rag rug, the ceiling fan, the switch and outlets
+    make_box("Rag_Rug", (-0.30, 1.40, 0.005), (1.60, 1.10, 0.01), (0.50, 0.46, 0.56, 1.0))
+    for i in range(4):
+        make_box(f"Rag_Rug_Band_{i}", (-0.30, 1.00 + i * 0.26, 0.011), (1.56, 0.05, 0.002), [(0.70, 0.40, 0.36, 1.0), (0.40, 0.56, 0.62, 1.0)][i % 2])
+    fx, fy = -0.20, 2.40
+    make_cyl("Fan_Downrod", (fx, fy, CEIL - 0.15), 0.015, 0.30, WHITE, segments=6)
+    make_cyl("Fan_Motor", (fx, fy, CEIL - 0.36), 0.11, 0.12, WHITE, segments=12)
+    for bi, (ddx, ddy, sw, sd) in enumerate(((0.38, 0, 0.56, 0.13), (-0.38, 0, 0.56, 0.13), (0, 0.38, 0.13, 0.56), (0, -0.38, 0.13, 0.56))):
+        make_box(f"Fan_Blade_{bi}", (fx + ddx, fy + ddy, CEIL - 0.39), (sw, sd, 0.015), WOOD)
+    make_lathe("Fan_Globe", (fx, fy, CEIL - 0.52), [(0.0, 0.0), (0.07, 0.02), (0.08, 0.08), (0.04, 0.10), (0.0, 0.10)], (0.96, 0.92, 0.80, 1.0), segments=10)
+    make_light_switch("Switch_Door", (DOOR_X + DOOR_W / 2.0 + 0.25, YS), axis='X', face_sign=1)
+    make_wall_outlet("Outlet_W", (XW, 0.90), axis='Y', face_sign=1)
+    make_wall_outlet("Outlet_E", (XE, 2.40), axis='Y', face_sign=-1)
+    make_traffic_wear("Wear_Door_Bed", [(DOOR_X, 0.30), (-1.4, 0.95)], width=0.6)
 
 
-# ═════════════════════════════════════════════════════════════════
-# THE IV (ch6:36) — IMPROVISED. A wooden hall tree stood at the bed
-# head, a bent wire hanger over a peg, the saline bag hung from it,
-# drip chamber and line draping onto the mattress where the arm
-# rests. A farmhouse house call, not a hospital pole — the register's
-# "what it improvises" made literal.
-# ═════════════════════════════════════════════════════════════════
-def build_iv():
-    x, y = IV_X, IV_Y
-    make_cyl("IVTree_Base", (x, y, 0.03), 0.20, 0.06, COL_IV_STAND, segments=12)
-    make_cyl("IVTree_Post", (x, y, 1.06), 0.028, 2.00, COL_IV_STAND, segments=10)
-    for pi, (px, py) in enumerate([(-1, 0), (1, 0), (0, -1), (0, 1)]):
-        make_cyl(f"IVTree_Peg_{pi}", (x + px * 0.07, y + py * 0.07, 1.92),
-                 0.011, 0.14, COL_IV_STAND,
-                 axis=('X' if px else 'Y'))
-    # The bent wire hanger over the south peg
-    make_cyl("IV_Hanger_Vert", (x, y - 0.16, 1.82), 0.004, 0.16, P.METAL_STEEL)
-    make_cyl("IV_Hanger_Hook", (x, y - 0.11, 1.90), 0.004, 0.12, P.METAL_STEEL, axis='Y')
-    # The saline bag, drip chamber, and draping line
-    make_box("IV_Bag", (x, y - 0.18, 1.60), (0.11, 0.02, 0.24), COL_IV_BAG)
-    make_box("IV_Bag_Fluid", (x, y - 0.188, 1.56), (0.085, 0.008, 0.17), COL_IV_FLUID)
-    make_cyl("IV_DripChamber", (x, y - 0.18, 1.42), 0.012, 0.08, COL_IV_LINE, segments=8)
-    make_cyl("IV_Line_Vert", (x, y - 0.18, 1.06), 0.004, 0.64, COL_IV_LINE, segments=6)
-    make_cyl("IV_Line_Drape", (x - 0.16, 3.35, 0.70), 0.004, 0.60, COL_IV_LINE,
-             axis='Y', segments=6)
-    make_cyl("IV_Line_ToArm", (0.95, 3.25, 0.66), 0.004, 0.30, COL_IV_LINE,
-             axis='X', segments=6)
+def build_hall():
+    """Through the door: the hall, its bulb, the kitchen's light at the
+    end (Doyle making coffee)."""
+    hx0, hx1 = XW, XE
+    make_box("Hall_Floor", ((hx0 + hx1) / 2.0, (HALL_Y0 + YS) / 2.0 - 0.05, -0.05), (hx1 - hx0, -HALL_Y0 - 0.10, 0.10), (0.56, 0.42, 0.28, 1.0))
+    make_box("Hall_Ceil", ((hx0 + hx1) / 2.0, (HALL_Y0 + YS) / 2.0, CEIL + 0.05), (hx1 - hx0, -HALL_Y0, 0.10), (0.92, 0.91, 0.86, 1.0))
+    make_wall("Hall_Wall_S", ((hx0 + hx1) / 2.0, HALL_Y0 - 0.10, 0), length=hx1 - hx0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Hall_Wall_E", (hx1 + 0.10, (HALL_Y0 + YS) / 2.0, 0), length=-HALL_Y0, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=-1)
+    make_box("Hall_Print", (DOOR_X + 0.10, HALL_Y0 + 0.012, 1.55), (0.50, 0.025, 0.40), WOOD_DK)
+    make_box("Hall_Print_Field", (DOOR_X + 0.10, HALL_Y0 + 0.027, 1.55), (0.40, 0.006, 0.30), (0.70, 0.66, 0.50, 1.0))
+    make_cyl("Hall_Bulb_Base", (DOOR_X, (HALL_Y0 + YS) / 2.0, CEIL - 0.03), 0.07, 0.06, WHITE, segments=10)
+    make_lathe("Hall_Bulb", (DOOR_X, (HALL_Y0 + YS) / 2.0, CEIL - 0.14), [(0.0, 0.0), (0.03, 0.01), (0.035, 0.05), (0.02, 0.08), (0.0, 0.08)], (1.0, 0.94, 0.80, 1.0), segments=8)
+    # the kitchen through the hall's west end: its doorway lit, the counter's edge
+    make_box("Kitchen_Floor", (XW - 1.6, (HALL_Y0 + YS) / 2.0, -0.05), (3.0, -HALL_Y0 + 1.0, 0.10), (0.70, 0.66, 0.56, 1.0))
+    make_box("Kitchen_Wall_W", (XW - 3.1, (HALL_Y0 + YS) / 2.0, CEIL / 2.0), (0.20, -HALL_Y0 + 1.0, CEIL), (0.90, 0.86, 0.66, 1.0))
+    make_box("Kitchen_Counter", (XW - 2.65, (HALL_Y0 + YS) / 2.0, 0.45), (0.65, 1.20, 0.90), (0.62, 0.50, 0.36, 1.0))
+    make_box("Kitchen_Counter_Top", (XW - 2.65, (HALL_Y0 + YS) / 2.0, 0.92), (0.69, 1.24, 0.04), (0.80, 0.78, 0.72, 1.0))
+    make_lathe("Kitchen_Coffee_Pot", (XW - 2.60, (HALL_Y0 + YS) / 2.0 + 0.2, 0.94), [(0.0, 0.0), (0.07, 0.0), (0.08, 0.12), (0.05, 0.18), (0.0, 0.18)], (0.30, 0.26, 0.22, 0.8), segments=10)
+    make_box("Kitchen_Ceil", (XW - 1.6, (HALL_Y0 + YS) / 2.0, CEIL + 0.05), (3.2, -HALL_Y0 + 1.0, 0.10), (0.92, 0.91, 0.86, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# THE CHEST OF DRAWERS — north wall, facing the room. Dr. Patel's
-# KIT on top (ch6:36 — the house-call supplies: hard case, gauze,
-# tape, saline), a jar lamp, and a folded stack of borrowed linens.
-# ═════════════════════════════════════════════════════════════════
-def build_dresser():
-    x, y = DR_X, DR_Y
-    make_box("Dresser_Body", (x, y, 0.48), (0.95, 0.46, 0.96), COL_DRESSER)
-    make_box("Dresser_Top", (x, y, 0.975), (1.00, 0.50, 0.03), COL_BEDWOOD_DK)
-    make_box("Dresser_Kick", (x, y - 0.02, 0.04), (0.90, 0.42, 0.08), COL_BEDWOOD_DK)
-    for ri, rz in enumerate((0.30, 0.58, 0.86)):
-        make_box(f"Dresser_Drawer_{ri}", (x, y - 0.235, rz), (0.86, 0.02, 0.24),
-                 COL_DRESSER)
-        for ki, sgn in enumerate((-1, +1)):
-            make_cyl(f"Dresser_Knob_{ri}_{ki}", (x + sgn * 0.22, y - 0.25, rz),
-                     0.014, 0.03, P.METAL_STEEL, axis='Y')
-    top = 0.99
-    # Dr. Patel's hard case
-    make_box("MedKit_Case", (x - 0.30, y, top + 0.075), (0.34, 0.24, 0.15), COL_KIT_CASE)
-    make_box("MedKit_Handle", (x - 0.30, y, top + 0.165), (0.14, 0.02, 0.03),
-             COL_BEDWOOD_DK)
-    make_box("MedKit_Latch", (x - 0.30, y - 0.125, top + 0.05), (0.06, 0.01, 0.02),
-             P.METAL_STEEL)
-    # Loose supplies — gauze rolls, tape roll, saline bottle
-    for gi, gx in enumerate((-0.02, 0.06)):
-        make_cyl(f"Gauze_{gi}", (x + gx, y + 0.04, top + 0.03), 0.028, 0.06, COL_GAUZE,
-                 axis='Y', segments=10)
-    make_cyl("TapeRoll", (x + 0.14, y - 0.02, top + 0.02), 0.033, 0.03, COL_TAPE_ROLL,
-             segments=10)
-    make_cyl("Saline_Bottle", (x + 0.26, y, top + 0.065), 0.030, 0.12, COL_SALINE,
-             segments=10)
-    make_cyl("Saline_Cap", (x + 0.26, y, top + 0.135), 0.018, 0.02, P.METAL_STEEL,
-             segments=8)
-    # Folded borrowed linens
-    make_box("Linens_Fold", (x + 0.30, y + 0.02, top + 0.05), (0.28, 0.32, 0.10),
-             COL_QUILT)
-    make_box("Linens_Fold_Band", (x + 0.30, y + 0.02, top + 0.10), (0.28, 0.10, 0.008),
-             COL_QUILT_B)
-    # The jar lamp on the corner
-    make_cyl("DresserLamp_Base", (x - 0.40, y + 0.02, top + 0.03), 0.05, 0.05,
-             COL_LAMP_BASE, segments=10)
-    make_cyl("DresserLamp_Stem", (x - 0.40, y + 0.02, top + 0.15), 0.010, 0.20,
-             P.METAL_STEEL)
-    make_cyl("DresserLamp_Shade", (x - 0.40, y + 0.02, top + 0.29), 0.075, 0.11,
-             COL_LAMP_SHADE, segments=12)
-
-
-# ═════════════════════════════════════════════════════════════════
-# THE WASTEBASKET — grocery-bag lined, a few gauze wrappers poking
-# out (ch6:36 — the cuts were cleaned). Present, unannounced: the
-# quiet evidence a doctor was here. NOT a Philip's box (nothing is
-# hidden in this room — that discipline is the captivity room's).
-# ═════════════════════════════════════════════════════════════════
-def build_wastebasket():
-    x, y = 0.12, 3.88
-    make_cyl("Basket_Body", (x, y, 0.14), 0.09, 0.28, COL_BASKET, segments=10)
-    make_cyl("Basket_Liner", (x, y, 0.27), 0.095, 0.05, COL_BAGLINER, segments=10)
-    for wi, (wx, wz) in enumerate([(0.02, 0.31), (-0.03, 0.30)]):
-        make_box(f"Basket_Wrapper_{wi}", (x + wx, y + 0.02, wz), (0.05, 0.04, 0.03),
-                 COL_GAUZE)
-
-
-# ═════════════════════════════════════════════════════════════════
-# WALL DECOR + CEILING — one generic came-with-the-house framed
-# landscape (the room's only wall art; chosen by nobody in the
-# story), a plain flush dome light, one smoke detector. House scale:
-# the scaffold's twin fluorescents + store HVAC are gone.
-# ═════════════════════════════════════════════════════════════════
-def build_fixtures():
-    make_box("Print_Frame", (1.87, 1.10, 1.55), (0.03, 0.42, 0.34), COL_PRINT_FRAME)
-    make_box("Print_Img", (1.853, 1.10, 1.55), (0.010, 0.34, 0.26), COL_PRINT_IMG)
-    make_cyl("Ceil_LightPlate", (0.0, 2.50, CEIL - 0.02), 0.10, 0.04, COL_TRIM,
-             segments=12)
-    make_cyl("Ceil_LightDome", (0.0, 2.50, CEIL - 0.12), 0.16, 0.14, COL_CEIL_FIX,
-             segments=14)
-    make_smoke_detector("Smoke", (-0.7, 1.20, CEIL))
+def build_outside():
+    """The back porch beyond the N window, the yard, the clothesline,
+    the post oaks, the field to the treeline; the side yard E."""
+    gz = GROUND_Z
+    make_box("Ground", (0.0, 20.0, gz - 0.02), (160.0, 160.0, 0.04), (0.44, 0.48, 0.30, 1.0))
+    # the porch: deck on its joists, posts, the shed roof, the rail, the chair she phones from
+    py0, py1 = YN + 0.10, YN + 2.50
+    make_box("Porch_Deck", (0.6, (py0 + py1) / 2.0, -0.05), (6.0, py1 - py0, 0.10), (0.56, 0.48, 0.38, 1.0))
+    for i in range(14):
+        make_box(f"Porch_Deck_Seam_{i}", (-2.3 + i * 0.44, (py0 + py1) / 2.0, 0.0005), (0.01, py1 - py0, 0.001), (0.40, 0.34, 0.26, 1.0))
+    make_box("Porch_Fascia", (0.6, py1 - 0.03, -0.20), (6.0, 0.06, 0.30), (0.56, 0.48, 0.38, 1.0))
+    for i, x in enumerate((-2.25, 0.6, 3.45)):
+        make_box(f"Porch_Post_{i}", (x, py1 - 0.10, 1.25), (0.11, 0.11, 2.50), WHITE)
+        make_box(f"Porch_Pier_{i}", (x, py1 - 0.10, gz / 2.0 - 0.10), (0.22, 0.22, -gz - 0.20 + 0.0), (0.56, 0.54, 0.50, 1.0))
+    make_box("Porch_Beam", (0.6, py1 - 0.10, 2.56), (6.0, 0.14, 0.14), WHITE)
+    make_rot_box("Porch_Roof", (0.6, (py0 + py1) / 2.0 + 0.10, 2.80), (6.3, py1 - py0 + 0.6, 0.06), (0.46, 0.46, 0.48, 1.0), roll=0.0, pitch=0.0)
+    make_box("Porch_Rail", (0.6, py1 - 0.10, 0.90), (5.6, 0.06, 0.06), WHITE)
+    for i in range(16):
+        make_box(f"Porch_Baluster_{i}", (-2.0 + i * 0.35, py1 - 0.10, 0.47), (0.03, 0.03, 0.82), WHITE)
+    make_box("Porch_Step", (2.6, py1 + 0.25, -0.30), (1.1, 0.40, 0.08), (0.56, 0.48, 0.38, 1.0))
+    # Graciela's chair: the metal porch glider, a cushion, her mug on the boards
+    gx, gy = 1.55, py0 + 1.00
+    make_box("Porch_Glider_Seat", (gx, gy, 0.44), (1.10, 0.50, 0.06), (0.36, 0.52, 0.44, 1.0))
+    make_box("Porch_Glider_Back", (gx, gy - 0.27, 0.74), (1.10, 0.05, 0.56), (0.36, 0.52, 0.44, 1.0))
+    for i, x in enumerate((-0.52, 0.52)):
+        make_box(f"Porch_Glider_Frame_{i}", (gx + x, gy, 0.21), (0.05, 0.56, 0.42), (0.30, 0.42, 0.36, 1.0))
+    make_box("Porch_Glider_Cushion", (gx, gy, 0.49), (1.00, 0.44, 0.05), (0.86, 0.74, 0.52, 1.0))
+    make_lathe("Porch_Mug", (gx + 0.70, gy, 0.0), [(0.0, 0.0), (0.04, 0.0), (0.04, 0.10), (0.0, 0.10)], (0.74, 0.30, 0.24, 1.0), segments=10)
+    # the yard: the clothesline, the post oaks, the fence, the field
+    for i, (x, y) in enumerate(((-3.0, 12.0), (4.0, 12.0))):
+        make_box(f"Clothesline_Post_{i}", (x, y, gz + 1.0), (0.08, 0.08, 2.0), (0.62, 0.62, 0.60, 1.0))
+        make_box(f"Clothesline_Bar_{i}", (x, y, gz + 1.95), (0.08, 0.80, 0.06), (0.62, 0.62, 0.60, 1.0))
+    for j, dy in enumerate((-0.30, 0.0, 0.30)):
+        make_tube(f"Clothesline_Wire_{j}", [(-3.0, 12.0 + dy, gz + 1.92), (0.5, 12.0 + dy, gz + 1.80), (4.0, 12.0 + dy, gz + 1.92)], 0.006, (0.70, 0.70, 0.68, 1.0), segments=4)
+    make_box("Clothesline_Sheet", (1.4, 12.0, gz + 1.45), (0.90, 0.02, 0.70), WHITE)
+    for i, (x, y, h) in enumerate(((-7.0, 15.0, 7.5), (9.0, 17.0, 8.5), (2.0, 24.0, 7.0), (-12.0, 9.0, 6.5))):
+        make_broadleaf(f"Post_Oak_{i}", x, y, h, (0.30, 0.40, 0.22, 1.0), (0.36, 0.30, 0.24, 1.0), crown=0.36)
+    for i in range(16):
+        make_box(f"Fence_Post_{i}", (-24.0 + i * 3.2, 30.0, gz + 0.60), (0.10, 0.10, 1.20), (0.50, 0.46, 0.40, 1.0))
+    for j, z in enumerate((0.45, 0.95)):
+        make_box(f"Fence_Wire_{j}", (0.0, 30.0, gz + z), (48.0, 0.01, 0.01), (0.56, 0.56, 0.54, 1.0))
+    make_box("Field", (0.0, 52.0, gz - 0.005), (120.0, 40.0, 0.02), (0.62, 0.58, 0.36, 1.0))
+    make_far_bands("FarTrees", (0.22, 0.30, 0.18), [(70.0, 90.0, 7.0, 0.85), (140.0, 170.0, 9.0, 0.6)], cx=0.0, cy=10.0, profile="treeline")
 
 
 def main():
     clear_scene()
-    build_shell()
-    build_doorway()
-    build_window_west()
-    build_exterior_west()
-    build_bed()
-    build_bedside_table()
-    build_chair()
-    build_iv()
-    build_dresser()
-    build_wastebasket()
-    build_fixtures()
-    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-        "../../../assets/3d/locales/safehouse_bedroom.glb"))
+    build_shell(); build_bed(); build_bedside(); build_dresser_and_room(); build_hall(); build_outside()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/safehouse_bedroom.glb"))
     print(f"\n[build_safehouse_bedroom] exporting to {out}")
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()

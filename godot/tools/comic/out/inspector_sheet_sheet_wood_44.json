@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_wood_44",
+      "kind": "character",
+      "era": "era4",
+      "tags": [
+        "character",
+        "era4",
+        "wood_44"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. model sheet of a man in his mid-forties with a receding hairline and unkempt brown hair at the sides, stubble, tired kind eyes, blue plaid flannel open over a charcoal band tee with a faded wing graphic, ripped faded jeans, brown boots, slight stoop; front view, back view, reflection-in-glass view, walking-away view; a small rainbow songbird at his feet; labeled WOOD 2024. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

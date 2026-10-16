@@ -1,0 +1,60 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2000-08-24_the_frontier_week_the_gambler",
+      "strip_id": "bk_2000-08-24_the_frontier_week_the_gambler",
+      "title": "THE FRONTIER WEEK · The gambler",
+      "date": "2000-08-24",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: BACKUP. The strip: A riverboat gambler off a boat that has no river to have come up, at the saloon's one table, dealing cards to nobody and smoothing his lapels between hands. He offers the stranger a card. The stranger takes it face down and puts it in his hat. The gambler asks his name. Small Wood. Panel 1: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a gambler in a good coat at a saloon table dealing cards to empty chairs and smoothing his lapels. No dialogue in this panel. Panel 2: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a gambler offering a single face-down card across a table to a stranger. Gambler says \"One card. On the house.\". Panel 3: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger tucking a card into his hatband without looking at it while a gambler asks a question. Gambler says \"And your name, friend?\". Stranger says \"Small Wood.\". Panel 4: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with a stump, a crow and a stake, and the faint shape of a riverboat's paddlewheel showing behind the ridge where no river could be, dust as stipple. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_garage shows the setting; keep its architecture and props. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @barnaby for the character Barnaby; @loc_garage for the setting; @chloe_17 for the character the strip's Chloe at 17.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: a gambler in a good coat at a saloon table dealing cards to empty chairs and smoothing his lapels. No text. Panel 2: a gambler offering a single face-down card across a table to a stranger. Gambler: \"One card. On the house.\". Panel 3: a stranger tucking a card into his hatband without looking at it while a gambler asks a question. Gambler: \"And your name, friend?\"; Stranger: \"Small Wood.\". Panel 4: a wooded ridge with a stump, a crow and a stake, and the faint shape of a riverboat's paddlewheel showing behind the ridge where no river…. No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @barnaby is the model sheet for BARNABY (the dog). Reference @loc_garage shows the setting; keep its architecture and props.. Reference @chloe_17 is the model sheet for CHLOE.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "loc_garage",
+          "id": "sheet_loc_garage",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_garage.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_tavern"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

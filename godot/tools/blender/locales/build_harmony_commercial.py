@@ -92,7 +92,7 @@ KWIK_W = 16.0     # building width
 KWIK_L = 11.0     # building depth (along Y)
 KWIK_H = 7.0
 KWIK_CX = -22.0   # building center east-west — pulled in toward intersection
-KWIK_CY =  11.0   # set back 11 m north of intersection center
+KWIK_CY =  19.0   # face at y 13.5 — ON its lot (the lot starts at 11.2); at 11.0 the store's front half stood in the North Belt's asphalt (2026-09-07)
 
 # NexCorp Gas & Go (NE corner)
 GAS_KIOSK_W = 10.0   # the kiosk behind the pumps
@@ -214,7 +214,7 @@ def _finalize_mesh(name, verts, faces, base_color):
     return obj
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+def _make_box_vendored(name, center, size, base_color, open_faces=None):
     open_faces = open_faces or set()
     cx, cy, cz = center
     sx, sy, sz = size
@@ -232,6 +232,24 @@ def make_box(name, center, size, base_color, open_faces=None):
     ]
     faces = [list(vids) for (tag, vids) in face_defs if tag not in open_faces]
     return _finalize_mesh(name, verts, faces, base_color)
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, base_color, segments=10, axis='Z'):
@@ -331,7 +349,7 @@ def build_intersection_and_streets():
                 make_plane(f"Crosswalk_EW_{leg_sign}_{i}",
                            x - 0.30, base_y - 0.05,
                            x + 0.30, base_y + 0.05,
-                           GROUND_Z + 0.025, COL_PAINT_WHITE)
+                           GROUND_Z + 0.012, COL_PAINT_WHITE)   # on the asphalt (2026-09-22)
         else:
             base_x = leg_sign * (STREET_WIDTH_NS / 2 + 0.5)
             for i in range(6):
@@ -339,7 +357,7 @@ def build_intersection_and_streets():
                 make_plane(f"Crosswalk_NS_{leg_sign}_{i}",
                            base_x - 0.05, y - 0.30,
                            base_x + 0.05, y + 0.30,
-                           GROUND_Z + 0.025, COL_PAINT_WHITE)
+                           GROUND_Z + 0.012, COL_PAINT_WHITE)
     crosswalk_strips('EW', +1)   # north side
     crosswalk_strips('EW', -1)   # south side
     crosswalk_strips('NS', +1)   # east side
@@ -652,7 +670,7 @@ def build_gas_and_go():
     # Brand sign on kiosk roof (NexCorp blue panel)
     make_box("Gas_Kiosk_SignBack",
              (GAS_KIOSK_CX, GAS_KIOSK_CY - GAS_KIOSK_L / 2 - 0.10,
-              GROUND_Z + GAS_KIOSK_H + 0.85),
+              GROUND_Z + GAS_KIOSK_H + 0.775),   # on the roof slab (2026-09-22: 7 cm over it)
              (GAS_KIOSK_W * 0.70, 0.10, 0.95),
              COL_NEX_BRAND_BLUE)
 
@@ -699,7 +717,7 @@ def build_cosmic_comics():
                  COL_COSMIC_AWNING)
     # Storefront glass (under the awning)
     make_box("Cosmic_Glass",
-             (COSMIC_CX + 0.6, COSMIC_CY + COSMIC_L / 2 + 0.06,
+             (COSMIC_CX + 0.6, COSMIC_CY + COSMIC_L / 2 + 0.04,   # against the storefront
               GROUND_Z + 1.3),
              (awning_w - 2.5, 0.08, 2.0),
              COL_COSMIC_GLASS)
@@ -818,8 +836,8 @@ def build_site_furniture():
         cy = sy_dir * 8.0
         # Hanging pole stub
         make_cyl(f"Stoplight_Stub_{i}",
-                 (cx, cy, GROUND_Z + 6.8),
-                 0.06, 0.6, COL_STOPLIGHT_BOX, segments=6)
+                 (cx, cy, GROUND_Z + 6.77),   # reaches the top lens AND the arm (2026-09-22: 6 cm short of the head)
+                 0.06, 0.68, COL_STOPLIGHT_BOX, segments=6)
         # Stoplight box (3-light vertical)
         for j, col in enumerate([COL_STOPLIGHT_RED,
                                   COL_STOPLIGHT_AMBER,
@@ -833,6 +851,18 @@ def build_site_furniture():
                  (cx - 0.20, cy, GROUND_Z + 5.85),
                  (0.10, 0.34, 0.95),
                  COL_STOPLIGHT_BOX)
+        # 2026-09-22: the heads hung from nothing (nearest shell
+        # 3.4 m). A corner pole on the sidewalk and an L-arm out
+        # over the lane to the hanger stub.
+        sgx = 1 if sx_dir > 0 else -1
+        sgy = 1 if sy_dir > 0 else -1
+        px, py = sgx * 7.6, sgy * 8.6
+        make_cyl(f"Stoplight_{i}_Pole", (px, py, GROUND_Z + 3.55),
+                 0.12, 7.10, COL_STOPLIGHT_BOX, segments=8)
+        make_box(f"Stoplight_{i}_ArmA", (px, (py + cy) / 2.0, GROUND_Z + 7.16),
+                 (0.12, abs(py - cy) + 0.12, 0.12), COL_STOPLIGHT_BOX)
+        make_box(f"Stoplight_{i}_ArmB", ((px + cx) / 2.0, cy, GROUND_Z + 7.16),
+                 (abs(px - cx) + 0.12, 0.12, 0.12), COL_STOPLIGHT_BOX)
 
     # 6 utility poles — wood creosote with crossbars + wires
     util_positions = [
@@ -941,12 +971,22 @@ def _make_car(name, cx, cy, body_color, facing='+Y'):
               GROUND_Z + body_h + 0.15 + cabin_h * 0.65),
              (cabin_l - 0.30, cabin_w - 0.20, cabin_h * 0.55),
              COL_CAR_GLASS)
+    # Wheels (2026-09-22: the body hung 15 cm over the lot with
+    # nothing under it) — four discs under the corners.
+    tire = (0.12, 0.12, 0.12, 1.0)
+    if facing in ('+X', '-X'):
+        corners = [(u * 0.72, v * 1.35, 'X') for u in (-1, 1) for v in (-1, 1)]
+    else:
+        corners = [(u * 1.35, v * 0.72, 'Y') for u in (-1, 1) for v in (-1, 1)]
+    for wi, (du, dv, ax) in enumerate(corners):
+        make_cyl(f"{name}_Wheel_{wi}", (cx + du, cy + dv, GROUND_Z + 0.32),
+                 0.32, 0.22, tire, axis=ax, segments=10)
 
 
 def build_parked_cars():
     # One car parked in front of Kwik Stop
     _make_car("Car_Kwik", KWIK_CX + 4.0,
-              KWIK_CY - KWIK_L / 2 - 3.5, COL_CAR_GREY, facing='+Y')
+              KWIK_CY - KWIK_L / 2 - 1.2, COL_CAR_GREY, facing='+Y')   # '+Y' = long axis along X in this helper   # along the storefront, inside the frontage strip (2026-09-07: nose-in at 3.5 m it stood 6 m into the lanes)
     # One car at a Gas & Go pump
     _make_car("Car_Pump", GAS_CANOPY_CX - GAS_PUMP_SPACING + 2.8,
               GAS_CANOPY_CY - 1.4, COL_CAR_RED, facing='+X')
@@ -986,9 +1026,31 @@ def export_glb():
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     legacy = {}
     if 'export_colors' in rna.properties: legacy['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     try:
         result = bpy.ops.export_scene.gltf(**base, **legacy)
+        try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+            import sys as _s, os as _o
+            _d = _o.path.dirname(_o.path.abspath(__file__))
+            for _c in (_d, _o.path.dirname(_d)):
+                if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                    _s.path.insert(0, _c)
+            from _props.glb_colorfix import postfix as _colorfix
+            _colorfix(base["filepath"], bpy)
+        except Exception as _e:
+            print("[glb_colorfix] skipped:", _e)
         print(f"[build_harmony_commercial] export result: {result}")
     except Exception as e:
         print(f"[build_harmony_commercial] ✗ EXPORT FAILED: {e}")
@@ -1008,8 +1070,8 @@ def build_signage_pylons():
     # Kwik Stop pylon — RED sign cabinet at top (the lithograph
     # red bleed gate fires on this from across the intersection)
     px, py = KWIK_CX + KWIK_W / 2 + 3.0, KWIK_CY - KWIK_L / 2 - 4.5
-    make_cyl("KwikPylon_Pole", (px, py, GROUND_Z + PYLON_H / 2),
-             0.18, PYLON_H, COL_UTIL_POLE, segments=8)
+    make_cyl("KwikPylon_Pole", (px, py, GROUND_Z + (PYLON_H - 1.5) / 2),
+             0.18, PYLON_H - 1.5, COL_UTIL_POLE, segments=8)   # ends mid-cabinet
     make_box("KwikPylon_Cabinet",
              (px, py, GROUND_Z + PYLON_H - 1.5),
              (3.5, 0.40, 2.8), COL_KWIK_SIGN_RED)

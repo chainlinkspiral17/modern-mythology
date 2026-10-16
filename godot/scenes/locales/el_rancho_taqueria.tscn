@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://el_rancho_taqueria_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://el_rancho_taqueria_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/el_rancho_taqueria.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(1.00, 0.86, 0.52, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.12, 0.10, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.96, 0.84, 0.62, 1)
 ambient_light_energy = 0.95
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
 fog_density = 0.004
@@ -167,10 +182,49 @@ light_energy = 0.45
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -6)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.2
 shadow_enabled = false
+
+; Warm overhead pools over the dining floor (festoon/pendant practicals)
+[node name="Practical_Overhead_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 2.6, -2.4)
+light_color = Color(1.0, 0.86, 0.6, 1)
+light_energy = 1.7
+omni_range = 4.2
+shadow_enabled = false
+
+[node name="Practical_Overhead_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 2.6, -2.4)
+light_color = Color(1.0, 0.86, 0.6, 1)
+light_energy = 1.7
+omni_range = 4.2
+shadow_enabled = false
+
+; Warm pool over the register counter / chip warmer
+[node name="Practical_Counter" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2.6, -4.5)
+light_color = Color(1.0, 0.82, 0.54, 1)
+light_energy = 1.5
+omni_range = 3.6
+shadow_enabled = false
+
+; Magenta accent from the east-wall neon sign (blender 3.4,3.0,2.0)
+[node name="Practical_Neon" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 2.0, -3.0)
+light_color = Color(0.96, 0.32, 0.68, 1)
+light_energy = 1.3
+omni_range = 3.0
+shadow_enabled = false
+
+; the lot's pole light over the side lot (sodium)
+[node name="Lot_Pole_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-11.410, 5.600, -7.500)
+light_color = Color(1.00, 0.78, 0.46, 1)
+light_energy = 2.2
+shadow_enabled = false
+omni_range = 12.00
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +326,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +345,88 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
+[node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.404, 1.424, -2.468)
+rotation = Vector3(-0.1522, -0.8575, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_register_machine" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.524, 1.490, -3.524)
+rotation = Vector3(-0.2618, -1.0472, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_sauce" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.991, 1.383, -3.796)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_speaker" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.650, 1.496, -2.244)
+rotation = Vector3(-0.1697, -0.7730, 0.0)
+metadata/fov = 35.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.409, 1.612, -1.804)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.503, 1.612, -3.716)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Festoon_Bulb_0_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 2.600, -1.920)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 5.20
+
+[node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.720, -1.800)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.35
+
+[node name="Festoon_Bulb_1_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 2.600, -3.960)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 5.20
+
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.720, -4.200)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.35
+
+; ── vn_shot · el_rancho_drive_thru (2026-10-10): outside, in the car (vol6 ch16) ──
+; closeup: BT at the wheel, through the driver's window, the yellow wall and the steer behind
+[node name="shot_closeup_person__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.960, 1.750, -7.400)
+rotation = Vector3(-0.1002, -2.7279, 0.0)
+metadata/fov = 44.0
+
+; reverse: Diego in the passenger seat, the lot and the pole light behind
+[node name="shot_closeup_person_b__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.960, 1.750, 1.400)
+rotation = Vector3(-0.1002, -0.4137, 0.0)
+metadata/fov = 44.0
+
+; closeup: Diego (the same frame, named for the cue)
+[node name="shot_closeup_diego__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.960, 1.750, 1.400)
+rotation = Vector3(-0.1002, -0.4137, 0.0)
+metadata/fov = 44.0
+

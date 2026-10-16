@@ -1,0 +1,60 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "bk_2000-08-23_the_frontier_week_the_boundary_stone",
+      "strip_id": "bk_2000-08-23_the_frontier_week_the_boundary_stone",
+      "title": "THE FRONTIER WEEK · The boundary stone",
+      "date": "2000-08-23",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: BACKUP. The strip: A surveyor with a chain and a stake at the edge of town, and in the grass a carved stone face the surveyor's map doesn't have, and the stranger saying it was here first. The surveyor drives the stake beside it anyway. The dog lifts a leg on the stake. Panel 1: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a surveyor with a measuring chain and a wooden stake beside a carved stone face half sunk in grass. No dialogue in this panel. Panel 2: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with folded arms speaking to a surveyor who holds up a map. Stranger says \"That was here first.\". Surveyor says \"It's not on the map.\". Panel 3: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooden survey stake driven into grass beside a carved stone face with a small dog lifting its leg on the stake (in this panel: BARNABY (the dog)). No dialogue in this panel. Panel 4: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with a single stump, a crow on it and a survey stake driven beside it, dust as stipple. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_roflcopter_sets shows the setting; keep its architecture and props. Reference @wood_2026 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @barnaby for the character Barnaby; @loc_roflcopter_sets for the setting; @wood_2026 for the concept design.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: a surveyor with a measuring chain and a wooden stake beside a carved stone face half sunk in grass. No text. Panel 2: a stranger with folded arms speaking to a surveyor who holds up a map. Stranger: \"That was here first.\"; Surveyor: \"It's not on the map.\". Panel 3: a wooden survey stake driven into grass beside a carved stone face with a small dog lifting its leg on the stake (in this panel: BARNABY (the dog)). No text. Panel 4: a wooded ridge with a single stump, a crow on it and a survey stake driven beside it, dust as stipple. No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @barnaby is the model sheet for BARNABY (the dog). Reference @loc_roflcopter_sets shows the setting; keep its architecture and props.. Reference @wood_2026 is the model sheet for WOOD.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        },
+        {
+          "tag": "loc_roflcopter_sets",
+          "id": "sheet_loc_roflcopter_sets",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_roflcopter_sets.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_stone_head"
+          ]
+        },
+        {
+          "tag": "wood_2026",
+          "id": "concept_sheet_wood_2026",
+          "kind": "concept",
+          "file": "lore/drift_wood/refs/sheet_01_wood.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_stone_head"
+          ]
+        }
+      ]
+    }
+  ]
+}

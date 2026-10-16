@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_1999-02-26_grunion_early",
+      "strip_id": "dw_1999-02-26_grunion_early",
+      "title": "Drift Wood #31 · the Grunion Run, early",
+      "date": "1999-02-26",
+      "era": "era1",
+      "format": "biweekly",
+      "tier": "B",
+      "prompt": "a four-panel comic strip laid out as a two-by-two grid on a half page, thin black panel borders (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 19, gaunt boy drawn a head too tall, chin up, unkempt dark hair falling forward, sharp jaw; CHLOE — aged 19, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; GULLY — aged 20, stocky boy with a round face, easy slouch. WOOD usually wears oversized thrift-store wool overcoat to the knee worn even indoors, faded black tee, dark jeans, sneakers. CHLOE wears oasis sweater and rain slicker. GULLY usually wears backwards blue cap, faded green hoodie, muddy tan work boots. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: The fish are early this year. Wood is ready with contempt and a full pad. Panel 1: a night beach with a small crowd of lantern-carrying townspeople at the surf line, three teenagers in the foreground with buckets, a thermos and an open drawing pad, black and white (in this panel: GULLY, CHLOE, WOOD). Gully says \"They're early. Tide's wrong. They came anyway.\". Wood says \"Nature's indifference to the festival committee.\". Panel 2: a teenage girl pouring cocoa from a thermos into its lid and handing it to a boy who keeps drawing, lanterns behind (in this panel: CHLOE, WOOD). Chloe says \"You said you'd never come back to this.\". Wood says \"I came to document. It's different.\". Panel 3: close-up over a girl's shoulder of a drawing pad with two versions of a night surf scene full of small silver fish, one above the other (in this panel: CHLOE). Chloe says \"You drew it before we got here.\". Wood says \"I drew last year's. Tonight's is a revision.\". Panel 4: silent wide night panel of a surf line flashing with hundreds of small silver fish under lantern light, a teenage boy sitting on the sand with a closed pad on his knee just watching, a girl beside him, black and white (in this panel: WOOD, CHLOE, GULLY). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17; @wood_20 for the character Wood at 20-23.",
+      "prompt_compact": "a four-panel comic strip laid out as a two-by-two grid on a half page, thin black panel borders (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 19, gaunt boy drawn a head too tall, chin up, unkempt dark hair falling forward; CHLOE — aged 19, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; GULLY — aged 20, stocky boy with a round face, easy slouch. CHLOE wears oasis sweater and rain slicker. Clothes and props: as described here, not from the reference. Panel 1: a night beach with a small crowd of lantern-carrying townspeople at the surf line, three teenagers in the foreground with buckets, a… (in this panel: GULLY, CHLOE, WOOD). Gully: \"They're early. Tide's wrong. They came anyway.\"; Wood: \"Nature's indifference to the festival committee.\". Panel 2: a teenage girl pouring cocoa from a thermos into its lid and handing it to a boy who keeps drawing, lanterns behind (in this panel: CHLOE, WOOD). Chloe: \"You said you'd never come back to this.\"; Wood: \"I came to document. It's different.\". Panel 3: close-up over a girl's shoulder of a drawing pad with two versions of a night surf scene full of small silver fish, one above the other (in this panel: CHLOE). Chloe: \"You drew it before we got here.\"; Wood: \"I drew last year's. Tonight's is a revision.\". Panel 4: silent wide night panel of a surf line flashing with hundreds of small silver fish under lantern light, a teenage boy sitting on the sand… (in this panel: WOOD, CHLOE, GULLY). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY. Reference @wood_20 is the model sheet for WOOD.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1168:880",
+      "google_aspect": "4:3",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "gully_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

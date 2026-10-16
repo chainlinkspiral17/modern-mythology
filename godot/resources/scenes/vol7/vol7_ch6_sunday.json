@@ -34,11 +34,15 @@
       "t": "show"
     },
     {
-      "text": "Lena did not write to Jorgen.",
+      "text": "[mood:morning_bright]Lena did not write to Jorgen.",
       "t": "narrate"
     },
     {
-      "text": "She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another. She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down.",
+      "text": "[shot:insert letter]She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another.",
+      "t": "narrate"
+    },
+    {
+      "text": "She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down.",
       "t": "narrate"
     },
     {
@@ -54,15 +58,19 @@
       "t": "narrate"
     },
     {
-      "text": "There was a message from Tem at twelve-fourteen the night before. \"Kai and Finn just got here. Something happened. Come up when you can.\"",
+      "text": "[shot:insert phone]There was a message from Tem at twelve-fourteen the night before. \"Kai and Finn just got here. Something happened. Come up when you can.\"",
       "t": "narrate"
     },
     {
-      "text": "She was at the door of the apartment in twenty minutes. There was no wagon. The Sunday bus did not run to the cabin road. Kai's truck was at Board Lords, which meant Board Lords was closed at eight-thirty on a Sunday morning, which it had not been in four years. She walked over to confirm. The CLOSED sign was up.",
+      "text": "She was at the door of the apartment in twenty minutes. There was no wagon. The Sunday bus did not run to the cabin road.",
       "t": "narrate"
     },
     {
-      "src": "3d:louisiana_road",
+      "text": "Kai's truck was at Board Lords, which meant Board Lords was closed at eight-thirty on a Sunday morning, which it had not been in four years. She walked over to confirm. The CLOSED sign was up.",
+      "t": "narrate"
+    },
+    {
+      "src": "3d:main_street",
       "t": "bg"
     },
     {
@@ -89,7 +97,7 @@
     },
     {
       "char": "lena",
-      "text": "Should I call Cale. He has a truck.",
+      "text": "[shot:closeup person]Should I call Cale. He has a truck.",
       "expr": "neutral",
       "t": "say"
     },
@@ -101,7 +109,7 @@
     },
     {
       "char": "lena",
-      "text": "What happened.",
+      "text": "[mood:day_bright][shot:closeup lena~]What happened.",
       "expr": "neutral",
       "t": "say"
     },
@@ -112,7 +120,11 @@
       "t": "say"
     },
     {
-      "text": "She closed her eyes for a second. She knew Roy from the Daily Grind. He had been on her do not engage list since her first week behind the bar, on Soren's instruction. She had been pulling Roy's hot chocolates twice a week for two and a half years and had managed, in all that time, never to be alone in the shop with him.",
+      "text": "She closed her eyes for a second. She knew Roy from the Daily Grind. He had been on her do not engage list since her first week behind the bar, on Soren's instruction.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been pulling Roy's hot chocolates twice a week for two and a half years and had managed, in all that time, never to be alone in the shop with him.",
       "t": "narrate"
     },
     {
@@ -144,7 +156,7 @@
       "t": "narrate"
     },
     {
-      "text": "She stood on Main with her phone in her hand and the rain not quite raining and the patch on the sanderling about three feet square now. She did not go home. She walked the four blocks to ChillWave.",
+      "text": "[shot:establish]She stood on Main with her phone in her hand and the rain not quite raining and the patch on the sanderling about three feet square now. She did not go home. She walked the four blocks to ChillWave.",
       "t": "narrate"
     },
     {

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Audio — Hero Studio</title>
+<style>
+  :root { --bg:#0f0e0c; --panel:#161410; --card:#1e1a14; --border:#2c2820; --fg:#e8e2d4; --dim:#9a917f;
+          --brass:#b08d4a; --brass2:#e2b866; --ok:#7fc26b; --bad:#c66060; --code:#0b0a08; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:13px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif; }
+  header { display:flex; gap:14px; align-items:baseline; padding:12px 18px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  header h1 { margin:0; font:600 18px Georgia,serif; color:var(--brass2); }
+  header a { color:var(--brass); }
+  header .sub { color:var(--dim); font-size:12px; }
+  main { padding:14px 18px; }
+  .bar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+  .bar .spacer { flex:1; }
+  input, select { background:var(--code); color:var(--fg); border:1px solid var(--border); border-radius:3px; padding:5px 6px; font:12px monospace; }
+  #filter { width:280px; }
+  button { background:var(--brass); color:#1a1408; border:0; border-radius:3px; padding:6px 11px; font:600 12px sans-serif; cursor:pointer; }
+  button.secondary { background:transparent; color:var(--dim); border:1px solid var(--border); }
+  button.tab.on { background:var(--card); color:var(--brass2); border-color:var(--brass); }
+  button.save { background:#4f7a3a; color:#eef6e8; }
+  button:disabled { opacity:.45; cursor:default; }
+  .help { color:var(--dim); font-size:12px; }
+  .msg { font:11px monospace; min-height:16px; margin:6px 0; white-space:pre-wrap; }
+  .msg.ok { color:var(--ok); } .msg.err { color:var(--bad); }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; font:600 11px sans-serif; color:var(--dim); letter-spacing:.05em; padding:6px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); }
+  td { padding:5px 6px; border-bottom:1px solid var(--border); vertical-align:middle; }
+  tr.ingame td { background:#18200f; }
+  td.name { font:12px monospace; word-break:break-all; }
+  td.name .folder { color:var(--dim); font-size:11px; }
+  td.num { font:11px monospace; color:var(--dim); white-space:nowrap; }
+  td input.title { width:100%; min-width:140px; }
+  .play { width:30px; padding:4px 0; }
+  .badge { font:10px monospace; padding:1px 5px; border-radius:2px; background:var(--ok); color:#10200a; white-space:nowrap; }
+  .wrap { max-height:74vh; overflow:auto; border:1px solid var(--border); border-radius:4px; }
+  audio { height:30px; vertical-align:middle; }
+  code { font:11px monospace; background:var(--code); padding:0 4px; border-radius:2px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AUDIO</h1>
+  <span class="sub">every audio file on your Google Drive → listen → send only the ones the game should have</span>
+  <span style="flex:1"></span>
+  <a href="./">← Hero Studio</a>
+</header>
+<main>
+  <div class="bar">
+    <button id="btn-scan" title="list every audio file on the Drive (read-only — nothing on the Drive changes)">SCAN DRIVE</button>
+    <span class="help" id="scanned"></span>
+    <span class="spacer"></span>
+    <span class="help" id="ingame"></span>
+    <button class="save" id="btn-save" title="send the sent files to the project's Drive folder, then commit + push the catalog and the record (no audio in git)">SAVE</button>
+  </div>
+  <div class="bar">
+    <input id="filter" placeholder="filter by name or folder…">
+    <button class="secondary tab on" data-kind="">all</button>
+    <button class="secondary tab" data-kind="music">music</button>
+    <button class="secondary tab" data-kind="sound">sound</button>
+    <button class="secondary tab" data-kind="voice">voice</button>
+    <button class="secondary tab" data-kind="in">in game</button>
+    <label class="help"><input type="checkbox" id="dupes" style="width:auto"> show duplicates</label>
+    <span class="spacer"></span>
+    <audio id="player" controls preload="none"></audio>
+  </div>
+  <div class="msg" id="msg"></div>
+  <div class="help" id="setup" style="display:none">
+    The page reads the Drive through a <b>read-only</b> connection that is not set up yet. In a terminal:
+    <code>bash ~/Downloads/modern-mythology/godot/tools/drive_setup.sh --read</code> — sign in once in the browser,
+    then press SCAN DRIVE.
+  </div>
+  <div class="wrap">
+    <table>
+      <thead><tr><th></th><th>file</th><th>size</th><th>date</th><th>kind</th><th>title in the game</th><th>vol</th><th></th></tr></thead>
+      <tbody id="rows"><tr><td colspan="8" class="help">loading…</td></tr></tbody>
+    </table>
+  </div>
+  <p class="help">
+    <b>SEND</b> copies one file into <code>godot/assets/audio/drive/</code> — music also gets a <i>FROM THE DRIVE</i> entry
+    in the in-game music player. <b>SAVE</b> backs those files up to the project's Drive folder and commits only the
+    catalog line + the record (<code>godot/tools/audio_sent.json</code>); no audio goes into git. <b>REMOVE</b> takes a file
+    back out of the game; nothing on your Drive is ever changed or deleted. Rows marked <span class="badge">in game</span>
+    without a REMOVE are files the game already ships (same bytes). Duplicates (the same bytes in several folders)
+    are hidden unless you tick the box.
+  </p>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let DATA = { files: [] }, KIND = "";
+
+function mb(n) { return n < 1e6 ? Math.max(1, Math.round(n / 1e3)) + " KB" : (n / 1e6).toFixed(n < 1e7 ? 1 : 0) + " MB"; }
+function msg(t, cls) { $("msg").textContent = t || ""; $("msg").className = "msg " + (cls || ""); }
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+async function load() {
+  const r = await fetch("/api/audio");
+  DATA = await r.json();
+  $("setup").style.display = DATA.read_configured ? "none" : "block";
+  $("scanned").textContent = DATA.scanned_at ? `${DATA.files.length} audio files · scanned ${DATA.scanned_at.slice(0, 16).replace("T", " ")}` : "never scanned";
+  $("ingame").textContent = `${DATA.sent_count} sent to the game · ${mb(DATA.sent_bytes || 0)}`;
+  render();
+}
+
+function render() {
+  const f = $("filter").value.toLowerCase().trim();
+  const seen = new Set();
+  const rows = [];
+  for (const row of DATA.files) {
+    if (!$("dupes").checked && row.md5 && !row.sent) {
+      if (seen.has(row.md5)) continue;
+      seen.add(row.md5);
+    }
+    if (KIND === "in" ? !row.in_game : (KIND && row.kind !== KIND)) continue;
+    if (f && !row.path.toLowerCase().includes(f)) continue;
+    rows.push(row);
+  }
+  if (!rows.length) {
+    $("rows").innerHTML = `<tr><td colspan="8" class="help">${DATA.files.length ? "nothing matches" : "press SCAN DRIVE"}</td></tr>`;
+    return;
+  }
+  $("rows").innerHTML = rows.slice(0, 600).map((row, i) => {
+    const parts = row.path.split("/");
+    const name = parts.pop();
+    const title = row.sent ? row.sent.title : name.replace(/\.[^.]+$/, "").replace(/[_]+/g, " ");
+    const kinds = ["music", "sound", "voice"].map(k => `<option ${k === (row.sent ? row.sent.kind : row.kind) ? "selected" : ""}>${k}</option>`).join("");
+    const vols = [0,1,2,3,4,5,6,7,99].map(v => `<option value="${v}">${v === 99 ? "slowstick" : "vol " + v}</option>`).join("");
+    const act = row.sent
+      ? `<span class="badge">in game</span> <button class="secondary" data-act="remove" data-i="${i}">remove</button>`
+      : row.in_game ? `<span class="badge" title="${esc(row.in_game)}">in game</span>`
+      : `<button data-act="send" data-i="${i}">send to game</button>`;
+    return `<tr class="${row.in_game ? "ingame" : ""}">
+      <td><button class="secondary play" data-act="play" data-i="${i}" title="listen">▶</button></td>
+      <td class="name">${esc(name)}<div class="folder">${esc(parts.join(" / ") || "My Drive")}</div></td>
+      <td class="num">${mb(row.size)}</td><td class="num">${esc(row.mtime || "")}</td>
+      <td><select data-k="${i}" ${row.sent ? "disabled" : ""}>${kinds}</select></td>
+      <td><input class="title" data-t="${i}" value="${esc(title)}" ${row.sent ? "disabled" : ""}></td>
+      <td><select data-v="${i}" ${row.sent ? "disabled" : ""}>${vols}</select></td>
+      <td style="white-space:nowrap">${act}</td></tr>`;
+  }).join("") + (rows.length > 600 ? `<tr><td colspan="8" class="help">${rows.length - 600} more — narrow the filter</td></tr>` : "");
+  $("rows").onclick = async (ev) => {
+    const b = ev.target.closest("button[data-act]");
+    if (!b) return;
+    const row = rows[+b.dataset.i];
+    if (b.dataset.act === "play") {
+      $("player").src = "/api/audio/preview?path=" + encodeURIComponent(row.path);
+      $("player").play().catch(() => {});
+      msg("playing " + row.path);
+      return;
+    }
+    b.disabled = true;
+    const body = b.dataset.act === "send"
+      ? { path: row.path, kind: document.querySelector(`[data-k="${b.dataset.i}"]`).value,
+          title: document.querySelector(`[data-t="${b.dataset.i}"]`).value,
+          vol: +document.querySelector(`[data-v="${b.dataset.i}"]`).value }
+      : { path: row.path };
+    msg((b.dataset.act === "send" ? "downloading " : "removing ") + row.path + " …");
+    const r = await fetch("/api/audio/" + b.dataset.act, { method: "POST", body: JSON.stringify(body) });
+    const j = await r.json();
+    if (j.error || !j.ok) { msg(j.error || "failed", "err"); b.disabled = false; return; }
+    msg(b.dataset.act === "send" ? `in the game: ${j.local}${j.catalog_id ? " (music player: " + j.catalog_id + ")" : ""} — press SAVE when done`
+                                 : `removed ${j.removed} — press SAVE when done`, "ok");
+    load();
+  };
+}
+
+$("btn-scan").onclick = async () => {
+  $("btn-scan").disabled = true;
+  msg("scanning the whole Drive (read-only) — a minute or two for a big Drive …");
+  const r = await fetch("/api/audio/scan", { method: "POST", body: "{}" });
+  const j = await r.json();
+  $("btn-scan").disabled = false;
+  if (j.error || !j.ok) { msg(j.error || "scan failed", "err"); load(); return; }
+  msg(`found ${j.count} audio files`, "ok");
+  load();
+};
+$("btn-save").onclick = async () => {
+  $("btn-save").disabled = true;
+  msg("saving: audio to the project's Drive folder, then commit + push …");
+  const r = await fetch("/api/git/push", { method: "POST", body: JSON.stringify({ message: "Audio: sent from the Drive inventory" }) });
+  const j = await r.json();
+  $("btn-save").disabled = false;
+  msg((j.steps || [j.error || "?"]).join("\n"), j.ok ? "ok" : "err");
+};
+$("filter").oninput = render;
+$("dupes").onchange = render;
+document.querySelectorAll("button.tab").forEach(b => b.onclick = () => {
+  document.querySelectorAll("button.tab").forEach(x => x.classList.remove("on"));
+  b.classList.add("on"); KIND = b.dataset.kind; render();
+});
+load();
+</script>
+</body>
+</html>

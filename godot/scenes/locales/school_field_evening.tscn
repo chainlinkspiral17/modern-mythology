@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://school_field_evening_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://school_field_evening_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/school_field_evening.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,16 +128,37 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a dusk sky past it, not a flat backdrop)
+sky_top_color = Color(0.22, 0.24, 0.42, 1)
+sky_horizon_color = Color(0.86, 0.60, 0.46, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.12, 0.11, 0.12, 1)
+ground_horizon_color = Color(0.34, 0.28, 0.28, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
-background_color = Color(0.10, 0.06, 0.04, 1)
+background_mode = 2
+sky = SubResource("Sky_Win")
+background_color = Color(0.14, 0.13, 0.22, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.42, 0.28, 1)
-ambient_light_energy = 0.55
+ambient_light_color = Color(0.54, 0.46, 0.48, 1)
+ambient_light_energy = 0.72
 fog_enabled = true
 fog_light_color = Color(0.42, 0.28, 0.20, 1)
 fog_light_energy = 0.5
-fog_density = 0.007
+; STUMP HUNT (2026-08-04): this exterior's geometry now runs
+; past 120m. Fog retuned so the new distance reads as air —
+; density capped so bands 200-800m out survive to the eye,
+; aerial perspective + sky-affect so the horizon is haze,
+; not a cut edge.
+fog_density = 0.0045
+fog_sky_affect = 1.0
+fog_aerial_perspective = 1.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.1
@@ -154,23 +175,98 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
+; (pass 61, 2026-10-11) the authored rig is suffixed to school_field_evening: its time-of-day twin below brings its own
+[node name="Key__school_field_evening" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
+light_color = Color(0.98, 0.60, 0.34, 1)
+light_energy = 1.3
+shadow_enabled = false
+
+[node name="Fill__school_field_evening" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
+light_color = Color(0.72, 0.68, 0.78, 1)
 light_energy = 0.5
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.35
-shadow_enabled = false
-
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__school_field_evening" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
-light_energy = 0.25
+light_energy = 0.4
 shadow_enabled = false
+
+; Stadium floodlights — cool-white banks atop the six 18m poles
+; (blender (±33.9, 13.7/54.9/96.0) bank z 17.2 → godot y 17.2,
+;  z -13.7/-54.9/-96.0). Friday-night-lights pools over the turf.
+[node name="Flood_SW__school_field_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.38, 17.2, -13.7)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_W__school_field_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.38, 17.2, -54.9)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_NW__school_field_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.38, 17.2, -96.0)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_SE__school_field_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 17.2, -13.7)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_E__school_field_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 17.2, -54.9)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_NE__school_field_evening" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 17.2, -96.0)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+; insert: Coach K's white F-250 at the head of the lot — camper shell, ladder rack (draft 5: it framed Coach Dale's truck by the shed)
+[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(17.600, 1.750, 10.400)
+rotation = Vector3(-0.0581, 0.9505, 0.0)
+metadata/fov = 46.0
+
+[node name="shot_insert_corkboard" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.234, 1.809, 6.730)
+rotation = Vector3(-0.2618, 1.5708, 0.0)
+
+[node name="shot_insert_ball" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 0.69, -53.76)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+; ── THE DAY (pass 61): school_field_day — the floods and the lot lamps are the evening's;
+; the August sun, high, and the sky
+[node name="Day_Sun__school_field_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7660, -0.5451, 0.3406, 0.0000, 0.5299, 0.8480, -0.6428, -0.6496, 0.4059, 0, 20, 0)
+light_color = Color(1.00, 0.95, 0.86, 1)
+light_energy = 1.3
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__school_field_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 20, 10)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.5
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +368,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +387,121 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+
+; ── vn_shot coverage (2026-08-09 · re-authored for the TRUE-SCALE field) ────────
+; rotation B: from the top row of the home stands at the 50, across to the visitor side
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-31.5, 4.8, -54.9)
+rotation = Vector3(-0.0676156, -1.65823, 0)
+metadata/fov = 58.0
+
+; rotation C: from under the scoreboard, south down all 120 yards through both goalposts
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 2.6, -114.5)
+rotation = Vector3(0.00361989, -3.14159, 0)
+metadata/fov = 54.0
+
+; insert: the scoreboard beyond the north end zone
+[node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.000, 4.617, -115.950)
+rotation = Vector3(0.4363, 0.0000, 0.0)
+metadata/fov = 44.0
+
+; insert: the home stands behind the home bench, the press box on top (draft 5: the stands moved east)
+[node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(22.384, 1.700, -33.864)
+rotation = Vector3(0.0792, -0.6541, 0.0)
+metadata/fov = 46.0
+
+; insert: the Vinton bus pulls into the lot at four oh-three
+[node name="shot_insert_bus" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.7, 9.0)
+rotation = Vector3(-0.6386, -2.8474, 0.0)
+metadata/fov = 42.0
+
+; insert: Coach K's stopwatch — partly theater
+[node name="shot_insert_stopwatch" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 0.95, -43.5)
+rotation = Vector3(-0.5951, -0.6597, 0.0)
+metadata/fov = 42.0
+
+; insert: Ben's phone — Maya texts at three forty-six
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 0.95, -48.0)
+rotation = Vector3(-0.6068, -0.6747, 0.0)
+metadata/fov = 42.0
+
+; insert: Eileen's folding chair, third row behind the home bench
+[node name="shot_insert_folding_chair" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(27.584, 1.900, -42.664)
+rotation = Vector3(-0.1023, -1.0424, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.134, 1.612, 2.104)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.782, 1.612, -0.238)
+rotation = Vector3(-0.2618, -2.6180, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Lamp_3_0_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(41.584, 16.700, -21.860)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Lamp_0_0_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(-35.584, 16.700, -21.860)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Lamp_4_0_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(41.584, 16.700, -53.864)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Lamp_1_0_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(-35.584, 16.700, -53.864)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Lamp_5_0_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(41.584, 16.700, -85.868)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Lamp_2_0_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(-35.584, 16.700, -85.868)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+; ── draft 4 (2026-09-18): the field house's door light — the corkboard is read under it ──
+; blender (-16.0, -6.62, 2.40) → godot (-16.0, 2.40, 6.62). Halogen porch.
+[node name="FieldHouse_Lamp_Glass_Practical__school_field_evening" type="OmniLight3D" parent="."]
+position = Vector3(-16.000, 2.400, 6.620)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.60
+shadow_enabled = false
+omni_range = 5.00

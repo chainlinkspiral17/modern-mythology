@@ -1,0 +1,295 @@
+{
+ "meta": {
+  "title": "vol5_maya_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_maya_theme",
+  "notes": "Maya \u00b7 The Trick. Music-box loop, ten seconds long, slightly varied the second time through."
+ },
+ "tempo_bpm": 84,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.518,
+   "notes": [
+    {
+     "pitch": "E6",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G6",
+     "bar": 1,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B6",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G6",
+     "bar": 1,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 1,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C6",
+     "bar": 1,
+     "beat": 3.5,
+     "dur": 0.9,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G6",
+     "bar": 2,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B6",
+     "bar": 2,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G6",
+     "bar": 2,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 2,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C6",
+     "bar": 2,
+     "beat": 3.5,
+     "dur": 0.9,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G6",
+     "bar": 3,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B6",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G6",
+     "bar": 3,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 3,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C6",
+     "bar": 3,
+     "beat": 3.5,
+     "dur": 0.9,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E6",
+     "bar": 5,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G6",
+     "bar": 5,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "B6",
+     "bar": 5,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G6",
+     "bar": 5,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E6",
+     "bar": 5,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 5,
+     "beat": 3.5,
+     "dur": 0.9,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E6",
+     "bar": 6,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F#6",
+     "bar": 6,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "B6",
+     "bar": 6,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G6",
+     "bar": 6,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E6",
+     "bar": 6,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 6,
+     "beat": 3.5,
+     "dur": 0.9,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E6",
+     "bar": 7,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G6",
+     "bar": 7,
+     "beat": 1.5,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "B6",
+     "bar": 7,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G6",
+     "bar": 7,
+     "beat": 2.5,
+     "dur": 0.45,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E6",
+     "bar": 7,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D6",
+     "bar": 7,
+     "beat": 3.5,
+     "dur": 0.9,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.222,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.14
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

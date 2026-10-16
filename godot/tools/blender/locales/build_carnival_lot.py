@@ -9,7 +9,8 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_taper_cyl, make_tube, catenary, export_glb
+from _props.objects import make_bottle
 
 COL_DIRT = (0.52, 0.44, 0.32, 1.0); COL_GRASS = (0.46, 0.50, 0.32, 1.0)
 COL_LIMESTONE = (0.78, 0.74, 0.66, 1.0); COL_TENT_RED = (0.62, 0.32, 0.30, 1.0)
@@ -31,7 +32,9 @@ def build_ground():
     make_box("Grass_W", (-LOT_W/2.0 - 2.0, 0.0, 0.02), (4.0, LOT_D, 0.04), COL_GRASS)
     make_box("Grass_E", (+LOT_W/2.0 + 2.0, 0.0, 0.02), (4.0, LOT_D, 0.04), COL_GRASS)
     # Sky backdrop
-    make_box("SkyBackdrop", (0.0, +LOT_D/2.0 + 20.0, 8.0), (60.0, 0.04, 16.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def build_limestone_wall():
@@ -59,18 +62,16 @@ def build_big_top():
         for r_i, (r1, r2, z1, z2) in enumerate([(5.50, 0.10, 1.40, 8.50)]):
             # 4 alternating colored strips per slice — approximated as 4 boxes around the cone
             pass
-    # Simpler: 8 triangular boxes radiating from the pole
-    for ti in range(8):
-        ang = ti * (math.pi/4)
-        ex = cx + math.cos(ang) * 4.0
-        ey = cy + math.sin(ang) * 4.0
-        tc = COL_TENT_RED if ti % 2 else COL_TENT_WHITE
-        make_box(f"Tent_Slice_{ti}", ((cx+ex)/2.0, (cy+ey)/2.0, 4.50),
-                 (3.50, 1.20, 0.20), tc)
-    # Top flag
-    make_box("Tent_Flag", (cx, cy, 9.50), (0.04, 0.50, 0.40), COL_FLAG_FADE)
-    # Hanging cable + half-collapsed side
-    make_box("Tent_Cable", (cx+5.50, cy, 2.50), (0.04, 0.04, 4.50), P.METAL_BLACK)
+    # The canopy: a cone from the rim (r 4.5 at z 4.4) to the pole's
+    # top, a white band at the eave. (2026-09-22: it was eight flat
+    # axis-aligned slabs at z 4.5 that touched neither the pole nor
+    # each other — the whole roof floated.)
+    make_taper_cyl("Tent_Canopy", (cx, cy, 6.65), 4.50, 0.20, 4.50, COL_TENT_RED, segments=16)   # z 4.40..8.90 (centred)
+    make_cyl("Tent_Canopy_Eave", (cx, cy, 4.55), 4.55, 0.30, COL_TENT_WHITE, segments=16)
+    # Top flag, on the pole's top (9.0)
+    make_box("Tent_Flag", (cx, cy, 9.20), (0.04, 0.50, 0.40), COL_FLAG_FADE)
+    # Hanging cable from the rim — the half-collapsed side
+    make_box("Tent_Cable", (cx+4.40, cy, 2.20), (0.04, 0.04, 4.40), P.METAL_BLACK)
     # 4 anchor stakes
     for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
         ax_, ay_ = cx + sgn_x*5.0, cy + sgn_y*4.0
@@ -98,16 +99,19 @@ def build_merry_go_round():
         hx = cx + math.cos(ang) * 2.60
         hy = cy + math.sin(ang) * 2.60
         # Vertical pole
-        make_cyl(f"Horse_Pole_{hi}", (hx, hy, 1.40), 0.04, 2.80, COL_MERRY_GOLD, segments=8)
+        make_cyl(f"Carousel_HorsePole_{hi}", (hx, hy, 1.40), 0.04, 2.80, COL_MERRY_GOLD, segments=8)
         # Horse body
         hc = COL_HORSE_WHITE if hi % 2 else COL_HORSE_BROWN
-        make_box(f"Horse_Body_{hi}", (hx, hy, 1.60), (0.80, 0.30, 0.50), hc)
+        make_box(f"Carousel_Horse_Body_{hi}", (hx, hy, 1.60), (0.80, 0.30, 0.50), hc)
         # Horse head
-        make_box(f"Horse_Head_{hi}", (hx + math.cos(ang)*0.40, hy + math.sin(ang)*0.40, 1.90),
+        # the body is an x-long box at every angle, so the head goes on
+        # its x end (2026-09-22: six heads hung off the bodies' sides)
+        head_dx = 0.40 if math.cos(ang) >= -1e-6 else -0.40
+        make_box(f"Carousel_Horse_Head_{hi}", (hx + head_dx, hy, 1.90),
                  (0.30, 0.20, 0.30), hc)
         # 4 legs
         for li, (sgn_x, sgn_y) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-            make_box(f"Horse_Leg_{hi}_{li}", (hx + sgn_x*0.30, hy + sgn_y*0.10, 1.20),
+            make_box(f"Carousel_Horse_Leg_{hi}_{li}", (hx + sgn_x*0.30, hy + sgn_y*0.10, 1.20),
                      (0.06, 0.06, 0.50), hc)
 
 
@@ -127,7 +131,7 @@ def build_ticket_booth():
         make_box(f"Booth_Stripe_W_{si}", (bx-0.80, sy, 1.20), (0.05, 0.28, 2.20), sc)
         make_box(f"Booth_Stripe_E_{si}", (bx+0.80, sy, 1.20), (0.05, 0.28, 2.20), sc)
     # Ticket window (front, S-facing)
-    make_box("Booth_Window", (bx, by-0.84, 1.40), (0.50, 0.005, 0.30), (0.78, 0.84, 0.86, 0.55))
+    make_box("Booth_Window", (bx, by-0.8275, 1.40), (0.50, 0.005, 0.30), (0.78, 0.84, 0.86, 0.55))   # on the stripes (2026-09-23: 1.2 cm off them)
     # Conical hat roof
     make_box("Booth_Roof_R", (bx, by, 2.50), (1.80, 1.80, 0.20), COL_BOOTH_STRIPE_R)
     make_box("Booth_Roof_W", (bx, by, 2.70), (1.40, 1.40, 0.20), COL_BOOTH_STRIPE_W)
@@ -147,20 +151,21 @@ def build_lion_cage_wagon():
                  COL_WAGON_WOOD, axis='X', segments=10)
     # Cage frame (4 corner posts + bars)
     for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
-        make_box(f"Cage_Post_{sgn_x:+d}_{sgn_y:+d}",
+        make_box(f"Wagon_Cage_Post_{sgn_x:+d}_{sgn_y:+d}",
                  (wx + sgn_x*1.40, wy + sgn_y*0.70, 1.20), (0.10, 0.10, 1.80), COL_CAGE_BARS)
     # 12 vertical bars on each long side
     for sgn_y in (-1, +1):
         for bi in range(11):
             bx = wx - 1.30 + bi * 0.24
-            make_cyl(f"Cage_Bar_S{sgn_y:+d}_{bi}", (bx, wy + sgn_y*0.70, 1.20),
+            make_cyl(f"Wagon_Cage_Bar_S{sgn_y:+d}_{bi}", (bx, wy + sgn_y*0.70, 1.20),
                      0.02, 1.80, COL_CAGE_BARS, segments=6)
     # Cage roof
-    make_box("Cage_Roof", (wx, wy, 2.10), (2.80, 1.50, 0.06), COL_CAGE_BARS)
+    make_box("Wagon_Cage_Roof", (wx, wy, 2.10), (2.80, 1.50, 0.06), COL_CAGE_BARS)
     # Door — swung open at the W end (rotated open ~80°)
-    make_box("Cage_Door_OpenLeaf", (wx-2.10, wy-0.30, 1.20), (0.06, 1.20, 1.80), COL_CAGE_BARS)
-    # "EMPTY" / faded text plaque on side
-    make_box("Cage_Plaque", (wx, wy+0.80, 0.80), (0.80, 0.005, 0.20), (0.92, 0.86, 0.74, 1.0))
+    # (2026-09-22: it hung 0.6 m past the wagon's end, on nothing)
+    make_box("Wagon_Cage_Door_OpenLeaf", (wx-1.48, wy-0.10, 1.20), (0.06, 1.20, 1.80), COL_CAGE_BARS)
+    # "EMPTY" / faded text plaque on the N side's bars
+    make_box("Wagon_Cage_Plaque", (wx, wy+0.7225, 0.80), (0.80, 0.005, 0.20), (0.92, 0.86, 0.74, 1.0))
 
 
 def build_strewn_props():
@@ -189,14 +194,14 @@ def build_strength_dressing():
     wx, wy = -1.50, -5.50
     COL_RUST = (0.42, 0.18, 0.10, 1.0)
     # Two rust-scabbed hinges on the wagon's W door post + the door
-    for hz in (0.50, 1.60):
-        make_box("Cage_Hinge_Rust_%.1f" % hz,
-                 (wx - 1.42, wy - 0.30, hz),
+    for hz in (0.50, 1.60):   # on the SW post, where the door now hangs (2026-09-22)
+        make_box("Wagon_Cage_Hinge_Rust_%.1f" % hz,
+                 (wx - 1.42, wy - 0.70, hz),
                  (0.18, 0.08, 0.14),
                  COL_RUST)
         # Rust drip below each hinge (a thin streak running down)
-        make_box("Cage_Hinge_RustStreak_%.1f" % hz,
-                 (wx - 1.42, wy - 0.30, hz - 0.20),
+        make_box("Wagon_Cage_Hinge_RustStreak_%.1f" % hz,
+                 (wx - 1.42, wy - 0.70, hz - 0.20),
                  (0.05, 0.02, 0.30),
                  (0.32, 0.14, 0.08, 1.0))
 
@@ -209,7 +214,7 @@ def build_strength_dressing():
              (0.40, 0.40, 0.04),
              (0.42, 0.46, 0.32, 1.0))
     make_box("Roy_Chair_Back",
-             (roy_x, roy_y + 0.18, 0.80),
+             (roy_x, roy_y + 0.18, 0.70),
              (0.40, 0.04, 0.46),
              (0.42, 0.46, 0.32, 1.0))
     for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
@@ -218,33 +223,30 @@ def build_strength_dressing():
                  (0.02, 0.02, 0.46),
                  (0.32, 0.32, 0.32, 1.0))
     # A bottle of something on the ground next to the chair
-    make_cyl("Roy_Bottle_Body",
-             (roy_x + 0.30, roy_y - 0.10, 0.10),
-             0.035, 0.20,
-             (0.32, 0.20, 0.12, 0.85),
-             segments=8, axis='Z')
+    make_bottle("Roy_Bottle", roy_x + 0.30, roy_y - 0.10, 0.0,
+                (0.32, 0.20, 0.12, 0.85), h=0.20, r=0.030)
 
     # Lila's plaque on the wagon side (brass, weathered)
-    make_box("Cage_LilaPlaque",
-             (wx, wy + 0.81, 0.95),
+    make_box("Wagon_Cage_LilaPlaque",
+             (wx, wy + 0.7225, 0.95),   # on the bars (2026-09-22)
              (0.40, 0.005, 0.12),
              (0.74, 0.56, 0.22, 1.0))
     # Engraved name (darker streak across the plaque)
-    make_box("Cage_LilaPlaque_Name",
-             (wx, wy + 0.815, 0.95),
+    make_box("Wagon_Cage_LilaPlaque_Name",
+             (wx, wy + 0.7265, 0.95),
              (0.30, 0.003, 0.04),
              (0.20, 0.14, 0.08, 1.0))
 
     # The feed bucket inside the cage — sitting upright at the back
     # of the cage where it was left when Lila walked out for the
     # last time
-    make_cyl("Cage_FeedBucket_Body",
+    make_cyl("Wagon_Cage_FeedBucket_Body",
              (wx + 0.30, wy + 0.30, 0.42),
              0.12, 0.24,
              (0.42, 0.32, 0.20, 1.0),
              segments=10, axis='Z')
     # Bucket rim (slightly wider)
-    make_cyl("Cage_FeedBucket_Rim",
+    make_cyl("Wagon_Cage_FeedBucket_Rim",
              (wx + 0.30, wy + 0.30, 0.54),
              0.13, 0.012,
              (0.32, 0.22, 0.14, 1.0),
@@ -253,7 +255,7 @@ def build_strength_dressing():
     for pi in range(5):
         pdx = -0.10 + (pi % 3) * 0.08
         pdy = -0.16 + (pi // 3) * 0.06
-        make_box("Cage_Feed_%d" % pi,
+        make_box("Wagon_Cage_Feed_%d" % pi,
                  (wx + 0.20 + pdx, wy + 0.10 + pdy, 0.31),
                  (0.04, 0.04, 0.02),
                  (0.62, 0.46, 0.22, 1.0))
@@ -288,7 +290,7 @@ def build_strength_wave2_props():
     wag_x = -1.50
     wag_y = -5.50
     make_box("DawnDew_WagonFloor",
-             (wag_x, wag_y, 0.10),
+             (wag_x, wag_y, 0.4025),   # on the platform's top (2026-09-22: 30 cm inside it)
              (0.70, 1.20, 0.005),
              (0.86, 0.92, 0.94, 0.72))   # frozen dew
 
@@ -299,8 +301,8 @@ def build_strength_wave2_props():
     for si, ang_deg in enumerate([0, 60, 120, 180, 240, 300]):
         import math
         ang = math.radians(ang_deg)
-        mx = car_x + math.cos(ang) * 1.10
-        my = car_y + math.sin(ang) * 1.10
+        mx = car_x + math.cos(ang) * 0.41   # on the column (r 0.40; 2026-09-22: 0.7 m out from it)
+        my = car_y + math.sin(ang) * 0.41
         make_box("DawnFrost_MirrorPanel_%d" % si,
                  (mx, my, 1.05),
                  (0.16, 0.02, 0.30),
@@ -308,30 +310,30 @@ def build_strength_wave2_props():
 
     # Bowl of water at wagon's bottom step (for the three-legged dog)
     make_cyl("DawnDogBowl_Rim",
-             (wag_x + 0.36, wag_y - 0.60, 0.05),
+             (wag_x + 0.36, wag_y - 0.60, 0.03),   # on the dirt (2026-09-23: 2 cm over it)
              0.10, 0.02,
              (0.62, 0.62, 0.60, 1.0), segments=12, axis='Z')
     # Water inside (thin blue disc)
     make_cyl("DawnDogBowl_Water",
-             (wag_x + 0.36, wag_y - 0.60, 0.045),
+             (wag_x + 0.36, wag_y - 0.60, 0.0431),
              0.08, 0.005,
              (0.62, 0.78, 0.82, 0.85), segments=12, axis='Z')
 
     # Milk truck approaching on the highway (a distant white rectangle)
     make_box("DawnMilkTruck_Body",
-             (0.0, -11.0, 1.20),
+             (0.0, -17.0, 1.20),
              (1.20, 3.00, 1.40),
              (0.94, 0.94, 0.90, 1.0))
     # Chrome tank on top
     make_cyl("DawnMilkTruck_Tank",
-             (0.0, -11.0, 2.20),
+             (0.0, -17.0, 2.20),
              0.50, 2.60,
              (0.86, 0.86, 0.88, 1.0), segments=12, axis='Y')
     # Wheels
     for wy in (-1.20, +1.20):
         for wx in (-0.50, +0.50):
             make_cyl("DawnMilkTruck_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
-                     (wx, -11.0 + wy, 0.30),
+                     (wx, -17.0 + wy, 0.26),   # on the ground (2026-09-23: 4 cm over it)
                      0.28, 0.14,
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
 
@@ -354,12 +356,12 @@ def build_strength_wave2_props():
     # Wagon door swinging six-inches-and-back
     # Existing wagon has a door; we add a "swung" position box
     # offset from the wagon edge to visualize the moving door
-    make_box("StormWagonDoor_Swung",
+    make_box("Wagon_StormDoor_Swung",
              (wag_x + 0.68, wag_y + 0.10, 0.62),
              (0.03, 0.60, 1.20),
              (0.28, 0.20, 0.14, 1.0))
     # Gouge in the dirt where the door has scraped
-    make_box("StormWagonDoor_GougeInDirt",
+    make_box("Wagon_StormDoor_GougeInDirt",
              (wag_x + 0.68, wag_y + 0.10, 0.02),
              (0.06, 0.20, 0.005),
              (0.32, 0.24, 0.16, 1.0))
@@ -367,16 +369,16 @@ def build_strength_wave2_props():
     # Broken chain at the front gate (two halves hanging)
     # Front gate at (0, -9). Chain approx at chest height across it.
     make_cyl("StormFrontGate_ChainLeft",
-             (-0.30, -9.0, 1.10),
+             (-0.30, -9.0, 0.815),   # over the wall's top (2026-09-22: 30 cm above it)
              0.010, 0.30,
              (0.62, 0.62, 0.60, 1.0), segments=6, axis='X')
     make_cyl("StormFrontGate_ChainRight",
-             (+0.30, -9.0, 1.10),
+             (+0.30, -9.0, 0.815),
              0.010, 0.30,
              (0.62, 0.62, 0.60, 1.0), segments=6, axis='X')
     # Broken end of chain (a small dangling link)
     make_box("StormFrontGate_ChainBrokenEnd",
-             (0.0, -9.0, 0.90),
+             (-0.15, -9.0, 0.78),   # dangling from the left half's end
              (0.02, 0.02, 0.06),
              (0.62, 0.62, 0.60, 1.0))
 
@@ -392,6 +394,11 @@ def build_strength_wave2_props():
              (marv_x + 0.80, marv_y, truck_z - 0.10),
              (1.20, 0.80, 0.70),
              (0.62, 0.34, 0.24, 1.0))
+    for wxo in (-0.30, +1.10):   # wheels (2026-09-22: the truck hung 7 cm up)
+        for sgn in (-1, +1):
+            make_cyl("Marv_Pickup_Wheel_%+.1f_%+d" % (wxo, sgn),
+                     (marv_x + wxo, marv_y + sgn * 0.47, 0.25),
+                     0.25, 0.14, P.METAL_BLACK, segments=10, axis='Y')
     # Blue tarp folded square in the bed
     make_box("Marv_Tarp_Folded",
              (marv_x + 0.80, marv_y, truck_z + 0.30),
@@ -399,7 +406,7 @@ def build_strength_wave2_props():
              (0.22, 0.32, 0.58, 1.0))
     # Twine roll on the tarp
     make_cyl("Marv_Tarp_TwineRoll",
-             (marv_x + 0.90, marv_y + 0.20, truck_z + 0.42),
+             (marv_x + 0.90, marv_y + 0.20, truck_z + 0.395),   # on the tarp (2026-09-23: 2.5 cm over it)
              0.06, 0.05,
              (0.86, 0.72, 0.42, 1.0), segments=8, axis='Z')
 
@@ -428,6 +435,67 @@ def build_strength_wave2_props():
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
 
 
+def build_strength_props_pass():
+    """Scene-standard PROPS pass (2026-07-13). This lot was already
+    dense, but the carnival identity lacked a GAME STALL and FESTOON
+    string lights. Add both as compound props. (Outdoor origin-centered
+    lot; no +Z audit applies — lights unchanged.)
+    """
+    # ── Balloon-dart game stall (NE of center) ──
+    gx, gy = 3.5, 4.6
+    COL_STALL_R = (0.72, 0.30, 0.28, 1.0)
+    COL_STALL_Y = (0.82, 0.72, 0.34, 1.0)
+    make_box("Stall_Counter", (gx, gy, 0.47), (2.20, 0.60, 0.90), COL_WAGON_WOOD)   # on the dirt (2026-09-22: 8 cm up)
+    make_box("Stall_CounterTop", (gx, gy, 0.95), (2.30, 0.70, 0.06), COL_BOOTH_STRIPE_W)
+    for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
+        make_cyl("Stall_Post_%+d_%+d" % (sgn_x, sgn_y),
+                 (gx + sgn_x*1.05, gy + sgn_y*0.55, 1.30), 0.05, 2.60,
+                 COL_MERRY_GOLD, segments=8)
+    make_box("Stall_BackBoard", (gx, gy + 0.52, 1.80), (2.10, 0.06, 1.60),
+             (0.32, 0.28, 0.24, 1.0))
+    bcols = [(0.82, 0.30, 0.28, 1.0), (0.34, 0.52, 0.68, 1.0),
+             (0.82, 0.72, 0.34, 1.0), (0.46, 0.62, 0.42, 1.0)]
+    for byi in range(3):
+        for bxi in range(6):
+            balx = gx - 0.85 + bxi*0.34
+            balz = 1.40 + byi*0.42
+            make_cyl("Stall_Balloon_%d_%d" % (byi, bxi),
+                     (balx, gy + 0.46, balz), 0.10, 0.06,
+                     bcols[(byi + bxi) % 4], segments=8, axis='Y')
+    for si in range(5):
+        ax = gx - 0.90 + si*0.45
+        ac = COL_STALL_R if si % 2 else COL_STALL_Y
+        make_box("Stall_Awning_%d" % si, (ax, gy - 0.55, 2.55),
+                 (0.46, 0.80, 0.08), ac)   # the stripes meet (2026-09-22)
+    for pi, pc in enumerate([(0.86, 0.52, 0.62, 1.0), (0.52, 0.70, 0.82, 1.0),
+                             (0.86, 0.80, 0.42, 1.0)]):
+        make_box("Stall_Prize_%d" % pi,
+                 (gx - 0.7 + pi*0.7, gy + 0.30, 1.10), (0.20, 0.20, 0.24), pc)
+    for di in range(3):
+        make_cyl("Stall_Dart_%d" % di,
+                 (gx - 0.5 + di*0.25, gy - 0.10, 0.99), 0.01, 0.14,
+                 (0.72, 0.18, 0.16, 1.0), segments=6, axis='X')
+
+    # ── Festoon string lights across the lot (big top → carousel) ──
+    # Shallow catenary of faded bulbs on a sagging cable.
+    # from the pole's surface to the finial ball's (2026-09-24: both ends
+    # ran to the centres — through the pole and through the ball)
+    ax0, az0 = -5.82, 6.4
+    ax1, az1 = 5.80, 5.5
+    NODES = 11
+    warm = [(0.98, 0.86, 0.52, 1.0), (0.96, 0.62, 0.42, 1.0), (0.72, 0.82, 0.88, 1.0)]
+    # (2026-09-22: eleven flat cable stubs at different heights that
+    # touched neither each other nor their bulbs — one hanging line now)
+    make_tube("Festoon_Cable", catenary((ax0, 0.0, az0), (ax1, 0.0, az1), 0.8, n=20),
+              0.012, P.METAL_BLACK, segments=5)
+    for ni in range(NODES):
+        t = (ni + 0.5) / NODES   # bulbs between the ends, not on them
+        cxp = ax0 + (ax1 - ax0) * t
+        czp = az0 + (az1 - az0) * t - 0.8 * (1.0 - (2.0 * t - 1.0) ** 2)
+        make_cyl("Festoon_Bulb_%d" % ni, (cxp, 0.0, czp - 0.065), 0.06, 0.10,
+                 warm[ni % 3], segments=6, axis='Z')
+
+
 def main():
     clear_scene()
     build_ground()
@@ -439,10 +507,29 @@ def main():
     build_strewn_props()
     build_strength_dressing()
     build_strength_wave2_props()
+    build_strength_props_pass()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/carnival_lot.glb"))
     print(f"\n[build_carnival_lot] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
+
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 36m. The lot sits at the town's
+    edge — a hedgerow ring, then the limestone town's far rooflines."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1020.0, 1020.0, 0.02),
+             (0.30, 0.27, 0.18, 1.0))
+    from _props.detail import make_far_bands
+    make_far_bands("FarHedge", (0.24, 0.30, 0.20),
+                   [(60.0, 70.0, 6.0, 0.90), (130.0, 110.0, 8.0, 0.70),
+                    (260.0, 190.0, 10.0, 0.54)], profile="treeline")
+    make_far_bands("FarTown", (0.42, 0.40, 0.36),
+                   [(430.0, 300.0, 12.0, 0.42)], profile="roofline")
 
 
 if __name__ == "__main__":

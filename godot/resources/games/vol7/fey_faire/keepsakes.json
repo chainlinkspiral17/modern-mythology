@@ -1,0 +1,511 @@
+{
+  "id": "keepsakes",
+  "notes": "Fey Faire · trailer keepsake catalog.  Each entry: id, name, category (trinket|lore|playbill|cat_gift|prospero), source (where it's obtained), lore (short text), effect (mechanical bonus when active on the bookcase), stackable (bool · if false, only one can be active).  Bookcase has 20 active slots; overflow lives in the footlocker.  Effects computed by iterating the active list.  See _FEY_FAIRE_TRAILER.md for the frame.",
+
+  "keepsakes": [
+    {
+      "id": "ondine_postcard",
+      "name": "Ondine's Postcard from the Coast",
+      "category": "trinket",
+      "source": "OFFER a used seashell to Ondine at the ring-toss (Night 1 recruit)",
+      "lore": "A photograph of a beach with an X drawn in ballpoint over a specific rock.  On the back: 'You should visit.  Bring nothing that stings.'  She signed it O.",
+      "effect": "+5% negotiation success with any Seelie or sea-court fey",
+      "stackable": false
+    },
+    {
+      "id": "peaseblossom_handkerchief",
+      "name": "Peaseblossom's Handkerchief",
+      "category": "trinket",
+      "source": "PROMISE fulfilled · plant something and water it for a week (in-game)",
+      "lore": "Pale-green linen embroidered with a pea vine.  Smells faintly of green.  Peaseblossom made it herself in the hours between customers.",
+      "effect": "+10% HP restore from the trailer hearth · tea now heals allies too",
+      "stackable": false
+    },
+    {
+      "id": "mustardseed_pepper_jar",
+      "name": "Mustardseed's Pepper Jar",
+      "category": "trinket",
+      "source": "OFFER cinnamon or turmeric to Mustardseed",
+      "lore": "A small glass jar of ground pepper mixed with something else.  A single grain cures a headache.  A pinch does something the label doesn't specify.",
+      "effect": "+1 SP per turn in combat when Mustardseed is in party",
+      "stackable": false
+    },
+    {
+      "id": "cobweb_bookmark",
+      "name": "Cobweb's Bookmark",
+      "category": "trinket",
+      "source": "OFFER a used bookmark to Cobweb after winning her test-your-strength",
+      "lore": "A strip of silver silk that never tangles.  Marks the page you left off no matter how many books it's currently in.",
+      "effect": "+1 Bookstall book per visit (learn quotes 2× faster)",
+      "stackable": false
+    },
+    {
+      "id": "moths_candle",
+      "name": "Moth's Half-Burned Candle",
+      "category": "trinket",
+      "source": "OFFER a lit candle to Moth at Moth's Quiet",
+      "lore": "White beeswax, burned down halfway.  Relights itself if you snuff it.  Warm to the touch always.",
+      "effect": "Grants NIGHT VISION in Fairyland sub-realms · reveals hidden cells on the map",
+      "stackable": false
+    },
+    {
+      "id": "silver_whistle",
+      "name": "The Silver Whistle",
+      "category": "trinket",
+      "source": "Undertide mirror completion (Caliban recruited peacefully)",
+      "lore": "A boatswain's whistle, plain silver, worn smooth.  The engraving reads WA.  It calls something that comes.",
+      "effect": "Once per battle, summon a Nixie for a single free STRIKE action.  CROSS-ONEIRONAUTICS: unlocks Pirate Summer scrapbook chain fact.",
+      "stackable": false
+    },
+    {
+      "id": "erlking_antler_comb",
+      "name": "The Erlking's Antler Comb",
+      "category": "trinket",
+      "source": "ACCEPT Erlking's boon at the wheel of fortune",
+      "lore": "Six teeth carved from a stag's antler.  Combing your hair with it settles your pulse.  It settles other things too.",
+      "effect": "+2 Unseelie standing per event · +5% Bone damage",
+      "stackable": false
+    },
+    {
+      "id": "redcap_feather",
+      "name": "A Redcap Feather",
+      "category": "trinket",
+      "source": "Win milk bottles fairly · Redcap tips his cap · a feather falls",
+      "lore": "A small red feather from the underside of a Redcap's cap.  It is a feather because Redcap does not have hair, exactly.",
+      "effect": "+5% Iron damage · +1 to strike when carrying an iron weapon",
+      "stackable": true
+    },
+    {
+      "id": "baobhan_kissing_receipt",
+      "name": "Baobhan Sìth's Kissing-Booth Receipt",
+      "category": "trinket",
+      "source": "Pay a dollar at the kissing booth · you get a paper receipt",
+      "lore": "Numbered 000041.  Signed by an angular hand.  On the back: a phone number for a house that does not exist.",
+      "effect": "+10% negotiation with any Unseelie fey · warning: -1 Seelie personal disposition with any Seelie fey who SEES the receipt",
+      "stackable": false
+    },
+    {
+      "id": "sluagh_wind_chime",
+      "name": "The Sluagh's Wind-Chime",
+      "category": "trinket",
+      "source": "Fortune Teller booth · reading with the Sluagh names one of your dead",
+      "lore": "Six thin bone tubes on a string.  The wind here is wrong; the chime rings only when your dead are near.  It rings sometimes.",
+      "effect": "Once per run, prevent one death · the Sluagh takes you back",
+      "stackable": false
+    },
+    {
+      "id": "prosperos_diplomacy",
+      "name": "Prospero's Book of Diplomacy",
+      "category": "prospero",
+      "source": "Trailer bookcase · first entry · read on entering the trailer",
+      "lore": "A slim volume, cover water-warped.  Chapter titles: On Speaking with Feys · On Not Being Robbed · On the Uses of Silence.  Marginalia in a specific old hand: 'She kept the ring.'",
+      "effect": "+15% negotiation success · REVEAL a fey's charm stat during dialogue",
+      "stackable": false
+    },
+    {
+      "id": "prosperos_broken_staff",
+      "name": "Prospero's Broken Staff",
+      "category": "prospero",
+      "source": "Trailer umbrella stand · found on entry",
+      "lore": "A wizard's staff broken in half.  He said he'd drown it.  He didn't.  Half is here, half is nowhere.",
+      "effect": "+10% Word damage · WORD attacks cannot backfire",
+      "stackable": false
+    },
+    {
+      "id": "prosperos_cat_bell",
+      "name": "The Cat's Old Bell",
+      "category": "prospero",
+      "source": "Trailer writing desk · in a small china dish",
+      "lore": "A cat's bell.  The collar it hung from is gone.  Helia has not worn a collar since Prospero left.",
+      "effect": "Helia the cat now indicates disposition for UNRECRUITED feys too (they've heard about you)",
+      "stackable": false
+    },
+    {
+      "id": "prosperos_waterlogged_book",
+      "name": "Prospero's Waterlogged Book",
+      "category": "prospero",
+      "source": "Trailer under the writing desk · after entering the trailer 3+ times",
+      "lore": "A book too swollen to open.  The pages are pressed together.  If you soak your hands, you can pry them apart · but the text is illegible.  It KNOWS what it says.",
+      "effect": "+2 to WIT stat · unlocks the PACIFIST ROUTE via a diegetic hint",
+      "stackable": false
+    },
+    {
+      "id": "prosperos_journal_page",
+      "name": "Prospero's Journal · Page 46",
+      "category": "prospero",
+      "source": "Trailer bedroom under a mattress · after Night 4",
+      "lore": "'... and I told her, if you keep the ring, you keep the promise.  She wept and kept it.  She was six.  We built the trailer that summer.  Rocha helped.  She was five and drew a cat on the wall.'",
+      "effect": "LORE ONLY · no combat effect · unlocks the ROCHA-AS-CHILD dialogue with three feys",
+      "stackable": true
+    },
+    {
+      "id": "prosperos_umbrella",
+      "name": "Prospero's Umbrella",
+      "category": "prospero",
+      "source": "Trailer umbrella stand · below the broken staff",
+      "lore": "A black umbrella, brand-new but from 1971.  Never opened.  A tag on the handle: 'FOR THE STORM.'",
+      "effect": "Immune to lightning damage in the Storm-Wracked Coast mirror",
+      "stackable": false
+    },
+    {
+      "id": "playbill_night_1_dream",
+      "name": "Playbill · Night 1 · A Midsummer Night's Dream",
+      "category": "playbill",
+      "source": "Watch the Big Top show on Night 1",
+      "lore": "Cream cardstock.  The performers are named but none of the names sound like the fey you saw on stage.  You saw Titania perform, but the playbill credits 'Rosalind Chen'.",
+      "effect": "+1 RECITE cap for Midsummer quotes · unlocks 3 new Midsummer quotes in the Bookstall",
+      "stackable": false
+    },
+    {
+      "id": "playbill_night_2_tempest",
+      "name": "Playbill · Night 2 · The Tempest",
+      "category": "playbill",
+      "source": "Watch the Big Top show on Night 2",
+      "lore": "Ariel is credited to himself.  This is the only playbill on which a fey's true name appears.  A hand-drawn arrow points to it.",
+      "effect": "+1 RECITE cap for Tempest quotes · unlocks 3 new Tempest quotes",
+      "stackable": false
+    },
+    {
+      "id": "playbill_night_3_hamlet",
+      "name": "Playbill · Night 3 · Hamlet",
+      "category": "playbill",
+      "source": "Watch the Big Top show on Night 3",
+      "lore": "The play was cut short.  Leanan Sídhe played Ophelia and did not survive the drowning scene.  She got up afterward.  The audience clapped.",
+      "effect": "+1 RECITE cap for Hamlet quotes · unlocks 3 new Hamlet quotes",
+      "stackable": false
+    },
+    {
+      "id": "playbill_night_4_macbeth",
+      "name": "Playbill · Night 4 · Macbeth",
+      "category": "playbill",
+      "source": "Watch the Big Top show on Night 4",
+      "lore": "The three witches were three different feys (Baobhan Sìth, the Sluagh, a Nixie who was terrible at it).  The daggers were real.  Nobody was hurt.",
+      "effect": "+1 RECITE cap for Macbeth quotes · unlocks 3 new Macbeth quotes",
+      "stackable": false
+    },
+    {
+      "id": "playbill_night_5_lear",
+      "name": "Playbill · Night 5 · King Lear",
+      "category": "playbill",
+      "source": "Watch the Big Top show on Night 5",
+      "lore": "The Salt Sisters played Lear's three daughters.  They played them well.  You cried in Act IV.  You do not remember why.",
+      "effect": "+1 RECITE cap for Lear quotes · unlocks 3 new Lear quotes",
+      "stackable": false
+    },
+    {
+      "id": "playbill_night_6_your_name",
+      "name": "Playbill · Night 6 · YOUR NAME",
+      "category": "playbill",
+      "source": "Watch the Big Top show on Night 6 (final show)",
+      "lore": "The playwright is not credited.  You are.  The play is about you.  Titania played you.  She was very kind about the parts you would rather have forgotten.",
+      "effect": "+2 to WIT stat permanently · locks after picking up",
+      "stackable": false
+    },
+    {
+      "id": "cat_gift_dead_mouse",
+      "name": "A Dead Mouse (Cat Gift)",
+      "category": "cat_gift",
+      "source": "Helia leaves it on the writing desk after specific milestones",
+      "lore": "A dead mouse.  Helia is proud of it.  You are grateful, or you pretend to be.",
+      "effect": "-1 Wildfey personal disposition with any Wildfey fey who visits the trailer (they see it and are appalled)",
+      "stackable": false
+    },
+    {
+      "id": "cat_gift_shed_whisker",
+      "name": "A Shed Whisker (Cat Gift)",
+      "category": "cat_gift",
+      "source": "Helia sheds it on the writing desk after Night 3 (unprompted)",
+      "lore": "A single black whisker, longer than it should be.  You keep it in a small envelope.",
+      "effect": "+3 luck in mirror-gate puzzles (a diegetic bonus · slightly kinder timing)",
+      "stackable": false
+    },
+    {
+      "id": "cat_gift_key",
+      "name": "A Small Brass Key (Cat Gift)",
+      "category": "cat_gift",
+      "source": "Helia drops it from her mouth on Night 4 (if you pet her once by then)",
+      "lore": "A small brass key.  It fits nothing you've seen at the Faire.  Prospero's key ring is empty of small brass keys.",
+      "effect": "Unlocks the FOOTLOCKER (10 additional keepsake slots) at the Trailer",
+      "stackable": false
+    },
+    {
+      "id": "cat_gift_torn_page",
+      "name": "A Torn Book Page (Cat Gift)",
+      "category": "cat_gift",
+      "source": "Helia scratches it out from under the writing desk on Night 5",
+      "lore": "A page from Prospero's waterlogged book, the ink still legible.  It is the paragraph about how to leave the Faire without being followed.",
+      "effect": "Enables the REFUSE_THE_FAIRE ending on Night 5+ (normally locked after Night 3)",
+      "stackable": false
+    },
+    {
+      "id": "cat_gift_photo",
+      "name": "A Photograph (Cat Gift)",
+      "category": "cat_gift",
+      "source": "Helia sits on it and leaves it once you've earned her trust (LOVED per Helia's private meter)",
+      "lore": "A cream-bordered photograph.  Thirteen young adults in staff polos.  Camp Sweetgum, 1976.  Prospero is not in it, but he took the picture.",
+      "effect": "CROSS-ONEIRONAUTICS · unlocks Pirate Summer's east-forest cache scrapbook chain",
+      "stackable": false
+    },
+    {
+      "id": "cat_gift_a_name",
+      "name": "A Name Whispered (Cat Gift)",
+      "category": "cat_gift",
+      "source": "Helia whispers a name into the protagonist's ear on Night 6 (only if you have every other cat gift)",
+      "lore": "The cat's name.  Not Helia.  Helia is what Prospero called her; it is not her name.  Her name is · [game asks the player to type it and enshrines it forever]",
+      "effect": "Naming Helia CORRECTLY grants an NG+ bonus in future runs · she comes when called",
+      "stackable": false
+    },
+    {
+      "id": "lore_camp_1976",
+      "name": "Newspaper Clipping · Camp Sweetgum · 1976",
+      "category": "lore",
+      "source": "Bookstall · 4 gold · available Night 3+",
+      "lore": "Tillamook Herald, July 26, 1976.  'CAMP TRAGEDY · Teen boy Andrew LaRue, 15, of Salem, drowned Saturday during an outing at Camp Sweetgum near Cape Falcon.  Counselors reached the scene ...'",
+      "effect": "LORE ONLY · unlocks specific dialogue with the Green Man about Andrew",
+      "stackable": true
+    },
+    {
+      "id": "lore_the_faire_seventeen_years",
+      "name": "The Faire Comes Every Seventeen Years",
+      "category": "lore",
+      "source": "Ask any tier-2+ fey about the Faire's schedule",
+      "lore": "The Faire arrives every seventeen years, on the same six-day window, in different towns.  The last was 1977.  Before that, 1960.  1943.  1926.  1909.  1892.  1875.  It's been coming.",
+      "effect": "LORE ONLY",
+      "stackable": true
+    },
+    {
+      "id": "lore_prospero_letters",
+      "name": "Prospero's Letters (bundle)",
+      "category": "lore",
+      "source": "Trailer bookcase · after all Prospero keepsakes collected",
+      "lore": "Six letters bundled in string.  Written to a person named ROCHA.  She was five, six, then seven.  Prospero taught her English words and Italian words and one word in a language nobody spoke anymore.  He was her babysitter one summer.  She wrote back.",
+      "effect": "LORE ONLY · unlocks ROCHA-AS-CHILD keepsake in the compendium",
+      "stackable": false
+    },
+    {
+      "id": "lore_rocha_as_child",
+      "name": "Rocha, aged 7, at the Faire",
+      "category": "lore",
+      "source": "Compiled from Prospero's letters + specific fey dialogue",
+      "lore": "The photograph is a Polaroid.  A small girl in a striped shirt sits on the counter at the ring-toss booth.  Ondine holds her hand.  In the background, a black cat.  In 1977 this Faire came to Coimbra.  Rocha's family had just moved.  She was seven.  She stayed all six nights.  She wrote Fey Faire when she was twenty.",
+      "effect": "LORE ONLY · unlocks a specific ending epilogue mentioning Rocha's biography",
+      "stackable": false
+    },
+    {
+      "id": "lore_music_box_portuguese",
+      "name": "Music-Box Tune (Portuguese)",
+      "category": "lore",
+      "source": "Play the Carousel while wearing Peaseblossom's Handkerchief",
+      "lore": "A Portuguese folk tune, in the key of A minor, written down on graph paper in a child's hand.  Notes: 'Grandma sang this.  Wilson sang this.  I don't know a Wilson.'",
+      "effect": "CROSS-ONEIRONAUTICS · unlocks Pirate Summer chain_rocha_wrote_music_box scrapbook entry",
+      "stackable": false
+    },
+    {
+      "id": "trinket_smooth_river_stone",
+      "name": "A Smooth River Stone",
+      "category": "trinket",
+      "source": "The player's inventory on boot · from home",
+      "lore": "A stone the player picked up somewhere, a long time ago.  Warm from the pocket.  This is one of the six items on the boot inventory (player's choice of one).",
+      "effect": "+1 luck in the ring-toss and coin-in-glass · +3 Ondine personal disposition on OFFER",
+      "stackable": false
+    },
+    {
+      "id": "trinket_grandmothers_ring",
+      "name": "Grandmother's Ring",
+      "category": "trinket",
+      "source": "The player's inventory on boot (alternative boot inventory choice)",
+      "lore": "A small silver ring with an old-rose stone.  Grandmother's.  Too small for anyone's finger now.  You've carried it since she died.",
+      "effect": "+1 to CHARM · Titania personal disposition +2 on entry to the Rose Garden mirror",
+      "stackable": false
+    },
+    {
+      "id": "trinket_first_kiss_note",
+      "name": "First Kiss Note",
+      "category": "trinket",
+      "source": "The player's inventory on boot (alternative boot inventory choice)",
+      "lore": "A folded piece of notebook paper.  Nine words on it.  You've kept it in a shoe box for three years.",
+      "effect": "Baobhan Sìth personal disposition +5 if OFFERED · locks a specific hidden ending path if given away",
+      "stackable": false
+    },
+    {
+      "id": "trinket_father_dog_tag",
+      "name": "Father's Dog Tag",
+      "category": "trinket",
+      "source": "The player's inventory on boot (alternative boot inventory choice · appears only if the boot questionnaire named a father-related loss)",
+      "lore": "A steel dog tag from your father's service.  You took it after he ...",
+      "effect": "+2 Iron damage · the Erlking will not accept it as a prize (he will laugh)",
+      "stackable": false
+    },
+    {
+      "id": "trinket_bookstore_receipt",
+      "name": "Bookstore Receipt",
+      "category": "trinket",
+      "source": "The player's inventory on boot (alternative boot inventory choice)",
+      "lore": "A receipt from a used bookstore.  Six books listed.  Prices in pencil.  Dated three weeks ago.",
+      "effect": "20% Bookstall discount at the Faire",
+      "stackable": false
+    },
+    {
+      "id": "trinket_photograph_home",
+      "name": "A Photograph From Home",
+      "category": "trinket",
+      "source": "The player's inventory on boot (alternative boot inventory choice)",
+      "lore": "A photograph of a person the player loves.  The game asks who at boot.  The photograph fills in accordingly.",
+      "effect": "Restores one lost memory once per run (single-use active item)",
+      "stackable": false
+    },
+    {
+      "id": "trinket_cricket_ticket",
+      "name": "Cricket's Retired Ticket",
+      "category": "trinket",
+      "source": "Cricket LOVED disposition · she gives it on Night 5",
+      "lore": "A ticket that has been used once already, six nights ago.  Yours.  She kept it.",
+      "effect": "Enables the BECOME_THE_FAIRE ending regardless of Court alignment",
+      "stackable": false
+    },
+    {
+      "id": "trinket_puck_coin",
+      "name": "Puck's Two-Headed Penny",
+      "category": "trinket",
+      "source": "Beat Puck at coin-in-glass fairly (he cheats · you cheat back)",
+      "lore": "A copper penny with two heads.  Both are Puck's.  He gives it to you when he loses.  He laughs about it.  He is a very good sport.",
+      "effect": "+15% Word damage · +2 wit checks in negotiation",
+      "stackable": false
+    },
+    {
+      "id": "trinket_kelpies_horseshoe",
+      "name": "The Kelpie's Iron Horseshoe",
+      "category": "trinket",
+      "source": "Defeat OR recruit the Kelpie",
+      "lore": "A regular iron horseshoe.  Except it was recently on a horse that is not a horse.  Still slightly cold to the touch.  Salt-corroded.",
+      "effect": "Immunity to drown status · +5% Iron damage · guarantees safe drink from the Kelpie fountain",
+      "stackable": false
+    },
+    {
+      "id": "trinket_selkies_hair",
+      "name": "A Strand of the Selkie's Hair",
+      "category": "trinket",
+      "source": "Selkie LIKED disposition · she leaves one after a specific conversation",
+      "lore": "A long dark hair, still damp.  Held in a small envelope.  When you take it out the envelope smells of the sea for hours.",
+      "effect": "+2 SP regen per turn while in the Storm-Wracked Coast or Undertide mirrors",
+      "stackable": false
+    },
+    {
+      "id": "trinket_boggart_hat",
+      "name": "The Boggart's Discarded Hat",
+      "category": "trinket",
+      "source": "Boggart LOVED · he gives you an old hat he was replacing",
+      "lore": "A small floppy hat, wool, mostly grey.  Fits nobody.  When you turn it inside out it fits an entirely different set of people.",
+      "effect": "Recruit the Boggart doubles as a checkpoint at Lost & Found · Lost & Found now also stashes SP not just gold",
+      "stackable": false
+    },
+    {
+      "id": "trinket_leanan_sonnet",
+      "name": "A Sonnet You Wrote",
+      "category": "trinket",
+      "source": "Leanan Sídhe · turn down her muse-gift · she writes a poem TO you",
+      "lore": "Fourteen lines of iambic pentameter in Leanan's ink-stained hand.  Signed only 'A.'  You cannot decide if it's flattering or a diagnosis.",
+      "effect": "+2 to WIT permanently while carried · reveals the true name of one fey per read",
+      "stackable": false
+    },
+    {
+      "id": "trinket_dream_thread",
+      "name": "A Thread from a Dream",
+      "category": "trinket",
+      "source": "Queen Mab · complete Mirror 6 without accepting her keeping you",
+      "lore": "A thin dark thread that unravels when you try to look at it directly.  Keep it in a jar.  Never open the jar.",
+      "effect": "Restores one lost memory when the trailer's mirror cracks (single-use)",
+      "stackable": false
+    },
+    {
+      "id": "trinket_hobs_bread_crust",
+      "name": "The Hob's Bread Crust",
+      "category": "trinket",
+      "source": "Give Hob a slice of very good bread · he saves you a crust from HIS bread",
+      "lore": "A heel of very dense brown bread.  It never gets stale.  The Hob says it will feed you 'as long as you need it to.'  You have not been hungry once since.",
+      "effect": "+1 party healing per rest at any booth",
+      "stackable": true
+    },
+    {
+      "id": "trinket_green_leaf",
+      "name": "A Leaf From the World Outside",
+      "category": "trinket",
+      "source": "Leave the Faire and come back with a leaf.  Green Man rewards this with THIS keepsake if you have already given him ONE leaf",
+      "lore": "The second leaf you brought back.  Preserved.  The Green Man kept the first.  He gave you this one to remember: you did leave.  You did come back.",
+      "effect": "+3 Wildfey standing gain per event · +5% Flame resist",
+      "stackable": true
+    },
+    {
+      "id": "trinket_titania_petal",
+      "name": "Titania's Rose Petal",
+      "category": "trinket",
+      "source": "House of Roses · Titania grants it if you accept her rose",
+      "lore": "A single pale-rose petal, pressed between two panes of glass in a small frame.  Smells of what Titania smells of, which is not roses.",
+      "effect": "Once per battle, if HP would drop to 0, restore to 25% HP instead (Seelie mercy)",
+      "stackable": false
+    },
+    {
+      "id": "trinket_oberon_ring",
+      "name": "Oberon's Signet Ring",
+      "category": "trinket",
+      "source": "Court Beneath · Oberon LIKED · he gives it as a promise-token",
+      "lore": "A heavy silver ring with a small carved antler.  When wearing it, other Unseelie feys nod to you unprompted.  When you take it off you feel colder.",
+      "effect": "Any Unseelie fey will accept OFFER without prize (once each) · but +3 Unseelie personal disposition · -5 Seelie for ALL Seelie feys who see you wear it",
+      "stackable": false
+    },
+    {
+      "id": "trinket_ariels_music",
+      "name": "Ariel's Air-Song Notation",
+      "category": "trinket",
+      "source": "Storm-Wracked Coast · Ariel LIKED",
+      "lore": "A sheet of music paper on which Ariel wrote a tune that only makes sense played on wind.  Playing it hums in your ears for days.",
+      "effect": "+2 Song damage · Song attacks that hit an air-affinity fey heal 5% of your max HP",
+      "stackable": false
+    },
+    {
+      "id": "trinket_calibans_carving",
+      "name": "Caliban's Wooden Carving",
+      "category": "trinket",
+      "source": "Undertide · Caliban's respect earned (not his service)",
+      "lore": "A small wooden figure of a woman with her hand outstretched.  Caliban's mother, Sycorax.  He gave it to you rather than let another master have it.  His hands are gentle, actually.",
+      "effect": "+2 Bone resist · +3 to negotiation with any fey who was once bound to a master",
+      "stackable": false
+    },
+    {
+      "id": "trinket_greenman_leaf_book",
+      "name": "The Green Man's Little Book of Leaves",
+      "category": "trinket",
+      "source": "Green Man LOVED · he shows you his book",
+      "lore": "A pocket-book of pressed leaves.  Each is labeled in a hand that changes on every page.  The last page is BLANK.  A note reads: 'For yours.'",
+      "effect": "Enables the BRING_BACK_THE_LOST ending IF Wildfey ≥ 8 and Green Man LOVED",
+      "stackable": false
+    },
+    {
+      "id": "trinket_mabs_dream_key",
+      "name": "Mab's Dream Key",
+      "category": "trinket",
+      "source": "Queen Mab LIKED · complete Mirror 6 · she gives it if you name a dream she likes",
+      "lore": "A small key made of what looks like a fingernail moon.  Opens no lock you can find.  If you press it to your forehead before sleeping you have a dream you will remember.",
+      "effect": "+1 memory recovered on FIRST death (one-time)",
+      "stackable": false
+    },
+    {
+      "id": "trinket_morgan_seed",
+      "name": "Morgan le Fey's Apple Seed",
+      "category": "trinket",
+      "source": "NG+ · defeat Morgan on the first playthrough's Night 6 or accept her offer",
+      "lore": "A small dark apple seed.  Wrapped in a black cloth.  Morgan gave it to you.  You do not plant it.  It knows if you plant it.",
+      "effect": "NG+ ONLY · +5 to all stats permanently for the run",
+      "stackable": false
+    },
+    {
+      "id": "trinket_the_bakery_recipe",
+      "name": "The Salt Sisters' Fried-Dough Recipe",
+      "category": "trinket",
+      "source": "Bring the Salt Sisters an egg from the outside world · they share a recipe card",
+      "lore": "A recipe card written in three hands in unison.  Ingredients: flour, sugar, an unusual salt, and one thing you must add yourself.",
+      "effect": "+1 gold per booth game won · +1 SP per rest at the Bakery",
+      "stackable": true
+    }
+  ]
+}

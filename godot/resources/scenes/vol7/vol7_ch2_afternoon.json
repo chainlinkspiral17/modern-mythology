@@ -23,16 +23,20 @@
     },
     {
       "text": "Chapter 2",
-      "sub": "Smolvud, Friday \u2014 Afternoon",
+      "sub": "Smolvud, Friday — Afternoon",
       "duration": 3000,
       "t": "interlude"
     },
     {
-      "text": "Tem drove down at three.",
+      "text": "[mood:day_bright]Tem drove down at three.",
       "t": "narrate"
     },
     {
-      "text": "She drove down in the small Toyota wagon that had been her grandfather's, the wagon she had been driving since 2046 when she had inherited it. The wagon had two hundred and eighty-something thousand miles on it. The wagon ran. Tem had been keeping it running through an arrangement with the mechanic in old-Waldport who had also kept her grandfather's wagon running before her.",
+      "text": "She drove down in the small Toyota wagon that had been her grandfather's, the wagon she had been driving since 2046 when she had inherited it. The wagon had two hundred and eighty-something thousand miles on it. The wagon ran.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had been keeping it running through an arrangement with the mechanic in old-Waldport who had also kept her grandfather's wagon running before her.",
       "t": "narrate"
     },
     {
@@ -56,7 +60,7 @@
       "t": "show"
     },
     {
-      "text": "Lena was at the counter. Kai was at the corner table with his laptop open and his phone beside it. Finn was not yet there.",
+      "text": "[shot:establish]Lena was at the counter. Kai was at the corner table with his laptop open and his phone beside it. Finn was not yet there.",
       "t": "narrate"
     },
     {
@@ -66,7 +70,7 @@
       "t": "show"
     },
     {
-      "text": "Tem came in. Lena, at the counter, registered her arrival the way Lena had been registering Tem's arrivals for eighteen months \u2014 the small flash of the gravity she had now named. She did not, this afternoon, look away from the registering.",
+      "text": "Tem came in. Lena, at the counter, registered her arrival the way Lena had been registering Tem's arrivals for eighteen months — the small flash of the gravity she had now named. She did not, this afternoon, look away from the registering.",
       "t": "narrate"
     },
     {
@@ -82,7 +86,7 @@
       "t": "say"
     },
     {
-      "text": "Tem went to the corner table. She sat across from Kai. Kai showed her the pictures of the patch on his phone. Tem looked at them for a long time without speaking.",
+      "text": "[shot:insert phone]Tem went to the corner table. She sat across from Kai. Kai showed her the pictures of the patch on his phone. Tem looked at them for a long time without speaking.",
       "t": "narrate"
     },
     {
@@ -109,7 +113,7 @@
     },
     {
       "char": "kai",
-      "text": "What does that mean.",
+      "text": "[shot:closeup person]What does that mean.",
       "expr": "neutral",
       "t": "say"
     },
@@ -139,7 +143,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I know. I'm \u2014 I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
+      "text": "[shot:closeup person_b]Kai. I know. I'm — I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
       "expr": "serious",
       "t": "say"
     },
@@ -165,7 +169,7 @@
     },
     {
       "char": "tem",
-      "text": "Thanks, Lena.",
+      "text": "[shot:closeup person]Thanks, Lena.",
       "expr": "neutral",
       "t": "say"
     },
@@ -208,7 +212,7 @@
       "t": "show"
     },
     {
-      "text": "Finn came in. He was in the wet thrift-store coat. He had the duffel over his shoulder. His face had on it the look of a man who had heard something on the drive that he had not yet figured out what to do with.",
+      "text": "[shot:closeup finn]Finn came in. He was in the wet thrift-store coat. He had the duffel over his shoulder. His face had on it the look of a man who had heard something on the drive that he had not yet figured out what to do with.",
       "t": "narrate"
     },
     {
@@ -229,13 +233,19 @@
     },
     {
       "char": "finn",
-      "text": "The radio. The one in the duffel. The shortwave from my grandfather. It turned itself on about twenty minutes into the drive down. I had not turned it on. I was driving. The hum came through the canvas and then a voice came through. The voice said one thing and then the radio cut out.",
+      "text": "The radio. The one in the duffel. The shortwave from my grandfather. It turned itself on about twenty minutes into the drive down. I had not turned it on. I was driving.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The hum came through the canvas and then a voice came through. The voice said one thing and then the radio cut out.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "What did the voice say.",
+      "text": "[shot:closeup person_b]What did the voice say.",
       "expr": "neutral",
       "t": "say"
     },
@@ -258,7 +268,7 @@
       "t": "say"
     },
     {
-      "text": "Tem went very still. Lena, behind the counter, registered Tem going still. Kai, at the table, registered it also.",
+      "text": "[beat:still][shot:closeup tem~]Tem went very still. Lena, behind the counter, registered Tem going still. Kai, at the table, registered it also.",
       "t": "narrate"
     },
     {
@@ -287,7 +297,7 @@
     },
     {
       "char": "finn",
-      "text": "Will you tell us how.",
+      "text": "[shot:closeup person]Will you tell us how.",
       "expr": "neutral",
       "t": "say"
     },
@@ -317,7 +327,7 @@
     },
     {
       "char": "tem",
-      "text": "I know.",
+      "text": "[shot:closeup person_b]I know.",
       "expr": "serious",
       "t": "say"
     },
@@ -333,7 +343,7 @@
     },
     {
       "char": "finn",
-      "text": "Tem. Are you \u2014 are you okay.",
+      "text": "Tem. Are you — are you okay.",
       "expr": "neutral",
       "t": "say"
     },
@@ -345,12 +355,12 @@
     },
     {
       "char": "finn",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "He set the duffel down on the floor beside the chair.",
+      "text": "[shot:insert duffel]He set the duffel down on the floor beside the chair.",
       "t": "narrate"
     },
     {
@@ -381,13 +391,13 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "I'm going home too. I'm not \u2014 I'm not mad. I just don't have anything to do here. The patch is on the wall. The wall isn't going anywhere. I'll text in the morning.",
+      "text": "I'm going home too. I'm not — I'm not mad. I just don't have anything to do here. The patch is on the wall. The wall isn't going anywhere. I'll text in the morning.",
       "expr": "neutral",
       "t": "say"
     },
@@ -423,7 +433,7 @@
     },
     {
       "char": "kai",
-      "text": "Hey.",
+      "text": "[shot:closeup person]Hey.",
       "expr": "neutral",
       "t": "say"
     },
@@ -463,7 +473,7 @@
     },
     {
       "char": "lena",
-      "text": "Yeah, Kai.",
+      "text": "[shot:closeup person_b]Yeah, Kai.",
       "expr": "neutral",
       "t": "say"
     },
@@ -482,7 +492,7 @@
       "t": "show"
     },
     {
-      "text": "Tem and Lena were the only two people in the Daily Grind. Soren was in the back. The bell had rung three times in five minutes. The shop was empty.",
+      "text": "[mood:dusk][shot:establish]Tem and Lena were the only two people in the Daily Grind. Soren was in the back. The bell had rung three times in five minutes. The shop was empty.",
       "t": "narrate"
     },
     {
@@ -504,12 +514,12 @@
       "t": "say"
     },
     {
-      "text": "Tem looked at her.",
+      "text": "[shot:closeup tem]Tem looked at her.",
       "t": "narrate"
     },
     {
       "char": "lena",
-      "text": "Not \u2014 Tem. Not for that. I have soup. I have leftover bread. I have a couch. You haven't slept properly in four days. The cabin is forty minutes up the road. My apartment is a block. Come over. Eat soup. Sleep on the couch. Drive up tomorrow.",
+      "text": "Not — Tem. Not for that. I have soup. I have leftover bread. I have a couch. You haven't slept properly in four days. The cabin is forty minutes up the road. My apartment is a block. Come over. Eat soup. Sleep on the couch. Drive up tomorrow.",
       "expr": "neutral",
       "t": "say"
     },
@@ -530,7 +540,7 @@
       "t": "narrate"
     },
     {
-      "text": "Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast.",
+      "text": "[shot:establish~]Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast.",
       "t": "narrate"
     },
     {

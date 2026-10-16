@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://kowalski_kitchen_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://kowalski_kitchen_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/kowalski_kitchen.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,8 +128,22 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.78, 0.86, 0.92, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.86, 0.74, 0.52, 1)
@@ -138,6 +152,7 @@ fog_enabled = true
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.06
@@ -157,17 +172,26 @@ environment = SubResource("Env_Locale")
 [node name="Key_KitchenWindow" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
 light_color = Color(1.00, 0.84, 0.62, 1)
-light_energy = 0.75
+light_energy = 1.0
 shadow_enabled = false
 
 [node name="Fill_Overhead" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.88, 0.72, 1)
-light_energy = 0.45
+light_energy = 0.5
+shadow_enabled = false
+
+; The pendant over the table (draft 4, 2026-09-18 — it was "overhead fluorescent" in a
+; kitchen with no tubes): bulb at blender (0.0, 2.5, 2.16) → godot (0.0, 2.16, -2.5).
+[node name="Table_Pendant_Bulb_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.16, -3.3)
+light_color = Color(0.98, 0.92, 0.8, 1)
+light_energy = 1.3
+omni_range = 5.0
 shadow_enabled = false
 
 [node name="Back_BackYardCool" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -6)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.3
 shadow_enabled = false
@@ -272,7 +296,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +315,124 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the fridge corner across the table to the couch
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.300, 1.600, -0.850)
+rotation = Vector3(-0.1003, 1.1634, 0.0)
+metadata/fov = 56.0
+
+; rotation C: from the kitchen W into the family room — the couch, Daisy, the TV
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.600, 1.600, -4.800)
+rotation = Vector3(-0.1561, 1.9922, 0.0)
+metadata/fov = 54.0
+
+; insert: the hot sauce cabinet
+; (2026-10-07: the cabinet is open now — from the stove side, standing,
+; past the swung door onto the shelf and the bottle)
+[node name="shot_insert_hotsauce" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.200, 1.650, -4.800)
+rotation = Vector3(0.1835, 0.2630, 0.0)
+metadata/fov = 42.0
+
+; insert: the TV on its stand, the noon news (draft 5: the family room)
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.000, 1.150, -1.950)
+rotation = Vector3(-0.1771, -3.1416, 0.0)
+metadata/fov = 40.0
+
+; insert: Anita slides her phone across the table
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.1, -2.75)
+rotation = Vector3(-0.5859, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the crossword
+[node name="shot_insert_crossword" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 1.1, -3.05)
+rotation = Vector3(-0.5533, -0.8416, 0.0)
+metadata/fov = 42.0
+
+; insert: two eggs over-easy, set in front of Maya without comment
+[node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62, 1.1, -3.15)
+rotation = Vector3(-0.5841, 0.8415, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.818, 1.612, -2.517)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.095, 1.612, -4.430)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; ── draft 4 (2026-09-18): the under-cabinet light Anita sits by — "the only light in the ch19 beat" ──
+; blender (-1.5, 4.62, 1.44) → godot (-1.5, 1.44, -4.62). Warm tungsten strip.
+[node name="UnderCab_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.220, 1.400, -6.040)
+light_color = Color(0.960, 0.840, 0.600, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 2.60
+
+; DRAFT 5 (2026-10-09): the family room's lights; Daisy
+[node name="FloorLamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.45, 1.44, -4.45)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 3.5
+
+[node name="Family_Ceiling_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.0, 2.4, -3.0)
+light_color = Color(1.0, 0.9, 0.7, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 5.0
+
+[node name="TV_Screen_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.0, 0.86, -0.55)
+light_color = Color(0.62, 0.74, 0.92, 1)
+light_energy = 0.5
+shadow_enabled = false
+omni_range = 2.2
+
+[node name="shot_insert_daisy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 1.200, -3.000)
+rotation = Vector3(-0.2455, 1.0460, 0.0)
+metadata/fov = 42.0
+
+; ── named closeups (pass 88): the table's four chairs (recorder: W/E/S/N), the garage door for Ben
+; closeup: Bill at the table's west chair with the Sentinel, from the east
+[node name="shot_closeup_bill" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.050, 1.400, -3.050)
+rotation = Vector3(-0.1593, 1.4365, 0.0)
+metadata/fov = 42.0
+
+; closeup: Anita at the table's east chair with her coffee, from the west
+[node name="shot_closeup_anita" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.400, -3.550)
+rotation = Vector3(-0.1593, -1.7051, 0.0)
+metadata/fov = 42.0
+
+; closeup: Gracie at the table's south chair, from the north
+[node name="shot_closeup_gracie" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.300, 1.400, -4.550)
+rotation = Vector3(-0.1827, 2.9825, 0.0)
+metadata/fov = 42.0
+
+; closeup: Ben at the garage door ("at the door he pauses"), from the kitchen
+[node name="shot_closeup_ben" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.550, 1.600, -1.750)
+rotation = Vector3(-0.0291, -2.5213, 0.0)
+metadata/fov = 42.0
+

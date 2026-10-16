@@ -3,8 +3,12 @@
   "vol": 1,
   "chapter": 1,
   "type": "interlude",
-  "title": "The Missing Link — end",
+  "title": "The Missing Link \u2014 end",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:missing_link_interior"
+    },
     {
       "t": "flag",
       "key": "vol1_missing_link_complete",

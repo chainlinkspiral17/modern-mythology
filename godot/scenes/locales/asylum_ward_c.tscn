@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://asylum_ward_c_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://asylum_ward_c_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/asylum_ward_c.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.86, 0.62, 1.0)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.10, 0.08, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.52, 0.46, 1.0)
 ambient_light_energy = 0.34
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.30, 0.42, 0.34, 1.0)
 fog_light_energy = 0.12
 fog_density = 0.018
@@ -161,18 +176,47 @@ light_energy = 0.62
 shadow_enabled = false
 
 [node name="CorridorFluor" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 7.0, 3.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.2, -7.0)
 light_color = Color(0.86, 0.96, 0.86, 1)
 light_energy = 0.95
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="CupolaBlue" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 13.2, 4.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.4, -13.2)
 light_color = Color(0.62, 0.78, 0.92, 1)
 light_energy = 0.55
 shadow_enabled = false
 omni_range = 4.0
+
+; ── Rig pass 2026-08-04 (lighting playbook: three-light
+; foundation + practicals at the builder's real fixture
+; coordinates — a light with no visible source is a fault).
+[node name="Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9396926207859084, -0.2801664995932355, 0.1961746949690111, 0, 0.5735764363510462, 0.8191520442889918, -0.3420201433256687, -0.7697511313200572, 0.5389855446957563, 0, 5, -3)
+light_color = Color(0.96, 0.93, 0.86, 1)
+light_energy = 0.85
+shadow_enabled = false
+
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
+light_color = Color(0.88, 0.91, 0.95, 1)
+light_energy = 0.30
+shadow_enabled = false
+
+[node name="Prac_WindowBay_0_Frame" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46, 1.60, -4.20)
+light_color = Color(0.8, 0.86, 0.95, 1)
+light_energy = 1.0
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="Prac_WindowBay_1_Frame" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46, 1.60, -9.80)
+light_color = Color(0.8, 0.86, 0.95, 1)
+light_energy = 1.0
+omni_range = 3.5
+shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -274,7 +318,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -293,3 +337,33 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 3.320, -2.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.31
+
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 3.320, -5.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.31
+
+[node name="Fluor_2_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 3.320, -8.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.31
+
+[node name="Fluor_3_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 3.320, -11.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.31

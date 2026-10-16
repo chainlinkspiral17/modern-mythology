@@ -1,0 +1,63 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-10-19_the_three_of_them",
+      "strip_id": "dw_2000-10-19_the_three_of_them",
+      "title": "The three of them",
+      "date": "2000-10-19",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; GULLY — aged 21, stocky boy with a round face, easy slouch; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. CHLOE usually wears oversized dark cardigan over a band tee, dark jeans, scuffed boots. GULLY usually wears backwards blue cap, faded green hoodie, muddy tan work boots. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Thursday. Gully's uncle's dock. The three of them on it for the last time until 2002. The uncle in the lawn chair with the oxygen line. Nobody says it's the last time; the strip draws it like it is. Panel 1: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, three teenagers sitting at the end of a wooden dock at dusk with their legs over the water and a small dog between them, an old man in a lawn chair with an oxygen line by a shingle shack behind, rain easing (in this panel: GULLY, CHLOE, WOOD, BARNABY (the dog)). No dialogue in this panel. Panel 2: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a stocky teenager pouring coffee from a thermos for two friends on a dock (in this panel: GULLY, CHLOE, WOOD). Gully says \"Uncle says it's the last good coffee till spring.\". Chloe says \"He says that every October.\". Gully says \"He's right every October.\". Panel 3: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, three teenagers on a dock at dusk, two looking at the water and the one in the middle looking at the other two, no words (in this panel: CHLOE, WOOD, GULLY). No dialogue in this panel. Panel 4: brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, seen from a shack doorway, three teenagers' backs at the end of a dock with a small dog and a bay beyond, a clear oxygen line entering at the frame's edge, no words (in this panel: WOOD, CHLOE, GULLY, BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized crab, seen from above. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @chloe_17 for the character the strip's Chloe at 17; @gully_17 for the character the strip's Gully at 17; @wood_20 for the character Wood at 20-23.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; CHLOE — aged 20, girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders; GULLY — aged 21, stocky boy with a round face, easy slouch; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: three teenagers sitting at the end of a wooden dock at dusk with their legs over the water and a small dog between them, an old man in a… (in this panel: GULLY, CHLOE, WOOD, BARNABY (the dog)). No text. Panel 2: a stocky teenager pouring coffee from a thermos for two friends on a dock (in this panel: GULLY, CHLOE, WOOD). Gully: \"Uncle says it's the last good coffee till spring.\"; Chloe: \"He says that every October.\"; Gully: \"He's right every October.\". Panel 3: three teenagers on a dock at dusk, two looking at the water and the one in the middle looking at the other two, no words (in this panel: CHLOE, WOOD, GULLY). No text. Panel 4: seen from a shack doorway, three teenagers' backs at the end of a dock with a small dog and a bay beyond, a clear oxygen line entering at… (in this panel: WOOD, CHLOE, GULLY, BARNABY (the dog)). No text. Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @chloe_17 is the model sheet for CHLOE. Reference @gully_17 is the model sheet for GULLY. Reference @wood_20 is the model sheet for WOOD.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "chloe_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "gully_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

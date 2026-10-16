@@ -1,0 +1,188 @@
+{
+ "id": "the_supplier_call",
+ "arcana": "iv_emperor",
+ "location": "riverboat_interior",
+ "hand": "dante",
+ "title": "THE SUPPLIER CALL",
+ "subtitle": "The Riverboat · 9:06 AM · the produce contract, renewed or not",
+ "difficulty": "medium",
+ "epigraph_upright": "The Emperor's throne is a phone on hold. The produce contract renews today or it doesn't, and every tomato for a year descends from the next twenty minutes of being firm without being small.",
+ "epigraph_reversed": "You could win the call and lose the guy. Verett's been shorting the Friday order all summer and knows you know, and the ledger says squeeze, and ledgers have never once had to run a Friday service on squeezed goodwill.",
+ "scene_description": "Verett Produce, 9:06, annual call. The file is open on the helm desk: eleven Fridays short-cased this summer, prices up four percent, and one handwritten note from Dante's father in the margin from 1981 — 'Verett Sr. carried us, March–June.' The son shorts cases; the father carried the boat. Both facts are true and both are on the call with you. Sammy is downstairs receiving the dry goods. Mrs. Karras arrives at ten whether or not the tomatoes have a future.",
+ "direction_hint": "Get the shortages named and priced — firm, specific, ledger up. Then decide what 1981 is worth out loud. Connect three, keep the ledger climbing, and be off the phone before Mrs. Karras is at the rail.",
+ "opening_log_lines": [
+  "The hold music is a trumpet doing its best. Verett's has had the same hold music since Nixon.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The ledger rewards specifics. 'Eleven Fridays' beats 'all summer.'",
+  "Dante's father's margin note is in pencil. Pencil, from a man who wrote everything else in pen."
+ ],
+ "starting_state": {
+  "player_pos": "helm",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 0,
+  "inertia_per_turn": 0,
+  "sanity": 4,
+  "sanity_max": 6,
+  "stagnation": 1,
+  "stagnation_per_turn": 1,
+  "doubt": 1,
+  "doubt_max": 7,
+  "authority": 1,
+  "ledger": 1,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "watch_from_the_helm",
+   "pour_neat",
+   "make_the_rounds",
+   "press_the_intercom",
+   "the_decree"
+  ]
+ },
+ "visitors_present_at_start": [],
+ "visitor_schedule": [
+  {
+   "visitor": "sammy_for_dante",
+   "arrival_turn": 2,
+   "arrival_space": "helm"
+  },
+  {
+   "visitor": "mrs_karras",
+   "arrival_turn": 6,
+   "arrival_space": "table_17"
+  },
+  {
+   "visitor": "the_margin_note",
+   "arrival_turn": 3,
+   "arrival_space": "table_17"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_hard_mood_connections_min": 1,
+  "require_doubt_below": 7,
+  "require_stagnation_below": 10,
+  "require_ledger_at_least": 5,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "stagnation_max": 10,
+  "doubt_max": 7,
+  "visitors_claimed_max": 3
+ },
+ "stagnation_thresholds": [
+  {
+   "level": 0,
+   "label": "service is service.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "the man at fourteen has not, in twenty minutes, ordered.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the man's coffee is, at the second refill, still untouched.",
+   "tick_per_turn": 2,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the floor walked out.",
+   "tick_per_turn": 2,
+   "effects": [
+    "reveal_stagnation_finale"
+   ]
+  }
+ ],
+ "doubt_thresholds": [
+  {
+   "level": 0,
+   "label": "dante at the helm. the bottle, still capped, on the desk.",
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the suit at fourteen is forgettable in the practiced way.",
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "sammy at the office door, three short raps.",
+   "effects": [
+    "transcribe_cost_plus_1"
+   ]
+  },
+  {
+   "level": 7,
+   "label": "the card was burned.",
+   "effects": [
+    "reveal_doubt_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "gangway",
+   "label": "GANGWAY",
+   "ending_lore_token": "leap_off_the_friday_gangway",
+   "visible_from_start": true
+  },
+  {
+   "id": "side_door",
+   "label": "SIDE DOOR",
+   "ending_lore_token": "leap_through_the_door_dean_used",
+   "visible_from_start": true
+  },
+  {
+   "id": "staff_exit",
+   "label": "STAFF EXIT",
+   "ending_lore_token": "leap_off_the_friday_back",
+   "visible_from_start": true
+  }
+ ],
+ "sealed_arcanas_at_start": [],
+ "max_turns": 8,
+ "notes": "Fourth setup (Wave-3D, 2026-07-19) · mid-tier at a distinct hour. Wave-1 arcana: win/loss keys inherited VERBATIM from the medium sibling (bespoke engine schema); numbers between the easy and hard bookends.",
+ "ambient_pool": [
+  "the man at fourteen has the lapels-smoothing gesture of a man who once cared deeply about his appearance.",
+  "the leaded window shows the dining room. sammy at the well. nicola at the stand. mrs. karras at her usual.",
+  "sammy will, in some minutes, knock three short raps at the office door.",
+  "the brass clock chimes the half hour."
+ ],
+ "ambient_every_n": 2,
+ "scenario_visitors": [
+  {
+   "id": "the_margin_note",
+   "name": "the 1981 margin note, in pencil",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "helm",
+    "to": "helm"
+   },
+   "lore_token": "weighed_1981",
+   "lore_text": "'Verett Sr. carried us, March–June.' Pencil, from a man who inked everything — pencil because a debt of carrying isn't a ledger entry, and he knew it, and he wanted his son to find it someday holding this exact file.",
+   "accent": "#b8a888",
+   "mood": "lonely",
+   "tutorial_note": "The note connects through reading it BEFORE the hold music ends — let 1981 be in the room for the call without letting it run the call.",
+   "steps": {
+    "greet": "It's faded to the color of the paper almost. You have to angle the page at the window.",
+    "listen": "March to June, 1981: the spring the boiler went. Verett Sr. delivered on credit for fourteen weeks and never once mentioned it at church, which everyone knew, because everyone knew.",
+    "deliver": "You put the note back in the file, face up. The call proceeds: shortages named, prices held, firm and specific. And the last line of the call is yours: 'Your father carried this boat once. Invoice the difference; the account stays.'",
+    "sit_with": "Verett Jr. is quiet three seconds — the exact length of finding out your father was better than you knew. The Friday cases arrive complete from then on. Some contracts renew on paper. This one renewed in pencil."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

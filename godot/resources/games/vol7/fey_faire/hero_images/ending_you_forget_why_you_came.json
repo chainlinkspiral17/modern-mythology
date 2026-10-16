@@ -1,0 +1,165 @@
+{
+  "id": "ending_you_forget_why_you_came",
+  "notes": "Night 7. The empty lot. A single cricket on a patch of dirt, watching. THE FAIRE MOVED ON.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#0a0810",
+    "#181424",
+    "#282034",
+    "#4a4058",
+    "#8a8098",
+    "#f8c848",
+    "#383040"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        50,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "hline",
+      "y": 50,
+      "x_range": [
+        0,
+        160
+      ],
+      "color": 2
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          30,
+          60
+        ],
+        [
+          70,
+          66
+        ],
+        [
+          120,
+          72
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          36,
+          62
+        ],
+        [
+          76,
+          68
+        ],
+        [
+          126,
+          74
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        64
+      ],
+      "size": 5,
+      "color": 6
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        62
+      ],
+      "size": 2,
+      "color": 5
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          78,
+          64
+        ],
+        [
+          76,
+          66
+        ]
+      ],
+      "color": 5
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          82,
+          64
+        ],
+        [
+          84,
+          66
+        ]
+      ],
+      "color": 5
+    },
+    {
+      "op": "dot",
+      "xy": [
+        20,
+        12
+      ],
+      "size": 1,
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        52,
+        8
+      ],
+      "size": 1,
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        96,
+        14
+      ],
+      "size": 1,
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        136,
+        10
+      ],
+      "size": 1,
+      "color": 4
+    },
+    {
+      "op": "text",
+      "xy": [
+        36,
+        30
+      ],
+      "s": "THE FAIRE MOVED ON",
+      "color": 4
+    }
+  ]
+}

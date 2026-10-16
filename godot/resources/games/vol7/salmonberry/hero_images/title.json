@@ -1,0 +1,308 @@
+{
+  "id": "salmonberry_title",
+  "notes": "Title \u00b7 the town in fog \u2014 the cannery on its pilings, the grandmother's house at the river mouth, gulls.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#23282a",
+    "#c8cec4",
+    "#3b5a6b",
+    "#b8a882",
+    "#33452f",
+    "#9c5a3a",
+    "#d8b048",
+    "#eef0ec",
+    "#caa25a",
+    "#e8c060",
+    "#6c7f8a",
+    "#d98a9a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        48,
+        90
+      ],
+      "x_range": [
+        0,
+        160
+      ],
+      "stops": [
+        2,
+        2
+      ]
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        60,
+        160,
+        30
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        58,
+        160,
+        3
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        104,
+        44,
+        44,
+        16
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        104,
+        44,
+        44,
+        3
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        108,
+        60,
+        2,
+        10
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        115,
+        60,
+        2,
+        10
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        60,
+        2,
+        10
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        129,
+        60,
+        2,
+        10
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        136,
+        60,
+        2,
+        10
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        143,
+        60,
+        2,
+        10
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        46,
+        20,
+        14
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        23,
+        43,
+        22,
+        3
+      ],
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        23,
+        43
+      ],
+      "to": [
+        34,
+        37
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        34,
+        37
+      ],
+      "to": [
+        45,
+        43
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        31,
+        52
+      ],
+      "r": 1,
+      "color": 9
+    },
+    {
+      "op": "streak",
+      "from": [
+        93,
+        26
+      ],
+      "to": [
+        96,
+        24
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        24
+      ],
+      "to": [
+        99,
+        26
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        109,
+        32
+      ],
+      "to": [
+        112,
+        30
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        112,
+        30
+      ],
+      "to": [
+        115,
+        32
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        67,
+        20
+      ],
+      "to": [
+        70,
+        18
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        70,
+        18
+      ],
+      "to": [
+        73,
+        20
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "text",
+      "xy": [
+        44,
+        70
+      ],
+      "s": "SALMONBERRY",
+      "color": 5
+    },
+    {
+      "op": "text",
+      "xy": [
+        52,
+        80
+      ],
+      "s": "A YEAR ON THE COAST",
+      "color": 4
+    }
+  ]
+}

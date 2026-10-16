@@ -1,0 +1,391 @@
+"""Chief Miller's home office — vol6 — 892-area Harmony Creek Estates.
+
+Canon (vol6 ch4): a FORMAL DINING ROOM he converted in 2018. The dining
+table became his desk; the built-in china cabinet became his file
+storage; he left the chandelier hanging because his wife wanted it. On
+the desk: his NexCorp-monitored service laptop and TWO phones — the
+personal one in his pocket, the other face-down on the desk (the one
+that buzzes with the transport order). Rain hits the window behind him.
+
+So the room reads as domestic dining-room bones wearing a cop's working
+office: dark walnut table-desk, the glass-front china cabinet now full
+of binders instead of china, a wall map of the subdivision, framed
+commendations, a police scanner — under a kept brass chandelier. The
+look is cool-rainy daylight from the N window + warm chandelier/lamp
+practicals (miller_office.tscn does the lighting).
+
+Coordinate frame: Blender Z-up. Interior y 0 (S door wall) → +Y (N),
+walls x = ±ROOM_W/2, ceiling CEIL. glTF remaps to Godot (x, z, -y).
+make_box / make_cyl only.
+"""
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.views import make_view
+from _props.structure import make_case_shell
+from _props.structure import (make_floor, make_wall, make_ceiling,
+                              make_crown_molding, make_window, make_wall_with_openings)
+from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+
+ROOM_W = 4.6      # x ∈ [-2.3, 2.3]
+ROOM_D = 5.2      # y ∈ [0, 5.2]  (door/S wall at y=0)
+CEIL = 2.7        # dining rooms sit a touch taller
+
+# ── Palette — formal dining bones, cop's working office ──
+COL_WALL = (0.50, 0.50, 0.52, 1.0)      # muted slate — a cool room
+COL_WAINSCOT = (0.40, 0.34, 0.28, 1.0)  # wood wainscot lower band
+COL_BASE = (0.30, 0.24, 0.18, 1.0)
+COL_FLOOR = (0.40, 0.28, 0.18, 1.0)     # dark oak
+COL_SEAM = (0.26, 0.17, 0.10, 1.0)
+COL_WALNUT = (0.30, 0.19, 0.11, 1.0)    # the table-desk
+COL_WALNUT_DK = (0.22, 0.13, 0.08, 1.0)
+COL_BRASS = (0.66, 0.50, 0.24, 1.0)
+COL_GLASS = (0.58, 0.66, 0.72, 0.5)
+COL_RAINGLASS = (0.34, 0.40, 0.46, 0.7) # cold wet window
+COL_PAPER = (0.90, 0.88, 0.82, 1.0)
+COL_BINDER_A = (0.34, 0.24, 0.20, 1.0)
+COL_BINDER_B = (0.24, 0.30, 0.34, 1.0)
+COL_BINDER_C = (0.40, 0.36, 0.26, 1.0)
+COL_LAPTOP = (0.10, 0.10, 0.12, 1.0)
+COL_SCREEN = (0.36, 0.52, 0.60, 1.0)    # faint cold screen glow
+COL_PHONE = (0.08, 0.08, 0.10, 1.0)
+COL_SCANNER = (0.14, 0.14, 0.16, 1.0)
+COL_SCANNER_LED = (0.90, 0.30, 0.16, 1.0)
+COL_LAMPSHADE = (0.86, 0.78, 0.58, 1.0)
+COL_LAMPGLOW = (1.0, 0.86, 0.58, 1.0)
+COL_CANDLE = (0.55, 0.52, 0.46, 1.0)    # chandelier bulbs — UNLIT (canon)
+COL_RUG = (0.44, 0.26, 0.24, 1.0)
+COL_RUG_BORDER = (0.28, 0.16, 0.15, 1.0)
+COL_MAP = (0.72, 0.70, 0.60, 1.0)       # subdivision plat map
+COL_MAP_INK = (0.30, 0.34, 0.30, 1.0)
+COL_FRAME_GOLD = (0.70, 0.56, 0.26, 1.0)
+COL_PHOTO = (0.72, 0.70, 0.66, 1.0)
+COL_LEATHER = (0.26, 0.18, 0.16, 1.0)   # desk chair
+
+
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
+               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    pal = {"wall": COL_WALL, "baseboard": COL_BASE}
+    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
+        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+                  axis='Y', palette=pal, baseboard_face_sign=bb)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.0, 1.55, 1.60, 1.30)])
+    make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0),
+              length=ROOM_W / 2.0 - 1.0, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.5), 0.0, 0),
+              length=ROOM_W / 2.0 - 1.0, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.32), (2.0, 0.20, 0.64), COL_WALL)
+    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
+                 size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
+    # Wainscot band on the W and E walls (dining-room bones)
+    for nm, x, fs in [("Wainscot_W", -ROOM_W / 2.0 + 0.06, +1), ("Wainscot_E", ROOM_W / 2.0 - 0.06, -1)]:
+        make_box(nm, (x, ROOM_D / 2.0, 0.55), (0.03, ROOM_D, 0.86), COL_WAINSCOT)
+        make_box(f"{nm}_Rail", (x, ROOM_D / 2.0, 1.00), (0.05, ROOM_D, 0.05), COL_WALNUT_DK)
+    for nm, ax, length, wx, wy in [
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W / 2.0 + 0.10, ROOM_D / 2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W / 2.0 - 0.10, ROOM_D / 2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D - 0.10),
+            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
+                           ceil_z=CEIL, palette={"wood": COL_WALNUT})
+    # Rainy window on the N wall (behind the desk)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.55), width=1.60, height=1.30,
+                cross_mullion=True,
+                palette={"glass": COL_RAINGLASS, "warm": (0.42, 0.48, 0.54, 0.5)}, see_through=True)
+
+
+def build_desk():
+    """The former dining table, now the desk — set near the N window so he
+    sits with the rain behind him. Service laptop + two phones (one
+    face-down), a green banker's lamp, papers, a coffee mug, a landline."""
+    dx, dy = 0.0, ROOM_D - 1.5
+    top_z = 0.75
+    # Big solid table-desk with a thick apron (reads as a dining table)
+    make_box("Desk_Top", (dx, dy, top_z), (2.10, 1.05, 0.06), COL_WALNUT)
+    make_box("Desk_Apron", (dx, dy, top_z - 0.10), (2.00, 0.95, 0.12), COL_WALNUT_DK)
+    for lx in (-0.92, 0.92):
+        for ly in (-0.40, 0.40):
+            make_box(f"Desk_Leg_{lx}_{ly}", (dx + lx, dy + ly, top_z / 2.0),
+                     (0.10, 0.10, top_z), COL_WALNUT_DK)
+    # Service laptop (open, faint cold screen)
+    make_box("Laptop_Base", (dx - 0.35, dy - 0.05, top_z + 0.04), (0.42, 0.30, 0.03), COL_LAPTOP)
+    # the lid on the base's back edge (2026-09-23: 2.5 cm behind it)
+    make_box("Laptop_Lid", (dx - 0.35, dy + 0.115, top_z + 0.20), (0.42, 0.03, 0.28), COL_LAPTOP)
+    make_box("Laptop_Screen", (dx - 0.35, dy + 0.09, top_z + 0.20), (0.36, 0.02, 0.22), COL_SCREEN)
+    # Two phones — personal (upright) + the other FACE-DOWN
+    make_box("Phone_Personal", (dx + 0.30, dy - 0.30, top_z + 0.04), (0.09, 0.17, 0.02), COL_PHONE)
+    make_box("Phone_FaceDown", (dx + 0.55, dy + 0.10, top_z + 0.03), (0.09, 0.17, 0.015), COL_PHONE)
+    make_box("Phone_FaceDown_Back", (dx + 0.55, dy + 0.10, top_z + 0.038), (0.06, 0.10, 0.004), COL_SCANNER)
+    # Green banker's lamp
+    make_box("Lamp_Base", (dx + 0.72, dy + 0.20, top_z + 0.04), (0.20, 0.12, 0.03), COL_BRASS)
+    make_cyl("Lamp_Stem", (dx + 0.72, dy + 0.20, top_z + 0.18), 0.012, 0.26, COL_BRASS, segments=6)
+    make_box("Lamp_Shade", (dx + 0.72, dy + 0.20, top_z + 0.32), (0.26, 0.12, 0.08), (0.14, 0.34, 0.22, 1.0))
+    make_box("Lamp_Glow", (dx + 0.72, dy + 0.20, top_z + 0.30), (0.22, 0.09, 0.03), COL_LAMPGLOW)
+    # Papers, a manila folder, coffee mug, a black landline
+    for pi in range(3):
+        make_box(f"Desk_Paper_{pi}", (dx - 0.05 + pi * 0.03, dy - 0.30, top_z + 0.04 + pi * 0.006),
+                 (0.30, 0.40, 0.006), COL_PAPER)
+    make_box("Desk_Folder", (dx + 0.10, dy + 0.28, top_z + 0.05), (0.34, 0.44, 0.02), COL_BINDER_C)
+    make_cyl("Desk_Mug", (dx - 0.62, dy - 0.20, top_z + 0.09), 0.04, 0.10, COL_WALNUT_DK, segments=10)
+    make_box("Landline", (dx - 0.70, dy + 0.24, top_z + 0.06), (0.22, 0.28, 0.06), COL_SCANNER)
+    make_box("Landline_Handset", (dx - 0.70, dy + 0.12, top_z + 0.09), (0.24, 0.07, 0.05), COL_LAPTOP)
+    # Leather desk chair behind (N of) the desk, facing S
+    ch_y = dy + 0.85
+    # the column on a base (2026-09-23: it stopped 8 cm over the floor)
+    make_cyl("Chair_Base", (dx, ch_y, 0.04), 0.28, 0.08, COL_SCANNER, segments=10)
+    make_cyl("Chair_Column", (dx, ch_y, 0.30), 0.03, 0.44, COL_SCANNER, segments=6)
+    make_box("Chair_Seat", (dx, ch_y, 0.52), (0.52, 0.50, 0.10), COL_LEATHER)
+    make_box("Chair_Back", (dx, ch_y + 0.24, 0.86), (0.52, 0.08, 0.60), COL_LEATHER)
+
+
+def build_china_cabinet():
+    """The built-in china cabinet on the E wall, now file storage: glass-
+    front upper full of binders, a solid lower cabinet, a police scanner
+    on top."""
+    cx = ROOM_W / 2.0 - 0.26
+    cy = 1.7
+    make_box("Cabinet_Lower", (cx, cy, 0.44), (0.44, 1.8, 0.88), COL_WALNUT)
+    for dz in (0.28, 0.62):
+        make_box(f"Cabinet_Door_{dz}", (cx - 0.22, cy - 0.42, dz), (0.02, 0.7, 0.28), COL_WALNUT_DK)
+        make_cyl(f"Cabinet_Knob_{dz}", (cx - 0.23, cy - 0.42, dz), 0.02, 0.03, COL_BRASS, segments=6, axis='X')
+    # Glass-front upper with shelves of binders
+    # (2026-09-24: a solid frame, a solid "hollow" inside it, the binders
+    # inside both, a glass slab in front — and the lowest shelf hung under
+    # the cabinet's own floor. An open shell now: its floor is the first
+    # shelf, two shelves over it, a dark back lining, glints for glass.)
+    make_case_shell("Cabinet_Upper_Frame", (cx, cy, 1.72), (0.44, 1.8, 1.04), COL_WALNUT, open_face='-X', wall=0.03)
+    make_box("Cabinet_Upper_Hollow", (cx + 0.185, cy, 1.72), (0.01, 1.74, 0.98), COL_WALNUT_DK)
+    for gi, (gy, gw) in enumerate(((-0.55, 0.03), (-0.45, 0.012))):
+        make_box(f"Cabinet_Glint_{gi}", (cx - 0.215, cy + gy, 1.72), (0.004, gw, 0.98), (0.86, 0.90, 0.92, 1.0))
+    for si, sz in enumerate((1.23, 1.56, 1.89)):
+        if si:
+            make_box(f"Cabinet_Shelf_{si}", (cx - 0.01, cy, sz - 0.015), (0.38, 1.74, 0.03), COL_WALNUT_DK)
+        for bi in range(7):
+            by = cy - 0.72 + bi * 0.22
+            h = 0.27 + 0.03 * (bi % 2)
+            col = [COL_BINDER_A, COL_BINDER_B, COL_BINDER_C][(si + bi) % 3]
+            make_box(f"Binder_{si}_{bi}", (cx - 0.04, by, sz + h / 2.0),
+                     (0.30, 0.18, h), col)
+    # Police scanner on top of the cabinet, one red LED
+    make_box("Scanner", (cx, cy - 0.4, 2.30), (0.34, 0.24, 0.14), COL_SCANNER)
+    make_box("Scanner_Face", (cx - 0.18, cy - 0.4, 2.30), (0.02, 0.18, 0.08), (0.20, 0.24, 0.26, 1.0))
+    make_box("Scanner_LED", (cx - 0.19, cy - 0.46, 2.33), (0.01, 0.03, 0.02), COL_SCANNER_LED)
+    for ai in range(2):
+        make_cyl(f"Scanner_Ant_{ai}", (cx + 0.10 + ai * 0.06, cy - 0.32, 2.48), 0.006, 0.24,
+                 COL_SCANNER, segments=4)
+
+
+def build_chandelier():
+    """The kept brass chandelier ABOVE THE DESK — and canon says it
+    is NOT lit ("The chandelier above his desk — which is not lit —
+    rattles very faintly"). Unlit glass, centered on the desk at
+    y=3.70; the desk lamp is the practical."""
+    cx, cy = 0.0, 3.70
+    import math as _m
+    make_cyl("Chand_Chain", (cx, cy, CEIL - 0.20), 0.01, 0.40, COL_WALNUT_DK, segments=4)
+    make_cyl("Chand_Hub", (cx, cy, CEIL - 0.44), 0.06, 0.10, COL_BRASS, segments=8)
+    make_cyl("Chand_Stem", (cx, cy, CEIL - 0.58), 0.02, 0.20, COL_BRASS, segments=6)
+    for k in range(6):
+        a = k * (2 * _m.pi / 6)
+        ax_, ay_ = cx + _m.cos(a) * 0.34, cy + _m.sin(a) * 0.34
+        # each arm runs from the hub to its own cup (2026-09-23: axis-
+        # aligned rods missed four of the six cups)
+        make_tube(f"Chand_Arm_{k}", [(cx, cy, CEIL - 0.52), (ax_, ay_, CEIL - 0.52)],
+                  0.012, COL_BRASS, segments=5)
+        make_cyl(f"Chand_Cup_{k}", (ax_, ay_, CEIL - 0.50), 0.03, 0.03, COL_BRASS, segments=6)
+        make_cyl(f"Chand_Candle_{k}", (ax_, ay_, CEIL - 0.44), 0.015, 0.08, (0.90, 0.86, 0.78, 1.0), segments=6)
+        make_box(f"Chand_Flame_{k}", (ax_, ay_, CEIL - 0.38), (0.03, 0.03, 0.05), COL_CANDLE)
+
+
+def build_wall_dressing():
+    """W wall: a framed plat map of the subdivision + framed commendations
+    + a family photo (the small domestic thing). A short bookshelf of
+    binders under the map. A rug centering the room."""
+    wx = -ROOM_W / 2.0 + 0.115   # on the wall's face (2026-10-09: the map and the commendations hung inside it)
+    # Framed subdivision plat map
+    make_box("Map_Frame", (wx, 3.4, 1.70), (0.03, 1.30, 0.90), COL_WALNUT_DK)
+    make_box("Map_Paper", (wx + 0.012, 3.4, 1.70), (0.01, 1.16, 0.78), COL_MAP)
+    for gi in range(5):
+        make_box(f"Map_Road_{gi}", (wx + 0.016 + 0.0371, 3.0 + gi * 0.18, 1.70), (0.005, 0.02, 0.72), COL_MAP_INK)
+    for gi in range(4):
+        make_box(f"Map_RoadH_{gi}", (wx + 0.016 + 0.0371, 3.4, 1.42 + gi * 0.18), (0.005, 1.10, 0.02), COL_MAP_INK)
+    make_box("Map_Zone_G", (wx + 0.02 + 0.0326, 3.7, 1.55), (0.004, 0.16, 0.16), COL_SCANNER_LED)  # the flagged zone
+    # Framed commendations (two)
+    make_box("Commend_1_Frame", (wx, 1.7, 1.9), (0.03, 0.34, 0.44), COL_FRAME_GOLD)
+    make_box("Commend_1_Cert", (wx + 0.012, 1.7, 1.9), (0.01, 0.26, 0.34), COL_PAPER)
+    make_box("Commend_2_Frame", (wx, 1.7, 1.36), (0.03, 0.30, 0.38), COL_FRAME_GOLD)
+    make_box("Commend_2_Cert", (wx + 0.012, 1.7, 1.36), (0.01, 0.22, 0.28), COL_PAPER)
+    # Family photo on a short bookshelf under the map
+    make_box("LowShelf", (wx + 0.16, 3.4, 0.90), (0.30, 1.10, 0.04), COL_WALNUT)
+    # (2026-10-09) open, not a solid block that swallowed its binders
+    make_box("LowShelf_Plinth", (wx + 0.16, 3.4, 0.24), (0.30, 1.10, 0.48), COL_WALNUT_DK)
+    make_box("LowShelf_Back", (wx + 0.02, 3.4, 0.69), (0.02, 1.10, 0.42), COL_WALNUT_DK)
+    for e, sy in (("S", 2.86), ("N", 3.94)):
+        make_box(f"LowShelf_Side_{e}", (wx + 0.16, sy, 0.69), (0.30, 0.02, 0.42), COL_WALNUT_DK)
+    for bi in range(8):
+        by = 2.95 + bi * 0.12
+        make_box(f"LowBinder_{bi}", (wx + 0.16, by, 0.65), (0.24, 0.10, 0.34),
+                 [COL_BINDER_A, COL_BINDER_B, COL_BINDER_C][bi % 3])
+    make_box("FamilyPhoto_Frame", (wx + 0.10, 3.9, 0.98), (0.16, 0.20, 0.14), COL_FRAME_GOLD)
+    make_box("FamilyPhoto_Img", (wx + 0.10, 3.9, 0.98), (0.10, 0.14, 0.10), COL_PHOTO)
+    # Rug centering the room
+    make_box("Rug", (0.0, ROOM_D / 2.0 - 0.3, 0.02), (2.8, 3.2, 0.02), COL_RUG)
+    make_box("Rug_Border", (0.0, ROOM_D / 2.0 - 0.3, 0.025), (2.6, 3.0, 0.015), COL_RUG_BORDER)
+    make_box("Rug_Field", (0.0, ROOM_D / 2.0 - 0.3, 0.03), (2.3, 2.7, 0.012), COL_RUG)
+
+
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0))
+    pw = COL_WALL
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_threshold("Threshold_Entry", (0.0, 0.10), width=1.9, axis='X')
+    make_light_switch("Switch_Entry", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues; the laptop and both phones exist (markers only).
+    Built: THE BILLS ("paying the August bills that have come in
+    this week") — the envelope stack + the open checkbook at the
+    desk's west end, past the laptop.
+    """
+    make_box("August_Bills_Stack", (-0.75, 3.85, 0.782), (0.16, 0.20, 0.024), (0.90, 0.88, 0.82, 1.0))
+    make_box("Bills_Top_Envelope", (-0.74, 3.86, 0.7955), (0.15, 0.19, 0.003), (0.84, 0.86, 0.90, 1.0))
+    make_box("Bills_Checkbook", (-0.75, 3.60, 0.7745), (0.16, 0.08, 0.009), (0.24, 0.30, 0.44, 1.0))
+
+
+BX = 30.0                    # Bianca's office stands 30 m east of Mike's (no window of his sees it)
+B_W, B_D, B_CEIL = 3.6, 3.4, 2.5
+
+
+def build_bianca_office_2026_10():
+    """BIANCA'S OFFICE (2026-10-10). vol6 ch17: "At nine seventeen AM Friday
+    she is at her desk in the small office off the master bedroom, paying
+    the August bills that have come in this week. The electric bill is
+    ninety-six dollars ... The cable bill is one seventy-two. The Visa bill
+    is — she opens it — higher than she had expected ... She closes the
+    laptop." That scene played in THIS room — Mike's converted dining room
+    downstairs — so it is built here as its own small room upstairs: the
+    white writing desk under the morning window over the back yard, the
+    open laptop, the three bills and their torn envelopes, the checkbook,
+    the calculator, her coffee, the lamp, Sam's school photograph, the
+    August calendar, the bookshelf, the basket of mail; through the
+    doorway in its W wall, the corner of the master bedroom. Preset
+    `miller_office_bianca`; its markers and lights are suffixed."""
+    from _props.geometry import make_lathe, make_rot_box, make_chamfer_box
+    from _props.furniture import make_lamp
+    from _props.decor import make_calendar
+    x0, x1 = BX - B_W / 2.0, BX + B_W / 2.0
+    wp = {"wall": (0.86, 0.84, 0.80, 1.0), "baseboard": (0.94, 0.94, 0.92, 1.0)}
+    make_box("Bianca_Floor", (BX - 1.4, B_D / 2.0, -0.05), (B_W + 3.0, B_D + 0.4, 0.10), (0.66, 0.62, 0.56, 1.0))
+    make_box("Bianca_Ceil", (BX - 1.4, B_D / 2.0, B_CEIL + 0.05), (B_W + 3.0, B_D + 0.4, 0.10), (0.94, 0.94, 0.92, 1.0))
+    make_wall_with_openings("Bianca_Wall_W", (x0, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp,
+                            baseboard_face_sign=+1, openings=[(1.20, 1.03, 0.90, 2.05)])
+    make_wall("Bianca_Wall_E", (x1, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp, baseboard_face_sign=-1)
+    make_wall("Bianca_Wall_S", (BX - 1.4, 0.0, 0), length=B_W + 3.2, height=B_CEIL, axis='X', palette=wp, baseboard_face_sign=+1)
+    make_wall_with_openings("Bianca_Wall_N", (BX - 1.4, B_D, 0), length=B_W + 3.2, height=B_CEIL, axis='X', palette=wp,
+                            baseboard_face_sign=-1, openings=[(BX + 0.4, 1.50, 1.20, 1.10)])
+    make_window("Bianca_Window_N", (BX + 0.4, B_D - 0.10, 1.50), width=1.20, height=1.10, see_through=True)
+    # the master bedroom past the doorway: its carpet, the bed's corner, the dresser
+    make_wall("Bianca_Bedroom_Wall_W", (x0 - 3.0, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp, baseboard_face_sign=+1)
+    make_box("Bianca_Bedroom_Carpet", (x0 - 1.5, B_D / 2.0, 0.005), (2.9, B_D - 0.2, 0.01), (0.70, 0.66, 0.60, 1.0))
+    make_box("Bianca_Bedroom_Bed_Frame", (x0 - 1.4, 2.2, 0.25), (1.60, 1.60, 0.50), (0.40, 0.30, 0.22, 1.0))
+    make_box("Bianca_Bedroom_Bed_Spread", (x0 - 1.4, 2.2, 0.53), (1.64, 1.64, 0.06), (0.62, 0.70, 0.76, 1.0))
+    make_box("Bianca_Bedroom_Dresser", (x0 - 2.7, 0.70, 0.45), (0.50, 1.00, 0.90), (0.40, 0.30, 0.22, 1.0))
+    # (2026-10-12) the bed as a bed: the headboard against the N wall side, two pillows,
+    # the nightstand at its E side with the bee-balm book and the reading lamp (vol6 ch23:
+    # "Bianca is in her bed at eleven-oh-two. The book ... is on the nightstand")
+    make_box("Bianca_Bedroom_Headboard", (x0 - 1.4, 3.05, 0.70), (1.66, 0.06, 0.90), (0.36, 0.27, 0.20, 1.0))
+    for pi_, px in enumerate((x0 - 1.80, x0 - 1.00)):
+        make_chamfer_box(f"Bianca_Bedroom_Pillow_{pi_}", (px, 2.78, 0.62), (0.62, 0.36, 0.12), (0.94, 0.94, 0.92, 1.0), chamfer=0.04)
+    nx_, ny_ = x0 - 0.30, 2.70
+    make_box("Bianca_Bedroom_Nightstand", (nx_, ny_, 0.28), (0.40, 0.40, 0.56), (0.40, 0.30, 0.22, 1.0))
+    make_box("Bianca_Bedroom_Nightstand_Drawer", (nx_ - 0.205, ny_, 0.44), (0.012, 0.32, 0.12), (0.34, 0.25, 0.18, 1.0))
+    make_rot_box("Bianca_Bedroom_Book", (nx_ - 0.04, ny_ - 0.08, 0.575), (0.15, 0.22, 0.03), (0.46, 0.58, 0.40, 1.0), yaw=0.25)
+    make_lamp("Bianca_Bedroom_Lamp", nx_ + 0.05, ny_ + 0.10, base_z=0.56, h=0.40, shade_col=(0.94, 0.90, 0.80, 1.0), body_col=(0.80, 0.80, 0.78, 1.0))
+    # the desk under the window
+    dx, dy = BX + 0.4, B_D - 0.42
+    make_box("Bianca_Desk_Top", (dx, dy, 0.74), (1.20, 0.60, 0.03), (0.94, 0.93, 0.90, 1.0))
+    for i, (lx, ly) in enumerate(((-0.56, -0.26), (0.56, -0.26), (-0.56, 0.26), (0.56, 0.26))):
+        make_box(f"Bianca_Desk_Leg_{i}", (dx + lx, dy + ly, 0.36), (0.04, 0.04, 0.72), (0.92, 0.91, 0.88, 1.0))
+    make_box("Bianca_Desk_Drawer", (dx, dy - 0.29, 0.67), (0.60, 0.02, 0.11), (0.90, 0.89, 0.86, 1.0))
+    top = 0.755
+    make_box("Bianca_Laptop_Base", (dx - 0.10, dy - 0.02, top + 0.009), (0.32, 0.22, 0.018), (0.70, 0.72, 0.74, 1.0))
+    make_rot_box("Bianca_Laptop_Screen", (dx - 0.10, dy + 0.09, top + 0.12), (0.32, 0.012, 0.21), (0.70, 0.72, 0.74, 1.0), pitch=0.0, roll=0.0)
+    make_box("Bianca_Laptop_Display", (dx - 0.10, dy + 0.082, top + 0.12), (0.29, 0.002, 0.18), (0.36, 0.58, 0.80, 1.0))
+    # the bills: three statements and their torn envelopes
+    for i, (bx_, by_, col) in enumerate(((dx + 0.28, dy - 0.10, (0.96, 0.95, 0.92, 1.0)), (dx + 0.40, dy + 0.06, (0.94, 0.94, 0.96, 1.0)),
+                                        (dx + 0.18, dy + 0.12, (0.96, 0.94, 0.90, 1.0)))):
+        make_rot_box(f"Bill_{i}", (bx_, by_, top + 0.002 + i * 0.002), (0.216, 0.279, 0.002), col, yaw=0.15 * (i - 1))
+        make_rot_box(f"Bill_{i}_Logo", (bx_ - 0.06, by_ + 0.10, top + 0.004 + i * 0.002), (0.06, 0.03, 0.001),
+                     [(0.86, 0.40, 0.16, 1.0), (0.20, 0.36, 0.70, 1.0), (0.16, 0.24, 0.56, 1.0)][i], yaw=0.15 * (i - 1))
+        make_rot_box(f"Bill_{i}_Envelope", (dx - 0.45 + i * 0.05, dy - 0.15 + i * 0.03, top + 0.003 + i * 0.002), (0.24, 0.105, 0.003),
+                     (0.94, 0.94, 0.90, 1.0), yaw=0.3 * i)
+    make_box("Bianca_Checkbook", (dx + 0.45, dy - 0.18, top + 0.008), (0.17, 0.08, 0.016), (0.20, 0.30, 0.46, 1.0))
+    make_box("Bianca_Calculator", (dx - 0.42, dy + 0.12, top + 0.01), (0.09, 0.15, 0.02), (0.20, 0.20, 0.22, 1.0))
+    make_lathe("Bianca_Coffee_Mug", (dx + 0.50, dy + 0.18, top), [(0.0, 0.0), (0.04, 0.0), (0.042, 0.10), (0.0, 0.10)], (0.86, 0.80, 0.66, 1.0), segments=10)
+    make_box("Sam_School_Photo", (dx - 0.48, dy + 0.24, top + 0.08), (0.12, 0.02, 0.16), (0.40, 0.30, 0.22, 1.0))
+    make_lamp("Bianca_Desk_Lamp", dx - 0.48, dy - 0.05, base_z=top, h=0.42, shade_col=(0.94, 0.90, 0.80, 1.0), body_col=(0.80, 0.80, 0.78, 1.0))
+    from _props.furniture import make_chair
+    make_chair("Bianca_Chair", dx - 0.05, dy - 0.62, yaw=0.0, wood=(0.90, 0.89, 0.86, 1.0), seat_col=(0.62, 0.66, 0.70, 1.0), w=0.44)
+    # the bookshelf and the calendar on the E wall, the basket of mail, the wastebasket
+    # the bookshelf: a carcass (back, sides, top, three shelves) with the books ON the shelves
+    sx, sy0, sy1 = x1 - 0.10 - 0.16, 0.80, 1.60
+    white = (0.94, 0.93, 0.90, 1.0)
+    make_box("Bianca_Bookshelf_Back", (x1 - 0.10 - 0.01, (sy0 + sy1) / 2.0, 0.80), (0.02, sy1 - sy0, 1.60), white)
+    for i, y in enumerate((sy0 + 0.01, sy1 - 0.01)):
+        make_box(f"Bianca_Bookshelf_Side_{i}", (sx, y, 0.80), (0.32, 0.02, 1.60), white)
+    for s_i, z in enumerate((0.04, 0.54, 1.04, 1.585)):
+        make_box(f"Bianca_Bookshelf_Shelf_{s_i}", (sx, (sy0 + sy1) / 2.0, z), (0.32, sy1 - sy0 - 0.04, 0.03), white)
+    for s_i in range(3):
+        z0 = (0.04, 0.54, 1.04)[s_i] + 0.015
+        for k in range(6):
+            make_box(f"Bianca_Book_{s_i}_{k}", (sx + 0.02, 0.88 + k * 0.11, z0 + 0.13), (0.22, 0.08, 0.26),
+                     [(0.62, 0.30, 0.28, 1.0), (0.30, 0.44, 0.60, 1.0), (0.84, 0.76, 0.52, 1.0)][(s_i + k) % 3])
+    make_calendar("Bianca_Calendar_August", (x1 - 0.10, 2.40, 1.55), axis='Y')
+    make_cyl("Bianca_Wastebasket", (dx + 0.55, dy - 0.55, 0.15), 0.12, 0.30, (0.80, 0.80, 0.78, 1.0), segments=10)
+    make_view("Bianca_View_N", "N", B_D, BX + 0.4, kind="back", ground_z=0.0, seed=4)
+
+
+def main():
+    clear_scene()
+    build_shell()
+    build_desk()
+    build_china_cabinet()
+    build_chandelier()
+    build_wall_dressing()
+    build_detail_pass_2026_08()
+    build_hero_props_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.0, kind="back", ground_z=0.0, seed=1)   # the subdivision back yard in the rain
+    build_bianca_office_2026_10()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/miller_office.glb"))
+    print(f"\n[build_miller_office] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()

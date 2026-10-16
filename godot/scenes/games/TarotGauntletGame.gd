@@ -26,7 +26,6 @@ var _last_summary: Dictionary = {}
 # ── Data file paths ──────────────────────────────────────────────────
 const DATA_ROOT := "res://resources/games/"
 const FRAMEWORK_CORE := DATA_ROOT + "framework/action_tableau_core.json"
-const FRAMEWORK_DRAFT_POOLS := DATA_ROOT + "framework/draft_pools.json"
 
 # Scenario selection — set by start_scenario() before _ready
 var _arcana_id: String = "fool"
@@ -35,6 +34,7 @@ var _hand_id: String = "john_frank"
 
 # ── Loaded data ──────────────────────────────────────────────────────
 var _setup: Dictionary = {}
+var _campaign_seed: Dictionary = {}   # Major-Arcana thread edge (empty in free play)
 var _action_cards: Dictionary = {}       # id → card def (merged Fool + core)
 var _gravity_deck_def: Dictionary = {}
 var _finale_def: Dictionary = {}
@@ -50,7 +50,6 @@ var _piles_def: Dictionary = {}          # pile_id → {label, items[]}
 var _location: Dictionary = {}
 var _hand: Dictionary = {}
 var _die: Dictionary = {}
-var _draft_pools_def: Dictionary = {}    # framework/draft_pools.json (Wave-2 hand drafting)
 
 # ── Runtime state ────────────────────────────────────────────────────
 enum Phase {ACTION, PLANNING, SHADOW, DRIFT, UPKEEP}
@@ -157,6 +156,11 @@ var _next_gravity_canceled: bool = false
 var _active_demons: Dictionary = {}         # demon_id → turns_left
 var _player_pos: String = "counter"
 var _hand_cards: Array = []     # array of card ids currently in hand
+# THE SPREAD · carryover from the previous card of a three-card
+# spread. Set by SpreadHost between instantiate and add_child; empty
+# for normal single-scenario runs. Keys: sanity (int), inertia
+# (int), held_card (String, core-deck id). Applied in _init_run.
+var spread_carry: Dictionary = {}
 # Per-card stock counts for tableau buys. Each non-starter card
 # carries a finite stock that decrements on purchase. When stock
 # hits 0 the card disappears from the tableau. Default stock comes
@@ -188,10 +192,6 @@ var _last_finale_id: String = ""              # populated by _trigger_loss
 var _world_state_ambient_lines: Array = []
 var _world_state_active_ids: Array = []        # for log + diagnostics
 var _lore_tokens_collected: Array = []
-# Run Ledger (Wave 2) — token entries earned THIS run, buffered with
-# their earn-moment metadata and committed to user:// at run end.
-var _ledger_pending_tokens: Array = []       # [{token, kind, scenario_id, arcana, source_visitor_id, timestamp, moment}]
-var _draft_used_this_run: bool = false       # a pre-run draft happened (doubt penalty applied once)
 var _twelve_years_used: bool = false
 var _call_faith_count: int = 0
 var _game_over: bool = false
@@ -210,16 +210,24 @@ var _inspiration_label: Label = null
 var _pieces_label: Label = null
 var _player_pos_label: Label = null
 var _bindle_label: Label = null
+# Chrome panels captured at build time so board-fullscreen can hide
+# them — invisible-but-clickable controls were eating clicks over the
+# fullscreen map (a player could play cards blind).
+var _top_bar_panel: PanelContainer = null
+var _right_column: VBoxContainer = null
+var _bottom_strip: PanelContainer = null
+# Live goal readout in the VISITORS pane header area, rebuilt on _render.
+var _goal_label: RichTextLabel = null
 
 # Live BGM mood manipulator — attaches LowPass + Distortion to the
 # BGM bus and is fed by _stagnation / _doubt every _render(). Magician
 # only; for the Fool the manipulator is created (so the bus is in a
 # known state) but stays at neutral (no muffle, no distortion).
 const TarotAudioManipulatorScene := preload("res://scenes/games/TarotAudioManipulator.gd")
+const CARD_FACE := preload("res://scenes/games/GauntletCardFace.gd")
 var _audio_manipulator: Node = null
 var _visitors_box: VBoxContainer = null
 var _hand_box: HBoxContainer = null
-var _draft_btn: Button = null            # opens the pre-run Hand / draft panel
 var _tableau_box: HBoxContainer = null
 var _tableau_scroll: ScrollContainer = null
 var _log: RichTextLabel = null
@@ -231,7 +239,7 @@ var _board_bg_btn: Button = null
 # Default OFF — the painted board art (when present) is loose-fit
 # atmospheric texture and tends to compete with the engine-drawn
 # markers + labels. Player can toggle it back on via the MAP header.
-var _board_bg_visible: bool = false
+var _board_bg_visible: bool = true
 var _board_fullscreen_exit_btn: Button = null   # viewport-level overlay
 # Computed each _render_board: scales markers/meeples/labels to fit
 # the actual board content size (normal vs fullscreen).
@@ -246,6 +254,12 @@ var _view_mode: String = "fp"
 var _last_rendered_time: int = -1
 var _last_rendered_inertia: int = -1
 var _last_rendered_sanity: int = -1
+var _last_rendered_stagnation: int = -1
+var _last_rendered_doubt: int = -1
+# The per-arcana third-slot currency (Inspiration / Insight / Harvest
+# / Authority / Doctrine / Verb / Fuel) — tracked so _inspiration_label
+# pulses on change like the Fool's stats do.
+var _last_rendered_arcana_stat: int = -1
 # Every space the player has stood on at least once. Used by composite
 # connect_via conditions (e.g. stranger requires stood_on:card_wall).
 var _places_visited: Dictionary = {}
@@ -350,7 +364,12 @@ func start_scenario(arcana: String = "fool",
 					location: String = "dambrosios",
 					hand: String = "john_frank",
 					scenario_id: String = "the_leap",
-					reversed: bool = false) -> void:
+					reversed: bool = false,
+					campaign_seed: Dictionary = {}) -> void:
+	# campaign_seed carries an optional Major-Arcana thread edge
+	# ({"edge": "breath"|"calm"|"time", "label": "..."}) applied as an
+	# ADDITIVE boon to starting_state below. Empty in free play.
+	_campaign_seed = campaign_seed
 	# Hosts have historically passed mixed-convention arcana ids:
 	#   · bare         — "fool", "strength", "wheel_of_fortune"
 	#   · numbered     — "0_fool", "8_strength"
@@ -363,6 +382,8 @@ func start_scenario(arcana: String = "fool",
 	_hand_id = hand
 	_scenario_id = scenario_id
 	_reversed_mode = reversed
+	# New arcana → new bookend card (the tex cache is per-arcana).
+	_arcana_card_cache = null
 
 
 # Strip a leading numeric or Roman-numeral index prefix from an
@@ -391,24 +412,21 @@ static func _normalize_arcana_id(raw: String) -> String:
 
 
 func _ready() -> void:
+	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
+	# THE TRIP register for this pillar; pops when the game leaves the tree.
+	var trip_reg: Node = get_node_or_null("/root/TripSync")
+	if trip_reg != null and trip_reg.has_method("push_register"):
+		trip_reg.call("push_register", "arcana", self)
+	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks fire on entry
 	set_process_unhandled_key_input(true)
 	_load_data()
-	# Run Ledger (Wave 2) — load the cross-run record before _init_run
-	# so requires_token gates and the doctrine carry can read it.
-	_load_run_ledger()
 	_build_ui()
 	_init_run()
 	# Mid-run save state · attempt to resume a save for this exact
 	# arcana+scenario. If a save exists, _apply_run_state overrides
 	# the freshly-initialized state from _init_run. Audit Tier 2 fix.
-	var resumed: bool = _try_load_gauntlet_save()
-	if resumed:
+	if _try_load_gauntlet_save():
 		_log_line("[color=#a8c0a8][i]Resumed save · turn %d.[/i][/color]" % _turn)
-	else:
-		# Wave-2 cross-run systems apply to FRESH runs only — a resumed
-		# save already carries their effects inside its snapshot.
-		_apply_hand_drafting()
-		_apply_doctrine_carry()
 	_audio_play_bgm()
 	# Spawn the VnPortraitDebugOverlay here too. It's portrait-keyed
 	# by default (will show "no portraits active" in gauntlet
@@ -466,26 +484,18 @@ func _ready() -> void:
 		_log_line("")
 		_log_line("[color=#6e6258][i]%s[/i][/color]" % hint)
 	_log_line("")
-	# Run Ledger — this room's cross-run record, surfaced at run start.
-	var rec_line: String = _ledger_scenario_record_line()
-	if rec_line != "":
-		_log_line("[color=#7c8398][i]%s[/i][/color]" % rec_line)
 	_log_line("[color=#7c8398]Hand: %s[/color]" % str(_hand_cards))
+	# Arcana bookend title card over the opening log — click to begin.
+	call_deferred("_show_arcana_title_card")
 	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
 		Phase.keys()[_phase])
 	_log_line("")
 	_render()
-	# Pop the FULL LOG modal at game start so the player reads the
-	# title + scene + direction hint full-screen before play begins.
-	# Deferred so layout completes first. When a pre-run draft is
-	# actually possible (fresh run + banked insight + a live reveal)
-	# the HAND panel takes the opening slot instead — drafting is a
-	# before-you-act decision; the log stays readable in the bottom
-	# strip and via its ⛶ button.
-	if not resumed and _draft_available():
-		call_deferred("_open_draft_panel")
-	else:
-		call_deferred("_open_pane_modal_by_key", "log")
+	# The FULL LOG modal (title + scene + direction hint full-screen)
+	# opens from the title card's dismiss handler — NOT here. Opening
+	# both in the same frame stacked the log modal's dim above the
+	# title card in input order, so the player's first click closed a
+	# modal they never saw. See _show_arcana_title_card.
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -521,12 +531,12 @@ const _BGM_BY_LOCATION := {
 	# Wave-1
 	"dambrosios":                 "res://assets/audio/bgm/vol5_ambient.ogg",
 	"cathedral":                  "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
-	"riverboat":                  "res://assets/audio/bgm/vol5_riverboat_drone.ogg",
-	"anya_bungalow":              "res://assets/audio/bgm/vol5_ambient.ogg",
+	"riverboat_interior":         "res://assets/audio/bgm/vol5_riverboat_drone.ogg",  # id is riverboat_interior (was dead key "riverboat")
+	"elicia_bungalow":            "res://assets/audio/bgm/vol5_ambient.ogg",          # id is elicia_bungalow (was dead key "anya_bungalow")
 	"roberts_house":              "res://assets/audio/bgm/vol5_ambient.ogg",
 	"ember_ash_office":           "res://assets/audio/bgm/vol5_ambient.ogg",
 	"lacombe_service_garage":     "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
-	"hierophant_circuit":         "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"the_hierophant_circuit":     "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",   # id carries the "the_" (was dead key "hierophant_circuit")
 	"roadside_chapel":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
 	# Wave-2 · reuses the four available Vol5 tracks by tonal fit.
 	# Later polish can source per-location tracks; these are honest
@@ -546,34 +556,125 @@ const _BGM_BY_LOCATION := {
 	"parish_cemetery":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
 	"frog_knows_best":            "res://assets/audio/bgm/vol5_riverboat_drone.ogg",
 }
-const _SFX := {
-	"card_play":    "res://assets/audio/sfx/gauntlet_card_play.ogg",
-	"dice_roll":    "res://assets/audio/sfx/gauntlet_dice_roll.ogg",
-	"bell_tone":    "res://assets/audio/sfx/gauntlet_bell_tone.ogg",
-	"gravity_draw": "res://assets/audio/sfx/gauntlet_gravity_draw.ogg",
-	"visitor_arrive": "res://assets/audio/sfx/gauntlet_visitor_arrive.ogg",
-	"visitor_claimed": "res://assets/audio/sfx/gauntlet_visitor_claimed.ogg",
-	"visitor_connect": "res://assets/audio/sfx/gauntlet_visitor_connect.ogg",
-	"item_pickup":  "res://assets/audio/sfx/gauntlet_item_pickup.ogg",
-	"bundle":       "res://assets/audio/sfx/gauntlet_bundle.ogg",
-	"win":          "res://assets/audio/sfx/gauntlet_win.ogg",
-	"loss":         "res://assets/audio/sfx/gauntlet_loss.ogg",
-	"lore_token":   "res://assets/audio/sfx/gauntlet_lore_token.ogg",
+# The twelve `gauntlet_*.ogg` fallback paths that used to live here
+# were deleted 2026-09-11: not one of them ever existed on disk, and
+# every key below is covered by an SFXBank preset that does, so the
+# table was unreachable code pointing at twelve phantom files. If a
+# key ever loses its bank preset the right fix is to author the
+# preset, not to re-add a path to a file nobody made.
+
+# The scenario's OWN bed, by arcana × difficulty (2026-09-11). The
+# catalog has carried these fifteen since the music-slot pass —
+# "Tarot Gauntlet · Empress · hard-mode B-side. 11:14 PM, late
+# February. The river has ice in it for the first time in a decade" —
+# with no files and no caller, so every board played the location
+# drone instead. Difficulty here is a TIME OF DAY: easy is afternoon
+# light, medium the working evening, hard the small hours. Falls
+# through to _BGM_BY_LOCATION for the other seventeen arcana.
+const _BGM_BY_SCENARIO := {
+	"magician:easy":     "res://assets/audio/bgm/vol5_sinking_feeling.wav",
+	"magician:medium":   "res://assets/audio/bgm/vol5_watch_party.wav",
+	"magician:hard":     "res://assets/audio/bgm/vol5_blow_out_the_candles.wav",
+	"priestess:easy":    "res://assets/audio/bgm/vol5_cicada_session.wav",
+	"priestess:medium":  "res://assets/audio/bgm/vol5_long_quiet.wav",
+	"priestess:hard":    "res://assets/audio/bgm/vol5_tape_witness.wav",
+	"empress:easy":      "res://assets/audio/bgm/vol5_static_bloom.wav",
+	"empress:medium":    "res://assets/audio/bgm/vol5_harvest_dinner.wav",
+	"empress:hard":      "res://assets/audio/bgm/vol5_ice_in_the_river.wav",
+	"emperor:easy":      "res://assets/audio/bgm/vol5_docket.wav",
+	"emperor:medium":    "res://assets/audio/bgm/vol5_first_session.wav",
+	"emperor:hard":      "res://assets/audio/bgm/vol5_appeal.wav",
+	"hierophant:easy":   "res://assets/audio/bgm/vol5_green_phosphor.wav",
+	"hierophant:medium": "res://assets/audio/bgm/vol5_long_signal.wav",
+	"hierophant:hard":   "res://assets/audio/bgm/vol5_broadcast_night.wav",
 }
 
+
+# The ending stings (2026-09-11). A run ends on a win screen or on a
+# named Finale and neither played anything but a one-shot SFX, even
+# though the catalog had carried "THE LEAP (won)", "TWENTY-FOUR HOURS
+# (reversed)" and thirteen named finale stingers since the music-slot
+# pass. `_FINALE_STING` is keyed by the finale ids that are actually in
+# `<arcana>/finale.json`; anything unmapped falls back to the shared
+# loss sting, so all 22 arcana end on music.
+const _STING_WIN  := "res://assets/audio/bgm/vol5_gauntlet_win.wav"
+const _STING_LOSS := "res://assets/audio/bgm/vol5_gauntlet_loss.wav"
+const _FINALE_STING := {
+	# magician/finale.json
+	"the_steamboat_sails":        "res://assets/audio/bgm/vol5_finale_steamboat_sails.wav",
+	"the_river_takes_the_bank":   "res://assets/audio/bgm/vol5_finale_river_takes_bank.wav",
+	"the_maker_breaks":           "res://assets/audio/bgm/vol5_finale_maker_breaks.wav",
+	"the_maker_forgets_the_make": "res://assets/audio/bgm/vol5_finale_maker_forgets.wav",
+	"the_room_walked_out":        "res://assets/audio/bgm/vol5_finale_room_walked_out.wav",
+	"shift_ends_behind":          "res://assets/audio/bgm/vol5_finale_shift_ends.wav",
+	"inertia_max":                "res://assets/audio/bgm/vol5_finale_inertia_fallback.wav",
+	# priestess/finale.json
+	"the_choose_your_own_didnt_render":
+		"res://assets/audio/bgm/vol5_priestess_finale_session_empty.wav",
+	"the_pomegranate_hour_returned":
+		"res://assets/audio/bgm/vol5_priestess_finale_listener_breaks.wav",
+	"the_audience_stopped_waiting":
+		"res://assets/audio/bgm/vol5_priestess_finale_walked_out.wav",
+	"the_night_ran_out":
+		"res://assets/audio/bgm/vol5_priestess_finale_shift_ends.wav",
+}
+
+
+func _audio_ending(finale_id: String, won: bool) -> void:
+	if Engine.get_main_loop() == null:
+		return
+	var path: String = _STING_WIN if won else _STING_LOSS
+	if not won:
+		path = String(_FINALE_STING.get(finale_id, _STING_LOSS))
+	# Hard, non-looping: the ending screen owns the room, and the
+	# chapter/jukebox rotation picks up again when the sting ends.
+	AudioMgr.request_scene_bgm(path, false)
+
+
 func _audio_play_bgm() -> void:
-	var bgm: String = _BGM_BY_LOCATION.get(_location_id, "")
-	if bgm != "" and Engine.has_singleton("AudioMgr") == false:
-		# AudioMgr is an autoload, accessed by name
-		pass
+	var difficulty: String = String(_setup.get("difficulty", ""))
+	var scen_key: String = _arcana_id + ":" + difficulty
+	var bgm: String = String(_BGM_BY_SCENARIO.get(scen_key, ""))
+	if bgm == "":
+		bgm = String(_BGM_BY_LOCATION.get(_location_id, ""))
 	if bgm != "" and Engine.get_main_loop() != null:
-		AudioMgr.play_bgm(bgm)
+		AudioMgr.request_scene_bgm(bgm)
+
+# Preferred SFXBank preset for each _audio_sfx key. If the preset
+# is present in SFXBank.PRESET_MAP the bank plays it (overlapping,
+# pooled, respects Settings.sfx_vol). This is now the ONLY path —
+# the twelve-entry file fallback it used to fall through to pointed
+# at twelve .ogg files that were never made. Every key here must
+# name a preset SFXBank actually has; audio_reference_audit.py
+# checks that.
+const _SFX_BANK_KEYS := {
+	"card_play":       "card_place",
+	"visitor_arrive":  "visitor_arrive",
+	"visitor_claimed": "lore_token_reveal",
+	"item_pickup":     "pickup",
+	"gravity_draw":    "card_flip",
+	"win":             "win_chord",
+	"loss":            "loss_thud",
+	"lore_token":      "lore_token_reveal",
+	"bundle":          "hand_deal",
+	"visitor_connect": "visitor_arrive",
+	# dice_roll and bell_tone had NO bank mapping and their .ogg
+	# fallbacks never existed — "ring the BELL" (a player verb)
+	# played silence. Mapped to authored presets.
+	"dice_roll":       "hand_deal",
+	"bell_tone":       "harbor_bell",
+}
+
 
 func _audio_sfx(key: String) -> void:
-	var path: String = _SFX.get(key, "")
-	if path == "":
-		return
-	AudioMgr.play_sfx(path)
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank and _SFX_BANK_KEYS.has(key):
+		var preset: String = String(_SFX_BANK_KEYS[key])
+		if bank.has_preset(preset):
+			bank.play(preset, 0.75)
+			return
+	# No file fallback any more — see the note above _SFX_BANK_KEYS.
+	push_warning("[gauntlet] no SFXBank preset for '%s'" % key)
 
 
 # ── Animation + game-feel helpers ────────────────────────────────────
@@ -692,6 +793,200 @@ func _art_path_item(item_id: String) -> String:
 func _art_path_visitor_face(vid: String) -> String:
 	return "res://assets/gallery/" + vid + "_face.png"
 
+# Every arcana visitor gets a face. A hand-painted PNG override
+# (assets/gallery/<vid>_face.png) wins; otherwise a DETERMINISTIC
+# procedural bust keyed on the visitor's authored accent + mood, so
+# all ~131 visitors read as people, not "(no portrait art yet)".
+# Deterministic by vid → the same visitor always wears the same face.
+const _VISITOR_BUST := preload("res://scripts/vn/VnBustPortrait.gd")
+func _visitor_face_texture(vid: String) -> Texture2D:
+	var png: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+	if png != null:
+		return png
+	var vdef: Dictionary = _visitors_def.get(vid, {})
+	var accent: Color = Color(String(vdef.get("accent", "#c8a268")))
+	var mood: String = String(vdef.get("mood", "neutral"))
+	return _VISITOR_BUST.texture(vid, mood, accent, "open", _derive_visitor_look(vid, vdef))
+
+
+# Curated bespoke faces for the marquee RECURRING cast (the D'Ambrosio
+# riverboat crew, the Houston office, Ward C, the Roberts orbit, and
+# the cross-Oneironautics regulars). Grounded in each character's canon
+# — age, role, and stated background. Keyed by visitor id; character
+# variants across scenarios share a look so a face stays the same
+# person from arcana to arcana. Palette: skin_tone 0 dark→6 fair,
+# hair_color 0 black·5 grey·7 blond, hair_style per VnBustPortrait.
+const _VISITOR_LOOKS := {
+	# ── D'Ambrosio riverboat (Graustark) ──
+	"dante_phone":         {"age": "elder", "hair_style": 11, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	"dante_at_the_helm":   {"age": "elder", "hair_style": 11, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	"sammy_at_the_bar":    {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "collar": "shirt"},
+	"sammy_for_dante":     {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "collar": "shirt"},
+	"sammy_phone":         {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "collar": "shirt"},
+	"hector_at_the_pass":  {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "beard": true, "collar": "tee"},
+	"hector_for_dante":    {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "beard": true, "collar": "tee"},
+	"hector_the_cook":     {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "beard": true, "collar": "tee"},
+	"gloria_at_the_floor": {"hair_style": 10, "hair_color": 1, "skin_tone": 3, "earrings": true, "collar": "shirt"},
+	"gloria_reyes":        {"hair_style": 10, "hair_color": 1, "skin_tone": 3, "earrings": true, "collar": "shirt"},
+	"nicola_for_dante":    {"hair_style": 6, "hair_color": 2, "skin_tone": 5, "earrings": true, "collar": "shirt"},
+	"nicola":              {"hair_style": 6, "hair_color": 2, "skin_tone": 5, "earrings": true, "collar": "shirt"},
+	"alberto_phone":            {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"alberto_for_dante":        {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"alberto_passing_through":  {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"alberto":                  {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"the_bus_kid":         {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "collar": "tee"},
+	"bus_kid":             {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "collar": "tee"},
+	"dean_at_table_14_for_dante": {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"q_paul":                   {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"paul_at_table_17_for_dante": {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"the_driver":          {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "glasses": "regular", "collar": "shirt"},
+	# ── Houston office / Ember & Ash ──
+	"jimmy_daigle":        {"hair_style": 5, "hair_color": 2, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"jimmy_at_the_steps":  {"hair_style": 5, "hair_color": 2, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"the_foreman":         {"hair_style": 5, "hair_color": 4, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"lila_bao":            {"hair_style": 7, "hair_color": 0, "skin_tone": 4, "collar": "tee"},
+	"the_older_man_in_charcoal": {"age": "elder", "hair_style": 11, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	# ── Ward C (Death) ──
+	"pearl_at_the_station":    {"hair_style": 10, "hair_color": 2, "skin_tone": 3, "collar": "shirt"},
+	"the_attending_dr_savoy":  {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "beard": true, "glasses": "regular", "collar": "shirt"},
+	"the_family_in_the_hall":  {"hair_style": 6, "hair_color": 1, "skin_tone": 4, "collar": "v"},
+	# ── Roberts orbit (Lovers) ──
+	"philip_roberts":          {"hair_style": 0, "hair_color": 2, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"philip_phone_priestess":  {"hair_style": 0, "hair_color": 2, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"the_boy_with_the_envelope": {"hair_style": 0, "hair_color": 3, "skin_tone": 5, "beard": false, "freckles": true},
+	"mrs_theriot":             {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 5, "glasses": "regular", "earrings": true},
+	"mackenzies_sister":       {"hair_style": 2, "hair_color": 2, "skin_tone": 4, "collar": "v"},
+	# ── cross-Oneironautics regulars ──
+	"frasier":             {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"frasier_as_regular":  {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"ft_veil_comment":     {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"john_email":          {"hair_style": 1, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt"},
+	"anya_on_screen":      {"hair_style": 6, "hair_color": 1, "skin_tone": 5, "earrings": true},
+	"anya_text":           {"hair_style": 6, "hair_color": 1, "skin_tone": 5, "earrings": true},
+	"anya_recording":      {"hair_style": 6, "hair_color": 1, "skin_tone": 5, "earrings": true},
+	"mackenzie":               {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"mackenzie_in_person":     {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"mackenzie_remote":        {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"mackenzie_texts_priestess": {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"the_superfan":        {"hair_style": 6, "hair_color": 2, "skin_tone": 4, "glasses": "round", "freckles": true},
+	"the_critic":          {"hair_style": 1, "hair_color": 4, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"elicia":              {"hair_style": 6, "hair_color": 1, "skin_tone": 4, "earrings": true},
+	"elicia_phone":        {"hair_style": 2, "hair_color": 6, "skin_tone": 5, "earrings": true},
+	"maya_kid":            {"hair_style": 6, "hair_color": 3, "skin_tone": 5, "beard": false, "freckles": true},
+	"maya_age_7":          {"hair_style": 6, "hair_color": 3, "skin_tone": 5, "beard": false, "freckles": true},
+	"john_as_regular":     {"hair_style": 1, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt"},
+	"john_frank":          {"hair_style": 1, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt"},
+	# ── Antonio D'Ambrosio (the younger son / heir) ──
+	"antonio_first_sunday":  {"hair_style": 1, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"antonio_phone_brief":   {"hair_style": 1, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"antonio_phone_for_paul":{"hair_style": 1, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"dean_at_table_14":      {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"quentin_paul_phone":    {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"mrs_karras":            {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 4, "glasses": "regular", "earrings": true},
+	# ── Daigle's roadhouse (Devil) ──
+	"lou_behind_the_bar":    {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "shirt"},
+	"the_one_who_got_out":   {"hair_style": 6, "hair_color": 3, "skin_tone": 5},
+	# ── Simon's apartment (Hanged Man) ──
+	"the_landlord":          {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 5, "collar": "shirt"},
+	"the_neighbor_below":    {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 4, "earrings": true},
+	# ── Bayou lighthouse (Hermit) ──
+	"the_predecessor":       {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "shirt"},
+	"jules_in_a_skiff":      {"age": "elder", "hair_style": 5, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
+	# ── Parish cemetery (Judgement) ──
+	"sister_beatrice_at_the_lectern": {"hair_style": 10, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"the_caretaker_with_lantern":     {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"the_widow_at_the_mausoleum":     {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 3, "glasses": "regular", "earrings": true},
+	"the_child_with_a_rosary":        {"hair_style": 6, "hair_color": 1, "skin_tone": 4, "freckles": true},
+	# ── Courthouse (Justice) ──
+	"erica_on_the_bench":    {"hair_style": 10, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"tessier_counsel":       {"hair_style": 11, "hair_color": 2, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"the_court_clerk":       {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"the_witness_avant":     {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "collar": "tee"},
+	# ── Static Drive-In (Moon) ──
+	"the_projectionist_at_the_booth": {"hair_style": 2, "hair_color": 2, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"the_kid_alone_in_row_three":     {"hair_style": 0, "hair_color": 1, "skin_tone": 4, "freckles": true},
+	# ── Christian Ice (Star) ──
+	"the_other_shift_leaving":        {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"mr_couvillon_at_six_fourteen":   {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	"the_kid_at_the_glass":           {"hair_style": 0, "hair_color": 3, "skin_tone": 5, "freckles": true},
+	# ── the diner (Fool) — line staff ──
+	"dawn_cook":            {"hair_style": 0, "hair_color": 2, "skin_tone": 4, "collar": "tee"},
+	"line_cook":            {"hair_style": 8, "hair_color": 1, "skin_tone": 3, "collar": "tee"},
+	# ── Elicia's party (Magician) ──
+	"the_drifter":          {"hair_style": 2, "hair_color": 1, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"the_birdwatcher":      {"hair_style": 7, "hair_color": 2, "skin_tone": 4, "glasses": "regular"},
+	"the_college_friend":   {"hair_style": 1, "hair_color": 2, "skin_tone": 5, "collar": "shirt"},
+	"drunk_uncle":          {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 5, "beard": true, "collar": "v"},
+	# ── the carnival lot (Strength) ──
+	"the_auctioneer":       {"hair_style": 11, "hair_color": 2, "skin_tone": 4, "collar": "shirt"},
+	"miss_lavergne_kid":    {"hair_style": 0, "hair_color": 3, "skin_tone": 4, "freckles": true},
+	"old_pell":             {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "v"},
+	# ── Solenade garden (Sun) ──
+	"a_grandfather_with_a_newspaper": {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"the_groundskeeper_mr_bouchon":   {"hair_style": 0, "hair_color": 2, "skin_tone": 3, "beard": true, "collar": "tee"},
+	# ── the Mixing Glass (Temperance) ──
+	"maddie_behind_the_stick":  {"hair_style": 7, "hair_color": 2, "skin_tone": 4, "collar": "tee"},
+	"the_regular_at_the_w_stool":{"hair_style": 0, "hair_color": 4, "skin_tone": 5, "collar": "shirt"},
+	"the_owner_closing_out":    {"hair_style": 1, "hair_color": 2, "skin_tone": 4, "collar": "shirt"},
+	# ── WGUR tower (Tower) ──
+	"jules_the_intern_asleep":  {"hair_style": 0, "hair_color": 2, "skin_tone": 5, "freckles": true},
+	"the_other_engineer_rashid":{"hair_style": 8, "hair_color": 0, "skin_tone": 1, "beard": true, "collar": "shirt"},
+	# ── Le Roulant casino (Wheel) ──
+	"maddox_in_the_pit":    {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"the_regular_at_the_table": {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"the_inspector":        {"hair_style": 0, "hair_color": 2, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"your_brother_calling": {"hair_style": 1, "hair_color": 2, "skin_tone": 4, "collar": "shirt"},
+	# ── Frog Knows Best (World) ──
+	"the_morning_customer": {"age": "elder", "hair_style": 5, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"lily_with_the_jar":    {"hair_style": 6, "hair_color": 3, "skin_tone": 4, "freckles": true},
+	"uncle_em_on_the_phone":{"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "collar": "v"},
+}
+
+
+# Turn a visitor's authored name + lore into portrait features the bust
+# can draw, so the face matches the fiction (an "older man" goes grey,
+# a "Dr" wears a collar) instead of a pure hash roll. Reads only
+# EXPLICIT appearance/role words — no identity guessing. An authored
+# `look` dict on the def wins over every derived hint.
+func _derive_visitor_look(vid: String, vdef: Dictionary) -> Dictionary:
+	var look: Dictionary = {}
+	var nm: String = String(vdef.get("name", "")).to_lower()
+	var t: String = (nm + " " + String(vdef.get("lore_text", ""))).to_lower()
+	# AGE from the NAME only (the subject's own descriptor) with a youth
+	# guard — lore often describes OTHER people (a child's grandmother),
+	# which would wrongly age the subject.
+	# youth OR a relative-age phrase ("older brother" = relative, not old)
+	var youth: bool = ("child" in nm) or ("boy" in nm) or ("girl" in nm) \
+			or (" kid" in nm) or ("young" in nm) or ("teen" in nm) \
+			or ("daughter" in nm) or (" son" in nm) or ("baby" in nm) or ("infant" in nm) \
+			or ("older brother" in nm) or ("older sister" in nm) or ("older sibling" in nm)
+	if not youth and (("older" in nm) or ("elderly" in nm) or ("old man" in nm) \
+			or ("old woman" in nm) or ("grandmother" in nm) or ("grandfather" in nm) \
+			or ("grandpa" in nm) or ("grandma" in nm) or ("patriarch" in nm) \
+			or ("matriarch" in nm) or ("the widow" in nm)):
+		look["age"] = "elder"
+	if ("beard" in t) or ("bearded" in t) or ("goatee" in t) or ("mustache" in t) \
+			or ("moustache" in t) or ("whiskers" in t) or ("stubble" in t):
+		look["beard"] = true
+	if ("round glasses" in t) or ("round spectacles" in t):
+		look["glasses"] = "round"
+	elif ("glasses" in t) or ("spectacles" in t) or ("bifocals" in t):
+		look["glasses"] = "regular"
+	if ("lawyer" in t) or ("suit" in t) or ("attorney" in t) or ("banker" in t) \
+			or ("attending" in t) or ("dr " in t) or ("doctor" in t) or ("reverend" in t) \
+			or ("detective" in t) or (" rn" in t) or ("nurse" in t) or ("officer" in t):
+		look["collar"] = "shirt"
+	# Curated bespoke face for the marquee cast wins over derivation.
+	var curated: Dictionary = _VISITOR_LOOKS.get(vid, {})
+	for ck in curated:
+		look[String(ck)] = curated[ck]
+	# An authored `look` on the def itself wins over everything.
+	var authored: Variant = vdef.get("look", null)
+	if authored is Dictionary:
+		for k in authored:
+			look[String(k)] = (authored as Dictionary)[k]
+	return look
+
 func _art_path_board() -> String:
 	return "res://assets/gallery/locations/" + _location_id + "_gauntlet_board.png"
 
@@ -766,9 +1061,6 @@ func _load_data() -> void:
 	# universal card of the same id for this run only.
 	for c: Dictionary in _setup.get("scenario_action_cards", []):
 		_action_cards[c["id"]] = c
-	# Hand-drafting pools (Wave 2). Universal + per-hand add-card ids;
-	# eligibility against the merged _action_cards happens at draft time.
-	_draft_pools_def = _load_json(FRAMEWORK_DRAFT_POOLS)
 	# Seed the tableau stock counts. Non-starters, non-leap, non-
 	# bundle cards get a stock count (from the card's `stock` field
 	# or default 2 if unspecified). Each purchase decrements; at 0
@@ -911,6 +1203,19 @@ func _init_run() -> void:
 		# Tighter max_turns
 		_setup["max_turns"] = max(4, int(_setup.get("max_turns", 8)) - 1)
 		_log_line("[color=#c8333c][b]REVERSED.[/b] the room is harder to hold.[/color]")
+	# THE QUERENT'S THREAD · a spent-thread edge from the Major Arcana
+	# campaign · ADDITIVE only (stacks on top of reversed if both apply).
+	var edge := String(_campaign_seed.get("edge", ""))
+	if edge != "":
+		match edge:
+			"breath":
+				_setup["max_turns"] = int(_setup.get("max_turns", 8)) + 2
+			"calm":
+				start["doubt"]      = max(0, int(start.get("doubt", 0)) - 2)
+				start["stagnation"] = max(0, int(start.get("stagnation", 0)) - 2)
+			"time":
+				start["time"]       = int(start.get("time", 4)) + 2
+		_log_line("[color=#7fd77f][b]THE THREAD.[/b] %s[/color]" % String(_campaign_seed.get("label", "the reading remembers you")))
 	_player_pos = start.get("player_pos", "counter")
 	_places_visited[_player_pos] = true
 	_time       = int(start.get("time", 4))
@@ -934,10 +1239,6 @@ func _init_run() -> void:
 	_cards_played_this_run.clear()
 	_claimed_visitors_count = 0
 	_last_finale_id = ""
-	# Per-run Run-Ledger buffers — token entries accumulate here and
-	# commit to user:// only at run end (win AND loss).
-	_ledger_pending_tokens.clear()
-	_draft_used_this_run = false
 	# Load cross-arcana world state — sinkhole open, first_septenary
 	# completed, candles_lit, etc. Active states append ambient lines
 	# to the pool and gravity-extras to the deck.
@@ -1025,6 +1326,23 @@ func _init_run() -> void:
 	# Honor starting_steamboat_progress for the hard scenario.
 	_steamboat_progress = int(_setup.get("starting_steamboat_progress", _steamboat_progress))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
+	# THE SPREAD · apply carryover from the previous card of a
+	# three-card spread (design: _GAUNTLET_DESIGN_PLAYBOOK.md "THE
+	# SPREAD"). Sanity carries only DOWN from this setup's start
+	# (endurance, not a snowball), floored at 2 so the third card
+	# stays winnable. Inertia carries only UP, capped at 3. A held
+	# core-deck card joins the opening hand.
+	if not spread_carry.is_empty():
+		if spread_carry.has("sanity"):
+			_sanity = clampi(int(spread_carry["sanity"]), 2, _sanity)
+		if spread_carry.has("inertia"):
+			_inertia = maxi(_inertia, clampi(int(spread_carry["inertia"]), 0, 3))
+		var held: String = String(spread_carry.get("held_card", ""))
+		if held != "" and not (held in _hand_cards):
+			_hand_cards.append(held)
+		_log_line("[color=#c8a842][b]THE SPREAD.[/b] you carry the last room in with you · sanity %d · inertia %d%s[/color]" % [
+			_sanity, _inertia,
+			(" · held: %s" % held.to_upper()) if held != "" else ""])
 
 	# Visitors: the scenario's `visitors_present_at_start` and
 	# `visitor_schedule` lists are the source of truth — they let the
@@ -1041,12 +1359,6 @@ func _init_run() -> void:
 		var v: Dictionary = _visitors_def.get(vid, {})
 		if v.is_empty():
 			push_warning("Gauntlet: scenario lists unknown visitor in visitors_present_at_start: %s" % vid)
-			continue
-		# Run-Ledger gate (Wave 2): a visitor def may declare
-		# requires_token — they only walk in for a player whose ledger
-		# (or current run) holds that token.
-		var v_tok: String = String(v.get("requires_token", ""))
-		if v_tok != "" and not _ledger_has_token(v_tok):
 			continue
 		var arr: Dictionary = v.get("arrival", {})
 		# Resolve starting pos: prefer arrival.pos, fall back to
@@ -1072,12 +1384,6 @@ func _init_run() -> void:
 		var v2: Dictionary = _visitors_def.get(vid2, {})
 		if v2.is_empty():
 			push_warning("Gauntlet: scenario lists unknown visitor in visitor_schedule: %s" % vid2)
-			continue
-		# Run-Ledger gate (Wave 2): a schedule entry (or the visitor
-		# def) may declare requires_token — the arrival only fires for
-		# a player whose ledger holds that token.
-		var e_tok: String = String(entry.get("requires_token", v2.get("requires_token", "")))
-		if e_tok != "" and not _ledger_has_token(e_tok):
 			continue
 		_visitors_state[vid2] = {
 			"pos": "",
@@ -1157,6 +1463,16 @@ func _init_run() -> void:
 
 # ── UI build ─────────────────────────────────────────────────────────
 
+# ── Layout budget (720p canvas) ──────────────────────────────────
+# The middle band (board + right column) ends where the bottom strip
+# begins. The strip must hold TWO full card rows (108px art + 34px
+# title) plus their header rows and horizontal-scrollbar clearance
+# without spilling past the window edge — size the strip from that
+# content and give the board whatever is left, never the reverse.
+const MID_BOTTOM := -384     # board + right column offset_bottom
+const STRIP_TOP := -380      # bottom strip offset_top
+const CARD_ROW_H := 152      # tableau/hand scroll min height (144 tile + scrollbar)
+
 func _build_ui() -> void:
 	_bg = ColorRect.new()
 	_bg.color = C_BG
@@ -1165,6 +1481,7 @@ func _build_ui() -> void:
 
 	# ── Top tracks bar ───────────────────────────────────────────────
 	var top := PanelContainer.new()
+	_top_bar_panel = top
 	top.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	top.offset_top = 6
 	top.offset_left = 8
@@ -1202,21 +1519,13 @@ func _build_ui() -> void:
 	_doubt_label.visible = false
 	_inspiration_label.visible = false
 	_pieces_label.visible = false
+	# Bindle chrome is Fool-only — the other arcanas have no bindle.
+	_bindle_label.visible = (_arcana_id == "fool")
 	# Push the Leave button to the far right of the top bar so it
 	# isn't sitting next to MOVE / ADVANCE where it gets misclicked.
 	var top_spacer := Control.new()
 	top_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top_hb.add_child(top_spacer)
-	# Run Ledger (Wave 2) — the wax-seal page: tokens, records and
-	# streaks carried across every run. Lives next to Leave so the
-	# meta-surface buttons cluster away from the action buttons.
-	var top_ledger_btn := Button.new()
-	top_ledger_btn.text = "Ledger ✦"
-	top_ledger_btn.tooltip_text = "The Run Ledger — lore / leap / connection tokens, per-scenario records and the win streak, carried across every run. Mouse over a seal to see the moment it was earned."
-	top_ledger_btn.add_theme_font_size_override("font_size", 11)
-	top_ledger_btn.custom_minimum_size = Vector2(84, 24)
-	top_ledger_btn.pressed.connect(_open_pane_modal_by_key.bind("ledger"))
-	top_hb.add_child(top_ledger_btn)
 	var top_leave_btn := Button.new()
 	top_leave_btn.text = "← Back to Gallery"
 	var leave_room: String = "diner"
@@ -1228,7 +1537,7 @@ func _build_ui() -> void:
 	if _arcana_id == "lovers":     leave_room = "Roberts' house"
 	if _arcana_id == "chariot":    leave_room = "hot office"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
-	top_leave_btn.add_theme_font_size_override("font_size", 11)
+	top_leave_btn.add_theme_font_size_override("font_size", 12)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
 	top_leave_btn.pressed.connect(_on_leave)
 	top_hb.add_child(top_leave_btn)
@@ -1244,7 +1553,7 @@ func _build_ui() -> void:
 	_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_board_root.offset_top = 52
 	_board_root.offset_left = 8
-	_board_root.offset_bottom = -346
+	_board_root.offset_bottom = MID_BOTTOM
 	_board_root.offset_right = -440
 	# Outer panel + stylebox so the board reads as its own window.
 	var board_panel := PanelContainer.new()
@@ -1276,7 +1585,7 @@ func _build_ui() -> void:
 	var board_title := Label.new()
 	board_title.text = "  MAP — " + String(_location.get("title", _location_id))
 	board_title.add_theme_color_override("font_color", C_ACCENT)
-	board_title.add_theme_font_size_override("font_size", 11)
+	board_title.add_theme_font_size_override("font_size", 12)
 	board_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header_hb.add_child(board_title)
 	# Background-art toggle — flips the painted board image on/off
@@ -1284,10 +1593,10 @@ func _build_ui() -> void:
 	# the art is misaligned or competing for attention.
 	_board_bg_btn = Button.new()
 	_board_bg_btn.text = "BG OFF" if not _board_bg_visible else "BG ON"
-	_board_bg_btn.tooltip_text = "Toggle the painted board background. Default OFF — turn on if you want the atmospheric texture behind the markers."
+	_board_bg_btn.tooltip_text = "Show the painted board beneath the markers. Bare wood by default; the paint is there when you want it."
 	_board_bg_btn.toggle_mode = true
 	_board_bg_btn.button_pressed = _board_bg_visible
-	_board_bg_btn.add_theme_font_size_override("font_size", 10)
+	_board_bg_btn.add_theme_font_size_override("font_size", 12)
 	_board_bg_btn.custom_minimum_size = Vector2(54, 20)
 	_board_bg_btn.toggled.connect(func(p: bool) -> void:
 		_board_bg_visible = p
@@ -1351,11 +1660,12 @@ func _build_ui() -> void:
 
 	# ── Right column: codex card + gravity card + visitor states + log
 	var right := VBoxContainer.new()
+	_right_column = right
 	right.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
 	right.offset_top = 52
 	right.offset_right = -8
 	right.offset_left = -432
-	right.offset_bottom = -346
+	right.offset_bottom = MID_BOTTOM
 	right.add_theme_constant_override("separation", 6)
 	add_child(right)
 
@@ -1373,6 +1683,18 @@ func _build_ui() -> void:
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
 	v_vb.add_child(_make_pane_header("VISITORS", "visitors"))
+	# Live goal readout — one clamped line, rebuilt every _render from
+	# the setup's honored win keys vs live state.
+	_goal_label = RichTextLabel.new()
+	_goal_label.bbcode_enabled = true
+	_goal_label.fit_content = false
+	_goal_label.scroll_active = false
+	_goal_label.clip_contents = true
+	_goal_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_goal_label.custom_minimum_size = Vector2(0, 18)
+	_goal_label.add_theme_color_override("default_color", C_TEXT)
+	_goal_label.add_theme_font_size_override("normal_font_size", 12)
+	v_vb.add_child(_goal_label)
 	var v_scroll := ScrollContainer.new()
 	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -1386,16 +1708,22 @@ func _build_ui() -> void:
 	# GRAVITY — slim summary bar
 	var grav_panel := PanelContainer.new()
 	grav_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	grav_panel.custom_minimum_size = Vector2(420, 56)
+	grav_panel.custom_minimum_size = Vector2(420, 48)
 	var grav_vb := VBoxContainer.new()
 	grav_vb.add_theme_constant_override("separation", 2)
 	grav_panel.add_child(grav_vb)
 	grav_vb.add_child(_make_pane_header("GRAVITY", "gravity"))
 	_gravity_card_label = RichTextLabel.new()
 	_gravity_card_label.bbcode_enabled = true
-	_gravity_card_label.fit_content = true
+	# Clamped to a single line — fit_content let this bar grow and
+	# steal height from the VISITORS pane above it.
+	_gravity_card_label.fit_content = false
+	_gravity_card_label.scroll_active = false
+	_gravity_card_label.clip_contents = true
+	_gravity_card_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_gravity_card_label.custom_minimum_size = Vector2(0, 20)
 	_gravity_card_label.add_theme_color_override("default_color", C_TEXT)
-	_gravity_card_label.add_theme_font_size_override("normal_font_size", 10)
+	_gravity_card_label.add_theme_font_size_override("normal_font_size", 12)
 	_gravity_card_label.text = "[color=#7c8398]Deck — 12 remaining · click ⛶ for details[/color]"
 	grav_vb.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
@@ -1403,16 +1731,21 @@ func _build_ui() -> void:
 	# INVENTORY / BINDLE — slim summary bar (full list in the ⛶ modal)
 	var inv_panel := PanelContainer.new()
 	inv_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	inv_panel.custom_minimum_size = Vector2(420, 56)
+	inv_panel.custom_minimum_size = Vector2(420, 48)
 	var inv_vb := VBoxContainer.new()
 	inv_vb.add_theme_constant_override("separation", 2)
 	inv_panel.add_child(inv_vb)
-	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE", "inventory"))
+	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE" if _arcana_id == "fool" else "INVENTORY", "inventory"))
 	_inv_summary_label = RichTextLabel.new()
 	_inv_summary_label.bbcode_enabled = true
-	_inv_summary_label.fit_content = true
+	# Clamped to a single line (see gravity bar note above).
+	_inv_summary_label.fit_content = false
+	_inv_summary_label.scroll_active = false
+	_inv_summary_label.clip_contents = true
+	_inv_summary_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_inv_summary_label.custom_minimum_size = Vector2(0, 20)
 	_inv_summary_label.add_theme_color_override("default_color", C_TEXT)
-	_inv_summary_label.add_theme_font_size_override("normal_font_size", 10)
+	_inv_summary_label.add_theme_font_size_override("normal_font_size", 12)
 	_inv_summary_label.text = "[color=#7c8398](nothing yet — search a pile)[/color]"
 	inv_vb.add_child(_inv_summary_label)
 	right.add_child(inv_panel)
@@ -1426,8 +1759,9 @@ func _build_ui() -> void:
 	# most of the width, the card stack (tableau row above hand row)
 	# sits flush against its right edge.
 	var bottom := PanelContainer.new()
+	_bottom_strip = bottom
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -342
+	bottom.offset_top = STRIP_TOP
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
@@ -1467,11 +1801,11 @@ func _build_ui() -> void:
 	var tableau_label := Label.new()
 	tableau_label.text = "  TABLEAU  · click to buy in planning"
 	tableau_label.add_theme_color_override("font_color", C_ACCENT)
-	tableau_label.add_theme_font_size_override("font_size", 10)
+	tableau_label.add_theme_font_size_override("font_size", 12)
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
-	_tableau_scroll.custom_minimum_size = Vector2(540, 144)
+	_tableau_scroll.custom_minimum_size = Vector2(540, CARD_ROW_H)
 	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(_tableau_scroll)
@@ -1485,33 +1819,28 @@ func _build_ui() -> void:
 	var hand_label := Label.new()
 	hand_label.text = "  HAND"
 	hand_label.add_theme_color_override("font_color", C_ACCENT)
-	hand_label.add_theme_font_size_override("font_size", 10)
+	hand_label.add_theme_font_size_override("font_size", 12)
 	hand_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_title_hb.add_child(hand_label)
-	# Hand drafting (Wave 2) — opens the pre-run HAND panel. Editable
-	# only during the pre-run window (turn 1, before any card is
-	# played); read-only afterward. Label + accent updated by
-	# _update_draft_button on every render.
-	_draft_btn = Button.new()
-	_draft_btn.text = "Deck ✦"
-	_draft_btn.add_theme_font_size_override("font_size", 11)
-	_draft_btn.tooltip_text = "The deck this hand brings. With banked Insight (won runs) you can draft one card in — or cut one — before you act on turn 1."
-	_draft_btn.pressed.connect(_open_draft_panel)
-	hand_title_hb.add_child(_draft_btn)
 	var move_btn := Button.new()
 	move_btn.text = "Move ↪"
-	move_btn.add_theme_font_size_override("font_size", 11)
+	move_btn.add_theme_font_size_override("font_size", 12)
 	move_btn.tooltip_text = "Pick an adjacent space to walk to (costs 1 Time, action phase only)."
 	move_btn.pressed.connect(_show_move_popup)
 	hand_title_hb.add_child(move_btn)
 	_advance_btn = Button.new()
 	_advance_btn.text = "Advance →"
-	_advance_btn.add_theme_font_size_override("font_size", 11)
+	_advance_btn.add_theme_font_size_override("font_size", 12)
+	# The primary loop-driver — accent it so the eye finds "what do I
+	# click to keep the game moving" from anywhere on the screen.
+	_advance_btn.add_theme_color_override("font_color", C_ACCENT)
+	_advance_btn.add_theme_color_override("font_hover_color", C_ACCENT.lightened(0.3))
+	_advance_btn.custom_minimum_size = Vector2(120, 24)
 	_advance_btn.pressed.connect(_on_advance)
 	hand_title_hb.add_child(_advance_btn)
 	# (Leave moved to the top bar so it isn't adjacent to ADVANCE.)
 	var hand_scroll := ScrollContainer.new()
-	hand_scroll.custom_minimum_size = Vector2(540, 144)
+	hand_scroll.custom_minimum_size = Vector2(540, CARD_ROW_H)
 	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(hand_scroll)
@@ -1542,7 +1871,7 @@ func _make_pane_header(title: String, modal_key: String) -> Control:
 	var lbl := Label.new()
 	lbl.text = "  " + title
 	lbl.add_theme_color_override("font_color", C_ACCENT)
-	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hb.add_child(lbl)
 	# Remember the title label so unread badges (e.g. log "(3 new)")
@@ -1551,7 +1880,7 @@ func _make_pane_header(title: String, modal_key: String) -> Control:
 	var btn := Button.new()
 	btn.text = "⛶"
 	btn.tooltip_text = "Expand " + title + " (Esc to close)"
-	btn.add_theme_font_size_override("font_size", 10)
+	btn.add_theme_font_size_override("font_size", 12)
 	btn.custom_minimum_size = Vector2(26, 18)
 	# bind(modal_key) wraps the String into a Callable arg — avoids any
 	# closure-capture weirdness from inline lambdas inside add_child().
@@ -1573,10 +1902,6 @@ func _open_pane_modal_by_key(key: String) -> void:
 			_open_pane_modal("Gravity Deck", _build_gravity_modal_body)
 		"visitors":
 			_open_pane_modal("Visitors", _build_visitors_modal_body)
-		"ledger":
-			_open_pane_modal("Run Ledger — the wax-seal page", _build_ledger_modal_body)
-		"draft":
-			_open_draft_panel()
 
 
 # Generic pane modal — dim background, centered panel with a header
@@ -1670,6 +1995,37 @@ func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
 # button. Minimize closes without chaining; the player can re-click
 # the visitor row to view their card. Acknowledge advances to the
 # next queued arrival (if any).
+# SIGNATURES (2026-09-12). The catalog's character themes name the
+# gauntlet's visitor cast — the Drifter, the Twins, Drunk Uncle, the
+# Bus Kid — and a visitor is never a `show` node; the board is the
+# only place they appear. Their arrival card is the cue. Visitor ids
+# carry a board-local suffix (john_frank, mackenzie_remote, maya_age_7)
+# that the catalog's `chars` do not; the alias collapses them. The
+# volume scope is lifted: the board runs under a vol 5 chapter and
+# the Stranger's theme is vol 1's, Nicola's and Dante's vol 4's.
+const _VISITOR_SIGNATURE_ALIAS := {
+	"john_frank": "john", "john_as_regular": "john", "john_email": "john",
+	"frasier_as_regular": "frasier",
+	"mackenzie_remote": "mackenzie", "mackenzie_in_person": "mackenzie",
+	"mackenzie_texts_priestess": "mackenzie",
+	"the_bus_kid": "bus_kid", "maya_age_7": "maya_kid",
+	"elicia_phone": "elicia",
+	"dante_phone": "dante", "dante_at_the_helm": "dante",
+	"alberto_phone": "alberto", "alberto_passing_through": "alberto",
+	"alberto_for_dante": "alberto", "nicola_for_dante": "nicola",
+	"antonio_first_sunday": "antonio", "antonio_phone_brief": "antonio",
+	"antonio_phone_for_paul": "antonio",
+	"anya_on_screen": "anya_recording", "anya_text": "anya_recording",
+}
+
+
+func _cue_visitor_signature(vid: String) -> void:
+	if not AudioMgr.has_method("cue_signature"):
+		return
+	var key: String = String(_VISITOR_SIGNATURE_ALIAS.get(vid, vid))
+	AudioMgr.cue_signature(key, true)
+
+
 func _show_next_visitor_arrival() -> void:
 	if _visitor_arrival_queue.is_empty():
 		return
@@ -1682,6 +2038,7 @@ func _show_next_visitor_arrival() -> void:
 	var flavor: String = String(hints[hints.size() - 1]) if not hints.is_empty() else "%s walks in." % name_s
 	var accent_hex: String = String(v.get("accent", "#c8a268"))
 	_log_line("[color=#7c8398][i]» popping arrival modal for %s[/i][/color]" % name_s)
+	_cue_visitor_signature(vid)
 	# Tear down any prior drawn-card popup so this one stacks cleanly.
 	var existing: Node = get_node_or_null("drawn_card_modal")
 	if existing != null and is_instance_valid(existing):
@@ -1717,7 +2074,7 @@ func _show_next_visitor_arrival() -> void:
 	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	art_panel.custom_minimum_size = Vector2(320, 448)
 	root.add_child(art_panel)
-	var face_tex: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+	var face_tex: Texture2D = _visitor_face_texture(vid)
 	if face_tex:
 		var img := TextureRect.new()
 		img.texture = face_tex
@@ -1728,7 +2085,7 @@ func _show_next_visitor_arrival() -> void:
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no portrait art yet)"
+		ph.text = "(this card is still unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
@@ -1746,7 +2103,7 @@ func _show_next_visitor_arrival() -> void:
 	var arrived_lbl := Label.new()
 	arrived_lbl.text = "✦  arrived"
 	arrived_lbl.add_theme_color_override("font_color", Color(0.49, 1.0, 0.69))
-	arrived_lbl.add_theme_font_size_override("font_size", 11)
+	arrived_lbl.add_theme_font_size_override("font_size", 12)
 	header_row.add_child(arrived_lbl)
 	var min_btn := Button.new()
 	min_btn.text = "—"
@@ -1764,7 +2121,7 @@ func _show_next_visitor_arrival() -> void:
 	var pos_lbl := Label.new()
 	pos_lbl.text = "at " + pos_s.to_upper()
 	pos_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.6))
-	pos_lbl.add_theme_font_size_override("font_size", 11)
+	pos_lbl.add_theme_font_size_override("font_size", 12)
 	info.add_child(pos_lbl)
 	if flavor != "":
 		var flavor_rt := RichTextLabel.new()
@@ -1780,7 +2137,7 @@ func _show_next_visitor_arrival() -> void:
 		var mood_lbl := Label.new()
 		mood_lbl.text = "mood: " + String(v.get("mood", ""))
 		mood_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
-		mood_lbl.add_theme_font_size_override("font_size", 11)
+		mood_lbl.add_theme_font_size_override("font_size", 12)
 		info.add_child(mood_lbl)
 	if v.has("order_item"):
 		var hint_rt := RichTextLabel.new()
@@ -1789,7 +2146,7 @@ func _show_next_visitor_arrival() -> void:
 		hint_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		hint_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		hint_rt.add_theme_color_override("default_color", C_TEXT)
-		hint_rt.add_theme_font_size_override("normal_font_size", 11)
+		hint_rt.add_theme_font_size_override("normal_font_size", 12)
 		hint_rt.text = "[color=#7c8398][i]they'll have something for you when you LISTEN.[/i][/color]"
 		info.add_child(hint_rt)
 	var spacer := Control.new()
@@ -1802,11 +2159,15 @@ func _show_next_visitor_arrival() -> void:
 		ack.text = "Next →  (%d more arriving)" % _visitor_arrival_queue.size()
 	ack.add_theme_font_size_override("font_size", 12)
 	info.add_child(ack)
-	# Acknowledge → fade out, then chain to next arrival
+	# Acknowledge → fade out, insert-cut to where the visitor now
+	# stands (the comic beat: read the arrival, look over, look
+	# back), then chain to next arrival.
+	var arrive_pos: String = String(st.get("pos", ""))
 	var close_and_chain := func() -> void:
 		var t := create_tween()
 		t.tween_property(dim, "modulate:a", 0.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		t.tween_callback(dim.queue_free)
+		t.tween_callback(func() -> void: _insert_cut_to_space(arrive_pos, 1.7))
 		t.tween_callback(_show_next_visitor_arrival)
 	ack.pressed.connect(close_and_chain)
 	# Click on dim (outside the panel) also acknowledges and chains.
@@ -1871,7 +2232,7 @@ func _show_drawn_card_popup(art_path: String, title: String, flavor: String, bod
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no art yet)"
+		ph.text = "(unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
@@ -1969,7 +2330,7 @@ func _open_visitor_view(vid: String) -> void:
 	art_panel.custom_minimum_size = Vector2(360, 480)
 	root.add_child(art_panel)
 	var arrived: bool = st.get("arrived", false)
-	var face_tex: Texture2D = _load_texture_silent(_art_path_visitor_face(vid)) if arrived else null
+	var face_tex: Texture2D = _visitor_face_texture(vid) if arrived else null
 	if face_tex:
 		var img := TextureRect.new()
 		img.texture = face_tex
@@ -1983,19 +2344,31 @@ func _open_visitor_view(vid: String) -> void:
 		if not arrived:
 			ph.text = "(not yet arrived)"
 		else:
-			ph.text = "(no portrait art yet)"
+			ph.text = "(this card is still unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
 		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		ph.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		art_panel.add_child(ph)
-	# Right: bio + status + per-step beats
+	# Right: bio + status + per-step beats. The content can exceed the
+	# fixed panel height (long sequences + order block), so it lives
+	# in a ScrollContainer — same pattern as _open_pane_modal — with
+	# the close button pinned below the scroll so it's always visible.
+	var info_col := VBoxContainer.new()
+	info_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_col.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_col.add_theme_constant_override("separation", 10)
+	root.add_child(info_col)
+	var info_scroll := ScrollContainer.new()
+	info_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	info_col.add_child(info_scroll)
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	info.add_theme_constant_override("separation", 10)
-	root.add_child(info)
+	info_scroll.add_child(info)
 	# Name + mood
 	var name_lbl := Label.new()
 	name_lbl.text = String(v.get("name", vid)) if arrived else String(v.get("placeholder_name", "someone"))
@@ -2006,7 +2379,7 @@ func _open_visitor_view(vid: String) -> void:
 		var mood_lbl := Label.new()
 		mood_lbl.text = "mood: " + String(v.get("mood", ""))
 		mood_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
-		mood_lbl.add_theme_font_size_override("font_size", 11)
+		mood_lbl.add_theme_font_size_override("font_size", 12)
 		info.add_child(mood_lbl)
 	# Status line
 	var status_rt := RichTextLabel.new()
@@ -2058,7 +2431,7 @@ func _open_visitor_view(vid: String) -> void:
 	var beats_header := Label.new()
 	beats_header.text = "  THE SEQUENCE"
 	beats_header.add_theme_color_override("font_color", C_ACCENT)
-	beats_header.add_theme_font_size_override("font_size", 11)
+	beats_header.add_theme_font_size_override("font_size", 12)
 	info.add_child(beats_header)
 	var steps_dict: Dictionary = v.get("steps", {})
 	var verb_labels: Dictionary = v.get("verb_labels", {}) as Dictionary
@@ -2087,7 +2460,7 @@ func _open_visitor_view(vid: String) -> void:
 		step_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		step_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		step_rt.add_theme_color_override("default_color", C_TEXT)
-		step_rt.add_theme_font_size_override("normal_font_size", 11)
+		step_rt.add_theme_font_size_override("normal_font_size", 12)
 		# Reveal only what's happened. Completed steps show flavor.
 		# Next-up step shows only its label (vague). Steps beyond that
 		# are even vaguer — no name, just a placeholder.
@@ -2108,7 +2481,7 @@ func _open_visitor_view(vid: String) -> void:
 		order_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		order_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		order_rt.add_theme_color_override("default_color", C_TEXT)
-		order_rt.add_theme_font_size_override("normal_font_size", 11)
+		order_rt.add_theme_font_size_override("normal_font_size", 12)
 		if cur_progress < 2:
 			order_rt.text = "[b]ORDER:[/b]  [color=#7c8398][i]they haven't said yet.[/i][/color]"
 		else:
@@ -2117,16 +2490,14 @@ func _open_visitor_view(vid: String) -> void:
 			if not ord_item.is_empty():
 				order_rt.text = "[b]ORDER:[/b]  %s\n[color=#7c8398][i]%s[/i][/color]" % [ord_item.get("title", ord_id), ord_item.get("flavor", "")]
 		info.add_child(order_rt)
-	# Spacer + close button
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	info.add_child(spacer)
+	# Close button — outside the scroll (in info_col) so it stays
+	# visible however long the scrolled content gets.
 	var close := Button.new()
 	close.text = "✕  Close  (Esc)"
 	close.add_theme_font_size_override("font_size", 13)
 	close.custom_minimum_size = Vector2(140, 32)
 	close.pressed.connect(_close_pane_modal.bind(dim))
-	info.add_child(close)
+	info_col.add_child(close)
 
 
 func _open_card_view(cid: String, mode: String) -> void:
@@ -2171,6 +2542,8 @@ func _open_card_view(cid: String, mode: String) -> void:
 	art_panel.custom_minimum_size = Vector2(380, 532)
 	root.add_child(art_panel)
 	var art_tex: Texture2D = _load_texture_silent(_art_path_card(cid))
+	if art_tex == null:
+		art_tex = CARD_FACE.face(cid, _action_cards.get(cid, {}), _arcana_id)
 	if art_tex:
 		var img := TextureRect.new()
 		img.texture = art_tex
@@ -2178,22 +2551,36 @@ func _open_card_view(cid: String, mode: String) -> void:
 		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		# Procedural faces are chunky pixels — keep them crisp when
+		# the view scales them up.
+		img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no art yet — use the studio to generate)"
+		ph.text = "(the painter has not gotten to this one)"
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		art_panel.add_child(ph)
 
-	# Right column: info + action buttons
+	# Right column: info (scrollable — long effect summaries can exceed
+	# the fixed panel height; same pattern as _open_pane_modal) with
+	# the action row pinned below the scroll, always visible.
+	var info_col := VBoxContainer.new()
+	info_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_col.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_col.add_theme_constant_override("separation", 10)
+	root.add_child(info_col)
+	var info_scroll := ScrollContainer.new()
+	info_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	info_col.add_child(info_scroll)
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	info.add_theme_constant_override("separation", 10)
-	root.add_child(info)
+	info_scroll.add_child(info)
 
 	var title := Label.new()
 	title.text = card.get("title", cid)
@@ -2214,6 +2601,21 @@ func _open_card_view(cid: String, mode: String) -> void:
 	else:
 		cost_line.text = "[b]Cost:[/b] %d Time" % cost
 	info.add_child(cost_line)
+
+	# Why-blocked line — when the Play button below is disabled, say
+	# why right here instead of leaving the player to hover-hunt.
+	if mode == "play":
+		var why_blocked_view: String = _why_blocked_play(card)
+		if why_blocked_view != "":
+			var blocked_rt := RichTextLabel.new()
+			blocked_rt.bbcode_enabled = true
+			blocked_rt.fit_content = true
+			blocked_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			blocked_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			blocked_rt.add_theme_color_override("default_color", Color(1.0, 0.50, 0.39))
+			blocked_rt.add_theme_font_size_override("normal_font_size", 12)
+			blocked_rt.text = "[b]Can't play:[/b] %s" % why_blocked_view
+			info.add_child(blocked_rt)
 
 	var flavor_label: String = String(card.get("flavor", ""))
 	if flavor_label != "":
@@ -2247,15 +2649,11 @@ func _open_card_view(cid: String, mode: String) -> void:
 	effects.text = summary
 	info.add_child(effects)
 
-	# Spacer pushes the action row to the bottom
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	info.add_child(spacer)
-
-	# Action row
+	# Action row — outside the scroll (in info_col) so Play / Buy /
+	# Cancel stay reachable however long the scrolled content gets.
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 10)
-	info.add_child(actions)
+	info_col.add_child(actions)
 	var cancel := Button.new()
 	cancel.text = "✕  Cancel  (Esc)"
 	cancel.add_theme_font_size_override("font_size", 13)
@@ -2401,16 +2799,31 @@ func _render_board() -> void:
 # update a host's SPACE_MAP, copy the change here too — single
 # source of truth would be nicer but the host has scene-tree
 # specifics (player NodePath etc.) that don't make sense in a
-# shared resource.
+# shared resource. tools/audit/space_map_audit.py holds the three
+# copies (this, the host, the location JSON) to each other and is a
+# suite gate — the instruction above is no longer on trust.
+#
+# THREE locations are known-divergent and declared in that audit:
+# ember_ash_office, roberts_house and the_hierophant_circuit have host
+# SPACE_MAPs describing an EARLIER staging of the same place. The game
+# tries the host first and falls back here, so those boards run on this
+# table; do not "sync" them without deciding which staging is live.
 const _LOCATION_SCENE_PATHS := {
 	"dambrosios":          "res://scenes/locales/diner.tscn",
-	"cathedral":           "res://scenes/locales/cathedral.tscn",       # Magician
+	# The Magician board loaded the LEGACY SHELL (locales/cathedral,
+	# 30 nodes, no markers, dead GLB path) while the model-chapter
+	# set lived at scenes/cathedral.tscn — the roberts/ember class.
+	"cathedral":           "res://scenes/cathedral.tscn",       # Magician
 	"elicia_bungalow":     "res://scenes/locales/bungalow.tscn",        # Priestess
 	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor / Hierophant
-	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn",
-	# ember_ash_office.tscn exists now; the old houston_office fallback
-	# would land the Chariot gauntlet in Erica's law office post-hero-pass.
+	# roberts_kitchen.tscn is a commercial kitchen — the Wheel's
+	# board walks the whole HOUSE (loom, tapestry, garden).
+	"roberts_house":       "res://scenes/locales/roberts_house.tscn",
+	# houston_office.tscn is John's Houston cubicle office; the
+	# Chariot's board is the EMBER & ASH renovation (back stair,
+	# cypress beam, corner window) — its own locale.
 	"ember_ash_office":    "res://scenes/locales/ember_ash_office.tscn",
+	"the_hierophant_circuit": "res://scenes/locales/hierophant_circuit.tscn", # V Hierophant · id carries the "the_"
 	# 2026-06-21 Major-Arcana sweep — every reversed-card scenario
 	# now lands in its own interior.
 	"roadside_chapel":         "res://scenes/locales/roadside_chapel.tscn",        # VI Lovers
@@ -2432,18 +2845,77 @@ const _LOCATION_SCENE_PATHS := {
 }
 
 const _STANDALONE_SPACE_VANTAGES := {
+	# ── 2026-08-19 · the three top-down-only locations get FP ──
+	# Computed from recorded builder geometry (stand backed off
+	# toward the room's mass center, yaw facing the station).
+	# floor_z = -0.75 trims the +2.30 eye constant to ~1.55m for
+	# house-scale rooms. Spaces with NO geometry (ember's warehouse
+	# floor / alley / salvage, the circuit's D'Ambrosio's + armory
+	# + riverfront, robertses' driveway oil spot aside) keep the
+	# top-down fallback DELIBERATELY until their sets are built.
+	"roberts_house": {
+		"kitchen_faucet": [2.11, 4.88, -0.75, 42.1],
+		"kitchen_window": [1.95, 4.93, -0.75, 45.6],
+		"kitchen_table": [1.03, 2.84, -0.75, -23.5],
+		"front_hallway": [0.30, 2.20, -0.75, -86.4],
+		"front_door": [0.84, 1.65, -0.75, -68.5],
+		"driveway": [-0.68, -4.27, -0.75, -97.0],
+		"living_room": [-0.38, 3.01, -0.75, -164.0],
+		"the_loom": [0.25, 3.63, -0.75, 88.3],
+		"back_hallway": [-1.45, 3.61, -0.75, 165.8],
+		"the_tapestry": [-3.33, 4.46, -0.75, 160.3],
+		"back_door": [-0.95, 4.69, -0.75, 128.3],
+		"garden": [0.16, 5.00, -0.75, 92.3],
+	},
+	"ember_ash_office": {
+		# Office level (mezzanine floor z=0; -0.75 trims the eye)
+		"leaded_window": [-0.28, 1.82, -0.75, -81.1],
+		"desk": [-0.22, 1.52, -0.75, 99.3],
+		"office_door": [0.69, 1.41, -0.75, -46.5],
+		"back_stair": [-1.07, 1.86, -0.75, -134.4],
+		"cypress_beam": [-1.98, 2.35, -0.75, 7.2],
+		# Warehouse + street level (floor z=-4.5; draft 2 build) —
+		# interior stands eye ~1.55, street stands eye 2.30.
+		"warehouse_floor": [0.0, 8.5, -5.25, -90.0],
+		"salvage_piles": [-3.65, 8.23, -5.25, 141.0],
+		"kitchen_rough_in": [4.33, 10.35, -5.25, 48.0],
+		"front_stair": [1.72, 5.64, -5.25, 7.7],
+		"back_alley": [0.5, 15.8, -5.25, -43.0],
+		"sidewalk": [2.5, -3.4, -4.50, 152.0],
+		"corner_across": [-8.24, -3.76, -4.50, -131.6],
+	},
+	"the_hierophant_circuit": {
+		"church_steps": [-0.25, -2.01, 0.0, -85.2],
+		"the_black_car": [-2.18, -7.22, 0.0, -96.5],
+		"park_bandstand": [-0.22, 14.51, 0.0, 86.5],
+		# Draft-2 stations (2026-08-19): nave, armory, riverfront,
+		# and D'Ambrosio's riverboat. Boat-deck entries use
+		# floor_z=0.67 (main deck at z~1.42 minus the 0.75 trim).
+		"church_interior": [0.0, -1.5, -0.75, 90.0],
+		"old_armory": [-10.28, 9.48, 0.0, -171.9],
+		"riverfront": [1.97, 29.91, 0.0, 85.2],
+		"dambrosios_curb": [-1.03, 31.93, 0.0, 93.8],
+		"dambrosios_dining_room": [2.65, 34.60, 0.67, 84.5],
+		"table_17": [10.0, 35.0, 0.67, -2.0],
+		"dambrosios_kitchen": [7.5, 36.3, 0.67, 51.0],
+		"back_corridor": [10.98, 36.71, 0.67, 67.6],
+	},
 	"dambrosios": {
 		"parking_lot":    [+12.0,  +0.0, 180.0],
-		"hostess_stand":  [+7.6,   -0.5, 180.0],
+		"hostess_stand":  [+7.0,   -0.7, 180.0],   # podium centered in the entry post-playtest
 		"back_door":      [-7.5,   -5.5,  90.0],
 		"bar":            [-12.0,  +4.5, 270.0],
-		"booth_1":        [-7.95,  +3.75, 0.0],
+		# 2026-09-11 drift fix: booths are numbered SOUTH→NORTH in
+		# build_diner.py (Booth_1 at by −3.75, Booth_6 at +3.75). This
+		# mirror had 1 and 6 swapped, so a standalone board walked the
+		# player to the wrong end of the alcove row.
+		"booth_1":        [-7.95,  -3.75, 0.0],
 		"kitchen_alcove": [-6.0,   -5.0,  90.0],
 		"grill":          [-4.75,  -5.55, 90.0],
 		"dish_station":   [+4.0,   -5.55, 90.0],
 		"order_window":   [-5.5,   -3.95, 90.0],
 		"booth_4":        [-7.95,  +0.75,  0.0],
-		"booth_6":        [-7.95,  -2.25,  0.0],
+		"booth_6":        [-7.95,  +3.75,  0.0],
 		"counter":        [-0.85,  -4.1, 159.0],   # John behind counter, gaze NE
 		                                            # across the dining floor.
 		                                            # User-captured 2026-06-21.
@@ -2457,6 +2929,7 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"bathroom":       [+7.0,   -4.7,  90.0],
 		"card_wall":      [+0.0,   +8.28, 270.0],
 		"river_window":   [-15.0,  +0.0,   0.0],
+		"precipice_door": [+1.20,  +8.4,  90.0],   # hidden door at the back of the hallway
 	},
 	# Cathedral (Magician) — mirrors CathedralGauntletHost.SPACE_MAP
 	"cathedral": {
@@ -2480,6 +2953,14 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"temperance":     [+5.0,  -3.0, 180.0],
 		"devil":          [+8.0,  -5.0, 180.0],
 		"tower":          [+6.0,  -2.0,  90.0],
+		# 2026-09-11 drift fix: the last five arcana stations existed in
+		# CathedralGauntletHost but never reached this mirror, so a
+		# standalone Magician board had no vantage for them.
+		"star":           [-5.0,  -3.0,  90.0],   # cold LED rig
+		"moon":           [-4.0,  -6.0,  90.0],   # reflecting pool, facing north
+		"sun":            [+2.0,  -7.0,  90.0],   # sodium-vapor lamp + chair
+		"judgement":      [-1.5,  -7.0,  90.0],   # blank stage
+		"world":          [+10.0, +0.0, 180.0],   # wireframe globe armature
 	},
 	# Elicia's bungalow (Priestess) — mirrors BungalowGauntletHost.SPACE_MAP
 	"elicia_bungalow": {
@@ -2500,26 +2981,26 @@ const _STANDALONE_SPACE_VANTAGES := {
 	# Riverboat (Empress / Emperor) — mirrors RiverboatGauntletHost.SPACE_MAP.
 	# 4-element entries: [x, y, floor_z, yaw]. Three decks.
 	"riverboat_interior": {
-		# UPPER DECK (Z=3.2)
-		"helm":               [+0.0, -2.4,  3.2,  90.0],
-		"office_staircase":   [+3.0, -3.0,  3.2, 270.0],
-		# MAIN DECK (Z=0.0)
-		"maitre_d_stand":     [+0.0, -8.5,  0.0,  90.0],
-		"main_dining_room":   [-1.0, -3.0,  0.0,  90.0],
-		"private_dining":     [-4.0, +3.0,  0.0,  90.0],
-		"table_17":           [-4.5, -0.7,  0.0, 180.0],
-		"sammys_bar":         [+3.5,  0.0,  0.0,   0.0],
-		"the_pass":           [+1.5, +5.0,  0.0,  90.0],
-		"kitchen":            [+0.0, +8.0,  0.0,  90.0],
-		"side_door":          [+5.6, -3.0,  0.0,   0.0],
-		"gangway":            [+0.0, -11.0, 0.0, 270.0],
-		# LOWER DECK (Z=-2.8)
-		"back_corridor":      [+0.0, +6.0, -2.8, 270.0],
-		"catering_office":    [-4.5, -1.5, -2.8,   0.0],
-		"the_card_room":      [-1.0, -1.0, -2.8,  90.0],
-		"the_back_room":      [+2.5, -1.0, -2.8,  90.0],
-		"staff_locker_room":  [+4.5, -1.0, -2.8,   0.0],
-		"staff_exit":         [+5.0, -5.0, -2.8, 270.0],
+		# UPPER DECK (Z=5.10 — RiverboatGauntletHost.UPPER_FLOOR_Z)
+		"helm":               [+0.0, -2.4,  5.10,  90.0],
+		"office_staircase":   [+3.0, -3.0,  5.10, 270.0],
+		# MAIN DECK (Z=2.50)
+		"maitre_d_stand":     [+0.0, -8.5,  2.50,  90.0],
+		"main_dining_room":   [-1.0, -3.0,  2.50,  90.0],
+		"private_dining":     [-4.0, +3.0,  2.50,  90.0],
+		"table_17":           [-4.5, -0.7,  2.50, 180.0],
+		"sammys_bar":         [+3.5,  0.0,  2.50,   0.0],
+		"the_pass":           [+1.5, +5.0,  2.50,  90.0],
+		"kitchen":            [+0.0, +8.0,  2.50,  90.0],
+		"side_door":          [+5.6, -3.0,  2.50,   0.0],
+		"gangway":            [+0.0, -11.0, 2.50, 270.0],
+		# LOWER DECK (Z=0.00)
+		"back_corridor":      [+0.0, +6.0,  0.00, 270.0],
+		"catering_office":    [-4.5, -1.5,  0.00,   0.0],
+		"the_card_room":      [-1.0, -1.0,  0.00,  90.0],
+		"the_back_room":      [+2.5, -1.0,  0.00,  90.0],
+		"staff_locker_room":  [+4.5, -1.0,  0.00,   0.0],
+		"staff_exit":         [+5.0, -5.0,  0.00, 270.0],
 	},
 	# 2026-06-21 — mirrors of the 16 new arcana hosts' SPACE_MAPs.
 	# Entries are 3-element [x, y, yaw] (single-floor locales).
@@ -2901,6 +3382,58 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 		[_player_pos, cam_spec.get("origin", Vector3.ZERO)])
 
 
+# ── Direction pass · comic insert cuts on the FP camera ─────────
+# The gauntlet grammar from lore/_VN_DIRECTION_PLAYBOOK.md, adapted
+# to first person: when a beat happens at a knowable space (a
+# visitor arrives, the jukebox drops a B-side), HARD-CUT the FP
+# camera to that space's vantage, hold a beat, hard-cut back to the
+# player's vantage. Reuses the per-space vantage tables — no new
+# framing authoring. FOV tightens slightly on the insert so the cut
+# reads as a look, not a teleport. No-ops cleanly in PNG-fallback /
+# top-down modes (no cached cam) and for unknown spaces.
+var _insert_cut_active: bool = false
+
+func _camera_spec_for_space(space_id: String) -> Dictionary:
+	if space_id == "":
+		return {}
+	var host: Node = _find_gauntlet_host()
+	if host != null and host.has_method("get_fp_camera_for_space"):
+		var spec: Dictionary = host.get_fp_camera_for_space(space_id)
+		if not spec.is_empty():
+			return spec
+	return _standalone_fp_camera_for_space(space_id)
+
+
+func _insert_cut_to_space(space_id: String, hold_sec: float = 1.7) -> void:
+	if _insert_cut_active:
+		return
+	if _cached_fp_cam == null or not is_instance_valid(_cached_fp_cam):
+		return
+	if space_id == _player_pos:
+		return
+	var spec: Dictionary = _camera_spec_for_space(space_id)
+	if spec.is_empty():
+		return
+	_insert_cut_active = true
+	_cached_fp_cam.position = spec.get("origin", Vector3.ZERO)
+	_cached_fp_cam.rotation = spec.get("rotation", Vector3.ZERO)
+	_cached_fp_cam.fov = maxf(34.0, float(spec.get("fov", 62.0)) - 12.0)
+	print("[Gauntlet FP] insert cut → %s (hold %.1fs)" % [space_id, hold_sec])
+	NodeDelay.after(self, hold_sec, _insert_cut_return)
+
+
+func _insert_cut_return() -> void:
+	_insert_cut_active = false
+	if _cached_fp_cam == null or not is_instance_valid(_cached_fp_cam):
+		return
+	var spec: Dictionary = _camera_spec_for_space(_player_pos)
+	if spec.is_empty():
+		return
+	_cached_fp_cam.position = spec.get("origin", Vector3.ZERO)
+	_cached_fp_cam.rotation = spec.get("rotation", Vector3.ZERO)
+	_cached_fp_cam.fov = float(spec.get("fov", 62.0))
+
+
 # Public accessor for the gauntlet FP SubViewportContainer's
 # ShaderMaterial. The VN debug overlay's GAUNTLET SHADER section
 # writes per-effect uniforms through this. Returns null if the
@@ -2995,6 +3528,18 @@ func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
 	_cached_fp_vc = vc
 	_cached_fp_vp = vp
 	_cached_fp_cam = cam
+	# THE TRIP's feedback (2026-09-12): the board's 3D renders into
+	# this SubViewport, which is a UI-free texture — the same source
+	# the VN uses. The show rect sits one z above the container and
+	# under the board header (5), so the wake lands on the room and
+	# never on a card. Torn down with the rest of the board contents.
+	var trip_fb: Node = get_node_or_null("/root/TripSync")
+	if trip_fb != null and trip_fb.has_method("attach_feedback"):
+		var fb_v: Variant = trip_fb.call("attach_feedback", vc)
+		if fb_v is Control:
+			var fb: Control = fb_v as Control
+			fb.z_index = 1
+			_board_content.add_child(fb)
 	# Post-process shader on the SubViewportContainer. Same pattern
 	# as VN portraits: a canvas_item shader sampling TEXTURE (the
 	# SubViewport's render target). Lives here instead of as a
@@ -3197,12 +3742,12 @@ func _render_topdown_map() -> void:
 		# they only align with the painted stations when the image
 		# covers the same rect.
 		bg.stretch_mode = TextureRect.STRETCH_SCALE
-		# Low alpha — the AI-generated board image's painted stations
-		# rarely line up with the JSON's pos_xy coordinates. Treat the
-		# image as ATMOSPHERIC TEXTURE / mood, not a literal map. The
-		# engine-drawn markers + adjacency lines are the authoritative
-		# board.
-		bg.modulate = Color(1, 1, 1, 0.12)
+		# Atmospheric under-layer only — the engine-drawn markers +
+		# adjacency lines are the authoritative board.
+		# The 2026-07 floor plates are pure material + light (no
+		# painted stations), so nothing can misalign with pos_xy —
+		# they can afford real presence under the engine-drawn map.
+		bg.modulate = Color(1, 1, 1, 0.42)
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_board_content.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
@@ -3531,7 +4076,7 @@ func _render_fp() -> void:
 		var flavor_lbl := Label.new()
 		flavor_lbl.text = "— " + flavor_s
 		flavor_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
-		flavor_lbl.add_theme_font_size_override("font_size", 10)
+		flavor_lbl.add_theme_font_size_override("font_size", 12)
 		flavor_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		flavor_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		label_hb.add_child(flavor_lbl)
@@ -3549,7 +4094,7 @@ func _render_fp() -> void:
 	var here_header := Label.new()
 	here_header.text = "AT THIS SPACE"
 	here_header.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
-	here_header.add_theme_font_size_override("font_size", 9)
+	here_header.add_theme_font_size_override("font_size", 12)
 	here_panel.add_child(here_header)
 	var any_here: bool = false
 	for vid in _visitors_state:
@@ -3574,7 +4119,7 @@ func _render_fp() -> void:
 		var vlbl := Label.new()
 		vlbl.text = String(vdef.get("name", vid))
 		vlbl.add_theme_color_override("font_color", C_TEXT)
-		vlbl.add_theme_font_size_override("font_size", 10)
+		vlbl.add_theme_font_size_override("font_size", 12)
 		vlbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		row.add_child(vlbl)
 		here_panel.add_child(row)
@@ -3594,14 +4139,14 @@ func _render_fp() -> void:
 		var tlbl := Label.new()
 		tlbl.text = "%s (%d)" % [String(tdef.get("title", "threat")), ticks]
 		tlbl.add_theme_color_override("font_color", Color(1.0, 0.50, 0.39))
-		tlbl.add_theme_font_size_override("font_size", 10)
+		tlbl.add_theme_font_size_override("font_size", 12)
 		trow.add_child(tlbl)
 		here_panel.add_child(trow)
 	if not any_here:
 		var empty_lbl := Label.new()
 		empty_lbl.text = "— nobody here —"
 		empty_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.35))
-		empty_lbl.add_theme_font_size_override("font_size", 10)
+		empty_lbl.add_theme_font_size_override("font_size", 12)
 		here_panel.add_child(empty_lbl)
 	# Bottom navigation bar — adjacent spaces, click → walk.
 	var nav_panel := PanelContainer.new()
@@ -3620,7 +4165,7 @@ func _render_fp() -> void:
 	var nav_header := Label.new()
 	nav_header.text = "WALK TO  (click an adjacent space)"
 	nav_header.add_theme_color_override("font_color", Color(C_ACCENT.r, C_ACCENT.g, C_ACCENT.b, 0.75))
-	nav_header.add_theme_font_size_override("font_size", 9)
+	nav_header.add_theme_font_size_override("font_size", 12)
 	nav_vb.add_child(nav_header)
 	var nav_hb := HBoxContainer.new()
 	nav_hb.add_theme_constant_override("separation", 6)
@@ -3637,7 +4182,7 @@ func _render_fp() -> void:
 			continue
 		var nbr_btn := Button.new()
 		nbr_btn.text = String(nbr_def.get("label", nbr_id.to_upper()))
-		nbr_btn.add_theme_font_size_override("font_size", 11)
+		nbr_btn.add_theme_font_size_override("font_size", 12)
 		nbr_btn.tooltip_text = "Walk to %s (1 Time)" % nbr_btn.text
 		nbr_btn.custom_minimum_size = Vector2(96, 28)
 		nbr_btn.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -3955,6 +4500,15 @@ func _toggle_board_fullscreen() -> void:
 		# viewport-level overlay exit button is the working one.
 		_board_expand_btn.visible = false
 		_board_root.z_index = 10
+		# Hide the covered chrome. z_index only changes draw order —
+		# invisible controls under the fullscreen board kept input
+		# priority and ate clicks (the player could play cards blind).
+		if _top_bar_panel != null:
+			_top_bar_panel.visible = false
+		if _right_column != null:
+			_right_column.visible = false
+		if _bottom_strip != null:
+			_bottom_strip.visible = false
 	else:
 		# Restore uses PRESET_FULL_RECT (same as the initial setup) —
 		# PRESET_LEFT_WIDE anchors BOTH edges to the parent's LEFT
@@ -3963,13 +4517,20 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 		_board_root.offset_top = 52
 		_board_root.offset_left = 8
-		_board_root.offset_bottom = -346
+		_board_root.offset_bottom = MID_BOTTOM
 		_board_root.offset_right = -440
 		_board_expand_btn.visible = true
 		_board_expand_btn.text = "⛶"
 		_board_expand_btn.tooltip_text = "Open the top-down MAP (fullscreen). 1st-person of the current space is the default normal view."
 		_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 		_board_root.z_index = 0
+		# Restore the chrome hidden on fullscreen entry.
+		if _top_bar_panel != null:
+			_top_bar_panel.visible = true
+		if _right_column != null:
+			_right_column.visible = true
+		if _bottom_strip != null:
+			_bottom_strip.visible = true
 	# Show/hide the viewport-level exit button (the working one)
 	if _board_fullscreen_exit_btn != null:
 		_board_fullscreen_exit_btn.visible = _board_fullscreen
@@ -4122,6 +4683,27 @@ func _position_meeples() -> void:
 
 # ── Hand + visitor rendering ─────────────────────────────────────────
 
+# Why a hand card can't be played right now — the single source for
+# the hand tooltip, the card-view modal line, and the blocked-play
+# toast. Empty string when the card is playable.
+func _why_blocked_play(card: Dictionary) -> String:
+	if _game_over:
+		return "(the run is over)"
+	if _phase != Phase.ACTION:
+		return "(Action phase only — currently %s)" % Phase.keys()[_phase]
+	var time_cost: int = int(card.get("time_cost", 1))
+	if _time < time_cost:
+		return "(needs %d Time; you have %d)" % [time_cost, _time]
+	if not _can_play_card(card):
+		var wb_cid: String = String(card.get("id", ""))
+		if wb_cid == "leap":
+			return "(LEAP needs every win condition met — see the GOAL line)"
+		if wb_cid == "bundle":
+			return "(BUNDLE needs stick + cloth + a contents item)"
+		return "(requirements not met — see effect summary)"
+	return ""
+
+
 func _render_hand() -> void:
 	for c in _hand_box.get_children():
 		c.queue_free()
@@ -4138,20 +4720,16 @@ func _render_hand() -> void:
 		var is_disabled: bool = (not playable) or (_phase != Phase.ACTION) or _game_over
 		# Tooltip leads with a "why not" line when the card is
 		# disabled, so the player isn't left guessing.
-		var why_blocked: String = ""
-		if is_disabled:
-			if _phase != Phase.ACTION:
-				why_blocked = "(Action phase only — currently %s)" % Phase.keys()[_phase]
-			elif _time < time_cost:
-				why_blocked = "(needs %d Time; you have %d)" % [time_cost, _time]
-			elif not playable:
-				why_blocked = "(requirements not met — see effect summary)"
+		var why_blocked: String = _why_blocked_play(card) if is_disabled else ""
 		btn.tooltip_text = "%s — costs %d Time%s\n\n%s\n\n%s\n\n(Click to preview + play.)" % [
 			card.get("title", cid), time_cost,
 			("\n" + why_blocked) if why_blocked != "" else "",
 			String(card.get("flavor", "")),
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art == null:
+			# Procedural face until the studio generates real art.
+			art = CARD_FACE.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -4164,12 +4742,12 @@ func _render_hand() -> void:
 		tile.add_child(btn)
 		var title_lbl := Label.new()
 		title_lbl.text = "%s · %dt" % [card.get("title", cid), time_cost]
-		title_lbl.add_theme_font_size_override("font_size", 9)
+		title_lbl.add_theme_font_size_override("font_size", 12)
 		title_lbl.add_theme_color_override("font_color", C_TEXT)
 		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		title_lbl.custom_minimum_size = Vector2(108, 28)
+		title_lbl.custom_minimum_size = Vector2(108, 34)
 		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		# Grey title out if card isn't playable
 		if not playable or _phase != Phase.ACTION or _game_over:
@@ -4226,6 +4804,8 @@ func _render_tableau() -> void:
 			String(card.get("flavor", "")),
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art == null:
+			art = CARD_FACE.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -4242,12 +4822,12 @@ func _render_tableau() -> void:
 		var stock_n: int = int(_tableau_stock.get(cid, 0))
 		var exp_prefix: String = "[exp] " if card.get("experimental", false) else ""
 		title_lbl.text = "%s%s · buy %dt · ×%d" % [exp_prefix, card.get("title", cid), price, stock_n]
-		title_lbl.add_theme_font_size_override("font_size", 9)
+		title_lbl.add_theme_font_size_override("font_size", 12)
 		title_lbl.add_theme_color_override("font_color", C_TEXT)
 		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		title_lbl.custom_minimum_size = Vector2(108, 28)
+		title_lbl.custom_minimum_size = Vector2(108, 34)
 		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if not can_buy:
 			title_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.45))
@@ -4323,7 +4903,6 @@ func _describe_requirement(r: Dictionary) -> String:
 		"inventory_has_contents": return "carry any CONTENTS"
 		"item_at_pos":     return "an item is here"
 		"win_conditions_met": return "win conditions met"
-		"requires_token":  return "ledger token %s" % String(r.get("token", "?")).replace("_", " ").to_upper()
 	return String(r.get("kind", "?"))
 
 
@@ -4560,6 +5139,14 @@ func _render_inventory() -> void:
 	# ⛶ modal (see _build_inventory_modal_body).
 	if _inv_summary_label == null:
 		return
+	# Bindle chrome is Fool-only — the other arcanas get a plain
+	# item-count summary.
+	if _arcana_id != "fool":
+		if _inventory.is_empty():
+			_inv_summary_label.text = "[color=#7c8398](nothing yet — search a pile)[/color]"
+		else:
+			_inv_summary_label.text = "[color=#c8a268]%d item(s) carried[/color] · click ⛶ for details" % _inventory.size()
+		return
 	if _bindle_assembled:
 		_inv_summary_label.text = "[color=#ffd07a][b]BINDLE assembled[/b][/color] · %d item(s) carried · click ⛶ for details" % _inventory.size()
 		return
@@ -4584,6 +5171,25 @@ func _render_inventory() -> void:
 func _render_visitors() -> void:
 	for c in _visitors_box.get_children():
 		c.queue_free()
+	# "VISITORS · n here / m total" counts in the pane header. Counts
+	# follow the same visibility rules as the rows below (hidden
+	# conditionals and dormant unscheduled visitors don't leak).
+	var v_here: int = 0
+	var v_total: int = 0
+	for cvid in _visitors_def:
+		var cv: Dictionary = _visitors_def[cvid]
+		var cst: Dictionary = _visitors_state.get(cvid, {})
+		var c_arrived: bool = cst.get("arrived", false)
+		if cv.get("hidden_until_arrived", false) and not c_arrived:
+			continue
+		if not c_arrived and not cst.has("scheduled_turn") and not cst.get("consumed", false):
+			continue
+		v_total += 1
+		if c_arrived and not cst.get("consumed", false):
+			v_here += 1
+	var v_title: Label = _pane_title_labels.get("visitors") as Label
+	if v_title != null:
+		v_title.text = "  VISITORS · %d here / %d total" % [v_here, v_total]
 	for vid in _visitors_def:
 		var v: Dictionary = _visitors_def[vid]
 		var st: Dictionary = _visitors_state.get(vid, {})
@@ -4636,7 +5242,7 @@ func _render_visitors() -> void:
 				if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
 					_open_visitor_view(vid))
 		if arrived:
-			var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+			var face: Texture2D = _visitor_face_texture(vid)
 			if face:
 				var face_rect := TextureRect.new()
 				face_rect.texture = face
@@ -4659,7 +5265,7 @@ func _render_visitors() -> void:
 		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
-		rt.add_theme_font_size_override("normal_font_size", 10)
+		rt.add_theme_font_size_override("normal_font_size", 12)
 		rt.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if hint_line != "" and not arrived:
 			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n[color=#7c8398][i]   %s[/i][/color]" % [accent, name_s, status, hint_line]
@@ -4776,7 +5382,7 @@ func _build_phase_help_modal_body() -> Control:
 			item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			item.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			item.add_theme_color_override("default_color", C_TEXT)
-			item.add_theme_font_size_override("normal_font_size", 11)
+			item.add_theme_font_size_override("normal_font_size", 12)
 			item.text = "  · " + line
 			inner.add_child(item)
 		vb.add_child(section)
@@ -4798,11 +5404,59 @@ func _build_phase_help_modal_body() -> Control:
 	llr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	llr.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	llr.add_theme_color_override("default_color", C_TEXT)
-	llr.add_theme_font_size_override("normal_font_size", 11)
-	llr.text = "[b]WIN:[/b] assemble the BUNDLE (stick + cloth + a contents item), connect with at least 3 visitors, keep Faith adjacent, and play LEAP at an open threshold while Inertia is under 7.\n\n[b]LOSS:[/b] Inertia reaches 12 (the 24-hour diner of the soul) [i]or[/i] 3 visitors stay claimed and get consumed."
+	llr.add_theme_font_size_override("normal_font_size", 12)
+	llr.text = "[b]WIN:[/b] %s\n\n[b]LOSS:[/b] %s" % [_win_summary_text(), _loss_summary_text()]
 	lvb.add_child(llr)
 	vb.add_child(legend)
 	return vb
+
+
+# Build the WIN legend line from the keys the engine actually honors
+# in this setup's win_conditions (see _win_conditions_met and
+# _force_end_of_shift_check) instead of hardcoded Fool text. If the
+# setup carries an authored description, that wins.
+func _win_summary_text() -> String:
+	var wc: Dictionary = _setup.get("win_conditions", {})
+	var authored: String = String(wc.get("description", _setup.get("win_description", "")))
+	if authored != "":
+		return authored
+	var parts: PackedStringArray = []
+	if _arcana_id == "fool":
+		parts.append("assemble the BUNDLE (stick + cloth + a contents item)")
+	parts.append("connect with at least %d visitors" % int(wc.get("require_visitors_connected_min", 3)))
+	if wc.has("require_hard_mood_connections_min"):
+		parts.append("%d of them hard-mood" % int(wc.get("require_hard_mood_connections_min", 0)))
+	if wc.has("require_orders_delivered_min"):
+		parts.append("deliver at least %d orders by end of shift" % int(wc.get("require_orders_delivered_min", 0)))
+	if wc.has("require_pieces_completed_min"):
+		parts.append("complete at least %d pieces" % int(wc.get("require_pieces_completed_min", 0)))
+	if _arcana_id == "fool":
+		parts.append("keep Inertia under %d" % int(wc.get("require_inertia_below", 7)))
+		parts.append("keep Faith adjacent")
+		parts.append("play LEAP at an open threshold")
+	else:
+		if wc.has("require_doubt_below"):
+			parts.append("keep Doubt under %d" % int(wc.get("require_doubt_below", 99)))
+		if wc.has("require_stagnation_below"):
+			parts.append("keep Stagnation under %d" % int(wc.get("require_stagnation_below", 99)))
+		if bool(wc.get("require_threshold_space", true)):
+			parts.append("finish at an open threshold")
+	return ", ".join(parts) + "."
+
+
+# LOSS legend line from the setup's loss_conditions (as honored by
+# _check_game_end and the per-arcana loss triggers).
+func _loss_summary_text() -> String:
+	var lc: Dictionary = _setup.get("loss_conditions", {})
+	var parts: PackedStringArray = []
+	if lc.has("inertia_max") or _arcana_id == "fool":
+		parts.append("Inertia reaches %d (the 24-hour diner of the soul)" % int(lc.get("inertia_max", 12)))
+	if lc.has("stagnation_max"):
+		parts.append("Stagnation reaches %d" % int(lc.get("stagnation_max", 12)))
+	if lc.has("doubt_max"):
+		parts.append("Doubt reaches %d" % int(lc.get("doubt_max", 7)))
+	parts.append("%d visitors stay claimed and get consumed" % int(lc.get("visitors_claimed_max", 3)))
+	return " [i]or[/i] ".join(parts) + "."
 
 
 func _build_log_modal_body() -> Control:
@@ -4900,7 +5554,7 @@ func _build_visitors_modal_body() -> Control:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 10)
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid)) if arrived else null
+		var face: Texture2D = _visitor_face_texture(vid) if arrived else null
 		if face:
 			var ico := TextureRect.new()
 			ico.texture = face
@@ -5001,7 +5655,7 @@ func _build_gravity_modal_body() -> Control:
 		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
-		rt.add_theme_font_size_override("normal_font_size", 11)
+		rt.add_theme_font_size_override("normal_font_size", 12)
 		rt.text = "[b]%s[/b]\n[color=#7c8398][i]%s[/i][/color]" % [c.get("title", cid), c.get("flavor", "")]
 		vb.add_child(rt)
 	return vb
@@ -5103,11 +5757,43 @@ func _render() -> void:
 		_pulse_label(_inertia_label, Color(0.49, 1.0, 0.69) if _inertia < _last_rendered_inertia else Color(1.0, 0.50, 0.39))
 	if _last_rendered_sanity != -1 and _sanity != _last_rendered_sanity:
 		_pulse_label(_sanity_label, Color(0.49, 1.0, 0.69) if _sanity > _last_rendered_sanity else Color(1.0, 0.50, 0.39))
+	# Major-arcana stats pulse too (Stagnation / Doubt inverted like
+	# Inertia: rising is bad; the third-slot currency rising is good).
+	if _last_rendered_stagnation != -1 and _stagnation != _last_rendered_stagnation:
+		_pulse_label(_stagnation_label, Color(0.49, 1.0, 0.69) if _stagnation < _last_rendered_stagnation else Color(1.0, 0.50, 0.39))
+	if _last_rendered_doubt != -1 and _doubt != _last_rendered_doubt:
+		_pulse_label(_doubt_label, Color(0.49, 1.0, 0.69) if _doubt < _last_rendered_doubt else Color(1.0, 0.50, 0.39))
+	var arcana_stat: int = 0
+	if is_magician:
+		arcana_stat = _inspiration
+	elif is_priestess:
+		arcana_stat = _insight
+	elif is_empress:
+		arcana_stat = _harvest
+	elif is_emperor:
+		arcana_stat = _authority
+	elif is_hierophant:
+		arcana_stat = _doctrine
+	elif is_lovers:
+		arcana_stat = _verb
+	elif is_chariot:
+		arcana_stat = _fuel
+	if _last_rendered_arcana_stat != -1 and arcana_stat != _last_rendered_arcana_stat:
+		_pulse_label(_inspiration_label, Color(0.49, 1.0, 0.69) if arcana_stat > _last_rendered_arcana_stat else Color(1.0, 0.50, 0.39))
 	_last_rendered_time = _time
 	_last_rendered_inertia = _inertia
 	_last_rendered_sanity = _sanity
+	_last_rendered_stagnation = _stagnation
+	_last_rendered_doubt = _doubt
+	_last_rendered_arcana_stat = arcana_stat
 	_player_pos_label.text = "at: " + _player_pos
-	_bindle_label.text = "Bindle: " + _bindle_display()
+	# Bindle chrome is Fool-only.
+	_bindle_label.visible = (_arcana_id == "fool")
+	if _bindle_label.visible:
+		_bindle_label.text = "Bindle: " + _bindle_display()
+	# Live goal readout in the VISITORS pane header area.
+	if _goal_label != null:
+		_goal_label.text = _goal_line_text()
 	# Rebuild the board so the » chevron + highlight color follow
 	# the player to their new space. Cheap (~20 labels).
 	_render_board()
@@ -5117,7 +5803,26 @@ func _render() -> void:
 	_render_visitors()
 	_render_inventory()
 	_update_advance_label()
-	_update_draft_button()
+
+
+# One-line "GOAL · connect n/m · inertia < k" readout built from the
+# honored win keys vs live state. Fool tracks Inertia; the majors
+# track Doubt / Stagnation ceilings instead.
+func _goal_line_text() -> String:
+	var wc: Dictionary = _setup.get("win_conditions", {})
+	var parts: PackedStringArray = []
+	var need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+	parts.append("connect %d/%d" % [_connections_made.size(), need_connect])
+	if wc.has("require_orders_delivered_min"):
+		parts.append("orders %d/%d" % [int(_flags.get("orders_delivered", 0)), int(wc.get("require_orders_delivered_min", 0))])
+	if _arcana_id == "fool":
+		parts.append("inertia %d < %d" % [_inertia, int(wc.get("require_inertia_below", 7))])
+	else:
+		if wc.has("require_doubt_below"):
+			parts.append("doubt %d < %d" % [_doubt, int(wc.get("require_doubt_below", 99))])
+		if wc.has("require_stagnation_below"):
+			parts.append("stagnation %d < %d" % [_stagnation, int(wc.get("require_stagnation_below", 99))])
+	return "  [color=#c8a268]GOAL[/color] · " + " · ".join(parts)
 
 
 func _bindle_display() -> String:
@@ -5295,12 +6000,6 @@ func _check_requirement(req: Dictionary) -> bool:
 				return false
 			var ps: Dictionary = _visitors_state.get(_lovers_partner_id, {})
 			return String(ps.get("pos", "")) == _player_pos
-		"requires_token":
-			# Run Ledger (Wave 2) — true if the named token was earned
-			# in ANY previous run (committed ledger) or this one. The
-			# cross-scenario memory predicate: tokens carried forward
-			# become requires-clauses on later cards.
-			return _ledger_has_token(String(req.get("token", "")))
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -5380,21 +6079,7 @@ func _pile_at_pos(pos: String) -> String:
 func _is_threshold(pos: String) -> bool:
 	for s: Dictionary in _location.get("spaces", []):
 		if s.get("id", "") == pos and s.get("kind", "") == "threshold":
-			return not _threshold_token_locked(pos)
-	return false
-
-
-# Run Ledger (Wave 2) — a setup thresholds[] entry may declare
-# requires_token: the exit only opens for a player whose ledger (or
-# current run) holds that token. Thresholds without the field are
-# unaffected.
-func _threshold_token_locked(pos: String) -> bool:
-	for t_v in _setup.get("thresholds", []):
-		var t: Dictionary = t_v
-		if String(t.get("id", "")) != pos:
-			continue
-		var tok: String = String(t.get("requires_token", ""))
-		return tok != "" and not _ledger_has_token(tok)
+			return true
 	return false
 
 
@@ -5693,7 +6378,11 @@ func _on_play_card(cid: String) -> void:
 		return
 	var card: Dictionary = _action_cards.get(cid, {})
 	if not _can_play_card(card):
-		_log_line("[i]can't play %s now[/i]" % card.get("title", cid))
+		var why: String = _why_blocked_play(card)
+		if why == "":
+			why = "(can't play it right now)"
+		_log_line("[i]can't play %s now %s[/i]" % [card.get("title", cid), why])
+		_show_toast("Can't play [b]%s[/b]  %s" % [String(card.get("title", cid)), why], "#ff8060")
 		return
 	# Achievement bookkeeping — count cards played per run.
 	_cards_played_this_run[cid] = int(_cards_played_this_run.get(cid, 0)) + 1
@@ -5710,6 +6399,7 @@ func _on_play_card(cid: String) -> void:
 		_log_line("[color=#ff8060][i]the counter knows: +1 Time on %s[/i][/color]" % card.get("title", cid))
 	if _time < cost:
 		_log_line("[i]not enough Time to play %s (need %d, have %d)[/i]" % [card.get("title", cid), cost, _time])
+		_show_toast("Not enough Time for [b]%s[/b] (need %d, have %d)" % [String(card.get("title", cid)), cost, _time], "#ff8060")
 		return
 	_time -= cost
 	_played_this_turn.append(cid)
@@ -5964,6 +6654,10 @@ func _resolve_effect(e: Dictionary) -> void:
 				var resume_src: String = _BGM_BY_LOCATION.get(_location_id, "")
 				AudioMgr.play_oneshot_bgm(bgm_path, resume_src)
 				_log_line("[color=#c8a268]♪ jukebox · now playing [b]%s[/b][/color]" % label)
+				# Direction: look at the jukebox as the record drops,
+				# then back to your hands. No-op in locales without
+				# a jukebox space.
+				_insert_cut_to_space("jukebox", 2.4)
 				if catalog_id != "":
 					if SaveSystem.mark_unlocked("music:" + catalog_id):
 						AudioMgr.track_unlocked.emit(bgm_path, label)
@@ -6668,7 +7362,7 @@ func _prompt_contents_pick(pile_id: String) -> void:
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no art yet)"
+		ph.text = "(unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
@@ -6706,7 +7400,7 @@ func _prompt_contents_pick(pile_id: String) -> void:
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hint.add_theme_color_override("default_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
-	hint.add_theme_font_size_override("normal_font_size", 11)
+	hint.add_theme_font_size_override("normal_font_size", 12)
 	hint.text = "[i]This is the contents of your bindle. KEEP it and the LEAP carries it — your ending will be shaped by what you carried. PUT BACK shuffles the drawer; next search draws something else.[/i]"
 	info.add_child(hint)
 	var spacer := Control.new()
@@ -6796,7 +7490,7 @@ func _prompt_search_choice(pile_id: String, peek: int) -> void:
 	var hint := Label.new()
 	hint.text = "  Whichever you don't take stays in the pile for next time."
 	hint.add_theme_color_override("font_color", Color(0.85, 0.83, 0.78, 0.7))
-	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_font_size_override("font_size", 12)
 	vb.add_child(hint)
 	vb.add_child(HSeparator.new())
 	var row := HBoxContainer.new()
@@ -6838,7 +7532,7 @@ func _prompt_search_choice(pile_id: String, peek: int) -> void:
 		tile.add_child(btn)
 		var lbl := Label.new()
 		lbl.text = String(item.get("title", iid))
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 12)
 		lbl.add_theme_color_override("font_color", C_TEXT)
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -6883,7 +7577,7 @@ func _prompt_choose(options: Array) -> void:
 	var hint := Label.new()
 	hint.text = "  The room is asking. There's no opt-out."
 	hint.add_theme_color_override("font_color", Color(0.85, 0.83, 0.78, 0.7))
-	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_font_size_override("font_size", 12)
 	vb.add_child(hint)
 	vb.add_child(HSeparator.new())
 	for opt: Dictionary in options:
@@ -6947,7 +7641,7 @@ func _prompt_discard_cards(amount: int) -> void:
 	hint.bbcode_enabled = true
 	hint.fit_content = true
 	hint.add_theme_color_override("default_color", C_TEXT)
-	hint.add_theme_font_size_override("normal_font_size", 11)
+	hint.add_theme_font_size_override("normal_font_size", 12)
 	hint.text = "[i]Click cards to select. Click [b]Discard[/b] when you've picked %d.[/i]" % amount
 	vb.add_child(hint)
 	vb.add_child(HSeparator.new())
@@ -6964,11 +7658,13 @@ func _prompt_discard_cards(amount: int) -> void:
 		var card: Dictionary = _action_cards.get(cid, {})
 		var btn := Button.new()
 		btn.text = card.get("title", cid)
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.custom_minimum_size = Vector2(108, 80)
 		btn.tooltip_text = String(card.get("flavor", ""))
 		btn.toggle_mode = true
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art == null:
+			art = CARD_FACE.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -7057,6 +7753,10 @@ func _spawn_threat(def_id: String, pos_override: String = "") -> void:
 		_log_line("[color=#ff8060]✕ %s[/color] [color=#7c8398][i](%d turns)[/i][/color]" %
 			[String(tdef.get("title", def_id)), ticks])
 	_show_toast("Threat · [b]%s[/b]" % String(tdef.get("title", def_id)), "#ff8060")
+	# Direction: a new mess in the room earns a look — cut to where
+	# it just appeared, hold, cut back. Refresh-in-place (above)
+	# deliberately doesn't cut; the reader already knows that image.
+	_insert_cut_to_space(pos, 1.5)
 
 
 func _clear_threats_at(pos: String, card_id: String) -> bool:
@@ -7208,13 +7908,8 @@ func _connect_visitor(vid: String) -> void:
 	_log_line("[color=#7c8398][i]Connections: %d / %d toward the leap.[/i][/color]" % [total, needed])
 	_log_line("")
 	_show_toast("Connected with [b]%s[/b]" % name_s, "#7cffb0")
-	# Run Ledger (Wave 2) — every connection mints a visitor-connection
-	# token. Ledger-only (never enters _lore_tokens_collected): later
-	# scenarios gate on it via requires_token: "connection:<vid>".
-	_ledger_note_token("connection:" + vid, "connection", vid,
-		String(v.get("lore_text", "")))
 	if v.has("lore_token"):
-		_collect_lore_token(v["lore_token"], "lore", vid)
+		_collect_lore_token(v["lore_token"])
 
 
 # Per-visitor narrative beat that fires on connection. Each one is
@@ -7238,18 +7933,10 @@ func _connection_beat(vid: String) -> String:
 	return ""
 
 
-func _collect_lore_token(token: String, kind: String = "lore", source_vid: String = "") -> void:
+func _collect_lore_token(token: String) -> void:
 	if token == "" or token in _lore_tokens_collected:
 		return
 	_lore_tokens_collected.append(token)
-	# Run Ledger (Wave 2) — buffer the earn-moment so the ledger's
-	# wax-seal page can reveal WHERE and FROM WHOM on mouse-over.
-	var moment: String = ""
-	if source_vid != "":
-		moment = String(_visitors_def.get(source_vid, {}).get("lore_text", ""))
-	if moment == "":
-		moment = "%s — %s" % [String(_setup.get("title", _scenario_id)), String(_setup.get("subtitle", ""))]
-	_ledger_note_token(token, kind, source_vid, moment)
 	_log_line("[color=#ffd07a]✦ lore token: %s[/color]" % token)
 	_audio_sfx("lore_token")
 	_show_toast("Lore token gained — [b]%s[/b]" % token.replace("_", " "), "#ffd07a")
@@ -7417,6 +8104,15 @@ func _resolve_framework_card(card: Dictionary) -> void:
 	var result: String = roll["result"]
 	var line: String = roll["line"]
 	_log_line("[i]threshold roll: %s → %s[/i]" % [line, result])
+	# Surface the roll where the player is looking — the log line
+	# alone was easy to miss. Symbols + outcome, colored by result.
+	match result:
+		"ss":
+			_show_toast("threshold roll  %s  →  [b]★★ double success[/b]" % line, "#7cffb0")
+		"s":
+			_show_toast("threshold roll  %s  →  [b]★ success[/b]" % line, "#7cffb0")
+		_:
+			_show_toast("threshold roll  %s  →  [b]✕ failure[/b]" % line, "#ff8060")
 	# Apply outcome — log flavor AND apply mechanical effect.
 	match result:
 		"ss":
@@ -7624,6 +8320,33 @@ func _on_advance() -> void:
 			_show_phase_banner("──  TURN %d  ── ACTION" % (_turn + 1))
 			_phase_action()
 	_render()
+	_maybe_schedule_auto_advance()
+
+
+# DRIFT and UPKEEP are decision-free — after their resolution +
+# banner beat, auto-advance through the same path as the Advance
+# button. SHADOW stays manual (the player should read the Gravity
+# card). The serial guards against double-advance: a click during
+# the timer runs _on_advance itself, which schedules a NEW timer
+# (bumping the serial) and invalidates the pending one.
+var _auto_advance_serial: int = 0
+
+func _maybe_schedule_auto_advance() -> void:
+	if _game_over:
+		return
+	if _phase != Phase.DRIFT and _phase != Phase.UPKEEP:
+		return
+	_auto_advance_serial += 1
+	var my_serial: int = _auto_advance_serial
+	var phase_at_schedule: int = int(_phase)
+	NodeDelay.after(self, 0.9, func() -> void:
+		if _game_over or not is_inside_tree():
+			return
+		if my_serial != _auto_advance_serial:
+			return   # a newer schedule (or a manual click) superseded this one
+		if int(_phase) != phase_at_schedule:
+			return   # the player already advanced during the beat
+		_on_advance())
 
 
 # Phase transition banner — slides in from the top center, fades out
@@ -8253,16 +8976,22 @@ func _force_end_of_shift_check() -> void:
 func _check_game_end() -> void:
 	if _game_over:
 		return
-	# Inertia 12
-	if _inertia >= 12:
+	# Honor the setup's authored loss_conditions instead of hardcoded
+	# Fool defaults (12 inertia / 3 claimed). Reversed mode already
+	# tightens visitors_claimed_max in _setup at init time.
+	var lc: Dictionary = _setup.get("loss_conditions", {})
+	# Inertia ceiling
+	var inertia_max: int = int(lc.get("inertia_max", 12))
+	if _inertia >= inertia_max:
 		_trigger_loss("inertia_12")
 		return
-	# Three Visitors claimed
+	# Visitors consumed ceiling
+	var claimed_max: int = int(lc.get("visitors_claimed_max", 3))
 	var consumed := 0
 	for vid in _visitors_state:
 		if _visitors_state[vid].get("consumed", false):
 			consumed += 1
-	if consumed >= 3:
+	if consumed >= claimed_max:
 		_trigger_loss("visitors_claimed_3")
 		return
 
@@ -8450,15 +9179,14 @@ func _achievement_compare(a: int, op: String, b: int) -> bool:
 func _trigger_win(threshold: String) -> void:
 	_game_over = true
 	_audio_sfx("win")
+	_audio_ending("", true)
 	# Find threshold's ending lore token
 	var ending_token := ""
 	for t: Dictionary in _setup.get("thresholds", []):
 		if t.get("id", "") == threshold:
 			ending_token = t.get("ending_lore_token", "")
 	if ending_token != "":
-		# Ending tokens are the leap-tokens in the Run Ledger's ontology
-		# — earned by crossing a threshold, not by a visitor.
-		_collect_lore_token(ending_token, "leap")
+		_collect_lore_token(ending_token)
 	# Milestones — gauntlet_win unlocks the Cathedral of Rust skin
 	# + Cathedral Drift visualizer + "The Leap (won)" BGM. Per-arcana
 	# variant lets later content gate on a specific arcana win.
@@ -8477,9 +9205,6 @@ func _trigger_win(threshold: String) -> void:
 			contents = it
 			break
 	GauntletState.record_win(_arcana_id, _location_id, contents, _lore_tokens_collected, "")
-	# Run Ledger (Wave 2) — commit this run's token entries, bump the
-	# per-scenario record + streak, bank doctrine, award insight.
-	_ledger_commit_run(true)
 	# Clear the mid-run save now that the scenario is complete —
 	# next start of this arcana+scenario opens fresh.
 	_clear_gauntlet_save()
@@ -8494,6 +9219,9 @@ func _trigger_win(threshold: String) -> void:
 		"contents": contents,
 		"lore_tokens": _lore_tokens_collected,
 		"ending_token": ending_token,
+		"final_sanity": _sanity,
+		"final_inertia": _inertia,
+		"final_hand": _hand_cards.duplicate(),
 	}
 	# CG image path per threshold
 	var cg_path: String = _win_cg_path(threshold)
@@ -8506,6 +9234,13 @@ func _trigger_win(threshold: String) -> void:
 
 
 func _win_cg_path(threshold: String) -> String:
+	# Data-driven first: any board's ending art drops in at
+	# assets/cg/gauntlet_<arcana>_<id>.png with zero code (the CG
+	# program is painting boards one at a time). The Fool's original
+	# five keep their pre-program filenames as the fallback map.
+	var p := "res://assets/cg/gauntlet_%s_%s.png" % [_arcana_id, threshold]
+	if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+		return p
 	match threshold:
 		"parking_lot":   return "res://assets/cg/fool_leap_parking_lot.png"
 		"river_window":  return "res://assets/cg/fool_leap_river_window.png"
@@ -8579,6 +9314,7 @@ func _trigger_loss(reason: String) -> void:
 		finale_title = f.get("title", "")
 		finale_flavor = f.get("flavor", "")
 	_last_finale_id = finale_id
+	_audio_ending(finale_id, false)
 	# Evaluate achievements that fire on loss (sinkhole opens etc.).
 	_evaluate_achievements("loss", finale_id)
 	# Milestones — gauntlet_loss unlocks the 24-Hour Diner skin + the
@@ -8603,24 +9339,32 @@ func _trigger_loss(reason: String) -> void:
 		if stinger_key != "":
 			SaveSystem.mark_unlocked(stinger_key)
 	if _arcana_id == "priestess" and finale_id != "":
-		# Priestess finale-id → milestone:priestess_finale:<key>. The
-		# music catalog slots can adopt these keys when the priestess
-		# finale stingers are added in a future music-slot pass.
+		# Priestess finale-id → milestone:priestess_finale:<key>.
+		#
+		# REWRITTEN 2026-09-11. The six ids this matched on
+		# (the_reel_ran_out, the_listener_breaks, …) are not in
+		# priestess/finale.json and never were — they came from an
+		# earlier staging where the board was a recording booth. The
+		# board is Elicia's bungalow now and its four finales are
+		# below, so not one of these milestones could ever fire.
+		# Matched by TRIGGER, which is the part that survived the
+		# restaging: stagnation → the booked time ran out with
+		# nothing worth keeping; doubt → the thing she made comes
+		# back at her; three claimed → the room stopped waiting;
+		# shift over → the night ran out.
 		var p_key: String = ""
 		match finale_id:
-			"the_reel_ran_out":              p_key = "milestone:priestess_finale:reel_ran_out"
-			"the_listener_breaks":           p_key = "milestone:priestess_finale:listener_breaks"
-			"the_session_ends_empty":        p_key = "milestone:priestess_finale:session_empty"
-			"they_walked_out_mid_sentence":  p_key = "milestone:priestess_finale:walked_out"
-			"the_cicadas_stopped":           p_key = "milestone:priestess_finale:cicadas_stopped"
-			"session_over_unfinished":       p_key = "milestone:priestess_finale:shift_ends"
+			"the_choose_your_own_didnt_render":
+				p_key = "milestone:priestess_finale:session_empty"
+			"the_pomegranate_hour_returned":
+				p_key = "milestone:priestess_finale:listener_breaks"
+			"the_audience_stopped_waiting":
+				p_key = "milestone:priestess_finale:walked_out"
+			"the_night_ran_out":
+				p_key = "milestone:priestess_finale:shift_ends"
 		if p_key != "":
 			SaveSystem.mark_unlocked(p_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
-	# Run Ledger (Wave 2) — losses commit too: tokens carry over from
-	# losses (§IV.9 post-loss behavior), the record takes the L, the
-	# streak resets, and banked doctrine still accrues.
-	_ledger_commit_run(false)
 	_clear_gauntlet_save()
 	_last_outcome = "lost"
 	_last_summary = {
@@ -8630,6 +9374,9 @@ func _trigger_loss(reason: String) -> void:
 		"finale_id": finale_id,
 		"finale_title": finale_title,
 		"lore_tokens": _lore_tokens_collected,
+		"final_sanity": _sanity,
+		"final_inertia": _inertia,
+		"final_hand": _hand_cards.duplicate(),
 	}
 	var cg_path: String = _loss_cg_path(finale_id)
 	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)
@@ -8639,6 +9386,9 @@ func _trigger_loss(reason: String) -> void:
 
 
 func _loss_cg_path(finale_id: String) -> String:
+	var p := "res://assets/cg/gauntlet_%s_%s.png" % [_arcana_id, finale_id]
+	if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+		return p
 	match finale_id:
 		"wipe_the_same_spot_forever":         return "res://assets/cg/fool_finale_wipe_forever.png"
 		"twenty_four_hour_diner_of_the_soul": return "res://assets/cg/fool_finale_24_hour_diner.png"
@@ -8646,6 +9396,219 @@ func _loss_cg_path(finale_id: String) -> String:
 		"the_room_listens_back":              return "res://assets/cg/fool_finale_room_listens.png"
 		"the_three_forty_seven_minute":       return "res://assets/cg/fool_finale_three_forty_seven.png"
 	return ""
+
+
+# ── Arcana bookend card (2026-07-19) ─────────────────────────────
+# The 22 procedural title cards live in resources/games/gauntlet_cards/
+# (gen_gauntlet_arcana_cards.py). Used twice: the scenario title-card
+# overlay at run start, and the end-screen art fallback when the
+# finale CG hasn't been generated.
+var _arcana_card_cache: ImageTexture = null
+var _title_overlay: Control = null
+
+
+func _arcana_card_tex() -> ImageTexture:
+	if _arcana_card_cache != null:
+		return _arcana_card_cache
+	var hero := HeroImage.new()
+	var path := "res://resources/games/gauntlet_cards/%s.json" % _arcana_id
+	if not hero.load_from(path):
+		return null
+	_arcana_card_cache = hero.texture(Vector2i(440, 680))
+	return _arcana_card_cache
+
+
+# Scenario title card — the arcana card + setup title over a heavy
+# dim, dismissed on any click. Shown once per run start; skipped
+# silently when the card JSON is missing (fallback discipline).
+func _show_arcana_title_card() -> void:
+	var tex: ImageTexture = _arcana_card_tex()
+	if tex == null:
+		# No card art — go straight to the board. The opening
+		# narration is in the log panel either way.
+		return
+	if _title_overlay != null and is_instance_valid(_title_overlay):
+		_title_overlay.queue_free()
+	_title_overlay = Control.new()
+	_title_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_title_overlay.z_index = 210
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.88)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	_title_overlay.add_child(dim)
+	# CENTERING · a CenterContainer over the full rect, not hand math.
+	# The old version anchored a VBoxContainer to PRESET_CENTER (which
+	# gives it a 0×0 rect, so its children laid out ragged-left) and
+	# then guessed the offset from card_h — the column landed
+	# off-centre and could run off the bottom on a short viewport.
+	# That is the "screen seems broken" on boot.
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_title_overlay.add_child(center)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 10)
+	vb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	center.add_child(vb)
+	var view: Vector2 = get_viewport_rect().size
+	# The card takes at most half the height so the title, the loss
+	# preview and the prompt all fit under it at any window size.
+	var card_h: float = clampf(view.y * 0.46, 200.0, 400.0)
+	var img := TextureRect.new()
+	img.texture = tex
+	img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	img.custom_minimum_size = Vector2(card_h * 0.65, card_h)
+	img.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	vb.add_child(img)
+	var t := Label.new()
+	t.text = String(_setup.get("title", ""))
+	t.custom_minimum_size.x = 460.0
+	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	t.add_theme_font_size_override("font_size", 24)
+	t.add_theme_color_override("font_color", C_ACCENT)
+	vb.add_child(t)
+	var st := Label.new()
+	st.text = String(_setup.get("subtitle", ""))
+	st.custom_minimum_size.x = 460.0
+	st.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	st.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	st.add_theme_font_size_override("font_size", 14)
+	st.add_theme_color_override("font_color", C_TEXT)
+	vb.add_child(st)
+	# The scene-setting prose lives HERE now, on the one card the
+	# player is already reading. It used to arrive as a second
+	# full-screen FULL LOG modal chained off this card's dismissal,
+	# so the first click never revealed the board — it swapped one
+	# wall of text for another ("after a click, it goes to the log").
+	var scene_line: String = String(_setup.get("scene_description", "")).strip_edges()
+	if scene_line != "":
+		var sc := Label.new()
+		sc.text = scene_line
+		sc.custom_minimum_size.x = 460.0
+		sc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		sc.add_theme_font_size_override("font_size", 12)
+		sc.add_theme_color_override("font_color", Color(C_ACCENT.r, C_ACCENT.g, C_ACCENT.b, 0.82))
+		vb.add_child(sc)
+	# Named-loss preview — losses as pedagogy, surfaced BEFORE play.
+	# The finale titles are the ways this reading goes wrong.
+	var loss_titles: Array[String] = []
+	for f_v in _finale_def.get("finales", []):
+		var fd: Dictionary = f_v
+		var lt2: String = String(fd.get("title", "")).strip_edges()
+		if lt2 != "":
+			loss_titles.append(lt2)
+		if loss_titles.size() >= 4:
+			break
+	if not loss_titles.is_empty():
+		var losses := Label.new()
+		losses.text = "ways this goes wrong: " + " · ".join(loss_titles)
+		losses.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		losses.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		losses.custom_minimum_size.x = 460.0
+		losses.add_theme_font_size_override("font_size", 12)
+		losses.add_theme_color_override("font_color", C_BAD)
+		vb.add_child(losses)
+	var hint := Label.new()
+	hint.text = "— click to begin —"
+	hint.custom_minimum_size.x = 460.0
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 12)
+	hint.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
+	vb.add_child(hint)
+	dim.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			if _title_overlay != null and is_instance_valid(_title_overlay):
+				SFXBank.play("card_place", 0.7)
+				_title_overlay.queue_free()
+				_title_overlay = null)
+				# Dismissing the card lands you on the BOARD. The
+				# opening narration is already in the side log and on
+				# the card itself; it no longer opens a second modal.
+	add_child(_title_overlay)
+	SFXBank.play("card_flip", 0.8)
+
+
+# THE READING · three tarot-flavored lines under the ending
+# narrative, built from data the run already tracked (turn count,
+# per-card play counts, the hand at the end, claimed visitors).
+# Every line has a fallback so the reading never renders empty.
+func _post_run_reading(won: bool) -> String:
+	var lines: Array = []
+	# I · the tempo
+	var max_t: int = int(_setup.get("max_turns", 8))
+	if won and _turn <= max_t / 2:
+		lines.append("the tempo · %d of %d turns · you left before the room could form an opinion" % [_turn, max_t])
+	elif won:
+		lines.append("the tempo · %d of %d turns · it went the distance and so did you" % [_turn, max_t])
+	elif _turn >= max_t:
+		lines.append("the tempo · all %d turns spent · the clock was the one card you couldn't play around" % max_t)
+	else:
+		lines.append("the tempo · %d of %d turns · it ended before the clock did · that is its own answer" % [_turn, max_t])
+	# II · the card of the run · most-played, ties broken by id sort
+	var best_id: String = ""
+	var best_n: int = 0
+	var played_ids: Array = _cards_played_this_run.keys()
+	played_ids.sort()
+	for cid_v in played_ids:
+		var n: int = int(_cards_played_this_run[cid_v])
+		if n > best_n:
+			best_n = n
+			best_id = String(cid_v)
+	if best_id != "":
+		var best_title: String = String((_action_cards.get(best_id, {}) as Dictionary).get("title", best_id)).to_upper()
+		lines.append("the card of the run · %s · played %d times · when you didn't know what to do, you knew what to do" % [best_title, best_n])
+	else:
+		lines.append("the card of the run · none · you played the room, not the hand")
+	# III · the card never played, else the claimed, else clean hands
+	var unplayed: String = ""
+	for cid_v in _hand_cards:
+		var cid: String = String(cid_v)
+		if int(_cards_played_this_run.get(cid, 0)) == 0:
+			unplayed = cid
+			break
+	if unplayed != "":
+		var un_title: String = String((_action_cards.get(unplayed, {}) as Dictionary).get("title", unplayed)).to_upper()
+		lines.append("the card never played · %s · it sat in your hand all shift, saying nothing · some cards are company" % un_title)
+	elif _claimed_visitors_count > 0:
+		lines.append("the claimed · %d visitor%s the room took · their names stay on the schedule" % [
+				_claimed_visitors_count, "" if _claimed_visitors_count == 1 else "s"])
+	else:
+		lines.append("the hand · every card you held, you played · nothing wasted, nothing spared")
+	# IV · the card · this arcana's record across runs (the tempo row,
+	# design pillar 2026-09-19): runs, wins, the best clock. Kept in
+	# SaveSystem records so the board remembers between sessions.
+	lines.append(_arcana_record_line(won))
+	return "\n\n[color=#c8a842][b]· THE READING ·[/b]\n%s[/color]" % "\n".join(lines)
+
+
+func _arcana_record_line(won: bool) -> String:
+	var key: String = "gauntlet:" + _arcana_id
+	var rec: Dictionary = SaveSystem.get_record(key)
+	var runs: int = int(rec.get("runs", 0)) + 1
+	var wins: int = int(rec.get("wins", 0)) + (1 if won else 0)
+	var best: int = int(rec.get("best_turns", 0))
+	var new_best: bool = false
+	if won and (best == 0 or _turn < best):
+		best = _turn
+		new_best = runs > 1
+	rec["runs"] = runs
+	rec["wins"] = wins
+	rec["best_turns"] = best
+	rec["last_turns"] = _turn
+	rec["last_won"] = won
+	SaveSystem.set_record(key, rec)
+	var max_t: int = int(_setup.get("max_turns", 8))
+	if runs == 1:
+		return "the card · first run · the room will remember the next one"
+	if new_best:
+		return "the card · a new best · %d of %d turns · %d run%s, %d won" % [best, max_t, runs, "" if runs == 1 else "s", wins]
+	if best > 0:
+		return "the card · best %d of %d turns · %d runs, %d won" % [best, max_t, runs, wins]
+	return "the card · %d runs, none won yet · the room is still forming its opinion" % runs
 
 
 func _show_end_screen(won: bool, title: String, body: String, cg_path: String = "") -> void:
@@ -8680,17 +9643,22 @@ func _show_end_screen(won: bool, title: String, body: String, cg_path: String = 
 	cg_panel.custom_minimum_size = Vector2(0, 340)
 	cg_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vb.add_child(cg_panel)
+	# CG art → arcana bookend card → last-resort dev note. The card
+	# fallback means a player NEVER sees pipeline instructions.
+	if cg_tex == null:
+		cg_tex = _arcana_card_tex()
 	if cg_tex:
 		var img := TextureRect.new()
 		img.texture = cg_tex
 		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		cg_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(finale CG art not yet generated)\nGenerate it in gauntlet_studio.html at\n  %s" % cg_path
+		ph.text = "(finale art missing: %s)" % cg_path
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -8715,7 +9683,7 @@ func _show_end_screen(won: bool, title: String, body: String, cg_path: String = 
 	b.fit_content = true
 	b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	b.text = "[i]%s[/i]" % body
+	b.text = "[i]%s[/i]" % body + _post_run_reading(won)
 	b.add_theme_color_override("default_color", C_TEXT)
 	b.add_theme_font_size_override("normal_font_size", 13)
 	scroll.add_child(b)
@@ -8744,6 +9712,15 @@ func _on_leave() -> void:
 	# doesn't inherit a muffled / distorted room.
 	if _audio_manipulator != null and is_instance_valid(_audio_manipulator):
 		_audio_manipulator.reset()
+	# Quiesce the FP SubViewport BEFORE this tree is freed. Freeing a
+	# live own-world SubViewport (the ~3k-node locale, UPDATE_ALWAYS)
+	# in the same frame it renders has crashed the Compatibility
+	# renderer on the Deck when leaving a gauntlet.
+	if _cached_fp_vp != null and is_instance_valid(_cached_fp_vp):
+		_cached_fp_vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	if _cached_fp_vc != null and is_instance_valid(_cached_fp_vc):
+		_cached_fp_vc.visible = false
+	visible = false
 	# Emit the real outcome captured at win/loss time. If the player
 	# left before either fired, defaults are "leave" / {}.
 	game_ended.emit(_last_outcome, _last_summary)
@@ -8768,7 +9745,7 @@ func _gauntlet_save_path() -> String:
 
 func _collect_run_state() -> Dictionary:
 	return {
-		"save_version":       GAUNTLET_SAVE_VERSION,
+		"save_version":      1,
 		"arcana":             _arcana_id,
 		"scenario":           _scenario_id,
 		"location":           _location_id,
@@ -8794,11 +9771,6 @@ func _collect_run_state() -> Dictionary:
 		"gravity_last":       _gravity_last_drawn,
 		"gravity_recycles":   _gravity_recycle_count,
 		"lore_tokens":        _lore_tokens_collected,
-		# v2 · Run Ledger — this run's pending token entries (with
-		# their earn-moment metadata) + whether the pre-run draft's
-		# doubt penalty already applied.
-		"ledger_pending":     _ledger_pending_tokens,
-		"draft_used":         _draft_used_this_run,
 	}
 
 
@@ -8827,8 +9799,6 @@ func _apply_run_state(d: Dictionary) -> void:
 	_gravity_last_drawn   = d.get("gravity_last", {})
 	_gravity_recycle_count = int(d.get("gravity_recycles", 0))
 	_lore_tokens_collected = d.get("lore_tokens", [])
-	_ledger_pending_tokens = d.get("ledger_pending", [])
-	_draft_used_this_run   = bool(d.get("draft_used", false))
 
 
 func _write_gauntlet_save() -> void:
@@ -8845,7 +9815,7 @@ func _write_gauntlet_save() -> void:
 	f.store_string(JSON.stringify(_collect_run_state(), "  "))
 
 
-const GAUNTLET_SAVE_VERSION := 2
+const GAUNTLET_SAVE_VERSION := 1
 
 
 func _try_load_gauntlet_save() -> bool:
@@ -8867,7 +9837,7 @@ func _try_load_gauntlet_save() -> bool:
 	# by them, but a manual file copy could trip it).
 	if String(d.get("arcana", "")) != _arcana_id or String(d.get("scenario", "")) != _scenario_id:
 		return false
-	# Version gate. Currently v2. When a breaking change lands, add
+	# Version gate. Currently v1. When a breaking change lands, add
 	# an explicit migration branch here and bump GAUNTLET_SAVE_VERSION.
 	# For now: refuse to load future-version saves rather than crash
 	# on missing fields we can't infer.
@@ -8876,31 +9846,10 @@ func _try_load_gauntlet_save() -> bool:
 		push_warning("[Gauntlet] save v%d newer than engine v%d for %s/%s — refusing to load" %
 			[save_v, GAUNTLET_SAVE_VERSION, _arcana_id, _scenario_id])
 		return false
-	if save_v < 2:
-		# v1 → v2 migration · the Run Ledger fields didn't exist yet.
-		# Synthesize ledger_pending from the flat lore_tokens list so
-		# tokens earned mid-run before the ledger landed still commit
-		# at run end. Their source visitor and exact moment are gone;
-		# record them as recovered rather than dropping them.
-		var synth: Array = []
-		for tok_v in (d.get("lore_tokens", []) as Array):
-			synth.append({
-				"token": String(tok_v),
-				"kind": "lore",
-				"scenario_id": String(d.get("scenario", _scenario_id)),
-				"arcana": String(d.get("arcana", _arcana_id)),
-				"source_visitor_id": "",
-				"timestamp": "",
-				"moment": "recovered from a pre-ledger save",
-			})
-		d["ledger_pending"] = synth
-		d["draft_used"] = false
-		d["save_version"] = 2
-		print("[Gauntlet] migrated save v1 → v2 (%d ledger entries synthesized)" % synth.size())
-	# Older versions load through the migration above · beyond that,
-	# _apply_run_state uses .get(field, default) throughout so any
-	# newly-added field is populated with a sensible default when
-	# it's missing. This is additive-forward-compat by construction.
+	# Older versions load through as-is · the _apply_run_state uses
+	# .get(field, default) throughout so any newly-added field is
+	# populated with a sensible default when it's missing from an
+	# older save. This is additive-forward-compat by construction.
 	_apply_run_state(d)
 	return true
 
@@ -8914,548 +9863,142 @@ func _clear_gauntlet_save() -> void:
 		DirAccess.remove_absolute(path)
 
 
-# ── Run Ledger (Wave 2 · cross-scenario memory) ─────────────────────
-# A persistent, across-runs record: lore / leap / visitor-connection
-# tokens with the moment they were earned, per-scenario win/loss
-# records, the win streak, banked doctrine (the reserved cross-arcana
-# sub-token) and banked insight (the drafting currency). Lives in its
-# OWN file — never overloads the per-run save — and is written at run
-# end, win AND loss. Tokens carried forward become `requires_token`
-# conditions on visitors / thresholds / cards in later scenarios.
-const RUN_LEDGER_PATH := GAUNTLET_SAVE_DIR + "ledger.json"
-const RUN_LEDGER_VERSION := 1
-# Doctrine accrued by Paul's rooms compounds Nicola's doubt on the
-# next Empress run started — capped so a long Hierophant streak can't
-# start an Empress run already lost.
-const DOCTRINE_DOUBT_CAP := 3
-
-var _run_ledger: Dictionary = {}
-
-
-static func _run_ledger_defaults() -> Dictionary:
-	return {
-		"version": RUN_LEDGER_VERSION,
-		"tokens": {},           # token_id → [{kind, scenario_id, arcana, source_visitor_id, timestamp, moment}]
-		"records": {},          # "<arcana>/<scenario_id>" → {wins, losses}
-		"streak": {"current": 0, "best": 0},
-		"doctrine": 0,          # reserved cross-arcana sub-token (Paul → Nicola)
-		"insight": 0,           # drafting currency · +1 per won run
-		"drafted_cards": {},    # hand_id → [cid] (the one editable slot)
-		"removed_cards": {},    # hand_id → [cid] (persistent cuts)
-	}
+# ═══════════════════════════════════════════════════════════════════
+# ARCADE ATTRACT MODE · game grammar row 1 (2026-09-07)
+# ═══════════════════════════════════════════════════════════════════
+# The bible's arcana register is "swampy + arcade". An arcade cabinet
+# left alone runs its attract loop: after ATTRACT_AFTER seconds with
+# no input the board keeps playing to itself — a banner cycles the
+# scenario's title, its subtitle, INSERT COIN, the turn count; the
+# locale's mood strata step every ATTRACT_MOOD_SECONDS (the cabinet's
+# colour cycle); THE TRIP pushes to 1.3. Any key, button or real
+# mouse move wakes it: the banner fades, the mood returns to what it
+# was, the trip resets. The banner is HUD inside a game surface
+# ("ui" group, honours F4); nothing here consumes input.
+const ATTRACT_AFTER: float = 45.0
+const ATTRACT_LINE_SECONDS: float = 4.0
+const ATTRACT_MOOD_SECONDS: float = 9.0
+const _FPC_SCRIPT = preload("res://scripts/FirstPersonController.gd")
+var _attract_idle: float = 0.0
+var _attract_on: bool = false
+var _attract_panel: PanelContainer = null
+var _attract_label: Label = null
+var _attract_line_t: float = 0.0
+var _attract_mood_t: float = 0.0
+var _attract_line_i: int = 0
+var _attract_mood_before: String = ""
 
 
-# Read the ledger off disk without a game instance — the gallery /
-# scenario picker can surface per-scenario records through this.
-static func read_run_ledger() -> Dictionary:
-	var out: Dictionary = _run_ledger_defaults()
-	if not FileAccess.file_exists(RUN_LEDGER_PATH):
-		return out
-	var f := FileAccess.open(RUN_LEDGER_PATH, FileAccess.READ)
-	if f == null:
-		return out
-	var parsed: Variant = JSON.parse_string(f.get_as_text())
-	if typeof(parsed) == TYPE_DICTIONARY:
-		# Merge into defaults so older ledgers don't crash on new keys.
-		for k in (parsed as Dictionary):
-			out[k] = (parsed as Dictionary)[k]
+func _process(delta: float) -> void:
+	if _attract_on:
+		_attract_line_t += delta
+		if _attract_line_t >= ATTRACT_LINE_SECONDS:
+			_attract_line_t = 0.0
+			_attract_line_i += 1
+			_attract_show_line()
+		_attract_mood_t += delta
+		if _attract_mood_t >= ATTRACT_MOOD_SECONDS:
+			_attract_mood_t = 0.0
+			var mc: Node = _attract_mood_cycler()
+			if mc != null and mc.has_method("action_cycle_mood"):
+				mc.call("action_cycle_mood", 1)
+		return
+	_attract_idle += delta
+	if _attract_idle >= ATTRACT_AFTER:
+		_attract_begin()
+
+
+func _input(event: InputEvent) -> void:
+	var wake: bool = event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton
+	if not wake and event is InputEventMouseMotion:
+		wake = (event as InputEventMouseMotion).relative.length() > 2.0
+	if not wake:
+		return
+	_attract_idle = 0.0
+	if _attract_on:
+		_attract_end()
+
+
+func _attract_mood_cycler() -> Node:
+	if _gauntlet_bg3d == null or not is_instance_valid(_gauntlet_bg3d):
+		return null
+	if not _gauntlet_bg3d.has_method("get_locale_mood_cycler"):
+		return null
+	var mc: Variant = _gauntlet_bg3d.call("get_locale_mood_cycler")
+	if mc is Node:
+		return mc as Node
+	return null
+
+
+func _attract_lines() -> Array[String]:
+	var title: String = String(_setup.get("title", "THE LEAP"))
+	var subtitle: String = String(_setup.get("subtitle", ""))
+	var out: Array[String] = ["TAROT GAUNTLET   ·   " + title]
+	if subtitle != "":
+		out.append(subtitle)
+	out.append("INSERT COIN   ·   press any key to keep playing")
+	out.append("TURN %d   ·   the room is waiting" % maxi(_turn, 1))
 	return out
 
 
-func _load_run_ledger() -> void:
-	_run_ledger = read_run_ledger()
-
-
-func _write_run_ledger() -> void:
-	DirAccess.make_dir_recursive_absolute(GAUNTLET_SAVE_DIR)
-	var f := FileAccess.open(RUN_LEDGER_PATH, FileAccess.WRITE)
-	if f == null:
-		push_warning("[Gauntlet] could not write run ledger to %s" % RUN_LEDGER_PATH)
+func _attract_show_line() -> void:
+	if _attract_label == null:
 		return
-	f.store_string(JSON.stringify(_run_ledger, "  "))
+	var lines: Array[String] = _attract_lines()
+	_attract_label.text = "  " + lines[_attract_line_i % lines.size()] + "  "
+	if _attract_panel != null:
+		var view: Vector2 = get_viewport_rect().size
+		_attract_panel.reset_size()
+		_attract_panel.position = Vector2((view.x - _attract_panel.size.x) * 0.5, 50.0)
 
 
-func _ledger_record_key() -> String:
-	return "%s/%s" % [_arcana_id, _scenario_id]
+func _attract_begin() -> void:
+	_attract_on = true
+	_attract_line_t = 0.0
+	_attract_mood_t = 0.0
+	_attract_line_i = 0
+	_attract_panel = PanelContainer.new()
+	_attract_panel.name = "AttractBanner"
+	_attract_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	_attract_panel.z_index = 90
+	_attract_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_attract_panel.add_to_group("ui")
+	_attract_panel.visible = bool(_FPC_SCRIPT.hud_visible)
+	add_child(_attract_panel)
+	_attract_label = Label.new()
+	_attract_label.add_theme_color_override("font_color", C_ACCENT)
+	_attract_label.add_theme_font_size_override("font_size", 16)
+	_attract_panel.add_child(_attract_label)
+	_attract_show_line()
+	_attract_panel.modulate = Color(1, 1, 1, 0)
+	var t: Tween = create_tween()
+	t.tween_property(_attract_panel, "modulate:a", 1.0, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# the cabinet's colour cycle starts from the mood the room was in
+	var mc: Node = _attract_mood_cycler()
+	if mc != null:
+		var moods: Variant = mc.get("MOODS")
+		var idx: int = int(mc.get("current_index"))
+		if moods is Array and idx >= 0 and idx < (moods as Array).size():
+			var entry: Dictionary = (moods as Array)[idx]
+			_attract_mood_before = String(entry.get("name", ""))
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("apply_trip_cue"):
+		trip.call("apply_trip_cue", "1.3")
+	_log_line("[color=#7c8398][i]· the cabinet runs its attract loop.[/i][/color]")
 
 
-func _ledger_insight() -> int:
-	return int(_run_ledger.get("insight", 0))
-
-
-# True if the named token is held — committed in a previous run OR
-# earned in this one (pending / lore list). The predicate behind
-# requires_token on cards, visitors and thresholds.
-func _ledger_has_token(token: String) -> bool:
-	if token == "":
-		return false
-	if token in _lore_tokens_collected:
-		return true
-	for p_v in _ledger_pending_tokens:
-		if String((p_v as Dictionary).get("token", "")) == token:
-			return true
-	return (_run_ledger.get("tokens", {}) as Dictionary).has(token)
-
-
-# Buffer a token earn-moment for commit at run end. One entry per
-# token per run — re-earning the same token doesn't double-log it.
-func _ledger_note_token(token: String, kind: String, source_vid: String, moment: String) -> void:
-	if token == "":
-		return
-	for p_v in _ledger_pending_tokens:
-		if String((p_v as Dictionary).get("token", "")) == token:
-			return
-	_ledger_pending_tokens.append({
-		"token": token,
-		"kind": kind,
-		"scenario_id": _scenario_id,
-		"arcana": _arcana_id,
-		"source_visitor_id": source_vid,
-		"timestamp": Time.get_datetime_string_from_system(true),
-		"moment": moment,
-	})
-
-
-# The single ledger write point — called from _trigger_win AND
-# _trigger_loss. Commits pending token entries, bumps the scenario
-# record + streak, banks doctrine, and awards insight on wins.
-func _ledger_commit_run(won: bool) -> void:
-	var tokens: Dictionary = _run_ledger.get("tokens", {})
-	for p_v in _ledger_pending_tokens:
-		var entry: Dictionary = p_v
-		var tid: String = String(entry.get("token", ""))
-		if tid == "":
-			continue
-		var moments: Array = tokens.get(tid, [])
-		moments.append(entry)
-		tokens[tid] = moments
-	_run_ledger["tokens"] = tokens
-	_ledger_pending_tokens.clear()
-	var records: Dictionary = _run_ledger.get("records", {})
-	var rec: Dictionary = records.get(_ledger_record_key(), {"wins": 0, "losses": 0})
-	if won:
-		rec["wins"] = int(rec.get("wins", 0)) + 1
-	else:
-		rec["losses"] = int(rec.get("losses", 0)) + 1
-	records[_ledger_record_key()] = rec
-	_run_ledger["records"] = records
-	var streak: Dictionary = _run_ledger.get("streak", {"current": 0, "best": 0})
-	if won:
-		streak["current"] = int(streak.get("current", 0)) + 1
-		streak["best"] = max(int(streak.get("best", 0)), int(streak["current"]))
-	else:
-		streak["current"] = 0
-	_run_ledger["streak"] = streak
-	# Doctrine banks cross-arcana regardless of outcome — the sermons
-	# stick whether or not the run went well.
-	if _doctrine > 0:
-		_run_ledger["doctrine"] = int(_run_ledger.get("doctrine", 0)) + _doctrine
-	# Insight — the drafting currency — is earned by WINNING runs.
-	if won:
-		_run_ledger["insight"] = _ledger_insight() + 1
-	_write_run_ledger()
-
-
-# One-line cross-run record for the run-start log. Empty string on a
-# fresh install so the opening log stays clean.
-func _ledger_scenario_record_line() -> String:
-	var records: Dictionary = _run_ledger.get("records", {}) as Dictionary
-	if records.is_empty():
-		return ""
-	var streak: Dictionary = _run_ledger.get("streak", {}) as Dictionary
-	var cur: int = int(streak.get("current", 0))
-	var streak_s: String = ("  ·  win streak %d" % cur) if cur > 0 else ""
-	var rec: Dictionary = records.get(_ledger_record_key(), {}) as Dictionary
-	if rec.is_empty():
-		return "Ledger · first attempt at this room.%s" % streak_s
-	return "Ledger · this room's record: %dW / %dL.%s" % [
-		int(rec.get("wins", 0)), int(rec.get("losses", 0)), streak_s]
-
-
-# Doctrine carry — the first explicit cross-arcana penalty. Applied
-# on FRESH Empress runs only (resumed saves already absorbed it);
-# starting the run spends the whole bank even when the cap trims
-# what actually lands on the dial.
-func _apply_doctrine_carry() -> void:
-	if _arcana_id != "empress":
-		return
-	var banked: int = int(_run_ledger.get("doctrine", 0))
-	if banked <= 0:
-		return
-	var applied: int = min(banked, DOCTRINE_DOUBT_CAP)
-	_doubt += applied
-	_run_ledger["doctrine"] = 0
-	_write_run_ledger()
-	_log_line("[color=#c8333c][i]Paul's sermons carry — Doctrine %d compounds your Doubt (+%d).[/i][/color]" %
-		[banked, applied])
-
-
-func _make_ledger_heading(text: String) -> Label:
-	var lbl := Label.new()
-	lbl.text = "  " + text
-	lbl.add_theme_color_override("font_color", C_ACCENT)
-	lbl.add_theme_font_size_override("font_size", 12)
-	return lbl
-
-
-# Mouse-over payload for a wax seal — every moment the token was
-# earned: chapter, scenario, source visitor, timestamp, the beat.
-func _ledger_moment_tooltip(moments: Array) -> String:
-	var lines: PackedStringArray = []
-	for m_v in moments:
-		var m: Dictionary = m_v
-		var line: String = "%s · %s" % [
-			String(m.get("arcana", "?")).replace("_", " "),
-			String(m.get("scenario_id", "?")).replace("_", " ")]
-		var src: String = String(m.get("source_visitor_id", ""))
-		if src != "":
-			line += " · from %s" % src.replace("_", " ")
-		var ts: String = String(m.get("timestamp", ""))
-		if ts != "":
-			line += " · %s" % ts
-		var moment: String = String(m.get("moment", ""))
-		if moment != "":
-			line += "\n    %s" % moment
-		lines.append(line)
-	return "\n".join(lines)
-
-
-# The wax-seal page — accumulated tokens grouped by chapter, with the
-# per-scenario records and banked currencies up top. Mouse-over a
-# seal to see the moment(s) it was earned.
-func _build_ledger_modal_body() -> Control:
-	var vb := VBoxContainer.new()
-	vb.add_theme_constant_override("separation", 6)
-	var head := RichTextLabel.new()
-	head.bbcode_enabled = true
-	head.fit_content = true
-	head.add_theme_color_override("default_color", C_TEXT)
-	head.add_theme_font_size_override("normal_font_size", 12)
-	var streak: Dictionary = _run_ledger.get("streak", {}) as Dictionary
-	head.text = ("[color=#c8a268]Everything the runs remember. Sealed at every run's end — win and loss alike.[/color]\n" +
-		"Win streak: [b]%d[/b] (best %d)   ·   Insight banked: [b]%d[/b] ✦   ·   Doctrine banked: [b]%d[/b]" % [
-			int(streak.get("current", 0)), int(streak.get("best", 0)),
-			_ledger_insight(), int(_run_ledger.get("doctrine", 0))])
-	vb.add_child(head)
-	# Per-scenario records — the picker-facing surface.
-	var records: Dictionary = _run_ledger.get("records", {}) as Dictionary
-	if not records.is_empty():
-		vb.add_child(HSeparator.new())
-		vb.add_child(_make_ledger_heading("RECORDS · per scenario"))
-		var rec_keys: Array = records.keys()
-		rec_keys.sort()
-		for rk in rec_keys:
-			var rec: Dictionary = records[rk] as Dictionary
-			var r_lbl := Label.new()
-			var here: bool = String(rk) == _ledger_record_key()
-			r_lbl.text = "  %s %s — %dW / %dL" % [
-				"›" if here else "·",
-				String(rk).replace("_", " "),
-				int(rec.get("wins", 0)), int(rec.get("losses", 0))]
-			r_lbl.add_theme_font_size_override("font_size", 11)
-			r_lbl.add_theme_color_override("font_color", C_TEXT if here else C_DIM)
-			vb.add_child(r_lbl)
-	# Tokens grouped by chapter (arcana).
-	var tokens: Dictionary = _run_ledger.get("tokens", {}) as Dictionary
-	var by_arcana: Dictionary = {}
-	for tid in tokens:
-		var moments: Array = tokens[tid] as Array
-		var arc: String = "unplaced"
-		if not moments.is_empty():
-			arc = String((moments[0] as Dictionary).get("arcana", "unplaced"))
-		var lst: Array = by_arcana.get(arc, [])
-		lst.append(tid)
-		by_arcana[arc] = lst
-	var arc_keys: Array = by_arcana.keys()
-	arc_keys.sort()
-	for arc in arc_keys:
-		vb.add_child(HSeparator.new())
-		vb.add_child(_make_ledger_heading(String(arc).replace("_", " ").to_upper()))
-		var tids: Array = by_arcana[arc]
-		tids.sort()
-		for tid_v in tids:
-			var tid: String = String(tid_v)
-			var moments: Array = tokens[tid] as Array
-			var kind: String = String((moments[0] as Dictionary).get("kind", "lore")) if not moments.is_empty() else "lore"
-			var t_lbl := Label.new()
-			var count_s: String = ("  ×%d" % moments.size()) if moments.size() > 1 else ""
-			t_lbl.text = "    ✦ %s%s" % [tid.replace("_", " "), count_s]
-			t_lbl.add_theme_font_size_override("font_size", 11)
-			match kind:
-				"leap":       t_lbl.add_theme_color_override("font_color", C_GOOD)
-				"connection": t_lbl.add_theme_color_override("font_color", Color(0.49, 1.0, 0.69))
-				_:            t_lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.48))
-			t_lbl.mouse_filter = Control.MOUSE_FILTER_STOP
-			t_lbl.tooltip_text = _ledger_moment_tooltip(moments)
-			vb.add_child(t_lbl)
-	# This run's unsealed entries.
-	if not _ledger_pending_tokens.is_empty():
-		vb.add_child(HSeparator.new())
-		vb.add_child(_make_ledger_heading("THIS RUN · unsealed until the run ends"))
-		for p_v in _ledger_pending_tokens:
-			var entry: Dictionary = p_v
-			var p_lbl := Label.new()
-			p_lbl.text = "    ✧ %s" % String(entry.get("token", "?")).replace("_", " ")
-			p_lbl.add_theme_font_size_override("font_size", 11)
-			p_lbl.add_theme_color_override("font_color", C_DIM)
-			p_lbl.mouse_filter = Control.MOUSE_FILTER_STOP
-			p_lbl.tooltip_text = _ledger_moment_tooltip([entry])
-			vb.add_child(p_lbl)
-	if tokens.is_empty() and records.is_empty() and _ledger_pending_tokens.is_empty():
-		var empty_lbl := Label.new()
-		empty_lbl.text = "  Nothing sealed yet. Finish a run — win or lose — and the ledger remembers."
-		empty_lbl.add_theme_color_override("font_color", C_DIM)
-		vb.add_child(empty_lbl)
-	return vb
-
-
-# ── Hand drafting (Wave 2 · persistent decks) ───────────────────────
-# Between runs the player spends Insight (earned by winning) to add
-# one card to a hand — drafted from a four-card reveal shaped by the
-# host's location + the player's hand — or to cut one. One slot is
-# editable; edits persist per hand via the Run Ledger and merge into
-# the deck at run start. Drafting carries a doubt penalty on the run
-# that brings the new card. Pool data: framework/draft_pools.json.
-# NOTE · seam: the outline pairs drafting with the Companion Slot in
-# the picker flow; drafting ships standalone here (pre-run panel at
-# turn 1) so the companion work can slot in beside it later.
-const DRAFT_REVEAL_COUNT := 4
-const DRAFT_INSIGHT_COST := 1
-const DRAFT_DOUBT_PENALTY := 1
-const DRAFT_MIN_DECK_SIZE := 5
-
-
-func _drafted_cards_for_hand() -> Array:
-	return (_run_ledger.get("drafted_cards", {}) as Dictionary).get(_hand_id, []) as Array
-
-
-func _removed_cards_for_hand() -> Array:
-	return (_run_ledger.get("removed_cards", {}) as Dictionary).get(_hand_id, []) as Array
-
-
-# The pre-run window: turn 1, action phase, nothing played yet. The
-# draft is a before-you-act decision — the moment a card resolves,
-# the deck is what it is for the rest of the run.
-func _drafting_window_open() -> bool:
-	return (not _game_over and _turn == 1 and _phase == Phase.ACTION
-			and _played_this_turn.is_empty() and _cards_played_this_run.is_empty())
-
-
-func _draft_available() -> bool:
-	return (_drafting_window_open() and _ledger_insight() >= DRAFT_INSIGHT_COST
-			and not _draft_reveal_cards().is_empty())
-
-
-# Draft constraint: the card must resolve in the merged tableau AND
-# be available_in_locations for the host (or universal), and not
-# already be in the deck / a prior edit.
-func _draft_card_eligible(cid: String) -> bool:
-	if cid == "" or cid in _hand_cards:
-		return false
-	if cid in _drafted_cards_for_hand() or cid in _removed_cards_for_hand():
-		return false
-	if not _action_cards.has(cid):
-		return false
-	var locs: Array = (_action_cards[cid] as Dictionary).get("available_in_locations", [])
-	return locs.is_empty() or (_location_id in locs)
-
-
-# The four-card reveal, generated by the host's location + the
-# player's hand: a shuffle SEEDED on that pairing, so reopening the
-# panel shows the same reveal for the same room+hand.
-func _draft_reveal_cards() -> Array:
-	var eligible: Array = []
-	for cid_v in (_draft_pools_def.get("universal", []) as Array):
-		if _draft_card_eligible(String(cid_v)) and not (String(cid_v) in eligible):
-			eligible.append(String(cid_v))
-	var hand_pools: Dictionary = _draft_pools_def.get("hands", {}) as Dictionary
-	for cid_v in (hand_pools.get(_hand_id, []) as Array):
-		if _draft_card_eligible(String(cid_v)) and not (String(cid_v) in eligible):
-			eligible.append(String(cid_v))
-	var rng := RandomNumberGenerator.new()
-	rng.seed = hash("%s/%s" % [_location_id, _hand_id])
-	for i in range(eligible.size() - 1, 0, -1):
-		var j: int = rng.randi_range(0, i)
-		var tmp = eligible[i]
-		eligible[i] = eligible[j]
-		eligible[j] = tmp
-	return eligible.slice(0, DRAFT_REVEAL_COUNT)
-
-
-# Merge the hand's persisted deck edits into _hand_cards at the start
-# of a FRESH run (resumed saves carry the merged hand already).
-func _apply_hand_drafting() -> void:
-	for cid_v in _removed_cards_for_hand():
-		var cut: String = String(cid_v)
-		if cut in _hand_cards:
-			_hand_cards.erase(cut)
-			_log_line("[color=#7c8398][i]Cut from the deck between runs: %s.[/i][/color]" % cut.replace("_", " "))
-	for cid_v in _drafted_cards_for_hand():
-		var cid: String = String(cid_v)
-		if cid in _hand_cards:
-			continue
-		if not _action_cards.has(cid):
-			_log_line("[color=#7c8398][i]Your drafted card (%s) doesn't translate to this room.[/i][/color]" % cid.replace("_", " "))
-			continue
-		var locs: Array = (_action_cards[cid] as Dictionary).get("available_in_locations", [])
-		if not locs.is_empty() and not (_location_id in locs):
-			_log_line("[color=#7c8398][i]Your drafted card (%s) doesn't travel to %s.[/i][/color]" % [cid.replace("_", " "), _location_id])
-			continue
-		_hand_cards.append(cid)
-		_log_line("[color=#ffd07a][i]Drafted card rides with you: %s.[/i][/color]" % cid.replace("_", " "))
-
-
-func _draft_add_card(cid: String) -> void:
-	if not _drafting_window_open():
-		_log_line("[i]the draft window has closed — the deck is set for this run[/i]")
-		return
-	if _ledger_insight() < DRAFT_INSIGHT_COST or not _draft_card_eligible(cid):
-		return
-	# One editable slot — any previously drafted card leaves the deck.
-	var dd: Dictionary = _run_ledger.get("drafted_cards", {})
-	for old_v in (dd.get(_hand_id, []) as Array):
-		_hand_cards.erase(String(old_v))
-	dd[_hand_id] = [cid]
-	_run_ledger["drafted_cards"] = dd
-	_run_ledger["insight"] = _ledger_insight() - DRAFT_INSIGHT_COST
-	_write_run_ledger()
-	_hand_cards.append(cid)
-	var title: String = String((_action_cards.get(cid, {}) as Dictionary).get("title", cid))
-	_log_line("[color=#ffd07a]✦ Drafted [b]%s[/b] into the hand (-%d Insight).[/color]" % [title, DRAFT_INSIGHT_COST])
-	# The doubt penalty — the new card sits uneasy. Once per run,
-	# applied to the run that brings the drafted card.
-	if not _draft_used_this_run:
-		_draft_used_this_run = true
-		_doubt += DRAFT_DOUBT_PENALTY
-		_log_line("[color=#c8333c][i]The new card sits uneasy in the hand — +%d Doubt this run.[/i][/color]" % DRAFT_DOUBT_PENALTY)
-	_render()
-	_open_draft_panel()
-
-
-func _draft_remove_card(cid: String) -> void:
-	if not _drafting_window_open() or not (cid in _hand_cards):
-		return
-	if _ledger_insight() < DRAFT_INSIGHT_COST:
-		return
-	if _hand_cards.size() <= DRAFT_MIN_DECK_SIZE:
-		_log_line("[i]the deck is as thin as it can safely get[/i]")
-		return
-	var drafted: Array = _drafted_cards_for_hand()
-	if cid in drafted:
-		# Cutting the drafted slot just clears it — the card returns
-		# to the pool rather than joining the permanent cuts.
-		var dd: Dictionary = _run_ledger.get("drafted_cards", {})
-		var slot: Array = (dd.get(_hand_id, []) as Array).duplicate()
-		slot.erase(cid)
-		dd[_hand_id] = slot
-		_run_ledger["drafted_cards"] = dd
-	else:
-		var rd: Dictionary = _run_ledger.get("removed_cards", {})
-		var cuts: Array = (rd.get(_hand_id, []) as Array).duplicate()
-		cuts.append(cid)
-		rd[_hand_id] = cuts
-		_run_ledger["removed_cards"] = rd
-	_run_ledger["insight"] = _ledger_insight() - DRAFT_INSIGHT_COST
-	_write_run_ledger()
-	_hand_cards.erase(cid)
-	var title: String = String((_action_cards.get(cid, {}) as Dictionary).get("title", cid))
-	_log_line("[color=#a99070]✂ Cut [b]%s[/b] from the deck (-%d Insight).[/color]" % [title, DRAFT_INSIGHT_COST])
-	_render()
-	_open_draft_panel()
-
-
-func _update_draft_button() -> void:
-	if _draft_btn == null:
-		return
-	if _draft_available():
-		_draft_btn.text = "Draft ✦ %d" % _ledger_insight()
-		_draft_btn.add_theme_color_override("font_color", C_ACCENT)
-		_draft_btn.tooltip_text = "Insight banked — draft one card into this hand (or cut one) before you act. Turn 1 only; +%d Doubt on the run that brings the new card." % DRAFT_DOUBT_PENALTY
-	else:
-		_draft_btn.text = "Deck ✦"
-		_draft_btn.remove_theme_color_override("font_color")
-		_draft_btn.tooltip_text = "The deck this hand brings. Win runs to bank Insight, then draft one card in — or cut one — before acting on turn 1."
-
-
-func _open_draft_panel() -> void:
-	_open_pane_modal("HAND — %s" % String(_hand.get("name", _hand_id)), _build_draft_modal_body)
-
-
-func _build_draft_modal_body() -> Control:
-	var vb := VBoxContainer.new()
-	vb.add_theme_constant_override("separation", 6)
-	var window_open: bool = _drafting_window_open()
-	var insight: int = _ledger_insight()
-	var head := RichTextLabel.new()
-	head.bbcode_enabled = true
-	head.fit_content = true
-	head.add_theme_color_override("default_color", C_TEXT)
-	head.add_theme_font_size_override("normal_font_size", 12)
-	var window_s: String = ("Draft window OPEN — decide before you act." if window_open
-		else "Draft window closed — the deck is set for this run.")
-	head.text = ("[color=#c8a268]%s[/color]\n" % window_s +
-		"Insight banked: [b]%d[/b] ✦  ·  each draft or cut costs %d  ·  drafting carries +%d Doubt on the run that brings the card." % [
-			insight, DRAFT_INSIGHT_COST, DRAFT_DOUBT_PENALTY])
-	vb.add_child(head)
-	# The deck as it will be played, with cut buttons in the window.
-	vb.add_child(HSeparator.new())
-	vb.add_child(_make_ledger_heading("THE DECK · %d cards" % _hand_cards.size()))
-	var can_edit: bool = window_open and insight >= DRAFT_INSIGHT_COST
-	var drafted: Array = _drafted_cards_for_hand()
-	for cid_v in _hand_cards:
-		var cid: String = String(cid_v)
-		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 6)
-		var c_lbl := Label.new()
-		var is_drafted: bool = cid in drafted
-		c_lbl.text = "    %s%s" % [
-			String((_action_cards.get(cid, {}) as Dictionary).get("title", cid)),
-			"  · drafted ✦" if is_drafted else ""]
-		c_lbl.add_theme_font_size_override("font_size", 11)
-		c_lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.48) if is_drafted else C_TEXT)
-		c_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(c_lbl)
-		if window_open:
-			var cut_btn := Button.new()
-			cut_btn.text = "✂ cut · %d ✦" % DRAFT_INSIGHT_COST
-			cut_btn.add_theme_font_size_override("font_size", 10)
-			cut_btn.disabled = (not can_edit) or _hand_cards.size() <= DRAFT_MIN_DECK_SIZE
-			cut_btn.tooltip_text = ("Cut this card from %s's deck. Cuts persist across runs." % String(_hand.get("name", _hand_id))) if not is_drafted else "Clear the drafted slot (the card returns to the pool)."
-			cut_btn.pressed.connect(_draft_remove_card.bind(cid))
-			row.add_child(cut_btn)
-		vb.add_child(row)
-	# The reveal — shaped by the host's location + the player's hand.
-	vb.add_child(HSeparator.new())
-	vb.add_child(_make_ledger_heading("THE REVEAL · shaped by %s + %s" % [
-		String(_location.get("title", _location_id)), String(_hand.get("name", _hand_id))]))
-	var reveal: Array = _draft_reveal_cards()
-	if reveal.is_empty():
-		var none_lbl := Label.new()
-		none_lbl.text = "    (no eligible cards to draft in this room)"
-		none_lbl.add_theme_color_override("font_color", C_DIM)
-		vb.add_child(none_lbl)
-	else:
-		var reveal_hb := HBoxContainer.new()
-		reveal_hb.add_theme_constant_override("separation", 6)
-		for cid_v in reveal:
-			var cid: String = String(cid_v)
-			var card: Dictionary = _action_cards.get(cid, {})
-			var d_btn := Button.new()
-			d_btn.text = "%s\ndraft · %d ✦" % [String(card.get("title", cid)), DRAFT_INSIGHT_COST]
-			d_btn.add_theme_font_size_override("font_size", 11)
-			d_btn.custom_minimum_size = Vector2(150, 64)
-			d_btn.disabled = not can_edit
-			d_btn.tooltip_text = "%s\n\n%s\n\n%s" % [
-				String(card.get("title", cid)),
-				String(card.get("flavor", "")),
-				_card_summary(card)]
-			d_btn.pressed.connect(_draft_add_card.bind(cid))
-			reveal_hb.add_child(d_btn)
-		vb.add_child(reveal_hb)
-	if not window_open:
-		var note := Label.new()
-		note.text = "    Come back at the start of your next run — drafting is a before-you-act decision."
-		note.add_theme_color_override("font_color", C_DIM)
-		note.add_theme_font_size_override("font_size", 10)
-		vb.add_child(note)
-	return vb
+func _attract_end() -> void:
+	_attract_on = false
+	if _attract_panel != null and is_instance_valid(_attract_panel):
+		var p: PanelContainer = _attract_panel
+		var t: Tween = create_tween()
+		t.tween_property(p, "modulate:a", 0.0, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		t.tween_callback(p.queue_free)
+	_attract_panel = null
+	_attract_label = null
+	var mc: Node = _attract_mood_cycler()
+	if mc != null and _attract_mood_before != "" and mc.has_method("apply_style_or_mood"):
+		mc.call("apply_style_or_mood", _attract_mood_before)
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("apply_trip_cue"):
+		trip.call("apply_trip_cue", "reset")

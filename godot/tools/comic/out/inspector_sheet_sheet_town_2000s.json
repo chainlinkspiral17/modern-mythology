@@ -1,0 +1,30 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_town_2000s",
+      "kind": "character",
+      "era": "era2",
+      "tags": [
+        "character",
+        "era2",
+        "extra_vet",
+        "extra_mechanic",
+        "extra_flagger",
+        "extra_pastor",
+        "extra_realtor",
+        "extra_fisherman",
+        "extra_regulars",
+        "extra_tourists",
+        "extra_tourist_couple",
+        "extra_tourist"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. a lineup model sheet of a small coast town's people in the 2000s, front views, labeled: THE VET (tall thin woman with cropped gray hair, white coat over flannel, a stethoscope), THE MECHANIC (squat man with a shaved head in coveralls, head tilted as if listening), THE FLAGGER (lanky man in orange rain gear with a STOP sign under his arm and a cigarette), THE PASTOR (round older man in a black raincoat over a clerical collar holding a bulletin), THE REALTOR (man in his forties with a salesman's haircut and a logo-less windbreaker holding flyers), A FISHERMAN (weathered man in rubber boots, a wool cap and a rain jacket, walking with a roll), THE REGULARS (three men from behind on three bar stools in caps and work jackets, one with a gray braid), TOURISTS (a man and a woman in matching fleece and sun hats with a camera, pleased). Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, painterly, glossy, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

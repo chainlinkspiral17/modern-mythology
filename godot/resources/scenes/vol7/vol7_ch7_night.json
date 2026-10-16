@@ -6,7 +6,7 @@
   "title": "Six O'Clock — Night",
   "nodes": [
     {
-      "src": "3d:lena_apartment",
+      "src": "3d:lena_apartment_night",
       "t": "bg"
     },
     {
@@ -46,11 +46,11 @@
       "t": "show"
     },
     {
-      "text": "They ate the rest in a quiet that was not the quiet of a held breath but the quiet of a meal getting eaten by four people who had said the things they needed to say to start eating again.",
+      "text": "[shot:establish][mood:night]They ate the rest in a quiet that was not the quiet of a held breath but the quiet of a meal getting eaten by four people who had said the things they needed to say to start eating again.",
       "t": "narrate"
     },
     {
-      "text": "Kai got up at one point and made tea. Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch.",
+      "text": "[shot:insert bread]Kai got up at one point and made tea. Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch.",
       "t": "narrate"
     },
     {
@@ -75,7 +75,7 @@
     },
     {
       "char": "kai",
-      "text": "Roy.",
+      "text": "[shot:closeup person]Roy.",
       "expr": "neutral",
       "t": "say"
     },
@@ -93,13 +93,25 @@
     },
     {
       "char": "kai",
-      "text": "He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.",
+      "text": "[shot:closeup kai]He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted. He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say.",
+      "text": "That was the lead. He used Lena's name in the third sentence.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say.",
       "expr": "serious",
       "t": "say"
     },
@@ -123,7 +135,7 @@
     },
     {
       "char": "tem",
-      "text": "That's not a coincidence.",
+      "text": "[shot:closeup person_b]That's not a coincidence.",
       "expr": "serious",
       "t": "say"
     },
@@ -157,17 +169,17 @@
     },
     {
       "char": "lena",
-      "text": "Tem. Who is he.",
+      "text": "[shot:closeup person]Tem. Who is he.",
       "expr": "serious",
       "t": "say"
     },
     {
-      "text": "Tem looked at her.",
+      "text": "[shot:establish]Tem looked at her.",
       "t": "narrate"
     },
     {
       "char": "tem",
-      "text": "He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone.",
+      "text": "[shot:closeup tem]He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone.",
       "expr": "serious",
       "t": "say"
     },
@@ -201,7 +213,7 @@
     },
     {
       "char": "kai",
-      "text": "A what.",
+      "text": "[shot:closeup person]A what.",
       "expr": "serious",
       "t": "say"
     },
@@ -229,13 +241,19 @@
     },
     {
       "char": "finn",
-      "text": "And Roy is asking after me.",
+      "text": "[shot:closeup person_b]And Roy is asking after me.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "Roy is asking after you because you have the wood. Or because somebody who knows about the wood is using Roy to ask. Or because the substrate that may be in Roy is reading you the way it reads anybody who has come into contact with the work, and the substrate wants the wood back.",
+      "text": "Roy is asking after you because you have the wood. Or because somebody who knows about the wood is using Roy to ask.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Or because the substrate that may be in Roy is reading you the way it reads anybody who has come into contact with the work, and the substrate wants the wood back.",
       "expr": "serious",
       "t": "say"
     },
@@ -257,7 +275,7 @@
     },
     {
       "char": "kai",
-      "text": "Are we in danger.",
+      "text": "[shot:closeup person]Are we in danger.",
       "expr": "serious",
       "t": "say"
     },
@@ -297,17 +315,17 @@
     },
     {
       "char": "finn",
-      "text": "I think I do.",
+      "text": "[shot:closeup person_b]I think I do.",
       "expr": "serious",
       "t": "say"
     },
     {
-      "text": "The three of them looked at him.",
+      "text": "[shot:establish_b]The three of them looked at him.",
       "t": "narrate"
     },
     {
       "char": "finn",
-      "text": "Being known by the wrong thing means the wrong thing knows you. If the substrate in Roy now knows the four of us — if Roy's visit to Kai today put the four of us on the substrate's map — then the substrate has us.",
+      "text": "[shot:closeup finn~]Being known by the wrong thing means the wrong thing knows you. If the substrate in Roy now knows the four of us — if Roy's visit to Kai today put the four of us on the substrate's map — then the substrate has us.",
       "expr": "serious",
       "t": "say"
     },
@@ -319,12 +337,12 @@
     },
     {
       "char": "finn",
-      "text": "The danger is not Roy. The danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has just learned our names.",
+      "text": "[beat:chill]The danger is not Roy. The danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has [shake rate=10 level=3]just learned our names[/shake].",
       "expr": "serious",
       "t": "say"
     },
     {
-      "text": "The room was quiet for a count of ten.",
+      "text": "[shot:establish]The room was quiet for a count of ten.",
       "t": "narrate"
     },
     {
@@ -371,7 +389,7 @@
     },
     {
       "char": "kai",
-      "text": "That was the most you have said in two days.",
+      "text": "[shot:closeup person]That was the most you have said in two days.",
       "expr": "neutral",
       "t": "say"
     },
@@ -419,7 +437,7 @@
     },
     {
       "char": "finn",
-      "text": "All right.",
+      "text": "[shot:closeup person_b]All right.",
       "expr": "neutral",
       "t": "say"
     },
@@ -436,7 +454,11 @@
       "t": "show"
     },
     {
-      "text": "It was past nine. Lena looked at her phone on the side table and registered that they had been in the apartment for over three hours and that she was, by the kind of exhaustion that hits at the end of a long day in which people have said true things to each other in a small room, not going to be useful for any more thinking tonight.",
+      "text": "[shot:insert phone]It was past nine. Lena looked at her phone on the side table and registered that they had been in the apartment for over three hours and that she was,",
+      "t": "narrate"
+    },
+    {
+      "text": "by the kind of exhaustion that hits at the end of a long day in which people have said true things to each other in a small room, not going to be useful for any more thinking tonight.",
       "t": "narrate"
     },
     {
@@ -542,7 +564,11 @@
       "t": "say"
     },
     {
-      "text": "There was a small shuffle at the door about who was driving back where. Kai said he would walk to the shop and pick up his truck and drive himself home. Finn said he would drop Tem at the cabin on his way to his apartment and come back down in the morning. Tem said she did not want to be at the cabin tonight.",
+      "text": "[shot:establish_c]There was a small shuffle at the door about who was driving back where. Kai said he would walk to the shop and pick up his truck and drive himself home.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn said he would drop Tem at the cabin on his way to his apartment and come back down in the morning. Tem said she did not want to be at the cabin tonight.",
       "t": "narrate"
     },
     {
@@ -616,7 +642,7 @@
       "t": "show"
     },
     {
-      "text": "Lena turned the deadbolt.",
+      "text": "[beat:still][shot:insert deadbolt]Lena turned the deadbolt.",
       "t": "narrate"
     },
     {
@@ -630,7 +656,7 @@
       "t": "show"
     },
     {
-      "text": "With two of them left in it the apartment was hers again. Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head.",
+      "text": "[shot:establish]With two of them left in it the apartment was hers again. Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head.",
       "t": "narrate"
     },
     {
@@ -672,7 +698,7 @@
       "t": "hide"
     },
     {
-      "text": "She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet.",
+      "text": "[shot:closeup lena]She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet.",
       "t": "narrate"
     },
     {
@@ -696,7 +722,7 @@
       "t": "narrate"
     },
     {
-      "text": "The rain on the roof did not change.",
+      "text": "[shot:establish]The rain on the roof did not change.",
       "t": "narrate"
     },
     {

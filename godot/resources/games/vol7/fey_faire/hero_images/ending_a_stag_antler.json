@@ -1,0 +1,214 @@
+{
+  "id": "ending_a_stag_antler",
+  "notes": "Wildfey ending. The antler on a mantle in a house that is not yours anymore. Through the window, a town you barely recognize. Seventeen years of dusk.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#241c10",
+    "#3a2c18",
+    "#6a4a28",
+    "#a07840",
+    "#e0b070",
+    "#c8983a",
+    "#181008",
+    "#8a98b0",
+    "#4a3820"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        16
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        14,
+        20,
+        44,
+        36
+      ],
+      "color": 7
+    },
+    {
+      "op": "vline",
+      "x": 36,
+      "y_range": [
+        20,
+        56
+      ],
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 38,
+      "x_range": [
+        14,
+        58
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        18,
+        42,
+        8,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        44,
+        10,
+        8
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        40,
+        8,
+        12
+      ],
+      "color": 6
+    },
+    {
+      "op": "dot",
+      "xy": [
+        22,
+        44
+      ],
+      "size": 1,
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        48,
+        42
+      ],
+      "size": 1,
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        70,
+        50,
+        80,
+        8
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        74,
+        58,
+        72,
+        26
+      ],
+      "color": 8
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          96,
+          44
+        ],
+        [
+          100,
+          36
+        ],
+        [
+          104,
+          30
+        ],
+        [
+          110,
+          26
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          100,
+          36
+        ],
+        [
+          106,
+          34
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          104,
+          30
+        ],
+        [
+          112,
+          30
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          96,
+          44
+        ],
+        [
+          92,
+          38
+        ],
+        [
+          90,
+          32
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        94,
+        44,
+        6,
+        6
+      ],
+      "color": 3
+    },
+    {
+      "op": "hline",
+      "y": 50,
+      "x_range": [
+        70,
+        150
+      ],
+      "color": 5
+    }
+  ]
+}

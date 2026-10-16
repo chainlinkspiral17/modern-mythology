@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://houston_office_emperor"]
+[gd_scene load_steps=26 format=3 uid="uid://houston_office_emperor"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/houston_office.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,20 +128,32 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.62, 0.74, 0.86, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_City"]
+; (draft 4, 2026-10-09) Houston late afternoon past floor-to-ceiling glass, twelve stories up
+sky_top_color = Color(0.34, 0.52, 0.80, 1)
+sky_horizon_color = Color(0.82, 0.80, 0.74, 1)
+sky_curve = 0.18
+ground_bottom_color = Color(0.30, 0.30, 0.30, 1)
+ground_horizon_color = Color(0.58, 0.56, 0.52, 1)
+
+[sub_resource type="Sky" id="Sky_City"]
+sky_material = SubResource("SkyMat_City")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
-background_color = Color(0.10, 0.10, 0.10, 1)
+background_mode = 2
+sky = SubResource("Sky_City")
 ambient_light_source = 2
-ambient_light_color = Color(0.86, 0.88, 0.92, 1)
-ambient_light_energy = 0.85
+ambient_light_color = Color(0.88, 0.88, 0.90, 1)
+ambient_light_energy = 0.70
 fog_enabled = true
-fog_light_color = Color(0.62, 0.64, 0.68, 1)
-fog_light_energy = 0.3
-fog_density = 0.003
+fog_light_color = Color(0.74, 0.72, 0.68, 1)
+fog_light_energy = 0.4
+fog_density = 0.004
 adjustment_enabled = true
 adjustment_brightness = 1.02
 adjustment_contrast = 1.04
-adjustment_saturation = 0.92
+adjustment_saturation = 0.94
 glow_enabled = true
 glow_intensity = 0.6
 glow_bloom = 0.08
@@ -154,23 +166,74 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Fluor" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-light_color = Color(0.92, 0.94, 0.96, 1)
-light_energy = 0.65
+; ── DRAFT 4 RIG (2026-10-09): the partner office twelve stories up. The sun from the NW through the
+; corner glass, the sky fill from the N, the recessed downlights and her chrome lamp. No fluorescents.
+; the Houston afternoon sun, low from the NW through both glass walls
+[node name="Sun_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7027, 0.4134, -0.5791, 0.0000, 0.8139, 0.5810, 0.7115, 0.4083, -0.5719, 0, 8, 0)
+light_color = Color(1.0, 0.88, 0.7, 1)
+light_energy = 1.0
+shadow_enabled = false
+metadata/daylight = true
+
+; the sky through the N glass
+[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.9553, 0.2955, -0.0000, 0.2955, -0.9553, 0, 8, 0)
+light_color = Color(0.74, 0.82, 0.94, 1)
+light_energy = 0.35
 shadow_enabled = false
 
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
-light_color = Color(0.86, 0.88, 0.92, 1)
-light_energy = 0.4
+; the recessed downlights
+[node name="Downlight_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.800, -2.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
 shadow_enabled = false
+omni_range = 4.00
 
-[node name="Back_Corp" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 4, 4)
-light_color = Color(0.62, 0.74, 0.86, 1)
-light_energy = 0.25
+[node name="Downlight_4_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.800, -4.600)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
 shadow_enabled = false
+omni_range = 4.00
+
+[node name="Downlight_6_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.600, 2.800, -1.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 4.00
+
+[node name="Downlight_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.800, -2.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 4.00
+
+; her chrome desk lamp
+[node name="Erica_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.880, 1.120, -4.650)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 2.50
+
+; the hall
+[node name="Hall_Downlight_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.000, 2.550, 1.800)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.60
+shadow_enabled = false
+omni_range = 3.50
+
+[node name="Hall_Downlight_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.000, 2.550, 1.800)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.60
+shadow_enabled = false
+omni_range = 3.50
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +335,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +354,46 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage — DRAFT 4 (2026-10-09), the partner office
+; reverse: from the NW glass corner across the desk to the files, the door and the hall
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.900, 1.650, -6.300)
+rotation = Vector3(-0.0665, -2.2361, 0.0)
+metadata/fov = 54.0
+
+; closeup: Erica at the teak desk from its east end — the W glass and the city behind her (not the monitors' backs)
+[node name="shot_closeup_erica" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.900, 1.380, -5.350)
+rotation = Vector3(-0.0669, 1.3633, 0.0)
+metadata/fov = 36.0
+
+; insert: over her shoulder, the motion denied on the monitor
+[node name="shot_insert_monitor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.250, 1.320, -5.650)
+rotation = Vector3(-0.2146, 2.5763, 0.0)
+metadata/fov = 38.0
+
+; insert: the teak, custom-built — her hand on its surface
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.350, 1.400, -3.950)
+rotation = Vector3(-0.3995, -0.8851, 0.0)
+metadata/fov = 42.0
+
+; insert: the desk phone
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.250, -5.550)
+rotation = Vector3(-0.5321, 2.5297, 0.0)
+metadata/fov = 42.0
+
+; insert: the eleven-page draft for Antonio D'Ambrosio
+[node name="shot_insert_contract" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.250, 1.250, -5.700)
+rotation = Vector3(-0.6885, 2.6779, 0.0)
+metadata/fov = 40.0
+
+; insert: her mother in a sun hat in Galveston, 1996 — the only personal item
+[node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.550, 1.050, -5.700)
+rotation = Vector3(-0.3111, -2.5045, 0.0)
+metadata/fov = 30.0

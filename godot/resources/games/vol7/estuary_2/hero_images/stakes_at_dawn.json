@@ -1,0 +1,114 @@
+{
+ "id": "stakes_at_dawn",
+ "notes": "The stakes at dawn \u00b7 the most saturated color in the game. Every reviewer mentioned them.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#5a6058",
+  "#8a8878",
+  "#3a4a52",
+  "#a8a290",
+  "#708468",
+  "#b8b4a4",
+  "#d87838",
+  "#2a3038"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 5
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    34,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    34,
+    38
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     20,
+     70
+    ],
+    [
+     60,
+     64
+    ],
+    [
+     100,
+     70
+    ],
+    [
+     140,
+     62
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 36,
+   "y_range": [
+    48,
+    64
+   ],
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 66,
+   "y_range": [
+    52,
+    68
+   ],
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 96,
+   "y_range": [
+    46,
+    62
+   ],
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 126,
+   "y_range": [
+    50,
+    66
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    36,
+    46
+   ],
+   "size": 2,
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    96,
+    44
+   ],
+   "size": 2,
+   "color": 6
+  }
+ ]
+}

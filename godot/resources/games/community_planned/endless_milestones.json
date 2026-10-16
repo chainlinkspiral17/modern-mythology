@@ -1,0 +1,104 @@
+{
+ "scope": "community_planned",
+ "notes": "B3 · SEPTEMBER STRUCTURES. Endless mode milestones, one every 8 endless weeks, so long runs have chapters instead of pure ratchet. Fired as a modal + log entry; {agent} substitutes the run's most-dispatched agent. Cycles after the last. Expanded 6->12 (2026-08-19): the pool cycles (due-1)%size, so six entries repeated verbatim from endless week 56; twelve pushes first verbatim repeat past week 100.",
+ "milestones": [
+  {
+   "id": "m1_the_letter",
+   "title": "A LETTER, FORWARDED TWICE",
+   "body": "It reaches the board with two forwarding stamps and a coffee ring that is not yours. {agent}'s hand.\n\n'I hear the board is still up. Of course it is. You should know the thing nobody tells you at the start: it does not end because the problems end. It ends when you can hand it to somebody and sleep. I could not, for the longest time, and then one Tuesday I could.\n\nDon't write back. Resolve something with the time instead. That was always the correspondence.'\n\nNo return address. The postmark is a county you've been to."
+  },
+  {
+   "id": "m2_the_map",
+   "title": "THE COUNTY MAP, REDRAWN",
+   "body": "The county issues its decennial map revision, off schedule, quietly. You get a copy because Ruth gets everything.\n\nThe changes are small and enormous: the timber yard road is a named road now. The estate's retention pond is marked POND (SEASONAL), which is a demotion it earned. And the stretch of river country the board has defended all this time is labeled, for the first time in county history, in the smallest approved font, with its own name instead of 'unincorporated.'\n\nNobody petitioned for that. Somebody in the map office just knew. That is what winning looks like at cartographic speed."
+  },
+  {
+   "id": "m3_the_annotation",
+   "title": "THE LEDGER, ANNOTATED",
+   "body": "The fifth fingerprint's photograph of the ledger page — the one filed under the floorboard of the mind — has changed, which photographs do not do.\n\nIn the margin, in the hand that predates ruling, a new note against the summer's column of adjustments and absorptions:\n\n'STILL OPERATING. NOTED WITHOUT PREJUDICE. THE OVERHEAD REMAINS ACCEPTABLE — TO BOTH LEDGERS.'\n\nIt is the closest thing to professional respect the tower has ever extended. The board decides, unanimously, without discussing it, never to mention it again."
+  },
+  {
+   "id": "m4_the_winter_meeting",
+   "title": "THE FIRST WINTER GENERAL MEETING",
+   "body": "The co-op was a summer thing. Everyone knew that the way everyone knows a creek is seasonal.\n\nTonight the diner stays open late for the first WINTER general meeting — coats on the backs of chairs, the good coffee urn, agenda items that assume a future ('spring courier routes,' 'the estate seed library'). Attendance: everyone. Including three people nobody recruited who heard there was a thing you could join that fixed what the county wouldn't.\n\nThe minutes are two pages. The precedent is permanent. You are no longer running a response. You are running an institution, and institutions get to outlive their emergencies."
+  },
+  {
+   "id": "m5_the_second_spring",
+   "title": "THE SECOND SPRING",
+   "body": "The board has now operated longer past the summer than the summer itself lasted.\n\nSomewhere in the file a founding purpose is written down, and the board has quietly outgrown it the way a windbreak outgrows the field plan — still doing the job, also now HABITAT. Problems arrive and are handled by people who learned from people you dispatched. Two of the demons have started describing their arrangements as 'standing.' The tower watches an operation that no longer needs watching to keep operating.\n\nThere is no mechanical reward for this. There is just the fact of it, which you built, one Sunday at a time."
+  },
+  {
+   "id": "m6_the_relay",
+   "title": "THE RELAY",
+   "body": "A letter arrives addressed not to the board but to 'WHOEVER KEEPS THE BOARD NOW' — from a town two counties over, describing their own summer: their own estate, their own timber yard, their own tower they are not sure they are allowed to mention.\n\n'We heard how you organized. We copied the parts we understood. What did we miss?'\n\nRuth drafts the reply the way she does everything: completely. The package goes out Tuesday — templates, phone-tree diagrams, the courier math, and one sentence of cover letter: 'You missed nothing. It is exactly as much work as it looks like. Start anyway.'\n\nThe board is a seed now. Endless was the point."
+  },
+  {
+   "id": "m7_the_apprentice",
+   "title": "SOMEBODY ASKS TO LEARN THE BOARD",
+   "body": "A kid from the Estates — one of the ones who grew up on the other side of the problems you routed — asks, through {agent}, whether the board takes an apprentice.\n\nYou say what Pop said, because it is the only thing there is to say: 'It takes a person who keeps showing up. Come Sunday.'\n\nThey come Sunday. They are terrible at it. They come the Sunday after that, which is the whole qualification."
+  },
+  {
+   "id": "m8_the_modem",
+   "title": "THE MODEM IS REPLACED (THE OLD ONE STAYS)",
+   "body": "The modem finally dies on a Tuesday, mid-handshake, after decades of duty. {agent} drives the replacement down from the county seat the same afternoon, which tells you what the network has become to everyone who says they only check it sometimes.\n\nThe old modem does not leave the shelf. It sits beside its successor like a retired dog next to the working one. Nobody suggests otherwise."
+  },
+  {
+   "id": "m9_the_audit",
+   "title": "A LEDGER AUDIT, VOLUNTARY",
+   "body": "You go back through the whole ledger one evening, every line since Memorial Day of the first summer. {agent} sits across the desk and reads the lines you slide over.\n\nThe finding of the audit is this: the handwriting changes in the hard weeks. It presses deeper. You can date every crisis in the county by the depth of the pencil.\n\nYou file the audit under: known."
+  },
+  {
+   "id": "m10_the_offer",
+   "title": "THE COUNTY OFFERS TO MAKE IT OFFICIAL",
+   "body": "A letter on county letterhead proposes to recognize 'the coordination network' as a volunteer emergency-preparedness entity, with a small stipend and a reporting requirement.\n\nYou read it twice. {agent} reads it once and laughs at the same sentence both of you knew was the problem: REPORTING REQUIREMENT.\n\nThe reply is polite and handwritten and declines. Some things work because nobody has to certify that they do."
+  },
+  {
+   "id": "m11_the_successor_question",
+   "title": "THE QUESTION, ASKED OUT LOUD AGAIN",
+   "body": "It has been long enough that the W11 question — the one that took fifteen years to ask the first time — is due again, and this time it is {agent} who asks it, over the desk, not unkindly:\n\n'Who takes the board after you?'\n\nYou look at the roster. The roster looks back. It is a better answer than it was the first time somebody asked, and you say so, and that is as far as the evening gets. Far enough."
+  },
+  {
+   "id": "m12_the_quiet_year",
+   "title": "THE QUIETEST STRETCH THE LEDGER HAS EVER HELD",
+   "body": "You notice it only because the ledger measures it: the longest run of ordinary weeks since the board began. No spikes. No burns. The gumbo accounted for.\n\n{agent} says the dangerous thing out loud: 'Maybe it's done.'\n\nThe board is not done — the board is a river, and this is a wide slow reach of it. But you let the sentence sit on the desk a full minute before you file it, because it earned the minute."
+  }
+ ],
+ "apprentice": {
+  "comment": "ENDLESS V2 · THE APPRENTICE = MAYA DAIGLE (user casting, 2026-08-31). Vol6's Maya — Linda Caldwell's granddaughter, the Cosmic Comics kid F.T. brought in directly during the summer of the four, the one who asked Rick 'can we help him. sometime. after this.' Now it's after this. (NOT Aria — Aria is fourteen, messiah-like, trans-dimensional; she is the thing the board orbits, never its staff. THE ARIA RULE in the CP playbook.)",
+  "offer_week": 10,
+  "reoffer_every": 8,
+  "training_weeks": 4,
+  "handoff_weeks": 16,
+  "offer_title": "SOMEBODY AT THE DOOR ON A SUNDAY",
+  "offer_body": "Maya Daigle is at the office door at seven. The comic-shop kid from the Estates — the one F.T. brought in directly, the summer everything ran through four teenagers and a corkboard.\n\nShe doesn't explain the drive down. She puts a page from Rick's stockroom notebook on the desk, in her handwriting: the question she asked him the day the Speak & Spell talked to her. Can we help him. Sometime. After this.\n\nShe looks at the board the way she looked at the back-room map once. 'It's after this,' she says.",
+  "accept_btn": "hand her the pencil",
+  "decline_btn": "not yet",
+  "accept_line": "Maya takes the corner of the desk that catches the lamp. The ledger gains a second handwriting, small and very level.",
+  "decline_line": "She nods like a person filing a decision rather than accepting one, and leaves. The knock will come again. Some questions keep Sunday hours.",
+  "training_lines": [
+   "Maya spends Sunday tracing last month's dispatches backwards, asking why at every junction. Twice you don't have an answer, and she writes THAT down.",
+   "Maya cross-indexes the ledger against the summer she lived through from the other side. Four of that August's mysteries resolve on the spot. She sits with the fifth a long time.",
+   "Maya reads the region files cover to cover with her feet hooked on the chair rung. At the Graustark file she goes quiet for a long time and does not ask anything at all.",
+   "Maya maps the courier routes the way she used to map the shop's pull-list customers — by who talks to whom. Her map is better than yours in two places. You do not tell her that yet."
+  ],
+  "misroute_lines": [
+   "Maya routes the Verbena Way letters to the wrong week and the problem grows a ring. She finds the error herself, which is the whole lesson, and it costs the board a little to teach it.",
+   "Maya dispatches by the map instead of by the people and the map, as usual, lies. You unpick it together on Monday. The ledger notes the tuition.",
+   "Maya answers the office line in her own voice. Whoever it was hangs up, and calls back Thursday asking for her."
+  ],
+  "small_ones_lines": [
+   "Maya takes the week's smallest problem off the board before you reach the desk. Her resolution note is one sentence. It is the correct sentence.",
+   "The little trouble at the edge of the map is gone by Sunday supper. Maya's pencil mark where it stood is so faint you check it twice.",
+   "Maya handles the small one the way the four of them handled that summer — by making it never have been a problem in anyone's memory but the ledger's.",
+   "One of the week's minor aches resolves without a dispatch. In the margin, in the second handwriting: 'talked to them. it was about the fence. it is not about the fence now.'",
+   "Maya clears the smallest line item and leaves the pencil exactly where you leave it, which is its own message.",
+   "The board's littlest fire goes out quietly midweek. Maya doesn't mention it. The ledger does. Somewhere north, Linda Caldwell would recognize the style."
+  ],
+  "graduate_line": "Four Sundays in, Maya stops asking why at the junctions. She has started asking why not, which is a different apprenticeship entirely. The small ones are hers now.",
+  "handoff_header": "You set the pencil down. She picks it up before it stops rolling.",
+  "handoff_lines": [
+   "The board does not retire. The board changes hands the way it came to you — a kid who kept showing up until the showing up had a name.",
+   "That night she texts three people. The texts say the same thing hers once received: you're in. All three write back within the minute."
+  ]
+ }
+}

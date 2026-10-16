@@ -26,7 +26,10 @@ def make_counter(prefix, anchor, *, length=4.40, depth=1.00,
     top_col = palette.get("top",       P.COUNTER_TOP)
     dark    = palette.get("kick",      P.COUNTER_DARK)
     cx, cy, base_z = anchor
-    counter_top_z = base_z + height + 0.04
+    # the top box spans base+height .. base+height+0.06; this returned
+    # +0.04, so everything dressed from it sat 2 cm INSIDE the top in
+    # 22 builders (2026-09-23 — the overlap gate's resting allowance hid it)
+    counter_top_z = base_z + height + 0.06
     # Front counter (customer-facing west face)
     make_box(f"{prefix}_Front",
              (cx, cy, base_z + height / 2.0),
@@ -43,18 +46,32 @@ def make_counter(prefix, anchor, *, length=4.40, depth=1.00,
 
 
 def make_counter_bullnose(prefix, anchor, *, length=4.40,
-                          segments=8, palette=None):
-    """Rounded front-edge bullnose along the counter top's west face.
-    Cuts the boxy AABB silhouette. anchor=(west_edge_x, center_y, top_z)."""
+                          segments=8, palette=None, axis='Y'):
+    """Rounded front-edge bullnose along a counter top's customer
+    face. Cuts the boxy AABB silhouette.
+
+    axis='Y' (default, unchanged): the counter runs north-south and
+    the bullnose lays along its west face — anchor=(west_edge_x,
+    center_y, top_z).
+    axis='X': the counter runs east-west and the bullnose lays along
+    its south face — anchor=(center_x, south_edge_y, top_z). Added
+    2026-08-12 for the New Orleans bar, whose 7m counter runs along
+    X; without it the trim ran across the room and through a wall.
+    """
     palette = palette or {}
     col = palette.get("top", P.COUNTER_TOP)
     cx, cy, top_z = anchor
     seg_len = length / segments
     for s in range(segments):
-        sy = (cy - length / 2.0) + (s + 0.5) * seg_len
-        make_cyl(f"{prefix}_Bullnose_{s}",
-                 (cx, sy, top_z - 0.03),
-                 0.025, seg_len, col, axis='Y', segments=8)
+        off = (-length / 2.0) + (s + 0.5) * seg_len
+        if str(axis).upper() == 'X':
+            make_cyl(f"{prefix}_Bullnose_{s}",
+                     (cx + off, cy, top_z - 0.03),
+                     0.025, seg_len, col, axis='X', segments=8)
+        else:
+            make_cyl(f"{prefix}_Bullnose_{s}",
+                     (cx, cy + off, top_z - 0.03),
+                     0.025, seg_len, col, axis='Y', segments=8)
 
 
 def make_register(prefix, anchor, *, palette=None):
@@ -65,14 +82,17 @@ def make_register(prefix, anchor, *, palette=None):
     keys = palette.get("keys", (0.32, 0.32, 0.34, 1.0))
     screen = palette.get("screen", (0.10, 0.32, 0.16, 1.0))
     cx, cy, top_z = anchor
-    make_box(f"{prefix}_Body",   (cx, cy, top_z + 0.21),
-             (0.42, 0.40, 0.32), body)
-    make_box(f"{prefix}_Display",(cx - 0.22, cy, top_z + 0.38),
-             (0.04, 0.34, 0.14), screen)
-    make_box(f"{prefix}_Keypad", (cx, cy, top_z + 0.06),
-             (0.36, 0.36, 0.02), keys)
-    make_box(f"{prefix}_Drawer", (cx, cy, top_z - 0.10),
+    # the cash drawer ON the counter, the body on the drawer (2026-09-22:
+    # the drawer was buried 15 cm in the counter and the body hung 5 cm
+    # over it, in eight rooms)
+    make_box(f"{prefix}_Drawer", (cx, cy, top_z + 0.05),
              (0.50, 0.40, 0.10), body)
+    make_box(f"{prefix}_Body",   (cx, cy, top_z + 0.26),
+             (0.42, 0.40, 0.32), body)
+    make_box(f"{prefix}_Display",(cx - 0.22, cy, top_z + 0.43),
+             (0.04, 0.34, 0.14), screen)
+    make_box(f"{prefix}_Keypad", (cx, cy, top_z + 0.11),
+             (0.36, 0.36, 0.02), keys)
 
 
 def make_cigarette_rack(prefix, anchor, *, shelves=3, columns=12,

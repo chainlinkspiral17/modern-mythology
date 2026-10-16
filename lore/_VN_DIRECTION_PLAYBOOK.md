@@ -1,0 +1,1432 @@
+# VN SCENE DIRECTION · the 3D comic
+
+How the visual novel gets a camera. The target is NOT film — it is
+a COMIC read in 3D space: hard cuts between held frames, the way a
+page moves panel to panel. Motion is the exception, not the rule.
+
+## The grammar · four shot types
+
+1. **ESTABLISH** — the locale wide. Where the reader learns the
+   room. Default shot; every scene opens here.
+2. **CLOSEUP** — a speaker or a face. The bust/portrait moment.
+3. **INSERT** — a prop, held close: the register, the tape, the
+   note on the counter. The comic's "detail panel."
+4. **PANEL** — a 2D info card OVER the scene: a receipt, a page,
+   a diagram. Rendered flat (HeroImage JSON or text card) inside
+   a comic border, on a CanvasLayer in the "ui" group (F4 rule).
+
+Cuts by default. A shot may DRIFT (slow push-in, ~2%/sec) when the
+text lingers — mark it explicitly. Never ease between shots like a
+camera operator walked there; a comic does not pan between panels.
+
+## Beats · [beat:x] · synchronized emphasis (2026-07)
+
+The producer discipline at line level: one directive fires a sting
+(haptic included, via SFXBank.RUMBLE_MAP), a camera breath, and a
+letterbox pulse TOGETHER. Four house beats — keep the vocabulary
+small; a beat that appears twice a chapter stays an event:
+
+| beat | reads as | sting | camera |
+|---|---|---|---|
+| `[beat:still]` | a held hush | none | gentlest push (0.94) |
+| `[beat:hit]`   | the hard beat | loss_thud | sharp push (0.88) |
+| `[beat:chill]` | the uncanny | tier_crossing_close | slow push, longest hold |
+| `[beat:lift]`  | wonder / relief | interlude_earned | pulls BACK (1.06) |
+
+Rules: beats chain with other directives (`[beat:chill][shot:closeup
+x]` fires both); they park until the locale loads like mood/stage; a
+beat borrows the letterbox and returns it unless a shot claims the
+bars during the hold; a beat cancels drift (the next shot restores
+it). Camera breath eases home on its own — never author a beat as a
+persistent state; that is what [mood:] is for.
+
+First seeds: vol5_ch0_booth6 node 12 (`[beat:still]` on the bell) and
+node 17 (`[beat:chill]` on "the walls are thin").
+
+## Kinetic text (native BBCode · 2026-07)
+
+`bbcode_enabled` is on in every dialogue variant and the typewriter's
+tag-skipper passes bracketed runs through whole — so RichTextLabel's
+effect tags work TODAY in narrate/say/think text:
+
+- `[wave amp=8 freq=3]...[/wave]` — the words go soft/unstable (first
+  seed: the stranger's "The walls are thin.")
+- `[shake rate=12 level=4]...[/shake]` — fear, cold, interference
+- `[fade start=4 length=14]...[/fade]` — trailing off
+
+Restraint rules: one effect per line at most; amp/level low (the 34px
+serif carries scale already); never on a whole passage — mark the
+three or four words that turn. Pairs naturally with a beat on the
+same line.
+
+## Script syntax (parsed + stripped at line display)
+
+Directives lead a VN script line, square-bracketed:
+
+    [shot:establish]           cut to the locale wide
+    [shot:closeup sam]         cut to marker shot_closeup_sam
+    [shot:insert register~]    cut to shot_insert_register, drifting
+    [panel:receipt_47]         overlay panels/receipt_47.json
+    [panel:off]                dismiss the panel
+    [stage:john counter_post]  place John's hero GLB at cast_counter_post
+    [stage:john off]           remove John from the set
+    [mood:dambrosios_3am]      apply a MoodCycler STYLE_PACK (or bare
+                               mood) by name — lighting + post as one look
+
+`~` suffix = drift. Unknown marker/panel/spot/model/mood = silent
+no-op (fallback discipline — a script must never crash the reader).
+
+## Cast staging (v3)
+
+- **Anchors**: `Marker3D` named `cast_<spot>` (group `"vn_cast"`) at
+  FLOOR level; the marker's yaw is the direction the model faces.
+- **Models**: `assets/3d/characters/heroes/*.glb` — STATIC standing
+  meshes, no skeleton. They are blocking for wide/establish panels;
+  FACES stay on the 2D portrait layer (CharLayer/Portrait3D). Never
+  expect a seated pose — block "seated" characters standing beside
+  the furniture or pick a beat where they'd stand.
+- **Alignment table**: `Background3D.CAST_MODEL_ALIGN`. Audited
+  2026-07-11: only john_frank + frasier_temple are Y-up; alberto,
+  antonio, dante (1.08 m raw → scale 1.6), elicia, nicola are Z-up
+  exports that need the rot_x -90° fix at stage time.
+- Staged cast persists across scene jumps that keep the same locale
+  preset (D'Ambrosio's chapter chains) and dies with the locale on
+  a preset change. Re-stage idempotently at each scene top.
+- Locales with a hidden `Hero<FirstName>` node (diner, bungalow,
+  riverboat): stage_character reuses it instead of double-loading
+  the GLB, and overwrites its transform (the hidden nodes' authored
+  transforms predate the Z-up audit — do not trust them).
+
+## The machinery
+
+- **Markers in the locale**: every shot is a `Marker3D` in the
+  locale scene, named `shot_<type>_<id>` (or `shot_establish`),
+  in group `"vn_shot"`. The marker's transform IS the framing —
+  authored in the editor, where framing belongs. Optional metadata
+  `fov` (default 50; inserts want ~35).
+- **VnDirector** (`godot/scripts/vn/VnDirector.gd`, built): owns
+  the cut. `cut_to("closeup_sam", drift)` finds the marker, snaps
+  the active Camera3D, starts the drift tween if asked. Also owns
+  the **letterbox** — thin bars that appear on closeup/insert
+  (comic panel crop) and leave on establish. `panel(id)` /
+  `panel_off()` for info cards.
+- **Restore**: the director remembers the camera's original
+  transform; `release()` puts it back (scene end, ESC menu).
+
+## Wiring (BUILT — v1)
+
+1. `GameEngine.gd` — `_dispatch` routes narrate/say/think through
+   `_directed(n)`: regex `^\[(shot|panel):([^\]\r\n]+)\]\s*` strips
+   stacked directives off the text front and dispatches each to
+   `_director` before display. Zero directives = old behavior; the
+   scene-data dict is never mutated (SceneDataDB caches it).
+2. `VnDirector` (`godot/scripts/vn/VnDirector.gd`) is created once
+   in `_build_layers` and drives the Background3D SubViewport
+   camera via new hooks on `Background3D.gd`: `get_camera()`,
+   `find_shot_marker(name)`, `has_locale_loaded()`,
+   `restore_preset_vantage()`. A shot arriving before the deferred
+   `load_location` finishes parks and retries up to 60 frames.
+3. `[shot:establish]` falls back to the locale's CAMERA_PRESETS
+   vantage when no `shot_establish` marker exists — every existing
+   locale supports it with zero markup. closeup/insert with no
+   marker = silent no-op (hold the current frame).
+4. Letterbox: two ColorRects (z 95) inside GameEngine's own tree —
+   NOT a CanvasLayer, so the F4 HUD sweep can't hide the picture.
+   On for closeup/insert, off for establish. Panels are a bordered
+   card (z 101) in the upper field; dialog owns the bottom.
+5. Drift = FOV tighten at 2%/sec, floored at 86% of the shot's
+   starting FOV. Cuts snap; nothing eases.
+6. First directed locale: `kwik_stop.tscn` — five markers
+   (insert_register / insert_door / insert_coffee / closeup_sam /
+   closeup_customer). First directed scene:
+   `vol6_ch1_shift_change.json` (five directives).
+7. MoodCycler untouched — lights are the mood's job; the camera
+   is the page's.
+8. Panels dir: `godot/resources/vn/panels/*.json` (HeroImage
+   schema). Missing file → bordered text card with the id.
+
+## Portrait direction · the 3D heroes' shots (draft 1 · 2026-10-01)
+
+The user, once the recovered heroes were in: "facial/bust close-ups
+for dialogue, director precedence for best shots and psychology of the
+shots and visual design." Until then every hero stood in one frame — a
+3/4 thigh-up at a heroic upward angle, the generated models' A-pose
+arms filling half of it (the Deck screenshot of John in the diner).
+
+**Sizes** (`Portrait3D.SHOT_FRAMES`, framed from the figure, each with
+its own lens — longer for closer, the 85-135 mm portrait lens):
+wide (thigh-up) · medium (waist) · **mcu** (chest-up, the dialogue
+single) · **cu** (head and shoulders) · **ecu** (the face). Cuts, not
+moves — the comic grammar above holds for portraits too.
+
+**Who picks** — `PortraitDirector.choose()` on every line, via
+`CharLayer.direct_line()` (GameEngine calls it on narrate/say/think):
+
+| situation | shot | precedent |
+|---|---|---|
+| a line of dialogue | mcu, eye level | the coverage single; Ozu's level lens |
+| a charged line (angry/surprised, !, "…", the short hard line) | cu → ecu | Hitchcock: size = importance |
+| sorrow, exhaustion | cu, high angle | the high angle takes power away |
+| an authority speaking level or hard | low angle | Welles shooting Kane from the floor |
+| nerves, demons | dutch 6° | The Third Man |
+| the same speaker at the same pitch | hold | the jump-cut rule, applied to size |
+| after a peak | one size back per line | let the shot breathe |
+| a listener | a size wider than the speaker | coverage: weight on whoever talks |
+| narration | mcu for all | the bust; nothing automatic goes wider |
+
+Nothing automatic goes wider than the mcu: the models stand in A-pose
+and the arms are not a shot. A writer can still order any frame:
+`[portrait:medium]`, `[portrait:ecu low]`, `[portrait:cu dutch]` —
+line-scoped, the speaker's shot only.
+
+**Takes within ranges, lit by the room** (same day, the user: "the
+camera doesn't have to be set for every shot, it can be randomly
+allowed within a set area, same with lighting and shader effects and
+post-processing on the portraits. contrast and work within the
+scene"). Each new shot rolls a TAKE inside `Portrait3D.VARY` — yaw
+±0.10 rad round the 3/4, elevation ±0.04, the subject ±4 % off-centre,
+lens ±1.5°, dutch 4-8° either way, the key swung ±16° round the head,
+energies ±10 %, contrast 1.02-1.16, saturation 0.90-1.08; a held shot
+keeps its take (no twitch line to line). `Background3D.get_scene_light()`
+reports the locale's strongest light, ambient and level; the portrait's
+key and fill lean 55 % toward them, the RIM goes the other way (cool in
+a warm room, warm in a cool one) so the figure separates, and dim rooms
+get a dimmer face and a stronger rim. Each portrait has its own grade
+(the Environment is local to the scene).
+
+**2D portraits retired** (same day: "2D portraits should be on the way
+out for now, except in special occasions, not with existing 2D
+assets"): `CharLayer.PORTRAITS_2D = false` — a character without a
+hero GLB gets no portrait (the dialogue box names them). A show node's
+`"portrait_2d": "res://…"` opts ONE character into a special-occasion
+image for the scene; the retired busts, compositions and placeholders
+are never used.
+
+**Sheet 41 verdict — the close sizes on 51 heroes.** mcu and cu landed
+on nearly every face. The ecu missed on about a third: every model is
+scaled to 1.8 m INCLUDING hair and hats, so a frame placed as a
+fraction of height drops below big hair — Frasier's locs, Aria's hair,
+the Frog's hat, the Stranger's hood filled the frame; Jimmy and Diego
+cropped. `Portrait3D._measure_neck()` now finds each model's neck at
+load (the narrowest slice of the mesh, 74-90 % of the height, slices
+with ≥ 12 samples and ≥ 5 cm wide) and the cu and ecu frame from it
+(`FACE_FRAMES`: ecu = neck −0.01 … +0.20 m, eyes on the upper third).
+Measured headless: necks 1.50-1.54 m, 8-11 cm wide.
+
+**Sheet 42 verdict — the face-anchored close sizes.** The ecu now lands
+on the face for ~45 of 51 (Frasier's eyes behind his glasses, Aria under
+her hair, Diego, Jimmy, the women with long hair). Two follow-ups:
+short-haired men whose neck reads high (Jimmy, Thomas) sat low in the cu
+under a band of empty headroom — the cu's top is capped 6 cm over the
+figure, the ecu's at the crown, and the frame slides down instead; and
+the Frog (all eye) and the Stranger (all hood) never get an automatic
+ecu (`PortraitDirector.NO_ECU`; a writer's [portrait:ecu] still can).
+
+**Sheet 43 verdict — the sizes did not step.** Seen at the true 300×320
+aspect (a 16:9 montage squashes the faces — judge portraits square):
+the mcu (0.62 m, a fraction of height) and the cu (0.53 m, neck-anchored)
+were the same picture on all 51 heroes, so a push-in read as nothing;
+the ecu found faces but sat low on some (Alice: eyes at the top edge).
+Fixed: all three close sizes hang off the measured neck, 0.64 → 0.38 →
+0.18 m, each top a set margin over the crown but never so high over the
+neck that the chin leaves frame; and the camera aims at the measured
+head (Meshy heads sit 0-5 cm forward of the figure's axis — small, but a
+19° lens magnifies it). The Frog and the Stranger ecu frames on the
+sheet are expected: the sheet forces every size; play caps them at cu.
+The three `*_gnm` GLBs are not in the roster and are skipped by the sheet.
+
+**The Deck, same day — four notes, four fixes.**
+1. *"Need better positioning on Frasier"* — his locs count toward the
+   1.80 m, so a frame cut as a fraction of height put his face behind
+   the dialogue text. The close sizes are now EYE-ANCHORED: the eyes at
+   30 % (mcu) / 36 % (cu) / 40 % (ecu) from the top, the top never more
+   than a margin over the crown. The eye line per hero was read off
+   sheet 43's ecu frames (`Portrait3D.SHEET43_ECU_EYE`; the frame's
+   geometry and seed-7 take are known, so the height follows from the
+   same neck reading). Typical eyes sit 10 cm over the narrowest slice;
+   where that slice is the jaw (Aria, Tanya, Alice, Graciela, Sam,
+   Coach, Gloria) 14-18 cm. Regenerate the table when a model changes.
+2. *"Less motion" / "super shaky, motion sickness"* — the mood motion
+   table was tuned for the old 34° thigh-up in a small box; heroes now
+   fill half the screen on 19-26° lenses, and sway/drift were never
+   scaled to the frame. Everything runs at `MOTION_GAIN` 0.3, angular
+   motion scaled by the lens, and a tremor is a STARTLE that dies in
+   ~1.5 s (the demon alone keeps shaking). CharLayer's idle bob, breath
+   and parallax were cut to a whisper too (3D locales don't sway).
+   "worried" → nervous was the vol 6 opening's constant tremor.
+3. *"The models look kinda lame without post-processing and effects
+   and mood direction"* — the locale renders through its own post
+   stack; the hero was clean CG on top. A hero LOOK on the portrait's
+   container (`portrait_demon_static.gdshader`, `look` path): lens
+   fringe, grade, bloom, grain, an inner + outer rim glow in the room's
+   key colour (the locale's neon edges, echoed), vignette, a fade at
+   the base. `MOOD_LOOK` steers it (sad cools and greys, angry hardens
+   and fringes, happy blooms warm); the room sets temperature, rim and
+   shadow tint; eased, never cut. `tools/PortraitLookTest.tscn`
+   renders it over a frame (needs a display: xvfb-run).
+4. *"Character not in scene is present"* — see GameEngine: a bg in a
+   DIFFERENT place clears the stage.
+
+**Sheet 44 verdict (2026-10-02).** The eye-anchored sizes hold across
+the cast: three distinct steps, eyes near the upper third, the ecu on
+the face. The per-hero eye table is the thing to keep current —
+regenerate it from an ecu sheet whenever a model is replaced.
+
+NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
+sit at different heights — a per-model face offset table if the ecu
+misses eyes); a catchlight for cu/ecu; matching the portrait's key to
+the locale's (the diner is warm, the portrait key is cool); an
+over-the-shoulder two-shot when two heroes trade lines.
+
+## Voice rules for directing scripts
+
+- Establish once per location change; do not re-establish on
+  every beat.
+- Insert BEFORE the text names the prop, not after — the comic
+  shows, then the caption speaks.
+- Closeups for decisions and reveals; hold them across the whole
+  exchange, don't ping-pong between speakers.
+- Drift is for dread and patience only. If everything drifts,
+  nothing does.
+
+## Recent lessons
+
+### 2026-10-12 · the camera follows the narrator's inventory
+
+- **The user: "The director should be focusing on the items in Diego's
+  room as they are being called out by the narrator."** The prologue
+  walks his empty room object by object — the duffel, the three shirts
+  and the boots, the water glass and the textbook, Sam's photograph in
+  the mirror — and the camera held one wide shot (only the bed was cued).
+  The director cuts only on `[shot:...]` cues; a line that names an
+  object with no cue leaves the frame where it was.
+- **Rule: a narrated line that names a thing in the room cuts to it.**
+  One `[shot:insert <x>]` per line, a `shot_insert_<x>` marker per
+  object, the marker aimed so the object FILLS the frame (a mirror with
+  the photo as a corner square is a mirror shot; aim at the photo).
+  Repeated mentions within three lines do not re-cut. A line that
+  gathers several objects back into the room ("The photograph is still
+  there. The duffel bag is still there ... Diego Ramos is not.") is a
+  WIDE, not an insert.
+- **Not every noun is a cut.** Objects inside a dream, inside a quoted
+  letter, or in another place being remembered stay uncued.
+- **`tools/audit/narrated_object_audit.py [locale]`** lists every uncued
+  narrate line that names an object the room already has an insert for
+  (repeat mentions suppressed). It is a report: read each line. Run it
+  before and after a room's pass; repo-wide it lists ~1,500 lines.
+- **The same report finds wrong rooms.** Bianca's bedtime lines in ch23
+  matched Diego's `window` — they were playing over his room because the
+  chapter never cut the background. A narrated object that matches the
+  WRONG room's markers is a missing `bg` node.
+
+### 2026-10-04 · a montage staged on one background shows one face — switch rooms per vignette
+
+- Judgement (vol 5 ch 20) is a montage: Erica in Houston, John in
+  Montreal, Dante at the helm, Jimmy in the empty room, Natalie, Doug
+  at the Iron Crow, the Roberts, Elicia, Nicola in the car. It was
+  staged on the wreck preset, so every `[shot:closeup X]` fell to the
+  director's substitute pool — and the pool held ONE closeup: the
+  Child by the river. Ten characters, one picture. A chapter that
+  travels gets a `{"t":"bg"}` node at each vignette's first line
+  (ch 5 already did it for four rooms); each switch is cheap (the
+  PackedScene is cached), and the cues inside are re-pointed at what
+  THAT room has (`closeup douglas`, not `doug`; `insert phone`, not a
+  stray `insert smoke_ring`).
+- **Stage a chapter on the preset where its establishes happen.** The
+  Star ran on the cottage preset while five of its seven `[shot:
+  establish]` lines are at the wall; every establish cut to the
+  cottage. Count where the establishes are before choosing `bg`.
+- **A place visited inside a chapter is a `wide <id>` marker, not an
+  establish.** "At the threshold of her makeshift shelter" and "She
+  closed the door of the shotgun house" are scenes in a second place;
+  `[shot:wide threshold]` / `[shot:wide house]` cut there and leave
+  the chapter's establish (the wall) for the lines that are at the
+  wall. `wrong_room_audit` checks only RESOLVED closeups — a blind
+  closeup's substitute is unaudited, so author the closeups a chapter
+  asks for (`shot_closeup_joanna`, per-preset overrides) rather than
+  trusting the pool.
+- **A passenger's camera sits at SEATED eye height** — cushion top +
+  ~0.72 m — and the cabin must have the car's real headroom. Miriam's
+  Subaru first put Natalie's eye 0.52 m over the cushion under a roof
+  0.89 m up: two seatbacks filled the frame and the road was a sliver.
+  Raised to 1.36 under a 1.62 roof, the frame looks over the seats and
+  through the gap — the shot the prose describes.
+
+### 2026-10-02 · re-aim a marker from the PROSE: a camera point and a target point, never a rotation by hand
+
+- The Deck: "direction still isn't strong at all, vol 5. camera and
+  director attention not where they should be." Rendering every
+  `[shot:]` marker of a locale into one montage (`TripPaintTest
+  --preset X --marker shot_x`, one PNG each, tiled) showed why: markers
+  were authored as position + a guessed rotation, and the subject was
+  often not in frame at all — Natalie's `insert card` framed a plant
+  and a stool, `closeup natalie` a bare wall at arm's length, the
+  riverboat's `insert window` sat BETWEEN DECKS looking up at a table's
+  underside, Houston's `insert monitor` looked at the monitor's back.
+- The fix is per shot, from the chapter's cue line: pick the camera
+  point and the TARGET point in godot coordinates (blender (x, y, z) →
+  godot (x, z, −y)), and let `aim()` make the rotation:
+  `pitch = atan2(dy, hypot(dx, dz))`, `yaw = atan2(−dx, −dz)`. Write
+  the tscn block by regex on `position`/`transform`, `rotation`,
+  `metadata/fov`; find the block's END as the next `[node` or EOF (a
+  blank-line search raised on the last block and silently wrote
+  nothing — the render then showed the OLD aims and nearly passed as
+  the new ones).
+- An insert's camera sits 0.6–1.0 m from the object, 30–50° down,
+  fov 34–42, oblique along the surface (never plan-view). A close-up's
+  marker is a BACKDROP for the overlaid portrait: the room behind the
+  speaker 3–5 m deep (Dante: his father's clock; Erica: her office's
+  second monitor and files; Natalie: the sofa, the window, the door),
+  not the wall at arm's length.
+- Then `marker_aim_audit` and `vantage_obstruction_audit --markers X`
+  must both be clean: the aim audit found `Natalies_Phone` claiming the
+  `closeup natalie` cue (renamed `Her_Phone`); the obstruction audit
+  casts the new aims.
+- PER-PRESET OVERRIDES WIN. A marker named `<shot>__<preset_id>` is
+  the one used while that preset is loaded, and the plain `<shot>`
+  only the fallback — so re-aiming the plain marker changes nothing
+  for that preset. The diner's Empress room had
+  `shot_closeup_dean__dambrosios_formal` standing past the port wall
+  (copied from the auto person frames) overriding a plain Dean marker
+  I had carefully re-aimed; two renders of "the same" marker were
+  identical before I found it. `grep -c "<shot>"` the tscn first: a
+  count of 2 means an override exists.
+- The obstruction audit is the LAST gate, after the render looks right:
+  Houston's contract insert read well three times and was wrong three
+  times — the lens inside the south wall (a blank frame), then the
+  chair back across the line, then the banker's box, then the lens
+  INSIDE a filing cabinet (a dark bar at frame-left that looked like a
+  door jamb). Each move came from the audit's named obstructor, not
+  from the picture.
+- What a render shows that the numbers do not: the thing you aimed at
+  may be INSIDE another part (Natalie's phone in the counter slab), or
+  the glass you aimed through may be a wall (see _SHADER_VISUALS
+  2026-10-02 (vi)). Judge the montage before the audit.
+
+### 2026-09-19 · a check's pass must land somewhere the fail does not; a flag set by every path remembers nothing
+
+- **Decorative checks.** Two empathy checks had pass and fail pointing
+  at the same node: the plate promised a test and the game could not
+  tell. The fix is one node — a `think` beat the pass alone reaches
+  before the shared line — spliced in by raw text with every
+  goto/pass/fail after it bumped. `vn_skill_audit` counts these as
+  DECORATIVE; keep it at zero.
+- **Unconditional flags.** `vol7_ch7_apology_heard` was a `flag` node
+  at the end of a scene every player passes through: set on every
+  path, so any `when_flag` callback would fire for everyone. A flag
+  is a memory only when a CHOICE sets it — put `"flag"` on the option
+  (the engine applies opt flags), remove the node, and read it with a
+  when_flag line AND its when_not_flag twin so both players get a
+  sentence that knows what they did. Roy's scene is the model: Finn
+  clears the bowls two ways.
+- **THE INVENTORY is flags with a prefix.** `item:<name>` in `_flags`
+  — no new save shape, no new node type. `"item"` on an option picks
+  up (TAKEN toast, HUD strip), `"drop_item"` uses up, `"needs_item"`
+  hides the option until held. A pick-up verb belongs on a coin (it
+  hides itself like any verb); the use belongs on a LATER choice with
+  `needs_item`, and the use should set a flag a later line reads, or
+  the item vanished for nothing. The capacitor is the model: pocketed
+  at the bench, fitted under the river, remembered at the scene's end.
+- **A coin is a contiguous block, and a helper builds it.** Place
+  narrate (optional) · the coin · (branch narrate, `jump goto` back)
+  per verb; the exit's goto is the old node the block displaced. In a
+  scene with no index references the splice needs no bumping; the
+  target gate confirms every goto lands on a line. Three shipped this
+  way in one pass (jukebox, workbench, stove).
+- **Indices nobody checked.** vol1_ch1_s2 sent two of its three
+  branches to `jump vol1_end` (the volume ended before the replies);
+  vol2_graveyard's first option pointed two nodes back and re-opened
+  itself. Seventy-one hand-typed targets and no gate — until
+  `vn_target_audit.py`: BACKWARD, OOB, ONTO_END and SELF at zero,
+  ONTO_JUMP as info (a silence option may jump). When you splice a
+  node in, this is the gate that catches the goto you forgot to bump.
+- **Splicing a scene.** Insert at the file's own indentation (the
+  vol 7 files use one-space and four-space styles both), bump
+  `"goto"/"pass"/"fail"` ≥ the index, re-point the check's pass,
+  validate with json.loads and compare every old node's text to its
+  shifted twin before writing. Never re-serialize the file.
+
+### 2026-09-17 · SKILLS EARN — the check nobody could pass
+
+- **Draw the game layer before designing it.** `consequence_map.py`
+  lists every choice, flag and check in reading order; the first
+  drawing found that the five skills had no source. They started at
+  zero, loaded from the save, filled dots on the HUD, and were read by
+  five checks — and no node type raised one. Every "[EMPATHY] …"
+  option in the game was a fail branch with a label on it.
+- **The choice is the practice.** An option with `"skill"` trains it
+  by one when taken; the label shows the skill the way a check shows
+  its ask, minus the number. Tagging rule across the 28 choices:
+  listening and waiting are empathy, looking and asking-why are
+  logic, restraint and leaving-it are composure, the reply and the
+  ask are rhetoric, the uncanny is signal. About one option in three
+  carries a skill; a choice with every option tagged is a stat screen.
+- **Once per option per playthrough.** The vol 1 diner hub loops back
+  to its seven explorations; without the guard "Read the laminated
+  menu" is a logic mill. The spent keys ride in `_flags` so they save.
+- **A check's difficulty is the earnable, not a number that sounded
+  right.** `logic 9` in the second scene of the game; `empathy 6` with
+  three earnable. Re-sized to two-thirds of what the reader can have
+  before the scene; `vn_skill_audit.py` gates CANNOT_PASS at zero so a
+  new check is sized by the same arithmetic.
+- **Forty-three flags are set and never read.** A choice the game
+  never remembers is a choice that did not happen. The map lists them
+  as loose; paying them off — one `when_flag` line later in the volume
+  that knows what the reader did — is the next design draft, vol 7
+  first.
+
+### 2026-09-15 · THE LENS — a rig, not more discipline
+
+- **Every framing was math-verified and none had been seen.** 871
+  markers aim- and obstruction-audited to half a degree, and the two
+  Deck screenshots that existed each found a defect in minutes (a
+  directive on a title card; a room the prose had left). The fix is
+  `tools/VnContactSheet.tscn`: it renders `qa/contact_manifest.json`
+  through the SAME nodes the VN uses — Background3D for the rooms,
+  Portrait3D for the cast — one frame per preset × mood (the
+  establish), one per marker the preset owns under the chapter's
+  primary mood, one per hero GLB × expression. 1,559 frames; JPEG at
+  0.82 for rooms, PNG for the transparent portraits.
+- **The manifest is generated, and committed.** `contact_manifest.py`
+  reads the presets' own scene paths (the orphan-tscn lesson), the
+  moods the chapters actually cue under each preset (top two, so a
+  room is seen the way its chapter lights it), and the markers each
+  preset OWNS with the per-preset suffix rule. The Deck run needs no
+  Python.
+- **Frames travel on an orphan branch.** A sheet is a few hundred MB;
+  `contact_push.sh` writes a throwaway index + orphan commit to
+  `qa/contact` and force-pushes it, so the working branch carries
+  nothing and there is no history to bloat. Claude reads them with
+  `git show origin/qa/contact:…`.
+- **What a frame is not.** The SubViewport's texture: room, lights,
+  the locale's own PostProcess. Not THE TRIP, not the box, not the
+  busts — the sheet is the set and the framing, and the window's
+  layers stay the user's screenshots' job.
+- **NEXT:** the first run will find a settle count wrong somewhere;
+  a per-frame sidecar with the camera pose; THE TRIP as an optional
+  second pass.
+
+### 2026-09-12 · ONE PAGE AT A TIME — the box was shrinking the font
+
+Deck read: "some sections have too much text on screen at once and it
+gets too small and cramped. Those may need to be made into multiple."
+
+- **The box was already doing the cramping.** `DialogueBox` keeps its
+  full 34 px body up to 260 visible characters and then AUTO-FITS —
+  steps the font toward half size until the whole passage fits the
+  box. 2,219 narrate / say / think nodes were over 260; the longest,
+  the Judgement's New Orleans paragraph, was 1,566 characters — a
+  17 px wall of type over the picture. The engine's fallback is what
+  the Deck saw; the data was asking it to.
+- **The fix is pages, not a smaller floor.** `page_split.py` packs
+  sentences greedily to 230 characters, breaking a sentence past 300
+  at the em dash / semicolon / comma nearest its middle, then at a
+  conjunction, then at any space (a page turn mid-list reads; a wall
+  does not). 2,155 nodes in 226 files became 3,306 extra pages.
+  Directives stay on the first page (a cut fires once), `voice` stays
+  on the first page, `char` / `expr` / `when_flag` copy to every page.
+- **Node indices are load-bearing.** Choice `goto`, choice
+  `check.pass` / `.fail` and jump `goto` reference node INDICES; every
+  one was re-pointed to the first page of the node it named and the
+  story audit's range checks confirmed them. A save file's node index
+  lands a few lines off inside a split chapter, once.
+- **Splice by span, never re-serialise.** 211 of 313 scene files do
+  not round-trip byte-for-byte through json.dumps. Each node's exact
+  span comes from `json.JSONDecoder.raw_decode`; only those spans are
+  replaced, pages are dumped in the node's own key order and the
+  file's own indent, and the result is parsed before it is written.
+- **Two audits measured in nodes, and a page is not a node.** The
+  inside/out audit's "a window in the last two lines" look-back and
+  the mood audit's three-node opening window both shifted after the
+  split without a word of prose changing. Both now measure in what
+  they mean: four pages, and 450 characters.
+- New gate `page_length_audit.py`: no narrate / say / think page over
+  300 visible characters (the two `[fade]` passages excused). 19,054
+  pages, zero.
+- **A voiced passage now spans pages, and `_advance` stopped the
+  voice on every page.** The recording is the whole passage and
+  lives on the first page; after the split, page two silenced it.
+  `_advance` now keeps the voice playing while the NEXT node is an
+  unvoiced text page — a node with its own voice, anything that is
+  not text, a choice and the scene end still stop it. (Cutting a
+  recording mid-sentence on advance was the worse behaviour anyway.)
+- **The author's blank line is a page.** 93 of the long nodes carried
+  `\n\n` paragraph breaks inside them — the Moon's 1,221-character
+  opening had eight — and the first split packed those paragraphs
+  together by sentence count, losing the rhythm the author had set
+  ("He settled in." was meant to stand alone). Redone from the
+  pre-split state: a blank line inside a node is a HARD page
+  boundary, and a `[fade …]…[/fade]` span is one unit rather than a
+  reason not to split at all. 2,155 nodes → 3,460 extra pages (up
+  from 3,306), the World's finale now nine pages of one line each.
+- **The seeder's units are pages now, and that is right.** HOLD_MAX
+  and the run measure count nodes; a three-page paragraph is three
+  nodes. Re-seeded vols 5–7 in light mode: 450 cues, chapters with a
+  run over 20 PAGES 11 → 4 — cuts land at speaker changes and
+  anchors as before, just measured against what is on screen. If the
+  Deck says it cuts too often, HOLD_MAX is one constant.
+
+
+### 2026-09-12 · PER-PRESET MARKERS — one .tscn, several rooms
+
+- **A marker resolved by name from the whole .tscn does not know
+  which room the scene is in.** salty_tome_interior.tscn is the shop,
+  the kitchenette AND the alley; the diner is the counter and the
+  formal room; lake_palestine is the shore and the dock; vehicle_cab
+  is inside the cab and beside it. The 2026-09-10 pass gave every
+  room ONE person/person_b pair at the first preset's look-point, and
+  VnDirector borrowed it for every cast closeup in the file — so a
+  scene on the dock cut to a face at the shore 15.7 m away, the
+  formal room's `closeup nicola` cut to the counter 23 m away, the
+  World's `closeup child` at the ruins cut 272 m across graustark.
+  **70 wrong-room closeups in 21 chapters**, every one placed by a
+  pass declared done.
+- **The convention: `<marker>__<preset_id>`.** `Background3D.find_
+  shot_marker(name)` tries `name__<loaded preset>` first, then the
+  plain name; `shot_markers_of_type` builds the borrow pool the same
+  way (a marker suffixed for ANOTHER preset is not in this room's
+  pool; one suffixed for THIS preset replaces its plain namesake).
+  Node names cannot carry `@`, hence the double underscore.
+  `marker_author --closeup [-b] --preset <id> <tscn>` authors a pair
+  at that preset's look-point under the suffixed names;
+  `marker_aim_audit` and `shot_marker_audit` strip the suffix before
+  matching subjects and cues.
+- **A face frame must SEE THE ROOM.** The lake dock's first pair
+  passed the fill verdict — exteriors are allowed to be empty — with
+  `distinct 0`: a closeup of open water. The closeup planner now
+  requires ≥ 3 distinct surfaces in frame, the way `--establish-b`
+  requires 4. Five pairs were re-authored under that gate.
+- **12 m is "the same room".** The diner's own named closeups sit
+  8.4–11 m from its preset camera (the booth alcove vs the door) and
+  are right; the formal room's sit 21–23 m away and are not. New gate
+  `wrong_room_audit.py`: every closeup cue resolved the engine's way,
+  fails past 12 m from the preset camera. Inserts are exempt — an
+  insert IS a cut to wherever the object is.
+- **Named closeups in a second room are clones of that room's pair.**
+  `shot_closeup_nicola__dambrosios_formal` is the formal room's
+  person frame under Nicola's name, `dean` its reverse; the ruins'
+  `child` is the ruins' person frame. A named frame is a face at the
+  conversation spot; where the spot is, is the preset's business.
+  (`marker_aim_audit` scopes a suffixed marker's subject search to
+  30 m — graustark's only geometry called "child" is a crawdad-hole
+  figure 272 m from the ruins, and it is not the World's child.)
+
+
+### 2026-09-12 · the model chapter with a 43-line uncut dialogue
+
+Measured the longest uncut run per chapter (text lines between two
+`[shot:]` cues). The kwik stop — a MODEL chapter, 291 lines, 47 cuts —
+had a 43-line dialogue between Lucy, Mark and Jen with no cut at all.
+Three separate causes, each its own lesson:
+
+- **A named closeup is not a pair.** `marker_author --closeup` skipped
+  any room that already had *a* closeup marker, because VnDirector
+  borrows one for a missing one. The kwik stop had `shot_closeup_sam`
+  — one face — and twelve speakers. The person / person_b PAIR is what
+  lets the director alternate sides; a named frame does not. Skip only
+  when the generic frame exists.
+- **A diagnostic vantage is not the room.** The planner took the FIRST
+  preset that referenced the room's scene; the kwik stop's first is
+  `kwik_stop_godseye`, a straight-down camera at `-PI / 2.0`, which
+  failed to parse and returned 0 without a word. Skip `godseye|diag|
+  debug` presets, evaluate expressions with `preset_vantage_audit._ev`,
+  and on a bad preset try the next one rather than giving up.
+- **The seeder's budget went to the front of the file.** "Keep the
+  earliest cuts" spent the whole allowance on act one and never reached
+  the run. Now a candidate that breaks a run of 2 × HOLD_MAX is kept
+  regardless, the rest fill by order; and a hold ON the wide re-cuts to
+  the room's next establish at 2 × HOLD_MAX when the room has one.
+  Result: 15 chapters with a run over 20 lines → 5; the kwik stop 43
+  → 10; 80 cues across vols 5–7, every one resolving.
+- **A `bg` change IS a cut — measure it as one.** The first run table
+  counted only `[shot:]` cues, so "dawn" read as a 25-line run that
+  was really three short holds across three locale changes. The
+  seeder already treats a `bg` as a fresh wide; the measurement now
+  does too. (`SHOT_SEED_TRACE=1` prints every candidate before the
+  budget trim — use it before theorising.)
+- **What was left needed geometry, not cues — and got it.** The
+  courthouse (24 lines of narration on one wide) got a second wide
+  from `marker_author --establish-b`: searched from the far side of
+  the room's look-point, ≥ 90° round it, 3.5–9 m, ≤ 22° down, fill
+  verdict, ≥ 4 distinct surfaces. (`candidates()` only opens its wide
+  rings for a subject size ABOVE 3.0 — at 3.0 exactly the search never
+  left 2.8 m and every room was "stuck".) The dumpster night (Ben ×12
+  / Jesse ×11) and the Pit Stop's four other chapters got the
+  person / person_b pair — the room had three NAMED closeups, all of
+  objects. Chapters with a run over 20 lines: 15 → 1.
+- **The one that remains is a per-preset problem.** The painting
+  (lena ×12 / cale ×9, 23 lines) plays in `salty_tome_alley`, whose
+  markers live in `salty_tome_interior.tscn` beside the shop's and the
+  kitchenette's. A generic pair is placed at the FIRST preset's
+  look-point — the shop — and VnDirector borrows by name from the
+  tscn regardless of preset, so a pair authored there would cut a
+  scene in the alley to a face in the shop. That wants a per-preset
+  pair (`shot_closeup_person@alley`, or a `--preset` on the planner)
+  before the seeder can help — and got it the same day (per-preset
+  markers, below; the alley needed `--relax`, it is 2.8 m across).
+  Chapters with a run over 20 lines: 15 → 0. `vol1_introduction` has
+  no background at all (a monologue over black) and is not a
+  direction gap.
+
+
+### 2026-09-11 · two Deck reads: a directive on screen, and a room the prose had left
+
+- **A directive only fires on a node type the engine hands to
+  `_directed()`.** On any other node it RENDERS. The Magician's title
+  card read "[mood:arcana_warehouse]Chapter I — The Magician" on
+  screen, because `interlude` was not in that list — and putting the
+  mood on the title card is the RIGHT authorial instinct (the grade
+  should land with the card, not on the line after it), so the fix was
+  to make `interlude` a consumer, not to move the cue. `vn_story_audit`
+  now fails on a leading directive in any field the engine does not
+  consume — `sub` and `caption` are the same trap.
+- **The prose says where the camera is. Read it before choosing a
+  vantage.** Chapter I opened on the cathedral INTERIOR and narrated
+  two paragraphs of the building seen from the road: "The warehouse did
+  not stand. The warehouse slumped — a great rusting beast at the
+  industrial edge of Graustark ... Outside, kudzu vines thick as wrists
+  throttled the chain-link fence." The prose then turns inside on its
+  own, one line later ("Inside, the air was thick and still"), which
+  means the fix is A CUT, not a reframe: a new `cathedral_exterior`
+  vantage into the graustark megabuild for the two exterior beats, a
+  `bg` node back to the interior on the word "Inside", and an
+  `[shot:establish]` to open the room. **When narration names a place
+  the current locale cannot show, the answer is usually a second
+  locale, not a different marker inside the first.** Gated:
+  `godot/tools/audit/inside_out_audit.py` reads every narrate line for
+  a strong place opener and compares it with the background's kind;
+  a window in the two lines before makes an exterior opener a VIEW.
+  It found the second one the same hour (the Harmony Creek prelude
+  walking into the Miller kitchen with the street still on screen).
+- **A register is a kind of ROOM as much as a kind of pillar.** See
+  `_PSYCHEDELIC_DESIGN_BIBLE.md` — `[register:domestic]` exists now for
+  a warm chapter inside a cold volume, and locale name is NOT a
+  reliable signal for which chapters want it (the Star is a cottage and
+  is not remotely cozy). Read the chapter.
+
+
+### 2026-08-31 · the full direction pass · vols 1-2, panels, CGs
+
+- **Vols 1-2 are directed end to end now** (they had zero grammar).
+  Working method that held: read the whole scene, seed ONE beat at
+  the line it turns on, mood only where the fiction's clock is
+  unambiguous, and leave comic/texture scenes bare. Vol1's banter
+  suite took three beats across six scenes; that restraint IS the
+  direction.
+- **Vols 3-4 cannot take direction yet**: their scenes have no bg
+  nodes, and every directive parks until a locale loads — seeding
+  them would be silent no-ops. When those volumes grow up they
+  need a locale first, grammar second.
+- **Mood-clock audits generalize.** Sweep every single-mood chapter
+  and read its fiction's own clock: found lunch-at-dusk, a 2 PM
+  dusk, a night warehouse under day_bright, a 4:11 AM wake under
+  morning_bright. The scan is cheap; the misgrade is exactly the
+  kind of wrongness a player feels without naming.
+- **Panels want documents the prose already stares at**: the bill's
+  pencil note, Brandon's three instructions, Diego's letter. On
+  when the text starts reading the document, [panel:off] when a
+  character moves on or the page folds. Content comes from the
+  scene's own words, never invented.
+- **Procedural CG discipline (the Fool's eight):** compose from the
+  ending's prose; check the render VISUALLY before shipping — the
+  precipice door's first draft put two reels and a figure on the
+  door's centerline and produced a perfect accidental cartoon
+  face (pareidolia is the 2D twin of the stump hunt: symmetric
+  circles + a vertical + a horizontal WILL become a face). Offset,
+  rescale to machine-scale, depth-stack.
+- **Stage grammar stays gated**: cast_<spot> markers exist only in
+  the diner, and casting needs character GLBs (gate 2). Don't
+  seed [stage:] outside vol5 ch0 until models land.
+
+### 2026-09-09 · the latter-half arcana pass · cut at the prose anchors
+
+- **User: "real bad shot direction all throughout the latter half of
+  major arcana, just poor."** The density scan said what "poor" was:
+  8–12 cues over 100–137 nodes, holds of fifteen and twenty lines on
+  one frame, dialogue runs with no shot/reverse-shot, and the
+  locales' insert markers (teacup, eviction notice, contract, crow,
+  sinkhole, record player…) authored but never cut to.
+- **`godot/tools/audit/shot_seed.py` cuts the comic by the grammar
+  above using ONLY markers the locale has**: a `say` from a
+  character with a closeup marker on a speaker change (≥ 3 nodes
+  since the last cue); a `narrate` that NAMES an insert's object
+  (marker id words + shot_marker_audit SYNONYMS of ≥ 5 letters —
+  "note" is not a notebook); back to a wide after 6 nodes held on a
+  closeup/insert, rotating establish_b/_c when the locale has them;
+  budget nodes/4; the first eight nodes and any authored [shot:] are
+  never touched; a mid-chapter `bg` swaps the vocabulary (ch11 moves
+  office → design studio). Edits are raw text splices — the JSON is
+  never re-serialized. `--dry` first, always; read the anchors it
+  picks (the teacup line, "It felt mostly like eviction.") before
+  writing.
+- **First run: vol5 ch10–21, +109 cues** (ch12 The Hanged Man's phone
+  call became a proper shot/reverse-shot; ch16 The Tower cuts to the
+  teacup, the eviction notice, the camera; ch17 The Star to the wall,
+  the crow, the sinkhole). vn_story_audit 0 problems, blind cues
+  unchanged at 10. NEXT: the same pass on vols 6–7 tails, then the
+  early arcana (ch1–9) which carry authored grammar and need a lighter
+  hand (raise MIN_GAP, or seed inserts only).
+- **A `bg` mid-chapter swaps the vocabulary even to NOTHING.** El
+  Rancho and Kai's apartment carry no shot markers; a seeder that
+  kept the previous room's inserts cut to phones and packets that
+  are not there. The blind-cue audit caught it in the same run —
+  run it after every seeding, before commit.
+- **A mood is a claim about time and light, and `mood_clock_audit.py`
+  now holds you to it.** Each cue governs until the next; its opening
+  lines are the evidence. Past-tense narration is not the clock (a
+  night chapter says "morning" constantly), a time after "since" is a
+  span, and 4 AM is dark. When a chapter's clock moves, the mood moves
+  with it — the bug is always a mood placed once and never revisited.
+- **A cue must name a thing that is there, and a character by the id
+  the scripts use.** `[shot:closeup douglas]` when every `say` node
+  says `doug` is a blind cue forever — the audit can only skip cast
+  cues whose id appears in some `char` field. When the object truly is
+  not in the room, retarget to the one the line is really about: a
+  knock "at the window" of a cell with no window is a knock on the
+  WALL, and that is the better frame anyway.
+- **A closeup of a PERSON almost never has a marker of its own** —
+  561 such cues across 112 presets. Every room now carries a generic
+  pair (`shot_closeup_person` + `_b`, a bust frame of the conversation
+  spot and its reverse), and VnDirector gives each speaker a SIDE in
+  first-seen order for as long as the locale holds. Hashing the
+  character id onto the pair put two speakers on the same frame half
+  the time; a side each is the film rule. Author a real
+  `shot_closeup_<char>` when a room's cast matters and it takes over.
+- **A room with no markers is a room where every cue is silent.**
+  21 scenes had none; the director's substitution needs at least
+  one same-type marker to have anything to cut to. `marker_author.py`
+  gives a marker-less room its first four inserts (prose-anchored
+  hero objects, positioned by the reframe search, resolved by the
+  gates' matcher). Run it on any NEW locale before its first chapter
+  ships; run the seeder after.
+- **Name a marker so the matcher can read it.** `shot_insert_stormheap`
+  resolves to nothing — the matcher splits CamelCase names into
+  words and matches words. `shot_insert_storm_heap` does. Multi-word
+  cues match the flattened name; single words must equal a part.
+- **Scene JSON is spliced, never re-serialized — and never opened
+  for write in the serializer's expression.** `open(P, "w").write(
+  json.dumps(d, indent=IND))` with an undefined IND truncated ch14 to
+  zero bytes before the NameError surfaced (2026-09-10; git restored
+  it). Build the text first, validate it with json.loads, then write.
+- **A seeded cut is a draft, not direction.** The tool cannot know
+  the line a chapter turns on; it knows where the teacup is named.
+  The Deck read is what decides whether a cut lands; expect to
+  delete a third of them by hand.
+
+### 2026-08-30 · the back-to-front pass · direction density is newest-last
+
+- **User direction: "start from the back and work to the front, as
+  the start of each volume has the most work done already."** The
+  density scan proved it precisely: vol5 ch0 carries stage/panel/
+  beat grammar; the vol6/7 tails had 0-1 beats per 150-260-node
+  chapter and ONE mood held across whole night sequences; vols 1-4
+  had ZERO direction grammar of any kind (they predate it).
+- **A mood is a claim about time and light — audit it against the
+  fiction.** ch23_sleep (five bedrooms, cicadas, midnight) ran
+  under dawn_warm end to end; the 1:15 AM porch vigil too. When
+  one mood serves a whole chapter, check what the chapter's clock
+  says before accepting it.
+- **Seeding beats = find the line the chapter turns on**, not the
+  loudest line: "He dreams of the kitchen." · "I think about her
+  on Saturdays too." · "The face said one word." One or two per
+  chapter; the vocabulary note in the beats section holds.
+- **Two static-audit classes this pass created tools for:** every
+  directive must RESOLVE (vn_story_audit.py, now a suite gate —
+  ten chapters had opened in silence on bgm files that never
+  existed), and index.json is RUNTIME TRUTH (a scene on disk but
+  unindexed is unreachable; a TEST scene indexed is a shipping
+  debug screen — vol5 shipped one after The World for months).
+- **VnSweep.gd traverses the whole book headless** (back to
+  front). Driver gotchas that cost a run each: the input map binds
+  "advance" by PHYSICAL keycode so InputEventKey with only
+  `keycode` never matches (use InputEventAction); a scene ending
+  the flow emits game_ended and must not read as a stall; and
+  never `pkill -f` a pattern contained in your own launch command.
+- **"— End of Demo —" shipped in four volume closers** long after
+  the volumes stopped being demos. Grep for dev-language in
+  player-facing closers when a volume graduates.
+
+### 2026-08-12 · a missing marker was manufacturing "solid color scenes"
+
+- **User: "the cabin scenes in land of milk and honey need much
+  better direction and background art passes. mostly just solid
+  color scenes."** The direction was NOT the problem — those 46
+  chapters carry dozens of closeup/insert cues each. The problem
+  was the FALLBACK: a cue with no matching Marker3D punched the fov
+  to 35 on the same establishing vantage, filling the frame with
+  whatever flat vertex-colored surface sat in the middle of the
+  wide. A new audit (`godot/tools/audit/shot_marker_audit.py`)
+  measured it repo-wide: **453 blind object cues across 79 camera
+  presets.**
+- **Worse, the most-cued insert in vol 7 pointed at nothing.**
+  `[shot:insert bowls]` fires 13× (plus `insert bowl` 8×) on the
+  cabin interior — Olaf's two carved cedar bowls, the volume's
+  central image — and they had never been modeled. Twenty-one
+  inserts zooming an empty table. **Rule: before authoring a cue
+  for an object, confirm the object EXISTS in the builder.** The
+  audit now catches the inverse (marker missing); only reading the
+  builder catches this one.
+- **The fallback is now what a director would do**: borrow a
+  same-type marker from the same locale (chosen deterministically
+  from the cue id, so a given line always frames the same object),
+  and if the locale has no pool at all, HOLD THE WIDE. An honest
+  establishing frame beats a zoom into a wall. `_punch_in()` is
+  retired as a fallback but kept for a future explicit `[shot:push]`.
+- Authoring a **marker pool** (3-4 real inserts) is now the cheapest
+  possible win for any locale: it upgrades every unauthored cue in
+  every chapter that uses it. Coverage went 453 → 64 cues holding
+  the wide by adding pools to five locales.
+
+
+
+### 2026-08-11 · a preset vantage must be checked against BUILDER COORDINATES, not vibes
+
+- **Four chapters (Hermit/Star/Judgement/World) rendered "the same
+  plain brown background" through two independent failures that
+  masked each other**: the Deck's graustark.glb was a month stale
+  (the batch rebuild silently skipped it — check `ls -l` TIMESTAMPS
+  when a rebuild "didn't take"), AND the `graustark_ruins` camera
+  preset stood at the riverfront origin looking west while the ruin
+  quarter is at blender (−12..66, −300..−390) — 350m from every
+  staging mark. The second failure would have survived the rebuild:
+  fixing only the obvious cause (stale GLB) leaves the scene brown
+  and burns another Deck round-trip.
+- **The rule: when authoring or auditing a CAMERA_PRESETS entry,
+  grep the builder for the hero objects the chapter stages on and
+  put their blender coordinates in the preset comment** (the
+  graustark_ruins entry is the model). A vantage that can't name
+  what it's looking at is a vantage nobody verified.
+- **Diagnosis order for "scene renders flat/empty": (1) GLB
+  timestamp on the Deck, (2) preset origin vs builder coordinates
+  of the staging, (3) only then the shot markers.**
+
+### 2026-08-09 · the arcana were well-directed all along — the CAMERA was lying
+
+- **User: "major arcana scenes still need a lot of work, outside the
+  first two. just poorly directed, produced and made." The
+  investigation flipped the verdict: the SCRIPTS are good.** Death
+  uses the rose/chair/empty-chair reveal like a short film; the
+  Lovers hits all six roberts_kitchen markers plus memory_warm on
+  the Polaroid; the Emperor holds its bourbon/card/window grammar.
+  What was broken: (1) the Emperor's locale GLB never existed
+  (riverboat builder crash — fixed), and (2) EVERY closeup/insert
+  cue in every chapter whose locale lacks markers rendered through
+  the punch-in fallback, which DOLLIED the camera 1.2-1.8m forward
+  blind — into walls, into shelving, into the dark interior of
+  whatever stood in front of the preset. Dozens of chapters, every
+  emotional beat, a camera inside a prop.
+- **The punch-in is a ZOOM now (fov 30/24, position fixed) and a
+  wide with no marker restores the preset vantage instead of
+  zooming IN.** A lens can never enter geometry. This one change
+  re-renders every [shot:] cue in the corpus correctly.
+- **Judge direction by reading the scene, not by counting cues.**
+  ch13_death: 9 shots/82 nodes looked sparse in the stats and is
+  perfectly placed. The stats flagged the wrong chapters; reading
+  found the real fault in the renderer.
+- **Remaining production lever for the arcana: the SETS + marker
+  vocabulary.** hospice_room, natalie_apartment, houston_office,
+  the new_orleans rooms — draft-1 template boxes with no authored
+  markers. Their cues (insert rose, insert chair) deserve composed
+  framings: run the landmark-extraction marker pipeline on the
+  arcana locales next, and give the weakest sets a detail pass.
+
+
+### 2026-08-08 · tscn Transform3D is ROW-major · every matrix marker was transposed
+
+- **THE BUG: 49 markers across three sessions serialized the basis
+  column-major; Godot's tscn format is ROW-major.** The stored matrix
+  was the transpose of the intent: mirrored aim, inverted pitch, and
+  a dutch roll. Every matrix-form vn_shot marker ever authored
+  (harmony_terrain and the four shop interiors from the original
+  shot-grammar session, the 8 road setups of pass 1, the 12 interior
+  setups of pass 2) carried it. Fixed by transposing the 9 basis
+  floats in place — stored = intendedᵀ, so the transpose restores the
+  intent exactly.
+- **The proof is structural and worth memorizing: row1 of
+  Ry(yaw)·Rx(pitch) is (0, cos p, −sin p) — the serialized zero sits
+  at FLOAT INDEX 3.** Editor-authored matrices (the classic default
+  light `Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, ...)`, the
+  salty_tome Key) all have f3 = 0. The broken markers had f1 = 0.
+  Correct serialization: `(cy, sy·sp, sy·cp, 0, cp, −sp, −sy, cy·sp,
+  cy·cp, ox, oy, oz)`.
+- **A validation against your own earlier output is not a
+  validation.** The 08-04 lesson claimed the column convention was
+  "validated against harmony_terrain's hand-tuned markers" — but those
+  came from the same generator lineage. The independent referent that
+  broke the loop was an editor-authored matrix. Always test
+  serialization conventions against something the ENGINE wrote.
+- **Orthonormality checks can't catch a transpose** — the transpose
+  of a rotation is a rotation. The checks that do: f3 == 0 (no roll),
+  f4 > 0 (never upside down), and re-deriving forward = −(f2, f5, f8)
+  and confirming it points camera→target (< 0.5°). All three are now
+  in the pass-3 validator and should run on any future marker wave.
+- **The model chapters were immune because they use `position` +
+  `rotation` euler properties, not matrices.** That form has no
+  convention trap and reads better in diffs — prefer it for
+  hand-authored markers; keep matrices only for generator output
+  (where the validator runs).
+
+### 2026-08-08 · pass 4 · the 7-9-use tier + everything goes euler
+
+- **All 81 matrix-form markers converted to `position` + `rotation`
+  euler in place** (pitch = atan2(−f5, f4), yaw = atan2(−f6, f0) from
+  the row-major floats; rotation = Vector3(pitch, yaw, 0), YXZ
+  order). The generator now emits euler directly. There is no longer
+  ANY matrix-form vn_shot marker in the repo — the convention trap
+  from the lesson above cannot recur.
+- **Pass-4 decks (34 markers)**: kwik_stop (B/C only — its
+  model-chapter inserts already existed), missing_link_exterior,
+  grandmother_kitchen_morning, kowalski_kitchen, henderson_kitchen
+  (insert = THE BASEMENT DOOR), caldwell_porch_night (inserts = iced
+  tea + Maya's bike), hans_bakery_back_kitchen, finn_apartment
+  (insert = the packed duffel), board_lords_interior. 22 locales
+  carry decks; 86 authored setups.
+- **A deck is shared by every preset that lives in the scene.**
+  missing_link_exterior.tscn hosts two presets (missing_link_exterior
+  + shuttle_bench); one deck serves both, so design its B/C to read
+  as the LOCATION, not as one preset's reverse. Check
+  Background3D for co-tenant presets before designing a deck.
+- **Hand-rolled early builders are invisible to the landmark
+  extractor** (kwik_stop vendors its own make_box, never touches
+  _props) — the audit records nothing, so collision-checks silently
+  pass. When the extractor returns no boxes, say so in the check
+  output and place cameras from the builder's layout comments
+  instead of trusting the empty result.
+
+### 2026-08-08 · directing pass 3 · the next eight get their decks
+
+- miller_kitchen, cosmic_comics ×2, missing_link_interior, maya/sam
+  bedrooms, school_field_evening, centro_grocery_aisle: 4 setups each
+  (B/C rotation + two inserts), 32 markers, all aimed at
+  builder-extracted landmarks (the loose floorboard, the one-way
+  mirror, the pie case, the scoreboard). 13 locales now carry
+  rotation decks — 52 authored setups total.
+- **Give the inserts to the PLOT objects, not the pretty ones.**
+  maya_bedroom's insert is the loose floorboard cavity;
+  cosmic_comics' is the one-way mirror. When a scene cue says
+  [shot:insert x] the director already falls back gracefully, so an
+  insert marker is only worth authoring where the object carries
+  story weight.
+
+### 2026-08-04 · coverage rotation + the roads get real setups
+
+- **A locale used 37 times through one photograph is not directed.**
+  The usage/coverage table (scene bg refs vs presets) found
+  louisiana_road at 37 uses / 1 angle and cabin_road at 36 / 1 —
+  73 appearances from two frames. Track this ratio; it is the
+  production number that matters.
+- **Coverage rotation**: when a locale authors shot_establish_b/_c
+  (…_e) markers, VnDirector picks ONE per chapter (hash of the
+  scene id set by GameEngine._load_scene). A chapter holds its
+  angle; across a volume the same road is seen from different
+  setups. Zero scene-JSON edits — locales opt in by carrying
+  markers. Variant 0 is always the default view (authored
+  shot_establish, else the preset vantage): alternates extend the
+  deck, never evict the original.
+- **Compute framings from the builder's coordinates, not by eye.**
+  Camera positions/targets in blender frame; yaw = atan2(-dx, dy),
+  pitch = atan2(dz, ground distance); blender→godot origin is
+  (x, z, -y). (CORRECTION 2026-08-08: this pass serialized the basis
+  column-major; tscn is ROW-major — see the lesson above. The
+  framings' intent was right; the serialization was transposed.)
+- **The setups are drafts until screenshotted.** Eight markers
+  authored blind from geometry (verge, long-lens approach, sedan
+  insert, swamp wide; the bend reverse, creekside, mile-marker and
+  creek-stone inserts). The framing MATH is verified; the framing
+  TASTE needs the Deck.
+
+
+
+### 2026-07-22 · choice plates · the turning points get the register
+
+- **Eight choices across vols 5-7 — each one a chapter-grade moment
+  that looked like a debug menu** (stock 13px buttons at the top of a
+  near-opaque 70%x80% slab). Rebuilt ChoiceMenu in the plate register:
+  translucent scrim (the scene stays visible, dimmed, alpha capped
+  0.78), centered column with rule-diamond-rule ornaments, IM Fell
+  italic 22 prompt, centered chrome-less option lines (StyleBoxEmpty at
+  rest, thin gold underline + gold text on hover/focus), skill checks
+  as "· logic 3 ·" annotations. Font floor for options raised to 19
+  while keeping each volume's skin font. Hover tick + select SFX from
+  the shared bank. Public API (setup/present/visible), pad focus,
+  number keys, staggered entrance all preserved.
+- **Options are TEXT, the way the dialogue is.** The chrome-less
+  July-12 philosophy extends to choices: rest state is pure type;
+  interaction state is an underline, not a box.
+
+### 2026-07-22 · the PRODUCER · departments on one clock
+
+User: the project has a director module; it needs a producer to bring
+the departments together and get the work in sync. Built
+`scripts/vn/VnProducer.gd`, owned by GameEngine beside the VnDirector.
+
+- **Director stages shots; producer runs the clock.** Three desyncs
+  existed the moment scene fades were added: the first line typed away
+  UNDER the chapter card (typewriter moment spent before the curtain
+  was up), BGM hard-cut while the picture faded, and the camera
+  released (snap) while the old scene was still visible.
+- **The curtain gate.** `_load_scene` dispatches its first node through
+  `producer.when_curtain_up()`. Across a real transition the node
+  waits; mid-story jumps (choice targets, gotos) never hold the curtain
+  and pass straight through. The veil's own lifecycle holds/raises the
+  curtain — no second state machine.
+- **Audio rides existing machinery.** scene_out_begin = AudioMgr.duck()
+  (music dips with the 0.3s fade); scene_out_black = stop_scene_bgm +
+  director release at full black; reveal_begin = unduck (the NEW
+  scene's bed, requested under duck while the veil was up, rises with
+  the light). The chapter plate sits in hush; music and the first line
+  arrive together as it clears. No new audio paths.
+- **The settle beat.** curtain_up waits 0.25s before flushing the held
+  node — the establishing shot lands as a picture before it becomes a
+  page.
+- **Ordering is what makes one duck flag safe.** Dialogue ducking and
+  transition ducking share AudioMgr's single flag; the curtain gate
+  guarantees no say-node can duck until after reveal_begin's unduck.
+  Sequencing beats flags.
+- LightController is CP-only (appears in zero VN locale scenes) — the
+  producer deliberately does NOT bridge mood→lights; VN mood authority
+  stays VnDirector→MoodCycler. Bridging would have driven nothing.
+- Future departments hook the producer: painted art plates, portrait
+  relighting on mood, per-scene ambience choreography.
+
+### 2026-07-27 · Deck playtest batch · five live bugs from one chapter
+
+- **Speaker-blip ≠ speaker-pop.** show_narrate deliberately clears
+  `_last_speaker` so the visual name-pop re-fires after narration —
+  but the SFX tick was keyed on the same variable, so alternating
+  narration/dialogue beeped constantly ("hearing a beeping through
+  ch0"). Sound now gates on `_last_named_speaker` (survives
+  narration): the tick fires only on genuine character→character
+  handoff. When one variable serves a visual and an audio behavior,
+  split it the moment their reset rules differ.
+- **Panel cards must live UNDER the dialogue z.** The `[panel:]`
+  image band (was z 101, rows 40–480) sat over the text zone; prose
+  is the product — art yields. Now capped 700×300 in a 36–370 band
+  at z 99 with a 0.25s fade-in.
+- **Never mirror composition portraits.** Facing flip (`flip_x`
+  meta) mirrored THE DEMON's ASCII art — baked banner text rendered
+  backwards. Gate at the single read site in CharLayer._process:
+  `kind == "composition"` → flip 1.0. Compositions bake TEXT; text
+  has a correct orientation, facing doesn't.
+- **`as Object` on a freed instance IS the error.** The ch2→3 crash:
+  `_bust_blinkers[i] as Control` threw "Trying to cast a freed
+  object" BEFORE the `is_instance_valid` guard on the next line
+  could run. Validity-check the raw Variant first, cast second —
+  now applied to the blinker list AND the slot table in _process.
+- **A shot directive is a prop contract.** `[shot:insert phone]`
+  fired in the diner for two ch0 scenes but Frasier's phone mesh
+  existed only in the cathedral build (ch1). The insert marker was
+  even aimed at empty formica. When authoring `[shot:insert X]`,
+  grep the locale's build_*.py for X before shipping the line. The
+  diner phone now sits exactly where the existing marker's
+  center-ray meets the counter (ray-trace the marker: pos, pitch,
+  yaw → surface point; place the prop there, zero marker edits).
+
+### 2026-07-22 · presentation wave 1 · the book finally has chapter breaks
+
+- **The scene JSON carried `title` for 177 scenes and nobody displayed
+  it.** GameEngine now presents a ChapterCard (InterludePanel register:
+  ornaments, Cinzel kicker VOLUME N · CHAPTER X, IM Fell title) at every
+  (vol, chapter) boundary — 71 boundaries across vols 5-7 — plus on
+  fresh session start. Data that ships unread is a presentation bug.
+- **Every scene change now breathes.** A fade veil (z UI+40) carries
+  scene→scene: 0.3s to black, build the next scene under it, then the
+  chapter plate or a 0.45s reveal. `_transition_lock` gates
+  GameEngine._input so a click mid-fade cannot advance the story
+  underneath; the ChapterCard handles its own advance and releases the
+  lock in its dismiss callback. Same-frame hard cuts are gone.
+- **The typewriter now reads with the prose.** Punctuation-aware pacing
+  in DialogueBox._process: sentence stops hold 7x the char delay,
+  em-dash/ellipsis 5x, colon/semicolon 4x, comma 2.6x — all scaled off
+  the user's char-delay setting, so faster settings stay faster.
+- **Tween against the writer, not the property.** CharLayer._process
+  writes wrapper.position absolutely every frame (idle bob), so the new
+  portrait entrance rise rides an `entrance_y` meta the bob math
+  composes in — never tween a property something else owns per-frame.
+- **CgPanel fades (0.5s in with a 1.03→1.0 settle-zoom, 0.35s out) and
+  DEBUG_BG_OVERLAY is finally false.** A debug label had been shipping
+  in the corner of every scene.
+- Deck-verify: card typography, fade durations, pacing multipliers, the
+  entrance rise amount — all feel numbers.
+
+
+### 2026-07-13 · v5 · game-wide render fixes + the ~220-scene direction sweep
+
+A long playtest surfaced three CLASSES of bug that read as "black"
+or "flat/unreal," plus a full mood-direction sweep of vol5/6/7.
+
+- **"Black scene" almost always = the mood, not a missing GLB.**
+  MoodCycler booted to `current_index` = the edges-only `linework`
+  mood; any scene without an explicit `[mood:]` AND a locale with an
+  empty `default_style_pack` (69 of 80 shipped empty) rendered as a
+  wireframe on black. Fix: boot to a CLEAN grade (`raw`). Rule: a
+  no-direction scene must fall back to a color grade, never an
+  edge/ascii mood. (MoodCycler.gd `_ready`.)
+- **"Flat / no geometry / just a fill + character" = the camera is
+  aimed OUT of the room.** 48 CAMERA_PRESETS shipped a placeholder
+  camera — origin `(0, 2.3, +0.5)` (or a `-0.5` variant) yawed 180°,
+  i.e. standing at/behind the door wall facing +Z into the void,
+  while interior rooms sit at NEGATIVE godot Z (door/S wall at z=0,
+  room extends to z=−ROOM_D). The character (a Portrait3D overlay)
+  still drew, so it read as "flat fill + person." Fix + method for a
+  real establishing camera from geometry:
+  - Read the build script for ROOM_W/ROOM_D + the hero prop; convert
+    blender→godot `(bx, bz, −by)`.
+  - Camera INSIDE the room, eye height (godot y 1.55–1.8; ~2.0 for
+    big retail/venue rooms), aimed on a 3/4 DIAGONAL at the hero prop
+    (bar/bed/desk/counter) — head-on wall stares read flat.
+  - `yaw = atan2(cam_x − target_x, cam_z − target_z)` (Godot −Z
+    forward). VERIFY the sign against a known-good preset
+    (roberts_kitchen, new_orleans_bar) before trusting it.
+  - Pitch −0.04…−0.12, fov 50–66. Keep the camera WITHIN the walls.
+  - Outdoor sets (porches, road, field, the +Z riverboat/cathedral)
+    do NOT follow the −Z convention — read each one's real geometry
+    sign; some legitimately keep yaw 180 (riverboat helm faces the
+    +Z desk; louisiana_road looks down the N–S road).
+- **"Wireframe nightmare" = a neon-1.0 mood used as direction.** Any
+  MOOD with `neon` 1.0 runs the neon-edge shader (outlines every
+  edge). `noir`, `bar_pendant_amber`, `chillwave`, `lithograph`,
+  `ink_*`, `sunset`, `blueprint*`, `cel_shaded`, `linework*`,
+  `substrate*`, `ice`, `debug_purple`, `anime_motion`, and ascii
+  moods are ALL banned as scene direction — AND so is any STYLE_PACK
+  that resolves to one (`bungalow_late`→`noir` bit us). Author only
+  from the neon-0/ascii-0 grade set (raw, day_bright, morning_bright,
+  dawn_warm, dusk, night, lunch, studio, macro_haze, dream_blur,
+  candlelight_low, kitchen_practical, fluorescent_corridor,
+  tv_glow_blue, silent_film_*, liminal_interior, rain_interior, and
+  the rebuilt subtle arcana/arcana_cool/arcana_warm). Mechanical
+  check: `[mood:X]` is safe iff MOODS[X] (or its pack's mood) has
+  neon<1 AND ascii<0.5. Full list in `_SHADER_VISUALS_PLAYBOOK.md`.
+- **Warm-dim beats: use `candlelight_low` (a MOOD), never
+  `memory_warm` / `bar_pendant_amber` (STYLE_PACKs).** The packs swap
+  in the `candlelight` LIGHTING preset (dir_mult 0.15) which BLACKS
+  OUT dim sets. `candlelight_low` only grades colour — no Light3D
+  change, no black.
+- **Direction discipline the sweep converged on:** one established
+  base mood on the FIRST text node; only add another `[mood:]` on a
+  line that ALSO cuts the camera (`[shot:insert]`/`[shot:closeup]`)
+  AND when the grade genuinely changes; plain narration carries NO
+  mood (it inherits). ~2–6 mood tokens per chapter, not one per
+  click. Shared locales must differ by time-of-day/beat (e.g. one
+  apartment across 9 scenes; graustark across Hermit/Judgement/
+  World/Star). Text time-stamps ("3:47 AM", "Sunday morning") are
+  the truth for the grade, not the parent guess.
+
+### 2026-07-11 · v0 · grammar + director core
+
+- **A comic, not a film.** The user's brief: "almost a 3D comic
+  moving between close-ups, establishing shots, insert shots and
+  prop/info/panels." Cuts are the default; that single decision
+  removes all camera-path authoring and makes every shot an
+  editor-placed Marker3D.
+- **Framing lives in the editor, not in code.** Markers carry the
+  whole shot. Code only cuts, drifts, letterboxes, restores.
+
+### 2026-07-11 · v1 · director built + Kwik Stop pilot
+
+- **Markers in .tscn are just position + rotation lines.** No
+  hand-computed Transform3D basis: `position = Vector3(...)` and
+  `rotation = Vector3(pitch, yaw, 0)` are valid tscn properties
+  and read like a shot list. Yaw cheat-sheet for locale space
+  (Blender→Godot: gx=bx, gy=bz, gz=-by): look WEST(-X) = +π/2,
+  EAST(+X) = -π/2, SOUTH(+Z, toward the y=0 wall) = π.
+- **Establish-with-no-marker must restore the preset.** The
+  Background3D CAMERA_PRESETS vantage IS the authored wide; the
+  director treats it as the implicit shot_establish so directing
+  can roll out scene-by-scene with zero locale edits.
+- **Deferred locale loads race the first directive.** GameEngine
+  defers `load_location`; a `[shot:]` on the scene's first line
+  lands before the locale instance exists. The director parks the
+  spec and retries per-frame (60-frame cap) instead of dropping it.
+- **The letterbox must not be a CanvasLayer.** F4's clean-screen
+  sweep hides every CanvasLayer; the comic crop is part of the
+  PICTURE, not HUD. Plain ColorRects in GameEngine's control tree
+  at z 95 (under portraits/dialog at z 100).
+- **Hold the closeup across the exchange.** In the pilot scene the
+  camera cuts to Jen once at "Diego come by today?" and stays
+  through Sam's answers — the no-ping-pong rule immediately felt
+  right in markup; re-cutting per speaker read as noise.
+
+### 2026-07-11 · v2 · full-catalog sweep — every 3d scene directed
+
+- **The whole VN is directed.** All 194 scenes with 3D backgrounds
+  across vols 5-7 carry direction: vol5 26 scenes/264 shots, vol6
+  96/714, vol7 72/554 — 1532 directives total, ~2.5 drifts per
+  scene (the dread budget held). Scenes with 2D backgrounds have
+  no camera and were correctly left untouched.
+- **Marker-free punch-in unlocked the sweep.** closeup/insert with
+  no authored Marker3D now cut to a punch derived from the locale's
+  CAMERA_PRESETS vantage (forward 1.2/1.8m, FOV 44/34, always from
+  the PRESET so repeats can't compound into a wall). Direction no
+  longer waits on hand-placed markers; markers refine framing when
+  a locale earns them. Only kwik_stop has real markers so far.
+- **Direct from a condensed dump, tag by node index.** Workflow
+  that held for ~135 hand-directed scenes: `peek.py` prints
+  `idx type speaker first-120-chars` per text node plus bg/choice
+  markers; decide the shot list from that; `tag.py file idx:spec`
+  prefixes the text and validates node type + grammar + JSON in
+  one shot. Index-tagging beats prefix-matching (no quoting bugs);
+  the validator caught the one mis-aimed tag (a `show` node) before
+  it could write.
+- **Montage pages break the density budget on purpose.** Ensemble
+  scenes (vol5 Judgement, vol6 prelude/ch23) read as one panel per
+  character — 13-16 cuts is correct there where 12 would be too
+  many in a two-hander. The budget is per-beat, not per-node-count.
+- **Repeat-insert = motif.** Cutting back to the same prop id
+  (Devil's microwave reflection, Strength's bar TV, the bowls at
+  the cabin) builds a refrain across a scene; the second cut lands
+  differently because the first one taught the reader the image.
+
+### 2026-07-11 · v3 · set audit + cast staging + per-scene looks (ch0 pilot)
+
+- **The user's brief escalated from framing to set-truth.** "Understand
+  what is in the scene, where objects go, where character models go,
+  what props need to be there." The answer is an AUDIT loop per
+  chapter: read the prose → read the locale build script (the GLB's
+  source of truth — locale GLBs aren't in the repo) → place cast
+  anchors + shot markers at REAL prop coordinates → retag the scene.
+- **build_*.py is the coordinate oracle.** The Fool's diner props all
+  had authored Blender coords (booth 6 by=+3.75, register x=-3.6,
+  clock north wall, jukebox (-10.5,+5), mug (-1.15,-3.68)); markers
+  are placed by conversion (gz=-by), not by eyeballing renders.
+- **Five of seven hero GLBs were lying on their backs.** The character
+  uploads are Z-up exports; only john/frasier are Y-up. Nobody noticed
+  because they'd only ever been used by Portrait3D. CAST_MODEL_ALIGN
+  fixes them at stage time. Rule: bbox-audit any new GLB before
+  trusting it (python struct read of the glb JSON chunk, 10 lines).
+- **The establish should contain the cast.** The diner wide moved from
+  John's POV (behind the counter) to a third-person NE dining-floor
+  vantage once [stage:] existed — a comic panel SHOWS the protagonist
+  in the room. POV vantages belong to the gauntlet's FP mode, not the
+  VN's establish.
+- **[mood:] rides the existing STYLE_PACKS.** Lighting + post-process
+  per scene is one directive (apply_style_or_mood); no new lighting
+  machinery. Locale default_style_pack still sets the opening look;
+  [mood:] is for mid-chapter shifts (dawn arriving, a threat beat).
+- **Floor heights come from the build script, never a vantage table.**
+  The riverboat's decks are 0.00/2.50/5.10 (RiverboatGauntletHost
+  constants match the builder) but the gauntlet's standalone vantage
+  table carried stale 3.2/0.0/-2.8 — every camera keyed to it sat in
+  the inter-deck void (Dante's black chapter). Both fixed; when a
+  chapter renders black, suspect (1) requires_glb path vs builder
+  OUTPUT_DIR, (2) camera below/inside the floor slab.
+- **A scene's establish must be in the chapter's ROOM, not just its
+  building.** The Empress works Friday-night service in the formal
+  annex + vestibule; the diner_interior preset frames the lunch
+  counter. One building, two presets (diner_interior /
+  dambrosios_formal) — same .tscn, different camera + different
+  cast anchors.
+
+### 2026-07-11 · v4 · first staged playtest — five lessons from live frames
+
+- **survey.py is the layout oracle.** Scratchpad tool: runs any
+  build_*.py with a stubbed bpy, captures every mesh AABB, prints a
+  top-down occupancy map (--map --crop) or spatial queries (--box,
+  --find). It caught: the bungalow establish staring into the
+  storage closet's south wall from 0.5m, cast_living placing Elicia
+  INSIDE the closet, two shot markers embedded in walls, and the
+  cathedral chair semicircle. Never place a marker without a survey.
+- **Release an authored insert within ~2 nodes.** The marker-free
+  punch-ins were mild; real markers pitch down 0.5 rad at a counter
+  top, and holding one through a dialogue exchange reads as "why is
+  this focused down here." Rule: after [shot:insert x], the next
+  beat that isn't ABOUT the prop gets [shot:establish] (or a
+  closeup).
+- **Edge-only moods render an establish as black.** linework /
+  substrate_press show silhouette edges only — great as strata,
+  fatal as a chapter's default look. VN chapters get legible packs:
+  warehouse_nave + bungalow_packing (naturalistic mood + the
+  practical rig). The diner's raw+midnight is the reference recipe.
+- **Portraits flank when the bg is 3D.** The center slot (x 490,
+  300px wide) parks a card exactly over what the camera is framing.
+  CharLayer.bg_is_3d (set by GameEngine on every bg change) remaps
+  "center" to a free corner slot; flat 2D bgs keep center.
+- **Stale GLBs lie.** The tscn markers ship by git pull; the GLBs
+  do NOT (Deck-built artifacts). A shot aimed with current
+  build-script coordinates against a months-old GLB frames the OLD
+  building (the diner "wall" report). After any marker pass tell
+  the user which builders to re-run.
+
+## TEMPLATE — new lesson entry
+
+```
+### YYYY-MM-DD · short session title
+
+- **Punchy lesson, present tense.** Two-to-four sentences.
+- **Next lesson.** Same shape.
+```
+
+### 2026-07-28 · reading furniture · the backlog + photo mode
+
+- **A VN without a backlog loses lines forever.** DialogueBox now
+  records every say/think/narrate (cap 300); H or wheel-up opens
+  the overlay — speaker names in their portrait accents, thoughts
+  italicized, opened at the freshest line, wheel-down past the
+  bottom rolls back to the story. The overlay joins
+  `vn_input_blocker` so reading history can never advance the
+  story underneath.
+- **Photo mode is F6, and it is deliberately NOT F4.** F4 hides
+  HUD; F6 composes: dialogue + HUD + choices off, cinematic bars
+  on, cursor gone, and every other input swallowed so framing a
+  shot can't advance the page. The bars intentionally bypass the
+  F4 sweep — in photo mode the bars ARE the picture.
+- Verified-non-gaps this pass: portrait exits already fade with an
+  ASCII ghost; letterbox grammar is already correct (bars on tight
+  shots, clear on establishes) — the roadmap's "letterbox on
+  establish~" idea is superseded by that reading.
+
+### 2026-07-28 · the chapter card gets a sheet · endpaper plates
+
+- **The most-seen page deserved more than a black field.** 71
+  chapter boundaries across vols 5-7 rendered ornaments + type on
+  flat near-black. Now each volume has a dyed ENDPAPER behind the
+  type — laid paper (wire lines + chain lines), a marbler's comb
+  raked in the volume's own ink, sparse foxing, and a deckle
+  vignette. Vol 5 warm brass, vol 6 slate blue, vol 7 deep green;
+  three variants per volume keyed off chapter number so
+  consecutive cards never repeat the sheet.
+- **Procedural texture beats painted illustration for backdrops
+  behind type.** Same lesson as the gauntlet floor plates: art
+  with no depicted SUBJECT can't misalign, can't date, and can't
+  fight the words. Reserve the painted-art gate for art that is
+  the subject.
+- **Two render bugs worth remembering:** ellipse OUTLINES at
+  increasing alpha draw RINGS, not a radial gradient (build the
+  falloff as a real distance ramp at low res and scale it up);
+  and per-channel color jitter reads as rainbow noise — jitter
+  LUMINANCE with one shared delta so a material stays one
+  substance.
+- The plate fades in over 1.0s against the type's 0.7s so the page
+  reads as laid down, not switched on.
+
+### 2026-07-28 · the dialogue box is SILENT on advance (hard rule)
+
+- **A per-line tick cannot be saved by gating it.** A speaker-change
+  blip was added, then gated to genuine character→character handoffs
+  after the first "beeping as I progress" report — and was reported
+  again as "super annoying." The reason is structural: in
+  back-and-forth dialogue EVERY line IS a speaker change, so any
+  handoff-gated sound fires on nearly every advance. There is no
+  gate that fixes this; the sound itself was the mistake.
+- **The handoff is carried visually and that is enough** — the
+  nameplate pops from 1.14 scale and the accent underline wipes in
+  from the left. That was always the design intent; the tick was
+  redundant reinforcement.
+- The rule now lives as a comment block at the top of DialogueBox so
+  a later pass doesn't helpfully re-add it. Sound in the VN belongs
+  to BEATS (authored, a few per chapter) and to scene `sfx` nodes —
+  never to the act of turning a page.
+
+### 2026-09-07 · the verb coin (SCUMM grammar, game grammar row 3)
+
+- **A verb coin is a choice that comes back.** `{"t":"choice",
+  "style":"verb_coin","hotspot":"Per's box","opts":[...]}` — each verb
+  option sets a flag and hides itself with `hide_if_flag`; its branch
+  (a narrate or two) ends in `{"t":"jump","goto":<coin index>}` so the
+  coin re-presents with the verbs left; the last option is the exit.
+  Author the block as a contiguous run right after the beat that
+  places the object, and check the chapter has no other `goto`
+  indices before inserting (index shift).
+- **Verbs are two words, caps, no numbers.** LOOK AT · ASK PER ·
+  LEAVE IT. The hotspot line names the object in small caps. The
+  branch text is the zine-length observation, not a paragraph.

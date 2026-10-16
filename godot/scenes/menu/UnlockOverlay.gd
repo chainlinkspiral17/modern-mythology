@@ -98,7 +98,7 @@ func _build(data: Dictionary) -> void:
 	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		tag.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	tag.add_theme_font_size_override("font_size", 10)
+	tag.add_theme_font_size_override("font_size", 12)
 	tag.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
 	vbox.add_child(tag)
 
@@ -108,7 +108,7 @@ func _build(data: Dictionary) -> void:
 	cat_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		cat_lbl.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	cat_lbl.add_theme_font_size_override("font_size", 9)
+	cat_lbl.add_theme_font_size_override("font_size", 12)
 	cat_lbl.add_theme_color_override("font_color", C_DIM)
 	vbox.add_child(cat_lbl)
 

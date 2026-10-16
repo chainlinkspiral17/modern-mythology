@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "Tem woke at three forty-eight.",
+      "text": "[trip:1.2][mood:candlelight_low]Tem woke at three forty-eight.",
       "t": "narrate"
     },
     {
@@ -41,11 +41,15 @@
       "t": "narrate"
     },
     {
-      "text": "She had been the last to bed — Marina at ten in the loft, Cale and Per in the chairs by the stove at ten-thirty, Finn on the floor by the south window at eleven, Kai on the daybed at eleven-fifteen, Lena beside her in the bedroom at eleven-twenty. Tem had stayed at the table with the three bowls until twelve-twenty.",
+      "text": "[shot:insert bowl]She had been the last to bed — Marina at ten in the loft, Cale and Per in the chairs by the stove at ten-thirty, Finn on the floor by the south window at eleven, Kai on the daybed at eleven-fifteen, Lena beside her in the bedroom at eleven-twenty.",
       "t": "narrate"
     },
     {
-      "text": "What she had been watching at midnight: the crow on Marit's bowl had turned its head all the way to the right and was looking at a point outside the bowl's spiral — looking at the substrate-bowl beside it.",
+      "text": "Tem had stayed at the table with the three bowls until twelve-twenty.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert bowls~]What she had been watching at midnight: the crow on Marit's bowl had turned its head all the way to the right and was looking at a point outside the bowl's spiral — looking at the substrate-bowl beside it.",
       "t": "narrate"
     },
     {
@@ -57,7 +61,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had gone to bed. She had slept three hours and forty-two minutes.",
+      "text": "[shot:establish]She had gone to bed. She had slept three hours and forty-two minutes.",
       "t": "narrate"
     },
     {
@@ -65,7 +69,11 @@
       "t": "narrate"
     },
     {
-      "text": "The cabin at three forty-eight on the last Sunday morning of August in 2052 was the quiet of a cabin holding six sleepers and three bowls and the rain that had been coming down since Wednesday and had not, in five days, stopped. The rain on the cedar roof was the rain.",
+      "text": "The cabin at three forty-eight on the last Sunday morning of August in 2052 was the quiet of a cabin holding six sleepers and three bowls and the rain that had been coming down since Wednesday and had not, in five days, stopped.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain on the cedar roof was the rain.",
       "t": "narrate"
     },
     {
@@ -85,11 +93,11 @@
       "t": "narrate"
     },
     {
-      "text": "She went to the table.",
+      "text": "[shot:insert table]She went to the table.",
       "t": "narrate"
     },
     {
-      "text": "The three bowls in the dim of the kerosene lamp she lit were where she had left them. The crow on Marit's bowl had moved another small turn. The young woman on the substrate-bowl had walked another inch.",
+      "text": "[shot:insert bowls]The three bowls in the dim of the kerosene lamp she lit were where she had left them. The crow on Marit's bowl had moved another small turn. The young woman on the substrate-bowl had walked another inch.",
       "t": "narrate"
     },
     {
@@ -102,7 +110,7 @@
     },
     {
       "char": "tem",
-      "text": "Today.",
+      "text": "[shot:closeup tem]Today.",
       "t": "say"
     },
     {
@@ -110,7 +118,7 @@
       "t": "narrate"
     },
     {
-      "text": "She made coffee.",
+      "text": "[mood:dawn_warm][shot:establish]She made coffee.",
       "t": "narrate"
     },
     {
@@ -142,7 +150,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn rolled off the floor at five twenty-two and went to the south window to look at his crow on Kai's truck.",
+      "text": "[shot:insert window]Finn rolled off the floor at five twenty-two and went to the south window to look at his crow on Kai's truck.",
       "t": "narrate"
     },
     {
@@ -171,7 +179,7 @@
     },
     {
       "char": "finn",
-      "text": "The crow has been on Kai's truck since I left her there last night.",
+      "text": "[shot:closeup person]The crow has been on Kai's truck since I left her there last night.",
       "t": "say"
     },
     {
@@ -198,6 +206,10 @@
       "expr": "neutral",
       "pos": "right",
       "t": "show"
+    },
+    {
+      "src": "3d:cabin_road",
+      "t": "bg"
     },
     {
       "text": "They left the cabin at five thirty-five.",
@@ -232,7 +244,7 @@
     },
     {
       "char": "tem",
-      "text": "Marina. I am — I am going to ask you to do a thing at the bakery.",
+      "text": "[shot:closeup tem]Marina. I am — I am going to ask you to do a thing at the bakery.",
       "t": "say"
     },
     {
@@ -257,6 +269,10 @@
     {
       "text": "The road went down through the alders. The Sitka stand opened. The coast highway took them in. At ten to six they were at Hemlock.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_interior",
+      "t": "bg"
     },
     {
       "scene": "vol7_ch17_bakery",

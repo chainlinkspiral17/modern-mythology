@@ -1,0 +1,187 @@
+{
+  "id": "salmonberry_ending_keeper",
+  "notes": "THE KEEPER \u00b7 the book of the coast, near full \u2014 birds, a tide line, a pressed berry.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#23282a",
+    "#c8cec4",
+    "#3b5a6b",
+    "#b8a882",
+    "#33452f",
+    "#9c5a3a",
+    "#d8b048",
+    "#eef0ec",
+    "#caa25a",
+    "#e8c060",
+    "#6c7f8a",
+    "#d98a9a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 2
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        0,
+        90
+      ],
+      "x_range": [
+        0,
+        160
+      ],
+      "stops": [
+        10,
+        2
+      ]
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        26,
+        100,
+        44
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        78,
+        26,
+        4,
+        44
+      ],
+      "color": 3
+    },
+    {
+      "op": "streak",
+      "from": [
+        47,
+        40
+      ],
+      "to": [
+        50,
+        38
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        50,
+        38
+      ],
+      "to": [
+        53,
+        40
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        36,
+        58
+      ],
+      "to": [
+        74,
+        54
+      ],
+      "color": 10,
+      "width": 1.0,
+      "strength": 0.8,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        90,
+        44
+      ],
+      "r": 1,
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        96,
+        44
+      ],
+      "r": 1,
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        102,
+        44
+      ],
+      "r": 1,
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        108,
+        44
+      ],
+      "r": 1,
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        114,
+        44
+      ],
+      "r": 1,
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        120,
+        44
+      ],
+      "r": 1,
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        104,
+        54
+      ],
+      "r": 2,
+      "color": 11
+    },
+    {
+      "op": "disk",
+      "xy": [
+        110,
+        52
+      ],
+      "r": 2,
+      "color": 11
+    },
+    {
+      "op": "text",
+      "xy": [
+        50,
+        80
+      ],
+      "s": "THE KEEPER",
+      "color": 7
+    }
+  ]
+}

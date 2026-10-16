@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Meshy Studio</title>
+<style>
+  :root{
+    --bg:#0d121c; --panel:#161c2a; --panel2:#1f2638; --border:#2d3548;
+    --accent:#c8a268; --accent-dim:#6d5c3e; --text:#d8d4c8; --text-dim:#7c8398;
+    --good:#7cffb0; --warn:#ffb060; --bad:#ff6464;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.5 ui-sans-serif,-apple-system,BlinkMacSystemFont,sans-serif;height:100vh}
+  header{background:var(--panel);border-bottom:1px solid var(--border);
+    padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  header h1{margin:0;font:600 16px/1.2 ui-serif,Georgia,serif;color:var(--accent)}
+  header .sub{color:var(--text-dim);font-size:12px}
+  main{display:grid;grid-template-columns:minmax(360px,1fr) minmax(320px,1fr);
+    gap:16px;padding:16px;align-items:start}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px}
+  .card h2{margin:0 0 12px;font:600 13px/1.2 ui-serif,Georgia,serif;color:var(--accent);
+    text-transform:uppercase;letter-spacing:.06em}
+  label{display:block;font-size:12px;color:var(--text-dim);margin:10px 0 3px}
+  input[type=text],input[type=number],select{width:100%;box-sizing:border-box;
+    background:var(--panel2);border:1px solid var(--border);color:var(--text);
+    border-radius:5px;padding:7px 9px;font:13px ui-sans-serif}
+  .row{display:flex;gap:10px}.row>*{flex:1}
+  .check{display:flex;align-items:center;gap:8px;margin-top:12px}
+  .check input{width:auto}
+  button{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+    border-radius:6px;padding:8px 14px;font:600 13px ui-sans-serif;cursor:pointer}
+  button:hover{border-color:var(--accent-dim)}
+  button.primary{background:var(--accent-dim);border-color:var(--accent);color:#fff}
+  button.tiny{padding:3px 8px;font-size:11px}
+  .btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .thumb{margin-top:8px;max-width:100%;max-height:150px;border:1px solid var(--border);
+    border-radius:6px;display:none}
+  .job{background:var(--panel2);border:1px solid var(--border);border-radius:6px;
+    padding:9px 11px;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+  .job.sel{border-color:var(--accent)}
+  .job .meta{flex:1;min-width:0}
+  .job .t{font-weight:600}
+  .job .d{font-size:11px;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .job .ops{display:flex;gap:4px}
+  .muted{color:var(--text-dim);font-size:12px}
+  code{background:var(--panel2);padding:1px 5px;border-radius:4px;font-size:12px}
+  .hint{font-size:11px;color:var(--text-dim);margin-top:4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Meshy Studio</h1>
+  <span class="sub">image → low-poly untextured hero GLB · builds a queue for
+    <code>meshy_render.py</code></span>
+</header>
+<main>
+  <!-- ── editor ── -->
+  <section class="card">
+    <h2 id="editorTitle">New job</h2>
+    <div class="row">
+      <div><label>tag (groups under assets/3d/meshy/&lt;tag&gt;/)</label>
+        <input type="text" id="tag" value="hero"></div>
+      <div><label>slug (output filename)</label>
+        <input type="text" id="slug" placeholder="riverboat_wheelhouse"></div>
+    </div>
+
+    <label>reference image · repo-relative path (recommended)</label>
+    <input type="text" id="image" placeholder="godot/tools/meshy_refs/boat.png">
+    <div class="hint">Keeps the queue JSON small. The runner resolves it at submit time.</div>
+
+    <label>…or pick a file to embed as a data URI</label>
+    <input type="file" id="file" accept="image/png,image/jpeg">
+    <img id="thumb" class="thumb" alt="">
+    <div class="hint">Embeds into <code>image_url</code>. Handy for one-offs; bloats the JSON.</div>
+
+    <div class="row">
+      <div><label>ai_model (T2 model id)</label>
+        <input type="text" id="ai_model" value="meshy-5"></div>
+      <div><label>target_polycount</label>
+        <input type="number" id="poly" value="8000" min="100" step="500"></div>
+    </div>
+    <div class="row">
+      <div><label>topology</label>
+        <select id="topology"><option>triangle</option><option>quad</option></select></div>
+      <div><label>symmetry_mode</label>
+        <select id="symmetry"><option>auto</option><option>on</option><option>off</option></select></div>
+    </div>
+    <div class="check"><input type="checkbox" id="should_texture">
+      <label style="margin:0">should_texture (leave OFF for the vertex-color pipeline)</label></div>
+
+    <div class="btns">
+      <button class="primary" id="addBtn">Add job</button>
+      <button id="clearFormBtn">Clear form</button>
+    </div>
+  </section>
+
+  <!-- ── queue ── -->
+  <section class="card">
+    <h2>Queue · <span id="count">0</span></h2>
+    <div id="list"><p class="muted">no jobs yet</p></div>
+    <div class="btns">
+      <button class="primary" id="exportBtn">Export queue JSON</button>
+      <button id="importBtn">Import…</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none">
+      <button id="clearAllBtn">Clear all</button>
+    </div>
+    <p class="hint">Export → save as <code>godot/tools/meshy_queue.json</code>, then:
+      <code>python3 godot/tools/meshy_render.py godot/tools/meshy_queue.json --dry-run</code></p>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const LS = 'mm_meshy_queue';
+let queue = [];
+let editIdx = -1;      // -1 = adding new
+let pendingDataUri = ''; // from file picker
+
+try { queue = JSON.parse(localStorage.getItem(LS)) || []; } catch(e) { queue = []; }
+
+function slugify(s){ return (s||'').trim().toLowerCase().replace(/\s+/g,'_')
+  .replace(/[^a-z0-9._-]/g,'').slice(0,80); }
+
+function readForm(){
+  const job = {
+    tag: $('tag').value.trim() || 'hero',
+    slug: slugify($('slug').value) || 'untitled',
+    params: {
+      ai_model: $('ai_model').value.trim(),
+      should_texture: $('should_texture').checked,
+      target_polycount: parseInt($('poly').value,10) || 8000,
+      topology: $('topology').value,
+      symmetry_mode: $('symmetry').value,
+    }
+  };
+  if (!job.params.ai_model) delete job.params.ai_model;
+  const path = $('image').value.trim();
+  if (path) job.image = path;
+  else if (pendingDataUri) job.image_url = pendingDataUri;
+  return job;
+}
+
+function loadForm(job){
+  $('tag').value = job.tag || 'hero';
+  $('slug').value = job.slug || '';
+  $('image').value = job.image || '';
+  pendingDataUri = job.image_url && job.image_url.startsWith('data:') ? job.image_url : '';
+  const p = job.params || {};
+  $('ai_model').value = p.ai_model || '';
+  $('poly').value = p.target_polycount || 8000;
+  $('topology').value = p.topology || 'triangle';
+  $('symmetry').value = p.symmetry_mode || 'auto';
+  $('should_texture').checked = !!p.should_texture;
+  $('thumb').style.display = pendingDataUri ? 'block' : 'none';
+  if (pendingDataUri) $('thumb').src = pendingDataUri;
+}
+
+function clearForm(){
+  editIdx = -1; pendingDataUri = '';
+  $('editorTitle').textContent = 'New job';
+  $('addBtn').textContent = 'Add job';
+  ['slug','image','ai_model'].forEach(id=>$(id).value = id==='ai_model'?'meshy-5':'');
+  $('tag').value='hero'; $('poly').value=8000; $('topology').value='triangle';
+  $('symmetry').value='auto'; $('should_texture').checked=false;
+  $('file').value=''; $('thumb').style.display='none';
+}
+
+function save(){ localStorage.setItem(LS, JSON.stringify(queue)); render(); }
+
+function render(){
+  $('count').textContent = queue.length;
+  const list = $('list');
+  if (!queue.length){ list.innerHTML = '<p class="muted">no jobs yet</p>'; return; }
+  list.innerHTML = '';
+  queue.forEach((job,i)=>{
+    const p = job.params||{};
+    const src = job.image ? job.image : (job.image_url ? '(embedded image)' : '(no image!)');
+    const el = document.createElement('div');
+    el.className = 'job' + (i===editIdx?' sel':'');
+    el.innerHTML = `<div class="meta">
+        <div class="t">${job.tag}/${job.slug}</div>
+        <div class="d">${src} · ${p.ai_model||'(acct default)'} · poly ${p.target_polycount} · ${p.should_texture?'textured':'untextured'}</div>
+      </div>
+      <div class="ops">
+        <button class="tiny" data-up="${i}">↑</button>
+        <button class="tiny" data-dn="${i}">↓</button>
+        <button class="tiny" data-ed="${i}">edit</button>
+        <button class="tiny" data-rm="${i}">✕</button>
+      </div>`;
+    list.appendChild(el);
+  });
+  list.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{queue.splice(+b.dataset.rm,1);if(editIdx>=queue.length)clearForm();save();});
+  list.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{editIdx=+b.dataset.ed;loadForm(queue[editIdx]);$('editorTitle').textContent='Editing '+queue[editIdx].slug;$('addBtn').textContent='Update job';render();});
+  list.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>{const i=+b.dataset.up;if(i>0){[queue[i-1],queue[i]]=[queue[i],queue[i-1]];save();}});
+  list.querySelectorAll('[data-dn]').forEach(b=>b.onclick=()=>{const i=+b.dataset.dn;if(i<queue.length-1){[queue[i+1],queue[i]]=[queue[i],queue[i+1]];save();}});
+}
+
+$('file').onchange = e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{ pendingDataUri = r.result; $('thumb').src = r.result; $('thumb').style.display='block'; };
+  r.readAsDataURL(f);
+};
+
+$('addBtn').onclick = ()=>{
+  const job = readForm();
+  if (!job.image && !job.image_url){ alert('Add a reference image: a repo-relative path, or pick a file.'); return; }
+  if (editIdx>=0) queue[editIdx] = job; else queue.push(job);
+  clearForm(); save();
+};
+$('clearFormBtn').onclick = clearForm;
+$('clearAllBtn').onclick = ()=>{ if(confirm('Clear the whole queue?')){ queue=[]; clearForm(); save(); } };
+
+$('exportBtn').onclick = ()=>{
+  if(!queue.length){ alert('Queue is empty.'); return; }
+  const blob = new Blob([JSON.stringify({notes:'Meshy image-to-3D queue (from meshy_studio.html)',jobs:queue}, null, 2)],
+    {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'meshy_queue.json';
+  a.click();
+};
+$('importBtn').onclick = ()=>$('importFile').click();
+$('importFile').onchange = e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{ try{
+    const data = JSON.parse(r.result);
+    const jobs = Array.isArray(data)?data:data.jobs;
+    if(!Array.isArray(jobs)) throw new Error('not a queue');
+    if(queue.length && !confirm(`Replace ${queue.length} jobs with imported ${jobs.length}?`)) return;
+    queue = jobs; clearForm(); save();
+  }catch(err){ alert('Import failed: '+err.message); } };
+  r.readAsText(f);
+};
+
+clearForm(); render();
+</script>
+</body>
+</html>

@@ -35,53 +35,73 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
+      "text": "[trip:1.2][mood:dusk][shot:insert phone]Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/006.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "no apology necessary. take your time. i'm here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sends it. She sits on the edge of her bed, in the small soft Texas evening, and she holds the phone in her lap, and she watches the message marked delivered. It marks read in nine seconds."
+      "text": "She sends it. She sits on the edge of her bed, in the small soft Texas evening, and she holds the phone in her lap, and she watches the message marked delivered. It marks read in nine seconds.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, now, cry. She sits."
+      "text": "She does not, now, cry. She sits.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work."
+      "text": "[shot:establish]Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Below her, in the kitchen, her parents are doing the dishes together. Her mother is washing. Her father is drying. They are not, tonight, talking. They are, in some specific marital way, doing the dishes together because they have run out of words and because the dishes are the only conversation left."
+      "text": "Below her, in the kitchen, her parents are doing the dishes together. Her mother is washing. Her father is drying. They are not, tonight, talking.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/011.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "They are, in some specific marital way, doing the dishes together because they have run out of words and because the dishes are the only conversation left.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/012.ogg"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment."
+      "text": "[shot:closeup sam~]We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/013.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Maya was right. This is what I am like when I have a plan. I am steady."
+      "text": "Maya was right. This is what I am like when I have a plan. I am steady.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/014.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am, on Monday, going to a courthouse to watch my father be arraigned for a list of crimes I do not, yet, know the length of."
+      "text": "I am, on Monday, going to a courthouse to watch my father be arraigned for a list of crimes I do not, yet, know the length of.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/015.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to be fine. I am, on the other side of all of this, going to be fine."
+      "text": "I am going to be fine. I am, on the other side of all of this, going to be fine.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/016.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
     },
     {
       "t": "narrate",
-      "text": "She sets the phone down. She stands. She goes downstairs."
+      "text": "[shot:establish]She sets the phone down. She stands. She goes downstairs.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/017.mp3"
     },
     {
       "t": "hide",
@@ -101,17 +121,20 @@
     },
     {
       "t": "narrate",
-      "text": "Her father, at the sink, turns. He smiles."
+      "text": "Her father, at the sink, turns. He smiles.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/021.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Let me dry.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She takes the dishtowel from him. She dries."
+      "text": "She takes the dishtowel from him. She dries.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/023.mp3"
     },
     {
       "t": "hide",
@@ -123,35 +146,68 @@
     },
     {
       "t": "narrate",
-      "text": "The Hierophant card, reversed, watches the institution send its men out into a morning that has, for the first time in twenty-eight years, not gone quite the way the institution had planned. Some of the men come back. Some of them don't. One of the men — the one in the bathroom in Nevada, eventually — discovers he is no longer one of the institution's men. The institution does not, yet, know how to count him. The institution's spreadsheets, by Saturday morning, will be off. The institution's response, by Monday afternoon, will be — for the first time in some years — delayed."
+      "text": "The Hierophant card, reversed, watches the institution send its men out into a morning that has, for the first time in twenty-eight years, not gone quite the way the institution had planned. Some of the men come back.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/026.ogg"
     },
     {
       "t": "narrate",
-      "text": "In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine."
+      "text": "Some of them don't. One of the men — the one in the bathroom in Nevada, eventually — discovers he is no longer one of the institution's men. The institution does not, yet, know how to count him.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/027.ogg"
     },
     {
       "t": "narrate",
-      "text": "In the warehouse in Graustark, Frasier Temple, asleep on his cot, smiles in his sleep at something a Demon has murmured into the air above his head, which is, the Demon will later report to the cluster, the first smile Frasier has produced in four months."
+      "text": "The institution's spreadsheets, by Saturday morning, will be off. The institution's response, by Monday afternoon, will be — for the first time in some years — delayed.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "In Smolvud, Oregon — many time zones west, in a small apartment above a bookshop called The Salty Tome — a woman with blue dreadlocks named Tem wakes at three AM Pacific Time with the unaccountable sense that something good has happened in a state she has never been to, and she gets up, and she puts on the kettle, and she sketches, by the light of a single small lamp, an octopus that is also, in a way she does not quite understand, a map."
+      "text": "In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Friday ends."
+      "text": "In the warehouse in Graustark, Frasier Temple, asleep on his cot, smiles in his sleep at something a Demon has murmured into the air above his head, which is, the Demon will later report to the cluster, the first smile Frasier has produced in four months.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, at the safehouse, sleeps. Sam, in her cornflower blue bedroom, sleeps too — for the first time in five nights, fully and without effort."
+      "text": "In Smolvud, Oregon — many time zones west, in a small apartment above a bookshop called The Salty Tome — a woman with blue dreadlocks named Tem wakes at three AM Pacific Time with the unaccountable sense that something good has happened in a state she has never been to,",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/031.ogg"
     },
     {
       "t": "narrate",
-      "text": "Tomorrow is Saturday. Tomorrow morning, Eileen Henderson is going to find out about the bill. Tomorrow night, Mr. Henderson is going to come out of the darkroom for the first time in twenty-six hours, and the thing using him is going to make a final attempt, and the attempt is going to fail, and Mr. Henderson is going to sit at his own kitchen table for the first time in eight days and weep into a cup of his wife's coffee."
+      "text": "and she gets up, and she puts on the kettle, and she sketches, by the light of a single small lamp, an octopus that is also, in a way she does not quite understand, a map.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/032.ogg"
     },
     {
       "t": "narrate",
-      "text": "But that is tomorrow. Tonight, the rescue holds. Tonight, it is enough."
+      "text": "Friday ends.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/033.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, at the safehouse, sleeps. Sam, in her cornflower blue bedroom, sleeps too — for the first time in five nights, fully and without effort.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/034.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]Tomorrow is Saturday. Tomorrow morning, Eileen Henderson is going to find out about the bill. Tomorrow night, Mr.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/035.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "Henderson is going to come out of the darkroom for the first time in twenty-six hours, and the thing using him is going to make a final attempt, and the attempt is going to fail, and Mr.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/036.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "Henderson is going to sit at his own kitchen table for the first time in eight days and weep into a cup of his wife's coffee.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/037.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "But that is tomorrow. Tonight, the rescue holds. Tonight, it is enough.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/038.mp3"
     },
     {
       "t": "end"

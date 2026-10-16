@@ -13,6 +13,9 @@ extends Control
 ##   4. Animated placeholder silhouette
 
 const ASCII_COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
+# Preloaded by path (not the global class name) so this script never
+# depends on class_name scan order on a fresh project open.
+const BUST_PORTRAIT := preload("res://scripts/vn/VnBustPortrait.gd")
 const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 
 # 3D portrait pipeline — when a character has a textured GLB in
@@ -24,6 +27,21 @@ const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 # JSONs use short names ("frasier") while the GLBs use full canon
 # filenames ("frasier_temple.glb").
 const PORTRAIT_3D_SCENE := preload("res://scenes/vn/Portrait3D.tscn")
+const PortraitDirector := preload("res://scripts/vn/PortraitDirector.gd")
+# The existing 2D portraits (PNG busts, ASCII compositions, placeholders)
+# are retired: false = only 3D heroes get a portrait slot.
+const PORTRAITS_2D := false
+var _special_2d: Dictionary = {}          # char key → res:// path of a special-occasion 2D image
+var _no_portrait_logged: Dictionary = {}
+
+
+## A scene's special occasion: this character shows this 2D image (a
+## new piece made for the moment, never the retired assets).
+func allow_special_2d(char_name: String, path: String) -> void:
+	if path == "":
+		_special_2d.erase(char_key(char_name))
+	else:
+		_special_2d[char_key(char_name)] = path
 const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
 
 # Demons get their own GLB root + a SHARED Portrait3D scene with the
@@ -36,20 +54,25 @@ const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
 # explicit entry here.
 const PORTRAIT_3D_DEMON_ROOT := "res://assets/3d/characters/demons/"
 const PORTRAIT_3D_DEMON_KEY_TO_GLB := {
-	# ch1 — the only demon for The Magician's first scenarios
+	# ch1 — the only demon for The Magician's first scenarios (the
+	# game branch had parked this while demons/ held only a README;
+	# Hero Studio builds the GLBs now — ported 2026-09-30)
 	"the_demon":         "the_demon.glb",
-	# Reserved slots (placeholders — drop models in as they're built)
-	# "the_drifter":     "the_drifter.glb",
-	# "the_birdwatcher": "the_birdwatcher.glb",
-	# "the_critic":      "the_critic.glb",
-	# "the_superfan":    "the_superfan.glb",
-	# "the_twins":       "the_twins.glb",
-	# "drunk_uncle":     "drunk_uncle.glb",
-	# "mackenzie_remote":"mackenzie_remote.glb",
+	# Remaining slots — generated via godot/tools/meshy_pipeline.py
+	# (roster kind: demon). A missing file falls through to 2D, so
+	# listing them is safe before the GLBs exist.
+	"the_drifter":       "the_drifter.glb",
+	"the_birdwatcher":   "the_birdwatcher.glb",
+	"the_critic":        "the_critic.glb",
+	"the_superfan":      "the_superfan.glb",
+	"the_twins":         "the_twins.glb",
+	"drunk_uncle":       "drunk_uncle.glb",
+	"mackenzie_remote":  "mackenzie_remote.glb",
 }
 
 const PORTRAIT_3D_KEY_TO_GLB := {
-	# 0 The Fool
+	# 0 The Fool (GNM experiment shelved 2026-07-16 — the _gnm.glb
+	# files stay on disk; repoint here to resume the experiment)
 	"john":              "john_frank.glb",
 	"john_frank":        "john_frank.glb",
 	# I The Magician
@@ -101,12 +124,97 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	"sal":               "sal_carratura.glb",
 	"sal_carratura":     "sal_carratura.glb",
 	"finn":              "finn.glb",
+	# ── Roster additions (godot/tools/meshy_roster.json is the source
+	# of truth; entries below only matter once the GLB exists —
+	# missing files fall through to the 2D portrait ladder). Keys
+	# whose short form collides across volumes (carl, wren, nate,
+	# ben, margaret) are NOT aliased here; use the long slug in the
+	# scene JSON when the 3D portrait is wanted.
+	# vol5 ensemble
+	"paul":              "quentin_paul.glb",
+	"quentin_paul":      "quentin_paul.glb",
+	"mackenzie":         "mackenzie_roberts.glb",
+	"mackenzie_roberts": "mackenzie_roberts.glb",
+	"philip":            "philip_roberts.glb",
+	"philip_roberts":    "philip_roberts.glb",
+	"douglas_forte":     "douglas_forte.glb",
+	"joanna":            "joanna_lemoine.glb",
+	"joanna_lemoine":    "joanna_lemoine.glb",
+	"erica":             "erica_campbell.glb",
+	"erica_campbell":    "erica_campbell.glb",
+	"anna":              "anna_logue.glb",
+	"anna_logue":        "anna_logue.glb",
+	"natalie":           "natalie_david.glb",
+	"natalie_david":     "natalie_david.glb",
+	"alice_newsom":      "alice_newsom.glb",
+	"jimmy":             "jimmy_daigle.glb",
+	"jimmy_daigle":      "jimmy_daigle.glb",
+	"aria":              "aria_third.glb",
+	"aria_third":        "aria_third.glb",
+	"the_frog":          "the_frog.glb",
+	"dean":              "dickens_dean.glb",
+	"dickens_dean":      "dickens_dean.glb",
+	"d._dean":           "dickens_dean.glb",
+	"sammy":             "sammy.glb",
+	"hector":            "hector.glb",
+	"gloria":            "gloria_reyes.glb",
+	"gloria_reyes":      "gloria_reyes.glb",
+	"stranger":          "the_stranger.glb",
+	"the_stranger":      "the_stranger.glb",
+	"miriam":            "miriam.glb",
+	"father_amato":      "father_amato.glb",
+	# vol1–4
+	"faust":             "faust.glb",
+	"wagner":            "wagner.glb",
+	"jacob":             "jacob.glb",
+	"joan":              "joan.glb",
+	"david_jarvis":      "david_jarvis.glb",
+	"jo":                "jo.glb",
+	# vol6 additions
+	"carl_drummer":      "carl_drummer.glb",
+	"jesse":             "jesse_henderson.glb",
+	"jesse_henderson":   "jesse_henderson.glb",
+	"ben_kowalski":      "ben_kowalski.glb",
+	"bianca":            "bianca_miller.glb",
+	"bianca_miller":     "bianca_miller.glb",
+	"mrs._miller":       "bianca_miller.glb",
+	"chief_miller":      "chief_miller.glb",
+	"graciela":          "graciela_ramos.glb",
+	"graciela_ramos":    "graciela_ramos.glb",
+	"abuela":            "graciela_ramos.glb",
+	"linda":             "linda_caldwell.glb",
+	"linda_caldwell":    "linda_caldwell.glb",
+	"ms._caldwell":      "linda_caldwell.glb",
+	"curtis":            "curtis.glb",
+	"henderson":         "thomas_henderson.glb",
+	"ramirez":           "ramirez.glb",
+	"claire":            "claire_moyer.glb",
+	"claire_moyer":      "claire_moyer.glb",
+	"vince":             "vince_kane.glb",
+	"vince_kane":        "vince_kane.glb",
+	"guidry":            "coach_guidry.glb",
+	"coach_guidry":      "coach_guidry.glb",
+	"nate_bassist":      "nate_bassist.glb",
+	"em":                "em_keys.glb",
+	"wren_vol6":         "wren_vol6.glb",
+	# vol7 additions
+	"cale":              "cale.glb",
+	"hans":              "hans.glb",
+	"greta":             "greta.glb",
+	"marit":             "marit.glb",
+	"marina":            "marina.glb",
+	"roy":               "roy.glb",
+	"aud":               "aud.glb",
+	"jameson":           "jameson.glb",
+	"mateo":             "mateo.glb",
+	"margaret_coop":     "margaret_coop.glb",
+	"soren":             "soren.glb",
 }
 const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
 # Debug: overlay the resolved asset path on each portrait so you can
 # see which file the engine loaded while playing through the game.
-# Set to false to hide the overlay once you're done debugging.
+# OFF for play — flip on when debugging asset assignments.
 const DEBUG_ASSET_OVERLAY: bool = false
 
 # Expression tint multipliers applied to mono substrate portraits via modulate.
@@ -128,28 +236,105 @@ const EXPR_TINTS := {
 	"frustrated":Color(1.00, 0.55, 0.50),
 	"tired":     Color(0.78, 0.82, 0.92),
 	"nervous":   Color(0.92, 0.95, 1.00),
+	# Orphan tokens (2026-08 audit) · 13 words the scripts already
+	# use — "serious" alone appears on 26 characters — previously
+	# collapsed to neutral silently. Mapped, not invented: stern set
+	# cools, thought set warms faintly, and the emotional ones join
+	# their nearest family.
+	"serious":   Color(0.88, 0.92, 0.98),
+	"focused":   Color(0.88, 0.92, 0.98),
+	"calculating": Color(0.88, 0.92, 0.98),
+	"cold":      Color(0.82, 0.90, 1.00),
+	"thinking":  Color(0.97, 0.95, 0.88),
+	"considering": Color(0.97, 0.95, 0.88),
+	"thoughtful": Color(0.97, 0.95, 0.88),
+	"patient":   Color(0.97, 0.95, 0.88),
+	"impressed": Color(1.00, 0.97, 0.86),
+	"worried":   Color(0.92, 0.95, 1.00),
+	"amused":    Color(1.00, 0.96, 0.80),
+	"softening": Color(1.00, 0.97, 0.88),
+	"hurt":      Color(0.72, 0.82, 1.00),
 	"scared":    Color(0.92, 0.95, 1.00),
 	"uneasy":    Color(0.92, 0.95, 1.00),
 }
 
-const POSITIONS := {
-	"left":   Vector2(100, 80),
-	"center": Vector2(490, 80),
-	"right":  Vector2(880, 80),
+# Per-locale bust tint. The 3D portraits sit in the scene because their
+# light rig matches the locale; the pixel busts rendered fullbright and
+# read as stickered on. GameEngine calls set_locale_tint(preset_id) on
+# every "3d:" bg swap; busts multiply by the matched color via
+# self_modulate. Keys are PREFIX-matched against the Background3D
+# preset id so one entry covers a locale's whole preset family — list
+# more-specific keys before shorter prefixes. Unlisted locales stay
+# untinted (Color.WHITE), so this can never wreck an unconsidered room.
+const LOCALE_BUST_TINTS := {
+	"darkroom":            Color(1.00, 0.58, 0.52),  # safelight red
+	"kwik_stop":           Color(1.00, 0.94, 0.80),  # sodium-warm fluorescents
+	"graciela_bedroom":    Color(1.00, 0.87, 0.72),  # altar candles
+	"cathedral":           Color(1.00, 0.90, 0.76),  # candlelight nave
+	"chapel":              Color(1.00, 0.90, 0.76),
+	"foxhole":             Color(1.00, 0.85, 0.68),  # amber stage wash
+	"diner":               Color(1.00, 0.93, 0.82),  # incandescent diner
+	"dambrosios":          Color(1.00, 0.93, 0.82),
+	"riverboat":           Color(1.00, 0.93, 0.82),
+	"new_orleans_bar":     Color(1.00, 0.87, 0.72),
+	"chillwave":           Color(0.90, 0.84, 1.00),  # violet neon
+	"miller_office":       Color(0.85, 0.90, 1.00),  # rain-grey window light
+	"miller_garage":       Color(1.00, 0.87, 0.76),  # dusk through the door
+	"caldwell":            Color(0.82, 0.88, 1.00),  # night exteriors/rooms
+	"school_field_evening":Color(0.88, 0.88, 1.00),
+	"louisiana_road":      Color(0.85, 0.89, 1.00),
+	"graustark_ruins":     Color(0.86, 0.90, 1.00),
+	"hospice":             Color(0.90, 0.95, 1.00),  # pale institutional
+	"hospital":            Color(0.90, 0.95, 1.00),
+	"hans_bakery":         Color(1.00, 0.92, 0.80),  # oven-warm
+	"nightmare_cell":      Color(0.85, 0.95, 0.82),  # caged-tube sickly
+	"gym_weight_room":     Color(0.90, 0.95, 0.90),  # basement fluorescent
+	"henderson_porch":     Color(0.82, 0.87, 1.00),  # night porch (prefix
+	                                                 # also covers _front)
+	"ben_bedroom":         Color(0.80, 0.85, 1.00),  # dark room, moon seam
+	"coach_k_bedroom":     Color(0.78, 0.80, 0.95),
+	"equipment_shed":      Color(1.00, 0.88, 0.78),  # dusk through doors
 }
-const SPRITE_W    := 300.0
-const SPRITE_H    := 320.0
+var _locale_tint: Color = Color.WHITE
+
+# Modern-VN cutout mode (2026-07-12 redesign): portraits are clean
+# 3/4 cutouts hovering over the full-bleed scene — no dark backdrop
+# box, no scrim, no ASCII border. Larger and bottom-anchored so the
+# figure rises from the bottom edge, lower body behind the dialogue.
+# Flip false to restore the boxed-portrait look.
+const CUTOUT_MODE := true
+
+# Cutout portraits, enlarged ~2x (2026-07-12): each figure fills a
+# tall slot that runs off the bottom edge, so the camera can frame
+# more of the body (thigh-up, see Portrait3D). Left/right hug the
+# screen edges (1280 wide); center sits between them. Slight overlap
+# left↔right is fine — the active-speaker pop separates them, and two
+# people at 3/4 facing inward reads naturally shoulder-to-shoulder.
+const POSITIONS := {
+	"left":   Vector2(-70, 0),
+	"center": Vector2(250, -20),
+	"right":  Vector2(570, 0),
+}
+const SPRITE_W    := 780.0
+const SPRITE_H    := 900.0
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
-const IDLE_AMP    := 4.0
+# 2026-10-01 (the Deck: "super shaky and motion sickness inducing"): the
+# 3D heroes now fill half the screen in close-up, and this idle bob, the
+# parallax drift and the ±1 % breath (±9 px at the edge of a 900 px
+# figure) stacked on the portrait camera's own mood motion. All three
+# cut to a whisper; the 3D locales do not sway, so the counter-drift
+# has nothing to counter.
+const IDLE_AMP    := 1.0
 const IDLE_PERIOD := 2.5
+const BREATH_AMP  := 0.0025
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
 
 # Parallax: portraits counter-drift the bg sway (GameEngine drives the
 # bg with the same SWAY_PERIOD). Small amplitude to sell depth without
 # disorienting the figure.
 const PARALLAX_PERIOD := 5.4
-const PARALLAX_X_AMP  := 2.5
-const PARALLAX_Y_AMP  := 1.2
+const PARALLAX_X_AMP  := 0.8
+const PARALLAX_Y_AMP  := 0.4
 
 # Active speaker pop: scale + alpha boost on the active portrait,
 # desaturate + dim non-active. Non-active really pulls back so the
@@ -170,6 +355,38 @@ const CHAR_ACCENTS := {
 	"elicia":    Color("#b89ad6"),
 	"nicola":    Color("#e8a860"),
 	"the_demon": Color("#7cffb0"),
+	# ── T2 cast pass (2026-08 audit) · the top speakers stop sharing
+	# the default parchment. Accents drive the nameplate, the
+	# underline wipe, and the bust's shirt — the cheapest way for the
+	# cast to read as CAST. Hues chosen to stay distinct in a scene's
+	# likely pairings (Tem/Lena/Kai/Finn share most frames).
+	# vol6 · Harmony Creek
+	"sam":          Color("#8fd6c0"),
+	"maya":         Color("#f0a8c8"),
+	"jesse":        Color("#d0b060"),
+	"diego":        Color("#88b8e8"),
+	"ben":          Color("#c8987a"),
+	"bianca":       Color("#e07a6a"),
+	"eileen":       Color("#a8c890"),
+	"chief_miller": Color("#7a90b8"),
+	"bt":           Color("#c8c060"),
+	"anita":        Color("#d890b0"),
+	"linda":        Color("#b0a8d8"),
+	# vol7 · Smolvud
+	"tem":          Color("#7ec8a8"),
+	"lena":         Color("#e8b070"),
+	"kai":          Color("#90a8e0"),
+	"finn":         Color("#c0d878"),
+	"cale":         Color("#d09a58"),
+	"hans":         Color("#e8d8a8"),
+	"roy":          Color("#a89078"),
+	"marina":       Color("#88c8d8"),
+	"marit":        Color("#e898a0"),
+	"aud":          Color("#b8b0e0"),
+	"petra":        Color("#c8a8d8"),
+	"wren":         Color("#98d0a0"),
+	# vol1
+	"faust":        Color("#c89ae8"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
 
@@ -243,15 +460,43 @@ func _resolve_portrait_3d_glb(key: String) -> String:
 	var ddirect: String = PORTRAIT_3D_DEMON_ROOT + key + ".glb"
 	if FileAccess.file_exists(ddirect) or ResourceLoader.exists(ddirect):
 		return ddirect
-	# Heroes — explicit registry then implicit `<key>.glb`
+	# Looks — a base key in a scene the roster stages a look for, or a
+	# look's own key (both fall through to the base when the GLB is absent)
+	var look_path: String = _resolve_look_glb(key)
+	if look_path != "":
+		return look_path
+	# Heroes — explicit registry, then the roster's keys, then implicit `<key>.glb`
+	# Every candidate must belong to the scene's volume (2026-10-01): the
+	# same first name is a different person across volumes — vol6's
+	# "Sammy" is Sam Miller, not vol5's bartender; vol6's Wren is not
+	# vol7's; vol1's Margaret, vol5's Ben. A model the roster lists for
+	# other volumes is skipped, and the name falls to the next candidate
+	# or to the 2D portrait.
 	if PORTRAIT_3D_KEY_TO_GLB.has(key):
-		var path: String = PORTRAIT_3D_GLB_ROOT + PORTRAIT_3D_KEY_TO_GLB[key]
-		if FileAccess.file_exists(path) or ResourceLoader.exists(path):
+		var tfile: String = String(PORTRAIT_3D_KEY_TO_GLB[key])
+		var path: String = PORTRAIT_3D_GLB_ROOT + tfile
+		if _vol_ok(tfile) and (FileAccess.file_exists(path) or ResourceLoader.exists(path)):
 			return path
+	if _roster_keys.has(key):
+		var files: Array = _roster_keys[key]
+		for fv: Variant in files:
+			var rfile: String = String(fv)
+			var rpath: String = PORTRAIT_3D_GLB_ROOT + rfile
+			if _vol_ok(rfile) and (FileAccess.file_exists(rpath) or ResourceLoader.exists(rpath)):
+				return rpath
 	var direct: String = PORTRAIT_3D_GLB_ROOT + key + ".glb"
-	if FileAccess.file_exists(direct) or ResourceLoader.exists(direct):
+	if _vol_ok(key + ".glb") and (FileAccess.file_exists(direct) or ResourceLoader.exists(direct)):
 		return direct
 	return ""
+
+
+## True when a hero GLB may play in the current scene's volume: the
+## roster lists no volumes for it, or lists this one (or no scene yet).
+func _vol_ok(glb_file: String) -> bool:
+	if _scene_vol <= 0 or not _glb_vols.has(glb_file):
+		return true
+	var vs: Array = _glb_vols[glb_file]
+	return vs.is_empty() or vs.has(_scene_vol)
 
 
 # Returns true when the resolved GLB path is inside the demons/
@@ -260,18 +505,174 @@ func _is_demon_glb(glb_path: String) -> bool:
 	return glb_path.begins_with(PORTRAIT_3D_DEMON_ROOT)
 
 
+# GameEngine tells the layer which scene it is in; looks are chosen by it.
+func set_scene_context(vol: int, chapter: Variant, scene_id: String = "") -> void:
+	_scene_vol = vol
+	_scene_chapter = _chapter_number(chapter)
+	_scene_id = scene_id
+
+
+# Scene JSON carries `chapter` as an int (vol6: 13), a numeric string,
+# or a roman numeral (vol5: "V"). Unknown → 0 (no chapter match).
+func _chapter_number(v: Variant) -> int:
+	if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
+		return int(v)
+	var s: String = String(v).strip_edges().to_upper()
+	if s.is_valid_int():
+		return int(s)
+	var roman: Dictionary = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
+	var total: int = 0
+	var prev: int = 0
+	for i in range(s.length() - 1, -1, -1):
+		var ch: String = s.substr(i, 1)
+		if not roman.has(ch):
+			return 0
+		var val: int = int(roman[ch])
+		if val < prev:
+			total -= val
+		else:
+			total += val
+			prev = val
+	return total
+
+
+func _load_roster_looks() -> void:
+	_looks.clear()
+	_look_keys.clear()
+	_roster_keys.clear()
+	_glb_vols.clear()
+	if not FileAccess.file_exists(PORTRAIT_3D_ROSTER):
+		return
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(PORTRAIT_3D_ROSTER))
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_warning("CharLayer: roster did not parse — looks disabled")
+		return
+	var data: Dictionary = parsed
+	var entries: Array = data.get("entries", [])
+	var by_slug: Dictionary = {}
+	for item: Variant in entries:
+		if typeof(item) == TYPE_DICTIONARY:
+			var e: Dictionary = item
+			by_slug[String(e.get("slug", ""))] = e
+	for item: Variant in entries:
+		if typeof(item) != TYPE_DICTIONARY:
+			continue
+		var e: Dictionary = item
+		if String(e.get("kind", "")) != "hero":
+			continue
+		var entry_glb: String = String(e.get("file", ""))
+		var entry_keys: Array = e.get("keys", [])
+		if entry_glb != "":
+			var ev: Variant = e.get("vol", [])
+			var vlist: Array = []
+			if typeof(ev) == TYPE_ARRAY:
+				for vv: Variant in (ev as Array):
+					vlist.append(int(vv))
+			elif typeof(ev) == TYPE_INT or typeof(ev) == TYPE_FLOAT:
+				vlist.append(int(ev))
+			_glb_vols[entry_glb] = vlist
+			for ek: Variant in entry_keys:
+				var kk: String = String(ek)
+				if not _roster_keys.has(kk):
+					_roster_keys[kk] = []
+				var lst: Array = _roster_keys[kk]
+				lst.append(entry_glb)
+				_roster_keys[kk] = lst
+		var base: String = String(e.get("base", ""))
+		if base == "":
+			continue
+		var look_v: Variant = e.get("look", null)
+		if typeof(look_v) != TYPE_DICTIONARY:
+			continue
+		var look: Dictionary = look_v
+		var glb: String = String(e.get("file", ""))
+		if glb == "":
+			continue
+		var rule: Dictionary = {"glb": glb, "vols": look.get("vols", []), "chapters": look.get("chapters", []), "scenes": look.get("scenes", [])}
+		var base_entry: Dictionary = by_slug.get(base, {})
+		var base_keys: Array = base_entry.get("keys", [])
+		for bk: Variant in base_keys:
+			var k: String = String(bk)
+			if not _looks.has(k):
+				_looks[k] = []
+			var rules: Array = _looks[k]
+			rules.append(rule)
+			_looks[k] = rules
+		var own_keys: Array = e.get("keys", [])
+		for ok: Variant in own_keys:
+			_look_keys[String(ok)] = glb
+
+
+func _resolve_look_glb(key: String) -> String:
+	if _look_keys.has(key):
+		var own: String = PORTRAIT_3D_GLB_ROOT + String(_look_keys[key])
+		if FileAccess.file_exists(own) or ResourceLoader.exists(own):
+			return own
+	if not _looks.has(key):
+		return ""
+	var rules: Array = _looks[key]
+	for rv: Variant in rules:
+		var rule: Dictionary = rv
+		var vols: Array = rule.get("vols", [])
+		var chapters: Array = rule.get("chapters", [])
+		var scenes: Array = rule.get("scenes", [])
+		if not (_scene_vol in vols):
+			continue
+		if not scenes.is_empty() and not (_scene_id in scenes):
+			continue                       # a costume is a scene, not a volume
+		if not chapters.is_empty() and not (_scene_chapter in chapters):
+			continue
+		var lpath: String = PORTRAIT_3D_GLB_ROOT + String(rule.get("glb", ""))
+		if FileAccess.file_exists(lpath) or ResourceLoader.exists(lpath):
+			return lpath
+	return ""
+
+
 # Public lookup so DialogueBox / GameEngine / etc. can color speaker
 # names and other chrome consistently with portrait accents.
 func accent_for(char_name: String) -> Color:
 	return CHAR_ACCENTS.get(char_key(char_name), ACCENT_DEFAULT)
 
+# Which slot ("left"/"center"/"right") the given character currently
+# occupies, or "" if they have no on-screen portrait. DialogueBox uses
+# this to slide the text column under whoever is speaking.
+func slot_of(char_name: String) -> String:
+	var key := char_key(char_name)
+	if key == "":
+		return ""
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot != null and char_key(str(slot["name"])) == key:
+			return pos
+	return ""
+
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
 var _t:     float      = 0.0
+# Keys whose full "tried:" path list has already been printed this
+# session — repeat placeholder appearances log one line only.
+static var _placeholder_logged: Dictionary = {}
+
+# ── LOOKS (2026-09-26) ── another age or costume of a hero. The roster
+# (godot/tools/meshy_roster.json) marks an entry with `base` (the hero
+# it is a look of) and `look {vols, chapters?}`; when the current scene
+# falls inside them, the BASE key routes to the look's GLB (Miriam in
+# vol6 is miriam_2025.glb; Ben in ch13/19 is the pads, in ch22 the TE-1
+# jersey). The look's own keys (maya_kid → maya_daigle_age7.glb) route
+# through the roster too. A missing GLB falls through to the base.
+const PORTRAIT_3D_ROSTER := "res://tools/meshy_roster.json"
+var _looks:         Dictionary = {}      # base key → Array of {glb, vols, chapters, scenes}
+var _look_keys:     Dictionary = {}      # a look's own key → glb
+var _roster_keys:   Dictionary = {}      # every hero entry's keys → Array of glb (a new hero routes the day its GLB lands)
+var _glb_vols:      Dictionary = {}      # hero glb → Array[int] of the volumes the roster stages it in
+var _scene_vol:     int        = 0
+var _scene_chapter: int        = 0
+var _scene_id:      String     = ""
 
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_load_roster_looks()
 	# Spawn the per-portrait debug overlay (visible on Esc/mouse-
 	# released). It introspects this CharLayer's slot table via
 	# get_active_portrait3d_list, so attaching it as a child means
@@ -283,8 +684,83 @@ func _ready() -> void:
 		add_child(overlay)
 
 
+var _bust_blinkers: Array = []
+
+# ── Talk flap (2026-07-19) — while the typewriter is running, the
+# ACTIVE speaker's bust alternates open/talk mouth frames. The
+# DialogueBox reference is cached lazily (it lives in GameEngine's
+# tree, a sibling subtree of ours).
+var _active_speaker_key: String = ""
+var _dlg_ref: Node = null
+var _talk_flip: float = 0.0
+
+
+# Injected by GameEngine._build_layers so the talk flap doesn't
+# tree-walk with find_child; the lazy find_child in _dlg_typing()
+# remains as the fallback when nothing was injected.
+func set_dialogue(n: Node) -> void:
+	_dlg_ref = n
+
+
+func _dlg_typing() -> bool:
+	if _dlg_ref == null or not is_instance_valid(_dlg_ref):
+		_dlg_ref = get_tree().get_root().find_child("DialogueBox", true, false)
+	if _dlg_ref == null:
+		return false
+	return _dlg_ref.has_method("is_typing") and _dlg_ref.call("is_typing")
+
+
 func _process(delta: float) -> void:
 	_t += delta
+	# ── bust blinking + talk flap (VnBustPortrait v2) ──
+	var talking: bool = _active_speaker_key != "" and _dlg_typing()
+	for i in range(_bust_blinkers.size() - 1, -1, -1):
+		# "as Control" on a freed object is itself a runtime error, so
+		# validity must be checked on the raw Variant BEFORE any cast.
+		var ph_v: Variant = _bust_blinkers[i]
+		if ph_v == null or not is_instance_valid(ph_v):
+			_bust_blinkers.remove_at(i)
+			continue
+		var ph: Control = ph_v as Control
+		if ph == null:
+			_bust_blinkers.remove_at(i)
+			continue
+		if not ph.has_meta("bust_tex"):
+			continue
+		var btr_v: Variant = ph.get_meta("bust_tex")
+		if btr_v == null or not is_instance_valid(btr_v):
+			continue
+		var btr: TextureRect = btr_v as TextureRect
+		if btr == null:
+			continue
+		var b_key: String = ph.get_meta("bust_key") if ph.has_meta("bust_key") else ""
+		if b_key == "":
+			continue
+		var b_expr: String = ph.get_meta("bust_expr") if ph.has_meta("bust_expr") else "neutral"
+		var b_col: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else Color.WHITE
+		# Talk flap wins over blink on the active speaker: alternate
+		# open/talk every 0.14s while the typewriter runs. Frames come
+		# from the same cache, so the swap is free.
+		if talking and b_key == _active_speaker_key:
+			var open_phase: bool = fmod(_t, 0.28) < 0.14
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col,
+					"open" if open_phase else "talk")
+			ph.set_meta("blink_until", 0.0)
+			ph.set_meta("talking", true)
+			continue
+		if ph.has_meta("talking"):
+			# Flap just ended — settle back on the open mouth.
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col, "open")
+			ph.remove_meta("talking")
+		var until: float = float(ph.get_meta("blink_until"))
+		var next: float = float(ph.get_meta("blink_next"))
+		if until > 0.0 and _t >= until:
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col, "open")
+			ph.set_meta("blink_until", 0.0)
+			ph.set_meta("blink_next", _t + randf_range(2.2, 5.5))
+		elif until == 0.0 and _t >= next:
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col, "blink")
+			ph.set_meta("blink_until", _t + 0.12)
 	# Counter-drift the bg sway. Negative sign so portraits move
 	# opposite to the boat list, reading as figures floating *on* the
 	# room rather than locked to it.
@@ -295,15 +771,20 @@ func _process(delta: float) -> void:
 		var slot = _slots[pos]
 		if slot == null:
 			continue
-		var node: Control = slot["node"]
+		var node_v: Variant = slot["node"]
+		if node_v == null or not is_instance_valid(node_v):
+			_slots[pos] = null
+			continue
+		var node: Control = node_v
 		var phase: float  = IDLE_PHASE[pos]
 		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
-		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy)
+		var entrance_y: float = float(node.get_meta("entrance_y")) if node.has_meta("entrance_y") else 0.0
+		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy + entrance_y)
 		# ── Subtle breath: ±1% scale on the tint_holder, longer period
 		# than position sway so the two motions don't beat against each
 		# other. Reads as the figure inhaling.
 		var breath_phase: float = (_t + phase * 0.6) * TAU / (IDLE_PERIOD * 1.7)
-		var breath_s: float = 1.0 + sin(breath_phase) * 0.010
+		var breath_s: float = 1.0 + sin(breath_phase) * BREATH_AMP
 		# Godot 4.6 emits an error from get_meta(name, default) when
 		# the meta is missing even though the default is honoured —
 		# guard with has_meta to keep the debugger quiet. Placeholder
@@ -316,6 +797,14 @@ func _process(delta: float) -> void:
 				# show_character via "flip_x" meta — -1 to mirror,
 				# +1 to keep natural orientation).
 				var flip_x: float = node.get_meta("flip_x") if node.has_meta("flip_x") else 1.0
+				# Composition portraits bake TEXT into the art (THE
+				# DEMON's banner) — never mirror them. A flipped glyph
+				# is a bug, not a facing (user report 2026-07: the
+				# demon rendered backwards). One gate here covers
+				# show-time facing AND _reface_center, since both only
+				# write the meta and this is the sole read site.
+				if node.has_meta("kind") and String(node.get_meta("kind")) == "composition":
+					flip_x = 1.0
 				tint_holder.pivot_offset = tint_holder.size * 0.5
 				tint_holder.scale = Vector2(flip_x * breath_s, breath_s)
 		# Blink overlay disabled — was a fixed-anchor dark band at
@@ -350,15 +839,50 @@ func _fire_blink(node: Control) -> void:
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
+# Set by GameEngine on every bg change. Over a LIVE 3D shot the
+# picture's center is the subject (staged cast, authored inserts) —
+# a 300x320 portrait card parked there covers exactly what the
+# camera is framing. Comic-inset composition: portraits belong in
+# the corners when the bg is a 3D camera, so "center" remaps to a
+# free flank. Flat 2D bgs keep the center slot (backdrop, nothing
+# to cover).
+var bg_is_3d: bool = false
+
+
 func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:
 	if not POSITIONS.has(pos):
 		pos = "center"
+	if bg_is_3d and pos == "center":
+		var k := char_key(char_name)
+		var right_slot: Variant = _slots.get("right")
+		var left_slot: Variant = _slots.get("left")
+		if right_slot == null or (right_slot is Dictionary and right_slot["name"] == k):
+			pos = "right"
+		elif left_slot == null or (left_slot is Dictionary and left_slot["name"] == k):
+			pos = "left"
 	# Store the slug, not the raw display name, so identity checks work
 	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
 	var key := char_key(char_name)
+	# 3D HEROES ONLY (2026-10-01, the user: "2D portraits should be on
+	# the way out for now, except in special occasions, not with existing
+	# 2D assets"). A character with no hero GLB gets no portrait — the
+	# dialogue box names them — unless the scene asks for a special-
+	# occasion 2D image by path (a show node's "portrait_2d").
+	if not PORTRAITS_2D and not _special_2d.has(key) and _resolve_portrait_3d_glb(key) == "":
+		if not _no_portrait_logged.has(key):
+			_no_portrait_logged[key] = true
+			print("[CharLayer] %s (key=%s): no 3D model — no portrait (2D retired)" % [char_name, key])
+		return
 	# Compute horizontal flip — auto-inward by default, scene-JSON
 	# `facing` field overrides if present.
 	var should_flip: bool = _compute_flip(key, pos, facing)
+	# 3D hero GLBs render facing the OPPOSITE way from the 2D-art
+	# orientation baked into AUTO_FLIP_BY_POS, so the un-inverted rule
+	# points them OUTWARD (right-slot faced right, left-slot faced
+	# left). Invert for any character that resolves to a 3D portrait so
+	# the intended inward facing holds: right→faces-left, left→faces-right.
+	if _resolve_portrait_3d_glb(key) != "":
+		should_flip = not should_flip
 	# If this character is already shown at a DIFFERENT position, free
 	# that portrait first — the new show is the character moving, not a
 	# second copy. Without this, scene JSONs that re-show the same
@@ -410,11 +934,10 @@ func hide_at(pos: String) -> void:
 
 
 func hide_all() -> void:
-	# Scene transitions hard-clear portraits + ghosts immediately.
-	# Cross-fade (with ghost silhouette) is reserved for hide_at
-	# during a scene; on scene/chapter change we drop everything
-	# in the same frame so the next scene starts clean instead of
-	# overlapping a half-faded prior portrait with new dialogue.
+	# Scene transitions hard-clear portraits immediately — on
+	# scene/chapter change we drop everything in the same frame so
+	# the next scene starts clean instead of overlapping a
+	# half-faded prior portrait with new dialogue.
 	for pos: String in _slots:
 		var slot = _slots.get(pos)
 		if slot != null:
@@ -422,10 +945,6 @@ func hide_all() -> void:
 			if is_instance_valid(node):
 				node.queue_free()
 			_slots[pos] = null
-	for g in _ghosts:
-		if is_instance_valid(g):
-			g.queue_free()
-	_ghosts.clear()
 
 
 # Returns true if a portrait for this character is currently in
@@ -500,6 +1019,18 @@ func activate_speaker(char_name: String) -> void:
 	# lets the camera pull back during third-person narration instead
 	# of leaving the last speaker on the screen as "main".
 	var key := char_key(char_name)
+	_active_speaker_key = key
+	# Find which slot the active speaker occupies so a centre portrait
+	# can turn to face them (left/right slots keep their fixed inward
+	# facing, set at show time).
+	var active_pos: String = ""
+	if key != "":
+		for pos: String in _slots:
+			var slot = _slots[pos]
+			if slot != null and char_key(str(slot["name"])) == key:
+				active_pos = pos
+				break
+	_reface_center(active_pos)
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
@@ -512,17 +1043,22 @@ func activate_speaker(char_name: String) -> void:
 		if node.has_meta("fading"):
 			continue
 		var is_active: bool   = (key != "" and char_key(str(slot["name"])) == key)
-		# Active: full color, +5% scale, full alpha
-		# Inactive: deeper desat (cool gray), -8% scale, ~30% alpha — recedes
-		# noticeably so the active speaker reads as "the camera is on them"
+		# Narration (empty speaker) → there's no "other" to recede from,
+		# so keep every figure in full colour. Only crush a portrait to
+		# the recede state when SOMEONE ELSE is actively speaking. The
+		# recede is a gentle cool dim now, not the old dead-gray ghost.
+		var narrating: bool = (key == "")
 		var target_mod: Color
 		var target_scale: float
-		if is_active:
-			target_mod   = Color(1.0, 1.0, 1.0, ACTIVE_ALPHA)
-			target_scale = ACTIVE_SCALE
+		if is_active or narrating:
+			target_mod   = Color(1.0, 1.0, 1.0, ACTIVE_ALPHA if is_active else 0.98)
+			target_scale = ACTIVE_SCALE if is_active else 1.0
+			# Active speaker sits in front of any overlapping cutout.
+			node.z_index = 1 if is_active else 0
 		else:
-			target_mod   = Color(0.48, 0.50, 0.55, INACTIVE_ALPHA)
+			target_mod   = Color(0.74, 0.77, 0.84, INACTIVE_ALPHA)
 			target_scale = INACTIVE_SCALE
+			node.z_index = 0
 		node.pivot_offset = Vector2(SPRITE_W * 0.5, SPRITE_H * 0.5)
 		# Target figure_holder (not the wrapper) so the dimming only
 		# affects the figure — the static backdrop and scrim behind it
@@ -533,6 +1069,111 @@ func activate_speaker(char_name: String) -> void:
 		tw.set_parallel(true)
 		tw.tween_property(target, "modulate", target_mod, 0.25)
 		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.25)
+
+
+# ── Portrait direction (draft 1 · 2026-10-01) ───────────────────────
+# Every line picks a shot for each 3D hero on screen: the speaker by
+# the line's charge, the mood and their standing; listeners a size
+# wider; narration on the bust. PortraitDirector holds the grammar;
+# a [portrait:…] directive on the line overrides the speaker's shot.
+var _portrait_override: Dictionary = {}
+var _last_speaker_key: String = ""
+var _shot_memory: Dictionary = {}      # char key → {size, score}
+
+
+var _scene_light: Dictionary = {}      # Background3D.get_scene_light(), pushed by GameEngine
+
+
+func set_scene_light(light: Dictionary) -> void:
+	_scene_light = light
+
+
+func set_portrait_override(arg: String) -> void:
+	_portrait_override = PortraitDirector.parse_override(arg)
+
+
+## GameEngine calls this on every narrate / say / think line, after
+## update_expression and activate_speaker.
+func direct_line(char_name: String, text: String, expr: String) -> void:
+	var speaker: String = char_key(char_name) if char_name != "" else ""
+	var entries: Array = []
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot == null:
+			continue
+		var node: Control = slot["node"]
+		if not is_instance_valid(node) or node.has_meta("fading") or not node.has_meta("portrait3d"):
+			continue
+		var p3d: Node = node.get_meta("portrait3d")
+		if p3d == null or not is_instance_valid(p3d) or not p3d.has_method("set_shot"):
+			continue
+		entries.append({"key": char_key(str(slot["name"])), "p3d": p3d})
+	var speaker_size: String = "mcu"
+	# the speaker first, so listeners can size off them
+	for e_v: Variant in entries:
+		var e: Dictionary = e_v
+		if String(e["key"]) != speaker or speaker == "":
+			continue
+		var p3d: Node = e["p3d"]
+		var mem: Dictionary = _shot_memory.get(speaker, {})
+		var glb_path: String = String(p3d.get("_loaded_glb_path"))
+		var mood: String = String(p3d.get("_mood_id"))
+		var pick: Dictionary = PortraitDirector.choose({
+			"role": "speaker", "mood": mood if mood != "" else expr, "text": text,
+			"glb": glb_path.get_file().get_basename(),
+			"prev_size": String(mem.get("size", "")), "prev_score": int(mem.get("score", 0)),
+			"same_speaker": speaker == _last_speaker_key, "override": _portrait_override,
+		})
+		speaker_size = String(pick["size"])
+		# a new take inside the shot's ranges each time the speaker starts
+		# or the shot changes; a held shot keeps its take
+		var take: int = -1 if String(pick.get("why", "")) == "holding" else absi(hash(speaker + "|" + text))
+		if not _scene_light.is_empty():
+			p3d.call("set_scene_light", _scene_light)
+		p3d.call("set_shot", speaker_size, String(pick["angle"]), take)
+		_shot_memory[speaker] = {"size": speaker_size, "score": int(pick.get("score", 0))}
+	for e_v: Variant in entries:
+		var e: Dictionary = e_v
+		var k: String = String(e["key"])
+		if speaker != "" and k == speaker:
+			continue
+		var role: String = "narration" if speaker == "" else "listener"
+		var pick2: Dictionary = PortraitDirector.choose({"role": role, "speaker_size": speaker_size})
+		var p3d2: Node = e["p3d"]
+		if not _scene_light.is_empty():
+			p3d2.call("set_scene_light", _scene_light)
+		p3d2.call("set_shot", String(pick2["size"]), String(pick2["angle"]))
+		_shot_memory.erase(k)        # a listener who speaks next starts fresh
+	_last_speaker_key = speaker
+	_portrait_override = {}
+
+
+# A centre portrait turns to face whoever is speaking: speaker on the
+# left → centre faces left; speaker on the right → centre faces right;
+# speaker IS the centre, or narration (no speaker) → centre faces
+# forward. Left/right slots keep the fixed inward facing set at show
+# time. Reuses _compute_flip so the natural-orientation + CHAR_FACING
+# rules stay consistent with the scene-JSON `facing` path. The flip is
+# read every frame in _process via the "flip_x" meta, so just updating
+# the meta re-orients the figure next frame.
+func _reface_center(active_pos: String) -> void:
+	var center = _slots.get("center")
+	if center == null:
+		return
+	var node: Control = center["node"]
+	if not is_instance_valid(node) or node.has_meta("fading"):
+		return
+	var desired: String
+	match active_pos:
+		"left":  desired = "left"
+		"right": desired = "right"
+		_:       desired = "forward"
+	var ckey := char_key(str(center["name"]))
+	var flip: bool = _compute_flip(ckey, "center", desired)
+	# Same 3D-render inversion as show_character (see there).
+	if _resolve_portrait_3d_glb(ckey) != "":
+		flip = not flip
+	node.set_meta("flip_x", -1.0 if flip else 1.0)
 
 
 func get_pos_for_char(char_name: String) -> String:
@@ -659,6 +1300,28 @@ func set_portrait_backdrop(char_name: String, kind: String) -> void:
 		return
 
 
+# Set the bust tint for the current locale (GameEngine calls this on
+# every "3d:" bg swap; "" resets to untinted). Applies immediately to
+# every live bust and is inherited by busts spawned afterwards.
+func set_locale_tint(preset_id: String) -> void:
+	var t := Color.WHITE
+	if preset_id != "":
+		for k: String in LOCALE_BUST_TINTS:
+			if preset_id.begins_with(k):
+				t = LOCALE_BUST_TINTS[k]
+				break
+	if t == _locale_tint:
+		return
+	_locale_tint = t
+	for ph_v in _bust_blinkers:
+		var ph: Control = ph_v as Control
+		if ph == null or not is_instance_valid(ph) or not ph.has_meta("bust_tex"):
+			continue
+		var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
+		if btr != null and is_instance_valid(btr):
+			btr.self_modulate = _locale_tint
+
+
 # Debug overlay: small monospace label at the bottom of the portrait
 # wrapper showing the resolved asset path. Lives above ALL other slot
 # children (including the ASCII border) so it stays readable while
@@ -679,7 +1342,7 @@ func _add_asset_overlay(wrapper: Control, path: String) -> void:
 	wrapper.add_child(bg)
 	var lbl := Label.new()
 	lbl.text = short
-	lbl.add_theme_font_size_override("font_size", 9)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
 	lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
 	lbl.add_theme_constant_override("outline_size", 2)
@@ -723,18 +1386,18 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var debug_state := get_node_or_null("/root/VnDebugState")
 	if debug_state != null and debug_state.has_method("get_portrait_backdrop"):
 		saved_backdrop_kind = String(debug_state.get_portrait_backdrop(key))
-	if saved_backdrop_kind == "":
-		wrapper.add_child(_make_static_backdrop())
-	else:
-		wrapper.add_child(_make_backdrop(saved_backdrop_kind))
-
-	# Subtle dark scrim above the static, below the figure — keeps the
-	# figure popping against the noise without burying the noise entirely.
-	var scrim := ColorRect.new()
-	scrim.color = SCRIM_COLOR
-	scrim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	wrapper.add_child(scrim)
+	# CUTOUT_MODE: skip the opaque backdrop + scrim so the figure is a
+	# clean cutout over the scene. A debug-stamped backdrop still wins.
+	if not CUTOUT_MODE or saved_backdrop_kind != "":
+		if saved_backdrop_kind == "":
+			wrapper.add_child(_make_static_backdrop())
+		else:
+			wrapper.add_child(_make_backdrop(saved_backdrop_kind))
+		var scrim := ColorRect.new()
+		scrim.color = SCRIM_COLOR
+		scrim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		wrapper.add_child(scrim)
 
 	# figure_holder is the layer activate_speaker modulates. Splitting
 	# it from wrapper means the static backdrop stays full-strength
@@ -791,6 +1454,22 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		# render — same EXPR_TINTS table the PNG path uses
 		_apply_texture_tint(wrapper, expr)
 		resolved_path = glb_path
+	elif _special_2d.has(key):
+		var sp: String = String(_special_2d[key])
+		var stex: Texture2D = load(sp) as Texture2D if ResourceLoader.exists(sp) else null
+		if stex == null and FileAccess.file_exists(sp):
+			var simg: Image = Image.load_from_file(sp)
+			if simg != null and not simg.is_empty():
+				stex = ImageTexture.create_from_image(simg)
+		if stex != null:
+			print("[CharLayer] %s (key=%s): SPECIAL 2D   %s" % [char_name, key, sp])
+			var str_ := TextureRect.new()
+			str_.texture = stex
+			str_.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tint_holder.add_child(str_)
+			_layout_portrait_texture(str_, stex)
+			wrapper.set_meta("kind", "texture")
+			resolved_path = sp
 	elif not has_face and FileAccess.file_exists(comp_path):
 		print("[CharLayer] %s (key=%s): COMPOSITION  %s" % [char_name, key, comp_path])
 		var comp := Control.new()
@@ -824,16 +1503,22 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 				_apply_texture_tint(wrapper, expr)
 			resolved_path = path
 		else:
-			# Nothing matched — log every path we tried so the author can
-			# see which name / location to use.
+			# Nothing matched — log the full tried-list ONCE per key per
+			# session (the list is ~40 lines; repeating it every time the
+			# same asset-less character re-enters buried real errors in
+			# the playtest log). Later appearances get the one-liner.
 			print("[CharLayer] %s (key=%s): PLACEHOLDER  no asset found" % [char_name, key])
-			for tried in resolved["tried"]:
-				print("    tried: %s" % tried)
+			if not _placeholder_logged.has(key):
+				_placeholder_logged[key] = true
+				for tried in resolved["tried"]:
+					print("    tried: %s" % tried)
 			tint_holder.queue_free()
 			wrapper.remove_meta("tint")
-			wrapper.add_child(_make_placeholder(char_name, expr))
+			var bust_ph := _make_placeholder(char_name, expr)
+			wrapper.add_child(bust_ph)
+			wrapper.set_meta("bust_ph", bust_ph)
 			wrapper.set_meta("kind", "placeholder")
-			resolved_path = "PLACEHOLDER (no asset)"
+			resolved_path = "PLACEHOLDER (procedural bust)"
 
 	# Asset-path overlay — a small label at the bottom of the slot
 	# showing the file path the engine loaded. Sits ABOVE everything
@@ -842,19 +1527,30 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	if DEBUG_ASSET_OVERLAY:
 		_add_asset_overlay(wrapper, resolved_path)
 
-	# ── ASCII frame around the portrait — drawn last so it sits on
-	# top of the texture / composition. Tracks the breath scale by
-	# being a sibling of tint_holder (also breathes via wrapper position).
-	_make_border(wrapper, char_name)
+	# ── ASCII frame around the portrait — skipped in CUTOUT_MODE
+	# (the modern-VN look has no box/border around the figure).
+	if not CUTOUT_MODE:
+		_make_border(wrapper, char_name)
 
-	# Tag the wrapper with pos + char so the ghost spawner on
-	# dismiss can place + tint the silhouette correctly.
+	# Tag the wrapper with its slot + character identity for
+	# lookups on dismiss / re-show.
 	wrapper.set_meta("pos", pos)
 	wrapper.set_meta("char", char_name)
 
 	add_child(wrapper)
+	# Entrance: fade + a short rise (12px) so a character arrives with
+	# a breath instead of materializing in place. _process writes
+	# wrapper.position absolutely every frame (idle bob), so the rise
+	# rides an "entrance_y" meta that the bob math composes in.
+	wrapper.set_meta("entrance_y", 12.0)
 	var tw := wrapper.create_tween()
-	tw.tween_property(wrapper, "modulate:a", 1.0, 0.3)
+	tw.set_parallel(true)
+	tw.tween_property(wrapper, "modulate:a", 1.0, 0.35)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tw.tween_method(func(v: float) -> void:
+		if is_instance_valid(wrapper):
+			wrapper.set_meta("entrance_y", v), 12.0, 0.0, 0.35)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	return wrapper
 
 
@@ -890,11 +1586,20 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 		else:
 			_apply_texture_tint(wrapper, expr)
 	else:
-		var ph: Control = wrapper.get_child(0)
-		if ph.has_meta("expr_lbl"):
-			(ph.get_meta("expr_lbl") as Label).text = "[ %s ]" % expr
-		if ph.has_meta("border"):
-			_apply_expr_tint(ph.get_meta("border") as Panel, _char_color(char_name), expr)
+		# Procedural bust — swap in the face for the new expression.
+		# (The old code read wrapper.get_child(0), which is the static
+		# backdrop, so placeholder expressions silently never updated.)
+		if wrapper.has_meta("bust_ph"):
+			var ph: Control = wrapper.get_meta("bust_ph") as Control
+			if ph != null and is_instance_valid(ph) and ph.has_meta("bust_tex"):
+				var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
+				var bcol: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else _char_color(char_name)
+				btr.texture = BUST_PORTRAIT.texture(key, expr, bcol)
+				if ph.has_meta("bust_shadow"):
+					var bsh: TextureRect = ph.get_meta("bust_shadow") as TextureRect
+					if bsh != null and is_instance_valid(bsh):
+						bsh.texture = btr.texture
+				ph.set_meta("bust_expr", expr)
 
 
 const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
@@ -1022,10 +1727,31 @@ func _find_in_gallery_index(key: String) -> Dictionary:
 	# Substring fallback — any filename whose stem CONTAINS the key.
 	# Sorted by stem length asc so the closest match wins (e.g.
 	# "john" matches "johnfrank" before "johnfrank_face_cutout").
+	#
+	# GUARDED (2026-08-02 audit) · the raw substring scan put the
+	# WRONG ART on real characters: "tem" (945 lines · Vol 7's lead)
+	# matched Temperance the tarot card, "lena" matched
+	# soLENAde_garden's gauntlet board, "per"/"em" matched the
+	# Emperor, "man" the Hanged Man, "judge" Judgement, "jo" John.
+	# Two rules close the class:
+	#   1. keys shorter than 5 chars never fuzzy-match (the exact-
+	#      stem list above still serves them);
+	#   2. a match must start at a WORD BOUNDARY (stem start or right
+	#      after _ or -), so an interior hit like soLENAde can never
+	#      claim a character again.
+	# A key with no legitimate art falls through to its procedural
+	# bust, which is correct — a hash-face is honest, a tarot card
+	# in a dialogue slot is not.
+	if k.length() < 5:
+		return {"texture": null, "path": ""}
 	var candidates: Array = []
 	for stem in _gallery_index:
-		if k in stem:
-			candidates.append(stem)
+		var at := String(stem).find(k)
+		while at != -1:
+			if at == 0 or String(stem)[at - 1] == "_" or String(stem)[at - 1] == "-":
+				candidates.append(stem)
+				break
+			at = String(stem).find(k, at + 1)
 	candidates.sort_custom(func(a, b): return a.length() < b.length())
 	for stem: String in candidates:
 		var path: String = _gallery_index[stem]
@@ -1099,7 +1825,14 @@ func _layout_portrait_texture(tr: TextureRect, tex: Texture2D) -> void:
 func _load_texture_with_fallback(path: String) -> Texture2D:
 	if ResourceLoader.exists(path):
 		return ResourceLoader.load(path) as Texture2D
-	var img := Image.load_from_file(ProjectSettings.globalize_path(path))
+	# Pre-check disk presence: Image.load_from_file ERRORS on a missing
+	# file, and the portrait resolver probes ~40 candidate paths per
+	# character — one VN sweep logged 56k "Failed to load image" errors
+	# from this line alone. Same fix as GameEngine._do_bg's loader.
+	var disk_path := ProjectSettings.globalize_path(path)
+	if not FileAccess.file_exists(disk_path):
+		return null
+	var img := Image.load_from_file(disk_path)
 	if img:
 		return ImageTexture.create_from_image(img)
 	return null
@@ -1130,10 +1863,6 @@ func _fade_out_free(node: Control) -> void:
 	# resurrect the dimmed-but-visible portrait into the next scene.
 	node.set_meta("fading", true)
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# Spawn an ASCII silhouette ghost at the dismiss position before
-	# the live portrait fades out. The ghost lingers on the scene as
-	# a faded after-image of the character.
-	_spawn_ghost(node)
 	var tw := node.create_tween()
 	tw.tween_property(node, "modulate:a", 0.0, 0.35)
 	tw.tween_callback(node.queue_free)
@@ -1211,137 +1940,91 @@ func _make_border(wrapper: Control, char_name: String) -> Control:
 	b.char_name = char_name
 	b.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# z above the portrait so the frame sits on top of the texture
-	b.z_index = 5
+	# NO z_index: the border is the wrapper's last child, which
+	# already draws it above the portrait texture. A relative
+	# z_index here stacks on CharLayer's UI_Z and floats the frame
+	# over the in-game menu / interludes / choices (all at UI_Z).
 	wrapper.add_child(b)
 	wrapper.set_meta("border", b)
 	return b
 
 
-# ── ASCII silhouette ghost on dismiss ──────────────────────────────
-# When a portrait fades out, we spawn a Control containing a Label
-# of ASCII-block characters in the shape of a generic figure, at low
-# alpha, in the character's accent color. The ghost lingers on the
-# scene until cleared by hide_all (scene end / chapter change).
-const _GHOST_ASCII := """    ▄▄▄▄▄
-   ▐█████▌
-   ▐██▀██▌
-	▐████▌
-   ▐██████▌
-  ▐████████▌
-   ▐██████▌
-	██████
-	██▌▐██
-	██▌▐██
-"""
-
-var _ghosts: Array = []
-
-func _spawn_ghost(node: Control) -> void:
-	var pos: String = node.get_meta("pos") if node.has_meta("pos") else "center"
-	var char_name: String = node.get_meta("char") if node.has_meta("char") else ""
-	var ghost := Label.new()
-	ghost.text = _GHOST_ASCII
-	ghost.add_theme_font_size_override("font_size", 14)
-	ghost.modulate = Color(0.0, 0.0, 0.0, 0.0)
-	var accent := accent_for(char_name)
-	ghost.add_theme_color_override("font_color",
-		Color(accent.r, accent.g, accent.b, 1.0))
-	ghost.position = POSITIONS.get(pos, Vector2(490, 80)) + Vector2(40, 30)
-	ghost.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(ghost)
-	# fade IN as the live portrait fades OUT — they cross-fade
-	var tw_g: Tween = ghost.create_tween()
-	tw_g.tween_property(ghost, "modulate:a", 0.30, 0.40)
-	# subtle slow drift upward
-	tw_g.parallel().tween_property(ghost, "position:y",
-		ghost.position.y - 8, 1.2)
-	_ghosts.append(ghost)
-
-
-func _clear_ghosts() -> void:
-	for g in _ghosts:
-		if is_instance_valid(g):
-			var tw_c: Tween = g.create_tween()
-			tw_c.tween_property(g, "modulate:a", 0.0, 0.30)
-			tw_c.tween_callback(g.queue_free)
-	_ghosts.clear()
+# ── ASCII silhouette ghost on dismiss — REMOVED (2026-08-09) ────────
+# A portrait dismiss used to spawn a lingering ASCII-block figure
+# ("the empty center portrait"). Softening it to an ephemeral beat
+# wasn't enough — the user's verdict: gone entirely. A dismiss is
+# now just the 0.35s alpha fade of the live portrait, nothing left
+# behind.
 
 
 # ── Placeholder portrait ──────────────────────────────────────────────────────
 
 func _make_placeholder(char_name: String, expr: String) -> Control:
-	var col := _char_color(char_name)
+	# Procedural pixel bust (VnBustPortrait) — deterministic from the
+	# character key, expression-aware, dressed in the accent color.
+	# Replaces the old oval-and-rectangle silhouette with a face.
+	var key := char_key(char_name)
+	var col := accent_for(char_name) if CHAR_ACCENTS.has(key) else _char_color(char_name)
 	var ph  := Control.new()
 	ph.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
 
-	# Background fill
-	var bg := Panel.new()
-	bg.size = Vector2(SPRITE_W, SPRITE_H)
-	var bg_st := StyleBoxFlat.new()
-	bg_st.bg_color = Color(col.r * 0.10, col.g * 0.10, col.b * 0.10, 0.92)
-	bg_st.border_color = Color(col.r, col.g, col.b, 0.0)
-	bg_st.set_border_width_all(0)
-	bg.add_theme_stylebox_override("panel", bg_st)
-	ph.add_child(bg)
+	var bust_tex: Texture2D = BUST_PORTRAIT.texture(key, expr, col)
 
-	# Colored border panel (expression-tinted)
-	var border := Panel.new()
-	border.size = Vector2(SPRITE_W, SPRITE_H)
-	_apply_expr_tint(border, col, expr)
-	ph.add_child(border)
-	ph.set_meta("border", border)
+	# Soft drop shadow — the same bust silhouette, black, offset down-
+	# right by ~1 source pixel (5 screen px at the 5x upscale). Grounds
+	# the cutout on the scene instead of floating stickered over it.
+	var sh := TextureRect.new()
+	sh.texture = bust_tex
+	sh.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	sh.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	sh.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	sh.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	sh.offset_left = 6.0
+	sh.offset_right = 6.0
+	sh.offset_top = 8.0
+	sh.offset_bottom = 8.0
+	sh.modulate = Color(0.0, 0.0, 0.0, 0.35)
+	sh.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ph.add_child(sh)
+	ph.set_meta("bust_shadow", sh)
 
-	# Head oval
-	var hw := 96.0
-	var hh := 118.0
-	var head := Panel.new()
-	head.position           = Vector2((SPRITE_W - hw) * 0.5, 74.0)
-	head.custom_minimum_size = Vector2(hw, hh)
-	var h_st := StyleBoxFlat.new()
-	h_st.bg_color = Color(col.r * 0.42, col.g * 0.42, col.b * 0.42, 0.95)
-	var r := int(hw * 0.5)
-	h_st.corner_radius_top_left     = r
-	h_st.corner_radius_top_right    = r
-	h_st.corner_radius_bottom_left  = r
-	h_st.corner_radius_bottom_right = r
-	head.add_theme_stylebox_override("panel", h_st)
-	ph.add_child(head)
+	var tr := TextureRect.new()
+	tr.texture = bust_tex
+	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Locale integration tint — sodium-warm in the Kwik Stop, safelight
+	# red in the darkroom. WHITE (no-op) for unlisted locales.
+	tr.self_modulate = _locale_tint
+	ph.add_child(tr)
+	ph.set_meta("bust_tex", tr)
+	ph.set_meta("bust_col", col)
+	# Blink bookkeeping — _process swaps the bust to its "blink" frame
+	# for ~0.12s every few seconds (VnBustPortrait v2 renders both
+	# frames from cache, so the swap is free).
+	ph.set_meta("bust_key", key)
+	ph.set_meta("bust_expr", expr)
+	ph.set_meta("blink_next", _t + randf_range(1.5, 4.5))
+	ph.set_meta("blink_until", 0.0)
+	_bust_blinkers.append(ph)
 
-	# Body shape
-	var bw := 164.0
-	var body := Panel.new()
-	body.position            = Vector2((SPRITE_W - bw) * 0.5, 214.0)
-	body.custom_minimum_size = Vector2(bw, 234.0)
-	var b_st := StyleBoxFlat.new()
-	b_st.bg_color = Color(col.r * 0.30, col.g * 0.30, col.b * 0.30, 0.90)
-	b_st.corner_radius_top_left  = 20
-	b_st.corner_radius_top_right = 20
-	body.add_theme_stylebox_override("panel", b_st)
-	ph.add_child(body)
-
-	# Name label
+	# Name plate — kept, since a procedural face still needs naming
+	# the first time a character appears.
 	var name_lbl := Label.new()
 	name_lbl.text                = char_name.capitalize()
-	name_lbl.position            = Vector2(0.0, SPRITE_H - 90.0)
-	name_lbl.size                = Vector2(SPRITE_W, 32.0)
+	name_lbl.position            = Vector2(0.0, SPRITE_H - 34.0)
+	name_lbl.size                = Vector2(SPRITE_W, 26.0)
 	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_lbl.add_theme_color_override("font_color", col)
+	name_lbl.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
+	name_lbl.add_theme_constant_override("shadow_offset_x", 1)
+	name_lbl.add_theme_constant_override("shadow_offset_y", 1)
 	name_lbl.add_theme_font_size_override("font_size", 15)
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		name_lbl.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
 	ph.add_child(name_lbl)
-
-	# Expression label
-	var expr_lbl := Label.new()
-	expr_lbl.text                = "[ %s ]" % expr
-	expr_lbl.position            = Vector2(0.0, SPRITE_H - 54.0)
-	expr_lbl.size                = Vector2(SPRITE_W, 22.0)
-	expr_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	expr_lbl.add_theme_color_override("font_color", Color(col.r, col.g, col.b, 0.5))
-	expr_lbl.add_theme_font_size_override("font_size", 10)
-	ph.add_child(expr_lbl)
-	ph.set_meta("expr_lbl", expr_lbl)
 
 	return ph
 

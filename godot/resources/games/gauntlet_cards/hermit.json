@@ -1,0 +1,275 @@
+{
+ "id": "arcana_hermit",
+ "w": 110,
+ "h": 170,
+ "palette": [
+  "#0b0a10",
+  "#16141c",
+  "#948f70",
+  "#514e3d",
+  "#c7c197",
+  "#d8cfba",
+  "#060608"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    4,
+    4,
+    102,
+    162
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 6,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 163,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 6,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 103,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 10,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 159,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 10,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 99,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.05,
+   "seed": 3,
+   "color": 0
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.02,
+   "seed": 11,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    51,
+    20
+   ],
+   "s": "IX",
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    30,
+    80
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    14,
+    40,
+    82,
+    96
+   ],
+   "amount": 0.12,
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 64,
+   "y_range": [
+    62,
+    122
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    38,
+    76,
+    16,
+    20
+   ],
+   "color": 3
+  },
+  {
+   "op": "disk",
+   "xy": [
+    46,
+    86
+   ],
+   "r": 4,
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     46,
+     70
+    ],
+    [
+     46,
+     76
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     38,
+     96
+    ],
+    [
+     54,
+     96
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 138,
+   "x_range": [
+    20,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    14,
+    144,
+    82,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "text",
+   "xy": [
+    35,
+    148
+   ],
+   "s": "THE HERMIT",
+   "color": 2
+  }
+ ]
+}

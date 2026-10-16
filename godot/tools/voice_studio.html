@@ -178,7 +178,7 @@
 
     <div class="step">
       <h2>3 · Export</h2>
-      <p>When you have audio for the lines you want, click <b>Export drop-in zip</b>. The zip contains <code>assets/audio/voice/&lt;scene&gt;/NNN.ogg</code> files + an updated scene JSON. Drop it into your <code>godot/</code> folder.</p>
+      <p>When you have audio for the lines you want, click <b>Export drop-in zip</b>. The zip contains <code>assets/audio/voice/&lt;scene&gt;/NNN.ogg</code> files + a snapshot of the scene JSON. Put it on Google Drive and run <code>bash godot/tools/import_voice_dropins.sh</code> on the Deck — it matches every line to the scene as it is <i>now</i> (do not unzip it over <code>godot/</code>: the snapshot would overwrite later edits).</p>
       <button id="exportBtn" class="primary" disabled>Export drop-in zip</button>
       <p id="exportStatus" class="status"></p>
     </div>
@@ -187,7 +187,7 @@
   <section class="content">
     <div class="help-banner" id="helpBanner">
       <b>How to use:</b>
-      Drop a scene JSON on the left (e.g. <code>vol5_ch0_booth6.json</code>). Each voiceable line gets a row below — pick a method on the left, then record / upload / generate per line. When you're done, hit <b>Export drop-in zip</b> on the left. Unzip it inside your <code>godot/</code> folder; the game picks the audio up on next run.
+      Drop a scene JSON on the left (e.g. <code>vol5_ch0_booth6.json</code>). Each voiceable line gets a row below — pick a method on the left, then record / upload / generate per line. When you're done, hit <b>Export drop-in zip</b> on the left, put the zip on Google Drive and run <code>bash godot/tools/import_voice_dropins.sh</code> on the Deck.
     </div>
 
     <div id="sceneInfo" class="scene-info" style="display:none;">
@@ -594,7 +594,10 @@ $('exportBtn').addEventListener('click', async () => {
 
   zip.file('README.txt',
     `Modern Mythology — voice drop-in for ${scene.id}\n\n` +
-    `Unzip into your "godot/" folder (the one containing project.godot).\n` +
+    `Put this zip on Google Drive and run, on the Deck:\n` +
+    `  bash godot/tools/import_voice_dropins.sh\n` +
+    `(it matches each line to the scene as it is now — unzipping over godot/\n` +
+    `would overwrite later edits to the scene with this snapshot)\n\n` +
     `It will write:\n\n` +
     `  godot/assets/audio/voice/${scene.id}/NNN.ogg|webm|mp3\n` +
     `  godot/resources/scenes/${vol}/${scene.id}.json  (with "voice" keys patched in)\n\n` +

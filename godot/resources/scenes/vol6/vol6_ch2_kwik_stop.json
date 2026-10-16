@@ -35,7 +35,8 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
+      "text": "[mood:fluorescent_corridor][shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/006.mp3"
     },
     {
       "t": "show",
@@ -45,59 +46,134 @@
     },
     {
       "t": "narrate",
-      "text": "He is, she registers, wearing the same clothes he had on yesterday. The sunburn has not faded. His eyes do not go to the back cooler this time. They go, briefly, to her — the same three-second look in the convex mirror he had used yesterday — and then to the little snack section, where he picks up a bag of pretzels and a Snickers."
+      "text": "He is, she registers, wearing the same clothes he had on yesterday. The sunburn has not faded. His eyes do not go to the back cooler this time.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "He brings them to the counter. He sets them down."
+      "text": "They go, briefly, to her — the same three-second look in the convex mirror he had used yesterday — and then to the little snack section, where he picks up a bag of pretzels and a Snickers.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/009.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert cooler]The back cooler hums against the far wall. In its glass, the aisle; in the aisle, him — not looking at it."
+    },
+    {
+      "t": "choice",
+      "style": "verb_coin",
+      "hotspot": "the back cooler",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "look at", "skill": "logic",
+          "goto": 12,
+          "flag": "ch2_cooler_looked",
+          "hide_if_flag": "ch2_cooler_looked"
+        },
+        {
+          "text": "watch him", "skill": "signal",
+          "goto": 14,
+          "flag": "ch2_cooler_watched",
+          "hide_if_flag": "ch2_cooler_watched"
+        },
+        {
+          "text": "take two", "skill": "signal",
+          "goto": 16,
+          "flag": "ch2_cooler_took",
+          "hide_if_flag": "ch2_cooler_took",
+          "item": "two Powerades"
+        },
+        {
+          "text": "say nothing", "skill": "composure",
+          "goto": 18
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The glass gives back the fluorescents, the racks, the door. It gives back the counter and Sam behind it. It does not, on the first pass, give back the man. On the second pass it does."
+    },
+    {
+      "t": "jump",
+      "goto": 11
+    },
+    {
+      "t": "narrate",
+      "text": "He does not look at the cooler. He has stopped looking at the cooler. That is its own kind of looking. Yesterday he stood in front of it for ten minutes and bought nothing out of it."
+    },
+    {
+      "t": "jump",
+      "goto": 11
+    },
+    {
+     "t": "narrate",
+     "text": "He opens the cooler and takes two Powerades, the blue kind, and does not look at the glass while the door is open. The cold comes off the shelves like a held breath let out."
+    },
+{
+     "t": "jump",
+     "goto": 11
+    },
+    {
+      "t": "narrate",
+      "text": "He brings them to the counter. He sets them down.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/018.mp3"
     },
     {
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "(looking at the pretzels, not at Sam) \"Hot one today.\""
+      "text": "[shot:closeup person](looking at the pretzels, not at Sam) \"Hot one today.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/019.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/020.mp3"
     },
     {
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "\"You working tomorrow?\""
+      "text": "\"You working tomorrow?\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/021.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"I'm — yes.\""
+      "text": "\"I'm — yes.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/022.mp3"
     },
     {
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "\"Morning or evening?\""
+      "text": "\"Morning or evening?\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's throat goes tight. The cold returns."
+      "text": "[shot:closeup sam]Sam's throat goes tight. The cold returns.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/024.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "(lying, effortlessly) \"Morning. Six to two.\""
+      "text": "(lying, effortlessly) \"Morning. Six to two.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is, in fact, off tomorrow. She has nothing scheduled until Wednesday."
+      "text": "She is, in fact, off tomorrow. She has nothing scheduled until Wednesday.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes."
+      "text": "The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/027.mp3"
     },
     {
       "t": "hide",
@@ -105,72 +181,112 @@
     },
     {
       "t": "narrate",
-      "text": "Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat. There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door."
+      "text": "[shot:insert door~]Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "The woman is younger. The woman is also wearing a press lanyard, which Sam can see briefly flash when the man hands her the Snickers."
+      "text": "There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "The sedan pulls out. It still has no front plate."
+      "text": "The woman is younger. The woman is also wearing a press lanyard, which Sam can see briefly flash when the man hands her the Snickers.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:"
+      "text": "The sedan pulls out. It still has no front plate.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/032.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert register]Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/033.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "role": "— text · 13:48 —",
       "expr": "neutral",
-      "text": "the sedan came back. two people this time. one of them is wearing a press lanyard. i think they are watching me. i don't know what to do."
+      "text": "the sedan came back. two people this time. one of them is wearing a press lanyard. i think they are watching me. i don't know what to do.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply comes in forty seconds."
+      "text": "The reply comes in forty seconds.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/035.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "role": "— text —",
       "expr": "neutral",
-      "text": "Mija. They are not watching you. They are protecting you. Do not approach them. Do not avoid them. Continue as you have been. — G."
+      "text": "Mija. They are not watching you. They are protecting you. Do not approach them. Do not avoid them. Continue as you have been. — G.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam reads the message three times. She puts the phone down."
+      "text": "Sam reads the message three times. She puts the phone down.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming, the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:"
+      "text": "[shot:establish]She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming,",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/038.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/039.ogg"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
+      "text": "[mood:macro_haze][shot:closeup sam]I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/040.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to have to learn, quickly, how to be the kind of person who is watched out for without needing it to be named as such."
+      "text": "I am going to have to learn, quickly, how to be the kind of person who is watched out for without needing it to be named as such.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/041.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Graciela knew the sedan. Graciela answered in forty seconds. Graciela has been in communication with people I do not know about. Graciela is a node."
+      "text": "Graciela knew the sedan. Graciela answered in forty seconds. Graciela has been in communication with people I do not know about. Graciela is a node.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, until this moment, have the word node for what she is beginning to map. The word will come later, from Maya, who will give it to her in late June at a table in the back of Cosmic Comics over two iced coffees, and who will say — \"that's what F.T. called them, and it's the least wrong word I've heard.\" Sam will say, who is F.T. Maya will say, I'm still figuring that out."
+      "text": "She does not, until this moment, have the word node for what she is beginning to map.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/043.ogg"
     },
     {
       "t": "narrate",
-      "text": "But that is three weeks away."
+      "text": "The word will come later, from Maya, who will give it to her in late June at a table in the back of Cosmic Comics over two iced coffees, and who will say — \"that's what F.T. called them, and it's the least wrong word I've heard.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/044.ogg"
     },
     {
       "t": "narrate",
-      "text": "Today, in the empty Kwik Stop, Sam Miller has only the small word inside, and the small word thing, and the slightly larger word node which she has not yet met. She registers the deficit. She notes it for future correction. She wipes down the counter. She watches the parking lot."
+      "text": "Sam will say, who is F.T. Maya will say, I'm still figuring that out.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/045.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "But that is three weeks away.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/046.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Today, in the empty Kwik Stop, Sam Miller has only the small word inside, and the small word thing, and the slightly larger word node which she has not yet met. She registers the deficit. She notes it for future correction.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/047.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes down the counter. She watches the parking lot.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/048.ogg"
     },
     {
       "t": "jump",

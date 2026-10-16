@@ -70,7 +70,7 @@ def make_material(name, base_color):
     return mat
 
 
-def make_box(name, location, size, material):
+def _make_box_vendored(name, location, size, material):
     """Add a box primitive at location, scale to size, apply material."""
     bpy.ops.mesh.primitive_cube_add(size=1.0, location=location)
     obj = bpy.context.active_object
@@ -80,6 +80,24 @@ def make_box(name, location, size, material):
     obj.data.materials.clear()
     obj.data.materials.append(material)
     return obj
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def build_room():

@@ -34,27 +34,43 @@
       "t": "show"
     },
     {
-      "text": "She woke before Tem.",
+      "text": "[mood:morning_bright]She woke before Tem.",
       "t": "narrate"
     },
     {
-      "text": "The bedroom at six was gray with the rain-light, the same gray it had been every morning of the last week. She lay there a minute looking at the small crack in the ceiling above the closet that the upstairs neighbor's bathtub had made in 2050. Tem on her back beside her with one arm above the blanket and the other under it. The wool blanket pulled up to Tem's collarbone. The hair on the pillow fanned out the way her hair always fanned when she had slept on her back without a tie.",
+      "text": "The bedroom at six was gray with the rain-light, the same gray it had been every morning of the last week.",
       "t": "narrate"
     },
     {
-      "text": "Lena did not move for a count.",
+      "text": "[shot:establish]She lay there a minute looking at the small crack in the ceiling above the closet that the upstairs neighbor's bathtub had made in 2050. Tem on her back beside her with one arm above the blanket and the other under it.",
       "t": "narrate"
     },
     {
-      "text": "Then she got up the way she got up most mornings, which was without thinking about it. She pulled the door of the bedroom closed behind her so the light from the kitchen would not wake Tem. She put on the wool socks. She put the kettle on. She stood at the kitchen window in her flannel and looked at the alley.",
+      "text": "The wool blanket pulled up to Tem's collarbone. The hair on the pillow fanned out the way her hair always fanned when she had slept on her back without a tie.",
       "t": "narrate"
     },
     {
-      "text": "The patch on the Starfish Nebula mural had grown overnight. The fourth one. It was now most of the size of the other three put together.",
+      "text": "[shot:establish]Lena did not move for a count.",
       "t": "narrate"
     },
     {
-      "text": "The mural's bottom-left quadrant \u2014 the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected \u2014 was, this morning, half-eaten. The patch had taken the seven and a half arms.",
+      "text": "[shot:insert window]Then she got up the way she got up most mornings, which was without thinking about it. She pulled the door of the bedroom closed behind her so the light from the kitchen would not wake Tem. She put on the wool socks.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put the kettle on. She stood at the kitchen window in her flannel and looked at the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert patch~]The patch on the Starfish Nebula mural had grown overnight. The fourth one. It was now most of the size of the other three put together.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mural's bottom-left quadrant — the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected — was, this morning, half-eaten.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch had taken the seven and a half arms.",
       "t": "narrate"
     },
     {
@@ -66,7 +82,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:salty_tome_interior",
+      "src": "3d:salty_tome_kitchenette",
       "t": "bg"
     },
     {
@@ -76,27 +92,71 @@
       "t": "show"
     },
     {
-      "text": "The bookstore was on the ground floor of the same building. Petra's front door was on Hemlock. The small back door that Lena used when she came down to make coffee for Petra in the mornings was off the alley, two doors down from the back stairwell. Lena had been making coffee for Petra on Monday mornings since 2050 because Petra had gotten her into the apartment when nobody else in town had had a one-bedroom under nine hundred a month and because Lena had decided, in her first month, that she was going to make herself useful in small ways or she was going to feel like a tenant for the rest of her time in the building.",
+      "text": "The bookstore was on the ground floor of the same building. Petra's front door was on Hemlock.",
       "t": "narrate"
     },
     {
-      "text": "She unlocked the back door. The bookstore was at sixty-two. The cat \u2014 Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat \u2014 was on the small wool pillow in the front-window display where she always was. The cat opened one eye when Lena came in and closed it again.",
+      "text": "The small back door that Lena used when she came down to make coffee for Petra in the mornings was off the alley, two doors down from the back stairwell.",
       "t": "narrate"
     },
     {
-      "text": "Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home. Lena had fought Petra about the cone for a year before realizing the fight was Petra's pleasure and that Petra wanted Lena to fight her about it. Lena had stopped fighting. The coffee was now made the way Petra wanted it made, and Petra still complained about it on Monday mornings, and the complaining was the small ritual of Lena's Monday.",
+      "text": "Lena had been making coffee for Petra on Monday mornings since 2050 because Petra had gotten her into the apartment when nobody else in town had had a one-bedroom under nine hundred a month and because Lena had decided,",
       "t": "narrate"
     },
     {
-      "text": "She heard Petra on the phone before she saw her. Petra was in the back office with the door closed, which Petra usually did not have closed at seven in the morning when the only person in the building was Lena. Lena could hear Petra's voice through the door but not the words. The voice was Petra in mediation register, which Lena had heard Petra do on the phone three times in two years and which Lena recognized as Petra's I-am-going-to-bring-this-down voice. The tone was even. The pace was slow. The sentences were short.",
+      "text": "in her first month, that she was going to make herself useful in small ways or she was going to feel like a tenant for the rest of her time in the building.",
       "t": "narrate"
     },
     {
-      "text": "Lena finished the coffee. She poured Petra's into the small clay mug Petra had bought at Margit's in 2009. She set it on the desk outside the office door. She poured her own into the second cup and stood at the front of the store looking out at Hemlock through the rain.",
+      "text": "[shot:insert cat]She unlocked the back door. The bookstore was at sixty-two.",
       "t": "narrate"
     },
     {
-      "text": "Petra came out at seven-twenty. She picked up the cup. She drank from it standing. She did not, immediately, complain about the coffee.",
+      "text": "The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cat opened one eye when Lena came in and closed it again.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena went to the small kitchenette in the back of the store and put Petra's kettle on. Petra liked her coffee made in the cone with the dark French Soren had been roasting, which was the same coffee Lena drank at home.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had fought Petra about the cone for a year before realizing the fight was Petra's pleasure and that Petra wanted Lena to fight her about it. Lena had stopped fighting.",
+      "t": "narrate"
+    },
+    {
+      "text": "The coffee was now made the way Petra wanted it made, and Petra still complained about it on Monday mornings, and the complaining was the small ritual of Lena's Monday.",
+      "t": "narrate"
+    },
+    {
+      "text": "She heard Petra on the phone before she saw her. Petra was in the back office with the door closed, which Petra usually did not have closed at seven in the morning when the only person in the building was Lena.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena could hear Petra's voice through the door but not the words.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert phone]The voice was Petra in mediation register, which Lena had heard Petra do on the phone three times in two years and which Lena recognized as Petra's I-am-going-to-bring-this-down voice. The tone was even. The pace was slow.",
+      "t": "narrate"
+    },
+    {
+      "text": "The sentences were short.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena finished the coffee. She poured Petra's into the small clay mug Petra had bought at Margit's in 2009. She set it on the desk outside the office door.",
+      "t": "narrate"
+    },
+    {
+      "text": "She poured her own into the second cup and stood at the front of the store looking out at Hemlock through the rain.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:closeup petra]Petra came out at seven-twenty. She picked up the cup. She drank from it standing. She did not, immediately, complain about the coffee.",
       "t": "narrate"
     },
     {
@@ -113,18 +173,34 @@
     },
     {
       "char": "petra",
-      "text": "I am going up the river this morning. Eli Holsten and Jonas Vass have been threatening to sue each other over the fence on the back forty for nine months and Jonas's wife called me at six because Jonas walked the line yesterday afternoon with a chainsaw. I have to go up there before Eli also walks the line with something. I won't be back until afternoon. Will you open?",
+      "text": "I am going up the river this morning.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "Eli Holsten and Jonas Vass have been threatening to sue each other over the fence on the back forty for nine months and Jonas's wife called me at six because Jonas walked the line yesterday afternoon with a chainsaw.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "I have to go up there before Eli also walks the line with something. I won't be back until afternoon. Will you open?",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "lena",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "Petra at her usual fight register. Jonas walked the line yesterday afternoon with a chainsaw. Lena registered the chainsaw and registered that Petra had not slept since Jonas's wife had called and that Petra was, by the level of her composure, somewhere past anger and into the calm a person gets when she has decided to fix something.",
+      "text": "Petra at her usual fight register. Jonas walked the line yesterday afternoon with a chainsaw.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena registered the chainsaw and registered that Petra had not slept since Jonas's wife had called and that Petra was, by the level of her composure, somewhere past anger and into the calm a person gets when she has decided to fix something.",
       "t": "narrate"
     },
     {
@@ -147,7 +223,13 @@
     },
     {
       "char": "petra",
-      "text": "There are two holds in the office. The Marsden woman is coming for hers at noon. The other is for whoever walks in and asks for Inga's monograph, which somebody will. The till is unlocked. The float is one-twenty in tens and fives and ones. There is a sandwich in the small fridge if you do not eat. Eat it.",
+      "text": "[shot:closeup person_b]There are two holds in the office. The Marsden woman is coming for hers at noon. The other is for whoever walks in and asks for Inga's monograph, which somebody will. The till is unlocked.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "petra",
+      "text": "The float is one-twenty in tens and fives and ones. There is a sandwich in the small fridge if you do not eat. Eat it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -177,7 +259,7 @@
     },
     {
       "char": "lena",
-      "text": "You are leaving.",
+      "text": "[shot:closeup person]You are leaving.",
       "expr": "neutral",
       "t": "say"
     },
@@ -188,15 +270,27 @@
       "t": "say"
     },
     {
-      "text": "Petra set the cup down half-empty, pulled her coat off the hook by the office door, and was out the back through the alley in under ninety seconds. Lena heard the wagon start and pull away.",
+      "text": "[shot:establish]Petra set the cup down half-empty, pulled her coat off the hook by the office door, and was out the back through the alley in under ninety seconds. Lena heard the wagon start and pull away.",
       "t": "narrate"
     },
     {
-      "text": "The bookstore at seven-thirty on a Monday morning was Lena's.",
+      "src": "3d:salty_tome_interior",
+      "t": "bg"
+    },
+    {
+      "text": "[shot:establish]The bookstore at seven-thirty on a Monday morning was Lena's.",
       "t": "narrate"
     },
     {
-      "text": "She opened the front at nine. She turned the CLOSED sign. The first customer came in at nine-eleven, which was a man named Edgar Lindstrom whom Lena had known by face for two years and whose name she had only learned that summer when Petra had introduced them. Edgar bought a book from the new-arrivals shelf without asking what it was. He paid in tokens. He left.",
+      "text": "She opened the front at nine. She turned the CLOSED sign.",
+      "t": "narrate"
+    },
+    {
+      "text": "The first customer came in at nine-eleven, which was a man named Edgar Lindstrom whom Lena had known by face for two years and whose name she had only learned that summer when Petra had introduced them.",
+      "t": "narrate"
+    },
+    {
+      "text": "Edgar bought a book from the new-arrivals shelf without asking what it was. He paid in tokens. He left.",
       "t": "narrate"
     },
     {
@@ -204,19 +298,47 @@
       "t": "narrate"
     },
     {
-      "text": "The bell rang at nine-thirty-two. A woman came in with two children \u2014 a boy of maybe seven and a girl of four \u2014 and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren. Lena did not know the name. She walked the woman to the children's section and they looked together. The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena. Lena said, take your time, the carpet's clean. The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
+      "text": "The bell rang at nine-thirty-two.",
       "t": "narrate"
     },
     {
-      "text": "The Marsden woman came in for her hold at eleven-forty. The hold was a 1984 hardcover of a novel Lena had never heard of with a torn dust jacket Petra had taped along the spine. Mrs. Marsden paid in cash. She had a question about another book that Lena did not know how to answer and Lena said she would ask Petra and call her, and Mrs. Marsden said don't bother, I'll come in Wednesday, and left.",
+      "text": "A woman came in with two children — a boy of maybe seven and a girl of four — and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren.",
       "t": "narrate"
     },
     {
-      "text": "The mother and the children left at eleven-fifty with two of the three picture books. The girl had not wanted to leave the third behind. The mother told the girl they would come back on Saturday for the third. The girl walked out crying. The mother looked at Lena over her shoulder and rolled her eyes in a way that was not unkind to the girl, just tired.",
+      "text": "Lena did not know the name. She walked the woman to the children's section and they looked together.",
       "t": "narrate"
     },
     {
-      "text": "The bell rang at eleven-fifty-eight.",
+      "text": "The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena said, take your time, the carpet's clean.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
+      "t": "narrate"
+    },
+    {
+      "text": "The Marsden woman came in for her hold at eleven-forty. The hold was a 1984 hardcover of a novel Lena had never heard of with a torn dust jacket Petra had taped along the spine. Mrs. Marsden paid in cash.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had a question about another book that Lena did not know how to answer and Lena said she would ask Petra and call her, and Mrs. Marsden said don't bother, I'll come in Wednesday, and left.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mother and the children left at eleven-fifty with two of the three picture books. The girl had not wanted to leave the third behind. The mother told the girl they would come back on Saturday for the third.",
+      "t": "narrate"
+    },
+    {
+      "text": "The girl walked out crying. The mother looked at Lena over her shoulder and rolled her eyes in a way that was not unkind to the girl, just tired.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert bell]The bell rang at eleven-fifty-eight.",
       "t": "narrate"
     },
     {
@@ -236,7 +358,11 @@
       "t": "show"
     },
     {
-      "text": "Roy Hummel came in. He was not, this morning, in the orange Hawaiian. He was in a long-sleeved chambray button-down and the same khakis and the same boat shoes. The wax canvas coat was over his arm rather than on. The smile he came in with was the same one he always came in with.",
+      "text": "[shot:closeup roy]Roy Hummel came in. He was not, this morning, in the orange Hawaiian. He was in a long-sleeved chambray button-down and the same khakis and the same boat shoes. The wax canvas coat was over his arm rather than on.",
+      "t": "narrate"
+    },
+    {
+      "text": "The smile he came in with was the same one he always came in with.",
       "t": "narrate"
     },
     {
@@ -288,11 +414,15 @@
       "t": "say"
     },
     {
-      "text": "He named three. The first was The Architecture of Inland Water by an author whose name he gave as something Norwegian. The second was Pattern Persistence: Selected Essays by an author Lena did not catch because she had stopped breathing for a half-second. The third was The Seven Floors of the Glass House by no author given.",
+      "text": "[shot:establish_shop][beat:chill]He named three. The first was The Architecture of Inland Water by an author whose name he gave as something Norwegian.",
       "t": "narrate"
     },
     {
-      "text": "Lena, behind the counter, did not, for a beat, do anything with her face.",
+      "text": "The second was Pattern Persistence: Selected Essays by an author Lena did not catch because she had stopped breathing for a half-second. The third was The Seven Floors of the Glass House by no author given.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:closeup lena]Lena, behind the counter, did not, for a beat, do anything with her face.",
       "t": "narrate"
     },
     {
@@ -314,7 +444,15 @@
       "t": "say"
     },
     {
-      "text": "She turned to the small terminal Petra kept on the counter and ran the three titles. None came up. She had not expected them to. The terminal hummed in the small careful way Petra's terminals hummed because Petra did not like fast electronics and bought the slow ones on purpose. Lena typed slowly. She typed slowly because she needed the time more than the terminal did.",
+      "text": "She turned to the small terminal Petra kept on the counter and ran the three titles. None came up. She had not expected them to.",
+      "t": "narrate"
+    },
+    {
+      "text": "The terminal hummed in the small careful way Petra's terminals hummed because Petra did not like fast electronics and bought the slow ones on purpose. Lena typed slowly.",
+      "t": "narrate"
+    },
+    {
+      "text": "She typed slowly because she needed the time more than the terminal did.",
       "t": "narrate"
     },
     {
@@ -336,7 +474,11 @@
       "t": "say"
     },
     {
-      "text": "Roy did not, for a count, leave. He set the wax canvas coat on the small table by the window display and walked the new-arrivals shelf, picking up two books and putting them down. He picked up the picture book the girl had not been allowed to take and looked at the cover and put it down. He came back to the counter.",
+      "text": "[shot:establish]Roy did not, for a count, leave. He set the wax canvas coat on the small table by the window display and walked the new-arrivals shelf, picking up two books and putting them down.",
+      "t": "narrate"
+    },
+    {
+      "text": "He picked up the picture book the girl had not been allowed to take and looked at the cover and put it down. He came back to the counter.",
       "t": "narrate"
     },
     {
@@ -359,7 +501,7 @@
     },
     {
       "char": "lena",
-      "text": "He had a bug last week. He's better now.",
+      "text": "[shot:closeup person]He had a bug last week. He's better now.",
       "expr": "neutral",
       "t": "say"
     },
@@ -382,7 +524,7 @@
       "t": "say"
     },
     {
-      "text": "There it was.",
+      "text": "[shot:establish]There it was.",
       "t": "narrate"
     },
     {
@@ -434,7 +576,7 @@
       "t": "say"
     },
     {
-      "text": "She kept her hand on the counter.",
+      "text": "[shot:insert hand]She kept her hand on the counter.",
       "t": "narrate"
     },
     {
@@ -466,7 +608,7 @@
       "t": "say"
     },
     {
-      "text": "She did not, this time, manage to keep her face entirely flat. The half-second of registration was enough. Roy saw it. The smile widened a degree.",
+      "text": "[shot:closeup lena~]She did not, this time, manage to keep her face entirely flat. The half-second of registration was enough. Roy saw it. The smile widened a degree.",
       "t": "narrate"
     },
     {
@@ -510,7 +652,7 @@
       "t": "say"
     },
     {
-      "text": "He held the smile. He held it.",
+      "text": "[shot:closeup roy]He held the smile. He held it.",
       "t": "narrate"
     },
     {
@@ -548,7 +690,7 @@
       "t": "say"
     },
     {
-      "text": "He left.",
+      "text": "[shot:establish]He left.",
       "t": "narrate"
     },
     {

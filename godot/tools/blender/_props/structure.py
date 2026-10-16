@@ -37,7 +37,14 @@ def make_wall(prefix, anchor, *, length, height=3.0, thickness=0.20,
     """Single straight wall. axis='Y' (runs N-S) or 'X' (runs E-W).
     For Y walls, baseboard_face_sign=+1 puts baseboard on +X (east)
     side; -1 puts it on -X (west) side. For X walls, +1/-1 flip
-    along Y."""
+    along Y — i.e. the sign points from the wall INTO THE ROOM.
+
+    2026-09-23: the baseboard was 6 cm thick centred 6 cm off the wall's
+    centre line — wholly inside any 20 cm wall, on either side. 398
+    baseboards in 79 rooms had never been visible. It sits ON the face
+    now, 1.2 cm proud (under the overlap gate's 1.5 cm abutment
+    tolerance, so furniture set against a wall still reads as flush)."""
+    b_off = thickness / 2.0 + 0.006
     palette = palette or {}
     wall_col = palette.get("wall", P.WALL_CREAM)
     base_col = palette.get("baseboard", P.WALL_BASEBOARD)
@@ -47,15 +54,79 @@ def make_wall(prefix, anchor, *, length, height=3.0, thickness=0.20,
                  (thickness, length, height), wall_col)
         if with_baseboard:
             make_box(f"{prefix}_Base",
-                     (cx + baseboard_face_sign * 0.06, cy, 0.08),
-                     (0.06, length, 0.16), base_col)
+                     (cx + baseboard_face_sign * b_off, cy, 0.08),
+                     (0.012, length, 0.16), base_col)
     else:
         make_box(f"{prefix}", (cx, cy, height / 2.0),
                  (length, thickness, height), wall_col)
         if with_baseboard:
             make_box(f"{prefix}_Base",
-                     (cx, cy + baseboard_face_sign * 0.06, 0.08),
-                     (length, 0.06, 0.16), base_col)
+                     (cx, cy + baseboard_face_sign * b_off, 0.08),
+                     (length, 0.012, 0.16), base_col)
+
+
+def make_frame_ring(prefix, center, size, color, *, bar=0.06, depth=0.10):
+    """A window frame as a RING — head, sill and two jambs — from the
+    (center, size) of the solid slab a builder used to lay (2026-10-07).
+    Twenty windows' "frames" were one thin board the size of the
+    opening, standing in the glass's plane: through the cut wall the
+    player saw the board. Same plane, same outer size, the middle open."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    thin_x = sx <= sy                 # the frame lies in an E/W wall
+    # a frame has DEPTH: the slab's glass leaned on it a few cm off its
+    # plane; a ring as thin as the board left every pane floating
+    if thin_x:
+        sx = max(sx, depth)
+    else:
+        sy = max(sy, depth)
+    along = sy if thin_x else sx
+    for nm, dz in (("Head", sz / 2.0 - bar / 2.0), ("Sill", -sz / 2.0 + bar / 2.0)):
+        make_box(f"{prefix}_{nm}", (cx, cy, cz + dz), (sx, sy, bar), color)
+    for nm, sgn in (("JambA", -1), ("JambB", 1)):
+        off = sgn * (along / 2.0 - bar / 2.0)
+        if thin_x:
+            make_box(f"{prefix}_{nm}", (cx, cy + off, cz), (sx, bar, sz - 2 * bar), color)
+        else:
+            make_box(f"{prefix}_{nm}", (cx + off, cy, cz), (bar, sy, sz - 2 * bar), color)
+
+
+def make_wall_with_openings(prefix, anchor, *, length, openings, height=3.0, thickness=0.20,
+                            axis='Y', palette=None, baseboard_face_sign=-1):
+    """make_wall with HOLES in it (2026-10-03). `openings` is a list of
+    (centre_along, z_centre, width, opening_height) — centre_along is the
+    opening's centre on the wall's axis (x for an X wall, y for a Y wall).
+    Builds piers between the openings, a spandrel under each (with its
+    baseboard) and a lintel over each. A window built with make_window on
+    a wall that is not cut is a pane on a wall: nothing beyond it can be
+    seen (every window in every apartment was that until Montreal's
+    drainpipe insert looked straight into Wall_N)."""
+    palette = palette or {}
+    wall_col = palette.get("wall", P.WALL_CREAM)
+    base_col = palette.get("baseboard", P.WALL_BASEBOARD)
+    cx, cy, _ = anchor
+    along0 = (cy if axis == 'Y' else cx) - length / 2.0
+    cuts = sorted(openings, key=lambda o: o[0])
+    def seg(name, a0, a1, z0, z1, base):
+        if a1 - a0 <= 0.005 or z1 - z0 <= 0.005:
+            return
+        mid, ln, zc, h = (a0 + a1) / 2.0, a1 - a0, (z0 + z1) / 2.0, z1 - z0
+        if axis == 'Y':
+            make_box(name, (cx, mid, zc), (thickness, ln, h), wall_col)
+            if base and z0 < 0.01:
+                make_box(f"{name}_Base", (cx + baseboard_face_sign * (thickness / 2.0 + 0.006), mid, 0.08), (0.012, ln, 0.16), base_col)
+        else:
+            make_box(name, (mid, cy, zc), (ln, thickness, h), wall_col)
+            if base and z0 < 0.01:
+                make_box(f"{name}_Base", (mid, cy + baseboard_face_sign * (thickness / 2.0 + 0.006), 0.08), (ln, 0.012, 0.16), base_col)
+    cursor = along0
+    for i, (oc, oz, ow, oh) in enumerate(cuts):
+        a0, a1 = oc - ow / 2.0, oc + ow / 2.0
+        seg(f"{prefix}_Pier_{i}", cursor, a0, 0.0, height, True)
+        seg(f"{prefix}_Spandrel_{i}", a0, a1, 0.0, oz - oh / 2.0, True)
+        seg(f"{prefix}_Lintel_{i}", a0, a1, oz + oh / 2.0, height, False)
+        cursor = a1
+    seg(f"{prefix}_Pier_{len(cuts)}", cursor, along0 + length, 0.0, height, True)
 
 
 def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
@@ -68,19 +139,32 @@ def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
     cx, cy, ceil_z = anchor
     make_box(f"{prefix}_Plane", (cx, cy, ceil_z + 0.05),
              (size_x, size_y, 0.10), tile)
+    # Grid + stains hang BELOW the slab's underside (z-fight fix
+    # 2026-08-09: they used to sit INSIDE the slab volume, near-
+    # coplanar with its bottom face — "flickering geometry in the
+    # roof" at glancing angles, in every interior using this).
     if with_grid:
         for i in range(int(cx - size_x / 2), int(cx + size_x / 2) + 1):
-            make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z + 0.02),
-                     (0.04, size_y, 0.005), grid)
+            make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z - 0.010),
+                     (0.04, size_y, 0.012), grid)
         for j in range(int(cy - size_y / 2), int(cy + size_y / 2) + 1):
-            make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z + 0.02),
-                     (size_x, 0.04, 0.005), grid)
-    if with_stains:
-        for si, (sx, sy) in enumerate([
-                (cx - 2, cy - 2), (cx + 1, cy + 1), (cx + 3, cy + 3)]):
-            make_box(f"{prefix}_Stain_{si}",
-                     (sx, sy, ceil_z + 0.025),
-                     (0.80, 0.80, 0.003), stain)
+            make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z - 0.010),
+                     (size_x, 0.04, 0.012), grid)
+    # Water stains (2026-09-24, the user: "furniture on ceilings"): they
+    # were three SOLID 0.8 m squares in a dark tan, at fixed metre
+    # offsets from the centre (so in small rooms they hit the walls) —
+    # under a warm key they read as boards stuck to the ceiling. Now a
+    # faint tint of the tile, an irregular blotch of three overlapping
+    # pieces, placed at fractions of the ceiling so it stays inside it,
+    # and none on a ceiling under 2.5 m across.
+    if with_stains and min(size_x, size_y) >= 2.5:
+        tint = tuple(tile[k] * 0.72 + stain[k] * 0.28 for k in range(3)) + (1.0,)
+        for si, (fx, fy, r) in enumerate(((-0.26, -0.20, 0.34), (0.22, 0.28, 0.26))):
+            sx, sy = cx + fx * size_x, cy + fy * size_y
+            for pi, (ox, oy, k) in enumerate(((0.0, 0.0, 1.0), (0.14, 0.06, 0.62), (-0.08, 0.12, 0.48))):
+                make_box(f"{prefix}_Stain_{si}_{pi}",
+                         (sx + ox * r * 2.0, sy + oy * r * 2.0, ceil_z - 0.003 - 0.0005 * pi),
+                         (r * k, r * k * 0.8, 0.002), tint)
 
 
 def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,
@@ -103,36 +187,84 @@ def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,
 
 
 def make_window(prefix, anchor, *, width=2.60, height=1.50,
-                cross_mullion=True, palette=None):
-    """Mullioned multi-pane glass window. anchor=(wall_x_center,
-    wall_face_y, center_z). Caller positions on south or north wall.
-    cross_mullion=True draws horizontal + vertical bars."""
+                cross_mullion=True, palette=None, axis='X', room_dir=-1,
+                see_through=False):
+    """Mullioned multi-pane glass window.
+
+    axis='X' (default): the window lies in a NORTH or SOUTH wall and
+    spans X — anchor=(wall_x_center, wall_face_y, center_z).
+    axis='Y': it lies in an EAST or WEST wall and spans Y —
+    anchor=(wall_face_x, wall_y_center, center_z).
+
+    The Y form was added 2026-08-12: five locales already placed
+    windows on east/west walls, where the X-spanning build laid the
+    glass ACROSS the room and 0.6m into the wall. `center_z` is a
+    CENTER, not a sill — eleven callers passed 0 and got windows
+    half-buried in the floor (fixed the same day).
+    cross_mullion=True draws horizontal + vertical bars.
+
+    room_dir (2026-09-23): the side of the wall the ROOM is on, along
+    the wall's normal (-1: the room is toward -Y / -X, a NORTH or EAST
+    wall — the old fixed behaviour and the default; +1: a SOUTH or WEST
+    wall). The glass and frame are built from the anchor toward the
+    room. Before this, every south/west-wall window was built INTO its
+    wall, and callers that passed the wall's centre line buried theirs
+    on any wall: 43 windows in 34 rooms were invisible.
+
+    see_through (2026-09-24): no glass and no warm pane — frame and
+    mullions only, the opening left empty, two glints on the frame
+    line. When this was written the pipeline had no alpha: the glass and
+    the warm pane rendered as two OPAQUE panels, so a window something
+    must be SEEN through (the cabin's crow on the outside sill) could
+    not have them (the 3D modelling playbook's picture-window rule).
+    Since 2026-10-02 scripts/LocaleGlass.gd turns any vertex alpha below
+    0.98 into real transparency at load (P.GLASS is 0.25), so a tinted
+    pane beside a see_through frame now reads as glass."""
     palette = palette or {}
     glass = palette.get("glass", P.GLASS)
     frame = palette.get("frame", P.METAL_STEEL)
     warm = palette.get("warm", P.GLASS_WARM)
     cx, cy, cz = anchor
-    # Glass behind a slight warm tint (sun-through-window canon)
-    make_box(f"{prefix}_Glass", (cx, cy - 0.02, cz),
-             (width, 0.005, height), glass)
-    make_box(f"{prefix}_Warm", (cx, cy - 0.01, cz),
-             (width * 0.96, 0.001, height * 0.96), warm)
+    along_y = str(axis).upper() == 'Y'
+
+    def _sz(span, thick, tall):
+        """(x, y, z) extents for a member `span` long across the
+        wall, `thick` through it, `tall` high."""
+        return (thick, span, tall) if along_y else (span, thick, tall)
+
+    def _at(off, inset, dz):
+        """Position `off` along the wall, `inset` into it, dz up."""
+        if along_y:
+            return (cx + room_dir * inset, cy + off, cz + dz)
+        return (cx + off, cy + room_dir * inset, cz + dz)
+
+    if see_through:
+        # glints on the pane line, sill frame to head frame
+        for gi, (go, gw) in enumerate(((-width * 0.18, 0.03), (-width * 0.12, 0.012))):
+            make_box(f"{prefix}_Glint_{gi}", _at(go, 0.075, 0.0),   # in front of MullH
+                     _sz(gw, 0.004, height - 0.10), (0.84, 0.88, 0.92, 1.0))
+    else:
+        # Glass behind a slight warm tint (sun-through-window canon)
+        make_box(f"{prefix}_Glass", _at(0.0, 0.02, 0.0),
+                 _sz(width, 0.005, height), glass)
+        make_box(f"{prefix}_Warm", _at(0.0, 0.01, 0.0),
+                 _sz(width * 0.96, 0.001, height * 0.96), warm)
     # Frame — top + bottom + sides
-    make_box(f"{prefix}_FrameT", (cx, cy - 0.04, cz + height / 2.0),
-             (width + 0.10, 0.08, 0.10), frame)
-    make_box(f"{prefix}_FrameB", (cx, cy - 0.04, cz - height / 2.0),
-             (width + 0.10, 0.08, 0.10), frame)
+    make_box(f"{prefix}_FrameT", _at(0.0, 0.04, height / 2.0),
+             _sz(width + 0.10, 0.08, 0.10), frame)
+    make_box(f"{prefix}_FrameB", _at(0.0, 0.04, -height / 2.0),
+             _sz(width + 0.10, 0.08, 0.10), frame)
     for sgn in (-1, +1):
         make_box(f"{prefix}_FrameSide_{sgn:+d}",
-                 (cx + sgn * (width / 2.0 + 0.04), cy - 0.04, cz),
-                 (0.10, 0.08, height), frame)
+                 _at(sgn * (width / 2.0 + 0.04), 0.04, 0.0),
+                 _sz(0.10, 0.08, height), frame)
     if cross_mullion:
-        make_box(f"{prefix}_MullH", (cx, cy - 0.04, cz),
-                 (width, 0.06, 0.05), frame)
+        make_box(f"{prefix}_MullH", _at(0.0, 0.04, 0.0),
+                 _sz(width, 0.06, 0.05), frame)
         for vm in (-width / 4.0, +width / 4.0):
             make_box(f"{prefix}_MullV_{vm:+.2f}",
-                     (cx + vm, cy - 0.04, cz),
-                     (0.05, 0.06, height), frame)
+                     _at(vm, 0.04, 0.0),
+                     _sz(0.05, 0.06, height), frame)
 
 
 def make_door_hinges(prefix, *, edge_x, edge_y, edge_z_centers,
@@ -145,3 +277,38 @@ def make_door_hinges(prefix, *, edge_x, edge_y, edge_z_centers,
     for hi, hz in enumerate(edge_z_centers):
         make_cyl(f"{prefix}_{hi}", (edge_x, edge_y, hz),
                  0.018, 0.08, col, axis=axis)
+
+
+def make_case_shell(prefix, center, size, color, *, open_face='-Y', wall=0.02):
+    """A display case / cooler / cabinet body as FIVE PANELS with one
+    face open, same outer extents as a solid make_box(center, size).
+
+    2026-09-24 (support pass, twenty-third draft): every glass-front
+    case in the kits was a SOLID body with its product modelled inside
+    it and a tinted "glass" slab in front — and this pipeline then had
+    no alpha (vertex colour only; LocaleGlass.gd, 2026-10-02, now makes
+    vertex alpha < 0.98 transparent), so the glass rendered as an opaque
+    panel over a solid block: 95 objects per kwik stop cooler door that
+    no camera could ever see. Build the shell; put the product on
+    shelves inside it; frame the opening and leave the glass out.
+
+    Panels: `{prefix}_Top` / `_Bottom` span the full footprint; the two
+    sides sit between them; the back sits between the sides. Faces
+    touch, nothing overlaps. open_face: '-X', '+X', '-Y' or '+Y'."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    hx, hy, hz = sx / 2.0, sy / 2.0, sz / 2.0
+    w = wall
+    make_box(f"{prefix}_Top", (cx, cy, cz + hz - w / 2.0), (sx, sy, w), color)
+    make_box(f"{prefix}_Bottom", (cx, cy, cz - hz + w / 2.0), (sx, sy, w), color)
+    ih = sz - 2.0 * w
+    if open_face in ('-Y', '+Y'):
+        s = 1.0 if open_face == '-Y' else -1.0      # back is opposite the opening
+        make_box(f"{prefix}_Side_L", (cx - hx + w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Side_R", (cx + hx - w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Back", (cx, cy + s * (hy - w / 2.0), cz), (sx - 2.0 * w, w, ih), color)
+    else:
+        s = 1.0 if open_face == '-X' else -1.0
+        make_box(f"{prefix}_Side_L", (cx, cy - hy + w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Side_R", (cx, cy + hy - w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Back", (cx + s * (hx - w / 2.0), cy, cz), (w, sy - 2.0 * w, ih), color)

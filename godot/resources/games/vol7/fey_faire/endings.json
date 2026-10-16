@@ -1,0 +1,328 @@
+{
+  "id": "endings",
+  "notes": "Fey Faire · seven endings with full script text.  Each has: trigger conditions, subtitle text, opening cutscene beats, main script (with $variable substitution from boot questionnaire), closing image, credits sig, cross-Oneironautics unlocks.  Scripts are the runtime content · the actual on-screen text the game renders at each ending.  Variables in $BRACKETS pull from state (e.g. $LOST_PERSON, $CITY_YOU_LIVE_IN, $FAVORITE_SONG, $NAME).",
+
+  "schema_notes": {
+    "trigger": "state conditions that fire this ending · Court alignments, keepsakes, disposition, promise-count",
+    "beats": "sequential cutscene beats · each is a script segment with a specific screen composition",
+    "variables": "state-substituted variables that appear in the script text"
+  },
+
+  "endings": [
+    {
+      "id": "ending_a_rose",
+      "number": 1,
+      "name": "A ROSE",
+      "subtitle": "the seelie ending",
+      "trigger": {
+        "seelie_alignment": ">= 10",
+        "titania_disposition": ">= LIKED",
+        "must_have_kept_promises": "at least half"
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "Talikan · at first light · a specific window opens outward",
+          "text": "You leave the Faire with a rose in your buttonhole."
+        },
+        {
+          "type": "narration",
+          "text": "The rose does not wilt.  You keep your name.  You keep your face.  You keep every friend you had.  You $NO_LONGER_REMEMBER_THE_SEASON that specific loss (from $LOST_PERSON) happened in.  You catch yourself humming a Midsummer song at odd moments."
+        },
+        {
+          "type": "narration",
+          "text": "Titania keeps her promise to you.  Ondine watches you leave through the Gate.  The rose blooms in your buttonhole for exactly one year."
+        },
+        {
+          "type": "still_image",
+          "image": "$PLAYER_NAME's front door in $CITY_YOU_LIVE_IN · a specific morning · the rose visible on the coat rack",
+          "duration": "3 seconds"
+        }
+      ],
+      "closing_image": "the rose blooming in a specific still frame",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": [
+        "seed a 'Titania blessing' keepsake in the SlowstockShelf compendium"
+      ]
+    },
+    {
+      "id": "ending_a_red_cap",
+      "number": 2,
+      "name": "A RED CAP",
+      "subtitle": "the unseelie ending",
+      "trigger": {
+        "unseelie_alignment": ">= 10",
+        "oberon_disposition": ">= LIKED",
+        "must_have_at_least_2_unseelie_recruits": true
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "Talikan · at dusk · you leave via a specific back gate no other tourist knows",
+          "text": "You leave the Faire wearing a knitted red cap."
+        },
+        {
+          "type": "narration",
+          "text": "It fits well.  You keep the seasons.  You keep every friend you had.  Your NAME is different now.  Everyone who calls you the old name gets confused for a moment before you correct them.  You have to relearn to answer to a name you did not choose."
+        },
+        {
+          "type": "narration",
+          "text": "Oberon keeps his promise to you (whatever it was · you are trying to remember what it was · it will come back to you eventually · you think).  The Erlking passes your house at night and does not stop."
+        },
+        {
+          "type": "still_image",
+          "image": "you in a specific new coat with a specific red cap · looking in a specific bathroom mirror · adjusting the cap · your reflection is you with a specific new expression",
+          "duration": "3 seconds"
+        }
+      ],
+      "closing_image": "the red cap on a specific hat rack",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": [
+        "seed an 'Oberon promise' keepsake in the SlowstockShelf compendium"
+      ]
+    },
+    {
+      "id": "ending_a_stag_antler",
+      "number": 3,
+      "name": "A STAG'S ANTLER",
+      "subtitle": "the wildfey ending",
+      "trigger": {
+        "wildfey_alignment": ">= 10",
+        "green_man_disposition": ">= LIKED"
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "the Faire · at dawn · the Faire is packing up · trailers being hooked to trucks",
+          "text": "You leave the Faire holding a stag's antler wrapped in oiled paper."
+        },
+        {
+          "type": "narration",
+          "text": "You do not know how to explain it.  You keep everything.  But: you do not really leave.  You are AT the Faire when it packs up at dawn.  And you are on one of the trucks.  And you are there when it unpacks in another town seventeen years later."
+        },
+        {
+          "type": "narration",
+          "text": "You come back home older, and the town has changed, and everyone you loved has grown up or died.  You are 32 now.  Your mother, if she is alive, is 71."
+        },
+        {
+          "type": "still_image",
+          "image": "you at 32 · standing on the porch of your old childhood house · in a town you barely recognize · holding the antler",
+          "duration": "5 seconds"
+        }
+      ],
+      "closing_image": "the antler on a mantle · specifically in a house that is not yours anymore",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": [
+        "seed a 'Wildfey stag-antler' keepsake in the SlowstockShelf compendium",
+        "unlock the Faire's next-town ambient scene as a bonus BGM"
+      ]
+    },
+    {
+      "id": "ending_refused_the_faire",
+      "number": 4,
+      "name": "REFUSED THE FAIRE",
+      "subtitle": "you walked away",
+      "trigger": {
+        "left_before_night_3": true,
+        "recruited_fey_count": "< 3",
+        "mirror_crossed_count": "< 1"
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "the Faire's Parking Lot · at night · a specific streetlight flickering",
+          "text": "You walk home under a streetlight that flickers behind you."
+        },
+        {
+          "type": "narration",
+          "text": "You never know what you missed."
+        },
+        {
+          "type": "narration",
+          "text": "Someone at school asks the next Monday if you went to that carnival that was there over the weekend."
+        },
+        {
+          "type": "dialogue",
+          "speaker": "$PLAYER_NAME",
+          "text": "No."
+        },
+        {
+          "type": "narration",
+          "text": "You say no.  You say no honestly.  You do not remember it."
+        },
+        {
+          "type": "still_image",
+          "image": "you at your school desk · Monday morning · looking down at your specific homework",
+          "duration": "3 seconds"
+        }
+      ],
+      "closing_image": "a specific empty lot where the Faire had been · early morning light · fully mundane",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": []
+    },
+    {
+      "id": "ending_become_the_faire",
+      "number": 5,
+      "name": "BECOME THE FAIRE",
+      "subtitle": "you take Cricket's seat",
+      "trigger": {
+        "cricket_disposition": "LOVED",
+        "seelie_alignment": "< 3",
+        "unseelie_alignment": "< 3",
+        "wildfey_alignment": "< 3",
+        "keepsake_cricket_retired_ticket": true
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "the Gate · Night 6 · dawn approaching",
+          "text": "Cricket has been at the Gate a very long time.  She would like to retire."
+        },
+        {
+          "type": "dialogue",
+          "speaker": "Cricket",
+          "text": "You have understood.  We have nodded at each other for six nights.  I have selected you.  Do you consent?"
+        },
+        {
+          "type": "player_choice",
+          "prompt": "Take Cricket's seat?",
+          "choices": ["yes", "no"],
+          "if_no_returns_to": "no_ending_fires · Night 6 continues"
+        },
+        {
+          "type": "narration",
+          "text": "You accept.  You take the ticket-taker's stool.  You bite the corner off tickets."
+        },
+        {
+          "type": "narration",
+          "text": "Seventeen years pass in one night."
+        },
+        {
+          "type": "narration",
+          "text": "A new teenager walks up."
+        },
+        {
+          "type": "dialogue",
+          "speaker": "You",
+          "text": "You get six nights."
+        },
+        {
+          "type": "narration",
+          "text": "You mean it."
+        },
+        {
+          "type": "still_image",
+          "image": "you · specifically shrunken to cricket-scale · sitting on a stool on the ticket counter · in a specific new town · watching a specific new teenager approach",
+          "duration": "6 seconds"
+        }
+      ],
+      "closing_image": "the specific Gate under a specific new streetlight in a specific new town",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": [
+        "seed a 'Cricket has retired' keepsake in the SlowstockShelf compendium",
+        "unlock a specific new-ticket-taker cameo in future Oneironautics releases"
+      ]
+    },
+    {
+      "id": "ending_bring_back_the_lost",
+      "number": 6,
+      "name": "BRING BACK THE LOST",
+      "subtitle": "$LOST_PERSON comes home",
+      "trigger": {
+        "wildfey_alignment": ">= 8",
+        "green_man_disposition": "LOVED",
+        "at_least_one_specific_promise_fulfilled_matching_lost_person": true,
+        "mirror_4_the_green_completed": true
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "The Green · a specific clearing · dawn light through the canopy",
+          "text": "The Green Man does not speak often.  He speaks now."
+        },
+        {
+          "type": "dialogue",
+          "speaker": "The Green Man",
+          "text": "There is one exchange I will make."
+        },
+        {
+          "type": "narration",
+          "text": "If $LOST_PERSON was Andrew, the Green Man asks for your most-recruited fey in trade.  You lose them permanently to Fairyland."
+        },
+        {
+          "type": "player_choice",
+          "prompt": "Accept the exchange?",
+          "choices": ["yes", "no"],
+          "if_no_returns_to": "no_ending_fires · Night 6 continues without this ending"
+        },
+        {
+          "type": "narration",
+          "text": "$LOST_PERSON comes home in [$LOST_YEAR_IF_KNOWN | your specific past you cannot revisit | in the history of a place you weren't at]."
+        },
+        {
+          "type": "narration",
+          "text": "The ripple travels forward.  On the drive home from the Faire your father tells you a story about $LOST_PERSON.  Except he doesn't die.  Because you gave a fey back."
+        },
+        {
+          "type": "still_image",
+          "image": "specifically rendered based on $LOST_PERSON · if Andrew (Camp Sweetgum 1976): a photograph of Andrew at 45, alive, on a beach with his own children · if a moved-away friend: their handwritten letter arriving in your mailbox · if a father who hits: a specific empty chair at Thanksgiving dinner in a house that is warmer for the emptiness",
+          "duration": "8 seconds"
+        }
+      ],
+      "closing_image": "$LOST_PERSON's specific final image · rendered specifically",
+      "credits_dedication": "for the ones we could not save · and the specific one we did",
+      "cross_oneironautics_unlocks": [
+        "specifically REWRITES cross-Oneironautics facts in other Oneironautics slowsticks · if Andrew · Pirate Summer's Wilson Ashe now has a specific 'Andrew wrote to me' dialogue tree · if a moved-away friend · Estuary 3's specific Manager Mode customer changes · if a hitting father · a specific Kwik Stop customer's demeanor changes"
+      ]
+    },
+    {
+      "id": "ending_you_forget_why_you_came",
+      "number": 7,
+      "name": "YOU FORGET WHY YOU CAME",
+      "subtitle": "the Faire keeps you",
+      "trigger": {
+        "deaths_without_recruit": ">= 6",
+        "all_six_memories_lost": true
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "empty lot · Night 7 · morning · the Faire has left",
+          "text": "You are still at the Faire on Night 7."
+        },
+        {
+          "type": "narration",
+          "text": "The Faire has left already."
+        },
+        {
+          "type": "narration",
+          "text": "You are alone in an empty lot.  You do not know why you came.  You do not know your name."
+        },
+        {
+          "type": "narration",
+          "text": "(the boot-questionnaire name $PLAYER_NAME still displays in the UI · but the character in the epilogue does not use it)"
+        },
+        {
+          "type": "narration",
+          "text": "The screen fades to black."
+        },
+        {
+          "type": "sfx",
+          "sound": "a specific cricket chirps once"
+        },
+        {
+          "type": "narration",
+          "text": "You (the player, not the character) know what that means now."
+        },
+        {
+          "type": "still_image",
+          "image": "the empty lot at Night 7 · a specific single cricket visible on a specific patch of dirt · she is watching",
+          "duration": "5 seconds"
+        }
+      ],
+      "closing_image": "black screen · text 'THE FAIRE MOVED ON'",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": []
+    }
+  ]
+}

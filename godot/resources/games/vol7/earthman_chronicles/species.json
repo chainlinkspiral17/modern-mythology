@@ -1,0 +1,159 @@
+{
+  "id": "species",
+  "notes": "Earthman Chronicles · sentient species catalog for Parsa (the alien world) plus Earth-species Jack Whiteside for completeness.  Every species has: physical features, society, language notes, religious/mystical practice, notable named members, gameplay tags (combat encounter frequency, negotiation availability, romance-viability if applicable · this LAST is meta-tagging for Sara Nai / Scarlet Woman branches).  Manuscript vs. game reading: manuscript renders most Parsan species as broadly primitive or exotic; game renders each with specific cultural depth Rocha's team added.",
+
+  "schema_notes": {
+    "type": "playable_character | sentient_ally | sentient_neutral | sentient_hostile | fauna | flora",
+    "combat_role": "for hostile encounters · warrior, caster, support, boss, mob",
+    "manuscript_reading": "how Hubbard depicts this species",
+    "game_reading": "how Astro-Cortex/Rocha's team renders this species"
+  },
+
+  "species": [
+    {
+      "id": "human_earth",
+      "name": "Humans (Earth)",
+      "type": "playable_character",
+      "physical_features": {
+        "height_range": "typically 5-6 feet · Jack is 5'10\"",
+        "distinguishing": "two arms · varies in skin/hair/eye color · relatively fragile"
+      },
+      "society": "The player knows this one.  Parsan characters find human society baffling for specific reasons (money, sleep schedules, capitalism).",
+      "language": "English · plus Jack's fragmentary knowledge of Latin, Greek, and Kelait ceremonial",
+      "mystical_practice": "Thelemic · Jack's specific branch · plus his own ad-hoc synthesis · very Californian in a specific 1940s way",
+      "notable_members": ["jack_whiteside (protagonist)", "sara_northrup (letter · not encountered in game)", "l_rafayette_hubbard (mentioned throughout · not a party member in his direct form)", "rocha (NPC · secret identity as party member)"],
+      "manuscript_reading": "Hubbard renders humans (specifically Jack) as intrinsically superior · 'the wisdom of Earth is deeper than the wisdom of Parsa'",
+      "game_reading": "Jack is presented as a specific person with specific competencies (rocket chemistry, Thelemic ritual, weight-training) and specific limitations (can't fight four-armed opponents easily, doesn't know Parsa's languages, has trouble asking for help).  His humanity is not superior; it is specific."
+    },
+    {
+      "id": "kyrindi",
+      "name": "The Kyrindi",
+      "type": "sentient_ally",
+      "physical_features": {
+        "height_range": "6-7 feet",
+        "skin": "silver-blue · shifts hue slightly under different moon lighting",
+        "hair": "usually silver, occasionally silver-black or silver-gold",
+        "eyes": "reflect green in torchlight, blue in daylight",
+        "distinguishing": "elongated fingers · six on each hand (three fingers + three thumbs) · fingertips fluoresce faintly in the dark"
+      },
+      "society": "Court-based hierarchy centered in the capital TALIKAN.  King VESSEL rules but not by inheritance · Kyrindi kings are elected from among the nobility every twelve years.  Vessel is in his second term.  Scholars, scribes, and singers are the dominant social classes.  Warriors are respected but rare.  Kyrindi are the intellectual heart of Parsa · they preserve ancient texts, maintain calendars, negotiate between other Parsan species.",
+      "language": "KYRINDI (spoken · elegant, flowing, uses seven verb tenses).  Also fluent in KELAIT CEREMONIAL and TERRAN BROKEN (the pidgin Jack initially uses).  Sara Nai speaks Delvanni ceremonial phrases at three key points, which impresses Hel Velli.",
+      "mystical_practice": "SONG MAGIC · vocal magic, primarily healing and charm.  Kyrindi voice-mages sing during ceremonies.  Not all Kyrindi are musically trained · Sara Nai is a scholar-vocalist, which means she has read about it and can theoretically do it but is not particularly gifted.",
+      "notable_members": ["sara_nai (party member · princess · scholar of Kelait rituals)", "king_vessel (Sara's father · elected king · appears in Chapter 3)", "high_scribe_arentha (Sara's mentor · scholarly figure · gives Jack a specific book in Chapter 3)"],
+      "manuscript_reading": "Hubbard renders the Kyrindi as elegant-and-decorative aristocrats · Sara Nai as princess-prize · King Vessel as father-figure-who-gives-his-daughter",
+      "game_reading": "Kyrindi are the intellectual heart of Parsa · Sara Nai's scholarship is REAL and drives specific plot beats · King Vessel is a competent, tired administrator who explicitly does NOT offer Sara as prize but rather ASKS Jack if he would like to court her (Sara has already decided she will · Vessel is honoring her choice while giving Jack the illusion of formal offer, in a specific act of parental respect for both children)."
+    },
+    {
+      "id": "delvanni",
+      "name": "The Delvanni",
+      "type": "sentient_ally",
+      "physical_features": {
+        "height_range": "6.5-8 feet",
+        "skin": "rust-red, deepens to dark maroon in cold",
+        "arms": "FOUR ARMS (two upper, two lower) · fully independent · can hold four weapons",
+        "eyes": "black · deep-set · reflect nothing",
+        "distinguishing": "vestigial third eye on the forehead · non-functional in modern Delvanni but present"
+      },
+      "society": "Tribal.  Six major Delvanni tribes across Parsa.  Hel Velli is of the KEL-DANARI tribe (mountain-based).  Tribes maintain warrior traditions but ALSO mining operations (which are exploitative of Kelait labor · this is a specific in-game plot beat).  Delvanni honor codes are elaborate · specific ceremonial phrases are spoken at meetings, meals, and duels.  Delvanni families are typically matrilineal · Hel Velli writes to his mother weekly.",
+      "language": "DELVANNI CEREMONIAL (spoken · guttural, precise, uses specific tense-markers for social hierarchy).  Also DELVANNI COMMON (a simpler working-language spoken between tribes).  Hel Velli speaks both.  His weekly letters to his mother are in Ceremonial.",
+      "mystical_practice": "Delvanni do not practice magic in the Kyrindi sense.  They have ANCESTOR TRADITIONS · specific rituals for the dead.  A Delvanni who dies in glorious combat is remembered by name for six generations.  The Bornless One Working (III) summons a specific Delvanni ancestor · Hel Velli's dead cousin Keran on the first summon.  Hel Velli is deeply moved by this and quiet for the following battle.",
+      "notable_members": ["hel_velli (party member · warrior · four-armed · 22 years of combat memory · loyal to Jack once respect earned)", "murg_of_the_kel_karai (opposing tribal champion · Chapter 2 duel opponent · reconciled with Jack after brief-case joke option)", "keran (Hel Velli's dead cousin · summoned via Working III · died in a mine collapse five years pre-game)", "the_mother_of_hel_velli (unnamed · Chapter 4 side-scene · Jack briefly meets her via a specific Delvanni video-letter mechanic)"],
+      "manuscript_reading": "Hubbard renders the Delvanni as primitive tribal warriors Jack civilizes.  His prose is deeply patronizing.  Rocha's marginalia in the manuscript calls this out specifically.",
+      "game_reading": "Delvanni are a specific culture with specific competencies (metalwork, tactical warfare, agricultural rotation) and specific challenges (mining exploitation of Kelait, four-tribe political feuds).  Jack learns from them as often as he teaches.  Hel Velli's character bible in _EARTHMAN_STORY.md is fully-fleshed."
+    },
+    {
+      "id": "kelait",
+      "name": "The Kelait",
+      "type": "sentient_ally",
+      "physical_features": {
+        "height_range": "3-4 feet · never taller",
+        "skin": "pale golden-tan · nearly luminous in the dark",
+        "eyes": "unusually large · sepia · reflect firelight distinctly",
+        "distinguishing": "children-shaped adults · Kelait mature at 40 years of age and live to 200+ · their child-shape is permanent",
+        "hair": "usually black or dark brown · worn very long"
+      },
+      "society": "Historically a nomadic scholar-monastic people.  In the game's present, ENSLAVED by Delvanni tribes for mining labor · a specific plot beat in Chapter 4.  Kelait cultural memory is oral and specific · elders keep the history alive verbally · specific chants encode centuries of information.  Freed Kelait (Mother Kanel's group in Chapter 4) have preserved their traditions clandestinely.",
+      "language": "KELAIT CEREMONIAL (spoken · slow, meditative, uses metaphor-clusters that decode as recipe-instructions in the enslaved context and as actual wisdom in the freed context).  Also KELAIT COMMON (working-language).  Sara Nai is fluent in Ceremonial; Jack learns fragments.",
+      "mystical_practice": "Kelait practice a form of MEDITATIVE MAGIC · slow, undramatic, focused on healing and memory.  Their most powerful practice is the KELAIT MOURNING SONG (which shares its final bar with Wilson's Portuguese folk tune in Pirate Summer · cross-Oneironautics chain fact).  Kelait do not fight.  They may resist enslavement, but not through violence.",
+      "notable_members": ["mother_kanel (freed Kelait elder · Chapter 4 · teaches Jack the Star Sapphire Working · delivers the game's most-quoted line about mortality)", "rafaton_or_nalat (Kelait scholar · presents as wise mentor · revealed in Chapter 5 as agent of the Order of the Prophet · has TWO NAMES which is a plot beat)", "small_kelait_boy_named_yr (Chapter 4 · runs the escape puzzle · six years old which for a Kelait is quite young · Sara Nai carries him for part of the escape)"],
+      "manuscript_reading": "Hubbard renders Kelait as mystical children-shaped wisdom-dispensers.  He never mentions their enslavement · the enslavement is entirely Rocha's team's addition.  Hubbard's aphorisms attributed to Kelait sages are aphoristic and empty.",
+      "game_reading": "Kelait are a specific enslaved people whose survival is a specific miracle.  Their aphorisms decode as escape plans in the enslaved context AND as genuine wisdom in the freed context · Astro-Cortex/Rocha's team wrote both layers.  Mother Kanel's wisdom is real.  The freed Kelait community in Chapter 4's mines is the game's emotional heart · a specific rescue that succeeds if the player has earned specific trust."
+    },
+    {
+      "id": "scarlet_ambiguous",
+      "name": "The Scarlet Woman · Ambiguous",
+      "type": "sentient_ally",
+      "physical_features": {
+        "height_range": "5'10\" · same as Jack · which is a specific character-design choice",
+        "skin": "olive-warm · not clearly of any Parsan species",
+        "hair": "long, red-black · always partially covered with a specific scarf",
+        "distinguishing": "wears a specific hand-embroidered garment · the pattern on the hem matches a specific keepsake · she does not remove the garment"
+      },
+      "society": "She has no clear social affiliation.  In the manuscript she is 'clothed in a light not of Parsa.'  In the game she is variously CLAIMED by three interpretations: (1) she is literally BABALON, a manifested Thelemic entity; (2) she is a Delvanni priestess named GHYRA who has been playing at Babalon for specific reasons of her own; (3) she is a projection of Jack's desire · not a real character, an image the game shows him.  All three readings are canonical.  The player picks their reading in Chapter 5 dialogue.",
+      "language": "Universal · she speaks whatever language the person she is speaking to speaks.  This is either a mystical trait (readings 1, 2) or a hallucinatory projection (reading 3).",
+      "mystical_practice": "In readings 1 and 2, she practices SCARLET RITUAL · offensive magic paid with specific costs (HP, keepsakes, promises).  In reading 3 she does not · Jack simply believes she does.",
+      "notable_members": ["the_scarlet_woman (party member if recruited · never rises above NEUTRAL personal disposition · never gives a straight answer)"],
+      "manuscript_reading": "Literal Babalon.  No ambiguity.  Hubbard's fixation.",
+      "game_reading": "Three canonical readings.  Player's choice at a specific Chapter 5 dialogue tree.  The third reading unlocks specific Sara Nai dialogue in Chapter 6 that reframes the whole relationship."
+    },
+    {
+      "id": "order_of_the_prophet",
+      "name": "The Order of the Prophet (Parsan cult)",
+      "type": "sentient_hostile",
+      "physical_features": {
+        "height_range": "varies · Order members are drawn from multiple Parsan species",
+        "distinguishing": "eight-pointed star tattoo on the palm of the left hand · often gloved · uniformly wear a specific gray-brown robe over their species' native attire"
+      },
+      "society": "A pan-Parsan cult established approximately 400 years pre-game.  Their central doctrine is the arrival of a specific PROPHET FROM OUTSIDE who will guide Parsa to its true fate.  They believe Jack Whiteside is this Prophet.  They have been GUIDING his Workings without his knowledge · Rafaton is a member · Nalat is his cover-identity.  The Order's ranking is a nine-tier structure that Astro-Cortex QA staff noticed uncomfortably matches a specific Earth organization's ranking.",
+      "language": "Any · Order members maintain fluency in the local tongue of whatever region they operate in.",
+      "mystical_practice": "OPERATIVE RITUAL · they perform Workings, but as a group, and always toward a specific summoning goal.  The Babalon Working is their end goal.  Jack is the specific vehicle they chose (over specific other candidates).",
+      "notable_members": ["rafaton (senior · Kelait-passing · Jack's mentor · reveal in Chapter 5)", "nalat (Rafaton's other name · the reveal moment)", "ronson (a Hubbard-analog · appears in Chapter 5 as a human who arrived on Parsa 14 years pre-game · delivers a specific fatal soliloquy that a party dialogue can reduce to nine words)", "the_prophet (Order's founder · never seen · lore-only)"],
+      "manuscript_reading": "The Order does not exist in the manuscript.  Rafaton is renderd as a lone wise mentor.  Nalat is a minor named betrayer in Chapter X.  Rocha's team retrofit Rafaton as Nalat as an Order member.",
+      "game_reading": "The Order is the game's actual antagonist.  Their symbol (eight-pointed star) recurs · specific keepsakes track it · specific Corrections reveal it.  Their goal (the Babalon Working through Jack) is Hubbard's goal · which is what makes the manuscript-vs-game switch so devastating.  Rocha's team made the game explicitly about resisting the Order · which the manuscript never questioned."
+    },
+    {
+      "id": "parsan_fauna",
+      "name": "Parsan fauna (misc creatures)",
+      "type": "fauna",
+      "physical_features": {
+        "distinguishing": "no shared morphology · Parsa has evolved a specific taxonomy that the game only sketches"
+      },
+      "society": "N/A",
+      "language": "None sentient",
+      "mystical_practice": "None",
+      "notable_members": ["red_sand_serpent (chapter 2 wilderness encounter · non-hostile)", "moon_wolves (chapter 5 mountain encounter · pack of six · Delvanni consider them omens)", "kelait_night_bird (chapter 4 · sings the mourning song when someone dies · appears at specific narrative beats)", "sara_nais_pet_ilos (a small four-legged Kyrindi companion · appears in her Chapter 3 introduction · gives her cover from suspicion)"],
+      "manuscript_reading": "Hubbard renders Parsan fauna generically · 'exotic beasts of the red sands'",
+      "game_reading": "Astro-Cortex/Rocha's team named each fauna type specifically and gave each a small role.  The night bird's song is significant · the moon-wolves are not just threats but omen-carriers.  Small touches."
+    },
+    {
+      "id": "the_kelait_child_yr",
+      "name": "Yr (a specific Kelait child)",
+      "type": "sentient_ally",
+      "physical_features": {
+        "height_range": "3'2\"",
+        "skin": "pale gold",
+        "distinguishing": "six years old · which for Kelait is quite young · not yet in his physical maturity",
+        "hair": "long dark brown · unbraided"
+      },
+      "society": "Yr is Mother Kanel's youngest grandson.  He was born in the mines.  He has never seen the sky above Parsa's surface.  His introduction in Chapter 4 is a specific moment · Jack watches him look up when Sara Nai points to the sky, and Yr's expression is a specific animation the game's writers noted as 'the most emotional 20 frames of pixel art in the whole game.'",
+      "language": "Kelait Common only · has not learned Ceremonial yet",
+      "mystical_practice": "None yet · he is too young",
+      "notable_members": ["yr (this specific child)"],
+      "manuscript_reading": "Does not exist in the manuscript.  Rocha's team addition.",
+      "game_reading": "Yr is the emotional anchor of Chapter 4's rescue plot.  If the player successfully rescues the enslaved Kelait, Yr survives and grows up in freedom.  If the player fails the rescue, Yr does not · a specific line at the end of the game references his memory.  This is the specific mechanism by which Chapter 4 becomes emotional stakes rather than just gameplay stakes."
+    }
+  ],
+
+  "gameplay_notes": {
+    "romance_viability": "Sara Nai (Kyrindi) is the game's primary romance option.  The Scarlet Woman (ambiguous) is available as a shadow-romance in one specific ending.  Marjorie Cameron (mentioned only, via a Correction) is the manuscript's dedicatee and does not appear in-game.  Rocha (NPC) is specifically NOT a romance option · her role is to be an ally, not a partner.  She is 22 in the game's fiction and Jack is 32 · Rocha declines any romance-adjacent options with 'not in this timeline, Jack.  probably not in any.'",
+    "combat_encounter_types": "Delvanni warriors are the game's primary hostile encounter until Chapter 4.  Order of the Prophet members are the primary Chapter 5-6 encounters.  Fauna encounters are infrequent and usually skippable.  Boss encounters: Chapter 2 Murg-of-the-Kel-Karai (Delvanni · reconciled after briefcase joke), Chapter 5 Nalat-revealed-as-Rafaton (Order · fully playable · negotiation available), Chapter 6 the_prophet (Order founder · optional · locked to specific endings).",
+    "language_learning": "Jack starts with basic Kyrindi (via Sara Nai) and no Delvanni or Kelait.  He can LEARN Delvanni ceremonial phrases (via Hel Velli's training in Chapter 4) and Kelait Common (via Mother Kanel · if trust is earned).  The player controls whether Jack learns them.  Learned languages open specific dialogue trees.  Untranslated dialogue is a specific gameplay aesthetic · the player sometimes does not know what a character is saying, and that's fine, and there's an authored subtitles-of-what-jack-thinks-they-said track that is often WRONG.  This is a joke."
+  },
+
+  "cross_oneironautics_species_notes": {
+    "notes": "Species notes that reference other Oneironautics games",
+    "kelait_mourning_song": "The Kelait mourning song's final bar shares melody with Wilson's Portuguese folk tune in Pirate Summer · chain fact fires on recognition · see corrections.json for the cross-reference.",
+    "order_of_the_prophet_symbol": "The eight-pointed star symbol shared with Prospero's Fey Faire timeline (see Prospero's Journal Page 46 keepsake in Fey Faire) · specific chain fact fires.",
+    "rocha_appearances": "Rocha appears as Kwik Stop customer in Estuary 3 · as trailer manuscript author in Fey Faire · as party-recruitable NPC in Earthman Chronicles · same person, three roles, three specific ages · chain fact `chain_rocha_appearances_across_slowsticks` fires when all three are experienced."
+  }
+}

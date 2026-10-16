@@ -1,0 +1,132 @@
+{
+ "meta": {
+  "title": "vol5_john_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_john_theme",
+  "notes": "John Frank. An apron-tied phrase: a single mid-range pad, a slow heartbeat below \u2014 two bass thumps a beat, at rest."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.176,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.34
+    },
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G1",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.34
+    },
+    {
+     "pitch": "G1",
+     "bar": 2,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.34
+    },
+    {
+     "pitch": "G1",
+     "bar": 3,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G1",
+     "bar": 4,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.34
+    },
+    {
+     "pitch": "G1",
+     "bar": 4,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.34
+    },
+    {
+     "pitch": "G1",
+     "bar": 5,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.08,
+   "notes": [
+    {
+     "pitch": "G2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

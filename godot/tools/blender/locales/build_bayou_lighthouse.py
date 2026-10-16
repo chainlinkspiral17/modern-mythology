@@ -10,7 +10,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 from _props.structure import make_floor, make_ceiling
 from _props.decor import make_wall_clock, make_calendar
 from _props.safety import make_smoke_detector, make_sprinkler
@@ -25,6 +25,8 @@ COL_PAPER = (0.92, 0.86, 0.74, 1.0); COL_OIL_LAMP = (0.96, 0.62, 0.28, 1.0)
 
 RADIUS = 2.40; CEIL = 6.00  # ground floor; lens stage rises above
 
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
 def build_cylindrical_shell():
     make_floor("Floor", (0.0, 0.0, 0.0), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4,
@@ -43,7 +45,7 @@ def build_cylindrical_shell():
         make_box(f"WallSeg_{si}", (mx, my, CEIL/2.0),
                  (chord*1.05, thickness, CEIL), COL_BRICK_WHITE)
     # Ceiling
-    make_ceiling("Ceil", (0.0, 0.0, CEIL), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4)
+    make_ceiling("Ceil", (0.0, 0.0, CEIL), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4, with_grid=False)
     # Hatch in ceiling (cutout faked with darker square)
     make_box("Ceil_Hatch", (0.0, +0.80, CEIL-0.02), (0.80, 0.80, 0.04), (0.10, 0.08, 0.06, 1.0))
 
@@ -61,8 +63,12 @@ def build_spiral_stair():
         mx = math.cos(ang) * (inner_r + outer_r)/2.0
         my = math.sin(ang) * (inner_r + outer_r)/2.0
         sz = (si + 1) * (center_pole_h / STEPS) - 0.10
-        # Tread
-        make_box(f"Stair_Tread_{si}", (mx, my, sz), (0.50, 0.40, 0.04), COL_STAIR_IRON)
+        # Tread — a RADIAL plank from the centre pole to the outer rail
+        # (2026-09-08: was a 0.5 m square floating mid-radius)
+        tr = (inner_r - 0.15 + outer_r - 0.15) / 2.0      # 0.25 .. 1.95 (wall at 2.10)
+        make_rot_box(f"Stair_Tread_{si}",
+                     (math.cos(ang) * tr, math.sin(ang) * tr, sz),
+                     (outer_r - inner_r, 0.40, 0.04), COL_STAIR_IRON, yaw=ang)
         # Banister post (every other)
         if si % 2 == 0:
             bx = math.cos(ang) * (outer_r - 0.06)
@@ -80,22 +86,22 @@ def build_keepers_quarters():
     # Writing desk against the E wall
     dx, dy = +RADIUS - 0.80, -0.20
     make_box("Desk_Top", (dx, dy, 0.74), (0.80, 0.50, 0.04), COL_DESK)
-    make_box("Desk_Drawer", (dx, dy, 0.52), (0.78, 0.46, 0.20), COL_DESK)
+    make_box("Desk_Drawer", (dx, dy, 0.52), (0.60, 0.46, 0.20), COL_DESK)   # between the side panels
     for sgn in (-1, +1):
         make_box(f"Desk_Leg_{sgn:+d}", (dx + sgn*0.34, dy, 0.36), (0.06, 0.46, 0.72), COL_DESK)
     # Logbook + oil lamp on the desk
-    make_box("Desk_Logbook", (dx-0.20, dy, 0.78), (0.24, 0.32, 0.04), COL_PAPER)
-    make_box("Desk_Pencil", (dx-0.20, dy+0.18, 0.78), (0.16, 0.02, 0.01), (0.62, 0.42, 0.20, 1.0))
+    # (the open logbook, the mug and the thermos are authored by the
+    # detail passes below, on THIS desk since 2026-09-08)
     # Oil lamp
     make_cyl("Lamp_Base", (dx+0.28, dy, 0.80), 0.06, 0.08, COL_BRASS)
-    make_cyl("Lamp_Reservoir", (dx+0.28, dy, 0.92), 0.05, 0.10, COL_LENS_GLASS)
-    make_cyl("Lamp_Chimney", (dx+0.28, dy, 1.08), 0.04, 0.18, COL_LENS_GLASS)
+    make_cyl("Lamp_Reservoir", (dx+0.28, dy, 0.89), 0.05, 0.10, COL_LENS_GLASS)   # on the base (2026-09-23: 3 cm over it)
+    make_cyl("Lamp_Chimney", (dx+0.28, dy, 1.03), 0.04, 0.18, COL_LENS_GLASS)
     make_cyl("Lamp_Flame", (dx+0.28, dy, 1.00), 0.018, 0.04, COL_OIL_LAMP)
 
 
 def build_bayou_view_window():
     # Single arched window on the N side, cypress water + tree visible
-    make_box("Window_N_Frame", (0.0, +RADIUS-0.04, 2.20), (1.40, 0.04, 1.40), COL_BRASS)
+    make_frame_ring("Window_N_Frame", (0.0, +RADIUS-0.04, 2.20), (1.40, 0.04, 1.40), COL_BRASS)
     make_box("Window_N_Glass", (0.0, +RADIUS-0.06, 2.20), (1.20, 0.005, 1.20),
              (0.78, 0.84, 0.86, 0.50))
     # Outside backdrop — bayou water + cypress at distance
@@ -104,43 +110,52 @@ def build_bayou_view_window():
     for ti, (tx, tz) in enumerate([(-3.0, 4.0), (-1.0, 3.6), (+2.0, 4.2), (+4.0, 3.8)]):
         make_cyl(f"Cypress_Distant_{ti}", (tx, +RADIUS + 6.0, tz/2.0 + 1.0),
                  0.20, tz, COL_CYPRESS, segments=8)
-        make_cyl(f"Cypress_Distant_Foliage_{ti}", (tx, +RADIUS + 6.0, tz + 1.2),
-                 0.80, 0.80, (0.32, 0.42, 0.30, 1.0), segments=8)
+        from _props.geometry import make_blob
+        make_blob(f"Cypress_Distant_Foliage_{ti}",
+                  (tx, +RADIUS + 6.0, tz + 1.3), 0.90,
+                  (0.32, 0.42, 0.30, 1.0), noise=0.22,
+                  seed=ti * 7, squash=0.65)
     # Sky panel above
-    make_box("Sky_Panel", (0.0, +RADIUS + 8.0, 6.0), (12.0, 0.04, 5.0), (0.62, 0.66, 0.62, 1.0))
+    # (Sky_Panel deleted 2026-08-04 — painted-horizon class; no
+    # camera preset meant the audit never saw it. The environment
+    # owns the sky.)
 
 
 def build_lens_stage_above():
     # The Fresnel lens visible THROUGH the ceiling hatch. We won't
     # model the upper floor, but a brass-glass lens disk floating
     # above the hatch reads correctly when the camera glances up.
-    lx, ly, lz = 0.0, +0.80, CEIL + 0.40
+    lx, ly, lz = 0.0, +0.80, CEIL + 0.225   # on the lens drive's cap (2026-09-23: 17 cm over it)
     # Brass plate around lens
     make_cyl("Lens_Plate", (lx, ly, lz), 0.50, 0.06, COL_BRASS, segments=20)
     # The glass lens itself — stacked rings
     for li in range(4):
-        make_cyl(f"Lens_Ring_{li}", (lx, ly, lz + 0.04 + li*0.10),
+        make_cyl(f"Lens_Ring_{li}", (lx, ly, lz + 0.04 + li*0.08),   # stacked, not 2 cm apart
                  0.42 - li*0.08, 0.08, COL_LENS_GLASS, segments=20)
     # Brass crown
-    make_cyl("Lens_Crown", (lx, ly, lz + 0.50), 0.20, 0.06, COL_BRASS, segments=12)
+    make_cyl("Lens_Crown", (lx, ly, lz + 0.35), 0.20, 0.06, COL_BRASS, segments=12)   # on the top ring (2026-09-22)
 
 
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 0.0, CEIL-0.05))
-    make_sprinkler("Spr", (1.40, -1.40, CEIL-0.05))
+    make_sprinkler("Spr", (1.40, -1.40, CEIL))   # the kit hangs from the anchor (2026-09-22: 5 cm short)
 
 
 def build_decor():
     # Wall clock on the E wall, brass calendar on the W wall
-    make_wall_clock("Clock", (+RADIUS-0.05, +1.20, 2.40), frozen_hour=4, frozen_min=15)
-    make_calendar("Calendar", (-RADIUS+0.05, +1.20, 2.30))
+    # on WallSeg_1's inner face (y 1.233 at x 1.50..2.49) — at x 2.35 it
+    # hung past the slab's end, 4.5 cm off it (2026-09-23)
+    make_wall_clock("Clock", (2.00, 1.233, 2.40), frozen_hour=4, frozen_min=15, facing='-Y')
+    # (2026-09-24: the kit calendar that stood here was inside WallSeg_6,
+    # and the room already has its calendar — the brass one on the NE
+    # wall, build_calendar below. Removed.)
     # Coiled rope on the floor
     for ri in range(3):
-        make_cyl(f"Rope_Coil_{ri}", (-RADIUS+1.20, -1.40, 0.10 + ri*0.05),
+        make_cyl(f"Rope_Coil_{ri}", (-RADIUS+1.20, -1.40, 0.02 + ri*0.04),   # on the floor (2026-09-22: 8 cm up)
                  0.18 - ri*0.04, 0.04, (0.62, 0.46, 0.26, 1.0), segments=12)
     # A pair of oilskin coats hanging by the door (S)
     for ci, cx in enumerate([-0.30, +0.30]):
-        make_box(f"Coat_{ci}", (cx, -RADIUS + 0.20, 1.40), (0.40, 0.06, 1.20),
+        make_box(f"Coat_{ci}", (cx, -RADIUS + 0.176, 1.40), (0.40, 0.06, 1.20),   # against the S slabs (2026-09-23: 2.4 cm off)
                  (0.32, 0.28, 0.22, 1.0))
 
 
@@ -154,9 +169,13 @@ def build_hermit_dressing():
       · Wall calendar · the last Tuesday of the manned station
         circled in red
     """
-    desk_cx = 0.0
-    desk_cy = +1.10
-    desk_top_z = 0.78
+    # The writing desk (build_ground_floor): E wall, RADIUS-0.80 / -0.20,
+    # top surface 0.76. (2026-09-08: this pass had the desk at (0, 1.1)
+    # — the open floor under the stair — so the logbook, mug and thermos
+    # hung in the air.)
+    desk_cx = RADIUS - 0.80
+    desk_cy = -0.20
+    desk_top_z = 0.76
 
     # Logbook open on the desk
     log_x = desk_cx - 0.10
@@ -229,8 +248,8 @@ def build_hermit_dressing():
                  segments=6, axis='Y')
 
     # Coffee mug + thermos
-    mug_x = desk_cx + 0.45
-    mug_y = desk_cy
+    mug_x = desk_cx + 0.12
+    mug_y = desk_cy + 0.14
     make_cyl("HermitMug_Body",
              (mug_x, mug_y, desk_top_z + 0.06),
              0.040, 0.11,
@@ -253,8 +272,10 @@ def build_hermit_dressing():
              segments=10, axis='Z')
 
     # Wall calendar with the last Tuesday circled
-    cal_x = desk_cx + 0.50
-    cal_y = +2.40
+    # on the NE wall slab's inner face (WallSeg_2: y 1.896 at x 0.84..1.83).
+    # 2026-09-22: it hung at (2.1, 2.4) — r 3.2, outside the tower.
+    cal_x = 1.33
+    cal_y = 1.896
     cal_cz = 1.70
     make_box("Calendar_Backing",
              (cal_x, cal_y - 0.005, cal_cz),
@@ -305,9 +326,9 @@ def build_hermit_wave2_props():
       · Kerosene reserve heater in the bunk room (glow + flicker)
       · Cypriane's round 7-year-old-hand midnight log entry
     """
-    desk_x = 0.0
-    desk_y = -1.20
-    desk_top_z = 0.78
+    desk_x = RADIUS - 0.80      # the real desk (see above)
+    desk_y = -0.20
+    desk_top_z = 0.76
 
     # ── the_relief_techs_arrival ────────────────────────────────
     lb_x = desk_x - 0.60
@@ -317,7 +338,7 @@ def build_hermit_wave2_props():
              (0.36, 0.14, 0.32),
              (0.14, 0.16, 0.20, 1.0))
     make_box("MarcusLaptopBag_Strap",
-             (lb_x, lb_y, 0.52),
+             (lb_x, lb_y, 0.49),   # on the bag
              (0.14, 0.03, 0.02),
              (0.14, 0.16, 0.20, 1.0))
     make_box("MarcusLaptopBag_Badge",
@@ -337,35 +358,43 @@ def build_hermit_wave2_props():
                  (0.02, 0.005, 0.02),
                  (0.62, 0.62, 0.64, 1.0))
 
-    bunk_x = -2.00
-    bunk_y = +2.50
-    bunk_top_z = 0.50
+    # on the bunk's quilt (build_keepers_quarters: bunk at (0, -1.6),
+    # quilt top 0.57). 2026-09-22: it sat at (-2, 2.5) — outside the
+    # tower, on nothing.
+    bunk_x = 0.55
+    bunk_y = -RADIUS + 0.80
+    bunk_top_z = 0.57
     make_box("Octant_Towel_Bundle",
-             (bunk_x, bunk_y, bunk_top_z + 0.08),
+             (bunk_x, bunk_y, bunk_top_z + 0.05),
              (0.30, 0.24, 0.10),
              (0.94, 0.90, 0.82, 1.0))
     for si in range(3):
         make_box("Octant_Towel_Stripe_%d" % si,
-                 (bunk_x, bunk_y - 0.08 + si * 0.08, bunk_top_z + 0.13),
+                 (bunk_x, bunk_y - 0.08 + si * 0.08, bunk_top_z + 0.10),
                  (0.28, 0.02, 0.001),
                  (0.32, 0.56, 0.36, 1.0))
     make_cyl("Octant_BrassCorner",
-             (bunk_x + 0.08, bunk_y - 0.02, bunk_top_z + 0.12),
+             (bunk_x + 0.08, bunk_y - 0.02, bunk_top_z + 0.11),
              0.05, 0.02,
              (0.78, 0.62, 0.30, 1.0), segments=10, axis='Z')
     make_box("Octant_CalibrationCard",
-             (bunk_x + 0.12, bunk_y + 0.08, bunk_top_z + 0.11),
+             (bunk_x + 0.12, bunk_y + 0.08, bunk_top_z + 0.10),
              (0.05, 0.03, 0.001),
              (0.92, 0.88, 0.72, 1.0))
 
     # ── the_storm_visit ────────────────────────────────────────
     # Bow lamp glow (persists across visits · a nod to the arrival)
+    # the skiff's bow itself, nosed up to the tower, the lamp on a
+    # post from its foredeck (2026-09-22: the lamp hung over the marsh)
+    make_box("Marsh_Floor_Skiff", (+2.00, -3.60, -0.05), (4.0, 4.0, 0.10), (0.30, 0.30, 0.22, 1.0))   # the water the skiff sits in
+    make_box("TheriotSkiff_Bow", (+2.00, -3.60, 0.16), (0.70, 1.40, 0.32), COL_CYPRESS)
+    make_cyl("TheriotSkiff_LampPost", (+2.00, -3.20, 0.44), 0.025, 0.24, COL_STAIR_IRON, segments=6)
     make_cyl("TheriotSkiff_BowLamp",
              (+2.00, -3.20, 0.60),
              0.04, 0.04,
              (0.94, 0.86, 0.42, 1.0), segments=10, axis='Y')
     make_cyl("TheriotSkiff_BowLampGlow",
-             (+2.00, -3.15, 0.60),
+             (+2.00, -3.1775, 0.60),   # on the lamp's lens
              0.10, 0.005,
              (0.94, 0.86, 0.42, 0.35), segments=12, axis='Y')
 
@@ -378,7 +407,7 @@ def build_hermit_wave2_props():
              (0.18, 0.001, 0.10),
              (0.10, 0.10, 0.10, 1.0))
     make_cyl("USCG_Radio_LED",
-             (desk_x - 0.30, desk_y + 0.16, desk_top_z + 0.14),
+             (desk_x - 0.30, desk_y + 0.16, desk_top_z + 0.10),   # on the grille (2026-09-23: over the radio)
              0.006, 0.008,
              (0.94, 0.24, 0.20, 1.0), segments=6, axis='Y')
     make_box("USCG_Radio_Mic_Body",
@@ -393,7 +422,7 @@ def build_hermit_wave2_props():
     heater_x = -1.00
     heater_y = +2.60
     make_box("KeroseneHeater_Body",
-             (heater_x, heater_y, 0.36),
+             (heater_x, heater_y, 0.21),
              (0.24, 0.28, 0.42),
              (0.42, 0.40, 0.38, 1.0))
     make_cyl("KeroseneHeater_Vent",
@@ -418,9 +447,70 @@ def build_hermit_wave2_props():
                  (0.08, 0.02, 0.0005),
                  (0.24, 0.20, 0.60, 1.0))
     make_box("Cypriane_LogEntry_Signature",
-             (lb_book_x + 0.06, lb_book_y - 0.18, desk_top_z + 0.026),
+             (lb_book_x + 0.06, lb_book_y - 0.10, desk_top_z + 0.026),   # on the page (2026-09-23: off the book's edge)
              (0.10, 0.03, 0.0005),
              (0.24, 0.20, 0.60, 1.0))
+
+
+def build_hermit_props_pass():
+    """Scene-standard PROPS pass (2026-07-13). This set was already
+    dense, but the lighthouse identity had three gaps: the lens has no
+    ROTATING MECHANISM, there is no LIFE RING (maritime keeper's kit),
+    and no keeper's TELESCOPE (a brass instrument at the water window).
+    Add all three as compound props.
+    """
+    # ── Lens rotating mechanism (clockwork weight-drive under lens) ──
+    # A real Fresnel rides a clockwork drum turned by a falling weight.
+    # The lens floats above the ceiling hatch at (0, +0.80); model the
+    # drive drum + gear ring below it and a weight on a descending chain.
+    mx, my = 0.0, +0.80
+    drum_z = CEIL + 0.06
+    make_cyl("LensDrive_Drum", (mx, my, drum_z), 0.16, 0.20, COL_BRASS, segments=16)
+    make_cyl("LensDrive_DrumCap", (mx, my, drum_z + 0.12), 0.17, 0.03, COL_STAIR_IRON, segments=16)
+    make_cyl("LensDrive_GearPlate", (mx, my, drum_z - 0.04), 0.19, 0.03, COL_BRASS, segments=16)
+    for gi in range(12):
+        ga = gi * (2*math.pi/12)
+        gx = mx + math.cos(ga) * 0.20
+        gy = my + math.sin(ga) * 0.20
+        make_box("LensDrive_GearTooth_%d" % gi, (gx, gy, drum_z - 0.04),
+                 (0.04, 0.04, 0.05), COL_BRASS)
+    # the weight near the TOP of its drop — wound this morning — so its
+    # chain clears the spiral stair (2026-09-24: hung to 3.6 m, the chain
+    # ran through tread 11)
+    make_cyl("LensDrive_Chain", (mx + 0.10, my, 5.635), 0.012, 0.65, COL_STAIR_IRON, segments=6)
+    make_box("LensDrive_Weight", (mx + 0.10, my, 5.13), (0.14, 0.14, 0.36), COL_STAIR_IRON)
+
+    # ── Life ring on the S wall (maritime keeper's kit) ──
+    ring_cx, ring_cz = -1.33, 1.70
+    ring_wy = -1.896 + 0.051   # flat on the SW wall slab's inner face (2026-09-22: it sat at r 2.5, inside the wall)
+    ring_R = 0.34
+    for ai in range(16):
+        aa = ai * (2*math.pi/16)
+        rx = ring_cx + math.cos(aa) * ring_R
+        rz = ring_cz + math.sin(aa) * ring_R
+        quad = int(aa / (math.pi/2)) % 2
+        col = (0.92, 0.92, 0.90, 1.0) if quad == 0 else (0.88, 0.26, 0.16, 1.0)
+        make_box("LifeRing_Seg_%d" % ai, (rx, ring_wy, rz), (0.10, 0.10, 0.12), col)
+    for gi, ga in enumerate([math.pi/4, 3*math.pi/4, 5*math.pi/4, 7*math.pi/4]):
+        gx = ring_cx + math.cos(ga) * (ring_R + 0.05)
+        gz = ring_cz + math.sin(ga) * (ring_R + 0.05)
+        make_box("LifeRing_Grab_%d" % gi, (gx, ring_wy + 0.02, gz), (0.05, 0.05, 0.05),
+                 (0.72, 0.60, 0.34, 1.0))
+    make_cyl("LifeRing_Peg", (ring_cx, ring_wy - 0.001, ring_cz + ring_R + 0.05),   # from the wall through the ring
+             0.02, 0.10, COL_STAIR_IRON, segments=6, axis='Y')
+
+    # ── Brass keeper's telescope on a tripod at the water window (N) ──
+    tel_x, tel_y = -1.20, +1.40
+    for li, (lx_off, ly_off) in enumerate([(-0.18, -0.10), (0.18, -0.10), (0.0, 0.20)]):
+        make_cyl("Telescope_Leg_%d" % li, (tel_x + lx_off, tel_y + ly_off, 0.55),
+                 0.02, 1.10, COL_CYPRESS, segments=6)
+    make_cyl("Telescope_Head", (tel_x, tel_y, 1.12), 0.22, 0.08, COL_BRASS, segments=10)   # a plate the legs meet (2026-09-22)
+    make_cyl("Telescope_Tube", (tel_x, tel_y + 0.25, 1.20), 0.045, 0.50, COL_BRASS,
+             segments=12, axis='Y')
+    make_cyl("Telescope_Objective", (tel_x, tel_y + 0.52, 1.20), 0.055, 0.04, COL_LENS_GLASS,
+             segments=12, axis='Y')
+    make_cyl("Telescope_Eyepiece", (tel_x, tel_y - 0.02, 1.20), 0.03, 0.05, COL_STAIR_IRON,
+             segments=10, axis='Y')
 
 
 def main():
@@ -434,6 +524,7 @@ def main():
     build_decor()
     build_hermit_dressing()
     build_hermit_wave2_props()
+    build_hermit_props_pass()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/bayou_lighthouse.glb"))
     print(f"\n[build_bayou_lighthouse] exporting to {out}")

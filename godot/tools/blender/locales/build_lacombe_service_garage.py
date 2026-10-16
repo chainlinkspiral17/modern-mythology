@@ -39,9 +39,9 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL, baseboard_face_sign=-1)
     # S wall has TWO big roll-up bay doors (open / partial)
-    make_wall("Wall_S_W", (-4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_Mid", (0.0, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_Mid", (0.0, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     # Roll-up door tracks above the bays (signal of bay doors)
     make_box("Bay_Door_W_Track", (-2.50, 0.10, 3.80), (2.20, 0.10, 0.20), COL_PEGBOARD)
     make_box("Bay_Door_E_Track", (+2.50, 0.10, 3.80), (2.20, 0.10, 0.20), COL_PEGBOARD)
@@ -78,12 +78,14 @@ def build_tow_truck():
     make_box("Truck_Boom", (tx, ty+1.50, 2.00), (0.20, 2.00, 0.20), (0.32, 0.32, 0.32, 1.0))
     # Hook
     make_box("Truck_Hook", (tx, ty+2.40, 1.80), (0.10, 0.30, 0.20), (0.32, 0.32, 0.32, 1.0))
+    # the boom's mast off the bed (2026-09-24: boom and hook 50 cm over the bed)
+    make_box("Truck_Boom_Mast", (tx, 5.20, 1.65), (0.16, 0.16, 0.50), (0.32, 0.32, 0.32, 1.0))
     # Jack stands (4) instead of wheels
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):
             jsy = ty - 0.80 + (sgn_y+1)*0.80
-            make_box(f"JackStand_{sgn_x:+d}_{sgn_y:+d}", (tx+sgn_x*0.60, jsy, 0.30),
-                     (0.20, 0.20, 0.60), COL_TIRE)
+            make_box(f"JackStand_{sgn_x:+d}_{sgn_y:+d}", (tx+sgn_x*0.60, jsy, 0.51),
+                     (0.20, 0.20, 1.02), COL_TIRE)      # up to the frame (2026-09-09: 0.4 m short)
     # Removed wheel pile next to the truck
     for wi in range(2):
         make_cyl(f"Wheel_Pile_{wi}", (tx-1.50, ty + wi*0.30 - 0.20, 0.30 + wi*0.16),
@@ -92,10 +94,10 @@ def build_tow_truck():
 
 def build_parts_pegboard_and_workbench():
     # N wall: pegboard with tool silhouettes
-    make_box("Pegboard", (0.0, ROOM_D-0.06, 2.20), (4.00, 0.02, 1.40), COL_PEGBOARD)
+    make_box("Pegboard", (0.0, ROOM_D-0.11, 2.20), (4.00, 0.02, 1.40), COL_PEGBOARD)
     for ti in range(10):
         tx = -1.80 + ti * 0.40
-        make_box(f"Peg_Tool_{ti}", (tx, ROOM_D-0.10, 2.20),
+        make_box(f"Peg_Tool_{ti}", (tx, ROOM_D-0.1225, 2.20),
                  (0.06, 0.005, 0.36), (0.18, 0.18, 0.20, 1.0))
     # Workbench below
     make_box("Bench_Top",  (0.0, ROOM_D-0.50, 0.96), (3.60, 0.50, 0.06), (0.22, 0.16, 0.12, 1.0))
@@ -135,8 +137,16 @@ def build_oil_drums_and_vending():
         make_cyl(f"OilDrum_Top_{di}", (dx, dy, 1.02), 0.32, 0.02, P.METAL_BLACK, segments=10)
     # Vending machine in SE corner (the office vestibule)
     vx, vy = +ROOM_W/2.0 - 0.40, 1.00
-    make_box("Vending_Body", (vx, vy, 0.90), (0.40, 0.50, 1.80), COL_VEND_BLUE)
-    make_box("Vending_Window", (vx-0.18, vy, 1.20), (0.005, 0.40, 0.80), (0.78, 0.84, 0.86, 0.55))
+    # (2026-10-09) a solid lower half under a GLAZED chamber — the bottles
+    # stood inside a solid body behind the window
+    make_box("Vending_Body", (vx, vy, 0.40), (0.40, 0.50, 0.80), COL_VEND_BLUE)
+    make_box("Vending_Chamber_Back", (vx + 0.19, vy, 1.30), (0.02, 0.50, 1.00), COL_VEND_BLUE)
+    for e, sgn in (("S", -1), ("N", 1)):
+        make_box(f"Vending_Chamber_Side_{e}", (vx, vy + sgn * 0.24, 1.30), (0.40, 0.02, 1.00), COL_VEND_BLUE)
+    make_box("Vending_Chamber_Top", (vx, vy, 1.79), (0.40, 0.50, 0.02), COL_VEND_BLUE)
+    for si, sz in enumerate((1.09, 1.39)):   # the spiral shelves the upper bottles stand on
+        make_box(f"Vending_Shelf_{si}", (vx, vy, sz), (0.36, 0.46, 0.02), (0.70, 0.72, 0.74, 1.0))
+    make_box("Vending_Window", (vx-0.18 - 0.0231, vy, 1.20), (0.005, 0.40, 0.80), (0.78, 0.84, 0.86, 0.55))
     # Bottles inside (column of three)
     for bi in range(3):
         make_cyl(f"Vend_Bottle_{bi}", (vx-0.10, vy, 0.90 + bi*0.30),
@@ -151,13 +161,14 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 4.5, CEIL))
     make_sprinkler("Spr_W", (-2.5, 4.5, CEIL))
     make_sprinkler("Spr_E", (+2.5, 4.5, CEIL))
-    make_security_camera("Cam", (+ROOM_W/2.0-0.10, 4.5, CEIL-0.20))
+    # on the ceiling, off the E wall (2026-09-23: 10 cm into the wall, 10-20 cm under the ceiling)
+    make_security_camera("Cam", (+ROOM_W/2.0-0.22, 4.5, CEIL))
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 1.5, 2.30), frozen_hour=4, frozen_min=15)
-    make_calendar("Calendar", (+ROOM_W/2.0-0.05, 6.5, 2.20))
-    make_faded_poster("Poster_Pinup", (-ROOM_W/2.0+0.05, 6.5, 1.80))
+    make_wall_clock("Clock", (-4.900, 1.5, 2.30), frozen_hour=4, frozen_min=15, facing='+X')
+    make_calendar("Calendar", (ROOM_W/2.0-0.1025, 6.5, 2.20))
+    make_faded_poster("Poster_Pinup", (-ROOM_W/2.0+0.05 + 0.0535, 6.5, 1.80), into_room=+1)
 
 
 def main():

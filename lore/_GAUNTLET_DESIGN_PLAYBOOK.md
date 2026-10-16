@@ -174,6 +174,19 @@ BBS thread IDs: schema before content.
 
 ## Recent lessons
 
+### 2026-09-19 · THE CARD — the arcana remembers its runs
+
+- The reading under an ending had three lines built from the run;
+  the fourth is built from every run before it: `gauntlet:<arcana>`
+  in `SaveSystem` records (runs · wins · best_turns · last). "first
+  run · the room will remember the next one" → "best 5 of 8 turns ·
+  3 runs, 1 won" → "a new best". Tempo is the difficulty axis, so
+  the record is the CLOCK, not a point total; a faster win is the
+  only score the board keeps.
+- Records are a generic store (`get_record` / `set_record`, one JSON
+  beside the unlocks); anything that should outlive a run and is not
+  an unlock goes there.
+
 ### 2026-07-02 · Wave-2 support-tier is complete · hands · hosts · picker · locale props · endings
 
 Not authoring new scenarios · closing the support tier that makes
@@ -289,6 +302,70 @@ description across the batch. Most durable lessons:
   weight. Rule: the last scenario in a batch gets the most care, not
   the least.
 
+## Design note · THE SPREAD (cross-arcana runs) — 2026-07-19, BUILT same day
+
+Implementation: `godot/scenes/menu/SpreadHost.gd` (tile in
+GalleryOverlay's gallery-games row, violet border), `spread_carry`
++ summary extensions in TarotGauntletGame.gd, spread persistence
+helpers in GauntletState.gd, `achievement:spread_full_reading` in
+achievements.json. Deviations from the note below: none of
+substance — held-card offering is filtered to CORE-deck ids
+(arcana-unique cards don't exist in the next arcana's merged deck,
+so they "stay with their rooms"), and a mid-scenario walk-out
+returns to the spread screen with the card still face-down (the
+gauntlet's own mid-run save resumes it).
+
+The backlog's campaign-shape item, designed against the engine as
+it actually is (grounded in TarotGauntletGame.gd state, verified
+this date). Implementation is its own arc; scenarios stay
+untouched — that constraint is the whole design.
+
+**Entry.** A THE SPREAD button on the scenario picker. Drawing
+deals three DISTINCT arcana (plain randi; a date-seeded daily
+variant is the separate P3 item). For each card, the setup is
+drawn from that arcana's four setups. Redrawing is free until the
+first scenario starts; after that the spread is committed.
+
+**Carryover — universal knobs only.** The engine's only
+cross-arcana state is `_sanity` (5/5 default), `_inertia`, and
+the hand. Per-arcana currencies (inspiration/insight/signal/...)
+do NOT carry — they're scenario-local by design and carrying them
+would need 22 special cases. Rules:
+- Sanity: scenario N+1 starts at `clamp(final_sanity, 2,
+  sanity_max)`. Damage carries; the floor of 2 keeps every third
+  card winnable. Surplus does NOT carry above the setup's start —
+  a spread is endurance, not a snowball.
+- Inertia: carries at half, rounded down, capped 3. Rooms
+  remember you were just in another room.
+- Held card: on a WIN, the player picks ONE card from the final
+  hand; it's injected into the opening hand of the next scenario.
+  This is the strategic hook (a Gravity vs a cheap action is a
+  real decision) and the only new UI moment inside a scenario.
+- On a LOSS the spread ends. The reading records what completed
+  (0–2 cards). No retry of the failed card inside the same
+  spread — draw again.
+
+**Host shape.** A thin SpreadHost screen (three arcana cards via
+the existing `_arcana_card_tex` machinery, done/current/pending
+markers, carryover values printed between cards) that calls
+`start_scenario()` per card and listens to `game_ended(outcome,
+summary)`. Carryover injects via the existing `start` overrides
+path (sanity/inertia start values already read from setup
+`start`; the host passes a delta dict). Spread state persists in
+`GauntletState.state.spread` `{cards:[{arcana,setup,outcome}],
+idx, carry:{sanity,inertia,held_card}}` so quitting mid-spread
+resumes.
+
+**Completion.** Three wins = a full reading: achievement
+(`trigger.kind: spread_completed`), and the reading screen deals
+the three cards face-up with their ending tokens as the caption —
+the gauntlet's first artifact that is ABOUT a sequence, not a
+scenario.
+
+**Non-goals v1.** No reversed-card modifiers in spreads, no
+cross-arcana narrative stitching, no five-card spreads. Each is a
+separate later item; the v1 is the carryover loop.
+
 ## Templates
 
 ### Easy-bookend scenario template
@@ -372,6 +449,81 @@ accumulate ≥ 5 distinct lessons each, spin them up:
 
 Each of these is not yet 5 lessons deep. Watch them.
 
+### 2026-07-27 · Deck playtest · the bottom strip overflowed the window
+
+- **Size fixed-height UI from its content, never from what's left
+  over.** The bottom strip (tableau row + hand row) was given 336px
+  by fiat while its content needed ~372 — the hand cards rendered
+  past the 720p window edge (user screenshot). Now the strip's
+  height is derived from the card-tile math (108 art + 34 title +
+  scrollbar clearance per row, see the `MID_BOTTOM`/`STRIP_TOP`/
+  `CARD_ROW_H` consts by `_build_ui`) and the MAP pane gets the
+  remainder. When a row of interactive controls and a decorative
+  pane compete for pixels, the controls win.
+- **The h-scrollbar needs budgeted height.** SCROLL_MODE_AUTO takes
+  ~8px INSIDE the ScrollContainer when it appears — a min height
+  equal to the tile height means the scrollbar overlays the card
+  titles. CARD_ROW_H = tile + 8.
+- **Accent the loop-driver.** Advance → is the one button that
+  keeps the game moving; it now wears C_ACCENT so a new player's
+  eye lands on it. One accented button per surface, no more.
+- **Faith is a dog.** Visitor "faith" was getting the human bust.
+  VnBustPortrait now has a `species: "dog"` painter (white coat,
+  floppy ears, accent collar; blink/talk frames honored) and a
+  global `_OVERRIDES` pin, so every render path — gauntlet roster,
+  dossiers, any future VN bust — draws the dog. When a visitor is
+  not a person, say so in the portrait layer, not just the prose.
+
+### 2026-08-19 · FP wiring: the scene must carry the board's stations
+
+- **Three locations ran every space on the top-down fallback**, and
+  two of them were wired to the WRONG SCENE: roberts_house pointed
+  at roberts_kitchen.tscn (a commercial kitchen — the Wheel's board
+  walks the whole house) and ember_ash_office pointed at
+  houston_office.tscn (John's Houston cubicle office — the
+  Chariot's board is the Ember & Ash renovation, whose own locale
+  carries the back stair, the cypress beam, the corner window).
+  Check the scene mapping BEFORE concluding FP sources were never
+  authored.
+- **Vantages are computed, not hand-derived**: stand backed off
+  from the station toward the room's mass center, yaw facing the
+  station — same discipline as the VN marker re-aim tool. The
+  +2.30 eye constant was tuned for the diner's scale; 4-element
+  entries use floor_z as an eye trim (-0.75 → ~1.55m) for
+  house-scale rooms.
+- **A space with no geometry keeps the top-down fallback ON
+  PURPOSE.** Ember's warehouse floor / alley / salvage piles, the
+  circuit's D'Ambrosio's + armory + riverfront stations, and the
+  church INTERIOR (the circuit builder is exterior-only) have no
+  sets — authoring a vantage there would frame a void. Their
+  next-draft builds are queued; until then the map view is the
+  honest render.
+- **The Wheel's hero stations had no geometry at all**: the loom
+  ("the work in progress is at three inches" — and it is, one
+  0.075m strip of cloth) and the wordless tapestry, whose one
+  deliberate flaw thread is the point of the whole station, now
+  exist in the spare room.
+
+### 2026-07-11 · direction pass · insert cuts on the FP camera
+
+- **The gauntlet's comic grammar is the insert cut, not the marker.**
+  The FP camera IS the player, so directing means briefly borrowing
+  it: `_insert_cut_to_space(space_id, hold)` hard-cuts to that
+  space's existing vantage (FOV −12 so it reads as a look, not a
+  teleport), holds ~1.7-2.4s, hard-cuts back to the player's
+  vantage. Reuses the per-space vantage tables — zero new framing.
+- **Cut on the beat's resolution, not its announcement.** The
+  visitor-arrival cut fires when the arrival modal is ACKNOWLEDGED
+  — read the card, look over at where they now stand, look back.
+  Cutting at modal-open would be invisible behind the dim.
+- **Unknown space = silent no-op.** Same fallback discipline as the
+  VN director: locales without a `jukebox` space simply don't cut
+  when a jukebox effect fires. Never let direction crash or jam the
+  scenario.
+- **One insert at a time.** `_insert_cut_active` gates re-entry;
+  player movement during a hold wins (the retarget overwrites the
+  insert, and the return timer just re-asserts the current space).
+
 ## TEMPLATE for new "Recent lessons" entry
 
 ```
@@ -383,3 +535,44 @@ Each of these is not yet 5 lessons deep. Watch them.
 - **<Bolded principle>.** <two-to-three-sentence explanation.>
 - **<Bolded principle>.** <two-to-three-sentence explanation.>
 ```
+
+### 2026-07-19 · Wave-3 fourth setups · the sibling-inherit method
+
+- **Wave-2 arcana resolve through the GENERIC evaluator.** The
+  engine's per-arcana win schemas cover Wave-1 only; strength/
+  hermit/justice/sun/world etc. fall through to connections +
+  require_inertia_below. Bespoke keys like require_cage_addressed
+  are narrative contract, not code — author them for the fiction,
+  but know the functional win is connect-N + inertia + threshold.
+- **Inherit the medium sibling's scaffolding wholesale.** Thresholds,
+  ambient pools, starting hand, claim_turns — copy the arcana's
+  medium setup as the base object and override only the authored
+  fields (title/subtitle/epigraphs/scene/hints/casts/schedule/
+  conditions). The numbers are already tuned; the words are the work.
+- **Novel arrival spaces MUST ship in scenario_spaces_additions**
+  ({id, label, kind:"named", pos_xy:[0,0]}). Sibling setups' extra
+  spaces (chambers, pier, county_line) are per-setup additions, not
+  shared vocabulary — referencing one without declaring it strands
+  the visitor. Cross-validate schedule spaces against location
+  spaces + additions before committing; a script catches what
+  eyeballs skim past (this wave: 10 misses caught).
+- **Schedule visitors must exist in visitors.json OR inline.**
+  erica_in_chambers looked canonical; it was another setup's inline
+  cast. Same validation script, same lesson as CP's handlers.
+- **Deck-clear achievements track the scenario list.** Adding a
+  fourth setup means updating the arcana's all_scenarios trigger +
+  desc in the same commit, or the achievement quietly grandfathers
+  the new content out of "complete."
+- Wave-3 remaining: 15 arcana (magician, priestess, empress,
+  emperor, hierophant, wheel_of_fortune, hanged_man, death,
+  temperance, devil, tower, star, moon, judgement + fool's own
+  fourth if wanted). Same method, ~5 per sitting.
+
+### 2026-09-07 · attract mode (arcade register, game grammar row 1)
+
+- **The cabinet plays to itself.** After 45 s without input the
+  board runs an attract loop (title / subtitle / INSERT COIN / turn
+  banner, the locale's mood strata stepping every 9 s, THE TRIP at
+  1.3). It reads no game state and consumes no input, so it can never
+  change a run; any key or button wakes it and restores the mood and
+  the trip. Keep it that way — attract is presentation, never play.

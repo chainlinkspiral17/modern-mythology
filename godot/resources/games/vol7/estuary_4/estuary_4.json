@@ -1,0 +1,185 @@
+{
+ "id": "estuary_4_data",
+ "notes": "Four chapters, beat-sequence. The plan emphasis chosen in the archive argues every later call; the king tide reads the calls back. When the_tideline_finished rides the token bus, the December 2003 notebook appears as a fourth folder and canon.tideline_report is read back to the player.",
+ "ch1": {
+  "title": "CHAPTER ONE · THE ARCHIVE",
+  "intro": "Spring 2016. The county archive reading room, second floor, radiator weather. You have a watershed, a budget line, and a week of this room before anyone lets you near a shovel. Every honest restoration starts here: with what the volunteers wrote down when nobody was paying them to be right.\n\nDoris the elder retired in '09; Doris the younger pulls the boxes now. Three files matter. Pick the one the plan will stand on.",
+  "folders": [
+   {
+    "id": "f_line",
+    "plan": "line",
+    "label": "the 2001 tide-gate logbook · one lever, twelve weeks, one hand",
+    "body": "A school notebook, water-swollen, every page the same reading taken at the same hour with the devotion of somebody who had been told it mattered and decided to believe it. Hydrology first: the water's plumbing before anything that swims in it. The plan takes the shape of the gate."
+   },
+   {
+    "id": "f_living",
+    "plan": "living",
+    "label": "the 2002 species censuses · the per-species math",
+    "body": "Twelve seasons of counts in four hands, the arithmetic careful, the margins full of small drawings of the things counted. Habitat first: you restore for what lives here or you are landscaping. The plan takes the shape of the censuses."
+   },
+   {
+    "id": "f_lost",
+    "plan": "lost",
+    "label": "the 2006 debris-field photographs · what the water was carrying",
+    "body": "Three hundred photographs of everything the tide filed on this coast for a decade, indexed by somebody who understood that the junk is data. Cleanup first: you cannot read the water's handwriting through what's lying on it. The plan takes the shape of the catalog."
+   }
+  ],
+  "notebook_folder": {
+   "id": "f_notebook",
+   "label": "december 2003 · the king-tide notebook · two ruled lines per station",
+   "body_prefix": "A county survey notebook, salt-stiff, pencil, one morning's walk from the creek mouth to the point. Two lines per station, some left blank ON PURPOSE - you can tell, after enough of this room, the difference between an empty line and a held one.\n\nThe register on the cover card, in the archivist's hand: ",
+   "body_suffix": "\n\nYou read it twice. You are the person The Tideline said would come - it just took the county thirteen years to grow you. The plan takes the shape of the notebook.",
+   "token": "e4_read_the_2003_notebook",
+   "register_plans": {
+    "THE LIVING SHORE": "living",
+    "THE SHORE OF LOST THINGS": "lost",
+    "THE LINE ITSELF": "line",
+    "THE WHOLE BEACH": "whole"
+   }
+  }
+ },
+ "ch2": {
+  "title": "CHAPTER TWO · THE WATER",
+  "intro": "The working season, and the three calls everything else hangs off. The crews are good. The budget is a budget. The file you trusted argues every one of these in its own voice.",
+  "calls": [
+   {
+    "id": "gate",
+    "title": "the 2001 tide gate",
+    "body": "The gate the logbook was written about, fifteen years older, half-seized. Repair it and the estuary keeps its adjustable plumbing. Breach it for good and the water goes back to making its own decisions.",
+    "arguments": {
+     "line": "The logbook's whole argument: a gate you can trim is a conversation with the tide. Repair it.",
+     "living": "The censuses barely mention the gate except where fish stack up against it, waiting. The water's residents vote breach.",
+     "lost": "Half the debris field arrived the winter the gate jammed open. Either answer, the catalog says - but pick one that FAILS SAFE.",
+     "whole": "The notebook recorded the gate's bell-buoy reach without an opinion. Both answers are on the table."
+    },
+    "options": [
+     {
+      "id": "repair",
+      "label": "repair the gate · keep the conversation",
+      "aligned": [
+       "line",
+       "whole"
+      ],
+      "result": "Three weeks, two welders, one lever restored to one hand's control. The estuary keeps its adjustable plumbing, and somewhere a 2001 volunteer's readings become load-bearing."
+     },
+     {
+      "id": "breach",
+      "label": "breach it for good · the water decides",
+      "aligned": [
+       "living",
+       "whole"
+      ],
+      "result": "The excavator takes an afternoon to undo 1961. The water walks through the gap like it had been waiting with its coat on. Six hours later the fish find it."
+     }
+    ]
+   },
+   {
+    "id": "channel",
+    "title": "the shallows bar",
+    "body": "The bar below the point cut itself a new channel in the '03 king tide and has been rearranging its doorstep every winter since. Dredge it stable, or let the point keep editing.",
+    "arguments": {
+     "line": "The measurements say the bar is the estuary breathing. You do not dredge a lung. Leave it.",
+     "living": "The seals use the shifting shallows precisely BECAUSE boats can't. The censuses vote leave, firmly.",
+     "lost": "The catalog's photos show the bar burying a decade of debris, usefully. Dredging un-buries it. Leave it - or dredge and finally haul the junk out whole.",
+     "whole": "The notebook's station eleven happened on that bar. You know exactly what stands in those shallows in December."
+    },
+    "options": [
+     {
+      "id": "dredge",
+      "label": "dredge the channel stable · access and cleanup",
+      "aligned": [
+       "lost"
+      ],
+      "result": "Two barge-months. The channel holds, the buried debris comes out by the ton, and the point loses its editing privileges. The working boats send a thank-you card. The seals send nothing."
+     },
+     {
+      "id": "leave",
+      "label": "leave the bar to its winters",
+      "aligned": [
+       "line",
+       "living",
+       "whole"
+      ],
+      "result": "The bar stays in charge of itself. Every winter it will rearrange the doorstep, and every spring the survey will note where it moved things, which is not a failure of the plan. It is the plan."
+     }
+    ]
+   },
+   {
+    "id": "plantings",
+    "title": "the plantings",
+    "body": "The flats want vegetation and the budget wants a decision: eelgrass at scale this season, or the slow native seedbank that takes five years to look like anything.",
+    "arguments": {
+     "line": "Roots are hydrology. Either answer slows the water; the seedbank slows it the way the watershed used to. The logbook votes slow.",
+     "living": "Eelgrass at scale is habitat THIS SEASON, and the censuses have three species that cannot wait five years. Plant now.",
+     "lost": "The catalog notes eelgrass mats catch debris like a comb. Useful. Messy. Your call.",
+     "whole": "One station of the notebook was sand dollars all face down. Whatever you plant, plant it where the money's buried."
+    },
+    "options": [
+     {
+      "id": "eelgrass",
+      "label": "eelgrass at scale · habitat this season",
+      "aligned": [
+       "living",
+       "whole"
+      ],
+      "result": "Forty thousand plugs in eight weeks. By September the flats are a nursery and the counts in year one exceed the file's best season. Fast green is still green."
+     },
+     {
+      "id": "seedbank",
+      "label": "the native seedbank · five slow years",
+      "aligned": [
+       "line",
+       "lost",
+       "whole"
+      ],
+      "result": "The unglamorous call: seed, fence, wait. Three funders required a meeting about the word 'wait.' The watershed required nothing. It has been waiting longer than the county has existed."
+     }
+    ]
+   }
+  ]
+ },
+ "ch3": {
+  "title": "CHAPTER THREE · THE HUNTER",
+  "intro": "The east forest, and the cabin, and the door with no note on it - because it's spring, and he's back.\n\nAshford Cade. Seventies. Has hunted this watershed since before the county kept files on it. He looks at your county truck, then at your boots, and the boots pass. 'You're the one reading the old surveys,' he says. Word travels. 'Walk the line with me. Bring the plan. I'll tell you where it's wrong.'",
+  "walk": "He walks you the whole restoration line in four hours and disagrees with the county's paper in exactly two places - the culvert nobody mapped, and the bend where the old-timers say the creek used to be. He is right about one of them. Which one, you will not know until December, and he knows that too, and it is the entire difference between an archive and a hunter: paper is sure everywhere; he is sure only where he has stood.",
+  "walk_plan_lines": {
+   "line": "At the culvert he taps the pipe with one knuckle. 'Your logbook fellow measured the gate every day and never once walked up here. Water starts where it starts.' The plan gains a footnote in pencil.",
+   "living": "He names every animal you pass without breaking stride, including two the censuses never caught. 'Counting's good,' he allows. 'Counting from a distance counts different things.'",
+   "lost": "At the debris line he picks up a bottle, reads the bottom of it like a date stamp, and sets it back EXACTLY where it lay. 'Your photograph people understood. It's not trash. It's testimony.'",
+   "whole": "He reads your plan at the trailhead, all of it, in silence, and hands it back. 'Whoever wrote your source file put their pencil down at the right moment once. You'll do all right.'"
+  },
+  "island_nod": "Once - exactly once - at the bluff line, he looks at the island offshore, and at the boat that is not a fishing boat holding station off it, and says: 'Different organization. Long story. Wrong season.' And that is every word the campaign has on the subject.",
+  "choices": [
+   {
+    "id": "walk_full",
+    "label": "walk the full line with him · four hours, no shortcuts",
+    "token": "e4_cade_walked_the_line",
+    "result": "You give it the four hours. At the truck he shakes your hand once, like closing a gate that latches properly. 'Spring after next,' he says, 'I'll walk it again and tell you what you got right.' It is the best performance review the county has ever scheduled."
+   },
+   {
+    "id": "take_notes",
+    "label": "take his two corrections and get back to the season",
+    "result": "You mark the culvert and the old bend on the map and thank him. He nods at the thanks the way you nod at weather. The corrections are in the plan now; the four hours are not, and some part of the plan will always be the poorer for the difference, and only he will know which part."
+   }
+  ]
+ },
+ "ch4": {
+  "title": "CHAPTER FOUR · THE KING TIDE",
+  "intro": "December 2016. The year's highest water arrives on schedule to inspect the work, and you do what the whole line has always done with a morning like this: you walk the wrack line and write down what you see.",
+  "endings": {
+   "estuary_remembers": {
+    "title": "THE ESTUARY REMEMBERS",
+    "body": "The water comes up the beach and finds the work consistent - a plan that argued one thing and then did that thing, three times, in the file's own voice. What holds, holds the way the file said it would; the estuary takes the shape you argued for, and holds it, and in the spring the shape is still there, softened at the edges the way kept promises are.\n\nCade walks it in April. His verdict, entire: 'Held.'"
+   },
+   "water_decides": {
+    "title": "THE WATER DECIDES",
+    "body": "The king tide keeps half your calls and edits the rest, not unkindly - a channel where you didn't cut one, a bank taken back, one planting relocated forty yards by an authority that does not attend meetings. The plan and the estuary meet in the middle, which the old-timers on the survey rolls could have told you is where the estuary holds all its meetings.\n\nThe December notes run long. They are the honest kind."
+   },
+   "second_survey": {
+    "title": "THE SECOND SURVEY",
+    "body": "Some of it fails. The specific way it fails - which call, at what water height, in what order - is written down at station after station in your cold hand, and by January the failure is the most valuable data the county has collected in a decade. The next officer will start from your notes the way you started from 2001's.\n\nRestoration is a relay. You ran your leg. The baton is paper."
+   }
+  },
+  "footer": "Filed with the county. Someone will read it. Someone always does - it just takes the county a while to grow the right someone."
+ }
+}

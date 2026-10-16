@@ -1,0 +1,282 @@
+{
+ "id": "shrine_summer",
+ "notes": "The shrine, summer \u00b7 the same eight spots, re-inked. Thirty-two states of one place.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#ecf0e4",
+  "#4a8a58",
+  "#f0c848",
+  "#7a98b8",
+  "#38302a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 118,
+   "y_range": [
+    18,
+    62
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    118,
+    16
+   ],
+   "size": 13,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    108,
+    22
+   ],
+   "size": 8,
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    58,
+    26,
+    44,
+    30
+   ],
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     52,
+     26
+    ],
+    [
+     80,
+     16
+    ],
+    [
+     108,
+     26
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     58,
+     26
+    ],
+    [
+     58,
+     56
+    ],
+    [
+     102,
+     56
+    ],
+    [
+     102,
+     26
+    ],
+    [
+     58,
+     26
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 80,
+   "y_range": [
+    34,
+    56
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 60,
+   "x_range": [
+    64,
+    96
+   ],
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 66,
+   "y_range": [
+    60,
+    64
+   ],
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 94,
+   "y_range": [
+    60,
+    64
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 64,
+   "x_range": [
+    70,
+    90
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 67,
+   "x_range": [
+    69,
+    91
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 70,
+   "x_range": [
+    67,
+    93
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 73,
+   "x_range": [
+    66,
+    94
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    64,
+    96
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 79,
+   "x_range": [
+    63,
+    97
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 82,
+   "x_range": [
+    61,
+    99
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 85,
+   "x_range": [
+    60,
+    100
+   ],
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 62,
+   "y_range": [
+    74,
+    88
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 98,
+   "y_range": [
+    74,
+    88
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 74,
+   "x_range": [
+    56,
+    104
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 70,
+   "x_range": [
+    58,
+    102
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    48,
+    50,
+    5,
+    8
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    106,
+    50,
+    5,
+    8
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    108,
+    49
+   ],
+   "size": 1,
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 8,
+   "x_range": [
+    10,
+    40
+   ],
+   "color": 3
+  }
+ ]
+}

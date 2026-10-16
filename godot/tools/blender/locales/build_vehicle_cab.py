@@ -1,0 +1,539 @@
+"""vehicle_cab — the inside of a parked vehicle, and the gravel turnout
+it is parked in. vol6's car scenes, re-homed off louisiana_road
+(2026-09-03).
+
+The volume keeps putting two people in a parked car and letting them
+say the thing they cannot say indoors: "Ben, in the driver's seat,
+does not start the engine" (ch5, Eight Minutes — four of them in the
+truck, the safe-deposit box, the fake wrist brace); Maya "in the dark
+of the passenger seat" (ch5, 1776 kHz); BT and Diego eating El Rancho
+in the lay-by — "a small gravel turnout the city has, at some point in
+the past, paved over with a single picnic table that nobody uses" —
+the flauta box open on the center console, the green-sauce packets,
+the El Diablito packet leaking under BT's thigh (ch16); Jesse in the
+Civic in the lot after the DJ (ch20); Claire in the white sedan "at
+the gravel turnout past the last named road" (ch4, ch6). Those were
+all rendered from the shoulder of a highway. This is the cab.
+
+One cab stands for every vehicle: Ben's crew-cab pickup is the
+model, because it is the volume's spine (Ben drives everyone home).
+The camera sits at the center console looking forward over the dash
+through the windshield, so the exterior color is mostly a hood and
+the interior — dash, wheel, cradle, radio, console, the two front
+seats — is what the frame is made of. Claire's white sedan is parked
+further along the turnout and reads through the driver's window.
+
+Coordinate frame: Blender Z-up. The truck sits at the origin facing
++Y (north); the two-lane road runs east-west across the top of the
+windshield at y≈9.5, the turnout is the gravel south of it, the
+picnic table east of the truck, the sedan west. glTF export remaps to
+Godot (x, z, -y): the cab preset at godot (0, 1.28, -0.10) with zero
+yaw looks straight up blender +Y, over the hood, at the road.
+
+DRAFT 1 (2026-09-03): hollow crew cab (pan, floor, doors, glass,
+pillars, roof, windshield, rear glass), dash with cluster + radio
+head + phone in its cradle, wheel + column + key, two front buckets
+and the console between them with the El Rancho spread (flauta tray,
+guac cup, sauce packets, the foil ball, the fountain cup in the
+holder, the leaking El Diablito on the driver's seat), the rear
+bench, dome light + rearview + visors, the truck exterior (hood
+block, fenders, grille, bumpers, bed + toolbox + cooler, tailgate,
+wheels), the gravel turnout, the paved pad with the picnic table and
+its barrel, the white sedan, the two-lane road with its shoulders and
+a mile marker, cedar scrub, treeline far bands.
+Draft 2 targets: headlight cones + dash-glow practical variants per
+scene (the night preset), a second cab preset from the rear bench
+(ch5's four-up), rain on the windshield for ch4_storm, a
+Civic-shaped hatch variant behind the sedan for Jesse's scenes.
+
+DRAFT 2 (2026-09-18, lore/_VISUAL_PROGRAM.md §3, 7 placements): treads
+and lug rings on the truck's wheels, lathed fence and mile-marker
+posts, the sedan from the vehicle kit, tapered scrub trunks, the picnic
+table as planks on A-frame legs with somebody's initials; the cab's
+WEAR (the heel-worn mat, the bolster's shine, the dash's dust line, a
+door ding, the ruts deeper by the truck); D3 (the phone's charger cord
+to the 12 V socket, the key ring, the pine tree on the mirror).
+The draft-2 targets above stay open for draft 3.
+
+DRAFT 3 (2026-10-09) — the wrong VEHICLE. ch16's El Rancho morning is
+in BT's "2017, beige" Altima, a sedan; the flauta box, the cup, the
+packets and BT's cradle phone were dressed into Ben's green pickup. The
+Altima is now built into the turnout east of the truck
+(build_altima_2026_10: the truck's cab run through plan.shifted 14 cm
+lower in its own colours, a sedan body round it) and carries the spread;
+the truck keeps Finn's duffel (vol7). New preset `vehicle_cab_altima`;
+ch16 routes to it; its inserts + closeups are `__vehicle_cab_altima`.
+
+Same night: Finn's truck (vol7) moved out to cabin_road, the duffel with it.
+
+Draft 4 targets: the Civic (vol6 ch19/ch20 — Ben/Jesse "in the Civic")
+still renders in the pickup: a hatch cab, or the Altima preset with a
+per-scene note; the sedan's raked windshield and roofline (the shifted
+cab keeps the truck's upright glass); Finn's truck (vol7) is not Ben's
+green one — the crow on the dash, the shortwave in the back; the night
+rig; rain for ch4_storm.
+"""
+import os, sys, math
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_wedge, make_lathe, make_chamfer_box,
+                             make_tube, make_rot_box, make_taper_cyl, export_glb)
+from _props.detail import make_far_bands
+
+GRAVEL = (0.56, 0.52, 0.44, 1.0)
+ASPHALT = (0.30, 0.30, 0.32, 1.0)
+CONCRETE = (0.62, 0.61, 0.58, 1.0)
+TRUCK_GREEN = (0.22, 0.34, 0.24, 1.0)
+TRUCK_GREEN_DK = (0.16, 0.26, 0.18, 1.0)
+GLASS = (0.55, 0.62, 0.70, 0.35)
+CHROME = (0.72, 0.74, 0.76, 1.0)
+RUBBER = (0.12, 0.12, 0.13, 1.0)
+DASH = (0.20, 0.19, 0.18, 1.0)
+DASH_LT = (0.28, 0.27, 0.25, 1.0)
+SEAT = (0.40, 0.36, 0.30, 1.0)
+SEAT_DK = (0.32, 0.29, 0.24, 1.0)
+HEADLINER = (0.66, 0.64, 0.58, 1.0)
+SCREEN = (0.55, 0.72, 0.90, 1.0)
+FOIL = (0.80, 0.82, 0.84, 1.0)
+SAUCE_GREEN = (0.46, 0.66, 0.30, 1.0)
+SAUCE_RED = (0.62, 0.16, 0.10, 1.0)
+CARD = (0.86, 0.78, 0.60, 1.0)
+WOOD = (0.50, 0.40, 0.28, 1.0)
+
+# cab envelope (blender): floor top z 0.46, belt line z 1.20, roof z 1.72
+Z_FLOOR = 0.46
+Z_BELT = 1.20
+Z_ROOF = 1.72
+
+
+def build_ground():
+    make_box("Ground_Far", (0.0, 0.0, -0.07), (700.0, 700.0, 0.02), (0.30, 0.34, 0.22, 1.0))
+    # the turnout: gravel south of the road, the road east-west
+    make_box("Gravel_Turnout", (0.0, -1.0, -0.02), (26.0, 12.0, 0.04), GRAVEL)
+    make_box("Turnout_Ruts", (-2.0, 0.0, 0.0005), (14.0, 0.6, 0.001), (0.50, 0.46, 0.38, 1.0))
+    make_box("Road_Shoulder_S", (0.0, 5.5, -0.025), (300.0, 1.0, 0.05), (0.50, 0.47, 0.40, 1.0))
+    make_box("Road_Asphalt", (0.0, 9.5, -0.03), (300.0, 7.0, 0.06), ASPHALT)
+    make_box("Road_Shoulder_N", (0.0, 13.5, -0.025), (300.0, 1.0, 0.05), (0.50, 0.47, 0.40, 1.0))
+    make_box("Road_Ditch_N", (0.0, 15.0, -0.045), (300.0, 2.0, 0.03), (0.26, 0.30, 0.18, 1.0))
+    for i in range(30):
+        make_box(f"Road_Center_Dash_{i}", (-72.5 + i * 5.0, 9.5, 0.002), (2.4, 0.12, 0.004), (0.82, 0.80, 0.60, 1.0))
+    make_box("Road_Edge_Line_S", (0.0, 6.15, 0.002), (300.0, 0.10, 0.004), (0.86, 0.86, 0.84, 1.0))
+    make_box("Road_Edge_Line_N", (0.0, 12.85, 0.002), (300.0, 0.10, 0.004), (0.86, 0.86, 0.84, 1.0))
+    # mile marker on the far shoulder
+    make_lathe("Mile_Marker_Post", (3.5, 13.8, 0.0), [(0.04, 0.0), (0.04, 1.75), (0.03, 1.8), (0.0, 1.8)], (0.40, 0.42, 0.40, 1.0), segments=6)
+    make_box("Mile_Marker_Sign", (3.5, 13.8, 1.75), (0.22, 0.02, 0.36), (0.16, 0.42, 0.24, 1.0))
+    # a fence line along the far ditch
+    for i in range(14):
+        make_lathe(f"Fence_Post_{i}", (-39.0 + i * 6.0, 16.5, 0.0), [(0.05, 0.0), (0.05, 1.15), (0.035, 1.2), (0.0, 1.2)], (0.36, 0.30, 0.22, 1.0), segments=6)
+    make_box("Fence_Wire_Top", (0.0, 16.5, 1.12), (80.0, 0.01, 0.01), (0.50, 0.50, 0.48, 1.0))
+    make_box("Fence_Wire_Mid", (0.0, 16.5, 0.72), (80.0, 0.01, 0.01), (0.50, 0.50, 0.48, 1.0))
+
+
+def build_truck_exterior():
+    """Ben's crew-cab pickup — green, a bed with a toolbox and the
+    cooler. Skins are 25 mm plates OUTSIDE the cab shell (x ±0.90),
+    wheels outside the skins (x ±0.94..1.20) so nothing intersects."""
+    # underbody pan, the floor of the cab, the bed
+    make_box("Truck_Pan", (0.0, -0.8, 0.35), (1.80, 5.60, 0.10), RUBBER)
+    make_box("Cab_Floor", (0.0, 0.0, 0.43), (1.80, 3.10, 0.06), DASH)
+    make_box("Truck_Bed_Floor", (0.0, -2.80, 0.49), (1.87, 2.40, 0.06), TRUCK_GREEN_DK)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Truck_Bed_Side_{nm}", (sgn * 0.9175, -2.80, 0.795), (0.035, 2.40, 0.55), TRUCK_GREEN)
+    make_box("Truck_Tailgate", (0.0, -4.025, 0.795), (1.80, 0.05, 0.55), TRUCK_GREEN)
+    make_box("Truck_Rear_Bumper", (0.0, -4.11, 0.50), (2.00, 0.12, 0.16), CHROME)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Truck_Taillight_{nm}", (sgn * 0.70, -4.06, 0.85), (0.22, 0.02, 0.14), (0.70, 0.12, 0.10, 1.0))
+    # bed contents: the crossbed toolbox and the cooler with the sandwiches
+    make_box("Truck_Toolbox", (0.0, -1.85, 0.73), (1.70, 0.45, 0.42), (0.74, 0.76, 0.78, 1.0))
+    make_box("Truck_Toolbox_Lid_Lip", (0.0, -1.85, 0.955), (1.72, 0.47, 0.03), (0.66, 0.68, 0.70, 1.0))
+    make_box("Cooler_Body", (0.35, -3.20, 0.72), (0.55, 0.38, 0.40), (0.86, 0.86, 0.84, 1.0))
+    make_box("Cooler_Lid", (0.35, -3.20, 0.945), (0.57, 0.40, 0.05), (0.22, 0.34, 0.60, 1.0))
+    make_cyl("Bed_Rope_Coil", (-0.45, -3.30, 0.56), 0.16, 0.08, (0.72, 0.64, 0.46, 1.0), segments=10)
+    # hood block + slope, cowl, fenders, grille, bumper, lights
+    make_box("Truck_Hood_Block", (0.0, 2.45, 0.74), (1.80, 1.70, 0.56), TRUCK_GREEN)
+    make_wedge("Truck_Hood_Slope", (0.0, 2.45, 1.10), (1.80, 1.70, 0.20), TRUCK_GREEN, high_end="-Y")
+    make_box("Truck_Cowl", (0.0, 1.575, 0.83), (1.86, 0.05, 0.74), TRUCK_GREEN)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Truck_Fender_F_{nm}", (sgn * 0.9125, 2.45, 0.785), (0.025, 1.70, 0.55), TRUCK_GREEN)
+        make_box(f"Truck_Mirror_Arm_{nm}", (sgn * 1.02, 1.30, 1.30), (0.20, 0.04, 0.04), RUBBER)
+        make_box(f"Truck_Mirror_{nm}", (sgn * 1.16, 1.30, 1.30), (0.08, 0.14, 0.18), TRUCK_GREEN_DK)
+    make_box("Truck_Grille", (0.0, 3.33, 0.75), (1.80, 0.06, 0.50), (0.22, 0.22, 0.24, 1.0))
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Truck_Headlight_{nm}", (sgn * 0.62, 3.37, 0.88), (0.34, 0.02, 0.18), (0.88, 0.88, 0.80, 1.0))
+    make_box("Truck_Front_Bumper", (0.0, 3.43, 0.50), (2.00, 0.14, 0.18), CHROME)
+    make_box("Truck_Plate", (0.0, 3.51, 0.50), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
+    # wheels: outside the skins
+    for wi, (wx, wy) in enumerate(((-1.07, 2.50), (1.07, 2.50), (-1.07, -2.60), (1.07, -2.60))):
+        make_cyl(f"Truck_Wheel_{wi}", (wx, wy, 0.40), 0.40, 0.26, RUBBER, axis="X", segments=14)
+        make_cyl(f"Truck_Tread_{wi}", (wx, wy, 0.40), 0.405, 0.18, (0.16, 0.16, 0.17, 1.0), axis="X", segments=14)
+        make_cyl(f"Truck_Hubcap_{wi}", (wx + (0.135 if wx > 0 else -0.135), wy, 0.40), 0.18, 0.01,
+                 (0.60, 0.62, 0.64, 1.0), axis="X", segments=10)
+        make_cyl(f"Truck_Lug_{wi}", (wx + (0.142 if wx > 0 else -0.142), wy, 0.40), 0.05, 0.006, (0.40, 0.42, 0.44, 1.0), axis="X", segments=6)
+
+
+def build_cab_shell():
+    """Doors, pillars, glass, roof — the hollow the camera sits in."""
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        x_skin = sgn * 0.9125
+        x_glass = sgn * 0.915
+        x_pillar = sgn * 0.91
+        # door panels below the belt line, front and rear, the B pillar between
+        make_box(f"Cab_Door_F_{nm}", (x_skin, 0.75, 0.83), (0.025, 1.30, 0.74), TRUCK_GREEN)
+        make_box(f"Cab_Door_R_{nm}", (x_skin, -0.725, 0.83), (0.025, 1.35, 0.74), TRUCK_GREEN)
+        make_box(f"Cab_Side_Cowl_{nm}", (x_skin, 1.475, 0.83), (0.025, 0.15, 0.74), TRUCK_GREEN)
+        make_box(f"Cab_Side_Rear_{nm}", (x_skin, -1.475, 0.83), (0.025, 0.15, 0.74), TRUCK_GREEN)
+        make_box(f"Cab_Pillar_A_{nm}", (x_pillar, 1.50, 1.46), (0.03, 0.10, 0.52), TRUCK_GREEN_DK)
+        make_box(f"Cab_Pillar_B_{nm}", (x_pillar, 0.025, 1.46), (0.03, 0.15, 0.52), TRUCK_GREEN_DK)
+        make_box(f"Cab_Pillar_C_{nm}", (x_pillar, -1.475, 1.46), (0.03, 0.15, 0.52), TRUCK_GREEN_DK)
+        make_box(f"Cab_Glass_F_{nm}", (x_glass, 0.775, 1.46), (0.02, 1.25, 0.50), GLASS)
+        make_box(f"Cab_Glass_R_{nm}", (x_glass, -0.75, 1.46), (0.02, 1.20, 0.50), GLASS)
+        # interior door card + armrest + handle
+        make_box(f"Cab_Door_Card_{nm}", (sgn * 0.885, 0.75, 0.83), (0.03, 1.28, 0.72), DASH_LT)
+        make_box(f"Cab_Armrest_{nm}", (sgn * 0.82, 0.55, 0.98), (0.10, 0.50, 0.06), DASH)
+        make_box(f"Cab_Door_Handle_{nm}", (sgn * 0.855, 1.05, 1.08), (0.03, 0.14, 0.03), CHROME)
+    make_box("Cab_Windshield", (0.0, 1.565, 1.46), (1.76, 0.02, 0.50), GLASS)
+    make_box("Cab_Windshield_Header", (0.0, 1.565, 1.71), (1.80, 0.03, 0.02), TRUCK_GREEN_DK)
+    make_box("Cab_Rear_Glass", (0.0, -1.565, 1.46), (1.76, 0.02, 0.50), GLASS)
+    make_box("Cab_Back_Wall", (0.0, -1.575, 0.83), (1.86, 0.05, 0.74), TRUCK_GREEN)
+    make_box("Cab_Roof", (0.0, 0.0, 1.75), (1.86, 3.16, 0.06), TRUCK_GREEN)
+    make_box("Cab_Headliner", (0.0, 0.0, 1.715), (1.76, 3.06, 0.01), HEADLINER)
+    # dome light, rearview, visors
+    make_box("Dome_Light", (0.0, -0.30, 1.70), (0.14, 0.10, 0.02), (0.96, 0.92, 0.80, 1.0))
+    make_cyl("Rearview_Stalk", (0.0, 1.42, 1.66), 0.012, 0.09, RUBBER, segments=6)
+    make_box("Rearview_Mirror", (0.0, 1.40, 1.58), (0.26, 0.05, 0.07), (0.30, 0.34, 0.38, 1.0))
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Sun_Visor_{nm}", (sgn * 0.47, 1.32, 1.695), (0.60, 0.30, 0.02), HEADLINER)
+
+
+def build_dash():
+    """Dash face + top, the cluster, the radio head, the vents, the
+    phone in its dashboard cradle (BT presses play), the wheel."""
+    make_box("Dash_Face", (0.0, 1.00, 0.77), (1.80, 0.10, 0.62), DASH)
+    make_chamfer_box("Dash_Top", (0.0, 1.25, 1.13), (1.80, 0.60, 0.10), DASH_LT, chamfer=0.04)
+    make_box("Dash_Defrost_Slot", (0.0, 1.45, 1.181), (1.30, 0.06, 0.002), RUBBER)
+    # cluster behind the wheel
+    make_box("Gauge_Cluster", (-0.46, 0.94, 0.98), (0.36, 0.02, 0.16), (0.10, 0.10, 0.11, 1.0))
+    make_cyl("Gauge_Speedo", (-0.54, 0.928, 0.98), 0.055, 0.004, (0.80, 0.78, 0.70, 1.0), axis="Y", segments=12)
+    make_cyl("Gauge_Tach", (-0.38, 0.928, 0.98), 0.055, 0.004, (0.80, 0.78, 0.70, 1.0), axis="Y", segments=12)
+    # center stack: vents, the radio head with its dial, the climate knobs
+    for vi, vx in enumerate((-0.16, 0.16)):
+        make_box(f"Dash_Vent_{vi}", (vx, 0.94, 1.02), (0.14, 0.02, 0.06), (0.14, 0.14, 0.15, 1.0))
+    make_box("Radio_Head", (0.0, 0.94, 0.90), (0.32, 0.02, 0.10), (0.12, 0.12, 0.13, 1.0))
+    make_box("Radio_Display", (0.04, 0.928, 0.915), (0.14, 0.004, 0.03), (0.92, 0.62, 0.22, 1.0))
+    make_cyl("Radio_Dial", (-0.11, 0.925, 0.90), 0.022, 0.014, CHROME, axis="Y", segments=10)
+    make_cyl("Radio_Knob_Tune", (0.12, 0.925, 0.885), 0.012, 0.012, CHROME, axis="Y", segments=8)
+    for ki, kx in enumerate((-0.10, 0.0, 0.10)):
+        make_cyl(f"Climate_Knob_{ki}", (kx, 0.94, 0.76), 0.02, 0.014, DASH_LT, axis="Y", segments=8)   # on the dash face (0.95)
+    make_box("Hazard_Button", (0.0, 0.948, 0.985), (0.03, 0.004, 0.02), (0.80, 0.18, 0.12, 1.0))
+    # the phone in the dashboard cradle, screen lit
+    make_box("Phone_Cradle", (0.22, 1.08, 1.25), (0.10, 0.03, 0.14), RUBBER)
+    make_box("Phone_Cradle_Foot", (0.22, 1.08, 1.19), (0.06, 0.05, 0.02), RUBBER)
+    make_box("Phone", (0.22, 1.058, 1.26), (0.076, 0.012, 0.152), (0.08, 0.08, 0.09, 1.0))
+    make_box("Phone_Screen", (0.22, 1.0515, 1.26), (0.066, 0.001, 0.138), SCREEN)
+    make_box("Phone_Play_Bar", (0.22, 1.0508, 1.21), (0.05, 0.0005, 0.012), (0.20, 0.24, 0.30, 1.0))
+    # steering wheel, column, ignition key
+    make_cyl("Steering_Column", (-0.46, 0.875, 0.98), 0.03, 0.15, DASH, axis="Y", segments=8)
+    # the wheel is a torus (a lathe loop) — it lies in the XZ plane, so it
+    # is built as a stack of thin rings around Y: a ring section revolved
+    # about the column axis would need a Y-axis lathe; the loop lathe
+    # revolves about Z, so we build the rim as a loop and tip it by
+    # building it in the vertical: a Y-axis torus = a loop lathe rotated.
+    # Simplest faithful stand-in: the rim as sixteen short chamfered
+    # segments on the circle, which reads as a round grip in the hand.
+    import math as _m
+    for si in range(16):
+        a = si * 2.0 * _m.pi / 16.0
+        make_chamfer_box(f"Steering_Rim_{si}", (-0.46 + 0.19 * _m.cos(a), 0.78, 0.98 + 0.19 * _m.sin(a)), (0.075, 0.032, 0.032), (0.16, 0.15, 0.14, 1.0), chamfer=0.01)
+    make_lathe("Steering_Hub", (-0.46, 0.78, 0.98), [(0.0, 0.0), (0.07, 0.0), (0.075, 0.02), (0.06, 0.05), (0.0, 0.055)], DASH, segments=12)
+    make_box("Steering_Spoke_L", (-0.56, 0.78, 0.98), (0.10, 0.02, 0.03), DASH)
+    make_box("Steering_Spoke_R", (-0.36, 0.78, 0.98), (0.10, 0.02, 0.03), DASH)
+    make_box("Steering_Spoke_D", (-0.46, 0.78, 0.89), (0.03, 0.02, 0.18), DASH)   # hub to rim (2026-09-22)
+    make_box("Steering_Spoke_U", (-0.46, 0.78, 1.10), (0.03, 0.02, 0.14), DASH)
+    for di, ang_ in enumerate((0.785, 2.356, 3.927, 5.498)):   # four diagonal spokes: the rim segments between them ride these
+        make_rot_box(f"Steering_Spoke_X{di}", (-0.46 + 0.105 * _m.cos(ang_), 0.78, 0.98 + 0.105 * _m.sin(ang_)), (0.14, 0.02, 0.03), DASH, pitch=-ang_)   # out to the rim (2026-09-22: 1.2 cm short of four segments)
+    # the key in the column's right flank (2026-09-22: it hung 8 cm off the column)
+    make_box("Ignition_Key", (-0.425, 0.86, 0.98), (0.01, 0.05, 0.02), CHROME)
+    make_box("Ignition_Fob", (-0.425, 0.83, 0.96), (0.02, 0.01, 0.03), (0.30, 0.28, 0.26, 1.0))
+    # pedals, floor mats
+    for pi, px in enumerate((-0.52, -0.40)):
+        make_box(f"Pedal_{pi}", (px, 1.10, 0.56), (0.06, 0.02, 0.10), RUBBER)
+        make_box(f"Pedal_{pi}_Arm", (px, 1.075, 0.66), (0.02, 0.05, 0.20), DASH)   # to the dash's underside (2026-09-22)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Floor_Mat_F_{nm}", (sgn * 0.46, 0.65, 0.463), (0.55, 0.60, 0.006), (0.15, 0.15, 0.15, 1.0))
+        make_box(f"Floor_Mat_R_{nm}", (sgn * 0.46, -0.60, 0.463), (0.55, 0.50, 0.006), (0.15, 0.15, 0.15, 1.0))
+    make_box("Glovebox_Door", (0.46, 0.945, 0.86), (0.50, 0.01, 0.26), DASH_LT)
+    # (pass 71) ch14: the map — a folded sheet of printer paper on the dash over the glove box
+    make_box("Map_Folded", (0.46, 1.10, 1.186), (0.22, 0.16, 0.012), (0.92, 0.90, 0.82, 1.0))
+    make_box("Map_Folded_Crease", (0.46, 1.10, 1.193), (0.004, 0.16, 0.002), (0.60, 0.58, 0.52, 1.0))
+
+
+def build_seats():
+    """Two front buckets, the rear bench, and the console between the
+    fronts — the console is where the El Rancho box opens."""
+    for sgn, nm in ((-1, "Driver"), (1, "Passenger")):
+        x = sgn * 0.46
+        make_chamfer_box(f"Seat_{nm}_Base", (x, 0.15, 0.67), (0.62, 0.55, 0.42), SEAT, chamfer=0.05)
+        make_chamfer_box(f"Seat_{nm}_Back", (x, -0.18, 1.23), (0.62, 0.12, 0.70), SEAT, chamfer=0.04)
+        make_box(f"Seat_{nm}_Bolster", (x, 0.15, 0.905), (0.62, 0.55, 0.05), SEAT_DK)
+        make_box(f"Seat_{nm}_Headrest", (x, -0.18, 1.645), (0.28, 0.10, 0.13), SEAT_DK)
+        make_cyl(f"Seat_{nm}_Headrest_Post", (x, -0.18, 1.585), 0.008, 0.01, CHROME, segments=6)
+        make_box(f"Seatbelt_Buckle_{nm}", (x - sgn * 0.26, 0.05, 0.955), (0.04, 0.10, 0.05), (0.14, 0.14, 0.15, 1.0))
+    make_chamfer_box("Rear_Bench_Base", (0.0, -0.90, 0.66), (1.70, 0.50, 0.40), SEAT, chamfer=0.05)
+    make_chamfer_box("Rear_Bench_Back", (0.0, -1.21, 1.21), (1.70, 0.12, 0.70), SEAT, chamfer=0.04)
+    make_box("Rear_Bench_Bolster", (0.0, -0.90, 0.885), (1.70, 0.50, 0.05), SEAT_DK)
+    # console
+    make_chamfer_box("Console", (0.0, 0.15, 0.61), (0.28, 0.70, 0.30), DASH, chamfer=0.03)
+    make_box("Console_Lid", (0.0, -0.10, 0.775), (0.26, 0.20, 0.03), DASH_LT)
+    make_cyl("Cupholder_Ring", (0.0, 0.42, 0.765), 0.05, 0.01, DASH_LT, segments=12)
+    make_cyl("Shifter_Boot", (0.0, 0.05, 0.775), 0.035, 0.03, RUBBER, segments=8)
+    make_cyl("Shifter_Stalk", (0.0, 0.05, 0.86), 0.012, 0.14, CHROME, segments=6)
+    make_lathe("Shifter_Knob", (0.0, 0.05, 0.93), [(0.0, 0.0), (0.02, 0.0), (0.032, 0.02), (0.03, 0.045), (0.0, 0.055)], (0.16, 0.15, 0.14, 1.0), segments=10)
+
+
+def build_el_rancho():
+    """The El Rancho spread — in BT's Altima since draft 3 (it is run
+    inside build_altima_2026_10's shifted block). "He opens the box on the center console
+    between them. The flautas are five rolled fried chicken cylinders
+    with a small cup of guacamole in the corner of the box. He pours
+    one of the green-sauce packets over the flautas." Later the
+    dashboard accumulates the foil and three of the fourteen packets,
+    and one El Diablito, dropped between BT's legs, ends up on the
+    driver's seat under his thigh. "The packet leaks slowly."
+    The fountain cup in the holder: "BT, in the driver's seat, looks
+    at the cup." """
+    bx, by, bz = 0.0, 0.25, 0.76   # tray bottom on the console top
+    make_box("Flauta_Tray", (bx, by, bz + 0.004), (0.20, 0.14, 0.008), CARD)
+    make_box("Flauta_Tray_Wall_S", (bx, by - 0.0675, bz + 0.024), (0.20, 0.005, 0.032), CARD)
+    make_box("Flauta_Tray_Wall_N", (bx, by + 0.0675, bz + 0.024), (0.20, 0.005, 0.032), CARD)
+    make_box("Flauta_Tray_Wall_W", (bx - 0.0975, by, bz + 0.024), (0.005, 0.13, 0.032), CARD)
+    make_box("Flauta_Tray_Wall_E", (bx + 0.0975, by, bz + 0.024), (0.005, 0.13, 0.032), CARD)
+    make_box("Flauta_Lid", (bx, by + 0.075, bz + 0.078), (0.20, 0.008, 0.14), CARD)
+    for fi in range(5):
+        make_cyl(f"Flauta_{fi}", (bx - 0.045 + fi * 0.0225, by - 0.015, bz + 0.02), 0.011, 0.11,
+                 (0.72, 0.52, 0.26, 1.0), axis="Y", segments=8)
+    make_box("Flauta_Sauce_Pour", (bx - 0.02, by - 0.01, bz + 0.0315), (0.10, 0.08, 0.002), SAUCE_GREEN)
+    make_cyl("Guac_Cup", (bx + 0.075, by + 0.04, bz + 0.023), 0.02, 0.03, (0.94, 0.94, 0.92, 1.0), segments=10)
+    make_cyl("Guac_Cup_Fill", (bx + 0.075, by + 0.04, bz + 0.0395), 0.018, 0.003, (0.46, 0.60, 0.26, 1.0), segments=10)
+    # the fountain cup in the holder
+    make_lathe("Cup", (0.0, 0.42, 0.77), [(0.0, 0.0), (0.034, 0.0), (0.036, 0.01), (0.044, 0.16), (0.045, 0.17), (0.0, 0.17)], (0.90, 0.30, 0.22, 1.0), segments=14)
+    make_lathe("Cup_Lid", (0.0, 0.42, 0.94), [(0.0, 0.0), (0.047, 0.0), (0.047, 0.006), (0.036, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.92, 0.92, 0.90, 1.0), segments=14)
+    make_cyl("Cup_Straw", (0.012, 0.415, 1.02), 0.003, 0.14, (0.86, 0.86, 0.84, 1.0), segments=6)
+    # the dash accumulates: foil, three packets
+    make_blob("Foil_Ball", (-0.20, 1.20, 1.21), 0.03, FOIL, noise=0.3, seed=3, squash=0.9)
+    make_box("Packet_Green_0", (0.02, 1.15, 1.182), (0.05, 0.032, 0.004), SAUCE_GREEN)
+    make_box("Packet_Green_1", (0.09, 1.30, 1.182), (0.05, 0.032, 0.004), SAUCE_GREEN)
+    make_box("Packet_Diablito_Dash", (-0.06, 1.34, 1.182), (0.05, 0.032, 0.004), SAUCE_RED)
+    # the El Diablito on the driver's seat, leaking
+    make_box("Packet_Leak", (-0.36, 0.30, 0.9305), (0.07, 0.055, 0.001), (0.40, 0.10, 0.07, 1.0))
+    make_box("Packet_Diablito_Seat", (-0.36, 0.30, 0.9335), (0.05, 0.032, 0.005), SAUCE_RED)
+    # the paper bag, folded, on the passenger floor
+    make_box("El_Rancho_Bag", (0.52, 0.85, 0.53), (0.22, 0.14, 0.13), (0.72, 0.60, 0.42, 1.0))
+
+
+def build_finn_duffel():
+    """vol7 ch2_morning, in Finn's truck — split from the El Rancho
+    spread (2026-10-09), which moved into BT's Altima. Not built in THIS
+    set any more: Finn's truck is in cabin_road (build_finn_truck_2026_10
+    runs this cab's functions there), and the duffel rode in Ben's pickup
+    through every vol6 scene."""
+    # Finn's duffel on the passenger seat (vol7 ch2_morning): the cloth
+    # unwrapped, the piece of charred wood on it — "three inches long"
+    make_box("Duffel", (0.50, 0.15, 1.035), (0.34, 0.26, 0.21), (0.32, 0.36, 0.30, 1.0))
+    make_box("Duffel_Strap", (0.50, 0.15, 1.1425), (0.36, 0.05, 0.005), (0.24, 0.26, 0.22, 1.0))
+    make_box("Duffel_Cloth", (0.50, 0.15, 1.147), (0.22, 0.18, 0.004), (0.78, 0.74, 0.66, 1.0))
+    make_box("Charred_Wood", (0.50, 0.15, 1.162), (0.076, 0.028, 0.026), (0.10, 0.08, 0.07, 1.0))
+    make_box("Charred_Wood_Ember_Line", (0.50, 0.15, 1.1755), (0.05, 0.004, 0.001), (0.36, 0.20, 0.10, 1.0))
+
+
+def build_turnout_furniture():
+    """The single picnic table nobody uses, on its paved pad, with a
+    barrel; the white sedan further along the turnout."""
+    px, py = 5.0, -3.5
+    make_box("Picnic_Pad", (px, py, 0.03), (3.2, 2.8, 0.06), CONCRETE)
+    # the picnic table nobody uses: planked top and benches on A-frame legs
+    for pi3 in range(4):
+        make_chamfer_box(f"Picnic_Table_Plank_{pi3}", (px, py - 0.27 + pi3 * 0.18, 0.785), (1.80, 0.16, 0.04), WOOD, chamfer=0.006)
+    for sgn, nm in ((1, "N"), (-1, "S")):
+        make_chamfer_box(f"Picnic_Bench_{nm}", (px, py + sgn * 0.60, 0.47), (1.80, 0.26, 0.04), WOOD, chamfer=0.006)
+    for sgn, nm in ((1, "E"), (-1, "W")):
+        for lsgn in (-1, 1):
+            make_rot_box(f"Picnic_Leg_{nm}_{lsgn:+d}", (px + sgn * 0.70, py + lsgn * 0.30, 0.40), (0.06, 0.10, 0.80), (0.44, 0.34, 0.24, 1.0), roll=lsgn * 0.55)
+        make_box(f"Picnic_Brace_{nm}", (px + sgn * 0.70, py, 0.45), (0.06, 1.50, 0.08), (0.44, 0.34, 0.24, 1.0))
+    make_box("Picnic_Initials", (px + 0.30, py + 0.05, 0.811), (0.10, 0.06, 0.002), (0.34, 0.26, 0.18, 1.0))
+    make_cyl("Trash_Barrel", (px + 1.9, py + 0.9, 0.45), 0.28, 0.90, (0.28, 0.30, 0.30, 1.0), segments=12)
+    make_cyl("Trash_Barrel_Rim", (px + 1.9, py + 0.9, 0.915), 0.30, 0.03, (0.20, 0.22, 0.22, 1.0), segments=12)
+    # Claire's white sedan, nose to the road, west of the truck
+    # draft 2 (2026-09-18): Claire's sedan from the vehicle kit, nose to the road
+    from _props.vehicles import make_car
+    make_car("Sedan", -8.5, -2.5, 4.4, (0.90, 0.90, 0.88, 1.0), along="Y", z0=-0.02)
+
+
+def build_scrub():
+    """Cedar scrub across the road and behind the turnout."""
+    for i, (x, y, r, s) in enumerate(((-14.0, 20.0, 2.2, 1), (-7.0, 21.5, 1.8, 2), (1.0, 19.5, 2.4, 3),
+                                      (8.0, 22.0, 2.0, 4), (15.0, 20.5, 2.6, 5), (22.0, 21.0, 1.9, 6),
+                                      (-10.0, -12.5, 2.0, 7), (0.5, -13.5, 2.4, 8), (11.0, -12.0, 1.8, 9),
+                                      (-20.0, -11.0, 2.2, 10), (19.0, -13.0, 2.3, 11))):
+        make_taper_cyl(f"Scrub_{i}_Trunk", (x, y, 0.9), 0.16, 0.09, 1.8, (0.30, 0.24, 0.18, 1.0), segments=6)
+        make_blob(f"Scrub_{i}_Crown", (x, y, 1.8 + r * 0.8), r, (0.24, 0.32, 0.20, 1.0), noise=0.24, seed=s, squash=0.85)
+
+
+def build_horizon():
+    make_far_bands("FarTrees", (0.22, 0.28, 0.18),
+                   [(60.0, 90.0, 7.0, 0.90), (120.0, 150.0, 9.0, 0.72),
+                    (250.0, 260.0, 11.0, 0.55), (500.0, 420.0, 14.0, 0.42)],
+                   cx=0.0, cy=0.0, profile="treeline")
+
+
+def build_draft4_2026_09():
+    """DRAFT 2 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; the cab carries 7
+    placements). The cab's WEAR: the driver's heel-worn mat, the
+    bolster's shine, the dash's dust line under the windshield, a
+    parking-lot ding on the passenger door skin, the turnout's tire
+    ruts deeper by the truck. D3: the phone's charger cord to the 12 V
+    socket, the key ring, a pine-tree freshener on the mirror.
+    """
+    from _props.detail import make_floor_stain
+    make_box("Wear_Heel", (-0.52, 0.85, 0.467), (0.16, 0.20, 0.003), (0.24, 0.23, 0.22, 1.0))
+    make_box("Wear_Bolster_Shine", (-0.46, 0.30, 0.933), (0.30, 0.22, 0.003), (0.46, 0.42, 0.35, 1.0))
+    make_box("Wear_Dust_Line", (0.0, 1.50, 1.183), (1.60, 0.03, 0.002), (0.34, 0.33, 0.30, 1.0))
+    make_chamfer_box("Ding", (0.928, 0.95, 0.72), (0.012, 0.10, 0.06), TRUCK_GREEN_DK, chamfer=0.004)
+    make_floor_stain("Wear_Rut_Deep", (-1.07, 0.5), radius=0.6, tint=(0.48, 0.44, 0.36, 1.0), segments=10)
+    make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
+    make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+    make_tube("Key_Ring", [(-0.425, 0.845, 0.975), (-0.415, 0.845, 0.955), (-0.435, 0.845, 0.945), (-0.445, 0.845, 0.965), (-0.425, 0.845, 0.975)], 0.003, CHROME, segments=4)
+    make_tube("Freshener_String", [(0.0, 1.40, 1.545), (0.0, 1.40, 1.46)], 0.002, (0.60, 0.60, 0.58, 1.0), segments=4)
+    make_box("Freshener", (0.0, 1.40, 1.42), (0.06, 0.003, 0.08), (0.24, 0.50, 0.30, 1.0))
+
+
+ALT_X, ALT_Y, ALT_DZ = 9.5, 0.5, -0.14          # the Altima's cab origin and how much lower it rides
+COR_X, COR_Y, COR_DZ = -14.0, 0.5, -0.16        # (pass 78) Sam's Corolla, west of the turnout, lower still
+COROLLA = (0.60, 0.64, 0.68, 1.0)
+COROLLA_DK = (0.46, 0.50, 0.54, 1.0)
+BEIGE = (0.72, 0.64, 0.52, 1.0)
+BEIGE_DK = (0.58, 0.51, 0.42, 1.0)
+
+
+def build_altima_2026_10():
+    """DRAFT 3 (2026-10-09): BT'S ALTIMA. ch16's whole morning happens in
+    "a 2017, beige, with the small clean of a car that has not been
+    washed recently but has not, otherwise, been allowed to get dirty
+    inside" — "BT, at the wheel ... The car is the space BT gets to set
+    the terms of" — and the El Rancho spread, the cradle phone, the
+    fountain cup were all dressed into Ben's green crew-cab pickup.
+    The Altima parks east of the truck in the turnout, nose to the
+    road, the picnic table off its left rear ("Eat in the car, eat at
+    the table?"); its cab is the truck's cab run through plan.shifted
+    14 cm lower and in its own colours (the doors, pillars, glass, dash,
+    wheel, seats and console), and the sedan body is built round it:
+    the long low hood, the trunk deck, the fascia, the wheels."""
+    from _props.plan import shifted
+    ax, ay, dz = ALT_X, ALT_Y, ALT_DZ
+    # the body round the cab: pan, floor, hood, cowl, fenders, fascia, trunk, quarters, wheels
+    make_box("Altima_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
+    make_box("Altima_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    make_box("Altima_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), BEIGE)
+    make_wedge("Altima_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), BEIGE, high_end="-Y")
+    make_box("Altima_Cowl", (ax, ay + 1.575, 0.69), (1.86, 0.05, 0.74), BEIGE)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Altima_Fender_F_{nm}", (ax + sgn * 0.9125, ay + 2.27, 0.575), (0.025, 1.34, 0.50), BEIGE)
+        make_box(f"Altima_Quarter_{nm}", (ax + sgn * 0.9125, ay - 2.05, 0.60), (0.025, 0.90, 0.56), BEIGE)
+        make_box(f"Altima_Mirror_Arm_{nm}", (ax + sgn * 1.00, ay + 1.30, 1.12), (0.16, 0.04, 0.04), BEIGE_DK)
+        make_box(f"Altima_Mirror_{nm}", (ax + sgn * 1.12, ay + 1.30, 1.12), (0.08, 0.14, 0.12), BEIGE)
+    make_box("Altima_Fascia", (ax, ay + 2.965, 0.52), (1.84, 0.05, 0.40), BEIGE)
+    make_box("Altima_Grille", (ax, ay + 2.995, 0.56), (1.00, 0.01, 0.20), (0.14, 0.14, 0.15, 1.0))
+    make_box("Altima_Grille_Chrome", (ax, ay + 2.999, 0.67), (1.10, 0.004, 0.025), CHROME)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Altima_Headlight_{nm}", (ax + sgn * 0.66, ay + 2.995, 0.72), (0.38, 0.01, 0.10), (0.88, 0.88, 0.84, 1.0))
+        make_box(f"Altima_Taillight_{nm}", (ax + sgn * 0.70, ay - 2.505, 0.80), (0.30, 0.01, 0.10), (0.70, 0.12, 0.10, 1.0))
+    make_box("Altima_Plate", (ax, ay + 2.995, 0.40), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
+    make_box("Altima_Trunk_Block", (ax, ay - 2.05, 0.60), (1.80, 0.90, 0.56), BEIGE)
+    make_box("Altima_Trunk_Deck", (ax, ay - 2.05, 0.90), (1.80, 0.90, 0.04), BEIGE_DK)
+    make_box("Altima_Rear_Fascia", (ax, ay - 2.52, 0.50), (1.84, 0.04, 0.36), BEIGE)
+    make_box("Altima_Badge", (ax, ay - 2.542, 0.70), (0.16, 0.004, 0.05), CHROME)
+    for wi, (wx, wy) in enumerate(((-1.06, 2.20), (1.06, 2.20), (-1.06, -1.95), (1.06, -1.95))):
+        make_cyl(f"Altima_Wheel_{wi}", (ax + wx, ay + wy, 0.32), 0.32, 0.22, RUBBER, axis="X", segments=14)
+        make_cyl(f"Altima_Hubcap_{wi}", (ax + wx + (0.115 if wx > 0 else -0.115), ay + wy, 0.32), 0.19, 0.01, (0.66, 0.68, 0.70, 1.0), axis="X", segments=10)
+    # the cab, run lower and in the Altima's colours; the spread on its console
+    with shifted(globals(), ax, ay, prefix="Altima_", dz=dz, extra=("make_blob", "make_wedge"),
+                 TRUCK_GREEN=BEIGE, TRUCK_GREEN_DK=BEIGE_DK, SEAT=(0.30, 0.30, 0.32, 1.0),
+                 SEAT_DK=(0.24, 0.24, 0.26, 1.0), HEADLINER=(0.70, 0.68, 0.64, 1.0)):
+        build_cab_shell()
+        build_dash()
+        build_seats()
+        build_el_rancho()
+        make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
+        make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+
+
+def build_corolla_2026_10():
+    """SAM'S COROLLA (pass 78, 2026-10-11): "Sam, in her Corolla in the parking
+    lot of the Kwik Stop" (ch7), "watching the Gas & Go through her
+    windshield" (ch2), "She starts the Corolla. She drives home." — her car
+    had been the pickup's cab. The Altima's pattern: the cab run through
+    plan.shifted lower, in the Corolla's faded silver-blue, a sedan body round
+    it; on the passenger seat her Kwik Stop apron and the paper bag of her
+    break. Draft 2 targets: the Corolla's own dash (a 2009 Toyota's, not the
+    truck's); the kwik_stop lot through the windshield; the second-row seat."""
+    from _props.plan import shifted
+    ax, ay, dz = COR_X, COR_Y, COR_DZ
+    # the body round the cab: pan, floor, hood, cowl, fenders, fascia, trunk, quarters, wheels
+    make_box("Corolla_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
+    make_box("Corolla_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    make_box("Corolla_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), COROLLA)
+    make_wedge("Corolla_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), COROLLA, high_end="-Y")
+    make_box("Corolla_Cowl", (ax, ay + 1.575, 0.69), (1.86, 0.05, 0.74), COROLLA)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Corolla_Fender_F_{nm}", (ax + sgn * 0.9125, ay + 2.27, 0.575), (0.025, 1.34, 0.50), COROLLA)
+        make_box(f"Corolla_Quarter_{nm}", (ax + sgn * 0.9125, ay - 2.05, 0.60), (0.025, 0.90, 0.56), COROLLA)
+        make_box(f"Corolla_Mirror_Arm_{nm}", (ax + sgn * 1.00, ay + 1.30, 1.12), (0.16, 0.04, 0.04), COROLLA_DK)
+        make_box(f"Corolla_Mirror_{nm}", (ax + sgn * 1.12, ay + 1.30, 1.12), (0.08, 0.14, 0.12), COROLLA)
+    make_box("Corolla_Fascia", (ax, ay + 2.965, 0.52), (1.84, 0.05, 0.40), COROLLA)
+    make_box("Corolla_Grille", (ax, ay + 2.995, 0.56), (1.00, 0.01, 0.20), (0.14, 0.14, 0.15, 1.0))
+    make_box("Corolla_Grille_Chrome", (ax, ay + 2.999, 0.67), (1.10, 0.004, 0.025), CHROME)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Corolla_Headlight_{nm}", (ax + sgn * 0.66, ay + 2.995, 0.72), (0.38, 0.01, 0.10), (0.88, 0.88, 0.84, 1.0))
+        make_box(f"Corolla_Taillight_{nm}", (ax + sgn * 0.70, ay - 2.505, 0.80), (0.30, 0.01, 0.10), (0.70, 0.12, 0.10, 1.0))
+    make_box("Corolla_Plate", (ax, ay + 2.995, 0.40), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
+    make_box("Corolla_Trunk_Block", (ax, ay - 2.05, 0.60), (1.80, 0.90, 0.56), COROLLA)
+    make_box("Corolla_Trunk_Deck", (ax, ay - 2.05, 0.90), (1.80, 0.90, 0.04), COROLLA_DK)
+    make_box("Corolla_Rear_Fascia", (ax, ay - 2.52, 0.50), (1.84, 0.04, 0.36), COROLLA)
+    make_box("Corolla_Badge", (ax, ay - 2.542, 0.70), (0.16, 0.004, 0.05), CHROME)
+    for wi, (wx, wy) in enumerate(((-1.06, 2.20), (1.06, 2.20), (-1.06, -1.95), (1.06, -1.95))):
+        make_cyl(f"Corolla_Wheel_{wi}", (ax + wx, ay + wy, 0.32), 0.32, 0.22, RUBBER, axis="X", segments=14)
+        make_cyl(f"Corolla_Hubcap_{wi}", (ax + wx + (0.115 if wx > 0 else -0.115), ay + wy, 0.32), 0.19, 0.01, (0.66, 0.68, 0.70, 1.0), axis="X", segments=10)
+    # the cab, run lower and in the Altima's colours; the spread on its console
+    with shifted(globals(), ax, ay, prefix="Corolla_", dz=dz, extra=("make_blob", "make_wedge"),
+                 TRUCK_GREEN=COROLLA, TRUCK_GREEN_DK=COROLLA_DK, SEAT=(0.30, 0.30, 0.32, 1.0),
+                 SEAT_DK=(0.24, 0.24, 0.26, 1.0), HEADLINER=(0.70, 0.68, 0.64, 1.0)):
+        build_cab_shell()
+        build_dash()
+        build_seats()
+        make_box("Apron", (0.45, 0.30, 0.62), (0.40, 0.44, 0.03), (0.62, 0.16, 0.14, 1.0))   # her Kwik Stop apron on the passenger seat
+        make_box("Break_Bag", (0.50, 0.10, 0.72), (0.16, 0.12, 0.18), (0.72, 0.60, 0.42, 1.0))
+        make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
+        make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+
+
+def main():
+    clear_scene()
+    build_ground()
+    build_truck_exterior()
+    build_cab_shell()
+    build_dash()
+    build_seats()
+    build_turnout_furniture()
+    build_scrub()
+    build_horizon()
+    build_draft4_2026_09()
+    build_altima_2026_10()
+    build_corolla_2026_10()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/vehicle_cab.glb"))
+    print(f"\n[build_vehicle_cab] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://henderson_kitchen_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://henderson_kitchen_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/henderson_kitchen.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,8 +128,22 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.78, 0.86, 0.92, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.86, 0.74, 0.52, 1)
@@ -138,6 +152,7 @@ fog_enabled = true
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.06
@@ -157,20 +172,45 @@ environment = SubResource("Env_Locale")
 [node name="Key_KitchenWindow" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
 light_color = Color(1.00, 0.84, 0.62, 1)
-light_energy = 0.75
+light_energy = 1.0
 shadow_enabled = false
 
 [node name="Fill_Overhead" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.88, 0.72, 1)
-light_energy = 0.45
+light_energy = 0.5
+shadow_enabled = false
+
+; Overhead fluorescent practical
+; (2026-10-07) the basement's bare bulb, low, past the cracked door
+[node name="Basement_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.750, 0.250, -1.600)
+light_color = Color(1.0, 0.82, 0.55, 1)
+light_energy = 0.55
+omni_range = 3.2
+shadow_enabled = false
+
+[node name="Practical_Overhead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.75)
+light_color = Color(0.98, 0.92, 0.8, 1)
+light_energy = 1.3
+omni_range = 5.0
 shadow_enabled = false
 
 [node name="Back_BackYardCool" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -6)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.3
 shadow_enabled = false
+
+; ── vn_shot (2026-08-12) ───────────────────────────────────────
+; [shot:insert pot_roast] fires 3x here and had no marker AND no
+; object — the chapter's hero image framed bare table. The pot now
+; sits at the table head, blender (0.0, ROOM_D/2+0.22, ~0.9) with
+; ROOM_D=5.0 → godot (0.0, 0.90, -2.72).
+[node name="shot_insert_pot_roast" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
+rotation = Vector3(-0.55, 0.0, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +312,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +331,112 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the sink to the BASEMENT DOOR and fridge
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.55, -4.2)
+rotation = Vector3(-0.110129, -2.09742, 0)
+metadata/fov = 56.0
+
+; rotation C: from the hall door north over the table to the stove run
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.6, 1.5, -0.7)
+rotation = Vector3(-0.160303, -0.244979, 0)
+metadata/fov = 54.0
+
+; insert: the basement door
+[node name="shot_insert_basement" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.4, -2.6)
+rotation = Vector3(-0.193498, -2.16501, 0)
+metadata/fov = 42.0
+
+; insert: the place settings
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.000, 1.250, 0.040)
+rotation = Vector3(-0.2686, 0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: the Telecaster on its stand by the stairs
+[node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 0.9, -1.0)
+rotation = Vector3(0.2241, -2.3842, 0.0)
+metadata/fov = 42.0
+
+; insert: the small spiral notebook, the bridge lyrics
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.1, -2.05)
+rotation = Vector3(-0.5495, -0.7458, 0.0)
+metadata/fov = 42.0
+
+; insert: the contact prints from this week's class
+[node name="shot_insert_prints" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.1, -2.65)
+rotation = Vector3(-0.5531, -0.7507, 0.0)
+metadata/fov = 42.0
+
+; insert: the pot (Eileen's pot roast)
+[node name="shot_insert_pot" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.25, -2.55)
+rotation = Vector3(-0.5748, 0.6202, 0.0)
+metadata/fov = 42.0
+
+; insert: the sheet of paper Jesse recognizes
+[node name="shot_insert_lyric_sheet" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.1, -2.65)
+rotation = Vector3(-0.5679, 0.6718, 0.0)
+metadata/fov = 42.0
+
+; insert: the coffee on the counter
+; (2026-10-07: re-aimed onto the pot — the counter is the kit run now)
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.200, 1.400, -3.550)
+rotation = Vector3(-0.2025, 0.2728, 0.0)
+metadata/fov = 42.0
+
+; (2026-10-07) insert: the window over the sink, open — "Through the
+; window, the cicadas are loud" (ch20): the back yard past the faucet
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.350, 1.600, -3.900)
+rotation = Vector3(-0.0781, 0.0538, 0.0)
+metadata/fov = 50.0
+
+; insert: the door (the basement door, cracked the small specific way)
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568, 1.775, -2.300)
+rotation = Vector3(0.2182, 2.8997, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.861, 1.612, -1.770)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.051, 1.612, -3.682)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; ── named closeups at the Hendersons' table (pass 80): each seat framed from across the table
+; closeup: Jesse at the south chair, from the north side (the sink window behind the lens)
+[node name="shot_closeup_jesse" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.350, 1.400, -3.550)
+rotation = Vector3(-0.1892, 2.8999, 0.0)
+metadata/fov = 42.0
+
+; closeup: Jim Henderson at the east chair, from the west side
+[node name="shot_closeup_jim" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.400, -2.450)
+rotation = Vector3(-0.2145, -1.3353, 0.0)
+metadata/fov = 42.0
+
+; closeup: the same frame, named for the cue
+[node name="shot_closeup_mr_henderson" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.400, -2.450)
+rotation = Vector3(-0.2145, -1.3353, 0.0)
+metadata/fov = 42.0
+

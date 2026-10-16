@@ -1,0 +1,536 @@
+# SET DETAIL PLAYBOOK — how a draft-1 set becomes a location
+
+Created 2026-08-03, the same day as THE DRAFTING PROGRAM (see
+CLAUDE.md + `lore/_IMPROVEMENT_ROADMAP.md`). This is the METHOD for
+the "dozens and dozens" of passes: what each detail pass actually
+adds, in what order, within the honest constraints (no textures —
+vertex color + geometry + real lights only).
+
+## Why sets read as primitive
+
+A draft-1 build is: flat single-color walls, a flat single-color
+floor, template furniture, and prose props floating in clean space.
+Real rooms read differently because every surface carries HISTORY
+(wear), every object carries INFRASTRUCTURE (cords, outlets,
+fasteners), and every cluster carries USE (asymmetry, mid-task
+states). The model chapters (diner, kwik stop, cathedral,
+henderson) got there by accumulating exactly these layers.
+
+## The five detail passes (run in order, one per visit)
+
+### D2 · SURFACE BREAKUP — no surface is one color
+- Walls: wainscot line or color band; slightly darker band at the
+  top 30 cm (ceiling shadow gather); per-wall ±0.02 tint variance.
+- Floors: traffic-path darkening (a slightly darker ribbon from
+  door to counter/table — where feet actually go), 2-3 stains near
+  work zones, thresholds at doorways.
+- Ceilings: slightly darker than walls, never the same tone.
+- Big furniture: top surfaces lighter (dust/light), kick zones
+  darker (scuff), edges a contrasting worn strip.
+- Tool: `_props/detail.py` (`make_traffic_wear`, `make_floor_stain`,
+  `make_scuff_band`, `make_wall_tint_band`).
+
+### D3 · INFRASTRUCTURE — rooms are plugged in
+- Outlets + switch plates at real heights (outlet 0.30, switch 1.20,
+  by the door).
+- Cords: everything electric gets a cord to a wall (lamp → outlet,
+  register → floor, neon → junction). Sagging cord = two-segment run.
+- Fasteners/joins where two materials meet: door hinges, corner
+  guards, counter edge strips.
+- HVAC: registers low on walls in old buildings, ceiling vents in
+  commercial; a thermostat.
+- Tool: `make_wall_outlet`, `make_light_switch`, `make_cord_run`,
+  `make_thermostat`.
+
+### D4 · USE STATES — mid-task, not showroom
+- Every work surface gets one task IN PROGRESS (a half-wiped
+  counter with the rag still on it; an open ledger with a pen).
+- Asymmetric multiples: chairs at angles ≠ 90°, one stack leaning,
+  papers fanned not squared. (Rotation isn't available from
+  make_box — fake it with offset stacking and off-grid anchors.)
+- Containers open: one drawer ajar, one cabinet door open, a lid off.
+- The trash tells the truth: crumples near the bin, not in it.
+
+### D5 · DEPTH BANDS + EDGES — the set never ends at the walls
+- Interiors: something THROUGH every window (a wall, a car shape, a
+  tree band, a lit window across the street) at believable distance.
+- Exteriors: three bands — playable detail (0-30 m), silhouette
+  band (30-150 m: massed simple shapes), horizon band (150 m+:
+  berms/treelines/rooflines + fog). The Highway 9 rule: geometry
+  runs PAST the frame in every direction a camera looks.
+- No raw world edge may be visible from any vn_shot or preset
+  camera. Check every camera, not just the default.
+
+### D6 · COVERAGE + LIGHT (the cinematography pass)
+- Per the lighting playbook: practicals tied to the fixtures the
+  detail passes added (that task lamp now casts).
+- vn_shot still setups for every place a scene lingers; camera
+  motion where action moves (see the Highway 9 workstream).
+- Deck screenshots → reframe. This pass repeats forever.
+
+## Rules
+
+1. **One pass per visit.** Don't smear D2-D6 thin in one session;
+   run one deep and record the next.
+2. **Helpers over one-offs.** Any detail used twice goes into
+   `_props/detail.py` so it costs nothing the third time.
+3. **The wear must agree with the fiction.** The diner's wear is
+   30 years of boots; Cale's shop is tidy-worn; NexCorp spaces are
+   unnervingly wearless (that IS their detail).
+4. **Budget**: a detail pass should roughly double a build's
+   mesh-object count, not 10x it. Silhouette bands are cheap quads,
+   not modeled buildings.
+5. Update the DRAFTING PROGRAM ledger row after every pass.
+
+## Recent lessons
+
+### 2026-10-09 · the wrong THING: a misread noun, a vehicle, a side of the field
+
+Three more "the set is not what the prose says" cases. Each had survived
+several drafts because each draft polished the props it found.
+
+- **A misread noun.** The new_orleans_bar's "chalk table" (vol1) had been
+  built as a pool table. But the crowd SITS at it ("pushes Margaret into
+  the seat next to Faust", Emily's purse beside him, "cozy corner"), so
+  it is a chalkboard-topped bench table. When a noun is ambiguous, read
+  what the characters DO with it.
+- **One set standing for several things.** vehicle_cab is "one cab for
+  every vehicle". ch16's whole chapter is in BT's beige Altima, and its
+  spread was dressed into Ben's pickup. When a shared set fakes a
+  different object, give that object its own instance in the same set
+  (`plan.shifted` with `prefix` and now `dz`) and its own preset. Then
+  move the props the prose puts in it.
+- **Geography between two named places.** "Third row, behind the home
+  bench" puts the home stands on the home bench's side of the field. The
+  field had them on opposite sidelines, so Eileen sat with the visitors.
+  Check every relational phrase (behind, across, next to, by the gate):
+  the gates measure distances, not relations.
+- **Two parts the same cue matches.** `insert truck` framed Coach Dale's
+  truck because both trucks were named "Truck". Name the hero by its
+  owner (`CoachK_Truck_*`) and the other by its kind (`Dale_Pickup_*`).
+
+### 2026-10-09 · one room, two sets: build one INSIDE the other from its own builder
+
+- Cosmic's back office was a separate set and also a glimpse behind the
+  shop's doorway, and the two disagreed (furniture, mirror side, no shop
+  through the office door).
+- The fix is not a third copy. The shop builder imports the office
+  builder and runs its functions inside
+  `plan.shifted(vars(module), dx, dy, prefix="XX_")`. The doorways align,
+  the names cannot collide, and the office stays authored in one place.
+  The office preset then loads the bigger scene, and its markers carry
+  over with the `__preset` suffix.
+- Verify by diffing the standalone set's parts against the prefixed copy:
+  every one present and shifted by exactly (dx, dy).
+- Audits that read a marker's or a light's NAME must strip `__preset`
+  first. "Fill_Desk__cosmic_comics_back_office" was classed as a back
+  light because of "back" in the suffix.
+
+### 2026-10-09 · the wrong PERSON: read the chapters that load the preset, not the builder
+
+- Two vol6 bedrooms had been dressed for people who do not sleep in them,
+  and four drafts had polished the wrong room.
+  - `sam_bedroom` was a boy's comics-and-games room. Every chapter that
+    loads it is Sam MILLER's: "her cornflower blue bedroom", the
+    clicking fan, the WEDNESDAY LIST, the Kwik Stop polo.
+  - `maya_bedroom`'s docstring had "Maya Miller (Chief Miller's
+    daughter)". She is Maya Daigle, living with her grandmother, and
+    half her night happens in a room the set did not have.
+- **Before a pass**, list the chapters that load the preset (`grep
+  '3d:<preset>'`) and read their room sentences: who, what colour, what
+  the window looks at, what she does there. The builder's docstring is a
+  previous session's guess.
+- **A cue with no home is a room to build.** `[shot:closeup grandmother]`
+  cut to a substitute, and `insert hands` framed a stand-in crease on the
+  wrong bed. Building the room across the hall fixed both.
+- The other wrong-house cases are the 2026-10-08 entries below; the
+  2026-10-09 docstring/title sweep found no third bedroom.
+
+### 2026-10-09 · build big, THEN FILL: an enlarged room is an empty hall until it gets work zones
+
+- Faust's studio, the Pit Stop kitchen and Hans's bakery each grew from
+  their prose (8 x 6.6, 11 x 4.8, 9 x 7.6). The bakery, moved rigidly,
+  first rendered as a hall: the same furniture with two metres of bare
+  floor around it. A bigger plan needs a second, FILL pass:
+  - a work zone in every new aisle (the baker's bench, the plating
+    island, the dish pit);
+  - wall treatment that breaks the big planes (wainscot, FRP, tile to
+    2 m, a picture rail);
+  - a ceiling that says what the room is (beams and pendants, not the
+    office drop-tile grid).
+- **The solid-frame class, again.** Racks, carts and shelving built as
+  one box the size of the unit swallow their trays and loaves, and at
+  1.7 m tall they fill a third of a frame. Build them as posts plus
+  runners (or a carcass) on casters.
+- **Split mixed functions by AREA before shifting.** The bakery's
+  draft-4 pass held wear, D3 and D5 for five areas in one function. Split
+  it, and move each piece with the furniture it belongs to. Then re-walk
+  the wear PATHS on the new plan: a path joins two areas, so no single
+  group shift fits it.
+- **Verify the refactor with ZERO shifts first.** The diff must show only
+  the deliberate changes. Then apply the real shifts and diff again;
+  anything that moved by an unplanned amount is a constant the function
+  reads (the bakery's pass window computed its x from ROOM_W).
+- A helper the builder imports by name (`make_counter`, `make_wall_outlet`)
+  is moved only if it is listed in `shifted(..., extra=...)`. The list is
+  opt-in per builder, so builders that compensated by hand are untouched.
+
+### 2026-10-09 · enlarging a hand-placed room: shift the GROUPS, verify by diff
+
+- (Lena's apartment, the second room done this way.) The technique is
+  `_props/plan.py shifted(globals(), dx, dy, ROOM_W=old, ROOM_D=old)`.
+  Two traps:
+  - a helper imported INSIDE a function (`from _props.furniture import
+    make_bed`) binds the unwrapped original and does not move (the bed
+    stayed in the partition). Import it at module level, or call it as
+    `module.fn`;
+  - the audit recorder stubs any `_props` module it does not execute for
+    real. `plan` had to join its list, or `with shifted(...)` raised and
+    the builder recorded only half the room.
+- A marker that framed across a now-closed space (the bedroom's view of
+  the main room, through where the new wall stands) cannot be shifted;
+  re-author it inside the room it covers.
+
+- Tem's cabin went from 6 x 6 to 8 x 8 without retyping its hundreds of
+  literal coordinates. Each furniture group moves rigidly to its corner
+  of the new plan inside `with _shift(dx, dy):` (build_cabin_interior.py).
+  The context manager wraps the builder's geometry names, plus the helper
+  modules that functions import locally, called as `module.fn` so the
+  wrap reaches them. It also hands the block the OLD room constants, so a
+  group's `ROOM_D - 0.1` pieces land on the new wall.
+- Paths that cross groups (traffic wear) and shell openings are re-drawn
+  by hand. Markers and practicals move with their subject's group, which
+  preserves every framing.
+- Record every part before the change and diff after: each part must
+  have moved by exactly one of the planned shifts. The diff is the proof
+  that nothing was left behind or moved twice.
+
+### 2026-10-08 · a flat ground that ends at a wall reads as a plinth
+
+- The user, on the cabin's new yard: "Why are the vehicles on a big block
+  that sits above the bottom of the cabin." The yard was a flat slab out
+  to a dark forest band, and in perspective its far edge sat at eye level,
+  so the lit ground read as the TOP of a block. A pale, inked gravel disc
+  on it read as a second, higher one. Run the ground UP into the set's edge
+  (berm heightfields in a ring outside the action, so the recorder's
+  bounding boxes never cover anything standing in the clearing). Keep
+  surface patches within a tone of the ground they lie on.
+
+### 2026-10-08 · a scene can be on the wrong HOUSE, and a set can need an outside
+
+- Twelve vol 7 scenes on Tem's Oregon cabin porch were shot on the
+  Millers' Texas back porch (`miller_back_porch`), the nearest preset
+  with "porch" in its name. Check a preset against the chapter's
+  geography as well as its room noun: whose house, which state, and
+  which volume's cast stands there. Find the borrowed presets by listing
+  each preset's chapters by volume. A preset used across volumes that
+  never share a location is the tell.
+- A locale can have NO outside: the cabin was walls with a flat lid on
+  nothing. Before a porch, a stoop or a yard can be built, the building
+  needs a roof, a foundation (and so a ground lower than its floor),
+  exterior faces and a clearing with an edge. Build the exterior on the
+  interior's set and give it its own preset with `__<preset>` markers
+  (Background3D.find_shot_marker). Otherwise the plain interior markers
+  cut every porch scene's establish rotation and closeups back inside.
+
+### 2026-10-08 · read the chapter before the builder: a room can be the wrong room
+
+- caldwell_radio_room_night was a broadcast booth with an ON AIR sign. Ch5
+  says it is a grandmother's upstairs BEDROOM with a shortwave and a Morse
+  key. Every detail pass since had dressed the wrong room. The porch was a
+  walled room. A locale's first check, before any detail: who uses it,
+  what floor it is on, what the prose says is in it (`grep` the scene
+  JSONs for the locale id and read every line with a room noun).
+- Template fingerprints show only on a contact sheet: the same three
+  posters, the same potted plant in the same south-west corner, room
+  after room. Fix them in the SHARED helper with a deterministic variety
+  (`kind=` or a hash of the prefix), not room by room.
+
+### 2026-10-07 · a department reads by ITS goods; a case is never generic stock
+
+- The grocery's dairy case was the beverage kit (six-packs and cans
+  under a DAIRY sign); its meat case was twelve red slabs. A
+  department reads by what only it sells: milk by the jug and the cap
+  colour code, half-gallons by the gable, eggs by the grey pulp; meat by
+  the fat rim on a steak, the bone on a chop, the twine on a roast, the
+  parsley line between trays and the price tag on its pick. Add the
+  department's KINDS to the merch grammar and a plan, then let the case
+  helper take `stock=` — never hand-stock one case.
+- Shelf talkers are what make a lane read as a supermarket lane at
+  distance: flags out of the price strip, face-on to the walker.
+
+### 2026-10-07 · a cut window frames a few degrees: size the outside from the marker, not the plan
+
+- From a booth marker 5 m back at eye height, a 1.3 m window spans
+  about −9° to +6°. The Missing Link's 5.2 m treeline at 14 m filled
+  ALL of it: rays out of the cut glass hit trees in ambient light,
+  and the window read black even with a day sky behind. Put the far
+  band where its top sits below the window's upper sightline (here a
+  field and a 3 m treeline at 34 m): the top third of the pane is sky.
+  Check by raycasting from the marker through the pane (bpy
+  scene.ray_cast after running the builder in-process) before
+  rendering.
+- A window can only be cut once you have checked what the builder
+  already puts outside: four of batch 2's rooms (cosmic comics, Finn,
+  the Missing Link, the Salty Tome) had a D5 outside behind a SOLID
+  wall. Cut the wall and keep theirs; don't add a second view.
+
+### 2026-10-07 · stock reads by PACKAGING; a kit defect is fixed in the kit
+
+- Solid saturated blocks on a shelf read as toys at any count. A shelf
+  reads by its packaging grammar — a bag's band and crimp, a tray of
+  bars, a can's label, a bottle's neck, a box's panel — in brand tints
+  with one band colour, faced in rows of one product per section the
+  way stores face them. `_props/merch.py` holds it; use `stock_gondola`
+  for any aisle and `merch_section` for any single shelf.
+- The same defect lived in a shared kit AND a vendored copy (the Kwik
+  Stop's). Fix it in the kit, then grep the builders for the copy —
+  `SNACK_TINTS[` finds every block-stocking loop left.
+- Fixing a support can unmask a FLOAT: the aisle's fins had been the
+  "support" under a produce stand's tiers and scale. When an old
+  fixture changes shape, re-run support_audit on its neighbours.
+- Thousands of packages are thousands of draw calls: join each
+  fixture's stock into one mesh at export (`join_stock`) and keep the
+  packages sharp-edged.
+- A STORE IS WALKED. Lay fixtures out by the lanes between them, not
+  by their footprints: ≥ 0.90 m between any two fixtures that are not one
+  piece (1.1-1.4 m between gondolas reads as a real aisle), an endcap ON
+  its aisle's end or in open floor with a metre round it, never a
+  diagonal half-metre off a corner. `walkway_audit.py` measures it; the
+  user saw "shelves blocking shelves" the first time the stock read as
+  real — dense, legible stock exposes a cramped plan that blocks hid.
+- A CASE IS OPENED. A reach-in cooler, a freezer, a display case needs
+  0.9 m of floor in front of its doors — the swing and the person in it —
+  and a lane measure between fixtures does not see that floor (the Kwik
+  Stop's ice-cream chest sat 0.70 m in front of the glass doors and
+  passed). `case_access_audit.py` checks it. When a gate is named by a
+  list of fixture names, a fixture missing from the list is invisible to
+  it: add the islands.
+- BUILD BIG (the user, 2026-10-07: "Backgrounds always felt small and
+  claustrophobic"). Size from the prose and the real place, then err
+  larger. A supermarket is 25-40 m deep with 2-3 m between departments;
+  a family kitchen opens onto the next room. When a gate says cramped,
+  the first question is "is the ROOM too small?", not "which shelf do I
+  shave?". Big stores need `lean=True` stock and the axis='Y' gondola.
+
+### 2026-10-03 · a home is ROOMS, not a box with furniture in it (the Roberts house)
+
+- The Deck, on the Lovers' domicile after a bones pass AND a proof-of-
+  life pass: "still looking wrong … I want it to feel cozy, brimming
+  with detail. Photos, and collections and comfy furniture and book
+  shelves and lived in spaces, not antiseptic and sterile … a foyer, a
+  living room, a dining room/kitchen, I want to have character." Two
+  passes of props on an 8×6 box were still a box. Character comes from
+  PLAN first: interior walls that make a foyer (walls either side of
+  the front door, a cased opening north), a living room with its own
+  paint, a dining room with a wainscot — and THEN each room's furniture
+  and its collections. build_house_rooms_2026_10 is the model.
+- What each room needs to read as itself: FOYER — the mat and the boots,
+  the hall table, a bench with coats on hooks, a mirror, a ceiling
+  fixture. LIVING — a window over the sofa, the sofa with a quilt and
+  a throw pillow, an armchair with a throw, a coffee table with a book
+  stack and a mug and the reading glasses, a rug with a border, a
+  BOOKCASE with books of fourteen thicknesses and a collection among
+  them (shells, sea glass, pinecones, a framed photo), a gallery wall
+  of five mismatched frames, a floor lamp, a side table with a lamp.
+  DINING — a table for four with chairs that do not match, a pendant
+  over it, a rug, a HUTCH with the plates standing and the preserves in
+  three colours, a sideboard under the window with standing frames and
+  the garden's flowers in a jar and a bowl of fruit, cookbooks on a
+  shelf, a wainscot and a chair rail. Every one of these is a box, a
+  cylinder or a lathe; `_wall_frame`, `_book_row`, `_bookcase` make
+  them cheap.
+- Each fixture gets its practical in the tscn (the floor lamp, the side
+  lamp, the pendant, the foyer's fixture) — a lamp with no light is a
+  prop, a lamp with a light is a room.
+- A sink is a basin CUT INTO the counter: four strips of counter round
+  a hole, a steel floor and four walls 18 cm down, the base cabinet
+  stopping under the floor. A white block standing on the counter with
+  the faucet on its room side read as "sink on backwards".
+- The same pass on three apartments the same day (Montreal, New
+  Orleans, Elicia's): read the chapter for its NOUNS first, then build
+  every one of them — a "cluttered archive of selves" is posters AND
+  torn pages AND ziggurats on every surface; a "dumpster fire" is
+  empties AND the pizza box AND clothes on the floor AND the duffel; a
+  "ruined command center" is dead monitors AND the story-map
+  whiteboard AND the prints she never hung. Twenty to thirty objects a
+  room, each named in the prose or following from it.
+- `make_tube` polylines are boxed WHOLE by the overlap audit: a cable
+  that runs along a table and drops to the floor "hits" the stretcher
+  under the table. Split it where it leaves the table.
+- The audits catch what the eye forgives at montage size: frames
+  standing 3–4 cm off their shelf, a switch floating off a thinner
+  interior wall, a faucet handle not reaching its pipe, a soap bottle
+  left over the new hole. Run support_audit after every density pass.
+
+### 2026-10-02 · the Roberts kitchen · bones before props, and the lane of the camera
+
+- The Deck: "the lovers domicile needs to feel domestic and lived in,
+  proof of life, not a sterile empty thing." The D4 pass went in first
+  (Philip under the sink mid-repair, two of everything drying, the
+  returned casserole, breakfast interrupted, boots and gloves and the
+  trowel at the door, the basil on the sill, her loom, the laundry, the
+  crumple by the bin, the lane door → island → sink, TWO mug rings) —
+  and the room still read as a cream box. The BONES were missing: a
+  sink, a stove and a fridge standing apart on bare wall, no counters
+  between them, no uppers, no backsplash, no window over the sink. A
+  kitchen is its RUNS. Props cannot carry a room whose architecture
+  says nobody built it. Run D3-bones before D4 on any locale that
+  was placed from a template.
+- WALL FACE ≠ WALL LINE. make_wall builds 20 cm thick on the line; the
+  first backsplash and window sat inside the wall, invisible. Anchor
+  wall-mounted things at ROOM_D − 0.10 (and check the locale's own
+  earlier fixes: this file had learned it twice already, per window).
+- A locale's establishing camera is PART of its set dressing. The old
+  vantage (SE corner, across the island) put every bit of life out of
+  frame; from inside the front door looking north, the chapter's
+  geography — island, sink, window, loom — is one wide. Re-vantage
+  BEFORE judging a props pass, or you will add props the camera never
+  sees.
+- The doorway (D5): the front door was a 2.2 m hole onto the void —
+  `shot_insert_door` stared at nothing. The prose had the whole
+  exterior: the screen door (a lattice of fine bars — it casts the
+  grid of light), the porch under its eave, three steps, the gravel
+  drive, the wagon at the curb, trees past it. The gates then taught
+  two rules: a solid door LEAF anywhere near a doorway must have both
+  sides of its swing clear (hall table, boots and even a window frame
+  count), and a locale's background colour is the sky behind every
+  window and open door — a dark interior brown reads as night outside.
+- `TripPaintTest --marker <name>` shoots from a [shot:] marker through
+  the real stack: judge inserts there, not from the sheet alone.
+- Elicia's bungalow: the dresser hugged the bed's foot with its drawers
+  14 cm from the mid-wall ("the wardrobe/drawer at the foot of the bed
+  can't open"). Every container must have its open side on open floor;
+  check this with the room's walls, not the furniture alone.
+
+### 2026-08-19 · WEAR HAS AN AGE — the cabin's two inhabitants
+
+- First full wear-personality pass (cabin_interior, the "land of
+  milk and honey" heart). The finding that generalizes: **wear is
+  not one layer, it is a TIMELINE, and the difference between two
+  ages of wear is itself story.** Olaf lived here from '79: his
+  wear is decades — the door→table→kitchen→stove path cut dark
+  and wide, the Sunday carving spot scraped PALE by chair legs
+  with a shaving crescent no broom ever fully got, the kettle's
+  ring on the stove top, the flame-mark iron's scorch where it
+  was always set down, the latch-hand patch, three ladder rungs
+  worn at the grab line, the reader's un-faded rectangle on a
+  shelf otherwise darkened since '46. Tem's vigil is WEEKS: a
+  faint NARROW path to the chair beside the daybed and one mug
+  ring. New wear is narrower and closer to the floor's own tone;
+  old wear is wide, dark, or scraped pale. A visitor should be
+  able to date the household from the floor alone.
+- **The Lovers wear IN PAIRS** (pass 8, closing the arcana set):
+  two knee-dents close together on the front kneeler, a narrow
+  aisle walked slow and in step, rice ground into the threshold
+  seams that no broom ever beats the next wedding to, the bell
+  rope hand-dark at one height (rung once after each vow), the
+  statue's foot rubbed bright by thumbs, and TWO wax colors at
+  the altar's candle stations — two households' candles, burned
+  down together. The eight-personality wear vocabulary is now:
+  age (decades/weeks on one floor), width (family/alone), the
+  material inversions (wood darkens, dust clears, wax dulls),
+  both-ages-one-spot, the absence, appetite, the architect, and
+  the pair. New locales should pick their personality FIRST and
+  let it choose the marks.
+- **Appetite vs. measure, and the architect's wear** (passes 6-7):
+  Daigle's is the anti-Mixing-Glass — RINGS ON RINGS on the bar
+  top, cigarette scallops, the dance patch worn to pale wood with
+  a dark watchers' rim, and the belly lane running the bar's WHOLE
+  length because at the Devil's everybody bellies up. The casino
+  inverted the question a different way: its carpet lanes are the
+  ARCHITECT'S wear — the house routes you, door → wheel → slots →
+  cage, planned before any foot took it — with the users' tells on
+  top (the rail bright only at the wheel end; the lucky third
+  slot's floor worn double, and it is never lucky; the cage sill
+  pale mid-span where forty years of chips slide under the bars).
+  Ask WHO designed the traffic before asking whose feet took it.
+- **Sometimes the absence is the wear** (Mixing Glass, pass 5):
+  a bar kept in Temperance's measure has NO spill rings — copper
+  that polishes bright in the nightly wipe-arcs, pale reach-wear
+  under only the five working bottles, dust intact on the top
+  shelf — and exactly ONE water-glass ring at the south end of
+  the west arm, hers, because the one glass she doesn't measure
+  is her own. Wear passes should ask what the keeper REFUSES to
+  let happen, then break the refusal exactly once, meaningfully.
+- **Waxed floors dull, they don't darken** (asylum ward, wear
+  pass 4): institutional linoleum's traffic lane reads PALER and
+  flatter than the sheen around it — the third material inversion
+  (wood darkens underfoot, dust clears pale, wax dulls pale). The
+  ward also carried the game's deepest single lane — nurses walk
+  miles, station to every bay — with the gurney's two rubber
+  wheel-lines over it and one swerve where it always misses the
+  radiator. Vigil wear is OBJECT-anchored: four chair-foot marks
+  that stay when the chair is carried back each morning, the
+  hand patch on the bed rail near the head.
+- **A renovation floor wears BACKWARDS** (ember warehouse D2):
+  concrete dust settles everywhere, so the traffic lanes are the
+  PALE-CLEAN part — boots clear the dust where the work moves,
+  and the corners nobody works go gray. Plus the vocabulary that
+  came with it: sawdust halo around the lumber, mortar dust
+  around the brick pallet, the roll gate's rain band with two
+  finger stains reaching in, damp-rise on old brick bases, and
+  the GHOST WALL — a pale stripe across the slab where a
+  demolished partition stood for decades. Ask what the surface
+  was DOING before the story arrived.
+- The triptych completed same day (Lena's three-years-alone, the
+  Millers' family kitchen): a family walks WIDE where one person
+  walks narrow; crowding too new to mark a floor shows in OBJECTS
+  (a flattened cushion, a folded floor bed); and the strongest
+  single wear mark so far is Mike's chair at the Miller table —
+  his years worn PALE, and inside that patch one small NEW dark
+  crescent, because "since June she has been sitting in Mike's
+  chair." Both ages, one spot, no words. ALSO: read the builder's
+  own docstrings before placing — the first draft of the chair
+  stains used tx=0.0 against a table at tx=0.5 and missed every
+  chair by half a meter.
+- Vocabulary that carried the pass: worn-PALE for chair-scrape
+  (wear lightens wood), worn-DARK for foot traffic (grime
+  darkens), scorch rings as habit (one kettle ring from decades,
+  one mug ring from weeks), and the negative-space wear of an
+  object that never moves (the reader's shadow).
+- Mechanical: the detail helpers import at FUNCTION scope in this
+  file — a module-scope replace landed a column-0 import inside
+  another function's body and broke the build until parsed. Match
+  the file's import style before inserting.
+
+
+
+### 2026-08-12 · HERO PROPS: build the thing the prose points at
+
+- **`shot_marker_audit.py --props` measures the gap nothing else
+  could see**: a chapter cues `[shot:insert x]`, and no builder in
+  that locale emits anything named like `x`. 242 such cues across
+  191 locale/object pairs on the first run.
+- **Not every one is an art gap** — read the prose before modeling.
+  vol7's `insert tide_pool` fires on cabin_road because Finn is
+  playing a GAME with a tide pool in it; "douglas" and "coach_dale"
+  are people; "prints" and "smear" are marks, not objects. The
+  director's substitute/hold-wide fallback is the right answer for
+  those. Model the ones that belong in the SET.
+- **Built this pass, all from what the prose actually says:**
+  Olaf's two carved bowls (21 cues — the volume's central image,
+  same grain, same spiral, the flame-mark on the base); the
+  Henderson pot roast (a MODEL CHAPTER — the dutch oven with its
+  lid OFF, leaning, because that is what "she made it tonight"
+  looks like); Lena's easel and half-finished board (she is the
+  volume's artist and her apartment held none of her work — paint
+  tubes stacked on the floor where a working painter keeps them,
+  not in a tidy box); the eviction notice taped to Elicia's door
+  (the detail that carries it is the SECOND strip of tape and the
+  pale ghost where the lease renewal used to hang).
+- **The test for a hero prop: name the one detail that proves the
+  sentence.** Lid off, not lid on. Two strips of tape, not one.
+  Paint on the floor, not in a box. Without that detail it is set
+  dressing; with it, it is the shot the chapter asked for.
+
+
+
+### 2026-08-03 · founding · first D2+D3 passes
+Applied to pit_stop_interior + chillwave_interior (the freshest
+re-themes) as proof of method, alongside Highway 9 draft 2 (action
+dressing). What worked / broke goes here after Deck review.
+
+### TEMPLATE for next session
+### YYYY-MM-DD · <area> · <pass run>
+- What was added, what read well on Deck, what to do differently.

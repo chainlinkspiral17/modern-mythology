@@ -6,7 +6,7 @@
   "title": "Wednesday — The Cabin",
   "nodes": [
     {
-      "src": "3d:louisiana_road",
+      "src": "3d:hans_bakery_back_kitchen",
       "t": "bg"
     },
     {
@@ -34,7 +34,15 @@
       "t": "show"
     },
     {
-      "text": "Per was at the back kitchen the way Hans had said. Per was sixty. Per was in the kind of canvas work coat that the foundation contractors wore in winter and that Per had clearly grabbed off a hook on his way out of the house at four. The coat had flour on the shoulder. Per had flour on his hand. He had been kneading. He was at the floured board with his hands at rest on the dough.",
+      "text": "[mood:day_bright][shot:closeup per]Per was at the back kitchen the way Hans had said. Per was sixty.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per was in the kind of canvas work coat that the foundation contractors wore in winter and that Per had clearly grabbed off a hook on his way out of the house at four. The coat had flour on the shoulder. Per had flour on his hand.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had been kneading. He was at the floured board with his hands at rest on the dough.",
       "t": "narrate"
     },
     {
@@ -49,7 +57,7 @@
     },
     {
       "char": "kai",
-      "text": "Per.",
+      "text": "[shot:closeup person]Per.",
       "expr": "neutral",
       "t": "say"
     },
@@ -61,7 +69,7 @@
     },
     {
       "char": "kai",
-      "text": "Going at eleven. I'm going early. We can leave whenever you're ready.",
+      "text": "[shot:closeup person]Going at eleven. I'm going early. We can leave whenever you're ready.",
       "expr": "neutral",
       "t": "say"
     },
@@ -89,7 +97,19 @@
     },
     {
       "char": "hans",
-      "text": "Greta is staying at the house. She and Marit. They have been at the table since five and they are going to be at the table until Per gets back. The bakery is closed today. The bakery has been closed today since I figured out at four-thirty that Per was at the bakery because he could not be in the house and that the day was a day the bakery was not going to be open. The sign is on the door. Petra knows. Soren knows. The town will know by noon. I am going home in twenty minutes after the trays cool.",
+      "text": "[shot:closeup person_b]Greta is staying at the house. She and Marit. They have been at the table since five and they are going to be at the table until Per gets back. The bakery is closed today.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "The bakery has been closed today since I figured out at four-thirty that Per was at the bakery because he could not be in the house and that the day was a day the bakery was not going to be open. The sign is on the door.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Petra knows. Soren knows. The town will know by noon. I am going home in twenty minutes after the trays cool.",
       "expr": "neutral",
       "t": "say"
     },
@@ -112,7 +132,11 @@
       "t": "say"
     },
     {
-      "text": "Per pulled the canvas coat from where he had hung it on the peg and put it on. He picked up a wooden box from the bench by the door. The box was about a foot long and six inches deep, with a hinged lid. The box was old. The lid had a spiral carved into it in a hand Kai did not, for the moment, recognize as the hand it was.",
+      "text": "[shot:insert wooden_box]Per pulled the canvas coat from where he had hung it on the peg and put it on. He picked up a wooden box from the bench by the door. The box was about a foot long and six inches deep, with a hinged lid. The box was old.",
+      "t": "narrate"
+    },
+    {
+      "text": "The lid had a spiral carved into it in a hand Kai did not, for the moment, recognize as the hand it was.",
       "t": "narrate"
     },
     {
@@ -141,7 +165,7 @@
     },
     {
       "char": "per",
-      "text": "Kai.",
+      "text": "[shot:closeup person]Kai.",
       "expr": "neutral",
       "t": "say"
     },
@@ -171,7 +195,7 @@
     },
     {
       "char": "hans",
-      "text": "Go.",
+      "text": "[shot:closeup person_b]Go.",
       "expr": "neutral",
       "t": "say"
     },
@@ -180,11 +204,23 @@
       "t": "narrate"
     },
     {
-      "text": "Per's wooden box was on the bench seat between them in the truck. Kai drove. The rain on Main was steady.",
+      "src": "3d:cabin_road_truck",
+      "t": "bg"
+    },
+    {
+      "text": "[shot:establish]Per's wooden box was on the bench seat between them in the truck. Kai drove. The rain on Main was steady.",
       "t": "narrate"
     },
     {
-      "text": "The wagon Lena was driving — Tem's wagon, which Tem must have lent her — passed them going the other way on Hemlock at ten-oh-eight. Lena waved. He waved back. He did not, at the wave, register that Lena was driving Tem's wagon up the cabin road in the rain, with Tem in the passenger seat, and that the wagon was a thing Tem had been driving herself for six years. Tem had handed Lena the keys this morning. He registered it three minutes later, at the second light. Tem was, this morning, the passenger.",
+      "text": "The wagon Lena was driving — Tem's wagon, which Tem must have lent her — passed them going the other way on Hemlock at ten-oh-eight. Lena waved. He waved back.",
+      "t": "narrate"
+    },
+    {
+      "text": "He did not, at the wave, register that Lena was driving Tem's wagon up the cabin road in the rain, with Tem in the passenger seat, and that the wagon was a thing Tem had been driving herself for six years.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had handed Lena the keys this morning. He registered it three minutes later, at the second light. Tem was, this morning, the passenger.",
       "t": "narrate"
     },
     {
@@ -195,7 +231,25 @@
     },
     {
       "char": "per",
-      "text": "I have known Tem since she was twelve. Her grandfather was Olaf's friend. Olaf — my father — and Eddvard built the cabin together in '11. Tem's grandfather was my father's closest friend for fourteen years before my father died. I have known Tem since she was a child. I have not, in maybe ten years, been to the cabin. I last went in 2042 for her grandfather's funeral. I have not been since. I have been — I have been keeping a distance for some specific reasons of my own that I will, if you ask me, tell you about, but which I am going to ask you not to ask me about until we are at the cabin with Tem in the room. The reasons are not — the reasons are not bad reasons. The reasons are the reasons a man like me has for not being at a cabin Olaf built that I have not been to in ten years.",
+      "text": "I have known Tem since she was twelve. Her grandfather was Olaf's friend. Olaf — my father — and Eddvard built the cabin together in '11. Tem's grandfather was my father's closest friend for fourteen years before my father died.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have known Tem since she was a child. I have not, in maybe ten years, been to the cabin. I last went in 2042 for her grandfather's funeral. I have not been since.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been — I have been keeping a distance for some specific reasons of my own that I will, if you ask me, tell you about, but which I am going to ask you not to ask me about until we are at the cabin with Tem in the room.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The reasons are not — the reasons are not bad reasons. The reasons are the reasons a man like me has for not being at a cabin Olaf built that I have not been to in ten years.",
       "expr": "neutral",
       "t": "say"
     },
@@ -207,7 +261,19 @@
     },
     {
       "char": "per",
-      "text": "Olaf made me a bowl in '06. He gave it to my mother for her birthday. Olaf carved bowls his whole life. Olaf carved the bowl in our kitchen between '03 and '06 — he would carve a little of it every Sunday afternoon for three years. He gave the bowl to my mother on her thirty-fourth birthday. My mother has had the bowl on the kitchen shelf since '06. The bowl was warm in the second week of July of this year. My mother called me in Eugene the next Sunday.",
+      "text": "[shot:closeup person]Olaf made me a bowl in '06. He gave it to my mother for her birthday. Olaf carved bowls his whole life.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Olaf carved the bowl in our kitchen between '03 and '06 — he would carve a little of it every Sunday afternoon for three years. He gave the bowl to my mother on her thirty-fourth birthday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My mother has had the bowl on the kitchen shelf since '06. The bowl was warm in the second week of July of this year. My mother called me in Eugene the next Sunday.",
       "expr": "neutral",
       "t": "say"
     },
@@ -235,35 +301,65 @@
     },
     {
       "char": "per",
-      "text": "What lineage.",
+      "text": "[shot:closeup person]What lineage.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "Tem said yesterday in the truck — Tem said her grandfather had a bowl too. She said the bowl had been on the shelf at the cabin since '11. She said the bowl had been warm since the second week of July. The same week your mother's. She said her grandfather had — Tem said her grandfather had been in some kind of network. She has been figuring out the network since Brandon Tillman died. She — she didn't name the network. She just said network.",
+      "text": "Tem said yesterday in the truck — Tem said her grandfather had a bowl too. She said the bowl had been on the shelf at the cabin since '11. She said the bowl had been warm since the second week of July. The same week your mother's.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "Per was quiet a long count.",
+      "char": "kai",
+      "text": "She said her grandfather had — Tem said her grandfather had been in some kind of network. She has been figuring out the network since Brandon Tillman died. She — she didn't name the network. She just said network.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "[beat:still][shot:closeup per~]Per was quiet a long count.",
       "t": "narrate"
     },
     {
       "char": "per",
-      "text": "My father was — Olaf was, by my own reading of the papers he left when he died, in something. The something was not, by anything he ever told me when I was a kid, a thing he was in. The something was a thing that, after he died, I figured out he had been in. I figured it out at nineteen by reading his papers. I have been carrying it since 2010, when he died. I have not, in the fifty-something years since, said the name of it to anybody. I have not, in those years, had reason to think anybody else knew.",
+      "text": "My father was — Olaf was, by my own reading of the papers he left when he died, in something. The something was not, by anything he ever told me when I was a kid, a thing he was in.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "My mother has — by what I have been able to figure out from how she has talked about the bowl — known some of it. She has been keeping it from me the way fathers keep things from sons in the families I come from. I have been keeping it from her the way sons keep things from their mothers. We have been keeping it from each other for fifty years. The bowl going warm in July has been the thing that — the bowl going warm has been the way the keeping stopped.",
+      "text": "The something was a thing that, after he died, I figured out he had been in. I figured it out at nineteen by reading his papers. I have been carrying it since 2010, when he died.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have not, in the fifty-something years since, said the name of it to anybody. I have not, in those years, had reason to think anybody else knew.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My mother has — by what I have been able to figure out from how she has talked about the bowl — known some of it. She has been keeping it from me the way fathers keep things from sons in the families I come from.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been keeping it from her the way sons keep things from their mothers. We have been keeping it from each other for fifty years.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The bowl going warm in July has been the thing that — the bowl going warm has been the way the keeping stopped.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "Per. What's the name.",
+      "text": "[shot:closeup person]Per. What's the name.",
       "expr": "neutral",
       "t": "say"
     },
@@ -273,13 +369,37 @@
     },
     {
       "char": "per",
-      "text": "I'm going to say it when I'm with Tem. I have been waiting fifty years to say it to somebody who would know what I meant by saying it. I am going to say it once, today, at the cabin, in front of Tem and you and whoever else is there. I am going to say it once and then we are going to figure out what the saying of it means. I am asking you to let me wait until the cabin.",
+      "text": "I'm going to say it when I'm with Tem. I have been waiting fifty years to say it to somebody who would know what I meant by saying it.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "I am not asking because I am being precious. I am asking because the saying is the only — the saying is the only thing I have left from when my father was alive. He never said the name to me. I have been keeping the name as the thing I would say to him if he came back. I am going to say it at the cabin to Tem because Tem is the closest thing to him I have. I want to say it where she can hear it. I want to say it at the table where her grandfather sat. I am — I am asking for that.",
+      "text": "I am going to say it once, today, at the cabin, in front of Tem and you and whoever else is there. I am going to say it once and then we are going to figure out what the saying of it means.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I am asking you to let me wait until the cabin.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "[shot:closeup person_b]I am not asking because I am being precious. I am asking because the saying is the only — the saying is the only thing I have left from when my father was alive. He never said the name to me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been keeping the name as the thing I would say to him if he came back. I am going to say it at the cabin to Tem because Tem is the closest thing to him I have. I want to say it where she can hear it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I want to say it at the table where her grandfather sat. I am — I am asking for that.",
       "expr": "serious",
       "t": "say"
     },
@@ -300,7 +420,7 @@
       "t": "say"
     },
     {
-      "src": "3d:miller_back_porch",
+      "src": "3d:cabin_road",
       "t": "bg"
     },
     {
@@ -312,8 +432,16 @@
       "t": "hide"
     },
     {
-      "text": "The rain stayed steady through the second creek crossing. The road came up out of the alders into the Sitka stand. Tem's wagon was a hundred yards ahead through the cedars on the third switchback, and Kai followed her up to the clearing, and at eleven-twelve they came up the bluff and the cabin was where it was.",
+      "text": "The rain stayed steady through the second creek crossing. The road came up out of the alders into the Sitka stand.",
       "t": "narrate"
+    },
+    {
+      "text": "Tem's wagon was a hundred yards ahead through the cedars on the third switchback, and Kai followed her up to the clearing, and at eleven-twelve they came up the bluff and the cabin was where it was.",
+      "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_porch_day",
+      "t": "bg"
     },
     {
       "char": "tem",
@@ -322,7 +450,11 @@
       "t": "show"
     },
     {
-      "text": "Tem was on the porch. She had come out before the trucks pulled in. She had a coffee. She had the wool sweater. She had been standing on the porch a count before they got there because she had heard the wagon at the second creek crossing and she had wanted to be on the porch when they arrived. The four of them got out.",
+      "text": "[shot:closeup tem]Tem was on the porch. She had come out before the trucks pulled in. She had a coffee. She had the wool sweater.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been standing on the porch a count before they got there because she had heard the wagon at the second creek crossing and she had wanted to be on the porch when they arrived. The four of them got out.",
       "t": "narrate"
     },
     {
@@ -346,7 +478,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:cabin_interior",
+      "src": "3d:cabin_interior_day",
       "t": "bg"
     },
     {
@@ -366,7 +498,7 @@
       "t": "show"
     },
     {
-      "text": "The cabin held the morning. The wood stove was banked low for the rain. The kettle was on. The reader was on the shelf where it had been since '46. The sticks were in their wax-paper sleeves on the table.",
+      "text": "[shot:establish]The cabin held the morning. The wood stove was banked low for the rain. The kettle was on. The reader was on the shelf where it had been since '46. The sticks were in their wax-paper sleeves on the table.",
       "t": "narrate"
     },
     {
@@ -396,6 +528,56 @@
     {
       "text": "He came inside.",
       "t": "narrate"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert chest]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
+    },
+    {
+      "t": "choice",
+      "style": "verb_coin",
+      "hotspot": "Per's box",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "look at", "skill": "logic",
+          "goto": 101,
+          "flag": "ch10_box_looked",
+          "hide_if_flag": "ch10_box_looked"
+        },
+        {
+          "text": "ask Per", "skill": "rhetoric",
+          "goto": 103,
+          "flag": "ch10_box_asked",
+          "hide_if_flag": "ch10_box_asked"
+        },
+        {
+          "text": "leave it", "skill": "composure",
+          "goto": 106
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Cedar. Olaf's joinery — the lid sat on the box the way the roof sat on the cabin, by weight and by having been made for it. A pale stripe down one side where a hand had carried it for fifty years. The grain ran the long way, toward the stove."
+    },
+    {
+      "t": "jump",
+      "goto": 100
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "text": "Per. The box."
+    },
+    {
+      "t": "say",
+      "char": "per",
+      "text": "[shot:closeup person]At noon, Kai. I said noon and I am going to hold to noon. It has waited since '06. It can wait for the kettle."
+    },
+    {
+      "t": "jump",
+      "goto": 100
     },
     {
       "text": "The cabin took the four of them. The rain on the cedar roof did not change.",

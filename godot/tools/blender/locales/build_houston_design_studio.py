@@ -1,477 +1,197 @@
-"""VOL 5 · XI Justice §II — "Scales Already Shattered"
-(vol5_ch11_justice.json L303-L515). ANNA LOGUE's design studio —
-"her meticulously greige Houston high-rise office, three floors
-down from a law firm" (L324): the SAME tower as Erica Campbell's
-firm (build_houston_office.py), three floors lower. The scaffold's
-docstring said "Emperor cameo ... drafting tables, brick wall,
-exposed duct, plotter" — loft-warehouse vocabulary that belongs to
-the PAINTER's converted warehouse in the Heights (ch10 L130), not
-to Anna's corporate high-rise floor. Rebuilt canon-first.
+"""VOL 5 · ANNA LOGUE'S OFFICE — Houston, the same tower as Erica's (Justice,
+Judgement).
 
-OWNERSHIP ADJUDICATION — Anna Logue's workplace at her design firm
-("her firm", L466), where she kerns the D'AMBROSIO'S: EMBER & ASH
-campaign for Alberto (L312, L344). One building, two tenants: the
-older man in the lobby "had come for somebody else, three floors
-up" (L494-L502) — Mr. D. Dean's 9:15 with Erica. The HOUSTON TOWER
-constants block below is therefore byte-identical with
-build_houston_office.py (playbook: shared-venue blocks stay in
-md5 sync).
+DRAFT 3 (2026-10-10) — the wrong REGISTER. Drafts 1-2 built "an open-plan
+creative studio: drafting tables, brick wall, exposed duct ... plotter,
+mood board" — a loft. The chapters: "Her brand was clean lines, negative
+space, ethically sourced typefaces, and the quiet hum of expensive air
+purifiers in her meticulously greige Houston high-rise office, three
+floors down from a law firm whose name, if she squinted at the building
+directory in the lobby, she would recognize" (Justice) — Erica's firm,
+Erica's tower; "Anna Logue's third monitor — curated, naturally, for
+optimal color fidelity"; "her cold brew (cashew milk ...)"; "her
+oversized, architecturally inspired glasses"; the pitch deck, Slide 7;
+"She stood up from her desk. She took the stairs, not the elevator, down
+nineteen flights to the lobby." (Judgement)
 
-ERA ADJUDICATION — contemporary (~2026): Illustrator layers
-(L406), a .psd saved to a private cloud (L462-L466), airdrop
-(L466), gifs from Ben (L386). Flat panels, no CRTs, no drafting
-boards — Anna's craft is entirely on screen.
+Plan (7 x 6 m, ceiling 2.9, the tower's facade on the N): one glass wall
+on mullions over the same city as Erica's (build_houston_office's
+build_city run three floors lower through plan.shifted); greige walls
+and carpet; her long white-oak desk on the E wall with THREE monitors
+(the third showing EMBER & ASH), the pen tablet, the cold brew, the
+glasses, her phone; a mesh task chair; the pitch deck pinned in a clean
+grid on a white board (Slide 7); two air purifiers; a low credenza with
+the colour-calibrated printer and the swatch books squared; a low sofa
+and a side table; one sculptural plant; the door to the corridor.
 
-Canon dressed in (line numbers = vol5_ch11_justice.json):
-  · The S doorway = the open camera doorway (Background3D preset
-    "houston_design_studio": origin z=+0.5, yaw 180, fov 62 —
-    the exemplar build_new_orleans_office.py arrangement).
-  · The N curtain wall — same tower vocabulary as Erica's floor,
-    at this room's 3.20 ceiling. NO glass slabs (playbook). The
-    .tscn Key_NorthWindow light reads through it.
-  · Outside, from ~nine floors up: the plaza she crosses at the
-    chapter's end (L482, L494) with its planters and the street
-    beyond, and neighbor towers that now rise well PAST us —
-    three floors down from Erica reads as more tower above.
-  · Anna's workstation, centre-north: THREE monitors "curated,
-    naturally, for optimal color fidelity" (L312) —
-      LEFT: the pitch deck mock-up, Slide 7 title band + body
-      bars ("But what is truly real...", L336);
-      CENTER: the D'Ambrosio logo stripped "to its wireframe"
-      (L406) — thin light strokes on dark, carrying the small
-      inscribed coordinates of the sinkhole hotspot
-      (_SINKHOLE_NEXUS.md L187-188: "Anna's wireframe carries
-      small inscribed coordinates that pinpoint the sinkhole's
-      location");
-      RIGHT (the THIRD monitor, L312): D'AMBROSIO'S: EMBER &
-      ASH in bold amber on charcoal — the lockup that "felt
-      less like branding and more like an accusation."
-  · Her cold brew — cashew milk, locally roasted (L332) — a
-    two-tone opaque glass (tan pour below, pale empty glass
-    above; no alpha).
-  · Her phone, face-up on the desk — it buzzes twice: Ben
-    (L356), then Alberto rung through (L470-L478).
-  · The anglepoise task lamp on the desk — kept because the
-    .tscn fill light is NAMED Fill_Anglepoise.
-  · TWO air purifiers — canon is plural: "the quiet hum of
-    expensive air purifiers" (L324); "The office air hummed,
-    sterile and controlled" (L414). White towers, vent rings.
-  · The W feature wall: warm walnut slats + low white credenza
-    with a squared book stack and one leaning framed print. The
-    .tscn back light is NAMED Back_BrickGlow — brick itself is
-    canon-negative here (see below), so the warm glow lands on
-    wood instead of being orphaned.
-  · Clean lines, negative space (L324): one colleague
-    workstation (dark monitor, chair squared — Saturday, she is
-    alone), one aligned swatch board, one shelf run of uniform
-    spines. The floor stays mostly empty on purpose.
-Canon-negatives (verified against the full scene):
-  · NO brick wall, NO exposed duct — that register belongs to
-    the painter's Heights warehouse (ch10 L130). Anna's floor is
-    "meticulously greige" high-rise (L324).
-  · NO drafting tables, NO plotter — her workflow is Illustrator
-    (L406) and a saved .psd (L462); nothing analog is staged.
-  · NO rainbow mood-board (scaffold's SNACK_TINTS pin wall
-    dropped) — her register is greige + one amber accent.
-  · NO Corporate Idols piece on display: D'AMB-IDOL-01.psd went
-    to the private cloud "her firm did not know existed"
-    (L462-L466). Rendering it on a wall would break the secret.
-  · NO croissant / pastry / flat whites — those are at the
-    coffee shop with Ben (L482).
-  · NO Mr. D. Dean — he is in the lobby, and he did not come
-    for her (L494-L498).
-  · NO ceiling stains, NO wall clock (unstaged; the chapter
-    keeps its own time: 10 AM at L458).
-
-Name dependencies checked: Background3D.gd references only scene +
-GLB paths; the .tscn LiminalProximityController location_json is
-empty; no script reads mesh names from this GLB. The .tscn light
-NAMES are honored by geometry: Key_NorthWindow -> the N curtain
-wall opening, Fill_Anglepoise -> the desk task lamp,
-Back_BrickGlow -> the warm walnut slat wall (brick canon-negative,
-documented above).
-
-Playbook compliance: shell footprint KEPT from the scaffold
-(10 x 7 x 3.20). Windows are mullion-and-frame openings — zero
-glass slabs, zero alpha. Cylinders for everything round at eye
-level (purifiers, lamp, cold brew, chair column). Deterministic —
-no RNG anywhere.
+Draft 4 targets: the corridor and the stair door (the nineteen flights);
+the screens' content at insert scale; a dusk variant.
 """
 import os, sys
+import math as _m
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+_LOC = os.path.dirname(os.path.abspath(__file__))
+if _LOC not in sys.path: sys.path.insert(0, _LOC)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
-from _props.safety import make_smoke_detector, make_hvac_vent
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, make_blob, export_glb
+from _props.structure import make_floor, make_wall, make_wall_with_openings
+from _props.detail import make_wall_outlet, make_traffic_wear
 
-# Shell footprint — KEPT from the scaffold; Background3D preset
-# ("houston_design_studio": origin (0, 2.30, +0.5), yaw 180,
-# fov 62) and the .tscn lights are tuned to it.
-ROOM_W = 10.0; ROOM_D = 7.0; CEIL = 3.20
-
-# ── HOUSTON TOWER — KEEP IN SYNC ─────────────────────────────────
-# One building, two tenants: Anna's studio is "three floors down
-# from a law firm" in the same high-rise (vol5_ch11_justice.json
-# L324, L502). This block is byte-identical in
-# build_houston_office.py and build_houston_design_studio.py —
-# verify with md5 before editing either copy.
-HOUSTON_MULLION    = (0.62, 0.64, 0.66, 1.0)   # anodized curtain wall
-HOUSTON_MULLION_DK = (0.36, 0.38, 0.40, 1.0)   # spandrel / channels
-HOUSTON_CHROME     = (0.74, 0.76, 0.78, 1.0)   # interior chrome accents
-HOUSTON_TOWER_A    = (0.42, 0.48, 0.54, 1.0)   # nearest glass tower
-HOUSTON_TOWER_B    = (0.54, 0.58, 0.62, 1.0)   # mid-distance tower
-HOUSTON_TOWER_C    = (0.66, 0.68, 0.70, 1.0)   # haze-distance slab
-HOUSTON_TOWER_LIT  = (0.96, 0.84, 0.52, 1.0)   # one lit office window
-HOUSTON_ASPHALT    = (0.30, 0.29, 0.28, 1.0)   # freeway / plaza deck
-HOUSTON_LANE       = (0.72, 0.70, 0.62, 1.0)   # lane striping
-HOUSTON_HAWK       = (0.16, 0.14, 0.12, 1.0)   # the bird on the thermal
-CURTAIN_PITCH      = 1.30                       # mullion spacing (m)
-# ── end HOUSTON TOWER block ──────────────────────────────────────
-
-# Studio-local palette — meticulously greige (L324), one amber
-# accent (the EMBER & ASH lockup, L312).
-PAL_WALL = {"wall": (0.80, 0.77, 0.72, 1.0),
-            "baseboard": (0.44, 0.42, 0.38, 1.0)}
-COL_CARPET      = (0.66, 0.63, 0.58, 1.0)   # pale greige carpet tile
-COL_CARPET_SEAM = (0.60, 0.57, 0.52, 1.0)   # low-contrast seams
-COL_CEIL        = (0.90, 0.89, 0.86, 1.0)   # smooth gypsum, no grid
-COL_DESK_WHITE  = (0.90, 0.89, 0.86, 1.0)   # her worktop
-COL_DESK_LEG    = (0.82, 0.81, 0.78, 1.0)
-COL_WALNUT      = (0.38, 0.26, 0.16, 1.0)   # W slat wall
-COL_WALNUT_DK   = (0.26, 0.17, 0.10, 1.0)
-COL_MONITOR     = (0.08, 0.09, 0.10, 1.0)   # bezels
-COL_SCREEN_DARK = (0.13, 0.13, 0.15, 1.0)   # wireframe canvas
-COL_SCREEN_OFF  = (0.10, 0.10, 0.11, 1.0)   # colleague's dark monitor
-COL_WIREFRAME   = (0.72, 0.74, 0.76, 1.0)   # stripped-logo strokes (L406)
-COL_DECK_BG     = (0.88, 0.87, 0.84, 1.0)   # pitch deck slide (L336)
-COL_DECK_TEXT   = (0.46, 0.45, 0.44, 1.0)
-COL_EMBER_BG    = (0.14, 0.12, 0.11, 1.0)   # third-monitor charcoal
-COL_EMBER_AMBER = (0.88, 0.58, 0.22, 1.0)   # EMBER & ASH bold (L312)
-COL_CHAIR       = (0.20, 0.20, 0.22, 1.0)
-COL_PHONE       = (0.12, 0.12, 0.13, 1.0)
-COL_PHONE_SCRN  = (0.24, 0.26, 0.30, 1.0)
-COL_BREW        = (0.58, 0.44, 0.30, 1.0)   # cold brew + cashew (L332)
-COL_BREW_GLASS  = (0.80, 0.82, 0.80, 1.0)   # empty glass above the pour
-COL_PURIFIER    = (0.92, 0.92, 0.90, 1.0)   # the expensive hum (L324)
-COL_PURIFIER_V  = (0.40, 0.41, 0.42, 1.0)
-COL_BOOK_TINTS  = [(0.56, 0.54, 0.50, 1.0), (0.42, 0.42, 0.44, 1.0),
-                   (0.68, 0.64, 0.56, 1.0), (0.34, 0.34, 0.36, 1.0)]
-COL_SWATCHES    = [(0.82, 0.80, 0.76, 1.0), (0.70, 0.68, 0.64, 1.0),
-                   (0.56, 0.54, 0.51, 1.0), (0.42, 0.41, 0.39, 1.0),
-                   (0.30, 0.29, 0.28, 1.0), (0.88, 0.58, 0.22, 1.0)]
-
-DESK_CX, DESK_CY = 0.60, 4.40   # Anna's workstation
-DESK_TOP_Z = 0.74
+ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 2.9
+XW, XE, YS, YN = -ROOM_W / 2.0, ROOM_W / 2.0, 0.0, ROOM_D
+DOOR_X, DOOR_W, DOOR_H = -2.4, 0.95, 2.25
+GREIGE = (0.78, 0.75, 0.70, 1.0); GREIGE_DK = (0.62, 0.60, 0.56, 1.0)
+CARPET = (0.58, 0.56, 0.52, 1.0); CARPET_SEAM = (0.52, 0.50, 0.47, 1.0)
+OAK = (0.80, 0.70, 0.56, 1.0); WHITE = (0.94, 0.94, 0.92, 1.0)
+STEEL = (0.62, 0.64, 0.66, 1.0); BLACK = (0.10, 0.10, 0.11, 1.0)
+GLASS = (0.62, 0.72, 0.78, 0.14); MULLION = (0.36, 0.38, 0.40, 1.0)
+PAL = {"wall": GREIGE, "baseboard": GREIGE_DK}
 
 
 def build_shell():
-    """Carpet + S/E/W walls + smooth ceiling. N is the curtain
-    wall. S has the open camera doorway."""
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
-               size_y=ROOM_D + 0.4,
-               palette={"vinyl": COL_CARPET, "seam": COL_CARPET_SEAM})
-    # S wall — doorway gap x in [-1.0, +1.0]; the camera sits in it.
-    make_wall("Wall_S_W", (-3.10, 0.0, 0), length=4.2, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+3.10, 0.0, 0), length=4.2, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=+1)
-    for psgn in (-1, +1):
-        make_box(f"Door_S_Post_{psgn:+d}", (psgn * 1.05, 0.0, 1.10),
-                 (0.10, 0.22, 2.20), HOUSTON_MULLION_DK)
-    make_box("Door_S_Lintel", (0.0, 0.0, 2.24), (2.30, 0.20, 0.08),
-             HOUSTON_MULLION_DK)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, 2.74), (2.10, 0.20, 0.92),
-             PAL_WALL["wall"])
-    # E wall solid; W wall carries the walnut slats (build_west_wall).
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    # Smooth gypsum ceiling — no drop grid, no stains. Meticulous.
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
-                 size_y=ROOM_D + 0.4, palette={"tile": COL_CEIL},
-                 with_grid=False, with_stains=False)
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4, palette={"vinyl": CARPET, "seam": CARPET_SEAM})
+    make_wall("Wall_W", (XW, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_E", (XE, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_S", (0.0, YS, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
+                            baseboard_face_sign=+1, openings=[(DOOR_X, DOOR_H / 2.0, DOOR_W, DOOR_H)])
+    make_box("Ceil", (0.0, ROOM_D / 2.0, CEIL + 0.05), (ROOM_W + 0.4, ROOM_D + 0.4, 0.10), (0.95, 0.95, 0.93, 1.0))
+    make_box("Ceil_Slot_N", (0.0, YN - 0.35, CEIL - 0.002), (ROOM_W - 0.8, 0.05, 0.004), (0.30, 0.30, 0.32, 1.0))
+    for i, (x, y) in enumerate(((-1.8, 1.6), (0.0, 1.6), (1.8, 1.6), (-1.8, 4.0), (0.0, 4.0), (1.8, 4.0))):
+        make_cyl(f"Downlight_{i}", (x, y, CEIL - 0.004), 0.08, 0.008, (0.98, 0.97, 0.92, 1.0), segments=12)
+    # the N glass: panes between mullions every 1.4 m, base and head rails
+    z0, z1 = 0.10, CEIL - 0.12
+    zc, zh = (z0 + z1) / 2.0, z1 - z0
+    make_box("Glass_N_Base", (0.0, YN, 0.05), (ROOM_W - 0.2, 0.10, 0.10), MULLION)
+    make_box("Glass_N_Head", (0.0, YN, CEIL - 0.06), (ROOM_W - 0.2, 0.10, 0.12), MULLION)
+    xs = [XW + 0.10] + [XW + i * 1.4 for i in range(1, 5)] + [XE - 0.10]
+    for i in range(len(xs) - 1):
+        a, b = xs[i] + (0.03 if i else 0.0), xs[i + 1] - (0.03 if i < len(xs) - 2 else 0.0)
+        make_box(f"Glass_N_{i}", ((a + b) / 2.0, YN, zc), (b - a, 0.02, zh), GLASS)
+    for i in range(1, 5):
+        make_box(f"Curtain_Wall_Mullion_N_{i}", (XW + i * 1.4, YN, zc), (0.06, 0.12, zh), MULLION)
+    make_box("Slab_Edge_N", (0.0, YN + 0.25, -0.15), (ROOM_W + 0.4, 0.50, 0.30), (0.50, 0.52, 0.54, 1.0))
+    # the door to the corridor, closed
+    make_box("Office_Door", (DOOR_X, YS + 0.06, DOOR_H / 2.0 - 0.01), (DOOR_W - 0.04, 0.04, DOOR_H - 0.02), OAK)
+    make_box("Office_Door_Pull", (DOOR_X + 0.34, YS + 0.10, 1.05), (0.02, 0.03, 0.36), STEEL)
 
 
-def build_curtain_wall():
-    """N curtain wall — same tower vocabulary as Erica's floor
-    (HOUSTON TOWER block), at this room's 3.20 ceiling. NO glass.
-    The .tscn Key_NorthWindow light reads through it."""
-    wy = ROOM_D
-    make_box("Curtain_Sill", (0.0, wy, 0.06), (ROOM_W + 0.4, 0.24, 0.12),
-             HOUSTON_MULLION_DK)
-    make_box("Curtain_Header", (0.0, wy, CEIL - 0.06),
-             (ROOM_W + 0.4, 0.24, 0.12), HOUSTON_MULLION_DK)
-    make_box("Curtain_Rail", (0.0, wy, 2.42), (ROOM_W + 0.4, 0.14, 0.06),
-             HOUSTON_MULLION)
-    n_mull = int(round((ROOM_W + 0.4) / CURTAIN_PITCH))     # 8 bays
-    for mi in range(n_mull + 1):
-        mx = -(ROOM_W + 0.4) / 2.0 + mi * (ROOM_W + 0.4) / n_mull
-        make_box(f"Curtain_Mull_{mi}", (mx, wy, CEIL / 2.0),
-                 (0.07, 0.18, CEIL), HOUSTON_MULLION)
+def build_desk():
+    """The long white-oak desk on the E wall, three monitors, her things."""
+    dx, dy0, dy1 = XE - 0.10 - 0.40, 1.9, 4.5
+    dy = (dy0 + dy1) / 2.0
+    make_box("Oak_Desk_Top", (dx, dy, 0.74), (0.80, dy1 - dy0, 0.04), OAK)
+    for i, y in enumerate((dy0 + 0.10, dy1 - 0.10)):
+        make_box(f"Oak_Desk_Leg_{i}", (dx, y, 0.36), (0.70, 0.05, 0.72), BLACK)
+    top = 0.76
+    for i, (my, yaw) in enumerate(((dy - 0.62, 0.30), (dy, 0.0), (dy + 0.62, -0.30))):
+        nm = ("Monitor", "Monitor_2", "Third_Monitor")[i]
+        make_rot_box(nm, (dx + 0.20, my, top + 0.34), (0.03, 0.60, 0.36), BLACK, yaw=yaw)
+        make_rot_box(f"{nm}_Screen", (dx + 0.18, my, top + 0.34), (0.004, 0.55, 0.31),
+                     [(0.88, 0.88, 0.86, 1.0), (0.84, 0.86, 0.88, 1.0), (0.14, 0.12, 0.12, 1.0)][i], yaw=yaw)
+        make_box(f"{nm}_Neck", (dx + 0.24, my, top + 0.10), (0.04, 0.05, 0.18), STEEL)
+        make_box(f"{nm}_Foot", (dx + 0.24, my, top + 0.005), (0.16, 0.20, 0.01), STEEL)
+    # EMBER & ASH on the third screen, the flame mark
+    make_rot_box("Third_Monitor_Wordmark", (dx + 0.175, dy + 0.62, top + 0.30), (0.002, 0.30, 0.05), (0.92, 0.56, 0.22, 1.0), yaw=-0.30)
+    make_rot_box("Third_Monitor_Flame", (dx + 0.175, dy + 0.62, top + 0.40), (0.002, 0.07, 0.10), (0.90, 0.36, 0.16, 1.0), yaw=-0.30)
+    make_box("Keyboard", (dx - 0.08, dy, top + 0.008), (0.14, 0.42, 0.016), WHITE)
+    make_box("Pen_Tablet", (dx - 0.10, dy + 0.50, top + 0.005), (0.24, 0.36, 0.01), BLACK)
+    make_cyl("Pen_Tablet_Stylus", (dx - 0.04, dy + 0.50, top + 0.016), 0.005, 0.16, BLACK, axis='Y', segments=6)
+    make_lathe("Cold_Brew", (dx - 0.20, dy - 0.50, top), [(0.0, 0.0), (0.035, 0.0), (0.04, 0.15), (0.0, 0.15)], (0.70, 0.56, 0.42, 0.7), segments=10)
+    make_cyl("Cold_Brew_Straw", (dx - 0.19, dy - 0.50, top + 0.19), 0.004, 0.14, WHITE, segments=6)
+    make_box("Anna_Glasses", (dx - 0.22, dy - 0.20, top + 0.008), (0.05, 0.15, 0.016), BLACK)
+    make_box("Anna_Phone", (dx - 0.24, dy + 0.18, top + 0.005), (0.07, 0.14, 0.01), (0.86, 0.84, 0.82, 1.0))
+    make_box("Desk_Notepad", (dx - 0.20, dy + 0.85, top + 0.004), (0.15, 0.21, 0.008), WHITE)
+    # the mesh task chair, facing the screens (east)
+    cx, cy = dx - 0.72, dy
+    make_chamfer_box("Task_Chair_Seat", (cx, cy, 0.50), (0.48, 0.48, 0.06), (0.24, 0.24, 0.26, 1.0), chamfer=0.02)
+    make_chamfer_box("Task_Chair_Back", (cx - 0.24, cy, 0.85), (0.05, 0.46, 0.64), (0.30, 0.30, 0.32, 0.85), chamfer=0.02)
+    make_lathe("Task_Chair_Pillar", (cx, cy, 0.06), [(0.03, 0.0), (0.03, 0.34), (0.05, 0.38), (0.05, 0.40), (0.0, 0.40)], STEEL, segments=8)
+    for si in range(5):
+        a = si * 2.0 * _m.pi / 5.0 + 0.3
+        make_rot_box(f"Task_Chair_Star_{si}", (cx + 0.14 * _m.cos(a), cy + 0.14 * _m.sin(a), 0.055), (0.28, 0.035, 0.03), STEEL, yaw=a)
+        make_cyl(f"Task_Chair_Caster_{si}", (cx + 0.27 * _m.cos(a), cy + 0.27 * _m.sin(a), 0.025), 0.025, 0.035, BLACK, axis='Y', segments=6)
 
 
-def build_houston_outside():
-    """The view from ~nine floors — three below Erica (L324). The
-    neighbor towers rise well past us; the plaza she crosses at
-    the chapter's end (L482, L494) sits far below with its
-    planters and the street beyond."""
-    # Near tower — from this floor it keeps going up.
-    make_box("Tower_A", (-6.0, 19.0, -6.0), (6.0, 6.0, 54.0),
-             HOUSTON_TOWER_A)
-    for si in range(4):
-        make_box(f"Tower_A_Strip_{si}", (-8.4 + si * 1.6, 15.95, -6.0),
-                 (0.18, 0.14, 54.0), HOUSTON_MULLION_DK)
-    make_box("Tower_B", (5.5, 27.0, -9.0), (6.5, 6.0, 50.0),
-             HOUSTON_TOWER_B)
-    make_box("Tower_C", (6.0, 41.0, -4.0), (16.0, 6.0, 62.0),
-             HOUSTON_TOWER_C)
-    # The plaza, ~nine floors down (L494) — deck, planters, street.
-    make_box("Plaza_Deck", (0.0, 13.5, -27.0), (30.0, 7.0, 0.30),
-             HOUSTON_ASPHALT)
-    for pi in range(3):
-        px = -7.0 + pi * 7.0
-        make_box(f"Plaza_Planter_{pi}", (px, 12.5, -26.62),
-                 (1.4, 1.4, 0.45), HOUSTON_MULLION_DK)
-        make_box(f"Plaza_Planter_{pi}_Green", (px, 12.5, -26.28),
-                 (1.1, 1.1, 0.25), (0.36, 0.44, 0.30, 1.0))
-    make_box("Street_Deck", (0.0, 19.5, -27.4), (34.0, 4.0, 0.20),
-             HOUSTON_ASPHALT)
-    make_box("Street_Stripe", (0.0, 19.5, -27.28), (26.0, 0.10, 0.02),
-             HOUSTON_LANE)
+def build_room():
+    """The pitch board, the purifiers, the credenza, the sofa, the plant."""
+    # the pitch deck pinned in a clean grid on a white board, W wall — Slide 7 at the centre
+    bx = XW + 0.10 + 0.015
+    make_box("Pitch_Board", (bx, 3.0, 1.55), (0.02, 2.40, 1.20), WHITE)
+    for r in range(3):
+        for c in range(4):
+            i = r * 4 + c
+            make_box(f"Pitch_Slide_{i}", (bx + 0.012, 2.22 + c * 0.52, 1.95 - r * 0.38), (0.003, 0.42, 0.26),
+                     (0.16, 0.14, 0.14, 1.0) if i == 6 else (0.90, 0.88, 0.84, 1.0))
+            if i == 6:
+                make_box("Pitch_Slide_7_Line", (bx + 0.0145, 2.22 + c * 0.52, 1.95 - r * 0.38), (0.002, 0.30, 0.03), (0.92, 0.56, 0.22, 1.0))
+    # the two air purifiers, white towers, humming
+    for i, (x, y) in enumerate(((XE - 0.35, 1.10), (XW + 0.35, 5.35))):
+        make_lathe(f"Air_Purifier_{i}", (x, y, 0.0), [(0.0, 0.0), (0.15, 0.0), (0.16, 0.05), (0.16, 0.66), (0.14, 0.70), (0.0, 0.70)], WHITE, segments=16)
+        make_cyl(f"Air_Purifier_{i}_Grille", (x, y, 0.71), 0.12, 0.012, (0.70, 0.70, 0.70, 1.0), segments=16)
+        make_cyl(f"Air_Purifier_{i}_Light", (x + 0.155, y, 0.55), 0.012, 0.004, (0.50, 0.86, 0.96, 1.0), axis='X', segments=8)
+    # the credenza on the S wall: the calibrated printer, the swatch books squared
+    cx = 0.9
+    make_box("Credenza_Body", (cx, YS + 0.10 + 0.24, 0.32), (2.0, 0.46, 0.64), WHITE)
+    make_box("Credenza_Top", (cx, YS + 0.10 + 0.24, 0.655), (2.04, 0.50, 0.03), OAK)
+    make_box("Printer", (cx + 0.55, YS + 0.34, 0.83), (0.56, 0.42, 0.32), (0.86, 0.86, 0.84, 1.0))
+    make_box("Printer_Tray", (cx + 0.55, YS + 0.57, 0.78), (0.36, 0.06, 0.03), (0.70, 0.70, 0.68, 1.0))
+    for i in range(5):
+        make_box(f"Swatch_Book_{i}", (cx - 0.55 + i * 0.07, YS + 0.34, 0.67 + 0.13), (0.05, 0.24, 0.26),
+                 [(0.86, 0.36, 0.30, 1.0), (0.30, 0.46, 0.66, 1.0), (0.94, 0.82, 0.30, 1.0), (0.36, 0.56, 0.40, 1.0), (0.46, 0.36, 0.56, 1.0)][i])
+    # the low sofa under the window's W end, its side table
+    sx, sy = -1.6, YN - 0.55
+    make_chamfer_box("Sofa_Base", (sx, sy, 0.20), (1.90, 0.80, 0.24), (0.66, 0.64, 0.60, 1.0), chamfer=0.03)
+    make_chamfer_box("Sofa_Back", (sx, sy + 0.32, 0.55), (1.90, 0.16, 0.46), (0.66, 0.64, 0.60, 1.0), chamfer=0.03)
+    make_chamfer_box("Sofa_Cushion", (sx, sy - 0.06, 0.37), (1.80, 0.64, 0.10), (0.72, 0.70, 0.66, 1.0), chamfer=0.03)
+    for i, (lx, ly) in enumerate(((-0.86, -0.32), (0.86, -0.32), (-0.86, 0.32), (0.86, 0.32))):
+        make_box(f"Sofa_Leg_{i}", (sx + lx, sy + ly, 0.04), (0.04, 0.04, 0.08), BLACK)
+    make_cyl("Side_Table_Top", (sx + 1.35, sy, 0.50), 0.25, 0.03, OAK, segments=16)
+    make_cyl("Side_Table_Stem", (sx + 1.35, sy, 0.25), 0.03, 0.48, BLACK, segments=8)
+    make_cyl("Side_Table_Foot", (sx + 1.35, sy, 0.01), 0.18, 0.02, BLACK, segments=12)
+    make_box("Side_Table_Book", (sx + 1.35, sy, 0.53), (0.22, 0.28, 0.03), (0.86, 0.84, 0.80, 1.0))
+    # one sculptural plant in a white pot, the SE corner
+    px, py = XE - 0.45, YN - 0.55
+    make_lathe("Plant_Pot", (px, py, 0.0), [(0.0, 0.0), (0.16, 0.0), (0.20, 0.40), (0.0, 0.40)], WHITE, segments=14)
+    make_cyl("Plant_Stem", (px, py, 0.80), 0.02, 0.80, (0.36, 0.30, 0.20, 1.0), segments=6)
+    for i in range(5):
+        a = i * 1.26
+        make_blob(f"Plant_Leaf_{i}", (px + 0.16 * _m.cos(a), py + 0.16 * _m.sin(a), 0.95 + i * 0.12), 0.12, (0.24, 0.40, 0.24, 1.0), noise=0.2, seed=3 + i, squash=0.4)
+    make_wall_outlet("Outlet_E", (XE, 3.2), axis='Y', face_sign=-1, aged=False)
+    make_traffic_wear("Wear_Door_Desk", [(DOOR_X, 0.4), (1.6, 2.4)], width=0.6, tint=(0.0, 0.0, 0.0, 1.0))
 
 
-def build_workstation():
-    """Anna's desk (L312-L344): three color-curated monitors —
-    pitch deck / stripped wireframe / the EMBER & ASH lockup —
-    keyboard, mouse, her phone, the cold brew, the anglepoise."""
-    tz = DESK_TOP_Z
-    make_box("Desk_Top", (DESK_CX, DESK_CY, tz - 0.02),
-             (2.30, 0.85, 0.04), COL_DESK_WHITE)
-    for lsgn in (-1, +1):
-        make_box(f"Desk_Panel_{lsgn:+d}", (DESK_CX + lsgn * 1.08, DESK_CY,
-                 0.36), (0.045, 0.75, 0.72), COL_DESK_LEG)
-    make_box("Desk_CableTray", (DESK_CX, DESK_CY + 0.36, 0.58),
-             (1.80, 0.08, 0.06), COL_DESK_LEG)
-    # LEFT — the pitch deck mock-up, Slide 7 (L332-L336).
-    make_box("Mon_Deck_Panel", (-0.28, DESK_CY + 0.18, 1.10),
-             (0.58, 0.030, 0.36), COL_MONITOR)
-    make_box("Mon_Deck_Screen", (-0.28, DESK_CY + 0.163, 1.10),
-             (0.52, 0.002, 0.31), COL_DECK_BG)
-    make_box("Mon_Deck_TitleBar", (-0.28, DESK_CY + 0.161, 1.21),
-             (0.40, 0.001, 0.05), COL_DECK_TEXT)
-    for li in range(3):
-        make_box(f"Mon_Deck_Line_{li}", (-0.30, DESK_CY + 0.161,
-                 1.12 - li * 0.045), (0.34, 0.001, 0.014), COL_DECK_TEXT)
-    make_box("Mon_Deck_Stand", (-0.28, DESK_CY + 0.20, 0.84),
-             (0.05, 0.05, 0.16), COL_DESK_LEG)
-    # CENTER — the logo stripped to wireframe (L406), carrying the
-    # inscribed sinkhole coordinates (_SINKHOLE_NEXUS.md L187-188).
-    make_box("Mon_Wire_Panel", (0.60, DESK_CY + 0.18, 1.12),
-             (0.62, 0.030, 0.38), COL_MONITOR)
-    make_box("Mon_Wire_Screen", (0.60, DESK_CY + 0.163, 1.12),
-             (0.56, 0.002, 0.33), COL_SCREEN_DARK)
-    make_box("Mon_Wire_StrokeH1", (0.60, DESK_CY + 0.161, 1.20),
-             (0.34, 0.001, 0.008), COL_WIREFRAME)
-    make_box("Mon_Wire_StrokeH2", (0.60, DESK_CY + 0.161, 1.06),
-             (0.28, 0.001, 0.008), COL_WIREFRAME)
-    for vi, vx in enumerate([0.46, 0.60, 0.74]):
-        make_box(f"Mon_Wire_StrokeV_{vi}", (vx, DESK_CY + 0.161, 1.13),
-                 (0.008, 0.001, 0.13), COL_WIREFRAME)
-    # The small inscribed coordinates, lower-left of the canvas.
-    make_box("Mon_Wire_Coords", (0.42, DESK_CY + 0.161, 0.985),
-             (0.14, 0.001, 0.010), COL_WIREFRAME)
-    make_box("Mon_Wire_Stand", (0.60, DESK_CY + 0.20, 0.84),
-             (0.05, 0.05, 0.18), COL_DESK_LEG)
-    # RIGHT — the THIRD monitor (L312): D'AMBROSIO'S: EMBER & ASH,
-    # bold amber on charcoal. Branding as accusation.
-    make_box("Mon_Ember_Panel", (1.48, DESK_CY + 0.18, 1.10),
-             (0.58, 0.030, 0.36), COL_MONITOR)
-    make_box("Mon_Ember_Screen", (1.48, DESK_CY + 0.163, 1.10),
-             (0.52, 0.002, 0.31), COL_EMBER_BG)
-    make_box("Mon_Ember_Lockup", (1.48, DESK_CY + 0.161, 1.13),
-             (0.42, 0.001, 0.055), COL_EMBER_AMBER)
-    make_box("Mon_Ember_Subline", (1.48, DESK_CY + 0.161, 1.06),
-             (0.28, 0.001, 0.018), COL_EMBER_AMBER)
-    make_box("Mon_Ember_Flame", (1.30, DESK_CY + 0.161, 1.205),
-             (0.030, 0.001, 0.045), COL_EMBER_AMBER)
-    make_box("Mon_Ember_Stand", (1.48, DESK_CY + 0.20, 0.84),
-             (0.05, 0.05, 0.16), COL_DESK_LEG)
-    # Keyboard + mouse, squared to the center monitor.
-    make_box("Keyboard", (0.60, DESK_CY - 0.12, tz + 0.011),
-             (0.42, 0.14, 0.022), COL_CHAIR)
-    make_box("Mouse", (0.94, DESK_CY - 0.12, tz + 0.014),
-             (0.058, 0.10, 0.028), COL_CHAIR)
-    # Her phone, face-up — Ben's gifs, then Alberto rung through
-    # (L356, L470-L478).
-    make_box("Phone", (1.24, DESK_CY - 0.24, tz + 0.007),
-             (0.072, 0.150, 0.014), COL_PHONE)
-    make_box("Phone_Screen", (1.24, DESK_CY - 0.24, tz + 0.0145),
-             (0.062, 0.130, 0.001), COL_PHONE_SCRN)
-    # The cold brew (L332) — opaque two-tone pour, no alpha.
-    make_cyl("ColdBrew_Pour", (-0.10, DESK_CY - 0.24, tz + 0.05),
-             0.034, 0.10, COL_BREW, segments=10)
-    make_cyl("ColdBrew_Glass", (-0.10, DESK_CY - 0.24, tz + 0.125),
-             0.034, 0.05, COL_BREW_GLASS, segments=10)
-    # The anglepoise — the .tscn fill light is NAMED for it.
-    ax = -0.88
-    make_cyl("Anglepoise_Base", (ax, DESK_CY + 0.20, tz + 0.015),
-             0.062, 0.03, COL_CHAIR, segments=10)
-    make_cyl("Anglepoise_ArmLo", (ax, DESK_CY + 0.20, tz + 0.20),
-             0.011, 0.34, COL_CHAIR, segments=8)
-    make_cyl("Anglepoise_ArmHi", (ax + 0.16, DESK_CY + 0.20, tz + 0.37),
-             0.010, 0.32, COL_CHAIR, axis='X', segments=8)
-    make_cyl("Anglepoise_Head", (ax + 0.34, DESK_CY + 0.20, tz + 0.345),
-             0.052, 0.09, COL_CHAIR, segments=10)
-    # Her chair — minimal, squared.
-    cy = DESK_CY - 0.75
-    make_box("Chair_Seat", (DESK_CX, cy, 0.48), (0.48, 0.45, 0.06),
-             COL_CHAIR)
-    make_box("Chair_Back", (DESK_CX, cy + 0.235, 0.94), (0.46, 0.05, 0.66),
-             COL_CHAIR)
-    make_cyl("Chair_Column", (DESK_CX, cy, 0.26), 0.030, 0.36,
-             HOUSTON_CHROME, segments=8)
-    make_cyl("Chair_Base", (DESK_CX, cy, 0.03), 0.25, 0.045,
-             HOUSTON_CHROME, segments=10)
-
-
-def build_colleague_desk():
-    """One colleague workstation, E side — monitor DARK, chair
-    squared under: it is Saturday and the firm's floor is hers
-    alone (L308, L466)."""
-    wx, wy = 3.60, 2.20
-    make_box("Coll_Desk_Top", (wx, wy, 0.72), (1.40, 0.70, 0.035),
-             COL_DESK_WHITE)
-    for lsgn in (-1, +1):
-        make_box(f"Coll_Desk_Panel_{lsgn:+d}", (wx + lsgn * 0.64, wy, 0.35),
-                 (0.04, 0.62, 0.70), COL_DESK_LEG)
-    make_box("Coll_Monitor", (wx, wy + 0.16, 1.04), (0.52, 0.028, 0.32),
-             COL_MONITOR)
-    make_box("Coll_Monitor_Screen", (wx, wy + 0.144, 1.04),
-             (0.46, 0.002, 0.27), COL_SCREEN_OFF)
-    make_box("Coll_Monitor_Stand", (wx, wy + 0.18, 0.80),
-             (0.05, 0.05, 0.13), COL_DESK_LEG)
-    make_box("Coll_Chair_Seat", (wx, wy - 0.42, 0.47), (0.44, 0.42, 0.055),
-             COL_CHAIR)
-    make_box("Coll_Chair_Back", (wx, wy - 0.62, 0.90), (0.42, 0.05, 0.58),
-             COL_CHAIR)
-    make_cyl("Coll_Chair_Column", (wx, wy - 0.42, 0.26), 0.028, 0.35,
-             HOUSTON_CHROME, segments=8)
-    make_cyl("Coll_Chair_Base", (wx, wy - 0.42, 0.03), 0.23, 0.04,
-             HOUSTON_CHROME, segments=10)
-
-
-def build_west_wall():
-    """The warm wall: walnut slats (the .tscn Back_BrickGlow's
-    landing surface — brick is canon-negative, L324) + low white
-    credenza with a squared book stack and one leaning print."""
-    wx = -ROOM_W / 2.0 + 0.13
-    for si in range(16):
-        sy = 0.55 + si * 0.40
-        make_box(f"Slat_{si}", (wx, sy, CEIL / 2.0),
-                 (0.045, 0.085, CEIL - 0.10), COL_WALNUT)
-    make_box("Slat_Backer", (wx - 0.035, ROOM_D / 2.0, CEIL / 2.0),
-             (0.02, ROOM_D - 0.6, CEIL - 0.10), COL_WALNUT_DK)
-    # Credenza — clean white, chrome feet.
-    cx2 = -4.45
-    make_box("Credenza_Body", (cx2, 3.50, 0.42), (0.45, 2.00, 0.56),
-             COL_DESK_WHITE)
-    make_box("Credenza_Reveal", (cx2 - 0.226, 3.50, 0.42),
-             (0.002, 1.90, 0.015), COL_DESK_LEG)
-    for fi, fy in enumerate([2.65, 4.35]):
-        make_cyl(f"Credenza_Foot_{fi}", (cx2, fy, 0.07), 0.018, 0.14,
-                 HOUSTON_CHROME, segments=8)
-    # Squared book stack — four muted spines, flush.
-    for bi in range(4):
-        make_box(f"Credenza_Book_{bi}", (cx2, 3.10, 0.725 + bi * 0.032),
-                 (0.24 - bi * 0.01, 0.32 - bi * 0.02, 0.030),
-                 COL_BOOK_TINTS[bi])
-    # One framed print, leaning against the slats: white frame,
-    # greige field, single amber stroke. Minimal, not Idols.
-    make_box("Print_Frame", (cx2 + 0.05, 4.20, 1.08), (0.030, 0.62, 0.80),
-             COL_DESK_WHITE)
-    make_box("Print_Field", (cx2 + 0.067, 4.20, 1.08), (0.002, 0.54, 0.72),
-             (0.74, 0.72, 0.68, 1.0))
-    make_box("Print_Stroke", (cx2 + 0.069, 4.20, 1.02), (0.001, 0.38, 0.05),
-             COL_EMBER_AMBER)
-
-
-def build_east_wall():
-    """E wall: one shelf run of uniform spines + the aligned
-    swatch board — a 3x2 greige scale with one amber square.
-    Clean lines, negative space (L324)."""
-    ex = ROOM_W / 2.0 - 0.14
-    make_box("Shelf_E", (ex - 0.10, 4.90, 1.45), (0.26, 1.80, 0.032),
-             COL_DESK_WHITE)
-    for bri, bry in enumerate([4.20, 5.60]):
-        make_box(f"Shelf_E_Bracket_{bri}", (ex - 0.03, bry, 1.37),
-                 (0.03, 0.03, 0.13), HOUSTON_MULLION_DK)
-    for bi in range(9):
-        by = 4.18 + bi * 0.165
-        make_box(f"Shelf_E_Book_{bi}", (ex - 0.11, by, 1.61),
-                 (0.20, 0.052, 0.29), COL_BOOK_TINTS[bi % 4])
-    # Swatch board — aluminum frame, six aligned squares.
-    make_box("Swatch_Frame", (ex - 0.005, 2.30, 1.70), (0.020, 1.30, 0.90),
-             HOUSTON_MULLION)
-    make_box("Swatch_Field", (ex - 0.018, 2.30, 1.70), (0.006, 1.22, 0.82),
-             COL_DESK_WHITE)
-    for si2 in range(6):
-        row = si2 // 3
-        col_i = si2 % 3
-        make_box(f"Swatch_{si2}",
-                 (ex - 0.024, 1.92 + col_i * 0.38, 1.88 - row * 0.36),
-                 (0.002, 0.30, 0.28), COL_SWATCHES[si2])
-
-
-def build_air_purifiers():
-    """TWO of them — canon is plural (L324); their hum is the
-    room's soundtrack (L414). White towers, dark vent rings,
-    one status LED each."""
-    for pi, (px, py) in enumerate([(2.30, 5.95), (-3.30, 1.05)]):
-        make_cyl(f"Purifier_{pi}_Body", (px, py, 0.33), 0.155, 0.66,
-                 COL_PURIFIER, segments=12)
-        make_cyl(f"Purifier_{pi}_Vent", (px, py, 0.52), 0.157, 0.10,
-                 COL_PURIFIER_V, segments=12)
-        make_cyl(f"Purifier_{pi}_Top", (px, py, 0.675), 0.145, 0.03,
-                 COL_PURIFIER_V, segments=12)
-        make_box(f"Purifier_{pi}_LED", (px, py - 0.152, 0.62),
-                 (0.014, 0.006, 0.014), (0.55, 0.80, 0.62, 1.0))
-
-
-def build_ceiling_infra():
-    """Two slim linear pendants (expensive-minimal register — no
-    fluorescent troffers here), HVAC ('The office air hummed,
-    sterile and controlled', L414), smoke detector."""
-    for pi, py in enumerate([3.10, 5.30]):
-        for di, dx in enumerate([-0.70, 1.90]):
-            make_cyl(f"Pendant_{pi}_Drop_{di}", (dx, py, CEIL - 0.20),
-                     0.006, 0.40, COL_CHAIR, segments=6)
-        make_box(f"Pendant_{pi}_Bar", (0.60, py, CEIL - 0.42),
-                 (3.00, 0.07, 0.045), COL_CHAIR)
-        make_box(f"Pendant_{pi}_Diffuser", (0.60, py, CEIL - 0.445),
-                 (2.90, 0.045, 0.008), (0.96, 0.94, 0.88, 1.0))
-    make_hvac_vent("HVAC_A", (-2.4, 5.9, CEIL), width=1.00, depth=0.50)
-    make_hvac_vent("HVAC_B", (3.2, 4.0, CEIL), width=0.80, depth=0.45)
-    make_smoke_detector("Smoke", (0.0, 1.8, CEIL))
+def build_city_lower():
+    """The same city as Erica's, three floors lower (her office is
+    "three floors down from a law firm"): build_houston_office's city run
+    through plan.shifted with dz +10.5 and the facade line moved to this
+    room's glass. That tower's own facade (sized to reach Erica's slab)
+    and Erica's hawk are dropped; this floor's facade goes down from
+    here."""
+    import build_houston_office as HO
+    from _props.plan import shifted
+    skip = ("Out_Facade", "Hawk_")
+    with shifted(vars(HO), 0.0, YN - HO.YN, dz=10.5):
+        saved = {n: getattr(HO, n) for n in ("make_box", "make_rot_box")}
+        for n, f in saved.items():
+            setattr(HO, n, (lambda f: lambda name, *a, **k: None if name.startswith(skip) else f(name, *a, **k))(f))
+        try:
+            HO.build_city()
+        finally:
+            for n, f in saved.items():
+                setattr(HO, n, f)
+    gz = HO.GROUND_Z + 10.5
+    make_box("Out_Facade_N", (0.0, YN + 0.55, gz / 2.0 - 0.3), (ROOM_W + 30.0, 0.2, -gz - 0.6), (0.28, 0.34, 0.40, 1.0))
+    for f in range(1, 9):
+        make_box(f"Out_Facade_N_Floor_{f}", (0.0, YN + 0.66, -f * 3.5), (ROOM_W + 30.0, 0.02, 0.35), (0.50, 0.52, 0.54, 1.0))
 
 
 def main():
     clear_scene()
-    build_shell()
-    build_curtain_wall()
-    build_houston_outside()
-    build_workstation()
-    build_colleague_desk()
-    build_west_wall()
-    build_east_wall()
-    build_air_purifiers()
-    build_ceiling_infra()
-    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-        "../../../assets/3d/locales/houston_design_studio.glb"))
+    build_shell(); build_desk(); build_room(); build_city_lower()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_design_studio.glb"))
     print(f"\n[build_houston_design_studio] exporting to {out}")
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()

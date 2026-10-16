@@ -1,0 +1,31 @@
+{
+  "id": "estuary_3",
+  "notes": "Estuary 3 · Oneironautics · 2003. Warm yellow spine with the accented '3'.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#1a1408",
+    "#e8b842",
+    "#c88a20",
+    "#f4dc90",
+    "#3a2a14"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "hband", "y_range": [0, 2],    "color": 4 },
+    { "op": "hband", "y_range": [126, 128], "color": 4 },
+    { "op": "vband", "x_range": [0, 2],    "color": 4 },
+    { "op": "vband", "x_range": [42, 44],  "color": 4 },
+    { "op": "hband", "y_range": [6, 22],   "color": 2 },
+    { "op": "hband", "y_range": [106, 122], "color": 2 },
+    { "op": "text",  "xy": [6, 12], "s": "OI", "color": 3 },
+    { "op": "text",  "xy": [24, 12], "s": "03", "color": 3 },
+    { "op": "rect",  "xywh": [8, 32, 28, 40], "color": 3 },
+    { "op": "rect",  "xywh": [10, 34, 24, 36], "color": 1 },
+    { "op": "text",  "xy": [12, 40], "s": "ESTU", "color": 3 },
+    { "op": "text",  "xy": [12, 48], "s": "ARY",  "color": 3 },
+    { "op": "text",  "xy": [16, 58], "s": "3",    "color": 2 },
+    { "op": "dot",   "xy": [22, 84], "size": 3, "color": 3 },
+    { "op": "dot",   "xy": [16, 92], "size": 2, "color": 3 },
+    { "op": "dot",   "xy": [28, 92], "size": 2, "color": 3 }
+  ]
+}

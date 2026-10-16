@@ -1,0 +1,23 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_1998-04-10_spring_special",
+      "strip_id": "dw_1998-04-10_spring_special",
+      "title": "Drift Wood · the Spring Special",
+      "date": "1998-04-10",
+      "era": "era1",
+      "format": "special",
+      "tier": "A",
+      "prompt": "a full-page comic in horizontal tiers stacked top to bottom (1 tiers). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: DRIFT WOOD. The strip: The estuary at low tide. Wood's first landscape. Captioned — the last one he'll caption. Tier 1: a full-page black-and-white pen drawing of a Pacific Northwest estuary at low tide seen from a bluff: long bands of crosshatched mudflats, a channel of water reflecting a white sky, old cannery dock pilings, a heron, log booms, a far wall of spruce, over-inked and ambitious, xerox grain. caption box: \"THE ESTUARY AT LOW TIDE. Everything that leaves this town goes out through here. Most of it comes back. — A.F.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes.",
+      "prompt_compact": "a full-page comic in horizontal tiers stacked top to bottom (1 tiers). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Tier 1: a full-page black-and-white pen drawing of a Pacific Northwest estuary at low tide seen from a bluff: long bands of crosshatched mudflats,…. caption \"THE ESTUARY AT LOW TIDE. Everything that leaves this town goes out through here. Most of it comes back. — A.F.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\".",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "1080:1440",
+      "google_aspect": "3:4",
+      "lettered": true,
+      "seed": null,
+      "reference_images": []
+    }
+  ]
+}

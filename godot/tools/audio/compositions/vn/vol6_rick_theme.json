@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "title": "vol6_rick_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_rick_theme",
+  "notes": "Rick \u00b7 Back-Issue Reverence. Bagged-and-boarded mylar shuffle + a vintage-store CRT hum at 60 Hz."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.8,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.4,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 3.5,
+     "dur": 0.4,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E4",
+     "bar": 2,
+     "beat": 1.5,
+     "dur": 0.6,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 4,
+     "dur": 0.4,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E4",
+     "bar": 4,
+     "beat": 2.5,
+     "dur": 0.6,
+     "vel": 0.24
+    }
+   ]
+  }
+ ]
+}

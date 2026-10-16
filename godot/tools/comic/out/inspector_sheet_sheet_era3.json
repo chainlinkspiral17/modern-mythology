@@ -1,0 +1,20 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_era3",
+      "kind": "era",
+      "era": "era3",
+      "tags": [
+        "era",
+        "era3"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. a reference swatch sheet for a masterwork-era comic strip: samples of razor-sharp confident brush-and-ink line with clean architectural perspective, a crisp silhouette, a close-up hand with zero crosshatching, wet-on-wet watercolor samples of gray-green moss, coastal fog, rusted galvanized tin and a bruised dusk sky with water bleeding over an ink edge, a desaturated Payne's gray and raw umber swatch, and a tiny three-legged scruff of ink asleep beside a flat horizontal stroke; labeled ERA III 2012–2020. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

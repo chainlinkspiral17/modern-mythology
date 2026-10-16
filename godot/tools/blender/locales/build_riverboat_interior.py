@@ -100,7 +100,8 @@ COL_LINEN         = (0.94, 0.90, 0.84, 1.0)
 COL_FELT_GREEN    = (0.18, 0.40, 0.24, 1.0)
 
 COL_WINDOW_GLASS  = (0.62, 0.78, 0.82, 0.85)
-COL_LEADED_GLASS  = (0.72, 0.84, 0.88, 0.85)
+COL_LEAD_CAME     = (0.30, 0.30, 0.32, 1.0)
+COL_LEADED_GLASS  = (0.46, 0.38, 0.26, 0.45)  # (2026-10-02: old glass, warm — and GLASS: LocaleGlass turns the alpha into transparency at load, the dining room shows through)
 COL_BOTTLE_BROWN  = (0.42, 0.22, 0.10, 1.0)
 COL_BOTTLE_GREEN  = (0.18, 0.32, 0.20, 1.0)
 COL_BOTTLE_CLEAR  = (0.62, 0.74, 0.78, 0.70)
@@ -135,7 +136,7 @@ def _finalize_mesh(name, verts, faces, base_color):
     return obj
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+def _make_box_vendored(name, center, size, base_color, open_faces=None):
     open_faces = open_faces or set()
     cx, cy, cz = center
     sx, sy, sz = size
@@ -153,6 +154,24 @@ def make_box(name, center, size, base_color, open_faces=None):
     ]
     out_faces = [vids for tag, vids in face_defs if tag not in open_faces]
     return _finalize_mesh(name, verts, out_faces, base_color)
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, base_color,
@@ -181,11 +200,41 @@ def make_cyl(name, center, radius, height, base_color,
     return _finalize_mesh(name, verts, faces, base_color)
 
 
+def make_sphere_low(name, center, radius, base_color, rings=3, segments=8):
+    # Low-poly UV sphere (the helm door knob calls this — it was
+    # never defined, which crashed the whole build at main()).
+    cx, cy, cz = center
+    verts = [(cx, cy, cz + radius)]
+    for r in range(1, rings):
+        phi = math.pi * r / rings
+        rr = radius * math.sin(phi)
+        zh = radius * math.cos(phi)
+        for s in range(segments):
+            ang = 2.0 * math.pi * s / segments
+            verts.append((cx + rr * math.cos(ang),
+                          cy + rr * math.sin(ang), cz + zh))
+    verts.append((cx, cy, cz - radius))
+    faces = []
+    for s in range(segments):
+        faces.append([0, 1 + s, 1 + (s + 1) % segments])
+    for r in range(rings - 2):
+        base = 1 + r * segments
+        nxt = base + segments
+        for s in range(segments):
+            faces.append([base + s, nxt + s,
+                          nxt + (s + 1) % segments, base + (s + 1) % segments])
+    last = len(verts) - 1
+    base = 1 + (rings - 2) * segments
+    for s in range(segments):
+        faces.append([last, base + (s + 1) % segments, base + s])
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
 # ── Gauntlet station marker ──────────────────────────────────────
 def gauntlet_marker(label, cx, cy, cz, w, d, numeral):
     """Brass-stencil rectangle painted onto the deck at height cz +
     a small numeral plate. Same style as cathedral + bungalow."""
-    z = cz + 0.013
+    z = cz + 0.010   # plates ON the deck (2026-09-22: 1.25 cm over it)
     for sgn in (-1, +1):
         make_box(f"{label}_outline_x{sgn:+d}",
                  (cx + sgn * w / 2, cy, z),
@@ -215,6 +264,8 @@ HULL_X_W = -6.0
 HULL_X_E = +6.0
 HULL_Y_S = -12.0
 HULL_Y_N = +12.0
+# the main deck's stairwell (x0, x1, y0, y1) over MD_StairsDown's treads
+STAIR_HOLE = (-5.1, -3.9, -9.66, -7.20)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -254,14 +305,36 @@ def build_hull_and_decks():
         ("MainFloor",  MAIN_FLOOR_Z,   COL_DECK_PLANK),
         ("UpperFloor", UPPER_FLOOR_Z,  COL_DECK_PLANK_LT),
     ]:
-        make_box(f"Hull_{label}",
-                 (0.0, 0.0, zf - 0.05),
-                 (12.0, 24.0, 0.10), color)
+        if label != "MainFloor":
+            make_box(f"Hull_{label}",
+                     (0.0, 0.0, zf - 0.05),
+                     (12.0, 24.0, 0.10), color)
+        else:
+            # the stairwell down (build_maitre_d's MD_StairsDown) is a
+            # HOLE in the main deck (2026-09-23: the deck was one slab and
+            # the top tread stood through it; a dark decal inside the slab
+            # stood in for the opening)
+            hx0, hx1, hy0, hy1 = STAIR_HOLE
+            make_box("Hull_MainFloor", ((hx1 + HULL_X_E) / 2.0, 0.0, zf - 0.05),
+                     (HULL_X_E - hx1, 24.0, 0.10), color)
+            for nm, (x0, x1, y0, y1) in (("S", (HULL_X_W, hx1, HULL_Y_S, hy0)),
+                                         ("N", (HULL_X_W, hx1, hy1, HULL_Y_N)),
+                                         ("Mid", (HULL_X_W, hx0, hy0, hy1))):
+                make_box(f"Hull_MainFloor_W{nm}", ((x0 + x1) / 2.0, (y0 + y1) / 2.0, zf - 0.05),
+                         (x1 - x0, y1 - y0, 0.10), color)
         # Plank seams (running E-W)
         for i in range(-5, 6):
             y = i * 2.0
+            if label == "MainFloor" and STAIR_HOLE[2] < y < STAIR_HOLE[3]:
+                # split round the stairwell
+                for k, (x0, x1) in enumerate(((HULL_X_W, STAIR_HOLE[0]), (STAIR_HOLE[1], HULL_X_E))):
+                    make_box(f"Hull_{label}_Seam_{i}_{k}",
+                             ((x0 + x1) / 2.0, y, zf + 0.0006),   # on the deck (it floated 12 mm up)
+                             (x1 - x0, 0.01, 0.001),
+                             (0.20, 0.14, 0.08, 1.0))
+                continue
             make_box(f"Hull_{label}_Seam_{i}",
-                     (0.0, y, zf + 0.012),
+                     (0.0, y, zf + 0.0006),   # on the deck (it floated 12 mm up)
                      (12.0, 0.01, 0.001),
                      (0.20, 0.14, 0.08, 1.0))
 
@@ -277,8 +350,10 @@ def build_hull_and_decks():
         # Tin stamp pattern (subtle raised tiles)
         for i in range(-2, 3):
             for j in range(-5, 6):
+                # UNDER the ceiling's face (2026-09-24: at zc + 0.02 all 165
+                # tiles sat inside the 10 cm slab — the tin never showed)
                 make_box(f"Hull_{label}_Tile_{i}_{j}",
-                         (i * 1.6, j * 1.6, zc + 0.02),
+                         (i * 1.6, j * 1.6, zc - 0.003),
                          (1.40, 1.40, 0.005),
                          (0.74, 0.56, 0.30, 1.0))
 
@@ -337,8 +412,12 @@ def build_main_deck_partitions():
     make_box("MD_Wall_Pass_E", (+4.5, +5.5, MAIN_FLOOR_Z + 1.3),
              (3.0, 0.20, 2.50), COL_WALL_DARK)
     # The pass itself — open at counter height; we build a counter
-    make_box("MD_Pass_Counter", (+1.5, +5.5, MAIN_FLOOR_Z + 1.05),
-             (2.0, 0.20, 0.10), COL_STEEL)
+    # (2026-09-22: the counter hung in the opening touching neither
+    # wall, on nothing; the plates and spike sat 5 cm above it)
+    make_box("MD_Pass_HalfWall", (+1.0, +5.5, MAIN_FLOOR_Z + 0.50),
+             (4.0, 0.20, 1.00), COL_WALL_DARK)
+    make_box("MD_Pass_Counter", (+1.0, +5.5, MAIN_FLOOR_Z + 1.05),
+             (4.0, 0.24, 0.10), COL_STEEL)
     # Header above the pass opening
     make_box("MD_Pass_Above", (+1.5, +5.5, MAIN_FLOOR_Z + 2.30),
              (2.0, 0.20, 0.50), COL_WALL_DARK)
@@ -353,8 +432,8 @@ def build_main_deck_partitions():
 
     # Carpet on the main dining floor (red — the boat's livery)
     make_box("MD_Carpet_Dining",
-             (-1.0, -3.0, MAIN_FLOOR_Z + 0.014),
-             (10.0, 8.0, 0.008), COL_CARPET_RED)
+             (-0.95, -3.0, MAIN_FLOOR_Z + 0.014),
+             (9.9, 8.0, 0.008), COL_CARPET_RED)   # to the hull's inner face (2026-09-23: 10 cm into it)
     make_box("MD_Carpet_PrivateDining",
              (-4.0, +3.0, MAIN_FLOOR_Z + 0.014),
              (3.0, 4.0, 0.008), COL_CARPET_DARK)
@@ -385,7 +464,7 @@ def build_maitre_d():
              (0.28, 0.34, 0.002), COL_PAPER_AGED)
     # Pencil — short stub
     make_cyl("MaitreD_Pencil",
-             (cx + 0.05, cy + 0.12, cz + 1.345),
+             (cx + 0.05, cy + 0.12, cz + 1.318),   # on the stand top
              0.008, 0.16,
              (0.78, 0.62, 0.30, 1.0), segments=6, axis='X')
     # 1971 candy dish — vintage cut crystal, half full
@@ -421,28 +500,33 @@ def build_maitre_d():
         tx = stair_x + math.cos(ang) * 0.70
         ty = stair_y + math.sin(ang) * 0.70
         tz = cz + 0.06 + i * 0.26
-        make_box(f"MD_StairsUp_Tread_{i}",
-                 (tx, ty, tz),
-                 (0.50, 0.50, 0.04), COL_DECK_PLANK)
+        # a RADIAL plank from the post (2026-09-09: squares floating at r 0.7)
+        from _props.geometry import make_rot_box
+        make_rot_box(f"MD_StairsUp_Tread_{i}",
+                     (stair_x + math.cos(ang) * 0.55, stair_y + math.sin(ang) * 0.55, tz),
+                     (1.00, 0.50, 0.04), COL_DECK_PLANK, yaw=ang)
     # Iron railing
+    # rail post OUTSIDE the tread sweep (treads reach r ≈ 1.05 at their
+    # corners; the old post at r 0.68 ran up through tread 1)
     make_cyl("MD_StairsUp_Rail",
-             (stair_x + 0.65, stair_y + 0.20, cz + 1.4),
+             (stair_x + 1.12 * math.cos(0.3), stair_y + 1.12 * math.sin(0.3), cz + 1.4),
              0.025, 2.30, COL_BLACK)
 
     # ── Stairs DOWN to lower deck (catering office etc.) ──
     # Behind the maitre d' wall, a stair down at west side
     sdx, sdy = -4.5, -9.5
-    make_box("MD_StairsDown_Opening",
-             (sdx, sdy, cz - 0.05),
-             (1.20, 2.40, 0.02), (0.10, 0.08, 0.06, 1.0))
+    # (the opening is a real hole in Hull_MainFloor now — STAIR_HOLE)
     for i in range(8):
         # Linear straight stair going north as you descend
         tx = sdx
         ty = sdy + i * 0.30
-        tz = cz - i * 0.30 - 0.05
+        # solid steps down to the lower floor (cz - 2.5) — 2026-09-09:
+        # they were 4 cm slabs with 26 cm of air between them
+        top_i = cz - i * 0.30 - 0.03
+        st_h = top_i - (cz - 2.5)
         make_box(f"MD_StairsDown_Tread_{i}",
-                 (tx, ty, tz),
-                 (1.10, 0.32, 0.04), COL_DECK_PLANK)
+                 (tx, ty, (top_i + cz - 2.5) / 2.0),
+                 (1.10, 0.32, st_h), COL_DECK_PLANK)
     # Railing
     for sgn in (-1, +1):
         make_box(f"MD_StairsDown_Rail_X{sgn:+d}",
@@ -511,6 +595,14 @@ def build_main_dining():
         make_cyl(f"MD_Chandelier_{j}_Core",
                  (cx, cy_pos, MAIN_CEIL_Z - 0.50),
                  0.16, 0.40, COL_BRASS)
+        # the rod to the ceiling + the ring the crystals hang from
+        # (2026-09-22: core 30 cm under the ceiling, crystals 20 cm off it)
+        make_cyl(f"MD_Chandelier_{j}_Rod",
+                 (cx, cy_pos, MAIN_CEIL_Z - 0.15),
+                 0.02, 0.30, COL_BRASS, segments=6)
+        make_cyl(f"MD_Chandelier_{j}_Ring",
+                 (cx, cy_pos, MAIN_CEIL_Z - 0.56),
+                 0.39, 0.02, COL_BRASS, segments=12)
         # Hanging crystals
         for i in range(8):
             ang = i * (math.pi / 4)
@@ -525,14 +617,14 @@ def build_main_dining():
     # area. We just paint a door visible on the east wall.
     # (Bar is at X=+2 to +6; east wall at +6)
     make_box("MD_SideDoor",
-             (HULL_X_E - 0.06, -3.0, MAIN_FLOOR_Z + 1.05),
+             (HULL_X_E - 0.12, -3.0, MAIN_FLOOR_Z + 1.05),
              (0.04, 1.20, 2.10), COL_WALL_DARK)
     make_box("MD_SideDoor_Knob",
-             (HULL_X_E - 0.08, -3.0 + 0.50, MAIN_FLOOR_Z + 1.05),
+             (HULL_X_E - 0.14, -3.0 + 0.50, MAIN_FLOOR_Z + 1.05),
              (0.04, 0.04, 0.04), COL_BRASS)
     # Side door frame
     make_box("MD_SideDoor_FrameT",
-             (HULL_X_E - 0.06, -3.0, MAIN_FLOOR_Z + 2.16),
+             (HULL_X_E - 0.12, -3.0, MAIN_FLOOR_Z + 2.16),
              (0.04, 1.30, 0.10), COL_BRASS_DARK)
 
 
@@ -548,6 +640,9 @@ def build_table_17():
     # Corner booth — L-shaped bench backed against the west and
     # north walls. The "deepest window" is at the NW corner.
     # Bench against west wall (Y-running)
+    make_box("T17_BenchW_Plinth",
+             (-5.6, -1.5, cz + 0.205),
+             (0.46, 1.76, 0.41), COL_WALL_DARK)   # (2026-09-22: the seats hung at 0.41)
     make_box("T17_BenchW_Seat",
              (-5.6, -1.5, cz + 0.46),
              (0.50, 1.80, 0.10), COL_VELVET_RED)
@@ -555,8 +650,11 @@ def build_table_17():
              (-5.85, -1.5, cz + 1.0),
              (0.10, 1.80, 1.10), COL_WALL_DARK)
     # Bench against north wall (X-running)
+    make_box("T17_BenchN_Plinth",
+             (-4.5, +0.55, cz + 0.205),
+             (1.76, 0.46, 0.41), COL_WALL_DARK)
     make_box("T17_BenchN_Seat",
-             (-4.5, +0.5, cz + 0.46),
+             (-4.5, +0.55, cz + 0.46),   # meets its back at y 0.80
              (1.80, 0.50, 0.10), COL_VELVET_RED)
     make_box("T17_BenchN_Back",
              (-4.5, +0.85, cz + 1.0),
@@ -574,32 +672,32 @@ def build_table_17():
              (0.80, 0.60, 0.004), COL_LINEN)
     # Brass tableside lamp (the boat detail Dante never cheaped on)
     make_cyl("T17_Lamp_Base",
-             (-4.0, -1.0, cz + 0.85),
+             (-4.15, -1.0, cz + 0.83),    # ON the table top (2026-09-22: it straddled the edge)
              0.05, 0.06, COL_BRASS)
     make_cyl("T17_Lamp_Pole",
-             (-4.0, -1.0, cz + 0.96),
-             0.012, 0.18, COL_BRASS)
+             (-4.15, -1.0, cz + 0.975),
+             0.012, 0.23, COL_BRASS)
     make_cyl("T17_Lamp_Shade",
-             (-4.0, -1.0, cz + 1.16),
+             (-4.15, -1.0, cz + 1.16),
              0.10, 0.14,
              (0.92, 0.78, 0.46, 1.0), segments=10)
     # Window — the "deepest window" overlooking the muddy divide
     make_box("T17_DeepWindow",
-             (HULL_X_W + 0.06, -0.5, cz + 1.6),
+             (HULL_X_W + 0.12, -0.5, cz + 1.6),
              (0.04, 1.40, 1.30), COL_LEADED_GLASS)
     # Leaded-glass lattice (vertical mullions)
     for i in range(3):
         my = -0.5 - 0.55 + i * 0.55
         make_box(f"T17_DeepWindow_MullV_{i}",
-                 (HULL_X_W + 0.063, my, cz + 1.6),
+                 (HULL_X_W + 0.123, my, cz + 1.6),
                  (0.02, 0.04, 1.30), COL_BRASS_DARK)
     # Horizontal mullion
     make_box("T17_DeepWindow_MullH",
-             (HULL_X_W + 0.063, -0.5, cz + 1.6),
+             (HULL_X_W + 0.123, -0.5, cz + 1.6),
              (0.02, 1.40, 0.04), COL_BRASS_DARK)
     # Window frame
     make_box("T17_DeepWindow_FrameT",
-             (HULL_X_W + 0.062, -0.5, cz + 2.26),
+             (HULL_X_W + 0.122, -0.5, cz + 2.26),
              (0.02, 1.50, 0.06), COL_WALL_DARK)
 
 
@@ -619,11 +717,11 @@ def build_sammys_bar():
              (0.70, 10.0, 0.10), COL_DECK_PLANK)
     # Brass foot rail
     make_cyl("Bar_FootRail",
-             (bar_x - 0.40, bar_y, cz + 0.20),
+             (bar_x - 0.36, bar_y, cz + 0.20),   # against the front panel
              0.025, 9.80, COL_BRASS, segments=8, axis='Y')
     # Bar front panel
     make_box("Bar_Front",
-             (bar_x - 0.40, bar_y, cz + 0.58),
+             (bar_x - 0.33, bar_y, cz + 0.52),   # on the deck, under the counter's edge (2026-09-22: 4 cm in front of it)
              (0.05, 9.80, 1.04), COL_WALL_DARK)
     # 16 stools
     for i in range(16):
@@ -638,55 +736,67 @@ def build_sammys_bar():
                  (bar_x - 0.95, sy, cz + 0.02),
                  0.20, 0.04, COL_BRASS, segments=8)
     # Back-bar shelving against east wall
-    bb_x = HULL_X_E - 0.40
+    # (2026-09-23: the back bar was one solid 2 m block standing 50 cm
+    # off the deck, with the mirror on its face and all three shelves
+    # and sixty bottles INSIDE it — behind the mirror; and it ran across
+    # the side door. Now: a low cabinet on the deck against the hull, a
+    # mirror panel on the hull above it, open shelves in front of the
+    # mirror; the run starts N of the side door's frame.)
+    bb_y0, bb_y1 = -2.30, bar_y + 4.50
+    bb_cy, bb_len = (bb_y0 + bb_y1) / 2.0, bb_y1 - bb_y0
     make_box("Bar_BackBar_Body",
-             (bb_x, bar_y, cz + 1.6),
-             (0.40, 9.0, 2.20), COL_WALL_DARK)
+             (HULL_X_E - 0.30, bb_cy, cz + 0.50),
+             (0.40, bb_len, 1.00), COL_WALL_DARK)
+    make_box("Bar_BackBar_Panel",
+             (HULL_X_E - 0.12, bb_cy, cz + 1.75),
+             (0.04, bb_len, 1.50), COL_WALL_DARK)
     # Mirror across the back bar
     make_box("Bar_BackBar_Mirror",
-             (bb_x - 0.21, bar_y, cz + 1.6),
-             (0.02, 8.4, 1.50),
+             (HULL_X_E - 0.15, bb_cy, cz + 1.75),
+             (0.02, bb_len - 0.40, 1.40),
              (0.92, 0.94, 0.96, 1.0))
-    # Liquor bottles across 3 shelves
+    # Liquor bottles across 3 shelves, in front of the mirror
+    n_b = int((bb_len - 0.40) / 0.42)
     for sh in range(3):
         shz = cz + 1.10 + sh * 0.42
         # Shelf plank
         make_box(f"Bar_BackBar_Shelf_{sh}",
-                 (bb_x - 0.16, bar_y, shz - 0.02),
-                 (0.20, 8.0, 0.02), COL_DECK_PLANK)
-        # Bottles — 20 per shelf, alternating colors
-        for b in range(20):
-            by_pos = bar_y - 4.0 + b * 0.42
+                 (HULL_X_E - 0.26, bb_cy, shz - 0.01),
+                 (0.20, bb_len - 0.40, 0.02), COL_DECK_PLANK)
+        for b in range(n_b):
+            by_pos = bb_y0 + 0.40 + b * 0.42
             col = [COL_BOTTLE_BROWN, COL_BOTTLE_GREEN,
                    COL_BOTTLE_CLEAR][b % 3]
             make_cyl(f"Bar_Bottle_{sh}_{b}",
-                     (bb_x - 0.10, by_pos, shz + 0.14),
+                     (HULL_X_E - 0.26, by_pos, shz + 0.15),
                      0.04, 0.30, col, segments=6)
             # Cap
             make_cyl(f"Bar_BottleCap_{sh}_{b}",
-                     (bb_x - 0.10, by_pos, shz + 0.31),
+                     (HULL_X_E - 0.26, by_pos, shz + 0.32),
                      0.025, 0.04, COL_BRASS_DARK, segments=6)
     # Tap handle row at the counter's south end
     for i in range(5):
         tx = bar_x + 0.10
         ty = bar_y - 4.5 + i * 0.30
         make_cyl(f"Bar_Tap_{i}_Tower",
-                 (tx, ty, cz + bar_zh + 0.06),
-                 0.030, 0.16, COL_BRASS, segments=8)
+                 (tx, ty, cz + bar_zh + 0.20),   # from the counter to the handle (2026-09-22)
+                 0.030, 0.30, COL_BRASS, segments=8)
         make_box(f"Bar_Tap_{i}_Handle",
-                 (tx, ty, cz + bar_zh + 0.32),
+                 (tx, ty, cz + bar_zh + 0.40),
                  (0.04, 0.18, 0.10),
                  [(0.78, 0.16, 0.16, 1.0),
                   (0.16, 0.42, 0.62, 1.0),
                   (0.42, 0.30, 0.18, 1.0)][i % 3])
     # Cash register — central
+    # on the counter's back edge (2026-09-23: it stood inside the old
+    # solid back bar; the back bar's shelves own that face now)
+    make_box("Bar_Register_Drawer",
+             (bar_x + 0.14, bar_y + 3.0, cz + 1.20),
+             (0.36, 0.50, 0.10), COL_DECK_PLANK)
     make_box("Bar_Register_Body",
-             (bb_x - 0.10, bar_y + 3.0, cz + 1.32),
+             (bar_x + 0.16, bar_y + 3.0, cz + 1.45),
              (0.30, 0.40, 0.40),
              (0.30, 0.20, 0.14, 1.0))
-    make_box("Bar_Register_Drawer",
-             (bb_x - 0.05, bar_y + 3.0, cz + 1.18),
-             (0.36, 0.50, 0.10), COL_DECK_PLANK)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -714,24 +824,24 @@ def build_the_pass():
                  segments=8, axis='Z')
     # Ticket spike on the pass counter
     make_cyl("Pass_TicketSpike_Base",
-             (cx - 0.80, cy - 0.04, cz + 1.16),
+             (cx - 0.80, cy - 0.04, cz + 1.12),   # on the counter's top (1.10)
              0.04, 0.04, COL_BRASS)
     make_cyl("Pass_TicketSpike_Pin",
-             (cx - 0.80, cy - 0.04, cz + 1.26),
+             (cx - 0.80, cy - 0.04, cz + 1.24),
              0.006, 0.20, COL_STEEL)
     # Stacked dinner tickets impaled
     for i in range(8):
         make_box(f"Pass_Ticket_{i}",
-                 (cx - 0.80, cy - 0.04, cz + 1.18 + i * 0.014),
+                 (cx - 0.80, cy - 0.04, cz + 1.142 + i * 0.014),
                  (0.10, 0.14, 0.004), COL_PAPER)
     # Plates on the pass — 3 plates ready to go
     for i, dx in enumerate([-0.3, +0.0, +0.3]):
         make_cyl(f"Pass_Plate_{i}",
-                 (cx + dx, cy, cz + 1.16),
+                 (cx + dx, cy, cz + 1.11),
                  0.14, 0.02, COL_WHITE, segments=12)
         # Food blob — abstract earth color
         make_cyl(f"Pass_PlateFood_{i}",
-                 (cx + dx, cy - 0.02, cz + 1.18),
+                 (cx + dx, cy - 0.02, cz + 1.13),
                  0.10, 0.018,
                  [(0.78, 0.62, 0.32, 1.0),
                   (0.42, 0.20, 0.14, 1.0),
@@ -750,8 +860,8 @@ def build_kitchen():
     # Stainless line — two stations, run E-W along Y=+8
     line_y = +8.0
     make_box("Kit_Line",
-             (0.0, line_y, cz + 0.50),
-             (8.0, 0.80, 0.90), COL_STEEL)
+             (0.0, line_y, cz + 0.475),   # deck to the top slab (2026-09-22: 5 cm up)
+             (8.0, 0.80, 0.95), COL_STEEL)
     make_box("Kit_LineTop",
              (0.0, line_y, cz + 0.97),
              (8.0, 0.84, 0.04), COL_STEEL)
@@ -782,13 +892,13 @@ def build_kitchen():
              (+2.8, line_y + 0.15, cz + 1.18),
              (0.32, 0.40, 0.40), (0.92, 0.88, 0.74, 1.0))
     make_box("Kit_Mixer_Head",
-             (+2.8, line_y + 0.30, cz + 1.50),
+             (+2.8, line_y + 0.30, cz + 1.48),
              (0.30, 0.20, 0.20), (0.86, 0.82, 0.68, 1.0))
 
     # Walk-in cooler — west end, big metal door
     make_box("Kit_Walkin_Body",
-             (-5.0, +9.5, cz + 1.30),
-             (1.80, 1.80, 2.60), COL_STEEL)
+             (-5.0, +9.5, cz + 1.25),
+             (1.80, 1.80, 2.50), COL_STEEL)   # up to the deck above (2026-09-23: 10 cm through it)
     make_box("Kit_Walkin_Door",
              (-5.0, +8.65, cz + 1.10),
              (1.00, 0.08, 2.10), (0.74, 0.76, 0.78, 1.0))
@@ -818,12 +928,12 @@ def build_kitchen():
     # Stack of plates ready
     for i in range(8):
         make_cyl(f"Kit_DishPit_PlateStack_{i}",
-                 (+5.4, +9.5, cz + 0.85 + i * 0.02),
+                 (+5.4, +9.5, cz + 0.82 + i * 0.02),   # on the counter (0.81)
                  0.14, 0.02, COL_WHITE, segments=10)
 
     # Milk-crate radio — on the floor near the line
     make_box("Kit_MilkCrate",
-             (+3.4, +8.7, cz + 0.18),
+             (+3.4, +8.7, cz + 0.16),
              (0.34, 0.34, 0.32), (0.62, 0.20, 0.18, 1.0))
     # Slot pattern (just decorative cutouts via darker color)
     for i in range(3):
@@ -831,7 +941,7 @@ def build_kitchen():
             make_box(f"Kit_MilkCrate_Slot_{i}_{j}",
                      (+3.4 - 0.10 + i * 0.10,
                       +8.7 - 0.17 + 0.001,
-                      cz + 0.18 - 0.10 + j * 0.10),
+                      cz + 0.16 - 0.10 + j * 0.10),
                      (0.04, 0.001, 0.04),
                      (0.32, 0.10, 0.10, 1.0))
     # Radio on top of the crate
@@ -874,6 +984,12 @@ def build_private_dining():
             make_box(f"PD_Chair_{sgn}_{j}_Seat",
                      (cx_pos, cy_pos, cz + 0.46),
                      (0.42, 0.42, 0.04), COL_VELVET_RED)
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    make_box(f"PD_Chair_{sgn}_{j}_Leg_{lx_:+d}_{ly_:+d}",
+                             (cx_pos + lx_ * 0.17, cy_pos + ly_ * 0.17, cz + 0.23),
+                             (0.035, 0.035, 0.46), COL_WALL_DARK)
             make_box(f"PD_Chair_{sgn}_{j}_Back",
                      (cx_pos + sgn * 0.20, cy_pos,
                       cz + 0.82),
@@ -895,6 +1011,12 @@ def build_private_dining():
     make_cyl("PD_Chandelier_Core",
              (pt_x, pt_y, MAIN_CEIL_Z - 0.60),
              0.20, 0.40, COL_BRASS)
+    make_cyl("PD_Chandelier_Rod",
+             (pt_x, pt_y, MAIN_CEIL_Z - 0.20),
+             0.02, 0.40, COL_BRASS, segments=6)   # to the ceiling (2026-09-22)
+    make_cyl("PD_Chandelier_Ring",
+             (pt_x, pt_y, MAIN_CEIL_Z - 0.68),
+             0.45, 0.02, COL_BRASS, segments=12)  # the crystals' ring
     for i in range(8):
         ang = i * math.pi / 4
         crx = pt_x + math.cos(ang) * 0.42
@@ -915,8 +1037,11 @@ def build_private_dining():
              (-5.6, +3.0, cz + 0.96),
              0.08, 0.04, COL_BRASS)
     make_cyl("PD_Candelabra_Stem",
-             (-5.6, +3.0, cz + 1.16),
-             0.020, 0.36, COL_BRASS)
+             (-5.6, +3.0, cz + 1.18),
+             0.020, 0.40, COL_BRASS)
+    make_cyl("PD_Candelabra_Ring",   # the arms' ring the holders sit in (2026-09-22)
+             (-5.6, +3.0, cz + 1.39),
+             0.17, 0.02, COL_BRASS, segments=8)
     for i in range(3):
         ang = i * (2 * math.pi / 3)
         cdx = -5.6 + math.cos(ang) * 0.14
@@ -961,24 +1086,27 @@ def build_helm():
              (2.10, 0.10, 2.40), COL_WALL_DARK)
 
     # The architect's LEADED WINDOW overlooking the dining room
+    # (2026-09-22: 2.5 m of glass in a 2.9 m opening — 20 cm of air each side)
     make_box("Helm_LeadedWindow",
              (0.0, -3.0, cz + 1.40),
-             (2.50, 0.06, 1.40), COL_LEADED_GLASS)
+             (2.90, 0.06, 1.40), COL_LEADED_GLASS)
     # Leaded lattice — diamond pattern (just N-S + E-W lines)
-    for i in range(-2, 3):
+    # (2026-10-02: a leaded window reads by its LATTICE — 2 cm cames at 50 cm
+    # vanished in the painter; 3.5 cm at 25 cm, and the lead's grey, not brass)
+    for i in range(-5, 6):
         make_box(f"Helm_LWindow_MullV_{i}",
-                 (i * 0.50, -3.0, cz + 1.40),
-                 (0.02, 0.04, 1.40), COL_BRASS_DARK)
-    for j in range(-1, 2):
+                 (i * 0.25, -3.0, cz + 1.40),
+                 (0.035, 0.09, 1.40), COL_LEAD_CAME)   # proud of the 6 cm pane both sides
+    for j in range(-2, 3):
         make_box(f"Helm_LWindow_MullH_{j}",
-                 (0.0, -3.0, cz + 1.40 + j * 0.40),
-                 (2.50, 0.04, 0.02), COL_BRASS_DARK)
+                 (0.0, -3.0, cz + 1.40 + j * 0.28),
+                 (2.90, 0.09, 0.035), COL_LEAD_CAME)
     make_box("Helm_LWindow_Frame_T",
              (0.0, -3.0, cz + 2.16),
-             (2.60, 0.06, 0.10), COL_WALL_DARK)
+             (2.90, 0.06, 0.10), COL_WALL_DARK)
     make_box("Helm_LWindow_Frame_B",
              (0.0, -3.0, cz + 0.64),
-             (2.60, 0.06, 0.10), COL_WALL_DARK)
+             (2.90, 0.06, 0.10), COL_WALL_DARK)
 
     # Carpet — oxblood, the helm's only soft surface
     make_box("Helm_Carpet",
@@ -991,8 +1119,8 @@ def build_helm():
              (dk_x, dk_y, cz + 0.78),
              (2.00, 1.00, 0.06), COL_WALL_DARK)
     make_box("Helm_Desk_Skirt",
-             (dk_x, dk_y, cz + 0.36),
-             (1.90, 0.92, 0.74), (0.30, 0.20, 0.14, 1.0))
+             (dk_x, dk_y, cz + 0.37),
+             (1.90, 0.92, 0.76), (0.30, 0.20, 0.14, 1.0))   # reaches the top (2026-09-22: 2 cm short)
     # Desk drawers
     for sgn in (-1, +1):
         make_box(f"Helm_Desk_Drawer_{sgn}",
@@ -1003,13 +1131,13 @@ def build_helm():
              (dk_x - 0.60, dk_y - 0.30, cz + 0.84),
              0.07, 0.04, COL_BRASS)
     make_cyl("Helm_DeskLamp_Pole",
-             (dk_x - 0.60, dk_y - 0.30, cz + 0.96),
-             0.014, 0.20, COL_BRASS)
+             (dk_x - 0.60, dk_y - 0.30, cz + 0.97),
+             0.014, 0.26, COL_BRASS)
     make_cyl("Helm_DeskLamp_Shade",
              (dk_x - 0.60, dk_y - 0.30, cz + 1.16),
              0.10, 0.14, (0.92, 0.78, 0.46, 1.0), segments=10)
     # Wife's photograph — in a brass frame on the desk
-    make_box("Helm_WifePhoto_Frame",
+    make_box("Helm_DeskPhoto_Frame_retired",
              (dk_x + 0.60, dk_y - 0.30, cz + 0.86),
              (0.18, 0.02, 0.22), COL_BRASS)
     make_box("Helm_WifePhoto",
@@ -1054,8 +1182,16 @@ def build_helm():
              0.04, 0.04, COL_BRASS_DARK, segments=8)
     # Glass next to the bottle
     make_cyl("Helm_FileCab_Glass",
-             (+2.78, +2.0, cz + 1.30),
+             (+2.78, +2.0, cz + 1.28),
              0.04, 0.08, (0.86, 0.92, 0.94, 0.5), segments=10)
+    # A brass wall sconce over the cabinet, on the east partition's face
+    # (2026-09-24: the bourbon corner had no light near it — the desk
+    # lamp is 5 m off — and the insert on Dante's bottle rendered black;
+    # a practical needs a fixture to come from)
+    make_box("Helm_Sconce_Plate", (+3.44, +2.0, cz + 1.85), (0.02, 0.10, 0.16), COL_BRASS)
+    make_box("Helm_Sconce_Arm", (+3.39, +2.0, cz + 1.85), (0.08, 0.02, 0.02), COL_BRASS)
+    make_cyl("Helm_Sconce_Shade", (+3.29, +2.0, cz + 1.83), 0.06, 0.10,
+             (0.92, 0.70, 0.40, 1.0), segments=10)
 
     # Office chair behind the desk
     ch_x, ch_y = 0.0, -2.4
@@ -1079,13 +1215,13 @@ def build_helm():
 
     # Books on a small shelf behind the desk
     make_box("Helm_BookShelf",
-             (-3.0, -2.0, cz + 1.50),
+             (-3.30, -2.0, cz + 1.50),   # on the west partition (2026-09-22: 30 cm off it)
              (0.30, 1.20, 0.04), COL_WALL_DARK)
     for i in range(6):
         col = [COL_LEATHER_OX, COL_LEATHER_BLACK, COL_BRASS_DARK,
                COL_WALL_DARK][i % 4]
         make_box(f"Helm_Book_{i}",
-                 (-3.0, -2.0 - 0.40 + i * 0.16, cz + 1.66),
+                 (-3.30, -2.0 - 0.40 + i * 0.16, cz + 1.64),
                  (0.20, 0.12, 0.24), col)
 
 
@@ -1113,21 +1249,22 @@ def build_office_staircase():
         # Stringer (the iron side rail beam)
         for sgn in (-1, +1):
             make_box(f"OS_Stringer_{i}_{sgn}",
-                     (cx + sgn * 0.55, ty, tz - 0.16),
+                     (cx + sgn * 0.50, ty, tz - 0.16),   # under the tread's edge (2026-09-22: 3 cm outside it)
                      (0.04, 0.32, 0.32), COL_BLACK)
     # Iron railing (a continuous rail on both sides)
     for sgn in (-1, +1):
         # Top rail
         make_cyl(f"OS_RailTop_{sgn}",
-                 (cx + sgn * 0.62, cy - 1.0, cz - 1.0),
+                 (cx + sgn * 0.53, cy - 1.0, cz - 1.0),
                  0.024, 3.20, COL_BLACK, segments=6, axis='Y')
         # Vertical balusters
         for i in range(8):
             by_pos = cy + 0.60 - i * 0.40
+            b_h = 0.90 if i == 7 else 0.80   # the last one reaches the rail (2026-09-22)
             make_cyl(f"OS_Baluster_{sgn}_{i}",
-                     (cx + sgn * 0.62, by_pos,
-                      cz - i * 0.26 + 0.30),
-                     0.012, 0.80, COL_BLACK)
+                     (cx + sgn * 0.53, by_pos,
+                      cz - i * 0.26 + b_h / 2.0 - 0.10),
+                     0.012, b_h, COL_BLACK)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1143,12 +1280,13 @@ def build_lower_deck_partitions():
     # 3 doors cut: catering office, card room, back room
     # Corridor north wall is the hull at Y=+12 (not built here)
     # Corridor south wall pieces
-    make_box("LD_Corr_S_W", (-4.0, +2.0, cz + 1.20),
-             (4.0, 0.10, 2.30), COL_WALL_PAPER)
+    # both end pieces stop at the hull's inner face (2026-09-23: 10 cm into it)
+    make_box("LD_Corr_S_W", (-3.95, +2.0, cz + 1.20),
+             (3.9, 0.10, 2.30), COL_WALL_PAPER)
     make_box("LD_Corr_S_C", (+1.0, +2.0, cz + 1.20),
              (2.0, 0.10, 2.30), COL_WALL_PAPER)
-    make_box("LD_Corr_S_E", (+4.6, +2.0, cz + 1.20),
-             (2.8, 0.10, 2.30), COL_WALL_PAPER)
+    make_box("LD_Corr_S_E", (+4.55, +2.0, cz + 1.20),
+             (2.7, 0.10, 2.30), COL_WALL_PAPER)
     # Above-door headers (3 doorways)
     for dx in [-1.5, +2.5, +5.4]:
         make_box(f"LD_Corr_AboveDoor_{int(dx*10)}",
@@ -1197,26 +1335,28 @@ def build_back_corridor():
     gauntlet_marker("Z_BackCorridor", cx, cy, cz, 4.0, 2.0, "III")
 
     # Time clock — east wall at Y=+5 (south side of corridor)
+    # (2026-09-22: the clock hung 15 cm off the wall, its display and
+    # slot 4 cm off the clock, the rack 15 cm under it on nothing)
     make_box("BC_TimeClock_Body",
-             (+5.6, +5.5, cz + 1.50),
+             (+5.75, +5.5, cz + 1.50),
              (0.30, 0.20, 0.40), COL_BLACK)
     # Display
     make_box("BC_TimeClock_Display",
-             (+5.4, +5.5, cz + 1.60),
+             (+5.59, +5.5, cz + 1.60),
              (0.020, 0.16, 0.16),
              (0.32, 0.96, 0.42, 1.0))
     # Slot
     make_box("BC_TimeClock_Slot",
-             (+5.4, +5.5, cz + 1.40),
+             (+5.59, +5.5, cz + 1.40),
              (0.020, 0.10, 0.020), COL_LINEN)
-    # Card rack below (with time cards)
+    # Card rack below (with time cards), on the wall
     make_box("BC_TimeCard_Rack",
-             (+5.5, +5.5, cz + 0.95),
+             (+5.81, +5.5, cz + 0.95),
              (0.18, 0.40, 0.40),
              (0.42, 0.30, 0.18, 1.0))
     for i in range(8):
         make_box(f"BC_TimeCard_{i}",
-                 (+5.42, +5.5 - 0.18 + i * 0.04, cz + 1.10),
+                 (+5.73, +5.5 - 0.18 + i * 0.04, cz + 1.10),   # in the rack
                  (0.006, 0.04, 0.20), COL_PAPER)
 
     # Coat rack — east-center
@@ -1227,42 +1367,48 @@ def build_back_corridor():
              (+1.0, +5.4, cz + 1.00),
              0.030, 1.90, COL_BLACK)
     # Hook arms
+    # (2026-09-22: the hooks were vertical pegs 15 cm out from the
+    # pole, in the air; the coats hung 25 cm under them)
     for i in range(4):
         ang = i * (math.pi / 2)
-        hx = +1.0 + math.cos(ang) * 0.18
-        hy = +5.4 + math.sin(ang) * 0.18
+        hx = +1.0 + math.cos(ang) * 0.11
+        hy = +5.4 + math.sin(ang) * 0.11
         make_cyl(f"BC_CoatRack_Hook_{i}",
                  (hx, hy, cz + 1.80),
-                 0.012, 0.16, COL_BRASS_DARK, segments=4)
+                 0.012, 0.22, COL_BRASS_DARK, segments=4,
+                 axis='X' if i % 2 == 0 else 'Y')
     # 2 coats hanging on it
     for i in range(2):
         col = [COL_VELVET_RED, COL_LEATHER_BLACK][i]
         ang = i * (math.pi / 2)
-        cx_pos = +1.0 + math.cos(ang) * 0.20
-        cy_pos = +5.4 + math.sin(ang) * 0.20
+        cx_pos = +1.0 + math.cos(ang) * 0.18
+        cy_pos = +5.4 + math.sin(ang) * 0.18
         make_box(f"BC_Coat_{i}",
-                 (cx_pos, cy_pos, cz + 1.10),
-                 (0.30, 0.12, 0.90), col)
+                 (cx_pos, cy_pos, cz + 1.33),
+                 (0.30, 0.12, 0.90) if i == 0 else (0.12, 0.30, 0.90), col)
 
     # Bulletin board — west wall
+    # (2026-09-22: the board hung 0.5 m off the hull wall, and the
+    # notices' y was computed from its x — they hung at y -5.9..-4.9,
+    # in the catering office, on nothing)
     make_box("BC_Bulletin_Board",
-             (-5.4, +6.0, cz + 1.60),
+             (-5.88, +6.0, cz + 1.60),
              (0.04, 1.40, 0.90), (0.62, 0.46, 0.28, 1.0))
     make_box("BC_Bulletin_Frame",
-             (-5.42, +6.0, cz + 1.60),
+             (-5.89, +6.0, cz + 1.60),
              (0.02, 1.50, 1.00), COL_WALL_DARK)
     # Schedule + notices (paper rectangles pinned)
     for i in range(8):
         col_i = i % 4
         row_i = i // 4
-        px = -5.4 - 0.50 + col_i * 0.34
+        py = +6.0 - 0.51 + col_i * 0.34
         pz = cz + 1.30 + row_i * 0.36
         make_box(f"BC_Notice_{i}",
-                 (-5.40, px, pz),
+                 (-5.8575, py, pz),
                  (0.005, 0.22, 0.22), COL_PAPER)
     # Big "SCHEDULE" sheet center
     make_box("BC_Schedule",
-             (-5.40, +6.0, cz + 1.75),
+             (-5.8575, +6.0, cz + 1.75),
              (0.005, 0.42, 0.50), COL_PAPER_AGED)
 
 
@@ -1294,13 +1440,13 @@ def build_catering_office():
     for i in range(4):
         zoff = i * 0.025
         make_cyl(f"Cat_Phone_Cord_{i}",
-                 (dk_x + 0.40, dk_y - 0.32, cz + 0.80 + zoff),
+                 (dk_x + 0.40, dk_y - 0.26, cz + 0.80 + zoff),
                  0.012, 0.02,
                  (0.62, 0.52, 0.38, 1.0), segments=6, axis='Y')
     # Paperwork — stacked + dated entries
     for i in range(3):
         make_box(f"Cat_Paper_Stack_{i}",
-                 (dk_x - 0.30, dk_y, cz + 0.78 + i * 0.014),
+                 (dk_x - 0.30, dk_y, cz + 0.766 + i * 0.012),
                  (0.20, 0.28, 0.012), COL_PAPER_AGED)
     # File cabinet — 4 drawer, holds 8 years of contracts
     make_box("Cat_FileCab_Body",
@@ -1322,18 +1468,21 @@ def build_catering_office():
                  (0.001, 0.10, 0.04), COL_PAPER_AGED)
     # A wall calendar
     make_box("Cat_WallCalendar",
-             (-5.94, -1.0, cz + 1.70),
+             (-5.89, -1.0, cz + 1.70),
              (0.02, 0.50, 0.60), COL_PAPER)
     # An office chair
     make_box("Cat_OfficeChair_Seat",
              (-4.5, -1.7, cz + 0.46),
              (0.46, 0.46, 0.08), COL_LEATHER_BLACK)
     make_box("Cat_OfficeChair_Back",
-             (-4.5, -1.92, cz + 1.00),
+             (-4.5, -1.92, cz + 0.82),
              (0.46, 0.06, 0.66), COL_LEATHER_BLACK)
     make_cyl("Cat_OfficeChair_Post",
              (-4.5, -1.7, cz + 0.26),
              0.030, 0.40, COL_BLACK)
+    make_cyl("Cat_OfficeChair_Base",   # (2026-09-22: the post began 6 cm up)
+             (-4.5, -1.7, cz + 0.03),
+             0.25, 0.06, COL_BLACK, segments=10)
 
 
 def build_card_room():
@@ -1372,11 +1521,17 @@ def build_card_room():
         make_box(f"Card_Chair_{i}_Seat",
                  (ch_x, ch_y, cz + 0.46),
                  (0.42, 0.42, 0.08), COL_LEATHER_OX)
-        # Back facing away from table
-        bk_dx = -math.cos(ang) * 0.22
-        bk_dy = -math.sin(ang) * 0.22
+        for lx_ in (-1, 1):   # legs (2026-09-22: the seats hung at 0.42)
+            for ly_ in (-1, 1):
+                make_box(f"Card_Chair_{i}_Leg_{lx_:+d}_{ly_:+d}",
+                         (ch_x + lx_ * 0.17, ch_y + ly_ * 0.17, cz + 0.21),
+                         (0.035, 0.035, 0.42), COL_WALL_DARK)
+        # Back on the OUTSIDE of the ring — the player faces the table
+        # (2026-09-07: the sign was flipped and every chair faced away)
+        bk_dx = math.cos(ang) * 0.22
+        bk_dy = math.sin(ang) * 0.22
         make_box(f"Card_Chair_{i}_Back",
-                 (ch_x + bk_dx, ch_y + bk_dy, cz + 0.96),
+                 (ch_x + bk_dx, ch_y + bk_dy, cz + 0.90),   # from the seat's top
                  (0.42, 0.06, 0.80), COL_WALL_DARK)
     # Cards + chips on the table
     # Card deck
@@ -1397,8 +1552,8 @@ def build_card_room():
                      0.020, 0.008, col, segments=8)
     # Pendant lamp over table (low, intimate)
     make_box("Card_Pendant_Cord",
-             (tb_x, tb_y, cz + 1.6),
-             (0.02, 0.02, 0.40), COL_BLACK)
+             (tb_x, tb_y, cz + 1.89),   # shade top to the ceiling (2026-09-22: 60 cm short)
+             (0.02, 0.02, 1.02), COL_BLACK)
     make_cyl("Card_Pendant_Shade",
              (tb_x, tb_y, cz + 1.30),
              0.30, 0.16, (0.42, 0.30, 0.18, 1.0), segments=10)
@@ -1429,6 +1584,12 @@ def build_back_room():
         make_box(f"Back_Chair_{i}_Seat",
                  (ch_x, ch_y, cz + 0.46),
                  (0.42, 0.42, 0.08), COL_LEATHER_BLACK)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"Back_Chair_{i}_Leg_{lx_:+d}_{ly_:+d}",
+                         (ch_x + lx_ * 0.17, ch_y + ly_ * 0.17, cz + 0.22),
+                         (0.035, 0.035, 0.44), COL_LEATHER_BLACK)
         bk_dx = -math.cos(ang) * 0.22
         bk_dy = -math.sin(ang) * 0.22
         make_box(f"Back_Chair_{i}_Back",
@@ -1441,8 +1602,8 @@ def build_back_room():
                  (0.16, 0.06, 0.006), (0.42, 0.62, 0.42, 1.0))
     # Black-shaded pendant (more intimate, more shadow)
     make_box("Back_Pendant_Cord",
-             (tb_x, tb_y, cz + 1.6),
-             (0.02, 0.02, 0.40), COL_BLACK)
+             (tb_x, tb_y, cz + 1.89),   # shade top to the ceiling (2026-09-22)
+             (0.02, 0.02, 1.02), COL_BLACK)
     make_cyl("Back_Pendant_Shade",
              (tb_x, tb_y, cz + 1.30),
              0.28, 0.16, COL_BLACK, segments=10)
@@ -1603,11 +1764,33 @@ def export_glb():
     legacy = {}
     if 'export_colors' in rna.properties:
         legacy['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties:
         legacy['export_normals'] = True
 
     try:
         result = bpy.ops.export_scene.gltf(**base, **legacy)
+        try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+            import sys as _s, os as _o
+            _d = _o.path.dirname(_o.path.abspath(__file__))
+            for _c in (_d, _o.path.dirname(_d)):
+                if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                    _s.path.insert(0, _c)
+            from _props.glb_colorfix import postfix as _colorfix
+            _colorfix(base["filepath"], bpy)
+        except Exception as _e:
+            print("[glb_colorfix] skipped:", _e)
         print(f"[build_riverboat_interior] export result: {result}")
     except Exception as e:
         print(f"[build_riverboat_interior] ✗ EXPORT FAILED: {e}")
@@ -1694,48 +1877,78 @@ def build_empress_dressing():
     # Sammy's bar is the east half of the main deck (positive X).
     # Mount the intercom on the bar's east-facing back wall at
     # bartender eye height.
-    int_x = +5.8
-    int_y = -2.5    # roughly mid-bar
+    # (2026-09-23: the box sat 9 cm inside the hull, then inside the back
+    # bar, turned to face a wall. It hangs on the hull's inner face S of
+    # the side door now, facing the bartender, -X.)
+    int_x = HULL_X_E - 0.10     # the hull's inner face
+    int_y = -4.20
     int_z = MAIN_FLOOR_Z + 1.42
     # Body
     make_box("Sammy_Intercom_Body",
-             (int_x, int_y, int_z),
-             (0.18, 0.06, 0.24),
+             (int_x - 0.03, int_y, int_z),
+             (0.06, 0.18, 0.24),
              (0.30, 0.26, 0.20, 1.0))   # bakelite brown
     # Speaker grille (mesh-effect via a slightly lighter inset box)
     make_box("Sammy_Intercom_Speaker",
-             (int_x, int_y - 0.031, int_z + 0.05),
-             (0.14, 0.005, 0.10),
+             (int_x - 0.0625, int_y, int_z + 0.05),
+             (0.005, 0.14, 0.10),
              (0.18, 0.16, 0.14, 1.0))
     # Press-to-talk button (brass)
     make_cyl("Sammy_Intercom_PTT",
-             (int_x, int_y - 0.031, int_z - 0.07),
+             (int_x - 0.066, int_y, int_z - 0.07),
              0.020, 0.012,
              (0.74, 0.62, 0.32, 1.0),
-             segments=8, axis='Y')
+             segments=8, axis='X')
     # Brass "HELM" plaque under the button
     make_box("Sammy_Intercom_HelmPlaque",
-             (int_x, int_y - 0.031, int_z - 0.10),
-             (0.08, 0.003, 0.020),
+             (int_x - 0.0615, int_y, int_z - 0.10),
+             (0.003, 0.08, 0.020),
              (0.74, 0.62, 0.32, 1.0))
 
     # ── "SATURDAY REGULARS" placard on the card-room door ──
     # Card room is below decks (lower deck). The card-room door
     # gets a small cream cardstock placard.
     # Approximate door location — adjust as build_card_room evolves.
-    placard_x = +2.5
-    placard_y = -8.5   # card room is aft in the lower deck
-    placard_z = MAIN_FLOOR_Z - 2.50   # lower deck level
+    # The card room's doorway is at (-1.5, +2.0) in the corridor's
+    # south wall; the placard sits beside it on the corridor side.
+    # (2026-09-22: it hung at (2.5, -8.5) — past the lower deck's
+    # south rooms, on nothing)
+    placard_x = -2.3
+    placard_y = +2.05   # the wall's north face
+    placard_z = LOWER_FLOOR_Z
     make_box("CardRoom_Placard",
-             (placard_x + 0.02, placard_y, placard_z + 1.60),
-             (0.005, 0.18, 0.10),
+             (placard_x, placard_y + 0.0025, placard_z + 1.60),
+             (0.18, 0.005, 0.10),
              (0.92, 0.88, 0.72, 1.0))   # cream cardstock
     # Three dark text lines on the placard
     for tl in range(3):
         make_box("CardRoom_Placard_TextLine_%d" % tl,
-                 (placard_x + 0.022, placard_y, placard_z + 1.64 - tl * 0.02),
-                 (0.003, 0.14, 0.006),
+                 (placard_x, placard_y + 0.0065, placard_z + 1.64 - tl * 0.02),
+                 (0.14, 0.003, 0.006),
                  (0.22, 0.18, 0.14, 1.0))
+
+
+def build_emperor_props():
+    """2026-08-03 hero-prop pass: the brass ashtray with the bent
+    edge (his father's — the card is held over it), the lighter,
+    Dean's folded note + the hundred weighted on it at Table 14,
+    the helm office door; the wife's photograph moves to the wall
+    OPPOSITE the desk (canon: "the photograph he had not replaced
+    in twenty-three years")."""
+    brass = (0.74, 0.58, 0.28, 1.0)
+    # The ashtray, desk corner, one rim segment bent
+    make_cyl("Helm_Ashtray", (0.80, -1.15, 5.905), 0.07, 0.03, brass, segments=12)
+    make_box("Helm_Ashtray_Bent", (0.86, -1.10, 5.925), (0.035, 0.02, 0.015), (0.60, 0.46, 0.22, 1.0))
+    make_box("Helm_Lighter", (0.68, -1.22, 5.905), (0.03, 0.05, 0.02), (0.55, 0.57, 0.58, 1.0))
+    # Dean's note + the hundred, Table 14 (main deck)
+    make_box("Dean_Note", (0.15, -3.42, 3.264), (0.10, 0.07, 0.004), (0.90, 0.88, 0.80, 1.0))
+    make_box("Dean_Hundred", (0.15, -3.42, 3.269), (0.156, 0.066, 0.003), (0.62, 0.66, 0.54, 1.0))
+    # The office door at the helm's south partition
+    make_box("Helm_Office_Door", (2.2, -2.95, 6.10), (0.86, 0.06, 1.98), (0.34, 0.24, 0.16, 1.0))
+    make_cyl("Helm_Office_Knob", (2.52, -2.90, 6.05), 0.03, 0.04, brass, axis='Y', segments=8)
+    # The photograph on the wall OPPOSITE the desk (north partition)
+    make_box("Helm_WifePhoto_Wall_Frame", (0.95, 2.94, 6.80), (0.40, 0.02, 0.50), (0.30, 0.22, 0.14, 1.0))
+    make_box("Helm_WifePhoto_Wall", (0.95, 2.93, 6.80), (0.32, 0.015, 0.42), (0.72, 0.68, 0.58, 1.0))
 
 
 def main():
@@ -1821,7 +2034,7 @@ def build_emperor_dressing():
 
     # ── Helm-side intercom (counterpart to Sammy's) ──
     # Mounted on the west partition wall near the desk at eye height.
-    int_x = -3.35   # just inside the west partition
+    int_x = -3.42   # ON the west partition's face (-3.45); 2026-09-22: 7 cm off it
     int_y = -1.5
     int_z = cz + 1.42
     make_box("Helm_Intercom_Body",
@@ -1846,25 +2059,28 @@ def build_emperor_dressing():
     # ── Paul's calling card on the desk, square to the corner ──
     # The helm desk is roughly at (0.0, -2.0, cz+0.74). "Square to
     # the corner" means aligned with the SE corner of the desk top.
+    # build_helm's desk: (0.0, -1.5), top 2.00 x 1.00, top face cz + 0.81
+    # (2026-09-22: the card sat at y -2.3, past the desk's south edge, at
+    # the height of the top's underside)
     desk_cx = 0.0
-    desk_cy = -2.0
-    desk_top_z = cz + 0.74
+    desk_cy = -1.5
+    desk_top_z = cz + 0.81
     # Pick the SE corner (positive X, negative Y) of the desk.
-    card_x = desk_cx + 0.55
-    card_y = desk_cy - 0.30
+    card_x = desk_cx + 0.85
+    card_y = desk_cy - 0.38
     # Card body — cream cardstock, dead-square to the corner
     make_box("Helm_CallingCard_Body",
-             (card_x, card_y, desk_top_z + 0.005),
+             (card_x, card_y, desk_top_z + 0.001),
              (0.10, 0.06, 0.002),
              (0.94, 0.90, 0.84, 1.0))
     # Engraved name — a thin dark line
     make_box("Helm_CallingCard_Name",
-             (card_x, card_y, desk_top_z + 0.008),
+             (card_x, card_y, desk_top_z + 0.0025),
              (0.06, 0.014, 0.0005),
              (0.20, 0.18, 0.14, 1.0))
     # Small decorative border
     make_box("Helm_CallingCard_Border",
-             (card_x, card_y, desk_top_z + 0.007),
+             (card_x, card_y, desk_top_z + 0.0022),
              (0.085, 0.045, 0.0003),
              (0.62, 0.52, 0.32, 1.0))
 

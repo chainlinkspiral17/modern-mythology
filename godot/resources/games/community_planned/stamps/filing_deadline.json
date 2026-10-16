@@ -1,0 +1,188 @@
+{
+ "id": "filing_deadline",
+ "notes": "Their motion, our response clock \u2014 the late angle.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    20,
+    12,
+    28,
+    28
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     20,
+     12
+    ],
+    [
+     48,
+     12
+    ],
+    [
+     48,
+     40
+    ],
+    [
+     20,
+     40
+    ],
+    [
+     20,
+     12
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 17,
+   "x_range": [
+    23,
+    45
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 20,
+   "x_range": [
+    23,
+    45
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 23,
+   "x_range": [
+    23,
+    45
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 26,
+   "x_range": [
+    23,
+    45
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 29,
+   "x_range": [
+    23,
+    45
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    38,
+    32,
+    8,
+    6
+   ],
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    68,
+    26
+   ],
+   "size": 9,
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    68,
+    26
+   ],
+   "size": 9,
+   "color": 0
+  },
+  {
+   "op": "dot",
+   "xy": [
+    68,
+    26
+   ],
+   "size": 8,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    68,
+    26
+   ],
+   "size": 7,
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     68,
+     26
+    ],
+    [
+     68,
+     19
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     68,
+     26
+    ],
+    [
+     63,
+     23
+    ]
+   ],
+   "color": 2
+  }
+ ]
+}

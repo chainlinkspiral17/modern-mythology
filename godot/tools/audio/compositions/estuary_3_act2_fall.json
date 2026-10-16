@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "estuary · fall",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Act 2 · Fall season underscore",
+    "notes": "Windier, hollower. 8 bars at 72 BPM. D minor now · the shift to relative minor is the season change. Rain instrument runs underneath. No chiptune arp · fall is not busy."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.55,
+      "notes": [ {"pitch": "D2", "bar": 1, "beat": 1, "dur": 32.0, "vel": 0.60} ] },
+
+    { "instrument": "rain", "gain": 0.28,
+      "notes": [ {"pitch": "F3", "bar": 1, "beat": 1, "dur": 32.0, "vel": 0.7} ] },
+
+    { "instrument": "slowstick_pad", "gain": 0.40, "notes": [
+      {"pitch": "D3", "bar": 1, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "F3", "bar": 1, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "A3", "bar": 3, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "C4", "bar": 3, "beat": 3, "dur": 4.0, "vel": 0.50},
+
+      {"pitch": "Bb3","bar": 5, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "D4", "bar": 5, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "F3", "bar": 7, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "A3", "bar": 7, "beat": 3, "dur": 4.0, "vel": 0.50}
+    ] },
+
+    { "instrument": "slowstick_lead", "gain": 0.28, "notes": [
+      {"pitch": "F4",  "bar": 2, "beat": 1, "dur": 2.5, "vel": 0.55},
+      {"pitch": "E4",  "bar": 4, "beat": 1, "dur": 3.5, "vel": 0.50},
+      {"pitch": "D4",  "bar": 6, "beat": 1, "dur": 2.5, "vel": 0.55},
+      {"pitch": "F4",  "bar": 8, "beat": 1, "dur": 3.5, "vel": 0.60}
+    ] }
+  ]
+}

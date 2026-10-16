@@ -1,0 +1,524 @@
+{
+  "id": "moment_wilson_water_bottle",
+  "notes": "HeroImage \u00b7 Wilson sitting on the campfire log at dusk \u00b7 his water bottle in the foreground with 'W.A. ASTORIA' etched on the side \u00b7 fire warm behind him.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#0a0a08",
+    "#141018",
+    "#1a1420",
+    "#28281a",
+    "#3a2818",
+    "#68482a",
+    "#a83828",
+    "#e88028",
+    "#f4c848",
+    "#f8e8a0",
+    "#e8b048",
+    "#241408",
+    "#4a2818",
+    "#7a4830",
+    "#181410",
+    "#3a3a3a",
+    "#e8c8a8",
+    "#c8c8c8",
+    "#2a3a4a",
+    "#4a5a6a",
+    "#8a9098",
+    "#c8b478",
+    "#f4e8c8",
+    "#181818"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        16
+      ],
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        16,
+        28
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        18,
+        6
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        44,
+        4
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        10
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        104,
+        6
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        4
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        150,
+        8
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        28,
+        90
+      ],
+      "color": 3
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          100,
+          60
+        ],
+        [
+          116,
+          52
+        ],
+        [
+          136,
+          52
+        ],
+        [
+          148,
+          60
+        ],
+        [
+          148,
+          66
+        ],
+        [
+          100,
+          66
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          100,
+          60
+        ],
+        [
+          116,
+          52
+        ],
+        [
+          136,
+          52
+        ],
+        [
+          148,
+          60
+        ]
+      ],
+      "color": 5
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          112,
+          60
+        ],
+        [
+          120,
+          40
+        ],
+        [
+          128,
+          60
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          118,
+          60
+        ],
+        [
+          124,
+          32
+        ],
+        [
+          132,
+          60
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        40
+      ],
+      "size": 4,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        45
+      ],
+      "size": 3,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        58
+      ],
+      "size": 22,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        58
+      ],
+      "size": 18,
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        124,
+        58
+      ],
+      "size": 14,
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        8,
+        62,
+        100,
+        12
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        8,
+        62,
+        100,
+        3
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        8,
+        71,
+        100,
+        3
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 20,
+      "y_range": [
+        64,
+        71
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 36,
+      "y_range": [
+        64,
+        71
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 54,
+      "y_range": [
+        64,
+        71
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 74,
+      "y_range": [
+        64,
+        71
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 90,
+      "y_range": [
+        64,
+        71
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        42,
+        74,
+        5,
+        12
+      ],
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        49,
+        74,
+        5,
+        12
+      ],
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        41,
+        54,
+        12,
+        10
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        46,
+        8,
+        8
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        44,
+        8,
+        3
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        45,
+        53,
+        6,
+        2
+      ],
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        46,
+        50
+      ],
+      "size": 1,
+      "color": 23
+    },
+    {
+      "op": "dot",
+      "xy": [
+        50,
+        50
+      ],
+      "size": 1,
+      "color": 23
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        38,
+        58,
+        3,
+        8
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        53,
+        58,
+        3,
+        8
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        78,
+        8,
+        12
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        78,
+        2,
+        12
+      ],
+      "color": 19
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        78,
+        8,
+        3
+      ],
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        31,
+        84
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        84
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        35,
+        84
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        37,
+        84
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        31,
+        86
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        86
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        35,
+        86
+      ],
+      "size": 1,
+      "color": 22
+    },
+    {
+      "op": "text",
+      "xy": [
+        8,
+        84
+      ],
+      "s": "W.A.  ASTORIA  \u00b7  BEFORE  WILSON  ASHE",
+      "color": 21
+    }
+  ]
+}

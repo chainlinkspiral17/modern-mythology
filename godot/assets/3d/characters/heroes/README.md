@@ -29,7 +29,23 @@ When you build John, save him as `john_frank.glb` here anyway —
 he'll be used when we move into the diner interior or any vol7
 flashback.
 
-## Mixamo workflow (per the user directive 2026-06-16)
+## Image → Meshy pipeline (2026-09-25, preferred)
+
+Heroes are now generated from a roster prompt: concept image (Google
+Gemini/Imagen or Runway) → Meshy image-to-3D → this folder, with the
+canonical filename applied automatically. Roster:
+`godot/tools/meshy_roster.json`; runner: `godot/tools/meshy_pipeline.py`;
+browser UI: `godot/tools/hero_uploader/` (Hero Studio).
+
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py serve
+```
+
+Meshy GLBs arrive Y-up but sometimes with the body along the wrong
+axis — `Portrait3D.load_character` and `build_graustark._instance_hero_glb`
+both auto-orient + scale to 1.80 m, so no Blender fix-up is needed.
+
+## Mixamo workflow (older, still valid for rigged/animated heroes)
 
 For each hero:
 

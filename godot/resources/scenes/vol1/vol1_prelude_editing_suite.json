@@ -31,13 +31,25 @@
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor. Games to explore from all sides and angles in astonishment. Doing shit on the regular and finding humor in it all."
+      "text": "We know our audience — cultured in good reads if not great literature, tenured instead in a random sampling must-see tv. Flicks, movies, film, cinema swallowed up whole. Tunes as beating hearts and emotional anchor."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Games to explore from all sides and angles in astonishment. Doing shit on the regular and finding humor in it all."
     },
     {
       "t": "say",
       "char": "The Director",
       "expr": "neutral",
-      "text": "They expect the finest things rendered explicit — and I count myself among them. (nerding out) The Trilogies on repeat. My nerdcore is in truth scrapwork — an old faded fallen-to-love quilt for but the latest of stories, descend from the greatest of stories, a pantheon of classics writ into collected skin bound together illustrated man."
+      "text": "They expect the finest things rendered explicit — and I count myself among them. (nerding out) The Trilogies on repeat."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "My nerdcore is in truth scrapwork — an old faded fallen-to-love quilt for but the latest of stories, descend from the greatest of stories, a pantheon of classics writ into collected skin bound together illustrated man."
     },
     {
       "t": "say",
@@ -93,7 +105,13 @@
       "t": "say",
       "char": "The Fool",
       "expr": "neutral",
-      "text": "All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power. Make something awesome, understandable, and good — simply good — that transcends all expectation. So permission to go nuts, absolutely batshit crazy, as long as you’re having a good time we’re having a good time."
+      "text": "All the questions you’ve asked yourself you’ve answered yourself — so to answer your question (pointing at each) no, you’re just afraid, you’re just a pussy. Within you is power."
+    },
+    {
+      "t": "say",
+      "char": "The Fool",
+      "expr": "neutral",
+      "text": "Make something awesome, understandable, and good — simply good — that transcends all expectation. So permission to go nuts, absolutely batshit crazy, as long as you’re having a good time we’re having a good time."
     },
     {
       "t": "say",

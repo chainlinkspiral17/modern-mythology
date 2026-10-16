@@ -1,0 +1,20 @@
+{
+ "created": 1791759918241,
+ "kind": "daw-bounce",
+ "name": "vol1_club_thump song · 20261011_160518",
+ "sampleRate": 44100,
+ "loop": null,
+ "meta": {
+  "title": "vol1_club_thump song",
+  "bpm": 126,
+  "tags": [
+   "daw",
+   "song"
+  ],
+  "key": "F dorian"
+ },
+ "id": "tk_mv4fld41_70mf35",
+ "channels": 2,
+ "frames": 4164300,
+ "durationSec": 94.42857142857143
+}

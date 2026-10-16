@@ -1,0 +1,248 @@
+{
+  "id": "act3_town",
+  "act": 3,
+  "title": "The Town",
+  "duration_hours_est": 2.5,
+  "notes": "Text-forward graphic-adventure walkabout. The player is Sam. It's the morning of Labor Day 1998, 8:32 AM. Sam slept four hours after the night-12 shift and the estuary reveal. Sam has decided (per the Act 2 final choice) whether to stay another summer. Now Sam walks the town.\n\nHub map with nine locations. Each location has 3-6 hotspots. Interactions are LOOK / TALK / USE (a stripped-down verb set from Act 1). Some hotspots gate on which Act 2 final choice was made and on which Act 1 flags fired.\n\nThe act's clock advances location-by-location. Every location visit costs ~15 minutes of in-fiction time. Sam has until dusk (~7:30 PM) before the game ends the act by returning Sam to the Kwik Stop, so the player has ~11 hours of in-fiction time budget for a nine-location map · roughly enough to visit every location once and revisit one or two.\n\nThe Godot host (TownWalkabout.gd, deferred) reads this file, presents the hub map, and dispatches to location panels on click. The location panels use the same SCUMM verb-cursor pattern as Act 1 but with the reduced verb set.",
+
+  "opening_narration": [
+    "8:32 AM. You slept four hours. The morning light coming through the trailer window is the specific light that only happens on the Oregon coast on the first Monday of September: a low horizontal gold laid across the marine layer at an angle that makes everything a little longer than it is.",
+    "You made coffee. You drank the coffee. You went to the bathroom. You are wearing the same jeans you wore last night. You are wearing a different shirt.",
+    "The estuary is out the window. You saw the estuary last night, or you dreamed it. Either way it is there now.",
+    "You have until dusk. You are going to walk the town."
+  ],
+
+  "clock": {
+    "starts_at": "08:32",
+    "location_visit_costs_minutes": 15,
+    "ends_at": "19:30",
+    "notes": "Total budget: ~11 hours = ~44 visits. Nine locations, most with 3-6 hotspots, so the player can visit every location and still have slack for one or two full revisits. The clock is a soft constraint — the game ends the act at 19:30 regardless of unvisited hotspots."
+  },
+
+  "hub_map": {
+    "layout_notes": "A hand-drawn 640x480 map of the town and the coastal highway. Sam's trailer is a small dot in the northeast. The Kwik Stop is on the highway, top-right. The tide gate is the southwest corner. The cabin road (locked) exits the frame to the east.",
+    "walk_between_locations_narration": "One line per walk, drawn from a small pool per adjacency. Fog off the pier at 9 AM. Salt air past the mill. The elementary school playground has a swing that moves without a kid on it."
+  },
+
+  "locations": [
+    {
+      "id": "kwik_stop_revisit",
+      "name": "The Kwik Stop",
+      "revisit_of": "act1_room",
+      "narration_intro": "The Kwik Stop in daylight is a smaller place than it was last night. The fluorescent above the register still buzzes. Nobody is at the counter. Jules is not here yet · her shift starts at ten. The back door is unlocked, the way you left it at 5:14 AM.",
+      "hotspots": [
+        {"id": "corner_booth", "label": "The corner booth",
+         "look":  "The booth is empty. The vinyl is intact. Nobody has sat here today. The window looks out at the coastal highway. The advil-tourist from night 8 drove past this window southbound at 4:22 AM. You do not know how you know this.",
+         "use":   "You sit in the booth. The vinyl is warm from the morning sun through the window. You sit for four minutes. You get up."},
+        {"id": "register_tape", "label": "The register tape",
+         "look":  "The tape roll from last night is still in the receipt slot. Twelve nights of totals. You tear it off at the perforation. You fold it into your back pocket.",
+         "use":   "You read the totals aloud, one to yourself. Night 11's Mr. Aandahl payout is not on the tape · that was the state, not the store."},
+        {"id": "backroom_door_daylight", "label": "The backroom door",
+         "look":  "In daylight it is a steel-clad door with a deadbolt. Standard convenience-store backroom door. There is a coffee stain on the door frame at eye level. You do not remember whose coffee.",
+         "open":  "You open it. Inside is a normal backroom. Shelves. A mop bucket. A sixteen-year-old box of light bulbs. There is no estuary through it. Not this morning.",
+         "use":   "You close it. It clicks. You do not, this morning, lock it."},
+        {"id": "note_on_counter", "label": "A note on the counter",
+         "look":  "In Jules's handwriting, on the back of a receipt: 'Sam — I heard about Aandahl. Congrats to him. Also: is the 2 AM guy okay? Text me. — J.'",
+         "use":   "You leave the note where it is. You will text Jules from the pier."}
+      ],
+      "on_leave_narration": "You walk out of the Kwik Stop into the daylight. The bell over the door rings twice — once on the way out, once when the door closes. The parking lot is empty.",
+      "unlock_flag_on_visit": "kwik_stop_revisited_in_daylight"
+    },
+    {
+      "id": "shell_station",
+      "name": "The Shell Station (closed)",
+      "narration_intro": "The shell station up the road is closed. The pumps are wrapped in plastic. The mini-mart windows are covered from the inside with newspaper. There is a small hand-lettered sign on the door that says CLOSED · THANK YOU FOR 22 YEARS.",
+      "hotspots": [
+        {"id": "sign", "label": "The 22 years sign",
+         "look":  "The sign was made with a red Sharpie on a piece of the mini-mart's price-tag paper. The handwriting is the other clerk's. She wrote this on Friday night after her shift. The tape holding it up is masking tape.",
+         "take":  "You do not take it. It belongs to the door."},
+        {"id": "pumps", "label": "The pumps under plastic",
+         "look":  "Two pumps. The plastic is drum-tight; somebody wrapped them carefully. You can see the price display through the plastic: $1.32 · unleaded. That was the price on Friday night.",
+         "use":   "You place a hand on the plastic. It is warm from the sun."},
+        {"id": "the_other_clerk_car", "label": "Her car in the far corner",
+         "look":  "A dark green Corolla, 1993. She left it here last week when she took the bus down to Newport for the Fred Meyer interview. She has not come back to pick it up. The tires are low.",
+         "talk":  "Nobody is in the car.",
+         "use":   "You leave a note under the wiper. You write, in blue pen, on the back of your Kwik Stop receipt tape: 'It was a good corner. — Sam.'"},
+        {"id": "amoco_ghost", "label": "The old Amoco sign frame",
+         "look":  "The Amoco sign was taken down in 1994 when Shell bought the station. The frame is still there. If you look up at it from the right angle you can see the outline of where the Amoco logo used to be, faded into the paint of the frame.",
+         "use":   "You stand there a minute and look up at it."}
+      ],
+      "on_leave_narration": "You walk south along the coastal highway. The Kwik Stop is behind you. The pier is a mile ahead. Someone is running a leaf blower one street over."
+    },
+    {
+      "id": "pier",
+      "name": "The Pier",
+      "narration_intro": "The pier is the pier. Two hundred and forty feet long, salt-eaten, patched in 1993 and 1996 and 1998. There is a woman on the pier this morning. She is standing at the far end. She is looking at the water. She is the other clerk from up the road.",
+      "hotspots": [
+        {"id": "the_other_clerk", "label": "The other clerk",
+         "look":  "She is wearing the sweatshirt she wore on her last shift. Her hair is different. She is standing very still. She is not fishing. She does not have anything with her.",
+         "talk":  {"gated_on_kwik_stop_revisit_and_shell_visited": {
+                     "flag": "kwik_stop_revisited_in_daylight AND shell_visited",
+                     "line": "'Sam.' She turns. 'I saw your note. Thank you.' You stand next to her on the pier for a while. She tells you the Newport job starts on Wednesday. She tells you she'll be renting a room in Toledo. She tells you she'll drive up on Sundays to see her mother, who is in the assisted-living place across from the shell station. She asks you what your plans are. You tell her whatever the answer was at the end of Act 2. She nods."
+                   },
+                   "default_line": "You do not have anything to say to her yet. You walk to the end of the pier. She is still there when you leave."},
+         "use":   "You stand next to her without talking. Two minutes. Then more. Sixteen minutes total. It is fine."},
+        {"id": "the_water", "label": "The water below the pier",
+         "look":  "The tide is going out. Small silver fish flick under the pilings. A gull hangs above the water without moving its wings. This is what a pier looks like on the first Monday of September on the Oregon coast.",
+         "use":   "You watch the water for six minutes."},
+        {"id": "the_horizon", "label": "The horizon",
+         "look":  "The horizon is where the horizon is. The Pacific goes flat from here to Japan. On days when the marine layer is out the horizon does not exist as a line; it is a gradient from grey to grey. Today the marine layer is halfway lifted.",
+         "use":   "You stare at it. You think of the estuary you saw last night. You wonder if the estuary was the horizon and you were looking at it from the inside."},
+        {"id": "the_bench", "label": "A bench at the pier's midpoint",
+         "look":  "A wooden bench, painted grey. A carved initial on the top slat: I.R. It has been there since 1988. Nobody in town has ever met an I.R.",
+         "use":   "You sit on the bench. You text Jules: '2 am guy walked out at 5. i think he's fine.' Jules replies twelve minutes later: 'ok'. You put the phone in your pocket."}
+      ],
+      "on_leave_narration": "You walk back down the pier. The other clerk stays. She is still at the far end when you reach the parking lot."
+    },
+    {
+      "id": "mill_office",
+      "name": "The Mill Office (closed since '96)",
+      "narration_intro": "The Weyerhaeuser mill closed in October of 1996 and the office has been locked since. The lot is fenced. The fence has a gate at the north end. The gate is padlocked but the padlock is not fastened.",
+      "hotspots": [
+        {"id": "the_padlock", "label": "The padlock",
+         "look":  "It is a Master Lock. The shackle is closed but the shackle is not through the hasp on the gate. Someone came in and out yesterday.",
+         "use":   "You could go in. You do go in."},
+        {"id": "the_office_windows", "label": "The office windows",
+         "look":  "Six windows on the ground floor. Five of them are covered from the inside. The sixth, on the north end, is clear. There is a desk visible through it. There is a phone on the desk. There is a light on above the phone.",
+         "use":   "You look through the sixth window. Somebody is using this office. Not employed here · just using it. The light on the phone is one of those solar-powered ones."},
+        {"id": "the_yard", "label": "The mill yard",
+         "look":  "Cracked asphalt going to weeds. A rusted-out forklift in the far corner. Three logs stacked in the middle of the yard, from the last shift in 1996. The bark is off. The rings are visible. You could count them if you had all day.",
+         "use":   "You walk between the log stacks. Two hundred rings on the closest one. You do not count out loud."},
+        {"id": "the_sign", "label": "The sign that used to say WEYERHAEUSER",
+         "look":  "The letters have been taken off. The bolt holes are still there. You can read the word if you stand at the right angle: WEYERHAEUSER, ghosted in less-faded paint against the more-faded background.",
+         "use":   "You stand at the right angle."},
+        {"id": "the_note_on_the_desk", "label": "A note on the desk, visible through the sixth window",
+         "look":  "A yellow legal pad on the desk. You cannot read the writing from outside. The handwriting is not one you recognize. Under the legal pad is a coffee mug. The mug is from the shell station up the road.",
+         "use":   "You do not, this morning, break in. The office is holding whoever the office is holding. You leave them to it.",
+         "gated_on_shell_visited": true}
+      ],
+      "on_leave_narration": "You leave the mill lot. You fasten the padlock through the hasp on your way out. Whoever is inside will notice, later. That is fine."
+    },
+    {
+      "id": "bookstore",
+      "name": "The Bookstore (that was Amelia Rocha's)",
+      "narration_intro": "The bookstore Amelia Rocha ran on Main Street from 1974 until she died in April 1998. Her daughter, Ines, is nineteen and away at art school in Portland; the store has been closed since April but not yet cleared out. You have not been inside since the memorial in May.",
+      "hotspots": [
+        {"id": "front_window", "label": "The front window",
+         "look":  "A display Amelia arranged the week before she died: the Ellen Meloy essays, two Marilynne Robinson novels, a copy of Bringing Down the House propped at an angle. Dust has settled on the display. The dust makes it look like an installation rather than a store window.",
+         "use":   "You stand at the window a long time."},
+        {"id": "front_door", "label": "The front door",
+         "look":  "A hand-written sign in Amelia's handwriting: 'BACK IN 15 MINUTES.' She wrote it in March. She meant it on the day she wrote it. It is still there in September.",
+         "use":   "You do not have a key. You do not, this morning, try the door.",
+         "open":  "The door is locked. You do not have a key."},
+        {"id": "side_alley", "label": "The side alley",
+         "look":  "The alley between the bookstore and the closed hardware store next door. Cool. Smells of cardboard and blackberry. Amelia used to smoke a cigarette here on her lunch break. You have a specific memory of her, from when you were eleven, standing in this alley holding a cigarette she was not going to finish.",
+         "use":   "You walk down the alley. You come out the back."},
+        {"id": "back_door_key", "label": "The key Amelia used to leave in a fake rock",
+         "look":  "The rock is still there. Amelia showed it to you in 1993 when you were nine, and told you where the real one was, and told you not to tell anyone. You have not told anyone in five years. The rock is still where she left it.",
+         "take":  "You pick up the rock. It is heavier than a fake rock should be. The key is inside. The key is real.",
+         "use":   "You use the key.",
+         "gated_on_bookstore_side_alley_visited": true},
+        {"id": "the_shop_inside", "label": "Inside the bookstore",
+         "look":  "The shop as Amelia last arranged it. April 3rd. Two boxes of unshelved paperbacks on the counter. A cash-out drawer that has $47.13 in it, per the notation on the drawer. A pot of dead African violets on the counter.",
+         "use":   "You water the African violets. It is too late for them by five months but you do it anyway. The water runs through the pot onto the counter. You wipe it up with a paper towel from behind the counter.",
+         "gated_on_key_taken": true},
+        {"id": "the_stack_of_letters", "label": "A stack of letters on the counter, unopened",
+         "look":  "Twelve letters. All addressed to Amelia. Postmarked between April 5 and August 30. Most look like condolence cards; two are from a Portland address in a handwriting Ines uses on her Christmas cards. The top one is from Oneironautics Inc., Portland, Oregon, postmarked yesterday.",
+         "use":   "You do not open the letters. You are not, in this life, the one who opens Amelia's mail.",
+         "gated_on_shop_inside_visited": true}
+      ],
+      "on_leave_narration": "You lock the door behind you when you leave. You put the key back in the fake rock. If Ines comes back this month she will find it exactly where her mother left it. If she does not, it will be here whenever she does."
+    },
+    {
+      "id": "aandahl_house",
+      "name": "The Aandahl House",
+      "narration_intro": "The Aandahl house is a small pale-blue single-story on Coffey Street. Two kids' bikes on the porch. A hummingbird feeder that Mrs Aandahl fills every Sunday. Mr Aandahl is in the yard this morning. He is watering the lawn with a green plastic watering can, which is the wrong tool for the job. He is doing it anyway.",
+      "hotspots": [
+        {"id": "mr_aandahl_in_the_yard", "label": "Mr Aandahl",
+         "look":  "He is wearing the same shirt he wore last night. He is watering the marigolds. He is not, this morning, drinking his black coffee. His coffee cup is on the porch railing, empty.",
+         "talk":  "'Sam.' He straightens up. 'Wife told the kids about the two thousand this morning. Kids don't know what to do with it. Kids think we should buy a boat. Wife thinks we should pay down the house. I think we should do neither and keep the money in the mattress. What do you think, Sam.' You give him whichever answer feels right. He nods. He does not care what your answer is; he asked you the question to hear himself say the numbers out loud.",
+         "use":   "You take the watering can from him and finish the marigolds. He lets you."},
+        {"id": "the_bikes_on_the_porch", "label": "Two bikes on the porch",
+         "look":  "Both bikes are blue. Neither is the red bike the kid on the bike rode on night 8. The kid on the bike is not an Aandahl.",
+         "use":   "You do not know why you thought he might be."},
+        {"id": "the_hummingbird_feeder", "label": "The hummingbird feeder",
+         "look":  "Full. Mrs Aandahl fills it every Sunday. She filled it yesterday.",
+         "use":   "A hummingbird arrives while you are looking at the feeder. It stays for eleven seconds. It leaves."},
+        {"id": "the_coffee_cup", "label": "The empty coffee cup on the porch",
+         "look":  "The cup is from the Kwik Stop. He must have refilled it there on the way home last night. It is your handwriting on the cup's marker line: MR. A.",
+         "take":  "You leave the cup where it is. It is his cup now.",
+         "use":   "You touch the cup. It is cold."}
+      ],
+      "on_leave_narration": "You walk back down Coffey Street. Mr Aandahl waves from the yard when you get to the corner. He is a small square of pale blue and green in the middle distance."
+    },
+    {
+      "id": "elementary_school",
+      "name": "The Elementary School (closed for summer)",
+      "narration_intro": "The elementary school is closed for the summer. It opens Tuesday. There is a chain-link fence around the playground. The kid on the bike is standing outside the fence on the far side, looking in at the play structure. He is not on his bike this morning.",
+      "hotspots": [
+        {"id": "the_kid_on_the_bike_daylight", "label": "The kid, in daylight",
+         "look":  "He is thirteen or fourteen, as you thought. He is wearing a t-shirt with an Estuary 2 logo on it — the small heron logo Oneironautics used on the '02 sticker sheet. You did not know he owned that shirt.",
+         "talk":  "'Hi.' He turns. 'You're Sam from the Kwik Stop.' You say yes. He says: 'I said I wasn't coming back. I meant I wasn't coming back to the Kwik Stop. My grandpa died on Tuesday and I'm not going to be walking past there at 3 AM anymore. I have to actually sleep now.' You say you're sorry. He says: 'yeah.' He says: 'the beef jerky is bad, Sam. It's always been bad. You should tell Jules.' He gets on his bike, which was behind him against the fence, and rides away. His grandfather was somebody in this town whose name you did not know.",
+         "use":   "You do not follow."},
+        {"id": "the_playground", "label": "The playground",
+         "look":  "A metal slide from 1974. Two swings, one with the chain slightly shorter than the other so the seat sits at an angle. A merry-go-round painted grey. A play structure added in '89.",
+         "use":   "You put your hands on the chain-link fence. The chain-link is warm from the sun."},
+        {"id": "the_swing_that_moves", "label": "The swing that is moving by itself",
+         "look":  "One of the two swings is moving at a slow steady arc. There is no wind this morning. There is nobody near the swing. The chain is exactly the same length as the other swing.",
+         "use":   "You watch the swing. It moves for another minute and then it stops. You do not know what to think about this."},
+        {"id": "the_school_marquee", "label": "The school marquee",
+         "look":  "A plastic-letter marquee facing the road. It says: WELCOME BACK STUDENTS · SCHOOL STARTS TUESDAY SEPT 8. The letters are the letters the school secretary put up on Friday. Somebody has moved two of the letters around during the night. It now reads, if you squint, WELCOME BACK SAM."
+        }
+      ],
+      "on_leave_narration": "You walk south. The next block is the intersection with 101. The tide gate is a mile past that."
+    },
+    {
+      "id": "tide_gate",
+      "name": "The Tide Gate",
+      "narration_intro": "You walk down the coastal-highway shoulder, across the bridge over the outflow creek, and onto the gravel path that leads to the tide gate. The 2 AM customer is standing at the tide gate this morning. He is not, this morning, sitting.",
+      "hotspots": [
+        {"id": "the_2am_customer_daylight", "label": "The 2 AM customer, in daylight",
+         "look":  "In daylight he is a man in his late fifties. Grey work jacket. A pair of binoculars around his neck. A small brown notebook in his shirt pocket. He looks like the state fisheries office and he is, in fact, the state fisheries office; you never asked him what he did and he never told you.",
+         "talk":  "'Sam.' He turns. 'You closed up okay last night?' You say yes. He nods. He looks back at the tide gate. He says: 'the gate is at partial today because we had king tide overnight. The salmon count is up eighteen percent from last week. I'm on shift until noon and then Marc from Astoria takes over.' He looks at you. He says: 'the reason I sit at the booth is that the state office in Yachats gave me this shift when my wife died in June, and the shift is a 24-hour surveillance shift on the estuary from the highway side. The Kwik Stop is the highway-side observation point. The state pays me overtime. I do not, generally, tell people this. I am telling you this because you kept the coffee going.' He nods. He turns back to the tide gate.",
+         "use":   "You stand next to him. Neither of you says anything for eleven minutes."},
+        {"id": "the_gate", "label": "The tide gate itself",
+         "look":  "A steel gate, thirty feet across, set into the concrete abutments at the mouth of the estuary. Position markers along the top: OPEN, PARTIAL, CLOSED. The gate is at PARTIAL this morning. You saw the gate from above last night. You did not know it looked like this from below.",
+         "use":   "You touch the concrete abutment. It is cold. It is always cold."},
+        {"id": "the_estuary_beyond", "label": "The estuary beyond the gate",
+         "look":  "Salt marsh to the north. Mudflat to the south. Deepwater channel along the west edge. The Kwik Stop is a small yellow square in the upper right of your view, up on the coastal-highway rise. You look at the estuary from this angle and it is the same estuary you saw from above last night. The two views resolve.",
+         "use":   "You take out the register tape from your back pocket. You unfold the last two nights. You compare the numbers to the estuary in front of you. You do not know exactly what you are looking for. You do not not know."},
+        {"id": "the_binoculars", "label": "The binoculars around his neck",
+         "look":  "Standard state-fisheries-office field binoculars. Rubber-armored 10x42. A small piece of masking tape on the strap with 'STATE — DO NOT REMOVE' written in Sharpie.",
+         "use":   "He offers them to you without saying anything. You take them. You look through them at the mudflat. You see a great blue heron standing very still, half a mile away. You hand the binoculars back. He nods."}
+      ],
+      "on_leave_narration": "You walk back up to the highway. He does not turn to watch you leave. He is looking at the water."
+    },
+    {
+      "id": "cabin_road",
+      "name": "The Cabin Road (locked)",
+      "narration_intro": "The turnoff from 101 to the cabin road is at milepost 214. There is a gate across the cabin road. The gate has a chain and a lock. There is a small hand-lettered sign on the gate: BUILT '79 · PRIVATE. Nobody is at the gate this morning.",
+      "hotspots": [
+        {"id": "the_sign_79", "label": "The sign that says BUILT '79",
+         "look":  "White paint on a piece of cedar shingle. The paint is chipping. The '79 was written in the same hand and the same red paint as the shell station's 22-year sign — you register this once your eye is on both signs, and then you register that they cannot possibly be by the same hand, because the shell station's sign is Friday's and this sign is from 1979. And yet. The '7' has the same short crossbar and the '9' has the same open loop.",
+         "use":   "You stand at the gate for a long minute. You think about your uncle Per, who has not been at the cabin in ten years. You think about Olaf, who built it. You think about Tem, whose grandfather was Olaf's closest friend and who is somewhere on the other side of this locked gate today, probably not knowing you are at the road."},
+        {"id": "the_chain", "label": "The chain",
+         "look":  "A padlock chain. The lock is closed. This is not the mill-office lock; this is a serious lock.",
+         "use":   "You do not, this morning, climb the gate. The gate is not for you. Not this year."},
+        {"id": "the_shoulder_of_the_road", "label": "The shoulder of the road",
+         "look":  "The gravel shoulder where cars pull over to look at the coast. There is one car parked here this morning. A wagon. Oregon plates. Nobody is in the wagon.",
+         "use":   "You look through the wagon's driver-side window. On the passenger seat is a coffee cup from the Kwik Stop, and, next to it, a copy of Estuary 3 in its Oneironautics sleeve. Somebody is at the cabin who is playing the game you are, in a sense, currently living inside of. You do not push the point.",
+         "meta_note": "This is the game acknowledging Per and Kai and Tem at the cabin in the Vol 7 present. The player who catches this beat gets it. The player who doesn't still walks away."},
+        {"id": "the_view_east", "label": "The view east from the cabin road turnoff",
+         "look":  "The cabin road goes east into the woods and up the ridge. You cannot see the cabin from here. You know approximately where it is. It is six-tenths of a mile in. You will not, this year, walk that six-tenths.",
+         "use":   "You stand at the shoulder and look east. Then you walk back to the highway."}
+      ],
+      "on_leave_narration": "You walk south along 101. The tide gate is behind you. The Kwik Stop is ahead. It is 4:44 PM. The sun is where the sun is at 4:44 PM on the first Monday of September."
+    }
+  ],
+
+  "return_to_kwik_stop": {
+    "narration": "You reach the Kwik Stop at 6:12 PM. The eastern sky is going pink and grey. Jules's car is in the lot. The bell over the door rings once when you go in. Jules is behind the counter, on her cell phone with somebody, not looking at you. She hangs up when she sees you.\n\n'Sam.'\n\nShe puts the phone on the counter. She looks at you for a second longer than she usually does.\n\nOne of two things happens next, depending on what the player decided at the end of Act 2.",
+    "branches": {
+      "if_act2_choice_yes": "Jules holds up the keys to the store. 'Take them,' she says. 'I've got a family thing at eight and the sub cancelled. Ten to five, tonight and every night this week. You said you'd stay. Okay. You start now.' You take the keys. She leaves. The bell rings.",
+      "if_act2_choice_no": "Jules holds out her hand. 'Keys,' she says. 'You told me you were done at the end of the summer. Summer's over Sam. Give me the keys. I'll write you a reference for Astoria.' You put the keys in her palm. She closes her hand around them. She says: 'Sam. I appreciate you. You did the job right. Get out of here.' You do.",
+      "if_act2_choice_the_question_is_wrong": "Jules does not say anything for a long minute. She looks at you like she is going to say something. She does not. She turns her chair to face the window over aisle 3. She points at the fluorescent above it. She says: 'that one's been flickering every eleven seconds for a year. It stopped last night. Did you notice?' You say you did. She says: 'okay.' She hands you the keys. She says: 'Sam, if this is the summer that ended, you can leave the keys under the mat when you're done tonight. If it isn't, keep them.' She goes out. The bell rings."
+    },
+    "ends_act3": true
+  }
+}

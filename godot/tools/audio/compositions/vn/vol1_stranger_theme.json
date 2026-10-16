@@ -1,0 +1,42 @@
+{
+ "meta": {
+  "title": "vol1_stranger_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol1_stranger_theme",
+  "notes": "The Stranger. A single sustained tone in the upper register, over the diner's D \u2014 he arrives at the booth and the room does not change key for him."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.32,
+   "notes": [
+    {
+     "pitch": "E6",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    }
+   ]
+  }
+ ]
+}

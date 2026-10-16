@@ -1,0 +1,131 @@
+{
+ "meta": {
+  "title": "vol5_long_signal",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_long_signal",
+  "notes": "Hierophant \u00b7 medium \u2014 TABLE SEVENTEEN. D'Ambrosio's, 11:47 AM, table 17 at the stern rail. The river going past under the brunch, cutlery finding itself, and a conversation that has not started yet and both people know it."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": true,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A#2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.06,
+   "notes": [
+    {
+     "pitch": "C6",
+     "bar": 3,
+     "beat": 1.8,
+     "dur": 0.12,
+     "vel": 0.13
+    },
+    {
+     "pitch": "F5",
+     "bar": 6,
+     "beat": 3.3,
+     "dur": 0.12,
+     "vel": 0.12
+    },
+    {
+     "pitch": "C6",
+     "bar": 11,
+     "beat": 2.1,
+     "dur": 0.12,
+     "vel": 0.12
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 7,
+     "beat": 1,
+     "dur": 7,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

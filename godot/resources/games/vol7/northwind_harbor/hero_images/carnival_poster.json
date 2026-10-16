@@ -1,0 +1,199 @@
+{
+ "id": "carnival_poster",
+ "notes": "The cannery wall poster, half torn \u00b7 CARNIVAL \u00b7 SEVEN YEARS \u00b7 1976. Am\u00e9lie put it there. Nobody asked.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#16202e",
+  "#7a8894",
+  "#4a5a52",
+  "#30281e",
+  "#d88a30",
+  "#c8ccd4"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 18,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 40,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 62,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 84,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     36,
+     12
+    ],
+    [
+     124,
+     12
+    ],
+    [
+     124,
+     78
+    ],
+    [
+     78,
+     78
+    ],
+    [
+     66,
+     64
+    ],
+    [
+     36,
+     70
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     36,
+     70
+    ],
+    [
+     66,
+     64
+    ],
+    [
+     78,
+     78
+    ],
+    [
+     36,
+     78
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    44,
+    18,
+    72,
+    12
+   ],
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    48,
+    21
+   ],
+   "s": "CARNIVAL",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    52,
+    38
+   ],
+   "s": "SEVEN",
+   "color": 0
+  },
+  {
+   "op": "text",
+   "xy": [
+    52,
+    48
+   ],
+   "s": "YEARS",
+   "color": 0
+  },
+  {
+   "op": "text",
+   "xy": [
+    88,
+    58
+   ],
+   "s": "1976",
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     44,
+     34
+    ],
+    [
+     50,
+     30
+    ],
+    [
+     56,
+     34
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     96,
+     34
+    ],
+    [
+     102,
+     30
+    ],
+    [
+     108,
+     34
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    76,
+    33
+   ],
+   "size": 2,
+   "color": 1
+  }
+ ]
+}

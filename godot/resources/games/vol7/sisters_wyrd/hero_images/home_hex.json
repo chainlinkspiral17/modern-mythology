@@ -1,0 +1,125 @@
+{
+ "id": "home_hex",
+ "notes": "The home hex porch at dusk \u00b7 [0\u00b70\u00b70\u00b70\u00b70\u00b70] \u00b7 was it home before, or is it home now?",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#c8a878",
+  "#201410",
+  "#e8dcc0",
+  "#7a3020",
+  "#b8bcc8",
+  "#8a58a8",
+  "#4a5a3a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    50,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    50,
+    26,
+    60,
+    34
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     44,
+     26
+    ],
+    [
+     80,
+     12
+    ],
+    [
+     116,
+     26
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    58,
+    38,
+    10,
+    22
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    96,
+    40
+   ],
+   "size": 3,
+   "color": 2
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     93,
+     43
+    ],
+    [
+     99,
+     43
+    ],
+    [
+     106,
+     60
+    ],
+    [
+     86,
+     60
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 60,
+   "x_range": [
+    40,
+    120
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 46,
+   "y_range": [
+    46,
+    60
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 114,
+   "y_range": [
+    46,
+    60
+   ],
+   "color": 1
+  }
+ ]
+}

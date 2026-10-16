@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "vol5_finale_maker_forgets",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_maker_forgets",
+  "notes": "THE MAKER FORGETS THE MAKE. Stagnation at maximum. The end-of-tape spool, the lights at full, and the cathedral exhaling without him."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

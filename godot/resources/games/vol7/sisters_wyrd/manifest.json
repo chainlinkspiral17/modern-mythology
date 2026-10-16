@@ -1,0 +1,45 @@
+{
+  "id": "sisters_wyrd",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "Sagebrush Engineworks, Amarillo TX (1983) \u00b7 HEXCRAWL RPG / DARK WESTERN. The oldest playable cart on the shelf. Seven nested scales of one woven territory; four witches at the corners; a drifter with iron on the hip and a home hex behind them. Dorothy by way of the Gunslinger.",
+  "shelf": {
+    "label_title": "THE SISTERS WYRD",
+    "label_subtitle": "seven scales \u00b7 four sisters \u00b7 one porch",
+    "publisher": "Sagebrush Engineworks",
+    "publisher_locale": "Amarillo, TX",
+    "release_year": 1983,
+    "release_month": "June",
+    "hardware": "Sagebrush cart \u00b7 pre-standard pinout \u00b7 Olaf soldered an adapter",
+    "genre_stamp": "HEXCRAWL RPG / DARK WESTERN",
+    "shelf_condition": "used, well \u00b7 the previous owner's hand-drawn hex maps folded inside, careful and complete and wrong in exactly one hex",
+    "prior_owner": "unknown \u00b7 Olaf, used, 1991",
+    "provenance_note": "Olaf checked the folded maps against the cart. His note, kept with them: 'the map is wrong where the world is. keep both.'",
+    "cover_blurb": "The Territory is bigger inside than outside and it repeats when you're not looking. Four sisters hold the corners. You hold the iron, the silver, and the way home. From Sagebrush Engineworks: a game the size of the horizon.",
+    "back_of_case": [
+      "\u00b7 One territory, seven scales deep. Every hex holds seven.",
+      "\u00b7 RIDE the ring. ZOOM the weave. Distance is vertical.",
+      "\u00b7 Four sisters \u00b7 N \u00b7 E \u00b7 S \u00b7 W. Parley, draw, or unweave.",
+      "\u00b7 GRIT, SILVER, LORE. Zero grit folds you home. Worse than dying.",
+      "\u00b7 The compass card has eight points. The manual names four.",
+      "",
+      "(Sagebrush Engineworks was two people. They never answered a letter about the compass.)"
+    ],
+    "in_fiction_dev_note": "An ex-pinball-ROM programmer and his sister, who painted paperback covers. She painted the eight-pointed compass from a dream and would not discuss it. 1983 \u00b7 two years before Astro-Cortex \u00b7 the earliest Order object in the catalog, uncommented.",
+    "meta_note": "wyrd means fate means WEAVE. A self-similar world is a woven one. The map that repeats is the first clue and the last answer."
+  },
+  "acts": [
+    {
+      "id": "the_ride",
+      "scene": "res://scenes/games/sisters_wyrd/WyrdHexcrawl.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "sisters_wyrd_finished"
+  ],
+  "lore_tokens_conditional": {
+    "wyrd_all_four_unwoven": "every sister unwoven \u00b7 the thesis verb, four times",
+    "wyrd_eighth_point_seen": "the loom \u00b7 the four unlabeled points \u00b7 consumed by Morgan le Fey's fortune"
+  }
+}

@@ -18,6 +18,8 @@
 # ════════════════════════════════════════════════════════════════
 extends SubViewportContainer
 
+const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
+
 # Each preset specifies:
 #   scene          : res:// path of the location to instantiate
 #   camera_origin  : Vector3 in the location's world coords
@@ -28,13 +30,22 @@ extends SubViewportContainer
 #   suppress_input : if true, the location's interactable Player
 #                    node is removed so it doesn't compete for
 #                    input or move while the VN bg is on screen
+## glass is glass (2026-10-02) — preloaded, not by class_name: a fresh pull
+## has no global-class cache entry for it until the editor rescans
+const GlassPass := preload("res://scripts/LocaleGlass.gd")
 const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
-		# At the front door looking west into the dining floor.
-		"camera_origin": Vector3(7.5, 1.95, 0.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(-90.0), 0.0),
+		# RAY-VERIFIED establish (the 4x-reported 'beige wall' was
+		# this preset: the old NE vantage sat 0.9m from the private
+		# dining room's north partition — survey ray: first hit
+		# PD_NorthWall). New vantage: NE open floor by the vestibule
+		# arch looking SSW down the dining floor — 9.2m of clear air
+		# to the counter, staged John at cast_counter_post ~3 deg
+		# off frame center, west booth row at right.
+		"camera_origin": Vector3(2.0, 2.0, -4.8),
+		"camera_rotation": Vector3(-0.10, 2.787, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -51,21 +62,144 @@ const CAMERA_PRESETS := {
 	"riverfront_exterior": {
 		"scene": "res://scenes/locales/riverfront.tscn",
 		"requires_glb": "res://assets/3d/locales/riverfront.glb",
-		# Wide establishing shot from across the river.
-		"camera_origin": Vector3(-30.0, 4.5, 6.0),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(75.0), 0.0),
-		"fov": 42.0,
+		# THE RIVERBOAT is the establishing shot. Elevated from the
+		# parking-lot side, southwest of the boat, looking NE along
+		# the moored hull — clapboard, brass rails, paddlewheel, the
+		# dock in the foreground. (The old vantage at x=-30 yaw 75°
+		# faced AWAY from the boat entirely.)
+		"camera_origin": Vector3(-22.0, 5.5, 18.0),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-51.0), 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"riverfront_park": {
+		"scene": "res://scenes/locales/riverfront.tscn",
+		"requires_glb": "res://assets/3d/locales/riverfront.glb",
+		# The riverside PARK west of the boardwalk (vol1_ch2 / the
+		# Hierophant's bench scenes): chipped bench godot (-50.5,-22),
+		# bandstand (-48,-26), the black car at the curb (-54,-24), the
+		# Old Armory mass rising behind (-62,-34). Camera on the jog
+		# path SE of the bench looking NW across the lawn so bench,
+		# bandstand and armory silhouette stack in one frame.
+		"camera_origin": Vector3(-45.5, 1.7, -16.5),
+		"camera_rotation": Vector3(-0.02, 0.49, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"highway9_long": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# HIGHWAY 9 · the long lens down the vanishing point — camera
+		# on the median (godot -510, ground -2) aimed N; 2.8 km of
+		# divided highway compress into the fog. The establishing
+		# still of the action stage.
+		"camera_origin": Vector3(-510.0, -0.2, -40.0),
+		"camera_rotation": Vector3(-0.01, 0.0, 0.0),
+		"fov": 30.0,
+		"suppress_input": true,
+	},
+	"highway9_shoulder": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# Low wide from the E shoulder short of THE SCAR (deformed
+		# rail + debris at godot -498.6,-212): guardrail runs
+		# frame-right, skid marks pull the eye N. Knee-height drama.
+		"camera_origin": Vector3(-498.0, -1.0, -185.0),
+		"camera_rotation": Vector3(-0.02, 0.02, 0.0),
+		"fov": 68.0,
+		"suppress_input": true,
+	},
+	"highway9_overpass": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# High angle from the overpass deck (godot -510, deck y≈3.6,
+		# z=-300) looking S down both carriageways to the scar zone —
+		# the surveillance/geometry shot of the stage.
+		"camera_origin": Vector3(-510.0, 5.1, -296.0),
+		"camera_rotation": Vector3(-0.08, 3.1416, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"highway9_scar": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# Close on the aftermath: bowed guardrail, debris fan, glass
+		# glitter (godot -498..-495, z -210..-216). Something already
+		# happened on this road.
+		"camera_origin": Vector3(-502.5, -0.6, -206.0),
+		"camera_rotation": Vector3(-0.06, -0.57, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"highway9_turnout": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# The gravel rest turnout on the southbound side (godot z
+		# +330..+370): the parked semi as scale anchor, the highway
+		# running away N behind it.
+		"camera_origin": Vector3(-519.0, -0.5, 350.0),
+		"camera_rotation": Vector3(-0.02, 0.67, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"highway9_drive": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# THE MOVING ONE — windshield-height push N up the northbound
+		# lane toward the scar zone, 150 m over 16 s, ping-ponged.
+		# First use of the camera_track capability; the action beat
+		# plays over a road that is actually traveling.
+		"camera_origin": Vector3(-505.9, -0.5, -40.0),
+		"camera_rotation": Vector3(-0.01, 0.0, 0.0),
+		"camera_track": {"to": Vector3(-505.9, -0.5, -190.0), "secs": 16.0, "loop": "pingpong"},
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"chapel_exterior": {
+		# Hierophant §I — Maya outside St. Jude's. SURVEYED: chapel
+		# building blender x -3..+3, y 0..+7, front wall + steps at
+		# y=0 facing the southern grounds/road. Camera at the apron's
+		# road edge SW of the steps looking N, tilted up: the whole
+		# front, the portico, the steeple and its cross, the cane on
+		# both sides of the mound (2026-09-30, draft 2: it stood 4.5 m
+		# off the 5 m facade and the frame was one blank wall).
+		"scene": "res://scenes/locales/roadside_chapel.tscn",
+		"requires_glb": "res://assets/3d/locales/roadside_chapel.glb",
+		"camera_origin": Vector3(-2.2, 1.5, 11.0),
+		"camera_rotation": Vector3(0.10, -0.17, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"dambrosios_formal": {
+		# The Empress chapter's D'Ambrosio's floor — the WEST formal
+		# dining room (blender X-15..-9, Y-6..-1; the old NE-annex
+		# camera framed a room whose builder was disabled 2026-07).
+		# Burgundy carpet, the linen banquet table centre (godot
+		# -12,+3.5), numbered corner tables T4/T9/T12/T14 with brass
+		# plaques (T14 godot -9.85,+5.25 carries Dean's check folder
+		# + card), velvet ropes at the door, service bar + wine lists
+		# E. Camera inside the partition door looking SSW across the
+		# ropes to the banquet + Table 14.
+		"scene": "res://scenes/locales/diner.tscn",
+		"requires_glb": "res://assets/3d/locales/diner.glb",
+		# RE-VANTAGED 2026-09-03: vantage_obstruction_audit --propose (the partition filled 78% of frame at 0.8 m)
+		# 2026-09-24: that proposal stood OUTSIDE the building (x -15.4, past
+		# the west wall at -15) looking out at the dark — the contact sheet's
+		# frame was water and a railing. Inside the partition door now,
+		# looking S across the room: the banquet ahead, Table 14 left.
+		"camera_origin": Vector3(-12.00, 1.60, 1.35),
+		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"kwik_stop_godseye": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
-		# Diagnostic vantage. Straight-down god's-eye 8m above
-		# floor-center. Use when debugging whether the build/GLB
-		# actually contains the geometry it should — point a scene
-		# at "3d:kwik_stop_godseye" and the floor + counter outline
-		# read unambiguously.
-		"camera_origin": Vector3(0.0, 8.0, -4.5),
+		# Diagnostic vantage. Straight-down god's-eye just BELOW the
+		# ceiling slab (CEIL_Z=3.00 — an 8m camera renders the roof,
+		# not the floor). Point a scene at "3d:kwik_stop_godseye"
+		# and the floor + counter outline read unambiguously.
+		"camera_origin": Vector3(0.0, 2.75, -4.5),
 		"camera_rotation": Vector3(-PI / 2.0, 0.0, 0.0),
 		"fov": 70.0,
 		"suppress_input": true,
@@ -73,71 +207,285 @@ const CAMERA_PRESETS := {
 	# ── VOL 5 — Priestess chapter ─────────────────────────────────
 	"bungalow_interior": {
 		"scene": "res://scenes/locales/bungalow.tscn",
+		# (2026-10-05) inside the living room by the studio doorway, across
+		# the boxes to the bedroom door — it stood in the kitchen looking
+		# into the bedroom.
 		"requires_glb": "res://assets/3d/locales/bungalow.glb",
-		# Living room standing-eye vantage looking at the front door
-		# (south, the canon "packing dusk" scene framing). Camera
-		# height 2.30 matches the gauntlet FP cam standard.
-		"camera_origin": Vector3(0.0, 2.30, -2.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# SURVEYED 2026-07-11 (scratchpad survey.py): the bungalow's
+		# center is the STORAGE CLOSET (blender x -1..+1.4, y 1..3) —
+		# the previous vantage stared into its south wall from 0.5m
+		# (the all-black establish). The living room is the narrow
+		# west strip (x -2.4..-1, chair + side table); boxes hide in
+		# the pocket north of the closet. Establish from just inside
+		# the front door looking NW up the living strip.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(1.20, 1.60, -0.35),
+		"camera_rotation": Vector3(-0.194, 0.986, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Empress / Emperor — riverboat interior ───────────
 	"riverboat_interior": {
 		"scene": "res://scenes/locales/riverboat_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/riverboat_interior.glb",
-		# Multi-deck boat: the build stacks decks in Blender Z (= Godot Y
-		# height) — lower deck Y 0-2.4, MAIN DINING deck Y 2.5-5.0, helm
-		# deck Y 5.1-7.6. Auto-frame (and my first guess at floor height)
-		# put the camera below the dining floor in the dark hull. Stand on
-		# the main deck at eye height (~Y 4) in the aft dining area
-		# (Z≈+4.2) and look forward across the dining room (Z→+1.5).
-		"camera_origin":  Vector3(0.0, 4.0, 4.2),
-		"camera_look_at": Vector3(0.0, 3.7, 1.5),
-		"fov": 64.0,
+		# Dante's helm office — UPPER deck. build_riverboat_interior.py
+		# is the floor oracle: UPPER_FLOOR_Z=5.10 (the gauntlet table
+		# carried a stale 3.2 — cameras keyed to it sat in the void
+		# between decks and rendered black). Eye 5.10+1.75, standing
+		# at the north side of the office looking SOUTH: mahogany
+		# desk (blender y=-1.5) in the foreground, the leaded window
+		# over the dining floor (y=-3) beyond.
+		"camera_origin": Vector3(0.0, 6.85, -1.6),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(180.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────
 	"cathedral_interior": {
-		"scene": "res://scenes/locales/cathedral.tscn",
-		"requires_glb": "res://assets/3d/locales/cathedral_interior.glb",
-		# Workbench-foreground vantage. Looking down the nave at the
-		# Magician's workbench (the chapter's focal point).
-		"camera_origin": Vector3(0.0, 2.30, +4.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(0.0), 0.0),
+		# THE FULL SET, not the bare locale shell. scenes/cathedral.tscn
+		# carries the workbench props (steamboat fragment, soldering
+		# iron, notebook), the regional dioramas (Frasier's model
+		# city), the demon figurines, the 22-light rig and HeroFrasier.
+		# The old locales/cathedral.tscn pointed at a GLB path the
+		# builder never writes (assets/3d/locales/ vs assets/3d/
+		# cathedral/) — requires_glb always failed → the Magician
+		# chapter rendered the 2D-black fallback.
+		"scene": "res://scenes/cathedral.tscn",
+		"requires_glb": "res://assets/3d/cathedral/cathedral_interior.glb",
+		# South of the workbench looking NORTH: bench (blender y=-3)
+		# in the foreground, dioramas at frame right (x=+5), the nave
+		# beyond.
+		"camera_origin": Vector3(0.0, 2.30, 5.5),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Lovers + various cameos — Graustark ruins ────────
+	# ── VOL 5 — Magician — the warehouse FROM OUTSIDE ─────────────
+	# Added 2026-09-11 on a Deck read: ch1 opens "The warehouse did
+	# not stand. The warehouse slumped — a great rusting beast at the
+	# industrial edge of Graustark ... sighing petrochemical breath
+	# into the humid twilight", and then "Outside, kudzu vines thick
+	# as wrists throttled the chain-link fence" — two paragraphs of
+	# building seen from the road, played over an INTERIOR. The prose
+	# turns inside on its own, one line later ("Inside, the air was
+	# thick and still"), so the fix is a cut, not a reframe.
+	#
+	# Cathedral of Rust and Code sits at blender (300, 380): body
+	# 22 × 42 × 11 on ground z 1.4, long axis +y, the office annex and
+	# its door on the WEST face (285, 386 / 382.9), buttresses down
+	# both flanks, antennas and the satellite dish to z 22.9. Stand
+	# off the south-west corner at eye height and look north-east:
+	# the west face with the office, the south gable end, and the
+	# whole roofline of masts against the sky.
+	# blender cam (262, 338, 3.1) → godot (262, 3.1, −338);
+	# aim (292, 372, 7): yaw = atan2(−30, 34), a little up.
+	"cathedral_exterior": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		# (2026-10-05) in the lot by the kudzu fence, the warehouse looming —
+		# it stood 57 m off on an empty plain.
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		"camera_origin": Vector3(265.50, 3.00, -343.50),
+		"camera_rotation": Vector3(0.056, -0.378, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"graustark_st_jude": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# St. Jude's Acadian Church from across its street on a Sunday (Hierophant §I): the black car idling at the curb, the steps, the fellowship table — 2026-10-05.
+		"camera_origin": Vector3(-194.50, 1.65, -168.60),
+		"camera_rotation": Vector3(0.273, 0.383, 0.0),
+		"fov": 60.0,
+		# (pass 62) ch5 lunch on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"graustark_armory_park": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# the park by the Old Armory at dusk (Hierophant §IV): the abandoned bandstand, John's bench, the armory beyond — 2026-10-05.
+		"camera_origin": Vector3(247.00, 4.55, 353.00),
+		"camera_rotation": Vector3(0.051, 0.716, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"graustark_ruins": {
 		"scene": "res://scenes/locales/graustark.tscn",
 		"requires_glb": "res://assets/3d/locales/graustark.glb",
-		# Establishing vantage looking across the ruins. Texas late-
-		# afternoon, warm bleached light, prairie sky beyond.
-		"camera_origin": Vector3(-5.0, 2.30, +6.0),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(120.0), 0.0),
+		# THE RUIN QUARTER is at blender (−12..66, −300..−390) —
+		# sinkhole (10,−300), chalked wall (44,−374), rubble field
+		# (46,−368), cottage (50,−380), skyline shells + leaning
+		# chimneys ringing it. The old vantage stood at the
+		# riverfront ORIGIN looking west: 350m from every chapter's
+		# staging, i.e. flat brown dirt ("world/judgement/star all
+		# same plain brown"). Now SE of the quarter looking NW:
+		# rubble + chalked wall near-right, fallen arch mid, broken
+		# rooflines and chimneys on the skyline.
+		# blender cam (66, −390, 2.4) → godot (66, 2.4, +390);
+		# aim at shells (18,−335,4): yaw=atan2(48,55), slight down.
+		"camera_origin": Vector3(63.50, 3.20, 393.50),
+		"camera_rotation": Vector3(-0.037, 0.653, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Hermit — Joanna's chalked wall + the crow's perch ─
+	"graustark_chalk_wall": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# West of the wall (blender 44,−374; verses on its −x face)
+		# looking EAST: the rusted I-beam (40.5,−371 — the crow's
+		# perch) crosses frame-left in the near ground, the chalk
+		# verses fill frame-right. Hermit stages chalk 11×, beam 8×.
+		# blender cam (36, −371, 1.9) → godot (36, 1.9, 371);
+		# yaw = atan2(−8, −3).
+		"camera_origin": Vector3(35.20, 1.75, 370.40),
+		"camera_rotation": Vector3(-0.021, -2.023, 0.0),
+		"fov": 56.0,
+		# (pass 62) ch17 Star / ch9 Hermit at night and dusk on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
+	"graustark_shotgun_interior": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# (2026-10-10) INSIDE Joanna's patched shotgun house (blender x
+		# 50.6-54.4, y -383.5..-377; floor top 0.78): "She sat at her small
+		# desk — a door laid across two stacks of bricks" (ch9), "Lit the
+		# candle. Sat at the desk-that-was-a-door-on-bricks" (ch17). The eye
+		# of shot_wide_house: just inside the door, NE to the desk under the
+		# east window, the candle on it. Night: the candle practicals are
+		# the light; the Texas sun stays suffixed to the day presets.
+		"camera_origin": Vector3(51.60, 1.62, 382.95),
+		"camera_rotation": Vector3(-0.123, -0.493, 0.0),
+		"fov": 62.0,
+		# (graustark.tscn has a flat background and one shared sun across eight
+		# presets; the walls shield the room, so only ambient and fog go dark)
+		"env": {"ambient_color": Color(0.42, 0.36, 0.30, 1), "ambient_energy": 0.55, "fog_color": Color(0.14, 0.12, 0.12, 1)},
+		"suppress_input": true,
+	},
+	"graustark_cottage": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# South of the gate (posts blender 49.5-50.5, −387.8)
+		# looking NORTH up the flagstone path: gate foreground,
+		# cottage (50,−380) + herb bed (52.2,−379) mid, the broken
+		# skyline shells 40-70m beyond.
+		# blender cam (50, −394, 1.8) → godot (50, 1.8, 394); yaw 0.
+		"camera_origin": Vector3(49.20, 1.65, 394.00),
+		"camera_rotation": Vector3(0.041, -0.234, 0.0),
+		"fov": 55.0,
+		# (pass 62) ch21 afternoon on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Judgement — the Minstral's Green wreck ────────────
+	"graustark_wreck": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# SE of the beached steamship (hull blender 38,−120, top
+		# 5.6; stack to 7.9; paddlebox 42.2,−124 — the Frog's seat)
+		# looking NW: paddlebox near-right, listed hull and stack
+		# rising left. Judgement stages the wreck 4×.
+		# blender cam (50, −134, 2.2) → godot (50, 2.2, 134);
+		# yaw = atan2(11, 16), slight up to catch the stack.
+		"camera_origin": Vector3(45.50, 0.37, 141.50),
+		"camera_rotation": Vector3(0.041, 0.275, 0.0),
 		"fov": 60.0,
+		# (pass 62) ch20/ch21 mornings on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
 	"roberts_kitchen": {
 		"scene": "res://scenes/locales/roberts_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/roberts_kitchen.glb",
-		# Kitchen island foreground, faces north toward sink/stove
-		# along Y=+6. Standing-height camera.
-		"camera_origin": Vector3(0.0, 2.30, -1.5),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# SURVEYED: the old yaw-180 vantage faced the SOUTH wall from
+		# 1.5m (comment said north; rotation said south). Now from
+		# the SE open floor looking NW across the island to the sink
+		# corner (faucet blender (-2.0,5.4)) — the Lovers chapter's
+		# whole geography (sink, island, doorway) in one wide.
+		# RE-VANTAGED 2026-10-02 (the Deck: "direction still isn't strong
+		# at all, vol 5. camera and director attention not where they
+		# should be"): from just inside the FRONT DOOR looking north
+		# across the island to the sink, where Philip is under it with
+		# the faucet — the coffee pots and the returned casserole on the
+		# island, the dish rack and the open cabinet behind, the loom in
+		# the west corner, the east window at the frame's right. The
+		# 09-03 vantage from the SE corner put all of it out of frame.
+		"camera_origin": Vector3(0.55, 1.62, -0.85),
+		"camera_rotation": Vector3(-0.07, 0.12, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Empress — Natalie's San Francisco apartment ──────
 	"natalie_apartment": {
 		"scene": "res://scenes/locales/natalie_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/natalie_apartment.glb",
-		# Living-room vantage looking from the door into the room,
-		# sofa as foreground, west window beyond. Late-afternoon sun.
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Hanged Man / Moon. Room 7×5.5 (godot x∈[-3.5,3.5], z∈[0,-5.5],
+		# ceil 2.6). Teal sofa in the S-centre living area (blender
+		# -0.3,1.2 → godot -0.3,-1.2), tall afternoon window on the W
+		# wall (x=-3.5), bookshelf E wall, bed nook NE (godot 2.2,-4.5),
+		# kitchenette NW. Camera in the SW corner (by the window/door)
+		# looking ENE across the whole apartment: sofa in the near
+		# foreground, bookshelf + bed nook receding to the far NE, the
+		# W window backlighting the frame. One wide that reads the whole
+		# geography where "John and Natalie made the choice."
+		"camera_origin": Vector3(-2.6, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"natalie_apartment_night": {
+		"scene": "res://scenes/locales/natalie_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/natalie_apartment.glb",
+		# (2026-10-10) THE SAME ROOM AT NIGHT: ch12 Hanged (after midnight to
+		# 3:42 AM, "moonlight slanting through the blinds") and ch18 Moon (5:00
+		# to 5:31 AM, before the Simons dawn) played on the afternoon light. The
+		# three daylight directionals are suffixed to natalie_apartment; this
+		# preset brings a moon through the W window and a dark env; the lamps
+		# and the candle serve both.
+		# Hanged Man / Moon. Room 7×5.5 (godot x∈[-3.5,3.5], z∈[0,-5.5],
+		# ceil 2.6). Teal sofa in the S-centre living area (blender
+		# -0.3,1.2 → godot -0.3,-1.2), tall afternoon window on the W
+		# wall (x=-3.5), bookshelf E wall, bed nook NE (godot 2.2,-4.5),
+		# kitchenette NW. Camera in the SW corner (by the window/door)
+		# looking ENE across the whole apartment: sofa in the near
+		# foreground, bookshelf + bed nook receding to the far NE, the
+		# W window backlighting the frame. One wide that reads the whole
+		# geography where "John and Natalie made the choice."
+		"camera_origin": Vector3(-2.6, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1), "ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.34, 0.46, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.14, 0.20, 1)},
+		"suppress_input": true,
+	},
+	"simon_apartment": {
+		"scene": "res://scenes/locales/simon_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/simon_apartment.glb",
+		# XII Hanged Man — the studio dressed for the card (2026-09-27,
+		# draft 40: the room was built in the support pass and never
+		# given a preset). Room 5×7 (godot x∈[-2.5,2.5], z∈[0,-7],
+		# ceil 2.8). Front window + fire escape on the S wall (z=0),
+		# bed NE (godot 1.4,-5.7), armchair (0.5,-2.4) facing the TV on
+		# its crate against the E wall (2.1,-2.4), the boot on its peg
+		# on the W wall (z=-5.5), kitchenette W. Camera in the NE corner
+		# by the bed looking SW: the armchair and the TV's crate in the
+		# near ground, the boot on the far wall, the window and the fire
+		# escape beyond — the things suspended, in one frame.
+		"camera_origin": Vector3(2.0, 1.65, -6.5),
+		"camera_rotation": Vector3(-0.08, 2.356, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -145,8 +493,13 @@ const CAMERA_PRESETS := {
 	"elicia_apartment": {
 		"scene": "res://scenes/locales/elicia_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/elicia_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# SW corner looking NE across the sofa + coffee table toward
+		# the vinyl shelf (east wall) and the recording nook (NE
+		# corner). Room is 7×5.5m, ceiling 2.6 — eye 1.85 keeps the
+		# crown molding out of frame. The old default yaw-180 vantage
+		# faced the entry wall (the "abstract corners" complaint).
+		"camera_origin": Vector3(-2.6, 1.85, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-57.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -154,18 +507,27 @@ const CAMERA_PRESETS := {
 	"houston_office": {
 		"scene": "res://scenes/locales/houston_office.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_office.glb",
-		# Looking down the cubicle row toward the manager's glass office.
-		"camera_origin": Vector3(0.0, 2.30, +1.0),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 64.0,
+		# Erica Campbell's partner office, twelve stories up (draft 4,
+		# 2026-10-09: it was a cubicle floor). 9 x 7 (godot x in
+		# [-4.5,4.5], z in [0,-7], ceil 3.0); the N and W walls are
+		# floor-to-ceiling glass. Camera just inside her door, looking NW
+		# across the teak desk to the corner glass and the city below.
+		"camera_origin": Vector3(3.9, 1.62, -1.5),
+		"camera_rotation": Vector3(-0.046, 0.945, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"houston_design_studio": {
 		"scene": "res://scenes/locales/houston_design_studio.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_design_studio.glb",
-		# Drafting row in mid-frame, brick wall + mood board context.
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
+		# Anna Logue's office (draft 3, 2026-10-10: "her meticulously
+		# greige Houston high-rise office, three floors down from" Erica's
+		# firm — it was a brick-and-duct loft). 7 x 6 (godot x in
+		# [-3.5,3.5], z in [0,-6], ceil 2.9), the N wall glass over the
+		# city. Camera inside the door, looking NE at her desk, its three
+		# monitors, the glass.
+		"camera_origin": Vector3(-2.9, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.062, -0.954, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -173,17 +535,33 @@ const CAMERA_PRESETS := {
 	"montreal_apartment": {
 		"scene": "res://scenes/locales/montreal_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/montreal_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Temperance. Room 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.8).
+		# Mile-End winter apartment: sofa S-centre (blender -0.5,1.3 →
+		# godot -0.5,-1.3), overflowing bookshelf E wall (godot
+		# 2.5,-2.5), tall N window with snow-light + cast-iron radiator
+		# under it (z=-4.8/-5), corner kitchenette NE with the French
+		# press. Camera in the SW corner looking NE: sofa near-left, the
+		# book wall at right, the cold N window glow centre-back. Cozy,
+		# contained — the whole cluttered room in one frame.
+		"camera_origin": Vector3(-2.0, 1.60, -0.7),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-41.9), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"cafe_olimpico": {
 		"scene": "res://scenes/locales/cafe_olimpico.tscn",
 		"requires_glb": "res://assets/3d/locales/cafe_olimpico.glb",
-		# Looking from door at the bar counter + espresso machine.
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# The Sun. Room 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 3.0).
+		# Espresso bar along the N wall (blender y=5 → godot z=-5) with
+		# the chrome 2-group machine dead-centre, pastry case at the E
+		# end, two marble round tables mid-room (godot ±2,-1.8), vinyl
+		# booth E wall, soccer pennants over the bar, bright SW/SE
+		# windows. Camera just inside the S door, west of centre,
+		# looking NNE: west marble table in the foreground, the bar +
+		# espresso machine centre-back, pastry case + booth at right.
+		# The brightest, most welcoming room of the eight.
+		"camera_origin": Vector3(-2.0, 1.65, -0.8),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-29.9), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -191,41 +569,135 @@ const CAMERA_PRESETS := {
 	"new_orleans_bar": {
 		"scene": "res://scenes/locales/new_orleans_bar.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_bar.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
-		"fov": 62.0,
+		# The Iron Crow, draft 6 (2026-10-09): 13 x 9 m (godot x in
+		# [-6.5,6.5], z in [0,-9], ceil 3.9). The long bar on the N side,
+		# Douglas's corner booth SW under the beer neons, the pool table
+		# mid-floor, the chalk-table corner SE. Camera just inside the
+		# street door by the chalk corner, looking NW across the pool
+		# table: the bar and its TV up on the N wall, the booth at left.
+		"camera_origin": Vector3(3.6, 1.65, -0.9),
+		"camera_rotation": Vector3(-0.045, deg_to_rad(56.1), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"new_orleans_office": {
 		"scene": "res://scenes/locales/new_orleans_office.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_office.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# The Chariot. Room 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 3.2).
+		# Heavy oak desk dead-centre (blender 0,3.5 → godot 0,-3.5),
+		# tall afternoon window on the E wall (x=+3.5), bookcase W wall,
+		# filing cabinet NE. Camera in the SW quadrant just inside the
+		# door looking NE across the desk toward the window — 3/4 angle
+		# so the oak desk + banker's lamp read with depth, not a flat
+		# head-on stare.
+		"camera_origin": Vector3(-1.45, 1.62, -0.42),
+		"camera_rotation": Vector3(-0.218, -0.750, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"new_orleans_apartment": {
 		"scene": "res://scenes/locales/new_orleans_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
-		"fov": 62.0,
+		# The Devil. Room 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 3.4).
+		# Four-poster canopy bed at the N end (blender 0,4.8 → godot
+		# 0,-4.8, canopy top ~2.05), exposed-brick E wall (x=+3.5),
+		# armoire W wall, ceiling fan centre. Camera in the SE quadrant
+		# just inside the door looking NNW at the bed: canopy + brick
+		# wall (frame right) with the tall room's headroom above. Eye
+		# lifted to 1.80 for the 3.4m ceiling grandeur.
+		"camera_origin": Vector3(2.2, 1.80, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(32.3), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"new_orleans_room": {
 		"scene": "res://scenes/locales/new_orleans_room.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_room.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
+		# Spare boarding-house room 4×5 (godot x∈[-2,2], z∈[0,-5], ceil
+		# 2.8). Single bed centre-north (blender 0,3.5 → godot 0,-3.5),
+		# porcelain washbasin NE corner (godot 1.6,-4.5), nightstand NW,
+		# sash window N wall, bare bulb on a cord. Camera in the SW corner
+		# just inside the door looking NE across the room: bed centre-back,
+		# washbasin at frame right, the worn geography in one contained wide.
+		"camera_origin": Vector3(-1.3, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-28.7), 0.0),
 		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"new_orleans_room_day": {
+		"scene": "res://scenes/locales/new_orleans_room.tscn",
+		"requires_glb": "res://assets/3d/locales/new_orleans_room.glb",
+		# Spare boarding-house room 4×5 (godot x∈[-2,2], z∈[0,-5], ceil
+		# 2.8). Single bed centre-north (blender 0,3.5 → godot 0,-3.5),
+		# porcelain washbasin NE corner (godot 1.6,-4.5), nightstand NW,
+		# sash window N wall, bare bulb on a cord. Camera in the SW corner
+		# just inside the door looking NE across the room: bed centre-back,
+		# washbasin at frame right, the worn geography in one contained wide.
+		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Judgement: Jimmy Daigle at three o'clock, "the humid haze thickened",
+		# the room above the laundromat by day on the bare-bulb night rig.
+		# The authored rig is suffixed to new_orleans_room; this twin has its own lights and env.
+		"camera_origin": Vector3(-1.3, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-28.7), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.56, 0.62, 0.72, 1), "sky_horizon": Color(0.90, 0.86, 0.78, 1),
+			"ground_horizon": Color(0.44, 0.42, 0.38, 1), "ground_bottom": Color(0.18, 0.18, 0.16, 1),
+			"ambient_color": Color(0.84, 0.80, 0.74, 1), "ambient_energy": 0.85, "fog_color": Color(0.84, 0.80, 0.74, 1)},
 		"suppress_input": true,
 	},
 	"hospice_room": {
 		"scene": "res://scenes/locales/hospice_room.tscn",
 		"requires_glb": "res://assets/3d/locales/hospice_room.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Death. Room 6×5.5 (godot x∈[-3,3], z∈[0,-5.5], ceil 2.8).
+		# Adjustable bed centre-north (blender 0,3.2 → godot 0,-3.2,
+		# head raised toward the N window), soft-lit N window behind it
+		# (z=-5.5), IV stand at the bed's right (godot 1,-4.2), vitals
+		# cart at its left, the visitor's upholstered armchair south of
+		# the bed (godot -1.2,-1.8), bedside table with flowers.
+		# Camera in the SE quadrant looking NNW: the empty visitor chair
+		# in the near foreground, the bed with the window's gentle glow
+		# behind it — the vantage of the one who stays.
+		"camera_origin": Vector3(1.8, 1.60, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(36.2), 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"hospice_room_night": {
+		"scene": "res://scenes/locales/hospice_room.tscn",
+		"requires_glb": "res://assets/3d/locales/hospice_room.glb",
+		# (2026-10-10) THE SAME ROOM AT 3 AM: ch13 Death ("lit only by the small
+		# under-cabinet light", 3 to 4:06 AM) played on the day's soft window.
+		# The day rig is suffixed to hospice_room; this preset keeps the
+		# under-cab practical and the hall spill, adds the monitor's glow,
+		# and turns the sky and ambient to night.
+		# Death. Room 6×5.5 (godot x∈[-3,3], z∈[0,-5.5], ceil 2.8).
+		# Adjustable bed centre-north (blender 0,3.2 → godot 0,-3.2,
+		# head raised toward the N window), soft-lit N window behind it
+		# (z=-5.5), IV stand at the bed's right (godot 1,-4.2), vitals
+		# cart at its left, the visitor's upholstered armchair south of
+		# the bed (godot -1.2,-1.8), bedside table with flowers.
+		# Camera in the SE quadrant looking NNW: the empty visitor chair
+		# in the near foreground, the bed with the window's gentle glow
+		# behind it — the vantage of the one who stays.
+		"camera_origin": Vector3(1.8, 1.60, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(36.2), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.14, 0.14, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.32, 0.32, 0.40, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"county_line_station": {
+		"scene": "res://scenes/locales/county_line_station.tscn",
+		"requires_glb": "res://assets/3d/locales/county_line_station.glb",
+		# (2026-10-10) vol5 ch18 The Moon, 7:52 AM: the gas station just past
+		# the county-line sign. The two-island canopy (godot x -6..2, z -3),
+		# the Subaru at pump one, the store's front with the ice machine and
+		# the metal bench beside it, the exit with the traffic light where the
+		# crow lands, the road west to the overpass over the bayou. From the
+		# lot by the exit, SW to the Subaru at pump one under the canopy.
+		"camera_origin": Vector3(4.00, 1.65, -7.50),
+		"camera_rotation": Vector3(-0.004, 2.053, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"louisiana_road": {
@@ -233,7 +705,7 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/louisiana_road.glb",
 		# Standing in the breakdown lane looking north up the road.
 		"camera_origin": Vector3(-1.0, 2.30, -3.0),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(0.0), 0.0),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(180.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -244,306 +716,1961 @@ const CAMERA_PRESETS := {
 	"miller_kitchen": {
 		"scene": "res://scenes/locales/miller_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_kitchen_night": {
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: ch2 (the kitchen table at night, after the Gas & Go lot) on the day
+		# key through the sink window.
+		# The authored rig is suffixed to miller_kitchen; this twin has its own lights and env.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	"centro_grocery_aisle": {
 		"scene": "res://scenes/locales/centro_grocery_aisle.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_grocery_aisle.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(0.0), 0.0),
-		"fov": 66.0,
+		# Centro Foods' sales floor at supermarket scale (2026-10-07: was a
+		# 10 x 8 m box). 30 x 22 m under a 5.4 m structure: checkouts and the
+		# service desk at the front, produce and its wet wall west, six
+		# front-to-back gondolas (Aisles 5-9, Seven in the middle), dairy,
+		# receiving and the meat counter along the back, deli, bakery and the
+		# frozen bank east. From behind the checkouts by the service desk,
+		# looking NW across the action alley to the aisle mouths and produce.
+		"camera_origin": Vector3(11.80, 1.75, -6.00),
+		"camera_rotation": Vector3(-0.035, 1.297, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"centro_break_room": {
 		"scene": "res://scenes/locales/centro_break_room.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_break_room.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# DRAFT 3 (2026-10-09): 7.2 x 5.6; camera in the corridor doorway
+		# looking N over the crew table to Doug's chair and the kitchenette.
+		"camera_origin": Vector3(0.60, 1.62, -0.65),
+		"camera_rotation": Vector3(-0.162, deg_to_rad(20.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"kowalski_kitchen": {
 		"scene": "res://scenes/locales/kowalski_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/kowalski_kitchen.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# DRAFT 5 (2026-10-09): kitchen E + family room W, 10 x 6.4 (godot x in
+		# [-5,5], z in [0,-6.4]); camera inside the garage door looking NW.
+		"camera_origin": Vector3(3.70, 1.62, -0.85),
+		"camera_rotation": Vector3(-0.100, deg_to_rad(51.4), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"henderson_kitchen": {
 		"scene": "res://scenes/locales/henderson_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/henderson_kitchen.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Family kitchen 6.5×5.5 (godot x∈[-3.25,3.25], z∈[0,-5.5], ceil
+		# 2.6). Table centre (godot 0,-2.75), sink+counter NW (godot
+		# -1.625,-4.5), stove centre-N (1.625,-4.5), fridge NE (godot
+		# 2.75,-4.5). Camera in the SE quadrant just inside the door
+		# looking NW across the table toward the sink corner — the whole
+		# kitchen in one 3/4 wide.
+		"camera_origin": Vector3(2.2, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"cosmic_comics_interior": {
 		"scene": "res://scenes/locales/cosmic_comics_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cosmic_comics_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(0.0), 0.0),
+		# Comic-shop back-issue floor 10×8 (godot x∈[-5,5], z∈[0,-8], ceil
+		# 2.8, purple walls). Two long back-issue bins run E-W mid-room
+		# (blender y=2.8 & 5.2 → godot z=-2.8 & -5.2, x∈[-2.5,2.5]),
+		# register counter NE (blender 2.5,6.5 → godot 2.5,-6.5), revolving
+		# spinner rack NW corner, action-figure pegwall E wall. Camera in
+		# the SE quadrant just inside the door looking NW across the bins
+		# toward the spinner: bins mid-frame, register at right, wide FOV.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(4.50, 1.68, -0.55),
+		"camera_rotation": Vector3(-0.05, 0.785, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"cosmic_comics_back_office": {
-		"scene": "res://scenes/locales/cosmic_comics_back_office.tscn",
-		"requires_glb": "res://assets/3d/locales/cosmic_comics_back_office.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		"scene": "res://scenes/locales/cosmic_comics_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cosmic_comics_interior.glb",
+		# ONE SET WITH THE SHOP (2026-10-09): the office is built behind the
+		# shop's back-office doorway (godot x 1.3..5.9, z -8.0..-13.2) from the
+		# office builder's own functions (BO_ parts); its markers + rig are
+		# the `__cosmic_comics_back_office` ones in the shop scene. Camera
+		# just inside the doorway looking NW across the office: filing
+		# cabinets frame-left, the desk + monitor at the N end.
+		"camera_origin": Vector3(5.10, 1.60, -8.60),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"ben_bedroom": {
+		"scene": "res://scenes/locales/ben_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/ben_bedroom.glb",
+		# Ben Kowalski's room (vol6 ch23 "Sleep", ch19). Tidy athlete's
+		# 3.6×4.0 (godot x∈[-1.8,1.8], z∈[0,-4.0], ceil 2.5). Twin-XL
+		# headboard EAST (unique footprint), Mister the cat curled at
+		# the foot, the door cracked the canon way, desk + 9:48 clock
+		# WEST with the depth chart taped above, gear corner NW.
+		# Camera SW by the cracked door looking NE at the bed.
+		"camera_origin": Vector3(-1.2, 1.5, -0.7),
+		"camera_rotation": Vector3(-0.253, -0.712, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"coach_k_bedroom": {
+		"scene": "res://scenes/locales/coach_k_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/coach_k_bedroom.glb",
+		# Coach K + Eileen's master bedroom (vol6 ch19 final beat).
+		# 4.4×4.6 grown-couple's room: queen centered NORTH, matched
+		# nightstands (his: clock glow, glasses, sports section), the
+		# ceiling fan he stares at, dresser EAST with twenty years of
+		# sediment, curtain seam of night WEST. Near-dark. Camera
+		# south-center looking N at the bed under the fan.
+		"camera_origin": Vector3(-1.4, 1.5, -0.8),
+		"camera_rotation": Vector3(-0.192, -0.543, 0.0),
 		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"kowalski_front_yard": {
+		"scene": "res://scenes/locales/kowalski_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/kowalski_backyard.glb",
+		# (2026-10-10) vol6 ch19 "The Chains": the FRONT of the Kowalski house
+		# (godot z 5.2 to the street at z 18): the stoop and the bed beside it
+		# where Bill pulls weeds on Friday afternoons, the garage, the
+		# driveway with Ben's Civic, the lawn, the street. From the sidewalk,
+		# NE up the lawn to the house front, the bed at left.
+		"camera_origin": Vector3(-4.00, 1.65, 13.80),
+		"camera_rotation": Vector3(-0.024, -0.626, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"kowalski_backyard": {
+		"scene": "res://scenes/locales/kowalski_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/kowalski_backyard.glb",
+		# The Kowalski back yard (vol6 ch7 "Daisy and the Butterfly").
+		# 11×9 bright Saturday: mow-striped lawn, patio + sliding door,
+		# the lawn chair with Daisy crouched BEHIND it, Maya's towel in
+		# the grass, Gracie's sketch table on the patio, cedar fence,
+		# shade tree + tire swing NE. Camera from the yard looking SW
+		# back at the house: chair+Daisy mid-frame, patio left.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(0.45, 1.60, -8.20),
+		"camera_rotation": Vector3(-0.097, 3.011, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"henderson_porch_front": {
+		"scene": "res://scenes/locales/henderson_porch_front.tscn",
+		"requires_glb": "res://assets/3d/locales/henderson_porch_front.glb",
+		# The Henderson front porch + driveway at night (vol6 ch7 the
+		# boys on the steps · ch14/ch19 Jesse's 10:48 arrivals). The
+		# ONE LIT WINDOW — the kitchen light his mother leaves on — is
+		# the emotional center; everything else is dark siding, the
+		# parked sedan, the live oak over the curb, one streetlamp.
+		# Camera at the curb looking at the house across the lawn.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(-1.25, 1.60, -7.10),
+		"camera_rotation": Vector3(-0.013, 3.403, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"gym_weight_room": {
+		"scene": "res://scenes/locales/gym_weight_room.tscn",
+		"requires_glb": "res://assets/3d/locales/gym_weight_room.glb",
+		# HCHS basement weight room (vol6 ch13 "Two-a-Days"). 7.5×6.5,
+		# LOW 2.5 ceiling: squat rack loaded N, two benches mid-floor,
+		# dumbbell rack + mirror W, THE DEPTH CHART + record board E,
+		# stairs down from the door SE, box fan on a crate. Camera at
+		# the foot of the stairs looking NW across the iron.
+		"camera_origin": Vector3(2.2, 1.6, -0.9),
+		"camera_rotation": Vector3(-0.099, 0.744, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"equipment_shed": {
+		"scene": "res://scenes/locales/equipment_shed.tscn",
+		"requires_glb": "res://assets/3d/locales/equipment_shed.glb",
+		# The field-side equipment shed (vol6 ch19 "The Depth Chart" —
+		# Coach Dale sorting at the back wall). 4.8×5.4 plywood shed,
+		# double doors OPEN to the dusk field + goalpost silhouette:
+		# helmet shelf W, blocking sled + tackle dummies E, the field
+		# liner, roster sheets nailed to the back wall over the stool.
+		# Camera just inside the doors looking N at the sorting spot.
+		"camera_origin": Vector3(0.9, 1.55, -0.4),
+		"camera_rotation": Vector3(-0.083, 0.314, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"nightmare_cell": {
+		"scene": "res://scenes/locales/nightmare_cell.tscn",
+		"requires_glb": "res://assets/3d/locales/nightmare_cell.glb",
+		# Diego's nightmare (vol6 ch9). Windowless concrete cell,
+		# dream-wrong proportions (3.4×4.2 but 3.4 tall): ONE caged
+		# fluorescent (the hum), a steel door with no inside handle,
+		# the cot, the center drain, the red-dot field resolving out
+		# of the west wall. Camera low in the SW corner angled UP —
+		# the too-tall room and the caged bulb dominate.
+		"camera_origin": Vector3(-1.1, 1.1, -0.8),
+		"camera_rotation": Vector3(0.183, -0.681, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"nate_garage": {
+		"scene": "res://scenes/locales/nate_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/nate_garage.glb",
+		# (pass 64, 2026-10-11) ch14 Substation Nine: "Nate's garage is bigger than
+		# Jesse's" — the rear half of a two-car garage converted by Walt into a
+		# finished room (foam on the walls, the window AC). The room is blender
+		# y 3.8..7.6 (godot z -3.8..-7.6), x +-3.6; the kit at the back facing the
+		# partition door, the mic at the front. Camera just inside the door,
+		# looking at the kit.
+		"camera_origin": Vector3(-0.90, 1.55, -4.20),
+		"camera_rotation": Vector3(-0.248, -0.236, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nate_driveway": {
+		"scene": "res://scenes/locales/nate_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/nate_garage.glb",
+		# (pass 64) the same set from the sidewalk: the open bay with the lit
+		# room behind it, the Civic in the two-car driveway, the house's side
+		# door and the kitchen window on the east, Carl's mother's car at the
+		# curb. Seven oh-two, dusk; nine forty-six, Em and Jesse in the driveway.
+		"camera_origin": Vector3(2.40, 1.60, 8.00),
+		"camera_rotation": Vector3(-0.019, 0.236, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"henderson_garage": {
+		"scene": "res://scenes/locales/henderson_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/henderson_garage.glb",
+		# Jesse Henderson's garage, vol6 — Suburban Blight's practice
+		# space. Single bay 5.6×5.8 (godot x∈[-2.8,2.8], z∈[0,-5.8],
+		# ceil 2.7), the roll-up door UP (August rule) at z=0 with the
+		# driveway extending +Z. Kit at back-centre facing the door,
+		# amps flanking W, bass rig E, Tele on its stand, mic front-
+		# centre. Camera on the DRIVEWAY looking in: the lit interior
+		# framed by the open door at dusk, bulb practical warm inside.
+		"camera_origin": Vector3(1.9, 1.5, 2.2),
+		"camera_rotation": Vector3(-0.078, 0.351, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"henderson_garage_day": {
+		"scene": "res://scenes/locales/henderson_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/henderson_garage.glb",
+		# Jesse Henderson's garage, vol6 — Suburban Blight's practice
+		# space. Single bay 5.6×5.8 (godot x∈[-2.8,2.8], z∈[0,-5.8],
+		# ceil 2.7), the roll-up door UP (August rule) at z=0 with the
+		# driveway extending +Z. Kit at back-centre facing the door,
+		# amps flanking W, bass rig E, Tele on its stand, mic front-
+		# centre. Camera on the DRIVEWAY looking in: the lit interior
+		# framed by the open door at dusk, bulb practical warm inside.
+		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Bridge: "Practice today is at his garage" — Carl at four forty-eight,
+		# Em at five-oh-one, the driveway at the end — on the dusk rig.
+		# The authored rig is suffixed to henderson_garage; this twin has its own lights and env.
+		"camera_origin": Vector3(1.9, 1.5, 2.2),
+		"camera_rotation": Vector3(-0.078, 0.351, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"bindery": {
+		"scene": "res://scenes/locales/bindery.tscn",
+		"requires_glb": "res://assets/3d/locales/bindery.glb",
+		# The Bindery, Live Oak Street, New Auburn (vol6 ch2). Narrow
+		# 4.2×9.0 used-bookshop (godot x∈[-2.1,2.1], z∈[0,-9.0], ceil
+		# 3.2). Storefront window + belled door at z=0; tall walnut
+		# cases down both walls; Hal's counter east mid-shop; display
+		# tables make one aisle under three green-shaded pendants; the
+		# Borges bay is back-left. Camera just inside the door looking
+		# N down the aisle: counter frame-right, ladder far-left, the
+		# window display catching daylight behind. Eye 1.6.
+		"camera_origin": Vector3(0.85, 1.6, -1.1),
+		"camera_rotation": Vector3(-0.044, 0.206, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"centro_stockroom": {
+		"scene": "res://scenes/locales/centro_stockroom.tscn",
+		"requires_glb": "res://assets/3d/locales/centro_stockroom.glb",
+		# Centro Groceries back-of-house (vol6 ch18 — Diego's 2AM). High
+		# 7.0×8.0 room, ceil 4.6 (godot x∈[-3.5,3.5], z∈[0,-8.0]). Blue/
+		# orange pallet racks down both walls, shrink-wrapped pallet +
+		# jack mid-floor, bare twin-tube fluorescents in two rows, the
+		# OPEN roll-up dock door in the north wall with the empty apron
+		# beyond. Camera by the store swing door looking N up the
+		# stripe lane: racks both sides, pallet mid-frame, the dark
+		# dock opening at the back. Eye 1.7.
+		"camera_origin": Vector3(1.6, 1.7, -1.0),
+		"camera_rotation": Vector3(-0.034, 0.365, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"centro_dock": {
+		"scene": "res://scenes/locales/centro_stockroom.tscn",
+		"requires_glb": "res://assets/3d/locales/centro_stockroom.glb",
+		# Same GLB, outside — Diego's second break (ch10 / ch16 dawn).
+		# Camera on the EMPTY apron (drops 1.1 below dock floor),
+		# looking back SE at the open roll-up: fluorescent light
+		# spilling out over the dock edge and bumpers, the warm dock
+		# lamp above, pre-dawn blue everywhere else. The truck has not
+		# come yet.
+		# (2026-10-05) at the dock's edge where Diego stands with his coffee,
+		# looking out over the apron and the cedar at the pre-dawn sky and the
+		# smear — it looked back into the stockroom from the black apron.
+		# (2026-10-08) tilted down 12 degrees: the contact sheet showed
+		# only sky and a black tree line — the dock edge, its bumpers and
+		# the apron's lane stripes are the foreground now, the horizon and
+		# the smear in the upper third.
+		"camera_origin": Vector3(-0.90, 1.62, -7.70),
+		"camera_rotation": Vector3(-0.210, -0.053, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"darkroom": {
+		"scene": "res://scenes/locales/darkroom.tscn",
+		"requires_glb": "res://assets/3d/locales/darkroom.glb",
+		# Mr. Henderson's converted-broom-closet darkroom (3017 Verbena
+		# Way), vol6. Cramped 2.6×3.4 room (godot x∈[-1.3,1.3], z∈[0,-3.4],
+		# ceil 2.4). Wet bench (3 dev/stop/fix trays) down the WEST wall;
+		# the enlarger + print-washer sink on the NORTH bench; a drying
+		# line of prints crosses overhead; the red safelight dome glows
+		# from the EAST wall. Camera in the SE corner just inside the
+		# light-tight door, looking NW down the room: enlarger centre-back,
+		# wet trays at frame-left, hanging prints above, safelight washing
+		# the frame red. Eye 1.55 (ceiling 2.4). Red-and-black by design.
+		"camera_origin": Vector3(1.05, 1.55, -0.5),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(24.5), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"graciela_bedroom": {
+		"scene": "res://scenes/locales/graciela_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/graciela_bedroom.glb",
+		# Graciela Ramos's room, 892 Ashberry (vol6). Warm 4×5 abuela's
+		# bedroom (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6). Bed headboard on
+		# the NORTH wall (re-arranged off the teen-room side-wall
+		# template); home altar (crucifix/Guadalupe/votives) owns the EAST
+		# wall as the hero; lace-curtained window + photo dresser WEST;
+		# rocker + afghan SW corner. Camera SE corner looking NW: the lit
+		# altar at frame-right, the bed centre-back, warm-dim candlelight.
+		# Eye 1.55 (ceiling 2.6).
+		"camera_origin": Vector3(1.5, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(27.5), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"miller_office_bianca": {
+		"scene": "res://scenes/locales/miller_office.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_office.glb",
+		# vol6 ch17: Bianca "at her desk in the small office off the master
+		# bedroom, paying the August bills" (2026-10-10: it played in Mike's
+		# converted dining room). Her room is built into this set 30 m east
+		# (blender x 28.2..31.8). Camera in the doorway from the master
+		# bedroom, looking at her desk under the morning window.
+		"camera_origin": Vector3(28.40, 1.60, -1.20),
+		"camera_rotation": Vector3(-0.234, -0.850, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"miller_master_bedroom_night": {
+		"scene": "res://scenes/locales/miller_office.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_office.glb",
+		# (2026-10-12) vol6 ch23: "Bianca is in her bed at eleven-oh-two. The book ...
+		# is on the nightstand." It played over Diego's room. The master bedroom built
+		# into this set (blender x 25.2..28.2), at night: the moon and the bedside lamp.
+		"camera_origin": Vector3(26.00, 1.55, -0.35),
+		"camera_rotation": Vector3(-0.3306, -0.3964, 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.12, 0.13, 0.20, 1),
+			"ground_horizon": Color(0.06, 0.06, 0.08, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.30, 0.32, 0.42, 1), "ambient_energy": 0.30, "fog_color": Color(0.08, 0.08, 0.12, 1)},
+		"suppress_input": true,
+	},
+	"miller_office": {
+		"scene": "res://scenes/locales/miller_office.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_office.glb",
+		# Chief Miller's home office (a converted 2018 dining room), vol6.
+		# 4.6×5.2 (godot x∈[-2.3,2.3], z∈[0,-5.2], ceil 2.7). The table-desk
+		# sits under the rainy N window (laptop + two phones, one face-down);
+		# the built-in china cabinet on the E wall holds binders + a police
+		# scanner; a kept brass chandelier centres the room; a plat map +
+		# commendations on the W wall. Camera SE corner looking NW: desk
+		# centre-back under the window, cabinet frame-right, chandelier over.
+		"camera_origin": Vector3(1.5, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(26.6), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"miller_garage": {
+		"scene": "res://scenes/locales/miller_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_garage.glb",
+		# Chief Miller's garage (Sunday dusk), vol6. Two-car 5.4×5.6 (godot
+		# x∈[-2.7,2.7], z∈[0,-5.6], ceil 2.5). Workbench + pegboard down the
+		# E wall, steel shelving of bins/paint down the W wall, water heater
+		# + freezer along the N, the segmented roll-up door across the S with
+		# a warm dusk gap under it. Camera SE corner looking NW across the
+		# bay: bench frame-right, shelving frame-left, shop light overhead.
+		"camera_origin": Vector3(1.8, 1.60, -0.9),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(30.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"new_auburn_courtroom": {
+		"scene": "res://scenes/locales/new_auburn_courtroom.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_courtroom.glb",
+		# vol6 ch8 (2026-10-10): the New Auburn County courtroom, "bigger
+		# than she had expected. The wood is darker." It played on the
+		# Graustark parish small-claims room (the Gauntlet's Justice board).
+		# 16 x 22 (godot x in [-8,8], z in [0,-22]), the bench N. Camera in
+		# the centre aisle among the gallery's rows, looking up to the bench.
+		"camera_origin": Vector3(0.00, 1.75, -5.00),
+		"camera_rotation": Vector3(0.012, -0.000, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"courthouse_chamber": {
+		"scene": "res://scenes/locales/courthouse_chamber.tscn",
+		"requires_glb": "res://assets/3d/locales/courthouse_chamber.glb",
+		# Small-claims courtroom (the JUSTICE gauntlet set, reused for the
+		# vol6 New Auburn County "Courtroom 4" beat — a courtroom is a
+		# courtroom). 11×12, ceil 4.4 (godot x∈[-5.5,5.5], z∈[0,-12]). Judge's
+		# bench on the raised dais at the N (far) end under the arched window,
+		# counsel tables + the bar in the well toward S. Camera in the well/
+		# front gallery looking N up the aisle at the bench.
+		"camera_origin": Vector3(1.0, 1.75, -4.5),
+		"camera_rotation": Vector3(0.02, deg_to_rad(9.5), 0.0),
+		"fov": 52.0,
 		"suppress_input": true,
 	},
 	"maya_bedroom": {
 		"scene": "res://scenes/locales/maya_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# Teen-girl bedroom 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6). Bed
+		# along the W side (blender -1,2.5 → godot -1,-2.5), desk+lamp E
+		# (godot 1,-1.5), vanity dresser E wall (godot 1.7,-3.8), rug
+		# centre, N window, fairy lights. Camera in the SE corner just
+		# inside the door looking NW across to the bed: bed centre-back,
+		# window light beyond, vanity at frame right. Tight FOV, small room.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
+		"fov": 58.0,
+		# (pass 60) the room is authored at night but its ambient (0.7 on a lamp key) rendered
+		# it as bright as the day twin: a night env so the night is night.
+		"env": {"ambient_color": Color(0.46, 0.42, 0.56, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"maya_bedroom_day": {
+		"scene": "res://scenes/locales/maya_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",
+		# Teen-girl bedroom 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6). Bed
+		# along the W side (blender -1,2.5 → godot -1,-2.5), desk+lamp E
+		# (godot 1,-1.5), vanity dresser E wall (godot 1.7,-3.8), rug
+		# centre, N window, fairy lights. Camera in the SE corner just
+		# inside the door looking NW across to the bed: bed centre-back,
+		# window light beyond, vanity at frame right. Tight FOV, small room.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch1 (15:22, the ThinkPad), ch6 A Daigle (9:47), the prelude (6:16)
+		# played on the night rig and its moon.
+		# The authored rig is suffixed to maya_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"grandmother_kitchen_morning": {
 		"scene": "res://scenes/locales/grandmother_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/grandmother_kitchen_morning.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Graciela's kitchen, the eggs mornings (2026-10-06: one room with
+		# ramos_kitchen_morning, built by _props/ramos_kitchen.py). From the
+		# back-door corner looking NW: the small round table under the
+		# window (the radio on the sill, the drive and his truck outside),
+		# the counter run, the range with the clock above it.
+		"camera_origin": Vector3(1.90, 1.58, -0.55),
+		"camera_rotation": Vector3(-0.128, 0.887, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"miller_back_porch": {
 		"scene": "res://scenes/locales/miller_back_porch.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_back_porch.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Covered back porch 6×4 (godot x∈[-3,3], z∈[0,-4], ceil 2.8).
+		# Two rockers face the S railing (godot ±1.5,-2.0) with a round
+		# side table between them (godot 0,-2.0); balustrade + screen door
+		# along the S edge (godot z≈-0.1), firewood stack E wall, hanging
+		# planter, house wall to the N. Camera in the NE corner (by the
+		# house wall) looking SW across the rockers toward the railing: the
+		# porch furniture in the fore, the open railing beyond.
+		"camera_origin": Vector3(2.3, 1.62, -3.4),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miller_back_porch_morning": {
+		"scene": "res://scenes/locales/miller_back_porch.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_back_porch.glb",
+		# (2026-10-10) THE SAME PORCH IN THE MORNING (ch11 at 08:03, ch17 at
+		# 08:22: "the small shaded window where a woman in a robe can sit and
+		# eat coffee cake"). The night rig is suffixed to miller_back_porch;
+		# this preset brings an 8 AM sun, a shade fill and a day sky.
+		# Covered back porch 6×4 (godot x∈[-3,3], z∈[0,-4], ceil 2.8).
+		# Two rockers face the S railing (godot ±1.5,-2.0) with a round
+		# side table between them (godot 0,-2.0); balustrade + screen door
+		# along the S edge (godot z≈-0.1), firewood stack E wall, hanging
+		# planter, house wall to the N. Camera in the NE corner (by the
+		# house wall) looking SW across the rockers toward the railing: the
+		# porch furniture in the fore, the open railing beyond.
+		"camera_origin": Vector3(2.3, 1.62, -3.4),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.86, 1), "sky_horizon": Color(0.88, 0.88, 0.82, 1),
+			"ground_horizon": Color(0.58, 0.56, 0.48, 1), "ground_bottom": Color(0.30, 0.30, 0.26, 1),
+			"ambient_color": Color(0.86, 0.84, 0.78, 1), "ambient_energy": 0.90, "fog_color": Color(0.86, 0.84, 0.78, 1)},
 		"suppress_input": true,
 	},
 	"jesse_bedroom": {
 		"scene": "res://scenes/locales/jesse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# Kid's bedroom 4×4.5 (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6). Bed
+		# along the W side (blender -1,2.25 → godot -1,-2.25), desk+lamp E
+		# (godot 1,-1.5), dresser E wall (godot 1.7,-3.2), posters W wall,
+		# N window. Camera in the SE corner just inside the door looking
+		# NW across to the bed: bed centre-back, window beyond, dresser at
+		# frame right. Tight FOV for the small room.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
+		"fov": 58.0,
+		# (pass 60) the room is authored at night but its ambient (0.7 on a lamp key) rendered
+		# it as bright as the day twin: a night env so the night is night.
+		"env": {"ambient_color": Color(0.46, 0.42, 0.56, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"jesse_bedroom_day": {
+		"scene": "res://scenes/locales/jesse_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",
+		# Kid's bedroom 4×4.5 (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6). Bed
+		# along the W side (blender -1,2.25 → godot -1,-2.25), desk+lamp E
+		# (godot 1,-1.5), dresser E wall (godot 1.7,-3.2), posters W wall,
+		# N window. Camera in the SE corner just inside the door looking
+		# NW across to the bed: bed centre-back, window beyond, dresser at
+		# frame right. Tight FOV for the small room.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch6 Blowback (day_bright, "Jesse is on his bed") and ch20 Substation Nine
+		# (dusk — the daylight pair follows the mood to 0.35) on the night rig.
+		# The authored rig is suffixed to jesse_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"diego_bedroom": {
 		"scene": "res://scenes/locales/diego_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/diego_bedroom.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# DRAFT 5 (2026-10-09): Diego's room at his grandmother's, 4.4 x 4.8
+		# (godot x in [-2.2,2.2], z in [0,-4.8]) — plain, as the prose says:
+		# the twin bed W, the small desk E under the periodic table, the
+		# dresser + mirror (Sam's photo) by the door, the window's two
+		# curtains N, the fan. Camera inside the door looking NW at the bed.
+		"camera_origin": Vector3(1.20, 1.58, -0.70),
+		"camera_rotation": Vector3(-0.156, deg_to_rad(36.9), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"diego_bedroom_night": {
+		"scene": "res://scenes/locales/diego_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/diego_bedroom.glb",
+		# DRAFT 5 (2026-10-09): Diego's room at his grandmother's, 4.4 x 4.8
+		# (godot x in [-2.2,2.2], z in [0,-4.8]) — plain, as the prose says:
+		# the twin bed W, the small desk E under the periodic table, the
+		# dresser + mirror (Sam's photo) by the door, the window's two
+		# curtains N, the fan. Camera inside the door looking NW at the bed.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch23 Sleep (ten PM at the desk), ch23 Sunday (mood:night, the blackout
+		# curtains), ch16 Dawn and ch22 Inventory (he sleeps the day behind the
+		# blackout curtains) on the day rig and its day sky.
+		# The authored rig is suffixed to diego_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.20, 1.58, -0.70),
+		"camera_rotation": Vector3(-0.156, deg_to_rad(36.9), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
 	# ── VOL 6/7/8 — batch 2 additions ────────────────────
+	"caldwell_yard_afternoon": {
+		"scene": "res://scenes/locales/caldwell_porch_night.tscn",
+		"requires_glb": "res://assets/3d/locales/caldwell_porch_night.glb",
+		# (2026-10-10) vol6 ch23 "Sunday": the Caldwell front yard at 3:45 PM
+		# — the side lawn E of the porch (godot x 6..16), the folding table
+		# under the pecan with the GRACIE — STICKER QUEEN cake, Linda's wicker
+		# chair on the grass. The night rig is suffixed to caldwell_porch_night;
+		# this preset brings its own sun and a day sky. From the front walk at
+		# the porch's E end, NE across the lawn to the table and the tree.
+		"camera_origin": Vector3(5.20, 1.65, 2.60),
+		"camera_rotation": Vector3(-0.054, -0.983, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.84, 1), "sky_horizon": Color(0.88, 0.86, 0.78, 1),
+			"ground_horizon": Color(0.62, 0.60, 0.52, 1), "ground_bottom": Color(0.30, 0.30, 0.26, 1),
+			"ambient_color": Color(0.86, 0.86, 0.82, 1), "ambient_energy": 0.95, "fog_color": Color(0.82, 0.80, 0.74, 1)},
+		"suppress_input": true,
+	},
 	"caldwell_porch_night": {
 		"scene": "res://scenes/locales/caldwell_porch_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_porch_night.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# Covered porch at NIGHT 6×4 (godot x∈[-3,3], z∈[0,-4], ceil 2.8).
+		# Two rockers face the S railing (godot ±1.5,-2.0) with a side
+		# table between them (godot 0,-2.0); balustrade + screen door along
+		# the S edge (godot z≈-0.1), cordwood stack NW, wall-mounted
+		# carriage lamp (warm), hanging planter, house wall N. Camera in
+		# the NE corner (by the house wall) looking SW across the rockers
+		# toward the railing: furniture lit warm in the fore, night beyond.
+		"camera_origin": Vector3(2.3, 1.62, -3.4),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"caldwell_kitchen_night": {
 		"scene": "res://scenes/locales/caldwell_kitchen_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_kitchen_night.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Family kitchen at NIGHT 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6).
+		# Table dead-centre (godot 0,-2.5), sink+counter NW (godot
+		# -1.5,-4), stove centre-N (1.5,-4), fridge on the E wall (godot
+		# 2.45,-1). Camera in the SE quadrant just inside the door looking
+		# NW across the table toward the sink corner — the whole kitchen
+		# in one 3/4 wide.
+		# RE-VANTAGED 2026-09-03: the SE vantage at x 2.1 stood inside the fridge (E wall, x 2.1..2.8); moved west of it, same NW look across the table
+		"camera_origin": Vector3(1.20, 1.58, -0.80),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(51.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"caldwell_radio_room_night": {
 		"scene": "res://scenes/locales/caldwell_radio_room_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_radio_room_night.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# (2026-10-08) LINDA CALDWELL'S BEDROOM, upstairs, and her shortwave
+		# (ch5: "the upstairs window is lit ... at her shortwave radio";
+		# Maya "sits on the edge of the bed") — it was built as a broadcast
+		# booth. 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5], ceil 2.6). From
+		# just inside the hall door, north-east across the room: the radio
+		# desk on the east wall by the window, her chair, the lamp; the
+		# bed's foot toward it; the QSL cards above.
+		"camera_origin": Vector3(-0.6, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.2194, -0.7328, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"foxhole_bar": {
 		"scene": "res://scenes/locales/foxhole_bar.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# THE FOXHOLE, the whole venue (2026-10-09 rebuild): a 12 x 16 m
+		# black box, the stage across the north end with its truss towers,
+		# the bar across the back. Camera at the back wall east of the bar
+		# ("Walk to the back. Stand against the back wall") looking up the
+		# floor past the FOH desk to the stage.
+		"camera_origin": Vector3(1.40, 1.70, -0.90),
+		"camera_rotation": Vector3(0.0151, 0.1365, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"foxhole_stage": {
-		"scene": "res://scenes/locales/foxhole_stage.tscn",
-		"requires_glb": "res://assets/3d/locales/foxhole_stage.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# The same venue (2026-10-09: it was an auto-generated 8 x 5 shell —
+		# foxhole_stage.tscn is retired): standing on the floor by the rail,
+		# looking at the stage, the drum riser and the east tower. Its
+		# markers are suffixed __foxhole_stage in foxhole_bar.tscn.
+		"scene": "res://scenes/locales/foxhole_bar.tscn",
+		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
+		"camera_origin": Vector3(2.40, 1.62, -9.00),
+		"camera_rotation": Vector3(0.0129, 0.5071, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"foxhole_dressing_room": {
 		"scene": "res://scenes/locales/foxhole_dressing_room.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_dressing_room.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Backstage "dressing room" 4×4 (godot x∈[-2,2], z∈[0,-4], ceil
+		# 2.6): by Foxhole standard a storage closet (draft 3, 2026-10-10:
+		# the vanity, couch and fridge are gone) — steel shelving of the
+		# venue's supplies on the N wall, two folding chairs, the clothing
+		# rack E side, the band's cases, the mop bucket, the buzzing tube.
+		# Camera in the SE quadrant just inside the door looking NW.
+		"camera_origin": Vector3(1.3, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(29.7), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"pit_stop_interior": {
 		"scene": "res://scenes/locales/pit_stop_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# The Pit Stop DINER 11×9 (godot x∈[-5.5,5.5], z∈[0,-9], ceil 3.0;
+		# 2026-08 re-theme — was wrongly a convenience store). Booth row
+		# along the W wall (back corner booth SW at godot -4.9,-0.85),
+		# lunch counter + stools (z≈-4.6), pass-through + bell in the
+		# partition (z=-6), kitchen beyond. Camera just inside the door
+		# looking NW so booths, counter and pass-through stack.
+		"camera_origin": Vector3(1.8, 1.65, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.82, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"pit_stop_back_lot": {
+		"scene": "res://scenes/locales/pit_stop_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
+		# (pass 65, 2026-10-11) vol6 ch2 Dumpster — the whole chapter at the
+		# dumpster behind the kitchen. The lot is blender y 11.1..22.1 (godot z
+		# -11.1..-22.1): the enclosure at x -1 with its gates open, the back door
+		# at x 4.7, Ben's truck east of it. Camera east of the enclosure looking
+		# west along the kitchen's back wall: the dumpster, Ben's window beyond.
+		# Markers suffixed __pit_stop_back_lot.
+		"camera_origin": Vector3(3.60, 1.60, -12.60),
+		"camera_rotation": Vector3(-0.106, 1.357, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"pit_stop_kitchen": {
+		"scene": "res://scenes/locales/pit_stop_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
+		# KITCHEN DRAFT 2 (2026-10-09): the kitchen is y 6.1..10.9 in build
+		# coords (godot z -6.1..-10.9). The cook line on the N wall under
+		# one hood (flat-top godot -0.5,-10.45), Ben's window + hand sink
+		# left of it, the plating island mid-kitchen, walk-in + milk crate
+		# W, dish pit E. Camera inside the swing door looking NW down the
+		# line past the island.
+		"camera_origin": Vector3(3.70, 1.65, -6.75),
+		"camera_rotation": Vector3(-0.099, deg_to_rad(54.1), 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+		# fluorescent kitchen, not the dining room's white key
+		"env": {"ambient_color": Color(0.84, 0.90, 0.84, 1), "ambient_energy": 0.62},
+	},
+	"pit_stop_back_booth": {
+		"scene": "res://scenes/locales/pit_stop_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
+		# vol6_ch7 — the back corner booth, "three from the kitchen,
+		# with a window": SW corner at godot (-4.9,-0.85), W window
+		# beside it, water glass + check folder on the table. Camera
+		# mid-floor looking SW into the booth.
+		"camera_origin": Vector3(-1.4, 1.60, -3.4),
+		"camera_rotation": Vector3(-0.04, 2.23, 0.0),
+		"fov": 55.0,
 		"suppress_input": true,
 	},
 	"pit_stop_office": {
 		"scene": "res://scenes/locales/pit_stop_office.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_office.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# The Pit Stop DINER's back office 4×5 (godot x∈[-2,2], z∈[0,-5], ceil
+		# 2.6) — re-dressed 2026-08-03 (dry-goods cases, the legal pad, the
+		# apron drawer); this comment said "garage" until 2026-10-10. Rick's
+		# father's desk + monitor against the N wall (godot 0,-3.5), filing
+		# cabinets on the W wall, the dry-goods shelf E. Camera
+		# SE just inside the door looking NNW across to the desk + monitor.
+		"camera_origin": Vector3(1.4, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(26.6), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"nexcorp_fueling_station": {
 		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# DRAFT 2 (2026-10-10): the whole station off FM-3411 (godot x in
+		# [-16,16]; the store's front at z 0, the canopy z 6..22). The
+		# forecourt: from the lane W of the van, at the canopy's N edge,
+		# down the lane to the unmarked van at pump six, its driver's door
+		# (where Vince leans) toward the lens; the canopy overhead.
+		"camera_origin": Vector3(-2.00, 1.70, 7.20),
+		"camera_rotation": Vector3(-0.044, -2.854, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nexcorp_fueling_store": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# Same set, the store: from beside the counter by the front window
+		# ("Claire is at the counter ... She watches it through the front
+		# window"), SSE out the glass to the lot and the silver rental.
+		"camera_origin": Vector3(-3.60, 1.65, -5.20),
+		"camera_rotation": Vector3(-0.036, -2.556, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nexcorp_fueling_restroom": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# Same set, the men's room behind the store's NE corner: from inside
+		# its door, the tile, the urinal, the sink and mirror, and the shut
+		# stall where Boyd has the worst nine minutes of his life.
+		"camera_origin": Vector3(7.25, 1.62, -12.40),
+		"camera_rotation": Vector3(-0.135, 0.632, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"nexcorp_van_cargo": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# Same set, inside the unmarked van at pump six: from the rear doors
+		# forward over the grey blanket on the cargo floor to the cab and the
+		# station through the windshield. "In the back of the van, on the
+		# floor, wrapped in a blanket, Diego Ramos opens his eyes."
+		"camera_origin": Vector3(0.75, 1.48, 18.30),
+		"camera_rotation": Vector3(-0.092, 0.133, 0.0),
+		"fov": 70.0,
 		"suppress_input": true,
 	},
 	"sam_bedroom": {
 		"scene": "res://scenes/locales/sam_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/sam_bedroom.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# DRAFT 5 (2026-10-09): SAM MILLER's cornflower-blue room, upstairs at
+		# 1428 Meadowlark Circle, 4.8 x 5.6 (godot x in [-2.4,2.4], z in
+		# [0,-5.6]). Bed head to the W wall (godot -1.3,-3.55), the desk on
+		# the E wall, the window on the cul-de-sac N, the fan overhead,
+		# the dresser + closet by the door. Camera inside the door (SE)
+		# looking NW: the bed, the window, the fan.
+		"camera_origin": Vector3(1.60, 1.58, -0.75),
+		"camera_rotation": Vector3(-0.135, deg_to_rad(40.2), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"school_field_evening": {
 		"scene": "res://scenes/locales/school_field_evening.tscn",
 		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# OUTDOOR: the true-scale gridiron (x sideline-to-sideline, +-24.4;
+		# y downfield, south end line 0 -> north 109.7; godot (x, z, -y)).
+		# Draft 5 (2026-10-09): the HOME stands and press box are EAST,
+		# behind the home bench ("third row, behind the home bench"); a
+		# visitors' stand west; the lot and the field gate south. Camera
+		# just past the south end line by the gate, looking downfield NW:
+		# striped turf and both goalposts, the home stands frame-right.
+		"camera_origin": Vector3(6.0, 2.8, 3.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"school_field_day": {
+		"scene": "res://scenes/locales/school_field_evening.tscn",
+		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
+		# OUTDOOR: the true-scale gridiron (x sideline-to-sideline, +-24.4;
+		# y downfield, south end line 0 -> north 109.7; godot (x, z, -y)).
+		# Draft 5 (2026-10-09): the HOME stands and press box are EAST,
+		# behind the home bench ("third row, behind the home bench"); a
+		# visitors' stand west; the lot and the field gate south. Camera
+		# just past the south end line by the gate, looking downfield NW:
+		# striped turf and both goalposts, the home stands frame-right.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: two-a-days at dawn and seven-thirty (ch13), the depth chart at twelve
+		# forty (ch19), the six PM walk-through "is light" (ch19), Vinton's bus (ch22)
+		# played under the floods.
+		# The authored rig is suffixed to school_field_evening; this twin has its own lights and env.
+		"camera_origin": Vector3(6.0, 2.8, 3.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"ramos_kitchen_morning": {
 		"scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/ramos_kitchen_morning.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Graciela's kitchen, the rosary afternoon (2026-10-06: one room
+		# with grandmother_kitchen_morning, built by _props/ramos_kitchen.py).
+		# From the hall doorway looking NW at "the small round table under
+		# the window" — the rosary, the coffee, the cordless phone — the
+		# canisters and the sink beyond.
+		"camera_origin": Vector3(-0.25, 1.58, -0.45),
+		"camera_rotation": Vector3(-0.179, 0.517, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"bianca_kitchen_morning": {
 		"scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/bianca_kitchen_morning.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the sideboard by the east window, looking SW over Mike's chair and the table to the back door's robe and the dark family room.
+		"camera_origin": Vector3(3.90, 1.60, -6.00),
+		"camera_rotation": Vector3(-0.106, 2.495, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"bianca_kitchen_day": {
+		"scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
+		"requires_glb": "res://assets/3d/locales/bianca_kitchen_morning.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the sideboard by the east window, looking SW over Mike's chair and the table to the back door's robe and the dark family room.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: ch23 Sunday (the afternoon at Bianca's table, Sammy's cereal) on the
+		# four-thirty rig (key 0.22, the pendants off).
+		# The authored rig is suffixed to bianca_kitchen_morning; this twin has its own lights and env.
+		"camera_origin": Vector3(3.90, 1.60, -6.00),
+		"camera_rotation": Vector3(-0.106, 2.495, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"hospital_room": {
 		"scene": "res://scenes/locales/hospital_room.tscn",
 		"requires_glb": "res://assets/3d/locales/hospital_room.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Hospital room 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.8).
+		# Adjustable bed centre-N (godot -0.2,-2.6, incline toward the N
+		# window), vitals monitor at the bed's right (godot 1.1,-3.5), IV
+		# stand at its left (godot -1.4,-3.4), visitor armchair south of the
+		# bed (godot -1.7,-1.6), N window glow. Camera on the visitor side
+		# (SW) looking NE at the bed + vitals monitor — clinical framing.
+		"camera_origin": Vector3(-1.8, 1.55, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-44.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"hospital_waiting": {
+		"scene": "res://scenes/locales/hospital_room.tscn",
+		"requires_glb": "res://assets/3d/locales/hospital_room.glb",
+		# (2026-10-08) vol6_ch7's WAITING ROOM is its own room now, next door
+		# to Room 318 (godot x -10.6..-2.7, z 0..-5): beam seating on the
+		# back wall where Maya sits with the coffee she has not drunk, the
+		# rows back to back, the vending machines on the east wall. From
+		# inside the double doors, north-west across the rows to her chair.
+		"camera_origin": Vector3(-5.3, 1.6, -0.8),
+		"camera_rotation": Vector3(-0.1570, 0.6573, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"safehouse_bedroom": {
 		"scene": "res://scenes/locales/safehouse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/safehouse_bedroom.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# The safehouse's back bedroom (draft 3, 2026-10-10: a sickroom in
+		# Linda Caldwell's old frame house, not a spy's hideout). 5.2 x 4.8
+		# (godot x in [-2.6,2.6], z in [0,-4.8], ceil 2.7). Camera by the
+		# dresser inside the door, looking NW at the bed, the IV pole, the
+		# bedside table and chair, the porch window.
+		"camera_origin": Vector3(2.0, 1.62, -0.55),
+		"camera_rotation": Vector3(-0.139, 0.957, 0.0),
 		"fov": 60.0,
+		# (pass 61) the set's sky is authored at night but ch6 Yes (afternoon), ch7 Family Only
+		# (day_bright) and ch9 Hi, Sam (afternoon) are its only cuts: a day sky by env.
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"safehouse_porch": {
+		"scene": "res://scenes/locales/safehouse_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/safehouse_bedroom.glb",
+		# (pass 66, 2026-10-11) ch7 Family Only: "Outside, on the porch, Diego's
+		# grandmother ... is on the phone" — the back porch beyond the bedroom's N
+		# window (blender y 4.8..7.2, godot z -4.8..-7.2), the glider she phones
+		# from at x 1.55. Camera in the yard past the rail, looking at the glider
+		# with the house behind it. Markers suffixed __safehouse_porch.
+		"camera_origin": Vector3(1.30, 1.50, -8.70),
+		"camera_rotation": Vector3(-0.170, -3.056, 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"el_rancho_drive_thru": {
+		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
+		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",
+		# vol6 ch16 (2026-10-10): outside the taqueria at 4 AM — the yellow
+		# building, TAQUERIA EL RANCHO in red over the front, the faded
+		# steer's head on the W side, BT's Altima "in the spot under the
+		# steer's head" (the segment played on the dining room). Camera in
+		# the side lot by the pole light, looking at the car and the wall.
+		"camera_origin": Vector3(-12.00, 1.65, -0.20),
+		"camera_rotation": Vector3(-0.023, -1.212, 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"el_rancho_taqueria": {
 		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
 		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Taquería 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8). Register
+		# counter + chip warmer NE (godot 1.75,-4.5) under a backlit menu
+		# board, salsa station NW, three café tables mid-room, magenta neon
+		# sign on the E wall, festoon lights overhead. Camera SW just inside
+		# the door looking NE past the tables to the register + menu board.
+		"camera_origin": Vector3(-2.8, 2.0, -0.9),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-51.6), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	# ── VOL 7 — Cape Perpetua, the unmarked overlook (re-homed off
+	# cabin_road 2026-09-01; vol7_ch12_morning) ───────────────────────
+	"smolvud_jetty": {
+		"scene": "res://scenes/locales/smolvud_jetty.tscn",
+		"requires_glb": "res://assets/3d/locales/smolvud_jetty.glb",
+		# (2026-10-10) vol7 Frequency Interlude II, "[ AT A JETTY, SMOLVUD,
+		# OREGON — fog ]": the rubble-mound jetty at the river mouth (godot
+		# z 0..-86, crest at y 3.1), the Frog's flat rock a third of the way
+		# out on the channel side with his bucket, rod and tin, the green
+		# navigation light at the tip in the fog. From the crest ten metres
+		# short of his place, out along the jetty past him into the fog.
+		"camera_origin": Vector3(0.70, 4.72, -24.00),
+		"camera_rotation": Vector3(-0.060, 0.095, 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"cape_perpetua_overlook": {
+		"scene": "res://scenes/locales/cape_perpetua_overlook.tscn",
+		"requires_glb": "res://assets/3d/locales/cape_perpetua_overlook.glb",
+		# The platform (blender -4,12; earthen disc r1.55), the rail on
+		# its seaward edge (x -5.35), the bench at the inner edge (x
+		# -2.85), the hexagon on the earth at (-4.75,12.15), the fog bank
+		# west below the bluff. Camera at the spur trail's last bend
+		# (blender -1.5, 9.5) looking north-west: bench near-right, rail
+		# + crow mid, the fog in the trees beyond.
+		"camera_origin": Vector3(-1.5, 1.65, -9.5),
+		"camera_rotation": Vector3(-0.06, 0.785, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	# ── VOL 7 — Main Street, Smolvud (re-homed off cabin_road
+	# 2026-09-01): the sidewalk in front of Board Lords, the sanderling
+	# mural + patch on the laundromat wall across Main ────────────────
+	"main_street": {
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# board_lords_interior's street: near sidewalk blender y -0.2..-2.0,
+		# Main to -8.65, far sidewalk, Across_Facade at y -9.05 with the
+		# mural at (-2.75, -8.9). Camera on the near sidewalk (blender
+		# -1.0, -1.2) looking across the street at the mural, Board Lords'
+		# awning just out of frame above-left.
+		"camera_origin": Vector3(-1.0, 1.60, 1.2),
+		"camera_rotation": Vector3(0.03, 2.918, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	# ── VOL 6 — Meadowlark Circle, Harmony Creek Estates (re-homed off
+	# louisiana_road 2026-09-01): the prelude's 6:12 sprinklers and the
+	# closing night's porch lights ────────────────────────────────────
+	"gallatin_water_tower": {
+		"scene": "res://scenes/locales/gallatin_water_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/gallatin_water_tower.glb",
+		# (2026-10-10) vol6 Prelude, "The Water Tower", 6:19 AM: the south end
+		# of Gallatin Avenue (godot z 14 back to the fence at z 40), the
+		# NexCorp lot behind its green privacy screen, the machines over it,
+		# the 62 ft tower with HARMONY CREEK in blue block letters, the white
+		# van beside the fence. From the road 18 m short of the fence, south
+		# down Gallatin to it, the tower over it.
+		"camera_origin": Vector3(1.50, 1.65, 22.00),
+		"camera_rotation": Vector3(0.145, 3.117, 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"meadowlark_circle": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# The street runs E-W along blender y=0 from x=-30 to the bulb at
+		# x=22; lots 1402..1428 on the north side (houses at y 12.5), the
+		# Miller house at x=20 with the cracked head at (16.4, 5.6). Dawn:
+		# camera in the street at the west end (blender -22, -1.5) looking
+		# EAST down the block — sprinkler fans lot by lot, the bulb and
+		# the Geller house closing the view, the water tower off right.
+		"camera_origin": Vector3(-22.0, 1.6, 1.5),
+		"camera_rotation": Vector3(-0.02, -1.5708, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"meadowlark_circle_night": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# Midnight in mid-August, from the bulb (blender 24, 4) looking
+		# WEST back down the block: porch lights, the lit Salinas kitchen
+		# window south, the white sedan at the curb near-left, streetlamps
+		# receding. Scenes carry [mood:night]; the practicals do the rest.
+		"camera_origin": Vector3(24.0, 1.6, -4.0),
+		"camera_rotation": Vector3(-0.02, 1.5708, 0.0),
+		"fov": 62.0,
+		# (pass 62) the circle at night, on the day sky added to the set
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	# ── VOL 6 — the cab (re-homed off louisiana_road 2026-09-03): every
+	# parked-car conversation — Ben's truck (ch5), the El Rancho lay-by
+	# (ch16), the Civic (ch19/20/22), Miriam's car (vol5 ch18), Miller's
+	# truck on the highway (ch8). One crew cab stands for all of them.
+	"miriam_subaru": {
+		"scene": "res://scenes/locales/miriam_subaru.tscn",
+		"requires_glb": "res://assets/3d/locales/miriam_subaru.glb",
+		# vol 5's car (2026-10-04): Miriam's dark-green 2009 Subaru wagon
+		# on a two-lane road through cane fields at dawn. The camera is
+		# Natalie in the back seat, left of centre, looking through the
+		# gap between the front seats over the dash at the road; Nicola's
+		# window (and the sun) on the right. The Moon and Judgement
+		# borrowed vol 6's parked pickup (vehicle_cab) until now.
+		"camera_origin": Vector3(-0.18, 1.36, 0.72),
+		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miriam_subaru_night": {
+		"scene": "res://scenes/locales/miriam_subaru.tscn",
+		"requires_glb": "res://assets/3d/locales/miriam_subaru.glb",
+		# vol 5's car (2026-10-04): Miriam's dark-green 2009 Subaru wagon
+		# on a two-lane road through cane fields at dawn. The camera is
+		# Natalie in the back seat, left of centre, looking through the
+		# gap between the front seats over the dash at the road; Nicola's
+		# window (and the sun) on the right. The Moon and Judgement
+		# borrowed vol 6's parked pickup (vehicle_cab) until now.
+		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Judgement's chorus (mood:night) in the Subaru on the night road,
+		# on the dawn rig.
+		# The authored rig is suffixed to miriam_subaru; this twin has its own lights and env.
+		"camera_origin": Vector3(-0.18, 1.36, 0.72),
+		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"vehicle_cab": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# Truck at the origin facing blender +Y; camera at the center
+		# console between the front buckets, eye 1.28 under a 1.72
+		# roof, looking forward over the dash through the windshield
+		# at the two-lane road and the scrub beyond. Wide lens: a cab
+		# is a small room.
+		"camera_origin": Vector3(0.0, 1.28, -0.10),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# Truck at the origin facing blender +Y; camera at the center
+		# console between the front buckets, eye 1.28 under a 1.72
+		# roof, looking forward over the dash through the windshield
+		# at the two-lane road and the scrub beyond. Wide lens: a cab
+		# is a small room.
+		# (2026-10-11) THE SAME SEAT AT NIGHT: ch5 1776 kHz (Maya "in the dark of the passenger seat"), ch7 (Ben in the truck
+		# after the Hendersons' steps, the text about Sam's grandmother), ch20 (Jesse
+		# in the Civic in the Foxhole lot at ten-fifteen). The sun and sky fill are
+		# suffixed per day preset; this one brings a moon, the lot light /
+		# streetlight, and a night sky. The dash practicals serve both.
+		"camera_origin": Vector3(0.0, 1.28, -0.10),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
+	"vehicle_cab_side": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# Claire's vantage: outside, at the east end of the gravel
+		# turnout, looking west-north-west past the picnic table at the
+		# pickup with the white sedan parked beyond it and the road
+		# running off behind (ch4_storm, ch6_interstate).
+		"camera_origin": Vector3(9.0, 1.6, 5.5),
+		"camera_rotation": Vector3(-0.04, 1.022, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	# ── VOL 6 — Lake Palestine, the north boat ramp (re-homed off
+	# louisiana_road 2026-09-03): ch8's accounting on the dock.
+	"lake_palestine": {
+		"scene": "res://scenes/locales/lake_palestine.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_palestine.glb",
+		# Shore line at blender y=0, lake south. Camera on the shore
+		# gravel beside the dock's near end (blender 1.6, 2.2), eye
+		# 1.55, looking SOUTH straight down the sixteen meters of
+		# planks to the cleat and the far shore, the truck behind
+		# the camera in the lot, the eastern-shore pines off left.
+		"camera_origin": Vector3(1.6, 1.55, -2.2),
+		"camera_rotation": Vector3(-0.0525, 3.053, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	# ── VOL 7 — Estuary 7, the planner's-view (re-homed off cabin_road
+	# 2026-09-03): the epilogue's gallery and submission. The stick's
+	# opening configuration built as a tabletop DIORAMA in a dark room.
+	"estuary_7_template": {
+		"scene": "res://scenes/locales/estuary_7_template.tscn",
+		"requires_glb": "res://assets/3d/locales/estuary_7_template.glb",
+		# Table 14x9.6 at the origin: sea west, cedars + river east,
+		# flats north, bluff + ridge south, the palettes docked off the
+		# east edge. Camera high over the south-west corner (blender
+		# -7, -7, 6.5) looking down at the mouth of the river.
+		"camera_origin": Vector3(-7.0, 6.5, 7.0),
+		"camera_rotation": Vector3(-0.536, -0.820, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_altima": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch16 El Rancho: BT's beige 2017 Altima, parked in the same
+		# turnout east of the truck (blender origin (9.5, 0.5), the cab
+		# 14 cm lower). Camera at its center console, looking forward
+		# over the dash through the windshield at the road (draft 3,
+		# 2026-10-09: the spread was dressed into Ben's pickup).
+		"camera_origin": Vector3(9.5, 1.14, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_corolla": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# (pass 78, 2026-10-11) SAM'S COROLLA, west of the turnout (blender origin
+		# (-14, 0.5), the cab 16 cm lower than the truck's): ch7 Family Only —
+		# "Sam, in her Corolla in the parking lot of the Kwik Stop", on her break,
+		# the call with Graciela. Camera at the centre console looking forward.
+		"camera_origin": Vector3(-14.0, 1.12, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_corolla_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# (pass 78, 2026-10-11) SAM'S COROLLA, west of the turnout (blender origin
+		# (-14, 0.5), the cab 16 cm lower than the truck's): ch7 Family Only —
+		# "Sam, in her Corolla in the parking lot of the Kwik Stop", on her break,
+		# the call with Graciela. Camera at the centre console looking forward.
+		# THE NIGHT: ch2 Gas & Go lot — parked in the Kwik Stop lot for eleven
+		# minutes, watching the Gas & Go through her windshield; Maya's reply.
+		"camera_origin": Vector3(-14.0, 1.12, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
+	"vehicle_cab_altima_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch16 El Rancho: BT's beige 2017 Altima, parked in the same
+		# turnout east of the truck (blender origin (9.5, 0.5), the cab
+		# 14 cm lower). Camera at its center console, looking forward
+		# over the dash through the windshield at the road (draft 3,
+		# 2026-10-09: the spread was dressed into Ben's pickup).
+		# (2026-10-11) THE SAME SEAT AT NIGHT: ch16 El Rancho + Dawn (the four-minute drive at four AM, "past a single
+		# working streetlight", the headlights' "small cone of yellow into the
+		# August night"). The sun and sky fill are
+		# suffixed per day preset; this one brings a moon, the lot light /
+		# streetlight, and a night sky. The dash practicals serve both.
+		"camera_origin": Vector3(9.5, 1.14, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
+	"vehicle_cab_rear": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch5 Eight Minutes: four of them in the truck. Camera on the
+		# rear bench, center, eye 1.20, looking forward between the two
+		# headrests at the dash and the windshield — Ben and Maya's
+		# seat backs frame the shot, Sam and Jesse are where we sit.
+		"camera_origin": Vector3(0.0, 1.20, 0.95),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
+		"fov": 76.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_rear_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch5 Eight Minutes: four of them in the truck. Camera on the
+		# rear bench, center, eye 1.20, looking forward between the two
+		# headrests at the dash and the windshield — Ben and Maya's
+		# seat backs frame the shot, Sam and Jesse are where we sit.
+		# (2026-10-11) THE SAME SEAT AT NIGHT: ch5 Eight Minutes (mood:night — "Ben, in the driver's seat, does not
+		# start the engine"). The sun and sky fill are
+		# suffixed per day preset; this one brings a moon, the lot light /
+		# streetlight, and a night sky. The dash practicals serve both.
+		"camera_origin": Vector3(0.0, 1.20, 0.95),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
+		"fov": 76.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
+	"lake_palestine_dock": {
+		"scene": "res://scenes/locales/lake_palestine.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_palestine.glb",
+		# Sitting at the end of the dock, feet over the water: eye 1.0
+		# a meter short of the cleat, looking SOUTH across the cove at
+		# the far shore, the eastern-shore pines and the coming sun off
+		# frame-left. The accounting is told from here.
+		"camera_origin": Vector3(-0.3, 1.0, 15.0),
+		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"meadowlark_circle_henderson": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# "Two Houses Down" (ch5_garage, ch5_miller_drive): the Henderson
+		# house is lot 1414 (blender hx -2, driveway at x -6.4). Camera
+		# at the foot of the driveway in the street, looking north up
+		# the drive at the closed garage door with its lit vent, Ben's
+		# truck at the curb frame-right, the Corolla behind it, Maya's
+		# bike chained to the light post frame-left.
+		"camera_origin": Vector3(0.0, 1.5, -1.5),
+		"camera_rotation": Vector3(0.02, -0.11, 0.0),
+		"fov": 58.0,
+		# (pass 62) the Hendersons' drive at night, on the day sky added to the set
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	# ── VOL 7 — Tideline Survey, inside the stick (re-homed off cabin_road
+	# 2026-09-03): ch18's basalt headland, two pools, one glb, two scenes.
+	"tideline_survey": {
+		"scene": "res://scenes/locales/tideline_survey.tscn",
+		"requires_glb": "res://assets/3d/locales/tideline_survey.glb",
+		# Shelf top z 1.2; first pool (kitchen-table size) at blender
+		# (-2, -3). Camera on the basalt south of it, eye 1.6 over the
+		# shelf, looking north-north-west across the pool at the worn
+		# path, the stakes, and the fog bank inland.
+		"camera_origin": Vector3(0.5, 2.8, 8.5),
+		"camera_rotation": Vector3(-0.259, 0.427, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"tideline_survey_second": {
+		"scene": "res://scenes/locales/tideline_survey_second.tscn",
+		"requires_glb": "res://assets/3d/locales/tideline_survey.glb",
+		# The second pool (dining-table size) at blender (9, 6); camera
+		# south of it looking north at the old man's edge (west rim,
+		# cast) with the fog behind. Its own scene so the tide_pool
+		# marker frames THIS pool.
+		"camera_origin": Vector3(9.5, 2.8, -1.5),
+		"camera_rotation": Vector3(-0.342, 0.111, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	# ── VOL 7 — Kestrel Mountain, inside the 2034 stick (re-homed off
+	# cabin_road 2026-09-03): ch11's climb and the square at the end.
+	"kestrel_mountain": {
+		"scene": "res://scenes/locales/kestrel_mountain.tscn",
+		"requires_glb": "res://assets/3d/locales/kestrel_mountain.glb",
+		# Path start at blender (0, -10, 0) running north and up; the
+		# mountain rises on the left, falls away on the right. Camera at
+		# the foot of the path looking up it: the hut's ledge at the
+		# first station frame-left, the cloud on the top.
+		"camera_origin": Vector3(0.2, 1.6, 9.0),
+		"camera_rotation": Vector3(0.05, 0.0, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"kestrel_mountain_square": {
+		"scene": "res://scenes/locales/kestrel_mountain.tscn",
+		"requires_glb": "res://assets/3d/locales/kestrel_mountain.glb",
+		# Walked out: the square at the foot, the fountain at its center
+		# (blender 0, -22), the alpine fronts around it, the path going
+		# up the mountain behind. Camera south-east of the fountain.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(6.25, 1.60, 31.00),
+		"camera_rotation": Vector3(-0.02, 0.262, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	# ── VOL 7 — the corridor behind the hedge (re-homed off cabin_interior
+	# 2026-09-03): ch11 nodes 41-128, the substrate's accretion — a
+	# 1990s institutional hallway, the stairs, the basement, the boy.
+	"accretion_corridor": {
+		"scene": "res://scenes/locales/accretion_basement.tscn",
+		"requires_glb": "res://assets/3d/locales/accretion_basement.glb",
+		# First leg runs blender +y from 0 to 24 at x 0. Camera at the
+		# start, eye 1.55, looking straight down the hallway: doors both
+		# sides, wire-glass at face height, the right turn at the end.
+		"camera_origin": Vector3(0.0, 1.55, -1.5),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"accretion_basement": {
+		"scene": "res://scenes/locales/accretion_basement.tscn",
+		"requires_glb": "res://assets/3d/locales/accretion_basement.glb",
+		# Just inside the stenciled door (blender 12, 14, floor -3),
+		# looking SOUTH down the long room: the six racks on the left,
+		# the desk and the wooden chair on the right, the flickering
+		# fixture at the far end.
+		"camera_origin": Vector3(12.0, -1.45, -14.0),
+		"camera_rotation": Vector3(-0.03, 3.1416, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"cypress_motel": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# vol6 ch15 (Room 7): Sam, slowing the Corolla on the back route,
+		# looks across at the Cypress — the long wing at blender x -26
+		# north of the houses, the lot in the crook of the L, the pole
+		# sign by the road, Room 7's window lit. Camera on the road at
+		# y 52 looking north-west.
+		"camera_origin": Vector3(-1.0, 1.3, -52.0),
+		"camera_rotation": Vector3(-0.01, 0.611, 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	# ── THE ROADS (2026-09-03, user: "the stretches of highway across
+	# all the volumes look identical, same geometry, same camera") ──
+	# One set per region, and every preset a different place, height
+	# and lens on that set. louisiana_road is vol5's swamp road only.
+	# vol6 · New Auburn, Texas
+	"new_auburn_strip_mall": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Night. Jesse's vantage from the Civic's nose at the south-west
+		# corner of the back lot (blender 6.6, 41.5), eye 1.35 — seated —
+		# NNE at the unit's back door in the dark, the flood at the far
+		# end, the mall's parapet over it. (ch14, ch20, ch22)
+		"camera_origin": Vector3(6.6, 1.35, -41.5),
+		"camera_rotation": Vector3(-0.02, -1.215, 0.0),   # (2026-10-10: re-aimed at the unit, now two doors down from the Foxhole's)
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"new_auburn_lot": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Day. The front lot east of the strip mall, from the shop doors,
+		# the white sedan four spaces out, the road beyond. (ch3)
+		"camera_origin": Vector3(23.0, 1.6, -44.0),
+		"camera_rotation": Vector3(-0.04, -0.896, 0.0),
+		"fov": 56.0,
+		# (pass 62) ch3 Cosmic Comics' lot by day on the night sky added to the road set
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
+	"new_auburn_two_lane": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Night, the storm easing, eighty miles west: LOW behind the
+		# Chronicle sedan (eye 1.1 on the road), the van's taillights
+		# three cars up, the power lines converging. (ch4_kitchen 83)
+		"camera_origin": Vector3(-0.6, 1.1, -290.0),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"new_auburn_bypass": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Dawn. The substation lot off the bypass from its entrance,
+		# eye 1.7, looking WNW at the side door where Ramirez waits with
+		# two coffees, the payday loan beside it. (ch6_miller_truck)
+		"camera_origin": Vector3(-3.0, 1.7, -104.0),
+		"camera_rotation": Vector3(-0.03, 0.95, 0.0),
+		"fov": 60.0,
+		# (pass 62) ch6 Service Roads at 6:42 on the night sky added to the road set
+		"env": {"sky_top": Color(0.30, 0.36, 0.58, 1), "sky_horizon": Color(0.92, 0.70, 0.52, 1),
+			"ground_horizon": Color(0.30, 0.28, 0.26, 1), "ground_bottom": Color(0.12, 0.12, 0.12, 1),
+			"ambient_color": Color(0.72, 0.62, 0.58, 1), "ambient_energy": 0.70, "fog_color": Color(0.60, 0.50, 0.46, 1)},
+		"suppress_input": true,
+	},
+	"new_auburn_cedar_route": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Dusk. Handlebar height (1.1) on the east shoulder of the cedar
+		# route south of town, looking south into the scrub, the cattle
+		# guard ahead. (ch21 the ride home, ch18 the drive home)
+		"camera_origin": Vector3(1.6, 1.1, 46.0),
+		"camera_rotation": Vector3(-0.02, 3.1416, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	# vol1 + vol2 · Small Wood, Oregon
+	"small_wood_road": {
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Day. On the west shoulder at the property gate, eye 1.7, NNE
+		# up the road: the fence, the drive, the pole barn, the firs.
+		"camera_origin": Vector3(-2.4, 1.7, 8.0),
+		"camera_rotation": Vector3(-0.03, -0.20, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"small_wood_road_night": {
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Night, driving around. The car's hood (eye 1.0) on the
+		# centerline, the dashes running into the firs, the town's
+		# lights far up. (vol1 ch3)
+		"camera_origin": Vector3(0.9, 1.0, 18.8),
+		"camera_rotation": Vector3(0.02, 0.0, 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"small_wood_roadside": {
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Dawn. In the east ditch, eye 0.7, looking north-west along the
+		# gravel toward the culvert where the minister stopped. (vol2 ch2)
+		"camera_origin": Vector3(2.9, 0.7, -6.0),
+		"camera_rotation": Vector3(0.06, 0.42, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	# vol7 · Highway 101 north of Yachats
+	"highway_101": {
+		"scene": "res://scenes/locales/highway_101.tscn",
+		"requires_glb": "res://assets/3d/locales/highway_101.glb",
+		# Dusk. The truck's hood (eye 1.15) on the northbound lane, the
+		# guardrail and the ocean left, the cedar wall right, the
+		# headland rising ahead. (ch22_drive)
+		"camera_origin": Vector3(1.8, 1.15, -12.0),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"highway_101_turn": {
+		"scene": "res://scenes/locales/highway_101.tscn",
+		"requires_glb": "res://assets/3d/locales/highway_101.glb",
+		# The unsigned turn: eye 1.6 on the shoulder at y 152, WNW at the
+		# chain, the green marker, the spur going off toward the bluff.
+		"camera_origin": Vector3(-1.5, 1.6, -152.0),
+		"camera_rotation": Vector3(-0.04, 0.80, 0.0),
+		"fov": 52.0,
+		"suppress_input": true,
+	},
+	"board_lords_office": {
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# (pass 68, 2026-10-11) vol7 ch12 Kai: "The back office was the back
+		# office. Devon's old desk against the wall, a chair Devon had also left,
+		# two cardboard boxes of bearings on the floor." The nook behind the
+		# partition at blender y 6.1 (godot z -6.1), x 2.6..4.5, the alley door
+		# in its N wall. Camera at the partition's west end looking at the desk.
+		# Markers suffixed __board_lords_office.
+		"camera_origin": Vector3(2.72, 1.50, -6.25),
+		"camera_rotation": Vector3(-0.441, -1.041, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# Board-game shop 9×7 (godot x∈[-4.5,4.5], z∈[0,-7], ceil 2.8,
+		# purple walls). Register counter NE (godot 2.25,-5.5) with a dice
+		# display case beside it, two double-sided game gondolas centre
+		# (z=-2.45,-4.55, 5m wide), open-play demo table W (godot -2.25,
+		# -3.5). Camera SW just inside the door looking NE down the gondolas
+		# to the register counter; demo table at frame left.
+		"camera_origin": Vector3(-3.5, 2.0, -1.0),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-52.0), 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"salty_tome_interior": {
 		"scene": "res://scenes/locales/salty_tome_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Second-hand bookshop 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
+		# Wall bookcases N/W/E, a double-sided center gondola (godot
+		# -0.4,-3.0, 3.4m E-W run), sales counter + antique register on the
+		# E side (godot 2.6,-2.6), reading nook + rug SW, rolling ladder,
+		# hanging shop sign, front window. Camera from the SW entrance
+		# looking NE down the shelf aisle to the sales counter.
+		"camera_origin": Vector3(-2.4, 1.75, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-54.3), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"salty_tome_kitchenette": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# The back annex (godot z∈[-6,-9]): Petra's kitchenette — the
+		# kettle + hob (godot -3.55,-7.85), four mugs + the Margit's
+		# clay mug, the table by the kitchenette window (-1.6,-8.1),
+		# radiator, the old cat asleep on its chair (-0.5,-6.7), the
+		# back door W, Petra's office door E. Camera by the office
+		# partition looking W across cat, table and kettle.
+		"camera_origin": Vector3(0.5, 1.55, -6.4),
+		"camera_rotation": Vector3(-0.05, 1.03, 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"salty_tome_office": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 67, 2026-10-11) Petra's BACK OFFICE behind the annex partition:
+		# blender x 0.9..4.0, y 6..9 (godot z -6..-9) — the desk and phone on the
+		# N wall, the couch on the S, the coat hook by the door. ch8 Monday
+		# (Petra on the phone, door closed), ch14 (Lena asleep on the couch).
+		# Camera just inside the door looking NE at the desk, the couch at right.
+		# Markers suffixed __salty_tome_office.
+		"camera_origin": Vector3(1.25, 1.55, -6.35),
+		"camera_rotation": Vector3(-0.272, -0.785, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"salty_tome_alley": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# The alley behind the store (godot z∈[-9,-12]): the MURAL
+		# WALL with the painted three-foot face (godot -0.8,-12,
+		# hair to waist height), the dumpster (2.4,-10.2), Lena's
+		# crate, the back door behind camera. Camera near the back
+		# door looking NW so the face fills frame-left.
+		"camera_origin": Vector3(0.8, 1.60, -9.5),
+		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"hans_bakery_back_kitchen": {
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# DRAFT 5 (2026-10-09): back-of-house 9 x 7.6 (godot x in [-4.5,4.5],
+		# z in [0,-7.6], ceil 3.0). The bake line on the N wall (counter +
+		# mixer W, deck oven + proofer E at godot 3.0,-7.1), the communal
+		# table mid-room (godot 0,-1.6..-5.1), the Hemlock window W
+		# (z -3.8), prep bench SW, racks E. Camera SE just inside the door
+		# looking NW across the table to the counter and the window.
+		"camera_origin": Vector3(3.20, 1.62, -0.90),
+		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"hans_bakery_back_door": {
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# (pass 69, 2026-10-11) vol7 ch18 Stick: "Eight twelve at the back door
+		# of the bakery" — the door cut in the W wall north of the Hemlock window
+		# (blender y 5.6; godot z -5.6), the gravel side lot with Finn's truck,
+		# Hemlock Street and the wagon at the curb beyond. Camera on the gravel north
+		# of the stoop looking S at the door, the truck at right (the first camera
+		# stood inside the truck once the truck moved). Markers suffixed
+		# __hans_bakery_back_door.
+		"camera_origin": Vector3(-6.80, 1.60, -9.60),
+		"camera_rotation": Vector3(-0.112, -2.698, 0.0),
 		"fov": 60.0,
+		"env": {"sky_top": Color(0.46, 0.56, 0.72, 1), "sky_horizon": Color(0.80, 0.82, 0.80, 1),
+			"ground_horizon": Color(0.40, 0.42, 0.36, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.78, 0.80, 0.80, 1), "ambient_energy": 0.85, "fog_color": Color(0.76, 0.78, 0.78, 1)},
 		"suppress_input": true,
 	},
 	"daily_grind_interior": {
 		"scene": "res://scenes/locales/daily_grind_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/daily_grind_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# DRAFT 3 (2026-10-10): the corner storefront on Main, 12 x 10 m
+		# (godot x in [-6,6], z in [0,-10], pressed tin at 3.6), glass on
+		# the S (Main) and W (cross street) walls. The bar runs along the
+		# back facing the front window: pastry case, register, the two-group
+		# machine with the milk pitchers, the hand-off; the back bar, shelves
+		# and chalkboard behind. Camera from by the window bar, past the
+		# round tables to the bar; the corner table is behind-left of it.
+		"camera_origin": Vector3(-3.40, 1.65, -1.30),
+		"camera_rotation": Vector3(-0.032, -0.688, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"chillwave_interior": {
 		"scene": "res://scenes/locales/chillwave_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/chillwave_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# ChillWave — Cale's slowstick shop 7×8 (godot x∈[-3.5,3.5],
+		# z∈[0,-8], ceil 2.8; 2026-08 re-theme — was wrongly a cocktail
+		# lounge). Counter + service bell + paperback (godot -1.1,-3.1),
+		# cedar display shelves W/E, bell over the door, partition
+		# doorway at (1.9,-4.6) into the back room (inventory shelves,
+		# workbench, crate, the three-slot stick box). Camera just
+		# inside the door looking N past the counter to the doorway.
+		"camera_origin": Vector3(1.2, 1.65, -0.8),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"chillwave_backroom": {
+		"scene": "res://scenes/locales/chillwave_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/chillwave_interior.glb",
+		# The back of ChillWave — where the inventory lives: cedar
+		# shelves N/W with brass letter tabs, Cale's workbench E
+		# (soldering iron, transformer, LED strip, task lamp), the
+		# crate by the doorway, the three-slot stick box on its table
+		# (godot -2.4,-5.2). Camera at the doorway looking NW so the
+		# stick box, shelves and workbench chair share the frame.
+		"camera_origin": Vector3(1.7, 1.62, -4.9),
+		"camera_rotation": Vector3(-0.04, 0.62, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"lena_studio": {
+		"scene": "res://scenes/locales/lena_studio.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_studio.glb",
+		# (2026-10-10) vol7 ch3: "a back room behind the Daily Grind ...
+		# Twelve by sixteen. One north window. A sink. Cold concrete" — the
+		# 3.66 x 4.88 m studio (godot x 0..3.66, z 0..-4.88). From inside the
+		# alley door, NW: the six-by-eight canvas on the W wall, the north
+		# window, the wool rug, the table's corner at right.
+		"camera_origin": Vector3(2.60, 1.60, -0.45),
+		"camera_rotation": Vector3(-0.092, 0.844, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"lena_apartment": {
 		"scene": "res://scenes/locales/lena_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# Studio apartment 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.6). Bed
+		# on the W side (godot -1.25,-2.5), desk + laptop on the E (godot
+		# 1.25,-1.5), packed bookshelf on the E wall (godot 2.3,-3.8), rug
+		# centre, fairy lights on the N wall. Camera SE corner just inside
+		# the door looking NW across the rug to the bed, window/lights beyond.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"lena_apartment_night": {
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-10-10) THE SAME ROOM AFTER DARK: ch7 Night, the ch8 chain after
+		# nine (dark, goodnight, the_vessel, roy) and ch10 Morning at 5:40 played
+		# on the day key. The daylight rig and the kitchen-window practical are
+		# suffixed to lena_apartment; this preset brings the street lamp's spill
+		# through the window and a night env; the floor lamp and the fairy
+		# lights serve both.
+		# Studio apartment 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.6). Bed
+		# on the W side (godot -1.25,-2.5), desk + laptop on the E (godot
+		# 1.25,-1.5), packed bookshelf on the E wall (godot 2.3,-3.8), rug
+		# centre, fairy lights on the N wall. Camera SE corner just inside
+		# the door looking NW across the rug to the bed, window/lights beyond.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.12, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1),
+			"ground_horizon": Color(0.10, 0.09, 0.11, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.36, 0.34, 0.44, 1), "ambient_energy": 0.52, "fog_color": Color(0.14, 0.12, 0.18, 1)},
 		"suppress_input": true,
 	},
 	"missing_link_interior": {
 		"scene": "res://scenes/locales/missing_link_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/missing_link_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# DRAFT 4 (2026-10-09): the Bigfoot diner, 10 x 7 (godot x in [-5,5],
+		# z in [0,-7], ceil 2.8), one building with the exterior (interior =
+		# exterior + (1.5, -8)). Door at the front's EAST end (godot 3.9,0);
+		# four booths under four front windows; the counter (godot z -4.95)
+		# with five stools facing the kitchen door; the corner booth + the
+		# photo wall NW; the Sasquatch on the W wall; the jukebox on the E
+		# wall by the door. Camera just inside the door looking NW across
+		# the room: "You step in out of the rain."
+		"camera_origin": Vector3(3.60, 1.65, -0.90),
+		"camera_rotation": Vector3(-0.089, deg_to_rad(50.0), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"cabin_interior": {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cabin_interior_day": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.80, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_porch": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (2026-10-08) Tem's porch — twelve vol 7 scenes ("Tem was on the
+		# porch with a coffee in her hand", the cedar with Eddvard's hand on
+		# the rail, the smokers' tin, the crow on the railing) were shot on
+		# the Millers' Texas back porch. The cabin set grew an outside for
+		# it: roof, foundation, the porch on the south wall, the turnaround,
+		# the clearing. Camera in the turnaround between the truck and the
+		# wagon (blender -0.6, -8.0, eye 1.65 over the yard), looking NNW at
+		# the whole front: the porch, the door, the two south windows and
+		# Olaf's shop to the west under its lower gable.
+		# Its own markers are suffixed __cabin_porch in the cabin's .tscn.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"cabin_porch_dawn": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (pass 92, 2026-10-12) THE PORCH AT DAWN: ch20 "At six the cast was at the
+		# trucks" — the porch camera, a dawn sky, the sun low and warm; nodes cloned
+		# with the __cabin_porch_dawn suffix.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.30, 0.36, 0.58, 1), "sky_horizon": Color(0.92, 0.70, 0.52, 1),
+			"ground_horizon": Color(0.34, 0.32, 0.30, 1), "ground_bottom": Color(0.16, 0.15, 0.14, 1),
+			"ambient_color": Color(0.72, 0.62, 0.58, 1), "ambient_energy": 0.70, "fog_color": Color(0.60, 0.50, 0.46, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_porch_day": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (pass 91, 2026-10-12) THE PORCH BY DAY: ch1 Finn's morning, ch5, ch10, ch15
+		# the wagon — the same camera in the turnaround, the interior-day sky and
+		# light; its nodes are the porch's, cloned with the __cabin_porch_day suffix.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.40, 0.44, 0.36, 1), "ground_bottom": Color(0.20, 0.22, 0.18, 1),
+			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.80, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
+	"cabin_interior_bed": {
+		"scene": "res://scenes/locales/cabin_interior_bed.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# vol7 ch1 (The Cabin, Morning): Lena waking in the east bed
+		# alcove — "the window above the bed gave her the gray-green of
+		# cedars." Camera at the pillow end, low (eye 1.0), looking
+		# ESE along the bed at the window in the east wall; its own
+		# scene so [shot:insert window] frames THAT window, not the
+		# kitchen's.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		# 2026-09-30 (draft 2 of this frame): the 09-03 --propose pass
+		# stood it at blender (-1.5, 2.15) — in the MAIN room, west of
+		# the east room's partition (x 1.0), pitched 20° up; the 09-26
+		# sheet saw the partition and the ceiling. It is at the pillow
+		# end INSIDE the east room now (blender 1.2, 2.5, eye 1.05),
+		# between the partition and the bed, looking ESE: the made bed
+		# in the lower frame, the window over it (E wall, 2.85, 1.45).
+		# 2026-10-09: the room is 8 x 8 and the east room 2.4 m wide (the
+		# partition at x 1.4, the bed +1 m) — the camera moved with the bed.
+		"camera_origin": Vector3(1.95, 1.05, -2.50),
+		# down the bed's length toward its foot and the desk, the window
+		# over the bed 24° left of centre (sheet 42: pitched 0.20 at the E
+		# wall it was all wall; square on, the wall filled 67 % at 1.8 m)
+		"camera_rotation": Vector3(0.05, -2.55, 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"finn_apartment": {
 		"scene": "res://scenes/locales/finn_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"finn_apartment_night": {
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch18 Aria (mood:night) and ch12 Morning's 4:42 on the dusk rig.
+		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"finn_apartment_day": {
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch12 Kai (11:15), ch12 Morning (after the bakery, morning), ch5 (morning_bright)
+		# on the dusk rig.
+		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(0.0), 0.0),
-		"fov": 60.0,
+		# Small apartment 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5], ceil 2.6).
+		# Same shell as finn: bed on the W side (godot -1.125,-2.5), desk +
+		# lamp on the E (godot 1.125,-1.5), dresser on the E wall (godot
+		# 1.95,-3.7), rug centre, N window, posters W wall. Camera SE corner
+		# just inside the door looking NW across to the bed, window beyond.
+		"camera_origin": Vector3(1.5, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(49.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"kwik_stop_interior": {
@@ -574,26 +2701,532 @@ const CAMERA_PRESETS := {
 		# The diner_interior preset uses -π/2 because its "front
 		# door" actually faces +X-out; the kwik_stop east wall is a
 		# solid backing for Sam, so the camera looks the OTHER way.)
-		"camera_origin": Vector3(5.78, 2.05, -5.0),
-		"camera_rotation": Vector3(0.04, deg_to_rad(90.0), 0.0),
+		# RE-VANTAGED 2026-09-03: vantage_obstruction_audit --propose (the register edge filled a third of frame within 1 m)
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
 		"fov": 64.0,
+		"suppress_input": true,
+	},
+	# ── Vols 1-2 · 3D migration (2026-08-03) ─────────────────────
+	# "Visual novel backgrounds are 3d scenes." The legacy 2D JPEG
+	# refs migrated onto locales; these presets are the new sets.
+	"missing_link_exterior": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		# OUTDOOR dusk roadside. Build coords: road E-W at y∈[0,3.4],
+		# gravel lot behind it, diner front face y=8 (godot z=-8),
+		# x∈[-4.5,3.5]; MISSING LINK pole sign at (-6.5, z=-6.5); gas
+		# pump island mid-apron (-3.2, z=-5.4); depot awning against
+		# the diner's east end (5.6, z=-6.6). Camera across the road
+		# on the far shoulder — the full wide: road + puddles
+		# foreground, pumps, diner window band, sign frame-left,
+		# awning frame-right.
+		"camera_origin": Vector3(-3.0, 1.75, 0.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-8.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"shuttle_bench": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		# Same set, second vantage — vol1's highest-traffic bg (the
+		# whole link_* chain plays sitting at the stop). Seated height
+		# under the depot awning (godot 5.6, z=-6.6) looking W past
+		# the diner front: window band right, pumps + pole sign
+		# center, wet road left, awning post kissing frame right.
+		"camera_origin": Vector3(5.5, 1.35, -6.3),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(72.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"briar_falls_rest_stop": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# OUTDOOR mountain day. Build coords: lot y∈[0,6] (godot
+		# z∈[0,-6], x∈[-8,4]); stone building front y=8 (z=-8) at
+		# x∈[-5,-0.5]; trailhead posts (6.5, z=-8.6); overlook deck
+		# NE (9.25, z=-14.5); picnic tables west grass; pines all
+		# round; valley ridges + falls thread far north. Camera
+		# east of the minivan (parked at godot -3.2, z=-3.6) looking
+		# NW: van faux-wood flank frame-left, brown-brick building +
+		# vending machine center, trailhead box right.
+		"camera_origin": Vector3(0.5, 1.70, -1.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(22.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"briar_falls_building": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# Three-quarter on the CCC stone building from the walk's
+		# east side: door + lintel center, flanking windows, stepped
+		# timber roof, info board frame left.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(6.70, 1.65, -2.70),
+		"camera_rotation": Vector3(-0.03, 0.654, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"briar_falls_trail": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# At the trailhead posts looking up the path as it bends NE
+		# through the pines toward the overlook; crossbeam sign
+		# overhead, dirt path leading the eye.
+		"camera_origin": Vector3(5.8, 1.70, -7.8),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-17.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"briar_falls_overlook": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# On the basalt slab at the rail: the first-stage shelf and
+		# the column dropping out of sight below, mist rising, the
+		# ribbon + 707 key on the top rail frame-right, ridges beyond.
+		"camera_origin": Vector3(9.2, 1.75, -13.8),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"briar_falls_picnic": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# At the shelter's SE corner looking NW under the corrugated
+		# roof: all three tables (the loose third shoved off-square),
+		# the carved-initials tabletop nearest, pines beyond.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(3.40, 1.60, -1.35),
+		"camera_rotation": Vector3(-0.03, 0.262, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"faust_apartment_day": {
+		"scene": "res://scenes/locales/faust_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/faust_apartment.glb",
+		# DRAFT 3 (2026-10-09): studio 8 x 6.6 (godot x in [-4,4],
+		# z in [0,-6.6], ceil 2.95). Bed NW corner (-2.85,-5.4), the
+		# painting corner by the E window (easel 2.3,-3.7), bathroom SE,
+		# W-wall bookcase + reading chair, kitchenette SW. Camera just
+		# inside the door looking N: bed far left, easel frame-right.
+		"camera_origin": Vector3(-0.20, 1.62, -0.75),
+		"camera_rotation": Vector3(-0.122, deg_to_rad(-12.0), 0.0),
+		"fov": 66.0,
+		# the painting morning: the set's sky is the 4 am one
+		"env": {"sky_top": Color(0.40, 0.58, 0.84, 1), "sky_horizon": Color(0.82, 0.86, 0.88, 1),
+			"ground_horizon": Color(0.52, 0.52, 0.50, 1), "ground_bottom": Color(0.30, 0.30, 0.28, 1),
+			"ambient_color": Color(0.86, 0.82, 0.74, 1), "ambient_energy": 1.05,
+			"fog_color": Color(0.80, 0.78, 0.72, 1)},
+		"suppress_input": true,
+	},
+	"faust_bedroom": {
+		"scene": "res://scenes/locales/faust_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/faust_apartment.glb",
+		# Same set, the 4am vantage — mid-room looking NW at the bed
+		# corner: red blanket, the canvas over the headboard, the
+		# nightstand lamp + alarm; bookcase and reading chair frame-left.
+		"camera_origin": Vector3(0.70, 1.50, -2.70),
+		"camera_rotation": Vector3(-0.145, deg_to_rad(47.7), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"carnival_lot": {
+		"scene": "res://scenes/locales/carnival_lot.tscn",
+		"requires_glb": "res://assets/3d/locales/carnival_lot.glb",
+		# The abandoned carnival (built for the Strength arcana, now
+		# also vol2's cliffside/Seagash circus). Build coords: lot
+		# 24×18 centered on origin (godot z∈[-9,9] both ways), big
+		# top at (-6, z=0), ticket booth + lion wagon east. Camera at
+		# the south wall looking N across the dirt: big top frame
+		# left, merry-go-round center, limestone wall foreground.
+		"camera_origin": Vector3(2.0, 1.70, 7.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(12.0), 0.0),
+		"fov": 68.0,
+		"suppress_input": true,
+	},
+	# ── Vols 1-2 · migration debt wave (2026-08-03, second pass) ──
+	# The nine sets that close the 2D-background estate to zero.
+	"pharmacy_floor": {
+		"scene": "res://scenes/locales/pharmacy.tscn",
+		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
+		# DRAFT 2 (2026-10-10): the chain drugstore, 26 x 22 m (godot
+		# x in [-13,13], z in [0,-22], drop ceiling 3.6). "From my
+		# whitewalled fortress of solitude I emerge and bask upon my
+		# kingdom": the pharmacist's eye from the raised platform behind
+		# PICK UP, over the shelf tops down the lane between cosmetics and
+		# vitamins to the storefront glass and the lot. At the counter's
+		# edge, so the station signs hang above the frame, not across it.
+		"camera_origin": Vector3(1.20, 2.10, -15.98),
+		"camera_rotation": Vector3(-0.050, -3.123, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"pharmacy_office": {
+		"scene": "res://scenes/locales/pharmacy.tscn",
+		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
+		# Same set, the office behind the pharmacy (on its 45 cm platform):
+		# from the SW corner by the door — the desk with the computer, the
+		# coffee and the open bottle on the N wall, the full-length mirror
+		# on the E wall ("Faust stands up and inspects himself").
+		"camera_origin": Vector3(2.20, 2.07, -18.95),
+		"camera_rotation": Vector3(-0.232, -0.939, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"beach_night": {
+		"scene": "res://scenes/locales/grunion_beach.tscn",
+		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
+		# OUTDOOR clouded-moon shore. Dry sand → wet band (z≈-9) →
+		# surf lines → black sea → the cloud deck 140-200 m out with
+		# the moon in its gap (draft 2, 2026-09-30). Camera at the
+		# dune foot looking N down the narrator's footprints to the
+		# water — the ghost scene's vantage: driftwood left third, the
+		# moon gap right third, the walk down the middle.
+		"camera_origin": Vector3(-0.3, 1.6, -1.6),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(16.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"grunion_beach": {
+		"scene": "res://scenes/locales/grunion_beach.tscn",
+		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
+		# Same set, low at the tide's edge looking W along the wet
+		# band — the silver run receding up the beach to the vanishing
+		# point, surf frame right (draft 2: the beach runs 200 m each
+		# way now; eye 0.9 on the wet band, the run at your feet).
+		"camera_origin": Vector3(2.0, 0.9, -8.6),
+		"camera_rotation": Vector3(-0.14, deg_to_rad(78.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"bar_exterior_night": {
+		"scene": "res://scenes/locales/bar_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/bar_exterior.glb",
+		# OUTDOOR night street. Brick face at z=-4.5: recessed door
+		# with warm spill (x=-1), neon over it, glowing front window
+		# east (x=2.4), parked sedan at the curb, streetlamp (4.8).
+		# Camera ACROSS the road at its south edge looking N at the
+		# whole frontage — the superpower conversation happens here:
+		# the door's spill and the neon over it left of centre, the big
+		# window glowing right, the sedan at the curb frame-left, the
+		# streetlamp at the right edge, the dark upper story (2026-09-30:
+		# on the sidewalk 2.3 m from the facade looking WNW, the lit
+		# window filled a third of the frame and the door was a sliver).
+		"camera_origin": Vector3(0.9, 1.65, 0.6),
+		"camera_rotation": Vector3(0.10, 0.098, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"skatepark_day": {
+		"scene": "res://scenes/locales/skatepark.tscn",
+		"requires_glb": "res://assets/3d/locales/skatepark.glb",
+		# OUTDOOR municipal concrete, day. Slab z∈[0,-12]: THE POOL
+		# (coping ring at 0.5, z=-7.2), one pipe hump W, ledge pair,
+		# flat rail (-2,-3.5), stair set, chain-link at back, trees
+		# beyond. Camera at the slab's S edge looking N and down into
+		# the pool (2026-09-30, draft 2: the pool is a real 1.5 m pit
+		# with transitions now; the level lens saw only its coping).
+		"camera_origin": Vector3(-2.0, 1.70, -0.8),
+		"camera_rotation": Vector3(-0.17, deg_to_rad(-21.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"wagner_home": {
+		"scene": "res://scenes/locales/wagner_home.tscn",
+		"requires_glb": "res://assets/3d/locales/wagner_home.glb",
+		# DRAFT 2 (2026-10-10): Wagner's rented bungalow front room, 7.2 x 6
+		# (godot x in [-3.6,3.6], z in [0,-6], ceil 2.6), the kitchen and the
+		# hall opening off its N wall. From by the front window, NW across the
+		# rug to the stereo wall (turntable, speakers, crates, posters), the
+		# skateboard rack by the door at left, the TV and the openings beyond.
+		"camera_origin": Vector3(2.20, 1.60, -1.30),
+		"camera_rotation": Vector3(-0.084, 1.062, 0.0),
+		"fov": 63.0,
+		"suppress_input": true,
+	},
+	"school_newspaper": {
+		"scene": "res://scenes/locales/school_newspaper.tscn",
+		"requires_glb": "res://assets/3d/locales/school_newspaper.glb",
+		# DRAFT 2 (2026-10-10): a real classroom the paper colonised,
+		# 9.6 x 8.4 (godot x in [-4.8,4.8], z in [0,-8.4], ceil 3.0), the
+		# hall and its lockers past the S door. Layout island centre, the
+		# computers under the cork board (DRIFTWOOD across its top) on W,
+		# chalkboard and darkroom door N, windows on the field E. Camera
+		# just inside the door looking NW over the island to the board.
+		"camera_origin": Vector3(2.90, 1.60, -0.90),
+		"camera_rotation": Vector3(-0.051, 0.767, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"sapo_falls": {
+		"scene": "res://scenes/locales/sapo_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/sapo_falls.glb",
+		# OUTDOOR gorge. Stepped rock walls flank; the fall column
+		# drops from the rim notch (z≈-13.3, top ~9.5) into the pool
+		# with foam ring + mist; wet boulders foreground. Camera on
+		# the viewing rocks, pitched up at the column.
+		"camera_origin": Vector3(0.5, 1.70, -2.8),
+		"camera_rotation": Vector3(0.10, deg_to_rad(3.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"little_switzerland": {
+		"scene": "res://scenes/locales/little_switzerland.tscn",
+		"requires_glb": "res://assets/3d/locales/little_switzerland.glb",
+		# OUTDOOR alpine-kitsch village. Road z∈[0,-3], pull-off,
+		# three chalet fronts at z=-7 (x -7 / -0.5 / +6) with timber
+		# grids + flower boxes, sign W on posts, pines, two ridge
+		# planes with snow caps. Camera across the road looking N at
+		# the chalets, ridges over the rooflines.
+		"camera_origin": Vector3(-3.5, 1.70, -1.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-8.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"club_sharp": {
+		"scene": "res://scenes/locales/club_sharp.tscn",
+		"requires_glb": "res://assets/3d/locales/club_sharp.glb",
+		# vol1 ch4's dream club (2026-10-10): "a gigantic arcade downstairs,
+		# several dance floors, and a bowling alley ... a # for a logo". It
+		# played on the Foxhole. 24 x 18 main floor; the arcade 4 m below
+		# the W atrium; the bowling alley behind the S glass. Camera at the
+		# atrium rail looking NE over the dance floors to the bar
+		# and Dickens Dean's booth under the #.
+		"camera_origin": Vector3(-2.00, 1.75, -6.00),
+		"camera_rotation": Vector3(-0.030, -0.755, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"smolvud_coop": {
+		"scene": "res://scenes/locales/smolvud_coop.tscn",
+		"requires_glb": "res://assets/3d/locales/smolvud_coop.glb",
+		# vol7's organic co-op on Smolvud's Main Street (2026-10-10; ch12
+		# played the visit on the street). 12 x 9 (godot x in [-6,6], z in
+		# [0,-9]). Camera in the SW corner by the bulk bins, looking NE over
+		# the produce and the gondolas to Margaret's counter by the door.
+		"camera_origin": Vector3(-5.00, 1.65, -2.00),
+		"camera_rotation": Vector3(-0.048, -1.399, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"graustark_post_office": {
+		"scene": "res://scenes/locales/graustark_post_office.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark_post_office.glb",
+		# vol5 ch20 (2026-10-10): the post office on Elm — the clerk's
+		# window, the outgoing bin, the PO boxes, and the line cracked
+		# through the tiles from the bin to the door (the beat played on the
+		# chalk wall). 9 x 7 (godot x in [-4.5,4.5], z in [0,-7]). Camera
+		# inside the open door, looking NW over the line to the counter.
+		"camera_origin": Vector3(3.90, 1.70, -1.70),
+		"camera_rotation": Vector3(-0.082, 1.040, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"small_wood_rec_center": {
+		"scene": "res://scenes/locales/small_wood_rec_center.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_rec_center.glb",
+		# vol2's second interlude (2026-10-10): Small Wood Rec Center, "a
+		# small, deteriorating one-room building on the main drag" on a
+		# dance night — it played on Harmony Creek's weight room. 12 x 9
+		# (godot x in [-6,6], z in [0,-9]). Camera just inside the glass
+		# doors ("standing at the entrance horrified") looking N across the
+		# dead zone to the deejay's table and the back.
+		"camera_origin": Vector3(-2.00, 1.65, -0.90),
+		"camera_rotation": Vector3(-0.074, -0.491, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"small_wood_cemetery": {
+		"scene": "res://scenes/locales/small_wood_cemetery.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_cemetery.glb",
+		# vol2's graveside (2026-10-10): Small Wood's hillside lawn
+		# cemetery — firs and cedars, granite uprights and flat markers,
+		# the aunt's open grave under the canopy at the origin, the lane
+		# and the hearse. It played on the Graustark tomb city. Camera
+		# behind the folding chairs looking N past the canopy.
+		"camera_origin": Vector3(1.00, 1.70, 7.50),
+		"camera_rotation": Vector3(-0.076, 0.095, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"parish_cemetery": {
+		"scene": "res://scenes/locales/parish_cemetery.tscn",
+		"requires_glb": "res://assets/3d/locales/parish_cemetery.glb",
+		# The Graustark above-ground tomb city (built for the
+		# Judgement arcana, now also vol2's gravesite). Lot 24×18
+		# centered on origin; white vault rows on a walkway grid,
+		# central mausoleum (door on its S face, godot z=+2.2), iron
+		# fence + gate at the S edge (z=+9). Camera just inside the
+		# gate looking N up the central path to the mausoleum door,
+		# vault rows flanking.
+		# RE-VANTAGED 2026-09-03: the east gate leaf was 0.4 m from the lens; a metre and a half up the path, same look at the mausoleum
+		"camera_origin": Vector3(0.60, 1.65, 6.80),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(13.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"crumpled_barn_ext": {
+		"scene": "res://scenes/locales/crumpled_barn.tscn",
+		"requires_glb": "res://assets/3d/locales/crumpled_barn.glb",
+		# OUTDOOR overcast field. The standing gable face at z=-8.4
+		# (doorway + hay door punched dark), fallen roof planes low
+		# behind on rubble, surviving frame posts, remnant fence,
+		# weeds. Camera in the field SE of the barn looking NW, three-
+		# quarter on the gable so the collapse behind it reads — "a
+		# gray barn that lost its back half" (2026-09-30, draft 2: the
+		# square-on view hid the fallen roof behind the wall).
+		"camera_origin": Vector3(8.0, 1.70, -1.5),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(41.8), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"crumpled_barn_int": {
+		"scene": "res://scenes/locales/crumpled_barn.tscn",
+		"requires_glb": "res://assets/3d/locales/crumpled_barn.glb",
+		# Same set, INSIDE the surviving bay behind the gable: the
+		# marionette cabinet (Jiggles the Juggler, name in red paint,
+		# broken glass fourth wall) and the carved mermaid sign side
+		# by side on the gable's inner face; the fallen roof plane
+		# fills the low foreground; a daylight shaft falls across
+		# them. Camera atop the collapse looking S at the pair.
+		"camera_origin": Vector3(-0.4, 1.35, -11.4),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	# ── Vols 5-7 · hero-prop pass (2026-08-03) ───────────────────
+	"cabin_road_truck": {
+		"scene": "res://scenes/locales/cabin_road.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_road.glb",
+		# vol7 ch2: inside Finn's grandfather's Toyota on the gravel
+		# pull-out off the approach (blender cab origin (-3.7, -8.2)),
+		# behind the road preset's camera. From the bench seat, forward
+		# over the dash (the crow on it, rain on the glass) up the road
+		# to the transition, the crossing and the stand (2026-10-09:
+		# it rendered in Ben's pickup on a Texas turnout).
+		"camera_origin": Vector3(-3.7, 1.33, 8.10),
+		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"cabin_road": {
+		"scene": "res://scenes/locales/cabin_road.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_road.glb",
+		# vol7's road, split off louisiana_road (the prose is Oregon:
+		# Sitka stand, creek crossings, asphalt giving out to gravel,
+		# the switchback). Camera on the asphalt looking N up the
+		# climb: transition line at z=-6, creek at z=-10, the bend
+		# swinging east, mist in the stand, the clearing gap ahead.
+		"camera_origin": Vector3(0.3, 1.70, -2.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(-4.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_lobby": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# The Oneironautics tower off Old Yachats Road (vol7 ch22 —
+		# previously mis-played on the Texas warehouse cathedral).
+		# Floors stack vertically in one GLB (riverboat precedent):
+		# lobby y=0, studio y=5, quarters y=10, portal y=15;
+		# exterior clearing at x≈45. LOBBY: polished cedar, twelve-
+		# foot ceiling, the empty reception desk, Dean's portrait on
+		# the N wall (looking at his daughter at the photographer's
+		# left), cedar stairs + brass handrail at back-right.
+		"camera_origin": Vector3(0.0, 1.62, -1.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_studio": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# Second floor: server racks (green LEDs) at back, desk
+		# clusters of four, the poster archive floor-to-ceiling on
+		# the S+W walls (Estuary 7 half-sized in brass), the smaller
+		# framed photographs of Dean on the E wall. Camera looks NW
+		# so the W poster run and the racks share the frame.
+		"camera_origin": Vector3(-1.2, 6.60, -1.5),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(18.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_quarters": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# Third floor: bunks W, the twelve-seat communal table
+		# center, the cedar-cabinet kitchen + wood-stove at the E
+		# end, the open book on the table.
+		"camera_origin": Vector3(0.5, 11.60, -1.0),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(8.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_portal": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# Fourth floor: the landing, the single unmarked cedar door,
+		# the six-by-six translucent window at chest height — and
+		# through it the portal room: the smart-glass wall rendering
+		# the substrate, the far door where Aria waves.
+		"camera_origin": Vector3(0.0, 16.55, -1.3),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_exterior": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# The gravel clearing: the wagon, the Sitka ring, the tower's
+		# seven cedar-and-glass floors, the seventh running the
+		# garden green behind its smart-glass. The tower (blender
+		# 45, 12; 26 m) is 30 m off, whole, top to doors; the south
+		# arc of the Sitka ring frames the left, the wagon mid-left
+		# (2026-09-30: at 18 m and pitched 17° up the frame was the
+		# tower's middle floors and five spruce 3 m off the lens).
+		"camera_origin": Vector3(47.0, 1.70, 18.0),
+		"camera_rotation": Vector3(0.17, 0.066, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"nexcorp_gas_go": {
+		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",
+		# The Harmony Creek Gas & Go (Skip's shift) — interior 12×9,
+		# pumps + canopy beyond the south glass, locker room back-NW
+		# (#4 is Skip's). (2026-10-06: the camera stood 1.5 m from the
+		# aisle and saw only shelving.) From the store's east side by
+		# the office looking S over Skip's side of the counter — his
+		# stool, the register, the pump controller — to the door and the
+		# pumps under the canopy through the south glass.
+		"camera_origin": Vector3(3.00, 1.70, -5.50),
+		"camera_rotation": Vector3(-0.161, -3.049, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cliffside_circus": {
+		"scene": "res://scenes/locales/cliffside_circus.tscn",
+		"requires_glb": "res://assets/3d/locales/cliffside_circus.glb",
+		# The 1902 sideshow on the headland: "more like a bordello or
+		# gaming parlor than an actual circus," built at the cliff's
+		# edge over jagged black outcroppings and surf. Camera inside
+		# the gate looking N: maroon main building + porch frame-left
+		# (z=-8.5), Delores's pool + rail + island center-right
+		# (3, z=-5.6), satellite shacks, bunting, the cold sea beyond
+		# the edge.
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(2.25, 1.70, 0.00),
+		"camera_rotation": Vector3(-0.02, 0.000, 0.0),
+		"fov": 68.0,
 		"suppress_input": true,
 	},
 }
 
 const BG_W: int = 1280
 const BG_H: int = 720
-
-# Presets whose camera_origin/rotation are hand-tuned and known good.
-# Everything else is auto-framed from the room's AABB.
-const MANUAL_CAMERA_PRESETS := {
-	"diner_interior": true,
-	"diner_exterior_porch": true,
-	"riverfront_exterior": true,
-	"graustark_ruins": true,
-	"kwik_stop_godseye": true,
-	"riverboat_interior": true,
-}
 
 @onready var _viewport: SubViewport = $SubViewport
 @onready var _anchor: Node3D = $SubViewport/LocationAnchor
@@ -603,16 +3236,160 @@ var _loaded_preset: String = ""
 var _location_instance: Node = null
 
 
+# ── THE PAINTED ROOM (2026-10-02) ─────────────────────────────────
+# The Deck: "background clashing with the new art style and models.
+# let's bridge the gap." The heroes are watercolour and ink now; the
+# rooms were flat vertex-colour CG. A last pass paints the room in the
+# same language (painted_scene.gdshader): a CanvasLayer inside our
+# SubViewport, ABOVE the locale's own PostProcess (layer 50), so it
+# paints whatever the locale's style pack left. (The container's own
+# material slot is TripSync's — the trip still breathes on top.) The
+# PAPER is the volume's: each register is painted on its own stock.
+const PAINTED_LAYER: int = 90
+const VOLUME_PAPER := {
+	5: Color(0.90, 0.91, 0.88),   # arcana — a cool, grey-white rag
+	6: Color(0.96, 0.91, 0.81),   # milk & honey / the community — warm cream
+	7: Color(0.91, 0.93, 0.89),   # the cedars — a green-grey wash paper
+}
+const DEFAULT_PAPER := Color(0.94, 0.91, 0.84)
+# One hand for every volume (2026-10-02, the Deck: "I want the look vol 6
+# has, but with vol 5's tenor. I didn't want it to go away. It was just
+# poorly lit"). The register's tenor is the TRIP layer on top (arcana's
+# neon aura) and the room's own lighting; the painting is the same
+# everywhere. Only the paper changes with the volume.
+var _painted_mat: ShaderMaterial = null
+var _noise_shift: Vector2 = Vector2.ZERO
+var _paint_amount: float = 1.0               # (never read back from the material: an unset uniform is null — the ch 0 crash, 2026-10-02)
+# THE TRIP OVER THE PAINT (2026-10-02). The Deck: "I want the look vol
+# 6 has, but with vol 5's tenor. I didn't want it to go away. It was
+# just poorly lit." The register's tenor is TripSync's aura on the
+# container, OVER this painting. Tried under it: the washes flattened
+# its lines and the ink ate its colour — the tenor vanished. Over it,
+# screen-blended light on medium-bright paper was glare. So it stays
+# over, in the aura's INKED form (trip_sync `paint_under`, set by
+# GameEngine when it attaches): the lines darken toward the register's
+# hue, the flats take its tint — a colour print carrying neon.
+const TRIP_PAINT_UNDER: float = 0.85
+
+
 func _ready() -> void:
 	custom_minimum_size = Vector2(BG_W, BG_H)
+	_add_painted_pass()
+
+
+func _process(_delta: float) -> void:
+	_push_noise_shift()
+
+
+func _add_painted_pass() -> void:
+	var vp: SubViewport = get_node_or_null("SubViewport") as SubViewport
+	var sh: Shader = load("res://assets/shaders/painted_scene.gdshader") as Shader
+	if vp == null or sh == null:
+		return
+	var layer := CanvasLayer.new()
+	layer.name = "PaintedPass"
+	layer.layer = PAINTED_LAYER
+	layer.add_to_group("world_render")   # the picture, not HUD — F4 leaves it
+	var bb := BackBufferCopy.new()
+	bb.copy_mode = BackBufferCopy.COPY_MODE_VIEWPORT
+	layer.add_child(bb)
+	var rect := ColorRect.new()
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_painted_mat = ShaderMaterial.new()
+	_painted_mat.shader = sh
+	rect.material = _painted_mat
+	layer.add_child(rect)
+	vp.add_child(layer)
+
+
+## The volume's paper (GameEngine, on every 3D bg). 0 = the default stock.
+func set_paper_for_volume(vol: int) -> void:
+	if _painted_mat == null:
+		return
+	var c: Color = VOLUME_PAPER.get(vol, DEFAULT_PAPER)
+	_painted_mat.set_shader_parameter("paper_color", c)
+
+
+## 0..1 — 0 shows the locale as rendered (a debug comparison).
+func set_paint(amount: float) -> void:
+	_paint_amount = clampf(amount, 0.0, 1.0)
+	if _painted_mat != null:
+		_painted_mat.set_shader_parameter("paint", _paint_amount)
+	_tell_mood_painted()
 
 
 # ── Public API ────────────────────────────────────────────────────
+# GameEngine calls this instead of call_deferred("load_location"):
+# a [shot:]/[stage:] directive on the first text node after a bg
+# node must NOT resolve against the PREVIOUS locale. Marking the
+# load pending makes has_locale_loaded() gate the director's
+# pending-retry loop until the deferred load actually lands.
+# ── A MISSING SET IS SHOWN AS MISSING (pass 95, 2026-10-12) ─────────────
+# Every failed load_location tears down the room that was on screen, so the
+# next chapter cannot play over the last room that did build (Sam's chapters
+# showed Maya's room on a Deck missing sam_bedroom.glb). The frame goes to
+# the viewport's clear colour and a notice names the builder to run.
+var _missing_notice: CanvasLayer = null
+
+
+func _unload_for_missing(preset_id: String, what: String) -> void:
+	if _location_instance != null and is_instance_valid(_location_instance):
+		_location_instance.queue_free()
+	_location_instance = null
+	_staged_cast.clear()
+	_loaded_preset = ""
+	var builder: String = what.get_file().get_basename()
+	if builder == "" or not what.ends_with(".glb"):
+		builder = preset_id
+	_show_missing_notice("SET NOT BUILT · %s\ncd godot/tools/blender && ./run_cathedral.sh build_%s.py" % [preset_id, builder])
+
+
+func _show_missing_notice(text: String) -> void:
+	if _missing_notice == null or not is_instance_valid(_missing_notice):
+		_missing_notice = CanvasLayer.new()
+		_missing_notice.layer = 90
+		_missing_notice.add_to_group("ui")
+		var lbl := Label.new()
+		lbl.name = "Text"
+		lbl.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+		lbl.position = Vector2(24, 24)
+		lbl.add_theme_font_size_override("font_size", 16)
+		lbl.add_theme_color_override("font_color", Color(0.96, 0.78, 0.42))
+		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+		lbl.add_theme_constant_override("outline_size", 4)
+		_missing_notice.add_child(lbl)
+		add_child(_missing_notice)
+	_missing_notice.visible = FirstPersonController.hud_visible
+	var t: Label = _missing_notice.get_node("Text") as Label
+	t.text = text
+
+
+func _hide_missing_notice() -> void:
+	if _missing_notice != null and is_instance_valid(_missing_notice):
+		_missing_notice.queue_free()
+	_missing_notice = null
+
+
+func queue_load(preset_id: String) -> void:
+	_pending_preset = preset_id
+	call_deferred("load_location", preset_id)
+
+
+var _pending_preset: String = ""
+# why the last load_location returned false (2026-09-24: two presets were
+# skipped on every contact sheet with no reason on the page)
+var last_load_error: String = ""
+
+
 func load_location(preset_id: String) -> bool:
+	_pending_preset = ""
 	if preset_id == _loaded_preset and _location_instance != null:
 		return true
 	if not CAMERA_PRESETS.has(preset_id):
 		push_warning("[Background3D] Unknown preset: %s" % preset_id)
+		last_load_error = "unknown preset"
+		_unload_for_missing(preset_id, "unknown preset")
 		return false
 	var spec: Dictionary = CAMERA_PRESETS[preset_id]
 	# Pre-check the required GLB BEFORE asking Godot to parse the
@@ -623,17 +3400,46 @@ func load_location(preset_id: String) -> bool:
 	var req_glb: String = spec.get("requires_glb", "")
 	if req_glb != "" and not FileAccess.file_exists(req_glb):
 		push_warning("[Background3D] GLB missing: %s — build it with `cd godot/tools/blender && ./run_cathedral.sh build_<name>.py`. Falling back to 2D bg." % req_glb)
+		last_load_error = "GLB missing: %s" % req_glb
+		_unload_for_missing(preset_id, req_glb)
 		return false
 	# Tear down the previously-loaded location
 	if _location_instance != null and is_instance_valid(_location_instance):
 		_location_instance.queue_free()
 	_location_instance = null
+	_staged_cast.clear()   # staged cast dies with the locale instance
 	# Load + instantiate the new location
 	var ps: PackedScene = load(spec.get("scene", "")) as PackedScene
 	if ps == null:
 		push_warning("[Background3D] Could not load scene %s" % spec.get("scene", ""))
+		last_load_error = "scene failed to load (GLB present — import error?): %s" % String(spec.get("scene", ""))
+		_unload_for_missing(preset_id, String(spec.get("scene", "")))
 		return false
 	_location_instance = ps.instantiate()
+	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
+	# real transparency — before this every pane was an opaque slab.
+	GlassPass.apply(_location_instance)
+	# HERO ART (2026-10-12): the installed pictures (the alley mural, the
+	# photo in Diego's mirror ...) laid on their surfaces, stand-ins hidden.
+	HeroArtScript.apply(_location_instance, String(spec.get("scene", "")).get_file().get_basename())
+	# PER-PRESET LIGHTS (2026-10-08), the markers' convention carried to
+	# lights: a Light3D named `<name>__<preset_id>` belongs to that preset's
+	# AREA of a shared set and is dropped, before it enters the tree (so the
+	# mood stack never collects it), for every other preset. The cabin's
+	# porch has a morning sun; the room inside must not.
+	# (2026-10-11) a preset may name the style pack its locale starts on,
+	# overriding the scene's `default_style_pack` for that preset: the
+	# cabin's kitchen_clean (dawn_diner lighting) re-aims the key, tints
+	# the directionals and writes a dusk ambient + sky over whatever the
+	# preset's env set, so the day twin names raw_observation (lighting
+	# scene_default) and keeps its own light. Set before add_child so
+	# PostProcess._ready reads it.
+	if spec.has("style_pack"):
+		var pp: Node = _location_instance.get_node_or_null("PostProcess")
+		if pp != null:
+			pp.set("default_style_pack", String(spec["style_pack"]))
+	_strip_other_preset_lights(_location_instance, preset_id)
+	_apply_preset_env(_location_instance, spec)
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.
 	# Once added, every script in the locale's _ready cascade caches
 	# references to the Player / HUD / etc — and the queue_free that
@@ -647,30 +3453,99 @@ func load_location(preset_id: String) -> bool:
 	# camera for the World3D. The location's own Camera3D node (if
 	# any) is overridden because make_current() pushes onto the
 	# camera stack.
-	# The hand-authored per-room camera_origin/rotation presets never
-	# matched the built geometry (rooms rendered gray/mis-framed), so
-	# for everything except a few known-good bespoke shots we auto-frame
-	# the camera from the location's actual AABB at load time.
-	if preset_id in MANUAL_CAMERA_PRESETS:
-		_camera.position = spec.get("camera_origin", Vector3.ZERO)
-		if spec.has("fov"):
-			_camera.fov = float(spec["fov"])
-		# Prefer an explicit look-at target (avoids euler-sign guessing);
-		# fall back to the raw camera_rotation preset.
-		if spec.has("camera_look_at"):
-			_camera.look_at(spec["camera_look_at"], Vector3.UP)
-		else:
-			_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
-	else:
-		_auto_frame_camera(spec)
+	_camera.position = spec.get("camera_origin", Vector3.ZERO)
+	_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
+	if spec.has("fov"):
+		_camera.fov = float(spec["fov"])
 	_camera.make_current()
+	_start_camera_track(spec)
 	_loaded_preset = preset_id
+	_hide_missing_notice()
 	# Re-apply any user-stamped MoodCycler overrides for this preset.
 	# Deferred a frame so the locale's PostProcess _ready has run and
 	# index properties / apply methods are ready to be called.
 	if Engine.has_singleton("VnDebugState") or get_node_or_null("/root/VnDebugState") != null:
 		call_deferred("_reapply_locale_state")
+	call_deferred("_tell_mood_painted")    # after the locale's PostProcess _ready
 	return true
+
+
+# PER-PRESET ENVIRONMENT (2026-10-09): one set, two times of day. A preset
+# may carry "env": {sky_top, sky_horizon, ground_horizon, ground_bottom,
+# ambient_color, ambient_energy, fog_color} — applied to a COPY of the
+# set's Environment and its ProceduralSkyMaterial, so Faust's studio is
+# 4 am through the bedroom preset and a painting morning through the day
+# preset without a second scene (moods are a post-process look and never
+# touched the sky: the morning window showed the night).
+func _apply_preset_env(root: Node, spec: Dictionary) -> void:
+	if not spec.has("env"):
+		return
+	var ov: Dictionary = spec["env"]
+	var found: Array[Node] = root.find_children("*", "WorldEnvironment", true, false)
+	if found.is_empty():
+		return
+	var we: WorldEnvironment = found[0] as WorldEnvironment
+	if we == null or we.environment == null:
+		return
+	var env: Environment = we.environment.duplicate() as Environment
+	if env.sky != null and env.sky.sky_material is ProceduralSkyMaterial:
+		var sky: Sky = env.sky.duplicate() as Sky
+		var mat: ProceduralSkyMaterial = (env.sky.sky_material as ProceduralSkyMaterial).duplicate() as ProceduralSkyMaterial
+		if ov.has("sky_top"):
+			mat.sky_top_color = ov["sky_top"]
+		if ov.has("sky_horizon"):
+			mat.sky_horizon_color = ov["sky_horizon"]
+		if ov.has("ground_horizon"):
+			mat.ground_horizon_color = ov["ground_horizon"]
+		if ov.has("ground_bottom"):
+			mat.ground_bottom_color = ov["ground_bottom"]
+		sky.sky_material = mat
+		env.sky = sky
+	if ov.has("ambient_color"):
+		env.ambient_light_color = ov["ambient_color"]
+	if ov.has("ambient_energy"):
+		env.ambient_light_energy = float(ov["ambient_energy"])
+	if ov.has("fog_color"):
+		env.fog_light_color = ov["fog_color"]
+	we.environment = env
+
+
+func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
+	for n in root.find_children("*", "Light3D", true, false):
+		var nm: String = String(n.name)
+		var cut: int = nm.find("__")
+		if cut < 0:
+			continue
+		# only a suffix that NAMES a preset marks a light (a fixture's own
+		# `Prac_PorchScreen_W__2` is a numbered copy, not an area)
+		var owner_preset: String = nm.substr(cut + 2)
+		if owner_preset == preset_id or not CAMERA_PRESETS.has(owner_preset):
+			continue
+		n.get_parent().remove_child(n)
+		n.free()
+
+
+## The locale's mood stack quiets its signal artifacts under the paint
+## (MoodCycler.set_painted); the tenor stays.
+func _tell_mood_painted() -> void:
+	var mc: Node = get_locale_mood_cycler()
+	if mc != null and mc.has_method("set_painted"):
+		mc.call("set_painted", _painted_mat != null and _paint_amount > 0.0)
+
+
+## The paper travels with the picture: the view's yaw and pitch as a UV
+## shift for the painter's noise (a pan slides the room; the blotches
+## and tooth slide with it).
+func _push_noise_shift() -> void:
+	if _painted_mat == null or _camera == null:
+		return
+	var fov_v: float = deg_to_rad(_camera.fov)
+	var aspect: float = float(BG_W) / float(BG_H)
+	var fov_h: float = 2.0 * atan(tan(fov_v * 0.5) * aspect)
+	var shift := Vector2(_camera.rotation.y / fov_h, _camera.rotation.x / fov_v)
+	if shift.distance_to(_noise_shift) > 1e-5:
+		_noise_shift = shift
+		_painted_mat.set_shader_parameter("noise_shift", shift)
 
 
 func _reapply_locale_state() -> void:
@@ -681,62 +3556,6 @@ func _reapply_locale_state() -> void:
 	if mc == null:
 		return
 	state.apply_locale_state(_loaded_preset, mc)
-
-
-# Frame the camera from the loaded location's actual geometry: stand
-# at the near end of the room's longest horizontal axis, at eye height,
-# and look across to the far end. Robust to whatever coordinate frame
-# the room was built in — no per-room hand-tuning. Falls back to the
-# preset if no geometry could be measured.
-func _auto_frame_camera(spec: Dictionary) -> void:
-	var box: AABB = _location_aabb()
-	if box.size == Vector3.ZERO:
-		_camera.position = spec.get("camera_origin", Vector3.ZERO)
-		_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
-		if spec.has("fov"):
-			_camera.fov = float(spec["fov"])
-		return
-	var c: Vector3 = box.get_center()
-	var s: Vector3 = box.size
-	# Eye height above the floor (lowest geometry), clamped to a human range.
-	var eye_y: float = box.position.y + clampf(s.y * 0.5, 1.5, 2.2)
-	# Stand a little inside the near wall so we're not embedded in it.
-	var inset: float = clampf(minf(s.x, s.z) * 0.2, 0.4, 1.2)
-	var cam: Vector3
-	var tgt: Vector3
-	if s.z >= s.x:
-		# Longest axis is Z — look down the length of the room.
-		cam = Vector3(c.x, eye_y, box.end.z - inset)
-		tgt = Vector3(c.x, eye_y, box.position.z + inset)
-	else:
-		cam = Vector3(box.end.x - inset, eye_y, c.z)
-		tgt = Vector3(box.position.x + inset, eye_y, c.z)
-	_camera.position = cam
-	_camera.fov = float(spec.get("fov", 60.0))
-	if cam.distance_to(tgt) > 0.05:
-		_camera.look_at(tgt, Vector3.UP)
-
-
-# Merged world-space AABB of every VisualInstance3D under the loaded
-# location. Empty AABB if none found.
-func _location_aabb() -> AABB:
-	if _location_instance == null:
-		return AABB()
-	var acc: AABB = AABB()
-	var have: bool = false
-	for n in _walk_tree(_location_instance):
-		if n is VisualInstance3D:
-			var vi: VisualInstance3D = n as VisualInstance3D
-			var local: AABB = vi.get_aabb()
-			if local.size == Vector3.ZERO:
-				continue
-			var world: AABB = vi.global_transform * local
-			if not have:
-				acc = world
-				have = true
-			else:
-				acc = acc.merge(world)
-	return acc if have else AABB()
 
 
 func get_viewport_texture() -> Texture2D:
@@ -752,10 +3571,259 @@ func get_viewport_texture() -> Texture2D:
 func set_camera_vantage(origin: Vector3, rotation: Vector3, fov: float) -> void:
 	if _camera == null or not is_instance_valid(_camera):
 		return
+	_stop_camera_track()
 	_camera.position = origin
 	_camera.rotation = rotation
 	_camera.fov = fov
 	_camera.make_current()
+
+
+# ── Camera motion · the action-stage capability ──────────────────
+# A preset may carry "camera_track": {"to": Vector3, "secs": float,
+# "rot_to": Vector3 (optional), "loop": "pingpong"|"once"}. The
+# SubViewport camera glides from camera_origin to `to` — a dolly /
+# drive-by / chase feel for scenes where the frame itself should
+# move (the Highway 9 action stage is the first customer). Manual
+# vantage overrides (set_camera_vantage / VnDirector cuts) stop the
+# track; restore_preset_vantage restarts it.
+
+var _track_tween: Tween = null
+
+
+func _stop_camera_track() -> void:
+	if _track_tween != null and _track_tween.is_valid():
+		_track_tween.kill()
+	_track_tween = null
+
+
+func _start_camera_track(spec: Dictionary) -> void:
+	_stop_camera_track()
+	if not spec.has("camera_track"):
+		return
+	var track: Dictionary = spec["camera_track"]
+	var to_pos: Vector3 = track.get("to", _camera.position)
+	var secs: float = float(track.get("secs", 12.0))
+	var loop_mode: String = String(track.get("loop", "pingpong"))
+	var from_pos: Vector3 = spec.get("camera_origin", _camera.position)
+	var from_rot: Vector3 = spec.get("camera_rotation", _camera.rotation)
+	_track_tween = create_tween()
+	_track_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_track_tween.tween_property(_camera, "position", to_pos, secs)
+	if track.has("rot_to"):
+		_track_tween.parallel().tween_property(
+				_camera, "rotation", track.get("rot_to", from_rot), secs)
+	if loop_mode == "pingpong":
+		_track_tween.tween_property(_camera, "position", from_pos, secs)
+		if track.has("rot_to"):
+			_track_tween.parallel().tween_property(_camera, "rotation", from_rot, secs)
+		_track_tween.set_loops()
+	elif loop_mode == "loop":
+		_track_tween.tween_callback(func() -> void:
+			_camera.position = from_pos
+			_camera.rotation = from_rot)
+		_track_tween.set_loops()
+
+
+# ── VnDirector hooks ─────────────────────────────────────────────
+# The VN's shot system (lore/_VN_DIRECTION_PLAYBOOK.md): locale
+# scenes carry Marker3D nodes named shot_<type>_<id> in group
+# "vn_shot"; VnDirector cuts the SubViewport camera between them.
+
+func get_camera() -> Camera3D:
+	return _camera
+
+
+func has_locale_loaded() -> bool:
+	if _pending_preset != "":
+		return false   # a queued load hasn't landed — director must wait
+	return _location_instance != null and is_instance_valid(_location_instance)
+
+
+func find_shot_marker(marker_name: String) -> Node3D:
+	if not has_locale_loaded():
+		return null
+	# PER-PRESET MARKERS (2026-09-12). One .tscn serves several
+	# presets in different AREAS of the same geometry — salty_tome_
+	# interior.tscn is the shop, the kitchenette and the alley; the
+	# diner is the counter and the formal room. A marker named
+	# `<name>__<preset_id>` belongs to that preset's area and wins
+	# while that preset is loaded; the plain name is the fallback.
+	# Before this, an alley scene's `[shot:closeup person]` cut to
+	# the pair authored at the shop counter — 70 such cuts across
+	# 21 chapters.
+	if _loaded_preset != "":
+		var local: Node3D = _location_instance.find_child(
+			marker_name + "__" + _loaded_preset, true, false) as Node3D
+		if local != null:
+			return local
+	return _location_instance.find_child(marker_name, true, false) as Node3D
+
+
+# Every authored vn_shot marker in the CURRENT locale whose name
+# starts with shot_<type>_ — the pool a missing-marker cue can
+# borrow from (see VnDirector's substitute path). Sorted so the
+# choice is deterministic across runs.
+func shot_markers_of_type(shot_type: String) -> Array:
+	var out: Array = []
+	if not has_locale_loaded():
+		return out
+	var want := "shot_%s_" % shot_type
+	# The pool honours per-preset markers the same way find_shot_marker
+	# does: a marker suffixed for ANOTHER preset is not in this room's
+	# pool, and a marker suffixed for THIS preset replaces its plain
+	# namesake.
+	var by_base: Dictionary = {}
+	for n in _location_instance.find_children("*", "Marker3D", true, false):
+		var nm: String = String(n.name)
+		if not nm.begins_with(want):
+			continue
+		var cut: int = nm.find("__")
+		var base: String = nm if cut < 0 else nm.substr(0, cut)
+		var suffix: String = "" if cut < 0 else nm.substr(cut + 2)
+		if suffix != "" and suffix != _loaded_preset:
+			continue
+		if suffix != "" or not by_base.has(base):
+			by_base[base] = n
+	for k in by_base:
+		out.append(by_base[k])
+	out.sort_custom(func(a: Node, b: Node) -> bool:
+		return String(a.name) < String(b.name))
+	return out
+
+
+# ── VN cast staging ──────────────────────────────────────────────
+# [stage:<char> <spot>] places a character's hero GLB at the locale
+# Marker3D named cast_<spot>; [stage:<char> off] removes them. The
+# hero models are STATIC standing meshes — blocking for wide shots;
+# faces stay on the 2D portrait layer (CharLayer). Missing GLB or
+# missing spot marker = silent no-op (fallback discipline).
+const CAST_GLB_ROOT := "res://assets/3d/characters/heroes/"
+const CAST_KEY_TO_GLB := {
+	"john": "john_frank.glb",       "john_frank": "john_frank.glb",
+	"frasier": "frasier_temple.glb","frasier_temple": "frasier_temple.glb",
+	"elicia": "elicia_temple.glb",  "elicia_temple": "elicia_temple.glb",
+	"dante": "dante_dambrosio.glb", "dante_dambrosio": "dante_dambrosio.glb",
+	"nicola": "nicola.glb",
+	"alberto": "alberto.glb",
+	"antonio": "antonio.glb",
+	# Deck-only asset (not in the repo) — mapping is harmless when
+	# the file is absent (stage_character no-ops on a missing GLB).
+	"sam": "sam_miller.glb", "sam_miller": "sam_miller.glb",
+}
+# Asset-alignment table (audited 2026-07-11, corrected same day).
+# ALL hero GLBs import UPRIGHT: five carry a node-level +90° X
+# rotation over Z-up mesh data (verified against Portrait3D's live
+# AABB logs — the raw mesh-space accessors lie about orientation),
+# the other two are plain Y-up. Origin is body-center. "feet" =
+# distance origin→soles; "scale" normalizes short exports to human
+# height (dante's model is 1.08 m tall raw); "yaw" is a per-model
+# facing nudge (radians) for exports whose front axis disagrees —
+# dial in from playtest reports.
+const CAST_MODEL_ALIGN := {
+	"john_frank.glb":      {"feet": 0.96, "scale": 1.0, "yaw": 0.0},
+	"frasier_temple.glb":  {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"alberto.glb":         {"feet": 0.85, "scale": 1.0, "yaw": 0.0},
+	"antonio.glb":         {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"dante_dambrosio.glb": {"feet": 0.54, "scale": 1.6, "yaw": 0.0},
+	"elicia_temple.glb":   {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"nicola.glb":          {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"sam_miller.glb":      {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+}
+
+var _staged_cast: Dictionary = {}   # char key -> {node, spawned}
+
+# 2026-07-12 user direction: "remove characters from scenes for now,
+# they don't look right — feature the setting and the props." The
+# [stage:] grammar stays parsed (scene tags keep their blocking
+# intent on record) but staging is a silent no-op until the
+# character models earn their place. Flip to re-enable.
+const CAST_ENABLED := false
+
+
+func stage_character(char_id: String, spot: String) -> bool:
+	if not CAST_ENABLED:
+		return false
+	if not has_locale_loaded():
+		return false
+	var key := char_id.to_lower()
+	if spot == "off":
+		if not _staged_cast.has(key):
+			return false
+		var rec: Dictionary = _staged_cast[key]
+		var old: Variant = rec.get("node")
+		if old is Node3D and is_instance_valid(old):
+			if bool(rec.get("spawned", false)):
+				(old as Node3D).queue_free()
+			else:
+				(old as Node3D).visible = false
+		_staged_cast.erase(key)
+		return true
+	var marker := _location_instance.find_child("cast_" + spot, true, false) as Node3D
+	if marker == null:
+		push_warning("[Background3D] cast spot missing: cast_%s" % spot)
+		return false
+	var glb_file: String = String(CAST_KEY_TO_GLB.get(key, key + ".glb"))
+	var node: Node3D = null
+	var spawned := false
+	if _staged_cast.has(key):
+		var rec: Dictionary = _staged_cast[key]
+		var cand: Variant = rec.get("node")
+		if cand is Node3D and is_instance_valid(cand):
+			node = cand
+			spawned = bool(rec.get("spawned", false))
+	if node == null:
+		# Prefer the locale's own hidden Hero<FirstName> stand-in so
+		# we don't double-load a GLB the scene already instanced.
+		var hero_name := "Hero" + key.get_slice("_", 0).capitalize()
+		node = _location_instance.find_child(hero_name, true, false) as Node3D
+	if node == null:
+		var path := CAST_GLB_ROOT + glb_file
+		if not FileAccess.file_exists(path):
+			push_warning("[Background3D] cast model missing: %s" % path)
+			return false
+		var ps := load(path) as PackedScene
+		if ps == null:
+			return false
+		node = ps.instantiate() as Node3D
+		if node == null:
+			return false
+		_location_instance.add_child(node)
+		spawned = true
+	_staged_cast[key] = {"node": node, "spawned": spawned}
+	var align: Dictionary = CAST_MODEL_ALIGN.get(glb_file, {"feet": 0.95, "scale": 1.0, "yaw": 0.0})
+	var s := float(align.get("scale", 1.0))
+	node.visible = true
+	node.global_rotation = Vector3(0.0, marker.global_rotation.y + float(align.get("yaw", 0.0)), 0.0)
+	node.scale = Vector3(s, s, s)
+	node.global_position = marker.global_position + Vector3(0, float(align.get("feet", 0.95)) * s, 0)
+	return true
+
+
+# The loaded preset's authored vantage — VnDirector derives its
+# marker-free punch-in shots from this (never from the live camera,
+# so repeated shots can't compound).
+func get_preset_vantage() -> Dictionary:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return {}
+	var spec: Dictionary = CAMERA_PRESETS[_loaded_preset]
+	return {
+		"origin": spec.get("camera_origin", Vector3.ZERO),
+		"rotation": spec.get("camera_rotation", Vector3.ZERO),
+		"fov": float(spec.get("fov", 60.0)),
+	}
+
+
+# Re-apply the loaded preset's authored vantage — the "establish"
+# fallback and the director's release() restore.
+func restore_preset_vantage() -> void:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return
+	var spec: Dictionary = CAMERA_PRESETS[_loaded_preset]
+	set_camera_vantage(
+		spec.get("camera_origin", Vector3.ZERO),
+		spec.get("camera_rotation", Vector3.ZERO),
+		float(spec.get("fov", 60.0)))
+	_start_camera_track(spec)
 
 
 # ── Internal ─────────────────────────────────────────────────────
@@ -807,6 +3875,47 @@ func _walk_tree(node: Node, out: Array[Node] = []) -> Array[Node]:
 # ── Public: hand the loaded locale's MoodCycler back to GameEngine
 # so it can wire a per-VN-scene debug overlay without re-walking
 # the SubViewport tree. Returns null until load_location has run.
+# ── The scene's light, for the 3D hero portraits (2026-10-01) ─────────
+# The user: portraits should "contrast and work within the scene". The
+# strongest light in the loaded locale gives the portrait's key colour,
+# the environment's ambient its fill, and the sum of the lights how
+# bright the portrait should sit. Re-read at most every 1.5 s, so a
+# [mood:] that relights the room reaches the faces too.
+var _scene_light: Dictionary = {}
+var _scene_light_ms: int = -100000
+var _scene_light_preset: String = ""
+
+
+func get_scene_light() -> Dictionary:
+	if _location_instance == null or not is_instance_valid(_location_instance):
+		return {}
+	var now: int = Time.get_ticks_msec()
+	if _scene_light_preset == _loaded_preset and now - _scene_light_ms < 1500:
+		return _scene_light
+	var key_c := Color(1, 1, 1)
+	var best: float = -1.0
+	var total: float = 0.0
+	var ambient := Color(0.42, 0.40, 0.38)
+	for n: Node in _walk_tree(_location_instance):
+		if n is Light3D:
+			var l: Light3D = n as Light3D
+			if not l.visible:
+				continue
+			var e: float = l.light_energy * (1.0 if l is DirectionalLight3D else 0.5)
+			total += e
+			if e > best:
+				best = e
+				key_c = l.light_color
+		elif n is WorldEnvironment:
+			var we: WorldEnvironment = n as WorldEnvironment
+			if we.environment != null:
+				ambient = we.environment.ambient_light_color
+	_scene_light = {"key": key_c, "ambient": ambient, "level": clampf(total / 2.5, 0.45, 1.5)}
+	_scene_light_ms = now
+	_scene_light_preset = _loaded_preset
+	return _scene_light
+
+
 func get_locale_mood_cycler() -> Node:
 	if _location_instance == null or not is_instance_valid(_location_instance):
 		return null

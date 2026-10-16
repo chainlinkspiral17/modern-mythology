@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_the_bird",
+      "kind": "character",
+      "era": "era4",
+      "tags": [
+        "character",
+        "era4",
+        "the_bird"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. model sheet of a small plump songbird with a teal head, rose-pink breast, green wing and long teal tail, perched on a weathered seawall, on a dock piling, on a window sill beside three jars, and in flight; soft watercolor; labeled THE BIRD. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

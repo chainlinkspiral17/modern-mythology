@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cathedral_clean"]
+[gd_scene load_steps=27 format=3 uid="uid://cathedral_clean"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior_glb"]
 [ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench_glb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://assets/3d/dioramas/regions.glb" id="4_dioramas_glb"]
 [ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="20_hero_prop"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="7_hud"]
 [ext_resource type="PackedScene" path="res://assets/3d/characters/heroes/frasier_temple.glb" id="8_frasier"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="9_post"]
@@ -17,7 +18,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="15_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="16_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="17_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="18_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="18_riff"]
 [ext_resource type="Script" path="res://scripts/CathedralGauntletHost.gd" id="19_cgh"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="19_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="20_lim"]
@@ -152,8 +153,8 @@ shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
 background_mode = 1
 background_color = Color(0.03, 0.02, 0.02, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.18, 0.18, 0.22, 1)
-ambient_light_energy = 0.15
+ambient_light_color = Color(0.38, 0.32, 0.26, 1)
+ambient_light_energy = 1.8
 fog_enabled = true
 fog_light_color = Color(0.10, 0.08, 0.06, 1)
 fog_light_energy = 0.6
@@ -184,21 +185,21 @@ environment = SubResource("Env_Cathedral")
 [node name="Key_Moonlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 10, 0)
 light_color = Color(0.66, 0.74, 0.95, 1)
-light_energy = 0.55
+light_energy = 1.7
 shadow_enabled = false
 
 ; FILL: warm tungsten bounce from the entry-door side, low.
 [node name="Fill_Tungsten" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 6, 0)
 light_color = Color(0.95, 0.78, 0.50, 1)
-light_energy = 0.22
+light_energy = 0.40
 shadow_enabled = false
 
 ; BACK: cool cyan rim from far +X / bayou side.
 [node name="Back_CyanRim" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 8, 0)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 8, 0)
 light_color = Color(0.48, 0.66, 0.78, 1)
-light_energy = 0.30
+light_energy = 0.50
 shadow_enabled = false
 
 ; ─── PRACTICALS — every visible fixture gets a light ───
@@ -207,22 +208,22 @@ shadow_enabled = false
 [node name="Pendant_West" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4.58, 0)
 light_color = Color(0.96, 0.82, 0.54, 1)
-light_energy = 2.2
-omni_range = 7.0
+light_energy = 3.2
+omni_range = 9.5
 shadow_enabled = false
 
 [node name="Pendant_Center" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.58, 0)
 light_color = Color(0.96, 0.82, 0.54, 1)
-light_energy = 2.2
-omni_range = 7.0
+light_energy = 3.2
+omni_range = 9.5
 shadow_enabled = false
 
 [node name="Pendant_East" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4.58, 0)
 light_color = Color(0.96, 0.82, 0.54, 1)
-light_energy = 2.2
-omni_range = 7.0
+light_energy = 3.2
+omni_range = 9.5
 shadow_enabled = false
 
 ; ─── GAUNTLET STATION ACCENT LIGHTS (per-arcana atmosphere) ───
@@ -361,11 +362,30 @@ light_energy = 0.6
 omni_range = 1.2
 shadow_enabled = false
 
+[node name="PhoneScreenGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.96, 2.7)
+light_color = Color(1.0, 0.24, 0.86, 1)
+light_energy = 0.55
+omni_range = 0.9
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_interior_glb")]
 
 [node name="WorkbenchProps" parent="." instance=ExtResource("2_workbench_glb")]
 
 [node name="DemonFigurines" parent="." instance=ExtResource("3_agents_glb")]
+; THE STEAMBOAT MODEL (Hero Studio, 2026-10-11): the Meshy GLB from the Drive,
+; fitted at runtime by HeroProp over the procedural fragment's spot on the
+; workbench (hull 0.90 m along Z, bench top 0.91). Missing GLB = the fragment stays.
+[node name="Steamboat_Model" type="Node3D" parent="."]
+position = Vector3(0, 0.92, 3.1)
+script = ExtResource("20_hero_prop")
+glb_path = "res://assets/3d/props/steamboat_model.glb"
+size_m = 0.9
+length_axis = "z"
+stand_in_root = NodePath("Interior")
+hide_prefixes = PackedStringArray("Magician_Steamboat_Hull", "Magician_Steamboat_Trim", "Magician_Steamboat_Deck", "Magician_Steamboat_Saloon", "Magician_Steamboat_Hurricane", "Magician_Steamboat_Pilot", "Magician_Steamboat_Stack", "Magician_Steamboat_Wheel")
+
 
 [node name="Dioramas" parent="." instance=ExtResource("4_dioramas_glb")]
 
@@ -436,7 +456,7 @@ far = 100.0
 layer = 50
 script = ExtResource("11_mood")
 mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12", "candlelight_low", "back_room_signal", "fluorescent_corridor", "gauntlet_intro", "morning_bright", "pomegranate_hour_open"])
-default_style_pack = "cathedral_workbench"
+default_style_pack = "cathedral_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
@@ -534,7 +554,7 @@ location_json = "res://resources/games/locations/cathedral.json"
 inner_metres = 1.8
 falloff_metres = 6.0
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("18_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -553,7 +573,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 1260.0
 offset_bottom = 360.0
-text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffrocker
 F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
 autowrap_mode = 2
 theme_override_font_sizes/font_size = 18
@@ -578,3 +598,98 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; ── VN direction markers (lore/_VN_DIRECTION_PLAYBOOK.md) ──
+; The Magician chapter renders THIS scene as its VN bg (full set:
+; workbench props, dioramas, figurines). Coordinates from the build
+; scripts: workbench blender (0,-3) top 0.91; steamboat fragment
+; (0.5,-3.25,0.98); Graustark diorama platform (5,+2,0.30).
+
+[node name="cast_workbench" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(0, 0, 2.35)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="cast_city_floor" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(3.4, 0, -2.0)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="shot_insert_model_city" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.0, 1.4, 5.5)
+rotation = Vector3(-0.4, -1.5708, 0)
+metadata/fov = 45.0
+
+[node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.75, 1.55)
+rotation = Vector3(-0.38, 3.1416, 0)
+metadata/fov = 44.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 0.776, 0.631, 0, -0.631, 0.776, 0.3, 1.55, 3.45)
+metadata/fov = 30.0
+
+[node name="shot_insert_riverboat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.5, 1.6, 2.0)
+rotation = Vector3(-0.36, 2.72, 0)
+metadata/fov = 30.0
+
+[node name="shot_closeup_frasier" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.7, 3.85)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 34.0
+
+; ── Asset-improvement pass 2026-07-11: caged work lights over the
+; three hero zones (fixtures added by build_industrial_dressing in
+; build_cathedral_interior.py — rebuild the GLB to see the cages).
+[node name="DioramaLight_Grau" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 1.6, -2.0)
+light_color = Color(0.96, 0.90, 0.74, 1)
+light_energy = 3.0
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="DioramaLight_HCE" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 1.6, 2.0)
+light_color = Color(0.96, 0.90, 0.74, 1)
+light_energy = 3.0
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="DioramaLight_SW" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 1.6, 5.5)
+light_color = Color(0.96, 0.90, 0.74, 1)
+light_energy = 3.0
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="WorkLight_Bench" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 3.0)
+light_color = Color(0.95, 0.82, 0.60, 1)
+light_energy = 1.8
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="WorkLight_CityFloor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 3.5, -2.0)
+light_color = Color(0.95, 0.82, 0.60, 1)
+light_energy = 1.8
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="WorkLight_Nave" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 3.5, -5.0)
+light_color = Color(0.95, 0.82, 0.60, 1)
+light_energy = 1.8
+omni_range = 5.5
+shadow_enabled = false
+
+; insert: the Speak & Spell, transmitting without being asked
+[node name="shot_insert_speak_and_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.25, 1.55, 2.15)
+rotation = Vector3(-0.745, 3.1416, 0)
+metadata/fov = 42.0
+
+; insert: the crow on the fence post by the dock — it has been waiting
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(13.8, 1.5, -2.2)
+rotation = Vector3(-0.221, -0.876, 0)
+metadata/fov = 42.0

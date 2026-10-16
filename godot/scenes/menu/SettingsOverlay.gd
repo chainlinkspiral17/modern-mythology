@@ -104,14 +104,58 @@ func _rebuild() -> void:
 			Settings.sfx_vol = v
 			AudioMgr.set_bus_volume("SFX", v)
 	))
+	vbox.add_child(_slider_row("VOICE VOLUME", Settings.voice_vol,
+		func(v: float) -> void:
+			Settings.voice_vol = v
+			AudioMgr.set_bus_volume("Voice", v)
+	))
+	vbox.add_child(_slider_row("CONTROLLER RUMBLE", Settings.haptics,
+		func(v: float) -> void:
+			Settings.haptics = v
+			# Sample pulse so the strength is felt while dragging.
+			var bank := get_node_or_null("/root/SFXBank")
+			if bank != null and bank.has_method("rumble"):
+				bank.call("rumble", 0.3, 0.2, 0.12)
+	))
+	# THE TRIP · the music-synced psychedelic layer (TripSync autoload).
+	# 0 = off. Lines and backgrounds only; dialogue text is never touched.
+	vbox.add_child(_slider_row("PSYCHEDELIA", Settings.trip_amount,
+		func(v: float) -> void:
+			Settings.trip_amount = v
+	))
+	# The mix (draft 3): find the balance on the Deck. FLOW is the one
+	# dial that moves pixels — 0 for a perfectly still image.
+	vbox.add_child(_slider_row("  · FLOW (the liquid · 0 = still)", Settings.trip_flow,
+		func(v: float) -> void:
+			Settings.trip_flow = v
+	))
+	vbox.add_child(_slider_row("  · LINES", Settings.trip_lines,
+		func(v: float) -> void:
+			Settings.trip_lines = v
+	))
+	vbox.add_child(_slider_row("  · COLOUR", Settings.trip_colour,
+		func(v: float) -> void:
+			Settings.trip_colour = v
+	))
+	vbox.add_child(_slider_row("  · BEAT", Settings.trip_beat,
+		func(v: float) -> void:
+			Settings.trip_beat = v
+	))
+	# TRAILS · the feedback buffer (2026-09-11). The light the layer
+	# lays down is re-sampled a hair larger each frame and screened
+	# back in, so highlights and the aura leave a slow bloom behind
+	# them — the Minter light-synth feedback. It trails LIGHT ONLY;
+	# the picture itself never moves. 0 = no trail.
+	vbox.add_child(_slider_row("  · TRAILS (the feedback)", Settings.trip_trails,
+		func(v: float) -> void:
+			Settings.trip_trails = v
+	))
 
 	vbox.add_child(_rule())
 
 	# ── MISC ──────────────────────────────────────────────────────────────────
-	vbox.add_child(_toggle_row("SKIP UNREAD TEXT", Settings.skip_unread,
-		func(v: bool) -> void: Settings.skip_unread = v
-	))
-
+	# ("SKIP UNREAD TEXT" removed 2026-07 — no gameplay code ever read
+	# Settings.skip_unread; the Settings var stays for save compat.)
 	vbox.add_child(_row_label("AUTO ADVANCE"))
 	var aa_options := ["OFF", "1 SEC", "3 SEC", "5 SEC"]
 	var aa_values  := [0, 1000, 3000, 5000]
@@ -136,22 +180,21 @@ func _screen_size_section() -> VBoxContainer:
 	col.add_theme_constant_override("separation", 8)
 	col.add_child(_row_label("SCREEN SIZE"))
 
-	# Track pending selection without immediately applying. Boxed in an
-	# Array because GDScript lambdas capture locals by value — a bare
-	# `pending = ...` inside the picker lambda would mutate its own
-	# copy and APPLY would never see the new selection.
-	var pending: Array = [Settings.window_mode]
+	# Track pending selection without immediately applying
+	var pending := Settings.window_mode
 
 	var btn_row := _button_row(
 		["720p", "900p", "1080p", "FULLSCREEN"],
 		Settings.window_mode.to_upper(),
-		func(v: String) -> void: pending[0] = v.to_lower()
+		func(v: String) -> void: pending = v.to_lower()
 	)
 	col.add_child(btn_row)
 
 	var hint := Label.new()
 	hint.text = "720p = 1280×720  ·  900p = 1600×900  ·  1080p = 1920×1080"
-	hint.add_theme_font_size_override("font_size", 9)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		hint.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	hint.add_theme_font_size_override("font_size", 14)
 	hint.add_theme_color_override("font_color", C_DIM)
 	col.add_child(hint)
 
@@ -164,7 +207,7 @@ func _screen_size_section() -> VBoxContainer:
 	apply_btn.custom_minimum_size.y = 32
 	_style_toggle_btn(apply_btn, true)
 	apply_btn.pressed.connect(func() -> void:
-		Settings.window_mode = pending[0]
+		Settings.window_mode = pending
 	)
 	action_row.add_child(apply_btn)
 
@@ -194,7 +237,9 @@ func _font_size_section() -> VBoxContainer:
 	hdr.add_child(lbl)
 	var pct_lbl := Label.new()
 	pct_lbl.text = "%d%%" % int(Settings.txt_scale * 100.0)
-	pct_lbl.add_theme_font_size_override("font_size", 12)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		pct_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	pct_lbl.add_theme_font_size_override("font_size", 14)
 	pct_lbl.add_theme_color_override("font_color", C_TXT)
 	pct_lbl.custom_minimum_size.x = 52
 	hdr.add_child(pct_lbl)
@@ -218,7 +263,9 @@ func _font_size_section() -> VBoxContainer:
 	for pct: int in [50, 100, 150, 200, 250, 300]:
 		var t := Label.new()
 		t.text = "%d%%" % pct
-		t.add_theme_font_size_override("font_size", 8)
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			t.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+		t.add_theme_font_size_override("font_size", 13)
 		t.add_theme_color_override("font_color", C_DIM)
 		t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -244,7 +291,7 @@ func _heading(text: String) -> Label:
 	lbl.text = text
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		lbl.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	lbl.add_theme_font_size_override("font_size", 13)
+	lbl.add_theme_font_size_override("font_size", 14)
 	lbl.add_theme_color_override("font_color", C_GOLD)
 	return lbl
 
@@ -261,7 +308,7 @@ func _row_label(text: String) -> Label:
 	lbl.text = text
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		lbl.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	lbl.add_theme_font_size_override("font_size", 10)
+	lbl.add_theme_font_size_override("font_size", 13)
 	lbl.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
 	return lbl
 
@@ -307,9 +354,10 @@ func _style_toggle_btn(btn: Button, active: bool) -> void:
 	btn.add_theme_color_override("font_hover_color",   C_GOLD)
 	btn.add_theme_color_override("font_focus_color",   C_GOLD)
 	btn.add_theme_color_override("font_pressed_color", C_GOLD)
-	btn.add_theme_font_size_override("font_size", 11)
-	if ResourceLoader.exists(SkinDB.F_CINZEL):
-		btn.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
+	# (pass 89) option buttons in the reading face, a size the Deck can read
+	btn.add_theme_font_size_override("font_size", 15)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		btn.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
 
 
 func _slider_row(label: String, init_val: float, on_change: Callable) -> VBoxContainer:
@@ -321,7 +369,9 @@ func _slider_row(label: String, init_val: float, on_change: Callable) -> VBoxCon
 	header.add_child(lbl)
 	var val_lbl := Label.new()
 	val_lbl.text = "%d%%" % int(init_val * 100)
-	val_lbl.add_theme_font_size_override("font_size", 10)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		val_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	val_lbl.add_theme_font_size_override("font_size", 14)
 	val_lbl.add_theme_color_override("font_color", C_TXT)
 	header.add_child(val_lbl)
 	col.add_child(header)
@@ -337,16 +387,3 @@ func _slider_row(label: String, init_val: float, on_change: Callable) -> VBoxCon
 	)
 	col.add_child(slider)
 	return col
-
-
-func _toggle_row(label: String, init_val: bool, on_change: Callable) -> HBoxContainer:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
-	var lbl := _row_label(label)
-	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(lbl)
-	var chk := CheckButton.new()
-	chk.button_pressed = init_val
-	chk.toggled.connect(func(v: bool) -> void: on_change.call(v))
-	row.add_child(chk)
-	return row

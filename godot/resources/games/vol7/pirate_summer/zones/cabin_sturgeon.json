@@ -1,0 +1,112 @@
+{
+ "id": "cabin_sturgeon",
+ "display_name": "Cabin Sturgeon \u00b7 interior",
+ "size": [
+  14,
+  10
+ ],
+ "tileset": {
+  ".": {
+   "kind": "floor",
+   "color": "#5c4432",
+   "walkable": true
+  },
+  "#": {
+   "kind": "wall",
+   "color": "#2a1e14",
+   "walkable": false
+  },
+  "B": {
+   "kind": "bunk",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a bunk"
+  },
+  "F": {
+   "kind": "footlocker",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a camp trunk \u00b7 somebody's name inked on the lid"
+  },
+  "C": {
+   "kind": "cubby",
+   "color": "#5a4028",
+   "walkable": false,
+   "label": "the cubby \u00b7 folded towels, a rolled sleeping bag"
+  },
+  "L": {
+   "kind": "clothesline",
+   "color": "#6a5a3e",
+   "walkable": false,
+   "label": "swimsuits on a line \u00b7 still damp from this afternoon"
+  },
+  "N": {
+   "kind": "oil_lamp",
+   "color": "#e8c060",
+   "walkable": false,
+   "label": "the cabin's one lamp \u00b7 lit after lights-out, briefly"
+  },
+  "R": {
+   "kind": "rug",
+   "color": "#8c5c34",
+   "walkable": true
+  },
+  "S": {
+   "kind": "sams_bunk",
+   "color": "#7a5a3a",
+   "walkable": false,
+   "label": "Sam's bunk \u00b7 press space to sleep \u00b7 advances the day"
+  },
+  "T": {
+   "kind": "duffel",
+   "color": "#6a5a3e",
+   "walkable": false,
+   "label": "Sam's duffel bag \u00b7 a slowstick inside"
+  },
+  "P": {
+   "kind": "pickup",
+   "color": "#c8b070",
+   "walkable": false,
+   "label": "a pencil with a good point on the floor by the rug"
+  },
+  "W": {
+   "kind": "window",
+   "color": "#8ea6b0",
+   "walkable": false,
+   "label": "the window \u00b7 you can see the mess hall porch from here"
+  },
+  "D": {
+   "kind": "door",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "camp_path",
+    "spawn": "from_sturgeon"
+   },
+   "label": "the screen door \u00b7 out to the path"
+  }
+ },
+ "tiles": [
+  "##############",
+  "#B..B..B...S.#",
+  "#F..F..F...T.#",
+  "#...........N#",
+  "#...RRRR.....W",
+  "#...RRRR.....W",
+  "#B..B........#",
+  "#F..F...P....#",
+  "#C..........L#",
+  "######DD######"
+ ],
+ "spawns": {
+  "start": [
+   10,
+   2
+  ],
+  "from_camp_path": [
+   6,
+   8
+  ]
+ },
+ "npcs": []
+}

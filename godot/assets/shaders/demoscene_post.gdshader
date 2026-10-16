@@ -34,12 +34,32 @@ shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
 uniform float palette_size : hint_range(2.0, 32.0) = 12.0;
+// Shadow lift (2026-09-24, the user's call on the black night frames):
+// a gamma lift BEFORE the quantiser, set only by the dark moods (night,
+// 3_47_am, dusk). floor(col * palette_size) sends everything under the
+// first step to black — at palette 9 that is every pixel under 28/255,
+// most of a moonlit set. 0.0 (the default) leaves the output unchanged.
+uniform float shadow_lift : hint_range(0.0, 1.5) = 0.0;
 uniform float dither_strength : hint_range(0.0, 1.0) = 0.15;
 uniform float scanline_strength : hint_range(0.0, 1.0) = 0.30;
 uniform float chromatic_aberration : hint_range(0.0, 0.004) = 0.0015;
 uniform float ascii_strength : hint_range(0.0, 1.0) = 0.0;
 uniform vec4 ascii_color : source_color = vec4(0.85, 0.78, 0.62, 1.0);
 uniform vec4 ascii_bg : source_color = vec4(0.06, 0.04, 0.02, 1.0);
+
+// ── per-studio render language (slowsticks; SlowstickLook presets) ──
+// 0 none · 1 gouache wash · 2 silkscreen halftone · 3 ink bleed ·
+// 4 field-guide grain. Defaults to 0 so CP / gauntlet (which never set
+// it) render exactly as before. Each mode is a subtle house STYLE, not a
+// filter — kept gentle per the aesthetic bible.
+uniform int look_mode = 0;
+uniform vec4 paper_tint : source_color = vec4(0.90, 0.86, 0.74, 1.0);
+uniform float grain_amount : hint_range(0.0, 1.0) = 0.5;
+uniform float ink_amount : hint_range(0.0, 1.0) = 0.6;
+
+float hash12(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
 
 // Bayer 4×4 ordered dither matrix
 const float bayer4[16] = float[](
@@ -94,12 +114,44 @@ void fragment() {
     col.g = texture(SCREEN_TEXTURE, uv).g;
     col.b = texture(SCREEN_TEXTURE, uv - vec2(chromatic_aberration, 0.0)).b;
 
+    // ── shadow lift (dark moods only; 0 = off) ──
+    if (shadow_lift > 0.0) {
+        col = pow(max(col, vec3(0.0)), vec3(1.0 / (1.0 + shadow_lift)));
+    }
+
     // ── ordered dither ──
     float d = bayer_at(pixel_coord) * dither_strength;
     col += vec3(d) * 0.06;
 
     // ── palette quantization ──
     col = floor(col * palette_size) / palette_size;
+
+    // ── per-studio render language ──
+    if (look_mode == 1) {
+        // gouache wash · paper tooth + gentle value compression toward stock
+        float g = (hash12(pixel_coord) - 0.5) * 0.05 * grain_amount;
+        col += vec3(g);
+        col = mix(col, col * 0.85 + paper_tint.rgb * 0.15, 0.22);
+    } else if (look_mode == 2) {
+        // silkscreen halftone · posterized inks broken up by the bayer dot
+        float luma2 = dot(col, vec3(0.299, 0.587, 0.114));
+        float ink = step(bayer_at(pixel_coord) + 0.5, luma2);
+        vec3 q = floor(col * 4.0) / 4.0;
+        col = mix(q, col, 0.35);
+        col *= mix(0.90, 1.0, ink);
+    } else if (look_mode == 3) {
+        // ink bleed · darken where luminance edges are strong (line pooling)
+        float o = 0.0016;
+        float lc = dot(texture(SCREEN_TEXTURE, uv).rgb, vec3(0.333));
+        float lx = dot(texture(SCREEN_TEXTURE, uv + vec2(o, 0.0)).rgb, vec3(0.333));
+        float ly = dot(texture(SCREEN_TEXTURE, uv + vec2(0.0, o)).rgb, vec3(0.333));
+        float edge = clamp((abs(lc - lx) + abs(lc - ly)) * 6.0 * ink_amount, 0.0, 0.5);
+        col *= (1.0 - edge);
+    } else if (look_mode == 4) {
+        // field-guide grain · fine warm speckle, near-nothing
+        float g2 = (hash12(pixel_coord) - 0.5) * 0.06 * grain_amount;
+        col += vec3(g2) + paper_tint.rgb * 0.02;
+    }
 
     // ── scanlines ──
     float scanline = 1.0 - (sin(pixel_coord.y * 3.14159) * 0.5 + 0.5) * scanline_strength * 0.4;

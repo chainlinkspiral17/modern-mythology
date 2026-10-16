@@ -4,11 +4,7 @@ extends Node
 const SAVE_DIR      := "user://saves"
 const GALLERY_PATH  := "user://progress/gallery.cfg"
 const UNLOCKS_PATH  := "user://progress/unlocks.cfg"
-const SEEN_PATH     := "user://progress/seen.cfg"
 const MAX_SLOTS     := 8
-# Slot 0 is the autosave — written by the engine on every scene
-# transition, shown in "continue" pickers, never offered for manual save.
-const AUTOSAVE_SLOT := 0
 
 signal save_written(slot: int)
 signal save_deleted(slot: int)
@@ -16,31 +12,32 @@ signal unlocked_changed(key: String)
 
 var _seen_cgs:  Dictionary = {}
 var _unlocked:  Dictionary = {}
-# scene_id -> highest node index the player has read (seen-text tracking
-# for skip mode). Buffered in memory; flushed every few marks and at
-# scene boundaries so we don't hit disk on every line.
-var _seen_upto:   Dictionary = {}
-var _seen_dirty:  int = 0
+
+# ── Save-slot thumbnails + notes (2026-10-01) ─────────────────────────
+# The user: "The save state should be a thumbnail with a notes section.
+# Players can input these notes at any time." Each slot keeps a PNG of
+# the scene at the moment it was saved (slot_N.png beside slot_N.json)
+# and a free-text "notes" field the player edits from the pause menu
+# or the save/load screen whenever they like. Overwriting a slot keeps
+# its notes; notes typed before the first save wait in pending_notes
+# and land on the first slot written.
+const THUMB_W := 384
+const THUMB_H := 216
+const NOTES_MAX := 2000
+var pending_notes: String = ""
 
 
 func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
 	_load_gallery()
 	_load_unlocks()
-	_load_seen()
 	_migrate_substrate_seen_from_saves()
 
 
 # ── Save slots ────────────────────────────────────────────────────────────────
 
-func list_saves(include_autosave: bool = false) -> Array:
+func list_saves() -> Array:
 	var out: Array = []
-	if include_autosave:
-		var auto_path := _slot_path(AUTOSAVE_SLOT)
-		if FileAccess.file_exists(auto_path):
-			var auto_data := _read_json(auto_path)
-			if not auto_data.is_empty():
-				out.append(auto_data)
 	for i in range(1, MAX_SLOTS + 1):
 		var path := _slot_path(i)
 		if FileAccess.file_exists(path):
@@ -53,7 +50,14 @@ func list_saves(include_autosave: bool = false) -> Array:
 
 
 func write_save(slot: int, vol: int, scene_id: String, node_idx: int,
-				flags: Dictionary, skills: Dictionary, log: Array) -> void:
+				flags: Dictionary, skills: Dictionary, log: Array,
+				thumb: Image = null) -> void:
+	# notes belong to the slot, not to one write of it: keep them
+	var prev: Dictionary = read_save(slot)
+	var notes: String = String(prev.get("notes", ""))
+	if notes == "" and pending_notes != "":
+		notes = pending_notes
+		pending_notes = ""
 	var data := {
 		"slot":      slot,
 		"vol":       vol,
@@ -63,9 +67,58 @@ func write_save(slot: int, vol: int, scene_id: String, node_idx: int,
 		"flags":     flags,
 		"skills":    skills,
 		"log":       log.slice(maxi(0, log.size() - 50)),
+		"notes":     notes,
 	}
+	if thumb != null and not thumb.is_empty():
+		var small: Image = thumb.duplicate() as Image
+		if small.is_compressed():
+			small.decompress()
+		small.convert(Image.FORMAT_RGB8)
+		small.resize(THUMB_W, THUMB_H, Image.INTERPOLATE_BILINEAR)
+		if small.save_png(_thumb_path(slot)) == OK:
+			data["thumb"] = _thumb_path(slot).get_file()
+	elif bool(prev.has("thumb")) and FileAccess.file_exists(_thumb_path(slot)):
+		data["thumb"] = String(prev.get("thumb", ""))
 	_write_json(_slot_path(slot), data)
 	save_written.emit(slot)
+
+
+## The player's notes for a slot. slot < 1 (no save yet) holds them in
+## pending_notes until the first write.
+func get_notes(slot: int) -> String:
+	if slot < 1:
+		return pending_notes
+	var data: Dictionary = read_save(slot)
+	return String(data.get("notes", ""))
+
+
+func set_notes(slot: int, text: String) -> void:
+	var t: String = text.substr(0, NOTES_MAX)
+	if slot < 1:
+		pending_notes = t
+		return
+	var path := _slot_path(slot)
+	if not FileAccess.file_exists(path):
+		pending_notes = t
+		return
+	var data: Dictionary = _read_json(path)
+	if data.is_empty():
+		return
+	data["notes"] = t
+	data["notes_ts"] = Time.get_unix_time_from_system()
+	_write_json(path, data)
+
+
+## The slot's thumbnail as a texture, or null when it has none (saves
+## from before 2026-10-01, or a write whose capture failed).
+func get_thumb(slot: int) -> Texture2D:
+	var path := _thumb_path(slot)
+	if not FileAccess.file_exists(path):
+		return null
+	var img: Image = Image.load_from_file(path)
+	if img == null or img.is_empty():
+		return null
+	return ImageTexture.create_from_image(img)
 
 
 func read_save(slot: int) -> Dictionary:
@@ -77,51 +130,18 @@ func read_save(slot: int) -> Dictionary:
 
 func delete_save(slot: int) -> void:
 	var path := _slot_path(slot)
+	if FileAccess.file_exists(_thumb_path(slot)):
+		DirAccess.remove_absolute(_thumb_path(slot))
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 		save_deleted.emit(slot)
 
 
 func has_any_save() -> bool:
-	for i in range(0, MAX_SLOTS + 1):
+	for i in range(1, MAX_SLOTS + 1):
 		if FileAccess.file_exists(_slot_path(i)):
 			return true
 	return false
-
-
-# ── Seen text (skip-mode support) ─────────────────────────────────────────────
-
-func get_seen_upto(scene_id: String) -> int:
-	return int(_seen_upto.get(scene_id, -1))
-
-
-func mark_seen_upto(scene_id: String, node_idx: int) -> void:
-	if scene_id == "" or node_idx <= get_seen_upto(scene_id):
-		return
-	_seen_upto[scene_id] = node_idx
-	_seen_dirty += 1
-	if _seen_dirty >= 20:
-		flush_seen()
-
-
-func flush_seen() -> void:
-	if _seen_dirty == 0:
-		return
-	_seen_dirty = 0
-	DirAccess.make_dir_recursive_absolute("user://progress")
-	var cfg := ConfigFile.new()
-	for scene_id in _seen_upto:
-		cfg.set_value("seen_upto", scene_id, int(_seen_upto[scene_id]))
-	cfg.save(SEEN_PATH)
-
-
-func _load_seen() -> void:
-	var cfg := ConfigFile.new()
-	if cfg.load(SEEN_PATH) != OK:
-		return
-	if cfg.has_section("seen_upto"):
-		for key in cfg.get_section_keys("seen_upto"):
-			_seen_upto[key] = int(cfg.get_value("seen_upto", key, -1))
 
 
 # ── Gallery ───────────────────────────────────────────────────────────────────
@@ -157,12 +177,43 @@ func is_unlocked(key: String) -> bool:
 	return _unlocked.has(key)
 
 
+# ── Records (2026-09-19) ─────────────────────────────────────────────────────
+# Small per-key dictionaries that outlive a run: the gauntlet's
+# per-arcana card (runs, wins, best turns). One JSON file beside the
+# unlocks; loaded on first use, written on every set.
+const RECORDS_PATH := "user://progress/records.json"
+var _records: Dictionary = {}
+var _records_loaded: bool = false
+
+
+func get_record(key: String) -> Dictionary:
+	_ensure_records()
+	var rv: Variant = _records.get(key, {})
+	return (rv as Dictionary).duplicate() if rv is Dictionary else {}
+
+
+func set_record(key: String, data: Dictionary) -> void:
+	_ensure_records()
+	_records[key] = data.duplicate()
+	DirAccess.make_dir_recursive_absolute("user://progress")
+	_write_json(RECORDS_PATH, _records)
+
+
+func _ensure_records() -> void:
+	if _records_loaded:
+		return
+	_records_loaded = true
+	_records = _read_json(RECORDS_PATH)
+
+
 # ── Internal ──────────────────────────────────────────────────────────────────
 
 func _slot_path(slot: int) -> String:
-	if slot == AUTOSAVE_SLOT:
-		return SAVE_DIR + "/autosave.json"
 	return SAVE_DIR + "/slot_%d.json" % slot
+
+
+func _thumb_path(slot: int) -> String:
+	return SAVE_DIR + "/slot_%d.png" % slot
 
 
 func _read_json(path: String) -> Dictionary:
@@ -242,7 +293,7 @@ func _migrate_substrate_seen_from_saves() -> void:
 	if typeof(items_v) != TYPE_ARRAY:
 		return
 
-	for slot in range(0, MAX_SLOTS + 1):
+	for slot in range(1, MAX_SLOTS + 1):
 		var save_path := _slot_path(slot)
 		if not FileAccess.file_exists(save_path):
 			continue
@@ -284,3 +335,21 @@ func _parse_vol_ch(s: String) -> Vector2i:
 	if m == null:
 		return Vector2i(-1, -1)
 	return Vector2i(m.get_string(1).to_int(), m.get_string(2).to_int())
+
+
+## True if any save slot has reached at least (vol, min_chapter). Used
+## by the slowstock shelf to gate sticks Tem only acquires late in a
+## given volume (e.g. the Tideline Survey 2048, bought in Vol 7 ch 22).
+## Scene ids that don't parse fall back to the save's `vol` field at a
+## very-late chapter, matching the substrate-migration heuristic above.
+func reached_vol_chapter(vol: int, min_chapter: int) -> bool:
+	for i in range(1, MAX_SLOTS + 1):
+		var save := read_save(i)
+		if save.is_empty():
+			continue
+		var sv: Vector2i = _parse_vol_ch(str(save.get("scene", "")))
+		if sv.x == -1:
+			sv = Vector2i(int(save.get("vol", 0)), 9999)
+		if sv.x > vol or (sv.x == vol and sv.y >= min_chapter):
+			return true
+	return false

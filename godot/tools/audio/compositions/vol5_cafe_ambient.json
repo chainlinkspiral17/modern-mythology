@@ -1,0 +1,10 @@
+{
+  "meta": {"title":"a cafe between rushes","for":"VN locale ambient bed · cafe_olimpico / daily_grind","notes":"espresso machine steam-hiss, fluorescent hum, a low room drone, a warm murmur pad. quiet, under the Music Player."},
+  "tempo_bpm": 60, "time_sig": [4,4], "sample_rate": 44100,
+  "tracks": [
+    {"instrument":"ambient_drone","gain":0.22,"notes":[{"pitch":"G2","bar":1,"beat":1,"dur":64.0,"vel":0.36}]},
+    {"instrument":"fluorescent_hum","gain":0.10,"notes":[{"pitch":"G4","bar":1,"beat":1,"dur":64.0,"vel":0.4}]},
+    {"instrument":"rain","gain":0.12,"notes":[{"pitch":"C4","bar":1,"beat":1,"dur":64.0,"vel":0.5}]},
+    {"instrument":"slowstick_pad","gain":0.15,"notes":[{"pitch":"G3","bar":1,"beat":1,"dur":16.0,"vel":0.26},{"pitch":"D4","bar":5,"beat":1,"dur":16.0,"vel":0.22},{"pitch":"C4","bar":9,"beat":1,"dur":16.0,"vel":0.24},{"pitch":"G3","bar":13,"beat":1,"dur":16.0,"vel":0.24}]}
+  ]
+}

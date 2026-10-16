@@ -32,8 +32,8 @@ def build_shell():
                   palette=PAL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-1.80, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+1.80, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-1.80, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+1.80, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),
                                     ("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),
@@ -45,17 +45,17 @@ def build_shell():
 def build_u_bar():
     # U-shaped bar — N end of room, opening toward S
     # E side: long arm
-    make_box("Bar_E_Top",  (+1.50, 6.00, 1.06), (0.50, 3.20, 0.04), COL_BAR_COPPER)
-    make_box("Bar_E_Body", (+1.50, 6.00, 0.50), (0.50, 3.20, 1.00), COL_BAR_WOOD)
+    make_box("Bar_E_Top",  (+1.50, 6.75, 1.06), (0.50, 1.70, 0.04), COL_BAR_COPPER)
+    make_box("Bar_E_Body", (+1.50, 6.75, 0.50), (0.50, 1.70, 1.00), COL_BAR_WOOD)
     # W side: long arm
-    make_box("Bar_W_Top",  (-1.50, 6.00, 1.06), (0.50, 3.20, 0.04), COL_BAR_COPPER)
-    make_box("Bar_W_Body", (-1.50, 6.00, 0.50), (0.50, 3.20, 1.00), COL_BAR_WOOD)
+    make_box("Bar_W_Top",  (-1.50, 6.75, 1.06), (0.50, 1.70, 0.04), COL_BAR_COPPER)
+    make_box("Bar_W_Body", (-1.50, 6.75, 0.50), (0.50, 1.70, 1.00), COL_BAR_WOOD)
     # N cap connecting them
     make_box("Bar_N_Top",  (0.0, 7.40, 1.06), (3.50, 0.50, 0.04), COL_BAR_COPPER)
     make_box("Bar_N_Body", (0.0, 7.40, 0.50), (3.50, 0.50, 1.00), COL_BAR_WOOD)
     # 6 bar stools around the perimeter (3 per side, S-facing arms)
-    for si, (sx, sy) in enumerate([(+1.05, 4.60), (+1.05, 5.60), (+1.05, 6.60),
-                                    (-1.05, 4.60), (-1.05, 5.60), (-1.05, 6.60)]):
+    for si, (sx, sy) in enumerate([(+1.05, 6.00), (+1.05, 6.60), (+1.05, 6.92),
+                                    (-1.05, 6.00), (-1.05, 6.60), (-1.05, 6.92)]):
         make_cyl(f"Stool_{si}_Post", (sx, sy, 0.40), 0.04, 0.80, P.METAL_BLACK)
         make_cyl(f"Stool_{si}_Seat", (sx, sy, 0.82), 0.18, 0.05, COL_BOOTH_LEATHER)
         make_cyl(f"Stool_{si}_Base", (sx, sy, 0.05), 0.20, 0.04, P.METAL_BLACK)
@@ -63,12 +63,13 @@ def build_u_bar():
 
 def build_backbar():
     # Mirrored backbar wall N of bar with bottle racks
-    make_box("Backbar_Mirror", (0.0, ROOM_D-0.08, 1.80), (3.20, 0.04, 1.40), (0.74, 0.78, 0.82, 0.55))
+    make_box("Backbar_Mirror", (0.0, ROOM_D-0.12, 1.80), (3.20, 0.04, 1.40), (0.74, 0.78, 0.82, 0.55))
     make_box("Backbar_Counter", (0.0, ROOM_D-0.30, 1.10), (3.20, 0.40, 0.06), COL_BACK_WOOD)
     # Three shelves of bottles
     for si in range(3):
         sz = 1.30 + si * 0.40
-        make_box(f"Backbar_Shelf_{si}", (0.0, ROOM_D-0.30, sz), (3.00, 0.30, 0.02), COL_BACK_WOOD)
+        # back to the wall (2026-09-22: 5 cm of air; 2026-09-23: still 2)
+        make_box(f"Backbar_Shelf_{si}", (0.0, ROOM_D-0.28, sz), (3.00, 0.36, 0.02), COL_BACK_WOOD)
         for bi in range(15):
             bx = -1.40 + bi * 0.20
             cycle = bi % 3
@@ -79,12 +80,16 @@ def build_backbar():
 def build_booths():
     # Four leather booths along the W wall, each a banquette + table.
     for bi in range(4):
-        by = 1.20 + bi * 1.80
+        by = 1.20 + bi * 1.42
         # Banquette against W wall
+        # (2026-09-23: each booth 1.50 long on a 1.42 pitch — every back
+        # and plinth ran 8 cm into the next booth's; 1.40 now)
+        make_box(f"Booth_{bi}_Plinth", (-ROOM_W/2.0 + 0.40, by, 0.205),   # to the floor (2026-09-22: the banquettes hung at 0.41)
+                 (0.46, 1.36, 0.41), COL_BOOTH_LEATHER)
         make_box(f"Booth_{bi}_Bench", (-ROOM_W/2.0 + 0.40, by, 0.46),
-                 (0.50, 1.50, 0.10), COL_BOOTH_LEATHER)
+                 (0.50, 1.40, 0.10), COL_BOOTH_LEATHER)
         make_box(f"Booth_{bi}_Back",  (-ROOM_W/2.0 + 0.20, by, 0.84),
-                 (0.10, 1.50, 0.70), COL_BOOTH_LEATHER)
+                 (0.10, 1.40, 0.70), COL_BOOTH_LEATHER)
         # Small round table
         make_cyl(f"Booth_{bi}_Table", (-ROOM_W/2.0 + 1.00, by, 0.74), 0.30, 0.04, COL_BAR_COPPER)
         make_cyl(f"Booth_{bi}_TablePost", (-ROOM_W/2.0 + 1.00, by, 0.37), 0.025, 0.74, P.METAL_BLACK)
@@ -109,8 +114,8 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (+ROOM_W/2.0-0.05, 5.0, 2.20), frozen_hour=4, frozen_min=15)
-    make_faded_poster("Poster_S", (+ROOM_W/2.0-0.05, 2.0, 1.40))
+    make_wall_clock("Clock", (2.400, 5.0, 2.20), frozen_hour=4, frozen_min=15, facing='-X')
+    make_faded_poster("Poster_S", (+ROOM_W/2.0-0.05 - 0.0535, 2.0, 1.40), into_room=-1)
     make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.40, 0.0), palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
 
 
@@ -125,10 +130,15 @@ def build_temperance_dressing():
         cleaned glasses + a clean white pour rail (set against
         the off-pour visually)
     """
-    # U-shaped bar mid-section approx at (0.0, -1.0); back-bar at +Y
-    mid_x = 0.0
-    mid_y = -1.0
-    bar_top_z = 1.05
+    # The U-bar's N-cap (Bar_N: (0, 7.4), 3.5 × 0.5, top 1.08); the
+    # arms run south from it at x ±1.5, the back-bar is at the N wall.
+    # (2026-09-09: this pass had the "mid-section" at (0, -1) — open
+    # floor at the south end of the room — so Frank's notebook, pen
+    # and stool stood a bar's length from any bar. Frank sits inside
+    # the U, south of the cap, a little east of the ice well.)
+    mid_x = 0.60
+    mid_y = 7.40
+    bar_top_z = 1.08
 
     # Frank's stool (middle position)
     make_cyl("FrankStool_Seat",
@@ -167,9 +177,11 @@ def build_temperance_dressing():
     # The OFF POUR · a highball with an obvious-wrong liquid level
     # On the back-bar, slightly off to one side from Maddie's
     # canonical station
+    # The back bar (Backbar_Counter): (0, 8.2), 3.2 × 0.4, top 1.13.
+    # (2026-09-10: this pass had it at y 0.2 — the south wall.)
     bb_x = +0.80
-    bb_y = +0.20
-    bb_top_z = 1.20
+    bb_y = ROOM_D - 0.30
+    bb_top_z = 1.13
     # Glass body (taller than usual)
     make_cyl("OffPour_Glass",
              (bb_x, bb_y, bb_top_z + 0.07),
@@ -188,13 +200,13 @@ def build_temperance_dressing():
     for gi in range(3):
         gx = -0.80 + gi * 0.18
         make_cyl("MaddiePour_CleanGlass_%d" % gi,
-                 (gx, +0.20, bb_top_z + 0.055),
+                 (gx, bb_y, bb_top_z + 0.055),
                  0.026, 0.11,
                  (0.92, 0.92, 0.94, 0.55),
                  segments=10, axis='Z')
     # White pour rail along the back-bar edge
     make_box("MaddiePour_Rail",
-             (-0.60, +0.10, bb_top_z + 0.005),
+             (-0.60, bb_y - 0.15, bb_top_z + 0.005),
              (0.60, 0.04, 0.01),
              (0.94, 0.92, 0.88, 1.0))
 
@@ -232,23 +244,23 @@ def build_temperance_wave2_props():
 
     # Reggie's produce delivery · two stacked cardboard boxes
     make_box("PreShift_ProduceBox_Lo",
-             (ax_door + 0.40, ay_door, 0.14),
+             (ax_door + 0.65, ay_door, 0.14),
              (0.28, 0.36, 0.28),
              (0.60, 0.48, 0.32, 1.0))
     make_box("PreShift_ProduceBox_Hi",
-             (ax_door + 0.40, ay_door, 0.42),
+             (ax_door + 0.65, ay_door, 0.40),   # on the lower box (2026-09-23: 2 cm over it)
              (0.28, 0.36, 0.24),
              (0.62, 0.50, 0.34, 1.0))
     # A bright-green stem sticking out of the top box (mint)
     make_cyl("PreShift_MintSprig",
-             (ax_door + 0.40, ay_door + 0.02, 0.56),
+             (ax_door + 0.65, ay_door + 0.02, 0.55),
              0.02, 0.10,
              (0.44, 0.68, 0.36, 1.0), segments=5)
 
     # Citrus prep tray on the back bar (west end)
     prep_x = -1.10
     prep_y = ROOM_D - 0.30
-    prep_z = 1.22
+    prep_z = 1.13   # the back bar's top (2026-09-22: 9 cm up)
     make_box("PreShift_CuttingBoard",
              (prep_x, prep_y, prep_z + 0.008),
              (0.32, 0.28, 0.016),
@@ -271,8 +283,8 @@ def build_temperance_wave2_props():
 
     # Boombox with Tuesday playlist cassette · east side of back bar
     tape_x = +0.90
-    tape_y = ROOM_D - 0.35
-    tape_z = 1.22
+    tape_y = 7.40
+    tape_z = 1.10
     make_box("PreShift_Boombox_Body",
              (tape_x, tape_y, tape_z + 0.08),
              (0.36, 0.14, 0.16),
@@ -323,13 +335,13 @@ def build_temperance_wave2_props():
     c_y = 5.60
     # Tipped highball on the bar top (bar top at z=1.06)
     make_cyl("LastCall_TippedHighball_Body",
-             (+0.75, c_y, 1.09),
+             (+1.50, 6.10, 1.11),      # on the E arm (2026-09-09: was mid-floor at y 5.6)
              0.028, 0.13,
              (0.86, 0.86, 0.88, 0.55),
              segments=10, axis='Y')     # laid on its side
     # A small puddle stain
     make_box("LastCall_HighballPuddle",
-             (+0.65, c_y, 1.062),
+             (+1.40, 6.10, 1.082),
              (0.06, 0.10, 0.002),
              (0.62, 0.36, 0.16, 0.70))
 
@@ -346,9 +358,9 @@ def build_temperance_wave2_props():
              (0.86, 0.92, 0.96, 0.80))
     # Small metal scoop resting on the ice
     make_cyl("LastCall_IceScoop_Handle",
-             (+0.30, 7.30, 1.14),
+             (+0.28, 7.30, 1.12),
              0.008, 0.16,
-             (0.78, 0.80, 0.82, 1.0), segments=6, axis='Y')
+             (0.78, 0.80, 0.82, 1.0), segments=6, axis='X')   # out of the cup (2026-09-22: beside it, on air)
     make_box("LastCall_IceScoop_Cup",
              (+0.20, 7.30, 1.10),
              (0.06, 0.08, 0.05),
@@ -376,20 +388,132 @@ def build_temperance_wave2_props():
 
     # Back walk-in second ice chest · 40-pound blue cooler on the
     # floor near the alley door (Frank's job to haul in)
+    # (2026-09-23: at ay_door + 0.90 it sat inside booth 0's plinth; it
+    # is in the SW corner now, S of the booth, against the S wall)
     make_box("LastCall_BackupIceChest_Body",
-             (ax_door + 0.20, ay_door + 0.90, 0.24),
+             (ax_door + 0.20, ay_door - 0.23, 0.12),
              (0.36, 0.30, 0.24),
              (0.30, 0.52, 0.78, 1.0))
     # Chest lid
     make_box("LastCall_BackupIceChest_Lid",
-             (ax_door + 0.20, ay_door + 0.90, 0.38),
+             (ax_door + 0.20, ay_door - 0.23, 0.255),   # on the chest (2026-09-22: 12 cm over it)
              (0.36, 0.30, 0.03),
              (0.28, 0.50, 0.76, 1.0))
     # Handle recess (a darker line on top)
     make_box("LastCall_BackupIceChest_HandleLine",
-             (ax_door + 0.20, ay_door + 0.90, 0.40),
+             (ax_door + 0.20, ay_door - 0.23, 0.272),
              (0.24, 0.02, 0.006),
              (0.18, 0.34, 0.58, 1.0))
+
+
+def build_bar_tools_and_glassware():
+    """PROPS-focus enrichment (2026-07-13): the working cocktail kit the
+    Temperance bar's identity calls for — a bar-tools station (shaker +
+    jigger + strainer + bar spoon + muddler), a garnish caddy, and a
+    hanging stemware rack of inverted coupes over the bar."""
+    COL_CITRUS_L = (0.94, 0.86, 0.34, 1.0); COL_CITRUS_G = (0.62, 0.78, 0.34, 1.0)
+    COL_CITRUS_O = (0.94, 0.62, 0.24, 1.0); COL_CHERRY = (0.72, 0.16, 0.18, 1.0)
+    COL_OLIVE = (0.42, 0.52, 0.24, 1.0); COL_TIN = (0.72, 0.74, 0.76, 1.0)
+
+    # Bar-tools station on the E-arm bar top (bar top z ~1.06)
+    tx, ty, tz = +1.50, 6.10, 1.08   # ON the east arm (2026-09-22: 0.6 m south of it)
+    make_box("Tools_Mat", (tx, ty, tz), (0.36, 0.26, 0.01), (0.16, 0.14, 0.12, 1.0))
+    make_cyl("Tools_ShakerTin", (tx - 0.10, ty, tz + 0.09), 0.05, 0.16, COL_TIN, segments=12)
+    make_cyl("Tools_ShakerCap", (tx - 0.10, ty, tz + 0.20), 0.045, 0.08, COL_TIN, segments=12)
+    make_cyl("Tools_Jigger_Big", (tx + 0.02, ty + 0.06, tz + 0.03), 0.028, 0.05, COL_TIN, segments=10)
+    make_cyl("Tools_Jigger_Sm", (tx + 0.02, ty + 0.06, tz + 0.08), 0.020, 0.05, COL_TIN, segments=10)
+    make_cyl("Tools_Strainer_Disc", (tx + 0.10, ty - 0.04, tz + 0.02), 0.05, 0.01, COL_TIN, segments=12)
+    make_box("Tools_Strainer_Handle", (tx + 0.20, ty - 0.04, tz + 0.02), (0.10, 0.02, 0.01), COL_TIN)
+    make_cyl("Tools_BarSpoon", (tx + 0.06, ty - 0.10, tz + 0.14), 0.006, 0.30,
+             P.METAL_BLACK, segments=6)
+    make_cyl("Tools_Muddler", (tx - 0.02, ty + 0.10, tz + 0.08), 0.02, 0.16,
+             (0.42, 0.30, 0.20, 1.0), segments=8)
+
+    # Garnish caddy on the W-arm bar top
+    gx, gy, gz = -1.50, 6.10, 1.08   # ON the west arm
+    make_box("Garnish_Tray", (gx, gy, gz + 0.02), (0.34, 0.22, 0.04), COL_TIN)
+    for di, dx in enumerate([-0.11, 0.0, +0.11]):
+        make_box(f"Garnish_Divider_{di}", (gx + dx, gy, gz + 0.05), (0.005, 0.20, 0.06), COL_TIN)
+    for wi, col in enumerate([COL_CITRUS_L, COL_CITRUS_G, COL_CITRUS_O]):
+        make_cyl(f"Garnish_Wheel_{wi}", (gx - 0.16 + wi*0.055, gy - 0.06, gz + 0.06),
+                 0.028, 0.008, col, axis='Z', segments=12)
+    for ci in range(4):
+        make_cyl(f"Garnish_Cherry_{ci}", (gx - 0.02 + (ci % 2)*0.03, gy + 0.04 + (ci // 2)*0.03, gz + 0.06),
+                 0.014, 0.02, COL_CHERRY, segments=8)
+    for oi in range(4):
+        make_cyl(f"Garnish_Olive_{oi}", (gx + 0.12 + (oi % 2)*0.03, gy + 0.04 + (oi // 2)*0.03, gz + 0.06),
+                 0.012, 0.02, COL_OLIVE, segments=8)
+
+    # Hanging stemware rack of inverted coupes over the bar run
+    rx, ry, rz = 0.0, 5.60, CEIL - 0.06
+    for sgn in (-1, +1):
+        make_box(f"GlassRack_Rail_{sgn:+d}", (rx, ry + sgn*0.16, rz - 0.02),
+                 (2.20, 0.03, 0.04), P.METAL_BLACK)
+        make_cyl(f"GlassRack_Mount_{sgn:+d}", (rx + sgn*0.9, ry, CEIL - 0.03), 0.02, 0.06, P.METAL_BLACK)
+        make_box(f"GlassRack_Cross_{sgn:+d}", (rx + sgn*0.9, ry, rz - 0.02), (0.04, 0.36, 0.04), P.METAL_BLACK)   # mount to both rails (2026-09-22)
+    for gi in range(7):
+        cxp = rx - 0.90 + gi * 0.30
+        for sgn in (-1, +1):
+            cyp = ry + sgn * 0.16
+            make_cyl(f"Coupe_{gi}_{sgn:+d}_Foot", (cxp, cyp, rz - 0.06), 0.04, 0.02,
+                     COL_BOTTLE_CLEAR, segments=10)
+            make_cyl(f"Coupe_{gi}_{sgn:+d}_Stem", (cxp, cyp, rz - 0.16), 0.007, 0.16,
+                     COL_BOTTLE_CLEAR, segments=6)
+            make_cyl(f"Coupe_{gi}_{sgn:+d}_Bowl", (cxp, cyp, rz - 0.28), 0.055, 0.09,
+                     COL_BOTTLE_CLEAR, segments=12)
+
+
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — Temperance (wear pass 5).
+
+    The Mixing Glass wears the way its arcana keeps: in MEASURE.
+    The well inside the U carries one bartender's shift-miles in a
+    2.5m runway — the tightest deep lane in the game. The copper
+    top doesn't stain; it POLISHES — bright wipe-arcs on the
+    working stretches, duller at the service end. Three of the six
+    stools are the regulars' (heel scuffs at the base ring; elbow
+    wear on the rail edge); three are anybody's. The backbar's
+    shelf edge is worn pale in front of the five reached-for
+    bottles and untouched under the dusty top shelf. And the
+    signature: a bar this kept has NO spill rings — exactly one
+    water-glass ring at the south end of the west arm, hers,
+    because the one glass she doesn't measure is her own.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    lane = (0.30, 0.24, 0.19, 1.0)
+    copper_bright = (0.86, 0.55, 0.32, 1.0)
+    heel = (0.24, 0.20, 0.17, 1.0)
+    elbow = (0.60, 0.42, 0.26, 1.0)
+    shelf_pale = (0.58, 0.44, 0.28, 1.0)
+    # The well: her oval, tight.
+    make_traffic_wear("Wear_Well_Lane",
+                      [(-0.7, 6.4), (0.0, 6.9), (0.7, 6.4), (0.0, 6.2), (-0.7, 6.4)],
+                      width=0.45, tint=lane)
+    # Drip-mat shadow by the N cap (where the mat always sits).
+    make_box("Wear_MatShadow", (0.0, 7.02, 0.008), (0.9, 0.35, 0.004),
+             (0.26, 0.22, 0.18, 1.0))
+    # Copper wipe-arcs: bright stretches where the rag runs nightly.
+    make_box("Wear_Copper_Arc_E", (1.50, 6.55, 1.082), (0.42, 1.1, 0.004), copper_bright)
+    make_box("Wear_Copper_Arc_N", (0.0, 7.38, 1.082), (2.6, 0.40, 0.004), copper_bright)
+    make_box("Wear_Copper_Arc_W", (-1.50, 6.75, 1.082), (0.42, 0.9, 0.004), copper_bright)
+    # The regulars' three stools: heel scuffs at the base rings and
+    # elbow wear on the copper edge above each.
+    for si4, (sx4, sy4) in enumerate(((1.05, 6.00), (-1.05, 6.60), (-1.05, 6.00))):
+        make_floor_stain("Wear_Stool_Heels_%d" % si4, (sx4, sy4 - 0.1),
+                         radius=0.16, tint=heel, segments=8)
+    make_box("Wear_Elbow_E", (1.28, 6.00, 1.084), (0.06, 0.34, 0.004), elbow)
+    make_box("Wear_Elbow_W_A", (-1.28, 6.60, 1.084), (0.06, 0.34, 0.004), elbow)
+    make_box("Wear_Elbow_W_B", (-1.28, 6.00, 1.084), (0.06, 0.30, 0.004), elbow)
+    # Backbar reach-wear: pale front-edge patches under the five
+    # working bottles (shelf 1); the top shelf keeps its dust.
+    for bi4, bx4 in enumerate((-1.1, -0.55, 0.0, 0.55, 1.1)):
+        make_box("Wear_Shelf_Reach_%d" % bi4, (bx4, ROOM_D - 0.42, 1.7125),   # on shelf 1's front edge (2026-09-22: inside the wall, between shelves)
+                 (0.28, 0.03, 0.005), shelf_pale)
+    make_box("Wear_TopShelf_Dust", (0.0, ROOM_D - 0.30, 2.112), (2.9, 0.28, 0.004),
+             (0.42, 0.34, 0.24, 1.0))
+    # THE ONE RING · hers, S end of the west arm.
+    make_cyl("Wear_HerRing", (-1.52, 5.98, 1.083), 0.042, 0.003,
+             (0.55, 0.47, 0.40, 1.0), segments=10)
 
 
 def main():
@@ -401,8 +525,10 @@ def main():
     build_neon_open()
     build_ceiling_infra()
     build_decor()
+    build_bar_tools_and_glassware()
     build_temperance_dressing()
     build_temperance_wave2_props()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/mixing_glass.glb"))
     print(f"\n[build_mixing_glass] exporting to {out}")

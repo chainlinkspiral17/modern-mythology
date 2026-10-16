@@ -45,8 +45,8 @@ def build_shell():
         make_box(f"DockDoor_Rib_{di}", (0.0, ROOM_D-0.02, 0.20 + di*0.36),
                  (3.20, 0.04, 0.06), (0.32, 0.36, 0.42, 1.0))
     # S wall (storefront) — glass front with central door
-    make_wall("Wall_S_W", (-3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL, baseboard_face_sign=+1)
     # Glass storefront panels above the low wall
     make_box("Storefront_W_Glass", (-3.20, 0.04, 2.20), (1.40, 0.04, 2.80), COL_FROST_GLASS)
     make_box("Storefront_E_Glass", (+3.20, 0.04, 2.20), (1.40, 0.04, 2.80), COL_FROST_GLASS)
@@ -70,6 +70,11 @@ def build_ice_letters_outside():
         # Strokes carved out — abstracted with darker boxes inside
         make_box(f"ICE_Letter_Stroke_{label}", (lx, -1.50, 4.50),
                  (0.60, 0.05, 0.80), (0.32, 0.42, 0.52, 1.0))
+    # the sign's two posts to the lot (2026-09-22: the letters hung on
+    # a parapet that was never built)
+    for sgn in (-1, 1):
+        make_box(f"ICE_Sign_Post_{sgn:+d}", (sgn * 1.85, -1.40, 1.95), (0.10, 0.10, 3.90), COL_BRINE_TANK)
+    make_box("ICE_Sign_Rail", (0.0, -1.40, 3.87), (3.90, 0.10, 0.06), COL_BRINE_TANK)   # the rail the three letters stand on
     # Pole sign also far back
     make_cyl("PoleSign_Pole", (-3.0, -3.0, 3.0), 0.10, 6.0, COL_BRINE_TANK)
     make_box("PoleSign_BG", (-3.0, -3.0, 5.80), (1.20, 0.10, 0.80), COL_NEON_ICE)
@@ -81,27 +86,43 @@ def build_retail_counter():
     make_box("Counter_Top",  (0.0, ry, 1.00), (3.40, 0.60, 0.04), COL_COUNTER_TOP)
     make_box("Counter_Body", (0.0, ry, 0.50), (3.40, 0.60, 1.00), COL_COUNTER)
     # Cash register
-    make_box("Register_Body", (-1.20, ry, 1.20), (0.40, 0.40, 0.30), COL_BRINE_TANK)
-    make_box("Register_Drawer", (-1.20, ry, 0.94), (0.40, 0.40, 0.08), COL_BRINE_TANK)
+    # drawer on the counter top, register on the drawer (2026-09-23: the
+    # drawer was inside the counter and the register 3 cm over its top)
+    make_box("Register_Drawer", (-1.20, ry, 1.06), (0.40, 0.40, 0.08), COL_BRINE_TANK)
+    make_box("Register_Body", (-1.20, ry, 1.25), (0.40, 0.40, 0.30), COL_BRINE_TANK)
     # Bell + receipt spike + price-card display
-    make_cyl("CounterBell", (+0.80, ry, 1.10), 0.06, 0.04, (0.74, 0.56, 0.28, 1.0))
+    make_cyl("CounterBell", (+0.80, ry, 1.04), 0.06, 0.04, (0.74, 0.56, 0.28, 1.0))
     make_box("PriceCard", (+1.20, ry, 1.20), (0.30, 0.04, 0.20), P.PAPER)
 
 
 def build_ice_block_freezer():
     # Glass-fronted upright freezer behind the counter
     fx, fy = 0.0, 3.80
-    make_box("BlockFreezer_Body", (fx, fy, 1.20), (3.20, 0.80, 2.40), COL_FREEZER_BODY)
-    make_box("BlockFreezer_Glass", (fx, fy-0.40, 1.40), (3.00, 0.005, 2.00), COL_FROST_GLASS)
-    # Stacked ice blocks behind the glass (5x3 grid)
+    # (2026-09-08: the freezer was one solid box with the blocks
+    # INSIDE it — invisible — and the block grid sat 1 m west of it
+    # with 10 cm of air between rows. Now a shell around a stack.)
+    make_box("BlockFreezer_Back", (fx, fy + 0.39, 1.20), (3.20, 0.02, 2.40), COL_FREEZER_BODY)
+    for sx_ in (-1, 1):
+        make_box(f"BlockFreezer_Side_{sx_:+d}", (fx + sx_ * 1.59, fy, 1.20), (0.02, 0.80, 2.40), COL_FREEZER_BODY)
+    make_box("BlockFreezer_Top", (fx, fy, 2.39), (3.20, 0.80, 0.02), COL_FREEZER_BODY)
+    make_box("BlockFreezer_Floor", (fx, fy, 0.05), (3.20, 0.80, 0.10), COL_FREEZER_BODY)
+    # the frost-glass front as three glints, floor to top (2026-09-24: a
+    # 3 x 2 m slab — no alpha in this pipeline, it rendered as a wall
+    # over the stack this shell was built to show)
+    for gi, (gx, gw) in enumerate(((-1.10, 0.03), (-0.98, 0.012), (0.70, 0.02))):
+        make_box(f"BlockFreezer_Glint_{gi}", (fx + gx, fy-0.398, 1.24), (gw, 0.004, 2.28), (0.86, 0.90, 0.92, 1.0))
+    # the centre mullion between the two sliding doors (Emile's photo
+    # hangs on it — it hung on the glass)
+    make_box("BlockFreezer_Mullion", (fx, fy-0.385, 1.24), (0.06, 0.03, 2.28), COL_FREEZER_BODY)
+    # Stacked ice blocks behind the glass (5x3 grid, block on block)
     for col in range(5):
         for row in range(3):
             ix = -1.20 + col * 0.60
-            iz = 0.50 + row * 0.50
-            make_box(f"IceBlock_{col}_{row}", (fx + ix - 1.0, fy, iz),
+            iz = 0.30 + row * 0.40
+            make_box(f"IceBlock_{col}_{row}", (fx + ix, fy, iz),
                      (0.50, 0.40, 0.40), COL_ICE_BLOCK)
     # Frost coil pipe visible at the top
-    make_cyl("FrostCoil", (fx, fy-0.30, 2.30), 0.05, 3.00, COL_PIPE, axis='X')
+    make_cyl("FrostCoil", (fx, fy-0.30, 2.33), 0.05, 3.00, COL_PIPE, axis='X')   # under the freezer's top (2026-09-22)
 
 
 def build_chest_freezers():
@@ -123,25 +144,31 @@ def build_machinery():
     # Compressor 1
     cx1, cy1 = +1.80, 6.50
     make_box("Comp1_Base", (cx1, cy1, 0.30), (1.00, 0.80, 0.60), COL_COMPRESSOR)
-    make_cyl("Comp1_Drum", (cx1, cy1, 0.90), 0.30, 0.40, COL_COMPRESSOR, segments=12)
-    make_cyl("Comp1_Pipe_Top", (cx1, cy1, 1.30), 0.04, 0.40, COL_PIPE)
+    make_cyl("Comp1_Drum", (cx1, cy1, 0.80), 0.30, 0.40, COL_COMPRESSOR, segments=12)
+    make_cyl("Comp1_Pipe_Top", (cx1, cy1, 1.20), 0.04, 0.40, COL_PIPE)   # from the drum's top (2026-09-22: 10 cm of air)
     # Compressor 2
     cx2, cy2 = +3.00, 6.50
     make_box("Comp2_Base", (cx2, cy2, 0.30), (0.80, 0.80, 0.60), COL_COMPRESSOR)
-    make_cyl("Comp2_Drum", (cx2, cy2, 0.90), 0.24, 0.40, COL_COMPRESSOR, segments=12)
+    make_cyl("Comp2_Drum", (cx2, cy2, 0.80), 0.24, 0.40, COL_COMPRESSOR, segments=12)
     # Brine tank
     bx, by = +1.80, 8.50
     make_cyl("BrineTank", (bx, by, 0.90), 0.70, 1.80, COL_BRINE_TANK, segments=14)
     make_cyl("BrineTank_Top", (bx, by, 1.84), 0.72, 0.08, COL_PIPE, segments=14)
     # Connecting pipes (red = hot gas, plain = brine)
     make_box("Pipe_Hot_1", (cx1, cy1, 1.60), (0.04, 0.04, 0.50), COL_PIPE_RED)
-    make_box("Pipe_Hot_2", ((cx1+bx)/2.0, (cy1+by)/2.0, 1.84),
-             (abs(cx1-bx), 0.04, 0.04), COL_PIPE_RED)
-    make_box("Pipe_Brine", ((cx2+bx)/2.0, (cy2+by)/2.0, 1.50),
+    # (2026-09-22: the hot line was a zero-length box — compressor 1 and
+    # the tank share an x — and the brine line cut a diagonal that touched
+    # neither end; runs along the axes now, with a riser off compressor 2)
+    make_box("Pipe_Hot_2", (cx1, (cy1+by)/2.0, 1.84),
+             (0.04, abs(cy1-by), 0.04), COL_PIPE_RED)
+    make_box("Pipe_Brine_Riser", (cx2, cy2, 1.25), (0.04, 0.04, 0.50), COL_PIPE)
+    make_box("Pipe_Brine", ((cx2+bx)/2.0, cy2, 1.50),
              (abs(cx2-bx), 0.04, 0.04), COL_PIPE)
-    # Pressure gauges
-    for gi, (gx, gy) in enumerate([(cx1+0.20, cy1-0.40), (cx2-0.20, cy2-0.40), (bx, by-0.70)]):
-        make_cyl(f"Gauge_{gi}", (gx, gy, 1.20), 0.06, 0.02, P.PAPER, axis='Y', segments=10)
+    make_box("Pipe_Brine_2", (bx, (cy2 + by - 0.70) / 2.0, 1.50),   # to the tank's side
+             (0.04, abs(cy2 - (by - 0.70)), 0.04), COL_PIPE)
+    # Pressure gauges — on the lines (2026-09-22: two hung beside the drums)
+    for gi, (gx, gy, gz) in enumerate([(cx1, cy1-0.03, 1.60), (cx2, cy2-0.03, 1.30), (bx, by-0.70, 1.20)]):
+        make_cyl(f"Gauge_{gi}", (gx, gy, gz), 0.06, 0.02, P.PAPER, axis='Y', segments=10)
 
 
 def build_ceiling_infra():
@@ -152,13 +179,14 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 5.5, CEIL))
     make_sprinkler("Spr_W", (-2.5, 5.5, CEIL))
     make_sprinkler("Spr_E", (+2.5, 5.5, CEIL))
-    make_security_camera("Cam", (+ROOM_W/2.0-0.10, 1.5, CEIL-0.10))
+    # on the ceiling, off the E wall (2026-09-23: 10 cm into the wall, 10-20 cm under the ceiling)
+    make_security_camera("Cam", (+ROOM_W/2.0-0.22, 1.5, CEIL))
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 1.5, 2.40), frozen_hour=4, frozen_min=15)
-    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 9.5, 2.30))
-    make_faded_poster("Notice", (+ROOM_W/2.0-0.05, 9.5, 1.80))
+    make_wall_clock("Clock", (-4.400, 1.5, 2.40), frozen_hour=4, frozen_min=15, facing='+X')
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 9.5, 2.30))
+    make_faded_poster("Notice", (+ROOM_W/2.0-0.05 - 0.0535, 9.5, 1.80), into_room=-1)
 
 
 def build_star_dressing():
@@ -173,31 +201,28 @@ def build_star_dressing():
       · The notice that hasn't been published yet · a typed
         announcement on the counter near the till, face down
     """
-    # Block-freezer approx at (-1.5, +2.0); retail counter at (+2.0, 0)
-    bf_x = -1.5
-    bf_y = +2.0
+    # The block freezer (build_freezer): (0, 3.80), 3.2 wide, glass face
+    # at y 3.40, top 2.40. (2026-09-10: this pass had it at (-1.5, 2) —
+    # its fog and wiped streak hung mid-shop.)
+    bf_x = -0.8
+    bf_y = +3.80
     bf_glass_z = 1.30
-    # Fog overlay on the freezer glass (a pale frosted rectangle)
-    make_box("BlockFreezer_FogOverlay",
-             (bf_x, bf_y - 0.42, bf_glass_z),
-             (0.80, 0.005, 0.50),
-             (0.86, 0.90, 0.94, 0.65))
-    # A wiped clean-streak diagonal across the fog (where Delphine
-    # just wiped it)
-    make_box("BlockFreezer_WipedStreak",
-             (bf_x, bf_y - 0.421, bf_glass_z + 0.04),
-             (0.50, 0.005, 0.08),
-             (0.62, 0.74, 0.86, 0.5))
+    # (the fog overlay that sat ON the freezer glass went with the glass,
+    # 2026-09-24 — an opaque pale slab in mid-air over the block stack)
+    # (and the wiped clean-streak across the fog with it; the cloth on
+    # the freezer top still says Delphine just wiped it)
     # The wiping cloth on the freezer top (damp blue canvas)
     make_box("BlockFreezer_WipingCloth",
-             (bf_x + 0.20, bf_y, bf_glass_z + 0.32),
+             (bf_x + 0.20, bf_y, 2.41),
              (0.22, 0.14, 0.018),
              (0.42, 0.52, 0.62, 1.0))
 
     # Mr Couvillon's customer ledger on the retail counter
-    rc_x = +2.0
-    rc_y = 0.0
-    counter_z = 1.05
+    # The retail counter (build_counter): (0, 2.40), 3.4 × 0.6, top 1.02.
+    # (2026-09-09: this pass had it at (2, 0) — open floor.)
+    rc_x = +0.9
+    rc_y = 2.40
+    counter_z = 1.02
     make_box("CouvillonLedger_Cover",
              (rc_x, rc_y, counter_z + 0.020),
              (0.32, 0.40, 0.040),
@@ -252,8 +277,8 @@ def build_star_wave2_props():
       · The Bunn tab of a hundred paper cups (a tall stack)
     """
     rc_x = 0.0
-    rc_y = -1.20
-    counter_z = 0.90
+    rc_y = 2.40           # the real counter (see above); was (0, -1.2), a metre off the floor's edge
+    counter_z = 1.02
 
     # ── the_notice_in_the_picayune ──────────────────────────────
 
@@ -278,8 +303,11 @@ def build_star_wave2_props():
 
     # The framed grandfather photograph over the register
     # (register is at the counter · frame goes up on the wall behind)
+    # on the block freezer's glass (y 3.40) — the "wall behind the
+    # register" is the freezer; 2026-09-22 the frame hung 0.4 m in
+    # front of it
     frame_x = rc_x
-    frame_y = rc_y + 0.60
+    frame_y = 3.41    # on the freezer's centre mullion (2026-09-24: the glass is gone)
     make_box("Emile_Frame_Body",
              (frame_x, frame_y - 0.02, 2.20),
              (0.30, 0.02, 0.24),
@@ -301,7 +329,7 @@ def build_star_wave2_props():
              (0.94, 0.92, 0.86, 1.0))
     # A small brass plaque under the frame
     make_box("Emile_Frame_Plaque",
-             (frame_x, frame_y - 0.02, 2.02),
+             (frame_x, frame_y - 0.0125, 2.02),   # on the mullion
              (0.20, 0.005, 0.03),
              (0.78, 0.62, 0.30, 1.0))
 
@@ -361,6 +389,8 @@ def build_star_wave2_props():
                  0.014, 1.60,
                  (0.42, 0.30, 0.22, 1.0), segments=6, axis='Z')
     # Frame (bigger than the interior photograph)
+    make_box("Easel_Ledge", (easel_x, easel_y, 1.26), (0.50, 0.30, 0.03),   # the ledge across the legs (2026-09-22)
+             (0.42, 0.30, 0.22, 1.0))
     make_box("Easel_PhotoFrame",
              (easel_x, easel_y, 1.60),
              (0.90, 0.03, 0.68),
@@ -376,7 +406,7 @@ def build_star_wave2_props():
     mag_y = -5.20
     # Burlap-wrapped root ball
     make_cyl("Magnolia_RootBall",
-             (mag_x, mag_y, 0.24),
+             (mag_x, mag_y, 0.18),   # on the ground (2026-09-22: 6 cm up)
              0.18, 0.36,
              (0.72, 0.60, 0.34, 1.0), segments=8, axis='Z')
     # Trunk
@@ -384,12 +414,15 @@ def build_star_wave2_props():
              (mag_x, mag_y, 1.10),
              0.022, 1.60,
              (0.42, 0.30, 0.22, 1.0), segments=6, axis='Z')
-    # Foliage cluster (three offset spheres approximated as cylinders)
+    # Foliage cluster — the comment always said "three offset
+    # SPHERES approximated as cylinders": the module had no sphere
+    # until 2026-08-04. Actual blobs now, per the original intent.
+    from _props.geometry import make_blob
     for fi, (dx, dz) in enumerate([(-0.10, 1.70), (+0.10, 1.80), (0.0, 1.94)]):
-        make_cyl("Magnolia_Foliage_%d" % fi,
-                 (mag_x + dx, mag_y, dz),
-                 0.16, 0.20,
-                 (0.34, 0.46, 0.30, 1.0), segments=10, axis='Z')
+        make_blob("Magnolia_Foliage_%d" % fi,
+                  (mag_x + dx, mag_y, dz), 0.22,
+                  (0.34, 0.46, 0.30, 1.0), noise=0.22,
+                  seed=fi * 3 + 1, squash=0.9)
 
     # Mr Theriot's 1949 brass shovel leaning on the wagon
     # (wagon is offscreen · we place the shovel against the west wall)
@@ -406,7 +439,7 @@ def build_star_wave2_props():
              (0.78, 0.62, 0.30, 1.0), segments=10, axis='X')
     # Blade at the bottom
     make_box("Theriot_Shovel_Blade",
-             (shovel_x, shovel_y, 0.14),
+             (shovel_x, shovel_y, 0.10),   # on the lot (2026-09-22)
              (0.14, 0.04, 0.20),
              (0.78, 0.62, 0.30, 1.0))
 
@@ -415,9 +448,65 @@ def build_star_wave2_props():
     stack_y = rc_y + 0.20
     for pi in range(25):
         make_cyl("BunnPaperCup_%d" % pi,
-                 (stack_x, stack_y, counter_z + 0.04 + pi * 0.02),
+                 (stack_x, stack_y, counter_z + 0.01 + pi * 0.02),   # on the counter (2026-09-23: 3 cm over it)
                  0.036, 0.020,
                  (0.94, 0.92, 0.90, 1.0), segments=10, axis='Z')
+
+
+def build_ice_tools_and_crates():
+    """PROPS-focus enrichment (2026-07-13): the ice-house hand-work
+    the brief calls for — a platform scale for weighing blocks, ice
+    tongs on the counter, a hand truck at the dock, a crate pallet,
+    and an interior services price board."""
+    # Platform block-scale, east of the retail counter
+    sx, sy = +2.80, 3.20
+    make_box("Scale_Base", (sx, sy, 0.06), (0.60, 0.60, 0.12), COL_COMPRESSOR)
+    make_box("Scale_Platform", (sx, sy, 0.16), (0.54, 0.54, 0.04), COL_PIPE)
+    make_box("Scale_Column", (sx, sy + 0.26, 0.66), (0.06, 0.06, 1.08), COL_PIPE)   # from the base (2026-09-23: 2 cm over the platform)
+    make_cyl("Scale_DialHead", (sx, sy + 0.29, 1.20), 0.16, 0.06, COL_COMPRESSOR, axis='Y', segments=12)
+    make_cyl("Scale_DialFace", (sx, sy + 0.255, 1.20), 0.14, 0.02, P.PAPER, axis='Y', segments=12)
+    make_box("Scale_Needle", (sx, sy + 0.245, 1.24), (0.02, 0.005, 0.10), COL_PIPE_RED)
+    # A weighed ice block sitting on the platform
+    make_box("Scale_IceBlock", (sx, sy, 0.38), (0.46, 0.40, 0.40), COL_ICE_BLOCK)
+
+    # Ice tongs resting on the retail counter top (counter at y=2.40, top z~1.02)
+    tx, ty, tz = +1.30, 2.40, 1.06
+    make_cyl("IceTongs_Pivot", (tx, ty, tz + 0.02), 0.02, 0.05, COL_PIPE, axis='Z', segments=8)
+    for sgn, tag in [(-1, "L"), (+1, "R")]:
+        make_box(f"IceTongs_Arm_{tag}", (tx + sgn * 0.10, ty, tz + 0.02), (0.24, 0.03, 0.02), COL_PIPE)
+        make_box(f"IceTongs_Tip_{tag}", (tx + sgn * 0.22, ty, tz - 0.02), (0.03, 0.03, 0.08), COL_PIPE)
+        make_box(f"IceTongs_Handle_{tag}", (tx + sgn * 0.04, ty + sgn * 0.10, tz + 0.06),
+                 (0.03, 0.14, 0.03), (0.42, 0.30, 0.20, 1.0))
+
+    # Hand truck (dolly) upright against the dock-door wall
+    dx, dy = +3.20, ROOM_D - 0.60
+    make_box("Dolly_Plate", (dx, dy - 0.18, 0.06), (0.50, 0.36, 0.04), COL_PIPE)
+    for sgn, tag in [(-1, "L"), (+1, "R")]:
+        make_box(f"Dolly_Rail_{tag}", (dx + sgn * 0.22, dy, 0.72), (0.05, 0.05, 1.30), COL_COMPRESSOR)
+        make_cyl(f"Dolly_Wheel_{tag}", (dx + sgn * 0.24, dy - 0.10, 0.14), 0.14, 0.08,
+                 COL_COMPRESSOR, axis='X', segments=12)
+    for ri, rz in enumerate([0.40, 0.90, 1.30]):
+        make_box(f"Dolly_Cross_{ri}", (dx, dy, rz), (0.44, 0.04, 0.05), COL_COMPRESSOR)
+
+    # Delivery crate stack on a wooden pallet, SE of the machinery
+    px, py = +3.20, 5.20
+    make_box("CratePallet", (px, py, 0.06), (1.00, 1.00, 0.12), (0.52, 0.40, 0.26, 1.0))
+    # on the pallet (2026-09-23: 2 cm over it)
+    for ci, (cxo, cyo, cz) in enumerate([(-0.24, -0.22, 0.32), (+0.24, -0.22, 0.32),
+                                          (0.0, +0.24, 0.32), (0.0, 0.0, 0.72)]):   # the top crate ON the others (2026-09-22)
+        cx = px + cxo; cy = py + cyo
+        make_box(f"Crate_{ci}", (cx, cy, cz), (0.44, 0.40, 0.40), (0.60, 0.46, 0.30, 1.0))
+        for si in range(3):
+            make_box(f"Crate_{ci}_Slat_{si}", (cx, cy - 0.205, cz - 0.14 + si * 0.14),
+                     (0.42, 0.005, 0.05), (0.44, 0.32, 0.20, 1.0))
+
+    # Interior services price board on the E wall
+    bx = +ROOM_W/2.0 - 0.12   # on the wall's face (2026-10-09)
+    make_box("Services_Board_BG", (bx, 3.40, 1.90), (0.04, 1.10, 0.80), (0.20, 0.28, 0.34, 1.0))
+    make_box("Services_Board_Title", (bx - 0.0225, 3.40, 2.18), (0.005, 0.90, 0.12), COL_NEON_ICE)
+    for li in range(4):
+        make_box(f"Services_Board_Row_{li}", (bx - 0.0225, 3.40, 2.00 - li * 0.16),
+                 (0.005, 0.86, 0.05), P.PAPER)
 
 
 def main():
@@ -430,6 +519,7 @@ def main():
     build_machinery()
     build_ceiling_infra()
     build_decor()
+    build_ice_tools_and_crates()
     build_star_dressing()
     build_star_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

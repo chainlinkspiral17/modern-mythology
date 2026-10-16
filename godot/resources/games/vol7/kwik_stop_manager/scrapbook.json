@@ -1,0 +1,43 @@
+{
+ "id": "kwik_stop_manager_scrapbook",
+ "title": "Kwik Stop Manager · the first sim",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "kwik_stop_manager_finished",
+   "tier": "finished",
+   "title": "A season managed",
+   "blurb": "Inventory, cash flow, the patience meter, Olaf. The first manager sim Oneironautics shipped, and the reason every later one feels like this one."
+  },
+  {
+   "token": "the_first_manager_sim",
+   "tier": "finished",
+   "title": "The DNA, again",
+   "blurb": "Estuary 3's Manager Mode is this cartridge wearing a different vest. Now you've seen the original, the homage reads differently."
+  },
+  {
+   "token": "olafs_taste_confirmed",
+   "tier": "discoveries",
+   "title": "Olaf's taste, confirmed",
+   "blurb": "Olaf buys the same thing every visit and the game tracks whether you keep it stocked. His taste is terrible. His loyalty is absolute."
+  },
+  {
+   "token": "ksm_ending_crew",
+   "tier": "endings",
+   "title": "THE CREW'S STORE",
+   "blurb": "You built the crew that could run it without you. Sam's Summer Shifts opens on the title this ending earns."
+  },
+  {
+   "token": "ksm_ending_corporate",
+   "tier": "endings",
+   "title": "THE NEW LETTERS",
+   "blurb": "Corporate bought in. New sign, new letters, same cooler hum underneath. A win, technically."
+  },
+  {
+   "token": "ksm_ending_shuttered",
+   "tier": "endings",
+   "title": "SHUTTERED FOR THE SEASON",
+   "blurb": "The store closed. The ending is quieter than losing usually feels, which is its own kind of statement."
+  }
+ ]
+}

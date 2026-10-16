@@ -1,0 +1,314 @@
+{
+  "meta": {
+    "title": "hi-way 30 at golden hour",
+    "composer": "RANCH staff, 2003",
+    "for": "Sam's Summer Shifts \u00b7 title + week loop",
+    "notes": "G major, 84 BPM, a friendly chiptune arp over an easy bass \u00b7 RANCH's house sound was 'daytime television for people who like counting'. The last two bars settle instead of resolve \u00b7 a drawer closing."
+  },
+  "tempo_bpm": 84,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_bass",
+      "gain": 0.28,
+      "notes": [
+        {
+          "pitch": "G2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D2",
+          "bar": 1,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "C2",
+          "bar": 3,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G2",
+          "bar": 3,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E2",
+          "bar": 5,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "B2",
+          "bar": 5,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "C2",
+          "bar": 7,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D2",
+          "bar": 8,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G2",
+          "bar": 9,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D2",
+          "bar": 9,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "E2",
+          "bar": 11,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C2",
+          "bar": 13,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D2",
+          "bar": 14,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G2",
+          "bar": 15,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.45
+        }
+      ]
+    },
+    {
+      "instrument": "chiptune_arp",
+      "gain": 0.15,
+      "notes": [
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "C4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "E4",
+          "bar": 5,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "C4",
+          "bar": 7,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "D4",
+          "bar": 8,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "G4",
+          "bar": 9,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "E4",
+          "bar": 11,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "C4",
+          "bar": 13,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "D4",
+          "bar": 14,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "G4",
+          "bar": 15,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.24
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.18,
+      "notes": [
+        {
+          "pitch": "B4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A4",
+          "bar": 2,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "G4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "G4",
+          "bar": 6,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "B4",
+          "bar": 6,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "D5",
+          "bar": 7,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "C5",
+          "bar": 8,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "A4",
+          "bar": 8,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "B4",
+          "bar": 10,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "D5",
+          "bar": 10,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "E5",
+          "bar": 11,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "D5",
+          "bar": 12,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "C5",
+          "bar": 13,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "A4",
+          "bar": 14,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "G4",
+          "bar": 15,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.36
+        }
+      ]
+    }
+  ]
+}

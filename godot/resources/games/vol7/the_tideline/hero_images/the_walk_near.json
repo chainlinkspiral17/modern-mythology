@@ -1,0 +1,164 @@
+{
+ "id": "the_walk_near",
+ "notes": "Tideline walk - NEAR plane (foreground sand/wrack/tidepool/driftwood), transparent sky, leads the parallax.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#b8c0c4",
+  "#9aa6a8",
+  "#5c7076",
+  "#45565c",
+  "#8c8574",
+  "#b0a892",
+  "#4a4a44",
+  "#dfe4e2",
+  "#2a2e30",
+  "#e8e2d0",
+  "#3a4a3c",
+  "#6a5a48",
+  "transparent"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 12
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    0,
+    54,
+    160,
+    36
+   ],
+   "color": 4,
+   "density": 0.06,
+   "seed": 11
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    0,
+    72,
+    160,
+    18
+   ],
+   "color": 6,
+   "density": 0.03,
+   "seed": 23
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     18,
+     79
+    ],
+    [
+     31,
+     74
+    ],
+    [
+     47,
+     77
+    ],
+    [
+     41,
+     83
+    ],
+    [
+     24,
+     84
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    20,
+    74,
+    28,
+    10
+   ],
+   "color": 0,
+   "amount": 0.3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    70,
+    58
+   ],
+   "size": 1,
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    74,
+    56
+   ],
+   "size": 1,
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    78,
+    54
+   ],
+   "size": 1,
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    80,
+    52
+   ],
+   "size": 1,
+   "color": 6
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     100,
+     80
+    ],
+    [
+     118,
+     83
+    ]
+   ],
+   "color": 11
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     100,
+     81
+    ],
+    [
+     118,
+     84
+    ]
+   ],
+   "color": 11
+  },
+  {
+   "op": "hatch",
+   "xywh": [
+    99,
+    82,
+    22,
+    6
+   ],
+   "color": 6,
+   "spacing": 3,
+   "angle_deg": 22
+  }
+ ]
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chillwave_interior_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://chillwave_interior_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/chillwave_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -126,25 +126,40 @@ shader_parameter/edge_ca = 0.012
 shader_parameter/wobble_amp = 0.0018
 shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
-shader_parameter/tint_color = Color(0.86, 0.42, 0.96, 1)
+shader_parameter/tint_color = Color(0.92, 0.78, 0.55, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
 
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
-background_color = Color(0.08, 0.06, 0.10, 1)
+background_mode = 2
+sky = SubResource("Sky_Win")
+background_color = Color(0.16, 0.13, 0.10, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.46, 0.74, 1)
-ambient_light_energy = 0.75
+ambient_light_color = Color(0.72, 0.62, 0.48, 1)
+ambient_light_energy = 0.7
 fog_enabled = true
-fog_light_color = Color(0.32, 0.22, 0.42, 1)
-fog_light_energy = 0.4
-fog_density = 0.006
+fog_sky_affect = 0.0
+fog_light_color = Color(0.42, 0.35, 0.27, 1)
+fog_light_energy = 0.3
+fog_density = 0.004
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.1
 adjustment_saturation = 0.96
 glow_enabled = true
-glow_intensity = 0.85
-glow_bloom = 0.18
+glow_intensity = 0.6
+glow_bloom = 0.1
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
@@ -155,21 +170,49 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.92, 0.96, 1)
-light_energy = 0.65
+transform = Transform3D(0.9396926207859084, -0.2801664995932355, 0.1961746949690111, 0, 0.5735764363510462, 0.8191520442889918, -0.3420201433256687, -0.7697511313200572, 0.5389855446957563, 0, 5, -3)
+light_color = Color(0.95, 0.88, 0.74, 1)
+light_energy = 0.85
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 3, 1)
-light_color = Color(0.42, 0.62, 0.96, 1)
-light_energy = 0.3
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 3, -1)
+light_color = Color(0.74, 0.68, 0.56, 1)
+light_energy = 0.32
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4, 3, 2)
-light_color = Color(0.78, 0.42, 0.96, 1)
-light_energy = 0.35
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4, 3, -4)
+light_color = Color(0.60, 0.56, 0.48, 1)
+light_energy = 0.28
+shadow_enabled = false
+
+[node name="Practical_Dome_Front" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -2.2)
+light_color = Color(0.96, 0.9, 0.76, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Practical_Dome_Back" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -6.2)
+light_color = Color(0.96, 0.9, 0.76, 1)
+light_energy = 1.0
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Practical_TaskLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95, 1.5, -7.35)
+light_color = Color(0.98, 0.92, 0.74, 1)
+light_energy = 0.9
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="Practical_Storefront_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.4)
+light_color = Color(0.9, 0.9, 0.86, 1)
+light_energy = 0.6
+omni_range = 3.5
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -177,7 +220,7 @@ shadow_enabled = false
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["raw", "noir", "studio", "psychedelic_substrate", "vaporwave_dream", "cyberpunk_neon"])
+mood_strata = Array[String](["raw", "noir", "studio", "lithograph", "memory_warm", "liminal_interior"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
@@ -272,7 +315,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +334,87 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── CHILLWAVE SHOP vn_shot coverage (D6, 2026-08-03) · Deck-tune pending ──
+
+; in the door with the bell: counter + doorway
+[node name="shot_establish_shop" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.2, 1.65, -0.8)
+rotation = Vector3(-0.0399997, 0.35, 0)
+metadata/fov = 60.0
+
+; the service bell + face-down paperback
+[node name="shot_closeup_counter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.517, 2.239, -3.533)
+rotation = Vector3(-0.4252, 1.7851, 0.0)
+metadata/fov = 45.0
+
+; through the doorway: inventory + workbench + stick box
+[node name="shot_wide_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.62, -4.9)
+rotation = Vector3(-0.0399997, 0.62, 0)
+metadata/fov = 62.0
+
+; the three-slot box, Estuary 7 label (the_stick)
+[node name="shot_closeup_stickbox" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.971, 1.612, -4.758)
+rotation = Vector3(-0.2618, 1.3090, 0.0)
+metadata/fov = 42.0
+
+; Cale's bench mid-repair under the task lamp
+[node name="shot_closeup_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.35, -6)
+rotation = Vector3(-0.5413, -1.0960, 0.0)
+metadata/fov = 45.0
+
+; The lit window across the street (D5) — its glow reaches the
+; storefront glass at night moods.
+[node name="Across_LitWindow_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.6, 6.85)
+light_color = Color(0.88, 0.78, 0.52, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 4.5
+
+; insert: the wooden box held three sticks — the third was Estuary 7
+[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.0, -1.1)
+rotation = Vector3(-0.6502, 3.0509, 0.0)
+metadata/fov = 42.0
+
+; insert: he was at the workbench
+[node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.4, -5.7)
+rotation = Vector3(-0.6712, -0.5220, 0.0)
+metadata/fov = 42.0
+
+; closeups (2026-10-10, the vol7 ch6 chain): Cale at the workbench, and the visitor in the folding chair
+[node name="shot_closeup_person__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.700, 1.500, -6.000)
+rotation = Vector3(-0.1200, -1.0960, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_closeup_person_b__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.500, -6.400)
+rotation = Vector3(-0.1000, 1.3000, 0.0)
+metadata/fov = 42.0
+
+; ── named closeups in the back room (pass 88): Cale at his bench chair, Lena and Tem standing
+; closeup: Cale at the bench chair ("set down the small thing he had been working on"), from the north-west
+[node name="shot_closeup_cale__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.100, 1.450, -7.300)
+rotation = Vector3(-0.2194, -2.3036, 0.0)
+metadata/fov = 42.0
+
+; closeup: Lena standing in the back room's middle ("She did not move"), from beside the bench
+[node name="shot_closeup_lena__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.900, 1.550, -5.600)
+rotation = Vector3(-0.0279, 1.1071, 0.0)
+metadata/fov = 42.0
+
+; closeup: Tem standing in the back room's south half, from the east along the room's long axis (the N inventory shelf filled a frame taken from the south)
+[node name="shot_closeup_tem__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.550, -5.100)
+rotation = Vector3(-0.0276, 1.4601, 0.0)
+metadata/fov = 42.0
+

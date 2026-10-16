@@ -1,0 +1,35 @@
+{
+  "id": "title_cortex_logo",
+  "notes": "Astro-Cortex title card. Deep purple, amber sun, arcade-green ASTRO-CORTEX bar, red warning lamp. THE EARTHMAN CHRONICLES in amber.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#181432",
+    "#382868",
+    "#6a3898",
+    "#c86840",
+    "#f8b850",
+    "#00c060",
+    "#c02020",
+    "#f8e0b0",
+    "#f8c848",
+    "#0a0820"
+  ],
+  "layers": [
+    { "op": "fill", "color": 0 },
+    { "op": "hband", "y_range": [0, 30], "color": 9 },
+    { "op": "hband", "y_range": [30, 55], "color": 1 },
+    { "op": "hband", "y_range": [55, 90], "color": 2 },
+    { "op": "dot", "xy": [80, 20], "size": 18, "color": 3 },
+    { "op": "dot", "xy": [80, 20], "size": 14, "color": 4 },
+    { "op": "dot", "xy": [80, 20], "size": 8, "color": 8 },
+    { "op": "hline", "y": 6, "x_range": [50, 110], "color": 3 },
+    { "op": "hline", "y": 36, "x_range": [50, 110], "color": 3 },
+    { "op": "rect", "xywh": [10, 46, 140, 8], "color": 5 },
+    { "op": "text", "xy": [40, 48], "s": "ASTRO-CORTEX", "color": 9 },
+    { "op": "rect", "xywh": [10, 60, 140, 12], "color": 8 },
+    { "op": "text", "xy": [30, 63], "s": "THE EARTHMAN", "color": 0 },
+    { "op": "text", "xy": [30, 78], "s": "CHRONICLES", "color": 4 },
+    { "op": "dot", "xy": [150, 12], "size": 4, "color": 6 },
+    { "op": "dot", "xy": [150, 12], "size": 2, "color": 7 }
+  ]
+}

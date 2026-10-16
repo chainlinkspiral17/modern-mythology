@@ -1,0 +1,250 @@
+{
+  "id": "spiderdrops_2_still_flying",
+  "notes": "STILL FLYING \u00b7 out of silk, you stop steering; the wind has you, and it is all right.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#18202e",
+    "#3a4d6b",
+    "#6c7fa0",
+    "#e8ecef",
+    "#b9c4cf",
+    "#6fb7e0",
+    "#f2c14e",
+    "#9c7a24",
+    "#241c18",
+    "#5a8a4a",
+    "#ffffff",
+    "#6b4a2e",
+    "#e8b860"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 2
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        0,
+        60
+      ],
+      "x_range": [
+        0,
+        160
+      ],
+      "stops": [
+        3,
+        2
+      ]
+    },
+    {
+      "op": "disk",
+      "xy": [
+        40,
+        24
+      ],
+      "r": 10,
+      "color": 10
+    },
+    {
+      "op": "disk",
+      "xy": [
+        52,
+        26
+      ],
+      "r": 8,
+      "color": 10
+    },
+    {
+      "op": "disk",
+      "xy": [
+        112,
+        18
+      ],
+      "r": 9,
+      "color": 3
+    },
+    {
+      "op": "disk",
+      "xy": [
+        122,
+        20
+      ],
+      "r": 7,
+      "color": 3
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        40,
+        70
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        102,
+        20
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        100,
+        23
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        96,
+        24
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        92,
+        23
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        90,
+        20
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        92,
+        17
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        96,
+        16
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        20
+      ],
+      "to": [
+        100,
+        17
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        96,
+        22
+      ],
+      "r": 4,
+      "color": 6
+    },
+    {
+      "op": "disk",
+      "xy": [
+        96,
+        20
+      ],
+      "r": 3,
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        52,
+        78,
+        56,
+        9
+      ],
+      "color": 1
+    },
+    {
+      "op": "text",
+      "xy": [
+        56,
+        80
+      ],
+      "s": "STILL FLYING",
+      "color": 3
+    }
+  ]
+}

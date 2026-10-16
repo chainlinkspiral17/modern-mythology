@@ -1,0 +1,381 @@
+{
+  "id": "endings",
+  "notes": "Earthman Chronicles · six endings with full script text.  Each has: trigger conditions (Workings completed + Corrections found + party disposition), subtitle, cutscene beats, main script (with $variable substitution from boot state and Chapter choices), closing image, credits dedication, cross-Oneironautics unlocks.  The CORRECTION ending (Ending 5) is the game's TRUE ending and includes Rocha's specific handwritten note.  Endings differ in tone: LIBERATOR is Hubbard's intended power fantasy · REFUSED THE WORK is Rocha's team's preferred ending · THE CORRECTION is the honest ending that acknowledges the game's own game-ness.",
+
+  "schema_notes": {
+    "trigger": "state conditions",
+    "beats": "sequential cutscene beats",
+    "variables": "$LOST_PERSON, $PLAYER_NAME, $CITY, $FAVORITE_SONG, plus Earthman-specific $SARA_ALIVE, $HEL_VELLI_ALIVE, $ROCHA_ALIVE, $CORRECTIONS_FOUND"
+  },
+
+  "endings": [
+    {
+      "id": "ending_warlord_of_parsa",
+      "number": 1,
+      "name": "THE WARLORD OF PARSA",
+      "subtitle": "SOMEONE HAS TO SIT ON THAT THRONE",
+      "trigger": {
+        "workings_completed": ">= 7",
+        "working_ix_completed": true,
+        "corrections_found": "<= 2",
+        "scarlet_woman_recruited": true
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "Kyrindi great hall · coronation · a specific royal purple carpet · torches",
+          "text": "Jack seated on the Kyrindi throne."
+        },
+        {
+          "type": "narration",
+          "text": "Sara Nai at his right.  Hel Velli standing behind.  The Delvanni tribes gathered in the great hall."
+        },
+        {
+          "type": "narration_hubbardish",
+          "text": "And thus did Jack Whiteside rule Parsa with wisdom and mercy, for such a time as any Prophet may."
+        },
+        {
+          "type": "still_image_undercut",
+          "image": "Sara Nai's crown is slightly too small · she adjusts it while nobody is looking · a specific brief animation",
+          "duration": "3 seconds",
+          "note": "the manuscript's grand image, undercut by Sara's specific quiet adjustment"
+        }
+      ],
+      "closing_image": "Sara Nai's specific mid-adjustment · frozen · fade to black",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": []
+    },
+    {
+      "id": "ending_return_to_earth",
+      "number": 2,
+      "name": "RETURN TO EARTH",
+      "subtitle": "Parsons dies anyway",
+      "trigger": {
+        "working_ix_refused": true,
+        "some_corrections_found": true,
+        "workings_completed_1_to_6": "at least 4"
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "Pasadena · Jack's coach-house workshop · morning of January 20, 1946",
+          "text": "Jack wakes in his laboratory."
+        },
+        {
+          "type": "narration",
+          "text": "He is holding a specific book.  The date is January 20, 1946.  The Working never happened."
+        },
+        {
+          "type": "narration",
+          "text": "Sara Northrup is on the porch."
+        },
+        {
+          "type": "still_image",
+          "image": "Sara Northrup at 25 · in a specific 1946 dress · looking through the porch window at Jack",
+          "duration": "3 seconds"
+        },
+        {
+          "type": "narration",
+          "text": "Parsons lives another six years."
+        },
+        {
+          "type": "montage",
+          "frames": [
+            {"date": "1946", "image": "Jack at 32 · in his laboratory · working"},
+            {"date": "1947", "image": "Jack at 33 · married to Sara Northrup · a specific home in Pasadena"},
+            {"date": "1948", "image": "Jack at 34 · attending an OTO Lodge meeting · a specific room"},
+            {"date": "1949", "image": "Jack at 35 · reading a specific book that was banned that year"},
+            {"date": "1950", "image": "Jack at 36 · at a specific rocket test at Edwards AFB"},
+            {"date": "1951", "image": "Jack at 37 · at a specific dinner with a specific colleague · Cameron in the background"},
+            {"date": "1952", "image": "the coach-house workshop at 5:57 PM on June 17 · a specific still image"}
+          ]
+        },
+        {
+          "type": "narration",
+          "text": "Parsons still dies in the explosion."
+        },
+        {
+          "type": "narration",
+          "text": "It just happens later."
+        },
+        {
+          "type": "still_image",
+          "image": "the specific Parsonage in Pasadena · June 18, 1952 · the morning after · smoke visible from the coach-house",
+          "duration": "5 seconds"
+        }
+      ],
+      "closing_image": "black screen · specific coroner's report visible faintly as background text",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": []
+    },
+    {
+      "id": "ending_babalon_comes",
+      "number": 3,
+      "name": "BABALON COMES",
+      "subtitle": "as foretold",
+      "trigger": {
+        "working_ix_completed": true,
+        "scarlet_woman_recruited": true,
+        "corrections_found": "<= 3",
+        "sara_transformation_reading": "reading_literal_babalon"
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "Parsa · Chapter 6 · the ritual chamber · specific eight-pointed star glowing",
+          "text": "Jack completes Working IX."
+        },
+        {
+          "type": "narration",
+          "text": "Sara Nai transforms and remains transformed."
+        },
+        {
+          "type": "narration",
+          "text": "She embraces him."
+        },
+        {
+          "type": "narration",
+          "text": "The universe shifts."
+        },
+        {
+          "type": "cutscene",
+          "background": "Los Angeles · 1946 · from above · a specific new star visible in the sky · specifically named ISHTAR-46 in the game code",
+          "text": "A specific new star in the sky."
+        },
+        {
+          "type": "dialogue",
+          "speaker": "a voice (gender ambiguous)",
+          "text": "It is begun."
+        },
+        {
+          "type": "still_image",
+          "image": "a specific closed door · unmarked · at the top of a specific staircase in a specific building in a specific Los Angeles alley",
+          "duration": "5 seconds"
+        },
+        {
+          "type": "narration_hidden_correction",
+          "condition": "if the player has found the 220-Hz Correction under this scene",
+          "text": "(hidden 220-Hz audio: 'This is the ending Hubbard wanted.  We left it in.  You should know that he wanted it.')"
+        }
+      ],
+      "closing_image": "the closed door · fade to black",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": [
+        "seed a 'Babalon manifested' scrapbook entry"
+      ]
+    },
+    {
+      "id": "ending_refused_the_work",
+      "number": 4,
+      "name": "REFUSED THE WORK",
+      "subtitle": "THE MOST BEAUTIFUL LIFE JACK EVER LIVED",
+      "trigger": {
+        "working_ix_refused": true,
+        "workings_completed_1_to_4": true,
+        "corrections_found": ">= 3",
+        "sara_nai_disposition": "LOVED"
+      },
+      "beats": [
+        {
+          "type": "narration",
+          "text": "Jack refuses Working IX."
+        },
+        {
+          "type": "narration",
+          "text": "He stays on Parsa."
+        },
+        {
+          "type": "narration",
+          "text": "Sara Nai stays with him."
+        },
+        {
+          "type": "cutscene",
+          "background": "Talikan · Kyrindi city · morning · a specific quiet house on a specific quiet street",
+          "text": "They live in Talikan."
+        },
+        {
+          "type": "narration",
+          "text": "Hel Velli visits often."
+        },
+        {
+          "type": "montage",
+          "frames": [
+            {"description": "Jack + Sara at 32/24 · their first year · specific unpacking of specific objects into a specific new home"},
+            {"description": "Jack + Sara at 35/27 · a specific quiet moment on a porch · Hel Velli visiting"},
+            {"description": "Jack + Sara at 42/34 · specific children of specific Kelait friends visiting (they cannot have biological children · the genetics do not work · this is briefly established)"},
+            {"description": "Jack + Sara at 50/42 · specific hair grays · Sara Nai has finally found the higher registers Arentha said she would"},
+            {"description": "Jack + Sara at 60/52 · a specific meal · Yr at 20 · visiting"},
+            {"description": "Jack + Sara at 62/54 · a specific porch scene at dusk · quiet"},
+            {"description": "Jack at 70 · specifically thin · Sara at his bedside · Mother Kanel at the door · specific gentleness"}
+          ]
+        },
+        {
+          "type": "cutscene",
+          "background": "a specific Kyrindi funeral chamber · silver-blue drapery · a specific funeral pyre",
+          "text": "Jack dies of age at 70."
+        },
+        {
+          "type": "narration",
+          "text": "Sara mourns him in Kyrindi ceremonial speech."
+        },
+        {
+          "type": "kyrindi_untranslated_song",
+          "text": "$KYRINDI_MOURNING_VERSE_1 · $KYRINDI_MOURNING_VERSE_2 · $KYRINDI_MOURNING_VERSE_3 · $KYRINDI_MOURNING_VERSE_4 · $KYRINDI_MOURNING_VERSE_5 · $KYRINDI_MOURNING_VERSE_6 · $KYRINDI_MOURNING_VERSE_7 · $KYRINDI_MOURNING_VERSE_8 · $KYRINDI_MOURNING_VERSE_9 · $KYRINDI_MOURNING_VERSE_10 · $KYRINDI_MOURNING_VERSE_11 · $KYRINDI_MOURNING_VERSE_12",
+          "note": "the twelfth verse is the one Arentha said Sara would forget · the game shows Sara stumbling on it · she recovers · she does not forget it after all"
+        },
+        {
+          "type": "narration",
+          "text": "A specific Kelait elder speaks the mourning song's last verse."
+        },
+        {
+          "type": "kelait_mourning_song_final_bar",
+          "text": "(the specific melody · shared final bar with Wilson Ashe's Portuguese folk tune in Pirate Summer · cross-Oneironautics recognition fires)",
+          "note": "chain fact fires if Pirate Summer has been played"
+        },
+        {
+          "type": "still_image",
+          "image": "Jack and Sara at 62 and 54 · sitting on a porch in Talikan · quiet · specific gentle light",
+          "duration": "8 seconds"
+        }
+      ],
+      "closing_image": "the porch · empty of them now · but still theirs",
+      "credits_dedication": "for parsons and cameron · a specific version of the life they should have had",
+      "cross_oneironautics_unlocks": [
+        "unlock a specific Kyrindi mourning-song keepsake in the SlowstockShelf compendium",
+        "unlock a specific 'the Kelait mourning song' BGM as an ambient option in Pirate Summer's cabin scenes"
+      ]
+    },
+    {
+      "id": "ending_the_correction",
+      "number": 5,
+      "name": "THE CORRECTION · aka THE MANUSCRIPT COMPLETES ITSELF",
+      "subtitle": "$MANUSCRIPT_TITLE_STRUCK_THROUGH_AND_REPLACED_BY_$PLAYER_NAME",
+      "trigger": {
+        "working_ix_refused": true,
+        "all_six_corrections_found": true,
+        "rocha_recruited": true,
+        "sara_nai_disposition": ">= LIKED"
+      },
+      "beats": [
+        {
+          "type": "narration_pre_correction",
+          "text": "The specific final scene begins."
+        },
+        {
+          "type": "cutscene",
+          "background": "Talikan · Sara Nai's chambers · Chapter 6 late evening",
+          "text": "Sara Nai says goodnight to Jack for the last time in the game's cutscene."
+        },
+        {
+          "type": "narration",
+          "text": "The screen fades."
+        },
+        {
+          "type": "beat_pause",
+          "duration": "2 seconds",
+          "background": "black"
+        },
+        {
+          "type": "handwritten_text_scroll",
+          "text": "This game was adapted from a manuscript we found in a box in the basement.\n\nL. Rafayette Hubbard wrote it in 1948 to make himself the hero of a story that wasn't his.\n\nThe real hero was a man named John Whiteside Parsons who died in his own laboratory on the seventeenth of June nineteen-fifty-two.\n\nHe was thirty-seven.\n\nHe was a chemist and a mystic.\n\nHe was ours before he was Hubbard's ANYTHING.\n\nThis is the corrected version.\n\n· A.R., QA, Astro-Cortex, March 1985.\n\nfor jack",
+          "handwriting_style": "specifically matches Rocha's marginalia throughout the manuscript · blue pen · slight rightward lean · specific serif on the a's",
+          "scroll_pacing": "the note reveals line by line · deliberately slow · the specific pause after 'he was thirty-seven' is authored",
+          "background": "black · white handwritten text"
+        },
+        {
+          "type": "still_image",
+          "image": "the actual Parsonage in Pasadena, June 18, 1952 · the morning after Parsons's death · specific documentary-photograph quality · one specific detail: a small potted plant on the porch, still alive",
+          "duration": "10 seconds"
+        },
+        {
+          "type": "credits_begin",
+          "dedication_text": "For Jack.",
+          "credits_specific_lines": [
+            "Adapted from an unpublished manuscript by L. Rafayette Hubbard (1948)",
+            "Programming: J.F. (Senior Engineer)",
+            "QA and Corrections: A. Rocha",
+            "Additional writing: staff (uncredited by request)",
+            "Music: staff composer (uncredited by request)",
+            "Executive Direction: Astro-Cortex Software, Culver City, California",
+            "March 15, 1985",
+            "",
+            "Dedicated to the memory of John Whiteside Parsons · 1914-1952 · chemist and mystic"
+          ]
+        }
+      ],
+      "closing_image": "the specific Parsonage still image · fade to credits",
+      "credits_dedication": "For Jack.",
+      "cross_oneironautics_unlocks": [
+        "unlocks the manuscript document as a permanent scrapbook keepsake in the SlowstockShelf compendium",
+        "unlocks the manuscript document in Fey Faire's Trailer bookcase (permanent · viewable in any Fey Faire playthrough)",
+        "unlocks a specific 'true ending' badge visible on the SlowstockShelf slot for this save",
+        "seeds specific cross-Oneironautics chain facts across Pirate Summer, Fey Faire, and Estuary 3 acknowledging the correction"
+      ]
+    },
+    {
+      "id": "ending_hubbard_takes_the_credit",
+      "number": 6,
+      "name": "HUBBARD TAKES THE CREDIT",
+      "subtitle": "SEE ABOVE",
+      "trigger": {
+        "working_ix_completed": true,
+        "corrections_found": "0",
+        "rocha_never_recruited": true,
+        "eight_pointed_star_amulet_worn_during_working_ix": true
+      },
+      "beats": [
+        {
+          "type": "cutscene",
+          "background": "the Order's main chamber · after Working IX completes · Rafaton beaming",
+          "text": "Jack completes Working IX and never spoke to Rocha."
+        },
+        {
+          "type": "dialogue",
+          "speaker": "Rafaton",
+          "text": "You have done what I could not, Jack.  You are my SUCCESSOR."
+        },
+        {
+          "type": "narration",
+          "text": "(the specific line as written in the manuscript's Chapter XII · Hubbard's fixation · rendered without irony)"
+        },
+        {
+          "type": "credits_soliloquy",
+          "background": "credits roll under a specific Hubbardish self-praise monologue in Rafaton's voice",
+          "text": "$RAFATON_SOLILOQUY_SIX_PARAGRAPHS_OF_MANUSCRIPT_STYLE_SELF_PRAISE_CELEBRATING_JACKS_ELEVATION_AS_HIS_PROPHET_LINEAGE"
+        },
+        {
+          "type": "narration_hidden_correction",
+          "condition": "220-Hz audio that plays inaudibly under Rafaton's soliloquy",
+          "text": "You have done what I could not, Jack.  Now let's talk about my percentage."
+        },
+        {
+          "type": "screen_crack",
+          "image": "a specific SCREEN CRACK effect · the ROM itself damaged · specific pixel-glitch pattern",
+          "duration": "3 seconds"
+        },
+        {
+          "type": "error_message",
+          "text": "PLEASE INSERT CORRECTED CARTRIDGE."
+        }
+      ],
+      "closing_image": "the error message · flashing · then fade to black",
+      "credits_dedication": null,
+      "cross_oneironautics_unlocks": [
+        "seed a 'Ronson has taken credit' negative scrapbook entry",
+        "unlock a specific 'you missed the corrections' hint that only appears if the player tries this ending path"
+      ]
+    }
+  ],
+
+  "player_facing_ending_summary_screen": {
+    "notes": "After any ending, a specific 'THE SEVEN ENDINGS' summary screen · shows which endings the player has seen (out of 6 for Earthman) · a specific completion percentage · a specific NG+ availability marker · appears in the SlowstockShelf compendium",
+    "visible_endings": [
+      {"id": "ending_warlord_of_parsa", "visible": "always visible in silhouette"},
+      {"id": "ending_return_to_earth", "visible": "unlocked after any ending"},
+      {"id": "ending_babalon_comes", "visible": "unlocked after any ending"},
+      {"id": "ending_refused_the_work", "visible": "unlocked after any ending"},
+      {"id": "ending_the_correction", "visible": "unlocked only when achieved · hidden until then"},
+      {"id": "ending_hubbard_takes_the_credit", "visible": "unlocked after any ending · marked NOT RECOMMENDED"}
+    ]
+  }
+}

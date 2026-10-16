@@ -1,0 +1,21 @@
+{
+  "_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.",
+  "jobs": [
+    {
+      "tag": "vol10-sheets",
+      "slug": "sheet_gully_35",
+      "kind": "character",
+      "era": "era3",
+      "tags": [
+        "character",
+        "era3",
+        "gully_35"
+      ],
+      "prompt": "a clean reference sheet on white paper. Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. model sheet of a stocky man in his mid-thirties in a faded brown canvas work jacket with the hood down, a gray hoodie beneath, backwards cap, jeans, tan boots; front, profile, and the key pose: walking away down a gravel drive with hands in pockets seen from behind; expression heads: tired kindness, thoughtful, easy; labeled GULLY 2014. Neat hand-lettered labels are allowed on this sheet.",
+      "negative": "photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers",
+      "runway_ratio": "1920:1080",
+      "google_aspect": "16:9",
+      "lettered": true
+    }
+  ]
+}

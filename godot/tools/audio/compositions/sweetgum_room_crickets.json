@@ -1,0 +1,495 @@
+{
+  "meta": {
+    "title": "room tone + crickets",
+    "for": "SWEETGUM \u00b7 the watch \u00b7 9 PM to 2 AM",
+    "notes": "Room tone and a wall clock. The crickets stop being audible around 2 AM without the player noticing when."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.1,
+      "notes": [
+        {
+          "pitch": "E1",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.3
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.05,
+      "notes": [
+        {
+          "pitch": "E5",
+          "bar": 1,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 1,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 2,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 2,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 3,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 3,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 4,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 4,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 5,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 5,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 6,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 6,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 7,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 7,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 8,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 8,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 9,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 9,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 10,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 10,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 11,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 11,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 12,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 12,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 13,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 13,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 14,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 14,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 15,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 15,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 16,
+          "beat": 1,
+          "dur": 0.06,
+          "vel": 0.5
+        },
+        {
+          "pitch": "E5",
+          "bar": 16,
+          "beat": 3,
+          "dur": 0.06,
+          "vel": 0.5
+        }
+      ]
+    },
+    {
+      "instrument": "chiptune_arp",
+      "gain": 0.035,
+      "notes": [
+        {
+          "pitch": "B6",
+          "bar": 1,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 1,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 1,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 2,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 3,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 3,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 4,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 4,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 4,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 5,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 6,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 6,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 7,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 7,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 7,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 8,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 9,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 9,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 10,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 10,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 10,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 11,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 12,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 12,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 13,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 13,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 13,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 14,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 15,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 15,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 16,
+          "beat": 1.5,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "B6",
+          "bar": 16,
+          "beat": 2.0,
+          "dur": 0.1,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A6",
+          "bar": 16,
+          "beat": 3.5,
+          "dur": 0.1,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

@@ -30,7 +30,7 @@
   "id": "vol1_ambient",
   "vol": 1,
   "title": "The Diner at the Crossroads",
-  "src": "assets/audio/bgm/vol1_ambient.mp3",
+  "src": "assets/audio/bgm/vol1_ambient.wav",
   "composer": "—",
   "desc": "The diner. The stranger. The choice that starts everything.",
   "unlock": {
@@ -41,61 +41,80 @@
    "_narrator"
   ],
   "chapters": [
+   "vol1_ch1_s2",
+   "vol1_ch2_park",
+   "vol1_ch2_skatepark",
+   "vol1_interlude_demographic",
    "vol1_introduction",
-   "vol1_ch1_s2"
+   "vol1_prelude_editing_suite",
+   "vol1_trailer_faust3"
   ]
  },
  {
   "id": "vol1_club_thump",
   "vol": 1,
   "title": "The Underworld",
-  "src": "assets/audio/bgm/vol1_club_thump.mp3",
+  "src": "assets/audio/bgm/vol1_club_thump.wav",
   "composer": "—",
   "desc": "Intercut. Dancing. Loud music.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
+   "vol1_ch3_bar",
+   "vol1_ch3_bar_b",
    "vol1_ch3_club",
    "vol1_ch4_club_sharp",
-   "vol1_ch4_club_sharp_b"
+   "vol1_ch4_club_sharp_b",
+   "vol6_ch22_foxhole"
   ]
  },
  {
   "id": "vol1_diner_ambient",
   "vol": 1,
   "title": "The Missing Link",
-  "src": "assets/audio/bgm/vol1_diner_ambient.mp3",
+  "src": "assets/audio/bgm/vol1_diner_ambient.wav",
   "composer": "—",
   "desc": "Bus depot. Rain. No clock.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol1_missing_link",
-   "vol1_link_hub",
-   "vol1_link_window",
    "vol1_link_booth",
    "vol1_link_counter",
+   "vol1_link_end",
+   "vol1_link_hub",
    "vol1_link_jukebox",
-   "vol1_link_menu"
+   "vol1_link_menu",
+   "vol1_link_outside",
+   "vol1_link_outside_hub",
+   "vol1_link_q_coat",
+   "vol1_link_q_cold",
+   "vol1_link_q_name",
+   "vol1_link_q_shuttle",
+   "vol1_link_q_where",
+   "vol1_link_shuttle",
+   "vol1_link_window",
+   "vol1_missing_link",
+   "vol7_ch9_evening"
   ]
  },
  {
   "id": "vol1_dream_drone",
   "vol": 1,
   "title": "Dream States",
-  "src": "assets/audio/bgm/vol1_dream_drone.mp3",
+  "src": "assets/audio/bgm/vol1_dream_drone.wav",
   "composer": "—",
   "desc": "Faust's bedroom. The room behind the room.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
+   "vol1_ch2_act_one",
+   "vol1_ch4_dream_bar",
+   "vol1_ch4_dream_bed",
    "vol1_ch4_dream_states",
    "vol1_ch4_lullaby",
-   "vol1_ch4_dream_bed",
-   "vol1_ch4_dream_bar",
    "vol1_ch4_waking"
   ]
  },
@@ -103,7 +122,7 @@
   "id": "vol1_drive_night",
   "vol": 1,
   "title": "Driving Around · Night",
-  "src": "assets/audio/bgm/vol1_drive_night.mp3",
+  "src": "assets/audio/bgm/vol1_drive_night.wav",
   "composer": "—",
   "desc": "EXT. Judgement Day. Headlights, then more headlights.",
   "unlock": {
@@ -119,21 +138,21 @@
   "id": "vol1_faust_theme",
   "vol": 1,
   "title": "Faust III",
-  "src": "assets/audio/bgm/vol1_faust_theme.ogg",
+  "src": "assets/audio/bgm/vol1_faust_theme.wav",
   "composer": "—",
   "desc": "An echo of Sharp's bass but warmer — the same world from another mouth. Faust's signature.",
   "unlock": {
    "type": "heard"
   },
   "chars": [
-   "faust3"
+   "faust"
   ]
  },
  {
   "id": "vol1_milestone_choice",
   "vol": 1,
   "title": "The Choice (resolved)",
-  "src": "assets/audio/bgm/vol1_milestone_choice.ogg",
+  "src": "assets/audio/bgm/vol1_milestone_choice.wav",
   "composer": "—",
   "desc": "Released when Vol 1's central choice is committed. A held breath finally let out.",
   "unlock": {
@@ -148,7 +167,7 @@
   "id": "vol1_painting",
   "vol": 1,
   "title": "The Painting",
-  "src": "assets/audio/bgm/vol1_painting.ogg",
+  "src": "assets/audio/bgm/vol1_painting.wav",
   "composer": "—",
   "desc": "A slow oil-tone pad. The painting that knows you saw it.",
   "unlock": {
@@ -163,7 +182,7 @@
   "id": "vol1_pharmacy",
   "vol": 1,
   "title": "The Pharmacy Mirror",
-  "src": "assets/audio/bgm/vol1_pharmacy.ogg",
+  "src": "assets/audio/bgm/vol1_pharmacy.wav",
   "composer": "—",
   "desc": "Pharmacy fluorescent buzz. The mirror that doesn't quite reflect right.",
   "unlock": {
@@ -192,7 +211,7 @@
   "id": "vol1_stranger_theme",
   "vol": 1,
   "title": "The Stranger",
-  "src": "assets/audio/bgm/vol1_stranger_theme.ogg",
+  "src": "assets/audio/bgm/vol1_stranger_theme.wav",
   "composer": "—",
   "desc": "A single sustained tone in the upper register. The Stranger arrives at the booth.",
   "unlock": {
@@ -206,7 +225,7 @@
   "id": "vol1_title",
   "vol": 1,
   "title": "Crossroads · Title",
-  "src": "assets/audio/bgm/vol1_title.mp3",
+  "src": "assets/audio/bgm/vol1_title.wav",
   "composer": "—",
   "desc": "Volume 1 title card. Warm pad + radio hush. The full deck has not yet been dealt.",
   "unlock": {
@@ -220,7 +239,7 @@
   "id": "vol2_ambient",
   "vol": 2,
   "title": "Small Wood Variations",
-  "src": "assets/audio/bgm/vol2_ambient.mp3",
+  "src": "assets/audio/bgm/vol2_ambient.wav",
   "composer": "—",
   "desc": "The sound of trees that have been standing longer than the town.",
   "unlock": {
@@ -230,17 +249,18 @@
    "lena"
   ],
   "chapters": [
-   "vol2_title",
-   "vol2_briar_falls_interlude",
    "vol2_bf_hub",
-   "vol2_ch1_history_one"
+   "vol2_briar_falls_interlude",
+   "vol2_ch1_history_one",
+   "vol2_ch2_interlude_three",
+   "vol2_title"
   ]
  },
  {
   "id": "vol2_briar_falls_night",
   "vol": 2,
   "title": "Briar Falls · After Dark",
-  "src": "assets/audio/bgm/vol2_briar_falls_night.ogg",
+  "src": "assets/audio/bgm/vol2_briar_falls_night.wav",
   "composer": "—",
   "desc": "Pine-wind drone, owl on a far ridge. Late at Briar Falls.",
   "unlock": {
@@ -254,7 +274,7 @@
   "id": "vol2_graveyard_solo",
   "vol": 2,
   "title": "The Graveyard",
-  "src": "assets/audio/bgm/vol2_graveyard_solo.ogg",
+  "src": "assets/audio/bgm/vol2_graveyard_solo.wav",
   "composer": "—",
   "desc": "A single low pad, no field-recording layer. The quietest track in Vol 2.",
   "unlock": {
@@ -282,7 +302,7 @@
   "id": "vol2_milestone_seagash",
   "vol": 2,
   "title": "Seagash, Closed",
-  "src": "assets/audio/bgm/vol2_milestone_seagash.ogg",
+  "src": "assets/audio/bgm/vol2_milestone_seagash.wav",
   "composer": "—",
   "desc": "Released when the Seagash mystery's last interlude resolves.",
   "unlock": {
@@ -297,35 +317,38 @@
   "id": "vol2_rest_stop_wind",
   "vol": 2,
   "title": "Rest Stop · Wind",
-  "src": "assets/audio/bgm/vol2_rest_stop_wind.mp3",
+  "src": "assets/audio/bgm/vol2_rest_stop_wind.wav",
   "composer": "—",
   "desc": "Briar Falls. Mid-nineties. Twelve hours from anywhere.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol2_bf_picnic",
-   "vol2_bf_trail",
-   "vol2_bf_overlook",
+   "vol2_bf_building",
+   "vol2_bf_dog",
    "vol2_bf_lot",
-   "vol2_bf_dog"
+   "vol2_bf_overlook",
+   "vol2_bf_picnic",
+   "vol2_bf_trail"
   ]
  },
  {
   "id": "vol2_seagash_drone",
   "vol": 2,
   "title": "The Siren of Seagash",
-  "src": "assets/audio/bgm/vol2_seagash_drone.mp3",
+  "src": "assets/audio/bgm/vol2_seagash_drone.wav",
   "composer": "—",
   "desc": "A history, with interludes.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol2_ch2_seagash",
    "vol2_ch2_cliffside",
-   "vol2_ch2_ghost",
    "vol2_ch2_disappearance",
+   "vol2_ch2_ghost",
+   "vol2_ch2_interlude_one",
+   "vol2_ch2_interlude_two",
+   "vol2_ch2_seagash",
    "vol2_graveyard"
   ]
  },
@@ -333,7 +356,7 @@
   "id": "vol3_ambient",
   "vol": 3,
   "title": "Station Omega-14",
-  "src": "assets/audio/bgm/vol3_ambient.mp3",
+  "src": "assets/audio/bgm/vol3_ambient.wav",
   "composer": "—",
   "desc": "The hum of life support and the silence of deep space.",
   "unlock": {
@@ -344,15 +367,15 @@
    "antonio"
   ],
   "chapters": [
-   "vol3_the_choice",
-   "vol3_end"
+   "vol3_end",
+   "vol3_the_choice"
   ]
  },
  {
   "id": "vol3_antonio_theme",
   "vol": 3,
   "title": "Antonio",
-  "src": "assets/audio/bgm/vol3_antonio_theme.ogg",
+  "src": "assets/audio/bgm/vol3_antonio_theme.wav",
   "composer": "—",
   "desc": "Single piano figure on the upbeat, returning each time the call doesn't connect.",
   "unlock": {
@@ -366,7 +389,7 @@
   "id": "vol3_call_drop",
   "vol": 3,
   "title": "The Call Drops",
-  "src": "assets/audio/bgm/vol3_call_drop.ogg",
+  "src": "assets/audio/bgm/vol3_call_drop.wav",
   "composer": "—",
   "desc": "Antonio mid-sentence, the line going hollow. A single note holding for too long.",
   "unlock": {
@@ -383,7 +406,7 @@
   "id": "vol3_milestone_choice",
   "vol": 3,
   "title": "Decompression",
-  "src": "assets/audio/bgm/vol3_milestone_choice.ogg",
+  "src": "assets/audio/bgm/vol3_milestone_choice.wav",
   "composer": "—",
   "desc": "Released when Vol 3's choice resolves. The pressure equalizes.",
   "unlock": {
@@ -412,7 +435,7 @@
   "id": "vol4_ambient",
   "vol": 4,
   "title": "Five AM, No One Around",
-  "src": "assets/audio/bgm/vol4_ambient.mp3",
+  "src": "assets/audio/bgm/vol4_ambient.wav",
   "composer": "—",
   "desc": "The city before it remembers you're not supposed to be there.",
   "unlock": {
@@ -423,15 +446,15 @@
    "dante"
   ],
   "chapters": [
-   "vol4_standoff",
-   "vol4_end"
+   "vol4_end",
+   "vol4_standoff"
   ]
  },
  {
   "id": "vol4_dante_theme",
   "vol": 4,
   "title": "Dante D'Ambrosio",
-  "src": "assets/audio/bgm/vol4_dante_theme.ogg",
+  "src": "assets/audio/bgm/vol4_dante_theme.wav",
   "composer": "—",
   "desc": "A bowed double-bass note held until the bow leaves the string. The father.",
   "unlock": {
@@ -445,7 +468,7 @@
   "id": "vol4_milestone_standoff",
   "vol": 4,
   "title": "The Standoff (resolved)",
-  "src": "assets/audio/bgm/vol4_milestone_standoff.ogg",
+  "src": "assets/audio/bgm/vol4_milestone_standoff.wav",
   "composer": "—",
   "desc": "Released when the Vol 4 standoff resolves. The room finally lets you sit down.",
   "unlock": {
@@ -460,7 +483,7 @@
   "id": "vol4_nicola_theme",
   "vol": 4,
   "title": "Nicola",
-  "src": "assets/audio/bgm/vol4_nicola_theme.ogg",
+  "src": "assets/audio/bgm/vol4_nicola_theme.wav",
   "composer": "—",
   "desc": "A short three-note descending figure on a detuned upright piano. Nicola's signature.",
   "unlock": {
@@ -474,7 +497,7 @@
   "id": "vol4_standoff_strings",
   "vol": 4,
   "title": "Five AM Strings",
-  "src": "assets/audio/bgm/vol4_standoff_strings.ogg",
+  "src": "assets/audio/bgm/vol4_standoff_strings.wav",
   "composer": "—",
   "desc": "A single sustained note from a Lo-fi taped cello at the climax of the standoff.",
   "unlock": {
@@ -492,7 +515,7 @@
   "id": "vol5_alberto_theme",
   "vol": 5,
   "title": "Alberto · Sunglasses Indoors",
-  "src": "assets/audio/bgm/vol5_alberto_theme.ogg",
+  "src": "assets/audio/bgm/vol5_alberto_theme.wav",
   "composer": "—",
   "desc": "Bowed cello single note, dampened. The grieving son.",
   "unlock": {
@@ -514,9 +537,12 @@
   },
   "chapters": [
    "vol5_ch0_booth6",
+   "vol5_ch0_closing",
    "vol5_ch0_frasier",
    "vol5_ch0_model_city",
-   "vol5_ch0_closing"
+   "vol5_ch10_wheel",
+   "vol5_ch11_justice",
+   "vol5_test_tarot_fool"
   ],
   "chars": [
    "john",
@@ -527,7 +553,7 @@
   "id": "vol5_anya_theme",
   "vol": 5,
   "title": "Anya · The Recording",
-  "src": "assets/audio/bgm/vol5_anya_theme.ogg",
+  "src": "assets/audio/bgm/vol5_anya_theme.wav",
   "composer": "—",
   "desc": "Found-tape hiss + an almost-melody just under the noise floor. Anya's signature.",
   "unlock": {
@@ -541,7 +567,7 @@
   "id": "vol5_bbs_caller_theme",
   "vol": 5,
   "title": "Sysop · ember.ash.rest.bbs",
-  "src": "assets/audio/bgm/vol5_bbs_caller_theme.ogg",
+  "src": "assets/audio/bgm/vol5_bbs_caller_theme.wav",
   "composer": "—",
   "desc": "Modem handshake + low fluorescent buzz.",
   "unlock": {
@@ -555,7 +581,7 @@
   "id": "vol5_bus_kid_theme",
   "vol": 5,
   "title": "The Bus Kid",
-  "src": "assets/audio/bgm/vol5_bus_kid_theme.ogg",
+  "src": "assets/audio/bgm/vol5_bus_kid_theme.wav",
   "composer": "—",
   "desc": "A bright wood-block tap + a smile of brass. The helper's signature.",
   "unlock": {
@@ -576,9 +602,13 @@
    "type": "heard"
   },
   "chapters": [
+   "vol5_ch20_judgement",
+   "vol5_ch21_world",
    "vol5_ch2_priestess",
    "vol5_ch2_priestess_b",
-   "vol5_ch5_hierophant"
+   "vol5_ch5_hierophant",
+   "vol5_ch7_chariot",
+   "vol5_ch9_hermit"
   ],
   "chars": [
    "elicia"
@@ -588,7 +618,7 @@
   "id": "vol5_elicia_theme_solo",
   "vol": 5,
   "title": "Elicia · Tape Reel",
-  "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg",
+  "src": "assets/audio/bgm/vol5_elicia_theme_solo.wav",
   "composer": "—",
   "desc": "Cassette-spool noise + a soft sustained voice-tone (no vocal). Elicia's signature.",
   "unlock": {
@@ -602,7 +632,7 @@
   "id": "vol5_frasier_theme_solo",
   "vol": 5,
   "title": "Frasier · Notebook",
-  "src": "assets/audio/bgm/vol5_frasier_theme_solo.ogg",
+  "src": "assets/audio/bgm/vol5_frasier_theme_solo.wav",
   "composer": "—",
   "desc": "The pen scratch behind the warehouse drone — distinct from the chapter ambient.",
   "unlock": {
@@ -616,7 +646,7 @@
   "id": "vol5_gauntlet_loss",
   "vol": 5,
   "title": "Twenty-Four Hours (reversed)",
-  "src": "assets/audio/bgm/vol5_gauntlet_loss.ogg",
+  "src": "assets/audio/bgm/vol5_gauntlet_loss.wav",
   "composer": "—",
   "desc": "Released the first time you lose any Tarot Gauntlet scenario.",
   "unlock": {
@@ -628,7 +658,7 @@
   "id": "vol5_gauntlet_win",
   "vol": 5,
   "title": "The Leap (won)",
-  "src": "assets/audio/bgm/vol5_gauntlet_win.ogg",
+  "src": "assets/audio/bgm/vol5_gauntlet_win.wav",
   "composer": "—",
   "desc": "Released the first time you win any Tarot Gauntlet scenario.",
   "unlock": {
@@ -640,7 +670,7 @@
   "id": "vol5_john_theme",
   "vol": 5,
   "title": "John Frank",
-  "src": "assets/audio/bgm/vol5_john_theme.ogg",
+  "src": "assets/audio/bgm/vol5_john_theme.wav",
   "composer": "—",
   "desc": "An apron-tied phrase: a single mid-range pad, a slow heartbeat below. John's signature.",
   "unlock": {
@@ -654,7 +684,7 @@
   "id": "vol5_line_cook_theme",
   "vol": 5,
   "title": "The Line Cook",
-  "src": "assets/audio/bgm/vol5_line_cook_theme.ogg",
+  "src": "assets/audio/bgm/vol5_line_cook_theme.wav",
   "composer": "—",
   "desc": "Heat-vent hum + a single brass bell strike at the start. The cook's signature.",
   "unlock": {
@@ -668,7 +698,7 @@
   "id": "vol5_mackenzie_theme",
   "vol": 5,
   "title": "Mackenzie · Receiver",
-  "src": "assets/audio/bgm/vol5_mackenzie_theme.ogg",
+  "src": "assets/audio/bgm/vol5_mackenzie_theme.wav",
   "composer": "—",
   "desc": "Phone-line static + a single piano left-hand figure.",
   "unlock": {
@@ -682,7 +712,7 @@
   "id": "vol5_maya_theme",
   "vol": 5,
   "title": "Maya · The Trick",
-  "src": "assets/audio/bgm/vol5_maya_theme.ogg",
+  "src": "assets/audio/bgm/vol5_maya_theme.wav",
   "composer": "—",
   "desc": "Music-box loop, ten seconds long, slightly varied each pass.",
   "unlock": {
@@ -708,7 +738,7 @@
   "id": "vol5_noon_room_room",
   "vol": 5,
   "title": "Noon Room Room",
-  "src": "assets/audio/bgm/vol5_noon_room_room.ogg",
+  "src": "assets/audio/bgm/vol5_noon_room_room.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Lunch Service jukebox B-side. Lake Charles accordion, brass-mic'd dance-floor sound.",
   "unlock": {
@@ -740,7 +770,7 @@
   "id": "vol5_the_demon_theme",
   "vol": 5,
   "title": "The Man at the Bar",
-  "src": "assets/audio/bgm/vol5_the_demon_theme.ogg",
+  "src": "assets/audio/bgm/vol5_the_demon_theme.wav",
   "composer": "—",
   "desc": "A cold sine pad about a half-step out of tune with everything around it.",
   "unlock": {
@@ -772,7 +802,7 @@
   "id": "vol5_where_the_bar_used_to_be",
   "vol": 5,
   "title": "Where the Bar Used to Be",
-  "src": "assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg",
+  "src": "assets/audio/bgm/vol5_where_the_bar_used_to_be.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Evening Service jukebox B-side. Solo after-hours piano recorded in the diner in 1979.",
   "unlock": {
@@ -785,7 +815,7 @@
   "id": "vol5_birdwatcher_theme",
   "vol": 5,
   "title": "The Bird-Watcher",
-  "src": "assets/audio/bgm/vol5_birdwatcher_theme.ogg",
+  "src": "assets/audio/bgm/vol5_birdwatcher_theme.wav",
   "composer": "—",
   "desc": "Chair creak + binocular-strap rustle + a slow patient exhale. The watcher's signature.",
   "unlock": {
@@ -799,7 +829,7 @@
   "id": "vol5_blow_out_the_candles",
   "vol": 5,
   "title": "Blow Out the Candles",
-  "src": "assets/audio/bgm/vol5_blow_out_the_candles.ogg",
+  "src": "assets/audio/bgm/vol5_blow_out_the_candles.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Magician · hard-mode B-side. Full moon over the river, the bank making a noise the bank should not be making, candle hiss, distant rager house-party low end. 11:47 PM.",
   "unlock": {
@@ -812,7 +842,7 @@
   "id": "vol5_college_friend_theme",
   "vol": 5,
   "title": "The College Friend",
-  "src": "assets/audio/bgm/vol5_college_friend_theme.ogg",
+  "src": "assets/audio/bgm/vol5_college_friend_theme.wav",
   "composer": "—",
   "desc": "An old laugh, far in the back of the cathedral. The kind that remembers the year you stopped speaking.",
   "unlock": {
@@ -826,7 +856,7 @@
   "id": "vol5_critic_theme",
   "vol": 5,
   "title": "The Critic",
-  "src": "assets/audio/bgm/vol5_critic_theme.ogg",
+  "src": "assets/audio/bgm/vol5_critic_theme.wav",
   "composer": "—",
   "desc": "Pen-on-notebook scratch + a single sharp inhale through the nose. No music underneath.",
   "unlock": {
@@ -917,7 +947,7 @@
   "id": "vol5_drifter_theme",
   "vol": 5,
   "title": "The Drifter",
-  "src": "assets/audio/bgm/vol5_drifter_theme.ogg",
+  "src": "assets/audio/bgm/vol5_drifter_theme.wav",
   "composer": "—",
   "desc": "Gravel under boot. A far-away match-strike. The drifter doesn't stay long enough to leave a melody.",
   "unlock": {
@@ -931,7 +961,7 @@
   "id": "vol5_drunk_uncle_theme",
   "vol": 5,
   "title": "Drunk Uncle",
-  "src": "assets/audio/bgm/vol5_drunk_uncle_theme.ogg",
+  "src": "assets/audio/bgm/vol5_drunk_uncle_theme.wav",
   "composer": "—",
   "desc": "A baseline-room thump that refuses to sync to anything else playing. A glass on wood. The uncle who arrived and will not be greeted.",
   "unlock": {
@@ -945,7 +975,7 @@
   "id": "vol5_finale_inertia_fallback",
   "vol": 5,
   "title": "The Room Sat on Him",
-  "src": "assets/audio/bgm/vol5_finale_inertia_fallback.ogg",
+  "src": "assets/audio/bgm/vol5_finale_inertia_fallback.wav",
   "composer": "—",
   "desc": "Magician finale stinger — generic stagnation fallback. The room is exhausted and all motion has stopped.",
   "unlock": {
@@ -957,7 +987,7 @@
   "id": "vol5_finale_maker_breaks",
   "vol": 5,
   "title": "The Maker Breaks",
-  "src": "assets/audio/bgm/vol5_finale_maker_breaks.ogg",
+  "src": "assets/audio/bgm/vol5_finale_maker_breaks.wav",
   "composer": "—",
   "desc": "Magician finale stinger — Doubt at max. Silence under one pad falling a half-step. The last breath before the host closes his eyes for the last time.",
   "unlock": {
@@ -969,7 +999,7 @@
   "id": "vol5_finale_maker_forgets",
   "vol": 5,
   "title": "The Maker Forgets the Make",
-  "src": "assets/audio/bgm/vol5_finale_maker_forgets.ogg",
+  "src": "assets/audio/bgm/vol5_finale_maker_forgets.wav",
   "composer": "—",
   "desc": "Magician finale stinger — Stagnation at max. Cassette-deck end-of-tape spool. Lights at full. The cathedral exhales without him.",
   "unlock": {
@@ -981,7 +1011,7 @@
   "id": "vol5_finale_river_takes_bank",
   "vol": 5,
   "title": "The River Takes the Bank",
-  "src": "assets/audio/bgm/vol5_finale_river_takes_bank.ogg",
+  "src": "assets/audio/bgm/vol5_finale_river_takes_bank.wav",
   "composer": "—",
   "desc": "Magician finale stinger — the bank goes. A building giving up. Slow wood-and-metal collapse rendered as a half-degree sustained slide.",
   "unlock": {
@@ -993,7 +1023,7 @@
   "id": "vol5_finale_room_walked_out",
   "vol": 5,
   "title": "The Room Walked Out",
-  "src": "assets/audio/bgm/vol5_finale_room_walked_out.ogg",
+  "src": "assets/audio/bgm/vol5_finale_room_walked_out.wav",
   "composer": "—",
   "desc": "Magician finale stinger — three visitors claimed. Everything has dropped out except the Demon's pad, held alone.",
   "unlock": {
@@ -1005,7 +1035,7 @@
   "id": "vol5_finale_shift_ends",
   "vol": 5,
   "title": "Midnight, and Behind",
-  "src": "assets/audio/bgm/vol5_finale_shift_ends.ogg",
+  "src": "assets/audio/bgm/vol5_finale_shift_ends.wav",
   "composer": "—",
   "desc": "Magician finale stinger — midnight overrun, the work undone. The workbench-lamp click off. Then nothing.",
   "unlock": {
@@ -1017,7 +1047,7 @@
   "id": "vol5_finale_steamboat_sails",
   "vol": 5,
   "title": "The Steamboat Sails",
-  "src": "assets/audio/bgm/vol5_finale_steamboat_sails.ogg",
+  "src": "assets/audio/bgm/vol5_finale_steamboat_sails.wav",
   "composer": "—",
   "desc": "Magician finale stinger — the steamboat finished. Paddle wheel turning once though no one is touching it. Then the river bank slumps, far away. Then a held tone, resigned.",
   "unlock": {
@@ -1041,9 +1071,9 @@
   "id": "vol5_sinking_feeling",
   "vol": 5,
   "title": "Sinking Feeling",
-  "src": "assets/audio/bgm/vol5_sinking_feeling.ogg",
+  "src": "assets/audio/bgm/vol5_sinking_feeling.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Magician · easy-mode B-side. Afternoon sun on the cathedral skylights, low river lap outside, a distant freight horn. The riverside knowing what's coming and not saying.",
+  "desc": "Tarot Gauntlet · Magician · easy-mode bed. The cathedral, 7:14 PM, a quiet evening. Low river lap outside and a distant freight horn: the riverside knowing what's coming and taking its time.",
   "unlock": {
    "type": "heard"
   },
@@ -1065,7 +1095,7 @@
   "id": "vol5_superfan_theme",
   "vol": 5,
   "title": "The Superfan",
-  "src": "assets/audio/bgm/vol5_superfan_theme.ogg",
+  "src": "assets/audio/bgm/vol5_superfan_theme.wav",
   "composer": "—",
   "desc": "Too-fast breath. Paper bag. Plastic-cup tap. A loyalty that hasn't read the room.",
   "unlock": {
@@ -1079,7 +1109,7 @@
   "id": "vol5_twins_theme",
   "vol": 5,
   "title": "The Twins",
-  "src": "assets/audio/bgm/vol5_twins_theme.ogg",
+  "src": "assets/audio/bgm/vol5_twins_theme.wav",
   "composer": "—",
   "desc": "Two of the same tone, played milliseconds apart, panned hard left and hard right. Stereo phase. They share patience, they share a theme.",
   "unlock": {
@@ -1093,7 +1123,7 @@
   "id": "vol5_watch_party",
   "vol": 5,
   "title": "Watch Party",
-  "src": "assets/audio/bgm/vol5_watch_party.ogg",
+  "src": "assets/audio/bgm/vol5_watch_party.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Magician · medium-mode B-side. TV-room hum, the Pomegranate Hour theme bleeding through one wall, a far laugh from someone who isn't supposed to be in the room. 9:30 PM.",
   "unlock": {
@@ -1106,9 +1136,9 @@
   "id": "vol5_cicada_session",
   "vol": 5,
   "title": "Cicada Session",
-  "src": "assets/audio/bgm/vol5_cicada_session.ogg",
+  "src": "assets/audio/bgm/vol5_cicada_session.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Priestess · easy-mode B-side. The cicadas outside louder than they should be. The booth's red record-light. Reel turning, fresh. 9:18 PM.",
+  "desc": "Tarot Gauntlet · Priestess · easy-mode bed. Elicia's bungalow, 6:42 PM, cardboard boxes half-filled. The cicadas outside louder than they should be.",
   "unlock": {
    "type": "heard"
   },
@@ -1119,9 +1149,9 @@
   "id": "vol5_long_quiet",
   "vol": 5,
   "title": "The Long Quiet",
-  "src": "assets/audio/bgm/vol5_long_quiet.ogg",
+  "src": "assets/audio/bgm/vol5_long_quiet.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Priestess · medium-mode B-side. Confessional hour. The booth's own noise floor instead of the cicadas now. 11:02 PM.",
+  "desc": "Tarot Gauntlet · Priestess · medium-mode bed. The bungalow at 8:14 PM, the shard on the third shelf. The cicadas have gone and what is left is the room's own noise floor.",
   "unlock": {
    "type": "heard"
   },
@@ -1132,9 +1162,9 @@
   "id": "vol5_tape_witness",
   "vol": 5,
   "title": "Tape Witness",
-  "src": "assets/audio/bgm/vol5_tape_witness.ogg",
+  "src": "assets/audio/bgm/vol5_tape_witness.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Priestess · hard-mode B-side. 2:14 AM. Off-the-books. The truth-teller is already in the booth. The cathedral is dark on the other side.",
+  "desc": "Tarot Gauntlet · Priestess · hard-mode bed. 11:42 PM, the storage closet door slightly ajar. The house is dark on the other side of the doorway.",
   "unlock": {
    "type": "heard"
   },
@@ -1157,7 +1187,7 @@
   "id": "vol5_priestess_finale_listener_breaks",
   "vol": 5,
   "title": "The Listener Breaks",
-  "src": "assets/audio/bgm/vol5_priestess_finale_listener_breaks.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_listener_breaks.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — Doubt at max. Elicia in the booth chair instead of the engineer's. The mic on, she silent. The reel turns. She is letting the room record her at last.",
   "unlock": {
@@ -1169,7 +1199,7 @@
   "id": "vol5_priestess_finale_session_empty",
   "vol": 5,
   "title": "The Session Ends Empty",
-  "src": "assets/audio/bgm/vol5_priestess_finale_session_empty.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_session_empty.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — Stagnation at max. The end of the booked time. Lounge empty, booth empty, reel with nothing worth keeping. The BLANK · don't reuse label, again.",
   "unlock": {
@@ -1181,7 +1211,7 @@
   "id": "vol5_priestess_finale_walked_out",
   "vol": 5,
   "title": "Walked Out Mid-Sentence",
-  "src": "assets/audio/bgm/vol5_priestess_finale_walked_out.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_walked_out.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — three visitors claimed. The silences they left behind, played back through the console headphones. Not nothing. The wrong thing.",
   "unlock": {
@@ -1205,7 +1235,7 @@
   "id": "vol5_priestess_finale_shift_ends",
   "vol": 5,
   "title": "The Session Is Over · Priestess",
-  "src": "assets/audio/bgm/vol5_priestess_finale_shift_ends.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_shift_ends.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — shift-over (priestess variant). The booth lamp shuts itself off on Elicia's timer. Visitors still in the lounge who didn't get their turn. She files what's done.",
   "unlock": {
@@ -1229,7 +1259,7 @@
   "id": "vol5_static_bloom",
   "vol": 5,
   "title": "Static Bloom",
-  "src": "assets/audio/bgm/vol5_static_bloom.ogg",
+  "src": "assets/audio/bgm/vol5_static_bloom.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Empress · easy-mode B-side. Friday dinner on Nicola's riverboat. First arrivals setting the long table; the garden deck still in season.",
   "unlock": {
@@ -1242,9 +1272,9 @@
   "id": "vol5_harvest_dinner",
   "vol": 5,
   "title": "Harvest Dinner",
-  "src": "assets/audio/bgm/vol5_harvest_dinner.ogg",
+  "src": "assets/audio/bgm/vol5_harvest_dinner.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Empress · medium-mode B-side. Late autumn. Frasier on the bank walking slow. The garden deck has cooled.",
+  "desc": "Tarot Gauntlet · Empress · medium-mode bed. The riverboat, 4:44 PM, the staff family meal before service. The deck has cooled and the table is set anyway.",
   "unlock": {
    "type": "heard"
   },
@@ -1255,9 +1285,9 @@
   "id": "vol5_ice_in_the_river",
   "vol": 5,
   "title": "Ice in the River",
-  "src": "assets/audio/bgm/vol5_ice_in_the_river.ogg",
+  "src": "assets/audio/bgm/vol5_ice_in_the_river.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Empress · hard-mode B-side. 11:14 PM, late February. The river has ice in it for the first time in a decade.",
+  "desc": "Tarot Gauntlet · Empress · hard-mode bed. 10:42 PM, and Dante sent you down to the back room. Cold, and everyone at the table knows.",
   "unlock": {
    "type": "heard"
   },
@@ -1267,10 +1297,10 @@
  {
   "id": "vol5_docket",
   "vol": 5,
-  "title": "Docket",
-  "src": "assets/audio/bgm/vol5_docket.ogg",
+  "title": "The Friday Helm",
+  "src": "assets/audio/bgm/vol5_docket.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Emperor · easy-mode B-side. Tuesday morning. Brass clock. Radiator on too high. Stamp on the blotter.",
+  "desc": "Tarot Gauntlet · Emperor · easy-mode bed. D'Ambrosio's, 8:14 PM, a normal Friday. The dining room through the wall and a service running itself.",
   "unlock": {
    "type": "heard"
   },
@@ -1280,10 +1310,10 @@
  {
   "id": "vol5_first_session",
   "vol": 5,
-  "title": "First Session",
-  "src": "assets/audio/bgm/vol5_first_session.ogg",
+  "title": "Nine-Oh-Six",
+  "src": "assets/audio/bgm/vol5_first_session.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Emperor · medium-mode B-side. Pre-clerk Monday. The petitioner slept in their car. The radiator is cold.",
+  "desc": "Tarot Gauntlet · Emperor · medium-mode bed. The riverboat at 9:06 AM, the produce contract renewed or not. Empty dining room, a cooler cycling, a telephone about to ring.",
   "unlock": {
    "type": "heard"
   },
@@ -1293,10 +1323,10 @@
  {
   "id": "vol5_appeal",
   "vol": 5,
-  "title": "Appeal",
-  "src": "assets/audio/bgm/vol5_appeal.ogg",
+  "title": "Six Weeks Apart",
+  "src": "assets/audio/bgm/vol5_appeal.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Emperor · hard-mode B-side. Late Tuesday afternoon. Six-month appellate hearing. Volumes 9 and 10 of the river-code missing.",
+  "desc": "Tarot Gauntlet · Emperor · hard-mode bed. Sunday brunch, first Sunday of an even month, the room full and everyone able to hear everyone.",
   "unlock": {
    "type": "heard"
   },
@@ -1306,10 +1336,10 @@
  {
   "id": "vol5_green_phosphor",
   "vol": 5,
-  "title": "Green Phosphor",
-  "src": "assets/audio/bgm/vol5_green_phosphor.ogg",
+  "title": "The Service Has Ended",
+  "src": "assets/audio/bgm/vol5_green_phosphor.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Hierophant · easy-mode B-side. Tuesday night BBS. Modem rack humming. Printer's banner paper rolling slowly.",
+  "desc": "Tarot Gauntlet · Hierophant · easy-mode bed. St Jude's, 10:42 AM Sunday. The nave emptying, one organ chord still coming out of the stone.",
   "unlock": {
    "type": "heard"
   },
@@ -1319,10 +1349,10 @@
  {
   "id": "vol5_long_signal",
   "vol": 5,
-  "title": "The Long Signal",
-  "src": "assets/audio/bgm/vol5_long_signal.ogg",
+  "title": "Table Seventeen",
+  "src": "assets/audio/bgm/vol5_long_signal.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Hierophant · medium-mode B-side. Late Wednesday. Anya at the floppy wall. The ham band open. 14.301 MHz live.",
+  "desc": "Tarot Gauntlet · Hierophant · medium-mode bed. D'Ambrosio's, 11:47 AM, table 17 at the stern rail. A conversation that has not started yet.",
   "unlock": {
    "type": "heard"
   },
@@ -1332,10 +1362,10 @@
  {
   "id": "vol5_broadcast_night",
   "vol": 5,
-  "title": "Broadcast Night",
-  "src": "assets/audio/bgm/vol5_broadcast_night.ogg",
+  "title": "The Second Phone Call",
+  "src": "assets/audio/bgm/vol5_broadcast_night.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Hierophant · hard-mode B-side. 3:14 AM. The lurker logged in. The ham band hisses then clears.",
+  "desc": "Tarot Gauntlet · Hierophant · hard-mode bed. The park bandstand, 3:18 PM, after brunch. A band shell with nothing in it and a ring that comes back.",
   "unlock": {
    "type": "heard"
   },
@@ -1343,250 +1373,10 @@
   "chars": []
  },
  {
-  "id": "vol5_faucet_metronome",
-  "vol": 5,
-  "title": "Faucet Metronome",
-  "src": "assets/audio/bgm/vol5_faucet_metronome.ogg",
-  "composer": "—",
-  "desc": "The Roberts kitchen before school. The faucet's drip keeping time; two people deciding, again, not to fix it.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch6_lovers"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_two_speeds",
-  "vol": 5,
-  "title": "Two Speeds",
-  "src": "assets/audio/bgm/vol5_two_speeds.ogg",
-  "composer": "—",
-  "desc": "Antonio's hot office above Ember & Ash. The window unit losing, the voicemail light blinking. Gone, and about to be gone.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch7_chariot"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_the_score",
-  "vol": 5,
-  "title": "The Score",
-  "src": "assets/audio/bgm/vol5_the_score.ogg",
-  "composer": "—",
-  "desc": "A New Orleans bar in refrains. Smoke curling back on itself in the ashtray; the beast not conquered, known.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch8_strength"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_lantern_for_those_below",
-  "vol": 5,
-  "title": "A Lantern for Those Below",
-  "src": "assets/audio/bgm/vol5_lantern_for_those_below.ogg",
-  "composer": "—",
-  "desc": "Joanna LeMoine in the ruin-scape of Graustark. Wind through scrawled walls; a lantern raised for whoever is still climbing.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch9_hermit"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_closing_arguments",
-  "vol": 5,
-  "title": "Closing Arguments",
-  "src": "assets/audio/bgm/vol5_closing_arguments.ogg",
-  "composer": "—",
-  "desc": "A Houston law office after the motion is denied. Fluorescent hum, files squared; the wheel turns either way.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch10_wheel"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_the_weighing",
-  "vol": 5,
-  "title": "The Weighing",
-  "src": "assets/audio/bgm/vol5_the_weighing.ogg",
-  "composer": "—",
-  "desc": "Erica Campbell's next morning, office to design studio. The scales don't lie about what the weighing costs.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch11_justice"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_gravity_optional",
-  "vol": 5,
-  "title": "Gravity Is Optional",
-  "src": "assets/audio/bgm/vol5_gravity_optional.ogg",
-  "composer": "—",
-  "desc": "Natalie's apartment after midnight. Incense and tape hiss; the world seen calmly upside down.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch12_hanged"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_the_quiet_floor",
-  "vol": 5,
-  "title": "The Quiet Floor",
-  "src": "assets/audio/bgm/vol5_the_quiet_floor.ogg",
-  "composer": "—",
-  "desc": "The second-floor hospice at St. Jude's Mercy, the last Tuesday in April. Machines breathing gently; nothing exempt, nothing cruel.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch13_death"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_moderate_tuesday",
-  "vol": 5,
-  "title": "The Moderate Temperature of Tuesday",
-  "src": "assets/audio/bgm/vol5_moderate_tuesday.ogg",
-  "composer": "—",
-  "desc": "A Montreal apartment, years on from the deck around it. Two cups in patient exchange; nothing spills.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch14_temperance"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_gumbo_limbo",
-  "vol": 5,
-  "title": "Gumbo Limbo",
-  "src": "assets/audio/bgm/vol5_gumbo_limbo.ogg",
-  "composer": "—",
-  "desc": "Jimmy Daigle under a wobbling ceiling fan in New Orleans. The chains are loose. The chains stay on.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch15_devil"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_render_queue",
-  "vol": 5,
-  "title": "Render Queue",
-  "src": "assets/audio/bgm/vol5_render_queue.ogg",
-  "composer": "—",
-  "desc": "Elicia's sleek Montreal command center gone to plaster ruins. Fans at full load; the crown already airborne.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch16_tower"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_glass_skin",
-  "vol": 5,
-  "title": "Glass Skin",
-  "src": "assets/audio/bgm/vol5_glass_skin.ogg",
-  "composer": "—",
-  "desc": "Graustark ruins under a shard-of-mirror moon. Water poured onto the earth and back; ink drying on glass skin.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch17_star"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_five_am_reading",
-  "vol": 5,
-  "title": "The Five A.M. Reading",
-  "src": "assets/audio/bgm/vol5_five_am_reading.ogg",
-  "composer": "—",
-  "desc": "After the cards, before the sun. Nicola asleep under the twilight quilt; Aria gone quiet, which is a different thing.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch18_moon"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_saint_viateur",
-  "vol": 5,
-  "title": "Tuesdays on Saint-Viateur",
-  "src": "assets/audio/bgm/vol5_saint_viateur.ogg",
-  "composer": "—",
-  "desc": "Café Olimpico, late May, morning espresso clatter. Six years of Tuesdays; by now the staff just nod.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch19_sun"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_the_stillness_breaks",
-  "vol": 5,
-  "title": "The Stillness Breaks",
-  "src": "assets/audio/bgm/vol5_the_stillness_breaks.ogg",
-  "composer": "—",
-  "desc": "One Tuesday morning across all of Graustark. The hush over the ruins shatters like flawed glass; the sound arrives.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch20_judgement"
-  ],
-  "chars": []
- },
- {
-  "id": "vol5_minstrals_green",
-  "vol": 5,
-  "title": "Minstral's Green",
-  "src": "assets/audio/bgm/vol5_minstrals_green.ogg",
-  "composer": "—",
-  "desc": "Down by the river where the steamship rusts. Old-honey sunlight through cypress; a child, a stick, a crawdad hole. The Frog says: mostly.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol5_ch21_world"
-  ],
-  "chars": []
- },
- {
   "id": "vol6_sam_theme",
   "vol": 6,
   "title": "Sam · Eleven Forty-Seven",
-  "src": "assets/audio/bgm/vol6_sam_theme.ogg",
+  "src": "assets/audio/bgm/vol6_sam_theme.wav",
   "composer": "—",
   "desc": "Register clerk's steady. Low sine + a paper-thin chime on the entry bell, half a beat behind where you'd expect.",
   "unlock": {
@@ -1600,7 +1390,7 @@
   "id": "vol6_diego_theme",
   "vol": 6,
   "title": "Diego · Two-A-Days",
-  "src": "assets/audio/bgm/vol6_diego_theme.ogg",
+  "src": "assets/audio/bgm/vol6_diego_theme.wav",
   "composer": "—",
   "desc": "Sneaker squeak on gym lacquer + a held breath at the line of scrimmage. Diego's signature.",
   "unlock": {
@@ -1614,7 +1404,7 @@
   "id": "vol6_maya_theme",
   "vol": 6,
   "title": "Maya · Bedroom Recording",
-  "src": "assets/audio/bgm/vol6_maya_theme.ogg",
+  "src": "assets/audio/bgm/vol6_maya_theme.wav",
   "composer": "—",
   "desc": "Cassette-deck hiss + a half-strummed guitar through the wall. Maya's signature.",
   "unlock": {
@@ -1628,7 +1418,7 @@
   "id": "vol6_rick_theme",
   "vol": 6,
   "title": "Rick · Back-Issue Reverence",
-  "src": "assets/audio/bgm/vol6_rick_theme.ogg",
+  "src": "assets/audio/bgm/vol6_rick_theme.wav",
   "composer": "—",
   "desc": "Bagged-and-boarded mylar shuffle + a vintage-store CRT hum at 60 Hz. Rick Cosmic's signature.",
   "unlock": {
@@ -1670,7 +1460,7 @@
   "id": "vol6_carl_theme",
   "vol": 6,
   "title": "Carl · Lunch Pail",
-  "src": "assets/audio/bgm/vol6_carl_theme.ogg",
+  "src": "assets/audio/bgm/vol6_carl_theme.wav",
   "composer": "—",
   "desc": "Tin-clasp pop + a thermos pour + the unhurried exhale of a man who has done this thirty thousand times. Carl Reno's signature.",
   "unlock": {
@@ -1698,61 +1488,77 @@
   "id": "vol6_kwik_stop_interior",
   "vol": 6,
   "title": "The Kwik Stop · Night Shift",
-  "src": "assets/audio/bgm/vol6_kwik_stop_interior.ogg",
+  "src": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
   "composer": "—",
   "desc": "Sodium-buzz fluorescents, beer-cooler compressor cycle, taquito roller squeak, occasional door chime. The store at 11:47 PM.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol6_ch1_stranger",
    "vol6_ch10_night_shift",
    "vol6_ch15_kwik_stop",
+   "vol6_ch16_dawn",
    "vol6_ch18_stockroom",
+   "vol6_ch1_shift_change",
+   "vol6_ch1_stranger",
+   "vol6_ch22_inventory",
+   "vol6_ch2_dumpster",
    "vol6_ch2_kwik_stop",
+   "vol6_ch2_pit_stop_kitchen",
+   "vol6_ch3_pit_stop_office",
+   "vol6_ch4_kwik_stop",
+   "vol6_ch4_pit_stop",
    "vol6_ch6_kwik_stop_open",
    "vol6_ch6_kwik_stop_slushie",
-   "vol6_ch6_kwik_stop_text"
+   "vol6_ch6_kwik_stop_text",
+   "vol6_ch6_pit_stop",
+   "vol6_ch7_pit_stop"
   ]
  },
  {
   "id": "vol6_cosmic_comics_interior",
   "vol": 6,
   "title": "Cosmic Comics · Saturday Pull",
-  "src": "assets/audio/bgm/vol6_cosmic_comics_interior.ogg",
+  "src": "assets/audio/bgm/vol6_cosmic_comics_interior.wav",
   "composer": "—",
   "desc": "Bagged-and-boarded shuffle + a vintage Casio demo loop from a hand-me-down keyboard in the back room.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol6_ch1_cosmic_comics",
    "vol6_ch12_cosmic",
+   "vol6_ch1_cosmic_comics",
+   "vol6_ch21_cosmic",
+   "vol6_ch2_bindery",
    "vol6_ch2_cosmic",
    "vol6_ch3_back_room",
-   "vol6_ch3_coda",
-   "vol6_ch21_cosmic"
+   "vol6_ch4_speak_spell"
   ]
  },
  {
   "id": "vol6_gas_and_go_interior",
   "vol": 6,
   "title": "NexCorp Gas & Go · Locker Four",
-  "src": "assets/audio/bgm/vol6_gas_and_go_interior.ogg",
+  "src": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
   "composer": "—",
   "desc": "Pump-canopy fans + cooler ice-maker + the manager-office printer ginning out a daily report.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol6_ch1_gas_and_go"
+   "vol6_ch1_gas_and_go",
+   "vol6_ch2_gas_go_lot",
+   "vol6_ch2_gas_oracles",
+   "vol6_ch6_boyd",
+   "vol6_ch6_fueling_station",
+   "vol6_ch6_tome"
   ]
  },
  {
   "id": "vol6_el_rancho_interior",
   "vol": 6,
   "title": "El Rancho · Late Plate",
-  "src": "assets/audio/bgm/vol6_el_rancho_interior.ogg",
+  "src": "assets/audio/bgm/vol6_el_rancho_interior.wav",
   "composer": "—",
   "desc": "A norteño guitar held one chord too long + the dishwasher's last cycle of the night.",
   "unlock": {
@@ -1766,7 +1572,7 @@
   "id": "vol6_live_oak_field",
   "vol": 6,
   "title": "Live Oak Field · Two-A-Days",
-  "src": "assets/audio/bgm/vol6_live_oak_field.ogg",
+  "src": "assets/audio/bgm/vol6_live_oak_field.wav",
   "composer": "—",
   "desc": "Cleat on Bermuda grass + cicadas at 6:15 AM + a far whistle's three short bursts.",
   "unlock": {
@@ -1774,21 +1580,26 @@
   },
   "chapters": [
    "vol6_ch13_two_a_days",
-   "vol6_ch14_live_oak"
+   "vol6_ch14_live_oak",
+   "vol6_ch19_depthchart",
+   "vol6_ch22_vinton"
   ]
  },
  {
   "id": "vol6_substation_nine",
   "vol": 6,
   "title": "Substation Nine · The Hum",
-  "src": "assets/audio/bgm/vol6_substation_nine.ogg",
+  "src": "assets/audio/bgm/vol6_substation_nine.wav",
   "composer": "—",
   "desc": "Chain-link buzz + transformer 60 Hz drone + a single grackle that won't leave.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol6_ch14_substation_nine"
+   "vol6_ch14_substation_nine",
+   "vol6_ch20_bridge",
+   "vol6_ch5_garage",
+   "vol6_ch5_radio"
   ]
  },
  {
@@ -1809,27 +1620,36 @@
   "id": "vol6_ambient",
   "vol": 6,
   "title": "Harmony Creek Estates",
-  "src": "assets/audio/bgm/vol6_ambient.mp3",
+  "src": "assets/audio/bgm/vol6_ambient.wav",
   "composer": "—",
   "desc": "Sixty-eight degrees, year-round, by corporate decree.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol6_ch0_prelude"
+   "vol6_ch0_prelude",
+   "vol6_ch3_coda",
+   "vol6_ch5_miller_drive",
+   "vol6_ch7_hospital",
+   "vol6_ch8_courthouse",
+   "vol6_ch8_hospital_318",
+   "vol6_ch8_lake_palestine"
   ]
  },
  {
   "id": "vol6_corporate_hum",
   "vol": 6,
   "title": "Sixty-Eight, Year-Round",
-  "src": "assets/audio/bgm/vol6_corporate_hum.ogg",
+  "src": "assets/audio/bgm/vol6_corporate_hum.wav",
   "composer": "—",
   "desc": "HVAC system + a single sine pad at 68 Hz. Clean. Inhuman. The planned community at rest.",
   "unlock": {
    "type": "heard"
   },
-  "chapters": []
+  "chapters": [
+   "vol6_ch2_coda",
+   "vol6_ch9_room"
+  ]
  },
  {
   "id": "vol6_milestone_phc",
@@ -1858,296 +1678,33 @@
   ]
  },
  {
-  "id": "vol6_slushie_futures",
-  "vol": 6,
-  "title": "Slushie Futures · Monday",
-  "src": "assets/audio/bgm/vol6_slushie_futures.ogg",
-  "composer": "—",
-  "desc": "Monday, dressed up as itself — the lawns permitted to thirst by HOA decree, the Pit Stop's lunch-shuffle grill, a white sedan keeping an unassigned vigil at the curb after dark.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch2_gas_oracles",
-   "vol6_ch2_bindery",
-   "vol6_ch2_dumpster",
-   "vol6_ch2_gas_go_lot",
-   "vol6_ch2_pit_stop_kitchen",
-   "vol6_ch2_maya_bedroom",
-   "vol6_ch2_coda"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_tuesday_notebooks",
-  "vol": 6,
-  "title": "Tuesday · Notebooks",
-  "src": "assets/audio/bgm/vol6_tuesday_notebooks.ogg",
-  "composer": "—",
-  "desc": "Tuesday in Harmony Creek — Sam down to the kitchen before her father for the first time in six months, a white sedan in the strip-mall lot, lists and chat windows glowing after dark.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch3_circle_k",
-   "vol6_ch3_parking_lot",
-   "vol6_ch3_pit_stop_office",
-   "vol6_ch3_jesse_bedroom",
-   "vol6_ch3_sam_bedroom"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_gulf_storm",
-  "vol": 6,
-  "title": "The Storm off the Gulf",
-  "src": "assets/audio/bgm/vol6_gulf_storm.ogg",
-  "composer": "—",
-  "desc": "The Wednesday storm, in off the Gulf since midnight — thunder rolling from six-oh-four, parking lots turning to shallow lakes, a Speak & Spell glowing darkroom red on Rick's shelf.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch4_storm",
-   "vol6_ch4_sam_list",
-   "vol6_ch4_kwik_stop",
-   "vol6_ch4_pit_stop",
-   "vol6_ch4_maya_floor",
-   "vol6_ch4_speak_spell",
-   "vol6_ch4_miller_office",
-   "vol6_ch4_kitchen"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_garage_band",
-  "vol": 6,
-  "title": "Garage Band Catharsis",
-  "src": "assets/audio/bgm/vol6_garage_band.ogg",
-  "composer": "—",
-  "desc": "Thursday evening — three distorted Telecaster chords leaking through the garage-door vent, Ben's truck parked dark, 1776 kHz coming in under the static.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch5_garage",
-   "vol6_ch5_truck",
-   "vol6_ch5_radio",
-   "vol6_ch5_miller_drive",
-   "vol6_ch5_meadowlark"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_service_roads",
-  "vol": 6,
-  "title": "Service Roads · Friday",
-  "src": "assets/audio/bgm/vol6_service_roads.ogg",
-  "composer": "—",
-  "desc": "Friday along I-10 — an unmarked van at pump six, a white sedan on the gravel shoulder three miles east of the FM-3411 exit, a small frame house on a county road thirty-two miles southeast.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch6_miller_truck",
-   "vol6_ch6_fueling_station",
-   "vol6_ch6_boyd",
-   "vol6_ch6_interstate",
-   "vol6_ch6_tome",
-   "vol6_ch6_pit_stop",
-   "vol6_ch6_jesse_bedroom",
-   "vol6_ch6_maya_bedroom",
-   "vol6_ch6_safehouse",
-   "vol6_ch6_miller_kitchen",
-   "vol6_ch6_sam_bedroom"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_waiting_rooms",
-  "vol": 6,
-  "title": "The Day After · Waiting Rooms",
-  "src": "assets/audio/bgm/vol6_waiting_rooms.ogg",
-  "composer": "—",
-  "desc": "The day after — vending-machine coffee going cold in the hospital waiting room, pot roast in the oven since two-thirty, Daisy hiding from a butterfly behind a lawn chair.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch7_hospital",
-   "vol6_ch7_pit_stop",
-   "vol6_ch7_ben_room",
-   "vol6_ch7_henderson_kitchen",
-   "vol6_ch7_henderson_driveway",
-   "vol6_ch7_safehouse"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_pre_dawn_blue",
-  "vol": 6,
-  "title": "Pre-Dawn Blue · Late May",
-  "src": "assets/audio/bgm/vol6_pre_dawn_blue.ogg",
-  "composer": "—",
-  "desc": "The eight minutes of pre-dawn blue Texas does in late May — a truck on the highway at first light, Courtroom 4 waiting on the judge's lunch, Room 318 with the IV in the Morse hand.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch8_miller_truck",
-   "vol6_ch8_lake_palestine",
-   "vol6_ch8_kowalski_kitchen",
-   "vol6_ch8_hospital_318",
-   "vol6_ch8_courthouse"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_the_long_sleep",
-  "vol": 6,
-  "title": "The Long Sleep · Safehouse",
-  "src": "assets/audio/bgm/vol6_the_long_sleep.ogg",
-  "composer": "—",
-  "desc": "Diego at the safehouse — eighteen hours of sleep in every twenty-four, and the caged fluorescent room that follows him under.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch9_room",
-   "vol6_ch9_safehouse"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_four_thirty_kitchen",
-  "vol": 6,
-  "title": "Bianca's Kitchen · Four Thirty",
-  "src": "assets/audio/bgm/vol6_four_thirty_kitchen.ogg",
-  "composer": "—",
-  "desc": "The kitchen before the subdivision stirs — awake at four eleven again, coffee made in the dark, the doorbell at eight oh-three on a Monday nobody was expecting.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch11_kitchen",
-   "vol6_ch11_eileen"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_porch_light_watch",
-  "vol": 6,
-  "title": "Porch Lights · Mid-August",
-  "src": "assets/audio/bgm/vol6_porch_light_watch.ogg",
-  "composer": "—",
-  "desc": "Mid-August at the cul-de-sac windows — Don Geller's porch light eight minutes early at four forty-three, the shaded back-porch hour before the ninety-five settles in.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch17_table",
-   "vol6_ch17_porch"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_depth_chart",
-  "vol": 6,
-  "title": "The Depth Chart · Friday",
-  "src": "assets/audio/bgm/vol6_depth_chart.ogg",
-  "composer": "—",
-  "desc": "Friday of the depth chart — three easy miles at six oh-eight with no stopwatch, then the drive home with two new things riding along in the Civic.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch19_depthchart",
-   "vol6_ch19_chains"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_fourth_chord",
-  "vol": 6,
-  "title": "The Fourth Chord",
-  "src": "assets/audio/bgm/vol6_fourth_chord.ogg",
-  "composer": "—",
-  "desc": "Substation Nine gets its bridge — a suspended fourth chord found at four-twelve in Jesse's bedroom, the kitchen light still on at ten thirty-eight.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch20_bridge",
-   "vol6_ch20_prints"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_iced_tea_porch",
-  "vol": 6,
-  "title": "Linda's Porch · Iced Tea",
-  "src": "assets/audio/bgm/vol6_iced_tea_porch.ogg",
-  "composer": "—",
-  "desc": "Evening on Linda's porch — the light on, the wicker chair, two glasses of iced tea with Maya's poured in advance.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch21_porch"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_saturday_town",
-  "vol": 6,
-  "title": "The Long Saturday",
-  "src": "assets/audio/bgm/vol6_saturday_town.ogg",
-  "composer": "—",
-  "desc": "The long Saturday — coffee made in the dark at four eleven, the Vinton bus in the lot at four oh-three, the Foxhole on the back side of the strip mall, inventory codes read in half-voice.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch22_bianca",
-   "vol6_ch22_vinton",
-   "vol6_ch22_foxhole",
-   "vol6_ch22_inventory",
-   "vol6_ch22_sunday"
-  ],
-  "chars": []
- },
- {
-  "id": "vol6_sunday_dinner",
-  "vol": 6,
-  "title": "Sunday · Lights Out",
-  "src": "assets/audio/bgm/vol6_sunday_dinner.ogg",
-  "composer": "—",
-  "desc": "Sunday closing out — Diego waking at four-oh-eight PM behind blackout curtains, enchiladas kept warm, three Hendersons at the table.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol6_ch23_sunday",
-   "vol6_ch23_sleep"
-  ],
-  "chars": []
- },
- {
   "id": "vol7_ambient",
   "vol": 7,
   "title": "Smolvud Ambient",
-  "src": "assets/audio/bgm/vol7_ambient.mp3",
+  "src": "assets/audio/bgm/vol7_ambient.wav",
   "composer": "—",
   "desc": "The kind of town that knows when you have arrived before you do.",
   "unlock": {
    "type": "heard"
-  }
+  },
+  "chapters": [
+   "vol7_ch12_morning",
+   "vol7_ch22_drive",
+   "vol7_ch22_floors",
+   "vol7_ch2_afternoon",
+   "vol7_ch6_cale",
+   "vol7_ch6_chillwave",
+   "vol7_ch6_pattern_persistence",
+   "vol7_ch6_the_stick",
+   "vol7_ch7_bridge",
+   "vol7_epilogue_gallery"
+  ]
  },
  {
   "id": "vol7_apartment_rain",
   "vol": 7,
   "title": "Lena's Apartment · Rain",
-  "src": "assets/audio/bgm/vol7_apartment_rain.mp3",
+  "src": "assets/audio/bgm/vol7_apartment_rain.wav",
   "composer": "—",
   "desc": "Six o'clock. Four coats on four hooks.",
   "unlock": {
@@ -2157,20 +1714,26 @@
    "lena"
   ],
   "chapters": [
+   "vol7_ch12_lena",
    "vol7_ch3_apartment",
-   "vol7_ch7_bridge",
-   "vol7_ch7_six_oclock",
+   "vol7_ch3_studio",
+   "vol7_ch6_cale_opening",
+   "vol7_ch6_sunday",
+   "vol7_ch6_tem_call",
+   "vol7_ch6_why_lena",
    "vol7_ch7_night",
-   "vol7_ch8_six_oclock",
-   "vol7_ch8_the_table",
-   "vol7_ch8_kitchen",
-   "vol7_ch8_roy",
+   "vol7_ch7_six_oclock",
+   "vol7_ch8_dark",
    "vol7_ch8_finn_speaks",
+   "vol7_ch8_goodnight",
+   "vol7_ch8_kitchen",
+   "vol7_ch8_monday",
+   "vol7_ch8_roy",
+   "vol7_ch8_six_oclock",
    "vol7_ch8_the_apology",
    "vol7_ch8_the_daughter",
-   "vol7_ch8_the_vessel",
-   "vol7_ch8_goodnight",
-   "vol7_ch8_dark"
+   "vol7_ch8_the_table",
+   "vol7_ch8_the_vessel"
   ]
  },
  {
@@ -2191,21 +1754,25 @@
   "id": "vol7_bread_table",
   "vol": 7,
   "title": "Bread, Table, Family",
-  "src": "assets/audio/bgm/vol7_bread_table.ogg",
+  "src": "assets/audio/bgm/vol7_bread_table.wav",
   "composer": "—",
   "desc": "Kitchen fire crackle, distant German hymn fragment, table set for nine.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol7_ch15_bread"
+   "vol7_ch15_bread",
+   "vol7_ch15_wagon",
+   "vol7_ch17_bakery",
+   "vol7_ch17_roy",
+   "vol7_ch18_stick"
   ]
  },
  {
   "id": "vol7_hymn_fragment",
   "vol": 7,
   "title": "Hymn Fragment · From Another Room",
-  "src": "assets/audio/bgm/vol7_hymn_fragment.ogg",
+  "src": "assets/audio/bgm/vol7_hymn_fragment.wav",
   "composer": "—",
   "desc": "A German hymn played on a far piano in another room of the house. Recurs across the family scenes.",
   "unlock": {
@@ -2221,7 +1788,7 @@
   "id": "vol7_marit_theme",
   "vol": 7,
   "title": "Marit",
-  "src": "assets/audio/bgm/vol7_marit_theme.ogg",
+  "src": "assets/audio/bgm/vol7_marit_theme.wav",
   "composer": "—",
   "desc": "An older voice humming a hymn fragment, very close to the mic. (No legible vocal.)",
   "unlock": {
@@ -2235,7 +1802,7 @@
   "id": "vol7_milestone_bell",
   "vol": 7,
   "title": "Aria Rings the Bell",
-  "src": "assets/audio/bgm/vol7_milestone_bell.ogg",
+  "src": "assets/audio/bgm/vol7_milestone_bell.wav",
   "composer": "—",
   "desc": "Released at Vol 7's title moment.",
   "unlock": {
@@ -2250,7 +1817,7 @@
   "id": "vol7_rain_on_roof",
   "vol": 7,
   "title": "Rain on Roof",
-  "src": "assets/audio/bgm/vol7_rain_on_roof.mp3",
+  "src": "assets/audio/bgm/vol7_rain_on_roof.wav",
   "composer": "—",
   "desc": "With two of them left in it the apartment was hers again.",
   "unlock": {
@@ -2266,7 +1833,7 @@
   "id": "vol7_wren_theme",
   "vol": 7,
   "title": "Wren",
-  "src": "assets/audio/bgm/vol7_wren_theme.ogg",
+  "src": "assets/audio/bgm/vol7_wren_theme.wav",
   "composer": "—",
   "desc": "Two notes of a wooden whistle, the first held, the second never quite arriving. Wren's signature.",
   "unlock": {
@@ -2280,7 +1847,7 @@
   "id": "vol7_tem_theme",
   "vol": 7,
   "title": "Tem",
-  "src": "assets/audio/bgm/vol7_tem_theme.ogg",
+  "src": "assets/audio/bgm/vol7_tem_theme.wav",
   "composer": "—",
   "desc": "Wool-mitten brush across a kitchen-window pane + a kettle two rooms over. Tem's signature.",
   "unlock": {
@@ -2294,7 +1861,7 @@
   "id": "vol7_petra_theme",
   "vol": 7,
   "title": "Petra",
-  "src": "assets/audio/bgm/vol7_petra_theme.ogg",
+  "src": "assets/audio/bgm/vol7_petra_theme.wav",
   "composer": "—",
   "desc": "A child's six-note recorder run, played twice, the second time a half-step lower. Petra's signature.",
   "unlock": {
@@ -2308,7 +1875,7 @@
   "id": "vol7_kai_theme",
   "vol": 7,
   "title": "Kai",
-  "src": "assets/audio/bgm/vol7_kai_theme.ogg",
+  "src": "assets/audio/bgm/vol7_kai_theme.wav",
   "composer": "—",
   "desc": "Boot-heel on plank pier + a single hand-line clicking. Kai's signature.",
   "unlock": {
@@ -2322,7 +1889,7 @@
   "id": "vol7_per_theme",
   "vol": 7,
   "title": "Per",
-  "src": "assets/audio/bgm/vol7_per_theme.ogg",
+  "src": "assets/audio/bgm/vol7_per_theme.wav",
   "composer": "—",
   "desc": "Tarred rope laid down, a pipe-knife strop, an exhale through close-trimmed beard. Per's signature.",
   "unlock": {
@@ -2350,7 +1917,7 @@
   "id": "vol7_finn_theme",
   "vol": 7,
   "title": "Finn",
-  "src": "assets/audio/bgm/vol7_finn_theme.ogg",
+  "src": "assets/audio/bgm/vol7_finn_theme.wav",
   "composer": "—",
   "desc": "A short bow across a single fiddle string + the snow-shovel scrape outside the door. Finn's signature.",
   "unlock": {
@@ -2378,7 +1945,7 @@
   "id": "vol7_cabin_woodstove",
   "vol": 7,
   "title": "Cabin · Woodstove",
-  "src": "assets/audio/bgm/vol7_cabin_woodstove.ogg",
+  "src": "assets/audio/bgm/vol7_cabin_woodstove.wav",
   "composer": "—",
   "desc": "Damper-pull tick + a log settling at the back of the firebox + plank floor cooling.",
   "unlock": {
@@ -2387,31 +1954,55 @@
   "chapters": [
    "vol7_ch10_cabin",
    "vol7_ch10_morning",
-   "vol7_ch1_morning",
+   "vol7_ch11_bowl",
+   "vol7_ch11_per",
+   "vol7_ch11_stick",
+   "vol7_ch13_cale",
+   "vol7_ch13_porch",
+   "vol7_ch17_dawn",
+   "vol7_ch18_home",
+   "vol7_ch19_cedar",
+   "vol7_ch19_per",
+   "vol7_ch19_ring",
+   "vol7_ch19_roy",
    "vol7_ch1_finn",
+   "vol7_ch1_morning",
+   "vol7_ch20_calls",
+   "vol7_ch20_door",
+   "vol7_ch20_each",
+   "vol7_ch21_tower",
+   "vol7_ch22_portal",
+   "vol7_ch2_morning",
    "vol7_ch4_alone",
-   "vol7_ch4_finn"
+   "vol7_ch4_finn",
+   "vol7_ch5_cabin",
+   "vol7_ch6_brandon",
+   "vol7_ch6_get_going",
+   "vol7_ch6_nate",
+   "vol7_epilogue_morning",
+   "vol7_epilogue_submission"
   ]
  },
  {
   "id": "vol7_kestrel_circle",
   "vol": 7,
   "title": "Kestrel · Wind Above",
-  "src": "assets/audio/bgm/vol7_kestrel_circle.ogg",
+  "src": "assets/audio/bgm/vol7_kestrel_circle.wav",
   "composer": "—",
   "desc": "Slow-cycling thermal hiss + the small, very-far cry of a bird on patrol.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol7_ch11_kestrel"
+   "vol7_ch11_kestrel",
+   "vol7_ch18_pool"
   ]
  },
  {
   "id": "vol7_marina_morning",
   "vol": 7,
   "title": "Marina · Halyards",
-  "src": "assets/audio/bgm/vol7_marina_morning.ogg",
+  "src": "assets/audio/bgm/vol7_marina_morning.wav",
   "composer": "—",
   "desc": "Halyard tap on aluminum mast + dock-line creak + a single gull a long way off.",
   "unlock": {
@@ -2425,23 +2016,26 @@
   "id": "vol7_painting_room",
   "vol": 7,
   "title": "The Painting Room",
-  "src": "assets/audio/bgm/vol7_painting_room.ogg",
+  "src": "assets/audio/bgm/vol7_painting_room.wav",
   "composer": "—",
   "desc": "Turpentine bottle uncorked + brush tap on canvas + the close attentive breath of someone looking.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol7_ch14_painting",
    "vol7_ch14_figure",
-   "vol7_ch3_studio"
+   "vol7_ch14_painting",
+   "vol7_ch16_eight",
+   "vol7_ch20_wall",
+   "vol7_ch21_cabin",
+   "vol7_ch21_leaving"
   ]
  },
  {
   "id": "vol7_loft_dust",
   "vol": 7,
   "title": "Loft · Dust at Four",
-  "src": "assets/audio/bgm/vol7_loft_dust.ogg",
+  "src": "assets/audio/bgm/vol7_loft_dust.wav",
   "composer": "—",
   "desc": "Hayloft settle + a sparrow in the eaves + the four-o'clock sun on warm wood.",
   "unlock": {
@@ -2455,14 +2049,20 @@
   "id": "vol7_shop_signal_bell",
   "vol": 7,
   "title": "The Shop · Signal Bell",
-  "src": "assets/audio/bgm/vol7_shop_signal_bell.ogg",
+  "src": "assets/audio/bgm/vol7_shop_signal_bell.wav",
   "composer": "—",
   "desc": "Door-spring chime + the till's small mechanical click + the floorboard that always pops under the second step.",
   "unlock": {
    "type": "heard"
   },
   "chapters": [
-   "vol7_ch16_shop"
+   "vol7_ch10_per",
+   "vol7_ch12_kai",
+   "vol7_ch14_petra",
+   "vol7_ch16_shop",
+   "vol7_ch5_roy",
+   "vol7_ch8_aria",
+   "vol7_ch9_tuesday"
   ]
  },
  {
@@ -2480,182 +2080,860 @@
   ]
  },
  {
-  "id": "vol7_bluff_drones",
-  "vol": 7,
-  "title": "Drones off the Bluff · Before Dawn",
-  "src": "assets/audio/bgm/vol7_bluff_drones.ogg",
+  "id": "slow_shelf_cabin_ambient",
+  "vol": 99,
+  "section": "SLOWSTICK · THE CABIN SHELF",
+  "title": "Cabin Ambient",
+  "src": "assets/audio/bgm/shelf/cabin_ambient.wav",
   "composer": "—",
-  "desc": "Friday before dawn — cargo drones coming up the cliff face in fours and fives, then the grandfather's wagon down through Sitka and alder in the rain.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch2_morning",
-   "vol7_ch2_afternoon"
-  ],
-  "chars": []
+  "desc": "The Cabin Shelf — Cabin Ambient.",
+  "unlock": {}
  },
  {
-  "id": "vol7_across_main",
-  "vol": 7,
-  "title": "Board Lords · Across Main",
-  "src": "assets/audio/bgm/vol7_across_main.ogg",
+  "id": "slow_e1_mix_d",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix D",
+  "src": "assets/audio/bgm/e1/mix_d.wav",
   "composer": "—",
-  "desc": "Kai's stretch of Main — the shop opened at ten like every Sunday since '48, Finn's rooms above the closed kayak shop, and the patch on the laundromat wall bigger each morning.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch5_roy",
-   "vol7_ch5_cabin",
-   "vol7_ch9_tuesday",
-   "vol7_ch9_evening"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix D.",
+  "unlock": {}
  },
  {
-  "id": "vol7_chillwave_back_room",
-  "vol": 7,
-  "title": "ChillWave · The Back Room",
-  "src": "assets/audio/bgm/vol7_chillwave_back_room.ogg",
+  "id": "slow_e1_mix_df",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Df",
+  "src": "assets/audio/bgm/e1/mix_df.wav",
   "composer": "—",
-  "desc": "The back of ChillWave — cedar shelves alphabetized by designer, a soldering iron cooling on the workbench, the wall transformer humming faintly with the iron unplugged.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch6_sunday",
-   "vol7_ch6_cale_opening",
-   "vol7_ch6_cale",
-   "vol7_ch6_chillwave",
-   "vol7_ch6_why_lena",
-   "vol7_ch6_nate",
-   "vol7_ch6_brandon",
-   "vol7_ch6_pattern_persistence",
-   "vol7_ch6_the_stick",
-   "vol7_ch6_tem_call",
-   "vol7_ch6_get_going"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Df.",
+  "unlock": {}
  },
  {
-  "id": "vol7_daily_grind",
-  "vol": 7,
-  "title": "The Daily Grind · Gray Monday",
-  "src": "assets/audio/bgm/vol7_daily_grind.ogg",
+  "id": "slow_e1_mix_dfh",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Dfh",
+  "src": "assets/audio/bgm/e1/mix_dfh.wav",
   "composer": "—",
-  "desc": "The Daily Grind on a gray Monday — the bell at eleven fifty-eight, rain-light at the counter, the count of thirty after Roy walks out.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch8_monday",
-   "vol7_ch8_aria"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Dfh.",
+  "unlock": {}
  },
  {
-  "id": "vol7_thursday_rounds",
-  "vol": 7,
-  "title": "Thursday Rounds · The Hexagon",
-  "src": "assets/audio/bgm/vol7_thursday_rounds.ogg",
+  "id": "slow_e1_mix_dfs",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Dfs",
+  "src": "assets/audio/bgm/e1/mix_dfs.wav",
   "composer": "—",
-  "desc": "Thursday in late August, the town awake an hour — the completed hexagon riding in a canvas bag, short drives between Lena's window, Board Lords, and the alley behind the bakery.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch12_morning",
-   "vol7_ch12_lena",
-   "vol7_ch12_kai"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Dfs.",
+  "unlock": {}
  },
  {
-  "id": "vol7_tide_pool",
-  "vol": 7,
-  "title": "Tide Pool · Inside the Stick",
-  "src": "assets/audio/bgm/vol7_tide_pool.ogg",
+  "id": "slow_e1_mix_dfsh",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Dfsh",
+  "src": "assets/audio/bgm/e1/mix_dfsh.wav",
   "composer": "—",
-  "desc": "Inside the stick — a tide pool on a basalt headland, rendered by someone who had been to the coast: one open anemone, two purple stars, and the end-of-stick beep waiting back in the bedroom.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch18_stick",
-   "vol7_ch18_pool",
-   "vol7_ch18_home"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Dfsh.",
+  "unlock": {}
  },
  {
-  "id": "vol7_four_bowls",
-  "vol": 7,
-  "title": "The Cabin · Four Bowls",
-  "src": "assets/audio/bgm/vol7_four_bowls.ogg",
+  "id": "slow_e1_mix_dh",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Dh",
+  "src": "assets/audio/bgm/e1/mix_dh.wav",
   "composer": "—",
-  "desc": "Sunday evening at the cabin — the stove banked higher than she banks it in the mornings, kerosene light, four bowls warm on the table, mint tea for seven.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch19_per",
-   "vol7_ch19_roy",
-   "vol7_ch19_cedar",
-   "vol7_ch19_ring"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Dh.",
+  "unlock": {}
  },
  {
-  "id": "vol7_three_oh_two",
-  "vol": 7,
-  "title": "3:02 AM · The Knock",
-  "src": "assets/audio/bgm/vol7_three_oh_two.ogg",
+  "id": "slow_e1_mix_ds",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Ds",
+  "src": "assets/audio/bgm/e1/mix_ds.wav",
   "composer": "—",
-  "desc": "A knock at 3:02 AM coming through the cedar wall — seven at the table holding still, then the alley at six forty-three with the painted face at its far end.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch20_door",
-   "vol7_ch20_each",
-   "vol7_ch20_calls",
-   "vol7_ch20_wall"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Ds.",
+  "unlock": {}
  },
  {
-  "id": "vol7_the_leaving",
-  "vol": 7,
-  "title": "The Wall · The Leaving",
-  "src": "assets/audio/bgm/vol7_the_leaving.ogg",
+  "id": "slow_e1_mix_dsh",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 1",
+  "title": "Mix Dsh",
+  "src": "assets/audio/bgm/e1/mix_dsh.wav",
   "composer": "—",
-  "desc": "Monday morning at the wall — the face closed-eyed since seven thirty-eight, brioche and rye going around from Hans's van, the leaving beginning without anyone calling for it.",
-  "unlock": {
-   "type": "heard"
-  },
-  "chapters": [
-   "vol7_ch21_leaving",
-   "vol7_ch21_cabin",
-   "vol7_ch21_tower"
-  ],
-  "chars": []
+  "desc": "Estuary 1 — Mix Dsh.",
+  "unlock": {}
  },
  {
-  "id": "vol7_the_tower",
-  "vol": 7,
-  "title": "The Tower · Old-Yachats",
-  "src": "assets/audio/bgm/vol7_the_tower.ogg",
+  "id": "slow_e2_walk_01",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 01",
+  "src": "assets/audio/bgm/e2/walk_01.wav",
   "composer": "—",
-  "desc": "Forty-three miles up 101 to old-Yachats — the tower's polished-cedar lobby, an empty reception desk, a six-inch window set into a fourth-floor door.",
+  "desc": "Estuary 2 — Walk 01.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_02",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 02",
+  "src": "assets/audio/bgm/e2/walk_02.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 02.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_03",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 03",
+  "src": "assets/audio/bgm/e2/walk_03.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 03.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_04",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 04",
+  "src": "assets/audio/bgm/e2/walk_04.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 04.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_05",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 05",
+  "src": "assets/audio/bgm/e2/walk_05.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 05.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_06",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 06",
+  "src": "assets/audio/bgm/e2/walk_06.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 06.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_07",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 07",
+  "src": "assets/audio/bgm/e2/walk_07.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 07.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_08",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 08",
+  "src": "assets/audio/bgm/e2/walk_08.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 08.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_09",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 09",
+  "src": "assets/audio/bgm/e2/walk_09.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 09.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_10",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 10",
+  "src": "assets/audio/bgm/e2/walk_10.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 10.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_11",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 11",
+  "src": "assets/audio/bgm/e2/walk_11.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 11.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e2_walk_12",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 2",
+  "title": "Walk 12",
+  "src": "assets/audio/bgm/e2/walk_12.wav",
+  "composer": "—",
+  "desc": "Estuary 2 — Walk 12.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act1_kwik_stop_hum",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 1 Kwik Stop Hum",
+  "src": "assets/audio/bgm/e3/act1_kwik_stop_hum.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 1 Kwik Stop Hum.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act1_night_12_still",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 1 Night 12 Still",
+  "src": "assets/audio/bgm/e3/act1_night_12_still.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 1 Night 12 Still.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act2_fall",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 2 Fall",
+  "src": "assets/audio/bgm/e3/act2_fall.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 2 Fall.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act2_second_spring",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 2 Second Spring",
+  "src": "assets/audio/bgm/e3/act2_second_spring.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 2 Second Spring.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act2_spring",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 2 Spring",
+  "src": "assets/audio/bgm/e3/act2_spring.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 2 Spring.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act2_summer",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 2 Summer",
+  "src": "assets/audio/bgm/e3/act2_summer.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 2 Summer.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act2_winter",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 2 Winter",
+  "src": "assets/audio/bgm/e3/act2_winter.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 2 Winter.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act3_town_dusk",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 3 Town Dusk",
+  "src": "assets/audio/bgm/e3/act3_town_dusk.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 3 Town Dusk.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act3_town_morning",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 3 Town Morning",
+  "src": "assets/audio/bgm/e3/act3_town_morning.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 3 Town Morning.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_act4_beach_loop",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Act 4 Beach Loop",
+  "src": "assets/audio/bgm/e3/act4_beach_loop.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Act 4 Beach Loop.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_e3_ending_quiet",
+  "vol": 99,
+  "section": "SLOWSTICK · ESTUARY 3",
+  "title": "Ending Quiet",
+  "src": "assets/audio/bgm/e3/ending_quiet.wav",
+  "composer": "—",
+  "desc": "Estuary 3 — Ending Quiet.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sss_hiway_30",
+  "vol": 99,
+  "section": "SLOWSTICK · SAM'S SUMMER SHIFTS",
+  "title": "Hiway 30",
+  "src": "assets/audio/bgm/sss/hiway_30.wav",
+  "composer": "—",
+  "desc": "Sam'S Summer Shifts — Hiway 30.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ksm_highway_summer",
+  "vol": 99,
+  "section": "SLOWSTICK · KWIK STOP MANAGER",
+  "title": "Highway Summer",
+  "src": "assets/audio/bgm/ksm/highway_summer.wav",
+  "composer": "—",
+  "desc": "Kwik Stop Manager — Highway Summer.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ksm_reopening",
+  "vol": 99,
+  "section": "SLOWSTICK · KWIK STOP MANAGER",
+  "title": "Reopening",
+  "src": "assets/audio/bgm/ksm/reopening.wav",
+  "composer": "—",
+  "desc": "Kwik Stop Manager — Reopening.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ksm_week_after",
+  "vol": 99,
+  "section": "SLOWSTICK · KWIK STOP MANAGER",
+  "title": "Week After",
+  "src": "assets/audio/bgm/ksm/week_after.wav",
+  "composer": "—",
+  "desc": "Kwik Stop Manager — Week After.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_nh_concertina_cards",
+  "vol": 99,
+  "section": "SLOWSTICK · NORTHWIND HARBOR",
+  "title": "Concertina Cards",
+  "src": "assets/audio/bgm/nh/concertina_cards.wav",
+  "composer": "—",
+  "desc": "Northwind Harbor — Concertina Cards.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_nh_harbor_quiet",
+  "vol": 99,
+  "section": "SLOWSTICK · NORTHWIND HARBOR",
+  "title": "Harbor Quiet",
+  "src": "assets/audio/bgm/nh/harbor_quiet.wav",
+  "composer": "—",
+  "desc": "Northwind Harbor — Harbor Quiet.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_nh_title_pad",
+  "vol": 99,
+  "section": "SLOWSTICK · NORTHWIND HARBOR",
+  "title": "Title Pad",
+  "src": "assets/audio/bgm/nh/title_pad.wav",
+  "composer": "—",
+  "desc": "Northwind Harbor — Title Pad.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_alder_pond_water",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Alder Pond Water",
+  "src": "assets/audio/bgm/ps/alder_pond_water.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Alder Pond Water.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_bus_stop",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Bus Stop",
+  "src": "assets/audio/bgm/ps/bus_stop.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Bus Stop.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_cabin_warmth",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Cabin Warmth",
+  "src": "assets/audio/bgm/ps/cabin_warmth.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Cabin Warmth.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_camp_daytime",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Camp Daytime",
+  "src": "assets/audio/bgm/ps/camp_daytime.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Camp Daytime.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_campfire_evening",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Campfire Evening",
+  "src": "assets/audio/bgm/ps/campfire_evening.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Campfire Evening.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_caves_echo",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Caves Echo",
+  "src": "assets/audio/bgm/ps/caves_echo.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Caves Echo.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ps_ghost_ship_forever",
+  "vol": 99,
+  "section": "SLOWSTICK · PIRATE SUMMER",
+  "title": "Ghost Ship Forever",
+  "src": "assets/audio/bgm/ps/ghost_ship_forever.wav",
+  "composer": "—",
+  "desc": "Pirate Summer — Ghost Ship Forever.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sg_four_notes",
+  "vol": 99,
+  "section": "SLOWSTICK · SWEETGUM",
+  "title": "Four Notes",
+  "src": "assets/audio/bgm/sg/four_notes.wav",
+  "composer": "—",
+  "desc": "Sweetgum — Four Notes.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sg_room_crickets",
+  "vol": 99,
+  "section": "SLOWSTICK · SWEETGUM",
+  "title": "Room Crickets",
+  "src": "assets/audio/bgm/sg/room_crickets.wav",
+  "composer": "—",
+  "desc": "Sweetgum — Room Crickets.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sg_room_tone",
+  "vol": 99,
+  "section": "SLOWSTICK · SWEETGUM",
+  "title": "Room Tone",
+  "src": "assets/audio/bgm/sg/room_tone.wav",
+  "composer": "—",
+  "desc": "Sweetgum — Room Tone.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_pmg_drive_home",
+  "vol": 99,
+  "section": "SLOWSTICK · PATIENT MISTER GLASS",
+  "title": "Drive Home",
+  "src": "assets/audio/bgm/pmg/drive_home.wav",
+  "composer": "—",
+  "desc": "Patient Mister Glass — Drive Home.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_pmg_drive_home_resolved",
+  "vol": 99,
+  "section": "SLOWSTICK · PATIENT MISTER GLASS",
+  "title": "Drive Home Resolved",
+  "src": "assets/audio/bgm/pmg/drive_home_resolved.wav",
+  "composer": "—",
+  "desc": "Patient Mister Glass — Drive Home Resolved.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_pmg_rain_bed",
+  "vol": 99,
+  "section": "SLOWSTICK · PATIENT MISTER GLASS",
+  "title": "Rain Bed",
+  "src": "assets/audio/bgm/pmg/rain_bed.wav",
+  "composer": "—",
+  "desc": "Patient Mister Glass — Rain Bed.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_hnn_autumn",
+  "vol": 99,
+  "section": "SLOWSTICK · HANE NO NIWA",
+  "title": "Autumn",
+  "src": "assets/audio/bgm/hnn/autumn.wav",
+  "composer": "—",
+  "desc": "Hane No Niwa — Autumn.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_hnn_one_melody",
+  "vol": 99,
+  "section": "SLOWSTICK · HANE NO NIWA",
+  "title": "One Melody",
+  "src": "assets/audio/bgm/hnn/one_melody.wav",
+  "composer": "—",
+  "desc": "Hane No Niwa — One Melody.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_hnn_spring",
+  "vol": 99,
+  "section": "SLOWSTICK · HANE NO NIWA",
+  "title": "Spring",
+  "src": "assets/audio/bgm/hnn/spring.wav",
+  "composer": "—",
+  "desc": "Hane No Niwa — Spring.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_hnn_summer",
+  "vol": 99,
+  "section": "SLOWSTICK · HANE NO NIWA",
+  "title": "Summer",
+  "src": "assets/audio/bgm/hnn/summer.wav",
+  "composer": "—",
+  "desc": "Hane No Niwa — Summer.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_hnn_winter",
+  "vol": 99,
+  "section": "SLOWSTICK · HANE NO NIWA",
+  "title": "Winter",
+  "src": "assets/audio/bgm/hnn/winter.wav",
+  "composer": "—",
+  "desc": "Hane No Niwa — Winter.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_em_parsa_dunes",
+  "vol": 99,
+  "section": "SLOWSTICK · EARTHMAN CHRONICLES",
+  "title": "Parsa Dunes",
+  "src": "assets/audio/bgm/em/parsa_dunes.wav",
+  "composer": "—",
+  "desc": "Earthman Chronicles — Parsa Dunes.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_em_pasadena_ritual",
+  "vol": 99,
+  "section": "SLOWSTICK · EARTHMAN CHRONICLES",
+  "title": "Pasadena Ritual",
+  "src": "assets/audio/bgm/em/pasadena_ritual.wav",
+  "composer": "—",
+  "desc": "Earthman Chronicles — Pasadena Ritual.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_em_talikan_silver",
+  "vol": 99,
+  "section": "SLOWSTICK · EARTHMAN CHRONICLES",
+  "title": "Talikan Silver",
+  "src": "assets/audio/bgm/em/talikan_silver.wav",
+  "composer": "—",
+  "desc": "Earthman Chronicles — Talikan Silver.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ff_big_top_overture",
+  "vol": 99,
+  "section": "SLOWSTICK · FEY FAIRE",
+  "title": "Big Top Overture",
+  "src": "assets/audio/bgm/ff/big_top_overture.wav",
+  "composer": "—",
+  "desc": "Fey Faire — Big Top Overture.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ff_midway_waltz",
+  "vol": 99,
+  "section": "SLOWSTICK · FEY FAIRE",
+  "title": "Midway Waltz",
+  "src": "assets/audio/bgm/ff/midway_waltz.wav",
+  "composer": "—",
+  "desc": "Fey Faire — Midway Waltz.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_ff_trailer_hearth",
+  "vol": 99,
+  "section": "SLOWSTICK · FEY FAIRE",
+  "title": "Trailer Hearth",
+  "src": "assets/audio/bgm/ff/trailer_hearth.wav",
+  "composer": "—",
+  "desc": "Fey Faire — Trailer Hearth.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sw_loom",
+  "vol": 99,
+  "section": "SLOWSTICK · SISTERS WYRD",
+  "title": "Loom",
+  "src": "assets/audio/bgm/sw/loom.wav",
+  "composer": "—",
+  "desc": "Sisters Wyrd — Loom.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sw_sister_east",
+  "vol": 99,
+  "section": "SLOWSTICK · SISTERS WYRD",
+  "title": "Sister East",
+  "src": "assets/audio/bgm/sw/sister_east.wav",
+  "composer": "—",
+  "desc": "Sisters Wyrd — Sister East.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sw_sister_north",
+  "vol": 99,
+  "section": "SLOWSTICK · SISTERS WYRD",
+  "title": "Sister North",
+  "src": "assets/audio/bgm/sw/sister_north.wav",
+  "composer": "—",
+  "desc": "Sisters Wyrd — Sister North.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sw_sister_south",
+  "vol": 99,
+  "section": "SLOWSTICK · SISTERS WYRD",
+  "title": "Sister South",
+  "src": "assets/audio/bgm/sw/sister_south.wav",
+  "composer": "—",
+  "desc": "Sisters Wyrd — Sister South.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sw_sister_west",
+  "vol": 99,
+  "section": "SLOWSTICK · SISTERS WYRD",
+  "title": "Sister West",
+  "src": "assets/audio/bgm/sw/sister_west.wav",
+  "composer": "—",
+  "desc": "Sisters Wyrd — Sister West.",
+  "unlock": {}
+ },
+ {
+  "id": "slow_sw_territory",
+  "vol": 99,
+  "section": "SLOWSTICK · SISTERS WYRD",
+  "title": "Territory",
+  "src": "assets/audio/bgm/sw/territory.wav",
+  "composer": "—",
+  "desc": "Sisters Wyrd — Territory.",
+  "unlock": {}
+ },
+ {
+  "id": "vol5_diner_roomtone",
+  "vol": 5,
+  "title": "D'Ambrosio's · Room Tone",
+  "src": "assets/audio/bgm/vol5_diner_roomtone.wav",
+  "composer": "—",
+  "desc": "The dining room with no one talking: booth vinyl, the pass-through fan, the register drawer somewhere behind you.",
   "unlock": {
-   "type": "heard"
+   "type": "key",
+   "key": "music:vol5_diner_roomtone"
+  },
+  "chapters": []
+ },
+ {
+  "id": "vol5_domestic_roomtone",
+  "vol": 5,
+  "title": "Someone's Rooms",
+  "src": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+  "composer": "—",
+  "desc": "The generic Louisiana interior at rest — a window unit two rooms over, a refrigerator that cycles. Every apartment in the arcana run.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol5_domestic_roomtone"
   },
   "chapters": [
-   "vol7_ch22_drive",
-   "vol7_ch22_floors",
-   "vol7_ch22_portal"
-  ],
-  "chars": []
+   "vol5_ch12_hanged",
+   "vol5_ch13_death",
+   "vol5_ch15_devil",
+   "vol5_ch16_tower",
+   "vol5_ch17_star",
+   "vol5_ch18_moon",
+   "vol5_ch6_lovers"
+  ]
+ },
+ {
+  "id": "vol5_store_ambient",
+  "vol": 5,
+  "title": "The Store",
+  "src": "assets/audio/bgm/vol5_store_ambient.wav",
+  "composer": "—",
+  "desc": "Aisle fluorescents and a cooler compressor. The grocery, the pharmacy, the ice company front office.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol5_store_ambient"
+  },
+  "chapters": []
+ },
+ {
+  "id": "vol5_cafe_ambient",
+  "vol": 5,
+  "title": "Café · Montreal",
+  "src": "assets/audio/bgm/vol5_cafe_ambient.wav",
+  "composer": "—",
+  "desc": "Espresso machine at the far end, chairs on tile, two conversations in a language the scene is not in.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol5_cafe_ambient"
+  },
+  "chapters": [
+   "vol5_ch14_temperance",
+   "vol5_ch19_sun"
+  ]
+ },
+ {
+  "id": "vol5_venue_ambient",
+  "vol": 5,
+  "title": "The Room With the Bar In It",
+  "src": "assets/audio/bgm/vol5_venue_ambient.wav",
+  "composer": "—",
+  "desc": "Bottles, ice, a room built to hold a crowd, holding fewer.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol5_venue_ambient"
+  },
+  "chapters": [
+   "vol5_ch8_strength"
+  ]
+ },
+ {
+  "id": "vol5_cathedral_drone",
+  "vol": 5,
+  "title": "Cathedral of Rust and Code · Drone",
+  "src": "assets/audio/bgm/vol5_cathedral_drone.wav",
+  "composer": "—",
+  "desc": "The warehouse's own note. Longer and lower than the vol5 warehouse drone, and it does not develop.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol5_cathedral_drone"
+  },
+  "chapters": [
+   "vol7_interlude_ii"
+  ]
+ },
+ {
+  "id": "vol6_new_auburn_kitchen",
+  "vol": 6,
+  "title": "A New Auburn house at rest — the Millers, the Hendersons, the Kowalskis",
+  "src": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+  "composer": "—",
+  "desc": "A New Auburn house at rest — the Millers, the Hendersons, the Kowalskis. A window unit two rooms over, a refrigerator that cycles, a clock in the hall. Warm where vol6_ambient is not: these houses are inside Harmony Creek and are not of it.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol6_new_auburn_kitchen"
+  },
+  "chapters": [
+   "vol6_ch10_home",
+   "vol6_ch11_eileen",
+   "vol6_ch11_kitchen",
+   "vol6_ch12_porch",
+   "vol6_ch13_home",
+   "vol6_ch15_home",
+   "vol6_ch17_porch",
+   "vol6_ch17_table",
+   "vol6_ch18_letter",
+   "vol6_ch19_chains",
+   "vol6_ch1_bedroom",
+   "vol6_ch1_garage",
+   "vol6_ch1_graciela",
+   "vol6_ch1_maya_bedroom",
+   "vol6_ch20_prints",
+   "vol6_ch21_porch",
+   "vol6_ch22_bianca",
+   "vol6_ch22_sunday",
+   "vol6_ch23_sleep",
+   "vol6_ch23_sunday",
+   "vol6_ch2_maya_bedroom",
+   "vol6_ch3_circle_k",
+   "vol6_ch3_jesse_bedroom",
+   "vol6_ch3_sam_bedroom",
+   "vol6_ch4_kitchen",
+   "vol6_ch4_maya_floor",
+   "vol6_ch4_miller_office",
+   "vol6_ch4_sam_list",
+   "vol6_ch5_meadowlark",
+   "vol6_ch6_jesse_bedroom",
+   "vol6_ch6_maya_bedroom",
+   "vol6_ch6_miller_kitchen",
+   "vol6_ch6_safehouse",
+   "vol6_ch6_sam_bedroom",
+   "vol6_ch7_ben_room",
+   "vol6_ch7_henderson_driveway",
+   "vol6_ch7_henderson_kitchen",
+   "vol6_ch7_safehouse",
+   "vol6_ch8_kowalski_kitchen",
+   "vol6_ch9_safehouse"
+  ]
+ },
+ {
+  "id": "vol6_two_lane",
+  "vol": 6,
+  "title": "The New Auburn two-lane from inside the cab",
+  "src": "assets/audio/bgm/vol6_two_lane.wav",
+  "composer": "—",
+  "desc": "The New Auburn two-lane from inside the cab. Tire hiss, the engine's note, and a figure that comes around every eight bars the way the mile markers do.",
+  "unlock": {
+   "type": "key",
+   "key": "music:vol6_two_lane"
+  },
+  "chapters": [
+   "vol6_ch3_parking_lot",
+   "vol6_ch4_storm",
+   "vol6_ch5_truck",
+   "vol6_ch6_interstate",
+   "vol6_ch6_miller_truck",
+   "vol6_ch8_miller_truck"
+  ]
  }
 ]

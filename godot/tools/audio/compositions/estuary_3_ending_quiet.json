@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "quiet",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Ending screen credits underscore",
+    "notes": "Very sparse. 16 bars at 72 BPM. Held ambient drone under two slow slowstick_pad phrases and three soft_sine bell strikes across the loop. The whole thing sits at low velocity · authored so the Ines Rocha epigraph on the credits screen can be READ without any music competing with it."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.40,
+      "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.45} ] },
+
+    { "instrument": "slowstick_pad", "gain": 0.28, "notes": [
+      {"pitch": "E3", "bar": 1,  "beat": 1, "dur": 8.0, "vel": 0.42},
+      {"pitch": "A3", "bar": 3,  "beat": 3, "dur": 8.0, "vel": 0.38},
+      {"pitch": "D3", "bar": 9,  "beat": 1, "dur": 8.0, "vel": 0.42},
+      {"pitch": "A3", "bar": 11, "beat": 3, "dur": 8.0, "vel": 0.38}
+    ] },
+
+    { "instrument": "soft_sine", "gain": 0.22, "notes": [
+      {"pitch": "E5", "bar": 2,  "beat": 3, "dur": 2.0, "vel": 0.45},
+      {"pitch": "A5", "bar": 8,  "beat": 3, "dur": 2.0, "vel": 0.40},
+      {"pitch": "D5", "bar": 14, "beat": 3, "dur": 3.0, "vel": 0.45}
+    ] }
+  ]
+}

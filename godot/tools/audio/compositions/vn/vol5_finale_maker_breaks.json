@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "title": "vol5_finale_maker_breaks",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_maker_breaks",
+  "notes": "THE MAKER BREAKS. Doubt at maximum. One pad falling a half-step under a silence, which is the last breath before the host closes his eyes for the last time."
+ },
+ "tempo_bpm": 48,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "G#2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    }
+   ]
+  }
+ ]
+}

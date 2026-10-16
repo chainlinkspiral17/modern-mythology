@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "title": "the working begins",
+    "composer": "staff composer (uncredited by request), Astro-Cortex, 1985",
+    "for": "Earthman Chronicles \u00b7 title / Chapter 1 / Chapter 5 Academy",
+    "notes": "C-sharp minor drone with a candle-flicker arp and a tritone bell that will not resolve. The 220 Hz under everything is not a coincidence \u00b7 A3 is in the drone on purpose."
+  },
+  "tempo_bpm": 66,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.24,
+      "notes": [
+        {
+          "pitch": "C#2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.1
+        }
+      ]
+    },
+    {
+      "instrument": "chiptune_arp",
+      "gain": 0.14,
+      "notes": [
+        {
+          "pitch": "C#3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E3",
+          "bar": 3,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "G#3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "C#3",
+          "bar": 7,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "A2",
+          "bar": 9,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "C#3",
+          "bar": 11,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "G3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "C#3",
+          "bar": 15,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.26
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.16,
+      "notes": [
+        {
+          "pitch": "G4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "C#5",
+          "bar": 8,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "G4",
+          "bar": 12,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G#4",
+          "bar": 15,
+          "beat": 1,
+          "dur": 6.0,
+          "vel": 0.28
+        }
+      ]
+    }
+  ]
+}

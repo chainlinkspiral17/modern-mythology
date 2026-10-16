@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "title": "the chapter card concertina",
+    "composer": "Marc Ostrom \u00b7 his first paid work \u00b7 1988",
+    "for": "chapter cards ONLY \u00b7 never during play",
+    "notes": "Eight bars. Hummable to this day in-fiction. The lead over a pad approximates the concertina's reed pair."
+  },
+  "tempo_bpm": 92,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.26,
+      "notes": [
+        {
+          "pitch": "F4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C5",
+          "bar": 1,
+          "beat": 3,
+          "dur": 1.5,
+          "vel": 0.5
+        },
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 4.5,
+          "dur": 0.5,
+          "vel": 0.5
+        },
+        {
+          "pitch": "Bb4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "A4",
+          "bar": 2,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G4",
+          "bar": 2,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "A4",
+          "bar": 3,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C5",
+          "bar": 3,
+          "beat": 3,
+          "dur": 1.5,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D5",
+          "bar": 3,
+          "beat": 4.5,
+          "dur": 0.5,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C5",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "D5",
+          "bar": 5,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "C5",
+          "bar": 5,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "Bb4",
+          "bar": 5,
+          "beat": 3,
+          "dur": 1.5,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G4",
+          "bar": 5,
+          "beat": 4.5,
+          "dur": 0.5,
+          "vel": 0.5
+        },
+        {
+          "pitch": "A4",
+          "bar": 6,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F4",
+          "bar": 6,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G4",
+          "bar": 6,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F4",
+          "bar": 7,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G4",
+          "bar": 7,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "A4",
+          "bar": 7,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "G4",
+          "bar": 7,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.5
+        },
+        {
+          "pitch": "F4",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3.5,
+          "vel": 0.5
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.14,
+      "notes": [
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "Bb3",
+          "bar": 3,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "C4",
+          "bar": 5,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "F3",
+          "bar": 7,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.3
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_bass",
+      "gain": 0.16,
+      "notes": [
+        {
+          "pitch": "F2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 2,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 3,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 5,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 6,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 7,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F2",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.4
+        }
+      ]
+    }
+  ]
+}

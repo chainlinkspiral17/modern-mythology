@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://jesse_bedroom_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://jesse_bedroom_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/jesse_bedroom.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,16 +128,31 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.42, 0.62, 0.96, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.08, 0.10, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.78, 0.86, 1)
-ambient_light_energy = 0.65
+ambient_light_energy = 0.78
 fog_enabled = true
 fog_light_color = Color(0.42, 0.46, 0.62, 1)
 fog_light_energy = 0.4
 fog_density = 0.004
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.04
@@ -154,23 +169,75 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
+; (pass 60, 2026-10-11) the authored rig is suffixed to jesse_bedroom: its time-of-day twin below brings its own
+[node name="Key_DeskLamp__jesse_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.86, 0.88, 0.96, 1)
-light_energy = 0.55
+light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
+[node name="Fill_Window__jesse_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.92, 1)
-light_energy = 0.35
+light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back_Mood" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, -3, 4, 2)
+; Practical at the desk lamp head (blender 0.8,1.70,1.16 → godot 0.8,1.16,-1.70)
+
+; moved onto its fixture by orphan_practical_audit (2026-09-18): the light stood at a template position no lamp occupied
+[node name="Bedside_Lamp_Shade_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, -0.170, 0.840, -4.250)
+light_color = Color(0.72, 0.82, 1.0, 1)
+light_energy = 1.5
+omni_range = 2.8
+shadow_enabled = false
+
+[node name="Back_Mood__jesse_bedroom" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.42, 0.52, 0.74, 1)
 light_energy = 0.2
 shadow_enabled = false
+
+; ── vn_shot pool (2026-08-12, shot_marker_audit) ───────────────
+; This locale had NO insert markers, so its object cues fell to
+; the blind zoom. A small honest pool: the director now borrows
+; from these for any unauthored insert id in this room.
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.05, -1.10)
+rotation = Vector3(-0.1946, -0.3268, 0.0)   ; the desk top + what's on it
+
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.850, -4.602)
+rotation = Vector3(-0.7685, 0.1497, 0.0)   ; the north window
+
+[node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10, 1.00, -2.10)
+rotation = Vector3(-0.5383, -0.0756, 0.0)   ; the bed
+
+; ── vn_shot wave (2026-08-19) · positions authored, aim
+; computed by marker_reaim.py (the post-aim-gate discipline)
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.759, -1.974)
+rotation = Vector3(-0.2618, 0.0000, 0.0)
+
+[node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.950, 1.150, -0.450)
+rotation = Vector3(-0.3285, -1.1812, 0.0)
+
+; ── THE DAY (pass 60): jesse_bedroom_day — the N window
+[node name="Day_Sun__jesse_bedroom_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.5417, 0.4545, 0.0000, 0.6428, 0.7660, -0.7071, 0.5417, -0.4545, 0, 5, -6)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.9
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__jesse_bedroom_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, 0)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.55
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +339,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +358,44 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: his phone (pings / buzzes / texts Ben — face-down on the floor)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.802, 0.386, -1.900)
+rotation = Vector3(-0.2618, 1.5708, 0.0)
+metadata/fov = 42.0
+
+; insert: the Telecaster from its stand, plugged into the practice setting
+[node name="shot_insert_telecaster" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.450, 1.100, -0.220)
+rotation = Vector3(-0.5503, -0.6128, 0.0)
+metadata/fov = 50.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.090, 1.612, -1.599)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.722, 1.612, -3.726)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Lamp_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.800, 1.160, -4.250)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.32
+
+; insert (2026-10-10): his own door, closed behind him ("He closes the door")
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.700, 1.550, -1.700)
+rotation = Vector3(-0.2207, 2.7382, 0.0)
+metadata/fov = 46.0

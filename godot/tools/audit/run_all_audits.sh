@@ -4,8 +4,481 @@
 # audit dimension.
 set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# ── Drive gates (2026-10-13 · the user: "I want nothing more going to a
+# public shared folder. Very serious.") — first, and in every run: no
+# rclone write outside drive_guard.py, and every way past the guard is
+# refused (shared drive, root_folder_id, env overrides, an ownerless
+# folder, another remote, a changed owner). Nonzero fails.
+echo "── drive_write_audit.py ──"
+python3 drive_write_audit.py || exit 1
+echo "── drive_guard_test.py ──"
+python3 drive_guard_test.py | tail -1; python3 drive_guard_test.py >/dev/null || exit 1
+echo ""
 for f in audit_*.py; do
     echo "── $f ──"
     python3 "$f" 2>/dev/null | tail -2
     echo ""
 done
+
+echo "── locale_geometry_audit.py ──"
+python3 locale_geometry_audit.py 2>/dev/null | tail -2
+echo ""
+
+# ── Shot-cue coverage (2026-08-12 · gated 2026-09-11) ──────────
+# A cue that names an object the locale has no marker for used to punch
+# the lens into a wall; since 2026-08-12 the director substitutes, but a
+# blind cue still means the frame is not the one the line asked for.
+# Reached ZERO on 2026-09-11 (1532 object cues across 123 presets) by
+# authoring the missing markers and retargeting the cues whose object
+# does not exist — a knock at a window the cell does not have is a knock
+# on the wall. Nonzero fails.
+echo "── shot_marker_audit.py ──"
+BOUT="$(python3 shot_marker_audit.py 2>/dev/null)" || true
+echo "$BOUT" | tail -2
+BN="$(echo "$BOUT" | tail -1 | grep -oE "^[0-9]+ blind" | grep -oE "^[0-9]+")"
+if [ "${BN:-999}" -gt 0 ]; then
+    echo "$BOUT" | grep "^==\|x  shot_"
+    echo "REGRESSION  $BN blind object cue(s) (ceiling 0)"; exit 1; fi
+echo ""
+
+# ── Preset-vantage gate (2026-08-11) ───────────────────────────
+# Every Background3D camera preset must SEE its locale's geometry
+# (the graustark_ruins preset stood 350m from all four chapters'
+# staging and every one rendered flat brown). Nonzero exit fails.
+echo "── preset_vantage_audit.py ──"
+# Captured (not piped) so a nonzero exit fails the suite under set -e.
+VOUT="$(python3 preset_vantage_audit.py 2>/dev/null)" || {
+    echo "$VOUT" | grep -v "^\["; exit 1; }
+echo "$VOUT" | grep -v "^\[" | tail -2
+echo ""
+
+# ── Marker-aim gate (2026-08-19) ───────────────────────────────
+# Every vn_shot marker is a CAMERA POSE (VnDirector assigns its
+# global_transform to the camera; forward is −Z). A wave of markers
+# shipped facing 180° from their subjects. Nonzero exit fails.
+echo "── marker_aim_audit.py ──"
+# (2026-09-24: the exit status is captured BEFORE the grep filter —
+# `$(audit | grep -v …) || {…}` took grep's status, so this gate could
+# never fail and four misaims rode through suites 13 and 14)
+AOUT="$(python3 marker_aim_audit.py 2>/dev/null)" && ARC=0 || ARC=$?
+AOUT="$(echo "$AOUT" | grep -v "^\[")"   || true
+if [ "$ARC" -ne 0 ]; then
+    echo "$AOUT" | grep -E "MISAIM|misaim"; exit 1; fi
+echo "$AOUT" | tail -2
+echo ""
+
+# ── VN story gate (2026-08-30) ─────────────────────────────────
+# Every directive in every chapter must RESOLVE: bg presets, CG
+# paths, jump targets, moods, beats, panels, bgm/sfx files. The
+# engine degrades gracefully on all of these, which is exactly why
+# they rot unnoticed (ten chapters opened in silence for months —
+# their bgm files never existed). Nonzero exit fails.
+echo "── vn_story_audit.py ──"
+SOUT="$(python3 vn_story_audit.py 2>/dev/null)" || {
+    echo "$SOUT" | grep "PROBLEM"; exit 1; }
+echo "$SOUT" | tail -2
+echo ""
+
+# ── Blender dry-run gate (2026-09-24) ──────────────────────────
+# Every builder runs its REAL kit code against a stand-in bpy. The
+# recorder-based gates accept any arguments, so a builder that dies in
+# Blender passed them all and left its GLB missing on the Deck
+# (chillwave_interior and missing_link_exterior, since the twelfth
+# support pass). Nonzero exit fails.
+# ── Light-direction gate (2026-09-24) ─────────────────────────
+# 32 key/sun/moon/overhead lights pointed UP (a copied Rx(+45) sign
+# slip) and lit ceilings instead of floors. Nonzero exit fails.
+# Doorways (2026-09-24, the user: "doorways obstructed or misaligned"):
+# a GATE since 2026-09-25 — doors set into massings are hosted, not
+# blocked; the last 30 real ones (a bench across a door, a lectern 3 cm
+# inside the clearance, guest chairs at the office door, a display
+# tower in the entry, an ice machine across room 1) were moved. Zero.
+echo "── doorway_audit.py ──"
+DWOUT="$(python3 doorway_audit.py 2>/dev/null)" || {
+    echo "$DWOUT" | grep -E "^(BLOCKED|ADRIFT)" | head -20
+    echo "REGRESSION  doorway_audit found a blocked or adrift door (ceiling 0)"; exit 1; }
+echo "$DWOUT" | tail -1
+echo ""
+
+echo "── light_direction_audit.py ──"
+LOUT="$(python3 light_direction_audit.py 2>/dev/null)" || {
+    echo "$LOUT" | grep -E "^(UPWARD|LEVEL)"; exit 1; }
+echo "$LOUT" | tail -1
+echo ""
+
+echo "── blender_dryrun_audit.py ──"
+DOUT="$(python3 blender_dryrun_audit.py 2>/dev/null)" || {
+    echo "$DOUT" | grep "FAIL"; exit 1; }
+echo "$DOUT" | tail -1
+echo ""
+
+# ── Prop-overlap ZERO-REGRESSION gate (2026-08-11; baseline form 2026-09-22) ──
+# Every locale's clip count is held at or under overlap_baseline.json.
+# The grammar was tightened 2026-09-22 (user: "objects inside other
+# objects") — embed 0.14 → 0.06, tuck 0.30 → 0.20, flex 0.30 → 0.15,
+# contents 0.25 → 0.15 — which surfaced hundreds of real clips at
+# once; the baseline holds them at their counts and each pass lowers
+# it with `prop_overlap_audit.py --write-baseline`. Never raise a
+# count to make the gate pass.
+echo "── prop_overlap_audit.py (zero-regression gate) ──"
+python3 - <<'PYGATE'
+import json
+import os
+import re
+import subprocess
+import sys
+
+base = json.load(open("overlap_baseline.json")).get("counts", {}) if os.path.exists("overlap_baseline.json") else {}
+out = subprocess.run(
+    [sys.executable, "prop_overlap_audit.py", "--all"],
+    capture_output=True, text=True, timeout=1800).stdout
+bad = []
+for m in re.finditer(r"^== (\S+) · \d+ objects · (\d+) clips", out, re.M):
+    name, n = m.group(1), int(m.group(2))
+    if n > base.get(name, 0):
+        bad.append((name, n, base.get(name, 0)))
+total = re.search(r"^(\d+) clip\(s\)", out, re.M)
+print("total: %s clips across the repo" % (total.group(1) if total else "?"))
+# A builder whose main() raises under the recorder falls back to running
+# every build_* alone — coverage survives, but the Deck build is BROKEN
+# (2026-09-23: a NameError in the riverboat's main() passed as "clean"
+# with every part recorded twice). Any partial/ERR line fails the gate.
+broken = re.findall(r"^(\S+)\s+(?:\(partial: |ERR )(.*?)\)?$", out, re.M)
+for name, err in broken:
+    print("BROKEN BUILDER  %-28s %s" % (name, err))
+if broken:
+    sys.exit(1)
+if bad:
+    for name, n, ceil in bad:
+        print("REGRESSION  %-28s %d clips (baseline %d)" % (name, n, ceil))
+    sys.exit(1)
+print("0 regressions: no locale clips more than its baseline")
+PYGATE
+
+# ── Vantage-obstruction gate (2026-09-03) ──────────────────────
+# A wall in the camera's face: the cabin's opening wide stood inside
+# the bed alcove, Elicia's bungalow behind a closet. Every preset
+# casts a ray fan; near-fills and single-surface fills fail. Nonzero
+# exit fails the suite.
+echo "── vantage_obstruction_audit.py ──"
+OOUT="$(python3 vantage_obstruction_audit.py 2>/dev/null)" || {
+    echo "$OOUT" | grep -v "^\["; exit 1; }
+echo "$OOUT" | grep -v "^\[" | tail -2
+echo ""
+
+# ── Marker-obstruction gate (2026-09-07) ───────────────────────
+# The same ray fan over every vn_shot marker (the diner's clock
+# insert faced the upper south wall: a yellow field with a door
+# sliver). NEAR / WALL / EMPTY verdicts; nonzero exit fails.
+# ZERO-REGRESSION CEILING: 17 after the 2026-09-07 reframe passes (128
+# before them; harmony_terrain's five markers skipped as unmeasured): the
+# eleven STUCK subjects are resolved; what remains is mostly cast closeups
+# with a wall 2.4 m behind the subject and two sky-heavy exteriors subjects behind walls from every side, 12 sky
+# frames, the rest non-subject markers with a surface in the lens.
+# Drive it down; never raise it.
+echo "── vantage_obstruction_audit.py --markers ──"
+MARKER_CEILING=0
+MOUT="$(python3 vantage_obstruction_audit.py --markers 2>/dev/null | grep -v "^\[")" || true
+MCOUNT="$(echo "$MOUT" | grep -oE "^[0-9]+ obstructed marker" | grep -oE "^[0-9]+")"
+echo "$MOUT" | tail -1
+if [ "${MCOUNT:-999}" -gt "$MARKER_CEILING" ]; then
+    echo "REGRESSION  $MCOUNT obstructed markers (ceiling $MARKER_CEILING)"; exit 1; fi
+echo ""
+
+# ── Furniture grammar (2026-09-07 · gated 2026-09-08) ──────────
+# Intra-assembly clipping and floating props stay informational
+# (draft 1 still carries noise). CHAIR (facing away from its
+# table), DESK (off the wall) and LANE (a parked car in a travel
+# lane) reached ZERO repo-wide on 2026-09-08 after the Deck's
+# "cars in the middle of streets keeps happening" — those three
+# are now gates. POKE (a post, leg or chair back passing clean through
+# a solid part of its own assembly — the "exploded chair") joined them
+# the same day at 0. Nonzero in any of them fails the suite.
+echo "── furniture_grammar_audit.py ──"
+GOUT="$(python3 furniture_grammar_audit.py 2>/dev/null | grep -v "^\[")" || true
+GLINE="$(echo "$GOUT" | tail -1)"
+echo "$GLINE"
+for CLS in POKE CHAIR DESK LANE BED OUTSIDE; do
+    N="$(echo "$GLINE" | grep -oE "$CLS [0-9]+" | grep -oE "[0-9]+$")"
+    if [ "${N:-999}" -gt 0 ]; then
+        echo "$GOUT" | grep "^   $CLS"
+        echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
+done
+# ── Expression-tint gate (2026-09-11) ─────────────────────────
+# CharLayer's EXPR_TINTS (what the game multiplies a portrait by) and
+# raster_substrate's EXPRESSION_TINTS (what the offline baker writes
+# into a PNG) are the same table twice. The baker held six of the
+# game's thirty-one, so every other expression baked FLAT. Zero.
+echo "── expr_tint_audit.py ──"
+TOUT="$(python3 expr_tint_audit.py 2>/dev/null)" || { echo "$TOUT"; exit 1; }
+echo "$TOUT" | tail -1
+echo ""
+
+# ── Space-map gate (2026-09-11) ───────────────────────────────
+# A gauntlet space lives in three places: the location JSON (the
+# board), the host's SPACE_MAP (world positions) and the gauntlet's
+# hand-copied mirror (standalone). The mirror's own comment said "copy
+# the change here too", and it had rotted: five Magician stations
+# missing, D'Ambrosio's booth_1/booth_6 swapped against the builder's
+# numbering, precipice_door absent. Zero.
+echo "── space_map_audit.py ──"
+SPOUT="$(python3 space_map_audit.py 2>/dev/null)" || { echo "$SPOUT"; exit 1; }
+echo "$SPOUT" | tail -1
+echo ""
+
+# ── Mood-vs-clock gate (2026-09-11) ───────────────────────────
+# A mood is a claim about time and light. ch23_sleep ran five midnight
+# bedrooms under dawn_warm for a month because the mood was placed once
+# and never revisited when the chapter's clock moved. Light-against-dark
+# only; deliberate choices are declared in the tool. Zero.
+echo "── mood_clock_audit.py ──"
+MOUT="$(python3 mood_clock_audit.py 2>/dev/null)" || true
+echo "$MOUT" | tail -1
+MN="$(echo "$MOUT" | tail -1 | grep -oE "[0-9]+ contradicted" | grep -oE "^[0-9]+")"
+if [ "${MN:-999}" -gt 0 ]; then
+    echo "$MOUT" | grep "^MOOD"
+    echo "REGRESSION  $MN mood cue(s) the prose contradicts (ceiling 0)"; exit 1; fi
+echo ""
+
+# ── Music-coverage gate (2026-09-11) ──────────────────────────
+# A chapter whose catalog track list comes back EMPTY is scored by
+# AudioMgr's fallback — the unlocked playlist — so it plays whatever
+# came before it. That happened two ways: 234 scenes no entry named,
+# and 36 entries chapters DID name whose file was never rendered. Six
+# volumes played vol5's four beds. Both gate at zero.
+echo "── music_coverage_audit.py ──"
+MUOUT="$(python3 music_coverage_audit.py 2>/dev/null)" || {
+    echo "$MUOUT" | grep "^SILENT\|^NOFILE" | head -20
+    echo "$MUOUT" | tail -1; exit 1; }
+echo "$MUOUT" | tail -1
+echo ""
+
+# ── Audio-reference gate (2026-09-11) ─────────────────────────
+# Everything the catalog does NOT cover: every assets/audio path in a
+# .gd/.json/.tscn/.tres, and every SFXBank preset a *_BANK_KEYS table
+# routes to. First run: 15 paths that had never existed — the
+# gauntlet's twelve dead .ogg fallbacks, the Fool's two jukebox 45s
+# (usable items that played nothing) and the file gating the Music
+# Player's TAPE REEL skin, which was therefore unreachable. Zero.
+echo "── audio_reference_audit.py ──"
+AROUT="$(python3 audio_reference_audit.py 2>/dev/null)" || {
+    echo "$AROUT" | grep "^NOFILE\|^NOPRESET" | head -20
+    echo "$AROUT" | tail -1; exit 1; }
+echo "$AROUT" | tail -1
+echo ""
+
+# ── Finale-id gate (2026-09-11) ───────────────────────────────
+# TarotGauntletGame branches on finale ids in three places (milestone
+# unlocks, achievement triggers, ending stings). An arm naming an id
+# no finale.json produces never runs and looks like working code: the
+# Priestess block matched six ids from a staging where the board was a
+# recording booth, so no priestess finale milestone could ever fire.
+echo "── finale_id_audit.py ──"
+FIOUT="$(python3 finale_id_audit.py 2>/dev/null)" || {
+    echo "$FIOUT" | grep "^DEAD" | head -20
+    echo "$FIOUT" | tail -1; exit 1; }
+echo "$FIOUT" | tail -1
+echo ""
+
+# ── Inside/out gate (2026-09-11) ──────────────────────────────
+# The prose says where the camera is. The Magician opened on the
+# cathedral interior under two paragraphs of the warehouse seen from
+# the road; the Harmony Creek prelude walked into the Miller kitchen
+# with the street still on screen. Strong place openers only; a
+# window in the two lines before makes an exterior line a view.
+echo "── inside_out_audit.py ──"
+IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
+    echo "$IOOUT" | grep -A1 "^PLACE" | head -30
+    echo "$IOOUT" | tail -1; exit 1; }
+echo "$IOOUT" | tail -1
+echo ""
+
+# ── Placement gate (2026-09-25, the user: "objects just hanging out in
+# the middle of rooms, not against walls") — wall-class pieces off every
+# wall, tall thin slabs reaching no wall, storage tight on a bed. The
+# deliberate ones (a nurse station, a reception desk, a milk crate that
+# is a seat, a wood stove's clearance) are named in DELIBERATE. Zero.
+echo "── placement_audit.py ──"
+PLOUT="$(python3 placement_audit.py 2>/dev/null)" || {
+    echo "$PLOUT" | grep -E "^(OFF_WALL|FREE_SLAB|HALF_SLAB|TIGHT)" | head -20
+    echo "REGRESSION  placement_audit found a piece standing free of its wall (ceiling 0)"; exit 1; }
+echo "$PLOUT" | tail -1
+echo ""
+
+# ── Walkway gate (2026-10-07) ─────────────────────────────────
+# "Looks like shelves blocking shelves and aisles too cramped for
+# pedestrians" (the user). Every store fixture pair at least 0.90 m apart
+# unless they touch as one fixture. Zero.
+echo "── walkway_audit.py ──"
+WKOUT="$(python3 walkway_audit.py 2>/dev/null)" || {
+    echo "$WKOUT" | grep "^CRAMPED" | head -20
+    echo "REGRESSION  walkway_audit found a lane too narrow to walk (ceiling 0)"; exit 1; }
+echo "$WKOUT" | tail -1
+echo ""
+
+# ── Case-access gate (2026-10-07) ─────────────────────────────
+# "The glass case can't be opened by the island obstructing it" (the
+# user). 0.90 m clear in front of every glass-front case's doors. Zero.
+echo "── case_access_audit.py ──"
+CAOUT="$(python3 case_access_audit.py 2>/dev/null)" || {
+    echo "$CAOUT" | grep "^BLOCKED" | head -20
+    echo "REGRESSION  case_access_audit found a case whose doors cannot open (ceiling 0)"; exit 1; }
+echo "$CAOUT" | tail -1
+echo ""
+
+# ── Window-backing gate (2026-10-07) ──────────────────────────
+# Twenty-five rooms built their windows as panes on SOLID walls:
+# LocaleGlass made the glass clear and behind it was plaster — every
+# room read sealed. A pane whose wall is uncut behind it fails. Zero.
+echo "── window_backing_audit.py ──"
+WBOUT="$(python3 window_backing_audit.py 2>/dev/null)" || {
+    echo "$WBOUT" | grep "✗" | head -20
+    echo "REGRESSION  window_backing_audit found a window on a solid wall (ceiling 0)"; exit 1; }
+echo "$WBOUT" | tail -1
+echo ""
+
+# ── Seat-clearance gate (2026-10-08) ──────────────────────────
+# "Chairs facing each other with no room between seems a big problem"
+# (the user, on the hospital waiting room: two rows built FACING, their
+# seat fronts 14 cm apart). Facing seats need 0.75 m between their fronts
+# unless a table stands between them. Zero.
+echo "── seat_clearance_audit.py ──"
+SCOUT="$(python3 seat_clearance_audit.py 2>/dev/null)" || {
+    echo "$SCOUT" | grep "✗" | head -20
+    echo "REGRESSION  seat_clearance_audit found facing seats with no room between (ceiling 0)"; exit 1; }
+echo "$SCOUT" | tail -1
+echo ""
+
+# ── Buried-decor gate (2026-10-09) ──────────────────────────────
+# The overnight run found jerseys, a flag, acoustic foam, a corkboard,
+# commendations, a thermostat and a run of pegboards, mirrors, menu boards
+# and neon backings 4-8 cm INSIDE their walls — placed from the wall's
+# centre line instead of its face; invisible, and every other gate passed
+# them. Wall decor must sit in front of its wall. Zero.
+echo "── buried_decor_audit.py ──"
+BDOUT="$(python3 buried_decor_audit.py 2>/dev/null)" || {
+    echo "$BDOUT" | grep "✗" | head -20
+    echo "REGRESSION  buried_decor_audit found wall decor inside a wall (ceiling 0)"; exit 1; }
+echo "$BDOUT" | tail -1
+echo ""
+
+# ── Scene-syntax gate (2026-09-25) ────────────────────────────
+# highway_101 and small_wood_road were skipped on every contact sheet:
+# `Color(r, g, b)` — Godot's parser wants four arguments — and the
+# whole .tscn failed to load. Constructor arity, declared resource ids,
+# ext_resource paths, node parents. Zero.
+echo "── tscn_syntax_audit.py ──"
+TSOUT="$(python3 tscn_syntax_audit.py 2>/dev/null)" || {
+    echo "$TSOUT" | grep -E "^(ARITY|UNDECL|MISSING|NOPARENT)" | head -20
+    echo "REGRESSION  tscn_syntax_audit found a scene Godot cannot parse (ceiling 0)"; exit 1; }
+echo "$TSOUT" | tail -1
+echo ""
+
+# ── Trip-fight gate (2026-09-12) ──────────────────────────────
+# A [trip:>1] push on a mood that dialled itself under 0.85 is a scene
+# arguing with itself — 85 of them from one mechanical pass, and the
+# Lovers' "garish and weird" opening was one. Zero.
+echo "── trip_fight_audit.py ──"
+TFOUT="$(python3 trip_fight_audit.py 2>/dev/null)" || {
+    echo "$TFOUT" | grep "^FIGHT" | head -20
+    echo "$TFOUT" | tail -1; exit 1; }
+echo "$TFOUT" | tail -1
+echo ""
+
+# ── Wrong-room gate (2026-09-12) ──────────────────────────────
+# One .tscn serves several presets in different AREAS; a closeup
+# resolved by name from the whole file cut a dock scene to a face at
+# the shore, 15.7 m away — 70 cuts in 21 chapters. Per-preset markers
+# (`<name>__<preset>`) fix it; this resolves every closeup cue the way
+# the engine does and fails past 8 m from the preset camera. Zero.
+echo "── wrong_room_audit.py ──"
+WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
+    echo "$WROUT" | grep "^ROOM" | head -20
+    echo "$WROUT" | tail -1; exit 1; }
+echo "$WROUT" | tail -1
+echo ""
+
+# ── Page-length gate (2026-09-12) ─────────────────────────────
+# DialogueBox keeps its full font to 260 visible characters and then
+# shrinks toward half size to fit — "too much text on screen at once,
+# too small and cramped." page_split turned 2,147 nodes into pages at
+# sentence boundaries; nothing over 300 characters ships again.
+# A skill check the reader cannot pass is a lie (2026-09-17): every
+# check's diff against what its skill can have been EARNED before that
+# scene in reading order; a volume that checks a skill it never trains.
+# A practical is a claim about a fixture (2026-09-18): every named
+# practical must have a fixture standing where the light is. Two rooms
+# lit fluorescents in a kerosene cabin and a desk lamp nobody built.
+echo "── orphan_practical_audit.py ──"
+OPOUT="$(python3 orphan_practical_audit.py 2>/dev/null)" && OPRC=0 || OPRC=$?   # status before the filter (2026-09-24)
+OPOUT="$(echo "$OPOUT" | grep -v "^\[build_")"   || true
+if [ "$OPRC" -ne 0 ]; then
+    echo "$OPOUT" | grep -E "^(ORPHAN|DRIFTED)" | head -20
+    echo "REGRESSION  orphan_practical_audit found a light with no fixture (ceiling 0)"; exit 1; fi
+echo "$OPOUT" | tail -1
+echo ""
+
+echo "── vn_skill_audit.py ──"
+SKOUT="$(python3 vn_skill_audit.py 2>/dev/null)" || {
+    echo "$SKOUT" | grep -vE "^\s*$" | head -20
+    echo "REGRESSION  vn_skill_audit found a check the reader cannot pass (ceiling 0)"; exit 1; }
+echo "$SKOUT" | tail -1
+echo ""
+
+echo "── support_audit.py (zero-regression gate) ──"
+SUOUT="$(python3 support_audit.py 2>/dev/null)" || {
+    echo "$SUOUT" | grep -E "REGRESSION" | head -20
+    echo "REGRESSION  support_audit found a locale floating more than its baseline"; exit 1; }
+echo "$SUOUT" | tail -2
+echo ""
+
+echo "── vn_target_audit.py ──"
+TGOUT="$(python3 vn_target_audit.py 2>/dev/null)" || {
+    echo "$TGOUT" | grep -vE "^\s*$" | head -20
+    echo "REGRESSION  vn_target_audit found a choice branch that lands wrong (ceiling 0)"; exit 1; }
+echo "$TGOUT" | tail -1
+echo ""
+
+echo "── page_length_audit.py ──"
+PLOUT="$(python3 page_length_audit.py 2>/dev/null)" || {
+    echo "$PLOUT" | grep "^LONG" | head -20
+    echo "$PLOUT" | tail -1; exit 1; }
+echo "$PLOUT" | tail -1
+echo ""
+
+# ── Locale-ambient gate (2026-09-12) ──────────────────────────
+# The world hum (locale_ambient.json) is the audible layer of a 3D
+# scene — the Music Player ducks to 14% under it. It mapped 108 rooms
+# to ten vol-5 files and left 42 rooms with no hum at all. Every
+# preset a chapter uses must have a bed that exists and belongs to
+# its volume (or is a generic room tone / a declared same-place bed).
+echo "── locale_ambient_audit.py ──"
+LAOUT="$(python3 locale_ambient_audit.py 2>/dev/null)" || {
+    echo "$LAOUT" | grep -E "^(NOHUM|NOFILE|OTHER)" | head -20
+    echo "$LAOUT" | tail -1; exit 1; }
+echo "$LAOUT" | tail -1
+echo ""
+
+# ── Phantom-surface gate (2026-09-10) ─────────────────────────
+# A detail pass that hard-codes a desk/counter/bar origin the builder
+# never put there (eighteen locales had one). Static: reads the x/y/z
+# claims in every builder and checks a box top exists there. Zero.
+echo "── phantom_surface_audit.py ──"
+PHOUT="$(python3 phantom_surface_audit.py 2>/dev/null | grep -v "^\[")" || true
+echo "$PHOUT" | tail -1
+PHN="$(echo "$PHOUT" | tail -1 | grep -oE "[0-9]+ unbacked" | grep -oE "^[0-9]+")"
+if [ "${PHN:-999}" -gt 0 ]; then
+    echo "$PHOUT" | grep "^   L"
+    echo "REGRESSION  $PHN unbacked surface claim(s) (ceiling 0)"; exit 1; fi
+echo ""
+
+# FLOAT reached 2 on 2026-09-09 (two palmetto trunks on terrain samples)
+# after 1408 → 713 → 353 → 102 → 2 across five class passes. ZERO-
+# REGRESSION CEILING 2: drive it down; never raise it.
+FLOAT_CEILING=0
+N="$(echo "$GLINE" | grep -oE "FLOAT [0-9]+" | grep -oE "[0-9]+$")"
+if [ "${N:-999}" -gt "$FLOAT_CEILING" ]; then
+    echo "$GOUT" | grep "^   FLOAT"
+    echo "REGRESSION  $N floating props (ceiling $FLOAT_CEILING)"; exit 1; fi
+echo ""

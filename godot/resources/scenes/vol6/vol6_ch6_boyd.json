@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:nexcorp_fueling_station"
+      "src": "3d:nexcorp_fueling_restroom"
     },
     {
       "t": "hide",
@@ -35,43 +35,96 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd is, at this moment, on the toilet. Boyd is having the worst nine minutes of his professional life. He does not, yet, know this is the worst nine minutes of his professional life. He thinks, instead, that he has the standard kind of stomach bug a man gets from drinking convenience-store coffee at four AM and eating a gas-station burrito at four-fifteen and that the bug will pass in a moment."
+      "text": "[mood:fluorescent_corridor]Boyd is, at this moment, on the toilet. Boyd is having the worst nine minutes of his professional life. He does not, yet, know this is the worst nine minutes of his professional life.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "The bug does not, in fact, pass. The bug intensifies. By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him."
+      "text": "He thinks, instead, that he has the standard kind of stomach bug a man gets from drinking convenience-store coffee at four AM and eating a gas-station burrito at four-fifteen and that the bug will pass in a moment.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "The bathroom does not release him."
+      "text": "The bug does not, in fact, pass. The bug intensifies."
     },
     {
       "t": "narrate",
-      "text": "The Demon attached to the fueling station's plumbing system — a small construct Frasier Temple had instantiated in 2019 and tested twice on a Houston rest area before promoting to operational status — does not have malice toward Boyd. The Demon does not, technically, have feelings about Boyd. The Demon has been given an instruction. The Demon is executing the instruction. The Demon is, in fact, mildly bored, because the instruction is cause moderate gastrointestinal distress for nine minutes, and moderate gastrointestinal distress for nine minutes is, for a Demon of the plumbing class, the equivalent of a very long red light."
+      "text": "By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Demon waits out the red light."
+      "text": "The bathroom does not release him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "At 07:43 the Demon releases Boyd. By the time Boyd staggers out of the bathroom, washes his hands, buys a Gatorade for the rehydration, and stumbles back to pump six —"
+      "text": "The Demon attached to the fueling station's plumbing system — a small construct Frasier Temple had instantiated in 2019 and tested twice on a Houston rest area before promoting to operational status — does not have malice toward Boyd.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "The van is gone. Tomé is gone. Vince is gone."
+      "text": "The Demon does not, technically, have feelings about Boyd. The Demon has been given an instruction. The Demon is executing the instruction.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard, and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished."
+      "text": "The Demon is, in fact, mildly bored, because the instruction is cause moderate gastrointestinal distress for nine minutes, and moderate gastrointestinal distress for nine minutes is, for a Demon of the plumbing class, the equivalent of a very long red light.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/013.ogg"
     },
     {
       "t": "narrate",
-      "text": "He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up. The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in. Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind. The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him."
+      "text": "The Demon waits out the red light.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "But that is a footnote. What matters, at 07:43 on a Friday morning at a NexCorp fueling station off FM-3411, is that the van is gone."
+      "text": "At 07:43 the Demon releases Boyd. By the time Boyd staggers out of the bathroom, washes his hands, buys a Gatorade for the rehydration, and stumbles back to pump six —",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/015.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:nexcorp_fueling_station"
+    },
+    {
+      "t": "narrate",
+      "text": "[mood:morning_bright][shot:establish]The van is gone. Tomé is gone. Vince is gone.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/016.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:closeup boyd]Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard,",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/017.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/018.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert phone]He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/019.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/020.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/021.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/022.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "But that is a footnote. What matters, at 07:43 on a Friday morning at a NexCorp fueling station off FM-3411, is that the van is gone.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/023.mp3"
     },
     {
       "t": "hide",
@@ -79,7 +132,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:nexcorp_fueling_station"
+      "src": "3d:nexcorp_van_cargo"
     },
     {
       "t": "show",
@@ -95,33 +148,39 @@
     },
     {
       "t": "narrate",
-      "text": "Diego Ramos, in the back of the van, is alive. He is, for the first time in five days, in the company of someone who is not paid to hurt him."
+      "text": "Diego Ramos, in the back of the van, is alive. He is, for the first time in five days, in the company of someone who is not paid to hurt him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/028.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "Diego. My name's Doyle. We have you. We're going to a safehouse. We're going to take care of you. You're okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:"
+      "text": "Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/030.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
-      "text": "Sam.",
-      "expr": "neutral"
+      "text": "[shot:closeup diego~]Sam.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/031.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "She's at work, Diego. She's fine. We're going to call her in an hour. You're going to talk to her. Just hold on.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego closes his eyes. He sleeps."
+      "text": "Diego closes his eyes. He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/033.mp3"
     },
     {
       "t": "hide",

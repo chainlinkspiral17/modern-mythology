@@ -1,0 +1,722 @@
+{
+ "notes": "Encounters fire on RIDE at scales 1-3, drawn deterministically from the address hash per terrain. effects: grit/silver/lore deltas. choices cost and pay. The territory is not generated. It is woven.",
+ "by_terrain": {
+  "dust": [
+   {
+    "id": "dry_preacher",
+    "text": "a preacher walks the dust with no water and no complaint. 'the territory,' he says, in the tone of a man finishing an argument you didn't hear the start of.",
+    "choices": [
+     {
+      "label": "ride on",
+      "text": "you leave him to his sermon. the dust takes his voice by the third hex.",
+      "grit": 0
+     },
+     {
+      "label": "share water",
+      "text": "he drinks like a man who forgot he could. 'she watches the middle,' he says, pointing nowhere. that is lore, if you can hold it.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "bones_point",
+    "text": "cattle bones, laid out neat. they point northeast. cattle bones do not point.",
+    "choices": [
+     {
+      "label": "study them",
+      "text": "the arrangement repeats \u00b7 seven bones, one center, six around. you have seen this shape before. you are standing on it.",
+      "lore": 1
+     },
+     {
+      "label": "scatter them",
+      "text": "you kick them apart. it feels good for one hex and wrong for six.",
+      "grit": 1,
+      "lore": -1
+     }
+    ]
+   },
+   {
+    "id": "riderless_horse",
+    "text": "a saddled horse with no rider keeps pace with you for three hexes, polite about the distance. good tack. somebody loved it.",
+    "choices": [
+     {
+      "label": "let it follow",
+      "text": "it follows for one more hex and then doesn't. company is company.",
+      "grit": 1
+     },
+     {
+      "label": "check the saddlebags",
+      "text": "jerky, a bible, a folded map of hexes. the name stitched inside the flap is yours, in handwriting you almost have.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "dust_devil",
+    "text": "a dust devil crosses the trail left to right. a minute on, it crosses back, right to left, along the same line. dust does not do that.",
+    "choices": [
+     {
+      "label": "watch it full turn",
+      "text": "it circles the hex once, clockwise, like something checking a seam. you understand a little more than you want to.",
+      "lore": 1
+     },
+     {
+      "label": "ride through it",
+      "text": "grit in your teeth for an hour. in your coat pocket after: one silver piece that is not yours. it is now.",
+      "grit": -1,
+      "silver": 1
+     }
+    ]
+   },
+   {
+    "id": "night_riders",
+    "text": "four riders at the light's last edge, spread out the way men spread when the question isn't whether. 'toll road,' says the nearest, of a road that isn't one.",
+    "choices": [
+     {
+      "label": "pay the toll",
+      "need_silver": 1,
+      "text": "you pay. they part like a gate that resents being a gate. cheap, considering what the considering would have cost.",
+      "grit": 0
+     },
+     {
+      "label": "ride through",
+      "text": "you put your horse straight at the gap and your hand nowhere in particular. they let you by \u00b7 but the territory noticed what it cost you to seem like it cost you nothing.",
+      "grit": -2
+     }
+    ]
+   },
+   {
+    "id": "water_witcher",
+    "text": "a dowser working the dust with a forked rod. the rod points at the sky and has been for days, by the look of him. 'i don't dig anymore,' he says. 'i just confirm.'",
+    "choices": [
+     {
+      "label": "look up with him",
+      "text": "you look. the sky over that one spot is deeper than sky needs to be. you make yourselves stop. that is lore, and you didn't dig for it.",
+      "lore": 1,
+      "grit": -1
+     },
+     {
+      "label": "leave him to it",
+      "text": "some confirmations want witnesses and some want privacy. the rod creaks as you go, like a door in wind there isn't.",
+      "grit": 0
+     }
+    ]
+   },
+   {
+    "id": "peddler_last",
+    "once": true,
+    "priority": true,
+    "need_flag": "peddler_trusted",
+    "text": "the peddler, a third time, her cart lighter. the mirror rides face-up now, showing sky, just sky, the plainest sky you ever saw. 'whatever you did or didn't do out east,' she says, 'it's stopped straining my wrist.'",
+    "choices": [
+     {
+      "label": "ask what the mirror was for",
+      "text": "'holding a direction still,' she says, 'til somebody dealt with it proper.' she sells you nothing, gives you the whole shape of it, and rolls on toward towns that need salt. the territory has one fewer secret and you're the one holding it.",
+      "lore": 2,
+      "token": "wyrd_peddler_thread"
+     },
+     {
+      "label": "tip your hat and ride",
+      "text": "some threads finish themselves without you pulling. she nods \u00b7 the mirror flashes plain sky \u00b7 that's the whole goodbye, and it's plenty.",
+      "grit": 1,
+      "token": "wyrd_peddler_thread"
+     }
+    ]
+   }
+  ],
+  "bone": [
+   {
+    "id": "salt_peddler",
+    "text": "a peddler with a cart of salt licks and one silver mirror, face-down. 'the mirror's not for sale,' she says, before you ask. you were going to ask.",
+    "choices": [
+     {
+      "label": "buy salt",
+      "text": "salt keeps. so does the way she counted your silver without touching it.",
+      "silver": -1,
+      "grit": 1
+     },
+     {
+      "label": "ask about the mirror",
+      "text": "'it looks east,' she says. 'i keep it face-down so it can't.' she will say nothing else, and the nothing costs you nothing, and teaches plenty.",
+      "lore": 1,
+      "set_flag": "peddler_mirror_asked"
+     }
+    ]
+   },
+   {
+    "id": "bleached_sign",
+    "text": "a town sign, bleached blank. under the white, if you angle your hat's shadow: seven letters, and the seventh is an X.",
+    "choices": [
+     {
+      "label": "note it and ride",
+      "text": "some names want to be forgotten. you oblige, and remember anyway.",
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "jaw_that_fits",
+    "text": "a jawbone in the pan, bleached kind. you hold it up against the light, idle. it fits your face.",
+    "choices": [
+     {
+      "label": "put it down gently",
+      "text": "you set it where it lay, facing the way it faced. some things you are polite to on instinct.",
+      "grit": 0
+     },
+     {
+      "label": "keep it",
+      "text": "it rides in the duffel wrapped in a shirt. some nights it is warm. you learn from it anyway.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "circle_of_horns",
+    "text": "longhorn horns arranged point-out in a circle. no tracks in. no tracks out.",
+    "choices": [
+     {
+      "label": "count them",
+      "text": "seven. you count twice. seven, and the gap where an eighth would close the ring.",
+      "lore": 1
+     },
+     {
+      "label": "take one",
+      "text": "it sells in any township. the circle looks wrong with six, and you elect not to think about it.",
+      "grit": -1,
+      "silver": 1
+     }
+    ]
+   },
+   {
+    "id": "orphan_bell",
+    "text": "a mission bell half-buried in the bone, no mission in a day's ride, no clapper in the bell. on the hour \u00b7 you'd swear \u00b7 it rings anyway, low, from somewhere the metal remembers.",
+    "choices": [
+     {
+      "label": "dig it upright",
+      "text": "you set it standing. the next hour's ring is fuller and grateful about it. hard work, honest pay.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "let it lie",
+      "text": "buried bells ring for the buried. not your congregation. you ride, and the hour rings behind you, muffled, like a thing said into a pillow.",
+      "grit": 0
+     }
+    ]
+   },
+   {
+    "id": "rib_orchard",
+    "text": "ribs planted in rows. PLANTED \u00b7 spacing, furrows, the works. whoever farms this expects a crop, and the bone flats being the bone flats, you cannot rule it out.",
+    "choices": [
+     {
+      "label": "water one row",
+      "need_silver": 1,
+      "text": "you spare water you paid for. nothing sprouts while you watch, which is the orchard being polite. you'll hear about the harvest someday, in a town you haven't reached yet.",
+      "lore": 1
+     },
+     {
+      "label": "keep to the trail",
+      "text": "you don't farm. you especially don't farm THAT. the rows watch you past like a fence-line of opinions.",
+      "grit": 0
+     }
+    ]
+   }
+  ],
+  "scrub": [
+   {
+    "id": "coyote_watch",
+    "text": "a coyote paces you for three hexes at exactly the distance a rifle argues about. it is not hunting. it is reading.",
+    "choices": [
+     {
+      "label": "tip your hat",
+      "text": "the coyote stops. considers. does something with its ears that in a man you'd call laughter. it peels off south.",
+      "grit": 1
+     },
+     {
+      "label": "warning shot",
+      "text": "the shot flattens across the scrub. the coyote does not flinch, which tells you what it is, which is worth the round.",
+      "silver": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "campfire_cold",
+    "text": "a cold campfire, set in a perfect ring, stones from seven different hexes. somebody built a small territory and burned something in the middle of it.",
+    "choices": [
+     {
+      "label": "read the ashes",
+      "text": "hair, paper, a bootlace. an unweaving, done crude and local. whoever did it learned just enough to be dangerous to themselves.",
+      "lore": 1
+     },
+     {
+      "label": "kick it apart and camp",
+      "text": "you sleep in the ring. you dream in six directions at once and wake rested and unsettled in equal measure.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "shepherd_no_flock",
+    "text": "a shepherd grazing nothing on good scrub. 'they're all here,' he says, before you ask.",
+    "choices": [
+     {
+      "label": "agree with him",
+      "text": "'yep,' you say. he nods, satisfied, and so \u2014 somewhere \u2014 does the flock. you feel it agree.",
+      "lore": 1
+     },
+     {
+      "label": "ask where",
+      "text": "he tells you. you are sorry to know. the scrub is thicker on the ride out than it was on the ride in.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "quail_run",
+    "text": "quail burst from the brush and scatter in six directions \u2014 then again, the SAME six directions, from the same brush, twice more.",
+    "choices": [
+     {
+      "label": "note the pattern",
+      "text": "one to each ring hex, never the center. you note it the way you'd note a rifle in a window.",
+      "lore": 1
+     },
+     {
+      "label": "flush them again",
+      "text": "same six. it is, and you will not be argued out of this, funny. the territory permits laughter. it keeps that too.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "brush_fire",
+    "text": "a line of brush fire burning in place. not spreading \u00b7 burning IN PLACE, tidy as a fence, and the smoke goes up in a rope instead of a sheet.",
+    "choices": [
+     {
+      "label": "ride the gap through",
+      "text": "there's a gap the width of a decision. you take it at a canter. singed, certain, alive \u00b7 and briefly you saw what the fire was penning IN, which is worth knowing about the scrub forever.",
+      "grit": -2,
+      "lore": 1
+     },
+     {
+      "label": "ride the long way round",
+      "text": "an hour lost to prudence. the fire watches you take the long way with the air of a toll collector who's seen your kind before.",
+      "grit": -1
+     }
+    ]
+   },
+   {
+    "id": "sheep_that_counts",
+    "text": "one sheep, no flock, standing square in your path. it looks at you. it looks PAST you. it is, you realize with the specific chill the scrub saves for this, counting something behind you.",
+    "choices": [
+     {
+      "label": "turn and look",
+      "text": "nothing behind you but hexes. the sheep finishes its count anyway, satisfied, and walks off. whatever number you were, you were the last of them.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "don't give it the satisfaction",
+      "text": "you hold the sheep's eye the whole way past, which is not a dignity you expected to defend today. the count, wherever it stood, stands unfinished. good.",
+      "grit": 1
+     }
+    ]
+   }
+  ],
+  "mesa": [
+   {
+    "id": "black_stair",
+    "text": "stairs cut into the black mesa, older than cutting. they go up nine steps and stop at nothing.",
+    "choices": [
+     {
+      "label": "climb them",
+      "text": "from the ninth step the territory shows its weave \u00b7 hexes in hexes, out to the shimmer. you climb down slow, the way you'd back away from an animal.",
+      "lore": 2,
+      "grit": -1
+     },
+     {
+      "label": "ride around",
+      "text": "some stairs are questions. you decline to be an answer.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "lightning_scar",
+    "text": "old lightning fused the sand at the butte's base \u2014 a glass root, branching. the branches rejoin. lightning does not rejoin.",
+    "choices": [
+     {
+      "label": "trace it to the end",
+      "text": "it takes till dark. every branch returns. you ride away knowing what the territory is a picture of.",
+      "grit": -1,
+      "lore": 2
+     },
+     {
+      "label": "chip a piece",
+      "text": "glass sells. the piece in your pocket branches and rejoins, small, like a souvenir of the argument.",
+      "silver": 1
+     }
+    ]
+   },
+   {
+    "id": "closer_mesa",
+    "text": "the mesa reads a day off by eye and three hexes by riding, and on the third hex it is behind you. you did not pass it.",
+    "choices": [
+     {
+      "label": "look back",
+      "text": "it is exactly where it should be, which is the trick. distance here is a courtesy, extended and withdrawn.",
+      "lore": 1
+     },
+     {
+      "label": "don't look back",
+      "text": "you keep your eyes on your hands and your hands on the reins. some tests you pass by declining them.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "hand_prints",
+    "text": "pictograph hands on the red rock, dozens, old past reckoning. one of them fits yours. not NEARLY fits. fits.",
+    "choices": [
+     {
+      "label": "press your hand to it",
+      "text": "cool rock, then warm, then a pulse that is either yours or the mesa's, and by the time you take your hand away the distinction has stopped mattering. that is lore of the oldest kind.",
+      "lore": 1,
+      "grit": -1
+     },
+     {
+      "label": "keep your hands to yourself",
+      "text": "a print that fits is an invitation, and out here you don't sign things you haven't read. the hands watch you go, palms out \u00b7 warding, or waving.",
+      "grit": 0
+     }
+    ]
+   },
+   {
+    "id": "talkative_echo",
+    "text": "this canyon answers before you speak. 'evening,' it says, in your voice, while your mouth is still deciding on it.",
+    "choices": [
+     {
+      "label": "ask it a real question",
+      "need_lore": 2,
+      "text": "you have learned enough to know what to ask an echo that runs ahead of you: not WHAT'S COMING but FROM WHERE. it answers with a direction that is none of the six, and the knowing settles into you like sediment.",
+      "lore": 1
+     },
+     {
+      "label": "say nothing at all",
+      "text": "you ride the canyon in a silence you make the echo carry alone. by the far end it's repeating things you'd have never said, sulking. you win, whatever this contest was.",
+      "grit": 1
+     }
+    ]
+   }
+  ],
+  "salt": [
+   {
+    "id": "salt_writing",
+    "text": "the pan is written on. wind-script, miles of it, legible only at a canter. you catch one phrase: SHE IS NOT YOUR SISTER EITHER.",
+    "choices": [
+     {
+      "label": "keep reading",
+      "text": "the script degrades into repetition \u00b7 the same seven marks, tiling to the horizon. you stop before you learn to read them in your sleep.",
+      "lore": 1,
+      "grit": -1
+     },
+     {
+      "label": "look at your boots",
+      "text": "a man who reads everything the territory writes will be writing for it inside a year. you ride on your own two eyes.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "perfect_reflection",
+    "text": "a stretch of pan holds a reflection with no water in it. yours is slower than you by about half a breath.",
+    "choices": [
+     {
+      "label": "wait for it to catch up",
+      "text": "you stand still a long time. it arrives. you don't ask where it was. it doesn't volunteer.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "tip your hat",
+      "text": "it tips first. you ride on with the specific dignity of a man declining to be impressed.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "salt_licked_smooth",
+    "text": "a boulder licked smooth and low by cattle. nobody runs cattle within four hexes of here. nobody has.",
+    "choices": [
+     {
+      "label": "taste it",
+      "text": "salt, and under the salt a name, the way a coin under cloth is still a coin. you carry the shape of it out.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "lean on it and eat",
+      "text": "best lunch in a week. whatever licks it smooth keeps different hours than you. that suits you both.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "peddler_return",
+    "once": true,
+    "priority": true,
+    "need_flag": "peddler_mirror_asked",
+    "text": "the peddler again, crossing the pan, her cart cutting a wake in the crust. the mirror rides where it always rides, face-down. 'you asked about it once,' she says. 'you can carry it to the cart's far side, if your arms are honest.'",
+    "choices": [
+     {
+      "label": "carry the mirror",
+      "set_flag": "peddler_trusted",
+      "text": "you carry it face-down the length of the cart. it is heavier than glass and lighter than what it's for, and it TUGS, gently, eastward, the whole way, like a compass that wants to be a door. she takes it back without thanks. thanks isn't what this was.",
+      "lore": 1,
+      "grit": -1
+     },
+     {
+      "label": "decline politely",
+      "text": "'wise,' she says, in the tone of a woman marking a ledger. the offer will not come again, and you will wonder about the far side of that cart for the rest of the ride.",
+      "grit": 0
+     }
+    ]
+   },
+   {
+    "id": "floor_of_heaven",
+    "text": "rain fell here yesterday, the pan's one annual mercy, and the whole flat has gone mirror. you are riding on sky. the horse has opinions about the clouds underfoot.",
+    "choices": [
+     {
+      "label": "ride it slow",
+      "text": "you cross heaven's floor at a walk, and for one hex the territory is exactly as beautiful as it keeps threatening to be. the water dries behind you like the lid coming down.",
+      "grit": 2
+     },
+     {
+      "label": "study the reflection",
+      "text": "you look down long enough to check the sky below against the sky above. they differ in one bird. you file that away with the things you'll never be able to spend or drop.",
+      "lore": 1,
+      "grit": -1
+     }
+    ]
+   }
+  ],
+  "gallows": [
+   {
+    "id": "empty_nooses",
+    "text": "the gallows wood. every tree grows one bare loop of branch, low, at exactly the height. no rope in the territory was ever needed here.",
+    "choices": [
+     {
+      "label": "ride through slow",
+      "text": "you keep your hat on and your eyes forward. the wood lets you carry that dignity out the far side. it keeps a copy.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "ride around",
+      "text": "half a day lost. money well spent.",
+      "silver": -1
+     }
+    ]
+   },
+   {
+    "id": "rope_counter",
+    "text": "a man beneath the crossbeam, counting nooses with a moving lip. he starts over when he sees you. 'always eight,' he says. 'and always seven.'",
+    "choices": [
+     {
+      "label": "count them yourself",
+      "text": "eight. then, counting careful with a finger: seven. both counts are correct. you tuck that away with the compass card.",
+      "lore": 1
+     },
+     {
+      "label": "offer him work",
+      "text": "he declines, kindly, like a man with a position. you leave him provisions. the counting keeps better company than most jobs.",
+      "silver": -1,
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "carved_initials",
+    "text": "initials cut in the gallows post, sap still bright. yours. the cuts are your knife's width.",
+    "choices": [
+     {
+      "label": "carve a date under them",
+      "text": "you pick a date you have no plans for. the sap takes it. now the post and you disagree about something specific, which is better.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "leave them be",
+      "text": "a man can share initials. a man can share a knife width. you ride out at a pace you'd defend as unhurried.",
+      "grit": 0
+     }
+    ]
+   },
+   {
+    "id": "patient_rope",
+    "text": "one rope hangs new among the old wrong trees \u00b7 clean hemp, good coil, tied by somebody who cared about the work. a paper pinned to it: FOR SALE. CHEAP. ASK IT WHY.",
+    "choices": [
+     {
+      "label": "buy it and burn it",
+      "need_silver": 1,
+      "text": "you don't ask it why. you pay the tree \u00b7 the silver stays in the bark like a knot \u00b7 and you burn the rope on open ground. the wood's shade goes one shade lighter. money well spent, if spending is what that was.",
+      "grit": 1,
+      "lore": 1
+     },
+     {
+      "label": "leave it hanging",
+      "text": "not every sale wants a buyer. some want a WITNESS, and now it's had one. the rope creaks as you go, patient as its trade.",
+      "grit": -1
+     }
+    ]
+   },
+   {
+    "id": "name_carver",
+    "text": "a man carving names into the widest tree, neat as a mason. dozens done. he doesn't look up. 'yours is next,' he says, 'unless.'",
+    "choices": [
+     {
+      "label": "ask 'unless what'",
+      "text": "'unless you're still using it.' you say that you are. he nods, skips a space, carves on. the gap in the column where your name isn't is the best thing you'll see all day.",
+      "grit": 1
+     },
+     {
+      "label": "read the finished names",
+      "text": "you know three of them. two you'd heard were still alive, and one you'd heard was you, once, in a town that got the story wrong. the carver's list is not a list of the dead. it's worse and more useful.",
+      "lore": 1,
+      "grit": -1
+     }
+    ]
+   }
+  ],
+  "township": [
+   {
+    "id": "knows_your_name",
+    "text": "the township knows your name one hex before you give it. the barkeep pours what you drink. the room does not stare, which is how you know it wants to.",
+    "choices": [
+     {
+      "label": "drink and listen",
+      "text": "talk of the sisters, in the way weather is talked about \u00b7 the north one's a hard winter, the east one's a red dawn. compass talk. lore, if you sort it.",
+      "silver": -1,
+      "lore": 1
+     },
+     {
+      "label": "buy silver",
+      "text": "the smith stamps rounds while you wait and asks nothing, which costs extra.",
+      "silver": 2,
+      "grit": -1
+     }
+    ]
+   },
+   {
+    "id": "wanted_poster",
+    "text": "a wanted poster with no face and no name \u00b7 just a reward and an eight-pointed star where the likeness goes. the reward is high. nobody in town will meet your eye about it.",
+    "choices": [
+     {
+      "label": "study the star",
+      "text": "eight points. four you can name by now. four the poster does not label and the town does not see \u00b7 you watched a woman's eyes slide off it like water off wax.",
+      "lore": 2
+     }
+    ]
+   },
+   {
+    "id": "hotel_ledger",
+    "text": "the hotel ledger stands open to tomorrow's page. your name is on it, checked in, in the clerk's hand. the clerk denies nothing.",
+    "choices": [
+     {
+      "label": "sign today's line too",
+      "text": "two of you in the book now, a day apart. the clerk stamps both without comment. you understand the territory keeps a copy.",
+      "lore": 1
+     },
+     {
+      "label": "take the room",
+      "text": "clean sheets, no dreams, the best sleep the territory owns. in the morning tomorrow's entry is gone, or rather: it is today's.",
+      "silver": -1,
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "sheriff_patient",
+    "text": "the sheriff watches you ride in, both thumbs in his belt, and writes nothing down. his book is out. his pencil is sharp.",
+    "choices": [
+     {
+      "label": "ask what he's waiting for",
+      "text": "'the eighth,' he says, and spits, and does not elaborate, and you both look at the compass card neither of you mentioned.",
+      "lore": 1
+     },
+     {
+      "label": "buy him coffee",
+      "text": "he drinks it on the porch beside you in a silence with furniture in it. good lawman. wrong territory.",
+      "silver": -1,
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "locked_church",
+    "text": "the church is locked. from the INSIDE, the hinges say \u00b7 forty years, the paint says. the town walks past it the way you walk past a sleeping dog you respect.",
+    "choices": [
+     {
+      "label": "put your ear to the door",
+      "need_lore": 1,
+      "text": "knowing what you know, you know what to listen FOR: not voices \u00b7 turning. pages, or a key, or a season. inside, something is patiently getting to the end of something very long, and it is not on the last chapter yet.",
+      "lore": 1
+     },
+     {
+      "label": "respect the door",
+      "text": "locked from the inside is a completed sentence. you tip your hat to the hinges and move on, and somewhere behind the boards a page turns, or doesn't.",
+      "grit": 0
+     }
+    ]
+   },
+   {
+    "id": "off_year_election",
+    "text": "bunting on the hall, a ballot box on a barrel, a line of townsfolk voting in solemn silence. there is no notice of what the question is. everyone seems to know. nobody seems glad to.",
+    "choices": [
+     {
+      "label": "ask what's on the ballot",
+      "text": "the clerk looks at you with forty years of civic patience. 'same as every year it comes up.' you learn precisely nothing and somehow slightly too much \u00b7 the line shuffles forward \u00b7 a woman weeps quietly into the box like it's a well.",
+      "lore": 1,
+      "grit": -1
+     },
+     {
+      "label": "wait out the count",
+      "text": "at dusk the clerk burns the ballots unopened and announces, to visible relief, that the matter is settled for another term. the town buys itself a round. you accept one on the house for witnessing.",
+      "grit": 1
+     }
+    ]
+   }
+  ]
+ },
+ "special": {
+  "wrong_hex": {
+   "id": "the_wrong_hex",
+   "hex": [
+    -6,
+    -5
+   ],
+   "text": "the manual's map calls this hex scrub. the previous owner's hand-drawn map calls it scrub. the GROUND has decided on salt \u00b7 one perfect pan the size of a hex, shores and all, sitting where every map that ever loved this territory agrees it isn't. a note in the case, in old pencil: THE MAP IS WRONG WHERE THE WORLD IS. KEEP BOTH.",
+   "choices": [
+    {
+     "label": "keep both",
+     "set_flag": "wrong_hex_done",
+     "token": "wyrd_wrong_hex_found",
+     "text": "you don't correct either map. the wrongness is the landmark \u00b7 the one hex where the weave shows its knot. you mark nothing, remember everything, and the salt crunches agreement underfoot. that is lore, the heaviest kind: the kind that was checked.",
+     "lore": 2
+    },
+    {
+     "label": "trust the ground",
+     "set_flag": "wrong_hex_done",
+     "token": "wyrd_wrong_hex_found",
+     "text": "the ground is the only witness that was here for the whole thing. you ride the pan and let the maps argue in your saddlebag. by the far shore you understand the note in the case a hex too late to thank anybody.",
+     "lore": 1,
+     "grit": 1
+    }
+   ]
+  }
+ }
+}

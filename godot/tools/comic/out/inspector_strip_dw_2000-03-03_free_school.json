@@ -1,0 +1,62 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2000-03-03_free_school",
+      "strip_id": "dw_2000-03-03_free_school",
+      "title": "Free school",
+      "date": "2000-03-03",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "B",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; GULLY — aged 21, stocky boy with a round face, easy slouch; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. GULLY usually wears backwards blue cap, faded green hoodie, muddy tan work boots. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Friday. Gully's uncle's shack. Gully hears. 'You turned down free school.' 'It's not free.' 'It's free.' 'It costs four years.' Gully looks at the bait tank for four panels' worth of a beat. Panel 1: brush-pen black-and-white, xerox grain, a stocky teenager with a net at a bait tank in a shack, a thin teenager on a crate, a small dog (in this panel: GULLY, WOOD, BARNABY (the dog)). Gully says \"You turned down free school.\". Wood says \"It's not free.\". Gully says \"It's free.\". Wood says \"It costs four years.\". Panel 2: brush-pen black-and-white, xerox grain, close-up of a stocky teenager staring down into a bait tank, no words (in this panel: GULLY). No dialogue in this panel. Panel 3: brush-pen black-and-white, xerox grain, the same close-up of a teenager looking into a bait tank, unchanged, no words (in this panel: GULLY). No dialogue in this panel. Panel 4: brush-pen black-and-white, xerox grain, a stocky teenager turning from a bait tank to say something plain to a thin teenager on a crate (in this panel: GULLY, WOOD). Gully says \"Four years is nothing, Woody.\". Wood says \"Easy for you.\". Gully says \"Yeah. It is. That's what I'm telling you.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\" beside a tiny stylized gull, two strokes. Reference @gully_17 is the model sheet for GULLY: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @barnaby is the model sheet for BARNABY (the dog): match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @gully_17 for the character the strip's Gully at 17; @wood_20 for the character Wood at 20-23; @barnaby for the character Barnaby.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 20, thin young man with a slouch, three days' stubble, dark hair grown longer; GULLY — aged 21, stocky boy with a round face, easy slouch; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs. Clothes and props: as described here, not from the reference. Panel 1: a stocky teenager with a net at a bait tank in a shack, a thin teenager on a crate, a small dog (in this panel: GULLY, WOOD, BARNABY (the dog)). Gully: \"You turned down free school.\"; Wood: \"It's not free.\"; Gully: \"It's free.\"; Wood: \"It costs four years.\". Panel 2: close-up of a stocky teenager staring down into a bait tank, no words (in this panel: GULLY). No text. Panel 3: the same close-up of a teenager looking into a bait tank, unchanged, no words (in this panel: GULLY). No text. Panel 4: a stocky teenager turning from a bait tank to say something plain to a thin teenager on a crate (in this panel: GULLY, WOOD). Gully: \"Four years is nothing, Woody.\"; Wood: \"Easy for you.\"; Gully: \"Yeah. It is. That's what I'm telling you.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @gully_17 is the model sheet for GULLY. Reference @wood_20 is the model sheet for WOOD. Reference @barnaby is the model sheet for BARNABY (the dog).",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "gully_17",
+          "id": "sheet_gully_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "gully_17",
+            "era1"
+          ]
+        },
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "barnaby",
+          "id": "sheet_barnaby",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 3,
+          "why": [
+            "barnaby"
+          ]
+        }
+      ]
+    }
+  ]
+}

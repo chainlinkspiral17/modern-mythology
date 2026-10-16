@@ -1,0 +1,67 @@
+# Recovered Meshy models (2026-09-25/26 batch) → roster slugs.
+# Named from the thumbnails in sheet order; the batch ran in roster
+# order, and the pictures agree. Lines starting with # are skipped.
+# Use:  python3 godot/tools/meshy_recover.py assign godot/tools/recovered_mapping_2026-09-26.txt
+
+# --- vol5 (already in the game from the first Hero Studio run; the
+#     recovered file is the same batch, so this only refreshes them) ---
+01a0da3c-8ee1-72ec-9c5f-209d61f3092c john_frank
+01a0da46-760e-7279-a331-8092fcddcdca frasier_temple
+01a0da4a-b84c-7499-a878-dfe4e3c45838 elicia_temple
+01a0da59-b855-7691-b854-d628306a65fc nicola
+01a0da5f-c3ad-7109-bbb4-e02486089753 dante_dambrosio
+01a0da7a-7ee6-749c-8f1c-b04a5ee66e83 antonio
+01a0dacf-3bac-7014-9c7c-fdc84742b912 alberto
+
+# --- vol5, new ---
+01a0da67-86b1-7758-9495-3ae9964b4a74 quentin_paul
+01a0da6c-16eb-7129-ae2d-97a6c5dd0a24 mackenzie_roberts
+01a0da74-4b54-7397-9cad-42165625eae5 philip_roberts
+01a0da80-e6c8-73a9-abad-f2760c33a53c douglas_forte
+# 01a0da7e-a6dd-74c2-aee1-787731a50292 douglas_forte   (the A-pose duplicate; swap the two lines to use it)
+01a0da86-be7c-7181-ab34-a2f50cf49085 joanna_lemoine
+01a0da8d-83bf-70ae-8dfd-5205f6661884 erica_campbell
+01a0da91-d8d1-77a5-85c3-64c56413a566 anna_logue
+01a0da95-8f91-71f2-bf70-82cd876ba639 natalie_david
+01a0da9b-5fb8-75f2-b1c5-0ee49d0050b2 alice_newsom
+01a0daa6-6908-7502-9da3-8179e126f631 jimmy_daigle
+# 01a0da9f-5d30-7596-b74f-8fbf6eb62088 jimmy_daigle    (hard hat on; duplicate)
+# 01a0daab-7c21-7685-a843-c77b82fd9fa4 ?               (woman, green skirt with a "3" emblem — sits between Jimmy and Aria; The Third grown? not assigned)
+01a0dabc-5670-762c-94a3-1279d899d561 aria_third
+01a0dac2-46e5-759f-81e1-503e3afaf1b3 the_frog
+01a0dac6-d173-7628-b69e-30231ff8f9f7 dickens_dean
+01a0dad4-355d-73f0-b44f-f79d0c894f71 maya_daigle
+01a0dad9-2c0a-7652-b26d-111386549940 sammy
+01a0dadf-7e70-74b2-ae0d-500859a423d6 hector
+01a0dae6-81a3-77a3-b1a4-233b55324283 gloria_reyes
+01a0daf4-2686-729b-891c-1d1a1f751d89 the_stranger
+01a0daff-e78c-76de-8d80-027e8832eedf miriam
+01a0db05-e6fc-76c3-ad99-3b82b0100351 father_amato
+
+# --- demons ---
+01a0db0a-f497-7640-ba3b-3afc67c8e28f the_demon
+01a0db0f-2049-772a-89e2-87d17d7275ef the_drifter
+
+# --- vol2 ---
+01a0db32-e720-7173-b56c-88590cdff1fe david_jarvis
+
+# --- vol6 ---
+01a0db54-8f04-76b2-bb1c-7c3732ddef05 rick_cosmic
+# 01a0db4f-6267-7679-a301-ef0bdafd78ff rick_cosmic     (duplicate)
+01a0db5f-6b84-7617-8520-15c2d722fce9 skip_donnelly
+01a0db64-8ad3-7589-a412-e6c78fad91ba tanya_horne
+01a0db68-5b93-72f2-b297-b5ae2fefcc09 carl_reno
+01a0db6c-0ab8-762a-8d50-2e7b9b672dba carl_drummer
+01a0db75-d0da-74b7-8c78-9dda538127c4 jesse_henderson
+01a0db7a-46d8-77d9-aa72-eb86ff117662 ben_kowalski
+01a0db7d-d13f-74ce-835c-22a0cfbad4d3 bianca_miller
+01a0db82-1ef6-7006-a472-1bf52250b465 chief_miller
+01a0db86-911a-744a-98b8-1b43d09682ea graciela_ramos
+01a0db89-e5f0-74d2-b1f6-de287b0c6023 linda_caldwell
+01a0db90-c7c3-75e6-952e-e685d1811ebf curtis
+# 01a0db8d-614c-759f-a852-e8f9148d4b55 curtis          (duplicate)
+01a0db95-114e-72c9-8f17-a17ee3661d5b thomas_henderson
+01a0db9a-7a18-7006-aa2e-ccfbfbff7f46 ramirez
+01a0db9f-fc30-7788-bb34-f72f9588b810 claire_moyer
+01a0dba6-ec82-77a8-a54d-ff93bf38c542 vince_kane
+01a0dbad-42ee-7074-921e-4398ec968313 coach_guidry

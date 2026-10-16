@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "the fall reopening",
+    "composer": "RANCH audio room \u00b7 1998 masters, 2002 cart",
+    "for": "the ending screens",
+    "notes": "The summer theme, resolved and unhurried \u00b7 whatever the sign says, the melody keeps its word."
+  },
+  "tempo_bpm": 84,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "C4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C5",
+          "bar": 1,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "G4",
+          "bar": 2,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E4",
+          "bar": 2,
+          "beat": 4,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "F4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E4",
+          "bar": 3,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D4",
+          "bar": 3,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.42
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.13,
+      "notes": [
+        {
+          "pitch": "C3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "F3",
+          "bar": 3,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "C3",
+          "bar": 4,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

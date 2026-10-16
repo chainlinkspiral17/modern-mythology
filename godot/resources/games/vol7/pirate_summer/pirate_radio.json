@@ -1,0 +1,35 @@
+{
+  "id": "pirate_radio",
+  "notes": "The shortwave in the boathouse rafters picks up an unlicensed broadcast on a variable-drift frequency around 6.925 MHz.  The broadcaster identifies as 'STATION 1600' though on this receiver it drifts to 1600.3 by nightfall.  The Sam who plays Estuary 3 recognizes this station · it's the same 1600 AM voice that speaks the night-12 word.\n\nEach broadcast fragment is authored per-day.  Tuning on the correct day discovers the fragment's fact + reveals its content in a transient.  Sam can tune any day; empty days return static.\n\nCross-Oneironautics · the station is the same signal Estuary 3 tunes into on radio_1600_static_voice_night_5 and radio_1600_static_voice_night_12_sam.  A player of both games will hear it here first.",
+
+  "fragments": [
+    { "id": "radio_sunday",
+      "day": 0,
+      "fact": "pirate_radio_sunday",
+      "line": "STATIC · '...station one six hundred point three.  broadcasting on the tide.  we know you're new.  welcome to Sweetgum, listener.  we've been here a while.'  STATIC · CUT" },
+    { "id": "radio_monday",
+      "day": 1,
+      "fact": "pirate_radio_monday",
+      "line": "STATIC · '...tonight's word is · sedge.  as in sedge wren.  a bird nobody's favorite bird is.  keep listening.'  STATIC · CUT" },
+    { "id": "radio_tuesday",
+      "day": 2,
+      "fact": "pirate_radio_tuesday",
+      "line": "STATIC · '...for the twelve-year-old at the closing-bonfire seat, who is walking tonight · we see you.  we are not counselors.  we don't count you.  keep walking.'  STATIC · CUT" },
+    { "id": "radio_wednesday",
+      "day": 3,
+      "fact": "pirate_radio_wednesday",
+      "line": "STATIC · '...at 44 degrees, 45 minutes north · a ship named for a saint who did not exist.  she is at anchor.  she has been at anchor since 1873.  she is still there for those who look.'  STATIC · CUT" },
+    { "id": "radio_thursday",
+      "day": 4,
+      "fact": "pirate_radio_thursday",
+      "line": "STATIC · '...there is a fisherman at the pond who is not a fisherman.  we see him too.  he is not, tonight, the reason.  the reason is on the island.  keep listening.'  STATIC · CUT" },
+    { "id": "radio_friday",
+      "day": 5,
+      "fact": "pirate_radio_friday",
+      "line": "STATIC · '...volta.  the Portuguese word for return.  we know a man who has been holding it in his mouth for six years.  he will sing it tonight.  we recommend the fire.'  STATIC · CUT" },
+    { "id": "radio_saturday",
+      "day": 6,
+      "fact": "pirate_radio_saturday",
+      "line": "STATIC · '...goodbye, listener.  the summer is going.  we are not.  we broadcast every summer.  you know the frequency.  station one six hundred point three · until August.'  STATIC · CUT" }
+  ]
+}

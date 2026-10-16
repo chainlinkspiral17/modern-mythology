@@ -1,0 +1,3076 @@
+#!/usr/bin/env python3
+"""Concept image → Meshy 3D pipeline for the VN cast and hero props.
+
+Two stages per roster entry, run together or separately:
+
+  image   Generate concept art from the roster prompt with Google
+          (Gemini image models / Imagen) or Runway (gen4_image and the
+          other text_to_image models). Optionally also a side + back
+          view (multi-view) using the front image as a reference.
+          Candidates land in  assets/concept/meshy/<slug>/ ; the chosen
+          front view is copied to  <slug>/front.png .
+
+  mesh    Send front.png (or front + side + back) to Meshy image-to-3d
+          (multi-image-to-3d when several views exist), poll, download
+          the GLB straight to the canonical path the game already
+          expects:
+              hero  → assets/3d/characters/heroes/<file>
+              demon → assets/3d/characters/demons/<file>
+              prop  → assets/3d/props/<file>
+
+The roster (tools/meshy_roster.json) is the single source of truth for
+who/what exists, the prompts, and the canonical filenames.  The HTML
+front-end (tools/hero_uploader/index.html) is a viewer/queue builder on
+top of this script; run `serve` to drive everything from the browser.
+
+Requirements (stdlib only — urllib, json, base64, http.server):
+  - MESHY_API_KEY       or  tools/.meshy_key      (msy_...)
+  - GOOGLE_API_KEY      or  tools/.google_key     (AIza...)  [Google provider]
+  - RUNWAYML_API_KEY    or  tools/.runway_key     (key_...)  [Runway provider]
+  Key files are gitignored.  Only the providers you use need a key.
+
+Usage:
+  python3 godot/tools/meshy_pipeline.py list                     # roster + status
+  python3 godot/tools/meshy_pipeline.py list --kind prop
+  python3 godot/tools/meshy_pipeline.py image frasier_temple --provider google
+  python3 godot/tools/meshy_pipeline.py image 'vol6_*' --provider runway --count 2
+  python3 godot/tools/meshy_pipeline.py image frasier_temple --multiview
+  python3 godot/tools/meshy_pipeline.py pick frasier_temple frasier_temple_google_gemini-2.5-flash-image_01.png
+  python3 godot/tools/meshy_pipeline.py mesh frasier_temple --texture
+  python3 godot/tools/meshy_pipeline.py run all --provider google --texture --dry-run
+  python3 godot/tools/meshy_pipeline.py serve                    # http://127.0.0.1:8765/hero_uploader/
+  python3 godot/tools/meshy_pipeline.py keys                     # paste keys (hidden), save + test
+  python3 godot/tools/meshy_pipeline.py doctor                   # where are the keys, do they work
+
+Selectors are roster slugs, globs on slug, `vol5`/`vol6`/`vol7`,
+`hero`/`demon`/`prop`, or `all`.
+"""
+
+import argparse
+import base64
+import fnmatch
+import json
+import mimetypes
+import os
+import re
+import shutil
+import sys
+import threading
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+import uuid
+from datetime import datetime, timezone
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent          # godot/
+TOOLS = REPO / "tools"
+if str(TOOLS) not in sys.path:      # drive_guard sits beside this file
+    sys.path.insert(0, str(TOOLS))
+ROSTER_PATH = TOOLS / "meshy_roster.json"
+CONCEPT_ROOT = REPO / "assets" / "concept" / "meshy"
+MANIFEST_PATH = CONCEPT_ROOT / "manifest.json"
+CHAR_ROOT = REPO / "assets" / "3d" / "characters"
+OUT_DIRS = {
+    "hero": CHAR_ROOT / "heroes",
+    "demon": CHAR_ROOT / "demons",
+    "prop": REPO / "assets" / "3d" / "props",
+    # ART (2026-10-12): 2D pictures that live ON the world's surfaces — the
+    # face Lena paints on the alley wall, the photo of Sam in Diego's mirror,
+    # a poster. Generated like any concept image, then INSTALLED as the
+    # picture itself (no Meshy); the game lays it on the surface the entry's
+    # `apply` rows name (scripts/vn/HeroArt.gd) and hides the box stand-in.
+    "art": REPO / "assets" / "art" / "hero",   # (assets/art/<stick>/ is the slowsticks' tracked art)
+}
+ART_EXTS = (".png", ".jpg", ".jpeg", ".webp")
+ART_FACINGS = ("+x", "-x", "+y", "-y", "up")
+KEY_FILES = {
+    "google": TOOLS / ".google_key",
+    "runway": TOOLS / ".runway_key",
+    "openai": TOOLS / ".openai_key",      # the same file the comic tool reads
+    "meshy": TOOLS / ".meshy_key",
+}
+KEY_ENVS = {
+    "google": ["GOOGLE_API_KEY", "GEMINI_API_KEY"],
+    "runway": ["RUNWAYML_API_KEY"],
+    "openai": ["OPENAI_API_KEY"],
+    "meshy": ["MESHY_API_KEY"],
+}
+
+VIEWS = ("front", "side", "back")
+SLUG_RE = re.compile(r"[^a-z0-9._-]+")
+
+# ── Google (Gemini API) ─────────────────────────────────────────────────────
+GOOGLE_BASE = "https://generativelanguage.googleapis.com/v1beta"
+# family: "gemini" → models/<m>:generateContent (accepts reference images)
+#         "imagen" → models/<m>:predict          (text only, no references)
+GOOGLE_MODELS = {
+    "gemini-2.5-flash-image":        "gemini",
+    "gemini-3.1-flash-image":        "gemini",
+    "gemini-3-pro-image-preview":    "gemini",
+    "imagen-4.0-generate-001":       "imagen",
+    "imagen-4.0-fast-generate-001":  "imagen",
+    "imagen-4.0-ultra-generate-001": "imagen",
+}
+GOOGLE_DEFAULT_MODEL = "gemini-2.5-flash-image"
+GOOGLE_ASPECTS = {"1:1", "3:4", "4:3", "9:16", "16:9", "2:3", "3:2", "4:5", "5:4", "21:9"}
+
+# ── Runway (dev API) ────────────────────────────────────────────────────────
+RUNWAY_BASE = "https://api.dev.runwayml.com/v1"
+RUNWAY_API_VERSION = "2024-11-06"
+# family decides which `ratio` strings the model accepts.
+RUNWAY_MODELS = {
+    "gen4_image":            "gen4",
+    "gen4_image_turbo":      "gen4",     # requires 1-3 reference images
+    "gemini_2.5_flash":      "gemini",
+    "gemini_image3.1_flash": "gemini",
+    "gemini_image3_pro":     "gemini",
+    "gpt_image_2":           "gpt",
+    "seedream5_pro":         "seedream",
+    "seedream5_lite":        "seedream",
+}
+RUNWAY_DEFAULT_MODEL = "gen4_image"
+# aspect (roster) → ratio (Runway) per family
+RUNWAY_RATIOS = {
+    "gen4":     {"1:1": "1024:1024", "3:4": "1080:1440", "4:3": "1440:1080",
+                 "9:16": "1080:1920", "16:9": "1920:1080"},
+    "gemini":   {"1:1": "1024:1024", "3:4": "896:1152", "4:3": "1152:896",
+                 "9:16": "768:1344", "16:9": "1344:768", "2:3": "832:1248",
+                 "3:2": "1248:832"},
+    "gpt":      {"1:1": "1920:1920", "3:4": "1440:1920", "4:3": "1920:1440",
+                 "9:16": "1088:1920", "16:9": "1920:1088"},
+    "seedream": {"1:1": "1024:1024", "3:4": "1080:1440", "4:3": "1440:1080",
+                 "9:16": "1080:1920", "16:9": "1920:1080"},
+}
+RUNWAY_REF_TAG_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]{2,15}$")
+
+# ── OpenAI (GPT Image — the ChatGPT image models) ──────────────────────────
+OPENAI_BASE = "https://api.openai.com/v1"
+# family "free": any WIDTHxHEIGHT (multiples of 16, ratio 1:3..3:1) — exact
+#               aspect ratios; "std": only 1024x1024 / 1536x1024 / 1024x1536.
+OPENAI_MODELS = {
+    "gpt-image-2":            "free",
+    "gpt-image-2.5-sunburst": "free",    # precision tier
+    "gpt-image-2.5-flare":    "free",    # fast tier
+    "gpt-image-1.5":          "std",
+    "gpt-image-1":            "std",
+    "gpt-image-1-mini":       "std",
+    "chatgpt-image-latest":   "std",
+}
+OPENAI_DEFAULT_MODEL = "gpt-image-2"
+OPENAI_QUALITIES = ("low", "medium", "high", "auto")
+OPENAI_SIZES = {
+    "free": {"1:1": "1024x1024", "3:4": "1152x1536", "4:3": "1536x1152", "9:16": "864x1536",
+             "16:9": "1536x864", "2:3": "1024x1536", "3:2": "1536x1024", "4:5": "1024x1280",
+             "5:4": "1280x1024", "21:9": "1792x768"},
+    "std":  {"1:1": "1024x1024", "3:4": "1024x1536", "4:3": "1536x1024", "9:16": "1024x1536",
+             "16:9": "1536x1024", "2:3": "1024x1536", "3:2": "1536x1024", "4:5": "1024x1536",
+             "5:4": "1536x1024", "21:9": "1536x1024"},
+}
+
+# ── Meshy (OpenAPI v1) ──────────────────────────────────────────────────────
+MESHY_BASE = "https://api.meshy.ai/openapi/v1"
+MESHY_MODEL_TYPES = {"standard", "smart-topology"}
+MESHY_TEXTURE_RES = {"2k", "4k", "8k"}
+MESHY_POSES = {"a-pose", "t-pose"}
+MESHY_TEST_KEY = "msy_dummy_api_key_for_test_mode_12345678"
+
+TERMINAL_MESHY = {"SUCCEEDED", "FAILED", "CANCELED", "CANCELLED", "EXPIRED"}
+TERMINAL_RUNWAY = {"SUCCEEDED", "FAILED", "CANCELLED"}
+
+POLL_INTERVAL_IMAGE = 4.0
+POLL_INTERVAL_MESH = 10.0
+POLL_TIMEOUT_IMAGE = 60 * 8
+POLL_TIMEOUT_MESH = 60 * 45          # textured image-to-3d can take a while
+SUBMIT_RETRIES = 4
+SUBMIT_BACKOFF = 2.0
+MAX_REF_BYTES = 5 * 1024 * 1024      # Runway data-URI reference cap
+
+# Rough planning numbers only (USD). Vendors move these; check dashboards
+# before a big run.
+COST_HINTS = {
+    "google:gemini": 0.04,
+    "google:imagen": 0.04,
+    "runway": 0.08,
+    "openai": 0.07,            # medium quality; high is roughly 3x
+    "meshy:draft": 0.20,       # untextured image-to-3d
+    "meshy:textured": 0.80,    # image-to-3d with texture + PBR
+}
+
+
+# ── Small utilities ─────────────────────────────────────────────────────────
+
+def now_iso():
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def slugify(s):
+    s = (s or "").strip().lower().replace(" ", "_")
+    s = SLUG_RE.sub("", s)
+    return s[:80] or "untitled"
+
+
+KEY_PREFIX_HINT = {
+    "google": ("AIza", "a Gemini API key from https://aistudio.google.com/apikey (starts with AIza…)"),
+    "runway": ("key_", "a Runway dev API key from https://dev.runwayml.com (starts with key_…)"),
+    "openai": ("sk-", "an OpenAI API key from https://platform.openai.com/api-keys (starts with sk-…)"),
+    "meshy": ("msy_", "a Meshy API key from https://www.meshy.ai/api (starts with msy_…)"),
+}
+
+
+def clean_key(raw):
+    """Tolerate the ways a key gets pasted: quotes, `export NAME=…`, a
+    `Bearer ` prefix, a BOM, CRLF, trailing comments."""
+    k = (raw or "").replace("\ufeff", "").strip()
+    k = k.splitlines()[0].strip() if k else ""
+    k = re.sub(r"^(export\s+)?[A-Z_]+\s*=\s*", "", k)          # export MESHY_API_KEY=…
+    k = k.strip().strip("\"'`").strip()
+    k = re.sub(r"^Bearer\s+", "", k, flags=re.I)
+    k = k.split("#")[0].strip() if " #" in k else k
+    return k.strip().strip("\"'`")
+
+
+def key_source(provider):
+    """Return (key, source). source is 'env:NAME', 'file:<path>' or ''."""
+    for env in KEY_ENVS[provider]:
+        k = clean_key(os.environ.get(env, ""))
+        if k:
+            return k, f"env:{env}"
+    kf = KEY_FILES[provider]
+    if kf.exists():
+        try:
+            k = clean_key(kf.read_text(errors="replace"))
+        except OSError:
+            k = ""
+        if k:
+            return k, f"file:{rel(kf)}"
+    return "", ""
+
+
+def get_api_key(provider, required=True):
+    """Env var first, then the gitignored key file. Returns '' if missing
+    and not required."""
+    k, _ = key_source(provider)
+    if k or not required:
+        return k
+    kf = KEY_FILES[provider]
+    envs = " or ".join(KEY_ENVS[provider])
+    sys.exit(
+        f"{provider} API key not found.\n"
+        f"  Either:  export {KEY_ENVS[provider][0]}=...\n"
+        f"  Or:      echo '...' > {kf.relative_to(REPO.parent)}\n"
+        f"           (env {envs}; the key file is gitignored.)\n"
+        f"  Or:      paste it in Hero Studio → KEYS, or run: meshy_pipeline.py doctor"
+    )
+
+
+def save_key(provider, raw):
+    """Write a cleaned key to the gitignored key file (mode 600)."""
+    k = clean_key(raw)
+    if not k:
+        raise ValueError("empty key")
+    kf = KEY_FILES[provider]
+    kf.parent.mkdir(parents=True, exist_ok=True)
+    kf.write_text(k + "\n")
+    try:
+        os.chmod(kf, 0o600)
+    except OSError:
+        pass
+    return kf
+
+
+def mask_key(k):
+    if not k:
+        return ""
+    if len(k) > 12:
+        return f"{k[:6]}…{k[-4:]} ({len(k)} chars)"
+    return f"{k[:3]}… ({len(k)} chars)"
+
+
+def _classify_http_error(msg, provider):
+    m = re.search(r"HTTP (\d{3})", msg)
+    code = int(m.group(1)) if m else 0
+    if code in (401, 403):
+        return f"rejected ({code}): the key is wrong, revoked, or not {KEY_PREFIX_HINT[provider][1]}"
+    if code == 400 and provider == "google" and ("API_KEY_INVALID" in msg or "API key not valid" in msg):
+        return "rejected (400 API_KEY_INVALID): not a valid Gemini API key — " + KEY_PREFIX_HINT["google"][1]
+    if code == 429:
+        return "key works but the account is rate-limited / out of quota (429)"
+    if code == 402:
+        return "key works but the account has no credits (402)"
+    if code:
+        return f"unexpected HTTP {code}: {msg[-200:]}"
+    if "CERTIFICATE" in msg.upper() or "SSL" in msg.upper():
+        return "TLS error reaching the API (network/proxy/cert): " + msg[-160:]
+    if "urlopen error" in msg or "Name or service not known" in msg or "timed out" in msg.lower():
+        return "network error: cannot reach the API host (" + msg[-160:] + ")"
+    return msg[-240:]
+
+
+PLACEHOLDER_RE = re.compile(r"^(AIza|key_|msy_|sk-)?[.…_\-x*]*$", re.I)
+MIN_KEY_LEN = 20
+
+
+def placeholder_reason(key):
+    """Why this string cannot be a real key ('' if it might be)."""
+    if not key:
+        return ""
+    if PLACEHOLDER_RE.match(key) or key.endswith("...") or key.endswith("…"):
+        return (f"this is the placeholder text {key!r} from the README, not a key — "
+                "paste the real key (Hero Studio → KEYS, or: meshy_pipeline.py keys)")
+    if len(key) < MIN_KEY_LEN:
+        return f"only {len(key)} characters — real keys are 35+; paste the whole key"
+    if " " in key:
+        return "contains a space — paste only the key"
+    return ""
+
+
+def check_key(provider, key):
+    """One cheap authenticated call per provider. Returns {ok, message}."""
+    if not key:
+        return {"ok": False, "message": "no key: " + KEY_PREFIX_HINT[provider][1]}
+    why = placeholder_reason(key)
+    if why:
+        return {"ok": False, "message": "not a key: " + why}
+    warn = ""
+    pref = KEY_PREFIX_HINT[provider][0]
+    if not key.startswith(pref):
+        warn = f" (note: expected the key to start with {pref!r})"
+    try:
+        if provider == "meshy":
+            r = http_json("GET", f"{MESHY_BASE}/balance", headers={"Authorization": f"Bearer {key}"}, timeout=30)
+            bal = r.get("result", r.get("balance"))
+            return {"ok": True, "message": f"ok — balance {bal} credits" + warn}
+        if provider == "runway":
+            r = http_json("GET", f"{RUNWAY_BASE}/organization",
+                          headers={"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}, timeout=30)
+            bal = r.get("creditBalance", "?")
+            return {"ok": True, "message": f"ok — {bal} credits" + warn}
+        if provider == "openai":
+            r = http_json("GET", f"{OPENAI_BASE}/models", headers={"Authorization": f"Bearer {key}"}, timeout=30)
+            ids = sorted(m.get("id", "") for m in r.get("data", []))
+            img = [i for i in ids if i.startswith(("gpt-image", "chatgpt-image"))]
+            if not img:
+                return {"ok": True, "message": "ok — key works, but it lists no GPT Image models "
+                        "(the organization may need verifying: platform.openai.com/settings/organization/general)" + warn}
+            return {"ok": True, "message": f"ok — {len(img)} GPT Image model(s): {', '.join(img[:4])}" + warn}
+        if provider == "google":
+            r = http_json("GET", f"{GOOGLE_BASE}/models?pageSize=5", headers={"x-goog-api-key": key}, timeout=30)
+            n = len(r.get("models", []))
+            return {"ok": True, "message": f"ok — Gemini API reachable ({n}+ models listed)" + warn}
+    except RuntimeError as e:
+        return {"ok": False, "message": _classify_http_error(str(e), provider) + warn}
+    except (urllib.error.URLError, OSError, ValueError) as e:
+        return {"ok": False, "message": _classify_http_error(str(e), provider) + warn}
+    except Exception as e:  # noqa: BLE001 — a doctor must not crash the runner
+        return {"ok": False, "message": f"check failed: {type(e).__name__}: {e}"[:300]}
+    return {"ok": False, "message": "unknown provider"}
+
+
+def key_report(providers=None, check=True):
+    out = {}
+    for prov in providers or list(KEY_FILES):
+        k, src = key_source(prov)
+        row = {"present": bool(k), "source": src, "masked": mask_key(k),
+               "file": rel(KEY_FILES[prov]), "env": KEY_ENVS[prov][0]}
+        if check:
+            row.update(check_key(prov, k))
+        else:
+            row.update({"ok": None, "message": ""})
+        out[prov] = row
+    return out
+
+
+def cmd_keys(args):
+    """Interactive: prompt for each key (input hidden), save, test."""
+    import getpass
+    provs = args.providers or list(KEY_FILES)
+    bad = [x for x in provs if x not in KEY_FILES]
+    if bad:
+        sys.exit(f"unknown provider(s) {bad}; choose from {sorted(KEY_FILES)}")
+    print("Paste each key and press Enter (input is hidden; leave blank to keep the current one).")
+    for prov in provs:
+        cur, src = key_source(prov)
+        hint = KEY_PREFIX_HINT[prov][1]
+        print(f"\n{prov}: {hint}")
+        if cur:
+            print(f"  current: {mask_key(cur)} from {src}")
+        try:
+            raw = getpass.getpass(f"  {prov} key: ")
+        except (EOFError, KeyboardInterrupt):
+            print("\naborted"); return 1
+        k = clean_key(raw)
+        if not k:
+            print("  (kept)")
+            continue
+        why = placeholder_reason(k)
+        if why:
+            print(f"  NOT SAVED — {why}")
+            continue
+        kf = save_key(prov, k)
+        print(f"  saved → {rel(kf)}  ({mask_key(k)})")
+        r = check_key(prov, k)
+        print(f"  test: {'OK' if r['ok'] else 'BAD'} — {r['message']}")
+        env_set = [e for e in KEY_ENVS[prov] if os.environ.get(e)]
+        if env_set:
+            print(f"  note: env {env_set[0]} is set in this shell and takes precedence over the file")
+    print("\nrun `meshy_pipeline.py doctor` any time to re-test.")
+    return 0
+
+
+def _git_head():
+    try:
+        import subprocess
+        return subprocess.run(["git", "-C", str(REPO.parent), "log", "-1", "--format=%h %s"],
+                              capture_output=True, text=True, timeout=5).stdout.strip()[:70] or "?"
+    except Exception:  # noqa: BLE001
+        return "?"
+
+
+# ── SAVE TO GIT (the page's button) ─────────────────────────────────
+# What Hero Studio produces that git should keep: the installed GLBs,
+# each character's chosen front image + the manifest (un-ignored
+# 2026-09-26), and the roster. Candidates and recovered/ stay ignored.
+GIT_SAVE_PATHS = [
+    "godot/assets/3d/characters",
+    "godot/assets/3d/props",
+    "godot/assets/art/hero",
+    "godot/assets/concept/meshy",
+    "godot/assets/concept/scenes",
+    "godot/tools/meshy_roster.json",
+    "godot/tools/drive_manifest.json",
+    # the voice importer + the AUDIO page (2026-10-01): their audio is on
+    # the Drive; git keeps the scene "voice" keys, the music catalog
+    # entries and the record of what came in
+    "godot/resources/scenes",
+    "godot/resources/music_catalog.json",
+    "godot/tools/voice_import_state.json",
+    "godot/tools/voice_import_report.md",
+    "godot/tools/audio_sent.json",
+    # big files live on Google Drive, not in git (2026-09-30, the user:
+    # "I don't want to crowd up git with large models and files") — even
+    # a model git already tracks is not re-committed when it changes
+    ":(exclude,glob)**/*.glb",
+    ":(exclude,glob)**/*.png",
+    ":(exclude,glob)**/*.jpg",
+    ":(exclude,glob)**/*.jpeg",
+    ":(exclude,glob)**/*.webp",
+    ":(exclude,glob)**/*.ogv",
+    ":(exclude,glob)**/*.mp3",
+    ":(exclude,glob)**/*.ogg",
+    ":(exclude,glob)**/*.wav",
+    ":(exclude,glob)**/*.webm",
+]
+_git_lock = threading.Lock()
+
+
+def _git(*args, timeout=60):
+    import subprocess
+    r = subprocess.run(["git", "-C", str(REPO.parent), *args], capture_output=True, text=True, timeout=timeout)
+    return r.returncode, (r.stdout or "").strip(), (r.stderr or "").strip()
+
+
+def _save_pathspecs():
+    """GIT_SAVE_PATHS minus the paths that do not exist yet (git add refuses
+    a pathspec that matches nothing — a checkout with no props folder) and
+    minus the paths .gitignore excludes whole (2026-10-14: PAINT OR PASS's
+    godot/assets/concept/scenes/ is Drive-only; once the Deck had that
+    folder, `git add -A -- … concept/scenes …` refused the whole add —
+    "The following paths are ignored" — and no SAVE got past its first
+    step from 2026-10-11 on)."""
+    out = []
+    for p in GIT_SAVE_PATHS:
+        if p.startswith(":"):
+            out.append(p)
+            continue
+        if not (REPO.parent / p).exists():
+            continue
+        code, _, _ = _git("check-ignore", "-q", p, timeout=10)
+        if code == 0:            # ignored whole: its files go to Drive, not git
+            continue
+        out.append(p)
+    return out
+
+
+def git_status():
+    """{branch, head, unsaved: [paths], unpushed: n, error?} for the page's badge."""
+    try:
+        code, branch, err = _git("rev-parse", "--abbrev-ref", "HEAD", timeout=10)
+        if code:
+            return {"error": err or "not a git checkout", "unsaved": [], "unpushed": 0}
+        _, porcelain, _ = _git("status", "--porcelain", "--untracked-files=all", "--", *_save_pathspecs(), timeout=30)
+        unsaved = [ln[3:] for ln in porcelain.splitlines() if ln.strip()]
+        unpushed = 0
+        code, out, _ = _git("rev-list", "--count", "@{u}..HEAD", timeout=10)
+        if code == 0 and out.isdigit():
+            unpushed = int(out)
+        elif branch != "HEAD":
+            code2, out2, _ = _git("rev-list", "--count", f"origin/{branch}..HEAD", timeout=10)
+            unpushed = int(out2) if code2 == 0 and out2.isdigit() else -1   # -1: no remote branch yet
+        return {"branch": branch, "head": _git_head(), "unsaved": unsaved, "unpushed": unpushed,
+                "drive": drive_status()}
+    except Exception as ex:  # noqa: BLE001
+        return {"error": str(ex), "unsaved": [], "unpushed": 0, "drive": drive_status()}
+
+
+def _commit_push(message, steps):
+    """git add the Hero Studio paths, commit, push. Appends to steps;
+    returns (ok, status). A rejected push is rebased once and retried."""
+    st = git_status()
+    if st.get("error"):
+        steps.append(st["error"])
+        return False, st
+    branch = st["branch"]
+    if branch == "HEAD":
+        steps.append("the checkout is not on a branch (detached HEAD) — check out a branch first")
+        return False, st
+    if st["unsaved"]:
+        specs = _save_pathspecs()
+        code, out, err = _git("add", "-A", "--", *specs)
+        if code and "ignored by one of your .gitignore" in err:
+            # belt and braces: drop whatever git names as ignored and retry
+            named = {ln.strip() for ln in err.splitlines() if ln.strip() and not ln.startswith(("The following", "hint:"))}
+            specs = [p for p in specs if p not in named]
+            code, out, err = _git("add", "-A", "--", *specs)
+        if code:
+            steps.append(f"git add failed: {err}")
+            return False, git_status()
+        n = len(st["unsaved"])
+        msg = message or f"Hero Studio: {n} file{'s' if n != 1 else ''} saved from the tool ({datetime.now().strftime('%Y-%m-%d %H:%M')})"
+        code, out, err = _git("commit", "-q", "-m", msg)
+        if code:
+            steps.append(f"git commit failed: {err or out}")
+            return False, git_status()
+        steps.append(f"committed {n} file{'s' if n != 1 else ''}: {msg}")
+    else:
+        code, out, _ = _git("rev-list", "--count", f"origin/{branch}..HEAD", timeout=10)
+        if code == 0 and out.strip() == "0":
+            steps.append("nothing new to commit")
+            return True, git_status()
+    for attempt in (1, 2):
+        code, out, err = _git("push", "-u", "origin", f"HEAD:{branch}", timeout=300)
+        if code == 0:
+            steps.append(f"pushed to origin/{branch}")
+            return True, git_status()
+        text = (err or out)
+        if attempt == 1 and ("rejected" in text or "fetch first" in text or "non-fast-forward" in text):
+            steps.append("push rejected (the branch moved on the server) — rebasing onto it")
+            # --autostash: the Deck usually has an unrelated dirty file (project.godot); it must not block the save
+            code2, out2, err2 = _git("pull", "--rebase", "--autostash", "origin", branch, timeout=300)
+            if code2:
+                _git("rebase", "--abort", timeout=30)
+                steps.append(f"rebase failed and was undone: {(err2 or out2)[-400:]}")
+                return False, git_status()
+            steps.append("rebased; pushing again")
+            continue
+        steps.append(f"push failed: {text[-400:]}")
+        return False, git_status()
+    return False, git_status()
+
+
+def git_save_push(message=None):
+    """SAVE: git FIRST (the small files — scene JSON, roster, manifest), then
+    the big files to Google Drive, then the updated manifest to git.
+
+    The order changed 2026-10-01: a 7,553-file voice upload ran past its
+    2-hour limit on the Deck and the crash took the commit with it — the
+    vol 6 voice keys stayed on the Deck only. Git no longer waits on the
+    Drive; the Drive upload resumes where it stopped on the next SAVE."""
+    steps = []
+    with _git_lock:
+        ok, st = _commit_push(message, steps)
+        if not ok:
+            return {"ok": False, "steps": steps, "status": st}
+        drive_ok = True
+        ds = drive_status()
+        if ds["configured"]:
+            try:
+                dres = drive_push()
+            except Exception as ex:  # noqa: BLE001
+                dres = {"ok": False, "steps": [f"Google Drive upload stopped: {ex}"]}
+            steps += dres["steps"]
+            drive_ok = dres["ok"]
+            if not drive_ok:
+                steps.append("the files uploaded so far are recorded; SAVE again to carry on from there")
+        elif ds["pending"]:
+            drive_ok = False
+            steps.append(f"Google Drive is not set up — {ds['pending']} big file(s) are NOT backed up. "
+                         "Run: bash godot/tools/drive_setup.sh")
+        # the manifest (what the Drive now holds) — even after a partial upload
+        ok2, st = _commit_push("Hero Studio: Drive manifest (" + datetime.now().strftime('%Y-%m-%d %H:%M') + ")", steps)
+        return {"ok": drive_ok and ok2, "steps": steps, "status": st}
+
+
+# ── GOOGLE DRIVE (the big files) ────────────────────────────────────
+# Models and pictures live in a Drive folder, not in git. rclone does the
+# transfer (godot/tools/drive_setup.sh installs it and signs in once,
+# scope drive.file: it sees only the files it made). A small manifest in
+# git — every file's size and md5 — says what the Drive holds, so any
+# checkout can `drive-pull` the models it lacks. `copy`, never `sync`:
+# nothing on the Drive is ever deleted by the tool.
+DRIVE_REMOTE = os.environ.get("MM_DRIVE_REMOTE", "gdrive:ModernMythology")
+# (2026-10-13, the user: "my google drive should be on my google drive, not
+# the one model nation drive … flag one model nation drive not to use, as
+# that is a shared project, that I have no permission over.") The project's
+# files go to the owner's My Drive and NEVER to a shared drive: a push
+# through a connection that points at one is refused (drive_write_block).
+# godot/tools/drive_rescue.py moved the files that had gone there.
+DRIVE_DENY_SHARED = {"0AEnZu3oDWBFuUk9PVA": "One Model Nation"}
+DRIVE_MANIFEST = TOOLS / "drive_manifest.json"
+DRIVE_DIRS = [
+    "godot/assets/3d/characters/heroes",
+    "godot/assets/3d/characters/demons",
+    "godot/assets/3d/props",
+    "godot/assets/concept/meshy",
+    "godot/assets/art/hero",             # ART: pictures laid on the world's surfaces (HeroArt.gd)
+    "godot/assets/concept/scenes",       # PAINT OR PASS — generations + composites
+    "godot/assets/video",                # the opening movie (install_intro_video.sh)
+    "godot/assets/audio/voice",          # Voice Studio lines (import_voice_dropins.sh)
+    "godot/assets/audio/drive",          # music + sound sent from the AUDIO page
+]
+DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp", ".ogv", ".mp3", ".ogg", ".wav"}
+_md5_cache = {}
+_drive_lock = threading.Lock()
+DRIVE_LIVE = False      # the CLI sets it: rclone shows its progress in the terminal
+
+
+def _rclone():
+    import shutil as _sh
+    found = _sh.which("rclone")
+    if found:
+        return found
+    local = Path.home() / ".local" / "bin" / "rclone"
+    return str(local) if local.exists() else None
+
+
+def _drive_remote_name():
+    r = DRIVE_REMOTE
+    return r.split(":", 1)[0] + ":" if ":" in r and not r.startswith("/") else None
+
+
+def _drive_remote_conf():
+    """The rclone settings of the project's Drive connection ({} if unknown)."""
+    rc = _rclone()
+    name = _drive_remote_name()
+    if not rc or not name:
+        return {}
+    import subprocess
+    try:
+        out = subprocess.run([rc, "config", "dump"], capture_output=True, text=True, timeout=20).stdout
+        return json.loads(out or "{}").get(name[:-1], {})
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+# The Studio's code as it was when this process started: a Studio left
+# running across a `git pull` keeps the OLD code in memory (2026-10-13: an
+# unguarded SAVE from such a process re-created the folder on the shared
+# drive). SAVE refuses until the Studio is restarted.
+_CODE_FILES = [Path(__file__).resolve(), TOOLS / "drive_guard.py"]
+_CODE_STAMP = {str(p): (p.stat().st_mtime if p.exists() else 0.0) for p in _CODE_FILES}
+
+
+def _code_changed():
+    return [p.name for p in _CODE_FILES if (p.stat().st_mtime if p.exists() else 0.0) != _CODE_STAMP[str(p)]]
+
+
+def drive_write_block(deep=False):
+    """Why the project must not write to Drive now, or "". Every upload goes
+    through drive_guard (Google is asked who owns the destination; a shared
+    drive has no owner and is refused). `deep` runs Google's check; the page's
+    status poll uses the config-only check."""
+    changed = _code_changed()
+    if changed:
+        return (f"STOPPED: {', '.join(changed)} changed on disk since this Hero Studio started (a pull?). "
+                f"Restart it first: bash godot/tools/hero_studio.sh. Nothing was uploaded.")
+    try:
+        import drive_guard
+        if deep:
+            drive_guard.verify_cached(DRIVE_REMOTE)
+        else:
+            drive_guard.verify_path_only(DRIVE_REMOTE)
+            td = (_drive_remote_conf().get("team_drive") or "").strip()
+            if td:
+                raise drive_guard.DriveRefused(
+                    f"the Drive connection points at {DRIVE_DENY_SHARED.get(td, 'a shared drive')} ({td}) — "
+                    f"run: python3 godot/tools/drive_rescue.py")
+    except Exception as ex:  # noqa: BLE001 — any doubt refuses
+        return f"STOPPED: {ex} Nothing was uploaded."
+    return ""
+
+
+def drive_configured():
+    rc = _rclone()
+    if not rc:
+        return False
+    name = _drive_remote_name()
+    if name is None:              # a local path (tests): always usable
+        return True
+    import subprocess
+    try:
+        out = subprocess.run([rc, "listremotes"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:  # noqa: BLE001
+        return False
+    return name in out.split()
+
+
+def _drive_local_files():
+    out = []
+    for d in DRIVE_DIRS:
+        root = REPO.parent / d
+        if not root.exists():
+            continue
+        for p in root.rglob("*"):
+            if p.is_file() and p.suffix.lower() in DRIVE_EXTS:
+                out.append(p)
+    return out
+
+
+def _md5(p):
+    import hashlib
+    st = p.stat()
+    key = (str(p), st.st_size, st.st_mtime_ns)
+    if key not in _md5_cache:
+        h = hashlib.md5()
+        with open(p, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
+        _md5_cache[key] = h.hexdigest()
+    return _md5_cache[key]
+
+
+def load_drive_manifest():
+    try:
+        return json.loads(DRIVE_MANIFEST.read_text())
+    except (OSError, ValueError):
+        return {"remote": DRIVE_REMOTE, "files": {}}
+
+
+def drive_pending():
+    """Local model/picture files the Drive manifest does not hold as they are."""
+    man = load_drive_manifest().get("files", {})
+    pend = []
+    for p in _drive_local_files():
+        r = str(p.relative_to(REPO.parent))
+        m = man.get(r)
+        if not m or m.get("size") != p.stat().st_size or m.get("md5") != _md5(p):
+            pend.append(r)
+    return pend
+
+
+def drive_status():
+    try:
+        pend = drive_pending()
+    except Exception:  # noqa: BLE001
+        pend = []
+    return {"configured": drive_configured(), "remote": DRIVE_REMOTE, "pending": len(pend),
+            "pending_files": pend[:12], "rclone": bool(_rclone()), "blocked": drive_write_block()}
+
+
+def _record_on_drive(paths):
+    """Write these local files into the manifest as held by the Drive."""
+    man = load_drive_manifest()
+    files = man.setdefault("files", {})
+    now = now_iso()
+    for r in paths:
+        p = REPO.parent / r
+        if p.is_file():
+            files[r] = {"size": p.stat().st_size, "md5": _md5(p), "at": now}
+    man["remote"] = DRIVE_REMOTE
+    DRIVE_MANIFEST.write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
+
+
+def drive_push():
+    """Copy every big file the Drive lacks up to it, in chunks (one per
+    folder: a voice scene, the heroes, …), recording each chunk in the
+    manifest as it lands — an interrupted upload resumes, not restarts.
+
+    Only the pending files are sent (--files-from, --no-traverse), so a
+    SAVE does not list thousands of remote files to find the new ones.
+    Google Drive creates only a few files a second whatever their size
+    (the 2026-10-01 voice: 7,553 lines, ~0.4 files/s on rclone's shared
+    client) — there is no time limit any more; the progress line shows."""
+    import subprocess
+    import tempfile
+    rc = _rclone()
+    if not rc:
+        return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
+    block = drive_write_block(deep=True)
+    if block:
+        return {"ok": False, "steps": [block]}
+    import drive_guard
+    steps = []
+    with _drive_lock:
+        pend = drive_pending()
+        if not pend:
+            return {"ok": True, "steps": ["Google Drive: already holds every big file"]}
+        # chunk: <drive dir>/<first sub-folder> (or the dir itself)
+        chunks = {}
+        for r in pend:
+            d = next((d for d in DRIVE_DIRS if r.startswith(d + "/")), None)
+            if d is None:
+                continue
+            rest = r[len(d) + 1:]
+            key = d + "/" + rest.split("/", 1)[0] if "/" in rest else d
+            chunks.setdefault((d, key), []).append(r)
+        done = 0
+        total = len(pend)
+        for (d, key), rels in sorted(chunks.items()):
+            with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as tf:
+                for r in rels:
+                    tf.write(r[len(d) + 1:] + "\n")
+                lst = tf.name
+            # (2026-10-13) through drive_guard, the ONLY writer: it proves the
+            # destination is the owner's My Drive before every chunk
+            args = ["copy", str(REPO.parent / d), f"{DRIVE_REMOTE}/{d}", "--files-from", lst,  # drive-guarded
+                    "--no-traverse", "--transfers", "8", "--checkers", "16"]
+            try:
+                if DRIVE_LIVE:
+                    print(f"uploading {key} ({len(rels)} file(s); {done}/{total} done) …", flush=True)
+                    rcode = drive_guard.rclone_write(args + ["--progress", "--stats-one-line"], live=True)
+                    err = "see the lines above"
+                else:
+                    r = drive_guard.rclone_write(args)
+                    rcode = r.returncode
+                    err = (r.stderr or r.stdout or "")[-300:]
+            except drive_guard.DriveRefused as ex:
+                steps.append(f"STOPPED: {ex} Nothing more was uploaded ({done} of {total} file(s) up).")
+                return {"ok": False, "steps": steps}
+            finally:
+                os.unlink(lst)
+            if rcode:
+                steps.append(f"Google Drive upload failed for {key}: {err} ({done} of {total} file(s) up)")
+                return {"ok": False, "steps": steps}
+            _record_on_drive(rels)
+            done += len(rels)
+        steps.append(f"Google Drive: uploaded {done} file(s) to {DRIVE_REMOTE}")
+    return {"ok": True, "steps": steps}
+
+
+def drive_pull():
+    """Fetch every model and picture this checkout lacks from the Drive."""
+    import subprocess
+    rc = _rclone()
+    if not rc:
+        return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
+    steps = []
+    for d in DRIVE_DIRS:
+        dst = REPO.parent / d
+        dst.mkdir(parents=True, exist_ok=True)
+        # drive-read: Drive → this checkout (writes only local files)
+        r = subprocess.run([rc, "copy", f"{DRIVE_REMOTE}/{d}", str(dst), "--ignore-existing", "--transfers", "4"],
+                           capture_output=True, text=True, timeout=3600)
+        if r.returncode and "directory not found" not in (r.stderr or ""):
+            steps.append(f"pull failed for {d}: {(r.stderr or r.stdout)[-300:]}")
+            return {"ok": False, "steps": steps}
+    steps.append(f"pulled from {DRIVE_REMOTE}: every model and picture this checkout lacked")
+    return {"ok": True, "steps": steps}
+
+
+# ── AUDIO: the Drive's music + sound, sent to the game one by one ────
+# (draft 1 · 2026-10-01). The user: "let's go ahead and sync up all the
+# music and sound mp3s on the drive to the tool/game as well. I don't
+# want to bloat it, so let's do an inventory in the tool that can send
+# music files to the game." The Drive holds songs, ElevenLabs takes,
+# stems and loose voice folders, scattered. SCAN lists every audio file
+# on the whole Drive through the READ-ONLY connection (drive_setup.sh
+# --read); the list is a local cache, never committed. SEND copies one
+# file into godot/assets/audio/drive/{music,sfx}/ (Drive-backed by SAVE,
+# not git) and, for music, adds a FROM THE DRIVE entry to the music
+# catalog so the in-game player has it. git records only what was sent
+# (tools/audio_sent.json) and the catalog line. REMOVE takes it out of
+# the game; nothing on the Drive is ever deleted.
+AUDIO_READ_REMOTE = os.environ.get("MM_DRIVE_READ_REMOTE", "gdrive_ro:")
+AUDIO_EXTS = (".mp3", ".ogg", ".wav", ".m4a", ".flac", ".aif", ".aiff")
+AUDIO_PLAYABLE = {".mp3", ".ogg", ".wav"}            # what Godot plays as-is
+AUDIO_SCAN_CACHE = Path.home() / ".cache" / "modern-mythology" / "audio_scan.json"
+AUDIO_SENT = TOOLS / "audio_sent.json"
+AUDIO_GAME_DIR = REPO / "assets" / "audio" / "drive"
+MUSIC_CATALOG = REPO / "resources" / "music_catalog.json"
+AUDIO_SECTION = "FROM THE DRIVE"
+_audio_lock = threading.Lock()
+
+
+def audio_read_configured():
+    rc = _rclone()
+    if not rc:
+        return False
+    if ":" not in AUDIO_READ_REMOTE or AUDIO_READ_REMOTE.startswith("/"):
+        return True                     # a local folder (tests)
+    name = AUDIO_READ_REMOTE.split(":", 1)[0] + ":"
+    import subprocess
+    try:
+        out = subprocess.run([rc, "listremotes"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:  # noqa: BLE001
+        return False
+    return name in out.split()
+
+
+def _audio_kind_guess(path, size):
+    low = path.lower()
+    name = low.rsplit("/", 1)[-1]
+    if "voice files" in low or name.startswith("elevenlabs_") or re.match(r"^\d{3}\.(mp3|ogg|wav|webm)$", name):
+        return "voice"
+    return "music" if size >= 1_500_000 else "sound"
+
+
+def load_audio_sent():
+    try:
+        return json.loads(AUDIO_SENT.read_text())
+    except (OSError, ValueError):
+        return {"sent": {}}
+
+
+def _write_audio_sent(data):
+    AUDIO_SENT.write_text(json.dumps(data, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+
+
+def audio_scan():
+    """List every audio file on the Drive (read-only) into the local cache."""
+    import subprocess
+    rc = _rclone()
+    if not rc or not audio_read_configured():
+        return {"ok": False, "error": "the read-only Drive connection is not set up — run: bash godot/tools/drive_setup.sh --read"}
+    args = [rc, "lsjson", AUDIO_READ_REMOTE, "-R", "--files-only", "--fast-list", "--hash",
+            "--drive-skip-shortcuts", "--filter", "- /ModernMythology/**"]   # the project's own copies
+    for ext in AUDIO_EXTS:
+        args += ["--filter", f"+ *{ext}", "--filter", f"+ *{ext.upper()}"]
+    args += ["--filter", "- **"]
+    with _audio_lock:
+        r = subprocess.run(args, capture_output=True, text=True, timeout=1200)
+        if r.returncode:
+            return {"ok": False, "error": (r.stderr or "rclone lsjson failed")[-400:]}
+        rows = []
+        for it in json.loads(r.stdout or "[]"):
+            path = it.get("Path", "")
+            size = int(it.get("Size") or 0)
+            rows.append({"path": path, "size": size, "mtime": it.get("ModTime", "")[:10],
+                         "md5": (it.get("Hashes") or {}).get("md5", ""), "id": it.get("ID", ""),
+                         "kind": _audio_kind_guess(path, size)})
+        rows.sort(key=lambda x: x["path"].lower())
+        AUDIO_SCAN_CACHE.parent.mkdir(parents=True, exist_ok=True)
+        AUDIO_SCAN_CACHE.write_text(json.dumps({"scanned_at": now_iso(), "files": rows}))
+    return {"ok": True, "count": len(rows)}
+
+
+def _game_audio_md5s():
+    """md5 → game path for every audio file already in the game."""
+    out = {}
+    root = REPO / "assets" / "audio"
+    if root.exists():
+        for f in root.rglob("*"):
+            if f.is_file() and f.suffix.lower() in AUDIO_PLAYABLE and f.stat().st_size >= 200_000:
+                out[_md5(f)] = str(f.relative_to(REPO))
+    return out
+
+
+def audio_inventory():
+    try:
+        scan = json.loads(AUDIO_SCAN_CACHE.read_text())
+    except (OSError, ValueError):
+        scan = {"scanned_at": "", "files": []}
+    sent = load_audio_sent().get("sent", {})
+    game = _game_audio_md5s()
+    for row in scan["files"]:
+        s = sent.get(row["path"])
+        if s:
+            row["in_game"] = s.get("local", "")
+            row["sent"] = s
+        elif row.get("md5") and row["md5"] in game:
+            row["in_game"] = game[row["md5"]]        # the same bytes the game already ships
+    in_game_bytes = sum((REPO / s["local"]).stat().st_size for s in sent.values()
+                        if (REPO / s.get("local", "")).is_file())
+    return {"read_configured": audio_read_configured(), "scanned_at": scan.get("scanned_at", ""),
+            "files": scan["files"], "sent_count": len(sent), "sent_bytes": in_game_bytes}
+
+
+def _audio_row(path):
+    try:
+        scan = json.loads(AUDIO_SCAN_CACHE.read_text())
+    except (OSError, ValueError):
+        return None
+    return next((r for r in scan.get("files", []) if r["path"] == path), None)
+
+
+def _slug(text):
+    t = re.sub(r"\.[a-z0-9]+$", "", text.lower())
+    t = re.sub(r"[^a-z0-9]+", "_", t).strip("_")
+    return t[:48] or "track"
+
+
+def _dump_like(path, data):
+    """Write JSON in the file's own existing style (indent, escaping)."""
+    try:
+        orig = path.read_text(encoding="utf-8")
+        old = json.loads(orig)
+    except (OSError, ValueError):
+        orig, old = "", None
+    if old is not None:
+        for ind in (1, 2, 4):
+            for ea in (False, True):
+                for nl in ("\n", ""):
+                    if json.dumps(old, indent=ind, ensure_ascii=ea) + nl == orig:
+                        path.write_text(json.dumps(data, indent=ind, ensure_ascii=ea) + nl, encoding="utf-8")
+                        return
+    path.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def audio_send(path, kind="music", title="", vol=0):
+    """One Drive audio file → the game (+ the music catalog for music)."""
+    import subprocess
+    row = _audio_row(path)
+    if row is None:
+        raise ValueError("that file is not in the last scan — press SCAN")
+    if kind not in ("music", "sound", "voice"):
+        raise ValueError("kind must be music|sound|voice")
+    rc = _rclone()
+    ext = Path(path).suffix.lower()
+    title = (title or Path(path).stem).strip()
+    sub = {"music": "music", "sound": "sfx", "voice": "voice_takes"}[kind]
+    with _audio_lock:
+        sent = load_audio_sent()
+        if path in sent["sent"]:
+            return {"ok": True, "local": sent["sent"][path]["local"], "note": "already in the game"}
+        dest_dir = AUDIO_GAME_DIR / sub
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        stem = _slug(title)
+        taken = {Path(s["local"]).stem for s in sent["sent"].values()}
+        n, base = 2, stem
+        while stem in taken or any(dest_dir.glob(stem + ".*")):
+            stem, n = f"{base}_{n}", n + 1
+        out_ext = ext if ext in AUDIO_PLAYABLE else ".ogg"
+        dest = dest_dir / (stem + out_ext)
+        tmp = dest_dir / (stem + ".part" + ext)
+        # drive-read: the read-only connection → a local temp file
+        r = subprocess.run([rc, "copyto", AUDIO_READ_REMOTE + path, str(tmp)], capture_output=True, text=True, timeout=1800)
+        if r.returncode or not tmp.exists():
+            tmp.unlink(missing_ok=True)
+            raise ValueError("download failed: " + (r.stderr or "")[-300:])
+        if out_ext == ext:
+            tmp.rename(dest)
+        else:
+            ff = subprocess.run(["bash", str(TOOLS / "get_ffmpeg.sh")], capture_output=True, text=True, timeout=900).stdout.strip()
+            c = subprocess.run([ff, "-hide_banner", "-loglevel", "error", "-y", "-i", str(tmp),
+                                "-vn", "-c:a", "libvorbis", "-q:a", "6", str(dest)], capture_output=True, text=True)
+            tmp.unlink(missing_ok=True)
+            if c.returncode:
+                raise ValueError("convert failed: " + (c.stderr or "")[-300:])
+        local = str(dest.relative_to(REPO))
+        rec = {"local": local, "kind": kind, "title": title, "drive_id": row.get("id", ""),
+               "md5": row.get("md5", ""), "at": now_iso()}
+        if kind == "music":
+            cat = json.loads(MUSIC_CATALOG.read_text(encoding="utf-8"))
+            cid = "drive_" + stem
+            cat.append({"id": cid, "vol": int(vol), "section": AUDIO_SECTION, "title": title, "src": local,
+                        "composer": "—", "desc": f"From the Drive: {path}", "unlock": {}})
+            _dump_like(MUSIC_CATALOG, cat)
+            rec["catalog_id"] = cid
+        sent["sent"][path] = rec
+        _write_audio_sent(sent)
+    return {"ok": True, "local": local, "catalog_id": rec.get("catalog_id", "")}
+
+
+def audio_remove(path):
+    """Take a sent file out of the game (its catalog line too). The Drive keeps it."""
+    with _audio_lock:
+        sent = load_audio_sent()
+        rec = sent["sent"].pop(path, None)
+        if rec is None:
+            raise ValueError("that file was not sent from this page")
+        (REPO / rec["local"]).unlink(missing_ok=True)
+        (REPO / (rec["local"] + ".import")).unlink(missing_ok=True)
+        if rec.get("catalog_id"):
+            cat = json.loads(MUSIC_CATALOG.read_text(encoding="utf-8"))
+            _dump_like(MUSIC_CATALOG, [e for e in cat if e.get("id") != rec["catalog_id"]])
+        _write_audio_sent(sent)
+    return {"ok": True, "removed": rec["local"]}
+
+
+# ── PAINT OR PASS (draft 1 · 2026-10-01) ────────────────────────────
+# The user: "can you compare generations built up from raw static scene
+# data and paint or pass on select parts?" The raw static scene data is
+# a locale's contact-sheet frame (godot/qa/contact/<preset>/<frame>.jpg,
+# the 3D render). A generation sends that frame as the REFERENCE to a
+# Gemini or Runway image model with a prompt that keeps the camera and
+# the layout and adds the locale's own description (its builder's
+# docstring); the page puts raw and generations side by side, and the
+# user marks parts of the frame to PAINT (take a generation there) or
+# PASS (keep the raw render). Composites + their recipe land in
+# godot/assets/concept/scenes/<preset>/ (on Google Drive, not in git).
+SCENE_FRAMES_ROOT = REPO / "qa" / "contact"
+SCENE_PAINT_ROOT = REPO / "assets" / "concept" / "scenes"
+SCENE_PAINT_STYLE = (
+    "Repaint this exact frame as a finished, modern, painted background for a narrative game. "
+    "Keep the camera, the composition, the perspective and every object exactly where it is and at "
+    "the same size. Give every surface real material, texture, wear and light: wood grain, worn "
+    "paint, tile and grout, fabric, glass that reflects. Contemporary rendering, not retro, not "
+    "pixel art. No people, no text, no logos, no border.")
+_SAFE_NAME = re.compile(r"^[A-Za-z0-9_\-]+$")
+
+
+def _preset_builder_doc(preset):
+    """The locale's own description: the docstring of the builder that
+    makes the preset's GLB (Background3D.gd CAMERA_PRESETS → requires_glb)."""
+    import ast as _ast
+    bg = REPO / "scripts" / "vn" / "Background3D.gd"
+    try:
+        src = bg.read_text()
+    except OSError:
+        return ""
+    m = re.search(r'^\t"%s": \{(.*?)^\t\},' % re.escape(preset), src, re.S | re.M)
+    if not m:
+        return ""
+    g = re.search(r'requires_glb":\s*"res://assets/3d/locales/([a-z0-9_]+)\.glb"', m.group(1))
+    if not g:
+        return ""
+    builder = TOOLS / "blender" / "locales" / f"build_{g.group(1)}.py"
+    try:
+        doc = _ast.get_docstring(_ast.parse(builder.read_text())) or ""
+    except (OSError, SyntaxError, ValueError):
+        return ""
+    # prose only: drop rule lines (═ ─ =), the builder's own filename line
+    keep = []
+    for ln in doc.splitlines():
+        t = ln.strip()
+        if not t or re.fullmatch(r"[═─=\-·\s]+", t) or re.match(r"^build_[a-z0-9_]+\.py", t):
+            continue
+        if re.match(r"^(Run|Output|Geometry|Coordinate frame|Vantages?|glTF|Usage|DRAFT \d|Draft \d)\b", t):
+            continue
+        if re.search(r"blender --|godot/|res://|\.glb\b|\.py\b|\.tscn\b", t):
+            continue
+        keep.append(t)
+    return " ".join(" ".join(keep).split())[:600]
+
+
+def list_scene_frames():
+    out = []
+    if not SCENE_FRAMES_ROOT.exists():
+        return out
+    for d in sorted(SCENE_FRAMES_ROOT.iterdir()):
+        if not d.is_dir() or d.name.startswith("_"):
+            continue
+        frames = []
+        for f in sorted(list(d.glob("*.jpg")) + list(d.glob("*.png"))):
+            stem = f.stem
+            pdir = SCENE_PAINT_ROOT / d.name
+            gens = sorted(pdir.glob(f"{stem}__gen_*")) if pdir.exists() else []
+            final = pdir / f"{stem}__final.png"
+            frames.append({
+                "name": f.name, "stem": stem,
+                "url": f"/qa/contact/{d.name}/{f.name}",
+                "gens": [f"/assets/concept/scenes/{d.name}/{g.name}" for g in gens if g.suffix != ".json"],
+                "final": f"/assets/concept/scenes/{d.name}/{final.name}" if final.exists() else None,
+            })
+        if frames:
+            out.append({"preset": d.name, "frames": frames})
+    return out
+
+
+def scene_prompt(preset, note=""):
+    doc = _preset_builder_doc(preset)
+    p = SCENE_PAINT_STYLE
+    if doc:
+        p += " The place: " + doc
+    if note.strip():
+        p += " " + note.strip()
+    return p
+
+
+def paint_scene(preset, frame, provider="google", model=None, count=2, note="", log=print, prompt_override=""):
+    """Generate `count` paintovers of one frame; returns their urls."""
+    if not (_SAFE_NAME.match(preset or "") and re.match(r"^[A-Za-z0-9_\-]+\.(jpg|png)$", frame or "")):
+        raise ValueError("bad preset or frame name")
+    src = SCENE_FRAMES_ROOT / preset / frame
+    if not src.exists():
+        raise ValueError(f"no frame {preset}/{frame} — run the contact sheet on this machine first")
+    count = max(1, min(4, int(count)))
+    prompt = prompt_override.strip() or scene_prompt(preset, note)
+    if provider == "runway":
+        model = model or RUNWAY_DEFAULT_MODEL
+        blobs = []
+        for _ in range(count):
+            got = runway_generate("Repaint @frame. " + prompt, "16:9", model, get_api_key("runway"),
+                                  refs=[(str(src), "frame")], log=log)
+            blobs += got
+    elif provider == "openai":
+        model = model or OPENAI_DEFAULT_MODEL
+        blobs = openai_generate("Repaint the reference frame. " + prompt, "16:9", model, get_api_key("openai"),
+                                refs=[str(src)], count=count, log=log)
+    else:
+        model = model or GOOGLE_DEFAULT_MODEL
+        if GOOGLE_MODELS.get(model) != "gemini":
+            raise ValueError("paint-over needs a model that takes a reference image (a gemini-* model)")
+        blobs = google_generate(prompt, "16:9", model, get_api_key("google"), refs=[str(src)], count=count, log=log)
+    outdir = SCENE_PAINT_ROOT / preset
+    outdir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    urls = []
+    for i, item in enumerate(blobs):
+        data, mime = item if isinstance(item, tuple) else (item, "image/png")
+        ext = ".jpg" if "jpeg" in (mime or "") else ".png"
+        out = outdir / f"{Path(frame).stem}__gen_{provider}_{stamp}_{i}{ext}"
+        out.write_bytes(data)
+        urls.append(f"/assets/concept/scenes/{preset}/{out.name}")
+    (outdir / f"{Path(frame).stem}__gen_{provider}_{stamp}.json").write_text(json.dumps(
+        {"frame": frame, "provider": provider, "model": model, "prompt": prompt, "at": now_iso(),
+         "outputs": [u.rsplit("/", 1)[1] for u in urls]}, indent=1))
+    return {"ok": True, "gens": urls, "prompt": prompt}
+
+
+def save_scene_composite(preset, stem, png_b64, recipe):
+    if not (_SAFE_NAME.match(preset or "") and _SAFE_NAME.match(stem or "")):
+        raise ValueError("bad preset or frame name")
+    data = base64.b64decode(png_b64.split(",", 1)[-1])
+    if not data.startswith(b"\x89PNG"):
+        raise ValueError("not a PNG")
+    outdir = SCENE_PAINT_ROOT / preset
+    outdir.mkdir(parents=True, exist_ok=True)
+    (outdir / f"{stem}__final.png").write_bytes(data)
+    (outdir / f"{stem}__final.json").write_text(json.dumps({"at": now_iso(), "recipe": recipe}, indent=1))
+    return {"ok": True, "final": f"/assets/concept/scenes/{preset}/{stem}__final.png"}
+
+
+def cmd_doctor(args):
+    print(f"repo: {REPO.parent}   git: {_git_head()}   python: {sys.version.split()[0]}")
+    print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .openai_key  .meshy_key — gitignored)\n")
+    rep = key_report(args.providers or None, check=not args.no_check)
+    bad = 0
+    for prov, r in rep.items():
+        state = "OK " if r["ok"] else ("-- " if r["ok"] is None else "BAD")
+        src = r["source"] or "MISSING"
+        print(f"[{state}] {prov:7} {src:34} {r['masked']:26} {r['message']}")
+        if r["ok"] is False:
+            bad += 1
+            if not r["present"]:
+                print(f"        → python3 godot/tools/meshy_pipeline.py keys {prov}   (paste it; input is hidden)")
+    if bad:
+        print("\nfix the BAD rows above:  python3 godot/tools/meshy_pipeline.py keys   (or Hero Studio → KEYS)",
+              file=sys.stderr)
+    return 1 if bad else 0
+
+
+def data_uri(path_or_bytes, mime=None):
+    if isinstance(path_or_bytes, (str, Path)):
+        p = Path(path_or_bytes)
+        data = p.read_bytes()
+        if mime is None:
+            mime, _ = mimetypes.guess_type(p.name)
+    else:
+        data = path_or_bytes
+    mime = mime or "image/png"
+    return f"data:{mime};base64,{base64.b64encode(data).decode('ascii')}"
+
+
+def http_json(method, url, body=None, headers=None, timeout=120):
+    """JSON request → parsed JSON. Raises RuntimeError with the response
+    body on HTTP errors so vendor messages reach the log."""
+    hdrs = {"Accept": "application/json"}
+    hdrs.update(headers or {})
+    data = None
+    if body is not None:
+        hdrs["Content-Type"] = "application/json"
+        data = json.dumps(body).encode("utf-8")
+    req = urllib.request.Request(url, data=data, method=method, headers=hdrs)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw = resp.read()
+            return json.loads(raw.decode("utf-8")) if raw else {}
+    except urllib.error.HTTPError as e:
+        detail = ""
+        try:
+            detail = e.read().decode("utf-8", "replace")[:1200]
+        except Exception:
+            pass
+        raise RuntimeError(f"HTTP {e.code} on {method} {url}: {detail}") from e
+
+
+def http_download(url, out_path, timeout=300):
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    req = urllib.request.Request(url, headers={"Accept": "*/*"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with open(out_path, "wb") as f:
+                shutil.copyfileobj(resp, f, 64 * 1024)
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"download HTTP {e.code}: {e.reason} ({url[:80]})") from e
+
+
+def with_retries(fn, log, what):
+    delay = SUBMIT_BACKOFF
+    last = None
+    for attempt in range(SUBMIT_RETRIES):
+        try:
+            return fn()
+        except RuntimeError as e:
+            msg = str(e)
+            last = e
+            retryable = ("HTTP 429" in msg) or ("HTTP 5" in msg)
+            if retryable and attempt < SUBMIT_RETRIES - 1:
+                log(f"    {what}: {msg[:120]} — retry in {delay:.0f}s")
+                time.sleep(delay)
+                delay *= 2
+                continue
+            raise
+    raise last
+
+
+# ── Roster ──────────────────────────────────────────────────────────────────
+
+REQUIRED_ENTRY_KEYS = ("slug", "kind", "name", "file", "prompt")
+
+
+def load_roster(path=ROSTER_PATH):
+    if not path.exists():
+        sys.exit(f"roster not found: {path}")
+    data = json.loads(path.read_text())
+    entries = data.get("entries")
+    if not isinstance(entries, list) or not entries:
+        sys.exit("roster has no 'entries' list")
+    seen_slugs, seen_files = set(), {}
+    for i, e in enumerate(entries):
+        for k in REQUIRED_ENTRY_KEYS:
+            if not e.get(k):
+                sys.exit(f"roster entry #{i} missing '{k}': {json.dumps(e)[:120]}")
+        if e["kind"] not in OUT_DIRS:
+            sys.exit(f"roster entry {e['slug']}: kind {e['kind']!r} not in {sorted(OUT_DIRS)}")
+        if e["slug"] in seen_slugs:
+            sys.exit(f"roster: duplicate slug {e['slug']!r}")
+        seen_slugs.add(e["slug"])
+        key = (e["kind"], e["file"])
+        if key in seen_files:
+            sys.exit(f"roster: {e['slug']} and {seen_files[key]} both target {e['kind']}/{e['file']}")
+        seen_files[key] = e["slug"]
+        if e["kind"] == "art":
+            if not e["file"].endswith(".png"):
+                sys.exit(f"roster entry {e['slug']}: an art file must end in .png")
+            rows = e.get("apply")
+            if not isinstance(rows, list) or not rows:
+                sys.exit(f"roster entry {e['slug']}: art needs an `apply` list of surfaces")
+            for r in rows:
+                ok = (isinstance(r, dict) and r.get("locale") and isinstance(r.get("center"), list) and len(r["center"]) == 3
+                      and isinstance(r.get("size"), list) and len(r["size"]) == 2 and r.get("facing") in ART_FACINGS)
+                if not ok:
+                    sys.exit(f"roster entry {e['slug']}: apply rows need locale, center [x,y,z], size [w,h], facing in {ART_FACINGS}")
+        elif not e["file"].endswith(".glb"):
+            sys.exit(f"roster entry {e['slug']}: file must end in .glb")
+        e.setdefault("vol", [])
+        e.setdefault("keys", [e["slug"]])
+        if e["kind"] == "art":
+            # (2026-10-13, the Deck: "the hero tool description for 2D items
+            # needs their 2D dimensions or it doesn't work") — the picture is
+            # stretched onto a w x h quad in the game, so its aspect comes from
+            # the surface, never a default
+            w, h = art_size(e)
+            e["size"] = [w, h]
+            e["aspect"] = art_aspect(w, h)
+        e.setdefault("aspect", {"prop": "1:1", "art": "4:3"}.get(e["kind"], "3:4"))
+        e.setdefault("pose", None if e["kind"] in ("prop", "art") else "a-pose")
+        e.setdefault("texture_prompt", "")
+        e.setdefault("tag", "")
+        e.setdefault("canon", [])
+        if not isinstance(e["canon"], list):
+            sys.exit(f"roster entry {e['slug']}: canon must be a list of {{src, text}}")
+        e.setdefault("base", None)               # a LOOK: another age or costume of the hero `base` (2026-09-26)
+        e.setdefault("look", None)
+        e.setdefault("looks", [])
+        e.setdefault("notes", "")
+    slugs = {e["slug"]: e for e in entries}
+    for e in entries:
+        if e["base"]:
+            if e["base"] not in slugs:
+                sys.exit(f"roster entry {e['slug']}: base {e['base']!r} is not a roster slug")
+            if slugs[e["base"]]["kind"] != e["kind"]:
+                sys.exit(f"roster entry {e['slug']}: base {e['base']!r} is a different kind")
+            if not isinstance(e["look"], dict) or not e["look"].get("label"):
+                sys.exit(f"roster entry {e['slug']}: a look needs look.label")
+        for s in e["looks"]:
+            if s not in slugs or slugs[s].get("base") != e["slug"]:
+                sys.exit(f"roster entry {e['slug']}: looks lists {s!r}, which is not a look of it")
+    data.setdefault("style", {})
+    data.setdefault("defaults", {})
+    return data
+
+
+def select_entries(roster, selectors):
+    entries = roster["entries"]
+    if not selectors or "all" in selectors:
+        return list(entries)
+    out = []
+    for e in entries:
+        for s in selectors:
+            s = s.strip()
+            if s in OUT_DIRS and e["kind"] == s:
+                out.append(e); break
+            if re.fullmatch(r"vol\d+", s) and int(s[3:]) in e["vol"]:
+                out.append(e); break
+            if fnmatch.fnmatch(e["slug"], s) or fnmatch.fnmatch(e["file"], s):
+                out.append(e); break
+    return out
+
+
+def entry_dir(entry):
+    return CONCEPT_ROOT / entry["slug"]
+
+
+def entry_out_path(entry):
+    if entry["kind"] == "art":
+        # the installed picture keeps its source's format (a provider may hand back a JPEG)
+        stem = OUT_DIRS["art"] / Path(entry["file"]).stem
+        for ext in ART_EXTS:
+            if stem.with_suffix(ext).exists():
+                return stem.with_suffix(ext)
+    return OUT_DIRS[entry["kind"]] / entry["file"]
+
+
+# ART IMPORT (2026-10-14, the user: "optimize and minimize file size as
+# needed for game size and performance"). The generated pictures arrive at
+# 1-2k pixels whatever the object — a 16 cm ATM screen the same as a 2 m
+# mural — and Godot imports a runtime-loaded PNG LOSSLESS (no 3D use is
+# detected), ~16 MB of video memory for a 2048² picture. Each installed
+# picture gets an .import beside it: VRAM-compressed (BPTC/S3TC, what the
+# Deck's GPU samples natively), mipmapped (no shimmer on far signs), and
+# capped at the pixels its surface can show: ART_PX_PER_M of its long side,
+# between ART_PX_MIN and ART_PX_MAX. The full-size original stays on Drive.
+ART_PX_PER_M = 1200
+ART_PX_MIN = 256
+ART_PX_MAX = 2048
+# (2026-10-14, the user: "if images are useful for close-ups of meta-texts
+# or things that add personality to the world, they can be kept large, if
+# we expand the visual novel to include moments to look closer at these
+# things for quiet/introspective moments away from dialogue.") An entry
+# marked `inspect` (letters, flyers, photos, paintings, maps, boards — and
+# whatever the prose describes) keeps its full resolution, up to this:
+ART_PX_INSPECT = 4096
+
+
+def art_size_limit(entry):
+    if entry.get("inspect"):
+        return ART_PX_INSPECT
+    w, h = art_size(entry)
+    px = int(max(w, h) * ART_PX_PER_M)
+    if entry.get("fit") == "tile":
+        # a repeated section covers only one tile's width of the band
+        ratio = max(w, h) / max(min(w, h), 1e-3)
+        px = int(min(w, h) * ART_PX_PER_M * min(ratio, 21 / 9))
+    px = max(ART_PX_MIN, min(ART_PX_MAX, px))
+    return (px + 63) // 64 * 64
+
+
+def art_import_settings(entry, path, log=print):
+    """Write <picture>.import so Godot imports it compressed and capped.
+    The file has no [remap] path yet, so the editor (or --import) reimports
+    it with these settings on its next scan."""
+    path = Path(path)
+    limit = art_size_limit(entry)
+    imp = path.with_name(path.name + ".import")
+    want = f"process/size_limit={limit}"
+    if imp.exists():
+        old = imp.read_text()
+        if want in old and "compress/mode=2" in old and "mipmaps/generate=true" in old:
+            return limit
+    res = "res://" + str(path.relative_to(REPO)).replace(os.sep, "/")
+    imp.write_text("\n".join([
+        "[remap]", "", 'importer="texture"', 'type="CompressedTexture2D"', "",
+        "[deps]", "", f'source_file="{res}"', "",
+        "[params]", "",
+        "compress/mode=2", "compress/high_quality=true", "compress/lossy_quality=0.8",
+        "compress/hdr_compression=1", "compress/normal_map=0", "compress/channel_pack=0",
+        "mipmaps/generate=true", "mipmaps/limit=-1", "roughness/mode=0", 'roughness/src_normal=""',
+        "process/fix_alpha_border=true", "process/premult_alpha=false", "process/normal_map_invert_y=false",
+        "process/hdr_as_srgb=false", "process/hdr_clamp_exposure=false", want, "detect_3d/compress_to=0", ""]))
+    log(f"  art · {entry['slug']} · import: VRAM-compressed, mipmapped, ≤ {limit} px")
+    return limit
+
+
+def cmd_art_optimize(args):
+    """Give every installed hero-art picture its import settings; report sizes."""
+    roster = load_roster()
+    n, src_bytes, est_vram = 0, 0, 0
+    for e in roster["entries"]:
+        if e.get("kind") != "art":
+            continue
+        stem = OUT_DIRS["art"] / Path(e["file"]).stem
+        f = next((stem.with_suffix(x) for x in ART_EXTS if stem.with_suffix(x).exists()), None)
+        if f is None:
+            continue
+        lim = art_import_settings(e, f, log=(lambda *a: None))
+        w, h = art_size(e)
+        a = min(w, h) / max(w, h, 1e-3)
+        est_vram += int(lim * lim * a * 1.0 * 1.33)      # BPTC: 1 byte/px, + mips
+        src_bytes += f.stat().st_size
+        n += 1
+    print(f"{n} installed picture(s): {src_bytes / 1e6:.1f} MB of originals → about "
+          f"{est_vram / 1e6:.1f} MB compressed in the game (all of them; a room loads only its own).")
+    print("Now let Godot re-import them: open the project in the editor once, or run "
+          "bash godot/tools/reimport_models.sh")
+    return 0
+
+
+def install_art(entry, opts, log=print):
+    """ART: the chosen front image IS the deliverable — copy it to
+    assets/art/hero/<stem>.<ext>, dropping any other format of the same stem."""
+    src = Path(opts["image"]) if opts.get("image") else chosen_view_path(entry, "front")
+    if src is None:
+        cands = candidates_for(entry, "front")
+        src = cands[0] if cands else None
+    stem = OUT_DIRS["art"] / Path(entry["file"]).stem
+    if src is None or not Path(src).exists():
+        if opts.get("dry_run"):
+            log(f"  art · {entry['slug']} · [DRY] would install the chosen front image → {rel(stem.with_suffix('.png'))}")
+            return None
+        raise FileNotFoundError(f"{entry['slug']}: no image yet — generate one first")
+    src = Path(src)
+    dst = stem.with_suffix(src.suffix.lower() if src.suffix.lower() in ART_EXTS else ".png")
+    if opts.get("dry_run"):
+        log(f"  art · {entry['slug']} · [DRY] would install {rel(src)} → {rel(dst)}")
+        return None
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    for ext in ART_EXTS:
+        old = stem.with_suffix(ext)
+        if old.exists() and old != dst:
+            old.unlink()
+    shutil.copyfile(src, dst)
+    art_import_settings(entry, dst, log=log)
+    surfaces = ", ".join(f"{r['locale']} ({r.get('label', r['facing'])})" for r in entry.get("apply", []))
+    log(f"  art · {entry['slug']} · installed {rel(dst)} → laid on: {surfaces}")
+    append_manifest({"at": now_iso(), "stage": "art", "slug": entry["slug"], "kind": "art",
+                     "input": rel(src), "output": rel(dst)})
+    return dst
+
+
+RUNWAY_PROMPT_BUDGET = 1000     # promptText hard cap (UTF-16 units)
+
+
+def canon_text(entry, limit=None):
+    """The story's own description: the entry's `canon` quotes joined, in
+    order, optionally cut at a sentence boundary to fit `limit` chars."""
+    quotes = [q["text"].strip() for q in (entry.get("canon") or []) if q.get("text", "").strip()]
+    out = ""
+    for q in quotes:
+        cand = (out + " " + q).strip()
+        if limit and len(cand) > limit:
+            break
+        out = cand
+    if limit and not out and quotes:          # first quote alone is too long: hard-cut it
+        out = quotes[0][:limit - 1].rsplit(" ", 1)[0] + "…"
+    return out
+
+
+def description_for(roster, entry, budget=None):
+    """What the image model is told the subject looks like.
+
+    Canon quotes from the text come first and are the description when
+    they exist. The hand-written `prompt` is a FALLBACK for entries the
+    text never describes, unless prompt_mode is "append" (then it rides
+    after the quotes as extra direction)."""
+    mode = entry.get("prompt_mode") or roster["defaults"].get("prompt_mode", "fallback")
+    canon = canon_text(entry, budget)
+    prompt = (entry.get("prompt") or "").strip()
+    if canon:
+        head = f"The story describes {entry['name']} like this: "
+        desc = head + canon
+        if mode == "append" and prompt:
+            desc += " Additional direction: " + prompt
+        return desc
+    return prompt
+
+
+def art_size(entry):
+    """An art entry's picture size in metres [w, h]: its own `size`, else the
+    first surface it is laid on."""
+    sz = entry.get("size") or (entry.get("apply") or [{}])[0].get("size") or [1.0, 1.0]
+    return [round(float(sz[0]), 3), round(float(sz[1]), 3)]
+
+
+def art_aspect(w, h):
+    """The generator aspect nearest w:h (by ratio, in log space)."""
+    import math
+    want = math.log(max(w, 1e-3) / max(h, 1e-3))
+    def r(a):
+        x, y = a.split(":")
+        return math.log(float(x) / float(y))
+    return min(sorted(GOOGLE_ASPECTS), key=lambda a: abs(r(a) - want))
+
+
+def art_size_text(entry):
+    """The line that tells the image model the picture's real shape."""
+    w, h = art_size(entry)
+    shape = "landscape" if w > h * 1.05 else "portrait" if h > w * 1.05 else "square"
+    def m(v):
+        return f"{v * 100:.0f} cm" if v < 1.0 else f"{v:.2f} m"
+    a = art_aspect(w, h)
+    x, y = (float(v) for v in a.split(":"))
+    ratio, img = w / max(h, 1e-3), x / y
+    if entry.get("fit") != "tile" and (ratio > img * 1.15 or ratio < img / 1.15):
+        # no generator frame is this shape: the game crops the middle band
+        if ratio > img:
+            pct = round(100 * img / ratio)
+            band = f"a horizontal strip through the middle {pct}% of the image's height"
+        else:
+            pct = round(100 * ratio / img)
+            band = f"a vertical strip through the middle {pct}% of the image's width"
+        return (f"SIZE: the real object is {m(w)} wide by {m(h)} tall, narrower than this {a} image, "
+                f"so the game shows only {band}. Put the whole design inside that strip; let the "
+                f"background simply continue beyond it.")
+    if ratio > img * 1.5:
+        # wider than any generator frame: the game repeats it across the card
+        n = round((w / max(h, 1e-3)) / (x / y))
+        return (f"SIZE: the real object is a band {m(w)} wide by {m(h)} tall; this image is one "
+                f"{a} section of it, repeated {n} times side by side in the game. Paint it so it "
+                f"TILES SEAMLESSLY left to right (the left and right edges continue into each other), "
+                f"with no single feature that would read as repeated.")
+    return (f"SIZE: the real object is {m(w)} wide by {m(h)} tall — a {shape} picture, aspect "
+            f"{a}. Compose for exactly this shape and scale (detail readable at "
+            f"that size); the image's edges are the object's edges.")
+
+
+def art_suffix(roster, entry):
+    """The roster's closing line ("No text, no captions …"). A sign, a menu, a
+    calendar is lettering: an art entry's `lettering` says exactly what it
+    reads, and the no-text rule gives way to it."""
+    suffix = roster["style"].get("suffix", "").strip()
+    lettering = (entry.get("lettering") or "").strip() if entry["kind"] == "art" else ""
+    if lettering:
+        return (f"Lettering on it reads exactly: {lettering}. Spell it exactly so; no other words. "
+                "No watermark, no border.")
+    return suffix
+
+
+def build_prompt(roster, entry, view="front", provider=None):
+    """Description (canon quotes, else fallback prompt) + style preamble +
+    view instruction. Runway's promptText is capped at 1000 chars, so for
+    it the short preamble is used and the quotes are trimmed to fit."""
+    style_key = entry["kind"]
+    if provider == "runway":
+        style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
+        style = style.replace("{name}", entry["name"]).strip()
+        suffix = art_suffix(roster, entry)
+        view_txt = _view_text(roster, view)
+        fixed = len(style) + len(suffix) + len(view_txt) + 6
+        size_txt = art_size_text(entry) if entry["kind"] == "art" else ""
+        fixed += len(size_txt) + 1
+        desc = description_for(roster, entry, budget=max(200, RUNWAY_PROMPT_BUDGET - fixed))
+        parts = [desc, size_txt, style, suffix, view_txt]
+        return "\n".join(p for p in parts if p)[:RUNWAY_PROMPT_BUDGET]
+    style = roster["style"].get(style_key, "")
+    parts = [description_for(roster, entry), style.replace("{name}", entry["name"]).strip()]
+    if entry["kind"] == "art":
+        parts.insert(1, art_size_text(entry))
+    suffix = art_suffix(roster, entry)
+    if suffix:
+        parts.append(suffix)
+    parts.append(_view_text(roster, view))
+    return "\n".join(p for p in parts if p)
+
+
+def _view_text(roster, view):
+    if view == "side":
+        return roster["style"].get(
+            "view_side",
+            "Same subject, identical design, colors and details as the reference "
+            "image, now seen from the left side in strict profile (90 degrees), "
+            "same pose, same plain background, whole subject in frame.")
+    if view == "back":
+        return roster["style"].get(
+            "view_back",
+            "Same subject, identical design, colors and details as the reference "
+            "image, now seen directly from behind (180 degrees), same pose, same "
+            "plain background, whole subject in frame.")
+    return ""
+
+
+def texture_prompt_for(entry):
+    """Meshy texture guidance (<= 600 chars): explicit texture_prompt, else
+    the canon quotes, else the fallback prompt."""
+    tp = (entry.get("texture_prompt") or "").strip() or canon_text(entry, 600) or entry["prompt"].strip()
+    return tp[:600]
+
+
+# ── Recovered models (2026-09-26) ───────────────────────────────────────────
+# meshy_recover.py fetch-all pulls the account's finished tasks into
+# concept/meshy/recovered/<task>.glb (+ <task>.png thumbnail) when the
+# runner's own files are lost; the main page (header: "recovered · n") lets
+# each be assigned to a roster entry, which is what these two do.
+
+RECOVERED_DIR = CONCEPT_ROOT / "recovered"
+
+
+def list_recovered():
+    out = []
+    if not RECOVERED_DIR.exists():
+        return out
+    for glb in sorted(RECOVERED_DIR.glob("*.glb"), key=lambda p: p.stat().st_mtime, reverse=True):
+        png = glb.with_suffix(".png")
+        out.append({"task_id": glb.stem, "glb": rel(glb), "size": glb.stat().st_size,
+                    "thumb": ("/assets/concept/meshy/recovered/" + png.name) if png.exists() else None})
+    return out
+
+
+def assign_recovered(entry, task_id, overwrite=False):
+    """Move recovered/<task>.glb to the entry's canonical GLB; file its
+    thumbnail as a concept candidate and as front.png if none is chosen."""
+    import shutil
+    if not re.fullmatch(r"[0-9a-f-]{20,}", task_id or ""):
+        raise ValueError("bad task id")
+    src = RECOVERED_DIR / f"{task_id}.glb"
+    if not src.exists():
+        raise ValueError(f"{task_id} is not in recovered/ (run meshy_recover.py fetch-all)")
+    out = entry_out_path(entry)
+    if out.exists() and not overwrite:
+        raise ValueError(f"{entry['slug']} already has {rel(out)} — tick overwrite to replace it")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(src), str(out))
+    thumb = RECOVERED_DIR / f"{task_id}.png"
+    cand = None
+    if thumb.exists():
+        d = entry_dir(entry)
+        d.mkdir(parents=True, exist_ok=True)
+        cand = d / f"{entry['slug']}_front_meshy_recovered.png"
+        shutil.copy2(str(thumb), str(cand))
+        front = d / "front.png"
+        if not front.exists():
+            shutil.copy2(str(thumb), str(front))
+        thumb.unlink()
+    append_manifest({"at": now_iso(), "stage": "assign", "slug": entry["slug"], "kind": entry["kind"], "task_id": task_id, "glb": rel(out)})
+    return {"ok": True, "slug": entry["slug"], "glb": rel(out), "candidate": rel(cand) if cand else None, "status": entry_status(entry)}
+
+
+# ── Manifest ────────────────────────────────────────────────────────────────
+
+_manifest_lock = threading.Lock()
+
+
+def load_manifest():
+    if MANIFEST_PATH.exists():
+        try:
+            data = json.loads(MANIFEST_PATH.read_text())
+            if isinstance(data, list):
+                return data
+        except json.JSONDecodeError:
+            pass
+    return []
+
+
+def append_manifest(entry):
+    with _manifest_lock:
+        m = load_manifest()
+        m.append(entry)
+        CONCEPT_ROOT.mkdir(parents=True, exist_ok=True)
+        MANIFEST_PATH.write_text(json.dumps(m, indent=2) + "\n")
+
+
+def rel(p):
+    try:
+        return str(Path(p).relative_to(REPO.parent))
+    except ValueError:
+        return str(p)
+
+
+# ── Google provider ─────────────────────────────────────────────────────────
+
+def google_generate(prompt, aspect, model, api_key, refs=(), count=1, log=print):
+    """Return a list of PNG/JPEG byte blobs. `refs` = list of image paths
+    used as reference (Gemini image models only)."""
+    family = GOOGLE_MODELS.get(model)
+    if family is None:
+        raise ValueError(f"unknown Google model {model!r}; known: {sorted(GOOGLE_MODELS)}")
+    headers = {"x-goog-api-key": api_key}
+    images = []
+    if family == "imagen":
+        if refs:
+            log("    note: Imagen ignores reference images (use a gemini-* model for multi-view)")
+        url = f"{GOOGLE_BASE}/models/{model}:predict"
+        body = {
+            "instances": [{"prompt": prompt}],
+            "parameters": {
+                "sampleCount": max(1, min(4, count)),
+                "aspectRatio": aspect,
+                "personGeneration": "allow_adult",
+            },
+        }
+        resp = with_retries(lambda: http_json("POST", url, body, headers), log, "imagen")
+        for p in resp.get("predictions", []):
+            b64 = p.get("bytesBase64Encoded")
+            if b64:
+                images.append((base64.b64decode(b64), p.get("mimeType", "image/png")))
+        if not images:
+            raise RuntimeError(f"Imagen returned no images: {json.dumps(resp)[:400]}")
+        return images
+
+    url = f"{GOOGLE_BASE}/models/{model}:generateContent"
+    parts = []
+    for r in refs:
+        p = Path(r)
+        mime, _ = mimetypes.guess_type(p.name)
+        parts.append({"inlineData": {"mimeType": mime or "image/png",
+                                     "data": base64.b64encode(p.read_bytes()).decode("ascii")}})
+    parts.append({"text": prompt})
+    body = {
+        "contents": [{"role": "user", "parts": parts}],
+        "generationConfig": {
+            "responseModalities": ["IMAGE"],
+            "imageConfig": {"aspectRatio": aspect},
+        },
+    }
+    for n in range(max(1, count)):
+        resp = with_retries(lambda: http_json("POST", url, body, headers), log, "gemini")
+        fb = resp.get("promptFeedback") or {}
+        if fb.get("blockReason"):
+            raise RuntimeError(f"Gemini blocked the prompt: {fb.get('blockReason')}")
+        got = False
+        for cand in resp.get("candidates", []):
+            for part in (cand.get("content") or {}).get("parts", []):
+                inline = part.get("inlineData")
+                if inline and inline.get("data"):
+                    images.append((base64.b64decode(inline["data"]),
+                                   inline.get("mimeType", "image/png")))
+                    got = True
+        if not got:
+            text = ""
+            for cand in resp.get("candidates", []):
+                for part in (cand.get("content") or {}).get("parts", []):
+                    text += part.get("text", "")
+                text += f" [finishReason={cand.get('finishReason')}]"
+            raise RuntimeError(f"Gemini returned no image. {text[:400] or json.dumps(resp)[:400]}")
+    return images
+
+
+# ── Runway provider ─────────────────────────────────────────────────────────
+
+def runway_ratio(model, aspect, explicit=None):
+    if explicit:
+        return explicit
+    family = RUNWAY_MODELS.get(model)
+    table = RUNWAY_RATIOS.get(family, RUNWAY_RATIOS["gen4"])
+    if aspect not in table:
+        raise ValueError(f"aspect {aspect!r} has no Runway ratio for {model}; "
+                         f"use one of {sorted(table)} or pass --ratio")
+    return table[aspect]
+
+
+def _multipart(fields, files):
+    """multipart/form-data body. files: [(field, filename, mime, bytes)]."""
+    import uuid as _uuid
+    boundary = "----mm" + _uuid.uuid4().hex
+    out = []
+    for k, v in fields.items():
+        out += [f"--{boundary}\r\n".encode(),
+                f'Content-Disposition: form-data; name="{k}"\r\n\r\n'.encode(),
+                str(v).encode("utf-8"), b"\r\n"]
+    for field, fname, mime, blob in files:
+        out += [f"--{boundary}\r\n".encode(),
+                f'Content-Disposition: form-data; name="{field}"; filename="{fname}"\r\n'.encode(),
+                f"Content-Type: {mime}\r\n\r\n".encode(), blob, b"\r\n"]
+    out.append(f"--{boundary}--\r\n".encode())
+    return b"".join(out), f"multipart/form-data; boundary={boundary}"
+
+
+def _openai_post(path, api_key, body=None, multipart=None, timeout=300):
+    """POST to the OpenAI API; JSON or multipart. Raises RuntimeError("HTTP n …")."""
+    headers = {"Authorization": f"Bearer {api_key}", "Accept": "application/json"}
+    if multipart is not None:
+        data, ctype = multipart
+    else:
+        data, ctype = json.dumps(body).encode("utf-8"), "application/json"
+    headers["Content-Type"] = ctype
+    req = urllib.request.Request(f"{OPENAI_BASE}{path}", data=data, method="POST", headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        detail = ""
+        try:
+            detail = e.read().decode("utf-8", "replace")[:1200]
+        except Exception:  # noqa: BLE001
+            pass
+        raise RuntimeError(f"HTTP {e.code} on POST {OPENAI_BASE}{path}: {detail}") from e
+
+
+def _openai_explain(msg):
+    low = msg.lower()
+    if "http 403" in low and "verif" in low:
+        return ("OpenAI refused: the organization must be verified to use GPT Image models — "
+                "platform.openai.com/settings/organization/general. " + msg[-300:])
+    if "moderation" in low or "safety system" in low:
+        return "OpenAI's safety system refused this prompt (moderation_blocked). " + msg[-300:]
+    if "http 401" in low:
+        return "OpenAI rejected the key (401) — paste it again under KEYS. " + msg[-200:]
+    if "billing" in low or "insufficient_quota" in low:
+        return "OpenAI: no credit / quota on this account. " + msg[-200:]
+    return msg
+
+
+def openai_generate(prompt, aspect, model, api_key, refs=(), count=1, quality="medium", log=print):
+    """GPT Image (the ChatGPT image models). Text only → /images/generations;
+    with reference images (side/back views, scene paint-overs) →
+    /images/edits as image[] files. A parameter a model rejects (size,
+    quality, input_fidelity) is dropped or relaxed and the call retried."""
+    family = OPENAI_MODELS.get(model, "free" if model.startswith("gpt-image-2") else "std")
+    size = OPENAI_SIZES[family].get(aspect, "1024x1024")
+    n = max(1, min(10, int(count)))
+    body = {"model": model, "prompt": prompt[:32000], "n": n, "size": size}
+    if quality and quality != "auto":
+        body["quality"] = quality
+    files = []
+    for r in refs:
+        rp = Path(r)
+        mime = mimetypes.guess_type(rp.name)[0] or "image/png"
+        files.append(("image[]", rp.name, mime, rp.read_bytes()))
+    if files:
+        body["input_fidelity"] = "high"      # keep the front view's design; ignored by gpt-image-2
+    dropped = []
+    for attempt in range(4):
+        try:
+            if files:
+                resp = _openai_post("/images/edits", api_key,
+                                    multipart=_multipart({k: v for k, v in body.items()}, files))
+            else:
+                resp = _openai_post("/images/generations", api_key, body=body)
+            break
+        except RuntimeError as e:
+            msg = str(e)
+            low = msg.lower()
+            if "http 400" in low and attempt < 3:
+                fixed = False
+                for field in ("input_fidelity", "quality", "size"):
+                    if field in low and field in body:
+                        if field == "size" and body["size"] != "auto":
+                            body["size"] = "auto"
+                        else:
+                            body.pop(field)
+                        dropped.append(field)
+                        fixed = True
+                        break
+                if fixed:
+                    log(f"    openai: {model} refused {dropped[-1]}; retrying without it")
+                    continue
+            if "http 429" in low or "http 5" in low:
+                if attempt < 3:
+                    time.sleep(SUBMIT_BACKOFF * (2 ** attempt))
+                    continue
+            raise RuntimeError(_openai_explain(msg)) from e
+    out = []
+    for item in resp.get("data", []):
+        if item.get("b64_json"):
+            out.append((base64.b64decode(item["b64_json"]), "image/png"))
+        elif item.get("url"):
+            req = urllib.request.Request(item["url"], headers={"Accept": "*/*"})
+            with urllib.request.urlopen(req, timeout=180) as r:
+                out.append((r.read(), r.headers.get("Content-Type", "image/png").split(";")[0]))
+    if not out:
+        raise RuntimeError(f"OpenAI returned no image: {json.dumps(resp)[:300]}")
+    log(f"    openai {model} · {body.get('size')} · {body.get('quality', 'auto')} quality · {len(out)} image(s)"
+        + (" · from the reference" if files else ""))
+    return out
+
+
+def runway_generate(prompt, aspect, model, api_key, refs=(), seed=None,
+                    ratio=None, log=print):
+    """Submit text_to_image, poll, download. `refs` = [(path, tag)]."""
+    if model not in RUNWAY_MODELS:
+        raise ValueError(f"unknown Runway model {model!r}; known: {sorted(RUNWAY_MODELS)}")
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "X-Runway-Version": RUNWAY_API_VERSION,
+    }
+    body = {
+        "model": model,
+        "promptText": prompt[:1000],
+        "ratio": runway_ratio(model, aspect, ratio),
+    }
+    ref_list = []
+    for path, tag in refs:
+        data = Path(path).read_bytes()
+        if len(data) > MAX_REF_BYTES:
+            raise ValueError(f"reference {Path(path).name} is {len(data)//1024} KB; "
+                             "Runway caps data-URI references at 5 MB")
+        item = {"uri": data_uri(data, mimetypes.guess_type(str(path))[0] or "image/png")}
+        if tag:
+            if not RUNWAY_REF_TAG_RE.match(tag):
+                raise ValueError(f"bad reference tag {tag!r} (3-16 chars, letter first, [A-Za-z0-9_])")
+            item["tag"] = tag
+        ref_list.append(item)
+    if ref_list:
+        body["referenceImages"] = ref_list[:3] if RUNWAY_MODELS[model] == "gen4" else ref_list
+    elif model == "gen4_image_turbo":
+        raise ValueError("gen4_image_turbo requires at least one reference image; use gen4_image")
+    if seed is not None:
+        body["seed"] = int(seed)
+
+    resp = with_retries(lambda: http_json("POST", f"{RUNWAY_BASE}/text_to_image", body, headers),
+                        log, "runway submit")
+    task_id = resp.get("id")
+    if not task_id:
+        raise RuntimeError(f"Runway submit response missing id: {resp}")
+    log(f"    runway task {task_id}")
+    deadline = time.time() + POLL_TIMEOUT_IMAGE
+    last = None
+    while time.time() < deadline:
+        t = http_json("GET", f"{RUNWAY_BASE}/tasks/{task_id}", headers=headers)
+        status = t.get("status", "UNKNOWN")
+        if status != last:
+            log(f"    status: {status}")
+            last = status
+        if status in TERMINAL_RUNWAY:
+            if status != "SUCCEEDED":
+                raise RuntimeError(f"Runway task {status}: {t.get('failure') or t.get('failureCode') or json.dumps(t)[:300]}")
+            urls = t.get("output") or []
+            if not urls:
+                raise RuntimeError("Runway succeeded with no output URLs")
+            out = []
+            for u in urls:
+                req = urllib.request.Request(u, headers={"Accept": "*/*"})
+                with urllib.request.urlopen(req, timeout=180) as r:
+                    mime = r.headers.get("Content-Type", "image/png").split(";")[0]
+                    out.append((r.read(), mime))
+            return out
+        time.sleep(POLL_INTERVAL_IMAGE)
+    raise RuntimeError(f"Runway task {task_id} did not finish within {POLL_TIMEOUT_IMAGE}s")
+
+
+# ── Meshy provider ──────────────────────────────────────────────────────────
+
+def meshy_submit(images, opts, api_key, log=print):
+    """images: list of image paths (1 → image-to-3d, 2-4 → multi-image-to-3d).
+    Returns (resource, task_id)."""
+    headers = {"Authorization": f"Bearer {api_key}"}
+    textured = bool(opts.get("texture"))
+    body = {
+        "should_texture": textured,
+        "target_formats": ["glb"],
+    }
+    if len(images) == 1:
+        resource = "image-to-3d"
+        body["image_url"] = data_uri(images[0])
+        body["model_type"] = opts.get("model_type") or "standard"
+        if body["model_type"] == "smart-topology":
+            body["target_polycount"] = int(opts.get("polycount") or 10000)
+        if opts.get("ultra"):
+            body["ultra_mode"] = True
+        if opts.get("pose") in MESHY_POSES:
+            body["pose_mode"] = opts["pose"]
+        if opts.get("ai_model"):
+            body["ai_model"] = opts["ai_model"]
+        body["image_enhancement"] = opts.get("image_enhancement", True)
+        body["remove_lighting"] = opts.get("remove_lighting", True)
+    else:
+        resource = "multi-image-to-3d"
+        body["image_urls"] = [data_uri(p) for p in images[:4]]
+        body["remove_lighting"] = opts.get("remove_lighting", True)
+        if opts.get("ai_model"):
+            body["ai_model"] = opts["ai_model"]
+    if textured:
+        body["enable_pbr"] = bool(opts.get("pbr", True))
+        body["texture_resolution"] = opts.get("texture_resolution") or "4k"
+        if opts.get("texture_prompt"):
+            body["texture_prompt"] = opts["texture_prompt"][:600]
+    resp = with_retries(lambda: http_json("POST", f"{MESHY_BASE}/{resource}", body, headers),
+                        log, "meshy submit")
+    task_id = resp.get("result") or resp.get("id")
+    if not task_id:
+        raise RuntimeError(f"Meshy submit response missing result id: {resp}")
+    return resource, task_id
+
+
+def meshy_poll(resource, task_id, api_key, log=print):
+    headers = {"Authorization": f"Bearer {api_key}"}
+    deadline = time.time() + POLL_TIMEOUT_MESH
+    last = None
+    while time.time() < deadline:
+        t = http_json("GET", f"{MESHY_BASE}/{resource}/{task_id}", headers=headers)
+        status = t.get("status", "UNKNOWN")
+        prog = t.get("progress")
+        key = (status, prog)
+        if key != last:
+            log(f"    status: {status}" + (f"  {prog}%" if prog is not None else ""))
+            last = key
+        if status in TERMINAL_MESHY:
+            if status != "SUCCEEDED":
+                err = (t.get("task_error") or {}).get("message") or json.dumps(t)[:300]
+                raise RuntimeError(f"Meshy task {status}: {err}")
+            return t
+        time.sleep(POLL_INTERVAL_MESH)
+    raise RuntimeError(f"Meshy task {task_id} did not finish within {POLL_TIMEOUT_MESH}s")
+
+
+# ── Stages ──────────────────────────────────────────────────────────────────
+
+def candidates_for(entry, view="front"):
+    d = entry_dir(entry)
+    if not d.exists():
+        return []
+    pat = f"{entry['slug']}_{view}_"
+    return sorted(p for p in d.iterdir()
+                  if p.is_file() and p.name.startswith(pat) and p.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp"))
+
+
+def next_candidate_path(entry, view, provider, model):
+    d = entry_dir(entry)
+    d.mkdir(parents=True, exist_ok=True)
+    stem = f"{entry['slug']}_{view}_{slugify(provider)}_{slugify(model)}"
+    n = 1
+    while True:
+        p = d / f"{stem}_{n:02d}.png"
+        if not p.exists():
+            return p
+        n += 1
+
+
+def save_image(blob, mime, path):
+    ext = {"image/jpeg": ".jpg", "image/webp": ".webp"}.get(mime, ".png")
+    path = path.with_suffix(ext)
+    path.write_bytes(blob)
+    return path
+
+
+def chosen_view_path(entry, view):
+    for ext in (".png", ".jpg", ".jpeg", ".webp"):
+        p = entry_dir(entry) / f"{view}{ext}"
+        if p.exists():
+            return p
+    return None
+
+
+def set_chosen(entry, view, candidate):
+    """Copy a candidate to <slug>/<view>.<ext> (the file the mesh stage uses)."""
+    src = Path(candidate)
+    if not src.is_absolute():
+        src = entry_dir(entry) / src
+    if not src.exists():
+        raise FileNotFoundError(f"candidate not found: {candidate}")
+    for ext in (".png", ".jpg", ".jpeg", ".webp"):
+        old = entry_dir(entry) / f"{view}{ext}"
+        if old.exists():
+            old.unlink()
+    dst = entry_dir(entry) / f"{view}{src.suffix.lower()}"
+    shutil.copyfile(src, dst)
+    return dst
+
+
+def stage_image(roster, entry, opts, log=print):
+    """Generate `count` front candidates (+ side/back if multiview). The first
+    front candidate becomes front.png unless one is already chosen."""
+    provider = opts.get("provider") or roster["defaults"].get("provider", "google")
+    if provider == "google":
+        model = opts.get("model") or roster["defaults"].get("google_model", GOOGLE_DEFAULT_MODEL)
+    elif provider == "runway":
+        model = opts.get("model") or roster["defaults"].get("runway_model", RUNWAY_DEFAULT_MODEL)
+    elif provider == "openai":
+        model = opts.get("model") or roster["defaults"].get("openai_model", OPENAI_DEFAULT_MODEL)
+    else:
+        raise ValueError(f"provider must be google, runway or openai, got {provider!r}")
+    quality = opts.get("quality") or roster["defaults"].get("openai_quality", "medium")
+    count = max(1, int(opts.get("count") or 1))
+    aspect = opts.get("aspect") or entry["aspect"]
+    if entry["kind"] == "art" and aspect != entry["aspect"]:
+        log(f"  image · {entry['slug']} · aspect {aspect} ignored: the surface is "
+            f"{entry['size'][0]} x {entry['size'][1]} m → {entry['aspect']}")
+        aspect = entry["aspect"]
+    if aspect not in GOOGLE_ASPECTS:
+        raise ValueError(f"aspect {aspect!r} not in {sorted(GOOGLE_ASPECTS)}")
+    views = list(VIEWS) if opts.get("multiview") and entry["kind"] != "art" else ["front"]
+    dry = bool(opts.get("dry_run"))
+    saved = []
+
+    front_prompt = build_prompt(roster, entry, "front", provider)
+    log(f"  image · {entry['slug']} · {provider}/{model} · {aspect} · x{count}"
+        + (f" · canon quotes: {len(entry.get('canon') or [])}" if entry.get("canon") else " · NO canon quotes (fallback prompt)")
+        + (" · multiview" if len(views) > 1 else ""))
+    if dry:
+        log("    [DRY] prompt:\n      " + front_prompt.replace("\n", "\n      "))
+        return saved
+
+    api_key = get_api_key(provider)
+    gen = google_generate if provider == "google" else runway_generate
+
+    # front
+    if provider == "google":
+        blobs = gen(front_prompt, aspect, model, api_key, count=count, log=log)
+    elif provider == "openai":
+        blobs = openai_generate(front_prompt, aspect, model, api_key, count=count, quality=quality, log=log)
+    else:
+        blobs = []
+        for _ in range(count):
+            blobs += gen(front_prompt, aspect, model, api_key, seed=opts.get("seed"),
+                         ratio=opts.get("ratio"), log=log)
+    for blob, mime in blobs:
+        p = save_image(blob, mime, next_candidate_path(entry, "front", provider, model))
+        saved.append(p)
+        log(f"    saved {rel(p)}  ({len(blob)//1024} KB)")
+    if saved and (opts.get("overwrite") or not chosen_view_path(entry, "front")):
+        set_chosen(entry, "front", saved[0])
+        log(f"    chosen front → {rel(entry_dir(entry) / 'front.png')}")
+
+    # side / back, referencing the chosen front
+    front = chosen_view_path(entry, "front")
+    for view in views[1:]:
+        if not front:
+            break
+        prompt = build_prompt(roster, entry, view, provider)
+        if provider == "google":
+            if GOOGLE_MODELS.get(model) == "imagen":
+                log(f"    skip {view}: Imagen cannot take a reference image; use a gemini-* model")
+                continue
+            blobs = gen(prompt, aspect, model, api_key, refs=[front], count=1, log=log)
+        elif provider == "openai":
+            blobs = openai_generate("The reference image shows the front view. " + prompt, aspect, model,
+                                    api_key, refs=[front], count=1, quality=quality, log=log)
+        else:
+            blobs = gen("@front " + prompt, aspect, model, api_key,
+                        refs=[(front, "front")], seed=opts.get("seed"),
+                        ratio=opts.get("ratio"), log=log)
+        for blob, mime in blobs[:1]:
+            p = save_image(blob, mime, next_candidate_path(entry, view, provider, model))
+            saved.append(p)
+            log(f"    saved {rel(p)}  ({len(blob)//1024} KB)")
+            if opts.get("overwrite") or not chosen_view_path(entry, view):
+                set_chosen(entry, view, p)
+
+    append_manifest({
+        "at": now_iso(), "stage": "image", "slug": entry["slug"], "kind": entry["kind"],
+        "provider": provider, "model": model, "aspect": aspect,
+        "views": views, "count": count, "prompt": front_prompt,
+        "outputs": [rel(p) for p in saved],
+    })
+    return saved
+
+
+def stage_mesh(roster, entry, opts, log=print):
+    """Send the chosen view(s) to Meshy and install the GLB at the canonical path.
+    An ART entry has no mesh: its "make" step installs the picture instead."""
+    if entry["kind"] == "art":
+        return install_art(entry, opts, log=log)
+    dry = bool(opts.get("dry_run"))
+    out_path = entry_out_path(entry)
+    explicit = opts.get("image")
+    if explicit:
+        images = [Path(explicit)]
+    else:
+        images = [p for p in (chosen_view_path(entry, v) for v in VIEWS) if p]
+        if not opts.get("multiview"):
+            images = images[:1]
+    if not images:
+        if dry:
+            log(f"  mesh · {entry['slug']} · [DRY] would send {rel(entry_dir(entry) / 'front.png')} "
+                f"(not generated yet) → {rel(out_path)}")
+            return None
+        raise FileNotFoundError(
+            f"{entry['slug']}: no chosen concept image. Run the image stage first, "
+            f"drop a file at {rel(entry_dir(entry) / 'front.png')}, or pass --image.")
+    for p in images:
+        if not p.exists():
+            raise FileNotFoundError(f"image not found: {p}")
+
+    mopts = {
+        "texture": bool(opts.get("texture", roster["defaults"].get("texture", False))),
+        "pbr": opts.get("pbr", roster["defaults"].get("pbr", True)),
+        "texture_resolution": opts.get("texture_resolution") or roster["defaults"].get("texture_resolution", "4k"),
+        "texture_prompt": texture_prompt_for(entry),
+        "model_type": opts.get("model_type") or roster["defaults"].get("model_type", "standard"),
+        "polycount": opts.get("polycount") or roster["defaults"].get("polycount", 10000),
+        "ultra": bool(opts.get("ultra", False)),
+        "pose": opts.get("pose") or entry.get("pose"),
+        "ai_model": opts.get("ai_model") or roster["defaults"].get("meshy_ai_model"),
+        "remove_lighting": opts.get("remove_lighting", True),
+        "image_enhancement": opts.get("image_enhancement", True),
+    }
+    if mopts["model_type"] not in MESHY_MODEL_TYPES:
+        raise ValueError(f"model_type {mopts['model_type']!r} not in {sorted(MESHY_MODEL_TYPES)}")
+    if mopts["texture_resolution"] not in MESHY_TEXTURE_RES:
+        raise ValueError(f"texture_resolution {mopts['texture_resolution']!r} not in {sorted(MESHY_TEXTURE_RES)}")
+    if entry["kind"] == "prop":
+        mopts["pose"] = None
+
+    resource = "image-to-3d" if len(images) == 1 else "multi-image-to-3d"
+    log(f"  mesh · {entry['slug']} · {resource} · {mopts['model_type']}"
+        f" · {'textured ' + mopts['texture_resolution'] if mopts['texture'] else 'draft (untextured)'}"
+        + (f" · {mopts['pose']}" if mopts['pose'] else "")
+        + f" → {rel(out_path)}")
+    log(f"    inputs: {', '.join(rel(p) for p in images)}")
+    if out_path.exists() and not opts.get("overwrite"):
+        log(f"    SKIP: {out_path.name} exists (pass --overwrite to regenerate)")
+        return None
+    if dry:
+        log("    [DRY] would submit to Meshy")
+        return None
+
+    api_key = get_api_key("meshy")
+    resource, task_id = meshy_submit(images, mopts, api_key, log=log)
+    log(f"    meshy task {task_id}")
+    result = meshy_poll(resource, task_id, api_key, log=log)
+    glb_url = (result.get("model_urls") or {}).get("glb")
+    if not glb_url:
+        raise RuntimeError(f"Meshy succeeded but no GLB url: {json.dumps(result)[:300]}")
+    tmp = out_path.with_suffix(".glb.part")
+    http_download(glb_url, tmp)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    os.replace(tmp, out_path)
+    size_kb = out_path.stat().st_size / 1024
+    log(f"    installed {rel(out_path)}  ({size_kb:.0f} KB)")
+    thumb = result.get("thumbnail_url")
+    if thumb:
+        try:
+            http_download(thumb, entry_dir(entry) / "meshy_thumb.png")
+        except Exception as e:  # thumbnail is a nicety
+            log(f"    (thumbnail download failed: {e})")
+    append_manifest({
+        "at": now_iso(), "stage": "mesh", "slug": entry["slug"], "kind": entry["kind"],
+        "resource": resource, "task_id": task_id, "inputs": [rel(p) for p in images],
+        "options": {k: v for k, v in mopts.items() if k != "texture_prompt"},
+        "output": rel(out_path), "file_size_kb": round(size_kb, 1),
+    })
+    return out_path
+
+
+def estimate_cost(entries, opts, stages):
+    total = 0.0
+    provider = opts.get("provider") or "google"
+    model = opts.get("model") or ""
+    for e in entries:
+        if "image" in stages:
+            n = max(1, int(opts.get("count") or 1)) + (2 if opts.get("multiview") else 0)
+            if provider == "google":
+                fam = GOOGLE_MODELS.get(model or GOOGLE_DEFAULT_MODEL, "gemini")
+                total += n * COST_HINTS[f"google:{fam}"]
+            elif provider == "openai":
+                total += n * COST_HINTS["openai"] * (3 if opts.get("quality") == "high" else 1)
+            else:
+                total += n * COST_HINTS["runway"]
+        if "mesh" in stages and e.get("kind") != "art":    # art installs, it does not call Meshy
+            total += COST_HINTS["meshy:textured" if opts.get("texture") else "meshy:draft"]
+    return total
+
+
+# ── Status (shared by `list` and the serve API) ─────────────────────────────
+
+def entry_status(entry):
+    out = entry_out_path(entry)
+    d = entry_dir(entry)
+    st = {
+        "slug": entry["slug"],
+        "glb_installed": out.exists(),
+        "glb_size_kb": round(out.stat().st_size / 1024, 1) if out.exists() else None,
+        "glb_path": rel(out),
+        "chosen": {v: (rel(p) if p else None) for v, p in ((v, chosen_view_path(entry, v)) for v in VIEWS)},
+        "candidates": {v: [rel(p) for p in candidates_for(entry, v)] for v in VIEWS},
+        "meshy_thumb": rel(d / "meshy_thumb.png") if (d / "meshy_thumb.png").exists() else None,
+    }
+    return st
+
+
+def cmd_list(roster, args):
+    entries = select_entries(roster, args.selectors)
+    if args.kind:
+        entries = [e for e in entries if e["kind"] == args.kind]
+    print(f"{'slug':28} {'kind':6} {'vol':8} {'img':4} {'glb':4}  file")
+    for e in entries:
+        st = entry_status(e)
+        vols = ",".join(str(v) for v in e["vol"]) or "-"
+        img = "✓" if st["chosen"]["front"] else ("·" if st["candidates"]["front"] else " ")
+        glb = "✓" if st["glb_installed"] else " "
+        print(f"{e['slug']:28} {e['kind']:6} {vols:8} {img:^4} {glb:^4}  {rel(entry_out_path(e))}")
+    n_img = sum(1 for e in entries if chosen_view_path(e, "front"))
+    n_glb = sum(1 for e in entries if entry_out_path(e).exists())
+    print(f"\n{len(entries)} entries · {n_img} with a chosen concept image · {n_glb} GLBs installed")
+
+
+# ── Serve mode ──────────────────────────────────────────────────────────────
+
+class JobRunner:
+    """Background jobs for the browser UI. One worker thread so vendor
+    rate limits stay sane; each job keeps its own log."""
+
+    def __init__(self, roster_path):
+        self.roster_path = roster_path
+        self.jobs = {}
+        self.order = []
+        self.lock = threading.Lock()
+        self.queue = []
+        self.cv = threading.Condition(self.lock)
+        self.worker = threading.Thread(target=self._loop, daemon=True)
+        self.worker.start()
+
+    def submit(self, action, slug, opts):
+        jid = uuid.uuid4().hex[:10]
+        job = {"id": jid, "action": action, "slug": slug, "opts": opts,
+               "status": "queued", "log": [], "created": now_iso(), "error": None}
+        with self.cv:
+            self.jobs[jid] = job
+            self.order.append(jid)
+            self.queue.append(jid)
+            self.cv.notify()
+        return job
+
+    def snapshot(self):
+        with self.lock:
+            return [dict(self.jobs[j], log=list(self.jobs[j]["log"])) for j in self.order[-50:]]
+
+    def _loop(self):
+        while True:
+            with self.cv:
+                while not self.queue:
+                    self.cv.wait()
+                jid = self.queue.pop(0)
+                job = self.jobs[jid]
+                job["status"] = "running"
+            self._run(job)
+
+    def _run(self, job):
+        def log(msg):
+            print(msg, flush=True)
+            with self.lock:
+                job["log"].append(msg)
+        try:
+            roster = load_roster(self.roster_path)   # re-read: prompts may have been edited
+            entry = next((e for e in roster["entries"] if e["slug"] == job["slug"]), None)
+            if entry is None:
+                raise KeyError(f"unknown slug {job['slug']}")
+            # per-job prompt override from the UI (does not rewrite the roster)
+            if job["opts"].get("prompt"):
+                entry = dict(entry, prompt=job["opts"]["prompt"])
+            if job["opts"].get("canon_text") is not None:
+                # UI edited the quotes for this run: one synthetic quote
+                ct = job["opts"]["canon_text"].strip()
+                entry = dict(entry, canon=[{"src": "edited in Hero Studio", "text": ct}] if ct else [])
+            if job["opts"].get("prompt_mode"):
+                entry = dict(entry, prompt_mode=job["opts"]["prompt_mode"])
+            if job["opts"].get("texture_prompt"):
+                entry = dict(entry, texture_prompt=job["opts"]["texture_prompt"])
+            opts = dict(job["opts"])
+            if job["action"] in ("image", "run"):
+                stage_image(roster, entry, opts, log=log)
+            if job["action"] in ("mesh", "run"):
+                stage_mesh(roster, entry, opts, log=log)
+            with self.lock:
+                job["status"] = "done"
+        except SystemExit as e:      # get_api_key() exits; surface it instead
+            with self.lock:
+                job["status"] = "error"
+                job["error"] = str(e)
+            log(f"ERROR: {e}")
+        except Exception as e:
+            with self.lock:
+                job["status"] = "error"
+                job["error"] = str(e)[:800]
+            log(f"ERROR: {e}")
+
+
+def make_handler(runner, roster_path):
+    class Handler(SimpleHTTPRequestHandler):
+        # Static: /hero_uploader/... and anything under godot/tools; plus
+        # /assets/... mapped to godot/assets so the page can preview
+        # concept images and installed GLBs from the same origin.
+        def translate_path(self, path):
+            path = urllib.parse.urlparse(path).path
+            path = urllib.parse.unquote(path)
+            if path.startswith("/assets/"):
+                base = REPO / "assets"
+                sub = path[len("/assets/"):]
+            elif path.startswith("/qa/"):
+                base = REPO / "qa"                 # the contact-sheet frames (PAINT OR PASS)
+                sub = path[len("/qa/"):]
+            else:
+                base = TOOLS
+                sub = path.lstrip("/")
+            full = (base / sub).resolve()
+            if base.resolve() not in full.parents and full != base.resolve():
+                return str(base / "__forbidden__")
+            return str(full)
+
+        def end_headers(self):
+            # The page is edited often; never let the browser serve a stale copy.
+            self.send_header("Cache-Control", "no-store, must-revalidate")
+            self.send_header("Pragma", "no-cache")
+            super().end_headers()
+
+        def log_message(self, fmt, *args):
+            if self.path.startswith("/api/jobs") or self.path.startswith("/api/roster"):
+                return
+            super().log_message(fmt, *args)
+
+        def _json(self, obj, code=200):
+            data = json.dumps(obj).encode("utf-8")
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(data)
+
+        def _body(self):
+            n = int(self.headers.get("Content-Length") or 0)
+            return self.rfile.read(n) if n else b""
+
+        def do_GET(self):
+            p = urllib.parse.urlparse(self.path).path
+            if p == "/api/recovered":
+                return self._json({"recovered": list_recovered()})
+            if p == "/api/scenes":
+                return self._json({"scenes": list_scene_frames()})
+            if p == "/api/audio":
+                return self._json(audio_inventory())
+            if p == "/api/audio/preview":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._audio_preview((q.get("path") or [""])[0])
+            if p == "/api/scenes/prompt":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._json({"prompt": scene_prompt((q.get("preset") or [""])[0], (q.get("note") or [""])[0])})
+            if p == "/api/git":
+                return self._json(git_status())
+            if p == "/api/roster":
+                roster = load_roster(roster_path)
+                for e in roster["entries"]:
+                    e["status"] = entry_status(e)
+                roster["keys"] = {k: bool(get_api_key(k, required=False)) for k in KEY_FILES}
+                roster["key_report"] = key_report(check=False)
+                roster["providers"] = {
+                    "google": {"models": list(GOOGLE_MODELS), "default": GOOGLE_DEFAULT_MODEL},
+                    "runway": {"models": list(RUNWAY_MODELS), "default": RUNWAY_DEFAULT_MODEL},
+                    "openai": {"models": list(OPENAI_MODELS), "default": OPENAI_DEFAULT_MODEL,
+                               "qualities": list(OPENAI_QUALITIES)},
+                    "meshy": {"model_types": sorted(MESHY_MODEL_TYPES),
+                              "texture_resolutions": sorted(MESHY_TEXTURE_RES),
+                              "poses": sorted(MESHY_POSES)},
+                }
+                roster["aspects"] = sorted(GOOGLE_ASPECTS)
+                roster["repo_root"] = str(REPO.parent)
+                return self._json(roster)
+            if p == "/api/jobs":
+                return self._json({"jobs": runner.snapshot()})
+            if p == "/api/keys":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._json({"keys": key_report(check=q.get("check", ["0"])[0] == "1")})
+            if p == "/api/prompt":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._prompt_preview((q.get("slug") or [""])[0], {}, (q.get("provider") or ["google"])[0])
+            if p == "/" or p == "":
+                self.send_response(302)
+                self.send_header("Location", "/hero_uploader/")
+                self.end_headers()
+                return
+            return super().do_GET()
+
+        def _audio_preview(self, path):
+            # stream one Drive file straight to the page's player (rclone cat);
+            # only files from the last scan, so the page cannot ask for others
+            import subprocess
+            row = _audio_row(path)
+            rc = _rclone()
+            if row is None or not rc:
+                return self._json({"error": "not in the last scan"}, 404)
+            ext = Path(path).suffix.lower()
+            ctype = {".mp3": "audio/mpeg", ".ogg": "audio/ogg", ".wav": "audio/wav", ".m4a": "audio/mp4",
+                     ".flac": "audio/flac"}.get(ext, "application/octet-stream")
+            proc = subprocess.Popen([rc, "cat", AUDIO_READ_REMOTE + path], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            if row.get("size"):
+                self.send_header("Content-Length", str(row["size"]))
+            self.end_headers()
+            try:
+                for chunk in iter(lambda: proc.stdout.read(65536), b""):
+                    self.wfile.write(chunk)
+            except (BrokenPipeError, ConnectionResetError):
+                pass
+            finally:
+                proc.kill()
+
+        def _prompt_preview(self, slug, overrides, provider):
+            roster = load_roster(roster_path)
+            e = next((e for e in roster["entries"] if e["slug"] == slug), None)
+            if e is None:
+                return self._json({"error": "unknown slug"}, 404)
+            if overrides.get("prompt"):
+                e = dict(e, prompt=overrides["prompt"])
+            if overrides.get("canon_text") is not None:
+                ct = overrides["canon_text"].strip()
+                e = dict(e, canon=[{"src": "edited", "text": ct}] if ct else [])
+            if overrides.get("prompt_mode"):
+                e = dict(e, prompt_mode=overrides["prompt_mode"])
+            return self._json({"front": build_prompt(roster, e, "front", provider),
+                               "side": build_prompt(roster, e, "side", provider),
+                               "back": build_prompt(roster, e, "back", provider),
+                               "texture": texture_prompt_for(e),
+                               "chars": len(build_prompt(roster, e, "front", provider)),
+                               "budget": RUNWAY_PROMPT_BUDGET if provider == "runway" else None})
+
+        def do_POST(self):
+            p = urllib.parse.urlparse(self.path).path
+            if p == "/api/quit":
+                # (2026-10-13) the page's QUIT button and `meshy_pipeline.py stop`
+                self._json({"quitting": True})
+                print("Hero Studio: quit requested — stopping.", flush=True)
+                threading.Thread(target=lambda: (time.sleep(0.3), os._exit(0)), daemon=True).start()
+                return
+            roster = load_roster(roster_path)
+            by_slug = {e["slug"]: e for e in roster["entries"]}
+            if p in ("/api/scenes/paint", "/api/scenes/save"):
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                try:
+                    if p == "/api/scenes/paint":
+                        res = paint_scene(str(req.get("preset", "")), str(req.get("frame", "")),
+                                          str(req.get("provider", "google")), req.get("model") or None,
+                                          int(req.get("count", 2)), str(req.get("note", "")),
+                                          prompt_override=str(req.get("prompt", "")))
+                    else:
+                        res = save_scene_composite(str(req.get("preset", "")), str(req.get("stem", "")),
+                                                   str(req.get("png", "")), req.get("recipe", {}))
+                    return self._json(res)
+                except Exception as ex:  # noqa: BLE001
+                    return self._json({"error": str(ex)}, 400)
+            if p in ("/api/audio/scan", "/api/audio/send", "/api/audio/remove"):
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                try:
+                    if p == "/api/audio/scan":
+                        res = audio_scan()
+                    elif p == "/api/audio/send":
+                        res = audio_send(str(req.get("path", "")), str(req.get("kind", "music")),
+                                         str(req.get("title", "")), int(req.get("vol", 0) or 0))
+                    else:
+                        res = audio_remove(str(req.get("path", "")))
+                    return self._json(res, 200 if res.get("ok") else 409)
+                except Exception as ex:  # noqa: BLE001
+                    return self._json({"error": str(ex)}, 400)
+            if p == "/api/git/push":
+                # the SAVE button: add + commit + push what the tool produced
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    req = {}
+                res = git_save_push(str(req.get("message") or "").strip() or None)
+                return self._json(res, 200 if res.get("ok") else 409)
+            if p == "/api/assign":
+                # a recovered model (concept/meshy/recovered/<task>.glb) → a roster entry's canonical GLB
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                e = by_slug.get(req.get("slug", ""))
+                if e is None:
+                    return self._json({"error": "unknown slug"}, 400)
+                try:
+                    return self._json(assign_recovered(e, str(req.get("task_id", "")), overwrite=bool(req.get("overwrite"))))
+                except (OSError, ValueError) as ex:
+                    return self._json({"error": str(ex)}, 400)
+            if p == "/api/prompt":
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                return self._prompt_preview(req.get("slug", ""), req, req.get("provider") or "google")
+            if p == "/api/keys":
+                # Only from the local machine: the key is written to the
+                # gitignored file next to this script, then tested.
+                if self.client_address[0] not in ("127.0.0.1", "::1"):
+                    return self._json({"error": "keys can only be set from localhost"}, 403)
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                prov = req.get("provider")
+                if prov not in KEY_FILES:
+                    return self._json({"error": "provider must be google|runway|openai|meshy"}, 400)
+                if req.get("key"):
+                    why = placeholder_reason(clean_key(req["key"]))
+                    if why:
+                        return self._json({"error": "not saved — " + why}, 400)
+                    try:
+                        kf = save_key(prov, req["key"])
+                    except (ValueError, OSError) as ex:
+                        return self._json({"error": str(ex)}, 400)
+                    saved = clean_key(req["key"])
+                    # test the key that was just saved (not whatever an env var says)
+                    rep = {"present": True, "source": f"file:{rel(kf)}", "masked": mask_key(saved),
+                           "file": rel(kf), "env": KEY_ENVS[prov][0]}
+                    rep.update(check_key(prov, saved))
+                    env_set = [e for e in KEY_ENVS[prov] if os.environ.get(e)]
+                    if env_set:
+                        rep["message"] += (f" (note: env {env_set[0]} is set in the runner's shell and takes "
+                                           f"precedence over the file — unset it or restart serve without it)")
+                    return self._json({"keys": {prov: rep}})
+                return self._json({"keys": key_report([prov])})
+            if p == "/api/jobs":
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                action = req.get("action")
+                slug = req.get("slug")
+                if action not in ("image", "mesh", "run") or slug not in by_slug:
+                    return self._json({"error": "action must be image|mesh|run and slug must be in the roster"}, 400)
+                job = runner.submit(action, slug, req.get("opts") or {})
+                return self._json({"job": dict(job)})
+            if p == "/api/pick":
+                req = json.loads(self._body().decode("utf-8") or "{}")
+                e = by_slug.get(req.get("slug"))
+                view = req.get("view", "front")
+                if e is None or view not in VIEWS:
+                    return self._json({"error": "bad slug/view"}, 400)
+                cand = req.get("candidate", "")
+                # accept repo-relative paths from the status payload
+                cand_path = (REPO.parent / cand) if cand.startswith("godot/") else Path(cand)
+                try:
+                    dst = set_chosen(e, view, cand_path)
+                except FileNotFoundError as ex:
+                    return self._json({"error": str(ex)}, 404)
+                return self._json({"chosen": rel(dst)})
+            if p.startswith("/api/upload/"):
+                # Raw bytes in the body: /api/upload/<slug>/<view>  (image)
+                #                        /api/upload/<slug>/glb     (model)
+                parts = p.split("/")[3:]
+                if len(parts) != 2 or parts[0] not in by_slug:
+                    return self._json({"error": "use /api/upload/<slug>/<front|side|back|glb>"}, 400)
+                e = by_slug[parts[0]]
+                data = self._body()
+                if not data:
+                    return self._json({"error": "empty body"}, 400)
+                if parts[1] == "glb":
+                    out = entry_out_path(e)
+                    out.parent.mkdir(parents=True, exist_ok=True)
+                    out.write_bytes(data)
+                    return self._json({"installed": rel(out), "size_kb": round(len(data) / 1024, 1)})
+                if parts[1] in VIEWS:
+                    mime = self.headers.get("Content-Type", "image/png").split(";")[0]
+                    cand = save_image(data, mime, next_candidate_path(e, parts[1], "upload", "manual"))
+                    dst = set_chosen(e, parts[1], cand)
+                    return self._json({"candidate": rel(cand), "chosen": rel(dst)})
+                return self._json({"error": "bad target"}, 400)
+            return self._json({"error": "not found"}, 404)
+
+    return Handler
+
+
+HERO_STUDIO_URL_FILE = TOOLS / ".hero_studio_url"
+
+
+def _local_open(req, timeout=2.0):
+    """urlopen for this machine's own Studio: never through a proxy (an
+    http_proxy in the environment would send 127.0.0.1 off the box)."""
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    return opener.open(req, timeout=timeout)
+
+
+def _studio_answers(host, port, timeout=2.0):
+    """True when a Hero Studio answers on host:port."""
+    try:
+        with _local_open(f"http://{host}:{port}/api/jobs", timeout=timeout) as r:
+            return r.status == 200 and '"jobs"' in r.read(200).decode("utf-8", "replace")
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def _studio_pids():
+    """PIDs of every other `meshy_pipeline.py serve` on this machine (via /proc)."""
+    out = []
+    me = os.getpid()
+    for d in Path("/proc").glob("[0-9]*"):
+        try:
+            pid = int(d.name)
+            if pid == me:
+                continue
+            argv = (d / "cmdline").read_bytes().split(b"\0")
+        except (OSError, ValueError):
+            continue
+        args = [a.decode("utf-8", "replace") for a in argv if a]
+        if any(a.endswith("meshy_pipeline.py") for a in args) and "serve" in args:
+            out.append(pid)
+    return out
+
+
+def cmd_stop(args):
+    """Stop every running Hero Studio: ask nicely on the known ports, then
+    signal the processes by PID (TERM, then KILL)."""
+    import signal
+    asked = 0
+    for port in {getattr(args, "port", 8877), 8877, 8765, 8766, 8767, 8878, 8879}:
+        if _studio_answers("127.0.0.1", port, timeout=1.0):
+            asked += 1
+            try:
+                import urllib.request
+                _local_open(urllib.request.Request(f"http://127.0.0.1:{port}/api/quit", data=b"{}", method="POST"))
+            except Exception:  # noqa: BLE001
+                pass
+    time.sleep(0.8)
+    pids = _studio_pids()
+    for pid in pids:
+        try:
+            os.kill(pid, signal.SIGTERM)
+        except OSError:
+            pass
+    time.sleep(1.0)
+    left = []
+    for pid in _studio_pids():
+        try:
+            os.kill(pid, signal.SIGKILL)
+            left.append(pid)
+        except OSError:
+            pass
+    n = asked + len(pids)
+    print(f"Hero Studio: stopped {n} running server(s)" + (f" ({len(left)} needed a hard kill)" if left else "") + "."
+          if n else "Hero Studio: none was running.")
+    return 0
+
+
+def cmd_serve(args):
+    """Serve the page. It never refuses to start (2026-10-13, the Deck: "won't
+    start / won't quit"): a port held by an older Hero Studio is asked to quit;
+    a port held by anything else (or a Studio that will not go) is skipped for
+    the next free one. Ctrl-C and SIGTERM always end the process."""
+    import signal
+    runner = JobRunner(ROSTER_PATH)
+    handler = make_handler(runner, ROSTER_PATH)
+    srv = None
+    port = args.port
+    for attempt in range(30):
+        try:
+            srv = ThreadingHTTPServer((args.host, port), handler)
+            break
+        except OSError as ex:
+            if ex.errno not in (98, 48, 10048):       # EADDRINUSE on Linux / macOS / Windows
+                raise
+        if port == args.port and _studio_answers(args.host, port):
+            print(f"An older Hero Studio is on port {port} — asking it to quit …", flush=True)
+            try:
+                _local_open(urllib.request.Request(f"http://{args.host}:{port}/api/quit", data=b"{}", method="POST"))
+            except Exception:  # noqa: BLE001
+                pass
+            time.sleep(1.0)
+            try:
+                srv = ThreadingHTTPServer((args.host, port), handler)
+                break
+            except OSError:
+                print(f"It would not go (it predates the quit button; `meshy_pipeline.py stop` ends it).", flush=True)
+        port += 1
+    if srv is None:
+        print(f"No free port between {args.port} and {port}. Run: python3 godot/tools/meshy_pipeline.py stop", file=sys.stderr)
+        return 1
+    if port != args.port:
+        print(f"Port {args.port} is busy — Hero Studio is on port {port}.", flush=True)
+    url = f"http://{args.host}:{port}/hero_uploader/"
+    try:
+        HERO_STUDIO_URL_FILE.write_text(url + "\n")
+    except OSError:
+        pass
+
+    def _bye(signum, frame):  # noqa: ARG001
+        print("\nHero Studio stopped.", flush=True)
+        os._exit(0)
+    signal.signal(signal.SIGINT, _bye)
+    signal.signal(signal.SIGTERM, _bye)
+
+    rep = key_report(check=False)
+    print(f"meshy_pipeline.py  {rel(Path(__file__))}  (git: {_git_head()})")
+    print(f"Hero Studio  →  {url}")
+    print("keys: " + "  ".join(f"{k}={r['source'] or 'MISSING'}" for k, r in rep.items()))
+    print("      (paste/test keys in the page under KEYS, or run: meshy_pipeline.py doctor)")
+    print("Ctrl-C (or the page's QUIT button, or `meshy_pipeline.py stop`) to stop.", flush=True)
+
+    # (2026-10-13, the Deck: "still not even starting for me in a webpage")
+    # serve never opened a page — it printed an address and waited, which
+    # reads as nothing happening. Now it loads its own page once it is up,
+    # says so plainly, and opens the browser on it.
+    def _check_and_open():
+        time.sleep(0.4)
+        try:
+            with _local_open(url, timeout=5) as r:
+                body = r.read(4000).decode("utf-8", "replace")
+            ok = "HERO STUDIO" in body.upper()
+            why = "" if ok else "it answered, but not with the Studio page"
+        except Exception as ex:  # noqa: BLE001
+            ok, why = False, f"{type(ex).__name__}: {ex}"
+        if not ok:
+            print(f"!! The Studio could not load its own page ({why}).", flush=True)
+            print("   Paste this terminal's output to Claude.", flush=True)
+            return
+        print(f"OK  the page is up. Open  {url}  in a browser.", flush=True)
+        if getattr(args, "no_browser", False):
+            return
+        try:
+            import webbrowser
+            opened = webbrowser.open(url, new=2)
+        except Exception:  # noqa: BLE001
+            opened = False
+        print("    (opened it in your browser)" if opened else
+              "    (no browser could be launched from here — copy the address into one)", flush=True)
+    threading.Thread(target=_check_and_open, daemon=True).start()
+    srv.serve_forever()
+
+
+# ── CLI ─────────────────────────────────────────────────────────────────────
+
+def add_image_opts(ap):
+    ap.add_argument("--provider", choices=["google", "runway", "openai"],
+                    help="image provider (default: roster defaults.provider, else google)")
+    ap.add_argument("--model", help="provider model id (see GOOGLE_MODELS / RUNWAY_MODELS)")
+    ap.add_argument("--count", type=int, default=1, help="front-view candidates per entry")
+    ap.add_argument("--aspect", help="override roster aspect (1:1, 3:4, 9:16, ...)")
+    ap.add_argument("--ratio", help="Runway only: explicit ratio string, e.g. 1080:1440")
+    ap.add_argument("--quality", choices=list(OPENAI_QUALITIES),
+                    help="OpenAI only: low / medium (default) / high / auto")
+    ap.add_argument("--seed", type=int, help="Runway only: seed for reproducible tweaks")
+    ap.add_argument("--multiview", action="store_true",
+                    help="also generate side + back views from the chosen front (feeds multi-image-to-3d)")
+
+
+def add_mesh_opts(ap):
+    ap.add_argument("--texture", action="store_true", help="textured output (PBR maps); the roster default")
+    ap.add_argument("--no-texture", action="store_true", help="untextured draft mesh (cheaper; retexture later)")
+    ap.add_argument("--no-pbr", action="store_true", help="with --texture: base color only")
+    ap.add_argument("--texture-resolution", choices=sorted(MESHY_TEXTURE_RES))
+    ap.add_argument("--model-type", choices=sorted(MESHY_MODEL_TYPES))
+    ap.add_argument("--polycount", type=int, help="smart-topology target triangles (100-15000)")
+    ap.add_argument("--ultra", action="store_true", help="standard mode: extra detail pass (costs more)")
+    ap.add_argument("--pose", choices=sorted(MESHY_POSES), help="override roster pose")
+    ap.add_argument("--ai-model", help="explicit Meshy ai_model (normally omitted → server latest)")
+    ap.add_argument("--image", help="explicit concept image path (single entry only)")
+
+
+def common_opts(ap):
+    ap.add_argument("selectors", nargs="*", default=["all"],
+                    help="slugs, globs, vol5/vol6/vol7, hero/demon/prop, or all")
+    ap.add_argument("--dry-run", action="store_true", help="print what would happen; no API calls")
+    ap.add_argument("--overwrite", action="store_true", help="redo even if outputs exist")
+    ap.add_argument("--limit", type=int, help="stop after this many entries")
+
+
+def opts_from_args(args):
+    o = {k: v for k, v in vars(args).items() if v not in (None, False)}
+    if getattr(args, "no_pbr", False):
+        o["pbr"] = False
+    if getattr(args, "no_texture", False):
+        o["texture"] = False
+    return o
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    p = sub.add_parser("list", help="show roster + status")
+    p.add_argument("selectors", nargs="*", default=["all"])
+    p.add_argument("--kind", choices=sorted(OUT_DIRS))
+
+    p = sub.add_parser("image", help="generate concept images")
+    common_opts(p); add_image_opts(p)
+
+    p = sub.add_parser("pick", help="choose a candidate as the front/side/back view")
+    p.add_argument("slug"); p.add_argument("candidate")
+    p.add_argument("--view", choices=VIEWS, default="front")
+
+    p = sub.add_parser("mesh", help="send chosen images to Meshy, install GLB")
+    common_opts(p); add_mesh_opts(p)
+    p.add_argument("--multiview", action="store_true",
+                   help="send front+side+back (when present) to multi-image-to-3d")
+
+    p = sub.add_parser("run", help="image then mesh")
+    common_opts(p); add_image_opts(p); add_mesh_opts(p)
+
+    p = sub.add_parser("keys", help="paste the API keys interactively (hidden input), save + test them")
+    p.add_argument("providers", nargs="*", help="google runway meshy (default: all)")
+
+    p = sub.add_parser("doctor", help="find + test the API keys (one cheap call per provider)")
+    p.add_argument("providers", nargs="*", help="google runway meshy (default: all)")
+    p.add_argument("--no-check", action="store_true", help="only report where keys were found")
+
+    sub.add_parser("save", help="the page's SAVE: models + pictures to Google Drive, then git commit + push")
+    sub.add_parser("drive-status", help="is Google Drive set up, and what is not on it yet")
+    sub.add_parser("drive-push", help="upload every model and picture to Google Drive, update the manifest")
+    sub.add_parser("art-optimize", help="compressed, size-capped import settings for every installed hero-art picture")
+    sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
+
+    p = sub.add_parser("serve", help="serve the browser UI + JSON API")
+    p.add_argument("--host", default="127.0.0.1")
+    p.add_argument("--port", type=int, default=8877)   # (2026-10-13) 8765 belongs to another program on the Deck
+    p.add_argument("--no-browser", action="store_true", help="do not open the page in a browser")
+    p = sub.add_parser("stop", help="stop every running Hero Studio server")
+    p.add_argument("--port", type=int, default=8877)
+
+    args = ap.parse_args()
+    if args.cmd == "keys":
+        return cmd_keys(args)
+    if args.cmd == "doctor":
+        bad = [x for x in args.providers if x not in KEY_FILES]
+        if bad:
+            sys.exit(f"unknown provider(s) {bad}; choose from {sorted(KEY_FILES)}")
+        return cmd_doctor(args)
+    if args.cmd == "serve":
+        load_roster()  # validate early
+        return cmd_serve(args)
+    if args.cmd == "stop":
+        return cmd_stop(args)
+    if args.cmd in ("save", "drive-push", "drive-pull"):
+        global DRIVE_LIVE
+        DRIVE_LIVE = True
+        if args.cmd != "drive-pull":
+            n = len(drive_pending())
+            print(f"{n} model/picture file(s) to put on Google Drive" + (" — this can take a few minutes" if n > 5 else ""), flush=True)
+        res = {"save": git_save_push, "drive-push": drive_push, "drive-pull": drive_pull}[args.cmd]()
+        for step in res["steps"]:
+            print(step)
+        print("OK" if res["ok"] else "NOT OK")
+        return 0 if res["ok"] else 1
+    if args.cmd == "art-optimize":
+        return cmd_art_optimize(args)
+    if args.cmd == "drive-status":
+        print(json.dumps(drive_status(), indent=1))
+        return 0
+
+    roster = load_roster()
+    if args.cmd == "list":
+        return cmd_list(roster, args)
+    if args.cmd == "pick":
+        e = next((e for e in roster["entries"] if e["slug"] == args.slug), None)
+        if e is None:
+            sys.exit(f"unknown slug {args.slug}")
+        dst = set_chosen(e, args.view, args.candidate)
+        print(f"chosen {args.view} → {rel(dst)}")
+        return
+
+    entries = select_entries(roster, args.selectors)
+    if not entries:
+        sys.exit(f"no roster entries match {args.selectors}")
+    opts = opts_from_args(args)
+    stages = {"image": ["image"], "mesh": ["mesh"], "run": ["image", "mesh"]}[args.cmd]
+    if opts.get("image") and len(entries) != 1:
+        sys.exit("--image applies to a single entry")
+    est = estimate_cost(entries, opts, stages)
+    print(f"{args.cmd}: {len(entries)} entr{'y' if len(entries) == 1 else 'ies'}  ~${est:.2f} estimated (rough)",
+          flush=True)
+    if not args.dry_run:
+        # fail fast on missing keys before spending anything
+        if "image" in stages:
+            get_api_key(opts.get("provider") or roster["defaults"].get("provider", "google"))
+        if "mesh" in stages:
+            get_api_key("meshy")
+
+    done = errors = 0
+    for i, e in enumerate(entries):
+        print(f"\n[{i+1}/{len(entries)}] {e['kind']}/{e['slug']} — {e['name']}", flush=True)
+        try:
+            if "image" in stages:
+                stage_image(roster, e, opts)
+            if "mesh" in stages:
+                stage_mesh(roster, e, opts)
+            done += 1
+        except (RuntimeError, ValueError, FileNotFoundError, KeyError) as ex:
+            errors += 1
+            print(f"    ERROR: {ex}", file=sys.stderr, flush=True)
+        if args.limit and done >= args.limit:
+            print(f"\nhit --limit {args.limit}, stopping", file=sys.stderr)
+            break
+    print(f"\nsummary: selected={len(entries)} ok={done} errors={errors}", file=sys.stderr)
+    print(f"manifest: {rel(MANIFEST_PATH)}", file=sys.stderr)
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main() or 0)

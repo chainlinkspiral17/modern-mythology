@@ -12,7 +12,9 @@ signal closed
 
 # When TRUE, every catalog track + every skin is visible regardless of
 # unlock state — useful for studio testing. In ship mode this is FALSE.
-const UNLOCK_ALL_TRACKS := false
+# For the time being ALL TRACKS are open — the player asked for the
+# whole bank in the player while the jukebox mode beds in.
+const UNLOCK_ALL_TRACKS := true
 const UNLOCK_ALL_SKINS  := false
 
 # ── Skin definitions ─────────────────────────────────────────────────
@@ -57,7 +59,7 @@ const SKINS := [
 	{
 		"id": "tape_reel",
 		"name": "Tape Reel",
-		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg"},
+		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.wav"},
 		"bg":     Color(0.087, 0.067, 0.043, 0.97),
 		"border": Color(0.65, 0.52, 0.31, 0.40),
 		"accent": Color(0.92, 0.83, 0.55),
@@ -124,17 +126,13 @@ var _skin:          Dictionary = {}
 var _track_buttons: Dictionary = {}
 var _now_lbl:       Label  = null
 var _play_btn:      Button = null
+var _juke_btn:      Button = null
 var _skin_menu_btn: MenuButton = null
 var _viz_menu_btn:  MenuButton = null
 var _viz_host:      Control = null
 var _viz:           Control = null
 var _catalog:       Array  = []
 var _built:         bool   = false
-var _shuffle_btn:   Button  = null
-var _seek:          HSlider = null
-var _cur_time:      Label   = null
-var _tot_time:      Label   = null
-var _seeking:       bool    = false
 
 
 const _VizScene  := preload("res://scenes/menu/MusicVisualizer.gd")
@@ -304,37 +302,16 @@ func _build() -> void:
 	next_btn.pressed.connect(func() -> void: AudioMgr.play_next(); _refresh())
 	ctrl_row.add_child(next_btn)
 
-	_shuffle_btn = _ctrl_btn("⤨")
-	_shuffle_btn.tooltip_text = "Shuffle"
-	_shuffle_btn.pressed.connect(func() -> void:
-		AudioMgr.set_shuffle(not AudioMgr.is_shuffle())
-		_refresh())
-	ctrl_row.add_child(_shuffle_btn)
-
-	# Seek / progress row
-	var seek_row := HBoxContainer.new()
-	seek_row.add_theme_constant_override("separation", 10)
-	outer.add_child(seek_row)
-	_cur_time = Label.new()
-	_cur_time.text = "0:00"
-	_apply_font(_cur_time, _skin["label_font"], _skin["label_size"], _skin["dim"])
-	seek_row.add_child(_cur_time)
-	_seek = HSlider.new()
-	_seek.min_value = 0.0
-	_seek.max_value = 1.0
-	_seek.step = 0.0001
-	_seek.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_seek.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	_seek.custom_minimum_size.y = 18
-	_seek.drag_started.connect(func() -> void: _seeking = true)
-	_seek.drag_ended.connect(func(_changed: bool) -> void:
-		_apply_seek()
-		_seeking = false)
-	seek_row.add_child(_seek)
-	_tot_time = Label.new()
-	_tot_time.text = "0:00"
-	_apply_font(_tot_time, _skin["label_font"], _skin["label_size"], _skin["dim"])
-	seek_row.add_child(_tot_time)
+	# Jukebox toggle — ON: the player rotates the whole catalog and
+	# scenes can't change the music. OFF: scene / queue music.
+	_juke_btn = _ctrl_btn("")
+	_juke_btn.custom_minimum_size.x = 170
+	_juke_btn.tooltip_text = "ON: the player rotates every track, scenes can't interrupt.\nOFF: each scene plays its own music."
+	_juke_btn.pressed.connect(func() -> void:
+		AudioMgr.set_jukebox(not AudioMgr.jukebox_on)
+		_refresh()
+	)
+	ctrl_row.add_child(_juke_btn)
 
 	outer.add_child(_rule())
 
@@ -352,7 +329,7 @@ func _build() -> void:
 	print("[MusicPlayer] catalog size: ", _catalog.size(),
 		" · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS,
 		" · skin=", _skin["id"])
-	var cur_vol := -2
+	var cur_group := ""
 	var _added := 0
 	for entry: Dictionary in _catalog:
 		var unlock: Dictionary = entry.get("unlock", {})
@@ -366,11 +343,16 @@ func _build() -> void:
 				if not AudioMgr.is_heard(src_for_gate):
 					continue
 
-		var vol: int = int(entry.get("vol", 0))
-		if vol != cur_vol:
-			cur_vol = vol
+		# Group label: entries may carry a `section` string (slowstick
+		# banks); otherwise fall back to the volume number.
+		var group: String = String(entry.get("section", ""))
+		if group == "":
+			var vol: int = int(entry.get("vol", 0))
+			group = "MENU" if vol == 0 else "VOL. %d" % vol
+		if group != cur_group:
+			cur_group = group
 			var vol_lbl := Label.new()
-			vol_lbl.text = "  MENU" if vol == 0 else "  VOL. %d" % vol
+			vol_lbl.text = "  " + group
 			var dimmed_accent: Color = Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.55)
 			_apply_font(vol_lbl, _skin["label_font"], _skin["label_size"], dimmed_accent)
 			vol_lbl.custom_minimum_size.y = 22
@@ -398,7 +380,7 @@ func _build() -> void:
 
 		var dot_lbl := Label.new()
 		dot_lbl.text = "●" if AudioMgr.is_heard(src) else "○"
-		dot_lbl.add_theme_font_size_override("font_size", 10)
+		dot_lbl.add_theme_font_size_override("font_size", 12)
 		dot_lbl.add_theme_color_override("font_color",
 			Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.8) if AudioMgr.is_heard(src) else _skin["dim"])
 		dot_lbl.custom_minimum_size.x = 16
@@ -618,36 +600,13 @@ func _viz_entry_unlocked(v: Dictionary) -> bool:
 	return false
 
 
-func _process(_delta: float) -> void:
-	if not visible or _seek == null or _seeking:
-		return
-	var length: float = AudioMgr.get_stream_length()
-	var pos: float = AudioMgr.get_playback_position()
-	_seek.set_value_no_signal(pos / length if length > 0.0 else 0.0)
-	if _cur_time != null:
-		_cur_time.text = _fmt_time(pos)
-	if _tot_time != null:
-		_tot_time.text = _fmt_time(length)
-
-
-func _apply_seek() -> void:
-	var length: float = AudioMgr.get_stream_length()
-	if length > 0.0:
-		AudioMgr.seek(_seek.value * length)
-
-
-func _fmt_time(sec: float) -> String:
-	var s := int(maxf(sec, 0.0))
-	return "%d:%02d" % [s / 60, s % 60]
-
-
 func _refresh() -> void:
 	var cur: String = AudioMgr.get_current_track()
 	var entry := SceneDataDB.get_music_entry(cur)
 	_now_lbl.text = entry.get("title", cur) if cur != "" else "—"
 	_play_btn.text = "⏸" if AudioMgr.is_playing() else "▶"
-	if _shuffle_btn != null:
-		_shuffle_btn.modulate = Color(1, 1, 1, 1.0 if AudioMgr.is_shuffle() else 0.45)
+	if _juke_btn != null:
+		_juke_btn.text = "JUKEBOX · ALL TRACKS" if AudioMgr.jukebox_on else "SCENE MUSIC"
 	for src in _track_buttons:
 		var d: Dictionary = _track_buttons[src]
 		var is_current: bool = (src == cur)

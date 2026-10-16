@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://montreal_apartment_cameo"]
+[gd_scene load_steps=26 format=3 uid="uid://montreal_apartment_cameo"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/montreal_apartment.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.62, 0.78, 0.92, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.10, 0.12, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.78, 0.86, 1)
 ambient_light_energy = 0.7
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.62, 0.66, 0.78, 1)
 fog_light_energy = 0.45
 fog_density = 0.006
@@ -155,19 +170,34 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key_SnowWindow" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
+transform = Transform3D(-0.707, 0.354, -0.612, 0, 0.865, 0.5, 0.707, 0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
-light_energy = 0.65
+light_energy = 0.9
 shadow_enabled = false
 
 [node name="Fill_RadiatorWarm" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 2, -5)
 light_color = Color(1.00, 0.78, 0.42, 1)
-light_energy = 0.25
+light_energy = 0.4
+shadow_enabled = false
+
+; Warm interior lamp practical (cozy winter apartment)
+[node name="Practical_Lamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -2.5)
+light_color = Color(1.0, 0.82, 0.52, 1)
+light_energy = 1.2
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Practical_FloorLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72, 1.8, -0.85)
+light_color = Color(0.98, 0.84, 0.56, 1)
+light_energy = 0.9
+omni_range = 3.0
 shadow_enabled = false
 
 [node name="Back_Cozy" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 3, 4, 0)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 3, 4, 0)
 light_color = Color(0.96, 0.78, 0.58, 1)
 light_energy = 0.3
 shadow_enabled = false
@@ -272,7 +302,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +321,58 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · the arcana sets get the markers their scripts call for) ────────
+; rotation B: from the fridge corner across to the sofa and the alley window
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.2, 1.5, -4.2)
+rotation = Vector3(-0.163163, 2.28963, 0)
+metadata/fov = 54.0
+
+; insert: the notebook on the reading chair
+; RE-AIMED 2026-10-03: the mug insert is the NARWHAL mug on the desk (it framed
+; the bistro table's); the notebook insert the one open on the desk (it framed the sofa)
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.450, 1.150, -2.750)
+rotation = Vector3(-0.5550, 0.5462, 0.0)
+metadata/fov = 34.0
+
+; insert: the mug at the sofa arm
+[node name="shot_insert_mug" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.050, 1.100, -3.050)
+rotation = Vector3(-0.3524, 0.7854, 0.0)
+metadata/fov = 32.0
+
+; insert: the phone on the desk, face-up, the four-word thread
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, 1.15, -2.8)
+rotation = Vector3(-0.5854, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the dust motes in the late-morning shaft
+[node name="shot_insert_dust" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 0.90, -3.2)
+rotation = Vector3(0.35, 0, 0)   ; low, tilted up into the window's light with the motes between (2026-09-25: level, it saw only the lit wall)
+metadata/fov = 42.0
+
+; insert: the graffiti-scarred drainpipe, when the light hits it
+; RE-AIMED 2026-10-03: from inside at the window, THROUGH the glass at the pipe
+; across the alley (the lens stood in the alley against the pipe)
+[node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350, 1.450, -4.550)
+rotation = Vector3(-0.0517, -0.3709, 0.0)   ; in the alley, looking back up the pipe (2026-09-25: it looked at the pipe through the window glass, which is opaque here)
+metadata/fov = 30.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.954, 1.612, -1.975)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.958, 1.612, -3.887)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 45.0

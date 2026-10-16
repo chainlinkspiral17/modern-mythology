@@ -35,19 +35,28 @@
     },
     {
       "t": "narrate",
-      "text": "Sam comes in."
+      "text": "[mood:morning_bright]Sam comes in.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet. He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left."
+      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "Today is the first day Sam is allowed to come."
+      "text": "He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "She comes in alone."
+      "text": "Today is the first day Sam is allowed to come.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/009.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "She comes in alone.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/010.mp3"
     },
     {
       "t": "show",
@@ -57,213 +66,266 @@
     },
     {
       "t": "narrate",
-      "text": "She comes in carrying a small spiral-bound notebook from the Kwik Stop and a blue raspberry slushie in a paper cup, the lid taped on with the red plastic spoon already inserted through the cross-cut, the way Diego likes it."
+      "text": "[shot:insert slushie]She comes in carrying a small spiral-bound notebook from the Kwik Stop and a blue raspberry slushie in a paper cup, the lid taped on with the red plastic spoon already inserted through the cross-cut, the way Diego likes it.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sets the slushie on the bedside table."
+      "text": "She sets the slushie on the bedside table.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits in the chair beside the bed."
+      "text": "She sits in the chair beside the bed.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, immediately, speak."
+      "text": "She does not, immediately, speak.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the bed, looks at her."
+      "text": "[shot:closeup diego]Diego, in the bed, looks at her.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/016.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Hi, Sam.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/017.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Hi, Diego.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/018.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "You cut your hair.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has not cut her hair."
+      "text": "She has not cut her hair.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "He realizes, after a second, that she has not cut her hair. Her hair is, in fact, exactly as she has worn it for the past two years."
+      "text": "He realizes, after a second, that she has not cut her hair. Her hair is, in fact, exactly as she has worn it for the past two years.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/021.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Sorry. I — I think I dreamed your hair was different.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She smiles."
+      "text": "She smiles.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/023.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "It's okay. I dreamed your hair was different too. You had longer hair in the dream. You looked like you were in a band.",
-      "expr": "happy"
+      "text": "[shot:closeup person]It's okay. I dreamed your hair was different too. You had longer hair in the dream. You looked like you were in a band.",
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "He laughs, faintly."
+      "text": "He laughs, faintly.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/025.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Sam.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/026.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/027.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "How long did this take.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/028.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Five days, Diego. We got you out Friday morning. It's Tuesday.",
-      "expr": "neutral"
+      "text": "[shot:closeup person]Five days, Diego. We got you out Friday morning. It's Tuesday.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks about this."
+      "text": "He thinks about this.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/030.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
-      "text": "It felt like longer.",
-      "expr": "neutral"
+      "text": "[shot:closeup person_b]It felt like longer.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/031.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/032.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I had a dream you came to the Gas & Go and pressed your hand to my forehead. The way you did in February.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is quiet for a moment."
+      "text": "[shot:closeup sam]She is quiet for a moment.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/034.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Diego. That was Friday morning. About an hour before they got you out. I was at the Kwik Stop. I was at the counter. I — I did press my hand to my own forehead, in the bathroom on my break, because I had a headache. And while I was pressing, I — I thought about you. I thought, I hope he can feel this. I didn't know — I don't know how to talk about this stuff yet. But I felt it go somewhere.",
-      "expr": "thinking"
+      "text": "Diego. That was Friday morning. About an hour before they got you out. I was at the Kwik Stop. I was at the counter. I — I did press my hand to my own forehead, in the bathroom on my break, because I had a headache.",
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/035.ogg"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "And while I was pressing, I — I thought about you. I thought, I hope he can feel this. I didn't know — I don't know how to talk about this stuff yet. But I felt it go somewhere.",
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/036.ogg"
     },
     {
       "t": "narrate",
-      "text": "He looks at her."
+      "text": "He looks at her.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/037.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "It went somewhere, Sam. I was in the room. I felt it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/038.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Diego.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/039.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah.",
-      "expr": "neutral"
+      "text": "[shot:closeup person_b]Yeah.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/040.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "There is a person — there is a man named Frasier Temple. He has imps. He sent the imp to you. Sam — I mean Maya — Maya is going to tell you all of this. There is a network. We are inside it. We are okay. You are okay. You are going to be okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/041.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I want to meet Maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/042.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You will. Soon. Not today. Today is just me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/043.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Sam.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/044.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah.",
-      "expr": "neutral"
+      "text": "[shot:closeup person]Yeah.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/045.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Will you hold my hand.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/046.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "She takes his hand."
+      "text": "[beat:lift][shot:insert hands~]She takes his hand.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "She holds it."
+      "text": "She holds it.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "She holds it for a long time."
+      "text": "She holds it for a long time.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee. Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat."
+      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/051.ogg"
     },
     {
       "t": "narrate",
-      "text": "Sam sits for two hours."
+      "text": "Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/052.ogg"
     },
     {
       "t": "narrate",
-      "text": "She does not, in the two hours, let go."
+      "text": "Sam sits for two hours.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/053.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "She does not, in the two hours, let go.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/054.mp3"
     },
     {
       "t": "hide",
@@ -272,6 +334,10 @@
     {
       "t": "hide",
       "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
     },
     {
       "t": "interlude",
@@ -287,19 +353,23 @@
     },
     {
       "t": "narrate",
-      "text": "The notebook is the small spiral-bound one Sam brought to the safehouse."
+      "text": "[shot:insert notebook]The notebook is the small spiral-bound one Sam brought to the safehouse.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "He starts writing in it, at her suggestion, the second week of recovery."
+      "text": "He starts writing in it, at her suggestion, the second week of recovery.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "He writes the dream first."
+      "text": "He writes the dream first.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "He writes it because Maya, when she finally visits — three days after Sam, on a Friday in early June, with her grandmother out of the hospital and Maya driving the Subaru Miriam has loaned them indefinitely — tells him about the imps."
+      "text": "He writes it because Maya, when she finally visits — three days after Sam, on a Friday in early June, with her grandmother out of the hospital and Maya driving the Subaru Miriam has loaned them indefinitely — tells him about the imps.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/062.mp3"
     },
     {
       "t": "hide",
@@ -320,8 +390,16 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today. But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
-      "expr": "neutral"
+      "text": "[shot:closeup person_b]Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/066.ogg"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/067.ogg"
     },
     {
       "t": "hide",
@@ -329,19 +407,28 @@
     },
     {
       "t": "narrate",
-      "text": "Diego writes."
+      "text": "[shot:closeup diego]Diego writes.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down. He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third."
+      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/070.ogg"
     },
     {
       "t": "narrate",
-      "text": "He writes the room itself last."
+      "text": "He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/071.ogg"
     },
     {
       "t": "narrate",
-      "text": "The room takes him four months to write."
+      "text": "He writes the room itself last.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/072.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The room takes him four months to write.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/073.mp3"
     },
     {
       "t": "hide",
@@ -361,91 +448,115 @@
     },
     {
       "t": "narrate",
-      "text": "He finishes it, finally, on a Sunday in October, at Sam's kitchen table, with Sam beside him reading a book, and Sam's mother at the stove making a soup that smells of the small specific home a mother's stove can become."
+      "text": "He finishes it, finally, on a Sunday in October, at Sam's kitchen table, with Sam beside him reading a book, and Sam's mother at the stove making a soup that smells of the small specific home a mother's stove can become.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "He closes the notebook."
+      "text": "[shot:insert notebook]He closes the notebook.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/078.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I am done with this part.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/079.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Are you sure?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/080.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yes. I want to put it on a shelf for a while.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/081.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Where do you want it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/082.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yours. The blue bedroom. The shelf above the desk. Where the bayou photograph is.",
-      "expr": "neutral"
+      "text": "[shot:closeup person_b]Yours. The blue bedroom. The shelf above the desk. Where the bayou photograph is.",
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/083.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay, mi vida. I'll take care of it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "She takes the notebook upstairs. She places it on the shelf above her desk, beside her grandmother's bayou photograph and the cracked mirror shard she had, in mid-July, found in the parking lot of the Kwik Stop and had, without quite knowing why, brought home."
+      "text": "[shot:insert notebook]She takes the notebook upstairs. She places it on the shelf above her desk, beside her grandmother's bayou photograph and the cracked mirror shard she had, in mid-July, found in the parking lot of the Kwik Stop and had, without quite knowing why, brought home.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "The notebook stays on the shelf."
+      "text": "The notebook stays on the shelf.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "It stays there for the rest of Sam's time in that room."
+      "text": "It stays there for the rest of Sam's time in that room.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf, and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be."
+      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf,",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/088.ogg"
     },
     {
       "t": "narrate",
-      "text": "But that is the future."
+      "text": "and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/089.ogg"
     },
     {
       "t": "narrate",
-      "text": "For now, in October, Sam closes the bedroom door behind her and goes back downstairs."
+      "text": "But that is the future.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "The soup is ready."
+      "text": "For now, in October, Sam closes the bedroom door behind her and goes back downstairs.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego is at the table."
+      "text": "The soup is ready.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's mother is pouring."
+      "text": "[shot:establish]Diego is at the table.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam sits."
+      "text": "Sam's mother is pouring.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "They eat."
+      "text": "Sam sits.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/095.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "They eat.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/096.mp3"
     },
     {
       "t": "hide",
@@ -457,47 +568,78 @@
     },
     {
       "t": "narrate",
-      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth. The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make."
+      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/099.ogg"
     },
     {
       "t": "narrate",
-      "text": "The lion, in Diego's case, is the room."
+      "text": "The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/100.ogg"
     },
     {
       "t": "narrate",
-      "text": "The room, by October, is a thing the lion can describe."
+      "text": "The lion, in Diego's case, is the room.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother. Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept, on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
+      "text": "The room, by October, is a thing the lion can describe.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "The audio file is six seconds long."
+      "text": "[shot:insert window]The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/103.ogg"
     },
     {
       "t": "narrate",
-      "text": "Diego listens to it once."
+      "text": "Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept,",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/104.ogg"
     },
     {
       "t": "narrate",
-      "text": "He does not need to listen to it again."
+      "text": "on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/105.ogg"
     },
     {
       "t": "narrate",
-      "text": "He keeps it, anyway, on his phone."
+      "text": "The audio file is six seconds long.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms — trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds."
+      "text": "Diego listens to it once.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "The six seconds will, on those nights, be enough."
+      "text": "He does not need to listen to it again.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "The lion, on the card, lays its head, eventually, in the lap of the figure."
+      "text": "He keeps it, anyway, on his phone.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/109.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms —",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/110.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/111.ogg"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]The six seconds will, on those nights, be enough.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/112.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The lion, on the card, lays its head, eventually, in the lap of the figure.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/113.mp3"
     },
     {
       "t": "show",
@@ -508,16 +650,19 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
-      "expr": "thinking"
+      "text": "[mood:arcana_warm][shot:closeup diego~]Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "He underlines it."
+      "text": "He underlines it.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "He closes the notebook."
+      "text": "He closes the notebook.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/117.mp3"
     },
     {
       "t": "hide",
@@ -537,7 +682,8 @@
     },
     {
       "t": "narrate",
-      "text": "He hands it to Sam."
+      "text": "He hands it to Sam.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/121.mp3"
     },
     {
       "t": "hide",
@@ -549,11 +695,13 @@
     },
     {
       "t": "narrate",
-      "text": "The chapter ends."
+      "text": "[shot:establish]The chapter ends.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "The summer goes on."
+      "text": "The summer goes on.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/125.mp3"
     },
     {
       "t": "end"

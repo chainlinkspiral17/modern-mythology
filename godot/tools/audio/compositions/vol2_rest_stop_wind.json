@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "briar falls rest area",
+  "composer": "the wind, unattributed",
+  "for": "vol2 interlude \u00b7 Briar Falls \u00b7 rest-stop wind bed",
+  "notes": "Wind in two long swells over an almost-absent drone. One high tone at bar 13 \u2014 the sign flexing on its posts, or something with better manners than that. Authored to be barely there; the interlude's stillness is the instrument."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 44100,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.5
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24.0,
+     "vel": 0.68
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.15,
+   "notes": [
+    {
+     "pitch": "E2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.09,
+   "notes": [
+    {
+     "pitch": "B4",
+     "bar": 13,
+     "beat": 1,
+     "dur": 3.0,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

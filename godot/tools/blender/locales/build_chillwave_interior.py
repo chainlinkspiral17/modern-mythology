@@ -1,826 +1,397 @@
-"""CHILLWAVE VIDEO — Cale's slow-stick shop, Main St, Smolvud OR —
-vol7 hero locale.
+"""chillwave_interior — ChillWave, Cale's slowstick shop (vol7).
 
-WHAT THE PLACE IS (per the binding scenes — grep "3d:chillwave_interior"
-→ vol7_ch3_studio, vol7_ch6_cale, vol7_ch6_chillwave; the other nine
-ch6 scenes continue in the back room without re-binding): Cale's
-record/video shop that actually deals in SLOW STICKS — designer-made
-memory media sold in waxed-paper foundation sleeves and disc-cases.
-Front retail floor + the back room where the inventory lives. The
-back room hosts the whole ch6 spine (music catalog id
-vol7_chillwave_back_room covers all eleven ch6 scenes), so it is a
-real modeled room behind the north doorway, not a recess glimpse.
+2026-08-03 tail-wave RE-THEME. The old build was a synthwave
+COCKTAIL LOUNGE — bar, DJ decks, neon mural. Every vol7_ch6 scene
+set here is a small secondhand SLOWSTICK SHOP: "Cale was not at the
+counter. The lights were on. The bell rang as she came in" · "The
+back was where the inventory lived. Cedar shelves alphabetized by
+designer, a wooden crate by the door" · "He was at the workbench"
+· "The wooden box held three sticks. The third was Estuary 7."
 
-Canon sources baked in:
-  · vol7_ch3_studio: "ChillWave Video at four-twelve was quiet";
-    the bell rings as she comes in; "Cale was at the counter with a
-    paperback"; the store smell — "wax-paper sleeves, the cedar
-    shelves Cale had built himself in 2046"; Estuary 7 "is not on
-    the floor... It's in the back" (so the floor stock exists AND
-    the hero stick is NOT out front).
-  · vol7_ch6_cale / vol7_ch6_chillwave: "walked around the counter
-    and through the doorway to the back" (counter guards the back
-    doorway); "The back was where the inventory lived. Cedar
-    shelves alphabetized by designer, a wooden crate by the door
-    for new arrivals, a workbench in the corner with a soldering
-    iron and the small precision tools Cale used on the older
-    readers"; "He unplugged the soldering iron from the strip on
-    the wall, moved a few small parts off the bench into a tray,
-    pulled a second chair over from the corner"; "The transformer
-    on the wall hummed faintly even with the iron unplugged";
-    "Bench behind you, third slot in the wooden box" — three sticks,
-    the third Estuary 7, Ines Rocha 2046 on a white label; she
-    exits through the front, "the bell rang twice".
-  · vol7_ch6_why_lena: Lena's chair is "a folding metal one Cale
-    had probably grabbed out of the closet" — so a folding metal
-    chair near the bench AND a closet door in the back room.
-  · vol7_ch21_leaving: "the case Cale had put on the inventory
-    shelf behind his register on the seventeenth of August" — ch3 &
-    ch6 both post-date that, so Estuary 7's empty disc-case sits on
-    the shelf behind the register while the stick itself waits in
-    the wooden box in the back.
-  · vol7_ch13_cale: "his afternoon cigarette at two-forty-five on
-    the back porch at ChillWave" → back door + small porch off the
-    back room (coffee-can butt tin outside; NO smoking props
-    inside). Also the CLOSED sign / register-paper note is a ch13
-    one-off — not baked, shop reads open.
-  · vol7_ch12_morning: "Cale's truck was outside ChillWave Video"
-    (his F-150, ch16_eight) → slab-tier pickup at the Main St curb.
-  · milk_and_honey/_ART_MANIFEST.md: "Counter at front, register,
-    the bell. Lights low. Inventory crates by the door." Lights-low
-    → warm pendants, no fluorescent banks (scene lights are tscn-
-    side). The manifest's crate placement is conflated; the binding
-    prose puts the new-arrivals crate by the BACK-room door, which
-    wins (playbook wave-8 rule).
+Rebuilt to the prose:
+- FRONT: entry door with the BELL above it, storefront glass, the
+  counter (service bell + Cale's face-down paperback + register),
+  cedar display shelving with sticks facing out.
+- BACK (through the partition doorway): cedar inventory shelves in
+  alphabetized rows, the WOODEN CRATE by the doorway, Cale's
+  WORKBENCH (soldering iron, LED strip, bench transformer, parts
+  trays, task lamp) with his chair, the second chair, and the
+  three-slot WOODEN STICK BOX with the Estuary 7 label.
 
-Canon-negatives honored: no café table (scaffold's removed), no
-customers' seating, no ashtray/tobacco inside (back porch only), no
-apartment storey above (Cale lives over the laundromat — ch13), the
-Estuary 7 stick itself never on the floor, no in-world neon — the
-"chillwave" look is the screen-space mood, not baked geometry.
-
-No transparency: storefront windows are OPENINGS with cedar frames
-+ mullions; the door is stiles + rails with an empty upper panel.
-Text is scene-side Label3D per the playbook; this script bakes named
-vertex-colored panels only: ChillWave_SignPanel/_SignLetters,
-FlipSign_Board, HoursCard, *_Tab_* (alphabet-by-designer dividers),
-Island*_Card, InvShelf_Estuary7_Label, StickBox_Estuary7_Label.
+Per the aesthetic bible: warm cedar modernity, no neon cosplay.
+Room: door/S wall at blender y=0, extends +Y; 7.0 x 8.0, ceil 2.8.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import (make_floor, make_wall, make_ceiling,
-                              make_crown_molding, make_door_hinges)
-from _props.store_fixtures import make_register
-from _props.decor import make_fire_extinguisher
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.store_fixtures import make_counter, make_register
+from _props.decor import make_wall_clock, make_floor_plant
 from _props.safety import make_smoke_detector, make_hvac_vent
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
+                           make_wall_tint_band, make_threshold, make_wall_outlet,
+                           make_light_switch, make_cord_run, make_thermostat)
 
-# ── Shell (footprint kept from the scaffold — the .tscn camera at
-#    Godot (0, 2.30, +0.5) looks north from the front door across
-#    this 7 × 6 front room; door gap x −1..+1) ────────────────────
-ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 2.8
-PAL_WALL = {"wall": (0.42, 0.32, 0.46, 1.0),      # plum (Main St house style,
-            "baseboard": (0.18, 0.12, 0.20, 1.0)}  #  kept from the scaffold)
-
-# Back room (the inventory room, ch6) — x −3.5..+1.5 behind the
-# north wall; the side yard x 1.6..3.5 is the gravel strip + porch.
-BACK_Y0 = 6.0            # shared wall centerline
-BACK_Y1 = 9.2            # back-room north wall centerline
-BACK_XE = 1.5            # back-room east wall centerline
-
-# ── ChillWave palette (cedar shop Cale built in 2046, PNW muted) ─
-COL_FIR_FLOOR = (0.52, 0.40, 0.28, 1.0)   # worn fir planks
-COL_FIR_SEAM  = (0.35, 0.26, 0.18, 1.0)
-COL_FIR_WORN  = (0.61, 0.49, 0.34, 1.0)   # traffic lane, finish walked off
-COL_CEDAR     = (0.58, 0.38, 0.28, 1.0)   # the 2046 cedar shelving
-COL_CEDAR_LT  = (0.68, 0.48, 0.35, 1.0)
-COL_CEDAR_DK  = (0.38, 0.24, 0.18, 1.0)
-COL_BRASS     = (0.70, 0.57, 0.30, 1.0)
-COL_CREAM     = (0.90, 0.87, 0.80, 1.0)
-COL_BRAND     = (0.30, 0.46, 0.56, 1.0)   # ChillWave sign teal-blue
-COL_STEEL     = P.METAL_STEEL
-COL_STEEL_WORN= (0.52, 0.52, 0.54, 1.0)
-COL_CAST_IRON = (0.13, 0.13, 0.14, 1.0)
-COL_KRAFT     = (0.74, 0.56, 0.34, 1.0)
-COL_CONCRETE  = (0.55, 0.54, 0.51, 1.0)
-COL_ASPHALT   = (0.30, 0.29, 0.30, 1.0)
-COL_PUDDLE    = (0.30, 0.33, 0.36, 1.0)
-COL_GRAVEL    = (0.48, 0.45, 0.40, 1.0)
-COL_TRUCK     = (0.28, 0.36, 0.30, 1.0)   # Cale's F-150, faded forest
-COL_TRUCK_DK  = (0.20, 0.26, 0.22, 1.0)
-COL_GLASS_DK  = (0.12, 0.13, 0.15, 1.0)   # dark opaque "glass" (distant)
-COL_LAMPGREEN = (0.24, 0.40, 0.30, 1.0)
-COL_GLOW_WARM = (0.98, 0.88, 0.62, 1.0)
-
-# Waxed-paper foundation sleeves — "the wax yellowed at the edges"
-# (vol7_ch16_eight; the foundation has packaged sticks in these
-# since the '30s)
-SLEEVE_TINTS = [P.PAPER_AGED, (0.90, 0.86, 0.74, 1.0),
-                (0.84, 0.76, 0.60, 1.0), (0.92, 0.90, 0.80, 1.0),
-                (0.80, 0.72, 0.55, 1.0)]
-# Disc-cases (the case Estuary 7 was sold to Tem in) — muted plastic
-CASE_TINTS = [(0.16, 0.15, 0.17, 1.0), (0.30, 0.38, 0.46, 1.0),
-              (0.44, 0.22, 0.19, 1.0), (0.26, 0.36, 0.28, 1.0),
-              (0.72, 0.54, 0.26, 1.0), (0.82, 0.78, 0.68, 1.0)]
-
-COUNTER_TOP = 0.985       # counter top surface z
+ROOM_W = 7.0; ROOM_D = 8.0; CEIL = 2.8
+PART_Y = 4.6          # front-shop / back-room partition
+PAL_WALL = {"wall": (0.82, 0.74, 0.62, 1.0), "baseboard": (0.40, 0.30, 0.20, 1.0)}
+COL_FLOOR = (0.52, 0.40, 0.28, 1.0); COL_SEAM = (0.36, 0.27, 0.18, 1.0)
+COL_CEDAR = (0.66, 0.46, 0.30, 1.0)
+COL_CEDAR_DK = (0.50, 0.34, 0.22, 1.0)
+COL_STEEL = (0.62, 0.64, 0.66, 1.0)
+COL_GLASS = (0.66, 0.74, 0.76, 0.6)
+COL_BRASS = (0.82, 0.72, 0.42, 1.0)
+# Muted stick-case tints (per-studio cases, not candy plastic).
+STICK_TINTS = [(0.48, 0.52, 0.44, 1.0), (0.56, 0.44, 0.38, 1.0),
+               (0.40, 0.46, 0.54, 1.0), (0.60, 0.56, 0.42, 1.0),
+               (0.44, 0.40, 0.48, 1.0)]
 
 
-# ═════════════════════════════════════════════════════════════════
-# Local helpers (deterministic — index-cycled variation, no random)
-# ═════════════════════════════════════════════════════════════════
-_SLEEVE_W = (0.016, 0.015, 0.018, 0.014, 0.017, 0.015, 0.019, 0.016)
-
-def _media_row(prefix, a0, a1, cross, shelf_z, seed=0, axis='X'):
-    """A filed run of slow-stick media along `axis` from a0..a1 at
-    perpendicular coordinate `cross`, standing on shelf_z. Mixes
-    waxed-paper sleeves, disc-cases, pulled gaps, flat piles, and
-    proud cream alphabet tabs ("alphabetized by designer" — tab
-    lettering is scene-side Label3D on the *_Tab_* panels)."""
-    def _put(name, run_c, w, depth, h, tint, z_lift=0.0):
-        z = shelf_z + z_lift + h / 2.0
-        if axis == 'X':
-            make_box(name, (run_c, cross, z), (w, depth, h), tint)
-        else:
-            make_box(name, (cross, run_c, z), (depth, w, h), tint)
-    cursor = a0 + 0.02
-    i = 0
-    while cursor < a1 - 0.05:
-        k = seed + i
-        if k % 12 == 7:                       # pulled-media gap
-            cursor += 0.050
-            i += 1
-            continue
-        if k % 17 == 13:                      # flat overstock pile
-            for pi in range(2):
-                _put(f"{prefix}_Flat_{i}_{pi}", cursor + 0.072,
-                     0.140, 0.130, 0.016,
-                     SLEEVE_TINTS[(k + pi * 2) % len(SLEEVE_TINTS)],
-                     z_lift=pi * 0.017)
-            cursor += 0.155
-            i += 1
-            continue
-        if k % 9 == 5:                        # designer alphabet tab
-            _put(f"{prefix}_Tab_{i}", cursor + 0.006,
-                 0.012, 0.150, 0.225, COL_CREAM)
-            cursor += 0.020
-            i += 1
-            continue
-        if k % 5 == 4:                        # disc-case, spine out
-            _put(f"{prefix}_Case_{i}", cursor + 0.013,
-                 0.026, 0.125, 0.155, CASE_TINTS[(k * 3 + 1) % len(CASE_TINTS)])
-            cursor += 0.030
-            i += 1
-            continue
-        w = _SLEEVE_W[k % len(_SLEEVE_W)]     # sleeved stick on edge
-        _put(f"{prefix}_Slv_{i}", cursor + w / 2.0,
-             w, 0.135, 0.185 + (k % 3) * 0.006,
-             SLEEVE_TINTS[(k * 2 + 3) % len(SLEEVE_TINTS)])
-        cursor += w + (0.003 if k % 4 else 0.010)
-        i += 1
-
-def _case_pile(prefix, cx, cy, bz, count, seed=0):
-    """A small flat pile of disc-cases / sleeves."""
-    for pi in range(count):
-        k = seed + pi
-        tint = CASE_TINTS[(k * 2 + 1) % len(CASE_TINTS)] if k % 2 \
-            else SLEEVE_TINTS[(k * 3 + 2) % len(SLEEVE_TINTS)]
-        make_box(f"{prefix}_{pi}",
-                 (cx + (k % 3 - 1) * 0.008, cy + (k % 2) * 0.007,
-                  bz + 0.011 + pi * 0.023),
-                 (0.125 - (k % 2) * 0.008, 0.140 - (k % 3) * 0.010, 0.021),
-                 tint)
-
-def _wood_chair(prefix, cx, cy, facing, tint):
-    """Plain wood chair; `facing` = direction the sitter faces."""
-    dx, dy = {'N': (0, 1), 'S': (0, -1), 'E': (1, 0), 'W': (-1, 0)}[facing]
-    make_box(f"{prefix}_Seat", (cx, cy, 0.45), (0.40, 0.40, 0.04), tint)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"{prefix}_Leg_{li}", (cx + sx * 0.16, cy + sy * 0.16, 0.225),
-                 0.018, 0.45, COL_CEDAR_DK)
-    bx, by = cx - dx * 0.19, cy - dy * 0.19
-    for pi, sgn in enumerate((-1, +1)):
-        px = bx + (sgn * 0.16 if dx == 0 else 0.0)
-        py = by + (sgn * 0.16 if dy == 0 else 0.0)
-        make_cyl(f"{prefix}_BackPost_{pi}", (px, py, 0.675), 0.016, 0.45, tint)
-    slat_sz = (0.36, 0.03, 0.09) if dx == 0 else (0.03, 0.36, 0.09)
-    for si, sz_z in enumerate((0.72, 0.86)):
-        make_box(f"{prefix}_Slat_{si}", (bx, by, sz_z), slat_sz, tint)
-
-def _pendant(prefix, cx, cy, drop=0.62, shade=COL_CREAM):
-    """Cylinder-shade pendant — round geometry at eye level; warm
-    'lights low' vocabulary (no fluorescent banks in this shop)."""
-    make_cyl(f"{prefix}_Canopy", (cx, cy, CEIL - 0.02), 0.05, 0.04, P.METAL_BLACK)
-    make_cyl(f"{prefix}_Cord", (cx, cy, CEIL - drop / 2.0), 0.008, drop, P.METAL_BLACK)
-    make_cyl(f"{prefix}_Shade", (cx, cy, CEIL - drop - 0.065), 0.15, 0.13, shade,
-             segments=12)
-    make_cyl(f"{prefix}_Bulb", (cx, cy, CEIL - drop - 0.135), 0.05, 0.04, COL_GLOW_WARM)
-
-def _bare_bulb(prefix, cx, cy):
-    """Back-room bare bulb on a cord, with pull chain."""
-    make_cyl(f"{prefix}_Canopy", (cx, cy, CEIL - 0.015), 0.05, 0.03, P.METAL_BLACK)
-    make_cyl(f"{prefix}_Cord", (cx, cy, CEIL - 0.14), 0.007, 0.22, COL_CAST_IRON)
-    make_cyl(f"{prefix}_Bulb", (cx, cy, CEIL - 0.29), 0.032, 0.08, COL_GLOW_WARM)
-    make_cyl(f"{prefix}_PullChain", (cx + 0.05, cy, CEIL - 0.20), 0.003, 0.14,
-             COL_STEEL_WORN)
-
-
-# ═════════════════════════════════════════════════════════════════
-# SHELL — front room keeps the scaffold's 7 × 6 footprint; the south
-# wall becomes a real storefront (openings + piers, diner-window
-# rule), the north wall splits around the doorway to the back
-# (x −0.55..+0.35 — she comes in at x 0, walks north past the
-# counter's west end, through this doorway: ch6). The back room is
-# a full second volume, y 6.1..9.1 × x −3.5..+1.5.
-# ═════════════════════════════════════════════════════════════════
 def build_shell():
-    # Floors — worn fir planks (the building predates Cale's 2046
-    # cedar refit; the shelving is cedar, the floor is older)
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
-               size_y=ROOM_D + 0.4,
-               palette={"vinyl": COL_FIR_FLOOR, "seam": COL_FIR_SEAM})
-    make_floor("BackFloor", (-1.0, 7.6, 0.0), size_x=5.4, size_y=3.4,
-               palette={"vinyl": COL_FIR_FLOOR, "seam": COL_FIR_SEAM})
-    # Wear lane — door → counter → back doorway (finish walked off)
-    make_box("Floor_WearLane", (-0.10, 3.0, 0.006), (0.75, 5.6, 0.004), COL_FIR_WORN)
-    make_box("Floor_WearSpur", (0.75, 3.65, 0.007), (1.40, 0.62, 0.004), COL_FIR_WORN)
-    # Side walls, front room
-    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    # North (shared) wall — doorway gap x −0.55..+0.35
-    make_wall("Wall_N_W", (-2.125, BACK_Y0, 0), length=3.15, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_E", (+2.025, BACK_Y0, 0), length=3.35, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_box("Wall_N_AboveDoorway", (-0.10, BACK_Y0, 2.52), (0.90, 0.20, 0.56),
-             PAL_WALL["wall"])
-    # South storefront — piers + sills + headers; window openings
-    # x −3.0..−1.3 and +1.3..+3.0 (sill 0.75, head 2.30), door −1..+1
-    for nm, px, pw in [("Wall_S_PierSW", -3.35, 0.70), ("Wall_S_PierWD", -1.15, 0.30),
-                       ("Wall_S_PierED", +1.15, 0.30), ("Wall_S_PierSE", +3.35, 0.70)]:
-        make_box(nm, (px, 0.0, CEIL / 2.0), (pw, 0.20, CEIL), PAL_WALL["wall"])
-    for tag, wx in [("W", -2.15), ("E", +2.15)]:
-        make_box(f"Wall_S_{tag}_Sill", (wx, 0.0, 0.375), (1.70, 0.20, 0.75),
-                 PAL_WALL["wall"])
-        make_box(f"Wall_S_{tag}_SillBase", (wx, 0.06, 0.08), (1.70, 0.06, 0.16),
-                 PAL_WALL["baseboard"])
-        make_box(f"Wall_S_{tag}_Header", (wx, 0.0, 2.55), (1.70, 0.20, 0.50),
-                 PAL_WALL["wall"])
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, 2.52), (2.0, 0.20, 0.56), PAL_WALL["wall"])
-    # Back-room walls
-    make_wall("Wall_Back_W", (-ROOM_W / 2.0, 7.65, 0), length=3.3, height=CEIL,
-              axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_Back_E", (BACK_XE, 7.65, 0), length=3.3, height=CEIL,
-              axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_Back_N", (-1.0, BACK_Y1, 0), length=5.4, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    # Ceilings — painted plank (pre-war Main St building), mauve-gray
-    ceil_pal = {"tile": (0.70, 0.64, 0.70, 1.0), "grid": (0.36, 0.28, 0.38, 1.0)}
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
-                 size_y=ROOM_D + 0.4, palette=ceil_pal, with_stains=False)
-    make_ceiling("BackCeil", (-1.0, 7.6, CEIL), size_x=5.4, size_y=3.4,
-                 palette=ceil_pal, with_stains=False)
-    # Crown molding, front room only (retail face; the back is bare)
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.25, 1.60, 1.80, 1.45)])
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.25, 1.60, 1.80, 1.45)])
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [
-            ("Crown_W", 'Y', ROOM_D, -ROOM_W / 2.0 + 0.10, ROOM_D / 2.0),
-            ("Crown_E", 'Y', ROOM_D, +ROOM_W / 2.0 - 0.10, ROOM_D / 2.0),
-            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D - 0.10),
-            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
-                           ceil_z=CEIL, palette={"wood": COL_CEDAR})
-    # Doorway trim to the back — "she paused with her hand on the
-    # frame" (ch6_cale): a real cedar frame, no leaf (open doorway)
-    for sgn, px in [(-1, -0.59), (+1, +0.39)]:
-        make_box(f"BackDoorway_Post_{sgn:+d}", (px, BACK_Y0, 1.10),
-                 (0.08, 0.26, 2.20), COL_CEDAR)
-    make_box("BackDoorway_Header", (-0.10, BACK_Y0, 2.26), (1.06, 0.26, 0.12),
-             COL_CEDAR)
+                           ceil_z=CEIL, palette={"wood": COL_CEDAR_DK})
+    # Partition between front shop and the back room, doorway at E.
+    make_wall("Part_W", (-1.05, PART_Y, 0), length=4.9, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Part_E", (2.95, PART_Y, 0), length=1.1, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Part_AboveDoorway", (1.9, PART_Y, CEIL-0.35), (1.0, 0.20, 0.70), PAL_WALL["wall"])
+    make_box("Part_Doorframe_W", (1.38, PART_Y, 1.05), (0.08, 0.24, 2.10), COL_CEDAR_DK)
+    make_box("Part_Doorframe_E", (2.42, PART_Y, 1.05), (0.08, 0.24, 2.10), COL_CEDAR_DK)
 
 
-# ═════════════════════════════════════════════════════════════════
-# STOREFRONT — cedar frames + mullions in the two openings (no
-# glass), the front door (stiles + rails, EMPTY upper panel — no
-# transparency), THE BELL over it (ch3: "The bell rang as she came
-# in"; ch6: "The bell rang twice" on her way out), the OPEN/CLOSED
-# flip sign in the east sidelite, entry mat (rain-town register).
-# ═════════════════════════════════════════════════════════════════
-def _window_frame_south(tag, wx):
-    """Frame + mullions for a south opening centered at wx.
-    Opening 1.7 wide, z 0.75..2.30, transom bar at 1.95."""
-    make_box(f"WinS_{tag}_Sill", (wx, 0.0, 0.735), (1.82, 0.22, 0.07), COL_CEDAR)
-    make_box(f"WinS_{tag}_Ledge", (wx, 0.14, 0.775), (1.70, 0.14, 0.03), COL_CEDAR_LT)
-    make_box(f"WinS_{tag}_Head", (wx, 0.0, 2.315), (1.82, 0.22, 0.07), COL_CEDAR)
-    for sgn in (-1, +1):
-        make_box(f"WinS_{tag}_Jamb_{sgn:+d}", (wx + sgn * 0.88, 0.0, 1.525),
-                 (0.06, 0.22, 1.65), COL_CEDAR)
-    for mi, mx in enumerate((-0.55, +0.55)):
-        make_box(f"WinS_{tag}_MullV_{mi}", (wx + mx, 0.0, 1.525),
-                 (0.05, 0.14, 1.55), COL_CEDAR)
-    make_box(f"WinS_{tag}_Transom", (wx, 0.0, 1.95), (1.70, 0.14, 0.05), COL_CEDAR)
+def _cedar_unit(prefix, face, sgn, y0, y1, h):
+    """A cedar wall unit on an E/W wall: back panel on the face, two sides,
+    a top — open at the front so its shelves and sticks show."""
+    d = 0.38
+    make_box(f"{prefix}_Back", (face - sgn * 0.01, (y0 + y1) / 2.0, h / 2.0), (0.02, y1 - y0, h), COL_CEDAR_DK)
+    for e, y in (("S", y0), ("N", y1)):
+        make_box(f"{prefix}_Side_{e}", (face - sgn * d / 2.0, y + (0.015 if e == "S" else -0.015), h / 2.0), (d, 0.03, h), COL_CEDAR_DK)
+    make_box(f"{prefix}_Top", (face - sgn * d / 2.0, (y0 + y1) / 2.0, h + 0.015), (d, y1 - y0, 0.03), COL_CEDAR_DK)
+
+
+def _cedar_unit_x(prefix, face, x0, x1, h):
+    """The same unit on the N wall (face at y = face, the room toward -y)."""
+    d = 0.38
+    make_box(f"{prefix}_Back", ((x0 + x1) / 2.0, face - 0.01, h / 2.0), (x1 - x0, 0.02, h), COL_CEDAR_DK)
+    for e, x in (("W", x0), ("E", x1)):
+        make_box(f"{prefix}_Side_{e}", (x + (0.015 if e == "W" else -0.015), face - d / 2.0, h / 2.0), (0.03, d, h), COL_CEDAR_DK)
+    make_box(f"{prefix}_Top", ((x0 + x1) / 2.0, face - d / 2.0, h + 0.015), (x1 - x0, d, 0.03), COL_CEDAR_DK)
+
+
+def build_island_2026_10():
+    """The front room's empty middle (2026-10-09): a double-sided cedar
+    island of sticks face-out, between the counter and the E wall unit,
+    with the week's new-arrivals card on its end."""
+    ix, iy0, iy1 = 1.35, 1.35, 3.35
+    make_box("Island_Base", (ix, (iy0 + iy1) / 2.0, 0.06), (0.62, iy1 - iy0, 0.12), (0.30, 0.22, 0.16, 1.0))
+    make_box("Island_Spine", (ix, (iy0 + iy1) / 2.0, 0.70), (0.04, iy1 - iy0, 1.16), COL_CEDAR_DK)
+    for e in (-1, 1):
+        make_box(f"Island_End_{e:+d}", (ix, iy0 + 0.015 if e < 0 else iy1 - 0.015, 0.70), (0.60, 0.03, 1.16), COL_CEDAR_DK)
+    for side, sgn in (("W", -1), ("E", 1)):
+        for zi in range(3):
+            sz = 0.40 + zi * 0.36
+            make_box(f"Island_Shelf_{side}_{zi}", (ix + sgn * 0.15, (iy0 + iy1) / 2.0, sz), (0.26, iy1 - iy0 - 0.06, 0.03), COL_CEDAR)
+            for ci in range(6):
+                make_rot_box(f"Island_Stick_{side}_{zi}_{ci}", (ix + sgn * 0.12, iy0 + 0.22 + ci * 0.31, sz + 0.095),
+                             (0.04, 0.12, 0.16), STICK_TINTS[(zi + ci + (side == "E")) % len(STICK_TINTS)], roll=sgn * 0.20)
+    make_box("Island_NewArrivals_Card", (ix, iy0 - 0.005, 1.10), (0.30, 0.004, 0.16), (0.94, 0.90, 0.80, 1.0))
+
 
 def build_storefront():
-    _window_frame_south("W", -2.15)
-    _window_frame_south("E", +2.15)
-    # Door surround — leaf west (x −0.95..−0.05), sidelite east
-    for sgn in (-1, +1):
-        make_box(f"Door_Post_{sgn:+d}", (sgn * 0.96, 0.0, 1.10), (0.08, 0.16, 2.20),
-                 COL_CEDAR)
-    make_box("Door_MidPost", (0.0, 0.0, 1.10), (0.08, 0.16, 2.20), COL_CEDAR)
-    make_box("Door_Transom", (0.0, 0.0, 2.24), (2.00, 0.16, 0.08), COL_CEDAR)
-    # Door leaf — stiles + rails, lower panel solid, upper OPEN
-    for si, sx in enumerate((-0.90, -0.10)):
-        make_box(f"Door_Stile_{si}", (sx, 0.02, 1.08), (0.09, 0.05, 2.10), COL_CEDAR_DK)
-    make_box("Door_Rail_Bottom", (-0.50, 0.02, 0.14), (0.71, 0.05, 0.22), COL_CEDAR_DK)
-    make_box("Door_Rail_Lock", (-0.50, 0.02, 1.02), (0.71, 0.05, 0.14), COL_CEDAR_DK)
-    make_box("Door_Rail_Top", (-0.50, 0.02, 2.09), (0.71, 0.05, 0.08), COL_CEDAR_DK)
-    make_box("Door_LowerPanel", (-0.50, 0.02, 0.60), (0.71, 0.03, 0.70), COL_CEDAR)
-    make_cyl("Door_Knob", (-0.14, -0.06, 1.02), 0.028, 0.05, COL_BRASS, axis='Y')
-    make_box("Door_Deadbolt", (-0.14, -0.045, 1.18), (0.05, 0.02, 0.08), COL_BRASS)
-    make_box("Door_KickPlate", (-0.50, -0.005, 0.15), (0.71, 0.02, 0.24), COL_BRASS)
-    make_door_hinges("Door_Hinge", edge_x=-0.92, edge_y=0.0,
-                     edge_z_centers=[0.35, 1.05, 1.80], axis='X')
-    # THE BELL over the door (brass, bracket-mounted; it rings)
-    make_box("DoorBell_Mount", (-0.50, 0.13, 2.32), (0.06, 0.10, 0.06), P.METAL_BLACK)
-    make_cyl("DoorBell_Arm", (-0.50, 0.24, 2.32), 0.012, 0.16, COL_BRASS, axis='Y')
-    make_cyl("DoorBell_Body", (-0.50, 0.32, 2.27), 0.050, 0.07, COL_BRASS)
-    make_cyl("DoorBell_Flare", (-0.50, 0.32, 2.22), 0.068, 0.025, COL_BRASS)
-    make_cyl("DoorBell_Clapper", (-0.50, 0.32, 2.18), 0.012, 0.05, P.METAL_BLACK)
-    # OPEN/CLOSED flip sign on a cord in the east sidelite (ch12:
-    # "the OPEN sign was on the door"; lettering scene-side)
-    make_cyl("FlipSign_Cord", (0.48, 0.05, 1.98), 0.004, 0.28, P.TWINE)
-    make_box("FlipSign_Board", (0.48, 0.05, 1.74), (0.36, 0.02, 0.20), COL_CREAM)
-    make_box("FlipSign_Text_In", (0.48, 0.063, 1.74), (0.28, 0.006, 0.09), COL_BRAND)
-    make_box("FlipSign_Text_Out", (0.48, 0.037, 1.74), (0.28, 0.006, 0.09), COL_BRAND)
-    make_box("HoursCard", (1.15, 0.105, 1.50), (0.16, 0.010, 0.22), P.PAPER)
-    # Entry mat — it is always raining in Smolvud
-    make_box("EntryMat_Under", (-0.30, 0.75, 0.009), (1.60, 0.95, 0.006),
-             (0.14, 0.13, 0.13, 1.0))
-    make_box("EntryMat", (-0.30, 0.75, 0.016), (1.46, 0.82, 0.008), P.RUBBER_MAT)
+    # Glass either side of the door + THE BELL over the entry (it
+    # rings when she comes in — the shop's opening image).
+    for tag, wx in [("SW", -2.25), ("SE", 2.25)]:
+        # built toward the room (2026-09-23: into the S wall, invisible)
+        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.80, height=1.45, room_dir=+1, see_through=True)
+    make_box("DoorBell_Arm", (0.55, 0.16, 2.28), (0.03, 0.14, 0.03), COL_STEEL)
+    make_cyl("DoorBell", (0.55, 0.26, 2.22), 0.05, 0.07, COL_BRASS, segments=10)
+    # A low window-display plinth in the SW glass: two sticks on
+    # stands catching the street.
+    make_box("Display_Plinth", (-2.25, 0.55, 0.25), (1.40, 0.50, 0.50), COL_CEDAR)
+    for di, dx in enumerate([-2.55, -1.95]):
+        make_box(f"Display_Stick_{di}", (dx, 0.55, 0.58), (0.09, 0.16, 0.16),
+                 STICK_TINTS[di % len(STICK_TINTS)])
 
 
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR · MAIN STREET (south) — sidewalk, curb, wet road, the
-# far sidewalk, a streetlamp on the buffer strip (public right-of-
-# way rule), rain puddles, Cale's F-150 at the curb (ch12/ch16),
-# and the shop facade: single-storey parapet (Cale does NOT live
-# above the shop — his apartment is over the laundromat, ch13) with
-# the CHILLWAVE VIDEO sign panel (lettering scene-side).
-# ═════════════════════════════════════════════════════════════════
-def build_exterior_main_street():
-    make_box("Ext_Sidewalk", (0.0, -1.35, -0.06), (8.6, 2.50, 0.12), COL_CONCRETE)
+def build_counter_front():
+    # Cale's counter, angled to see the door: register, the SERVICE
+    # BELL, and his face-down paperback.
+    ccy = 3.1
+    top_z = make_counter("Shop", (-1.1, ccy, 0.0), length=2.60, depth=0.70, height=0.95,
+                         palette={"formica": COL_CEDAR, "top": COL_CEDAR_DK,
+                                  "kick": (0.30, 0.22, 0.16, 1.0)})
+    make_register("RegisterMachine", (-1.1, ccy+0.75, top_z))   # ON the N-S counter (2026-09-23: 15 cm west of it)
+    make_cyl("Counter_Bell_Base", (-0.95, ccy-0.10, top_z+0.01), 0.05, 0.02, COL_STEEL, segments=10)   # on the counter (2026-09-23: 20 cm east of it)
+    make_cyl("Counter_Bell_Dome", (-0.95, ccy-0.10, top_z+0.045), 0.045, 0.05, COL_BRASS, segments=10)
+    # The paperback, face-down, spine cracked, mid-read.
+    make_box("Paperback", (-1.2, ccy-0.15, top_z+0.012), (0.13, 0.19, 0.022), (0.72, 0.62, 0.44, 1.0))
+    make_box("Paperback_Pages", (-1.2, ccy-0.15, top_z+0.030), (0.12, 0.18, 0.012), (0.90, 0.87, 0.78, 1.0))
+    # Front display shelving: cedar wall units W + E with sticks
+    # facing out (retail face of the alphabetized system).
+    # (2026-10-09) the unit is a CARCASS now — a back panel on the wall, two
+    # sides and a top; its "frame" was one solid block that swallowed the
+    # shelves and every stick, so the front walls read as two dark slabs
+    for tag, sgn in [("W", -1), ("E", +1)]:
+        face = sgn * (ROOM_W/2.0 - 0.10)
+        sx = face - sgn * 0.19
+        _cedar_unit(f"FrontShelf_{tag}", face, sgn, 1.1, 3.7, 2.30)
+        for zi in range(3):
+            sz = 0.70 + zi * 0.55
+            make_box(f"FrontShelf_{tag}_{zi}", (sx, 2.4, sz), (0.34, 2.54, 0.04), COL_CEDAR)
+            for ci in range(5):
+                make_box(f"FrontStick_{tag}_{zi}_{ci}", (sx, 1.4+ci*0.5, sz+0.10),
+                         (0.16, 0.10, 0.16), STICK_TINTS[(zi+ci) % len(STICK_TINTS)])
+
+
+def build_back_inventory():
+    # "The back was where the inventory lived." Cedar shelf rows on
+    # the N + W walls, alphabetized by designer — small brass letter
+    # tabs step along the shelf edges.
+    # (2026-10-09) carcasses, not solid blocks (see build_counter_front)
+    nface = ROOM_D - 0.10
+    _cedar_unit_x("InvShelf_N", nface, -2.2, 2.2 - 0.6 * 0, 2.70)
+    for zi in range(4):
+        sz = 0.55 + zi * 0.52
+        make_box(f"InvShelf_N_{zi}", (0.0, nface - 0.19, sz), (4.34, 0.34, 0.04), COL_CEDAR)
+        for ci in range(8):
+            make_box(f"InvStick_N_{zi}_{ci}", (-1.9+ci*0.54, nface - 0.19, sz+0.10),
+                     (0.10, 0.16, 0.16), STICK_TINTS[(zi+ci) % len(STICK_TINTS)])
+        make_box(f"InvTab_N_{zi}", (-2.0+zi*1.2, nface - 0.37, sz+0.02), (0.08, 0.02, 0.06), COL_BRASS)
+    wface = -(ROOM_W/2.0 - 0.10)
+    _cedar_unit(f"InvShelf_W", wface, -1, 4.95, 7.45, 2.70)
+    for zi in range(4):
+        sz = 0.55 + zi * 0.52
+        make_box(f"InvShelf_W_{zi}", (wface + 0.19, 6.2, sz), (0.34, 2.44, 0.04), COL_CEDAR)
+        for ci in range(5):
+            make_box(f"InvStick_W_{zi}_{ci}", (wface + 0.19, 5.2+ci*0.5, sz+0.10),
+                     (0.16, 0.10, 0.16), STICK_TINTS[(zi+ci+2) % len(STICK_TINTS)])
+    # The WOODEN CRATE by the back-room doorway (trade-ins waiting
+    # to be shelved).
+    make_box("Crate", (2.6, PART_Y+0.375, 0.22), (0.55, 0.55, 0.42), (0.58, 0.44, 0.28, 1.0))   # against the partition's back face (2026-09-25: 17 cm off it)
+    make_box("Crate_Slat_A", (2.6, PART_Y+0.55, 0.44), (0.57, 0.57, 0.03), COL_CEDAR_DK)
     for si in range(3):
-        make_box(f"Ext_Sidewalk_Seam_{si}", (-2.6 + si * 2.6, -1.35, 0.001),
-                 (0.03, 2.40, 0.002), (0.42, 0.40, 0.37, 1.0))
-    make_box("Ext_Curb", (0.0, -2.66, -0.04), (8.6, 0.16, 0.12),
-             (0.46, 0.45, 0.43, 1.0))
-    make_box("Ext_Road", (0.0, -4.80, -0.10), (8.6, 4.10, 0.08), COL_ASPHALT)
-    for di in range(3):
-        make_box(f"Ext_Road_Dash_{di}", (-2.9 + di * 2.9, -4.85, -0.058),
-                 (1.30, 0.12, 0.004), (0.82, 0.72, 0.36, 1.0))
-    make_box("Ext_Sidewalk_Far", (0.0, -7.35, -0.06), (8.6, 1.10, 0.12), COL_CONCRETE)
-    make_box("Ext_Puddle_0", (-1.8, -1.10, 0.002), (0.90, 0.45, 0.002), COL_PUDDLE)
-    make_box("Ext_Puddle_1", (1.5, -3.55, -0.056), (1.20, 0.55, 0.002), COL_PUDDLE)
-    # Streetlamp at the sidewalk's outer edge (buffer strip)
-    make_cyl("Streetlamp_Pole", (3.0, -2.38, 2.10), 0.045, 4.20, P.METAL_BLACK,
-             segments=12)
-    make_cyl("Streetlamp_Arm", (2.85, -2.38, 4.05), 0.025, 0.40, P.METAL_BLACK,
-             axis='X')
-    make_cyl("Streetlamp_Head", (2.62, -2.38, 3.98), 0.09, 0.14, P.METAL_BLACK,
-             segments=12)
-    make_cyl("Streetlamp_Glow", (2.62, -2.38, 3.89), 0.065, 0.05, COL_GLOW_WARM,
-             segments=12)
-    # Facade above the storefront — painted band + cornice parapet
-    make_box("Facade_Band", (0.0, -0.02, 3.45), (7.40, 0.24, 1.30),
-             (0.30, 0.26, 0.34, 1.0))
-    make_box("Facade_Cornice", (0.0, -0.10, 4.16), (7.70, 0.44, 0.18),
-             (0.24, 0.26, 0.28, 1.0))
-    # CHILLWAVE VIDEO sign panel — teal field, cream letter band,
-    # brackets; lettering scene-side on ChillWave_SignLetters
-    make_box("ChillWave_SignPanel", (0.0, -0.20, 3.44), (2.90, 0.08, 0.62), COL_BRAND)
-    make_box("ChillWave_SignLetters", (0.0, -0.245, 3.50), (2.40, 0.006, 0.28),
-             COL_CREAM)
-    make_box("ChillWave_SignRule", (0.0, -0.245, 3.24), (1.70, 0.006, 0.04), COL_CREAM)
-    for bsgn in (-1, +1):
-        make_box(f"ChillWave_SignBracket_{bsgn:+d}", (bsgn * 1.20, -0.13, 3.80),
-                 (0.05, 0.10, 0.14), P.METAL_BLACK)
-    # Cale's F-150 at the curb (slab-tier box body per playbook)
-    tx, ty = -2.55, -3.75          # near lane, wheels clear of the curb
-    for wi, (wx, wy) in enumerate([(-4.05, ty - 0.80), (-1.05, ty - 0.80),
-                                   (-4.05, ty + 0.80), (-1.05, ty + 0.80)]):
-        make_cyl(f"CaleTruck_Wheel_{wi}", (wx, wy, 0.36), 0.36, 0.26,
-                 (0.10, 0.10, 0.11, 1.0), axis='Y', segments=12)
-    make_box("CaleTruck_Chassis", (tx, ty, 0.70), (4.90, 1.78, 0.42), COL_TRUCK)
-    make_box("CaleTruck_Hood", (-4.35, ty, 1.02), (1.30, 1.68, 0.24), COL_TRUCK)
-    make_box("CaleTruck_Cab", (-3.05, ty, 1.25), (1.45, 1.62, 0.68), COL_TRUCK)
-    make_box("CaleTruck_Windshield", (-3.80, ty, 1.33), (0.04, 1.30, 0.38), COL_GLASS_DK)
-    for ssgn in (-1, +1):
-        make_box(f"CaleTruck_SideGlass_{ssgn:+d}", (-3.02, ty + ssgn * 0.82, 1.33),
-                 (0.95, 0.03, 0.34), COL_GLASS_DK)
-    make_box("CaleTruck_Bed", (-1.20, ty, 1.05), (2.20, 1.68, 0.52), COL_TRUCK_DK,
-             open_faces={'+Z'})
-    make_box("CaleTruck_BedFloor", (-1.20, ty, 0.82), (2.10, 1.58, 0.04), COL_TRUCK_DK)
-    make_box("CaleTruck_BumperF", (-5.02, ty, 0.55), (0.10, 1.70, 0.16), COL_STEEL_WORN)
-    make_box("CaleTruck_BumperR", (-0.08, ty, 0.55), (0.10, 1.70, 0.16), COL_STEEL_WORN)
-    make_box("CaleTruck_Mirror", (-3.72, ty + 0.90, 1.42), (0.06, 0.08, 0.12),
-             COL_TRUCK_DK)
+        make_box(f"Crate_InStick_{si}", (2.45+si*0.15, PART_Y+0.55, 0.50),
+                 (0.10, 0.16, 0.14), STICK_TINTS[si])
+    # The three-slot WOODEN BOX — Estuary 7 in the third slot, its
+    # label a pale panel on the box face (vol7_ch6_the_stick).
+    make_box("StickBox", (-2.4, 5.2, 0.86), (0.80, 0.30, 0.22), COL_CEDAR)
+    make_box("StickBox_Table", (-2.4, 5.2, 0.38), (0.90, 0.44, 0.75), COL_CEDAR_DK)
+    for si in range(3):
+        make_box(f"StickBox_Slot_{si}", (-2.64+si*0.24, 5.14, 0.90),
+                 (0.16, 0.16, 0.16), STICK_TINTS[(si*2) % len(STICK_TINTS)])
+    make_box("StickBox_E7_Label", (-2.16, 5.04, 0.83), (0.14, 0.005, 0.05), (0.90, 0.88, 0.80, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# COUNTER ZONE — the counter guards the doorway to the back ("she
-# walked around the counter and through the doorway", ch6). Cedar
-# plank face, register, Cale's paperback (ch3), a short stack of
-# sleeves, his stool, and the INVENTORY SHELF behind the register
-# with Estuary 7's empty disc-case on it (on that shelf since the
-# seventeenth of August, ch21 — the stick itself is in the back).
-# ═════════════════════════════════════════════════════════════════
-def build_counter_zone():
-    # Body x 0.4..2.6, customer face y 3.94, top z COUNTER_TOP
-    make_box("Counter_Body", (1.5, 4.25, 0.46), (2.20, 0.62, 0.92), COL_CEDAR)
-    make_box("Counter_Top", (1.5, 4.25, 0.955), (2.36, 0.74, 0.06), COL_CEDAR_DK)
-    make_box("Counter_Kick", (1.5, 3.93, 0.10), (2.20, 0.02, 0.20), COL_CEDAR_DK)
-    for pi in range(5):
-        px = 0.66 + pi * 0.42
-        make_box(f"Counter_Plank_{pi}", (px, 3.935, 0.52), (0.36, 0.012, 0.78),
-                 COL_CEDAR_LT if pi % 2 == 0 else COL_CEDAR)
-    # Register (the slow-shop till; Cale sells for nineteen dollars
-    # and says "we'll settle later")
-    make_register("Register", (2.05, 4.32, COUNTER_TOP),
-                  palette={"body": (0.30, 0.29, 0.28, 1.0)})
-    # Cale's paperback, face down mid-counter (ch3)
-    make_box("Paperback_Block", (1.15, 4.16, COUNTER_TOP + 0.014),
-             (0.115, 0.175, 0.026), (0.44, 0.22, 0.19, 1.0))
-    make_box("Paperback_Pages", (1.15, 4.16, COUNTER_TOP + 0.013),
-             (0.100, 0.160, 0.020), P.PAPER)
-    # A short stack of empty waxed sleeves + a wax-pencil
-    _case_pile("Counter_SleeveStack", 0.70, 4.30, COUNTER_TOP, 3, seed=4)
-    make_cyl("Counter_WaxPencil", (0.70, 4.08, COUNTER_TOP + 0.008), 0.006, 0.14,
-             (0.82, 0.64, 0.28, 1.0), axis='X')
-    # Cale's stool, behind the counter
-    make_cyl("CaleStool_Seat", (1.5, 5.05, 0.60), 0.16, 0.045, COL_CEDAR, segments=12)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"CaleStool_Leg_{li}", (1.5 + sx * 0.10, 5.05 + sy * 0.10, 0.29),
-                 0.016, 0.58, COL_CEDAR_DK)
-    # INVENTORY SHELF behind the register (north wall, y face 5.90)
-    for bi, bz in enumerate((1.30, 1.72)):
-        make_box(f"InvShelf_Board_{bi}", (1.5, 5.82, bz), (1.30, 0.20, 0.03), COL_CEDAR)
-        for ki, kx in enumerate((0.95, 2.05)):
-            make_box(f"InvShelf_Bracket_{bi}_{ki}", (kx, 5.86, bz - 0.07),
-                     (0.03, 0.10, 0.11), P.METAL_BLACK)
-    # Estuary 7's empty disc-case, face out, white label (label
-    # lettering scene-side on InvShelf_Estuary7_Label)
-    make_box("InvShelf_Estuary7_Case", (1.12, 5.77, 1.3925), (0.125, 0.024, 0.155),
-             CASE_TINTS[0])
-    make_box("InvShelf_Estuary7_Label", (1.12, 5.756, 1.40), (0.075, 0.005, 0.045),
-             (0.96, 0.95, 0.92, 1.0))
-    _media_row("InvShelf_Row", 1.30, 2.10, 5.82, 1.735, seed=61, axis='X')
-    _case_pile("InvShelf_Pile", 1.75, 5.82, 1.315, 2, seed=9)
-    # Kraft carton of fresh foundation sleeves under the counter
-    make_box("Counter_UnderShelf", (1.5, 4.42, 0.50), (1.90, 0.34, 0.025), COL_CEDAR_DK)
-    make_box("Counter_SleeveCarton", (1.05, 4.42, 0.60), (0.34, 0.26, 0.17), COL_KRAFT)
-
-
-# ═════════════════════════════════════════════════════════════════
-# THE FLOOR — the stock that IS on the floor (ch3: "It's not on the
-# floor" — implying the floor stock the sentence measures against).
-# Two double-sided cedar browser islands west of the center aisle,
-# one east; cedar wall runs on both side walls. All of it filed
-# and tabbed by designer, all of it Cale's 2046 cedar.
-# ═════════════════════════════════════════════════════════════════
-def _browser_island(idx, cx, cy):
-    x0, x1 = cx - 1.0, cx + 1.0
-    make_box(f"Island{idx}_Plinth", (cx, cy, 0.05), (2.0, 0.64, 0.10), COL_CEDAR_DK)
-    for si, sx in enumerate((x0 + 0.025, x1 - 0.025)):
-        make_box(f"Island{idx}_End_{si}", (sx, cy, 0.51), (0.05, 0.64, 1.02), COL_CEDAR)
-    make_box(f"Island{idx}_Divider", (cx, cy, 0.575), (1.90, 0.05, 0.95), COL_CEDAR)
-    make_box(f"Island{idx}_LowShelf", (cx, cy, 0.30), (1.90, 0.56, 0.03), COL_CEDAR_LT)
-    for face, fsgn in (("S", -1), ("N", +1)):
-        make_box(f"Island{idx}_{face}_BinFloor", (cx, cy + fsgn * 0.17, 0.735),
-                 (1.90, 0.28, 0.03), COL_CEDAR_LT)
-        make_box(f"Island{idx}_{face}_Lip", (cx, cy + fsgn * 0.305, 0.79),
-                 (1.90, 0.03, 0.07), COL_CEDAR_DK)
-        _media_row(f"Island{idx}_{face}_Row", x0 + 0.10, x1 - 0.10,
-                   cy + fsgn * 0.17, 0.75,
-                   seed=idx * 29 + (0 if face == "S" else 43), axis='X')
-    _case_pile(f"Island{idx}_Under_A", x0 + 0.45, cy - 0.12, 0.315, 3, seed=idx * 5 + 1)
-    _case_pile(f"Island{idx}_Under_B", x1 - 0.50, cy + 0.10, 0.315, 2, seed=idx * 5 + 3)
-    # Section card on the aisle-facing east end (scene-side letters)
-    make_box(f"Island{idx}_Card", (x1 + 0.006, cy, 0.85), (0.012, 0.24, 0.14), P.PAPER)
-
-def _wall_media_run(prefix, wall_x, dir_sign, y0, y1, shelf_zs, seed0):
-    """Cedar wall shelving; dir_sign = +1 shelves face east (west
-    wall), −1 face west (east wall). Media rows run along Y."""
-    cyy = (y0 + y1) / 2.0
-    back_x = wall_x + dir_sign * 0.02
-    make_box(f"{prefix}_Back", (back_x, cyy, 1.12), (0.04, y1 - y0, 2.24), COL_CEDAR)
-    up_x = wall_x + dir_sign * 0.15
-    for ui, uy in enumerate((y0, cyy, y1)):
-        make_box(f"{prefix}_Upright_{ui}", (up_x, uy, 1.12), (0.26, 0.05, 2.24),
-                 COL_CEDAR)
-    make_box(f"{prefix}_Cap", (up_x, cyy, 2.265), (0.30, y1 - y0 + 0.08, 0.05),
-             COL_CEDAR)
-    for si, sz in enumerate(shelf_zs):
-        make_box(f"{prefix}_Board_{si}", (up_x, cyy, sz), (0.26, y1 - y0 - 0.10, 0.03),
-                 COL_CEDAR_LT)
-        _media_row(f"{prefix}_S{si}", y0 + 0.08, y1 - 0.08,
-                   wall_x + dir_sign * 0.145, sz + 0.015,
-                   seed=seed0 + si * 13, axis='Y')
-
-def build_floor_stock():
-    _browser_island(0, -1.6, 2.05)
-    _browser_island(1, -1.6, 3.55)
-    _browser_island(2, +1.7, 2.05)
-    _wall_media_run("WestRun", -3.40, +1, 0.9, 5.3, (0.30, 0.82, 1.34, 1.86), 7)
-    _wall_media_run("EastRun", +3.40, -1, 0.8, 3.4, (0.30, 0.82, 1.34, 1.86), 71)
-    # Two framed designer one-sheets on the east wall's open north
-    # section, proud of the wall face at x 3.40 (video-shop
-    # register; abstract blocks, no invented lettering)
-    for fi, (fy, art) in enumerate([(4.0, (0.30, 0.38, 0.46, 1.0)),
-                                    (5.0, (0.44, 0.22, 0.19, 1.0))]):
-        make_box(f"Poster_{fi}_Frame", (3.385, fy, 1.70), (0.03, 0.50, 0.66),
-                 COL_CEDAR_DK)
-        make_box(f"Poster_{fi}_Sheet", (3.365, fy, 1.70), (0.02, 0.42, 0.58), P.PAPER_AGED)
-        make_box(f"Poster_{fi}_Art", (3.352, fy, 1.78), (0.006, 0.34, 0.28), art)
-        make_box(f"Poster_{fi}_TitleBand", (3.352, fy, 1.44), (0.006, 0.30, 0.06),
-                 COL_CAST_IRON)
-
-
-# ═════════════════════════════════════════════════════════════════
-# THE BACK ROOM — "the back was where the inventory lived" (ch6).
-# Cedar shelves alphabetized by designer (west wall + north wall),
-# the new-arrivals crate by the door, the workbench in the NW
-# corner with the soldering iron / precision tools / parts tray /
-# the older reader under repair, the wall strip + the humming wall
-# transformer, the wooden box with three sticks (third slot:
-# Estuary 7, white label), the folding metal chair, the chair in
-# the corner, and the closet the folding chair came out of.
-# ═════════════════════════════════════════════════════════════════
-def build_back_room():
-    wall_n_face = BACK_Y1 - 0.10          # 9.10
-    wall_e_face = BACK_XE - 0.10          # 1.40
-    # ── Cedar inventory shelves — west wall (rows along Y; stops
-    # at y 8.2 so the run clears the workbench in the NW corner) ──
-    _wall_media_run("BackRunW", -3.40, +1, 6.5, 8.2,
-                    (0.30, 0.82, 1.34, 1.86), 101)
-    # ── Cedar inventory shelves — north wall (rows along X; the
-    # slice x −0.75..+0.5 of this unit is what the establishing
-    # camera sees through the doorway) ───────────────────────────
-    bx0, bx1 = -1.40, 0.90
-    bcx = (bx0 + bx1) / 2.0
-    make_box("BackRunN_Back", (bcx, wall_n_face - 0.02, 1.12),
-             (bx1 - bx0, 0.04, 2.24), COL_CEDAR)
-    for ui, ux in enumerate((bx0, bcx, bx1)):
-        make_box(f"BackRunN_Upright_{ui}", (ux, wall_n_face - 0.15, 1.12),
-                 (0.05, 0.26, 2.24), COL_CEDAR)
-    make_box("BackRunN_Cap", (bcx, wall_n_face - 0.15, 2.265),
-             (bx1 - bx0 + 0.08, 0.30, 0.05), COL_CEDAR)
-    for si, sz in enumerate((0.30, 0.82, 1.34, 1.86)):
-        make_box(f"BackRunN_Board_{si}", (bcx, wall_n_face - 0.15, sz),
-                 (bx1 - bx0 - 0.10, 0.26, 0.03), COL_CEDAR_LT)
-        _media_row(f"BackRunN_S{si}", bx0 + 0.08, bx1 - 0.08,
-                   wall_n_face - 0.145, sz + 0.015, seed=151 + si * 13, axis='X')
-    # ── New-arrivals crate by the door (ch6) ─────────────────────
-    make_box("Crate_Body", (-0.95, 6.55, 0.19), (0.52, 0.52, 0.34), COL_CEDAR_DK,
-             open_faces={'+Z'})
-    for ci, cz in enumerate((0.10, 0.24)):
-        make_box(f"Crate_Slat_W_{ci}", (-1.215, 6.55, cz), (0.015, 0.50, 0.07),
-                 COL_CEDAR_LT)
-        make_box(f"Crate_Slat_S_{ci}", (-0.95, 6.285, cz), (0.50, 0.015, 0.07),
-                 COL_CEDAR_LT)
-    _case_pile("Crate_Pile_A", -1.06, 6.48, 0.05, 4, seed=31)
-    _case_pile("Crate_Pile_B", -0.84, 6.64, 0.05, 3, seed=37)
-    make_box("Crate_FaceUpSleeve", (-0.90, 6.44, 0.155), (0.135, 0.150, 0.014),
-             SLEEVE_TINTS[1])
-    # ── THE WORKBENCH — NW corner, along the north wall ──────────
-    bench_cx, bench_cy = -2.6, 8.72       # top spans x −3.4..−1.8
-    make_box("Bench_Top", (bench_cx, bench_cy, 0.90), (1.60, 0.70, 0.05), COL_CEDAR)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"Bench_Leg_{li}", (bench_cx + sx * 0.72, bench_cy + sy * 0.28, 0.44),
-                 0.030, 0.88, COL_CEDAR_DK)
-    make_box("Bench_LowShelf", (bench_cx, bench_cy, 0.26), (1.50, 0.60, 0.03),
-             COL_CEDAR_LT)
-    make_box("Bench_KraftBox_0", (-3.05, 8.72, 0.40), (0.34, 0.30, 0.24), COL_KRAFT)
-    make_box("Bench_KraftBox_1", (-2.55, 8.72, 0.37), (0.30, 0.26, 0.18), COL_KRAFT)
-    bt = 0.925                            # bench top surface
-    # Work lamp, west end — vertical pole + horizontal arm (no
-    # diagonals), green shade, warm bulb
-    make_cyl("BenchLamp_Base", (-3.26, 8.85, bt + 0.012), 0.070, 0.024, COL_CAST_IRON,
-             segments=12)
-    make_cyl("BenchLamp_Pole", (-3.26, 8.85, bt + 0.30), 0.012, 0.56, COL_CAST_IRON)
-    make_cyl("BenchLamp_Arm", (-3.08, 8.85, bt + 0.56), 0.010, 0.36, COL_CAST_IRON,
-             axis='X')
-    make_cyl("BenchLamp_Shade", (-2.90, 8.85, bt + 0.50), 0.070, 0.10, COL_LAMPGREEN,
-             segments=12)
-    make_cyl("BenchLamp_Glow", (-2.90, 8.85, bt + 0.435), 0.040, 0.025, COL_GLOW_WARM)
-    # The older reader under repair — "the small thing he had been
-    # working on" (ch6): shell open, lid off flat, board exposed
-    make_box("Reader_Base", (-2.95, 8.62, bt + 0.018), (0.165, 0.115, 0.036),
-             CASE_TINTS[5])
-    make_box("Reader_Board", (-2.95, 8.62, bt + 0.042), (0.120, 0.080, 0.010),
-             (0.22, 0.36, 0.24, 1.0))
-    for chi in range(2):
-        make_box(f"Reader_Chip_{chi}", (-2.985 + chi * 0.07, 8.62, bt + 0.054),
-                 (0.030, 0.030, 0.012), COL_CAST_IRON)
-    make_box("Reader_Lid", (-2.95, 8.44, bt + 0.005), (0.165, 0.115, 0.010),
-             CASE_TINTS[5])
-    make_box("Reader_SlotBar", (-2.875, 8.62, bt + 0.052), (0.012, 0.070, 0.008),
-             COL_STEEL)
-    # Soldering iron on its stand, UNPLUGGED and cooling (ch6 + the
-    # music-catalog desc) — coiled cord + free plug on the bench
-    make_box("Iron_StandBase", (-2.60, 8.85, bt + 0.010), (0.10, 0.07, 0.020),
-             COL_STEEL_WORN)
-    for pi, py in enumerate((8.82, 8.88)):
-        make_cyl(f"Iron_StandPost_{pi}", (-2.60, py, bt + 0.045), 0.006, 0.05,
-                 COL_STEEL_WORN)
-    make_cyl("Iron_Barrel", (-2.60, 8.85, bt + 0.075), 0.008, 0.16, COL_STEEL, axis='X')
-    make_cyl("Iron_Handle", (-2.48, 8.85, bt + 0.075), 0.014, 0.09, COL_CAST_IRON,
-             axis='X')
-    make_cyl("Iron_Tip", (-2.70, 8.85, bt + 0.075), 0.004, 0.05, COL_STEEL_WORN,
-             axis='X')
-    make_cyl("Iron_CordCoil", (-2.44, 8.66, bt + 0.010), 0.045, 0.018, COL_CAST_IRON,
-             segments=12)
-    make_box("Iron_Plug_Free", (-2.40, 8.58, bt + 0.008), (0.026, 0.018, 0.014),
-             COL_CAST_IRON)
-    # The parts tray — "moved a few small parts off the bench into
-    # a tray" (ch6)
-    make_box("PartsTray", (-2.15, 8.85, bt + 0.026), (0.22, 0.16, 0.05), COL_STEEL_WORN,
-             open_faces={'+Z'})
-    make_box("PartsTray_Floor", (-2.15, 8.85, bt + 0.006), (0.20, 0.14, 0.008),
-             (0.40, 0.40, 0.42, 1.0))
-    for pti in range(3):
-        make_box(f"PartsTray_Part_{pti}", (-2.21 + pti * 0.055, 8.83 + (pti % 2) * 0.04,
-                 bt + 0.018), (0.022, 0.016, 0.012),
-                 [COL_CAST_IRON, COL_BRASS, COL_STEEL][pti])
-    # Small precision tools, front edge of the bench
+def build_workbench():
+    # Cale's WORKBENCH on the back room's E wall: soldering iron in
+    # its stand, the LED strip he's wiring, a bench transformer,
+    # parts trays, task lamp — and "the small thing he had been
+    # working on" open mid-repair.
+    bx = ROOM_W/2.0 - 0.55
+    make_box("Bench_Top", (bx, 6.4, 0.90), (0.90, 2.40, 0.06), COL_CEDAR_DK)
+    for li, lyo in enumerate([-1.05, 1.05]):
+        make_box(f"Bench_Leg_{li}", (bx, 6.4+lyo, 0.44), (0.80, 0.10, 0.86), COL_CEDAR)
+    make_box("Bench_Backboard", (ROOM_W/2.0-0.12, 6.4, 1.55), (0.05, 2.40, 1.20), COL_CEDAR)
+    # Soldering iron in its coil stand + sponge tin.
+    make_cyl("Solder_Stand", (bx-0.15, 5.7, 0.96), 0.05, 0.10, COL_STEEL, segments=8)
+    # on the bench (2026-09-23: 5.5 cm over it). (2026-09-24: this comment
+    # once sat mid-call and swallowed the colour — the Blender build died here)
+    make_cyl("Solder_Iron", (bx-0.05, 5.78, 0.945), 0.015, 0.22, (0.24, 0.24, 0.26, 1.0),
+             axis='X', segments=6)
+    make_box("Solder_Sponge", (bx-0.30, 5.7, 0.945), (0.10, 0.08, 0.025), (0.80, 0.74, 0.30, 1.0))
+    # Bench transformer (the heavy hum in the corner of the scene).
+    make_box("Transformer", (bx+0.10, 7.3, 1.04), (0.30, 0.34, 0.28), (0.36, 0.38, 0.40, 1.0))
+    make_cyl("Transformer_Dial", (bx-0.06, 7.3, 1.12), 0.05, 0.03, (0.20, 0.20, 0.22, 1.0),
+             axis='X', segments=10)
+    # The LED strip he's wiring, uncoiled across the bench.
+    make_box("LED_Strip", (bx-0.05, 6.5, 0.945), (0.45, 0.04, 0.012), (0.90, 0.92, 0.86, 1.0))
+    make_box("LED_Strip_Coil", (bx+0.20, 6.15, 0.95), (0.16, 0.16, 0.04), (0.82, 0.84, 0.80, 1.0))
+    # The small thing mid-repair: an opened stick, shell + board.
+    make_box("Repair_Shell", (bx-0.18, 6.85, 0.945), (0.16, 0.12, 0.03), STICK_TINTS[2])
+    make_box("Repair_Board", (bx-0.02, 6.85, 0.94), (0.12, 0.09, 0.015), (0.24, 0.42, 0.28, 1.0))
+    # Parts trays on the backboard + task lamp clamped at the N end.
     for ti in range(3):
-        tx = -2.90 + ti * 0.12
-        make_cyl(f"Tool_Driver_{ti}_Shaft", (tx, 8.47, bt + 0.008), 0.005, 0.12,
-                 COL_STEEL, axis='Y')
-        make_cyl(f"Tool_Driver_{ti}_Handle", (tx, 8.56, bt + 0.010), 0.012, 0.05,
-                 [CASE_TINTS[2], CASE_TINTS[1], CASE_TINTS[3]][ti], axis='Y')
-    for wi, wx in enumerate((-2.52, -2.512)):
-        make_box(f"Tool_Tweezer_{wi}", (wx, 8.47, bt + 0.005), (0.004, 0.090, 0.006),
-                 COL_STEEL)
-    make_cyl("Tool_Loupe", (-2.36, 8.48, bt + 0.012), 0.028, 0.024, COL_CAST_IRON)
-    # Screw jars + tins on the shelf above the bench
-    make_box("BenchShelf", (bench_cx, wall_n_face - 0.10, 1.62), (1.40, 0.16, 0.03),
-             COL_CEDAR)
-    for ki, kx in enumerate((-3.15, -2.05)):
-        make_box(f"BenchShelf_Bracket_{ki}", (kx, wall_n_face - 0.06, 1.55),
-                 (0.03, 0.09, 0.11), P.METAL_BLACK)
-    for ji in range(3):
-        make_cyl(f"BenchShelf_Jar_{ji}", (-3.05 + ji * 0.16, wall_n_face - 0.10, 1.685),
-                 0.035, 0.100, (0.82, 0.78, 0.68, 1.0))
-        make_cyl(f"BenchShelf_JarLid_{ji}", (-3.05 + ji * 0.16, wall_n_face - 0.10,
-                 1.745), 0.037, 0.016, COL_STEEL_WORN)
-    for ni in range(2):
-        make_cyl(f"BenchShelf_Tin_{ni}", (-2.40 + ni * 0.14, wall_n_face - 0.10, 1.665),
-                 0.040, 0.060, COL_STEEL_WORN)
-    # THE WALL STRIP + THE TRANSFORMER — "the transformer on the
-    # wall hummed faintly even with the iron unplugged" (ch6)
-    make_box("PowerStrip_Body", (-2.85, wall_n_face - 0.035, 1.24), (0.42, 0.05, 0.09),
-             (0.82, 0.80, 0.74, 1.0))
-    for oi in range(3):
-        make_box(f"PowerStrip_Outlet_{oi}", (-2.99 + oi * 0.11, wall_n_face - 0.063,
-                 1.24), (0.045, 0.006, 0.045), COL_CAST_IRON)
-    make_box("PowerStrip_CordDown", (-2.68, wall_n_face - 0.03, 0.60),
-             (0.018, 0.018, 1.16), COL_CAST_IRON)
-    make_box("WallTransformer_Body", (-2.66, wall_n_face - 0.10, 1.26),
-             (0.095, 0.085, 0.135), COL_CAST_IRON)
-    make_box("WallTransformer_LED", (-2.66, wall_n_face - 0.145, 1.30),
-             (0.014, 0.006, 0.014), (0.94, 0.62, 0.30, 1.0))
-    make_box("WallTransformer_CordDown", (-2.66, wall_n_face - 0.05, 1.02),
-             (0.016, 0.016, 0.34), COL_CAST_IRON)
-    # THE WOODEN BOX — three sticks, "third slot in the wooden box"
-    # = Estuary 7, Ines Rocha 2046, white label in his small
-    # careful hand (label lettering scene-side)
-    make_box("StickBox_Body", (-1.95, 8.58, bt + 0.048), (0.30, 0.13, 0.095),
-             COL_CEDAR_DK, open_faces={'+Z'})
-    make_box("StickBox_Floor", (-1.95, 8.58, bt + 0.010), (0.28, 0.11, 0.010),
-             COL_CEDAR)
-    for di, dx in enumerate((-0.050, +0.050)):
-        make_box(f"StickBox_Divider_{di}", (-1.95 + dx, 8.58, bt + 0.048),
-                 (0.006, 0.11, 0.075), COL_CEDAR)
-    make_box("StickBox_Stick_0", (-2.045, 8.58, bt + 0.058), (0.020, 0.016, 0.088),
-             CASE_TINTS[0])
-    make_box("StickBox_Stick_1", (-1.950, 8.58, bt + 0.058), (0.020, 0.016, 0.088),
-             CASE_TINTS[3])
-    make_box("StickBox_Estuary7", (-1.855, 8.58, bt + 0.062), (0.026, 0.022, 0.096),
-             SLEEVE_TINTS[2])
-    make_box("StickBox_Estuary7_Label", (-1.855, 8.567, bt + 0.070),
-             (0.020, 0.004, 0.030), (0.96, 0.95, 0.92, 1.0))
-    # ── Seats: Cale's stool at the bench; the FOLDING METAL chair
-    # (the one Lena sits on, ch6_why_lena); the wood chair waiting
-    # in the corner (the "second chair" he pulls over) ───────────
-    make_cyl("BenchStool_Seat", (-2.60, 8.10, 0.60), 0.16, 0.045, COL_CEDAR,
-             segments=12)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"BenchStool_Leg_{li}", (-2.60 + sx * 0.10, 8.10 + sy * 0.10, 0.29),
-                 0.016, 0.58, COL_CEDAR_DK)
-    fx, fy = -1.95, 7.55
-    make_box("FoldChair_Seat", (fx, fy, 0.44), (0.40, 0.38, 0.025), COL_STEEL_WORN)
-    make_box("FoldChair_Back", (fx, fy + 0.20, 0.78), (0.38, 0.025, 0.30),
-             COL_STEEL_WORN)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"FoldChair_Leg_{li}", (fx + sx * 0.17, fy + sy * 0.16, 0.215),
-                 0.011, 0.43, COL_CAST_IRON)
-    for ci, csgn in enumerate((-1, +1)):
-        make_cyl(f"FoldChair_BackPost_{ci}", (fx + csgn * 0.17, fy + 0.20, 0.665),
-                 0.011, 0.45, COL_CAST_IRON)
-    make_cyl("FoldChair_CrossBar", (fx, fy - 0.16, 0.10), 0.009, 0.34, COL_CAST_IRON,
-             axis='X')
-    _wood_chair("CornerChair", -2.90, 6.50, 'E', COL_CEDAR)
-    # ── The closet (the folding chair's home) — east wall, closed
-    # surface-mounted leaf ───────────────────────────────────────
-    for pi, py in enumerate((7.92, 8.68)):
-        make_box(f"Closet_Post_{pi}", (wall_e_face - 0.03, py, 1.10),
-                 (0.06, 0.08, 2.20), COL_CEDAR)
-    make_box("Closet_Header", (wall_e_face - 0.03, 8.30, 2.24), (0.06, 0.84, 0.10),
-             COL_CEDAR)
-    make_box("Closet_Leaf", (wall_e_face - 0.025, 8.30, 1.08), (0.05, 0.70, 2.12),
-             COL_CEDAR_DK)
-    make_cyl("Closet_Knob", (wall_e_face - 0.07, 8.02, 1.02), 0.022, 0.04, COL_BRASS,
-             axis='X')
-    # ── The back door → the porch where Cale smokes (ch13) ───────
-    for pi, py in enumerate((6.52, 7.38)):
-        make_box(f"BackDoor_Post_{pi}", (wall_e_face - 0.03, py, 1.10),
-                 (0.06, 0.08, 2.20), COL_CEDAR)
-    make_box("BackDoor_Header", (wall_e_face - 0.03, 6.95, 2.24), (0.06, 0.94, 0.10),
-             COL_CEDAR)
-    make_box("BackDoor_Leaf", (wall_e_face - 0.025, 6.95, 1.08), (0.05, 0.78, 2.12),
-             COL_CEDAR_DK)
-    make_cyl("BackDoor_Knob", (wall_e_face - 0.07, 7.26, 1.02), 0.022, 0.04, COL_BRASS,
-             axis='X')
-    make_box("BackDoor_Deadbolt", (wall_e_face - 0.065, 7.26, 1.18),
-             (0.02, 0.05, 0.08), COL_BRASS)
-    make_box("BackDoor_Mat", (1.05, 6.95, 0.006), (0.50, 0.80, 0.010), P.RUBBER_MAT)
-    # Fire extinguisher on the east wall between the two doors
-    # (retail code; anchor keeps its YZ sign panel proud of the
-    # wall face at x 1.40, not buried in the wall thickness)
-    make_fire_extinguisher("FireExt", (1.41, 7.62, 0.30))
+        make_box(f"Parts_Tray_{ti}", (ROOM_W/2.0-0.21, 5.9+ti*0.5, 1.30), (0.22, 0.34, 0.10),   # on the E wall rail
+                 (0.70, 0.70, 0.66, 1.0))
+    make_cyl("TaskLamp_Clamp", (bx+0.30, 7.5, 0.96), 0.04, 0.08, (0.22, 0.22, 0.24, 1.0), segments=8)
+    make_cyl("TaskLamp_Arm", (bx+0.22, 7.45, 1.25), 0.015, 0.55, (0.22, 0.22, 0.24, 1.0))
+    make_cyl("TaskLamp_Head", (bx+0.13, 7.35, 1.50), 0.08, 0.12, (0.96, 0.90, 0.72, 1.0), segments=10)   # on its arm (2026-09-23: 7.5 cm off it)
+    # Cale's chair at the bench + THE second chair (he stayed in
+    # the chair while she stood at the stick box).
+    for ci, (cx, cy, ang_tag) in enumerate([(bx-0.85, 6.4, "Bench"), (0.6, 6.6, "Second")]):
+        make_box(f"Chair_{ang_tag}_Seat", (cx, cy, 0.45), (0.44, 0.44, 0.05), COL_CEDAR)
+        make_box(f"Chair_{ang_tag}_Back", (cx+(0.20 if ci == 0 else -0.20), cy, 0.75),
+                 (0.05, 0.44, 0.55), COL_CEDAR)
+        for li2, (lxo, lyo) in enumerate([(-0.18, -0.18), (0.18, -0.18), (-0.18, 0.18), (0.18, 0.18)]):
+            make_box(f"Chair_{ang_tag}_Leg_{li2}", (cx+lxo, cy+lyo, 0.22), (0.05, 0.05, 0.44), COL_CEDAR_DK)
 
 
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR · THE BACK PORCH + SIDE STRIP — "his afternoon cigarette
-# at two-forty-five on the back porch at ChillWave" (ch13). Small
-# plank deck off the back door, two posts, a flat lid roof, the
-# coffee-can butt tin (smoking lives OUT here — none inside), and
-# the gravel strip ("the lot", ch13 — empty; the truck is out front
-# on Main today).
-# ═════════════════════════════════════════════════════════════════
-def build_back_porch():
-    make_box("Ext_SideLot_Gravel", (2.65, 7.8, -0.02), (2.10, 3.20, 0.04), COL_GRAVEL)
-    make_box("Ext_SideLot_Puddle", (3.05, 8.6, 0.001), (0.70, 0.42, 0.002), COL_PUDDLE)
-    make_box("Porch_Deck", (2.15, 7.0, 0.07), (1.10, 1.40, 0.10), COL_CEDAR)
-    for si in range(2):
-        make_box(f"Porch_DeckSeam_{si}", (2.15, 6.70 + si * 0.60, 0.121),
-                 (1.06, 0.015, 0.002), COL_CEDAR_DK)
-    for pi, py in enumerate((6.42, 7.58)):
-        make_box(f"Porch_Post_{pi}", (2.60, py, 1.27), (0.09, 0.09, 2.30), COL_CEDAR_DK)
-    make_box("Porch_Roof", (2.22, 7.0, 2.46), (1.35, 1.60, 0.07), COL_CEDAR_DK)
-    make_cyl("Porch_CoffeeCan", (2.44, 6.52, 0.19), 0.055, 0.14, COL_STEEL_WORN,
-             segments=12)
-    make_box("Porch_Step", (2.15, 7.82, 0.03), (0.80, 0.28, 0.06), COL_CEDAR_DK)
-
-
-# ═════════════════════════════════════════════════════════════════
-# CEILING INFRASTRUCTURE — warm cylinder pendants out front ("Lights
-# low", _ART_MANIFEST — no fluorescent banks; the scaffold's tube
-# fixtures were the wrong vocabulary), two green shades over the
-# counter, bare bulbs on cords in the back room, smoke detectors,
-# one HVAC vent.
-# ═════════════════════════════════════════════════════════════════
 def build_ceiling_infra():
-    _pendant("Pendant_AisleW_A", -1.6, 2.05)
-    _pendant("Pendant_AisleW_B", -1.6, 3.55)
-    _pendant("Pendant_AisleE", 1.7, 2.05)
-    _pendant("Pendant_Entry", 0.0, 0.95)
-    _pendant("Pendant_Counter_W", 0.9, 4.25, drop=0.70, shade=COL_LAMPGREEN)
-    _pendant("Pendant_Counter_E", 2.1, 4.25, drop=0.70, shade=COL_LAMPGREEN)
-    make_smoke_detector("Smoke", (-0.4, 3.2, CEIL))
-    make_hvac_vent("HVAC", (-1.0, 5.2, CEIL), width=0.80, depth=0.40)
-    _bare_bulb("BackBulb_A", -0.6, 7.0)
-    _bare_bulb("BackBulb_B", -2.6, 8.35)
-    make_smoke_detector("BackSmoke", (-1.6, 7.4, CEIL))
+    # Domestic warm dome fixtures — no fluorescents in Cale's shop.
+    for di, (dx, dy) in enumerate([(0.0, 2.2), (0.0, 6.2)]):
+        make_cyl(f"Dome_{di}_Base", (dx, dy, CEIL-0.02), 0.16, 0.03, COL_STEEL, segments=12)
+        make_cyl(f"Dome_{di}_Glass", (dx, dy, CEIL-0.10), 0.13, 0.13, (0.96, 0.90, 0.76, 1.0), segments=12)
+    make_smoke_detector("Smoke", (-1.5, ROOM_D/2.0, CEIL))
+    make_hvac_vent("Vent", (1.5, 1.2, CEIL), width=0.80, depth=0.40)
+
+
+def build_decor():
+    # clear of the shelf (2026-09-24: once the clock faced the room it overlapped it)
+    make_wall_clock("Clock", (-3.400, 2.4, 2.55), frozen_hour=8, frozen_min=52,
+                    palette={"face": (0.88, 0.84, 0.74, 1.0), "rim": COL_CEDAR_DK}, facing='+X')
+    make_floor_plant("Plant", (2.9, 0.7, 0.0),
+                     palette={"leaf": (0.34, 0.48, 0.34, 1.0), "pot": (0.46, 0.36, 0.28, 1.0)})
+    # Woven runner between door and counter.
+    make_box("Runner", (0.0, 1.6, 0.015), (1.00, 2.20, 0.015), (0.54, 0.42, 0.32, 1.0))
+
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + D3 infrastructure (set-detail playbook).
+    Cale's shop is TIDY-WORN: the wear is soft and local (the path
+    he walks forty times a day, the burn ring where the iron lives),
+    not grime. D4 (use states) and D5 (through-the-glass) next."""
+    wear = (0.46, 0.35, 0.24, 1.0)          # floor darkened ~12%
+    # The path: door -> counter -> partition doorway -> workbench.
+    make_traffic_wear("Wear_Main", [(0.0, 0.6), (0.0, 2.6), (-1.1, 2.6)],
+                      width=0.7, tint=wear)
+    make_traffic_wear("Wear_Back", [(1.9, 3.2), (1.9, 5.4), (2.6, 5.4), (2.6, 6.4)],
+                      width=0.65, tint=wear)
+    # The workbench's life: solder-burn ring + a pale ring where
+    # the transformer sat for years before its last move.
+    make_floor_stain("Stain_Bench", (2.55, 6.1), radius=0.30,
+                     tint=(0.40, 0.30, 0.21, 1.0))
+    make_floor_stain("Stain_Bench_Ring", (2.55, 6.1), radius=0.18,
+                     tint=(0.55, 0.43, 0.31, 1.0))
+    # Soft kick scuff on the counter's customer face only.
+    # the counter runs N-S; its customer face is the WEST kick (2026-09-23:
+    # the band ran E-W 18 cm inside the counter front)
+    make_scuff_band("Scuff_Counter", (-1.476, 3.1), length=2.4, axis='Y',
+                    band_z=0.10, tint=(0.42, 0.30, 0.20, 1.0))
+    # Ceiling gather on the two long walls.
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, ROOM_D/2.0, 0.0),
+                        length=ROOM_D-0.4, axis='Y', band_z=CEIL-0.16,
+                        tint=(0.74, 0.66, 0.54, 1.0))
+    make_wall_tint_band("Band_E", (ROOM_W/2.0-0.105, ROOM_D/2.0, 0.0),
+                        length=ROOM_D-0.4, axis='Y', band_z=CEIL-0.16,
+                        tint=(0.74, 0.66, 0.54, 1.0))
+    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X',
+                   tint=(0.50, 0.34, 0.20, 1.0))
+    make_threshold("Threshold_Back", (1.9, PART_Y), width=1.0, axis='X',
+                   tint=(0.50, 0.34, 0.20, 1.0))
+    # D3 · plugged in.
+    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1)
+    make_wall_outlet("Outlet_Counter", (-ROOM_W/2.0, 3.0), axis='Y', face_sign=1)
+    make_wall_outlet("Outlet_Bench", (ROOM_W/2.0, 6.9), axis='Y', face_sign=-1)
+    make_thermostat("Thermostat", (-1.05, PART_Y), axis='X', face_sign=-1)
+    # Cords: register, the task lamp, and the transformer all reach
+    # the bench outlet — the honest tangle of a one-man repair shop.
+    # over the counter's west edge, down its face, along the floor to the outlet
+    make_cord_run("Cord_Register_A", (-1.30, 3.85, 1.018), (-1.52, 3.85, 1.018), sag=0.0)
+    make_cord_run("Cord_Register_B", (-1.52, 3.85, 1.018), (-1.52, 3.85, 0.03), sag=0.0)
+    make_cord_run("Cord_Register_C", (-1.52, 3.85, 0.03), (-3.38, 3.00, 0.03), sag=0.0)
+    make_cord_run("Cord_Register_D", (-3.38, 3.00, 0.03), (-3.39, 3.00, 0.30), sag=0.0)
+    make_cord_run("Cord_TaskLamp", (3.0, 7.5, 0.95), (3.39, 6.9, 0.30))
+    make_cord_run("Cord_Transformer", (3.05, 7.3, 0.92), (3.39, 6.9, 0.30))
+
+
+def build_use_states_2026_08():
+    """D4 · mid-task (set-detail playbook). Cale's shop caught in
+    the middle of an ordinary hour: shelving half-done, the repair
+    open under good light, tea going cold. Tidy-worn — the mess is
+    PRECISE."""
+    # Shelving in progress: two sticks out of the crate, on the
+    # floor beside it, one atop the other slightly off-square.
+    make_box("Shelving_Stick_A", (2.15, PART_Y+0.85, 0.08), (0.10, 0.16, 0.15), STICK_TINTS[3])
+    make_box("Shelving_Stick_B", (2.20, PART_Y+0.90, 0.235), (0.10, 0.16, 0.15), STICK_TINTS[1])
+    # One inventory stick half-pulled, proud of its row (the shelf
+    # gap Cale is walking back and forth to).
+    make_box("InvStick_HalfOut", (-1.15, ROOM_D-0.44, 1.11), (0.10, 0.16, 0.16), STICK_TINTS[0])
+    # The bench mid-repair: tweezers, three screws in a saucer, the
+    # magnifier loupe set down lens-up.
+    make_box("Bench_Tweezers", (2.90, 6.62, 0.935), (0.015, 0.11, 0.01), P.METAL_STEEL)   # on the bench top 0.93
+    make_cyl("Bench_Screw_Saucer", (3.05, 6.72, 0.936), 0.04, 0.012, (0.88, 0.86, 0.80, 1.0), segments=8)
+    for si, (sxo, syo) in enumerate([(-0.012, 0.008), (0.010, -0.006), (0.002, 0.014)]):
+        make_cyl(f"Bench_Screw_{si}", (3.05+sxo, 6.72+syo, 0.946), 0.004, 0.008,
+                 (0.55, 0.55, 0.58, 1.0), segments=6)
+    make_cyl("Bench_Loupe", (2.72, 6.55, 0.955), 0.035, 0.025, (0.24, 0.24, 0.26, 1.0), segments=10)
+    # Tea going cold at the bench's far corner — ring already dry
+    # beside it (yesterday's cup sat there too).
+    make_cyl("Bench_Tea", (3.15, 7.05, 0.98), 0.04, 0.09, (0.62, 0.58, 0.50, 1.0), segments=8)
+    make_cyl("Bench_Tea_Ring", (3.08, 6.95, 0.933), 0.045, 0.003, (0.44, 0.30, 0.20, 1.0), segments=8)
+    # Reading glasses folded on the counter beside the paperback.
+    # ON the top (1.01): at 0.965 they lay inside the counter slab (2026-09-23)
+    make_box("Counter_Glasses_Bridge", (-0.95, 2.80, 1.015), (0.10, 0.015, 0.01), (0.24, 0.22, 0.20, 1.0))
+    for gi, gxo in enumerate([-0.055, 0.055]):
+        make_cyl(f"Counter_Glasses_Lens_{gi}", (-0.95+gxo, 2.80, 1.013), 0.025, 0.006,
+                 (0.70, 0.76, 0.78, 0.6), segments=8)
+    # One brass letter tab crooked — the alphabet is human.
+    make_box("InvTab_Crooked", (0.65, ROOM_D-0.455, 1.64), (0.08, 0.02, 0.06), COL_BRASS)
+
+
+def build_beyond_glass_2026_08():
+    """D5 · through the storefront: the street ChillWave lives on —
+    sidewalk, parked car, the shop across the way with one lit
+    window (somebody else keeps late hours too). Edge-of-set bands;
+    fog does the fade."""
+    make_box("Street_Sidewalk", (0.0, -1.6, -0.02), (14.0, 2.6, 0.04), (0.56, 0.55, 0.52, 1.0))
+    for ji, jx in enumerate([-4.5, -1.5, 1.5, 4.5]):
+        make_box(f"Street_Sidewalk_Joint_{ji}", (jx, -1.6, 0.005), (0.04, 2.6, 0.01),
+                 (0.44, 0.43, 0.40, 1.0))
+    make_box("Street_Asphalt", (0.0, -4.6, -0.02), (14.0, 3.4, 0.04), (0.27, 0.27, 0.29, 1.0))
+    # The parked car at the curb, framed by the SE glass.
+    make_box("Street_Car_Body", (2.6, -2.5, 0.55), (4.2, 1.75, 0.55), (0.36, 0.30, 0.26, 1.0))
+    make_box("Street_Car_Cabin", (2.3, -2.5, 1.02), (2.2, 1.6, 0.45), (0.36, 0.30, 0.26, 1.0))
+    # The shopfront across the street: facade band + one lit window.
+    make_box("Across_Facade", (0.0, -7.2, 2.0), (13.0, 0.6, 4.0), (0.38, 0.34, 0.30, 1.0))
+    make_box("Across_Window_Dark", (-2.6, -6.87, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))   # on the facade (2026-09-23: 2 cm off it)
+    make_box("Across_Window_Lit", (2.2, -6.87, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Across_Door", (0.0, -6.85, 1.15), (0.95, 0.06, 2.3), (0.22, 0.20, 0.18, 1.0))
+    # A street tree between the windows' sightlines.
+    make_cyl("Street_Tree_Trunk", (-3.4, -2.2, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
+    # 2026-08-04: box crown -> blob (seen through the shop window).
+    from _props.geometry import make_blob
+    make_blob("Street_Tree_Crown", (-3.4, -2.2, 3.3), 1.05,
+              (0.16, 0.24, 0.15, 1.0), noise=0.22, seed=9, squash=0.9)
 
 
 def main():
     clear_scene()
     build_shell()
     build_storefront()
-    build_exterior_main_street()
-    build_counter_zone()
-    build_floor_stock()
-    build_back_room()
-    build_back_porch()
+    build_counter_front()
+    build_island_2026_10()
+    build_back_inventory()
+    build_workbench()
     build_ceiling_infra()
+    build_decor()
+    build_detail_pass_2026_08()
+    build_use_states_2026_08()
+    build_beyond_glass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/chillwave_interior.glb"))
     print(f"\n[build_chillwave_interior] exporting to {out}")
     export_glb(out)
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "vol5_the_demon_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_the_demon_theme",
+  "notes": "The Man at the Bar. A cold sine pad about a half-step out of tune with everything around it: F-B under a C that will not move to the B."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "F2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.16
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "B1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

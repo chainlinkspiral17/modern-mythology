@@ -1,0 +1,118 @@
+{
+ "meta": {
+  "title": "vol1_faust_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol1_faust_theme",
+  "notes": "Faust III. An echo of Sharp's bass but warmer \u2014 the same world from another mouth: the bass figure in D under a D MAJOR pad."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.192,
+   "notes": [
+    {
+     "pitch": "D1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.34
+    },
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.28
+    },
+    {
+     "pitch": "D1",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.32
+    },
+    {
+     "pitch": "C1",
+     "bar": 2,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.3
+    },
+    {
+     "pitch": "D1",
+     "bar": 4,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F1",
+     "bar": 4,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.144,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.08,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 4,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

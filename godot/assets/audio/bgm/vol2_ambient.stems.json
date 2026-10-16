@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "title": "Small Wood Variations (temp)",
+ "temp": true,
+ "format": "ogg",
+ "length_sec": 115.941,
+ "frames": 5113006,
+ "sample_rate": 44100,
+ "loop": false,
+ "loop_offset": 0,
+ "loop_start": 0,
+ "bpm": 68,
+ "bars": 32,
+ "lufs": -14,
+ "credits": "",
+ "approved": {
+  "take": "20261013-145636-s920146443",
+  "seed": 920146443,
+  "date": "2026-10-13T22:03:14.998Z"
+ },
+ "mix": "assets/audio/bgm/vol2_ambient.temp.ogg",
+ "quality": {
+  "mix": 4,
+  "stem": 1
+ },
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/vol2_ambient.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/vol2_ambient.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/vol2_ambient.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/vol2_ambient.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/vol2_ambient.stems/pad.ogg",
+   "layer": 0
+  }
+ ],
+ "bytes": {
+  "mix": 1534113,
+  "stems": 3725354
+ }
+}

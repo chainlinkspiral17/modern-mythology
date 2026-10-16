@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "the cathedral, stone and air",
+    "composer": "field-tone for the Modern Mythology VN",
+    "for": "VN locale ambient bed · cathedral_interior · the world hum under the Music Player",
+    "notes": "A deep, reverberant nave: a low pedal-organ drone in the stone, a slow pad opening in fifths overhead, and one distant bell late in the loop. Awe, not menace. Ducks the Music Player way down so the room's own weight reads. 16 bars, 56 BPM."
+  },
+  "tempo_bpm": 56,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.30,
+      "notes": [ {"pitch": "A1", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.42} ] },
+    { "instrument": "slowstick_pad", "gain": 0.22, "notes": [
+      {"pitch": "A2", "bar": 1,  "beat": 1, "dur": 32.0, "vel": 0.30},
+      {"pitch": "E3", "bar": 1,  "beat": 1, "dur": 32.0, "vel": 0.24},
+      {"pitch": "A2", "bar": 9,  "beat": 1, "dur": 32.0, "vel": 0.28},
+      {"pitch": "D3", "bar": 9,  "beat": 1, "dur": 32.0, "vel": 0.22}
+    ] },
+    { "instrument": "soft_sine", "gain": 0.18, "notes": [
+      {"pitch": "A4", "bar": 13, "beat": 2, "dur": 6.0, "vel": 0.34}
+    ] }
+  ]
+}

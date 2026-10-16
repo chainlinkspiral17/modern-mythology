@@ -1,0 +1,31 @@
+{
+ "id": "mrs_wus_garden_scrapbook",
+ "title": "Mrs. Wu's Garden · the fall",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed. Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "mrs_wus_garden_finished",
+   "tier": "finished",
+   "title": "One fall, nine beds",
+   "blurb": "Ines Rocha made this in stolen evenings, October 2003, right after welding Estuary 3 in a weekend. It is the smallest thing Oneironautics ever shipped. Three actions an evening, and one of them should usually be the porch."
+  },
+  {
+   "token": "wu_garden_all_beds_saved",
+   "tier": "endings",
+   "title": "Nine of nine through the frost",
+   "blurb": "Four armloads of bedsheets, one hard-minded triage, and every bed answered for. 'They are all somebody's,' she said, and refused to choose — so you learned all nine somebodies well enough to choose for her."
+  },
+  {
+   "token": "wu_garden_hummed_melody",
+   "tier": "secrets",
+   "title": "The tune in waltz time",
+   "blurb": "Sit with her three evenings and the humming resolves into the whole melody — small, in waltz time, almost resolving and then going up instead. The manual says nothing about it. Other carts on this shelf know it note for note, and none of them explain it either."
+  },
+  {
+   "token": "wu_garden_the_counselor_visited",
+   "tier": "secrets",
+   "title": "The camp girl",
+   "blurb": "A woman at the fence with a whistle on a red lanyard gone soft with age. She asked about the open house, looked at every bed, watered nothing, left lighter. Mrs. Wu called her 'the camp girl,' as if that were a name. In some counties it is."
+  }
+ ]
+}

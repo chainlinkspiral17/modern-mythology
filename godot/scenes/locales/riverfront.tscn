@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="15_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
 
@@ -153,7 +153,14 @@ ambient_light_color = Color(0.42, 0.48, 0.58, 1)
 ambient_light_energy = 0.50
 fog_enabled = true
 fog_light_color = Color(0.05, 0.06, 0.08, 1)
-fog_density = 0.008
+; STUMP HUNT (2026-08-04): this exterior's geometry now runs
+; past 120m. Fog retuned so the new distance reads as air —
+; density capped so bands 200-800m out survive to the eye,
+; aerial perspective + sky-affect so the horizon is haze,
+; not a cut edge.
+fog_density = 0.0045
+fog_sky_affect = 1.0
+fog_aerial_perspective = 1.0
 glow_enabled = true
 glow_intensity = 0.85
 glow_bloom = 0.15
@@ -263,6 +270,33 @@ light_energy = 0.55
 omni_range = 2.5
 shadow_enabled = false
 
+; ── PRACTICAL LIGHTS · park jog-path lamps ─────────────────────────
+; Three lamp posts pace the jogging arc (build_park_2026_08:
+; Park_Lamp_0..2 at blender (-52.5,18) (-47.5,30) (-44.5,24), head
+; z 3.95 → godot (bx, 3.95, -by)). The Hierophant §IV and the vol1
+; jog stage here; warm lantern heads over the path, 3.8m posts →
+; range ~9 per the 2x-fixture-height heuristic.
+[node name="ParkLamp_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.5, 3.95, -18)
+light_color = Color(1.0, 0.85, 0.58, 1)
+light_energy = 2.2
+omni_range = 9.0
+shadow_enabled = false
+
+[node name="ParkLamp_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 3.95, -30)
+light_color = Color(1.0, 0.85, 0.58, 1)
+light_energy = 2.2
+omni_range = 9.0
+shadow_enabled = false
+
+[node name="ParkLamp_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 3.95, -24)
+light_color = Color(1.0, 0.85, 0.58, 1)
+light_energy = 2.2
+omni_range = 9.0
+shadow_enabled = false
+
 ; ── PRACTICAL LIGHTS · boat interior glow ──────────────────────────
 ; The dining room and pilothouse have visible lit windows. These
 ; omnis sit just INSIDE the boat at the deck levels so light spills
@@ -331,6 +365,7 @@ far = 300.0
 layer = 50
 script = ExtResource("5_mood")
 mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
+default_style_pack = "riverfront_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")
@@ -412,7 +447,7 @@ mouse_filter = 2
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="DebugLabel" type="Label" parent="HUD"]
@@ -428,7 +463,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 1260.0
 offset_bottom = 360.0
-text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffrocker
 F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track"
 autowrap_mode = 2
 theme_override_font_sizes/font_size = 18
@@ -453,3 +488,37 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; insert: John scribbled in his notebook: Hierophant
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.350, 0.672, -21.324)
+rotation = Vector3(-0.2618, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-20.625, 1.612, 17.069)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-18.713, 1.612, 15.156)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__riverfront_park" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-46.235, 1.612, -17.975)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__riverfront_park" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-47.588, 1.612, -20.318)
+rotation = Vector3(-0.2618, -2.6180, 0.0)
+metadata/fov = 45.0

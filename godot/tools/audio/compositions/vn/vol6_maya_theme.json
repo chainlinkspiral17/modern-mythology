@@ -1,0 +1,90 @@
+{
+ "meta": {
+  "title": "vol6_maya_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_maya_theme",
+  "notes": "Maya \u00b7 Bedroom Recording. Cassette-deck hiss + a half-strummed guitar through the wall: two chords, each string a hair late."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.25,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F#3",
+     "bar": 2,
+     "beat": 1.12,
+     "dur": 3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "A3",
+     "bar": 2,
+     "beat": 1.24,
+     "dur": 3,
+     "vel": 0.16
+    },
+    {
+     "pitch": "G3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.2
+    },
+    {
+     "pitch": "B3",
+     "bar": 4,
+     "beat": 1.12,
+     "dur": 3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "D4",
+     "bar": 4,
+     "beat": 1.24,
+     "dur": 3,
+     "vel": 0.16
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.25,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

@@ -12,9 +12,9 @@ const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
-const BACKLOG_SCRIPT  := preload("res://scenes/game/BacklogOverlay.gd")
 const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
+const VN_DIRECTOR_SCRIPT := preload("res://scripts/vn/VnDirector.gd")
 const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
 const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 
@@ -22,6 +22,8 @@ const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 # can see which file each scene's bg directive is loading while
 # playing. Disable once you're done debugging.
 const DEBUG_BG_OVERLAY: bool = false
+
+const CHAPTER_CARD_SCRIPT := preload("res://scenes/game/ChapterCard.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -35,10 +37,55 @@ var _log:         Array      = []
 var _skin:        Dictionary = {}
 var _active_slot: int        = -1
 
+# SIGNATURES (2026-09-12). A principal's theme plays once per scene,
+# the first time they are shown OR speak (four of the themed
+# characters — the Stranger, Marit, Wren, Petra — are never `show`n;
+# they only talk). Keyed by CharLayer.char_key; cleared on scene load.
+# A resume fast-forward replays `show` nodes silently and must not
+# fire a run of stingers at once, so cues are only MARKED while
+# `_replaying`.
+var _signatures_cued: Dictionary = {}
+var _replaying: bool = false
+
 var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
-var _skip_cool:   float = 0.0
+
+# HUD chapter echo memory — untitled scenes inherit the last
+# non-empty title seen within the same (vol, chapter) instead of
+# degrading the whisper to a bare chapter number.
+var _last_chapter_title: String = ""
+var _last_title_ch_key:  String = ""
+
+# ── Scene transitions (2026-07 presentation wave) ────────────────
+# A fade veil above all UI (z 140) carries scene→scene cuts; a
+# ChapterCard (z 150) presents the scene JSON's `title` at every
+# (vol, chapter) boundary. `_transition_lock` gates _input so a
+# click during a fade can't advance the story underneath.
+var _veil: ColorRect = null
+var _chapter_card: Control = null
+var _transition_lock: bool = false
+# ── reading furniture (2026-07 detail pass) ──
+var _backlog_overlay: Control = null
+# AUTO mode (A key) · hands-free reading: the page turns itself a
+# beat after the typewriter rests, scaled to line length. Distinct
+# from _auto_timer, which serves voiced-node sync.
+var _auto_mode: bool = false
+var _auto_read_t: float = 0.0
+var _auto_chip: Label = null
+# idle cursor · the pointer fades after a few still seconds so it
+# never sits in a held frame
+var _cursor_idle_t: float = 0.0
+var _photo_on: bool = false
+var _photo_bars: Array = []          # two ColorRects, built lazily
+var _photo_restore: Dictionary = {}  # node path -> was-visible
+
+# The producer keeps the departments on one clock across transitions:
+# story dispatch waits for the curtain, audio dips/stops/returns in
+# sync with the veil, and a settle beat lands the establishing shot
+# before the first line. See scripts/vn/VnProducer.gd.
+const VN_PRODUCER_SCRIPT := preload("res://scripts/vn/VnProducer.gd")
+var _producer: Node = null
 
 var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
@@ -46,7 +93,7 @@ var _composition_active: bool    = false
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
 var _bg_frame:       Control     = null
-var _dlg_scrim:      ColorRect   = null
+var _dlg_scrim:      Control     = null
 
 # UI nodes pin themselves to this z so composition windows with
 # internal z values (1..9) can't escape and cover dialog/portraits.
@@ -58,14 +105,22 @@ var _interlude:  Control     = null
 var _cg:         Control     = null
 var _hud:        Control     = null
 var _ig_menu:    Control     = null
+var _save_thumb: Image       = null   # the scene as it stood when the pause menu opened
 var _settings_ov: Control   = null
 var _music_ov:   Control     = null
-var _backlog_ov: Control     = null
 var _toast:      Control     = null
+
+# ── Scene direction (lore/_VN_DIRECTION_PLAYBOOK.md) ─────────────
+# [shot:...] / [panel:...] directives lead narrate/say/think text;
+# they're stripped before display and dispatched to the director.
+var _director:   Node        = null
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip|register|portrait):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
 	_build_layers()
+	_producer = VN_PRODUCER_SCRIPT.new()
+	add_child(_producer)
 
 
 func _build_layers() -> void:
@@ -94,7 +149,7 @@ func _build_layers() -> void:
 	# image is visible. Cover-mode was cropping ~22-40px off most
 	# sources, plus my prior BG_ZOOM_BASE=1.04 was zooming on top of
 	# that crop — combined, large chunks of every bg sat off-screen.
-	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	# Without EXPAND_IGNORE_SIZE, the TextureRect's intrinsic minimum
 	# size comes from the texture itself. The vol5 bgs are 2659x1536 —
 	# way larger than the 1280x720 viewport — so the rect was forced
@@ -106,6 +161,34 @@ func _build_layers() -> void:
 	_bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
+	# THE TRIP runs on the VN's backgrounds only (texture mode), never
+	# over the dialogue box: this root joins "trip_local" so TripSync's
+	# global screen layer steps aside while the VN is in the tree.
+	add_to_group("trip_local")
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("attach"):
+		trip.call("attach", _bg)
+	# THE FEEDBACK (2026-09-11) · the Minter half of the layer. The
+	# buffer catches the bright part of the BACKGROUND TEXTURE, re-
+	# projects it a hair larger each frame and screens it back, so
+	# lamps, windows and the aura leave a slow bloom behind them. It
+	# is mounted HERE — one sibling above _bg — so it draws over the
+	# picture and under the matte frame, the portraits, the letterbox
+	# bars and the dialogue box. Type is outside the buffer entirely,
+	# which is the whole reason the source is a texture and not the
+	# screen.
+	if trip != null and trip.has_method("attach_feedback"):
+		var fb_v: Variant = trip.call("attach_feedback", _bg)
+		if fb_v is Control:
+			_trip_fb = fb_v as Control
+			# Above every background layer (z 0 — the PNG, the
+			# substrate, the 3D viewport, which the 3D path also
+			# moves to the end of the child list) and below the
+			# portraits at UI_Z − 40, so the trail is light IN the
+			# room and the cast stands in front of it. Well below
+			# UI_Z, so no glyph is ever inside the buffer's output.
+			_trip_fb.z_index = 10
+			add_child(_trip_fb)
 
 	# Matte frame above the bg image to cover aspect bars. The live
 	# _substrate sits between _bg_solid and _bg, so without this it
@@ -118,27 +201,70 @@ func _build_layers() -> void:
 	_bg_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_bg_frame)
 	_bg_frame.set("bg_node", _bg)
+	_bg_frame.visible = false   # modern-VN: full-bleed bg, no matte bars
+
+	# Scene director — owns shot cuts, letterbox bars and info
+	# panels. Bars/panels are Controls in THIS tree (z 95/101), so
+	# the F4 CanvasLayer sweep can't hide the picture itself.
+	_director = VN_DIRECTOR_SCRIPT.new()
+	add_child(_director)
+	_director.call("setup", self)
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_chars.z_index = UI_Z
+	# Portrait layer sits ABOVE the background but strictly BELOW the
+	# dialogue/UI band (UI_Z=100). Must be < UI_Z so activate_speaker's
+	# per-portrait z_index bump (active speaker = +1, relative to this
+	# base) can never climb over the dialogue text. Still well above the
+	# bg composition's internal z (1..9), so those can't escape either.
+	_chars.z_index = UI_Z - 40
 	add_child(_chars)
 
 	# Dialogue scrim — gradient panel between chars and dlg so dialogue
 	# text always has a high-contrast surface beneath it regardless of
 	# how busy the live-ASCII bg gets.
-	_dlg_scrim = ColorRect.new()
-	_dlg_scrim.color = Color(0.02, 0.02, 0.04, 0.78)
-	_dlg_scrim.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	_dlg_scrim.offset_top = -260.0
-	_dlg_scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_dlg_scrim.z_index = UI_Z
-	add_child(_dlg_scrim)
+	# Bottom-fading gradient scrim (modern-VN clean look): transparent
+	# at the top, dark at the bottom — text contrast with no hard box
+	# edge. TextureRect over a GradientTexture2D.
+	# "Text on top, not on a scrim" (2026-07-12) held the box fully
+	# transparent. 2026-07-22 reading-surface draft (user-approved
+	# taste pass): a GENTLE gradient returns — still transparent at the
+	# top (no box edge, the chrome-less spirit holds), rising to a soft
+	# dark at the very bottom so the type sits on a composed surface
+	# instead of raw scene. The per-glyph outline still carries
+	# legibility; this is atmosphere, not a slab. Revert = bottom
+	# alpha back to 0.0 (one number).
+	var _scrim_grad := Gradient.new()
+	_scrim_grad.set_color(0, Color(0.02, 0.02, 0.04, 0.0))
+	_scrim_grad.set_color(1, Color(0.01, 0.01, 0.03, 0.34))
+	var _scrim_tex := GradientTexture2D.new()
+	_scrim_tex.gradient = _scrim_grad
+	_scrim_tex.fill_from = Vector2(0, 0)
+	_scrim_tex.fill_to   = Vector2(0, 1)
+	_scrim_tex.width  = 8
+	_scrim_tex.height = 256
+	var _scrim_rect := TextureRect.new()
+	_scrim_rect.texture = _scrim_tex
+	_scrim_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_rect.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_scrim_rect.offset_top = -300.0
+	_scrim_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_scrim_rect.z_index = UI_Z
+	add_child(_scrim_rect)
+	_dlg_scrim = _scrim_rect
 
 	_dlg = DIALOGUE_SCENE.instantiate()
 	_dlg.z_index = UI_Z
 	add_child(_dlg)
 	_dlg.visible = false
+	# Direct cross-references — DialogueBox needs CharLayer for speaker
+	# accents/slots, CharLayer needs DialogueBox for the talk flap.
+	# Injecting here kills the per-line find_child tree walks; each
+	# component keeps its find_child as a null-member fallback.
+	if _dlg.has_method("set_char_layer"):
+		_dlg.call("set_char_layer", _chars)
+	if _chars.has_method("set_dialogue"):
+		_chars.call("set_dialogue", _dlg)
 	# Scrim follows the dialogue's visibility so full-screen CGs and
 	# interludes aren't darkened along the bottom.
 	_dlg_scrim.visible = false
@@ -172,16 +298,16 @@ func _build_layers() -> void:
 
 	_ig_menu = IN_GAME_MENU.instantiate()
 	_ig_menu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_ig_menu.z_index = UI_Z
+	# Above every scene element INCLUDING portrait chrome — modal
+	# menus must never have character art floating through them.
+	_ig_menu.z_index = UI_Z + 20
 	_ig_menu.visible = false
 	add_child(_ig_menu)
 	_ig_menu.connect("resume_requested",    func() -> void: _resume_from_menu())
 	_ig_menu.connect("save_requested",      func(slot: int) -> void: _save_to_slot(slot))
-	_ig_menu.connect("load_requested",      func(slot: int) -> void: _load_from_slot(slot))
-	_ig_menu.connect("main_menu_requested", func() -> void: game_ended.emit())
+	_ig_menu.connect("main_menu_requested", func() -> void: _exit_to_main_menu())
 	_ig_menu.connect("settings_opened",     func() -> void: _open_settings())
 	_ig_menu.connect("music_opened",        func() -> void: _open_music())
-	_ig_menu.connect("backlog_opened",      func() -> void: _open_backlog())
 
 	_settings_ov = SETTINGS_OV.instantiate()
 	_settings_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -197,13 +323,6 @@ func _build_layers() -> void:
 	add_child(_music_ov)
 	_music_ov.connect("closed", func() -> void: _music_ov.visible = false)
 
-	_backlog_ov = Control.new()
-	_backlog_ov.set_script(BACKLOG_SCRIPT)
-	_backlog_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_backlog_ov.z_index = UI_Z + 1
-	_backlog_ov.visible = false
-	add_child(_backlog_ov)
-
 	_toast = Control.new()
 	_toast.set_script(UNLOCK_TOAST_SCRIPT)
 	_toast.z_index = UI_Z + 2
@@ -215,6 +334,8 @@ func _build_layers() -> void:
 
 func start(vol: int, scene_id: String = "", slot: int = -1, start_node: int = 0) -> void:
 	_vol         = vol
+	_apply_trip_cue("reset")
+	_apply_register_cue("reset")
 	_active_slot = slot
 	_apply_skin(vol)
 	if scene_id == "":
@@ -223,7 +344,15 @@ func start(vol: int, scene_id: String = "", slot: int = -1, start_node: int = 0)
 			push_error("GameEngine: no chapters for vol %d" % vol)
 			return
 		scene_id = chapters[0].get("id", "")
+	# Open on black; the first scene arrives through its chapter card
+	# (fresh sessions always deserve the plate) or a fade-in.
+	_set_veil(1.0)
 	_load_scene(scene_id, start_node)
+	var sc := SceneDataDB.get_scene(scene_id)
+	if start_node == 0 and String(sc.get("title", "")).strip_edges() != "":
+		_present_chapter_card(sc)
+	else:
+		_fade_veil_out(0.6)
 
 
 func load_save(save_data: Dictionary) -> void:
@@ -238,13 +367,42 @@ func load_save(save_data: Dictionary) -> void:
 	_apply_skin(_vol)
 	# Load scene data without auto-running, then jump to saved node index
 	var target_idx: int = int(save_data.get("nodeIndex", 0))
-	_load_scene(save_data.get("scene", ""), target_idx, true)
+	# Mid-scene resume: no chapter card, just a quiet fade-in.
+	_set_veil(1.0)
+	_load_scene(save_data.get("scene", ""), target_idx)
+	_fade_veil_out(0.5)
 
 
 # ── Skin ──────────────────────────────────────────────────────────────────────
 
+# THE TRIP's director dial: `[trip:0.4]` dims the psychedelic layer for a
+# beat, `[trip:1.3]` pushes it, `[trip:reset]` returns to the mood's
+# own level. Global (TripSync), so it needs no locale to land on.
+func _apply_trip_cue(arg: String) -> void:
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("apply_trip_cue"):
+		trip.call("apply_trip_cue", arg)
+
+
+# `[register:domestic]` / `[register:reset]` (2026-09-11). The volume
+# picks a register for the whole pillar, which is right until a chapter
+# inside it is a different KIND of room — the Lovers is a kitchen at
+# nine in the morning inside a volume whose look is swamp phosphor and
+# arcade amber ("warm and cozy and domestic, not garish and weird").
+# Cleared on every scene load, like `[trip:]`.
+func _apply_register_cue(arg: String) -> void:
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("set_scene_register"):
+		trip.call("set_scene_register", arg)
+
+
 func _apply_skin(vol: int) -> void:
 	_skin = SkinDB.get_for_vol(vol)
+	# THE TRIP register follows the volume (arcana / community /
+	# milk_honey); pops by itself when this engine leaves the tree.
+	var trip_reg: Node = get_node_or_null("/root/TripSync")
+	if trip_reg != null and trip_reg.has_method("push_register"):
+		trip_reg.call("push_register", String(trip_reg.call("register_for_volume", vol)), self)
 	_bg_solid.color = _skin.get("scene_bg", Color(0.05, 0.04, 0.03))
 	_dlg.offset_top = -_skin.get("dlg_min_h", 210.0)
 	_dlg.call("setup", _skin)
@@ -254,46 +412,65 @@ func _apply_skin(vol: int) -> void:
 
 # ── In-game overlays ──────────────────────────────────────────────────────────
 
-var _dlg_was_visible: bool = false
-
 func _open_in_game_menu() -> void:
 	_paused = true
-	# Hide the character portraits + dialogue while the menu is up.
-	# Portrait3D SubViewports render every frame (UPDATE_ALWAYS) and
-	# keep their idle-sway running even when paused, so without this
-	# they draw and animate over/through the menu panel.
-	_dlg_was_visible = _dlg.visible
-	_chars.visible = false
-	_dlg.visible = false
+	# The save's thumbnail is the scene as it stood when the player
+	# paused — taken now, before the menu draws over it (2026-10-01).
+	_save_thumb = _capture_thumb()
 	_ig_menu.call("open", _active_slot)
+
+
+func _capture_thumb() -> Image:
+	var tex: ViewportTexture = get_viewport().get_texture()
+	if tex == null:
+		return null
+	var img: Image = tex.get_image()
+	return img
 
 
 func _resume_from_menu() -> void:
 	_paused = false
 	_ig_menu.visible = false
-	_chars.visible = true
-	_dlg.visible = _dlg_was_visible
+	_save_thumb = null
 
 
 func _save_to_slot(slot: int) -> void:
 	if slot < 1:
 		return
 	_active_slot = slot
-	# While waiting on input, _node_idx already points one past the
-	# line on screen (_run_next pre-increments). Save the displayed
-	# line so loading replays it instead of silently skipping it.
-	var save_idx: int = _node_idx
-	if _waiting and save_idx > 0:
-		save_idx -= 1
-	SaveSystem.write_save(slot, _vol, _scene_id, save_idx, _flags, _skills, _log)
+	# _run_next bumps _node_idx BEFORE dispatch, so while a line is
+	# displayed (_waiting) or a choice is up, _node_idx already points
+	# one PAST the node the reader is looking at. Saving that raw value
+	# made resume skip the current line — or skip a pending choice
+	# entirely when saved from the menu. Save the displayed node's own
+	# index; on resume _load_scene re-dispatches exactly that node
+	# (safe: the fast-forward pass owns all earlier side effects).
+	var idx: int = _node_idx
+	if _waiting or (_choices != null and _choices.visible):
+		idx = maxi(0, _node_idx - 1)
+	var thumb: Image = _save_thumb if _save_thumb != null else _capture_thumb()
+	SaveSystem.write_save(slot, _vol, _scene_id, idx, _flags, _skills, _log, thumb)
 
 
-func _load_from_slot(slot: int) -> void:
-	var save_data := SaveSystem.read_save(slot)
-	if save_data.is_empty():
-		return
-	_resume_from_menu()
-	load_save(save_data)
+func _exit_to_main_menu() -> void:
+	# Leaving for the main menu never silently drops progress: write an
+	# autosave first — into the active slot when one exists, else the
+	# most recently written occupied slot, else slot 1.
+	var slot: int = _active_slot
+	if slot < 1:
+		var best_ts: float = -1.0
+		for sd_v in SaveSystem.list_saves():
+			var sd: Dictionary = sd_v
+			if bool(sd.get("empty", false)):
+				continue
+			var ts: float = float(sd.get("ts", 0.0))
+			if ts > best_ts:
+				best_ts = ts
+				slot = int(sd.get("slot", -1))
+	if slot < 1:
+		slot = 1
+	_save_to_slot(slot)
+	game_ended.emit()
 
 
 func _open_settings() -> void:
@@ -304,14 +481,18 @@ func _open_music() -> void:
 	_music_ov.call("open")
 
 
-func _open_backlog() -> void:
-	_backlog_ov.call("open", _log)
-
-
 # ── Scene loading & node dispatch ─────────────────────────────────────────────
 
-func _load_scene(scene_id: String, start_at: int = 0, replay_state: bool = false) -> void:
+func _load_scene(scene_id: String, start_at: int = 0) -> void:
+	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
+	_apply_trip_cue("reset")
+	_apply_register_cue("reset")
 	_scene_id   = scene_id
+	_signatures_cued.clear()
+	# Coverage rotation: the director assigns each chapter its
+	# establish angle from this key (see VnDirector._rotation_marker).
+	if _director != null:
+		_director.set("scene_key", scene_id)
 	_node_idx   = start_at
 	_scene_data = SceneDataDB.get_scene(scene_id)
 	if _scene_data.is_empty():
@@ -324,43 +505,134 @@ func _load_scene(scene_id: String, start_at: int = 0, replay_state: bool = false
 	# next one (e.g. Frasier persisting from vol5_ch0_model_city into
 	# vol5_ch1_magician).
 	_chars.call("hide_all")
+	_bg_place = ""
+	# The layer picks a hero's LOOK (age, costume) by the scene it is in.
+	_chars.call("set_scene_context", int(_scene_data.get("vol", _vol)), _scene_data.get("chapter", 0), scene_id)
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
-	if replay_state and start_at > 0:
-		_replay_state(start_at)
-	# Autosave on every scene entry (slot 0). Flush the seen-text
-	# buffer at the same boundary so skip mode survives a crash.
-	SaveSystem.write_save(SaveSystem.AUTOSAVE_SLOT, _vol, _scene_id, _node_idx,
-		_flags, _skills, _log)
-	SaveSystem.flush_seen()
-	_run_next()
+	# Persistent chapter echo in the HUD (the plate's quiet twin).
+	_refresh_items()
+	if _hud != null and _hud.has_method("set_chapter"):
+		var ch := str(_scene_data.get("chapter", "")).strip_edges()
+		var ttl := String(_scene_data.get("title", "")).strip_edges()
+		var ch_key := "%d::%s" % [_vol, ch]
+		if ttl != "":
+			_last_chapter_title = ttl
+			_last_title_ch_key  = ch_key
+		elif _last_title_ch_key == ch_key and _last_chapter_title != "":
+			# Untitled scene mid-chapter — keep whispering the chapter's
+			# last real title instead of degrading to a bare number.
+			ttl = _last_chapter_title
+		var parts: PackedStringArray = PackedStringArray()
+		if ch != "":
+			parts.append("CH %s" % ch.to_upper())
+		if ttl != "":
+			parts.append(ttl)
+		_hud.call("set_chapter", ("·  " + "  ·  ".join(parts)) if parts.size() > 0 else "")
+	# Resume fast-forward: a mid-scene start (save resume) must not
+	# open on a bare stage. Replay the silent side effects of every
+	# node before the target — bg / bgm / stage / flags — and re-assert
+	# the last mood/shot direction, so the resumed line lands in the
+	# world the reader left.
+	if start_at > 0:
+		_fast_forward_to(start_at)
+	# Dispatch through the producer's curtain gate: across a real
+	# transition (veil/chapter card up) the first node waits for the
+	# reveal + settle beat; mid-story jumps pass straight through.
+	if _producer != null:
+		_producer.call("when_curtain_up", Callable(self, "_run_next"))
+	else:
+		_run_next()
 
 
-# Fast-forward scene state when loading a mid-scene save: apply every
-# bg / portrait / substrate / flag directive before the target node so
-# the player doesn't come back to a black screen with no portraits and
-# no music. Text/choice nodes are skipped — only state is replayed.
-func _replay_state(upto: int) -> void:
+# ── Resume fast-forward ──────────────────────────────────────────
+# Walk nodes [0..target) applying only silent state, mirroring
+# _dispatch's node-type vocabulary: flags and character show/hide in
+# order (flags gate later nodes via when_flag / when_not_flag), the
+# LAST bg / substrate / composition / bgm each (dispatched in their
+# original relative order so composition-suppresses-bg semantics
+# hold), and the LAST [mood:...] / [shot:...] directive prefix seen
+# in narrate/say/think text. Everything display- or time-shaped —
+# text, waits, sfx, choices, interlude, cg, jump, end, videoscene,
+# gallery — is skipped. Saved flags stay authoritative: values loaded
+# from the save are re-asserted after the replay so a replayed early
+# `flag` node can't undo what a later choice set.
+func _fast_forward_to(target: int) -> void:
 	var nodes: Array = _scene_data.get("nodes", [])
-	var last_bgm: String = ""
-	for i in range(mini(upto, nodes.size())):
-		var n: Dictionary = nodes[i]
+	var authoritative: Dictionary = _flags.duplicate()
+	var last_env: Dictionary = {}   # node type -> last node index
+	var last_mood: String = ""
+	var last_trip: String = "reset"
+	var last_register: String = "reset"
+	var last_shot: String = ""
+	var limit: int = mini(target, nodes.size())
+	_replaying = true
+	for i in limit:
+		var nv: Variant = nodes[i]
+		if not (nv is Dictionary):
+			continue
+		var n: Dictionary = nv
+		# Same conditional gate as _dispatch.
+		if n.has("when_flag"):
+			var wv: Variant = _flags.get(String(n.get("when_flag")), false)
+			var want: bool
+			if n.has("is"):
+				want = str(wv) == str(n.get("is"))
+			elif wv is String:
+				want = String(wv) != ""
+			else:
+				want = bool(wv)
+			if not want:
+				continue
+		if n.has("when_not_flag") and _flags.get(String(n.get("when_not_flag")), false):
+			continue
 		match n.get("t", ""):
-			"bg":          _do_bg(n)
-			"show":        _do_show(n)
-			"hide":        _do_hide(n)
-			"substrate":   _do_substrate(n)
-			"composition": _do_composition(n)
-			# flag/skill are NOT replayed — load_save already restores
-			# them from the save payload; replaying would double-apply
-			# skill increments.
-			"bgm":
-				var src: String = _s(n, "src")
-				if src != "":
-					last_bgm = src
-	if last_bgm != "":
-		AudioMgr.play_bgm(last_bgm)
+			"show": _do_show(n)
+			"hide": _do_hide(n)
+			"flag": _do_flag(n)
+			"bg", "substrate", "composition", "bgm":
+				last_env[String(n.get("t", ""))] = i
+			"narrate", "say", "think", "interlude":
+				# Remember only the last mood/shot direction seen.
+				# "interlude" is in this list because its title text
+				# carries directives too (see _dispatch) — a resume
+				# past a title card must not lose its mood.
+				var text: String = _s(n, "text")
+				if text.begins_with("["):
+					while true:
+						var m := _direct_rx.search(text)
+						if m == null:
+							break
+						var arg: String = m.get_string(2).strip_edges()
+						match m.get_string(1):
+							"mood": last_mood = arg
+							"shot": last_shot = arg
+							"trip": last_trip = arg
+							"register": last_register = arg
+						text = text.substr(m.get_end(0))
+			_:
+				pass
+	# Environment nodes in original relative order.
+	var env_indices: Array = last_env.values()
+	env_indices.sort()
+	for idx_v in env_indices:
+		var n2: Dictionary = nodes[int(idx_v)]
+		match n2.get("t", ""):
+			"bg":          _do_bg(n2)
+			"substrate":   _do_substrate(n2)
+			"composition": _do_composition(n2)
+			"bgm":         _do_bgm(n2)
+	if _director != null:
+		if last_shot != "":
+			_director.call("apply_shot", last_shot)
+		if last_mood != "":
+			_director.call("apply_mood", last_mood)
+	_apply_trip_cue(last_trip)
+	_apply_register_cue(last_register)
+	# Save-file flags win over replayed flag nodes.
+	_flags.merge(authoritative, true)
+	_replaying = false
 
 
 # Tell AudioMgr which catalog tracks belong to the current chapter.
@@ -391,8 +663,16 @@ func _apply_chapter_music_context(scene_id: String) -> void:
 	# Also unlock any tracks tagged to this scene so the Music
 	# Player picks them up as the player progresses, even without
 	# a `show` directive naming a tracked character on this page.
+	#
+	# `scene_id`, NOT `ch_id` (2026-09-11). ch_id carries the
+	# "<scene>::<chapter>" suffix that identifies the rotation;
+	# unlock_tracks_for_chapter matches against the catalog's
+	# `chapters` list, which holds bare scene ids, so the suffixed
+	# form never matched anything and this unlock path has been
+	# dead. Every chapter-tagged bed reached the Music Player only
+	# by volume unlock.
 	if AudioMgr.has_method("unlock_tracks_for_chapter"):
-		AudioMgr.unlock_tracks_for_chapter(ch_id)
+		AudioMgr.unlock_tracks_for_chapter(scene_id)
 
 
 const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"
@@ -478,10 +758,36 @@ func _run_next() -> void:
 
 
 func _dispatch(n: Dictionary) -> void:
+	# Conditional nodes · cross-chapter callbacks.  A node carrying
+	# when_flag only plays if that flag is set (and, when "is" is
+	# present, equals that value); when_not_flag inverts.  Any node
+	# type can carry these — a skipped node is silent and free.
+	if n.has("when_flag"):
+		var wv: Variant = _flags.get(String(n.get("when_flag")), false)
+		var want: bool
+		if n.has("is"):
+			want = str(wv) == str(n.get("is"))
+		elif wv is String:
+			want = String(wv) != ""
+		else:
+			want = bool(wv)
+		if not want:
+			_run_next()
+			return
+	if n.has("when_not_flag") and _flags.get(String(n.get("when_not_flag")), false):
+		_run_next()
+		return
+	# THE INVENTORY: any node that PLAYS may pick up or use up an item
+	# ("item" / "drop_item" on a narrate or say) — the handing-over of
+	# a thing is a line, not a choice.
+	if n.has("item"):
+		_give_item(String(n.get("item")))
+	if n.has("drop_item"):
+		_drop_item(String(n.get("drop_item")))
 	match n.get("t", ""):
-		"narrate":    _do_narrate(n)
-		"say":        _do_say(n)
-		"think":      _do_think(n)
+		"narrate":    _do_narrate(_directed(n))
+		"say":        _do_say(_directed(n))
+		"think":      _do_think(_directed(n))
 		"choice":     _do_choice(n)
 		"show":       _do_show(n); _run_next()
 		"hide":       _do_hide(n); _run_next()
@@ -491,10 +797,15 @@ func _dispatch(n: Dictionary) -> void:
 		"bgm":        _do_bgm(n);  _run_next()
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
-		"skill":      _do_skill(n); _run_next()
 		"jump":       _do_jump(n)
 		"end":        _end_scene()
-		"interlude":  _do_interlude(n)
+		# _directed() here too (2026-09-11): an interlude's `text` is a
+		# TITLE, and a `[mood:]` on it renders literally as part of the
+		# card — "[mood:arcana_warehouse]Chapter I — The Magician" shipped
+		# that way. Placing a directive on the title card is the right
+		# authorial instinct (the mood should land WITH the card, not on
+		# the line after it), so the fix is to consume it, not to move it.
+		"interlude":  _do_interlude(_directed(n))
 		"cg":         _do_cg(n)
 		"videoscene": _do_videoscene(n)
 		"gallery":    _run_next()
@@ -511,12 +822,55 @@ func _s(n: Dictionary, key: String, default: String = "") -> String:
 	return v as String if v is String else default
 
 
+# ── Direction directives ─────────────────────────────────────────
+# Strip leading [shot:...] / [panel:...] directives off a text
+# node, dispatching each to the director, and return the node with
+# the cleaned text. Zero directives → the original node untouched
+# (the common path costs one regex miss). The scene-data dict is
+# never mutated — SceneDataDB caches it, and a replay must see the
+# directives again.
+func _directed(n: Dictionary) -> Dictionary:
+	var text: String = _s(n, "text")
+	if text == "" or not text.begins_with("["):
+		return n
+	var stripped := text
+	while true:
+		var m := _direct_rx.search(stripped)
+		if m == null:
+			break
+		var arg := m.get_string(2).strip_edges()
+		if _director != null:
+			match m.get_string(1):
+				"shot":  _director.call("apply_shot", arg)
+				"stage": _director.call("apply_stage", arg)
+				"mood":  _director.call("apply_mood", arg)
+				"beat":  _director.call("apply_beat", arg)
+				"trip":  _apply_trip_cue(arg)
+				"register": _apply_register_cue(arg)
+				"portrait": _chars.call("set_portrait_override", arg)
+				_:
+					_director.call("apply_panel", arg)
+					# Paper-slide moment sound: a page turn on open, a
+					# soft close on dismiss. Presets ship in SFXBank.
+					SFXBank.play("menu_close" if arg == "off" else "page_turn", 0.55)
+					if arg != "off":
+						SaveSystem.mark_cg_seen("panel:" + arg)
+		stripped = stripped.substr(m.get_end(0))
+	if stripped == text:
+		return n
+	var n2 := n.duplicate()
+	n2["text"] = stripped
+	return n2
+
+
 func _do_narrate(n: Dictionary) -> void:
 	var text: String = _s(n, "text")
 	_log.append({"role": "narrate", "text": text})
 	AudioMgr.set_sfx_pan(0.0)
 	AudioMgr.duck()
 	_chars.call("activate_speaker", "")
+	_push_scene_light()
+	_chars.call("direct_line", "", text, "")
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -526,19 +880,19 @@ func _do_narrate(n: Dictionary) -> void:
 
 func _do_say(n: Dictionary) -> void:
 	var char_name: String = _s(n, "char")
-	# `char` is the portrait/asset id; `name` (when present) is the
-	# display name for the speaker label — e.g. char "tem", name "Tem".
-	var display: String   = _s(n, "name", char_name)
 	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
-	_log.append({"role": "say", "char": display, "text": text})
+	_log.append({"role": "say", "char": char_name, "text": text})
 	_ensure_portrait(char_name, expr)
+	_cue_signature(char_name)
 	_chars.call("update_expression", char_name.to_lower(), expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
+	_push_scene_light()
+	_chars.call("direct_line", char_name.to_lower(), text, expr)
 	_dlg.visible = true
-	_dlg.call("show_say", display, text)
+	_dlg.call("show_say", char_name, text)
 	AudioMgr.play_voice(_s(n, "voice"))
 	_set_vn_focus(true)
 	_wait()
@@ -546,19 +900,29 @@ func _do_say(n: Dictionary) -> void:
 
 func _do_think(n: Dictionary) -> void:
 	var char_name: String = _s(n, "char")
-	var display: String   = _s(n, "name", char_name)
-	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
-	_log.append({"role": "think", "char": display, "text": text})
 	_ensure_portrait(char_name, expr)
+	_cue_signature(char_name)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
+	_push_scene_light()
+	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr)
 	_dlg.visible = true
-	_dlg.call("show_think", display, text)
+	_dlg.call("show_think", char_name, _s(n, "text"))
 	AudioMgr.play_voice(_s(n, "voice"))
 	_set_vn_focus(true)
 	_wait()
+
+
+## The locale's light for the 3D portraits (keyed to the room, rim
+## contrasting it). {} when no 3D locale is up.
+func _push_scene_light() -> void:
+	var light: Dictionary = {}
+	if _bg_3d_node != null and is_instance_valid(_bg_3d_node) and _bg_3d_node.visible \
+			and _bg_3d_node.has_method("get_scene_light"):
+		light = _bg_3d_node.call("get_scene_light")
+	_chars.call("set_scene_light", light)
 
 
 func _char_pan(char_name: String) -> float:
@@ -573,20 +937,55 @@ func _do_choice(n: Dictionary) -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
-	# Hide the portraits while choosing. Portrait3D SubViewports render
-	# every frame (UPDATE_ALWAYS) and keep their idle-sway going, so
-	# without this they draw and animate over the choice buttons.
-	_chars.visible = false
-	var opts: Array = n.get("opts", [])
+	var all_opts: Array = n.get("opts", [])
+	# Flag-gated options (the VERB COIN, 2026-09-07): an option with
+	# "hide_if_flag" disappears once its flag is set — a verb the player
+	# has spent; "only_if_flag" is the inverse. The coin re-presents
+	# itself after each branch via {"t":"jump","goto":coin}.
+	var opts: Array = []
+	for ov in all_opts:
+		var o: Dictionary = ov
+		if o.has("hide_if_flag") and bool(_flags.get(String(o.get("hide_if_flag")), false)):
+			continue
+		if o.has("only_if_flag") and not bool(_flags.get(String(o.get("only_if_flag")), false)):
+			continue
+		# THE INVENTORY (2026-09-19, design row): an option with
+		# "needs_item" shows only while that item is held. Items ride
+		# in _flags as "item:<name>" so they save with everything else.
+		if o.has("needs_item") and not _has_item(String(o.get("needs_item"))):
+			continue
+		opts.append(o)
+	if opts.is_empty():
+		_dlg.visible = true
+		_run_next()
+		return
 	_choices.visible = true
 	_choices.call("present", n.get("prompt", ""), opts,
 		func(idx: int) -> void:
 			_choices.visible = false
-			_chars.visible = true
 			_dlg.visible = true
 			var opt: Dictionary = opts[idx]
+			# An option may set a flag directly · the cheap way for a
+			# choice to be remembered without goto-index surgery.
+			if opt.has("flag"):
+				_flags[String(opt["flag"])] = opt.get("val", true)
+			# An option may pick something up ("item") or use it up
+			# ("drop_item"); the HUD's ITEMS strip follows.
+			if opt.has("item"):
+				_give_item(String(opt["item"]))
+			if opt.has("drop_item"):
+				_drop_item(String(opt["drop_item"]))
+			# SKILLS EARN (2026-09-17). An option with "skill" trains
+			# that skill by one (or "amount") when taken — the choice IS
+			# the practice. Before this, nothing in the game ever raised
+			# a skill: the five started at zero and every "[LOGIC] …"
+			# option took its fail branch, silently, since the first
+			# build (see tools/audit/consequence_map.py).
+			if opt.has("skill"):
+				_train_skill(String(opt["skill"]), int(opt.get("amount", 1)),
+					"%s#%d:%d" % [_scene_id, _node_idx, idx])
 			if opt.has("check"):
-				_resolve_check(opt)
+				_resolve_check(opt["check"])
 			elif opt.has("scene"):
 				_load_scene(opt["scene"])
 			elif opt.has("goto"):
@@ -594,34 +993,112 @@ func _do_choice(n: Dictionary) -> void:
 				_run_next()
 			else:
 				_run_next()
-	)
+	, String(n.get("style", "")), String(n.get("hotspot", "")))
 
 
-# Scene data puts pass/fail as siblings of `check` on the option
-# (e.g. {"check": {"skill": "logic", "diff": 9}, "pass": 11, "fail": 8});
-# older/hand-authored data may nest them inside `check`. Accept both.
-func _resolve_check(opt: Dictionary) -> void:
-	var check: Dictionary = opt.get("check", {})
+# `once_key` names the option (scene#node:index): an option trains its
+# skill ONCE per playthrough. The vol 1 diner hub loops back to its
+# choice after every exploration, and "Read the laminated menu" must
+# not be a logic mill. The spent keys ride in _flags, so they save.
+# ── THE INVENTORY (2026-09-19) ───────────────────────────────────
+# SCUMM grammar's second half: a verb coin can PICK UP, and a later
+# option can need what was picked up. Held items are flags named
+# "item:<name>" (they save, they survive a scene load); the HUD bar
+# shows them as a strip of small caps beside the chapter whisper.
+const ITEM_PREFIX := "item:"
+
+
+func _has_item(name: String) -> bool:
+	return bool(_flags.get(ITEM_PREFIX + name, false))
+
+
+func _held_items() -> Array[String]:
+	var out: Array[String] = []
+	for k in _flags.keys():
+		var key: String = String(k)
+		if key.begins_with(ITEM_PREFIX) and bool(_flags[k]):
+			out.append(key.substr(ITEM_PREFIX.length()))
+	out.sort()
+	return out
+
+
+func _give_item(name: String) -> void:
+	if name == "" or _has_item(name):
+		return
+	_flags[ITEM_PREFIX + name] = true
+	_refresh_items()
+	if _toast != null:
+		_toast.call("show_toast", {"title": "TAKEN", "subtitle": name})
+
+
+func _drop_item(name: String) -> void:
+	if not _has_item(name):
+		return
+	_flags.erase(ITEM_PREFIX + name)
+	_refresh_items()
+
+
+func _refresh_items() -> void:
+	if _hud != null and _hud.has_method("update_items"):
+		_hud.call("update_items", _held_items())
+
+
+func _train_skill(skill: String, amount: int, once_key: String = "") -> void:
+	if skill == "" or not _skills.has(skill) or amount == 0:
+		return
+	if once_key != "":
+		var spent := "_trained:" + once_key
+		if bool(_flags.get(spent, false)):
+			return
+		_flags[spent] = true
+	_skills[skill] = int(_skills.get(skill, 0)) + amount
+	if _hud != null and _hud.has_method("update_skills"):
+		_hud.call("update_skills", _skills)
+	if _toast != null:
+		_toast.call("show_toast", {
+			"title":    skill.to_upper(),
+			"subtitle": "%d" % int(_skills[skill]),
+		})
+
+
+func _resolve_check(check: Dictionary) -> void:
 	var skill: String = check.get("skill", "")
 	var diff:  int    = int(check.get("diff", 0))
-	var pass_idx: int = int(opt.get("pass", check.get("pass", _node_idx)))
-	var fail_idx: int = int(opt.get("fail", check.get("fail", _node_idx)))
+	var pass_idx: int = int(check.get("pass", _node_idx))
+	var fail_idx: int = int(check.get("fail", _node_idx))
 	_node_idx = pass_idx if int(_skills.get(skill, 0)) >= diff else fail_idx
 	_run_next()
 
 
 func _do_show(n: Dictionary) -> void:
 	var char_name: String = n.get("char", "")
+	# a special-occasion 2D image for this character (2D is otherwise retired)
+	var sp2d: String = String(n.get("portrait_2d", ""))
+	if sp2d != "":
+		_chars.call("allow_special_2d", char_name.to_lower(), sp2d)
 	_chars.call("show_character",
 		char_name.to_lower(),
 		n.get("expr", "neutral"),
 		n.get("pos",  "center"),
 		n.get("facing", "")
 	)
+	_cue_signature(char_name)
+
+
+# The character's first appearance in this scene — shown or speaking —
+# unlocks every catalog track that names them (the Music Player's dot)
+# and, if one of those is their SIGNATURE, plays it once over the room
+# and hands the bed back. Once per character per scene.
+func _cue_signature(char_name: String) -> void:
 	# Use the CharLayer slug fn so "The Demon"/"oil exec"/etc collapse
 	# the same way they do for portrait lookups + accents.
 	var char_key: String = _chars.call("char_key", char_name)
+	if char_key == "" or char_key == "none" or _signatures_cued.has(char_key):
+		return
+	_signatures_cued[char_key] = true
 	AudioMgr.unlock_tracks_for_character(char_key)
+	if not _replaying and AudioMgr.has_method("cue_signature"):
+		AudioMgr.cue_signature(char_key)
 
 
 func _do_hide(n: Dictionary) -> void:
@@ -640,7 +1117,7 @@ var _bg_debug_label: Label = null
 func _set_bg_debug_label(src: String) -> void:
 	if _bg_debug_label == null:
 		_bg_debug_label = Label.new()
-		_bg_debug_label.add_theme_font_size_override("font_size", 10)
+		_bg_debug_label.add_theme_font_size_override("font_size", 12)
 		_bg_debug_label.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
 		_bg_debug_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
 		_bg_debug_label.add_theme_constant_override("outline_size", 3)
@@ -658,10 +1135,40 @@ func _set_bg_debug_label(src: String) -> void:
 
 const BACKGROUND_3D_SCENE := preload("res://scenes/vn/Background3D.tscn")
 var _bg_3d_node: SubViewportContainer = null
+# THE TRIP's feedback rect (2026-09-11) — see the mount site in _ready.
+var _trip_fb: Control = null
+
+
+# A CUT TO ANOTHER PLACE CLEARS THE STAGE (2026-10-01). The Deck: "character
+# not in scene is present" — vol6 prelude: Henderson thinks "Huh." in the
+# darkroom (auto-shown by his line), the scene cuts to Maya's bedroom, and
+# he stood beside her through her whole monologue. Nothing ever hid him;
+# 185 place-to-place cuts in the corpus relied on someone remembering a
+# `hide`. Now a bg in a DIFFERENT place (another locale GLB — a second
+# camera in the same room keeps everyone) hides every portrait; a figure
+# who belongs in the new place is shown by the scene's `show` after the
+# cut, or comes back by itself on its next line (_ensure_portrait).
+const BG3D_SCRIPT := preload("res://scripts/vn/Background3D.gd")
+var _bg_place: String = ""
+
+
+func _place_of(src: String) -> String:
+	if not src.begins_with("3d:"):
+		return src
+	var presets: Dictionary = BG3D_SCRIPT.CAMERA_PRESETS
+	var spec: Dictionary = presets.get(src.substr(3), {})
+	var glb: String = String(spec.get("requires_glb", ""))
+	if glb == "":
+		glb = String(spec.get("scene", src))
+	return glb
 
 
 func _do_bg(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
+	var place: String = _place_of(src)
+	if _bg_place != "" and place != _bg_place and _chars != null:
+		_chars.call("hide_all")
+	_bg_place = place
 	if src == "":
 		_bg.texture = null
 		_clear_bg_3d()
@@ -739,6 +1246,36 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg.add_sibling(_bg_3d_node)
 		_bg_3d_node.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		_bg_3d_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var trip3d: Node = get_node_or_null("/root/TripSync")
+		if trip3d != null and trip3d.has_method("attach"):
+			# the 3D bg breathes too — over its painted pass, in the aura's
+			# inked form (Background3D.TRIP_PAINT_UNDER, 2026-10-02)
+			var tm: ShaderMaterial = trip3d.call("attach", _bg_3d_node)
+			if tm != null and "TRIP_PAINT_UNDER" in _bg_3d_node:
+				var pu: float = float(_bg_3d_node.get("TRIP_PAINT_UNDER"))
+				tm.set_shader_parameter("paint_under", pu)
+				# … and the TRAIL rig knows the surface is a painting (its
+				# halo and edge feed scale down — the ch 0 mud, 2026-10-02)
+				trip3d.set("paint_under_3d", pu)
+		# ... and it TRAILS too. The 3D path sets `_bg.texture = null`,
+		# so a feedback rig bound to the TextureRect alone would go
+		# dark on every locale scene — which is most of the VN and all
+		# of the light worth trailing. Register the viewport as a
+		# second source; the rig takes whichever is live.
+		if trip3d != null and _trip_fb != null \
+				and trip3d.has_method("add_feedback_source"):
+			trip3d.call("add_feedback_source", _trip_fb, _bg_3d_node)
+	if _bg_3d_node.has_method("set_paper_for_volume"):
+		_bg_3d_node.call("set_paper_for_volume", int(_scene_data.get("vol", _vol)))
+	# Per-locale ambient bed: duck the Music Player way down and raise
+	# this locale's inverted ambient soundtrack. Independent of whether
+	# the GLB is present (below) — the scene IS this locale either way,
+	# and a locale with no bed configured is a silent no-op.
+	AudioMgr.enter_locale_ambient(preset_id)
+	# Locale bust tint — like the ambient bed, the scene IS this locale
+	# whether or not the GLB is built, so tint before the GLB check.
+	if _chars != null:
+		_chars.call("set_locale_tint", preset_id)
 	# Pre-check the locale GLB existence BEFORE clearing the PNG bg.
 	# Locale .glb files are build artifacts (not committed) so a
 	# fresh checkout that hasn't run the Blender builders yet would
@@ -777,10 +1314,26 @@ func _apply_bg_3d(preset_id: String) -> void:
 	if _cg != null:
 		_cg.visible = false
 	print("[GameEngine]   ↳ hid composition+substrate+cg, moved 3d viewport to front sibling")
-	_bg_3d_node.call_deferred("load_location", preset_id)
+	if _director != null:
+		_director.call("set_bg3d", _bg_3d_node)
+		_director.call("on_locale_changed")
+	if _chars != null:
+		_chars.set("bg_is_3d", true)   # portraits flank, center stays clear
+	if _bg_3d_node.has_method("queue_load"):
+		_bg_3d_node.call("queue_load", preset_id)
+	else:
+		_bg_3d_node.call_deferred("load_location", preset_id)
 
 
 func _clear_bg_3d() -> void:
+	# Leaving the locale: crossfade the ambient bed back out and let
+	# the Music Player return to full volume.
+	AudioMgr.exit_locale_ambient()
+	if _director != null:
+		_director.call("on_locale_changed")
+	if _chars != null:
+		_chars.set("bg_is_3d", false)
+		_chars.call("set_locale_tint", "")
 	if _bg_3d_node != null and is_instance_valid(_bg_3d_node):
 		_bg_3d_node.visible = false
 	# Restore the 2D substrate + composition layers for any next
@@ -827,7 +1380,9 @@ func _do_bgm(n: Dictionary) -> void:
 	if src == "":
 		return
 	if bool(n.get("hard", false)):
-		AudioMgr.play_bgm(src)
+		# Scene-driven, non-looping: the VN queue/chapter rotation
+		# takes over when the track ends. Respects jukebox mode.
+		AudioMgr.request_scene_bgm(src, false)
 	else:
 		AudioMgr.enqueue_music(src)
 
@@ -840,24 +1395,14 @@ func _do_flag(n: Dictionary) -> void:
 	_flags[n.get("key", "")] = n.get("val", true)
 
 
-# {"t": "skill", "key": "logic", "val": 1}          → logic += 1
-# {"t": "skill", "key": "logic", "val": 3, "set": true} → logic = 3
-# Without this node type skills stay at 0 forever and every choice
-# check fails, so the whole stat system was decorative.
-func _do_skill(n: Dictionary) -> void:
-	var key: String = str(n.get("key", ""))
-	if key == "":
-		return
-	var val: int = int(n.get("val", 1))
-	if bool(n.get("set", false)):
-		_skills[key] = val
-	else:
-		_skills[key] = int(_skills.get(key, 0)) + val
-	if _hud != null and _hud.has_method("update_skills"):
-		_hud.update_skills(_skills)
-
-
 func _do_jump(n: Dictionary) -> void:
+	# {"t":"jump","goto":N} hops WITHIN the scene (the verb coin's
+	# branches return to their coin this way); {"scene": id} changes
+	# scene; neither ends it.
+	if n.has("goto"):
+		_node_idx = int(n.get("goto", _node_idx))
+		_run_next()
+		return
 	var target: String = _s(n, "scene")
 	if target != "":
 		_load_scene(target)
@@ -904,8 +1449,6 @@ func _do_videoscene(_n: Dictionary) -> void:
 
 func _wait() -> void:
 	_waiting = true
-	# _run_next pre-incremented, so the node on screen is _node_idx - 1.
-	SaveSystem.mark_seen_upto(_scene_id, _node_idx - 1)
 	var ms: int = Settings.auto_advance_ms
 	_auto_timer = ms / 1000.0 if ms > 0 else 0.0
 
@@ -913,37 +1456,82 @@ func _wait() -> void:
 func _process(delta: float) -> void:
 	if _paused:
 		return
-	if _auto_timer > 0.0:
+	_tick_reading_comfort(delta)
+	# Voiced/auto-advance timer honors the same modal fences as
+	# _tick_reading_comfort — it must not fire through a transition,
+	# photo mode, the backlog, a choice, an interlude, or a slowstick
+	# overlay. The timer HOLDS while fenced (no decrement) so the
+	# advance resumes cleanly when the modal clears.
+	if _auto_timer > 0.0 and _can_timed_advance():
 		_auto_timer -= delta
 		if _auto_timer <= 0.0:
 			_auto_timer = 0.0
 			if not AudioMgr.is_voice_playing():
 				_advance()
-	_process_skip(delta)
 	_apply_bg_motion(delta)
 
 
-# Hold the skip action (Ctrl / R2) to fast-forward. By default only
-# text the player has already read fast-forwards; the "skip unread"
-# setting removes that guard. Skip stops on its own at choices (they
-# don't _wait) and at the first unseen line.
-func _process_skip(delta: float) -> void:
-	if not _waiting or _choices.visible or not Input.is_action_pressed("skip"):
-		_skip_cool = 0.0
+func _can_timed_advance() -> bool:
+	if _transition_lock or _photo_on or _backlog_overlay != null:
+		return false
+	if _choices != null and _choices.visible:
+		return false
+	if _interlude != null and _interlude.visible:
+		return false
+	return get_tree().get_first_node_in_group("vn_input_blocker") == null
+
+
+func _toggle_auto_mode() -> void:
+	_auto_mode = not _auto_mode
+	_auto_read_t = 0.0
+	if _auto_chip == null:
+		_auto_chip = Label.new()
+		_auto_chip.text = "AUTO ▸"
+		_auto_chip.add_theme_font_size_override("font_size", 13)
+		_auto_chip.add_theme_color_override("font_color", Color(0.82, 0.72, 0.52, 0.9))
+		_auto_chip.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+		_auto_chip.add_theme_constant_override("outline_size", 4)
+		_auto_chip.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+		_auto_chip.offset_left = -86
+		_auto_chip.offset_top = -30
+		_auto_chip.z_index = UI_Z + 5
+		_auto_chip.add_to_group("ui")
+		add_child(_auto_chip)
+	_auto_chip.visible = _auto_mode
+	var sb := get_node_or_null("/root/SFXBank")
+	if sb: sb.play("blip", 0.3)
+
+
+func _tick_reading_comfort(delta: float) -> void:
+	# the pointer fades out of a held frame — but NOT while a modal
+	# overlay (cabin TV / slowstock shelf / backlog) is open: those
+	# are pointer-driven surfaces, and hiding the cursor there reads
+	# as a bug, not reading comfort.
+	_cursor_idle_t += delta
+	if _cursor_idle_t > 3.5 and not _photo_on \
+			and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE \
+			and get_tree().get_first_node_in_group("vn_input_blocker") == null:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	# hands-free page turn: a beat after the typewriter rests,
+	# scaled to how much was just read
+	if not _auto_mode or _transition_lock or _photo_on \
+			or _backlog_overlay != null or _choices.visible \
+			or _interlude.visible \
+			or get_tree().get_first_node_in_group("vn_input_blocker") != null:
+		_auto_read_t = 0.0
 		return
-	_skip_cool -= delta
-	if _skip_cool > 0.0:
+	if _dlg == null or not _dlg.visible or bool(_dlg.call("is_typing")):
+		_auto_read_t = 0.0
 		return
-	var seen: bool = (_node_idx - 1) <= SaveSystem.get_seen_upto(_scene_id)
-	if not seen and not Settings.skip_unread:
-		return
-	_skip_cool = 0.06
-	if _dlg.visible and _dlg.call("is_typing"):
-		_dlg.call("finish_typing")
-	AudioMgr.stop_voice()
-	_waiting    = false
-	_auto_timer = 0.0
-	_run_next()
+	_auto_read_t += delta
+	var chars: int = 0
+	var bl: Array = _dlg.get("backlog")
+	if not bl.is_empty():
+		chars = String((bl[bl.size() - 1] as Dictionary).get("text", "")).length()
+	var hold: float = clampf(1.3 + float(chars) * 0.03, 2.2, 7.0)
+	if _auto_read_t >= hold:
+		_auto_read_t = 0.0
+		_advance()
 
 
 # Background idle motion. Bg now displays in fit-mode (whole image
@@ -1007,14 +1595,62 @@ func _vn_debug_overlay_visible() -> bool:
 
 func _input(event: InputEvent) -> void:
 	if _paused:
-		# Esc closes the pause menu again (only when no sub-overlay is
-		# open on top of it — those own their close behavior).
-		if event.is_action_pressed("menu_back") \
-				and _ig_menu.visible \
-				and not _settings_ov.visible and not _music_ov.visible \
-				and not _backlog_ov.visible:
+		return
+	# Cursor wake is not VN chrome — it stays above the modal fence
+	# so the pointer still un-hides while a slowstick is open. Wakes
+	# on BUTTONS too: clicking without moving (or Deck touchscreen
+	# taps, which emit no motion events) must also bring it back.
+	if (event is InputEventMouseMotion or event is InputEventMouseButton) \
+			and not _photo_on:
+		_cursor_idle_t = 0.0
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# Modal fence FIRST — while a full-screen overlay (the cabin TV /
+	# slowstock library) owns the keyboard, no VN hotkey (F6/A/H) may
+	# toggle chrome underneath. Photo mode keeps its swallow: when
+	# photo is itself on, F6 below stays reachable to exit it.
+	if not _photo_on and get_tree().get_first_node_in_group("vn_input_blocker") != null:
+		return
+	# ── PHOTO MODE (F6) · chrome off, bars on, cursor gone. While
+	# on, every other input is swallowed so framing a shot can't
+	# advance the story. Deliberately not part of the F4 sweep — the
+	# bars ARE the picture.
+	if event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_F6:
+		_toggle_photo_mode()
+		get_viewport().set_input_as_handled()
+		return
+	if _photo_on:
+		return
+	if event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_A:
+		# AUTO toggle is ignored mid-transition and while a choice is
+		# up — flipping hands-free mode there could advance past the
+		# decision or fight the veil.
+		if not _transition_lock and not _choices.visible:
+			_toggle_auto_mode()
 			get_viewport().set_input_as_handled()
-			_resume_from_menu()
+		return
+	# ── THE BACKLOG (H or wheel-up) · everything read, re-readable.
+	var wheel_up: bool = event is InputEventMouseButton and event.pressed \
+			and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_WHEEL_UP
+	var h_key: bool = event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_H
+	if (wheel_up or h_key) and _backlog_overlay == null and not _transition_lock \
+			and not _choices.visible:
+		_open_backlog()
+		get_viewport().set_input_as_handled()
+		return
+	# Scene transition in flight — the veil or a chapter card owns the
+	# screen. The ChapterCard handles its own advance input; nothing
+	# may reach the story underneath.
+	if _transition_lock:
+		return
+	# Modal fence: a full-screen overlay (the cabin TV / slowstock
+	# library) is open somewhere above us. _input fires before ANY
+	# gui routing, so without this gate every key pressed inside a
+	# slowstick also advances the novel underneath.
+	if get_tree().get_first_node_in_group("vn_input_blocker") != null:
 		return
 	# Don't process advance/menu_back while the choice menu is up.
 	# Otherwise the same mouse-click that picks an option also fires
@@ -1037,6 +1673,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("advance"):
 		if _choices != null and _choices.visible:
 			return
+		# A click aimed at an actual button — the HUD MENU, an
+		# overlay control — belongs to the GUI. _input runs BEFORE
+		# gui routing, so set_input_as_handled() below was eating
+		# the press and every Button on the reading screen was
+		# mouse-dead (the choice menu only worked because of its
+		# explicit gate above).
+		if event is InputEventMouseButton and _mouse_over_button():
+			return
 		get_viewport().set_input_as_handled()
 		if _interlude.visible:
 			_interlude.call("try_advance")
@@ -1047,47 +1691,337 @@ func _input(event: InputEvent) -> void:
 		_open_in_game_menu()
 
 
+# ─── the backlog overlay ─────────────────────────────────────────
+
+func _open_backlog() -> void:
+	var entries: Array = _dlg.get("backlog") if _dlg != null else []
+	_backlog_overlay = Control.new()
+	_backlog_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_backlog_overlay.z_index = UI_Z + 55
+	_backlog_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	_backlog_overlay.add_to_group("ui")
+	_backlog_overlay.add_to_group("vn_input_blocker")
+	add_child(_backlog_overlay)
+
+	var dim := ColorRect.new()
+	dim.color = Color(0.01, 0.01, 0.02, 0.88)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_backlog_overlay.add_child(dim)
+
+	var col := VBoxContainer.new()
+	col.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	# (pass 85) the backlog reads like the page: the reading face at 20 px
+	# on a ~70-character measure, the names in its semibold
+	col.offset_left = -450
+	col.offset_right = 450
+	col.offset_top = -310
+	col.offset_bottom = 310
+	col.add_theme_constant_override("separation", 12)
+	_backlog_overlay.add_child(col)
+
+	var hdr := Label.new()
+	hdr.text = "the story so far   ·   H or ESC returns"
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		hdr.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	hdr.add_theme_font_size_override("font_size", 16)
+	hdr.add_theme_color_override("font_color", Color(0.62, 0.58, 0.50))
+	col.add_child(hdr)
+
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	col.add_child(scroll)
+
+	var body := RichTextLabel.new()
+	body.bbcode_enabled = true
+	body.fit_content = true
+	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.custom_minimum_size = Vector2(880, 0)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		body.add_theme_font_override("normal_font", load(SkinDB.F_LITERATA) as Font)
+		var fb: Font = SkinDB.weighted(SkinDB.F_LITERATA, 600.0)
+		if fb != null:
+			body.add_theme_font_override("bold_font", fb)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		body.add_theme_font_override("italics_font", load(SkinDB.F_LITERATA_I) as Font)
+	body.add_theme_font_size_override("normal_font_size", 20)
+	body.add_theme_font_size_override("bold_font_size", 20)
+	body.add_theme_font_size_override("italics_font_size", 20)
+	body.add_theme_constant_override("line_separation", 5)
+	body.add_theme_color_override("default_color", Color(0.86, 0.83, 0.76))
+	body.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	scroll.add_child(body)
+
+	var lines := PackedStringArray()
+	for e_v in entries:
+		var e: Dictionary = e_v
+		var nm := String(e.get("name", ""))
+		var txt := String(e.get("text", ""))
+		if bool(e.get("think", false)):
+			txt = "[i]" + txt + "[/i]"
+		if nm == "":
+			lines.append("[color=#a8a49a]" + txt + "[/color]")
+		else:
+			var accent := Color(0.82, 0.72, 0.52)
+			if _chars != null and _chars.has_method("accent_for"):
+				var av: Variant = _chars.call("accent_for", nm)
+				if av is Color:
+					accent = av
+			lines.append("[color=%s][b]%s[/b][/color] · %s" % [accent.to_html(false), nm, txt])
+	body.text = "\n\n".join(lines) if not lines.is_empty() else "[i]nothing read yet — the book is still open to its first page.[/i]"
+
+	# open at the freshest line, not the top of the session
+	scroll.set_deferred("scroll_vertical", 999999)
+
+	_backlog_overlay.gui_input.connect(func(ev: InputEvent) -> void:
+		var close := false
+		if ev is InputEventKey and ev.pressed:
+			var k := (ev as InputEventKey).keycode
+			close = k == KEY_ESCAPE or k == KEY_H
+		elif ev is InputEventMouseButton and ev.pressed \
+				and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_WHEEL_DOWN \
+				and scroll.scroll_vertical >= int(scroll.get_v_scroll_bar().max_value - scroll.size.y) - 4:
+			close = true   # wheel past the freshest line rolls back to the story
+		if close:
+			_close_backlog()
+			get_viewport().set_input_as_handled())
+	# keys land on the overlay
+	_backlog_overlay.focus_mode = Control.FOCUS_ALL
+	_backlog_overlay.grab_focus.call_deferred()
+
+
+func _close_backlog() -> void:
+	if _backlog_overlay != null and is_instance_valid(_backlog_overlay):
+		_backlog_overlay.queue_free()
+	_backlog_overlay = null
+
+
+# ─── photo mode ──────────────────────────────────────────────────
+
+func _toggle_photo_mode() -> void:
+	_photo_on = not _photo_on
+	if _photo_bars.is_empty():
+		for top in [true, false]:
+			var bar := ColorRect.new()
+			bar.color = Color.BLACK
+			bar.z_index = UI_Z + 60
+			bar.set_anchors_preset(Control.PRESET_TOP_WIDE if top else Control.PRESET_BOTTOM_WIDE)
+			bar.offset_bottom = 54 if top else 0
+			bar.offset_top = 0 if top else -54
+			bar.visible = false
+			bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			add_child(bar)
+			_photo_bars.append(bar)
+	if _photo_on:
+		# Entering the frame: the backlog is chrome too — drop it.
+		_close_backlog()
+		_photo_restore = {}
+		for n in [_dlg, _hud, _choices, _auto_chip]:
+			if n != null and is_instance_valid(n):
+				_photo_restore[n.get_instance_id()] = n.visible
+				n.visible = false
+		for b in _photo_bars:
+			(b as ColorRect).visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		for n2 in [_dlg, _hud, _choices, _auto_chip]:
+			if n2 != null and is_instance_valid(n2) and _photo_restore.has(n2.get_instance_id()):
+				n2.visible = bool(_photo_restore[n2.get_instance_id()])
+		for b2 in _photo_bars:
+			(b2 as ColorRect).visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+# True when the mouse is over a Button (or inside one — icon /
+# label children resolve up the chain). Those clicks are the GUI's.
+func _mouse_over_button() -> bool:
+	var hov: Control = get_viewport().gui_get_hovered_control()
+	var n: Node = hov
+	while n != null:
+		if n is BaseButton:
+			return true
+		n = n.get_parent()
+	return false
+
+
 func _advance() -> void:
 	if not _waiting:
 		return
 	if _dlg.visible and _dlg.call("is_typing"):
 		_dlg.call("finish_typing")
-		# Re-arm the auto-advance timer: when auto mode fired while the
-		# line was still typing, leaving the timer at 0 stalled auto
-		# mode on that line forever.
-		var ms: int = Settings.auto_advance_ms
-		if ms > 0:
-			_auto_timer = ms / 1000.0
 		return
-	AudioMgr.stop_voice()
+	# A voiced passage now spans PAGES (page_split, 2026-09-12): the
+	# recording is the whole passage and lives on its first page.
+	# Stopping the voice on every advance cut it off after page one.
+	# Keep it playing while the next node is an unvoiced text page;
+	# a node with its own voice, or anything that is not text, still
+	# ends it — and so do choices and the scene end.
+	if not _next_is_voiceless_text():
+		AudioMgr.stop_voice()
 	_waiting    = false
 	_auto_timer = 0.0
 	_run_next()
 
 
+func _next_is_voiceless_text() -> bool:
+	var nodes: Array = _scene_data.get("nodes", [])
+	if _node_idx < 0 or _node_idx >= nodes.size():
+		return false
+	var nv: Variant = nodes[_node_idx]
+	if not (nv is Dictionary):
+		return false
+	var n: Dictionary = nv
+	var t: String = String(n.get("t", ""))
+	if t != "narrate" and t != "say" and t != "think":
+		return false
+	return String(n.get("voice", "")) == ""
+
+
 # ── End ───────────────────────────────────────────────────────────────────────
 
+const VN_ARCANA_MAP := "res://resources/almanac/vn_arcana_map.json"
+
+func _record_vn_reading(scene_id: String) -> void:
+	# VN <-> Gauntlet binding (conservative). Finishing a Vol-5 arcana
+	# chapter fires vn_read_<arcana>, which lights the Almanac's THE
+	# READING chapter and marks the arcana on the Major Arcana ladder.
+	# Legible only — reading never grants a gauntlet advantage.
+	if not FileAccess.file_exists(VN_ARCANA_MAP):
+		return
+	var f := FileAccess.open(VN_ARCANA_MAP, FileAccess.READ)
+	if f == null:
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if not (parsed is Dictionary):
+		return
+	var m: Dictionary = (parsed as Dictionary).get("scene_to_arcana", {})
+	var arc := String(m.get(scene_id, ""))
+	if arc != "":
+		OneironauticsTokens.add("vn_read_" + arc)
+
+
 func _end_scene() -> void:
+	_record_vn_reading(_scene_id)
 	_dlg.visible = false
 	AudioMgr.stop_voice()
-	AudioMgr.unduck()
-	SaveSystem.flush_seen()
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
 	if next == "":
-		# Only hard-stop music when the run actually ends. Chained
-		# scenes keep their queue/crossfade continuity — stopping here
-		# hard-cut the BGM at every chapter boundary.
-		AudioMgr.stop_bgm()
-	if next != "":
-		var next_scene := SceneDataDB.get_scene(next)
-		var next_vol: int = int(next_scene.get("vol", _vol))
-		if next_vol != _vol:
-			_vol = next_vol
-			_apply_skin(_vol)
-		_load_scene(next)
-	else:
+		AudioMgr.unduck()
+		AudioMgr.stop_scene_bgm()
+		if _director != null:
+			_director.call("release")
 		_set_vn_focus(false)
 		game_ended.emit()
+		return
+	# Producer sequencing: the music dips WITH the fade-out; the bed
+	# stops and the camera releases only at full black. (Before this,
+	# BGM hard-cut and the camera snapped while the scene was still
+	# on screen.)
+	if _producer != null:
+		_producer.call("scene_out_begin")
+	# Capture the boundary BEFORE _load_scene replaces _scene_data.
+	var prev_ch := str(_scene_data.get("chapter", ""))
+	var prev_vol := _vol
+	var next_scene := SceneDataDB.get_scene(next)
+	var next_vol: int = int(next_scene.get("vol", _vol))
+	if next_vol != _vol:
+		_vol = next_vol
+		_apply_skin(_vol)
+	var chapter_break: bool = next_vol != prev_vol \
+		or str(next_scene.get("chapter", "")) != prev_ch
+	var titled: bool = String(next_scene.get("title", "")).strip_edges() != ""
+	# Fade to black, build the next scene under the veil, then either
+	# present the chapter plate (boundary) or fade back in (same-frame
+	# cuts are gone — every scene change breathes).
+	await _fade_veil_in(0.3)
+	if _producer != null:
+		_producer.call("scene_out_black")
+	if _director != null:
+		_director.call("release")
+	_load_scene(next)
+	if chapter_break and titled:
+		_present_chapter_card(next_scene)
+	else:
+		_fade_veil_out(0.45)
+
+
+# ── Transition machinery ────────────────────────────────────────
+
+func _ensure_veil() -> void:
+	if _veil != null and is_instance_valid(_veil):
+		return
+	_veil = ColorRect.new()
+	_veil.color = Color(0.01, 0.008, 0.005, 0.0)
+	_veil.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_veil.z_index = UI_Z + 40
+	add_child(_veil)
+
+
+func _set_veil(alpha: float) -> void:
+	_ensure_veil()
+	_veil.color.a = alpha
+	_transition_lock = alpha > 0.0
+	if _transition_lock and _producer != null:
+		_producer.call("hold_curtain")
+
+
+func _fade_veil_in(dur: float) -> void:
+	# to black
+	_ensure_veil()
+	_transition_lock = true
+	if _producer != null:
+		_producer.call("hold_curtain")
+	var tw := create_tween()
+	tw.tween_property(_veil, "color:a", 1.0, dur)
+	await tw.finished
+
+
+func _fade_veil_out(dur: float) -> void:
+	# reveal; the music returns with the light, the input lock lifts
+	# when fully clear, and the producer raises the curtain (settle
+	# beat, then the held first node runs).
+	_ensure_veil()
+	_transition_lock = true
+	if _producer != null:
+		_producer.call("reveal_begin")
+	var tw := create_tween()
+	tw.tween_property(_veil, "color:a", 0.0, dur)
+	tw.tween_callback(func() -> void:
+		_transition_lock = false
+		if _producer != null:
+			_producer.call("curtain_up"))
+
+
+func _present_chapter_card(scene: Dictionary) -> void:
+	_transition_lock = true
+	if _chapter_card != null and is_instance_valid(_chapter_card):
+		_chapter_card.queue_free()
+	_chapter_card = CHAPTER_CARD_SCRIPT.new()
+	_chapter_card.z_index = UI_Z + 50
+	add_child(_chapter_card)
+	var ch := str(scene.get("chapter", "")).strip_edges()
+	_chapter_card.call("set_plate", _vol, scene.get("chapter", 0))
+	var kicker := "VOLUME %d" % _vol
+	if ch != "":
+		kicker += "   ·   CHAPTER %s" % ch.to_upper()
+	_chapter_card.call("present", kicker, String(scene.get("title", "")),
+		func() -> void:
+			if _chapter_card != null and is_instance_valid(_chapter_card):
+				_chapter_card.queue_free()
+			_chapter_card = null
+			_transition_lock = false
+			# The plate sat in hush; music and the first line arrive
+			# together as it clears.
+			if _producer != null:
+				_producer.call("reveal_begin")
+				_producer.call("curtain_up"))
+	# The card is opaque — drop the veil behind it so the world is
+	# already revealed when the card fades itself out.
+	if _veil != null and is_instance_valid(_veil):
+		_veil.color.a = 0.0
 
 
 # ── Auto-portrait fallback ──────────────────────────────────────

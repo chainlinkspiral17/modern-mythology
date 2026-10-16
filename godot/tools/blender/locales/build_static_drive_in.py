@@ -29,6 +29,8 @@ COL_SODA_FOUNTAIN = (0.62, 0.66, 0.70, 1.0); COL_CANDY = (0.86, 0.74, 0.42, 1.0)
 ROOM_W = 7.0; ROOM_D = 5.0; CEIL = 2.90
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR_LINO, "seam": COL_SEAM})
@@ -52,8 +54,12 @@ def build_shell():
 
 def build_picture_window_and_view():
     # Big horizontal window N — frame + glass.
-    make_box("Window_Frame", (0.0, ROOM_D-0.04, 1.70), (4.00, 0.04, 1.40), COL_NEON_MARQUEE)
-    make_box("Window_Glass", (0.0, ROOM_D-0.06, 1.70), (3.80, 0.005, 1.30), COL_GLASS)
+    make_frame_ring("Window_Frame", (0.0, ROOM_D-0.04, 1.70), (4.20, 0.04, 1.40), COL_NEON_MARQUEE)   # wall to wall
+    make_box("Window_Glass", (0.0, ROOM_D-0.06, 1.70), (4.00, 0.005, 1.30), COL_GLASS)
+    # (2026-09-23) the wall under the sill and over the head: the
+    # opening ran floor to ceiling around a 1.4 m window
+    make_box("Wall_N_Sill", (0.0, ROOM_D, 0.50), (4.20, 0.20, 1.00), PAL["wall"])
+    make_box("Wall_N_Header", (0.0, ROOM_D, (2.40 + CEIL) / 2.0), (4.20, 0.20, CEIL - 2.40), PAL["wall"])
     # ── Outside view (far back-plane) ────────────────────────────
     # Night sky backdrop
     make_box("Sky_BG", (0.0, ROOM_D + 16.0, 4.0), (40.0, 0.04, 10.0), COL_SKY_MOON)
@@ -75,34 +81,35 @@ def build_picture_window_and_view():
         make_box(f"Speaker_Box_{spi}", (spx, spy, 1.50), (0.12, 0.12, 0.20), (0.32, 0.30, 0.30, 1.0))
     # A lone pickup at the front row
     px, py = -1.50, ROOM_D + 3.0
-    make_box("Pickup_Body", (px, py, 0.70), (1.60, 0.80, 0.50), (0.42, 0.30, 0.30, 1.0))
+    make_box("Pickup_Body", (px, py, 0.62), (1.60, 0.80, 0.50), (0.42, 0.30, 0.30, 1.0))   # on its wheels
     make_box("Pickup_Cab", (px-0.20, py, 1.05), (0.80, 0.80, 0.40), (0.42, 0.30, 0.30, 1.0))
     make_box("Pickup_Bed", (px+0.60, py, 0.94), (0.60, 0.70, 0.30), (0.32, 0.22, 0.20, 1.0))
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):
             make_cyl(f"Pickup_Wheel_{sgn_x:+d}_{sgn_y:+d}",
-                     (px+sgn_x*0.62, py+sgn_y*0.34, 0.30), 0.18, 0.10, P.METAL_BLACK, axis='X')
+                     (px+sgn_x*0.62, py+sgn_y*0.34, 0.22), 0.18, 0.10, P.METAL_BLACK, axis='X')   # on the lot (2026-09-23: 8 cm over it)
 
 
 def build_concession_counter():
     # L-shaped counter, opening toward S (visitors)
     # E section
     make_box("Counter_E_Top",  (+2.20, 3.20, 0.96), (1.40, 0.50, 0.04), COL_COUNTER_TOP)
-    make_box("Counter_E_Body", (+2.20, 3.20, 0.46), (1.40, 0.50, 0.92), COL_COUNTER)
+    make_box("Counter_E_Body", (+2.20, 3.20, 0.47), (1.40, 0.50, 0.94), COL_COUNTER)   # up to its top (2026-09-23: 2 cm short)
     # W section
     make_box("Counter_W_Top",  (-1.60, 3.20, 0.96), (2.40, 0.50, 0.04), COL_COUNTER_TOP)
     make_box("Counter_W_Body", (-1.60, 3.20, 0.46), (2.40, 0.50, 0.92), COL_COUNTER)
     # Cash register on the W section
     make_box("Register_Body", (-2.20, 3.20, 1.10), (0.40, 0.40, 0.25), (0.32, 0.32, 0.36, 1.0))
-    make_box("Register_Screen", (-2.20, 3.10, 1.32), (0.30, 0.005, 0.10), (0.18, 0.42, 0.34, 1.0))
+    make_box("Register_Screen", (-2.20, 3.10, 1.26), (0.30, 0.005, 0.10), (0.18, 0.42, 0.34, 1.0))   # on the body
     make_box("Register_Drawer", (-2.20, 3.20, 0.86), (0.40, 0.40, 0.10), (0.32, 0.32, 0.36, 1.0))
 
 
 def build_popcorn_machine():
     px, py = +1.00, 3.20
+    make_box("Popcorn_Cart", (px, py, 0.50), (0.54, 0.54, 1.00), COL_POPCORN_RED)   # the cart under the machine (2026-09-08)
     make_box("Popcorn_Base", (px, py, 1.20), (0.50, 0.50, 0.40), COL_POPCORN_RED)
     make_box("Popcorn_Kettle_BG", (px, py, 1.60), (0.50, 0.50, 0.40), COL_POPCORN_RED)
-    make_box("Popcorn_Window", (px, py-0.20, 1.60), (0.42, 0.005, 0.36), COL_GLASS)
+    make_box("Popcorn_Window", (px, py-0.20 - 0.0531, 1.60), (0.42, 0.005, 0.36), COL_GLASS)
     # Kettle inside
     make_cyl("Popcorn_Kettle", (px, py, 1.70), 0.10, 0.20, P.METAL_BLACK, segments=10)
     # Striped peaked roof
@@ -124,13 +131,13 @@ def build_soda_fountain_and_candy():
     for ni in range(4):
         nx = sx - 0.30 + ni * 0.20
         make_cyl(f"Soda_Nozzle_{ni}", (nx, sy-0.16, 1.30), 0.04, 0.10, COL_NEON_MARQUEE)
-        make_box(f"Soda_Tag_{ni}", (nx, sy-0.20, 1.42), (0.16, 0.005, 0.10),
+        make_box(f"Soda_Tag_{ni}", (nx, sy-0.20, 1.40), (0.16, 0.005, 0.10),   # on its nozzle
                  [(0.86, 0.22, 0.20, 1.0), (0.32, 0.20, 0.16, 1.0),
                   (0.96, 0.86, 0.42, 1.0), (0.32, 0.48, 0.34, 1.0)][ni])
     # Ice / cup tower
-    make_box("Cup_Tower", (sx+0.34, sy, 1.40), (0.10, 0.30, 0.40), P.PAPER)
+    make_box("Cup_Tower", (sx-0.50, sy, 1.18), (0.10, 0.30, 0.40), P.PAPER)   # on Counter_W (2026-09-09: it hung in the gap between the counters)
     # Candy display case to the right (a 2-tier donut display reskinned)
-    make_donut_display("Candy", (+0.20, 3.20, 0.96), tiers=2,
+    make_donut_display("Candy", (+2.20, 3.20, 0.98), tiers=2,   # on Counter_E (2026-09-23: in the gap between the counters)
                        palette={"glass": (0.78, 0.84, 0.86, 0.50),
                                 "metal": (0.62, 0.66, 0.70, 1.0),
                                 "donut": COL_CANDY})
@@ -154,8 +161,8 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 2.5, 2.30), frozen_hour=4, frozen_min=15)
-    make_faded_poster("Poster_S", (-ROOM_W/2.0+0.05, 0.8, 1.50))
+    make_wall_clock("Clock", (-3.400, 2.5, 2.30), frozen_hour=4, frozen_min=15, facing='+X')
+    make_faded_poster("Poster_S", (-ROOM_W/2.0+0.05 + 0.0535, 0.8, 1.50), into_room=+1)
     make_floor_plant("Plant", (+ROOM_W/2.0-0.50, 0.50, 0.0), palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
 
 
@@ -172,10 +179,12 @@ def build_moon_dressing():
         pair of brake-light pinpricks (a car backing out for
         concessions)
     """
-    # Concession counter approx at (0.0, -1.5)
-    cc_x = 0.0
-    cc_y = -1.5
-    counter_z = 0.96
+    # The concession counters (Counter_W_Top: (-1.6, 3.2), 2.4 × 0.5,
+    # top 0.98). West end, clear of the soda fountain and cup tower.
+    # (2026-09-10: this pass had a counter at (0, -1.5) — open floor.)
+    cc_x = -1.55        # between the register (x -2.4..-2.0) and the cup tower (-1.3)
+    cc_y = 3.2
+    counter_z = 0.98
 
     # Handheld camcorder on the counter (apron-pocket on the side)
     cam_x = cc_x - 0.40
@@ -198,7 +207,7 @@ def build_moon_dressing():
              (0.86, 0.18, 0.16, 1.0))
     # Flip-out viewfinder screen (a small open panel)
     make_box("MoonCam_Viewfinder",
-             (cam_x - 0.07, cam_y, counter_z + 0.06),
+             (cam_x - 0.07 + 0.0231, cam_y, counter_z + 0.06),
              (0.005, 0.06, 0.04),
              (0.62, 0.86, 0.74, 1.0))   # phosphor mint
 
@@ -260,15 +269,17 @@ def build_moon_wave2_props():
       · The concession's flashlight ready under the counter
     """
     concession_x = 0.0
-    counter_z = 0.90
+    counter_z = 0.98   # Counter_W's top (2026-09-23: 0.90)
 
     # ── pre_dusk_projection_setup ──────────────────────────────
 
     # Ollie's note taped to the booth door · a small folded paper
     # (booth door approx at (-2.50, +2.00))
+    # (2026-09-23) no booth door was ever built — "approx at (-2.5, 2.0)"
+    # was open floor. Taped to the counter's customer face instead.
     note_x = -2.50
-    note_y = +2.00
-    note_z = 1.50
+    note_y = +2.964
+    note_z = 0.60
     make_box("Ollies_Note_Paper",
              (note_x, note_y - 0.015, note_z),
              (0.10, 0.001, 0.06),
@@ -288,7 +299,7 @@ def build_moon_wave2_props():
 
     # Mini-fridge with the sandwich (Natalie's turkey-and-provolone)
     fridge_x = -0.90
-    fridge_y = -0.20
+    fridge_y = +0.28   # its back on the S wall's face (2026-09-23: at -0.20 it stood in the south wall; 2026-09-25: at 0.45 it stood 17 cm off it)
     make_box("MiniFridge_Body",
              (fridge_x, fridge_y, 0.36),
              (0.36, 0.36, 0.72),
@@ -318,7 +329,7 @@ def build_moon_wave2_props():
                  (0.32, 0.32, 0.04),
                  (0.62, 0.62, 0.64, 1.0))
         make_box("PorchChair_%d_Back" % ci,
-                 (porch_x + dx, porch_y - 0.14, 0.72),
+                 (porch_x + dx, porch_y - 0.14, 0.65),
                  (0.32, 0.06, 0.36),
                  (0.62, 0.62, 0.64, 1.0))
         for (lx, ly) in [(-0.14, -0.14), (+0.14, -0.14),
@@ -369,24 +380,10 @@ def build_moon_wave2_props():
                      0.24, 0.14,
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
 
-    # Natalie's notebook open on the counter with three pages of sigils
-    nb_x = concession_x + 0.20
-    nb_y = -0.60
-    make_box("Natalie_Notebook_Cover",
-             (nb_x, nb_y, counter_z + 0.014),
-             (0.16, 0.20, 0.014),
-             (0.10, 0.08, 0.06, 1.0))
-    make_box("Natalie_Notebook_Page",
-             (nb_x + 0.08, nb_y, counter_z + 0.022),
-             (0.15, 0.19, 0.001),
-             (0.94, 0.90, 0.80, 1.0))
-    # Three sigils drawn on the visible page (small curves)
-    for si, (sx, sy) in enumerate([(-0.02, +0.04), (+0.02, 0.0), (0.0, -0.05)]):
-        # Approximated as a hollow ring: a cylinder
-        make_cyl("Natalie_Sigil_%d" % si,
-                 (nb_x + 0.08 + sx, nb_y + sy, counter_z + 0.023),
-                 0.012, 0.0005,
-                 (0.20, 0.16, 0.12, 1.0), segments=8, axis='Z')
+    # (2026-09-23) Natalie's notebook was a second copy of SigilNotebook
+    # (build_moon_dressing), drawn at y -0.60 outside the building. The
+    # pen lies beside the real one; the copy is gone.
+    nb_x, nb_y = -1.75, 3.00
 
     # The pen on the counter beside the notebook · her hand is
     # dangerously near it. Modeled as a slim cylinder still capped.
@@ -402,13 +399,15 @@ def build_moon_wave2_props():
 
     # The concession's flashlight under the counter (a stubby
     # cylinder representing the '80s aluminum flashlight)
+    # (2026-09-10: it sat at (-0.3, -0.4, 0.66) — mid-floor, a metre
+    # from any counter; now on Counter_W's top beside the camcorder)
     make_cyl("Concession_Flashlight_Body",
-             (concession_x - 0.30, -0.40, counter_z - 0.30),
+             (-2.55, 3.05, 0.98 + 0.03),
              0.030, 0.20,
              (0.62, 0.62, 0.60, 1.0), segments=8, axis='Y')
     # Lens end
     make_cyl("Concession_Flashlight_Lens",
-             (concession_x - 0.42, -0.40, counter_z - 0.30),
+             (-2.55, 3.05 - 0.11, 0.98 + 0.03),
              0.036, 0.02,
              (0.86, 0.86, 0.62, 1.0), segments=8, axis='Y')
 

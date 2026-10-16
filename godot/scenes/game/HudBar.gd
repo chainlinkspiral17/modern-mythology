@@ -15,6 +15,10 @@ const VOL_TITLES: Dictionary = {
 }
 
 var _dot_rects: Dictionary = {}
+var _chapter_lbl: Label = null
+var _chapter_text: String = ""
+var _items_lbl: Label = null
+var _items_text: String = ""
 
 
 func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = null) -> void:
@@ -22,6 +26,31 @@ func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = nu
 		ch.queue_free()
 	_dot_rects = {}
 	_build(skin, vol, skills)
+
+
+## Persistent echo of the chapter plate — "· CH II · A Fool Between
+## Acts" whispered beside the volume title, so the reader always knows
+## where they are in the book. Survives setup() rebuilds (skin swaps
+## re-apply the cached text).
+func set_chapter(text: String) -> void:
+	_chapter_text = text
+	if _chapter_lbl != null and is_instance_valid(_chapter_lbl):
+		_chapter_lbl.text = text
+		_chapter_lbl.visible = text != ""
+
+
+## THE INVENTORY strip (2026-09-19): what the reader is carrying, as
+## small caps after the chapter whisper — "· a capacitor · the napkin".
+## Empty hands show nothing. Survives setup() rebuilds like the
+## chapter text.
+func update_items(items: Array[String]) -> void:
+	var parts: Array[String] = []
+	for it in items:
+		parts.append(it.to_upper())
+	_items_text = ("· " + " · ".join(parts)) if not parts.is_empty() else ""
+	if _items_lbl != null and is_instance_valid(_items_lbl):
+		_items_lbl.text = _items_text
+		_items_lbl.visible = _items_text != ""
 
 
 func update_skills(skills: Dictionary) -> void:
@@ -62,11 +91,35 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	var title_lbl := Label.new()
 	title_lbl.text               = (VOL_TITLES.get(vol, "") as String).to_upper()
 	title_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	title_lbl.add_theme_font_size_override("font_size", 10)
+	title_lbl.add_theme_font_size_override("font_size", 13)   # (pass 89) the bar's type up a step
 	title_lbl.add_theme_color_override("font_color", hud_col)
 	if ResourceLoader.exists(hud_font):
 		title_lbl.add_theme_font_override("font", load(hud_font) as Font)
 	row.add_child(title_lbl)
+
+	# Chapter whisper — dimmer than the volume title, serif italic.
+	_chapter_lbl = Label.new()
+	_chapter_lbl.text = _chapter_text
+	_chapter_lbl.visible = _chapter_text != ""
+	_chapter_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_chapter_lbl.add_theme_font_size_override("font_size", 14)
+	_chapter_lbl.add_theme_color_override("font_color",
+			Color(hud_col.r, hud_col.g, hud_col.b, 0.55))
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		_chapter_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	row.add_child(_chapter_lbl)
+
+	# The items strip — the same dim serif, a step dimmer.
+	_items_lbl = Label.new()
+	_items_lbl.text = _items_text
+	_items_lbl.visible = _items_text != ""
+	_items_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_items_lbl.add_theme_font_size_override("font_size", 12)
+	_items_lbl.add_theme_color_override("font_color",
+			Color(hud_col.r, hud_col.g, hud_col.b, 0.45))
+	if ResourceLoader.exists(hud_font):
+		_items_lbl.add_theme_font_override("font", load(hud_font) as Font)
+	row.add_child(_items_lbl)
 
 	var sp1 := Control.new()
 	sp1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -84,7 +137,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 
 		var lbl := Label.new()
 		lbl.text = sk.substr(0, 3).to_upper()
-		lbl.add_theme_font_size_override("font_size", 7)
+		lbl.add_theme_font_size_override("font_size", 12)
 		lbl.add_theme_color_override("font_color",
 				Color(hud_col.r, hud_col.g, hud_col.b, 0.45))
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -109,9 +162,29 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	sp2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(sp2)
 
+	# Styled to match the literary chrome — the default gray Godot
+	# button was the one stock control left on the reading screen.
 	var menu_btn := Button.new()
 	menu_btn.text = "MENU"
-	menu_btn.custom_minimum_size = Vector2(74, 30)
+	menu_btn.custom_minimum_size = Vector2(80, 32)
 	menu_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	var mst := StyleBoxFlat.new()
+	mst.bg_color = Color(0, 0, 0, 0)
+	mst.border_color = hud_bdr
+	mst.set_border_width_all(1)
+	mst.set_corner_radius_all(2)
+	menu_btn.add_theme_stylebox_override("normal", mst)
+	var mst_h: StyleBoxFlat = mst.duplicate() as StyleBoxFlat
+	mst_h.bg_color = Color(hud_col.r, hud_col.g, hud_col.b, 0.08)
+	mst_h.border_color = Color(hud_col.r, hud_col.g, hud_col.b, 0.7)
+	menu_btn.add_theme_stylebox_override("hover", mst_h)
+	menu_btn.add_theme_stylebox_override("focus", mst_h)
+	menu_btn.add_theme_stylebox_override("pressed", mst_h)
+	if ResourceLoader.exists(hud_font):
+		menu_btn.add_theme_font_override("font", load(hud_font) as Font)
+	menu_btn.add_theme_font_size_override("font_size", 13)
+	menu_btn.add_theme_color_override("font_color", hud_col)
+	menu_btn.add_theme_color_override("font_hover_color",
+			Color(minf(hud_col.r + 0.1, 1.0), minf(hud_col.g + 0.1, 1.0), hud_col.b, 1.0))
 	menu_btn.pressed.connect(func() -> void: menu_pressed.emit())
 	row.add_child(menu_btn)

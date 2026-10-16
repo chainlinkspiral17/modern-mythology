@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "title": "vol5_priestess_finale_walked_out",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_priestess_finale_walked_out",
+  "notes": "THE AUDIENCE STOPPED WAITING (three claimed). The silences they left behind, played back \u2014 not nothing, the wrong thing."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "F4",
+     "bar": 4,
+     "beat": 3,
+     "dur": 8,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "title": "the coast (Vovo's song)",
+    "composer": "Ines Rocha \u00b7 2006 \u00b7 after her grandmother",
+    "for": "SALMONBERRY \u00b7 the year \u00b7 the one melody at its source, before it wandered the whole catalog",
+    "notes": "The grandmother's song IS the recurring Rocha melody, quoted from Hane no Niwa's one_melody. This is where it came from: an ocean crossed, an Oregon coast, a kitchen. Nobody in the games ever explains it. This is the explanation. 8 bars at 54, loops."
+  },
+  "tempo_bpm": 54,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "loop_bars": 8,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.3,
+      "notes": [
+        {
+          "pitch": "E2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.36
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.16,
+      "notes": [
+        {
+          "pitch": "E3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "C3",
+          "bar": 3,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "G3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "D3",
+          "bar": 7,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.22
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.22,
+      "notes": [
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 2,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E4",
+          "bar": 2,
+          "beat": 2,
+          "dur": 2,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "C5",
+          "bar": 3,
+          "beat": 2,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "B4",
+          "bar": 3,
+          "beat": 3,
+          "dur": 2,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G4",
+          "bar": 4,
+          "beat": 2,
+          "dur": 2,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G4",
+          "bar": 5,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E4",
+          "bar": 5,
+          "beat": 2,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "D4",
+          "bar": 5,
+          "beat": 3,
+          "dur": 2,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E4",
+          "bar": 6,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G4",
+          "bar": 6,
+          "beat": 2,
+          "dur": 2,
+          "vel": 0.34
+        },
+        {
+          "pitch": "A4",
+          "bar": 7,
+          "beat": 1,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "G4",
+          "bar": 7,
+          "beat": 2,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E4",
+          "bar": 7,
+          "beat": 3,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "D4",
+          "bar": 7,
+          "beat": 4,
+          "dur": 1,
+          "vel": 0.34
+        },
+        {
+          "pitch": "E4",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3,
+          "vel": 0.34
+        }
+      ]
+    },
+    {
+      "instrument": "rain",
+      "gain": 0.08,
+      "notes": [
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.35
+        }
+      ]
+    }
+  ]
+}

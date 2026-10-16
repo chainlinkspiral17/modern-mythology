@@ -25,6 +25,32 @@ assets/audio/voice/vol5_ch0_booth6/014.ogg   ← Stranger's "Watch yourself…" 
 assets/audio/voice/vol5_ch0_booth6/018.ogg   ← John's "He had not…" thought
 ```
 
+## Voice Studio zips → the game (2026-10-01)
+
+The zips `tools/voice_studio.html` exports (`voice_dropin_<scene>.zip`)
+are NOT unzipped over `godot/` any more — each carries a snapshot of the
+scene from the day it was recorded, and unzipping it would throw away
+every later edit and point every line after an inserted node at the
+wrong audio. Put the zips anywhere on Google Drive and run, on the Deck:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && bash godot/tools/import_voice_dropins.sh
+```
+
+It finds every `voice_dropin_*.zip` on the Drive (read-only connection,
+one sign-in the first time), matches each recorded line to today's text
+in order (directives and punctuation ignored; a line rewritten past 90 %
+similarity is SKIPPED, not misplaced), converts browser recordings
+(webm) to Ogg, writes the `"voice"` keys, and SAVEs: audio to the Drive,
+JSON to git. Run it again whenever more zips are up — zips already
+imported are skipped. Every line's fate is in
+`godot/tools/voice_import_report.md`.
+
+Since 2026-10-01 new voice files are Drive-held, not in git
+(`.gitignore`); `python3 godot/tools/meshy_pipeline.py drive-pull`
+fetches them on another machine. The vol5 lines committed in June stay
+tracked.
+
 ## Workflow
 
 **1. Generate a recording manifest for the scene(s) you're voicing:**

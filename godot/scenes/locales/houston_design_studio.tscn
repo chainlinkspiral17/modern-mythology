@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://houston_design_studio_emperor"]
+[gd_scene load_steps=26 format=3 uid="uid://houston_design_studio_emperor"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/houston_design_studio.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,23 +128,35 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.78, 0.66, 0.50, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_City"]
+; (draft 3, 2026-10-10) Houston morning past the glass, three floors below Erica's
+sky_top_color = Color(0.36, 0.54, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.82, 0.76, 1)
+sky_curve = 0.18
+ground_bottom_color = Color(0.30, 0.30, 0.30, 1)
+ground_horizon_color = Color(0.58, 0.56, 0.52, 1)
+
+[sub_resource type="Sky" id="Sky_City"]
+sky_material = SubResource("SkyMat_City")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
-background_color = Color(0.12, 0.10, 0.08, 1)
+background_mode = 2
+sky = SubResource("Sky_City")
 ambient_light_source = 2
-ambient_light_color = Color(0.78, 0.66, 0.50, 1)
-ambient_light_energy = 0.8
+ambient_light_color = Color(0.90, 0.89, 0.86, 1)
+ambient_light_energy = 0.72
 fog_enabled = true
-fog_light_color = Color(0.42, 0.32, 0.22, 1)
-fog_light_energy = 0.35
+fog_light_color = Color(0.76, 0.74, 0.70, 1)
+fog_light_energy = 0.4
 fog_density = 0.004
 adjustment_enabled = true
-adjustment_brightness = 1.0
-adjustment_contrast = 1.06
-adjustment_saturation = 0.94
+adjustment_brightness = 1.02
+adjustment_contrast = 1.02
+adjustment_saturation = 0.90
 glow_enabled = true
-glow_intensity = 0.7
-glow_bloom = 0.12
+glow_intensity = 0.5
+glow_bloom = 0.06
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
@@ -154,23 +166,52 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_NorthWindow" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
-light_color = Color(0.86, 0.92, 0.98, 1)
-light_energy = 0.55
+; ── DRAFT 3 RIG (2026-10-10): Anna Logue's greige office. Daylight through the N glass, the downlights,
+; the screens' glow on the E wall. No drafting lamps, no fluorescents.
+; the morning sun through the N glass
+[node name="Sun_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8910, -0.2373, 0.3870, 0.0000, 0.8525, 0.5227, -0.4540, 0.4657, -0.7596, 0, 8, 0)
+light_color = Color(1.0, 0.92, 0.8, 1)
+light_energy = 0.8
+shadow_enabled = false
+metadata/daylight = true
+
+; the sky through the N glass
+[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.9689, 0.2474, -0.0000, 0.2474, -0.9689, 0, 8, 0)
+light_color = Color(0.8, 0.86, 0.94, 1)
+light_energy = 0.35
 shadow_enabled = false
 
-[node name="Fill_Anglepoise" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 4, 3)
-light_color = Color(1.00, 0.84, 0.54, 1)
+; the downlights
+[node name="Downlight_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.620, -1.600)
+light_color = Color(1.00, 0.96, 0.88, 1)
+light_energy = 0.50
+shadow_enabled = false
+omni_range = 4.00
+
+[node name="Downlight_5_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.800, 2.620, -4.000)
+light_color = Color(1.00, 0.96, 0.88, 1)
+light_energy = 0.50
+shadow_enabled = false
+omni_range = 4.00
+
+[node name="Downlight_3_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.800, 2.620, -4.000)
+light_color = Color(1.00, 0.96, 0.88, 1)
+light_energy = 0.50
+shadow_enabled = false
+omni_range = 4.00
+
+; the three screens' glow on the desk
+[node name="Screen_Glow" type="OmniLight3D" parent="."]
+position = Vector3(2.750, 1.100, -3.200)
+light_color = Color(0.84, 0.88, 0.96, 1)
 light_energy = 0.45
 shadow_enabled = false
-
-[node name="Back_BrickGlow" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, -4, 4, 0)
-light_color = Color(0.78, 0.42, 0.22, 1)
-light_energy = 0.2
-shadow_enabled = false
+omni_range = 1.80
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +313,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +332,40 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage — DRAFT 3 (2026-10-10), Anna Logue's office
+; reverse: from the NE by the window across the room to the pitch board and the door
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.600, 1.600, -5.400)
+rotation = Vector3(-0.0791, 2.2950, 0.0)
+metadata/fov = 56.0
+
+; insert: EMBER & ASH on the third monitor
+[node name="shot_insert_monitor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.150, 1.400, -3.450)
+rotation = Vector3(-0.2675, -1.2259, 0.0)
+metadata/fov = 40.0
+
+; insert: her phone on the desk
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.250, 1.250, -3.000)
+rotation = Vector3(-0.6465, -0.9304, 0.0)
+metadata/fov = 40.0
+
+; insert: the white-oak desk, the three screens, the cold brew
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 1.550, -2.200)
+rotation = Vector3(-0.4149, -0.8685, 0.0)
+metadata/fov = 44.0
+
+; closeup: Anna at her desk, the city in the glass to her left
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.450, -2.200)
+rotation = Vector3(-0.1272, -1.0339, 0.0)
+metadata/fov = 42.0
+
+; reverse: across the room to the door
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.400, 1.450, -4.600)
+rotation = Vector3(-0.0650, 2.4669, 0.0)
+metadata/fov = 42.0

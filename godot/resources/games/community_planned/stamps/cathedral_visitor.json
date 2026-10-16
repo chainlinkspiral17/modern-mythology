@@ -1,0 +1,130 @@
+{
+ "id": "cathedral_visitor",
+ "notes": "The nave arch, the tall lit slit, the visitor at the door.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     24,
+     44
+    ],
+    [
+     24,
+     20
+    ],
+    [
+     48,
+     8
+    ],
+    [
+     72,
+     20
+    ],
+    [
+     72,
+     44
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 48,
+   "y_range": [
+    12,
+    30
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    12
+   ],
+   "size": 1,
+   "color": 4
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    44,
+    34,
+    8,
+    10
+   ],
+   "color": 7
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     44,
+     34
+    ],
+    [
+     52,
+     34
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    38
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 48,
+   "y_range": [
+    40,
+    44
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    0,
+    0,
+    96,
+    54
+   ],
+   "color": 7,
+   "strength": 0.25
+  }
+ ]
+}

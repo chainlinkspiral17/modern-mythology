@@ -1,0 +1,285 @@
+{
+  "id": "stop_n_go",
+  "notes": "The Hi-Way 30 Stop-N-Go at golden hour. Flat-roof store, two gas pumps, the highway running past. A bike leaned on the ice cooler (Tuesdays).",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#e8a848",
+    "#f4d890",
+    "#c85838",
+    "#f4f0e8",
+    "#080808",
+    "#585048",
+    "#a8b8c8",
+    "#e83848",
+    "#e8c840",
+    "#786858"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        38
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        62,
+        90
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 74,
+      "x_range": [
+        0,
+        160
+      ],
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 75,
+      "x_range": [
+        0,
+        20
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 75,
+      "x_range": [
+        34,
+        54
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 75,
+      "x_range": [
+        68,
+        88
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 75,
+      "x_range": [
+        102,
+        122
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 75,
+      "x_range": [
+        136,
+        156
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        30,
+        84,
+        32
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        18,
+        26,
+        92,
+        6
+      ],
+      "color": 7
+    },
+    {
+      "op": "text",
+      "xy": [
+        30,
+        27
+      ],
+      "s": "STOP-N-GO",
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        34,
+        42,
+        20,
+        20
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        62,
+        42,
+        14,
+        20
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        44,
+        10,
+        16
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        84,
+        42,
+        16,
+        14
+      ],
+      "color": 6
+    },
+    {
+      "op": "hline",
+      "y": 49,
+      "x_range": [
+        34,
+        54
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        120,
+        46,
+        10,
+        16
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        48,
+        6,
+        6
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        136,
+        46,
+        10,
+        16
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        138,
+        48,
+        6,
+        6
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        6,
+        52,
+        12,
+        10
+      ],
+      "color": 3
+    },
+    {
+      "op": "text",
+      "xy": [
+        7,
+        54
+      ],
+      "s": "ICE",
+      "color": 2
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          4,
+          66
+        ],
+        [
+          10,
+          62
+        ],
+        [
+          14,
+          66
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        7,
+        66
+      ],
+      "size": 2,
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        13,
+        66
+      ],
+      "size": 2,
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        10
+      ],
+      "size": 8,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        10
+      ],
+      "size": 6,
+      "color": 1
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+ "meta": {
+  "title": "vol5_twins_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_twins_theme",
+  "notes": "The Twins. Two of the same tone, played milliseconds apart \u2014 the same note on two tracks, twenty milliseconds between them, so the one tone beats against itself."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.768,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.768,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1.02,
+     "dur": 8,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D5",
+     "bar": 4,
+     "beat": 1.02,
+     "dur": 8,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.512,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

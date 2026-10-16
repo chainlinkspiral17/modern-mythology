@@ -1,0 +1,61 @@
+{
+  "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
+  "jobs": [
+    {
+      "tag": "vol10",
+      "slug": "dw_2002-10-07_noir_1",
+      "strip_id": "dw_2002-10-07_noir_1",
+      "title": "Noir week, i",
+      "date": "2002-10-07",
+      "era": "era1",
+      "format": "daily4",
+      "tier": "A",
+      "prompt": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: The strip tries being SLASH for a week. Trench coat. Neon. Played straight. Unsigned. Panel 1: a bowling alley at night drawn in hard-boiled noir style, the neon sign a slab of white light, rain a solid curtain, the parking lot a black mirror, a figure in a trench coat and hat under the sign, brush-pen black and white, no gray (in this panel: WOOD). caption box: \"The rain had been falling on Small Wood for eleven years. Nobody had thought to ask it why.\". Panel 2: close-up of a man in a fedora and trench coat with an unlit cigarette, hard noir shadows (in this panel: WOOD). caption box: \"He didn't smoke. He carried one for the shape of it.\". Panel 3: a noir alley behind a bowling alley with a chain-link fence, a bare bulb and a menacing shadow that is clearly a crab pot (in this panel: WOOD). caption box: \"Behind the Lanes, something was waiting. It was a crab pot. It was always a crab pot.\". Panel 4: a trench-coated figure walking away down a rain-curtained alley at night, noir, no dog anywhere, black and white (in this panel: WOOD). caption box: \"He walked. The rain followed. Neither had anywhere else to be.\". Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Reference @loc_lanes shows the setting; keep its architecture and props. Reference @chloe_17 is the model sheet for CHLOE: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above. Match the attached references: @wood_20 for the character Wood at 20-23; @loc_lanes for the setting; @chloe_17 for the character the strip's Chloe at 17.",
+      "prompt_compact": "a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: 1990s photocopied zine comic, scratchy pen, harsh black and white. Cast: WOOD — aged 22, thin young man with a slouch, three days' stubble, dark hair grown longer. Clothes and props: as described here, not from the reference. Panel 1: a bowling alley at night drawn in hard-boiled noir style, the neon sign a slab of white light, rain a solid curtain, the parking lot a… (in this panel: WOOD). caption \"The rain had been falling on Small Wood for eleven years. Nobody had thought to ask it why.\". Panel 2: close-up of a man in a fedora and trench coat with an unlit cigarette, hard noir shadows (in this panel: WOOD). caption \"He didn't smoke. He carried one for the shape of it.\". Panel 3: a noir alley behind a bowling alley with a chain-link fence, a bare bulb and a menacing shadow that is clearly a crab pot (in this panel: WOOD). caption \"Behind the Lanes, something was waiting. It was a crab pot. It was always a crab pot.\". Panel 4: a trench-coated figure walking away down a rain-curtained alley at night, noir, no dog anywhere, black and white (in this panel: WOOD). caption \"He walked. The rain followed. Neither had anywhere else to be.\". Letter every balloon completely, large and clean; never cut a word; no other words. Bottom right margin: tiny signature \"A. Finch — Small Wood, OR\". Reference @wood_20 is the model sheet for WOOD. Reference @loc_lanes shows the setting; keep its architecture and props.. Reference @chloe_17 is the model sheet for CHLOE.",
+      "negative": "color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers",
+      "runway_ratio": "2112:912",
+      "google_aspect": "16:9",
+      "lettered": true,
+      "seed": null,
+      "reference_images": [
+        {
+          "tag": "wood_20",
+          "id": "sheet_wood_20",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 4,
+          "why": [
+            "wood_20",
+            "era1"
+          ]
+        },
+        {
+          "tag": "loc_lanes",
+          "id": "sheet_loc_lanes",
+          "kind": "location",
+          "file": "godot/assets/comic/vol10/sheets/sheet_loc_lanes.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 2,
+          "why": [
+            "dw_bowling_alley"
+          ]
+        },
+        {
+          "tag": "chloe_17",
+          "id": "sheet_chloe_17",
+          "kind": "character",
+          "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+          "url": null,
+          "runway_task_id": null,
+          "score": 1,
+          "why": [
+            "era1"
+          ]
+        }
+      ]
+    }
+  ]
+}

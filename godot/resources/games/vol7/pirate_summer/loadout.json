@@ -1,0 +1,83 @@
+{
+ "notes": [
+  "THE FOOTLOCKER · Pirate Summer's half of the StickLoop contract.",
+  "EARN: pog milkcaps for a finished week — days survived +",
+  "friendships at 2+ + a cap per four facts uncovered. CARRY:",
+  "PirateSummerHost packs the duffel and bumps stats at",
+  "start_new_run. ≥1 FLAG per tier per the playbook."
+ ],
+ "currency": {
+  "id": "pogs",
+  "name": "POG MILKCAPS",
+  "earn_line": "a finished week pays pogs · friendships made and facts uncovered count"
+ },
+ "upgrades": [
+  {
+   "id": "lucky_penny",
+   "name": "THE LUCKY PENNY",
+   "cost": 5,
+   "tier": 1,
+   "needs_mastery": 0,
+   "requires": [],
+   "blurb": "found heads-up on the bus platform after a week that has already happened. it starts this week in the duffel — and it is exactly the kind of thing a camper will treasure as a gift.",
+   "effects": {},
+   "flags": [
+    "lucky_penny"
+   ]
+  },
+  {
+   "id": "camp_legs",
+   "name": "CAMP LEGS",
+   "cost": 6,
+   "tier": 1,
+   "needs_mastery": 0,
+   "requires": [],
+   "blurb": "the summer's muscle memory. KNACK starts one higher — your hands remember the ropes course.",
+   "effects": {
+    "start_knack": 1
+   },
+   "flags": []
+  },
+  {
+   "id": "tide_table",
+   "name": "THE TIDE TABLE PAMPHLET",
+   "cost": 8,
+   "tier": 2,
+   "needs_mastery": 1,
+   "requires": [],
+   "blurb": "last year's, but the moon doesn't care. starts the week in the duffel — the caves stop being a guess about the water.",
+   "effects": {},
+   "flags": [
+    "tide_table"
+   ]
+  },
+  {
+   "id": "rabbits_foot",
+   "name": "THE RABBIT'S FOOT",
+   "cost": 9,
+   "tier": 2,
+   "needs_mastery": 1,
+   "requires": [],
+   "blurb": "won at a fair that may not have been entirely a fair. LUCK starts one higher.",
+   "effects": {
+    "start_luck": 1
+   },
+   "flags": []
+  },
+  {
+   "id": "old_map_copy",
+   "name": "A TRACED COPY OF THE MAP",
+   "cost": 12,
+   "tier": 3,
+   "needs_mastery": 2,
+   "requires": [
+    "tide_table"
+   ],
+   "blurb": "traced from memory on the last night of a week that has already happened. it rides in the duffel — the bluff dig knows where to start.",
+   "effects": {},
+   "flags": [
+    "traced_map"
+   ]
+  }
+ ]
+}

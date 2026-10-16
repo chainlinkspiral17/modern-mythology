@@ -403,7 +403,7 @@
       "flavor": "An accordion B-side from a Lake Charles wedding band, 1991. Whoever set up the brass mic by the dance floor heard everything in the room.",
       "hands": 0,
       "effects_on_use": [
-        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_noon_room_room.ogg", "label": "NOON ROOM ROOM", "catalog_id": "vol5_noon_room_room"},
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_noon_room_room.wav", "label": "NOON ROOM ROOM", "catalog_id": "vol5_noon_room_room"},
         {"kind": "lose_inertia", "amount": 1},
         {"kind": "recover_sanity", "amount": 1}
       ],
@@ -416,7 +416,7 @@
       "flavor": "Solo piano, after-hours. Recorded in this diner in 1979 when there was still a piano. The piano was sold the year you started.",
       "hands": 0,
       "effects_on_use": [
-        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg", "label": "WHERE THE BAR USED TO BE", "catalog_id": "vol5_where_the_bar_used_to_be"},
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_where_the_bar_used_to_be.wav", "label": "WHERE THE BAR USED TO BE", "catalog_id": "vol5_where_the_bar_used_to_be"},
         {"kind": "lose_inertia", "amount": 2}
       ],
       "reusable": true

@@ -1,0 +1,14 @@
+{
+  "meta": { "title": "campfire crackle", "for": "Pirate Summer · campfire ring · plays every ~15s during evening_event", "composer": "Marc Ostrom" },
+  "tempo_bpm": 120, "time_sig": [4, 4], "sample_rate": 44100, "loop_bars": 2,
+  "tracks": [
+    { "instrument": "rain", "gain": 0.14, "notes": [ {"pitch": "B5", "bar": 1, "beat": 1, "dur": 4.0, "vel": 0.5} ] },
+    { "instrument": "chiptune_arp", "gain": 0.10, "notes": [
+      {"pitch": "E5", "bar": 1, "beat": 1.5, "dur": 0.08, "vel": 0.5},
+      {"pitch": "G5", "bar": 1, "beat": 2.7, "dur": 0.06, "vel": 0.44},
+      {"pitch": "C5", "bar": 1, "beat": 4.2, "dur": 0.10, "vel": 0.5},
+      {"pitch": "A5", "bar": 2, "beat": 1.8, "dur": 0.08, "vel": 0.45},
+      {"pitch": "E5", "bar": 2, "beat": 3.5, "dur": 0.05, "vel": 0.40}
+    ] }
+  ]
+}

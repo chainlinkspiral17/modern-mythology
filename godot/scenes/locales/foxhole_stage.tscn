@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -155,9 +155,9 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.5
+light_energy = 0.6
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -170,6 +170,36 @@ shadow_enabled = false
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
+shadow_enabled = false
+
+; Stage rig — warm front wash + saturated colour accents (kept dark/dramatic)
+[node name="Stage_Wash" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -4.0)
+light_color = Color(1.0, 0.8, 0.52, 1)
+light_energy = 3.0
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Stage_Magenta" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.8, -4.3)
+light_color = Color(1.0, 0.2, 0.72, 1)
+light_energy = 2.4
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Stage_Cyan" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.8, -4.3)
+light_color = Color(0.3, 0.7, 0.95, 1)
+light_energy = 2.2
+omni_range = 4.5
+shadow_enabled = false
+
+; Low red backlight kicker behind the band (silhouette/drama)
+[node name="Stage_RedBack" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -4.9)
+light_color = Color(0.96, 0.24, 0.2, 1)
+light_energy = 1.8
+omni_range = 4.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -272,7 +302,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +321,23 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the set list on the back of the same flyer
+[node name="shot_insert_setlist" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.8, -3.15)
+rotation = Vector3(-0.6891, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.568, 1.612, -2.083)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.344, 1.612, -3.996)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
+metadata/fov = 45.0

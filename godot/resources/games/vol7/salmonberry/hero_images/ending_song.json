@@ -1,0 +1,204 @@
+{
+  "id": "salmonberry_ending_song",
+  "notes": "THE SONG (true) \u00b7 the lit window, Vovo singing, the one melody rising out into the dark to become the whole catalog.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#23282a",
+    "#c8cec4",
+    "#3b5a6b",
+    "#b8a882",
+    "#33452f",
+    "#9c5a3a",
+    "#d8b048",
+    "#eef0ec",
+    "#caa25a",
+    "#e8c060",
+    "#6c7f8a",
+    "#d98a9a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "glow",
+      "xy": [
+        48,
+        50
+      ],
+      "r": 34,
+      "color": 9,
+      "strength": 0.35
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        34,
+        44,
+        44
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        32,
+        38,
+        36,
+        36
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        50,
+        8,
+        24
+      ],
+      "color": 5
+    },
+    {
+      "op": "disk",
+      "xy": [
+        46,
+        48
+      ],
+      "r": 4,
+      "color": 0
+    },
+    {
+      "op": "disk",
+      "xy": [
+        78,
+        52
+      ],
+      "r": 2,
+      "color": 6
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        52
+      ],
+      "to": [
+        80,
+        47
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.8,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        90,
+        44
+      ],
+      "r": 2,
+      "color": 6
+    },
+    {
+      "op": "streak",
+      "from": [
+        92,
+        44
+      ],
+      "to": [
+        92,
+        39
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.8,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        102,
+        38
+      ],
+      "r": 2,
+      "color": 6
+    },
+    {
+      "op": "streak",
+      "from": [
+        104,
+        38
+      ],
+      "to": [
+        104,
+        33
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.8,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        116,
+        34
+      ],
+      "r": 2,
+      "color": 6
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        34
+      ],
+      "to": [
+        118,
+        29
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.8,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        130,
+        28
+      ],
+      "r": 2,
+      "color": 6
+    },
+    {
+      "op": "streak",
+      "from": [
+        132,
+        28
+      ],
+      "to": [
+        132,
+        23
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.8,
+      "blend": "screen"
+    },
+    {
+      "op": "text",
+      "xy": [
+        56,
+        82
+      ],
+      "s": "THE SONG",
+      "color": 6
+    }
+  ]
+}

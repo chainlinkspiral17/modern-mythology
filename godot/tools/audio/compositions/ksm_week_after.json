@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "the week after",
+    "composer": "RANCH audio room \u00b7 1998 masters, 2002 cart",
+    "for": "week 9 \u00b7 the bell sounds different",
+    "notes": "The summer loop with the arp gone and the lead an octave down, slower. Nobody says so."
+  },
+  "tempo_bpm": 76,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.16,
+      "notes": [
+        {
+          "pitch": "C3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "E3",
+          "bar": 1,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "G3",
+          "bar": 1,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "F3",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "A3",
+          "bar": 2,
+          "beat": 2,
+          "dur": 1.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "G3",
+          "bar": 2,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.36
+        },
+        {
+          "pitch": "C3",
+          "bar": 3,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.36
+        }
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.1,
+      "notes": [
+        {
+          "pitch": "C2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 12.0,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

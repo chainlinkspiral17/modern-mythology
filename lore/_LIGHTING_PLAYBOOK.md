@@ -151,6 +151,449 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-13 · read a light's direction back before trusting its comment
+
+- **The portrait rig's fill and rim were never where their comments
+  said.** Portrait3D.tscn's "FILL · warm tungsten from camera-right low"
+  shone from below and BEHIND the figure; the "BACK RIM" from below. A
+  Transform3D in a .tscn is written row by row; nobody had read the basis
+  back. Faces had one light for months, and every "lighting looks bad"
+  pass tuned colours and energies on lights that never reached a face.
+  Probe it: `str_to_var("Transform3D(...)").basis.z` is where a
+  DirectionalLight3D shines FROM. Better: place lights in code from
+  (yaw, elev) of where they stand (`Portrait3D._light_basis`), so the
+  number says what it does.
+- **Portrait rig for painted (Meshy) faces:** short key on the far side
+  of the nose, ~20° up (low enough to reach the eyes — 45° up makes
+  sockets); fill BESIDE THE LENS a touch under the eye line at ~0.4 of the
+  key (it opens the sockets and lip crease the texture paints dark); rim
+  behind-above on the camera side. Deep skin needs more key and fill and
+  a little specular sheen, or the planes of the face go to mud at night.
+
+
+### 2026-10-12 · a preset without `env` inherits the scene's sky — a day area needs its own
+
+- **The porch rendered under the night sky for four day chapters.**
+  `cabin_porch` had a camera and suffixed lights (`Porch_Sun__cabin_porch`)
+  but no `env`, so the cabin .tscn's night WorldEnvironment applied and
+  the daylight-tagged sun shone under a black sky. A day preset is
+  camera + `env` + `style_pack` + ITS OWN NODES: `find_shot_marker` tries
+  `<name>__<preset>` then the plain name, and `_strip_other_preset_lights`
+  keeps only the preset's suffix and the unsuffixed — so a new preset on a
+  shared scene needs every suffixed node of its area cloned with its own
+  suffix (22 for the porch: markers, named closeups, sun, sky fill, window
+  spills), or its closeups fall to the interior's plain pair and its sun
+  is stripped. Clone by regex over the .tscn; never retype them.
+- **Read the chapters' mood tags before choosing a preset's hour.**
+  Twelve porch chapters: eight dusk / candlelight / night, four day, one
+  dawn. The night env stays the default; the day chapters route to the
+  day preset; dawn is its own (draft N+1).
+
+### 2026-10-11 · a night twin for a set that already has per-preset areas
+
+- **A `__preset` suffix is exact, for lights AND markers.** The cab
+  scene served four day presets (cab / rear / side / altima) off one
+  unsuffixed Sun + Sky_Fill. Adding `vehicle_cab_night` meant the sun
+  could no longer be unsuffixed (it would light the night), and a
+  light can carry only one suffix — so the pair is written four times,
+  once per day preset. Cheap; do it rather than invent a multi-suffix.
+- **Markers do not inherit either.** The Altima's closeups/inserts are
+  `shot_*__vehicle_cab_altima`; `find_shot_marker` tries
+  `<name>__<loaded preset>` then the PLAIN name, so
+  `vehicle_cab_altima_night` would have cut to the pickup's plain
+  closeups (11 m away — inside wrong_room's 12 m, so no audit catches
+  it). The night twin gets its own copies of the area's markers.
+  Audit allow-lists keyed on the full marker name
+  (`vantage DELIBERATE_MARKERS`, `marker_aim KNOWN_UNRESOLVED`) need
+  the twin's entry too.
+- **A night room's practicals are sized for the day.** Lena's floor lamp
+  (1.4 at 3.2 m) lit a sofa, not a room, once the three daylight
+  directionals were gone: the night render was black past the lamp.
+  Pair every night preset with one wide, dim omni at the main
+  practical (0.7 at 7.5 m here) and check the render before the suite.
+
+### 2026-10-10 · a .tscn Transform3D lists basis ROWS: write a light's rotation that way
+
+- A helper that built a directional light from yaw and pitch wrote the
+  rotation matrix's COLUMNS into `Transform3D(...)`. Godot serializes
+  basis ROWS (`basis.rows[i][j]`), so every light came in transposed:
+  the inverse rotation.
+- It still aimed down (the down component often survives transposition),
+  so it looked plausible. But it came from the wrong side: Erica
+  Campbell's sun through her NW glass arrived from the NE. Five scenes
+  carried it until `light_direction_audit` caught one whose transposed
+  ray pointed up.
+- The rule:
+  - Write `Transform3D(r00, r01, r02, r10, r11, r12, r20, r21, r22, ox,
+    oy, oz)` from rows.
+  - The light travels along `-basis.z`, where `basis.z` is column 2:
+    `(r02, r12, r22)`.
+  - After authoring, print that travel vector and check it against the
+    windows the light is meant to come through.
+
+### 2026-10-09 · one set, two times of day: per-preset env + per-preset rigs
+
+- Faust's studio serves a 4 am preset (`faust_bedroom`, night and
+  dream_blur scenes) and a painting-morning preset
+  (`faust_apartment_day`, day_bright). Moods only change the post-process
+  look, so the morning window showed the set's night sky and the room had
+  the moonlit rig.
+- A preset may now carry `"env": {sky_top, sky_horizon, ground_horizon,
+  ground_bottom, ambient_color, ambient_energy, fog_color}`.
+  `Background3D._apply_preset_env` applies it to a COPY of the set's
+  Environment and its ProceduralSkyMaterial, so the other presets keep
+  the authored sky.
+- Each time of day gets its own lights through the `__<preset>` suffix:
+  - The night rig is `__faust_bedroom`: the nightstand lamp, the moon
+    spill, a sodium street lamp two floors down lighting the ceiling, and
+    the blue key.
+  - The morning is `__faust_apartment_day`: the sun through the E window
+    (shadowed, `metadata/daylight`), a shadowless skylight fill, and a
+    floor bounce.
+  - Lights with no suffix (the bathroom vanity, the warm fill) serve both.
+- A practical with a shadowed omni must sit OUT from the fixture's
+  housing. The vanity light 20 cm in front of the mirror cabinet threw
+  the cabinet's shadow down the whole wall below it. 50 cm out, it lights
+  the basin and spills a wedge through the bathroom door.
+- `orphan_practical_audit` strips a `__preset` suffix before it reads a
+  `_Practical` stem.
+- (2026-10-10) Used again in the other direction: a NIGHT-only set gained
+  a day area. `caldwell_porch_night` grew a side lawn for ch23's 3:45 PM
+  party. Its four unsuffixed night lights became `__caldwell_porch_night`
+  (unsuffixed lights serve EVERY preset, so the day would have had the
+  porch lamp and the blue night key on). The new `caldwell_yard_afternoon`
+  brings a suffixed sun and an `env` override. Before you add a second
+  time of day to a set, suffix its existing rig first.
+
+### 2026-10-08 · an OUTSIDE area of a shared set gets its own sun, and the sun follows the mood
+
+- The cabin's porch (`cabin_porch` preset, on cabin_interior.tscn) was lit
+  by the room's rig: a cool 0.45 key with no shadow. It read as dusk under
+  every look. Two mechanisms now:
+  - A Light3D named `<name>__<preset_id>` is dropped by Background3D for
+    every other preset of the set, before it enters the tree, the way the
+    `__preset` markers are. Only a suffix that names a real preset counts:
+    `Prac_PorchScreen_W__2` is a numbered copy and stays.
+  - A light carrying `metadata/daylight` stays out of the lighting-preset
+    rig. MoodCycler scales it by the mood's time of day
+    (`DAYLIGHT_BY_MOOD`: full by day, 0.35 at dusk, off under night and
+    candlelight_low). `[mood:]` is a post-process look and never touched
+    the lights, so a sun would otherwise shine through the porch's night
+    scenes.
+- One orthogonal shadow map (`directional_shadow_mode = 0`, 40 m) suits a
+  small exterior set.
+
+
+### 2026-09-24 · the rooms with no key
+
+- **Fill + practicals is not a lighting rig.** Three rooms (equipment
+  shed, centro stockroom, nightmare cell) had only a 0.06–0.14 fill and
+  their practicals; every insert more than ~3 m from a practical
+  rendered pure black. Each has a KEY now, modelled on the practical
+  that motivates it (the bare bulb, the tube rows, the caged tube),
+  steep, in the practical's colour, low energy — the room keeps its
+  mood and the inserts read.
+- **Judge light on true colour.** The white-albedo weeks made every
+  exposure call meaningless; after VertexColorGuard the night beach at
+  Moon_Key 0.4 was black again. Stay in the published bands.
+
+### 2026-09-24 · keys that shone sideways, rims that shone up
+
+- **An identity transform is a light pointing SIDEWAYS.** 22 key-named
+  lights (hospital room, cabin, foxhole, pit stop, school field,
+  the miller porch…) sat at `Transform3D(1,0,0, 0,1,0, 0,0,1, …)` —
+  Godot's default pose, which shines along −Z, level with the floor.
+  They lit walls edge-on and no floor, no table, no face from above.
+  Now 45° down (the repo's standard key matrix), or 60° for overhead
+  / pendant / bare-bulb keys.
+- **39 BACK / rim lights shared one copied matrix aimed 45° UP.** The
+  foundation table says BACK is "behind subject, down 25°". Mirrored
+  (D·M·D with D = diag(1,−1,1): same heading, Y travel flipped).
+- **FILL may travel up** — the table's FILL is "opposite side, low
+  angle", a warm ground bounce — and is not judged.
+- `light_direction_audit.py` gates it: key Y travel < −0.10, back ≤
+  +0.05; the portrait rig's BackRim (vn/Portrait3D.tscn) is the one
+  named exception — a look call across every character.
+- **MoodCycler re-aims only the KEY, and only in moods that set
+  `sun_pitch_deg`** (all downward). In every other mood the .tscn
+  matrix is what renders. A scene with no light whose name ends in
+  "Key" hands the sun rotation to its FIRST directional — even a fill.
+
+### 2026-09-11 · 158 fixtures that gave no light, and the tool that lights them
+
+- **The 2026-08-19 lesson had not held.** A repo count found 205
+  fixtures standing in rooms and emitting nothing: bulbs in pendants,
+  tubes in fluorescent frames, porch fixtures on twenty houses, the
+  candles on the Mixing Glass booths, the Magician's dock lamps.
+  `tools/audit/practical_author.py` authors the missing ones straight
+  from the tables above — colour by source, `omni_range` ≈ 2× the
+  fixture's height (clamped per source), energy in the published band,
+  `shadow_enabled = false`, named `<Fixture>_Practical` so the .tscn
+  stays grep-able to its geometry.
+- **The budget is what the camera sees.** 8–10 per locale is the rule,
+  so a room with twenty dark fixtures gets ten — the ones NEAREST A
+  PRESET CAMERA, because the rule was always about what is in frame.
+- **The emitter is not the housing.** `FluorFrame`, `Lamp_Canopy`,
+  `Sconce_Back`, the shade and the cord are geometry around a light,
+  not the light; matching them would put an omni inside an opaque box.
+  Same for a fixture the fiction says is broken, burnt or unlit.
+- **First pass: 158 practicals across 48 locales.** Deck read pending —
+  the numbers are the playbook's, but only the screen can say whether
+  the Kwik Stop's three tubes at 1.3 energy are one too many.
+
+### 2026-08-19 · practicals ship WITH the fixture, not after
+
+- The gauntlet-FP builds shipped a week of new fixtures (work
+  light, door lamps, streetlight, candles, kitchen pass, flood)
+  with zero practicals — every one got its Light3D in a follow-up
+  pass. Cheaper rule going forward: **when a builder adds a
+  fixture with a lit face (a _Head, _Lamp, _Glow, _Flame name),
+  the same commit adds the practical** to the locale tscn. The
+  aim-audit pattern applies: name the light Prac_<FixtureName> so
+  the pair greps together.
+- The warehouse taught the interior-dark rule: a "towering
+  ceilings lost in shadow" look still needs two low-energy cool
+  seams (clerestory spill) — unlit dark reads as VOID; lit dark
+  reads as SHAPED dark.
+- The flood-aimed-away pattern (louisiana strip mall): lighting
+  the WRONG end of a set is a storytelling practical — the
+  tracked unit stays dark because the flood points elsewhere,
+  and the player reads intent in the aim.
+
+
+
+### 2026-08-11 · park jog-path practicals (riverfront.tscn)
+
+- **Three ParkLamp omnis added at the real Park_Lamp_0..2 heads**
+  (blender (-52.5,18) (-47.5,30) (-44.5,24), head z 3.95 → godot
+  (bx, 3.95, -by)). Warm lantern (1.0, 0.85, 0.58), energy 2.2,
+  range 9 (3.8m posts × the 2x-height heuristic). The Hierophant
+  §IV and the vol1 jog stage on this arc and had no practicals —
+  the path read flat against the sodium lot glow behind it.
+- Budget note: riverfront.tscn now carries 18 lights (3 foundation
+  + 15 practicals) against the ~12 guideline — accepted because
+  the scene serves five presets spread across dock/lot/park zones
+  and each practical is at a fixture visible from at least one
+  preset. If a future pass needs headroom, the bollards are the
+  first candidates to consolidate.
+
+
+### 2026-08-04 · rig pass x13 · practicals from the builder's coordinates
+
+- **Lighting is the love that lands on pull.** Lights live in the
+  .tscn, not the GLB — a lighting wave needs no Blender rebuild.
+  When the user says the 3D backgrounds need work and the Deck
+  can't rebuild yet, lighting is the highest-leverage lever.
+- **Extract fixture positions from the build scripts; never place
+  practicals by guesswork.** The geometry-audit stub records every
+  make_box/make_cyl — regex the names (lamp/tube/window/sconce/
+  neon) and the practical lands AT the visible fixture, converted
+  blender→godot (x, z, -y). A light with no visible source is a
+  fault; a light glued to its fixture sells the room.
+- **Dedupe emitted practicals by ground distance (~1.5m), not by
+  name.** WindowBay_0_Frame and WindowBar_0_V_0 are the same
+  window; both matching the fixture regex doubled the spill until
+  a distance pass caught it.
+- **13 scenes were below the foundation (1 directional, 2
+  practicals each): asylum_ward_c, ben_bedroom, christian_ice_co,
+  coach_k_bedroom, daigles_roadhouse, ember_ash_office,
+  frog_knows_best, graciela_bedroom, gym_weight_room,
+  miller_garage, miller_office, mixing_glass, roberts_house.**
+  All now carry KEY (salty_tome's hand-tuned D6 matrix) + FILL +
+  BACK plus fixture practicals where the builders declare
+  fixtures. audit_locale_lighting: 100 locales at full
+  foundation, 0 candidates. Draft 2: per-scene mood color on the
+  KEY (a bedroom at night is not an office at noon) — this pass
+  used one house rig.
+
+
+
+### 2026-09-18 · ORPHAN PRACTICALS — the class, gated
+
+- **The two hand-finds were a class of forty-one.** `orphan_practical_
+  audit.py` asks the builder about every named practical: is there a
+  fixture standing where the light is? A first pass on the NAME alone
+  flagged 76 of 289; restricting the claim to fixture words (lamp,
+  bulb, pendant, chandelier, fluor, tube…) and accepting any fixture
+  of any name within 1.5 m of the light — the name is how a fixture
+  is found, not the question — left nine: lights with nothing under
+  them. Spills and glows (`Practical_Overhead`, `JukeboxGlow`,
+  `Forecourt`) are lighting decisions, not claims, and pass.
+- **Four bedrooms shared one light.** diego, jesse, kai and sam all
+  carried `Practical_DeskLamp` at blender (0.80, 1.70, 1.16) — the
+  dorm-room template's desk, in rooms that each have their own lamp
+  1.5–3 m away. Moved onto those lamps (and renamed for the geometry:
+  `Bedside_Lamp_Shade_Practical`), with Natalie's floor lamp onto her
+  scarf lamp and two fluorescents onto their tubes. Only the cafe had
+  no fixture at all — two pendants built (`furniture.make_pendant`:
+  canopy, cord, shade, bulb) with the bulbs where the lights were.
+- **The nearby fixture must be of the light's own class.** The comics
+  back office — "a single overhead with a pull chain" — kept two
+  fluorescent practicals because the bulb hung within 1.5 m of them.
+  The gate now matches families (tube vs point source); they were the
+  last two of the class and are gone.
+- **The rule, now a gate:** when a light is named for a fixture, the
+  fixture must exist and be there; when a fixture is built, its light
+  moves with it. `orphan_practical_audit` runs in the suite at zero.
+
+### 2026-09-17 · the cabin's fluorescents — derived practicals outlive the builder they came from
+
+- **The 08-02 derived practicals were right for the builder of that
+  day and wrong for this one.** cabin_interior shipped two
+  `Fluor*_Practical` omnis at 4000K because its builder THEN carried
+  fluorescent tube fixtures; the builder was rebuilt from the prose
+  a day later ("no electricity: kerosene and candlelight only") and
+  the lights stayed. The room's own bed-alcove scene had the lamp
+  and lantern authored on 09-11 while the main scene — 31
+  placements — kept the tubes. A practical is a claim about a
+  fixture; when the fixture goes, so must the light. Check
+  `<Fixture>_Practical` names against the builder's object names in
+  every rig pass.
+- **Cool key over warm practicals, even indoors.** Key and Fill were
+  both 2100K orange — the room was monochrome by construction. The
+  Key is the window now (overcast 0.70, 0.76, 0.86 at 0.45), the Fill
+  a warm bounce, and the three kerosene practicals (lamp 5 m, lantern
+  2 m, the stove door's ember at 1.0, 0.45, 0.15) carry the warmth.
+  The mood presets still lerp from these as scene_default.
+- **The same class in Lena's apartment: `Practical_DeskLamp` at the
+  dorm-era desk.** The builder was rebuilt from the prose on 08-03;
+  the light stayed at blender (1.05, 1.70, 1.16), which is now air
+  beside the window chair. Replaced by the three sources the room
+  actually has: the floor lamp's bulb (tungsten 1.4), the fairy
+  string as one warm wash mid-wall (0.9), and the laundromat's sodium
+  through the sink window (1.0). Rule, now twice-earned: a practical
+  is a claim about a fixture — grep the builder for the fixture before
+  trusting the light.
+- **`practical_author.py --dry cabin_interior` planned 0 — because it
+  had already lit the lamp and the lantern on 09-11, at the FILE'S
+  TAIL, below the markers.** The fluorescents were the visible lights;
+  the kerosene ones were there all along, and the hand-authored copies
+  duplicated them (caught the next day by the DUPLICATE check in
+  `orphan_practical_audit`). Read the whole .tscn's light list, not
+  the first screen of it, before authoring a practical.
+
+### 2026-08-02 · practicals-from-build-scripts · the zero-practical four
+
+The visual audit found four rooms with NO practicals at all despite
+visible fixtures (cabin_interior, cosmic_comics_back_office,
+pit_stop_interior each ship fluorescent tube fixtures in their
+builders; kowalski_backyard has a kitchen window). Without the GLBs
+on this machine, fixture positions were derived from the BUILD
+SCRIPTS (blender (bx,by,bz) → godot (bx, bz, −by)) and the omnis
+hung 0.2 m below each tube — the same read-the-builder method as the
+camera-preset sweep. Fluorescents got the cool 4000K-ish tint
+(0.86, 0.92, 0.88) at 1.1-1.2 energy; the kitchen window spills
+2700K warm. Kowalski also gained its missing third directional
+(Back_Rim, the standard cool-blue back). audit_locale_lighting now
+reports 71 locales at the full foundation and none of the four in
+the rig-pass list. VERIFY ON DECK: positions are derived, not
+eyeballed against the GLB — if a tube moved since its builder was
+last run, the light floats; re-run the builders if so.
+
+### 2026-07-20 · lighting-coverage audit + the ambient/practical caveat
+
+New tool `godot/tools/audit_locale_lighting.py` reports the three-
+light foundation across all 94 locales: 70 carry >=3 directional
+lights; 24 do not. It tiers the 24 into 10 intentionally LOW-KEY (a
+darkroom's safelight, the nightmare cell, night porches, the god's-eye
+diner with 29 practicals — leave the rig, verify practicals only) and
+14 "normal" rig candidates.
+
+- **BUT "directional < 3" is a proxy, not a verdict.** Reading the
+  flagged rooms (e.g. ember_ash_office) shows many already have a
+  CONSIDERED look via KEY directional + WorldEnvironment ambient +
+  fill/back OmniLight practicals — a valid alternative to three
+  directionals. Baking two more directional lights into those would
+  over-light them.
+- **So the audit is a MAP, not a fix-list.** The actual rig work per
+  locale is eyes-on: energies, colours, and whether a room wants the
+  textbook three-light or a mood-driven single-key look are calls you
+  make looking at the render. Don't bulk-bake rigs blind — that ships
+  a visual change you can't verify (same rule as the gauntlet camera
+  vantages). Run the audit, then rig on-device.
+
+### 2026-07-13 · stray practicals at +Z is a recurring bug — audit every rig
+
+During the scene-standard sweep, FOUR hand-authored locale rigs
+(`le_roulant_casino`, `roberts_kitchen`, `elicia_apartment`,
+`simon_apartment`) shipped with practical OmniLights placed at
+**positive godot Z** — i.e. OUTSIDE the room, which sits at NEGATIVE
+godot Z after the Blender→godot -Y flip. The lights did nothing
+visible (they hung in the void behind the wall), which is exactly why
+the bug survived: a broken practical looks the same as a missing one
+at a glance.
+
+- **Root cause.** Author eyeballed a godot coord from a blender
+  fixture position and forgot the `gz = -by` sign flip. `(x, y, +z)`
+  should almost always have been `(x, y, -z)`.
+- **Audit rule (do this on EVERY lighting-only pass).** Before
+  editing, grep the .tscn for the Z component of every `Practical_*`
+  / fixture OmniLight `transform`. If any practical has a positive Z
+  while the room geometry lives at negative Z, it's outside the room
+  — move it to the mirrored negative Z over the real fixture. A
+  practical that "isn't doing anything" is usually mis-signed, not
+  under-powered — check position before you crank energy.
+- **Smell test.** Room walls at negative Z + a light at positive Z =
+  bug, 95% of the time. The rare legitimate +Z light is a
+  through-a-doorway spill from an adjacent space; those should be
+  named to say so (e.g. `Hall_Spill`).
+
+### 2026-07-13 · corrective +Z audit sweep across 20 flagged locales
+
+Followed the audit rule above against the 20 locales a repo-wide scan
+flagged for practicals at positive godot Z. Verified each light
+against the actual build-script geometry before touching anything.
+Two distinct mis-sign patterns turned up, plus a large set of
+false positives.
+
+- **The two bug shapes.** (1) *Raw-blender paste* — author dropped
+  blender `(bx, by, bz)` straight into the godot transform slots, so
+  the correct fix is the deterministic re-map `(x, y, z) → (x, z, -y)`
+  (un-transpose y/z and negate the new z). Tell it apart by an
+  implausible height in the y-slot (a depth value like 5.8, 7.0,
+  13.2 sitting where a <ceiling height belongs). (2) *Sign-only* —
+  y is already a valid height, only the z sign was forgotten; fix is
+  just `z → -z` (natalie_apartment's floor + bedside lamps). Don't
+  apply the full re-map to a sign-only bug — it would swap a good
+  height out.
+- **FIXED (10 locales, interior rooms at negative Z):** asylum_ward_c
+  (CorridorFluor, CupolaBlue), bayou_lighthouse (LensTopGlow only —
+  its lens sits high up, y/z transposed), christian_ice_co
+  (FreezerCool interior; IceLetterGlow re-mapped but stays +Z since
+  the "ICE" letters are an exterior parapet fixture at blender
+  y=-1.4), daigles_roadhouse (SchlitzNeon, PoolLight),
+  ember_ash_office + roberts_house (the copy-paste VotiveLight/
+  FillBack chapel rig — placed over each room's REAL fixture: the
+  desk at (-0.5,3.2) and the kitchen table at (2.5,2.2), NOT a blind
+  coord copy), frog_knows_best (TankAqua interior; PorchGreen
+  re-mapped but stays +Z — it's a screened porch south of the front
+  wall), lacombe_service_garage (BayWorkLight interior; PoleSignNeon
+  re-mapped, stays +Z as an exterior pole sign), mixing_glass
+  (BarPendantHot, BoothCandleFill), natalie_apartment (sign-only).
+- **VERIFIED-LEGIT, LEFT ALONE (10 locales).** The +Z was correct
+  because the geometry itself lives at/through +Z: bungalow
+  (Practical_Porch over the porch deck at blender y=-1.2), carnival_lot
+  (origin-centered open lot ±9), harmony_commercial (outdoor district;
+  CosmicComics/DAmbrosios interiors at z=+42/+52), hierophant_circuit
+  (OUTDOOR multi-stop — the devotional church is at blender y=-7 i.e.
+  godot z=+7, so mirroring the VotiveLight rig to -Z would strand it
+  at the park bandstand; the copy-paste rig doesn't map cleanly onto
+  this GLB, flagged for a human pass but a -Z "fix" would be wrong),
+  kwik_stop (Practical_StreetlampSpill = named exterior spill),
+  parish_cemetery (origin-centered), riverboat_interior (large boat
+  spanning blender y ±12; ALL flagged lights verified against room
+  centers in the southern +Z half — dining/T17/card/back/catering/
+  lockers/helm), riverfront (documented outdoor dock ±Z), diner
+  (origin-centered + east annex whose south rooms — bathroom,
+  hostess, L-bend, annex hall, priv/west-formal dining — legitimately
+  sit at +Z; every flagged light matched a real fixture).
+- **Biggest takeaway.** The scan's +Z flag is a *lead*, not a verdict.
+  Half the flagged locales were outdoor / origin-centered / multi-room
+  sets where +Z is a real half of the world. Always resolve the light
+  against the build script's actual fixture coords before moving it —
+  a -Z "fix" on a correctly-placed exterior/southern light is worse
+  than the original.
+
 ### 2026-06-14 · spinning up this playbook
 
 The user's verdict on the prior single-spotlight setup: "this

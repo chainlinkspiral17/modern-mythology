@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "the drafting table",
+    "composer": "authored for COMMUNITY PLANNED",
+    "for": "CommunityPlannedGame \u00b7 strategic-day bed (rotates with vol5_ambient)",
+    "notes": "Frasier's planning document on the desk at mid-morning. 24 bars at 66 BPM in D minor \u00b7 room-tone drone, a patient four-chord pad (Dm \u2013 Bb \u2013 F \u2013 C) that never hurries, the office fluorescent barely present, and a soft survey-grid motif that surfaces twice and files itself away. Authored to sit UNDER a UI."
+  },
+  "tempo_bpm": 66,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.26,
+      "notes": [
+        {
+          "pitch": "D2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 96.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "fluorescent_hum",
+      "gain": 0.06,
+      "notes": [
+        {
+          "pitch": "A4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 96.0,
+          "vel": 0.3
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.22,
+      "notes": [
+        {
+          "pitch": "D3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "A3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "A#2",
+          "bar": 7,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "D3",
+          "bar": 7,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "F3",
+          "bar": 7,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "F3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "C4",
+          "bar": 13,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "C3",
+          "bar": 19,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "E3",
+          "bar": 19,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "G3",
+          "bar": 19,
+          "beat": 1,
+          "dur": 24.0,
+          "vel": 0.22
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.14,
+      "notes": [
+        {
+          "pitch": "D5",
+          "bar": 5,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "A4",
+          "bar": 5,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.24
+        },
+        {
+          "pitch": "F5",
+          "bar": 11,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "D5",
+          "bar": 11,
+          "beat": 3,
+          "dur": 4.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "E5",
+          "bar": 17,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "C5",
+          "bar": 17,
+          "beat": 3,
+          "dur": 4.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "A4",
+          "bar": 22,
+          "beat": 1,
+          "dur": 8.0,
+          "vel": 0.24
+        }
+      ]
+    }
+  ]
+}

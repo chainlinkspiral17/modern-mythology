@@ -1,702 +1,478 @@
-"""Maya Daigle's bedroom — upstairs at her grandmother's house,
-lot 7 Phase I, Harmony Creek Estates — vol6 hero locale (9 VN
-scene refs: vol6_ch0_prelude, ch1/ch2/ch6 maya_bedroom, ch4
-maya_floor, ch5_radio close, ch14_live_oak, ch21_porch close,
-ch23_sleep).
+"""Maya's Bedroom — vol6 — Maya Daigle (vol6_ch2: "Maya Daigle's Bedroom";
+she lives with her grandmother Linda in the house on the cul-de-sac —
+2026-10-09: this docstring had her as "Maya Miller (Chief Miller's
+daughter)", which is Sam), a sharp, observant teenage girl. Distinct LAVENDER + teal palette and a
+teen-girl prop set (vanity + round mirror + string lights, a bulletin
+board of photos & concert tickets, a bookshelf of paperbacks, a record
+player, plants, a patterned duvet + throw pillows, a hamper, a rug) so
+the room reads unmistakably as HERS — not a reskin of Sam's.
 
-An original-1991 HCE house (the scene JSONs name the grandmother
-Ms. LINDA CALDWELL / "the Caldwell cul-de-sac"; the older
-maya_daigle.md lore doc says Connie Daigle — the JSONs are treated
-as current). Maya is sixteen: zine cartoonist (NEWS FROM HARMONY
-CREEK, "by M.D."), the room is a working studio disguised as a
-bedroom. Canon baked in:
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3): turned desk legs and
+an apron, a real desk lamp (weighted base, bent arm, cone head, bulb),
+pulls on the nightstand and vanity, perfume bottles as bottles, the
+record player with a record on the platter and a tonearm, the crate
+slotted, the hamper a basket with a lid, the fairy string strung; HER
+DOOR (the opening had no leaf) with stickers; first WEAR; D3 switch,
+outlets, five cords; D5 the backyard through the north window (the
+shared `make_backyard_view`). The .tscn gains the fairy string's wash.
 
-  · vol6_ch1/ch2/ch6/ch14 — THE THINKPAD, open on the desk (the
-    F.T. chat window is the volume's mainline). Screen faces the
-    desk chair; a pale chat rectangle is lit on the lid.
-  · vol6_ch0_prelude — the spiral notebook she writes in
-    cross-legged on the bed at 6:16; ch2 "she does not, tonight,
-    write in the notebook. She lies down. She turns off the
-    lamp." — notebook + pen + lamp on the nightstand.
-  · vol6_ch14 — "her phone on the nightstand".
-  · vol6_ch6 / ch21 — "the pale yellow ceiling" (flat drywall,
-    house fixture — NOT commercial fluorescents; the scaffold's
-    tube fixtures were Kwik Stop vocabulary and are gone).
-  · vol6_ch4_maya_floor — "the original 1991 pine, worn to a soft
-    honey color"; "counting boards from the window. Three in. The
-    third board looks no different from the others." The boards
-    run E-W and are counted south from the window wall. The third
-    board is baked as its own mesh (Floor_Board3_FromWindow) in
-    the SAME color — it must look no different — with its two end
-    joints, and the rug lies over it ("The rug has been pulled
-    back" — so the rug's resting state covers it). The envelope
-    ("for whoever is ready") is inside the cavity: NOT modeled.
-  · vol6_ch23_sleep — "The fan is on" (box fan by the window);
-    "the cicadas are loud" (window); the school-supplies box from
-    the New Auburn Walmart (binder / pens / index cards / the new
-    notebook saved for the first day) staged by the desk.
-  · vol6_ch1 — she lies down ON TOP of the bedspread: the bed is
-    made, spread pulled square, pillow at the window end.
-  · maya_daigle.md §I — zine production is FINELINER PEN + GREY
-    MARKER, quarter-letter (3.5 × 4.25 in) pages; issue #23
-    ("F.T.") pencils are complete and laid out on the desk with a
-    pencil. Photocopying happens at the Cosmic Comics machine on
-    Sunday mornings — NO copier, NO printer, NO typewriter here.
-  · maya_daigle.md §II — GENERAL STORE: 187 pages of 8.5 × 11
-    printer paper "stored in a single hardback portfolio she
-    keeps under her bed" — the portfolio is under the bed, its
-    east edge just proud of the rail. The paper supply (the ream
-    Rick over-orders for her) sits on the bookcase.
-  · maya_daigle.md §III — the A5 black sketchbook ("NOT FOR
-    PUBLICATION · NOT YET · M.D.") closed on the desk, white
-    label strip on the cover.
-  · maya_daigle.md §V — THE CLOSET BOX (12 × 8 × 6 in, her
-    father's last in-person gift; the mixtape, the printed F.T.
-    chat logs, the Polaroid, the four ANYA tapes are all INSIDE
-    it and are not modeled loose). Treatment matches Philip's box
-    in the Cosmic back office: PRESENT, OCCLUDED, NEVER
-    ANNOUNCED — it sits on the closet floor in the south bay,
-    behind the closed bypass door panel, next to an ordinary
-    shoebox. Nothing points at it.
-  · Her working method ("text, comix, and small map fragments")
-    dresses the wall: corkboard over the desk with pinned
-    quarter-letter sheets + a small hand-drawn map fragment; two
-    of her own ink drawings taped over the bed.
-  · Exterior (second floor — ch4 "Maya goes downstairs", ch5 "the
-    upstairs window is lit"): the porch roof directly below the
-    window (ch14/ch21 porch canon), the cul-de-sac below, the
-    cedar across the cul-de-sac (ch14 "the cicadas, in the cedar
-    across the cul-de-sac"), and the Geller porch light at the
-    end of the Caldwell cul-de-sac, on (ch23).
+DRAFT 5 (2026-10-09): the upstairs — the hall outside her door and her
+grandmother's room across it, where ch2 stages the closeup grandmother,
+the hands and the shortwave on 1776 kHz (build_upstairs_2026_10).
 
-Canon-NEGATIVES honored (what this room does NOT have):
-  · No radio, no shortwave, no boombox — the 1776 kHz radio is in
-    the GRANDMOTHER'S room (ch2/ch5); the dual-cassette boombox is
-    hers too (maya_daigle.md §IV).
-  · No photocopier / printer / typewriter (Cosmic Comics Sundays).
-  · No "THE FUND" jar (it lives at the Cosmic Comics back counter).
-  · No cat bed — the half-Kowalski cat is at the Kowalskis'
-    (ch23: "Maya is alone in her room").
-  · No band/movie posters — the only wall art is her own work.
-  · No commercial fluorescents, no crown molding (1991 tract).
-
-Shell footprint kept from the scaffold (4 × 5 m, CEIL 2.6, door
-gap in the south wall x −1..+1 — the Background3D camera preset
-(0, 2.30, +0.5 / yaw 180 / fov 60) is tuned to it; closed door
-leaf + infills per the Lena-apartment pattern, ch2 "She closes
-her door."). Window is a REAL OPENING with frame + sash + muntins,
-no glass (playbook no-transparency rule).
-
-NOTE: build_caldwell_kitchen_night / _porch_night /
-_radio_room_night are still raw scaffolds. When they get their
-hero passes, graduate the CALDWELL_* constants below into a
-shared KEEP-IN-SYNC block (Miller-house pattern).
+DRAFT 6 targets: the corkboard's photos as photos; the bookshelf's
+paperbacks at a lean; the vanity mirror's frame as a lathe ring; the
+duvet's pattern (the teal band as a real stripe); the box fan's blades;
+Deck: the sheet's establish at night and `insert floorboard`.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_wall, make_door_hinges
-from _props.safety import make_smoke_detector, make_hvac_vent
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
+from _props.furniture import make_bed, make_lamp
+from _props.geometry import make_blob
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
+from _props.shelving import make_snack_aisle, make_endcap
+from _props.food_service import make_coffee_pots, make_donut_display
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
+from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
-# ── Shell (footprint kept from the scaffold — camera-safe) ───────
-ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 4.8; ROOM_D = 5.6; CEIL = 2.6
+# Lavender walls, teal accent — cool, distinct from the boys' tan rooms.
+PAL_WALL = {"wall": (0.74, 0.68, 0.86, 1.0), "baseboard": (0.50, 0.44, 0.62, 1.0)}
+COL_FLOOR = (0.70, 0.60, 0.50, 1.0); COL_SEAM = (0.44, 0.34, 0.26, 1.0); COL_WOOD = (0.56, 0.42, 0.52, 1.0)
+COL_ACCENT = (0.36, 0.72, 0.70, 1.0)     # teal
+COL_DUVET = (0.60, 0.42, 0.72, 1.0)      # violet duvet
+COL_DUVET2 = (0.42, 0.70, 0.68, 1.0)     # teal patterned band
+COL_PILLOW = (0.94, 0.80, 0.86, 1.0)     # blush throw pillows
 
-# ── CALDWELL HOUSE constants (graduate to a shared block when the
-#    sibling caldwell_* rooms get their hero passes) ──────────────
-CALDWELL_INT_WALL  = (0.90, 0.86, 0.75, 1.0)   # 1991 builder warm white
-CALDWELL_BASEBOARD = (0.46, 0.35, 0.24, 1.0)
-CALDWELL_TRIM      = (0.93, 0.91, 0.85, 1.0)   # painted door/window trim
-CALDWELL_CEIL_YEL  = (0.93, 0.89, 0.70, 1.0)   # THE pale yellow ceiling
-CALDWELL_PINE      = (0.72, 0.56, 0.36, 1.0)   # original pine, worn honey
-CALDWELL_PINE_SEAM = (0.50, 0.37, 0.23, 1.0)
-CALDWELL_SIDING    = (0.84, 0.80, 0.70, 1.0)   # exterior lap siding
-CALDWELL_ROOF      = (0.33, 0.27, 0.23, 1.0)   # shingle (porch roof below)
-
-# ── Maya's room palette (muted, purple-accented — her dyed tips) ─
-COL_WOOD      = (0.50, 0.37, 0.24, 1.0)   # furniture pine/oak
-COL_WOOD_DK   = (0.31, 0.23, 0.16, 1.0)
-COL_PLUM      = (0.44, 0.36, 0.50, 1.0)   # the accent: bedspread/curtains
-COL_PLUM_DK   = (0.32, 0.26, 0.38, 1.0)
-COL_QUILT_BND = (0.60, 0.55, 0.46, 1.0)   # bedspread band
-COL_LINEN     = (0.90, 0.88, 0.82, 1.0)
-COL_CHARCOAL  = (0.16, 0.15, 0.16, 1.0)   # ThinkPad / portfolio
-COL_SCREEN    = (0.10, 0.12, 0.16, 1.0)   # lid glass, dark
-COL_CHATGLOW  = (0.84, 0.87, 0.84, 1.0)   # the lit chat window
-COL_CORK      = (0.62, 0.47, 0.31, 1.0)
-COL_INK       = (0.24, 0.22, 0.22, 1.0)   # fineliner ink
-COL_PENCIL    = (0.58, 0.57, 0.55, 1.0)   # pencil-line grey
-COL_MARKER_GY = (0.55, 0.55, 0.53, 1.0)   # her grey markers
-COL_CARDBOARD = (0.66, 0.52, 0.34, 1.0)
-COL_BRASS     = (0.70, 0.57, 0.30, 1.0)
-COL_LAMP_GLOW = (0.98, 0.88, 0.62, 1.0)
-COL_FAN_BODY  = (0.80, 0.79, 0.75, 1.0)
-COL_NIGHT_LAWN = (0.22, 0.28, 0.18, 1.0)  # cul-de-sac below, dusk
-COL_ASPHALT   = (0.16, 0.16, 0.17, 1.0)
-COL_CONCRETE  = (0.50, 0.49, 0.45, 1.0)
-COL_CEDAR     = (0.20, 0.30, 0.20, 1.0)   # the cedar across the cul-de-sac
-COL_CEDAR_DK  = (0.15, 0.24, 0.16, 1.0)
-COL_PORCHBULB = (1.00, 0.88, 0.60, 1.0)   # the Geller porch light, on
-BOOK_TINTS = [(0.48, 0.30, 0.24, 1.0), (0.28, 0.36, 0.42, 1.0),
-              (0.62, 0.54, 0.34, 1.0), (0.36, 0.30, 0.38, 1.0),
-              (0.70, 0.64, 0.52, 1.0), (0.44, 0.36, 0.50, 1.0)]
-GARMENT_TINTS = [(0.16, 0.15, 0.16, 1.0),   # the black hoodie
-                 (0.48, 0.24, 0.20, 1.0),   # flannel
-                 (0.30, 0.36, 0.46, 1.0),   # denim jacket
-                 (0.55, 0.55, 0.53, 1.0)]   # grey tee
-
-PAL_WALL = {"wall": CALDWELL_INT_WALL, "baseboard": CALDWELL_BASEBOARD}
-
-# Window opening in the north wall (real opening, no glass)
-WIN_W = 1.30                # opening x −0.65..+0.65
-WIN_SILL = 0.95
-WIN_HEAD = 2.15
-WALL_N_FACE = ROOM_D - 0.10   # interior face y 4.9
-GRADE_Z = -3.20               # cul-de-sac grade (second-floor room)
-BOARD_W = 0.24                # pine board width — boards run E-W,
-                              # counted SOUTH from the window (ch4)
-
-
-# ═════════════════════════════════════════════════════════════════
-# SHELL — original-1991 pine plank floor (boards run E-W; the
-# THIRD BOARD FROM THE WINDOW is its own mesh, same color — "looks
-# no different from the others", vol6_ch4), warm-white walls, the
-# PALE YELLOW flat drywall ceiling (vol6_ch6/ch21), south door gap
-# kept with a closed white four-panel door (ch2 "She closes her
-# door"), no crown molding (1991 tract house).
-# ═════════════════════════════════════════════════════════════════
 def build_shell():
-    # Floor slab + E-W board seams every 0.24 m from the window wall
-    make_box("Floor_Slab", (0.0, ROOM_D / 2.0, -0.05), (ROOM_W + 0.4, ROOM_D + 0.4, 0.10),
-             CALDWELL_PINE)
-    for k in range(1, 21):
-        sy = WALL_N_FACE - BOARD_W * k
-        make_box(f"Floor_Seam_{k}", (0.0, sy, 0.001), (ROOM_W + 0.4, 0.018, 0.002),
-                 CALDWELL_PINE_SEAM)
-    # Scattered board end-joints (deterministic — no RNG)
-    for ji, (jx, jy) in enumerate([(-1.2, 3.82), (0.9, 2.14), (-0.3, 1.42),
-                                   (1.4, 4.54), (-1.6, 0.82), (0.4, 3.10)]):
-        make_box(f"Floor_Joint_{ji}", (jx, jy, 0.001), (0.018, BOARD_W - 0.02, 0.002),
-                 CALDWELL_PINE_SEAM)
-    # THE THIRD BOARD FROM THE WINDOW (vol6_ch4) — board 3 spans
-    # y 4.18..4.42. Its own mesh + its two end joints, floor color:
-    # it must look no different. The cavity + envelope are beneath
-    # it and are not modeled. The rug (build_rug) rests over it.
-    make_box("Floor_Board3_FromWindow", (0.05, WALL_N_FACE - BOARD_W * 2.5, 0.0008),
-             (1.20, BOARD_W - 0.02, 0.0016), CALDWELL_PINE)
-    for ei, ex in enumerate((-0.55, 0.65)):
-        make_box(f"Floor_Board3_Joint_{ei}", (ex, WALL_N_FACE - BOARD_W * 2.5, 0.001),
-                 (0.018, BOARD_W - 0.02, 0.002), CALDWELL_PINE_SEAM)
-    # Walls — west / east full runs
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=bb)
-    # North wall — REAL window opening x −0.65..+0.65
-    seg_len = (ROOM_W / 2.0 - WIN_W / 2.0) + 0.20     # 1.55
-    seg_cx = WIN_W / 2.0 + seg_len / 2.0              # 1.425
-    make_wall("Wall_N_W", (-seg_cx, ROOM_D, 0), length=seg_len, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N_E", (+seg_cx, ROOM_D, 0), length=seg_len, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
-    make_box("Wall_N_SillFill", (0.0, ROOM_D, WIN_SILL / 2.0), (WIN_W, 0.20, WIN_SILL),
-             CALDWELL_INT_WALL)
-    make_box("Wall_N_HeadFill", (0.0, ROOM_D, (WIN_HEAD + CEIL) / 2.0),
-             (WIN_W, 0.20, CEIL - WIN_HEAD), CALDWELL_INT_WALL)
-    # South wall — scaffold door gap x −1..+1 kept (camera preset)
-    make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0), length=ROOM_W / 2.0 - 1.0,
-              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.5), 0.0, 0), length=ROOM_W / 2.0 - 1.0,
-              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.30), (2.0, 0.20, 0.60),
-             CALDWELL_INT_WALL)
-    # Gap infill either side of the 0.90 m door leaf
-    for nm, fx in [("Wall_S_FillW", -0.725), ("Wall_S_FillE", +0.725)]:
-        make_box(nm, (fx, 0.0, 1.15), (0.55, 0.20, 2.30), CALDWELL_INT_WALL)
-    # THE PALE YELLOW CEILING (vol6_ch6: "The pale yellow ceiling.")
-    make_box("Ceil_Plane", (0.0, ROOM_D / 2.0, CEIL + 0.05),
-             (ROOM_W + 0.4, ROOM_D + 0.4, 0.10), CALDWELL_CEIL_YEL)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.50, 1.20, 1.00)])   # cut 2026-10-07: the window was a pane on a solid wall
+    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+                 with_grid=False, with_stains=False,
+                 palette={"tile": (0.96, 0.93, 0.74, 1.0)})  # the pale yellow ceiling
+    for nm, ax, length, wx, wy in [
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10),
+            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
+
+def build_bed():
+    # Re-arranged (2026-07-15): bed pushed under the N window, headboard
+    # against the N wall — frees the W wall for the vanity and reads
+    # distinct from the shared -ROOM_W/4 side-wall twin. Keeps her
+    # violet/teal duvet + throw pillows.
+    bx, by = 0.0, ROOM_D - 1.15
+    # the shared bed, violet duvet made (2026-09-07); the headboard stays
+    from _props.furniture import make_bed
+    # "frame" (open underneath): the loose floorboard, the envelope and
+    # the photograph hide UNDER this bed and their inserts look under it
+    make_bed("Bed", bx, by, head="+Y", w=1.24, d=1.86, style="frame",
+             frame_col=(0.52, 0.40, 0.50, 1.0), mattress_col=(0.92, 0.86, 0.84, 1.0),
+             blanket_col=COL_DUVET, pillow_col=P.PAPER, pillows=2, made=True, headboard=True)
+    # Throw pillows in front of the sleeping pillow
+    make_chamfer_box("Bed_ThrowPillow_A", (bx-0.30, by+0.12, 0.67), (0.34, 0.34, 0.16), COL_PILLOW)
+    make_chamfer_box("Bed_ThrowPillow_B", (bx+0.30, by+0.12, 0.67), (0.34, 0.34, 0.16), COL_ACCENT)
+
+def build_desk_lamp():
+    # end against the E wall face at 1.90 (2026-09-23: 6 cm into it)
+    dx, dy = ROOM_W/2.0 - 0.60, 1.5   # end against the E wall; the bed owns the N wall (2026-09-07)
+    # draft 4 (2026-09-18): chamfered top, apron, turned legs; the lamp
+    # a weighted base, a bent arm, a cone head
+    make_chamfer_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD, chamfer=0.01)
+    make_box("Desk_Apron_F", (dx, dy-0.27, 0.68), (0.88, 0.02, 0.08), (0.46, 0.34, 0.44, 1.0))
+    for li in range(4):
+        lx, ly = dx+(-0.44,+0.44,-0.44,+0.44)[li], dy+(-0.24,-0.24,+0.24,+0.24)[li]
+        make_lathe(f"Desk_Leg_{li}", (lx, ly, 0.0), [(0.022, 0.0), (0.03, 0.05), (0.02, 0.10), (0.026, 0.30), (0.032, 0.40), (0.022, 0.55), (0.022, 0.68), (0.03, 0.72)], COL_WOOD, segments=8)
+    make_lathe("Lamp_Base", (dx-0.30, dy+0.20, 0.76), [(0.07, 0.0), (0.065, 0.02), (0.03, 0.035), (0.012, 0.04), (0.0, 0.04)], P.METAL_BLACK, segments=10)
+    make_tube("Lamp_Arm", [(dx-0.30, dy+0.20, 0.80), (dx-0.30, dy+0.20, 1.02), (dx-0.22, dy+0.20, 1.14)], 0.01, P.METAL_BLACK, segments=5)
+    make_lathe("Lamp_Head", (dx-0.20, dy+0.20, 1.10), [(0.0, 0.0), (0.03, 0.0), (0.065, 0.10), (0.06, 0.11), (0.0, 0.11)], COL_ACCENT, segments=10)
+    make_lathe("Lamp_Bulb", (dx-0.20, dy+0.20, 1.11), [(0.0, 0.0), (0.02, 0.005), (0.024, 0.03), (0.0, 0.05)], (0.98, 0.94, 0.80, 1.0), segments=8)
+    # A laptop, open, on the desk
+    make_box("Laptop_Base", (dx+0.16, dy+0.06, 0.77), (0.34, 0.24, 0.03), P.METAL_STEEL)
+    make_box("Laptop_Screen", (dx+0.16, dy+0.18, 0.90), (0.34, 0.02, 0.24), (0.62, 0.80, 0.92, 1.0))
+    # A little stack of paperbacks
+    for bi in range(3):
+        make_box(f"Desk_Book_{bi}", (dx-0.36, dy-0.14+bi*0.05, 0.79+bi*0.05), (0.16, 0.24, 0.05),
+                 P.SNACK_TINTS[bi%len(P.SNACK_TINTS)])
+
+def build_posters():
+    # HER west wall (2026-10-08): it carried the same three posters as
+    # Sam's, the third half behind her corkboard — on the contact sheet
+    # the two rooms were one room. A mandala tapestry in her lavender and
+    # teal, hung by its rod, its fringe loose; the corkboard stays hers.
+    wx = -ROOM_W/2.0 + 0.10 + 0.0025           # on the wall's face
+    ty, tz, tw, th = 2.10, 1.62, 1.50, 1.10
+    make_box("Tapestry_Body", (wx, ty, tz), (0.005, tw, th), (0.22, 0.38, 0.42, 1.0))
+    for k, (r, col) in enumerate(((0.46, (0.66, 0.56, 0.78, 1.0)), (0.36, (0.92, 0.88, 0.78, 1.0)),
+                                  (0.26, (0.30, 0.56, 0.58, 1.0)), (0.15, (0.82, 0.52, 0.58, 1.0)),
+                                  (0.06, (0.96, 0.90, 0.70, 1.0)))):
+        make_cyl(f"Tapestry_Ring_{k}", (wx + 0.0035 + 0.0021 * k, ty, tz), r, 0.002, col, axis='X', segments=20)
+    for ci, (dy, dz) in enumerate(((-0.58, 0.40), (0.58, 0.40), (-0.58, -0.40), (0.58, -0.40))):
+        make_cyl(f"Tapestry_Corner_{ci}", (wx + 0.0035, ty + dy, tz + dz), 0.08, 0.002, (0.66, 0.56, 0.78, 1.0), axis='X', segments=12)
+    for e in (-1, 1):
+        make_box(f"Tapestry_Border_{e:+d}", (wx + 0.0035, ty, tz + e * (th / 2.0 - 0.04)), (0.002, tw - 0.06, 0.03), (0.92, 0.88, 0.78, 1.0))
+    make_cyl("Tapestry_Rod", (wx + 0.012, ty, tz + th / 2.0 + 0.012), 0.012, tw + 0.12, (0.52, 0.40, 0.28, 1.0), axis='Y', segments=8)
+    for fi in range(14):
+        make_box(f"Tapestry_Fringe_{fi}", (wx, ty - tw / 2.0 + 0.06 + fi * (tw - 0.12) / 13.0, tz - th / 2.0 - 0.035),
+                 (0.004, 0.012, 0.07), (0.92, 0.88, 0.78, 1.0))
+
+def build_rug():
+    make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_ACCENT)
+
+def build_win():
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00, see_through=True)
+
+def build_ceiling_infra():
+    # A 1991 bedroom: one dome fixture, no shop tubes (lamp is the
+    # scene light — "She turns off the lamp.")
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
+    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
 
-# ═════════════════════════════════════════════════════════════════
-# DOOR — closed white four-panel leaf in the south gap (ch2 "She
-# closes her door."), casing, brass knob, hinges. Her school
-# backpack leans on the wall east of it (ch23 — packed for the
-# first morning).
-# ═════════════════════════════════════════════════════════════════
-def build_door():
-    make_box("Door_Leaf", (0.0, 0.03, 1.03), (0.90, 0.05, 2.06), CALDWELL_TRIM)
-    for ci, px in enumerate((-0.20, +0.20)):
-        for ri, (pz, ph) in enumerate([(0.60, 0.75), (1.52, 0.85)]):
-            make_box(f"Door_Panel_{ci}_{ri}", (px, 0.062, pz), (0.30, 0.012, ph),
-                     (0.86, 0.84, 0.78, 1.0))
-    make_cyl("Door_Knob", (0.35, 0.075, 0.98), 0.028, 0.045, COL_BRASS, axis='Y')
-    make_door_hinges("Door_Hinge", edge_x=-0.43, edge_y=0.06,
-                     edge_z_centers=[0.35, 1.03, 1.75], axis='X')
-    for sgn in (-1, +1):
-        make_box(f"Door_Casing_{sgn:+d}", (sgn * 0.50, 0.11, 1.06), (0.09, 0.05, 2.12),
-                 CALDWELL_TRIM)
-    make_box("Door_CasingHead", (0.0, 0.11, 2.16), (1.09, 0.05, 0.10), CALDWELL_TRIM)
-    # Backpack against the wall east of the door (ch23 — she lays
-    # the supplies out "in the order she will pack them")
-    make_box("Backpack_Body", (0.78, 0.28, 0.24), (0.28, 0.18, 0.48), COL_PLUM_DK)
-    make_box("Backpack_Pocket", (0.78, 0.40, 0.16), (0.22, 0.06, 0.24), COL_PLUM)
-    make_box("Backpack_Strap", (0.66, 0.30, 0.30), (0.04, 0.14, 0.34),
-             (0.24, 0.20, 0.28, 1.0))
+def build_dressing():
+    """Teen-girl dressing: a vanity with a ROUND mirror + trinket bottles,
+    warm string lights along the north wall, a bulletin board of photos &
+    concert tickets, a bookshelf of paperbacks, a record player on a
+    crate, a hamper, and a floor plant."""
+    bx, by = 0.0, ROOM_D - 1.15
+    # Nightstand + alarm clock beside the bed
+    nsx = bx + 0.95
+    make_chamfer_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_box("Clock", (nsx, by+0.7, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
+    make_lathe("Nightstand_Pull", (nsx, by+0.7-0.205, 0.40), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.66, 0.60, 0.42, 1.0), segments=8)
+    # Vanity dresser against the east wall: body, three drawers, ROUND mirror
+    vx = ROOM_W/2.0 - 0.35   # against the E wall face (2026-09-23: 5 cm into it)
+    make_chamfer_box("Vanity_Body", (vx, ROOM_D-1.2, 0.42), (0.50, 0.90, 0.84), COL_WOOD)
+    for di in range(3):
+        make_box(f"Vanity_Drawer_{di}", (vx-0.26, ROOM_D-1.2, 0.24+di*0.24), (0.02, 0.80, 0.18), (0.44, 0.32, 0.42, 1.0))
+        make_lathe(f"Vanity_Pull_{di}", (vx-0.27, ROOM_D-1.2, 0.23+di*0.24), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.66, 0.60, 0.42, 1.0), segments=8)
+    # hung on the wall over the vanity (2026-09-23: it stood in the air
+    # 12 cm over the top and 20 cm off the wall)
+    make_cyl("Vanity_Mirror", (ROOM_W/2.0 - 0.145, ROOM_D-1.2, 1.34), 0.34, 0.03, (0.80, 0.86, 0.92, 0.6), axis='X', segments=16)
+    make_cyl("Vanity_MirrorFrame", (ROOM_W/2.0 - 0.115, ROOM_D-1.2, 1.34), 0.38, 0.03, COL_ACCENT, axis='X', segments=16)
+    # Perfume/trinket bottles on the vanity top
+    for ti, tc in enumerate([(0.86, 0.62, 0.72, 1.0), (0.62, 0.78, 0.86, 1.0), (0.92, 0.82, 0.42, 1.0)]):
+        make_lathe(f"Trinket_{ti}", (vx-0.1, ROOM_D-1.5+ti*0.2, 0.84),
+                   [(0.02, 0.0), (0.03, 0.01), (0.032, 0.06 + 0.01 * ti), (0.018, 0.09 + 0.01 * ti), (0.012, 0.11 + 0.01 * ti), (0.016, 0.125 + 0.01 * ti), (0.0, 0.13 + 0.01 * ti)],
+                   tc, segments=8)
+    # Bulletin board (cork) with a scatter of photos + concert tickets, west wall
+    bbx = -ROOM_W/2.0 + 0.12   # on the wall's face (2026-10-09: the corkboard and its pins stood inside the wall)
+    make_box("Corkboard", (bbx, ROOM_D-1.0, 1.55), (0.04, 1.10, 0.80), (0.62, 0.46, 0.30, 1.0))
+    for pi in range(6):
+        col = (0.90, 0.88, 0.82, 1.0) if pi % 2 == 0 else P.SNACK_TINTS[pi % len(P.SNACK_TINTS)]
+        oy = ROOM_D-1.4 + (pi % 3) * 0.34
+        oz = 1.30 + (pi // 3) * 0.36
+        make_box(f"Pin_{pi}", (bbx+0.03, oy, oz), (0.01, 0.24, 0.18), col)
+    # Bookshelf of paperbacks against the north wall
+    shx = ROOM_W/2.0 - 0.9
+    # (2026-09-08: was one solid block with the books INSIDE it —
+    # now a carcass: back, sides, top, three boards the books sit on)
+    make_box("Bookshelf_Back", (shx, ROOM_D-0.08, 0.90), (0.90, 0.02, 1.80), COL_WOOD)
+    for sx_ in (-1, 1):
+        make_box(f"Bookshelf_Side_{sx_:+d}", (shx + sx_ * 0.44, ROOM_D-0.20, 0.90), (0.02, 0.26, 1.80), COL_WOOD)
+    make_box("Bookshelf_Top", (shx, ROOM_D-0.20, 1.79), (0.90, 0.26, 0.02), COL_WOOD)
+    for r_ in range(3):
+        make_box(f"Bookshelf_Board_{r_}", (shx, ROOM_D-0.20, 0.26 + r_*0.52), (0.86, 0.24, 0.02), COL_WOOD)
+    for r in range(3):
+        for c in range(7):
+            make_box(f"Book_{r}_{c}", (shx-0.42+c*0.12, ROOM_D-0.22, 0.42+r*0.52),
+                     (0.10, 0.20, 0.30), P.SNACK_TINTS[(r*7+c) % len(P.SNACK_TINTS)])
+    # Record player on a milk crate, SE
+    rcx, rcy = ROOM_W/2.0-0.4, 0.8
+    make_chamfer_box("Crate", (rcx, rcy, 0.24), (0.44, 0.44, 0.48), (0.42, 0.52, 0.62, 1.0), chamfer=0.01)
+    for si2 in range(3):
+        make_box(f"Crate_Slot_{si2}", (rcx - 0.222, rcy, 0.12 + si2 * 0.12), (0.004, 0.36, 0.05), (0.30, 0.38, 0.46, 1.0))
+    make_chamfer_box("RecordPlayer", (rcx, rcy, 0.52), (0.42, 0.42, 0.10), P.METAL_BLACK, chamfer=0.008)
+    make_cyl("RecordPlatter", (rcx, rcy, 0.58), 0.16, 0.01, (0.14, 0.14, 0.16, 1.0), segments=16)
+    make_cyl("Record", (rcx, rcy, 0.588), 0.15, 0.003, (0.08, 0.08, 0.09, 1.0), segments=20)
+    make_cyl("Record_Label", (rcx, rcy, 0.5905), 0.05, 0.002, (0.86, 0.62, 0.72, 1.0), segments=12)
+    make_lathe("Tonearm_Pivot", (rcx + 0.17, rcy - 0.16, 0.57), [(0.02, 0.0), (0.02, 0.03), (0.0, 0.03)], P.METAL_STEEL, segments=8)
+    make_tube("Tonearm", [(rcx + 0.17, rcy - 0.16, 0.605), (rcx + 0.05, rcy + 0.02, 0.60)], 0.005, P.METAL_STEEL, segments=5)
+    # Wicker hamper, corner
+    # against the W wall's face (2026-09-25: 12 cm off it)
+    make_lathe("Hamper", (-ROOM_W/2.0+0.39, 0.6, 0.0), [(0.21, 0.0), (0.23, 0.02), (0.27, 0.62), (0.28, 0.66), (0.26, 0.68), (0.0, 0.66)], (0.74, 0.62, 0.44, 1.0), segments=12)
+    make_lathe("Hamper_Lid", (-ROOM_W/2.0+0.5, 0.6, 0.68), [(0.29, 0.0), (0.29, 0.02), (0.20, 0.045), (0.0, 0.05)], (0.68, 0.56, 0.40, 1.0), segments=12)
+    # Floor plant, SE corner
+    make_floor_plant("Plant", (ROOM_W/2.0-0.5, 0.7, 0.0), palette={"leaf": (0.40, 0.60, 0.42, 1.0), "pot": (0.42, 0.72, 0.70, 1.0)})
+    # Warm string / fairy lights along the north wall
+    for i in range(8):
+        make_cyl(f"Fairy_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.05), 0.028, 0.028, (1.0, 0.84, 0.6, 1.0), segments=6)
+        if i < 7:
+            make_tube(f"Fairy_String_{i}", [(-1.4+i*0.4, ROOM_D-0.12, 2.06), (-1.2+i*0.4, ROOM_D-0.12, 2.02), (-1.0+i*0.4, ROOM_D-0.12, 2.06)], 0.003, (0.30, 0.30, 0.28, 1.0), segments=4)
+
+def build_hero_props():
+    """2026-08-03 hero-prop pass. THE LOOSE THIRD FLOORBOARD —
+    counted in from the N window, under the pulled-back rug — with
+    the shallow cavity and the sealed manila envelope (the whole of
+    vol6_ch4_maya_floor). Cavity at y=3.30 so it's clear of the bed;
+    the rug re-centres over it."""
+    pine = (0.78, 0.62, 0.38, 1.0)       # worn honey pine
+    pine_dk = (0.66, 0.52, 0.30, 1.0)
+    # Countable plank seams running E-W, 0.14 m apart, over the slab
+    n = int(5.0 / 0.14)
+    for i in range(n):
+        py = 0.07 + i * 0.14
+        make_box(f"Plank_Seam_{i}", (0.0, py, 0.004), (4.0, 0.012, 0.004), pine_dk)
+    make_box("Plank_Field", (0.0, 2.5, 0.002), (4.0, 5.0, 0.003), pine)
+    # The loose board, lifted a crack at one end
+    make_box("Loose_Board", (0.0, 3.30, 0.020), (0.90, 0.13, 0.018), pine_dk)
+    # The cavity + the envelope
+    # (2026-09-24: the cavity and the envelope were INSIDE the floor slab,
+    # under the plank field — never visible. The dark of the gap and the
+    # envelope now lie on the planks, under the lifted board.)
+    make_box("Cavity_Void", (0.0, 3.30, 0.004), (0.42, 0.125, 0.001), (0.10, 0.08, 0.06, 1.0))
+    make_box("Manila_Envelope", (0.0, 3.30, 0.0075), (0.26, 0.11, 0.006), (0.82, 0.72, 0.50, 1.0))
+    # Rug re-centred so it covers the board when smoothed back
+    # (the build's Rug cyl stays; this ring marks the pulled-back lip)
+    make_cyl("Rug_Fold", (0.0, 3.02, 0.018), 0.55, 0.012, (0.72, 0.42, 0.44, 1.0), segments=14)
+    # The box fan by the window ("The fan is on.")
+    make_chamfer_box("Box_Fan", (-1.30, 4.40, 0.24), (0.44, 0.16, 0.44), (0.80, 0.78, 0.74, 1.0))
+    make_cyl("Box_Fan_Grille", (-1.30, 4.31, 0.24), 0.17, 0.02, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=12)
+    # The spiral notebook on the desk + the packing-order supplies
+    # ON the desk, at its free front edge (2026-09-23: the notebook and
+    # the four supply packs stayed where the desk stood before 09-07 —
+    # off its W end, in the air); the packs in a stack at the E end
+    make_box("Spiral_Notebook", (1.50, 1.32, 0.766), (0.26, 0.20, 0.012), (0.30, 0.44, 0.62, 1.0))
+    make_cyl("Spiral_Coil", (1.50, 1.415, 0.772), 0.008, 0.25, (0.60, 0.62, 0.64, 1.0), axis='X', segments=6)
+    for si, col in enumerate(((0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
+                              (0.72, 0.62, 0.30, 1.0), (0.86, 0.82, 0.72, 1.0))):
+        make_box(f"Pack_Supply_{si}", (1.80, 1.32, 0.775 + si * 0.03), (0.14, 0.10, 0.03), col)
+    # Phone on the nightstand
+    make_box("Phone", (0.95, ROOM_D - 0.45, 0.585), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# WINDOW — the north-wall window (cicadas, ch23; the upstairs
-# window lit, ch5). REAL OPENING: painted double-hung frame,
-# meeting rail + upper muntins, casing, stool, apron; plum cotton
-# curtain panels on a rod.
-# ═════════════════════════════════════════════════════════════════
-def build_window():
-    wy = ROOM_D
-    make_box("Win_FrameT", (0.0, wy, WIN_HEAD - 0.03), (WIN_W, 0.14, 0.06), CALDWELL_TRIM)
-    make_box("Win_FrameB", (0.0, wy, WIN_SILL + 0.03), (WIN_W, 0.14, 0.06), CALDWELL_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"Win_Jamb_{sgn:+d}", (sgn * (WIN_W / 2.0 - 0.03), wy, 1.55),
-                 (0.06, 0.14, 1.20), CALDWELL_TRIM)
-    make_box("Win_MeetingRail", (0.0, wy, 1.56), (WIN_W - 0.08, 0.10, 0.06), CALDWELL_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"Win_Muntin_{sgn:+d}", (sgn * 0.22, wy - 0.02, 1.86),
-                 (0.035, 0.06, 0.54), CALDWELL_TRIM)
-    # Interior casing + stool + apron
-    for sgn in (-1, +1):
-        make_box(f"Win_Casing_{sgn:+d}", (sgn * (WIN_W / 2.0 + 0.09), wy - 0.105, 1.55),
-                 (0.10, 0.05, 1.40), CALDWELL_TRIM)
-    make_box("Win_CasingHead", (0.0, wy - 0.105, WIN_HEAD + 0.08), (WIN_W + 0.28, 0.05, 0.10),
-             CALDWELL_TRIM)
-    make_box("Win_Stool", (0.0, wy - 0.135, WIN_SILL + 0.02), (WIN_W + 0.30, 0.16, 0.04),
-             CALDWELL_TRIM)
-    make_box("Win_Apron", (0.0, wy - 0.105, WIN_SILL - 0.05), (WIN_W + 0.16, 0.05, 0.09),
-             CALDWELL_TRIM)
-    # Curtains — rod, finials, two plum panels (tied back look)
-    make_cyl("Curtain_Rod", (0.0, wy - 0.16, 2.28), 0.012, 1.70, COL_BRASS, axis='X')
-    for sgn in (-1, +1):
-        make_cyl(f"Curtain_Finial_{sgn:+d}", (sgn * 0.86, wy - 0.16, 2.28), 0.026, 0.05,
-                 COL_BRASS, axis='X')
-        make_box(f"Curtain_Panel_{sgn:+d}", (sgn * 0.70, wy - 0.155, 1.62),
-                 (0.26, 0.030, 1.32), COL_PLUM)
-        make_box(f"Curtain_Fold_{sgn:+d}", (sgn * 0.62, wy - 0.175, 1.58),
-                 (0.09, 0.018, 1.22), COL_PLUM_DK)
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues. The floorboard station exists (Loose_Board
+    + Cavity_Void + Manila_Envelope + Rug_Fold — a new SYNONYMS
+    entry floorboards -> board lets the tools see it). Built:
+
+    - THE PHOTOGRAPH (the dock at dusk, 1978, the charcoal suit):
+      a small print lying on the rug beside the pulled-back fold,
+      where it came out of the envelope.
+    - THE HANDS ("Her grandmother's hand on her hand", in the
+      dark): the duvet-crease residue grammar, two creases where
+      they sat.
+    """
+    make_box("Dock_Photograph", (0.30, 3.15, 0.0165), (0.110, 0.160, 0.001),
+             (0.82, 0.80, 0.74, 1.0))
+    make_box("Photograph_Border", (0.30, 3.15, 0.0175), (0.094, 0.144, 0.0005),
+             (0.35, 0.33, 0.30, 1.0))
+    # (2026-10-09: the creases where they sat moved to her GRANDMOTHER's
+    # bed — "Maya goes in. She sits on the edge of the bed. Her
+    # grandmother takes her hand." — Linda's room is built now)
+    make_box("Hands_Blanket_Crease_A", (-0.06, -4.15, 0.596), (0.16, 0.05, 0.012),
+             (0.48, 0.42, 0.54, 1.0))
+    make_box("Hands_Blanket_Crease_B", (-0.03, -4.03, 0.595), (0.05, 0.13, 0.010),
+             (0.46, 0.40, 0.52, 1.0))
 
 
-# ═════════════════════════════════════════════════════════════════
-# EXTERIOR — second-floor view (ch4 "Maya goes downstairs"; ch5
-# "the upstairs window is lit"): siding skins wrap the opening, the
-# PORCH ROOF directly below (the grandmother's porch, ch14/ch21),
-# the cul-de-sac at grade, the CEDAR across the cul-de-sac with the
-# cicadas in it (ch14), and the GELLER PORCH LIGHT at the end of
-# the Caldwell cul-de-sac, on (ch23) — the one warm dot out there.
-# ═════════════════════════════════════════════════════════════════
-def build_exterior():
-    wallout = ROOM_D + 0.10
-    seg_len = (ROOM_W / 2.0 - WIN_W / 2.0) + 0.20
-    seg_cx = WIN_W / 2.0 + seg_len / 2.0
-    make_box("Ext_Skin_W", (-seg_cx, wallout + 0.02, 1.30), (seg_len, 0.06, 2.60),
-             CALDWELL_SIDING)
-    make_box("Ext_Skin_E", (+seg_cx, wallout + 0.02, 1.30), (seg_len, 0.06, 2.60),
-             CALDWELL_SIDING)
-    make_box("Ext_Skin_Sill", (0.0, wallout + 0.02, WIN_SILL / 2.0),
-             (WIN_W, 0.06, WIN_SILL), CALDWELL_SIDING)
-    make_box("Ext_Skin_Head", (0.0, wallout + 0.02, (WIN_HEAD + 2.60) / 2.0),
-             (WIN_W, 0.06, 2.60 - WIN_HEAD), CALDWELL_SIDING)
-    for si, sz in enumerate((0.55, 1.85, 2.35)):
-        make_box(f"Ext_SidingSeam_{si}", (0.0, wallout + 0.052, sz),
-                 (ROOM_W + 0.4, 0.006, 0.02), (0.70, 0.66, 0.56, 1.0))
-    # The porch roof below the window (grandmother's porch, ch21)
-    make_box("PorchRoof_Deck", (0.0, 6.05, -0.62), (4.6, 2.10, 0.10), CALDWELL_ROOF)
-    make_box("PorchRoof_Ridge", (0.0, 5.25, -0.50), (4.6, 0.30, 0.08), CALDWELL_ROOF)
-    make_box("PorchRoof_Fascia", (0.0, 7.08, -0.68), (4.6, 0.06, 0.16), CALDWELL_TRIM)
-    for gi, gx in enumerate((-2.1, 2.1)):
-        make_box(f"PorchRoof_EndCap_{gi}", (gx, 6.05, -0.64), (0.08, 2.10, 0.14),
-                 CALDWELL_TRIM)
-    # The cul-de-sac at grade: lawn / walk / street / far lawn
-    make_box("Ext_Lawn", (0.0, 8.6, GRADE_Z - 0.05), (18.0, 3.4, 0.10), COL_NIGHT_LAWN)
-    make_box("Ext_Walk", (-1.6, 8.6, GRADE_Z + 0.005), (0.9, 3.4, 0.012), COL_CONCRETE)
-    make_box("Ext_Sidewalk", (0.0, 10.5, GRADE_Z - 0.02), (18.0, 0.8, 0.10), COL_CONCRETE)
-    make_box("Ext_Street", (0.0, 12.6, GRADE_Z - 0.07), (18.0, 3.4, 0.10), COL_ASPHALT)
-    make_box("Ext_FarLawn", (0.0, 15.6, GRADE_Z - 0.05), (18.0, 2.6, 0.10), COL_NIGHT_LAWN)
-    # THE CEDAR across the cul-de-sac (ch14 — the cicadas live here)
-    make_cyl("Cedar_Trunk", (-4.5, 14.2, GRADE_Z + 0.9), 0.14, 1.80, COL_WOOD_DK)
-    for ti, (tr, tz, tc) in enumerate([(1.40, GRADE_Z + 2.25, COL_CEDAR_DK),
-                                       (1.05, GRADE_Z + 3.15, COL_CEDAR),
-                                       (0.72, GRADE_Z + 3.95, COL_CEDAR_DK),
-                                       (0.42, GRADE_Z + 4.65, COL_CEDAR)]):
-        make_cyl(f"Cedar_Tier_{ti}", (-4.5, 14.2, tz), tr, 0.85, tc, segments=10)
-    # THE GELLER HOUSE at the end of the cul-de-sac — dark massing,
-    # porch light ON (ch23: Don at the window, eleven-thirty)
-    gx, gy = 5.2, 15.8
-    make_box("Geller_Body", (gx, gy, GRADE_Z + 1.5), (6.5, 4.2, 3.0),
-             (0.55, 0.51, 0.45, 1.0))
-    make_box("Geller_Roof0", (gx, gy, GRADE_Z + 3.24), (7.1, 4.8, 0.48), CALDWELL_ROOF)
-    make_box("Geller_Roof1", (gx, gy, GRADE_Z + 3.68), (4.8, 3.2, 0.40), CALDWELL_ROOF)
-    for wi, wx in enumerate((-1.9, 0.0)):
-        make_box(f"Geller_Window_{wi}", (gx + wx, gy - 2.13, GRADE_Z + 1.6),
-                 (0.85, 0.06, 0.75), (0.09, 0.11, 0.14, 1.0))
-    # Don's window — the one faint lit pane (ch23, the water glass)
-    make_box("Geller_WindowLit", (gx + 1.9, gy - 2.13, GRADE_Z + 1.6),
-             (0.85, 0.06, 0.75), (0.42, 0.38, 0.28, 1.0))
-    make_box("Geller_Door", (gx - 0.9, gy - 2.12, GRADE_Z + 1.0), (0.85, 0.06, 2.0),
-             (0.22, 0.20, 0.19, 1.0))
-    make_box("Geller_LightBracket", (gx - 1.45, gy - 2.10, GRADE_Z + 1.70),
-             (0.06, 0.05, 0.10), P.METAL_BLACK)
-    make_cyl("Geller_PorchLight", (gx - 1.45, gy - 2.16, GRADE_Z + 1.66), 0.055, 0.12,
-             COL_PORCHBULB, segments=10)
-    # A second dark tract massing west — the street repeating
-    make_box("TractW_Body", (-8.0, 15.4, GRADE_Z + 1.4), (5.8, 4.4, 2.8),
-             (0.48, 0.46, 0.44, 1.0))
-    make_box("TractW_Roof", (-8.0, 15.4, GRADE_Z + 3.02), (6.4, 5.0, 0.44), CALDWELL_ROOF)
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; 10 placements).
+    Her door (the shell had an opening and no leaf), the room's first
+    WEAR (door to bed to desk; the rug's worn centre; the forearm patch
+    at the desk; a scuff where the headboard meets the wall; scuffs at
+    the bed's foot; pin holes on the corkboard), D3 (the switch by the
+    door, outlets, and cords from the desk lamp, the laptop, the record
+    player, the fairy lights and the box fan), D5 (the backyard the
+    north window looks at: lawn, board fence, a tree, a roofline).
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run, make_backyard_view
+    floor_dk = (0.58, 0.49, 0.40, 1.0)
+    bx, by = 0.0, ROOM_D - 1.15
+    dx, dy = ROOM_W/2.0 - 0.54, 1.5
+    # ── her door in the south opening, with knob and frame ──
+    make_box("Bedroom_Door", (0.0, 0.06, 1.02), (0.90, 0.05, 2.04), (0.90, 0.88, 0.86, 1.0))
+    make_lathe("Bedroom_Door_Knob_Rose", (0.34, 0.09, 1.00), [(0.03, 0.0), (0.03, 0.01), (0.0, 0.01)], (0.66, 0.60, 0.42, 1.0), segments=8)
+    make_cyl("Bedroom_Door_Knob", (0.34, 0.115, 1.00), 0.028, 0.04, (0.66, 0.60, 0.42, 1.0), axis='Y', segments=8)
+    for sgn in (-1, 1):
+        make_box(f"Bedroom_Door_Frame_{'W' if sgn < 0 else 'E'}", (0.49 * sgn, 0.06, 1.06), (0.07, 0.09, 2.12), (0.78, 0.74, 0.80, 1.0))
+    for si, (sx_, sz_, sc_) in enumerate(((0.10, 1.30, (0.36, 0.72, 0.70, 1.0)), (0.22, 1.42, (0.86, 0.62, 0.72, 1.0)), (-0.15, 1.36, (0.92, 0.82, 0.42, 1.0)))):
+        make_box(f"Sticker_{si}", (sx_, 0.087, sz_), (0.06, 0.002, 0.06), sc_)
+    # ── WEAR ──
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.5), (-0.2, 1.6), (-0.4, 2.6), (-0.3, 3.0)], width=0.42, tint=floor_dk)
+    make_traffic_wear("Wear_Path_B", [(-0.2, 2.6), (0.6, 2.0), (1.1, 1.6)], width=0.34, tint=floor_dk)
+    make_floor_stain("Wear_Centre", (0.0, ROOM_D/2.0 - 0.2), radius=0.50, tint=(0.32, 0.64, 0.62, 1.0), segments=12)
+    make_box("Wear_Forearm", (dx + 0.05, dy - 0.22, 0.762), (0.36, 0.09, 0.004), (0.62, 0.48, 0.58, 1.0))
+    make_scuff_band("Wear_Wall_Rub", (bx, ROOM_D), 1.30, axis='X', height=0.10, band_z=0.95, tint=(0.66, 0.60, 0.78, 1.0))
+    make_scuff_band("Wear_Kick_Foot", (bx, by - 0.93), 1.10, axis='X', height=0.05, band_z=0.06, tint=(0.44, 0.34, 0.42, 1.0))
+    for hi, (hy, hz) in enumerate(((ROOM_D-1.25, 1.75), (ROOM_D-0.75, 1.30), (ROOM_D-1.0, 1.85))):
+        make_cyl(f"Wear_PinHole_{hi}", (-ROOM_W/2.0 + 0.085 + 0.0186, hy, hz), 0.004, 0.006, (0.40, 0.28, 0.18, 1.0), axis='X', segments=4)
+    # ── D3 ──
+    make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on the wall east of the door gap (2026-09-22: it hung in the doorway)
+    make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, 1.20), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_1", (dx-0.30, dy+0.20, 0.76), (ROOM_W/2.0 - 0.13, 1.20, 0.30), sag=0.06)
+    make_cord_run("Cord_2", (dx+0.16, dy+0.18, 0.76), (ROOM_W/2.0 - 0.13, 1.20, 0.30), sag=0.04)
+    make_wall_outlet("Outlet_S_1", (ROOM_W/2.0 - 0.6, 0.0), axis='X', face_sign=1, z=0.30, aged=True)
+    make_cord_run("Cord_3", (ROOM_W/2.0-0.4, 0.8 + 0.21, 0.50), (ROOM_W/2.0 - 0.6, 0.13, 0.30), sag=0.04)
+    make_wall_outlet("Outlet_N_1", (-1.62, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_4", (-1.42, ROOM_D - 0.08, 2.04), (-1.62, ROOM_D - 0.12, 0.30), sag=0.0)
+    make_cord_run("Cord_5", (-1.30, 4.32, 0.06), (-1.62, ROOM_D - 0.12, 0.30), sag=0.02)
+    # ── D5 · the backyard through the north window ──
+    make_backyard_view("Yard", ROOM_D, span=6.0, tree=(-2.4, 3.2))
 
 
-# ═════════════════════════════════════════════════════════════════
-# BED ZONE — twin bed on the west wall, head at the window end,
-# MADE (she lies on top of the bedspread, ch1/ch6): spread pulled
-# square with side drapes + a band, pillow. Under it, the hardback
-# GENERAL STORE portfolio (maya_daigle.md §II), east edge just
-# proud. Nightstand: lamp (ch2), phone (ch14), the spiral
-# notebook + pen (ch0/ch2). Two of her own ink drawings taped on
-# the wall above.
-# ═════════════════════════════════════════════════════════════════
-def build_bed_zone():
-    bx = -1.425                    # bed center x (frame -1.92..-0.93)
-    y0, y1 = 2.55, 4.45            # foot..head
-    by = (y0 + y1) / 2.0
-    # Frame + legs + headboard
-    make_box("Bed_Rail", (bx, by, 0.32), (1.02, 1.92, 0.12), COL_WOOD)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"Bed_Leg_{li}", (bx + sx * 0.46, by + sy * 0.90, 0.15), 0.030, 0.30,
-                 COL_WOOD_DK)
-    make_box("Bed_Headboard", (bx, y1 - 0.02, 0.62), (1.02, 0.06, 0.70), COL_WOOD)
-    make_box("Bed_HeadboardCap", (bx, y1 - 0.02, 0.99), (1.06, 0.09, 0.05), COL_WOOD_DK)
-    make_box("Bed_Mattress", (bx, by, 0.46), (0.98, 1.86, 0.16), COL_LINEN)
-    # THE BEDSPREAD — made, pulled square (ch1: "She lies down on
-    # top of the bedspread"), plum with a woven band near the foot
-    make_box("Bedspread_Top", (bx, by - 0.09, 0.565), (1.00, 1.68, 0.055), COL_PLUM)
-    make_box("Bedspread_DrapeE", (bx + 0.505, by - 0.09, 0.40), (0.025, 1.68, 0.30),
-             COL_PLUM)
-    make_box("Bedspread_DrapeS", (bx, y0 + 0.03, 0.40), (1.00, 0.025, 0.30), COL_PLUM)
-    make_box("Bedspread_Band", (bx, 2.95, 0.596), (1.005, 0.20, 0.006), COL_QUILT_BND)
-    make_box("Bed_Pillow", (bx, y1 - 0.24, 0.62), (0.82, 0.34, 0.11), COL_LINEN)
-    # THE PORTFOLIO under the bed — GENERAL STORE, 187 pages of
-    # 8.5x11 (maya_daigle.md §II: "a single hardback portfolio she
-    # keeps under her bed"). East edge peeks past the rail.
-    make_box("Portfolio_Body", (-1.05, 3.10, 0.045), (0.32, 0.44, 0.07), COL_CHARCOAL)
-    make_box("Portfolio_PagesEdge", (-0.888, 3.10, 0.045), (0.006, 0.42, 0.05), P.PAPER)
-    make_box("Portfolio_Strap", (-1.05, 3.10, 0.083), (0.30, 0.05, 0.006),
-             (0.30, 0.28, 0.30, 1.0))
-    # Nightstand between bed head and the north wall
-    nx, ny = -1.62, 4.68
-    make_box("Nightstand_Body", (nx, ny, 0.26), (0.42, 0.40, 0.52), COL_WOOD)
-    make_box("Nightstand_Top", (nx, ny, 0.535), (0.46, 0.44, 0.03), COL_WOOD_DK)
-    make_box("Nightstand_Drawer", (nx, ny - 0.205, 0.40), (0.34, 0.015, 0.14), COL_WOOD_DK)
-    make_cyl("Nightstand_Knob", (nx, ny - 0.22, 0.40), 0.013, 0.03, COL_BRASS, axis='Y')
-    # THE LAMP (ch2: "She turns off the lamp.")
-    make_cyl("Lamp_Base", (nx - 0.08, ny + 0.08, 0.565), 0.065, 0.025, COL_WOOD_DK)
-    make_cyl("Lamp_Stem", (nx - 0.08, ny + 0.08, 0.70), 0.012, 0.26, COL_BRASS)
-    make_cyl("Lamp_Shade", (nx - 0.08, ny + 0.08, 0.885), 0.095, 0.13, COL_LINEN,
-             segments=12)
-    make_cyl("Lamp_Glow", (nx - 0.08, ny + 0.08, 0.815), 0.040, 0.02, COL_LAMP_GLOW)
-    # THE PHONE on the nightstand (ch14)
-    make_box("Phone_Slab", (nx + 0.12, ny - 0.06, 0.556), (0.072, 0.148, 0.010),
-             (0.10, 0.10, 0.12, 1.0))
-    # THE SPIRAL NOTEBOOK + pen (ch0: cross-legged at 6:16; ch2:
-    # "She does not, tonight, write in the notebook.")
-    make_box("SpiralNotebook", (nx - 0.05, ny - 0.10, 0.560), (0.15, 0.21, 0.018),
-             (0.34, 0.42, 0.38, 1.0))
-    make_box("SpiralNotebook_Coil", (nx - 0.125, ny - 0.10, 0.563), (0.016, 0.20, 0.020),
-             P.METAL_STEEL)
-    make_cyl("Notebook_Pen", (nx + 0.10, ny + 0.11, 0.556), 0.005, 0.13, COL_INK, axis='Y')
-    # Her own ink drawings taped above the bed (only her work hangs
-    # here — no store-bought posters)
-    for di, (dy, dz, dw, dh) in enumerate([(3.05, 1.52, 0.24, 0.30),
-                                           (3.42, 1.60, 0.21, 0.26)]):
-        make_box(f"WallDrawing_{di}", (-1.975, dy, dz), (0.006, dw, dh), P.PAPER)
-        make_box(f"WallDrawing_{di}_Ink", (-1.972, dy, dz + 0.02),
-                 (0.002, dw * 0.62, dh * 0.55), COL_INK)
-        make_box(f"WallDrawing_{di}_Tape", (-1.974, dy, dz + dh / 2.0 - 0.008),
-                 (0.004, 0.05, 0.022), (0.88, 0.86, 0.78, 1.0))
 
+def build_door_infill_mayas_door_2026_09():
+    """Bedroom_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Bedroom_Door_W", (-0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Bedroom_Door_E", (0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
-# ═════════════════════════════════════════════════════════════════
-# DESK ZONE — the zine studio on the east wall. THE THINKPAD open
-# (ch1/ch2/ch6/ch14) with the chat window lit; the desk lamp (the
-# .tscn key light is literally named Key_DeskLamp); fineliner jar +
-# grey markers (maya_daigle.md §I — pen and marker, NOT a
-# typewriter; the photocopier is at Cosmic Comics); issue #23's
-# pencilled quarter-letter flats laid out with the pencil; the A5
-# black sketchbook, closed (§III); the school-supplies box staged
-# beside the desk (ch23).
-# ═════════════════════════════════════════════════════════════════
-def build_desk_zone():
-    dx = 1.62                        # desk center x (1.34..1.90)
-    y0, y1 = 1.55, 2.85
-    dy = (y0 + y1) / 2.0
-    make_box("Desk_Top", (dx, dy, 0.735), (0.56, 1.30, 0.035), COL_WOOD)
-    make_box("Desk_Apron", (dx, dy, 0.685), (0.46, 1.18, 0.06), COL_WOOD)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_box(f"Desk_Leg_{li}", (dx + sx * 0.24, dy + sy * 0.60, 0.345),
-                 (0.045, 0.045, 0.69), COL_WOOD_DK)
-    # THE THINKPAD — open, screen facing the chair (west); the pale
-    # chat rectangle is the F.T. window (ch1: "The ThinkPad wakes
-    # when she opens it.")
-    make_box("ThinkPad_Base", (1.60, 2.58, 0.762), (0.235, 0.31, 0.018), COL_CHARCOAL)
-    make_box("ThinkPad_Keys", (1.585, 2.58, 0.7725), (0.17, 0.27, 0.003),
-             (0.11, 0.11, 0.12, 1.0))
-    make_box("ThinkPad_TrackPoint", (1.585, 2.58, 0.775), (0.010, 0.010, 0.003),
-             (0.76, 0.22, 0.18, 1.0))
-    make_box("ThinkPad_Lid", (1.725, 2.58, 0.870), (0.014, 0.31, 0.21), COL_CHARCOAL)
-    make_box("ThinkPad_Screen", (1.716, 2.58, 0.872), (0.003, 0.27, 0.17), COL_SCREEN)
-    make_box("ThinkPad_ChatWindow", (1.713, 2.60, 0.878), (0.002, 0.17, 0.11),
-             COL_CHATGLOW)
-    # Desk lamp, south end (matches the .tscn Key_DeskLamp)
-    make_cyl("DeskLamp_Base", (1.78, 1.70, 0.765), 0.065, 0.022, P.METAL_BLACK)
-    make_cyl("DeskLamp_Stem", (1.78, 1.70, 0.92), 0.011, 0.29, P.METAL_BLACK)
-    make_cyl("DeskLamp_Arm", (1.66, 1.70, 1.065), 0.010, 0.24, P.METAL_BLACK, axis='X')
-    make_cyl("DeskLamp_Shade", (1.55, 1.70, 1.045), 0.055, 0.09, COL_PLUM_DK, axis='X')
-    make_cyl("DeskLamp_Glow", (1.505, 1.70, 1.045), 0.038, 0.012, COL_LAMP_GLOW, axis='X')
-    # Fineliner jar + grey-marker jar (§I: fineliner pen and grey
-    # marker — the whole toolchain)
-    make_cyl("PenJar", (1.80, 1.94, 0.795), 0.035, 0.085, (0.72, 0.78, 0.78, 1.0))
-    for pi, (px, py) in enumerate([(-0.012, -0.010), (0.012, -0.004),
-                                   (-0.004, 0.012), (0.010, 0.010)]):
-        make_cyl(f"Fineliner_{pi}", (1.80 + px, 1.94 + py, 0.885), 0.0042, 0.11, COL_INK)
-    make_cyl("MarkerJar", (1.80, 2.08, 0.790), 0.035, 0.075, (0.72, 0.78, 0.78, 1.0))
-    for mi, (mx, my) in enumerate([(-0.012, 0.0), (0.010, -0.010), (0.008, 0.012)]):
-        make_cyl(f"GreyMarker_{mi}", (1.80 + mx, 2.08 + my, 0.875), 0.0085, 0.10,
-                 COL_MARKER_GY)
-    # ISSUE #23 "F.T." — pencils complete (§I), quarter-letter
-    # flats (3.5 x 4.25 in) in a 2x2 layout, pencil beside. Dated
-    # in pencil: "to publish — when I have permission."
-    for zi, (zx, zy) in enumerate([(-0.056, -0.066), (0.056, -0.066),
-                                   (-0.056, 0.066), (0.056, 0.066)]):
-        make_box(f"Zine23_Flat_{zi}", (1.50 + zx, 2.16 + zy, 0.754),
-                 (0.089, 0.108, 0.0015), P.PAPER)
-    for gi, (gx, gy) in enumerate([(-0.056, -0.066), (0.056, 0.066)]):
-        make_box(f"Zine23_Pencils_{gi}", (1.50 + gx, 2.16 + gy, 0.7552),
-                 (0.062, 0.078, 0.0008), COL_PENCIL)
-    make_box("Zine23_MarkerTest", (1.50, 2.16, 0.7548), (0.030, 0.150, 0.0008),
-             COL_MARKER_GY)
-    make_cyl("Zine23_Pencil", (1.38, 2.02, 0.756), 0.0042, 0.125,
-             (0.82, 0.64, 0.28, 1.0), axis='Y')
-    # THE SKETCHBOOK — A5, black, closed, white label strip ("NOT
-    # FOR PUBLICATION · NOT YET · M.D.", §III)
-    make_box("Sketchbook", (1.48, 1.80, 0.753), (0.150, 0.210, 0.024), COL_CHARCOAL)
-    make_box("Sketchbook_Label", (1.48, 1.80, 0.7665), (0.085, 0.048, 0.0015), P.PAPER)
-    # Desk chair — she faces east at the wall
-    make_box("Chair_Seat", (1.06, 2.20, 0.44), (0.40, 0.40, 0.04), COL_WOOD)
-    for li, (sx, sy) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-        make_cyl(f"Chair_Leg_{li}", (1.06 + sx * 0.16, 2.20 + sy * 0.16, 0.22),
-                 0.018, 0.44, COL_WOOD_DK)
-    for pi, sgn in enumerate((-1, +1)):
-        make_cyl(f"Chair_Post_{pi}", (0.88, 2.20 + sgn * 0.16, 0.67), 0.016, 0.46,
-                 COL_WOOD)
-    for si, sz in enumerate((0.72, 0.86)):
-        make_box(f"Chair_Slat_{si}", (0.88, 2.20, sz), (0.03, 0.36, 0.085), COL_WOOD)
-    # THE SCHOOL-SUPPLIES BOX (ch23 — the Walmart run: the binder,
-    # the pack of pens, the index cards, the new notebook saved for
-    # the first day), staged on the floor between desk and bookcase
-    make_box("SupplyBox_Body", (1.58, 3.14, 0.095), (0.34, 0.26, 0.19), COL_CARDBOARD,
-             open_faces={'+Z'})
-    make_box("SupplyBox_Floor", (1.58, 3.14, 0.02), (0.32, 0.24, 0.01),
-             (0.52, 0.40, 0.26, 1.0))
-    make_box("SupplyBox_Binder", (1.53, 3.14, 0.115), (0.06, 0.23, 0.17),
-             (0.30, 0.36, 0.46, 1.0))
-    make_box("SupplyBox_Notebook", (1.61, 3.14, 0.105), (0.02, 0.21, 0.15), COL_PLUM)
-    make_box("SupplyBox_IndexCards", (1.68, 3.10, 0.075), (0.08, 0.13, 0.032), P.PAPER)
-    make_box("SupplyBox_PenPack", (1.68, 3.22, 0.068), (0.055, 0.10, 0.018),
-             (0.72, 0.78, 0.78, 1.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# CORKBOARD — over the desk: her documented working method is
-# "text, comix, and small map fragments" (§I). Pinned quarter
-# sheets, one hand-drawn map fragment, pins. This is the only wall
-# system in the room besides her taped drawings.
-# ═════════════════════════════════════════════════════════════════
-def build_corkboard():
-    wx = ROOM_W / 2.0 - 0.10          # interior face x 1.9
-    make_box("Cork_Board", (wx - 0.012, 2.20, 1.62), (0.024, 1.05, 0.72), COL_CORK)
-    make_box("Cork_FrameT", (wx - 0.018, 2.20, 1.995), (0.036, 1.11, 0.045), COL_WOOD)
-    make_box("Cork_FrameB", (wx - 0.018, 2.20, 1.245), (0.036, 1.11, 0.045), COL_WOOD)
-    for sgn in (-1, +1):
-        make_box(f"Cork_FrameSide_{sgn:+d}", (wx - 0.018, 2.20 + sgn * 0.5525, 1.62),
-                 (0.036, 0.045, 0.795), COL_WOOD)
-    # Pinned quarter-letter sheets (deterministic scatter)
-    sheets = [(1.85, 1.82, P.PAPER), (2.42, 1.46, P.PAPER_AGED), (2.55, 1.80, P.PAPER),
-              (2.02, 1.42, P.PAPER), (1.90, 1.44, P.NEWSPRINT)]
-    for si, (sy, sz, tint) in enumerate(sheets):
-        make_box(f"Cork_Sheet_{si}", (wx - 0.028, sy, sz), (0.006, 0.089, 0.108), tint)
-        make_box(f"Cork_Sheet_{si}_Ink", (wx - 0.032, sy, sz + 0.012),
-                 (0.002, 0.062, 0.058), COL_INK)
-        make_cyl(f"Cork_Pin_{si}", (wx - 0.034, sy, sz + 0.048), 0.007, 0.012,
-                 (0.76, 0.22, 0.18, 1.0) if si % 2 == 0 else (0.28, 0.36, 0.42, 1.0),
-                 axis='X')
-    # The map fragment — a small hand-drawn piece of Harmony Creek
-    make_box("Cork_MapFrag", (wx - 0.028, 2.22, 1.66), (0.006, 0.165, 0.135),
-             P.PAPER_AGED)
-    make_box("Cork_MapFrag_RoadA", (wx - 0.032, 2.22, 1.66), (0.002, 0.130, 0.010),
-             COL_INK)
-    make_box("Cork_MapFrag_RoadB", (wx - 0.032, 2.25, 1.665), (0.002, 0.010, 0.095),
-             COL_INK)
-    make_box("Cork_MapFrag_Lot", (wx - 0.032, 2.185, 1.695), (0.002, 0.028, 0.022),
-             COL_PLUM_DK)
-    make_cyl("Cork_MapFrag_Pin", (wx - 0.034, 2.22, 1.718), 0.007, 0.012,
-             (0.76, 0.22, 0.18, 1.0), axis='X')
-
-
-# ═════════════════════════════════════════════════════════════════
-# BOOKCASE — NE corner: her comics + books, the file stack of
-# NEWS FROM HARMONY CREEK back issues (23 issues and counting,
-# §I), and the ream of 8.5x11 printer paper — the one Rick quietly
-# over-orders for her every quarter (§II).
-# ═════════════════════════════════════════════════════════════════
-def build_bookcase():
-    cx, cy = 1.70, 4.30              # against east wall (x 1.55..1.85)
-    for si, sgn in enumerate((-1, +1)):
-        make_box(f"Bookcase_Side_{si}", (cx, cy + sgn * 0.375, 0.585),
-                 (0.30, 0.03, 1.17), COL_WOOD)
-    for shi, sz in enumerate((0.02, 0.40, 0.78, 1.16)):
-        make_box(f"Bookcase_Shelf_{shi}", (cx, cy, sz), (0.30, 0.72, 0.025), COL_WOOD)
-    # Shelf 1 (z 0.41..0.78): book row, mixed spines
-    for bi in range(6):
-        bh = 0.24 - (bi % 3) * 0.025
-        make_box(f"Bookcase_Book_{bi}", (cx, cy - 0.30 + bi * 0.085, 0.415 + bh / 2.0),
-                 (0.20, 0.055, bh), BOOK_TINTS[bi % len(BOOK_TINTS)])
-    # Shelf 2 (z 0.79..1.16): the comics stack + the zine file stack
-    for ci in range(5):
-        make_box(f"Bookcase_Comic_{ci}", (cx + (ci % 2) * 0.012, cy - 0.18,
-                 0.80 + ci * 0.014), (0.175, 0.26, 0.012),
-                 P.SNACK_TINTS[(ci * 2) % len(P.SNACK_TINTS)])
-    # NEWS FROM HARMONY CREEK back issues — quarter-letter, her
-    # file copies (§I: twenty-three issues across two years)
-    for ni in range(8):
-        make_box(f"Bookcase_ZineStack_{ni}", (cx + (ni % 2) * 0.008,
-                 cy + 0.20 + (ni % 3) * 0.006, 0.795 + ni * 0.005),
-                 (0.089, 0.108, 0.004), P.PAPER if ni % 2 == 0 else P.PAPER_AGED)
-    # Top: the ream of printer paper (§II — Rick's quiet extra ream)
-    make_box("PaperReam", (cx, cy - 0.16, 1.20), (0.22, 0.28, 0.05), P.PAPER)
-    make_box("PaperReam_Wrap", (cx, cy - 0.16, 1.20), (0.225, 0.16, 0.052),
-             (0.62, 0.68, 0.70, 1.0))
-    # Two standing books on top, leaning stack look
-    for ti in range(2):
-        make_box(f"Bookcase_TopBook_{ti}", (cx, cy + 0.18 + ti * 0.06, 1.285),
-                 (0.18, 0.05, 0.22), BOOK_TINTS[(ti + 3) % len(BOOK_TINTS)])
-
-
-# ═════════════════════════════════════════════════════════════════
-# CLOSET — west wall, south bay: bypass sliding doors, both panels
-# slid SOUTH so the north half stands open (clothes, sneakers).
-# On the floor of the CLOSED south half: THE WOODEN BOX
-# (maya_daigle.md §V — 12 x 8 x 6 in, her father's last in-person
-# gift; the mixtape, the printed F.T. chat logs, the Polaroid and
-# the four ANYA tapes are inside). Present, occluded behind the
-# closed panel, never announced — plain wood, no label, an
-# ordinary shoebox beside it. (Same treatment as Philip's box in
-# the Cosmic back office.)
-# ═════════════════════════════════════════════════════════════════
-def build_closet():
-    wx = -ROOM_W / 2.0 + 0.10        # interior wall face x -1.9
-    # Bay: x -1.9..-1.30, y 0.66..2.34
-    for pi, py in enumerate((0.68, 2.32)):
-        make_box(f"Closet_EndWall_{pi}", (wx + 0.30, py, 1.30), (0.60, 0.04, 2.60),
-                 CALDWELL_INT_WALL)
-    make_box("Closet_Header", (-1.33, 1.50, 2.30), (0.06, 1.68, 0.60), CALDWELL_INT_WALL)
-    make_box("Closet_Track", (-1.345, 1.50, 1.985), (0.045, 1.60, 0.03), P.METAL_STEEL)
-    make_box("Closet_FloorStrip", (wx + 0.30, 1.50, 0.004), (0.58, 1.64, 0.008),
-             CALDWELL_PINE)
-    # Bypass panels — BOTH stacked over the south half (opening
-    # shows the north half; the south floor is hidden)
-    make_box("Closet_PanelOuter", (-1.335, 1.10, 1.00), (0.028, 0.80, 1.94),
-             CALDWELL_TRIM)
-    make_box("Closet_PanelInner", (-1.368, 1.14, 1.00), (0.028, 0.80, 1.94),
-             (0.88, 0.86, 0.80, 1.0))
-    make_cyl("Closet_FingerCup", (-1.318, 1.44, 1.00), 0.022, 0.008,
-             (0.62, 0.60, 0.56, 1.0), axis='X')
-    # Rod + hangers + clothes in the open north half
-    make_cyl("Closet_Rod", (-1.62, 1.50, 1.78), 0.015, 1.56, P.METAL_STEEL, axis='Y')
-    for gi, gy in enumerate((1.62, 1.80, 1.98, 2.16)):
-        glen = (0.62, 0.80, 0.68, 0.52)[gi]
-        make_cyl(f"Closet_Hanger_{gi}", (-1.62, gy, 1.795), 0.008, 0.05, P.METAL_STEEL)
-        make_box(f"Closet_Garment_{gi}", (-1.62, gy, 1.74 - glen / 2.0),
-                 (0.11, 0.15, glen), GARMENT_TINTS[gi % len(GARMENT_TINTS)])
-    make_box("Closet_FlannelStripe", (-1.62, 1.80, 1.46), (0.115, 0.152, 0.03),
-             (0.24, 0.18, 0.16, 1.0))
-    # Sneakers on the open-half floor
-    for shi, sy in enumerate((1.70, 1.86)):
-        make_box(f"Closet_Sneaker_{shi}", (-1.66, sy, 0.055), (0.24, 0.10, 0.09),
-                 (0.82, 0.80, 0.76, 1.0))
-        make_box(f"Closet_SneakerSole_{shi}", (-1.66, sy, 0.016), (0.25, 0.11, 0.03),
-                 (0.94, 0.93, 0.90, 1.0))
-    # ── THE BOX (§V) — south half, BEHIND the closed panels ──────
-    make_box("ClosetBox_Body", (-1.68, 0.94, 0.078), (0.30, 0.20, 0.148), COL_WOOD)
-    make_box("ClosetBox_LidSeam", (-1.68, 0.94, 0.118), (0.304, 0.204, 0.006),
-             COL_WOOD_DK)
-    # An ordinary shoebox beside it — nothing points at the box
-    make_box("Closet_Shoebox", (-1.66, 1.24, 0.062), (0.20, 0.32, 0.124), COL_CARDBOARD)
-    make_box("Closet_ShoeboxLid", (-1.66, 1.24, 0.128), (0.21, 0.33, 0.012),
-             (0.58, 0.45, 0.29, 1.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# FLOOR CENTER — the rug over the third board (ch4: "The rug has
-# been pulled back" — its resting state covers the board), and the
-# box fan by the window (ch23: "The fan is on.").
-# ═════════════════════════════════════════════════════════════════
-def build_rug_and_fan():
-    # Braided oval rug, three flattened rings — covers board 3
-    for ri, (rr, rz, tint) in enumerate([(0.78, 0.004, COL_PLUM_DK),
-                                         (0.56, 0.007, (0.55, 0.48, 0.40, 1.0)),
-                                         (0.34, 0.010, (0.40, 0.44, 0.48, 1.0))]):
-        make_cyl(f"Rug_Ring_{ri}", (0.15, 3.95, rz), rr, 0.008, tint, segments=16)
-    # Box fan on the floor by the window, facing the bed (ch23)
-    fx, fy = 0.85, 4.55
-    make_box("Fan_Body", (fx, fy, 0.33), (0.50, 0.14, 0.50), COL_FAN_BODY)
-    make_cyl("Fan_Blades", (fx, fy - 0.045, 0.33), 0.20, 0.03, (0.30, 0.30, 0.32, 1.0),
-             axis='Y', segments=12)
-    make_cyl("Fan_Hub", (fx, fy - 0.075, 0.33), 0.05, 0.02, COL_FAN_BODY, axis='Y')
-    for si in range(5):
-        make_box(f"Fan_Grille_{si}", (fx - 0.20 + si * 0.10, fy - 0.078, 0.33),
-                 (0.022, 0.008, 0.44), (0.62, 0.61, 0.58, 1.0))
-    for fi, sgn in enumerate((-1, +1)):
-        make_box(f"Fan_Foot_{fi}", (fx + sgn * 0.20, fy, 0.03), (0.06, 0.18, 0.06),
-                 COL_FAN_BODY)
-    make_box("Fan_Cord", (fx + 0.28, fy + 0.28, 0.012), (0.34, 0.014, 0.010),
-             (0.30, 0.28, 0.26, 1.0))
-
-
-# ═════════════════════════════════════════════════════════════════
-# CEILING FIXTURES — house dome light (NOT the scaffold's
-# commercial fluorescents), smoke detector, HVAC register. The
-# ceiling itself is the pale yellow plane in build_shell.
-# ═════════════════════════════════════════════════════════════════
-def build_ceiling_fixtures():
-    make_cyl("DomeLight_Plate", (0.0, 2.50, CEIL - 0.015), 0.17, 0.025, COL_BRASS,
-             segments=12)
-    make_cyl("DomeLight_Dome", (0.0, 2.50, CEIL - 0.065), 0.145, 0.075,
-             (0.97, 0.93, 0.82, 1.0), segments=12)
-    make_cyl("DomeLight_Finial", (0.0, 2.50, CEIL - 0.115), 0.018, 0.03, COL_BRASS)
-    make_smoke_detector("Smoke", (-0.9, 1.2, CEIL))
-    make_hvac_vent("HVAC", (0.9, 0.8, CEIL), width=0.50, depth=0.30)
+def build_upstairs_2026_10():
+    """DRAFT 5 (2026-10-09) · THE HALL AND HER GRANDMOTHER'S ROOM. vol6 ch2
+    stages half its night across the hall: "She gets up. She crosses the
+    hall. She opens her grandmother's bedroom door, quietly, just an
+    inch." — [shot:closeup grandmother] "Her grandmother is awake in the
+    dark." — [shot:insert hands] — "Why is there a radio in your room on
+    1776 kHz." Those cues had nowhere to cut to. Now, S of Maya's door:
+      - the upstairs hall (runner, the hall light, her grandfather's
+        black-and-white photographs — "Your grandfather was a
+        photographer" — and the stair rail going down at the E end);
+      - Linda's room through its door, standing open: the made bed she
+        sits on the edge of, the SHORTWAVE on the nightstand with its
+        dial lit, the reading lamp and glasses, the dresser with his old
+        camera and a framed print, the armchair by the W window over the
+        dark yard."""
+    wall = (0.80, 0.76, 0.66, 1.0)              # the rest of the house is not lavender
+    pal = {"wall": wall, "baseboard": (0.46, 0.38, 0.30, 1.0)}
+    wood = (0.40, 0.30, 0.22, 1.0)
+    HY0, HY1 = -1.30, -0.10                     # hall faces (S, N)
+    GY0, GY1 = -5.50, -1.50                     # Linda's room faces
+    XW_, XE_ = -ROOM_W / 2.0 + 0.10, ROOM_W / 2.0 - 0.10
+    # floors, walls, ceiling
+    make_box("Hall_Floor", (-0.475, (HY0 + HY1) / 2.0 - 0.05, -0.01), (1.35 - XW_, HY1 - HY0 + 0.1, 0.02), (0.52, 0.40, 0.28, 1.0))
+    make_box("Linda_Floor", (0.0, (GY0 + GY1) / 2.0, -0.01), (ROOM_W, GY1 - GY0 + 0.2, 0.02), (0.50, 0.40, 0.30, 1.0))
+    make_ceiling("Upstairs_Ceil", (0.0, (GY0 + HY1) / 2.0 - 0.1, CEIL), size_x=ROOM_W + 0.4, size_y=HY1 - GY0 + 0.2,
+                 with_grid=False, with_stains=False, palette={"tile": (0.90, 0.88, 0.82, 1.0)})
+    for nm, x, bb in (("Hall_Wall_W", -ROOM_W / 2.0, +1), ("Hall_Wall_E", ROOM_W / 2.0, -1)):
+        make_wall(nm, (x, (HY0 + HY1) / 2.0, 0), length=HY1 - HY0, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=bb)
+    gdoor = (0.70, 1.025, 0.85, 2.05)
+    make_wall_with_openings("Linda_Wall_N", (0.0, HY0 - 0.10, 0), length=ROOM_W + 0.2, height=CEIL, axis='X',
+                            palette=pal, baseboard_face_sign=-1, openings=[gdoor])
+    win = (-3.40, 1.50, 1.00, 1.10)
+    make_wall_with_openings("Linda_Wall_W", (-ROOM_W / 2.0, (GY0 + GY1) / 2.0, 0), length=GY1 - GY0, height=CEIL, axis='Y',
+                            palette=pal, baseboard_face_sign=+1, openings=[win])
+    make_wall("Linda_Wall_E", (ROOM_W / 2.0, (GY0 + GY1) / 2.0, 0), length=GY1 - GY0, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall("Linda_Wall_S", (0.0, GY0 - 0.10, 0), length=ROOM_W + 0.2, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
+    # her door, standing open into her room (she is on the porch / awake)
+    hx_, hy_ = gdoor[0] - gdoor[2] / 2.0 + 0.01, GY1 - 0.02
+    a = math.radians(-72.0)
+    make_rot_box("Linda_Door_Leaf", (hx_ + 0.40 * math.cos(a), hy_ + 0.40 * math.sin(a), 1.015), (0.80, 0.04, 2.02), (0.86, 0.84, 0.78, 1.0), yaw=a)
+    for face, yy in (("Hall", HY0 + 0.01), ("Room", GY1 - 0.01)):
+        for nm, x in (("A", gdoor[0] - gdoor[2] / 2.0 - 0.035), ("B", gdoor[0] + gdoor[2] / 2.0 + 0.035)):
+            make_box(f"Linda_Door_Casing_{face}_{nm}", (x, yy, 1.06), (0.07, 0.02, 2.12), wood)
+        make_box(f"Linda_Door_Casing_{face}_Head", (gdoor[0], yy, 2.085), (gdoor[2] + 0.14, 0.02, 0.07), wood)
+    # ── the hall: runner, light, his photographs, the stair going down E ──
+    make_box("Hall_Runner", (-0.6, (HY0 + HY1) / 2.0, 0.006), (2.6, 0.56, 0.008), (0.46, 0.22, 0.20, 1.0))
+    make_cyl("Hall_Light", (-0.4, (HY0 + HY1) / 2.0, CEIL - 0.03), 0.14, 0.05, (0.94, 0.90, 0.78, 1.0), segments=12)
+    for k, x in enumerate((-1.95, -1.35, -0.75)):
+        make_box(f"Hall_Photo_{k}_Frame", (x, HY0 + 0.015, 1.55 + (0.06 if k % 2 else 0.0)), (0.34, 0.03, 0.40), (0.12, 0.12, 0.12, 1.0))
+        make_box(f"Hall_Photo_{k}_Print", (x, HY0 + 0.032, 1.55 + (0.06 if k % 2 else 0.0)), (0.26, 0.004, 0.30), ((0.62, 0.62, 0.60, 1.0), (0.40, 0.40, 0.40, 1.0), (0.52, 0.52, 0.50, 1.0))[k])
+    sx0 = 1.35
+    # the stair going down E: solid steps on the well's floor (the riser
+    # faces dark), the well's floor 1.2 m down
+    sy0, sy1 = HY0 + 0.05, -0.25
+    make_box("Stairwell_Floor", ((sx0 + XE_) / 2.0, (sy0 + sy1) / 2.0, -1.22), (XE_ - sx0, sy1 - sy0, 0.04), (0.18, 0.15, 0.12, 1.0))
+    for k in range(4):
+        top = -0.19 * (k + 1)
+        make_box(f"Stair_Step_{k}", (sx0 + 0.13 + 0.25 * k, (sy0 + sy1) / 2.0, (top - 1.20) / 2.0), (0.25, sy1 - sy0, top + 1.20), (0.30, 0.24, 0.18, 1.0))
+        make_box(f"Stair_Tread_{k}", (sx0 + 0.13 + 0.25 * k, (sy0 + sy1) / 2.0, top + 0.015), (0.26, sy1 - sy0, 0.03), wood)
+    for k, y in enumerate((HY0 + 0.06, HY1 - 0.06)):
+        make_box(f"Stair_Newel_{k}", (sx0, y, 0.55), (0.09, 0.09, 1.10), wood)
+    make_box("Stair_Handrail", (sx0, (HY0 + HY1) / 2.0, 0.92), (0.06, HY1 - HY0 - 0.12, 0.05), wood)
+    for k in range(8):
+        make_box(f"Stair_Baluster_{k}", (sx0, HY0 + 0.20 + k * 0.115, 0.46), (0.03, 0.03, 0.87), (0.90, 0.88, 0.82, 1.0))
+    # ── Linda's room ──
+    make_bed("Linda_Bed", -0.60, -4.45, head="-Y", w=1.40, d=2.0, style="frame", frame_col=wood,
+             blanket_col=(0.56, 0.50, 0.62, 1.0), pillows=2, made=True)
+    # the nightstand with THE SHORTWAVE, its dial lit on 1776
+    nx, ny = 0.45, GY0 + 0.21
+    make_box("Linda_Nightstand", (nx, ny, 0.30), (0.46, 0.40, 0.60), wood)
+    make_box("Linda_Nightstand_Drawer", (nx, ny + 0.205, 0.48), (0.38, 0.012, 0.14), (0.34, 0.26, 0.18, 1.0))
+    make_box("Shortwave_Radio", (nx - 0.02, ny - 0.02, 0.71), (0.38, 0.18, 0.22), (0.24, 0.22, 0.20, 1.0))
+    make_cyl("Shortwave_Dial", (nx + 0.06, ny + 0.072, 0.72), 0.055, 0.01, (1.0, 0.70, 0.30, 1.0), axis='Y', segments=14)
+    make_box("Shortwave_Dial_Needle", (nx + 0.075, ny + 0.078, 0.72), (0.004, 0.003, 0.08), (0.80, 0.16, 0.12, 1.0))
+    make_box("Shortwave_Grille", (nx - 0.11, ny + 0.071, 0.71), (0.13, 0.004, 0.16), (0.14, 0.12, 0.10, 1.0))
+    make_cyl("Shortwave_Knob", (nx + 0.14, ny + 0.075, 0.66), 0.018, 0.02, (0.70, 0.66, 0.56, 1.0), axis='Y', segments=8)
+    make_tube("Shortwave_Antenna", [(nx + 0.14, ny - 0.07, 0.82), (nx + 0.30, ny - 0.10, 1.38)], 0.005, (0.72, 0.72, 0.70, 1.0), segments=4)
+    make_box("Reading_Glasses", (nx + 0.12, ny + 0.12, 0.605), (0.12, 0.04, 0.01), (0.20, 0.18, 0.16, 1.0))
+    wx_ = -1.80
+    make_box("Linda_Nightstand_W", (wx_, ny, 0.30), (0.46, 0.40, 0.60), wood)
+    make_lamp("Linda_Lamp", wx_, ny - 0.04, base_z=0.60, h=0.48, shade_col=(0.90, 0.84, 0.70, 1.0))
+    make_cyl("Linda_Water_Glass", (wx_ + 0.14, ny + 0.10, 0.65), 0.03, 0.10, (0.80, 0.84, 0.86, 0.6), segments=8)
+    # the dresser on the E wall: his old camera, a framed print, a dish
+    dx_, dy_ = XE_ - 0.24, -3.10
+    make_box("Linda_Dresser", (dx_, dy_, 0.48), (0.46, 1.10, 0.96), wood)
+    for k in range(3):
+        make_box(f"Linda_Dresser_Drawer_{k}", (dx_ - 0.235, dy_, 0.22 + k * 0.28), (0.01, 1.0, 0.22), (0.34, 0.26, 0.18, 1.0))
+    make_box("Old_Camera_Body", (dx_, dy_ - 0.25, 1.05), (0.10, 0.12, 0.18), (0.14, 0.13, 0.12, 1.0))
+    make_cyl("Old_Camera_Lens", (dx_ - 0.07, dy_ - 0.25, 1.06), 0.035, 0.05, (0.10, 0.10, 0.10, 1.0), axis='X', segments=10)
+    make_box("Framed_Print", (dx_ + 0.05, dy_ + 0.15, 1.10), (0.03, 0.26, 0.30), (0.12, 0.12, 0.12, 1.0))
+    make_box("Framed_Print_Image", (dx_ + 0.033, dy_ + 0.15, 1.10), (0.004, 0.20, 0.24), (0.58, 0.58, 0.56, 1.0))
+    make_lathe("Linda_Dish", (dx_, dy_ + 0.42, 0.96), [(0.0, 0.0), (0.05, 0.0), (0.08, 0.03), (0.07, 0.035), (0.0, 0.008)], (0.70, 0.66, 0.58, 1.0), segments=12)
+    # the armchair by the W window, the cardigan over its arm
+    ax_, ay_ = XW_ + 0.45, -2.30
+    make_box("Linda_Armchair_Base", (ax_, ay_, 0.18), (0.74, 0.74, 0.36), (0.52, 0.44, 0.38, 1.0))
+    make_box("Linda_Armchair_Cushion", (ax_ + 0.06, ay_, 0.41), (0.56, 0.50, 0.10), (0.58, 0.50, 0.44, 1.0))
+    make_box("Linda_Armchair_Back", (ax_ - 0.29, ay_, 0.66), (0.16, 0.74, 0.60), (0.52, 0.44, 0.38, 1.0))
+    for nm, oy in (("S", -0.31), ("N", 0.31)):
+        make_box(f"Linda_Armchair_Arm_{nm}", (ax_ + 0.06, ay_ + oy, 0.46), (0.60, 0.12, 0.20), (0.52, 0.44, 0.38, 1.0))
+    make_box("Linda_Cardigan", (ax_ + 0.06, ay_ + 0.31, 0.575), (0.40, 0.16, 0.03), (0.70, 0.62, 0.66, 1.0))
+    # the W window: frame, glass, curtain; the dark yard and the fence past it
+    wy, wz, ww, wh = win
+    for nm, c, sz in (("Head", (-ROOM_W / 2.0, wy, wz + wh / 2.0 - 0.035), (0.10, ww, 0.07)),
+                      ("Sill", (-ROOM_W / 2.0, wy, wz - wh / 2.0 + 0.035), (0.10, ww, 0.07)),
+                      ("JambA", (-ROOM_W / 2.0, wy - ww / 2.0 + 0.035, wz), (0.10, 0.07, wh - 0.14)),
+                      ("JambB", (-ROOM_W / 2.0, wy + ww / 2.0 - 0.035, wz), (0.10, 0.07, wh - 0.14))):
+        make_box(f"Linda_Window_Frame_{nm}", c, sz, (0.86, 0.84, 0.78, 1.0))
+    make_box("Linda_Window_Glass", (-ROOM_W / 2.0, wy, wz), (0.01, ww - 0.14, wh - 0.14), (0.40, 0.46, 0.56, 0.5))
+    make_box("Linda_Window_Curtain", (XW_ + 0.06, wy - ww / 2.0 - 0.10, wz + 0.10), (0.05, 0.30, 1.40), (0.78, 0.74, 0.66, 1.0))
+    make_box("Linda_Window_Rod", (XW_ + 0.06, wy, wz + wh / 2.0 + 0.10), (0.03, ww + 0.50, 0.02), (0.60, 0.56, 0.48, 1.0))
+    for k, y in enumerate((wy - ww / 2.0 - 0.24, wy + ww / 2.0 + 0.24)):
+        make_box(f"Linda_Window_Rod_Bracket_{k}", (XW_ + 0.03, y, wz + wh / 2.0 + 0.10), (0.06, 0.02, 0.02), (0.60, 0.56, 0.48, 1.0))
+    make_box("Out_Yard_W", (-ROOM_W / 2.0 - 5.0, -3.4, -3.0), (10.0, 12.0, 0.05), (0.16, 0.20, 0.14, 1.0))
+    make_box("Out_Fence_W", (-ROOM_W / 2.0 - 7.0, -3.4, -2.1), (0.08, 12.0, 1.8), (0.36, 0.30, 0.24, 1.0))
+    make_blob("Out_Yard_Tree", (-ROOM_W / 2.0 - 4.5, -5.5, 1.6), 1.8, (0.12, 0.18, 0.14, 1.0), noise=0.22, seed=17, squash=0.9)
+    make_cyl("Out_Yard_Tree_Trunk", (-ROOM_W / 2.0 - 4.5, -5.5, -1.2), 0.16, 3.6, (0.20, 0.16, 0.12, 1.0), segments=8)
+    make_box("Linda_Rug", (-0.6, -2.80, 0.004), (2.0, 1.2, 0.008), (0.56, 0.42, 0.40, 1.0))
+    make_cyl("Linda_Ceiling_Light", (0.0, -3.5, CEIL - 0.03), 0.16, 0.05, (0.94, 0.90, 0.78, 1.0), segments=12)
 
 
 def main():
     clear_scene()
     build_shell()
-    build_door()
-    build_window()
-    build_exterior()
-    build_bed_zone()
-    build_desk_zone()
-    build_corkboard()
-    build_bookcase()
-    build_closet()
-    build_rug_and_fan()
-    build_ceiling_fixtures()
+    build_bed()
+    build_desk_lamp()
+    build_posters()
+    build_rug()
+    build_win()
+    build_ceiling_infra()
+    build_dressing()
+    build_hero_props()
+    build_hero_props_2026_09()
+    build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/maya_bedroom.glb"))
+    build_door_infill_mayas_door_2026_09()
+    build_upstairs_2026_10()
     print(f"\n[build_maya_bedroom] exporting to {out}")
     export_glb(out)
 

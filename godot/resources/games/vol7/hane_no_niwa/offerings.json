@@ -1,0 +1,190 @@
+{
+  "notes": "OFFER is the language. Anything offered enters the yokai's LEXICON as tags; the letters are composed from a grammar over exactly what you gave. 'belonging' items skew the ending toward the letter of grief. found_at: a shrine spot + season, or 'town' (the town is one menu, not a location).",
+  "items": [
+    {
+      "id": "persimmon",
+      "name": "a persimmon",
+      "tags": [
+        "sweetness",
+        "food"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "comb",
+      "name": "a wooden comb",
+      "tags": [
+        "untangling",
+        "belonging"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "sake",
+      "name": "a cup of sake",
+      "tags": [
+        "warmth",
+        "grandfather"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "rice_ball",
+      "name": "a rice ball",
+      "tags": [
+        "food",
+        "comfort"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "candle",
+      "name": "a stub of candle",
+      "tags": [
+        "brightness",
+        "comfort"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "orange",
+      "name": "a winter orange",
+      "tags": [
+        "sweetness",
+        "brightness"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "thread",
+      "name": "red thread",
+      "tags": [
+        "untangling",
+        "binding"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "photograph",
+      "name": "a photograph, creased",
+      "tags": [
+        "belonging",
+        "grief"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "letter_old",
+      "name": "an unsent letter",
+      "tags": [
+        "belonging",
+        "grief",
+        "words"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "coin_worn",
+      "name": "a worn coin",
+      "tags": [
+        "belonging",
+        "luck"
+      ],
+      "found": "town"
+    },
+    {
+      "id": "blossom",
+      "name": "a fallen blossom",
+      "tags": [
+        "weather",
+        "spring"
+      ],
+      "found": "torii \u00b7 spring"
+    },
+    {
+      "id": "rain_water",
+      "name": "rainwater in a cup",
+      "tags": [
+        "weather",
+        "rain"
+      ],
+      "found": "cistern \u00b7 spring"
+    },
+    {
+      "id": "cicada_shell",
+      "name": "a cicada shell",
+      "tags": [
+        "weather",
+        "summer",
+        "leaving"
+      ],
+      "found": "camphor_tree \u00b7 summer"
+    },
+    {
+      "id": "cedar_sprig",
+      "name": "a cedar sprig",
+      "tags": [
+        "green",
+        "summer"
+      ],
+      "found": "steps \u00b7 summer"
+    },
+    {
+      "id": "momiji_leaf",
+      "name": "a maple leaf, perfect",
+      "tags": [
+        "weather",
+        "autumn",
+        "brightness"
+      ],
+      "found": "torii \u00b7 autumn"
+    },
+    {
+      "id": "gingko_fan",
+      "name": "a gingko fan",
+      "tags": [
+        "autumn",
+        "gold"
+      ],
+      "found": "steps \u00b7 autumn"
+    },
+    {
+      "id": "smoke_charm",
+      "name": "a charm smelling of smoke",
+      "tags": [
+        "autumn",
+        "warmth"
+      ],
+      "found": "brazier \u00b7 autumn"
+    },
+    {
+      "id": "snow_ball",
+      "name": "a snowball (it will not last)",
+      "tags": [
+        "weather",
+        "winter",
+        "leaving"
+      ],
+      "found": "cistern \u00b7 winter"
+    },
+    {
+      "id": "bare_twig",
+      "name": "a bare twig",
+      "tags": [
+        "winter",
+        "patience"
+      ],
+      "found": "camphor_tree \u00b7 winter"
+    },
+    {
+      "id": "first_plum",
+      "name": "a plum bud, closed",
+      "tags": [
+        "winter",
+        "promise",
+        "spring"
+      ],
+      "found": "torii \u00b7 winter"
+    }
+  ]
+}

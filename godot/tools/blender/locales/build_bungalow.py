@@ -46,6 +46,29 @@ Run:
 
 Output:
     godot/assets/3d/locales/bungalow.glb
+
+DRAFT N+1 · LIVING ROOM + STUDIO (2026-09-19, lore/_VISUAL_PROGRAM.md
+§3 backgrounds pass, the arcana primitive upgrade's fifth room; 2 VN
+placements + the Priestess board). Scoped to the two stations the
+preset and the cast markers stage. LAYOUT the gates never reported:
+two floor lamps shared one set of object names (LR_FloorLamp_*);
+the closed laptop and the coffee cup sat INSIDE Anya's CRT case; a
+second drive stack hung half off the desk's north edge; a box stack
+stood inside the reading chair; both book bundles sat in the floor
+lamp's base; Anya's chair faced AWAY from the mic. PRIMITIVES (the
+shared _props kit, imported into this vendored builder): the reading
+chair as chamfered cushions with rolled arms; the side table from
+the kit; both floor lamps as profiles (weighted base, pole, flared
+shade); Anya's chair from the kit, facing the mic; the studio can
+light, the mic capsule and pop filter, the headphone cups and band,
+the coffee cup as profiles; the boom arm a tube. WEAR (the chair you
+sat in too long): the seat's dent and the arm's shine, the feet
+patch before it, Anya's floor patch, the desk's elbow strip. D3: the
+floor lamp's cord to a south-wall outlet, a power strip under the
+desk with the reel's cord.
+Draft N+2 targets: the kitchen and bedroom stations by the same
+method; the porch's wicker as woven lathes; the string lights' cord
+as one catenary tube; Deck: the preset + the cast markers' frames.
 """
 
 import bpy
@@ -59,6 +82,15 @@ if _SCRIPT_DIR not in sys.path:
 
 OUTPUT_DIR  = "../../../assets/3d/locales"
 OUTPUT_NAME = "bungalow.glb"
+
+# The shared primitive kit (2026-09-19): this builder vendors its own
+# make_box/make_cyl for the recorder; the profiles come from _props.
+_BT = os.path.normpath(os.path.join(_SCRIPT_DIR, ".."))
+if _BT not in sys.path:
+    sys.path.insert(0, _BT)
+from _props.geometry import make_lathe, make_tube, make_chamfer_box
+from _props.furniture import make_table, make_chair
+from _props.detail import make_floor_stain, make_wall_outlet
 
 
 # ── Palette ──────────────────────────────────────────────────────
@@ -136,7 +168,7 @@ def _finalize_mesh(name, verts, faces, base_color):
     return obj
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+def _make_box_vendored(name, center, size, base_color, open_faces=None):
     open_faces = open_faces or set()
     cx, cy, cz = center
     sx, sy, sz = size
@@ -154,6 +186,24 @@ def make_box(name, center, size, base_color, open_faces=None):
     ]
     out_faces = [vids for tag, vids in face_defs if tag not in open_faces]
     return _finalize_mesh(name, verts, out_faces, base_color)
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, base_color,
@@ -207,7 +257,7 @@ def gauntlet_marker(label, cx, cy, w, d, numeral):
     """Paint a brass-stencil rectangle on the floor + a numeral
     plate. Mirrors build_cathedral_interior._zone_marker style so
     the two locations read as the same gauntlet system."""
-    Z_PAINT = 0.063
+    Z_PAINT = 0.008   # ON the floor (2026-09-22: the stencils hovered 6 cm up)
     for sgn in (-1, +1):
         make_box(f"{label}_outline_x{sgn:+d}",
                  (cx + sgn * w / 2, cy, Z_PAINT),
@@ -234,6 +284,26 @@ CEIL_Z       =  2.70  # interior ceiling
 ROOF_Z       =  3.20  # exterior flat-roof top (accessible)
 
 
+def _wall_cut(name, axis, fixed, a0, a1, holes, h=2.70, t=0.20):
+    """A wall run from a0 to a1 along `axis` (at `fixed` across it), built as
+    piers, sills and headers round rectangular holes (u0, u1, z0, z1)."""
+    def box(nm, u0, u1, z0, z1):
+        if u1 - u0 < 1e-3 or z1 - z0 < 1e-3:
+            return
+        c = (u0 + u1) / 2.0
+        if axis == 'X':
+            make_box(nm, (c, fixed, (z0 + z1) / 2.0), (u1 - u0, t, z1 - z0), COL_WALL_OUTER)
+        else:
+            make_box(nm, (fixed, c, (z0 + z1) / 2.0), (t, u1 - u0, z1 - z0), COL_WALL_OUTER)
+    cur = a0
+    for i, (u0, u1, z0, z1) in enumerate(sorted(holes)):
+        box(f"{name}_Pier_{i}", cur, u0, 0.0, h)
+        box(f"{name}_Sill_{i}", u0, u1, 0.0, z0)
+        box(f"{name}_Head_{i}", u0, u1, z1, h)
+        cur = u1
+    box(f"{name}_Pier_{len(holes)}", cur, a1, 0.0, h)
+
+
 def build_shell():
     """Slab floor + four exterior walls + flat roof. The roof is
     accessible — flat with a low parapet so the ROOF threshold
@@ -254,30 +324,37 @@ def build_shell():
 
     # Exterior walls — east/west/north/south
     # South wall has front-door opening
-    make_box("Wall_S_W", (-3.4, INTERIOR_Y_S, 1.35),
-             (3.2, 0.20, 2.70), COL_WALL_OUTER)
-    make_box("Wall_S_E", (+3.4, INTERIOR_Y_S, 1.35),
-             (3.2, 0.20, 2.70), COL_WALL_OUTER)
+    # (2026-10-09) the window walls are CUT: the six windows stood inside
+    # solid wall boxes — invisible from inside and out
+    _wall_cut("Wall_S_W", 'X', INTERIOR_Y_S, -5.0, -1.8, [(-3.05, -1.95, 1.00, 2.00)])
+    _wall_cut("Wall_S_E", 'X', INTERIOR_Y_S, +1.8, +5.0, [(2.45, 3.55, 1.00, 2.00)])
     make_box("Wall_S_AboveDoor", (0.0, INTERIOR_Y_S, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
+    # the front door is 1.6 m with its frame; the opening was 3.6 m —
+    # a metre of open air each side (2026-09-24, the user: "doorways ...
+    # misaligned"): close it to the frame
+    for fs in (-1, 1):
+        make_box(f"Wall_S_DoorFill_{fs:+d}", (fs * 1.30, INTERIOR_Y_S, 1.35),
+                 (1.00, 0.20, 2.70), COL_WALL_OUTER)
     # North wall has the back-door (kitchen → yard) cutout
     make_box("Wall_N_W", (-3.4, INTERIOR_Y_N, 1.35),
              (3.2, 0.20, 2.70), COL_WALL_OUTER)
-    make_box("Wall_N_E", (+3.4, INTERIOR_Y_N, 1.35),
-             (3.2, 0.20, 2.70), COL_WALL_OUTER)
+    _wall_cut("Wall_N_E", 'X', INTERIOR_Y_N, +1.8, +5.0, [(2.15, 3.45, 1.10, 2.00)])
     make_box("Wall_N_AboveDoor", (0.0, INTERIOR_Y_N, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
+    # the back door, likewise (2026-09-24: 3.6 m opening, 1.6 m door)
+    for fs in (-1, 1):
+        make_box(f"Wall_N_DoorFill_{fs:+d}", (fs * 1.30, INTERIOR_Y_N, 1.35),
+                 (1.00, 0.20, 2.70), COL_WALL_OUTER)
     # East/West walls — full height, no cuts
-    make_box("Wall_E", (INTERIOR_X_E, 3.0, 1.35),
-             (0.20, 6.0, 2.70), COL_WALL_OUTER)
-    make_box("Wall_W", (INTERIOR_X_W, 3.0, 1.35),
-             (0.20, 6.0, 2.70), COL_WALL_OUTER)
+    _wall_cut("Wall_E", 'Y', INTERIOR_X_E, 0.0, 6.0, [(1.35, 2.25, 1.25, 2.05)])
+    _wall_cut("Wall_W", 'Y', INTERIOR_X_W, 0.0, 6.0, [(0.75, 1.25, 1.65, 2.05), (3.90, 5.10, 1.10, 2.00)])
 
     # Front door + back door
     make_box("FrontDoor", (0.0, INTERIOR_Y_S - 0.04, 1.05),
              (1.40, 0.04, 2.10), COL_DOOR)
-    make_box("FrontDoor_Frame_T", (0.0, INTERIOR_Y_S, 2.18),
-             (1.60, 0.22, 0.12), COL_DOORFRAME)
+    make_box("FrontDoor_Frame_T", (0.0, INTERIOR_Y_S, 2.20),   # door top to the wall above (2026-09-23: 2 cm and 6 cm gaps)
+             (1.60, 0.22, 0.20), COL_DOORFRAME)
     # Screen door overlay (paler, in front)
     make_box("FrontDoor_Screen", (0.0, INTERIOR_Y_S - 0.10, 1.05),
              (1.40, 0.02, 2.10), (0.62, 0.60, 0.52, 0.6))
@@ -288,15 +365,16 @@ def build_shell():
 
     make_box("BackDoor", (0.0, INTERIOR_Y_N + 0.04, 1.05),
              (1.40, 0.04, 2.10), COL_DOOR)
-    make_box("BackDoor_Frame_T", (0.0, INTERIOR_Y_N, 2.18),
-             (1.60, 0.22, 0.12), COL_DOORFRAME)
+    make_box("BackDoor_Frame_T", (0.0, INTERIOR_Y_N, 2.20),
+             (1.60, 0.22, 0.20), COL_DOORFRAME)
 
     # WELCOME mat — outside the front door, cursive
+    # on the porch deck's top at 0.10 (2026-09-25: the mat lay inside the deck slab)
     make_box("WelcomeMat",
-             (0.0, INTERIOR_Y_S - 0.90, 0.012),
+             (0.0, INTERIOR_Y_S - 0.90, 0.110),
              (1.20, 0.80, 0.02), COL_FABRIC_RUG)
     make_box("WelcomeMat_Letters",
-             (0.0, INTERIOR_Y_S - 0.90, 0.014),
+             (0.0, INTERIOR_Y_S - 0.90, 0.1216),
              (0.80, 0.18, 0.002), COL_TRIM_WHITE)
 
     # Windows — south wall (living room), east wall (studio),
@@ -371,50 +449,45 @@ def build_partitions():
     is named so future passes can move/break them."""
     # ── East-west mid-wall at Y=+3 splitting front and back of house
     # Run W-end to start of kitchen-bedroom door opening
-    make_box("Mid_S_W", (-3.0, +3.0, 1.35),
+    make_box("Wall_Mid_S_W", (-3.0, +3.0, 1.35),
              (4.0, 0.10, 2.70), COL_WALL_CREAM)
     # Door opening between living room and bedroom corridor — 0.9m
     # cut at X=-1
-    make_box("Mid_S_Mid", (-0.5, +3.0, 1.35),
+    make_box("Wall_Mid_S_Mid", (-0.5, +3.0, 1.35),
              (0.0, 0.10, 2.70), COL_WALL_CREAM)
     # E section
-    make_box("Mid_S_E", (+2.0, +3.0, 1.35),
+    make_box("Wall_Mid_S_E", (+2.0, +3.0, 1.35),
              (5.0, 0.10, 2.70), COL_WALL_CREAM)
     # Above-door header for symmetry — covers bedroom passage
-    make_box("Mid_S_Above_Bed", (-1.0, +3.0, 2.45),
+    make_box("Wall_Mid_S_Above_Bed", (-1.0, +3.0, 2.45),
              (1.0, 0.10, 0.50), COL_WALL_CREAM)
 
     # ── North-south wall at X=-2.5 splitting bathroom from corridor
-    make_box("NS_Bath", (-2.5, +0.75, 1.35),
+    make_box("Wall_NS_Bath", (-2.5, +0.75, 1.35),
              (0.10, 1.50, 2.70), COL_WALL_CREAM)
     # Bathroom door at Y=+2.0 (0.8m wide gap)
-    make_box("NS_Bath_Above_Door", (-2.5, +1.95, 2.40),
+    make_box("Wall_NS_Bath_Above_Door", (-2.5, +1.95, 2.40),
              (0.10, 0.10, 0.60), COL_WALL_CREAM)
     # Continues up to Y=+3
-    make_box("NS_Bath_Top", (-2.5, +2.40, 1.35),
+    make_box("Wall_NS_Bath_Top", (-2.5, +2.40, 1.35),
              (0.10, 0.10, 2.70), COL_WALL_CREAM)
 
     # ── North-south wall at X=+1.5 splitting living room from studio
     # Door cut at Y=+1.5 (1.0m wide)
-    make_box("NS_Studio_S", (+1.5, +0.5, 1.35),
+    make_box("Wall_NS_Studio_S", (+1.5, +0.5, 1.35),
              (0.10, 1.00, 2.70), COL_WALL_CREAM)
-    make_box("NS_Studio_N", (+1.5, +2.5, 1.35),
+    make_box("Wall_NS_Studio_N", (+1.5, +2.5, 1.35),
              (0.10, 1.00, 2.70), COL_WALL_CREAM)
-    make_box("NS_Studio_AboveDoor", (+1.5, +1.5, 2.45),
+    make_box("Wall_NS_Studio_AboveDoor", (+1.5, +1.5, 2.45),
              (0.10, 1.00, 0.50), COL_WALL_CREAM)
 
-    # ── Storage closet wall — splits the back of the studio into a
-    # small closet at the south corner (the OLD laundry room, now
-    # the storage room for Pomegranate Hour boxes).
-    make_box("Closet_W", (-1.0, +2.0, 1.35),
-             (0.10, 2.00, 2.70), COL_WALL_CREAM)
-    # Closet wraps around — north wall at Y=+3 is shared with mid_S
-    # E wall — short stub closing the closet
-    make_box("Closet_S", (-0.0, +1.0, 1.35),
-             (2.0, 0.10, 2.70), COL_WALL_CREAM)
-    # Closet door at X=-0.7 (sliding door, depicted shut)
-    # (Actually we leave a 0.7m opening on the east wall; closing
-    # wall doesn't continue past door.)
+    # ── (2026-10-05) The "storage closet" walls are gone. Two stub walls
+    # (x -1.0 and y +1.0) cut the living room into an L round a closet,
+    # and the closet's slatted door stood IN the living room -> studio
+    # doorway (x +1.5, y 1-2) — the doorway Elicia "paused in". The
+    # Pomegranate Hour boxes stay where they were, a stack in the living
+    # room; the gauntlet's `the_storage_closet` space (0.4, 1.6) stands
+    # beside them.
 
     # ── Bedroom accent wall — paint a darker teal on bedroom side
     make_box("BedroomAccentWall_N",
@@ -477,31 +550,45 @@ def build_living_room():
              (0.60, 0.45, 0.40), COL_CARDBOARD)
     # Tape strips on the lids
     for i, bx in enumerate([-0.2, +0.4, +1.0, -0.2, +0.7]):
-        bz = (z + 0.50 + 0.001) if i < 3 else (z + 0.45 + 0.40 + 0.001)
+        bz = (z + 0.50 + 0.001) if i < 3 else (z + 0.45 + 0.20 + 0.001)   # the upper boxes are 0.40 tall (2026-09-22: tape 20 cm over them)
         make_box(f"LR_Box_Tape_{i}",
                  (bx, +2.6, bz),
                  (0.06, 0.40, 0.002), COL_PAPER)
     # Marker labels — illegible at this scale, but visible
     for i, (bx, by) in enumerate([(-0.2, +2.6), (+0.4, +2.6), (+1.0, +2.6)]):
         make_box(f"LR_Box_Label_{i}",
-                 (bx - 0.20, by - 0.255, z + 0.25),
+                 (bx - 0.20, by - (0.229 if i == 1 else 0.255), z + 0.25),   # on its own box's face (box 2 stands 2.5 cm further back)
                  (0.16, 0.004, 0.06), COL_PAPER)
 
     # ── Side table next to the (south, facing the window) seating —
     # with the Whispers script page on it
     table_x, table_y = -2.2, +1.8
-    make_box("LR_SideTable_Top",
-             (table_x, table_y, 0.62),
-             (0.50, 0.40, 0.03), (0.46, 0.32, 0.22, 1.0))
-    for sx in (-1, +1):
-        for sy in (-1, +1):
-            make_cyl(f"LR_SideTable_Leg_{sx}_{sy}",
-                     (table_x + sx * 0.20, table_y + sy * 0.15, 0.30),
-                     0.018, 0.60, (0.36, 0.24, 0.16, 1.0))
+    # (draft N+1: the kit table — turned legs, an apron; same top height)
+    make_table("LR_SideTable", table_x, table_y, w=0.50, d=0.40, h=0.635, wood=(0.36, 0.24, 0.16, 1.0), top_col=(0.46, 0.32, 0.22, 1.0))
     # The Whispers script page — single sheet on top
     make_box("LR_ScriptPage",
              (table_x + 0.04, table_y + 0.05, 0.638),
              (0.21, 0.27, 0.003), COL_PAPER)
+    # 2026-08 tail pass: the FACE-DOWN PHONE beside the script page
+    # (screen against the wood, on purpose).
+    make_box("LR_Phone_FaceDown",
+             (table_x - 0.15, table_y - 0.10, 0.642),
+             (0.075, 0.15, 0.009), (0.16, 0.16, 0.18, 1.0))
+    make_box("LR_Phone_CameraBump",
+             (table_x - 0.17, table_y - 0.15, 0.649),
+             (0.03, 0.03, 0.005), (0.10, 0.10, 0.12, 1.0))
+    # The WALLPAPER PEEL SEAM — a curling strip on the S wall's
+    # interior face by the seating, backing plaster showing above
+    # where the paper has let go.
+    make_box("LR_Wallpaper_Peel",
+             (-2.5, 0.115, 2.05),
+             (0.30, 0.03, 0.55), (0.72, 0.66, 0.52, 1.0))
+    make_box("LR_Wallpaper_Peel_Curl",
+             (-2.5, 0.17, 1.78),
+             (0.28, 0.09, 0.04), (0.78, 0.72, 0.58, 1.0))
+    make_box("LR_Wallpaper_Plaster",
+             (-2.5, 0.105, 2.35),
+             (0.26, 0.015, 0.28), (0.62, 0.58, 0.50, 1.0))
     # A red ink scribble across it (Elicia's notes)
     make_box("LR_ScriptPage_Mark",
              (table_x - 0.04, table_y + 0.02, 0.640),
@@ -510,29 +597,23 @@ def build_living_room():
     # ── Reading chair — a single tired armchair facing the south
     # window. The chair you sat in too long, in '23.
     ch_x, ch_y = -1.6, +0.8
-    make_box("LR_Chair_Seat",
-             (ch_x, ch_y, 0.42),
-             (0.70, 0.65, 0.20), (0.52, 0.40, 0.32, 1.0))
-    make_box("LR_Chair_Back",
-             (ch_x, ch_y + 0.30, 0.95),
-             (0.70, 0.12, 0.90), (0.52, 0.40, 0.32, 1.0))
-    make_box("LR_Chair_ArmL",
-             (ch_x - 0.32, ch_y - 0.02, 0.66),
-             (0.10, 0.62, 0.30), (0.42, 0.32, 0.26, 1.0))
-    make_box("LR_Chair_ArmR",
-             (ch_x + 0.32, ch_y - 0.02, 0.66),
-             (0.10, 0.62, 0.30), (0.42, 0.32, 0.26, 1.0))
+    # (draft N+1: chamfered cushions, rolled arms — the chair you sat
+    # in too long has a dent, see build_lr_studio_draft_2026_09)
+    make_chamfer_box("LR_Chair_Base", (ch_x, ch_y, 0.17), (0.70, 0.65, 0.34), (0.42, 0.32, 0.26, 1.0), chamfer=0.02)   # to the floor (2026-09-23: 10 cm up)
+    make_chamfer_box("LR_Chair_Seat", (ch_x, ch_y - 0.03, 0.42), (0.62, 0.56, 0.16), (0.52, 0.40, 0.32, 1.0), chamfer=0.04)
+    make_chamfer_box("LR_Chair_Back", (ch_x, ch_y + 0.30, 0.95), (0.70, 0.12, 0.90), (0.52, 0.40, 0.32, 1.0), chamfer=0.04)
+    for side, sx in (("L", -0.32), ("R", 0.32)):
+        make_chamfer_box(f"LR_Chair_Arm{side}", (ch_x + sx, ch_y - 0.02, 0.62), (0.10, 0.62, 0.22), (0.42, 0.32, 0.26, 1.0), chamfer=0.02)
+        make_cyl(f"LR_Chair_Arm{side}_Roll", (ch_x + sx, ch_y - 0.02, 0.76), 0.06, 0.62, (0.42, 0.32, 0.26, 1.0), segments=10, axis='Y')
 
-    # ── Floor lamp behind the chair
+    # ── Floor lamp behind the chair (draft N+1: a weighted base, the
+    # pole, a flared shade — as profiles)
+    make_lathe("LR_FloorLamp_Base", (ch_x + 0.50, ch_y - 0.30, 0.0), [(0.13, 0.0), (0.13, 0.03), (0.06, 0.05), (0.02, 0.06), (0.018, 0.08)], COL_METAL_BLACK, segments=10)
     make_cyl("LR_FloorLamp_Pole",
              (ch_x + 0.50, ch_y - 0.30, 0.80),
-             0.018, 1.60, COL_METAL_BLACK)
-    make_box("LR_FloorLamp_Base",
-             (ch_x + 0.50, ch_y - 0.30, 0.03),
-             (0.26, 0.26, 0.04), COL_METAL_BLACK)
-    make_cyl("LR_FloorLamp_Shade",
-             (ch_x + 0.50, ch_y - 0.30, 1.65),
-             0.18, 0.28, (0.92, 0.84, 0.66, 1.0), segments=10)
+             0.018, 1.46, COL_METAL_BLACK)
+    make_lathe("LR_FloorLamp_Shade", (ch_x + 0.50, ch_y - 0.30, 1.51), [(0.12, 0.0), (0.18, 0.28), (0.0, 0.28)], (0.92, 0.84, 0.66, 1.0), segments=12)
+    make_lathe("LR_FloorLamp_Bulb", (ch_x + 0.50, ch_y - 0.30, 1.56), [(0.0, 0.0), (0.03, 0.02), (0.03, 0.06), (0.0, 0.08)], (0.98, 0.94, 0.80, 1.0), segments=8)
 
     # ── Warped-floor hint — a single plank pushed up slightly
     # (the warp the flavor mentions)
@@ -559,9 +640,7 @@ def build_studio_and_editing_desk():
     make_box("Studio_LightBracket",
              (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.05),
              (0.80, 0.60, 0.04), COL_METAL_BLACK)
-    make_cyl("Studio_OverheadLight",
-             (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.30),
-             0.22, 0.30, COL_METAL_STEEL)
+    make_lathe("Studio_OverheadLight", (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.45), [(0.24, 0.0), (0.22, 0.03), (0.20, 0.36), (0.20, 0.38), (0.0, 0.38)], COL_METAL_STEEL, segments=12)
     # Bright bulb visible inside
     make_box("Studio_OverheadBulb",
              (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.42),
@@ -576,34 +655,21 @@ def build_studio_and_editing_desk():
              (boom_x, boom_y, 0.90),
              0.018, 1.70, COL_METAL_BLACK)
     # Horizontal arm
-    make_box("Studio_BoomStand_Arm",
-             (boom_x + 0.32, boom_y, 1.70),
-             (0.70, 0.025, 0.025), COL_METAL_BLACK)
-    # Cardioid mic shape at end
-    make_cyl("Studio_Mic",
-             (boom_x + 0.62, boom_y, 1.66),
-             0.04, 0.18, COL_METAL_BLACK, segments=8, axis='Z')
-    make_cyl("Studio_Mic_Mesh",
-             (boom_x + 0.62, boom_y, 1.78),
-             0.05, 0.10, (0.32, 0.30, 0.30, 1.0), segments=8, axis='Z')
-    # Pop filter — flat circle in front
+    make_tube("Studio_BoomStand_Arm", [(boom_x, boom_y, 1.72), (boom_x + 0.66, boom_y, 1.70)], 0.012, COL_METAL_BLACK, segments=6)
+    # Cardioid mic — a capsule profile, its mesh head (draft N+1)
+    make_lathe("Studio_Mic", (boom_x + 0.62, boom_y, 1.57), [(0.02, 0.0), (0.035, 0.02), (0.04, 0.16), (0.045, 0.18), (0.05, 0.22), (0.05, 0.28), (0.03, 0.31), (0.0, 0.31)], COL_METAL_BLACK, segments=10)
+    make_lathe("Studio_Mic_Mesh", (boom_x + 0.62, boom_y, 1.79), [(0.05, 0.0), (0.052, 0.06), (0.03, 0.09), (0.0, 0.10)], (0.32, 0.30, 0.30, 1.0), segments=10)
+    # Pop filter — a hoop on a gooseneck (draft N+1)
+    make_tube("Studio_PopFilter_Neck", [(boom_x + 0.62, boom_y - 0.02, 1.62), (boom_x + 0.58, boom_y - 0.10, 1.68), (boom_x + 0.55, boom_y - 0.14, 1.74)], 0.006, COL_METAL_BLACK, segments=5)
     make_cyl("Studio_PopFilter",
-             (boom_x + 0.55, boom_y, 1.74),
-             0.06, 0.014, (0.18, 0.16, 0.16, 1.0), segments=10, axis='Y')
+             (boom_x + 0.55, boom_y - 0.14, 1.74),
+             0.06, 0.008, (0.18, 0.16, 0.16, 1.0), segments=12, axis='Y')
 
     # ── Anya's chair — a director's-style chair facing the mic ──
-    ay_x, ay_y = STUDIO_CX - 0.6, STUDIO_CY - 0.4
-    make_box("Studio_AnyaChair_Seat",
-             (ay_x, ay_y, 0.50),
-             (0.46, 0.46, 0.06), (0.36, 0.20, 0.14, 1.0))
-    make_box("Studio_AnyaChair_Back",
-             (ay_x, ay_y + 0.20, 0.85),
-             (0.46, 0.05, 0.40), (0.36, 0.20, 0.14, 1.0))
-    for sx in (-1, +1):
-        for sy in (-1, +1):
-            make_cyl(f"Studio_AnyaChair_Leg_{sx}_{sy}",
-                     (ay_x + sx * 0.18, ay_y + sy * 0.18, 0.25),
-                     0.014, 0.50, COL_METAL_BLACK)
+    ay_x, ay_y = STUDIO_CX - 0.48, STUDIO_CY - 0.4   # clear of the closet door (2026-09-24)
+    # (draft N+1: the kit chair, FACING the mic to its north — the old
+    # back was on the mic's side; the closed laptop rests on its seat)
+    make_chair("Studio_AnyaChair", ay_x, ay_y, yaw=0.0, wood=(0.36, 0.20, 0.14, 1.0), seat_col=(0.36, 0.20, 0.14, 1.0), w=0.46, seat_h=0.50)
 
     # ── EDITING DESK — desk along the studio's east wall ──
     desk_x, desk_y = STUDIO_CX + 0.5, STUDIO_CY - 0.5
@@ -615,17 +681,21 @@ def build_studio_and_editing_desk():
             make_cyl(f"Studio_Desk_Leg_{sx}_{sy}",
                      (desk_x + sx * 0.62, desk_y + sy * 0.28, 0.36),
                      0.020, 0.72, (0.24, 0.18, 0.12, 1.0))
-    # Laptop — open
+    # Laptop — CLOSED, pushed to the left front corner. The desk
+    # center now belongs to the Priestess CRT pair + master reel;
+    # the open laptop stood inside Anya's monitor case.
+    # (draft N+1: on Anya's chair seat — on the desk's "left front
+    # corner" it still sat inside Anya's CRT case)
     make_box("Studio_Laptop_Base",
-             (desk_x, desk_y, 0.755),
+             (ay_x, ay_y - 0.02, 0.535),
              (0.40, 0.30, 0.02), COL_METAL_STEEL)
-    make_box("Studio_Laptop_Screen",
-             (desk_x, desk_y - 0.16, 0.96),
-             (0.40, 0.02, 0.30), COL_METAL_STEEL)
-    # Screen glow (lit content)
-    make_box("Studio_Laptop_ScreenGlow",
-             (desk_x, desk_y - 0.151, 0.96),
-             (0.36, 0.001, 0.26), (0.42, 0.56, 0.78, 1.0))
+    make_box("Studio_Laptop_Lid",
+             (ay_x, ay_y - 0.02, 0.553),
+             (0.40, 0.30, 0.014), COL_METAL_STEEL)
+    # Amber sleep LED on the lid's front edge
+    make_box("Studio_Laptop_SleepLED",
+             (ay_x, ay_y - 0.165, 0.549),
+             (0.02, 0.004, 0.006), (0.92, 0.70, 0.28, 1.0))
     # Two external drives — stacked, humming
     make_box("Studio_HD_1",
              (desk_x + 0.48, desk_y, 0.762),
@@ -641,25 +711,20 @@ def build_studio_and_editing_desk():
              (desk_x + 0.55, desk_y + 0.10, 0.808 + 0.020),
              (0.012, 0.012, 0.004), (0.32, 0.98, 0.40, 1.0))
     # Closed-back headphones — drape on the desk corner
-    make_cyl("Studio_HP_CupL",
-             (desk_x - 0.42, desk_y + 0.06, 0.78),
-             0.07, 0.05, (0.10, 0.10, 0.12, 1.0), segments=8, axis='Z')
-    make_cyl("Studio_HP_CupR",
-             (desk_x - 0.28, desk_y + 0.06, 0.78),
-             0.07, 0.05, (0.10, 0.10, 0.12, 1.0), segments=8, axis='Z')
-    make_cyl("Studio_HP_Band",
-             (desk_x - 0.35, desk_y + 0.06, 0.83),
-             0.08, 0.18, (0.14, 0.14, 0.18, 1.0), segments=8, axis='X')
-    # Coffee cup with cold inch
-    make_cyl("Studio_CoffeeCup",
-             (desk_x - 0.50, desk_y - 0.20, 0.78),
-             0.045, 0.10, COL_TRIM_WHITE, segments=10)
+    # (headphones moved to the right front corner — the old left
+    # spot is under Anya's CRT now)
+    # (draft N+1: cups as profiles, the band an arc between them)
+    for side, hx in (("L", desk_x + 0.50), ("R", desk_x + 0.64)):
+        make_lathe(f"Studio_HP_Cup{side}", (hx, desk_y - 0.26, 0.74), [(0.0, 0.0), (0.06, 0.0), (0.07, 0.02), (0.065, 0.05), (0.04, 0.06), (0.0, 0.06)], (0.10, 0.10, 0.12, 1.0), segments=10)
+    make_tube("Studio_HP_Band", [(desk_x + 0.50, desk_y - 0.26, 0.80), (desk_x + 0.52, desk_y - 0.26, 0.90), (desk_x + 0.57, desk_y - 0.26, 0.94), (desk_x + 0.62, desk_y - 0.26, 0.90), (desk_x + 0.64, desk_y - 0.26, 0.80)], 0.012, (0.14, 0.14, 0.18, 1.0), segments=6)
+    # Coffee cup with cold inch (draft N+1: west of the CRT it sat in)
+    make_lathe("Studio_CoffeeCup", (desk_x - 0.62, desk_y - 0.27, 0.74), [(0.0, 0.0), (0.035, 0.0), (0.045, 0.10), (0.0, 0.10)], COL_TRIM_WHITE, segments=10)
     make_cyl("Studio_CoffeeContents",
-             (desk_x - 0.50, desk_y - 0.20, 0.81),
-             0.040, 0.02, (0.20, 0.10, 0.06, 1.0), segments=10)
+             (desk_x - 0.62, desk_y - 0.27, 0.77),
+             0.038, 0.02, (0.20, 0.10, 0.06, 1.0), segments=10)
     # Studio acoustic foam panel on the east wall
     make_box("Studio_FoamPanel_1",
-             (INTERIOR_X_E - 0.06, STUDIO_CY + 0.7, 1.60),
+             (INTERIOR_X_E - 0.12, STUDIO_CY + 0.7, 1.60),
              (0.04, 1.20, 0.80), (0.30, 0.30, 0.32, 1.0))
 
 
@@ -677,27 +742,33 @@ def build_bookshelf():
     # ── Bookshelf — mounted against the studio's west wall (which
     # is the partition between living room and studio)
     sh_x = +1.4   # just west of the studio partition
-    sh_y = +2.6
+    # 0.90m long against the partition's NORTH segment (y 2.0-3.0);
+    # the old 1.50m shelf at y=+2.6 ran 0.35 through the y=+3.0
+    # mid-wall into the bedroom.
+    sh_y = +2.48
     shelf_h = 1.80
-    make_box("Bookshelf_Frame",
-             (sh_x, sh_y, shelf_h / 2.0),
-             (0.20, 1.50, shelf_h), (0.38, 0.26, 0.18, 1.0))
+    # (2026-10-09) a carcass — back, sides, top — not a solid block: the
+    # tarot decks and the books stood INSIDE it
+    make_box("Bookshelf_Back", (sh_x + 0.09, sh_y, shelf_h / 2.0), (0.02, 0.90, shelf_h), (0.38, 0.26, 0.18, 1.0))
+    for e, sgn in (("S", -1), ("N", 1)):
+        make_box(f"Bookshelf_Side_{e}", (sh_x, sh_y + sgn * 0.44, shelf_h / 2.0), (0.20, 0.02, shelf_h), (0.38, 0.26, 0.18, 1.0))
+    make_box("Bookshelf_Top", (sh_x, sh_y, shelf_h - 0.01), (0.20, 0.90, 0.02), (0.38, 0.26, 0.18, 1.0))
     # 4 horizontal shelves
     for i in range(4):
         sz = 0.18 + i * 0.45
         make_box(f"Bookshelf_Plate_{i}",
                  (sh_x - 0.02, sh_y, sz),
-                 (0.18, 1.48, 0.025), (0.42, 0.30, 0.20, 1.0))
+                 (0.18, 0.88, 0.025), (0.42, 0.30, 0.20, 1.0))
 
     # Shelf 0 (lowest) — thrift tarot deck boxes (5 colors)
     for i, tint in enumerate(TAROT_TINTS):
-        bx_y = sh_y - 0.60 + i * 0.30
+        bx_y = sh_y - 0.38 + i * 0.19
         make_box(f"Bookshelf_TarotDeck_{i}",
                  (sh_x - 0.02, bx_y, 0.18 + 0.06),
                  (0.10, 0.13, 0.08), tint)
     # One of them sticky with spilled wine — dark drip mark
     make_box("Bookshelf_TarotDeck_WineStain",
-             (sh_x - 0.07, sh_y - 0.30, 0.18 + 0.001),
+             (sh_x - 0.07, sh_y - 0.30, 0.18 + 0.001 + 0.0126),
              (0.07, 0.09, 0.001), (0.32, 0.08, 0.12, 1.0))
 
     # Shelf 1 — framing books (chunky textbooks)
@@ -705,7 +776,7 @@ def build_bookshelf():
     book_colors = [COL_BOOK_BLUE, COL_BOOK_RED, COL_BOOK_GREEN,
                    COL_BOOK_BLACK, COL_BOOK_BLUE, COL_BOOK_RED]
     for i, col in enumerate(book_colors):
-        bx_y = sh_y - 0.65 + i * 0.22
+        bx_y = sh_y - 0.35 + i * 0.14
         make_box(f"Bookshelf_S1_Book_{i}",
                  (sh_x - 0.04, bx_y, shelf_1_z),
                  (0.14, 0.18, 0.26), col)
@@ -715,7 +786,7 @@ def build_bookshelf():
     book_colors_2 = [COL_BOOK_BLACK, COL_BOOK_RED, COL_BOOK_GREEN,
                      COL_BOOK_BLUE, COL_BOOK_BLACK]
     for i, col in enumerate(book_colors_2):
-        bx_y = sh_y - 0.50 + i * 0.20
+        bx_y = sh_y - 0.32 + i * 0.16
         # Tilt every other one slightly using slightly different
         # heights to suggest a lean
         h = 0.24 if i % 2 == 0 else 0.20
@@ -724,17 +795,18 @@ def build_bookshelf():
                  (0.12, 0.16, h), col)
     # A book lying flat across the others (the latest reading)
     make_box("Bookshelf_S2_FlatBook",
-             (sh_x - 0.06, sh_y + 0.55, shelf_2_z),
+             (sh_x - 0.06, sh_y + 0.30, shelf_2_z),
              (0.16, 0.22, 0.04), COL_BOOK_BLUE)
 
-    # Shelf 3 (top) — mirror shard + cookie box
-    shelf_3_z = 0.18 + 3 * 0.45 + 0.13
+    # Shelf 3 (top) — mirror shard + cookie box, lying ON the plate (2026-10-09:
+    # at +0.13, a book's half-height, they floated once the solid frame went)
+    shelf_3_z = 0.18 + 3 * 0.45 + 0.0125
     # Mirror shard — angular, slightly off-axis
     make_box("Bookshelf_MirrorShard",
-             (sh_x - 0.06, sh_y - 0.50, shelf_3_z),
+             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.005),
              (0.10, 0.14, 0.01), (0.92, 0.94, 0.96, 1.0))
     make_box("Bookshelf_MirrorShard_Frame",
-             (sh_x - 0.06, sh_y - 0.50, shelf_3_z + 0.002),
+             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.016),
              (0.04, 0.06, 0.012), COL_METAL_STEEL)
     # Half-eaten cookie box ("nice cookies somebody gave you")
     make_box("Bookshelf_CookieBox",
@@ -764,16 +836,20 @@ def build_kitchen():
 
     # ── Counter along the north wall ──
     counter_y = INTERIOR_Y_N - 0.40
+    # (2026-09-08: the run stops at x 4.0 — the fridge stands at the
+    # east end of the counter, not inside it)
+    # the run starts EAST of the back door ((2026-09-24, the user: "doorways obstructed") — it ran across
+    # half the doorway from x 0)
     make_box("Kitchen_Counter",
-             (+2.5, counter_y, 0.90),
-             (5.00, 0.60, 0.06), COL_TRIM_WHITE)
+             (+2.375, counter_y, 0.90),
+             (3.25, 0.60, 0.06), COL_TRIM_WHITE)
     # Counter base cabinets
     make_box("Kitchen_BaseCabinet",
-             (+2.5, counter_y, 0.42),
-             (5.00, 0.55, 0.84), (0.62, 0.46, 0.30, 1.0))
+             (+2.375, counter_y, 0.42),
+             (3.25, 0.55, 0.84), (0.62, 0.46, 0.30, 1.0))
     # Cabinet door splits
-    for i in range(-2, 3):
-        x = +2.5 + i * 1.0
+    for i in range(-1, 2):
+        x = +2.0 + i * 1.0
         make_box(f"Kitchen_CabSeam_{i}",
                  (x, counter_y - 0.28, 0.42),
                  (0.012, 0.01, 0.80), (0.20, 0.14, 0.10, 1.0))
@@ -782,10 +858,10 @@ def build_kitchen():
              (+1.6, counter_y - 0.04, 0.84),
              (0.50, 0.36, 0.10), COL_METAL_STEEL)
     make_cyl("Kitchen_Faucet",
-             (+1.6, counter_y + 0.16, 1.05),
+             (+1.6, counter_y + 0.16, 1.03),   # on the counter
              0.016, 0.20, COL_METAL_BRASS, segments=8)
     make_box("Kitchen_FaucetHandle",
-             (+1.6, counter_y + 0.18, 1.18),
+             (+1.6, counter_y + 0.18, 1.15),
              (0.10, 0.04, 0.04), COL_METAL_BRASS)
     # Stovetop — 4 burners, one listing (slightly off-center)
     make_box("Kitchen_Stove",
@@ -802,10 +878,10 @@ def build_kitchen():
     # rotated position rather than mesh rotation)
     kx, ky = +3.6 + 0.04, counter_y + 0.12 - 0.04  # offset = list
     make_cyl("Kitchen_Kettle_Body",
-             (kx, ky, 1.05),
+             (kx, ky, 1.035),   # on the burner (2026-09-23: 1.5 cm over it)
              0.10, 0.12, (0.18, 0.18, 0.22, 1.0), segments=10)
     make_cyl("Kitchen_Kettle_Top",
-             (kx, ky, 1.135),
+             (kx, ky, 1.115),
              0.08, 0.04, (0.22, 0.22, 0.26, 1.0), segments=10)
     # Spout
     make_cyl("Kitchen_Kettle_Spout",
@@ -832,9 +908,9 @@ def build_kitchen():
              (0.04, 0.004, 0.03), COL_BOOK_BLUE)
 
     # ── Upper cabinets ──
-    make_box("Kitchen_UpperCab",
-             (+2.5, counter_y + 0.04, 1.95),
-             (5.00, 0.40, 0.70), (0.78, 0.62, 0.46, 1.0))
+    make_box("Kitchen_UpperCab",   # east of the back door, like the counter (2026-09-24)
+             (+2.875, counter_y + 0.04, 1.95),
+             (4.25, 0.40, 0.70), (0.78, 0.62, 0.46, 1.0))
 
     # ── Basil plant on the windowsill (THE one that's dying) ──
     bsl_x = +2.8  # under the kitchen window
@@ -871,7 +947,7 @@ def build_kitchen():
              (0.010, 0.020, 0.030), (0.95, 0.92, 0.88, 1.0))
     # Steam rising — a few tiny rising boxes
     for i in range(3):
-        make_box(f"Kitchen_TeacupSteam_{i}",
+        make_box(f"Kitchen_Teacup_Steam_{i}",   # named as steam, so the support gate reads it as vapour
                  (tc_x + (i - 1) * 0.02, tc_y, 1.04 + i * 0.04),
                  (0.012, 0.012, 0.015), (0.96, 0.96, 0.96, 0.6))
 
@@ -928,50 +1004,45 @@ def build_bedroom():
 
     # ── Bed — queen-size, unmade. Headboard against the north wall
     bd_x, bd_y = -3.0, +4.7
-    make_box("Bedroom_Bed_Frame",
-             (bd_x, bd_y, 0.30),
-             (1.50, 2.00, 0.20), (0.36, 0.24, 0.16, 1.0))
-    make_box("Bedroom_Bed_Mattress",
-             (bd_x, bd_y, 0.50),
-             (1.40, 1.95, 0.20), (0.92, 0.86, 0.74, 1.0))
-    # Headboard
+    # the shared bed, unmade — blanket heaped, one pillow (2026-09-07)
+    from _props.furniture import make_bed
+    make_bed("Bedroom_Bed", bd_x, bd_y, head="+Y", w=1.50, d=2.00, style="frame",
+             frame_col=(0.36, 0.24, 0.16, 1.0), mattress_col=(0.92, 0.86, 0.74, 1.0),
+             blanket_col=COL_FABRIC_SHEET, pillow_col=COL_TRIM_WHITE, pillows=1, made=False, headboard=False)
     make_box("Bedroom_Bed_Headboard",
-             (bd_x, bd_y + 1.00, 0.95),
-             (1.50, 0.10, 1.00), (0.32, 0.22, 0.14, 1.0))
-    # Unmade — duvet bunched, pulled to one side
-    make_box("Bedroom_Bed_Duvet_Bunch",
-             (bd_x + 0.15, bd_y - 0.20, 0.66),
-             (1.20, 1.50, 0.16), COL_FABRIC_SHEET)
-    # Pillow askew
-    make_box("Bedroom_Bed_Pillow",
-             (bd_x - 0.30, bd_y + 0.80, 0.66),
-             (0.50, 0.32, 0.10), COL_TRIM_WHITE)
+             (bd_x, bd_y + 0.99, 0.725),   # floor to 1.45, against the mattress (2026-09-23: it hung 11 cm over the legs)
+             (1.50, 0.10, 1.45), (0.32, 0.22, 0.14, 1.0))
 
-    # ── Dresser — opposite the bed (south part of room)
-    dr_x, dr_y = -3.0, +3.4
+    # ── Dresser — against the WEST wall, drawers facing EAST into the
+    #    aisle beside the bed. (2026-10-02, the Deck: "her room still
+    #    isn't designed practically, the wardrobe/drawer at the foot of
+    #    the bed can't open" — it sat at the bed's foot with its drawers
+    #    14 cm from the mid-wall at Y=3.) 71 cm of floor between the
+    #    drawer fronts and the bed's west edge.
+    dr_x, dr_y = -4.63, +3.95      # back face 2 cm off the wall (the overlap gate caught it 7 cm in)
     make_box("Bedroom_Dresser_Body",
              (dr_x, dr_y, 0.50),
-             (1.40, 0.50, 1.00), (0.32, 0.20, 0.14, 1.0))
-    # Drawers (3 drawers visible)
+             (0.50, 1.40, 1.00), (0.32, 0.20, 0.14, 1.0))
+    # Drawers (3 drawers, on the east face)
     for i in range(3):
         dz = 0.20 + i * 0.30
         make_box(f"Bedroom_Dresser_Drawer_{i}_Front",
-                 (dr_x, dr_y - 0.26, dz),
-                 (1.32, 0.02, 0.24), (0.40, 0.28, 0.18, 1.0))
+                 (dr_x + 0.26, dr_y, dz),
+                 (0.02, 1.32, 0.24), (0.40, 0.28, 0.18, 1.0))
         make_box(f"Bedroom_Dresser_Knob_{i}_L",
-                 (dr_x - 0.30, dr_y - 0.27, dz),
-                 (0.04, 0.02, 0.04), COL_METAL_BRASS)
+                 (dr_x + 0.27, dr_y - 0.30, dz),
+                 (0.02, 0.04, 0.04), COL_METAL_BRASS)
         make_box(f"Bedroom_Dresser_Knob_{i}_R",
-                 (dr_x + 0.30, dr_y - 0.27, dz),
-                 (0.04, 0.02, 0.04), COL_METAL_BRASS)
-    # The face-down picture
+                 (dr_x + 0.27, dr_y + 0.30, dz),
+                 (0.02, 0.04, 0.04), COL_METAL_BRASS)
+    # The face-down picture (on the dresser's north end)
     make_box("Bedroom_Dresser_Picture",
-             (dr_x + 0.30, dr_y, 1.005),
-             (0.22, 0.16, 0.012), (0.32, 0.22, 0.14, 1.0))
+             (dr_x, dr_y + 0.30, 1.005),
+             (0.16, 0.22, 0.012), (0.32, 0.22, 0.14, 1.0))
     # Back of frame visible (face down)
     make_box("Bedroom_Dresser_PictureBack",
-             (dr_x + 0.30, dr_y, 1.013),
-             (0.20, 0.14, 0.002), (0.22, 0.16, 0.10, 1.0))
+             (dr_x, dr_y + 0.30, 1.013),
+             (0.14, 0.20, 0.002), (0.22, 0.16, 0.10, 1.0))
 
     # ── Laundry pile (MrMyst's last visit) — corner of the room
     lp_x, lp_y = -4.6, +5.5
@@ -989,13 +1060,13 @@ def build_bedroom():
 
     # ── Bedside lamp on the dresser
     make_cyl("Bedroom_LampBase",
-             (dr_x - 0.40, dr_y, 1.04),
+             (dr_x, dr_y - 0.45, 1.02),   # on the dresser's south end (2026-09-23: 2 cm over it)
              0.06, 0.04, COL_METAL_BRASS)
     make_cyl("Bedroom_LampPole",
-             (dr_x - 0.40, dr_y, 1.16),
+             (dr_x, dr_y - 0.45, 1.14),
              0.012, 0.20, COL_METAL_BRASS)
     make_cyl("Bedroom_LampShade",
-             (dr_x - 0.40, dr_y, 1.30),
+             (dr_x, dr_y - 0.45, 1.31),   # on the pole (2026-09-23: 3 cm down it)
              0.08, 0.14, (0.86, 0.78, 0.62, 1.0), segments=10)
 
 
@@ -1027,10 +1098,10 @@ def build_bathroom():
              0.014, 0.16, COL_METAL_BRASS, segments=8)
     # Mirror over sink (the WHOLE one)
     make_box("Bathroom_Mirror",
-             (INTERIOR_X_W + 0.06, sn_y, 1.45),
+             (INTERIOR_X_W + 0.12, sn_y, 1.45),
              (0.04, 0.80, 0.70), (0.94, 0.96, 0.98, 1.0))
     make_box("Bathroom_Mirror_Frame",
-             (INTERIOR_X_W + 0.062, sn_y, 1.45),
+             (INTERIOR_X_W + 0.11, sn_y, 1.45),
              (0.02, 0.84, 0.74), (0.42, 0.32, 0.20, 1.0))
 
     # Medicine cabinet (built into the wall behind/above the mirror)
@@ -1046,14 +1117,14 @@ def build_bathroom():
     # Toilet — south side of bathroom
     tlt_x, tlt_y = -2.95, +0.25
     make_box("Bathroom_Toilet_Tank",
-             (tlt_x, tlt_y, 0.84),
-             (0.40, 0.20, 0.50), COL_TRIM_WHITE)
+             (tlt_x, tlt_y, 0.795),
+             (0.40, 0.20, 0.59), COL_TRIM_WHITE)      # down onto the bowl
     make_box("Bathroom_Toilet_Bowl",
              (tlt_x, tlt_y + 0.30, 0.32),
              (0.40, 0.50, 0.36), COL_TRIM_WHITE)
 
     # Tub — full east side of bathroom
-    tb_x, tb_y = -2.8, +1.10
+    tb_x, tb_y = -2.9, +1.10   # clear of the bath partition (2026-09-24: 10 cm into it)
     make_box("Bathroom_Tub_Body",
              (tb_x, tb_y, 0.30),
              (0.70, 1.20, 0.60), COL_TRIM_WHITE)
@@ -1063,7 +1134,7 @@ def build_bathroom():
 
     # Towel
     make_box("Bathroom_Towel",
-             (sn_x, sn_y + 0.45, 1.10),
+             (sn_x, sn_y + 0.45, 0.89),   # folded on the counter's top (2026-09-22: 20 cm over it)
              (0.20, 0.30, 0.02), (0.42, 0.62, 0.66, 1.0))
 
 
@@ -1081,9 +1152,9 @@ def build_storage_closet():
     # ── 5 stacked boxes, dusty, labeled POMEGRANATE HOUR ──
     bx_y = +1.5
     layout = [
-        (-0.5, +1.3, 0.45, 0.45, 0.45),
-        (+0.0, +1.3, 0.45, 0.45, 0.45),
-        (+0.5, +1.3, 0.45, 0.45, 0.45),
+        (-0.5, +1.3, 0.45, 0.45, 0.50),   # floor to 0.50, under the top row (2026-09-23: 2.5 cm up, 5 cm under it)
+        (+0.0, +1.3, 0.45, 0.45, 0.50),
+        (+0.5, +1.3, 0.45, 0.45, 0.50),
         (-0.2, +1.3, 0.45, 0.40, 0.40),   # stacked on row 1
         (+0.3, +1.3, 0.40, 0.40, 0.40),
     ]
@@ -1103,32 +1174,23 @@ def build_storage_closet():
     # A few hard drives stacked on top of the boxes
     for i in range(3):
         make_box(f"Closet_HD_{i}",
-                 (+0.2, +1.4, 0.95 + i * 0.04),
+                 (+0.2, +1.4, 0.918 + i * 0.03),   # on box 4's lid tape (2026-09-22: 3 cm of air)
                  (0.15, 0.20, 0.03), (0.20, 0.20, 0.22, 1.0))
     # Cassette tapes — a small pile
     for i in range(5):
         make_box(f"Closet_Tape_{i}",
-                 (-0.5 + i * 0.08, +1.5, 0.96),
+                 (-0.40 + i * 0.08, +1.45, 0.910),   # on box 3's lid
                  (0.07, 0.10, 0.014), (0.18, 0.16, 0.16, 1.0))
     # A disc case — the never-finished pilot episode
     make_box("Closet_DiscCase",
-             (+0.0, +1.7, 0.98),
+             (+0.42, +1.40, 0.910),   # on box 4's lid (2026-09-22: it hung past the boxes at y 1.7)
              (0.13, 0.14, 0.014), (0.10, 0.10, 0.12, 1.0))
     make_box("Closet_DiscCase_Label",
-             (+0.0, +1.7, 0.988),
+             (+0.42, +1.40, 0.9175),
              (0.10, 0.10, 0.001), COL_PAPER)
 
-    # Door — slatted, mostly closed (we leave a small visible slit)
-    # The east edge of the closet is at X=+1.4; door is at +1.45
-    make_box("Closet_Door",
-             (+1.40, +1.5, 1.10),
-             (0.04, 1.40, 2.20), (0.42, 0.30, 0.20, 1.0))
-    # Slats
-    for i in range(8):
-        sz = 0.30 + i * 0.20
-        make_box(f"Closet_Door_Slat_{i}",
-                 (+1.38, +1.5, sz),
-                 (0.02, 1.30, 0.05), (0.36, 0.24, 0.16, 1.0))
+    # (the slatted closet door that closed the studio doorway: removed
+    # 2026-10-05 with the closet's walls — the doorway is open)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1212,6 +1274,11 @@ def build_porch():
 
     # ── Ashtray on a small side table between the chairs ──
     st_x, st_y = +0.0, -1.4
+    # 2026-08 tail pass: the WATERING CAN by the porch steps.
+    make_cyl("Porch_WateringCan_Body", (2.6, -1.7, 0.20), 0.14, 0.28, (0.42, 0.52, 0.44, 1.0), segments=10)
+    make_cyl("Porch_WateringCan_Spout", (2.82, -1.62, 0.24), 0.02, 0.30, (0.38, 0.48, 0.40, 1.0),
+             axis='X', segments=6)
+    make_box("Porch_WateringCan_Handle", (2.6, -1.85, 0.34), (0.12, 0.02, 0.03), (0.38, 0.48, 0.40, 1.0))
     make_cyl("Porch_SideTable_Top",
              (st_x, st_y, 0.56),
              0.20, 0.02, (0.32, 0.22, 0.14, 1.0))
@@ -1365,11 +1432,11 @@ def build_back_yard():
              (0.0, +8.5, 0.20),
              0.10, 0.40, (0.62, 0.60, 0.56, 1.0))
     make_cyl("Yard_BirdBath_Bowl",
-             (0.0, +8.5, 0.46),
+             (0.0, +8.5, 0.42),   # on the pedestal (2026-09-22: 4 cm up)
              0.32, 0.04, (0.74, 0.72, 0.66, 1.0), segments=12)
     # Water in the bowl
     make_cyl("Yard_BirdBath_Water",
-             (0.0, +8.5, 0.49),
+             (0.0, +8.5, 0.45),
              0.28, 0.01, (0.42, 0.58, 0.66, 0.8), segments=12)
 
 
@@ -1438,11 +1505,33 @@ def export_glb():
     legacy = {}
     if 'export_colors' in rna.properties:
         legacy['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            legacy['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties:
         legacy['export_normals'] = True
 
     try:
         result = bpy.ops.export_scene.gltf(**base, **legacy)
+        try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+            import sys as _s, os as _o
+            _d = _o.path.dirname(_o.path.abspath(__file__))
+            for _c in (_d, _o.path.dirname(_d)):
+                if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                    _s.path.insert(0, _c)
+            from _props.glb_colorfix import postfix as _colorfix
+            _colorfix(base["filepath"], bpy)
+        except Exception as _e:
+            print("[glb_colorfix] skipped:", _e)
         print(f"[build_bungalow] export result: {result}")
     except Exception as e:
         print(f"[build_bungalow] ✗ EXPORT FAILED: {e}")
@@ -1501,7 +1590,7 @@ def build_priestess_dressing():
     # Anya's face — a small silhouette on the screen. A peach-toned
     # oval-ish box for the face + two dark dots for eyes.
     make_box("Priestess_AnyaMonitor_Face",
-             (anya_cx, anya_cy - 0.181, desk_top_z + 0.21),
+             (anya_cx, anya_cy - 0.181 - 0.0121, desk_top_z + 0.21),
              (0.14, 0.005, 0.16),
              (0.72, 0.60, 0.48, 1.0))
     for sgn in (-1, +1):
@@ -1511,7 +1600,7 @@ def build_priestess_dressing():
                  (0.18, 0.12, 0.10, 1.0))
     # Hint of a microphone pickup at the bottom of the screen
     make_box("Priestess_AnyaMonitor_MicHint",
-             (anya_cx, anya_cy - 0.182, desk_top_z + 0.15),
+             (anya_cx, anya_cy - 0.182 - 0.0101, desk_top_z + 0.15),
              (0.04, 0.003, 0.014),
              (0.32, 0.28, 0.22, 1.0))
 
@@ -1528,7 +1617,7 @@ def build_priestess_dressing():
              (0.10, 0.10, 0.12, 1.0))
     # Email window — white panel with two text-line strips
     make_box("Priestess_JohnMonitor_EmailBg",
-             (john_cx, john_cy - 0.141, desk_top_z + 0.16),
+             (john_cx, john_cy - 0.141 - 0.0111, desk_top_z + 0.16),
              (0.18, 0.003, 0.13),
              (0.92, 0.92, 0.88, 1.0))
     for line in range(3):
@@ -1593,11 +1682,11 @@ def build_priestess_dressing():
     # yellow-tinted boxes stuck on as the canonical "two yellow leaves."
     # The kitchen window where the basil dies — approximate location
     # from comments.
-    basil_x = +2.6   # kitchen east-side counter
-    basil_y = +1.4   # near the north kitchen window
-    basil_z = 0.92   # on the windowsill
+    basil_x = +2.8                  # THE basil (Kitchen_BasilPot): under the kitchen window
+    basil_y = INTERIOR_Y_N - 0.16   # (2026-09-10: the fallen leaves were at (2.6, 1.4) — mid-kitchen floor)
+    basil_z = 1.04                  # the pot's rim
     for li, (lx_off, ly_off, lz_off) in enumerate([
-        (+0.04, +0.02, +0.18),
+        (+0.04, +0.02, +0.106),   # on the stem's tip (2026-09-23: 2.4 cm off the plant)
         (-0.03, -0.02, +0.14),
     ]):
         make_box("Priestess_BasilYellowLeaf_%d" % li,
@@ -1605,21 +1694,235 @@ def build_priestess_dressing():
                  (0.05, 0.025, 0.012),
                  (0.86, 0.78, 0.32, 1.0))   # autumn-yellow
 
-    # ── PH tapes label on the storage closet door ──
-    # Storage closet has its own builder; this just adds a small
-    # masking-tape label on the door so the storage reads as the
-    # PH-tape archive.
-    closet_door_x = -3.0   # approximate storage closet door location
-    closet_door_y = -0.8
-    make_box("Priestess_PHTapes_Label",
-             (closet_door_x + 0.02, closet_door_y, 1.62),
-             (0.005, 0.18, 0.06),
+    # ── PH tapes label, masking tape on the front of the top Pomegranate
+    # Hour box (2026-10-05: it was on the closet door, removed with the
+    # closet; Closet_PHBox_3 at (-0.2, 1.3), its front face y 1.10)
+    make_box("Priestess_PHTapes_Label", (-0.20, 1.0975, 0.80), (0.18, 0.005, 0.06),
              (0.92, 0.88, 0.72, 1.0))   # cream masking tape
-    # Hand-printed letters as a darker streak
-    make_box("Priestess_PHTapes_Letters",
-             (closet_door_x + 0.022, closet_door_y, 1.62),
-             (0.003, 0.14, 0.012),
+    make_box("Priestess_PHTapes_Letters", (-0.20, 1.0945, 0.80), (0.14, 0.003, 0.012),
              (0.22, 0.18, 0.14, 1.0))
+
+
+
+
+def build_packing_dressing():
+    """Asset-improvement pass (2026-07-11): the living strip read as
+    bare wall + one chair. Adds the mid-move clutter the Priestess
+    prose lives in: a braided rug, taped box stacks, framed photos
+    leaning face-to-wall, a rolled rug, packing tape on the side
+    table, and a floor lamp beside the chair (its glow is an
+    OmniLight3D in bungalow.tscn)."""
+    cardboard = (0.55, 0.42, 0.26, 1.0)
+    tape      = (0.72, 0.62, 0.40, 1.0)
+    # Braided rug under the living strip
+    make_cyl("LR_Rug", (-1.7, 1.35, 0.008), 0.85, 0.012,
+             (0.40, 0.28, 0.22, 1.0), segments=14)
+    make_cyl("LR_Rug_Ring", (-1.7, 1.35, 0.015), 0.62, 0.008,
+             (0.30, 0.20, 0.18, 1.0), segments=14)
+    # Two more box stacks south of the chair (by the front window)
+    # (draft N+1: north of the chair by the west wall — at (-1.55, 0.45)
+    # the stack stood inside the reading chair)
+    make_box("LR_Box_6", (-1.25, 2.55, 0.24), (0.48, 0.42, 0.48), cardboard)
+    make_box("LR_Box_7", (-1.25, 2.55, 0.66), (0.42, 0.38, 0.36), cardboard)
+    make_box("LR_Box_7_Tape", (-1.25, 2.55, 0.845), (0.44, 0.10, 0.012), tape)
+    make_box("LR_Box_8", (-2.15, 2.55, 0.21), (0.44, 0.40, 0.42), cardboard)
+    # Framed photos leaning face-to-wall (west wall, packed away)
+    for i in range(3):
+        make_box(f"LR_Frame_{i}", (-2.42 + i * 0.035, 2.30 + i * 0.06, 0.28),
+                 (0.03, 0.42 - i * 0.06, 0.55 - i * 0.08),
+                 (0.30 + i * 0.05, 0.24 + i * 0.04, 0.18, 1.0))
+    # Rolled rug leaning in the SW corner
+    make_cyl("LR_RolledRug", (-2.35, 0.32, 0.65), 0.11, 1.3,
+             (0.46, 0.34, 0.24, 1.0), segments=8)
+    # Packing tape roll + marker on the side table
+    make_cyl("LR_TapeRoll", (-2.25, 1.72, 0.67), 0.06, 0.04, tape, segments=8)
+    make_box("LR_Marker", (-2.05, 1.85, 0.655), (0.12, 0.03, 0.025),
+             (0.12, 0.12, 0.14, 1.0))
+    # Floor lamp beside the chair (glow = FloorLampGlow in the tscn)
+    # (draft N+1: its own names — it shared LR_FloorLamp_* with the
+    # chair's lamp — and a profile)
+    make_lathe("LR_FloorLamp2_Base", (-2.3, 0.9, 0.0), [(0.16, 0.0), (0.16, 0.03), (0.07, 0.05), (0.022, 0.06), (0.02, 0.08)], (0.20, 0.18, 0.16, 1.0), segments=10)
+    make_cyl("LR_FloorLamp2_Pole", (-2.3, 0.9, 0.76), 0.02, 1.36,
+             (0.26, 0.22, 0.18, 1.0), segments=6)
+    make_lathe("LR_FloorLamp2_Shade", (-2.3, 0.9, 1.44), [(0.10, 0.0), (0.16, 0.24), (0.0, 0.24)], (0.88, 0.76, 0.52, 1.0), segments=12)
+
+
+
+
+def build_filmmaker_dressing():
+    """Asset pass 2 (user: 'not just boxes'). Compound props that say
+    ELICIA specifically: her camera on a tripod and a ring light in
+    the studio pocket, wine bottles by the kitchen counter's tarot
+    corner, sagging string lights along the living wall (glow =
+    StringLightsGlow omni in bungalow.tscn), and two film posters on
+    the bathroom partition — face-level color-block art, not crates."""
+    import math as _m
+    black = (0.14, 0.14, 0.15, 1.0)
+    alu   = (0.55, 0.56, 0.58, 1.0)
+    # ── Camera tripod (splayed legs + hub + camera + lens) ──
+    tx, ty = 2.35, 0.72
+    for i in range(3):
+        a = i * 2.094 + 0.5
+        lx, ly = tx + 0.20 * _m.cos(a), ty + 0.20 * _m.sin(a)
+        make_cyl(f"Tripod_Leg_{i}", (lx, ly, 0.55), 0.016, 1.10, alu, segments=5)
+        make_cyl(f"Tripod_Foot_{i}", (lx, ly, 0.015), 0.035, 0.03, black, segments=5)
+    make_cyl("Tripod_Hub", (tx, ty, 1.12), 0.22, 0.06, black, segments=6)   # a plate the three legs meet (2026-09-22: a puck between them)
+    make_box("Tripod_CamBody", (tx, ty, 1.22), (0.24, 0.16, 0.14), black)
+    make_cyl("Tripod_CamLens", (tx, ty - 0.14, 1.22), 0.05, 0.10,
+             (0.10, 0.10, 0.12, 1.0), segments=8, axis='Y')
+    make_cyl("Tripod_CamLensGlass", (tx, ty - 0.195, 1.22), 0.038, 0.01,
+             (0.28, 0.34, 0.44, 1.0), segments=8, axis='Y')
+    # ── Ring light on a stand beside it ──
+    rx, ry = 2.85, 0.78
+    make_cyl("RingLight_Base", (rx, ry, 0.02), 0.14, 0.04, black, segments=8)
+    make_cyl("RingLight_Pole", (rx, ry, 0.72), 0.015, 1.40, alu, segments=5)
+    make_cyl("RingLight_Ring", (rx, ry - 0.03, 1.48), 0.24, 0.045,
+             (0.95, 0.92, 0.82, 1.0), segments=12, axis='Y')
+    make_cyl("RingLight_RingHole", (rx, ry - 0.033, 1.48), 0.16, 0.052,
+             (0.20, 0.20, 0.22, 1.0), segments=12, axis='Y')
+    # ── Wine bottles at the counter's tarot corner ──
+    # (2026-09-24: the counter now starts at x 0.75, east of the back door)
+    for i, (bx, col) in enumerate([(0.90, (0.16, 0.26, 0.18, 1.0)),
+                                   (1.07, (0.30, 0.16, 0.12, 1.0)),
+                                   (1.25, (0.18, 0.28, 0.20, 1.0))]):
+        by = 5.55 + 0.08 * (i % 2)
+        make_cyl(f"WineBottle_{i}", (bx, by, 1.07), 0.045, 0.28, col, segments=7)
+        make_cyl(f"WineBottle_{i}_Neck", (bx, by, 1.26), 0.016, 0.11, col, segments=6)
+        make_cyl(f"WineBottle_{i}_Foil", (bx, by, 1.315), 0.018, 0.025,
+                 (0.55, 0.20, 0.18, 1.0) if i != 1 else (0.60, 0.55, 0.30, 1.0),
+                 segments=6)
+    # ── String lights sagging along the living wall (glow in tscn) ──
+    # (2026-09-22: eight level cord stubs each touched only its higher
+    # bulb, and the string hung 4 cm off the wall — one sagging cord
+    # now, hooked to the bath partition at one end and the south wall
+    # at the other)
+    n_bulb = 9
+    pts = []
+    for i in range(n_bulb):
+        t = i / float(n_bulb - 1)
+        ly = 0.35 + t * 2.5
+        lz = 2.32 - 0.28 * _m.sin(_m.pi * t)
+        pts.append((-2.38, ly, lz))
+        make_cyl(f"StringLight_Bulb_{i}", (-2.38, ly, lz - 0.035), 0.028, 0.055,
+                 (0.96, 0.86, 0.55, 1.0), segments=5)
+    make_tube("StringLight_Cord", pts, 0.006, (0.10, 0.10, 0.10, 1.0), segments=3)
+    make_cyl("StringLight_Hook_0", (-2.42, 0.35, 2.32), 0.006, 0.07, (0.30, 0.30, 0.32, 1.0), segments=4, axis='X')
+    make_cyl("StringLight_Hook_1", (-2.38, 2.90, 2.32), 0.006, 0.10, (0.30, 0.30, 0.32, 1.0), segments=4, axis='Y')
+    # ── Two film posters on the bathroom partition (east face) ──
+    posters = [
+        (0.75, 1.45, 0.46, 0.66, [(0.16, 0.10, 0.22, 1.0), (0.72, 0.30, 0.20, 1.0),
+                                  (0.88, 0.78, 0.52, 1.0)]),
+        (1.35, 1.30, 0.40, 0.58, [(0.10, 0.16, 0.20, 1.0), (0.30, 0.55, 0.60, 1.0),
+                                  (0.85, 0.85, 0.80, 1.0)]),
+    ]
+    for pi, (py, pz, w, h, cols) in enumerate(posters):
+        make_box(f"Poster_{pi}_Bg", (-2.435, py, pz), (0.012, w, h), cols[0])
+        make_box(f"Poster_{pi}_Band", (-2.428, py, pz - h * 0.18), (0.012, w * 0.86, h * 0.30), cols[1])
+        make_box(f"Poster_{pi}_Sun", (-2.428, py + w * 0.18, pz + h * 0.26), (0.012, w * 0.30, h * 0.20), cols[2])
+        make_box(f"Poster_{pi}_Title", (-2.426, py, pz + h * 0.40), (0.012, w * 0.70, 0.035), cols[2])
+
+
+
+
+def build_desk_tech_and_tea():
+    """Asset pass 3: the humming hard drives from the prose (a
+    staggered stack with status LEDs and a cable run off the desk
+    edge), a fanned tarot spread on the side table, and the
+    mother's teacup — handle and saucer, mid-abandonment."""
+    dz = 0.74
+    # Hard-drive stack, staggered, with LEDs
+    # (draft N+1: on the floor under the desk's east end — at (4.18,
+    # 1.62) the stack hung half off the desk's north edge)
+    for i, (ox, oy) in enumerate([(0.0, 0.0), (0.03, -0.02), (-0.02, 0.03)]):
+        hz = 0.033 + i * 0.075
+        make_box(f"Desk_HDD_{i}", (4.15 + ox, 1.20 + oy, hz),
+                 (0.13, 0.21, 0.065), (0.16 + 0.03 * i, 0.17, 0.19, 1.0))
+        make_box(f"Desk_HDD_{i}_LED", (4.085 + ox, 1.11 + oy, hz),
+                 (0.012, 0.012, 0.012),
+                 (0.30, 0.85, 0.40, 1.0) if i != 1 else (0.90, 0.60, 0.20, 1.0))
+    # Cable run: segments draping off the desk edge
+    for i, (cx, cy, cz, ln, ax) in enumerate([
+            (4.05, 1.50, dz + 0.02, 0.30, 'Y'),
+            (4.05, 1.28, dz - 0.10, 0.22, 'Z'),
+            (4.02, 1.28, dz - 0.30, 0.24, 'Z')]):
+        make_cyl(f"Desk_Cable_{i}", (cx, cy, cz), 0.010, ln,
+                 (0.10, 0.10, 0.11, 1.0), segments=4, axis=ax)
+    # Fanned tarot spread on the side table
+    for i in range(5):
+        make_box(f"SideTable_Tarot_{i}",
+                 (-2.32 + i * 0.055, 1.78 + 0.02 * (i % 3), 0.652 + i * 0.0015),
+                 (0.075, 0.115, 0.002),
+                 (0.80, 0.74, 0.58, 1.0) if i % 2 else (0.36, 0.22, 0.40, 1.0))
+    # The teacup + saucer
+    make_cyl("SideTable_Saucer", (-2.05, 1.68, 0.648), 0.055, 0.008,
+             (0.90, 0.88, 0.82, 1.0), segments=10)
+    make_cyl("SideTable_Teacup", (-2.05, 1.68, 0.678), 0.035, 0.05,
+             (0.92, 0.90, 0.86, 1.0), segments=8)
+    make_box("SideTable_Teacup_Handle", (-2.005, 1.68, 0.678),
+             (0.014, 0.018, 0.035), (0.92, 0.90, 0.86, 1.0))
+    make_cyl("SideTable_Tea", (-2.05, 1.68, 0.7066), 0.028, 0.006,
+             (0.36, 0.24, 0.14, 1.0), segments=8)
+
+
+
+
+def build_books_and_curtains():
+    """Asset pass 4: twine-tied book bundles waiting by the door
+    (the packing continues) and gathered curtains on the front
+    window with a brass rod."""
+    twine = (0.68, 0.58, 0.38, 1.0)
+    # Two book bundles near the front door
+    # (draft N+1: east of the chair's lamp — at (-1.15, 0.40) the first
+    # bundle sat in the lamp's base)
+    for b, (bx, by) in enumerate([(-0.95, 0.40), (-1.05, 0.85)]):   # clear of the front door (2026-09-24, the user: "doorways obstructed")
+        for i in range(3):
+            make_box(f"BookBundle_{b}_{i}",
+                     (bx + 0.015 * (i % 2), by - 0.012 * (i % 2), 0.045 + i * 0.09),
+                     (0.30 - 0.02 * i, 0.22, 0.085),
+                     [(0.42, 0.26, 0.20, 1.0), (0.24, 0.30, 0.38, 1.0),
+                      (0.50, 0.44, 0.30, 1.0)][(b + i) % 3])
+        make_cyl(f"BookBundle_{b}_TwineY", (bx, by, 0.145), 0.008, 0.24,
+                 twine, segments=4, axis='Y')
+        make_cyl(f"BookBundle_{b}_TwineX", (bx, by, 0.15), 0.008, 0.32,
+                 twine, segments=4, axis='X')
+    # Front window curtains (Window_SE at x=+2.0, y=0, z 1.4)
+    make_cyl("Curtain_Rod", (2.0, 0.10, 2.12), 0.018, 1.5,
+             (0.55, 0.42, 0.22, 1.0), segments=6, axis='X')
+    for sgn in (-1, +1):
+        make_cyl("Curtain_Finial_%+d" % sgn, (2.0 + sgn * 0.76, 0.10, 2.12),
+                 0.035, 0.05, (0.55, 0.42, 0.22, 1.0), segments=6, axis='X')
+        make_box("Curtain_Drape_%+d" % sgn, (2.0 + sgn * 0.62, 0.12, 1.42),
+                 (0.20, 0.09, 1.36), (0.58, 0.48, 0.42, 1.0))
+        make_box("Curtain_Fold_%+d" % sgn, (2.0 + sgn * 0.55, 0.155, 1.42),
+                 (0.07, 0.05, 1.30), (0.50, 0.41, 0.36, 1.0))
+    make_box("Curtain_Valance", (2.0, 0.13, 2.00), (1.44, 0.08, 0.22),
+             (0.54, 0.44, 0.38, 1.0))
+
+
+def build_lr_studio_draft_2026_09():
+    """DRAFT N+1 (2026-09-19) · the wear of the two staged stations and
+    their cords. No part name carries a cue word (boxes · script ·
+    page · phone · mirror · shard · basil · screen)."""
+    floor_dk = (COL_FLOOR_WOOD[0] * 0.84, COL_FLOOR_WOOD[1] * 0.84, COL_FLOOR_WOOD[2] * 0.84, 1.0)
+    cord = (0.16, 0.16, 0.18, 1.0)
+    ch_x, ch_y = -1.6, +0.8
+    # the chair you sat in too long: the seat's dent, the right arm's
+    # shine, the feet patch before it
+    make_box("Wear_Chair_Dent", (ch_x + 0.05, ch_y - 0.05, 0.5015), (0.36, 0.34, 0.003), (0.44, 0.34, 0.27, 1.0))
+    make_box("Wear_Arm_Shine", (ch_x + 0.32, ch_y - 0.10, 0.8215), (0.08, 0.30, 0.003), (0.50, 0.40, 0.33, 1.0))
+    make_floor_stain("Wear_Feet", (ch_x, ch_y - 0.55), radius=0.22, floor_z=0.02, tint=floor_dk, segments=10)
+    make_floor_stain("Wear_Anya", (STUDIO_CX - 0.6, STUDIO_CY - 0.75), radius=0.22, floor_z=0.0, tint=floor_dk, segments=10)
+    make_box("Wear_Elbow", (STUDIO_CX + 0.5, STUDIO_CY - 0.80, 0.7415), (1.10, 0.05, 0.003), (0.30, 0.22, 0.15, 1.0))
+    # D3 · the chair lamp's cord: along the floor east, then to the
+    # south-wall outlet (two straight runs — the recorder boxes a
+    # diagonal by its whole span)
+    make_wall_outlet("Outlet_S_1", (-0.55, INTERIOR_Y_S), axis='X', face_sign=1, z=0.30, aged=True)
+    make_tube("Cord_1a", [(ch_x + 0.62, ch_y - 0.25, 0.04), (-0.55, ch_y - 0.25, 0.04)], 0.008, cord, segments=5)
+    make_tube("Cord_1b", [(-0.55, ch_y - 0.25, 0.04), (-0.55, INTERIOR_Y_S + 0.115, 0.30)], 0.008, cord, segments=5)
+    # the power strip under the editing desk, the reel's cord to it
+    make_box("Power_Strip", (STUDIO_CX + 0.5, STUDIO_CY - 0.25, 0.02), (0.30, 0.06, 0.04), (0.86, 0.86, 0.84, 1.0))
+    make_tube("Cord_2", [(STUDIO_CX + 0.46, STUDIO_CY + 0.14, 0.76), (STUDIO_CX + 0.46, STUDIO_CY + 0.14, 0.06)], 0.008, cord, segments=5)
+    make_tube("Cord_2b", [(STUDIO_CX + 0.46, STUDIO_CY + 0.14, 0.06), (STUDIO_CX + 0.46, STUDIO_CY - 0.22, 0.04)], 0.008, cord, segments=5)
 
 
 def main():
@@ -1641,6 +1944,11 @@ def main():
     # pager + Mackenzie's text scroll, the basil's two yellow
     # leaves, PH-tapes label on the storage closet door.
     build_priestess_dressing()
+    build_packing_dressing()
+    build_filmmaker_dressing()
+    build_desk_tech_and_tea()
+    build_books_and_curtains()
+    build_lr_studio_draft_2026_09()
     export_glb()
 
 

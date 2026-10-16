@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cosmic_comics_interior_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://cosmic_comics_interior_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/cosmic_comics_interior.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.86, 0.42, 0.96, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.06, 0.10, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.46, 0.74, 1)
 ambient_light_energy = 0.75
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.32, 0.22, 0.42, 1)
 fog_light_energy = 0.4
 fog_density = 0.006
@@ -155,9 +170,34 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key_FluorViolet" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 6, 0)
 light_color = Color(0.96, 0.92, 0.96, 1)
-light_energy = 0.65
+light_energy = 1.0
+shadow_enabled = false
+
+; Overhead fluorescent practical — comic shops are bright. One broad
+; cool-white omni centred over the floor so the bins read.
+
+; moved onto its fixture by orphan_practical_audit (2026-09-18): the light stood off its tube
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, 0.000, 2.640, -5.600)
+light_color = Color(0.94, 0.94, 0.98, 1)
+light_energy = 1.6
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Practical_Fluor_Front" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -1.8)
+light_color = Color(0.94, 0.94, 0.98, 1)
+light_energy = 1.3
+omni_range = 6.0
+shadow_enabled = false
+
+[node name="Practical_KeyWallGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 1.7, -7.5)
+light_color = Color(1.0, 0.86, 0.56, 1)
+light_energy = 1.0
+omni_range = 3.2
 shadow_enabled = false
 
 [node name="Fill_CRTBlue" type="DirectionalLight3D" parent="."]
@@ -171,6 +211,28 @@ transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4
 light_color = Color(0.78, 0.42, 0.96, 1)
 light_energy = 0.35
 shadow_enabled = false
+
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_landline" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 1.49, -5.63)
+rotation = Vector3(-0.4593, -0.8571, 0.0)
+
+[node name="shot_insert_till" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 1.30, -5.96)
+rotation = Vector3(-0.4818, -0.9264, 0.0)
+
+[node name="shot_insert_twenty" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.197, 1.248, -6.917)
+rotation = Vector3(-0.2618, -2.6180, 0.0)
+
+[node name="shot_insert_keys" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42, 2.10, -6.95)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.000, 2.189, -2.646)
+rotation = Vector3(-0.2618, 2.8798, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -272,7 +334,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +353,237 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
+; rotation B: register POV down the longbox bins to the front door
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.6, 1.7, -6.6)
+rotation = Vector3(-0.188417, 2.55359, 0)
+metadata/fov = 58.0
+
+; rotation C: from the YA shelf corner up the store to the register and manga wall
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.8, 1.6, -1.2)
+rotation = Vector3(-0.0617112, -0.872894, 0)
+metadata/fov = 60.0
+
+; insert: the glass grail tower by the entrance
+[node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.490, 2.000, -2.982)
+rotation = Vector3(-0.3274, -3.1052, 0.0)
+metadata/fov = 42.0
+
+; insert: the one-way mirror into the back office
+[node name="shot_insert_oneway" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.05, 1.5, -6.2)
+rotation = Vector3(0.115759, 0, 0)
+metadata/fov = 40.0
+
+; insert: the Speak & Spell from under the register
+[node name="shot_insert_speak_and_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55, 0.5, -5.95)
+rotation = Vector3(-0.6817, 0.6487, 0.0)
+metadata/fov = 42.0
+
+; insert: the Speak & Spell, one second to decide
+[node name="shot_insert_speak_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.725, 0.380, -6.715)
+rotation = Vector3(-0.5236, 2.0944, 0.0)
+metadata/fov = 42.0
+
+; insert: the phone rings
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.35, -5.85)
+rotation = Vector3(-0.5223, -0.7873, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.338, 1.612, -1.713)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.426, 1.612, -3.626)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; ── draft 4 (2026-09-18): the corner CRT the blue fill has been standing in for ──
+; CRT_Screen at blender (4.42, 7.42, 1.99) → godot (4.42, 1.99, -7.42). Cool phosphor.
+[node name="CRT_Screen_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.420, 1.990, -7.420)
+light_color = Color(0.420, 0.620, 0.960, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 3.20
+
+; ═══ THE BACK OFFICE (2026-10-09): the cosmic_comics_back_office preset loads THIS scene now.
+; Its markers and its rig, carried from the office set and translated (office x+3.6, z-8.0);
+; every one suffixed for the preset, so the shop's own presets never see them.
+[node name="Key_BareBulb__cosmic_comics_back_office" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
+light_color = Color(0.96, 0.86, 0.46, 1)
+light_energy = 0.55
+shadow_enabled = false
+
+[node name="Fill_Desk__cosmic_comics_back_office" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 3, -2)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 0.25
+shadow_enabled = false
+
+[node name="Back_Stack__cosmic_comics_back_office" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 3, 3)
+light_color = Color(0.42, 0.32, 0.22, 1)
+light_energy = 0.15
+shadow_enabled = false
+
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_speak_spell__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79, 2.1, -9.74)
+rotation = Vector3(-0.4098, 2.4286, 0.0)
+
+[node name="shot_insert_phone__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69, 1.36, -10.83)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+[node name="shot_insert_coffee__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51, 1.36, -10.59)
+rotation = Vector3(-0.4644, -0.9133, 0.0)
+
+[node name="shot_insert_mirror__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.100, 1.780, -9.200)
+rotation = Vector3(-0.0538, 2.3562, 0.0)
+
+; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
+; rotation B: reverse from the service door - desk, filing cabinets, office door
+[node name="shot_establish_b__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.200, 1.650, -12.400)
+rotation = Vector3(-0.179934, 2.89661, 0)
+metadata/fov = 56.0
+
+; rotation C: over the light table toward the longbox stacks and mini fridge
+[node name="shot_establish_c__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.100, 1.500, -11.500)
+rotation = Vector3(-0.296132, -1.94564, 0)
+metadata/fov = 58.0
+
+; insert: the corkboard over the desk
+[node name="shot_insert_corkboard__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.600, 1.550, -11.500)
+rotation = Vector3(0.0378607, 0, 0)
+metadata/fov = 40.0
+
+; insert: the office safe in the corner
+[node name="shot_insert_safe__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.587, 0.559, -12.020)
+rotation = Vector3(-0.2618, -1.3090, 0.0)
+metadata/fov = 42.0
+
+; insert: Rick's spiral notebook, open, kept since Sunday
+[node name="shot_insert_notebook__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.1, -10.95)
+rotation = Vector3(-0.2188, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: the list on its standard page
+[node name="shot_insert_note__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.483, 1.033, -11.563)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+; insert: the Speak & Spell on the shelf above the file cabinet, not glowing
+[node name="shot_insert_speak_and_spell__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.6, -9.5)
+rotation = Vector3(0.0921, 2.3581, 0.0)
+metadata/fov = 42.0
+
+; ── vn_shot · vol6 ch3_coda re-homed 2026-09-03: the folder's three things ──
+; insert: the hand-drawn map of the east side, one building circled in red ink
+[node name="shot_insert_map__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.722, 1.027, -11.421)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+; insert: the 1974 Polaroid of Thomas in front of the Graustark storefront
+[node name="shot_insert_polaroid__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1.2, -10.8)
+rotation = Vector3(-0.8421, 0.2387, 0.0)
+metadata/fov = 42.0
+
+; insert: F.T.'s note folded back into its envelope, bound for the fireproof box
+[node name="shot_insert_envelope__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.673, 1.029, -11.486)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.986, 1.612, -9.810)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.074, 1.612, -11.722)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="BO_Bulb_Glass_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.600, 1.740, -10.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.48
+
+[node name="BO_DeskLamp_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.930, 1.100, -12.800)
+light_color = Color(0.950, 0.820, 0.580, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 1.76
+
+; ── named closeups (pass 87): the counter (register at (2.5, 6.5), 2.4 x 1.0, the clerk north of it), the front door (0, 0)
+; closeup: Maya at the counter's customer face ("stands at the counter for a moment"), from the south-west
+[node name="shot_closeup_maya" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.350, 1.550, -4.850)
+rotation = Vector3(-0.0655, -0.8551, 0.0)
+metadata/fov = 42.0
+
+; closeup: Rick on his stool at the register (3.30, 5.55), from the west
+[node name="shot_closeup_rick" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.900, 1.550, -5.050)
+rotation = Vector3(-0.1991, -1.2278, 0.0)
+metadata/fov = 42.0
+
+; closeup: Curtis a step inside the front door, from beside the glass front looking west (the door itself filled a frame taken from the floor)
+[node name="shot_closeup_curtis" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.250, 1.550, -0.700)
+rotation = Vector3(-0.0860, -1.4411, 0.0)
+metadata/fov = 42.0
+[node name="shot_closeup_rick__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.986, 1.612, -9.810)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+
+; closeup: Maya in the back office doorway, named for the cue
+[node name="shot_closeup_maya__cosmic_comics_back_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.074, 1.612, -11.722)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+

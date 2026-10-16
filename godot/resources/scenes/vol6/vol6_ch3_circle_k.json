@@ -1,297 +1,363 @@
 {
-  "id": "vol6_ch3_circle_k",
-  "vol": 6,
-  "chapter": 3,
-  "type": "chapter",
-  "title": "Ch 3 — Last Seen at the Circle K (Or Was It?)",
-  "nodes": [
-    {
-      "t": "bg",
-      "src": "3d:miller_kitchen"
-    },
-    {
-      "t": "bgm",
-      "src": "assets/audio/bgm/vol6_ambient.mp3"
-    },
-    {
-      "t": "interlude",
-      "text": "Chapter 3",
-      "sub": "Last Seen at the Circle K (Or Was It?)",
-      "duration": 3000
-    },
-    {
-      "t": "interlude",
-      "text": "The High Priestess.",
-      "sub": "The girl between two pillars is learning to hold her breath.",
-      "duration": 3000
-    },
-    {
-      "t": "interlude",
-      "text": "1428 Meadowlark Circle — Kitchen",
-      "sub": "Tuesday · 07:14",
-      "duration": 1800
-    },
-    {
-      "t": "show",
-      "char": "sam",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "narrate",
-      "text": "Sam is down before her father for the first time in six months."
-    },
-    {
-      "t": "narrate",
-      "text": "She has been awake since five-thirty. She has been at the kitchen table since six-fifty, with a bowl of cereal and the sports page of the New Auburn Sentinel her father reads every morning, which she has no interest in but which is the kind of thing people read who have been awake for exactly the right amount of time. She has cycled through the section twice. She has, in fact, read a recap of a Little League game in a town she has never heard of, in case her father asks."
-    },
-    {
-      "t": "narrate",
-      "text": "Her father does not ask."
-    },
-    {
-      "t": "show",
-      "char": "chief_miller",
-      "expr": "neutral",
-      "pos": "left"
-    },
-    {
-      "t": "narrate",
-      "text": "He comes downstairs at 07:14. He is already in uniform. He pauses at the doorway. His expression does the small adjustment faces make when a parent registers, in their peripheral vision, that their child has rearranged the default order of the household without announcement."
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Morning, Sammy.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Morning, Dad.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"You're up early.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Couldn't sleep.\""
-    },
-    {
-      "t": "narrate",
-      "text": "He crosses to the coffee pot. He pours a mug. He looks at the paper."
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Anything good?\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Brewers won.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Huh.\""
-    },
-    {
-      "t": "narrate",
-      "text": "He sits across from her. He picks up the paper. He reads. Sam watches him, carefully, without watching him."
-    },
-    {
-      "t": "narrate",
-      "text": "She has decided, at about three AM, that her first task is to learn her father's morning. She has been in this kitchen, at breakfast, with this man, almost every morning of her seventeen years. She has not, until today, paid attention. She catalogues, now, what she has never catalogued."
-    },
-    {
-      "t": "think",
-      "char": "Sam",
-      "text": "07:15 — his first sip of coffee. He makes a small grunt. Every morning. I have heard the grunt every morning and have never, until today, registered it as information."
-    },
-    {
-      "t": "think",
-      "char": "Sam",
-      "text": "07:17 — his phone buzzes. He does not look at it. He lets it buzz itself out."
-    },
-    {
-      "t": "think",
-      "char": "Sam",
-      "text": "07:22 — his phone buzzes again. This time he looks. He frowns, briefly. He types a short response with his thumb and sets the phone face-down again."
-    },
-    {
-      "t": "narrate",
-      "text": "07:24 — he stands up. He rinses his mug. He puts it in the drying rack. He says, without turning:"
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Plans today?\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "(evenly) \"I'm gonna meet up with Maya Daigle at Cosmic Comics this morning. She's at the shop till five. I'll probably stay a while and help her sort back issues.\""
-    },
-    {
-      "t": "narrate",
-      "text": "He pauses at the sink. Not long. Maybe a second and a half. Just long enough that she registers the pause without, quite, being able to claim she did."
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Maya Daigle.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Yeah. Jimmy Daigle's daughter. She moved in with her grandma in April.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"I know who she is.\""
-    },
-    {
-      "t": "narrate",
-      "text": "She does not say anything."
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "(in a small careful voice that is not quite the voice he uses with her ordinarily) \"She doing alright over there?\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"I think so. I don't know her that well yet.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Mm.\""
-    },
-    {
-      "t": "narrate",
-      "text": "He dries his hands. He turns."
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"You got your phone on you today?\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Yeah.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Good. Text me if you head anywhere that's not on the list.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "(blinking) \"The list.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Kwik Stop. Cosmic Comics. The Pit Stop. Home. The Whataburger on 1604 if you're with a group.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Dad. I've never had a list.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Today you do.\""
-    },
-    {
-      "t": "narrate",
-      "text": "She looks at him. He smiles — the automatic smile, the Dad smile, the one he has been smiling at her since she was born."
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Just indulge me, Sammy. Couple of weird things coming across my desk this week. Probably nothing. But it makes me feel better if I know where you are.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Okay.\""
-    },
-    {
-      "t": "say",
-      "char": "Chief Miller",
-      "expr": "neutral",
-      "text": "\"Love you.\""
-    },
-    {
-      "t": "say",
-      "char": "Sam",
-      "expr": "neutral",
-      "text": "\"Love you too, Dad.\""
-    },
-    {
-      "t": "narrate",
-      "text": "He leaves through the garage. Sam listens to his truck start, reverse out, and leave. She sits at the table. She finishes her cereal."
-    },
-    {
-      "t": "hide",
-      "pos": "left"
-    },
-    {
-      "t": "narrate",
-      "text": "At 07:33, her phone buzzes. A text from an unknown number, no area code visible."
-    },
-    {
-      "t": "say",
-      "char": "M.",
-      "role": "— text · 07:33 · unknown —",
-      "expr": "neutral",
-      "text": "Graciela says trust Maya. Go see her. Do not tell anyone you have this number. — M."
-    },
-    {
-      "t": "narrate",
-      "text": "Sam reads it three times. She does not reply. She deletes the thread."
-    },
-    {
-      "t": "narrate",
-      "text": "She clears her bowl. She puts it in the drying rack next to her father's mug. She goes upstairs to get dressed."
-    },
-    {
-      "t": "jump",
-      "scene": "vol6_ch3_back_room"
-    }
-  ]
+ "id": "vol6_ch3_circle_k",
+ "vol": 6,
+ "chapter": 3,
+ "type": "chapter",
+ "title": "Ch 3 — Last Seen at the Circle K (Or Was It?)",
+ "nodes": [
+  {
+   "t": "bg",
+   "src": "3d:miller_kitchen"
+  },
+  {
+   "t": "bgm",
+   "src": "assets/audio/bgm/vol6_ambient.wav"
+  },
+  {
+   "t": "interlude",
+   "text": "Chapter 3",
+   "sub": "Last Seen at the Circle K (Or Was It?)",
+   "duration": 3000
+  },
+  {
+   "t": "interlude",
+   "text": "The High Priestess.",
+   "sub": "The girl between two pillars is learning to hold her breath.",
+   "duration": 3000
+  },
+  {
+   "t": "interlude",
+   "text": "1428 Meadowlark Circle — Kitchen",
+   "sub": "Tuesday · 07:14",
+   "duration": 1800
+  },
+  {
+   "t": "show",
+   "char": "sam",
+   "expr": "neutral",
+   "pos": "center"
+  },
+  {
+   "t": "narrate",
+   "text": "[mood:morning_bright][shot:closeup sam]Sam is down before her father for the first time in six months.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/006.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "She has been awake since five-thirty.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/007.ogg"
+  },
+  {
+   "t": "narrate",
+   "text": "She has been at the kitchen table since six-fifty, with a bowl of cereal and the sports page of the New Auburn Sentinel her father reads every morning, which she has no interest in but which is the kind of thing people read who have been awake for exactly the right amount of time.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/008.ogg"
+  },
+  {
+   "t": "narrate",
+   "text": "She has cycled through the section twice. She has, in fact, read a recap of a Little League game in a town she has never heard of, in case her father asks.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/009.ogg"
+  },
+  {
+   "t": "narrate",
+   "text": "Her father does not ask.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/010.mp3"
+  },
+  {
+   "t": "show",
+   "char": "chief_miller",
+   "expr": "neutral",
+   "pos": "left"
+  },
+  {
+   "t": "narrate",
+   "text": "[shot:closeup miller]He comes downstairs at 07:14. He is already in uniform. He pauses at the doorway.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/012.ogg"
+  },
+  {
+   "t": "narrate",
+   "text": "His expression does the small adjustment faces make when a parent registers, in their peripheral vision, that their child has rearranged the default order of the household without announcement.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/013.ogg"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Morning, Sammy.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/014.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Morning, Dad.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/015.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"You're up early.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/016.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Couldn't sleep.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/017.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "He crosses to the coffee pot. He pours a mug. He looks at the paper.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/018.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "[shot:closeup person]\"Anything good?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/019.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Brewers won.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/020.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Huh.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/021.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "[shot:closeup miller]He sits across from her. He picks up the paper. He reads. Sam watches him, carefully, without watching him.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/022.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "She has decided, at about three AM, that her first task is to learn her father's morning. She has been in this kitchen, at breakfast, with this man, almost every morning of her seventeen years.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/023.ogg"
+  },
+  {
+   "t": "narrate",
+   "text": "She has not, until today, paid attention. She catalogues, now, what she has never catalogued.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/024.ogg"
+  },
+  {
+   "t": "think",
+   "char": "Sam",
+   "text": "07:15 — his first sip of coffee. He makes a small grunt. Every morning. I have heard the grunt every morning and have never, until today, registered it as information.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/025.mp3"
+  },
+  {
+   "t": "think",
+   "char": "Sam",
+   "text": "07:17 — his phone buzzes. He does not look at it. He lets it buzz itself out.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/026.mp3"
+  },
+  {
+   "t": "think",
+   "char": "Sam",
+   "text": "07:22 — his phone buzzes again. This time he looks. He frowns, briefly. He types a short response with his thumb and sets the phone face-down again.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/027.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "07:24 — he stands up. He rinses his mug. He puts it in the drying rack. He says, without turning:",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/028.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "[shot:closeup person]\"Plans today?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/029.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "(evenly) \"I'm gonna meet up with Maya Daigle at Cosmic Comics this morning. She's at the shop till five. I'll probably stay a while and help her sort back issues.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/030.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "[shot:closeup miller~]He pauses at the sink. Not long. Maybe a second and a half. Just long enough that she registers the pause without, quite, being able to claim she did.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/031.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Maya Daigle.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/032.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Yeah. Jimmy Daigle's daughter. She moved in with her grandma in April.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/033.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"I know who she is.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/034.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "She does not say anything.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/035.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "(in a small careful voice that is not quite the voice he uses with her ordinarily) \"She doing alright over there?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/036.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"I think so. I don't know her that well yet.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/037.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Mm.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/038.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "He dries his hands. He turns.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/039.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"You got your phone on you today?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/040.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/041.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Good. Text me if you head anywhere that's not on the list.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/042.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "(blinking) \"The list.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/043.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Kwik Stop. Cosmic Comics. The Pit Stop. Home. The Whataburger on 1604 if you're with a group.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/044.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Dad. I've never had a list.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/045.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "[beat:chill]\"Today you do.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/046.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "[shot:closeup sam]She looks at him. He smiles — the automatic smile, the Dad smile, the one he has been smiling at her since she was born.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/047.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Just indulge me, Sammy. Couple of weird things coming across my desk this week. Probably nothing. But it makes me feel better if I know where you are.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/048.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/049.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Chief Miller",
+   "expr": "neutral",
+   "text": "\"Love you.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/050.mp3"
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "expr": "neutral",
+   "text": "\"Love you too, Dad.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/051.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "He leaves through the garage. Sam listens to his truck start, reverse out, and leave. She sits at the table. She finishes her cereal.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/052.mp3"
+  },
+  {
+   "t": "hide",
+   "pos": "left"
+  },
+  {
+   "t": "narrate",
+   "text": "[mood:macro_haze][shot:insert phone]At 07:33, her phone buzzes. A text from an unknown number, no area code visible.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/054.mp3"
+  },
+  {
+   "t": "say",
+   "char": "M.",
+   "role": "— text · 07:33 · unknown —",
+   "expr": "neutral",
+   "text": "Graciela says trust Maya. Go see her. Do not tell anyone you have this number. — M.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/055.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "Sam reads it three times. She does not reply. She deletes the thread.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/056.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "[shot:establish]She clears her bowl. She puts it in the drying rack next to her father's mug. She goes upstairs to get dressed.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/057.mp3"
+  },
+  {
+   "t": "jump",
+   "scene": "vol6_ch3_back_room"
+  }
+ ]
 }

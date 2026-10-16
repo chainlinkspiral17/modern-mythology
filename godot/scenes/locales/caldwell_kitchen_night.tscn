@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://caldwell_kitchen_night_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://caldwell_kitchen_night_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/caldwell_kitchen_night.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.78, 0.86, 0.92, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.86, 0.74, 0.52, 1)
 ambient_light_energy = 0.85
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
@@ -163,11 +178,19 @@ shadow_enabled = false
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.88, 0.72, 1)
-light_energy = 0.45
+light_energy = 0.5
+shadow_enabled = false
+
+; Warm overhead pendant (night kitchen — the one light left on)
+[node name="Practical_Overhead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -2.5)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.3
+omni_range = 4.5
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -6)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.3
 shadow_enabled = false
@@ -272,7 +295,7 @@ script = ExtResource("16_limc")
 post_process_path = NodePath("../PostProcess")
 location_json = ""
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -291,3 +314,44 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
+[node name="shot_insert_chair" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.912, 1.162, 0.112)
+rotation = Vector3(-0.2352, 0.6577, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.001, 1.480, -0.958)
+rotation = Vector3(-0.5151, 0.4628, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_counter" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.637, 1.598, -1.475)
+rotation = Vector3(-0.2701, 0.7563, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.252, 2.345, -3.924)
+rotation = Vector3(-0.2618, 0.2618, 0.0)
+metadata/fov = 35.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.319, 1.612, -1.854)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.095, 1.612, -3.630)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+; (2026-10-07) over the sink and out: the back yard at night
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.200, 1.550, -3.000)
+rotation = Vector3(-0.0783, 0.0428, 0.0)
+metadata/fov = 52.0
+
