@@ -1,0 +1,86 @@
+{
+  "id": "dw_2006-02-12_nine_flyers",
+  "title": "Sunday · nine flyers",
+  "strip": "drift_wood",
+  "date": "2006-02-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006 · Sundays · deepening xii)",
+  "logline": "Nine flyers on the wall, the ninth with nothing added, carefully. Three tiers of the wall as the light moves across it, the flyers going from paper to gold to gray.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall with nine flyers in morning light.",
+      "characters": [],
+      "props": [
+        "nine flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with a row of nine paper flyers in morning light, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Morning"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the same wall at noon, the flyers gold.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same shingle wall with nine paper flyers at noon lit gold, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Noon"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same wall at dusk, gray, the newest flyer a paler rectangle.",
+      "characters": [],
+      "props": [
+        "the newest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same shingle wall at dusk with nine gray flyers and the newest a paler rectangle, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dusk"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Nine. Nothing added, carefully.",
+  "layout": "tiers, portrait page"
+}

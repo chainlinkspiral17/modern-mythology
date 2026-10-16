@@ -1,0 +1,102 @@
+{
+  "id": "dw_2008-03-09_grunion_2008",
+  "title": "Sunday · the Grunion Run, 2008",
+  "strip": "drift_wood",
+  "date": "2008-03-09",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · Sundays · deepening ix)",
+  "logline": "The run from the dunes above: the lanterns a broken line down the sand, the fish a silver seam, and in the last tier the seam gone and the lanterns going home.",
+  "cast": [
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach from the dune grass at night, lanterns in a broken line.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "tiny",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach seen from dune grass with lanterns in a broken line along the sand, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Above"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the surf line a silver seam of fish, tiny figures bent at it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "bent",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a surf line drawn as a silver seam of small fish with tiny figures bent over it at night, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Seam"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the seam gone, lanterns strung up the beach path going home.",
+      "characters": [],
+      "props": [
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark beach with the surf plain and lanterns strung up a path away from it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Home"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "From the dunes.",
+  "layout": "tiers, portrait page"
+}

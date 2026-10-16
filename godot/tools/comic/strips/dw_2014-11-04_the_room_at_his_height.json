@@ -1,0 +1,144 @@
+{
+  "id": "dw_2014-11-04_the_room_at_his_height",
+  "title": "The room at his height",
+  "strip": "drift_wood",
+  "date": "2014-11-04",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Table Lowered",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Table Lowered · deepening)",
+  "logline": "Tuesday. The day after the table's lowered: the strip draws the garage from the dog's height for the whole daily. Table legs, the bed, Wood's boots, the sill impossibly far up. The wrench on the floor.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The garage from eight inches off the floor: the lowered table's edge at eye level, the bed, WOOD's boots and knees, the wrench left on the concrete.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "boots and knees",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "the viewpoint",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lowered table",
+        "the wrench"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a garage seen from eight inches above the floor, a lowered drafting table's edge at eye level, a braided dog bed, a man's boots and knees, a wrench on the concrete, no words",
+        "negative": "",
+        "notes": "The whole strip at the dog's eye height."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dog's chin on Wood's foot — from the dog's side. The boot.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "chin on the foot, from his side",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "the boot",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, seen from a dog's eye level, an old dog's chin resting on a man's boot beneath a low table, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Looking up: the sill, three jars, the window, rain, impossibly far. Wood's hand coming down into the frame with a brush.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand with a brush entering from above",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sill, far up",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, looking up from floor level at a windowsill with three jars and rain far above, a man's hand with a brush descending into the frame, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the floor again. The man, cross-legged now, drawing at the low table. The dog beside him, same height. The room finally the right size for both.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "cross-legged at the low table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the low table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, from floor level, a man sitting cross-legged drawing at a table lowered to the floor with an old dog lying beside him at the same height, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. The whole daily at the dog's eye height."
+}

@@ -1,0 +1,165 @@
+{
+  "id": "dw_2008-11-07_to_be_continued",
+  "title": "To be continued",
+  "strip": "drift_wood",
+  "date": "2008-11-07",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Long Way Back",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Long Way Back · deepening)",
+  "logline": "Friday. The travelogue ends. TO BE CONTINUED, crossed out, on the last panel. The corner box's promise from June — THE LONG WAY BACK — kept as a joke, which is the only way the strip knows how to keep one.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool with the pad. GULLY. BARNABY. The corkboard: the 61 MI postcard.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "with the pad",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the postcard on the board"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "So where'd you get to."
+        },
+        {
+          "who": "WOOD",
+          "text": "Yachats."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's twenty minutes."
+        },
+        {
+          "who": "WOOD",
+          "text": "It felt far."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man with a pad on a bait-shop stool talking to a man in an apron, an old dog beneath, a postcard on the corkboard behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the last travelogue panel. A caption box: TO BE CONTINUED. A line through it.",
+      "characters": [],
+      "props": [
+        "TO BE CONTINUED, struck"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a drawing pad showing a caption box reading TO BE CONTINUED with a single line struck through it",
+        "negative": "",
+        "notes": "Letter after: TO BE CONTINUED, struck through."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, pouring.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "The box said 'The Long Way Back.'"
+        },
+        {
+          "who": "WOOD",
+          "text": "That was it. Sixty-one miles there, sixty-one back. The long way."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Yeah, okay. That's fair."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron pouring coffee and conceding a point to a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog, under the stool, asleep. Home the whole time. The strip's last caption, in the travelogue face, small: HOME.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "HOME.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, an old dog asleep under a shop stool with a small caption box in a travelogue typeface, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'The long way.' 'That's fair.' HOME."
+}

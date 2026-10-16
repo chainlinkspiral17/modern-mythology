@@ -1,0 +1,88 @@
+{
+  "id": "dw_2009-12-13_the_mailbox_in_rain",
+  "title": "Sunday · the mailbox in rain",
+  "strip": "drift_wood",
+  "date": "2009-12-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The roadside mailbox in December rain, flag down, drawn close, the two weeks before the fixture. Does Chloe come home: the mailbox doesn't know either.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a roadside mailbox in December rain from the shoulder, flag down, the road wet, a porch light far back.",
+      "characters": [],
+      "props": [
+        "the mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a roadside mailbox in December rain with its flag down and a wet road and a distant porch light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Mailbox"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the flag, close, rust at its hinge.",
+      "characters": [],
+      "props": [
+        "the flag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a mailbox's red flag lowered, close, rust at the hinge, rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Flag"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the road toward town, empty, the rain. Held.",
+      "characters": [],
+      "props": [
+        "the road"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty wet road toward a small town in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The mailbox before the fixture.",
+  "layout": "tiers, portrait page"
+}

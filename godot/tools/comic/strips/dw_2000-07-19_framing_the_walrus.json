@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-07-19_framing_the_walrus",
+  "title": "Framing the walrus",
+  "strip": "drift_wood",
+  "date": "2000-07-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully Draws",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday, not a shop day. Wood goes in anyway with the napkin. The owner looks at the walrus and says cedar, no mat. Wood says he was going to say that. She says then say it. He cuts a forty-five freehand and it's clean and she says nothing, which is the review.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop, Wednesday. WOOD in the door with the napkin flat on his palm. The OWNER looking at it over her glasses.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Cedar. No mat."
+        },
+        {
+          "who": "WOOD",
+          "text": "I was going to say that."
+        },
+        {
+          "who": "OWNER",
+          "text": "Then say it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a shop doorway holding a paper napkin flat on his palm while a woman in reading glasses examines it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The mat cutter. A forty-five, freehand. Clean.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a mat cutter with a cleanly cut freehand corner of cream board, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The walrus behind glass. Cedar. Plain. The napkin's creases kept.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a ballpoint walrus on a paper napkin framed behind glass in a plain cedar frame with the napkin's creases visible, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner looking at the finished frame. Saying nothing. Going back to her station. Wood adds one mark to the wall. He counts it as the uncle's.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses turning away from a finished frame without comment while a young man adds a tally mark to a wall, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Then say it.' The uncle's mark on the wall."
+}

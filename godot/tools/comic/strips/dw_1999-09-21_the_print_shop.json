@@ -1,0 +1,161 @@
+{
+  "id": "dw_1999-09-21_the_print_shop",
+  "title": "The print shop",
+  "strip": "drift_wood",
+  "date": "1999-09-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "The reason he's here, if he's honest. He is not honest. The machine is.",
+  "cast": [
+    "wood_20",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The college print shop. A photocopier the size of a car. A PRINT TECH in an apron. WOOD holding a sheaf of strips.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding strips",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "leaning on the copier",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a huge photocopier",
+        "paper stacks",
+        "toner smell drawn as wavy lines"
+      ],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Student?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Auditing."
+        },
+        {
+          "who": "TECH",
+          "text": "Auditing what."
+        },
+        {
+          "who": "WOOD",
+          "text": "Composition II. Also this machine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a college print shop with an enormous photocopier, a print technician in an apron leaning on it, a thin young man in a chore coat holding a sheaf of comic strips",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The copier's glass. A strip face down. The green light sweeping.",
+      "characters": [],
+      "props": [
+        "copier glass",
+        "green scan light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "ZZZHHHT",
+      "image": {
+        "prompt": "close-up of a photocopier's glass with a comic strip face down and the green scan light sweeping under it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tech, holding up the copy. Looking at it. Then at Wood.",
+      "characters": [
+        {
+          "id": "extra_print_tech",
+          "pose": "holding up a fresh copy",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a fresh copy"
+      ],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "This yours?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Every day now. Five a week."
+        },
+        {
+          "who": "TECH",
+          "text": "Huh."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician holding up a fresh photocopy of a comic strip and looking from it to the young man who drew it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The copies stacking in the tray. A hundred strips, warm. Wood's hand on the stack like it's a dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hand resting on the warm stack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "stack of copies in the output tray"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's hand resting on a warm stack of fresh photocopies in a copier's output tray, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": ""
+}

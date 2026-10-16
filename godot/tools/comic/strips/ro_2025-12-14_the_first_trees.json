@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-12-14_the_first_trees",
+  "title": "The first trees",
+  "strip": "roflcopter",
+  "date": "2025-12-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Past the bend. The first trees of the ridge proper, December, the trunks close, the road become a path, the glow ahead a warmth between them like a room with a light on. A man's back and a dog, small.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Past the road's bend: the trunks of the first big cedars, close, the gravel become a needle path, and ahead between the trunks a warmth like a lit room seen from a dark yard. A man from behind and a small three-legged dog, small at the path's start.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a needle path entering close cedar trunks in December with a warm glow between the trees ahead like a lit room seen from outside, a man seen from behind and a small three-legged dog small at the path's start, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Past the bend. A lit room seen from a dark yard.",
+  "layout": "single page, no borders"
+}

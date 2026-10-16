@@ -1,0 +1,163 @@
+{
+  "id": "dw_2002-11-13_the_grinder",
+  "title": "The grinder",
+  "strip": "drift_wood",
+  "date": "2002-11-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Espresso Machine",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Espresso Machine · deepening)",
+  "logline": "Wednesday. The grinder. Gully grinds bait-shop coarse. The first shot pulls in four seconds. Wood times it on the bait-tank clock. 'That's a sneeze.' 'That's a shot.' 'That's a sneeze, Gully.'",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY at a hand grinder, cranking like a winch. WOOD on the crate. No dog — he's still gone.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "cranking a grinder",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on the crate",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a hand grinder"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager in an apron cranking a hand coffee grinder like a winch in a bait shack while another sits on a crate, no dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The grounds. Coarse as gravel. In the portafilter.",
+      "characters": [],
+      "props": [
+        "coarse grounds"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of coarse gravel-like coffee grounds in an espresso portafilter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The shot. Wood watching the bait-tank clock. Four seconds. A cup of pale water.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pulling the shot",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "timing it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the clock",
+        "a pale shot"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Four seconds."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's a shot."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's a sneeze, Gully."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager pulling an espresso shot while another times it on a wall clock, a cup of pale liquid",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully cranking the grinder finer. Grim. Wood drawing the crank. The strip about a crank.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "cranking, grim",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Finer."
+        },
+        {
+          "who": "WOOD",
+          "text": "Finer."
+        },
+        {
+          "who": "GULLY",
+          "text": "I didn't ask."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a grim teenager cranking a coffee grinder finer while another draws him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'That's a sneeze, Gully.' The crank."
+}

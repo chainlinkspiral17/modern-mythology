@@ -1,0 +1,167 @@
+{
+  "id": "dw_2002-02-08_crab_derby_2002",
+  "title": "The Crab Derby, 2002",
+  "strip": "drift_wood",
+  "date": "2002-02-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Eighteenth annual. Gully's derby now. He pays twenty. Wood takes it. The deal is back.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY, apron, a twenty held out. WOOD. Four flyers on the wall.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "holding out a twenty",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty",
+        "four flyers"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Eighteen. Same crab. Twenty bucks. Take it this time."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a fisherman's apron holding out a twenty-dollar bill in front of a shingle shack with four crab flyers on the wall, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, taking it. Slowly.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "taking the bill",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Twenty bucks."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's the deal."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand slowly taking a twenty-dollar bill from another hand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The crab, drawn on the counter. Same crab. This year, for the first time, a second, smaller crab beside it. Gully sees it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "looking over his shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer with a large crab and a small one"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Two."
+        },
+        {
+          "who": "WOOD",
+          "text": "One's yours."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing a crab flyer on a shack counter where a second smaller crab has appeared beside the usual large one, a friend looking over his shoulder",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Five flyers on the wall. The fifth has two crabs. Gully pinning it. The dog.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pinning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "five flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "five crab flyers in a row on a shingle wall, the newest with two crabs, a young man in an apron pinning it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two crabs. The deal restored. The strip's economy is twenty dollars and one drawing a year."
+}

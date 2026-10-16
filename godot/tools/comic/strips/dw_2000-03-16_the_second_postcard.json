@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-03-16_the_second_postcard",
+  "title": "The second postcard",
+  "strip": "drift_wood",
+  "date": "2000-03-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wood answers. The second of the ten. Written in the Datsun in Lot C with the dog's head on the wheel. Mailed from the college. The strip shows the slot. Eight — no. Seven left.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Datsun in Lot C. WOOD writing a postcard on the wheel. BARNABY's head resting on the wheel's top, in the way.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man writing a postcard against a car's steering wheel while a small dog rests its head on top of the wheel, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card's front: the bay, blue. His thumb over the writing side. The strip's rule.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a faded postcard of a bay held with a thumb covering its back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The college's mail slot in the lobby wall. The card going in.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a postcard being slipped into a brass mail slot in a college lobby wall, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The drawer at home that night: seven. He counts twice. The unsent one is in the box; it doesn't count, and it does.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a desk drawer with seven postcards being counted by a young man's hand, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Seven in the drawer, one in the box, two mailed. The strip counts twice."
+}

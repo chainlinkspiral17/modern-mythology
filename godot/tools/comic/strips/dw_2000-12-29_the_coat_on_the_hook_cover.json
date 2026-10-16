@@ -1,0 +1,140 @@
+{
+  "id": "dw_2000-12-29_the_coat_on_the_hook_cover",
+  "title": "The coat on the hook",
+  "strip": "drift_wood",
+  "date": "2000-12-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Christmas Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday, the last digest of 2000. The cover is the chore coat on the shop's hook, empty, the cuff, the button, the stain. No one in it. The owner says where is he. Wood says right here. She says then who's in the coat. He says nobody, for once. She says that's the first time. He says the last, too.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the chore coat on a brass hook on a doorframe, empty: the frayed cuff, the mismatched button, the ink on the pocket.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing an empty canvas chore coat hanging on a brass hook with a frayed cuff, a mismatched button and an ink stain, black and white, no words",
+        "negative": "",
+        "notes": "The coat empty: once. Next: May 2011, the shop's last day, off-page."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD in the coat. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Where is he."
+        },
+        {
+          "who": "WOOD",
+          "text": "Right here."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Then who's in the coat."
+        },
+        {
+          "who": "WOOD",
+          "text": "Nobody. For once."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet with an empty coat on its cover and speaking to a young man wearing that coat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "First time."
+        },
+        {
+          "who": "WOOD",
+          "text": "Last, too."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner, level, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The rack. The empty coat facing the room. The year's last cover. Sixty-six on the shelf, over the edge. The strip in the coat, at the door, the dog, the rain. 2001 on Tuesday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet with an empty coat on its cover in a wire rack, a young man in that coat at a laundromat's door with a small dog, rain outside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The coat empty, once. 'Last, too.' 2001 on Tuesday."
+}

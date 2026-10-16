@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-08-21_her_hands",
+  "title": "Her hands",
+  "strip": "roflcopter",
+  "date": "2024-08-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "Chloe's hands around a can of Rainier on the dock, forty-four, a ring gone and its pale band left, the planks, the water. The page the way the strip drew hands: as the whole person.",
+  "cast": [
+    "chloe_34"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a woman's hands around a can of beer resting on her knee on a dock, a pale band on one finger where a ring was, the planks and gray water beyond.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "hands",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pale band"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a woman's hands around a beer can resting on her knee on a wooden dock with a pale band on one finger where a ring was, planks and gray water beyond, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The pale band.",
+  "layout": "single page, no borders"
+}

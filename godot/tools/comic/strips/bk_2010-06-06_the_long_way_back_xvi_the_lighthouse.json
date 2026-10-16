@@ -1,0 +1,93 @@
+{
+  "id": "bk_2010-06-06_the_long_way_back_xvi_the_lighthouse",
+  "title": "THE LONG WAY BACK · XVI · The lighthouse",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-06-06",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop sixteen: a lighthouse on a headland in a storm, its lamp out, a crack the traveler swears runs from the lantern room to the base, and two gulls falling past it with the wind. The card: a tower struck. The traveler draws the crack and then, in the third tier, draws it not there. He can't decide. He keeps both.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a lighthouse on a headland in a storm, its lamp dark, a crack running from the lantern room to the base, two gulls tumbling past.",
+      "characters": [],
+      "props": [
+        "the crack",
+        "two gulls"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lighthouse on a headland in a storm with its lamp dark and a crack running its full height, two gulls tumbling past in the wind, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the card: a tower with its top struck off and two small figures falling, the strip's line.",
+      "characters": [],
+      "props": [
+        "the Tower"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a tower struck at its top with two small figures falling drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same lighthouse, the same storm, and no crack. Both tiers kept.",
+      "characters": [],
+      "props": [
+        "no crack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same lighthouse on the same stormy headland with no crack at all, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "XVI. The Tower (Vol 5: the render farm's crash). He can't decide; keeps both.",
+  "layout": "tiers, portrait page"
+}

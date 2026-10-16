@@ -1,0 +1,89 @@
+{
+  "id": "dw_2016-07-10_cedar_the_blade_moon",
+  "title": "Sunday · Cedar, v · the blade moon",
+  "strip": "drift_wood",
+  "date": "2016-07-10",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Cedar",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Cedar · deepening)",
+  "logline": "The fifth of twelve. Night at the mill. The moon over the stack is a sawblade — the great circular blade from the floor, risen. Its teeth in the clouds. Played straight. The stack a full tree now.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mill at night. The stack, a tall cedar now from its top, and over it, where the moon should be, a circular sawblade, silver, its teeth catching cloud.",
+      "characters": [],
+      "props": [
+        "the blade moon",
+        "the stack as tree"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a ruined mill at night with a tall cedar growing from the top of its brick smokestack and above it in place of the moon a great circular sawblade silver against clouds, played straight, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Blade moon"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the blade's edge, close, the teeth, and the moonlight coming off them the way it comes off water.",
+      "characters": [],
+      "props": [
+        "the teeth"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, close-up of a circular sawblade's teeth against night cloud with silver light coming off them like moonlight on water, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Teeth"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the yard in bladelight. The shadow of the stack-tree. And on the ground, the blade's real self: the rusted saw on the floor where it always was. Held.",
+      "characters": [],
+      "props": [
+        "the real blade on the ground"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a mill yard lit silver from above with the long shadow of a tree-topped smokestack and on the ground a rusted circular sawblade lying where it always was, no words",
+        "negative": "",
+        "notes": "Both blades: the moon and the rusted one on the ground. The sequence's honesty."
+      },
+      "stage": null,
+      "name": "The real one"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Cedar v. The blade moon; the real blade below it.",
+  "layout": "tiers, portrait page"
+}

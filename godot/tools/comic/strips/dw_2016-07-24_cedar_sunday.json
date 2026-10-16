@@ -1,0 +1,92 @@
+{
+  "id": "dw_2016-07-24_cedar_sunday",
+  "title": "Sunday · Cedar",
+  "strip": "drift_wood",
+  "date": "2016-07-24",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Cedar",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "One of twelve magical-realist Sundays: the smokestack growing back into a tree. Played straight. The phantom novel bleeding through.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mill in July. The smokestack — but the sapling at its rim is a tree now, a real cedar, twenty feet, its roots down the brick like veins. Played straight.",
+      "characters": [],
+      "props": [
+        "smokestack with a full cedar growing from it",
+        "roots down the brick"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned mill's brick smokestack with a full cedar tree growing from its top, roots running down the brickwork like veins, July light, rendered completely straight in wet-on-wet watercolor, no people",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Growing back"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: inside the shed. The bars of light. And where the saw was, a stump — the floor has become forest floor, sawdust to duff, a fern in the blade slot.",
+      "characters": [],
+      "props": [
+        "a stump where the saw was",
+        "fern in the blade slot",
+        "bars of light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the inside of a vast abandoned mill shed where the great saw has become a mossy stump, sawdust turned to forest duff, a fern growing in the blade slot, long bars of light, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The saw"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the mill from the road at dusk, the whole shed roofed in moss and saplings, the stack a tree, the chain across the drive still there. The only sign it's a drawing of a wish: the chain.",
+      "characters": [],
+      "props": [
+        "the mill as forest",
+        "the chain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned mill seen from the road at dusk transformed into forest, moss and saplings over the shed roof, a cedar on the smokestack, and across the drive still an ordinary rusted chain, watercolor, no words",
+        "negative": "",
+        "notes": "Nothing in the strip says this is imagined. The chain is the tell."
+      },
+      "stage": null,
+      "name": "The chain"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Cedar: one of twelve. The mill grows back. The chain stays real.",
+  "layout": "tiers, portrait page"
+}

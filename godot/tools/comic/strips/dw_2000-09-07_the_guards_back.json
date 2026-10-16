@@ -1,0 +1,144 @@
+{
+  "id": "dw_2000-09-07_the_guards_back",
+  "title": "The guard's back",
+  "strip": "drift_wood",
+  "date": "2000-09-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "September",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday, after the shop. Wood drives to Newport for no reason and the guard is back from the marina, tanned, at the Datsun's window before it's stopped. 'Lot C's for students.' 'Sort of.' 'Sort of.' Neither has changed the line. Neither wants to.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Lot C, evening. The GUARD, tanned, at the Datsun's window as it rolls in. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Lot C's for students."
+        },
+        {
+          "who": "WOOD",
+          "text": "Sort of."
+        },
+        {
+          "who": "GUARD",
+          "text": "Sort of."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tanned security guard at a small car's window as it pulls into a college lot in the evening, a young man driving, a small dog on the seat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The guard's hand on the roof. The pat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a security guard's hand resting on a small car's roof, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "How was the marina."
+        },
+        {
+          "who": "GUARD",
+          "text": "Boats."
+        },
+        {
+          "who": "WOOD",
+          "text": "How were the boats."
+        },
+        {
+          "who": "GUARD",
+          "text": "Sort of."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a car, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guard walking off. The car in its spot. The dog. The line, unchanged, both ways. The strip has a line with the guard and it's a year old.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard walking away across a lot at dusk while a young man sits in his car with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Sort of,' both ways. A year old."
+}

@@ -1,0 +1,171 @@
+{
+  "id": "dw_2014-07-14_subaru_north",
+  "title": "Monday · north",
+  "strip": "drift_wood",
+  "date": "2014-07-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "The drive to the San Juans on the doughnut spare and pure dread. Barnaby stays with Maria. The first drive without him.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's lot, dawn. The Legacy, the doughnut still on. WOOD in the thrift-store wool suit, on a hanger in the back window. MARIA holding BARNABY. GULLY with a coffee for the road.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the car",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "holding the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in her arms",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "coffee",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Legacy with the doughnut",
+        "suit in the window",
+        "coffee"
+      ],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "He'll be fine. He'll sleep. Go."
+        },
+        {
+          "who": "GULLY",
+          "text": "Fifty miles an hour."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's four hundred miles."
+        },
+        {
+          "who": "GULLY",
+          "text": "Then it's eight hours. Go."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man beside an old Subaru wagon at dawn with a wool suit hanging in its rear window and a tiny spare tire on one wheel, a practical woman holding a very old dog, a stocky man handing over a paper cup of coffee, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Interstate 5 north, the Legacy in the slow lane at fifty, trucks passing like weather. Wood's hands at ten and two. No dog in the passenger seat. The strip draws the empty seat.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving, both hands",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "interstate",
+        "trucks passing",
+        "empty passenger seat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Subaru wagon in the slow lane of an interstate with trucks blurring past, a thin man gripping the wheel, the passenger seat conspicuously empty, clean ink with a gray wash",
+        "negative": "",
+        "notes": "The empty passenger seat. The first drive without the dog."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A ferry. The Legacy on the car deck between two cars that cost more than the garage. Wood on the rail, the suit on now, sketchbook in his lap. Puget Sound.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on a ferry rail in the suit, sketchbook",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ferry deck",
+        "expensive cars",
+        "the Sound"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man in an ill-fitting wool suit at a ferry's rail with a sketchbook, an old Subaru on the car deck below between two expensive cars, Puget Sound in clear summer light, pale linen and cerulean wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The island. A road through madrone. Ahead, through the trees: glass, cedar, a pavilion catching the light. The Legacy, small, approaching it on a toy tire.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "madrone road",
+        "pavilion glimpsed",
+        "the Legacy, small"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an island road through madrone trees with a cedar-and-glass pavilion catching bright summer light ahead, an old Subaru wagon approaching small on a tiny spare tire, clear cerulean and linen watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Arc 3 opens. Four hundred miles at fifty. The empty seat. The pavilion ahead."
+}

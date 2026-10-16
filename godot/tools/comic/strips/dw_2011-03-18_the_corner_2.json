@@ -1,0 +1,164 @@
+{
+  "id": "dw_2011-03-18_the_corner_2",
+  "title": "The corner, ii",
+  "strip": "drift_wood",
+  "date": "2011-03-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Corner",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Wagner's is empty. The strip is about the Grunion Run. The empty windows are behind everything.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street at dusk, Grunion night; townspeople walking toward the beach with buckets. GULLY with the thermos. WOOD with BARNABY in his arms. Behind them: Wagner's, dark, windows papered.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "carrying the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "carried",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "papered windows",
+        "buckets",
+        "dusk"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You carrying him the whole way?"
+        },
+        {
+          "who": "WOOD",
+          "text": "He carries me back."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town main street at dusk with townspeople carrying buckets toward a beach, a man with a thermos, another carrying an old dog, and behind them a dark hardware store with papered-over windows, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The papered window. A single sheet of paper taped inside, hand-lettered: THANK YOU SMALL WOOD 1962–2011.",
+      "characters": [],
+      "props": [
+        "a taped note in the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a papered-over storefront window with a single hand-lettered thank-you note taped inside",
+        "negative": "",
+        "notes": "THANK YOU SMALL WOOD 1962–2011. Letter after. The only time the strip's background says a date."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, passing it, glancing. The dog glancing. Gully not.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "glancing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "glancing",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "not looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men passing a dark storefront at dusk, one and the dog he carries glancing at it, the other looking ahead, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The beach ahead. Lanterns starting. The corner behind them, dark. The strip walks into the Grunion Run and the book takes the rest as one strip elsewhere.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns ahead",
+        "dark corner behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men and a dog walking toward a beach where lanterns are being lit at dusk, a dark storefront corner behind them, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Wagner's: THANK YOU SMALL WOOD 1962–2011. The strip glances once."
+}

@@ -1,0 +1,198 @@
+{
+  "id": "dw_2015-12-25_december_2015",
+  "title": "December, 2015",
+  "strip": "drift_wood",
+  "date": "2015-12-25",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Does Chloe come home. She comes to the garage with a bottle and no Julian and sits on the floor where the table used to be low.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage door. CHLOE, thirty-five, in the gray cashmere, a bottle of something in a paper bag. No Julian. BARNABY II losing his mind at her ankles. WOOD at the table.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "in the doorway with a bottle",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at her ankles",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "at the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bottle in a bag",
+        "doorway"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Married a year and a half. He's with his family. I said I had a thing."
+        },
+        {
+          "who": "WOOD",
+          "text": "This is the thing?"
+        },
+        {
+          "who": "CHLOE",
+          "text": "This is the thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in gray cashmere standing in a garage doorway holding a bottle in a paper bag, a three-legged dog dancing at her ankles, a thin man at a drafting table, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The two of them on the floor, backs to the banker's boxes. The pup between. The old bed, still under the table, empty. Chloe looking at it.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "on the floor, looking at the old bed",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "beside her",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "between",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "banker's boxes",
+        "the old bed"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You kept the bed."
+        },
+        {
+          "who": "WOOD",
+          "text": "He doesn't use it."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I didn't ask if he used it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman and a man sitting on a garage floor with their backs to banker's boxes, a three-legged dog between them, the woman looking at an empty braided dog bed under the table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe's hand on the pup. Wood's hand on the pup. Not touching. The strip's third time.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "hand on the pup",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "hand on the pup",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of two hands resting on a wiry three-legged dog, not touching each other, lamp light, no words",
+        "negative": "",
+        "notes": "2000 (floor), 2005 (dock), 2015 (floor). The reader keeps count."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the door. Two people, a pup, a bottle, the lamp. The empty bed. 'Lanes' on the wall. The invitation, framed, beside it. She doesn't look at that one.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "'Lanes' on the wall",
+        "the framed invitation"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio from the doorway at night with a woman and a man on the floor and a small dog, a lamp, a framed watercolor and a framed wedding invitation on the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "She comes home. To the garage, alone. 'I didn't ask if he used it.'"
+}

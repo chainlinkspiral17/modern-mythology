@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-06-22_the_seawall_thursday",
+  "title": "The seawall, Thursday",
+  "strip": "drift_wood",
+  "date": "2000-06-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Summer Hours",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday, seven. The same view. Chloe on the wall already, ten feet down, with her own pad. She's drawing the same view. Badly, on purpose. Wood looks. She turns it so he can't. They draw the town side by side and the strip shows only his.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The town from the seawall, Thursday, clear. CHLOE on the wall with a sketchbook, ten feet down. WOOD arriving with BARNABY and the pad.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman sketching on a seawall in morning light as a young man with a drawing pad and a small dog arrive ten feet away, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her pad, glimpsed: the town, drawn badly on purpose, the sign a scribble. She turns it away.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a sketchbook page with a deliberately crude drawing of a town being turned away from view, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The two of them on the wall, drawing the same view, not talking. The dog between. Thursday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a young woman drawing side by side on a seawall with a small dog between them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Wood's pad: the town, Thursday, and at the left edge a cardigan sleeve and a pencil, cut off by the border. The strip shows only his. Hers is hers.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad showing a town with a cardigan sleeve and pencil cut off at the left edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Thursday: she draws it badly on purpose. The strip shows only his."
+}

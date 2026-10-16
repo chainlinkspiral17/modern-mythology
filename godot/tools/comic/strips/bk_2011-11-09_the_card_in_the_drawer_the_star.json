@@ -1,0 +1,52 @@
+{
+  "id": "bk_2011-11-09_the_card_in_the_drawer_the_star",
+  "title": "THE CARD IN THE DRAWER · The one lit tube",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2011-11-09",
+  "run": 3,
+  "era": "era2",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The second card, November: a figure pouring water under a star. He redraws it as the Lanes' sign at night with every tube dark but one, and the alley's puddle under it taking the one tube's light. The star is the tube. The water is the puddle.",
+  "cast": [],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: a neon sign on a roofline at night with every letter dark but one, which glows, and beneath it a puddle in gravel holding the one letter's light. No numeral, no title; the card's name is the thing.",
+      "characters": [],
+      "props": [
+        "the one lit tube",
+        "the puddle",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it a neon sign on a roofline at night with every letter dark except one glowing letter and a puddle in the gravel beneath holding its light, no words legible",
+        "negative": "",
+        "notes": "XVII, the Star — the Lanes' one tube (the canon lights one in 2025: ro_2025-12-07; this card draws it fourteen years early)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "The star is the tube.",
+  "layout": "a single card"
+}

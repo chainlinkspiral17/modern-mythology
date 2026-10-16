@@ -1,0 +1,129 @@
+{
+  "id": "dw_2001-06-08_postcards_2",
+  "title": "The postcard run, ii",
+  "strip": "drift_wood",
+  "date": "2001-06-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Postcard Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "A postcard with no picture. Just her handwriting on both sides. Wood pins it by the corner so both sides show.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mailbox. WOOD pulling out a card that is blank cardstock, both sides written on. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "reading at the mailbox",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox",
+        "a cardstock postcard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a roadside mailbox reading a plain cardstock postcard written on both sides, a small dog beside him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her handwriting, one side: 'W — No picture this time. I couldn't find one that looked like here. Here doesn't look like anything yet. That's the point of it. — C.'",
+      "characters": [],
+      "props": [
+        "postcard side one"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is a plain postcard covered in tiny handwritten capitals, ink on cardstock",
+        "negative": "",
+        "notes": "Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The other side: a drawing. Hers. A bad, wonderful drawing of a Chicago street with an arrow: ME. And, off the edge, an arrow: YOU, 2,100 MI. She's copied his map.",
+      "characters": [],
+      "props": [
+        "postcard side two: her drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is a crude but charming pen drawing of a city street on cardstock with an arrow labeled ME and another arrow pointing off the edge",
+        "negative": "",
+        "notes": "Her version of his 1999 map (#33). Letter ME and YOU, 2,100 MI after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. Wood pinning it by one corner so it hangs free and both sides can be turned. The only card on the board that shows its writing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning a card by one corner",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "the card hanging free"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a postcard to a corkboard by a single corner so it hangs free among other cards pinned flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "She copies his map back to him. The only postcard he pins writing-out."
+}

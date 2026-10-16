@@ -1,0 +1,102 @@
+{
+  "id": "dw_2013-02-10_sixteen_flyers",
+  "title": "Sunday · sixteen flyers",
+  "strip": "drift_wood",
+  "date": "2013-02-10",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · Sundays · deepening ix)",
+  "logline": "Sixteen. The wall, and this year a small girl of three on her father's shoulders reaching for it with a flyer in her fist, the Sunday's middle tier. She'll be pinning them herself by 2021.",
+  "cast": [
+    "gully_35",
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall with sixteen flyers.",
+      "characters": [],
+      "props": [
+        "sixteen flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with a row of sixteen paper flyers, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a small girl on a stocky man's shoulders reaching toward the wall with a flyer in her fist.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "carrying her",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "three, reaching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl of three on a stocky man's shoulders reaching toward a shingle wall with a paper flyer clutched in her fist, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shoulders"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the sixteenth flyer pinned crooked, high, a small crab drawn in the corner.",
+      "characters": [],
+      "props": [
+        "a crooked flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a paper flyer pinned crooked and high on a shingle wall with a small ink crab in its corner, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Crooked"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Sixteen. Crooked, high. Her first.",
+  "layout": "tiers, portrait page"
+}

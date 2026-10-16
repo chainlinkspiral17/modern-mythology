@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-01-11_the_pot_under_the_leak",
+  "title": "The pot under the leak",
+  "strip": "drift_wood",
+  "date": "2000-01-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The ranch house roof leaks over the hallway. A pot under it. The dog drinks from the pot. The mother's hand empties it. The strip stays in the hallway all day.",
+  "cast": [
+    "barnaby",
+    "extra_mother",
+    "wood_20"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A hallway. A drip from the ceiling drawn as a dotted line. A stockpot on the floor under it. BARNABY looking into the pot.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hallway with a drip falling from the ceiling into a stockpot on the floor, a small dog peering into the pot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog drinking from the pot. Rainwater. The drip landing on his head.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small dog drinking from a stockpot as a drip lands on its head, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A HAND — the MOTHER's, ring, cardigan cuff — lifting the pot away. The dog's face.",
+      "characters": [
+        {
+          "id": "extra_mother",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Not that one, dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman's hand with a ring and a cardigan cuff lifting a stockpot away from a disappointed small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pot back, empty, under the drip. The dog lying beside it, waiting for it to fill. WOOD in the bedroom door with the pad, drawing the wait.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog lying beside an empty stockpot under a ceiling drip while a young man in a doorway draws the scene, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The hallway leak. The mother's hand talks to the dog, not to Arthur."
+}

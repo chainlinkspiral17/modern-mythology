@@ -1,0 +1,133 @@
+{
+  "id": "dw_2016-11-14_dog_night_2016_before",
+  "title": "Dog Night, 2016 · before",
+  "strip": "drift_wood",
+  "date": "2016-11-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2016 · fixture week · deepening xvi)",
+  "logline": "The night before seventeen years: the pup at the alley's mouth stopping on his own, a night early, and looking back at Wood. He's learned the date, or the route, or the smell of the week. The strip doesn't decide which.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The street at night, the Lanes' sign with four letters dark. The PUP stopped at the alley's mouth, WOOD behind with the leash slack.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "stopped at the alley",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "leash slack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog stopped at the mouth of an alley at night beneath a neon sign with several letters dark, a man behind it holding a slack leash, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The pup looking back at Wood.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "looking back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog looking back over its shoulder at a man, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD, checking the date on nothing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Tomorrow. It's tomorrow."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a coat at night speaking to a small dog and glancing at his empty wrist, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup sitting down at the alley's mouth anyway.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting down",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog sitting down stubbornly at the mouth of a dark alley, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "A night early. It's tomorrow."
+}

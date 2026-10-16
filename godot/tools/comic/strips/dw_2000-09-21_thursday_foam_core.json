@@ -1,0 +1,117 @@
+{
+  "id": "dw_2000-09-21_thursday_foam_core",
+  "title": "Thursday, foam core",
+  "strip": "drift_wood",
+  "date": "2000-09-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Seattle, Three Days",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. The shop. Foam core. The owner doesn't ask about Monday or Tuesday; she wasn't in the strip for them. She asks about the diploma from Wednesday. Wood cuts. The strip has never mentioned Seattle and doesn't now.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop's backroom. WOOD cutting foam core. The OWNER in the door with a job ticket.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Wednesday's diploma. Coos Bay. Done?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Done."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting foam core in a frame shop backroom while a woman in reading glasses stands in the doorway holding a job ticket, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The diploma, framed, on the counter. Cream and green.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a framed diploma in a cream and green double mat on a shop counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner looking at Wood a beat longer than the ticket needs.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses looking at a young man a moment longer than necessary, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner going. Wood cutting. The blade, clean. Nothing about Monday. Nothing about Tuesday. The strip has a week it doesn't mention and this is the first day of not mentioning it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting foam core cleanly in a quiet backroom, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Nothing about Monday or Tuesday. The first day of not mentioning it. (dw_2000-09-20: 'They held up.')"
+}

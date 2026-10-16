@@ -1,0 +1,136 @@
+{
+  "id": "dw_2007-06-01_last_bell_2007",
+  "title": "Last Bell, 2007",
+  "strip": "drift_wood",
+  "date": "2007-06-01",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Ten years since his own. The strip draws the three on the steps — the ones from 1998 — as they'd be now, and gets them wrong on purpose.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, the last bell. Kids on the steps. WOOD across the road in the Datsun with BARNABY, drawing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the car, drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "school steps",
+        "kids",
+        "Datsun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a small-town high school at the last bell seen from across the road, a man drawing inside an old Datsun with a dog, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: three figures on the steps, drawn as adults — a man in an overcoat, a woman with a Discman, a man in an apron — sitting where the kids are.",
+      "characters": [],
+      "props": [
+        "pad: three adults on school steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing three adults — a man in an overcoat, a woman with headphones, a man in a fisherman's apron — sitting on high school steps",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at it. Crossing out the overcoat. Drawing it again, smaller.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "crossing out and redrawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man crossing out one figure on a drawing and redrawing it smaller, in a parked car",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The steps, empty now, the kids gone to the beach. The Datsun pulling away. The pad on the seat: three adults on the steps, one small.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving off",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty steps",
+        "pad on the seat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "empty high school steps after the last bell, an old Datsun pulling away with a drawing pad visible on its seat, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The three on the steps, aged, one redrawn small. Two-thirds, six months later, by choice."
+}

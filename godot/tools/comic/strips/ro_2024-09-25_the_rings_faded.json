@@ -1,0 +1,49 @@
+{
+  "id": "ro_2024-09-25_the_rings_faded",
+  "title": "The rings, faded",
+  "strip": "roflcopter",
+  "date": "2024-09-25",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The dock planks ten days after the sequence's rings: the rings almost gone, rain and boots, the bird's prints in the grain if you look. The page looks.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on wet dock planks with two pale rings almost weathered away and tiny bird prints in the wood's grain, rain.",
+      "characters": [],
+      "props": [
+        "the rings, faded"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on wet wooden dock planks with two pale rings almost weathered away and tiny bird prints in the grain, rain, no words",
+        "negative": "",
+        "notes": "Compare ro_2024-09-15 and ro_2024-09-22."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The page looks.",
+  "layout": "single page, no borders"
+}

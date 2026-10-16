@@ -1,0 +1,178 @@
+{
+  "id": "dw_1997-10-10_assembly",
+  "title": "Drift Wood #3 · the assembly",
+  "strip": "drift_wood",
+  "date": "1997-10-10",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Cafeteria",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Three hundred people, one direction, a man with a microphone and a plan for their futures.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17",
+    "extra_principal"
+  ],
+  "location": "dw_gym",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The gym. Bleachers. Three hundred students facing one direction. A PRINCIPAL at a microphone under a banner: YOUR FUTURE STARTS NOW. WOOD, CHLOE and GULLY in the top row.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "top bleacher, arms crossed",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "beside him, paperback open",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "beside her, cap backwards, drawing on his knee",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bleachers",
+        "banner",
+        "microphone"
+      ],
+      "balloons": [
+        {
+          "who": "PRINCIPAL",
+          "text": "...and every one of you has a future in this county."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a high school gym assembly from the top of the bleachers, hundreds of students facing a principal at a microphone under a banner, three teenagers in the top row: a boy in an overcoat, a girl reading, a boy in a backwards cap drawing on his knee",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, to Chloe, not lowering his voice enough.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "leaning toward Chloe",
+          "expression": "conspiratorial"
+        },
+        {
+          "id": "chloe_17",
+          "pose": "not looking up from the book",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He said county. Not world. Not state. He looked at three hundred people and said county."
+        },
+        {
+          "who": "CHLOE",
+          "text": "He's the principal, Wood. He's also in the county."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close two-shot on a bleacher, a teenage boy leaning to whisper too loudly to a girl who keeps reading her paperback",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully holds up his knee-drawing: the principal as a seagull with a microphone. Surprisingly good.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "holding up a drawing on notebook paper",
+          "expression": "pleased"
+        }
+      ],
+      "props": [
+        "a drawing of a seagull at a microphone"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Look. He's a gull."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in a backwards cap holding up a notebook-paper drawing of a seagull at a microphone, grinning, bleachers behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood looking at the drawing. Then at Gully. Something adjusting.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "looking at the drawing, then at Gully",
+          "expression": "reassessing"
+        },
+        {
+          "id": "gully_17",
+          "pose": "already drawing the next one",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...That's actually—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat looking with surprise at a drawing held by a boy in a backwards cap who is already drawing the next one, gym assembly below",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The first time Wood notices Gully can draw. The strip pretends it isn't a big deal.",
+  "layout": "2x2"
+}

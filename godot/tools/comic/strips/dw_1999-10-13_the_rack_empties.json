@@ -1,0 +1,122 @@
+{
+  "id": "dw_1999-10-13_the_rack_empties",
+  "title": "The rack empties",
+  "strip": "drift_wood",
+  "date": "1999-10-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday. Wood stops at the laundromat on the way home. The rack is empty. Forty copies. He stands there. The owner says a church group came through.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat, afternoon. The rack by the door: empty. WOOD in front of it with his hands in his coat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing before an empty wire flyer rack in a laundromat, hands in his coat pockets, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The rack. The real-estate flyer still there. The church bulletin still there. The digest's slot empty.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a wire rack holding a real-estate flyer and a church bulletin with one slot empty, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The LAUNDRY owner at the dryers.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Church group. Bus from Waldport."
+        },
+        {
+          "who": "WOOD",
+          "text": "They took forty?"
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "They take everything. It's free."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner unloading a dryer, speaking over her shoulder, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood at the door, looking at the rack. The strip has readers in Waldport who don't know it. He doesn't draw them. He can't.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing in a laundromat doorway looking back at an empty flyer rack, dryers turning, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Forty, to a church bus. Readers he'll never draw."
+}

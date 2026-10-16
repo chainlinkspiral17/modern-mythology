@@ -1,0 +1,136 @@
+{
+  "id": "dw_2013-11-15_dog_night_2013",
+  "title": "The Dog Night, 2013",
+  "strip": "drift_wood",
+  "date": "2013-11-15",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Fourteen years. He doesn't set the dog down. He holds him the whole time. The dog looks at the dumpster from his arms.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster, bulb, night, exact. WOOD standing, holding BARNABY. Not setting him down.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in his arms",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man standing behind a bowling alley at night holding an old dog in his arms before a rusted dumpster under a bulb, not setting him down, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog, from Wood's arms, looking at the dumpster. Fourteen. The eyes mostly cloud.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a very old dog with clouded eyes looking calmly at something from a man's arms, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood's chin on the dog's head.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "chin on the dog's head",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with his chin resting on the head of the old dog he holds, bulb light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign. Three letters dark now. He walks under it with the dog and doesn't look up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking, not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon with three letters dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog beneath a bowling-alley neon sign with three letters gone dark, not looking up, night, clean ink with one spot tone, no words",
+        "negative": "",
+        "notes": "Three dark. The last Dog Night with Barnaby."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The last Dog Night with Barnaby. Held the whole time. Three letters dark."
+}

@@ -1,0 +1,99 @@
+{
+  "id": "bk_2010-01-10_the_long_way_back_0_the_town",
+  "title": "THE LONG WAY BACK · 0 · The town",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-01-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop zero: Small Wood from the road out, the Datsun's hood, the dog. In the nightstand of the first motel, a card: a young man at a cliff's edge with a dog at his heel, drawn in the strip's own line. The traveler doesn't recognize himself. The reader does. Twenty-two stops; the book takes eight.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: 101 south out of town at dawn, the Datsun's hood in the foreground, the town small in the mirror.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mirror"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway at dawn from behind a pickup's hood with a small town in the side mirror, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a motel room's nightstand drawer open: a Gideon, a pen, and a single card face up.",
+      "characters": [],
+      "props": [
+        "the drawer",
+        "a card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel nightstand drawer open with a small bible, a pen and a single illustrated card face up, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card, close: a young man at a cliff's edge with a small dog at his heel, drawn in a scratchy pen line the reader knows.",
+      "characters": [],
+      "props": [
+        "the Fool, in the strip's line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a young man at a cliff's edge with a small dog at his heel drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "0. The Fool (Vol 5: John Frank; here the strip's own line). He doesn't recognize himself.",
+  "layout": "tiers, portrait page"
+}

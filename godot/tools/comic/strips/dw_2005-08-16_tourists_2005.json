@@ -1,0 +1,189 @@
+{
+  "id": "dw_2005-08-16_tourists_2005",
+  "title": "Tourist Season, 2005",
+  "strip": "drift_wood",
+  "date": "2005-08-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "A tourist recognizes the strip from the internet. In person. In Gully's. The first time.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool, pad out. A TOURIST at the counter looking from the corkboard rough to Wood to the corkboard.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "looking back and forth",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "stool"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Wait. Are you — is this — the dog one? Online?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small bait-and-espresso shop where a tourist at the counter looks back and forth between a pencil sketch on the corkboard and the young man drawing on the end stool, a small dog beneath him, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, pen stopped.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pen stopped",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...The dog one."
+        },
+        {
+          "who": "TOURIST",
+          "text": "The dog one! From Boise! My brother sends me the dog one!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man with his pen stopped mid-line, stunned",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourist crouching to BARNABY. Barnaby, who has been recognized on the internet, accepting it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "crouched to the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "accepting it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "It's him! It's actually him!"
+        },
+        {
+          "who": "GULLY",
+          "text": "Regular.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist crouched down in delight to a small scruffy dog who accepts the attention with dignity, a man behind the counter unimpressed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "After. Wood on the stool. Gully wiping the counter. The dog asleep. Nobody says anything for a whole panel. Then Gully.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "wiping the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Boise."
+        },
+        {
+          "who": "WOOD",
+          "text": "Boise."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a quiet shop after a customer leaves, a young man on a stool, another wiping the counter, a dog asleep, one word exchanged",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "First in-person recognition. The dog gets it, not Wood. Correct."
+}

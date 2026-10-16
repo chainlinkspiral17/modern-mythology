@@ -1,0 +1,191 @@
+{
+  "id": "dw_2011-08-11_motel_application_4",
+  "title": "The motel application, iv",
+  "strip": "drift_wood",
+  "date": "2011-08-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Motel Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Motel Application · deepening)",
+  "logline": "Thursday. Gully's. The news. Gully says 'nights' the way he says 'hm' under a hood. Maria says it's fine. The baby says nothing. The dog will have to sleep alone.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "extra_gully_kid",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool. GULLY. MARIA with the baby, one, on her hip. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "baby on hip",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "a baby",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Monday. Eleven to seven."
+        },
+        {
+          "who": "GULLY",
+          "text": "Nights."
+        },
+        {
+          "who": "MARIA",
+          "text": "It's fine, Gully. It's a job."
+        },
+        {
+          "who": "GULLY",
+          "text": "I said nights."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man on a bait-shop stool, a stocky man in an apron, a practical woman with a baby on her hip, an old dog beneath the stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's face doing the thing it does under a hood.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Hm."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a stocky man's face making a small doubtful sound",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Maria, handing the baby to Gully and taking Wood's cup to refill it. The head-shake. Not at Wood.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "refilling, the head-shake at Gully",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "holding the baby",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "Who's got the dog?"
+        },
+        {
+          "who": "WOOD",
+          "text": "...The dog's got the dog."
+        },
+        {
+          "who": "MARIA",
+          "text": "We've got the dog. Nights. He'll sleep by the register."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a practical woman refilling a coffee while handing a baby to a man in an apron, giving him a small head-shake",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog, under the stool, looking up at all of them deciding his nights. The baby looking at the dog.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "looking at the dog",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, an old dog under a stool looking up at the people above it while a baby looks down at the dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'We've got the dog. Nights.' Maria arranges it."
+}

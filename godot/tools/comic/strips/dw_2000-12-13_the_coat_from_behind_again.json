@@ -1,0 +1,126 @@
+{
+  "id": "dw_2000-12-13_the_coat_from_behind_again",
+  "title": "From behind, again",
+  "strip": "drift_wood",
+  "date": "2000-12-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday. Newport. The instructor sees the coat from behind in the hall and knows it. She says his name to the back of it. He turns. She says she just wanted to see if it worked. It works. Three strokes.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A college hallway. WOOD from behind in the coat, walking away. The INSTRUCTOR behind him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Mr. Finch."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a canvas chore coat seen from behind walking down a college hallway, an instructor behind him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood turning. The coat's front. His face.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat turning around in a hallway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The instructor.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Wanted to see if it worked."
+        },
+        {
+          "who": "WOOD",
+          "text": "If what—"
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "The back. It does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor, dry, satisfied, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking on. From behind. The instructor watching the back of the coat. Three strokes: a coat, a hall, a woman.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a coat from behind walking down a hallway while a woman watches, drawn in three strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'The back. It does.' Three strokes."
+}

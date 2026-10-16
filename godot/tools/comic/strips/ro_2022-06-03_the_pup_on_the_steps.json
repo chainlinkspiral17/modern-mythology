@@ -1,0 +1,69 @@
+{
+  "id": "ro_2022-06-03_the_pup_on_the_steps",
+  "title": "The pup on the steps",
+  "strip": "roflcopter",
+  "date": "2022-06-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "Last Bell, and the pup has crossed the road on his own and is sitting on the school's bottom step among the legs, looking back across at whoever is holding the empty leash. The page stays on the far side with the leash.",
+  "cast": [
+    "barnaby_ii",
+    "wood_44",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From the far sidewalk: the school steps at the last bell, students pouring past, and on the bottom step, sitting among their legs, the small three-legged dog looking back across the road. In the foreground at the page's edge, a hand holding an empty leash.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on the bottom step",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a hand with an empty leash",
+          "expression": ""
+        },
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "an empty leash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from across a road, a high school's front steps at the last bell with students pouring past and a small three-legged dog sitting on the bottom step looking back across the road, a man's hand holding an empty leash at the page's near edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The pup crosses. The page doesn't.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,97 @@
+{
+  "id": "bk_2016-11-13_cedar_the_glow_explained_wrong_ii",
+  "title": "CEDAR · The glow, explained wrong · II",
+  "strip": "backup",
+  "series": "CEDAR",
+  "date": "2016-11-13",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the novel of the timber country · never past the corner box · Box 14",
+  "arc": "CEDAR",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The second explanation: the librarian says it's a lamp. Somebody lives up there and reads. The page draws a cabin with one window and a green lamp in it the size of the ridge, and a shelf of books whose spines are the town's names. Certain. Wrong. Warmer than the first.",
+  "cast": [
+    "extra_librarian"
+  ],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a librarian at a desk with a green lamp, saying it without looking up.",
+      "characters": [
+        {
+          "id": "extra_librarian",
+          "pose": "not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the green lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a librarian at a desk under a green-shaded lamp speaking without looking up from a book, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the ridge with a cabin on it and one window lit, the window the size of the whole glow.",
+      "characters": [],
+      "props": [
+        "the cabin's window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge at night with a small cabin whose single lit window is as large as the glow above the trees, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: inside the window: a shelf of books, the spines lettered with the names of the town's streets and boats, drawn as shapes.",
+      "characters": [],
+      "props": [
+        "the shelf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shelf of books in lamplight with lettering on the spines drawn as shapes, wet-on-wet watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "cedar red, moss, fog, the glow's ochre bleeding in",
+    "paper": "Arches; the twelve Cedar Sundays' paper, used again"
+  },
+  "notes": "II: a lamp; somebody reads. Warmer. Wrong.",
+  "layout": "tiers, portrait page"
+}

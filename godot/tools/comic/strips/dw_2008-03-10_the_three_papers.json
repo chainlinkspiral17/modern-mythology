@@ -1,0 +1,154 @@
+{
+  "id": "dw_2008-03-10_the_three_papers",
+  "title": "The three papers",
+  "strip": "drift_wood",
+  "date": "2008-03-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Newsprint",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newsprint · deepening)",
+  "logline": "Monday. Three coastal weeklies, three towns, the same strip a week behind. Wood lays them out on the counter like the 2001 frame-shop customers' things. Three towns have him on the wall now.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. Three weeklies on the counter: Newport, Florence, Waldport. The same strip in each. WOOD arranging them. GULLY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "arranging three papers",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three weeklies"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, three small-town newspapers laid side by side on a bait-shop counter each showing the same comic strip, a thin man arranging them",
+        "negative": "",
+        "notes": "Mastheads: reserved; draw three different small-town mastheads, unreadable."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The same strip, three times. One printed darker. One cropped a hair. One with the gull cut off.",
+      "characters": [],
+      "props": [
+        "three printings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of the same comic strip printed three times in three papers with small differences in darkness and cropping",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to Gully, about the gull.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Florence cut the gull."
+        },
+        {
+          "who": "GULLY",
+          "text": "Florence cut the gull."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's the — it's the signature, Gully. That's the whole —"
+        },
+        {
+          "who": "GULLY",
+          "text": "Write them."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man pointing at a cropped corner of a newspaper strip to a man in an apron",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood writing a letter to Florence. Four lines. The gull at the bottom, drawn large, so they'll know.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "writing a letter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a letter with a large gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man writing a short letter with an unusually large gull mark drawn at its bottom",
+        "negative": "",
+        "notes": "Letter after: the letter's text reserved; the gull large."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Florence cut the gull. A letter with a large one."
+}

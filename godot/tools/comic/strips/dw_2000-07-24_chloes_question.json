@@ -1,0 +1,132 @@
+{
+  "id": "dw_2000-07-24_chloes_question",
+  "title": "Chloe's question",
+  "strip": "drift_wood",
+  "date": "2000-07-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Late July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The seawall. Chloe asks the question she's been carrying since June: is he going in September. To Portland. He says the deadline's in October. She says that's not what she asked. He says he knows what she asked. The dog looks from one to the other and lies down.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The seawall, evening. CHLOE, the book closed for once. WOOD, the pad closed. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "September. Are you going."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman with a closed paperback and a young man with a closed drawing pad sitting on a seawall at evening, a small dog between them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Deadline's October."
+        },
+        {
+          "who": "CHLOE",
+          "text": "That's not what I asked."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know what you asked."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man looking at the bay, not the person beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The dog looking from one to the other. Lying down.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog looking from one person to another on a seawall and then lying down, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The seawall. The two of them. The closed book, the closed pad. The bay doing nothing. The strip has drawn this bay two hundred times and never as this.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a young woman sitting apart on a seawall at dusk with a small dog lying between them, a flat bay beyond, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I know what you asked.' The closed book, the closed pad."
+}

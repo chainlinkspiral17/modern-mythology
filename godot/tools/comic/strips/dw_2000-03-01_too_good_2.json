@@ -1,0 +1,165 @@
+{
+  "id": "dw_2000-03-01_too_good_2",
+  "title": "Too good for it, ii",
+  "strip": "drift_wood",
+  "date": "2000-03-01",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Too Good For It",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Chloe calls. Long distance. Two minutes. The strip gives her the panel she asks for.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The hallway phone. WOOD sitting on the floor with it, cord stretched from the wall. BARNABY in the bedroom door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "on the floor with the phone",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "landline, cord stretched"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's a partial. It's insulting, actually."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting on a hallway floor with a landline phone, the cord stretched taut from the wall, a dog in a bedroom doorway, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The receiver. Her voice drawn as a jagged balloon with no face.",
+      "characters": [],
+      "props": [
+        "receiver"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "(phone)",
+          "kind": "sfx"
+        },
+        {
+          "who": "CHLOE",
+          "text": "Partial is yes, Wood. Partial is a yes with a job attached."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a telephone receiver held to a young man's ear, a jagged speech balloon coming from the earpiece",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, winding the cord around his finger.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cord around his finger",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I have a job. I'm auditing Composition II."
+        },
+        {
+          "who": "CHLOE",
+          "text": "(phone) That's not a job, that's a parking lot."
+        },
+        {
+          "who": "WOOD",
+          "text": "Lot C."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on the floor winding a phone cord tightly around one finger",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, the receiver down on the floor beside him, dial tone drawn as a flat line. Barnaby has come to sit on his foot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "receiver on the floor beside him",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "receiver, dial tone line"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "(phone, small) Two minutes. I'm out of quarters. Go.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting on a hallway floor with the phone receiver set down beside him emitting a flat dial-tone line, a small dog sitting on his foot, no words",
+        "negative": "",
+        "notes": "Her last line arrives as the call ends. Order it so the dial tone follows it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

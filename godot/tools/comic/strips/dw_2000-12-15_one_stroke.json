@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-12-15_one_stroke",
+  "title": "One stroke",
+  "strip": "drift_wood",
+  "date": "2000-12-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is one stroke. A single line, brush, that is the coat from behind if you know the coat. The owner looks at it. Says it's him. Wood says it's one line. She says she'd know that line anywhere. The strip's fastest drawing is its most recognized. It puts the pen down.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: one brush stroke on white. A coat from behind, if you know the coat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover that is a single brush stroke on white suggesting a figure in a coat from behind, black and white, no words",
+        "negative": "",
+        "notes": "One stroke. The Chore Coat arc's last; Dec 8 (the beach) sits inside it."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD in the coat. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "That's you."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's one line."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "I'd know that line anywhere."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet with a single stroke on its cover and speaking to a young man in a chore coat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner setting it at the front. The one stroke facing the room.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner placing a booklet with a single stroke on its cover at the front of a wire rack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood at the door. The pen in the ink pocket. He puts it down — the strip does, for the week. The fastest drawing is the most known. Winter, alone, faster: done.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat in a laundromat doorway with a small dog, his hand leaving a pen in his pocket, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "One stroke. 'I'd know that line anywhere.' The arc's end."
+}

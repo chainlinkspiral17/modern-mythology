@@ -1,0 +1,49 @@
+{
+  "id": "ro_2021-09-22_the_digests_bin_gone",
+  "title": "The digest's bin, gone",
+  "strip": "roflcopter",
+  "date": "2021-09-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The laundromat's wall where the digest's rack hung 1999–2003, in 2021, the screw holes still there, four, and the page drawing the four holes. The strip's first venue as four holes in a wall.",
+  "cast": [],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A laundromat's painted wall with four old screw holes in a rectangle where a rack hung, a dryer's edge, a folding table.",
+      "characters": [],
+      "props": [
+        "four screw holes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a laundromat's painted wall with four old screw holes in a rectangle where a rack once hung, the edge of a dryer and a folding table, no people, no words",
+        "negative": "",
+        "notes": "The rack (dw_2003-05-23)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Four holes in a wall.",
+  "layout": "single page, no borders"
+}

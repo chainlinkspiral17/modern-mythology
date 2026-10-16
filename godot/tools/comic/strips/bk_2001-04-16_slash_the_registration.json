@@ -1,0 +1,82 @@
+{
+  "id": "bk_2001-04-16_slash_the_registration",
+  "title": "SLASH · The registration",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-04-16",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The photograph's back: a boat's registration number and a home port the framer has never heard of — GRAUSTARK, LA — in a hand that isn't the woman's. He measures the back as told and copies the number onto his cuff.",
+  "cast": [
+    "extra_framer"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "Top two-thirds: the photograph's back filling the panel — a boat's registration number and a home port, GRAUSTARK, LA, in a pen hand that isn't the woman's; the paper's grain; a thumbprint of ink at one corner.",
+      "characters": [],
+      "props": [
+        "the photograph's back",
+        "a registration number",
+        "GRAUSTARK, LA"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, stark black spotting, the back of a photograph filling the frame with a boat registration number and a port name written in pen in an unfamiliar hand and an ink thumbprint at one corner, the paper's grain drawn",
+        "negative": "",
+        "notes": "The port: Graustark (Vol 8's river town) as an address on the back of a photo. The page draws it as pen strokes; only the port name is lettered."
+      },
+      "stage": null,
+      "lettering": [
+        "GRAUSTARK, LA"
+      ]
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Bottom third: the FRAMER's shirt cuff with the number copied onto it in ballpoint, the mat cutter's blade beside his wrist, the counter's edge.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "cuff on the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the cuff with the number",
+        "the mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, a man's shirt cuff on a counter with a number copied onto it in ballpoint strokes and a mat cutter's blade lying beside his wrist",
+        "negative": "",
+        "notes": "He measures the back as told. The number on the cuff is strokes, not digits."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "A port he's never heard of.",
+  "layout": "two panels, top two-thirds and bottom third"
+}

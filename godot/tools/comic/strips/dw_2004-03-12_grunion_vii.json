@@ -1,0 +1,173 @@
+{
+  "id": "dw_2004-03-12_grunion_vii",
+  "title": "The Grunion Run, vii",
+  "strip": "drift_wood",
+  "date": "2004-03-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Seventh year. The first Grunion Run online. The chorus wants to know what a grunion is. Wood draws them one.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY's coffee line. WOOD with the pad. BARNABY in the surf. At the back of the panel, on the sand, four STICK FIGURES holding a sign: WHAT IS A GRUNION.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "surf",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "four with a sign",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "sign: WHAT IS A GRUNION",
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a man pouring coffee for a line, another with a drawing pad, a dog in the surf, and four small stick figures at the back of the panel holding a crude sign, muddy watercolor and ink",
+        "negative": "",
+        "notes": "Sign: WHAT IS A GRUNION. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood drawing one on the pad for them: a small silver fish, perfect, in three strokes.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing a fish",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: a fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand drawing a small silver fish in three confident strokes on a pad, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The stick figures looking at the drawing. Then at the actual surf, alive with them.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "looking from pad to surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "surf with fish"
+      ],
+      "balloons": [
+        {
+          "who": "STICK",
+          "text": "oh"
+        },
+        {
+          "who": "STICK 2",
+          "text": "its a lot of them"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "four small stick figures looking from a drawing pad toward a surf line flashing with hundreds of silver fish",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. The stick figures, for once, not typing. Wood, pad closed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pad closed",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "still, watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with silver fish under lanterns, a man with a closed pad, four stick figures standing still and watching, a dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The chorus sees the run. 'oh.'"
+}

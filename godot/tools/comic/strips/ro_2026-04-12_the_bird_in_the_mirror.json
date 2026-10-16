@@ -1,0 +1,61 @@
+{
+  "id": "ro_2026-04-12_the_bird_in_the_mirror",
+  "title": "The bird in the mirror",
+  "strip": "roflcopter",
+  "date": "2026-04-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The Legacy's rear-view mirror with the road going away in it and the bird on the mirror's housing, and at the glass's edge the sliver of an eye — 2021's page, five years on, with the bird added and nothing else changed.",
+  "cast": [
+    "the_bird",
+    "wood_44"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a station wagon's rear-view mirror: the coastal road receding in it, the small rainbow bird perched on the mirror's housing, and at the glass's edge a sliver of a graying man's face, one eye.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the mirror",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a sliver in the mirror",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a car's rear-view mirror showing a coastal road receding with a small rainbow bird perched on the mirror's housing and a sliver of a graying man's face at the glass's edge, one eye, no words",
+        "negative": "",
+        "notes": "Compare ro_2021-07-25."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "2021's page with the bird added.",
+  "layout": "single page, no borders"
+}

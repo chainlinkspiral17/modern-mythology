@@ -1,0 +1,167 @@
+{
+  "id": "dw_1999-09-28_lot_c_zero",
+  "title": "Lot C, before",
+  "strip": "drift_wood",
+  "date": "1999-09-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "The first time anyone asks if he's a student. He hasn't got the line yet.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The college lot, rain. The Datsun in the wrong lot. WOOD drawing on the wheel. A SECURITY GUARD approaching.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing in the car",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "approaching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Datsun",
+        "LOT C sign",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy community college parking lot, an old Datsun under a LOT C sign, a young man drawing inside, a security guard approaching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The tap on the glass.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "tapping the window",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "SECURITY",
+          "text": "You a student?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard tapping on a car window in the rain, a young man inside looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, without the line yet.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Sort of."
+        },
+        {
+          "who": "SECURITY",
+          "text": "Lot C's for students."
+        },
+        {
+          "who": "WOOD",
+          "text": "Sort of."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man through a car window answering uncertainly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guard walking away. Wood, to the pad.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "walking off",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "LOT C"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Next time I'll have something.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard walking away across a wet parking lot, a Datsun unmoved, a young man inside writing something down",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "Two years before 'Lot C is for cowards.' He's working on the line."
+}

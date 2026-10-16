@@ -1,0 +1,168 @@
+{
+  "id": "dw_2002-03-15_grunion_v",
+  "title": "The Grunion Run, v",
+  "strip": "drift_wood",
+  "date": "2002-03-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Fifth year. Gully's back. The buckets. Wood draws the two of them from behind — the first time he draws himself from behind.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY with buckets, back in it. WOOD. BARNABY in the surf.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "buckets, grinning",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "buckets",
+        "fish"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Missed one. Won't again."
+        },
+        {
+          "who": "WOOD",
+          "text": "I filled yours."
+        },
+        {
+          "who": "GULLY",
+          "text": "I know. It was on the porch. Quarter full."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns and silver fish, a young man in a backwards cap with buckets grinning, another with a drawing pad, a small dog in the surf, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "They were all leaving. It's harder than it looks."
+        },
+        {
+          "who": "GULLY",
+          "text": "Everything is."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man with a drawing pad admitting something, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the two of them from behind, at the surf line, drawn as if by a third person. The first time Wood draws himself from the back.",
+      "characters": [],
+      "props": [
+        "pad: two figures from behind at the surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing two young men from behind at a night surf line, a small dog between them, as if drawn by someone standing behind them",
+        "negative": "",
+        "notes": "The first from-behind self-drawing. It returns in the ROFLCOPTER pages."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The surf. The fish. The two backs. The dog. The lanterns.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night panel of two young men seen from behind at a surf line flashing with silver fish under lanterns, a small dog at their feet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

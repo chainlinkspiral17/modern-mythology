@@ -1,0 +1,167 @@
+{
+  "id": "dw_2006-10-23_the_argument",
+  "title": "The argument",
+  "strip": "drift_wood",
+  "date": "2006-10-23",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Message Boards",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Message Boards · deepening)",
+  "logline": "Monday. Wood argues with the chorus about SLASH, which they haven't read. He wins the argument. Nobody reads SLASH. The strip draws the win as a small flag and the loss as the counter.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, 2 AM. WOOD typing hard. The chorus, twelve, arms folded. BARNABY asleep.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "typing hard",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "twelve, arms folded",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's an ALLEGORY. The faller is — the ridge is — you'd know if you'd READ —"
+        },
+        {
+          "who": "STICK",
+          "text": "we cant read it its not up"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man typing furiously at 2 AM while twelve stick figures stand with folded arms behind him, a small dog asleep",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, stopped. The stick figure's point landing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "stopped",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...It's not up."
+        },
+        {
+          "who": "STICK",
+          "text": "put it up"
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not finished."
+        },
+        {
+          "who": "STICK",
+          "text": "then its not up"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man stopped mid-typing as a stick figure's flat point lands",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "A tiny flag on the pad, drawn by Wood: WON. Beside it, the CRT's counter for the serious page: 0.",
+      "characters": [],
+      "props": [
+        "a tiny flag: WON",
+        "the counter: 0"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a tiny hand-drawn flag reading WON beside a screen counter reading zero",
+        "negative": "",
+        "notes": "Letter after: WON · 0."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood asleep on the keyboard. The chorus dispersing. One stick figure covering him with a blanket the size of a stamp. The dog watching that.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "asleep on the keyboard",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one with a tiny blanket",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a stamp-sized blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man asleep on his keyboard while a stick figure lays a tiny blanket over his shoulder and a small dog watches, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Won the argument; 0 readers. The stamp-sized blanket."
+}

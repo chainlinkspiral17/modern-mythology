@@ -1,0 +1,145 @@
+{
+  "id": "dw_2001-01-12_the_rain_2001",
+  "title": "The Rain, 2001",
+  "strip": "drift_wood",
+  "date": "2001-01-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Fourth January. The rain, the dog, the frame shop's rain alley. Silent again. On purpose now.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The rain alley behind the frame shop. The spackle buckets. Rain in sheets. WOOD in the doorway with BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the doorway",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at his feet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spackle buckets",
+        "alley",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow alley behind a shop in sheeting rain, two upturned spackle buckets, a young man and a small dog in the doorway, dense hatching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Same, the dog has gone out into it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "in the rain",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "doorway",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same alley, the small dog out in the rain, the young man still in the doorway, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "Same, Wood on a bucket in the rain. The dog on the other.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "on a bucket, in the rain",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the other bucket",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same alley, the young man sitting on one spackle bucket in the rain and the dog sitting on the other, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Same. Rain. Held.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same alley, the same two figures on buckets in rain, held, black and white, no words",
+        "negative": "",
+        "notes": "The Rain fixture is silent from here on. Four identical framings; the change is who's in the rain."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

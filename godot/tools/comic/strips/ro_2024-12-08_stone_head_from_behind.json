@@ -1,0 +1,59 @@
+{
+  "id": "ro_2024-12-08_stone_head_from_behind",
+  "title": "The stone head, from behind",
+  "strip": "roflcopter",
+  "date": "2024-12-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The carved face from the back: the rough uncut stone, moss, a date chiseled and unreadable, the shingle wall it leans toward. The monument nobody remembers, from the side that never had a face.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The back of a carved stone head, waist-high, half sunk in wet grass by a shingle wall: uncut rough stone, moss in the tool marks, a chiseled line of numerals rubbed to nothing but a shape. The pup sniffing the base. Beyond, the wall, and the roofline of the town.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sniffing the base",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stone, from behind",
+        "the unreadable date",
+        "the shingle wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, the back of a moss-grown carved stone head half sunk in wet grass beside a shingle wall, rough uncut stone with tool marks and an unreadable chiseled date, a small three-legged dog sniffing its base, a small town's rooflines beyond, no words",
+        "negative": "",
+        "notes": "The date is reserved: draw it as an eroded shape."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "From behind. The date gone.",
+  "layout": "single page, no borders"
+}

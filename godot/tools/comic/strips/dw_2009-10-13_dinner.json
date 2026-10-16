@@ -1,0 +1,166 @@
+{
+  "id": "dw_2009-10-13_dinner",
+  "title": "Dinner",
+  "strip": "drift_wood",
+  "date": "2009-10-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ranch House",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Ranch House · deepening)",
+  "logline": "Tuesday. Dinner at the ranch house. A table with three chairs and a fourth brought from the porch. The strip draws the fourth chair and Wood in it and is very quiet about how it feels.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The ranch house kitchen. A table. Three matching chairs. A fourth, a folding one, from the porch. WOOD in it. GULLY, MARIA. BARNABY under the table.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the folding chair",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a folding chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a kitchen table with three matching chairs and a folding porch chair, a thin man in the folding one, a stocky man and a practical woman, a dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The folding chair's leg. On the linoleum. Steady enough.",
+      "characters": [],
+      "props": [
+        "the folding chair's leg"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a folding chair's leg on a kitchen's linoleum floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chowder. Gully's uncle's. Maria's bread. Wood eating. Nobody talking. The good kind.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "eating",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "eating",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chowder",
+        "bread"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, three people eating chowder and bread at a kitchen table in comfortable silence, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The kitchen from the door. The table. The three chairs and the fourth. The dog under it with a crust. The strip stays in the doorway.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "with a crust",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the fourth chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small kitchen seen from its doorway with three people at a table and a folding chair among the matching ones, a dog under the table with a crust, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Wordless. The fourth chair, from the porch."
+}

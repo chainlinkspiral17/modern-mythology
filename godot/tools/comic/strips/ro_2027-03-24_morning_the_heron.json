@@ -1,0 +1,57 @@
+{
+  "id": "ro_2027-03-24_morning_the_heron",
+  "title": "Morning, the heron",
+  "strip": "roflcopter",
+  "date": "2027-03-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "A heron at the channel's edge, one of the mornings, and the pup not moving toward it, twelve now, sitting. The two of them at the same distance from the water. Light from nowhere.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A great blue heron standing at a channel's edge on the flats, an old three-legged dog sitting at the same distance from the water on the other side, mist, the light from inside it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting, not moving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a heron"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a great blue heron standing at a tidal channel's edge and an old three-legged dog sitting at the same distance from the water on the other side, mist with light inside it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Neither moves.",
+  "layout": "single page, no borders"
+}

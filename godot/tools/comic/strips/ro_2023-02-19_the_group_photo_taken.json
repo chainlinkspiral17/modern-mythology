@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-02-19_the_group_photo_taken",
+  "title": "The group photo, taken",
+  "strip": "roflcopter",
+  "date": "2023-02-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The loading dock from behind the photographer: forty men arranging themselves under the stack, the second row's uncle with his hands in his jacket, a boy at the edge being waved in, the camera on its tripod. The photo the sequence opened with, being made.",
+  "cast": [
+    "extra_uncle"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From behind a photographer at a tripod camera: forty men on a mill's loading dock arranging themselves in rows under the stack, a broad man in the second row with his hands in his jacket, a boy at the edge being waved in by an arm.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "second row, hands in his jacket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tripod camera"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, seen from behind a photographer at a tripod camera, forty men on a mill loading dock arranging themselves in rows beneath a brick stack, a broad man in the second row with his hands in his jacket and a boy at the edge being waved in, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-11-13 (the photo)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The photo, being made.",
+  "layout": "single page, no borders"
+}

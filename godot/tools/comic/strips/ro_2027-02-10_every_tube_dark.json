@@ -1,0 +1,63 @@
+{
+  "id": "ro_2027-02-10_every_tube_dark",
+  "title": "Every tube dark",
+  "strip": "roflcopter",
+  "date": "2027-02-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The Lanes' sign at night with every tube dark, the L's fix of 2025 gone too. The alley, the dumpster, the pup at twelve and the man from behind, and the sign a shape only. The letter-deaths table's last row.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bowling alley's neon sign at night with every tube dark, a black shape against a dark sky, a man in plaid from behind and an old three-legged dog in the alley below.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, all dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bowling alley's neon sign at night with every tube dark as a black shape against the sky, a man in plaid flannel seen from behind and an old three-legged dog in the alley beneath it, no words",
+        "negative": "",
+        "notes": "Objects.md · the sign: add 2027, all dark."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The table's last row.",
+  "layout": "single page, no borders"
+}

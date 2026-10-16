@@ -1,0 +1,107 @@
+{
+  "id": "dw_1999-10-14_a_note_in_the_rack",
+  "title": "A note in the rack",
+  "strip": "drift_wood",
+  "date": "1999-10-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. A note in the rack, folded, addressed to nobody: 'More of the boy at the counter.' There is no boy at the counter. Wood realizes the reader means Gully.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. WOOD refilling the rack with the week's leftover copies. A folded note in the slot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man refilling a wire rack with photocopied booklets and finding a folded note in the slot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The note, open: a line in a careful old hand. 'More of the boy at the counter.'",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a folded note in careful old-fashioned handwriting held in a young man's fingers, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 'More of the boy at the counter.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "There's no boy at the — "
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face working something out, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood putting the note in his coat pocket, next to the misfold. Outside the window, small: the road to the boat launch.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man tucking a note into his coat pocket in a laundromat, a road to a boat launch visible through the window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first request. It's for Gully. The note goes in the pocket with the misfold."
+}

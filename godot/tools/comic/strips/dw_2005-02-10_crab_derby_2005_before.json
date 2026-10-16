@@ -1,0 +1,154 @@
+{
+  "id": "dw_2005-02-10_crab_derby_2005_before",
+  "title": "Crab Derby, 2005 · before",
+  "strip": "drift_wood",
+  "date": "2005-02-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "The day before the twenty-first: a neighbor's toddler at the shack with a crayon, and the flyer on the counter half done. Gully holds the kid; the kid holds the crayon; the crayon reaches. Wood sees the collaboration coming and lets it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. WOOD at the counter with the flyer half drawn. GULLY with a neighbor's toddler on his hip. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing the flyer",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "toddler on his hip",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flyer, half done",
+        "a crayon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man drawing a flyer at a bait-shack counter while a stocky man holds a toddler with a crayon",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The toddler's crayon reaching for the flyer.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "leaning",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crayon"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Watch the—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a toddler's hand with a crayon reaching toward a paper flyer on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD not moving the flyer away.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "not moving it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Let him."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man watching a crayon come toward his drawing and not moving it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "A scribble in the flyer's corner beside the two crabs. Wood already inking around it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "inking around the scribble",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the scribble"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a flyer with two ink crabs and a toddler's crayon scribble in the corner being inked around",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "'A collaboration' (objects.md · the flyer, 2005)."
+}

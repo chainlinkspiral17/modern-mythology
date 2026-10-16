@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-03-06_the_pond_empty",
+  "title": "The pond, empty",
+  "strip": "roflcopter",
+  "date": "2023-03-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The millpond in 1994 with no logs in it: black water, the boom slack, a gull on it, the mill's wall reflected. The page after the last load; the water with nothing to hold.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A millpond with no logs, black still water reflecting the mill's wall and stack, a slack log boom with a gull standing on it, black spotting in the reflection.",
+      "characters": [],
+      "props": [
+        "the empty pond"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a millpond with no logs in it, black still water reflecting a mill wall and stack, a slack log boom with a gull standing on it, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-12-25 (full)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Nothing to hold.",
+  "layout": "single page, no borders"
+}

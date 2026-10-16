@@ -1,0 +1,123 @@
+{
+  "id": "dw_1999-10-25_no_halloween_strip",
+  "title": "No Halloween strip",
+  "strip": "drift_wood",
+  "date": "1999-10-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Halloween, refused",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The hardware store has pumpkins. The laundromat has a paper skeleton. Wood announces the strip will not do a Halloween strip. This is the Halloween strip.",
+  "cast": [
+    "wood_20",
+    "extra_kid"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street in rain, a hardware store with pumpkins on a pallet under the awning, a paper skeleton in the laundromat's window down the block. WOOD walking.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town main street in rain with pumpkins on a pallet under a hardware store awning and a paper skeleton in a laundromat window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, to nobody.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The strip does not do holidays. Holidays are content."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a wool overcoat talking to himself on a rainy sidewalk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A KID in a sheet, early, passing him with a pillowcase. Looking up at him.",
+      "characters": [
+        {
+          "id": "extra_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "What are you?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Auditing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small child in a bedsheet ghost costume with a pillowcase looking up at a young man on a sidewalk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The street. The pumpkins. The skeleton. Wood walking on. The strip has drawn all of it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy main street with pumpkins and a paper skeleton, a young man walking away with hands in his coat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Holidays are content.' The strip draws the holiday anyway."
+}

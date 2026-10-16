@@ -1,0 +1,173 @@
+{
+  "id": "dw_2016-08-15_tourists_2016",
+  "title": "Tourist Season, 2016",
+  "strip": "drift_wood",
+  "date": "2016-08-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "A tourist recognizes the pup from the strip and cries. Wood didn't know the Sundays did that to people. Gully did.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST crouched to BARNABY II, her hand over her mouth. WOOD on the stool, alarmed. GULLY, not alarmed.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "crouched, hand over mouth",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "being adored",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "alarmed",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "unsurprised",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "It's him. The box. The three— I read it in a hospital waiting room. I'm sorry. I'm sorry."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist crouched beside a three-legged dog in a shop with her hand over her mouth, a thin man on a stool looking alarmed, a man in an apron unsurprised, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood. Not knowing what to do with his hands.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thin man not knowing where to put his hands, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully handing the tourist a napkin and a coffee in one motion. Practiced.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "handing a napkin and a cup",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "napkin",
+        "cup"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Happens. Two bucks. Take your time."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron handing a crying tourist a napkin and a paper cup in one practiced motion",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "After. Wood, to Gully.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "'Happens.'"
+        },
+        {
+          "who": "GULLY",
+          "text": "Every August since '14. You're out. I'm here. It happens."
+        },
+        {
+          "who": "WOOD",
+          "text": "You never said."
+        },
+        {
+          "who": "GULLY",
+          "text": "You never asked. Regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men at a quiet counter after a customer leaves, one absorbing something, a dog between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'Every August since '14.' Gully has been handling the readers Wood never sees."
+}

@@ -1,0 +1,146 @@
+{
+  "id": "dw_2010-12-06_second_chore_coat",
+  "title": "The second chore coat",
+  "strip": "drift_wood",
+  "date": "2010-12-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Second Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2010)",
+  "logline": "Winter. The coat is the same coat as 2000. The drawing is not.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, December, wind. WOOD in the chore coat — the same coat, ten years on, patched at the elbow. BARNABY carried under one arm, eleven, not walking far now.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "coat, dog under one arm",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "carried",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wind",
+        "surf",
+        "patched coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a patched canvas chore coat carrying an old dog under one arm on a windy December beach, wind drawn as long lines, mature brush line with gray wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The coat. The elbow patch. A button that doesn't match. The same ink stain on the pocket, faded.",
+      "characters": [],
+      "props": [
+        "patched elbow",
+        "mismatched button",
+        "faded ink stain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a worn canvas coat with a patched elbow, a mismatched button and a faded ink stain on the pocket",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, not fast this time. Slow.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Same coat. I said if the coat's the same, the man's the same. I was twenty. Twenty is allowed to be wrong about coats."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a windy beach speaking slowly to an old dog he carries under his arm",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them small on the beach. The coat the only dark shape. Drawn slowly, every line placed. The same panel as 2000 by a different hand.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "wind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two small figures on a wide windy beach, one a dark coat-shaped mark carrying a dog, drawn with slow deliberate lines, gray wash, no words",
+        "negative": "",
+        "notes": "Pair with dw_2000-12-08. Same composition; the book can print both."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The 2000 chore-coat strip redrawn ten years on, by a man who's slower."
+}

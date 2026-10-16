@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-01-05_the_whistle_at_noon",
+  "title": "The whistle at noon",
+  "strip": "roflcopter",
+  "date": "2023-01-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The noon whistle in the lunchroom: forty pails opening at once, drawn as forty small sounds, and the big jagged whistle shape coming in the window over all of them. Nobody's face.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A mill lunchroom at noon from above: a long table of men from behind opening lunch pails, forty small jagged sound shapes over the pails, and one long jagged whistle shape coming in through the window across the room.",
+      "characters": [],
+      "props": [
+        "forty pails",
+        "the whistle shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a mill lunchroom at noon seen from above with a long table of men from behind opening lunch pails, small jagged sound shapes over each pail and one long jagged whistle shape coming in through the window, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Forty small sounds and one big one.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,163 @@
+{
+  "id": "dw_2017-08-14_tourists_2017",
+  "title": "Tourist Season, 2017",
+  "strip": "drift_wood",
+  "date": "2017-08-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Lockbox summer. A tourist in Chloe's parents' old house asks Wood for directions to the beach in the strip. He gives them. He doesn't say whose house.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The sidewalk outside the house four doors down. A TOURIST family on its porch. The mother waving WOOD over, phone out, the strip on it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "on the porch, phone out",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the sidewalk",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "porch",
+        "lockbox",
+        "phone"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Excuse me — the beach in this. With the log. Is it walkable?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist family on the porch of an old wooden house with a key lockbox on the door, the mother holding out a phone showing a comic to a man on the sidewalk with a three-legged dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood looking at the phone. Then at the porch. The step where he sat in October 2000.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the porch step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man looking at a porch step with a memory on his face, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, pointing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pointing down the street",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "End of the road. Left at the log. Twenty minutes."
+        },
+        {
+          "who": "TOURIST",
+          "text": "Do you know the artist? Is he local?"
+        },
+        {
+          "who": "WOOD",
+          "text": "He's around."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man pointing down a street for a tourist family, answering briefly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking on with the pup. The family going in. The lockbox swinging on the knob of the door he never knocked on.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lockbox swinging"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog walking away from an old house as a family goes inside, the key lockbox swinging on the doorknob, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Directions to his own Sunday, from her porch. 'He's around.'"
+}

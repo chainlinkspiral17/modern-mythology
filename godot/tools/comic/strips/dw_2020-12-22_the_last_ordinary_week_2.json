@@ -1,0 +1,164 @@
+{
+  "id": "dw_2020-12-22_the_last_ordinary_week_2",
+  "title": "The last ordinary week, ii",
+  "strip": "drift_wood",
+  "date": "2020-12-22",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Last Ordinary Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Last Ordinary Week · deepening)",
+  "logline": "Tuesday. Coffee at Gully's. The end stool. The pup. Gully says it might rain. It rains. That's the strip.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool. Coffee. GULLY. BARNABY II beneath.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Might rain."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a bait-shop end stool with a coffee, a stocky man in an apron, a small three-legged dog beneath, an ordinary morning",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The window. Rain starting.",
+      "characters": [],
+      "props": [
+        "rain on the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a shop window with rain beginning to streak it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drinking the coffee. Gully wiping the counter. The dog asleep.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drinking",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "wiping",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's raining."
+        },
+        {
+          "who": "GULLY",
+          "text": "Said it might."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man drinking coffee and a stocky man wiping a counter while a small dog sleeps, rain outside",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Same. Nothing. The strip holds on nothing, on purpose.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, the same scene of a shop counter with two men and a sleeping dog and rain outside, unchanged, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Might rain. Rains. Nothing else."
+}

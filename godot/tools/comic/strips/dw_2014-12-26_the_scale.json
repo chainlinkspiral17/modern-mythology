@@ -1,0 +1,140 @@
+{
+  "id": "dw_2014-12-26_the_scale",
+  "title": "The scale",
+  "strip": "drift_wood",
+  "date": "2014-12-26",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Low Tide at Alsea Bay (Arc 4)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Low Tide at Alsea Bay · deepening)",
+  "logline": "Friday. The county clinic, the same lot as November. Wood goes in this time. The pup on the steel scale. The needle. 'For three legs, that's fine.' The strip draws the needle and nothing else.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The clinic lot. The Legacy. WOOD getting out with the pup under his arm. Going in. The strip goes in with him this time.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "going in with the pup",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "under his arm",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the clinic door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man carrying a small three-legged puppy from a station wagon through a county clinic's door, no words",
+        "negative": "",
+        "notes": "November's strip stayed in the lot. This one goes in."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The steel scale. The pup on it, three legs, trembling. The VET: a white coat and a mouth.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on the scale, trembling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the scale",
+        "a white coat"
+      ],
+      "balloons": [
+        {
+          "who": "VET",
+          "text": "For three legs, that's fine. He's — he's fine, Arthur. He came that way. Nothing's missing that he knows about."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a small trembling three-legged puppy on a steel scale with a vet visible only as a white coat and a speaking mouth",
+        "negative": "",
+        "notes": "The same vet's mouth as Oct 24. 'Arthur' again. 'He came that way' — the line the 2015 strip gives Wood."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The needle. Only the needle. No number. The 2009 panel, for a smaller dog.",
+      "characters": [],
+      "props": [
+        "the needle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of a scale's needle pointing at an unlabeled place, nothing else, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The Legacy. The pup on the passenger seat, in the blanket — the faded wool one, folded. Wood's hand on the gearshift. Nothing on his wrist yet.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the gearshift",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the seat, in the blanket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blanket",
+        "the Legacy"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, inside a station wagon, a small three-legged puppy sitting on a folded faded wool blanket on the passenger seat and a man's hand on the gearshift, no words",
+        "negative": "",
+        "notes": "The Carry's blanket, under the pup now."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "'For three legs, that's fine.' The needle. The blanket under the pup."
+}

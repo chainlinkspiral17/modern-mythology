@@ -1,0 +1,144 @@
+{
+  "id": "dw_2008-02-08_crab_derby_2008",
+  "title": "The Crab Derby, 2008",
+  "strip": "drift_wood",
+  "date": "2008-02-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Twenty-fourth annual. The flyer runs in the Newport weekly as an ad. Gully paid for the ad. Twenty bucks, plus the ad.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with the Newport weekly open to a quarter-page ad: the crab flyer, printed. WOOD on the stool. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "holding a newspaper open to an ad",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "newspaper ad"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Quarter page. Forty bucks. Your crab's in the paper before your strip is."
+        },
+        {
+          "who": "WOOD",
+          "text": "...By two weeks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron holding a local weekly open to a quarter-page ad showing a hand-drawn crab flyer, a thin man on a stool, a dog, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The ad. The crab on newsprint. Dot gain fattening the hatching.",
+      "characters": [],
+      "props": [
+        "the ad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a newsprint ad with a hatched crab drawing, the ink fattened by dot gain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing this year's on the counter. Two crabs, a cup, and — the small third crab from last year has moved closer to the first.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand drawing a crab flyer where a small third crab sits closer to the large first one than before",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Fourteen flyers. Gully pinning. The ad pinned beside them, the first printed thing on that wall.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pinning the ad beside the flyers",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fourteen flyers",
+        "the ad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "fourteen crab flyers in a row on a shingle wall with a newspaper ad pinned beside them, a man in an apron stepping back, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": ""
+}

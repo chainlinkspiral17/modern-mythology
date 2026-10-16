@@ -1,0 +1,149 @@
+{
+  "id": "dw_1999-04-09_bus_schedule",
+  "title": "Drift Wood #34 · the bus schedule",
+  "strip": "drift_wood",
+  "date": "1999-04-09",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Seattle, Said / the Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Wood pins the Greyhound schedule to the corkboard. Reference material.",
+  "cast": [
+    "wood_17",
+    "gully_17"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. The corkboard. WOOD pinning a Greyhound schedule to it, between the crab flyer and the yearbook photo. GULLY on the bed with a maple bar.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "pinning a schedule",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "on the bed, eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Greyhound schedule",
+        "corkboard",
+        "maple bar"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Bus schedule."
+        },
+        {
+          "who": "WOOD",
+          "text": "Reference material. For the strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy pinning a bus schedule to a crowded corkboard in his bedroom while a boy in a backwards cap eats a maple bar on the bed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The schedule: SMALL WOOD → EUGENE → SEATTLE. Departures circled in pencil. All of them.",
+      "characters": [],
+      "props": [
+        "bus schedule with every departure circled"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a printed intercity bus schedule with every departure time circled in pencil",
+        "negative": "",
+        "notes": "Route names may be lettered after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, chewing.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "chewing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You circled all of 'em."
+        },
+        {
+          "who": "WOOD",
+          "text": "Thoroughness."
+        },
+        {
+          "who": "GULLY",
+          "text": "For the strip."
+        },
+        {
+          "who": "WOOD",
+          "text": "For the strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap chewing and looking skeptically at someone off-panel from a bed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The corkboard, close, as a composition: crab, yearbook photo, back page, bus schedule. A life pinned in four items. Wood's hand leaving the frame.",
+      "characters": [],
+      "props": [
+        "corkboard with four pinned items"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard seen straight on: a crab flyer, a yearbook photo, a newspaper back page and a bus schedule, a hand leaving the frame, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

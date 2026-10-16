@@ -1,0 +1,137 @@
+{
+  "id": "dw_2000-11-21_smoked_salmon",
+  "title": "Smoked salmon",
+  "strip": "drift_wood",
+  "date": "2000-11-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Thanksgiving",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. The uncle's smoked salmon for Thursday, from the drum. Alder. Gully tends it; the uncle directs from the chair with the line. The smoke soft across the launch again. Wood draws the smoke and the line in the same soft stroke and doesn't say why.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Behind the shack: the drum smoker, smoke pouring, GULLY feeding alder. The UNCLE in the chair with the oxygen line. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rusted drum smoker pouring pale smoke behind a shingle shack as a teenager feeds it wood, an old man in a lawn chair with an oxygen line, a young man and a dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The smoke. Soft. The oxygen line. Soft. The same stroke.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on pale smoke drifting past a thin oxygen tube, both drawn in the same soft line, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Alder."
+        },
+        {
+          "who": "GULLY",
+          "text": "I know, Uncle."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Then why'd I—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Say it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair speaking through smoke, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The launch in smoke. The chair. The line. The strip drew them in one stroke and won't say why. March's smoke was the first soft line; this is the second, and it's the same one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boat launch softened by smoke with an old man in a lawn chair and a teenager at a drum smoker, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The smoke and the line in one stroke. 'Say it.' Gully finishes the uncle's sentence."
+}

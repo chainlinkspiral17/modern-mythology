@@ -1,0 +1,182 @@
+{
+  "id": "dw_2009-06-11_best_man_4",
+  "title": "Best man, iv",
+  "strip": "drift_wood",
+  "date": "2009-06-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Best Man",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Best Man · deepening)",
+  "logline": "Thursday. The ribbon. Maria ties one on the dog. The dog, ten, sits for it like he's been waiting a decade to be asked.",
+  "cast": [
+    "wood_26",
+    "extra_maria",
+    "barnaby",
+    "gully_27"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, the evening before. MARIA kneeling with a ribbon. BARNABY sitting very straight. WOOD and GULLY watching.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "kneeling with a ribbon",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting very straight",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a ribbon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a practical woman kneeling to tie a ribbon on an old dog who sits very straight, two men watching, a shack interior",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The ribbon tied. The dog's face: dignity.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "ribboned, dignified",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ribbon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of an old dog wearing a ribbon around its neck with an expression of enormous dignity",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Maria, standing, to Wood.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "He's walking in with me."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's — you want the dog in the —"
+        },
+        {
+          "who": "MARIA",
+          "text": "He's been at the counter longer than either of you."
+        },
+        {
+          "who": "GULLY",
+          "text": "(off) She's right."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a practical woman speaking to a thin man while an old dog in a ribbon sits between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock at dusk. The dog in the ribbon at the end of it, sitting, looking at the water. The three humans on the steps behind him. Tomorrow.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "at the dock's end, ribboned",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "steps",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dock",
+        "dusk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a dock at dusk with an old dog in a ribbon sitting at its end looking at the water and three people on shack steps behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'He's been at the counter longer than either of you.' The ribbon."
+}

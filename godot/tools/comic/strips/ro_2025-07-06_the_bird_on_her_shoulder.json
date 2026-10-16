@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-07-06_the_bird_on_her_shoulder",
+  "title": "The bird on her shoulder",
+  "strip": "roflcopter",
+  "date": "2025-07-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xvi)",
+  "logline": "Two days after she lit the firework: Gully's daughter, fifteen, on the dock from behind, and the bird on her shoulder. The first person it lands on. She doesn't move. The page doesn't either.",
+  "cast": [
+    "the_bird",
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A fifteen-year-old girl from behind on a dock looking at the bay with the small rainbow bird perched on her shoulder, both still.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on her shoulder",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "fifteen, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a fifteen-year-old girl seen from behind on a wooden dock looking at a bay with a small rainbow bird perched on her shoulder, both still, no words",
+        "negative": "",
+        "notes": "The first person it lands on."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "She doesn't move.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,169 @@
+{
+  "id": "dw_2017-02-09_crab_derby_2017_before",
+  "title": "Crab Derby, 2017 · before",
+  "strip": "drift_wood",
+  "date": "2017-02-09",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "The day before the thirty-third: Gully's girl, seven, at the counter counting a real crab's legs in the tank — eight, and the claws — and announcing the flyer's crab has been wrong for nineteen years. Wood says it had six because he was seventeen. She says that's not a reason.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The GIRL, seven, at the crab tank counting on her fingers. WOOD on the stool. GULLY. The PUP.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "counting at the tank",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crab tank"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Eight. And the claws."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a girl of seven counting on her fingers at a bait shop's crab tank while a thin man on a stool and a stocky man in an apron look on",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The GIRL turning, holding up the old flyer.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "holding up a flyer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "an old flyer"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Yours has six."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small girl holding up an old crab flyer accusingly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I was seventeen."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool offering a weak defense",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The GIRL, already drawing eight legs on a fresh sheet. GULLY hiding a grin in the coffee pot.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing eight legs",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "grinning into the pot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a fresh sheet"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "That's not a reason."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small girl drawing a crab with eight legs on a fresh sheet while a stocky man hides a grin behind a coffee pot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Eight legs. Not a reason."
+}

@@ -1,0 +1,159 @@
+{
+  "id": "dw_2007-10-08_the_tavern",
+  "title": "The tavern",
+  "strip": "drift_wood",
+  "date": "2007-10-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Tavern",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "The cedar-shake tavern in front of the garage. Its regulars. Its jukebox through the wall. The tavern is never named.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_regulars"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The tavern from the highway side, evening: cedar shake, a beer sign, three trucks, the garage's roofline visible behind. The sign above the door is drawn — and the name on it is a wood-grain blur, as if weathered off.",
+      "characters": [],
+      "props": [
+        "tavern front",
+        "beer sign",
+        "trucks",
+        "the sign, name weathered off"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a cedar-shake roadside tavern at evening with a beer sign and three pickup trucks, a garage roofline visible behind it, the name on the sign above the door weathered into an unreadable wood-grain blur, muddy digital flats",
+        "negative": "",
+        "notes": "The tavern's name is never drawn legibly. Reserved through 2025."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Inside, briefly: the bar, three REGULARS on stools who have been on those stools since the mill closed, a jukebox with one Springsteen. WOOD at the end with a beer he'll nurse for an hour. BARNABY under the stool, allowed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "end of the bar",
+          "expression": ""
+        },
+        {
+          "id": "extra_regulars",
+          "pose": "three on stools",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bar",
+        "jukebox",
+        "stools"
+      ],
+      "balloons": [
+        {
+          "who": "REGULAR",
+          "text": "You the kid in the garage."
+        },
+        {
+          "who": "WOOD",
+          "text": "Since '04."
+        },
+        {
+          "who": "REGULAR",
+          "text": "Huh. Thought that was a raccoon."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a dim tavern, three old regulars on bar stools, a jukebox, a young man at the end of the bar with a beer and a small dog under his stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The jukebox. 8:59. A regular's hand on the button.",
+      "characters": [
+        {
+          "id": "extra_regulars",
+          "pose": "hand on the jukebox",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "jukebox",
+        "clock: 8:59"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a weathered hand pressing a button on an old jukebox beside a clock reading 8:59",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The garage, from inside, 9:00. Wood back at the table. The wavy lines through the wall. He knows every word and draws through it. The dog's ear.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ear up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wavy music lines",
+        "clock: 9:00"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio at night with muffled music lines coming through the wall, a young man drawing through it, a dog with one ear up, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The tavern, named nowhere. 'Thought that was a raccoon.' The Springsteen at nine."
+}

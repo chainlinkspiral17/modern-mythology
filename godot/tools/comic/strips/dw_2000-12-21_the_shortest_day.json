@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-12-21_the_shortest_day",
+  "title": "The shortest day",
+  "strip": "drift_wood",
+  "date": "2000-12-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The shortest day. The seawall at four, already dark. Wood and the dog. The strip draws the dark as a panel that is mostly black with a coat in it and a dog in it and the sign across the road, and then the same panel three more times with the dark a little more each. The year, going.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall at four PM, December 21, the light going. WOOD in the coat from behind, BARNABY. The sign across the road lit. Mostly black.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a seawall at four in the afternoon on the shortest day with the light going, a man in a coat from behind and a small dog, a distant lit sign, the panel mostly black, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The same. Darker. The coat a shape.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same seawall scene darker, the coat now a shape, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The same. Darker. The coat gone into the dark; the dog a lighter shape; the sign.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same seawall scene nearly black with a small pale dog shape and a distant lit sign, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Black. The sign's fifteen letters, tiny, across the road. Nothing else. The year, going. The strip lets it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a nearly black panel with only a distant row of tiny lit letters, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Four panels darkening to the sign. The year, going."
+}

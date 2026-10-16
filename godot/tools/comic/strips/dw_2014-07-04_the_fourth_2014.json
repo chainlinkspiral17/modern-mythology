@@ -1,0 +1,168 @@
+{
+  "id": "dw_2014-07-04_the_fourth_2014",
+  "title": "The Fourth, 2014",
+  "strip": "drift_wood",
+  "date": "2014-07-04",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth of July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2014 · fixtures · deepening xiv)",
+  "logline": "Ten days before the pavilion: the dock, the fireworks, Maria's chair, the invitation in Wood's coat pocket that Gully knows about. Gully asks; Wood says where it is instead of whether. That's not an answer, Gully says, and the last panel is the sky.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "extra_gully_kid",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at night under fireworks, MARIA in the lawn chair with the four-year-old asleep on her, GULLY and WOOD at the rail, old BARNABY under the chair.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "at the rail",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "at the rail",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "in the chair, child asleep on her",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "asleep",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dock at night under fireworks with a woman in a lawn chair holding a sleeping child, two men at the rail and an old dog beneath the chair, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY, not looking over.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You going?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man looking up at fireworks from a dock rail, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD, a hand on the pocket where the envelope is.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on his coat pocket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the invitation, in the pocket"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's in Seattle."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man at a dock rail with one hand resting on his coat pocket, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sky, one burst, the two of them small at the bottom edge.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's not an answer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night sky filled with one white firework burst with two small figures at the bottom edge of the panel, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Ten days before the pavilion."
+}

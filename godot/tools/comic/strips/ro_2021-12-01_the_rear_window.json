@@ -1,0 +1,61 @@
+{
+  "id": "ro_2021-12-01_the_rear_window",
+  "title": "The rear window",
+  "strip": "roflcopter",
+  "date": "2021-12-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The Legacy from behind on 101, and in its rear window the back of a head and, beside it, the pup's head, both looking forward, the road ahead through the windshield beyond. Two backs of heads in a rectangle of glass.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A faded green station wagon from behind on a coastal highway, its rear window showing the back of a graying man's head and a small dog's head beside it, the road ahead visible through the windshield beyond.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "the back of a head",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "a head beside it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a faded green station wagon seen from behind on a coastal highway with its rear window showing the back of a graying man's head and a small dog's head beside it and the road ahead through the windshield, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two backs of heads in glass.",
+  "layout": "single page, no borders"
+}

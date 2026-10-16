@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-05-25_the_customer_he_doesnt_draw_ii",
+  "title": "The one she frames herself",
+  "strip": "drift_wood",
+  "date": "2000-05-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. A woman comes in with a photograph the owner takes from her before Wood can. She frames it herself, in the back, door closed. Wood never sees it. The woman waits at the counter looking at the empty frames. The strip waits with her.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta",
+    "extra_woman"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A WOMAN in a county rain shell with an envelope. The OWNER coming round the counter fast and taking it before WOOD can reach.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_woman",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a rain shell handing an envelope across a shop counter as an older woman in reading glasses steps in to take it before a young man can, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The backroom door, closing. The owner's hand on it. The envelope gone with her.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a shop's backroom door closing with a woman's hand on the edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The woman at the counter, waiting. Looking at the wall of empty frames. Wood at the mat cutter with nothing to cut.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a rain shell waiting at a shop counter looking at a wall of empty frames while a young man stands idle at a mat cutter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shop. The two of them, not talking. The door. The clock. The strip doesn't see the photograph and doesn't ask. Some things the owner frames herself.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small frame shop interior with a woman waiting at the counter and a young man idle at the back, a closed door between them and the backroom, black and white, no words",
+        "negative": "",
+        "notes": "The photograph: never seen. Reserved. Compare dw_2000-05-11 (the one he doesn't draw)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The owner frames it herself, door closed. The strip waits at the counter."
+}

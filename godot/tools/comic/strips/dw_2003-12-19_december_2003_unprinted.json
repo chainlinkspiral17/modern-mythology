@@ -1,0 +1,136 @@
+{
+  "id": "dw_2003-12-19_december_2003_unprinted",
+  "title": "December, 2003 (unprinted)",
+  "strip": "drift_wood",
+  "date": "2003-12-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year / December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Does Chloe come home. The strip doesn't know; the strip isn't running. It draws the bus stop anyway, for the box.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The Greyhound stop, December, rain. WOOD and BARNABY on the bench. No bus yet.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bench",
+        "rain",
+        "101"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog on a roadside bus-stop bench in December rain, no bus, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The 4:10. Door. Nobody gets off at all.",
+      "characters": [],
+      "props": [
+        "bus, door open, empty step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Greyhound bus at a roadside stop with its door open and nobody stepping down",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing the empty door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a bench drawing the open empty door of a bus",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The bus gone. The bench. The dog asleep. The strip, for no one, of no one arriving.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty stop",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty roadside bus stop in rain with a young man on the bench and a dog asleep under it, black and white, no words",
+        "negative": "",
+        "notes": "The last strip the book takes from Box 5. The next page is January 2004: online, six and a Sunday."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Nobody gets off. Nobody printed it. Box 5 closes here in the book."
+}

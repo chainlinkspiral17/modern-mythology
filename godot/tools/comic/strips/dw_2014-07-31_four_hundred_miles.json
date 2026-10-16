@@ -1,0 +1,126 @@
+{
+  "id": "dw_2014-07-31_four_hundred_miles",
+  "title": "Four hundred miles",
+  "strip": "drift_wood",
+  "date": "2014-07-31",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Thursday. The drive home on the doughnut spare at fifty, the empty passenger seat, the blue haze. Four panels of the same seat with different things out the window.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Inside the Legacy: the empty passenger seat, the window beyond it: ferry water.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving, an elbow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty seat",
+        "ferry water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the inside of an old station wagon showing an empty passenger seat and through its window ferry water, a driver's elbow at the frame edge, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Same seat. The window: interstate, trucks passing at seventy. The car at fifty.",
+      "characters": [],
+      "props": [
+        "the empty seat",
+        "trucks passing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same empty passenger seat with trucks passing outside the window at speed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Same seat. The window: 101, the sea, dusk. The blue haze in the mirror.",
+      "characters": [],
+      "props": [
+        "the empty seat",
+        "the sea",
+        "blue haze"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same empty passenger seat with a coastal highway and the sea at dusk outside the window and a faint blue exhaust haze in the mirror",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Same seat. Night. The window: Gully's lot, and in the headlights, Maria holding the dog, who has seen the car.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "holding the dog in the headlights",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in her arms, seen the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty seat",
+        "headlights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same empty passenger seat at night with a woman holding an old dog in the car's headlights outside the window, the dog straining toward the car",
+        "negative": "",
+        "notes": "Cast note: Maria and the dog appear only through the window."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Four panels of an empty seat. The dog in the headlights."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dw_2017-09-14_the_red_pen_2017",
+  "title": "The red pen, 2017",
+  "strip": "drift_wood",
+  "date": "2017-09-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twenty Years · deepening)",
+  "logline": "Thursday. The kid's editor, a girl, marks his strip with a red pen. She marks the drawing, not the text. Wood sees it through the newsroom window from the parking lot, and the strip draws #32 again from twenty feet away.",
+  "cast": [
+    "wood_34",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The school's lot. WOOD at the Legacy. Through the newsroom window across the lot: two kids at a light table, a red pen.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the Legacy",
+          "expression": ""
+        },
+        {
+          "id": "extra_student",
+          "pose": "through the window, at a light table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the newsroom window",
+        "a red pen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man beside an old station wagon in a school parking lot looking across at a lit newsroom window where two teenagers bend over a light table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Through the glass: the girl's red pen on the kid's strip. On the drawing. Circling a hand.",
+      "characters": [],
+      "props": [
+        "the red pen on the drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, seen through a window, a girl's red pen circling a hand in a boy's comic strip on a light table",
+        "negative": "",
+        "notes": "#32 (dw_1999-03-12), twenty feet and eighteen years away."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, watching. His face: the exact face from 1999, drawn by the hand that has it now.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "the 1999 face",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a graying man's face watching something through a distant window with a young man's expression on it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood getting in the Legacy. Not going over. The window, the two heads, the pen. The strip doesn't warn him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "getting in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man getting into an old station wagon while a lit newsroom window with two young heads remains across the lot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "#32 from twenty feet. The strip doesn't warn him."
+}

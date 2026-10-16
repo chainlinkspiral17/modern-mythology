@@ -1,0 +1,135 @@
+{
+  "id": "dw_2014-07-15_the_ferry",
+  "title": "The ferry",
+  "strip": "drift_wood",
+  "date": "2014-07-15",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Tuesday. The ferry. The suit on its hanger in the back window, airing. A kid on the car deck asks if it's a costume. Wood says yes. The sketchbook opens for the first time on the trip: the Sound, two lines.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A ferry's car deck in blinding light. The Legacy between two clean SUVs, the wool suit on a hanger in its back window. WOOD at the rail. Puget Sound cerulean.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the rail",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the suit in the window",
+        "the Sound"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a ferry car deck in bright summer light with a faded green station wagon parked between two gleaming SUVs, a dark wool suit hanging in its rear window, a thin man at the rail, blue water",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A KID, eight, at the Legacy's window, looking at the suit. Wood beside him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the suit"
+      ],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "Is that a costume?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Yes."
+        },
+        {
+          "who": "KID",
+          "text": "Of what?"
+        },
+        {
+          "who": "WOOD",
+          "text": "A guest."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a child peering at a wool suit hanging in a station wagon's rear window while a thin man answers him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The sketchbook, open on the rail. Two lines: the horizon and an island. Nothing else. The first drawing of the trip.",
+      "characters": [],
+      "props": [
+        "the sketchbook: two lines"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a sketchbook open on a ferry rail with only two ink lines on the page, a horizon and an island",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The ferry from the water, small, on the Sound, the islands ahead. Light. The strip lets the light be the whole panel.",
+      "characters": [],
+      "props": [
+        "the ferry",
+        "light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a ferry small on brilliant blue water with forested islands ahead in blinding summer light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'A guest.' Two lines on the rail."
+}

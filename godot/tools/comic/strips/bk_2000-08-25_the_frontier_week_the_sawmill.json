@@ -1,0 +1,154 @@
+{
+  "id": "bk_2000-08-25_the_frontier_week_the_sawmill",
+  "title": "THE FRONTIER WEEK · The sawmill",
+  "strip": "backup",
+  "series": "THE FRONTIER WEEK",
+  "date": "2000-08-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the Newport paper · a western week the editor cut · Box 3",
+  "arc": "THE FRONTIER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The sawmill up the road with its whistle — the stranger's dog howls at it — and the mill boss asking the stranger if he's looking for work. He says he's looking for the stump. The boss says which one. The stranger points at the ridge. There are ten thousand stumps. He says that one.",
+  "cast": [
+    "extra_stranger",
+    "extra_mill_boss",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A frontier sawmill with a steam whistle blowing a jagged shape; the dog howling at it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "howling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the whistle's shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a frontier steam sawmill with a whistle blowing a jagged sound shape and a small dog howling at it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The MILL BOSS in shirtsleeves. The STRANGER.",
+      "characters": [
+        {
+          "id": "extra_mill_boss",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stranger",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "BOSS",
+          "text": "Looking for work?"
+        },
+        {
+          "who": "STRANGER",
+          "text": "Looking for a stump."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a mill boss in shirtsleeves speaking with a stranger before a sawmill",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The BOSS gesturing at a ridge of ten thousand stumps.",
+      "characters": [
+        {
+          "id": "extra_mill_boss",
+          "pose": "gesturing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ten thousand stumps"
+      ],
+      "balloons": [
+        {
+          "who": "BOSS",
+          "text": "Which one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a mill boss gesturing at a hillside covered in ten thousand stumps",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The ridge: the one stump with the crow and the stake, the STRANGER's pointing arm at the frame's edge.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "pointing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stump"
+      ],
+      "balloons": [
+        {
+          "who": "STRANGER",
+          "text": "That one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with one stump bearing a crow and a stake, a stranger's arm pointing at it from the frame's edge, dust as stipple",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western",
+    "palette": "black and white; dust as stipple",
+    "paper": "newsprint / the digest — a genre week that ran nowhere; Box 3"
+  },
+  "notes": "Ten thousand stumps; that one. The whistle (canon: The Mill, 1994).",
+  "layout": "four panels"
+}

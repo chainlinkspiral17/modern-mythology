@@ -1,0 +1,51 @@
+{
+  "id": "bk_2003-08-24_the_sinkhole_the_fold",
+  "title": "THE SINKHOLE · The fold",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "date": "2003-08-24",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The found Sunday's fourth page is the fold itself: the newsprint's crease running through the page, and on either side of it two different drawings — the river town's landing on the left, the Alsea boat launch on the right — meeting at the crease as one street. Wood's margin note in pencil, the only thing on the page in his hand: 'not mine. keep.'",
+  "cast": [],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A full page bisected by a drawn newsprint crease: on the left a river town's landing with a boat, on the right a coastal boat launch with a chimney across a bay, the two meeting at the crease as a single continuous street; a pencilled note in the bottom margin in a different hand.",
+      "characters": [],
+      "props": [
+        "the crease",
+        "two towns, one street"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic page, brush-pen over blue pencil, stark black spotting, a full comic page bisected by a drawn newsprint crease with a river town's boat landing on the left and a coastal boat launch with a distant chimney on the right meeting at the crease as one continuous street, a small pencilled note in the bottom margin",
+        "negative": "",
+        "notes": "The two towns meet at the fold. 'not mine. keep.' — letter after, small, in Wood's hand, the only canon hand on the page."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "not mine. keep.",
+  "layout": "single image, a crease down the middle"
+}

@@ -1,0 +1,137 @@
+{
+  "id": "dw_2000-07-06_they_were_red",
+  "title": "They were red",
+  "strip": "drift_wood",
+  "date": "2000-07-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Chloe, who wasn't at the dock, asks Wood what color they were. He says white on black; the strip can't do color. She says she asked what color they were, not what the strip did. He says red. The last one. She says then say so.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The seawall, evening. CHLOE with the paperback. WOOD with the pad. BARNABY between.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "What color were they."
+        },
+        {
+          "who": "WOOD",
+          "text": "White on black. The strip can't—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman with a paperback and a young man with a drawing pad on a seawall at evening with a small dog between them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe, over the book.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I asked what color they were. Not what the strip did."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman looking over the top of a paperback, level, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Red. The last one was red."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Then say so."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face, caught, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The seawall. The two of them. The bay. In the margin, small, in the display face, the strip says so: RED. The one word of color the strip has ever lettered.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a young woman on a seawall at dusk above a gray bay, a small word lettered in the panel's margin, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: RED, in the margin, display face. The strip's one lettered color."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Then say so.' RED, in the margin. The strip's one lettered color."
+}

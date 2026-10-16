@@ -1,0 +1,133 @@
+{
+  "id": "dw_2000-04-05_the_uncles_tools",
+  "title": "The uncle's tools",
+  "strip": "drift_wood",
+  "date": "2000-04-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Datsun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle has a coffee can of exhaust clamps from a truck he doesn't own anymore. Gully and Wood fix the Datsun on the launch's gravel with the uncle directing from his pot. It takes four panels and most of the afternoon.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The launch's gravel. The Datsun on blocks. GULLY under it, boots out. WOOD holding a coffee can of clamps. The UNCLE on his pot. BARNABY under the car with Gully.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car up on blocks on gravel at a boat launch with a teenager's boots sticking out from under it, a young man holding a coffee can, an old man seated on a crab pot, a dog under the car, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The can: clamps, bolts, a spark plug, a crab's claw. The uncle's history in a can.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a coffee can full of rusted clamps, bolts, a spark plug and a dried crab claw, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The uncle, directing without moving.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Other clamp. No. The other other."
+        },
+        {
+          "who": "GULLY",
+          "text": "(from under) They're all the same, Uncle."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Then it don't matter which."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man on a crab pot directing with one finger toward a car on blocks, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Dusk. The car down off the blocks. Gully black to the elbows. Wood holding the can. The uncle hasn't moved. The strip gives the afternoon four panels and it wasn't enough.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car lowered off blocks at dusk on gravel, a teenager with grease to his elbows, a young man holding a coffee can, an old man seated unmoved, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Then it don't matter which.' The crab claw in the can."
+}

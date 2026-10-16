@@ -1,0 +1,173 @@
+{
+  "id": "dw_1997-12-19_she_lives_here",
+  "title": "Drift Wood #8 · December",
+  "strip": "drift_wood",
+  "date": "1997-12-19",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Back Row / December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "The last issue before break. Does Chloe come home? She lives here. The strip doesn't know it's a fixture yet.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street in December rain. Christmas lights on the hardware store, half of them out. WOOD, CHLOE and GULLY walking, three abreast, toward the reader.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "walking, hands in coat",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "walking, headphones on",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "walking, eating a maple bar",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hardware store with half-dead lights",
+        "rain",
+        "a log truck passing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three teenagers walking abreast down a small timber-town main street in December rain, a hardware store with half its Christmas lights dead, a log truck passing, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, gesturing at the whole street.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "arm sweeping at the street",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Two weeks. No paper. No deadline. I will finally have time to begin the real work."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat sweeping his arm at a rainy main street, two friends beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, one headphone pulled off.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "one headphone off",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "What's the real work?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll know it when I've begun it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage girl pulling one headphone off her ear to ask something, rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The three of them at the corner where they split. Gully going left, Chloe straight on, Wood standing.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "walking off left",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "walking on ahead",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "standing at the corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "street corner",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "See you in two weeks."
+        },
+        {
+          "who": "CHLOE",
+          "text": "See you tomorrow, Wood. You live four houses from me."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three teenagers parting at a rainy street corner, one going left, one going straight, one standing still, small town at dusk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The December fixture, before it's a fixture. She's here. She lives four houses away.",
+  "layout": "2x2"
+}

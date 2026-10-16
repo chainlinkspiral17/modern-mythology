@@ -1,0 +1,102 @@
+{
+  "id": "dw_2019-09-08_the_plain_bag",
+  "title": "Sunday · the plain bag",
+  "strip": "drift_wood",
+  "date": "2019-09-08",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Plain Bag",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · Sundays · deepening xvii)",
+  "logline": "The Plain Bag's Sunday, the week before the dailies: the dog-food bag with no logo, drawn three ways — on the shelf, in the Legacy's back, on the garage floor with the pup's head in it. The letter that asked for the logo: reserved. The bag: plain.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium tier",
+      "composition": "Tier 1: a plain brown bag of dog food on a grocery shelf between two branded ones, its face blank.",
+      "characters": [],
+      "props": [
+        "the plain bag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a plain brown paper bag of dog food with no logo on a grocery shelf between two branded bags, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shelf"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the bag in a station wagon's back, the pup's nose over the seat at it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "nose over the seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plain bag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a plain brown dog-food bag in the back of a station wagon with a small three-legged dog's nose coming over the seat toward it, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Car"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the bag on the garage floor, open, the pup's whole head in it, the lamp.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "head in the bag",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plain bag, open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a plain brown dog-food bag open on a garage floor with a small three-legged dog's whole head inside it, a lamp lit above, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Floor"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The letter: reserved. The bag: plain.",
+  "layout": "tiers, portrait page"
+}

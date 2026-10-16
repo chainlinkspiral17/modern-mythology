@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-11-24_the_glow_from_the_garage_roof",
+  "title": "The glow from the garage roof",
+  "strip": "roflcopter",
+  "date": "2025-11-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "Before the road in: the glow from the garage's roof at night, over the tavern's sign's back, over the ridge, the largest it's been from town. The sequence's first page in the box; the book prints the road first. The page decides to go.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From a garage roof at night: the back of a tavern's sign in the foreground, the town's few lights, and over the ridge beyond a warm glow larger than before, a man's shoulder in plaid at the frame's edge.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the glow, from town"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, from a garage roof at night the back of a tavern's neon sign in the foreground, a small town's few lights and over a wooded ridge beyond a large warm glow, a man's plaid shoulder at the frame's edge, no words",
+        "negative": "",
+        "notes": "Box order: first; book order: after ro_2025-11-16."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Decides to go.",
+  "layout": "single page, no borders"
+}

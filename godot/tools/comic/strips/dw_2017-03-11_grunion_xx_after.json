@@ -1,0 +1,156 @@
+{
+  "id": "dw_2017-03-11_grunion_xx_after",
+  "title": "The Grunion Run, 2017 · after",
+  "strip": "drift_wood",
+  "date": "2017-03-11",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "The morning after the twentieth: the nine lanterns back on the shelf, and the girl, seven, asking why there used to be more. Wood says the fish moved. Gully says the people did. The girl writes both down. Two years later she'll ask again and get the same two answers.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. Nine lanterns going back on the shelf, GULLY lifting them. The GIRL with a notebook. WOOD on the stool. The PUP.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "shelving lanterns",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "with a notebook",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nine lanterns",
+        "a notebook"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Why'd there used to be more?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man lifting lanterns onto a shelf while a small girl with a notebook asks a question and a thin man sits on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The fish moved."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool giving a short answer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY, from the shelf.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "The people did."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man on a step stool giving a different short answer over his shoulder",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The GIRL writing both down.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "writing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small girl writing carefully in a notebook with her tongue between her teeth",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Both answers written down. Compare dw_2019-03-15."
+}

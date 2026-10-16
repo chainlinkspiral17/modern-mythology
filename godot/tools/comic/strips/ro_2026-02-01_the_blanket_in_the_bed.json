@@ -1,0 +1,57 @@
+{
+  "id": "ro_2026-02-01_the_blanket_in_the_bed",
+  "title": "The blanket in the bed",
+  "strip": "roflcopter",
+  "date": "2026-02-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The pup's bed under the table with the blanket in it, folded to hide the worn corner, and the pup, eleven, asleep with his chin on the fold. The page draws the fold.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A dog bed beneath a drafting table with a wool blanket folded into it, the worn corner tucked under, an old three-legged dog asleep with its chin on the fold, lamplight.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep, chin on the fold",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a dog bed beneath a drafting table with a wool blanket folded into it and an old three-legged dog asleep with its chin on the fold, lamplight, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The worn corner tucked under.",
+  "layout": "single page, no borders"
+}

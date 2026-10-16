@@ -1,0 +1,59 @@
+{
+  "id": "bk_2001-09-10_slash_the_dining_room",
+  "title": "SLASH · The dining room",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-09-10",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Aboard, at night: the riverboat's dining room with the tables set for no one, a hostess's stand with a reservation book open, one entry, Table 14, and a coat on the back of a chair at Table 14 — green. The framer with a flashlight and the wrong shoes for a boat.",
+  "cast": [
+    "extra_framer"
+  ],
+  "location": "bk_riverboat_dining_room",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: a riverboat's dining room at night by flashlight, tables set with glasses catching the beam, a hostess stand with an open reservation book, and at one table a chair with a green coat over its back; a man in the doorway in street shoes.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "in the doorway with a flashlight",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the reservation book",
+        "the green coat on the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a riverboat's dining room at night lit by a single flashlight beam, tables set with glasses, a hostess stand with an open book, a chair with a coat over its back at one table, a man in the doorway",
+        "negative": "",
+        "notes": "Table 14 (Vol 5: Mr. D. Dean's table). The book's one entry: letter '14' only. The coat: hers."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "One entry. Table 14.",
+  "layout": "single image"
+}

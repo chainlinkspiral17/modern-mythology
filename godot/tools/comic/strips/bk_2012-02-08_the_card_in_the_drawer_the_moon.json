@@ -1,0 +1,60 @@
+{
+  "id": "bk_2012-02-08_the_card_in_the_drawer_the_moon",
+  "title": "THE CARD IN THE DRAWER · The flats by moon",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2012-02-08",
+  "run": 4,
+  "era": "era3",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The third card, February: two dogs, a crab, a moon. He redraws it as the flats at night — he has drawn this before, in a motel on the sabbatical, and doesn't remember — with the old dog, thirteen, and a second dog that isn't there, and the crab from the flyer climbing from a channel. The card names the thing twice.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: mudflats at night under a full moon with an old dog and a second dog's outline, a crab climbing from a channel between them, two dock pilings for towers. No numeral, no title; the card's name is the thing.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "old, head up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crab",
+        "a second dog's outline",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it tidal mudflats at night under a full moon with an old dog and the faint outline of a second dog, a crab climbing from a channel between them and two dock pilings standing like towers, no words legible",
+        "negative": "",
+        "notes": "XVIII, the Moon — see also THE LONG WAY BACK stop XVIII (2010); he drew it there and doesn't remember. The second dog's outline: the next dog, three years early."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "Names the thing twice.",
+  "layout": "a single card"
+}

@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-09-22_the_sacks_cover",
+  "title": "The sacks cover",
+  "strip": "drift_wood",
+  "date": "2000-09-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Seattle, Three Days",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is two grease sacks, folded, on a spackle bucket in the alley. Tuesday's. They held up. The owner says clams. Wood says clams. She says from Tuesday. He says from Tuesday. She lets it go. The strip's own evidence, on its cover.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: two wax-paper grease sacks, folded flat, on an upturned spackle bucket in a rain alley.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing two folded wax-paper grease sacks on an upturned bucket in a wet alley, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Clams."
+        },
+        {
+          "who": "WOOD",
+          "text": "Clams."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "From Tuesday."
+        },
+        {
+          "who": "WOOD",
+          "text": "From Tuesday."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet and speaking to a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner. Letting it go. Her face says she's read Monday and Tuesday and Wednesday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner's face, letting something go, having read everything, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The rack. The sacks facing the room. Tuesday's. The strip's evidence against itself, on its own cover. Nobody in the strip notices. The owner isn't in the strip. She noticed.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet in a wire rack with two folded sacks on its cover, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'From Tuesday.' The evidence on the cover. She noticed; she's not in the strip."
+}

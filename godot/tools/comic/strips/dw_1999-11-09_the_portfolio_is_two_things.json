@@ -1,0 +1,107 @@
+{
+  "id": "dw_1999-11-09_the_portfolio_is_two_things",
+  "title": "The portfolio is two things",
+  "strip": "drift_wood",
+  "date": "1999-11-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The application wants a portfolio. Wood lays out everything he's made. Two things survive his own eye: the crab and the estuary. The digests don't count. He says so.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The bedroom floor covered: digests, Timberline pages, the Spring Special, loose strips. WOOD standing in the middle of it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing in a bedroom with the floor covered in photocopied comic strips and newspaper pages, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood picking up sheets and putting them down. A stack growing by the door: rejected.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sorting sheets of paper on a bedroom floor, a discarded stack growing by the door, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Two sheets on the bed: the crab flyer's original, the estuary. Nothing else.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on two drawings laid on a bed: a hatched crab and a wide estuary at low tide, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, to the digests on the floor.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You don't count. You're the thing I do. They want the thing I make."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man looking down at a floor of photocopied comic booklets, talking to them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two drawings. 'You're the thing I do.' Chloe will say it back in Oct 2000."
+}

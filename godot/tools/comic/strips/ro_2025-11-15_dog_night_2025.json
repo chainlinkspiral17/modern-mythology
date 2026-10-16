@@ -1,0 +1,64 @@
+{
+  "id": "ro_2025-11-15_dog_night_2025",
+  "title": "Dog Night, 2025",
+  "strip": "roflcopter",
+  "date": "2025-11-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "Twenty-six years. The dumpster. The sign — how many letters, reserved; most dark. The pup, eleven. A man's back. Rain. No caption, like every private Dog Night.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The alley behind the Lanes in rain, the dumpster, the man from behind in a rain shell now over the flannel, the old dog sitting close against his leg for warmth. The sign above with nearly every tube dark — the word a gap. The lot beyond the alley mouth empty. No caption.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, rain shell",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "pressed against his leg",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster",
+        "the sign, nearly all dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a rain-soaked alley behind a bowling alley at night with a dumpster, a man seen from behind in a rain shell with an old three-legged dog pressed against his leg, the neon sign above with nearly every letter dark so the word reads as a gap, an empty lot beyond, no words",
+        "negative": "",
+        "notes": "Letters lit: reserved; nearly none. No caption."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-six. Nearly all dark. Uncaptioned.",
+  "layout": "single page, no borders"
+}

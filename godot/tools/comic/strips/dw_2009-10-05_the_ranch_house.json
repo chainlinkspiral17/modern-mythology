@@ -1,0 +1,196 @@
+{
+  "id": "dw_2009-10-05_the_ranch_house",
+  "title": "The ranch house",
+  "strip": "drift_wood",
+  "date": "2009-10-05",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ranch House",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Gully's half-acre of hemlock. Wood visits. The strip is very quiet about how it feels.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A small ranch house on a half-acre, hemlocks all round, a gravel drive, a flatbed. GULLY on the porch. MARIA in the window. WOOD and BARNABY arriving on foot.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "on the porch",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "in the window",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "arriving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ranch house",
+        "hemlocks",
+        "flatbed",
+        "porch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small ranch house on a half-acre among hemlock trees, a gravel drive with a flatbed truck, a stocky man on the porch, a woman in the window, a thin man and a gray-muzzled dog arriving on foot, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The kitchen. A real table. Maria setting down three plates. Chowder. A fourth bowl, on the floor, for the dog.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "setting plates",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the fourth bowl",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "kitchen table",
+        "three plates",
+        "a dog bowl"
+      ],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "He gets the bowl. You get the chair."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've never had a chair here."
+        },
+        {
+          "who": "MARIA",
+          "text": "You've never been here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small kitchen with three plates of chowder on a real table and a fourth bowl on the floor for a dog, a practical woman setting them down",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood at the table. Looking at the room: curtains, a calendar, a photo of the dock wedding already framed — in cedar. His frame. He recognizes the cut.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at a framed photo",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed wedding photo in cedar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thin man at a kitchen table looking at a framed wedding photograph on the wall in a plain cedar frame, recognizing it, no words",
+        "negative": "",
+        "notes": "His frame. He cut it. The strip lets him notice."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "After. The porch. Gully and Wood. The hemlocks. Maria's shape in the window doing dishes. The dog asleep on the porch boards. Nobody says the thing.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "porch",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "porch",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "porch",
+        "hemlocks",
+        "window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men sitting on a ranch-house porch at dusk among hemlocks, a woman's shape in the lit kitchen window, a dog asleep on the boards, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Gully's house. His frame on their wall. The strip is quiet."
+}

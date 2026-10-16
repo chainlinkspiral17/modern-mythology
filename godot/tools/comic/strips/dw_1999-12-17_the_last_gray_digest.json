@@ -1,0 +1,132 @@
+{
+  "id": "dw_1999-12-17_the_last_gray_digest",
+  "title": "The last gray digest",
+  "strip": "drift_wood",
+  "date": "1999-12-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The third gray digest, the last before the machine comes back. The cover: the laundromat's window with the two skeletons still up, one paper, one ink, and now a wreath. The owner has kept the ink one.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the laundromat window from the street, two skeletons and a wreath, gray.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a gray photocopied booklet cover showing a shop window with two skeletons and a wreath, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The real window: the paper skeleton, the ink skeleton, a wreath between them. WOOD outside looking at it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat window with a paper skeleton and an ink drawing of a skeleton with a wreath between them, a young man and a dog outside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Inside. The LAUNDRY owner.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You kept it."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "It's a skeleton. They keep."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a drawing of a—"
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "It keeps."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner at her counter speaking to a young man in the doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The rack: three gray digests, then the black one from November. The machine comes back in January. The gray ones stay in the rack; nobody takes them. Wood finds that right.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wire rack holding three faded gray booklets beside one crisp black-and-white one in a laundromat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'It keeps.' Nobody takes the gray ones. He finds that right."
+}

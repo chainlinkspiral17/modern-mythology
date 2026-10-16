@@ -1,0 +1,163 @@
+{
+  "id": "dw_2014-07-18_the_lawn",
+  "title": "The lawn",
+  "strip": "drift_wood",
+  "date": "2014-07-18",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Friday. The pavilion's lawn, the day before the rehearsal. Chloe, in running clothes, finds him on the grass with the sketchbook. She sits. Julian is a shape on the lawn's far side, talking to a caterer. The strip's first sight of her that week.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "extra_julian"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The pavilion's lawn sloping to the Sound, morning, blinding. WOOD sitting on the grass in the chore coat with the sketchbook. Far across the lawn, by a van: a pleasant SHAPE in a linen shirt, talking to a caterer — Julian, drawn as a shape.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the grass",
+          "expression": ""
+        },
+        {
+          "id": "extra_julian",
+          "pose": "a shape by a van, far",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn",
+        "the pavilion",
+        "a caterer's van"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a wide sloping lawn above blue water in blinding morning light with a glass and cedar pavilion, a thin man in a chore coat sitting on the grass with a sketchbook, a pleasant indistinct figure in linen far off by a catering van",
+        "negative": "",
+        "notes": "Julian: a pleasant shape, deliberately neutral, never a face."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "CHLOE arriving from a run, sitting down beside him without asking. Her hand — the ring drawn right now, since March 2013.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "sitting down, in running clothes",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ring, drawn right"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You came."
+        },
+        {
+          "who": "WOOD",
+          "text": "I said will attend."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You said it with a checkmark, Woody."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a woman in running clothes sitting down on a lawn beside a thin man with a sketchbook, morning light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The sketchbook between them. The page: the pavilion, its glass, drawn in twelve lines. She looks at it. Her face: the face from the newsroom, 1997, proofing.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "looking at the page, proofing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sketchbook"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a woman looking at a sketchbook page showing a glass pavilion in a dozen precise lines, her expression appraising",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them on the grass from behind. The Sound. The shape by the van, far off, raising a hand to her. She raises one back. Wood doesn't turn.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "from behind, raising a hand",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "from behind, not turning",
+          "expression": ""
+        },
+        {
+          "id": "extra_julian",
+          "pose": "raising a hand, far",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, two people seen from behind sitting on a lawn above blue water, the woman raising a hand to a distant figure who waves back, the man not turning, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'You said it with a checkmark.' Julian a shape by a van."
+}

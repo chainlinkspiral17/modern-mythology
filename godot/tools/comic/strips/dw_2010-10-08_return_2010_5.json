@@ -1,0 +1,137 @@
+{
+  "id": "dw_2010-10-08_return_2010_5",
+  "title": "Return, v",
+  "strip": "drift_wood",
+  "date": "2010-10-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Return · deepening)",
+  "logline": "Friday. The first new Sunday, ruled. Wood at the Arches with the blue pencil. The tiers. He rules them and sits. The strip ends the week with the paper still blank, on purpose.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A sheet of Arches on the board. WOOD ruling tiers with a blue pencil. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "ruling tiers",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Arches",
+        "blue pencil"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, a man ruling horizontal tier lines on a sheet of watercolor paper with a blue pencil in a garage",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Three tiers, ruled. Blank. The pencil set down.",
+      "characters": [],
+      "props": [
+        "three ruled tiers, blank"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, close-up of a blank sheet ruled into three horizontal tiers in blue pencil with the pencil laid beside it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting back. Looking at the blank. The dog looking at the blank.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the blank",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the blank",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, a man and an old dog both looking at a blank ruled sheet, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the door. The board. The blank sheet, ruled. Sunday will be the first landscape in nine months. The strip stops before the first stroke.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blank ruled sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, a garage studio from its doorway with a blank ruled sheet on a drawing board, a man seated before it and an old dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The Sunday ruled and blank. The week ends before the first stroke."
+}

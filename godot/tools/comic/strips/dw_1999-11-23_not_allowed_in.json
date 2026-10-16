@@ -1,0 +1,132 @@
+{
+  "id": "dw_1999-11-23_not_allowed_in",
+  "title": "Not allowed in",
+  "strip": "drift_wood",
+  "date": "1999-11-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Thanksgiving, with the dog",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college doesn't allow dogs. The guard says so. Wood says the dog is auditing. The guard has heard that one. The dog waits in the car with the heater ticking.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The college entrance. WOOD with BARNABY on the new leash. The GUARD at the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "No dogs."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's auditing."
+        },
+        {
+          "who": "GUARD",
+          "text": "I've heard that one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man with a small dog on a leash stopped at a college building's entrance by a security guard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog looking up at the guard. The guard looking down. A beat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small scruffy dog and a security guard regarding each other at a doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The guard, crouching. A hand out. The dog's chin in it.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "...Still no dogs."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard crouched at a doorway with a small dog's chin resting in his hand, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun in Lot C, engine off, the dog in the window, a coat over the seat. Wood walking away backward. The guard watching the car, not Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car in a rainy lot with a dog in the window, a young man walking backward toward a building, a guard watching the car, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I've heard that one.' The guard and the dog."
+}

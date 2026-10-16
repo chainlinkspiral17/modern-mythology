@@ -1,0 +1,147 @@
+{
+  "id": "dw_2017-11-15_dog_night_2017",
+  "title": "The Dog Night, 2017",
+  "strip": "drift_wood",
+  "date": "2017-11-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Eighteen years. The dumpster's gone. A recycling bin. The strip stands where it was.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Behind the Lanes. The bulb. Where the dumpster stood: a blue municipal recycling bin, clean, wheeled. The chain-link. WOOD and BARNABY II standing where the dumpster was.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing at the old spot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blue recycling bin",
+        "chain-link",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog standing behind a bowling alley at night under a bulb where a rusted dumpster used to be, a clean blue wheeled recycling bin there instead, clean ink, no words",
+        "negative": "",
+        "notes": "The dumpster is gone. A recycling bin. The strip stands on the spot."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The gravel. A rust stain in the shape of the dumpster's footprint. Wood's boot at its edge.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "boot at the edge of the stain",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rust-stained gravel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of gravel stained with a rectangular rust outline where a dumpster stood for years, a man's boot at its edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting on the gravel inside the stain's outline. The pup in his lap. The bin behind them, blue and wrong.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting inside the outline",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in his lap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the outline",
+        "the bin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on gravel inside a rust-stained rectangular outline with a three-legged dog in his lap, a clean blue recycling bin behind them, bulb light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign. Five letters dark: S _ ALL W _ _ D L _ NES. Wood walking under it with the pup.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking under the sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon with five letters dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog walking beneath a bowling-alley neon sign with five letters gone dark, night, no words",
+        "negative": "",
+        "notes": "Five dark. Draw the sign so the dead letters are legible as gaps."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The dumpster gone. He sits in its outline. Five dark."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dw_2009-07-12_a_ribbon_on_a_piling",
+  "title": "Sunday · a ribbon on a piling",
+  "strip": "drift_wood",
+  "date": "2009-07-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Best Man",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "A month after the wedding: the dock, and on one piling, the dog's ribbon, tied there by Maria, going gray in the weather. The strip lets it stay through the summer.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock in July light, and on the last piling, a ribbon tied in a bow, already sun-faded, moving in the wind.",
+      "characters": [],
+      "props": [
+        "the ribbon on the piling"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock in July light with a faded ribbon tied in a bow on the last piling moving in the wind, no words",
+        "negative": "",
+        "notes": "The dog's ribbon (dw_2009-06-11). Maria tied it there."
+      },
+      "stage": null,
+      "name": "Piling"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the ribbon, close, salt in the weave.",
+      "characters": [],
+      "props": [
+        "the ribbon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a faded ribbon tied to a weathered piling with salt crusted in its weave, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ribbon"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the bay from the dock's end, the ribbon's shadow on the planks. Held.",
+      "characters": [],
+      "props": [
+        "the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a calm bay from a dock's end with a small ribbon's shadow on the planks, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bay"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The ribbon, left. Maria tied it.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dw_2006-03-12_lanterns_lit",
+  "title": "Sunday · lanterns, lit",
+  "strip": "drift_wood",
+  "date": "2006-03-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The Grunion beach the Sunday after the run, at night, in the strip's memory: dozens of lanterns lit along the surf, a landscape of small lights. The year the color could do night.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach at night, dozens of lanterns along the surf line, their lights doubled in the wet sand, the sea black beyond.",
+      "characters": [],
+      "props": [
+        "dozens of lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with dozens of lanterns along a surf line doubled in wet sand and a black sea beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lights"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the surf, silver with fish, in lantern light.",
+      "characters": [],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a surf line silver with small fish in warm lantern light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Fish"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the beach from far down it: the lights a string, the bluff, the town's few windows above. Held.",
+      "characters": [],
+      "props": [
+        "a string of lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long night beach seen from far along it with a string of lantern lights and a few town windows on a bluff above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Far"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The year the color could do night. Dozens of lanterns; compare 2019's nine.",
+  "layout": "tiers, portrait page"
+}

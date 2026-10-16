@@ -1,0 +1,121 @@
+{
+  "id": "dw_1999-10-27_the_paper_skeleton",
+  "title": "The paper skeleton",
+  "strip": "drift_wood",
+  "date": "1999-10-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Halloween, refused",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The laundromat owner asks him to draw something for the window. He draws the paper skeleton, exactly, next to the paper skeleton. She hangs it. Two skeletons.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner pointing at the window: the paper skeleton, jointed, taped up. WOOD.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Draw me something for the window."
+        },
+        {
+          "who": "WOOD",
+          "text": "I don't do—"
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Something."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner pointing at a jointed paper skeleton taped in the front window while a young man looks on, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood drawing the skeleton. Exactly. Every joint. On the back of a digest cover.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's pen drawing a jointed paper skeleton exactly on the back of a photocopied sheet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The drawing taped up beside the skeleton. Two skeletons, one paper, one ink.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat window with a paper skeleton taped beside an ink drawing of the same skeleton, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "From the sidewalk: the window, the two skeletons, the owner behind the glass with her arms folded, satisfied. Wood already walking off.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat window from the sidewalk with two skeletons in it and a satisfied owner behind the glass, a young man walking away, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Something.' Two skeletons. The first commission."
+}

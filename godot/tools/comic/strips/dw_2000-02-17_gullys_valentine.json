@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-02-17_gullys_valentine",
+  "title": "Gully's valentine",
+  "strip": "drift_wood",
+  "date": "2000-02-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Valentine, Unsent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully has a valentine. It's for the dog. A walrus holding a heart, on a napkin, with a maple bar taped to it. The dog eats the maple bar and the napkin. Gully considers this a success.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock. GULLY with a folded napkin and a maple bar taped to it. BARNABY already knowing. WOOD.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager on a dock holding a folded napkin with a maple bar taped to it while a small dog watches intently, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The napkin open: a walrus holding a heart, ballpoint. The bar.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a napkin with a ballpoint drawing of a walrus holding a heart, a maple bar taped beside it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog eating the bar. And the napkin. Gully watching, pleased.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog eating a pastry and the napkin it came on while a teenager watches with satisfaction, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He ate the card."
+        },
+        {
+          "who": "GULLY",
+          "text": "He liked it."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's not—"
+        },
+        {
+          "who": "GULLY",
+          "text": "He ate it, Woody."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a dock, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'He ate it, Woody.' The walrus with a heart: the only valentine in the run that gets answered."
+}

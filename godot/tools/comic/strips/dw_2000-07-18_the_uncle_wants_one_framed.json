@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-07-18_the_uncle_wants_one_framed",
+  "title": "The uncle wants one framed",
+  "strip": "drift_wood",
+  "date": "2000-07-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully Draws",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle, without preamble, hands Wood a napkin and says frame it. A walrus. Gully's. Gully is out on the skiff. The uncle says don't tell him. Wood takes it to the shop Tuesday in his coat pocket with the misfold, the note, the pulled strip. The pocket has a walrus now.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The chair. The UNCLE holding out a folded napkin without looking at WOOD. The skiff far out on the bay with GULLY in it, a speck.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair holding out a folded paper napkin to a young man without looking at him, a distant skiff on the bay behind, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The napkin: a walrus, the first one, 1998's line — no. This year's. The walrus in the crown.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a paper napkin with a ballpoint walrus wearing a crown, black and white, no words",
+        "negative": "",
+        "notes": "The walrus king from dw_2000-01-19."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Frame it."
+        },
+        {
+          "who": "WOOD",
+          "text": "He'll—"
+        },
+        {
+          "who": "UNCLE",
+          "text": "Don't tell him."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old weathered man in a lawn chair, flat, the oxygen line, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The napkin going into Wood's coat pocket with the other things. The pocket, from inside: a misfold, a note, a pulled strip, a walrus.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's coat pocket receiving a folded napkin among a folded booklet, a note and a folded comic strip, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Don't tell him.' The pocket has a walrus now."
+}

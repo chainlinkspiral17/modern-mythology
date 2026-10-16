@@ -1,0 +1,100 @@
+{
+  "id": "dw_2018-04-15_the_bay_april",
+  "title": "Sunday · the bay, April",
+  "strip": "drift_wood",
+  "date": "2018-04-15",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "A plain one. The bay in April, the pup at the water, the dock. Twelve of fifty; the book needs the plain ones so the others land.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bay from the beach in April, soft light, the dock across the water, the pup at the tideline.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the tideline",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a calm bay from a beach in April light with a distant dock and a small three-legged dog at the tideline, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "April"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the pup, wet to the chest, looking at something in the water.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "wet, looking into the water",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a small wiry dog wet to the chest looking down into shallow water, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wet"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the water, calm, the light on it. Held.",
+      "characters": [],
+      "props": [
+        "calm water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, calm bay water with soft April light on it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Calm"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "A plain Sunday, kept so the others land.",
+  "layout": "tiers, portrait page"
+}

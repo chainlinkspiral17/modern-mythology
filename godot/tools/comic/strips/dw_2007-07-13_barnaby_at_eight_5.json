@@ -1,0 +1,126 @@
+{
+  "id": "dw_2007-07-13_barnaby_at_eight_5",
+  "title": "Barnaby at eight, v",
+  "strip": "drift_wood",
+  "date": "2007-07-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Barnaby at Eight",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Barnaby at Eight · deepening)",
+  "logline": "Friday. Before the Sunday: the walk, once more, drawn as the route on a map — the alley, the road, the post, the stairs, the log — with the dog's line on it. The map of a dog's life so far. Wood pins it.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD drawing a map: the alley, the beach road, the post, the stairs, the beach, the log. A dotted line along it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing a map",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the map of the walk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man drawing a small hand-lettered map of a walking route from an alley to a beach with a dotted line along it, a dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The map. The dotted line. At the post, a small loop. At the log, an X. In a corner: 1999–.",
+      "characters": [],
+      "props": [
+        "the map, close"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a hand-drawn map of a short walking route with a dotted line, a small loop at a post and an X at a log",
+        "negative": "",
+        "notes": "Letter after: 1999– in the corner. Open-ended."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog looking at the map. Not recognizing it. It's his; he's never seen it from above.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at the map",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dog looking at a map on a table without recognition, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The map pinned to the corkboard, beside the 1999 schedule. Two routes. One taken every day.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning the map",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the map beside the schedule"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man pinning a small hand-drawn map to a corkboard beside a folded bus schedule, no words",
+        "negative": "",
+        "notes": "Corkboard inventory: the walk map, July 2007."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The walk as a map, 1999–. Pinned beside the schedule."
+}

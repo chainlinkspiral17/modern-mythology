@@ -1,0 +1,51 @@
+{
+  "id": "bk_2027-02-03_the_backward_digest_the_misfold_used",
+  "title": "THE BACKWARD DIGEST · The misfold, used",
+  "strip": "backup",
+  "series": "THE BACKWARD DIGEST",
+  "date": "2027-02-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the print tech's misfold of Sept 30, 1999 · Box 23 onward",
+  "arc": "THE BACKWARD DIGEST",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The last experiment: a page drawn on the actual 1999 misfolded digest from the corkboard, taken down after twenty-eight years, unfolded — the backward page now the right way round — and over its old xerox strip a new drawing in the private washes of the corkboard with a pin hole where the digest hung. The object drawn on the object. Pinned back backward when dry.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An unfolded quarter-letter digest page with a xeroxed 1999 comic strip on it, and drawn over it in muted washes a corkboard with an empty pin hole and a faint rectangle where the same digest hung, a pushpin lying on the drafting table beside the page.",
+      "characters": [],
+      "props": [
+        "the 1999 misfold",
+        "the pin hole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an unfolded small photocopied comic digest page with a 1999 strip on it and drawn over it in muted washes a corkboard with an empty pin hole and a faint rectangle, a pushpin lying beside the page on a drafting table, no words legible",
+        "negative": "",
+        "notes": "The backward digest (objects.md · Wood's corkboard, 1999; kept through 2027). Taken down, drawn on, pinned back backward. Compare ro_2021-01-06."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, turned: mirrored, overlaid, folded",
+    "palette": "the private washes; the 1997 xerox black where 1997 is quoted",
+    "paper": "Arches; one page on a printed misfold"
+  },
+  "notes": "The object drawn on the object.",
+  "layout": "a drawing on the artifact"
+}

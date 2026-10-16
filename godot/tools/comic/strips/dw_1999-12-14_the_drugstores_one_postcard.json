@@ -1,0 +1,118 @@
+{
+  "id": "dw_1999-12-14_the_drugstores_one_postcard",
+  "title": "The drugstore's one postcard",
+  "strip": "drift_wood",
+  "date": "1999-12-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The drugstore sells one postcard of Small Wood: the bay, faded, from before Wood was born. He buys ten. The CLERK asks who he knows in ten places. He says one place, ten times.",
+  "cast": [
+    "wood_20",
+    "extra_clerk"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drugstore's card rack: Christmas cards, and one slot of postcards, all the same: the bay, faded, a color photo gone blue. WOOD taking the whole slot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drugstore card rack with a single slot of identical faded postcards of a bay, a young man taking the whole stack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The postcard: the bay, the boat launch, the shack newer, the water bluer than it is.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a faded color postcard of a small bay with a boat launch and a newer bait shack, the colors gone blue, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The CLERK at the register.",
+      "characters": [
+        {
+          "id": "extra_clerk",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CLERK",
+          "text": "Ten. Who do you know in ten places."
+        },
+        {
+          "who": "WOOD",
+          "text": "One place. Ten times."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drugstore clerk at a register ringing up a stack of postcards for a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood out on the sidewalk with the ten cards in his coat, the real bay at the end of the street, gray, not blue. The dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a rainy sidewalk with a small dog, a gray bay at the end of the street, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Ten postcards, one place. The reply of Dec 22 comes from this stack."
+}

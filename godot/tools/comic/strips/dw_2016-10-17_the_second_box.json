@@ -1,0 +1,140 @@
+{
+  "id": "dw_2016-10-17_the_second_box",
+  "title": "The second box",
+  "strip": "drift_wood",
+  "date": "2016-10-17",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Second Box",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Gully leaves an EMPTY box on the porch. The pup guards it. The strip reconciles its own two dates with a joke.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The porch, morning. A produce box on the top step — the same stamp, ALICE'S WHOLESALE BAIT & SMOKED MEATS. GULLY walking away down the gravel, hands in pockets, not looking back. Exactly the Tier 1 of two years ago.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "walking away",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "produce box",
+        "gravel drive",
+        "flatbed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide view down a gravel driveway from a porch: a stocky man in a canvas jacket walking away toward a flatbed truck with his hands in his pockets, a waxed produce box on the top cedar step, a deliberate repeat of a familiar composition, clean ink with a light wash",
+        "negative": "",
+        "notes": "A deliberate repeat of 'The Box' Tier 1. Same everything."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The storm door. WOOD with the mug. BARNABY II shooting past his legs at the box.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the door with a mug",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "shooting past to the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "storm door",
+        "mug"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man opening a storm door with a coffee mug as a three-legged dog shoots past his legs toward a box on the step",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The box, open. Empty. Shredded newspaper. A butcher-paper note in grease pencil: 'Nothing in it. Checking you still open the door. — G.'",
+      "characters": [],
+      "props": [
+        "empty box",
+        "note"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an open produce box with only shredded newspaper inside and a butcher-paper note in blocky grease pencil taped to the side",
+        "negative": "",
+        "notes": "Letter after: Nothing in it. Checking you still open the door. — G."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup standing in the empty box, guarding it, chest out, three legs, exactly as if it were his again. Wood on the step, mug, reading the note, not laughing, almost.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "standing in the empty box, chest out",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the step, note in hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "box",
+        "note",
+        "mug"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog standing proudly inside an empty produce box on a porch step, a man sitting beside it with a mug reading a note and almost smiling, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The brief's 2016 box, reconciled: empty, a check-in. 'Checking you still open the door.'"
+}

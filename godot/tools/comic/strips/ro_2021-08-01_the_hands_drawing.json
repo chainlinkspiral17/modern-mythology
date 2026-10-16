@@ -1,0 +1,57 @@
+{
+  "id": "ro_2021-08-01_the_hands_drawing",
+  "title": "The hands, drawing",
+  "strip": "roflcopter",
+  "date": "2021-08-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The drafting table from above and behind: two hands, a pen, a page with a seawall on it half done, the lamp. No head in the frame. The sequence's rule from directly above.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From above and behind a drafting table: two hands, one holding a pen, over a half-drawn page of a seawall, the lamp's circle, the edge of a plaid shoulder, no head in frame.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "hands, from above",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the half-drawn page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from above and behind a drafting table, two hands one holding a pen over a half-drawn page showing a seawall, a lamp's circle of light and the edge of a plaid shoulder, no head in frame, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "From directly above.",
+  "layout": "single page, no borders"
+}

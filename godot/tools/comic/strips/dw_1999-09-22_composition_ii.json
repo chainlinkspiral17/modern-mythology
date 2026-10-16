@@ -1,0 +1,167 @@
+{
+  "id": "dw_1999-09-22_composition_ii",
+  "title": "Composition II",
+  "strip": "drift_wood",
+  "date": "1999-09-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "He audits the class. The class audits him.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A community-college classroom. Adults of every age. An INSTRUCTOR at the board: THESIS → EVIDENCE → CONCLUSION. WOOD in the back, the only one in an overcoat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "back row, overcoat",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "at the board",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "whiteboard",
+        "adult students"
+      ],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "A thesis is a promise you make to the reader."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a community college writing classroom with students of all ages, an instructor at a whiteboard, a thin young man in a chore coat alone in the back row",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, writing. Not notes. A strip.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing under the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad under the desk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man drawing a comic strip on a pad hidden under a classroom desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The instructor, suddenly beside him.",
+      "characters": [
+        {
+          "id": "extra_instructor",
+          "pose": "beside his desk, looking down",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "caught",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "And what's your thesis, Mr. — you're not on my list."
+        },
+        {
+          "who": "WOOD",
+          "text": "Auditing."
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "Then what's your thesis, auditor?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an instructor standing beside a back-row desk looking down at a caught student with a drawing pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood holding up the pad: a drawing of the classroom, everyone in it, the instructor mid-word, done in ninety seconds. The instructor looks at it. Says nothing. Walks back to the board.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding up the pad",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "walking back to the board",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawing of the class"
+      ],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "...Evidence, at least.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding up a pad with a fast detailed sketch of the whole classroom while the instructor walks back to the whiteboard without comment",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": ""
+}

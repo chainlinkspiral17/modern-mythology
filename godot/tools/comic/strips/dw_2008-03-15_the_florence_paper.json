@@ -1,0 +1,140 @@
+{
+  "id": "dw_2008-03-15_the_florence_paper",
+  "title": "The Florence paper",
+  "strip": "drift_wood",
+  "date": "2008-03-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Newsprint",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newsprint · deepening)",
+  "logline": "Saturday. Florence's reply: the gull restored, and, by mistake or not, printed twice as big. Wood pins that page over the parody on the corkboard, where the Feb 25 page already is. Two pages over one parody.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The Florence weekly. WOOD looking at the strip in it: the gull, restored, and huge — the size of a panel.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the paper",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the paper: a huge gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man looking at a newspaper strip where the tiny signature gull has been printed enormous, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The gull. Bigger than the dog in panel four beside it.",
+      "characters": [],
+      "props": [
+        "the huge gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a newspaper comic where a signature gull mark is printed larger than the dog in the strip",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "They fixed it."
+        },
+        {
+          "who": "WOOD",
+          "text": "They fixed it so hard."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man holding a newspaper and speaking to a small dog, dry",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. The Feb 25 page over the parody printout. The Florence page pinned over that. Two newsprint pages over one stick figure. The gull, huge, facing out.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two pages over the parody"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man pinning a second newspaper page over a first on a corkboard, both covering a printout beneath, a large gull mark facing out, no words",
+        "negative": "",
+        "notes": "Corkboard inventory: Florence's big gull, Mar 2008, over the parody."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'They fixed it so hard.' Two pages over the parody."
+}

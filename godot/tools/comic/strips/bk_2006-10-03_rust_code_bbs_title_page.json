@@ -1,0 +1,58 @@
+{
+  "id": "bk_2006-10-03_rust_code_bbs_title_page",
+  "title": "RUST_CODE.BBS · title page",
+  "strip": "backup",
+  "series": "RUST_CODE.BBS",
+  "title_page": true,
+  "date": "2006-10-03",
+  "run": 3,
+  "era": "era2",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · drawn during Message Boards · never posted",
+  "arc": "RUST_CODE.BBS",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. ACTIVE NODES: 64",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "The garage's beige monitor filling the page, its screen gray with the banner in phosphor-green blocks and the title legible across it, a cursor blinking after the last letter; on the desk before it the four stick figures' shadows thrown long by the screen's light, the figures themselves out of frame.",
+      "characters": [],
+      "props": [
+        "the beige monitor",
+        "four shadows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "muddy early-digital comic page, a beige CRT monitor filling the frame with a gray screen carrying a banner of phosphor-green block capitals and a blinking cursor, on the desk before it four tiny stick-figure shadows thrown long by the screen light with the figures out of frame",
+        "negative": "",
+        "notes": "ACTIVE NODES: 64 (Vols 5–7). The chorus is out of frame; their shadows aren't."
+      },
+      "stage": null,
+      "lettering": [
+        "RUST_CODE.BBS",
+        "drawn during Message Boards · never posted",
+        "ACTIVE NODES: 64",
+        "A. Finch"
+      ]
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen on bristol; the stick figures in ballpoint; the screen as a gray rectangle with a banner in it",
+    "palette": "muddy early-digital flats; the screen's phosphor green, once",
+    "paper": "bristol scanned; never posted"
+  },
+  "notes": "Title page. Letters exactly: RUST_CODE.BBS / drawn during Message Boards · never posted / ACTIVE NODES: 64 / A. Finch.",
+  "layout": "title page: the masthead over a single image"
+}

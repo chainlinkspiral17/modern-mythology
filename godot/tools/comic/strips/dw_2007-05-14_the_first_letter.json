@@ -1,0 +1,139 @@
+{
+  "id": "dw_2007-05-14_the_first_letter",
+  "title": "The first letter",
+  "strip": "drift_wood",
+  "date": "2007-05-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The First Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "A licensing letter. Wood uses it to level the drafting table.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. An envelope, heavy, embossed: a company logo. WOOD opening it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "opening a heavy envelope",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "embossed envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man opening a heavy embossed business envelope at a garage drafting table, a small dog watching, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The letter, drawn as a block of typed text with only a few words legible: 'ROLFCOPTR' · 'license' · 'plush' · 'territories' · a number with commas.",
+      "characters": [],
+      "props": [
+        "letter with a few legible words"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a typed business letter with most of the text as gray lines and only a few words legible, an embossed letterhead",
+        "negative": "",
+        "notes": "Legible words: ROLFCOPTR · license · plush · territories · a number with commas. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood folding the letter in half. In quarters. In eighths.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "folding",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the letter, folding"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man folding a letter smaller and smaller with great precision, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The folded letter wedged under the short leg of the drafting table. Wood testing the table: level. He goes back to drawing. The dog approves.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "testing the table, then drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "folded letter under the table leg"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Finally.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a tightly folded letter wedged under the short leg of a drafting table, a young man's hand testing the table's level, a dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The first refusal. The letter becomes a shim. The table has been uneven since 2004."
+}

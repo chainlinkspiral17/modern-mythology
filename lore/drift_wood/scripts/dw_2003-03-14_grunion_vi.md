@@ -1,0 +1,103 @@
+# The Grunion Run, vi
+
+`dw_2003-03-14_grunion_vi` · **DRIFT WOOD** · 2003-03-14 · daily4 (1x4 strip) · run 2 · The High School Zine Era · tier A · selection full
+Venue: the coast community-college paper, Newport · the laundromat digest · arc: *The Grunion Run*
+
+*Sixth year. Gully brings the machine's thermos. The whole beach drinks his coffee. Wood watches the town find him.*
+
+**Line.** brush-pen, committed; xerox; black and white  
+**Palette.** pure black and white; no grays; xerox grain  
+**Paper.** newsprint / the digest
+
+Cast: `wood_20`, `gully_17`, `barnaby`
+
+---
+
+## Panel 1
+
+*wide.* The beach, lanterns, the run. GULLY with a giant thermos and paper cups, a line of townspeople forming. WOOD and BARNABY at the edge, watching the line, not the fish.
+
+- **gully_17** · pouring coffee for a line of people
+- **wood_20** · watching the line
+- **barnaby**
+
+Props: thermos; paper cups; a line of townspeople; lanterns; fish
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, a night beach festival with lanterns, a young man in a backwards cap pouring coffee from a huge thermos for a line of townspeople in rain jackets, another young man watching the line with a small dog, silver fish in the surf beyond, brush-pen black and white, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 2
+
+*close.* Wood, to the dog.
+
+- **wood_20**
+- **barnaby**
+
+> **WOOD**: Look at that. Six years I've been drawing this beach and he walks onto it with a thermos and it's his.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, close-up of a young man speaking to a small dog while watching something off-panel with an unreadable expression, lantern light, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 3
+
+*close.* Gully, handing a cup to an old woman. Her face. She knows him. Everyone knows him.
+
+- **gully_17** · handing a cup
+- **extra_old_woman** · taking it, knowing him
+
+Props: cup
+
+> **OLD WOMAN**: Your uncle'd have liked this.
+> **GULLY**: He'd have said it was too hot.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, a young man handing a paper cup of coffee to an old woman in a rain hood who looks at him with recognition, lanterns, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 4
+
+*wide.* Silent. The fish. The line for coffee longer than the line for fish. Wood not drawing. Looking at Gully. The pad closed.
+
+- **wood_20** · pad closed, watching Gully
+- **gully_17** · pouring, small
+- **barnaby**
+
+Props: line; thermos; fish; lanterns
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, silent wide night panel of a beach where a line of people for coffee is longer than the line at the surf, a young man with a closed drawing pad watching his friend pour, small dog, silver fish, lanterns, black and white, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 23, thin young man with a slouch, three days' stubble, dark hair grown longer; GULLY — aged 24, stocky boy with a round face, easy slouch; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010; AN OLD WOMAN — a small old woman in a rain bonnet with a face that knows everyone. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. GULLY usually wears backwards blue cap, faded green hoodie, muddy tan work boots. AN OLD WOMAN usually wears a rain bonnet, a quilted coat. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Sixth year. Gully brings the machine's thermos. The whole beach drinks his coffee. Wood watches the town find him. Panel 1: a night beach festival with lanterns, a young man in a backwards cap pouring coffee from a huge thermos for a line of townspeople in rain jackets, another young man watching the line with a small dog, silver fish in the surf beyond, brush-pen black and white (in this panel: GULLY, WOOD, BARNABY (the dog)). No dialogue in this panel. Panel 2: close-up of a young man speaking to a small dog while watching something off-panel with an unreadable expression, lantern light (in this panel: WOOD, BARNABY (the dog)). Wood says "Look at that. Six years I've been drawing this beach and he walks onto it with a thermos and it's his.". Panel 3: a young man handing a paper cup of coffee to an old woman in a rain hood who looks at him with recognition, lanterns (in this panel: GULLY, AN OLD WOMAN). Old Woman says "Your uncle'd have liked this.". Gully says "He'd have said it was too hot.". Panel 4: silent wide night panel of a beach where a line of people for coffee is longer than the line at the surf, a young man with a closed drawing pad watching his friend pour, small dog, silver fish, lanterns, black and white, no words (in this panel: WOOD, GULLY, BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
+
+*Notes.* The town finds Gully. Wood watches it happen and closes the pad.
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)

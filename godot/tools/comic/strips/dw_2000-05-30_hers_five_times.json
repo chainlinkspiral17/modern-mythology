@@ -1,0 +1,122 @@
+{
+  "id": "dw_2000-05-30_hers_five_times",
+  "title": "What she calls him",
+  "strip": "drift_wood",
+  "date": "2000-05-30",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. The owner has never called him anything. Today she reads the digest's margin and says 'Wood, then.' He says either. She says Finch, and that's what she uses from here. The strip notices she has a first name for him and isn't spending it.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop. The OWNER at the counter with a digest — one of his, left on the counter. Reading the margin. WOOD at the cutter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "'Small Wood, OR.' Wood, then."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses at a shop counter reading the margin of a small photocopied booklet while a young man works at a mat cutter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, not turning.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Either."
+        },
+        {
+          "who": "OWNER",
+          "text": "No. Finch."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a mat cutter, not turning around, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner setting the digest down. The margin. The gull. Her thumb beside it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small booklet on a counter with a woman's thumb beside the two-stroke mark in its margin, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The shop. The mat cutter going. She has a first name for him and isn't spending it. The strip knows from the HELP WANTED card she read his whole name off the form. It waits.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small frame shop interior with a young man cutting a mat and a woman at the counter, black and white, no words",
+        "negative": "",
+        "notes": "The owner says 'Arthur' for the first time in Oct 2000 (the fresh blade), per characters.md. Not here."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'No. Finch.' She has a first name for him and isn't spending it. October."
+}

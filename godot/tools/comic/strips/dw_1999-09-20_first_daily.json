@@ -1,0 +1,131 @@
+{
+  "id": "dw_1999-09-20_first_daily",
+  "title": "Newport, Monday",
+  "strip": "drift_wood",
+  "date": "1999-09-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "Five a week now. The first one is about the drive.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Highway 101 north, morning, fog. An old Datsun, WOOD driving, the pad on the passenger seat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Datsun",
+        "fog",
+        "spruce",
+        "a milepost"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun driving north on a foggy two-lane coastal highway between walls of spruce, a young man at the wheel, a drawing pad on the passenger seat, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The community college sign: OREGON COAST COMMUNITY COLLEGE — NEWPORT. Wood turning in.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "turning the wheel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "college sign",
+        "turn lane"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small community college entrance sign in fog with an old Datsun turning in",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, parked, engine off, to the pad.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the car, pad on the wheel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad on the steering wheel"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Twenty minutes each way. Five days. That's two hundred minutes a week of thinking. I could write a novel in the car."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man in a parked car resting a drawing pad on the steering wheel and talking to it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pad: a drawing of the drive. Just the drive. The novel is not on it.",
+      "characters": [],
+      "props": [
+        "a drawing of a foggy highway"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad on a steering wheel showing a quick brush-pen sketch of a foggy coastal highway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "The first weekday daily. The line loosens on day one."
+}

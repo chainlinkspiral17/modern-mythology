@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-06-01_the_passenger_across_the_aisle",
+  "title": "The passenger across the aisle",
+  "strip": "roflcopter",
+  "date": "2023-06-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The seat across the aisle with someone in it, from behind, a hood up, asleep, invented. The one stranger on the route. The page gives her a stranger to not talk to.",
+  "cast": [],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bus seat across the aisle from behind with a hooded passenger asleep against the window, the aisle's rubber floor, morning light.",
+      "characters": [],
+      "props": [
+        "a hood, up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bus seat across the aisle seen from behind with a hooded passenger asleep against the window, rubber aisle floor, morning light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A stranger to not talk to.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,123 @@
+{
+  "id": "dw_2013-08-13_tourists_2013_after",
+  "title": "Tourist Season, 2013 · the next night",
+  "strip": "drift_wood",
+  "date": "2013-08-13",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · fixture week · deepening xvi)",
+  "logline": "The night after the guest with the Sunday on his phone: the desk at 2 AM, no guests, and Wood drawing the bay on the pad from memory to see if it looks like the screen did. It doesn't. He's relieved. The line under the panels.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The motel desk at 2 AM. WOOD in the polo with the pad, drawing. The bell. The glass door dark.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a maroon polo at a motel night desk drawing on a pad beside a bell with a dark glass door behind, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The pad: the bay, in his line.",
+      "characters": [],
+      "props": [
+        "the bay drawn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a pad with a drawing of a gray bay and a distant chimney in brush and ink, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD holding it up beside the dark window, where the phone was last night.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the pad up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a drawn pad up beside a dark window at a motel desk, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, setting it down.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "setting it down",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Doesn't look like that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man setting a pad down on a motel desk with a small satisfied look, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Doesn't look like that. Relieved. Hum line under."
+}

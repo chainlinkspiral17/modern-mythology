@@ -20,6 +20,7 @@ parse.
 | `_VOL5_WIKI.md` | vol 5 · Major Arcana · the synthesizing orientation, with reading order |
 | `_VOL6_WIKI.md` | vol 6 · Planned Community · cast, locations, motifs, the COMMUNITY PLANNED game tie-in |
 | `_VOL7_WIKI.md` | vol 7 · Land of Milk and Honey · the substrate, Lena Vargas, the Smolvud roster |
+| `_VOL10_WIKI.md` | vol 10 · ROFLCOPTR · the final volume · Arthur Finch's thirty-year strip, Small Wood 1997–2027 · outlining |
 
 ### top-level reference docs
 
@@ -61,6 +62,7 @@ parse.
 | `pomegranate_hour/` | Elicia's series — 22 episode scripts + `_INDEX.md` + `_HOST_FRAMES.md` + `_HOST_FRAMES_scenes.js` (dialogue-format export for HTML tools) |
 | `planned_community/` | vol6 lore — character accumulations, Suburban Blight, Cosmic Comics, the Glitch Report, the music strata, the digital subculture |
 | `milk_and_honey/` | vol7 lore — Static Truths, the SCUMM Machine, the Alsea Bay Cannery |
+| `drift_wood/` | vol10 lore — the source brief, the strip (*Drift Wood* → *ROLFCOPTR*), Arthur / Chloe / Todd / Barnaby, the arc outline, concept-art notes |
 
 ## what lives in `godot/resources/puzzle_hooks/` instead
 
@@ -81,7 +83,7 @@ the engine.
 - top-level reference docs are prefixed `_` and uppercase-named
   for sorting and instant recognition
 - per-volume subdirectories are lowercase named after the volume's
-  setting (`planned_community/`, `milk_and_honey/`)
+  setting (`planned_community/`, `milk_and_honey/`, `drift_wood/`)
 - per-character / per-artifact files inside subdirectories are
   lowercase snake_case (`suburban_blight.md`, `cosmic_comics.md`,
   `static_truths.md`)

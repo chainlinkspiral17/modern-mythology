@@ -1,0 +1,145 @@
+{
+  "id": "dw_2013-08-14_tourists_2013_checkout",
+  "title": "Tourist Season, 2013 · checkout",
+  "strip": "drift_wood",
+  "date": "2013-08-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · fixture week · deepening xvi)",
+  "logline": "The guest checking out at 7 AM as Wood's shift ends: the key, the receipt, and the guest asking to have the pad's bay. Wood tears it off and gives it to him. The guest says the name. Wood says the other one.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk at 7 AM. The GUEST with a bag sliding a key across. WOOD tired.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "checking out",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "tired",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a key"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "You draw that bay last night?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a guest with a bag sliding a key across a motel desk to a tired clerk in a maroon polo, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD tearing the page off the pad.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "tearing the page off",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a maroon polo tearing a page off a pad at a motel desk, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The GUEST taking it, reading the corner.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "reading the corner",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Thanks, Arthur."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a guest holding a drawn page and reading the small signature in its corner, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, already writing the next receipt.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "writing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Wood."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tired clerk in a maroon polo writing a receipt without looking up, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Arthur' from a stranger; 'Wood' back. Hum line under."
+}

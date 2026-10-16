@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-05-28_portland_the_changeover",
+  "title": "Portland, the changeover",
+  "strip": "roflcopter",
+  "date": "2023-05-28",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The Portland station where she changed buses, drawn from nothing: a big room, a clock, a bank of seats bolted together, a coffee stand closed. He never saw it. He gets the clock wrong on purpose.",
+  "cast": [],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bus station's waiting room, large, fluorescent, a bank of bolted seats, a wall clock, a closed coffee stand with its shutter down. The clock's hands drawn at an impossible angle — both pointing at the same number.",
+      "characters": [],
+      "props": [
+        "the clock, wrong on purpose"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a large fluorescent bus-station waiting room with bolted rows of seats and a closed coffee stand and a wall clock whose hands both point at the same number, no people, no words",
+        "negative": "",
+        "notes": "The clock's hands overlap: a place drawn from nothing has a tell."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Drawn from nothing. The clock is the tell.",
+  "layout": "single page, no borders"
+}

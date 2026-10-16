@@ -1,0 +1,129 @@
+{
+  "id": "dw_2006-12-10_two_thirds_sunday",
+  "title": "Sunday · two-thirds",
+  "strip": "drift_wood",
+  "date": "2006-12-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Two-Thirds",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "A Sunday from the small weeks. The bay at dusk, wide and correct. Wood in it, small, and smaller than that.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Alsea Bay at low tide, dusk, watercolor, wide and beautiful — the mudflats, the channel, the far spruce, the sky bruised. On the flats, two figures, small: a man and a dog. The man is drawn smaller than the dog's scale would allow.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the flats, too small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him, correct scale",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mudflats",
+        "channel",
+        "spruce",
+        "dusk sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide watercolor of a Pacific Northwest bay at low tide at dusk, mudflats and a channel catching a bruised sky, distant spruce, and on the flats a man and a dog where the man is drawn slightly too small for his distance, no words",
+        "negative": "",
+        "notes": "The two-thirds device applied to a landscape: Wood smaller than perspective allows."
+      },
+      "stage": null,
+      "name": "The flats"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: closer. The dog, right-sized. Wood beside him, still wrong-sized, looking at the water.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "right-sized",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wet sand",
+        "channel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drawn two-thirds his correct size standing beside a correctly sized dog on wet sand at dusk, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wrong-sized"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: from behind, the two of them walking back. The sky. Normal proportions restored in this tier only — the strip letting itself, for one tier, be the right size.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "from behind, correct size",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flats",
+        "sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a dog seen from behind walking back across mudflats under a dusk sky, the man now at his correct size, watercolor, no words",
+        "negative": "",
+        "notes": "Only the from-behind view gets the right size. The reader can decide why."
+      },
+      "stage": null,
+      "name": "From behind"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The Sunday from the small weeks the book keeps. Wrong-sized from the front, right-sized from behind.",
+  "layout": "tiers, portrait page"
+}

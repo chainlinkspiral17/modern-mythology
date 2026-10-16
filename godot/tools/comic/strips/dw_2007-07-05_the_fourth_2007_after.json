@@ -1,0 +1,124 @@
+{
+  "id": "dw_2007-07-05_the_fourth_2007_after",
+  "title": "The Fourth, 2007 · after",
+  "strip": "drift_wood",
+  "date": "2007-07-05",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "The morning after the tourist in the stick-figure shirt: the shirt, left on the dock rail, damp, and Gully folding it and putting it on the high shelf with the lantern. Wood on the steps sees the shelf get one more thing.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock rail in the morning with a damp T-shirt on it, a stick figure printed on the front.",
+      "characters": [],
+      "props": [
+        "the stick-figure shirt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a damp t-shirt with a stick figure printed on it hung over a dock rail in morning light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY folding it, carefully, the way he folds nothing else.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "folding the shirt",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron carefully folding a t-shirt",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The high shelf: the thermos, the tin, the flag, the lantern, and now the shirt.",
+      "characters": [],
+      "props": [
+        "the high shelf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a high shelf in a bait shack holding a thermos, a tin, a folded flag, a lantern and a folded t-shirt",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the steps, BARNABY, looking in at the shelf.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the steps, looking in",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "..."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on shack steps looking in through the door at a high shelf, a small dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The shelf gets one more thing."
+}

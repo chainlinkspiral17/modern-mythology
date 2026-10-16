@@ -1,0 +1,58 @@
+{
+  "id": "ro_2027-02-07_the_bird_before_the_thirtieth",
+  "title": "The bird before the thirtieth",
+  "strip": "roflcopter",
+  "date": "2027-02-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The flyer wall with twenty-nine flyers and a bare space at the end where the thirtieth will go on the 12th, and the bird sitting in the bare space. The last flyer page before the last flyer.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A shingle wall with a long row of paper flyers and a bare space at its end, the small rainbow bird perched on the shingle in the bare space.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "in the bare space",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-nine flyers",
+        "the bare space"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a shingle wall with a long row of paper flyers ending in a bare space where a small rainbow bird perches on the shingle, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2027-02-12."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "In the space for the thirtieth.",
+  "layout": "single page, no borders"
+}

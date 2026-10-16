@@ -1,0 +1,152 @@
+{
+  "id": "dw_2003-07-15_the_regular_who_isnt",
+  "title": "The regular who isn't",
+  "strip": "drift_wood",
+  "date": "2003-07-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully's Tackle & Roast",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Gully's Tackle & Roast · deepening)",
+  "logline": "Tuesday, week four. A second regular. A woman in waders who takes the stool next to Wood's and says nothing for the whole strip. The strip draws her the way it draws the uncle: as a fact.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. WOOD on the end stool. Beside him, a WOMAN in waders, sixties, coffee, silent. GULLY. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "end stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two stools taken"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a thin teenager on a shack's end stool and a silent older woman in waders on the next one, both with coffee, a teenager in an apron behind the counter, a dog beneath",
+        "negative": "",
+        "notes": "The woman in waders: reserved who. A fact, not a character."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her hands around the cup. Rope burns. Rings on the wrong fingers.",
+      "characters": [],
+      "props": [
+        "her hands"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of an older woman's weathered hands around a coffee cup, rope-marked",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing her. She sees. She doesn't move. She lets him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing her",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager sketching a silent older woman beside him who notices and does not move, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "She leaves a dollar and goes. Gully, to Wood.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a dollar"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's two regulars."
+        },
+        {
+          "who": "WOOD",
+          "text": "She didn't say anything."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's how you can tell."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager in an apron speaking to another after a customer has left a dollar and gone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The second regular. 'That's how you can tell.'"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ro_2024-08-18_rainier",
+  "title": "Rainier",
+  "strip": "roflcopter",
+  "date": "2024-08-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "A can of Rainier on the dock planks, sweating in the sun. Gully's hand setting a second one beside it. Wood's boot at the frame edge. The dock sequence begins with the beer.",
+  "cast": [
+    "gully_48",
+    "wood_44"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Dock planks in August sun, close. One can of Rainier, sweating. A thick hand in a canvas cuff setting a second can beside it. At the page's bottom edge, a boot — Wood's — and the planks' gaps with the bay moving underneath. No faces. The afternoon in the aluminum.",
+      "characters": [
+        {
+          "id": "gully_48",
+          "pose": "a hand setting down a can",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a boot at the frame edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two cans of Rainier",
+        "the planks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a close view of sunlit dock planks with a sweating can of beer and a stocky man's hand in a canvas cuff setting a second can beside it, a boot at the bottom edge of the page, bay water visible through the gaps in the planks, no faces, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The dock sequence opens on the beer.",
+  "layout": "single page, no borders"
+}

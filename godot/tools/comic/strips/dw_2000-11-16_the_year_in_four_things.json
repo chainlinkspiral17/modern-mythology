@@ -1,0 +1,109 @@
+{
+  "id": "dw_2000-11-16_the_year_in_four_things",
+  "title": "The year in four things",
+  "strip": "drift_wood",
+  "date": "2000-11-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday, the day after. The dog's year in four objects on the bedroom floor: the sock, the first leash, the rope sling from the derby scale, a maple bar's wrapper. Wood draws them in a row. The dog eats the wrapper during panel three. The strip allows it.",
+  "cast": [
+    "barnaby",
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The floor: a sock, chewed. The first thing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a chewed sock on a bedroom floor, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Beside it: the first leash, the vet's, and a loop of rope — the derby sling. Eleven pounds.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a worn leash and a loop of rope laid beside a sock on a floor, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "A maple bar wrapper, flattened. BARNABY's nose entering the panel.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a flattened bakery wrapper on a floor with a small dog's nose entering the frame, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The row: sock, leash, rope, and a space where the wrapper was. The dog chewing. WOOD drawing the space. The year in three things and a dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing a row of objects on a floor — a sock, a leash, a rope — with an empty space at the end and a small dog chewing something, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Four things; the dog eats one. The year in three and a dog."
+}

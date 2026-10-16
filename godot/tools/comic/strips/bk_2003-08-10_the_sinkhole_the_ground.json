@@ -1,0 +1,82 @@
+{
+  "id": "bk_2003-08-10_the_sinkhole_the_ground",
+  "title": "THE SINKHOLE · The ground",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "date": "2003-08-10",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The second page of the found Sunday: a street in a river town, a riverboat at its landing, and the street opening — a hole the width of the page's middle tier, the boat listing into it, a man on the helm above the dining room not letting go of the wheel. The line is almost Wood's. The rain is not his rain.",
+  "cast": [
+    "extra_helmsman"
+  ],
+  "location": "bk_graustark_landing",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a river town's street in the morning, a paddlewheel riverboat at its landing at the street's end, storefronts with awnings, a man on the helm above the dining room.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a river town's street with storefront awnings and a paddlewheel riverboat tied at a landing at the street's end, a small figure at the helm",
+        "negative": "",
+        "notes": "The boat SLASH will find in Alsea Bay."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the street opening: a ragged hole the width of the whole tier, the pavement's edge crumbling in, the boat listing into it stern first, awnings tipping.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a town street opening into a ragged hole the full width of the panel with a paddlewheel boat listing stern-first into it and storefront awnings tipping",
+        "negative": "",
+        "notes": "The sinkhole (Vol 8). Rain as dots, not hatching."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the helm, close, tilted: the man holding the wheel with both hands as the deck goes over, not letting go, his hat gone.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, close on a riverboat's tilted helm with a hatless man gripping the wheel with both hands as the deck goes over",
+        "negative": "",
+        "notes": "The rain is not his rain."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "The rain is not his rain.",
+  "layout": "three tiers"
+}

@@ -1,0 +1,125 @@
+{
+  "id": "dw_1999-12-31_midnight_at_the_launch",
+  "title": "Midnight at the launch",
+  "strip": "drift_wood",
+  "date": "1999-12-31",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Last Week of the Century",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "New Year's Eve at the boat launch. The uncle's radio counting down. Nothing happens. The tide comes in. The strip refuses to change how it writes the date.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch at night, the shack's half-lit string, the UNCLE in the doorway with a transistor radio, GULLY and WOOD on the dock, BARNABY between them. The bay black.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boat launch at night with a shack's half-lit string of lights, an old man in the doorway holding a transistor radio, two young men and a dog on the dock over black water, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The radio. A voice drawn as a jagged balloon: a countdown as shapes.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "...three, two — "
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small transistor radio with a jagged balloon of shapes rising from it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The bay. Nothing. The tide, a little higher than before. Gully looking at Wood. Wood looking at the water.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a black bay at night with the tide slightly higher on the pilings, two young men on a dock looking at nothing happening, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The margin. The signature, and the date — written as the strip always wrote it, the year as two digits, the strip's own small refusal. The gull.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a comic strip's bottom margin with a small signature, a date and a two-stroke gull mark, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: A. Finch — Small Wood, OR · 12/31/99. The two-digit year, kept on purpose."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Nothing happens. The tide comes in. The date stays two digits."
+}

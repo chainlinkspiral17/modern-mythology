@@ -1,0 +1,199 @@
+{
+  "id": "dw_2000-10-19_the_three_of_them",
+  "title": "The three of them",
+  "strip": "drift_wood",
+  "date": "2000-10-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Thursday. Gully's uncle's dock. The three of them on it for the last time until 2002. The uncle in the lawn chair with the oxygen line. Nobody says it's the last time; the strip draws it like it is.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "gully_17",
+    "extra_uncle",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, dusk, rain easing. GULLY, CHLOE, WOOD at the end of it, legs over. The UNCLE in the lawn chair by the shack with the oxygen line. BARNABY between the three.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "the chair, the oxygen line",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "between them",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair",
+        "the oxygen line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, three teenagers sitting at the end of a wooden dock at dusk with their legs over the water and a small dog between them, an old man in a lawn chair with an oxygen line by a shingle shack behind, rain easing",
+        "negative": "",
+        "notes": "The uncle's last appearance with all three. He dies Feb 2001, off-page."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully, with the thermos. Pouring three.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thermos"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Uncle says it's the last good coffee till spring."
+        },
+        {
+          "who": "CHLOE",
+          "text": "He says that every October."
+        },
+        {
+          "who": "GULLY",
+          "text": "He's right every October."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a stocky teenager pouring coffee from a thermos for two friends on a dock",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe, between them, looking at the water. Wood looking at the water. Gully looking at both of them.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "looking at the water",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking at the water",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "looking at both",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, three teenagers on a dock at dusk, two looking at the water and the one in the middle looking at the other two, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "From the shack: the uncle's view. Three backs at the end of the dock, a dog, the bay. The oxygen line at the frame's edge. Held.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the oxygen line at the edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, seen from a shack doorway, three teenagers' backs at the end of a dock with a small dog and a bay beyond, a clear oxygen line entering at the frame's edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The last time all three on the dock until Dec 2002. The uncle's view."
+}

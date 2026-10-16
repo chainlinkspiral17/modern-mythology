@@ -1,0 +1,49 @@
+{
+  "id": "ro_2026-09-09_the_new_pen_worn",
+  "title": "The new pen, worn",
+  "strip": "roflcopter",
+  "date": "2026-09-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The pen bought in November, ten months on: the barrel's black already worn gray in three places where the fingers go. The old one beside it, worn to metal. The page draws the two wears and says nothing about time.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Two brush pens on a drafting table under the lamp, one worn to bare metal in three places and the other newer with its black worn gray in the same three places.",
+      "characters": [],
+      "props": [
+        "two pens"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, two brush pens on a drafting table under a lamp, one worn to bare metal in three places and the other newer with its black worn gray in the same three places, no words",
+        "negative": "",
+        "notes": "Compare ro_2025-11-02."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The two wears.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,141 @@
+{
+  "id": "dw_2002-07-04_the_fourth_2002",
+  "title": "The Fourth, 2002",
+  "strip": "drift_wood",
+  "date": "2002-07-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Fourth of July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002 · fixtures · deepening xiv)",
+  "logline": "The dock, white fireworks in black and white, Gully in the apron, and beside him the uncle's lawn chair, empty since February 2001. The two of them say what he'd have said. The dog under the chair.",
+  "cast": [
+    "gully_17",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at night, fireworks as white bursts, GULLY and WOOD on the planks, an empty lawn chair beside Gully.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "standing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the uncle's chair, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men on a wooden dock at night under white firework bursts with an empty lawn chair beside them, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY looking up, not at the chair.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "He'd have said too many."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in an apron looking up at fireworks, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD looking up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He'd have said too few."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man looking up at fireworks at night, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The empty chair, and under it BARNABY, asleep, the bursts reflected in the water.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep under the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty lawn chair on a dock at night with a small dog asleep beneath it and firework bursts reflected in the water, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle's chair, empty. Too many; too few."
+}

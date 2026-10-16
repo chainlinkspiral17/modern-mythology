@@ -1,0 +1,65 @@
+{
+  "id": "ro_2021-07-11_from_behind",
+  "title": "From behind · the seawall",
+  "strip": "roflcopter",
+  "date": "2021-07-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "Wood returns to the pages in June, as a back. The seawall. The crow. The bird isn't here yet.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall at the foot of main street, July evening. WOOD from behind, sitting on the wall, the flannel, the stoop, BARNABY II beside him. A crow on the wall three feet away. The bay. The page has one figure and he is a shape.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, on the seawall",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "seawall",
+        "a crow",
+        "the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man seen only from behind sitting on a stone seawall at evening with a small three-legged dog beside him and a crow perched three feet away on the wall, the bay beyond, spare ink and soft slate-and-ochre watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "The From Behind sequence: Wood as a back, a shoulder, a reflection, for six months."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Wood returns as a back. The crow, not the bird.",
+  "layout": "single page, no borders"
+}

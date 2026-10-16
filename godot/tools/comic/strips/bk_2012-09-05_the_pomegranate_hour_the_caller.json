@@ -1,0 +1,127 @@
+{
+  "id": "bk_2012-09-05_the_pomegranate_hour_the_caller",
+  "title": "THE POMEGRANATE HOUR, 3 AM · The caller",
+  "strip": "backup",
+  "series": "THE POMEGRANATE HOUR, 3 AM",
+  "date": "2012-09-05",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · the lobby TV at 3 AM · recaps never run · Box 13",
+  "arc": "THE POMEGRANATE HOUR, 3 AM",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A call-in segment: the host takes a call, and the caller's voice is drawn as a balloon from the TV's speaker grille, blank, and the host answers a question the strip didn't hear about a bird that's the wrong color for a place. Wood puts the pen down. The motel's ice machine hums in the same key as the line under the panels.",
+  "cast": [
+    "wood_34",
+    "extra_host"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The TV: the host with a phone handset, listening. A balloon from the set's speaker grille, blank.",
+      "characters": [
+        {
+          "id": "extra_host",
+          "pose": "on the phone",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CALLER",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a television showing a woman holding a phone handset and listening, an empty speech balloon coming from the set's speaker grille",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The host answering, her balloon with a small bird drawn in it instead of words.",
+      "characters": [
+        {
+          "id": "extra_host",
+          "pose": "answering",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a television screen showing a woman speaking with a speech balloon containing a small drawn bird instead of words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD putting the pen down on the pad.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pen down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man in a maroon polo setting his pen down on a pad at a motel desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The ice machine in the breezeway through the glass door, its blue, the line under the panels drawn thicker for this one.",
+      "characters": [],
+      "props": [
+        "the ice machine",
+        "the hum line, thicker"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel's glass door showing an ice machine glowing blue in a breezeway beyond, a thicker horizontal line beneath the image",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the TV as a rounded rectangle; the host in three strokes",
+    "palette": "black ink and one spot tone: the screen's blue",
+    "paper": "the motel's pad, then bristol"
+  },
+  "notes": "A bird the wrong color for a place: the canon's bird arrives May 2022. The host's balloon holds a bird, not words.",
+  "layout": "four panels"
+}

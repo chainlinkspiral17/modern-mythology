@@ -1,0 +1,126 @@
+{
+  "id": "dw_2010-06-14_reprint_postcards",
+  "title": "Reprint · the postcard run, i",
+  "strip": "drift_wood",
+  "date": "2010-06-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Reprints",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Reprints · deepening)",
+  "logline": "The 2001 postcard strip, re-inked. The 2010 hand redraws her 2001 handwriting and shakes on it — the one place in the reprints where the re-ink is worse than the original, and the book keeps it for that.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "A second, smaller date under the crab: 2001."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The 2001 bedroom, drawn in 2010: WOOD, twenty, with a postcard. BARNABY, one. The corkboard.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "with a postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a postcard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man on a bed holding a postcard with a small dog beside him and a corkboard behind, drawn in a clean steady line",
+        "negative": "",
+        "notes": "Reprint of dw_2001-05-18. The book prints the original beside it."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The postcard's writing side: her hand, redrawn. The 2010 line wavers on the letters. The only wobble in nine months of re-inks.",
+      "characters": [],
+      "props": [
+        "her handwriting, redrawn, wavering"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a postcard's handwritten message where the ink line visibly wavers on the letters, no words",
+        "negative": "",
+        "notes": "The re-ink is worse here than the 2001 original. The book keeps it for that."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood pinning it. The corkboard: the 2001 board, drawn from memory in 2010, with things on it that weren't there yet. A small anachronism the strip lets stand.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard, with anachronisms"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man pinning a postcard to a corkboard that holds a few items from later years, no words",
+        "negative": "",
+        "notes": "Reserved which items are anachronistic; suggest the 2003 rough's pinholes."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog, one, on the bed, drawn with the knowledge of the dog at eleven. The strip can't help it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "one, drawn by someone who knows him at eleven",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small young dog on a bed drawn with the tenderness of someone who has known it for a decade, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the 2010 hand re-inking the 2001 script",
+    "palette": "gray wash",
+    "paper": "bristol"
+  },
+  "notes": "Reprint pair, the postcard. The hand wavers on her writing."
+}

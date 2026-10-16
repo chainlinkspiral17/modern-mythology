@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-08-12_the_glow_at_noon",
+  "title": "The glow at noon",
+  "strip": "roflcopter",
+  "date": "2025-08-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The ridge from the seawall at noon, and the glow visible by day for the first time — a warmth over the trees in full sun, the largest it gets. Tourists looking at their phones. One girl looking at the ridge.",
+  "cast": [
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The wooded ridge beyond the town from the seawall at noon with a warm glow over it visible in full daylight, tourists on the wall looking at phones, one girl with her back to us looking at the ridge.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "phones; one girl looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the glow, by day"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a wooded ridge beyond a small town seen from a seawall at noon with a warm glow over it visible in full daylight, tourists looking at their phones and one girl seen from behind looking at the ridge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "By day. Largest. One girl looks.",
+  "layout": "single page, no borders"
+}

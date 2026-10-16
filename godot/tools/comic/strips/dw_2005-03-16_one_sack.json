@@ -1,0 +1,154 @@
+{
+  "id": "dw_2005-03-16_one_sack",
+  "title": "One",
+  "strip": "drift_wood",
+  "date": "2005-03-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence)",
+  "arc": "The Hospital Parking Lot (precursor)",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "One grease sack instead of two. The strip is about a bag.",
+  "cast": [
+    "wood_26",
+    "gully_27"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_small",
+    "note": "The gull, small."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. WOOD cutting a mat. GULLY in the side door with ONE grease sack instead of two.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "cutting a mat",
+          "expression": "flat"
+        },
+        {
+          "id": "gully_27",
+          "pose": "in the doorway, one sack",
+          "expression": "careful"
+        }
+      ],
+      "props": [
+        "mat cutter",
+        "one grease sack",
+        "door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man cutting a mat in a framing shop backroom, a stocky man in a rubber apron in the side door holding a single grease-stained paper sack",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood looks at the sack.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sack"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "One."
+        },
+        {
+          "who": "GULLY",
+          "text": "Your dad said he wasn't hungry."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thin man looking at a single paper sack held out by another man, framing shop",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood cutting. The blade goes off the line.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "cutting, blade skidding",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat board",
+        "blade off the line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a utility blade skidding off the pencil line on a sheet of mat board, a hand gripping the knife",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Gully sitting on the spackle bucket in the alley, eating from the one sack, holding it open toward Wood without looking at him. Wood still cutting. Rain. No words.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "on a bucket, sack held open toward the door, not looking",
+          "expression": "steady"
+        },
+        {
+          "id": "wood_26",
+          "pose": "inside, still cutting, back turned",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spackle bucket",
+        "alley",
+        "rain",
+        "the sack held open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wide shot of a man sitting on a spackle bucket in a rain alley holding an open paper sack toward a shop door where another man keeps working with his back turned, muddy early-digital flat colors",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Nothing says the father is sick. The afterword will."
+}

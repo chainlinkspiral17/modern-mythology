@@ -1,0 +1,185 @@
+{
+  "id": "dw_2000-02-11_gullys_first_flyer",
+  "title": "Gully's first flyer",
+  "strip": "drift_wood",
+  "date": "2000-02-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Sixteenth annual. Gully asks for the flyer himself this year. Twenty bucks, from his own pocket.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY, in the uncle's apron — the uncle absent — holding out a twenty. WOOD. BARNABY on a crab pot.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "in an apron, holding a twenty",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on a crab pot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "apron",
+        "twenty-dollar bill",
+        "last year's two flyers on the wall"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Sixteen. Same crab. Twenty bucks."
+        },
+        {
+          "who": "WOOD",
+          "text": "Where's your uncle."
+        },
+        {
+          "who": "GULLY",
+          "text": "Resting. I'm doing it this year."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap wearing a fisherman's apron holding out a twenty-dollar bill in front of a shingle shack, two old crab flyers on the wall, a young man and a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, looking at the twenty, then at Gully in the apron.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "in the apron",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You look like him."
+        },
+        {
+          "who": "GULLY",
+          "text": "I look like me in his apron."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close two-shot of a young man looking at his friend who wears an oversized fisherman's apron",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing the crab on the spot on the shack's counter. Same crab. Barnaby watching the pen.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing on the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching the pen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crab taking shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing a large crab on a flyer on a shack counter while a small dog watches the pen intently",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The third flyer on the wall beside the first two. Same crab. The hatching has changed again. Gully pins it with the uncle's thumbtack.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pinning the flyer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three flyers in a row"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-one, next year."
+        },
+        {
+          "who": "WOOD",
+          "text": "Twenty-two."
+        },
+        {
+          "who": "GULLY",
+          "text": "We'll see."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three nearly identical crab flyers in a row on a shingle wall, a boy in an apron pinning the newest one, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle is 'resting.' Gully takes the derby. The strip notes the apron and nothing else."
+}

@@ -1,0 +1,122 @@
+{
+  "id": "bk_2002-10-18_noir_week_ii_the_lanes",
+  "title": "NOIR WEEK II · The Lanes",
+  "strip": "backup",
+  "series": "NOIR WEEK II · THE DOG DETECTIVE",
+  "date": "2002-10-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the laundromat digest · the second Noir Week · unrun",
+  "arc": "NOIR WEEK II · THE DOG DETECTIVE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The showdown, behind the Lanes: the dumpster, the neon, and the culprit — a gull, with the torn page in its beak, on the sign. The dog can't climb. The caption says he had the gull cornered. The gull leaves with the page. Case closed, says the caption. It isn't.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The alley at night, the sign all lit, the dumpster, the dog in the trench coat looking up.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "I knew where it would end. It always ends behind the Lanes.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat in a night alley beneath a fully lit neon bowling sign looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "On the sign's roofline: a gull with a torn xeroxed page in its beak.",
+      "characters": [],
+      "props": [
+        "the gull with the page"
+      ],
+      "balloons": [],
+      "caption": "There he was. The page in his mouth. Two strokes of a bird.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a gull perched on a neon sign's roofline at night with a torn photocopied page in its beak",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog at the base of the wall, unable to climb, the gull above.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "at the wall, unable to climb",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "I had him cornered.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat at the base of a wall looking up helplessly at a gull far above",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The gull flying off with the page, small; the dog watching it go.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "watching it go",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the page, leaving"
+      ],
+      "balloons": [],
+      "caption": "Case closed.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a gull flying away small over rooftops with a page in its beak while a small dog in a trench coat watches from an alley",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the trench coat under a dog",
+    "palette": "black and white",
+    "paper": "newsprint / the digest — never run; the second week found behind the first in Box 4"
+  },
+  "notes": "It isn't.",
+  "layout": "four panels"
+}

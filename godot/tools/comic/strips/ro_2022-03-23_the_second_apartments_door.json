@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-03-23_the_second_apartments_door",
+  "title": "The second apartment's door",
+  "strip": "roflcopter",
+  "date": "2022-03-23",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The smaller apartment's door from the hall, invented: a number the page doesn't letter, a mat, a folded newspaper, and beside the door a bag with a strap set down, packed. The page stops at the door and doesn't decide which way the bag is going.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An apartment door from a hallway with an unreadable number, a mat, a folded newspaper, and a canvas bag with a strap set down packed beside the door.",
+      "characters": [],
+      "props": [
+        "the bag, at the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an apartment door seen from a hallway with an unreadable number and a mat and a folded newspaper, a packed canvas bag with a strap set down beside the door, no people, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Which way the bag is going: not decided.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ro_2026-03-15_before_it_arrives",
+  "title": "Before it arrives",
+  "strip": "roflcopter",
+  "date": "2026-03-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The last page of the sequence: the trees, the glow between the trunks close enough to warm the page, and the page's right edge — the sequence stops here. The next page in the book is the garage.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Deep in the trees on the ridge, the trunks close, the ground moss and needle. Between the trunks ahead, the glow fills the gaps — ochre, warm, the wash bleeding out toward the page's right edge, which is bare. A man's back and a dog, at the left, stopped. The page ends before they move.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, stopped",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the trunks",
+        "the glow, bleeding to the edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, deep inside a mossy conifer forest on a ridge where a warm ochre glow fills the gaps between the trunks ahead and bleeds toward the bare right edge of the page, a man seen from behind and a small three-legged dog standing stopped at the left, no words",
+        "negative": "",
+        "notes": "Bare right edge. The sequence stops before it arrives. Do not draw what's there."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Stops here. The glow at the page's edge.",
+  "layout": "single page, no borders"
+}

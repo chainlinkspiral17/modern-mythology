@@ -1,0 +1,51 @@
+{
+  "_comment": "Concept-run renders made through the Runway MCP from a Claude session (model nano-banana-pro = Google's Gemini image model hosted on Runway, 2K). The session's container could not download from Runway's CDN (egress policy), so the PNGs are fetched on the user's machine: open each task in the Runway app (Library) or run fetch_concept.py with fresh URLs. Task ids are permanent; signed URLs expire.",
+  "renders": [
+    {
+      "slug": "dw_2001-10-09_lot_c",
+      "strip_id": "dw_2001-10-09_lot_c",
+      "format": "daily4",
+      "era": "era1",
+      "provider": "runway-mcp",
+      "model": "nano-banana-pro",
+      "ratio": "16:9",
+      "imageSize": "2K",
+      "taskId": "f1921bfb-84b1-49df-b879-4ba25c5601d1",
+      "status": "SUCCEEDED",
+      "file": "godot/assets/comic/vol10/concept/dw_2001-10-09_lot_c.png",
+      "lettered": true,
+      "credits": 20
+    },
+    {
+      "slug": "dw_2009-03-08_lanes",
+      "strip_id": "dw_2009-03-08_lanes",
+      "format": "sunday",
+      "era": "era2",
+      "provider": "runway-mcp",
+      "model": "nano-banana-pro",
+      "ratio": "3:4",
+      "imageSize": "2K",
+      "taskId": "674aca15-217e-474f-a946-e2181a953afa",
+      "status": "SUCCEEDED",
+      "file": "godot/assets/comic/vol10/concept/dw_2009-03-08_lanes.png",
+      "lettered": true,
+      "credits": 20
+    },
+    {
+      "slug": "dw_2014-12-21_the_box",
+      "strip_id": "dw_2014-12-21_the_box",
+      "format": "sunday",
+      "era": "era3",
+      "provider": "runway-mcp",
+      "model": "nano-banana-pro",
+      "ratio": "3:4",
+      "imageSize": "2K",
+      "taskId": "66eb10b5-f5e4-4f33-817f-480887baa49a",
+      "status": "SUCCEEDED",
+      "file": "godot/assets/comic/vol10/concept/dw_2014-12-21_the_box.png",
+      "lettered": true,
+      "credits": 20
+    }
+  ],
+  "rendered_at": "2026-09-25T23:50:40Z"
+}

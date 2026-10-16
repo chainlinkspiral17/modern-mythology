@@ -1,0 +1,59 @@
+{
+  "id": "ro_2025-04-13_the_tavern_named",
+  "title": "The tavern, named",
+  "strip": "roflcopter",
+  "date": "2025-04-13",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Tavern, Named",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The tavern he lived behind for twenty years, drawn from the front for the first time. The name is on the sign. (The name is reserved: the page is drawn; the lettering waits.)",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The cedar-shake tavern from the highway, April, morning, closed. Three trucks' worth of empty gravel. The beer sign off. The sign above the door, fully legible for the first time in twenty-eight years: [THE NAME]. WOOD from behind at the edge of the lot, looking at it like he's reading it for the first time, which he is not.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind at the lot's edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tavern front",
+        "the sign, legible",
+        "empty gravel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a cedar-shake roadside tavern seen from the highway on a closed April morning, empty gravel lot, beer sign off, a hand-painted name sign above the door drawn clearly and legibly, a man seen from behind at the edge of the lot looking up at it, spare ink and soft ochre watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "THE NAME IS RESERVED. Generate with the sign blank or generic; letter the name after the user decides. Do not invent it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The name is the user's. The page is ready for it.",
+  "layout": "single page, no borders"
+}

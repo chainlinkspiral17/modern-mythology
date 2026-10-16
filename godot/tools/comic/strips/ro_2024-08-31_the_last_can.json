@@ -1,0 +1,50 @@
+{
+  "id": "ro_2024-08-31_the_last_can",
+  "title": "The last can",
+  "strip": "roflcopter",
+  "date": "2024-08-31",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "After the dock's four cans: one more, alone, on the planks at dusk, and a hand setting it down from the page's edge. Whose hand: the page doesn't show. Five, then. The count corrected.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single beer can being set down on dock planks at dusk by a hand entering from the page's edge, four pale rings on the planks beside it.",
+      "characters": [],
+      "props": [
+        "the fifth can",
+        "four rings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a single beer can being set down on wooden dock planks at dusk by a hand entering from the page's edge, four pale rings on the planks beside it, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2024-09-05. Whose hand: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Five, then.",
+  "layout": "single page, no borders"
+}

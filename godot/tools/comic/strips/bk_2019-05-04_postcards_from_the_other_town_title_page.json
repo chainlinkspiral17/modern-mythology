@@ -1,0 +1,57 @@
+{
+  "id": "bk_2019-05-04_postcards_from_the_other_town_title_page",
+  "title": "POSTCARDS FROM THE OTHER TOWN · title page",
+  "strip": "backup",
+  "series": "POSTCARDS FROM THE OTHER TOWN",
+  "title_page": true,
+  "date": "2019-05-04",
+  "run": 6,
+  "era": "era3",
+  "format": "spread",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a romance the strip never ran · eight cards · Box 19",
+  "arc": "POSTCARDS FROM THE OTHER TOWN",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. One word each.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "Left page: a wire postcard spinner outside a coast shop, eight cards in its pockets, every front blank white, the shop's window behind reflecting a bus's side. Right page: the title card's back, divided, the title in souvenir script across the message side in eight pastels, the subtitle the one legible line among strokes, a stamp with no numeral crooked in the corner.",
+      "characters": [],
+      "props": [
+        "the spinner rack",
+        "eight blank cards"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two-color coastal weekly comic spread, left page a wire postcard spinner rack outside a shop with eight blank white cards in its pockets and a bus reflected in the window behind, right page the back of a postcard with a divided line and the series title in pastel souvenir script and one legible subtitle line among handwriting strokes and a crooked stamp with no numeral",
+        "negative": "",
+        "notes": "Eight blank fronts. The words are still in the cards."
+      },
+      "stage": null,
+      "lettering": [
+        "POSTCARDS FROM THE OTHER TOWN",
+        "a romance in eight cards · never ran",
+        "One word each."
+      ]
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink for the fronts; the backs in a stranger's hand, drawn as shapes but for one word each",
+    "palette": "the fronts in the coastal weekly's two-color; the stamps in one color each",
+    "paper": "cardstock cut to postcard size, drawn both sides, photographed as spreads"
+  },
+  "notes": "Title page. Letters exactly: POSTCARDS FROM THE OTHER TOWN / a romance in eight cards · never ran / One word each..",
+  "layout": "title page: the masthead over a single image"
+}

@@ -1,0 +1,115 @@
+{
+  "id": "dw_1999-11-02_the_slough",
+  "title": "The slough",
+  "strip": "drift_wood",
+  "date": "1999-11-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The First Storms",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The road floods at the slough south of town. A flagger turns everyone around. Wood turns around, parks, and draws the water over the road for the hour he'd have spent in class.",
+  "cast": [
+    "extra_flagger"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 at the slough, water across both lanes, a FLAGGER in orange with a sign, cars turning around. The Datsun.",
+      "characters": [
+        {
+          "id": "extra_flagger",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a two-lane coastal highway flooded at a slough with a flagger in orange holding a sign and cars turning around in the rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The flagger at Wood's window.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "FLAGGER",
+          "text": "Closed till the tide drops."
+        },
+        {
+          "who": "WOOD",
+          "text": "When's that."
+        },
+        {
+          "who": "FLAGGER",
+          "text": "When it drops."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flagger in orange rain gear at a small car's window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the water over the road, the road's center line going under it and coming out the other side.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drawing pad showing floodwater across a highway with the center line disappearing under it and emerging beyond, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun parked on the shoulder. Wood drawing. The flagger, a hundred yards off, drawing too — no. Smoking. The strip checked.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car parked on a highway shoulder above floodwater, a young man drawing inside, a flagger far off in the rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'When it drops.' The hour of class spent on the water."
+}

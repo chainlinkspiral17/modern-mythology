@@ -1,0 +1,57 @@
+{
+  "id": "ro_2021-06-09_the_end_stool_a_coffee_poured",
+  "title": "The end stool, a coffee poured",
+  "strip": "roflcopter",
+  "date": "2021-06-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "Gully's counter, the end stool empty, and Gully's hand pouring a coffee for it anyway, from above. Eleven days before the first back. The shop keeps the place the way the beach did.",
+  "cast": [
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From above: a shop counter with an empty end stool and a stocky man's hand pouring coffee into a cup set before it, the corkboard's edge.",
+      "characters": [
+        {
+          "id": "gully_48",
+          "pose": "a hand, pouring",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a coffee, poured"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from above, a shop counter with an empty end stool and a stocky man's hand pouring coffee into a cup set before it, a corkboard's edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Poured for the empty stool.",
+  "layout": "single page, no borders"
+}

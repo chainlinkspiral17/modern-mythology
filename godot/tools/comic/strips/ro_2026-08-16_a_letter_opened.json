@@ -1,0 +1,58 @@
+{
+  "id": "ro_2026-08-16_a_letter_opened",
+  "title": "A letter, opened",
+  "strip": "roflcopter",
+  "date": "2026-08-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "August, two months before the editor: an envelope with a Seattle publisher's mark — a blank shape — on the drafting table, and for the first time in the run, opened. The letter face down beside it. The page shows the tear, not the words.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The drafting table under the lamp: an envelope with a blank shape where a publisher's mark would be, torn open cleanly along the top, and beside it a folded letter face down, a mug on its corner. The pup's nose at the table's edge.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "nose at the edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the opened envelope",
+        "the letter, face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a drafting table under a lamp with an envelope bearing a blank mark torn open cleanly along the top and a folded letter lying face down beside it with a mug set on its corner, a small dog's nose at the table's edge, no words",
+        "negative": "",
+        "notes": "The first opened letter after 2007's shims, 2018's unopened one. Words reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Opened, at last. Face down.",
+  "layout": "single page, no borders"
+}

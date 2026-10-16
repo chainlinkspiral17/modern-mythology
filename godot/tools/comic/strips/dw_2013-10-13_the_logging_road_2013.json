@@ -1,0 +1,101 @@
+{
+  "id": "dw_2013-10-13_the_logging_road_2013",
+  "title": "Sunday · the logging road, October 2013",
+  "strip": "drift_wood",
+  "date": "2013-10-13",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · Sundays · deepening ix)",
+  "logline": "The logging road in October, the maples yellow in the cut, the Legacy pulled over, a man walking up it alone in the middle tier — the dog too old for the climb — and the gate at the top with its chain.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a gravel logging road climbing through a clear-cut with yellow maples at its edges, a station wagon pulled over below.",
+      "characters": [],
+      "props": [
+        "the Legacy"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gravel logging road climbing through a clear-cut with yellow maples at its edges and a faded green station wagon pulled over at the bottom, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Cut"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man walking up the road alone, hands in his coat, no dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking up, alone",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man walking up a gravel logging road alone with his hands in his coat pockets and no dog, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alone"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the gate at the top with its chain and padlock, the ridge beyond, the man stopped at it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "stopped at the gate",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the gate",
+        "the chain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man stopped at a chained and padlocked steel gate at the top of a logging road with a wooded ridge beyond, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gate"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "No dog on the climb. Fourteen.",
+  "layout": "tiers, portrait page"
+}

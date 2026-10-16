@@ -1,0 +1,89 @@
+{
+  "id": "dw_2011-08-21_the_polo_on_the_hanger",
+  "title": "Sunday · the polo on the hanger",
+  "strip": "drift_wood",
+  "date": "2011-08-21",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Motel Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening xvii)",
+  "logline": "The Motel Application's Sunday: a maroon polo on a wire hanger in three tiers — on the garage door's hook, on the Datsun's passenger seat, on the motel's office door's hook — and never on a man. The uniform arrives before the job.",
+  "cast": [],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium tier",
+      "composition": "Tier 1: a maroon polo on a wire hanger on the garage door's hook.",
+      "characters": [],
+      "props": [
+        "the polo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a maroon polo shirt on a wire hanger hung from a garage door's hook, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Hook"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the same polo on its hanger laid on a pickup's passenger seat, the road in the window.",
+      "characters": [],
+      "props": [
+        "the polo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a maroon polo shirt on a hanger laid across a pickup's passenger seat with a coastal road in the window, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Seat"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the polo on the hook inside a motel office's door, the desk beyond, the bell, nobody.",
+      "characters": [],
+      "props": [
+        "the polo",
+        "the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a maroon polo shirt on a hanger hung inside a motel office door with a desk and a bell beyond, nobody, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Office"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The uniform before the job.",
+  "layout": "tiers, portrait page"
+}

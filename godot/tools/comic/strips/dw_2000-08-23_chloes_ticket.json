@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-08-23_chloes_ticket",
+  "title": "Chloe's ticket",
+  "strip": "drift_wood",
+  "date": "2000-08-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The End of Summer",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Chloe has a ticket. She shows it to the dog, not Wood. The dog sniffs it. Wood sees the date across the seawall: October, a Sunday. Not September. He does the arithmetic and doesn't say the answer. She says she's staying through the derby — no. Through October. She doesn't say why.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The seawall. CHLOE holding a bus ticket down to BARNABY, who sniffs it. WOOD ten feet off with the pad, seeing the date.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman on a seawall holding a bus ticket down for a small dog to sniff while a young man ten feet away reads it from a distance, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The ticket: the line, the date as blocks, and one shape legible: a month. OCT.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a bus ticket with printed text as blocks and one abbreviation legible, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: OCT (only). The 29th: not lettered."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, doing the arithmetic. Not saying it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face working out a sum and keeping it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe, to the dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Through October. Don't ask me why."
+        },
+        {
+          "who": "WOOD",
+          "text": "I didn't."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I was talking to the dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman speaking to a small dog on a seawall while a young man listens ten feet away, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "OCT. 'I was talking to the dog.' Arc 1 is October; the strip knows the date."
+}

@@ -1,0 +1,161 @@
+{
+  "id": "dw_2014-08-15_tourist_season_2014",
+  "title": "Tourist Season, 2014",
+  "strip": "drift_wood",
+  "date": "2014-08-15",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2014 · fixtures · deepening xiv)",
+  "logline": "Back from Seattle a week: the seawall, phones up at the bay, and a tourist asking if this is the town from the strip. Which strip, Wood says. The old dog under the bench doesn't get up for any of it.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall in August, tourists with phones held up at the bay, WOOD on the bench, old BARNABY beneath it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the bench",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "phones up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phones"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a seawall in August with tourists holding phones up at a bay and a man on a bench with an old dog beneath it, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A tourist turning from the bay to WOOD.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "turning",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Is this the town from the strip?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist turning from a bay view to speak to a man on a seawall bench, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD, flat.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "flat",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Which strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a bench answering flatly, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The tourist gone back to the phone; the dog asleep; the bay gray; on the phone's screen, blue.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "phone up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a blue screen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist holding a phone up at a gray bay that shows blue on the screen, a man on a bench and an old dog asleep beneath it, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Which strip."
+}

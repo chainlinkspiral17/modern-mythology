@@ -1,0 +1,119 @@
+{
+  "id": "dw_2000-06-08_the_fireworks_ordered",
+  "title": "The fireworks, ordered",
+  "strip": "drift_wood",
+  "date": "2000-06-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "June, the Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle orders the Fourth's fireworks from a catalog the way he has since '71. A form. His hand. Gully fills it; the uncle signs. Same as the permit. The strip notices the signature is worse than February's and doesn't say so.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. A fireworks catalog, garish, drawn gray. GULLY filling an order form at the counter. The UNCLE in the chair. WOOD.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager filling in an order form from a fireworks catalog at a bait shack counter while an old man watches from a lawn chair, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The catalog page: bursts, drawn as white on black. The uncle's finger on one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a fireworks catalog page with bursts rendered white on black and an old finger pointing at one, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle signing. Slower than February. The line wandering more. The strip draws it exactly and says nothing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's hand signing a form with a slow wandering line, black and white, no words",
+        "negative": "",
+        "notes": "Compare dw_2000-02-03. Worse. Unremarked."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The form in an envelope. Gully licking it. The uncle looking at the bay. 'Red ones,' he says, to nobody. The strip can't do red.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Red ones."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager sealing an envelope while an old man in a lawn chair looks out at the bay, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Red ones.' Since '71. The signature, worse; the strip says nothing."
+}

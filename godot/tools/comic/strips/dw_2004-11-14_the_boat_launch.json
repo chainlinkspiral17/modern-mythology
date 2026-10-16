@@ -1,0 +1,97 @@
+{
+  "id": "dw_2004-11-14_the_boat_launch",
+  "title": "Sunday · the boat launch",
+  "strip": "drift_wood",
+  "date": "2004-11-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The boat launch in November, the ramp slick, the tide out, the Datsun at the top with the dog's head out the window. The first Sunday where the color behaves.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the concrete ramp going down into gray water, weed at the tideline, one gull on the piling. The color behaving for the first time.",
+      "characters": [],
+      "props": [
+        "ramp",
+        "gull on a piling"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a concrete boat ramp descending into gray water with weed at the tideline and a gull on a piling, the colors controlled, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ramp"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the Datsun at the top of the ramp, a dog's head out the passenger window, ears in the wind.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "head out the window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Datsun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a rusted small car parked at the top of a boat ramp with a dog's head out the passenger window and ears in the wind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the water. Just the water. Held.",
+      "characters": [],
+      "props": [
+        "the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, gray bay water with small chop and nothing else, held, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Water"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The color behaves. The dog in the window.",
+  "layout": "tiers, portrait page"
+}

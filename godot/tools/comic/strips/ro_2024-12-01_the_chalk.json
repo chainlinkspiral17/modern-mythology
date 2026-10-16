@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-12-01_the_chalk",
+  "title": "The chalk",
+  "strip": "roflcopter",
+  "date": "2024-12-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The face with chalk on it: a mustache, a crown, a child's hand. Gully's son, eleven, at the page's edge with the chalk, and rain starting. The page draws the town treating its monument the way the town does.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The carved stone face in grass with a chalk mustache and crown drawn on it, a boy of eleven at the frame's edge holding chalk, the first drops of rain on the stone.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "eleven, with chalk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chalk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a moss-grown carved stone face in grass with a chalk mustache and crown drawn on it, a boy of eleven at the frame's edge holding chalk and the first drops of rain on the stone, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The town treating its monument the way it does.",
+  "layout": "single page, no borders"
+}

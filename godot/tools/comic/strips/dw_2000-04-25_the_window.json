@@ -1,0 +1,137 @@
+{
+  "id": "dw_2000-04-25_the_window",
+  "title": "The window",
+  "strip": "drift_wood",
+  "date": "2000-04-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Heceta Frame & Matting · deepening)",
+  "logline": "Tuesday. The owner lets him do the window. He arranges twelve empty frames in it, nothing inside any of them. She looks at it a long time and leaves it that way for a year.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop's window from inside. WOOD arranging frames on the display shelf: twelve, all sizes, all empty.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "arranging frames",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twelve empty frames"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man arranging a dozen empty picture frames of different sizes in a shop's front window display",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "From the sidewalk on 101: the window. Twelve empty frames, and through each one, a piece of the shop, the owner, the mat cutter, the road reflected. The town, framed, in pieces.",
+      "characters": [],
+      "props": [
+        "the window from outside"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a frame shop's front window seen from the sidewalk with twelve empty frames arranged so each one frames a different piece of the shop interior and the reflected road, no words",
+        "negative": "",
+        "notes": "Each empty frame frames something. The strip's first composition about composition."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The OWNER outside on the sidewalk, arms folded, looking at it. A long time.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "on the sidewalk, arms folded",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, an older woman standing on a sidewalk with her arms folded looking at a shop window, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Inside. The owner coming back in. Wood waiting.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "coming in",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "waiting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Nothing in them."
+        },
+        {
+          "who": "WOOD",
+          "text": "I can put —"
+        },
+        {
+          "who": "OWNER",
+          "text": "Leave it. People will bring their own."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, an older woman coming back into a frame shop and speaking to a young man who was waiting for a verdict",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Twelve empty frames. 'People will bring their own.' It stays a year."
+}

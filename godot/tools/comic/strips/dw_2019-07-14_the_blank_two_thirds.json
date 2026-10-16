@@ -1,0 +1,97 @@
+{
+  "id": "dw_2019-07-14_the_blank_two_thirds",
+  "title": "Sunday · the blank two-thirds",
+  "strip": "drift_wood",
+  "date": "2019-07-14",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "A Third of a Page",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (A Third of a Page · deepening)",
+  "logline": "The last of the run's Sundays the book keeps: the strip's third, and the other two-thirds left as the paper's blank — no ads drawn this time, just the newsprint, and in its middle, tiny, the scruff mark alone.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1 (a third): the bay from the bluff, cramped, the ridge and the glow squeezed into a band.",
+      "characters": [],
+      "props": [
+        "the bay, a band",
+        "the glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a very shallow tier of a bay from a bluff with a ridge and a faint warm glow squeezed into a narrow band, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Band"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: blank newsprint. Nothing drawn. The paper's gray.",
+      "characters": [],
+      "props": [
+        "blank newsprint"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a blank area of gray newsprint texture with nothing drawn on it, no words",
+        "negative": "",
+        "notes": "Leave it blank. Newsprint texture only."
+      },
+      "stage": null,
+      "name": "Blank"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: blank. And in its center, tiny: the scruff, asleep, alone in the space the strip used to have.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "the scruff mark, tiny, alone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the scruff mark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a blank gray newsprint area with one tiny ink mark of a small sleeping scruff of a dog at its exact center, no words",
+        "negative": "",
+        "notes": "The margin mark moved into the page. The only time."
+      },
+      "stage": null,
+      "name": "The scruff"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Two-thirds blank. The scruff in the middle of the space.",
+  "layout": "tiers, portrait page"
+}

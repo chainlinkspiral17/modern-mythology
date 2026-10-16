@@ -1,0 +1,142 @@
+{
+  "id": "dw_1999-12-28_the_tide_wont_notice",
+  "title": "The tide won't notice",
+  "strip": "drift_wood",
+  "date": "1999-12-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Last Week of the Century",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully asks the uncle about the millennium. The uncle says the tide won't notice. Gully asks what will. The uncle says the computers, and he hasn't got one. Wood draws the tide table on the wall: it goes to 2000 already.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The UNCLE at the stove. GULLY. WOOD with BARNABY on a crab pot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What happens Friday, Uncle."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Tide comes in."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a bait shack: an old man at a small stove, a teenager, a young man with a dog on a crab pot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Computers is what they say. I haven't got one."
+        },
+        {
+          "who": "GULLY",
+          "text": "The paper's got one."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Then the paper's got a problem."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old weathered man at a stove, flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The tide table tacked to the wall: a column of dates going past the 31st into a year that starts with a 2. Already printed. Already there.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a tide table tacked to a shack wall with its column of dates running past the year's end, black and white, no words",
+        "negative": "",
+        "notes": "The dates as shapes; the 2 legible. Letter after: nothing more."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The three of them and the dog in the shack, the stove, the table on the wall. Friday's tide, printed in October. The strip finds this reassuring and doesn't say so.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three figures and a dog inside a warm bait shack with a tide table on the wall and rain on the window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Tide comes in.' The table already goes to 2000."
+}

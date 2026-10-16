@@ -1,0 +1,167 @@
+{
+  "id": "dw_2009-08-17_tourists_2009",
+  "title": "Tourist Season, 2009",
+  "strip": "drift_wood",
+  "date": "2009-08-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "A tourist asks Gully if the strip's Gully is him. Gully says the strip's Gully is better looking. Wood, on the stool, draws him worse for a week.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST with the weekly. GULLY. WOOD on the stool.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "newspaper"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Is this you? The guy with the apron?"
+        },
+        {
+          "who": "GULLY",
+          "text": "That guy's better looking."
+        },
+        {
+          "who": "TOURIST",
+          "text": "He's got your—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Better looking."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist holding a newspaper comic up beside a man in an apron behind a counter, comparing, a thin man on a stool, a dog, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood on the stool. A slow look at Gully. Pen moving.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing, slow look",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thin man on a stool giving a slow deliberate look while his pen moves",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: Gully, with a slightly larger nose than he has.",
+      "characters": [],
+      "props": [
+        "pad: Gully with a bigger nose"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a quick ink sketch of a stocky man in an apron with a nose drawn a little too large",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully leaning over to look. Seeing it. Wood not looking up.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "leaning to look",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "...That's not my nose."
+        },
+        {
+          "who": "WOOD",
+          "text": "That guy's better looking."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron leaning over a counter to look at a sketch and objecting, a thin man not looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "A week of Gully drawn worse. The strip's revenge is a nose."
+}

@@ -1,0 +1,134 @@
+{
+  "id": "dw_2017-02-20_wider_than_that",
+  "title": "Wider than that",
+  "strip": "drift_wood",
+  "date": "2017-02-20",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Scroll",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Scroll · deepening)",
+  "logline": "Monday. The aggregator's editor emails: could the Sundays be drawn taller? Wood replies with a drawing: the bay, wide, and a phone standing on end in front of it, blocking a third. The strip prints the reply.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A laptop: an email. 'Could the Sunday pages be composed vertically for mobile?' WOOD reading. BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "reading",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the email"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man reading an email on a laptop in a garage studio, a small three-legged dog beneath the table",
+        "negative": "",
+        "notes": "Letter after, the email's line: 'Could the Sunday pages be composed vertically for mobile?'"
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood not typing. Drawing. The pad: the bay from the bluff, the whole width, and in front of it, standing on end, a phone — a black rectangle blocking the middle third.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: the bay with a phone blocking it"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man drawing a wide bay landscape with a black phone-shaped rectangle standing upright in front of it blocking the middle third",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The drawing. The gulls either side of the phone. The ridge cut by it. The glow behind the black.",
+      "characters": [],
+      "props": [
+        "the drawing, close"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of an ink drawing of a bay where a black vertical rectangle hides the center and gulls fly either side of it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The drawing scanned. Attached. Sent. No words in the reply. The dog asleep. The bay outside the window, wider than that.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sending",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the laptop",
+        "the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man sending an email with only an image attached, a small dog asleep, a wide bay visible through the window behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The reply is a drawing: the bay with a phone in front of it."
+}

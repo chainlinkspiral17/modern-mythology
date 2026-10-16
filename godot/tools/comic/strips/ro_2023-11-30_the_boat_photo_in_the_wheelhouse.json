@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-11-30_the_boat_photo_in_the_wheelhouse",
+  "title": "The boat photo in the wheelhouse",
+  "strip": "roflcopter",
+  "date": "2023-11-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "A photo the shop framed in 2002 — a boat and its skipper — screwed to the wall of that boat's wheelhouse in 2023, the frame salt-swollen, the skipper old at the wheel beneath his young self. The page from the dock through the wheelhouse glass.",
+  "cast": [],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Through a fishing boat's wheelhouse window from the dock: an old skipper at the wheel beneath a salt-swollen framed photo of a young man and the same boat screwed to the wall.",
+      "characters": [],
+      "props": [
+        "the boat photo",
+        "the swollen frame"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen through a fishing boat's wheelhouse window from a dock, an old skipper at the wheel beneath a salt-swollen framed photo of a young man and the same boat screwed to the wall, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "His young self above him.",
+  "layout": "single page, no borders"
+}

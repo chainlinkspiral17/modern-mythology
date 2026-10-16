@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-12-19_the_postcards_not_bought",
+  "title": "The postcards, not bought",
+  "strip": "drift_wood",
+  "date": "2000-12-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The drugstore's postcard slot, restocked for Christmas. Wood looks at it. Seven in the drawer at home; one in the box. He doesn't buy. The clerk says nothing this year. The clerk reads. He knows what seven means.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_clerk"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drugstore's card rack. The postcard slot: the bay, faded blue, full. WOOD looking at it. BARNABY. The CLERK at the register.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_clerk",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat looking at a drugstore rack slot full of identical faded postcards while a clerk watches from the register, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The postcards. Full slot. Wood's hand not reaching.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a rack slot of identical postcards with a young man's hand hovering but not reaching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The clerk. Saying nothing. Knowing seven.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drugstore clerk at a register saying nothing, knowing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood out the door without a card. Seven in the drawer. One in the box. The clerk reads; he knows the arithmetic. The strip does it again anyway: seven, one, two sent. Ten.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat leaving a drugstore empty-handed with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Seven, one, two. The clerk knows the arithmetic."
+}

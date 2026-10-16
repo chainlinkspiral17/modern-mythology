@@ -1,0 +1,127 @@
+{
+  "id": "dw_2003-10-17_unprinted_3",
+  "title": "The unprinted year, iii",
+  "strip": "drift_wood",
+  "date": "2003-10-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Four months in. Four panels of the dog on the beach. No gag, no balloon, no caption but the box. The line is wet and fast and nobody's. It's the best drawing of the dog he's done.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, October. BARNABY, four, running the tide line. Brush only. Fast.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "running the tide line",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tide line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "fast wet brush black-and-white, a small dog running along a tide line on an empty beach, loose and alive, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog stopping at a crab shell. Nose down. Three brushstrokes for the whole dog.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "nose to a crab shell",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crab shell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "fast wet brush black-and-white, a dog stopping with its nose to a crab shell, the whole dog in a few strokes, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog looking back up the beach at whoever is holding the brush. Not drawn. The look is the strip's only line of dialogue.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking back at the artist",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "fast wet brush black-and-white, a small dog on a beach looking back toward the viewer with an expectant expression, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dog, small, and the beach, large, and the water. Nobody. Box 5.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "small, far",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "water"
+      ],
+      "balloons": [],
+      "caption": "Box 5.",
+      "sfx": "",
+      "image": {
+        "prompt": "fast wet brush black-and-white, a tiny dog far down a huge empty beach at the water's edge, no words",
+        "negative": "",
+        "notes": "Four panels, one caption. The best dog in the run so far, in the year nobody saw."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "wet brush, fast, unspotted; no reader",
+    "palette": "",
+    "paper": "bristol, into Box 5"
+  },
+  "notes": "Four panels of the dog. No gag. The best drawing of him, unseen."
+}

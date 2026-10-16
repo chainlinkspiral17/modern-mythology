@@ -1,0 +1,132 @@
+{
+  "id": "dw_2015-10-19_the_step",
+  "title": "The step",
+  "strip": "drift_wood",
+  "date": "2015-10-19",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Three Legs · deepening)",
+  "logline": "Monday. The garage's one step. The pup takes it with a scuttle and a hop, differently each time. Four panels, four ways up one step. Never remarked.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage's single concrete step. BARNABY II at its foot. Up: front paws, then the hind leg, a hop.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "hopping up the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged puppy hopping up a single concrete step with its front paws first, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Down: a scuttle, sideways, faster than up.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "scuttling down sideways",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, the same puppy scuttling sideways down the step, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Up again: a different way. Hind leg first this time. It works too.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "up, hind leg first",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, the same puppy going up the step hind leg first, a different method, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup at the top, sitting, pleased. WOOD in the doorway behind him with coffee, having watched all four. Saying nothing. The strip saying nothing.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the top, pleased",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "in the doorway with coffee",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged puppy sitting pleased at the top of a step while a man with coffee stands in the doorway behind having watched, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wordless. Four ways up one step."
+}

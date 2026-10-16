@@ -1,0 +1,49 @@
+{
+  "id": "ro_2021-11-01_the_leash_on_the_hook",
+  "title": "The leash on the hook",
+  "strip": "roflcopter",
+  "date": "2021-11-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The leash on its hook by the garage door, and beside it the old leash from 1999, kept, shorter, the clip rusted. Two leashes. The page's arithmetic: twenty-two years.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Two dog leashes on hooks beside a garage door: a newer one and beside it an old short leash with a rusted clip, a coat on the next hook.",
+      "characters": [],
+      "props": [
+        "two leashes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, two dog leashes on hooks beside a garage door, a newer one and an old short one with a rusted clip, a coat on the next hook, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-two years, in leashes.",
+  "layout": "single page, no borders"
+}

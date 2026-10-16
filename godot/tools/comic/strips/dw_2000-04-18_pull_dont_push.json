@@ -1,0 +1,156 @@
+{
+  "id": "dw_2000-04-18_pull_dont_push",
+  "title": "Pull, don't push",
+  "strip": "drift_wood",
+  "date": "2000-04-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Heceta Frame & Matting · deepening)",
+  "logline": "Tuesday. Day two. The mat cutter. The owner's hands over his on the blade. 'Pull, don't push.' The first straight cut of eleven years.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. The mat cutter. WOOD at it, pushing the blade. The OWNER behind him, watching the cut wander.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pushing the blade",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man at a mat cutter pushing a blade along a rail while an older woman with glasses on a cord watches the cut wander",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her hands over his. Repositioning. The blade turned.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "hands over his",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "hands",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blade"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Pull. Don't push. The blade knows the way home; you don't."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of an older woman's hands placed over a young man's hands on a mat cutter's blade, turning it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The cut. Straight. A bevel like a shoreline.",
+      "characters": [],
+      "props": [
+        "a straight bevel cut"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a clean straight bevel cut in white mat board",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood holding it up to the window. The owner already back at her station. Not looking. Approving.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding the mat to the light",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "back at her station",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "That's one."
+        },
+        {
+          "who": "WOOD",
+          "text": "One what?"
+        },
+        {
+          "who": "OWNER",
+          "text": "One. Do four thousand."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man holding a cut mat up to a window while an older woman works at her station without looking",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Pull, don't push.' 'Do four thousand.' (See dw_2018-02-09: he passes it on.)"
+}

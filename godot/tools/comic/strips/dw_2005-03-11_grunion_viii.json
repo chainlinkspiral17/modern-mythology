@@ -1,0 +1,181 @@
+{
+  "id": "dw_2005-03-11_grunion_viii",
+  "title": "The Grunion Run, viii",
+  "strip": "drift_wood",
+  "date": "2005-03-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Eighth year. Wood's father is in the crowd. The strip has never drawn him before. It draws his back.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_father"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. The line for Gully's coffee. WOOD with BARNABY at the edge. In the coffee line, from behind, a man in a mill jacket. The strip draws him like anyone else.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the edge",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "pouring, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_father",
+          "pose": "in the line, from behind, a mill jacket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "coffee line",
+        "a mill jacket in the line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns and a coffee line, a young man with a small dog at the edge, and in the line seen only from behind an older man in a faded mill jacket, muddy watercolor and ink",
+        "negative": "",
+        "notes": "The father: back only, mill jacket. Never a face, all run."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, handing the mill jacket a cup. Gully's face, careful.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "handing over a cup, careful",
+          "expression": ""
+        },
+        {
+          "id": "extra_father",
+          "pose": "from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "On the house."
+        },
+        {
+          "who": "FATHER",
+          "text": "(from behind) I can pay."
+        },
+        {
+          "who": "GULLY",
+          "text": "I know you can."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in an apron handing a paper cup to an older man seen from behind, the young man's expression careful, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, watching from the edge. The dog watching Wood.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "watching the line",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at the edge of a lantern-lit beach watching a coffee line with an unreadable face, a small dog looking up at him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. The mill jacket walking away up the beach with the cup, slowly, small. Wood not drawing.",
+      "characters": [
+        {
+          "id": "extra_father",
+          "pose": "walking away up the beach, small",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "pad closed",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns",
+        "a figure walking away"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with silver fish at the surf, lanterns, and a lone older man in a mill jacket walking slowly away up the sand holding a cup, a young man watching with a closed pad, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The father, from behind, five days before 'One.' He walks slowly. That's the whole diagnosis the strip gives."
+}

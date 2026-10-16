@@ -1,0 +1,129 @@
+{
+  "id": "bk_2002-10-21_noir_week_ii_the_page",
+  "title": "NOIR WEEK II · The page",
+  "strip": "backup",
+  "series": "NOIR WEEK II · THE DOG DETECTIVE",
+  "date": "2002-10-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the laundromat digest · the second Noir Week · unrun",
+  "arc": "NOIR WEEK II · THE DOG DETECTIVE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The Monday after: the page, back, under the dog's bowl, wet, and the dog eating around it. It's the missing page from the digest: this strip. The caption reads it aloud and is embarrassed. The trench coat goes on the hook. The week was never run; the coat was.",
+  "cast": [
+    "barnaby",
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. The dog's bowl on a wet xeroxed page. The dog eating.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bowl",
+        "the page, under it"
+      ],
+      "balloons": [],
+      "caption": "It came back. They always come back.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog eating from a bowl set on a wet photocopied comic page on a bedroom floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The page, close: a four-panel strip of a dog in a trench coat behind a desk. This strip.",
+      "characters": [],
+      "props": [
+        "the page: this strip"
+      ],
+      "balloons": [],
+      "caption": "I read it.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, close on a wet photocopied comic strip showing a small dog in a trench coat behind a desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog, looking at the reader. The caption box, small.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at the reader",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "Huh.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog looking directly at the viewer with a very small caption box beside it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD hanging the trench coat on the hook. The dog asleep on the page.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hanging the coat",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on the page",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the trench coat, on the hook"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a young man hanging a small trench coat on a hook while a small dog sleeps on a wet page beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the trench coat under a dog",
+    "palette": "black and white",
+    "paper": "newsprint / the digest — never run; the second week found behind the first in Box 4"
+  },
+  "notes": "The missing page was this one. The coat goes on the hook.",
+  "layout": "four panels"
+}

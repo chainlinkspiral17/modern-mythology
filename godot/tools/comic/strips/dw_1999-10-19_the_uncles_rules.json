@@ -1,0 +1,125 @@
+{
+  "id": "dw_1999-10-19_the_uncles_rules",
+  "title": "The uncle's rules",
+  "strip": "drift_wood",
+  "date": "1999-10-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle's Pots",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle has rules for the shack. They're painted on a board. Gully knows them by heart. Wood reads them and finds the fourth one is about him.",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Inside the shack. A board on the wall, hand-painted, five lines of rules drawn as blocks. GULLY coiling rope. WOOD reading the board.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the inside of a shingle bait shack with a hand-painted board of rules on the wall, a teenager coiling rope, a young man reading the board, black and white, no words",
+        "negative": "",
+        "notes": "The rules as blocks; only rule four legible. Letter after: '4. NO DRAWING ON THE COUNTER.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Rule four, legible: NO DRAWING ON THE COUNTER. Older than Wood. The paint cracked.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a cracked hand-painted rule on a wooden board, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to Gully.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Four's about me."
+        },
+        {
+          "who": "GULLY",
+          "text": "Four's from '78."
+        },
+        {
+          "who": "WOOD",
+          "text": "Then who—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Somebody drew on the counter."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pointing at a painted board while a teenager coils rope without looking, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The counter's edge, worn. Under the varnish, faint: a gull. Two strokes. Not Wood's. Somebody's, 1978.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a worn wooden counter edge with a faint two-stroke bird scratched under old varnish, black and white, no words",
+        "negative": "",
+        "notes": "A gull under the varnish, 1978. Reserved who."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Rule four is older than him. The gull under the varnish: reserved."
+}

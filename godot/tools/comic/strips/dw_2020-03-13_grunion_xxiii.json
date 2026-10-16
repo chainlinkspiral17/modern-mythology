@@ -1,0 +1,140 @@
+{
+  "id": "dw_2020-03-13_grunion_xxiii",
+  "title": "The Grunion Run, xxiii",
+  "strip": "drift_wood",
+  "date": "2020-03-13",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twenty-third year. Cancelled. A sign on the beach path. Wood and the pup go anyway. The fish come anyway. Six lanterns that aren't the festival's.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "gully_35"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach path. A sign: GRUNION RUN — CANCELLED. The reason not on the sign. WOOD reading it, BARNABY II pulling past.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "reading the sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "pulling past",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cancellation sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-lettered sign on a beach path reading GRUNION RUN CANCELLED with no reason given, a thin man reading it and a three-legged dog pulling past, clean ink with a muted wash",
+        "negative": "",
+        "notes": "CANCELLED. No reason. Letter after. Reserved whether 2020 is 2020."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The beach, night, no festival. Six lanterns anyway, spread far apart along the surf — people who came alone.",
+      "characters": [],
+      "props": [
+        "six far-apart lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark beach at night with six lanterns spread far apart along the surf line, people standing alone, no crowd, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The surf. The fish. They came. The pup at the water's edge.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the water",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a surf line at night with silver fish arriving and a three-legged dog at the water's edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. Six lanterns. One is Gully's, far down. Wood's is the pad's lamp — no, the lamp; he brought the lamp; it's off; he's holding it anyway. The fish. The last Grunion Run the public strip draws.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the unlit lamp",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "a lantern far down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "six lanterns",
+        "the lamp, unlit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with six far-apart lanterns, a man holding an unlit green swing-arm lamp at the surf line beside a three-legged dog, silver fish arriving, no words",
+        "negative": "",
+        "notes": "The lamp from 2011, brought again, unlit. The last Grunion Run of the public run."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Cancelled. They come anyway. Six lanterns and an unlit lamp."
+}

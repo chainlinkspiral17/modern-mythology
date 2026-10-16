@@ -1,0 +1,134 @@
+{
+  "id": "dw_2015-10-26_the_old_bed",
+  "title": "The old bed",
+  "strip": "drift_wood",
+  "date": "2015-10-26",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Three Legs · deepening)",
+  "logline": "Monday. Ten months in. The pup gets into the old bed for the first time. Not remarked. Wood at the table, drawing; the strip draws his hand stopping for one panel and then going on.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The braided bed under the table — the old one, unused since December. BARNABY II circling it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "circling the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the old bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog circling a braided dog bed beneath a drafting table, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "In. The pup lying down in it. Turning once. Settling.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed, settling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog lying down in a braided bed and settling, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD's hand at the table above. The brush stopped mid-stroke. One panel.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the brush, stopped"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a man's hand holding a brush stopped mid-stroke above a page, no words",
+        "negative": "",
+        "notes": "The only remark: the brush stops for one panel."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The hand going on. The stroke finished. The pup asleep in the bed below. The garage as it was in 2013, with a different dog in the same place.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man drawing at a table while a small three-legged dog sleeps in a braided bed beneath it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wordless. The old bed, used. The brush stops once."
+}

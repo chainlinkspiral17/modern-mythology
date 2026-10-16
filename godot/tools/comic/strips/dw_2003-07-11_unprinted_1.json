@@ -1,0 +1,143 @@
+{
+  "id": "dw_2003-07-11_unprinted_1",
+  "title": "The unprinted year, i",
+  "strip": "drift_wood",
+  "date": "2003-07-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Three weeks without a reader. The line is already looser. A strip about nothing — the dog, the fan, the heat — drawn as if someone would see it, which nobody will.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom in July heat. A box fan. WOOD on the floor with the pad. BARNABY flat in front of the fan, ears blowing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "on the floor",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "flat in front of the fan",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "box fan"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, looser line than usual, a young man on a bedroom floor with a pad and a dog lying flat in front of a box fan with its ears blowing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's face in the fan. Bliss.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "face in the fan",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fan"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose, close-up of a dog's face in front of a fan with its ears and jowls blown back",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood moving the dog six inches so he can have the fan. The dog moving back.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "moving the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "moving back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose, a young man sliding a dog sideways away from a fan and the dog sliding back, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Both of them in front of the fan. Ears and hair. The pad on the floor, blank. The line in this strip is fatter than in May. Nobody will notice; nobody will see it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the fan",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the fan",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fan",
+        "blank pad"
+      ],
+      "balloons": [],
+      "caption": "Box 5.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose fat line, a young man and a dog side by side in front of a box fan with hair and ears blowing, a blank pad on the floor",
+        "negative": "",
+        "notes": "The arc's line loosens week by week. Here: fatter brush, less spotting. Caption 'Box 5.' on every unprinted strip."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, loosening; fatter strokes; less spotting; no reader",
+    "palette": "",
+    "paper": "bristol, into Box 5"
+  },
+  "notes": "The first unprinted week in the book. The line already loosening. 'Box 5.'"
+}

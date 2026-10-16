@@ -1,0 +1,61 @@
+{
+  "id": "ro_2023-06-22_the_bird_at_the_vet",
+  "title": "The bird at the vet",
+  "strip": "roflcopter",
+  "date": "2023-06-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The vet's front step with the pup's leash looped on the rail, and the bird on the rail beside the loop, waiting with him. The building from 1999 with the two of them on its step.",
+  "cast": [
+    "the_bird",
+    "barnaby_ii"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small veterinary clinic's front step with a small three-legged dog sitting on it, its leash looped over the rail, the small rainbow bird perched on the rail beside the loop.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the rail",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the step",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small veterinary clinic's front step with a small three-legged dog sitting on it and its leash looped over the rail, a small rainbow bird perched on the rail beside the loop, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2022-05-15."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Waiting with him.",
+  "layout": "single page, no borders"
+}

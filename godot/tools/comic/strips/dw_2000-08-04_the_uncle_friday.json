@@ -1,0 +1,130 @@
+{
+  "id": "dw_2000-08-04_the_uncle_friday",
+  "title": "The uncle, Friday",
+  "strip": "drift_wood",
+  "date": "2000-08-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle, Every Day",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the uncle in the chair, straight on, close, looking at the reader, which nobody in the strip has done. The owner looks at the cover a long time. 'He's looking at me.' 'He's looking at everyone.' She puts it at the front and leaves it there two weeks.",
+  "cast": [
+    "extra_uncle",
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the UNCLE in the chair, close, straight on, the line, looking directly out of the page.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing an old man in a lawn chair with an oxygen line looking directly at the viewer, black and white, no words",
+        "negative": "",
+        "notes": "The only figure in the run to look at the reader until 2010 (THE LONG WAY BACK's devil). Wood asked; the uncle said fine."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner holding it. A long time. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "He's looking at me."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's looking at everyone."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet and looking at the face on its cover for a long moment, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner putting it at the front. Her hand on it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a woman's hand placing a booklet at the front of a wire rack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The rack. The uncle looking out at the laundromat. He's there two weeks. Nobody moves him. The strip drew him while it could.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet at the front of a wire rack in a laundromat, an old man's face on its cover looking out at the room, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Friday. He looks at the reader. Two weeks at the front. Drawn while it could."
+}

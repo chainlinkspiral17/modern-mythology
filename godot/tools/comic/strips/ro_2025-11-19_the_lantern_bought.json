@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-11-19_the_lantern_bought",
+  "title": "The lantern, bought",
+  "strip": "roflcopter",
+  "date": "2025-11-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "A new kerosene lantern on Gully's counter with its price tag on, bought at the grocery because the hardware's been gone since 2011, and Gully's hand cutting the tag. Four months before the run. Two lanterns become three, maybe.",
+  "cast": [
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A new kerosene lantern on a shop counter with a price tag on its handle and a heavy man's hand cutting the tag with a knife, the end stool's edge.",
+      "characters": [
+        {
+          "id": "gully_48",
+          "pose": "a hand, cutting the tag",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a new lantern"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a new kerosene lantern on a shop counter with a price tag on its handle and a heavy man's hand cutting the tag with a small knife, a stool's edge beside, no words legible",
+        "negative": "",
+        "notes": "Wagner's Hardware closed 2011 (dw The Corner)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two become three, maybe.",
+  "layout": "single page, no borders"
+}

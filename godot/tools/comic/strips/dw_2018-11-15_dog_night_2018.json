@@ -1,0 +1,144 @@
+{
+  "id": "dw_2018-11-15_dog_night_2018",
+  "title": "The Dog Night, 2018",
+  "strip": "drift_wood",
+  "date": "2018-11-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Nineteen years. The recycling bin. The outline. The box. The sign: six dark.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Behind the Lanes. The rust outline. WOOD standing in it. BARNABY II sitting in it. The blue bin behind.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the outline",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting in it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rust outline",
+        "blue bin",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog standing inside a rust-stained rectangle on gravel behind a bowling alley at night, a blue recycling bin behind them under a bulb, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup's face. Four. One ear up. Looking at Wood.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a wiry three-legged dog with one ear up looking at its owner under a bulb, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The porch. The box. The pup in it. Wood on the step.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the box",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog in a battered produce box on a porch, a man on the step, night, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The distant sign. Six dark.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon, six dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a porch looking across rooftops at a distant bowling-alley sign with six letters dark, a dog in a box beside him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": ""
+}

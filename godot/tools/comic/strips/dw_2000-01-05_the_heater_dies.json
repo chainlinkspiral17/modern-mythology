@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-01-05_the_heater_dies",
+  "title": "The heater dies",
+  "strip": "drift_wood",
+  "date": "2000-01-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "January, the Ought",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The Datsun's heater dies on 101. The dog moves to Wood's lap without being asked. Twenty minutes each way at fifty degrees. The strip is drawn with the pen held in a fist.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Datsun's dash. The heater knob turned all the way. WOOD's breath visible. BARNABY on the passenger seat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside an old car: a heater knob turned full, a young man's breath fogging, a small dog on the passenger seat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog climbing across the shifter onto Wood's lap. Settling.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small dog climbing over a car's gear shift onto a driver's lap, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood driving with the dog on his lap, both hands on the wheel above him, 101 through the windshield.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man driving with a small dog curled on his lap and both hands on the wheel, spruce highway ahead, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Lot C. The car. Wood getting out with the dog under his coat. The pad under his arm, the line on it shaky from cold, not nerves. The strip says which.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man crossing a cold parking lot with a small dog tucked inside his coat and a drawing pad under his arm, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The dog as heater. The shaky line is cold, not nerves; the strip says so."
+}

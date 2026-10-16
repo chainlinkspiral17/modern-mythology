@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-12-20_the_wreath_on_the_s",
+  "title": "The wreath on the S",
+  "strip": "drift_wood",
+  "date": "2000-12-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The Lanes' wreath goes up on the S again. Wood draws the sign the third time this year. Fifteen marks. All filled. He looks at the S under the wreath longer than the others. He doesn't know why. The strip does: ten years.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "SMALL WOOD LANES at night, every letter lit, the wreath on the S. Rain hatched. WOOD across the road in the coat with the pad. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley's roofline neon sign fully lit at night with a wreath on its first letter, a young man in a chore coat drawing from across the rainy highway with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the sign. Fifteen marks under it. All filled. The wreath.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with a lit sign drawn above a row of fifteen filled tally marks, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The S, under the wreath. Wood looking at it longer.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a lit neon letter S seen through a wreath's greenery, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking home. The sign behind. The S. He doesn't know why he looked. The strip does. November 2010.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat and a small dog walking away from a lit sign along a wet highway shoulder at night, black and white, no words",
+        "negative": "",
+        "notes": "The S: dark Nov 15, 2010 (objects.md). He looks longer; doesn't know why."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The S under the wreath. Ten years. The strip knows; he doesn't."
+}

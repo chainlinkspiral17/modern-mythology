@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-04-03_the_sticker",
+  "title": "The sticker",
+  "strip": "drift_wood",
+  "date": "2000-04-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Datsun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The Datsun's inspection sticker expires. Wood notices because the guard tells him. The guard says he's not a cop. Wood says he knows. The guard says then why's he telling him. Wood says because he's the guard.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Lot C. The GUARD at the Datsun's windshield, tapping the sticker's corner. WOOD arriving with BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "That's expired."
+        },
+        {
+          "who": "WOOD",
+          "text": "You're not a cop."
+        },
+        {
+          "who": "GUARD",
+          "text": "I know that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard tapping the corner of an inspection sticker on a small car's windshield as a young man and a dog arrive, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sticker: a month drawn as a block, a year: 00. Expired in March.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an expired inspection sticker on a windshield with a faded month and year, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The guard.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Then why'd I tell you."
+        },
+        {
+          "who": "WOOD",
+          "text": "Because you're the guard."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard's face, plain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guard walking off. Wood looking at the sticker. The dog looking at the guard. The strip has a guard now the way it has a tech and an owner: unnamed, and right.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard walking away across a lot while a young man looks at his windshield and a small dog watches the guard go, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Because you're the guard.' Unnamed, and right."
+}

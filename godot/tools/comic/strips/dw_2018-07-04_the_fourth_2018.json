@@ -1,0 +1,156 @@
+{
+  "id": "dw_2018-07-04_the_fourth_2018",
+  "title": "The Fourth, 2018",
+  "strip": "drift_wood",
+  "date": "2018-07-04",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "White fireworks. Chloe is in Newport at the diner ten days earlier and now gone. Wood draws the dock and leaves her seat on it empty on purpose.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. GULLY pouring. MARIA in the chair. WOOD on the steps with BARNABY II. At the dock's end, a space on the planks where nobody sits, drawn as a space.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "an empty space on the dock end"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks with a conspicuous empty space on the planks at the dock's end, a man in an apron pouring, a woman in a lawn chair, a thin man on shack steps with a three-legged dog, clean ink with a blue wash",
+        "negative": "",
+        "notes": "The empty seat, the strip's device, on the dock where she sat in 2002 and 2005."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, beside Wood.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You saw her."
+        },
+        {
+          "who": "WOOD",
+          "text": "Newport. A diner. Two AM."
+        },
+        {
+          "who": "GULLY",
+          "text": "And."
+        },
+        {
+          "who": "WOOD",
+          "text": "And she counts from the cafeteria."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men on shack steps at night speaking quietly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The empty space on the dock's end, closer. Fireworks light on the planks.",
+      "characters": [],
+      "props": [
+        "empty planks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of empty wet dock planks at the end of a dock lit white by fireworks, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White. The dock. The space. Everyone else.",
+      "characters": [],
+      "props": [
+        "finale",
+        "the space"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay above a dock with one empty space at its end among a crowd, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Her seat left empty on the dock. 'She counts from the cafeteria.'"
+}

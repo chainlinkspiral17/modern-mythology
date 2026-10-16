@@ -1,0 +1,151 @@
+{
+  "id": "dw_2008-08-08_the_cedar_mill_4",
+  "title": "The cedar mill, iv",
+  "strip": "drift_wood",
+  "date": "2008-08-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Cedar Mill",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Cedar Mill · deepening)",
+  "logline": "Friday. The stack from the base, straight up. Chloe lies down on the floor to see it. The coat gets everything on it. She doesn't care. The strip cares for her.",
+  "cast": [
+    "wood_26",
+    "chloe_28",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The stack from its base, straight up, a brick column into gray sky, swallows.",
+      "characters": [],
+      "props": [
+        "the stack, from below"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a tall brick smokestack seen from its base looking straight up into a gray sky with swallows, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "CHLOE lying flat on the mill floor at the base, looking up. The camel coat on the black floor.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "lying flat, looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coat on the floor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a woman in a camel coat lying flat on her back on a black mill floor looking straight up, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD standing over her with the dog. Not lying down. Drawing the coat on the floor.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "standing, drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Lie down."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm drawing."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You're always drawing."
+        },
+        {
+          "who": "WOOD",
+          "text": "Somebody has to be."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man standing over a woman lying on a mill floor, drawing her, a small dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The coat when she stands: black, sawdust, blackberry, a thread. Her face: fine with it. The dog shaking itself. The strip's last daily before the Sunday.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "standing, the coat ruined, fine",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "shaking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ruined coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a woman standing in a camel coat now streaked with black and sawdust and blackberry, her face untroubled, a small dog shaking itself, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'Somebody has to be.' The coat ruined; she doesn't care."
+}

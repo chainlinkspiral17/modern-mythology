@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-12-22_the_beach_road_1994",
+  "title": "The beach road, 1994",
+  "strip": "roflcopter",
+  "date": "2022-12-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The beach road in 1994 with mill trucks on it, the seawall newer, the Lanes' sign with every tube lit, no bait shack sign yet. The town before the strip, in the spotting. The page as a map of what changed.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A coastal town's beach road in 1994 with log trucks passing, a newer seawall, a bowling alley's sign fully lit by day, a shingle shack with no sign yet, black spotting in the truck shadows.",
+      "characters": [],
+      "props": [
+        "log trucks",
+        "the sign, all lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a small coastal town's beach road with log trucks passing, a newer concrete seawall, a bowling alley's neon sign fully lit and a shingle shack without a sign yet, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A map of what changed.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,125 @@
+{
+  "id": "dw_2000-09-26_the_gold_pot_put_away",
+  "title": "The gold pot, put away",
+  "strip": "drift_wood",
+  "date": "2000-09-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday, after the shop. The gold pot goes into the shack's loft for winter. Gully lifts it up; the uncle says careful from the chair; the pot goes up. Fifteen layers of gold and a chip. Wood draws it going up the ladder into the dark. It comes down in February. The uncle won't see it.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY on a ladder lifting the gold pot into the loft. The UNCLE in the door in the chair. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Careful."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager on a ladder lifting a gold-painted crab pot into a shack's loft while an old man in a lawn chair watches from the doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pot going into the dark of the loft. The chip on the rim catching the last light.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a gold-painted crab pot being pushed into a dark loft, its chipped rim catching light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle watching it go.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair watching something disappear into a loft, his face unreadable, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shack. The ladder down. The loft dark. February, it comes down. The strip doesn't know who'll be in the chair. It draws the chair.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle shack interior with a ladder laid down and a dark loft above, an old man in a lawn chair in the doorway, black and white, no words",
+        "negative": "",
+        "notes": "The uncle dies Feb 2001. The strip doesn't know. It draws the chair."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The gold pot up for winter. Down in February; the uncle won't see it. The strip draws the chair."
+}

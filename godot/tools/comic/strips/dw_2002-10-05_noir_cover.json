@@ -1,0 +1,58 @@
+{
+  "id": "dw_2002-10-05_noir_cover",
+  "title": "SLASH · the cover",
+  "strip": "drift_wood",
+  "date": "2002-10-05",
+  "run": 2,
+  "era": "era1",
+  "format": "digest_cover",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Noir Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Noir Week · deepening)",
+  "logline": "The digest cover for Noir Week: a trench coat under the Lanes' neon, in rain, played straight. No signature. No gull. The strip pretending to be the novel for one week.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "cover",
+      "composition": "A single image: a man in a trench coat, collar up, hat brim down, under the bowling alley's neon at night in rain, the sign's pink and blue in the puddles. Heavy black. No face. Unsigned.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "trench coat, collar up, face hidden",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "trench coat",
+        "neon",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a zine cover of a man in a trench coat with his collar up and hat brim down standing under a bowling alley's neon sign at night in rain, the neon reflected in puddles, heavy black spotting, played completely straight, no words",
+        "negative": "",
+        "notes": "Unsigned. No gull. The title SLASH lettered across the top after, in a hand-cut display face."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Unsigned cover. The novel's name on the strip's cover, once."
+}

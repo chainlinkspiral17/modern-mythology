@@ -1,0 +1,175 @@
+{
+  "id": "dw_2015-12-24_december_2015_dock",
+  "title": "December, 2015 · the dock (earlier that day)",
+  "strip": "drift_wood",
+  "date": "2015-12-24",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Before the garage: Christmas Eve on Gully's dock. Maria, two kids, Gully, Wood, the pup. Chloe arrives tomorrow; nobody knows yet.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's dock, Christmas Eve, string lights. MARIA in the lawn chair with the toddler. GULLY's girl, five, running the dock. WOOD on the steps. BARNABY II chasing the girl.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "in the chair",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "running",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "chasing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "string lights",
+        "chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock strung with lights on Christmas Eve, a woman in an old lawn chair with a toddler, a five-year-old girl running with a three-legged dog chasing her, a stocky man and a thin man, razor-sharp ink with a warm wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, beside Wood.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She called."
+        },
+        {
+          "who": "WOOD",
+          "text": "Who."
+        },
+        {
+          "who": "GULLY",
+          "text": "Don't."
+        },
+        {
+          "who": "WOOD",
+          "text": "...When."
+        },
+        {
+          "who": "GULLY",
+          "text": "Tomorrow. Alone. I didn't tell you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men on shack steps at night, one telling the other something quietly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, looking at the dock lights. The pup skidding into his legs.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the lights",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "skidding into him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man looking at string lights on a dock as a three-legged dog skids into his legs, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock from the water. Lights. The family. The man on the steps. The night before.",
+      "characters": [],
+      "props": [
+        "dock from the water",
+        "lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lit dock at night seen from the water with a family and a man on the steps of a shingle shack, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Gully knows first. 'I didn't tell you.' The night before dw_2015-12-25."
+}

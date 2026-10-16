@@ -1,0 +1,113 @@
+{
+  "id": "dw_1999-10-04_the_thesis_promise",
+  "title": "The thesis promise",
+  "strip": "drift_wood",
+  "date": "1999-10-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Composition II, week three. The instructor returns the first papers. Wood didn't write one. He hands in the strip about her and she grades it.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom. The INSTRUCTOR handing back papers along the rows. WOOD in the back with no paper to receive.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Mr. Finch. Nothing from you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a community college classroom with an instructor handing back papers along rows of adult students, a young man in the back row with empty hands, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood sliding a quarter-letter digest across the desk toward her instead.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand sliding a small stapled photocopied booklet across a desk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The instructor reading it standing up. The class watching her read.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor standing in a classroom aisle reading a small photocopied booklet while adult students watch, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The digest handed back. In red pen on the cover: B+. Under it: 'Thesis is implied. State it.'",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small photocopied booklet with a grade written on its cover in red pen and a short note beneath, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: B+ · 'Thesis is implied. State it.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "She grades the strip. B+. The red pen is not Chloe's, and he notices that it isn't."
+}

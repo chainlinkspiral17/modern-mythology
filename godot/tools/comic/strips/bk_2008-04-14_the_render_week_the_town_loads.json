@@ -1,0 +1,157 @@
+{
+  "id": "bk_2008-04-14_the_render_week_the_town_loads",
+  "title": "THE RENDER WEEK · The town loads",
+  "strip": "backup",
+  "series": "THE RENDER WEEK",
+  "date": "2008-04-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a science-fiction week the papers declined · posted once, taken down",
+  "arc": "THE RENDER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A science-fiction week the papers declined: the town as a render in progress. Monday: the seawall drawn in wireframe, then the flats, then the shack, each panel a little more solid, a progress bar under each, and Wood and the dog on the bench fully drawn from the first panel, waiting for the town to finish. It doesn't, by Friday.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall in phosphor-green wireframe, the bay a grid; WOOD and BARNABY on the bench fully drawn.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the bench, solid",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "solid",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wireframe",
+        "a progress bar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a seawall and bay drawn as phosphor-green wireframe with a thin man and a small dog on a bench drawn solid, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The same, the wall half-shaded now, the bar a little fuller.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a progress bar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a seawall half-shaded emerging from wireframe with a man and a dog on a bench, a thin progress bar drawn beneath the panel partly filled fuller",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The wall solid, the bay still a grid, a gull in wireframe landing on the wall.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a wireframe gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a solid seawall beside a bay still drawn as a green grid with a wireframe gull landing on the wall, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, to the dog, the bar under the panel stuck at the same place.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bar, stuck"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's always the water."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man speaking to a small dog on a bench beside a green grid of water, a thin progress bar drawn beneath the panel partly filled stuck",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen; one panel per strip in wireframe; a progress bar under every panel",
+    "palette": "muddy early-digital flats; the wireframe in phosphor green",
+    "paper": "bristol scanned; a genre week the coastal weeklies declined"
+  },
+  "notes": "The bar under every panel. It's always the water.",
+  "layout": "four panels with a bar beneath each"
+}

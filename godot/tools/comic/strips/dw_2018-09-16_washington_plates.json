@@ -1,0 +1,103 @@
+{
+  "id": "dw_2018-09-16_washington_plates",
+  "title": "Sunday · Washington plates",
+  "strip": "drift_wood",
+  "date": "2018-09-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Pitch Meeting That Isn't",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The arc's Sunday: Gully's lot from the dock, a clean car with Washington plates parked wrong, two figures at the counter through the window who don't order. Wood not there; the strip drawn from Gully's account.",
+  "cast": [
+    "gully_35",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the gravel lot at Gully's from the dock, a clean gray car with Washington plates parked across two spaces, the shack, the corkboard through the window.",
+      "characters": [],
+      "props": [
+        "the car, Washington plates"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a gravel lot beside a shingle bait shop with a clean gray sedan bearing Washington plates parked across two spaces, seen from a dock, no words",
+        "negative": "",
+        "notes": "Plates: WASHINGTON legible, number not."
+      },
+      "stage": null,
+      "name": "Lot"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: through the window: two figures in good coats at the counter, not sitting, not ordering, one holding a folder. Gully behind the counter with his arms crossed.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "two, in good coats, with a folder",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "arms crossed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a folder"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, seen through a shop window, two people in expensive coats standing at a bait-shop counter not ordering while a stocky man in an apron stands behind it with his arms crossed, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the lot, the car gone, two tire ruts in the gravel, the dock, the end stool visible through the open door with nobody on it. Held.",
+      "characters": [],
+      "props": [
+        "tire ruts",
+        "the end stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, the same gravel lot empty with two fresh tire ruts, an open shop door showing an empty end stool inside, no words",
+        "negative": "",
+        "notes": "Wood was not there. The strip is Gully's account."
+      },
+      "stage": null,
+      "name": "Gone"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The pitch meeting that isn't. Drawn from Gully's account.",
+  "layout": "tiers, portrait page"
+}

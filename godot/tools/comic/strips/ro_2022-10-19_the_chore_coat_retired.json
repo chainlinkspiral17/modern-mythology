@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-10-19_the_chore_coat_retired",
+  "title": "The chore coat, retired",
+  "strip": "roflcopter",
+  "date": "2022-10-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The canvas chore coat — the 2000 one, the 2010 one, whichever's left — on a nail in the garage behind the plaid, its cuffs gone, October. The page draws it as the man it was.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A worn canvas chore coat hanging on a nail in a garage with a blue plaid shirt hung over it, the coat's cuffs frayed through, lamplight.",
+      "characters": [],
+      "props": [
+        "the chore coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a worn canvas chore coat hanging on a nail in a garage with a blue plaid flannel shirt hung over it, the coat's cuffs frayed through, lamplight, no words",
+        "negative": "",
+        "notes": "The second chore coat (dw 2010)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "As the man it was.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,140 @@
+{
+  "id": "dw_1999-12-29_the_papers_y2k_issue",
+  "title": "The paper's Y2K issue",
+  "strip": "drift_wood",
+  "date": "1999-12-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Last Week of the Century",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college paper's holiday issue asks Wood for a millennium strip. He draws a strip about being asked for a millennium strip. They run it. The strip has learned it can do this.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop, the machine back early, the TECH unplugging the service tag. WOOD with a strip. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Paper wants a millennium one."
+        },
+        {
+          "who": "WOOD",
+          "text": "I don't do—"
+        },
+        {
+          "who": "TECH",
+          "text": "I told them that. They still want it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician pulling a service tag off a large copier while a young man holds a comic strip and a dog waits, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The strip Wood hands over: four panels of a young man being asked for a millennium strip, drawn in ninety seconds.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a four-panel comic strip drawn quickly showing a young man being asked for a strip by a technician, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tech reading it. Looking up.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "This is us."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a millennium strip."
+        },
+        {
+          "who": "TECH",
+          "text": "It's this. Now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician reading a comic strip and looking up at the young man who drew it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The copier's light sweeping over the strip about the copier. The strip has learned the trick and will use it for twenty-eight years.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a photocopier's green light sweeping across a comic strip lying on its glass, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The strip about being asked. The trick, learned. Used through 2027."
+}

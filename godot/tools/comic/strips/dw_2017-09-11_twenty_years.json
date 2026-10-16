@@ -1,0 +1,147 @@
+{
+  "id": "dw_2017-09-11_twenty_years",
+  "title": "Twenty years",
+  "strip": "drift_wood",
+  "date": "2017-09-11",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "The Anniversary as a week. Wood in the cafeteria for the first time since 1999, as a visitor, for a school-paper interview the strip never shows.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High's cafeteria, 2017. Same room, new tables, a vending machine that takes cards. Three hundred kids facing one direction — toward their phones. WOOD in the doorway, a visitor badge on the flannel.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the doorway with a visitor badge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cafeteria",
+        "phones",
+        "visitor badge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a high school cafeteria seen from its doorway, hundreds of students all looking down at phones, a man in a flannel with a visitor badge standing in the door, razor-sharp ink",
+        "negative": "",
+        "notes": "Twenty years. One direction: down. The strip doesn't say it."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The serving line. A tray. Corn. A LUNCH LADY — a different one; the first retired. She looks up. That's the difference.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "tray out",
+          "expression": ""
+        },
+        {
+          "id": "lunch_lady",
+          "pose": "ladling, looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tray",
+        "corn"
+      ],
+      "balloons": [
+        {
+          "who": "LUNCH LADY",
+          "text": "You're the one from the paper. The old paper."
+        },
+        {
+          "who": "WOOD",
+          "text": "Corn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding out a tray at a cafeteria serving line as a lunch lady ladles corn and actually looks up at him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The long table. Wood at the end with his corn. Three kids at the far end, one drawing on a napkin, one reading, one with a phone. He draws them without their noticing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the end, drawing",
+          "expression": ""
+        },
+        {
+          "id": "extra_student",
+          "pose": "three kids far down the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "long table",
+        "napkin",
+        "paperback",
+        "phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long cafeteria table with a man alone at one end drawing and three teenagers far at the other end: one drawing on a napkin, one reading a paperback, one on a phone, no words",
+        "negative": "",
+        "notes": "#1's last panel, with a phone in it. The kid on the napkin is the one he draws."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The cafeteria from the door, later, empty. The trays stacked. Wood gone. The strip's twentieth-anniversary panel is the room without him.",
+      "characters": [],
+      "props": [
+        "empty cafeteria"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty high school cafeteria seen from the doorway after lunch, trays stacked, nobody in it, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Twenty. The cafeteria, the corn, the napkin kid. The interview never shown."
+}

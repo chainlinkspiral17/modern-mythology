@@ -1,0 +1,104 @@
+# The salmon
+
+`dw_2014-08-06_the_salmon` · **DRIFT WOOD** · 2014-08-06 · daily4 (1x4 strip) · run 4 · The Masterwork of Mediocrity · tier B · selection part
+Venue: Arthur's site · the coastal weeklies · arc: *Catering*
+
+*Wednesday. The cedar-plank salmon, analyzed. The cedar. Wood draws the plank's grain and the strip, without saying it, draws the mill's cedar. Gully notices what the strip won't say.*
+
+**Line.** razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups  
+**Palette.** dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk  
+**Paper.** bristol for dailies; 140 lb Arches cold-press for Sundays
+
+Cast: `wood_34`, `gully_35`, `barnaby`
+
+---
+
+## Panel 1
+
+*medium.* Gully's. WOOD drawing. The pad: a cedar plank, the salmon on it, the grain drawn with real attention.
+
+- **wood_34** · drawing the plank
+- **gully_35**
+- **barnaby** · in the basket
+
+Props: the pad: a cedar plank
+
+> **WOOD**: Cedar plank. Western red. Soaked two hours — they said two; it was ninety minutes, you could tell by the char —
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, razor-sharp brush and ink, a thin man on a stool drawing a cedar plank with a salmon on it, the wood grain rendered with unusual care, a man in an apron and an old dog in a basket, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 2
+
+*close.* The plank's grain, close. The rings. Old growth. The mill's cedar, if anyone's counting.
+
+Props: the grain
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, razor-sharp brush and ink, close-up of an ink drawing of cedar wood grain with tight old-growth rings, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+**notes.** The mill's cedar. The strip never says it; Gully does, sideways.
+
+</details>
+
+## Panel 3
+
+*medium.* Gully, looking at the grain on the pad. Knowing the grain.
+
+- **gully_35** · looking at the grain
+- **wood_34**
+
+> **GULLY**: That's tight grain.
+> **WOOD**: It was a good plank.
+> **GULLY**: That's old growth, Woody. That's ours. Somebody up there's cooking fish on our —
+> **WOOD**: Yeah.
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, razor-sharp brush and ink, a stocky man in an apron looking closely at a drawing of wood grain and recognizing it, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 4
+
+*medium.* The two of them looking at the drawing of a plank. The dog. The salmon, incidental. The strip about the wood.
+
+- **wood_34**
+- **gully_35**
+- **barnaby**
+
+Props: the pad
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, razor-sharp brush and ink, two men looking down at a drawing of a cedar plank on a pad, an old dog in a basket between them, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 34, lean man, hairline beginning to recede, weathered jaw, thickened drawing hands; GULLY — aged 35, stocky man with a round face, thick forearms, the beginnings of a beard; BARNABY (the dog) — a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat, gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010. WOOD usually wears blue plaid flannel open over a dark band tee, faded jeans, worn brown boots. GULLY usually wears backwards cap, faded brown canvas work jacket with the hood down over a gray hoodie; the black rubber apron over it only behind the counter. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Wednesday. The cedar-plank salmon, analyzed. The cedar. Wood draws the plank's grain and the strip, without saying it, draws the mill's cedar. Gully notices what the strip won't say. Panel 1: razor-sharp brush and ink, a thin man on a stool drawing a cedar plank with a salmon on it, the wood grain rendered with unusual care, a man in an apron and an old dog in a basket (in this panel: WOOD, GULLY, BARNABY (the dog)). Wood says "Cedar plank. Western red. Soaked two hours — they said two; it was ninety minutes, you could tell by the char —". Panel 2: razor-sharp brush and ink, close-up of an ink drawing of cedar wood grain with tight old-growth rings. No dialogue in this panel. Panel 3: razor-sharp brush and ink, a stocky man in an apron looking closely at a drawing of wood grain and recognizing it (in this panel: GULLY, WOOD). Gully says "That's tight grain.". Wood says "It was a good plank.". Gully says "That's old growth, Woody. That's ours. Somebody up there's cooking fish on our —". Wood says "Yeah.". Panel 4: razor-sharp brush and ink, two men looking down at a drawing of a cedar plank on a pad, an old dog in a basket between them, no words (in this panel: WOOD, GULLY, BARNABY (the dog)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
+
+*Notes.* The plank's grain is the mill's. 'That's ours.'
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (Catering · deepening)

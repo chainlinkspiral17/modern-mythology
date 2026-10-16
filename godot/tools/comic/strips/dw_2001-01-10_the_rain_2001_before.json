@@ -1,0 +1,125 @@
+{
+  "id": "dw_2001-01-10_the_rain_2001_before",
+  "title": "The Rain, 2001 · before",
+  "strip": "drift_wood",
+  "date": "2001-01-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · fixture week · deepening xvi)",
+  "logline": "Two days before the fourth Rain: the frame shop's back room, the dog on the blanket, and Wood at the window watching for it. It hasn't started. The strip waits with him.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop's back room. WOOD at the small window. BARNABY on the blanket.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the window",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the blanket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a small back-room window with a dog on a folded blanket behind him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The window: the alley, dry, gray.",
+      "characters": [],
+      "props": [
+        "the dry alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small window looking onto a dry gray alley, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD still at the window. The dog has gone to sleep.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "still at the window",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man still at a window with a dog asleep on a blanket behind him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The alley, one drop on the glass.",
+      "characters": [],
+      "props": [
+        "one drop"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a window with a single raindrop on the glass and a gray alley beyond, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Waits with him."
+}

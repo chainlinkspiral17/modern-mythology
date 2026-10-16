@@ -1,0 +1,120 @@
+{
+  "id": "dw_2000-05-29_memorial_day_the_launch",
+  "title": "Memorial Day, the launch",
+  "strip": "drift_wood",
+  "date": "2000-05-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Memorial Day. The launch full of trailers and out-of-town boats. The uncle charges nothing for the ramp and never has. Gully directs traffic with a crab pot lid. Wood draws the lid. The uncle watches the boats go out and counts them back.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch on a holiday: trailers backed down, boats going in, out-of-town trucks. GULLY waving a crab pot lid like a flag. The UNCLE on his pot. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded boat launch on a holiday with trailers backing boats into the water, a stocky teenager waving a crab pot lid to direct them, an old man seated on a crab pot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The lid. Gully's hand. A flag the strip draws better than any flag.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a teenager's hand holding up a round crab pot lid like a signal flag, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The uncle counting boats out with his fingers. Nine.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man on a crab pot counting on his fingers as boats head out onto a bay, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Dusk. Boats coming back. The uncle counting. Nine. His fingers going down. He doesn't get up till the ninth. The strip stays till the ninth too.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boat launch at dusk with boats returning while an old man counts them in on his fingers, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Nine out, nine back. The uncle doesn't get up till the ninth."
+}

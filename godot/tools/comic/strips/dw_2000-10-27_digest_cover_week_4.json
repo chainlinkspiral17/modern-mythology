@@ -1,0 +1,50 @@
+{
+  "id": "dw_2000-10-27_digest_cover_week_4",
+  "title": "The digest cover · 101",
+  "strip": "drift_wood",
+  "date": "2000-10-27",
+  "run": 2,
+  "era": "era1",
+  "format": "digest_cover",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Friday's digest cover, week four: Highway 101 curving south into Sitka spruce and drizzle, empty, from the shoulder. The bus's road before the bus. The crab, facing away.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab, facing away."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "cover",
+      "composition": "A single image: the highway's serpentine bend south, towering ink-black Sitka spruce either side, coastal drizzle in hatching, no vehicle. The road the bus will take on Sunday.",
+      "characters": [],
+      "props": [
+        "101",
+        "spruce",
+        "drizzle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a zine cover of a coastal highway curving away into towering black Sitka spruce in drizzle, no vehicles, heavy black spotting, no words",
+        "negative": "",
+        "notes": "Cover, week 4. Sunday's last two panels (dw_2000-10-29) without the taillights. The crab in the margin faces away."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Cover, week 4. The bend without the bus."
+}

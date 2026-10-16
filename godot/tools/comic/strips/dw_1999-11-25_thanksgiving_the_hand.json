@@ -1,0 +1,120 @@
+{
+  "id": "dw_1999-11-25_thanksgiving_the_hand",
+  "title": "Thanksgiving, the hand",
+  "strip": "drift_wood",
+  "date": "1999-11-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Thanksgiving, with the dog",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thanksgiving at the house. The strip stays under the table: the dog, four pairs of shoes, a hand coming down with a piece of turkey. The hand has a ring and a cardigan cuff. The strip never looks up.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_mother"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Under a dining table: BARNABY on the floor among chair legs and shoes — work boots, slippers, WOOD's sneakers, a woman's flats.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "under a dining table: a small dog among chair legs and four pairs of shoes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A hand coming down beside the flats: a ring, a cardigan cuff, a piece of turkey. The MOTHER's.",
+      "characters": [
+        {
+          "id": "extra_mother",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Don't tell Arthur."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close under a table on a woman's hand with a ring and a cardigan cuff offering a piece of turkey to a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The dog taking it. Wood's sneaker shifting. He knows.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small dog taking food from a hand beneath a table as a sneaker shifts nearby, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Under the table still. The shoes. The dog asleep on the sneaker now. The strip stays down here for the whole dinner. It's warmer.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "under a dining table: a small dog asleep across a young man's sneaker among the other shoes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The mother's hand and 'Arthur.' The strip never looks up."
+}

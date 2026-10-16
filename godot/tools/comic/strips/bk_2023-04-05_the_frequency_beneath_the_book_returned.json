@@ -1,0 +1,51 @@
+{
+  "id": "bk_2023-04-05_the_frequency_beneath_the_book_returned",
+  "title": "THE FREQUENCY BENEATH · The book, returned",
+  "strip": "backup",
+  "series": "THE FREQUENCY BENEATH",
+  "date": "2023-04-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "private · after a paperback found in the library's return cart · Box 26",
+  "arc": "THE FREQUENCY BENEATH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The paperback on the library's returns cart, on top of a road atlas, its card stamped, and the page's last trace: the steady band drawn along the cart's shelf edge like a level, unbroken, going off the page both ways. He returned the book. He didn't return the line.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A library returns cart with a waveform-covered paperback on top of a road atlas, and along the shelf's front edge a thin flat trace drawn like a spirit level's line running off both edges of the page.",
+      "characters": [],
+      "props": [
+        "the paperback, returned",
+        "the trace along the shelf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a library returns cart with a paperback bearing a waveform cover lying on a road atlas and a thin flat trace drawn along the shelf's front edge running off both sides of the page, no people, no words legible",
+        "negative": "",
+        "notes": "The returns cart (canon: The Reading Room). The line stays after the book goes."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, but ruled: graph paper, waveforms, spectrogram bands drawn by hand",
+    "palette": "ochre and slate; the trace in one warm color",
+    "paper": "engineering pad, then Arches"
+  },
+  "notes": "Returned the book, not the line.",
+  "layout": "single image"
+}

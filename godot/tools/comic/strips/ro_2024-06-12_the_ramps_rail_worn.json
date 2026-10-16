@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-06-12_the_ramps_rail_worn",
+  "title": "The ramp's rail, worn",
+  "strip": "roflcopter",
+  "date": "2024-06-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The ramp's rail, close, worn pale where a hand goes, and the hand on it: Gully's, heavy, from above. Ten years of the same hand in the same place. The page draws the pale as the years.",
+  "cast": [
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a plank ramp's wooden rail worn pale in one place with a heavy man's hand resting there from above, the dock's planks below.",
+      "characters": [
+        {
+          "id": "gully_48",
+          "pose": "a hand on the rail",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the worn rail"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a plank ramp's wooden rail worn pale in one place with a heavy man's hand resting on it seen from above, dock planks below, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The pale as the years.",
+  "layout": "single page, no borders"
+}

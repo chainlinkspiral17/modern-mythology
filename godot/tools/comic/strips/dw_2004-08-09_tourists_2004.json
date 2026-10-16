@@ -1,0 +1,187 @@
+{
+  "id": "dw_2004-08-09_tourists_2004",
+  "title": "Tourist Season, 2004",
+  "strip": "drift_wood",
+  "date": "2004-08-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "A tourist finds the strip's URL on a napkin at Gully's and reads the whole run on the shop's computer while Gully waits to close.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, August, closing time. A TOURIST at the shop's ancient computer behind the counter — Gully's inventory machine — reading the strip. GULLY with the keys. WOOD on the stool, mortified.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "at the computer, reading",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "holding keys, waiting",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "old computer",
+        "napkin with a URL",
+        "keys"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "One more. There's one more."
+        },
+        {
+          "who": "GULLY",
+          "text": "There's a thousand more. We close at six."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist hunched over an ancient computer behind a bait-shop counter reading a webcomic, a stocky man in an apron holding keys and waiting, a thin man on a stool looking mortified, a dog, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The screen. The strip. The tourist's face lit by it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "lit by the screen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "screen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a tourist's face lit by an old CRT showing a comic strip, absorbed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourist turning to Wood.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "turning",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Is the dog real?"
+        },
+        {
+          "who": "WOOD",
+          "text": "He's under the stool."
+        },
+        {
+          "who": "TOURIST",
+          "text": "...Is *he* real?"
+        },
+        {
+          "who": "GULLY",
+          "text": "Regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist turning from a computer to look at a thin man on a stool, the man pointing under the stool, a stocky man behind the counter answering in one word",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Six-fifteen. The tourist gone. Gully locking up. Wood and the dog on the dock outside, the light long. The URL napkin, left on the counter, drawn small.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "locking the door",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the dock",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "napkin on the counter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man locking a shingle shop's door at evening, a thin man and a dog on the dock outside in long light, a napkin left on the counter inside, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": ""
+}

@@ -1,0 +1,120 @@
+{
+  "id": "dw_2000-06-07_the_lawn_chair",
+  "title": "The lawn chair",
+  "strip": "drift_wood",
+  "date": "2000-06-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "June, the Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully brings a lawn chair from the uncle's house. Aluminum, webbing, one strap gone. He sets it where the uncle sits on the pot. The uncle looks at it. Sits in it. The pot goes back on the wall. The strip draws the chair the way it draws the coat: exactly, because it will draw it for years.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The launch. GULLY carrying a folded aluminum lawn chair from the flatbed. The UNCLE on his pot. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager carrying a folded aluminum lawn chair across gravel toward an old man seated on a crab pot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The chair unfolded: green and white webbing, one strap missing, the arms worn silver.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an unfolded aluminum lawn chair with green and white webbing, one strap missing, its arms worn to bare metal, black and white, no words",
+        "negative": "",
+        "notes": "The lawn chair: objects.md — empty from Feb 2001; Chloe sits Jul 2008; Maria Jul 2009. Drawn exactly from here on."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The uncle looking at it. Standing. Sitting in it. Not a word.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man rising from a crab pot and lowering himself into a lawn chair without a word, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The uncle in the chair by the shack. The pot back on the wall's nail with the others. Thirteen. Wood counting. Gully not.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man seated in a lawn chair beside a shingle shack with a row of crab pots hung on the wall behind, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The lawn chair arrives. Exactly drawn; drawn for years. Thirteen pots on the wall."
+}

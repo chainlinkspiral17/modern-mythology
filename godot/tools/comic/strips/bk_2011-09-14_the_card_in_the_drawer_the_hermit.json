@@ -1,0 +1,59 @@
+{
+  "id": "bk_2011-09-14_the_card_in_the_drawer_the_hermit",
+  "title": "THE CARD IN THE DRAWER · The lamp on 101",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2011-09-14",
+  "run": 3,
+  "era": "era2",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The first card, found in room twelve's nightstand the second week of the job: not a printed card — a drawn one, in a hand that isn't his, of an old man with a lantern on a road. He redraws it that night as the thing it is in Small Wood: a man carrying a green desk lamp along 101 with the cord over his shoulder. The card's name is the thing. The guest who left it: never seen.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: a thin man from behind walking the shoulder of a coastal highway carrying a green swing-arm desk lamp by its arm with the cord over his shoulder, the sea gray beside him. No numeral, no title; the card's name is the thing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind, carrying the lamp",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it a thin man seen from behind walking a coastal highway's shoulder carrying a green desk lamp by its arm with the cord over his shoulder, gray sea beside him, no words legible",
+        "negative": "",
+        "notes": "IX, the Hermit — as Let Go (canon: dw_2011-05-15). The card's name is the thing; no numeral drawn."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "The first card. Never seen who.",
+  "layout": "a single card"
+}

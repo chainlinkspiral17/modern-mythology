@@ -1,0 +1,102 @@
+{
+  "id": "dw_1999-11-01_the_wipers",
+  "title": "The wipers",
+  "strip": "drift_wood",
+  "date": "1999-11-01",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The First Storms",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "November. The first real storm. The Datsun's wipers have one speed and it isn't enough. Wood drives 101 north at twenty with his head out the window. The strip is drawn with rain on it.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 north in a storm, spray off a log truck ahead, the Datsun small behind it, the wipers a blur.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small old car following a log truck through blinding spray on a two-lane coastal highway in a storm, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The windshield from inside: water sheeting, the wiper a smear, the road a guess.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close through a car windshield sheeting with rain, a single wiper smearing, the road barely visible, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD with the window down and his head out, rain in his face, twenty miles an hour.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man driving with his head out the side window in heavy rain, face wet, squinting, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The college sign coming up through the rain. The lot. He made it. The pad on the seat has rain on it and the strip has rain on it too.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy community college entrance sign seen through a wet windshield, a drawing pad on the passenger seat spotted with rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Drawn with rain on the page: the xerox shows the spots."
+}

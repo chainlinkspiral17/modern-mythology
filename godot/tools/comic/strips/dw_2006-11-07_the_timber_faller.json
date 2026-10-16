@@ -1,0 +1,108 @@
+{
+  "id": "dw_2006-11-07_the_timber_faller",
+  "title": "The timber faller",
+  "strip": "drift_wood",
+  "date": "2006-11-07",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The 3:00 AM Protocol · deepening)",
+  "logline": "Tuesday. Page nine of the serious book, drawn across four panels of the strip: a man with a saw on a ridge, the trees, the cross-hatching. The strip lets the phantom novel onto the page once, whole, before it's buried.",
+  "cast": [
+    "wood_26"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Page nine, as drawn: a timber faller on a ridge at dawn, a saw on his shoulder, Sitka spruce, dense cross-hatching, no joke, no balloon. The strip's line for one strip is the novel's line.",
+      "characters": [],
+      "props": [
+        "a timber faller",
+        "the ridge",
+        "a saw"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "dense cross-hatched pen-and-ink in a serious graphic-novel style, a timber faller with a saw over his shoulder on a forested ridge at dawn, no words",
+        "negative": "",
+        "notes": "This strip is the phantom novel's page 9, verbatim. Not the strip's line: crosshatch, weight, no gag. The only time it surfaces whole."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The faller at a trunk. The saw's first bite. Chips.",
+      "characters": [],
+      "props": [
+        "the saw",
+        "chips"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "dense cross-hatched pen-and-ink, a man setting a saw into the base of a huge spruce, chips flying, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "His face. The strip's Wood, aged fifty, in a mill jacket — the reader who knows will see it; the strip doesn't say.",
+      "characters": [],
+      "props": [
+        "the faller's face"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "dense cross-hatched pen-and-ink, close-up of a fifty-year-old man's weathered face under a hard hat, concentrating, no words",
+        "negative": "",
+        "notes": "The faller has Wood's face aged fifty. Reserved whether the novel is about the father."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The tree going over. The ridge. Above it, in the sky, where the strip would put nothing: a faint warmth in the hatching. The novel has the glow too.",
+      "characters": [],
+      "props": [
+        "the falling tree",
+        "a faint glow in the hatching"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "dense cross-hatched pen-and-ink, a huge spruce falling on a ridge with a faint warm lightness worked into the hatching of the sky above, no words",
+        "negative": "",
+        "notes": "The glow, in the novel's hatching, 2006. Before 'Lanes.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The phantom novel surfaces whole, once. The faller has his face at fifty. The glow is in the hatching."
+}

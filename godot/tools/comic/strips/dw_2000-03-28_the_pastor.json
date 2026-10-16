@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-03-28_the_pastor",
+  "title": "The pastor",
+  "strip": "drift_wood",
+  "date": "2000-03-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Who Draws These",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The pastor whose bulletin shares the rack reads a digest at the folding table. He laughs once, at the uncle. He asks the owner if the boy's in trouble. She says he's auditing. The pastor says that's a kind of trouble.",
+  "cast": [
+    "laundromat_owner",
+    "extra_pastor"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. A PASTOR in a raincoat over a collar at the folding table with a digest. The LAUNDRY owner.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_pastor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older man in a raincoat over a clerical collar reading a small booklet at a laundromat folding table, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pastor laughing once. The page: the uncle as a pear.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older clergyman laughing once at a small comic booklet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pastor, to the owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "PASTOR",
+          "text": "Is the boy in trouble?"
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "He's auditing."
+        },
+        {
+          "who": "PASTOR",
+          "text": "That's a kind."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a clergyman speaking to a laundromat owner across a folding table, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The digest going back in the rack — the pastor putting his own bulletin behind it. The order changed. The owner sees. Leaves it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a clergyman placing a church bulletin behind a small booklet in a wire rack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'That's a kind.' The bulletin goes behind the digest, by the pastor's own hand."
+}

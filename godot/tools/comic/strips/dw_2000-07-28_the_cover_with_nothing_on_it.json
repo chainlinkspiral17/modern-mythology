@@ -1,0 +1,126 @@
+{
+  "id": "dw_2000-07-28_the_cover_with_nothing_on_it",
+  "title": "The cover with the note on it",
+  "strip": "drift_wood",
+  "date": "2000-07-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Late July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the note, redrawn, the careful hand, the one line. The owner reads it on the cover and doesn't say anything. She puts it at the front. The town reads it all weekend. Monday, the uncle asks what everyone's looking at him for.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner",
+    "extra_uncle"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: a note, drawn, in a careful hand, one line. Nothing else on the page.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing a single handwritten line on an otherwise blank page, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 'The uncle. Draw him while you can.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner reading the cover. Not saying anything. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner reading a booklet's cover in silence while a young man and a dog wait, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner putting it at the front of the rack. Her hand staying on it a second.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a woman's hand resting a moment on a booklet placed at the front of a wire rack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Monday, in the corner: the UNCLE in the chair, small, looking back at the town looking at him. 'What's everybody looking at.' Nobody tells him. The strip did.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "What's everybody looking at."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair beside a shack looking back toward a town, small in the panel's corner, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The note on the cover. The town looks at the uncle all week."
+}

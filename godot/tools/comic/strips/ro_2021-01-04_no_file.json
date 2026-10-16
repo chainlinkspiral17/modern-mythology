@@ -1,0 +1,47 @@
+{
+  "id": "ro_2021-01-04_no_file",
+  "title": "No file",
+  "strip": "roflcopter",
+  "date": "2021-01-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "C",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "No Grid",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The divider that isn't a page: the book prints a blank sheet with one line. Recorded here so the run has it.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "divider",
+      "composition": "A blank page. Centered, small, in the book's type, not the strip's: 'January 2021 — no file.' Nothing else. (In the digital edition this is an interlude card.)",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "January 2021 — no file.",
+      "sfx": "",
+      "image": {
+        "prompt": "a completely blank cream page with one small line of typeset text centered, nothing else",
+        "negative": "",
+        "notes": "Tier C. Not art. Included as a script so the sequence is complete."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Box 20 ends. The aggregator's hiatus banner goes up and is still up in 2027.",
+  "layout": "divider"
+}

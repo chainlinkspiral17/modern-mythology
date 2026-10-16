@@ -1,0 +1,147 @@
+{
+  "id": "dw_2012-11-14_the_illustrators_2",
+  "title": "The illustrators, ii",
+  "strip": "drift_wood",
+  "date": "2012-11-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Illustrators",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Osaka's letter: a drawing of the dog, from the strip, in a line Wood doesn't have. He pins it beside Lyon's glow. Three strangers on the wall now.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD opening an airmail envelope. BARNABY on the floor. Two drawings already on the wall — Lyon (the ridge glow), Montreal (the dock).",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "opening an envelope",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "airmail envelope",
+        "two pinned drawings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table opening a thin airmail envelope, an old dog on the floor, two strangers' drawings pinned on the wall beside him, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The drawing from Osaka: Barnaby, under a table, in a brush line — looser, wetter, better at the dog than Wood is. Wood's face.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Osaka drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man looking at a stranger's loose wet brush drawing of an old dog under a table, his face still",
+        "negative": "",
+        "notes": "The Osaka drawing should look better than the strip's own dog. Different hand."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking from the drawing to the actual dog. The dog looking back. The drawing is right.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "comparing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...He got your ear."
+        },
+        {
+          "who": "WOOD",
+          "text": "I never got your ear."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a drawing up beside an old dog and comparing them, the dog looking back",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Three drawings on the wall: Lyon, Montreal, Osaka. Wood pinning the third. Then — a glance over his shoulder at the empty garage. Someone is looking closely.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pinning, glancing back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three pinned drawings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man pinning a third drawing beside two others on a garage wall and glancing over his shoulder at the empty room behind him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'I never got your ear.' Three strangers on the wall. The glance over the shoulder."
+}

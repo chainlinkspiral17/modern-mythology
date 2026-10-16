@@ -1,0 +1,109 @@
+{
+  "id": "dw_2000-11-29_the_ink_on_the_pocket",
+  "title": "The ink on the pocket",
+  "strip": "drift_wood",
+  "date": "2000-11-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A pen uncapped in the pocket. The stain on the canvas, spreading, over a panel. Wood feels it and doesn't take the pen out. Let it. The pocket has ink now. It's where the pens go; it should say so.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom. WOOD at the back in the coat, the pad, a pen going into the pocket uncapped without his noticing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at the back of a classroom slipping an uncapped pen into his canvas coat's pocket without noticing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pocket. A dark spot on the canvas. Spreading.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a dark ink stain spreading on a canvas coat pocket, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hand going to the pocket. Feeling it. Not taking the pen out.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand pressing on an ink-stained coat pocket and leaving the pen inside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The INSTRUCTOR at the board. Wood, the coat, the stain. The strip forty strokes now. The coat has its three things: cuff, button, ink. It's the coat. Done.",
+      "characters": [
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a stained chore coat at the back of a classroom while an instructor writes on the board, drawn in forty sparse strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Cuff, button, ink. The coat's done. Forty strokes."
+}

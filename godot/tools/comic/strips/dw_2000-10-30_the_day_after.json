@@ -1,0 +1,153 @@
+{
+  "id": "dw_2000-10-30_the_day_after",
+  "title": "The day after",
+  "strip": "drift_wood",
+  "date": "2000-10-30",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Monday after the bus. The strip's town is one block wide. The frame shop is normal size.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, Monday morning, drawn one block wide: the panel is a narrow vertical slot. WOOD walking to work with BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "main street, compressed",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town main street compressed into a narrow vertical slot of a panel, a young man walking a small dog through it in rain, brush-pen black and white",
+        "negative": "",
+        "notes": "Panel 1 is the narrowest panel of the arc — a slot. Panels 2–4 are normal width; the strip's grid is asymmetric this day."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The frame shop. Normal width. The OWNER handing him a job ticket. The mat cutter.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "handing over a ticket",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "taking it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "job ticket",
+        "mat cutter"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Diploma. Coos Bay. Double mat, cream and green."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses handing a job ticket to a young man at a frame-shop counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood cutting. Clean forty-five. The hands don't shake.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting a mat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter",
+        "a clean corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of steady hands guiding a mat cutter through a clean corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog under the mat table. Wood above. The ticket says Coos Bay. Wood, to the dog: nothing. The strip goes back to being a strip.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "working",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ticket reading COOS BAY"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man working at a mat table with a small dog underneath, a job ticket pinned beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Arc 1 closes. The narrow panel is used once more and retired."
+}

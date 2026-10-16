@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-04-06_the_seawall_in_april_rain",
+  "title": "The seawall in April rain",
+  "strip": "roflcopter",
+  "date": "2025-04-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The seawall in April rain, empty, the bench dark with wet, and on the wall in chalk a crab someone drew before the rain, half gone. Whose: the page suspects and doesn't say.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A seawall in April rain with an empty wet bench and a chalk crab drawn on the wall half washed away.",
+      "characters": [],
+      "props": [
+        "the chalk crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall in April rain with an empty wet bench and a chalk drawing of a crab on the wall half washed away, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Half gone. Whose: not said.",
+  "layout": "single page, no borders"
+}

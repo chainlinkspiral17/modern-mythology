@@ -1,0 +1,140 @@
+{
+  "id": "dw_2015-09-24_return_2015_4",
+  "title": "Return, iv",
+  "strip": "drift_wood",
+  "date": "2015-09-24",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Return · deepening)",
+  "logline": "Thursday. The pup's first Lanes. Not the Dog Night — that's November. Just the alley, in daylight, on the way somewhere else. The pup pulls toward the dumpster like he knows. Wood doesn't let him. Not yet.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The alley mouth behind the Lanes, day. WOOD walking past it, not into it. BARNABY II on the leash, pulling toward it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking past",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "pulling toward the alley",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the alley mouth"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man walking past an alley mouth behind a bowling alley by day while a small three-legged puppy on a leash pulls toward it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The leash taut. The pup's whole body pointed at the alley.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "pointed at the alley",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a taut leash and a small puppy's body straining toward an alley, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking down the alley. The dumpster. The box behind it, gray, still there from December.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking down the alley",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster",
+        "the box, still there"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man looking down an alley at a dumpster with a collapsed gray cardboard box behind it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood walking on. The pup following, looking back. The sign above with the S dark. November's a ways off.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "following, looking back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, S dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man walking on past an alley with a small three-legged puppy following and looking back, a bowling-alley sign above with one letter dark, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The pup pulls toward the dumpster. Not yet."
+}

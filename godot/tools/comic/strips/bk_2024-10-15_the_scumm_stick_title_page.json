@@ -1,0 +1,59 @@
+{
+  "id": "bk_2024-10-15_the_scumm_stick_title_page",
+  "title": "THE SCUMM STICK · title page",
+  "strip": "backup",
+  "series": "THE SCUMM STICK",
+  "title_page": true,
+  "date": "2024-10-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the machine in the pizza window · Box 32",
+  "arc": "THE SCUMM STICK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "A game's title screen in the 4:3 frame: the garage doorway's silhouette at night, the lamp's green a single lit rectangle inside, the title in chunky sixteen-color pixel capitals over it; the verb bar beneath with no verb marked; the inventory strip empty; the sentence line reading NEW GAME.",
+      "characters": [],
+      "props": [
+        "the garage doorway",
+        "the verb bar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "sixteen-color pixel-art-styled comic page in a 4:3 screen proportion, a game title screen with a garage doorway's silhouette at night and one lit green rectangle inside, the series title in chunky pixel capitals over the scene, a verb bar beneath with no verb highlighted, an empty inventory strip, and a sentence line reading NEW GAME",
+        "negative": "",
+        "notes": "NEW GAME. The inventory fills over eight rooms and empties on the last."
+      },
+      "stage": null,
+      "lettering": [
+        "THE SCUMM STICK",
+        "an adventure that doesn't exist · after the machine in the pizza window",
+        "LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO",
+        "NEW GAME"
+      ]
+    }
+  ],
+  "art": {
+    "line": "the private line inside a screen's proportions; a verb bar in a monospaced hand; an inventory strip of the strip's objects",
+    "palette": "the private washes, quantized to sixteen colors",
+    "paper": "Arches cut to 4:3"
+  },
+  "notes": "Title page. Letters exactly: THE SCUMM STICK / an adventure that doesn't exist · after the machine in the pizza window / LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO.",
+  "layout": "title page: the masthead over a single image",
+  "aspect": "4:3"
+}

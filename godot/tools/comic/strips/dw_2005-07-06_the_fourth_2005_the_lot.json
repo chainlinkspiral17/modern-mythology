@@ -1,0 +1,118 @@
+{
+  "id": "dw_2005-07-06_the_fourth_2005_the_lot",
+  "title": "The Fourth, 2005 · the lot",
+  "strip": "drift_wood",
+  "date": "2005-07-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "Two days after: the Datsun in the hospital lot in Newport at noon, the blue-lit sign, Wood in the cab not getting out, the dog in the bed. The strip has drawn this lot in December. It draws it in July and says nothing new.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A hospital parking lot at noon, a blue-lit sign the strip doesn't letter, the orange Datsun small among the cars.",
+      "characters": [],
+      "props": [
+        "the blue sign",
+        "the Datsun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a hospital parking lot at noon with a blue sign and a small orange pickup among the cars",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD in the cab, hands on the wheel, not getting out.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the cab",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man sitting in a pickup's cab with both hands on the wheel not getting out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "BARNABY in the truck bed, chin on the side, looking at the building.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "chin on the side",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small dog in a pickup's bed resting its chin on the side and looking at a building",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD getting out. The door. The building not shown.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "getting out",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man stepping out of a pickup and closing the door, the building out of frame",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The lot in July. Nothing new said."
+}

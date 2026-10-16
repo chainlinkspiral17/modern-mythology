@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-07-31_the_uncle_monday",
+  "title": "The uncle, Monday",
+  "strip": "drift_wood",
+  "date": "2000-07-31",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle, Every Day",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. Wood draws the uncle. The chair, the line, the bay behind. The uncle lets him. He says 'more at the bottom' and it's a joke now. Wood draws the joke.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The chair by the shack. The UNCLE in it, the oxygen line, looking at the bay. WOOD on a pot with the pad, close. BARNABY at the chair's leg.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair with an oxygen line looking at a bay while a young man draws him from close by on a crab pot, a small dog at the chair's leg, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the uncle, in the chair, exact. Not a pear. A man.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with a careful ink portrait of an old man in a lawn chair, not caricatured, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle, glancing at it.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "More at the bottom."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's a joke now."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Draw it, then."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old weathered man glancing sideways at a drawing, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood adding more at the bottom. The uncle, wider by a stroke. The joke, drawn. The uncle nodding. Monday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man adding a stroke to a drawing of an old man in a lawn chair who nods, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Monday. 'Draw it, then.' The joke, drawn."
+}

@@ -1,0 +1,152 @@
+{
+  "id": "dw_2012-08-13_tourists_2012",
+  "title": "Tourist Season, 2012",
+  "strip": "drift_wood",
+  "date": "2012-08-13",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The motel full. A guest checks in at 1 AM with a dog, against policy. Wood looks at the dog, looks at the policy card, turns the card face down.",
+  "cast": [
+    "wood_34",
+    "motel_guest",
+    "barnaby"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 1 AM. NO VACANCY lit outside. A GUEST with a suitcase and a small dog. The NO PETS card on the counter. WOOD. BARNABY under the desk, invisible to the guest.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "with a small dog",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "NO PETS card",
+        "NO VACANCY",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "I know it says. He's quiet. I've been driving since Reno."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night desk at 1 AM with a tired guest holding a suitcase and a small dog, a NO PETS card on the counter, a clerk in a maroon polo, an old dog hidden beneath the desk, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": "Letter after: NO PETS on the card, NO VACANCY in the window."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood looking at the small dog. The small dog looking at the desk, where something under it is breathing.",
+      "characters": [],
+      "props": [
+        "the small dog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small dog looking curiously at the front of a desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hand turning the NO PETS card face down. That's all.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the card",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "card face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand turning a small printed card face down on a motel counter, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guest gone up. Wood at the desk. Barnaby's head out from under it, looking at the stairs. The card face down all night.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "card",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "One night. He's from Reno."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a clerk at a motel desk at night with an old dog's head emerging from beneath it looking toward the stairs, a card face down on the counter, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The policy card turned face down. 'He's from Reno.'"
+}

@@ -1,0 +1,189 @@
+{
+  "id": "dw_2001-02-09_crab_derby_2001",
+  "title": "The Crab Derby, 2001",
+  "strip": "drift_wood",
+  "date": "2001-02-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Seventeenth annual. The uncle is not resting. He is in Newport, in the hospital. Gully runs it alone. The flyer is free.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY in the apron, alone. The lawn chair empty, oxygen tank beside it, tube coiled. WOOD with the flyer already drawn.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "in the apron",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "holding a flyer",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "by the empty chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty lawn chair",
+        "oxygen tank",
+        "crab pots",
+        "three old flyers"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "I didn't ask for one yet."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know. Seventeen. Same crab."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a fisherman's apron alone at a shingle shack beside an empty lawn chair with an oxygen tank, a young man holding out a finished flyer, a small dog by the chair, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully reaching for his wallet. Wood's hand on his wrist.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "reaching for his wallet",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "hand on his wrist",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "No."
+        },
+        {
+          "who": "GULLY",
+          "text": "Twenty bucks. It's the deal."
+        },
+        {
+          "who": "WOOD",
+          "text": "Not this year."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man's hand stopping a boy's hand as it reaches for a wallet",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully pinning the fourth flyer. Same crab. The hatching darker.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pinning the flyer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four flyers in a row"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "He's in Newport. Since Tuesday."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know. I saw the chair."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in an apron pinning a fourth crab flyer in a row on a shingle wall, the newest one hatched darker than the others",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them and the dog in front of the shack. The empty chair. The derby sign. Nobody sits in the chair.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty lawn chair",
+        "derby sign",
+        "shack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men and a small dog standing in front of a shingle shack beside an empty lawn chair with an oxygen tank, a crab derby sign, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle's illness enters through the chair. The flyer is free. The 'twenty bucks' deal is broken once, on purpose."
+}

@@ -1,0 +1,129 @@
+{
+  "id": "dw_2001-06-15_postcards_4",
+  "title": "The postcard run, iv",
+  "strip": "drift_wood",
+  "date": "2001-06-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Postcard Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "The last postcard of the run. A return address, for the first time. Wood writes back. The strip shows the mailbox flag up, then down. Never the reply.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A postcard, writing side. Her hand, calmer: three lines and, at the bottom, an address. A street in a city. A number. The first return address in six postcards.",
+      "characters": [],
+      "props": [
+        "postcard with a return address"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a postcard's writing side with three short lines of handwriting and for the first time a return address written at the bottom",
+        "negative": "",
+        "notes": "The address is reserved; draw it as a plausible European street, unreadable."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD at the desk. An envelope. Writing. The strip shows the back of his head and the pen moving. BARNABY asleep.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "writing, back to us",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope",
+        "pen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man seen from behind writing a letter at a small desk, a dog asleep on the floor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The roadside mailbox. The envelope going in. The flag going up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the mailbox",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox, flag up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man putting an envelope into a roadside mailbox and raising its red flag",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The mailbox. The flag down. Empty. Nobody in the panel. The dog's nose at the frame edge.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "nose at the frame edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox, flag down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a roadside mailbox with its flag down, empty, a dog's nose just entering the frame, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The reply, never shown. Flag up, flag down. The arc ends."
+}

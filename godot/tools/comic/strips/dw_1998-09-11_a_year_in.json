@@ -1,0 +1,156 @@
+{
+  "id": "dw_1998-09-11_a_year_in",
+  "title": "Drift Wood #20 · a year in",
+  "strip": "drift_wood",
+  "date": "1998-09-11",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "A year in",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Senior year. The strip is a year old. It marks it by not marking it.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17",
+    "lunch_lady"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The cafeteria serving line, first day of senior year. Same tray, same corn, same LUNCH LADY. WOOD in the same overcoat, a year taller.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "at the line, tray out",
+          "expression": ""
+        },
+        {
+          "id": "lunch_lady",
+          "pose": "ladling, not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tray",
+        "corn",
+        "heat lamp"
+      ],
+      "balloons": [
+        {
+          "who": "LUNCH LADY",
+          "text": "Corn or peas."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a school cafeteria serving line, a lunch lady ladling corn without looking up, a taller gaunt teenage boy in the same oversized overcoat holding out a tray",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, opening his mouth for the monologue. Closing it.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "mouth open, then closed",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage boy opening his mouth to speak and then closing it, cafeteria",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Corn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat at a cafeteria counter saying one word",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The long table. Wood at the near end. CHLOE and GULLY not far back this time — right beside him. All three face the same direction, toward the rain in the windows.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "near end",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "beside him, reading",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "beside her, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "long table",
+        "rain in the windows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long cafeteria table with three teenagers sitting together at one end all facing a wall of rainy windows, black and white, no words",
+        "negative": "",
+        "notes": "Rhyme with #1's last panel: same table, but they sit together now."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The first Anniversary before it's named. Rhymes with #1.",
+  "layout": "2x2"
+}

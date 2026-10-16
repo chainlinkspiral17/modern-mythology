@@ -1,0 +1,96 @@
+{
+  "id": "dw_2009-08-09_the_chair",
+  "title": "Sunday · the chair",
+  "strip": "drift_wood",
+  "date": "2009-08-09",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/sample_strips.md (2009 · Sundays · deepening ix)",
+  "logline": "The lawn chair's first Sunday: Maria's aluminum-and-webbing chair on the dock, alone in the morning tier, with her in it at noon, empty again at dusk with a mug under it. The chair stays through 2027.",
+  "cast": [
+    "extra_maria"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_dog",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: an aluminum lawn chair with faded webbing alone on the dock in morning light.",
+      "characters": [],
+      "props": [
+        "the lawn chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old aluminum lawn chair with faded webbing alone on a wooden dock in morning light, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Morning"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a woman with a dark braid in the chair, a mug, looking at the bay.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "in the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a mug"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman with a dark braid sitting in an old lawn chair on a dock with a mug looking out at a bay, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Noon"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the chair empty at dusk, the mug under it, the bay pink.",
+      "characters": [],
+      "props": [
+        "the mug"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty old lawn chair on a dock at dusk with a mug beneath it and a pink bay, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dusk"
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The lawn chair (objects.md). From July 2009 on.",
+  "layout": "tiers, portrait page"
+}

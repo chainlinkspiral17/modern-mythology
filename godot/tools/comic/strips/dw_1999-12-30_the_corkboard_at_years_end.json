@@ -1,0 +1,108 @@
+{
+  "id": "dw_1999-12-30_the_corkboard_at_years_end",
+  "title": "The corkboard at year's end",
+  "strip": "drift_wood",
+  "date": "1999-12-30",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Last Week of the Century",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The last night but one. Wood takes everything off the corkboard, looks at it on the bed, and pins it all back in the same places. The strip counts: nine things. The postcard, thumb side to the wall.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. The corkboard, bare, pinholes. Everything on the bed. WOOD standing over it. BARNABY on the pillow.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing over a bed spread with pinned-up papers, a bare corkboard behind him full of pinholes, a small dog on the pillow, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "On the bed: the crab flyer, the yearbook photo, the Timberline back page, the bus schedule, two postcards, the misfold, Gully's napkin, the mother's — no. Eight. And the note from the rack. Nine.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a bed spread with a flyer, a yearbook photo, a newspaper page, a bus schedule, two postcards, a folded misprinted booklet, a napkin and a small note, black and white, no words",
+        "negative": "",
+        "notes": "Nine things, Dec 1999, per objects.md plus the rack note and Gully's napkin."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood pinning them back, one by one, in the same holes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning papers back onto a corkboard one by one into the same holes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The corkboard, restored. The needle-tower postcard: photo out, thumb side to the wall. The year ends the way it was pinned.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a restored corkboard with a postcard of a needle-shaped tower pinned photo-side out among other papers, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Nine things off, nine back. The postcard stays thumb-side to the wall."
+}

@@ -1,0 +1,49 @@
+{
+  "id": "dw_2000-10-13_digest_cover_week_2",
+  "title": "The digest cover · the alley",
+  "strip": "drift_wood",
+  "date": "2000-10-13",
+  "run": 2,
+  "era": "era1",
+  "format": "digest_cover",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Friday's digest cover, week two: two spackle buckets in the frame shop's rain alley, empty, one grease sack between them. Tuesday's silence, kept.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "cover",
+      "composition": "A single image: the rain alley behind the frame shop, two upturned five-gallon buckets, an empty grease sack on the wet ground between them, vertical rain. No one.",
+      "characters": [],
+      "props": [
+        "two buckets",
+        "a grease sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a zine cover of two upturned five-gallon buckets in a narrow rain-hatched alley with an empty paper grease sack on the wet ground between them, no people, heavy black, no words",
+        "negative": "",
+        "notes": "Cover, week 2. The clams strip (dw_2000-10-10) as a still life."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Cover, week 2. The buckets, after."
+}

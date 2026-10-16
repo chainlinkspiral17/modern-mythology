@@ -1,0 +1,151 @@
+{
+  "id": "dw_2019-09-17_the_plain_bag_2",
+  "title": "The plain bag, ii",
+  "strip": "drift_wood",
+  "date": "2019-09-17",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Plain Bag",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Plain Bag · deepening)",
+  "logline": "Tuesday. The sample bag arrives: BARNABY'S CHOICE, the pup's face on it, drawn by someone who has never seen a three-legged dog. Four legs. The strip counts them.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A shipping box open. WOOD lifting out a bag of dog food. BARNABY II interested in the bag, not the face on it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lifting out a bag",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "interested",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a dog-food bag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man lifting a printed bag of dog food out of a shipping box in a garage while a small three-legged dog sniffs at it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The bag: a cartoon dog's face and body, cheerful, BARNABY'S CHOICE in a rounded font. Four legs. Wood's finger counting: one, two, three, four.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "finger on the bag, counting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bag: four legs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a dog-food bag printed with a cheerful cartoon dog that has four legs and a man's finger counting them",
+        "negative": "",
+        "notes": "Letter after: BARNABY'S CHOICE in a rounded commercial font unlike the strip's. Four legs: the point."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood holding the bag beside the actual dog. The actual dog: three. The bag: four. The dog looking at the bag's dog with no recognition at all.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the bag beside the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "no recognition",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man holding a dog-food bag with a four-legged cartoon dog beside a real three-legged dog who shows no recognition, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "They gave you the leg back."
+        },
+        {
+          "who": "WOOD",
+          "text": "...That's the whole problem, isn't it. They'd give you the leg back."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man speaking quietly to a small three-legged dog while holding a printed bag, thoughtful",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Four legs on the bag. 'They'd give you the leg back.'"
+}

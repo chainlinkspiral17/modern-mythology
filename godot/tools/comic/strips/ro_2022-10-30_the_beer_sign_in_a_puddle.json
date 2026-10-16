@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-10-30_the_beer_sign_in_a_puddle",
+  "title": "The beer sign in a puddle",
+  "strip": "roflcopter",
+  "date": "2022-10-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The tavern's beer sign in a puddle in the alley, October rain, the Rain Sunday's first tier as a private page, without the Sunday. The garage window's light in the same puddle, at the edge.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A puddle in a gravel alley in October rain reflecting a tavern's beer sign's neon, and at the puddle's edge the reflected light of a small lit window.",
+      "characters": [],
+      "props": [
+        "the puddle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a puddle in a gravel alley in October rain reflecting a tavern's neon beer sign and at its edge the reflected light of a small lit window, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The Rain's first tier, alone.",
+  "layout": "single page, no borders"
+}

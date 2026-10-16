@@ -1,0 +1,134 @@
+{
+  "id": "dw_2008-11-13_dog_night_2008_before",
+  "title": "Dog Night, 2008 · before",
+  "strip": "drift_wood",
+  "date": "2008-11-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The night before nine years: the alley, and the bulb over the dumpster lit — new, white, wrong. Somebody replaced it. Wood stands under it a long time. The dog does his job at the corner regardless of the lighting.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The alley at night. The bulb over the dumpster LIT, white. WOOD stopped under it. BARNABY at the corner.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "stopped under the bulb",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the dumpster's corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the new bulb, lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man stopped beneath a bright new bulb over a dumpster in a night alley while a dog sniffs the dumpster's corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD looking up at it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man looking up at a bare white lightbulb in an alley",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The neon from the sign, and the white from the bulb, meeting on the wet gravel in two colors.",
+      "characters": [],
+      "props": [
+        "two lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, wet gravel in an alley lit from two sides in two different tones of light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Who did that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in a night alley speaking a question down to a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Who did that. Silently, tomorrow."
+}

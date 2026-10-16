@@ -1,0 +1,98 @@
+{
+  "id": "bk_2010-01-24_the_long_way_back_i_the_magic_shop",
+  "title": "THE LONG WAY BACK · I · The magic shop",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-01-24",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop one: a shop in Florence that sells kites and, in the back, tricks — a table with a cup and a ball and a coin and a wand, nobody at it. The card in the drawer that night: a man at that table with the tools laid out, one hand up, one down. The traveler buys a kite.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: 101 through a beach town with kites over the dunes.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "kites"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway through a beach town with kites over dunes, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the back of a kite shop: a small table with a cup, a ball, a coin and a wand laid out, nobody at it, a sign turned away.",
+      "characters": [],
+      "props": [
+        "the table of tricks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the back room of a kite shop with a small table holding a cup, a ball, a coin and a wand laid out with nobody at it, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card: a man at that table, one hand up and one down, the tools before him, drawn in the strip's line.",
+      "characters": [],
+      "props": [
+        "the Magician"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a man at a table of simple tools with one hand raised and one lowered drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "I. The Magician (Vol 5: Frasier's Cathedral, the tools). He buys a kite.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-07-10_the_fog_stays_out",
+  "title": "The fog stays out",
+  "strip": "drift_wood",
+  "date": "2000-07-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A heat wave, inland. On the coast the fog stays out and the town gets the leftover: eighty degrees, which nobody owns a shirt for. Wood in the overcoat. Gully in the hoodie. The uncle in the chair with a wet towel. The strip sweats in the line.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street in unusual heat: the fog a wall offshore, the street in full sun, people in the wrong clothes. WOOD in the overcoat. BARNABY flat on the sidewalk.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal town's main street in bright unfamiliar heat with a wall of fog offshore, a young man in a heavy overcoat, a small dog lying flat on the sidewalk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, sweating, not taking the coat off.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sweating in a heavy wool overcoat, refusing to remove it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The shack. GULLY in the hoodie. The UNCLE in the chair with a wet towel on his head, the oxygen line, unremarked.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager in a hoodie and an old man in a lawn chair with a wet towel on his head in bright heat beside a shack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The town in heat. Everyone wrong for it. The line shaky — the strip says it's the heat. The strip said it was cold in January. The strip has a reason for every line.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small town in bright heat with figures in heavy clothes, drawn in a shaky line, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Eighty degrees; nobody owns a shirt for it. The line: the heat, this time."
+}

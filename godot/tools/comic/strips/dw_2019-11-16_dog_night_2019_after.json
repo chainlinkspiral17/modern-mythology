@@ -1,0 +1,132 @@
+{
+  "id": "dw_2019-11-16_dog_night_2019_after",
+  "title": "Dog Night, 2019 · after",
+  "strip": "drift_wood",
+  "date": "2019-11-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The morning after twenty years: a sheet of stick-figure stickers on the drafting table, a sample from the aggregator, thirty of them, and the pup on the table eating them one by one while Wood pretends to stop him. He gets twenty-nine. The one that survives goes on the corkboard upside down.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A glossy sheet of thirty stick-figure stickers on the drafting table. The PUP on the table, one sticker on his nose. WOOD.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on the table, a sticker on his nose",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "pretending to stop him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a sheet of stickers"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Hey. Hey."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog on a drafting table with a glossy sticker stuck to its nose beside a sheet of stick-figure stickers while a thin man half-heartedly objects",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The sheet, mostly bare. Twenty-nine gone.",
+      "characters": [],
+      "props": [
+        "the sheet, bare"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a glossy sticker sheet on a table with twenty-nine empty spaces and one sticker left",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The last sticker, transferred from the pup's nose to the corkboard, upside down, below the yearbook photo.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "nose to the board",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard",
+        "the sticker, upside down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small dog pressing its nose to the bottom of a corkboard leaving a sticker stuck upside down beneath a small old photo",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD looking at it there. Leaving it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "leaving it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man looking at an upside-down sticker on a corkboard and deciding to leave it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The Stickers (Nov 2019) arrives on Dog Night's morning; the survivor on Wood's garage board, upside down (objects.md)."
+}

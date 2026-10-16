@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-04-04_the_mechanic",
+  "title": "The mechanic",
+  "strip": "drift_wood",
+  "date": "2000-04-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Datsun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The garage on 101. The mechanic listens to the Datsun for four seconds and names the exhaust. Wood asks what it'll cost. The mechanic says more than the car. Wood asks what the car's worth. The mechanic says the exhaust.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_mechanic"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A garage on 101, a bay door up, a MECHANIC in coveralls with his head tilted at the idling Datsun. WOOD. BARNABY in the window.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_mechanic",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a mechanic in coveralls listening with his head tilted to a small idling car outside a garage bay on a highway, a young man beside it, a dog in the window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The mechanic, four seconds in.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MECHANIC",
+          "text": "Exhaust."
+        },
+        {
+          "who": "WOOD",
+          "text": "What's it cost."
+        },
+        {
+          "who": "MECHANIC",
+          "text": "More'n the car."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a mechanic's face, listening, then decided, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "What's the car worth."
+        },
+        {
+          "who": "MECHANIC",
+          "text": "The exhaust."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face, dead-eyed, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun pulling out of the garage lot, unfixed, a puff from the tailpipe drawn jagged. The mechanic already under something else.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car pulling out of a garage lot with a jagged puff of exhaust while a mechanic slides under another vehicle, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'The exhaust.' The car is worth its problem."
+}

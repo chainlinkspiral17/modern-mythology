@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-08-15_the_bucket",
+  "title": "The bucket",
+  "strip": "drift_wood",
+  "date": "2000-08-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Blackberries",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. A bucket of blackberries on the frame shop's counter when Wood gets there. From Gully, left on the step. The owner eats one. Says they're from the mill. Wood asks how she knows. She says everyone knows the mill's berries. The town has a taste.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. A bucket of blackberries on the counter. The OWNER with one, eating it. WOOD in the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Mill berries."
+        },
+        {
+          "who": "WOOD",
+          "text": "How can you—"
+        },
+        {
+          "who": "OWNER",
+          "text": "Everyone knows the mill's berries."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses eating a blackberry from a bucket on a shop counter as a young man enters, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The bucket. Purple on the fingers. Stains on the counter.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a bucket of blackberries with purple stains on a wooden counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood eating one. Tasting it. The mill. He can taste it too. He didn't know.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man eating a blackberry with a look of recognition, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The bucket by the mat cutter. Wood cutting with purple fingers. A mat with a thumbprint. The owner keeps that one. She says it's a signature.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting a mat with berry-stained fingers, a purple thumbprint on the cream board, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Everyone knows the mill's berries.' The purple thumbprint mat, kept."
+}

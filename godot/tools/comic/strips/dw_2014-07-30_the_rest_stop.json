@@ -1,0 +1,123 @@
+{
+  "id": "dw_2014-07-30_the_rest_stop",
+  "title": "The rest stop",
+  "strip": "drift_wood",
+  "date": "2014-07-30",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Wednesday. I-5 south. A rest stop. Wood asleep in the Legacy with the seat back, the sketchbook on his chest, open to the dock. A truck's shadow crosses him. Four panels of a man asleep.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A rest stop off I-5, trucks. The Legacy. WOOD asleep in the driver's seat, reclined, the sketchbook open on his chest.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "asleep, the sketchbook on his chest",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Legacy",
+        "trucks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a faded green station wagon at a highway rest stop among trucks with a thin man asleep in the reclined driver's seat and a sketchbook open on his chest",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The open page on his chest, rising and falling: the dock. Her head on his shoulder. The one panel.",
+      "characters": [],
+      "props": [
+        "the page: the dock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of an open sketchbook on a sleeping man's chest showing a small ink drawing of two figures on a dock at night",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A truck's shadow crossing the car, the page, his face. Then light again.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a truck's shadow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a truck's shadow sliding across a station wagon and a sleeping man's face, then bright light returning, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Still asleep. The page. The empty passenger seat. Four hundred miles from the dog. Two hundred to go.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty seat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man asleep in a car at a rest stop with an open sketchbook on his chest and an empty passenger seat, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Asleep with the dock on his chest. A truck's shadow."
+}

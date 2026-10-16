@@ -1,0 +1,142 @@
+{
+  "id": "dw_2019-09-18_the_plain_bag_3",
+  "title": "The plain bag, iii",
+  "strip": "drift_wood",
+  "date": "2019-09-18",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Plain Bag",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Plain Bag · deepening)",
+  "logline": "Wednesday. The pup won't eat from the printed bag. Not a stand; he just doesn't like the bag. Wood decants it into a paper sack from Gully's. The pup eats. The strip won't say it's the bag.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The pup's bowl, filled from the printed bag, the bag beside it. BARNABY II looking at the bowl. Not eating.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "not eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bowl",
+        "the printed bag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog standing over a full food bowl beside a printed dog-food bag, not eating",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD watching from the table. A beat. Then getting a paper grease sack from a drawer — one of Gully's.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "getting a paper sack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a paper grease sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man taking a plain brown paper grease sack from a drawer in a garage",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Pouring the food from the printed bag into the plain sack. The printed bag going flat. The pup watching the sack.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "watching the sack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sack",
+        "the printed bag, flattening"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man pouring dog food from a printed bag into a plain brown paper sack while a small dog watches the sack",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The bowl refilled from the sack. The pup eating. Wood not drawing a conclusion. The strip not drawing one either. The flat printed bag in the wastebasket, four legs folded.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "eating",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plain sack",
+        "the printed bag in the wastebasket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog eating from a bowl beside a plain paper sack while a flattened printed bag lies in a wastebasket, a man watching without expression, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Decanted. 'The strip won't say it's the bag.'"
+}

@@ -1,0 +1,136 @@
+{
+  "id": "dw_2001-12-21_december_2001",
+  "title": "December, 2001",
+  "strip": "drift_wood",
+  "date": "2001-12-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Does Chloe come home. A postcard says she's in Europe. The strip draws Europe from the postcard. Badly. On purpose.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mailbox. A postcard: a cathedral. Foreign stamp. WOOD reading it in the rain.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "reading at the mailbox",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "postcard of a cathedral",
+        "foreign stamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man reading a postcard of a cathedral with a foreign stamp at a roadside mailbox in the rain, a small dog beside him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her handwriting: 'W — Not coming home. Europe. A city with a river that goes the wrong direction. You'd hate the coffee and drink nine. — C.'",
+      "characters": [],
+      "props": [
+        "postcard back"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is the back of a postcard in tiny handwritten capitals with a foreign stamp",
+        "negative": "",
+        "notes": "Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at the table drawing the cathedral from the postcard. It comes out looking like the Small Wood grange hall with more windows.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: a cathedral that looks like a grange hall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a drawing table drawing a cathedral from a postcard and producing something that looks like a small-town grange hall with extra windows",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Christmas Eve, main street. The hardware store's lights. Wood and the dog. Four houses down, her house, dark. He doesn't walk there this year. The strip doesn't either.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking the other way",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hardware store lights",
+        "main street",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking down a rainy main street at night away from a row of houses, hardware store lights behind them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Europe. He doesn't walk to her house. The strip records the not-walking."
+}

@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-08-22_the_last_tuesday_of_summer",
+  "title": "The last Tuesday of summer",
+  "strip": "drift_wood",
+  "date": "2000-08-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The End of Summer",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. The shop. The owner says summer's done — the tourists' photos stop coming in the week the school buses start. She can tell the season by the counter. Wood asks what comes next. She says diplomas, then deer. He writes it on the wall under the tally.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop. The counter, empty. The OWNER at her station. WOOD at the cutter. Nothing to frame.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Summer's done. Photos stop the week the buses start."
+        },
+        {
+          "who": "WOOD",
+          "text": "What's next?"
+        },
+        {
+          "who": "OWNER",
+          "text": "Diplomas. Then deer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a quiet frame shop with an empty counter, a woman at her station and a young man at a mat cutter with nothing to cut, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, writing on the wall under the tally, in pencil: DIPLOMAS. DEER.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand writing two words in pencil on a wall beneath tally marks, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: DIPLOMAS · DEER."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner, seeing it. Not objecting.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses glancing at two words written on her backroom wall, not objecting, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shop from the road. The window. The card: TUE · THU · SAT. The season turning on the counter. The strip learns the year by what comes in the door.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low roadside frame shop seen from the highway with an hours card in its window at the end of summer, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Diplomas. Then deer.' The year by the counter."
+}

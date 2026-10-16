@@ -1,0 +1,50 @@
+{
+  "id": "ro_2026-12-02_the_flag_up_third",
+  "title": "The flag up, third",
+  "strip": "roflcopter",
+  "date": "2026-12-02",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The mailbox with its flag up in early December, the third time in the private pages, and this year the page draws the envelope's corner in the box's mouth: cream, thick. Where it goes: reserved. That it's thick: the page.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A roadside mailbox in December with its red flag raised and its door ajar, the corner of a thick cream envelope showing, rain, an empty road.",
+      "characters": [],
+      "props": [
+        "the flag, up",
+        "a thick envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a roadside mailbox in December with its red flag raised and its door ajar showing the corner of a thick cream envelope, rain and an empty road, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2022-12-24, ro_2025-12-24."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Third. Thick.",
+  "layout": "single page, no borders"
+}

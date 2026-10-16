@@ -1,0 +1,64 @@
+{
+  "id": "ro_2024-09-12_corn_twenty_seven",
+  "title": "Corn, twenty-seven",
+  "strip": "roflcopter",
+  "date": "2024-09-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "September 12 at Gully's: the corn on the counter beside the end stool, from behind the stool — a shoulder, the tray, and Gully's hand setting a coffee down beside it. The first anniversary shared.",
+  "cast": [
+    "wood_44",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From behind the end stool: a man's shoulder in plaid, a paper tray of corn on the counter before him, and a stocky hand setting a coffee beside the tray. The corkboard above. No faces.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a shoulder",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "a hand with a coffee",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corn",
+        "a coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from behind a shop's end stool, a man's plaid shoulder with a paper tray of buttered corn on the counter before him and a stocky man's hand setting a coffee beside it, a crowded corkboard above, no faces, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-seven. Corn at Gully's, shared.",
+  "layout": "single page, no borders"
+}

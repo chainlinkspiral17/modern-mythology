@@ -1,0 +1,121 @@
+{
+  "id": "dw_1999-10-21_the_first_maple_bar",
+  "title": "The first maple bar",
+  "strip": "drift_wood",
+  "date": "1999-10-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle's Pots",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully brings maple bars from the bakery, day-old, in a paper sack. He gives Wood one. The strip has drawn food before; it hasn't drawn Gully paying for it.",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock. GULLY with a paper sack, day-old, the bakery's name on it as blocks. WOOD on a crab pot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager holding a paper bakery sack on a dock while a young man sits on an upturned crab pot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sack open: maple bars, four, the glaze cracked.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a paper sack open to show four maple bars with cracked glaze, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully handing one over. Wood taking it. Neither looking at the other.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Day-old's half price."
+        },
+        {
+          "who": "WOOD",
+          "text": "You paid?"
+        },
+        {
+          "who": "GULLY",
+          "text": "Half."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager handing a maple bar to a young man on a dock, both looking at the water, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them on the dock eating. The uncle's skiff. The bay. Four panels, and in the last one the sack folded small in Gully's pocket for next time.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men eating pastries side by side on a dock above gray water, a skiff tied below, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gully's currency, first shown. The sack folded for next time."
+}

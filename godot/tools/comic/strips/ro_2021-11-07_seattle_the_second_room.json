@@ -1,0 +1,51 @@
+{
+  "id": "ro_2021-11-07_seattle_the_second_room",
+  "title": "Seattle, the second room",
+  "strip": "roflcopter",
+  "date": "2021-11-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "A second Seattle apartment, smaller, boxes by the door again — this time from a divorce, not a move. Drawn from the one line she wrote: 'a smaller place, near the water.' Water in the window.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small apartment with boxes by the door, a mattress on the floor, one lamp, and a window with the Sound in it. A green coat on the only chair. Nothing on the walls except a rectangle where a frame was.",
+      "characters": [],
+      "props": [
+        "boxes",
+        "the green coat",
+        "a rectangle on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small bare apartment with moving boxes by the door and a mattress on the floor, one lamp, a window showing distant water, a green coat over the only chair, a pale rectangle on the wall where a picture hung, no people, no words",
+        "negative": "",
+        "notes": "The divorce (Julian to 2021). Reserved beyond 'a smaller place, near the water.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The second room. A rectangle where a frame was.",
+  "layout": "single page, no borders"
+}

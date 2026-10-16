@@ -1,0 +1,164 @@
+{
+  "id": "dw_2014-10-31_the_helicopter_costume",
+  "title": "The helicopter costume",
+  "strip": "drift_wood",
+  "date": "2014-10-31",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Steep Path",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Steep Path · deepening)",
+  "logline": "Friday. Halloween. A kid at the garage door in a stick-figure costume with a cardboard rotor. The dog barks once from the bed. Wood gives the kid every piece of candy in the garage, which is four. The strip is kind to it.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "extra_stick_hero"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage door open at dusk. A KID in a costume: white sweats with black lines drawn on, a cardboard four-blade rotor on a headband. WOOD in the door. BARNABY in the bed, head up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head up, in the bed",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_hero",
+          "pose": "the costume",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a cardboard rotor"
+      ],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "ROLFCOPTR!"
+        },
+        {
+          "who": "WOOD",
+          "text": "...Yes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a child in a homemade stick-figure costume with a cardboard helicopter rotor on a headband standing at an open garage door at dusk, a thin man in the doorway, an old dog lifting its head from a bed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's one bark. From the bed. At the rotor.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "barking once",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "rf",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of an old dog in a bed giving one bark toward a cardboard rotor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood searching the garage. A drawer. Four pieces of candy, ancient. Into the kid's bag, all four.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "giving four pieces of candy",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four pieces of candy"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's all of it. That's everything."
+        },
+        {
+          "who": "KID",
+          "text": "Cool."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man dropping four pieces of old candy into a child's trick-or-treat bag",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The kid running off, the rotor bobbing. Wood in the door. The dog's head back down. Wood watching the rotor go, and — the strip is honest — almost smiling.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "almost smiling",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head down",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_hero",
+          "pose": "running off, the rotor bobbing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a child in a rotor costume running off down an alley while a thin man in a garage doorway watches with the beginning of a smile, an old dog settling back in its bed, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "A kid dressed as the thing. Four pieces of candy. Almost a smile."
+}

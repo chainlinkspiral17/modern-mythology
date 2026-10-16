@@ -1,0 +1,108 @@
+{
+  "id": "dw_2012-04-22_sunday_the_motel",
+  "title": "Sunday · the Driftwood from 101",
+  "strip": "drift_wood",
+  "date": "2012-04-22",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "A landscape Sunday. The motel from the highway at dawn, end of shift. The sign. The wet-on-wet arrives.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the Driftwood Motel from across 101 at dawn, wet-on-wet watercolor at last: a low L of rooms, a sign on a pole — DRIFTWOOD MOTEL · VACANCY — the neon pale in the gray, fog on the ridge behind, one car.",
+      "characters": [],
+      "props": [
+        "motel",
+        "sign on a pole",
+        "fog",
+        "one car"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low L-shaped roadside motel across a coastal highway at dawn in wet-on-wet watercolor, a sign on a pole with pale neon, fog on the ridge behind, one parked car, gray-green and rust",
+        "negative": "",
+        "notes": "Sign: DRIFTWOOD MOTEL · VACANCY. Letter after. The wet-on-wet Sundays begin."
+      },
+      "stage": null,
+      "name": "Vacancy"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the lobby door from outside, the desk lamp still on inside, a figure in a polo getting up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "inside, rising",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lobby door",
+        "lamp inside"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby's glass door seen from outside at dawn with a desk lamp still lit within and a figure in a polo rising from the desk, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shift end"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the highway, north, the man walking the shoulder home in the polo with the pad under his arm, the fog lifting off the ridge in one place — a glow there, small, that the composition treats as weather.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking the shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "101",
+        "fog lifting",
+        "the ridge glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a maroon polo walking the shoulder of a coastal highway at dawn with a pad under his arm, fog lifting from a forested ridge where one patch glows faintly, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": "The ridge glow, second appearance after 'Lanes' 2009. Treated as weather."
+      },
+      "stage": null,
+      "name": "Home"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The first true wet-on-wet Sunday. The ridge glow returns, small, in fog.",
+  "layout": "tiers, portrait page"
+}

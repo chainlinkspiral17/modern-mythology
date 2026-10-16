@@ -1,0 +1,204 @@
+{
+  "id": "dw_2014-11-16_the_carry",
+  "title": "Sunday · The Carry",
+  "strip": "drift_wood",
+  "date": "2014-11-16",
+  "run": 5,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Silent Sunday Trilogy · 1",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4, Sunday 1 · The Carry); _THE_COMPLETE_RUN.md",
+  "logline": "Completely wordless. Six panels. Arthur carrying Barnaby wrapped in a faded wool blanket along the mudflats at low tide.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "The gull."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Panel 1: the mudflats at low tide from the bluff, an immense bruised indigo sky. A single figure far out on the flats, carrying something.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "far out, carrying",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mudflats",
+        "indigo sky",
+        "channel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an immense bruised indigo sky over mudflats at low tide seen from a bluff, one small figure far out on the flats carrying something wrapped, wet-on-wet watercolor in Payne's gray and Prussian blue, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The flats"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Panel 2: closer. WOOD walking the wet sand, BARNABY wrapped in a faded wool blanket in his arms, the dog's graying muzzle resting on Wood's collarbone.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "carrying the wrapped dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "muzzle on his collarbone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "faded wool blanket",
+        "wet sand"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man walking wet sand carrying an old dog wrapped in a faded wool blanket, the dog's gray muzzle resting on his collarbone, desaturated watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The blanket"
+    },
+    {
+      "n": 3,
+      "shot": "close tier",
+      "composition": "Panel 3: the dog's face against the collarbone. Eyes half open. The wind in the wiry hair at the ear.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "face on the collarbone",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog's face resting against a man's collarbone, eyes half open, wind lifting the wiry hair at its ear, raw umber and gray wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Half open"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Panel 4: a massive piece of bleached drift cedar on the flats. Wood sitting on it, the dog held close against the wind. Gulls wheeling in the gray distance.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting on the drift log, holding the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "held close",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bleached drift cedar",
+        "gulls",
+        "wind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on a massive bleached drift cedar log on the mudflats holding a blanket-wrapped dog close against the wind, gulls wheeling in the gray distance, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The log"
+    },
+    {
+      "n": 5,
+      "shot": "medium tier",
+      "composition": "Panel 5: the two of them on the log from behind. The bay mouth. The sky.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "log",
+        "bay mouth"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a drift log seen from behind holding a wrapped dog, facing the mouth of a bay under a vast bruised sky, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "From behind"
+    },
+    {
+      "n": 6,
+      "shot": "wide tier",
+      "composition": "Panel 6: the flats again from the bluff, later. The tide coming in. The figure walking back, small, carrying. The sky darker.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking back, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "incoming tide",
+        "darker sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same mudflats from the bluff with the tide returning and the sky darker, one small figure walking back toward shore carrying something wrapped, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "The first of the Silent Sunday Trilogy. Six panels, no words. The drift log from 2007.",
+  "layout": "tiers, portrait page"
+}

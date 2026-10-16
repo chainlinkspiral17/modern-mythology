@@ -1,0 +1,116 @@
+{
+  "id": "bk_2010-04-04_the_long_way_back_x_the_hole_in_the_road",
+  "title": "THE LONG WAY BACK · X · The hole in the road",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-04-04",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop ten: 101 closed, a hole in the road the width of both lanes and no bottom the flashlight finds, a flagger with a sign, the detour up a logging road. The card in the drawer that night is a wheel. The traveler draws the hole from the edge and doesn't draw the bottom.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_flagger"
+  ],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: 101 closed: a ragged hole across both lanes, a flagger with a STOP sign, the Datsun stopped, the dog's head out the window.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "stopped",
+          "expression": ""
+        },
+        {
+          "id": "extra_flagger",
+          "pose": "with a sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head out the window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the hole",
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway closed by a ragged hole across both lanes with a flagger holding a stop sign and an orange pickup stopped, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the hole from its edge, a flashlight beam going down and finding nothing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the edge with a flashlight",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flashlight"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a ragged hole in a road seen from its edge with a flashlight beam going down into it and finding nothing, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card: a wheel with figures on its rim, one rising, one falling, the strip's line.",
+      "characters": [],
+      "props": [
+        "the Wheel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a wheel with small figures on its rim rising and falling drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "X. The Wheel (Vol 5: the Sinkhole as the deck's Nexus). The bottom not drawn.",
+  "layout": "tiers, portrait page"
+}

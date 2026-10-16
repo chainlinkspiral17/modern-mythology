@@ -1,0 +1,133 @@
+{
+  "id": "dw_2019-11-21_the_stickers_4",
+  "title": "The stickers, iv",
+  "strip": "drift_wood",
+  "date": "2019-11-21",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Stickers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Stickers · deepening)",
+  "logline": "Thursday. The reply. Wood writes to the sticker people. The strip shows the envelope going in the mailbox and the flag going up, and, for once, the letter: one line.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage table. WOOD writing a short letter. BARNABY II, recovered, beneath.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "writing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man writing a very short letter at a drafting table with a small dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The letter. One line, in the display face: 'The dog ate the sample. He is not for sale either.' Signed with the gull.",
+      "characters": [],
+      "props": [
+        "the letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a short hand-lettered note on white paper signed with a tiny gull mark",
+        "negative": "",
+        "notes": "Letter after: 'The dog ate the sample. He is not for sale either.' The gull, not the scruff — the old mark, once, on purpose."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The roadside mailbox. The envelope going in. The flag up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the mailbox",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox, flag up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man putting an envelope into a roadside mailbox and raising the red flag, a small dog at his feet",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Walking back. The pup light on his three legs. The mailbox behind with its flag up like a small salute.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking back",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "light",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mailbox, flag up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man and a small three-legged dog walking away from a roadside mailbox whose red flag is raised, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'He is not for sale either.' Signed with the gull, once."
+}

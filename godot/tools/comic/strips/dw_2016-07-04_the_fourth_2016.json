@@ -1,0 +1,166 @@
+{
+  "id": "dw_2016-07-04_the_fourth_2016",
+  "title": "The Fourth, 2016",
+  "strip": "drift_wood",
+  "date": "2016-07-04",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "White fireworks. The pup's second Fourth. He barks at every one. The first dog barked at waves; this one barks at the sky.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. The family. WOOD on the steps. BARNABY II on his hind leg — one — barking at the sky.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "barking at the sky",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "chair",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks, a three-legged dog balanced on one hind leg barking at the sky, a thin man on shack steps, a family, clean ink with a blue wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup, mid-bark, a firework in each eye.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a wiry dog mid-bark with fireworks reflected in both eyes, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully on the steps for his minute.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "The other one barked at waves."
+        },
+        {
+          "who": "WOOD",
+          "text": "This one barks at the sky."
+        },
+        {
+          "who": "GULLY",
+          "text": "Ambitious."
+        },
+        {
+          "who": "WOOD",
+          "text": "He doesn't know it's far."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men on shack steps at night watching a dog bark at fireworks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White. The pup barking at all of it. The chair. The steps. One red balloon on the youngest kid.",
+      "characters": [],
+      "props": [
+        "finale",
+        "red balloon",
+        "dog barking"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay, a small three-legged dog barking up at all of it from a dock, one red balloon on a child, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": ""
+}

@@ -1,0 +1,175 @@
+{
+  "id": "dw_2014-08-07_catering_2",
+  "title": "Catering, ii",
+  "strip": "drift_wood",
+  "date": "2014-08-07",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Catering",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Thursday of the week the book keeps. The crab cakes, analyzed. Gully's girl, four, eats the drawing.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool with a pad: a diagram of a crab cake in cross-section, labeled. GULLY. The girl, four, on the counter. BARNABY in the basket on the counter.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing a diagram",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "on the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in a basket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crab-cake diagram",
+        "basket"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Panko. Not breadcrumb. Panko. Three-to-one crab-to-binder, which is generous, which is the point —"
+        },
+        {
+          "who": "GULLY",
+          "text": "Woody."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a shop stool drawing a labeled cross-section diagram of a crab cake, a man in an apron, a four-year-old girl sitting on the counter, an old dog in a basket on the counter, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The diagram: beautiful. Arrows. Ratios. 'Aioli (house)'.",
+      "characters": [],
+      "props": [
+        "the diagram"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a precise hand-drawn cross-section diagram of a crab cake with arrows and ratio annotations",
+        "negative": "",
+        "notes": "Labels unreadable except one: letter 'aioli (house)' after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The girl taking the page. Folding it. Putting it in her mouth.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "eating the page",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the page, folded"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She's four."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's good paper."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a four-year-old girl folding a drawing and putting it in her mouth while two men watch",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood starting a new one. Gully's hand flat on the pad.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "starting again",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "hand flat on the pad",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Three weeks."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was a good crab cake, Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "It was. Draw the dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man pressing his hand flat on a thin man's drawing pad to stop him, an old dog in a basket between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Draw the dog.' The girl eats the diagram."
+}

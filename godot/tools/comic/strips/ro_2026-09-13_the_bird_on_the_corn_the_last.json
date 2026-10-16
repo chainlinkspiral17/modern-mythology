@@ -1,0 +1,67 @@
+{
+  "id": "ro_2026-09-13_the_bird_on_the_corn_the_last",
+  "title": "The bird on the corn, the last",
+  "strip": "roflcopter",
+  "date": "2026-09-13",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xvi)",
+  "logline": "The twenty-ninth corn, the tray shared, two forks — and the bird on the rim between the forks. The third time, and the last corn the book takes. Nobody moves it.",
+  "cast": [
+    "the_bird",
+    "wood_44",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From above: a paper tray of corn on a counter with two forks, a heavy hand and a thin hand reaching from opposite sides, and the small rainbow bird on the tray's rim between the forks.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the rim",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a thin hand",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "a heavy hand",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from above, a paper tray of buttered corn on a shop counter with two forks and a heavy hand and a thin hand reaching from opposite sides, a small rainbow bird perched on the tray's rim between the forks, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-09-11, ro_2025-09-14, ro_2026-09-06."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Third and last. Nobody moves it.",
+  "layout": "single page, no borders"
+}

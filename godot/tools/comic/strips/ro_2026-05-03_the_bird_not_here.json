@@ -1,0 +1,49 @@
+{
+  "id": "ro_2026-05-03_the_bird_not_here",
+  "title": "The bird, not here",
+  "strip": "roflcopter",
+  "date": "2026-05-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The seawall, the piling, the sill, the bench: four places the bird sits, drawn in four corners of one page, all empty. The one page in the private work that admits it looked. Unsequenced on purpose.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "One page divided into four quiet views with no borders: a seawall, a dock piling, a garage sill with jars, a bench, each empty, each without the bird.",
+      "characters": [],
+      "props": [
+        "four empty places"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, one page holding four quiet views without borders, a seawall, a dock piling, a garage window sill with jars and a bench, each empty, no bird, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Admits it looked.",
+  "layout": "single page, no borders"
+}

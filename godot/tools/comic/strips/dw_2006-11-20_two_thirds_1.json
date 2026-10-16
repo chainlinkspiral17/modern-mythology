@@ -1,0 +1,179 @@
+{
+  "id": "dw_2006-11-20_two_thirds_1",
+  "title": "Two-thirds, i",
+  "strip": "drift_wood",
+  "date": "2006-11-20",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Two-Thirds",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Two-Thirds · deepening)",
+  "logline": "Monday. The parody's week is over. Drift Wood returns, and Wood is drawn at two-thirds his usual size. Gully, normal. The counter, normal. Nobody remarks. The strip will hold this for six weeks.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool — small. The stool is normal. His feet don't reach the rung. GULLY, normal. BARNABY, normal.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "two-thirds size, feet not reaching",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stool"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Regular?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a bait-shop counter where a thin man sits on the end stool drawn at two-thirds normal size so his feet do not reach the rung, a normal-sized man in an apron and a normal-sized dog",
+        "negative": "",
+        "notes": "Wood at two-thirds. Everything else exact. No remark, ever."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The coffee mug. In Wood's hands it's a bowl.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding the mug two-handed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mug, oversized"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, close-up of a small man holding a normal coffee mug in both hands like a bowl",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, wiping the counter.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Saw the thing. The helicopter."
+        },
+        {
+          "who": "WOOD",
+          "text": "Everybody saw the thing."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's not bad."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's garbage, Gully. I built it out of garbage."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man in an apron speaking to a small thin man on a stool while wiping a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully, setting a plate of clams in front of him. Full size. The plate is a table.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "setting down clams",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "behind a plate as big as him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a plate of clams, enormous by comparison"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Eat your garbage. On the house."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man in an apron setting a plate of fried clams in front of a small thin man on a stool, the plate enormous beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Two-thirds begins. 'Eat your garbage.'"
+}

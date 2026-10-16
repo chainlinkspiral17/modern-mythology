@@ -1,0 +1,151 @@
+{
+  "id": "dw_2014-10-24_sixteen",
+  "title": "Sixteen",
+  "strip": "drift_wood",
+  "date": "2014-10-24",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Steep Path",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Steep Path · deepening)",
+  "logline": "Friday. The vet. The word 'sixteen' said aloud by someone who isn't Wood. The strip draws the vet's mouth and nothing else of her. The dog's paw on Wood's hand: the reverse of the hand-on-the-dog panels.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The vet's steel table. BARNABY on it. WOOD's hands either side. A VET drawn as a white coat and a mouth.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hands on the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the steel table",
+        "a white coat"
+      ],
+      "balloons": [
+        {
+          "who": "VET",
+          "text": "Sixteen. He's sixteen, Arthur. Everything he does now is a gift."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, an old dog on a vet's steel table between a thin man's hands, a vet visible only as a white coat and a speaking mouth",
+        "negative": "",
+        "notes": "The vet says 'Arthur.' The strip lets strangers say it; friends don't."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's paw on Wood's hand. Not the reverse.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "paw on the hand",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "hand",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of an old dog's paw resting on a man's hand on a steel table, no words",
+        "negative": "",
+        "notes": "The reverse of the hand-on-the-dog panels. The dog's paw, on him."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood not saying anything. The vet's mouth, closed now. The dog looking at the door.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "silent",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man silent at a vet's table with an old dog looking toward the door, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The Legacy in the lot. The dog on the passenger seat. Wood's hand on the gearshift. The dog's chin on his wrist. The word not in the panel.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the gearshift",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his wrist",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Legacy"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, inside a station wagon, a man's hand on the gearshift with an old dog's chin resting on his wrist, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "'Sixteen.' The paw on the hand."
+}

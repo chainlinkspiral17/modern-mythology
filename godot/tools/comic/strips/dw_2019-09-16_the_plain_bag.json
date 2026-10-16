@@ -1,0 +1,134 @@
+{
+  "id": "dw_2019-09-16_the_plain_bag",
+  "title": "The plain bag",
+  "strip": "drift_wood",
+  "date": "2019-09-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Plain Bag",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "The dog-food letter. Wood feeds the pup from a bag with no logo.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A letter open on the table — a hardware chain's logo, a photo of a dog-food bag with a stick figure and a rotor on it, mocked up. WOOD. BARNABY II at his bowl.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "reading a letter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at his bowl",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "letter with a mock-up of a dog-food bag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table reading a letter that includes a printed mock-up of a dog-food bag bearing a stick figure with a helicopter rotor, a three-legged dog at a bowl nearby, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The mock-up. The stick figure. Under it, in the mock-up's font: BARNABY'S CHOICE.",
+      "characters": [],
+      "props": [
+        "the mock-up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a printed mock-up of a pet-food bag with a crude stick figure and a brand name in a cheerful font",
+        "negative": "",
+        "notes": "BARNABY'S CHOICE. Letter after. They used the dog's name."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood folding the letter into eighths. Looking at the drafting table's leg. It already has one.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "folding, looking at the table leg",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "table leg with the 2007 shim"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man folding a letter into a small square while looking at a drafting table leg that already has a folded letter wedged under it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup eating from a plain brown paper bag with no logo, the kibble poured straight from it. Wood watching. The folded letter in the wastebasket with the trench coat's ghost.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "eating from a plain bag",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "plain paper bag",
+        "wastebasket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog eating kibble poured from a plain brown paper bag with no logo, a man watching, a folded letter in a wicker wastebasket, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "BARNABY'S CHOICE. Refused. The plain bag."
+}

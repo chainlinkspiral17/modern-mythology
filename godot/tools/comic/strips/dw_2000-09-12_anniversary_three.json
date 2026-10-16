@@ -1,0 +1,144 @@
+{
+  "id": "dw_2000-09-12_anniversary_three",
+  "title": "Three years",
+  "strip": "drift_wood",
+  "date": "2000-09-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Three years since #1. A daily that references it without quoting it. Corn is somewhere in the panel.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop backroom. WOOD eating lunch from a paper tray: corn. BARNABY under the table (the owner allows it).",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "eating corn from a tray",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "paper tray of corn",
+        "mat cutter",
+        "frames"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man eating corn from a paper tray at a frame-shop workbench, a small dog under the table, frames stacked around, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The corn.",
+      "characters": [],
+      "props": [
+        "corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a paper tray of corn on a workbench",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, with his mouth full.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "mouth full",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Three years ago today I said something about three hundred people facing one direction. I've been facing this mat cutter for five months."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a workbench talking to a dog with his mouth full",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood back at the mat cutter. The dog. The corn tray in the trash. The strip's fourth panel is, once again, a man alone at a long surface.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the mat cutter, back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter",
+        "trash with the corn tray"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man working at a long mat cutter with his back turned, a dog asleep under it, an empty corn tray in the trash, black and white, no words",
+        "negative": "",
+        "notes": "Rhyme with #1's last panel: alone at a long surface."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The Anniversary fixture, formally. #1 referenced, never quoted."
+}

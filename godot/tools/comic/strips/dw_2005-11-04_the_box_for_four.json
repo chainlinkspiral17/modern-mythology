@@ -1,0 +1,128 @@
+{
+  "id": "dw_2005-11-04_the_box_for_four",
+  "title": "A box for four",
+  "strip": "drift_wood",
+  "date": "2005-11-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Five Hundred Pages",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Five Hundred Pages · deepening)",
+  "logline": "Friday. Four stacks into a box. One stays out — THE RIDGE. The box on the shelf beside Box 5. The lid, in marker: BOX 6 · FOUR BOOKS · NO. The arc ends on a lid.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD lowering four stacks into a cardboard box. THE RIDGE on the table, alone. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "boxing four stacks",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a box",
+        "THE RIDGE on the table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man lowering four stacks of typed pages into a cardboard box while a fifth stack sits alone on a table, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The lid. Marker. BOX 6 · FOUR BOOKS · NO.",
+      "characters": [],
+      "props": [
+        "the lid"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a cardboard box lid with three words lettered in marker",
+        "negative": "",
+        "notes": "Letter after: BOX 6 · FOUR BOOKS · NO. (The box register.)"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The box on the shelf beside Box 5 — NONE OF IT RAN. Two boxes. Two lids. Two kinds of no.",
+      "characters": [],
+      "props": [
+        "Box 5 and Box 6"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, two labeled cardboard boxes side by side on a garage shelf",
+        "negative": "",
+        "notes": "Box 5 (dw_2003-12-12) and Box 6, together."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood at the table with THE RIDGE. Page one. The pen. The dog's chin on his foot. The strip lets him start again, and doesn't watch.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the table with the stack",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "THE RIDGE"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a drafting table with a stack of pages and a pen, a small dog's chin on his foot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "BOX 6 · FOUR BOOKS · NO. The Ridge stays out."
+}

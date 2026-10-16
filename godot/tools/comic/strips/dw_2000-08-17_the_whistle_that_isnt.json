@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-08-17_the_whistle_that_isnt",
+  "title": "The whistle that isn't",
+  "strip": "drift_wood",
+  "date": "2000-08-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Blackberries",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully, at the mill, says the whistle used to go at noon and you could hear it at the launch. Wood says he remembers. Gully says he wasn't asking. They stand there at noon. Nothing. The strip draws the nothing as a jagged shape that isn't there — a whistle's shape, empty, over the stack.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mill yard, noon. GULLY looking up at the stack. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Used to go at noon. Hear it at the launch."
+        },
+        {
+          "who": "WOOD",
+          "text": "I remember."
+        },
+        {
+          "who": "GULLY",
+          "text": "Wasn't asking."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager and a young man standing in an overgrown mill yard at noon looking up at a brick stack, a small dog nearby, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The stack's rim. Noon. Nothing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on the rim of a brick smokestack against a bright noon sky, nothing happening, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The stack, and over it, drawn as an empty outline: a jagged shape. A whistle's shape, with nothing in it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a brick smokestack with a jagged empty outline drawn in the sky above it like the shape of a sound that isn't there, black and white, no words",
+        "negative": "",
+        "notes": "The whistle's jagged shape, empty. The canon draws it full in 2022 (ROFLCOPTER, The Mill 1994). Here: the outline only."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two of them and the dog walking back to the fence. Noon past. Nobody heard anything. The strip drew the shape of it anyway.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager, a young man and a small dog walking away from a mill stack toward a fence, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The whistle's shape, empty, over the stack. First appearance of the shape; the canon fills it in 2022."
+}

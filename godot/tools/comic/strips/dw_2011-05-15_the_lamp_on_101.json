@@ -1,0 +1,103 @@
+{
+  "id": "dw_2011-05-15_the_lamp_on_101",
+  "title": "Sunday · the lamp on 101",
+  "strip": "drift_wood",
+  "date": "2011-05-15",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening ix)",
+  "logline": "The arc's Sunday: 101 in three tiers with a small figure walking it carrying a green swing-arm desk lamp, the cord trailing, the frame shop behind him in the first tier and the alley ahead in the last.",
+  "cast": [
+    "wood_26"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a frame shop's door with a CLOSED card, a man leaving it carrying a green desk lamp, cord trailing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "carrying the lamp",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "the cord"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a canvas chore coat leaving a small shop with a closed card in its door carrying a green swing-arm desk lamp with its cord trailing, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shop"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the coastal highway's shoulder, the figure small, the lamp's arm over his shoulder, the sea.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small on the shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small figure walking the shoulder of a coastal highway with a desk lamp's arm over his shoulder and the sea beyond, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the alley behind the tavern, the garage door, the lamp set down on the step.",
+      "characters": [],
+      "props": [
+        "the lamp, on the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a green swing-arm desk lamp set down on the step of a garage door in an alley behind a tavern, no one, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alley"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The lamp (objects.md), carried home. Let Go.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,155 @@
+{
+  "id": "dw_2009-02-13_crab_derby_2009",
+  "title": "The Crab Derby, 2009",
+  "strip": "drift_wood",
+  "date": "2009-02-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Twenty-fifth annual. Gully's engaged. Wood draws the two crabs facing each other for the first time.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with the twenty. Maria's name on his forearm again — a date in June. WOOD drawing.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "twenty, a June date on the arm",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty",
+        "a date on a forearm"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-five. Big year."
+        },
+        {
+          "who": "WOOD",
+          "text": "For the derby."
+        },
+        {
+          "who": "GULLY",
+          "text": "For the derby."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron holding out a twenty with a June date written on his forearm, a thin man drawing at the counter, a dog, muddy flats",
+        "negative": "",
+        "notes": "JUNE 12 on the arm. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The flyer: the two crabs turned to face each other. The cup between them. The small third crab, now beside the second.",
+      "characters": [],
+      "props": [
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a crab flyer where two large crabs face each other with a cup between them and a small third crab beside one",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully looking at it. Getting it. Saying nothing.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking, getting it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron looking at a flyer and understanding something without saying it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Fifteen flyers. Gully pinning. His hand stays on it a second longer.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pinning, hand lingering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fifteen flyers"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty bucks."
+        },
+        {
+          "who": "WOOD",
+          "text": "Twenty bucks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "fifteen crab flyers in a row, a man in an apron pinning the newest with his hand lingering on it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The two crabs face each other. Gully gets it."
+}

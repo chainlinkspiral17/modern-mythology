@@ -1,0 +1,128 @@
+{
+  "id": "dw_2000-08-28_corn_at_the_drugstore",
+  "title": "Corn at the drugstore",
+  "strip": "drift_wood",
+  "date": "2000-08-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Before September",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A crate of corn by the drugstore's door. Late August. The strip's month coming. Wood buys four ears and doesn't say why. The clerk says corn or peas. Wood says how does he know that. The clerk says the digest, three years ago. The clerk reads.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_clerk"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drugstore's door. A crate of corn in husks on the sidewalk. WOOD picking four. BARNABY sniffing the crate.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crate of husked corn on a sidewalk outside a drugstore with a young man choosing four ears and a small dog sniffing the crate, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The CLERK at the register.",
+      "characters": [
+        {
+          "id": "extra_clerk",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CLERK",
+          "text": "Corn or peas."
+        },
+        {
+          "who": "WOOD",
+          "text": "How do you know that?"
+        },
+        {
+          "who": "CLERK",
+          "text": "Digest. Three years ago."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drugstore clerk at a register, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, holding four ears. The clerk reads. Everyone reads.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a register holding four ears of corn, taken aback, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood on the sidewalk with the corn under his arm. September in two days. The strip's month. The clerk's been reading since the Timberline.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man walking down a sidewalk with ears of corn under his arm and a small dog at heel, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Corn or peas.' The clerk has read since the Timberline (#1)."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ro_2023-06-18_route_north",
+  "title": "The route north · the bend",
+  "strip": "roflcopter",
+  "date": "2023-06-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "101's bends past Newport, page by page, to Seattle. He never drove it. The Greyhound's road, drawn.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bend of Highway 101 north of Newport, drawn from a map and memory of the map: the road climbing a headland, a guardrail, the Pacific enormous on the left, and painted on the road's shoulder — small — the shadow of a bus that isn't in the frame. No people. The page's ochre is the road's centerline.",
+      "characters": [],
+      "props": [
+        "headland",
+        "guardrail",
+        "the Pacific",
+        "a bus's shadow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bend of a two-lane coastal highway climbing a headland with a guardrail and the enormous Pacific to the left, and on the road's shoulder the shadow of a bus that is not in the frame, spare ink with slate and sea-foam watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "One of thirty route pages. The bus is only ever a shadow."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "He leaves the town on paper. The bus is a shadow all the way to Seattle.",
+  "layout": "single page, no borders"
+}

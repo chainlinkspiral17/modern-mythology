@@ -1,0 +1,138 @@
+{
+  "id": "dw_2017-09-16_saturday_no_bell",
+  "title": "Saturday, no bell",
+  "strip": "drift_wood",
+  "date": "2017-09-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twenty Years · deepening)",
+  "logline": "Saturday. The school on a Saturday. No bell. Wood parks where the Legacy overheated in 2013 and sits. The corn tray from Tuesday on the dashboard, empty. The pup. The week ends with the school closed and him outside it, which is where he's been for twenty years.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, Saturday, empty. The Legacy at the curb. WOOD inside. BARNABY II on the seat. The empty corn tray on the dash.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the car",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty corn tray",
+        "the school, closed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small-town high school closed on a Saturday with an old station wagon at the curb, a graying man and a small three-legged dog inside, an empty paper tray on the dashboard",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The steps. Nobody. Three worn places on the third step, and a fourth now, newer.",
+      "characters": [],
+      "props": [
+        "four worn places on the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a school's concrete front steps with three old worn patches and a fourth newer one",
+        "negative": "",
+        "notes": "The fourth worn place: the napkin kid's. Compare dw_2009-06-14."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the steps. The pup looking at Wood. The engine off. No bell shape anywhere in the panel.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "looking at him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man in a parked car looking at empty school steps while a small dog looks at him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Legacy pulling away, slowly, the blue haze. The school in the mirror. Twenty years outside it. The strip drives off.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blue haze",
+        "the school in the mirror"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, an old station wagon pulling away from a closed school trailing a faint blue haze with the school small in the mirror, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "No bell. A fourth worn place on the step."
+}

@@ -1,0 +1,97 @@
+{
+  "id": "dw_2008-12-14_the_tavern_at_christmas",
+  "title": "Sunday · the tavern at Christmas",
+  "strip": "drift_wood",
+  "date": "2008-12-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · Sundays · deepening ix)",
+  "logline": "The tavern from the alley in December: its beer sign, a string of lights in its back window, the garage door beside it with no lights, and in the last tier the beer sign off and the garage's window on.",
+  "cast": [
+    "wood_26"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the tavern's back in rain, the beer sign lit, colored lights in a window.",
+      "characters": [],
+      "props": [
+        "the beer sign",
+        "colored lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the back of a tavern in December rain with a lit beer sign and a string of colored lights in a window, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tavern"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the garage door beside it, unlit, plain, a dog's bowl outside.",
+      "characters": [],
+      "props": [
+        "a dog's bowl"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a plain unlit garage door beside a tavern's back wall with a dog's bowl outside in rain, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Garage"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the beer sign off, the tavern dark, the garage's small window lit, a shape at a table.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "a shape inside",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lit window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark tavern with its sign off and beside it a small lit garage window with the shape of a man at a table, rain, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Later"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The tavern's name: reserved; not lettered.",
+  "layout": "tiers, portrait page"
+}

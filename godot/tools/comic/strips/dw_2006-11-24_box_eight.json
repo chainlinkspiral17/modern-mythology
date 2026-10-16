@@ -1,0 +1,137 @@
+{
+  "id": "dw_2006-11-24_box_eight",
+  "title": "Box eight",
+  "strip": "drift_wood",
+  "date": "2006-11-24",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Two-Thirds",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Two-Thirds · deepening)",
+  "logline": "Friday. The serious pages come off the wall. Into a box. The lid: BOX 8 · THE RIDGE · UNFINISHED. Wood, small, needs a chair to reach the top pin. The strip's Wood puts the novel away for good and is drawn too small to do it easily.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD, two-thirds, on a chair, unpinning the eight serious pages from the wall one at a time. BARNABY watching.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on a chair, unpinning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "eight pages",
+        "a chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a small thin man standing on a chair to unpin dense cross-hatched comic pages from a garage wall, a dog watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pages going into a cardboard box, face down. The faller's ridge, the last one, face up for a beat.",
+      "characters": [],
+      "props": [
+        "the box",
+        "the ridge page, face up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, close-up of cross-hatched comic pages being laid face down into a cardboard box with the last one, a ridge with a falling tree, still face up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The lid. Marker. BOX 8 · THE RIDGE · UNFINISHED. His hand small on the big marker.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "writing on the lid",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lid"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a small man writing on a cardboard box lid with a marker that looks too large in his hand",
+        "negative": "",
+        "notes": "Letter after: BOX 8 · THE RIDGE · UNFINISHED. (The box register, Vol. II.)"
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The wall, bare, eight pale rectangles where the pages were. The box on the floor. The stick figure on the CRT. The small man. The normal dog. Four weeks of two-thirds left.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "eight pale rectangles",
+        "the box",
+        "the CRT"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a garage wall with eight pale rectangles where pages were pinned, a labeled cardboard box on the floor, a CRT glowing with a stick figure, a small thin man and a normal-sized dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Box 8. The wall's eight pale rectangles. The novel put away, small."
+}

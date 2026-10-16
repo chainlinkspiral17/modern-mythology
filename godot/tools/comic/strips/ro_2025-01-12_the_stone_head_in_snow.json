@@ -1,0 +1,58 @@
+{
+  "id": "ro_2025-01-12_the_stone_head_in_snow",
+  "title": "The stone head in snow",
+  "strip": "roflcopter",
+  "date": "2025-01-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Rare snow. The face with a cap of it, the eyes two dark places, the grass gone white to the wall. The pup's prints, two-one, circling it.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The stone face under a cap of rare snow, its eye-hollows the only dark, the grass white to the shingle wall, and around it a circle of small three-legged dog prints in a two-one rhythm. The dog out of frame.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "prints only",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "snow",
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a carved stone head with a cap of snow and dark eye hollows in a snowy patch by a shingle wall, a circle of small three-legged dog prints in the snow around it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Snow. The prints circling it.",
+  "layout": "single page, no borders"
+}

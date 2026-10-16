@@ -1,0 +1,127 @@
+{
+  "id": "bk_2001-04-09_slash_the_green_coat",
+  "title": "SLASH · The green coat",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-04-09",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Page one of the phantom novel: a woman in a green coat at the frame shop's counter at closing with a photograph she wants matted and won't let the framer see. Rain in the alley in vertical hatching. The framer isn't Wood; he has Wood's hands.",
+  "cast": [
+    "extra_framer",
+    "extra_green_coat"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Top third: the frame shop at closing from the alley door, rain hatched in vertical strokes across the window, the OPEN sign turned, the counter lit, the GREEN COAT at it with her back to us.",
+      "characters": [
+        {
+          "id": "extra_green_coat",
+          "pose": "at the counter, back to us",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the green coat",
+        "the OPEN sign turned"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop at closing seen from its alley door with rain hatched in vertical strokes across the window and a woman in a dark coat at the lit counter with her back to the viewer",
+        "negative": "",
+        "notes": "The coat is green; the page is black and white. The color is in the title."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Middle third: across the counter, the GREEN COAT sliding a photograph face down toward the FRAMER's ink-stained hands, which rest flat and do not turn it over.",
+      "characters": [
+        {
+          "id": "extra_green_coat",
+          "pose": "sliding the photo, face down",
+          "expression": ""
+        },
+        {
+          "id": "extra_framer",
+          "pose": "hands flat on the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a photograph, face down"
+      ],
+      "balloons": [
+        {
+          "who": "GREEN COAT",
+          "text": "Mat it. Don't look at it."
+        },
+        {
+          "who": "FRAMER",
+          "text": "I have to measure it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, across a shop counter a woman sliding a photograph face-down toward a man's ink-stained hands which rest flat and do not turn it over",
+        "negative": "",
+        "notes": "The framer isn't Wood; he has Wood's hands."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Bottom third, no gutter: the photograph's back, blank, under the framer's fingertips; her gloved hand leaving the frame; the rain's hatching heaviest here.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "fingertips on the photo's back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the photograph's blank back"
+      ],
+      "balloons": [
+        {
+          "who": "GREEN COAT",
+          "text": "Measure the back."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, close on the blank back of a photograph under a man's fingertips with a gloved hand leaving the frame and the rain hatching heaviest at the bottom of the page",
+        "negative": "",
+        "notes": "Measure the back."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "Page one. Measure the back.",
+  "layout": "three panels stacked, no gutters"
+}

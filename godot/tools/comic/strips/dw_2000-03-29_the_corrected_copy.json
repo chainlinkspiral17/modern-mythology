@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-03-29_the_corrected_copy",
+  "title": "The corrected copy",
+  "strip": "drift_wood",
+  "date": "2000-03-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Who Draws These",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A digest comes back into the rack with a spelling fixed in pen, in a careful old hand. 'Recieve' → 'receive'. The same hand as the note in November. Wood fixes it in the next week's and credits nobody. The strip credits the hand.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A digest in the rack, returned: a word crossed through in pen and rewritten above in a careful old hand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small photocopied booklet with a misspelled word crossed out in pen and corrected above in careful handwriting, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 'recieve' struck, 'receive' above."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD holding it. The hand. He knows the hand. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a corrected booklet and studying the handwriting, a small dog at his feet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's pocket: the November note, unfolded beside the correction. The same hand. 'More of the boy at the counter.'",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hands holding a small note and a corrected booklet side by side, the handwriting matching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The desk at home. The next week's strip. The word spelled right. No credit. The strip draws the pen doing it, which is the credit.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's pen carefully lettering a word correctly on a comic strip at a desk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The reader's hand, twice. Credited by being drawn."
+}

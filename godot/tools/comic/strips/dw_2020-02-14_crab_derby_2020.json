@@ -1,0 +1,170 @@
+{
+  "id": "dw_2020-02-14_crab_derby_2020",
+  "title": "The Crab Derby, 2020",
+  "strip": "drift_wood",
+  "date": "2020-02-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Thirty-sixth annual. The last flyer Wood letters. The girl, ten, draws it and letters it herself. He watches. He doesn't touch the pen.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The girl, ten, drawing AND lettering. WOOD on the stool with his hands in his lap. GULLY. BARNABY II.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing and lettering",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "hands in his lap",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a ten-year-old girl drawing and lettering a crab flyer at a shop counter while a thin man sits on a stool with his hands deliberately in his lap, a man in an apron, a dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her lettering: 36TH ANNUAL CRAB DERBY. Not his face. Hers. Rounder. Right.",
+      "characters": [],
+      "props": [
+        "her lettering"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a child's careful rounded hand-lettering above a well-drawn crab",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The girl, holding it up.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "holding it up",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Is the lettering okay?"
+        },
+        {
+          "who": "WOOD",
+          "text": "It's yours. That's the whole thing. It's yours."
+        },
+        {
+          "who": "GIRL",
+          "text": "That's not an answer."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the only one I've got."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl holding up a finished flyer to a thin man who answers her seriously",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Twenty-three flyers. The girl pinning the twenty-third. Gully with his hand on Wood's shoulder for exactly one panel.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "pinning",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "hand on Wood's shoulder",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-three flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a row of twenty-three crab flyers on a shingle wall, a girl pinning the newest, a stocky man's hand resting on a thin man's shoulder for a moment, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The last flyer. Hers. Gully's hand on his shoulder, one panel."
+}

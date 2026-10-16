@@ -1,0 +1,142 @@
+{
+  "id": "dw_2001-09-12_anniversary_four",
+  "title": "Four years",
+  "strip": "drift_wood",
+  "date": "2001-09-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Four years. The strip references #1 with a tray and nothing else.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The community-college cafeteria, Newport — the strip's first time in it. A tray. Corn. WOOD at the register with a CASHIER who doesn't look up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "tray out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tray",
+        "corn",
+        "cafeteria register"
+      ],
+      "balloons": [
+        {
+          "who": "CASHIER",
+          "text": "Corn or peas."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a community college cafeteria line, a young man in a chore coat holding out a tray as a cashier who doesn't look up ladles corn, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood. Nothing. Not even 'corn.' He just takes it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "taking the tray silently",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man silently taking a tray of corn, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "A long cafeteria table. Adults of all ages, none facing the same direction. Wood at the end. Nobody he knows.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the end of a long table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "long table",
+        "adult students"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long community college cafeteria table with adult students of all ages facing every direction, a young man alone at the end",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The Datsun in Lot C. Wood eating the corn in the car with the dog. Rain. This is where the locals go.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "eating in the car",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "eating too",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Datsun",
+        "LOT C sign",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog sharing a tray of corn inside an old Datsun in a rainy parking lot under a LOT C sign, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Fourth anniversary. #1's tray, in Newport, in the car."
+}

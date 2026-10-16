@@ -1,0 +1,49 @@
+{
+  "id": "ro_2024-11-17_the_stone_head_at_night",
+  "title": "The stone head at night",
+  "strip": "roflcopter",
+  "date": "2024-11-17",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The face by the wall at night, lit from below by a phone's light held by someone out of frame, the moss white in it, the eyes deeper. Whoever holds the phone: not drawn. The monument nobody remembers, remembered for a second.",
+  "cast": [],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The moss-grown carved stone face in grass at night lit from below by the white glare of a phone held out of frame, the shingle wall behind it black, the eyes deep shadows.",
+      "characters": [],
+      "props": [
+        "a phone's light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a moss-grown carved stone face in grass at night lit from below by the white glare of a phone held out of frame, a shingle wall black behind it and its eyes in deep shadow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Lit for a second by someone not drawn.",
+  "layout": "single page, no borders"
+}

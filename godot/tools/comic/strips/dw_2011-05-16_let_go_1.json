@@ -1,0 +1,162 @@
+{
+  "id": "dw_2011-05-16_let_go_1",
+  "title": "Let go, i",
+  "strip": "drift_wood",
+  "date": "2011-05-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Let Go · deepening)",
+  "logline": "Monday. The owner says Friday. She says it at the mat cutter, not looking up, which is how she says everything. Wood cuts the mat he was cutting. It's a good mat.",
+  "cast": [
+    "wood_26",
+    "extra_owner_heceta",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Heceta Frame & Matting, morning. The OWNER at the mat cutter, glasses on a cord. WOOD at the counter. BARNABY in his spot by the radiator.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "at the cutter, not looking up",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "at the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "by the radiator",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Friday's the last day, Arthur. I'm sorry. It's the rent, not you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, an older woman with glasses on a cord at a mat cutter not looking up while speaking to a thin man at a frame-shop counter, an old dog by a radiator",
+        "negative": "",
+        "notes": "'Arthur' — the owner's second of two while he works there (see characters.md)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood's hands on the mat he was cutting. Continuing the cut. Straight.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hands cutting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a mat, mid-cut"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a man's hands continuing a straight mat cut with a blade after hearing bad news",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The cut done. Wood holding the mat up to the light. Good.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding a mat to the light",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's a good mat."
+        },
+        {
+          "who": "OWNER",
+          "text": "They always are."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man holding a cut mat up to a window's light and judging it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The shop. The two of them working. The dog. Four more days of it. The strip doesn't slow down.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "working",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "working",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a small frame shop with an older woman and a thin man working quietly at their stations and an old dog by a radiator, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'Friday's the last day, Arthur.' The cut finished straight."
+}

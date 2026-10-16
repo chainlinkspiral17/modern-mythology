@@ -1,0 +1,108 @@
+{
+  "id": "dw_2014-03-16_the_top_of_the_steps",
+  "title": "Sunday · the top of the steps",
+  "strip": "drift_wood",
+  "date": "2014-03-16",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The wooden steps down to the beach from the bluff, March, and at the top, the dog, fourteen, looking down them. Wood's shadow. The strip watches him not go down.",
+  "cast": [
+    "barnaby",
+    "wood_34"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the long wooden stair down the bluff to the beach, weathered, the beach and the sea below. At the top, on the landing: an old dog, sitting, looking down.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "at the top, sitting, looking down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the wooden stair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a long weathered wooden stairway descending a bluff to a beach with an old dog sitting at the top landing looking down it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Steps"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the dog, close, and beside him a man's shadow on the boards, waiting.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "a shadow on the boards",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "shadow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, an old dog sitting on weathered boards beside a man's long shadow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shadow"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the beach from the top of the stairs, empty, the sea, the light. Where they aren't. Held.",
+      "characters": [],
+      "props": [
+        "the beach, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, an empty beach and sea seen from the top of a bluff stairway, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Beach"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Seven months before The Steep Path. He doesn't go down. The strip doesn't say.",
+  "layout": "tiers, portrait page"
+}

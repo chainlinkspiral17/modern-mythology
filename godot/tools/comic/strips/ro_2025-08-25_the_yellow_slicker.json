@@ -1,0 +1,50 @@
+{
+  "id": "ro_2025-08-25_the_yellow_slicker",
+  "title": "The yellow slicker",
+  "strip": "roflcopter",
+  "date": "2025-08-25",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "A figure in a yellow rain slicker on the beach path in dry August, blue hair under the hood, from behind, and the crow going ahead of her along the wall. The only yellow the page has ever used. It doesn't ask.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A figure in a yellow rain slicker with blue curls showing under the hood walking a beach path from behind in dry August light, a crow flying ahead along a low wall.",
+      "characters": [],
+      "props": [
+        "the yellow slicker",
+        "the crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a figure in a yellow rain slicker with blue curls showing under the hood walking a beach path seen from behind in dry August light, a crow flying ahead along a low wall, the slicker the only yellow on the page, no words",
+        "negative": "",
+        "notes": "Vol 7: Aria Dean, sometimes sighted on the coast. Never named; never turned around."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The only yellow. Doesn't ask.",
+  "layout": "single page, no borders"
+}

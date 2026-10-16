@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-10-23_the_lamps_cord",
+  "title": "The lamp's cord",
+  "strip": "roflcopter",
+  "date": "2022-10-23",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The green lamp's cord, close, taped in two places, running from the lamp's base off the table to the wall. Eleven years since it came home along 101. The page draws the tape.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a green desk lamp's base and its cord running off a drafting table to a wall socket, the cord taped in two places with black tape, lamplight.",
+      "characters": [],
+      "props": [
+        "the cord, taped"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a green desk lamp's base with its cord running off a drafting table to a wall socket and taped in two places with black tape, lamplight, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The tape.",
+  "layout": "single page, no borders"
+}

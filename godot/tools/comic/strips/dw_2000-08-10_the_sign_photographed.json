@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-08-10_the_sign_photographed",
+  "title": "The sign, photographed",
+  "strip": "drift_wood",
+  "date": "2000-08-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tourists photograph the Lanes' sign from the highway shoulder. All fifteen letters. Wood watches from across the road. A tourist asks him if it's famous. He says not yet. The tourist asks when. He says he'll let them know.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 by the bowling alley, day. Two TOURISTS on the shoulder photographing the sign, all fifteen letters. WOOD across the road with BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two tourists on a highway shoulder photographing a bowling alley's roofline sign in daylight, a young man with a dog watching from across the road, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sign, daylight, unlit, fifteen letters.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a roofline neon sign unlit in daylight, every letter intact, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourist, crossing.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Is it famous?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Not yet."
+        },
+        {
+          "who": "TOURIST",
+          "text": "When?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll let you know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist crossing a highway toward a young man with a dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The tourists driving off. Wood and the dog. The sign. Fifteen. He'll let them know. The strip will: 2010.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog standing across from an unlit roofline sign as a car drives away, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I'll let you know.' The sign, famous later, one letter at a time."
+}

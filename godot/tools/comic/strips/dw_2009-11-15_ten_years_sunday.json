@@ -1,0 +1,122 @@
+{
+  "id": "dw_2009-11-15_ten_years_sunday",
+  "title": "Sunday · Ten Years Under the Table",
+  "strip": "drift_wood",
+  "date": "2009-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Ten Years Under the Table",
+  "source": "lore/drift_wood/sample_strips.md (2009 · Sundays · deepening ix)",
+  "logline": "The arc's Sunday: the walk drawn ten times, tiny, in a grid across the top tier, one for each year; the middle tier the alley now; the last the dog under the drafting table at ten, the same as at one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_dog",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: ten tiny drawings of the same alley walk in a row, a man and a dog, the drawing style changing left to right.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "tiny, ten times",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "tiny, ten times",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a row of ten tiny watercolor drawings of the same man and dog walking the same alley, the style changing subtly left to right, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ten"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the alley behind the Lanes tonight, the sign lit, the two of them from behind.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a dog from behind in a rainy alley under a lit bowling alley sign, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Now"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dog asleep under the drafting table in the garage, the lamp on, a hand hanging down to him.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "a hand",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dog asleep under a drafting table in a garage with a lamp on and a man's hand hanging down to it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Under"
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Ten. The hand-on-the-dog, a Sunday.",
+  "layout": "tiers, portrait page"
+}

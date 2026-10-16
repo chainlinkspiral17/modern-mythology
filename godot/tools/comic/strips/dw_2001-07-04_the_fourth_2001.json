@@ -1,0 +1,165 @@
+{
+  "id": "dw_2001-07-04_the_fourth_2001",
+  "title": "The Fourth, 2001",
+  "strip": "drift_wood",
+  "date": "2001-07-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Gully's dock now. The lawn chair is still there. Nobody sits in it. The fireworks are still not red.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, night, fireworks in white on black. GULLY and WOOD on the edge. The lawn chair behind them, empty, the oxygen tank gone. BARNABY under the chair anyway.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "dock edge",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "dock edge",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the empty chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "empty lawn chair",
+        "dock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "POM",
+      "image": {
+        "prompt": "a wooden dock at night under white fireworks on a black sky, two young men at the edge, an empty lawn chair behind them with a small dog underneath it, high-contrast black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, looking up.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Red in '71."
+        },
+        {
+          "who": "WOOD",
+          "text": "Not in mine."
+        },
+        {
+          "who": "GULLY",
+          "text": "Not in yours."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man in a backwards cap looking up at fireworks, white light on his face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to Gully.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You could sit in it."
+        },
+        {
+          "who": "GULLY",
+          "text": "Nah."
+        },
+        {
+          "who": "WOOD",
+          "text": "Okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men on a dock edge at night, one glancing back at an empty lawn chair",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. The bay. The chair. The dog under it. The two of them. White on black.",
+      "characters": [],
+      "props": [
+        "fireworks finale",
+        "empty chair",
+        "dock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide fireworks finale over a bay in white on black with a dock, an empty lawn chair, a small dog beneath it and two seated figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The chair stays. The strip's second Fourth; the first without the uncle."
+}

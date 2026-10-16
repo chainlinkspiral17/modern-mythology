@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-07-27_the_rack_note_ii",
+  "title": "The second note",
+  "strip": "drift_wood",
+  "date": "2000-07-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Late July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A second note in the rack, the careful old hand: 'The uncle. Draw him while you can.' Wood reads it at the rack and puts it in his pocket without folding it. He doesn't draw the uncle that week. He draws him the week after, every day.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The rack. A folded note in the digest's slot. The careful hand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a folded note tucked into a wire rack's slot beside small booklets, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The note, open: one line. 'The uncle. Draw him while you can.'",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a note in careful old-fashioned handwriting held in a young man's fingers, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 'The uncle. Draw him while you can.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD at the rack. The note. His face. BARNABY looking up at it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing at a laundromat rack holding an open note with a stricken face, a small dog looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking out with the note in his hand, not folded, not pocketed. The LAUNDRY owner watching him go. She knows the hand too. The strip doesn't say whose.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man leaving a laundromat holding an unfolded note while the owner watches him go, black and white, no words",
+        "negative": "",
+        "notes": "The reader's hand: reserved whose."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Draw him while you can.' He waits a week. Then every day."
+}

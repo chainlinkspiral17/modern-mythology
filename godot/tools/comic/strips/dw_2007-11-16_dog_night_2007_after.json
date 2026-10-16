@@ -1,0 +1,121 @@
+{
+  "id": "dw_2007-11-16_dog_night_2007_after",
+  "title": "Dog Night, 2007 · after",
+  "strip": "drift_wood",
+  "date": "2007-11-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "The morning after eight years: the new bulb still in Wood's coat on the hook, and the dog asleep, and the strip done by the neon as planned. Wood takes the bulb out of the coat and puts it in the drawer with the pins. Someone else will replace it, next year. The strip doesn't know that yet.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The coat on the hook. WOOD taking the bulb out of its pocket.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "taking the bulb out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coat",
+        "the bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man taking a lightbulb in a paper sleeve out of the pocket of a coat hanging on a hook",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The drawer: pushpins, a tin, tape, and now the bulb.",
+      "characters": [],
+      "props": [
+        "the drawer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, an open desk drawer holding pushpins, a tin and tape with a new lightbulb set in beside them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The finished strip on the table: the dumpster by neon.",
+      "characters": [],
+      "props": [
+        "the finished strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a finished comic strip on a drafting table showing a dumpster lit by neon",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "BARNABY asleep on the blanket, the drawer closing.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "closing the drawer",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dog asleep on a blanket while a man's hand closes a desk drawer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The bulb in the drawer. Someone else replaces it in 2008."
+}

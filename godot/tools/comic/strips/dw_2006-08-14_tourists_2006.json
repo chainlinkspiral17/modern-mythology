@@ -1,0 +1,155 @@
+{
+  "id": "dw_2006-08-14_tourists_2006",
+  "title": "Tourist Season, 2006",
+  "strip": "drift_wood",
+  "date": "2006-08-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "A tourist asks Wood to draw her. He does. It's kind. He's surprised again. The chorus is not.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_tourists",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST, older, in a sun hat, asking WOOD on the stool. BARNABY. The chorus at the back with a sign: DO IT.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "asking",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "sign: DO IT",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sun hat",
+        "pad",
+        "sign"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Would you draw me? For my husband. He couldn't come."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older tourist in a sun hat asking a thin man on a shop stool with a drawing pad, a dog beneath, small stick figures at the back holding a sign, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood drawing her. Ninety seconds. Looking at her more than the pad.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing, looking at her",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man drawing a portrait quickly while looking more at his subject than at the pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The drawing: her, the hat, the sun, and — because she said 'he couldn't come' — a second chair beside her, empty, drawn without comment.",
+      "characters": [],
+      "props": [
+        "the drawing with an empty chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a quick ink portrait of an older woman in a sun hat with an empty chair drawn beside her",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The tourist looking at it. Her face. Wood already looking away. The chorus has put the sign down.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "looking at the drawing",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking away",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "sign down",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older woman looking at a portrait with her face changing, a thin man looking away, stick figures at the back with their sign lowered, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The empty chair beside her. Tourist Season stops being cruel and the strip stops pretending it was."
+}

@@ -1,0 +1,109 @@
+{
+  "id": "dw_2014-08-03_sunday_the_alley_the_legacy_back",
+  "title": "Sunday · the alley, the Legacy back",
+  "strip": "drift_wood",
+  "date": "2014-08-03",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "The arc's third Sunday: the alley behind the tavern, the Legacy parked, the doughnut still on. The garage door open. The dog in the doorway, on his feet, waiting. Nobody else on the page.",
+  "cast": [
+    "barnaby",
+    "wood_34"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the alley from its mouth, August evening, the tavern, the garage, and the Legacy back in its place with the doughnut spare still on the front left, dusty from four hundred miles.",
+      "characters": [],
+      "props": [
+        "the Legacy",
+        "the doughnut spare"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green and rust, an alley behind a tavern at evening with a dusty faded green station wagon parked on a doughnut spare tire and a garage door open, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the garage doorway. BARNABY in it, sixteen, standing, waiting, facing the alley. Gray at the muzzle. On his feet for this.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "standing in the doorway, waiting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the doorway"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "watercolor, an old gray-muzzled dog standing in an open garage doorway facing an alley, waiting, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Waiting"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: from inside the garage: the doorway, the dog's back, the alley, and at its mouth, a man walking in, small, a suit over his arm. Held before they meet.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "from behind, in the doorway",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "small, at the alley's mouth",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the doorway"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "watercolor, seen from inside a garage through the open door, an old dog's back in the doorway and a small figure with a suit over his arm walking in from the far end of an alley, no words",
+        "negative": "",
+        "notes": "Held before they meet. The strip never draws the greeting."
+      },
+      "stage": null,
+      "name": "Before"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The dog on his feet in the doorway. Held before they meet.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,148 @@
+{
+  "id": "dw_2019-07-04_the_fourth_2019",
+  "title": "The Fourth, 2019",
+  "strip": "drift_wood",
+  "date": "2019-07-04",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "White fireworks. The sign across the bay: the Lanes' Fourth-of-July special, drawn with seven letters dark. The strip watches two things.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. GULLY, MARIA in the chair, the kids. WOOD on the steps with BARNABY II. Across the bay, on the hill: the Lanes' sign, lit for the holiday, seven letters dark.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "the distant sign, seven dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks, and across the bay on a hill a distant bowling-alley neon sign with seven of its letters dark, a thin man on shack steps with a three-legged dog, clean ink with a blue wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sign, across the water. S _ ALL W _ _ D L _ _ ES. The fireworks lighting the dead tubes for a second so the whole word shows.",
+      "characters": [],
+      "props": [
+        "the sign lit by a burst"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a distant neon sign with most letters dark, a firework burst momentarily lighting the dead tubes so the full word is readable",
+        "negative": "",
+        "notes": "A burst reveals the dead letters. The whole name for one panel."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, looking at the sign, not the sky. Gully noticing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the sign",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "noticing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Sky's up there, Woody."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know where the sky is."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man looking across a bay at a dark sign while fireworks go off above him, a man in an apron noticing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White. The dock. The sign across the bay, back to seven dark when the light goes.",
+      "characters": [],
+      "props": [
+        "finale",
+        "the sign, dark again"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue bay above a dock, a distant sign across the water with most letters dark, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "A burst lights the dead letters for one panel."
+}

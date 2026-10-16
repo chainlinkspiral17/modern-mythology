@@ -1,0 +1,133 @@
+{
+  "id": "dw_2000-01-10_still_closed",
+  "title": "Still closed",
+  "strip": "drift_wood",
+  "date": "2000-01-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The slough again. The same flagger. He recognizes the Datsun before it stops. 'Still closed till it drops.' Wood asks if he's ever seen it drop. The flagger says once. In '96.",
+  "cast": [
+    "extra_flagger",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 at the slough, flooded, the FLAGGER in orange, the Datsun slowing. Rain in sheets.",
+      "characters": [
+        {
+          "id": "extra_flagger",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flooded coastal highway at a slough with a flagger in orange rain gear and a small car slowing in heavy rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The flagger at the window before it's down.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "FLAGGER",
+          "text": "Still closed till it drops."
+        },
+        {
+          "who": "WOOD",
+          "text": "You ever seen it drop?"
+        },
+        {
+          "who": "FLAGGER",
+          "text": "Once. '96."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flagger leaning to a car's window in rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD, to BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Ninety-six. We were in the cafeteria."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a car looking at a small dog on the seat beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun turning around. The flagger, small, in the rain, waiting for a thing he saw once.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car turning around on a flooded highway while a flagger stands small in the rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Once. '96.' The flagger waits for a thing he saw once. So does the strip."
+}

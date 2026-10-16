@@ -1,0 +1,147 @@
+{
+  "id": "dw_2001-03-09_grunion_iv",
+  "title": "The Grunion Run, iv",
+  "strip": "drift_wood",
+  "date": "2001-03-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Fourth year. Gully doesn't come. Wood and the dog go anyway. The strip draws Gully's bucket, empty.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. WOOD and BARNABY. Beside them on the sand, a bucket, empty — Gully's, brought by Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "standing with the pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "an empty bucket",
+        "silver fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns and silver fish at the surf line, a young man with a drawing pad, a small dog in the water, and an empty bucket set on the sand beside him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The bucket. GULLIVER in marker on the side.",
+      "characters": [],
+      "props": [
+        "bucket labeled GULLIVER"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an empty plastic bucket on sand with a name written on it in marker, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood filling the bucket himself. Badly. Fish everywhere. The dog helping, which is not helping.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "grabbing at fish, clumsy",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chaotic",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bucket",
+        "fish"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "How does he do this. They're — they're all leaving."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man clumsily trying to grab small silver fish into a bucket at night while a small dog makes it worse, lanterns",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. Wood on the sand, wet to the knees, the bucket a quarter full. The dog asleep against it. The lanterns. He'll leave the bucket on Gully's porch. The strip doesn't show that.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "sitting wet on the sand",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep against the bucket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bucket, quarter full",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting wet on a night beach beside a bucket a quarter full of small fish, a dog asleep against it, lanterns behind, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gully absent, the month after the uncle. The strip fills his bucket."
+}

@@ -1,0 +1,100 @@
+{
+  "id": "dw_2020-06-14_last_bell_nobody",
+  "title": "Sunday · Last Bell, nobody",
+  "strip": "drift_wood",
+  "date": "2020-06-14",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2020 · Sundays · deepening ix)",
+  "logline": "The school at 3:05 in June with no bell drawn and no one coming out. The doors shut. The man and the pup on the far sidewalk anyway, at the usual time. The strip doesn't say why.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the high school at 3:05 from across the road, the doors shut, no bell shape, no one.",
+      "characters": [],
+      "props": [
+        "the shut doors"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town high school seen from across a road with its doors shut and no one in sight on a June afternoon, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shut"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the man and the pup on the far sidewalk at the usual place, looking across.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the usual place",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog on a sidewalk looking across a road at a closed school, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Anyway"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the road to the beach empty, a paper sign taped to the school's door too far to read.",
+      "characters": [],
+      "props": [
+        "a paper sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty road toward a beach past a closed school with a paper sign taped to its door too far away to read, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Reserved whether 2020 is 2020. No bell drawn.",
+  "layout": "tiers, portrait page"
+}

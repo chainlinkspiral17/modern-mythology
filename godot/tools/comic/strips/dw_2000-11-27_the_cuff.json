@@ -1,0 +1,102 @@
+{
+  "id": "dw_2000-11-27_the_cuff",
+  "title": "The cuff",
+  "strip": "drift_wood",
+  "date": "2000-11-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Winter. Alone. Faster. The coat's cuff frays on the mat cutter's edge and Wood watches it happen over four panels and doesn't stop it. A thread, then two. It's the cuff the strip will draw for eleven years. It starts here. The strip is drawn faster than the fraying.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The chore coat's right cuff against the mat cutter's steel edge. A thread catching.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a canvas coat cuff catching on the steel edge of a mat cutter, a single thread pulling, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Two threads. The cuff's edge going soft.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a canvas cuff with two threads pulled loose, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD's hand, cutting on. Not stopping. The cuff fraying while the corner comes clean.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand cutting a clean mat corner while his coat cuff frays against the cutter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The cut done. The cuff frayed. Wood looking at it. Leaving it. The line of the strip faster than the fraying: the whole thing in eighty strokes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a mat cutter looking at his frayed coat cuff and leaving it, drawn in a fast sparse line, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The frayed cuff, from the cutter. Eleven years of it start here. Eighty strokes."
+}

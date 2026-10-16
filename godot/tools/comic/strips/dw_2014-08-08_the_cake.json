@@ -1,0 +1,173 @@
+{
+  "id": "dw_2014-08-08_the_cake",
+  "title": "The cake",
+  "strip": "drift_wood",
+  "date": "2014-08-08",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Catering",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Catering · deepening)",
+  "logline": "Friday. The last catering strip. The cake, drawn from memory, wrong: too many tiers. Gully says it's not a cake. Wood says it's what he remembers. Gully takes the pad and turns the page for him. The arc ends.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD drawing. The pad: a cake, six tiers, ornate, impossible.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing a cake",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the basket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: a six-tier cake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man drawing an impossibly tall six-tier wedding cake on a pad at a bait-shop counter, a man in an apron, an old dog in a basket",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The cake. Too tall. A figure on top — two figures — one drawn, one a blank shape.",
+      "characters": [],
+      "props": [
+        "the cake topper: one drawn, one blank"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a drawn wedding cake with two small figures on top, one rendered and one left as a blank outline",
+        "negative": "",
+        "notes": "The topper: Chloe drawn, Julian a blank shape. The strip's rule, on a cake."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's not a cake."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's what I remember."
+        },
+        {
+          "who": "GULLY",
+          "text": "It had three tiers. I saw the picture. She sent Maria the picture."
+        },
+        {
+          "who": "WOOD",
+          "text": "I remember six."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron disputing a drawing with a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully reaching over. Taking the pad. Turning the page. A blank sheet. Handing it back. Wood looking at the blank. The dog's chin on the counter's edge.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "turning the page",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looking at the blank",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a blank page"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Draw the dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man turning the page of a thin man's pad to a blank sheet and handing it back, an old dog's chin on the counter edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Six tiers remembered; three in the picture. 'Draw the dog.' The arc ends."
+}

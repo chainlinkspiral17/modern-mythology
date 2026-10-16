@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-03-30_the_chimney_close",
+  "title": "The chimney, close",
+  "strip": "roflcopter",
+  "date": "2025-03-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The cannery chimney across the bay, drawn close for the first time in twenty-eight years — from the boat launch, the Legacy behind, the brick, the rusted ladder, the cap. Not smoking. Two years before it is.",
+  "cast": [],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A tall brick cannery chimney close from a boat launch across the water, its rusted ladder and cap, no smoke, gulls on the rim, a station wagon at the launch's edge.",
+      "characters": [],
+      "props": [
+        "the chimney, close"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a tall brick cannery chimney seen close from a boat launch across the water with a rusted ladder and cap and gulls on the rim, no smoke, an old station wagon at the launch's edge, no words",
+        "negative": "",
+        "notes": "Smoking at ro_2027-04-07."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Close for the first time. Not smoking.",
+  "layout": "single page, no borders"
+}

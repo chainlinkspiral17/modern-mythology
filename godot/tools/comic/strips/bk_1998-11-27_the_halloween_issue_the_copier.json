@@ -1,0 +1,135 @@
+{
+  "id": "bk_1998-11-27_the_halloween_issue_the_copier",
+  "title": "THE HALLOWEEN ISSUE · The copier",
+  "strip": "backup",
+  "series": "THE HALLOWEEN ISSUE",
+  "date": "1998-11-27",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Timberline · an unpublished Halloween issue · Box 1",
+  "arc": "THE HALLOWEEN ISSUE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Why the issue never ran: the library's copier at 7 AM with the Halloween pages face down on the glass, and the copier producing, instead of the pages, a single sheet — black, edge to edge, with a small white rectangle in the middle the size of a card. Wood keeps the black sheet. The pages go in Box 1. The card-sized white: reserved.",
+  "cast": [
+    "wood_17",
+    "extra_librarian"
+  ],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The library's copier at 7 AM, WOOD lifting the lid, pages face down on the glass.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "at the copier",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the copier",
+        "the pages"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a teenage boy lifting the lid of a library photocopier with pages face down on the glass in early light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The copier's output tray: a single sheet, solid black, with a small white rectangle at its center.",
+      "characters": [],
+      "props": [
+        "the black sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a photocopier's output tray holding a single sheet printed solid black with a small white rectangle at its center",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD holding the sheet up to the window. The LIBRARIAN's cardigan at the frame's edge.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "holding the sheet up",
+          "expression": ""
+        },
+        {
+          "id": "extra_librarian",
+          "pose": "a cardigan at the edge",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LIBRARIAN",
+          "text": "It does that sometimes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a teenage boy holding a black sheet up to a window with a woman's cardigan sleeve at the frame's edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The Halloween pages going into a cardboard box; the black sheet going into a folder.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "boxing the pages",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Box 1",
+        "the folder"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a teenage boy placing comic pages into a cardboard box and a single black sheet into a folder",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "scratchy crow-quill and ballpoint on cardstock, xerox; heavier spotting than the run; the horror is the spotting",
+    "palette": "black and white; the blacks blacker",
+    "paper": "cardstock; an issue that never went to the copier; Box 1"
+  },
+  "notes": "It does that sometimes. The white rectangle: card-sized; reserved. The librarian's cardigan (canon: The Reading Room, 2022).",
+  "layout": "2x2 half-page"
+}

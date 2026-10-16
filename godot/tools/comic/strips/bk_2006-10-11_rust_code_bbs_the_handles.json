@@ -1,0 +1,138 @@
+{
+  "id": "bk_2006-10-11_rust_code_bbs_the_handles",
+  "title": "RUST_CODE.BBS · The handles",
+  "strip": "backup",
+  "series": "RUST_CODE.BBS",
+  "date": "2006-10-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · drawn during Message Boards · never posted",
+  "arc": "RUST_CODE.BBS",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The chorus has handles now: each stick figure with a word over its head in green — vagrant, cicada, moth, weir — and the strip draws the words as shapes and the figures acting them: one wanders, one sings, one circles the lamp, one dams the desk's pencil groove. Wood names none of them. They were named.",
+  "cast": [
+    "wood_26",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk. Four stick figures, each with a green word floating over it drawn as blocks.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "four, with handles",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four handles"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, four tiny stick figures on a desk each with a small green block-word floating above it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "One wandering off the desk's edge; one with its mouth open, singing lines.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one wandering, one singing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, one tiny stick figure wandering off a desk's edge and another with its mouth open emitting small song lines",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "One circling the desk lamp's bulb; one building a tiny dam of eraser crumbs across the pencil groove.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one circling the lamp, one damming",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "eraser crumbs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, one tiny stick figure circling a desk lamp's bulb and another building a tiny dam of eraser crumbs across a desk's pencil groove",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD watching. BARNABY's chin on the desk.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on the desk",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Who named you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man watching tiny stick figures on his desk while a dog rests its chin on the desk's edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen on bristol; the stick figures in ballpoint; the screen as a gray rectangle with a banner in it",
+    "palette": "muddy early-digital flats; the screen's phosphor green, once",
+    "paper": "bristol scanned; never posted"
+  },
+  "notes": "vagrant · cicada · moth · weir (Vol 5: Frasier's demons). The words are shapes; the figures act them.",
+  "layout": "four panels"
+}

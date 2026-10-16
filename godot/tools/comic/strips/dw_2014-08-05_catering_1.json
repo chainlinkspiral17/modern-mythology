@@ -1,0 +1,168 @@
+{
+  "id": "dw_2014-08-05_catering_1",
+  "title": "Catering, i",
+  "strip": "drift_wood",
+  "date": "2014-08-05",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Catering",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Three weeks of strips analyzing the wedding's catering. The book takes one week. This is Tuesday.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "gully_35"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool with a notebook. BARNABY in a basket on the counter now — Gully's idea. GULLY wiping.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "with a notebook",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in a basket on the counter",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "wiping",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "notebook",
+        "basket"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "There were seven passed appetizers. I've ranked them."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's been three weeks."
+        },
+        {
+          "who": "WOOD",
+          "text": "Two and a half. The seventh was a decoy."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a shop stool with an open notebook, an old dog in a basket on the counter, a stocky man wiping the counter and listening with patience, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The notebook: seven items, ranked, annotated in the tiny capitals he learned from her. 'gougère (adequate) · oyster (local, insulting) · something in a spoon (why)'.",
+      "characters": [],
+      "props": [
+        "notebook page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a notebook page with a ranked list of seven wedding appetizers in cramped handwritten capitals with sarcastic annotations",
+        "negative": "",
+        "notes": "Letter after. He writes in her capitals now."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, setting down the rag.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Woody."
+        },
+        {
+          "who": "WOOD",
+          "text": "The cake was fine. I'll get to the cake."
+        },
+        {
+          "who": "GULLY",
+          "text": "Woody. You've been home three weeks and you've drawn a spoon fourteen times."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was a very specific spoon."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man setting down a rag and looking at his friend with tired kindness",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, closing the notebook. Looking at the dog in the basket. The dog looking at him. The spoon, drawn once more, small, on the closed cover.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "closing the notebook",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "notebook with a small spoon drawn on the cover"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man closing a notebook on a counter and meeting the eyes of an old dog in a basket, a tiny drawing of a spoon on the notebook's cover, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Catering, week three of three. 'You've drawn a spoon fourteen times.' The dog in a basket on the counter: he can't get up on the stool anymore."
+}

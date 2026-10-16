@@ -1,0 +1,61 @@
+{
+  "id": "ro_2027-02-24_the_flats_the_last_february",
+  "title": "The flats, the last February",
+  "strip": "roflcopter",
+  "date": "2027-02-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The flats in the last February, wind, the pup walking, the man matching, from behind, the chimney, and the page as plain as the run's first walk in 1999. The private work at its most ordinary, three weeks before the mornings.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Gray mudflats in wind with an old three-legged dog walking and a man in plaid matching its pace from behind, the chimney far off, plain.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "walking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, gray tidal mudflats in wind with an old three-legged dog walking and a man in plaid flannel matching its pace seen from behind, a distant chimney, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "At its most ordinary.",
+  "layout": "single page, no borders"
+}

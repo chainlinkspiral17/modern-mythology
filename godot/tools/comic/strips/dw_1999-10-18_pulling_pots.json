@@ -1,0 +1,119 @@
+{
+  "id": "dw_1999-10-18_pulling_pots",
+  "title": "Pulling pots",
+  "strip": "drift_wood",
+  "date": "1999-10-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle's Pots",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The end of the season. The uncle pulls his pots with Gully and the strip watches from the dock. Wood is told to draw or hold the line; he can't do both.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch, October, gray chop. The UNCLE's skiff at the dock, GULLY hauling a crab pot over the gunwale, the uncle at the tiller. WOOD on the dock with the pad.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man at a skiff's tiller and a stocky teenager hauling a crab pot over the gunwale at a small boat launch in gray chop, a young man on the dock with a drawing pad, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The uncle, flat-faced, rain hood up.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Draw or hold the line. Not both."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a weathered old man in a rain hood at a boat's tiller speaking flatly, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hands: the pad in one, the wet line in the other. Both.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hands, one holding a drawing pad and one holding a wet rope, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The pot coming over. Water everywhere. The pad soaked. The drawing on it: a pot, half done, running. Gully laughing without sound.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crab pot coming over a gunwale in a spray of water soaking a drawing pad, a teenager laughing silently, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle's rule. The pad is soaked; the drawing runs."
+}

@@ -1,0 +1,139 @@
+{
+  "id": "dw_2018-03-15_the_unopened_letter_4",
+  "title": "The unopened letter, iv",
+  "strip": "drift_wood",
+  "date": "2018-03-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Unopened Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Unopened Letter · deepening)",
+  "logline": "Thursday. Wood weighs it in his hand. Heavier than a letter. A contract, then. He weighs it against the sand dollar from the sill. The sand dollar is lighter. He puts the sand dollar back.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "WOOD picking up the envelope at last. Weighing it in one hand. BARNABY II watching.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "weighing the envelope",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man holding an unopened envelope flat on his palm and weighing it, a small three-legged dog watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The other hand: the sand dollar from the sill. Weighing them against each other like scales.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "both hands out, weighing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sand dollar",
+        "the envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man holding an envelope in one palm and a dried sand dollar in the other, weighing them against each other like scales",
+        "negative": "",
+        "notes": "The sand dollar from Beverly Beach (dw_2013-05-26)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The two hands. The envelope hand lower.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hands",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of two open hands where the one holding an envelope has sunk lower than the one holding a sand dollar, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The sand dollar back on the sill in its jar. The envelope back on the table. Unopened. The dog's chin on the table edge, looking at the envelope the way he looks at the box.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "setting the sand dollar back",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "chin on the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sill",
+        "the envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man placing a sand dollar back into a jar on a windowsill while an envelope lies unopened on the table and a small dog rests its chin on the table edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Weighed against the sand dollar. The sand dollar wins by being lighter."
+}

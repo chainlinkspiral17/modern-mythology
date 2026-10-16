@@ -1,0 +1,141 @@
+{
+  "id": "dw_2004-06-04_last_bell_2004",
+  "title": "Last Bell, 2004",
+  "strip": "drift_wood",
+  "date": "2004-06-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "School lets out. The garage is two blocks from the school now. He hears the bell through the wall and draws it.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, 3:05 PM. WOOD at the table. Through the casement window, the bell — drawn as a jagged shape coming in over the tavern roof.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ear up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "window",
+        "bell shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a garage studio at 3:05 PM with a jagged bell-sound shape drawn coming through the small window over a tavern roof, a man drawing, a dog with one ear up, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood not looking up. Drawing the bell.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing the sound",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: the bell shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drawing the jagged shape of a bell sound on a pad without looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Through the window: kids on the sidewalk, released, walking past the tavern toward the beach, none of them his.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "kids passing, background",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sidewalk",
+        "tavern"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "through a small casement window, teenagers walking past a tavern toward a beach on the last day of school, none of them looking at the garage",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage. Wood. The bell shape on the pad. The dog. He doesn't drive past this year. He draws it from two blocks away.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with a drawing of a bell sound on his pad, a dog under the table, afternoon light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": ""
+}

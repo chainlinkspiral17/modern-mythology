@@ -1,0 +1,49 @@
+{
+  "id": "ro_2027-02-03_the_blankets_last_wash",
+  "title": "The blanket's last wash",
+  "strip": "roflcopter",
+  "date": "2027-02-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The blanket on the line in February, the worn corner now a hole, the light through it. Twenty-seven years of dogs. The page draws the light through the hole and takes the blanket down in the next page it doesn't draw.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A wool blanket pinned on a clothesline in February with a hole worn through one corner and light showing through it, the garage door beyond.",
+      "characters": [],
+      "props": [
+        "the blanket, a hole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a wool blanket pinned on a clothesline in February with a hole worn through one corner and light showing through it, a garage door beyond, no people, no words",
+        "negative": "",
+        "notes": "Compare ro_2025-02-23."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Light through the hole.",
+  "layout": "single page, no borders"
+}

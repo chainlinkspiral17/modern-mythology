@@ -1,0 +1,100 @@
+{
+  "id": "dw_2013-04-14_the_ridge_from_the_roof",
+  "title": "Sunday · the ridge from the motel roof",
+  "strip": "drift_wood",
+  "date": "2013-04-14",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · Sundays · deepening ix)",
+  "logline": "The ridge from the motel's roof at dawn after a shift: the town below, the bay, the ridge with a faint warmth over it the tier doesn't explain. The second time the glow is drawn.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the motel's flat roof at dawn, a man sitting on the parapet from behind in a maroon polo, the town below.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the parapet, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a maroon polo sitting on a motel's roof parapet from behind at dawn with a small town below, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Roof"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the ridge beyond the town, dark, a faint warm glow over one part of it.",
+      "characters": [],
+      "props": [
+        "the glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge beyond a small coastal town at dawn with a faint warm glow over one part of it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ridge"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the man climbing down the roof ladder, the glow out of frame.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "climbing down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ladder"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a maroon polo climbing down a roof ladder on a motel at dawn, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Down"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The glow, second drawing (after the Lanes 2009). Not explained.",
+  "layout": "tiers, portrait page"
+}

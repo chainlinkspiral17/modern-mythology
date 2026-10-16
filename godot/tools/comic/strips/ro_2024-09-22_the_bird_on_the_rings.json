@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-09-22_the_bird_on_the_rings",
+  "title": "The bird on the rings",
+  "strip": "roflcopter",
+  "date": "2024-09-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The dock a week after the sequence's rings: the two pale rings on the planks where the cans stood, and the bird standing in one of them. The page lets the sequences touch, once.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on dock planks with two pale rings where cans stood, the small rainbow bird standing inside one ring, the water beyond the dock's edge.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "in a ring",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the two rings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on wooden dock planks with two pale rings where cans stood and a small rainbow bird standing inside one ring, water beyond the dock's edge, no words",
+        "negative": "",
+        "notes": "Compare ro_2024-09-15."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The sequences touch, once.",
+  "layout": "single page, no borders"
+}

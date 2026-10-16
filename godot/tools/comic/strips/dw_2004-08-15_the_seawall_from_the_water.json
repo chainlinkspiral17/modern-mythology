@@ -1,0 +1,101 @@
+{
+  "id": "dw_2004-08-15_the_seawall_from_the_water",
+  "title": "Sunday · the seawall, from the water",
+  "strip": "drift_wood",
+  "date": "2004-08-15",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004 · Sundays · deepening xii)",
+  "logline": "Tourist Season from the bay side: the seawall as a wall, the tourists' heads above it, gulls, and in the last tier a dog's head over the wall's edge looking down at the water. The first Sunday drawn from the water.",
+  "cast": [
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the seawall from the water, a long gray wall, heads and hats above it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "heads above the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the seawall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long concrete seawall seen from the water with tourists' heads and hats above it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: gulls on the wall's top edge against the sky.",
+      "characters": [],
+      "props": [
+        "gulls"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "gulls perched along the top edge of a seawall against a summer sky, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gulls"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: a dog's head over the wall's edge looking down at the water, the heads gone.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "head over the edge",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dog's head looking down over the edge of a seawall at the water below, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dog"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "first watercolor: gray, sea-green, everything bleeding",
+    "paper": "cheap watercolor paper, buckled"
+  },
+  "notes": "From the water.",
+  "layout": "tiers, portrait page"
+}

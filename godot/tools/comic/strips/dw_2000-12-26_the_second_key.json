@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-12-26_the_second_key",
+  "title": "The second key",
+  "strip": "drift_wood",
+  "date": "2000-12-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Christmas Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle hangs a second key on the nail by the shack's door. Beside the first. He doesn't say for whom. Gully sees it and doesn't ask. Wood draws the two keys and the nail and nothing else for four panels: the nail, the first key, the second, both. Nobody says a word.",
+  "cast": [
+    "extra_uncle",
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A nail by the shack's door. One key on it. Brass, worn.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a worn brass key hanging on a nail beside a shack's door, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The UNCLE's hand — the crooked finger — hanging a second key beside it.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's hand with a crooked finger hanging a second key on a nail beside the first, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Two keys on the nail. The same cut. One worn, one new.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on two keys on a nail, one worn and one newly cut, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY in the door, looking at the two keys. Not asking. WOOD behind him, drawing the nail. The strip says nothing for four panels and neither does anyone else.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager in a shack doorway looking at two keys on a nail while a young man behind him draws, black and white, no words",
+        "negative": "",
+        "notes": "The second key: for whom, unsaid. The uncle dies Feb 2001; Gully has the shack by June 2003."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two keys on the nail. Nobody says a word. Four panels."
+}

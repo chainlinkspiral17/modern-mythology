@@ -1,0 +1,64 @@
+{
+  "id": "ro_2021-11-15_dog_night_from_behind",
+  "title": "Dog Night, from behind",
+  "strip": "roflcopter",
+  "date": "2021-11-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "November 15. The dumpster behind the Lanes. A man's back, a three-legged dog beside him, the sign above with most letters dark. Twenty-two years. No caption. The first Dog Night with no strip to be in.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The alley behind the Lanes at night. The dumpster, exact. A man from behind in the blue plaid flannel, hands in pockets, and a small three-legged dog sitting beside his boot, both facing the dumpster. Above the roofline, the sign, most tubes dark. Rain starting. No caption. No text anywhere.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, hands in pockets",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting by his boot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster",
+        "the sign, mostly dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a night alley behind a bowling alley with a dumpster drawn precisely, a man seen from behind in blue plaid flannel with hands in pockets and a small three-legged dog sitting beside his boot both facing the dumpster, a neon sign with most letters dark above the roofline, rain beginning, no words",
+        "negative": "",
+        "notes": "No caption. The public strip always captioned the Dog Night with the count; the private page doesn't."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The first Dog Night with nowhere to run. Uncaptioned.",
+  "layout": "single page, no borders"
+}

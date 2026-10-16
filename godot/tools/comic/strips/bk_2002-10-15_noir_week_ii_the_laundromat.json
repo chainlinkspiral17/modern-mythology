@@ -1,0 +1,136 @@
+{
+  "id": "bk_2002-10-15_noir_week_ii_the_laundromat",
+  "title": "NOIR WEEK II · The laundromat",
+  "strip": "backup",
+  "series": "NOIR WEEK II · THE DOG DETECTIVE",
+  "date": "2002-10-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the laundromat digest · the second Noir Week · unrun",
+  "arc": "NOIR WEEK II · THE DOG DETECTIVE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The detective works the laundromat: the rack, the owner with a mop who's seen nothing, a dryer window going round with something in it that isn't laundry. The dog watches the dryer for four panels. The caption thinks that's brilliant. It's a dog watching a dryer.",
+  "cast": [
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. The dog in the trench coat at the rack, sniffing. The OWNER with a mop.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sniffing the rack",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "with a mop",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the rack"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "I seen nothing. I never see nothing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat sniffing a wire rack in a laundromat while an owner with a mop looks away",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A dryer's round window, turning, something pale inside that isn't laundry.",
+      "characters": [],
+      "props": [
+        "the dryer window"
+      ],
+      "balloons": [],
+      "caption": "The dryer was going. Something in it wasn't a sock.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a dryer's round window turning with something pale inside that is not laundry",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog sitting in front of the dryer, watching it go round.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "watching the dryer",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "I let it turn. Sometimes you let a thing turn.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat sitting before a dryer watching the drum turn",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Same. The dog, the dryer. The owner mopping around him.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "still watching",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "mopping around him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "Sometimes a long time.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat still watching a dryer while a man mops the floor around him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the trench coat under a dog",
+    "palette": "black and white",
+    "paper": "newsprint / the digest — never run; the second week found behind the first in Box 4"
+  },
+  "notes": "Brilliant, says the caption. A dog watching a dryer.",
+  "layout": "four panels"
+}

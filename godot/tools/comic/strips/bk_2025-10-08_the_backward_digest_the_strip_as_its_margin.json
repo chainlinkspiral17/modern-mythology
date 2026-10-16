@@ -1,0 +1,51 @@
+{
+  "id": "bk_2025-10-08_the_backward_digest_the_strip_as_its_margin",
+  "title": "THE BACKWARD DIGEST · The strip as its margin",
+  "strip": "backup",
+  "series": "THE BACKWARD DIGEST",
+  "date": "2025-10-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the print tech's misfold of Sept 30, 1999 · Box 23 onward",
+  "arc": "THE BACKWARD DIGEST",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A page that is only the margin: the signature, the date, the mark, drawn at the size of a page, the letters and the two strokes of the gull filling the sheet, and inside the counters of the letters — the o's, the d's — tiny complete strips, twenty-three years of them, one per letter. The reader with a loupe gets the run; the reader without gets the mark.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A page filled by an enormous rendering of a comic strip's margin signature, date and two-stroke gull mark, and inside every enclosed letter counter a tiny complete four-panel strip drawn at loupe scale, each different.",
+      "characters": [],
+      "props": [
+        "the margin, enormous",
+        "tiny strips in the counters"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page filled with an enormous hand-lettered signature and date and a two-stroke gull mark, with tiny complete four-panel comic strips drawn inside every enclosed letter shape, no words legible at normal size",
+        "negative": "",
+        "notes": "The signature: A. Finch — Small Wood, OR, as shapes. The strips in the counters: reserved; twenty-three of them."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, turned: mirrored, overlaid, folded",
+    "palette": "the private washes; the 1997 xerox black where 1997 is quoted",
+    "paper": "Arches; one page on a printed misfold"
+  },
+  "notes": "With a loupe, the run.",
+  "layout": "the margin at page scale"
+}

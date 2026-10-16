@@ -1,0 +1,143 @@
+{
+  "id": "dw_2016-11-15_dog_night_2016",
+  "title": "The Dog Night, 2016",
+  "strip": "drift_wood",
+  "date": "2016-11-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Seventeen years. The dumpster, then the box. The pup has learned the route.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster, bulb. WOOD. BARNABY II sitting at the fence without being told — he's learned it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting at the fence",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man standing behind a bowling alley at night before a rusted dumpster under a bulb, a wiry three-legged dog sitting at the chain-link fence on its own, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup's face. Two years old. One ear up. Looking at Wood, not the fence.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "looking at Wood",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a wiry three-legged dog with one ear up looking at its owner instead of the fence, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The porch. The box. The pup in it. Wood on the step. The same as last year; the strip lets it be the same.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the box",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog sitting in a battered produce box on a porch at night, a man on the step beside it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign, distant. Four letters dark now. Wood counting them, the reader can tell.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the distant sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "distant neon, four dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a porch at night looking across rooftops at a distant bowling-alley sign with four letters gone dark, a dog in a box beside him, no words",
+        "negative": "",
+        "notes": "Four dark."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": ""
+}

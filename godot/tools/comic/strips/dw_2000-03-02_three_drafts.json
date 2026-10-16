@@ -1,0 +1,128 @@
+{
+  "id": "dw_2000-03-02_three_drafts",
+  "title": "Three drafts",
+  "strip": "drift_wood",
+  "date": "2000-03-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Too Good For It",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Too Good For It · deepening)",
+  "logline": "Thursday. The refusal to PNCA, drafted. Three drafts in the display face, each shorter. The third is one line. The dog sleeps on the first two.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. WOOD at the desk lettering a letter in the flyer's display face — too formal, too big. BARNABY on the bed.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "lettering",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a draft"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man at a small desk lettering a letter in bold hand-drawn display capitals, a small dog on the bed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Draft one: a full page. Draft two: half. Balled. The dog lying on both.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "lying on the drafts",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two balled drafts"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of two crumpled letters on a bed with a small dog lying on them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Draft three: one line, in the display face: 'Thank you. No. —A. Finch.' The gull under it.",
+      "characters": [],
+      "props": [
+        "draft three"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a single hand-lettered line on white paper with a tiny gull mark beneath",
+        "negative": "",
+        "notes": "Letter after: 'Thank you. No. —A. Finch.' The gull. The author's name in the character's hand (the second time; see dw_2011-08-09)."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood folding it. Looking at the corkboard: the scholarship letter, the acceptance, both pinned. He pins the refusal beside them. Three envelopes. Nobody will see the third.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning the refusal",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three letters on the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man pinning a folded letter to a corkboard beside two envelopes, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Thank you. No.' Pinned beside what it refuses."
+}

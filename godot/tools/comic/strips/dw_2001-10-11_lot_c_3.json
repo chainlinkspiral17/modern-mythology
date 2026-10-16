@@ -1,0 +1,149 @@
+{
+  "id": "dw_2001-10-11_lot_c_3",
+  "title": "Lot C, iii",
+  "strip": "drift_wood",
+  "date": "2001-10-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Lot C",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Lot C · deepening)",
+  "logline": "Thursday. Wood draws the strip in Lot C on the steering wheel. The guard asks what he's doing. 'Auditing.' The guard writes it on the clipboard.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Datsun in Lot C. WOOD drawing on a pad against the steering wheel. Rain on the windshield.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing on the wheel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "steering wheel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man drawing on a pad braced against a car's steering wheel in the rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The GUARD at the window again.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "at the window",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "What're you doing."
+        },
+        {
+          "who": "WOOD",
+          "text": "Auditing."
+        },
+        {
+          "who": "GUARD",
+          "text": "Auditing what."
+        },
+        {
+          "who": "WOOD",
+          "text": "Everything. Philosophically."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a security guard at a car window questioning a young man with a pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The clipboard. The guard writing, carefully: AUDITING (PHIL.).",
+      "characters": [],
+      "props": [
+        "clipboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a clipboard with a guard's hand writing a short note on a parking log",
+        "negative": "",
+        "notes": "Letter after: AUDITING (PHIL.)"
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guard walking off. Wood back to the wheel. The pad: this strip, panel one, half-drawn.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "leaving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad showing panel one"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man drawing in a parked car while a guard walks away, the pad showing a half-drawn comic panel of the same car",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "AUDITING (PHIL.) on the clipboard."
+}

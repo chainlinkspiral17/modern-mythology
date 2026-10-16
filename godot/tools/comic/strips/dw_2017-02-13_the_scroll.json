@@ -1,0 +1,171 @@
+{
+  "id": "dw_2017-02-13_the_scroll",
+  "title": "The scroll",
+  "strip": "drift_wood",
+  "date": "2017-02-13",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Scroll",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "The strip is read on phones now. Wood watches a tourist scroll a Sunday vertically at Gully's counter. The page sliced.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST at the counter with a phone, thumb moving. WOOD on the stool beside her, close enough to see the screen. BARNABY II in the basket.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "phone, scrolling",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool, glancing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the basket",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone",
+        "basket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist at a shop counter scrolling a phone with her thumb, a thin man on the next stool glancing at the screen, a three-legged dog in a basket on the counter, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The phone: 'The Carry.' Sliced into a vertical strip. Panel 4 — the drift log, the wide one — cropped to a square. The gulls gone. The sky gone.",
+      "characters": [],
+      "props": [
+        "phone screen showing a Sunday page cut into a vertical scroll"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a phone screen showing a comic Sunday page chopped into a narrow vertical scroll, a wide panel cropped to a square with its sky and edges cut away",
+        "negative": "",
+        "notes": "'The Carry' on a phone. Tier 4 cropped to a square: no gulls, no sky."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourist, not looking up.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "This one's sad. The dog one."
+        },
+        {
+          "who": "WOOD",
+          "text": "...It's wider than that."
+        },
+        {
+          "who": "TOURIST",
+          "text": "Hm?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Nothing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist scrolling a phone without looking up while the man beside her says something quiet and then retracts it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood on the stool, drawing the tourist's thumb. Very precisely. Gully watching him draw it. The pup asleep.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing a thumb",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: a thumb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a shop stool drawing a tourist's thumb on a pad with great precision while a stocky man behind the counter watches him do it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The aggregator's scroll. 'It's wider than that.' He draws the thumb."
+}

@@ -1,0 +1,153 @@
+{
+  "id": "dw_2014-12-12_the_end_stool",
+  "title": "The end stool",
+  "strip": "drift_wood",
+  "date": "2014-12-12",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Between Sundays",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Between Sundays · deepening)",
+  "logline": "Friday. Wood at Gully's for the first time since the clinic. The end stool. Nobody says anything. The basket is not on the counter. The strip draws where the basket was.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "flat_stroke",
+    "note": "The flat stroke."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's door. WOOD in it. Alone. GULLY at the counter. MARIA at the register. Nobody moving for a beat.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the door, alone",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man standing alone in a bait-shop doorway while a stocky man and a practical woman inside stop what they are doing, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The end stool. Wood sitting. The counter beside him: a clean rectangle where the basket sat.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a clean rectangle on the counter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man sitting on a shop's end stool beside a clean rectangular patch on a worn counter where something used to sit, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully pouring. Setting it down. His hand staying on the counter beside the cup a moment.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "hand on the counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a stocky man setting a coffee before a thin man and leaving his hand on the counter beside it for a moment, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The three of them. The shop. Nothing said. The rectangle. The strip ends on the rectangle.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a quiet bait shop with three people not speaking and a clean rectangle on the counter, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. The rectangle where the basket was."
+}

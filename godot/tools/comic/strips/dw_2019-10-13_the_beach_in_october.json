@@ -1,0 +1,106 @@
+{
+  "id": "dw_2019-10-13_the_beach_in_october",
+  "title": "Sunday · the beach in October, the pup",
+  "strip": "drift_wood",
+  "date": "2019-10-13",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The pup at five on the October beach, the light low, the drift log. A dog Sunday; the strip allows one a year.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in low October light, long shadows, the pup running the tideline at full scuttle, his shadow three-legged and enormous.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "running, shadow enormous",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a beach in low October light with a small three-legged dog running along the tideline casting an enormous three-legged shadow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Run"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the pup on the drift log, standing, king of it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "standing on the log",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a small wiry three-legged dog standing proudly on top of a bleached drift log, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the light going, the beach, the dog a dot at the water. Held.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "a dot",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a beach at the end of an October day with a tiny dog at the water's edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Light"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The dog Sunday. One a year.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,143 @@
+{
+  "id": "dw_2007-01-22_normal_size",
+  "title": "Monday · normal size",
+  "strip": "drift_wood",
+  "date": "2007-01-22",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Forty Thousand",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Wood is normal size again. Unannounced. The mail is now the size of a couch.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at the table, normal size, as if nothing happened. The stack of ringtone-company mail is now furniture: he has draped a blanket over it. BARNABY asleep on it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "normal size, drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on the mail-couch",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mail draped as a couch",
+        "blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at his normal size drawing at a garage table while a small dog sleeps on a stack of corporate envelopes so large it's been draped with a blanket like a couch, muddy digital flats",
+        "negative": "",
+        "notes": "Normal size. No comment. The mail is a couch now."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "One envelope, opened: a check. The strip draws the number: $800.00. Wood's thumb.",
+      "characters": [],
+      "props": [
+        "a check for $800"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an opened envelope with a check for eight hundred dollars, a thumb on its edge",
+        "negative": "",
+        "notes": "$800.00. Letter after. The ringtone banner money."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Eight hundred a month to put a ringtone ad under a helicopter. The helicopter's dead. The ad's alive. This is capitalism and I'm eating."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a check and talking to a dog with a mixture of shame and relief",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The rent envelope on the table: $250, cash, from the check. The dog. Wood drawing. The mail-couch. The strip's economy in one panel.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rent envelope",
+        "check stub"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage table with a rent envelope and a check stub beside a young man drawing, a dog on a blanket-covered stack of mail, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Normal size, no comment. Eight hundred a month. Rent is two-fifty."
+}

@@ -1,0 +1,113 @@
+{
+  "id": "dw_2000-06-21_the_seawall_wednesday",
+  "title": "The seawall, Wednesday",
+  "strip": "drift_wood",
+  "date": "2000-06-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Summer Hours",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday, seven. The same view. Rain. The town through rain is a different town: the sign lit in daytime, which it never is. Wood draws the lit sign at seven AM. Someone left it on. The strip records it and won't say who.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The town from the seawall, Wednesday, rain: the Lanes' sign lit in daylight across the road, every letter, the neon pale in the gray. WOOD under the pad. BARNABY under Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal town seen from a seawall in morning rain with a distant neon sign glowing pale in daylight, a young man sheltering a drawing pad, a dog beneath him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad, spotted with rain: the sign, lit, at seven AM. Wednesday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a rain-spotted drawing pad showing a lit neon sign in daylight, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Somebody left it on."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in rain looking across a road at a lit sign, puzzled, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The town in rain. The sign lit. Wood on the wall. The strip records the sign lit at seven and never says who left it. (Nobody did.)",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy town seen from a seawall with a neon sign lit in daylight and a young man small on the wall, black and white, no words",
+        "negative": "",
+        "notes": "The sign lit at 7 AM, Jun 21, 2000. Nobody left it on. Reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Wednesday: rain, the sign lit at seven. Nobody left it on. Reserved."
+}

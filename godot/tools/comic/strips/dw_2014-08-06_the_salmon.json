@@ -1,0 +1,169 @@
+{
+  "id": "dw_2014-08-06_the_salmon",
+  "title": "The salmon",
+  "strip": "drift_wood",
+  "date": "2014-08-06",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Catering",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Catering · deepening)",
+  "logline": "Wednesday. The cedar-plank salmon, analyzed. The cedar. Wood draws the plank's grain and the strip, without saying it, draws the mill's cedar. Gully notices what the strip won't say.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD drawing. The pad: a cedar plank, the salmon on it, the grain drawn with real attention.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing the plank",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the basket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: a cedar plank"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Cedar plank. Western red. Soaked two hours — they said two; it was ninety minutes, you could tell by the char —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool drawing a cedar plank with a salmon on it, the wood grain rendered with unusual care, a man in an apron and an old dog in a basket",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The plank's grain, close. The rings. Old growth. The mill's cedar, if anyone's counting.",
+      "characters": [],
+      "props": [
+        "the grain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of an ink drawing of cedar wood grain with tight old-growth rings",
+        "negative": "",
+        "notes": "The mill's cedar. The strip never says it; Gully does, sideways."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, looking at the grain on the pad. Knowing the grain.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking at the grain",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's tight grain."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was a good plank."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's old growth, Woody. That's ours. Somebody up there's cooking fish on our —"
+        },
+        {
+          "who": "WOOD",
+          "text": "Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron looking closely at a drawing of wood grain and recognizing it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two of them looking at the drawing of a plank. The dog. The salmon, incidental. The strip about the wood.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, two men looking down at a drawing of a cedar plank on a pad, an old dog in a basket between them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The plank's grain is the mill's. 'That's ours.'"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "ro_2026-11-26_the_string_lights_going_up",
+  "title": "The string lights going up",
+  "strip": "roflcopter",
+  "date": "2026-11-26",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "Gully's son, thirteen, on a ladder stringing the lights along the shack's eave, Gully holding the ladder from behind, the lawn chair with the box of bulbs on it. Unlit yet. The month before two chairs.",
+  "cast": [
+    "extra_gully_kid",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A boy of thirteen on a ladder stringing colored lights along a shingle shack's eave, a heavy gray man holding the ladder from behind, an old lawn chair with a box of bulbs on its seat, dusk.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "thirteen, on the ladder",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "holding the ladder, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the string lights, unlit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a boy of thirteen on a ladder stringing colored lights along a shingle shack's eave with a heavy gray-haired man holding the ladder from behind and an old lawn chair holding a box of bulbs, dusk, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Unlit yet.",
+  "layout": "single page, no borders"
+}

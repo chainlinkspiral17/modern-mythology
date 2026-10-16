@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-08-07_the_real_coast",
+  "title": "The real coast",
+  "strip": "drift_wood",
+  "date": "2000-08-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A tourist asks Wood on the seawall where the real coast is. Wood says this is it. The tourist says he means the real one, with the rocks. Wood points at the fog. The tourist photographs the fog. Wood draws the tourist photographing the fog.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The seawall. A TOURIST in fleece with a camera. WOOD on the wall with the pad. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Where's the real coast?"
+        },
+        {
+          "who": "WOOD",
+          "text": "This is it."
+        },
+        {
+          "who": "TOURIST",
+          "text": "I mean the real one. With rocks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist in a fleece jacket with a camera approaching a young man drawing on a seawall, a small dog beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood pointing. At the fog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a seawall pointing at a wall of fog offshore, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourist photographing the fog. Delighted.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist in fleece photographing a wall of fog with evident delight, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The pad: a man in fleece photographing nothing. Drawn with great care and no cruelty. Wood surprised again. Twice now.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with a careful ink drawing of a man in a fleece jacket photographing fog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'With rocks.' The fog, photographed. No cruelty; he's surprised twice now."
+}

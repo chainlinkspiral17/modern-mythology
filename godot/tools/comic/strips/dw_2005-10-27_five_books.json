@@ -1,0 +1,140 @@
+{
+  "id": "dw_2005-10-27_five_books",
+  "title": "Five books",
+  "strip": "drift_wood",
+  "date": "2005-10-27",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Five Hundred Pages",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Five Hundred Pages · deepening)",
+  "logline": "Thursday. Wood sorts the floor into stacks. Five. Five hundred pages of five different books, none past page a hundred. The strip draws the stacks and the dog choosing one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD on his knees sorting pages into stacks. BARNABY watching. Five stacks forming.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sorting on his knees",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "five stacks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on his knees on a garage floor sorting typed pages into five separate stacks, a small dog watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The stacks, labeled with offcuts: THE RIDGE · THE FERRY · SLASH (2001) · THE LOT · untitled. Each a hundred pages at most.",
+      "characters": [],
+      "props": [
+        "five labeled stacks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of five stacks of typed pages each with a small hand-lettered label on a scrap of mat board",
+        "negative": "",
+        "notes": "Letter after: THE RIDGE · THE FERRY · SLASH (2001) · THE LOT · (untitled). Five books; none finished."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog walking the stacks. Sniffing each. Lying down on THE RIDGE.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "lying on THE RIDGE",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "THE RIDGE"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small dog inspecting five stacks of paper and lying down on one of them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood looking at the dog on the stack. Then at the stack. The strip, without saying so, has picked the one that goes on the wall in 2006.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the stack",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...That one?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Okay. That one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man looking at a small dog lying on a stack of pages and accepting the choice",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Five books, none finished. The dog picks THE RIDGE. (See dw_2006-11-07, dw_2006-11-24.)"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dw_2019-02-10_her_crab",
+  "title": "Sunday · her crab",
+  "strip": "drift_wood",
+  "date": "2019-02-10",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The best flyer on the wall, close, for a whole tier: Gully's daughter's careful crab from a photo, nine years old, joints right, shaded. The strip gives a child's drawing the Sunday.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the twenty-second flyer, filling the tier: a careful pencil crab with correct joints and shading, hand lettering above it, the pin's shadow.",
+      "characters": [],
+      "props": [
+        "her crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flyer filling the frame with a careful pencil drawing of a crab with correct joints and shading beneath hand lettering, a pushpin's shadow, no words legible",
+        "negative": "",
+        "notes": "dw_2019-02-08's flyer. Better than the strip's crabs; draw it so."
+      },
+      "stage": null,
+      "name": "Crab"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the whole wall from a step back: twenty-two, and hers the one the eye goes to.",
+      "characters": [],
+      "props": [
+        "twenty-two flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with twenty-two crab flyers where the newest is plainly the best drawn, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: through the door, the end stool, empty, and the corkboard. The strip isn't at the counter this morning. Held.",
+      "characters": [],
+      "props": [
+        "the end stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shack's open door showing an empty end stool and a crowded corkboard inside, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stool"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Her crab gets the Sunday.",
+  "layout": "tiers, portrait page"
+}

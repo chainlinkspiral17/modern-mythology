@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-11-03_the_deer",
+  "title": "The deer",
+  "strip": "drift_wood",
+  "date": "2000-11-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Ledger",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. Then deer. The first one: a photograph of a buck on a tailgate, a man beside it in a mill jacket, brought in by the man. Wood frames it in cedar without a word and the man says nothing and it's the same as May and it's not. The cover is the tailgate, no deer.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta",
+    "extra_man"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop. A MAN in a faded mill jacket with a photograph: a buck on a tailgate, himself beside it. The OWNER at her station. WOOD at the counter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_man",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a faded mill jacket handing a photograph across a frame shop counter to a young man, a woman in reading glasses at her station, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The photo: the buck, the tailgate, the man's hand on the antler. Pride drawn as a hand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photograph of a deer on a pickup tailgate with a man's hand resting on its antler, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood choosing cedar. No mat. Not a word. The man nodding once.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man selecting a plain cedar frame without speaking while a man in a mill jacket nods, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The cover, that night: the tailgate, empty, the truck's bed, rain. No deer. The strip drew the pride and left the deer out.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing an empty pickup tailgate in rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Then deer. Cedar, no mat, no word; the same as May and not. The tailgate without the deer."
+}

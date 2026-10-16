@@ -1,0 +1,148 @@
+{
+  "id": "dw_2018-08-13_tourists_2018",
+  "title": "Tourist Season, 2018",
+  "strip": "drift_wood",
+  "date": "2018-08-13",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "A tourist asks Wood to sign the parody. The stick figure. He signs it 'Drift Wood' and hands it back.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST with a printout of the parody's day one and a pen. WOOD on the stool. BARNABY II.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "holding out the parody and a pen",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "parody printout",
+        "pen"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "The helicopter! Would you—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist holding out a printout of a crude stick-figure comic and a pen to a thin man on a shop stool, a three-legged dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood taking the pen. The printout. The stick figure, twelve years old, still hovering six inches.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pen over the printout",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stick figure"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand holding a pen over a printout of a crude stick figure with a helicopter rotor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "What he writes across the bottom, in the display face: DRIFT WOOD. And the gull. Nothing else.",
+      "characters": [],
+      "props": [
+        "the signed printout"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a printout of a stick-figure comic with the words DRIFT WOOD lettered boldly across its bottom and a tiny gull beside them",
+        "negative": "",
+        "notes": "He signs the meme with the strip's name. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The tourist reading it, puzzled. Wood back to his pad. The pup asleep. The tourist leaving with a meme signed by the thing it buried.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "puzzled, leaving",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a puzzled tourist leaving a shop holding a signed printout while a thin man goes back to drawing, a dog asleep, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The meme, signed DRIFT WOOD."
+}

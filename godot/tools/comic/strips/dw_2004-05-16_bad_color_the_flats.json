@@ -1,0 +1,100 @@
+{
+  "id": "dw_2004-05-16_bad_color_the_flats",
+  "title": "Sunday · Bad Color · the flats",
+  "strip": "drift_wood",
+  "date": "2004-05-16",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Bad Color",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004 · Sundays · deepening xii)",
+  "logline": "One of the first ten Sundays, over-wet: the flats with the sky run into the mud, the chimney a bleed, a man and a dog barely held in the middle tier. The book keeps it to show the learning.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the flats with the sky's wash run down into the mud, the horizon lost.",
+      "characters": [],
+      "props": [
+        "the run"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats with a wet sky wash run down into the mud so the horizon is lost, over-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Run"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man in a chore coat and a dog on the flats, the figures barely held against the bleed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small man in a canvas chore coat and a dog on wet mudflats barely held as shapes against a bleeding wash, over-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Held"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the cannery chimney a gray bleed across the tier, the flats gone.",
+      "characters": [],
+      "props": [
+        "the chimney"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a distant chimney as a gray bleed across a wet paper wash with the flats dissolved, over-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Chimney"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "first watercolor: gray, sea-green, everything bleeding",
+    "paper": "cheap watercolor paper, buckled"
+  },
+  "notes": "Bad Color. Kept to show the learning.",
+  "layout": "tiers, portrait page"
+}

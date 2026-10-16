@@ -1,0 +1,443 @@
+# COMIC · Drift Wood / ROFLCOPTER pipeline (vol 10)
+
+Turns strip scripts into comic strips. Two paths, in the order we
+are using them:
+
+1. **The concept run (now).** One prompt per strip describing the
+   whole strip — layout, era style, every panel, the balloons, the
+   signature — sent to an image generator (Runway or Google). You
+   get actual comic strips back, lettered by the model. Judge the
+   look here.
+2. **The production pipeline (later, once the look is approved).**
+   Per-panel art with no lettering, composited with real balloons
+   and the margin mark; optionally staged in Blender with the Meshy
+   hero GLBs (`heroes_vol10.json`) for consistent characters and
+   sets. The hooks are in the schema (`stage`) and the tool
+   (`prompts`, `stage`); the Blender renderer is not written yet.
+
+```
+strips/*.json  ──comic_tool.py──▶  out/strip_prompts.json  ──comic_render.py──▶  godot/assets/comic/vol10/<provider>/*.png
+                       │                                                            + manifest.json
+                       ├─▶ lore/drift_wood/scripts/*.md   (readable script sheets, committed)
+                       ├─▶ out/prompts.json               (per-panel, unlettered — production)
+                       └─▶ out/stage.json                 (Blender staging — production)
+```
+
+## Quick start (the concept run)
+
+```bash
+cd /home/deck/Downloads/modern-mythology && git pull origin main && cd godot/tools/comic && python3 comic_tool.py validate && python3 comic_tool.py strip-prompts && python3 comic_render.py --provider runway --dry-run
+```
+
+Then, with a key in place (`godot/tools/.runway_key`, the same file
+`runway_render.py` uses; or `godot/tools/.google_key`):
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_render.py --provider runway --only "dw_2001*" --variants 2
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_render.py --provider google --model gemini-2.5-flash-image --only "dw_2014-12-21*"
+```
+
+Outputs land in `godot/assets/comic/vol10/<provider>/` with a
+manifest. Nothing is overwritten unless `--overwrite`. Concept
+renders made through the Runway MCP from a Claude session are saved
+under `godot/assets/comic/vol10/concept/` with their own manifest.
+
+## The inspector (browse + generate on your machine)
+
+```bash
+bash /home/deck/Downloads/modern-mythology/godot/tools/comic/inspect.sh
+```
+
+That one line starts it, waits until it answers, opens the browser,
+and prints the address (`http://127.0.0.1:8765/`). Add `stop` to
+stop it. It is one stdlib script, no install, serving the run on
+disk:
+
+- **STRIPS** — every strip, filterable by year / strip / format /
+  tier / rendered / review; per strip the script sheet, the panels,
+  the whole-strip prompt (lettered and unlettered, copyable), the
+  references each provider would attach, every render on disk
+  (`godot/assets/comic/vol10/{runway,google,concept}/`), and the
+  raw JSON. `j`/`k` walk the list, `1`–`6` switch tabs, `/` searches.
+- **GENERATE** (RENDERS tab) — provider, model, variants, seed,
+  letter / references / draft-refs / overwrite / dry-run; it runs
+  `comic_tool.py strip-prompts` then `comic_render.py` for that one
+  strip, streams the log under JOBS, and the image appears in the
+  gallery when it lands. Same outputs and manifests as the CLI.
+  Keys as before: `godot/tools/.runway_key` / `.google_key` or the env.
+- **Review** — mark a strip *ok* / *revise* with a note. It's written
+  into the strip JSON as a `review` block (the validator ignores it,
+  the md sheet shows it), so it travels with a commit and I see it.
+- **SHEETS** — the 36 reference sheets with their status and renders;
+  generate one, then approve it, and it becomes attachable.
+- **REFS** — the registry, approve / reject / draft.
+
+## The files
+
+| file | what |
+|---|---|
+| `strips/*.json` | the scripts. One strip per file. Schema below. |
+| `eras.json` | per-era style blocks (line, paper, palette, prompt prefix/suffix, negative, Blender Freestyle settings), the formats, the margin marks |
+| `heroes_vol10.json` | the cast as Meshy hero slots with text-to-3D prompts, and the locale builds the sets will need — for the production pipeline |
+| `comic_tool.py` | `validate` · `index` · `md` · `strip-prompts` · `sheets` · `prompts` · `stage` · `new` |
+| `references.json` | the tagged reference-image registry and the auto-selection policy (see References below) |
+| `style_sheets.json` | the reference-sheet queue (characters by era, era swatches, hero locations, objects); `comic_tool.py sheets` composes the prompts; the human guides are `lore/drift_wood/style/` |
+| `comic_render.py` | the runner: `--provider runway` (gen4_image on the dev API) or `--provider google` (Imagen 4, or `--model gemini-2.5-flash-image`) |
+| `comic_inspector.py` | the local page: browse every strip, sheet and reference with their renders; generate one at a time through the two scripts above; mark strips for revision |
+| `out/` | generated queues (gitignored) |
+
+## Strip schema (strips/*.json)
+
+```jsonc
+{
+  "id": "dw_2001-10-09_lot_c",        // dw_ Drift Wood · rc_ the ROLFCOPTR parody · ro_ ROFLCOPTER
+  "title": "Lot C",
+  "strip": "drift_wood",              // drift_wood | rolfcoptr | roflcopter
+  "date": "2001-10-09",               // the in-fiction run date
+  "run": 2, "era": "era1",            // see eras.json
+  "format": "daily4",                 // biweekly | daily4 | daily3 | digest_cover | special | sunday | page | spread
+  "tier": "B",                        // A drawn · B scripted · C implied  (lore/drift_wood/_THE_COMPLETE_RUN.md)
+  "selection": "full",                // full | part | one | index
+  "venue": "...", "arc": "...", "source": "...", "logline": "...",
+  "cast": ["wood_20", "security_guard"],   // ids from heroes_vol10.json (extra_* for one-offs)
+  "location": "dw_newport_lot",
+  "margin": {"signature": "A. Finch — Small Wood, OR", "mark": "gull", "note": ""},
+  "panels": [
+    {
+      "n": 1, "shot": "wide", "name": "",            // name is used for Sunday tiers
+      "composition": "what is in the panel, for a human",
+      "characters": [{"id": "wood_20", "pose": "...", "expression": "...", "at": [0,0,0], "facing": "-Y"}],
+      "props": ["..."],
+      "balloons": [{"who": "WOOD", "text": "...", "kind": "small|sfx"}],
+      "caption": "", "sfx": "",
+      "image": {"prompt": "the generation note for THIS panel (no style words — eras.json adds them)",
+                "negative": "", "notes": "", "seed": null, "references": []},
+      "stage": null                                  // or {"locale": "dw_frame_shop", "camera": {...}, "sun": {...}}
+    }
+  ],
+  "art": {"line": "", "palette": "", "paper": ""},   // overrides for this strip (the Sunday specs use these)
+  "notes": ""
+}
+```
+
+Rules the validator enforces: ids and dates well-formed; format
+panel counts; marks from `eras.json`; every panel has a composition
+and an image prompt; **no character id beginning `arthur`** — the
+author is never on the page (`lore/drift_wood/_AUTHORIAL_RULE.md`).
+
+## Lettering and prompt length
+
+The lettered prompt carries every balloon verbatim plus a lettering
+rule (complete text, balloon sized to the sentence, never cut a
+word, no other words). Models have prompt limits — gen4_image takes
+1000 characters, and most lettered prompts are 1,200–3,000 — so
+each job also carries a **compact** prompt: the style line
+shortened, the per-panel boilerplate stripped, descriptions cut to
+their first sentence, **dialogue untouched**. The runner sends the
+full prompt to models that take it, the compact one to gen4, and
+falls back to compact when a provider rejects the length. The
+inspector's PROMPT tab shows both with their character counts. If a
+compact prompt is still over 1000, gen4 will cut its end: use
+another model or shorten that strip's dialogue. (Before this, the
+runner chopped every prompt at 1000 characters, which is why balloons
+came out with missing text.)
+
+## Why characters drifted, and what holds them now
+
+Before this change the whole-strip prompt named the cast (WOOD, GULLY)
+but never said what they looked like, so the model invented them per
+render: Gully as a small boy, Wood without the plaid. Two things now
+hold them:
+
+1. **A cast block in every prompt.** From `heroes_vol10.json`
+   (`comic_look`, the strip's own per-era description, ahead of the 3D
+   `meshy_prompt`), with the exact age computed from the strip's date
+   (Wood and Chloe born 1980, Gully 1979). Each panel also lists who is
+   in it. The compact prompt keeps a shorter block.
+2. **Reference images, when they exist.** A sheet rendered in SHEETS
+   mode becomes a *draft* reference the moment it lands (the inspector
+   syncs the registry on every strip open); it attaches only after you
+   approve it in the strip's REFS tab, or with "allow draft refs"
+   ticked. The generate form says how many will attach for the chosen
+   provider, and the log says which were sent. Runway takes 3 (with
+   @tags in the prompt), Google 4 (inline), OpenAI 4 for `gpt-image-*`
+   models (through the edits endpoint; DALL-E takes none).
+
+If the last-run panel says "no references attached", the faces came
+from the prompt alone; render and approve the sheets.
+
+**The whole cast has entries now.** Every character id the strips use
+(81, including the backups' people) has a hero entry with a `name`,
+`comic_identity`, `comic_wardrobe` and `comic_props`, so the cast
+block names and describes the uncle, the frame-shop owner, the print
+tech, SLASH's framer and green coat, the man who smooths his lapels,
+and so on, the same way it does Wood. Withheld characters (Wood's
+mother, his father, Julian) are entered as what the strip withholds:
+the prompt says NEVER SHOWN. Group sheets in `style_sheets.json`
+(`sheet_town_1999`, `sheet_town_2000s`, `sheet_timberline_people`,
+`sheet_gullys_people`, `sheet_shop_people`, `sheet_slash_cast`,
+`sheet_frontier_cast`, `sheet_found_pages_cast`,
+`sheet_pomegranate_host`, `sheet_cedar_cast`, `sheet_julian`) carry
+them as references; render them from SHEETS mode like the others.
+The lore is `lore/drift_wood/style/characters.md` (THE REST OF THE
+CAST and THE BACKUP CASTS); the JSON is copied from it.
+
+**Clothes and props are not identity.** The other failure was the
+opposite one: with a sheet attached, every strip came back in the
+sheet's outfit holding the sheet's mug. So `heroes_vol10.json` now
+splits each hero into `comic_identity` (face, hair, build: what the
+cast block and the reference pin), `comic_wardrobe` (the era's usual
+clothes, used only as a fallback) and `comic_props` (never automatic).
+The prompt says, in words, that clothes, hair-dos and anything held
+come from the strip text and never from the reference sheet, and that
+hands are empty unless a panel names what they hold. Three places to
+say what someone wears in a given strip, strongest first:
+
+1. **Per panel**, in the strip JSON: `characters[].wear` and
+   `characters[].holds` ("a green parka", "a library book").
+2. **Per strip**, the top-level `wardrobe` block `{hero_id: "…"}`.
+   The strip view in the inspector has a *wardrobe for this strip* row
+   with one field per cast member; *save wardrobe* writes it into the
+   JSON and rebuilds the prompt.
+3. **Nothing**: if the panels already mention clothing the prompt
+   trusts them; otherwise it adds "usually wears" from the era's
+   wardrobe.
+
+OpenAI's gpt-image path is the weakest here, because the sheet goes in
+as the image to edit; Runway with @tags and Google inline follow the
+words better. If an outfit still will not change, put it in the panel's
+composition text as well.
+
+**Your own image as a reference.** REFS mode has an *add your own image*
+bar: pick a PNG/JPEG/WebP, choose the character (and era), and save.
+For a character that has a model sheet (`sheet_gully_35` and so on) the
+image *becomes that sheet*: it is copied to
+`godot/assets/comic/vol10/sheets/sheet_gully_35_u1.png`, listed in the
+sheet's gallery as a take from `inspector upload`, and the sheet's own
+reference (the id the strips already attach) now points at it,
+approved. No second entry is created. With *replace* ticked every other
+approved reference for that character is set to rejected. Any render in
+a gallery has a *use as reference* button that does the same with a
+file already on disk. A character without a sheet (extras) gets a new
+`ref_…` entry in `refs/` instead. Uploads registered the old way, as
+loose `ref_<character>_…` entries, are folded into the sheet the next
+time the tool loads SHEETS or REFS.
+
+This is the fix when a rendered sheet has gone wrong: draw or find a
+Gully you like, upload it as `gully_35`, and the strips follow it. The
+header shows `build <hash>`; if it does not match
+`git rev-parse --short HEAD`, the tab is showing an older server: rerun
+`inspect.sh` and reload.
+
+## How the whole-strip prompt is built
+
+`strip-prompts` composes, per strip:
+
+> *layout sentence for the format* · **Style:** *era prefix* · **Title
+> / logline** · **Panel 1:** *panel image prompt* + *"Wood says
+> '…'"* · … · **margin:** *the signature and the mark*
+
+Lettering is asked of the generator on purpose for the concept run.
+`--no-letter` produces the same prompts with balloons stripped and
+"no text" added, for the production path where lettering is
+composited.
+
+Long balloons garble. For the concept run pick strips with short
+dialogue or none: `dw_2001-10-09_lot_c`, `dw_2003-05-23_the_rack`,
+`dw_2005-03-16_one_sack`, `dw_2009-03-08_lanes` (silent Sunday),
+`dw_2014-11-30_empty_chair` (silent), `dw_2020-12-27_last_sunday`.
+
+## Providers
+
+- **Runway (dev API).** `text_to_image`, model `gen4_image`, ratios
+  from the strip format (`2112:912` for a daily row, `1080:1440` for
+  a Sunday page). Key: `RUNWAYML_API_KEY` or `godot/tools/.runway_key`.
+- **Google (Gemini API).** `imagen-4.0-generate-001:predict` by
+  default; `--model gemini-2.5-flash-image` uses the Gemini image
+  model, which letters text more reliably. Key: `GOOGLE_API_KEY` /
+  `GEMINI_API_KEY` or `godot/tools/.google_key`.
+- **OpenAI (Images API).** Any `gpt-image-*` id is passed through:
+  `gpt-image-2`, `gpt-image-2.5`, `gpt-image-1.5`, `gpt-image-1`,
+  `gpt-image-1-mini`, and `dall-e-3`. The default is the newest
+  `gpt-image-*` your key has listed (KEYS → fetch model list), else
+  `gpt-image-1`. The size comes from the strip's aspect (`1536x1024`
+  landscape, `1024x1536` portrait, `1024x1024` square); if a newer model
+  rejects that size or the quality name, the runner reads the 400 and
+  retries once with `size: auto` or without the field. No seed on this API; reference images are not
+  sent (text-to-image only). Key: `OPENAI_API_KEY` or
+  `godot/tools/.openai_key`. Note that a ChatGPT login is not an API
+  key: make one at platform.openai.com and add API credit there.
+- All runners print the response body on a non-200 so field-name
+  drift in the APIs is visible, not silent.
+
+## References · tagged, auto-selected, future-proof
+
+`references.json` is the registry of reference images: model sheets,
+era swatches, location sheets, object sheets, approved strips, and
+concept art. Each entry carries **tags** — hero ids (`wood_34`),
+location ids (`dw_garage`), era ids (`era3`), object keywords
+(`produce box`, `lamp`) — a `file` (repo path) and/or `url` /
+`runway_task_id`, and a `status`: `missing` (expected, not yet
+rendered), `draft` (exists, unreviewed), `approved` (use it).
+
+**Automatic selection.** `strip-prompts` scores every approved
+reference against each strip — its `cast`, `location`, `era`, `arc`
+and the words in its props and compositions — and attaches the top
+three (Runway) or four (Google) as `reference_images`, adding
+"Match the attached references: @wood_34 for the character; @garage
+for the setting; …" to the prompt. A strip's own earlier render is
+never used as its own reference. Weights and limits are in
+`references.json` → `policy`.
+
+**Manual selection.** A strip JSON can carry:
+
+```jsonc
+"references": {"use": ["sheet_wood_34", "sheet_loc_garage"], "exclude": ["concept_*"], "auto": true}
+```
+
+`use` pins; `exclude` blocks; `auto: false` turns off scoring for
+that strip.
+
+**Commands.**
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py refs list
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py refs suggest --only "dw_2014*"
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py sheets && python3 comic_render.py --provider runway --queue out/sheets.json --only "sheet_wood_*" && python3 comic_tool.py refs sync && python3 comic_tool.py refs approve --id "sheet_wood_*"
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py refs add --file lore/drift_wood/refs/sheet_01_wood.png --kind concept --tags "wood_44,the_bird,era4,dw_gullys" --approve
+```
+
+The loop: render sheets → `refs sync` (registers what now exists as
+draft) → look → `refs approve` → from then on every `strip-prompts`
+run attaches them where relevant. `refs suggest` shows the picks
+before spending anything; `--include-draft` previews with
+unreviewed sheets.
+
+**How the renderers use them.** Runway (dev API): local files are
+sent as data URIs with their `@tag`; URLs pass through; an entry
+that is only a Runway task id (an MCP-hosted image) is skipped with
+a note until its PNG is fetched. Google: `gemini-2.5-flash-image`
+receives them as inline image parts; Imagen ignores references.
+Sheet renders land in `godot/assets/comic/vol10/sheets/` with their
+tags in the manifest, which is what `refs sync` reads.
+
+**Future-proofing.** Tags are free strings, so new kinds (a pose
+sheet, a lettering sample, a real photo of Alsea Bay) register
+without code changes; `kind` and `prefer_kinds` order ties; the
+Blender/Meshy path can register its rendered stills as `strip`
+references the same way. Nothing in a strip JSON refers to a file —
+only to ids and tags — so references can be re-rendered, replaced or
+moved without touching the scripts.
+
+## Saving from the Deck: text to git, images to Google Drive
+
+Press **SAVE** in the inspector's header (or run the line below). It
+does what the old Deck paste did, without putting images in git:
+
+1. commits the comic's text (strips, `references.json`, manifests);
+2. pulls the branch, keeping the Deck's `references.json` if both sides
+   changed it and this side's version of anything else, then
+   `refs sync` re-registers every sheet from `style_sheets.json`;
+3. pushes;
+4. uploads new renders, sheets and reference pictures to Google Drive
+   (the `ModernMythology` folder Hero Studio uses, same relative paths);
+5. commits and pushes `drive_manifest.json`, the small record of what
+   the Drive holds (size + md5 per image).
+
+Git never waits on the Drive: if an upload stops, what landed is
+recorded and the next SAVE carries on. Images already in git stay
+there; new ones are ignored by git (`.gitignore`) and live on the Drive.
+The header shows `drive · all backed up` or how many are not yet.
+
+```bash
+cd /home/deck/Downloads/modern-mythology-comic && python3 godot/tools/comic/comic_drive.py save
+```
+
+The comic tool and Hero Studio share one Drive sign-in (rclone keeps it
+in your home folder). If the badge says `not set up`, sign in once from
+the game-branch folder:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && bash godot/tools/drive_setup.sh
+```
+
+A checkout missing images (a fresh clone, another machine) pulls them
+back; it never overwrites a local file:
+
+```bash
+cd /home/deck/Downloads/modern-mythology-comic && python3 godot/tools/comic/comic_drive.py pull
+```
+
+`python3 godot/tools/comic/comic_drive.py status` lists what is not on
+the Drive yet.
+
+**Folder.** Run side by side with Hero Studio, the comic tool lives in
+`/home/deck/Downloads/modern-mythology-comic` (a second folder on this
+branch; `both_tools.sh` on the meshy branch sets it up). Older commands
+in this README that say `cd /home/deck/Downloads/modern-mythology` mean
+that comic folder when the two run together.
+
+**Trade-off.** Renders saved this way are on the Drive, not GitHub, so a
+cloud session reading this branch sees the strips and the manifest but
+not new pictures.
+
+## Backups (outside the canon)
+
+Ids starting `bk_` are **backups**: `strip: "backup"`, with a required
+`series` field naming which one (`lore/drift_wood/_BACKUPS.md` is the
+catalogue). They are the phantom graphic novels from the corner boxes,
+the genre detours, the experiments, and the pages that quote the other
+volumes of *Modern Mythology* outright. The validator, the sheets, the
+inspector and the render tool treat them like any strip; the wiki's
+canon count excludes them. Their `era` is the era of the year they
+were drawn, so a 2002 backup renders in the zine line and a 2024 one
+in the private line.
+
+**Title pages, mastheads, running heads.** `backups.json` is the
+series registry: title, subtitle, genre, tagline, how the masthead is
+drawn, the running head, the credit line, the story page count. Each
+series has a title page (`title_page: true`) whose one panel letters
+exactly the registry's words; every other page's prompt carries the
+running head and "page n of N" (computed from the bk_ files by date).
+The prompt also carries the series' own `art` line and palette as
+"Series device", the strip's `layout` for page, spread and Sunday
+formats, and a per-panel `lettering` list of the exact words on the
+page (a verb bar, a postcard's word). A strip may set `aspect`
+("4:3" for a page drawn as a screen) to override the format's ratio.
+Backup prompts end with: anything called shapes, strokes or blocks
+is illegible, never real letters.
+
+## Adding a strip
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py new --id dw_2002-06-07_corner_box --date 2002-06-07 --format digest_cover --era era1 --run 2 --title "The corner box"
+```
+
+Fill the JSON; the per-year content is in
+`lore/drift_wood/_SCOPE_AND_YEARS.md` and the arc catalogue in
+`lore/drift_wood/_THE_COMPLETE_RUN.md`. Run `validate`, then `md` to
+regenerate the readable sheets, and commit both.
+
+## Later · the production pipeline
+
+- `prompts` gives per-panel, unlettered jobs; a compositor (the
+  studio page, to be written) lays them into the format's grid on
+  the era's paper and letters the balloons from `letter_after`.
+- `stage` gives Blender jobs: locale GLB + hero GLBs + camera +
+  the era's Freestyle line settings. `heroes_vol10.json` holds the
+  Meshy prompts for every cast member at every age; install the
+  GLBs with `godot/tools/hero_uploader/` (add the vol 10 rows when
+  that phase starts). Coordinates follow the playbook's Blender
+  Z-up frame.

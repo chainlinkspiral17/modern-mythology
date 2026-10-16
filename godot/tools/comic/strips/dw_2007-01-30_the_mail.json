@@ -1,0 +1,140 @@
+{
+  "id": "dw_2007-01-30_the_mail",
+  "title": "The mail",
+  "strip": "drift_wood",
+  "date": "2007-01-30",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Forty Thousand",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Forty Thousand · deepening)",
+  "logline": "Tuesday. A sack of mail. Addressed to the stick figure. Wood answers one letter, in the display face, signed 'Drift Wood.' The strip draws the reply and not the letter.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A canvas mail sack, full, on the floor. WOOD sitting beside it. BARNABY in it. The chorus at the back, thirty, reading over each other's shoulders.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "beside the sack",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the sack",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "thirty, reading",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a mail sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man sitting beside an overflowing canvas mail sack on a garage floor with a small dog inside it, thirty crude stick figures at the back reading letters over each other's shoulders",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "An envelope: addressed, in a child's hand, to ROLFCOPTR, SMALL WOOD, OREGON. No street. It arrived.",
+      "characters": [],
+      "props": [
+        "an envelope with no street"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of an envelope addressed in a child's handwriting with a misspelled name and a town but no street address",
+        "negative": "",
+        "notes": "Letter after: ROLFCOPTR · SMALL WOOD · OREGON. It arrived anyway."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood writing a reply. The display face. Four lines. The strip shows his hand and the gull at the bottom.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "writing a reply",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a reply"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man hand-lettering a short reply in bold display capitals with a tiny gull mark at the bottom",
+        "negative": "",
+        "notes": "Letter after, the reply: 'Thank you for writing. The helicopter is a drawing. The dog is real. —Drift Wood.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The reply in an envelope. The sack, still full. The dog asleep in it. The chorus with letters of their own, all addressed wrong, all arrived.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep in the sack",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "holding letters",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sack",
+        "the reply"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a sealed reply envelope on a table beside a full mail sack with a small dog asleep inside it, stick figures at the back each holding a letter, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Addressed to the figure, no street. 'The dog is real. —Drift Wood.'"
+}

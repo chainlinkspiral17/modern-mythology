@@ -1,0 +1,67 @@
+{
+  "id": "ro_2026-08-30_the_bird_on_the_bench",
+  "title": "The bird on the bench",
+  "strip": "roflcopter",
+  "date": "2026-08-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The seawall bench at the end of the last tourist season the book takes: the bird on the bench's back, the crow on the wall, the pup under, and a man in plaid at the bench's end from behind. Everything in its place.",
+  "cast": [
+    "the_bird",
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A seawall bench from behind in late August with the small rainbow bird on its back rail, a crow on the wall, an old three-legged dog beneath it, and a man in plaid at its end from behind, the bay.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the bench's back",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "under the bench",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall bench seen from behind in late August with a small rainbow bird on its back rail, a crow on the wall beyond, an old three-legged dog beneath the bench and a man in plaid flannel seated at its end from behind, a bay beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Everything in its place.",
+  "layout": "single page, no borders"
+}

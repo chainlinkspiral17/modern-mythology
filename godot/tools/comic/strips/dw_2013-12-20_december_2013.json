@@ -1,0 +1,138 @@
+{
+  "id": "dw_2013-12-20_december_2013",
+  "title": "December, 2013",
+  "strip": "drift_wood",
+  "date": "2013-12-20",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Does Chloe come home. A card, printed. And inside it, folded, handwritten: the invitation, early. July. She wrote 'come' four times.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A glossy card. Inside, a folded sheet, cream, handwritten. WOOD unfolding it. BARNABY asleep, always asleep now.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "unfolding a note",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glossy card",
+        "folded cream note"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a garage drafting table unfolding a handwritten cream note from inside a glossy printed card, an old dog asleep in a bed, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The note, her capitals: 'W — The real invitation comes in April. This is the real one. July 19. The islands. Come. Come. I mean it, come. Bring the dog if he can. Come. — C.'",
+      "characters": [],
+      "props": [
+        "the note"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is a handwritten note in tiny cramped capitals on cream paper, one word repeated",
+        "negative": "",
+        "notes": "Letter after. 'Come' four times."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood counting on his fingers. Four.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "counting on his fingers",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Four."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding up four fingers and looking at them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The note on the corkboard, writing-out. Three now that show their words. Beside it the bus schedule from 1999, yellow. The strip lets the reader do the math.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pinning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard: three notes writing-out",
+        "the old bus schedule"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard where a man pins a handwritten note writing-side out beside a yellowed old bus schedule, two other notes pinned the same way, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Come' four times. Pinned beside the 1999 bus schedule."
+}

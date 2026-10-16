@@ -1,0 +1,59 @@
+{
+  "id": "bk_2012-08-08_the_card_in_the_drawer_death",
+  "title": "THE CARD IN THE DRAWER · The box",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2012-08-08",
+  "run": 4,
+  "era": "era3",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The fifth card, August: a skeleton on a horse. He redraws it as a small cardboard box under a drafting table with an old dog asleep beside it — the box empty, the dog alive, the card's name not drawn anywhere on the page. Two years and four months before the box is used. He puts this card back in the drawer and it's gone in the morning.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: a small empty cardboard box beneath a drafting table with an old dog asleep against it, the lamp above, nothing else. No numeral, no title; the card's name is the thing.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep against the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box, empty",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it a small empty cardboard box beneath a drafting table with an old dog asleep against it and a lamp above, no words legible",
+        "negative": "",
+        "notes": "XIII — the box (canon: dw_2014-12-21 the box; dw_2016-11-16 the box found by the second dog). Drawn empty, the dog alive. The only card he put back."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "The only card he put back.",
+  "layout": "a single card"
+}

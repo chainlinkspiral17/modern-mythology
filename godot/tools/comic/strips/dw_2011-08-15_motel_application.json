@@ -1,0 +1,147 @@
+{
+  "id": "dw_2011-08-15_motel_application",
+  "title": "The motel application",
+  "strip": "drift_wood",
+  "date": "2011-08-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Motel Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "A uniform polo on a hanger for four panels. Wood in it in the fifth — there is no fifth. He's in it in the fourth.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A maroon polo shirt on a hanger, hooked on the drafting lamp. Embroidered: DRIFTWOOD MOTEL. WOOD looking at it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the polo",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "maroon polo on a hanger",
+        "DRIFTWOOD MOTEL embroidery",
+        "the green lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a maroon polo shirt on a hanger hooked over a green swing-arm lamp in a garage studio, a small embroidered motel logo on its chest, a man looking at it, an old dog, muddy watercolor",
+        "negative": "",
+        "notes": "DRIFTWOOD MOTEL embroidered. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The polo. Wood, from the other side of the table. Still looking.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking, from the other side",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "polo"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Night audit. Eleven to seven. They said I'd 'have time to draw.' They said it like a threat."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man looking at a hanging polo shirt from across a drafting table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The polo. The dog looking at it too.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at the polo",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "polo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog looking up at a maroon polo shirt on a hanger, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood in the polo. It's a size too big. The lamp. The dog. 10:40 PM by the clock. He's already drawing tomorrow's strip before the first shift.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the polo, drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clock: 10:40",
+        "polo, too big"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man wearing a maroon motel polo a size too big sitting at a drafting table drawing before his first night shift, a clock reading 10:40, an old dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The polo. Night audit. 'Time to draw,' said like a threat."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-06-09_the_microfilm_reel_boxed",
+  "title": "The microfilm reel, boxed",
+  "strip": "roflcopter",
+  "date": "2022-06-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Reading Room",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The microfilm reel back in its small box on the shelf, the box's label typed with the Newport paper's name and 1999–2003, and a tiny pencilled gull on the box's end. Someone drew the mark on the archive. Not him.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small microfilm box on a metal shelf with a typed label and a tiny pencilled gull mark on its end, other boxes beside it.",
+      "characters": [],
+      "props": [
+        "the reel's box",
+        "a pencilled gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small microfilm box on a metal shelf with a typed label and a tiny pencilled two-stroke gull mark on its end, other boxes beside it, no words legible",
+        "negative": "",
+        "notes": "Who drew it: reserved. Compare ro_2022-05-08."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Not him.",
+  "layout": "single page, no borders"
+}

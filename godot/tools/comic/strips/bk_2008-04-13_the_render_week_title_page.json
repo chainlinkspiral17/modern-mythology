@@ -1,0 +1,58 @@
+{
+  "id": "bk_2008-04-13_the_render_week_title_page",
+  "title": "THE RENDER WEEK · title page",
+  "strip": "backup",
+  "series": "THE RENDER WEEK",
+  "title_page": true,
+  "date": "2008-04-13",
+  "run": 3,
+  "era": "era2",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a science-fiction week the papers declined · posted once, taken down",
+  "arc": "THE RENDER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. It's always the water.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "The seawall bench in phosphor-green wireframe on a bay drawn as a grid, empty, the title in wireframe capitals over it with the first two words shaded solid and the third still an outline, a progress bar under the title three-quarters full; the town behind as a few wire boxes.",
+      "characters": [],
+      "props": [
+        "the bench in wireframe",
+        "the progress bar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "muddy early-digital comic page, a seawall bench drawn in phosphor-green wireframe on a bay rendered as a flat grid with a town behind it as a few wire boxes, the title in wireframe capitals with two words shaded solid and one still an outline, a progress bar beneath the title three-quarters full",
+        "negative": "",
+        "notes": "The bench empty: the two who sit on it are drawn solid from the first strip, so they aren't here yet."
+      },
+      "stage": null,
+      "lettering": [
+        "THE RENDER WEEK",
+        "a science-fiction week the papers declined · posted once, taken down",
+        "It's always the water.",
+        "A. Finch"
+      ]
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen; one panel per strip in wireframe; a progress bar under every panel",
+    "palette": "muddy early-digital flats; the wireframe in phosphor green",
+    "paper": "bristol scanned; a genre week the coastal weeklies declined"
+  },
+  "notes": "Title page. Letters exactly: THE RENDER WEEK / a science-fiction week the papers declined · posted once, taken down / It's always the water. / A. Finch.",
+  "layout": "title page: the masthead over a single image"
+}

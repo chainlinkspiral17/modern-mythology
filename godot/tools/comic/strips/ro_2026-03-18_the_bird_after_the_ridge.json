@@ -1,0 +1,61 @@
+{
+  "id": "ro_2026-03-18_the_bird_after_the_ridge",
+  "title": "The bird after the ridge",
+  "strip": "roflcopter",
+  "date": "2026-03-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "Three days after the ridge sequence stopped: the bird on the garage step, outside the door, in the morning, as if waiting for a report. The pup's nose at the door's gap. Nobody tells it anything.",
+  "cast": [
+    "the_bird",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A garage's concrete step in morning light with the small rainbow bird standing on it before the door, and a small dog's nose at the gap under the door.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the step",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose at the gap",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage's concrete step in morning light with a small rainbow bird standing on it before the door and a small dog's nose at the gap beneath the door, no words",
+        "negative": "",
+        "notes": "Compare ro_2026-03-15."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Nobody tells it anything.",
+  "layout": "single page, no borders"
+}

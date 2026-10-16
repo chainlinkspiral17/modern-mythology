@@ -1,0 +1,90 @@
+{
+  "id": "dw_2016-06-12_cedar_the_gate",
+  "title": "Sunday · Cedar, i · the gate",
+  "strip": "drift_wood",
+  "date": "2016-06-12",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Cedar",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Cedar · deepening)",
+  "logline": "The first of twelve. The mill's gate, and the chain-link has grown into a hedge — the wire become branches, the padlock still a padlock. Played straight. The phantom novel bleeding through.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mill's gate from the road, but the chain-link is cedar now — the wire diamonds grown into living branch-work, needles, cones — and the padlock hangs in the middle of it, real, rusted, locked.",
+      "characters": [],
+      "props": [
+        "the gate as hedge",
+        "the padlock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a mill gate where the chain-link fence has become living cedar branches woven in the same diamond pattern, a real rusted padlock hanging in the middle, played completely straight, no words",
+        "negative": "",
+        "notes": "The chain stays real (see dw_2016-07-24). Magic in the wood, not the metal."
+      },
+      "stage": null,
+      "name": "The gate"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the padlock, close. Rust. A key-shaped hole. A cedar shoot growing out of the keyhole.",
+      "characters": [],
+      "props": [
+        "the padlock",
+        "a shoot from the keyhole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, close-up of a rusted padlock with a small cedar shoot growing out of its keyhole, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Keyhole"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: through the gate: the yard, and the stack, with — this first Sunday — one branch out of its top. Held.",
+      "characters": [],
+      "props": [
+        "the stack, one branch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a mill yard seen through a gate with a tall brick smokestack from whose top a single cedar branch grows, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "One branch"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Cedar i. The gate grown. One branch from the stack.",
+  "layout": "tiers, portrait page"
+}

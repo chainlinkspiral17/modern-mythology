@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-01-12_the_gutters",
+  "title": "The gutters",
+  "strip": "drift_wood",
+  "date": "2000-01-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college's gutters overflow onto Lot C's walkway. A river between the car and the door. Wood carries the dog across. The guard carries Wood's pad. Nobody planned this.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Lot C, water running from the roof's gutters across the walkway in a sheet, the building's door on the far side. WOOD and BARNABY at the water's edge.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a college parking lot walkway flooded by water pouring from overflowing gutters, a young man and a small dog stopped at the edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood lifting the dog under one arm. The pad in the other hand. Looking at the water.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a small dog under one arm and a drawing pad in the other hand, facing a sheet of runoff, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The GUARD, appearing, taking the pad from him without a word. Wood stepping in. Water to the ankle.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard taking a drawing pad from a young man who is wading into shallow water with a dog under his arm, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The far side. The guard handing the pad back dry. The dog handed down. Wood's shoes ruined. The guard's too. Nobody says thanks; nobody has to.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard returning a dry drawing pad to a soaked young man setting a small dog down on a doorstep, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The guard carries the pad. Nobody planned it. Nobody says thanks."
+}

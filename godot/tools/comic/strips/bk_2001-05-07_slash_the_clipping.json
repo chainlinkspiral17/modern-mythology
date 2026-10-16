@@ -1,0 +1,70 @@
+{
+  "id": "bk_2001-05-07_slash_the_clipping",
+  "title": "SLASH · The clipping",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-05-07",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Behind the frame shop's counter, in the drawer with the pins, a clipping the owner cut from a wire story years ago: a riverboat lost when the ground opened under a Louisiana town. The framer reads it twice and puts it back under the pins.",
+  "cast": [
+    "extra_framer",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: the drawer open, pushpins scattered, a yellowed newspaper clipping with a photo of a riverboat listing beside a ragged hole in a street, the headline drawn as blocks; the owner's shadow across the drawer from the doorway.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "reading the clipping",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "a shadow in the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the clipping",
+        "pushpins"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Arthur? You still back there?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, an open drawer with scattered pushpins and a yellowed newspaper clipping showing a riverboat listing beside a ragged hole in a street, the headline as black blocks, a man's shadow falling across it from a doorway",
+        "negative": "",
+        "notes": "The Sinkhole (Vol 5's Nexus). Headline reserved; drawn as blocks. The owner says the name; the framer is the framer."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "Under the pins. Read twice.",
+  "layout": "single image"
+}

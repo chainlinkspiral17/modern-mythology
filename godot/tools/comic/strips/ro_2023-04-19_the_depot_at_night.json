@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-04-19_the_depot_at_night",
+  "title": "The depot at night",
+  "strip": "roflcopter",
+  "date": "2023-04-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The Newport depot at 4 AM, drawn from nothing: the bench under a caged bulb, the schedule case lit, the road empty, the sea a black line. The place she waited, at the hour she waited, with the waiting left out.",
+  "cast": [],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small bus depot at night: a bench under a caged bulb, a lit schedule case, an empty road, the sea as a black line beyond, no one.",
+      "characters": [],
+      "props": [
+        "the caged bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small bus depot at night with a bench under a caged bulb, a lit schedule case and an empty road, the sea a black line beyond, no people, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The waiting left out.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2026-11-08_box_forty_empty",
+  "title": "Box 40, empty",
+  "strip": "roflcopter",
+  "date": "2026-11-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Boxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The fortieth box, new, flat-packed, then folded, then open and empty on the table under the lamp. Nothing in it yet. The pages that will go in it are this one and the ones after. The lid unmarked.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A new cardboard box, open and empty, on the drafting table under the lamp's light, its lid beside it unmarked, a marker uncapped. The three jars on the sill. The pup's ear at the bottom edge. Rain.",
+      "characters": [],
+      "props": [
+        "Box 40, empty",
+        "the unmarked lid"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a new empty cardboard box open on a drafting table under a green lamp with its unmarked lid beside it and an uncapped marker, three jars on a rainy sill, a small dog's ear at the bottom edge, no words",
+        "negative": "",
+        "notes": "The box the last pages go in. The register's last line, not yet written."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The last box, empty. The lid unmarked.",
+  "layout": "single page, no borders"
+}

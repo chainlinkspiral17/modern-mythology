@@ -1,0 +1,137 @@
+{
+  "id": "dw_2012-11-15_dog_night_2012",
+  "title": "The Dog Night, 2012",
+  "strip": "drift_wood",
+  "date": "2012-11-15",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Thirteen years. Drawn in the new line: the dumpster has never been so exact. The dog has never been so old.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster, night, the bulb — drawn in Era III's line: every rivet, every rust bloom, the chain-link's exact weave. WOOD setting BARNABY down.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "setting the dog down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster, exact",
+        "chain-link",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man setting an old dog down behind a bowling alley at night before a rusted dumpster rendered with precise architectural ink line, every rivet and rust bloom exact, a bare bulb, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog. Thirteen. Cataracts. Drawn without pity and without looking away.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a very old dog's face with clouded eyes under a bulb, drawn plainly and tenderly in clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting. The dog in his lap, entirely. He's small enough now.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting, the dog in his lap",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in his lap",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on gravel at night with an old dog curled entirely in his lap, bulb light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign. SMALL WOOD LANES, the S dark, and now the second L dark too. Wood carrying the dog under it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "carrying the dog",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon with two letters dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog beneath a bowling-alley neon sign where two letters have gone dark, night, clean ink with one spot tone, no words",
+        "negative": "",
+        "notes": "Two letters dark: S and the second L. Track it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Thirteen. Two letters out."
+}

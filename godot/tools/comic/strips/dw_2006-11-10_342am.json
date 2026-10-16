@@ -1,0 +1,154 @@
+{
+  "id": "dw_2006-11-10_342am",
+  "title": "3:42 AM",
+  "strip": "drift_wood",
+  "date": "2006-11-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 1)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 2, Daily, Friday, Week 1)",
+  "logline": "If they want garbage, I will build them a cathedral of garbage.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": "No mark during the parody week."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage at night. WOOD in front of a glowing CRT monitor in the dark. The clock reads 3:42 AM. An empty two-liter of generic citrus soda beside a pile of crumpled bristol.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hunched at a CRT, typing, eyes bloodshot",
+          "expression": "manic"
+        }
+      ],
+      "props": [
+        "CRT monitor glow",
+        "clock reading 3:42",
+        "empty two-liter bottle",
+        "crumpled bristol",
+        "dog bed under the table"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "If they want garbage, I will build them a cathedral of garbage."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bloodshot young man hunched at a glowing CRT monitor in a dark garage apartment at 3:42 AM, saturated monitor glow cutting the dark, an empty two-liter soda bottle and crumpled paper, jagged hyperactive linework",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "extreme close",
+      "composition": "His trembling hand hand-lettering a title banner: R-O-L-F-C-O-P-T-R.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand only, trembling, lettering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "brush",
+        "banner lettering ROLFCOPTR"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "extreme close-up of a trembling ink-stained hand lettering crude block letters on bristol board under monitor glow",
+        "negative": "",
+        "notes": "The one place lettering IS the art: the generator may letter ROLFCOPTR (misspelled) on the banner. If it garbles, letter it after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood muttering, still lettering.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "muttering to himself",
+          "expression": "feverish"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It will run for one week. A scorched-earth parody. Then I return to the serious timber-faller allegory."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a feverish young man muttering at his drafting table lit only by a CRT, jagged linework, neon glow on his face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The CRT screen flashes white: Bandwidth Limit Exceeded (509 Error). BARNABY lifts his head from the dog bed, lets out a single sigh, goes back to sleep.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "frozen, lit white by the screen",
+          "expression": "stunned"
+        },
+        {
+          "id": "barnaby",
+          "pose": "head lifted from the bed, sighing",
+          "expression": "weary"
+        }
+      ],
+      "props": [
+        "white CRT screen reading 509",
+        "dog bed"
+      ],
+      "balloons": [
+        {
+          "who": "SCREEN",
+          "text": "Bandwidth Limit Exceeded (509 Error)",
+          "kind": "sfx"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a CRT screen flashing pure white lighting a stunned young man's face in a dark garage, a low-slung terrier lifting its head from a dog bed under the desk with a sigh",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The parody itself ran beside this. This is the Drift Wood daily about making it."
+}

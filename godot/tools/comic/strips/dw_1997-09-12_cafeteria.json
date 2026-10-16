@@ -1,0 +1,176 @@
+{
+  "id": "dw_1997-09-12_cafeteria",
+  "title": "Drift Wood #1 · the cafeteria",
+  "strip": "drift_wood",
+  "date": "1997-09-12",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Cafeteria",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "Wood vs. the lunch line. Truffaut to a lunch lady. Corn.",
+  "cast": [
+    "wood_17",
+    "lunch_lady",
+    "gully_17",
+    "chloe_17"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The cafeteria serving line. A tray of tater tots and a steel pan of corn under a heat lamp. WOOD (17, the oversized wool overcoat, indoors) leans over the tray toward a LUNCH LADY who is not looking at him.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "leaning forward over the tray, one hand gesturing",
+          "expression": "earnest, too intense"
+        },
+        {
+          "id": "lunch_lady",
+          "pose": "ladling corn, not looking up",
+          "expression": "bored"
+        }
+      ],
+      "props": [
+        "tray of tater tots",
+        "steel pan of corn",
+        "heat lamp",
+        "sneeze guard"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Do you ever consider that this room is the only place in Small Wood where three hundred people voluntarily sit in the same direction?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gaunt teenage boy in an oversized wool overcoat leaning over a cafeteria tray toward a bored lunch lady with a ladle, serving line with a sneeze guard and a heat lamp, fluorescent glare, 1990s high school cafeteria",
+        "negative": "",
+        "notes": "Wood's balloon is huge and crowds the panel — the cluttered balloons are the era."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Two-shot at the counter. The lunch lady, ladle raised, finally looks at him.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "waiting, mouth open for more",
+          "expression": "hopeful"
+        },
+        {
+          "id": "lunch_lady",
+          "pose": "ladle up, flat stare",
+          "expression": "flat"
+        }
+      ],
+      "props": [
+        "ladle",
+        "steam"
+      ],
+      "balloons": [
+        {
+          "who": "LUNCH LADY",
+          "text": "Corn or peas."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close two-shot across a cafeteria counter, a lunch lady with a raised ladle giving a flat stare to a gaunt teenage boy in an overcoat, steam rising",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood turns to the reader, tray in hand, as if to a camera. Behind him the line moves on without him.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "turned to the reader, tray held like a lectern",
+          "expression": "declaiming"
+        }
+      ],
+      "props": [
+        "tray",
+        "the line behind"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Truffaut said the film of tomorrow will be an act of love. I said corn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in a wool overcoat holding a cafeteria tray turns to face the viewer declaiming, the lunch line moving on behind him, heavy black shadows",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "A long empty table. Wood alone at the near end with his corn. Far behind him, tiny: GULLY (backwards cap) drawing on a napkin, and CHLOE (eyeliner, Discman) reading a paperback with the cover folded back. Nobody in the room faces the same direction.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "sitting alone, hunched over corn",
+          "expression": "deflated"
+        },
+        {
+          "id": "gully_17",
+          "pose": "far back, drawing on a napkin, small",
+          "expression": "absorbed"
+        },
+        {
+          "id": "chloe_17",
+          "pose": "far back, reading, headphones on, small",
+          "expression": "absorbed"
+        }
+      ],
+      "props": [
+        "long cafeteria table",
+        "corn",
+        "napkin",
+        "paperback",
+        "wall of windows with rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wide shot of a long empty cafeteria table, a teenage boy in an overcoat alone at the near end with a plate of corn, far in the background a boy in a backwards cap drawing on a napkin and a girl with headphones reading, rain on tall windows, lots of empty table",
+        "negative": "",
+        "notes": "Silent. The margin gull first appears here."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The first strip. Drawn taller than the author, per the rule. Balloons over-written on purpose.",
+  "layout": "2x2"
+}

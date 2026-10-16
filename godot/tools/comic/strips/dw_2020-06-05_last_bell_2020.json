@@ -1,0 +1,135 @@
+{
+  "id": "dw_2020-06-05_last_bell_2020",
+  "title": "Last Bell, 2020",
+  "strip": "drift_wood",
+  "date": "2020-06-05",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "No bell. The school is closed. Wood draws the steps at 3:05 with nobody on them and the bell shape anyway.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, 3:05 PM. Closed. No kids. The steps empty. WOOD across the road with BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "across the road",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty steps",
+        "closed school"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town high school with its steps empty and doors closed on a June afternoon, a man and a three-legged dog across the road, clean ink with a muted wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The steps. Nobody. The place where three sat in 1998, where the napkin kid sat in 2017.",
+      "characters": [],
+      "props": [
+        "empty steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of empty school steps in afternoon light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood drawing. On the pad: the bell shape, jagged, over the empty steps. He draws the sound that didn't happen.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: a bell shape over empty steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing empty school steps with a jagged bell-sound shape drawn above them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood and the pup walking toward the beach alone, the road empty, the school behind. The strip's last Last Bell.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty road",
+        "school behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog walking down an empty road toward a distant beach, a closed school behind them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "No bell. He draws it anyway. The last Last Bell."
+}

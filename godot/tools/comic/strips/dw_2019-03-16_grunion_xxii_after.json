@@ -1,0 +1,121 @@
+{
+  "id": "dw_2019-03-16_grunion_xxii_after",
+  "title": "The Grunion Run, 2019 · after",
+  "strip": "drift_wood",
+  "date": "2019-03-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The morning after: the nine lanterns on the shelf and one more thing beside them — the girl's notebook, left, open to 'both.' Gully goes to close it and doesn't. The high shelf takes the notebook. She'll want it back. She won't.",
+  "cast": [
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. Nine lanterns on the shelf. On the counter, the GIRL's notebook, open. GULLY. The PUP.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking at the notebook",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the notebook, open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small open notebook on a shop counter beneath a shelf of nine lanterns with a stocky man in an apron looking down at it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The page: 'the fish moved / the people did / both' with two underlines.",
+      "characters": [],
+      "props": [
+        "the page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a child's notebook page with three short lines in pencil and the last word underlined twice",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY's hand going to close it. Stopping.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "hand stopping",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man's hand reaching to close a notebook and stopping above the page",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The high shelf: the thermos, the tin, the flag, the lantern, the folded shirt, and the notebook, open.",
+      "characters": [],
+      "props": [
+        "the high shelf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a high shelf in a bait shack holding a thermos, a tin, a folded flag, a lantern, a folded t-shirt and a small open notebook",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The high shelf inventory: thermos, tin, flag, Maria's lantern (2006), the shirt (2007), the notebook (2019)."
+}

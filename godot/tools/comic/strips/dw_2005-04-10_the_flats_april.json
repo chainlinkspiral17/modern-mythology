@@ -1,0 +1,103 @@
+{
+  "id": "dw_2005-04-10_the_flats_april",
+  "title": "Sunday · the flats, April",
+  "strip": "drift_wood",
+  "date": "2005-04-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · Sundays · deepening ix)",
+  "logline": "The mudflats at low tide in April: the channels, the chimney across the bay, a man and a dog small in the middle tier, the tide coming back in the last. The landscapes begin to be the point.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the flats at low tide, channels catching the sky, the cannery chimney far across.",
+      "characters": [],
+      "props": [
+        "channels",
+        "chimney"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats at low tide with channels catching a pale sky and a distant cannery chimney, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Flats"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man in a chore coat and a dog on the flats, small, prints behind them.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small man in a canvas chore coat and a dog crossing wet mudflats with a trail of prints behind them, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Two"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same flats an hour on, water in the channels, the prints going under.",
+      "characters": [],
+      "props": [
+        "water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same mudflats with the tide returning into the channels and footprints going under, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tide"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Landscape Sunday, 2005.",
+  "layout": "tiers, portrait page"
+}

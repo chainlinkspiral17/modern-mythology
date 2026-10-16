@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-01-04_on_the_list",
+  "title": "On the list",
+  "strip": "drift_wood",
+  "date": "2000-01-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "January, the Ought",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The spring roster. The instructor has typed him in this time: FINCH, A. — AUDITING. He is on the list and still not on it. He finds this exactly right.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom, first day of spring term. The INSTRUCTOR with the roster. WOOD in the back, the overcoat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a community college classroom on the first day of term, an instructor reading a roster, a young man in an overcoat at the back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The roster: names as blocks, and one line legible at the bottom, typed: FINCH, A. — AUDITING.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a typed class roster with one line at the bottom set apart from the others, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: FINCH, A. — AUDITING."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The instructor, not looking up.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Finch. Auditing. Still."
+        },
+        {
+          "who": "WOOD",
+          "text": "Still."
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "Good. Someone should be."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor reading from a roster without looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Wood, drawing the roster on the pad: a column of blocks, and one line at the bottom, in his hand, legible. He's on it. He put himself there.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad showing a column of blocky lines with one legible line at the bottom in a careful hand, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "On the list, still auditing. 'Someone should be.'"
+}

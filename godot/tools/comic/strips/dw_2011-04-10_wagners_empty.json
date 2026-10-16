@@ -1,0 +1,90 @@
+{
+  "id": "dw_2011-04-10_wagners_empty",
+  "title": "Sunday · Wagner's, empty",
+  "strip": "drift_wood",
+  "date": "2011-04-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Corner",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The hardware store's windows a month after closing: bare shelves, the thank-you sign, the reflection of the street. The strip's only Sunday on the subject.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Wagner's Hardware's storefront, the windows empty, the sign in one: THANK YOU SMALL WOOD 1962–2011. The street reflected over the bare shelves inside.",
+      "characters": [],
+      "props": [
+        "the thank-you sign",
+        "bare shelves"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, an empty hardware store's front windows with a hand-lettered farewell sign in one and bare shelves inside, the street reflected in the glass, no words",
+        "negative": "",
+        "notes": "THANK YOU SMALL WOOD 1962–2011, letter after."
+      },
+      "stage": null,
+      "name": "Windows"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: inside, through the glass: the shelves, the price-tag rails, one bin of nails nobody took.",
+      "characters": [],
+      "props": [
+        "a bin of nails"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, bare hardware-store shelves seen through a window with one forgotten bin of nails, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shelves"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the corner from across the street, the store dark, the Lanes' sign on the hill behind with its one letter out. Held.",
+      "characters": [],
+      "props": [
+        "the corner",
+        "the sign, S dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a dark corner storefront seen from across a street with a distant bowling-alley neon sign on a hill behind it missing one letter, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corner"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Wagner's as a Sunday. The nails nobody took.",
+  "layout": "tiers, portrait page"
+}

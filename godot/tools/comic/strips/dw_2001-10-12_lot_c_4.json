@@ -1,0 +1,134 @@
+{
+  "id": "dw_2001-10-12_lot_c_4",
+  "title": "Lot C, iv",
+  "strip": "drift_wood",
+  "date": "2001-10-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Lot C",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Lot C · deepening)",
+  "logline": "Friday. Lot C from above: the Datsun alone at the far end, the guard's booth, the building far off. The strip's first overhead. He is exactly where he says he is.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Lot C from above in rain: painted lines, forty empty spaces, one rusted car at the far corner. The booth. The building a long way off.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the car, unseen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "forty empty spaces",
+        "the booth"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a straight-down view of a rainy parking lot with forty empty painted spaces and one rusted small car in the far corner, a small booth, a building far away, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The car from above: the roof, the rust, the rain.",
+      "characters": [],
+      "props": [
+        "the car's roof"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a straight-down close view of a rusted small car's roof in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Inside: Wood with the pad. Through the windshield, the whole distance to the building.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the distance"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "(thinks) It's not far. It's just far enough."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man in a parked car looking through the windshield at a distant building across an empty lot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "From above again. The guard walking out to the car with a coffee. Two figures at the far corner of forty spaces.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "walking out with a coffee",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a straight-down view of an empty rainy lot with a security guard walking toward a lone car in the far corner carrying a coffee, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Overhead. 'Just far enough.' The guard brings a coffee."
+}

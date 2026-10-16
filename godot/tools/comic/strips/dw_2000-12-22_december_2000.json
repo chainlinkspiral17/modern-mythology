@@ -1,0 +1,143 @@
+{
+  "id": "dw_2000-12-22_december_2000",
+  "title": "December, 2000",
+  "strip": "drift_wood",
+  "date": "2000-12-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Does Chloe come home. The strip goes to the bus stop. Watches two buses. Draws the second.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The Greyhound stop on 101, December, rain. WOOD on the bench with BARNABY. The 4:10 arriving.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "on the bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bus arriving",
+        "bench",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog at a roadside Greyhound stop in December rain as a bus pulls in, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door opens. Two people get off. Neither is her. The door closes.",
+      "characters": [],
+      "props": [
+        "bus door",
+        "two strangers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bus door open at a roadside stop with two strangers stepping down, no one else",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The 6:40, dark now. Door open. One person. A man with a duffel. Door closes.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "on the bench, same",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "second bus",
+        "one stranger"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same roadside stop after dark with a second bus, one man with a duffel bag stepping down, a young man and a dog still on the bench",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood drawing the second bus pulling away. Taillights. The dog asleep on his foot. He draws the taillights very carefully.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "taillights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a roadside bench at night carefully drawing a bus's departing taillights while a small dog sleeps on his foot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "She does not come home. Two buses. He draws the one that leaves."
+}

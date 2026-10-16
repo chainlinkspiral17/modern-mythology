@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-04-10_the_dime_jar",
+  "title": "The dime jar",
+  "strip": "drift_wood",
+  "date": "2000-04-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Help Wanted",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The cigar box of dimes is empty. The copies cost. Forty a week at two cents a page is more than nothing, and nothing is what's in the box. Wood counts the empty box twice. The strip draws the count.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cigar box open on the desk. Empty. A dime's ghost in the dust.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an empty cigar box open on a desk with a faint dust ring where coins were, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD tipping it. Nothing. BARNABY watching the nothing fall.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man tipping an empty cigar box over a desk while a small dog watches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The desk: sums on a mat offcut — no, a Timberline margin. 40 × 8 × .02. The number: 6.40. A week. The box: 0.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on arithmetic pencilled in a newspaper margin arriving at a small sum, an empty box beside it, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 40 × 8 × .02 = 6.40 / 0."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood putting the box back in the drawer. Empty. Closing it gently, as if there were something in it to spill.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man gently closing a desk drawer on an empty cigar box, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Six-forty a week; the box has nothing. The count of nothing, twice."
+}

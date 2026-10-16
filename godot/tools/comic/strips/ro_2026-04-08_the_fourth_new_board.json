@@ -1,0 +1,63 @@
+{
+  "id": "ro_2026-04-08_the_fourth_new_board",
+  "title": "The fourth new board",
+  "strip": "roflcopter",
+  "date": "2026-04-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The ramp with a fourth new plank among the three from 2023 and the old gray ones, the pup, eleven, on it. The boy, thirteen, with the drill, from behind. The ramp rebuilt by the one it wasn't built for.",
+  "cast": [
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A plank ramp with one fresh pale board among three lighter ones and old gray ones, a boy of thirteen from behind with a drill, an old three-legged dog standing on the ramp.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "thirteen, with a drill, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the ramp",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the fourth new board"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a plank ramp with one fresh pale board among three lighter ones and old gray ones, a boy of thirteen seen from behind holding a drill and an old three-legged dog standing on the ramp, no words",
+        "negative": "",
+        "notes": "Compare ro_2023-04-09."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Rebuilt by the one it wasn't built for.",
+  "layout": "single page, no borders"
+}

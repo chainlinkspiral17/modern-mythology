@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-11-06_her_parents_car",
+  "title": "Her parents' car",
+  "strip": "drift_wood",
+  "date": "2000-11-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Town After",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. Four houses down. Her parents' car in the driveway, Oregon plates. No wreath yet. No bags. The porch. Wood walks the dog past at the usual speed. The dog stops at the steps anyway. Wood waits for him. That's the strip.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Chloe's house from the street. The parents' car in the driveway, Oregon plates as blocks. The porch, bare. Rain hatched. WOOD and BARNABY passing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small house seen from the street with a car in the driveway and a bare porch in vertical rain, a young man in a chore coat and a small dog passing on the sidewalk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dog stopping at the porch steps. Sitting. Looking at the door.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog sitting at the foot of porch steps looking up at a closed door, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, the leash slack, waiting. Not looking at the door. Looking at the dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a slack leash on a sidewalk, looking at his dog rather than the house, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them, small, at the foot of the steps. The car. The porch. The rain. He waits for the dog. The strip waits with them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog small at the foot of porch steps before an empty porch in rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The dog stops at the steps. He waits. The strip waits."
+}

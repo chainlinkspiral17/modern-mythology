@@ -1,0 +1,125 @@
+{
+  "id": "dw_1999-10-12_a_classmate_reads_it",
+  "title": "A classmate reads it",
+  "strip": "drift_wood",
+  "date": "1999-10-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The mill-jacket classmate reads the digest at the long table. He reads it twice. He says the dog's not right. There is no dog. He means the gull.",
+  "cast": [
+    "wood_20",
+    "extra_classmate"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The college cafeteria. The CLASSMATE in the mill jacket with the digest open, reading. WOOD across from him with corn.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_classmate",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older man in a mill jacket reading a small stapled booklet at a cafeteria table while a young man eats across from him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The classmate turning back to the front. Reading it again.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on weathered hands turning a small photocopied booklet back to its first page, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The classmate tapping the margin.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CLASSMATE",
+          "text": "Dog's not right."
+        },
+        {
+          "who": "WOOD",
+          "text": "There's no dog."
+        },
+        {
+          "who": "CLASSMATE",
+          "text": "This."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's a gull."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older man tapping the margin of a photocopied comic with a thick finger, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The margin gull, two strokes. The classmate's finger on it. Wood looking at it as a dog for the first time.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a tiny two-stroke bird mark in a comic's margin under a thick fingertip, black and white, no words",
+        "negative": "",
+        "notes": "The gull read as a dog, a month before the dog."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Dog's not right.' A month before the dog."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2025-02-09_stone_head_from_above",
+  "title": "The stone head, from above",
+  "strip": "roflcopter",
+  "date": "2025-02-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "From the bluff path: the face in the grass looking up at the rain, the wall, the alley behind Gully's, the whole small arrangement of the town's forgotten monument seen the way the gulls see it.",
+  "cast": [],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Straight down from the bluff path in rain: the stone head's face looking up — eyes closed, or worn closed — in a patch of grass between a shingle wall and the alley's gravel. Around it: a bike, a coil of hose, a bait cooler, the everyday things the monument has been furniture among for a century. The rain in resist. Gull's-eye.",
+      "characters": [],
+      "props": [
+        "the face, upward",
+        "a bike, a hose, a cooler"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a straight-down view in rain of a moss-grown carved stone face looking upward from a patch of grass between a shingle wall and a gravel alley, surrounded by a bicycle and a coiled hose and a bait cooler, watercolor rain, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "From above, in rain. Furniture among furniture.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,89 @@
+{
+  "id": "dw_2011-05-22_the_frame_shop_shut",
+  "title": "Sunday · the frame shop, shut",
+  "strip": "drift_wood",
+  "date": "2011-05-22",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening xvii)",
+  "logline": "A week after Let Go: the frame shop from the sidewalk in three tiers — the CLOSED card, the empty window where the mats were, the transom — and in the last tier the pale rectangle inside where the corkboard hung. Wood's first workplace, drawn as a leaving.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the frame shop's door with a CLOSED card, the transom above.",
+      "characters": [],
+      "props": [
+        "the CLOSED card",
+        "the transom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small shop's door with a closed card and an old transom above, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Card"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the display window empty, dust where the sample mats stood.",
+      "characters": [],
+      "props": [
+        "the empty window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shop's empty display window with dust marks where framed samples stood, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: through the glass: a pale rectangle on the back wall where something hung for eleven years.",
+      "characters": [],
+      "props": [
+        "the pale rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "through a shop window a pale rectangle on a back wall where a board hung for years, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Rectangle"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Let Go (May 2011), as a Sunday.",
+  "layout": "tiers, portrait page"
+}

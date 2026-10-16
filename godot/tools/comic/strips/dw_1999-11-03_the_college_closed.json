@@ -1,0 +1,102 @@
+{
+  "id": "dw_1999-11-03_the_college_closed",
+  "title": "The college closed",
+  "strip": "drift_wood",
+  "date": "1999-11-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The First Storms",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college closes for the storm. Nobody told the auditor. Wood sits in Lot C alone with the box of everything. He opens the box. The strip cuts before he takes anything out.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Lot C, empty, rain, the building dark. A sign on the door drawn as blocks. The Datsun the only car.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty rain-swept community college parking lot with a dark building and a single small car, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD in the car. Looking back at the box on the back seat. Taped.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a car's driver's seat looking over his shoulder at a taped cardboard box on the back seat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "His hand on the tape. Pulling. The box open an inch. Pages inside, a rubber band.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand pulling tape from a cardboard box's lid, pages visible inside under a rubber band, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The car from outside in the rain. The dome light on. Whatever he's reading, the strip is not in there with him.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car alone in a rainy parking lot at dusk with its dome light on, a figure inside bent over something, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The box, opened an inch. The strip stays outside."
+}

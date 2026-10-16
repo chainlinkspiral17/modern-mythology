@@ -1,0 +1,172 @@
+{
+  "id": "dw_2004-09-13_seven_years",
+  "title": "Seven years",
+  "strip": "drift_wood",
+  "date": "2004-09-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "Seven years. The corn is on the drafting table. The stick figures have opinions about the corn.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A tray of corn on the drafting table. WOOD drawing. BARNABY. At the back, four stick figures now.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "four, at the back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tray of corn",
+        "drafting table"
+      ],
+      "balloons": [
+        {
+          "who": "STICK 1",
+          "text": "why corn"
+        },
+        {
+          "who": "STICK 2",
+          "text": "its an anniversary thing"
+        },
+        {
+          "who": "STICK 3",
+          "text": "what anniversary"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing at a drafting table in a garage with a paper tray of corn beside him, a small dog, and four small stick figures at the back of the panel talking among themselves, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, not turning.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Seven years ago I drew a cafeteria. This is what's left of it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man drawing, not turning to answer, lamp light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "A stick figure has come forward and is looking at the corn.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one figure at the corn",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn"
+      ],
+      "balloons": [
+        {
+          "who": "STICK 4",
+          "text": "can we see the cafeteria one"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small stick figure standing beside a paper tray of corn on a drafting table, looking at it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood pinning #1 — the original, yellowed cardstock — to the garage wall beside the corkboard. The stick figures gathered under it, reading. The dog asleep.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning an old strip to the wall",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "gathered under it",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the original #1, yellowed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a yellowed old comic strip to a garage wall while four small stick figures gather beneath it to read, a dog asleep, no words",
+        "negative": "",
+        "notes": "#1's original on the wall from here on. Visible in garage backgrounds through 2027."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "Seven. The chorus reads #1. The original goes on the wall for good."
+}

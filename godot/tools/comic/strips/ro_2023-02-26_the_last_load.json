@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-02-26_the_last_load",
+  "title": "The last load",
+  "strip": "roflcopter",
+  "date": "2023-02-26",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The last truck out of the yard, 1994: a flatbed of cedar under chains, the driver's arm out the window, the yard behind it empty of logs for the first time. The gate open. Era I spotting on the tires.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A log truck loaded with cedar under chains leaving a mill yard through an open gate, the driver's arm out the window, the yard behind empty of logs for the first time, the stack not smoking.",
+      "characters": [],
+      "props": [
+        "the last load",
+        "the open gate"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a flatbed truck loaded with cedar under chains leaving a mill yard through an open gate with the driver's arm out the window, the yard empty of logs and the stack not smoking, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The last load. The stack cold.",
+  "layout": "single page, no borders"
+}

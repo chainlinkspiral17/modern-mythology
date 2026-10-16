@@ -1,0 +1,88 @@
+{
+  "id": "dw_2015-02-15_landscapes_again_the_rain_2008",
+  "title": "Sunday · Landscapes, Again · the Rain, 2008",
+  "strip": "drift_wood",
+  "date": "2015-02-15",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Landscapes, Again",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Landscapes, Again · deepening xvii)",
+  "logline": "The sabbatical's reruns: the January 2008 Rain Sunday reprinted unchanged in February 2015 under a rerun slug. The book takes it as a divider: the reader who knows the 2008 page sees the date and the pup's absence and understands the strip is away.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": "RERUN under the date; no new mark."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: as dw_2008-01-13, tier 1: the gravel alley behind the tavern in rain, the beer sign's neon in a puddle.",
+      "characters": [],
+      "props": [
+        "the puddle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gravel alley behind a tavern in January rain seen from a garage porch, a beer sign's neon reflected in a puddle, nobody, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alley"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: as tier 2: the casement window from outside, the lamp inside, two jars, a shape at the table.",
+      "characters": [],
+      "props": [
+        "two jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small casement window seen from a rainy alley with a lamp lit inside, two jars on the sill, the shape of a man at a table, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: as tier 3: the alley later, the lamp off, the puddle dark.",
+      "characters": [],
+      "props": [
+        "dark window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same alley later with the window dark and the puddle black, rain, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dark"
+    }
+  ],
+  "art": {
+    "line": "a rerun; the 2008–09 Sunday reprinted unchanged",
+    "palette": "as the original",
+    "paper": "newsprint, again"
+  },
+  "notes": "Rerun of dw_2008-01-13. A divider in the book.",
+  "layout": "tiers, portrait page"
+}

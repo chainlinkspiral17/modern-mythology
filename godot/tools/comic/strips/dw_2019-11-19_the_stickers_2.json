@@ -1,0 +1,143 @@
+{
+  "id": "dw_2019-11-19_the_stickers_2",
+  "title": "The stickers, ii",
+  "strip": "drift_wood",
+  "date": "2019-11-19",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Stickers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Stickers · deepening)",
+  "logline": "Tuesday. Wood leaves the sheet on the table for one panel. The pup eats it. Not one sticker: the sheet. The strip shows the before and the after and refuses the middle.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drafting table. The sticker sheet on it, twenty-nine figures. WOOD turning away to the sill for a brush. BARNABY II's eyes.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "turning away",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "eyes on the sheet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man turning away from a drafting table toward a windowsill while a small three-legged dog fixes its eyes on a sticker sheet on the table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The table. Empty where the sheet was. A corner of glossy backing paper.",
+      "characters": [],
+      "props": [
+        "a corner of backing paper"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a drafting table with only a torn corner of glossy backing paper where a sticker sheet was, no words",
+        "negative": "",
+        "notes": "The middle panel is refused: the eating happens between 1 and 2."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood turning back. The dog. The dog's face: nothing. A rotor-shaped bit of glossy paper on his lip.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "turning back",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "innocent, a scrap on his lip",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a scrap on the lip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man turning back to find a small dog with an innocent expression and a tiny scrap of glossy paper stuck to its lip",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood on the phone to the vet. The dog asleep, full. The corner of backing paper on the table like evidence.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the phone",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep, full",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the backing paper"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Twenty-nine. Glossy. About — this big. ... He seems fine. He seems pleased."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man on the phone describing something with his fingers while a small dog sleeps contentedly on the floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The middle refused. 'He seems pleased.'"
+}

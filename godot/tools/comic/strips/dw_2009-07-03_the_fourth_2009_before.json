@@ -1,0 +1,147 @@
+{
+  "id": "dw_2009-07-03_the_fourth_2009_before",
+  "title": "The Fourth, 2009 · before",
+  "strip": "drift_wood",
+  "date": "2009-07-03",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009 · fixture week · deepening xvii)",
+  "logline": "The day before, three weeks married: Maria in the shack under the eave looking at the lawn chair folded there, the uncle's chair, and Gully saying it was his uncle's, and Maria saying she knows whose it was. She unfolds it. Wood on the steps.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Under the eave: a folded lawn chair. MARIA looking at it. GULLY beside her.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "looking at the chair",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the folded chair"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That was my uncle's."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a woman with a dark braid looking at a folded lawn chair under a shack's eave with a stocky man in an apron beside her",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "MARIA.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "I know whose it was."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a woman answering a man gently and firmly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "MARIA unfolding it. The webbing faded.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "unfolding the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chair, unfolded"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a woman unfolding an old aluminum lawn chair with faded webbing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the steps, BARNABY, watching a chair get unfolded.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on shack steps with a small dog watching a woman unfold a lawn chair",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Maria's one line in the public run before this: none. Now one."
+}

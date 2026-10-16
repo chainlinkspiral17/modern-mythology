@@ -1,0 +1,119 @@
+{
+  "id": "dw_2000-09-13_the_candle",
+  "title": "The candle",
+  "strip": "drift_wood",
+  "date": "2000-09-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Twenty",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Twenty. A hand sets a plate on the desk: a slice of something with one candle in it, lit. 'Arthur.' The hand goes. Wood looks at the candle. The dog looks at the candle. Nobody blows it out. The strip draws it down to the plate.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_mother"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. The MOTHER's hand — ring, cardigan cuff — setting a plate on the desk: a slice of cake, one candle, lit. WOOD at the desk. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_mother",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Arthur."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman's hand with a ring and a cardigan cuff setting a plate with a slice of cake and one lit candle on a desk where a young man sits, a small dog beneath, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The candle. Lit. The flame drawn as a single stroke.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a single lit candle in a slice of cake, the flame a single stroke, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood looking at it. The dog looking at it. Nobody moving.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog both looking at a lit candle on a desk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The candle burned down to the plate. Wax on the cake. The flame out on its own. Twenty. The strip counted it down and didn't blow.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a candle burned down to a plate with wax on a slice of cake, the flame gone, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Twenty. Nobody blows it out. The mother's hand and 'Arthur.'"
+}

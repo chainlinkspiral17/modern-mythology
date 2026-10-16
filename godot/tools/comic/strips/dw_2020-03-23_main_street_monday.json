@@ -1,0 +1,127 @@
+{
+  "id": "dw_2020-03-23_main_street_monday",
+  "title": "Main street, Monday",
+  "strip": "drift_wood",
+  "date": "2020-03-23",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Empty Town · deepening)",
+  "logline": "Monday. Main street with nobody. The strip draws it as it has drawn it since 1997, and the difference is only that nobody is in it. Why is not said.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, Monday morning. Empty. WOOD and BARNABY II the only figures, at the far end.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "far",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty street"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small-town main street on a weekday morning completely empty except for a man and a small three-legged dog at the far end, no words",
+        "negative": "",
+        "notes": "Reserved whether 2020 is 2020. No sign, no mask, no date beyond the strip's."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully's OPEN sign, lit. Nobody at the counter through the window.",
+      "characters": [],
+      "props": [
+        "OPEN, lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a lit OPEN sign in a shop window with an empty counter behind it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The lockboxes on the doors, all closed, their dials unturned since March.",
+      "characters": [],
+      "props": [
+        "lockboxes, unturned"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a row of house doors with key lockboxes all closed and dusty, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The seawall. The bay. The pup off the leash on an empty street for the first time in his life.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "off the leash",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the seawall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog off its leash in the middle of an empty street by a seawall, a man watching, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Wordless. Off the leash on main street."
+}

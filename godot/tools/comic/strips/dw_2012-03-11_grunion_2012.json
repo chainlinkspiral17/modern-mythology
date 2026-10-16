@@ -1,0 +1,100 @@
+{
+  "id": "dw_2012-03-11_grunion_2012",
+  "title": "Sunday · the Grunion Run, 2012",
+  "strip": "drift_wood",
+  "date": "2012-03-11",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012 · Sundays · deepening ix)",
+  "logline": "The run wet-on-wet: the lanterns blooming into the wet paper, the fish a silver bleed, and in the last tier a man in a maroon polo under a coat, come from a shift, and an old dog.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: lanterns on a night beach blooming into wet paper, soft-edged.",
+      "characters": [],
+      "props": [
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "lanterns on a night beach painted wet-on-wet blooming soft-edged into the paper, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bloom"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the surf a silver bleed of fish across the tier.",
+      "characters": [],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night surf line painted as a silver wet-on-wet bleed of small fish, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bleed"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: a man with a maroon polo collar showing under a coat sitting on the sand with an old dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting, polo collar showing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "old, beside him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with a maroon polo collar showing under a coat sitting on dark sand beside an old dog with distant lanterns, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shift"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Wet-on-wet arrives. The polo collar.",
+  "layout": "tiers, portrait page"
+}

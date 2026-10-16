@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-08-21_the_fall_roster",
+  "title": "The fall roster",
+  "strip": "drift_wood",
+  "date": "2000-08-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The End of Summer",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college's fall roster comes in the mail. FINCH, A. — AUDITING, typed, without his asking. The instructor put him on. He pins it beside the PNCA letter. Two schools on the corkboard; one of them wants him for nothing.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "An envelope from the college, opened. A roster page: names as blocks, and one line: FINCH, A. — AUDITING.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a typed college roster with one line at the bottom set apart from the block of names, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: FINCH, A. — AUDITING."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD reading it at the desk. BARNABY. He didn't ask to be on it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man reading a typed page at his desk with a small dog beneath, surprised, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The roster pinned beside the PNCA letter. Two schools. Wood looking at both.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a typed page to a corkboard beside an official letter and looking at both, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The corkboard: the letter that offers money; the roster that offers nothing; the bus schedule under both. Wood's finger on the roster. That one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a corkboard with an official letter, a typed roster and a folded bus schedule, a finger resting on the roster, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two schools on the board. His finger on the one that offers nothing."
+}

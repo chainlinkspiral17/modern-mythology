@@ -1,0 +1,57 @@
+{
+  "id": "bk_2012-06-12_the_pomegranate_hour_3_am_title_page",
+  "title": "THE POMEGRANATE HOUR, 3 AM · title page",
+  "strip": "backup",
+  "series": "THE POMEGRANATE HOUR, 3 AM",
+  "title_page": true,
+  "date": "2012-06-12",
+  "run": 4,
+  "era": "era3",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · the lobby TV at 3 AM · recaps never run · Box 13",
+  "arc": "THE POMEGRANATE HOUR, 3 AM",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. A channel the motel doesn't get.",
+  "cast": [],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "The lobby TV on its bracket filling the page, the screen a rounded rectangle in the one spot-tone blue, on it the title card: the script title with a cut pomegranate for the O of HOUR, its seeds the only red on the page, 3 AM in clock digits beneath, and under the bracket the motel's desk bell and the empty desk.",
+      "characters": [],
+      "props": [
+        "the lobby TV",
+        "the desk bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp black ink comic page with a blue spot tone, a wall-mounted lobby television filling the frame with a rounded screen showing a late-night talk-show title card with a cut pomegranate in place of one letter, a clock reading 3 AM beneath, and below the bracket an empty motel desk with a bell",
+        "negative": "",
+        "notes": "A channel the motel doesn't get. The seeds are the only red the series allows."
+      },
+      "stage": null,
+      "lettering": [
+        "THE POMEGRANATE HOUR",
+        "3 AM · the lobby TV · recaps never run",
+        "A channel the motel doesn't get."
+      ]
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the TV as a rounded rectangle; the host in three strokes",
+    "palette": "black ink and one spot tone: the screen's blue",
+    "paper": "the motel's pad, then bristol"
+  },
+  "notes": "Title page. Letters exactly: THE POMEGRANATE HOUR / 3 AM · the lobby TV · recaps never run / A channel the motel doesn't get..",
+  "layout": "title page: the masthead over a single image"
+}

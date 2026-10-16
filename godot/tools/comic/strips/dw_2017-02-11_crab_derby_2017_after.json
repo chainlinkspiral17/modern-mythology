@@ -1,0 +1,132 @@
+{
+  "id": "dw_2017-02-11_crab_derby_2017_after",
+  "title": "Crab Derby, 2017 · after",
+  "strip": "drift_wood",
+  "date": "2017-02-11",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "The Saturday after: the flyer up with eight legs, and Wood at the wall counting back through nineteen flyers of six, and the girl beside him counting too, and neither of them saying anything about the twenty-fifth's two crabs facing each other. She hasn't noticed that yet. The strip lets her not.",
+  "cast": [
+    "wood_34",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The wall with thirty-three flyers. WOOD and the GIRL before it, both counting legs on old flyers. The PUP.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "counting",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "counting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thirty-three flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man and a girl of seven standing before a long row of flyers on a shingle wall both counting with their fingers, a small three-legged dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The newest flyer close: eight legs, two claws, her lettering.",
+      "characters": [],
+      "props": [
+        "the eight-legged crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a fresh flyer with a crab drawn with eight legs and two claws in a child's careful hand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The GIRL passing the 2009 flyer — two crabs facing each other — without stopping.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "passing the 2009 flyer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 2009 flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small girl walking past an old flyer showing two crabs facing each other without stopping to look",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD stopping at it a moment. Then catching up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "stopped at the 2009 flyer, then moving on",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man pausing before an old flyer with two crabs facing each other and then moving on",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "She hasn't noticed the two crabs. Lets her not."
+}

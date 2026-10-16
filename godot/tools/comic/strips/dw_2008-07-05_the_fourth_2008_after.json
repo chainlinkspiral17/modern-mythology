@@ -1,0 +1,138 @@
+{
+  "id": "dw_2008-07-05_the_fourth_2008_after",
+  "title": "The Fourth, 2008 · after",
+  "strip": "drift_wood",
+  "date": "2008-07-05",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The morning after: the lawn chair on the dock with a mug under it, Chloe gone back to Portland at dawn, and Gully looking at the chair the way he looks at the shelf. He leaves it where she moved it. Wood draws where it was and where it is.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock in the morning. The lawn chair, moved from under the eave to the planks' edge, a mug under it. GULLY looking at it. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking at the chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair, moved",
+        "a mug"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron looking at an old lawn chair moved to the edge of a dock with a mug beneath it, a thin man and a dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The pale rectangle under the eave where the chair stood.",
+      "characters": [],
+      "props": [
+        "the pale rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a pale rectangle on dock planks beneath a shack's eave where a chair used to stand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY not moving it back.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "hands in his apron",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Leave it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man with his hands in his apron pockets deciding to leave something where it is",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD drawing on the pad: the chair, and a dotted outline where it was.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a pad showing a drawn lawn chair and a dotted outline of the same chair a few feet away",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Where it was and where it is. Maria sits in it a year later."
+}

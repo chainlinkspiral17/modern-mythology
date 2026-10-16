@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-11-19_the_diploma_in_a_sold_house",
+  "title": "The diploma, in a sold house",
+  "strip": "roflcopter",
+  "date": "2023-11-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The 2011 diploma in its black frame, no mat, on a wall in a house with a SOLD sign in the window and boxes on the floor. The frame is the last thing up.",
+  "cast": [],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A living room mid-move: boxes taped, a SOLD sign propped in the window facing out, bare walls, and one black frame still hanging — a diploma, no mat. The last thing to come down. Afternoon light.",
+      "characters": [],
+      "props": [
+        "the diploma",
+        "SOLD"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a living room with taped moving boxes and a SOLD sign propped in the window and one black-framed diploma still hanging alone on a bare wall, afternoon light, no people, no words",
+        "negative": "",
+        "notes": "dw_2011-05-17's diploma. Letter after: SOLD."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The last thing on the wall.",
+  "layout": "single page, no borders"
+}

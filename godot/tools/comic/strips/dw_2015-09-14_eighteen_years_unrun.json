@@ -1,0 +1,147 @@
+{
+  "id": "dw_2015-09-14_eighteen_years_unrun",
+  "title": "Eighteen years (did not run)",
+  "strip": "drift_wood",
+  "date": "2015-09-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The anniversary fell inside the sabbatical. He drew it. It didn't run. Corn, the pup, a week before the return.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Corn. WOOD. BARNABY II, ten months, trying to get on the table.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "scrambling at the table leg",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with a tray of corn, a three-legged puppy scrambling at the table leg, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup on the table. In the corn.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the corn",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a three-legged puppy standing in a paper tray of corn on a drafting table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, not stopping him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Eighteen years. Nobody's printing this one either. Eat the corn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man watching a puppy eat corn off his drafting table with resigned affection",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Alone at the long surface. The pup in the corn. #1 on the wall. The one anniversary with a dog on the table.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "#1"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with his back turned at a drafting table where a three-legged puppy sits in a tray of corn, a yellowed strip on the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Drawn in the sabbatical; ran in the book only. The pup in the corn."
+}

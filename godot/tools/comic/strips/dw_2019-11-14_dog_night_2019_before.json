@@ -1,0 +1,134 @@
+{
+  "id": "dw_2019-11-14_dog_night_2019_before",
+  "title": "Dog Night, 2019 · before",
+  "strip": "drift_wood",
+  "date": "2019-11-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The night before twenty years: the outline in the gravel, the bin, the sign with seven dark, and Wood tired in a way the strip has stopped hiding — sitting down on the curb in the alley with the pup in his lap, the mark in the margin smaller than it's been. Nothing happens. That's the strip.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The alley at night. The bin, the outline in the gravel, the sign with seven letters dark. WOOD sitting on the curb. The PUP in his lap.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the curb",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in his lap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the outline",
+        "the sign, seven dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man sitting on a curb in a night alley with a small three-legged dog in his lap beneath a neon sign with seven letters dark, a recycling bin and a dark rectangle in the gravel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD's face, tired, not hidden.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "tired",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a tired man's face in neon light, drawn plainly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pup asleep in his lap.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep in his lap",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog asleep in a seated man's lap",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The same, wider, smaller. Nothing happens.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the curb, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a wide night alley with a man sitting small on the curb holding a small dog beneath a mostly dark sign, nothing happening",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Nothing happens. That's the strip."
+}

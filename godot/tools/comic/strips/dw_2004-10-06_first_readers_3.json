@@ -1,0 +1,159 @@
+{
+  "id": "dw_2004-10-06_first_readers_3",
+  "title": "First readers, iii",
+  "strip": "drift_wood",
+  "date": "2004-10-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "First Readers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (First Readers · deepening)",
+  "logline": "Wednesday. A stick figure asks what the strip is about. Wood says a town. The stick figure says it's about a dog. Wood says the dog's in the town. The stick figure writes that down.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. One STICK FIGURE at the front of the chorus, hand up. WOOD, turning.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one with a hand up",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "turning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK",
+          "text": "whats it about"
+        },
+        {
+          "who": "WOOD",
+          "text": "A town."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a crude stick figure with its hand raised at the back of a garage while a man at a table turns to answer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The stick figure, pointing at the dog.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "pointing at the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK",
+          "text": "its about the dog"
+        },
+        {
+          "who": "WOOD",
+          "text": "The dog's in the town."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stick figure pointing at a small dog while a man answers",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The stick figure writing that down on a tiny stick-figure pad. 'the dogs in the town.'",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "writing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a tiny pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a crude stick figure writing on a tiny pad",
+        "negative": "",
+        "notes": "Letter after: 'the dogs in the town' — no apostrophe."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood back to the table. The dog under it. The stick figure's note pinned, tiny, on the corkboard's corner by the chorus itself. The strip's thesis, from a reader, misspelled.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "back at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a tiny note on the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man drawing at a table with a small dog beneath while a tiny note is pinned to the corner of a corkboard behind him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "'the dogs in the town.' The thesis, from Boise."
+}

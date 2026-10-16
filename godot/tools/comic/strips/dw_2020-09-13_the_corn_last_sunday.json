@@ -1,0 +1,97 @@
+{
+  "id": "dw_2020-09-13_the_corn_last_sunday",
+  "title": "Sunday · the corn, the last",
+  "strip": "drift_wood",
+  "date": "2020-09-13",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The corn as a Sunday for the second time: the tray on the long table, #1 above, and, new since 2007, the pup's bed below and the boxes along the wall. Twenty-three. The last public Sunday of it.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the drafting table from above: corn, a mug, a brush, the yellowed first strip on the wall at the top edge — and at the bottom edge, the pup's ear in the bed below.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "an ear at the bottom edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corn",
+        "#1"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drafting table from above with a paper tray of buttered corn and a mug and a brush, a yellowed comic strip on the wall at the top edge and a small dog's ear at the bottom edge, no words",
+        "negative": "",
+        "notes": "dw_2007-09-09's composition with the pup's ear added."
+      },
+      "stage": null,
+      "name": "Table"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the corn, close, in the same watercolor as 2007. The butter. The salt. Twenty-three trays.",
+      "characters": [],
+      "props": [
+        "the corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a paper tray of buttered corn in watercolor, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corn"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the wall along the garage: the boxes, twenty of them now, numbered on their lids, the light on them. Held.",
+      "characters": [],
+      "props": [
+        "twenty boxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage wall with twenty numbered cardboard boxes stacked along it in lamplight, no words",
+        "negative": "",
+        "notes": "Boxes 1–20: the public run. 21 begins in January (Vol. II)."
+      },
+      "stage": null,
+      "name": "Wall"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Corn, twenty-three. Twenty boxes on the wall.",
+  "layout": "tiers, portrait page"
+}

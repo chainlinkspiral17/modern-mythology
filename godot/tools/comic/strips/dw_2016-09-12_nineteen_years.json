@@ -1,0 +1,149 @@
+{
+  "id": "dw_2016-09-12_nineteen_years",
+  "title": "Nineteen years",
+  "strip": "drift_wood",
+  "date": "2016-09-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Nineteen. The corn. The corner box ran in June; nothing came. The strip eats corn under it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Corn. WOOD. BARNABY II under the table, in the old bed now. On the wall above #1: the June Sunday with the corner box, pinned.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "the corner-box Sunday on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with a tray of corn, a three-legged dog in a braided bed beneath, a watercolor Sunday page with a small boxed ad pinned on the wall above an older strip, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The corner box on the wall: COMING 2017 · CEDAR. Wood's eyes on it. Then on the corn.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man looking at a small hand-lettered boxed advertisement on a pinned page, then down, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Nineteen years. Three announcements. One strip. The strip's the one that kept the appointment."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man speaking to a dog while looking at a pinned page, dry",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Alone at the long surface. Corn. Dog. Two things on the wall: the first strip and the last promise.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "#1",
+        "the corner-box Sunday"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with his back turned at a long drafting table, a tray of corn, a dog, two pages on the wall above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'The strip's the one that kept the appointment.'"
+}

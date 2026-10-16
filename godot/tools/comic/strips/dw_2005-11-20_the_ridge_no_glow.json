@@ -1,0 +1,89 @@
+{
+  "id": "dw_2005-11-20_the_ridge_no_glow",
+  "title": "Sunday · the ridge, no glow",
+  "strip": "drift_wood",
+  "date": "2005-11-20",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The ridge east of town in November, drawn straight: trees, cloud, nothing above them. The strip draws it four years before 'Lanes' so the reader can go back and check.",
+  "cast": [],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the forested ridge from the estuary in November, cloud sitting on it, the trees gray-green, the sky the same gray. Nothing above the treeline.",
+      "characters": [],
+      "props": [
+        "the ridge",
+        "cloud"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a forested ridge under low November cloud seen across an estuary, gray-green, nothing unusual above the treeline, no words",
+        "negative": "",
+        "notes": "No glow. On purpose. Compare dw_2009-03-08."
+      },
+      "stage": null,
+      "name": "Ridge"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the trees, close, cedar and fir in rain.",
+      "characters": [],
+      "props": [
+        "trees"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "cedar and fir trees on a ridge in rain, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Trees"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sky above the ridge. Gray. Held.",
+      "characters": [],
+      "props": [
+        "sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flat gray sky above dark conifer tops, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sky"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The ridge before. Nothing above it.",
+  "layout": "tiers, portrait page"
+}

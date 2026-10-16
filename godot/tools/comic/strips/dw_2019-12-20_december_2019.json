@@ -1,0 +1,192 @@
+{
+  "id": "dw_2019-12-20_december_2019",
+  "title": "December, 2019",
+  "strip": "drift_wood",
+  "date": "2019-12-20",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Does Chloe come home. She does. To the garage. She sits in the chair — his chair — and reads the whole year off the wall.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. CHLOE in Wood's drafting chair, the swing-arm lamp on her, reading the pages pinned around the wall. WOOD on the floor with BARNABY II. The reversal is the panel.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "in his chair, reading the wall",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the floor with the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drafting chair",
+        "lamp",
+        "pages on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman with pinned dark hair sitting in a cartoonist's drafting chair under a green swing-arm lamp reading the comic pages pinned all around a garage wall, the cartoonist sitting on the floor with a three-legged dog, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe, reading.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You drew the lockbox on my parents' door."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was there."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You stopped one panel longer than a stranger would."
+        },
+        {
+          "who": "WOOD",
+          "text": "...You count panels."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I count everything. Since the cafeteria."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a woman reading comic pages on a wall with a level expression, speaking without turning",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe turning the chair to face him. The lamp behind her now.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "turned in the chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the floor",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Julian and I are done. Not yet. But done."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm sorry."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You're not."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm sorry for you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman turning a drafting chair to face a man sitting on the floor, the lamp behind her, a dog between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the door. Her in his chair. Him on the floor. The pup. The lamp. Neither moving. The strip's Christmas.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "in the chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the floor",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "wall of pages"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio from its doorway at night: a woman in the drafting chair under the lamp, a man on the floor, a three-legged dog, pages on every wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "She reads the year off the wall. 'Done. Not yet. But done.' Her in his chair."
+}

@@ -1,0 +1,112 @@
+{
+  "id": "dw_2013-07-07_the_fourth_2013_sunday",
+  "title": "Sunday · the Fourth, 2013",
+  "strip": "drift_wood",
+  "date": "2013-07-07",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · Sundays · deepening ix)",
+  "logline": "The dock three days after the Fourth: the lawn chair, a bassinet beside it in the shade of the shack, the girl of three chalking the planks, Gully's back at the grill. The son is three months old and in the strip for the first time, as a bassinet.",
+  "cast": [
+    "extra_maria",
+    "extra_gully_kid",
+    "gully_35"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the lawn chair on the dock with a woman in it and a bassinet in the shack's shade beside her.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "in the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair",
+        "a bassinet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman with a dark braid in an old lawn chair on a dock with a wicker bassinet in the shade of a shingle shack beside her, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Chair"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a small girl chalking the planks, a crab shape, spent firework tubes swept into a pile.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "chalking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chalk",
+        "spent tubes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl drawing a crab shape in chalk on dock planks beside a swept pile of spent firework tubes, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Chalk"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: Gully's back at the grill, smoke, the bay flat behind.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "at the grill, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the grill"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron at a grill from behind with smoke rising and a flat bay beyond, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Grill"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The son, b. spring 2013, as a bassinet.",
+  "layout": "tiers, portrait page"
+}

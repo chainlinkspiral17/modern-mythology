@@ -1,0 +1,140 @@
+{
+  "id": "dw_2001-01-11_the_rain_2001_eve",
+  "title": "The Rain, 2001 · eve",
+  "strip": "drift_wood",
+  "date": "2001-01-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · fixture week · deepening xvi)",
+  "logline": "The day before: the rain starting in the alley, the dog at the door wanting it, the frame shop's owner at the front saying the name nobody else says. Wood goes out the back.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The back room, rain starting on the window. BARNABY at the door, whining.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog at a back door with rain beginning on the window above it, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The OWNER's voice from the front, a balloon through the doorway.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Arthur? Lock up when you go."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a doorway into a frame shop's front with a balloon coming through it and no one visible, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD with his coat, the dog's leash.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "coat on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Yep."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pulling on a coat and taking a leash with a small dog waiting, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The back door open onto the alley, rain in vertical hatching, the two of them going out into it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "going out",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "going out",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a back door open onto an alley in rain drawn as vertical hatching with a young man and a small dog stepping out, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The owner's 'Arthur' (two of five)."
+}

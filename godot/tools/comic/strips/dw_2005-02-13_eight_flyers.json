@@ -1,0 +1,88 @@
+{
+  "id": "dw_2005-02-13_eight_flyers",
+  "title": "Sunday · eight flyers",
+  "strip": "drift_wood",
+  "date": "2005-02-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The shack's wall with eight crab flyers on it, 1998 to 2005, the hands changing already. The first Sunday about the wall itself.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall beside Gully's door with eight flyers pinned in a row, weathered to new, the crabs changing hand by hand.",
+      "characters": [],
+      "props": [
+        "eight flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall beside a shack door with eight hand-lettered crab flyers pinned in a row from weathered to new, no words legible",
+        "negative": "",
+        "notes": "Eight: 1998–2005."
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the first, close: one enormous crab, a Rohmer quote in tiny hand nobody reads, sun-bleached.",
+      "characters": [],
+      "props": [
+        "the 1998 flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a sun-bleached hand-drawn flyer with one enormous crab and a line of tiny unreadable text beneath it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "First"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the newest beside the oldest. The same crab. The line steadier. Held.",
+      "characters": [],
+      "props": [
+        "the 2005 flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two crab flyers side by side on a shingle wall, one bleached and one fresh, the same crab drawn with a steadier line, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Newest"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Eight flyers. The wall as a Sunday.",
+  "layout": "tiers, portrait page"
+}

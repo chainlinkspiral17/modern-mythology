@@ -1,0 +1,82 @@
+{
+  "id": "ro_2024-08-25_the_dock",
+  "title": "The dock · Rainier",
+  "strip": "roflcopter",
+  "date": "2024-08-25",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The dock at Gully's. Lukewarm Rainier. The strip's Chloe and Gully older. What she says is in a balloon; what Wood says is not drawn.",
+  "cast": [
+    "wood_44",
+    "chloe_44",
+    "gully_48",
+    "the_bird"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Gully's dock, late August, evening. CHLOE, forty-four, gray in the dark hair, the navy rain jacket, a can of Rainier. WOOD beside her, from behind — the back of the flannel. GULLY, heavy, no cap, at the shack door with a mug. The bird on a piling. One balloon on the page, hers. Wood's reply is not drawn; the space where it would be is left as dock planks.",
+      "characters": [
+        {
+          "id": "chloe_44",
+          "pose": "on the dock edge with a can",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "beside her, from behind",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "at the shack door",
+          "expression": ""
+        },
+        {
+          "id": "the_bird",
+          "pose": "on a piling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cans of Rainier",
+        "dock",
+        "the bird on a piling"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Thirty years designing packaging for things nobody needed. And you sat here and drew the packaging. Give or take."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock at evening: a woman in her forties with gray-streaked dark hair and a navy rain jacket holding a beer can, a man beside her seen only from behind in a plaid flannel, a heavyset older man in a fleece vest at a shingle shack's door with a mug, a small rainbow bird on a piling, one speech balloon, spare ink with slate and ochre watercolor, no panel borders",
+        "negative": "",
+        "notes": "Her balloon only. Wood's reply is deliberately absent — leave clean planks where it would go."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The brief's 2024 dock. What she says is drawn; what he says isn't. From behind.",
+  "layout": "single page, no borders"
+}

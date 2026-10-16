@@ -1,0 +1,88 @@
+{
+  "id": "dw_2015-08-16_landscapes_again_the_cedar_mill",
+  "title": "Sunday · Landscapes, Again · the cedar mill",
+  "strip": "drift_wood",
+  "date": "2015-08-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Landscapes, Again",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Landscapes, Again · deepening xvii)",
+  "logline": "The August 2008 cedar mill Sunday rerun in August 2015, seven years to the week. The last rerun before the return in September. The book takes it as the divider's other face: the strip's last day away, on a page about a place that closed.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": "RERUN under the date; no new mark."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: as dw_2008-08-10: the mill's cold stack from the beach road, the yard bare.",
+      "characters": [],
+      "props": [
+        "the stack, cold"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a cold brick mill stack above a bare yard seen from a coastal road, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stack"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: as the original: the chain-link, the gate chained, grass through the gravel.",
+      "characters": [],
+      "props": [
+        "the gate"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a chained chain-link gate with grass growing through the gravel of a mill yard, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Fence"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: as the original: the ridge beyond the yard, plain, August.",
+      "characters": [],
+      "props": [
+        "the ridge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge beyond an empty mill yard in August light, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ridge"
+    }
+  ],
+  "art": {
+    "line": "a rerun; the 2008–09 Sunday reprinted unchanged",
+    "palette": "as the original",
+    "paper": "newsprint, again"
+  },
+  "notes": "Rerun of dw_2008-08-10. The last rerun; the return is Sept 21.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-06-14_the_seawall_two",
+  "title": "The seawall, two",
+  "strip": "drift_wood",
+  "date": "2000-06-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe, Home",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday evening. The seawall. Wood and the dog, as every evening. Chloe already on it, ten feet down, reading. The dog goes to her. Wood follows the dog, which is his excuse. They sit ten feet apart and then the dog closes it.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall at evening. CHLOE on it, reading. WOOD and BARNABY arriving. Ten feet of wall between.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman reading on a low seawall at evening as a young man and a small dog arrive ten feet away, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dog going straight to her. Her hand on him without looking up from the book.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog trotting to a young woman on a seawall who rests her hand on it without looking up from her book, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting. Ten feet. The book. The bay. The dog between, then not between — beside her.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting on a seawall ten feet from a reading young woman, a small dog settled against her side, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Chloe, to the book.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You didn't come to the bus."
+        },
+        {
+          "who": "WOOD",
+          "text": "I didn't know you were—"
+        },
+        {
+          "who": "CHLOE",
+          "text": "The strip did."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman speaking without looking up from a paperback, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'The strip did.' She's read the digest."
+}

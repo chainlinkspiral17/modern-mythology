@@ -1,0 +1,58 @@
+{
+  "id": "bk_2010-01-09_the_long_way_back_title_page",
+  "title": "THE LONG WAY BACK · title page",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "title_page": true,
+  "date": "2010-01-09",
+  "run": 3,
+  "era": "era2",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. He doesn't recognize himself. The reader does.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "An opened highway map filling the page, its creases drawn, the coast a blue line and 101 a red one with twenty-two small dots along it and eight of them ringed, the title lettered across the folds; in the legend box the subtitle; on the map's corner a motel key tag with a room number as a shape and the Datsun's key.",
+      "characters": [],
+      "props": [
+        "the map",
+        "a motel key tag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "watercolor comic page in road grays with one color, an opened highway map filling the page with its creases drawn, a coastline in blue and a highway in red with twenty-two small dots and eight of them ringed, the title hand-lettered across the folds, a motel key tag and a car key lying on the map's corner",
+        "negative": "",
+        "notes": "Twenty-two stops; the book takes eight. The rings are the eight."
+      },
+      "stage": null,
+      "lettering": [
+        "THE LONG WAY BACK",
+        "twenty-two stops on 101 · the sabbatical, 2010",
+        "He doesn't recognize himself. The reader does.",
+        "A. Finch"
+      ]
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "Title page. Letters exactly: THE LONG WAY BACK / twenty-two stops on 101 · the sabbatical, 2010 / He doesn't recognize himself. The reader does. / A. Finch.",
+  "layout": "title page: the masthead over a single image"
+}

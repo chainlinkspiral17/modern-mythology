@@ -1,0 +1,143 @@
+{
+  "id": "bk_1998-10-30_the_halloween_issue_the_stone_head_walks",
+  "title": "THE HALLOWEEN ISSUE · The stone head walks",
+  "strip": "backup",
+  "series": "THE HALLOWEEN ISSUE",
+  "date": "1998-10-30",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Timberline · an unpublished Halloween issue · Box 1",
+  "arc": "THE HALLOWEEN ISSUE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The night before Halloween: the moss-grown face by the bait shack's wall is gone from the grass, and its shape is on the seawall, and then on the school's steps, and then back in the grass with a dead leaf on its brow. Nobody sees it move. The strip draws where it was, three times.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The grass by the shingle wall with a face-shaped hollow where the stone head sat. WOOD and CHLOE looking at the hollow.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the hollow"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "It was here. It's always here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, two teenagers looking at a face-shaped hollow in grass beside a shingle wall at night",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The seawall: the stone head on it, facing the bay, a gull on it. Nobody near.",
+      "characters": [],
+      "props": [
+        "the stone head on the seawall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a moss-grown carved stone head sitting on a seawall at night facing the bay with a gull perched on it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The school's front steps: the stone head on the third step. Nobody near.",
+      "characters": [],
+      "props": [
+        "the stone head on the steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a moss-grown carved stone head sitting on a school's front steps at night",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The grass again. The head back, a dead leaf on its brow. CHLOE's hand reaching to take the leaf off.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "reaching for the leaf",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a dead leaf"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Don't."
+        },
+        {
+          "who": "CHLOE",
+          "text": "It's a leaf."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a moss-grown carved stone head back in grass by a wall with a dead leaf on its brow and a teenage girl's hand reaching for the leaf",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "scratchy crow-quill and ballpoint on cardstock, xerox; heavier spotting than the run; the horror is the spotting",
+    "palette": "black and white; the blacks blacker",
+    "paper": "cardstock; an issue that never went to the copier; Box 1"
+  },
+  "notes": "Nobody sees it move. The canon's stone head (2024–25), twenty-six years early.",
+  "layout": "2x2 half-page"
+}

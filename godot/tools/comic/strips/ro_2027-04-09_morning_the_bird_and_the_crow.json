@@ -1,0 +1,63 @@
+{
+  "id": "ro_2027-04-09_morning_the_bird_and_the_crow",
+  "title": "Morning, the bird and the crow",
+  "strip": "roflcopter",
+  "date": "2027-04-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "One of the mornings: the bird and the crow on the same piling, the bird's colors, the crow's black, both looking at the water. The pup below them on the sand. Nobody explains anything.",
+  "cast": [
+    "the_bird",
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A dock piling at low tide with a small rainbow bird and a crow perched on it side by side looking at the water, an old three-legged dog on the sand below.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the piling",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "below",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a dock piling at low tide with a small rainbow bird and a crow perched side by side on it looking at the water and an old three-legged dog on the sand below, morning light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Same piling. Nobody explains.",
+  "layout": "single page, no borders"
+}

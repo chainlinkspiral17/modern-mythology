@@ -1,0 +1,57 @@
+{
+  "id": "ro_2026-05-10_the_girl_at_the_register_alone",
+  "title": "The girl at the register, alone",
+  "strip": "roflcopter",
+  "date": "2026-05-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "Gully's daughter, sixteen, at the register with the shop to herself, from the door, Gully's apron on a hook, the end stool empty, the corkboard. The page's first shop without Gully in it.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small shop from its door with a sixteen-year-old girl at the register, a black rubber apron on a hook, the end stool empty, the corkboard above.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "sixteen, at the register",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the apron on a hook"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small shop seen from its door with a sixteen-year-old girl at the register, a black rubber apron hanging on a hook, an empty end stool and a crowded corkboard, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The first shop without Gully.",
+  "layout": "single page, no borders"
+}

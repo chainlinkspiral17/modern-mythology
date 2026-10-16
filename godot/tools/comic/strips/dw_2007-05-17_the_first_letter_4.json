@@ -1,0 +1,164 @@
+{
+  "id": "dw_2007-05-17_the_first_letter_4",
+  "title": "The first letter, iv",
+  "strip": "drift_wood",
+  "date": "2007-05-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The First Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The First Letter · deepening)",
+  "logline": "Thursday. Chloe, on the phone, from Portland: she read about it online. The strip draws her side of the call as a coat on a hook with a voice.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_julian"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD on the phone — a cordless, 2007. BARNABY. On the wall, drawn as if it were in the room: a gray coat on a hook.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the phone",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cordless phone",
+        "a gray coat on a hook"
+      ],
+      "balloons": [
+        {
+          "who": "PHONE",
+          "text": "You turned it DOWN?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man on a cordless phone in a garage studio with a gray coat hanging on a hook drawn as if it were in the room, a small dog",
+        "negative": "",
+        "notes": "Chloe's voice; the coat is Julian, the parenthesis. She is not drawn."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, the phone against his shoulder, looking at the table leg.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "phone on shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the table leg"
+      ],
+      "balloons": [
+        {
+          "who": "PHONE",
+          "text": "It's a plush, Woody. It's not a — it's a PLUSH."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's holding up the table."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a man with a phone tucked against his shoulder looking down at a drafting table's leg",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The coat on the hook. The voice from the phone, smaller. The dog looking at the coat.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at the coat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coat"
+      ],
+      "balloons": [
+        {
+          "who": "PHONE",
+          "text": "Julian says it's a mistake."
+        },
+        {
+          "who": "WOOD",
+          "text": "Tell Julian the table's level."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a gray coat on a hook with a small dog looking up at it, a phone voice drawn small",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood hanging up. The coat gone from the wall — it was never there. The dog looking at the bare hook.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hanging up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the bare hook",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bare hook"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man hanging up a cordless phone in a garage while a small dog looks at a bare hook on the wall where a coat was, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'Tell Julian the table's level.' The coat on the hook, gone when he hangs up."
+}

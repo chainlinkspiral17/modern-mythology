@@ -1,0 +1,129 @@
+{
+  "id": "dw_2014-12-15_gully_at_the_door",
+  "title": "Gully at the door",
+  "strip": "drift_wood",
+  "date": "2014-12-15",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Between Sundays",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4); _THE_COMPLETE_RUN.md",
+  "logline": "Gully comes by every day this week with something. Wood doesn't open the door. Gully leaves it on the step. A daily of the step.",
+  "cast": [
+    "wood_34",
+    "gully_35"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "flat_stroke",
+    "note": "The flat stroke."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The porch, morning, frost. GULLY setting a paper sack on the top cedar step. Knocking once. Not waiting.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "setting down a sack, knocking once",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "paper sack",
+        "cedar step",
+        "frost",
+        "storm door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in a brown canvas work jacket setting a paper sack on the top cedar step of a small porch and knocking once on an aluminum storm door, frost, desaturated wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully walking away down the gravel. Hood down. Hands in pockets. Not looking back. The strip's first rehearsal of the walk it will draw properly in six days.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "walking away, hands in pockets",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "gravel drive",
+        "flatbed at the bottom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man walking away down a gravel driveway toward a flatbed truck with his hands in his jacket pockets, not looking back, frost on the puddles, no words",
+        "negative": "",
+        "notes": "Rehearsal of 'The Box' Tier 1. Same walk. Six days early."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The sack on the step. Grease-stained. Warm, drawn as a faint curl of steam. Fried clams.",
+      "characters": [],
+      "props": [
+        "sack, steam"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a grease-stained paper sack on a frosted cedar step with a faint curl of steam rising from it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The storm door opening a hand's width. A hand taking the sack. The door closing. That's all of Wood the strip shows this week.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand only, taking the sack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "storm door, ajar",
+        "hand",
+        "sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an aluminum storm door opened a hand's width, a man's hand reaching out to take a paper sack from the step, no words",
+        "negative": "",
+        "notes": "Wood is a hand this week. The rule's own devices: absence."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Fried clams on the step every day. Wood is a hand. Six days before 'The Box.'"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dw_2017-07-16_lockboxes",
+  "title": "Sunday · lockboxes",
+  "strip": "drift_wood",
+  "date": "2017-07-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Main street in July, every front door with a key safe on it, drawn one by one. The Airbnb summer as a landscape. Chloe's parents' old house has one.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a row of old wooden houses along the street in July sun, and on every door, a gray key lockbox, each drawn exactly, twelve of them.",
+      "characters": [],
+      "props": [
+        "twelve lockboxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a row of old wooden houses along a sunny small-town street with a small gray key lockbox on every front door, drawn precisely, no people, no words",
+        "negative": "",
+        "notes": "Twelve doors, twelve boxes. Count them."
+      },
+      "stage": null,
+      "name": "Doors"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: one door, close: the porch step, the door, the lockbox hanging from the knob, swinging slightly.",
+      "characters": [],
+      "props": [
+        "a lockbox on a knob"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, close on an old wooden front door with a gray key lockbox hanging from its knob and a worn porch step below, no words",
+        "negative": "",
+        "notes": "The porch from October 2000 (dw_2000-10). The strip doesn't say."
+      },
+      "stage": null,
+      "name": "Four doors down"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the street from its end, all the doors, all the boxes, nobody home anywhere. Held.",
+      "characters": [],
+      "props": [
+        "the street"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a small-town street seen from its end with lockboxes on every door and nobody home, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Street"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Twelve boxes. Her porch, four doors down, has one.",
+  "layout": "tiers, portrait page"
+}

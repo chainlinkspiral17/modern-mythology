@@ -1,0 +1,109 @@
+{
+  "id": "dw_2000-06-13_four_houses_down",
+  "title": "Four houses down",
+  "strip": "drift_wood",
+  "date": "2000-06-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe, Home",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday, a shop day. Wood drives past her house on the way to 101. She's on the porch, reading, not looking up. He doesn't slow down. She doesn't look up. Both of them know the other did it.",
+  "cast": [
+    "chloe_17",
+    "wood_20"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, morning. Four houses down: CHLOE on her porch steps with a paperback folded back, the Discman, not looking up. The Datsun passing.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman reading a folded-back paperback on porch steps with headphones around her neck as a small car passes on the street, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "WOOD driving. Eyes forward. Too forward.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man driving with his eyes fixed ahead too deliberately, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, on the page. Not looking up. Her thumb has stopped turning.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman reading on a porch with her thumb stopped mid-page-turn, not looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The street after the car. Chloe on the porch. The thumb turning again. Both of them know. The strip knows both.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a quiet residential street after a car has passed, a young woman on a porch turning a page, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Neither looks. Both know. The thumb stops."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-12-27_the_day_after_christmas_the_tarp",
+  "title": "The day after, the tarp",
+  "strip": "roflcopter",
+  "date": "2023-12-27",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The lawn chair under its tarp again, the string lights on in daylight because nobody turned them off, one bulb out. The page after the one chair.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An old lawn chair on a dock under a tied tarp, string lights along a shingle shack's eave lit in gray daylight with one bulb dark.",
+      "characters": [],
+      "props": [
+        "the tarp",
+        "one bulb out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an old lawn chair on a wooden dock under a tied tarp with colored string lights along a shingle shack's eave lit in gray daylight and one bulb dark, no people, no words",
+        "negative": "",
+        "notes": "Compare ro_2023-12-24."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "One bulb out.",
+  "layout": "single page, no borders"
+}

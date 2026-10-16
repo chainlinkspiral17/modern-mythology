@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-01-14_the_rain_2024",
+  "title": "The Rain, 2024",
+  "strip": "roflcopter",
+  "date": "2024-01-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The twenty-seventh January: the sill, the four jars, the rain, and the pup at nine in the bed. A week before the bird joins the sill. The page as the strip would have drawn it, minus the tiers.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The casement window in January rain from inside, four jars on the sill, the gray light, a small three-legged dog asleep in a bed below, the lamp off.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage window in January rain seen from inside with four jars on the sill and a small three-legged dog asleep in a bed below, the lamp off, no words",
+        "negative": "",
+        "notes": "Compare ro_2024-01-21 (the bird on the sill)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-seven. The week before the bird.",
+  "layout": "single page, no borders"
+}

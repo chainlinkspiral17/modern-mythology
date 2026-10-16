@@ -1,0 +1,50 @@
+{
+  "id": "ro_2025-08-10_the_zines_in_the_window",
+  "title": "The zines in the window",
+  "strip": "roflcopter",
+  "date": "2025-08-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "A bookstore on main street that wasn't there before, and in its window, zines — stapled, quarter-letter, the shape of the laundromat digest. Not his. Somebody's. The page looks at them the way the 2001 customers looked at frames.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A new bookstore's window on main street in August: a display of stapled quarter-letter zines on a stand, hand-lettered covers, none of them his, the shape exactly the laundromat digest's. The street reflected over them. The ridge glow above the roofs in the reflection.",
+      "characters": [],
+      "props": [
+        "zines",
+        "the glow in the reflection"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bookstore window in August displaying a stand of small stapled hand-lettered zines, the street reflected over the glass with a warm glow above the rooftops in the reflection, no people, no words",
+        "negative": "",
+        "notes": "Vol 7's zines. Not his. The digest's shape."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Someone else's digests, in a window.",
+  "layout": "single page, no borders"
+}

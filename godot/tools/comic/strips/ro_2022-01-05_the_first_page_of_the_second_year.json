@@ -1,0 +1,58 @@
+{
+  "id": "ro_2022-01-05_the_first_page_of_the_second_year",
+  "title": "The first page of the second year",
+  "strip": "roflcopter",
+  "date": "2022-01-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The drafting table on the fifth of January with a blank sheet, the lamp, the pen, and the pup's chin on the table's edge. Box 22 open on the floor with one page in it: this one, when it's done.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A drafting table under the lamp with a blank sheet, a brush pen and a small three-legged dog's chin resting on the table's edge, an open cardboard box on the floor with one sheet in it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "chin on the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a blank sheet",
+        "Box 22"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a drafting table under a lamp with a blank sheet and a brush pen and a small three-legged dog's chin resting on the table's edge, an open cardboard box on the floor holding one sheet, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "This page, when it's done.",
+  "layout": "single page, no borders"
+}

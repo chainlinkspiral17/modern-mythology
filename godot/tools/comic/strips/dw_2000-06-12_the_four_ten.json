@@ -1,0 +1,102 @@
+{
+  "id": "dw_2000-06-12_the_four_ten",
+  "title": "The 4:10",
+  "strip": "drift_wood",
+  "date": "2000-06-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe, Home",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. The 4:10 from Eugene. The strip goes to the bus stop. Wood doesn't. She's on it. Two bags. The strip draws her getting off; nobody's there to meet her; the strip is. She looks at where the strip would be standing and shakes her head.",
+  "cast": [
+    "chloe_17"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The Greyhound stop on 101, June, dry for once. The 4:10 pulling in. No one on the bench.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an intercity bus pulling into a roadside stop on a coastal highway on a dry June afternoon, an empty bench under a small shelter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door folding open. CHLOE stepping down with two bags. The Discman. The cardigan, in June. Hair longer.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman with smudged eyeliner and a Discman on her belt stepping off a bus with two bags, wearing an oversized cardigan in summer, black and white, no words",
+        "negative": "",
+        "notes": "Chloe home for the summer. The strip is here; Wood isn't."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe on the gravel. Looking at the empty bench. At the spot beside it where someone would stand. Nobody.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman standing on gravel beside an empty bus-stop bench looking at the empty space next to it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Chloe walking toward town with the bags, small. The bus pulling away. The strip drew this. Wood was at the shack. The strip tells him later.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman walking toward a small town along a highway shoulder with two bags as a bus pulls away behind her, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "She's on it. The strip goes; Wood doesn't. The crab in the margin."
+}

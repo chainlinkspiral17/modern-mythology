@@ -1,0 +1,136 @@
+{
+  "id": "dw_2005-03-10_grunion_viii_before",
+  "title": "The Grunion Run, 2005 · before",
+  "strip": "drift_wood",
+  "date": "2005-03-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "The night before the eighth run, Wood on the beach alone checking the tide table nailed to the lifeguard post, and a man in a faded mill jacket far down the sand, walking slowly, from behind. Wood doesn't go closer. The strip doesn't say who.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_father"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The beach at dusk. WOOD reading a tide table tacked to a lifeguard post. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading the tide table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tide table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man reading a paper tide table tacked to a wooden post on a dusk beach with a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Far down the sand, a man in a faded mill jacket walking slowly away, from behind.",
+      "characters": [
+        {
+          "id": "extra_father",
+          "pose": "far, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a distant man in a faded work jacket walking slowly away down a dusk beach seen from behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD looking that way. Not moving.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking, not moving",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man standing still on a beach looking into the distance",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD back to the tide table, the dog's leash tight toward the far man.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading again",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "pulling toward the far man",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash, tight"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man reading a tide table while a small dog pulls its leash toward something far down the beach",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The father, the night before. Not said."
+}

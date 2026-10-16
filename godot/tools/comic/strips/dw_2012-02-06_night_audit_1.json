@@ -1,0 +1,147 @@
+{
+  "id": "dw_2012-02-06_night_audit_1",
+  "title": "Night audit, i",
+  "strip": "drift_wood",
+  "date": "2012-02-06",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "The desk. The bell. The guests. The ice machine's hum under every panel. The line is suddenly, unmistakably, better.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The Driftwood Motel lobby, 1 AM, drawn in a new hand: architectural, clean, every edge of the desk and the key rack and the vending machine exact. WOOD in the polo. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lobby",
+        "key rack",
+        "vending machine",
+        "the hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby at 1 AM drawn with razor-sharp confident brush-and-ink line and pristine architectural perspective, a night clerk in a maroon polo at the desk, a key rack, a vending machine, a flat hum line beneath the panel, black ink with one gray spot tone",
+        "negative": "",
+        "notes": "Era III's line arrives here. Everything is drawn better and the strip doesn't remark on it."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A GUEST at the desk, a truck driver, needing a room and a receipt. Wood sliding a key across without looking up from the pad.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "truck driver at the desk",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "sliding a key, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "key",
+        "pad"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Room."
+        },
+        {
+          "who": "WOOD",
+          "text": "Twelve. Ice machine's at the end. It doesn't stop."
+        },
+        {
+          "who": "GUEST",
+          "text": "Nothing does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a truck driver at a motel desk taking a key from a clerk who slides it across without looking up from a drawing pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the lobby, drawn in ninety seconds while the guest signed. Better than the lobby.",
+      "characters": [],
+      "props": [
+        "pad: the lobby"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad with a fast confident ink sketch of a motel lobby, more beautiful than the real one",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lobby empty again. The hum. Wood drawing. The guest's taillights through the glass door. 1:12.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glass door with taillights",
+        "clock: 1:12",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty motel lobby at night, a clerk drawing at the desk, taillights receding through the glass door, a flat hum line beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Run 4 begins. The line is Era III's. Nobody says so."
+}

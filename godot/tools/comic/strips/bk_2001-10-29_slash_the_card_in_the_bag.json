@@ -1,0 +1,74 @@
+{
+  "id": "bk_2001-10-29_slash_the_card_in_the_bag",
+  "title": "SLASH · The card in the bag",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-10-29",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The Newport police's evidence room, through a window: a clear bag on a shelf with a single playing card in it, face out, a figure with a goat's head — no, a man in a good suit — the framer can't tell through two panes. He draws it both ways in the margin. The desk sergeant asks if he's family.",
+  "cast": [
+    "extra_framer",
+    "extra_sergeant"
+  ],
+  "location": "bk_evidence_room",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: a wire-glass window into an evidence room, a shelf with a clear bag holding a single card face out, the card's figure ambiguous through the glass; in the page's margin two small sketches of the card, one a horned figure and one a man in a suit; a desk sergeant's shoulder at the frame's edge.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "at the window",
+          "expression": ""
+        },
+        {
+          "id": "extra_sergeant",
+          "pose": "a shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the card in the bag",
+        "two margin sketches"
+      ],
+      "balloons": [
+        {
+          "who": "SERGEANT",
+          "text": "You family?"
+        },
+        {
+          "who": "FRAMER",
+          "text": "I framed something for her."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a wire-glass window into an evidence room with a clear plastic bag on a shelf holding a single card face out, its figure ambiguous, two small margin sketches of the card drawn one as a horned figure and one as a man in a suit",
+        "negative": "",
+        "notes": "The Devil (Vol 5, XV: the Demon at the Bar / the man in the good suit). Drawn both ways in the margin; the page doesn't choose."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "Both ways in the margin.",
+  "layout": "single image with margin sketches"
+}

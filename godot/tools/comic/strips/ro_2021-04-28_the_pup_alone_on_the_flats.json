@@ -1,0 +1,57 @@
+{
+  "id": "ro_2021-04-28_the_pup_alone_on_the_flats",
+  "title": "The pup alone on the flats",
+  "strip": "roflcopter",
+  "date": "2021-04-28",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The pup on the flats with the leash trailing from his collar and nobody at the end of it. The Absent months' one page with a living thing in it. Who let him out: the page's answer is the bowl, full, on an earlier page.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small three-legged dog on wide mudflats with a leash trailing behind it from its collar and no one holding it, the chimney far off.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "leash trailing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash, trailing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small three-legged dog on wide tidal mudflats with a leash trailing from its collar and no one holding it, a distant chimney across the bay, no words",
+        "negative": "",
+        "notes": "Compare ro_2021-05-23 (the bowl)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Nobody at the end of the leash.",
+  "layout": "single page, no borders"
+}

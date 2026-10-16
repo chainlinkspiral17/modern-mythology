@@ -1,0 +1,129 @@
+{
+  "id": "dw_2000-04-20_eight_fifty",
+  "title": "Eight-fifty",
+  "strip": "drift_wood",
+  "date": "2000-04-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Heceta Frame & Matting · deepening)",
+  "logline": "Thursday. The arithmetic. Eight-fifty an hour, three days, on the back of a mat offcut. Behind the sums, on the corkboard at home: the letter that would have paid for everything. The strip puts them in the same panel.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. WOOD at the desk doing sums on a mat offcut. BARNABY. The corkboard: the three letters.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "doing sums",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a mat offcut",
+        "three letters"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man at a desk writing sums on a scrap of mat board, a small dog, a corkboard with three pinned letters behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sums: 8.50 × 8 × 3 = 204. Minus the Datsun's gas. Minus the digest's copies. = 61.",
+      "characters": [],
+      "props": [
+        "the sums"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of hand-written arithmetic on a scrap of mat board ending in a small number",
+        "negative": "",
+        "notes": "Letter after: 8.50 × 8 × 3 = 204 · − gas · − copies · = 61."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking from the 61 to the corkboard. The acceptance letter. The number in it, not drawn. The strip's eyes go there; Wood's don't.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking at the sums, not the board",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man looking down at a scrap of arithmetic while a corkboard with letters hangs behind him unregarded, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The offcut pinned to the corkboard, over the acceptance letter. Covering it. 61.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning the offcut",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the offcut over the letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man pinning a scrap of mat board with arithmetic on it over a letter on a corkboard, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "61 dollars, pinned over the letter that would have paid for everything."
+}

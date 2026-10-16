@@ -1,0 +1,107 @@
+{
+  "id": "dw_2016-01-10_the_rain_2016",
+  "title": "Sunday · the Rain, 2016",
+  "strip": "drift_wood",
+  "date": "2016-01-10",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Nineteenth January. The sill with three jars. The lamp on, then off. The pup in the bed — the old one, for the first time.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the casement window from inside, rain in resist, three jars on the sill: brushes, nibs, the sand dollar. The alley a blur.",
+      "characters": [],
+      "props": [
+        "window",
+        "three jars",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small casement window from inside a garage studio with rain streaking the glass in watercolor resist, three jars on the sill holding brushes, nibs and a sand dollar, no figures",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The sill"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the drafting table, the lamp on, the chair empty. Under the table: the old braided bed — and in it, curled, the three-legged pup. The first time he uses it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "curled in the old bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "empty chair",
+        "the old bed, used"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drafting table under a rainy window with its lamp on and chair empty, and beneath it a wiry three-legged dog curled asleep in an old braided dog bed, watercolor",
+        "negative": "",
+        "notes": "First time the pup uses the old bed. No comment."
+      },
+      "stage": null,
+      "name": "The bed"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: lamp off. Blue window light. The pup still in the bed. Silent.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp off",
+        "blue light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same drafting table with the lamp off and cold blue rain-light across it, a three-legged dog asleep in the bed beneath, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Blue"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The 2006 Rain's framing, ten years on. The pup takes the bed.",
+  "layout": "tiers, portrait page"
+}

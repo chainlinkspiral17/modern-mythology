@@ -1,0 +1,181 @@
+{
+  "id": "dw_2002-11-15_espresso_machine_3",
+  "title": "The espresso machine, iii",
+  "strip": "drift_wood",
+  "date": "2002-11-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Espresso Machine",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Friday. The uncle's regulars come for bait and get offered espresso. They don't know what it is. Gully waters it down in a Styrofoam cup and calls it coffee. The Dog Night is tonight; the strip doesn't mention it.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack, dawn. Two REGULARS in rain hoods at the counter for nightcrawlers. GULLY behind the machine. WOOD on the crate. BARNABY back, under the counter, as far from the machine as the shack allows.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "behind the machine",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "far corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nightcrawler tubs",
+        "styrofoam cups"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Dozen crawlers. And — you want an espresso?"
+        },
+        {
+          "who": "REGULAR",
+          "text": "A what?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, two old fishermen in rain hoods at a bait counter, a young man in an apron behind a chrome espresso machine offering something, a dog in the far corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully pulling a shot into a Styrofoam cup and topping it with hot water from the bait-tank kettle. Hiding it with his body.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "diluting a shot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "styrofoam cup",
+        "kettle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, close-up of a young man in an apron surreptitiously topping up an espresso shot with hot water from a kettle into a Styrofoam cup",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The regular drinking it. Considering.",
+      "characters": [],
+      "props": [
+        "styrofoam cup"
+      ],
+      "balloons": [
+        {
+          "who": "REGULAR",
+          "text": "...That's coffee."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's coffee."
+        },
+        {
+          "who": "REGULAR",
+          "text": "Buck?"
+        },
+        {
+          "who": "GULLY",
+          "text": "Buck."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, an old fisherman in a rain hood tasting coffee from a Styrofoam cup and considering it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two regulars leaving with crawlers and cups. Gully with a dollar. Wood watching the first dollar the machine ever made go into the register that used to be the uncle's.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "with a dollar",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a dollar",
+        "register"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's a business."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's a dollar."
+        },
+        {
+          "who": "WOOD",
+          "text": "Same thing, in here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, two fishermen leaving a bait shack with bait tubs and coffee cups, a young man in an apron putting a dollar bill into an old register, another watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first dollar. 'That's coffee.' Dog Night falls this evening; the strip keeps them separate."
+}

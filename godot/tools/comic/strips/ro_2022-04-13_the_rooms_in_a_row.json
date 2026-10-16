@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-04-13_the_rooms_in_a_row",
+  "title": "The rooms, in a row",
+  "strip": "roflcopter",
+  "date": "2022-04-13",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "All the invented rooms drawn small in a row across one page — the two apartments, Chicago, Lisbon, the office — like a hotel corridor with every door open. Each room in its own light. No one in any. The sequence's index page, drawn.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Five small rooms drawn side by side across one page like a corridor of open doorways: two apartments with water in the windows, an orange hotel room, a shuttered tiled room, an office, each in its own light, all empty.",
+      "characters": [],
+      "props": [
+        "five rooms"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, five small rooms drawn side by side across one page like open doorways along a corridor, two apartments with water in their windows, an orange hotel room, a shuttered tiled room and an office, each lit differently and all empty, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The sequence's index page.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2025-03-02_the_first_drawing_of_it",
+  "title": "The first drawing of it",
+  "strip": "roflcopter",
+  "date": "2025-03-02",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "A 1999 daily from Box 2, on the drafting table: the stone head in a background panel, three strokes, behind a dog. The sequence's last page finds the strip drew it first and didn't notice. The page draws the page.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A drafting table under the lamp with an old four-panel newspaper strip laid on it, one panel showing a dog with three quick strokes of a stone face in the background, a fresh drawing of the same face beside it.",
+      "characters": [],
+      "props": [
+        "the 1999 strip",
+        "the new drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a drafting table under a lamp with an old four-panel comic strip laid on it, one panel showing a dog with a stone face sketched in three strokes behind it, a fresh detailed drawing of the same face beside it, no words legible",
+        "negative": "",
+        "notes": "Which 1999 daily: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The strip drew it first and didn't notice.",
+  "layout": "single page, no borders"
+}

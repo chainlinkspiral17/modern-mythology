@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-10-08_three_hundred_thousand",
+  "title": "Three hundred thousand",
+  "strip": "roflcopter",
+  "date": "2023-10-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The Legacy's odometer, close, turning over 300,000 on 101 in October. A hand on the wheel. Eleven years of Tuesdays.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a station wagon's dashboard: the odometer reading 299,999 with the last digit half-turned to 300,000, a hand on the wheel at the page's edge, the coastal road through the windshield in October light.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a hand on the wheel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the odometer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on an old station wagon's dashboard with a mechanical odometer half-rolled from 299999 to 300000, a man's hand on the wheel at the edge, a coastal road through the windshield in October light, no words",
+        "negative": "",
+        "notes": "Letter after: the odometer digits."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "300,000. Bring it Tuesdays.",
+  "layout": "single page, no borders"
+}

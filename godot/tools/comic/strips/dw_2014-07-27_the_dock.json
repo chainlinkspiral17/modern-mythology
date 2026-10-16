@@ -1,0 +1,198 @@
+{
+  "id": "dw_2014-07-27_the_dock",
+  "title": "The dock, 11:30 PM",
+  "strip": "drift_wood",
+  "date": "2014-07-27",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 3, Sunday Spread, Week 3)",
+  "logline": "Someone has to make sure the fog doesn't get stolen.",
+  "cast": [
+    "wood_34",
+    "chloe_34"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: 11:30 PM on the dock. The reception glowing behind them in pale gold. CHLOE has kicked off her heels; her gown trails slightly on the wet cedar planks. WOOD sits beside her, suit jacket balled under his arm. A long panoramic tier: the two of them looking across dark water toward the lights of Vancouver Island.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting on the dock edge, jacket balled under his arm",
+          "expression": "quiet"
+        },
+        {
+          "id": "chloe_34",
+          "pose": "sitting beside him, heels off, gown on the wet planks",
+          "expression": "quiet"
+        }
+      ],
+      "props": [
+        "wet cedar dock",
+        "heels set aside",
+        "the reception's gold glow behind",
+        "dark water",
+        "distant lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long panoramic night tier: a woman in a wedding gown with her heels kicked off and a man in a rumpled suit sitting side by side on a wet cedar dock, a reception glowing pale gold behind them, dark water and distant island lights ahead, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The water"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: closer. Neither looking at the other.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the water",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "looking at the water",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock planks",
+        "water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "closer on a woman in a gown and a man in a rumpled suit on a dock at night, both looking out at dark water, soft gold light from behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Two"
+    },
+    {
+      "n": 3,
+      "shot": "close tier",
+      "composition": "Tier 3.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "turning slightly",
+          "expression": "level"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Are you ever going to leave Small Wood, Woody?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a wedding gown turning slightly toward a man beside her on a night dock, level expression, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The question"
+    },
+    {
+      "n": 4,
+      "shot": "close tier",
+      "composition": "Tier 4: Wood, looking at his shoes.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at his shoes",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "shoes"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Someone has to make sure the fog doesn't get stolen."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a rumpled suit looking down at his shoes on wet dock planks at night",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The answer"
+    },
+    {
+      "n": 5,
+      "shot": "wide tier",
+      "composition": "Tier 5: Chloe smiles, rests her head on his shoulder for exactly this one panel, then straightens.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "head on his shoulder, then straightening",
+          "expression": "tender, then not"
+        },
+        {
+          "id": "wood_34",
+          "pose": "still",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock",
+        "gold glow",
+        "water"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You're a coward, Arthur Finch."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a wedding gown resting her head briefly on the shoulder of a man in a rumpled suit on a night dock, reception lights behind, dark water ahead, wet-on-wet watercolor",
+        "negative": "",
+        "notes": "The only time the author's name appears inside a panel in twenty-three years."
+      },
+      "stage": null,
+      "name": "One panel"
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "5 tiers, portrait"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "bk_2001-06-18_slash_lot_c_at_night",
+  "title": "SLASH · Lot C at night",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-06-18",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The college's Lot C at night, rain, a security guard's flashlight, and the framer sitting in an orange pickup with the photograph's back on the dash, waiting for a boat that's registered eight hundred miles from any water it could reach. The guard taps the glass. The framer says he's drawing.",
+  "cast": [
+    "extra_framer",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: a rain-hatched parking lot at night, a flashlight beam across an orange pickup's windshield, a guard's silhouette, and inside the cab a man with a photograph face-down on the dash and a pad on the wheel.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "in the cab, pad on the wheel",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "tapping the glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flashlight",
+        "the pad"
+      ],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Lot closes at ten."
+        },
+        {
+          "who": "FRAMER",
+          "text": "I'm drawing."
+        },
+        {
+          "who": "GUARD",
+          "text": "Drawing what."
+        },
+        {
+          "who": "FRAMER",
+          "text": "The lot."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a rain-hatched parking lot at night with a security guard's flashlight beam across an orange pickup's windshield and a man inside with a pad on the steering wheel",
+        "negative": "",
+        "notes": "Lot C (dw 1999–2000, the security guard). The canon's guard, borrowed by the noir."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "Drawing the lot.",
+  "layout": "single image with an inset of the pad"
+}

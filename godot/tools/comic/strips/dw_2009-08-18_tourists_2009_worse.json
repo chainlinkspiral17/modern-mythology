@@ -1,0 +1,149 @@
+{
+  "id": "dw_2009-08-18_tourists_2009_worse",
+  "title": "Tourist Season, 2009 · worse",
+  "strip": "drift_wood",
+  "date": "2009-08-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009 · fixture week · deepening xvii)",
+  "logline": "The day after Gully says the strip's Gully is better looking: Wood on the stool drawing him worse — the nose, the ears — and Gully looking over the counter and asking what that is. A portrait, Wood says. Gully says it's better looking than yesterday's. The strip keeps it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool drawing on the pad, glancing up at GULLY with intent. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing, glancing up",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool drawing on a pad and glancing up pointedly at a stocky man behind a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The pad: Gully, the nose bigger, the ears out, the apron the same.",
+      "characters": [],
+      "props": [
+        "the drawing, worse"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a pad showing a caricature of a stocky man with an exaggerated nose and ears in a fisherman's apron",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY leaning over to look.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "leaning over",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What's that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron leaning across a counter to look at a pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD turning it so he can see. GULLY's face.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "showing it",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "A portrait."
+        },
+        {
+          "who": "GULLY",
+          "text": "Better looking than yesterday's."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man turning a pad to show a caricature to a stocky man whose expression is unbothered",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Worse for a week. Better looking than yesterday's."
+}

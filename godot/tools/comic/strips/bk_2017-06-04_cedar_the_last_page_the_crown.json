@@ -1,0 +1,114 @@
+{
+  "id": "bk_2017-06-04_cedar_the_last_page_the_crown",
+  "title": "CEDAR · The crown",
+  "strip": "backup",
+  "series": "CEDAR",
+  "date": "2017-06-04",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the novel of the timber country · never past the corner box · Box 14",
+  "arc": "CEDAR",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The novel's last page drawn: the tree through the house has reached above the ridge, and its crown is where the glow is, and the page draws the crown lit from inside like a lamp in a room, and the family eating below, and the girl on the dock in town looking up, and the librarian, and the logger, all three right. The corner box promised CEDAR in 2017. This is what there was.",
+  "cast": [
+    "extra_family",
+    "extra_gully_kid",
+    "extra_librarian",
+    "extra_logger"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the cedar through the house grown above the ridge, its crown at the height of the glow and lit from within like a lamp.",
+      "characters": [],
+      "props": [
+        "the crown, lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a cedar tree grown through a small house and up above a wooded ridge with its crown lit from within like a lamp at the height where a glow would be, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: three small figures in three places looking up: a girl on a dock, a librarian at a window, a logger at a tailgate.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "on a dock, looking up",
+          "expression": ""
+        },
+        {
+          "id": "extra_librarian",
+          "pose": "at a window",
+          "expression": ""
+        },
+        {
+          "id": "extra_logger",
+          "pose": "at a tailgate",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three small figures in three separate places all looking up at the same sky, a girl on a dock, a woman at a window and a man at a pickup tailgate, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the family at the table under the trunk, the light coming down the trunk into the kitchen.",
+      "characters": [
+        {
+          "id": "extra_family",
+          "pose": "at the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the light down the trunk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a family at a kitchen table around a cedar trunk with warm light coming down the trunk into the room, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "cedar red, moss, fog, the glow's ochre bleeding in",
+    "paper": "Arches; the twelve Cedar Sundays' paper, used again"
+  },
+  "notes": "All three right. What there was of CEDAR.",
+  "layout": "tiers, portrait page"
+}

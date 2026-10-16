@@ -1,0 +1,151 @@
+{
+  "id": "dw_2009-07-06_the_fourth_2009_after",
+  "title": "The Fourth, 2009 · after",
+  "strip": "drift_wood",
+  "date": "2009-07-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009 · fixture week · deepening xvii)",
+  "logline": "The Monday after: the chair on the dock where Maria left it, and Gully not moving it back under the eave, and Wood asking if it's staying out. Gully says it's her chair now. Wood says it was always going to be somebody's. The dog under it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock. The lawn chair out on the planks. BARNABY under it. GULLY sweeping around it. WOOD on the steps.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "sweeping around the chair",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the steps",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chair"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It staying out?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man sweeping a dock around an old lawn chair with a dog beneath it while a thin man on the steps asks a question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It's her chair now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron answering while sweeping",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It was always going to be somebody's."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on shack steps saying something quietly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The chair, the dog under it, the bay. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "under the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, an old lawn chair on a dock with a small dog asleep beneath it and a flat bay beyond",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Her chair now. From Jul 2009 on (objects.md)."
+}

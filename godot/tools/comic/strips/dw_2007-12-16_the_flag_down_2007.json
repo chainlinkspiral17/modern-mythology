@@ -1,0 +1,88 @@
+{
+  "id": "dw_2007-12-16_the_flag_down_2007",
+  "title": "Sunday · the flag down",
+  "strip": "drift_wood",
+  "date": "2007-12-16",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · Sundays · deepening ix)",
+  "logline": "The mailbox before Christmas, flag down, in three tiers: morning, noon, dusk. Nothing comes. The last tier draws the porch light coming on.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a roadside mailbox in morning fog, flag down.",
+      "characters": [],
+      "props": [
+        "the mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a roadside mailbox in morning fog with its flag down, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Morning"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the same mailbox at noon, a truck passing, flag down.",
+      "characters": [],
+      "props": [
+        "a truck"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same roadside mailbox at noon with a truck passing and its flag down, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Noon"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the mailbox at dusk, flag down, a porch light on far back.",
+      "characters": [],
+      "props": [
+        "a porch light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same roadside mailbox at dusk with its flag down and a distant porch light coming on, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dusk"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Nothing comes. The light.",
+  "layout": "tiers, portrait page"
+}

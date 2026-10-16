@@ -1,0 +1,140 @@
+{
+  "id": "dw_2013-02-09_crab_derby_2013_after",
+  "title": "Crab Derby, 2013 · after",
+  "strip": "drift_wood",
+  "date": "2013-02-09",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · fixture week · deepening xvi)",
+  "logline": "The Saturday after: the flyer on the wall in Maria's hand, better than his, and Wood at the wall comparing it to the twenty-eight before it. Gully beside him. Gully says what Wood thinks; Wood says the rest.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The wall with twenty-nine flyers. WOOD and GULLY before it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the newest",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-nine flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men standing before a shingle wall with a long row of flyers, an old dog beside them, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The newest flyer, close: the crab in a hand that isn't Wood's, cleaner.",
+      "characters": [],
+      "props": [
+        "Maria's flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a fresh paper flyer with a cleanly lettered heading and a neatly drawn crab, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY, not looking at Wood.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It's better."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron looking at a wall of flyers and speaking sideways, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's better. Don't tell her I said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man looking at a flyer on a wall and speaking quietly, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "It's better. Don't tell her."
+}

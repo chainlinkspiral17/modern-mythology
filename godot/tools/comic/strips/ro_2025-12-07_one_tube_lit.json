@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-12-07_one_tube_lit",
+  "title": "One tube lit",
+  "strip": "roflcopter",
+  "date": "2025-12-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The Lanes' sign in December with one tube lit — the L, the one that flickered in 2009 — and every other letter dark. Somebody fixed one. The page doesn't say who.",
+  "cast": [],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bowling alley's neon sign at night with every letter dark but one, which glows, above a wet empty lot.",
+      "characters": [],
+      "props": [
+        "one tube lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bowling alley's neon sign at night with every letter dark except one glowing letter above a wet empty lot, no people, no words legible",
+        "negative": "",
+        "notes": "The L (dw_2009-03-08 flicker; ro_2021-02-14)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "One tube. Somebody fixed it.",
+  "layout": "single page, no borders"
+}

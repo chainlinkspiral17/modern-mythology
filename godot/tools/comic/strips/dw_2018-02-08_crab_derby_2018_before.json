@@ -1,0 +1,149 @@
+{
+  "id": "dw_2018-02-08_crab_derby_2018_before",
+  "title": "Crab Derby, 2018 · before",
+  "strip": "drift_wood",
+  "date": "2018-02-08",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "The day before the thirty-fourth: the flyer is a photo this year — the girl's crab from last year, printed at the drugstore — and Wood at the counter with the pen over the glossy paper, and the pen not taking. He tries three pens. The fourth is a marker. The lettering survives as marker.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. A glossy photo print of a drawn crab on the counter. WOOD with a pen, the ink beading on the gloss. GULLY. The GIRL, eight. The PUP.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pen beading on gloss",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "eight, watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a glossy print",
+        "a pen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man trying to letter on a glossy photo print at a shop counter with the ink beading up, a stocky man and a girl of eight watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Three pens in a row on the counter, all failed.",
+      "characters": [],
+      "props": [
+        "three pens"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, three pens lying in a row on a counter beside a glossy print with beaded failed ink marks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The GIRL handing him a marker.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "handing over a marker",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a marker"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Marker."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a girl of eight handing a black marker to a thin man at a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD lettering in marker. It takes. His face.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering in marker",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man lettering a flyer in black marker with an expression of reluctant acceptance",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The tradition survives as marker."
+}

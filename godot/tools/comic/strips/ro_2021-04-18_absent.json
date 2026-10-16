@@ -1,0 +1,60 @@
+{
+  "id": "ro_2021-04-18_absent",
+  "title": "Absent · the bay from the garage door",
+  "strip": "roflcopter",
+  "date": "2021-04-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Absent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "Wood is not in the pages from January to June. This is one of ninety: the garage from its doorway, empty, the lamp off, the pup in the bed.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page, no borders",
+      "composition": "The garage from the open doorway, April light. No figure. The drafting table, the lamp off, the chair pushed in. The old bed under the table with BARNABY II in it, looking at the door. On the wall: #1, 'Lanes,' the invitation. The corkboard. Everything where it was. The chair is the subject.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed, looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty chair",
+        "lamp off",
+        "the wall of pages",
+        "corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio seen from its open doorway in soft April light, no person in it, a drafting table with its lamp off and chair pushed in, a three-legged dog in a bed beneath looking toward the door, framed pages and a crowded corkboard on the walls, spare ink line with muted ochre and slate watercolor, no panel borders",
+        "negative": "",
+        "notes": "Ninety pages without Wood. The book takes eight. The chair is always the subject."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The Absent sequence. The author's own device — the empty chair — used on himself.",
+  "layout": "single page, no borders"
+}

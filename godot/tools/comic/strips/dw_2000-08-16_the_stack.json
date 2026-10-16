@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-08-16_the_stack",
+  "title": "The stack",
+  "strip": "drift_wood",
+  "date": "2000-08-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Blackberries",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wood goes back to the mill alone with the dog and draws the stack. All of it. From the base to the rim. The page isn't tall enough; he turns it. The brick, every course. He didn't know he'd been not-drawing it for six years until it took a whole afternoon.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The mill yard. The stack from the base, WOOD small at its foot with the pad. BARNABY in the vines.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a brick smokestack seen from its base with a young man small at its foot drawing, a small dog in blackberry vines, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad, turned tall: the stack, the brick courses, the rim. The line patient.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad turned vertical with a patient ink drawing of a brick smokestack course by course, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hand. Brick after brick. The afternoon in the hand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand drawing rows of brick with a pen, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Dusk. The stack against the sky. The drawing done. Wood looking at it, then up. Six years of not drawing it, and it took an afternoon. The strip says this by drawing it twice: once on the pad, once behind.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a brick smokestack against a dusk sky with a young man below holding a finished drawing of the same stack, black and white, no words",
+        "negative": "",
+        "notes": "The stack drawn twice: on the pad and behind it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Six years of not drawing it; one afternoon. Drawn twice in the panel."
+}

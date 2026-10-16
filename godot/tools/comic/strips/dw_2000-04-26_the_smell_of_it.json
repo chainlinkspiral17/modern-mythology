@@ -1,0 +1,140 @@
+{
+  "id": "dw_2000-04-26_the_smell_of_it",
+  "title": "The smell of it",
+  "strip": "drift_wood",
+  "date": "2000-04-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The frame shop's smell: mat board, glue, cedar dust, the owner's coffee. It's on Wood's coat at the college. The tech notices. The tech names all four. The tech has worked in one.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop. The TECH sniffing once as WOOD comes in. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Mat board."
+        },
+        {
+          "who": "WOOD",
+          "text": "What?"
+        },
+        {
+          "who": "TECH",
+          "text": "Glue. Cedar. Somebody's coffee."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician sniffing once as a young man in an overcoat enters with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, smelling his own sleeve.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man smelling his own coat sleeve, surprised, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The tech, loading paper.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Worked in one. Coos Bay. Two years."
+        },
+        {
+          "who": "WOOD",
+          "text": "Why'd you—"
+        },
+        {
+          "who": "TECH",
+          "text": "Pull, don't push. I pushed."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician loading paper, not looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The copier's light. Wood looking at the tech's hands on the paper tray. Straight. He pulled eventually. The strip doesn't ask when.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a photocopier's green light sweeping while a young man looks at a technician's steady hands on a paper tray, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The tech pushed, once, in Coos Bay. 'Pull, don't push' from two mouths now."
+}

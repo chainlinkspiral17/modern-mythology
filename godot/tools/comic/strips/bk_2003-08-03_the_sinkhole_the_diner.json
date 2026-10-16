@@ -1,0 +1,84 @@
+{
+  "id": "bk_2003-08-03_the_sinkhole_the_diner",
+  "title": "THE SINKHOLE · The diner",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "date": "2003-08-03",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A Sunday page in a line almost Wood's, from a Louisiana paper's Sunday section, folded in Box 5 among the unprinted: a diner late at night, a bartender behind a well, a man at Table 14 smoothing his lapels, a dog under a booth. The signature in the margin is a mark nobody at Gully's recognizes. Wood never drew it. It's in his box.",
+  "cast": [
+    "extra_lapels",
+    "extra_bartender",
+    "extra_diner_dog"
+  ],
+  "location": "bk_graustark_diner",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a diner late at night from the door: the counter's stools, a bartender behind a well at the far end wiping a glass, booths along the window, numbered tables in the middle, rain outside as dots.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost but not quite the strip's own, a diner late at night seen from its door with stools and booths and a bartender behind a bar well at the far end, rain drawn as dots in the window",
+        "negative": "",
+        "notes": "The line is not quite his."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man at Table 14 in a good suit, alone, smoothing his lapels with both hands, a coffee before him untouched; the table's number on a small stand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a man in a good suit alone at a numbered diner table smoothing his lapels with both hands, an untouched coffee before him",
+        "negative": "",
+        "notes": "Mr. D. Dean's lapels (Vol 5), at Table 14 (D'Ambrosio's). The number: as a shape on the stand."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: under a booth, a dog asleep; on the table above it a cassette player with its lid open; the margin's signature a mark nobody at Gully's recognizes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a dog asleep under a diner booth with a cassette player lid-open on the table above it, a margin signature that is a mark not a name",
+        "negative": "",
+        "notes": "Not his. In his box."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "Not his. In his box.",
+  "layout": "three tiers"
+}

@@ -1,0 +1,134 @@
+{
+  "id": "dw_2000-08-09_ten_digests",
+  "title": "Ten digests",
+  "strip": "drift_wood",
+  "date": "2000-08-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A tourist takes ten digests from the rack. All of them. The owner says one each. The tourist says they're free. The owner says one each is what free means. The tourist puts nine back. Wood, in the door, has never loved anyone more and would never say so.",
+  "cast": [
+    "laundromat_owner",
+    "extra_tourists",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. A TOURIST in a sun hat with the whole slot of digests in her arms. The LAUNDRY owner at the counter.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "One each."
+        },
+        {
+          "who": "TOURIST",
+          "text": "They're free!"
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "One each is what free means."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist in a sun hat holding an armful of small booklets taken from a wire rack while the laundromat owner watches from the counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Nine going back in the rack, one at a time, the tourist's face.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a tourist's hands returning booklets to a wire rack one at a time with a sour face, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD in the door with BARNABY. His face. The strip does not have a name for it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a laundromat doorway with a small dog, his face showing something the strip has no name for, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The owner, back to folding. Not looking at Wood. Knowing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner folding towels with her back turned, knowing she is being looked at, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'One each is what free means.' The face the strip has no name for."
+}

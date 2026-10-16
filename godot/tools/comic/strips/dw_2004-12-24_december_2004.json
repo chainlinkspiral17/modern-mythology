@@ -1,0 +1,143 @@
+{
+  "id": "dw_2004-12-24_december_2004",
+  "title": "December, 2004",
+  "strip": "drift_wood",
+  "date": "2004-12-24",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "Does Chloe come home. An email. The strip draws an email for the first time and hates it.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The monitor. An email open. WOOD reading. BARNABY. Two stick figures pretending not to read it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading the screen",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "two, pretending not to look",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor with an email"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man reading an email on a bulky monitor in his garage, a small dog, two small stick figures at the back of the panel pretending not to look, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The email, drawn as a panel: a plain text box. 'W — Chicago for Christmas. Work. It's not Europe. It's not there either. Tell the dog. — C.' No handwriting. The strip draws the font. It hates the font.",
+      "characters": [],
+      "props": [
+        "email text box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is a plain email window in a blocky early-2000s system font, short message, the whole thing drawn with visible distaste",
+        "negative": "",
+        "notes": "Letter after. The strip's first typed Chloe. The handwriting is gone."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "She used to write so small you needed a lamp. Now it's Arial."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man turning from his monitor to tell a dog something, wounded about a font",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood printing the email. Pinning the printout to the corkboard by one corner, like the cardstock one. It hangs there looking like nothing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning a printout",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "printout hanging by a corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a printed email to a crowded corkboard by one corner so it hangs free beside old handwritten postcards, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "She does not come home. The first email. The strip mourns the handwriting."
+}

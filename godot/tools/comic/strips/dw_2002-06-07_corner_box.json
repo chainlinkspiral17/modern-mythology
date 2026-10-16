@@ -1,0 +1,53 @@
+{
+  "id": "dw_2002-06-07_corner_box",
+  "title": "The corner box",
+  "strip": "drift_wood",
+  "date": "2002-06-07",
+  "run": 2,
+  "era": "era1",
+  "format": "digest_cover",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Cover",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "The digest's weekly cover. The logging road. In the corner, an ad from a syndicate that doesn't exist: COMING 2003 · SLASH.",
+  "cast": [],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single image",
+      "composition": "The laundromat digest's cover, quarter-letter. A landscape: a logging road after rain, potholes full of white sky, ruts, a gate, the spruce closing over it. No figure. In the bottom-left corner, boxed, hand-lettered in the strip's own display face as if it were a syndicate ad: COMING 2003 · A GRAPHIC NOVEL BY A. FINCH · 'SLASH' · A crime story of the Oregon coast.",
+      "characters": [],
+      "props": [
+        "logging road",
+        "potholes full of sky",
+        "gate",
+        "spruce",
+        "the corner box"
+      ],
+      "balloons": [],
+      "caption": "COMING 2003 · A GRAPHIC NOVEL BY A. FINCH · \"SLASH\" · A crime story of the Oregon coast.",
+      "sfx": "",
+      "image": {
+        "prompt": "a small zine cover drawing: a wet logging road after rain with potholes reflecting a white sky, deep ruts, a closed gate, dark spruce closing overhead, no people, brush-pen black and white with xerox grain, and a small boxed advertisement hand-lettered in the lower left corner",
+        "negative": "",
+        "notes": "The box text is the point; letter it after if it garbles. The first of three corner boxes (2002, 2008, 2016). Nothing ever comes."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first corner box. The strip never refers to it.",
+  "layout": "single image, quarter-letter"
+}

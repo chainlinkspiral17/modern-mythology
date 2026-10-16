@@ -1,0 +1,149 @@
+{
+  "id": "dw_2011-08-08_motel_application_1",
+  "title": "The motel application, i",
+  "strip": "drift_wood",
+  "date": "2011-08-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Motel Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Motel Application · deepening)",
+  "logline": "Monday. The ad in the coastal weekly: NIGHT AUDITOR · DRIFTWOOD MOTEL. It runs on the page beside the strip. The strip draws the page.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD reading the coastal weekly on the stool. BARNABY. The page: the tide tables, the strip (a week old), and a classified.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading the paper",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the weekly"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man reading a folded coastal weekly newspaper on a bait-shop stool, an old dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The page, close: the strip in its box, and beside it, the classified: NIGHT AUDITOR · DRIFTWOOD MOTEL · 11P–7A · APPLY IN PERSON.",
+      "characters": [],
+      "props": [
+        "the page: strip and classified"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a newspaper page showing a small comic strip beside a classified advertisement box",
+        "negative": "",
+        "notes": "Letter after: NIGHT AUDITOR · DRIFTWOOD MOTEL · 11P–7A · APPLY IN PERSON."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking from the strip to the ad. Gully reading over his shoulder.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "reading over his shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Nights."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's next to the strip."
+        },
+        {
+          "who": "GULLY",
+          "text": "So's the tide table."
+        },
+        {
+          "who": "WOOD",
+          "text": "The tide table isn't hiring."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a stocky man in an apron reading over a thin man's shoulder at a newspaper",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood tearing the ad out. Carefully. Around the strip, not through it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "tearing carefully",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the torn ad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a thin man carefully tearing a classified ad out of a newspaper around the edge of a comic strip without damaging it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The ad beside the strip. Torn out around it."
+}

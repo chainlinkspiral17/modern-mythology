@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-10-29_the_leaves_on_the_ramp",
+  "title": "The leaves on the ramp",
+  "strip": "roflcopter",
+  "date": "2023-10-29",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "Maple leaves on Gully's ramp, yellow, and the girl, thirteen, sweeping them down it toward the dock, from behind. The ramp's first autumn as hers to sweep.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Yellow maple leaves on a plank ramp at a shingle shack's door with a thirteen-year-old girl from behind sweeping them down it toward the dock.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "sweeping, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the broom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, yellow maple leaves on a plank ramp at a shingle shack's door with a thirteen-year-old girl seen from behind sweeping them down toward the dock, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Hers to sweep.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,145 @@
+{
+  "id": "dw_2005-12-14_hospital_lot_3",
+  "title": "The hospital parking lot, iii",
+  "strip": "drift_wood",
+  "date": "2005-12-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Hospital Parking Lot",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Hospital Parking Lot · deepening)",
+  "logline": "Wednesday. A hand on the dog. The strip's second hand-on-the-dog panel. Nothing else happens. The lot, the H, the hand.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Datsun in the lot, night. WOOD in the driver's seat. BARNABY beside him. The H through the windshield.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the H"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man and a small dog in a parked car at night with a blue-H sign visible through the windshield, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood's hand on the dog's back. Held.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a man's hand resting on a small dog's back in a car at night, no words",
+        "negative": "",
+        "notes": "Hand on the dog: 2000, 2005, 2015. This is the second."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Same. Held.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, the same close-up of a hand on a dog's back, unchanged, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The car. The lot. The sodium light. The hand still there through the window, small.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the H"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a small car in a hospital lot at night seen from outside with a man's hand on a dog visible through the window, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Wordless. The hand on the dog, second of three."
+}

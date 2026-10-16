@@ -1,0 +1,186 @@
+{
+  "id": "dw_2012-09-10_the_legacy",
+  "title": "The Legacy",
+  "strip": "drift_wood",
+  "date": "2012-09-10",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Legacy",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "The '93 Subaru arrives, already dying. Gully looks under the hood and says 'hm.'",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's lot. A 1993 Subaru Legacy wagon, green, one hubcap, a blue tarp in the back. WOOD beside it like it's a horse he's not sure of. GULLY approaching wiping his hands. BARNABY, thirteen, in the passenger seat already.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "beside the car",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "approaching, wiping hands",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the passenger seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Subaru Legacy wagon",
+        "one hubcap",
+        "blue tarp"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The Datsun died. This is the Legacy."
+        },
+        {
+          "who": "GULLY",
+          "text": "Whose."
+        },
+        {
+          "who": "WOOD",
+          "text": "Subaru's. It's the model."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a faded green 1993 Subaru Legacy wagon with one hubcap and a blue tarp in the back parked outside a shingle bait shop, a thin man standing beside it uncertainly, a stocky man approaching wiping his hands, an old dog already in the passenger seat, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully under the hood. A long look.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "under the hood",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hood up"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Hm."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man looking under the raised hood of an old Subaru with a long thoughtful expression",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "'Hm' what."
+        },
+        {
+          "who": "GULLY",
+          "text": "It burns oil."
+        },
+        {
+          "who": "WOOD",
+          "text": "How much."
+        },
+        {
+          "who": "GULLY",
+          "text": "All of it. Eventually. Bring it Tuesdays."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thin man asking anxious questions beside a car",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood driving off, a faint blue haze from the tailpipe, the dog's head out the window for the first time in years. Gully watching. The strip's car for the next decade.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head out the window",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blue exhaust haze",
+        "the lot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old green Subaru wagon pulling out of a gravel lot trailing a faint blue haze, an old dog's head out the window, a stocky man watching with his arms folded, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The Subaru. 'Hm.' Bring it Tuesdays. Ten years of Tuesdays."
+}

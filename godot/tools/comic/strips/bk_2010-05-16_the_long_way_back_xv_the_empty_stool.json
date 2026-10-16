@@ -1,0 +1,104 @@
+{
+  "id": "bk_2010-05-16_the_long_way_back_xv_the_empty_stool",
+  "title": "THE LONG WAY BACK · XV · The empty stool",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-05-16",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop fifteen: a bar in a town without a name, one stool empty at the end with a coaster on it and a drink nobody ordered, the bartender not looking at the stool, and a lean man at the far end who is looking at the traveler. The card: a figure with two smaller ones chained loosely below. The traveler leaves the drink.",
+  "cast": [
+    "wood_26",
+    "extra_lean_man",
+    "extra_bartender"
+  ],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a bar interior, low light, one empty stool at the end with a full glass on a coaster before it, the bartender turned away.",
+      "characters": [
+        {
+          "id": "extra_bartender",
+          "pose": "turned away",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty stool",
+        "a full glass"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dim bar interior with one empty stool at the end and a full glass on a coaster before it, the bartender turned away, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the far end: a lean man in a good jacket, looking straight at the viewer, the only face in the sequence that does.",
+      "characters": [
+        {
+          "id": "extra_lean_man",
+          "pose": "looking at the viewer",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lean man in a good jacket at the far end of a dim bar looking directly at the viewer, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card: a seated figure with two small figures below it on loose chains, the strip's line.",
+      "characters": [],
+      "props": [
+        "the Devil"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a seated figure with two small figures below on loose chains drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "XV. The Devil (Vol 5: the Demon at the Bar, the empty stool). The only face that looks back.",
+  "layout": "tiers, portrait page"
+}

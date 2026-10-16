@@ -1,0 +1,143 @@
+{
+  "id": "rc_2006-11-13_rolfcoptr_1",
+  "title": "ROLFCOPTR · day one",
+  "strip": "rolfcoptr",
+  "date": "2006-11-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site, beside Drift Wood · Digg front page by Wednesday",
+  "arc": "The 3:00 AM Protocol (Arc 2) · the parody",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "A stick figure screams internet acronyms into an uncaring abyss. That's the strip. That's the whole strip.",
+  "cast": [
+    "extra_stick_hero"
+  ],
+  "location": "dw_abyss",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": "Unsigned. No mark. No A. Finch."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A stick figure. A void. The stick figure has a helicopter rotor on its head, drawn in four lines.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "standing, rotor on head",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "void"
+      ],
+      "balloons": [
+        {
+          "who": "STICK HERO",
+          "text": "LOL"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crude stick figure with a helicopter rotor scribbled on its head standing in a blank void, crude ballpoint style, deliberately bad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Same. The void has not changed.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK HERO",
+          "text": "ROFL"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same crude stick figure in the same void, nothing changed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Same. The stick figure's rotor is spinning: three motion lines.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "rotor spinning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK HERO",
+          "text": "ROLFCOPTR"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same stick figure with its rotor now spinning in three crude motion lines, void",
+        "negative": "",
+        "notes": "ROLFCOPTR — misspelled, on purpose. If the generator letters it, it must be misspelled."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The stick figure has lifted six inches. The void is indifferent.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "six inches off the ground",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "VOID",
+          "text": "",
+          "kind": "sfx"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same stick figure hovering six inches off the ground in an indifferent void, crude, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "crude ballpoint stick figure, deliberately bad",
+    "palette": "none",
+    "paper": "whatever was nearest"
+  },
+  "notes": "The parody, day one. 40,000 people will see this by Friday. It is drawn in eight minutes. The book runs four of the six."
+}

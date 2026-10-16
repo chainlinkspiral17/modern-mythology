@@ -1,0 +1,99 @@
+# Overrun
+
+`dw_2020-08-03_overrun` · **DRIFT WOOD** · 2020-08-03 · daily4 (1x4 strip) · run 6 · The Masterwork of Mediocrity · tier B · selection full
+Venue: Arthur's site · the coastal weeklies · the aggregator · arc: *Overrun*
+
+*Summer. The opposite. The town full past full. One daily.*
+
+**Line.** razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid  
+**Palette.** ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving  
+**Paper.** bristol; Arches
+
+Cast: `wood_34`, `barnaby_ii`, `extra_tourists`
+
+---
+
+## Panel 1
+
+*wide.* Main street, August. Cars on every inch. Roller bags. Every lockbox open. Strangers in the road where Wood stood in April.
+
+- **extra_tourists** · everywhere
+- **wood_34** · at the edge, small
+- **barnaby_ii**
+
+Props: cars; roller bags; open lockboxes
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, a small coastal main street in August jammed with cars and tourists with roller bags, every door's lockbox hanging open, a man and a three-legged dog at the very edge of the frame, razor-sharp ink, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 2
+
+*medium.* Gully's. A line down the dock. GULLY, older, pulling shots with both hands. No basket on the counter — no room.
+
+- **gully_35** · pulling shots, both hands
+
+Props: line down the dock
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, a line of tourists stretching down a wooden dock to a bait-and-espresso shack, a stocky man inside working two espresso group heads at once, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 3
+
+*medium.* Wood at the end stool. Someone else on it. He's standing. The pup between his feet.
+
+- **wood_34** · standing beside his stool, occupied
+- **barnaby_ii** · between his feet
+- **extra_tourists** · on the stool
+
+Props: the stool, taken
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, a man standing beside a shop stool that a tourist now occupies, a three-legged dog between his feet, the counter crowded, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 4
+
+*wide.* The beach. The drift log. Somebody's towel on it. Wood and the pup walking past it, on.
+
+- **wood_34** · walking past
+- **barnaby_ii**
+
+Props: drift log with a stranger's towel
+
+<details><summary>image generation</summary>
+
+**prompt.** comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space, a man and a three-legged dog walking past a bleached drift log with a stranger's beach towel draped over it on a crowded beach, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: comic panel, razor-sharp confident brush-and-ink line, pristine architectural perspective, crisp silhouettes, clean expressive character geometry, generous negative space. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 40, lean man, hairline beginning to recede, weathered jaw, thickened drawing hands; THE PUP (Barnaby II) — a small wiry terrier and border collie mix with THREE legs (the left hind ends clean below the hock, healed), one ear pinned back and one cocked up, coat like unraveled steel wool, gray whiskers, black nose, scuttles, stands like a tripod; TOURISTS — people in matching fleece and sun hats with cameras, then phones, pleased with the fog; GULLY — aged 41, stocky man with a round face, thick forearms, the beginnings of a beard. WOOD usually wears blue plaid flannel open over a dark band tee, faded jeans, worn brown boots. TOURISTS usually wears matching fleece, sun hats, roller bags. GULLY usually wears backwards cap, faded brown canvas work jacket with the hood down over a gray hoodie; the black rubber apron over it only behind the counter. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: Summer. The opposite. The town full past full. One daily. Panel 1: a small coastal main street in August jammed with cars and tourists with roller bags, every door's lockbox hanging open, a man and a three-legged dog at the very edge of the frame, razor-sharp ink (in this panel: TOURISTS, WOOD, THE PUP (Barnaby II)). No dialogue in this panel. Panel 2: a line of tourists stretching down a wooden dock to a bait-and-espresso shack, a stocky man inside working two espresso group heads at once (in this panel: GULLY). No dialogue in this panel. Panel 3: a man standing beside a shop stool that a tourist now occupies, a three-legged dog between his feet, the counter crowded (in this panel: WOOD, THE PUP (Barnaby II), TOURISTS). No dialogue in this panel. Panel 4: a man and a three-legged dog walking past a bleached drift log with a stranger's beach towel draped over it on a crowded beach, no words (in this panel: WOOD, THE PUP (Barnaby II)). No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny three-legged scruff of ink, asleep (Dec 21, 2014 onward).
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *scruff* — a tiny three-legged scruff of ink, asleep (Dec 21, 2014 onward)
+
+*Notes.* The stool taken. A towel on the log.
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)

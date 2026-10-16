@@ -1,0 +1,89 @@
+{
+  "id": "dw_2019-06-16_a_third_of_a_page_2",
+  "title": "Sunday · a third of a page, ii",
+  "strip": "drift_wood",
+  "date": "2019-06-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "A Third of a Page",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The tavern roof again — 2004's second Sunday — redrawn to the smaller grid. The same composition, a third the size, the tiers thinner, the gulls fewer because there isn't room.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the tavern's roof from the garage window, the composition of dw_2004-04-18, but the tier is short and the roof crowds it. Three gulls where there were seven.",
+      "characters": [],
+      "props": [
+        "the tavern roof",
+        "three gulls"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a tavern's shingle roof seen from a garage window with three gulls on the ridge, the composition cramped into a shallow strip, no words",
+        "negative": "",
+        "notes": "Draw this page at a third of the Sunday's height; the reader can measure it against 2004."
+      },
+      "stage": null,
+      "name": "Roof"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: one gull, close, the only thing that fits.",
+      "characters": [],
+      "props": [
+        "a gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a single gull close up on a shingle roof ridge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gull"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sky above the roof, but the tier is so shallow it's a band. Held.",
+      "characters": [],
+      "props": [
+        "sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a thin band of gray sky above a roofline, very shallow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sky"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "2004's roof at a third. Three gulls, not seven.",
+  "layout": "tiers, portrait page"
+}

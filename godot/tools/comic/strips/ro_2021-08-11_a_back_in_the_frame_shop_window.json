@@ -1,0 +1,55 @@
+{
+  "id": "ro_2021-08-11_a_back_in_the_frame_shop_window",
+  "title": "A back in the frame shop window",
+  "strip": "roflcopter",
+  "date": "2021-08-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The empty frame shop's window from the sidewalk, and in the glass a man in plaid from behind looking in — the reflection facing away from us, so the page has a back twice: the man's and the reflection's. The sequence's most careful mirror.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An empty storefront window from the sidewalk with a man in plaid seen from behind standing before it and his reflection in the glass also from behind, the empty shop beyond.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, twice",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an empty storefront window seen from the sidewalk with a man in blue plaid flannel standing before it seen from behind and his reflection in the glass also showing his back, the empty shop beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A back twice.",
+  "layout": "single page, no borders"
+}

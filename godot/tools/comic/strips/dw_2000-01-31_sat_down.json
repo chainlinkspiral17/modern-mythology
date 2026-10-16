@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-01-31_sat_down",
+  "title": "Sat down",
+  "strip": "drift_wood",
+  "date": "2000-01-31",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle Rests",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle sits down in the middle of hauling a pot to the wall. He sits on the pot. He stays there. Gully finishes the wall. Nobody says anything about it, so the strip doesn't either. It draws where he sat.",
+  "cast": [
+    "gully_17",
+    "extra_uncle",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The shack's wall. GULLY carrying a crab pot to the nails. The UNCLE halfway there with another, stopping.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager carrying a crab pot toward a shingle wall of hung pots while an old man behind him stops mid-carry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The uncle sitting down on the pot he was carrying. Just sitting. Rain hood up. Looking at the bay.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a rain hood sitting on an upturned crab pot on gravel, looking out at gray water, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully hanging both pots. Not looking at the uncle. WOOD on the dock with BARNABY, not drawing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager hanging two crab pots on a wall while a young man and a dog on a dock watch an old man sitting, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The launch. The uncle on the pot, small. Gully by the wall. Wood on the dock. Three still things and a dog. The strip draws where he sat, and will draw it again.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boat launch in gray light with an old man seated on a crab pot, a teenager by a shingle wall, a young man and a dog on the dock, all still, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle sits down. Nobody says anything. The spot: where the lawn chair goes in July."
+}

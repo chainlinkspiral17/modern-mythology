@@ -1,0 +1,153 @@
+{
+  "id": "dw_2012-02-10_crab_derby_2012",
+  "title": "The Crab Derby, 2012",
+  "strip": "drift_wood",
+  "date": "2012-02-10",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Twenty-eighth annual. Wood letters it at 4 AM at the motel desk on Gully's flyer; Gully picks it up at six on the way to bait. The girl, two, has drawn on it already.",
+  "cast": [
+    "wood_34",
+    "gully_35"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 4 AM. WOOD lettering the flyer. A toddler's crayon loops already on it. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer with crayon loops",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night clerk lettering a crab-derby flyer that already has a toddler's crayon loops on it, 4 AM lamp light, razor-sharp ink, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The flyer. 28TH ANNUAL CRAB DERBY in the display face, lettered around the loops. He works with them.",
+      "characters": [],
+      "props": [
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of bold hand-lettering worked carefully around a toddler's crayon scribbles on a paper flyer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "6 AM. GULLY at the glass door in the canvas jacket, not coming in. Wood handing the flyer through.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "at the door",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "handing it through",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer",
+        "glass door",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She drew on it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I drew around it."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Yeah. Okay."
+        },
+        {
+          "who": "WOOD",
+          "text": "Where's the twenty."
+        },
+        {
+          "who": "GULLY",
+          "text": "In the flyer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in a canvas jacket at a motel's glass door at dawn taking a flyer from a clerk through the doorway, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Gully's flatbed pulling out into the gray. Wood at the door. The flyer, later, on the shack wall — the crayon loops the only color the strip allows this year.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flatbed",
+        "the flyer with crayon loops"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flatbed truck pulling out of a motel lot at gray dawn seen from a clerk at the glass door, an inset of a lettered flyer with crayon loops pinned to a shingle wall, no words",
+        "negative": "",
+        "notes": "The loops in crayon color; everything else ink. One spot of tone."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Lettered around the toddler's loops. 'In the flyer.'"
+}

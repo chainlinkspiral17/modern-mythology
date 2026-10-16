@@ -1,0 +1,102 @@
+{
+  "id": "dw_2000-03-15_youre_staying",
+  "title": "You're staying?",
+  "strip": "drift_wood",
+  "date": "2000-03-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A postcard, the Ides. Three words legible: YOU'RE STAYING? — C. The question mark drawn twice its size. Wood pins it with the question mark facing the wall. The wall now has two things facing it.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The postcard: Seattle's market sign, neon, a photo. Turned over: the tiny capitals, and three words large.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a postcard's back covered in tiny cramped writing with three words written larger, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: YOU'RE STAYING? — C. (the question mark doubled in size)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The question mark. Twice the size of anything. The pen went over it three times.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand-drawn question mark gone over three times in ink on a postcard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD pinning it. Writing side to the wall. Beside the needle tower, thumb side to the wall.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a postcard writing-side inward on a corkboard beside another postcard pinned the same way, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The corkboard: two postcards facing the wall, the PNCA letter facing out over the bus schedule. The board is starting to have a policy.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a corkboard with two postcards pinned picture-out and an official letter pinned face-out over a folded bus schedule, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two things facing the wall. The board has a policy now."
+}

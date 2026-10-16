@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-03-30_the_other_key",
+  "title": "The other key",
+  "strip": "roflcopter",
+  "date": "2023-03-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The two keys on the ring, close: one the shack's, cut and worn; the other older, a different shape, for a door the sequence never draws. The page ends the mill on the key it doesn't explain.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Extreme close-up of two keys on a ring on a nail: one a worn brass door key, the other older and a different shape, the shingle wall behind.",
+      "characters": [],
+      "props": [
+        "the other key"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, an extreme close-up of two keys on a ring hanging from a nail, one a worn brass door key and the other older and differently shaped, shingle wall behind, no words",
+        "negative": "",
+        "notes": "What it opens: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The key not explained.",
+  "layout": "single page, no borders"
+}

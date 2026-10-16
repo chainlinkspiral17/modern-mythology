@@ -1,0 +1,157 @@
+{
+  "id": "dw_2020-08-03_overrun",
+  "title": "Overrun",
+  "strip": "drift_wood",
+  "date": "2020-08-03",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Overrun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Summer. The opposite. The town full past full. One daily.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, August. Cars on every inch. Roller bags. Every lockbox open. Strangers in the road where Wood stood in April.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "everywhere",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "at the edge, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cars",
+        "roller bags",
+        "open lockboxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal main street in August jammed with cars and tourists with roller bags, every door's lockbox hanging open, a man and a three-legged dog at the very edge of the frame, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully's. A line down the dock. GULLY, older, pulling shots with both hands. No basket on the counter — no room.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "pulling shots, both hands",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "line down the dock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a line of tourists stretching down a wooden dock to a bait-and-espresso shack, a stocky man inside working two espresso group heads at once",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at the end stool. Someone else on it. He's standing. The pup between his feet.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing beside his stool, occupied",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "between his feet",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "on the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stool, taken"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man standing beside a shop stool that a tourist now occupies, a three-legged dog between his feet, the counter crowded",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The beach. The drift log. Somebody's towel on it. Wood and the pup walking past it, on.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking past",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log with a stranger's towel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog walking past a bleached drift log with a stranger's beach towel draped over it on a crowded beach, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The stool taken. A towel on the log."
+}

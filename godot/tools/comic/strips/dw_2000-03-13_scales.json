@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-03-13_scales",
+  "title": "Scales",
+  "strip": "drift_wood",
+  "date": "2000-03-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The morning after the Grunion Run. The dog is covered in fish scales, silver, and refuses the bath. Wood draws him glittering. It's the closest the strip gets to color for a year.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The ranch house's back step. BARNABY covered in fish scales, glittering, pleased. WOOD with a bucket and a towel.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small scruffy dog covered in silver fish scales sitting pleased on a back step while a young man approaches with a bucket and towel, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's coat: scales like sequins, drawn as a hundred small white shapes on black.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small dog's wiry coat glittering with fish scales drawn as small white shapes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The bucket. The dog, three feet from it, not moving. Wood, three feet from the dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bucket of water on a step, a small dog refusing to approach it, a young man crouched at a standoff, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The pad: the dog, glittering. The strip's closest thing to color. Wood keeps the scales; the bath waits.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with an ink drawing of a small dog glittering with scales, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The closest to color for a year. The bath waits."
+}

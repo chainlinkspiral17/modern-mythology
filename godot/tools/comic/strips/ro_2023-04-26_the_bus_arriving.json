@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-04-26_the_bus_arriving",
+  "title": "The bus arriving",
+  "strip": "roflcopter",
+  "date": "2023-04-26",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The bus coming down 101 toward the depot at 4:08 with its headlights on, drawn from the bench's point of view. Two minutes of a morning he wasn't at. The page gives it the whole width.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From a depot bench: a bus coming down a dark coastal highway with its headlights on, still distant, the road wet, the sea black beside it.",
+      "characters": [],
+      "props": [
+        "the headlights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, from a bus depot bench, a bus coming down a dark coastal highway with its headlights on still distant, wet road and black sea beside it, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two minutes of a morning he wasn't at.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,177 @@
+{
+  "id": "dw_2007-07-06_the_fourth_2007_the_tourist_returns",
+  "title": "The Fourth, 2007 · the tourist returns",
+  "strip": "drift_wood",
+  "date": "2007-07-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "Two days after: the tourist back for his shirt, and Gully handing it down folded, and the tourist trying to give Gully money for the coffee from the Fourth. Gully says it was a coffee. The tourist looks at Wood on the stool. Wood shrugs at the dog.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The TOURIST in the door. GULLY reaching to the high shelf. WOOD on the stool.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "in the door",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "reaching up",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "I think I left a—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist in a bait-shack doorway while a stocky man reaches up to a high shelf and a thin man watches from a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY handing the folded shirt down.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "handing it down",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "taking it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the folded shirt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man handing a folded t-shirt across a counter to a tourist",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The TOURIST holding out a bill.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "holding out a bill",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bill"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "For the coffee. The other night."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist holding out a folded bill across a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY not taking it. WOOD shrugging at the dog.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "not taking it",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "shrugging at the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It was a coffee."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man declining a bill with a small shake of the head while a thin man on a stool shrugs down at a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "It was a coffee."
+}

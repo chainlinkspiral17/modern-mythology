@@ -1,0 +1,134 @@
+{
+  "id": "dw_2016-10-18_the_second_box_2",
+  "title": "The second box, ii",
+  "strip": "drift_wood",
+  "date": "2016-10-18",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Second Box",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Second Box · deepening)",
+  "logline": "Tuesday. Wood doesn't open the door for the box. The pup guards it from inside instead, through the door, which is harder. The strip draws the door from both sides.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage porch, outside: the empty box on the step, rain starting.",
+      "characters": [],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small garage porch with an open empty cardboard box on the step as rain begins, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Inside: BARNABY II sitting facing the closed door, ears up, guarding through it. WOOD at the table, not opening it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "facing the door",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "at the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the closed door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, inside a garage, a small three-legged dog sitting facing a closed door with its ears up while a man draws at a table without looking, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Outside: the box, rain, the door. A dog's nose-print on the door's glass from inside.",
+      "characters": [],
+      "props": [
+        "a nose print on the glass"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a closed garage door with a small dog's nose-print visible on the glass from inside, an empty box on the step in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Inside: Wood glancing at the dog. The dog not glancing back. Duty.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "glancing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "not glancing back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's empty."
+        },
+        {
+          "who": "WOOD",
+          "text": "...He knows it's empty."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man glancing at a small three-legged dog that keeps its eyes fixed on a closed door",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Guarded through the door. 'He knows it's empty.'"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "ro_2025-08-31_the_eye_sign",
+  "title": "The eye sign",
+  "strip": "roflcopter",
+  "date": "2025-08-31",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "A hand-painted sign with an eye on it in a shop window on main street, new this summer, unexplained. The strip would have made a joke. The page draws it straight and moves on.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Main street, late August, the light going long. A storefront that was Wagner's Hardware, then empty, then something else: in its window, a hand-painted sign — a single open eye, no words — propped against the glass. The reflection of the street in the window over it. The seawall at the far end. The ridge glow above the roofs, large.",
+      "characters": [],
+      "props": [
+        "the eye sign",
+        "Wagner's old storefront",
+        "the ridge glow, large"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small-town main street in long late-August light with a former hardware storefront whose window holds a hand-painted sign of a single open eye with no words propped against the glass, the street reflected over it, a seawall at the far end, a large warm glow above the rooftops, no people, no words",
+        "negative": "",
+        "notes": "Vol 7's sign. Draw it plain. No joke."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The eye in Wagner's window. Drawn straight.",
+  "layout": "single page, no borders"
+}

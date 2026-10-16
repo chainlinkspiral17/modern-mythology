@@ -1,0 +1,139 @@
+{
+  "id": "dw_2007-12-21_december_2007",
+  "title": "December, 2007",
+  "strip": "drift_wood",
+  "date": "2007-12-21",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Does Chloe come home. No email. No card. The strip draws the mailbox for four panels.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mailbox at the alley's mouth. WOOD opening it. Empty. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "opening the mailbox",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man opening a roadside mailbox at the mouth of a gravel alley and finding it empty, a small dog beside him, December, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The monitor in the garage. Inbox: a ringtone company. Nothing else.",
+      "characters": [],
+      "props": [
+        "monitor: an inbox with one corporate email"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a monitor showing an email inbox with a single corporate message and nothing else",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The mailbox again, next day. Empty.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "checking again",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same young man checking the same empty mailbox the next day, a dog waiting, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Christmas Eve. The mailbox. Wood not opening it. Walking past it with the dog toward the beach. The strip stops checking.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking past",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox, closed",
+        "the road to the beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a dog walking past a closed roadside mailbox without stopping, toward a beach, December, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Nothing comes. The strip stops checking on Christmas Eve. Julian: later."
+}

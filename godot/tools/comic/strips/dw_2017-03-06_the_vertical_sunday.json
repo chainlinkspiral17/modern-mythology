@@ -1,0 +1,155 @@
+{
+  "id": "dw_2017-03-06_the_vertical_sunday",
+  "title": "The vertical Sunday",
+  "strip": "drift_wood",
+  "date": "2017-03-06",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Scroll",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Scroll · deepening)",
+  "logline": "Monday. The aggregator runs a Sunday vertical anyway: they've cut it themselves. The strip draws the cut Sunday on a phone at Gully's, the tiers stacked wrong, the gull on its side. Wood looks once. Gully takes the phone away.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST's phone on the counter, showing a Sunday cut into a vertical strip: the tiers stacked, the bay in three squares, the gull rotated ninety degrees at the bottom.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the phone: the cut Sunday"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a phone on a bait-shop counter showing a watercolor comic page chopped into vertical squares with a small gull mark rotated sideways at the bottom, a thin man and a stocky man looking",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The gull. On its side. Ninety degrees. Nobody at the aggregator turned it back.",
+      "characters": [],
+      "props": [
+        "the gull, sideways"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a phone screen with a tiny gull mark rotated ninety degrees at the bottom of a chopped image",
+        "negative": "",
+        "notes": "The gull sideways: the strip's one visible wound in the arc."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at it once. Gully's hand coming into the panel and turning the phone face-down on the counter. The tourist not minding.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "turning the phone face down",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looked once",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the phone, face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man's hand turning a phone face down on a counter as a thin man looks away, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The counter. The phone face-down. Wood drawing. Gully pouring. The dog. Regular. The arc ends with the phone on its face.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the phone, face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a bait-shop counter with a phone lying face down, a thin man drawing, a stocky man pouring coffee, a small three-legged dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The gull sideways. Gully turns the phone face down."
+}

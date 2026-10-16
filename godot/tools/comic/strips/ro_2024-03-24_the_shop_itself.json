@@ -1,0 +1,63 @@
+{
+  "id": "ro_2024-03-24_the_shop_itself",
+  "title": "The shop itself",
+  "strip": "roflcopter",
+  "date": "2024-03-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The frame shop's storefront in 2024, the last page of the sequence: a nail salon now, the same door, the same transom, and in the window's reflection the street and a man from behind with a small dog, looking at it. Twenty-nine years.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A storefront with a nail salon's sign, the same old door and transom as a frame shop, and in the window's reflection the street and a man in plaid from behind with a small three-legged dog, looking at it.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a reflection, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the transom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small-town storefront now a nail salon with an old door and transom, its window reflecting the street and a man in plaid flannel seen from behind with a small three-legged dog looking at it, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A nail salon. The transom the same.",
+  "layout": "single page, no borders"
+}

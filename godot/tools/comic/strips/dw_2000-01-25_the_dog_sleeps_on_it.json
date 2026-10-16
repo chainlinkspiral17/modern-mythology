@@ -1,0 +1,109 @@
+{
+  "id": "dw_2000-01-25_the_dog_sleeps_on_it",
+  "title": "The dog sleeps on it",
+  "strip": "drift_wood",
+  "date": "2000-01-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Page One",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Page one on the bedroom floor overnight. The dog sleeps on it. In the morning it has a dog-shaped warmth and one paw print. Wood keeps the print. The novel now has a reader.",
+  "cast": [
+    "barnaby",
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom floor, morning light. A sheet of lined paper. BARNABY asleep on it in the ammonite ball.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog curled tightly asleep on a sheet of lined paper on a bedroom floor in morning light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "WOOD's hand lifting the dog's edge. The paper under him: warm, a paw print in the corner, mud.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand lifting a sleeping dog to reveal a muddy paw print on the corner of a sheet of paper, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood holding the page up. The print. The dog awake now, unbothered.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding up a sheet of paper with a paw print on it while a small dog yawns, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The page going into the box. Print and all. The strip shows the print going in, not the words.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a sheet of paper with a muddy paw print being placed into a cardboard box, the writing unreadable, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The novel's first reader. The paw print stays in the box."
+}

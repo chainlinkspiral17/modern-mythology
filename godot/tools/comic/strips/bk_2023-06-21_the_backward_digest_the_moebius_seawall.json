@@ -1,0 +1,51 @@
+{
+  "id": "bk_2023-06-21_the_backward_digest_the_moebius_seawall",
+  "title": "THE BACKWARD DIGEST · The moebius seawall",
+  "strip": "backup",
+  "series": "THE BACKWARD DIGEST",
+  "date": "2023-06-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "private · after the print tech's misfold of Sept 30, 1999 · Box 23 onward",
+  "arc": "THE BACKWARD DIGEST",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The seawall drawn as a strip with a half-twist, the wall's top edge becoming its face becoming its top edge again, the bench on both sides at once, the crow walking the whole loop and arriving underneath itself. The page draws the town's one straight thing as a thing with one side.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A long seawall drawn as a Möbius band filling the page, its top edge turning into its face and back, a bench appearing on both surfaces, a crow walking the loop and arriving beneath its own starting point, the bay's water on the inside and outside at once.",
+      "characters": [],
+      "props": [
+        "the moebius seawall",
+        "the crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a long concrete seawall drawn as a Möbius band filling the page with its top edge twisting into its face and back, a bench on both surfaces and a crow walking the loop, water on both sides, no words",
+        "negative": "",
+        "notes": "The town's one straight thing with one side. Vol 7's crow walks it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, turned: mirrored, overlaid, folded",
+    "palette": "the private washes; the 1997 xerox black where 1997 is quoted",
+    "paper": "Arches; one page on a printed misfold"
+  },
+  "notes": "One side.",
+  "layout": "a Möbius band"
+}

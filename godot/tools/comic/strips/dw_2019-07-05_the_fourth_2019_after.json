@@ -1,0 +1,140 @@
+{
+  "id": "dw_2019-07-05_the_fourth_2019_after",
+  "title": "The Fourth, 2019 · after",
+  "strip": "drift_wood",
+  "date": "2019-07-05",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The morning after two things watched: the strip drawn with the fireworks in the top half and the sign in the bottom, and Gully asking which half is the strip. Wood says the fold. Gully looks for a fold. There isn't one. The strip is a Sunday drawn on a weekday, narrow.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with yesterday's strip: fireworks above, the sign below. WOOD on the stool. The PUP.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "with the strip",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "yesterday's strip"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Which half's the strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron holding a comic strip split into an upper half of fireworks and a lower half of a neon sign, a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The fold."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool giving a cryptic answer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY turning the strip over, looking for a fold. Flat.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking for a fold",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man turning a flat comic strip over looking for a fold that isn't there",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The strip, close: no fold; the seam between the two halves is a line of water.",
+      "characters": [],
+      "props": [
+        "the seam, water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a comic strip where the seam between fireworks above and a neon sign below is a thin line of drawn water",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The fold is water."
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-06-16_the_stamp",
+  "title": "The stamp",
+  "strip": "roflcopter",
+  "date": "2022-06-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Reading Room",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The due-date stamp itself on the librarian's desk, close, its wheels set to a date the page doesn't letter, the ink pad open. The thing that put 2004, 2011, 2019 on his card.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a rubber date stamp with rotating wheels on a library desk, an open ink pad beside it, the wheels' digits turned away from the reader.",
+      "characters": [],
+      "props": [
+        "the date stamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a rubber date stamp with rotating wheels on a library desk beside an open ink pad, the digits turned away, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2022-07-17."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The wheels turned away.",
+  "layout": "single page, no borders"
+}

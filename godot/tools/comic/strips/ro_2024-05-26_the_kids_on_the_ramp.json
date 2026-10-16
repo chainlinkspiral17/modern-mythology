@@ -1,0 +1,69 @@
+{
+  "id": "ro_2024-05-26_the_kids_on_the_ramp",
+  "title": "The kids on the ramp",
+  "strip": "roflcopter",
+  "date": "2024-05-26",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "Gully's two on the ramp in May: the girl, fourteen, sitting; the boy, eleven, sliding down it on cardboard; the pup at the bottom. Built for a dog; used by everyone. Gully's boots at the top.",
+  "cast": [
+    "extra_gully_kid",
+    "barnaby_ii",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A plank ramp at a shingle shack's door with a fourteen-year-old girl sitting on its edge and a boy of eleven sliding down it on flattened cardboard, a small three-legged dog at the bottom, a stocky man's boots at the top.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "fourteen and eleven",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at the bottom",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "boots",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cardboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a plank ramp at a shingle shack's door with a teenage girl sitting on its edge and a boy sliding down it on flattened cardboard, a small three-legged dog at the bottom and a stocky man's boots at the top, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Built for a dog; used by everyone.",
+  "layout": "single page, no borders"
+}

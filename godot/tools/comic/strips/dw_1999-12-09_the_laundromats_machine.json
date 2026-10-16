@@ -1,0 +1,128 @@
+{
+  "id": "dw_1999-12-09_the_laundromats_machine",
+  "title": "The laundromat's machine",
+  "strip": "drift_wood",
+  "date": "1999-12-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Winter, Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The laundromat's copier: a dime a page, gray, the glass scratched. The strip comes out looking like a rumor of itself. Wood runs it anyway. The owner says it looks like the early ones. He says there are no early ones. She says there are now.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat's corner copier: coin slot, a scratched glass, a sign as blocks. WOOD feeding dimes. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man feeding dimes into a small scratched coin-operated copier in a laundromat corner, a small dog beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A copy coming out: gray, streaked, the strip barely there. A rumor of a strip.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a gray streaked photocopy of a comic strip barely legible through the machine's scratches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The LAUNDRY owner with one.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Looks like the early ones."
+        },
+        {
+          "who": "WOOD",
+          "text": "There are no early ones."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "There are now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a poor photocopy up to the light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The copy, close: the scratches on the glass have become rain. The strip notices. The strip keeps them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a gray photocopy where scratches on the copier glass read as streaks of rain across the drawing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'There are now.' The scratches become rain; the strip keeps them for three weeks."
+}

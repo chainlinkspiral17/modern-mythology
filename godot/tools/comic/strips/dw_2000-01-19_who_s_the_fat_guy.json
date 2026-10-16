@@ -1,0 +1,137 @@
+{
+  "id": "dw_2000-01-19_who_s_the_fat_guy",
+  "title": "Who's the fat guy",
+  "strip": "drift_wood",
+  "date": "2000-01-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Daumier Book",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully looks at the Daumier. 'Who's the fat guy.' A king. 'What'd he do.' Wood explains the July Monarchy for three panels. Gully draws the king as a walrus in the fourth. It's better.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The Daumier open on the counter — against rule four; nobody's drawing yet. GULLY looking. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Who's the fat guy."
+        },
+        {
+          "who": "WOOD",
+          "text": "A king."
+        },
+        {
+          "who": "GULLY",
+          "text": "What'd he do."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a heavy book of lithographs open on a bait shack counter, a stocky teenager looking at it, a young man and a dog nearby, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, explaining. The balloon over the panel's edge.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Louis-Philippe. The July Monarchy. The bourgeois king. Daumier drew him as a pear and went to prison for six months—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man explaining something at length with his hands while a teenager listens patiently, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, with a pen and a napkin, not listening.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a stocky teenager drawing on a napkin with a ballpoint pen, absorbed, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The napkin: the king as a walrus. In a crown. It's better. Wood's face, above it, knowing it's better.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a napkin with a ballpoint drawing of a walrus wearing a crown, a young man's face above it conceding, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gully's walrus king beats the explanation. Wood concedes with one word."
+}

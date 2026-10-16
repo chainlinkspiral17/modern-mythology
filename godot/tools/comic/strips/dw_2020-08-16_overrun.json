@@ -1,0 +1,126 @@
+{
+  "id": "dw_2020-08-16_overrun",
+  "title": "Sunday · overrun",
+  "strip": "drift_wood",
+  "date": "2020-08-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Overrun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The opposite: the beach in August packed edge to edge, umbrellas, the drift log invisible under people, the pup on a leash for the first time in a Sunday. The strip counts nobody.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach from the bluff stairs, packed: umbrellas, coolers, kites, hundreds of figures, the drift log somewhere under them. A man and a leashed three-legged dog at the bottom of the stairs, from behind, stopped.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind, at the bottom of the stairs",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on a leash",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "hundreds",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "umbrellas",
+        "the log, buried"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a beach seen from bluff stairs packed edge to edge with umbrellas, coolers, kites and hundreds of people, a man and a small three-legged dog on a leash stopped at the foot of the stairs seen from behind, no words",
+        "negative": "",
+        "notes": "The only Sunday where the pup is on a leash."
+      },
+      "stage": null,
+      "name": "Packed"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the drift log, with four strangers sitting on it and a towel over its end.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "four, on the log",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the log, occupied"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a bleached drift log on a crowded beach with four strangers sitting on it and a towel draped over one end, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the man and the dog going back up the stairs. The beach below, full. Held.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "going back up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stairs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a man and a small three-legged dog climbing back up bluff stairs away from a packed beach below, seen from behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Up"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Overrun. The log occupied. They go back up.",
+  "layout": "tiers, portrait page"
+}

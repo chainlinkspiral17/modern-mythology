@@ -1,0 +1,141 @@
+{
+  "id": "dw_2007-02-12_crab_derby_2007_after",
+  "title": "Crab Derby, 2007 · after",
+  "strip": "drift_wood",
+  "date": "2007-02-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "The Monday after the hundred-dollar offer: the 1998 flyer in a cheap plastic frame now, screwed to the wall, four screws. Gully with the screwdriver. Wood asks if that's about the hundred dollars. Gully says it's about the weather.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The wall. The 1998 flyer in a plastic frame. GULLY with a screwdriver, the last screw going in. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "driving a screw",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plastic frame",
+        "four screws"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron driving a screw through a cheap plastic frame holding an old flyer on a shingle wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That about the hundred dollars?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man asking a question with his arms folded",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY, not turning.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "not turning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It's about the weather."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man answering over his shoulder while working a screwdriver",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The framed flyer, close. The other twenty-two, unframed, going on down the wall.",
+      "characters": [],
+      "props": [
+        "one framed, twenty-two not"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on one flyer in a plastic frame on a shingle wall with a row of unframed flyers continuing beside it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "It's about the weather. One framed; the rest not."
+}

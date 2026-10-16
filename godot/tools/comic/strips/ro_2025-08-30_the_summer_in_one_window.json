@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-08-30_the_summer_in_one_window",
+  "title": "The summer in one window",
+  "strip": "roflcopter",
+  "date": "2025-08-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The bookstore's window at the end of August: the zines, the eye sign's reflection from across the street, a crow on the sill, a girl's bicycle leaning below, and in the glass a man in plaid from behind with an old dog — the whole other story and the strip's own in one pane. The sequence ends on the glass.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bookstore window holding stapled zines, reflecting a hand-painted eye sign from across the street, a crow on the sill and a bicycle leaning below, and in the glass the reflection of a man in plaid from behind with an old three-legged dog.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a reflection, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bookstore window holding small stapled zines and reflecting a hand-painted eye sign from across the street, a crow on the sill and a bicycle leaning below, the glass also reflecting a man in plaid flannel seen from behind with an old three-legged dog, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Both stories in one pane.",
+  "layout": "single page, no borders"
+}

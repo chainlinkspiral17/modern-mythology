@@ -1,0 +1,169 @@
+{
+  "id": "dw_2007-02-09_crab_derby_2007",
+  "title": "The Crab Derby, 2007",
+  "strip": "drift_wood",
+  "date": "2007-02-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Twenty-third annual. A tourist offers Gully a hundred dollars for the 1998 flyer. Gully says it's not for sale. Wood hears it from the stool.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST pointing at the wall of flyers, the oldest one, 1998, weathered. GULLY. WOOD on the stool, normal size, drawing this year's on the counter.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "pointing at the 1998 flyer",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 1998 flyer",
+        "the row"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "The first one. The '98. A hundred bucks."
+        },
+        {
+          "who": "GULLY",
+          "text": "Not for sale."
+        },
+        {
+          "who": "TOURIST",
+          "text": "Two hundred."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist pointing at the oldest of a row of crab flyers on a shingle wall, a man in an apron behind the counter, a thin man on a stool drawing, a dog, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It was twenty. It's still twenty. Nobody's paid it but me."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a stocky man in an apron, flat and final",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood on the stool, having heard. Not looking up. The new crab under his pen. Two crabs, a cup, and this year — a third, very small crab, in the corner, facing the first.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer with three crabs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand drawing a crab flyer with two large crabs, a cup, and a very small third crab in the corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Thirteen flyers. Gully pinning. The tourist gone. The twenty on the counter. Wood not taking it yet.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pinning",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "the twenty on the counter between them",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thirteen flyers",
+        "twenty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "thirteen crab flyers in a row, a man in an apron pinning the newest, a twenty-dollar bill lying on the counter between him and a thin man on a stool, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Two hundred dollars refused. The third small crab: the tourist, maybe. The strip doesn't say."
+}
