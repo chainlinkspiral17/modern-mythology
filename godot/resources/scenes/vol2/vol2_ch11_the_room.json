@@ -1,0 +1,125 @@
+{
+  "id": "vol2_ch11_the_room",
+  "vol": 2,
+  "chapter": 11,
+  "type": "interlude",
+  "title": "xi. Terminal Velocity — The Room",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_room_ranch_bedroom.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the room",
+      "sub": "Up the hill · The same afternoon",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I asked him how often he's been in the room. He responds."
+    },
+    {
+      "t": "narrate",
+      "text": "Never, he says. It won't have me. I open that door and it's a white room with a drain in the floor."
+    },
+    {
+      "t": "narrate",
+      "text": "He says it gets shy around him. It only ever makes somebody else's. That's why he needs his old friends, one at a time, and he says it like he's apologizing and like he isn't."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay out on the roof",
+          "goto": 10
+        },
+        {
+          "text": "climb back in through the window",
+          "goto": 13
+        }
+      ]
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_room_roof_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "From the roof the field runs down to the road the way it always did, the second house off to the left with its windows out. Past the road it goes wrong. The hill across is lit up to the top, a quilt of little lights, and somewhere down in it a car taps its horn twice."
+    },
+    {
+      "t": "narrate",
+      "text": "That's not mine, I tell him. He looks at it a long time. No, he says. I guess it isn't."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_room_ranch_bedroom.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "On the nightstand where my clock radio should be there's a stick of grey plastic the length of a pencil box, no label, warm like it's been sitting in the sun. Dean puts it in his pocket and doesn't say anything about it."
+    },
+    {
+      "t": "narrate",
+      "text": "The blinds start up. There's no wind I can feel."
+    },
+    {
+      "t": "narrate",
+      "text": "Low e note frequency vibration\nwind rattle of plank blinds\nclacking strung along sway in place\nechoing Morse gibberish infrequent."
+    },
+    {
+      "t": "narrate",
+      "text": "Dean stands with his head tipped, counting. His lips move. I think he's writing it down somewhere behind his eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind the door, on the hook where my jacket hung, the hem of something yellow. A child's. Beaded wet. When I turn to look it's my jacket."
+    },
+    {
+      "t": "narrate",
+      "text": "Thought of Her as it should be\npassing glance held astray\nsharp crack delirium tremens"
+    },
+    {
+      "t": "narrate",
+      "text": "I ask him who she is. He says, you tell me, it's your room. Then he laughs like we're back on deadline in the newsroom and says I have to see the pool again, there's something about the light at this hour."
+    },
+    {
+      "t": "narrate",
+      "text": "He shuts the door behind us. There's no handle on the hall side. I only notice once it's closed."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_glass_mansion_bay.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Driving down the hill I could still hear the blinds. When I got home I went through the old notebook for anything I'd kept of that town he didn't already have a copy of."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch11_the_room_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch12x_field_notes"
+    }
+  ]
+}

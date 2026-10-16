@@ -1,0 +1,247 @@
+{
+  "id": "vol2_ch12x_loose_pages",
+  "vol": 2,
+  "chapter": 12,
+  "type": "interlude",
+  "title": "Small Wood — loose pages",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "loose pages",
+      "sub": "Small Wood · The back of the scrapbook",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "A steno page, no date."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_farmhouse_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "A cold ugly night to spit into a cup on the porch. Chew, whiskey and hormonal cats circling and screeching."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad is passed out, inside on his recliner, slumped at a precarious angle. We made the hard choice between the heating bill and fuel for the pick-up."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "turn the page over",
+          "goto": 12
+        },
+        {
+          "text": "hold it up to the light first",
+          "goto": 11
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Pressed into the paper from the page above, a sentence in someone else's pen. All you can read is the word Alsea."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Her fingers suffer. The neck musette, her vertebrae tremolo. Crooked upright, edge of seat. Her only posture, perfect, rigoured mortis."
+    },
+    {
+      "t": "narrate",
+      "text": "Eyes intent, scanning, waiting. Cello cradled, arachnid cuddled. Dressed in black, resin flecked, facial crane half ecstatic."
+    },
+    {
+      "t": "narrate",
+      "text": "A typed page, a title across the top in capitals and a pair of colons I must have thought were clever."
+    },
+    {
+      "t": "narrate",
+      "text": "Small Wood Volumes :: Deluxe"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bedroom_window_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "When he brings her over, he doesn't mention his grandfather, stuck to the recliner at a forty-five degree decline, as he likes to think of it, slumped over to one side, the television glow never not emitting."
+    },
+    {
+      "t": "narrate",
+      "text": "The rest of the page is the poem I heard in the blinds. I don't remember writing it down before that afternoon. The ink says I did."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Three pages of a screenplay, photocopied crooked, a coffee ring over the title. HOUSE OF GLASS. Revision 4.0. January 1st, 2001."
+    },
+    {
+      "t": "narrate",
+      "text": "Across the top, red felt-tip, block capitals I knew from the newsroom proofs: TEN IS NOT ENOUGH."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_glass_apartment_ext_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "EXT. THE HOUSE OF GLASS",
+      "sub": "Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "An apartment building, modern and stylish, but not very big. Attractive people in the foreground talk, point, and walk inside. It quickly becomes apparent this is a piece of marketing."
+    },
+    {
+      "t": "narrate",
+      "text": "TEXT and Voice Over: What is the House of Glass?"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_white_room.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "INT. THE HOUSE OF GLASS",
+      "sub": "Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "A generic white room."
+    },
+    {
+      "t": "say",
+      "char": "Actor/Artist",
+      "expr": "neutral",
+      "text": "A work in progress abstract expression of human yearning?"
+    },
+    {
+      "t": "say",
+      "char": "Actor/Musician",
+      "expr": "neutral",
+      "text": "A freestyle techno groove of postmodern living?"
+    },
+    {
+      "t": "say",
+      "char": "Actor/Writer",
+      "expr": "neutral",
+      "text": "A cohabitation community evoking equal parts Burroughs and Kafka?"
+    },
+    {
+      "t": "say",
+      "char": "Actor/Actor",
+      "expr": "amused",
+      "text": "Or D. All of the above. Hi. I'm an actor, playing an actor. And I'm here to cut through the crap and tell it to you like it is."
+    },
+    {
+      "t": "say",
+      "char": "Actor/Actor",
+      "expr": "neutral",
+      "text": "The House of Glass is your new home. There are ten cameras in every room. Anyone can watch you, and you can watch anyone else. It's pretty simple."
+    },
+    {
+      "t": "say",
+      "char": "Actor/Actor",
+      "expr": "neutral",
+      "text": "If you feel that your privacy is being invaded, that's because it is. If you have a problem with this, contact the manager and your contract will be terminated."
+    },
+    {
+      "t": "say",
+      "char": "Actor/Actor",
+      "expr": "warm",
+      "text": "The only rule is this: If you break the law, and you get caught, it's your own damn fault. Have a pleasant stay!"
+    },
+    {
+      "t": "interlude",
+      "text": "INT. PENNY'S ROOM",
+      "sub": "Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "PENNY is watching this video. Boxes fill the room, opened and unopened. Penny sighs, picks up the remote and turns on the television."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_glass_apartment_monitors.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "INT. THE HOUSE OF GLASS",
+      "sub": "Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Shooting through camera views. Situated high and low, they capture movement and sound. People by the dozen are displayed. Men and women, mostly young, still in their prime are brushing their teeth, reading the newspaper, watching television."
+    },
+    {
+      "t": "narrate",
+      "text": "We push through a hallway of an apartment building, doors line each side, staggered. Empty."
+    },
+    {
+      "t": "narrate",
+      "text": "Back to the hurried rush of the cameras. People. Lives."
+    },
+    {
+      "t": "narrate",
+      "text": "Suddenly, maggots squirm, hundreds of them wriggling in extreme close-up."
+    },
+    {
+      "t": "narrate",
+      "text": "The fourth page is gone. The staple's still in."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_school_newspaper.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Under it, a masthead razored out of the school paper, winter term. THE TIMBERLINE. Editor: D. Dean. Photography: K. Layout and design: a name cut out so clean the page behind shows through."
+    },
+    {
+      "t": "narrate",
+      "text": "Stapled to it, a comic on notebook paper that nobody ran. A boy and a tide line. Signed in a kid's capitals, A. FINCH, GR. 8. Across the bottom, the red felt-tip again: NOT YET."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch12x_loose_pages_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch12x_beach_blanket_bingo"
+    }
+  ]
+}

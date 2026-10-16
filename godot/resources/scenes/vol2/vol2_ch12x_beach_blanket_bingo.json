@@ -1,0 +1,351 @@
+{
+  "id": "vol2_ch12x_beach_blanket_bingo",
+  "vol": 2,
+  "chapter": 12,
+  "type": "interlude",
+  "title": "Small Wood — Beach Blanket Bingo",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_rest_stop_wind.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Oregon Coast Mid-life Crisis Beach Blanket Bingo",
+      "sub": "The back pocket · Undated",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Last thing in the back pocket: a treatment typed on the backs of crab derby flyers. The flyers are for a derby that hasn't been held yet. The paper hasn't yellowed."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_bonfire.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Random assorted shots play out over music: A beach bonfire, a man with long mixed gray hair, beach shorts, and a hoodie with hands tucked in bops along to the music, the time of day growing either bright or dim. Feet rushing up precarious stone steps."
+    },
+    {
+      "t": "narrate",
+      "text": "People loading up cars, throwing a kayak up top, a bbq with a bag of charcoal in the trunk, binders of CDs, and albums in a box, a turntable with speakers in the backseat."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bingo_hall_projector.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "People milling about at a venue, old folk lining up for a smoke outside as an act finishes. The instruments are quickly taken away for a BINGO caller to set up and begin calling numbers without so much as an introduction or sound check."
+    },
+    {
+      "t": "narrate",
+      "text": "The lady at the sound booth swats away a young man talking on his phone."
+    },
+    {
+      "t": "narrate",
+      "text": "The overhead projector the Bingo Caller uses for the numbers combines with slides of old postcards from an impossible coastal theme park. Then a fluid dribbled down dissolves large swaths of color in a psychedelic haze. The numbers keep coming, sound carrying over the radio…"
+    },
+    {
+      "t": "narrate",
+      "text": "which carries out over to…"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_bonfire.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "EXT. A BEACH PARTY",
+      "sub": "Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Light from fire and car headlamps and human headlamps and assorted glowy fun bits reveal A DJ playing inside a small tent. A few dancers come and go and bob along or get into it. The Bingo Caller's voice is one of many, a beat more so than a chorus."
+    },
+    {
+      "t": "narrate",
+      "text": "A man keeps catching the DJ's eye. Before he can approach her, he is stopped by some guy who seems to recognize him."
+    },
+    {
+      "t": "say",
+      "char": "Passing Stranger",
+      "expr": "neutral",
+      "text": "Chuck right?"
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "Not Chuck."
+    },
+    {
+      "t": "narrate",
+      "text": "Not Chuck takes a step further and bumps into a woman, or rather, she clings to him."
+    },
+    {
+      "t": "say",
+      "char": "Bump Woman",
+      "expr": "tired",
+      "text": "The day I've been having."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "I think it's night—"
+    },
+    {
+      "t": "say",
+      "char": "Bump Woman",
+      "expr": "worried",
+      "text": "My ex fell in love with a biker and now the whole gang is after me."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "That's entirely too much for me to deal with right now."
+    },
+    {
+      "t": "narrate",
+      "text": "Not Chuck approaches the DJ who keeps her head low."
+    },
+    {
+      "t": "say",
+      "char": "DJ",
+      "expr": "neutral",
+      "text": "No requests."
+    },
+    {
+      "t": "narrate",
+      "text": "Not Chuck stops to think for a second."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "Do you have any Bingo cards?"
+    },
+    {
+      "t": "narrate",
+      "text": "DJ pulls out a pad of cards and tears off Not Chuck one."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "amused",
+      "text": "Thanks. I think I've kept track of the first few."
+    },
+    {
+      "t": "narrate",
+      "text": "DJ nods and continues nodding along with the beat. Not Chuck exits the tent and looks out over the campground."
+    },
+    {
+      "t": "interlude",
+      "text": "EXT. THE CAMPGROUND",
+      "sub": "Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "It's just off the beach, a glow of lights, followed by a dune and a stretch of sand, leading to a white-capped moonlit beach, dotted with campfires and larger bonfires and other odd structures."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "go on down to the fires",
+          "goto": 37
+        },
+        {
+          "text": "stand at the top of the dune a while",
+          "goto": 36
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "From the top of the dune the fires run down the beach in a line, too evenly spaced, as if somebody laid them out on a grid."
+    },
+    {
+      "t": "narrate",
+      "text": "Two women are sitting on a patchwork quilt by the fire. One is holding a guitar, the other is lying on her back looking up at the stars."
+    },
+    {
+      "t": "say",
+      "char": "Guitar Gal",
+      "expr": "neutral",
+      "text": "My dang kid is now making more money than me."
+    },
+    {
+      "t": "say",
+      "char": "Star Gal",
+      "expr": "amused",
+      "text": "A not-small part of me is very glad I never got knocked up for real."
+    },
+    {
+      "t": "say",
+      "char": "Guitar Gal",
+      "expr": "neutral",
+      "text": "I'm glad you looked like your picture."
+    },
+    {
+      "t": "say",
+      "char": "Star Gal",
+      "expr": "neutral",
+      "text": "I don't understand people who don't look like their pictures. Why trick the fundamentals of the universe to lie about something everyone else can see very first thing? Light from the sun and moon and stars, doesn't try to fool us."
+    },
+    {
+      "t": "say",
+      "char": "Guitar Gal",
+      "expr": "neutral",
+      "text": "Light ages us. Every exposure speeds up our decay. People are cruel, but the universe is without remorse."
+    },
+    {
+      "t": "narrate",
+      "text": "Star gal stretches out, and hikes up her colorful dress to her knees."
+    },
+    {
+      "t": "say",
+      "char": "Star Gal",
+      "expr": "amused",
+      "text": "Radioactive legs for days."
+    },
+    {
+      "t": "say",
+      "char": "Guitar Gal",
+      "expr": "neutral",
+      "text": "We need to go someplace very far away."
+    },
+    {
+      "t": "say",
+      "char": "Star Gal",
+      "expr": "neutral",
+      "text": "For a very long time, or just a very good time?"
+    },
+    {
+      "t": "say",
+      "char": "Guitar Gal",
+      "expr": "neutral",
+      "text": "(shrugs) Nomad blood. Can't stop that restless feeling."
+    },
+    {
+      "t": "say",
+      "char": "Star Gal",
+      "expr": "warm",
+      "text": "I will try to enjoy tonight and suggest you do the same."
+    },
+    {
+      "t": "narrate",
+      "text": "Guitar gal begins strumming something."
+    },
+    {
+      "t": "narrate",
+      "text": "An OUT OF TOWNER is unloading a car in front of the car headlights. Not Chuck passes by without a look back."
+    },
+    {
+      "t": "say",
+      "char": "Out of Towner",
+      "expr": "neutral",
+      "text": "A little help here would be nice."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "Sure would. Bringing half your life with you to the beach is always a choice."
+    },
+    {
+      "t": "narrate",
+      "text": "Not Chuck stops and considers for a moment."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "Who did you leave behind?"
+    },
+    {
+      "t": "say",
+      "char": "Out of Towner",
+      "expr": "surprised",
+      "text": "What?"
+    },
+    {
+      "t": "narrate",
+      "text": "Not Chuck waits for a beat, then TOURISTA enters."
+    },
+    {
+      "t": "say",
+      "char": "Tourista",
+      "expr": "neutral",
+      "text": "I hope this is our spot, else there could be some drama."
+    },
+    {
+      "t": "say",
+      "char": "Out of Towner",
+      "expr": "neutral",
+      "text": "I don't know for sure. Do you know for sure?"
+    },
+    {
+      "t": "say",
+      "char": "Tourista",
+      "expr": "neutral",
+      "text": "I signed up on a government website and picked a spot on a little map, but it's dark and I can't see anything past five feet in front of me."
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "neutral",
+      "text": "Getting in late can do that. Where'd y'all come in from?"
+    },
+    {
+      "t": "say",
+      "char": "Out of Towner",
+      "expr": "neutral",
+      "text": "From out of town?"
+    },
+    {
+      "t": "say",
+      "char": "Not Chuck",
+      "expr": "warm",
+      "text": "Good answer. Make light, find some light to share, or wait till dawn. Have fun, you two."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Clipped to the last flyer, a bingo card, half daubed. Under the free square someone has written Smolvud, crossed it out, and written Small Wood."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch12x_beach_blanket_bingo_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch12_drift_wood_intro"
+    }
+  ]
+}
