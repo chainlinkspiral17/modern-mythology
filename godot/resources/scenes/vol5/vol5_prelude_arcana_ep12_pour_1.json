@@ -1,0 +1,141 @@
+{
+  "id": "vol5_prelude_arcana_ep12_pour_1",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 12 · pour 1",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep12_pour_1.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 12 · pour 1",
+      "sub": "late · alone, by choice",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "A love poem, mostly couplets. Read it slow.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Then read it again and decide who it’s dangerous to.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "I am in love.\nIt makes the world tremble.\nIt sets my heart on fire and by extension the world must burn."
+    },
+    {
+      "t": "narrate",
+      "text": "When I love, lives are shattered.\nI hope the hurt will do some good."
+    },
+    {
+      "t": "narrate",
+      "text": "I sit here wondering how to feel\nwhen I am alone often by choice."
+    },
+    {
+      "t": "narrate",
+      "text": "compromise a rarity,\nwhen I what I do is bleed word."
+    },
+    {
+      "t": "narrate",
+      "text": "always & often hidden\nnot so much wanted as needed."
+    },
+    {
+      "t": "narrate",
+      "text": "perpetual unyield locked away-\nsure, but holding the key."
+    },
+    {
+      "t": "narrate",
+      "text": "broken hearted dreamer\nplayful erstwhile schemer."
+    },
+    {
+      "t": "narrate",
+      "text": "simple ton water beat\nagate rock about eight stone."
+    },
+    {
+      "t": "narrate",
+      "text": "warm to the touch."
+    },
+    {
+      "t": "narrate",
+      "text": "she holds herself up against still form-\ndeep breath caught held tremble\neverything so wrong it must be right."
+    },
+    {
+      "t": "narrate",
+      "text": "words a gift to unravel\nheart spilled out and stared at"
+    },
+    {
+      "t": "narrate",
+      "text": "a brain with fangs devouring\nthe parts she'd like kept secret."
+    },
+    {
+      "t": "narrate",
+      "text": "whispers near her ear\npromises of a shared destiny-\nminus a wish or two"
+    },
+    {
+      "t": "narrate",
+      "text": "surprises best discovered\nhappening right this minute."
+    },
+    {
+      "t": "narrate",
+      "text": "where & when exactly\nwas this\nhidden."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Where and when, exactly. Good question. Goodnight.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep12_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

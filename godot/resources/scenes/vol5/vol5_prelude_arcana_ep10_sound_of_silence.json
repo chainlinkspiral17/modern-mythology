@@ -1,0 +1,129 @@
+{
+  "id": "vol5_prelude_arcana_ep10_sound_of_silence",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 10 · the sound of the silence of",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep10_sound_of_silence.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 10 · the sound of the silence of",
+      "sub": "a studio apartment · rain",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Three fragments from one page. A child in a studio apartment, a fence crew, and an incantation.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Watch the window when it rains.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "the sound of\nthe silence of"
+    },
+    {
+      "t": "narrate",
+      "text": "“Almost four, how old he is. Fingers raised up in the air, happy eyes scanning each individually. Monuments. Mother lost in a screen."
+    },
+    {
+      "t": "narrate",
+      "text": "Father passed out on floor, arms out and head turned over. He climbs up in her lap, she squirms with displeasure. He lays down next to him, filled with immediate warmth."
+    },
+    {
+      "t": "narrate",
+      "text": "A bag of cheerios split on the floor. He picks up pieces that have been kicked far down the way. Lights and noise and commotion, they yell at each other, at him."
+    },
+    {
+      "t": "narrate",
+      "text": "He doesn’t cry much anymore. He combs his hair in a tiny mirror from his mother’s purse. They don’t leave the studio. She is terrified, he is numb."
+    },
+    {
+      "t": "narrate",
+      "text": "They sleep for as long as they can, and groggy, compare their dreamscapes. When you close your eyes, what do you see, they ask him, usually first thing. He stares or shrugs and sometimes answers."
+    },
+    {
+      "t": "narrate",
+      "text": "Usually they are too terrified to hear everything he has to say. They push crayons in front of him, ask him to draw, when he won’t shut up. When it rains, they open up the blinds, watch him watch it fall across the pane.”"
+    },
+    {
+      "t": "narrate",
+      "text": "Weber and Banks had a pretty good thing going with their barb wire fence installation and repair."
+    },
+    {
+      "t": "narrate",
+      "text": "“What is love. The source and subsurface. Delve deeper, skein harder. Rend flesh, absolve everything."
+    },
+    {
+      "t": "narrate",
+      "text": "Love is, and is neither acceptance, forgiveness, uncertain prophecy. Romance is dead, wilted and rotting, renewed half-true’d. Lies in the greater good of, truth dodgy and screwed."
+    },
+    {
+      "t": "narrate",
+      "text": "Friends have no place here, their worded actions selfish and skewed, directed projected diluted. Blood, thicker than wine, softer than silk, velvet dressed mink writhing. Pickled apple blossoms, passion spectrum colour tinged, matador fringe, double spear feinting, candelabra singed."
+    },
+    {
+      "t": "narrate",
+      "text": "What is a day but a chance. What is life but a stage to dance. And sing. And prance. And ring the bell, and speak the spell. Incant.”"
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Say it back if you like. Incant. It doesn’t hurt.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep10_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

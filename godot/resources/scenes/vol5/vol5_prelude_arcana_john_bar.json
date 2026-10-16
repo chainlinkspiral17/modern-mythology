@@ -1,0 +1,116 @@
+{
+  "id": "vol5_prelude_arcana_john_bar",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "John. — after work",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_low_bar.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_prelude_low_bar.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "After work",
+      "sub": "the shadiest bar in the most expensive part of town",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "John meets some folk after work, a mix of coworkers and a delegation from the tribe called best friends. They go to the shadiest bar in the most expensive part of town. The drinks are, would you believe it, overpriced, the seats are leather, and the lights are as low as they can possibly go."
+    },
+    {
+      "t": "narrate",
+      "text": "Smoke doesn’t hang or linger, it clings like a wild city cat forced to the highest gargoyle, having to defend itself in life against all the rest. Pleasantries are paraded about, quickly the real meat of the conversation laid bare, the gnashing begins. A one on one."
+    },
+    {
+      "t": "narrate",
+      "text": "“What happened today?”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Nothing much. Still, it never ceases to please me, this strange hub in which we live.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“How so? There’s a reason we have that sign outside town coming and going both ways.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Yeah. What did the sign say? But yeah, just the nexus, between two big cities, both close by, people have to stop here, whether they want to, or not, and we see them all."
+    },
+    {
+      "t": "narrate",
+      "text": "Good, bad, pleasant, indifferent, ugly, beautiful, sinners, saints. It just feels like, well, the most random place in the world.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“The sign says Take a Gamble on Graustark. Cheesy shit, but it gets them in. They got their casinos just across the bridge, but pretend all the wholesome business and suburban existence is going down over here."
+    },
+    {
+      "t": "narrate",
+      "text": "And I’m also sure there are more, far more random places, with a far greater cross-section of humanity, than good ol Graustark.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Yeah, but we got fresh off the boat folk from Asia and South America and just about everywhere else, and I know there’s been bad blood, but it’s mostly cooled off. Things are generally happy here, save for the odd massive disaster of epic proportion, or MDEPs as we call them.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Biblical, is what this place is.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Always a trip, my uncle says.”"
+    },
+    {
+      "t": "narrate",
+      "text": "A female arm on each shoulder, everyone watches as it comes down, settles, moves her way between each one."
+    },
+    {
+      "t": "narrate",
+      "text": "“Gentlemen.”"
+    },
+    {
+      "t": "narrate",
+      "text": "Eyes turn up and orient."
+    },
+    {
+      "t": "narrate",
+      "text": "Who will be the first to answer. Those nearest are Slim Jim Joachim and Frasier Temple, a comfortable pair of nerds with seemingly opposite trajectories."
+    },
+    {
+      "t": "narrate",
+      "text": "Slim Jim did the whole nice guy thug thing in his early twenties, stringy as the name would suggest, slow and easy going and quick to anger, maturing in the general sense of the word, ever more slowly becoming wise to the nature of the world, having fucked up a good deal of his brief existence already and learned from the mistakes."
+    },
+    {
+      "t": "narrate",
+      "text": "Frasier is a bit more difficult, an almost prodigy who refuses to go with the flow. Bespectacled with long premature gray and the skin of a babe, he almost sings out hilarity, but said hilarity has earned him enough enemies who keep him slightly hounded and success at arm’s reach."
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_arcana_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_ch0_booth6"
+    }
+  ]
+}

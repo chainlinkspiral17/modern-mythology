@@ -1,0 +1,185 @@
+{
+  "id": "meld_seam_1_2",
+  "vol": 2,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "a beginning, now",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_meld_editing_suite_tideflats.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_dream_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "on cue",
+      "sub": "INT. EDITING SUITE · Small Wood · low tide",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "The curtain goes back and there is no stage behind it. A room without windows. Four chairs on casters. A bank of monitors stacked like the tide tables by a diner door, and every monitor full of water."
+    },
+    {
+      "t": "narrate",
+      "text": "Not water. Flats. The tide all the way out, farther than it ever goes, the flats shining like a cookie sheet."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Roll it again."
+    },
+    {
+      "t": "narrate",
+      "text": "The monitors roll it again. A heron lifts off the sea wall in four frames and settles in four more. The cannery stands in a dawn that never arrives. On the last screen the water tower holds still while the fog goes through it."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_meld_monitors_tideflats.jpg",
+      "caption": "four monitors, one tide"
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "worried",
+      "text": "A moment ago I was debating whether or not to begin."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Where in time are you looking?"
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Here. Low tide. Somebody's notebook."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "There comes a time in life when pieces click in place."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody touches the deck. Out on the flats something the size of the cannery shifts its weight, sideways, and the picture waits for it."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_diner_grill_dawn.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the Link",
+      "sub": "Aud's · 5:40 a.m. · before the bread",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Then it is a diner, and the wall behind the grill is thin as a page of script, and through it four voices are arguing about how to begin."
+    },
+    {
+      "t": "narrate",
+      "text": "The light in here is the yellow of the inside of a pie. The tide tables by the door have bricked together in the damp."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "They've been at it since I unlocked. Coffee, hon?"
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Give this thing a shot in the arm. Can't feel the pulse here."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "amused",
+      "text": "Pulse is fine. It's early, is all."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "And all I feel is love for friends and family."
+    },
+    {
+      "t": "narrate",
+      "text": "Aud fills a cup that is already full. It holds, this time. It stands up at the rim, trembling, the way water stands over the lip of a glass before it decides."
+    },
+    {
+      "t": "narrate",
+      "text": "Down the counter someone has left a notebook, wide-ruled, half-started. Inside the cover, in pencil, in a hand that hasn't settled yet: up awake at hours when the company I keep is made up of voices through a wall."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Can't we just sit here and think a minute."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "Sit as long as you want. Nobody's rushing the bread."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "hear hear."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "finally."
+    },
+    {
+      "t": "narrate",
+      "text": "Aud shrugs and starts the coffee."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_overcast.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Out past the gravel lot a minivan door slides shut, the long clunk of that vintage, and slides open again."
+    },
+    {
+      "t": "flag",
+      "key": "meld_seam_1_2_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_briar_falls_interlude"
+    }
+  ]
+}

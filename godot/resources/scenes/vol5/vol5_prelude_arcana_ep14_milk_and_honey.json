@@ -1,0 +1,173 @@
+{
+  "id": "vol5_prelude_arcana_ep14_milk_and_honey",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 14 · Land of Milk & Honey",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep14_milk_and_honey.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 14 · Land of Milk & Honey",
+      "sub": "a convenience store · all night",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Second person, all night, under fluorescent light. This one is addressed to you.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Bring exact change.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The convenience store was fluorescent lit from all angles, inside and out. Vehicles arrived at odd hours and lingered. It was eternal, methane torch burning, a twenty-four-seven eye sore attended and serviced by mis-matched pairs of fairly greasy individuals."
+    },
+    {
+      "t": "narrate",
+      "text": "The owner tried to keep eight young dudes in rotation, but settled for whoever’d show up for a scheduled shift or three."
+    },
+    {
+      "t": "narrate",
+      "text": "If you kept the joint stocked and shelved, you could linger with a read or minimal distraction. A radio show for company, a loose wrapped titty mag as curiosity, a forbidden forty cracked on the curb mixed with an energy drink in ubiquitous plastic branded jug."
+    },
+    {
+      "t": "narrate",
+      "text": "You get a discount on the foodstuffs preserved better than Egyptian royalty, and a nickel a gallon off the gasoline. You could study, if you were to do something with your life."
+    },
+    {
+      "t": "narrate",
+      "text": "You weren’t working hard, you were hardly working."
+    },
+    {
+      "t": "narrate",
+      "text": "You used up minimal energy and movement in small talk and exchanges of currency. Minutes stretched to hours stretched to the flash passage of time across retina. Haze of blacktop reflected heat in the day, haze of overbright overhead light at night."
+    },
+    {
+      "t": "narrate",
+      "text": "You empty buckets filled with foul window washing fluid. You pick condom wrappers off the pavement. Your asshole puckers when cars backfire, or someone decides to pop off a few stray shots into the night sky, or directly in the direction of someone peeling out in a hurry."
+    },
+    {
+      "t": "narrate",
+      "text": "You find bags of drugs in the bathroom. You find spare twenties stuck to your shoe with hot pink gum."
+    },
+    {
+      "t": "narrate",
+      "text": "You get people who refuse to leave, so you just let them linger. Some of them become co-workers, some of them become friends, some of them will be here long after you are gone."
+    },
+    {
+      "t": "narrate",
+      "text": "One of your regulars wears a tee shirt he made himself. The print is of his high school crush, taken when she was perhaps sixteen. He is in his forties."
+    },
+    {
+      "t": "narrate",
+      "text": "His shirt is grease stained and thinned to the point of falling apart on him. It could also be said he is falling apart underneath, if his teeth are indication of the rest of him. He is not unique, he would be furniture, if this place contained furniture."
+    },
+    {
+      "t": "narrate",
+      "text": "Modern drunkards, nicotine stained, chemically fed, distracted to spend."
+    },
+    {
+      "t": "narrate",
+      "text": "Most of the words people use here are transactional, or horrifyingly descriptive. Insults are frequently directed at you and your co-workers. If there’s a racial hot button, folk have tried to push it."
+    },
+    {
+      "t": "narrate",
+      "text": "Religious invective, you’re goddamn right they went there. Sexual slight? That tends to be a dead giveaway of their own hang-up or insecurity lit up like the War on Christmas."
+    },
+    {
+      "t": "narrate",
+      "text": "Lazy bum? That’s a given. That’s the badge you wear with pride."
+    },
+    {
+      "t": "narrate",
+      "text": "Lazy bum is why you’re here, and why you’re the best there is at what you do. Which is nothing, honey."
+    },
+    {
+      "t": "narrate",
+      "text": "They had a name for your kind before there were names for most things."
+    },
+    {
+      "t": "narrate",
+      "text": "The fool, the dullard, the dociled, the dummy."
+    },
+    {
+      "t": "narrate",
+      "text": "You lingerer, you layabout, you local color."
+    },
+    {
+      "t": "narrate",
+      "text": "Still, someone’s got to wipe your stain from the toilet, empty out the trash you kick from your mighty vehicle, cover for when the authorities got a whiff of your stench and you go a running with your tail between your legs."
+    },
+    {
+      "t": "narrate",
+      "text": "You come back because you have to. You need a fix of what we’re selling, and fuel for the road ahead."
+    },
+    {
+      "t": "narrate",
+      "text": "You live here, with us, in this purgatory, and you like it, because what else is there for you out there?"
+    },
+    {
+      "t": "narrate",
+      "text": "You live here with us, here, in this land of milk and honey."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "That’s the whole shift. Same time tomorrow.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep14_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

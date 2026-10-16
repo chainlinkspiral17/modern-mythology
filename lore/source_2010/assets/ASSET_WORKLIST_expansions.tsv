@@ -1,0 +1,122 @@
+kind	path_or_slug	scene_ids	description
+bg	assets/backgrounds/vol3_pulp_ward_rows.jpg	vol3_ch5_pulp_the_ward,vol3_ch8_pulp_the_catwalk	Endless hospital ward seen as pulp SF, rows of steel-railed cots under long white tube lights, cables to blinking green monitors, 1940s pulp-cover palette
+cg	assets/cg/vol3_pulp_ward_sleepers.jpg	vol3_ch5_pulp_the_ward	Low angle down a row of tethered sleepers, hoses of red, gold and clear liquid, green heart-trace screens like insect eyes, cold white light, pulp magazine illustration
+cg	assets/cg/vol3_pulp_catwalk_city.jpg	vol3_ch8_pulp_the_catwalk	Glass skybridge between hospital towers at night, a lone young man in 1940s clothes and socks at the rail, city lit to the horizon below, helicopters landing on roofs, pulp-cover style
+cg	assets/cg/vol3_pulp_duck_window.jpg	vol3_ch11_pulp_the_room_with_birds	Ceiling-mounted hospital television in a dim room showing wild ducks rising off a copper autumn lake, glow on the bed rails below, early 2000s
+bg	assets/backgrounds/vol3_pulp_helipad_dawn.jpg	vol3_ch17_pulp_earthman	Hospital rooftop helipad at first light, helicopter parked with blades drooping and lights off, two scrubs-clad medics sharing a cigarette, pink haze clearing
+bg	assets/backgrounds/vol3_pulp_pod_street_dawn.jpg	vol3_ch17_pulp_earthman	Ordinary city sidewalk at dawn, storm-felled street sign with cables hanging, a dewy egg-shaped riveted 1940s time pod tucked beneath it, quiet and unruined
+bg	assets/backgrounds/vol3_parsonage_ron_room_night.jpg	vol3_ch19_ron_takes_notes	Cramped upstairs room in a 1945 Pasadena mansion at night, books drifted across the floor, dust in a desk lamp's cone, big black typewriter, open window, citrus air
+cg	assets/cg/vol3_ron_typewriter_page.jpg	vol3_ch19_ron_takes_notes	Close on a 1940s typewriter platen, a freshly typed line of pulp prose still wet, a heavy hand on the carriage return, lamplight
+kind	path_or_slug	scene_ids	description
+bg	assets/backgrounds/vol4_corkboard_night.jpg	vol4_board;vol4_board_gaps	Corkboard over a cluttered writing desk at night, photocopied clippings and red pushpins, gooseneck lamp pool, xerox grain, mid-2000s
+bg	assets/backgrounds/vol4_desk_dawn.jpg	vol4_curtain_call	The same desk at first light, every drawer pulled, four mismatched folding chairs, window onto a wet street with an idling car, blue-grey dawn, xerox grain
+cg	assets/cg/vol4_board_string.jpg	vol4_board	Close on a corkboard, red string running taut across torn blog printouts, a crooked zine page and a cut headline to a hand-lettered index card, lamp-lit, halftone texture
+cg	assets/cg/vol4_route_card.jpg	vol4_board	Hand-painted cardboard windshield placard reading a route number with a list of stops, last stop crusted over with layers of paint, arrow running off the edge, pinned by a rusted pin beside a tea-colored Spanish newspaper clipping and a flattened waxed lollipop wrapper, noir lamp light
+bgm	assets/audio/bgm/vol4_xerox_hum.mp3	vol4_board	(existing vol4 cue) photocopier hum and room tone
+bgm	assets/audio/bgm/vol4_por_puesto_night.mp3	vol4_board	NEW: distant 1970s-80s Caracas street at night through a shut window, idling diesel, far-off salsa from a radio, rain starting on hot asphalt, slow detuned cuatro, noir
+bgm	assets/audio/bgm/vol1_ambient.mp3	vol4_curtain_call	(existing, reused as a bookend to the Vol 1 introduction)
+kind	path_or_slug	scene_ids	description
+bg	assets/backgrounds/vol1_city_color_night.jpg	meld_kaleidoscope_a	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol1_faust_apartment_day.jpg	meld_kaleidoscope_b	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol2_beach_overcast.jpg	meld_seam_1_2,meld_kaleidoscope_g	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol2_diner_grill_dawn.jpg	meld_seam_1_2	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol2_meld_editing_suite_tideflats.jpg	meld_seam_1_2	NEW · COMPOSITE of vol3_editing_suite_night + vol2_scumm_tideflats_crab_vga/vol2_beach_overcast: windowless editing room at night, four rolling chairs, a stacked bank of CRT monitors each showing silver low-tide flats; cold blue spill, no people
+bg	assets/backgrounds/vol2_pier_crabbing.jpg	meld_kaleidoscope_f	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol2_scumm_hemlock_vga.jpg	meld_kaleidoscope_c	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol2_scumm_tideflats_crab_vga.jpg	meld_kaleidoscope_f	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol2_small_wood_scrapbook.jpg	meld_kaleidoscope_f	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_ballfield_home_plate.jpg	meld_kaleidoscope_e	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_editing_suite_night.jpg	meld_kaleidoscope_c	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_four_screen_room.jpg	meld_seam_2_3	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_hospital_room_night.jpg	meld_kaleidoscope_a,meld_kaleidoscope_b	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_hospital_room_window_night.jpg	meld_kaleidoscope_e	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_meld_time_pod_interior.jpg	meld_seam_2_3,meld_kaleidoscope_e	NEW · Inside a 1940s pulp time pod shaped like an egg: riveted steel seams, one leather seat, one big button, small green instrument lamps, a round porthole; cramped, dim, hushed
+bg	assets/backgrounds/vol3_pasadena_street_1945.jpg	meld_seam_2_3	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_ruined_city_night.jpg	meld_kaleidoscope_d	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol3_sleep_lab.jpg	meld_seam_3_4	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol4_bus_station_day.jpg	meld_kaleidoscope_d	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol4_desk_night.jpg	meld_seam_3_4,meld_kaleidoscope_a,meld_kaleidoscope_e	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol4_meld_lens_mandala.jpg	meld_kaleidoscope_a	NEW · COMPOSITE kaleidoscope mandala built from slices of existing backgrounds (vol2_beach_overcast, vol1_city_color_night, vol3_hospital_room_night, vol4_xerox_sky, vol2_scumm_tideflats_crab_vga) mirrored six ways around a lamp-glow center; xerox grain over all
+bg	assets/backgrounds/vol4_office_copier.jpg	meld_seam_3_4,meld_kaleidoscope_d	REUSE existing reference; no new art needed
+bg	assets/backgrounds/vol4_xerox_sky.jpg	meld_kaleidoscope_a	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol1_ambient.mp3	meld_kaleidoscope_b	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol1_diner_ambient.mp3	meld_kaleidoscope_c	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol1_dream_drone.mp3	meld_seam_1_2	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol2_ambient.mp3	meld_seam_1_2,meld_kaleidoscope_f	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol2_scumm_adlib.mp3	meld_kaleidoscope_c,meld_kaleidoscope_f	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol2_seagash_drone.mp3	meld_kaleidoscope_f	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol3_hospital_hum.mp3	meld_seam_3_4,meld_kaleidoscope_b,meld_kaleidoscope_e	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol3_projector_hum.mp3	meld_seam_2_3	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol3_radio_1945.mp3	meld_seam_2_3	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol3_signal_drone.mp3	meld_seam_2_3	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol4_beach_wind.mp3	meld_kaleidoscope_g	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol4_cabin_hum.mp3	meld_kaleidoscope_e	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol4_city_pulse.mp3	meld_kaleidoscope_d	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol4_photocopier_drone.mp3	meld_seam_3_4,meld_kaleidoscope_d	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol4_radio_static.mp3	meld_kaleidoscope_a,meld_kaleidoscope_d	REUSE existing reference; no new art needed
+bgm	assets/audio/bgm/vol4_xerox_hum.mp3	meld_seam_3_4	REUSE existing reference; no new art needed
+cg	assets/cg/vol2_meld_monitors_tideflats.jpg	meld_seam_1_2	NEW · COMPOSITE: close on four CRT monitors (vol3_editing_suite_night) each showing one coast frame: heron mid-lift over a sea wall, cannery at dawn, water tower in fog, empty tide flats
+cg	assets/cg/vol3_meld_eyestalk_beam.jpg	meld_seam_2_3	NEW · COMPOSITE of vol2_scumm_tideflats_crab_vga + vol3_four_screen_room: a projector beam slanting down from darkness at the end of a jointed crab eye-stalk, the beam pooling on a small figure; dust in the light
+cg	assets/cg/vol3_meld_feather_pod_floor.jpg	meld_seam_2_3	NEW · Close on a single blue-grey heron feather lying on the riveted metal floor of a time pod, green instrument light raking across it
+cg	assets/cg/vol3_meld_rain_loading.jpg	meld_seam_2_3	NEW · COMPOSITE of vol3_pasadena_street_1945 at night in rain, the top half rendered and the bottom half still gray dither bands, as if loading off a floppy; streetcar wire, a marquee, orange trees
+cg	assets/cg/vol4_meld_copier_pink_bar.jpg	meld_seam_3_4	NEW · Photocopier glass from below at 4 a.m., the scan bar crossing as a band of dirty pink light, a page of pulp text faint through the glass
+cg	assets/cg/vol4_meld_drawer_relics.jpg	meld_seam_3_4	NEW · An open desk drawer at night under lamp light: a folded 1940s newspaper, a battered pulp novel, a green toy soldier, a bundle of letters, fine desert sand in the corners
+cg	assets/cg/vol4_meld_facet_derby_zero.jpg	meld_kaleidoscope_f	NEW · Overcast pier at a small-town crab derby: a red-brown Dungeness crossing a chalk line sideways, a white enamel 0 on its shell, a crowd's legs and boots behind
+cg	assets/cg/vol4_meld_facet_porthole.jpg	meld_kaleidoscope_e	NEW · COMPOSITE: a brass desk-lamp shade becoming a riveted porthole (vol4_desk_night + vol3_meld_time_pod_interior); through the glass, a hospital room at night with ducks on a hanging TV
+cg	assets/cg/vol4_meld_facet_suite_coffee.jpg	meld_kaleidoscope_c	NEW · COMPOSITE of vol3_editing_suite_night + vol2_diner_grill_dawn: a diner coffee pot pouring over a full mug on an editing deck, coffee running along cables; monitors show a bakery window
+cg	assets/cg/vol4_meld_facet_tower.jpg	meld_kaleidoscope_b	NEW · COMPOSITE of vol1_faust_apartment_day + vol2_small_town_road: an easel on a balcony holding a wet painting of a small-town water tower in fog, a decoy duck painted on its catwalk, a wide-ruled notebook with pencil tick marks propped on the ledge
+cg	assets/cg/vol4_meld_facet_xerox_pulp.jpg	meld_kaleidoscope_d	NEW · COMPOSITE of vol3_ruined_city_night run through heavy halftone/xerox generation loss: a crouched figure under a fallen sign, the hovering machines become halftone dots, a zine masthead bleeding in
+cg	assets/cg/vol4_meld_kaleidoscope_tube.jpg	meld_kaleidoscope_a	NEW · On a cluttered night desk beside a brass-shaded lamp, a homemade cardboard kaleidoscope tube papered in a print of ducks, worn white at the ends; zine pages and a stapler nearby
+cg	assets/cg/vol4_meld_one_image.jpg	meld_kaleidoscope_g	NEW · COMPOSITE of vol2_beach_overcast (pre-dawn) + vol4_desk_night: a lone desk standing on silver tide flats at 4 a.m., lamp lit, a full coffee cup, an open notebook with a heron feather, a decoy duck facing the water, a chair pushed back; far out, a giant crab with one leg raised; rain in still straight lines
+kind	path_or_slug	scene_ids	description
+bg	assets/backgrounds/vol5_prelude_river_shallows.jpg	vol5_prelude_arcana_liar_king	muddy river shallows in a Gulf Coast swamp at golden hour, mudflats, oystercatchers and snipe, cypress, broken water glimmer
+bg	assets/backgrounds/vol5_prelude_minstrals_green_hull.jpg	vol5_prelude_arcana_liar_king	the half-sunken rusted hull of an old paddle steamship at a river's edge at last light, reeds, a child-sized figure at the water
+bg	assets/backgrounds/vol5_prelude_steamship_interior.jpg	vol5_prelude_arcana_liar_king	inside a haunted derelict steamship, rotten wood and brass, shafts of strange far-off light through portholes, dusk
+bg	assets/backgrounds/vol5_prelude_steamship_gallery.jpg	vol5_prelude_arcana_liar_king;vol5_prelude_arcana_john_shift	a portrait gallery in tiers inside a sunken steamship, dim shadowy portraits, a glowing crystal ball on a plinth, a paper shining above it
+cg	assets/cg/vol5_prelude_crystal_lattice.jpg	vol5_prelude_arcana_liar_king	a soaked child holding a small crystal ball up to one eye, inside it webs and lattices of light, geometric and organic shapes colliding like fireworks
+cg	assets/cg/vol5_prelude_gallery_paper.jpg	vol5_prelude_arcana_liar_king	a sheet of paper glowing above a crystal ball in a dark gallery, faint faces of portraits shimmering behind
+portrait	the_frog	vol5_prelude_arcana_liar_king	four-foot bullfrog, cork hat low on a v-shaped face, filthy denim suspenders, bare-chested and barefoot, chrome industrial lighter (existing slug)
+portrait	elicia	vol5_prelude_arcana_ep01_umbra;vol5_prelude_arcana_ep02_in_flux;vol5_prelude_arcana_ep03_microcosmographer;vol5_prelude_arcana_ep04_iris_title;vol5_prelude_arcana_ep05_iris;vol5_prelude_arcana_ep06_old_woman;vol5_prelude_arcana_ep07_backyard_dogs;vol5_prelude_arcana_ep08_autumn_crop;vol5_prelude_arcana_ep09_sticker_shock;vol5_prelude_arcana_ep10_sound_of_silence;vol5_prelude_arcana_ep11_writ_fer_rain;vol5_prelude_arcana_ep12_pour_1;vol5_prelude_arcana_ep13_paper_cuts;vol5_prelude_arcana_ep14_milk_and_honey;vol5_prelude_arcana_ep15_lynchs_peak	Elicia Duchane, director in her early thirties, sharp and amused (existing slug)
+bg	assets/backgrounds/vol5_prelude_whispers_channel.jpg	vol5_prelude_arcana_channel;vol5_prelude_arcana_whispers	a laptop left open in a dark room past midnight, a dark-theme video channel page, rows of dusk-blue thumbnails, screen glow on a cluttered desk
+bgm	assets/audio/bgm/vol5_whispers_theme.mp3	vol5_prelude_arcana_channel;vol5_prelude_arcana_whispers	NEW: Whispers from the Liminal theme, intimate and pretty, soft tape warmth, a little funny; no 60 Hz hum
+bgm	assets/audio/bgm/vol5_cicadas_dusk.mp3	vol5_prelude_arcana_liar_king	existing track
+bg	assets/backgrounds/vol5_prelude_ep01_umbra.jpg	vol5_prelude_arcana_ep01_umbra	a cramped apartment living room after midnight, five chairs, ashtray and scotch glasses, blue TV light
+bg	assets/backgrounds/vol5_prelude_ep02_in_flux.jpg	vol5_prelude_arcana_ep02_in_flux	a seventh-grade classroom in Texas, morning, motivational posters, a rubber duck mobile, tired fluorescent light
+bg	assets/backgrounds/vol5_prelude_ep03_microcosmographer.jpg	vol5_prelude_arcana_ep03_microcosmographer	a decommissioned aircraft hangar workshop on the foggy Oregon coast, tiny model tableaux under a single work lamp
+bg	assets/backgrounds/vol5_prelude_ep04_iris_title.jpg	vol5_prelude_arcana_ep04_iris_title	a silver trailer in the high desert at sunrise, cirrus wisps, faint smoke plumes on the horizon, soft and hazy
+bg	assets/backgrounds/vol5_prelude_ep05_iris.jpg	vol5_prelude_arcana_ep05_iris	inside an old silver travel trailer at dusk, an orange cat at the window, a missile contrail arcing in the evening sky
+bg	assets/backgrounds/vol5_prelude_ep06_old_woman.jpg	vol5_prelude_arcana_ep06_old_woman	a desert trailer camp at the close of day, wind chimes, a painter on a trailer roof, a small adobe museum with a bell tower
+bg	assets/backgrounds/vol5_prelude_ep07_backyard_dogs.jpg	vol5_prelude_arcana_ep07_backyard_dogs	a suburban back porch in late afternoon, a cooler of cheap beer, two lawn chairs, long shadows on the grass
+bg	assets/backgrounds/vol5_prelude_ep08_autumn_crop.jpg	vol5_prelude_arcana_ep08_autumn_crop	a small public-housing apartment in autumn, potted plants everywhere, fabric collages on the walls, an ancient desktop computer
+bg	assets/backgrounds/vol5_prelude_ep09_sticker_shock.jpg	vol5_prelude_arcana_ep09_sticker_shock	a hollowed-out high-rise office in Honolulu in 1991, tourist shops at street level, humid night, a back stairwell
+bg	assets/backgrounds/vol5_prelude_ep10_sound_of_silence.jpg	vol5_prelude_arcana_ep10_sound_of_silence	a cramped studio apartment at night, rain on the window, a blinds-filtered streetlight, cereal on the floor, a glowing screen
+bg	assets/backgrounds/vol5_prelude_ep11_writ_fer_rain.jpg	vol5_prelude_arcana_ep11_writ_fer_rain	rain beading on a dark window at night, a face half reflected, soft focus streetlight bokeh
+bg	assets/backgrounds/vol5_prelude_ep12_pour_1.jpg	vol5_prelude_arcana_ep12_pour_1	a candle-lit desk late at night, an open notebook, ink, a smooth agate stone, warm amber light
+bg	assets/backgrounds/vol5_prelude_ep13_paper_cuts.jpg	vol5_prelude_arcana_ep13_paper_cuts	a teenage girl's bedroom at night lit only by a television, a single bright point of light hovering near the ceiling
+bg	assets/backgrounds/vol5_prelude_ep14_milk_and_honey.jpg	vol5_prelude_arcana_ep14_milk_and_honey	a 24-hour gas station convenience store at 3 a.m., harsh fluorescent light inside and out, a flare stack burning on the horizon
+bg	assets/backgrounds/vol5_prelude_ep15_lynchs_peak.jpg	vol5_prelude_arcana_ep15_lynchs_peak	a dim small-town church interior at night on the Oregon coast, candlelight, cracked windows, headlights cutting across the glass
+bg	assets/backgrounds/vol5_prelude_ep07_airport_hotel.jpg	vol5_prelude_arcana_ep07_backyard_dogs	an airport hotel lobby at night, a man checking in with a bag over his shoulder, sodium light outside
+bg	assets/backgrounds/vol5_prelude_restaurant_floor.jpg	vol5_prelude_arcana_john_shift	an upscale near-future restaurant dining room at dinner rush, low warm light, a family at a four-top, a boy hunched over a handheld game
+bg	assets/backgrounds/vol5_prelude_waiter_pen.jpg	vol5_prelude_arcana_john_shift	a cramped waiters' station behind swinging kitchen doors, an unresponsive touchscreen order terminal, steam and harsh light
+bgm	assets/audio/bgm/vol5_prelude_dinner_rush.mp3	vol5_prelude_arcana_john_shift	NEW: busy dining-room murmur over a tense, glossy near-future lounge pulse
+bg	assets/backgrounds/vol5_prelude_low_bar.jpg	vol5_prelude_arcana_john_bar	a shady bar in the most expensive part of town late at night, leather seats, lights as low as they go, clinging smoke
+bgm	assets/audio/bgm/vol5_prelude_low_bar.mp3	vol5_prelude_arcana_john_bar	NEW: low late-night bar ambience, muffled bass, glasses, conversation
+kind	path_or_slug	scene_ids	description
+bg	assets/backgrounds/vol1_city_color_night.jpg	vol1_ch9_street	(existing) overbright night street outside a club, every streetlight haloed twice, a parked old sedan at the curb, 2000s Americana
+bg	assets/backgrounds/vol1_jd_river.jpg	vol1_ch10_longboat	(new) inside an old sedan from the driver's seat, the road outside the windshield melted into black river water, streetlight reflections stretched long, a red-and-white wooden toll arm ahead
+bg	assets/backgrounds/vol1_drugstore_purgatory.jpg	vol1_ch11_drugstore	(new) all-night drugstore that is also a gas station floating on still bright water, every fluorescent on, impulse racks, a reception desk where the register should be, a cat carrier on the counter, a methane torch outside
+bg	assets/backgrounds/vol1_drugstore_aisles.jpg	vol1_ch11_aisles,vol1_ch12_history	(new) back of a fluorescent drugstore, three aisles under hanging corporate signs reading HISTORY, MUSIC and ART, each aisle glowing a different color: paper-white, asphalt-orange, linseed-gold
+bg	assets/backgrounds/vol1_hall_of_ratifications.jpg	vol1_ch12_history	(new) hangar the size of a sky, aircraft of every era hanging from the rafters on wires, endless tables of ledgers below, faceless clerks in eyeshades signing, dust in shafts of light
+bg	assets/backgrounds/vol1_above_the_record.jpg	vol1_ch12_history	(new) view down from a small single-prop cockpit over history laid out like a wet-paint board game map, tiny lit dioramas, one old city square with smoke rising
+bg	assets/backgrounds/vol1_deep_end_pool.jpg	vol1_ch13_deep_end	(new) impossibly large empty concrete swimming pool, faded blue bottom, coping lined with kids holding skateboards on their knees, twilight with no source, amplifier haze
+bg	assets/backgrounds/vol1_painting_interior.jpg	vol1_ch14_painting	(new) inside a wet oil canvas, turpentine-gold light, gesso ground with linen weave, painted water left, painted fire right, painted air between, a huge carved wood frame at the edges
+bg	assets/backgrounds/vol1_battle_painting.jpg	vol1_ch14_painting	(new) chaotic thick-impasto battle painting from inside, banners and drybrush smoke, strange many-limbed foes dissolving into loose pigment, raw canvas showing at the far edge
+bg	assets/backgrounds/vol1_river_turn.jpg	vol1_ch15_river_turn	(new) an old sedan riding as a boat in the middle of a wide dark river with no shores, current pulling, a far bright smudge behind, a low-lit club door on a distant bank ahead
+bg	assets/backgrounds/vol1_club_sharp_empty.jpg	vol1_ch16_four_am	(existing) empty club floor at 4 a.m., low stage light, an up-ended cage in the middle, swept clean
+bg	assets/backgrounds/vol1_faust_bedroom_night.jpg	vol1_ch16_four_am	(existing) Faust's bedroom before dawn, alarm clock glowing 4:00, an easel with the elemental painting by the window
+bg	assets/backgrounds/vol1_editing_suite.jpg	vol1_ch17_editing_suite	(new) dim film editing suite, console and monitors, one monitor frozen on a man's back at an easel before a blank canvas, a couch, a window onto nothing, late-night clutter
+bgm	assets/audio/bgm/vol1_club_thump.mp3	vol1_ch9_street,vol1_ch13_deep_end	(existing) reused
+bgm	assets/audio/bgm/vol1_drive_night.mp3	vol1_ch10_longboat,vol1_ch15_river_turn	(existing) reused
+bgm	assets/audio/bgm/vol1_diner_ambient.mp3	vol1_ch11_drugstore,vol1_ch11_aisles	(existing) reused
+bgm	assets/audio/bgm/vol1_dream_drone.mp3	vol1_ch12_history,vol1_ch14_painting	(existing) reused
+bgm	assets/audio/bgm/vol1_ambient.mp3	vol1_ch16_four_am,vol1_ch17_editing_suite	(existing) reused

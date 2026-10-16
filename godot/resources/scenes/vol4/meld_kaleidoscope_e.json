@@ -1,0 +1,183 @@
+{
+  "id": "meld_kaleidoscope_e",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — the porthole",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cabin_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "porthole",
+      "sub": "the desk · the egg · the top floor · 2003",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The desk lamp has a round brass shade. Lean in close enough and it stops being a lamp."
+    },
+    {
+      "t": "narrate",
+      "text": "Rivets around the rim. Glass thick as a thumb. Behind the glass, the time between times."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_meld_time_pod_interior.jpg"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_facet_porthole.jpg",
+      "caption": "the lamp, the porthole"
+    },
+    {
+      "t": "narrate",
+      "text": "Jack Perkins sealed himself inside one quiet night. He gestated. All he dreamt of was home."
+    },
+    {
+      "t": "narrate",
+      "text": "Through the porthole, home is a room on a top floor, large for what it is, real nice and new and clean."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_room_window_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_hospital_hum.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "A television dangling from an odd angle plays ducks on a pond. Autumn ducks. Orange brown red serene."
+    },
+    {
+      "t": "narrate",
+      "text": "A man asleep on the floor next to the air conditioning unit. The hum. The constant mechanical breeze."
+    },
+    {
+      "t": "narrate",
+      "text": "From inside the pod the hum sounds like the engines. From inside the room the pod sounds like the hum."
+    },
+    {
+      "t": "narrate",
+      "text": "Dad turns away, watches the ducks."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ballfield_home_plate.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Great hit, he said."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_meld_time_pod_interior.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cabin_hum.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Jack puts his hand flat on the glass. On the other side a hand is held up to another hand, someone looking at the wrinkles in it, the fingernails. The only familiar thing."
+    },
+    {
+      "t": "narrate",
+      "text": "He wants it to grasp back."
+    },
+    {
+      "t": "narrate",
+      "text": "Could I save my father from death. Is there a way to let him know before it is too late."
+    },
+    {
+      "t": "narrate",
+      "text": "The porthole fogs with his breath. When it clears it is a lamp again, and the light falls on a page, and the page says:"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I will love you forever, you know."
+    },
+    {
+      "t": "narrate",
+      "text": "You know."
+    },
+    {
+      "t": "narrate",
+      "text": "Beside the lamp, a painted wooden duck that was not there before, facing the window. Its eye is a brass rivet."
+    },
+    {
+      "t": "narrate",
+      "text": "If it is 4am\nthen I am awake."
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_porthole",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "turn the lens. it turns you.",
+      "opts": [
+        {
+          "text": "the water tower, in wet paint",
+          "scene": "meld_kaleidoscope_b",
+          "hide_if": "meld_facet_tower"
+        },
+        {
+          "text": "coffee in the editing suite",
+          "scene": "meld_kaleidoscope_c",
+          "hide_if": "meld_facet_suite"
+        },
+        {
+          "text": "a copy of a copy of a copy",
+          "scene": "meld_kaleidoscope_d",
+          "hide_if": "meld_facet_xerox"
+        },
+        {
+          "text": "the lamp, the porthole",
+          "scene": "meld_kaleidoscope_e",
+          "hide_if": "meld_facet_porthole"
+        },
+        {
+          "text": "crab number zero",
+          "scene": "meld_kaleidoscope_f",
+          "hide_if": "meld_facet_derby"
+        },
+        {
+          "text": "stop turning.",
+          "scene": "meld_kaleidoscope_g",
+          "requires": [
+            "meld_facet_tower",
+            "meld_facet_suite",
+            "meld_facet_xerox",
+            "meld_facet_porthole",
+            "meld_facet_derby"
+          ]
+        }
+      ]
+    }
+  ]
+}

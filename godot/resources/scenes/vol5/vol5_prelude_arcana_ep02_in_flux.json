@@ -1,0 +1,641 @@
+{
+  "id": "vol5_prelude_arcana_ep02_in_flux",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 2 · In/Flux",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep02_in_flux.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 2 · In/Flux",
+      "sub": "a Texas middle school · a Thursday",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "A teacher, a Thursday, and a building full of other people’s children.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "The names have been taken out. Everything else is as it came to me.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "He wakes to troubled dreams and curled up tight sleep, tiny faces with strange, just strange, looks on faces he can't quite recognize remember decide upon later."
+    },
+    {
+      "t": "narrate",
+      "text": "He lies there awake and scratches himself raw in this one spot on his hip, the skin there dry and defeated, crumbling off in large unwholesome flakes."
+    },
+    {
+      "t": "narrate",
+      "text": "He fills the morning emptiness with hot coffee diluted to last through the weekend. The sun will not make an appearance for an hour yet. He showers and shaves and brushes and dresses, his hair still wet and thick against his neck and ears."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in his car, it lurches backwards, jumps forward in a hurry, the apartment gates inhale to let him out, and he drives through suburban side streets to get there, avoiding main arteries not yet choked at this early hour."
+    },
+    {
+      "t": "narrate",
+      "text": "He parks in the side lot, almost full to capacity already."
+    },
+    {
+      "t": "narrate",
+      "text": "There are kids and their questions waiting for him outside the computer lab. He opens it with keys, their questions answered in the order he cares to answer them."
+    },
+    {
+      "t": "narrate",
+      "text": "-skills lab is a 2-do you have your flow chart-are we reading chapter six-yes, you can go in the classroom, read chapter seven, and the-"
+    },
+    {
+      "t": "narrate",
+      "text": "Kids pour in, books and arms and bags toss about. Start-up screens replacing screensavers, kids shrieking unexpectedly at nothing in particular. There is a sign hung up over one of the children that says, \"We see everything as inspiration!\""
+    },
+    {
+      "t": "narrate",
+      "text": "A kind of peace settles throughout and within, eyes go wide and blank, staring straight ahead."
+    },
+    {
+      "t": "narrate",
+      "text": "-how did you do that- -he threw gum in the recycling bin- by your hand is- aight- I'm not unmotivated- I'm just lazy-"
+    },
+    {
+      "t": "narrate",
+      "text": "He looks over the shoulder of a kid wearing abercrombie-fitch jeans, his name is [—], he thinks he may be one of them, he says to [—], \"I like your text. Right click to hyper-link. What slide is it going to?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Another motivational poster says, \"In the book of life the answers aren't in the back!\""
+    },
+    {
+      "t": "narrate",
+      "text": "[—] taps through, shows him the sequence of events. He smiles almost. [—] has lost the project twice already, by either forgetting to save or saving it to the wrong place in the class folder. He is almost glad the kid is such a mess-up because his story comes out better each time he has to do it over again."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You are the author of your own life story,\" says another."
+    },
+    {
+      "t": "narrate",
+      "text": "He is thumbing through quizzes, \"That's a no name. I think I pulled out the no names to the front. It's not in here."
+    },
+    {
+      "t": "narrate",
+      "text": "Did you check the box to see if it accidentally. Did you do it on a separate sheet of paper. Did you want to redo it. When did you want to come in."
+    },
+    {
+      "t": "narrate",
+      "text": "Tomorrow after school. Okay, that sounds good.\""
+    },
+    {
+      "t": "narrate",
+      "text": "- there's a Jessica Simpson gallery on this computer- music videos - it doesn't save on gaggle- It keeps opening up gaggle- how is her social studies - it's not English- a kid said her mom died- who said- [—] said-"
+    },
+    {
+      "t": "narrate",
+      "text": "He walks to his classroom to let in the motley seventh grade morning crew, those few hungry reader types huddled close to the door looking for a fix off the shelf, those who nobody talks to outside of class vacant eyed troubled souls with nowhere else to go, and those normal behind in their homework everyday everyway plain joes and janes."
+    },
+    {
+      "t": "narrate",
+      "text": "Another of the boys is in his first period, home room, [—]. He sits by himself in the back, and watches [—] provoke a girl to tears, almost."
+    },
+    {
+      "t": "narrate",
+      "text": "Drifting in casual comfortable, at home, home room, to await the same old start of day."
+    },
+    {
+      "t": "narrate",
+      "text": "They remain loud and noisy, the ones who are loud and noisy, until the room has become a packed assembly hall sounding with squeaky confused uncertain voices."
+    },
+    {
+      "t": "narrate",
+      "text": "All he has to do is stand up and all goes quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "Their voices go hushed, their eyes on him, those oblivious elbowed into silent submission."
+    },
+    {
+      "t": "narrate",
+      "text": "The Curious George clock ticktocks unnoticed. The posters for TAKS testing have been gazed over and absorbed an inch at a time rendered nullvoid this late in the year. Posters for making an apology, skills for adolescents, a whole series going something like this: Caring."
+    },
+    {
+      "t": "narrate",
+      "text": "Choices. Effort. Respect. Responsibility."
+    },
+    {
+      "t": "narrate",
+      "text": "He points to the B.U.G. Board, with the other hand he points to a student."
+    },
+    {
+      "t": "narrate",
+      "text": "\"What does B.U.G. stand for?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Bringing up Grades.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"You were a big B.U.G.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Yeah, I know.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Insect stickers with names on them."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, across the hallway, a kid blocks the entrance to another classroom with his body, preventing the remainder from entering."
+    },
+    {
+      "t": "narrate",
+      "text": "\"She cuts her bangs,\" says the kid in the Led Zeppelin t-shirt."
+    },
+    {
+      "t": "narrate",
+      "text": "More posters detailing elements of a short story or novel. Setting, plot, character, point of view, theme."
+    },
+    {
+      "t": "narrate",
+      "text": "Honor the Texas Flag."
+    },
+    {
+      "t": "narrate",
+      "text": "Roll. The quiet right after taking roll. What the students can't see he jots down on copied sheets of paper."
+    },
+    {
+      "t": "narrate",
+      "text": "A drone, the intercom clicks to life, resounds through the room, a student at the microphone calling off birthdates, \"Have a thoughtful Thursday,\" it ends."
+    },
+    {
+      "t": "narrate",
+      "text": "Halfway through the first lesson, \"Just say it out so I can call on you and you can give an answer.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I can't find where we are.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"You should be looking at your QuickStarts.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"They're due today, right?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Caution, brains at work,\" another says."
+    },
+    {
+      "t": "narrate",
+      "text": "First period ends. As they exit into the hallway he watches them, because that is part of his job."
+    },
+    {
+      "t": "narrate",
+      "text": "Between periods, the women gather together in pairs or threes near stairwells or traffic intersections, herding children with a laying on of hands and talking amongst themselves the whole time."
+    },
+    {
+      "t": "narrate",
+      "text": "-not handling the break-up well- [—] transferred to Kincaid- teaching choir now- he was the fun one-shame he's the one who had to leave-"
+    },
+    {
+      "t": "narrate",
+      "text": "He waves to the women, who stop talking for a moment to wave back, then continue on only nearer a whisper."
+    },
+    {
+      "t": "narrate",
+      "text": "He turns and watches a boy who watches him. [—], he's one of them. He looks down to shove a book in his bag, slams the plate metal door and rushes up a lonely flight of stairs."
+    },
+    {
+      "t": "narrate",
+      "text": "The rhythm of the hall gives way to a pulling out of the tide. Figures recede and hurry gamely to beelined destinations."
+    },
+    {
+      "t": "narrate",
+      "text": "He returns to class which has seemingly started without him. Second period is his favorite. The smart kids who want to be here, who seem to give a damn."
+    },
+    {
+      "t": "narrate",
+      "text": "Their books are already opened up. Two of the boys are in here, they sit together and keep poking each other."
+    },
+    {
+      "t": "narrate",
+      "text": "Finding the verb that agrees with the subject."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Why [—]? This is what we've been doing the whole time. The subject is what. A noun or a pronoun. I know you guys know plural and subject."
+    },
+    {
+      "t": "narrate",
+      "text": "That's why I'm telling you, you gotta find the subject of the sentence first. Are we saying the employees are excellent. No, we're saying the safety record is excellent.\""
+    },
+    {
+      "t": "narrate",
+      "text": "One of them is a sullen boy with dark wet bangs across his tiny slit eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "\"The cloud of locusts approaches.\""
+    },
+    {
+      "t": "narrate",
+      "text": "The other is [—] the drama kid. Big kid, not fat, messy hair, always trying to be funny, never forcing it, wears a t-shirt says, \"Trust me, I'm Irish.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"If you talk during a quiz, what will I think you're doing?\""
+    },
+    {
+      "t": "narrate",
+      "text": "In a loud voice they all say at once, \"Cheating!\""
+    },
+    {
+      "t": "narrate",
+      "text": "He goes around the room, looking over shoulders, a word here or there, leaning in sometimes. They are hunched over pensive. A hand to a forehead, all grip."
+    },
+    {
+      "t": "narrate",
+      "text": "Statue of a raven, painted cheaply, looks down from above. Frequent eyes searching outward, scanning, frequent yawns. Girls playing with bangs, always playing with bangs."
+    },
+    {
+      "t": "narrate",
+      "text": "One girl fans herself with an index card. A rubber duck hangs from the ceiling like a mobile, words dangling off it, \"Drenched. Sailor. Texture.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Elbow on the desk, hand in the hair, other hand resting on arm near the shoulder."
+    },
+    {
+      "t": "narrate",
+      "text": "While they take the quiz he checks the chart for participation. Some names already have three checks. This is why he loves this class."
+    },
+    {
+      "t": "narrate",
+      "text": "And then it is over and the rest of the day comes on suddenly."
+    },
+    {
+      "t": "narrate",
+      "text": "The bit with the hallway again. The women don't even care that he's nearby."
+    },
+    {
+      "t": "narrate",
+      "text": "-doesn't seem it does he- how can you tell- god, you're vain- of course he does- not that pretty, but attractive enough I suppose-"
+    },
+    {
+      "t": "narrate",
+      "text": "He passes out a pink hand-out, titled \"Character Suitcase.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I want you to imagine you're Bilbo Baggins and you're going on a vacation to Mirkwood. What would you pack to take along with you. Your project is to make a suitcase for Bilbo to take with him on his trip."
+    },
+    {
+      "t": "narrate",
+      "text": "Memorabilia and mementos to decorate the outside of the suitcase.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"What's pervious mean?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Pervious. Previous. That's a typo.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Who is the main goblin guy?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Just call him the main goblin, okay?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Tangible, intangible nouns. The kids make animal sounds, the momentum of the noisemaking builds. One kid sits back absently, playing with a pencil, flipping it into the air."
+    },
+    {
+      "t": "narrate",
+      "text": "He might possess the attention span of a gnat. The muddled language at the back of the class is a stupid annoyance. They keep disrupting."
+    },
+    {
+      "t": "narrate",
+      "text": "He decides he'll force the whole class to stay several minutes after class, to cut into their hallway recess time."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Can I put some pig meat in the suitcase?\" One kid is rubbing his stomach, imagining pig meat. Another is shredding little bits of paper which he litters the carpet like dandruff."
+    },
+    {
+      "t": "narrate",
+      "text": "Someone starts singing, they turn to look, he is singing the meow mix song. Another boy shouts out across the room a knowing, \"I'm a kitty cat!\""
+    },
+    {
+      "t": "narrate",
+      "text": "They all crack up at this. Some inside joke he does not get. One child leans threateningly over the desk of one of the girls, his face wide open like a monkey."
+    },
+    {
+      "t": "narrate",
+      "text": "He exhales, blows hard down on her desk and scatters her papers."
+    },
+    {
+      "t": "narrate",
+      "text": "\"In the book of life the answers aren't in the back. - Charlie Brown\""
+    },
+    {
+      "t": "narrate",
+      "text": "Kids run from the social studies teacher in the hall. He hears her talk to the Spanish teacher about the Vice-Principal touching a sixth grade girl accidentally inappropriately . He hears that one everywhere, the kids won't shut up about it."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Stop touching each other and go to class,\" a shout from an unknown direction. He has a flower pen, at the top is an orange plastic flower. He keeps it raised up to his nose, tickling himself with it."
+    },
+    {
+      "t": "narrate",
+      "text": "6th graders rush by. Going to lunch. Tiny little apes, bouncing off the walls, each other, so tiny."
+    },
+    {
+      "t": "narrate",
+      "text": "Teachers with their lunches in plastic grocery bags, ducking out of sight along unused halls, intent on rendezvous and momentary escape."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Just sitting there with the book open doesn't mean you're actually doing it.\""
+    },
+    {
+      "t": "narrate",
+      "text": "They chew gum, they chew their own hair, some look like children, others like young adults. A tiny black girl with braided dreads draws on a table with a permanent marker."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Number seven, [—]?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"The prepositional duck.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Number eight, [—]?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"The crow?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"[—].\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Sea cucumbers are gross. They poop twenty-four seven.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Clear your desks please.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Loud sneezing from a corner of the room, an even louder bless you rings out from the opposite end."
+    },
+    {
+      "t": "narrate",
+      "text": "The girls huddle close at a table, he can hear, \"Shut up for real.\""
+    },
+    {
+      "t": "narrate",
+      "text": "He asks a girl what the tie-dyed shirt she is wearing is for."
+    },
+    {
+      "t": "narrate",
+      "text": "(the student in critical condition)"
+    },
+    {
+      "t": "narrate",
+      "text": "A look, the class shhhs. Whispers."
+    },
+    {
+      "t": "narrate",
+      "text": "His teaching degree is hanging, prominent."
+    },
+    {
+      "t": "narrate",
+      "text": "The kids go off to eat. He lingers in the room. He goes to a computer, puts the Royal Tennenbaum soundtrack in the CD-ROM and listens with headphones while he eats baby carrots out of a bag."
+    },
+    {
+      "t": "narrate",
+      "text": "Elsewhere he imagines the women sitting around in a bookroom perhaps, gossiping about him, them, everyone. Tuck Everlasting. Anne Frank. Ella Enchanted."
+    },
+    {
+      "t": "narrate",
+      "text": "The company they keep."
+    },
+    {
+      "t": "narrate",
+      "text": "One of the boys looks in at him through the window. He turns and begins to take his headphones off. The boy kisses the window quickly, his eyes mocking and shining cruel and then he's gone."
+    },
+    {
+      "t": "narrate",
+      "text": "He welcomes the seventh graders returning from lunch. They have too much energy and he does not have enough."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Write in complete sentences. They don't have to be long, but they do have to be complete.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Another sneeze. A kid with soft features, his hair cropped close to suggest a tight cap of hair. Quiet scratching of writing utensil to paper."
+    },
+    {
+      "t": "narrate",
+      "text": "The click of mechanical pencils, yawning, hurried shuffling. One child writes with a purple crayola marker, thin. Purses and pencil pouches on the tops of desks."
+    },
+    {
+      "t": "narrate",
+      "text": "Lots of fresh new sneakers, shining underneath."
+    },
+    {
+      "t": "narrate",
+      "text": "A small hispanic girl, almost invisible in a dirty white hand-crocheted blouse, ruffled. There is something of a stigma hanging about her, plain for all to see. He sees it clearly, there's something beautiful about her that makes her impossible to comprehend."
+    },
+    {
+      "t": "narrate",
+      "text": "She must be poor, she must have nothing, she speaks good enough English."
+    },
+    {
+      "t": "narrate",
+      "text": "A boy, one of them, reads \"The Dead Zone\", and never takes his eyes up off the pages for the whole of the class session."
+    },
+    {
+      "t": "narrate",
+      "text": "The social queen bee, strolling around casual, is unaware of the eyes on her. The other children smile as she gets close, but it is either friendly or forced."
+    },
+    {
+      "t": "narrate",
+      "text": "He hates her. She has a twin brother who is just as rotten and lovely."
+    },
+    {
+      "t": "narrate",
+      "text": "The layering of clothes on this hot day makes no apparent sense. What is up with that, all the sweaters on top sweaters. He supposes the room is slightly chilly."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe it's a fashion thing. It smells like freshly cleaned, industrially cleaned, tightly woven carpet. Purple speckled white in places."
+    },
+    {
+      "t": "narrate",
+      "text": "\"A pipe? Pipeweed? What would Bilbo pack?\""
+    },
+    {
+      "t": "narrate",
+      "text": "The anal retentive girl in green, carefully filing all her papers away in a collapsible folder. Conspirators ducking in close."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Hey [—], I saw you in the play yesterday.\""
+    },
+    {
+      "t": "narrate",
+      "text": "[—] is one of those boys, he must be. The girl flirts with him ineffectively."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Why'd you say Amsterdam?\""
+    },
+    {
+      "t": "narrate",
+      "text": "There are the kids that tower above all the rest. There is a pretty girl with ugly teeth jutting through like rock outcroppings. There is a kid on his knees, praying to him, the teacher, pleading to move seats to be next to a friend, because they just want to sit together."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Your Mama\" jokes echo through the room. Your momma so fat, she makes Shamu look small. Your mamma so nasty she makes speed stick slow down."
+    },
+    {
+      "t": "narrate",
+      "text": "The girls all chime in, \"You guys are so retarded.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Yo momma so fat, when her beeper goes off, they think she backin up."
+    },
+    {
+      "t": "narrate",
+      "text": "Small kid with big hair, bad dye job, he's angry, and he's one of them."
+    },
+    {
+      "t": "narrate",
+      "text": "\"We were talking about fads.\""
+    },
+    {
+      "t": "narrate",
+      "text": "From across the room he screams, \"What'd you call me?\""
+    },
+    {
+      "t": "narrate",
+      "text": "They don't notice. He comes up, and watches the girls. \"Is this a new fad?\" she asks, pointing to a hand-painted tye-dyed t-shirt, the one that everyone seems to be wearing."
+    },
+    {
+      "t": "narrate",
+      "text": "(the student in critical condition)"
+    },
+    {
+      "t": "narrate",
+      "text": "[—]. Quiet, speaking just above a whisper, telling the girls what happened to the boy. They already know but their faces scrunch up ugly sad, their eyes search for something, some truth that is not in this room at this hour, this day, not ever."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Prepositional phrase. You can take it out if you don't need it. I'm waiting for you to stop talking. [—]. I know you've been patient."
+    },
+    {
+      "t": "narrate",
+      "text": "You can put your arm down.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"What's a locust?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"It's a kind of bird.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"It's a cloud.\""
+    },
+    {
+      "t": "narrate",
+      "text": "A note is delivered to the class. There is a quiet because news is always bad news, especially from the outside. The class is anxious and quiet and many a breath are held inadvertent unconscious."
+    },
+    {
+      "t": "narrate",
+      "text": "He takes the note and reads it. It is nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Your mom needs you to bring your house keys home, [—].\""
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "No ending. A note gets delivered, it says nothing, and the day keeps going. Go to bed.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep02_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

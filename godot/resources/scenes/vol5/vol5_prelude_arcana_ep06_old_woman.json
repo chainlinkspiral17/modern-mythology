@@ -1,0 +1,253 @@
+{
+  "id": "vol5_prelude_arcana_ep06_old_woman",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 6 · The old woman before you",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep06_old_woman.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 6 · The old woman before you",
+      "sub": "Arizona · 1964",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Same woman, same sky, a different draft. Thirty-three minutes, by her count.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Watch who she spends them on.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The old woman before you with tears in her eyes will be dead in thirty-three minutes. She has lived a good life but still her core trembles with regret finalmente. She watches the missile arc heavenward, long braid contrail of pale silk billowing, and she laughs with pained utter disbelief."
+    },
+    {
+      "t": "narrate",
+      "text": "It is Arizona in the year 1964 and the exact coordinates of this doomed endeavor are now sky smoke."
+    },
+    {
+      "t": "narrate",
+      "text": "Really, she says, more of a question than an answer."
+    },
+    {
+      "t": "narrate",
+      "text": "She finishes washing her dishes and looks over at Orange Kitty, who licks between cat fingers."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm so very sorry, she says, your faith and trust in our species was misplaced."
+    },
+    {
+      "t": "narrate",
+      "text": "She dries her hands on a towelette, an olive yellow green with faint stains long grayed into fabric."
+    },
+    {
+      "t": "narrate",
+      "text": "She feels pain shoot up her calf into her side, she arcs her back, pushes back with palm on hip, pressing firm."
+    },
+    {
+      "t": "narrate",
+      "text": "She curses in hodgepodge and struggles over to her bedstand whereupon she clatters at the drawer, withdrawing and savoring the last joint she'll ever smoke."
+    },
+    {
+      "t": "narrate",
+      "text": "She produces a zippo lighter from one of her many work smock pockets, inhales the chemical flame with an almost inhuman relish."
+    },
+    {
+      "t": "narrate",
+      "text": "Orange kitty rolls around batting at glimmers of twilight dancing between the blades of the blinds. Iris watches her cat play, a glimpse of children playing tag pulls at the shadow of thought. Iris remembers youth, and what it felt like not to suffer in a broken down old body, the pure fresh escape of simple play."
+    },
+    {
+      "t": "narrate",
+      "text": "The drug washes over her calm and soothing like drifting in a warm bath."
+    },
+    {
+      "t": "narrate",
+      "text": "She wanders in a daze out into the setting close of day. She hears wind chime and further past a wail coming further down the way. Her trailer isn't far from the others, but it is the furthest out, save for Trini's which is past hers even further."
+    },
+    {
+      "t": "narrate",
+      "text": "The young people have their own lives. The girl, Melody is pleading with her father to put down his tools as he attempts irrationally to hammer fortifications in place on his trailer. He gets the idea to use mud and wood, to fashion an adobe cement that may absorb the blast."
+    },
+    {
+      "t": "narrate",
+      "text": "He tries to do the math in his head, to figure out a way forward. Melody pleads with him to stop. Iris has been keeping a comfortable distance, watching this odd drama play out."
+    },
+    {
+      "t": "narrate",
+      "text": "Calmly, she approaches, warmly she addresses them."
+    },
+    {
+      "t": "narrate",
+      "text": "Devin, don't you think we'll be safer in the museum anyways, it's the sturdiest thing we got."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris, didn't notice you there, real busy as you see."
+    },
+    {
+      "t": "narrate",
+      "text": "While I understand time is certainly of the essence, perhaps you don't see your daughter needs you."
+    },
+    {
+      "t": "narrate",
+      "text": "And perhaps you don't see I need her to survive, if that means working myself into a heart attack, so be it."
+    },
+    {
+      "t": "narrate",
+      "text": "What are you thinking about, Devin. At least communicate your thoughts to the poor girl. She needs you."
+    },
+    {
+      "t": "narrate",
+      "text": "Daddy, oh what's going to happen?"
+    },
+    {
+      "t": "narrate",
+      "text": "The worst possible thing if we don't do something about it."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris asks what Devin needs."
+    },
+    {
+      "t": "narrate",
+      "text": "What do I need? Realistically, a leadlined trailer a couple stories underground."
+    },
+    {
+      "t": "narrate",
+      "text": "He stops hammering."
+    },
+    {
+      "t": "narrate",
+      "text": "It really is futile, isn't it. It's all so overwhelmingly unrealistic. Gosh. What do I do now?"
+    },
+    {
+      "t": "narrate",
+      "text": "Melody says, we're still here. We can just be like this, say our goodbyes."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesus baby, don't think I'd leave you, not ever. Not in this life, not in the next."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris stirs, I gotta be moving on. I'm sure I'll see you both soon."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris sees a glimpse of her own relationship with her father. Him holding her up to look into a tree. Why am I thinking of this now, Iris says aloud to no one in particular."
+    },
+    {
+      "t": "narrate",
+      "text": "She is walking towards John's place. She passes Rafael who paints recklessly on the roof of his trailer. The strong wind knocking him and his easel about."
+    },
+    {
+      "t": "narrate",
+      "text": "He is covered with the mess of his struggles."
+    },
+    {
+      "t": "narrate",
+      "text": "Rafael, what are you doing up there?"
+    },
+    {
+      "t": "narrate",
+      "text": "Starting something, finishing something. What's it look like. I'm painting, Iris."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm no judge, but it looks shoddy and not worth the trouble."
+    },
+    {
+      "t": "narrate",
+      "text": "You say that as if the universe cares. I paint because my thoughts instruct my fingers to dance, and so they dance. My eyes perceive the inner working of my mind, so they dance."
+    },
+    {
+      "t": "narrate",
+      "text": "You have talent but no skill. You came here to study Grace Knight, and you Sir, are no Grace Knight."
+    },
+    {
+      "t": "narrate",
+      "text": "No Iris, you are no Grace Knight. I, however, am no Iris Williams."
+    },
+    {
+      "t": "narrate",
+      "text": "What does that mean. You confuse me, Vargas."
+    },
+    {
+      "t": "narrate",
+      "text": "It means perhaps you waste your breath on me, though I still love you dearly for it."
+    },
+    {
+      "t": "narrate",
+      "text": "Melody wants to see you, boy."
+    },
+    {
+      "t": "narrate",
+      "text": "And I would most like to see her. But I must capture this moment before it is gone forever."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris wanders up to the museum. She looks at its exterior, the fine work that Devin has put in, the areas where shabbily cut corners. Inside the first section of the museum is a photo exhibit dedicated to the life and times of Grace Knight and company."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "She walks into the museum and the page runs out. Fitting, for a museum.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep06_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "id": "meld_seam_2_3",
+  "vol": 3,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "the time between times",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pasadena_street_1945.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_radio_1945.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "transmission",
+      "sub": "Small Wood · 1994 · transmission · Pasadena",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Rain in Pasadena, which it is not supposed to do. Footsteps splash in the film of water over asphalt."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the rain, a sound nobody has invented yet. tk tk tk tk. A floppy drive, reading. Every time it clicks a little more of the street fills in."
+    },
+    {
+      "t": "narrate",
+      "text": "The boulevard loads in bands, top to bottom. Streetcar wire. A marquee showing the same movie as every other marquee. Orange trees, and then the smell of orange trees, a beat behind."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_meld_rain_loading.jpg",
+      "caption": "Pasadena, loading"
+    },
+    {
+      "t": "narrate",
+      "text": "Down a hill that isn't there, a horn. Two short, one long, the way a jitney calls for one more fare before it pulls out. Then only rain."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_meld_time_pod_interior.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the egg",
+      "sub": "the time between times · 1945 · 1994 · ——",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Inside the pod it is quiet the way the inside of an egg is quiet. One seat. One button. The instruments breathe their green lights."
+    },
+    {
+      "t": "narrate",
+      "text": "He built his egg with a team of other young, passionate like-minded scientists, volunteered himself, sealed himself inside one quiet night, dared himself to push a button."
+    },
+    {
+      "t": "narrate",
+      "text": "On the floor of the pod, against the riveted seam, there is a feather."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_meld_feather_pod_floor.jpg",
+      "caption": "a feather from the blue heron"
+    },
+    {
+      "t": "narrate",
+      "text": "Blue-grey, long as a hand, the vane split near the tip. One of the first unused feathers from flight. Nobody packed it. Nobody on the team has ever seen that coast."
+    },
+    {
+      "t": "narrate",
+      "text": "It wants to be put in a book of great importance, hidden away from sight and age and never lost. There are no books in the pod."
+    },
+    {
+      "t": "narrate",
+      "text": "Above the button somebody has written in pencil, small, in a hand that is not his: slower here."
+    },
+    {
+      "t": "narrate",
+      "text": "He waits. The pod waits with him."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_four_screen_room.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_projector_hum.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Then a beam comes down out of the dark at a slant, from very high up, at the end of a long jointed stalk. Where it lands, it is looking."
+    },
+    {
+      "t": "narrate",
+      "text": "It swivels the way an eye on a stalk swivels, tall as a water tower. The beam is the pointer. It hovers over him, and the line of text above the hover tries for his name and settles for: Earthman."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_meld_eyestalk_beam.jpg",
+      "caption": "the projector, the eye, the stalk"
+    },
+    {
+      "t": "narrate",
+      "text": "It was looking at him looking at it."
+    },
+    {
+      "t": "narrate",
+      "text": "He opens his eyes and can't close them back up again."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside the sky is falling, and it comes down in pieces."
+    },
+    {
+      "t": "flag",
+      "key": "meld_seam_2_3_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch1_boy_from_pasadena"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "vol5_prelude_arcana_ep15_lynchs_peak",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 15 · hometown something? (excerpt)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep15_lynchs_peak.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 15 · hometown something? (excerpt)",
+      "sub": "Lynch’s Peak, Oregon · night",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "An excerpt from a much longer, much louder screenplay. I kept the quiet part.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Two people in a church in a town called Lynch’s Peak, and one of them claims to know how the place got made.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "What does he hope to accomplish?"
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "He's homesick. He wants to go home."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "Then let him leave."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "You don't understand."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "No I don't. Tell me."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "I can't. But try to understand this. Suppose you had an opportunity to make a world for yourself. How would you make it?"
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "I don't know. I'm not a god."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "But imagine, for a second, that you were. What kind of Eden would you make it?"
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "What are you saying? Are you implying that you're 'Eve' and he's 'Adam'?"
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "NO! Well, not exactly. There was an accident. And I think that everything you see before you- except for me- is a result of that accident."
+    },
+    {
+      "t": "narrate",
+      "text": "Desmond shakes his head with a hangman's humor."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "Imagine a world with two Gods, two creators with conflicting ideologies and beliefs and superstitions. Imagine them falling from paradise and landing in 'Lynch's Peak', Oregon."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "That's insane."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "We were young and naive, we pushed the limits of science. We were insane."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "So you suggest that my whole universe is nothing more than the immaculate union of-"
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "I don't suggest. I insist. Desmond. I know who you are."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "You do? Really? Am I some figment of your imagination?"
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "You were, at one time. But now, you're flesh and blood. Like me."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "Alright, Miss Supreme Being, tell me who I am."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "Desmond Daniels was a boy I stole glances at in Sunday school."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "My last name isn't Daniels."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "No, it isn't, but Cooper is. Richard Cooper, Officer Cooper, was a cop. I fell in love with him when I was seventeen. He was tall, dark, and handsome. He died in the line of duty. Hard to imagine in a small town, but it happened. And I was heartbroken."
+    },
+    {
+      "t": "say",
+      "char": "Desmond",
+      "expr": "neutral",
+      "text": "You can't prove a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "Samantha smiles. She opens up the compass on her necklace. Behind it, is a small newspaper clipping. A cop, clean cut, looks very much like Desmond."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes squint in disbelief."
+    },
+    {
+      "t": "say",
+      "char": "Samantha",
+      "expr": "neutral",
+      "text": "You don't have to believe me. That's quite alright. I just thought you should know, of all people."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Then the bikers arrive. They always do. Goodnight.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep15_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

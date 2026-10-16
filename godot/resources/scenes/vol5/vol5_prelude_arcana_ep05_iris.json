@@ -1,0 +1,153 @@
+{
+  "id": "vol5_prelude_arcana_ep05_iris",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 5 · iris",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep05_iris.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 5 · iris",
+      "sub": "Arizona · the end times",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Arizona, a trailer, a cat, and a missile on its way somewhere else.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "The world ends. Iris has errands.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Out the window of her silverstream trailer, Iris sees the world end and decides to go on about her day anyway. The arc being traced in the evening sky is faint but no less dramatic. A titan missile leaves home with upwards determination and journeys abroad to annihilate the faceless enemy, women and children mostly."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris could weep but holds back instead wanting to think about better things. All the people who have mattered, all the people who still matter. Ghosts haunt her here at the end times."
+    },
+    {
+      "t": "narrate",
+      "text": "Her best friend Grace, her worst enemy Grace. Her lover and eternal enigma, Gabriel. Her current love, and perhaps the love of her life, John."
+    },
+    {
+      "t": "narrate",
+      "text": "Her Orange Kitty who purrs softly at her forearm, wet with her tears."
+    },
+    {
+      "t": "narrate",
+      "text": "You forgive me, don't you Orange Kitty."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris gets up and goes to her shelf, preparing a final tin of cat food for her constant companion these last four years, working on the museum. Orange Kitty has little concern for the legacy of Grace Knight, but has been an observer, shedding over priceless works sheltered in the trailer in times of storm and chaos."
+    },
+    {
+      "t": "narrate",
+      "text": "Orange Kitty stares out the window or at shadow, but never across canvas. His aesthetics run towards ease of capture, and is this good eating or not. Orange Kitty dreams of being a kitten with other kittens and passivity of existence curled up tight."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris goes to the bedroom portion of her trailer, rummages through a small cabinet. She pushes past important documents, photographs and a bible, her hindered old fingers clutch an arthritically rolled joint of marijuana. She searches her work smock pockets for her Zippo, conjures flame."
+    },
+    {
+      "t": "narrate",
+      "text": "The smoke in the back of her throat fills her, her sinuses hate her for this moment. The quality of the weed is negligible, desert scrub, but it does the job. Her head fogs and the weight of the world is not lost on her, but it is lessened."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris leaves in a hurry, her head filled with a sense of purpose. She remembers Gabriel, strong and determined, vexing her heart at all the wrong times in life."
+    },
+    {
+      "t": "narrate",
+      "text": "She remembers Grace, her best friend who was always there to pull her up and then forgetfully cast her aside, a vicious circle she was part of until their lives ended leaving her all alone with her thoughts, seeing to fulfilling their dreams."
+    },
+    {
+      "t": "narrate",
+      "text": "What was the dream Iris had? As she walks along the trail leading to the caravan, she sees ghosts of children casting herself into their play."
+    },
+    {
+      "t": "narrate",
+      "text": "\"You remember how to play old lady?\""
+    },
+    {
+      "t": "narrate",
+      "text": "Iris snaps back to focus, a mean looking youth stands before her waving a baseball bat."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Why, do you not have anyone to play with?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"I made Hope cry and she ran off to tell her dad and my mom.\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"Well, that's your own fault, now is it?\""
+    },
+    {
+      "t": "narrate",
+      "text": "\"If you see her, can you tell her I'm sorry.\""
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "We cut on a boy holding a bat. Not the last frame I’d pick, but I respect it.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep05_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

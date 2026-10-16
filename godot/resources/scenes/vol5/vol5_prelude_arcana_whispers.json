@@ -1,0 +1,99 @@
+{
+  "id": "vol5_prelude_arcana_whispers",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — what to watch",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_whispers_channel.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol5_whispers_theme.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "prompt": "Whispers from the Liminal",
+      "opts": [
+        {
+          "text": "ep. 1 · UMBRA",
+          "scene": "vol5_prelude_arcana_ep01_umbra"
+        },
+        {
+          "text": "ep. 2 · In/Flux",
+          "scene": "vol5_prelude_arcana_ep02_in_flux"
+        },
+        {
+          "text": "ep. 3 · The Microcosmographer",
+          "scene": "vol5_prelude_arcana_ep03_microcosmographer"
+        },
+        {
+          "text": "ep. 4 · Iris · title screen",
+          "scene": "vol5_prelude_arcana_ep04_iris_title"
+        },
+        {
+          "text": "ep. 5 · iris",
+          "scene": "vol5_prelude_arcana_ep05_iris"
+        },
+        {
+          "text": "ep. 6 · The old woman before you",
+          "scene": "vol5_prelude_arcana_ep06_old_woman"
+        },
+        {
+          "text": "ep. 7 · the backyard dogs",
+          "scene": "vol5_prelude_arcana_ep07_backyard_dogs"
+        },
+        {
+          "text": "ep. 8 · The Autumn Crop",
+          "scene": "vol5_prelude_arcana_ep08_autumn_crop"
+        },
+        {
+          "text": "ep. 9 · sticker shock",
+          "scene": "vol5_prelude_arcana_ep09_sticker_shock"
+        },
+        {
+          "text": "ep. 10 · the sound of the silence of",
+          "scene": "vol5_prelude_arcana_ep10_sound_of_silence"
+        },
+        {
+          "text": "ep. 11 · writ fer rain",
+          "scene": "vol5_prelude_arcana_ep11_writ_fer_rain"
+        },
+        {
+          "text": "ep. 12 · pour 1",
+          "scene": "vol5_prelude_arcana_ep12_pour_1"
+        },
+        {
+          "text": "ep. 13 · paper cuts & the star key",
+          "scene": "vol5_prelude_arcana_ep13_paper_cuts"
+        },
+        {
+          "text": "ep. 14 · Land of Milk & Honey",
+          "scene": "vol5_prelude_arcana_ep14_milk_and_honey"
+        },
+        {
+          "text": "ep. 15 · hometown something? (excerpt)",
+          "scene": "vol5_prelude_arcana_ep15_lynchs_peak"
+        },
+        {
+          "text": "Leave it.",
+          "scene": "vol5_prelude_arcana_john_shift"
+        }
+      ]
+    }
+  ]
+}

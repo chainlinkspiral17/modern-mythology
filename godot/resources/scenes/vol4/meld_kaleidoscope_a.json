@@ -1,0 +1,190 @@
+{
+  "id": "meld_kaleidoscope_a",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_radio_static.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "turn the lens",
+      "sub": "the desk · after · the desk",
+      "duration": 2400
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_tower",
+      "val": false
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_suite",
+      "val": false
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_xerox",
+      "val": false
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_porthole",
+      "val": false
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_derby",
+      "val": false
+    },
+    {
+      "t": "narrate",
+      "text": "The desk. Everything that didn't fit anywhere else."
+    },
+    {
+      "t": "narrate",
+      "text": "The lamp is on. Somebody left it on, or somebody is coming back."
+    },
+    {
+      "t": "narrate",
+      "text": "Between the stapler and the zine there is a cardboard tube the length of a forearm, papered in a print of ducks, rubbed white at both ends by hands. Frosted glass at the far end. A clear eye at the near one."
+    },
+    {
+      "t": "narrate",
+      "text": "Shake it and something inside answers. Not glass. A dry sound, like a feather in a drawer, like a claw on a cookie sheet, like a drive reading."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_kaleidoscope_tube.jpg",
+      "caption": "the tube, the lamp, the desk"
+    },
+    {
+      "t": "narrate",
+      "text": "Put it to your eye. Point it at the lamp."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_meld_lens_mandala.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "·",
+      "sub": "Small Wood · 1994 · transmission · Pasadena",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "A heron. A minivan. A heron."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_city_color_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Neon in the shape of a crab. A crab in the shape of neon."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_hospital_room_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Ducks on a television. Autumn ducks. The same pond going around."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_xerox_sky.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "weep. weep. FOR THE FUTURE, struck through."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_meld_lens_mandala.jpg"
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "A moment ago I was debating whether or not to begin."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "Everybody's here, hon."
+    },
+    {
+      "t": "narrate",
+      "text": "The pieces slide and click. Every turn the same pieces. Every turn a different room."
+    },
+    {
+      "t": "flag",
+      "key": "meld_lens_opened",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "turn the lens.",
+      "opts": [
+        {
+          "text": "the water tower, in wet paint",
+          "scene": "meld_kaleidoscope_b",
+          "hide_if": "meld_facet_tower"
+        },
+        {
+          "text": "coffee in the editing suite",
+          "scene": "meld_kaleidoscope_c",
+          "hide_if": "meld_facet_suite"
+        },
+        {
+          "text": "a copy of a copy of a copy",
+          "scene": "meld_kaleidoscope_d",
+          "hide_if": "meld_facet_xerox"
+        },
+        {
+          "text": "the lamp, the porthole",
+          "scene": "meld_kaleidoscope_e",
+          "hide_if": "meld_facet_porthole"
+        },
+        {
+          "text": "crab number zero",
+          "scene": "meld_kaleidoscope_f",
+          "hide_if": "meld_facet_derby"
+        },
+        {
+          "text": "stop turning.",
+          "scene": "meld_kaleidoscope_g",
+          "requires": [
+            "meld_facet_tower",
+            "meld_facet_suite",
+            "meld_facet_xerox",
+            "meld_facet_porthole",
+            "meld_facet_derby"
+          ]
+        }
+      ]
+    }
+  ]
+}

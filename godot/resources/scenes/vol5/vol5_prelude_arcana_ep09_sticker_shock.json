@@ -1,0 +1,135 @@
+{
+  "id": "vol5_prelude_arcana_ep09_sticker_shock",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 9 · sticker shock",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep09_sticker_shock.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 9 · sticker shock",
+      "sub": "Honolulu · 1991, give or take",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Three timestamps, none of them in order. A father who was presumed dead for a few weeks, back in the early seventies.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Keep your receipts.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "interlude",
+      "text": "2003, as you be.",
+      "sub": "",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Your dad."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes?"
+    },
+    {
+      "t": "narrate",
+      "text": "He was presumed dead for a few weeks there. Back in the early seventies."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes."
+    },
+    {
+      "t": "interlude",
+      "text": "1991, a week ago.",
+      "sub": "",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "‘They aren’t sure what you are.’"
+    },
+    {
+      "t": "narrate",
+      "text": "‘Scuse me,’ through spat out vodka upon polished reflective surfaces."
+    },
+    {
+      "t": "interlude",
+      "text": "1991, a few days ago.",
+      "sub": "",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The first office is a hollowed out chunk of Honolulu high-rise. Ground floors are tourist trap photography parlour, travel agency, corner suit shoppe & luggage boutique. Next up, rental property management services, a sushi bar and occasional disco."
+    },
+    {
+      "t": "narrate",
+      "text": "Above that, a floor shared between an old acquaintance and his new tenants. Homegrown software divided by import dynasty hardware."
+    },
+    {
+      "t": "narrate",
+      "text": "They bring me up the back stairs that go up a f—"
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "It breaks off on the back stairs. Most stairs go somewhere. These ones we’ll have to imagine.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep09_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

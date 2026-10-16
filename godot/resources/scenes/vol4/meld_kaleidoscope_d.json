@@ -1,0 +1,201 @@
+{
+  "id": "meld_kaleidoscope_d",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — generation loss",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_office_copier.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "generation loss",
+      "sub": "copy shop · issue six · the ruined future · 1945",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "The copier takes the first page of a pulp story and gives it back warm."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky was falling and it came down in pieces."
+    },
+    {
+      "t": "narrate",
+      "text": "Copy the copy."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky was falling and it came down in pages."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_facet_xerox_pulp.jpg",
+      "caption": "halftone, second generation"
+    },
+    {
+      "t": "narrate",
+      "text": "Jack Perkins crouches under a fallen street sign, thick cables held at odd angles. In the copy the cables are the rules of a zine layout. The street sign is a masthead. It says weep."
+    },
+    {
+      "t": "narrate",
+      "text": "Copy the copy."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky was falling and it came down in copies."
+    },
+    {
+      "t": "narrate",
+      "text": "The machines that drift above, covered in tiny lights like little eyes, are the dots of a halftone now. The children of the ruins are dots. Jack is dots, coarser every pass, a shiny quarter going to toner."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ruined_city_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_radio_static.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "transmission",
+      "sub": "the ruined future · copy shop · ——",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "A voice comes booming from a machine among machines. It speaks a language not quite English, almost understandable."
+    },
+    {
+      "t": "narrate",
+      "text": "Crackle like static electric, welcome to this world of mine."
+    },
+    {
+      "t": "narrate",
+      "text": "He begins to hear his father's voice come out of it."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bus_station_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_city_pulse.mp3"
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "At a bus overhang across the decades a man stands reading his newspaper. His name is printed on the newspaper itself."
+    },
+    {
+      "t": "narrate",
+      "text": "Sand in the fold. The newspaper was buried by a fence in the desert a long time ago, by someone who thought he could find his way back."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "tired",
+      "text": "We all just want her out of our heads."
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_office_copier.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Copy the copy."
+    },
+    {
+      "t": "narrate",
+      "text": "The sky was falling and it came down in us."
+    },
+    {
+      "t": "narrate",
+      "text": "Mistakes are like children, hard to take back."
+    },
+    {
+      "t": "narrate",
+      "text": "Last pass. The page comes out nearly black, the whole ruined city one field of toner, and through the middle of it, where the copier glass is scratched, a single white line, thin as a hair, as a wire, as the light under a door."
+    },
+    {
+      "t": "flag",
+      "key": "meld_facet_xerox",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "the lens turns.",
+      "opts": [
+        {
+          "text": "the water tower, in wet paint",
+          "scene": "meld_kaleidoscope_b",
+          "hide_if": "meld_facet_tower"
+        },
+        {
+          "text": "coffee in the editing suite",
+          "scene": "meld_kaleidoscope_c",
+          "hide_if": "meld_facet_suite"
+        },
+        {
+          "text": "a copy of a copy of a copy",
+          "scene": "meld_kaleidoscope_d",
+          "hide_if": "meld_facet_xerox"
+        },
+        {
+          "text": "the lamp, the porthole",
+          "scene": "meld_kaleidoscope_e",
+          "hide_if": "meld_facet_porthole"
+        },
+        {
+          "text": "crab number zero",
+          "scene": "meld_kaleidoscope_f",
+          "hide_if": "meld_facet_derby"
+        },
+        {
+          "text": "stop turning.",
+          "scene": "meld_kaleidoscope_g",
+          "requires": [
+            "meld_facet_tower",
+            "meld_facet_suite",
+            "meld_facet_xerox",
+            "meld_facet_porthole",
+            "meld_facet_derby"
+          ]
+        }
+      ]
+    }
+  ]
+}

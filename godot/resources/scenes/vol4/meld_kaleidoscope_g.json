@@ -1,0 +1,153 @@
+{
+  "id": "meld_kaleidoscope_g",
+  "vol": 4,
+  "chapter": 9,
+  "type": "interlude",
+  "title": "the kaleidoscope — one image",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_overcast.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_beach_wind.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "—",
+      "sub": "four in the morning · low tide · everywhere at once",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "The lens stops."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing turns. The pieces that were sliding settle one onto the next, the way silt settles when a river finally lets go of it."
+    },
+    {
+      "t": "narrate",
+      "text": "A tide flat, all the way out, shining like a cookie sheet."
+    },
+    {
+      "t": "narrate",
+      "text": "On the flat, a desk. Nobody carried it there. Its legs go down into the wet sand and the sand holds them."
+    },
+    {
+      "t": "narrate",
+      "text": "On the desk, a lamp with a brass shade, and the lamp is on."
+    },
+    {
+      "t": "narrate",
+      "text": "A cup of coffee full to the rim. Not one drop over."
+    },
+    {
+      "t": "narrate",
+      "text": "A notebook, wide-ruled, open. A heron feather laid in the gutter to keep the place."
+    },
+    {
+      "t": "narrate",
+      "text": "A plastic stick the size of a pack of gum. Warm."
+    },
+    {
+      "t": "narrate",
+      "text": "A painted wooden duck, facing the water."
+    },
+    {
+      "t": "narrate",
+      "text": "A chair pushed back, the way a chair gets pushed back when someone stands to answer a knock."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_meld_one_image.jpg",
+      "caption": "low tide, four in the morning"
+    },
+    {
+      "t": "narrate",
+      "text": "No floppy drive. No copier. No machine counting breaths. The rain hangs in its three straight lines and does not land on anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Out where the water starts, the crab stands with one leg lifted, and keeps it lifted."
+    },
+    {
+      "t": "narrate",
+      "text": "Far up the beach, past the cannery, a horn. Two short, one long. Then dogs on a hill, going all night, in a city that is not on this coast."
+    },
+    {
+      "t": "narrate",
+      "text": "At the edge of the lamplight, low, something yellow goes by. A hem. Mud on it. Then dark again where it was."
+    },
+    {
+      "t": "narrate",
+      "text": "The notebook has one line on it, in pencil, in a hand nobody here owns."
+    },
+    {
+      "t": "narrate",
+      "text": "slower here."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "A moment ago I was debating whether or not to begin."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "-To be."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "warm",
+      "text": "Everybody's here, hon."
+    },
+    {
+      "t": "say",
+      "char": "Jane",
+      "expr": "warm",
+      "text": "We'll be here to catch you."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody says the rest of it."
+    },
+    {
+      "t": "narrate",
+      "text": "The lamplight lies on the open page, and the page is warm, the way a page gets warm when someone has been holding it a long while. Someone has. Someone is."
+    },
+    {
+      "t": "narrate",
+      "text": "If it is 4am\nthen you are awake."
+    },
+    {
+      "t": "narrate",
+      "text": "The lamp stays on."
+    },
+    {
+      "t": "flag",
+      "key": "meld_kaleidoscope_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_curtain_call"
+    }
+  ]
+}

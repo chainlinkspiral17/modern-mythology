@@ -1,0 +1,157 @@
+{
+  "id": "vol5_prelude_arcana_ep04_iris_title",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 4 · Iris · title screen",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep04_iris_title.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 4 · Iris · title screen",
+      "sub": "the desert · morning",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "This was written to play over a title screen, for anyone who never presses start.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "So don’t. Let it run.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The morning air is cool, a stirring against the crashing of the sun's light upon the mind's eye.\nThe Iris does funny things, sees funny things that may not be there. Shapes like spires, rising, pluming smoke."
+    },
+    {
+      "t": "narrate",
+      "text": "Or are those just the internal light rods dancing inside my retina, and long thin wisps of cirrus melting into atmospheric blue.\nMorning light does funny things to an old lady's imagination."
+    },
+    {
+      "t": "narrate",
+      "text": "I wake with a heavy sigh, the weight against my temple pounding.\nA fall cold congestion presses up against my inside cavities, clouding these thoughts, old and new."
+    },
+    {
+      "t": "narrate",
+      "text": "I dreamt of children playing, and people living, and myself forgetting, prophecy fulfilled once again.\nAlways forgetting."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe if I'm lucky I'll remember something of what it was.\nIf I did something, perhaps. I could jolt loose some errant thought, find some broken off fragment."
+    },
+    {
+      "t": "narrate",
+      "text": "Some days, it's so just hard to get out of bed.\nI just want to listen to the birds, the sounds of morning, the low cries of far off men and their machines."
+    },
+    {
+      "t": "narrate",
+      "text": "I shift in place, bones settled in for the long night's haul.\nI remember a woman, too beautiful, flawed mercilessly in retaliation for being so wonderful."
+    },
+    {
+      "t": "narrate",
+      "text": "And there was a man with her, and they were having such fun together.\nOr maybe that was anger and sadness.\nPassion is hard to gauge that way, it just boils over, radiates like the sun."
+    },
+    {
+      "t": "narrate",
+      "text": "Oh, the sun. Thank you, Sun. I see you, and I thank you for everything.\nFor putting me here, and for another day.\nMaybe I'll go for a walk. Maybe I'll read a book. Maybe I'll listen to some music."
+    },
+    {
+      "t": "narrate",
+      "text": "Too many maybe's, aren't there.\nToo much to do in every day we're given.\nIs wasted time really a regret?\nIs it a gift?"
+    },
+    {
+      "t": "narrate",
+      "text": "Is it both?\nWhat if I don't want to move a muscle?\nWhat if I just let my mind wander?\nWhere will it go, if I just sit here and idle?"
+    },
+    {
+      "t": "narrate",
+      "text": "What if I want to just preserve this moment, and let it linger.\nMy thoughts go out.\nFaces that matter.\nWords that resonate through my soul."
+    },
+    {
+      "t": "narrate",
+      "text": "Images of places I've been, or want to go to, yet.\nSo I go there.\nI fly.\nI soar over deserts and mountains."
+    },
+    {
+      "t": "narrate",
+      "text": "I follow a stream to a river and follow that into the earth.\nLayers of compaction and compression, the geology of just this one spot is staggering."
+    },
+    {
+      "t": "narrate",
+      "text": "The deep roots that permeate and hold fast an ancient life form.\nThe tree of life is older than any of its animals or animal minds."
+    },
+    {
+      "t": "narrate",
+      "text": "I return here to drink of its sap and bud among its leaves.\nIt reaches so high, it reaches so low.\nIn light and dark, we rise and fall."
+    },
+    {
+      "t": "narrate",
+      "text": "I bask in the light of creation, the stardust imagined out of nothingness.\nExploded out of either the best or worst thought ever imagined."
+    },
+    {
+      "t": "narrate",
+      "text": "I am God.\nI am Woman.\nI am Man.\nI am Iris."
+    },
+    {
+      "t": "narrate",
+      "text": "I am.\nI."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "You can press start now. Or not. She won’t mind.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep04_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}
