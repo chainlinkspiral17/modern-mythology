@@ -3834,6 +3834,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-16 · pass 109: AGES — A LOOK AND A VOICE PER ERA (draft 1).** The
+user: "characters need new looks and voices as they age." The age ledger
+`godot/tools/ages.json` covers 28 recurring characters and 50 eras across vols 1–7.
+- 6 new roster looks, and 20 ledger edits applied, among them:
+  - Dickens Dean has three ages: teen Nate (1994), young (vols 1 and 4),
+    about 50 (vols 5–6);
+  - Chess has two;
+  - the age-7 Maya no longer covers the 16-year-old.
+- `voice_ages.py` and the renderer pick each line's voice by the age the
+  scene is set; 9 new voices to cast.
+- `ages_audit.py` gates ledger ↔ roster.
+
+Held for the author: vol 7's two calendars (2052 vs ages counted from about
+2023); vol 4 daddy_b/c's older Dean; `miriam_2025`; keys shared by two
+people. See `lore/_VOL1_4_SETS_AND_CAST.md` § Ages.
+
+NEXT: cast the 9 voices; generate the 6 looks in Hero Studio; once
+claude/vol1-4-source-text merges, its voice tools (voice_common.py) should
+read the same ledger.
+
 **2026-10-16 · pass 108: VOLS 1–4 — SETS AND CAST (draft 1).** The user:
 "Let's move back to background and model work for all the new vol 1-4
 stuff." Plan and queue: `lore/_VOL1_4_SETS_AND_CAST.md`.

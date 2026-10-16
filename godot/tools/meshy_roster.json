@@ -97,6 +97,9 @@
           "src": "lore/_DAMBROSIO_EMPLOYEES.md",
           "text": "a small annotation on John's apron under the painted scene reads '12 yr'."
         }
+      ],
+      "looks": [
+        "john_frank_montreal"
       ]
     },
     {
@@ -206,6 +209,9 @@
           "src": "games/hands/elicia.json",
           "text": "Pale evaluative eyes. Two industries and one unfortunate marriage."
         }
+      ],
+      "looks": [
+        "elicia_temple_montreal"
       ]
     },
     {
@@ -703,7 +709,7 @@
       "tag": "XII The Hanged Man · also XVIII The Moon",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Natalie David, waitress and diviner in Simons, Louisiana, late 20s. Dark curls tied up with a scarf, tired hooded eyes, silver rings on most fingers. Pale-yellow diner waitress dress with a white collar and a small stained apron, white sneakers, a tarot card tucked into the apron pocket. Half asleep, seeing everything.",
+      "prompt": "Natalie David, waitress and diviner in Simons, Louisiana, mid-40s. Dark curls tied up with a scarf, tired hooded eyes, silver rings on most fingers. Pale-yellow diner waitress dress with a white collar and a small stained apron, white sneakers, a tarot card tucked into the apron pocket. Half asleep, seeing everything.",
       "texture_prompt": "pale yellow cotton waitress dress, white collar, white apron, white sneakers, silver rings, olive skin, dark curly hair",
       "canon": [
         {
@@ -840,7 +846,9 @@
       "name": "Aria / The Third",
       "file": "aria_third.glb",
       "vol": [
+        4,
         5,
+        6,
         7
       ],
       "keys": [
@@ -886,6 +894,10 @@
           "src": "vol5/vol5_ch18_moon.json",
           "text": "The readings had said: two consciousnesses, one body, and a third coming. Not monster. Not mother. Three. The number is three."
         }
+      ],
+      "looks": [
+        "aria_dean_teen",
+        "aria_dean_sighting"
       ]
     },
     {
@@ -997,6 +1009,10 @@
           "src": "games/emperor/visitors.json",
           "text": "Plain face, plain shoes, the lapels-smoothing gesture of a man who once cared deeply about his appearance. He is forgettable in the practiced way you have encountered perhaps a dozen times in your life."
         }
+      ],
+      "looks": [
+        "dickens_dean_daddy",
+        "nate_kestrel"
       ]
     },
     {
@@ -1795,8 +1811,7 @@
       "name": "Wagner",
       "file": "wagner.glb",
       "vol": [
-        1,
-        7
+        1
       ],
       "keys": [
         "wagner"
@@ -3281,6 +3296,9 @@
           "src": "vol7/vol7_ch15_loft.json",
           "text": "keeping a house and a bakery and a Swiss husband running for forty-five years"
         }
+      ],
+      "looks": [
+        "hans_1994"
       ]
     },
     {
@@ -3494,6 +3512,9 @@
           "src": "lore/milk_and_honey/_ART_MANIFEST.md",
           "text": "Aud at the counter, seventy-three years old, knows everyone by name."
         }
+      ],
+      "looks": [
+        "aud_1994"
       ]
     },
     {
@@ -6542,7 +6563,10 @@
           "text": "The woman, at the booth, looks up when Jesse comes in."
         }
       ],
-      "prompt_mode": "append"
+      "prompt_mode": "append",
+      "looks": [
+        "chess_vol4"
+      ]
     },
     {
       "slug": "hal",
@@ -6867,7 +6891,10 @@
         "vols": [
           5
         ],
-        "when": "vol5 ch5 — the child outside St. Jude's; vol6's Maya is 16"
+        "when": "vol5 ch5 — the child outside St. Jude's; vol6's Maya is 16",
+        "scenes": [
+          "vol5_ch5_hierophant"
+        ]
       },
       "prompt_mode": "append"
     },
@@ -7102,6 +7129,7 @@
       "name": "Nate (the Kestrel trace, at sixteen)",
       "file": "nate_kestrel.glb",
       "vol": [
+        2,
         7
       ],
       "keys": [
@@ -7112,7 +7140,7 @@
       "tag": "vol7 ch11 Kestrel Mountain · the groove at the basement desk shaped like Nate at sixteen · NOT vol6's Nate the bassist",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Nate as the substrate renders him: a boy of about sixteen in 1993, slight, pale, dark hair falling over his forehead, a thin face a little too still — a trace of a person, not the person. A faded flannel shirt open over a plain tee, worn jeans, canvas sneakers; a designer's idea of a basement kid, drawn from memory.",
+      "prompt": "Nate as the substrate renders him: a boy of about sixteen in 1993, slight, pale, a mop of brown hair falling over his forehead, a thin face a little too still — a trace of a person, not the person. A faded flannel shirt open over a plain tee, worn jeans, canvas sneakers; a designer's idea of a basement kid, drawn from memory; eyes that will not settle on grey, green or blue.",
       "texture_prompt": "faded flannel shirt, plain grey tee, worn blue jeans, canvas sneakers, dark hair, pale skin",
       "notes": "SPARSE — canon gives the age and that the face is new to Kai; the clothes are proposed. Edit before spending credits.",
       "canon": [
@@ -7125,7 +7153,24 @@
           "text": "The groove has shaped itself into a person who looks like Nate did at sixteen and who knows what Nate knew at sixteen. I am not Nate. Nate is dead. Nate died in '42."
         }
       ],
-      "prompt_mode": "append"
+      "prompt_mode": "append",
+      "base": "dickens_dean",
+      "look": {
+        "label": "16-17 · Small Wood, 1993-94 (and his imprint in Kestrel Mountain)",
+        "vols": [
+          2,
+          7
+        ],
+        "scenes": [
+          "vol2_ch7_scumm_a",
+          "vol2_ch7_scumm_b",
+          "vol2_ch7_scumm_c",
+          "vol2_ch7_scumm_d",
+          "vol2_ch11_dickens_dean",
+          "vol7_ch11_kestrel"
+        ],
+        "when": "the junior at Alsea Valley High who keeps the SCUMM dream journal and takes the paper from the narrator; the groove he left in the basement desk"
+      }
     },
     {
       "slug": "old_man_kestrel",
@@ -35926,6 +35971,8 @@
       "name": "Dickens Dean (vol4, 'daddy')",
       "file": "dickens_dean_daddy.glb",
       "vol": [
+        1,
+        2,
         4
       ],
       "keys": [
@@ -35936,7 +35983,7 @@
       "pose": "a-pose",
       "prompt": "Dickens Dean in vol4's 'daddy': the technologist in a glass tower on the Pacific who builds a simulated world to court Esther and becomes Aria's father — urbane, intense, terrified of everything and the happiest guy he knows. Early 30s, lean and strong, a mop of brown hair, eyes that will not settle on grey, green or blue, a too-eager smile. Expensive-plain: a charcoal merino sweater over a white t-shirt, dark tailored trousers, minimal black leather sneakers; a slim tablet in one hand.",
       "texture_prompt": "charcoal merino sweater, white cotton tee, dark navy tailored trousers, black leather sneakers, slim black tablet, brown hair",
-      "notes": "A look of the dickens_dean entry, whose silver-haired middle-aged look (vol5) has no vol 4 — the base needs \"looks\": [\"dickens_dean_daddy\"]. vol1 also describes him young ('this young person — tall, attractive', vol1_ch4_dream_bar); consider adding 1 to this look's vols. Clothes are a proposal.",
+      "notes": "A look of the dickens_dean entry, whose silver-haired middle-aged look (vol5) has no vol 4 — the base needs \"looks\": [\"dickens_dean_daddy\"].Clothes are a proposal. (2026-10-16: widened to vol 1 per the user's ruling.)",
       "canon": [
         {
           "src": "vol4/vol4_daddy_a.json",
@@ -35954,17 +36001,338 @@
       "prompt_mode": "append",
       "base": "dickens_dean",
       "look": {
-        "label": "vol4 · daddy (young, the glass tower)",
+        "label": "young · early 30s (vol1 Faust 3, vol2 'Now', vol4 daddy)",
         "vols": [
+          1,
+          2,
           4
         ],
         "scenes": [
+          "vol1_introduction",
+          "vol1_ch4_dream_bar",
+          "vol1_ch4_interstitial",
+          "vol1_ch4_club_sharp",
+          "vol1_ch4_club_sharp_b",
+          "vol1_ch4_waking",
+          "vol1_ch5_morning",
+          "vol1_ch5_proposition",
+          "vol1_ch6_office",
+          "vol1_ch6_debrief",
+          "vol1_ch7_ink",
+          "vol1_ch8_club",
+          "vol1_ch8_lifelines",
+          "vol1_ch9_street",
+          "vol1_ch10_longboat",
+          "vol1_ch11_drugstore",
+          "vol1_ch12_history",
+          "vol1_ch13_deep_end",
+          "vol1_ch14_painting",
+          "vol1_ch15_river_turn",
+          "vol1_ch16_four_am",
           "vol4_daddy_a",
           "vol4_daddy_b",
           "vol4_daddy_c"
         ],
         "when": "vii. daddy — courting Esther, raising Aria, telling Esther their daughter is gone"
       }
+    },
+    {
+      "slug": "aud_1994",
+      "kind": "hero",
+      "name": "Aud (1994, the Missing Link in Small Wood)",
+      "file": "aud_1994.glb",
+      "vol": [
+        2,
+        4
+      ],
+      "keys": [],
+      "base": "aud",
+      "look": {
+        "label": "1994 · the Missing Link, before the bread",
+        "vols": [
+          2,
+          4
+        ],
+        "scenes": [
+          "vol2_ch7_scumm_c",
+          "vol2_ch7_scumm_d",
+          "meld_seam_1_2",
+          "meld_kaleidoscope_a",
+          "meld_kaleidoscope_c",
+          "meld_kaleidoscope_g"
+        ],
+        "when": "D. Dean's spring-1994 dream journal (vii. SCUMM) and the meld seams set at Aud's diner — about thirty years before she is vol7's seventy-three"
+      },
+      "tag": "vol2 vii. SCUMM · meld · Aud at the Missing Link counter, 1994 · sleeves rolled, glasses on the chain",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aud in 1994, in her early forties, behind the counter of the Missing Link diner in Small Wood on the Oregon coast at 5:40 in the morning. The same long gaunt frame and the same watchful face she has at seventy-three, thirty years younger: dark-blonde hair going early grey, pinned up off the neck, a few loose strands. A faded blue chambray work shirt with the sleeves rolled to the elbow, a short white waitress apron tied at the waist, straight-leg jeans, brown leather work boots; reading glasses hanging on a beaded chain at her chest; a glass coffee pot in one hand. Weathered small-town warmth, says little, misses nothing.",
+      "texture_prompt": "faded blue chambray shirt, white cotton half-apron, straight-leg blue denim, brown leather boots, reading glasses on a beaded chain, glass coffee pot, dark-blonde hair going grey",
+      "notes": "A look of the vol7 aud entry — the base needs \"looks\": [\"aud_1994\"]. Canon gives only 'sleeves rolled, glasses on the chain, pot in hand'; hair, shirt, apron and age are a PROPOSAL. AGE CAUTION: vol7 says 'Aud was seventy-three' and vol7 is ruled the 2050s (~2052), which would make her about 15 in 1994 — impossible for the diner woman in these scenes. vol7's own relative dates (Hans's 'thirty-three years since' Nov 1989, Cale's 'thirty years' since Feb 1994) put vol7's stated ages on a ~2022-24 calendar, which makes 1994 Aud early 40s. If the user instead rules the 1994 Aud is the dream prefiguring the elder Aud ('It's the one you're going to make'), drop this look and route these scenes to aud. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch7_scumm_c.json",
+          "text": "Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain."
+        },
+        {
+          "src": "vol4/meld_kaleidoscope_c.json",
+          "text": "Aud comes in through the door that isn't on any street. Sleeves rolled, glasses on the chain, pot in hand."
+        },
+        {
+          "src": "vol2/meld_seam_1_2.json",
+          "text": "They've been at it since I unlocked. Coffee, hon?"
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "hans_1994",
+      "kind": "hero",
+      "name": "Hans (1994, the bakery window in Small Wood)",
+      "file": "hans_1994.glb",
+      "vol": [
+        2,
+        4
+      ],
+      "keys": [],
+      "base": "hans",
+      "look": {
+        "label": "1994 · the baker in the window, before the cap",
+        "vols": [
+          2,
+          4
+        ],
+        "scenes": [
+          "vol2_ch7_scumm_a",
+          "vol2_ch7_scumm_d",
+          "meld_kaleidoscope_c"
+        ],
+        "when": "D. Dean's spring-1994 dream journal (Hans in the bakery window: 'Bread for the morning, Dickens') and the editing-suite monitors in the kaleidoscope cut"
+      },
+      "tag": "vol2 vii. SCUMM · Hans in the bakery window, 1994 · 'Bread for the morning'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Hans the baker in 1994, about forty, in the front window of his bakery in Small Wood on the Oregon coast, lifting a loaf off a tray. The same round strong build and big forearms he has at sixty-eight, his hair still thick and brown with no grey, bare-headed (the wool cap Greta knits him comes decades later), flour on his forearms and in his eyebrows. A long white cotton baker's apron dusted with flour, tied over a short-sleeved white work shirt, sleeves pushed higher; grey work trousers; black clogs. A man who wipes his hands on his apron before he shakes yours.",
+      "texture_prompt": "white cotton baker's apron dusted with flour, short-sleeved white work shirt, grey work trousers, black leather clogs, brown hair, floured forearms, round loaf of bread",
+      "notes": "A look of the vol7 hans entry — the base needs \"looks\": [\"hans_1994\"]. Canon gives the apron, the bakery window and 'Real Hans'; hair, shirt and age are a PROPOSAL. The bare head is grounded in vol7: Greta knitted his cap in 2046 because he could not, after sixty, work a 4 a.m. winter kitchen without one. AGE CAUTION: 'Hans was sixty-eight' in a 2050s vol7 would make him about 10 in 1994; his own memories (his brother told him of the foundation in 1969; the poem cycle came in November 1989, 'thirty-three years since') need him born about 1954, i.e. about forty in 1994. User ruling needed — see ages.json. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch7_scumm_a.json",
+          "text": "Hans in the bakery window. Real Hans wipes his hands on his apron before he shakes yours."
+        },
+        {
+          "src": "vol2/vol2_ch7_scumm_a.json",
+          "text": "Bread for the morning, Dickens. You'll want it later."
+        },
+        {
+          "src": "vol4/meld_kaleidoscope_c.json",
+          "text": "On the monitors, Small Wood. Hans in the bakery window lifting a loaf off a tray and setting it back."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "john_frank_montreal",
+      "kind": "hero",
+      "name": "John Frank (Montreal, middle age)",
+      "file": "john_frank_montreal.glb",
+      "vol": [
+        5
+      ],
+      "keys": [],
+      "base": "john_frank",
+      "look": {
+        "label": "Montreal · middle age, years after Graustark",
+        "vols": [
+          5
+        ],
+        "scenes": [
+          "vol5_ch14_temperance",
+          "vol5_ch19_sun"
+        ],
+        "when": "XIV Temperance and XIX The Sun — 'this chapter takes place several years after the events of the chapters that surround it': the Montreal apartment and Tuesdays at Café Olimpico. (vol5_ch21_world nodes 99-105, John on the plane, are this era too, but that scene is mostly 2025 — stage those nodes with a scene key, not by scene id.)"
+      },
+      "tag": "vol5 XIV Temperance · XIX The Sun · a middle-aged man in a Montreal apartment · the narwhal mug · Café Olimpico",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "John Frank about fifteen years after Graustark, around forty: the waiter-journalist settled into middle age in Montreal. The same lean frame softened a little, brown hair cut shorter and starting to grey at the temples, a short tidy beard, tired-kind eyes behind thin wire reading glasses. A charcoal crewneck wool sweater over a collared shirt, dark corduroy trousers, a long navy wool overcoat for the grey-stone city, worn brown leather boots; a pocket notebook and pen in one hand. Calmer than the young man at the counter — observing, not mapping.",
+      "texture_prompt": "charcoal wool crewneck sweater, pale blue oxford collar, dark brown corduroy trousers, navy wool overcoat, brown leather boots, thin wire glasses, small black notebook, brown hair greying at temples",
+      "notes": "A look of the john_frank entry (vol5's mid-20s waiter) — the base needs \"looks\": [\"john_frank_montreal\"]. Canon gives 'middle age', Montreal, oat milk, the notebook; everything visible (beard, glasses, coat, grey) is a PROPOSAL. Era: John has been at Café Olimpico 'on Tuesdays for six years' after 'blurry years of drifting', and Erica's card ends 'fifteen years of acquaintance' — about 2039, John about 40. The Gauntlet wiki already treats XIV/XIX as 'same actor, future timeline'. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "He was content, he supposed, to just — be. A middle-aged man in a Montreal apartment. Drinking adequate coffee. Observing the alley. Occasionally visited by the ghosts of his former, more frantic selves."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "Middle age, he had concluded, was largely about developing a tolerance for ambiguity and lukewarm coffee."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "A note on the chronology: this chapter takes place several years after the events of the chapters that surround it."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "He sat at the small round metal table in the back corner, under the window, with his notebook open."
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "0 The Fool (also XIV Temperance, XIX The Sun — same actor, future timeline)"
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "elicia_temple_montreal",
+      "kind": "hero",
+      "name": "Elicia Duchane (Montreal, years after)",
+      "file": "elicia_temple_montreal.glb",
+      "vol": [
+        5
+      ],
+      "keys": [],
+      "base": "elicia_temple",
+      "look": {
+        "label": "Montreal · slower, more centered",
+        "vols": [
+          5
+        ],
+        "scenes": [
+          "vol5_ch19_sun"
+        ],
+        "when": "XIX The Sun — Café Olimpico, several years after Graustark; she is filming herself every night. (vol5_ch21_world nodes 96-98, Elicia flying Montreal → New York, are this era too; stage by key, not scene id.)"
+      },
+      "tag": "vol5 XIX The Sun · Café Olimpico · denim jacket repaired at the cuff · her mother's scarf",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Elicia Duchane in her Montreal years, mid-forties, the documentary maker after the collapse: slower than she used to be, more centered. Still tall, dark hair now worn loose to the shoulder with a few grey strands, no make-up, steady tired eyes. A denim jacket repaired at the cuff over a black knit top, her mother's long patterned wool scarf wound twice at the neck (the one thing that never changes costume), dark jeans, scuffed black ankle boots; a small handheld camera on a wrist strap.",
+      "texture_prompt": "faded denim jacket with darned cuff, black knit top, long rust-and-cream patterned wool scarf, dark denim jeans, scuffed black leather ankle boots, small black handheld camera, dark hair with grey strands",
+      "notes": "A look of the elicia_temple entry (vol5's early-30s host of Whispers from the Liminal) — the base needs \"looks\": [\"elicia_temple_montreal\"]. Canon: the denim jacket repaired at the cuff, the mother's scarf, 'slower than she used to, more centered'. Scarf pattern, hair, camera and age are a PROPOSAL; the era is the same as john_frank_montreal (~2039). Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "She came in the way she came in everywhere these days — slower than she used to, more centered, wearing a denim jacket that had been repaired at the cuff and a scarf that was,"
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "The scarf was, in the footage, the only thing Elicia wore that did not change costume."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aria_dean_sighting",
+      "kind": "hero",
+      "name": "Aria Dean (the sighting · always young)",
+      "file": "aria_dean_sighting.glb",
+      "vol": [
+        5,
+        6,
+        7
+      ],
+      "keys": [],
+      "base": "aria_third",
+      "look": {
+        "label": "the sighting · a young woman in yellow, about twenty-two",
+        "vols": [
+          5,
+          6,
+          7
+        ],
+        "scenes": [
+          "vol5_ch19_sun",
+          "vol5_ch21_world",
+          "vol6_ch2_dumpster",
+          "vol7_ch12_morning",
+          "vol7_ch20_door",
+          "vol7_ch20_each",
+          "vol7_ch22_portal"
+        ],
+        "when": "every flesh-and-blood or seen Aria after she leaves the tower: the window table at Café Olimpico, the Smolvud pier, the Gas & Go overhang, the cabin door, the portal room. The interior Aria in Nicola (vol5) stays on the base."
+      },
+      "tag": "vol5 XIX, XXI · vol6 ch2 · vol7 ch20, ch22 · blue curls, purple-rimmed glasses, yellow slicker · 'always young'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aria Dean as she is seen, at her one fixed age: a tall young woman of about twenty-two, biracial-looking but not pinned to any one ethnicity, curly bright-blue hair worn in loose curls (some witnesses say dreadlocks), round purple-rimmed glasses, eyes that have seen more than twenty-two years allow. An open bright-yellow rain slicker with the hood down over a plain grey t-shirt, straight-leg jeans, worn brown lace-up boots, a small canvas bag over one shoulder. Still, unhurried, a little apart from the room — as if she has just stepped in from somewhere else.",
+      "texture_prompt": "bright yellow vinyl rain slicker, plain grey cotton t-shirt, straight-leg blue jeans, worn brown leather lace-up boots, small natural canvas shoulder bag, round purple acrylic glasses, curly bright-blue hair",
+      "notes": "A look of the aria_third entry, whose base model is Aria as a girl of about ten (right for vol4 'daddy' and the vol5 interior) — the base needs \"looks\": [\"aria_dean_teen\", \"aria_dean_sighting\"]. Canon fixes the yellow slicker, the blue hair, the purple-rimmed glasses, 'twenty-two, maybe twenty-three', 'tall'; the t-shirt and bag are partly canon (vol7 ch22: jeans, boots, canvas bag). Hair texture differs by witness — dreadlocks (vol5, vol6), 'curly blue' (vol7 ch22), 'curling and dark' under the hood (vol7 ch20) — the brief in _COMMUNITY_PLANNED_LORE.md says curly blue; this prompt follows it.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "She was, John registered with the small prickling attention of a journalist whose subconscious had just offered him a lead, very young — twenty-two, maybe twenty-three — and her eyes were the kind of eyes that had already seen more than twenty-two years normally allowed for."
+        },
+        {
+          "src": "vol6/vol6_ch2_dumpster.json",
+          "text": "Under the overhang, in the shadow, a tall woman with blue dreadlocks, yellow slicker, holding a cardboard tube."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "She was in the yellow rain slicker. The hood was down."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "Her hair was dyed curly blue."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "Her glasses were purple-rimmed."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "She was in jeans and the boots Lena had painted on the alley wall on Friday morning. She had a small canvas bag over one shoulder."
+        },
+        {
+          "src": "lore/_COMMUNITY_PLANNED_LORE.md",
+          "text": "Always young. Her age in any appearance is the same fixed young."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aria_dean_teen",
+      "kind": "hero",
+      "name": "Aria Dean (vol4 'daddy', the teenager)",
+      "file": "aria_dean_teen.glb",
+      "vol": [
+        4
+      ],
+      "keys": [],
+      "base": "aria_third",
+      "look": {
+        "label": "vol4 · daddy · the teenager in Shanghai",
+        "vols": [
+          4
+        ],
+        "scenes": [
+          "vol4_daddy_b"
+        ],
+        "when": "vii. daddy (b), from 'Aria is a teenager' to the night her father shows her his office in Shanghai — the last look before she leaves the world. The ten-year-old earlier in the same scene is the base."
+      },
+      "tag": "vol4 vii. daddy · Aria at the windows of her father's Shanghai apartment · black light and lava lamp",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aria Dean at about seventeen, Dickens and Esther Dean's daughter, the summer she visits her father in Shanghai: tall for her age, curly hair still its natural dark brown with a home-dyed streak of blue at the front, round purple-rimmed glasses, a guarded watchful face. An oversized black band t-shirt under an unzipped yellow hoodie, black jeans, beat-up canvas high-tops, a paperback on the occult in one hand. A kid who grew up at the seat of power and is about to find out what that means.",
+      "texture_prompt": "unzipped yellow cotton hoodie, black band t-shirt, black denim jeans, worn black canvas high-top sneakers, round purple glasses, dark curly hair with a blue streak, worn paperback",
+      "notes": "A look of the aria_third entry — the base needs \"looks\": [\"aria_dean_teen\", \"aria_dean_sighting\"]. vol4 gives her age (ten, then 'a teenager', then a dorm room), her tastes and Shanghai — no clothes or hair. Everything visible is a PROPOSAL that bridges the base child and the always-young woman (the yellow and the purple glasses arrive early on purpose). Lowest priority of the new looks: daddy_b is narrated, Aria has no lines. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol4/vol4_daddy_b.json",
+          "text": "Aria is a teenager and gets the distinct vibe that everyone is studying her for signs of weakness."
+        },
+        {
+          "src": "vol4/vol4_daddy_b.json",
+          "text": "She experiments with hallucinogens and listens to some Pink Floyd. There may or may not be a black light and or lava lamp in her dorm room."
+        },
+        {
+          "src": "vol4/vol4_daddy_b.json",
+          "text": "Aria visits her dad in Shanghai, he drives her to his one-room apartment and leaves her there, goes to sleep in his office."
+        }
+      ],
+      "prompt_mode": "append"
     }
   ]
 }

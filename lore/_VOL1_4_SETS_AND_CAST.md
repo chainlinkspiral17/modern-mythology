@@ -105,3 +105,63 @@ Open from the cast pass (the author's calls):
 
 Canon to keep straight: **Arthur Finch draws DriftWood; Jay Rose is the DJ**
 — a split character, and the names blur on purpose (see the roadmap).
+
+## Ages: a look and a voice for each era (2026-10-16)
+
+The user: *"characters need new looks and voices as they age."*
+
+**The ledger is `godot/tools/ages.json`.** It has the timeline (with sources) and,
+for 28 recurring characters, every era: volumes, scenes, year, age, the roster
+look for that age, and a voice key with a casting note.
+
+The timeline:
+- vol 1: spring 2009;
+- vol 2: 1993–94;
+- vol 3: 2003, plus 1945 and 1991;
+- vol 4: 2006, plus "daddy" running about 2010 into the 2030s;
+- vol 5: spring 2025 (the age-7 flashback is about 2015; Montreal is about 2039);
+- vol 6: summer 2025;
+- vol 7: 2052.
+
+**Looks.** The roster carries one entry per age. A look entry has `base` (the
+character) and `look.vols` / `look.scenes` (where it shows), and `CharLayer`
+picks it. The pass added six looks: `aud_1994`, `hans_1994`,
+`john_frank_montreal`, `elicia_temple_montreal`, `aria_dean_sighting` and
+`aria_dean_teen`. It also rewired these:
+- **Dickens Dean** has three ages:
+  - `nate_kestrel`, the teenage Nate Dean of 1993–94 (vol 2's dream journal,
+    vol 7's memories);
+  - `dickens_dean_daddy`, early 30s (vols 1 and 4, per the user's ruling);
+  - the base model at about 50 (vols 5–6).
+- **Chess:** `chess_vol4` (early 20s), then the base at about 30 (vol 6).
+- **Maya:** `maya_daigle_age7` is fenced to vol5_ch5_hierophant. It used to
+  take every vol 5 Maya, including the 16-year-old.
+- **Natalie** is mid-40s, not late 20s, by the text.
+
+**Voices.** `elevenlabs_render.py` asks `voice_ages.era_voice_key(char,
+scene)` first. When that era's key has a `voice_id` in `voice_map.json`, the
+line is spoken at that age. Otherwise the character's own voice is used,
+so nothing goes silent while ages are uncast. `python3
+godot/tools/voice_ages.py` lists them: **9 new voices to cast**:
+- teen Dean, 1994;
+- Aud at 73 and Hans at 40;
+- Montreal John and Elicia, about 2039;
+- Maya at 7 and at 16;
+- Lena and Cale, 2052.
+
+33 eras keep a voice that already exists. `ages_audit.py` keeps the ledger
+and the roster in step (run by the scoped suite).
+
+**Held for the author** (in the ledger's `edits`, marked HELD):
+1. **Vol 7's two calendars.** Its dated events are 2052, but its stated ages
+   (Aud 73, Hans 68, "N years since") count from about 2022–24. Under 2052,
+   Aud and Hans were 15 and 10 in 1994, and their 1994 looks would be dreams
+   of their older selves. Cale would be 77, but the roster says 40s.
+2. Vols 5 and 6 are the same year by the text; the lore's "twenty years of
+   evolution" belongs to an older timeline.
+3. Vol 4 daddy_b/c set Dean 10–20 years after daddy_a. Should those use the
+   older base?
+4. `miriam_2025` rests on a nine-year gap the text doesn't support. Retire
+   it?
+5. Keys that route to two people: `wren`, `sammy`, `margaret`, `brandon`;
+   vol 6's bassist `nate`.

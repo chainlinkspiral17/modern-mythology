@@ -32,6 +32,9 @@ import sys
 import time
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import voice_ages  # noqa: E402 — the age ledger's era voices
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -81,11 +84,22 @@ def find_scenes(patterns, vol_filter):
     return out
 
 
-def voice_lookup(vmap, char):
+def voice_lookup(vmap, char, scene_id=None):
     """Return (voice_id, voice_settings_dict). Falls back to _narrator if
-    the character has no entry. Errors out if no _narrator either."""
+    the character has no entry. Errors out if no _narrator either.
+    (2026-10-16) A character's voice at the age the scene is set: when the
+    age ledger (ages.json, voice_ages.py) puts this scene in one of the
+    character's eras and that era's key is cast in voice_map.json, the era's
+    voice wins; otherwise the character's own voice, as before."""
     chars = vmap.get("characters", {})
     key = char.lower() if char else "_narrator"
+    era_key = voice_ages.era_voice_key(key, scene_id) if scene_id else None
+    era = chars.get(era_key) if era_key else None
+    if era and era.get("voice_id"):
+        settings = dict(vmap.get("default_voice_settings", {}))
+        settings.update((chars.get(key) or {}).get("voice_settings", {}) or {})
+        settings.update(era.get("voice_settings", {}) or {})
+        return era["voice_id"], settings
     entry = chars.get(key) or chars.get("_narrator")
     if entry is None or not entry.get("voice_id"):
         return None, None
@@ -220,7 +234,7 @@ def main():
                 total["skipped"] += 1
                 continue
 
-            voice_id, settings = voice_lookup(vmap, char)
+            voice_id, settings = voice_lookup(vmap, char, scene_id)
             if voice_id is None:
                 missing_voices.add(char.lower())
                 total["missing_voice"] += 1

@@ -1,0 +1,1808 @@
+{
+ "_comment": [
+  "AGE LEDGER — Modern Mythology vols 1-7 + prelude/meld/interlude scenes. Draft 1 (2026-10-16). Not applied to the repo.",
+  "Vols 1-4 scene ids and quotes come from origin/claude/vol1-4-source-text; vols 5-7 from claude/3d-locales-clean.",
+  "timeline: in-story year per volume / jumping chapter. year=null for the meld (outside time).",
+  "characters: keyed by roster base slug. era.look = the roster slug that should render that era (EXISTING or NEW in new_looks.json); null = unstaged (prose, photograph or lore only) — no model needed until a scene stages it.",
+  "era.voice.key = '<base>__<era>'; 'shares' names the existing voice_map key that can serve that era unchanged (age move < ~10 years). A new voice is needed where 'shares' is absent.",
+  "Ages are derived; each era has 'derivation' and 'source'. Conflicts are flagged, not resolved — see _flags.",
+  "edits: proposed changes to EXISTING roster entries. new looks live in new_looks.json."
+ ],
+ "timeline": {
+  "vol1": {
+   "year": 2009,
+   "span": "spring 2009 (book frame 2010)",
+   "source": "vol5_ch15_devil node 35 ('Dean was, properly speaking, a dream Jimmy had had once, in the spring of 2009' — Faust 3 is 'Faust's fever dream'); vol1_title node 3 'copyright 2010'; texting/earbuds throughout vol1 (origin/claude/vol1-4-source-text:godot/resources/scenes/vol1/)"
+  },
+  "vol1_prelude_editing_suite + vol1_ch17_editing_suite": {
+   "year": 2010,
+   "source": "the author's four facets in the editing suite; roster the_writer prompt 'the author in 2010, early 30s'"
+  },
+  "vol2": {
+   "year": 1994,
+   "span": "school year 1993-94, Small Wood / Alsea Valley High",
+   "source": "vol2_ch11_dickens_dean node 5 'Small Wood High · Senior year'; vol2_ch7_scumm_a node 6 'from the dream journal of D. Dean — Alsea Valley High — spring 1994'; meld_seam_2_3 node 5 'Small Wood · 1994'; vol2_bf_picnic node 3 'F + B 1994'; vol2_briar_falls_interlude 'Small Wood · mid-nineties'"
+  },
+  "vol2_ch1-ch2 history (Jarvis, Delores Wiebe, Seagash)": {
+   "year": 1902,
+   "span": "1800s-1910",
+   "source": "vol2_ch2_cliffside (1902), vol2_ch2_disappearance (1910), vol2_ch2_seagash ('1800s') — period history, no recurring cast"
+  },
+  "vol2_ch11_dickens_dean nodes 22-37 ('Up the hill · Overlooking the bay · Now')": {
+   "year": 2010,
+   "span": "the narrator's 'now' (~2009-13)",
+   "source": "vol2_ch11_dickens_dean node 22 'Overlooking the bay · Now'; Dean in 'a big glass mansion up the hill' (node 23); vol7_ch22_drive node 15 tower begun 2011, completed 2013"
+  },
+  "vol2_drift_wood": {
+   "year": 1998,
+   "span": "1997-99",
+   "source": "vol2_drift_wood node 4 'by jay rose · Small Wood High, 1997–1999'"
+  },
+  "vol3": {
+   "year": 2003,
+   "source": "vol3_ch2_dreams_in_the_key_of_godhead node 44 'from the far off future, the year 2003'; meld_kaleidoscope_e node 5 '2003'"
+  },
+  "vol3 Pasadena chapters (ch2, ch9, ch19; Earthman/Jack Parsons)": {
+   "year": 1945,
+   "source": "meld_seam_2_3 node 13 'the time between times · 1945 · 1994'; meld_kaleidoscope_d '1945'; andy_1945 roster look"
+  },
+  "vol3_ch4 House of Glass flashback": {
+   "year": 1999,
+   "span": "~1998-2000",
+   "source": "vol3_ch4_names_in_neon: 'I'm twenty-two.'; vol3_earthman.md line 338 'Release it to DVD, that exciting new format'"
+  },
+  "vol3_ch6_arcadeum": {
+   "year": 1991,
+   "source": "vol3_ch6_arcadeum node 18 'Honolulu · 1991' (frame: 'personnel · J. Okimoto · 2003')"
+  },
+  "vol3_ch12_uncle_nick": {
+   "year": 1993,
+   "span": "Andy's high-school years (approx.)",
+   "source": "vol3_ch12_uncle_nick_b node 63 'two high school boys' — undated flashback"
+  },
+  "vol4": {
+   "year": 2006,
+   "span": "Jan-May 2006 (the blog printouts)",
+   "source": "vol4_scraps node 4 (dated posts 'thursday, january 19, 2006' … 'thursday, may 18, 2006'); vol4_board_gaps node 7 'march, 2006'; meld_seam_3_4 node 5 '2003 · 2006'"
+  },
+  "vol4_daddy_a/b/c (vii. daddy)": {
+   "year": 2010,
+   "span": "~2010 courtship → Aria aged ten → teenager → 'after' (~2010-2031)",
+   "source": "vol4_daddy_a node 5 'a glass tower on the Pacific'; vol7_ch22_drive nodes 15-19 (tower 2011-13, 'his wife died in '31', Aria grew up in the tower). daddy_b covers Aria from ten to college, so b/c sit 10-20 years after a"
+  },
+  "vol4 Chess stories ('what sort of', 'hit a wall')": {
+   "year": 2017,
+   "span": "undated; derived",
+   "source": "no date in text. User ruling: early-20s Chess here = 'around thirty' Chess in vol6 (2025) → ~2016-18, NOT the 2006 blog frame (in 2006 she would be ~11)"
+  },
+  "vol5": {
+   "year": 2025,
+   "span": "spring 2025 (text drifts 2024-2026)",
+   "source": "vol6_ch1_maya_bedroom nodes 6-7 (F.T.: Jimmy's call and Philip's drive to fetch Maya were 'six weeks ago' when vol6's summer opens); vol5_ch15_devil node 105 ('since approximately 2011 … for thirteen years' = 2024); vol5_ch10_wheel node 11 (2003 comb 'in twenty-three years' = 2026); vol5_ch21_world node 59 label 'D'AMBROSIO'S. 1983–2026'"
+  },
+  "vol5_ch5_hierophant §I (Maya, age 7)": {
+   "year": 2015,
+   "source": "vol5_ch5_hierophant node 8 '§ I. Maya Daigle, Age 7'; node 108 'the old church Maya Daigle had stood outside ten years and three weeks ago'"
+  },
+  "vol5_ch14_temperance + vol5_ch19_sun (+ vol5_ch21_world nodes 96-105) — Montreal": {
+   "year": 2039,
+   "span": "'several years after'; ~2031-2040",
+   "source": "vol5_ch14_temperance node 7 and vol5_ch19_sun node 6 ('takes place several years after'); vol5_ch19_sun node 9 'coming here on Tuesdays for six years'; vol5_ch14_temperance node 56 'fifteen years of acquaintance' with Erica (met in vol5's 2025) → ~2039"
+  },
+  "vol5_prelude_arcana_*": {
+   "year": 2025,
+   "span": "Whispers from the Liminal / John's Graustark; ep06 is 'Arizona · 1964'",
+   "source": "origin/claude/vol1-4-source-text:godot/resources/scenes/vol5/vol5_prelude_arcana_john_bar.json (John's Graustark); vol5_prelude_arcana_ep06_old_woman node 4 'Arizona · 1964'"
+  },
+  "vol6": {
+   "year": 2025,
+   "span": "Memorial Day–Labor Day 2025",
+   "source": "lore/_VOL6_WIKI.md:235-236 'COMMUNITY PLANNED's 2025 summer'; lore/_VOL7_WIKI.md:6 'vol6 (COMMUNITY PLANNED) is 2025'; vol6_ch22_foxhole node 104 'since 2024'"
+  },
+  "vol6_ch0_prelude": {
+   "year": 2025,
+   "source": "vol6_ch0_prelude node 4 'Sunday · 06:12', early June"
+  },
+  "vol6_ch4_maya_floor (the photograph)": {
+   "year": 1978,
+   "source": "vol6_ch4_maya_floor node 28 'a charcoal suit at a dock at dusk in Graustark in 1978'"
+  },
+  "vol7": {
+   "year": 2052,
+   "span": "late summer 2052 (ruled 2026-09-26: the 2050s)",
+   "source": "lore/_VOL7_WIKI.md:3; vol7_ch22_drive node 34 'Dean's been dead ten years' (d. 2042); vol7_ch15_bread node 139 'the fifteen years since November of '37'; vol2_ch7_scumm_d node 35 '2013. 2026. 2042. 2052.' CAUTION: vol7's stated AGES and its 'N years since 199x' counts (Hans 'thirty-three years since' 1989, Cale 'thirty years' since 1994) still run on a ~2022-24 calendar — see _flags"
+  },
+  "vol7_interlude_ii": {
+   "year": 2052,
+   "span": "2052 Smolvud + 2025 Harmony Creek (Maya hears the Speak & Spell)",
+   "source": "vol7_interlude_ii nodes 6-17 (Cosmic Comics Speak & Spell, HCE; Finn hears 'a girl's voice — young, dry' — Maya)"
+  },
+  "meld scenes": {
+   "year": null,
+   "span": "outside time — seams between eras",
+   "source": "meld_seam_1_2 'INT. EDITING SUITE · Small Wood' / 'Aud's · 5:40 a.m.' (2010 suite ↔ 1994 diner); meld_seam_2_3 '1945 · 1994'; meld_seam_3_4 '2003 · 2006'; meld_kaleidoscope_a '1994', _c 'EDITING SUITE · Aud's', _d '1945', _e '2003', _f 'Small Wood · August · a hip bar', _g 'four in the morning · everywhere at once'"
+  }
+ },
+ "characters": {
+  "dickens_dean": {
+   "keys": [
+    "dean",
+    "dickens_dean",
+    "dd",
+    "d_dean",
+    "mr_d_dean",
+    "m.",
+    "d._dean",
+    "nate (vol7 imprint)"
+   ],
+   "born": 1977,
+   "born_source": "vol7_ch11_kestrel node 107 ('Nate played Kestrel Mountain for the first time in late 1993 at sixteen'); vol7_ch13_cale node 58 (Feb 1994: 'He had been seventeen'); died 2042 (vol7_ch22_drive node 16). Same man: vol7 calls him Nate Dean, tower above old-Yachats (vol7_ch4_finn node 82, vol7_ch5_cabin node 105); the daughter Aria (vol7_ch14_petra node 29); voice_map: 'dean' = 'Mr. D. Dean / adult Nate'.",
+   "eras": [
+    {
+     "id": "teen",
+     "vols": [
+      2,
+      7
+     ],
+     "scenes": [
+      "vol2_ch7_scumm_a",
+      "vol2_ch7_scumm_b",
+      "vol2_ch7_scumm_c",
+      "vol2_ch7_scumm_d",
+      "vol2_ch11_dickens_dean",
+      "vol7_ch11_kestrel",
+      "vol7_ch20_each",
+      "vol7_ch20_calls"
+     ],
+     "year": 1994,
+     "age": 17,
+     "derivation": "16 in late 1993, 17 in Feb 1994 (vol7); 'a year younger' than the senior narrator (vol2_ch11 node 6). vol7's Nate is the substrate imprint of that same boy.",
+     "look": "nate_kestrel",
+     "look_status": "EXISTING entry, needs base/look fields (see edits)",
+     "visible": "slight teen frame, mop of brown hair, the grey-no-green-no-blue eyes; flannel, tee, jeans, canvas sneakers (1994)",
+     "voice": {
+      "key": "dickens_dean__teen",
+      "casting": "Dickens 'Nate' Dean at 16-17, 1994 Oregon coast: American teenage boy, light unbroken-in tenor, quick and private, too-precise for his age; flat affect breaking into excitement when he talks about the work. Voices vol7's 'nate' (72 lines) and the first-person narration of the vol2 SCUMM dream journal (scene_alias those narrate lines off _narrator_vol2)."
+     },
+     "source": "vol2_ch7_scumm_a node 6; vol2_ch11_dickens_dean node 6; vol7_ch11_kestrel nodes 104-107"
+    },
+    {
+     "id": "young",
+     "vols": [
+      1,
+      2,
+      4
+     ],
+     "scenes": [
+      "vol1_introduction",
+      "vol1_ch4_dream_bar",
+      "vol1_ch4_interstitial",
+      "vol1_ch4_club_sharp",
+      "vol1_ch4_club_sharp_b",
+      "vol1_ch4_waking",
+      "vol1_ch5_morning",
+      "vol1_ch5_proposition",
+      "vol1_ch6_office",
+      "vol1_ch6_debrief",
+      "vol1_ch7_ink",
+      "vol1_ch8_club",
+      "vol1_ch8_lifelines",
+      "vol1_ch9_street",
+      "vol1_ch10_longboat",
+      "vol1_ch11_drugstore",
+      "vol1_ch12_history",
+      "vol1_ch13_deep_end",
+      "vol1_ch14_painting",
+      "vol1_ch15_river_turn",
+      "vol1_ch16_four_am",
+      "vol2_ch11_dickens_dean",
+      "vol4_daddy_a"
+     ],
+     "year": 2010,
+     "age": "early 30s",
+     "derivation": "born 1977 → 32 in spring 2009 (vol1); vol1 'this young person — tall, attractive'; vol4 'a mop of brown, his frame lean and strong'.",
+     "look": "dickens_dean_daddy",
+     "look_status": "EXISTING; widen to vol 1 (+ the 'Now' half of vol2_ch11) — see edits",
+     "visible": "lean and strong, brown mop, no grey; urbane-casual tech money (vs the base's charcoal suit and silver hair)",
+     "voice": {
+      "key": "dickens_dean__young",
+      "casting": "Dickens Dean at ~32: urbane, slightly archaic, grand speeches with gentle menace and real warmth; polished mid-Atlantic baritone, youthful energy, 'terrified of everything and the happiest guy I know'.",
+      "shares": "dickens_dean"
+     },
+     "source": "origin/claude/vol1-4-source-text:godot/resources/scenes/vol1/vol1_ch4_dream_bar.json node 6; vol4_daddy_a node 20"
+    },
+    {
+     "id": "daddy_later",
+     "vols": [
+      4
+     ],
+     "scenes": [
+      "vol4_daddy_b",
+      "vol4_daddy_c"
+     ],
+     "year": 2028,
+     "age": "mid-40s to ~50",
+     "derivation": "daddy_b runs from Aria aged ten to Aria in a college dorm; daddy_c is 'after' she is gone — 10-20 years past daddy_a.",
+     "look": "dickens_dean_daddy",
+     "look_status": "EXISTING per the user's ruling (young look for vol4). Text-wise the base (silver, ~50) fits b/c better — optional edit offered",
+     "visible": "by the text: greying, heavier, the base's register; by the ruling: unchanged",
+     "voice": {
+      "key": "dickens_dean__young",
+      "casting": "same as 'young' unless the look moves to the base; then use dickens_dean__2025.",
+      "shares": "dickens_dean"
+     },
+     "source": "vol4_daddy_b nodes 21-39; vol4_daddy_c node 6"
+    },
+    {
+     "id": "photo_1978",
+     "vols": [
+      6
+     ],
+     "scenes": [
+      "vol6_ch4_maya_floor"
+     ],
+     "year": 1978,
+     "age": "~40 (apparent)",
+     "derivation": "'a man of maybe forty' in a gelatin-silver photograph — the time-traveller's face, 'younger than Maya has ever seen this face'. Chronologically impossible for a man born 1977; Maya: 'eighty-something and does not look it'.",
+     "look": null,
+     "look_status": "2D photograph panel, not a 3D era; if ever staged use the base with darker hair",
+     "visible": "clean-shaven, charcoal suit, hair not yet silver",
+     "voice": null,
+     "source": "vol6_ch4_maya_floor nodes 28-29, 65"
+    },
+    {
+     "id": "2025",
+     "vols": [
+      5,
+      6,
+      7
+     ],
+     "scenes": [
+      "vol6_ch8_courthouse",
+      "vol7_ch22_portal"
+     ],
+     "year": 2025,
+     "age": "~48-50",
+     "derivation": "vol5 'He was perhaps fifty'; born 1977 → 48. vol7's portrait 'Dean at perhaps fifty' / 'at forty-eight' is the same face.",
+     "look": "dickens_dean",
+     "look_status": "EXISTING base",
+     "visible": "silver hair combed flat, charcoal suit, lawyer-shoes, the lapel-smoothing gesture",
+     "voice": {
+      "key": "dickens_dean__2025",
+      "casting": "Mr. D. Dean at ~50: pleasant, forgettable on purpose, kind 'the way a tax assessor's eyes are kind'; low even mid-Atlantic baritone, unhurried, never raises it.",
+      "shares": "dean"
+     },
+     "source": "vol5_ch3_empress (roster canon); vol7_ch22_floors node 11; vol7_ch22_portal node 55"
+    },
+    {
+     "id": "old",
+     "vols": [
+      7
+     ],
+     "scenes": [
+      "vol7_ch22_floors"
+     ],
+     "year": 2041,
+     "age": 64,
+     "derivation": "'Dean in '41, a year before he died — thin, white-haired'; born 1977.",
+     "look": null,
+     "look_status": "UNSTAGED (a wall photograph). Propose dickens_dean_old only if a scene ever stages him",
+     "visible": "thin, white hair",
+     "voice": null,
+     "source": "vol7_ch22_floors node 40"
+    }
+   ],
+   "notes": "Dean also 'hasn't aged' since 1987 (vol5_ch20_judgement node 111) and is chronologically 'eighty-something' in 2025 (vol6) — the traveller between worlds does not age on the calendar; his LOOK ages on his own clock (teen → early 30s → ~50 → white-haired 64). vol7_ch22_drive node 91 calls the Kestrel imprint 'Dean's son' — contradicts 'Nate Dean' everywhere else; flag for the author."
+  },
+  "andy": {
+   "keys": [
+    "andy",
+    "andy_link",
+    "andy_1945",
+    "_narrator_vol2 (as D.N. Dean)",
+    "the_writer",
+    "the_director",
+    "the_artist",
+    "the_human_being"
+   ],
+   "born": 1976,
+   "born_source": "the vol2 narrator is a senior in 1993-94 (vol2_ch11_dickens_dean node 6); the roster's 'born 1979 / 22 in fall 2001' is an assumption — vol3's 'I'm twenty-two' sits in the DVD-is-new House of Glass years (~1998-99), which agrees with 1976.",
+   "identity": "D.N. Dean (the byline of 'Small Wood Volumes') = the vol2 narrator = young Andy: same best friend Justin (vol2_ch11 node 9 'Him, Justin, Katrina and me.' / vol3_ch5_flight), 'a girlfriend … back home on the coast of Small Wood' (vol3_ch4_names_in_neon), family from Caracas (voice_map _narrator_vol2; vol4_board node 31 'nació en Caracas, 1978, varón'). He is NOT Dickens 'Nate' Dean, the classmate 'a year younger' whom he writes about.",
+   "eras": [
+    {
+     "id": "1994",
+     "vols": [
+      2
+     ],
+     "scenes": [
+      "vol2_ch11_dickens_dean",
+      "vol3_ch12_uncle_nick"
+     ],
+     "year": 1994,
+     "age": 17,
+     "derivation": "senior year at Small Wood High, 1993-94.",
+     "look": null,
+     "look_status": "UNSTAGED (first-person narrator only)",
+     "visible": "a very tall heavy teenager — if ever staged, propose andy_1994",
+     "voice": {
+      "key": "andy__1994",
+      "casting": "Young Andy as D.N. Dean, 17-18: late-teen American male, plain, confessional, small-town dry; Caracas-era Spanish said natively.",
+      "shares": "_narrator_vol2"
+     },
+     "source": "vol2_ch11_dickens_dean nodes 5-9"
+    },
+    {
+     "id": "2003",
+     "vols": [
+      3
+     ],
+     "scenes": [],
+     "year": 2003,
+     "age": 27,
+     "derivation": "born 1976; voice_map 'late-20s'. The ch4 flashback at 22 is close enough to share the model.",
+     "look": "andy",
+     "look_status": "EXISTING base",
+     "visible": "6'5\", 240 lb, chinstrap half-beard, logger flannel",
+     "voice": {
+      "key": "andy__2003",
+      "casting": "Andy at 27: tired and terse, flat delivery, short sentences; American who grew up on the move.",
+      "shares": "andy"
+     },
+     "source": "vol3_ch5_flight; voice_map andy"
+    },
+    {
+     "id": "1945_costume",
+     "vols": [
+      3
+     ],
+     "scenes": [
+      "vol3_ch2_dreams_in_the_key_of_godhead",
+      "vol3_ch9_backward_jaunt",
+      "vol3_ch19_ron_takes_notes"
+     ],
+     "year": 1945,
+     "age": 27,
+     "derivation": "the 2003 man time-travelled — same age, different clothes.",
+     "look": "andy_1945",
+     "look_status": "EXISTING look",
+     "visible": "crumpled suit, no tie, split shoes",
+     "voice": {
+      "key": "andy__2003",
+      "casting": "same voice as 2003.",
+      "shares": "andy"
+     },
+     "source": "andy_1945 roster canon"
+    },
+    {
+     "id": "2010_facets",
+     "vols": [
+      1,
+      4
+     ],
+     "scenes": [
+      "vol1_prelude_editing_suite",
+      "vol1_ch17_editing_suite",
+      "vol1_trailer_faust3",
+      "meld_seam_1_2",
+      "meld_kaleidoscope_a",
+      "meld_kaleidoscope_c",
+      "meld_kaleidoscope_g"
+     ],
+     "year": 2010,
+     "age": "early 30s",
+     "derivation": "the four author facets are 'the author in 2010, early 30s' (roster).",
+     "look": [
+      "the_writer",
+      "the_director",
+      "the_artist",
+      "the_human_being"
+     ],
+     "look_status": "EXISTING separate entries (one man, four facets)",
+     "visible": "same build, heavier, older; reading glasses / costume per facet",
+     "voice": {
+      "key": "andy__2010",
+      "casting": "one actor, four modes (see voice_map the_writer … the_human_being): 30s American male, the author's own voice at 33.",
+      "shares": "the_writer"
+     },
+     "source": "roster the_writer prompt; voice_map facet castings",
+     "look_note": "the four author facets share the stage as four models (vol1 2010)"
+    }
+   ]
+  },
+  "chess": {
+   "keys": [
+    "chess",
+    "chess_vol4"
+   ],
+   "born": 1995,
+   "born_source": "vol6_ch20_bridge 'around thirty' in 2025.",
+   "eras": [
+    {
+     "id": "vol4",
+     "vols": [
+      4
+     ],
+     "scenes": [
+      "vol4_story_what_sort_of",
+      "vol4_story_hit_a_wall"
+     ],
+     "year": 2017,
+     "age": "early 20s",
+     "derivation": "user ruling: same woman as vol6, early 20s ('after graduation'); ~7 years before 2025. The stories carry no date — they cannot sit in the 2006 blog frame (she would be ~11).",
+     "look": "chess_vol4",
+     "look_status": "EXISTING look (base needs \"looks\")",
+     "visible": "hoodie, headphones, no make-up, unbrushed hair",
+     "voice": {
+      "key": "chess__vol4",
+      "casting": "Chess at ~23: laconic, generous, crude jokes; sleepy deadpan Tejana alto from San Antonio, night-shift tired.",
+      "shares": "chess"
+     },
+     "source": "vol4_story_hit_a_wall; chess_vol4 roster notes"
+    },
+    {
+     "id": "2025",
+     "vols": [
+      6
+     ],
+     "scenes": [
+      "vol6_ch20_bridge",
+      "vol6_ch20_prints"
+     ],
+     "year": 2025,
+     "age": 30,
+     "derivation": "'around thirty, Tejana'.",
+     "look": "chess",
+     "look_status": "EXISTING base",
+     "visible": "black t-shirt, jeans, thin gold chain",
+     "voice": {
+      "key": "chess__2025",
+      "casting": "Chess at ~30: the same deadpan, steadier and warmer — 'I'll listen'. ~7 years on; one actor covers both.",
+      "shares": "chess"
+     },
+     "source": "vol6_ch20_bridge"
+    }
+   ]
+  },
+  "aud": {
+   "keys": [
+    "aud"
+   ],
+   "born": 1951,
+   "born_source": "CONFLICT. vol7 'Aud was seventy-three' (vol7_ch9_evening node 37). On vol7's ruled year (2052) she is born 1979 and is 15 in 1994 — impossible for the diner woman of vol2/meld. On the ~2022-24 calendar vol7's own relative counts use (see hans, cale) she is born ~1950-51 and is early 40s in 1994. born=1951 assumes the latter; the user must rule (or read 1994 Aud as the dream prefiguring the elder woman: 'It's the one you're going to make').",
+   "eras": [
+    {
+     "id": "1994",
+     "vols": [
+      2,
+      4
+     ],
+     "scenes": [
+      "vol2_ch7_scumm_c",
+      "vol2_ch7_scumm_d",
+      "meld_seam_1_2",
+      "meld_kaleidoscope_a",
+      "meld_kaleidoscope_c",
+      "meld_kaleidoscope_g"
+     ],
+     "year": 1994,
+     "age": "early 40s",
+     "derivation": "see born_source.",
+     "look": "aud_1994",
+     "look_status": "NEW (new_looks.json)",
+     "visible": "hair not yet white, sleeves rolled, reading glasses on a chain, coffee pot",
+     "voice": {
+      "key": "aud__1994",
+      "casting": "Aud in her early 40s: the diner voice — 'Coffee, hon?' — weathered small-town Oregon warmth, low and slightly gravelly, knows more than she says. (This is what voice_map 'aud' is cast for now: '50s'.)",
+      "shares": "aud"
+     },
+     "source": "vol2_ch7_scumm_c node 7; meld_kaleidoscope_c node 7; meld_seam_1_2 node 21"
+    },
+    {
+     "id": "2052",
+     "vols": [
+      7
+     ],
+     "scenes": [
+      "vol7_ch9_evening",
+      "vol7_ch16_aud",
+      "vol7_ch17_bakery",
+      "vol7_ch18_stick",
+      "vol7_ch20_calls",
+      "vol7_ch20_wall"
+     ],
+     "year": 2052,
+     "age": 73,
+     "derivation": "stated: 'Aud was seventy-three.' (she mentions retiring 'In '52').",
+     "look": "aud",
+     "look_status": "EXISTING base",
+     "visible": "cap of white hair, wool coat, brown leather boots",
+     "voice": {
+      "key": "aud__2052",
+      "casting": "Aud at 73: an old woman's low, dry, unhurried Oregon voice, thinner and slower than the diner voice, still 'hon'; long pauses."
+     },
+     "source": "vol7_ch9_evening node 37; vol7_ch17_bakery (roster canon)"
+    }
+   ]
+  },
+  "hans": {
+   "keys": [
+    "hans"
+   ],
+   "born": 1954,
+   "born_source": "CONFLICT. vol7 'Hans was sixty-eight' (vol7_ch15_loft). His own memories need an earlier birth: his brother told him of the foundation 'in 1969' (vol7_ch15_loft node 47), the poem cycle arrived 'November of '89' and 'the thirty-three years since' (vol7_ch15_bread nodes 31, 45) put vol7's present at ~2022 → born ~1954. On the ruled 2052 he would be born 1984 and 10 in 1994. born=1954 follows his memories; user ruling needed.",
+   "eras": [
+    {
+     "id": "1994",
+     "vols": [
+      2,
+      4
+     ],
+     "scenes": [
+      "vol2_ch7_scumm_a",
+      "vol2_ch7_scumm_d",
+      "meld_kaleidoscope_c"
+     ],
+     "year": 1994,
+     "age": 40,
+     "derivation": "born ~1954. 'Real Hans' exists in 1994 (vol2_ch7_scumm_a node 27).",
+     "look": "hans_1994",
+     "look_status": "NEW (new_looks.json)",
+     "visible": "brown hair, bare head (the cap comes in 2046), floured apron, strong forearms",
+     "voice": {
+      "key": "hans__1994",
+      "casting": "Hans at 40: a gentle flour-dusted baker's baritone with a faint Swiss-German (Bern) edge, warm and plain; 'Bread for the morning' — one take that nearly breaks."
+     },
+     "source": "vol2_ch7_scumm_a nodes 27-32"
+    },
+    {
+     "id": "2052",
+     "vols": [
+      7
+     ],
+     "scenes": [
+      "vol7_ch9_tuesday",
+      "vol7_ch10_per",
+      "vol7_ch15_loft",
+      "vol7_ch15_bread",
+      "vol7_ch17_bakery"
+     ],
+     "year": 2052,
+     "age": 68,
+     "derivation": "stated: 'Hans was sixty-eight.' (see conflict).",
+     "look": "hans",
+     "look_status": "EXISTING base",
+     "visible": "Greta's knitted wool cap, flour on its left side, apron",
+     "voice": {
+      "key": "hans__2052",
+      "casting": "Hans at 68+: older, slower, careful; a deep worn baritone with the same faint Bern accent; 183 lines of patient testimony — 'I have been carrying the knowing.'",
+      "shares": "hans"
+     },
+     "source": "vol7_ch15_loft (roster canon)"
+    }
+   ]
+  },
+  "maya_daigle": {
+   "keys": [
+    "maya",
+    "maya_daigle",
+    "maya_kid",
+    "maya_age_7",
+    "maya_7"
+   ],
+   "born": 2009,
+   "born_source": "sixteen in spring 2025: vol5_ch15_devil node 71 'Maya, sixteen, in Harmony Creek Estates'; vol6 roster/wiki 16.",
+   "eras": [
+    {
+     "id": "age7",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch5_hierophant"
+     ],
+     "year": 2015,
+     "age": 7,
+     "derivation": "'ten years and three weeks ago' (vol5_ch5_hierophant node 108).",
+     "look": "maya_daigle_age7",
+     "look_status": "EXISTING look — but its look.vols [5] has no scenes, so it currently claims EVERY vol5 Maya (ch15, ch20, ch21 are sixteen). Edit: scenes = [vol5_ch5_hierophant]",
+     "visible": "small, white Sunday dress",
+     "voice": {
+      "key": "maya_daigle__age7",
+      "casting": "Maya at 7: a small serious Louisiana-Texas girl, quiet watchful voice, few words, precise for her age."
+     },
+     "source": "vol5_ch5_hierophant nodes 8-28"
+    },
+    {
+     "id": "16",
+     "vols": [
+      5,
+      6,
+      7
+     ],
+     "scenes": [
+      "vol5_ch15_devil",
+      "vol5_ch20_judgement",
+      "vol5_ch21_world",
+      "vol7_interlude_ii",
+      "vol7_ch12_morning"
+     ],
+     "year": 2025,
+     "age": 16,
+     "derivation": "stated in vol5 ch15/ch20/ch21 and vol6. vol7 hears her as 'a girl's voice — young, dry' over the radio: the 2025 girl reaching 2052.",
+     "look": "maya_daigle",
+     "look_status": "EXISTING base",
+     "visible": "braid or curls, glasses, band shirt, zines",
+     "voice": {
+      "key": "maya_daigle__16",
+      "casting": "Maya at 16: quick, guarded, funny; dry Gulf-coast teenage alto, flattens when she's scared; reads her own zine copy out loud."
+     },
+     "source": "vol5_ch21_world node 48; vol7_interlude_ii node 14"
+    },
+    {
+     "id": "adult",
+     "vols": [
+      7
+     ],
+     "scenes": [],
+     "year": 2052,
+     "age": 43,
+     "derivation": "born 2009. The vol7 wiki's '~38-39' (lore/_VOL7_WIKI.md:67-68) predates the 2050s ruling.",
+     "look": null,
+     "look_status": "UNSTAGED (she 'corresponds with Lena' in the wiki only)",
+     "visible": "—",
+     "voice": null,
+     "source": "lore/_VOL7_WIKI.md:67-69"
+    }
+   ]
+  },
+  "miriam": {
+   "keys": [
+    "miriam",
+    "miriam_vol6",
+    "miriam_2025"
+   ],
+   "born": 1960,
+   "born_source": "'Mid-sixties' in vol5_ch18_moon, spring 2025.",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      5,
+      6
+     ],
+     "scenes": [
+      "vol5_ch18_moon",
+      "vol5_ch20_judgement",
+      "vol5_ch21_world",
+      "vol6_ch8_courthouse"
+     ],
+     "year": 2025,
+     "age": 65,
+     "derivation": "vol5 (spring) and vol6 (summer) are the same year — vol6_ch1_maya_bedroom puts vol5's crisis six weeks before vol6 opens; vol6 still sees 'a silver-haired woman in a gray wool coat'.",
+     "look": "miriam",
+     "look_status": "EXISTING base. miriam_2025's premise ('nine years on', 70s, white hair, cane) is contradicted — see edits",
+     "visible": "silver braid, grey wool coat, the crow",
+     "voice": {
+      "key": "miriam__2025",
+      "casting": "Miriam, mid-60s: calm as a nurse, unflappable, warm low alto ('Yes, sweetheart').",
+      "shares": "miriam"
+     },
+     "source": "vol5_ch18_moon; vol6_ch8_courthouse (roster canon)"
+    }
+   ]
+  },
+  "aria_third": {
+   "keys": [
+    "aria",
+    "aria_third",
+    "aria_interior"
+   ],
+   "born": null,
+   "born_source": "Dickens and Esther Dean's daughter (vol4_daddy_b node 6), grew up in the tower built 2011-13 (vol7_ch22_drive node 19); 'arriving since 1870' (vol7_ch13_marina node 62). After she leaves the world her age is 'the same fixed young' (lore/_COMMUNITY_PLANNED_LORE.md:393-394).",
+   "eras": [
+    {
+     "id": "child",
+     "vols": [
+      4,
+      5
+     ],
+     "scenes": [
+      "vol4_daddy_b"
+     ],
+     "year": 2022,
+     "age": 10,
+     "derivation": "'by ten years old she's gotten a little sick of it' (vol4_daddy_b node 21).",
+     "look": "aria_third",
+     "look_status": "EXISTING base (rendered as a girl of about ten)",
+     "visible": "child, blue curls, purple glasses, yellow slicker (the base prompt)",
+     "voice": {
+      "key": "aria__interior",
+      "casting": "Aria inside Nicola (vol5): precise, clinical, appalled by 'meatness', later tender; young female register with cool synthetic precision — Nicola's actor processed. Aria-the-child has no lines.",
+      "shares": "aria"
+     },
+     "source": "vol4_daddy_b node 21; voice_map aria"
+    },
+    {
+     "id": "teen",
+     "vols": [
+      4
+     ],
+     "scenes": [
+      "vol4_daddy_b"
+     ],
+     "year": 2029,
+     "age": 17,
+     "derivation": "'Aria is a teenager' → dorm room → Shanghai (vol4_daddy_b nodes 25-30).",
+     "look": "aria_dean_teen",
+     "look_status": "NEW (new_looks.json; lowest priority)",
+     "visible": "tall teen, dark curls with a blue streak, yellow hoodie (proposal)",
+     "voice": null,
+     "source": "vol4_daddy_b nodes 25-39"
+    },
+    {
+     "id": "sighting",
+     "vols": [
+      5,
+      6,
+      7
+     ],
+     "scenes": [
+      "vol5_ch19_sun",
+      "vol5_ch21_world",
+      "vol6_ch2_dumpster",
+      "vol7_ch12_morning",
+      "vol7_ch20_door",
+      "vol7_ch20_each",
+      "vol7_ch22_portal"
+     ],
+     "year": 2052,
+     "age": "22-23 (fixed)",
+     "derivation": "'very young — twenty-two, maybe twenty-three' (vol5_ch19_sun node 125); 'Always young'. The same apparent age in 2025, ~2039 and 2052.",
+     "look": "aria_dean_sighting",
+     "look_status": "NEW (new_looks.json)",
+     "visible": "tall young woman, curly/dreadlocked blue hair, purple-rimmed glasses, yellow slicker, jeans, boots, canvas bag",
+     "voice": {
+      "key": "aria__sighting",
+      "casting": "Aria seen, ~22: almost never speaks ('She did not speak'). If a line is ever written: the interior voice without the processing — clear, calm, young, a little amused.",
+      "shares": "aria"
+     },
+     "source": "vol5_ch19_sun nodes 80, 125; vol6_ch2_dumpster node 57; vol7_ch22_portal nodes 25-28"
+    }
+   ],
+   "notes": "vol1_ch14_painting node 78 hints at her inside Joan ('a color at the edge of her hair … a glint where glasses might be') — not an era."
+  },
+  "nicola": {
+   "keys": [
+    "nicola",
+    "nicola_greer"
+   ],
+   "born": 2006,
+   "born_source": "'Nineteen, going on ancient' (vol5_ch3_empress node 5).",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      5
+     ],
+     "scenes": [],
+     "year": 2025,
+     "age": 19,
+     "derivation": "stated nineteen throughout vol5; vol6 only names her (vol6_ch8_courthouse node 162).",
+     "look": "nicola",
+     "look_status": "EXISTING base — single era",
+     "visible": "hostess uniform; pregnant later in the volume",
+     "voice": {
+      "key": "nicola__2025",
+      "casting": "Nicola at 19: bright, steady, a little too calm; Gulf-coast young woman, tired under the polish.",
+      "shares": "nicola"
+     },
+     "source": "vol5_ch3_empress node 5"
+    }
+   ],
+   "notes": "vol5_ch21_world node 103 puts the Third's birth in the Montreal-era future ('a midwife named Lena', Smolvud) with Nicola still 'a girl of nineteen' — chronology for the author to rule."
+  },
+  "natalie_david": {
+   "keys": [
+    "natalie",
+    "natalie_david"
+   ],
+   "born": 1981,
+   "born_source": "'Natalie had known this about readings since she was twenty-four' + 'in twenty years of readings' (vol5_ch18_moon nodes 73, 142) → ~44 in 2025.",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch12_hanged",
+      "vol5_ch18_moon"
+     ],
+     "year": 2025,
+     "age": 44,
+     "derivation": "see born_source; the roster prompt says 'late 20s' — wrong by the text (edit).",
+     "look": "natalie_david",
+     "look_status": "EXISTING base — single era; prompt age needs correcting",
+     "visible": "dark circles, unbrushed hair, the notebook-hunch; old ankle/hip injury",
+     "voice": {
+      "key": "natalie__2025",
+      "casting": "Natalie, mid-40s: spare, calm, clipped short sentences; low steady Louisiana Gulf-coast alto.",
+      "shares": "natalie"
+     },
+     "source": "vol5_ch12_hanged node 29; vol5_ch18_moon nodes 73, 142"
+    }
+   ]
+  },
+  "frasier_temple": {
+   "keys": [
+    "frasier",
+    "frasier_temple",
+    "f.t.",
+    "f_t"
+   ],
+   "born": 1995,
+   "born_source": "the roster/user reference images: 'late 20s/early 30s' in vol5 (lore/_CHARACTER_MODELING_NOTES.md). CONFLICT: the COMMUNITY PLANNED lore calls the same-summer Frasier 'Middle-aged, getting old, creaky and cranky' (lore/_COMMUNITY_PLANNED_LORE.md:215) and 'twenty years' of demon evolution — from an older timeline where vol5 preceded vol6 by ~20 years. By the text vol5 and vol6 are both 2025.",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      5,
+      6
+     ],
+     "scenes": [
+      "vol5_ch0_frasier",
+      "vol5_ch1_magician"
+     ],
+     "year": 2025,
+     "age": "about 30",
+     "derivation": "see born_source.",
+     "look": "frasier_temple",
+     "look_status": "EXISTING base",
+     "visible": "locs, olive bomber, GEARING CORP tee",
+     "voice": {
+      "key": "frasier__2025",
+      "casting": "Frasier at ~30: bone-dry operator humor, no patience for theater; warm Black Gulf-coast baritone, quick and quiet.",
+      "shares": "frasier"
+     },
+     "source": "vol5_ch1_magician; lore/_CHARACTER_MODELING_NOTES.md:49-53"
+    },
+    {
+     "id": "old",
+     "vols": [
+      7
+     ],
+     "scenes": [],
+     "year": 2052,
+     "age": "late 50s by arithmetic; 'old … very near the end of his life' by the wiki",
+     "derivation": "lore/_VOL7_WIKI.md:56-61. Off-screen in vol7 (only his demon transmits, vol7_interlude_ii node 20).",
+     "look": null,
+     "look_status": "UNSTAGED — propose frasier_temple_old (grey locs, the cathedral-warehouse) only when a scene stages him",
+     "visible": "—",
+     "voice": null,
+     "source": "lore/_VOL7_WIKI.md:56-61"
+    }
+   ]
+  },
+  "john_frank": {
+   "keys": [
+    "john",
+    "john_frank"
+   ],
+   "born": 2000,
+   "born_source": "'mid-20s grad student' in 2025 (roster; vol5_ch0_booth6).",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch0_booth6",
+      "vol5_ch0_closing",
+      "vol5_ch5_hierophant",
+      "vol5_prelude_arcana_john_bar",
+      "vol5_prelude_arcana_john_shift"
+     ],
+     "year": 2025,
+     "age": 25,
+     "derivation": "'a young man at a counter waiting for his cue' (vol5_ch0_closing).",
+     "look": "john_frank",
+     "look_status": "EXISTING base",
+     "visible": "waiter's white shirt, half-apron, gaunt young face",
+     "voice": {
+      "key": "john__2025",
+      "casting": "John at 25: grad-student journalist, wry, nervous-curious, quick American tenor, notebook energy.",
+      "shares": "john"
+     },
+     "source": "vol5_ch0_closing (roster canon)"
+    },
+    {
+     "id": "montreal",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch14_temperance",
+      "vol5_ch19_sun",
+      "vol5_ch21_world"
+     ],
+     "year": 2039,
+     "age": "about 40",
+     "derivation": "'A middle-aged man in a Montreal apartment'; Café Olimpico 'for six years' after years of drifting; 'fifteen years of acquaintance' with Erica.",
+     "look": "john_frank_montreal",
+     "look_status": "NEW (new_looks.json)",
+     "visible": "shorter greying hair, short beard, reading glasses, sweater and overcoat (proposal)",
+     "voice": {
+      "key": "john__montreal",
+      "casting": "John at ~40: the same wry voice settled and lowered — middle-aged American baritone-tenor, slower, self-deprecating, 'mindful Tuesday management'."
+     },
+     "source": "vol5_ch14_temperance nodes 7, 13, 56, 64; vol5_ch19_sun node 9"
+    },
+    {
+     "id": "2052",
+     "vols": [
+      7
+     ],
+     "scenes": [],
+     "year": 2052,
+     "age": 52,
+     "derivation": "only as the author of The Frequency Beneath (vol7_ch2_morning node 47).",
+     "look": null,
+     "look_status": "UNSTAGED",
+     "visible": "—",
+     "voice": null,
+     "source": "vol7_ch2_morning node 47"
+    }
+   ]
+  },
+  "elicia_temple": {
+   "keys": [
+    "elicia",
+    "elicia_temple",
+    "elicia_duchane"
+   ],
+   "born": 1993,
+   "born_source": "roster 'early 30s' in 2025.",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch2_priestess",
+      "vol5_ch2_priestess_b",
+      "vol5_ch16_tower"
+     ],
+     "year": 2025,
+     "age": "early 30s",
+     "derivation": "roster.",
+     "look": "elicia_temple",
+     "look_status": "EXISTING base",
+     "visible": "turtleneck, long coat, cassette recorder",
+     "voice": {
+      "key": "elicia__2025",
+      "casting": "Elicia, early 30s: composed host of Whispers from the Liminal, dry and controlled, a broadcaster's low alto.",
+      "shares": "elicia"
+     },
+     "source": "roster elicia_temple"
+    },
+    {
+     "id": "montreal",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch19_sun",
+      "vol5_ch21_world"
+     ],
+     "year": 2039,
+     "age": "mid-40s",
+     "derivation": "same 'several years after' as John's Montreal chapters.",
+     "look": "elicia_temple_montreal",
+     "look_status": "NEW (new_looks.json)",
+     "visible": "denim jacket repaired at the cuff, her mother's scarf, 'slower … more centered'",
+     "voice": {
+      "key": "elicia__montreal",
+      "casting": "Elicia, mid-40s: broke, evicted, 'Please do not be kind to me right now' — the broadcaster's alto worn rougher, faster when cornered, drier."
+     },
+     "source": "vol5_ch19_sun nodes 28, 87-90"
+    }
+   ]
+  },
+  "jimmy_daigle": {
+   "keys": [
+    "jimmy",
+    "jimmy_daigle",
+    "jimmy_at_the_steps"
+   ],
+   "born": 1977,
+   "born_source": "roster 'late 40s' in 2025.",
+   "eras": [
+    {
+     "id": "2015",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch5_hierophant"
+     ],
+     "year": 2015,
+     "age": 38,
+     "derivation": "Maya-at-7 flashback, ten years earlier. 'Daddy looked tired. Not regular tired.'",
+     "look": "jimmy_daigle",
+     "look_status": "EXISTING base (≤10 years: no new look; less grey if a variant is ever made)",
+     "visible": "less grey",
+     "voice": {
+      "key": "jimmy__2025",
+      "casting": "same voice.",
+      "shares": "jimmy"
+     },
+     "source": "vol5_ch5_hierophant node 13"
+    },
+    {
+     "id": "2025",
+     "vols": [
+      5,
+      6
+     ],
+     "scenes": [
+      "vol5_ch8_strength",
+      "vol5_ch15_devil",
+      "vol5_ch20_judgement"
+     ],
+     "year": 2025,
+     "age": "late 40s",
+     "derivation": "roster.",
+     "look": "jimmy_daigle",
+     "look_status": "EXISTING base",
+     "visible": "buzzed greying hair",
+     "voice": {
+      "key": "jimmy__2025",
+      "casting": "Jimmy, late 40s: ex-college jock gone operator, low rumble with grown-ups, bourbon-rough, Louisiana.",
+      "shares": "jimmy"
+     },
+     "source": "vol5_ch15_devil nodes 21-23"
+    }
+   ],
+   "notes": "vol5_ch15_devil node 32 ties Jimmy to vol1: 'D. Dean — that phantom mentor from Faust's fever dream, back in the bad year' (spring 2009). If the author means Jimmy dreamt himself as Faust, Faust (vol1, early 30s) is Jimmy at 32 — a cross-volume identity the ledger does NOT assume."
+  },
+  "cale": {
+   "keys": [
+    "cale"
+   ],
+   "born": 1975,
+   "born_source": "'He had been seventeen. I had been nineteen.' (vol7_ch13_cale node 58, February 1994).",
+   "eras": [
+    {
+     "id": "1994",
+     "vols": [
+      2
+     ],
+     "scenes": [
+      "vol2_ch7_scumm_d"
+     ],
+     "year": 1994,
+     "age": 19,
+     "derivation": "'he's a senior and seniors don't sleep' (vol2_ch7_scumm_d node 51).",
+     "look": null,
+     "look_status": "UNSTAGED",
+     "visible": "—",
+     "voice": null,
+     "source": "vol2_ch7_scumm_d node 51"
+    },
+    {
+     "id": "2052",
+     "vols": [
+      7
+     ],
+     "scenes": [
+      "vol7_ch6_brandon",
+      "vol7_ch13_cale",
+      "vol7_ch13_porch",
+      "vol7_ch20_each",
+      "vol7_ch21_leaving"
+     ],
+     "year": 2052,
+     "age": 77,
+     "derivation": "born 1975 → 77 in 2052. CONFLICT: roster says '40s'; vol7's own 'waiting … for thirty years' since 1994 (vol7_ch20_each node 22) puts its present at ~2024 (Cale ~49). User ruling.",
+     "look": "cale",
+     "look_status": "EXISTING base — age in prompt depends on the ruling",
+     "visible": "if 77: white stubble, stooped; if 49: as the roster",
+     "voice": {
+      "key": "cale__2052",
+      "casting": "Cale: a smoker's low, patient Oregon voice; cast 70s (gravel, slower) if the 2052 arithmetic holds, late 40s if the roster's age stands."
+     },
+     "source": "vol7_ch13_cale nodes 52-65"
+    }
+   ]
+  },
+  "lena_vargas": {
+   "keys": [
+    "lena",
+    "lena_vargas"
+   ],
+   "born": 2024,
+   "born_source": "'Late 20s' in the 2050s (lore/_VOL7_WIKI.md:44).",
+   "eras": [
+    {
+     "id": "2025",
+     "vols": [
+      6
+     ],
+     "scenes": [],
+     "year": 2025,
+     "age": 1,
+     "derivation": "the Vargas-Quintana 'young daughter Lena' in COMMUNITY PLANNED (lore/_COMMUNITY_PLANNED_LORE.md:203-205) — lore only.",
+     "look": null,
+     "look_status": "UNSTAGED",
+     "visible": "—",
+     "voice": null,
+     "source": "lore/_COMMUNITY_PLANNED_LORE.md:202-205"
+    },
+    {
+     "id": "2052",
+     "vols": [
+      7
+     ],
+     "scenes": [],
+     "year": 2052,
+     "age": 28,
+     "derivation": "wiki 'late 20s'.",
+     "look": "lena_vargas",
+     "look_status": "EXISTING base",
+     "visible": "—",
+     "voice": {
+      "key": "lena__2052",
+      "casting": "Lena, late 20s: watchful, warm, slow PNW cadence."
+     },
+     "source": "lore/_VOL7_WIKI.md:44"
+    }
+   ],
+   "notes": "vol5_ch21_world node 103's 'a midwife named Lena' at the Third's birth cannot be this Lena if that birth is ~2026."
+  },
+  "faust": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1,
+      4
+     ],
+     "scenes": [],
+     "year": 2009,
+     "age": "late 20s/early 30s",
+     "look": "faust",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "faust__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "faust"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era (2009). The Pomegranate Hour ep15 script (lore/pomegranate_hour/15_devil.md:47, a 2020s HCE welcome table) shows the trio 'in their mid-twenties' — the same apparent age, so no new look. See jimmy_daigle note for the possible Faust↔Jimmy link."
+  },
+  "jacob": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1,
+      4
+     ],
+     "scenes": [],
+     "year": 2009,
+     "age": "30ish",
+     "look": "jacob",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "jacob__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "jacob"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era (2009). vol3_ch12's 'a kid named Jacob' is a different boy."
+  },
+  "wagner": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1,
+      4
+     ],
+     "scenes": [],
+     "year": 2009,
+     "age": "30s",
+     "look": "wagner",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "wagner__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "wagner"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era (2009). Roster vol [1, 7] has no vol7 scene behind it — vol7's 'Wagner's Hardware' (1962-2011) is a building (edit)."
+  },
+  "joan": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1
+     ],
+     "scenes": [
+      "vol1_ch4_*,"
+     ],
+     "year": 2009,
+     "age": "late 20s",
+     "look": "joan",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "joan__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "joan"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era (2009); no other volume stages her."
+  },
+  "deborah": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1
+     ],
+     "scenes": [
+      "vol1_ch2_pharmacy,"
+     ],
+     "year": 2009,
+     "age": "30s-40s",
+     "look": "deborah",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "deborah__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "deborah"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era."
+  },
+  "emily": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1
+     ],
+     "scenes": [
+      "vol1_ch3_bar"
+     ],
+     "year": 2009,
+     "age": "20s",
+     "look": "emily",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "emily__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "emily"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era. vol2_ch9_art_class's Emily (a 1994 high-schooler) is a different girl."
+  },
+  "helen": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1
+     ],
+     "scenes": [
+      "vol1_ch3_bar"
+     ],
+     "year": 2009,
+     "age": "20s",
+     "look": "helen",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "helen__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "helen"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era. vol6_ch23_sleep's Helen (Anita's scheduler) and vol7's 'Helen Soong' (Glitch Report) are different people."
+  },
+  "margaret_vol1": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1
+     ],
+     "scenes": [
+      "vol1_ch3_bar"
+     ],
+     "year": 2009,
+     "age": "20s",
+     "look": "margaret_vol1",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "margaret_vol1__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "margaret"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era. vol7's Margaret (margaret_coop, 61, the co-op) is a separate person (voice_map margaret_vol7)."
+  },
+  "eric": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1
+     ],
+     "scenes": [
+      "vol1_ch9_street,"
+     ],
+     "year": 2009,
+     "age": "20s-30s",
+     "look": "eric",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "eric__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "eric"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era. vol2's Eric Jarvis/Eric the son, vol4's Eric (betterment) and vol6's Eric in Slidell are different men."
+  },
+  "the_stranger": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      1,
+      2,
+      5
+     ],
+     "scenes": [
+      "vol1_link_*,"
+     ],
+     "year": 2009,
+     "age": "young, indeterminate",
+     "look": "the_stranger",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "the_stranger__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "stranger"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Ageless — the same young man in the trench coat in 1994, 2009 and 2025: one look, one voice. vol6_ch1_stranger's speaker 'Stranger' is a DIFFERENT man ('in his fifties … a golf shirt tucked into khaki shorts', node 12) — route him to a walk-on/sunburn_man key, not the_stranger."
+  },
+  "philip_roberts": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      5,
+      6
+     ],
+     "scenes": [
+      "vol5_ch6_lovers,"
+     ],
+     "year": 2025,
+     "age": "late 30s",
+     "look": "philip_roberts",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "philip_roberts__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "philip"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Single era (2025); present at the Third's birth in the future (vol5_ch21_world node 103, unstaged). vol2_ch6_ark's red-haired surfer Philip is a different man."
+  },
+  "quentin_paul": {
+   "keys": "see roster",
+   "born": null,
+   "single_era": true,
+   "eras": [
+    {
+     "id": "only",
+     "vols": [
+      5
+     ],
+     "scenes": [
+      "vol5_ch5_hierophant"
+     ],
+     "year": 2025,
+     "age": "50s",
+     "look": "quentin_paul",
+     "look_status": "EXISTING base — no new look",
+     "voice": {
+      "key": "quentin_paul__only",
+      "casting": "one voice (voice_map casting stands).",
+      "shares": "quentin_paul"
+     },
+     "source": "scene char ids; voice_map"
+    }
+   ],
+   "notes": "Same model for the 2015 flashback (≤10 years)."
+  }
+ },
+ "_distinct": [
+  {
+   "a": "wren_vol6 (28, lavender hair, 2025)",
+   "b": "wren (15, vol7)",
+   "ruling": "different people (roster says so). Both entries list key 'wren' — vol6 scenes route to the vol7 15-year-old."
+  },
+  {
+   "a": "nate_bassist (vol6 Gallatin Band)",
+   "b": "nate_kestrel (vol7, teen Dean)",
+   "ruling": "different people. vol6 speakers use char 'nate' (vol6_ch5_garage, ch14_substation_nine, ch20_bridge, ch22_foxhole) which routes to nate_kestrel — alias them to nate_bassist."
+  },
+  {
+   "a": "bt (Brandon, 17, vol6, Gulf coast)",
+   "b": "Brandon Tillman (vol7, d. Oct 2050, ex-police, boyhood in Tillamook)",
+   "ruling": "different people (vol7_ch18_pool node 25: 'an old dog Brandon had had as a boy in Tillamook'). bt's key 'brandon' must not catch vol7."
+  },
+  {
+   "a": "sammy (61, bartender, vol5)",
+   "b": "sam_miller (18, vol6; 'Sammy' to her father)",
+   "ruling": "different people; both list key 'sammy'."
+  },
+  {
+   "a": "margaret_vol1",
+   "b": "margaret_coop (vol7)",
+   "ruling": "different people; both list key 'margaret'."
+  },
+  {
+   "a": "arthur_finch (DriftWood strip)",
+   "b": "jay_rose (DJ; 'by jay rose · Small Wood High, 1997–1999')",
+   "ruling": "distinct (user ruling)."
+  },
+  {
+   "a": "diego_ramos (19, vol6)",
+   "b": "'a man named Diego' who designed Kestrel Mountain in 2034 (vol7_ch11_stick node 20)",
+   "ruling": "unconfirmed — possibly Diego at ~28; unstaged, no era added."
+  },
+  {
+   "a": "Andy / D.N. Dean (vol2 narrator)",
+   "b": "Dickens 'Nate' Dean",
+   "ruling": "different people — see andy.identity."
+  }
+ ],
+ "_flags": [
+  "VOL7 CARRIES TWO CALENDARS: dated events follow the 2050s ruling ('50, '42, 2052) but stated ages (Aud 73, Hans 68, Per 60, Sal 64) and 'N years since' counts (Hans 'thirty-three years since' Nov 1989; Cale 'thirty years' since Feb 1994; Tem: 'Hans has known about the foundation since his brother in Bern told him in 1969') still assume vol7 ≈ 2022-24. The 1994 eras for Aud and Hans only work on the old calendar. User ruling needed before spending credits on aud_1994 / hans_1994.",
+  "VOL5 vs VOL6: by the text they are the same year (spring vs summer 2025); the lore's 'aged forward' / 'twenty years of demon evolution' framing (_VOL5_WIKI.md:73-77, _COMMUNITY_PLANNED_LORE.md:668-670) is from an older timeline. Consequence: no vol5→vol6 era splits for the vol5 cast; miriam_2025 is unnecessary; Frasier's 'middle-aged' CP description conflicts with the young vol5 model.",
+  "VOL5 internal drift: 2024 (ch15), 2025 (vol6 cross-ref), 2026 (ch10 comb; ch21 'D'AMBROSIO'S. 1983–2026').",
+  "Dickens Dean is born 1977 (vol7), 'perhaps fifty' in 2025 (vol5), yet '~40' in a 1978 photo and 'eighty-something' (vol6) and unchanged since 1987 (vol5 ch20): the traveller's look ages on its own clock.",
+  "Chess: the user's ruling puts the vol4 stories ~2017; the vol4 frame (blog) is 2006.",
+  "vol5_ch21_world mixes 2025 (Maya sixteen) with the Montreal-era future (Elicia, John on the plane, the Third's birth with Nicola still nineteen and 'a midwife named Lena')."
+ ],
+ "edits": [
+  {
+   "slug": "dickens_dean_daddy",
+   "field": "vol",
+   "new_value": [
+    1,
+    2,
+    4
+   ],
+   "why": "user ruling: the young Dean look applies to vol 1 ('this young person — tall, attractive', vol1_ch4_dream_bar node 6); vol2_ch11's 'Now' half is the same man in the glass mansion.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "dickens_dean_daddy",
+   "field": "look.vols",
+   "new_value": [
+    1,
+    2,
+    4
+   ],
+   "why": "as above.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "dickens_dean_daddy",
+   "field": "look.scenes",
+   "new_value": [
+    "vol1_introduction",
+    "vol1_ch4_dream_bar",
+    "vol1_ch4_interstitial",
+    "vol1_ch4_club_sharp",
+    "vol1_ch4_club_sharp_b",
+    "vol1_ch4_waking",
+    "vol1_ch5_morning",
+    "vol1_ch5_proposition",
+    "vol1_ch6_office",
+    "vol1_ch6_debrief",
+    "vol1_ch7_ink",
+    "vol1_ch8_club",
+    "vol1_ch8_lifelines",
+    "vol1_ch9_street",
+    "vol1_ch10_longboat",
+    "vol1_ch11_drugstore",
+    "vol1_ch12_history",
+    "vol1_ch13_deep_end",
+    "vol1_ch14_painting",
+    "vol1_ch15_river_turn",
+    "vol1_ch16_four_am",
+    "vol4_daddy_a",
+    "vol4_daddy_b",
+    "vol4_daddy_c"
+   ],
+   "why": "the look narrows by scene; add every vol1 scene Dean is in or spoken of. vol2_ch11_dickens_dean is NOT listed (its first half is the teen) — stage nodes 22-37 with the look's own key 'dickens_dean_daddy'.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "dickens_dean_daddy",
+   "field": "look.label",
+   "new_value": "young · early 30s (vol1 Faust 3, vol2 'Now', vol4 daddy)",
+   "why": "label currently says vol4 only.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "dickens_dean_daddy",
+   "field": "notes",
+   "new_value": "(drop the 'consider adding 1' sentence — done)",
+   "why": "the note asked for exactly this widening.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "dickens_dean_daddy",
+   "field": "look.scenes (OPTIONAL)",
+   "new_value": [
+    "vol4_daddy_a",
+    "vol1_introduction",
+    "vol1_ch4_dream_bar",
+    "vol1_ch4_interstitial",
+    "vol1_ch4_club_sharp",
+    "vol1_ch4_club_sharp_b",
+    "vol1_ch4_waking",
+    "vol1_ch5_morning",
+    "vol1_ch5_proposition",
+    "vol1_ch6_office",
+    "vol1_ch6_debrief",
+    "vol1_ch7_ink",
+    "vol1_ch8_club",
+    "vol1_ch8_lifelines",
+    "vol1_ch9_street",
+    "vol1_ch10_longboat",
+    "vol1_ch11_drugstore",
+    "vol1_ch12_history",
+    "vol1_ch13_deep_end",
+    "vol1_ch14_painting",
+    "vol1_ch15_river_turn",
+    "vol1_ch16_four_am"
+   ],
+   "why": "OPTIONAL, against the letter of the ruling: daddy_b runs Aria from ten to college and daddy_c is 'after' — Dean is 10-20 years older than in daddy_a; routing b/c to the base (silver, ~50) would match the text. Ask the user.",
+   "status": "HELD: OPTIONAL — the user's call: route vol4 daddy_b/c to the older base"
+  },
+  {
+   "slug": "dickens_dean",
+   "field": "looks",
+   "new_value": [
+    "dickens_dean_daddy",
+    "nate_kestrel"
+   ],
+   "why": "base has no 'looks' list; the daddy notes already ask for it; nate_kestrel becomes the teen look.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "nate_kestrel",
+   "field": "base",
+   "new_value": "dickens_dean",
+   "why": "vol7's Nate is Nate Dean (vol7_ch4_finn node 82; vol7_ch14_petra node 29), 16 in 1993 — the same boy as vol2's D. Dean of the spring-1994 dream journal. Reuse the model instead of a duplicate dickens_dean_teen.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "nate_kestrel",
+   "field": "look",
+   "new_value": {
+    "label": "16-17 · Small Wood, 1993-94 (and his imprint in Kestrel Mountain)",
+    "vols": [
+     2,
+     7
+    ],
+    "scenes": [
+     "vol2_ch7_scumm_a",
+     "vol2_ch7_scumm_b",
+     "vol2_ch7_scumm_c",
+     "vol2_ch7_scumm_d",
+     "vol2_ch11_dickens_dean",
+     "vol7_ch11_kestrel"
+    ],
+    "when": "the junior at Alsea Valley High who keeps the SCUMM dream journal and takes the paper from the narrator; the groove he left in the basement desk"
+   },
+   "why": "makes the teen era route through base keys in vol2.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "nate_kestrel",
+   "field": "prompt",
+   "new_value": "(replace 'dark hair' with 'a mop of brown hair' and add 'eyes that will not settle on grey, green or blue')",
+   "why": "carry vol4_daddy_a's canon ('His hair a mop of brown … His eyes were grey no green no blue.') back to the boy.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "nate_kestrel",
+   "field": "vol",
+   "new_value": [
+    2,
+    7
+   ],
+   "why": "teen Dean appears in vol2.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "maya_daigle_age7",
+   "field": "look.scenes",
+   "new_value": [
+    "vol5_ch5_hierophant"
+   ],
+   "why": "with look.vols [5] and no scenes the age-7 model claims every vol5 Maya — but vol5_ch15_devil, ch20_judgement and ch21_world have her at sixteen.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "miriam_2025",
+   "field": "look (retire or re-scope)",
+   "new_value": "retire; route vol6 to miriam",
+   "why": "its premise ('nine years on', Maya 7 → 16) is wrong: Maya's age-7 scene is a ten-year flashback, and vol5's present is spring 2025 — six weeks before vol6 opens (vol6_ch1_maya_bedroom nodes 6-7). vol6 still sees 'a silver-haired woman in a gray wool coat'. Cane, white hair and missing crow were proposals.",
+   "status": "HELD: needs the user's calendar decision"
+  },
+  {
+   "slug": "chess",
+   "field": "looks",
+   "new_value": [
+    "chess_vol4"
+   ],
+   "why": "base lacks the list (chess_vol4 notes ask for it).",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "aud",
+   "field": "looks",
+   "new_value": [
+    "aud_1994"
+   ],
+   "why": "new look.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "hans",
+   "field": "looks",
+   "new_value": [
+    "hans_1994"
+   ],
+   "why": "new look.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "john_frank",
+   "field": "looks",
+   "new_value": [
+    "john_frank_montreal"
+   ],
+   "why": "new look.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "elicia_temple",
+   "field": "looks",
+   "new_value": [
+    "elicia_temple_montreal"
+   ],
+   "why": "new look.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "aria_third",
+   "field": "looks",
+   "new_value": [
+    "aria_dean_teen",
+    "aria_dean_sighting"
+   ],
+   "why": "new looks; the base (a girl of about ten) stays for vol4 daddy_b's ten-year-old and the vol5 interior.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "aria_third",
+   "field": "vol",
+   "new_value": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "why": "Aria the child is in vol4 daddy_b; sightings in vol6.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "natalie_david",
+   "field": "prompt",
+   "new_value": "(change 'late 20s' to 'mid-40s')",
+   "why": "'since she was twenty-four' + 'in twenty years of readings' (vol5_ch18_moon nodes 73, 142) → ~44; voice_map already casts 30s-40s.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "cale",
+   "field": "prompt",
+   "new_value": "(age: '40s' → '70s' if vol7 stays 2052; keep if the user moves vol7's ages to the old calendar)",
+   "why": "Cale was nineteen in February 1994 (vol7_ch13_cale node 58) → 77 in 2052.",
+   "status": "HELD: needs the user's calendar decision (vol7 2052 vs the older count)"
+  },
+  {
+   "slug": "wagner",
+   "field": "vol",
+   "new_value": [
+    1
+   ],
+   "why": "no vol7 scene has Wagner; 'Wagner's Hardware' is a vol7 storefront.",
+   "status": "applied 2026-10-16"
+  },
+  {
+   "slug": "the_stranger",
+   "field": "keys (routing note)",
+   "new_value": "leave keys; alias vol6_ch1_stranger's 'Stranger' to a walk-on",
+   "why": "that speaker is a fiftyish man in a golf shirt, not the trench-coat Stranger.",
+   "status": "HELD: routing note only"
+  }
+ ]
+}

@@ -24,7 +24,7 @@ BASE="${1:-origin/claude/3d-locales-clean}"
 # Files no audit in run_all_audits.sh reads to judge the world's geometry,
 # cameras, story wiring or audio: tools, the portrait + hero-art runtime,
 # docs. Anything not matched here sends the run to the full suite.
-LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
+LIGHT='^(godot/tools/meshy_[^/]*|godot/tools/meshy_roster\.json|godot/tools/hero_uploader/.*|godot/tools/drive_[^/]*|godot/tools/audit/drive_(write_audit|guard_test)\.py|godot/tools/[^/]*\.sh|godot/tools/Portrait[^/]*|godot/tools/(VN|Vn)[^/]*|godot/tools/ArtReview[^/]*|godot/tools/PerfProbe\.gd|godot/tools/(voice_ages\.py|elevenlabs_render\.py|ages\.json)|godot/tools/audit/ages_audit\.py|godot/tools/portraits/.*|godot/scripts/vn/(Portrait3D|HeroArt)\.gd|godot/scripts/HeroProp\.gd|godot/assets/shaders/portrait_[^/]*|godot/assets/art/hero/README\.md|godot/tools/audit/run_changed_audits\.sh|.*\.md|\.gitignore)$'
 
 # the Drive gates run on EVERY change, light or not (2026-10-13)
 python3 godot/tools/audit/drive_write_audit.py || { echo "EXIT 1"; exit 1; }
@@ -62,6 +62,11 @@ while IFS= read -r f; do
         *)      echo "   --  $f" ;;
     esac
 done <<< "$CHANGED"
+# the age ledger and the roster must agree (2026-10-16)
+if echo "$CHANGED" | grep -q "ages.json\|meshy_roster.json\|ages_audit.py"; then
+    python3 godot/tools/audit/ages_audit.py | tail -1
+    python3 godot/tools/audit/ages_audit.py >/dev/null && echo "   ok  age ledger agrees with the roster" || { echo "   FAIL age ledger (ages_audit.py)"; FAIL=1; }
+fi
 # the roster must still load through the pipeline's own validator
 if echo "$CHANGED" | grep -q "meshy_roster.json\|meshy_pipeline.py"; then
     python3 -c "import sys; sys.path.insert(0,'godot/tools'); import meshy_pipeline as M; M.load_roster()" \
