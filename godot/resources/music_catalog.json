@@ -468,6 +468,24 @@
     ]
   },
   {
+    "id": "vol3_arcadeum_lobby",
+    "vol": 3,
+    "title": "Arcadeum · Lobby, Honolulu 1991",
+    "src": "assets/audio/bgm/vol3_arcadeum_lobby.mp3",
+    "composer": "—",
+    "desc": "High-rise lobby on a sleepless morning: fluorescent hum, a boutique game shop’s demo loop leaking through glass, trade wind at the revolving door.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "arcadeum_designer",
+      "arcadeum_shopkeeper"
+    ],
+    "chapters": [
+      "vol3_ch6_arcadeum"
+    ]
+  },
+  {
     "id": "vol3_signal_drone",
     "vol": 3,
     "title": "The Transmission",

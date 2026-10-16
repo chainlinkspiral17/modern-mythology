@@ -497,6 +497,16 @@
       "voice_id": "",
       "casting": "Vol 7 Margaret (talks with Finn in Smolvud, 2050s). Separate person from the Faust 3 bar-group Margaret. Cast from vol7_ch12_morning / ch21_leaving.",
       "appears": "vol7"
+    },
+    "arcadeum_designer": {
+      "voice_id": "",
+      "casting": "The woman in 'arcadeum' / WHAT LIES BEYOND: a young programmer from Dallas interviewing at a Honolulu game studio in 1991, sleepless, wry, quietly stubborn. Andy calls this the Aria story; she is unnamed on screen.",
+      "appears": "vol3_ch6_arcadeum"
+    },
+    "arcadeum_shopkeeper": {
+      "voice_id": "",
+      "casting": "Ex-Army veteran who made WHAT LIES BEYOND and now runs a boutique game shop in a Honolulu high-rise lobby. 30s–40s male, anxious, proud, a little stubborn; local Hawaii ease under it.",
+      "appears": "vol3_ch6_arcadeum"
     }
   },
   "aliases": {
@@ -566,6 +576,10 @@
     },
     "vol7_ch21_leaving": {
       "margaret": "margaret_vol7"
+    },
+    "vol3_ch6_arcadeum": {
+      "The Woman": "arcadeum_designer",
+      "The Shopkeeper": "arcadeum_shopkeeper"
     }
   },
   "_comment_cast": "Vols 1-4, meld scenes and Vol 5 cast added Oct 2026. Every new entry has an empty voice_id plus a one-line 'casting' brief and an 'appears' hint; the renderer ignores both. Narrate lines resolve to _narrator_vol{N} (the scene's vol field) or _narrator_whispers (vol5_prelude_arcana_ep*), then fall back to _narrator. voice_studio.html can import this file (Import voice_map.json)."

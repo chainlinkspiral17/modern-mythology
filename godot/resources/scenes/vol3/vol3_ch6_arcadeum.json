@@ -1,0 +1,367 @@
+{
+  "id": "vol3_ch6_arcadeum",
+  "vol": 3,
+  "chapter": 7,
+  "type": "interlude",
+  "title": "arcadeum",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_dabney_game_room.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "arcadeum",
+      "sub": "transmission · 2003, as you be",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Your dad."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes?"
+    },
+    {
+      "t": "narrate",
+      "text": "He was presumed dead for a few weeks there. Back in the early seventies."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes."
+    },
+    {
+      "t": "interlude",
+      "text": "1991, a week ago.",
+      "sub": "Honolulu",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "‘They aren’t sure what you are.’"
+    },
+    {
+      "t": "narrate",
+      "text": "‘Scuse me,’ through spat out vodka upon polished reflective surfaces."
+    },
+    {
+      "t": "interlude",
+      "text": "1991, a few days ago.",
+      "sub": "Honolulu",
+      "duration": 1800
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_honolulu_highrise_lobby.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The first office is a hollowed out chunk of Honolulu high-rise. Ground floors are tourist trap photography parlour, travel agency, corner suit shoppe & luggage boutique."
+    },
+    {
+      "t": "narrate",
+      "text": "Next up, rental property management services, a sushi bar and occasional disco. Above that, a floor shared between an old acquaintance and his new tenants. Homegrown software divided by import dynasty hardware."
+    },
+    {
+      "t": "narrate",
+      "text": "They bring me up the back stairs that go up a f—"
+    },
+    {
+      "t": "interlude",
+      "text": "WHAT LIES BEYOND",
+      "sub": "Honolulu · 1991",
+      "duration": 2400
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_arcadeum_lobby.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The job interview had been going well. Three hours of meeting people, writing out samples of code on a whiteboard, and touring the company's floor."
+    },
+    {
+      "t": "narrate",
+      "text": "At lunch, she had fifteen minutes to herself and went to the lobby, and returned by a boutique video game store that sat between a men's suit and leather case store and a dry cleaner that she saw on her way in."
+    },
+    {
+      "t": "narrate",
+      "text": "She hadn't slept since the night before the flight from Dallas to Honolulu, which left at a normal time, and arrived somewhere altogether different, a place her logic could not reconcile as anything but dream."
+    },
+    {
+      "t": "narrate",
+      "text": "She went for a very early morning walk along the beach and watched the sun rise and hallucinated a toddler in large antique blue bloomers playing lonesome by itself at the water's edge."
+    },
+    {
+      "t": "narrate",
+      "text": "For breakfast she had the continental spread and pocketed an airline vial of vodka in her orange juice. She smuggled some deli sliced meat into a paper napkin, which she planned to return to for lunch."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_honolulu_game_store.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Instead of eating their own very generous offerings or ingratiating, she found herself back downstairs. The name outside the game store was a cheap box vinyl back-lit fluorescent number that promised only COMPUTER GAMES, and inside an anxious man staffed the store."
+    },
+    {
+      "t": "narrate",
+      "text": "The newest game in their front window display was Mountaintop's Final Cut, a graphic adventure about a film editor who was also a spy, one of their first CD-ROM enhanced titles."
+    },
+    {
+      "t": "choice",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "the clear display under the register",
+          "goto": 30
+        },
+        {
+          "text": "the front window a while longer",
+          "goto": 29
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The newest game in their front window display was Mountaintop's Final Cut, a graphic adventure about a film editor who was also a spy, one of their first CD-ROM enhanced titles."
+    },
+    {
+      "t": "narrate",
+      "text": "She did eye something unique in the clear display underneath the register. A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "I've never heard of this game before."
+    },
+    {
+      "t": "narrate",
+      "text": "She said, pointing down to it."
+    },
+    {
+      "t": "narrate",
+      "text": "The salesman stood up very straight."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "It's not very well known, I guess."
+    },
+    {
+      "t": "narrate",
+      "text": "He shrugged."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "There were a couple of magazine previews a couple years back."
+    },
+    {
+      "t": "narrate",
+      "text": "Her next thought was of playing it when she got home from her interview."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "I'll take it."
+    },
+    {
+      "t": "narrate",
+      "text": "The man looked up at her surprised as she had her credit card out without another word. He swiped it under two-part transfer paper in a hard plastic shell."
+    },
+    {
+      "t": "narrate",
+      "text": "She then returned to the second half of the interview which went well enough, but after some second guessing, she was convinced they wouldn't hire her, after all. She regretted buying the game earlier. During a forced bathroom break, she snuck a look at the receipt."
+    },
+    {
+      "t": "narrate",
+      "text": "The total was almost five hundred dollars. She went into something like a panic and anxiety induced shock, interrupted and pulled back out of it by the sound of a passing supersonic jet plane above, from perhaps a nearby air base."
+    },
+    {
+      "t": "narrate",
+      "text": "She did the math of how much money she had in the checking account, and she'd just barely not bounce the check if she spent no other money looking for work this month."
+    },
+    {
+      "t": "narrate",
+      "text": "She hadn't asked the price and he hadn't given it, nor had she looked at the sticker, and the bottom of the receipt said all sales final."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a boutique store in a corporate high rise. Her only option was to go back after the interview ended and see if she could return it."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "I'm sorry, but I can't return it."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "It's five hundred dollars."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "Yes, it is. But it's like an art gallery. You don't return art."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "These are old used games."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "This is an old, brand new never been opened game. Honestly. It's mine. My game. I made it. Worked on it a few years back when I got out of the Army, and there are maybe a hundred copies of it left in the world. Some soldiers stick around Hawaii making surfboards, I made a video game. It's a unique thing, and it found you, and there's gotta be a reason for that."
+    },
+    {
+      "t": "narrate",
+      "text": "She looked back down at the game and the receipt and nodded."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "I'd really like if you returned my money to me."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "I can't do that, I'm sorry."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at her with a bit of anger, and a bit of sympathy."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "Are you new at Koa Works? I've never seen you around."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "I'm interviewing. I thought it was my dream job. I don't think I'll get it."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "Good luck. There's good and bad things about the place. I guess you could say the culture, when you get down to it."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "Do you get a lot of them down here?"
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "Sure. Lots of familiar faces."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "Have any of them bought your game?"
+    },
+    {
+      "t": "narrate",
+      "text": "She looked back down at it when he wouldn't answer her question."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "neutral",
+      "text": "I don't live here. I probably won't be back to tell you if it's any good."
+    },
+    {
+      "t": "say",
+      "char": "The Shopkeeper",
+      "expr": "neutral",
+      "text": "So you'll play it?"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_taxi_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Her return flight was worse. The taxi ride home was like falling asleep during a car trip as a child, a blur of thudding street lighting and asphalt grade changes."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_bedroom_closet_dallas.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "She didn't get the job. She kept the game in the back of her closet for a long time, not wanting to even think of the dent it made to her bank account while staving off impending financial doom, nor the shame of not being able to negotiate its return."
+    },
+    {
+      "t": "narrate",
+      "text": "She went back to playing her usual gaming stand-bys. She was smack in the middle of a good Dungeon Run session that had to play itself out naturally. She begged for part time work at her brother's friend's power and line laying company."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a fine job."
+    },
+    {
+      "t": "narrate",
+      "text": "She idled those days, dreaming of islands, jet lagged insomnia and making games to be played by a few dozen perfect strangers at odd junctures in life."
+    },
+    {
+      "t": "narrate",
+      "text": "When she finally got the box out of the closet, she'd already been to the nearest campus library and learned everything there was to know that she could find. It got a couple mention in trade magazines, one half ad, and not even a review. It was a forgotten and unreleased thing, near as she could tell."
+    },
+    {
+      "t": "narrate",
+      "text": "She hoped that very soon she could find the time and mind to devote to WHAT LIES BEYOND and perhaps share what she found with the world."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_what_lies_beyond_box.jpg",
+      "caption": "WHAT LIES BEYOND, in a regal cloudy blue script."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch6_arcadeum_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch6_tunnels"
+    }
+  ]
+}
