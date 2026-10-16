@@ -1,0 +1,255 @@
+"""writers_desk — vol 4's scrapbook desk (draft 1, 2026-10-16).
+
+The user: "Let's move back to background and model work for all the new vol
+1-4 stuff." Vol 4 (the scrapbook: poems, blog scraps, the stories, the zine)
+is read at one desk — 33 scene uses across vol4_desk_night, desk_dawn,
+bedroom_desk, corkboard_night and the two betterment desks; the most-used
+new place in vols 1-4 (lore/_VOL1_4_SETS_AND_CAST.md).
+
+What the scenes say, and where it is here:
+  "The desk drawer sticks, then gives. Desert sand in the runners."
+      → the pedestal's top drawer pulled 14 cm, a skim of sand in it
+  "In the drawer, with the rubber bands and the dead nine-volts, a ball of
+   red string."                         → Drawer_Bands / _9V_* / _String_Ball
+  "Four clippings on the cork."        → Board_Clipping_0..3 (HeroArt-ready)
+  "Over the desk the corkboard has gaps in it, pale squares where
+   something ought to hang."           → Board_Gap_0..2, cork unfaded
+  "The folder marked vii. is held shut with a pushpin through both
+   covers."                             → Folder_vii + Folder_vii_Pin
+  "The desk near dawn. Every drawer pulled. The corkboard in the window
+   light, the red string gone brown."  → the board beside the N window;
+   "Through the glass, the street. A car idles at the curb"
+                                        → View_N, a street (make_view)
+  A bed on the W wall for vol4_bedroom_desk ("nothing doing", "wit's end").
+
+Room: 5.0 x 5.6 m, ceiling 2.7 — a real mid-2000s one-room apartment (BUILD
+BIG: the desk, a bed, books and a door, with room to walk between them).
+Blender axes: x east, y north, z up; Godot (x, z, -y).
+
+DRAFT 2 targets: the four folding church-basement chairs of "curtain call"
+(they "weren't here before": needs a per-preset prop switch like the lights'
+`__<preset>`); the copier counter of the meld seams as its own set
+(copy_shop); the RUTA 77 car at the curb for the dawn preset; HeroArt
+entries for the four clippings (the zine, "All over town", the blog page,
+the poem) and the corkboard's red string as one drawn path; wear (a chair
+track in the floor, a scorch under the lamp); Deck-verified framing.
+"""
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, export_glb
+from _props.views import make_view
+from _props.structure import (make_floor, make_wall, make_ceiling, make_crown_molding,
+                              make_window, make_wall_with_openings)
+from _props.furniture import make_bed, make_chair
+from _props.decor import make_faded_poster
+from _props.safety import make_smoke_detector
+from _props.detail import (make_traffic_wear, make_floor_stain, make_wall_tint_band,
+                           make_threshold, make_wall_outlet, make_light_switch)
+
+ROOM_W = 5.0; ROOM_D = 5.6; CEIL = 2.7
+PAL_WALL = {"wall": (0.80, 0.78, 0.70, 1.0), "baseboard": (0.30, 0.26, 0.22, 1.0)}
+COL_FLOOR = (0.46, 0.34, 0.22, 1.0); COL_SEAM = (0.30, 0.21, 0.13, 1.0)
+WOOD = (0.36, 0.25, 0.15, 1.0); WOOD_DARK = (0.24, 0.16, 0.10, 1.0)
+CORK = (0.66, 0.50, 0.32, 1.0); CORK_PALE = (0.86, 0.74, 0.54, 1.0)
+RED_STRING = (0.70, 0.14, 0.12, 1.0)
+MANILA = (0.86, 0.74, 0.48, 1.0)
+WIN_X, WIN_W, WIN_H, WIN_Z = 1.25, 1.30, 1.35, 1.55     # the N window
+DESK_X, DESK_Y = -0.55, ROOM_D - 0.42                   # desk centre, against Wall_N
+DESK_W, DESK_D, DESK_H = 1.55, 0.72, 0.75
+
+
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
+        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL, axis='X',
+                            palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(WIN_X, WIN_Z, WIN_W, WIN_H)])
+    # S wall with the door east of centre
+    door_x = 1.45
+    make_wall("Wall_S_W", ((-ROOM_W / 2.0 - 0.2 + door_x - 0.50) / 2.0, 0.0, 0), length=(door_x - 0.50) + ROOM_W / 2.0 + 0.2,
+              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", ((door_x + 0.50 + ROOM_W / 2.0 + 0.2) / 2.0, 0.0, 0), length=ROOM_W / 2.0 + 0.2 - door_x - 0.50,
+              height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Wall_S_AboveDoor", (door_x, 0.0, (2.08 + CEIL) / 2.0), (1.0, 0.20, CEIL - 2.08), PAL_WALL["wall"])
+    make_box("Door", (door_x, 0.06, 1.03), (0.86, 0.045, 2.04), WOOD_DARK)
+    make_cyl("Door_Knob", (door_x - 0.34, 0.10, 0.98), 0.028, 0.05, (0.66, 0.56, 0.30, 1.0), axis='Y', segments=10)
+    for side in (-1, 1):
+        make_box(f"Door_Casing_{'W' if side < 0 else 'E'}", (door_x + side * 0.48, 0.11, 1.05), (0.06, 0.02, 2.10), (0.70, 0.66, 0.58, 1.0))
+    make_box("Door_Casing_Head", (door_x, 0.11, 2.12), (1.02, 0.02, 0.07), (0.70, 0.66, 0.58, 1.0))
+    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4, with_grid=False)
+    for nm, ax, length, wx, wy in [
+            ("Crown_W", 'Y', ROOM_D, -ROOM_W / 2.0 + 0.10, ROOM_D / 2.0),
+            ("Crown_E", 'Y', ROOM_D, +ROOM_W / 2.0 - 0.10, ROOM_D / 2.0),
+            ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D - 0.10),
+            ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
+        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL,
+                           palette={"wood": (0.70, 0.66, 0.58, 1.0)})
+    make_window("Window_N", (WIN_X, ROOM_D - 0.10, WIN_Z), width=WIN_W, height=WIN_H, see_through=True)
+    # a radiator under the window, the sill a ledge of paper
+    rx, ry = WIN_X, ROOM_D - 0.22
+    for k in range(9):
+        make_box(f"Radiator_Fin_{k}", (rx - 0.40 + k * 0.10, ry, 0.42), (0.05, 0.16, 0.60), (0.74, 0.72, 0.66, 1.0))
+    make_box("Radiator_Rail", (rx, ry, 0.16), (0.90, 0.10, 0.04), (0.60, 0.58, 0.52, 1.0))
+    for k, fx in enumerate((-0.40, 0.40)):                # its feet
+        make_box(f"Radiator_Foot_{k}", (rx + fx, ry, 0.07), (0.06, 0.12, 0.14), (0.60, 0.58, 0.52, 1.0))
+    make_box("Sill_Papers", (WIN_X + 0.30, ROOM_D - 0.16, WIN_Z - WIN_H / 2.0 + 0.03), (0.30, 0.22, 0.05), P.PAPER_AGED)
+
+
+def build_desk():
+    x, y, top = DESK_X, DESK_Y, DESK_H
+    make_chamfer_box("Desk_Top", (x, y, top - 0.02), (DESK_W, DESK_D, 0.04), WOOD, chamfer=0.006)
+    # left legs; a three-drawer pedestal on the right
+    for k, (lx, ly) in enumerate([(-0.72, -0.31), (-0.72, 0.31)]):
+        make_box(f"Desk_Leg_{k}", (x + lx, y + ly, (top - 0.04) / 2.0), (0.05, 0.05, top - 0.04), WOOD_DARK)
+    px = x + DESK_W / 2.0 - 0.24
+    make_box("Desk_Pedestal", (px, y, (top - 0.04) / 2.0), (0.44, DESK_D - 0.04, top - 0.04), WOOD)
+    make_box("Desk_Modesty", (x - 0.24, y + DESK_D / 2.0 - 0.03, 0.46), (DESK_W - 0.55, 0.02, 0.50), WOOD_DARK)
+    for k in range(3):
+        z = 0.58 - k * 0.22
+        pull = 0.14 if k == 0 else 0.0                 # the top drawer: stuck, then gave
+        # flush on the pedestal's face (it was 2 cm proud of it, holding nothing);
+        # the stuck top drawer runs back into the pedestal as a real drawer does
+        face_y = y - (DESK_D - 0.04) / 2.0
+        make_box(f"Desk_Drawer_{k}", (px, face_y - (0.024 + pull) / 2.0 + 0.01, z), (0.40, 0.024 + pull + 0.02, 0.18), WOOD_DARK)
+        make_box(f"Desk_Drawer_{k}_Pull", (px, face_y - 0.024 - pull - 0.009, z), (0.10, 0.02, 0.018), (0.62, 0.54, 0.34, 1.0))
+    # the open drawer's contents: rubber bands, dead nine-volts, the red string, sand in the runners
+    dz, dy = 0.66, y - DESK_D / 2.0 - 0.06
+    make_box("Drawer_Sand", (px, dy, dz - 0.005), (0.34, 0.12, 0.004), (0.80, 0.70, 0.50, 1.0))
+    for k, (bx, bc) in enumerate([(-0.11, (0.70, 0.56, 0.38, 1.0)), (-0.06, (0.56, 0.42, 0.30, 1.0))]):
+        make_cyl(f"Drawer_Bands_{k}", (px + bx, dy, dz + 0.004), 0.028, 0.006, bc, segments=10)
+    for k in range(2):
+        make_box(f"Drawer_9V_{k}", (px + 0.02 + k * 0.035, dy - 0.01, dz + 0.012), (0.026, 0.017, 0.048), (0.16, 0.16, 0.18, 1.0))
+        make_box(f"Drawer_9V_{k}_Cap", (px + 0.02 + k * 0.035, dy - 0.01, dz + 0.04), (0.02, 0.012, 0.008), (0.70, 0.62, 0.36, 1.0))
+    make_cyl("Drawer_String_Ball", (px + 0.12, dy, dz + 0.03), 0.032, 0.06, RED_STRING, segments=10)
+    # on the desk: the screen and keyboard (2006), the lamp, the paper
+    make_box("Monitor_Stand", (x + 0.10, y + 0.16, top + 0.01), (0.20, 0.16, 0.02), P.METAL_BLACK)
+    make_box("Monitor_Neck", (x + 0.10, y + 0.18, top + 0.11), (0.05, 0.03, 0.20), P.METAL_BLACK)
+    make_chamfer_box("Monitor", (x + 0.10, y + 0.18, top + 0.36), (0.46, 0.05, 0.34), (0.20, 0.20, 0.22, 1.0), chamfer=0.008)
+    make_box("Monitor_Screen", (x + 0.10, y + 0.152, top + 0.37), (0.42, 0.004, 0.28), (0.20, 0.30, 0.42, 1.0))
+    make_box("Keyboard", (x + 0.10, y - 0.14, top + 0.012), (0.44, 0.15, 0.02), (0.84, 0.82, 0.76, 1.0))
+    make_box("Mouse", (x + 0.42, y - 0.14, top + 0.015), (0.06, 0.10, 0.03), (0.84, 0.82, 0.76, 1.0))
+    lx, ly = x - 0.62, y + 0.18
+    make_cyl("Lamp_Base", (lx, ly, top + 0.015), 0.07, 0.03, P.METAL_BLACK, segments=12)
+    make_cyl("Lamp_Neck", (lx, ly, top + 0.20), 0.008, 0.34, P.METAL_BLACK, segments=6)
+    make_box("Lamp_Arm", (lx + 0.09, ly, top + 0.37), (0.18, 0.012, 0.012), P.METAL_BLACK)       # off the post itself
+    make_cyl("Lamp_Shade", (lx + 0.19, ly, top + 0.33), 0.06, 0.09, (0.18, 0.30, 0.22, 1.0), segments=12)
+    make_cyl("Lamp_Bulb", (lx + 0.19, ly, top + 0.285), 0.025, 0.02, (1.0, 0.92, 0.70, 1.0), segments=8)
+    for k in range(5):                                   # the stacks: scraps, stories, the zine
+        make_box(f"Paper_Stack_{k}", (x - 0.42 + (k % 2) * 0.08, y - 0.08 - (k // 2) * 0.02, top + 0.012 + k * 0.012),
+                 (0.22, 0.29, 0.010), P.PAPER if k % 2 == 0 else P.PAPER_AGED)
+    make_box("Zine_Stack", (x - 0.15, y - 0.24, top + 0.02), (0.15, 0.21, 0.025), (0.78, 0.76, 0.70, 1.0))
+    make_box("Folder_vii", (x + 0.52, y + 0.02, top + 0.016), (0.24, 0.31, 0.022), MANILA)
+    make_cyl("Folder_vii_Pin", (x + 0.52, y + 0.12, top + 0.034), 0.008, 0.016, RED_STRING, segments=8)
+    make_box("Folder_vii_Label", (x + 0.45, y + 0.02, top + 0.028), (0.07, 0.03, 0.001), P.PAPER)
+    make_cyl("Mug", (x + 0.66, y - 0.20, top + 0.05), 0.04, 0.10, (0.22, 0.28, 0.40, 1.0), segments=12)
+    make_cyl("Pen_Cup", (x + 0.66, y + 0.20, top + 0.06), 0.035, 0.12, (0.30, 0.28, 0.26, 1.0), segments=10)
+    for k in range(3):
+        make_cyl(f"Pen_{k}", (x + 0.655 + k * 0.01, y + 0.20, top + 0.15), 0.004, 0.14, (0.10, 0.12, 0.40, 1.0), segments=6)
+    make_box("Stapler", (x - 0.30, y + 0.24, top + 0.02), (0.05, 0.16, 0.04), (0.30, 0.30, 0.34, 1.0))
+    make_chair("Desk_Chair", x + 0.05, y - 0.78, yaw=0.0, wood=WOOD_DARK, seat_col=(0.30, 0.22, 0.16, 1.0))
+    # the wastebasket, crumpled drafts
+    make_cyl("Wastebasket", (x - 0.95, y - 0.30, 0.16), 0.13, 0.32, (0.26, 0.26, 0.28, 1.0), segments=12)
+    for k, (bx, by) in enumerate([(-0.04, 0.02), (0.04, -0.03), (0.0, 0.05)]):
+        make_chamfer_box(f"Crumple_{k}", (x - 0.95 + bx, y - 0.30 + by, 0.30 + k * 0.02), (0.07, 0.07, 0.06), P.PAPER, chamfer=0.02)
+    make_chamfer_box("Crumple_Floor", (x - 0.70, y - 0.58, 0.03), (0.07, 0.07, 0.06), P.PAPER, chamfer=0.02)
+
+
+def build_corkboard():
+    """Over the desk: cork in a thin frame, four clippings, pale gaps where
+    something ought to hang, red string pin to pin."""
+    bx, bw, bh, bz = DESK_X - 0.05, 1.30, 0.86, 1.62
+    face = ROOM_D - 0.10 - 0.012
+    make_box("Board_Frame", (bx, face + 0.004, bz), (bw + 0.06, 0.02, bh + 0.06), WOOD_DARK)
+    make_box("Board_Cork", (bx, face - 0.008, bz), (bw, 0.012, bh), CORK)
+    clips = [(-0.46, 0.20, 0.22, 0.28, P.NEWSPRINT), (-0.12, -0.18, 0.26, 0.18, P.NEWSPRINT),
+             (0.20, 0.16, 0.20, 0.26, P.PAPER), (0.46, -0.20, 0.18, 0.24, (0.92, 0.90, 0.84, 1.0))]
+    for k, (cx, cz, w, h, col) in enumerate(clips):
+        make_box(f"Board_Clipping_{k}", (bx + cx, face - 0.016, bz + cz), (w, 0.003, h), col)
+        make_cyl(f"Board_Pin_{k}", (bx + cx, face - 0.024, bz + cz + h / 2.0 - 0.03), 0.014, 0.018, RED_STRING,
+                 axis='Y', segments=8)
+    for k, (gx, gz, w, h) in enumerate([(-0.48, -0.24, 0.20, 0.16), (0.02, 0.30, 0.18, 0.14), (0.38, 0.32, 0.14, 0.12)]):
+        make_box(f"Board_Gap_{k}", (bx + gx, face - 0.0145, bz + gz), (w, 0.001, h), CORK_PALE)
+        for e, (ex, ez, ew, eh) in enumerate([(0, h / 2.0, w, 0.006), (0, -h / 2.0, w, 0.006), (-w / 2.0, 0, 0.006, h), (w / 2.0, 0, 0.006, h)]):
+            make_box(f"Board_Gap_{k}_Edge_{e}", (bx + gx + ex, face - 0.015, bz + gz + ez), (ew, 0.001, eh), (0.52, 0.38, 0.24, 1.0))   # the faded cork stops at a line
+    # the string: pin to pin, right to left ("You tie off on the zine first,
+    # because it's farthest out"), a little slack between pins
+    from _props.geometry import make_tube, catenary
+    pins = [(bx + c[0], bz + c[1] + c[3] / 2.0 - 0.03) for c in clips]
+    order = [3, 2, 1, 0]
+    for k in range(len(order) - 1):
+        (x0, z0), (x1, z1) = pins[order[k]], pins[order[k + 1]]
+        yy = face - 0.030
+        make_tube(f"Board_String_{k}", catenary((x0, yy, z0), (x1, yy, z1), 0.025, n=8), 0.0035, RED_STRING, segments=5)
+
+
+def build_bed_and_books():
+    # head against Wall_W: the bed lies along x, so its centre is half its length off the wall face
+    make_bed("Bed", -ROOM_W / 2.0 + 0.10 + 1.95 / 2.0 + 0.02, 1.65, head="-X", w=1.0, d=1.95)
+    make_box("Nightstand", (-ROOM_W / 2.0 + 0.30, 3.00, 0.28), (0.40, 0.40, 0.56), WOOD)
+    make_box("Nightstand_Book", (-ROOM_W / 2.0 + 0.30, 3.00, 0.575), (0.14, 0.21, 0.03), (0.50, 0.22, 0.18, 1.0))
+    make_cyl("Nightstand_Glass", (-ROOM_W / 2.0 + 0.40, 3.10, 0.61), 0.03, 0.10, (0.62, 0.70, 0.72, 0.5), segments=8)
+    # two tall bookcases on the E wall
+    for s in range(2):
+        sy = 1.90 + s * 1.00
+        sx = ROOM_W / 2.0 - 0.18
+        make_box(f"Shelf_{s}_Back", (sx + 0.15, sy, 1.00), (0.02, 0.90, 2.00), WOOD_DARK)
+        for side in (-1, 1):
+            make_box(f"Shelf_{s}_Side_{'S' if side < 0 else 'N'}", (sx, sy + side * 0.44, 1.00), (0.30, 0.02, 2.00), WOOD)
+        for b in range(6):
+            z = 0.05 + b * 0.38
+            make_box(f"Shelf_{s}_Board_{b}", (sx, sy, z), (0.30, 0.86, 0.02), WOOD)
+            if b < 5:
+                n = 9 - (b + s) % 3
+                for i in range(n):
+                    h = 0.20 + ((i * 7 + b * 3 + s) % 5) * 0.025
+                    col = P.SNACK_TINTS[(i + b + s) % len(P.SNACK_TINTS)]
+                    col = (col[0] * 0.7, col[1] * 0.7, col[2] * 0.7, 1.0)
+                    make_box(f"Shelf_{s}_Book_{b}_{i}", (sx - 0.02, sy - 0.38 + i * 0.085, z + 0.01 + h / 2.0),
+                             (0.20, 0.06, h), col)
+    # boxes of zines and a crate of records under the window side
+    for k in range(3):
+        make_box(f"Archive_Box_{k}", (ROOM_W / 2.0 - 0.30, 4.30 + (k % 2) * 0.05, 0.16 + k * 0.30), (0.34, 0.44, 0.30),
+                 (0.70, 0.60, 0.42, 1.0))
+    make_box("Rug", (-0.30, 2.60, 0.004), (2.20, 1.60, 0.008), (0.34, 0.24, 0.20, 1.0))
+    for k in range(2):
+        make_faded_poster(f"Poster_W_{k}", (-ROOM_W / 2.0 + 0.1035, 3.40 + k * 1.10, 1.65), into_room=+1)
+
+
+def build_infra():
+    make_cyl("Ceiling_Fixture", (0.0, ROOM_D / 2.0, CEIL - 0.06), 0.18, 0.10, (0.92, 0.88, 0.74, 1.0), segments=12)
+    make_smoke_detector("Smoke", (-1.0, ROOM_D / 2.0, CEIL))
+    wear = (COL_FLOOR[0] * 0.86, COL_FLOOR[1] * 0.86, COL_FLOOR[2] * 0.86, 1.0)
+    make_traffic_wear("Wear_Door_To_Desk", [(1.45, 0.5), (DESK_X + 0.05, DESK_Y - 1.0)], width=0.6, tint=wear)
+    make_floor_stain("Stain_Chair", (DESK_X + 0.05, DESK_Y - 0.80), radius=0.30, tint=wear)
+    pw = PAL_WALL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    for nm, x, a in (("Band_W", -ROOM_W / 2.0 + 0.105, 'Y'), ("Band_E", ROOM_W / 2.0 - 0.105, 'Y')):
+        make_wall_tint_band(nm, (x, ROOM_D / 2.0, 0.0), length=ROOM_D - 0.4, axis=a, band_z=CEIL - 0.16, tint=band)
+    make_threshold("Threshold_Door", (1.45, 0.10), width=0.9, axis='X')
+    make_light_switch("Switch_Door", (0.85, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_Desk", (DESK_X - 0.55, ROOM_D), axis='X', face_sign=-1, aged=True)
+    make_wall_outlet("Outlet_Bed", (-ROOM_W / 2.0, 2.90), axis='Y', face_sign=1, aged=True)
+
+
+def main():
+    clear_scene()
+    build_shell()
+    build_desk()
+    build_corkboard()
+    build_bed_and_books()
+    build_infra()
+    # through the window: the street (curtain call's car at the curb is draft 2)
+    make_view("View_N", "N", ROOM_D, 0.0, kind="front", ground_z=-3.2, seed=11)   # a second-floor room over a residential street
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                        "../../../assets/3d/locales/writers_desk.glb"))
+    print(f"\n[build_writers_desk] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()

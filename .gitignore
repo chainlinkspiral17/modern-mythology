@@ -152,3 +152,8 @@ lore/drift_wood/refs/**/*.png
 lore/drift_wood/refs/**/*.jpg
 lore/drift_wood/refs/**/*.jpeg
 lore/drift_wood/refs/**/*.webp
+
+# SLIM (2026-10-16): the untouched originals of slimmed models — kept on the
+# Drive by Hero Studio, never in git (meshy_pipeline.py slim_glb)
+godot/assets/3d/characters/*/_full/
+godot/assets/3d/props/_full/

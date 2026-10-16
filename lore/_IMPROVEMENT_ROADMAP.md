@@ -3834,6 +3834,206 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-16 · pass 109: AGES — A LOOK AND A VOICE PER ERA (draft 1).** The
+user: "characters need new looks and voices as they age." The age ledger
+`godot/tools/ages.json` covers 28 recurring characters and 50 eras across vols 1–7.
+- 6 new roster looks, and 20 ledger edits applied, among them:
+  - Dickens Dean has three ages: teen Nate (1994), young (vols 1 and 4),
+    about 50 (vols 5–6);
+  - Chess has two;
+  - the age-7 Maya no longer covers the 16-year-old.
+- `voice_ages.py` and the renderer pick each line's voice by the age the
+  scene is set; 9 new voices to cast.
+- `ages_audit.py` gates ledger ↔ roster.
+
+Held for the author: vol 7's two calendars (2052 vs ages counted from about
+2023); vol 4 daddy_b/c's older Dean; `miriam_2025`; keys shared by two
+people. See `lore/_VOL1_4_SETS_AND_CAST.md` § Ages.
+
+NEXT: cast the 9 voices; generate the 6 looks in Hero Studio; once
+claude/vol1-4-source-text merges, its voice tools (voice_common.py) should
+read the same ledger.
+
+**2026-10-16 · pass 108: VOLS 1–4 — SETS AND CAST (draft 1).** The user:
+"Let's move back to background and model work for all the new vol 1-4
+stuff." Plan and queue: `lore/_VOL1_4_SETS_AND_CAST.md`.
+- **The 279 pictures the vols 1–4 scenes name** (branch
+  claude/vol1-4-source-text; none was ever made) map to sets in
+  `resources/vn/bg_places.json`; `GameEngine.resolve_bg()` plays the set, so
+  that branch's scene JSON needs no edits. Fits:
+  - exact 53;
+  - reuse 81 (an existing set that is this kind of place);
+  - standin 99 (the nearest set until its own is built);
+  - 2d 46 (game screens, inserts, the pulp visions — to paint).
+- **Two new sets, built here with the bpy module and rendered with the new
+  `tools/PresetShot.gd`:**
+  - **writers_desk** (vol 4's scrapbook desk, 33 scene uses): the stuck
+    drawer with the red string, the corkboard's four clippings and pale
+    gaps, the window onto the street; presets desk / board / room / dawn;
+    108 draw calls.
+  - **small_wood_high** (vol 2's school and vol 4's classrooms, 12 uses):
+    the hearing in the gym, the locker corridor, Kordowski's locker room,
+    the classroom, the art room, the computer lab; 236 draw calls.
+- **51 cast entries** in the Hero Studio roster (48 characters + 3 looks)
+  from the manuscript and the voice map.
+
+NEXT (draft 2 of the program):
+- build the queue's next sets: andy_family_house, caltech_dabney,
+  dean_house_1994, little_league, dean_office, chau_house, airport;
+- paint the 2D stems through a Hero Studio `scene2d` kind;
+- per-preset props (the curtain call's folding chairs);
+- HeroArt for the corkboard clippings and the lab's sign;
+- generate the cast in Hero Studio;
+- once claude/vol1-4-source-text merges, point the Python audits at
+  `bg_places.json` too (they key on `3d:` srcs).
+
+**2026-10-16 · CANON: ARTHUR FINCH AND JAY ROSE, A SPLIT CHARACTER.** The
+user: "Arthur Finch is strip artist. Jay Rose is DJ. Split character. I like
+the naming ambiguity over time. Meta texts." Vol 2's one figure becomes two:
+**Arthur Finch** pencils DriftWood for the school paper (and returns in vol
+10); **Jay Rose** is the deejay at the rec-center dance ("His name was Jay
+Rose … actor, artist, and musician", "Jay Rose killed the thing dead" stay).
+Where the text lets the names blur (chapter xii's "jay rose was the first of
+us to disappear. These are the comics he contributed …", the strip's drawn
+byline "driftwood by jay rose", the DJ who "disappeared and never came
+back"), it STAYS as written: the ambiguity is the point, a meta-text. Do not
+"fix" it. Changed here: vol2_ch2_interlude_three (the strip line), the
+school-newspaper builder's notes, the DriftWood monitor's roster entry. The
+vols 1–4 import (branch claude/vol1-4-source-text, another session) renamed
+the DJ lines too; they go back to Jay Rose there.
+
+**2026-10-16 · pass 106: THE GRAPHICS BUDGET, SPENT WELL (perf draft 2).**
+The user, after pass 105's assessment: "Go ahead". Four pieces:
+
+1. **`scripts/StaticMerge.gd` — the still parts drawn as chunks.** Attached
+   by MoodCycler (every locale, walkable and VN alike); two frames after
+   load it groups eligible MeshInstance3Ds by material look, vertex format,
+   shadow mode and cell (4 m in a room, up to 12 m for a town) and builds
+   each group into one mesh, a few a frame (40–500 ms in all here). The
+   parts keep their nodes, names and colliders — only their render
+   instances go off — and a chunk splits back if anything hides or frees a
+   member. Left alone: scripted subtrees, AnimationPlayer targets,
+   transparent / shader / normal-mapped materials, HeroProp hide_prefixes,
+   the runtime lookups (Sprinkler_Head, Miller_Cracked, HeroArt_), group
+   "no_merge"; a chunk may be reached by at most 8 lamps (the renderer's
+   per-object cap); a scene with a shadow-casting lamp merges nothing.
+   Worst view of four, before → after (one room per process; pictures
+   diffed against MM_STATIC_MERGE=0):
+
+   | room | before | after |
+   |---|---|---|
+   | graustark | 14,316 | 1,254 |
+   | pharmacy | 12,492 | 1,096 |
+   | nexcorp_fueling_station | 12,330 | 174 |
+   | kwik_stop | 7,364 | 276 |
+   | faust_apartment | 6,800 | 4,033 (shadow trim only — see NEXT) |
+   | riverfront | 6,295 | 471 |
+   | centro_grocery_aisle | 4,998 | 214 |
+   | lena_apartment | 4,098 | 156 |
+   | salty_tome_interior | 3,348 | 402 |
+   | diner | 2,572 | 1,248 |
+   | henderson_kitchen | 878 | 106 |
+   | missing_link_interior | 744 | 90 |
+   | hospital_room | 632 | 100 |
+   | ben_bedroom | 322 | 92 |
+
+   Pictures: every room within noise of the unmerged render (worst 0.48%
+   of pixels, single-pixel slivers where coplanar surfaces meet). Two bugs
+   found on the way and fixed: SurfaceTool.append_from turns normals by the
+   plain basis (wrong for scaled + rotated parts), and the glTF importer's
+   per-primitive default materials meant nothing merged until the merge
+   keyed on the material's look.
+
+2. **Sun shadows: two splits within 60 m** (`StaticMerge.shadow_budget`,
+   28 rooms) — no visible change; Faust 6,800 → 4,033 from that alone.
+3. **Hero models slimmed at install** (`tools/blender/slim_model.py`,
+   `meshy_pipeline.py slim`): 120k triangles with the UV seams locked,
+   base + normal 2048, others 1024 — elicia 56 → 5.7 MB, frasier 49 → 5.2,
+   no visible change at ECU / MCU on the cast sheet. Original kept in
+   `_full/` (Drive, gitignored, .gdignore). And the maps are now
+   VRAM-compressed (`model_texture_settings`, run by art-optimize after
+   Godot extracts them): they were loading UNCOMPRESSED — 175.7 MB of
+   texture memory for one character, 25 MB slimmed + compressed.
+4. **`tools/audit/perf_gate.py`** in run_changed_audits.sh: a room whose
+   builder / scene / GLB changed may not draw more than max(2,000,
+   baseline × 1.15); baselines in `perf_baseline.json`.
+
+Deck: `meshy_pipeline.py slim` on the ten committed heroes (Blender), then
+reimport, art-optimize, reimport. Fps still unmeasured on the Deck itself.
+
+NEXT (perf draft 3):
+- Faust (and any future shadowed lamp): find why a shadow-casting omni
+  changes the picture once chunks exist, so those rooms merge too.
+- Rooms past 8 lamps a cell (the diner, 36) keep many parts separate:
+  shorter lamp ranges, or fewer, overlapping practicals.
+- Merge at IMPORT (EditorScenePostImport) so loading does no work; give the
+  town chunks generated LODs.
+- PerfProbe inside GameEngine (post stack, hero art, cast on stage); a
+  baseline for every locale (only the 14 measured rooms have one).
+- Slim the 8 demons and future props through the same step; judge
+  the 120k figure on the whole cast sheet, not two heroes.
+
+**2026-10-14 · pass 105: THE GRAPHICS BUDGET, MEASURED (perf draft 1).**
+The user: "do a quick assessment how well game is handling graphical load so
+far, and how much it can be optimized/expanded with new content" — before
+another pass of 3D backgrounds, more 2D art and the hero models still to
+come. New `godot/tools/PerfProbe.gd` (exact counts; fps must be read on the
+Deck). Findings, worst view of four from each room's first camera:
+
+- **Draw calls are the bottleneck, not triangles.** Every builder exports
+  each part as its own mesh (vertex colors, no materials), and the
+  Compatibility renderer draws each one separately — again for every
+  shadow pass. graustark 14,316 calls (14,303 meshes); pharmacy 12,464 and
+  nexcorp_fueling_station 12,302 (only ~1,700 meshes, multiplied by the sun's
+  shadow); kwik_stop 7,364; faust_apartment 6,772 (784 meshes, sun + 2
+  shadowed lamps); riverfront 6,295; centro 4,998. Small rooms are fine:
+  ben_bedroom 294, hospital_room 604, missing_link 716, henderson_kitchen 850.
+  Rough comfort line for GL on the Deck: ~2,000 calls a view.
+- **Triangles are fine** — median room 14k, worst view 1.4M (pharmacy with
+  shadows).
+- **2D art is cheap.** All 533 pictures, compressed with mipmaps at their
+  size limits: ~770 MB total, but only the room's own load — worst
+  graustark 48 MB, median 6.6 MB a room.
+- **Hero models are the real install-size and memory risk.** The 10 on
+  this machine: median 40 MB, 643k triangles (max 1.13M, elicia_temple), each
+  with two 4096² and two 2048² textures. 119 heroes + 62 props + 8 demons at
+  that rate ≈ 7 GB and three characters on screen ≈ 2M+ triangles.
+
+NEXT (perf draft 2, before the next background / hero passes):
+1. **Merge static parts at build time** — join every part no script names
+   (HeroArt hides, doors, director markers, practicals) into per-room chunks
+   (~4 m cells so culling still works). Target ≤ 400 meshes a room; the
+   detail budget it frees is what the next 3D-background pass spends.
+2. **Shadows** — tiny props cast none; sun shadow two splits with a short
+   max distance; one shadowed lamp a room at most.
+3. **Hero models through a decimate step in meshy_pipeline** — ~80–120k
+   triangles, 2048 base + 1024 normal (portrait close-ups judged on the cast
+   sheet before/after), so ~5 MB a model.
+4. PerfProbe inside GameEngine (post stack, hero art, people) and a
+   draw-call gate in run_all_audits so new detail can't silently cost fps.
+
+**2026-10-14 · pass 104: THE ART IN THE ROOM — NOTICING AND STILLNESS
+(draft 1).** The user: "the visual novel director needs to feature it but
+subtly. Building out quiet moments of stillness using the game mechanics
+would be preferable" and "the audio director is going to be generating a
+lot of ambient type music which would be ideal for these types of
+moments." Built (see _VN_DIRECTION_PLAYBOOK "The art in the room"):
+VnDirector frames any placed picture without a marker; NOTICING holds on a
+picture an uncued narration line names (once per picture per visit,
+6-line cooldown, framed above the text box, returns next line);
+STILLNESS — "◇ look · J" (pad Y) — the player's own quiet browse of the
+room's close-up pieces, caption in the bottom bar, ◂ ▸, exact return,
+seen-marking; AudioMgr's stillness bed fades in a catalog piece tagged
+`moments: ["stillness"]` (room → volume → any) over the ducked music and
+hum. Engine-tested on the Missing Link menu chapter (noticing fired on
+"The menu is laminated…", stillness entered / browsed 2 of 13 / returned
+to the exact frame). **Draft 2 targets:** occlusion (the kitchen-door
+sign framed through the counter — the rooms have no colliders; test the
+stand-off ray against the locale's mesh AABBs); a gallery page for the
+pieces seen (`art:` keys); stillness pieces ordered by what the scene has
+named first; the audio director's tagged stillness pieces; a per-room
+cap so a 13-piece diner does not ask the player to browse all of it.
+
 **2026-10-14 · pass 103: THE HERO ART, REVIEWED (hero art draft 3).** 532
 pictures generated on the Deck (1.3 GB on My Drive) came back as 22
 contact sheets + a report (`art_review.sh` → `ArtReviewSheet.gd`) and 701
@@ -5351,7 +5551,7 @@ Draft 3 targets:
 vol2 interlude three ("I joined the school newspaper on a whim ... Most of
 my friendships in Small Wood were forged out of that classroom and the
 late nights") played in an 8 x 6 m box with four desks. The prose: Katrina
-the photographer, Shannon on features, Jay Rose's one comic strip —
+the photographer, Shannon on features, Arthur Finch's one comic strip —
 DriftWood — "an understaffed, underfunded academic endeavor", deadlines,
 the football season. `build_school_newspaper.py` is rewritten as a real
 classroom the paper has colonised, 9.6 x 8.4 m under a 3.0 m drop ceiling:

@@ -6,7 +6,7 @@ window. The prose:
 
   "I joined the school newspaper on a whim ... an understaffed,
   underfunded academic endeavor ... Katrina was a photographer for the
-  paper. Shannon a features writer. And it was Jay Rose who pencilled the
+  paper. Shannon a features writer. And it was Arthur Finch who pencilled the
   one and only comic strip — DriftWood — about a teenager named Wood and
   his yearnings to leave the small town forever. Most of my friendships
   in Small Wood were forged out of that classroom and the late nights."
@@ -21,7 +21,7 @@ drop ceiling:
     notebook; six chairs pulled up.
   · THE W WALL: the counter of beige computers, the laser printer and the
     scanner, their chairs — and over them the cork board of page dummies
-    with Jay Rose's DRIFTWOOD strip pinned across its top.
+    with Arthur Finch's DRIFTWOOD strip pinned across its top.
   · THE N WALL: the chalkboard still carrying last period's math, the
     clock, the PA speaker, the flag; the advisor's desk in the NE corner;
     the DARKROOM door beside it with its red light.
@@ -199,7 +199,7 @@ def build_west_wall():
     make_box("Laser_Printer", (face + 0.32, cy0 + 0.30, t + 0.14), (0.42, 0.44, 0.28), COL_BEIGE)
     make_box("Laser_Printer_Tray", (face + 0.58, cy0 + 0.30, t + 0.20), (0.12, 0.30, 0.01), COL_DARK)
     make_box("Scanner", (face + 0.32, cy1 - 0.32, t + 0.05), (0.36, 0.48, 0.10), COL_BEIGE)
-    # the cork board of page dummies, and Jay Rose's comic strip across its top
+    # the cork board of page dummies, and Arthur Finch's comic strip across its top
     bz = 1.85
     make_box("Board_Frame", (face + 0.02, ccy, bz), (0.04, 4.40, 1.30), COL_FRAME)
     make_box("Board_Cork", (face + 0.045, ccy, bz), (0.01, 4.24, 1.14), COL_CORK)
@@ -210,7 +210,7 @@ def build_west_wall():
         make_box(f"Pinned_Dummy_{k}", (face + 0.054, py, pz), (0.008, 0.30, 0.40), COL_PAPER if k % 3 else COL_PAPER_DK)
         make_box(f"Pinned_Dummy_{k}_Head", (face + 0.0585, py, pz + 0.15), (0.001, 0.24, 0.04), COL_DARK)
         make_box(f"Pinned_Dummy_{k}_Photo", (face + 0.0585, py - 0.05, pz + 0.02), (0.001, 0.14, 0.12), (0.46, 0.46, 0.44, 1.0))
-    # DRIFTWOOD: four panels pencilled by Jay Rose, a teenager named Wood
+    # DRIFTWOOD: four panels pencilled by Arthur Finch, a teenager named Wood
     make_box("DriftWood_Strip", (face + 0.054, ccy, bz + 0.475), (0.008, 1.40, 0.20), COL_PAPER)
     for p in range(4):
         make_box(f"DriftWood_Panel_{p}", (face + 0.0585, ccy - 0.51 + p * 0.34, bz + 0.475), (0.001, 0.30, 0.16), (0.98, 0.97, 0.92, 1.0))

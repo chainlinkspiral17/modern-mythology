@@ -399,6 +399,68 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-16 · a new set, built and seen in one session (vols 1–4)
+
+- **The builders run under the `bpy` module** (pip `bpy==4.2.0` in a
+  Python 3.11 venv): `runpy.run_path('build_x.py', run_name='__main__')`.
+  A session can build a GLB, import it, and look at it before the Deck
+  does. The Deck's Blender (5.x) stays the build of record.
+- **`tools/PresetShot.gd OUT_DIR preset …`** renders any camera preset
+  through Background3D. The contact sheet only knows presets a chapter on
+  this branch plays.
+- **`B_KEY` in the 2026-08-03 tscn generator aims 45° UP** by
+  light_direction_audit's row-major reading. New sets use explicit,
+  checked matrices (`B_KEY_FROM_N`, `B_SUN_FROM_S` in
+  make_vol1_4_tscns_2026_10_16.py).
+- **A wire or string is `make_tube` along `catenary`, never a rotated
+  `make_box`.** The box's vertices are baked at world position, so a
+  rotation swings it about the world origin and off the board.
+- Light names `<name>__<preset>` are matched exactly, so a light can belong
+  to `writers_desk` without also lighting `writers_desk_board`. A night-only
+  light needs one copy per night preset.
+
+### 2026-10-16 · draw calls, not triangles — merge the still parts at load
+
+- **Every builder part is its own object, and Compatibility draws each one
+  separately, again per shadow split.** graustark was 14,316 draw calls,
+  the pharmacy 12,464 from only 1,666 parts (the sun's four splits).
+  `scripts/StaticMerge.gd` (attached by MoodCycler, so every locale gets
+  it) builds the still parts into chunks two frames after load; the parts
+  keep their nodes, names and colliders, only their render instances are
+  switched off, and a chunk splits back if anything hides or frees a
+  member. See the roadmap's pass 106 for the before/after table.
+- **`SurfaceTool.append_from` turns normals by the plain basis**, not the
+  inverse transpose — wrong for a part both scaled and rotated. Redo the
+  normals per part (`Transform3D * PackedVector3Array` is native).
+- **The glTF importer gives each material-less primitive its own default
+  material**, so nothing shared a material and nothing merged until the
+  merge keyed on what the material looks like.
+- **A chunk may be reached by no more lamps than the renderer lights per
+  object (8).** Past that, Godot picks a subset per object and a chunk's
+  pick differs from its parts' — the diner's counter came out brighter.
+  Crowded cells split to 2 m, then 1 m, then stay separate.
+- **A lamp that casts shadows changed the picture once anything merged**
+  (Faust's dark foreground shelf vanished; pixel-identical with the lamps'
+  shadows off, still wrong with only the lamps' reach left out). A scene
+  with a shadowed lamp merges nothing — only Faust so far; draft 3 finds
+  the cause.
+- **Shadowed suns: two splits within 60 m** (`StaticMerge.shadow_budget`)
+  — no visible change, thousands fewer calls.
+- **Character models: decimate with the UV seams locked.** A collapse
+  across a seam drags an island corner into the black gutter beside it
+  (dark specks on elicia's cheek at 120k). `tools/blender/slim_model.py`
+  puts seam vertices in a protected vertex group; 1.13M → 120k triangles
+  and 56 → 5.7 MB with no visible change at ECU. Downscaling the maps to
+  2048 was clean on its own.
+- **Never write a texture's `.import` before Godot extracted the image**:
+  Godot then skips the extraction and loads the map uncompressed. The
+  hero maps were loading UNCOMPRESSED anyway (175.7 MB for one character;
+  25 MB once VRAM-compressed) — `meshy_pipeline.model_texture_settings`
+  sets them after the first import.
+- Measure with `tools/PerfProbe.gd` (MM_STATIC_MERGE / MM_MERGE /
+  MM_SHADOW_BUDGET=0 for A/B, PROBE_SHOTS for pictures); diff one room per
+  process — in a multi-room run the animated layers drift between rooms.
+
 ### 2026-10-12 · a picture on a wall is a texture, not more boxes
 
 - **The alley mural was nineteen coloured boxes** (face bands, eyes, a

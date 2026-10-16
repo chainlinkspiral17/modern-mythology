@@ -30,6 +30,24 @@ static var _loaded: bool = false
 ## for the contact sheet's report (the Deck's renders could not say why a
 ## picture was missing).
 static var last_report: Dictionary = {}
+## (2026-10-14) every picture the last apply() laid, for the director's
+## art shots and the player's stillness moments:
+## {slug, name, inspect, cat, words, quad (MeshInstance3D), size (Vector2)}
+static var placed_art: Array = []
+static var current_locale: String = ""
+## The object words a narration line can name a picture by — nouns only
+## ("the calendar Diego stopped updating" answers to "calendar", never to
+## "Diego").
+const OBJECT_WORDS: Array[String] = [
+	"poster", "painting", "portrait", "print", "photo", "photograph", "picture", "mural",
+	"canvas", "artwork", "map", "chart", "calendar", "diploma", "certificate", "menu",
+	"flyer", "postcard", "drawing", "sketch", "album", "comic", "corkboard",
+	"bulletin", "collage", "screen", "monitor", "television", "tv", "sign",
+	"billboard", "banner", "marquee", "plaque", "neon", "tapestry", "nebula", "starfish",
+	"letter", "notice", "laptop",
+]
+# (not "face", "table", "frame", "board", "note", "cover", "display": in
+# narration they are mostly people, furniture and figures of speech)
 
 
 static func _load_roster() -> void:
@@ -58,6 +76,11 @@ static func _load_roster() -> void:
 			var loc: String = String(row.get("locale", ""))
 			if loc == "":
 				continue
+			row = row.duplicate()
+			row["_name"] = String(e.get("name", ""))
+			row["_inspect"] = bool(e.get("inspect", false))
+			row["_cat"] = String(e.get("art_cat", ""))
+			row["_words"] = _object_words(String(e.get("slug", "")) + " " + String(e.get("name", "")))
 			if not _rows_by_locale.has(loc):
 				_rows_by_locale[loc] = []
 			var lst: Array = _rows_by_locale[loc]
@@ -66,8 +89,32 @@ static func _load_roster() -> void:
 
 ## Lay every installed picture for `locale` on its surface under `root`.
 ## Returns how many pictures went up.
+static func _object_words(text: String) -> PackedStringArray:
+	var out := PackedStringArray()
+	for raw: String in text.to_lower().replace("_", " ").replace("'", " ").split(" ", false):
+		var w: String = raw.strip_edges().trim_suffix(",").trim_suffix(".")
+		if w.ends_with("s") and not w.ends_with("ss"):
+			w = w.substr(0, w.length() - 1)
+		if w in OBJECT_WORDS and not w in out:
+			out.append(w)
+	return out
+
+
+## The pictures laid in the current room that still exist.
+static func placements() -> Array:
+	var live: Array = []
+	for pv: Variant in placed_art:
+		var p: Dictionary = pv
+		var q: Variant = p.get("quad")
+		if q != null and is_instance_valid(q) and (q as Node3D).is_inside_tree():
+			live.append(p)
+	return live
+
+
 static func apply(root: Node, locale: String) -> int:
 	last_report = {}
+	placed_art = []
+	current_locale = locale
 	if root == null:
 		return 0
 	if not _loaded:
@@ -91,6 +138,9 @@ static func apply(root: Node, locale: String) -> int:
 		var hide_v: Variant = row.get("hide", [])
 		if typeof(hide_v) == TYPE_ARRAY:
 			hid = _hide(root, hide_v as Array, quad)
+		placed_art.append({"slug": slug, "name": String(row.get("_name", slug)), "inspect": bool(row.get("_inspect", false)),
+			"cat": String(row.get("_cat", "")), "words": row.get("_words", PackedStringArray()),
+			"quad": quad, "size": (quad.mesh as QuadMesh).size})
 		last_report[slug] = "placed (%dx%d px), %d stand-in piece(s) hidden" % [tex.get_width(), tex.get_height(), hid] \
 			if hid > 0 or (hide_v as Array).is_empty() else "placed, but its stand-in was NOT found (it may cover the picture)"
 		placed += 1

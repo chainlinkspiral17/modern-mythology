@@ -131,7 +131,7 @@ canvas (water/air/fire), bicycle. Pharmacy office: computer +
 coffee + pill bottle. Skatepark: THE POOL. Wagner home: record
 player + records + skateboard + metal poster. Sapo Falls re-skinned
 to Canaima (tepui skyline, dense dark green). School newspaper:
-Katrina's camera + Jay Rose's DriftWood strip on the pinboard.
+Katrina's camera + Arthur Finch's DriftWood strip on the pinboard.
 Bespoke upgrades: build_cliffside_circus.py (bordello front on the
 cliff, Delores's pool + island + rail, jagged rocks + surf) replaces
 the carnival_lot reuse for cliffside/seagash/interlude-one + the

@@ -48,6 +48,9 @@ import sys
 import time
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import voice_ages  # noqa: E402 — the age ledger's era voices
 from pathlib import Path
 
 import voice_common as vc
@@ -89,8 +92,19 @@ def find_scenes(patterns, vol_filter, index_order=False):
 
 def voice_lookup(vmap, char, kind="say", scene_id=None, aliases=None, vol=None):
     """Return (voice_key, voice_id, voice_settings_dict); voice_id/settings are
-    None when neither the key nor any of its fallbacks has a voice_id."""
-    return vc.voice_for(vmap, char, kind, scene_id, aliases, vol)
+    None when neither the key nor any of its fallbacks has a voice_id.
+    (2026-10-16) A character's voice at the age the scene is set: when the
+    age ledger (ages.json, voice_ages.py) puts this scene in one of the
+    character's eras and that era's key is cast in voice_map.json, the era's
+    voice overrides the base casting; settings layer base-then-era."""
+    key, voice_id, settings = vc.voice_for(vmap, char, kind, scene_id, aliases, vol)
+    era_key = voice_ages.era_voice_key(key, scene_id) if (key and scene_id) else None
+    era = vmap.get("characters", {}).get(era_key) if era_key else None
+    if era and era.get("voice_id"):
+        merged = dict(settings or {})
+        merged.update(era.get("voice_settings", {}) or {})
+        return key, era["voice_id"], merged
+    return key, voice_id, settings
 
 
 def synth_line(api_key, model_id, voice_id, settings, text):

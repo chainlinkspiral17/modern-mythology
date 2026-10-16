@@ -83,6 +83,7 @@ const PENDING_OP_MAX_FRAMES := 120
 # logical state; _lb_seq bumps on every _set_letterbox so a beat's
 # delayed release can tell whether a later shot re-claimed the bars.
 var _letterbox_on: bool = false
+var _drift_rate: float = DRIFT_RATE
 var _lb_seq: int = 0
 
 
@@ -121,6 +122,11 @@ func on_locale_changed() -> void:
 	_face_side.clear()
 	_set_letterbox(false)
 	_dismiss_panel()
+	# a new room: its pictures are new to the eye
+	_art_used.clear()
+	_art_return = {}
+	_art_cooldown = 0
+	_drift_rate = DRIFT_RATE
 
 
 func release() -> void:
@@ -439,6 +445,7 @@ func _cut_to_marker(marker: Node3D, shot_type: String, drift: bool) -> void:
 
 func _start_drift(drift: bool) -> void:
 	_drifting = drift
+	_drift_rate = DRIFT_RATE
 	if drift:
 		var cam: Camera3D = _bg3d.get_camera() if _bg3d != null and _bg3d.has_method("get_camera") else null
 		if cam != null:
@@ -459,7 +466,7 @@ func _process(delta: float) -> void:
 	if cam == null:
 		_drifting = false
 		return
-	cam.fov = maxf(_drift_floor, cam.fov * (1.0 - DRIFT_RATE * delta))
+	cam.fov = maxf(_drift_floor, cam.fov * (1.0 - _drift_rate * delta))
 
 
 # ── Letterbox ─────────────────────────────────────────────────────
@@ -560,3 +567,238 @@ func _build_panel_card(id: String) -> Control:
 	tw.tween_property(card, "modulate:a", 1.0, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	return holder
+
+
+# ════════════════════════════════════════════════════════════════
+# THE ART IN THE ROOM (2026-10-14). The user: "the visual novel
+# director needs to feature it but subtly. Building out quiet moments
+# of stillness using the game mechanics would be preferable."
+#
+# Every picture HeroArt laid in the room (HeroArt.placements()) can be
+# shot without a marker: the camera stands off the picture's face at the
+# distance that fills ART_FILL of the frame, a few degrees off square
+# (a photograph of a thing, not a scan), and drifts in slowly.
+#
+#   · NOTICING — a narration line with no [shot:] of its own that NAMES
+#     a picture in the room by its object word ("the calendar", "the
+#     photograph", "the mural") holds on that picture for the line, then
+#     the next line returns the frame it left. Once per picture per room
+#     visit; ART_COOLDOWN lines between; never on dialogue. Subtle by
+#     construction: the prose already pointed there.
+#   · STILLNESS — the player's own quiet moment (GameEngine: J / pad Y):
+#     enter_stillness() frames the room's close-up pieces (`inspect`)
+#     one at a time, nearest first; step_stillness(±1) browses;
+#     exit_stillness() returns the frame. The text, the HUD and the music
+#     are GameEngine's and AudioMgr's.
+# ════════════════════════════════════════════════════════════════
+const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
+const ART_FOV := 30.0
+const ART_FILL := 0.64            # of the frame's height (or width, whichever binds)
+# With the text up (a noticing shot), the dialogue box owns the lower ~44 %
+# of the screen: the picture is framed smaller and its centre sits at
+# ART_TEXT_CENTER of the screen's height from the top, clear of the box.
+const ART_FILL_TEXT := 0.40
+const ART_TEXT_CENTER := 0.33
+const ART_MIN_DIST := 0.30
+const ART_MAX_DIST := 3.2
+const ART_YAW := 0.10             # rad off square, toward the room's side
+const ART_PITCH := -0.04          # rad: a touch from above, as eyes meet a wall
+const ART_DRIFT := 0.008          # slower than a cue's drift: the stillness push
+const ART_COOLDOWN := 6
+var _art_used: Dictionary = {}
+var _art_return: Dictionary = {}  # the frame an art shot left, to return to
+var _art_cooldown: int = 0
+var _still_list: Array = []
+var _still_i: int = 0
+var _still_return: Dictionary = {}  # the exact frame stillness was entered from
+
+
+## Where the camera stands to frame picture `p` (a HeroArt placement).
+func _art_pose(p: Dictionary, cam: Camera3D, with_text: bool = false) -> Transform3D:
+	var quad: MeshInstance3D = p["quad"]
+	var xf: Transform3D = quad.global_transform
+	var center: Vector3 = xf.origin
+	var normal: Vector3 = xf.basis.z.normalized()
+	var size: Vector2 = p.get("size", Vector2.ONE)
+	var aspect: float = 16.0 / 9.0
+	var vp: Viewport = cam.get_viewport()
+	if vp != null and vp.get_visible_rect().size.y > 0.0:
+		aspect = vp.get_visible_rect().size.x / vp.get_visible_rect().size.y
+	var half_v: float = tan(deg_to_rad(ART_FOV) * 0.5)
+	var fill: float = ART_FILL_TEXT if with_text else ART_FILL
+	var dist_h: float = (size.y / fill) * 0.5 / half_v
+	var dist_w: float = (size.x / fill) * 0.5 / (half_v * aspect)
+	var dist: float = clampf(maxf(dist_h, dist_w), ART_MIN_DIST, ART_MAX_DIST)
+	# off square toward where the room's camera already is (its side of the
+	# picture), a touch from above
+	var side: float = 1.0
+	var right: Vector3 = Vector3.UP.cross(normal).normalized()
+	if right.length() < 0.5:
+		right = Vector3.RIGHT
+	if (cam.global_position - center).dot(right) < 0.0:
+		side = -1.0
+	var dir: Vector3 = normal.rotated(Vector3.UP, ART_YAW * side)
+	dir = dir.rotated(right, ART_PITCH)
+	var eye: Vector3 = center + dir.normalized() * dist
+	var up: Vector3 = Vector3.UP if absf(normal.dot(Vector3.UP)) < 0.95 else Vector3.FORWARD
+	var target: Vector3 = center
+	if with_text:
+		# aim below the picture so it rides high in the frame, over the box
+		var frame_h: float = 2.0 * dist * half_v
+		var wall_up: Vector3 = (up - normal * up.dot(normal)).normalized()
+		target = center - wall_up * frame_h * (0.5 - ART_TEXT_CENTER)
+	return Transform3D(Basis.looking_at(target - eye, up), eye)
+
+
+func _art_cam() -> Camera3D:
+	if _bg3d == null or not is_instance_valid(_bg3d) or not _bg3d.has_method("get_camera"):
+		return null
+	return _bg3d.get_camera()
+
+
+func _save_frame(cam: Camera3D) -> Dictionary:
+	return {"xf": cam.global_transform, "fov": cam.fov, "lb": _letterbox_on,
+		"drift": _drifting, "rate": _drift_rate}
+
+
+func _restore_frame(saved: Dictionary) -> void:
+	var cam: Camera3D = _art_cam()
+	if cam == null or saved.is_empty():
+		return
+	cam.global_transform = saved["xf"]
+	cam.fov = float(saved["fov"])
+	_set_letterbox(bool(saved["lb"]))
+	_drifting = bool(saved["drift"])
+	_drift_rate = float(saved["rate"])
+
+
+## Cut to picture `p`, drifting slowly in. `with_text`: the dialogue box
+## is up (a noticing shot) — frame the picture high and clear of it.
+func cut_to_art(p: Dictionary, with_text: bool = false) -> bool:
+	var cam: Camera3D = _art_cam()
+	if cam == null:
+		return false
+	cam.global_transform = _art_pose(p, cam, with_text)
+	cam.fov = ART_FOV
+	cam.make_current()
+	_set_letterbox(true)
+	_drifting = true
+	_drift_rate = ART_DRIFT
+	_drift_floor = ART_FOV * DRIFT_MIN_RATIO
+	return true
+
+
+static func _line_words(text: String) -> PackedStringArray:
+	var out := PackedStringArray()
+	var clean: String = text.to_lower()
+	for ch: String in [",", ".", ";", ":", "!", "?", "\"", "'s", "—", "(", ")", "[", "]"]:
+		clean = clean.replace(ch, " ")
+	for w: String in clean.split(" ", false):
+		var ww: String = w.strip_edges()
+		if ww.ends_with("s") and not ww.ends_with("ss"):
+			ww = ww.substr(0, ww.length() - 1)
+		if ww != "":
+			out.append(ww)
+	return out
+
+
+## Every text line passes here before it shows (GameEngine). `cued`: the
+## line carried its own [shot:] (the author's frame wins).
+func consider_line(text: String, kind: String, cued: bool) -> void:
+	if not _art_return.is_empty():
+		if not cued:
+			_restore_frame(_art_return)
+		_art_return = {}
+	if _art_cooldown > 0:
+		_art_cooldown -= 1
+	if cued or kind != "narrate" or _art_cooldown > 0 or not _still_list.is_empty():
+		return
+	var words: PackedStringArray = _line_words(text)
+	if words.is_empty():
+		return
+	var best: Dictionary = {}
+	for pv: Variant in HeroArtScript.placements():
+		var p: Dictionary = pv
+		var slug: String = String(p.get("slug", ""))
+		if _art_used.has(slug):
+			continue
+		var pw: PackedStringArray = p.get("words", PackedStringArray())
+		var hit: bool = false
+		for w: String in pw:
+			if w in words:
+				hit = true
+				break
+		if not hit:
+			continue
+		if best.is_empty() or (bool(p.get("inspect", false)) and not bool(best.get("inspect", false))):
+			best = p
+	if best.is_empty():
+		return
+	var cam: Camera3D = _art_cam()
+	if cam == null:
+		return
+	_art_return = _save_frame(cam)
+	if cut_to_art(best, true):
+		_art_used[String(best["slug"])] = true
+		_art_cooldown = ART_COOLDOWN
+		print("[VnDirector] NOTICE → %s (the line names it)" % best["slug"])
+	else:
+		_art_return = {}
+
+
+## The room's close-up pieces, nearest the current camera first.
+func stillness_pieces() -> Array:
+	var out: Array = []
+	for pv: Variant in HeroArtScript.placements():
+		var p: Dictionary = pv
+		if bool(p.get("inspect", false)):
+			out.append(p)
+	var cam: Camera3D = _art_cam()
+	if cam != null and out.size() > 1:
+		var from: Vector3 = cam.global_position
+		out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+			return (a["quad"] as Node3D).global_position.distance_squared_to(from) \
+				< (b["quad"] as Node3D).global_position.distance_squared_to(from))
+	return out
+
+
+func stillness_available() -> bool:
+	return not stillness_pieces().is_empty()
+
+
+## Enter the player's quiet moment; returns the first piece ({} = none).
+func enter_stillness() -> Dictionary:
+	var cam: Camera3D = _art_cam()
+	if cam == null:
+		return {}
+	_still_list = stillness_pieces()
+	if _still_list.is_empty():
+		return {}
+	_still_return = _save_frame(cam)
+	_still_i = 0
+	cut_to_art(_still_list[0])
+	return _still_list[0]
+
+
+func step_stillness(dir: int) -> Dictionary:
+	if _still_list.is_empty():
+		return {}
+	_still_i = posmod(_still_i + dir, _still_list.size())
+	cut_to_art(_still_list[_still_i])
+	return _still_list[_still_i]
+
+
+func stillness_count() -> int:
+	return _still_list.size()
+
+
+func stillness_index() -> int:
+	return _still_i
+
+
+## Back to exactly the frame the player left (a noticing shot stays a
+## noticing shot; the next line still returns from it as usual).
+func exit_stillness() -> void:
+	_still_list = []
+	_restore_frame(_still_return)
+	_still_return = {}

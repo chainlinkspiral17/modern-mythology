@@ -293,6 +293,13 @@ JSON, Background3D / the director, audio, the audits — runs the full
 `run_all_audits.sh` exactly as before (`FULL=1` forces it). Widen the
 LIGHT list in the script only for files no gate reads.
 
+It also runs `godot/tools/audit/perf_gate.py` (2026-10-16) on every room
+whose builder, scene or GLB changed: the room's worst view may not draw
+more than max(2,000, its baseline × 1.15) draw calls
+(`perf_baseline.json`). Needs Godot (`GODOT_BIN`); without it the rooms are
+listed and it passes. After a pass that legitimately changes a room, record
+it: `python3 godot/tools/audit/perf_gate.py --update <room>`.
+
 ## Lesson-capture cadence (durable rule)
 
 After every significant work session — meaning anything that

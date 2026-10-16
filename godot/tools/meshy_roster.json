@@ -97,6 +97,9 @@
           "src": "lore/_DAMBROSIO_EMPLOYEES.md",
           "text": "a small annotation on John's apron under the painted scene reads '12 yr'."
         }
+      ],
+      "looks": [
+        "john_frank_montreal"
       ]
     },
     {
@@ -206,6 +209,9 @@
           "src": "games/hands/elicia.json",
           "text": "Pale evaluative eyes. Two industries and one unfortunate marriage."
         }
+      ],
+      "looks": [
+        "elicia_temple_montreal"
       ]
     },
     {
@@ -703,7 +709,7 @@
       "tag": "XII The Hanged Man · also XVIII The Moon",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Natalie David, waitress and diviner in Simons, Louisiana, late 20s. Dark curls tied up with a scarf, tired hooded eyes, silver rings on most fingers. Pale-yellow diner waitress dress with a white collar and a small stained apron, white sneakers, a tarot card tucked into the apron pocket. Half asleep, seeing everything.",
+      "prompt": "Natalie David, waitress and diviner in Simons, Louisiana, mid-40s. Dark curls tied up with a scarf, tired hooded eyes, silver rings on most fingers. Pale-yellow diner waitress dress with a white collar and a small stained apron, white sneakers, a tarot card tucked into the apron pocket. Half asleep, seeing everything.",
       "texture_prompt": "pale yellow cotton waitress dress, white collar, white apron, white sneakers, silver rings, olive skin, dark curly hair",
       "canon": [
         {
@@ -840,7 +846,9 @@
       "name": "Aria / The Third",
       "file": "aria_third.glb",
       "vol": [
+        4,
         5,
+        6,
         7
       ],
       "keys": [
@@ -886,6 +894,10 @@
           "src": "vol5/vol5_ch18_moon.json",
           "text": "The readings had said: two consciousnesses, one body, and a third coming. Not monster. Not mother. Three. The number is three."
         }
+      ],
+      "looks": [
+        "aria_dean_teen",
+        "aria_dean_sighting"
       ]
     },
     {
@@ -997,6 +1009,10 @@
           "src": "games/emperor/visitors.json",
           "text": "Plain face, plain shoes, the lapels-smoothing gesture of a man who once cared deeply about his appearance. He is forgettable in the practiced way you have encountered perhaps a dozen times in your life."
         }
+      ],
+      "looks": [
+        "dickens_dean_daddy",
+        "nate_kestrel"
       ]
     },
     {
@@ -1795,8 +1811,7 @@
       "name": "Wagner",
       "file": "wagner.glb",
       "vol": [
-        1,
-        7
+        1
       ],
       "keys": [
         "wagner"
@@ -3281,6 +3296,9 @@
           "src": "vol7/vol7_ch15_loft.json",
           "text": "keeping a house and a bakery and a Swiss husband running for forty-five years"
         }
+      ],
+      "looks": [
+        "hans_1994"
       ]
     },
     {
@@ -3494,6 +3512,9 @@
           "src": "lore/milk_and_honey/_ART_MANIFEST.md",
           "text": "Aud at the counter, seventy-three years old, knows everyone by name."
         }
+      ],
+      "looks": [
+        "aud_1994"
       ]
     },
     {
@@ -6542,7 +6563,10 @@
           "text": "The woman, at the booth, looks up when Jesse comes in."
         }
       ],
-      "prompt_mode": "append"
+      "prompt_mode": "append",
+      "looks": [
+        "chess_vol4"
+      ]
     },
     {
       "slug": "hal",
@@ -6867,7 +6891,10 @@
         "vols": [
           5
         ],
-        "when": "vol5 ch5 — the child outside St. Jude's; vol6's Maya is 16"
+        "when": "vol5 ch5 — the child outside St. Jude's; vol6's Maya is 16",
+        "scenes": [
+          "vol5_ch5_hierophant"
+        ]
       },
       "prompt_mode": "append"
     },
@@ -7102,6 +7129,7 @@
       "name": "Nate (the Kestrel trace, at sixteen)",
       "file": "nate_kestrel.glb",
       "vol": [
+        2,
         7
       ],
       "keys": [
@@ -7112,7 +7140,7 @@
       "tag": "vol7 ch11 Kestrel Mountain · the groove at the basement desk shaped like Nate at sixteen · NOT vol6's Nate the bassist",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Nate as the substrate renders him: a boy of about sixteen in 1993, slight, pale, dark hair falling over his forehead, a thin face a little too still — a trace of a person, not the person. A faded flannel shirt open over a plain tee, worn jeans, canvas sneakers; a designer's idea of a basement kid, drawn from memory.",
+      "prompt": "Nate as the substrate renders him: a boy of about sixteen in 1993, slight, pale, a mop of brown hair falling over his forehead, a thin face a little too still — a trace of a person, not the person. A faded flannel shirt open over a plain tee, worn jeans, canvas sneakers; a designer's idea of a basement kid, drawn from memory; eyes that will not settle on grey, green or blue.",
       "texture_prompt": "faded flannel shirt, plain grey tee, worn blue jeans, canvas sneakers, dark hair, pale skin",
       "notes": "SPARSE — canon gives the age and that the face is new to Kai; the clothes are proposed. Edit before spending credits.",
       "canon": [
@@ -7125,7 +7153,24 @@
           "text": "The groove has shaped itself into a person who looks like Nate did at sixteen and who knows what Nate knew at sixteen. I am not Nate. Nate is dead. Nate died in '42."
         }
       ],
-      "prompt_mode": "append"
+      "prompt_mode": "append",
+      "base": "dickens_dean",
+      "look": {
+        "label": "16-17 · Small Wood, 1993-94 (and his imprint in Kestrel Mountain)",
+        "vols": [
+          2,
+          7
+        ],
+        "scenes": [
+          "vol2_ch7_scumm_a",
+          "vol2_ch7_scumm_b",
+          "vol2_ch7_scumm_c",
+          "vol2_ch7_scumm_d",
+          "vol2_ch11_dickens_dean",
+          "vol7_ch11_kestrel"
+        ],
+        "when": "the junior at Alsea Valley High who keeps the SCUMM dream journal and takes the paper from the narrator; the groove he left in the basement desk"
+      }
     },
     {
       "slug": "old_man_kestrel",
@@ -31678,11 +31723,11 @@
       "canon": [
         {
           "src": "godot/resources/scenes/vol2/vol2_ch2_interlude_three.json",
-          "text": "And it was Jay Rose who pencilled the one and only comic strip — DriftWood — about a teenager named Wood and his yearnings to leave the small town forever."
+          "text": "And it was Arthur Finch who pencilled the one and only comic strip — DriftWood — about a teenager named Wood and his yearnings to leave the small town forever."
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Content inferred: Jay Rose's DriftWood strip (builder pins it on the corkboard); scanning it is my invention.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Content inferred: Arthur Finch's DriftWood strip (the strip artist; Jay Rose is the DJ, a split character, 2026-10-16) (builder pins it on the corkboard); scanning it is my invention.",
       "art_cat": "SCREEN",
       "score_lines": 28,
       "score_mentions": 0,
@@ -34273,6 +34318,2021 @@
         }
       ],
       "lettering": "BAIT & TACKLE"
+    },
+    {
+      "slug": "olivia",
+      "kind": "hero",
+      "name": "Olivia",
+      "file": "olivia.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "olivia",
+        "olivia_(alternate)",
+        "olivia_alternate",
+        "secretary"
+      ],
+      "tag": "vol1 · the tutorial receptionist · the same cardigan · a cat carrier on the desk",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Olivia, early 30s, the receptionist from the hazy tutorial lobby who turns up again behind the drugstore counter — corporate-orientation cheer over a private sadness (her cat is dying). Neat and pleasant, brown hair in a low ponytail, a little tired around the eyes. A soft oatmeal cardigan buttoned over a pale blue blouse, a knee-length navy skirt, flat shoes, a lanyard ID badge. One hand resting on a small grey plastic cat carrier with its wire door open.",
+      "texture_prompt": "oatmeal knit cardigan, pale blue cotton blouse, navy skirt, black flats, lanyard badge, grey plastic cat carrier, brown hair",
+      "notes": "Canon gives the cardigan, the console and the cat carrier; face, hair and colours are a proposal. 'Secretary' and 'Olivia (alternate)' are the same woman (voice_map aliases), so they route here too (char_key keeps the parentheses: 'olivia_(alternate)').",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch6_tutorial.json",
+          "text": "A cute secretary is typing at her console."
+        },
+        {
+          "src": "vol1/vol1_ch11_drugstore.json",
+          "text": "Olivia is behind it, the secretary from the tutorial, in the same cardigan, typing."
+        },
+        {
+          "src": "vol1/vol1_ch11_drugstore.json",
+          "text": "A cat carrier sits on the counter beside her keyboard with the little door open."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aunt_grace",
+      "kind": "hero",
+      "name": "Aunt Grace",
+      "file": "aunt_grace.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "aunt_grace",
+        "grace"
+      ],
+      "tag": "vol1 · the painter who set Faust up · a little bit famous in the seventies · calls him Johnny",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aunt Grace, late 60s, Faust's aunt, a painter who got a little bit famous in the 1970s and set him up with his easel. Tall and handsome, silver hair swept up and pinned with a pencil, strong dark brows, red lipstick, a smoker's warm creased smile. A loose indigo linen painter's smock over black trousers, a chunky turquoise-and-silver necklace, leather sandals, paint dried on her knuckles. A long sable brush held like a cigarette.",
+      "texture_prompt": "indigo linen smock, black trousers, turquoise and silver necklace, tan leather sandals, silver hair, sable brush",
+      "notes": "In the scenes she is only a voice on Faust's earbud (a 1970s sample) and has no show node yet; the model is for when the painting chapter stages her. Look not pinned down in canon; proposal — edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch2_painting.json",
+          "text": "Every one must have a hobby. Said Aunt Grace, who set me up — who sorta got famous in the wild and crazy seventies."
+        },
+        {
+          "src": "vol1/vol1_ch14_painting.json",
+          "text": "A new sample comes up from the queue, an older woman's voice, smoky, warm, from the seventies."
+        },
+        {
+          "src": "vol1/vol1_ch14_painting.json",
+          "text": "Everyone must have a hobby, Johnny. Mine was being a little bit famous."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "the_fool",
+      "kind": "hero",
+      "name": "The Fool",
+      "file": "the_fool.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "the_fool",
+        "fool"
+      ],
+      "tag": "vol1 · the editing suite · the empty-frame t-shirt · a bucket of popcorn",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The Fool, the disheveled, insane merry prankster who bursts into the editing suite — excitable, scattered, childlike. Around 60, wiry, wild grey hair and a week of white stubble, bright delighted eyes. A white t-shirt printed with an empty painted wooden picture frame (knots, grain, rings, and nothing inside), a moth-eaten brown cardigan over it, baggy corduroys, untied high-top sneakers. Hugging a striped cardboard popcorn bucket that is mostly empty.",
+      "texture_prompt": "white cotton tee with a painted wood-grain frame print, moth-eaten brown cardigan, rust corduroy trousers, canvas high-tops, striped popcorn bucket, grey hair",
+      "notes": "Age is not in canon (voice_map casts him older); the cardigan, trousers and shoes are a proposal. Keep the empty-frame shirt: it is the fourth shirt from the story, the frame with nothing in it.",
+      "canon": [
+        {
+          "src": "vol1/vol1_prelude_editing_suite.json",
+          "text": "Enter the FOOL, a disheveled and insane merry prankster."
+        },
+        {
+          "src": "vol1/vol1_ch17_editing_suite.json",
+          "text": "THE FOOL bursts in through the door, disheveled, carrying a bucket of popcorn that is mostly empty, wearing a t-shirt with a painted wooden frame on it and nothing inside."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "corpse_painted_boy",
+      "kind": "hero",
+      "name": "Corpse-Painted Boy",
+      "file": "corpse_painted_boy.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "corpse-painted_boy",
+        "corpse_painted_boy"
+      ],
+      "tag": "vol1 ch13 · the deep end · black-and-white corpse paint · the spiked armband he sets down",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "A teenage black-metal kid, about 16, one of the dead boys sitting on the coping of the endless empty pool — quiet and unnervingly sincere. Thin and pale, long straight black hair, his face in black-and-white corpse paint. A black leather jacket over a plain black t-shirt, black jeans, a studded belt, scuffed black combat boots, a spiked leather armband on one wrist. Very still.",
+      "texture_prompt": "black leather jacket, black cotton tee, black denim, studded leather belt, black combat boots, spiked leather armband, white and black face paint",
+      "notes": "Generic: he stands for the early-90s Norwegian scene the chapter invokes (Wagner's Burzum records). Do not model any real musician's face, band logo or shirt. The ghost register comes from the scene light, not the model. Clothes beyond 'leather and spikes' are a proposal.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch13_deep_end.json",
+          "text": "Further down the coping there's a different crowd: boys in corpse paint, black and white, leather and spikes, sitting around a record player that plays the riff backward."
+        },
+        {
+          "src": "vol1/vol1_ch13_deep_end.json",
+          "text": "One of them takes off his spiked armband and sets it on the concrete, like he isn't going to need it anymore."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "old_woman_pharmacy",
+      "kind": "hero",
+      "name": "The Old Woman (pharmacy)",
+      "file": "old_woman_pharmacy.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "old_woman"
+      ],
+      "tag": "vol1 · the happy one at the pharmacy counter · 'be young and happy forever' · prescription bag stapled shut",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "An old woman at Faust's pharmacy counter, late 70s, the happy one — gently brisk. Small and upright, soft white hair set in curls, pink cheeks, bright eyes behind round glasses on a beaded chain. A lilac quilted jacket over a floral blouse, tan slacks, white walking sneakers, a big handbag on her forearm and a white paper prescription bag, still stapled shut, in her hand.",
+      "texture_prompt": "lilac quilted jacket, floral cotton blouse, tan slacks, white sneakers, beige handbag, white paper pharmacy bag, white hair",
+      "notes": "Look not pinned down in canon; proposal — edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch2_pharmacy_mirror.json",
+          "text": "A customer interrupts — a happy old woman."
+        },
+        {
+          "src": "vol1/vol1_ch11_drugstore.json",
+          "text": "An OLD WOMAN, the happy one from the pharmacy counter, comes up to the counter with her prescription bag still stapled shut."
+        },
+        {
+          "src": "vol1/vol1_ch2_pharmacy_mirror.json",
+          "text": "Be young and happy forever."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "margaret_vol1",
+      "kind": "hero",
+      "name": "Margaret (vol1)",
+      "file": "margaret_vol1.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "margaret"
+      ],
+      "tag": "vol1 ch3 · the bar trio · the one they're setting Faust up with · mock-parliamentary",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Margaret, late 20s, the stressed one of the bar trio that Helen and Emily keep trying to set up with Faust — softer, wry. Straight auburn hair in a low bun coming loose, a tired pretty face, a half-smile. Straight from work: a charcoal blazer over a cream silk blouse, slim black trousers, low black ankle boots, a work tote on her shoulder and a phone in her hand.",
+      "texture_prompt": "charcoal wool blazer, cream silk blouse, black trousers, black leather ankle boots, tan canvas tote, auburn hair",
+      "notes": "SPARSE — vol1's bar chorus has no descriptions; proposed to sit beside helen (dark curls, black slip dress) and emily (fair hair, cardigan) without matching either. A different person from vol7's Margaret (margaret_coop); CharLayer keeps the shared key apart by volume.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch3_bar.json",
+          "text": "They're trying to set me up with Margaret."
+        },
+        {
+          "src": "vol1/vol1_ch3_bar_b.json",
+          "text": "Helen pushes Margaret into the seat next to Faust and sits next to Jacob."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "the_writer",
+      "kind": "hero",
+      "name": "The Writer",
+      "file": "the_writer.glb",
+      "vol": [
+        1,
+        2,
+        4
+      ],
+      "keys": [
+        "the_writer"
+      ],
+      "tag": "vol1 · author facet #1 · nervous and bookish · a notebook on the arm of the couch",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "One man, four facets: the author in 2010, early 30s — very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE WRITER: nervous and bookish, shoulders up, reading glasses pushed up into his hair. A rumpled grey cardigan over a faded t-shirt, dark jeans, worn sneakers. A wide-ruled notebook in one hand and a capped pen in the other.",
+      "texture_prompt": "grey wool cardigan, faded navy cotton tee, dark denim, worn canvas sneakers, wide-ruled notebook, black pen",
+      "notes": "The four facets are one man (the author) in four modes, all on stage together in the editing suite, so they are four models. Generate the_human_being first and hold its face and build for the other three; only clothes and prop change. Same man as vol3's Andy seven years on (very tall, big feet, left-handed, half-beard). Clothes beyond the stage directions are a proposal.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch17_editing_suite.json",
+          "text": "THE WRITER sits on the arm of the couch with a notebook."
+        },
+        {
+          "src": "vol4/vol4_curtain_call.json",
+          "text": "(nervously, capping a pen)"
+        },
+        {
+          "src": "vol1/vol1_introduction.json",
+          "text": "Things taught to me by them left-handed unusual very tall big feet bright and kind."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "the_director",
+      "kind": "hero",
+      "name": "The Director",
+      "file": "the_director.glb",
+      "vol": [
+        1,
+        2,
+        4
+      ],
+      "keys": [
+        "the_director"
+      ],
+      "tag": "vol1 · author facet #2 · at the console · 'roll it again'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "One man, four facets: the author in 2010, early 30s — very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE DIRECTOR: theatrical and commanding over a self-doubting core, chin up, one hand raised mid-pronouncement. All black: a black crew-neck sweater with the sleeves shoved up, black jeans, black boots, a headset hanging round his neck and a director's viewfinder on a cord; a smartphone in his back pocket.",
+      "texture_prompt": "black wool sweater, black denim, black leather boots, black headset, steel director's viewfinder on a cord",
+      "notes": "The four facets are one man (the author) in four modes, all on stage together in the editing suite, so they are four models. Generate the_human_being first and hold its face and build for the other three; only clothes and prop change. Same man as vol3's Andy seven years on (very tall, big feet, left-handed, half-beard). Clothes beyond the stage directions are a proposal. voice_map hears him older (40s); keep the shared face and let posture carry the age.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch17_editing_suite.json",
+          "text": "THE DIRECTOR is at the console."
+        },
+        {
+          "src": "vol1/vol1_prelude_editing_suite.json",
+          "text": "The director shrugs and starts the film."
+        },
+        {
+          "src": "vol1/vol1_introduction.json",
+          "text": "Things taught to me by them left-handed unusual very tall big feet bright and kind."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "the_artist",
+      "kind": "hero",
+      "name": "The Artist",
+      "file": "the_artist.glb",
+      "vol": [
+        1,
+        2,
+        4
+      ],
+      "keys": [
+        "the_artist"
+      ],
+      "tag": "vol1 · author facet #3 · at the window · paint under the nails",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "One man, four facets: the author in 2010, early 30s — very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE ARTIST: comfortable, dreamy, a little obsessive, gazing off at nothing in particular. A paint-flecked denim work shirt open over a white undershirt, old canvas work trousers, house slippers, paint under the fingernails. A game controller held loosely in one hand.",
+      "texture_prompt": "paint-flecked chambray work shirt, white cotton undershirt, khaki canvas trousers, brown felt slippers, black game controller",
+      "notes": "The four facets are one man (the author) in four modes, all on stage together in the editing suite, so they are four models. Generate the_human_being first and hold its face and build for the other three; only clothes and prop change. Same man as vol3's Andy seven years on (very tall, big feet, left-handed, half-beard). Clothes beyond the stage directions are a proposal. voice_map leaves the Artist's voice either gender; canon makes all four one man, so the model is male.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch17_editing_suite.json",
+          "text": "THE ARTIST is at the window, looking out at nothing in particular."
+        },
+        {
+          "src": "vol4/vol4_curtain_call.json",
+          "text": "(comfortable, paint under the nails)"
+        },
+        {
+          "src": "vol1/vol1_introduction.json",
+          "text": "Things taught to me by them left-handed unusual very tall big feet bright and kind."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "the_human_being",
+      "kind": "hero",
+      "name": "The Human Being",
+      "file": "the_human_being.glb",
+      "vol": [
+        1,
+        2,
+        4
+      ],
+      "keys": [
+        "the_human_being"
+      ],
+      "tag": "vol1 · author facet #4 · the waiter's uniform · holiday fudge out of the foil",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "One man, four facets: the author in 2010, early 30s — very tall (about 6'5\"), big-framed and heavy through the middle, big feet, left-handed, a scruffy dark-brown chinstrap half-beard along the jaw, shaggy dark-brown hair, blue-green-grey eyes. As THE HUMAN BEING: plain, wounded, tender, the quiet one. A waiter's uniform — white shirt with the sleeves rolled, an unbuttoned black vest, a black bistro apron, black trousers, black work shoes. A square of holiday fudge in crinkled gold foil in one hand.",
+      "texture_prompt": "white cotton shirt, black waistcoat, black bistro apron, black trousers, black leather shoes, gold foil",
+      "notes": "The four facets are one man (the author) in four modes, all on stage together in the editing suite, so they are four models. Generate the_human_being first and hold its face and build for the other three; only clothes and prop change. Same man as vol3's Andy seven years on (very tall, big feet, left-handed, half-beard). Clothes beyond the stage directions are a proposal. Generate this facet first.",
+      "canon": [
+        {
+          "src": "vol1/vol1_introduction.json",
+          "text": "(dressing in a waiter’s uniform)"
+        },
+        {
+          "src": "vol1/vol1_ch17_editing_suite.json",
+          "text": "THE HUMAN BEING is on the floor with his back against the couch, eating holiday fudge out of the foil."
+        },
+        {
+          "src": "vol1/vol1_introduction.json",
+          "text": "Things taught to me by them left-handed unusual very tall big feet bright and kind."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "air_elemental",
+      "kind": "hero",
+      "name": "Air (the elemental)",
+      "file": "air_elemental.glb",
+      "vol": [
+        1,
+        4
+      ],
+      "keys": [
+        "air"
+      ],
+      "tag": "vol1 · the elemental off Jacob's shirt · made of wind and paper scraps · the one who reads",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Air, one of the three elementals Faust painted, who lifts off Jacob's t-shirt — bookish, wry, light. A slight young woman painted in pale oils: blue-white skin with visible brushstrokes, long pale hair streaming up and every which way as if in a gale, a long draped wrap of translucent sky-blue gauze full of drafts and torn paper scraps, bare feet. A loose book page caught in her hair.",
+      "texture_prompt": "translucent sky-blue gauze, torn cream paper scraps, pale blue-white painted skin with brushstroke texture, white hair",
+      "notes": "They are paintings, not people: the three female figures Faust painted (canon calls each 'her'/'she') who live on the t-shirt prints and step off them. Keep them clothed in their element and visibly painted (brushstrokes in the skin). Friendly, so kind hero, not demon. Beyond canon the look is a proposal.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch9_street.json",
+          "text": "Jacob's shirt is Air, a figure made of wind with her hair going every which way."
+        },
+        {
+          "src": "vol1/vol1_ch12_history.json",
+          "text": "Jacob's shirt-Air lifts off his chest and hangs in the air beside him, made of drafts and paper scraps."
+        },
+        {
+          "src": "vol1/vol1_ch14_painting.json",
+          "text": "In the middle, painted air, which is mostly the space between brushstrokes."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "fire_elemental",
+      "kind": "hero",
+      "name": "Fire (the elemental)",
+      "file": "fire_elemental.glb",
+      "vol": [
+        1,
+        4
+      ],
+      "keys": [
+        "fire"
+      ],
+      "tag": "vol1 · the elemental off Wagner's shirt · curled up and grinning · 'we know, dork'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Fire, the elemental who peels off Wagner's t-shirt — punky, impatient, teasing. A lean young woman painted in thick impasto: warm amber-orange skin with palette-knife texture, short spiky hair that turns to flame at the tips, a sleeveless wrap dress of layered flame-coloured paint running crimson to yellow, bare feet, a thin heat shimmer and curls of steam off her shoulders. Arms folded, a crooked grin.",
+      "texture_prompt": "impasto oil paint in crimson, orange and yellow, amber painted skin with palette-knife texture, flame-tipped dark red hair",
+      "notes": "They are paintings, not people: the three female figures Faust painted (canon calls each 'her'/'she') who live on the t-shirt prints and step off them. Keep them clothed in their element and visibly painted (brushstrokes in the skin). Friendly, so kind hero, not demon. Beyond canon the look is a proposal.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch9_street.json",
+          "text": "Wagner's is Fire, curled up and grinning."
+        },
+        {
+          "src": "vol1/vol1_ch13_deep_end.json",
+          "text": "Wagner's shirt-Fire peels off his chest and sits on the coping, swinging her legs, giving off heat."
+        },
+        {
+          "src": "vol1/vol1_ch14_painting.json",
+          "text": "Off to the right, painted fire."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "water_elemental",
+      "kind": "hero",
+      "name": "Water (the elemental)",
+      "file": "water_elemental.glb",
+      "vol": [
+        1,
+        4
+      ],
+      "keys": [
+        "water"
+      ],
+      "tag": "vol1 · the elemental off Faust's shirt · lowercase calm · 'we're home. this is home.'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Water, the elemental on Faust's own t-shirt — slow, cool, easygoing. A tall young woman painted in glazes of blue-green: translucent sea-glass skin, long dark wet hair to the waist, calm half-lidded eyes looking straight out, a long column gown that is moving water, beaded with drops and running at the hem into a small pool round her bare feet.",
+      "texture_prompt": "glazed blue-green oil paint, translucent sea-glass painted skin, dark wet hair, glossy water-surface gown",
+      "notes": "They are paintings, not people: the three female figures Faust painted (canon calls each 'her'/'she') who live on the t-shirt prints and step off them. Keep them clothed in their element and visibly painted (brushstrokes in the skin). Friendly, so kind hero, not demon. Beyond canon the look is a proposal. voice_map leaves Water's gender open; canon calls her 'she'.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch9_street.json",
+          "text": "Faust's is Water, and she's looking right up at him off his own chest."
+        },
+        {
+          "src": "vol1/vol1_ch14_painting.json",
+          "text": "Off to the left, painted water."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "bernard",
+      "kind": "hero",
+      "name": "Bernard ('Saint')",
+      "file": "bernard.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "bernard",
+        "saint",
+        "the_saint"
+      ],
+      "tag": "vol2 · the Apple Peddler · split lip with a white scar · a cigarette tapped dead",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Bernard, called the Saint, early 30s, a Small Wood drifter and small-time dealer with scary friends, met over coffee at the Apple Peddler diner on the Oregon coast. A young man in a body that never fit: soft and sagging with twenty extra pounds, facial hair growing in uneven patches, a white scar splitting his bottom lip, lank dark-blond hair. A worn brown canvas work jacket over a faded flannel shirt, dirty jeans, scuffed work boots, a cigarette dangling between two fingers.",
+      "texture_prompt": "brown canvas work jacket, faded green plaid flannel, dirty blue denim, scuffed brown work boots, dark-blond hair, cigarette",
+      "notes": "Canon pins the body, the beard and the scar; hair, clothes and age (21 when she was 17, her daughter now nearly grown) are a proposal. He lived out of his truck and worked the docks.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch8_apple_peddler.json",
+          "text": "A young man in a body that never fit proper."
+        },
+        {
+          "src": "vol2/vol2_ch8_apple_peddler.json",
+          "text": "He sags with twenty extra pounds, facial hair grows in erratic patches. His bottom lip is split with a white scar."
+        },
+        {
+          "src": "vol2/vol2_ch8_apple_peddler.json",
+          "text": "His name Bernard, nickname Saint."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "joe_ku",
+      "kind": "hero",
+      "name": "Joe K-U",
+      "file": "joe_ku.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "joe_ku",
+        "joe"
+      ],
+      "tag": "vol2 · the school-board hearing · the best-dressed in the gym · a three-piece suit",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Joe K-U, 17, the eldest of the four K-U kids (San Francisco transplants who run an all-natural Italian bakery ten miles out of town), defending Frank's novel at the school-board hearing — earnest, a little nervous, building conviction. Slim and sharp, dark hair neatly cut, a serious unsmiling face. The best-dressed person in the room: a fitted charcoal three-piece suit, white shirt, narrow dark tie, polished shoes. A dog-eared paperback of The Spawning Grounds in one hand.",
+      "texture_prompt": "charcoal wool three-piece suit, white cotton shirt, narrow navy tie, black leather shoes, dog-eared paperback, dark hair",
+      "notes": "The suit is canon; face, build and colouring are a proposal. Year of the hearing is not pinned; read it as the Oregon coast in the 1990s.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch10_frank.json",
+          "text": "Joe KU, the oldest son stands up and walks to the podium."
+        },
+        {
+          "src": "vol2/vol2_ch10_frank.json",
+          "text": "He is dressed the nicest in the room, wearing a three-piece suit."
+        },
+        {
+          "src": "vol2/vol2_ch10_spawning_grounds.json",
+          "text": "Originally from San Francisco, they own an all-natural Italian Bakery ten miles out of town right on the water."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "becca",
+      "kind": "hero",
+      "name": "Becca (Rebecca)",
+      "file": "becca.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "becca",
+        "rebecca"
+      ],
+      "tag": "vol2 · the hearing · the teacher who can't teach the book she's in · she looks radiant",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Becca (Rebecca), early 40s, the English teacher at the school-board hearing who cannot teach Frank's novel because she is in it — measured, her voice catching; the narrator's wife of 22 years. Radiant and composed: shoulder-length chestnut hair pinned back with loose strands lifting, light make-up. A moss-green cardigan over a cream blouse, a long patterned skirt, low brown boots; reading glasses folded in one hand and a few index cards of notes.",
+      "texture_prompt": "moss-green knit cardigan, cream cotton blouse, rust and brown patterned skirt, brown leather boots, chestnut hair, reading glasses",
+      "notes": "The hearing look. The teenage Becca of the flashbacks (the garage, the docks) is a candidate look for a later draft. Beyond 'radiant' and the hair, a proposal.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch10_salmon.json",
+          "text": "Becca stands up and makes her way to the podium. She looks radiant."
+        },
+        {
+          "src": "vol2/vol2_ch10_spawning_grounds.json",
+          "text": "Rebecca, my wife of 22 years is sitting next to me, quiet and angry."
+        },
+        {
+          "src": "vol2/vol2_ch10_salmon.json",
+          "text": "Her hair was tied down but strands hovered in the wind above her head."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "pastor_tim",
+      "kind": "hero",
+      "name": "Pastor Tim",
+      "file": "pastor_tim.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "pastor_tim"
+      ],
+      "tag": "vol2 · the hearing · hair to his shoulders · jeans and flannel",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Pastor Tim, about 50, objecting to Frank's novel at the school-board hearing — pulpit-righteous, clipped. Brown hair to his shoulders, a trimmed greying beard, an earnest set jaw. Jeans and a red-and-black flannel shirt buttoned to the collar, a brown leather belt, work boots; a Bible with tabbed pages under one arm.",
+      "texture_prompt": "red and black plaid flannel, blue denim, brown leather belt, brown work boots, black leather Bible, shoulder-length brown hair",
+      "notes": "Hair, jeans and flannel are canon; the rest is a proposal. His oldest son James is a senior, so about 50.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch10_frank.json",
+          "text": "He's got brown hair to his shoulders, wears jeans and flannel."
+        },
+        {
+          "src": "vol2/vol2_ch10_spawning_grounds.json",
+          "text": "Over there on the right is Pastor Tim with wife and children."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "charles",
+      "kind": "hero",
+      "name": "Charles",
+      "file": "charles.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "charles"
+      ],
+      "tag": "vol2 ch5 · lessons in leaves · grey and ripe around the middle · a metal detector",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Charles, mid-50s, a former teacher who came to Small Wood after his second divorce and talks for hours about the will of the universe — learned, faintly mystical. Going grey and ripe around the middle, a neat grey beard, kind restless eyes. A rumpled tweed jacket with leather elbow patches over a cream fisherman's sweater, khakis, sand-crusted hiking boots. An old 1980s metal detector in one hand and a very old leather-bound book with gilt edges under his arm.",
+      "texture_prompt": "brown tweed jacket with leather elbow patches, cream wool fisherman sweater, khaki trousers, sandy brown boots, grey metal detector, leather-bound book",
+      "notes": "Grey, the middle and the book are canon; the rest is a proposal.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch5_lessons_in_leaves.json",
+          "text": "The first person to break off conversation and notice me is Charles, a man going grey and ripe around the middle."
+        },
+        {
+          "src": "vol2/vol2_ch5_lessons_in_leaves.json",
+          "text": "He put a book in my lap, a very old leather-bound thing with fine leafing and stitch work."
+        },
+        {
+          "src": "vol2/vol2_ch5_lessons_in_leaves.json",
+          "text": "Radio Shack era make and manufacture."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jay_rose",
+      "kind": "hero",
+      "name": "Jay Rose",
+      "file": "jay_rose.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "jay_rose",
+        "rose"
+      ],
+      "tag": "vol2 · the rec-center deejay · portly and easy · the first of us to disappear",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jay Rose, 17, a senior, the deejay at the near-empty Small Wood Rec Center dance (summer 1993) and the first of the narrator's class to disappear — outgoing, calm in the face of failure, good at pulling people out of their own heads. Portly and easy in his body, a round friendly face, short dark hair. An oversized open flannel shirt over a plain black t-shirt, baggy khaki shorts, white high-top sneakers, big DJ headphones round his neck and a milk crate of cassettes and CDs on one hip.",
+      "texture_prompt": "blue plaid flannel shirt, black cotton tee, khaki cotton shorts, white leather high-tops, black headphones, grey plastic milk crate",
+      "notes": "CANON SPLIT (user ruling): the DJ at the rec-center dance is Jay Rose and the DRIFT WOOD cartoonist is Arthur Finch. The 2010 text still merges them, and so do two scenes — vol2_ch2_interlude_two names the deejay 'Arthur Finch', vol2_ch12_drift_wood_intro credits jay rose with the comics. Keep the two looks distinct: Jay portly and easy, Arthur lean and inky. Beyond 'portly' the look is a proposal.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch2_interlude_two.json",
+          "text": "A portly kid was the deejay and there were eight kids making an effort to shuffle in place uncomfortably, not counting my sister and I."
+        },
+        {
+          "src": "vol2/vol2_ch2_interlude_two.json",
+          "text": "The deejay sensed our combined resigned unease and came over to us, introduced himself while the music played itself in the background."
+        },
+        {
+          "src": "vol2/vol2_ch12_drift_wood_intro.json",
+          "text": "jay rose was the first of us to disappear."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "arthur_finch",
+      "kind": "hero",
+      "name": "Arthur 'Wood' Finch",
+      "file": "arthur_finch.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "arthur_finch",
+        "arthur",
+        "finch"
+      ],
+      "tag": "vol2 · pencils DRIFT WOOD · the back page of the school paper · ink on his drawing hand",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Arthur 'Wood' Finch, 17, who pencils DRIFT WOOD — the only comic strip in the Small Wood High paper, about a boy named Wood who wants to leave town. Lean and long-limbed, a narrow freckled face, untidy sandy hair falling in his eyes, ink smudged on the side of his drawing hand. A green rain shell over a grey hooded sweatshirt, cuffed jeans, muddy canvas sneakers; a sketchbook under one arm and a mechanical pencil behind his ear.",
+      "texture_prompt": "green nylon rain shell, grey cotton hoodie, cuffed blue denim, muddy canvas sneakers, black sketchbook, sandy hair",
+      "notes": "CANON SPLIT (user ruling): the DJ at the rec-center dance is Jay Rose and the DRIFT WOOD cartoonist is Arthur Finch. The 2010 text still merges them, and so do two scenes — vol2_ch2_interlude_two names the deejay 'Arthur Finch', vol2_ch12_drift_wood_intro credits jay rose with the comics. Keep the two looks distinct: Jay portly and easy, Arthur lean and inky. Dates disagree: the narration has him drawing in the narrator's first Small Wood year (1993–94); the DRIFT WOOD placeholder dates the strip run 1997–1999. Look is a proposal.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch2_interlude_three.json",
+          "text": "And it was Arthur Finch who pencilled the one and only comic strip — DriftWood — about a teenager named Wood and his yearnings to leave the small town forever."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "katrina",
+      "kind": "hero",
+      "name": "Katrina (Kate)",
+      "file": "katrina.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "katrina",
+        "kate"
+      ],
+      "tag": "vol2 · the youngest Grunion Festival queen · tomboy with half a sly smile · shoots for the paper",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Katrina (Kate), 16, the youngest of the Grunion Festival beauty queens and a photographer for the school paper, early 1990s Oregon coast; the only daughter of Russian immigrants. Pretty and fair, a strong-browed face with half a sly smile, light-brown hair in a careless ponytail. Dressed plainly, tomboy: an oversized grey hooded sweatshirt, worn jeans, beat-up hiking boots, a 35mm film camera on a strap round her neck.",
+      "texture_prompt": "grey cotton hoodie, worn blue denim, brown leather hiking boots, black 35mm film camera, light-brown hair",
+      "notes": "Tomboy, the smile and the camera are canon; hair and colouring are a proposal. No speaking lines yet.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch6_sacrificial_pair.json",
+          "text": "That day she was dressed plainly, very much acting like a tomboy, assertive, adventurous and content with half a sly smile."
+        },
+        {
+          "src": "vol2/vol2_ch2_interlude_two.json",
+          "text": "It was here I met Katrina. The youngest of the competing queens. Beautiful, feisty, and sometimes a chore."
+        },
+        {
+          "src": "vol2/vol2_ch2_interlude_three.json",
+          "text": "It should be noted that Katrina was a photographer for the paper."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "shannon",
+      "kind": "hero",
+      "name": "Shannon",
+      "file": "shannon.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "shannon"
+      ],
+      "tag": "vol2 · features writer · the girl who kissed him · a big grin",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Shannon, 16, Kate's friend and a features writer for the school paper, who asks the new kid to dance at the rec center and later kisses him; early 1990s Oregon coast. Small, round-faced, a big grin and freckles, permed dark-blonde hair held back with a scrunchie. A faded denim jacket over a striped long-sleeve top, high-waisted jeans, white canvas sneakers; a reporter's notebook in her back pocket.",
+      "texture_prompt": "faded blue denim jacket, red and white striped cotton top, light-wash high-waisted jeans, white canvas sneakers, dark-blonde perm",
+      "notes": "SPARSE — only the grin is canon. No speaking lines yet.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch2_interlude_two.json",
+          "text": "Just to clear this up — Kate was not the girl who kissed me. That was Kate's friend, Shannon."
+        },
+        {
+          "src": "vol2/vol2_ch2_interlude_three.json",
+          "text": "It was no big secret that Shannon had a thing for me — but I brushed her aside and all but ignored her."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "delores_wiebe",
+      "kind": "hero",
+      "name": "Delores Wiebe (the Siren of Seagash)",
+      "file": "delores_wiebe.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "delores",
+        "delores_wiebe"
+      ],
+      "tag": "vol2 · the Cliffside Circus 'mermaid' · lost in the 1902 slide · walks out of the surf on two good legs",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Delores Wiebe, the Siren of Seagash: a young woman exhibited as a 'mermaid' by the Cliffside Circus and lost when the cliff fell into the sea in the ice storm of spring 1902 — now the ghost seen walking up out of the surf at Small Wood. Pale, solemn, soaked; very long dark hair, wet and looped on itself, falling below her waist. A plain sleeveless white cotton shift of 1900, soaked heavy and torn at the hem, reaching her shins; bare feet on two good legs, a faint webbing between the toes. Arms held a little out, palms open.",
+      "texture_prompt": "soaked white cotton shift, very long wet dark hair, pale wet skin, bare feet",
+      "notes": "The text shows her nude (the exhibit; the ghost); the model is deliberately clothed in a period shift, and the canon quotes chosen for the image prompt avoid the nude lines. Her age is not given ('young Delores'); keep her plainly adult. No speaking lines. If the haunting should read wrong rather than sad, she could move to kind 'demon' (the uncanny preamble and the static mode).",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch2_seagash.json",
+          "text": "Her real name was Delores Wiebe."
+        },
+        {
+          "src": "vol2/vol2_ch2_ghost.json",
+          "text": "She was walking on two good legs."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "andy",
+      "kind": "hero",
+      "name": "Andy Link (2003)",
+      "file": "andy.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "andy",
+        "andy_link"
+      ],
+      "tag": "vol3 · the author as a character, 2003 · very tall, 240 lb · 'I look like a logger'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Andy Link in 2003, mid-20s — the author as a character, flying to Houston as his father dies of leukemia, then staying with his sister at Caltech; tired, terse. Very tall (about 6'5\"), heavy at 240 lb, long legs, size-16 feet, left-handed. A scruffy chinstrap half-beard along the jaw, shaggy brown hair, big blue-green-grey eyes, red-rimmed. A worn red-and-black flannel shirt open over a grey t-shirt, brown corduroys, battered oversized skate shoes, a backpack on one shoulder.",
+      "texture_prompt": "red and black plaid flannel, grey cotton tee, brown corduroy trousers, battered black skate shoes, navy backpack, brown hair",
+      "notes": "Age: voice_map and the brief say late 20s; the text makes him 22 in fall 2001 (House of Glass) and his parents married ~1979 (their 24th anniversary falls that week), so about 24 — vol2's senior year in 1994 makes him ~26. The prompt says mid-20s. The same man as the four vol1 facets seven years earlier: hold the face and build. 2003 clothes are a proposal grounded in his own 'logger' self-portrait (2001).",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch4_names_in_neon.json",
+          "text": "I look like a logger."
+        },
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "Andy always tries to get the aisle seat because his legs are long and he likes room to stretch out, instead he's seated at the window, which is good because he mostly turns to cry, looking out at nothing or at his reflection when the satellite lamp overhead is on."
+        },
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "Justin drops Andy off at the airport, the small man gives the bigger man a humongous hug that lasts too long and not nearly long enough."
+        }
+      ],
+      "prompt_mode": "append",
+      "looks": [
+        "andy_1945"
+      ]
+    },
+    {
+      "slug": "andy_1945",
+      "kind": "hero",
+      "name": "Andy Link (1945, the time-traveller)",
+      "file": "andy_1945.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "andy_1945"
+      ],
+      "tag": "vol3 · the time-traveller Jack found on the Caltech floor · a suit with no tie · shoes falling apart",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Andy Link as the 1945 Pasadena house sees him: the big kid Jack Parsons found asleep on the cement floor of his new Caltech office, who says he is from 2003. The same very tall, heavy young man, the same chinstrap half-beard and big blue-green-grey eyes, groggy and belligerent. A crumpled dark charcoal suit, a white shirt open at the collar, no tie; huge black shoes split and falling apart on his feet.",
+      "texture_prompt": "crumpled charcoal wool suit, white cotton shirt, split black leather shoes, brown hair, chinstrap beard",
+      "notes": "Canon outfit (vol3_ch2). Same face and build as the andy base.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch2_dreams_in_the_key_of_godhead.json",
+          "text": "He had a silly lumberjack half-beard which cut his head from the neck."
+        },
+        {
+          "src": "vol3/vol3_ch2_dreams_in_the_key_of_godhead.json",
+          "text": "He wore a suit with no tie and his shoes were huge and falling apart on his feet."
+        },
+        {
+          "src": "vol3/vol3_ch2_dreams_in_the_key_of_godhead.json",
+          "text": "The big kid, quiet almost like an affected simpleton, looked into things with big blue green gray eyes and asked the oddest question upon being introduced acting very much like a tourist without a map."
+        }
+      ],
+      "prompt_mode": "append",
+      "base": "andy",
+      "look": {
+        "label": "1945 · the time-traveller",
+        "vols": [
+          3
+        ],
+        "scenes": [
+          "vol3_ch2_dreams_in_the_key_of_godhead",
+          "vol3_ch9_backward_jaunt",
+          "vol3_ch19_ron_takes_notes"
+        ],
+        "when": "the Pasadena chapters — Jack finds him on the Caltech floor (ch9), the house meets him (ch2), Ron takes notes (ch19)"
+      }
+    },
+    {
+      "slug": "ron",
+      "kind": "hero",
+      "name": "Ron (L. Ron Hubbard, 1945)",
+      "file": "ron.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "ron",
+        "lafayette",
+        "l_ron_hubbard"
+      ],
+      "tag": "vol3 · 1945 Pasadena · the red-haired pulp writer · a typewriter the size of an engine block",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Ron — Lafayette Ronald Hubbard as the novel presents him in 1945: a 34-year-old pulp writer newly moved into Jack Parsons's Pasadena house and starting a book called The Earthman Chronicles; a storyteller who does not yet know he is a liar. Big and heavy-shouldered, hunched like a brute, red hair combed back, a fleshy freckled face, watchful pale eyes. A rumpled white shirt with the sleeves rolled, a loosened tie, high-waisted grey wool trousers on braces, scuffed brown oxfords; a sheaf of typed pages in one hand.",
+      "texture_prompt": "rumpled white cotton shirt, loosened maroon tie, grey wool trousers, brown braces, scuffed brown oxfords, red hair, typed pages",
+      "notes": "A real historical person, presented by the text as a fictional character; render the text's description, not a photographic likeness. Red hair, size and the hunch are canon (ch9, ch2); age from history (b. 1911); clothes are a proposal.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch9_backward_jaunt.json",
+          "text": "Must have been some party, says the red haired one."
+        },
+        {
+          "src": "vol3/vol3_ch2_dreams_in_the_key_of_godhead.json",
+          "text": "The new kid who showed up, who Jack introduced into the fold, who told everyone he was a time-traveler from the future, he was big, as big as Ron but fatter."
+        },
+        {
+          "src": "vol3/vol3_ch2_second_set_of_eyes.json",
+          "text": "You shouldn't hunch over, you look just like a brute when you do."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "betty",
+      "kind": "hero",
+      "name": "Betty",
+      "file": "betty.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "betty"
+      ],
+      "tag": "vol3 · 1945 Pasadena · Jack's girl who belonged to everybody · blouse and skirt",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Betty, early 20s, Jack Parsons's girl in the 1945 Pasadena house — teasing, warm, easily spooked; a beauty who changes the mood of a room before she's in it. Dark-blonde hair in soft 1940s rolls, red lipstick, bright amused eyes. A short-sleeved cream blouse tucked into a high-waisted plaid A-line skirt, a pale cardigan over her shoulders, low-heeled brown pumps; a typed page in her hand.",
+      "texture_prompt": "cream rayon blouse, green and brown plaid wool skirt, pale yellow cardigan, brown leather pumps, dark-blonde hair, red lipstick",
+      "notes": "A real historical person, presented by the text as a fictional character; render the text's description, not a photographic likeness. (Based on Sara 'Betty' Northrup.) Beyond 'blouse and skirt' the look is a proposal.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch2_second_set_of_eyes.json",
+          "text": "She was Jack's girl but she belonged to everybody."
+        },
+        {
+          "src": "vol3/vol3_ch2_second_set_of_eyes.json",
+          "text": "Beauty changes the mood of the room even when it stands just outside it."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jack_parsons",
+      "kind": "hero",
+      "name": "Jack Parsons (1945)",
+      "file": "jack_parsons.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "jack_parsons",
+        "jack",
+        "parsons"
+      ],
+      "tag": "vol3 · 1945 Pasadena · the Caltech rocket man · thick eyebrows, devilish mustache",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jack Parsons in 1945, about 31: the Caltech rocket scientist and host of the Pasadena house — 'beautiful Jack', sunny and gentle, tent pole of a bohemian crowd. Handsome, thick dark eyebrows, a devilish pencil moustache, dark hair combed wet and flat to his skull. A tweed sport coat over an open-collared white shirt, pleated grey flannel trousers, brown wingtips; a rolled set of rocket drawings under one arm and a hand out to shake.",
+      "texture_prompt": "brown tweed sport coat, white cotton shirt, grey flannel trousers, brown leather wingtips, rolled blueprint paper, dark hair",
+      "notes": "A real historical person, presented by the text as a fictional character; render the text's description, not a photographic likeness. Face and hair are canon; clothes are a proposal. 'jack' is a key here because the only 'Jack' speaker lines (vol3_ch9_backward_jaunt) are Parsons's — but voice_map's `jack` casting describes Jack Perkins. Fix one of the two.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch2_second_set_of_eyes.json",
+          "text": "They both thought of Jack, handsome Jack with his thick eyebrows and devilish mustache, dark hair combed wet to his skull."
+        },
+        {
+          "src": "vol3/vol3_ch9_backward_jaunt.json",
+          "text": "They can get a bit crazy, says the dark haired one."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jack_perkins",
+      "kind": "hero",
+      "name": "Jack Perkins (the Earthman)",
+      "file": "jack_perkins.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "jack_perkins",
+        "perkins"
+      ],
+      "tag": "vol3 · hero of Ron's pulp · the boy genius in the time-egg · a shiny quarter in a penny jar",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jack Perkins, hero of Ron's pulp The Earthman Chronicles: a boy genius grown into a young man of about 25 who sealed himself into a time-egg and woke fifty years on in a ruined city. Slight, clean-cut and boyish, a kempt side-parted haircut, a frightened earnest face. Nice clothes that stick out in the ruins: a pressed light-grey suit, white shirt, narrow dark tie, a knitted sleeveless pullover, polished shoes. A soft-cornered photograph of his father held in one hand.",
+      "texture_prompt": "light grey wool suit, white cotton shirt, narrow navy tie, oatmeal knit sleeveless pullover, black leather shoes, small photograph",
+      "notes": "No speaker key in the scenes yet (he is narrated); voice_map's 'jack' brief is him. Ron models him on Jack Parsons, so a family resemblance, younger and softer. Plain period clothes, no pulp-costume props (ray guns, goggles).",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch1_boy_from_pasadena.json",
+          "text": "He realized he was a complete stranger with his nice clothes, his kempt haircut, his general cleanliness."
+        },
+        {
+          "src": "vol3/vol3_ch1_boy_from_pasadena.json",
+          "text": "Jack Perkins stuck out like a shiny quarter in a penny jar."
+        },
+        {
+          "src": "vol3/vol3_ch11_pulp_the_room_with_birds.json",
+          "text": "Jack carries a photograph of him in his billfold, gone soft at the corners."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "janessa",
+      "kind": "hero",
+      "name": "Janessa Link",
+      "file": "janessa.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "janessa"
+      ],
+      "tag": "vol3 · Andy's sister · Caltech geology, 2003 · a water bottle everywhere",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Janessa Link, about 22, Andy's younger sister, a Caltech geology student in 2003 — a brisk list-maker with gallows humour, packing for a month of fieldwork in Brazil while their father dies. Medium height, sturdy and outdoorsy, straight dark-brown hair in a practical ponytail, sun-browned, slightly bleary eyes. A faded orange t-shirt under a grey fleece vest, khaki field shorts with a rock-hammer loop, hiking sandals; a big water bottle in one hand and a folded checklist in the other.",
+      "texture_prompt": "faded orange cotton tee, grey fleece vest, khaki nylon field shorts, brown hiking sandals, clear water bottle, dark-brown hair",
+      "notes": "Water bottle, contacts and the geology are canon; the rest is a proposal (voice_map says mid-20s).",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch6_dabney.json",
+          "text": "Janessa carries a bottle of water with her everywhere she goes because she's big on hydration."
+        },
+        {
+          "src": "vol3/vol3_ch5_yellow_card.json",
+          "text": "Her eyes had been fuzzy since her arrival and she hadn't brought any spare contacts and slept in this pair once already."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "june_okimoto",
+      "kind": "hero",
+      "name": "June Okimoto (1991)",
+      "file": "june_okimoto.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "june",
+        "june_okimoto"
+      ],
+      "tag": "vol3 · arcadeum, Honolulu 1991 · the sleepless programmer from Dallas · the $500 game",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "June Okimoto, early 20s, in 1991: a programmer from Dallas, sleepless and wry, quietly stubborn, interviewing at Koa Works in a Honolulu high-rise (Oneironautics Inc. hires her years later). Slight, Japanese-American, a blunt black bob, tired clever eyes. Her one interview outfit: a boxy navy blazer over a white t-shirt, pleated khaki trousers, scuffed loafers; a shrink-wrapped game box with a cloudy-blue cover under her arm and a carbon-copy receipt in her hand.",
+      "texture_prompt": "navy wool blazer, white cotton tee, khaki pleated trousers, brown loafers, cloudy blue game box, black bob",
+      "notes": "She is not Aria. Japanese-American is a proposal from her surname; the look is a proposal beyond the sleeplessness and the game.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch6_arcadeum.json",
+          "text": "She hadn't slept since the night before the flight from Dallas to Honolulu, which left at a normal time, and arrived somewhere altogether different, a place her logic could not reconcile as anything but dream."
+        },
+        {
+          "src": "vol3/vol3_ch6_arcadeum.json",
+          "text": "A mysterious game by the name WHAT LIES BEYOND in a regal cloudy blue script."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jane_sleep_study",
+      "kind": "hero",
+      "name": "Jane (the sleep study)",
+      "file": "jane_sleep_study.glb",
+      "vol": [
+        3,
+        4
+      ],
+      "keys": [
+        "jane"
+      ],
+      "tag": "vol3 · the sleep-study researcher · heavy emo glasses · toe socks · 'we'll be here to catch you'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jane, around 30, the researcher who runs Andy's paid sleep study at Caltech in 2003 — upbeat, reassuring clinical patter over a jumble of nerves and small tics. Pretty and a little heavy, comfortable with it; heavy black rectangular glasses, dark hair twisted up in a claw clip. A plain grey cardigan over a black t-shirt, and the good half below: a dark plum corduroy skirt, striped rainbow toe socks, red Mary Jane sneakers. A clipboard notepad and a pen.",
+      "texture_prompt": "grey knit cardigan, black cotton tee, plum corduroy skirt, rainbow striped toe socks, red canvas Mary Jane sneakers, black glasses, clipboard",
+      "notes": "Glasses, shoes, toe socks and 'shops for the bottom half' are canon; colours are a proposal.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch6_jane.json",
+          "text": "She's pretty but hasn't really figured herself out yet, a jumble of nerves and strange tics."
+        },
+        {
+          "src": "vol3/vol3_ch6_jane.json",
+          "text": "She wore cute shoes, wore even cuter toe socks."
+        },
+        {
+          "src": "vol3/vol3_ch6_jane.json",
+          "text": "Andy can tell she shops for the bottom half more so than the top."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aunt_terry",
+      "kind": "hero",
+      "name": "Aunt Terry",
+      "file": "aunt_terry.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "terry",
+        "aunt_terry"
+      ],
+      "tag": "vol3 · Mom's best friend · grey suit, short curly blonde hair · professionally tired",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aunt Terry, mid-50s, Mom's best friend and a long-time friend of the family, who meets Andy at the Houston airport in 2003 and drives him to the hospital — professionally tired, formal with her caring. A business lady: a grey trouser suit, white shell blouse, short curly cropped blonde hair, small pearl earrings, sensible pumps; car keys in one hand and a paper napkin with hand-drawn directions in the other.",
+      "texture_prompt": "grey wool trouser suit, white silk shell blouse, black leather pumps, pearl earrings, short curly blonde hair",
+      "notes": "CONFLICT: voice_map casts 'terry' as a 50s man ('family friend and once coach, small frame') — that is Coach Terry from the Texas Little League chapter, a different person with no lines. The speaking Terry (vol3_ch5_flight) is Aunt Terry, a woman; recast the voice.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "Aunt Terry. She has on a gray suit, her blond hair is cropped short and curly cute."
+        },
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "Terry meets Andy at the airport. She looks tired, professionally tired."
+        },
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "A business lady, Mom's best friend, a long-time friend of the family."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "niles",
+      "kind": "hero",
+      "name": "Niles",
+      "file": "niles.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "niles"
+      ],
+      "tag": "vol3 ch3 · safari · the Norwegian geologist cartoonist · Marty's sparring partner",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Niles, early 40s in mid-1980s Tulsa, a Norwegian geologist and corporate cartoonist at Cities Service, Marty's drinking and sparring friend — sly, needling. Lanky and fair, a long jaw, a sandy beard and thinning blond hair, laughing pale eyes. A rumpled blue oxford shirt with the sleeves rolled, a loosened knit tie, brown corduroys, desert boots; a bottle of port in one hand and a felt-tip pen behind his ear.",
+      "texture_prompt": "light blue cotton oxford shirt, brown knit tie, brown corduroy trousers, tan suede desert boots, sandy beard, port bottle",
+      "notes": "Norwegian, geologist and cartoonist are canon; the look is a proposal.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "Someone finally pipes up, it's Niles, the geologist cartoonist."
+        },
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "Marty is a frequent character in his corporate sketches that make the rounds on xerox macintosh telefax throughout the Cities Service."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "marty",
+      "kind": "hero",
+      "name": "Marty (Martin Link)",
+      "file": "marty.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "marty",
+        "martin"
+      ],
+      "tag": "vol3 · Andy's father, the geologist · built like a center lineman · three Minoltas and the slide show",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Marty (Martin Link), late 30s in mid-1980s Tulsa: Andy's father, a geologist, raconteur and host of the slide-show evenings — gruff, evasive, funny. Built like the center lineman he once was: big, mostly muscle, ruggedly stooped, facial stubble, black hair. Khaki field shirt and khaki trousers, a blue Dodgers ball cap, desert boots; three Minolta cameras slung round his neck and shoulder and a tall glass of port in one hand.",
+      "texture_prompt": "khaki cotton field shirt, khaki trousers, blue ball cap, tan desert boots, three black cameras on straps, black hair",
+      "notes": "Canon look (the safari slides, 1975, at 28). He dies of AML in Houston in 2003 (vol3_ch5); that is a candidate look for a later draft, not staged as a portrait now.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "Marty built like the center lineman he once was wore khaki, Dodgers baseball cap."
+        },
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "Facial stubble, ruggedly stooped, mostly muscle, intimidation in silhouette, eagerly approachable in profile."
+        },
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "Marty had his cameras with him. Slung around his neck and shoulder, three of them, Minolta."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "kathy",
+      "kind": "hero",
+      "name": "Kathy",
+      "file": "kathy.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "kathy"
+      ],
+      "tag": "vol3 · Andy's mother · respiratory therapist · secretary glasses and a Velma haircut",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Kathy, mid-30s in the 1980s: Andy's mother, a respiratory therapist who also delivers babies and drives all night on twelve-hour-double habits — direct, no-nonsense. Secretary glasses, a short dark bob with straight-cut bangs, a level gaze. Teal-green hospital scrubs, white nursing clogs, a stethoscope round her neck, a library cassette case of books-on-tape in one hand.",
+      "texture_prompt": "teal green cotton scrubs, white leather clogs, black stethoscope, tortoiseshell glasses, dark bob",
+      "notes": "Glasses, haircut and scrubs are canon (vol3_ch3). No speaking lines; she is 'Mom' at MD Anderson in 2003.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "The wife on sidelines unaware, drifting buzzing, her secretary glasses and Velma haircut catching enough attention on their own."
+        },
+        {
+          "src": "vol3/vol3_ch3_safari.json",
+          "text": "People often see her in scrubs, teal green things, tonight it's just a tan slip dress thing with black stocking that disappears into shadow."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "steven_chau",
+      "kind": "hero",
+      "name": "Steven Chau",
+      "file": "steven_chau.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "steven_chau",
+        "steven"
+      ],
+      "tag": "vol3 ch8 · passengers · the ex-violin prodigy, twice hit by cars · scars under bristle hair",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Steven Chau, 16, late 1990s: a former violin prodigy twice hit by cars, now the ambitionless black sheep of a new, empty, expensive house — moody, half-wrecked. Taiwanese-American, slight, thick bristly black hair over long surgical scars on his scalp, callused fingertips, a sullen pale face. A club night gone wrong: a black t-shirt, wide-leg jeans, chunky skate shoes, a glow bracelet on one wrist.",
+      "texture_prompt": "black cotton tee, wide-leg dark denim, chunky grey skate shoes, green glow bracelet, black bristly hair",
+      "notes": "Scars, calluses and family from Taiwan are canon; clothes are a proposal. He reappears at 13 in vol4's 'ourobouros' scrap (a candidate look). No speaking lines.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch8_passengers.json",
+          "text": "Moaning softly to himself, scratching his head, the long scars under thick bristle hair where they cut him open to relieve hemorrhaging."
+        },
+        {
+          "src": "vol3/vol3_ch8_passengers.json",
+          "text": "He had been a violin prodigy, taken from him."
+        },
+        {
+          "src": "vol3/vol3_ch8_passengers.json",
+          "text": "His fingerprints still thick with vibrato callus."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aaron_cauther",
+      "kind": "hero",
+      "name": "Aaron Cauther",
+      "file": "aaron_cauther.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "aaron",
+        "aaron_cauther"
+      ],
+      "tag": "vol3 ch8 · passengers · Steven's best friend · glasses, ROTC, a runner",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aaron Cauther, 16, Steven Chau's best friend, still smart and still into school — soccer club, long-distance running, ROTC leadership — a geek with a squinting attractiveness. Lean runner's build, glasses, short brown hair, a resolved jaw. A plain white t-shirt, wet and wrung out, faded jeans, running shoes; a car key on a ring in one hand.",
+      "texture_prompt": "white cotton tee, faded blue denim, grey running shoes, wire glasses, short brown hair",
+      "notes": "Canon gives the glasses, the build and the wet t-shirt; colours are a proposal. No speaking lines.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch8_passengers.json",
+          "text": "He still wore glasses, still pretty much a geek, but had a squinting attractiveness, strength, resolve, a budding presence of body and mind."
+        },
+        {
+          "src": "vol3/vol3_ch8_passengers.json",
+          "text": "He'd started playing in a soccer club, started marathon long distance running, been taking up leadership roles in the ROTC program."
+        },
+        {
+          "src": "vol3/vol3_ch8_passengers.json",
+          "text": "His t-shirt wet but not uncomfortable."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "chris_little_league",
+      "kind": "hero",
+      "name": "Chris (Coach Terry's son)",
+      "file": "chris_little_league.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "chris"
+      ],
+      "tag": "vol3 ch11 · acceptable losses · the pitcher, the best of us · lean and mean",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Chris, about 14, Coach Terry's son and the best player on Andy's Texas summer-league team — pitcher, leader, the kid who makes things happen. Lean and mean, a sharp sunburned face, short brown hair under a ball cap, a big goofy grin he uses as a weapon. A sweat-soaked baseball uniform, ball cap, cleats, a glove on one hand and a ball in the other.",
+      "texture_prompt": "white and red baseball uniform, red ball cap, black cleats, brown leather glove, sunburned skin, brown hair",
+      "notes": "Two Chrises in vol3: this one (vol3_ch11_acceptable_losses*) and Steven Chau's younger brother (a piano-competition kid with a milkshake, one paragraph). Neither speaks or is shown; 'chris' routes here. Treat the bedroom scene with care — the model is only the ballplayer. Look is a proposal.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch11_acceptable_losses_b.json",
+          "text": "He was the best of us."
+        },
+        {
+          "src": "vol3/vol3_ch11_acceptable_losses_b.json",
+          "text": "Chris plays with a big, goofy grin which is scary on a face like his. Lean and mean."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "uncle_nick",
+      "kind": "hero",
+      "name": "Nick ('Uncle Nick')",
+      "file": "uncle_nick.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "uncle_nick",
+        "nick"
+      ],
+      "tag": "vol3 ch12 · uncle nick · the Phantom costume on Halloween · braces and glasses",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Nick, 'Uncle Nick', about 14, the narrator's childhood best friend, a geek who can draw anything in three dimensions, on Halloween night. Skinny, round glasses, braces, a pale serious face. A homemade Phantom of the Opera costume: a black opera cape lined red, a black dress suit too big for him, a white shirt with one sleeve rolled to the elbow, a white half-mask pushed up on his forehead over latex prosthetic make-up; a black fedora in one hand.",
+      "texture_prompt": "black wool opera cape with red lining, black suit, white cotton shirt, white plastic half-mask, latex make-up, black fedora",
+      "notes": "The costume, the make-up and the braces are canon; the model is unhurt (the beating is staging, not the default look). No speaking lines.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch12_uncle_nick.json",
+          "text": "Nick was wearing a Phantom of the Opera costume."
+        },
+        {
+          "src": "vol3/vol3_ch12_uncle_nick.json",
+          "text": "He had applied prosthetic make-up underneath the white mask."
+        },
+        {
+          "src": "vol3/vol3_ch12_uncle_nick.json",
+          "text": "Nick, the geek, could draw anything in the world and make it look real."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "arcadeum_shopkeeper",
+      "kind": "hero",
+      "name": "The Shopkeeper (arcadeum)",
+      "file": "arcadeum_shopkeeper.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "the_shopkeeper",
+        "arcadeum_shopkeeper",
+        "shopkeeper"
+      ],
+      "tag": "vol3 · arcadeum, Honolulu 1991 · the ex-Army vet who made WHAT LIES BEYOND · stands up very straight",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The Shopkeeper, late 30s, an Army veteran who made the video game WHAT LIES BEYOND after he got out and now runs a boutique computer-game store in a Honolulu high-rise lobby (1991) — anxious, proud, stubborn. Stocky, very upright, a grown-out high-and-tight haircut, a deep tan, a clipped moustache. A short-sleeved aloha shirt with a muted palm print tucked into pressed khakis, a black digital watch, white sneakers; a manual credit-card imprinter held against his chest.",
+      "texture_prompt": "muted green palm-print aloha shirt, khaki trousers, black digital watch, white sneakers, steel card imprinter, dark hair",
+      "notes": "Veteran, store and posture are canon; the look is a proposal. Ethnicity not given (voice_map hears 'local Hawaii ease').",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch6_arcadeum.json",
+          "text": "The name outside the game store was a cheap box vinyl back-lit fluorescent number that promised only COMPUTER GAMES, and inside an anxious man staffed the store."
+        },
+        {
+          "src": "vol3/vol3_ch6_arcadeum.json",
+          "text": "The salesman stood up very straight."
+        },
+        {
+          "src": "vol3/vol3_ch6_arcadeum.json",
+          "text": "Worked on it a few years back when I got out of the Army, and there are maybe a hundred copies of it left in the world."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "the_businesswoman",
+      "kind": "hero",
+      "name": "The Businesswoman (the flight)",
+      "file": "the_businesswoman.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "the_businesswoman",
+        "businesswoman"
+      ],
+      "tag": "vol3 ch5 · the last flight · a day-old red suit and big hoops · amaretto sours",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The businesswoman beside Andy on the late flight to Houston in 2003, early 30s, unmistakably Texan, sells advertising space, drinking amaretto sours — insecure, clingy, sad. Big stiff curly dark hair that will not budge, large gold hoop earrings, heavy dark eye make-up gone raccoon, glossy lipstick. A day-old red skirt suit, a cream blouse, red pumps; a portable CD player with headphones in one hand.",
+      "texture_prompt": "red wool skirt suit, cream silk blouse, red leather pumps, gold hoop earrings, silver portable CD player, curly dark hair",
+      "notes": "Canon look; the shoes and blouse are a proposal. Two lines.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "She is unmistakably Texan, day old red business suit, large hoop earrings supported by fine cartilage curly dark hair that refuses to budge in airline stillness, glimmers in stiff concentration."
+        },
+        {
+          "src": "vol3/vol3_ch5_flight.json",
+          "text": "She looks at him with big sad make-up eyes far too dark and wet like raccoon eyes and asks if he wants to hear any more of this music perhaps something else of whatever else she has."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "april",
+      "kind": "hero",
+      "name": "April",
+      "file": "april.glb",
+      "vol": [
+        3
+      ],
+      "keys": [
+        "april"
+      ],
+      "tag": "vol3 ch4 · invitation only · dreadlocks every colour of a fruity cereal · thinks he's Bran",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "April, early 20s, the young woman who stops Andy on a Portland street in 2001, sure he is someone named Bran, and leads him and Justin to the film — open, impulsive, a hugger. Small and wiry, freckles, a nose stud, a shoulder-length mass of dreadlocks dyed every colour of a fruity cereal (pink, orange, lime, purple, yellow). A thrifted orange corduroy jacket over a hand-printed t-shirt, a long patchwork skirt over leggings, beat-up combat boots, a canvas messenger bag.",
+      "texture_prompt": "orange corduroy jacket, hand-printed cotton tee, patchwork cotton skirt, black leggings, black combat boots, multicoloured dreadlocks",
+      "notes": "The hair is canon; the rest is a proposal. She has a show node in vol3_ch4_invitation_only.",
+      "canon": [
+        {
+          "src": "vol3/vol3_ch4_invitation_only.json",
+          "text": "She found me, the young woman with dreadlocked hair all the colors of fruity pebbles."
+        },
+        {
+          "src": "vol3/vol3_ch4_invitation_only.json",
+          "text": "Justin, to stop the honking, embraced the girl completely, her name April."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "charlie_drouet",
+      "kind": "hero",
+      "name": "Charlie Drouet",
+      "file": "charlie_drouet.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "charlie",
+        "charlie_drouet",
+        "charlie_&_chorus"
+      ],
+      "tag": "vol4 · Sister Carrie, retold · t-shirt and jeans, uncombed · hands her his card",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Charlie Drouet, early 30s, a single writer-artist and the only guy in Professor Hurstwood's literature workshop, who narrates his obsession with Caroline (2006) — confessional, wistful, a little creepy in his candour. Average build, uncombed brown hair, a slightly stubbly friendly face, hopeful eyes. A simple heather-grey t-shirt, jeans, worn brown leather sneakers, a canvas messenger bag; a folded newspaper in one hand and a business card in the other.",
+      "texture_prompt": "heather grey cotton tee, blue denim, brown leather sneakers, olive canvas messenger bag, folded newspaper, brown hair",
+      "notes": "T-shirt, jeans, hair and stubble are canon; the rest is a proposal. A modern Dreiser: Drouet, Carrie, Hurstwood. 'Charlie & Chorus' routes here.",
+      "canon": [
+        {
+          "src": "vol4/vol4_cc_1.json",
+          "text": "CHARLIE DROUET stands, reading his newspaper."
+        },
+        {
+          "src": "vol4/vol4_cc_1.json",
+          "text": "He wears a simple t-shirt with jeans."
+        },
+        {
+          "src": "vol4/vol4_cc_1.json",
+          "text": "His hair uncombed, his face slightly stubbly."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "caroline",
+      "kind": "hero",
+      "name": "Caroline ('Carrie')",
+      "file": "caroline.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "caroline",
+        "carrie",
+        "sister_carrie"
+      ],
+      "tag": "vol4 · off the bus with one bag · nothing special yet, the spark is there · wants to act",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Caroline, 'Carrie', about 19, just off the bus from a small town three hours east to live with her sister — exhausted, broke, drinking, self-deprecating, wanting to act. Attractive but nothing special yet, the spark there: light-brown hair in a messy knot, no make-up, tired wry eyes. Disheveled travel clothes from 2006: a cropped denim jacket over a thin grey hooded top, low-rise flared jeans, scuffed canvas sneakers; a stuffed duffel bag at her side and a cigarette she didn't want in her fingers.",
+      "texture_prompt": "light-wash denim jacket, thin grey cotton hoodie, flared blue jeans, scuffed white canvas sneakers, navy duffel bag, light-brown hair",
+      "notes": "Bag, disheveled clothes and 'nothing special yet' are canon. Age: Dreiser's Carrie leaves home at eighteen (quoted in the text); voice_map says mid-20s. The store-vest look (her job) and the after-party look ('aglow, an absolute beauty') are candidates for a later draft.",
+      "canon": [
+        {
+          "src": "vol4/vol4_cc_1.json",
+          "text": "CAROLINE walks up to the bus overhang. She has a bag by her side. Her clothes are disheveled."
+        },
+        {
+          "src": "vol4/vol4_cc_1.json",
+          "text": "She is attractive, but nothing special at this time and place, still, the spark is there."
+        },
+        {
+          "src": "vol4/vol4_cc_1.json",
+          "text": "I'm really nothing special."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "esther",
+      "kind": "hero",
+      "name": "Esther",
+      "file": "esther.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "esther",
+        "esther_dean"
+      ],
+      "tag": "vol4 · daddy · Dickens Dean's digital bride · rides her bike, learning French",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Esther, late 20s, Dickens Dean's 'digital bride' — a simulated woman who does not know it yet, later his wife and Aria's mother; sweet at first, then sharp with worry and anger. A blend of ethnicities: warm brown skin, dark curly hair cut to the jaw, an open intelligent face that is just slightly too even, too symmetrical. Urban and practical: a fitted olive field jacket over a striped Breton top, dark jeans, white sneakers; a bicycle helmet hanging from one hand.",
+      "texture_prompt": "olive cotton field jacket, navy and white striped top, dark denim, white leather sneakers, matte white bicycle helmet, dark curly hair",
+      "notes": "'A blend of ethnicity', the bike and the French are canon; the face and clothes are a proposal. The 'slightly too even' face is her synthetic undertone — no glitch effects on the model (the screen-space stack handles that).",
+      "canon": [
+        {
+          "src": "vol4/vol4_daddy_a.json",
+          "text": "A marginally self-aware young woman, a blend of ethnicity, educated, looking for a sense of purpose and a place in the world."
+        },
+        {
+          "src": "vol4/vol4_daddy_a.json",
+          "text": "Esther liked to ride her bike and explore the urban neighborhood in which she resided."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "hurstwood",
+      "kind": "hero",
+      "name": "Professor George Hurstwood",
+      "file": "hurstwood.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "hurstwood",
+        "george",
+        "george_hurstwood"
+      ],
+      "tag": "vol4 · the literature professor, 43 · a PDA on the bus · 'grad students do all my work'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Professor George Hurstwood, 43, teaches literature — a wife, two children, a fourth story collection with his agent; smug, irritable, entitled. A middle-aged businessman-or-professor type: thinning dark hair combed back, a close-trimmed greying beard, rimless glasses. A navy blazer over an open-collared blue shirt, grey flannel trousers, brown loafers, a leather satchel; thumbing a PDA with a stylus.",
+      "texture_prompt": "navy wool blazer, light blue cotton shirt, grey flannel trousers, brown leather loafers, brown leather satchel, black PDA",
+      "notes": "Age, job and the PDA are canon; the look is a proposal.",
+      "canon": [
+        {
+          "src": "vol4/vol4_cc_2.json",
+          "text": "A middle-aged business man or professor type sits next to her."
+        },
+        {
+          "src": "vol4/vol4_cc_2.json",
+          "text": "He plays with a PDA."
+        },
+        {
+          "src": "vol4/vol4_cc_2.json",
+          "text": "He is forty-three years old and is currently working with his agent to publish his fourth collection of short stories."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "carolines_sister",
+      "kind": "hero",
+      "name": "Caroline's sister",
+      "file": "carolines_sister.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "sister",
+        "carolines_sister"
+      ],
+      "tag": "vol4 · Carrie's older sister · two kids, a low-rent house · 'they hired me, they'll hire you'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Caroline's older sister, late 20s, pregnant the first time at fifteen, now two kids, a husband and a cramped low-rent two-bedroom; blunt, foul-mouthed, practical, works at the big-box store. Heavy-set and tired, bleached-blonde hair scraped into a claw clip with dark roots, a no-nonsense face. An oversized faded t-shirt, grey sweatpants, plastic slides; a store uniform vest over one arm and a laundry basket on her hip.",
+      "texture_prompt": "faded maroon cotton tee, grey cotton sweatpants, black plastic slides, blue store vest without logo, white plastic laundry basket, bleached hair",
+      "notes": "SPARSE — two lines; the look is a proposal. No real store logo on the vest.",
+      "canon": [
+        {
+          "src": "vol4/vol4_cc_4.json",
+          "text": "My sister got knocked up the first time when she was fifteen."
+        },
+        {
+          "src": "vol4/vol4_cc_4.json",
+          "text": "Wal-Mart is always hiring."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "norm_todd",
+      "kind": "hero",
+      "name": "Norman 'Norm' Todd",
+      "file": "norm_todd.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "todd",
+        "norm",
+        "norman_todd"
+      ],
+      "tag": "vol4 · the runaway Chess takes in · a nose like a spoiled fruit · red Kool-Aid at her table",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Norman 'Norm' Todd, about 17, the runaway Chess picks up after a bad night — wiped out, mumbling, odd humour, keeps turned away. Skinny, pale, greasy dark hair, a swollen bruised nose like a spoiled fruit, a pursed bottom lip, eyes down. A grimy black hooded sweatshirt, torn jeans, sneakers with no laces; a plastic tumbler of red drink in one hand.",
+      "texture_prompt": "grimy black cotton hoodie, torn blue denim, grey sneakers without laces, red plastic tumbler, greasy dark hair",
+      "notes": "The nose and the turned-away look are canon; age and clothes are a proposal. 'Norm' routes here (voice_map alias).",
+      "canon": [
+        {
+          "src": "vol4/vol4_story_what_sort_of.json",
+          "text": "That nose of yours is something. Looks like a spoiled fruit."
+        },
+        {
+          "src": "vol4/vol4_story_what_sort_of.json",
+          "text": "The kid wasn't looking up, just holding his head in his hands in his lap."
+        },
+        {
+          "src": "vol4/vol4_story_what_sort_of.json",
+          "text": "His bottom lip pursed but he said nothing."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "chess_vol4",
+      "kind": "hero",
+      "name": "Chess (vol4, the night-shift composer)",
+      "file": "chess_vol4.glb",
+      "vol": [
+        4
+      ],
+      "keys": [
+        "chess_vol4"
+      ],
+      "tag": "vol4 · 'what sort of' / 'hit a wall' · composes in headphones · lives in a retirement home",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Chess in her early twenties, years before the bridge show: a night-shift worker at the Saga who composes on a keyboard in headphones, lives on ramen in a retirement-home apartment and takes in a runaway — laconic, generous, crude jokes. Tejana, raised in San Antonio; dark hair loose and unbrushed, tired eyes, no make-up. An oversized black hooded sweatshirt over a t-shirt, black jeans, worn canvas sneakers, big studio headphones round her neck, car keys in hand, the same thin gold chain at her neck.",
+      "texture_prompt": "black cotton hoodie, grey cotton tee, black denim, worn black canvas sneakers, black studio headphones, thin gold chain, dark hair",
+      "notes": "A look of the vol6 chess entry — the base needs \"looks\": [\"chess_vol4\"]. voice_map treats vol4 and vol6/7 Chess as one person; vol4 gives no age or year (early 20s inferred: the stereo built 'after graduation'), vol6 has her 'around thirty' — check the timeline. The gold chain carries over from vol6 as continuity (proposal).",
+      "canon": [
+        {
+          "src": "vol4/vol4_story_hit_a_wall.json",
+          "text": "Chess grew up in San Antonio in a little adobe house one bedroom she shared with four siblings."
+        },
+        {
+          "src": "vol4/vol4_story_what_sort_of.json",
+          "text": "She did her composing on a Yamaha keyboard which also plugged into the Mac, allowing her to compose in silence with her headphones on, because she had neighbors who didn't keep the same hours as her."
+        }
+      ],
+      "prompt_mode": "append",
+      "base": "chess",
+      "look": {
+        "label": "vol4 · the night-shift composer (younger)",
+        "vols": [
+          4
+        ],
+        "scenes": [
+          "vol4_story_what_sort_of",
+          "vol4_story_hit_a_wall"
+        ],
+        "when": "the 'what sort of' and 'hit a wall' prose stories — she drives Norm Todd home and gives him the futon"
+      }
+    },
+    {
+      "slug": "dickens_dean_daddy",
+      "kind": "hero",
+      "name": "Dickens Dean (vol4, 'daddy')",
+      "file": "dickens_dean_daddy.glb",
+      "vol": [
+        1,
+        2,
+        4
+      ],
+      "keys": [
+        "dickens_dean_daddy"
+      ],
+      "tag": "vol4 · vii. daddy · a mop of brown hair, eyes grey no green no blue · the glass tower on the Pacific",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Dickens Dean in vol4's 'daddy': the technologist in a glass tower on the Pacific who builds a simulated world to court Esther and becomes Aria's father — urbane, intense, terrified of everything and the happiest guy he knows. Early 30s, lean and strong, a mop of brown hair, eyes that will not settle on grey, green or blue, a too-eager smile. Expensive-plain: a charcoal merino sweater over a white t-shirt, dark tailored trousers, minimal black leather sneakers; a slim tablet in one hand.",
+      "texture_prompt": "charcoal merino sweater, white cotton tee, dark navy tailored trousers, black leather sneakers, slim black tablet, brown hair",
+      "notes": "A look of the dickens_dean entry, whose silver-haired middle-aged look (vol5) has no vol 4 — the base needs \"looks\": [\"dickens_dean_daddy\"].Clothes are a proposal. (2026-10-16: widened to vol 1 per the user's ruling.)",
+      "canon": [
+        {
+          "src": "vol4/vol4_daddy_a.json",
+          "text": "His hair a mop of brown, his frame lean and strong."
+        },
+        {
+          "src": "vol4/vol4_daddy_a.json",
+          "text": "His eyes were grey no green no blue."
+        },
+        {
+          "src": "vol4/vol4_daddy_a.json",
+          "text": "Dickens Dean went back to his glass tower on the Pacific Ocean and set his near limitless resources to creating the perfect woman, if not in flesh, in imagination."
+        }
+      ],
+      "prompt_mode": "append",
+      "base": "dickens_dean",
+      "look": {
+        "label": "young · early 30s (vol1 Faust 3, vol2 'Now', vol4 daddy)",
+        "vols": [
+          1,
+          2,
+          4
+        ],
+        "scenes": [
+          "vol1_introduction",
+          "vol1_ch4_dream_bar",
+          "vol1_ch4_interstitial",
+          "vol1_ch4_club_sharp",
+          "vol1_ch4_club_sharp_b",
+          "vol1_ch4_waking",
+          "vol1_ch5_morning",
+          "vol1_ch5_proposition",
+          "vol1_ch6_office",
+          "vol1_ch6_debrief",
+          "vol1_ch7_ink",
+          "vol1_ch8_club",
+          "vol1_ch8_lifelines",
+          "vol1_ch9_street",
+          "vol1_ch10_longboat",
+          "vol1_ch11_drugstore",
+          "vol1_ch12_history",
+          "vol1_ch13_deep_end",
+          "vol1_ch14_painting",
+          "vol1_ch15_river_turn",
+          "vol1_ch16_four_am",
+          "vol4_daddy_a",
+          "vol4_daddy_b",
+          "vol4_daddy_c"
+        ],
+        "when": "vii. daddy — courting Esther, raising Aria, telling Esther their daughter is gone"
+      }
+    },
+    {
+      "slug": "aud_1994",
+      "kind": "hero",
+      "name": "Aud (1994, the Missing Link in Small Wood)",
+      "file": "aud_1994.glb",
+      "vol": [
+        2,
+        4
+      ],
+      "keys": [],
+      "base": "aud",
+      "look": {
+        "label": "1994 · the Missing Link, before the bread",
+        "vols": [
+          2,
+          4
+        ],
+        "scenes": [
+          "vol2_ch7_scumm_c",
+          "vol2_ch7_scumm_d",
+          "meld_seam_1_2",
+          "meld_kaleidoscope_a",
+          "meld_kaleidoscope_c",
+          "meld_kaleidoscope_g"
+        ],
+        "when": "D. Dean's spring-1994 dream journal (vii. SCUMM) and the meld seams set at Aud's diner — about thirty years before she is vol7's seventy-three"
+      },
+      "tag": "vol2 vii. SCUMM · meld · Aud at the Missing Link counter, 1994 · sleeves rolled, glasses on the chain",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aud in 1994, in her early forties, behind the counter of the Missing Link diner in Small Wood on the Oregon coast at 5:40 in the morning. The same long gaunt frame and the same watchful face she has at seventy-three, thirty years younger: dark-blonde hair going early grey, pinned up off the neck, a few loose strands. A faded blue chambray work shirt with the sleeves rolled to the elbow, a short white waitress apron tied at the waist, straight-leg jeans, brown leather work boots; reading glasses hanging on a beaded chain at her chest; a glass coffee pot in one hand. Weathered small-town warmth, says little, misses nothing.",
+      "texture_prompt": "faded blue chambray shirt, white cotton half-apron, straight-leg blue denim, brown leather boots, reading glasses on a beaded chain, glass coffee pot, dark-blonde hair going grey",
+      "notes": "A look of the vol7 aud entry — the base needs \"looks\": [\"aud_1994\"]. Canon gives only 'sleeves rolled, glasses on the chain, pot in hand'; hair, shirt, apron and age are a PROPOSAL. AGE CAUTION: vol7 says 'Aud was seventy-three' and vol7 is ruled the 2050s (~2052), which would make her about 15 in 1994 — impossible for the diner woman in these scenes. vol7's own relative dates (Hans's 'thirty-three years since' Nov 1989, Cale's 'thirty years' since Feb 1994) put vol7's stated ages on a ~2022-24 calendar, which makes 1994 Aud early 40s. If the user instead rules the 1994 Aud is the dream prefiguring the elder Aud ('It's the one you're going to make'), drop this look and route these scenes to aud. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch7_scumm_c.json",
+          "text": "Aud's the only one in the whole dream drawn with more than sixteen colors. Sleeves rolled, glasses on the chain."
+        },
+        {
+          "src": "vol4/meld_kaleidoscope_c.json",
+          "text": "Aud comes in through the door that isn't on any street. Sleeves rolled, glasses on the chain, pot in hand."
+        },
+        {
+          "src": "vol2/meld_seam_1_2.json",
+          "text": "They've been at it since I unlocked. Coffee, hon?"
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "hans_1994",
+      "kind": "hero",
+      "name": "Hans (1994, the bakery window in Small Wood)",
+      "file": "hans_1994.glb",
+      "vol": [
+        2,
+        4
+      ],
+      "keys": [],
+      "base": "hans",
+      "look": {
+        "label": "1994 · the baker in the window, before the cap",
+        "vols": [
+          2,
+          4
+        ],
+        "scenes": [
+          "vol2_ch7_scumm_a",
+          "vol2_ch7_scumm_d",
+          "meld_kaleidoscope_c"
+        ],
+        "when": "D. Dean's spring-1994 dream journal (Hans in the bakery window: 'Bread for the morning, Dickens') and the editing-suite monitors in the kaleidoscope cut"
+      },
+      "tag": "vol2 vii. SCUMM · Hans in the bakery window, 1994 · 'Bread for the morning'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Hans the baker in 1994, about forty, in the front window of his bakery in Small Wood on the Oregon coast, lifting a loaf off a tray. The same round strong build and big forearms he has at sixty-eight, his hair still thick and brown with no grey, bare-headed (the wool cap Greta knits him comes decades later), flour on his forearms and in his eyebrows. A long white cotton baker's apron dusted with flour, tied over a short-sleeved white work shirt, sleeves pushed higher; grey work trousers; black clogs. A man who wipes his hands on his apron before he shakes yours.",
+      "texture_prompt": "white cotton baker's apron dusted with flour, short-sleeved white work shirt, grey work trousers, black leather clogs, brown hair, floured forearms, round loaf of bread",
+      "notes": "A look of the vol7 hans entry — the base needs \"looks\": [\"hans_1994\"]. Canon gives the apron, the bakery window and 'Real Hans'; hair, shirt and age are a PROPOSAL. The bare head is grounded in vol7: Greta knitted his cap in 2046 because he could not, after sixty, work a 4 a.m. winter kitchen without one. AGE CAUTION: 'Hans was sixty-eight' in a 2050s vol7 would make him about 10 in 1994; his own memories (his brother told him of the foundation in 1969; the poem cycle came in November 1989, 'thirty-three years since') need him born about 1954, i.e. about forty in 1994. User ruling needed — see ages.json. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch7_scumm_a.json",
+          "text": "Hans in the bakery window. Real Hans wipes his hands on his apron before he shakes yours."
+        },
+        {
+          "src": "vol2/vol2_ch7_scumm_a.json",
+          "text": "Bread for the morning, Dickens. You'll want it later."
+        },
+        {
+          "src": "vol4/meld_kaleidoscope_c.json",
+          "text": "On the monitors, Small Wood. Hans in the bakery window lifting a loaf off a tray and setting it back."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "john_frank_montreal",
+      "kind": "hero",
+      "name": "John Frank (Montreal, middle age)",
+      "file": "john_frank_montreal.glb",
+      "vol": [
+        5
+      ],
+      "keys": [],
+      "base": "john_frank",
+      "look": {
+        "label": "Montreal · middle age, years after Graustark",
+        "vols": [
+          5
+        ],
+        "scenes": [
+          "vol5_ch14_temperance",
+          "vol5_ch19_sun"
+        ],
+        "when": "XIV Temperance and XIX The Sun — 'this chapter takes place several years after the events of the chapters that surround it': the Montreal apartment and Tuesdays at Café Olimpico. (vol5_ch21_world nodes 99-105, John on the plane, are this era too, but that scene is mostly 2025 — stage those nodes with a scene key, not by scene id.)"
+      },
+      "tag": "vol5 XIV Temperance · XIX The Sun · a middle-aged man in a Montreal apartment · the narwhal mug · Café Olimpico",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "John Frank about fifteen years after Graustark, around forty: the waiter-journalist settled into middle age in Montreal. The same lean frame softened a little, brown hair cut shorter and starting to grey at the temples, a short tidy beard, tired-kind eyes behind thin wire reading glasses. A charcoal crewneck wool sweater over a collared shirt, dark corduroy trousers, a long navy wool overcoat for the grey-stone city, worn brown leather boots; a pocket notebook and pen in one hand. Calmer than the young man at the counter — observing, not mapping.",
+      "texture_prompt": "charcoal wool crewneck sweater, pale blue oxford collar, dark brown corduroy trousers, navy wool overcoat, brown leather boots, thin wire glasses, small black notebook, brown hair greying at temples",
+      "notes": "A look of the john_frank entry (vol5's mid-20s waiter) — the base needs \"looks\": [\"john_frank_montreal\"]. Canon gives 'middle age', Montreal, oat milk, the notebook; everything visible (beard, glasses, coat, grey) is a PROPOSAL. Era: John has been at Café Olimpico 'on Tuesdays for six years' after 'blurry years of drifting', and Erica's card ends 'fifteen years of acquaintance' — about 2039, John about 40. The Gauntlet wiki already treats XIV/XIX as 'same actor, future timeline'. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "He was content, he supposed, to just — be. A middle-aged man in a Montreal apartment. Drinking adequate coffee. Observing the alley. Occasionally visited by the ghosts of his former, more frantic selves."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "Middle age, he had concluded, was largely about developing a tolerance for ambiguity and lukewarm coffee."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "A note on the chronology: this chapter takes place several years after the events of the chapters that surround it."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "He sat at the small round metal table in the back corner, under the window, with his notebook open."
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "0 The Fool (also XIV Temperance, XIX The Sun — same actor, future timeline)"
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "elicia_temple_montreal",
+      "kind": "hero",
+      "name": "Elicia Duchane (Montreal, years after)",
+      "file": "elicia_temple_montreal.glb",
+      "vol": [
+        5
+      ],
+      "keys": [],
+      "base": "elicia_temple",
+      "look": {
+        "label": "Montreal · slower, more centered",
+        "vols": [
+          5
+        ],
+        "scenes": [
+          "vol5_ch19_sun"
+        ],
+        "when": "XIX The Sun — Café Olimpico, several years after Graustark; she is filming herself every night. (vol5_ch21_world nodes 96-98, Elicia flying Montreal → New York, are this era too; stage by key, not scene id.)"
+      },
+      "tag": "vol5 XIX The Sun · Café Olimpico · denim jacket repaired at the cuff · her mother's scarf",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Elicia Duchane in her Montreal years, mid-forties, the documentary maker after the collapse: slower than she used to be, more centered. Still tall, dark hair now worn loose to the shoulder with a few grey strands, no make-up, steady tired eyes. A denim jacket repaired at the cuff over a black knit top, her mother's long patterned wool scarf wound twice at the neck (the one thing that never changes costume), dark jeans, scuffed black ankle boots; a small handheld camera on a wrist strap.",
+      "texture_prompt": "faded denim jacket with darned cuff, black knit top, long rust-and-cream patterned wool scarf, dark denim jeans, scuffed black leather ankle boots, small black handheld camera, dark hair with grey strands",
+      "notes": "A look of the elicia_temple entry (vol5's early-30s host of Whispers from the Liminal) — the base needs \"looks\": [\"elicia_temple_montreal\"]. Canon: the denim jacket repaired at the cuff, the mother's scarf, 'slower than she used to, more centered'. Scarf pattern, hair, camera and age are a PROPOSAL; the era is the same as john_frank_montreal (~2039). Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "She came in the way she came in everywhere these days — slower than she used to, more centered, wearing a denim jacket that had been repaired at the cuff and a scarf that was,"
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "The scarf was, in the footage, the only thing Elicia wore that did not change costume."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aria_dean_sighting",
+      "kind": "hero",
+      "name": "Aria Dean (the sighting · always young)",
+      "file": "aria_dean_sighting.glb",
+      "vol": [
+        5,
+        6,
+        7
+      ],
+      "keys": [],
+      "base": "aria_third",
+      "look": {
+        "label": "the sighting · a young woman in yellow, about twenty-two",
+        "vols": [
+          5,
+          6,
+          7
+        ],
+        "scenes": [
+          "vol5_ch19_sun",
+          "vol5_ch21_world",
+          "vol6_ch2_dumpster",
+          "vol7_ch12_morning",
+          "vol7_ch20_door",
+          "vol7_ch20_each",
+          "vol7_ch22_portal"
+        ],
+        "when": "every flesh-and-blood or seen Aria after she leaves the tower: the window table at Café Olimpico, the Smolvud pier, the Gas & Go overhang, the cabin door, the portal room. The interior Aria in Nicola (vol5) stays on the base."
+      },
+      "tag": "vol5 XIX, XXI · vol6 ch2 · vol7 ch20, ch22 · blue curls, purple-rimmed glasses, yellow slicker · 'always young'",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aria Dean as she is seen, at her one fixed age: a tall young woman of about twenty-two, biracial-looking but not pinned to any one ethnicity, curly bright-blue hair worn in loose curls (some witnesses say dreadlocks), round purple-rimmed glasses, eyes that have seen more than twenty-two years allow. An open bright-yellow rain slicker with the hood down over a plain grey t-shirt, straight-leg jeans, worn brown lace-up boots, a small canvas bag over one shoulder. Still, unhurried, a little apart from the room — as if she has just stepped in from somewhere else.",
+      "texture_prompt": "bright yellow vinyl rain slicker, plain grey cotton t-shirt, straight-leg blue jeans, worn brown leather lace-up boots, small natural canvas shoulder bag, round purple acrylic glasses, curly bright-blue hair",
+      "notes": "A look of the aria_third entry, whose base model is Aria as a girl of about ten (right for vol4 'daddy' and the vol5 interior) — the base needs \"looks\": [\"aria_dean_teen\", \"aria_dean_sighting\"]. Canon fixes the yellow slicker, the blue hair, the purple-rimmed glasses, 'twenty-two, maybe twenty-three', 'tall'; the t-shirt and bag are partly canon (vol7 ch22: jeans, boots, canvas bag). Hair texture differs by witness — dreadlocks (vol5, vol6), 'curly blue' (vol7 ch22), 'curling and dark' under the hood (vol7 ch20) — the brief in _COMMUNITY_PLANNED_LORE.md says curly blue; this prompt follows it.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "She was, John registered with the small prickling attention of a journalist whose subconscious had just offered him a lead, very young — twenty-two, maybe twenty-three — and her eyes were the kind of eyes that had already seen more than twenty-two years normally allowed for."
+        },
+        {
+          "src": "vol6/vol6_ch2_dumpster.json",
+          "text": "Under the overhang, in the shadow, a tall woman with blue dreadlocks, yellow slicker, holding a cardboard tube."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "She was in the yellow rain slicker. The hood was down."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "Her hair was dyed curly blue."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "Her glasses were purple-rimmed."
+        },
+        {
+          "src": "vol7/vol7_ch22_portal.json",
+          "text": "She was in jeans and the boots Lena had painted on the alley wall on Friday morning. She had a small canvas bag over one shoulder."
+        },
+        {
+          "src": "lore/_COMMUNITY_PLANNED_LORE.md",
+          "text": "Always young. Her age in any appearance is the same fixed young."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "aria_dean_teen",
+      "kind": "hero",
+      "name": "Aria Dean (vol4 'daddy', the teenager)",
+      "file": "aria_dean_teen.glb",
+      "vol": [
+        4
+      ],
+      "keys": [],
+      "base": "aria_third",
+      "look": {
+        "label": "vol4 · daddy · the teenager in Shanghai",
+        "vols": [
+          4
+        ],
+        "scenes": [
+          "vol4_daddy_b"
+        ],
+        "when": "vii. daddy (b), from 'Aria is a teenager' to the night her father shows her his office in Shanghai — the last look before she leaves the world. The ten-year-old earlier in the same scene is the base."
+      },
+      "tag": "vol4 vii. daddy · Aria at the windows of her father's Shanghai apartment · black light and lava lamp",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aria Dean at about seventeen, Dickens and Esther Dean's daughter, the summer she visits her father in Shanghai: tall for her age, curly hair still its natural dark brown with a home-dyed streak of blue at the front, round purple-rimmed glasses, a guarded watchful face. An oversized black band t-shirt under an unzipped yellow hoodie, black jeans, beat-up canvas high-tops, a paperback on the occult in one hand. A kid who grew up at the seat of power and is about to find out what that means.",
+      "texture_prompt": "unzipped yellow cotton hoodie, black band t-shirt, black denim jeans, worn black canvas high-top sneakers, round purple glasses, dark curly hair with a blue streak, worn paperback",
+      "notes": "A look of the aria_third entry — the base needs \"looks\": [\"aria_dean_teen\", \"aria_dean_sighting\"]. vol4 gives her age (ten, then 'a teenager', then a dorm room), her tastes and Shanghai — no clothes or hair. Everything visible is a PROPOSAL that bridges the base child and the always-young woman (the yellow and the purple glasses arrive early on purpose). Lowest priority of the new looks: daddy_b is narrated, Aria has no lines. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol4/vol4_daddy_b.json",
+          "text": "Aria is a teenager and gets the distinct vibe that everyone is studying her for signs of weakness."
+        },
+        {
+          "src": "vol4/vol4_daddy_b.json",
+          "text": "She experiments with hallucinogens and listens to some Pink Floyd. There may or may not be a black light and or lava lamp in her dorm room."
+        },
+        {
+          "src": "vol4/vol4_daddy_b.json",
+          "text": "Aria visits her dad in Shanghai, he drives her to his one-room apartment and leaves her there, goes to sleep in his office."
+        }
+      ],
+      "prompt_mode": "append"
     }
   ]
 }

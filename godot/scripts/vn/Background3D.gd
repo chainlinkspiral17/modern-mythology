@@ -2660,6 +2660,112 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
+	# VOL 4's SCRAPBOOK DESK (2026-10-16, build_writers_desk.py; draft 1).
+	# Room 5.0 x 5.6 (godot x in [-2.5, 2.5], z in [0, -5.6], ceil 2.7): the
+	# desk against the N wall at godot (-0.55, -5.18), the corkboard above it,
+	# the N window just east of it onto the street, the bed on the W wall,
+	# books on the E, the door in the S wall at x 1.45. Plays the vols 1-4
+	# image names vol4_desk_night / _dawn / bedroom_desk / corkboard_night /
+	# betterment_* (resources/vn/bg_places.json).
+	"writers_desk": {
+		"scene": "res://scenes/locales/writers_desk.tscn",
+		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
+		# over the chair's shoulder: the desk, the lamp, the board, the window
+		"camera_origin": Vector3(0.75, 1.45, -3.15),
+		"camera_rotation": Vector3(-0.058, deg_to_rad(30.0), 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"writers_desk_board": {
+		"scene": "res://scenes/locales/writers_desk.tscn",
+		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
+		# the corkboard close: four clippings, the gaps, the red string
+		"camera_origin": Vector3(-0.2, 1.55, -4.2),
+		"camera_rotation": Vector3(0.05, deg_to_rad(17.5), 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"writers_desk_room": {
+		"scene": "res://scenes/locales/writers_desk.tscn",
+		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
+		# from the door: the bed, the desk under the board, the window
+		"camera_origin": Vector3(1.9, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.142, deg_to_rad(39.6), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"writers_desk_dawn": {
+		"scene": "res://scenes/locales/writers_desk.tscn",
+		"requires_glb": "res://assets/3d/locales/writers_desk.glb",
+		# "The desk near dawn. Every drawer pulled. The corkboard in the window light."
+		"camera_origin": Vector3(0.75, 1.45, -3.15),
+		"camera_rotation": Vector3(-0.058, deg_to_rad(30.0), 0.0),
+		"fov": 56.0,
+		"env": {"sky_top": Color(0.46, 0.54, 0.70, 1), "sky_horizon": Color(0.86, 0.80, 0.74, 1),
+			"ground_horizon": Color(0.40, 0.40, 0.42, 1), "ground_bottom": Color(0.16, 0.16, 0.18, 1),
+			"ambient_color": Color(0.70, 0.72, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.64, 0.66, 0.72, 1)},
+		"suppress_input": true,
+	},
+	# THE SCHOOL (2026-10-16, build_small_wood_high.py; draft 1): vol 2's
+	# Small Wood Senior High and vol 4's middle school, one building — the
+	# hall along godot z 0..-3.2 (x -24..24), the gym north of it (x -24..4,
+	# z -3.2..-21.2, 7.5 m high; the court centre at (-9, -12.2)), the
+	# locker room (x 4..14), and south of the hall the classroom (x -14..-4),
+	# the art room (-4..6) and the computer lab (6..16), z 0..9.
+	"small_wood_high_gym": {
+		"scene": "res://scenes/locales/small_wood_high.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_high.glb",
+		# the hearing: from the top bleacher row, over the gallery's chairs to the podium and the board's table
+		"camera_origin": Vector3(-5.0, 2.6, -5.4),
+		"camera_rotation": Vector3(-0.199, deg_to_rad(30.5), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"small_wood_high_hall": {
+		"scene": "res://scenes/locales/small_wood_high.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_high.glb",
+		# the hall east past the lockers, the trophy case on the left, the stairwell at the far end
+		"camera_origin": Vector3(-20.0, 1.6, -1.6),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"small_wood_high_locker": {
+		"scene": "res://scenes/locales/small_wood_high.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_high.glb",
+		# Coach Kordowski's locker room: from the east end down the aisle between the rows
+		"camera_origin": Vector3(13.4, 1.6, -5.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(90.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"small_wood_high_class": {
+		"scene": "res://scenes/locales/small_wood_high.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_high.glb",
+		# the classroom from the back corner: desks in rows, the chalkboard
+		"camera_origin": Vector3(-4.6, 1.6, 1.0),
+		"camera_rotation": Vector3(-0.044, deg_to_rad(112.6), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"small_wood_high_art": {
+		"scene": "res://scenes/locales/small_wood_high.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_high.glb",
+		# the art room: worktables, the easels, the windows
+		"camera_origin": Vector3(5.4, 1.7, 0.6),
+		"camera_rotation": Vector3(-0.087, deg_to_rad(126.3), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"small_wood_high_lab": {
+		"scene": "res://scenes/locales/small_wood_high.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_high.glb",
+		# the computer lab: three rows of machines, the sign
+		"camera_origin": Vector3(15.4, 1.7, 0.6),
+		"camera_rotation": Vector3(-0.087, deg_to_rad(126.3), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",

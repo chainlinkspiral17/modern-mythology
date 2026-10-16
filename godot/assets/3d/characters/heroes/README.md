@@ -82,3 +82,17 @@ Mixamo characters and Ready Player Me avatars are licensed for
 unlimited use in commercial projects per their respective TOS.
 Document the source per hero in a `CREDITS.md` here if their
 license requires attribution.
+
+## Game budget (2026-10-16)
+
+Meshy delivers ~650k-1.1M triangles and 4096 maps per figure (~40 MB);
+four on screen cost more than the rest of a room. Every model Hero Studio
+installs goes through `godot/tools/blender/slim_model.py`: 120k triangles
+(texture seams locked so no cracks open), base colour and normal map at
+2048, the other maps at 1024, JPEG — about 5 MB, no visible change at ECU.
+The untouched original is kept in `_full/` beside it (on the Drive,
+gitignored, `.gdignore`d). For models already on disk:
+
+    python3 godot/tools/meshy_pipeline.py slim          # Blender needed
+    python3 godot/tools/meshy_pipeline.py art-optimize  # after Godot imported them:
+                                                        # VRAM-compress the maps

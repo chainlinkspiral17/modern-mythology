@@ -15,6 +15,7 @@ const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
 const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const VN_DIRECTOR_SCRIPT := preload("res://scripts/vn/VnDirector.gd")
+const HeroArtScript := preload("res://scripts/vn/HeroArt.gd")
 const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
 const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 
@@ -77,6 +78,12 @@ var _auto_chip: Label = null
 # never sits in a held frame
 var _cursor_idle_t: float = 0.0
 var _photo_on: bool = false
+# STILLNESS (2026-10-14): the player's quiet moment with the art in the room
+var _still_on: bool = false
+var _still_restore: Dictionary = {}
+var _still_caption: Label = null
+var _still_hint: Label = null
+var _look_chip: Label = null
 var _photo_bars: Array = []          # two ColorRects, built lazily
 var _photo_restore: Dictionary = {}  # node path -> was-visible
 
@@ -799,9 +806,9 @@ func _dispatch(n: Dictionary) -> void:
 	if n.has("drop_item"):
 		_drop_item(String(n.get("drop_item")))
 	match n.get("t", ""):
-		"narrate":    _do_narrate(_directed(n))
-		"say":        _do_say(_directed(n))
-		"think":      _do_think(_directed(n))
+		"narrate":    _do_narrate(_directed_seen(n, "narrate"))
+		"say":        _do_say(_directed_seen(n, "say"))
+		"think":      _do_think(_directed_seen(n, "think"))
 		"choice":     _do_choice(n)
 		"show":       _do_show(n); _run_next()
 		"hide":       _do_hide(n); _run_next()
@@ -876,6 +883,18 @@ func _directed(n: Dictionary) -> Dictionary:
 	var n2 := n.duplicate()
 	n2["text"] = stripped
 	return n2
+
+
+## _directed() + the director's eye on the art in the room (2026-10-14):
+## a narration line that names a picture hanging here holds on it for the
+## line (VnDirector.consider_line); the line's own [shot:] always wins.
+func _directed_seen(n: Dictionary, kind: String) -> Dictionary:
+	var raw: String = _s(n, "text")
+	var cued: bool = raw.begins_with("[") and raw.find("[shot:") != -1
+	var d: Dictionary = _directed(n)
+	if _director != null:
+		_director.call("consider_line", _s(d, "text"), kind, cued)
+	return d
 
 
 func _do_narrate(n: Dictionary) -> void:
@@ -1195,7 +1214,38 @@ const BG3D_SCRIPT := preload("res://scripts/vn/Background3D.gd")
 var _bg_place: String = ""
 
 
+## BG PLACES (2026-10-16): the vols 1-4 scenes name flat pictures
+## (assets/backgrounds/<stem>.jpg) that were never made; bg_places.json maps
+## each stem to the 3D set that plays it (exact, reuse or a stand-in until
+## the place is built). A stem with no set (a picture still to paint) and
+## any 3d: or unknown src pass through unchanged.
+const BG_PLACES_PATH := "res://resources/vn/bg_places.json"
+static var _bg_places: Dictionary = {}
+static var _bg_places_loaded: bool = false
+
+
+static func resolve_bg(src: String) -> String:
+	if src == "" or src.begins_with("3d:"):
+		return src
+	if not _bg_places_loaded:
+		_bg_places_loaded = true
+		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(BG_PLACES_PATH))
+		if typeof(data) == TYPE_DICTIONARY:
+			var places: Variant = (data as Dictionary).get("places", {})
+			if typeof(places) == TYPE_DICTIONARY:
+				_bg_places = places
+	var stem: String = src.get_file().get_basename()
+	var entry: Variant = _bg_places.get(stem, null)
+	if typeof(entry) != TYPE_DICTIONARY:
+		return src
+	var to: Variant = (entry as Dictionary).get("to", null)
+	if typeof(to) == TYPE_STRING and String(to) != "":
+		return String(to)
+	return src
+
+
 func _place_of(src: String) -> String:
+	src = resolve_bg(src)
 	if not src.begins_with("3d:"):
 		return src
 	var presets: Dictionary = BG3D_SCRIPT.CAMERA_PRESETS
@@ -1207,7 +1257,7 @@ func _place_of(src: String) -> String:
 
 
 func _do_bg(n: Dictionary) -> void:
-	var src: String = _s(n, "src")
+	var src: String = resolve_bg(_s(n, "src"))
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:
 		_chars.call("hide_all")
@@ -1512,10 +1562,11 @@ func _process(delta: float) -> void:
 			if not AudioMgr.is_voice_playing():
 				_advance()
 	_apply_bg_motion(delta)
+	_update_look_chip()
 
 
 func _can_timed_advance() -> bool:
-	if _transition_lock or _photo_on or _backlog_overlay != null:
+	if _transition_lock or _photo_on or _still_on or _backlog_overlay != null:
 		return false
 	if _choices != null and _choices.visible:
 		return false
@@ -1713,6 +1764,30 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if _vn_debug_overlay_visible():
 			return
+	# ── STILLNESS (J / pad Y) · the quiet moment with the room's art ──
+	if _still_on:
+		if event is InputEventKey and event.pressed:
+			var kc: Key = (event as InputEventKey).keycode
+			if kc == KEY_LEFT or kc == KEY_RIGHT:
+				_still_step(-1 if kc == KEY_LEFT else 1)
+				get_viewport().set_input_as_handled()
+				return
+			if not event.echo and kc == KEY_J:
+				_exit_stillness()
+				get_viewport().set_input_as_handled()
+				return
+		if event.is_action_pressed("advance") or event.is_action_pressed("menu_back"):
+			_exit_stillness()
+			get_viewport().set_input_as_handled()
+			return
+		if event is InputEventKey or event is InputEventMouseButton:
+			get_viewport().set_input_as_handled()
+		return
+	if event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_J and _can_enter_stillness():
+		_enter_stillness()
+		get_viewport().set_input_as_handled()
+		return
 	if event.is_action_pressed("advance"):
 		if _choices != null and _choices.visible:
 			return
@@ -1874,6 +1949,136 @@ func _toggle_photo_mode() -> void:
 		for b2 in _photo_bars:
 			(b2 as ColorRect).visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+# ─── stillness ───────────────────────────────────────────────────
+# The user (2026-10-14): "the visual novel director needs to feature it
+# [the 2D art] but subtly. Building out quiet moments of stillness using
+# the game mechanics would be preferable." On a waiting line, when the
+# room holds close-up pieces (letters, flyers, photos, paintings — the
+# roster's `inspect`), a faint "◇ look" sits by the AUTO chip. J (pad Y,
+# via GamepadMgr's J synth) lets the text go: the camera settles on the
+# nearest piece and drifts in, a one-line caption names it, the music
+# dips under the audio director's stillness bed (AudioMgr). ◂ ▸ browse;
+# J, advance or back return to the page exactly where it was. Each piece
+# seen is marked in the gallery's seen set ("art:<slug>").
+
+func _can_enter_stillness() -> bool:
+	if not _waiting or _transition_lock or _photo_on or _backlog_overlay != null:
+		return false
+	if (_choices != null and _choices.visible) or (_interlude != null and _interlude.visible):
+		return false
+	return _director != null and bool(_director.call("stillness_available"))
+
+
+func _enter_stillness() -> void:
+	if _dlg.visible and _dlg.call("is_typing"):
+		_dlg.call("finish_typing")
+	var piece: Dictionary = _director.call("enter_stillness")
+	if piece.is_empty():
+		return
+	_still_on = true
+	_still_restore = {}
+	for n in [_dlg, _hud, _choices, _auto_chip, _look_chip]:
+		if n != null and is_instance_valid(n):
+			_still_restore[n.get_instance_id()] = n.visible
+			n.visible = false
+	_ensure_still_labels()
+	_show_still_piece(piece)
+	AudioMgr.enter_stillness(HeroArtScript.current_locale, _vol)
+
+
+func _still_step(dir: int) -> void:
+	var piece: Dictionary = _director.call("step_stillness", dir)
+	if not piece.is_empty():
+		_show_still_piece(piece)
+
+
+func _exit_stillness() -> void:
+	if not _still_on:
+		return
+	_still_on = false
+	_director.call("exit_stillness")
+	AudioMgr.exit_stillness()
+	for n in [_dlg, _hud, _choices, _auto_chip, _look_chip]:
+		if n != null and is_instance_valid(n) and _still_restore.has(n.get_instance_id()):
+			n.visible = bool(_still_restore[n.get_instance_id()])
+	for l in [_still_caption, _still_hint]:
+		if l != null and is_instance_valid(l):
+			l.visible = false
+
+
+func _show_still_piece(piece: Dictionary) -> void:
+	var name: String = String(piece.get("name", ""))
+	_still_caption.text = name
+	_still_caption.visible = FirstPersonController.hud_visible
+	var count: int = int(_director.call("stillness_count"))
+	_still_hint.text = ("◂  %d / %d  ▸     J  return" % [int(_director.call("stillness_index")) + 1, count]) \
+		if count > 1 else "J  return"
+	_still_hint.visible = FirstPersonController.hud_visible
+	SaveSystem.mark_cg_seen("art:" + String(piece.get("slug", "")))
+
+
+func _ensure_still_labels() -> void:
+	if _still_caption != null and is_instance_valid(_still_caption):
+		return
+	_still_caption = Label.new()
+	_still_caption.add_theme_font_size_override("font_size", 18)
+	_still_caption.add_theme_color_override("font_color", Color(0.93, 0.89, 0.80, 0.92))
+	_still_caption.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.75))
+	_still_caption.add_theme_constant_override("outline_size", 5)
+	_still_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_still_caption.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	_still_caption.offset_left = -480
+	_still_caption.offset_right = 480
+	_still_caption.offset_top = -74
+	_still_caption.offset_bottom = -46
+	_still_caption.z_index = UI_Z + 70
+	_still_caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_still_caption.add_to_group("ui")
+	var cap_font: Font = load(SkinDB.F_LITERATA_I) as Font
+	if cap_font != null:
+		_still_caption.add_theme_font_override("font", cap_font)
+	add_child(_still_caption)
+	_still_hint = Label.new()
+	_still_hint.add_theme_font_size_override("font_size", 12)
+	_still_hint.add_theme_color_override("font_color", Color(0.85, 0.80, 0.70, 0.55))
+	_still_hint.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.6))
+	_still_hint.add_theme_constant_override("outline_size", 3)
+	_still_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_still_hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	_still_hint.offset_left = -300
+	_still_hint.offset_right = 300
+	_still_hint.offset_top = -40
+	_still_hint.offset_bottom = -22
+	_still_hint.z_index = UI_Z + 70
+	_still_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_still_hint.add_to_group("ui")
+	add_child(_still_hint)
+
+
+# The faint "◇ look" by the AUTO chip: only on a waiting line, the text
+# done typing, the room holding close-up pieces — and never through F4.
+func _update_look_chip() -> void:
+	var want: bool = not _still_on and _can_enter_stillness() \
+		and not (_dlg.visible and bool(_dlg.call("is_typing")))
+	if not want and _look_chip == null:
+		return
+	if _look_chip == null:
+		_look_chip = Label.new()
+		_look_chip.text = "◇ look · J"
+		_look_chip.add_theme_font_size_override("font_size", 12)
+		_look_chip.add_theme_color_override("font_color", Color(0.82, 0.76, 0.62, 0.50))
+		_look_chip.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.6))
+		_look_chip.add_theme_constant_override("outline_size", 3)
+		_look_chip.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+		_look_chip.offset_left = -190
+		_look_chip.offset_top = -30
+		_look_chip.z_index = UI_Z + 5
+		_look_chip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_look_chip.add_to_group("ui")
+		add_child(_look_chip)
+	_look_chip.visible = want and FirstPersonController.hud_visible
 
 
 # True when the mouse is over a Button (or inside one — icon /

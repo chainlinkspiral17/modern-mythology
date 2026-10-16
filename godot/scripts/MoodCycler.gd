@@ -17,6 +17,7 @@
 extends CanvasLayer
 
 const _VERTEX_COLOR_GUARD := preload("res://scripts/VertexColorGuard.gd")
+const _STATIC_MERGE := preload("res://scripts/StaticMerge.gd")
 
 const MOODS: Array = [
 	# ── naturalistic time-of-day ─────────────────────────────────
@@ -1550,6 +1551,10 @@ func _ready() -> void:
 		var vc_fixed: int = _VERTEX_COLOR_GUARD.apply(vc_root)
 		if vc_fixed > 0:
 			print("[Mood] vertex colours switched on for %d surface(s)" % vc_fixed)
+		# STATIC MERGE (2026-10-16): the still parts drawn as a few chunks —
+		# graustark was 14,316 draw calls. Runs two frames from now, after
+		# the stand-ins are hidden; the parts keep their nodes. See the script.
+		_STATIC_MERGE.attach(vc_root)
 
 	# Per-scene starting style pack — applied AFTER strata + lights are
 	# resolved so the lighting transition has somewhere to lerp from.
