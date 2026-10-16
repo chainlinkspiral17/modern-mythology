@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 6,
   "type": "chapter",
-  "title": "Ch 6 — Act Two — The Office",
+  "title": "Act Two — The Office",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 6 — The Office",
+      "text": "The Office",
       "sub": "INT. The Office · Day",
       "duration": 2000
     },

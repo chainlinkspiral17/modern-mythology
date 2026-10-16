@@ -3,7 +3,7 @@
   "vol": 2,
   "chapter": 4,
   "type": "chapter",
-  "title": "Ch 4 — iv. night lights",
+  "title": "iv. night lights",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 4 — iv. night lights",
+      "text": "iv. night lights",
       "sub": "Small Wood · December",
       "duration": 2200
     },

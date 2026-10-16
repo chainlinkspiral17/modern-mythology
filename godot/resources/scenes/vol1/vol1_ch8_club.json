@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 8,
   "type": "chapter",
-  "title": "Ch 8 — Act Two — Club #",
+  "title": "Act Two — Club #",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 8 — Club #",
+      "text": "Club #",
       "sub": "INT. Club # · Night",
       "duration": 2400
     },

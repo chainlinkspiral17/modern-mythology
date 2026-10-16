@@ -3,7 +3,7 @@
   "vol": 2,
   "chapter": 1,
   "type": "interlude",
-  "title": "Ch 1 — Interlude — Briar Falls",
+  "title": "Interlude — Briar Falls",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 1 — Briar Falls",
+      "text": "Briar Falls",
       "sub": "Rest Stop · Small Wood · mid-nineties",
       "duration": 3000
     },

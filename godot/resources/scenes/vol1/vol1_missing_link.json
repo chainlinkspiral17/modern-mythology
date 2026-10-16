@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 1,
   "type": "interlude",
-  "title": "Ch 1 — Interlude — The Missing Link",
+  "title": "Interlude — The Missing Link",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 1 — The Missing Link",
+      "text": "The Missing Link",
       "sub": "Bus depot · Rain · No clock",
       "duration": 3000
     },

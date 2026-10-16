@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 4,
   "type": "chapter",
-  "title": "Ch 4 — Act One — Dream States",
+  "title": "Act One — Dream States",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 4 — Dream States",
+      "text": "Dream States",
       "sub": "INT. Faust's Bedroom · Night",
       "duration": 2600
     },

@@ -3,7 +3,7 @@
   "vol": 2,
   "chapter": 12,
   "type": "chapter",
-  "title": "Ch 12 — xii. Drift Wood",
+  "title": "xii. Drift Wood",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 12 — xii. drift wood",
+      "text": "xii. drift wood",
       "sub": "Small Wood Senior High · The back page",
       "duration": 2400
     },

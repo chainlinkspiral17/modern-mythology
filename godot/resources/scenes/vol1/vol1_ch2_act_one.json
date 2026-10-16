@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 2,
   "type": "chapter",
-  "title": "Ch 2 — Act One — John Faust",
+  "title": "Act One — John Faust",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 2 — Act One",
+      "text": "Act One",
       "sub": "John Faust",
       "duration": 2800
     },

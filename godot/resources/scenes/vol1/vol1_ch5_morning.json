@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 5,
   "type": "chapter",
-  "title": "Ch 5 — Act Two — The Plot Thickens",
+  "title": "Act Two — The Plot Thickens",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 5 — Act Two",
+      "text": "Act Two",
       "sub": "The Plot Thickens",
       "duration": 2400
     },

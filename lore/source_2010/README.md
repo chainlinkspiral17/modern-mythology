@@ -55,6 +55,6 @@ The rest of Vols I–IV is now in `godot/resources/scenes/vol1–vol4`. There ar
 
 Open questions for Andy, as flagged by the batches:
 - p.283 (blank in the PDF render) was supplied by Andy as a screenshot and is now in both the source text and the uncle nick scene.
-- Earthman's repeated numerals (two v.s, two vi.s, x → xii) are Andy's design choice and stay as printed. Each chapter title and opening card also carries its running number, e.g. "Ch 7 — v. emulsion".
+- Earthman's repeated numerals (two v.s, two vi.s, x → xii) are Andy's design choice and stay as printed.
 - Vol I p.55: "Dicken's Phone vibrates" corrected to Faust's, per Andy.
 - In "ps." (p.393), the blog postscript after SCUMM plays as its own story.

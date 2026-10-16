@@ -3,7 +3,7 @@
   "vol": 1,
   "chapter": 3,
   "type": "chapter",
-  "title": "Ch 3 — Act One — Judgement Day",
+  "title": "Act One — Judgement Day",
   "nodes": [
     {
       "t": "bg",
@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 3 — Judgement Day",
+      "text": "Judgement Day",
       "sub": "EXT. Driving Around · Night",
       "duration": 2400
     },

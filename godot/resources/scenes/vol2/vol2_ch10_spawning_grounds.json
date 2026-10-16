@@ -3,7 +3,7 @@
   "vol": 2,
   "chapter": 10,
   "type": "chapter",
-  "title": "Ch 10 — x. The Spawning Grounds",
+  "title": "x. The Spawning Grounds",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 10 — x. the spawning grounds",
+      "text": "x. the spawning grounds",
       "sub": "High school gymnasium · Evening",
       "duration": 2400
     },

@@ -3,7 +3,7 @@
   "vol": 3,
   "chapter": 1,
   "type": "chapter",
-  "title": "Ch 1 — i. the boy from pasadena",
+  "title": "i. the boy from pasadena",
   "nodes": [
     {
       "t": "bg",
@@ -27,7 +27,7 @@
     },
     {
       "t": "interlude",
-      "text": "Ch 1 — i. the boy from pasadena",
+      "text": "i. the boy from pasadena",
       "sub": "transmission · the ruined future",
       "duration": 2400
     },
