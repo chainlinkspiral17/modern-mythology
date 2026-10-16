@@ -31678,11 +31678,11 @@
       "canon": [
         {
           "src": "godot/resources/scenes/vol2/vol2_ch2_interlude_three.json",
-          "text": "And it was Jay Rose who pencilled the one and only comic strip — DriftWood — about a teenager named Wood and his yearnings to leave the small town forever."
+          "text": "And it was Arthur Finch who pencilled the one and only comic strip — DriftWood — about a teenager named Wood and his yearnings to leave the small town forever."
         }
       ],
       "prompt_mode": "append",
-      "notes": "(2026-10-13, written from the builder, scenes and wiki) Content inferred: Jay Rose's DriftWood strip (builder pins it on the corkboard); scanning it is my invention.",
+      "notes": "(2026-10-13, written from the builder, scenes and wiki) Content inferred: Arthur Finch's DriftWood strip (the strip artist; Jay Rose is the DJ, a split character, 2026-10-16) (builder pins it on the corkboard); scanning it is my invention.",
       "art_cat": "SCREEN",
       "score_lines": 28,
       "score_mentions": 0,

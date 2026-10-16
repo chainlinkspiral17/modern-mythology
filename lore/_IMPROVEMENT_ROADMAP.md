@@ -3834,6 +3834,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-16 · CANON: ARTHUR FINCH AND JAY ROSE, A SPLIT CHARACTER.** The
+user: "Arthur Finch is strip artist. Jay Rose is DJ. Split character. I like
+the naming ambiguity over time. Meta texts." Vol 2's one figure becomes two:
+**Arthur Finch** pencils DriftWood for the school paper (and returns in vol
+10); **Jay Rose** is the deejay at the rec-center dance ("His name was Jay
+Rose … actor, artist, and musician", "Jay Rose killed the thing dead" stay).
+Where the text lets the names blur (chapter xii's "jay rose was the first of
+us to disappear. These are the comics he contributed …", the strip's drawn
+byline "driftwood by jay rose", the DJ who "disappeared and never came
+back"), it STAYS as written: the ambiguity is the point, a meta-text. Do not
+"fix" it. Changed here: vol2_ch2_interlude_three (the strip line), the
+school-newspaper builder's notes, the DriftWood monitor's roster entry. The
+vols 1–4 import (branch claude/vol1-4-source-text, another session) renamed
+the DJ lines too; they go back to Jay Rose there.
+
 **2026-10-16 · pass 106: THE GRAPHICS BUDGET, SPENT WELL (perf draft 2).**
 The user, after pass 105's assessment: "Go ahead". Four pieces:
 
@@ -5483,7 +5498,7 @@ Draft 3 targets:
 vol2 interlude three ("I joined the school newspaper on a whim ... Most of
 my friendships in Small Wood were forged out of that classroom and the
 late nights") played in an 8 x 6 m box with four desks. The prose: Katrina
-the photographer, Shannon on features, Jay Rose's one comic strip —
+the photographer, Shannon on features, Arthur Finch's one comic strip —
 DriftWood — "an understaffed, underfunded academic endeavor", deadlines,
 the football season. `build_school_newspaper.py` is rewritten as a real
 classroom the paper has colonised, 9.6 x 8.4 m under a 3.0 m drop ceiling:
