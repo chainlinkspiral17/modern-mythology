@@ -1,0 +1,113 @@
+{
+  "id": "vol4_drawer_prospectus",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Oneironautics · prospectus",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "ONEIRONAUTICS INC.",
+      "sub": "prospectus · 2010",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Letterhead in two colors, the second off-register: ONEIRONAUTICS INC. · SMALL WOOD, OREGON. One staple in the corner has rusted a ring into the paper."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_oneironautics_prospectus.jpg",
+      "caption": "Oneironautics is dedicated to the art…"
+    },
+    {
+      "t": "narrate",
+      "text": "Oneironautics is dedicated to the exploration of innovation and art in video games. If you are one of those who believe there is no art to be found in games, it is our purpose at Oneironautics to prove you wrong."
+    },
+    {
+      "t": "narrate",
+      "text": "We strive for the highest quality possible experience through finely-crafted presentation, design, game-play, and post-production music and audio. We will initially distribute our product through tried-and-tested digital distribution channels, and positive word of mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "Oneironautics is unafraid to test unproven waters in game-genre and potential audience, and want our games to stand as both a singular experience, and as a piece of the collective Oneironautics brand of games."
+    },
+    {
+      "t": "narrate",
+      "text": "Beyond our initial offering, Iris, we have a half a dozen well-developed future projects to unveil in the years to come."
+    },
+    {
+      "t": "narrate",
+      "text": "Land of Milk & Honey is a competitive/cooperative adventure for three players. Gamers and their friends take the roles of the Artist, Musician, and Philosopher. Each archetype fulfills a specific class of game-play in the Gauntlet-mold."
+    },
+    {
+      "t": "narrate",
+      "text": "What makes LoMaH unique is its emphasis on group-dynamic storytelling. Players compete and cooperate to complete storytelling, action beats, and every other moment along the way."
+    },
+    {
+      "t": "narrate",
+      "text": "Players get new gear for progressing through episodic party-game style competitions, take down bad guys in combat, woo lovely ladies, and complete quests in detailed locations."
+    },
+    {
+      "t": "narrate",
+      "text": "The game takes place in a slacker utopia that is being invaded by the three evils: Business, Military and Religion."
+    },
+    {
+      "t": "narrate",
+      "text": "In the margin beside the three evils, in pencil, a second hand: three of us, too. we three shall be— and the line stops."
+    },
+    {
+      "t": "narrate",
+      "text": "Three friends must become heroes of legend to repel the forces of evil, and not get too corrupted along the way. A unique visual style and immersive narrative will give gamers a unique window into an almost classical mythology and philosophy."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the paragraph, pressed hard enough to tear the paper: SMOLVUD. The word appears nowhere else in the prospectus."
+    },
+    {
+      "t": "narrate",
+      "text": "Philadelphia is a stark and realistic look at the effects of human dabbling into the nature of time and space. A hyper-detailed first person horror adventure with military undertones set aboard a United States Navy aircraft carrier in several different time periods,"
+    },
+    {
+      "t": "narrate",
+      "text": "you play as the mysterious quantum archaeologist exploring the space-time wreckage of the vessel, reconstructing what went wrong (or right)."
+    },
+    {
+      "t": "narrate",
+      "text": "In our near future, the military tests out a super-solid time travel device that goes haywire, and explosion of superfluid is discharged across the vessel, causing the USS Philadelphia itself to resonate on frequencies that create pocket rifts in time and space."
+    },
+    {
+      "t": "narrate",
+      "text": "The ship itself becomes a time-machine, and the time-travelers are all the sailors on board, past, present and future, whose realities all become intertwined, horrifically so."
+    },
+    {
+      "t": "narrate",
+      "text": "The fourth paragraph is blacked out, every line, in a marker that bled through to the page behind. Only the last word was missed: name."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_prospectus",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

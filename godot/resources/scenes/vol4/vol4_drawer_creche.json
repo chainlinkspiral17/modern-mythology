@@ -1,0 +1,68 @@
+{
+  "id": "vol4_drawer_creche",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Creche",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Creche",
+      "sub": "design document · 2012",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Creche Design Document"
+    },
+    {
+      "t": "narrate",
+      "text": "Premise: You play as a young child in a futuristic biodome-type nursery. As you and your fellow “siblings” age, new wings of the nursery open up for you to explore, attempt to break out of, or come to understand."
+    },
+    {
+      "t": "narrate",
+      "text": "Depending on how you play and the choices you make, different wings will be open to you, and new sub-sections and gardens just outside the glass will intrigue enough to prompt the discovery or reveal avenues of further exploration."
+    },
+    {
+      "t": "narrate",
+      "text": "The Outside is ruggedly volcanic black rock, coastal, eternally wet and storming, green and thrush with plantlife. Inside is calm and orderly."
+    },
+    {
+      "t": "narrate",
+      "text": "Tones and lights are all the siblings have to make order of themselves and the world. Their routine has been dictated since birth."
+    },
+    {
+      "t": "narrate",
+      "text": "If they are doing something bad, the creche lets them know, either through mood or discipline. Lighting, and musical cues are the first indicator. More extreme forms of notification include the removal or addition of walls, floors and ceilings."
+    },
+    {
+      "t": "narrate",
+      "text": "Behind it, a second title page. Creche, and under it, 0. Nothing else. The paper is worn thin at the zero, as if someone kept touching it."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_creche",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

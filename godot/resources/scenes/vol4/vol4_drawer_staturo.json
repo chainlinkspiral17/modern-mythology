@@ -1,0 +1,142 @@
+{
+  "id": "vol4_drawer_staturo",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "Staturo: A Collected History",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_drawer_open.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Staturo: A Collected History",
+      "sub": "world bible · By Ionas Servas, Scrib Guild, rank Sept.",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "In the years following my initial journeyman stewardship within the Guild fellowship, I was self-tasked with collecting and collating the existing and known records of the fallow lineage of Staturo of Westbeech, Hallorn, and later, the ravaged and ruined Caen Kingdom of Abalon."
+    },
+    {
+      "t": "narrate",
+      "text": "Staturo's lifestory and the accompanying soliloquy of his Caen subjects has passed out of favor in the many centuries since."
+    },
+    {
+      "t": "narrate",
+      "text": "We honor so many of the initial intrepid explorers who first conquered the Great Fearsome, what our ancestors knew the wide Tamarin Ocean. Staturo was just one of many players in that tumultuous time."
+    },
+    {
+      "t": "narrate",
+      "text": "Of the great many who set out in the great exodus, explored, encountered, traded, colonised, upon shore-setting, expanded our empire of empires, few now know of Staturo's singular and early accomplishments in poetry, exploration, naturalism, architecture, diplomacy and accord,"
+    },
+    {
+      "t": "narrate",
+      "text": "and fewer, if any, care to ever venture a visit to his empty and crumbling opalesque cities of Caen."
+    },
+    {
+      "t": "narrate",
+      "text": "Perhaps the generation wound inflicted by humanity's insatiable greed, and the genocidal actions against the Caen people, casts such a dismal pallor full well on the loss of what could have been, had the curious and all together beautiful shelled folk survived in the years following our first contact."
+    },
+    {
+      "t": "narrate",
+      "text": "My own journey to know the man Staturo is one that is still on-going. Hear his words, and reflect on the testimonies given by those who knew him, loved him, feared him and admired him. A great man, but a human being, no less."
+    },
+    {
+      "t": "interlude",
+      "text": "His Birth and Early Years",
+      "sub": "Staturo · a collected history",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "“Staturo's trouble was always his father. That man. I feel I should say something, but those who do-"
+    },
+    {
+      "t": "narrate",
+      "text": "It was not so much that Staturo was born under the shadow of a great, or even terrible man, though he could often be both those at once, it was that he focused all his awful attention and ambition on his only son.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“My father? A complicated individual. Self-made, defiant, independent to the point of never showing any love to family or friends. He always saw himself as the Merchant from that play, A Night by the Road."
+    },
+    {
+      "t": "narrate",
+      "text": "Whenever he was at home, he always corrected us by pointing to the road, or to the sea, or off somewhere on the horizon. He told me that trust was given only to those who paid him for his time and services. He made me promise never to trust him."
+    },
+    {
+      "t": "narrate",
+      "text": "Under that sentence, a pencil line, and in the margin a single name with a question mark after it: Dickens?"
+    },
+    {
+      "t": "narrate",
+      "text": "I intuited that he believed that family was a burden, a garden overrun in frequent absence or neglect to return to after many months away and rediscover unknowable, inhospitable, and perhaps unfit for respite."
+    },
+    {
+      "t": "narrate",
+      "text": "He was a brilliant, instructive, and uncommonly funny man, but love was never high on his list of valued traits.”"
+    },
+    {
+      "t": "narrate",
+      "text": "notebook from youth. observations of the world around."
+    },
+    {
+      "t": "narrate",
+      "text": "farmerboy folding dried seedpod\ntriangular accordion fanned the down middle\nonionskin ribs and curtain fabric\nscraped off with fingernail scrag\nletters, shapes and depth carved relief\ninto this small wood sculpture."
+    },
+    {
+      "t": "narrate",
+      "text": "The words small wood are circled, twice."
+    },
+    {
+      "t": "narrate",
+      "text": "The young bull's eyelashes are beautiful\na sweetness of pure gaze is why\nboys tease and tug at his tail\nHis alarm grows to panicked fright\nurgent instinct tense and knot muscle\nyoung buds awaken the death bursting from brow."
+    },
+    {
+      "t": "narrate",
+      "text": "Family history according to me.\nMarne named me after her own father.\nStevan could care less about names."
+    },
+    {
+      "t": "narrate",
+      "text": "Father asks me, “where was I born?”\nI don't have an answer, he blinks in succession\ngoes to the map on the wall and points."
+    },
+    {
+      "t": "narrate",
+      "text": "“Baobao, this island here.”\nI get up and follow his finger.\nHe lifts me up, pushes in close.\nI see the strange shape of the small place.\n“It may look tiny, but it took ten days to walk across by road.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Staturo was a lovely child. He had his mother's sense of wonder, and his father's desire to swallow the world up whole.”"
+    },
+    {
+      "t": "narrate",
+      "text": "Westbeech, his childhood home.\nStevan, the merchant father.\nMarne, his troubled mother.\nRegolos, his secretive uncle.\nDemeris, his first love."
+    },
+    {
+      "t": "narrate",
+      "text": "Clipped to the back, a note on company stationery: the shell-folk. keep them. for the town by the water, later."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_drawer_staturo",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_drawer_menu"
+    }
+  ]
+}

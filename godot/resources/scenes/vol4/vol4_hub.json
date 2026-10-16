@@ -46,6 +46,26 @@
           "scene": "vol4_stories"
         },
         {
+          "text": "a treatment: the game/ebook",
+          "scene": "vol4_goggles"
+        },
+        {
+          "text": "a printout signed Smartalec.",
+          "scene": "vol4_ed_toenine"
+        },
+        {
+          "text": "a VHS-C tape: paper cuts, video tests",
+          "scene": "vol4_video_tests"
+        },
+        {
+          "text": "index cards, rubber-banded",
+          "scene": "vol4_index_cards"
+        },
+        {
+          "text": "the bottom drawer · Oneironautics Inc.",
+          "scene": "vol4_drawer"
+        },
+        {
           "text": "the corkboard over the desk",
           "scene": "vol4_board",
           "requires": [

@@ -1,0 +1,160 @@
+{
+  "id": "vol4_video_tests",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "paper cuts · video tests",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_vacant_lot_dusk.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_machine_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "paper cuts and the star key",
+      "sub": "video tests · three takes",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "A VHS-C cassette in a rubber band with a typed page folded around it. The clapper in the first frame reads PROD: O. INC., and the date line has been left blank."
+    },
+    {
+      "t": "narrate",
+      "text": "She sees me in a hundred different ways while few else can hardly see me at all. I am her best friend and only a small part of me exists on your human plane of existence."
+    },
+    {
+      "t": "narrate",
+      "text": "This thought record is far more tangible than a glimpse of me ever will be. This makes it hard for your kind to understand the complexities of our relationship."
+    },
+    {
+      "t": "narrate",
+      "text": "I am music, light, shadow and color. She a bodily flesh rollercoaster of emotion."
+    },
+    {
+      "t": "interlude",
+      "text": "short scene 1: Girl with Imaginary Friend.",
+      "sub": "a vacant lot · take one",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "A young woman is accompanied by her imaginary friend, strolling through a vacant lot. The Imaginary Friend is a cloud of colorful images and strange particle effects."
+    },
+    {
+      "t": "narrate",
+      "text": "They stop near a stump, the young woman sits and takes a picture of her friend. He shyly retreats from her viewfinder."
+    },
+    {
+      "t": "say",
+      "char": "The Woman",
+      "expr": "amused",
+      "text": "Stay still, silly, I'm trying to take a picture of you."
+    },
+    {
+      "t": "narrate",
+      "text": "The I.F. suddenly snaps into focus, a strange neon outline of a person."
+    },
+    {
+      "t": "say",
+      "char": "I.F.",
+      "expr": "neutral",
+      "text": "There, will that suit you?"
+    },
+    {
+      "t": "narrate",
+      "text": "She gets the picture she wants and smiles. He casually drifts about, setting down feet, landing on the ground."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_graffiti_alley.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Short Scene 2.",
+      "sub": "an alleyway · take one",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The Young Woman is walking through an alleyway, graffiti being written on the walls all ghostly behind her."
+    },
+    {
+      "t": "narrate",
+      "text": "She stops to turn and look at it. She follows the art as it sweeps past her, gets to one end of the wall, and then comes back, a different color painting on top of the rest."
+    },
+    {
+      "t": "narrate",
+      "text": "A slight pull back shows her take it all in, as the wall goes back and forth, filled with color. She puts her hand up to the wall and slips in."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay on the wall.",
+          "goto": 23
+        },
+        {
+          "text": "cut to the next take.",
+          "goto": 24
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The paint keeps going without her. One tag it lays down twice, in a hand that isn't hers: 77."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_ivy_wall_door.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Short Scene 3.",
+      "sub": "an ivy wall · take one",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The young woman is walking along a red-bricked wall covered in ivy. It reaches all around her, high into the sky."
+    },
+    {
+      "t": "narrate",
+      "text": "She pulls out a key and inserts it into a metal door. Upon opening the door, she enters a giant walled park, overgrown and dark."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_star_key_door.jpg",
+      "caption": "the star key"
+    },
+    {
+      "t": "narrate",
+      "text": "End of tape. On the paper insert, under the three scene numbers, someone wrote a fourth and crossed it out until the pen went through."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_video_tests",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}
