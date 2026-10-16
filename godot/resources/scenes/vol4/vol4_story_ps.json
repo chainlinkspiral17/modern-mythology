@@ -1,0 +1,153 @@
+{
+  "id": "vol4_story_ps",
+  "vol": 4,
+  "chapter": 16,
+  "type": "chapter",
+  "title": "ps.",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_letters.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "ps.",
+      "sub": "a letter · opened, ingested",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "this life is a series of letters strung together one after another."
+    },
+    {
+      "t": "narrate",
+      "text": "Some go undelivered, others change lives and there are those that exist on their own as a story to learn from and grow by. A concentrated bit of the self, opened, ingested and considered."
+    },
+    {
+      "t": "narrate",
+      "text": "Words that mean everything and nothing, how easily deceived by meaning, caught up in syntax, reading what is wanted instead of implied. Emotional vignettes, an outburst of chronology, a story filtered through the eye to the hand to the ink on the page."
+    },
+    {
+      "t": "narrate",
+      "text": "Taking in a person so much thought is given to the exterior, their beauty and presence, their aura of affection can be like unto the light of creation. Life is brevity. I get caught up in the beauty of it all, it is very hard not to in the moment."
+    },
+    {
+      "t": "narrate",
+      "text": "I've made these same comparisons before, time and time again, a beautiful thing but about as substantial as a fleeting glimpse, always forever a beautiful thing."
+    },
+    {
+      "t": "narrate",
+      "text": "When it comes to distance and reflection, the mode and causality of thoughtful recollection, these aren't the moments that tear me apart, make me new again, often what does it is a simple understanding,"
+    },
+    {
+      "t": "narrate",
+      "text": "relayed, not hidden, forgetting the game, making an admission, a confession, having to say something, anything relating to the meaning, truth of it all, who we are, what we're doing here, where we're going. So many unknowns and sometimes what we do know is so painful, it hurts so much to say anything."
+    },
+    {
+      "t": "narrate",
+      "text": "What I've put in a letter, so much I've gotten from."
+    },
+    {
+      "t": "narrate",
+      "text": "Right now all I feel is an ache, a hole where words need to go."
+    },
+    {
+      "t": "narrate",
+      "text": "Portions of moments, whole chapters of life,\nIdea nowhere to be found, not even among cross faded dream.\nNow, idea spills out some font of the cosmos, bigger than reckoning,\nMe."
+    },
+    {
+      "t": "narrate",
+      "text": "Idea, such a thing wondrous in theory."
+    },
+    {
+      "t": "narrate",
+      "text": "In human thought, idea gives birth to good and then bad.\nNot so much evil, though it could be that,\nBad just a note played off key, missed ever so slight.\nBad hits your gut, like good does, or should."
+    },
+    {
+      "t": "narrate",
+      "text": "Where one stabs the mind with pangs of human recognition,\nThe other vibrates, etching warmth into visible shadow."
+    },
+    {
+      "t": "narrate",
+      "text": "Good is youthful dreaming, hard work, and glowing play.\nBad is destroying the hard earned dreams of others,\nA complacent acceptance,\nActive repression."
+    },
+    {
+      "t": "narrate",
+      "text": "The edges of perception, where the world is large, our universe is larger, and the multiverse still not largest.\nBigger than what you can imagine but exactly what you imagine lies our next question."
+    },
+    {
+      "t": "narrate",
+      "text": "Because there is no one true answer and also because there is, because that possibility also exists.\nWe are found, if not in the stardust, then in the mind's dust.\nThe physical complexity of not just life, not just a cell, not just atomic composition, or string vibration.\nWe are found, if not in these bodies, than in these senses."
+    },
+    {
+      "t": "narrate",
+      "text": "Tasting the sweet milk of life, smelling the sun on the flowers,\nTouching the lips of a lover, hearing words for the magic they are, seeing the world unfold within your lifetime."
+    },
+    {
+      "t": "narrate",
+      "text": "You can become god or like a god or just be.\nThe potential we call untapped is really a more like a jar whose lid is about to slide open.\nIt all comes down to perception seeing your life for what it truly is."
+    },
+    {
+      "t": "narrate",
+      "text": "A mythic, sensory, generational, idea driven, turbulence of thought, almost too much but never quite enough, a center of existence."
+    },
+    {
+      "t": "narrate",
+      "text": "It is about the Golden Moment, seized by the throat and\nthrottled into co-existence.\nA wonderful prisoner to muse over, abstract and extrapolate.\nThe tiny threads of a lifetime that weave in and out then fray out into so much aether.\nTheir intertwined mezzanine altogether incandescent if viewed up close or far away,\nLike a sculpture of neon spider silk weightless in flight."
+    },
+    {
+      "t": "narrate",
+      "text": "Beauty is all around us, as we are forever chasing it\nand losing sight of why it can be lost or found."
+    },
+    {
+      "t": "narrate",
+      "text": "We aspire to perfection, be that perfection in just one thing or in all things,\nOur place is both inside and outside this perfection, these two worlds,\nAnd when they truly meet, it is an affirmation of not just life but something far more profound."
+    },
+    {
+      "t": "narrate",
+      "text": "But that is the thing about perfection, where does it go from there where does it err along the way."
+    },
+    {
+      "t": "narrate",
+      "text": "The simple missteps of a life lived, the small regrets and missed opportunities, spiraling inward.\nA perfect life unlived by simple mistake, undone by single word and awkwardly glanced implication.\nRegret is what fills us instead, regret is what sours the happiness of ourselves and others,\nSpreads like a frown across the faces of a crowd."
+    },
+    {
+      "t": "narrate",
+      "text": "Failure is but an option, as is the path to success, regardless to how we get there.\nMeeting simple goals, understanding basic truths, deriving certain knowledge."
+    },
+    {
+      "t": "narrate",
+      "text": "The firmament we find ourselves in is new dirt,\nYet more far ancient than our animal intellect can tell."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_ps",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

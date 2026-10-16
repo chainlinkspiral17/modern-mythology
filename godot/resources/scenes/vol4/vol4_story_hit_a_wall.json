@@ -1,0 +1,210 @@
+{
+  "id": "vol4_story_hit_a_wall",
+  "vol": 4,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "hit a wall",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_retirement_kitchen.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_fridge_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "hit a wall",
+      "sub": "Chess's kitchen · four pm, waking hours",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Chess and the boy were sitting in her kitchen, making up Kool-Aid, the official beverage of the young and poor. She was out of macaroni and cheese so she and the boy ate from the mass of ramen noodles that lined her pantry. She had two sets of everything in her kitchen except for cups, she had lots of cups."
+    },
+    {
+      "t": "narrate",
+      "text": "Two plates, two bowls, two pans. She hardly ever used the second of anything. Her usual guests were grandmothers and grandfathers living a government supplied income as meager as her own. She sometimes had them over for tea in the mornings, when their schedules overlapped."
+    },
+    {
+      "t": "narrate",
+      "text": "Old people and her had completely different hours. She was up at four pm and by then they were usually asleep or making arrangements for sleep. As Chess and the boy slurped down their meal, Chess thought about how she didn't want to spend her whole life as a charity case."
+    },
+    {
+      "t": "narrate",
+      "text": "She took money twice a year from her grandparents, if only to have them worry less. She hated being dependent on someone else. Yet at the same time she was proud of her ability to give entirely of herself to someone else."
+    },
+    {
+      "t": "narrate",
+      "text": "She had moved into a retirement home because she could be surrounded by people who would gladly ask for her help. Maybe generosity was why she hadn't had sex in eighteen months. She outright refused pity sex and didn't pursue anything short term. Long term was just her way avoiding the issue altogether."
+    },
+    {
+      "t": "narrate",
+      "text": "Not that she wasn't attractive. She could turn every other guy on without really trying. She wasn't hot but she wasn't so cold as to give them no hope. That would be mean. Chess couldn't be mean. Just like she couldn't refuse a request for real desperate help. She couldn't walk away from someone else's pain."
+    },
+    {
+      "t": "narrate",
+      "text": "Her mother had given Chess's cat's kittens away to the neighbor to drown when she was eight. Chess grew up in San Antonio in a little adobe house one bedroom she shared with four siblings. All the boy toys and girl toys mixed up in a pile. She listened to music because it was free and it was her own."
+    },
+    {
+      "t": "narrate",
+      "text": "She slept with six boys the year she turned thirteen and didn't want much to do with sex for six years after that. Things were strange then. She didn't know what she was. She didn't know what things were. She went where the music was. She followed it around from place to place, person to person."
+    },
+    {
+      "t": "narrate",
+      "text": "Did things the music told her to do. The Todd boy had the same look in his eye that she had in hers the day she came home at 9 am and her mother kicked her out of the house and Chess discovered she had nowhere to go."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "warm",
+      "text": "Really, you can stay here until you get things figured out. It's not your home or nothing. Just a place to crash until you get a place of your own."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy nodded, stirring his sugar and red water concoction with a fork."
+    },
+    {
+      "t": "say",
+      "char": "Todd",
+      "expr": "tired",
+      "text": "Really nice of you. Don't even know me. I keep wanting to tell you something, something like thank you. But it's not that. Don't know what I'm trying to say."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Todd. Really, just take it easy. Just crash while I'm at work. Get some sleep. You'll feel better. Take a shower. Get cleaned up. Take a walk outside. Go for a swim in the pool."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "amused",
+      "text": "Just got to warn you don't go in the sauna, that's where the old folks hook up. I went in there once and saw what could only be described as old folk sex. Details you don't want to hear."
+    },
+    {
+      "t": "narrate",
+      "text": "Norman Todd laughed, rocking back and forth on the edge of the counter."
+    },
+    {
+      "t": "say",
+      "char": "Todd",
+      "expr": "amused",
+      "text": "Like what, they do it all sweaty for lubrication and stuff because they're all wrinkled up?"
+    },
+    {
+      "t": "narrate",
+      "text": "Chess smiled."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "amused",
+      "text": "Hey. Don't make fun of the old people."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the cups.",
+          "goto": 25
+        },
+        {
+          "text": "clear the table.",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "She had two sets of everything in her kitchen except for cups, she had lots of cups."
+    },
+    {
+      "t": "narrate",
+      "text": "Cups crowd the drying rack, none of them matching, red sugar water dried in rings."
+    },
+    {
+      "t": "narrate",
+      "text": "Chess got up from her chair at the small circular table and washed off her dish. The one with Donatello from the Teenage Mutant Ninja Turtles. It was like her brother's, back from when having something to call her own meant something important."
+    },
+    {
+      "t": "narrate",
+      "text": "Back when he touched her ballerina jewel box and it fell from her nightstand and broke at the hinge and the little ballerina snapped and she cried and wailed and beat on him with her tiny balled up fists. And he just stood there and said his sorrys and later tried to fix it. Tried to make it better but he couldn't."
+    },
+    {
+      "t": "narrate",
+      "text": "So he gave her his Burger King Donatello mug that he bought at a flea market for two dollars. She looked at it. Held it up to the light. Admired it for one perfect moment before she threw it to the ground. Watched it shatter at his feet."
+    },
+    {
+      "t": "narrate",
+      "text": "Because it was the sort of things that people who love each other do. Because he forgave her and she carried the guilt over something so small."
+    },
+    {
+      "t": "narrate",
+      "text": "The Todd boy wouldn't know about her life. Wouldn't care. Chess wanted to know all about him. Wanted to keep him here until she knew he was good and decent. He could be a good person."
+    },
+    {
+      "t": "say",
+      "char": "Todd",
+      "expr": "tired",
+      "text": "I'm really tired. I could really fall asleep right now."
+    },
+    {
+      "t": "narrate",
+      "text": "Chess pointed with her eyes."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Just use the futon. It pulls apart in two pieces."
+    },
+    {
+      "t": "say",
+      "char": "Todd",
+      "expr": "neutral",
+      "text": "We can keep them apart if that makes you more comfortable."
+    },
+    {
+      "t": "say",
+      "char": "Chess",
+      "expr": "neutral",
+      "text": "Sure. Whatever. Sleep is sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "Chess brushed her teeth because Kool-Aid before sleep tasted like toothpaste anyways and she couldn't afford a regular visit to the dentist. She rinsed and repeated because she was thorough and it was a rhythm she was used to. When she gargled, it was a natural sound, a regular sound that soothed her."
+    },
+    {
+      "t": "narrate",
+      "text": "Not the sound so much as the feeling, that hum that filled up her chest like she was singing."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_hit_a_wall",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

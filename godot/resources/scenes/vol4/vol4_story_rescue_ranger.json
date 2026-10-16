@@ -1,0 +1,122 @@
+{
+  "id": "vol4_story_rescue_ranger",
+  "vol": 4,
+  "chapter": 14,
+  "type": "chapter",
+  "title": "rescue ranger",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_squirrel_road.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_photocopier_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "rescue ranger",
+      "sub": "a mid-town road · 8:30 am",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Let me paint a picture for you. It is 8:30 am. I am in my car, hair wet from a shower just waking up. No food or liquid in me still a bit dreamy and dazed from a restful night's sleep. It's too early for me to determine how this day may fare. I turn the heat up, the radio on and I set out for the daily grind."
+    },
+    {
+      "t": "narrate",
+      "text": "When all of a sudden-"
+    },
+    {
+      "t": "narrate",
+      "text": "A squirrel is standing in the middle of the road, her bushy tail rigid, flicking back and forth like a rattle. She's just standing there, chattering away. My car is stopped maybe twelve or so feet in front of her. It's a quiet mid-town suburban road, damp with wet and soggy leaves. And the squirrel stands defiant."
+    },
+    {
+      "t": "narrate",
+      "text": "She shall not let me pass. I inch forward six inches or so. The squirrel chatters and pounds her tail left and right, to and fro, in agitation."
+    },
+    {
+      "t": "narrate",
+      "text": "To emphasize for effect, I'm having a Mexican stand-off with a squirrel. I say it's a she because despite the serious cojones shown, I see no obvious squirrel package up front. In human reckoning, no hairy beach ball gonads."
+    },
+    {
+      "t": "narrate",
+      "text": "In my experience, these agile beasts invite death upon themselves with regular abandon. I am confused and a little awed by my cute and fuzzy nemesis."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "inch forward again.",
+          "goto": 13
+        },
+        {
+          "text": "back up.",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "I inch forward six inches or so. The squirrel chatters and pounds her tail left and right, to and fro, in agitation."
+    },
+    {
+      "t": "narrate",
+      "text": "Wet leaves stick to the windshield wipers."
+    },
+    {
+      "t": "narrate",
+      "text": "Since I don't speak squirrel or chipmunk or whatever form of rodent language they chirp away in, I can't query the beast to find out why it refuses me passage. I admire the cunning creature and its show of fortitude so I back up, turn around and go down the street the other way."
+    },
+    {
+      "t": "narrate",
+      "text": "In my rearview mirror, the squirrel contemplates its victory on the battleground known as Michigan Street and basks in the glory of the moment. It will tell the tale of staring down a one ton vehicle, an eighth ton human, and coming away victorious."
+    },
+    {
+      "t": "narrate",
+      "text": "These are a few truths I came away from and they are thus:"
+    },
+    {
+      "t": "narrate",
+      "text": "1. I lack the necessary skills to adequately confront a squirrel poised in the middle of the road refusing to budge.\n2. (or) I am a sucker for being punctual and on-time.\n3. (most assuredly) The tree rodent uprising is at hand."
+    },
+    {
+      "t": "narrate",
+      "text": "Addendum, from my notes on the matter:"
+    },
+    {
+      "t": "narrate",
+      "text": "They have the position and means to attack our network of communication and utility. They have the numbers to swarm us en masse. They are a reckless, stupid and suicidal species. They eat their young for breakfast, stuffing their cheeks on babyflesh."
+    },
+    {
+      "t": "narrate",
+      "text": "They know where we live, they know our routine, they watch from above, stashing their stores for the armageddon they will unleash upon us all."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_rescue_ranger",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

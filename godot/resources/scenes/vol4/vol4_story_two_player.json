@@ -1,0 +1,69 @@
+{
+  "id": "vol4_story_two_player",
+  "vol": 4,
+  "chapter": 18,
+  "type": "chapter",
+  "title": "2-Player Sit-Down",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_arcade_cabinet.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_chiptune_loop.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "2-Player Sit-Down",
+      "sub": "the arcade · last quarters",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Words carefully aimed to intercept\nMissile'd defense, fortified silos\nOf intellect, wit, measured response."
+    },
+    {
+      "t": "narrate",
+      "text": "Cities are lost to stray visions of\nSoft-lined, out of focus passing beauties\nWhose backward glancing\nShoots and eschews for the pinball tables."
+    },
+    {
+      "t": "narrate",
+      "text": "Horsemen, more quarters for the slotting.\nFriendly conversation turned competitive.\nScores are tallied cities left flaming,\nDames in passing, wasted initials."
+    },
+    {
+      "t": "narrate",
+      "text": "Backsides scored to carnival noises,\nEyes never quite averted\nFrom dim-lit glass holding it all in."
+    },
+    {
+      "t": "narrate",
+      "text": "Drunken fingers fumble over drunken quarters\nThe last game is played to warm the eyes\nBack in to focus."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_two_player",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

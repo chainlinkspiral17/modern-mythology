@@ -1,0 +1,170 @@
+{
+  "id": "vol4_story_static_electric",
+  "vol": 4,
+  "chapter": 12,
+  "type": "chapter",
+  "title": "iii. static electric",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_machine_cell.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_machine_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "iii. static electric",
+      "sub": "the machine · locked down",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "My mouth tastes funny ever since I cut the gums in the back right bottom side. Wound opened up a bit, flesh just teasing me and it won't come off. Machine parts I feel with my tongue."
+    },
+    {
+      "t": "narrate",
+      "text": "Taste of copper and the sting of wire tips digging into bone. People chew and gnaw at themselves, to eat away thoughts of yesterday. People have blood of fire, oxygen and food fuels their flames."
+    },
+    {
+      "t": "narrate",
+      "text": "They burn bright but wither and shrivel when all that remains is the pitch of their hearts, like so much used oil, what was good and fresh and vital is cast out buried deep, sealed to protect animals and ground water."
+    },
+    {
+      "t": "narrate",
+      "text": "Colonies in the skies, aromas in the airs, my body smells an unwholesome reek. I batter down the door. The people inside cower, refuse me. I tower above them, ten feet above them. I am robot rampage. I am the machine that takes over for their fleshly needs. I eat them alive, fee fi fo fum."
+    },
+    {
+      "t": "narrate",
+      "text": "A light lights up. I check my gauges. Music in my head, a dance in my step, no place to be but here. Contents under pressure may vary. I feel queer. Oscillating camera eyes. Government experiments with psychics gone awry. Mechanics fused to their insides, diodes, LEDs, transistor radio parts gone WIFI."
+    },
+    {
+      "t": "narrate",
+      "text": "They were janitors, bus drivers, lunch ladies. People who serve just out of sight. There, but not. Those with the power to read our minds as we pass them by. They collect dirt on us as they clean under our step. Their wheels turn as they steer. They smile on the inside with a fake smile on the outside."
+    },
+    {
+      "t": "narrate",
+      "text": "I shower in industrial sparks. I drink from the cup of molten lead. I dress in the finest flesh peeled from their bones soft and delicate. I have no name lost in the system like so much misplaced paper work. Numbers will always remain of me. Digits clicking through time, changing, distributed."
+    },
+    {
+      "t": "narrate",
+      "text": "What to do with the name Maria. Mother of all, saint all seeing, always a place for it, never a place for me."
+    },
+    {
+      "t": "narrate",
+      "text": "Types of people. Where to begin and end in disseminating who they are, where they're headed. They are the information of a lifetime compiled and cross-sectioned, none of it matching, striving for the barest and basest of connection, identifying trends across a mélange of interpersonal experience."
+    },
+    {
+      "t": "narrate",
+      "text": "Break them down and make them new. Every day our universe, every moment their existence what has come before just a precursor to the moment they find themselves in where everything can change often brutal in bluntness."
+    },
+    {
+      "t": "narrate",
+      "text": "The shape of things pictured here as a spiral forever voyaging, only when it spins out of control does it come into focus."
+    },
+    {
+      "t": "narrate",
+      "text": "Random. Makeshift. Chaos."
+    },
+    {
+      "t": "narrate",
+      "text": "The voice outside my head is alien to the voice inside. They sound nothing alike, pre-recorded played back for his amusement. The man who whose job it is to wash the patina of colors from people's heads. Scrub them clean while he records and forces on them labels and pre-determined outcomes."
+    },
+    {
+      "t": "narrate",
+      "text": "Auras altered by medication and machinations. I refuse to budge. I stand firm a tower of right. My metal bones, girders rooted to the foundation of my belief. Gibbous animals are his kind. Wasted thought, wasted potential in the unveiling of their lives every bit as unique in their simplicity."
+    },
+    {
+      "t": "narrate",
+      "text": "Mundane are they, Ibsen's archetypes, strong roles for women, progressive realists."
+    },
+    {
+      "t": "narrate",
+      "text": "Dread words in dead times, the end is nigh, so says the night watchman. Lantern in hand, smile on his face, smoke coming out of his mouth, singing a song to the whir of summertime insects and the flutter of sparrows by the hundreds. A purpose exists and it is to illuminate."
+    },
+    {
+      "t": "narrate",
+      "text": "Not ancient knowledge or guiding insight but simple light by simple means."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "follow the lantern.",
+          "goto": 24
+        },
+        {
+          "text": "scream.",
+          "goto": 26
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Lantern in hand, smile on his face, smoke coming out of his mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "A small circle of yellow light swings along the dark, and the insects keep time."
+    },
+    {
+      "t": "narrate",
+      "text": "I scream and they all hear it, my scream of blood and loose teeth and rotten insides. They lock me down. In they come with their electric screwdrivers bolting me to my bedding. A light in the back of my throat flickers on and off, splashing their blank faces."
+    },
+    {
+      "t": "narrate",
+      "text": "My face runs red from the inside, my skin translucent yellow aglow."
+    },
+    {
+      "t": "narrate",
+      "text": "Pretend as hard as I can I can not be something I am not. Those are the dreams of me awake. I tug at chemical bonds forever binding. If I had the proper elements, I'd crack this prison remake the shell."
+    },
+    {
+      "t": "narrate",
+      "text": "The body alchemist, the broken golem, the magi's gift, all forgotten, I am never alone, ask me questions, I'll give them lies."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_museum_case.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "A boy whose name is Adam comes to look upon me and read the inscription in front of the window. His father holds him back tears in his eyes. I sit still because I want to look good. If I move it may frighten him away, a monster mother machine such as me."
+    },
+    {
+      "t": "narrate",
+      "text": "They talk about my inner workings because I have no ears and mouth and cannot respond to their unkind judgment, they critique my appearance and my demeanor. The museum guards sit in the wings, the attendants tell my history and the progress made to my surface restoration."
+    },
+    {
+      "t": "narrate",
+      "text": "I sit and I stare back out when all I want to do is tear their progress from my skin and coat the walls with the fresh paint of my love. Then they'd see me for what I really am not who they remember."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_static_electric",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

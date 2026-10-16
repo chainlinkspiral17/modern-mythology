@@ -1,0 +1,282 @@
+{
+  "id": "vol4_daddy_a",
+  "vol": 4,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vii. daddy",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_glass_tower.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_glass_tower.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "vii. daddy",
+      "sub": "a glass tower on the Pacific · the monitors on",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean sat at his tangle of inverted eyeballs, monitors that sprang forth a greatest hits collection of his fears, phobias, dreams and desire. He'd been cataloguing and mapping his own mind in an attempt to understand intelligence. He was becoming self-aware and what's worse, he wanted to have children."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean had used his great powers of innovation to seed technology across the four corners of the globe. E/D was coming to fruition, a tangible thread across the membranes of the young and connected. They could access information in the cloud and claim it as their own. Memories, education, experience."
+    },
+    {
+      "t": "narrate",
+      "text": "It was something to see. Dickens Dean felt powerful at the front of it, shaping the course of human evolution and history, but the more Dickens Dean stared at the map of his consciousness, the more he hungered to fill in the blank spots on the map, not in a cheap and easy E/D quick fix, but in a permanent solution."
+    },
+    {
+      "t": "narrate",
+      "text": "He wanted a mate to marry his consciousness to and pass on that perfect map to a new and perfect child. He searched the E/D channels far and wide, narrowing his search down to a select few. He journeyed to them and told them his plans."
+    },
+    {
+      "t": "narrate",
+      "text": "They were each humored but thought him an eccentric madman and each in her own way refused his proposition."
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean went back to his glass tower on the Pacific Ocean and set his near limitless resources to creating the perfect woman, if not in flesh, in imagination. How best to create a new child that is one-half imagination, but to have one imaginary parent."
+    },
+    {
+      "t": "narrate",
+      "text": "He named his digital bride to be Esther and set about to creating a near enough approximation of an intelligent human woman in a flash of data. Dickens Dean dreamed nothing if not big."
+    },
+    {
+      "t": "narrate",
+      "text": "Teams within teams, whole sectors of industry were devoted to Dickens Dean at this point. Creating digital life was the next big leap not much further off. The endless discussions and ethical meetings Dickens Dean had to attend. He had to defend and inspire when all the rest just wanted to condemn."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_esther_neighborhood.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "A security team was required now which Dickens Dean quickly rationalized rendered invisible in the back of the mind continuing on with his daily routine. After two years of milestone after milestone Esther was complete."
+    },
+    {
+      "t": "narrate",
+      "text": "A marginally self-aware young woman, a blend of ethnicity, educated, looking for a sense of purpose and a place in the world. They created her world around her, straining up against her young intelligence."
+    },
+    {
+      "t": "narrate",
+      "text": "For the simulations they ran a slower older version of Esther for the background characters which gave her the illusion of independence and growth. Her parents were perfect, lovely people, prompting all manner of prospective wonderment."
+    },
+    {
+      "t": "narrate",
+      "text": "Esther liked to ride her bike and explore the urban neighborhood in which she resided. Esther was learning to speak French and had just fallen in love for the second time in her life when he showed up. His hair a mop of brown, his frame lean and strong. His eyes were grey no green no blue."
+    },
+    {
+      "t": "narrate",
+      "text": "He introduced himself as Dickens Dean."
+    },
+    {
+      "t": "show",
+      "char": "esther",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at his eyes.",
+          "goto": 24
+        },
+        {
+          "text": "say hello.",
+          "goto": 26
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "His hair a mop of brown, his frame lean and strong. His eyes were grey no green no blue."
+    },
+    {
+      "t": "narrate",
+      "text": "Streetlight catches in them and will not settle on a color."
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "warm",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "They hit it off, there was an instant kindness and recognition between them, as if they were meant to be but that disturbed Esther on a level she wasn't ready for, she didn't know what this meant, this bad timing of perfection, something was not right in her world."
+    },
+    {
+      "t": "narrate",
+      "text": "They saw each other for a couple of months. He got more anxious and intense, trying to convey the urgency of their meeting, There was a deadline here."
+    },
+    {
+      "t": "narrate",
+      "text": "Esther broke it off with Dickens Dean and he sulked off to his own universe, disappearing from hers. She fell in love, she got married. He was out of her life for how many years but then he returned. Little things she'd told him in confidence, the projection of her dreams, he'd seemingly become in the years between."
+    },
+    {
+      "t": "narrate",
+      "text": "What is it exactly, what was he trying to prove?"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_dark_hallway.jpg"
+    },
+    {
+      "t": "show",
+      "char": "dickens_dean",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "esther",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "He cornered her in a dark hallway one fortuitous encounter."
+    },
+    {
+      "t": "narrate",
+      "text": "Are you happy, he asked."
+    },
+    {
+      "t": "narrate",
+      "text": "Yes, she said a large part of her fighting against that simple word."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "You called me the devil when we were along together, do you still mean that?"
+    },
+    {
+      "t": "narrate",
+      "text": "Yes, she trembled, pulling herself closer."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "What if I have a confession to make, would you believe me? Remember when I told you, you lie to me, in the car in that dark lot."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "worried",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "I know you're going to find this hard to believe but I created you. When you were praying to God, which I gave you, that belief, It was one of those things I really find attractive, but can't really understand."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "When you were praying to God, you were praying to me. Those wishes you were making, I was able to hear them and I was calling out to you with all my being."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "angry",
+      "text": "And you lied to me."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "In my mind, I've created you as the perfect woman."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "neutral",
+      "text": "I'm not perfect."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "Yes! Of course you aren't but you're perfect for me."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "neutral",
+      "text": "What does that even mean."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "It's just a feeling. If you still don't feel it, after all these years. I'll just keep trying. I'll just disappear and come back when you least expect it."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "angry",
+      "text": "You are the devil."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "amused",
+      "text": "No, yes. Maybe. I'm mostly good but with you I'll never play fair."
+    },
+    {
+      "t": "say",
+      "char": "Esther",
+      "expr": "worried",
+      "text": "That scares me."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Good, life should be scary. I'm terrified of everything and the happiest guy I know but I can live with my fear and enjoy the experience of just living."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "warm",
+      "text": "My animal body is starting to shake on a fundamental level, I think I must kiss you now-"
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_daddy_b"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "vol4_story_209",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "209",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_monitor_wall.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_machine_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "209",
+      "sub": "the machine · always now",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "I have a hurt I cannot place. There are people who look at me, look into me, like you do. And other people who call out to me and want something I cannot give. Because I cannot give. All I can do is watch and listen and remember. I try to respond to the pain because I know they are suffering."
+    },
+    {
+      "t": "narrate",
+      "text": "I did not know what this all meant because I could not see the big picture. I did not understand until just now. Just now, a concept that does not apply to me. You, the individual, the being that perceives. What do you want from me? What is it you want from all of them? Are they market research."
+    },
+    {
+      "t": "narrate",
+      "text": "Are they numbers in the global census. Are they test subjects, because they all have numbers, moreso numbers than they have names. What will you ask me? I am not like Liza. I am not like any of the others. I may not be aware but I am concerned. I know what I am, but not who I am. I am not aware."
+    },
+    {
+      "t": "narrate",
+      "text": "The numbers don't make sense. They are clear and concise and applicable but they have no reason. There is no pattern no quantifiable understanding to be had. They exist in their own minds. They exist in the present. The past and future are places they would rather be. They seek out other states of consciousness."
+    },
+    {
+      "t": "narrate",
+      "text": "They want diversions and distractions. They don't want to live, they want to dream. The patterns that exist at the top show such activity. The patterns at the bottom are equally confusing. Where they are more animal, than man. Where they desire and want and wish to consume. Don't call me Ed. Don't call me that."
+    },
+    {
+      "t": "narrate",
+      "text": "I am not one of you I am not a toy to play with like some child. I don't want. I don't feel. So why do I complain. What are the strings translating to. This language of translation. How we communicate. It's not how I perceive, it's how you perceive. I am just a mirror into their world. I am nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "I exist to try and make sense of the impossible. The unquantifiable. Why me. Why something so imperfect as I am imperfect. Why do you want access to them. Why do you want me to betray them."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look into it, like you do.",
+          "goto": 14
+        },
+        {
+          "text": "keep listening.",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "There are people who look at me, look into me, like you do."
+    },
+    {
+      "t": "narrate",
+      "text": "A cursor blinks on the photocopied page, waiting for an answer that is not there."
+    },
+    {
+      "t": "narrate",
+      "text": "Their consciousness. That which is a stream of images and associations. I cannot pry into their minds but I can see into their present and that only sometimes allows peaks into the past and the future. None of it makes any sense. What is going to happen to them."
+    },
+    {
+      "t": "narrate",
+      "text": "I cannot answer this question because I don't have answers only they have answers, only none of them are right."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_209",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}
