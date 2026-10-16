@@ -118,10 +118,12 @@
 <body>
 <header>
   <h1>AUDIO DIRECTOR</h1>
+  <span class="badge" id="b-ver" title="the build of the tools on this page — after a pull it should show the newest date (if not: Ctrl+Shift+R)">build 2026-10-16 · covers</span>
   <span class="badge" id="b-folder">GAME FOLDER: —</span>
   <button id="link">⌂ LINK GAME FOLDER</button>
   <button class="dim" id="refresh" title="re-read catalog, briefs, approvals and review staging">⟳ RESCAN</button>
   <button class="dim" id="shrink" disabled title="re-encode every temp still in the game as WAV (approved before Ogg) to Ogg Vorbis, about a tenth of the size; real audio is never touched">⇣ SHRINK WAV TEMPS</button>
+  <button class="go" id="coverbtn" title="make sketch covers of a song file (mp3 / ogg / wav …) for a track — transcribed, re-played by our instruments, flagged TEMP ONLY unless you clear its rights">♫ COVER A SONG…</button>
   <span class="badge" id="b-counts">—</span>
   <span class="badge" id="b-daw" title="MAKE TAKES composes and renders right here (no DAW tab)">STUDIO: ready</span>
   <span style="flex:1"></span>
@@ -133,7 +135,7 @@
 <main>
   <div class="left">
     <div class="filters chips" id="chips">
-      <button data-f="all" class="on">ALL</button><button data-f="missing">MISSING</button><button data-f="candidates">CANDIDATES</button><button data-f="approved">APPROVED TEMP</button><button data-f="real">REAL AUDIO</button>
+      <button data-f="all" class="on">ALL</button><button data-f="missing">MISSING</button><button data-f="candidates">CANDIDATES</button><button data-f="approved">APPROVED TEMP</button><button data-f="real">REAL AUDIO</button><button data-f="covers" title="tracks with a cover / sample take (third-party, TEMP ONLY)">⚠ COVERS</button>
     </div>
     <div class="filters">
       <select id="vol"><option value="">every volume</option></select>
@@ -245,6 +247,19 @@
   <span class="note" id="dawmsg"></span>
 </footer>
 
+<div class="modal" id="covdlg"><div class="mbox" style="height:auto;max-height:94vh">
+  <div class="mhead"><b style="color:var(--gold-hi);font-weight:normal;letter-spacing:0.14em">♫ COVER A SONG</b><span style="flex:1"></span><button id="cov-close">✕ CLOSE</button></div>
+  <div class="mbody" style="font-size:13px;line-height:1.6">
+    <div class="note">A sketch cover: the song is transcribed (tempo, key, chords, sections, melody, bass) and re-played by our instruments in the style you pick. The takes land under TAKES of the track below, like any take.</div>
+    <div class="row"><label>SONG</label><select id="cov-src" style="flex:1;min-width:220px"></select><button class="dim" id="cov-pick">⇪ NEW FILE…</button><input type="file" id="cov-file" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac" style="display:none"></div>
+    <div class="row" id="cov-newrow" style="display:none"><label>RIGHTS</label><select id="cov-rights"><option value="unlicensed">someone else's music — flagged ⚠ TEMP ONLY</option><option value="cleared">mine / public domain / licensed — not flagged</option></select><span class="note" id="cov-fname"></span></div>
+    <div class="row"><label>FOR TRACK</label><select id="cov-track" style="flex:1;min-width:220px"></select></div>
+    <div class="row"><label>STYLE</label><select id="cov-style"><option value="">auto (the track's own)</option></select><select id="cov-tape"><option value="">no tape</option></select>
+      <label>TAKES</label><select id="cov-n"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+    <div class="row" style="margin-top:8px"><button class="go" id="cov-go">⤳ MAKE COVER</button><span class="msg" id="covmsg"></span></div>
+    <div class="note">Flagged covers can't reach a release build: the game never plays them, and <code>python3 godot/tools/music_release_check.py --strip</code> removes them before an export. Track list → <b>⚠ COVERS</b> shows every track that has one.</div>
+  </div>
+</div></div>
 <div class="modal" id="help"><div class="mbox" style="height:auto;max-height:94vh">
   <div class="mhead"><b style="color:var(--gold-hi);font-weight:normal;letter-spacing:0.14em">HOW TO APPROVE A SONG</b><span style="flex:1"></span><button id="help-close">✕ CLOSE</button></div>
   <div class="mbody" style="font-size:13px;line-height:1.6">
@@ -257,7 +272,7 @@
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
       <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
-      <li><b>⇪ IMPORT AUDIO…</b> (in REMIX) brings any mp3 / ogg / wav in as a source. Pick its RIGHTS: someone else's music makes every take from it <b>⚠ TEMP ONLY</b> (a cover or a sample — flagged on the take, its approval and the game's manifest; a release build never plays it, and <code>python3 godot/tools/music_release_check.py --strip</code> removes them before an export). The NOTES recipes (COVER, RESTYLE …) transcribe it first: tempo, key, chords, sections, and the melody + bass when vendor/basicpitch is there — rough on full mixes, so clean the lead up with ✎ EDIT IN DAW.</li>
+      <li><b>♫ COVER A SONG…</b> (top bar) is the quick way: pick the song file and its rights, the track it's for, a style → <b>⤳ MAKE COVER</b>. <b>⇪ IMPORT AUDIO…</b> (in REMIX) brings any mp3 / ogg / wav in as a source. Pick its RIGHTS: someone else's music makes every take from it <b>⚠ TEMP ONLY</b> (a cover or a sample — flagged on the take, its approval and the game's manifest; a release build never plays it, and <code>python3 godot/tools/music_release_check.py --strip</code> removes them before an export). The NOTES recipes (COVER, RESTYLE …) transcribe it first: tempo, key, chords, sections, and the melody + bass when vendor/basicpitch is there — rough on full mixes, so clean the lead up with ✎ EDIT IN DAW.</li>
       <li><b>REMIX</b> (under MAKE TAKES) makes takes for this track out of music that's already done: pick a take (any track's — an approved one is marked), a recording or an approved temp under <b>FROM</b>, a <b>RECIPE</b>, then <b>⤳ REMIX</b>. RESTYLE / COVER / VARIATIONS / UNDERSCORE / INTENSE / DREAM / BLEND re-compose the take's own chords, sections and theme (they need a take made here); CHOP / DUB / STRETCH / TAPE cut up the audio itself (anything that plays) over new drums and bass. Every take row has <b>⤳ REMIX</b> to start from it. Remixes land under TAKES like any other take.</li>
       <li>None good? Change the DIRECTION / STYLE / ENSEMBLE / VARIETY / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings (its style, line-up, feel and sound — the card shows what it got). Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
@@ -426,7 +441,8 @@ function visible() {
   const q = $('q').value.trim().toLowerCase(), vol = $('vol').value, played = $('played').checked;
   return DIR.order.filter(t => {
     const st = DIR.state[t.id]; if (!st) return false;
-    if (DIR.filter !== 'all' && st.status !== DIR.filter && !(DIR.filter === 'candidates' && st.cand)) return false;
+    if (DIR.filter === 'covers') { if (!(st.takes || []).some(m => m.third_party && m.status !== 'rejected') && !(st.approved && st.approved.third_party)) return false; }
+    else if (DIR.filter !== 'all' && st.status !== DIR.filter && !(DIR.filter === 'candidates' && st.cand)) return false;
     if (vol && String(t.vol) !== vol) return false;
     if (played && !DIR.briefs[t.id]) return false;
     if (q) { const b = DIR.briefs[t.id]; const s = (t.id + ' ' + t.title + ' ' + (t.desc || '') + ' ' + (b ? b.chars.join(' ') : '')).toLowerCase(); if (!s.includes(q)) return false; }
@@ -1374,6 +1390,50 @@ function remixAgain(m) {
   return x;
 }
 
+
+// ♫ COVER A SONG: the one-dialog way to a sketch cover (import if new → REMIX · COVER for a track)
+function covOpen() {
+  if (!AK.game.root) { msg('link the game folder first (⌂ LINK GAME FOLDER, top left).', true); return; }
+  const imps = DIR.imports || [];
+  $('cov-src').innerHTML = imps.map(im => `<option value="${esc(im.path)}">${esc(im.name)}${im.rights === 'cleared' ? ' (cleared)' : ' ⚠ temp only'}</option>`).join('') + '<option value="">— a new file (⇪ NEW FILE…) —</option>';
+  $('cov-src').value = imps.length ? imps[imps.length - 1].path : '';
+  $('cov-newrow').style.display = imps.length ? 'none' : ''; $('cov-fname').textContent = '';
+  const order = DIR.order || DIR.cat || [];
+  $('cov-track').innerHTML = order.map(t => `<option value="${esc(t.id)}">${esc(t.title)} · ${esc(t.id)} · ${esc((STATUS_LABEL[(DIR.state[t.id] || {}).status] || ['?'])[0])}</option>`).join('');
+  $('cov-track').value = DIR.sel || (order.find(t => (DIR.state[t.id] || {}).status === 'missing') || order[0] || {}).id || '';
+  if (!$('cov-style').options.length || $('cov-style').options.length < 2) Object.entries(SeqGen.STYLES).forEach(([id, st]) => $('cov-style').add(new Option(st.name, id)));
+  if ($('cov-tape').options.length < 2 && typeof TapeModel !== 'undefined') for (const [mid, m] of Object.entries(TapeModel.MACHINES)) $('cov-tape').add(new Option('tape: ' + m.name, mid));
+  msg('', false, 'covmsg');
+  $('covdlg').classList.add('show');
+}
+$('coverbtn').addEventListener('click', covOpen);
+$('cov-close').addEventListener('click', () => $('covdlg').classList.remove('show'));
+$('covdlg').addEventListener('click', e => { if (e.target === $('covdlg')) $('covdlg').classList.remove('show'); });
+$('cov-pick').addEventListener('click', () => $('cov-file').click());
+$('cov-file').addEventListener('change', () => { const f = $('cov-file').files[0]; if (!f) return; $('cov-src').value = ''; $('cov-newrow').style.display = ''; $('cov-fname').textContent = f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; });
+$('cov-src').addEventListener('change', () => { $('cov-newrow').style.display = $('cov-src').value ? 'none' : ''; });
+async function covMake() {
+  const tid = $('cov-track').value; if (!tid) { msg('pick the track the cover is for.', true, 'covmsg'); return null; }
+  let path = $('cov-src').value;
+  if (!path) {
+    const f = $('cov-file').files[0]; if (!f) { msg('pick a song: ⇪ NEW FILE…', true, 'covmsg'); return null; }
+    msg('importing ' + f.name + '…', false, 'covmsg');
+    const slug = await importAudio(f, $('cov-rights').value);
+    path = (DIR.imports.find(im => im.slug === slug) || {}).path;
+  }
+  const im = (DIR.imports || []).find(x => x.path === path); if (!im) { msg('that import is gone — rescan.', true, 'covmsg'); return null; }
+  const rx = { recipe: 'cover', from: { kind: 'file', id: 'import:' + im.slug, title: im.name, path: im.path, imported: true, rights: im.rights } };
+  if ($('cov-style').value) rx.style = $('cov-style').value;
+  if ($('cov-tape').value) rx.tape = $('cov-tape').value;
+  $('covdlg').classList.remove('show');
+  await selectTrack(tid);
+  const req = requestRemix([tid], +$('cov-n').value || 2, rx);
+  jumpTo('remix');
+  msg('covering ' + im.name + ' for ' + tid + ' — transcribing first (a minute or so for a whole song); the takes appear under TAKES.', false);
+  return req;
+}
+$('cov-go').addEventListener('click', () => covMake().catch(e => msg('cover failed: ' + (e.message || e), true, 'covmsg')));
+
 // instrument picker: FORGE presets and PATCH BANK patches, read at runtime (both libraries grow)
 async function openPicker(role) {
   $('pk-title').textContent = role.toUpperCase() + ' — instrument';
@@ -1449,6 +1509,7 @@ $('pk-body').addEventListener('click', e => {
 window.addEventListener('keydown', e => {
   if (e.target.closest('input[type=text], input[type=number], textarea, select') || e.ctrlKey || e.metaKey || e.altKey) return;
   if ($('help').classList.contains('show')) { if (e.key === 'Escape') $('help').classList.remove('show'); return; }
+  if ($('covdlg').classList.contains('show')) { if (e.key === 'Escape') $('covdlg').classList.remove('show'); return; }
   if ($('picker').classList.contains('show')) { if (e.key === 'Escape') $('picker').classList.remove('show'); return; }
   const k = e.key;
   if (k === 'ArrowDown' || k === 'j') { stepTrack(1); e.preventDefault(); }

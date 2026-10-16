@@ -606,6 +606,27 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.ok(fs.existsSync(G('assets/audio/bgm/real_track.ogg')), 'real audio untouched');
     t.eq(py().status, 0, 'clear to export after the strip');
   });
+  await t.test('♫ COVER A SONG (top bar): one dialog — an imported song, a track, a style → flagged cover takes; ⚠ COVERS filter; build tag', async () => {
+    const r = await p.evaluate(async () => {
+      await refresh();
+      document.getElementById('coverbtn').click();
+      const open = document.getElementById('covdlg').classList.contains('show');
+      const srcs = [...document.getElementById('cov-src').options].map(o => o.textContent);
+      document.getElementById('cov-src').value = 'assets/audio/imports/my_sketch_song.wav';
+      document.getElementById('cov-track').value = 'tem_theme'; document.getElementById('cov-n').value = '1'; document.getElementById('cov-style').value = 'folk';
+      const req = await covMake(); const R = await req.done; await rescanOne('tem_theme');
+      document.querySelector('#chips [data-f="covers"]').click();
+      const listed = visible().map(t => t.id);
+      document.querySelector('#chips [data-f="all"]').click();
+      return { open, srcs, state: R.state, errors: R.errors, sel: DIR.sel, listed, ver: document.getElementById('b-ver').textContent };
+    });
+    t.ok(r.open && r.srcs.some(x => /My Sketch Song ⚠ temp only/.test(x)), JSON.stringify(r.srcs));
+    t.eq([r.state, r.errors, r.sel], ['done', [], 'tem_theme']);
+    const m = newest('tem_theme', /-cover$/);
+    t.ok(m.third_party && m.third_party.kind === 'cover' && m.mood.style === 'folk', JSON.stringify({ tp: m.third_party, style: m.mood.style }));
+    t.ok(r.listed.includes('tem_theme') && !r.listed.includes('sam_theme'), '⚠ COVERS lists the tracks with covers: ' + r.listed.join(','));
+    t.ok(/^build 20\d\d-\d\d-\d\d/.test(r.ver), r.ver);
+  });
   await t.test('the tools\' library is mirrored into the game folder (library/<kind>/…wav + .json), at once and on link for older items', async () => {
     const r = await p.evaluate(async () => {
       const tone = n => { const c = new Float32Array(n); for (let i = 0; i < n; i++) c[i] = 0.3 * Math.sin(i * 0.05); return c; };
