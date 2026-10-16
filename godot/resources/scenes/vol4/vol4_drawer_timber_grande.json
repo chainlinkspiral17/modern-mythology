@@ -29,10 +29,6 @@
     },
     {
       "t": "narrate",
-      "text": "Six pages, typed, unsigned. The first has been folded in thirds for a business envelope, and the envelope is gone."
-    },
-    {
-      "t": "narrate",
       "text": "People who don't really know the guy, often ask me to tell them a Dickens Dean story, as somewhere along the line I became the closest thing the man had to a friend, or at the very least, his personal storyteller."
     },
     {
@@ -52,17 +48,17 @@
       "opts": [
         {
           "text": "ask about the first Dickens.",
-          "goto": 11
+          "goto": 10
         },
         {
           "text": "ask about his father.",
-          "goto": 12
+          "goto": 11
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "The storyteller started a sentence there and struck it out, then another. The margin says only: another time."
+      "text": "The first Dickens, now. That's a whole other story, and not a kind one. Maybe another time."
     },
     {
       "t": "narrate",
@@ -98,15 +94,11 @@
     },
     {
       "t": "narrate",
-      "text": "John wasn't there to watch it spread. The thesis was hardly bound before he took the first job that would carry him far from it, with an oil company, in Caracas. Dickens was born there the next year."
+      "text": "John wasn't around to watch much of it spread. The ink was hardly dry on the thesis before he took a job with an oil company, of all things, down in Caracas. Dickens was born there the next year."
     },
     {
       "t": "narrate",
-      "text": "They came back to Oregon in ninety-two. As far as anyone on the Grande could tell, John never logged in again."
-    },
-    {
-      "t": "narrate",
-      "text": "On the last page, set apart, a paragraph in quotation marks. No attribution. Pencilled beside it: first room."
+      "text": "They came back to Oregon in ninety-two. Far as anybody on the Grande could tell, John never logged in again."
     },
     {
       "t": "narrate",

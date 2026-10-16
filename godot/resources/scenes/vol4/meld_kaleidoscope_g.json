@@ -33,43 +33,35 @@
     },
     {
       "t": "narrate",
-      "text": "The lens stops."
+      "text": "The pieces stop sliding."
     },
     {
       "t": "narrate",
-      "text": "Nothing turns. The pieces that were sliding settle one onto the next, the way silt settles when a river finally lets go of it."
+      "text": "They settle one onto the next, the way silt settles when a river finally lets go of it."
     },
     {
       "t": "narrate",
-      "text": "A tide flat, all the way out, shining like a cookie sheet."
+      "text": "Low tide. The flats all the way out, shining."
     },
     {
       "t": "narrate",
-      "text": "On the flat, a desk. Nobody carried it there. Its legs go down into the wet sand and the sand holds them."
+      "text": "Out on the flats, a desk, its legs down in the wet sand."
     },
     {
       "t": "narrate",
-      "text": "On the desk, a lamp with a brass shade, and the lamp is on."
+      "text": "A lamp on it, still on."
     },
     {
       "t": "narrate",
-      "text": "A cup of coffee full to the rim. Not one drop over."
+      "text": "A cup of coffee full to the rim."
     },
     {
       "t": "narrate",
-      "text": "A notebook, wide-ruled, open. A heron feather laid in the gutter to keep the place."
+      "text": "A notebook, wide-ruled, open, a heron feather keeping the place."
     },
     {
       "t": "narrate",
-      "text": "A plastic stick the size of a pack of gum. Warm."
-    },
-    {
-      "t": "narrate",
-      "text": "A painted wooden duck, facing the water."
-    },
-    {
-      "t": "narrate",
-      "text": "A chair pushed back, the way a chair gets pushed back when someone stands to answer a knock."
+      "text": "The chair pushed back, like somebody just got up."
     },
     {
       "t": "cg",
@@ -78,27 +70,19 @@
     },
     {
       "t": "narrate",
-      "text": "No floppy drive. No copier. No machine counting breaths. The rain hangs in its three straight lines and does not land on anything."
+      "text": "No hum. No copier. Just wind off the water."
     },
     {
       "t": "narrate",
-      "text": "Out where the water starts, the crab stands with one leg lifted, and keeps it lifted."
+      "text": "Out where the water starts the crab stands with one leg lifted."
     },
     {
       "t": "narrate",
-      "text": "Far up the beach, past the cannery, a horn. Two short, one long. Then dogs on a hill, going all night, in a city that is not on this coast."
+      "text": "Up the beach past the cannery somebody taps a horn, twice. Then dogs on a hill, going all night."
     },
     {
       "t": "narrate",
-      "text": "At the edge of the lamplight, low, something yellow goes by. A hem. Mud on it. Then dark again where it was."
-    },
-    {
-      "t": "narrate",
-      "text": "The notebook has one line on it, in pencil, in a hand nobody here owns."
-    },
-    {
-      "t": "narrate",
-      "text": "slower here."
+      "text": "At the edge of the lamplight something small and yellow goes by. Then it's dark there again."
     },
     {
       "t": "say",
@@ -126,19 +110,11 @@
     },
     {
       "t": "narrate",
-      "text": "Nobody says the rest of it."
+      "text": "The lamp stays on over the open notebook."
     },
     {
       "t": "narrate",
-      "text": "The lamplight lies on the open page, and the page is warm, the way a page gets warm when someone has been holding it a long while. Someone has. Someone is."
-    },
-    {
-      "t": "narrate",
-      "text": "If it is 4am\nthen you are awake."
-    },
-    {
-      "t": "narrate",
-      "text": "The lamp stays on."
+      "text": "If it is 4am\nthen I am awake."
     },
     {
       "t": "flag",

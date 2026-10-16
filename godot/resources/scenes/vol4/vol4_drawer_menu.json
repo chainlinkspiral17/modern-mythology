@@ -61,14 +61,6 @@
           "scene": "vol4_drawer_harbinger"
         },
         {
-          "text": "personnel · J. Okimoto · 2003",
-          "scene": "vol4_drawer_okimoto"
-        },
-        {
-          "text": "the ledger",
-          "scene": "vol4_drawer_ledger"
-        },
-        {
           "text": "shut the drawer",
           "scene": "vol4_hub"
         }

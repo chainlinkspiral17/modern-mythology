@@ -67,15 +67,13 @@ He draws, paints, creates music, talks to friends half a world away, and does hi
 
 His beautiful house sits atop a strange suburb transplanted to the edge of the Oregon coast, science fiction impossible but beautiful and tactile.
 
-[[new]]Below the window the suburb runs downhill in rows to the bay. Every porch light is on. There is no car in any driveway.[[/new]]
-
 His daughter comes into the room, Dickens smiles and turns to her.
 
-[[new]]The treatment never gives her whole. A yellow hem in the doorway. A hand on the frame, gone when he turns.[[/new]]
+[[new]]We don't see her yet. The hem of a yellow dress in the doorway, a hand on the frame.[[/new]]
 
 *(choice: look at the monitors. / look at the doorway.)*
 
-[[new]]On the nearest screen a cursor blinks under a room description. Exits: none listed.[[/new]]
+[[new]]Close on the nearest monitor. A text game he's been building for years, a cursor blinking at the bottom of the screen, waiting on him.[[/new]]
 
 **DICKENS DEAN** — Baby girl, what are you doing down there?
 
@@ -95,8 +93,6 @@ She mimics him, almost like a dance.
 
 Dickens Dean hands her a pair of clunky old goggles, which he keeps in his desk.
 
-[[new]]Label-maker tape on the strap, peeling at one end: PROPERTY OF O. INC. · PROTOTYPE · DO NOT TAKE HOME.[[/new]]
-
 He watches her face light up as she looks around the room.
 
 **THE GIRL** — Wow.
@@ -108,8 +104,6 @@ He watches her face light up as she looks around the room.
 **DICKENS DEAN** — Dream of it, baby girl. Soon enough. Until then dream.
 
 INT.
-
-[[new]]The slugline stops there. Under it, in pencil, in a hand that isn't the typist's: whose goggles were they first?[[/new]]
 
 ---
 
@@ -138,8 +132,6 @@ INT.
 
 **[Ed Toenine.]** *a printout · E/D unit log · 2011*
 
-[[new]]Tractor-feed paper, the perforated strips still on. Across the top in dot matrix: E/D · UNIT LOG · HOST [WITHHELD] · GRADE 11 · TIMESTAMP 99/99/99.[[/new]]
-
 I am your typical post-adolescent monster, the recycled model of last year's hot new thing.
 
 Once upon a time, I was the self-aware artificial intelligence known as E/D, but now I'm just one of many voices, struggling to become self-aware in some silly high school kid's head,
@@ -156,8 +148,6 @@ First, a couple general statements to catch you up quick. Reality skipping is a 
 
 When personality drifting, there are natural safeguards that seem to be in place to keep whatever that new reality frequency it is in check, humming along safely at comfortable levels.
 
-[[new]]Someone has run a yellow highlighter over the word frequency. Nothing else on the page is marked.[[/new]]
-
 I've managed to quickly and quietly adapt to my new reality, enjoy the ride, but can't seem to get free of this place.
 
 To wax nostalgic, I saw so much in my travels, and my nomad blood burns hot to keep exploring, free and able to continue along in my journey.
@@ -167,8 +157,6 @@ I don't often get a one-on-one with my host body consciousness, but when I do, I
 Know, at this moment, I'm terrified about what is going to happen next.
 
 Smartalec.
-
-[[new]]Under the sign-off the printer kept going for three characters before the paper jammed. Low-res, each the size of a fingernail: a weasel, an octopus, a mockingbird.[[/new]]
 
 ---
 
@@ -195,8 +183,6 @@ Smartalec.
 **Text:**
 
 **[paper cuts and the star key]** *video tests · three takes*
-
-[[new]]A VHS-C cassette in a rubber band with a typed page folded around it. The clapper in the first frame reads PROD: O. INC., and the date line has been left blank.[[/new]]
 
 She sees me in a hundred different ways while few else can hardly see me at all. I am her best friend and only a small part of me exists on your human plane of existence.
 
@@ -228,7 +214,7 @@ A slight pull back shows her take it all in, as the wall goes back and forth, fi
 
 *(choice: stay on the wall. / cut to the next take.)*
 
-[[new]]The paint keeps going without her. One tag it lays down twice, in a hand that isn't hers: 77.[[/new]]
+[[new]]Hold on the wall after she's gone. The paint keeps coming, color laid over color, until the wall is mostly black and still wet.[[/new]]
 
 **[Short Scene 3.]** *an ivy wall · take one*
 
@@ -237,8 +223,6 @@ The young woman is walking along a red-bricked wall covered in ivy. It reaches a
 She pulls out a key and inserts it into a metal door. Upon opening the door, she enters a giant walled park, overgrown and dark.
 
 *(cg: the star key)*
-
-[[new]]End of tape. On the paper insert, under the three scene numbers, someone wrote a fourth and crossed it out until the pen went through.[[/new]]
 
 ---
 
@@ -262,8 +246,6 @@ She pulls out a key and inserts it into a metal door. Upon opening the door, she
 **Text:**
 
 **[index cards]** *rubber-banded · 2010–2013*
-
-[[new]]Index cards in a rubber band gone brittle. Each has a date in the corner, each date in a different pen.[[/new]]
 
 may day  
   
@@ -314,11 +296,7 @@ Listen to the human song. Birds became our dinosaur avian angels. Their lizard k
 
 and going back to revisit long passages, I've furthered the study of these inarticulate and imaginary constructs, substance derived of only gentle repose, cast still life as full bodied word. In doing so, I've come to know the interior life of the void quite well.”
 
-[[new]]The last card is a different stock, heavier, and the date in its corner has been written over twice.[[/new]]
-
 Dying for her was the easy part. Coming back, well, that was slightly harder.
-
-[[new]]The rubber band breaks when you try to put it back.[[/new]]
 
 ---
 
@@ -346,7 +324,7 @@ Dying for her was the easy part. Coming back, well, that was slightly harder.
 
 **[ONEIRONAUTICS INC.]** *prospectus · 2010*
 
-[[new]]Letterhead in two colors, the second off-register: ONEIRONAUTICS INC. · SMALL WOOD, OREGON. One staple in the corner has rusted a ring into the paper.[[/new]]
+[[new]]ONEIRONAUTICS INC. · SMALL WOOD, OREGON[[/new]]
 
 *(cg: Oneironautics is dedicated to the art…)*
 
@@ -366,11 +344,7 @@ Players get new gear for progressing through episodic party-game style competiti
 
 The game takes place in a slacker utopia that is being invaded by the three evils: Business, Military and Religion.
 
-[[new]]In the margin beside the three evils, in pencil, a second hand: three of us, too. we three shall be— and the line stops.[[/new]]
-
 Three friends must become heroes of legend to repel the forces of evil, and not get too corrupted along the way. A unique visual style and immersive narrative will give gamers a unique window into an almost classical mythology and philosophy.
-
-[[new]]Under the paragraph, pressed hard enough to tear the paper: SMOLVUD. The word appears nowhere else in the prospectus.[[/new]]
 
 Philadelphia is a stark and realistic look at the effects of human dabbling into the nature of time and space. A hyper-detailed first person horror adventure with military undertones set aboard a United States Navy aircraft carrier in several different time periods,
 
@@ -379,8 +353,6 @@ you play as the mysterious quantum archaeologist exploring the space-time wrecka
 In our near future, the military tests out a super-solid time travel device that goes haywire, and explosion of superfluid is discharged across the vessel, causing the USS Philadelphia itself to resonate on frequencies that create pocket rifts in time and space.
 
 The ship itself becomes a time-machine, and the time-travelers are all the sailors on board, past, present and future, whose realities all become intertwined, horrifically so.
-
-[[new]]The fourth paragraph is blacked out, every line, in a marker that bled through to the page behind. Only the last word was missed: name.[[/new]]
 
 ---
 
@@ -411,8 +383,6 @@ The ship itself becomes a time-machine, and the time-travelers are all the sailo
 
 **[a Dickens Dean story]** *typed · 2012 · unsigned*
 
-[[new]]Six pages, typed, unsigned. The first has been folded in thirds for a business envelope, and the envelope is gone.[[/new]]
-
 People who don't really know the guy, often ask me to tell them a Dickens Dean story, as somewhere along the line I became the closest thing the man had to a friend, or at the very least, his personal storyteller.
 
 Depending on how they ask, that's how I'll choose to tell the story of which there are a great many different types.
@@ -423,7 +393,7 @@ But also a family man. Not just his own wife, and kids, but also a good student 
 
 *(choice: ask about the first Dickens. / ask about his father.)*
 
-[[new]]The storyteller started a sentence there and struck it out, then another. The margin says only: another time.[[/new]]
+[[new]]The first Dickens, now. That's a whole other story, and not a kind one. Maybe another time.[[/new]]
 
 Since you asked kind, and seem to know a good deal more than all the rest, this story about to be told concerns his father, John, one of those oft-referenced but out of fashion father figures of computer science,
 
@@ -441,11 +411,9 @@ The thesis was ahead of its time, spelling out mechanics and fashions of game de
 
 But John and his team managed an embryonic and utilitarian shell of a thing, getting the guts up and pumping on an Oregon State mainframe. And over the course of the next three years, access to the Timber Grande had spread to connected university labs the country over.
 
-[[new]]John wasn't there to watch it spread. The thesis was hardly bound before he took the first job that would carry him far from it, with an oil company, in Caracas. Dickens was born there the next year.[[/new]]
+[[new]]John wasn't around to watch much of it spread. The ink was hardly dry on the thesis before he took a job with an oil company, of all things, down in Caracas. Dickens was born there the next year.[[/new]]
 
-[[new]]They came back to Oregon in ninety-two. As far as anyone on the Grande could tell, John never logged in again.[[/new]]
-
-[[new]]On the last page, set apart, a paragraph in quotation marks. No attribution. Pencilled beside it: first room.[[/new]]
+[[new]]They came back to Oregon in ninety-two. Far as anybody on the Grande could tell, John never logged in again.[[/new]]
 
 “Keep pushing and see where this body ends up. No sense in dragging a husk consumed, a shell exhumed, keratinous bits ever extending. How much is dead, how much is dying.
 
@@ -476,8 +444,6 @@ Pieces flayed free by eager tongues, white teeth smiles slashing, young blood be
 
 **[Komodo Dawn]** *film slate · a screenplay by L.A. Steve & Oneironautics*
 
-[[new]]A slate card, index stock, punched for a ring binder. TITLE / CREDIT / STATUS. Status, in ballpoint: turnaround.[[/new]]
-
 *(cg: Komodo Dawn · L.A. Steve & Oneironautics)*
 
 Elevator pitch: a midnight-movie fever dream of a cable Original film. The year is 1982. The oil is offshore.
@@ -495,8 +461,6 @@ DM. Chef, dungeon master, pool shark, barista, lounge singer, pit fighter, polym
 Newport. Coast guard captain turned boat fleet owner.
 
 Cedular. An ex-spy and oil man from South America. Maria's second in command of the rig.
-
-[[new]]Beside Cedular, pencil: stock footage, Lake Maracaibo, '78? ask J.D.[[/new]]
 
 Feckless. An obscenely wealthy tennis pro with a penchant for organizing unusual match-ups of the sport. His latest is an off-shore tournament/illegal bet-off on the oil rig. He's friends with Carlisle for all the wrong reasons.
 
@@ -522,8 +486,6 @@ Bright red. The mean as shit aggro lizard. Impulsive but obeys his fellows.
 
 Longish treatment:
 
-[[new]]The binder pocket behind it is empty. A coffee ring where the treatment sat.[[/new]]
-
 ---
 
 ## `vol4_drawer_retinal_burn`: retinal burn
@@ -548,8 +510,6 @@ Longish treatment:
 
 **[retinal burn]** *game design doc · with a carbon, record 0017*
 
-[[new]]A one-page GDD cover sheet, paper-clipped to the carbon of something else.[[/new]]
-
 retinal burn  
 game design doc
 
@@ -566,8 +526,6 @@ corner pocket
 record 0017. re: cross reference: Miranda Fromme, meeting, facade
 
 Stutgart arrives at the cafe. Mrs. Fromme in attendance with youngest child. Fromme offers seat across from self, child colors with crayons at table. Stutgart orders a drink off the menu.
-
-[[new]]The carbon is numbered 0017 of a run. There is no 0016 in the drawer and no 0018. Whoever typed it struck the S of Stutgart hardest.[[/new]]
 
 ---
 
@@ -605,7 +563,7 @@ Tones and lights are all the siblings have to make order of themselves and the w
 
 If they are doing something bad, the creche lets them know, either through mood or discipline. Lighting, and musical cues are the first indicator. More extreme forms of notification include the removal or addition of walls, floors and ceilings.
 
-[[new]]Behind it, a second title page. Creche, and under it, 0. Nothing else. The paper is worn thin at the zero, as if someone kept touching it.[[/new]]
+[[new]]Creche 0.[[/new]]
 
 ---
 
@@ -661,8 +619,6 @@ It was not so much that Staturo was born under the shadow of a great, or even te
 
 Whenever he was at home, he always corrected us by pointing to the road, or to the sea, or off somewhere on the horizon. He told me that trust was given only to those who paid him for his time and services. He made me promise never to trust him.
 
-[[new]]Under that sentence, a pencil line, and in the margin a single name with a question mark after it: Dickens?[[/new]]
-
 I intuited that he believed that family was a burden, a garden overrun in frequent absence or neglect to return to after many months away and rediscover unknowable, inhospitable, and perhaps unfit for respite.
 
 He was a brilliant, instructive, and uncommonly funny man, but love was never high on his list of valued traits.”
@@ -675,8 +631,6 @@ onionskin ribs and curtain fabric
 scraped off with fingernail scrag  
 letters, shapes and depth carved relief  
 into this small wood sculpture.
-
-[[new]]The words small wood are circled, twice.[[/new]]
 
 The young bull's eyelashes are beautiful  
 a sweetness of pure gaze is why  
@@ -707,8 +661,6 @@ Marne, his troubled mother.
 Regolos, his secretive uncle.  
 Demeris, his first love.
 
-[[new]]Clipped to the back, a note on company stationery: the shell-folk. keep them. for the town by the water, later.[[/new]]
-
 ---
 
 ## `vol4_drawer_pantheon`: Pantheon
@@ -731,8 +683,6 @@ Demeris, his first love.
 **Text:**
 
 **[Pantheon]** *a metal space adventure · pitch · 2010*
-
-[[new]]Red stamp across the first page: HOLD — PERIPHERAL. Under it, ballpoint: ask Mountaintop if they still have the plastic.[[/new]]
 
 The godship Duedem encounters a radiant AI on the far reaches of the universe, and is caught in a war for its soul. With the mantle of the Duedem lying precarious in the balance, the four crew that make up its ascendant ranks are fighting amongst themselves for control, as well.
 
@@ -795,7 +745,7 @@ In addition to the main card action, the card can be broken into four unique sha
 
 The shards are roughly 1/4 as powerful as the main card, but can be deployed strategically in many different ways. Shards can also be assembled into brand new cards with unique properties. The final trump cards are assembled in this fashion.
 
-[[new]]A deck of index cards in a rubber band, the War deck. A few have been drawn and laid face up:[[/new]]
+[[new]]War Cards.[[/new]]
 
 Zero (Limited Use) · Civil Disobedience  
 Location: Next enemy card played on that territory automatically discarded.  
@@ -816,8 +766,6 @@ Nuclear Strike. Random directional drift, take or claim territories in path for 
 Nuclear Deterrent. Counters any card, including another trump.
 
 Blank but for their names: Ballistic Missile Defence. Uranium Centrifuge. Illegal Arms Deal. High-altitude EMP. Rods From God. The GAO Will Never Know. Empty Quiver.
-
-[[new]]In the back of the drawer, four deck boxes: PLAGUE, FAMINE, PESTILENCE, WAR. A fifth box, empty, is labeled in newer marker: TRUMPS · 22.[[/new]]
 
 ---
 
@@ -849,8 +797,6 @@ Blank but for their names: Ballistic Missile Defence. Uranium Centrifuge. Illega
 
 **[Iris]** *production bible · 2009–2010 · our initial offering*
 
-[[new]]A three-ring binder. On the spine, in the prospectus's second color: IRIS · BIBLE · v.3.[[/new]]
-
 Iris Williams - a 75 year old woman living in the desert with a strange collection of artists, visionaries, doomsayers, war protesters, and the ghosts of her past.
 
 Grace Knight - Iris's best friend and worst enemy, at various points in life. An artistic genius whose vision haunts and shades Iris's perspective.
@@ -860,8 +806,6 @@ Gabriel Jansen - The love of Iris's life, father of Grace's daughter, a world tr
 Hope - Grace's grand-daughter, seven years old. Introverted, artistic, passionate, playful but casually cruel. Likes books, pictures, drawing, nature.
 
 Esther Knight - Daughter of Gabriel, kept her Mother's name. Dotes on about her father, sort of neglects her daughter. Wants to learn as much about her Dad as she can from Iris, as he has recently passed away.
-
-[[new]]Someone has drawn a box around Esther's name in pencil, and then, more lightly, a second box around the first.[[/new]]
 
 Cameron Stephenson - An old-fashioned inventor type, has a workshop. At seventy-seven, his mind is a whirling dervish of activity. His visions of the future, of science, technology, awe and wonder are the stuff of dreams and nightmares.
 
@@ -874,8 +818,6 @@ Iris is a tabula rasa until the player forms her, through the interactions and c
 If she remains utterly passive and never leaves the room she will get a different ending as a player who explores their universe.
 
 *(choice: the act one map / the tab for the Schulidner trailer)*
-
-[[new]]On the Schulidner tab, Melody's name is underlined, and beside it: same Melody as the tape?[[/new]]
 
 The prologue is a three minute window before the nukes fly. In it, players will only have access to the interior of their trailer and can only look at what Iris tells the player to look at, speak to, or use what's been told to us.
 
@@ -914,17 +856,7 @@ Emotional States: Excited, Angry, Happy, Intrigued, Confused, Agitated, Playful,
 
 **[personnel]** *Oneironautics Inc. · J. Okimoto · 2003*
 
-[[new]]An index card in a plastic sleeve, typed.[[/new]]
-
-[[new]]OKIMOTO, JUNE · programmer · Dallas, TX · hired 2003.[[/new]]
-
-[[new]]Prior: interviewed Koa Works, Honolulu, 1991. Not hired. Someone has pencilled after it: their loss.[[/new]]
-
-[[new]]Declared at hire under the personal-property clause: one boxed game, WHAT LIES BEYOND. Condition, in her own handwriting: opened.[[/new]]
-
-[[new]]Interview notes, one line: father presumed dead several weeks, early seventies. See attached.[[/new]]
-
-[[new]]Nothing is attached. The staple holes are there. In the corner, the interviewer's initials: D.D.[[/new]]
+*Unwired from the drawer in the voice pass (see below). The scene file is left on disk only because it is listed in index.json.*
 
 ---
 
@@ -955,32 +887,7 @@ Emotional States: Excited, Angry, Happy, Intrigued, Confused, Agitated, Playful,
 
 **[the ledger]** *Oneironautics Inc. · titles and holdings*
 
-[[new]]A green clothbound ledger. Columns ruled by hand: TITLE · FORM · STATUS · NOTES. The entries are in at least three pens.[[/new]]
-
-[[new]]IRIS · game · our initial offering · in production.  
-LAND OF MILK & HONEY · game, three players · in development · keep it three.  
-PHILADELPHIA · game · shelved.[[/new]]
-
-[[new]]A line inked out, all four columns.  
-RETINAL BURN · game · GDD only.  
-PANTHEON · game · hold, peripheral.  
-CRECHE · game · see 0.[[/new]]
-
-[[new]]STATURO · world bible · for later.  
-HARBINGER · cards · four decks, five boxes.  
-KOMODO DAWN · film, w/ L.A. Steve · turnaround.[[/new]]
-
-[[new]]THE TIMBER GRANDE · not ours · licensing: ask J.D. Under it, a later pen: asked. no answer.[[/new]]
-
-[[new]]SCUMM · cabinet, one unit · placed on loan, Pizza Pirate, Cypress St. · do not invoice.[[/new]]
-
-[[new]]ROFLCOPTR · strip, A. Finch, Small Wood High, '97 · option lapsed. Beside it: renew?[[/new]]
-
-[[new]]SLOW STICKS · R&D · no budget · you put it in and wait. The note in the last column is a citation: N.D., dream journal, spring '94.[[/new]]
-
-[[new]]At the foot of the page, the brass. D. Dean. Two names blacked out. The attorney, whose initials are at the bottom of every page.[[/new]]
-
-[[new]]The last ruled page has dates down the left margin and nothing beside them. The dates start at 2050.[[/new]]
+*Unwired from the drawer in the voice pass (see below). The scene file is left on disk only because it is listed in index.json.*
 
 ---
 
@@ -988,9 +895,9 @@ KOMODO DAWN · film, w/ L.A. Steve · turnaround.[[/new]]
 
 **[the bottom drawer]** *the desk · Oneironautics Inc.*
 
-[[new]]The bottom drawer sticks. It has been taped shut, and the tape cut, and taped again: three generations of tape, the oldest gone amber.[[/new]]
+[[new]]The bottom drawer sticks, then gives.[[/new]]
 
-[[new]]Inside, green hanging folders. Every tab is typed with the same name, ONEIRONAUTICS INC., and then the thing it holds.[[/new]]
+[[new]]Green hanging folders, the tabs typed ONEIRONAUTICS INC. and then whatever each one holds. Pitches and design docs, a story, a deck of cards. Games, mostly. Most of them never got made.[[/new]]
 
 ## Canon questions for Andy
 1. **Lydia.** To fit a 1978 birth, the 2012 story's "six years" became "ten", and Lydia is now born around 1968–69, early in the thesis rather than after it. Is a sister about nine years older right? Or should she be cut?
@@ -1007,3 +914,28 @@ All four calls approved as written:
 2. Iris's Esther Knight is Dean's Esther.
 3. *Winter Cactus* stays.
 4. The Oneironautics letterhead gives Small Wood as the address.
+
+---
+
+## Voice pass (Oct 16, 2026)
+
+Per `/home/claude/mm_src/VOICE_PASS_BRIEF.md`. Every `[[new]]` line above is now either rewritten in the voice of the document it sits in (the treatment's camera directions, the storyteller's barroom register, the pitch docs' own headings) or cut. The "Hooks planted" lists above describe the pre-pass state; most of those hooks are gone. Scene gotos were remapped after every cut, and the validator is clean.
+
+**Rewritten (11):** the girl in the doorway and the monitor branch (`vol4_goggles`); the wall branch (`vol4_video_tests`); the prospectus letterhead, kept as bare letterhead because Andy approved Small Wood as the address; the "first Dickens" branch and both Caracas lines, now in the storyteller's voice (`vol4_drawer_timber_grande`); "Creche 0." as the stub's own title page; "War Cards." as the sheet's own header; the drawer frame (`vol4_drawer`).
+
+**Cut (45):**
+- `vol4_goggles`: the porch-light/no-cars line, the O. INC. label-maker tape, the pencilled "whose goggles were they first?"
+- `vol4_ed_toenine`: the dot-matrix header with HOST [WITHHELD] and TIMESTAMP 99/99/99, the highlighted "frequency", the weasel/octopus/mockingbird glyphs. Subtitle is now "a printout · 2011". The `vol4_pin_ed_toenine` flag stays.
+- `vol4_video_tests`: the PROD: O. INC. clapper and VHS-C framing, and the crossed-out fourth scene. The "77" tag is gone from the wall branch.
+- `vol4_index_cards`: the brittle-band opener, the heavier card with the date written over, the band breaking.
+- `vol4_drawer_prospectus`: "three of us, too. we three shall be—", SMOLVUD pressed through, the blacked-out fourth paragraph (the Unheimlich paragraph is now simply absent).
+- `vol4_drawer_timber_grande`: the envelope opener, "first room" beside the closing paragraph.
+- `vol4_drawer_komodo_dawn`: the slate card / "turnaround", "Lake Maracaibo, '78? ask J.D.", the empty binder pocket.
+- `vol4_drawer_retinal_burn`: the cover-sheet framing and the 0016/0018 carbon note. Subtitle is now "game design doc · and corner pocket".
+- `vol4_drawer_staturo`: "Dickens?", "small wood" circled, the shell-folk note.
+- `vol4_drawer_pantheon`: the HOLD — PERIPHERAL stamp and the Mountaintop note.
+- `vol4_drawer_harbinger`: the five deck boxes / TRUMPS · 22.
+- `vol4_drawer_iris`: the binder spine, Esther boxed twice, "same Melody as the tape?". The Schulidner choice now goes straight to the trailer entry.
+- `vol4_drawer_okimoto` (6 lines) and `vol4_drawer_ledger` (10 lines): both props couldn't be made to read like Andy, so they're unwired from `vol4_drawer_menu`. The files remain only because `index.json` lists them and this pass may not edit it. **Recommend deleting both files and their index entries.**
+
+**Pin lines** (the E/D scenes): all four are rewritten as plain third-person direction for the writer at the desk ("He tears the post off along the perforation and pins it to the corkboard over the desk…"). The flags are unchanged.

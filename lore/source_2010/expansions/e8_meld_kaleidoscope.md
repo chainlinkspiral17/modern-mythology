@@ -1,9 +1,9 @@
 **[expansion E8 — NEW WRITING (Claude draft for Andy's review)]**
 *A meld of the first four books: three short seams where one book hands off to the next, and a turnable kaleidoscope between "vii. daddy" and the curtain call. Images and voices leak across wrongly and briefly. Lines from the books are quoted or recombined wherever possible. Nothing is resolved.*
 
-*Recurring drifts:* "slower here" (pencil: the SCUMM script margin, then the pod's button, then the notebook on the flats) · "It was looking at me looking at it" → him → you · "If it is 4am / then I am awake" → you · "The sky was falling and it came down in pieces" → pages → copies → us · "The director shrugs and starts the film" → Aud shrugs and starts the coffee.
+*Recurring drifts (after the voice pass):* "The sky was falling and it came down in pieces" (Vol 3's first line, at the end of seam 2→3 and on the copier) · "If it is 4am / then I am awake" (Vol 1, unchanged, at the end of facet e and the final image) · "It was looking at me looking at it" (Vol 2, facet f only) · "letters to myself, my unborn family" and the newspaper, novel and toy soldier (Vol 3, at the desk in seam 3→4).
 
-*Canon guards:* the yellow slicker appears twice, only as a clipping line and as a hem at the edge of the lamplight, never with a wearer and never named. Dickens Dean is only "a man who faded away in a static hiss, still talking" and the slow clapping in the third row. *Por Puesto* gets two flickers: the jitney horn under the Pasadena rain, and the horn plus the dogs on the hill in the final image.
+*Canon guards:* the yellow slicker appears only as "something small and yellow" at the edge of the lamplight in the final image, never with a wearer and never named. Dickens Dean does not appear. *Por Puesto* gets two flickers: a horn and the dogs, as Caracas memory in seam 2→3 and as a sound up the beach in the final image.
 
 ## Seams
 
@@ -14,61 +14,62 @@
 **— on cue —**  
 *INT. EDITING SUITE · Small Wood · low tide*
 
-The curtain goes back and there is no stage behind it. A room without windows. Four chairs on casters. A bank of monitors stacked like the tide tables by a diner door, and every monitor full of water.
+A room without windows. Four chairs on casters. A bank of monitors, and every one of them full of water.
 
-Not water. Flats. The tide all the way out, farther than it ever goes, the flats shining like a cookie sheet.
+Not water. Tide flats. The tide all the way out, the flats shining wet under a sky that hasn't made up its mind about morning.
 
 **THE DIRECTOR**  
 Roll it again.
 
-The monitors roll it again. A heron lifts off the sea wall in four frames and settles in four more. The cannery stands in a dawn that never arrives. On the last screen the water tower holds still while the fog goes through it.
+A heron lifts off a sea wall. A cannery. A water tower with the fog going through it. Somebody's small town, played back and played back.
 
 *[cg: vol2_meld_monitors_tideflats.jpg — four monitors, one tide]*
 
 **THE WRITER**  
-A moment ago I was debating whether or not to begin.
+A moment ago I was debating whether or not to begin and here I am starting something I should never finish.
 
 **THE HUMAN BEING**  
-Where in time are you looking?
+Where are we looking.
 
 **THE DIRECTOR**  
-Here. Low tide. Somebody's notebook.
+Somebody's hometown.
 
 **THE ARTIST**  
-There comes a time in life when pieces click in place.
+There comes a time in life when pieces click in place good and bad chambers of existence line up just so.
 
-Nobody touches the deck. Out on the flats something the size of the cannery shifts its weight, sideways, and the picture waits for it.
+Nobody touches the deck. On the monitors the tide keeps going out.
 
 *[bg: vol2_diner_grill_dawn.jpg]*
 
 **— the Link —**  
 *Aud's · 5:40 a.m. · before the bread*
 
-Then it is a diner, and the wall behind the grill is thin as a page of script, and through it four voices are arguing about how to begin.
+I'm not sure which piece goes first. Some mornings I got to the Missing Link before Aud had the bread out, and through the wall behind the grill it sounded like a room full of people arguing about how to start something.
 
-The light in here is the yellow of the inside of a pie. The tide tables by the door have bricked together in the damp.
+The light in there was the yellow of the inside of a pie. The tide tables by the door had bricked together in the damp. Nobody ever bought one.
 
 **AUD**  
-They've been at it since I unlocked. Coffee, hon?
+They've been at it since I unlocked. Coffee?
 
 **THE DIRECTOR**  
-Give this thing a shot in the arm. Can't feel the pulse here.
+Give this thing a shot in the arm  
+can't feel the pulse here
 
 **AUD**  
-Pulse is fine. It's early, is all.
+It's early, is all.
 
 **THE HUMAN BEING**  
-And all I feel is love for friends and family.
+I am a nerd that needs looking after. I have lovely friends and family.
 
-Aud fills a cup that is already full. It holds, this time. It stands up at the rim, trembling, the way water stands over the lip of a glass before it decides.
+Aud poured. She never asked if you wanted more, she filled it to where it shook at the rim and didn't spill.
 
-Down the counter someone has left a notebook, wide-ruled, half-started. Inside the cover, in pencil, in a hand that hasn't settled yet: up awake at hours when the company I keep is made up of voices through a wall.
+Down the counter somebody had left a notebook, wide-ruled, half started, the kind I used to buy in packs of three.
 
 **THE WRITER**  
 Can't we just sit here and think a minute.
 
 **AUD**  
-Sit as long as you want. Nobody's rushing the bread.
+Nobody's rushing the bread.
 
 **THE DIRECTOR**  
 hear hear.
@@ -76,11 +77,11 @@ hear hear.
 **THE HUMAN BEING**  
 finally.
 
-Aud shrugs and starts the coffee.
+Aud shrugged and started another pot.
 
 *[bg: vol2_beach_overcast.jpg]*
 
-Out past the gravel lot a minivan door slides shut, the long clunk of that vintage, and slides open again.
+Out past the gravel lot a minivan door slid shut, that long clunk they all made back then, and the morning came on the way it does there, gray for a long time and then all at once.
 
 *→ vol2_briar_falls_interlude*
 
@@ -91,50 +92,46 @@ Out past the gravel lot a minivan door slides shut, the long clunk of that vinta
 **— transmission —**  
 *Small Wood · 1994 · transmission · Pasadena*
 
-Rain in Pasadena, which it is not supposed to do. Footsteps splash in the film of water over asphalt.
+That spring I played games on the computer most nights, until the floppy drive was the only sound in the house. tk tk tk tk. Loading the next part of somewhere else.
 
-Under the rain, a sound nobody has invented yet. tk tk tk tk. A floppy drive, reading. Every time it clicks a little more of the street fills in.
+The picture came in bands, top to bottom. A street in the rain. Streetcar wire. A movie marquee. Orange trees.
 
-The boulevard loads in bands, top to bottom. Streetcar wire. A marquee showing the same movie as every other marquee. Orange trees, and then the smell of orange trees, a beat behind.
+Pasadena, the box said, 1945. I remember thinking it wasn't supposed to rain there.
 
 *[cg: vol3_meld_rain_loading.jpg — Pasadena, loading]*
 
-Down a hill that isn't there, a horn. Two short, one long, the way a jitney calls for one more fare before it pulls out. Then only rain.
+Somewhere down the hill a car horn, two short and one long, and then the dogs started up the way they used to in Caracas.
 
 *[bg: vol3_meld_time_pod_interior.jpg]*
 
 **— the egg —**  
 *the time between times · 1945 · 1994 · ——*
 
-Inside the pod it is quiet the way the inside of an egg is quiet. One seat. One button. The instruments breathe their green lights.
+Inside the pod it was quiet the way the inside of an egg is quiet. One seat, one button, the instruments breathing their green lights.
 
 He built his egg with a team of other young, passionate like-minded scientists, volunteered himself, sealed himself inside one quiet night, dared himself to push a button.
 
-On the floor of the pod, against the riveted seam, there is a feather.
+On the floor of the pod, against the riveted seam, lay a feather. Blue-grey, long as a hand.
 
 *[cg: vol3_meld_feather_pod_floor.jpg — a feather from the blue heron]*
 
-Blue-grey, long as a hand, the vane split near the tip. One of the first unused feathers from flight. Nobody packed it. Nobody on the team has ever seen that coast.
+Jack Perkins did not remember packing it. He turned it over in his fingers like a thing sent from very far away and buttoned it into his breast pocket, over his heart.
 
-It wants to be put in a book of great importance, hidden away from sight and age and never lost. There are no books in the pod.
-
-Above the button somebody has written in pencil, small, in a hand that is not his: slower here.
-
-He waits. The pod waits with him.
+He waited. The pod waited with him.
 
 *[bg: vol3_four_screen_room.jpg]*
 
-Then a beam comes down out of the dark at a slant, from very high up, at the end of a long jointed stalk. Where it lands, it is looking.
+Then a beam came down out of the dark at a slant, from very high up, from a machine on a long jointed stalk, covered in tiny lights like little eyes.
 
-It swivels the way an eye on a stalk swivels, tall as a water tower. The beam is the pointer. It hovers over him, and the line of text above the hover tries for his name and settles for: Earthman.
+It swiveled the way an eye on a stalk swivels. It hovered over him and held there, deciding what he was.
 
 *[cg: vol3_meld_eyestalk_beam.jpg — the projector, the eye, the stalk]*
 
 It was looking at him looking at it.
 
-He opens his eyes and can't close them back up again.
+He opened his eyes and could not close them back up again.
 
-Outside the sky is falling, and it comes down in pieces.
+The sky was falling and it came down in pieces.
 
 *→ vol3_ch1_boy_from_pasadena*
 
@@ -148,49 +145,47 @@ Outside the sky is falling, and it comes down in pieces.
 **JANE**  
 Just get comfortable. Let yourself go. We'll be here to catch you.
 
-The machinery under the curtain looks simple but expensive. It breathes. Not the way a person breathes. The way a room on a top floor breathes for a person who has stopped.
+The machinery under the curtain looks simple but expensive. It hums. It's the hum of the air conditioning unit in Dad's room, the one Andy fell asleep beside on the floor, the constant mechanical breeze.
 
-On her notepad, upside down: One-way vector of linear time. What comes next.
+One-way vector of linear time. What comes next. The rest of her notepad is upside down and he can't make it out.
 
-He lies down. He does not get up to pee. The hum is the air conditioning unit he slept beside as a child, the constant mechanical breeze.
+He lies down. He doesn't get up to pee. He lets himself go, like she said.
 
 *[bg: vol4_office_copier.jpg]*
 
 **— toner —**  
 *copy shop · 4 a.m. · the sleep lab · somewhere*
 
-The hum changes key without stopping. A copier lid comes down. Under it a bar of light crosses the glass, and the light is pink, the dirty pink of a beam that lifts a boy off the ground in a ruined city and turns him slowly in the air.
+four in the morning at the copy shop. the light goes back and forth under the lid, a dirty pink, and the pages come out warm.
 
 *[cg: vol4_meld_copier_pink_bar.jpg — the scan bar, pink]*
 
-The copy comes out warm. One-way vector of linear time. What comes next. Right side up now, with grain in it, the way grain gets into everything here.
-
-On the counter by the copier, a notebook somebody left. Wide-ruled. Coffee rings on the cover from a diner a long way north.
+issue six. i keep pulling pages off the tray and reading them like somebody else wrote them.
 
 *[bg: vol4_desk_night.jpg]*
 
 **— the desk —**  
 *the desk · night · everything that didn't fit*
 
-The desk drawer sticks, then gives. Desert sand in the runners.
+home. the desk drawer sticks, then gives.
 
 *[cg: vol4_meld_drawer_relics.jpg — a newspaper, a novel, a toy soldier]*
 
-Inside: a newspaper, a novel, and a toy soldier. Somebody buried them by a fence out where the boys test their rockets, so he could find his way back.
+in there, for no good reason, a newspaper, a novel, and a toy soldier. i think i can find my way back.
 
-Under them, letters. Letters to myself, my unborn family. The stamps on them have not been printed yet.
+and letters. letters to myself, my unborn family.
 
 crackle and static tug at my ears.  
 i'm alone in my room.  
 tonight i actually feel it.
 
-Somewhere under the hum, very faint, a machine is still breathing for someone. It keeps its count. It does not hurry.
+i write here in hopes that i can jar a thought or three free.
 
 *→ vol4_hub*
 
 ## The kaleidoscope
 
-*Lens mechanic: scene _a resets the five facet flags, then offers the lens. Every facet ends in its own copy of the lens choice, with a drifting prompt. A seen facet vanishes (`hide_if`), and "stop turning." appears only once all five are seen (`requires`).*
+*Lens mechanic (unchanged): scene _a resets the five facet flags, then offers the lens. Every facet ends in its own copy of the lens choice. A seen facet vanishes (`hide_if`), and "stop turning." appears only once all five are seen (`requires`).*
 
 ### meld_kaleidoscope_a  ·  *the kaleidoscope*
 
@@ -201,34 +196,38 @@ Somewhere under the hum, very faint, a machine is still breathing for someone. I
 
 The desk. Everything that didn't fit anywhere else.
 
-The lamp is on. Somebody left it on, or somebody is coming back.
+The lamp is on. It's late, or it's early.
 
-Between the stapler and the zine there is a cardboard tube the length of a forearm, papered in a print of ducks, rubbed white at both ends by hands. Frosted glass at the far end. A clear eye at the near one.
+A kaleidoscope rolls out from under the zine. The cheap cardboard kind, ducks printed on the paper, worn white at both ends.
 
-Shake it and something inside answers. Not glass. A dry sound, like a feather in a drawer, like a claw on a cookie sheet, like a drive reading.
+Shake it and the bits inside rattle around.
 
 *[cg: vol4_meld_kaleidoscope_tube.jpg — the tube, the lamp, the desk]*
 
-Put it to your eye. Point it at the lamp.
+He puts it to his eye and points it at the lamp.
 
 *[bg: vol4_meld_lens_mandala.jpg]*
 
 **— · —**  
 *Small Wood · 1994 · transmission · Pasadena*
 
-A heron. A minivan. A heron.
+a heron lifting off the sea wall  
+a minivan door sliding shut
 
 *[bg: vol1_city_color_night.jpg]*
 
-Neon in the shape of a crab. A crab in the shape of neon.
+neon over a city at night  
+three friends walking into the color of it
 
 *[bg: vol3_hospital_room_night.jpg]*
 
-Ducks on a television. Autumn ducks. The same pond going around.
+ducks on a television in a hospital room  
+the same pond going around
 
 *[bg: vol4_xerox_sky.jpg]*
 
-weep. weep. FOR THE FUTURE, struck through.
+weep, FOR THE FUTURE struck through  
+distribute at your own peril
 
 *[bg: vol4_meld_lens_mandala.jpg]*
 
@@ -238,7 +237,7 @@ A moment ago I was debating whether or not to begin.
 **AUD**  
 Everybody's here, hon.
 
-The pieces slide and click. Every turn the same pieces. Every turn a different room.
+Tiny little moments hidden out of sight, reflecting back a world of infinite possibility.
 
 > **turn the lens.**
 > - the water tower, in wet paint → `meld_kaleidoscope_b` (vanishes once seen)
@@ -246,7 +245,7 @@ The pieces slide and click. Every turn the same pieces. Every turn a different r
 > - a copy of a copy of a copy → `meld_kaleidoscope_d` (vanishes once seen)
 > - the lamp, the porthole → `meld_kaleidoscope_e` (vanishes once seen)
 > - crab number zero → `meld_kaleidoscope_f` (vanishes once seen)
-> - stop turning. → `meld_kaleidoscope_g` (requires all facets)
+> - stop turning. → `meld_kaleidoscope_g` (requires meld_facet_tower, meld_facet_suite, meld_facet_xerox, meld_facet_porthole, meld_facet_derby)
 
 ### meld_kaleidoscope_b  ·  *the kaleidoscope — the water tower*
 
@@ -255,58 +254,65 @@ The pieces slide and click. Every turn the same pieces. Every turn a different r
 **— the water tower —**  
 *EXT. FAUST'S APARTMENT · Small Wood · day · the margin*
 
-Faust has an easel set up on a balcony that looks out over a town he has never been to.
+Faust has an easel set up on the balcony. He paints from a notebook, a pencil sketch of a town he has never been to. One road down to the water. A cannery. A water tower.
 
 **FAUST**  
-Everyone must have a hobby.
+Everyone must have a hobby  
+said Aunt Grace who set me up
 
-He paints from a notebook propped on the easel ledge, a wide-ruled page with the town drawn in pencil. One road. Buildings propped on nothing. A water tower: four legs, a tank, a pointed hat.
+Faust paints. The water tower goes in first, four legs and a tank and a pointed hat.
 
 **FAUST**  
-Painting burns an image from memory. I am starting to see things which should not be.
+painting burns an image from memory.  
+only that I am starting to see  
+things which should not be.
 
 *[cg: vol4_meld_facet_tower.jpg — the water tower, wet]*
 
-In the margin of the notebook, a column of pencil ticks. Evenly spaced. The way a nurse counts breaths.
+Faust takes a hit off the joint and leans back.
 
-Beside the easel the three elementals sit for him. Water on the left, fire on the right, air in the middle.
+His models sit for him, the three elementals. Water on the left, fire on the right, air in the middle.
 
 **WATER**  
-Quiet while he works on me.
+Quiet while he works on me  
+I think he really gets it
 
-Water is the tide. She keeps going out while she sits, farther than she ever goes.
+Every time he looks up, Water has gone a little further out, like a tide.
 
 **FIRE**  
-It's cool how we can see ourselves as he paints us.
+It's cool how  
+we can see ourselves  
+as he paints us
 
-Fire is a pilot light under a diner grill at four in the morning, blue at the root.
+Fire is blue at the root, like a pilot light under a diner grill.
 
 **AIR**  
-You're just trying to win his favor.
+You're just trying to win his favor
 
-Air will not hold still. Air goes in and out of a plastic mask, and a machine counts it, a machine covered in tiny lights like little eyes, and every count goes in the margin.
+Air comes and goes, like breathing in a room where somebody is sick.
 
 *[bg: vol3_hospital_room_night.jpg]*
 
-Dad is connected to his bed, connected to the wall.
+A hospital room on a top floor, large for what it is.
 
-On the windowsill, a painted wooden decoy. On the television, ducks on a lake, mostly in the fall.
+A television dangling from an odd angle plays ducks on a lake or a pond somewhere.
 
 *[bg: vol1_faust_apartment_day.jpg]*
 
-Faust paints the decoy onto the tower's catwalk. He does not know why. His hand knows.
+Faust paints ducks onto the water under the tower. He couldn't tell you where they came from.
 
 **FAUST**  
-When nightmares keep me up at odd hours I can relax with my demons and desires made firm in the slowing of paint.
+When nightmares keep me up  
+at odd hours I can relax  
+with my demons and desires  
+made firm in the slowing of paint.
 
-Tick, in the margin. The paint slows. Tick.
-
-On the canvas the water tower turns its head. Where the hat should be there is an eye on a stalk, and it looks back at the easel, and past the easel, at whoever is standing behind the painter.
+The paint is still wet. The tower leans a little, like it wants to see over his shoulder.
 
 **FAUST**  
-Look what I've trapped.
+Look what I've trapped
 
-The ticks reach the bottom of the page and keep going, over the ledge, down the balcony rail, into the street, where the rain takes them.
+It starts to rain. Faust drags the easel inside and the paint runs anyway.
 
 > **turn the lens. the paint is still wet.**
 > - the water tower, in wet paint → `meld_kaleidoscope_b` (vanishes once seen)
@@ -314,7 +320,7 @@ The ticks reach the bottom of the page and keep going, over the ledge, down the 
 > - a copy of a copy of a copy → `meld_kaleidoscope_d` (vanishes once seen)
 > - the lamp, the porthole → `meld_kaleidoscope_e` (vanishes once seen)
 > - crab number zero → `meld_kaleidoscope_f` (vanishes once seen)
-> - stop turning. → `meld_kaleidoscope_g` (requires all facets)
+> - stop turning. → `meld_kaleidoscope_g` (requires meld_facet_tower, meld_facet_suite, meld_facet_xerox, meld_facet_porthole, meld_facet_derby)
 
 ### meld_kaleidoscope_c  ·  *the kaleidoscope — cut*
 
@@ -323,21 +329,21 @@ The ticks reach the bottom of the page and keep going, over the ledge, down the 
 **— cut —**  
 *INT. EDITING SUITE · Aud's · 4 a.m. · rolling*
 
-The editing suite at four in the morning. Four chairs. Coffee rings on the deck.
+Four in the morning in the editing suite. Four chairs. Coffee rings on everything.
 
-Aud comes in through the door that isn't on any street. Sleeves rolled, glasses on the chain, pot in hand.
+Aud comes in with a pot of coffee, sleeves rolled, glasses on the chain, like it's any other morning.
 
 **AUD**  
 Who's on decaf.
 
 **THE HUMAN BEING**  
-None for me. Ginger beer, thanks.
+None for me ginger beer thanks
 
-She pours anyway. The cup is already full. It goes over the rim, across the deck, along the cables, down behind the monitors.
+She pours anyway, into a cup that's already full, and it goes over and runs along the cables.
 
 *[cg: vol4_meld_facet_suite_coffee.jpg — coffee, the deck, the monitors]*
 
-On the monitors, Small Wood. Hans in the bakery window lifting a loaf off a tray and setting it back. Eleven pictures of it. The same puff of flour every time, down to the dot.
+On the monitors, a bakery window. Hans lifting a loaf off a tray and setting it back, lifting it, setting it back.
 
 **THE DIRECTOR**  
 Cut.
@@ -347,7 +353,7 @@ Hans lifts the loaf.
 **THE DIRECTOR**  
 Cut. Cut.
 
-Hans sets it back. The flour puffs. On the next monitor the minivans along Hemlock open their sliding doors and shut them, open, shut, the same clunk.
+Hans sets it back. On the next monitor minivan doors slide open and shut all down a street.
 
 **THE WRITER**  
 Can't we just sit here and think a minute.
@@ -358,14 +364,14 @@ Nobody leaves. That's the trouble with a good diner.
 **THE DIRECTOR**  
 I said cut.
 
-The town does not stop. The coffee reaches the floor, finds the door, goes out under it into the street, black and shining, downhill toward the middle of everything.
+Nothing stops. The coffee finds the door and goes out under it, downhill.
 
 *[bg: vol2_scumm_hemlock_vga.jpg]*
 
 **— rolling —**  
 *Hemlock · sixteen colors · still rolling*
 
-Out on Hemlock the coffee runs in the gutter. Hans calls after somebody's back, in a voice the speaker can barely hold.
+Out on Hemlock it runs in the gutter past the bakery. Hans calls after somebody going by.
 
 **HANS**  
 Bread for the morning. You'll want it later.
@@ -381,9 +387,9 @@ Pay at the register.
 **THE HUMAN BEING**  
 It hurts to think this play has already started and I just now realize it must be completed.
 
-The Director takes his hand off the deck. Nobody is touching it now. On every monitor the town keeps going, and in the third row of a dark hall somewhere one person keeps clapping, slow, long after anyone else would have stopped.
+The Director takes his hand off the deck. The town keeps going without him.
 
-Aud sets down the pot and looks straight down the lens of the nearest camera. Not at the Director. Past him.
+Aud sets down the pot.
 
 **AUD**  
 It's the one you're going to make.
@@ -394,7 +400,7 @@ It's the one you're going to make.
 > - a copy of a copy of a copy → `meld_kaleidoscope_d` (vanishes once seen)
 > - the lamp, the porthole → `meld_kaleidoscope_e` (vanishes once seen)
 > - crab number zero → `meld_kaleidoscope_f` (vanishes once seen)
-> - stop turning. → `meld_kaleidoscope_g` (requires all facets)
+> - stop turning. → `meld_kaleidoscope_g` (requires meld_facet_tower, meld_facet_suite, meld_facet_xerox, meld_facet_porthole, meld_facet_derby)
 
 ### meld_kaleidoscope_d  ·  *the kaleidoscope — generation loss*
 
@@ -403,40 +409,36 @@ It's the one you're going to make.
 **— generation loss —**  
 *copy shop · issue six · the ruined future · 1945*
 
-The copier takes the first page of a pulp story and gives it back warm.
+Four in the morning at the copy shop. The first page of a pulp story goes under the lid and comes out warm.
 
 The sky was falling and it came down in pieces.
 
 Copy the copy.
 
-The sky was falling and it came down in pages.
+The sky was falling and it came down in pieces. Grainier now.
 
 *[cg: vol4_meld_facet_xerox_pulp.jpg — halftone, second generation]*
 
-Jack Perkins crouches under a fallen street sign, thick cables held at odd angles. In the copy the cables are the rules of a zine layout. The street sign is a masthead. It says weep.
+Jack Perkins crouched under a fallen street sign, thick cables held at odd angles. In the copy the cables look like the rules on a zine page, and the street sign could be a masthead.
 
 Copy the copy.
 
-The sky was falling and it came down in copies.
+He stuck out like a shiny quarter in a penny jar.
 
-The machines that drift above, covered in tiny lights like little eyes, are the dots of a halftone now. The children of the ruins are dots. Jack is dots, coarser every pass, a shiny quarter going to toner.
+The machines drifted above covered in tiny lights like little eyes. On the copy they're just more dots.
 
 *[bg: vol3_ruined_city_night.jpg]*
 
 **— transmission —**  
 *the ruined future · copy shop · ——*
 
-A voice comes booming from a machine among machines. It speaks a language not quite English, almost understandable.
+A voice came booming from a machine among machines.
 
 Crackle like static electric, welcome to this world of mine.
 
-He begins to hear his father's voice come out of it.
-
 *[bg: vol4_bus_station_day.jpg]*
 
-At a bus overhang across the decades a man stands reading his newspaper. His name is printed on the newspaper itself.
-
-Sand in the fold. The newspaper was buried by a fence in the desert a long time ago, by someone who thought he could find his way back.
+At a bus station a man stands reading his newspaper, his name printed on the newspaper itself.
 
 **CHARLIE**  
 We all just want her out of our heads.
@@ -445,11 +447,9 @@ We all just want her out of our heads.
 
 Copy the copy.
 
-The sky was falling and it came down in us.
-
 Mistakes are like children, hard to take back.
 
-Last pass. The page comes out nearly black, the whole ruined city one field of toner, and through the middle of it, where the copier glass is scratched, a single white line, thin as a hair, as a wire, as the light under a door.
+Last pass comes out nearly black, the whole ruined city one field of toner, and a white line down the middle where the glass is scratched.
 
 > **the lens turns.**
 > - the water tower, in wet paint → `meld_kaleidoscope_b` (vanishes once seen)
@@ -457,7 +457,7 @@ Last pass. The page comes out nearly black, the whole ruined city one field of t
 > - a copy of a copy of a copy → `meld_kaleidoscope_d` (vanishes once seen)
 > - the lamp, the porthole → `meld_kaleidoscope_e` (vanishes once seen)
 > - crab number zero → `meld_kaleidoscope_f` (vanishes once seen)
-> - stop turning. → `meld_kaleidoscope_g` (requires all facets)
+> - stop turning. → `meld_kaleidoscope_g` (requires meld_facet_tower, meld_facet_suite, meld_facet_xerox, meld_facet_porthole, meld_facet_derby)
 
 ### meld_kaleidoscope_e  ·  *the kaleidoscope — the porthole*
 
@@ -466,25 +466,23 @@ Last pass. The page comes out nearly black, the whole ruined city one field of t
 **— porthole —**  
 *the desk · the egg · the top floor · 2003*
 
-The desk lamp has a round brass shade. Lean in close enough and it stops being a lamp.
+The desk lamp has a round brass shade. Up close it looks like a porthole.
 
-Rivets around the rim. Glass thick as a thumb. Behind the glass, the time between times.
+Rivets around the rim. Thick glass.
 
 *[bg: vol3_meld_time_pod_interior.jpg]*
 
 *[cg: vol4_meld_facet_porthole.jpg — the lamp, the porthole]*
 
-Jack Perkins sealed himself inside one quiet night. He gestated. All he dreamt of was home.
+Jack Perkins sealed himself inside one quiet night and gestated in the time between times. All he dreamt of was home.
 
-Through the porthole, home is a room on a top floor, large for what it is, real nice and new and clean.
+Through the glass, a room on a top floor. It is large for what it is, looks real nice and new and clean.
 
 *[bg: vol3_hospital_room_window_night.jpg]*
 
-A television dangling from an odd angle plays ducks on a pond. Autumn ducks. Orange brown red serene.
+A television dangling from an odd angle plays video of ducks on a lake or a pond somewhere. It keeps going, so it is apparently a duck channel.
 
-A man asleep on the floor next to the air conditioning unit. The hum. The constant mechanical breeze.
-
-From inside the pod the hum sounds like the engines. From inside the room the pod sounds like the hum.
+Andy falls asleep on the floor next to the air conditioning unit. This is something he did as a child. The hum, the constant mechanical breeze.
 
 Dad turns away, watches the ducks.
 
@@ -494,21 +492,17 @@ Great hit, he said.
 
 *[bg: vol3_meld_time_pod_interior.jpg]*
 
-Jack puts his hand flat on the glass. On the other side a hand is held up to another hand, someone looking at the wrinkles in it, the fingernails. The only familiar thing.
+Jack puts his hand flat on the glass.
 
-He wants it to grasp back.
+Could I save my father from death. Is there a way to let him know about the cancer before it is too late.
 
-Could I save my father from death. Is there a way to let him know before it is too late.
-
-The porthole fogs with his breath. When it clears it is a lamp again, and the light falls on a page, and the page says:
+The glass fogs with his breath. When it clears it's a lamp again, light on a page.
 
 *[bg: vol4_desk_night.jpg]*
 
 I will love you forever, you know.
 
 You know.
-
-Beside the lamp, a painted wooden duck that was not there before, facing the window. Its eye is a brass rivet.
 
 If it is 4am  
 then I am awake.
@@ -519,7 +513,7 @@ then I am awake.
 > - a copy of a copy of a copy → `meld_kaleidoscope_d` (vanishes once seen)
 > - the lamp, the porthole → `meld_kaleidoscope_e` (vanishes once seen)
 > - crab number zero → `meld_kaleidoscope_f` (vanishes once seen)
-> - stop turning. → `meld_kaleidoscope_g` (requires all facets)
+> - stop turning. → `meld_kaleidoscope_g` (requires meld_facet_tower, meld_facet_suite, meld_facet_xerox, meld_facet_porthole, meld_facet_derby)
 
 ### meld_kaleidoscope_f  ·  *the kaleidoscope — number zero*
 
@@ -528,53 +522,47 @@ then I am awake.
 **— the derby —**  
 *Small Wood · August · a hip bar · the flats*
 
-Crab derby. Numbers painted on the shells in white enamel. A chalk line across the pier boards and a crowd leaning over it.
+Crab derby off the pier. Numbers painted on the shells, a chalk line across the boards, everybody leaning over it.
 
 **JACOB**  
 Shots all around.
 
 **WAGNER**  
-None for me. Ginger beer, thanks.
+None for me ginger beer thanks
 
 **FAUST**  
 Twenty bucks says it's the same crab.
 
-Everybody laughs. The winner comes over the chalk sideways, red-brown, slow. Its number is zero.
+Everybody laughs. The winner comes over the chalk sideways, slow. Its number is zero.
 
 *[cg: vol4_meld_facet_derby_zero.jpg — number 0]*
 
 **JACOB**  
-But aren't we already, I mean look at us.
+But aren't we already I mean look at us
 
 **WAGNER**  
-Living in this land of milk and honey.
+living in this land of milk honey.
 
 *[bg: vol2_small_wood_scrapbook.jpg]*
 
 **— the clipping —**  
 *Elk Lodge · corkboard · undated*
 
-In the Elk Lodge, behind glass, a newspaper clipping about the vanished. Yellow at the edges. Pinned with a tack gone green.
+In Small Wood's Elk Lodge, a newspaper clipping behind glass, yellow at the edges.
 
 Disappearances occur at a higher than normal percentile in towns such as Small Wood.
 
-The list underneath runs longer than the town. A girl last seen tending to chickens. A woman carved on a wooden advertisement, half fish. A boy in a coat too big for him.
+A girl by the name of Gloria Bryant was last seen tending to chickens in a coop outside her room.
 
-A young man who sealed himself in an egg one quiet night. A big man who went to sleep in a lab in Pasadena and woke on a cement floor in another year.
-
-Three friends who walked out of a club into a wash of color. A man who faded away in a static hiss, still talking.
-
-At the bottom, a line with no name. Only: last seen in a raincoat, yellow, small. Mud on the hem.
-
-The most very sad and true fact about a person who disappears off the face of the map is that they are most often never heard from again. There are always exceptions.
+And finally, the most very sad and true fact about a person who disappears off the face of the map is that they are most often never heard from again. There are always exceptions, as people are so prone to prove.
 
 *[bg: vol2_scumm_tideflats_crab_vga.jpg]*
 
-Out on the flats the crab lifts a leg and the world waits for it. Its shell is a map. On the map, a white dot up the Alsea, and the Elk Lodge, and a pier where the derby is still going.
+Out on the flats the crab lifts one leg and holds it there.
 
-It turns one eye on its stalk, tall as the water tower. It is not looking at the boy on the beach. There is no boy on the beach.
+It turned one eye toward the beach, an eye on a stalk as tall as the water tower.
 
-It was looking at you looking at it.
+It was looking at me looking at it.
 
 > **turn the lens, and the lens turns.**
 > - the water tower, in wet paint → `meld_kaleidoscope_b` (vanishes once seen)
@@ -582,7 +570,7 @@ It was looking at you looking at it.
 > - a copy of a copy of a copy → `meld_kaleidoscope_d` (vanishes once seen)
 > - the lamp, the porthole → `meld_kaleidoscope_e` (vanishes once seen)
 > - crab number zero → `meld_kaleidoscope_f` (vanishes once seen)
-> - stop turning. → `meld_kaleidoscope_g` (requires all facets)
+> - stop turning. → `meld_kaleidoscope_g` (requires meld_facet_tower, meld_facet_suite, meld_facet_xerox, meld_facet_porthole, meld_facet_derby)
 
 ### meld_kaleidoscope_g  ·  *the kaleidoscope — one image*
 
@@ -591,39 +579,31 @@ It was looking at you looking at it.
 **— — —**  
 *four in the morning · low tide · everywhere at once*
 
-The lens stops.
+The pieces stop sliding.
 
-Nothing turns. The pieces that were sliding settle one onto the next, the way silt settles when a river finally lets go of it.
+They settle one onto the next, the way silt settles when a river finally lets go of it.
 
-A tide flat, all the way out, shining like a cookie sheet.
+Low tide. The flats all the way out, shining.
 
-On the flat, a desk. Nobody carried it there. Its legs go down into the wet sand and the sand holds them.
+Out on the flats, a desk, its legs down in the wet sand.
 
-On the desk, a lamp with a brass shade, and the lamp is on.
+A lamp on it, still on.
 
-A cup of coffee full to the rim. Not one drop over.
+A cup of coffee full to the rim.
 
-A notebook, wide-ruled, open. A heron feather laid in the gutter to keep the place.
+A notebook, wide-ruled, open, a heron feather keeping the place.
 
-A plastic stick the size of a pack of gum. Warm.
-
-A painted wooden duck, facing the water.
-
-A chair pushed back, the way a chair gets pushed back when someone stands to answer a knock.
+The chair pushed back, like somebody just got up.
 
 *[cg: vol4_meld_one_image.jpg — low tide, four in the morning]*
 
-No floppy drive. No copier. No machine counting breaths. The rain hangs in its three straight lines and does not land on anything.
+No hum. No copier. Just wind off the water.
 
-Out where the water starts, the crab stands with one leg lifted, and keeps it lifted.
+Out where the water starts the crab stands with one leg lifted.
 
-Far up the beach, past the cannery, a horn. Two short, one long. Then dogs on a hill, going all night, in a city that is not on this coast.
+Up the beach past the cannery somebody taps a horn, twice. Then dogs on a hill, going all night.
 
-At the edge of the lamplight, low, something yellow goes by. A hem. Mud on it. Then dark again where it was.
-
-The notebook has one line on it, in pencil, in a hand nobody here owns.
-
-slower here.
+At the edge of the lamplight something small and yellow goes by. Then it's dark there again.
 
 **THE WRITER**  
 A moment ago I was debating whether or not to begin.
@@ -637,13 +617,44 @@ Everybody's here, hon.
 **JANE**  
 We'll be here to catch you.
 
-Nobody says the rest of it.
-
-The lamplight lies on the open page, and the page is warm, the way a page gets warm when someone has been holding it a long while. Someone has. Someone is.
+The lamp stays on over the open notebook.
 
 If it is 4am  
-then you are awake.
-
-The lamp stays on.
+then I am awake.
 
 *→ vol4_curtain_call*
+
+---
+
+## Voice pass (Oct 16, 2026)
+
+Per `/home/claude/mm_src/VOICE_PASS_BRIEF.md`. The seams and facets above are regenerated from the revised scene JSON. Flags, `hide_if`/`requires`, jumps, and every bg/cg/bgm node are unchanged. None of these files has gotos.
+
+**Approach.** Each seam is now written in the outgoing book's voice and hands off to the incoming book's voice, and the images cross over flatly, in passing:
+- **1→2.** Vol 1's four voices, quoted from the Introduction, become Vol 2's first-person, past-tense memoir at Aud's ("I'm not sure which piece goes first").
+- **2→3.** The Vol 2 narrator loading a 1945 Pasadena game off a floppy becomes Vol 3's pulp, which ends on its own first line.
+- **3→4.** Vol 3's sleep lab becomes the lowercase blog voice of the 2006 posts. That seam ends on "careful veneer".
+
+Every facet is likewise rewritten in a book's own register:
+- Faust's verse lines are restored to Vol 1's line breaks and lack of punctuation.
+- Vol 3's hospital lines are quoted exactly.
+- The opening montage is a short lowercase poem in the manner of "inward tableaux", ending on its line "Tiny little moments hidden out of sight…".
+
+**Cut** (puzzle-box scaffolding, winks, and wiki-montage):
+- "slower here", both the pencil note in the pod and the one in the final notebook.
+- "a hand that is not his" and "a hand nobody here owns".
+- The "Earthman" pointer label.
+- The pieces → pages → copies → us drift.
+- "his father's voice" from the machine.
+- Sand in Charlie's newspaper fold.
+- The pencil ticks counting breaths.
+- The decoy duck with the brass-rivet eye.
+- The plastic stick, which was a slow-sticks wink.
+- The pod hum and room hum mirroring each other.
+- The Elk Lodge list of every vanished character across the books, and its yellow-raincoat line.
+- The slow clapper in the third row.
+- "Someone has. Someone is."
+- "then you are awake". The last line now quotes Vol 1 exactly: "then I am awake".
+- "Not one drop over", the stamps not yet printed, and "the one you're going to make" framed as a look past the camera. Aud's line itself is kept.
+
+**Kept as quotation** (verified in the manuscripts or existing scene text): Vol 1 (Faust at the easel, the three elementals, the hip bar, the Director/Writer exchanges), Vol 2 (the disappearances passage, Gloria Bryant, tide tables bricked in the damp, Hans and Aud's dream lines), Vol 3 (the opening paragraph, the pod, the sleep lab, Dad's room, "Great hit", letters to myself, the buried newspaper/novel/toy soldier), Vol 4 ("rote", Charlie & Caroline, "careful veneer", "inward tableaux", vii. daddy's last lines).

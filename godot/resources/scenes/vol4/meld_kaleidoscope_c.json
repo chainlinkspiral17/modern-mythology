@@ -33,11 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "The editing suite at four in the morning. Four chairs. Coffee rings on the deck."
+      "text": "Four in the morning in the editing suite. Four chairs. Coffee rings on everything."
     },
     {
       "t": "narrate",
-      "text": "Aud comes in through the door that isn't on any street. Sleeves rolled, glasses on the chain, pot in hand."
+      "text": "Aud comes in with a pot of coffee, sleeves rolled, glasses on the chain, like it's any other morning."
     },
     {
       "t": "say",
@@ -49,11 +49,11 @@
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "None for me. Ginger beer, thanks."
+      "text": "None for me ginger beer thanks"
     },
     {
       "t": "narrate",
-      "text": "She pours anyway. The cup is already full. It goes over the rim, across the deck, along the cables, down behind the monitors."
+      "text": "She pours anyway, into a cup that's already full, and it goes over and runs along the cables."
     },
     {
       "t": "cg",
@@ -62,7 +62,7 @@
     },
     {
       "t": "narrate",
-      "text": "On the monitors, Small Wood. Hans in the bakery window lifting a loaf off a tray and setting it back. Eleven pictures of it. The same puff of flour every time, down to the dot."
+      "text": "On the monitors, a bakery window. Hans lifting a loaf off a tray and setting it back, lifting it, setting it back."
     },
     {
       "t": "say",
@@ -82,7 +82,7 @@
     },
     {
       "t": "narrate",
-      "text": "Hans sets it back. The flour puffs. On the next monitor the minivans along Hemlock open their sliding doors and shut them, open, shut, the same clunk."
+      "text": "Hans sets it back. On the next monitor minivan doors slide open and shut all down a street."
     },
     {
       "t": "say",
@@ -104,7 +104,7 @@
     },
     {
       "t": "narrate",
-      "text": "The town does not stop. The coffee reaches the floor, finds the door, goes out under it into the street, black and shining, downhill toward the middle of everything."
+      "text": "Nothing stops. The coffee finds the door and goes out under it, downhill."
     },
     {
       "t": "bg",
@@ -122,7 +122,7 @@
     },
     {
       "t": "narrate",
-      "text": "Out on Hemlock the coffee runs in the gutter. Hans calls after somebody's back, in a voice the speaker can barely hold."
+      "text": "Out on Hemlock it runs in the gutter past the bakery. Hans calls after somebody going by."
     },
     {
       "t": "say",
@@ -158,11 +158,11 @@
     },
     {
       "t": "narrate",
-      "text": "The Director takes his hand off the deck. Nobody is touching it now. On every monitor the town keeps going, and in the third row of a dark hall somewhere one person keeps clapping, slow, long after anyone else would have stopped."
+      "text": "The Director takes his hand off the deck. The town keeps going without him."
     },
     {
       "t": "narrate",
-      "text": "Aud sets down the pot and looks straight down the lens of the nearest camera. Not at the Director. Past him."
+      "text": "Aud sets down the pot."
     },
     {
       "t": "say",

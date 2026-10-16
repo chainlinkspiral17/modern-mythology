@@ -52,10 +52,6 @@
       "text": "His beautiful house sits atop a strange suburb transplanted to the edge of the Oregon coast, science fiction impossible but beautiful and tactile."
     },
     {
-      "t": "narrate",
-      "text": "Below the window the suburb runs downhill in rows to the bay. Every porch light is on. There is no car in any driveway."
-    },
-    {
       "t": "show",
       "char": "dickens_dean",
       "expr": "neutral",
@@ -67,24 +63,24 @@
     },
     {
       "t": "narrate",
-      "text": "The treatment never gives her whole. A yellow hem in the doorway. A hand on the frame, gone when he turns."
+      "text": "We don't see her yet. The hem of a yellow dress in the doorway, a hand on the frame."
     },
     {
       "t": "choice",
       "opts": [
         {
           "text": "look at the monitors.",
-          "goto": 16
+          "goto": 15
         },
         {
           "text": "look at the doorway.",
-          "goto": 17
+          "goto": 16
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "On the nearest screen a cursor blinks under a room description. Exits: none listed."
+      "text": "Close on the nearest monitor. A text game he's been building for years, a cursor blinking at the bottom of the screen, waiting on him."
     },
     {
       "t": "say",
@@ -138,10 +134,6 @@
     },
     {
       "t": "narrate",
-      "text": "Label-maker tape on the strap, peeling at one end: PROPERTY OF O. INC. · PROTOTYPE · DO NOT TAKE HOME."
-    },
-    {
-      "t": "narrate",
       "text": "He watches her face light up as she looks around the room."
     },
     {
@@ -175,10 +167,6 @@
     {
       "t": "narrate",
       "text": "INT."
-    },
-    {
-      "t": "narrate",
-      "text": "The slugline stops there. Under it, in pencil, in a hand that isn't the typist's: whose goggles were they first?"
     },
     {
       "t": "flag",

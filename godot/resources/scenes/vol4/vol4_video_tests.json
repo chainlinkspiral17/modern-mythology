@@ -33,10 +33,6 @@
     },
     {
       "t": "narrate",
-      "text": "A VHS-C cassette in a rubber band with a typed page folded around it. The clapper in the first frame reads PROD: O. INC., and the date line has been left blank."
-    },
-    {
-      "t": "narrate",
       "text": "She sees me in a hundred different ways while few else can hardly see me at all. I am her best friend and only a small part of me exists on your human plane of existence."
     },
     {
@@ -108,17 +104,17 @@
       "opts": [
         {
           "text": "stay on the wall.",
-          "goto": 23
+          "goto": 22
         },
         {
           "text": "cut to the next take.",
-          "goto": 24
+          "goto": 23
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "The paint keeps going without her. One tag it lays down twice, in a hand that isn't hers: 77."
+      "text": "Hold on the wall after she's gone. The paint keeps coming, color laid over color, until the wall is mostly black and still wet."
     },
     {
       "t": "bg",
@@ -142,10 +138,6 @@
       "t": "cg",
       "src": "assets/cg/vol4_star_key_door.jpg",
       "caption": "the star key"
-    },
-    {
-      "t": "narrate",
-      "text": "End of tape. On the paper insert, under the three scene numbers, someone wrote a fourth and crossed it out until the pen went through."
     },
     {
       "t": "flag",

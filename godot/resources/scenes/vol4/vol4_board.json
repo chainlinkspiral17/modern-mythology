@@ -33,31 +33,31 @@
     },
     {
       "t": "narrate",
-      "text": "Four clippings on the cork. In the drawer, with the rubber bands and the dead nine-volts, a ball of red string."
+      "text": "Four things up on the cork now. He digs a ball of red string out of the drawer, in with the rubber bands and the dead nine-volts."
     },
     {
       "t": "narrate",
-      "text": "You tie off on the zine first, because it's farthest out. A world where knowing comes in shrinkwrap and kids in basements cut the seal and burn it, and somebody's uncle in a missile silo laughs about the back doors he left open."
+      "text": "He ties it off on the zine page first, since it's farthest out. The future where you buy an education and download it into your head, kids with power drills, the old man in the missile silo bragging about the back doors he left open."
     },
     {
       "t": "narrate",
-      "text": "The string goes left and down to the headline. All over town. The week the idea hit and nothing happened, and then the old professors quit coming to class."
+      "text": "Left and down to the headline. All over town. The flood loosed on mankind, and the people who used to teach with nothing to do but talk about it."
     },
     {
       "t": "narrate",
-      "text": "Left again, to the blog. A kid up all night in March with a story due Monday, finishing the rough of weep."
+      "text": "Left again, to the blog post. A kid up all night in March with a story due Monday, finishing the rough of weep."
     },
     {
       "t": "narrate",
-      "text": "Four days later he turns it in and goes to hear poems at a theater and goes home and plays a video game to wash the day off."
+      "text": "Four days later he turns it in, goes to hear two poets read at a theater, goes home and plays video games to wash the day off."
     },
     {
       "t": "narrate",
-      "text": "The string doesn't care which of these came first. It runs back and back, through the paper, through the year."
+      "text": "Doesn't matter much which came first. The string runs back through all of it."
     },
     {
       "t": "narrate",
-      "text": "At the left edge of the clippings it stops at a card you didn't pin. An index card, block capitals, ballpoint pressed hard enough to emboss the cork behind it."
+      "text": "At the left edge it ends on an index card in his own block capitals, notes for the next thing."
     },
     {
       "t": "cg",
@@ -66,7 +66,7 @@
     },
     {
       "t": "narrate",
-      "text": "Under that, smaller, in the same hand: glass tower. Pacific."
+      "text": "Under it, smaller: glass tower on the pacific. wants children."
     },
     {
       "t": "choice",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "The card stays. The string is pulled tight to it like a line to a cleat."
+      "text": "He leaves it. The string pulled tight to the card."
     },
     {
       "t": "choice",
@@ -96,7 +96,7 @@
     },
     {
       "t": "narrate",
-      "text": "You pull. The card holds. The string keeps coming off the ball, more than the board has room for."
+      "text": "He pulls. The card holds and the string keeps coming off the ball, more than the board has room for."
     },
     {
       "t": "bgm",
@@ -104,15 +104,15 @@
     },
     {
       "t": "narrate",
-      "text": "There's slack left. A lot of it."
+      "text": "There's slack left over. A lot of it."
     },
     {
       "t": "narrate",
-      "text": "It goes past the card, past the frame, down the wall below the board to a strip of cork somebody screwed in under the light switch. Three things are already pinned there, and the pins are rusted."
+      "text": "He runs it down off the board and down the wall to a strip of old cork under the light switch, where a few things have been pinned so long the pins have rusted."
     },
     {
       "t": "narrate",
-      "text": "A newspaper clipping, gone the color of weak tea. The section header is SUCESOS. The crime page."
+      "text": "A clipping from a Caracas paper, gone the color of weak tea. The crime page. SUCESOS."
     },
     {
       "t": "choice",
@@ -129,15 +129,15 @@
     },
     {
       "t": "narrate",
-      "text": "POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. Somebody's ballpoint has underlined sin placa twice. No plates."
+      "text": "POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. A jitney with no plates, picking up fares on the unfinished highway."
     },
     {
       "t": "narrate",
-      "text": "Beside it, a parade on the news, shot off a television screen. Masks with too many eyes, feathers, a float shaped like a jaguar made of hubcaps."
+      "text": "Beside it, a photo of a parade, shot off a television screen. Masks with too many eyes, feathers, a jaguar float made out of hubcaps."
     },
     {
       "t": "narrate",
-      "text": "At the edge of the crowd the halftone goes strange around one girl: a yellow slicker, a smear of blue where her hair should be. The credit under the photo says only foto: Maribel."
+      "text": "A girl in a yellow slicker at the edge of the crowd, out of focus. Under it, foto: Maribel."
     },
     {
       "t": "choice",
@@ -150,39 +150,35 @@
     },
     {
       "t": "narrate",
-      "text": "A parade on the news, shot off a television screen. Masks with too many eyes, feathers, a float shaped like a jaguar made of hubcaps."
+      "text": "A photo of a parade, shot off a television screen. Masks with too many eyes, feathers, a jaguar float made out of hubcaps."
     },
     {
       "t": "narrate",
-      "text": "At the edge of the crowd the halftone goes strange around one girl: a yellow slicker, a smear of blue where her hair should be. The credit under the photo says only foto: Maribel."
+      "text": "A girl in a yellow slicker at the edge of the crowd, out of focus. Under it, foto: Maribel."
     },
     {
       "t": "narrate",
-      "text": "Above it, the headline. POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. Somebody's ballpoint has underlined sin placa twice. No plates."
+      "text": "Above it the headline. POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. A jitney with no plates, picking up fares on the unfinished highway."
     },
     {
       "t": "narrate",
-      "text": "You turn the clipping over on its pin. The back is birth notices. One is circled. The name is torn away along the fold, and what's left reads nació en Caracas, 1978, varón."
+      "text": "He turns it over on its pin. The back is birth notices and half an ad for powdered milk."
     },
     {
       "t": "narrate",
-      "text": "The string runs to it."
+      "text": "A lollipop wrapper, waxed paper flattened under a thumb. Printed on the inside, where you'd only see it once the candy was gone: VALE POR UN BOLETO."
     },
     {
       "t": "narrate",
-      "text": "The second thing is a lollipop wrapper. Waxed paper, flattened by a thumb. Printed on the inside, where you'd only see it once you'd eaten the candy: VALE POR UN BOLETO · LA TIERRA DE LECHE Y MIEL."
+      "text": "The last one isn't pinned yet. He's holding it."
     },
     {
       "t": "narrate",
-      "text": "The third pin is still in the jar, and the third thing is in your hand. You don't remember picking it up."
+      "text": "A cardboard sign off a windshield. RUTA 77 in house paint. Chacaíto. Sabana Grande. Plaza Venezuela. Petare."
     },
     {
       "t": "narrate",
-      "text": "A cardboard placard, the kind wedged against a windshield. RUTA 77 in house paint. Chacaíto. Sabana Grande. Plaza Venezuela. Petare."
-    },
-    {
-      "t": "narrate",
-      "text": "Below Petare a last stop painted over so many times the cardboard has a crust, and an arrow that runs off the edge of the card."
+      "text": "The bottom stop painted over so many times the cardboard has a crust."
     },
     {
       "t": "cg",
@@ -191,15 +187,15 @@
     },
     {
       "t": "narrate",
-      "text": "The last pin goes in."
+      "text": "He pins it up with the others."
     },
     {
       "t": "narrate",
-      "text": "Rain on hot asphalt. The window is shut. It isn't raining here."
+      "text": "What he remembers is rain on hot asphalt at four in the afternoon, the streets steaming, and the dogs up in the barrio going all night."
     },
     {
       "t": "narrate",
-      "text": "Headlights sweep the ceiling once, left to right, though the street below runs the other way."
+      "text": "Headlights cross the ceiling. He turns off the lamp."
     },
     {
       "t": "flag",

@@ -29,10 +29,6 @@
     },
     {
       "t": "narrate",
-      "text": "A three-ring binder. On the spine, in the prospectus's second color: IRIS · BIBLE · v.3."
-    },
-    {
-      "t": "narrate",
       "text": "Iris Williams - a 75 year old woman living in the desert with a strange collection of artists, visionaries, doomsayers, war protesters, and the ghosts of her past."
     },
     {
@@ -50,10 +46,6 @@
     {
       "t": "narrate",
       "text": "Esther Knight - Daughter of Gabriel, kept her Mother's name. Dotes on about her father, sort of neglects her daughter. Wants to learn as much about her Dad as she can from Iris, as he has recently passed away."
-    },
-    {
-      "t": "narrate",
-      "text": "Someone has drawn a box around Esther's name in pencil, and then, more lightly, a second box around the first."
     },
     {
       "t": "narrate",
@@ -80,17 +72,13 @@
       "opts": [
         {
           "text": "the act one map",
-          "goto": 19
+          "goto": 16
         },
         {
           "text": "the tab for the Schulidner trailer",
           "goto": 18
         }
       ]
-    },
-    {
-      "t": "narrate",
-      "text": "On the Schulidner tab, Melody's name is underlined, and beside it: same Melody as the tape?"
     },
     {
       "t": "narrate",

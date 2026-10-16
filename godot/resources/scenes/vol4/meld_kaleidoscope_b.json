@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Faust has an easel set up on a balcony that looks out over a town he has never been to."
+      "text": "Faust has an easel set up on the balcony. He paints from a notebook, a pencil sketch of a town he has never been to. One road down to the water. A cannery. A water tower."
     },
     {
       "t": "show",
@@ -45,17 +45,17 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Everyone must have a hobby."
+      "text": "Everyone must have a hobby\nsaid Aunt Grace who set me up"
     },
     {
       "t": "narrate",
-      "text": "He paints from a notebook propped on the easel ledge, a wide-ruled page with the town drawn in pencil. One road. Buildings propped on nothing. A water tower: four legs, a tank, a pointed hat."
+      "text": "Faust paints. The water tower goes in first, four legs and a tank and a pointed hat."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Painting burns an image from memory. I am starting to see things which should not be."
+      "text": "painting burns an image from memory.\nonly that I am starting to see\nthings which should not be."
     },
     {
       "t": "cg",
@@ -64,41 +64,41 @@
     },
     {
       "t": "narrate",
-      "text": "In the margin of the notebook, a column of pencil ticks. Evenly spaced. The way a nurse counts breaths."
+      "text": "Faust takes a hit off the joint and leans back."
     },
     {
       "t": "narrate",
-      "text": "Beside the easel the three elementals sit for him. Water on the left, fire on the right, air in the middle."
+      "text": "His models sit for him, the three elementals. Water on the left, fire on the right, air in the middle."
     },
     {
       "t": "say",
       "char": "Water",
       "expr": "neutral",
-      "text": "Quiet while he works on me."
+      "text": "Quiet while he works on me\nI think he really gets it"
     },
     {
       "t": "narrate",
-      "text": "Water is the tide. She keeps going out while she sits, farther than she ever goes."
+      "text": "Every time he looks up, Water has gone a little further out, like a tide."
     },
     {
       "t": "say",
       "char": "Fire",
       "expr": "amused",
-      "text": "It's cool how we can see ourselves as he paints us."
+      "text": "It's cool how\nwe can see ourselves\nas he paints us"
     },
     {
       "t": "narrate",
-      "text": "Fire is a pilot light under a diner grill at four in the morning, blue at the root."
+      "text": "Fire is blue at the root, like a pilot light under a diner grill."
     },
     {
       "t": "say",
       "char": "Air",
       "expr": "neutral",
-      "text": "You're just trying to win his favor."
+      "text": "You're just trying to win his favor"
     },
     {
       "t": "narrate",
-      "text": "Air will not hold still. Air goes in and out of a plastic mask, and a machine counts it, a machine covered in tiny lights like little eyes, and every count goes in the margin."
+      "text": "Air comes and goes, like breathing in a room where somebody is sick."
     },
     {
       "t": "bg",
@@ -110,11 +110,11 @@
     },
     {
       "t": "narrate",
-      "text": "Dad is connected to his bed, connected to the wall."
+      "text": "A hospital room on a top floor, large for what it is."
     },
     {
       "t": "narrate",
-      "text": "On the windowsill, a painted wooden decoy. On the television, ducks on a lake, mostly in the fall."
+      "text": "A television dangling from an odd angle plays ducks on a lake or a pond somewhere."
     },
     {
       "t": "bg",
@@ -126,27 +126,23 @@
     },
     {
       "t": "narrate",
-      "text": "Faust paints the decoy onto the tower's catwalk. He does not know why. His hand knows."
+      "text": "Faust paints ducks onto the water under the tower. He couldn't tell you where they came from."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "tired",
-      "text": "When nightmares keep me up at odd hours I can relax with my demons and desires made firm in the slowing of paint."
+      "text": "When nightmares keep me up\nat odd hours I can relax\nwith my demons and desires\nmade firm in the slowing of paint."
     },
     {
       "t": "narrate",
-      "text": "Tick, in the margin. The paint slows. Tick."
-    },
-    {
-      "t": "narrate",
-      "text": "On the canvas the water tower turns its head. Where the hat should be there is an eye on a stalk, and it looks back at the easel, and past the easel, at whoever is standing behind the painter."
+      "text": "The paint is still wet. The tower leans a little, like it wants to see over his shoulder."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "surprised",
-      "text": "Look what I've trapped."
+      "text": "Look what I've trapped"
     },
     {
       "t": "hide",
@@ -154,7 +150,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ticks reach the bottom of the page and keep going, over the ledge, down the balcony rail, into the street, where the rain takes them."
+      "text": "It starts to rain. Faust drags the easel inside and the paint runs anyway."
     },
     {
       "t": "flag",

@@ -28,10 +28,6 @@
       "duration": 2000
     },
     {
-      "t": "narrate",
-      "text": "A slate card, index stock, punched for a ring binder. TITLE / CREDIT / STATUS. Status, in ballpoint: turnaround."
-    },
-    {
       "t": "cg",
       "src": "assets/cg/vol4_komodo_dawn_slate.jpg",
       "caption": "Komodo Dawn · L.A. Steve & Oneironautics"
@@ -63,10 +59,6 @@
     {
       "t": "narrate",
       "text": "Cedular. An ex-spy and oil man from South America. Maria's second in command of the rig."
-    },
-    {
-      "t": "narrate",
-      "text": "Beside Cedular, pencil: stock footage, Lake Maracaibo, '78? ask J.D."
     },
     {
       "t": "narrate",
@@ -103,10 +95,6 @@
     {
       "t": "narrate",
       "text": "Longish treatment:"
-    },
-    {
-      "t": "narrate",
-      "text": "The binder pocket behind it is empty. A coffee ring where the treatment sat."
     },
     {
       "t": "flag",

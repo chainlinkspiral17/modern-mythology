@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Letterhead in two colors, the second off-register: ONEIRONAUTICS INC. · SMALL WOOD, OREGON. One staple in the corner has rusted a ring into the paper."
+      "text": "ONEIRONAUTICS INC. · SMALL WOOD, OREGON"
     },
     {
       "t": "cg",
@@ -70,15 +70,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the margin beside the three evils, in pencil, a second hand: three of us, too. we three shall be— and the line stops."
-    },
-    {
-      "t": "narrate",
       "text": "Three friends must become heroes of legend to repel the forces of evil, and not get too corrupted along the way. A unique visual style and immersive narrative will give gamers a unique window into an almost classical mythology and philosophy."
-    },
-    {
-      "t": "narrate",
-      "text": "Under the paragraph, pressed hard enough to tear the paper: SMOLVUD. The word appears nowhere else in the prospectus."
     },
     {
       "t": "narrate",
@@ -95,10 +87,6 @@
     {
       "t": "narrate",
       "text": "The ship itself becomes a time-machine, and the time-travelers are all the sailors on board, past, present and future, whose realities all become intertwined, horrifically so."
-    },
-    {
-      "t": "narrate",
-      "text": "The fourth paragraph is blacked out, every line, in a marker that bled through to the page behind. Only the last word was missed: name."
     },
     {
       "t": "flag",

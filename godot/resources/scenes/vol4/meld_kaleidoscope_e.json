@@ -33,11 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "The desk lamp has a round brass shade. Lean in close enough and it stops being a lamp."
+      "text": "The desk lamp has a round brass shade. Up close it looks like a porthole."
     },
     {
       "t": "narrate",
-      "text": "Rivets around the rim. Glass thick as a thumb. Behind the glass, the time between times."
+      "text": "Rivets around the rim. Thick glass."
     },
     {
       "t": "bg",
@@ -50,11 +50,11 @@
     },
     {
       "t": "narrate",
-      "text": "Jack Perkins sealed himself inside one quiet night. He gestated. All he dreamt of was home."
+      "text": "Jack Perkins sealed himself inside one quiet night and gestated in the time between times. All he dreamt of was home."
     },
     {
       "t": "narrate",
-      "text": "Through the porthole, home is a room on a top floor, large for what it is, real nice and new and clean."
+      "text": "Through the glass, a room on a top floor. It is large for what it is, looks real nice and new and clean."
     },
     {
       "t": "bg",
@@ -66,15 +66,11 @@
     },
     {
       "t": "narrate",
-      "text": "A television dangling from an odd angle plays ducks on a pond. Autumn ducks. Orange brown red serene."
+      "text": "A television dangling from an odd angle plays video of ducks on a lake or a pond somewhere. It keeps going, so it is apparently a duck channel."
     },
     {
       "t": "narrate",
-      "text": "A man asleep on the floor next to the air conditioning unit. The hum. The constant mechanical breeze."
-    },
-    {
-      "t": "narrate",
-      "text": "From inside the pod the hum sounds like the engines. From inside the room the pod sounds like the hum."
+      "text": "Andy falls asleep on the floor next to the air conditioning unit. This is something he did as a child. The hum, the constant mechanical breeze."
     },
     {
       "t": "narrate",
@@ -98,19 +94,15 @@
     },
     {
       "t": "narrate",
-      "text": "Jack puts his hand flat on the glass. On the other side a hand is held up to another hand, someone looking at the wrinkles in it, the fingernails. The only familiar thing."
+      "text": "Jack puts his hand flat on the glass."
     },
     {
       "t": "narrate",
-      "text": "He wants it to grasp back."
+      "text": "Could I save my father from death. Is there a way to let him know about the cancer before it is too late."
     },
     {
       "t": "narrate",
-      "text": "Could I save my father from death. Is there a way to let him know before it is too late."
-    },
-    {
-      "t": "narrate",
-      "text": "The porthole fogs with his breath. When it clears it is a lamp again, and the light falls on a page, and the page says:"
+      "text": "The glass fogs with his breath. When it clears it's a lamp again, light on a page."
     },
     {
       "t": "bg",
@@ -123,10 +115,6 @@
     {
       "t": "narrate",
       "text": "You know."
-    },
-    {
-      "t": "narrate",
-      "text": "Beside the lamp, a painted wooden duck that was not there before, facing the window. Its eye is a brass rivet."
     },
     {
       "t": "narrate",

@@ -33,29 +33,29 @@
     },
     {
       "t": "narrate",
-      "text": "The desk near dawn. Every drawer pulled. The corkboard in the window light, the red string gone brown."
+      "text": "Cut to: the desk before the sun. Every drawer pulled out, the corkboard catching window light, the red string gone brown."
     },
     {
       "t": "narrate",
-      "text": "Four folding chairs that weren't here before, church-basement chairs, one with a lean."
+      "text": "Four folding chairs, church basement, one with a lean."
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "(nervously, capping a pen) A moment ago I was debating whether or not to stop, and here I am stopping something I swore I'd never finish."
+      "text": "(nervously, capping a pen) A moment ago I was debating whether or not to stop and here I am stopping something I should never finish."
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "(comfortable, paint under the nails) Pieces click. Not all of them. The rest go in the drawer with the rubber bands."
+      "text": "(comfortable, paint under the nails) Pieces click in place some of them anyway the rest go in the drawer with the rubber bands and dead batteries for ancestor gawkers to stumble cross later."
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(sitting with a book, the same book) The days gone by dried up, crackled, flaked. I swept them into a dustpan. Some I kept."
+      "text": "(sitting with a book, the same book) The days gone by dry up crackle and flake I swept them up kept the ones that still had color."
     },
     {
       "t": "say",
@@ -65,13 +65,13 @@
     },
     {
       "t": "narrate",
-      "text": "Through the glass, the street. A car idles at the curb with its parking lights on and a cardboard sign against the windshield."
+      "text": "Through the glass the street. A car idling at the curb, parking lights on, a cardboard sign wedged against the windshield."
     },
     {
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(making hallacas at the end of the desk) Plantain leaf, string, whatever's left over goes inside. You tie it shut and boil it and nobody asks what's in it."
+      "text": "(making hallacas at the end of the desk) Plantain leaf string whatever's left over goes inside a little bit of this a little bit of that wrapped up like a present."
     },
     {
       "t": "say",
@@ -93,23 +93,23 @@
     },
     {
       "t": "narrate",
-      "text": "There is. By the door a man stands as if he's in line for a movie, holding a slip of waxed paper the way you'd hold a ticket. He doesn't come in."
+      "text": "By the door a man stands like he's in line for a movie, a slip of waxed paper held like a ticket. He doesn't come in."
     },
     {
       "t": "narrate",
-      "text": "His lips move. It might be all so very meta. It might be the name of a street."
+      "text": "All so very meta, he says, or something like it."
     },
     {
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Every scrap on this desk, every page in that drawer. One book. It always was. You can lift it by the string."
+      "text": "Every scrap on this desk every page in that drawer one book always was lift it by the string see what comes up with it."
     },
     {
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "There's a city up in the mountains, an hour from the coast. Four in the afternoon it rains and the streets steam like a kettle."
+      "text": "There's a city up in the mountains an hour from the coast it rains at four in the afternoon the streets steam the dogs go all night."
     },
     {
       "t": "say",
@@ -125,7 +125,7 @@
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Por puesto. One seat left. That's what two taps means."
+      "text": "Por puesto. Two taps means one seat left."
     },
     {
       "t": "say",
@@ -137,11 +137,11 @@
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "Where it always goes. Then one stop past."
+      "text": "Where it always goes."
     },
     {
       "t": "narrate",
-      "text": "The sign in the windshield says RUTA 77. The last stop on it is a crust of paint."
+      "text": "RUTA 77 on the sign in the windshield. Chacaíto, Sabana Grande, Petare."
     },
     {
       "t": "say",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "When you look again the man at the door is gone, the car is gone, and the street is wet though it hasn't rained."
+      "text": "When they look again the man at the door is gone and the car is gone and the street is wet."
     },
     {
       "t": "say",
@@ -173,7 +173,7 @@
     },
     {
       "t": "narrate",
-      "text": "Four voices, nobody first:"
+      "text": "All four, together:"
     },
     {
       "t": "narrate",

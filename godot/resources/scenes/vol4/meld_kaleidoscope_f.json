@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Crab derby. Numbers painted on the shells in white enamel. A chalk line across the pier boards and a crowd leaning over it."
+      "text": "Crab derby off the pier. Numbers painted on the shells, a chalk line across the boards, everybody leaning over it."
     },
     {
       "t": "show",
@@ -63,7 +63,7 @@
       "t": "say",
       "char": "Wagner",
       "expr": "neutral",
-      "text": "None for me. Ginger beer, thanks."
+      "text": "None for me ginger beer thanks"
     },
     {
       "t": "say",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Everybody laughs. The winner comes over the chalk sideways, red-brown, slow. Its number is zero."
+      "text": "Everybody laughs. The winner comes over the chalk sideways, slow. Its number is zero."
     },
     {
       "t": "cg",
@@ -84,13 +84,13 @@
       "t": "say",
       "char": "Jacob",
       "expr": "neutral",
-      "text": "But aren't we already, I mean look at us."
+      "text": "But aren't we already I mean look at us"
     },
     {
       "t": "say",
       "char": "Wagner",
       "expr": "warm",
-      "text": "Living in this land of milk and honey."
+      "text": "living in this land of milk honey."
     },
     {
       "t": "hide",
@@ -120,7 +120,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the Elk Lodge, behind glass, a newspaper clipping about the vanished. Yellow at the edges. Pinned with a tack gone green."
+      "text": "In Small Wood's Elk Lodge, a newspaper clipping behind glass, yellow at the edges."
     },
     {
       "t": "narrate",
@@ -128,23 +128,11 @@
     },
     {
       "t": "narrate",
-      "text": "The list underneath runs longer than the town. A girl last seen tending to chickens. A woman carved on a wooden advertisement, half fish. A boy in a coat too big for him."
+      "text": "A girl by the name of Gloria Bryant was last seen tending to chickens in a coop outside her room."
     },
     {
       "t": "narrate",
-      "text": "A young man who sealed himself in an egg one quiet night. A big man who went to sleep in a lab in Pasadena and woke on a cement floor in another year."
-    },
-    {
-      "t": "narrate",
-      "text": "Three friends who walked out of a club into a wash of color. A man who faded away in a static hiss, still talking."
-    },
-    {
-      "t": "narrate",
-      "text": "At the bottom, a line with no name. Only: last seen in a raincoat, yellow, small. Mud on the hem."
-    },
-    {
-      "t": "narrate",
-      "text": "The most very sad and true fact about a person who disappears off the face of the map is that they are most often never heard from again. There are always exceptions."
+      "text": "And finally, the most very sad and true fact about a person who disappears off the face of the map is that they are most often never heard from again. There are always exceptions, as people are so prone to prove."
     },
     {
       "t": "bg",
@@ -156,15 +144,15 @@
     },
     {
       "t": "narrate",
-      "text": "Out on the flats the crab lifts a leg and the world waits for it. Its shell is a map. On the map, a white dot up the Alsea, and the Elk Lodge, and a pier where the derby is still going."
+      "text": "Out on the flats the crab lifts one leg and holds it there."
     },
     {
       "t": "narrate",
-      "text": "It turns one eye on its stalk, tall as the water tower. It is not looking at the boy on the beach. There is no boy on the beach."
+      "text": "It turned one eye toward the beach, an eye on a stalk as tall as the water tower."
     },
     {
       "t": "narrate",
-      "text": "It was looking at you looking at it."
+      "text": "It was looking at me looking at it."
     },
     {
       "t": "flag",
