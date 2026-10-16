@@ -1,0 +1,185 @@
+{
+  "id": "vol4_story_betterment_a",
+  "vol": 4,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "betterment",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_betterment_wire_table.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "betterment",
+      "sub": "story · two days ago",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "What I know about myself, what truly there is to know, is more story than analogy. I am not like anything but these words right now. We're in the past."
+    },
+    {
+      "t": "narrate",
+      "text": "Two days ago I heard something that stuck with me. Two people I did not know were discussing their love for their child. They were not married, all there was between them was their love for their child."
+    },
+    {
+      "t": "narrate",
+      "text": "They could not stop talking about her. How intelligent. How completely and totally wonderful she was."
+    },
+    {
+      "t": "narrate",
+      "text": "She was. That's what made them smile. These two people were not in love with each other."
+    },
+    {
+      "t": "narrate",
+      "text": "They only saw each other because of her. To talk about her. You realize somewhere about now that their little girl is dead and that's all they have to talk about."
+    },
+    {
+      "t": "narrate",
+      "text": "Her life. What it mattered for, what it meant to them and why they meet out here of all places to talk about her. Their words carry, their story bleeds over into our lives because."
+    },
+    {
+      "t": "narrate",
+      "text": "The table is twisted wire. You spill a drink the liquid splashes through a film of stick remains."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know what to tell you. Okay, yes, that's a lie. I do."
+    },
+    {
+      "t": "narrate",
+      "text": "I just have to think about it. The story. Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know what happens next to these two people. The man's name is Jason. He wanted to grow up to be a surfer and became a seminary student instead."
+    },
+    {
+      "t": "narrate",
+      "text": "Her name is Rebecca. I might have loved her if things were different. Rebecca spoke to God for the first time when she was ten at a friend's house."
+    },
+    {
+      "t": "narrate",
+      "text": "They were playing around with candles, pictures of angels. Becca looked in the bathroom mirror and saw her future. Her friends found her ten minutes later, convulsing, babbling like a baby."
+    },
+    {
+      "t": "narrate",
+      "text": "Cooing. Kawing. Smiling with her tongue out."
+    },
+    {
+      "t": "narrate",
+      "text": "This is what came between us. This is what brought them together. Their baby died not too long ago, two and a half."
+    },
+    {
+      "t": "narrate",
+      "text": "Married a year out of college. They hooked up in California where Becca was studying journalism. Jason was still a surfer hadn't found God yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Never really did find God, had a friend drown though. Drunk and tethered to his board on a really bad spill. Jason cried to Becca one night, outside a small mexican restaurant, tilting the margarita glasses back to finish them off."
+    },
+    {
+      "t": "narrate",
+      "text": "She took him back to her dorm room and lost her virginity despite her word to God."
+    },
+    {
+      "t": "narrate",
+      "text": "We can talk about a lot of things now. Her name was Esther. She was a happy accident."
+    },
+    {
+      "t": "narrate",
+      "text": "Jason and Becca never even discussed marriage. It just sort of came to pass in a frantic three months in the middle of summer. They honeymooned in San Francisco."
+    },
+    {
+      "t": "narrate",
+      "text": "Jason got drunk one night and passed out in the hotel lobby while going down for ice. Becca panicked, thinking he'd run out on her and the baby inside her."
+    },
+    {
+      "t": "narrate",
+      "text": "She was weeping when she called up her sister and told her all her insecurities and how Jason had slept with another woman before he proposed to her at her parents house. Becca's sister gave Becca her credit card number to reserve a plane ticket should things fall apart before they ever really began."
+    },
+    {
+      "t": "narrate",
+      "text": "Becca searched the hotel for Jason and eventually found him. She'd walked by him four times and only saw him because she stopped to look at herself in a gigantic mirror adorned with iconographic engravings. She took it as a sign when all it was was a mirror."
+    },
+    {
+      "t": "narrate",
+      "text": "She found him looking at herself, seeing how desperate she was, looking into mirrors."
+    },
+    {
+      "t": "narrate",
+      "text": "When Esther was born she was premature. She was kept on a respirator for ten days. When she was taken off, she had weak lungs, and several serious complications as result."
+    },
+    {
+      "t": "narrate",
+      "text": "She was a beautiful baby. Quiet, happy. She put up with a lot of discomfort."
+    },
+    {
+      "t": "narrate",
+      "text": "Her eyes, when they first came alive, took in everything. She made funny noises and startled at the odd sounds and she loved the new faces that entered her world and cried when they were gone. She was a baby who was learning so much about the world, herself, and the people who loved her."
+    },
+    {
+      "t": "narrate",
+      "text": "Jason and Becca broke up a month and a half after Esther died. Jason cried on Becca and they talked about God. Jason went to stay with his brother who worked as a Ranger in Redwood National Park."
+    },
+    {
+      "t": "narrate",
+      "text": "Becca stayed there to finish up the schooling she put on hold to start a family."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the table",
+          "goto": 35
+        },
+        {
+          "text": "keep listening",
+          "goto": 36
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Somebody has left a ring of something sticky on the wire."
+    },
+    {
+      "t": "narrate",
+      "text": "I sit and listen at a table and hear two strangers talk about things that should not concern me. I might be paying too much attention, listening in on their story and hearing something that is not there. There's something more I want to hear."
+    },
+    {
+      "t": "narrate",
+      "text": "I picture her and I think about how her life might be different with me not in it. Fantastic, I hope. Sad."
+    },
+    {
+      "t": "narrate",
+      "text": "Of course. All lives are worth crying about to some degree. Maybe this is too much."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_story_betterment_a_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_story_betterment_b"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "id": "vol4_story_all_over_town",
+  "vol": 4,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "all over town",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_all_over_town.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "all over town",
+      "sub": "story · ripped from a headline",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Ripped from a headline. Stolen from the lips of passersby. The idea of E/D."
+    },
+    {
+      "t": "narrate",
+      "text": "What it meant. What it would be. Just a buzzword."
+    },
+    {
+      "t": "narrate",
+      "text": "Just a maybe. What it could be was a revolution. The stuff of science fiction."
+    },
+    {
+      "t": "narrate",
+      "text": "A concept too good to be true. E/D was still years away from becoming a common reality, a necessity just as necessary as the microwave oven. It was like a hard drive for the human mind."
+    },
+    {
+      "t": "narrate",
+      "text": "It was about random access memory. Real memory. Human memory."
+    },
+    {
+      "t": "narrate",
+      "text": "It was Eidactic, Didactic. Artificial connections overriding hard wired consciousness. It was about knowing shit."
+    },
+    {
+      "t": "narrate",
+      "text": "Shit you didn't know before you bought that memory module at Walmart. It was about the death of education. It was time to weep for the future."
+    },
+    {
+      "t": "narrate",
+      "text": "Because already people were saying E/D would be the doom of mankind. The airplane of evolution stalled mid-flight. What would become of the human race because real progress was built on the foundation of knowledge."
+    },
+    {
+      "t": "narrate",
+      "text": "Real know-how came through experience, learned experience. You could not go from A to C without hitting B. When the news hit, nothing much happened for weeks."
+    },
+    {
+      "t": "narrate",
+      "text": "People had to digest something this big. Then the old professors started not coming to classes. Those who had spent years learning the old fashioned way, whose entire sum of their existence counted for shit."
+    },
+    {
+      "t": "narrate",
+      "text": "They killed themselves. Up in their old reading rooms, private offices, home studies because they looked at the faces of their students and they knew. They were extinct."
+    },
+    {
+      "t": "narrate",
+      "text": "Because of what was coming around the corner because an education could truly be bought like a piece of software. Coming in shrinkwrap, an instruction manual the size an old serial novel. It was obscene."
+    },
+    {
+      "t": "narrate",
+      "text": "It was sacrilege. Because academics shunned the possibly maybes. Because science fiction wasn't true fiction."
+    },
+    {
+      "t": "narrate",
+      "text": "They ignored progress, they ignored the very dreams manifest. Because progress wasn't really at the true essence of humanity. It wasn't real, it wasn't tactile, it wasn't emotion."
+    },
+    {
+      "t": "narrate",
+      "text": "It was the march of time, a beat they could draw from always keeping one step behind. Because E/D was the baton twirler and they were the basso instruments in the back, heavy and monotone. Those that lived had nothing to do but discuss what would become of education."
+    },
+    {
+      "t": "narrate",
+      "text": "How it would change. How society would change. The schools would stay, no doubt."
+    },
+    {
+      "t": "narrate",
+      "text": "They were still about separating the classes, furthering the divide. Now classrooms would be more styled on the old style. The true style of teaching."
+    },
+    {
+      "t": "narrate",
+      "text": "Open discourse. In the round. Because perspective could not be acquired through technology, not yet at least, because E/D could give a small child the knowledge of nations but it couldn't teach it how to think."
+    },
+    {
+      "t": "narrate",
+      "text": "Not that they'd install the E/D interface in children. They were already discussing the age protocol. How much should a person really know, could a person really know and how soon should they be able to."
+    },
+    {
+      "t": "narrate",
+      "text": "Because educators would still be needed, could still make an impression. They'd just have to make one much sooner. Because the age of instant information was coming."
+    },
+    {
+      "t": "narrate",
+      "text": "Because the flood was loosed upon mankind."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_all_over_town",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

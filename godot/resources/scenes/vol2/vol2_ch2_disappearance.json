@@ -113,9 +113,6 @@
       "duration": 2800
     },
     {
-      "t": "end"
-    },
-    {
       "t": "jump",
       "scene": "vol2_ch3_points_of_impact"
     }

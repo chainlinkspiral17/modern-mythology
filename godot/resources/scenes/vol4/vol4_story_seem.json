@@ -1,0 +1,109 @@
+{
+  "id": "vol4_story_seem",
+  "vol": 4,
+  "chapter": 17,
+  "type": "chapter",
+  "title": "seem",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_seem_drugstore_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "seem",
+      "sub": "story · four in the morning",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "John worked in a twenty four hour drug store where he was watched on twelve different cameras. He hated being watched, hated the automatic distrust. Because these cameras were not in the general area of the store, these cameras were pointed at him, in the back of the store."
+    },
+    {
+      "t": "narrate",
+      "text": "John thought he was an honest kid. Thought he'd never ever want to break a rule, break a law. But it was getting to him."
+    },
+    {
+      "t": "narrate",
+      "text": "He wanted to spite the invisible eye. He hated his job, hated how little he was paid to do basically nothing. He read books most of the time and fell asleep on the job occasionally because there were door chimes to alert him to incoming customers."
+    },
+    {
+      "t": "narrate",
+      "text": "He listened to electronic music. It was great because a customer couldn't tell he was listening to music because all he did on the job was run a barcode across an electronic eye and handle greasy dollar bills and plastic strips of denomination."
+    },
+    {
+      "t": "narrate",
+      "text": "There used to be another kid who worked with John but the corporation that owned the drug store was about to go public and laid off a fifth of the work force."
+    },
+    {
+      "t": "narrate",
+      "text": "John didn't think much about the safety concerns of being alone in a big drug store at four in the morning but neither did the corporation who made his decisions for him. An elderly man had come into the store three nights ago wanting itch creme."
+    },
+    {
+      "t": "narrate",
+      "text": "John didn't give much thought to the old man but pointed him in the right direction when words were required of him. The old man came back, angry because he couldn't find what he was looking for, and angry John couldn't help him out because he couldn't leave the counter, the till full of money left unattended."
+    },
+    {
+      "t": "narrate",
+      "text": "The old man got angrier and John asked him to leave. That's when he came for me. The old man rushed John with an electric drill in his hand and drove the whirling metal bit into his head."
+    },
+    {
+      "t": "narrate",
+      "text": "He was trying to get at me. Trying to kill what he thought was me. Pushed John to the floor and pushed his hair to the side and found the incision."
+    },
+    {
+      "t": "narrate",
+      "text": "That's when he plunged the drill into his skull. Two inches in. The scrap of blood and bone and metal."
+    },
+    {
+      "t": "narrate",
+      "text": "Yellow goo came out the hole. It felt like a bomb went off in John's head. Then when the old man was gone, John hit the panic button and called 911, but didn't talk into the receiver, because he didn't know if he should."
+    },
+    {
+      "t": "narrate",
+      "text": "When they took him to the hospital and gave him a couple of stitches and told him not to hit his head too much, not to do anything that might exert him while it healed, Yorke was fired for not doing his job right."
+    },
+    {
+      "t": "narrate",
+      "text": "Because the same cameras that caught the act of violence, also made proof of John's inability to follow the employee handbook in seven separate citations. I know the rest of the story because you want me to know the rest."
+    },
+    {
+      "t": "narrate",
+      "text": "Why?"
+    },
+    {
+      "t": "narrate",
+      "text": "What does this matter?"
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_seem",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

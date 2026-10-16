@@ -1,0 +1,150 @@
+{
+  "id": "vol4_cc_4",
+  "vol": 4,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "Charlie & Caroline — The Sister's House",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_sister_house_ext_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cc_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Sister's House",
+      "sub": "Ext. · Day",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Carrie stands outside with her bags by her side. The house is pretty low rent, in bad shape, maybe two bedrooms, tight and cramped, the yard in a sorry state."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "tired",
+      "text": "My sister got knocked up the first time when she was fifteen. Mom and dad kicked her out when the kid was off her tit and she could go out and look for work. Instead, she got pregnant again."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "tired",
+      "text": "Different daddy, of course, but they got married and here they be. I was told I could live with them if I got work and looked after the kids on weekends."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_sister_house_int_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The House",
+      "sub": "Int. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "narrate",
+      "text": "Caroline is standing as the SISTER and BROTHER-IN-LAW go about their business, yelling at each other, ignoring her."
+    },
+    {
+      "t": "say",
+      "char": "Sister",
+      "expr": "neutral",
+      "text": "Wal-Mart is always hiring. They hired me, they'll hire you. Pay ain't great, managers are a fucking chore, but it's big and you can slip under the radar if you start to hate it."
+    },
+    {
+      "t": "say",
+      "char": "Brother-in-law",
+      "expr": "angry",
+      "text": "No socks. I said I wanted clean socks. Didn't you hear me say that yesterday?"
+    },
+    {
+      "t": "say",
+      "char": "Sister",
+      "expr": "angry",
+      "text": "How hard is it to throw your own goddamn clothes in the goddamn dryer."
+    },
+    {
+      "t": "say",
+      "char": "Brother-in-law",
+      "expr": "angry",
+      "text": "I asked you. You said you'd do it. Now I don't have clean socks."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_bigbox_parking_lot_day.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Wal-Mart Parking Lot",
+      "sub": "Ext. · Day",
+      "duration": 1800
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "Carrie stands in the parking lot, wearing a Wal-Mart vest."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "tired",
+      "text": "Piss test later, I got a job. Pays six fifty an hour, and drains the last bit of life left out of me. I can do better."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "tired",
+      "text": "I know I can. But I come home exhausted, all I want to do is sleep."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_cc_4_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_cc_5"
+    }
+  ]
+}

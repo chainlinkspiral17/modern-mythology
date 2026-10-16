@@ -1,0 +1,129 @@
+{
+  "id": "vol4_story_heavy_breathing",
+  "vol": 4,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "heavy breathing",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_heavy_breathing_bedroom.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "heavy breathing",
+      "sub": "story · eighth grade",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron was thinking back to when he was in eighth grade and when he was sitting next to a kid named Billy Terry From McKinney Texas. Billy Terry From McKinney Texas was the newest kid. He had a sort of redneck west Texas accent."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought everybody else spoke funny. Y'all speaking funny. When he introduced himself to everyone, he always called himself Billy Terry From McKinney Texas, so that's what everybody ended up calling him."
+    },
+    {
+      "t": "narrate",
+      "text": "Billy Terry From McKinney Texas. Billy Terry From McKinney Texas wasn't in school for very long. He got kicked out, expelled, and sent to a Juvenile Center for sexually assaulting a sixth grader in the drama room during lunch."
+    },
+    {
+      "t": "narrate",
+      "text": "They were working on puppets for a drug sketch they were going to perform for the fifth graders, four blocks over at the elementary school. Aaron was sewing costumes for the puppets, ones he designed and he didn't notice the two of them making out behind the miniature stage."
+    },
+    {
+      "t": "narrate",
+      "text": "They tried to get Aaron expelled, too, because they thought he was going along with it. He didn't know. He thought they were just practicing."
+    },
+    {
+      "t": "narrate",
+      "text": "Improvisation, trying out their puppets. Aaron seemed slow to other kids, adults and only his mother and him agreed that he just had an overactive imagination. They had to explain to him when he was twelve that a certain show on television wasn't real."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron never got to go to the movies or rent videos because he wasn't permitted to watch anything over PG. He still played with his toys when he was thirteen, still had an imaginary friend who he couldn't see but still very much believed in."
+    },
+    {
+      "t": "narrate",
+      "text": "He saw a show on television about alien abductions and two weeks later had a waking dream where soft melodies and blue lighting filled his bedroom and little white alien people came in and poked him in the arm with a very large needle. He couldn't move at all, and his eyes were open and he was very scared."
+    },
+    {
+      "t": "narrate",
+      "text": "The next day he was sunburnt like that guy in Close Encounters of the Third Kind, and acting very funny around adults and drawing pictures in textbooks and reading old Omni's in the library. Aaron's mother didn't have enough time for her kids as she had to support them all by herself."
+    },
+    {
+      "t": "narrate",
+      "text": "She dated once or twice a year, went out with her girlfriends to windowshop for men but remained relatively faithful to her ex while he served out his sentence. She only had a year left before he was to be let out for good, should he remain on reasonable terms with the state."
+    },
+    {
+      "t": "narrate",
+      "text": "She had to support a sickly son, a boy with asthma who couldn't play sports because his body could kill him, who really needed some sort of activity to keep him grounded to reality. She bought Aaron a videogame system when his father went away. Like a babysitter, only less teenager."
+    },
+    {
+      "t": "narrate",
+      "text": "One of those early nintendo systems, with the simple graphics and sound. Back when the games were still cute and harmless. Aaron was immediately taken by the games, the whole nintendo culture that was built up around them."
+    },
+    {
+      "t": "narrate",
+      "text": "He read the magazines, studied the strategies and comic books and cartoons on television. He ate the cereal. He didn't have friends but he got friends so that he could have someone else to play with."
+    },
+    {
+      "t": "narrate",
+      "text": "Steven Chau was stuck up and a bit of an ass for a kid, but when he got hit by that first car, he couldn't do anything physical for a couple months so Steven's mom bought Steven the latest Sega system, which Aaron didn't have, so Aaron invited himself over to try it all out."
+    },
+    {
+      "t": "narrate",
+      "text": "A friendship of sorts was built out of videogames. The competition and cooperation of those little bleeping bits of code. The two boys didn't really like each other to begin with, but they liked the games so they stuck it out."
+    },
+    {
+      "t": "narrate",
+      "text": "Aaron was not as smart as Steven, and kind of insane in many ways. Steven could freely cuss at Aaron in Cantonese because Steven's mom didn't like Aaron much back then and Aaron wouldn't ever respond, just stare blankly at the screen, fiddling with his videogame controller."
+    },
+    {
+      "t": "narrate",
+      "text": "The two never really became real friends until Steven's second car incident. Aaron remembered watching his friend try and eat with chopsticks again for the first time, sobbing unsuccessfully afterwards. Aaron was the one who showed Steven he could still do something."
+    },
+    {
+      "t": "narrate",
+      "text": "He helped his friend get some motor skills back thanks to those damn videogames. Aaron had patience in ways that most people did not because Aaron was the kind of kid who never really got bored with anything."
+    },
+    {
+      "t": "narrate",
+      "text": "Some said Aaron was the kind of kid who could be entertained staring at a blank wall for hours on end, that maybe Aaron could look after Steven but couldn't look after himself. He could game upwards of ten hours straight, not stopping to eat, rest or even use the restroom."
+    },
+    {
+      "t": "narrate",
+      "text": "He pissed himself more than once but never bad. Just little piss spots."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_heavy_breathing",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

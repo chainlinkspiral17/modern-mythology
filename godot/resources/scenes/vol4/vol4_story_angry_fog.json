@@ -1,0 +1,185 @@
+{
+  "id": "vol4_story_angry_fog",
+  "vol": 4,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "angry fog",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_angry_fog_suburb.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "angry fog",
+      "sub": "story · Texas · after school",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Lizza Beth wanted to succeed at something, anything. She listened to opera because it seemed distant, different. She wrote stories about things."
+    },
+    {
+      "t": "narrate",
+      "text": "She spent a lot of time lying in bed, staring at the ceiling, waiting for inspiration. Her parents thought she might not ever become anybody, ever do anything to distinguish herself but she knew deep down inside differently. She read great novels, great poetry."
+    },
+    {
+      "t": "narrate",
+      "text": "A little bit of Emily Dickenson, a little bit of Thoreau, a little bit of Ernest Hemingway. She couldn't fully commit herself to a style, a genre. She had a short attention span which meant she never finished A Thousand Years of Solitude, Hard Times."
+    },
+    {
+      "t": "narrate",
+      "text": "They were good books, they just didn't click how she wanted them to. She liked Prozac Nation. The chick in that was kinda cool."
+    },
+    {
+      "t": "narrate",
+      "text": "Lizza Beth read a quote from France or something about young people. How they were self-centered and full of dreams and half-baked schemes to be the Very Best Person in the World. Lizza thought most guys her age were kind of like that but all her girl friends didn't act that way."
+    },
+    {
+      "t": "narrate",
+      "text": "They wrote stories about getting molested, even though maybe just one of them had actually gotten molested because that's what girls her age did because shit like that needs to be talked about. Brought into the open because stories are all about getting inside someone, telling their secrets."
+    },
+    {
+      "t": "narrate",
+      "text": "Because they've gotta have Epiphanies, they've got to get something from the experience. Because getting molested makes them a better person at the very end like in a sitcom, how everyone's all made up and happy and all life's problems are wiped clean in the span of thirty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "Because if something really awful happens to you, you grow from the experience. That's why all those World War Two movies were popular at the moment. Because young men could get shot and killed, and kill people, too, and still come out better people because of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Getting Molested was her generation's World War Two. Well, at least it might have been until that whole 9/11 thing but even that only really counted if you were from New York. One girl Lizza knew tried to pull some bullshit sympathy about 9/11 and since she wasn't a New Yorker, she heard some shit about it."
+    },
+    {
+      "t": "narrate",
+      "text": "The whole second cousin of my friend bullshit everyone else was pulling was still so very in. The cheerleader weep parties and stuff."
+    },
+    {
+      "t": "narrate",
+      "text": "Lizza Beth did art stuff because she wasn't really good at the math and science stuff and she was quick to point out that it wasn't just because she was a girl because her brother and dad were awful at those thing too. The whole Art Fag mentality pissed Lizza off some."
+    },
+    {
+      "t": "narrate",
+      "text": "She didn't want to be different, she didn't want to change who she was just to stand out. If someone had to bullshit themselves into hating their lives just to get some sympathy, fine. Just wasn't her thing."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought one of the most beautiful things in the world was fuzion. The concept that someone can take something old and make something new out of it. Maybe mix it up a bit."
+    },
+    {
+      "t": "narrate",
+      "text": "Because old stuff was generally very boring by itself and new stuff, with all the hype and crap, it just came across like a commercial. If she had to think of an example of something fuzion, something kick ass, it'd probably be anything by David Lynch."
+    },
+    {
+      "t": "narrate",
+      "text": "Even though Twin Peaks was like, twenty years old, it was both cutting edge and eerily nostalgic. She liked that. She wanted to move to a small town like that where everyone had perfect lives and kept horrible awful secrets."
+    },
+    {
+      "t": "narrate",
+      "text": "That was so much cooler than being here, where all the houses being built had to follow construction guidelines to keep them all looking as different as possible without looking too different. Like, her house followed the same basic floorplan as half the buildings in her neighborhood did."
+    },
+    {
+      "t": "narrate",
+      "text": "Only difference was the kind of brick and roofing they used to stick on the outside. Cosmetic surface differences. Lizza Beth could go to a friend's house for the first time and know exactly where everything was without even asking."
+    },
+    {
+      "t": "narrate",
+      "text": "Lizza didn't even have to think about this shit, didn't even realize how fucked up things were until Marco entered her life. Marco was from Venezuela and he was pretty fucking hot. He didn't look very Mexican, looked kind of like a blonde European."
+    },
+    {
+      "t": "narrate",
+      "text": "He hated Texas, he hated the United States. Marco's dad was, like, fifty, and still going to college. The corporation he worked for in Venezuela paid for his schooling, even though, he was like, fifty."
+    },
+    {
+      "t": "narrate",
+      "text": "Only deal was, as soon as he was done with school, he had to go back to Venezuela and work for them for fifteen years. Kind of like slave labor, only he still got paid. Marco said his dad only made the equivalent of two grand a year in Venezuela, working for the oil companies."
+    },
+    {
+      "t": "narrate",
+      "text": "They lived pretty good though, lived in a nice part of the city in a pretty nice apartment building. Marco spoke good English because his mom taught at an International School and he got a free education there, which cost five times as much what his father made."
+    },
+    {
+      "t": "narrate",
+      "text": "So in a way, Marco's mom was the real breadwinner of the family, which Lizza Beth thought was cool, considering most women in Venezuela were still only secretaries and shit, because Marco said it was like being in the United States circa 1950, those ideals where women could only be mothers and beauty pageant winners and swimsuit models."
+    },
+    {
+      "t": "narrate",
+      "text": "Lizza thought that was horrible and learned that horrible was the same word in Spanish, spelled the same, only pronounced different. She wished she'd been taking Spanish instead of French."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought French was cool when she was twelve because it sounded prettier and all the smart people in commercials and good movies spoke French, but now she knew different. But, cool thing was, French and Spanish were still very close in terms of reading and talking, which she didn't realize until she met Marco."
+    },
+    {
+      "t": "narrate",
+      "text": "So when he said stuff in Spanish, she kind of knew what he was saying. He also knew French, Spanish, Italian, Japanese and German. He was studying Latin and Russian with his mother, who spoke thirteen different languages."
+    },
+    {
+      "t": "narrate",
+      "text": "That blew Lizza's mind. All she knew was English and two terms of French. She always thought foreigners didn't know how to speak English, but it turned out according to Marco, most of them spoke English and about a half dozen other languages."
+    },
+    {
+      "t": "narrate",
+      "text": "Marco also hated going to public schools. He thought they were like slums. Lizza agreed with him, because things were pretty shitty, all things except sports."
+    },
+    {
+      "t": "narrate",
+      "text": "The stadiums and uniforms were all new, all kept up. Marco wanted to go to college in England and with the grades he was getting, Lizza thought he could go anywhere. Marco liked soccer, which he called football, and could completely destroy anybody when he was on the field."
+    },
+    {
+      "t": "narrate",
+      "text": "He played for the high school and he was the star. The soccer boys were called faggots and fairy queers, because this was Texas, and real football was what was popular. Marco got beat up when he wouldn't try out for American football, because they saw him running, saw how fast he was."
+    },
+    {
+      "t": "narrate",
+      "text": "What pissed them off wasn't that he was good, it was just that he didn't give a shit about them. Like he was living in some parallel dimension where what they were doing just didn't matter because not being part of the popular crowd was practically a crime."
+    },
+    {
+      "t": "narrate",
+      "text": "The kids who drifted too far from the mainstream, who saw things that other people couldn't see, they were practically living in the Twilight Zone. You could be black, Mexican, gay or old, as long as you weren't fundamentally different on the outside."
+    },
+    {
+      "t": "narrate",
+      "text": "The kids who played Dungeons and Dragons and had Chess Club and talked about computers and Shakespeare and fake wrestling on television and old movies like Star Wars, well they were geeks but even they had each other. Lizza was afraid of becoming untouchable, like those poor Indian beggar people."
+    },
+    {
+      "t": "narrate",
+      "text": "The Jahti, they called it. The caste system where everybody was a part of the body, only the untouchables were nothing. That's so true because that's how it was here."
+    },
+    {
+      "t": "narrate",
+      "text": "There were people who were nothing, who had nobody, who no one would speak to. Because whoever the Indian equivalent of Jesus Christ might've been, he must've been in high school."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_angry_fog",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_stories",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_stories"
+    }
+  ]
+}

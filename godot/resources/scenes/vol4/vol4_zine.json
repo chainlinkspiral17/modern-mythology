@@ -89,7 +89,7 @@
         },
         {
           "text": "fold it shut",
-          "goto": 220
+          "goto": 223
         }
       ]
     },
@@ -156,15 +156,15 @@
     },
     {
       "t": "narrate",
-      "text": "People had to come in and clean out the asbestos, and there was flooding, rusting metal. And the concrete walls are a bitch to work with. But I have my own theater in here. And music studio."
+      "text": "People had to come in and clean out the asbestos, and there was flooding, rusting metal. And the concrete walls are a bitch to work with. But I have my own theater in here."
     },
     {
       "t": "narrate",
-      "text": "I collect cold war relics, got hundreds of museum quality pieces, spy stuff, historical documents, and I have a Dr. Strangelove Nuke Ride. You can program in whatever city you want to bomb and Yeehaw on down the bomb bay doors. It's great."
+      "text": "And music studio. I collect cold war relics, got hundreds of museum quality pieces, spy stuff, historical documents, and I have a Dr. Strangelove Nuke Ride. You can program in whatever city you want to bomb and Yeehaw on down the bomb bay doors."
     },
     {
       "t": "narrate",
-      "text": "You can be Slim Pickens."
+      "text": "It's great. You can be Slim Pickens."
     },
     {
       "t": "narrate",
@@ -241,15 +241,15 @@
     },
     {
       "t": "narrate",
-      "text": "Don't rush it. Work in teams of two if you have to. It helps to have a partner to keep them down, hold them still. Because they will fight and wriggle and scream."
+      "text": "Don't rush it. Work in teams of two if you have to. It helps to have a partner to keep them down, hold them still."
     },
     {
       "t": "narrate",
-      "text": "I once had a drill bit glance off a girl's skull, there was a new metal box inside. I tore open her scalp. She was screaming, trying to hold her flap of flesh on."
+      "text": "Because they will fight and wriggle and scream. I once had a drill bit glance off a girl's skull, there was a new metal box inside. I tore open her scalp."
     },
     {
       "t": "narrate",
-      "text": "Blood from the head pours fastest of all, a shower from the inside drenching us both."
+      "text": "She was screaming, trying to hold her flap of flesh on. Blood from the head pours fastest of all, a shower from the inside drenching us both."
     },
     {
       "t": "narrate",
@@ -355,7 +355,11 @@
     },
     {
       "t": "narrate",
-      "text": "He drinks alone in his room, thinking about their bodies, how they'd not really arranged themselves, just to get the killing done quick, because they were scared and unsympathetic, ruthless with themselves, eager to be done and gone from it all. They'd planned it out like it was this terribly important arcane ritual, which it mayhap became because of their fastidiousness, every step excruciating, carried through to questionable fruition because they'd backed themselves into that corner, and there was only one possible way to that very outcome."
+      "text": "He drinks alone in his room, thinking about their bodies, how they'd not really arranged themselves, just to get the killing done quick, because they were scared and unsympathetic, ruthless with themselves, eager to be done and gone from it all."
+    },
+    {
+      "t": "narrate",
+      "text": "They'd planned it out like it was this terribly important arcane ritual, which it mayhap became because of their fastidiousness, every step excruciating, carried through to questionable fruition because they'd backed themselves into that corner, and there was only one possible way to that very outcome."
     },
     {
       "t": "narrate",
@@ -500,11 +504,11 @@
     },
     {
       "t": "narrate",
-      "text": "To think of the possibility of it all. Endless information, flowing into your skull. The mind a great big sponge, to be tapped into, to recall, to trivialize on a whim. To know something instantly, or just about well enough. It was always there, up there."
+      "text": "To think of the possibility of it all. Endless information, flowing into your skull. The mind a great big sponge, to be tapped into, to recall, to trivialize on a whim."
     },
     {
       "t": "narrate",
-      "text": "Hard data, a wealth of knowledge."
+      "text": "To know something instantly, or just about well enough. It was always there, up there. Hard data, a wealth of knowledge."
     },
     {
       "t": "narrate",
@@ -540,11 +544,15 @@
     },
     {
       "t": "narrate",
-      "text": "The cut off point, high school. Now a public training ground for the basic necessities of life. It had been going this way for as long as they could see back. No shock, the rich would send their kids off to private institutions, classically modeled."
+      "text": "The cut off point, high school. Now a public training ground for the basic necessities of life. It had been going this way for as long as they could see back."
     },
     {
       "t": "narrate",
-      "text": "To refine and develop grace and stature and poise and formality, tools of presence to distance themselves ever more from the lower rungs, the dregs, the footstools. The poor would go to trade schools, to train their bodies with physical work, what a machine could not machine."
+      "text": "No shock, the rich would send their kids off to private institutions, classically modeled. To refine and develop grace and stature and poise and formality, tools of presence to distance themselves ever more from the lower rungs, the dregs, the footstools."
+    },
+    {
+      "t": "narrate",
+      "text": "The poor would go to trade schools, to train their bodies with physical work, what a machine could not machine."
     },
     {
       "t": "narrate",
@@ -718,11 +726,11 @@
     },
     {
       "t": "narrate",
-      "text": "Don Waller was not a good man if you take the sum of his actions in life together as a whole. He did not live by the golden rule."
+      "text": "Don Waller was not a good man if you take the sum of his actions in life together as a whole. He did not live by the golden rule. He was known as a fierce human being, making single mothers cry in supermarkets, letting people know how truly dumb and pathetic they were in his eyes and thus verily the eyes of all."
     },
     {
       "t": "narrate",
-      "text": "He was known as a fierce human being, making single mothers cry in supermarkets, letting people know how truly dumb and pathetic they were in his eyes and thus verily the eyes of all. His command over the English word, language, utterance nearly absolute, often wielding and waving it like a bloody dagger."
+      "text": "His command over the English word, language, utterance nearly absolute, often wielding and waving it like a bloody dagger."
     },
     {
       "t": "narrate",
@@ -883,19 +891,19 @@
     },
     {
       "t": "narrate",
-      "text": "They are broken, they just don't see it yet. They have no foresight, lost in a dream of data, hard facts and eternal recall. They become the answers they seek, they accept the information they are given. It is learned to them, is it not?"
+      "text": "They are broken, they just don't see it yet. They have no foresight, lost in a dream of data, hard facts and eternal recall. They become the answers they seek, they accept the information they are given."
     },
     {
       "t": "narrate",
-      "text": "They know falseness completely, they have studied it the wrong way, free will of thought compromised by committee. Of course they see the other side, but they don't argue any longer. It has already been decided."
+      "text": "It is learned to them, is it not? They know falseness completely, they have studied it the wrong way, free will of thought compromised by committee. Of course they see the other side, but they don't argue any longer."
     },
     {
       "t": "narrate",
-      "text": "The words that come out of them are deceptive because half the time they don't think about what they are saying. To reiterate, it has already been decided. There is nothing worthy in this surrender."
+      "text": "It has already been decided. The words that come out of them are deceptive because half the time they don't think about what they are saying. To reiterate, it has already been decided."
     },
     {
       "t": "narrate",
-      "text": "This is what we decide for ourselves."
+      "text": "There is nothing worthy in this surrender. This is what we decide for ourselves."
     },
     {
       "t": "narrate",
@@ -907,15 +915,19 @@
     },
     {
       "t": "narrate",
-      "text": "When there are answers to everything, there are answers to nothing. We flail about, we try for greatness, and we fail. New books are not printed, they are transferred. We laugh at this, their experience."
+      "text": "When there are answers to everything, there are answers to nothing. We flail about, we try for greatness, and we fail. New books are not printed, they are transferred."
     },
     {
       "t": "narrate",
-      "text": "They have new art, new ways of feeling and understanding. So be it. We will work like cavemen, writing on walls, littering the ground with our syllabic refuse."
+      "text": "We laugh at this, their experience. They have new art, new ways of feeling and understanding. So be it."
     },
     {
       "t": "narrate",
-      "text": "We will pollute their world with signs of defiance. We will claim the cities as our blank pages. We will write on the goddamn walls."
+      "text": "We will work like cavemen, writing on walls, littering the ground with our syllabic refuse. We will pollute their world with signs of defiance. We will claim the cities as our blank pages."
+    },
+    {
+      "t": "narrate",
+      "text": "We will write on the goddamn walls."
     },
     {
       "t": "narrate",

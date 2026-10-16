@@ -1,0 +1,258 @@
+{
+  "id": "vol4_cc_5",
+  "vol": 4,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "Charlie & Caroline — The Couch",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_after_party_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_club_thump.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The After Party",
+      "sub": "Int. · Night",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Carrie is aglow. She's an absolute beauty. Charlie is gently touching her back."
+    },
+    {
+      "t": "narrate",
+      "text": "They sit together on two stools so close together."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "So what are you doing right here right now?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "warm",
+      "text": "I really want to act, you know? I was in a couple high school productions. No big parts or nothing, but I loved it more than anything."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "Now bring me full circle."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "A guy was hitting on me at work, asked me out. I don't know anyone yet, so I figured why not. Now here I am."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "All tired lonesome lonely, and more than a little drunk."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "How far do you have to drive?"
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "Thirty minutes."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "My place is within five walking. You're welcome to crash on my couch."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "warm",
+      "text": "Why thank you Charlie, how very nice of you to offer."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_charlie_apartment_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_cc_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Charlie's Apartment",
+      "sub": "Int. · Night",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "charlie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "caroline",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie and Caroline are making out on the couch. Kissing lightly, tenderly."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "How very nice indeed."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "tired",
+      "text": "I'm really very tired you know."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "You're welcome to join me in bed."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "neutral",
+      "text": "It's okay. The couch is fine."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "neutral",
+      "text": "There's not room enough for us both on the couch."
+    },
+    {
+      "t": "say",
+      "char": "Caroline",
+      "expr": "tired",
+      "text": "Yeah, I'm really tired Charlie."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "sad",
+      "text": "Cool. Cool."
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie pulls back and stands up. She settles into the couch. He puts a blanket on her."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "warm",
+      "text": "Good dreams Caroline."
+    },
+    {
+      "t": "narrate",
+      "text": "She's either asleep or unresponsive. Her face is blank, but sweet."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "sad",
+      "text": "I'm just standing here and watching her sleep. I think I'll continue doing this. I should probably talk about something, to fill the void of me just staring and remembering her touch, her taste."
+    },
+    {
+      "t": "say",
+      "char": "Charlie",
+      "expr": "sad",
+      "text": "She got to me good, no, more grand than good, something about her, just her way of being, her style and her eyes, learning all about me. I can't take my eyes off her. I can't stop thinking about her."
+    },
+    {
+      "t": "narrate",
+      "text": "Charlie sits in a chair across from her."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay up with him",
+          "goto": 39
+        },
+        {
+          "text": "let the night go",
+          "goto": 40
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The blanket rises and falls. The room holds very still."
+    },
+    {
+      "t": "narrate",
+      "text": "Time passes. He's fallen asleep. His hair wildly fluctuates, though he stays still."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_cc_hair_storm.jpg",
+      "caption": "Time passes."
+    },
+    {
+      "t": "narrate",
+      "text": "It's like a force of nature is messing up his hair despite him staying stationary."
+    },
+    {
+      "t": "narrate",
+      "text": "It is morning now, the blanket is still on the couch, but Carrie is gone."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "flag",
+      "key": "vol4_cc_5_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_cc_6"
+    }
+  ]
+}
