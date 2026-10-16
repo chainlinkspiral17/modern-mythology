@@ -552,6 +552,151 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.ok(r.g[0].startsWith('AUTO') && r.g.some(x => x.startsWith('FORGE · ')), r.g.join(' | '));
     t.eq(r.pick, r.want); t.ok(/FORGE/.test(r.shown), r.shown);
   });
+  // ── MAKE TAKES: ensembles, variety, direct musical controls, quick moods, layout ──
+  await t.test('MAKE TAKES panel fits 1280×800 (and the Deck at 125 %): every row reachable without horizontal scroll, ⚄ MAKE TAKES pinned in view', async () => {
+    const check = () => p.evaluate(() => {
+      document.getElementById('more').open = true; document.getElementById('moreinst').open = true;
+      const right = document.getElementById('right'), R = right.getBoundingClientRect();
+      const rows = [...document.querySelectorAll('#regen .row, #regen summary')].filter(e => e.offsetParent);
+      const out = rows.filter(e => { const r = e.getBoundingClientRect(); return r.right > R.right - right.offsetWidth + right.clientWidth + 0.5 || r.left < R.left - 0.5; }).map(e => e.textContent.trim().slice(0, 30));
+      const wide = [...document.querySelectorAll('#regen *')].filter(e => e.offsetParent && e.getBoundingClientRect().right > R.left + right.clientWidth + 0.5).map(e => e.id || e.tagName + ':' + e.textContent.trim().slice(0, 20));
+      // scroll the box's top into view: the MAKE button (sticky at the bottom of the scroll area) must be on screen too
+      document.getElementById('regen').scrollIntoView({ block: 'start' });
+      const mk = document.getElementById('make').getBoundingClientRect();
+      const small = [...document.querySelectorAll('#regen button, #regen summary')].filter(e => e.offsetParent && e.getBoundingClientRect().height < 36).map(e => e.id || e.textContent.trim());
+      const res = { rows: rows.length, out, wide: wide.slice(0, 5), hscroll: [document.documentElement.scrollWidth - innerWidth, right.scrollWidth - right.clientWidth], make: [Math.round(mk.top), Math.round(mk.bottom), innerHeight], small };
+      document.getElementById('more').open = false; document.getElementById('moreinst').open = false;
+      return res;
+    });
+    await p.evaluate(() => selectTrack('sam_theme'));
+    for (const [w, h] of [[1280, 800], [1024, 640]]) {
+      await p.setViewportSize({ width: w, height: h }); await p.waitForTimeout(150);
+      if (process.env.SHOT_DIR) { await p.evaluate(() => { document.getElementById('more').open = true; document.getElementById('regen').scrollIntoView({ block: 'start' }); }); await p.screenshot({ path: path.join(process.env.SHOT_DIR, `director_${w}.png`) }); }
+      const r = await check();
+      t.ok(r.rows >= 12, w + ': rows ' + r.rows);
+      t.eq([r.out, r.wide, r.hscroll], [[], [], [0, 0]], w + '×' + h + ' horizontal overflow');
+      t.ok(r.make[0] >= 0 && r.make[1] <= r.make[2], w + '×' + h + ': ⚄ MAKE TAKES on screen ' + r.make);
+      t.eq(r.small, [], w + ': controls under 36 px');
+    }
+    // ⚙ SETTINGS ↓ lands the box's first rows below the sticky transport, not under it
+    await p.evaluate(() => { document.getElementById('right').scrollTop = 0; document.getElementById('tosettings').click(); });
+    await p.waitForTimeout(900);
+    const s = await p.evaluate(() => ({ tr: document.querySelector('.transport').getBoundingClientRect().bottom, row: document.getElementById('forwho').getBoundingClientRect().top, mk: document.getElementById('make').getBoundingClientRect().bottom, h: innerHeight }));
+    t.ok(s.row >= s.tr && s.row < s.tr + 80 && s.mk <= s.h, '⚙ SETTINGS ↓: FOR row at ' + s.row + ' under the transport (' + s.tr + '), MAKE at ' + s.mk);
+    await p.setViewportSize({ width: 1280, height: 800 });
+  });
+  await t.test('QUICK moods fill the panel and say what they set; 🎲 SURPRISE ME fills style / ensemble / feel / harmony within the choices', async () => {
+    const r = await p.evaluate(() => {
+      document.getElementById('resetregen').click();
+      document.querySelector('#quick [data-quick="dread"]').click();
+      const q = { style: document.getElementById('r-style').value, ens: RG.ensemble, desc: document.getElementById('desc').value, hit: document.getElementById('r-hit').value, msg: document.getElementById('quickmsg').textContent,
+        chip: document.querySelector('#ensembles [data-ens="horror"]').className, form: TempMaker.normOpts(regenForm()) };
+      const s = []; for (let k = 0; k < 12; k++) { document.getElementById('surprise').click(); s.push({ o: TempMaker.normOpts(regenForm()), raw: regenForm(), msg: document.getElementById('quickmsg').textContent, feel: document.getElementById('r-feel').value }); }
+      document.getElementById('resetregen').click();
+      return { q, s, after: regenForm() };
+    });
+    t.eq([r.q.style, r.q.ens, r.q.hit, r.q.chip], ['dark_drone', 'horror', 'fx_sub_drop', 'on']);
+    t.ok(/^dread → direction “dread, ominous/.test(r.q.msg) && /style dark drone/.test(r.q.msg) && /ensemble horror \/ industrial/.test(r.q.msg) && /hit fx_sub_drop/.test(r.q.msg), r.q.msg);
+    t.eq([r.q.form.ensemble, r.q.form.harmony, r.q.form.energy], ['horror', 'open', -0.15]);
+    for (const x of r.s) {
+      t.ok(x.o.style && x.o.ensemble && x.o.feel && x.o.harmony, 'surprise sets them all: ' + JSON.stringify(x.o));
+      t.eq(JSON.stringify(x.o.style) + x.o.ensemble + x.o.feel + x.o.harmony, JSON.stringify(x.raw.style) + x.raw.ensemble + x.raw.feel + x.raw.harmony, 'every pick survives normOpts');
+      t.ok(/^🎲 → (direction “.*” · )?style .* · ensemble /.test(x.msg), x.msg);
+    }
+    t.ok(new Set(r.s.map(x => x.o.style + x.o.ensemble)).size >= 6, 'surprises differ');
+    t.eq(r.after, {}, 'reset clears every choice');
+  });
+  let wideTakes = [];
+  const TempMaker_rock = await p.evaluate(() => TempMaker.ENSEMBLES.rock.roles);
+  await t.test('ENSEMBLE chip + VARIETY wide: each take draws its own line-up from the ensemble; take 1 keeps the brief\'s style, the others differ and are compatible', async () => {
+    const before = new Set(fs.readdirSync(G('assets/audio/review/sam_theme')));
+    const r = await p.evaluate(async () => {
+      document.getElementById('resetregen').click();
+      document.querySelector('#ensembles [data-ens="jazz"]').click(); document.querySelector('#variety [data-v="wide"]').click(); document.querySelector('#ntakes [data-n="3"]').click();
+      RG.roles = ['bass', 'chords', 'lead', 'pad']; document.getElementById('r-lenmode').value = 'bars'; document.getElementById('r-len').value = 2; renderRegen();
+      const shown = [document.getElementById('instrsum').textContent, document.querySelector('#ensembles [data-ens="jazz"]').className];
+      const R = await makeNow().done;
+      document.getElementById('resetregen').click();
+      return { state: R.state, made: R.made, errors: R.errors, shown, base: SeqGen.moodFromBrief(DIR.cat.find(x => x.id === 'sam_theme'), DIR.briefs.sam_theme).style, ens: TempMaker.ENSEMBLES.jazz.roles, compat: TempMaker.STYLE_COMPAT };
+    });
+    t.eq([r.state, r.made, r.errors], ['done', 3, []]);
+    t.ok(/jazz combo/.test(r.shown[0]) && r.shown[1] === 'on', JSON.stringify(r.shown));
+    const dirs = fs.readdirSync(G('assets/audio/review/sam_theme')).filter(d => !before.has(d)).map(d => 'assets/audio/review/sam_theme/' + d + '/');
+    wideTakes = dirs.map(d => Object.assign(json(d + 'meta.json'), { dir: d })).sort((a, b) => a.created.localeCompare(b.created));
+    t.eq(wideTakes.length, 3);
+    const lineups = wideTakes.map(m => ['bass', 'chords', 'lead', 'pad'].map(k => m.instruments[k]).join(' '));
+    for (const m of wideTakes) {
+      t.eq([m.request.ensemble, m.request.variety, m.mood.ensemble, m.mood.variety], ['jazz', 'wide', 'jazz', 'wide']);
+      for (const k of ['bass', 'chords', 'lead', 'pad']) t.ok(r.ens[k].map(x => 'forge:' + x).includes(m.instruments[k]), k + ' ' + m.instruments[k] + ' from the jazz combo');
+    }
+    t.eq(new Set(lineups).size, 3, 'three line-ups: ' + lineups.join(' | '));
+    const styles = wideTakes.map(m => m.mood.style);
+    t.eq(styles[0], r.base, 'take 1 keeps the brief\'s style');
+    t.ok(new Set(styles).size === 3 && styles.slice(1).every(s => r.compat[styles[0]].includes(s)), 'compatible, different styles: ' + styles.join(', '));
+    await p.waitForFunction(n => DIR.takes.filter(m => m.request && m.request.variety === 'wide').length === n, 3, { timeout: 5000 });
+    const card = await p.evaluate(take => { const i = DIR.takes.findIndex(m => m.take === take); return document.querySelector(`#takes [data-i="${i}"] .mood`).textContent + ' | ' + document.querySelector(`#takes [data-i="${i}"] .req`).textContent; }, wideTakes[1].take);
+    t.ok(/jazz combo/.test(card) && /ensemble jazz · variety wide/.test(card), card);
+  });
+  await t.test('⟳ AGAIN on a wide / ensemble take makes the same take: same style, same instruments, same notes', async () => {
+    const m = wideTakes[1]; t.ok(m, 'a wide take');
+    const before = new Set(fs.readdirSync(G('assets/audio/review/sam_theme')));
+    const r = await p.evaluate(async take => { const i = DIR.takes.findIndex(x => x.take === take); const o = regenOpts(DIR.takes[i]); const R = await requestTakes([DIR.sel], 1, o).done; return { state: R.state, o }; }, m.take);
+    t.eq(r.state, 'done');
+    t.ok(!('variety' in r.o) && r.o.ensemble === 'jazz' && r.o.style === m.mood.style, JSON.stringify(r.o));
+    const d = fs.readdirSync(G('assets/audio/review/sam_theme')).find(x => !before.has(x)), again = json('assets/audio/review/sam_theme/' + d + '/meta.json');
+    const pick = x => [x.mood.style, x.mood.key, x.mood.bpm, x.mood.seed, x.mood.ensemble, JSON.stringify(x.mood.vocab), JSON.stringify(x.instruments)];
+    t.eq(pick(again), pick(m));
+    t.ok(fs.readFileSync(G('assets/audio/review/sam_theme/' + d + '/song.mid')).equals(fs.readFileSync(G(m.dir + 'song.mid'))), 'the same notes (song.mid byte for byte)');
+  });
+  await t.test('VARIETY close: take 2 keeps take 1\'s style, key, tempo and instruments — only the notes change', async () => {
+    const before = new Set(fs.readdirSync(G('assets/audio/review/sam_theme')));
+    const r = await p.evaluate(async () => {
+      document.getElementById('resetregen').click();
+      document.querySelector('#ensembles [data-ens="rock"]').click(); document.querySelector('#variety [data-v="close"]').click(); document.querySelector('#ntakes [data-n="2"]').click();
+      RG.roles = ['drums', 'bass', 'lead']; document.getElementById('r-lenmode').value = 'bars'; document.getElementById('r-len').value = 2; renderRegen();
+      const R = await makeNow().done; document.getElementById('resetregen').click(); return { state: R.state, made: R.made };
+    });
+    t.eq([r.state, r.made], ['done', 2]);
+    const ms = fs.readdirSync(G('assets/audio/review/sam_theme')).filter(d => !before.has(d)).map(d => json('assets/audio/review/sam_theme/' + d + '/meta.json')).sort((a, b) => a.created.localeCompare(b.created));
+    const same = m => [m.mood.style, m.mood.mode, m.mood.key, m.mood.bpm, m.mood.ensemble, JSON.stringify(m.instruments)];
+    t.eq(same(ms[1]), same(ms[0]));
+    t.ok(ms[0].mood.seed !== ms[1].mood.seed && /^kit:(post_rock|four_floor)$/.test(ms[0].instruments.drums) && TempMaker_rock.lead.includes(ms[0].instruments.lead.replace(/^forge:/, '')), JSON.stringify(ms.map(m => [m.mood.seed, m.instruments])));
+  });
+  await t.test('KEY / BPM / FEEL / HARMONY / PROG / sound design reach the mood and the project', async () => {
+    const before = new Set(fs.readdirSync(G('assets/audio/review/sam_theme')));
+    const r = await p.evaluate(async () => {
+      document.getElementById('resetregen').click();
+      const set = (id, v) => { document.getElementById(id).value = v; document.getElementById(id).dispatchEvent(new Event('change')); };
+      set('r-key', '5'); set('r-bpm', '100'); set('r-feel', 'shuffle'); set('r-harm', 'lush'); set('r-prog', 'blues'); set('r-mode', 'minor');
+      set('r-tex', 'none'); set('r-fx', 'none'); set('r-hit', 'fx_glass_ping');
+      document.querySelector('#ntakes [data-n="1"]').click(); RG.roles = ['drums', 'bass', 'chords']; set('r-lenmode', 'bars'); document.getElementById('r-len').value = 2; renderRegen();
+      const form = regenForm(), sum = document.getElementById('moresum').textContent;
+      const R = await makeNow().done;
+      document.getElementById('resetregen').click();
+      return { state: R.state, errors: R.errors, form, sum, blues: SeqGen.PROGS.blues.map(x => x.join()) };
+    });
+    t.eq([r.state, r.errors], ['done', []]);
+    t.eq([r.form.key, r.form.bpm, r.form.feel, r.form.harmony, r.form.prog, r.form.textures, r.form.fx, r.form.hit], [5, 100, 'shuffle', 'lush', 'blues', 'none', 'none', 'fx_glass_ping']);
+    t.ok(/texture none/.test(r.sum) && /hit glass ping/.test(r.sum), 'the folded MORE says what it holds: ' + r.sum);
+    const d = fs.readdirSync(G('assets/audio/review/sam_theme')).find(x => !before.has(x)), dir = 'assets/audio/review/sam_theme/' + d + '/';
+    const m = json(dir + 'meta.json'), proj = json(dir + 'project.json');
+    t.eq([m.mood.key, Math.round(m.mood.bpm), m.mood.feel, m.mood.harmony, m.mood.prog, m.mood.textures, m.mood.fx, m.mood.hit], [5, 100, 'shuffle', 'lush', 'blues', 'none', 'none', 'fx_glass_ping']);
+    t.ok(m.mood.vocab.ext.every(x => ['ninth', 'add9', 'seventh'].includes(x)), 'lush extensions: ' + m.mood.vocab.ext);
+    t.ok(proj.groove && proj.groove.on && proj.groove.type === 'shuffle8' && proj.bpm === 100 && proj.key === 5, 'the project swings: ' + JSON.stringify(proj.groove));
+    t.ok(r.blues.includes(proj.gen.o.progression ? proj.gen.o.progression.join() : '') || proj.gen.o.progFamily === 'blues', 'blues family asked: ' + JSON.stringify(proj.gen.o.progFamily));
+    t.ok(proj.gen.o.hit === 'fx_glass_ping' && proj.gen.o.fx === 'none' && proj.gen.o.textures === 'none' && !proj.tracks.some(x => x.role === 'texture'), 'the composer got the sound design, no bed: ' + JSON.stringify([proj.gen.o.hit, proj.gen.o.fx, proj.gen.o.textures]));
+  });
+  await t.test('the picker offers the ensemble\'s own choices first, and kit flavours for drums', async () => {
+    const r = await p.evaluate(async () => {
+      RG.ensemble = 'jazz'; await openPicker('lead'); const lead = [...document.querySelectorAll('#pk-body .grp')].map(e => e.textContent);
+      await openPicker('drums'); const kits = [...document.querySelectorAll('#pk-body [data-pv^="kit"]')].map(e => e.dataset.pv);
+      document.querySelector('#pk-body [data-pv="kit:jazz"]').click(); const pick = RG.instruments.drums, form = TempMaker.normOpts(regenForm()).instruments;
+      document.getElementById('resetregen').click(); return { lead, kits, pick, form };
+    });
+    t.ok(/^ENSEMBLE · jazz combo/.test(r.lead[1]), r.lead.slice(0, 3).join(' | '));
+    t.ok(r.kits.includes('kit') && r.kits.includes('kit:jazz') && r.kits.includes('kit:standard') && r.kits.length >= 10, r.kits.join());
+    t.eq([r.pick, r.form], ['kit:jazz', { drums: 'kit:jazz' }]);
+  });
   await t.test('no page / console errors', async () => t.noErrors(errors));
   if (process.env.KEEP_GAME) console.log('  game folder kept: ' + GAME); else fs.rmSync(GAME, { recursive: true, force: true });
 });

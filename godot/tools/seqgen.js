@@ -467,12 +467,16 @@
     chiptune: [['triad', 4], ['seventh', 1], ['sus4', 1]], trip_hop: [['seventh', 3], ['ninth', 2], ['triad', 1]],
   };
   // a section's harmony: progression, harmonic rhythm (bars per chord), extension; B / C contrast with A
-  function harmonyPlan(R, st, fam, prog0) {
-    const pool = PROGS[fam];
-    const A = { prog: prog0 || R.pick(pool), hr: R.pick(st.hr || [1]), ext: R.weighted(EXT_W[st.id] || [['triad', 1]]) };
+  // colour hook (the AUDIO DIRECTOR's HARMONY / PROGRESSION controls, all optional): o.progFamily — a PROGS family to
+  // draw from instead of the style's; o.ext — an EXT name or [[ext, weight], …] instead of the style's EXT_W. Each
+  // pick still takes one draw from R, so a seed keeps its other choices; absent → exactly the style's own.
+  function harmonyPlan(R, st, fam, prog0, o) {
+    const xe = o && (typeof o.ext === 'string' ? (EXT[o.ext] ? [[o.ext, 1]] : null) : Array.isArray(o.ext) ? o.ext.filter(x => Array.isArray(x) && EXT[x[0]] && +x[1] > 0) : null);
+    const pool = PROGS[(o && PROGS[o.progFamily]) ? o.progFamily : fam], W = xe && xe.length ? xe : EXT_W[st.id] || [['triad', 1]];
+    const A = { prog: prog0 || R.pick(pool), hr: R.pick(st.hr || [1]), ext: R.weighted(W) };
     const other = avoid => { const c = pool.filter(p => p.join() !== avoid.join() && p[0] !== avoid[0]); return R.pick(c.length ? c : pool.filter(p => p.join() !== avoid.join()).concat([avoid])); };
-    const B = { prog: other(A.prog), hr: R.chance(0.3) ? R.pick(st.hr || [1]) : A.hr, ext: R.chance(0.4) ? R.weighted(EXT_W[st.id] || [['triad', 1]]) : A.ext };
-    const C = { prog: other(B.prog), hr: R.pick([1, 2]), ext: R.weighted(EXT_W[st.id] || [['triad', 1]]) };
+    const B = { prog: other(A.prog), hr: R.chance(0.3) ? R.pick(st.hr || [1]) : A.hr, ext: R.chance(0.4) ? R.weighted(W) : A.ext };
+    const C = { prog: other(B.prog), hr: R.pick([1, 2]), ext: R.weighted(W) };
     const brk = R.chance(0.5) ? { prog: [A.prog[0]], hr: 4, ext: 'sus2' } : A;
     return { A, B, C, brk, intro: R.chance(0.6) ? A : { prog: [A.prog[0], A.prog[A.prog.length - 1]], hr: 2, ext: A.ext }, outro: A, loop: A, bed: A };
   }
@@ -1027,7 +1031,7 @@
     const fam = own ? (MINORISH[mode] && PROGS[own + '_minor'] ? own + '_minor' : own) : (MINORISH[mode] ? 'minor' : 'major');
     // every structural choice comes from its own stream, so adding a choice never reshuffles the others
     const P = k => rng(seed * 7 + hash('plan:' + k));
-    const HP = harmonyPlan(P('harm'), st, fam, o.progression);
+    const HP = harmonyPlan(P('harm'), st, fam, o.progression, o);
     // a score cue's own layout ([name, bars, roles?]) wins; else a song picks one of the shapes
     const shape = custom ? custom.map(([n, b, r]) => [String(n), Math.round(+b), Array.isArray(r) ? r : null]) : formId === 'song' ? P('shape').pick(SONG_SHAPES) : FORMS[formId].map(([n, b]) => [n, b]);
     const sparse = density < 0.45;

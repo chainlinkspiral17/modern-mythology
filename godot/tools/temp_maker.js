@@ -11,6 +11,10 @@
  *   TempMaker.compose(E, opts, inst) → song (loads a fresh generated project into E)
  *   TempMaker.render(E, { loop, stems, master, lufs, onProgress }) → { channels, sampleRate, loop, bars, mastered, stems }
  *   writeTake / writeTempToGame / seedsUsed / normOpts / takeMood / arrangeTo / shapeArrangement / stemGroups …
+ *   req.opts (normOpts): description, style, mode, form, bpm, key (0–11 | 'home'), energy, density, length, loop, roles,
+ *     extraPads, instruments {role: kit[:style] | forge:… | patch:…}, seed, ensemble (ENSEMBLES), variety (close | wide |
+ *     wild; mixed = absent), feel (FEELS), harmony (HARMONY), prog (a SeqGen.PROGS family), textures ([≤2] | 'none'),
+ *     fx / hit (preset | 'none'). varyTake applies the per-take ones; meta.mood records what each take got.
  *
  * Review staging: assets/audio/review/<track id>/<take id>/ mix.wav · stems/<role>.wav · stems.json · credits.txt · meta.json
  */
@@ -33,6 +37,9 @@
   const REVIEW_DIR = 'assets/audio/review';
   const APPROVALS = 'resources/music/temp_approvals.json';
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  // SeqGen.hash (FNV-1a) + a murmur finalizer: FNV's low bits barely move between near seeds (its lowest bit is the parity
+  // of the input's characters), so `hash % 2` picks the same entry for most seeds. The panel's per-take picks use this.
+  const mixHash = s => { let h = SG().hash(String(s)); h = Math.imul(h ^ (h >>> 16), 0x85ebca6b); h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35); return (h ^ (h >>> 16)) >>> 0; };
   // PATCH BANK picks per style — free-to-use and light: one GeneralUser GS download (32 MB) + jRhodes3d. GeneralUser ids are
   // 'gugs:<bank>.<program>' (GM program numbers from 0; bank 128 = drum kits: 0 standard, 8 room, 16 power, 24 electronic,
   // 25 TR-808, 32 jazz, 40 brush, 48 orchestra). Alternates per style and role — the track seed picks one, so two noir
@@ -61,6 +68,41 @@
                  lead: ['gugs:0.10', 'gugs:0.9', 'gugs:0.8', 'gugs:0.81', 'gugs:0.45'], pad: ['gugs:0.94', 'gugs:0.52', 'gugs:0.91', 'gugs:0.44', 'gugs:0.48'] },
     dnb:       { drums: ['gugs:128.24'], bass: ['gugs:0.39', 'gugs:0.38'], chords: ['gugs:0.89', 'gugs:0.4', 'gugs:0.95'], lead: ['gugs:0.81', 'gugs:0.84', 'gugs:0.98'],
                  pad: ['gugs:0.91', 'gugs:0.89', 'gugs:0.95', 'gugs:0.94'] },
+    // the score bible's 16 genres (GM programs: 0 piano · 4 EP · 8 celesta · 10 music box · 11 vibes · 12 marimba · 14 tubular ·
+    // 16–20 organs · 21 accordion · 22 harmonica · 24–30 guitars · 32–39 basses · 40–45 strings · 46 harp · 48–55 ensembles /
+    // choirs · 56–63 brass · 64–79 reeds / pipes · 80–87 synth leads · 88–95 pads · 96–103 synth fx · 104–111 ethnic)
+    folk:      { drums: ['gugs:128.40', 'gugs:128.32'], bass: ['gugs:0.32', 'gugs:0.33'], chords: ['gugs:0.24', 'gugs:0.25', 'gugs:0.105', 'gugs:0.46'],
+                 lead: ['gugs:0.22', 'gugs:0.110', 'gugs:0.105', 'gugs:0.73', 'gugs:0.78', 'gugs:0.25'], pad: ['gugs:0.48', 'gugs:0.21', 'gugs:0.60', 'gugs:0.89'] },
+    chamber:   { drums: ['gugs:128.48'], bass: ['gugs:0.43', 'gugs:0.42'], chords: ['gugs:0.48', 'gugs:0.44', 'gugs:0.45', 'gugs:0.49'],
+                 lead: ['gugs:0.40', 'gugs:0.41', 'gugs:0.42', 'gugs:0.71', 'gugs:0.73', 'gugs:0.68', 'vsco:celloenssusvib'], pad: ['gugs:0.48', 'gugs:0.49', 'gugs:0.44', 'gugs:0.52'] },
+    piano:     { drums: ['gugs:128.40'], bass: ['gugs:0.0', 'gugs:0.1'], chords: ['gugs:0.0', 'gugs:0.1', 'gugs:0.4', 'jrhodes:st', 'gugs:0.3'],
+                 lead: ['gugs:0.0', 'gugs:0.1', 'gugs:0.8'], pad: ['gugs:0.48', 'gugs:0.89', 'gugs:0.49'] },
+    hymn:      { drums: ['gugs:128.48'], bass: ['gugs:0.19', 'gugs:0.32', 'gugs:0.43'], chords: ['gugs:0.19', 'gugs:0.20', 'gugs:0.52', 'gugs:0.48', 'gugs:0.60'],
+                 lead: ['gugs:0.19', 'gugs:0.52', 'gugs:0.73', 'gugs:0.60', 'gugs:0.71', 'gugs:0.53'], pad: ['gugs:0.52', 'gugs:0.53', 'gugs:0.19', 'gugs:0.91', 'gugs:0.48'] },
+    dark_drone: { drums: ['gugs:128.48'], bass: ['gugs:0.38', 'gugs:0.43', 'gugs:0.35'], chords: ['gugs:0.92', 'gugs:0.93', 'gugs:0.94', 'gugs:0.44', 'gugs:0.97'],
+                 lead: ['gugs:0.14', 'gugs:0.93', 'gugs:0.42', 'gugs:0.101', 'gugs:0.103'], pad: ['gugs:0.92', 'gugs:0.93', 'gugs:0.91', 'gugs:0.94', 'gugs:0.95', 'gugs:0.97'] },
+    synth_horror: { drums: ['gugs:128.24', 'gugs:128.25'], bass: ['gugs:0.38', 'gugs:0.39', 'gugs:0.87'], chords: ['gugs:0.90', 'gugs:0.50', 'gugs:0.95', 'gugs:0.88'],
+                 lead: ['gugs:0.81', 'gugs:0.80', 'gugs:0.84', 'gugs:0.14', 'gugs:0.103'], pad: ['gugs:0.50', 'gugs:0.95', 'gugs:0.94', 'gugs:0.91'] },
+    jazz:      { drums: ['gugs:128.40', 'gugs:128.32'], bass: ['gugs:0.32', 'gugs:0.35'], chords: ['jrhodes:st', 'gugs:0.0', 'gugs:0.4', 'gugs:0.26', 'gugs:0.11'],
+                 lead: ['gugs:0.66', 'gugs:0.65', 'gugs:0.59', 'gugs:0.56', 'gugs:0.11', 'gugs:0.71', 'gugs:0.73'], pad: ['gugs:0.61', 'gugs:0.48', 'gugs:0.49', 'gugs:0.89'] },
+    dub:       { drums: ['gugs:128.8', 'gugs:128.0'], bass: ['gugs:0.33', 'gugs:0.38', 'gugs:0.39'], chords: ['gugs:0.16', 'gugs:0.17', 'gugs:0.27', 'gugs:0.4', 'gugs:0.28'],
+                 lead: ['gugs:0.22', 'gugs:0.73', 'gugs:0.114', 'gugs:0.21', 'gugs:0.56'], pad: ['gugs:0.16', 'gugs:0.89', 'gugs:0.48', 'gugs:0.94'] },
+    post_rock: { drums: ['gugs:128.16', 'gugs:128.8'], bass: ['gugs:0.33', 'gugs:0.34', 'gugs:0.35'], chords: ['gugs:0.27', 'gugs:0.29', 'gugs:0.26', 'gugs:0.44', 'gugs:0.48'],
+                 lead: ['gugs:0.27', 'gugs:0.29', 'gugs:0.30', 'gugs:0.42', 'gugs:0.14'], pad: ['gugs:0.48', 'gugs:0.49', 'gugs:0.89', 'gugs:0.95', 'gugs:0.94'] },
+    lullaby:   { drums: ['gugs:128.40'], bass: ['gugs:0.32', 'gugs:0.35', 'gugs:0.12'], chords: ['gugs:0.8', 'gugs:0.10', 'gugs:0.46', 'gugs:0.108', 'gugs:0.0'],
+                 lead: ['gugs:0.10', 'gugs:0.9', 'gugs:0.8', 'gugs:0.108', 'gugs:0.112', 'gugs:0.79', 'vsco:harp'], pad: ['gugs:0.52', 'gugs:0.53', 'gugs:0.49', 'gugs:0.88'] },
+    industrial: { drums: ['gugs:128.24', 'gugs:128.16'], bass: ['gugs:0.38', 'gugs:0.39', 'gugs:0.87', 'gugs:0.30'], chords: ['gugs:0.30', 'gugs:0.29', 'gugs:0.93', 'gugs:0.90'],
+                 lead: ['gugs:0.30', 'gugs:0.81', 'gugs:0.84', 'gugs:0.103', 'gugs:0.55'], pad: ['gugs:0.93', 'gugs:0.94', 'gugs:0.95', 'gugs:0.97'] },
+    surf:      { drums: ['gugs:128.0', 'gugs:128.8'], bass: ['gugs:0.34', 'gugs:0.33', 'gugs:0.32'], chords: ['gugs:0.27', 'gugs:0.16', 'gugs:0.17', 'gugs:0.26'],
+                 lead: ['gugs:0.27', 'gugs:0.28', 'gugs:0.26', 'gugs:0.56', 'gugs:0.114'], pad: ['gugs:0.16', 'gugs:0.18', 'gugs:0.61', 'gugs:0.48'] },
+    bayou:     { drums: ['gugs:128.40', 'gugs:128.0'], bass: ['gugs:0.33', 'gugs:0.32'], chords: ['gugs:0.21', 'gugs:0.23', 'gugs:0.25', 'gugs:0.4', 'gugs:0.105'],
+                 lead: ['gugs:0.21', 'gugs:0.22', 'gugs:0.110', 'gugs:0.65', 'gugs:0.71', 'gugs:0.105'], pad: ['gugs:0.21', 'gugs:0.61', 'gugs:0.48', 'gugs:0.89'] },
+    minimal:   { drums: ['gugs:128.0', 'gugs:128.24'], bass: ['gugs:0.32', 'gugs:0.38', 'gugs:0.12'], chords: ['gugs:0.12', 'gugs:0.11', 'gugs:0.13', 'gugs:0.8', 'gugs:0.6', 'gugs:0.16'],
+                 lead: ['gugs:0.71', 'gugs:0.11', 'gugs:0.9', 'gugs:0.53', 'gugs:0.12', 'gugs:0.73'], pad: ['gugs:0.52', 'gugs:0.53', 'gugs:0.16', 'gugs:0.49'] },
+    chiptune:  { drums: ['gugs:128.24', 'gugs:128.25'], bass: ['gugs:0.38', 'gugs:0.39', 'gugs:0.80'], chords: ['gugs:0.80', 'gugs:0.81', 'gugs:0.16', 'gugs:0.9'],
+                 lead: ['gugs:0.80', 'gugs:0.81', 'gugs:0.82', 'gugs:0.83', 'gugs:0.9'], pad: ['gugs:0.16', 'gugs:0.80', 'gugs:0.90', 'gugs:0.50'] },
+    trip_hop:  { drums: ['gugs:128.8', 'gugs:128.40', 'gugs:128.25'], bass: ['gugs:0.33', 'gugs:0.35', 'gugs:0.38', 'gugs:0.32'], chords: ['jrhodes:st', 'gugs:0.4', 'gugs:0.48', 'gugs:0.11', 'gugs:0.89'],
+                 lead: ['gugs:0.40', 'gugs:0.42', 'gugs:0.11', 'gugs:0.59', 'gugs:0.71', 'gugs:0.9'], pad: ['gugs:0.48', 'gugs:0.49', 'gugs:0.94', 'gugs:0.89', 'gugs:0.44'] },
   };
   const PATCH_PICKS = {
     four_floor: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.80', pad: 'gugs:0.89' },
@@ -73,9 +115,168 @@
     synthwave:  { drums: 'gugs:128.25', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.81', pad: 'gugs:0.89' },
     noir:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'jrhodes:st', lead: 'gugs:0.65', pad: 'gugs:0.48' },
     ambient:    { drums: 'gugs:128.48', bass: 'gugs:0.32', chords: 'gugs:0.88', lead: 'gugs:0.11', pad: 'gugs:0.91' },
+    folk:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'gugs:0.25', lead: 'gugs:0.22', pad: 'gugs:0.48' },
+    chamber:    { drums: 'gugs:128.48', bass: 'gugs:0.43', chords: 'gugs:0.48', lead: 'gugs:0.40', pad: 'gugs:0.49' },
+    piano:      { drums: 'gugs:128.40', bass: 'gugs:0.0',  chords: 'gugs:0.0',  lead: 'gugs:0.0',  pad: 'gugs:0.48' },
+    hymn:       { drums: 'gugs:128.48', bass: 'gugs:0.19', chords: 'gugs:0.19', lead: 'gugs:0.52', pad: 'gugs:0.53' },
+    dark_drone: { drums: 'gugs:128.48', bass: 'gugs:0.38', chords: 'gugs:0.92', lead: 'gugs:0.14', pad: 'gugs:0.95' },
+    synth_horror: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.81', pad: 'gugs:0.50' },
+    jazz:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'jrhodes:st', lead: 'gugs:0.66', pad: 'gugs:0.61' },
+    dub:        { drums: 'gugs:128.8',  bass: 'gugs:0.38', chords: 'gugs:0.16', lead: 'gugs:0.22', pad: 'gugs:0.89' },
+    post_rock:  { drums: 'gugs:128.16', bass: 'gugs:0.34', chords: 'gugs:0.27', lead: 'gugs:0.29', pad: 'gugs:0.49' },
+    lullaby:    { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'gugs:0.46', lead: 'gugs:0.10', pad: 'gugs:0.53' },
+    industrial: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.30', lead: 'gugs:0.81', pad: 'gugs:0.93' },
+    surf:       { drums: 'gugs:128.0',  bass: 'gugs:0.34', chords: 'gugs:0.16', lead: 'gugs:0.27', pad: 'gugs:0.18' },
+    bayou:      { drums: 'gugs:128.40', bass: 'gugs:0.33', chords: 'gugs:0.21', lead: 'gugs:0.110', pad: 'gugs:0.61' },
+    minimal:    { drums: 'gugs:128.0',  bass: 'gugs:0.32', chords: 'gugs:0.12', lead: 'gugs:0.71', pad: 'gugs:0.52' },
+    chiptune:   { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.80', lead: 'gugs:0.80', pad: 'gugs:0.16' },
+    trip_hop:   { drums: 'gugs:128.8',  bass: 'gugs:0.33', chords: 'jrhodes:st', lead: 'gugs:0.40', pad: 'gugs:0.48' },
   };
 
+  // ── ENSEMBLES: named instrument families a request can ask for instead of hand-picking five instruments ──────────────
+  // roles: { role: [FORGE preset ids] } — each take draws its own pick per role by its seed (4 takes → 4 line-ups from one
+  // family). drums: 'kit' (the standard FORGE kit) or 'kit:<style>' (that style's KIT_STYLES pieces). texture: ambience
+  // beds, used only when nothing else (score, catalog, the SOUND controls) named one. Roles an ensemble doesn't list keep
+  // the style's own pick (so roles another composer adds later just fall back to auto). link: { role: from } plays `from`'s
+  // pick on `role` too (one piano, both hands). drop: parts left out unless PARTS were picked by hand. patch: GeneralUser GS
+  // / jRhodes / VSCO ids per role for the PATCH BANK route. fits: the styles it suits (SURPRISE ME pairs from these).
+  // A preset this FORGE build lacks is skipped at pick time; explicit per-role picks (INSTRUMENTS) always win.
+  const ENSEMBLES = {
+    orchestral: { name: 'orchestral', short: 'orchestra', fits: ['chamber', 'hymn', 'post_rock', 'ambient', 'dark_drone', 'noir', 'minimal'],
+      roles: { drums: ['kit:chamber', 'kit:hymn'], bass: ['bass_upright', 'bass_fretless', 'strings_noir'], chords: ['strings_ensemble', 'strings_silver', 'strings_tremolo', 'winds_horns', 'strings_noir'],
+        lead: ['winds_flute', 'winds_clarinet', 'winds_horns', 'strings_noir', 'winds_brass', 'bell_glock'], pad: ['strings_ensemble', 'choir_vox', 'winds_horns', 'pad_cathedral_air', 'strings_silver'] },
+      patch: { drums: ['gugs:128.48'], bass: ['gugs:0.43', 'gugs:0.42'], chords: ['gugs:0.48', 'gugs:0.49', 'gugs:0.44', 'gugs:0.60'], lead: ['gugs:0.73', 'gugs:0.71', 'gugs:0.68', 'gugs:0.60', 'gugs:0.40', 'vsco:celloenssusvib'], pad: ['gugs:0.48', 'gugs:0.52', 'gugs:0.61'] } },
+    strings: { name: 'chamber strings', short: 'strings', drop: ['drums'], fits: ['chamber', 'noir', 'piano', 'hymn', 'minimal', 'post_rock'],
+      roles: { bass: ['bass_upright', 'bass_fretless'], chords: ['strings_silver', 'strings_noir', 'strings_tremolo', 'strings_ensemble'], lead: ['strings_noir', 'strings_silver'], pad: ['strings_ensemble', 'strings_tremolo', 'strings_silver'] },
+      patch: { bass: ['gugs:0.43', 'gugs:0.42'], chords: ['gugs:0.48', 'gugs:0.49', 'gugs:0.44', 'gugs:0.45'], lead: ['gugs:0.40', 'gugs:0.41', 'gugs:0.42', 'vsco:celloenssusvib'], pad: ['gugs:0.48', 'gugs:0.49', 'gugs:0.44'] } },
+    brass: { name: 'brass band', short: 'brass', fits: ['shuffle', 'bayou', 'surf', 'jazz', 'folk', 'four_floor', 'hymn'],
+      roles: { drums: ['kit:shuffle', 'kit:folk'], bass: ['bass_upright', 'bass_fender', 'winds_brass'], chords: ['winds_brass', 'winds_horns', 'keys_combo_organ'],
+        lead: ['lead_brass', 'winds_brass', 'winds_harmon', 'winds_sax'], pad: ['winds_horns', 'winds_brass', 'pad_organ_swell'] },
+      patch: { drums: ['gugs:128.0', 'gugs:128.40'], bass: ['gugs:0.58', 'gugs:0.32'], chords: ['gugs:0.61', 'gugs:0.57', 'gugs:0.60'], lead: ['gugs:0.56', 'gugs:0.59', 'gugs:0.57', 'gugs:0.65'], pad: ['gugs:0.61', 'gugs:0.60', 'gugs:0.62'] } },
+    winds: { name: 'woodwinds', short: 'winds', fits: ['folk', 'chamber', 'lullaby', 'jazz', 'minimal', 'hymn', 'bayou'],
+      roles: { drums: ['kit:folk', 'kit:lullaby'], bass: ['bass_upright', 'winds_clarinet', 'bass_fretless'], chords: ['winds_horns', 'winds_clarinet', 'keys_felt', 'pluck_harp'],
+        lead: ['winds_flute', 'winds_clarinet', 'winds_sax', 'lead_whistle', 'winds_harmonica'], pad: ['winds_horns', 'pad_velvet', 'strings_silver'] },
+      patch: { drums: ['gugs:128.40'], bass: ['gugs:0.70', 'gugs:0.32'], chords: ['gugs:0.71', 'gugs:0.68', 'gugs:0.69', 'gugs:0.46'], lead: ['gugs:0.73', 'gugs:0.71', 'gugs:0.68', 'gugs:0.72', 'gugs:0.74', 'gugs:0.75'], pad: ['gugs:0.60', 'gugs:0.48', 'gugs:0.69'] } },
+    piano: { name: 'solo piano', short: 'piano', drop: ['drums', 'pad'], link: { bass: 'chords', lead: 'chords' }, fits: ['piano', 'noir', 'lofi', 'chamber', 'jazz', 'lullaby', 'hymn', 'ambient'],
+      roles: { chords: ['keys_felt', 'keys_ep', 'keys_tape_ep', 'keys_mk1', 'keys_wurli'], pad: ['pad_velvet', 'strings_silver', 'pad_warm', 'pad_bowed_glass'] },
+      patch: { bass: ['gugs:0.0'], chords: ['gugs:0.0', 'gugs:0.1', 'gugs:0.4', 'jrhodes:st', 'gugs:0.3'], lead: ['gugs:0.0'], pad: ['gugs:0.48', 'gugs:0.89'] } },
+    rock: { name: 'rock band', short: 'rock', fits: ['post_rock', 'surf', 'motorik', 'shuffle', 'industrial', 'dnb', 'four_floor'],
+      roles: { drums: ['kit:post_rock', 'kit:four_floor'], bass: ['bass_fender', 'bass_pluck', 'bass_upright'], chords: ['pluck_nylon', 'keys_combo_organ', 'keys_clav', 'lead_fuzz', 'keys_organ'],
+        lead: ['lead_fuzz', 'lead_ring', 'lead_saw', 'lead_brass'], pad: ['keys_organ', 'pad_organ_swell', 'strings_ensemble'] },
+      patch: { drums: ['gugs:128.16', 'gugs:128.0', 'gugs:128.8'], bass: ['gugs:0.34', 'gugs:0.33'], chords: ['gugs:0.29', 'gugs:0.27', 'gugs:0.30', 'gugs:0.18'], lead: ['gugs:0.30', 'gugs:0.29', 'gugs:0.27'], pad: ['gugs:0.18', 'gugs:0.16', 'gugs:0.48'] } },
+    jazz: { name: 'jazz combo', short: 'jazz', fits: ['jazz', 'noir', 'lofi', 'trip_hop', 'boom_bap', 'bayou', 'shuffle'],
+      roles: { drums: ['kit:jazz', 'kit:noir'], bass: ['bass_upright', 'bass_fretless'], chords: ['keys_mk1', 'keys_ep', 'keys_vibes', 'keys_wurli', 'keys_felt'],
+        lead: ['winds_sax', 'winds_harmon', 'winds_clarinet', 'keys_vibes', 'winds_flute'], pad: ['winds_horns', 'pad_velvet', 'strings_silver', 'pad_dusk'] },
+      patch: { drums: ['gugs:128.40', 'gugs:128.32'], bass: ['gugs:0.32', 'gugs:0.35'], chords: ['jrhodes:st', 'gugs:0.0', 'gugs:0.26', 'gugs:0.11'], lead: ['gugs:0.66', 'gugs:0.65', 'gugs:0.59', 'gugs:0.56', 'gugs:0.11'], pad: ['gugs:0.61', 'gugs:0.48'] } },
+    folk: { name: 'folk / acoustic', short: 'folk', fits: ['folk', 'bayou', 'shuffle', 'hymn', 'lullaby', 'post_rock'],
+      roles: { drums: ['kit:folk', 'kit:bayou'], bass: ['bass_upright', 'bass_fretless', 'bass_fender'], chords: ['pluck_nylon', 'pluck_dobro', 'pluck_harp', 'keys_felt'],
+        lead: ['winds_harmonica', 'pluck_dobro', 'lead_whistle', 'winds_flute', 'pluck_nylon'], pad: ['winds_horns', 'strings_ensemble', 'pad_organ_swell', 'pad_dusk'] },
+      patch: { drums: ['gugs:128.40', 'gugs:128.32'], bass: ['gugs:0.32'], chords: ['gugs:0.24', 'gugs:0.25', 'gugs:0.105', 'gugs:0.46'], lead: ['gugs:0.22', 'gugs:0.110', 'gugs:0.105', 'gugs:0.73', 'gugs:0.21'], pad: ['gugs:0.48', 'gugs:0.21', 'gugs:0.60'] } },
+    electronic: { name: 'electronic', short: 'electronic', fits: ['four_floor', 'dnb', 'trap', 'motorik', 'minimal', 'synthwave', 'industrial'],
+      roles: { drums: ['kit:four_floor', 'kit:trap', 'kit:industrial'], bass: ['bass_sub', 'bass_acid', 'bass_reese', 'bass_fm', 'bass_808', 'bass_pluck', 'bass_ladder'],
+        chords: ['pad_gate', 'pluck_neon', 'keys_mk1', 'pad_glass', 'arp_chip'], lead: ['lead_saw', 'lead_fm', 'lead_siren', 'lead_square', 'pluck_neon'], pad: ['pad_shimmer', 'pad_neon_rain', 'pad_glass', 'pad_frost', 'pad_velvet'] },
+      patch: { drums: ['gugs:128.24', 'gugs:128.25'], bass: ['gugs:0.38', 'gugs:0.39', 'gugs:0.87'], chords: ['gugs:0.90', 'gugs:0.81', 'gugs:0.95'], lead: ['gugs:0.81', 'gugs:0.80', 'gugs:0.84', 'gugs:0.98'], pad: ['gugs:0.89', 'gugs:0.95', 'gugs:0.91', 'gugs:0.94'] } },
+    synthwave: { name: 'synthwave / 80s', short: 'synthwave', fits: ['synthwave', 'four_floor', 'synth_horror', 'motorik', 'dnb', 'chiptune'],
+      roles: { drums: ['kit:synthwave', 'kit:trap'], bass: ['bass_pluck', 'bass_ladder', 'bass_fm', 'bass_acid'], chords: ['pad_gate', 'pad_velvet', 'keys_mk1', 'pad_neon_rain'],
+        lead: ['lead_brass', 'lead_saw', 'lead_square', 'lead_fm', 'lead_fuzz'], pad: ['strings_silver', 'pad_neon_rain', 'pad_shimmer', 'pad_velvet', 'pad_glass'] },
+      patch: { drums: ['gugs:128.25', 'gugs:128.24'], bass: ['gugs:0.38', 'gugs:0.39'], chords: ['gugs:0.90', 'gugs:0.81', 'gugs:0.5', 'gugs:0.88'], lead: ['gugs:0.81', 'gugs:0.62', 'gugs:0.84', 'gugs:0.86'], pad: ['gugs:0.95', 'gugs:0.50', 'gugs:0.90', 'gugs:0.89'] } },
+    chiptune: { name: 'chiptune', short: 'chiptune', fits: ['chiptune', 'synthwave', 'four_floor', 'surf', 'minimal', 'lullaby'],
+      roles: { drums: ['kit:chiptune'], bass: ['bass_pluck', 'bass_sub', 'bass_fm'], chords: ['arp_chip', 'pluck_neon', 'keys_toy_piano', 'bell_glock'], lead: ['lead_square', 'arp_chip', 'lead_fm', 'pluck_neon'], pad: ['pad_gate', 'keys_organ', 'pad_glass'] },
+      patch: { drums: ['gugs:128.24', 'gugs:128.25'], bass: ['gugs:0.38', 'gugs:0.80'], chords: ['gugs:0.80', 'gugs:0.81', 'gugs:0.9'], lead: ['gugs:0.80', 'gugs:0.81', 'gugs:0.82', 'gugs:0.83'], pad: ['gugs:0.16', 'gugs:0.80'] } },
+    ambient: { name: 'ambient / drone', short: 'ambient', drop: ['drums'], fits: ['ambient', 'dark_drone', 'minimal', 'post_rock', 'hymn', 'chamber', 'piano'],
+      roles: { bass: ['pad_sub_drone', 'drone_horizon', 'drone_cathedral', 'bass_sub'], chords: ['pad_shimmer', 'pad_bowed_glass', 'pad_cathedral_air', 'pad_frost', 'choir_angel'],
+        lead: ['bell_bowl', 'bell_tubular', 'keys_celesta', 'pluck_kalimba', 'lead_theremin'], pad: ['pad_seance', 'drone_horizon', 'pad_hollow', 'pad_dusk', 'pad_cathedral_air'], texture: ['amb_wind', 'amb_room_tone', 'amb_forest_night'] },
+      patch: { bass: ['gugs:0.89', 'gugs:0.95'], chords: ['gugs:0.88', 'gugs:0.92', 'gugs:0.94', 'gugs:0.99'], lead: ['gugs:0.14', 'gugs:0.98', 'gugs:0.8', 'gugs:0.108', 'vsco:harp'], pad: ['gugs:0.89', 'gugs:0.91', 'gugs:0.95', 'gugs:0.97', 'gugs:0.101'] } },
+    world: { name: 'world (strings / plucked)', short: 'world', fits: ['folk', 'dub', 'bayou', 'minimal', 'ambient', 'lofi', 'surf'],
+      roles: { drums: ['kit:bayou', 'kit:dub'], bass: ['bass_fretless', 'bass_upright'], chords: ['pluck_harp', 'pluck_kalimba', 'pluck_steel_pan', 'pluck_marimba', 'pluck_dobro', 'pluck_nylon'],
+        lead: ['pluck_steel_pan', 'pluck_kalimba', 'winds_flute', 'pluck_dobro', 'keys_vibes', 'pluck_marimba'], pad: ['pad_dusk', 'strings_silver', 'drone_bayou', 'pad_warm'] },
+      patch: { drums: ['gugs:128.40', 'gugs:128.0'], bass: ['gugs:0.32', 'gugs:0.35'], chords: ['gugs:0.104', 'gugs:0.107', 'gugs:0.106', 'gugs:0.46', 'gugs:0.12', 'gugs:0.15'], lead: ['gugs:0.104', 'gugs:0.107', 'gugs:0.77', 'gugs:0.75', 'gugs:0.114', 'gugs:0.110', 'gugs:0.111'], pad: ['gugs:0.48', 'gugs:0.89', 'gugs:0.109'] } },
+    choir: { name: 'choir / sacred', short: 'choir', drop: ['drums'], fits: ['hymn', 'ambient', 'chamber', 'dark_drone', 'minimal', 'lullaby'],
+      roles: { bass: ['bass_fretless', 'keys_organ', 'bass_sub'], chords: ['choir_vox', 'keys_organ', 'pad_organ_swell', 'choir_angel'], lead: ['choir_angel', 'choir_vox', 'winds_flute', 'bell_tubular'],
+        pad: ['choir_vox', 'choir_crypt', 'pad_cathedral_air', 'choir_angel', 'pad_organ_swell'], texture: ['drone_cathedral', 'amb_room_tone'] },
+      patch: { bass: ['gugs:0.19', 'gugs:0.43'], chords: ['gugs:0.52', 'gugs:0.19', 'gugs:0.53', 'gugs:0.20'], lead: ['gugs:0.53', 'gugs:0.52', 'gugs:0.73', 'gugs:0.14'], pad: ['gugs:0.52', 'gugs:0.53', 'gugs:0.91', 'gugs:0.54'] } },
+    horror: { name: 'horror / industrial', short: 'horror', fits: ['synth_horror', 'industrial', 'dark_drone', 'trap', 'noir', 'minimal'],
+      roles: { drums: ['kit:industrial', 'kit:dark_drone'], bass: ['bass_reese', 'bass_fm', 'bass_808', 'bass_acid'], chords: ['pad_bowed_metal', 'pad_seance', 'pad_frost', 'strings_tremolo', 'keys_celesta'],
+        lead: ['lead_theremin', 'lead_ring', 'lead_siren', 'bell_tubular', 'keys_toy_piano'], pad: ['choir_crypt', 'pad_sub_drone', 'pad_seance', 'pad_fluorescent', 'strings_tremolo'], texture: ['amb_fluor_hum', 'drone_engine', 'amb_life_support'] },
+      patch: { drums: ['gugs:128.24', 'gugs:128.48'], bass: ['gugs:0.38', 'gugs:0.39', 'gugs:0.87'], chords: ['gugs:0.93', 'gugs:0.44', 'gugs:0.97', 'gugs:0.101'], lead: ['gugs:0.103', 'gugs:0.14', 'gugs:0.81', 'gugs:0.8'], pad: ['gugs:0.93', 'gugs:0.94', 'gugs:0.95', 'gugs:0.52'] } },
+    toybox: { name: 'toy box / lullaby', short: 'toy box', fits: ['lullaby', 'chiptune', 'minimal', 'piano', 'folk'],
+      roles: { drums: ['kit:lullaby'], bass: ['bass_fretless', 'bass_sub', 'pluck_marimba'], chords: ['keys_celesta', 'bell_music_box', 'keys_toy_piano', 'pluck_kalimba', 'pluck_harp'],
+        lead: ['bell_music_box', 'bell_glock', 'keys_toy_piano', 'keys_celesta', 'pluck_kalimba'], pad: ['choir_angel', 'pad_velvet', 'pad_warm', 'strings_silver'], texture: ['amb_clock', 'amb_crickets'] },
+      patch: { drums: ['gugs:128.40'], bass: ['gugs:0.32', 'gugs:0.12'], chords: ['gugs:0.8', 'gugs:0.10', 'gugs:0.108', 'gugs:0.46'], lead: ['gugs:0.10', 'gugs:0.9', 'gugs:0.8', 'gugs:0.112', 'gugs:0.13'], pad: ['gugs:0.52', 'gugs:0.53', 'gugs:0.88'] } },
+    lofi: { name: 'lo-fi / tape', short: 'lo-fi', fits: ['lofi', 'boom_bap', 'trip_hop', 'jazz', 'dub', 'piano', 'noir'],
+      roles: { drums: ['kit:lofi', 'kit:boom_bap'], bass: ['bass_upright', 'bass_fender', 'bass_sub', 'bass_fretless'], chords: ['keys_tape_ep', 'keys_felt', 'keys_wurli', 'keys_mk1', 'pluck_nylon'],
+        lead: ['pluck_kalimba', 'keys_vibes', 'bell_music_box', 'winds_flute', 'keys_celesta'], pad: ['pad_tape_wobble', 'pad_dusk', 'pad_velvet'], texture: ['amb_vinyl', 'amb_tape_hiss', 'amb_rain'] },
+      patch: { drums: ['gugs:128.40', 'gugs:128.8'], bass: ['gugs:0.33', 'gugs:0.32', 'gugs:0.35'], chords: ['jrhodes:st', 'gugs:0.4', 'gugs:0.5', 'gugs:0.0'], lead: ['gugs:0.11', 'gugs:0.12', 'gugs:0.10', 'gugs:0.108', 'gugs:0.73'], pad: ['gugs:0.49', 'gugs:0.89', 'gugs:0.52'] } },
+  };
+  // ── TODO(new FORGE presets) — the ONE place to append them after the FORGE preset merge (guitars, orchestral solos /
+  // sections, world instruments, pianos / organs, choirs, synths): { ensemble id: { role: [preset ids …] } } is added onto
+  // ENSEMBLES[id].roles below, after the ids already there. Safe to add before a preset ships: ids FORGE doesn't have are
+  // skipped when a take picks (the data test checks every id once they exist). A new ensemble goes straight into ENSEMBLES.
+  const ENSEMBLE_MORE = {
+    // rock: { chords: ['guitar_…'], lead: ['guitar_…'] },  orchestral: { lead: ['…'] },  world: { chords: ['…'], lead: ['…'] },
+  };
+  for (const [id, more] of Object.entries(ENSEMBLE_MORE)) {
+    const e = ENSEMBLES[id]; if (!e) continue;
+    for (const [role, list] of Object.entries(more || {})) e.roles[role] = [...new Set((e.roles[role] || []).concat(list || []))];
+  }
+
+  // ── VARIETY across a request's takes: close (same style + instruments, new notes) · mixed (default: same style, the
+  // instruments vary by seed) · wide (each take a different but compatible style; take 1 keeps the brief's) · wild (any
+  // style, any ensemble). Compatibility is symmetric (closed below): a style's neighbours share tempo range, harmony or
+  // instrumentation, so a wide request stays one cue in different clothes.
+  const STYLE_COMPAT = {
+    four_floor: ['synthwave', 'motorik', 'dnb', 'minimal', 'chiptune'], boom_bap: ['lofi', 'trip_hop', 'jazz', 'dub', 'trap'],
+    lofi: ['boom_bap', 'trip_hop', 'jazz', 'piano', 'noir'], trap: ['boom_bap', 'trip_hop', 'synth_horror', 'industrial'],
+    dnb: ['four_floor', 'synthwave', 'industrial', 'post_rock'], shuffle: ['bayou', 'folk', 'surf', 'jazz'],
+    motorik: ['four_floor', 'synthwave', 'minimal', 'post_rock', 'surf'], synthwave: ['four_floor', 'motorik', 'synth_horror', 'chiptune'],
+    noir: ['jazz', 'trip_hop', 'lofi', 'piano', 'chamber'], ambient: ['dark_drone', 'minimal', 'hymn', 'post_rock', 'chamber'],
+    folk: ['bayou', 'shuffle', 'hymn', 'lullaby'], chamber: ['hymn', 'piano', 'ambient', 'minimal', 'noir'],
+    piano: ['chamber', 'lofi', 'noir', 'lullaby'], hymn: ['chamber', 'ambient', 'minimal', 'folk'],
+    dark_drone: ['ambient', 'synth_horror', 'industrial'], synth_horror: ['dark_drone', 'industrial', 'synthwave'],
+    jazz: ['noir', 'lofi', 'trip_hop', 'boom_bap', 'bayou'], dub: ['trip_hop', 'boom_bap', 'lofi', 'minimal'],
+    post_rock: ['ambient', 'minimal', 'motorik', 'chamber'], lullaby: ['piano', 'chamber', 'hymn', 'folk', 'chiptune'],
+    industrial: ['synth_horror', 'dark_drone', 'trap', 'dnb'], surf: ['shuffle', 'bayou', 'motorik', 'chiptune'],
+    bayou: ['shuffle', 'folk', 'jazz', 'surf'], minimal: ['ambient', 'motorik', 'chamber', 'post_rock', 'hymn'],
+    chiptune: ['synthwave', 'four_floor', 'surf', 'lullaby'], trip_hop: ['noir', 'dub', 'lofi', 'boom_bap', 'jazz'],
+  };
+  for (const [a, list] of Object.entries(STYLE_COMPAT)) for (const b of list) if (STYLE_COMPAT[b] && !STYLE_COMPAT[b].includes(a)) STYLE_COMPAT[b].push(a);
+  const VARIETY = ['close', 'mixed', 'wide', 'wild'];
+  // FEEL: straight / swung (a 16th MPC swing) / shuffle (8ths on the triplet) go into the project's swing / groove (the
+  // engine's PERF groove: daw_perf.js); half / double time scale the auto tempo and adjust the density. An explicit BPM
+  // or DENSITY stays as typed.
+  const FEELS = {
+    straight: { name: 'straight', swing: 0 },
+    swung: { name: 'swung', groove: { on: true, type: 'mpc16', swing: 0.62, roles: {}, accent: 'backbeat', accentDepth: 0.35, human: { ms: 6, vel: 0.06 } } },
+    shuffle: { name: 'shuffle', groove: { on: true, type: 'shuffle8', swing: 0.67, roles: { drums: 0, bass: 4, chords: 6, lead: 8, pad: 0 }, accent: 'backbeat', accentDepth: 0.4, human: { ms: 5, vel: 0.05 } } },
+    half: { name: 'half-time', bpm: 0.5, density: 0.15 },
+    double: { name: 'double-time', bpm: 2, density: -0.15 },
+  };
+  // HARMONY colour → seqgen's chord extensions (o.ext, weighted) and, for modal, its progression family
+  const HARMONY = {
+    plain: { name: 'plain triads', ext: [['triad', 1]] },
+    sevenths: { name: 'sevenths', ext: [['seventh', 3], ['sixth', 1]] },
+    lush: { name: 'lush 9ths', ext: [['ninth', 3], ['add9', 2], ['seventh', 1]] },
+    open: { name: 'open 5ths / sus', ext: [['sus2', 2], ['sus4', 2], ['power', 1]] },
+    modal: { name: 'modal', ext: [['sus2', 2], ['triad', 2], ['sus4', 1], ['add9', 1]], prog: 'modal' },
+  };
+  const MINORISH = { minor: 1, dorian: 1, phrygian: 1, harmonic: 1 };
+  // PROGRESSION families a request may name (SeqGen.PROGS; a '<family>_minor' variant is used in minor modes)
+  const progFamilies = () => Object.keys(SG().PROGS).filter(k => !/_minor$/.test(k));
+  // a volume's tonic itself (SeqGen.volumeKey's home, before its per-track step to a neighbour)
+  const homeKey = vol => (vol === undefined || vol === null ? undefined : SG().hash('volume-key:' + vol) % 12);
+  // the sound-design presets a request may name: FORGE's own (by category) plus the ones seqgen knows (with fallbacks)
+  function soundChoices(kind) {
+    const S = SG(), out = new Set();
+    for (const p of root.FORGE_PRESETS || []) if (p.category === kind) out.add(p.id);
+    const tables = kind === 'ambient' ? [S.TEXTURE_FOR] : [S.FX_FOR, S.HIT_FOR];
+    for (const T of tables) for (const list of Object.values(T || {})) for (const id of list) out.add(id);
+    for (const id of Object.keys(S.SOUND_FALLBACK || {})) if (kind === 'ambient' ? /^(amb|drone)_/.test(id) : /^fx_/.test(id)) out.add(id);
+    return out;
+  }
+
   const havePreset = id => !!id && (root.FORGE_PRESETS || []).some(p => p.id === id);
+  // an instrument spec a request may carry per role: the FORGE kit (standard or a style's pieces), a FORGE preset, a patch
+  const INSTR_SPEC = /^(kit(:[a-z_]+)?|forge:.+|patch:.+)$/;
   // where each role plays for each "PLAY ON" choice (emulator / hardware channels from the firmware registry)
   function routing(E, inst) {
     const reg = id => (typeof root.fm1Firmware === 'function' && root.fm1Firmware(id)) || {};
@@ -94,6 +295,11 @@
     if (prev.name) proj.name = prev.name;
     if (prev.master) proj.master = prev.master;
     Object.assign(proj, { bpm: song.bpm, swing: song.swing, key: song.key, mode: song.mode, sections: song.sections, loop: { on: song.form === 'loop' || song.form === 'bed', a: 0, b: song.bars }, gen: { o, inst } });
+    // FEEL: straight → no swing; swung / shuffle → a PERF groove (replaces the swing while on), humanized by the seed
+    const fz = FEELS[o.feel];
+    if (fz && fz.swing !== undefined) proj.swing = fz.swing;
+    if (fz && fz.groove) proj.groove = Object.assign({}, fz.groove, { roles: Object.assign({}, fz.groove.roles), human: Object.assign({}, fz.groove.human, { seed: (song.seed >>> 0) || 1 }) });
+    const ens = ENSEMBLES[o.ensemble];
     await E.load(proj);
     let emuDev = null, hwDev = null;
     if (rt.emu) emuDev = await E.addDevice('emu', { name: rt.emu === 'x0x' ? 'X0X' : 'FELUCCA', emuId: rt.emu });
@@ -104,11 +310,13 @@
       if (rt.map[role] && (emuDev || hwDev)) { dev = emuDev || hwDev; ch = rt.map[role]; }
       else if (rt.patch && root.PatchBank) {
         const pool = (PATCH_POOLS[song.style] || {})[role], base = (PATCH_PICKS[song.style] || PATCH_PICKS.lofi)[role];
-        const pick = pool && pool.length ? [base, ...pool][SG().hash(song.seed + ':' + role) % (pool.length + 1)] : base;
+        const ep = ens && ens.patch && ens.patch[role];        // an ensemble's own PATCH BANK family for this role
+        const pick = ep && ep.length ? ep[mixHash(song.seed + ':ens:' + role) % ep.length]
+          : pool && pool.length ? [base, ...pool][SG().hash(song.seed + ':' + role) % (pool.length + 1)] : base;
         const it = pick && await root.PatchBank.item(pick);
         dev = await E.addDevice('patch', { name: it ? it.name : pick, patch: pick });
       }
-      else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT', kit: song.style });
+      else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT', kit: o.kit || song.style });   // o.kit: an ensemble's kit
       else { const pr = havePreset(part.preset) ? part.preset : SG().presetFor(song.style, role, song.seed); dev = await E.addDevice(typeof root.ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + pr, preset: pr }); }
       const t = E.addTrack('midi', { name: role, role, deviceId: dev.id, channel: ch, color: COLORS[role] });
       t.patterns = part.patterns; t.clips = part.clips;
@@ -145,7 +353,9 @@
     if (o.mode && S.SCALES[o.mode]) r.mode = o.mode;
     if (o.form && S.FORMS[o.form]) r.form = o.form;
     if (+o.bpm > 0) r.bpm = clamp(+o.bpm, 30, 240);
-    if (o.key !== undefined && o.key !== null && o.key !== '' && Number.isFinite(+o.key)) r.key = ((Math.round(+o.key) % 12) + 12) % 12;
+    if (o.key === 'home') r.key = 'home';                    // the volume's own tonic
+    else if (o.key !== undefined && o.key !== null && o.key !== '' && Number.isFinite(+o.key)) r.key = ((Math.round(+o.key) % 12) + 12) % 12;
+    else if (typeof o.key === 'string' && /^\s*[A-Ga-g][#b]?\s*$/.test(o.key) && S.keyOf(o.key) !== undefined) r.key = S.keyOf(o.key);
     if (+o.energy) r.energy = clamp(+o.energy, -0.5, 0.5);
     if (o.density !== undefined && o.density !== null && o.density !== '' && Number.isFinite(+o.density)) r.density = clamp(+o.density, 0, 1);
     const L = o.length || {};
@@ -156,9 +366,18 @@
     if (+o.extraPads) r.extraPads = clamp(Math.round(+o.extraPads), 0, EXTRA_PADS.length);
     if (o.instruments && typeof o.instruments === 'object') {
       const ins = {};
-      for (const [k, v] of Object.entries(o.instruments)) if ((ALL_ROLES.includes(k) || EXTRA_PADS.includes(k)) && v && v !== 'auto' && /^(kit|forge:.+|patch:.+)$/.test(String(v))) ins[k] = String(v);
+      for (const [k, v] of Object.entries(o.instruments)) if ((ALL_ROLES.includes(k) || EXTRA_PADS.includes(k)) && v && v !== 'auto' && INSTR_SPEC.test(String(v))) ins[k] = String(v);
       if (Object.keys(ins).length) r.instruments = ins;
     }
+    // ENSEMBLE / VARIETY / FEEL / HARMONY / PROGRESSION / SOUND DESIGN — unknown values are dropped, 'auto' is absent
+    if (o.ensemble && Object.prototype.hasOwnProperty.call(ENSEMBLES, o.ensemble)) r.ensemble = String(o.ensemble);
+    if (o.variety && o.variety !== 'mixed' && VARIETY.includes(o.variety)) r.variety = o.variety;
+    if (o.feel && Object.prototype.hasOwnProperty.call(FEELS, o.feel)) r.feel = o.feel;
+    if (o.harmony && Object.prototype.hasOwnProperty.call(HARMONY, o.harmony)) r.harmony = o.harmony;
+    if (o.prog && progFamilies().includes(o.prog)) r.prog = o.prog;
+    if (o.textures === 'none') r.textures = 'none';
+    else if (Array.isArray(o.textures)) { const amb = soundChoices('ambient'), x = [...new Set(o.textures.map(String))].filter(id => amb.has(id)).slice(0, 2); if (x.length) r.textures = x; }
+    for (const k of ['fx', 'hit']) { if (o[k] === 'none') r[k] = 'none'; else if (o[k] && soundChoices('fx').has(String(o[k]))) r[k] = String(o[k]); }
     if (o.seed !== undefined && o.seed !== null && o.seed !== '' && Number.isFinite(+o.seed)) r.seed = Math.round(+o.seed);
     return r;
   }
@@ -178,8 +397,86 @@
     if (o.mode) m.mode = o.mode;
     if (o.bpm) m.bpm = o.bpm;
     if (o.density !== undefined) m.density = o.density;
-    if (o.key !== undefined) m.key = o.key;                 // else the mood's own (its volume's tonal home)
+    if (o.key === 'home') { const h = homeKey(t.vol); if (h !== undefined) m.key = h; }   // the volume's tonic itself
+    else if (o.key !== undefined) m.key = o.key;            // else the mood's own (its volume's tonal home)
+    // SOUND DESIGN typed in the panel: wins over the catalog's / score's / direction's sound words
+    if (o.textures !== undefined) m.textures = o.textures === 'none' ? 'none' : o.textures.slice();
+    if (o.fx !== undefined) m.fx = o.fx;
+    if (o.hit !== undefined) m.hit = o.hit;
     return m;
+  }
+  // a take's own choices on top of its mood (needs the take's seed): VARIETY (its style), ENSEMBLE (its line-up), FEEL
+  // (tempo / density), HARMONY + PROGRESSION. c: { n (take index), seed, used (styles earlier takes of this track got),
+  // lock (VARIETY close: take 1's choices) }. Nothing asked → m unchanged, so a seed composes exactly as before.
+  function varyTake(m, o, c = {}) {
+    const S = SG(), seed = c.seed ?? m.seed, n = c.n || 0, used = c.used || new Set(), H = s => mixHash(String(seed) + ':' + s);
+    if (o.variety === 'close' && c.lock) Object.assign(m, JSON.parse(JSON.stringify(c.lock)));
+    const wild = o.variety === 'wild' && !(n === 0 && o.style);
+    if ((o.variety === 'wide' && n > 0) || wild) {
+      const all = Object.keys(S.STYLES).filter(s => !S.STYLES[s].placeholder);
+      let cands = (wild ? all : (STYLE_COMPAT[m.style] || all)).filter(s => S.STYLES[s] && s !== m.style && !used.has(s));
+      if (!cands.length) cands = (wild ? all : (STYLE_COMPAT[m.style] || all)).filter(s => S.STYLES[s] && s !== m.style);
+      if (cands.length) restyle(m, cands[H('variety') % cands.length]);
+    }
+    // ENSEMBLE: the one asked for, or (wild, none asked) any of them — or none at all, the style's own line-up
+    let ensId = o.ensemble || null;
+    if (!ensId && o.variety === 'wild') { const ids = [null].concat(Object.keys(ENSEMBLES)); ensId = ids[H('wild-ensemble') % ids.length]; }
+    if (ensId && ENSEMBLES[ensId] && !(o.variety === 'close' && c.lock)) applyEnsemble(m, ENSEMBLES[ensId], o, seed);
+    if (ensId) m.ensemble = ensId;
+    // FEEL: half / double time scale the auto tempo (never a typed BPM) and thin / fill the density (never a typed one)
+    const F = FEELS[o.feel];
+    if (F) {
+      m.feel = o.feel;
+      if (F.bpm && !o.bpm && !(o.variety === 'close' && c.lock)) m.bpm = Math.round(clamp(m.bpm * F.bpm, 40, 220));
+      if (F.density && o.density === undefined && !(o.variety === 'close' && c.lock)) m.density = +clamp(m.density + F.density, 0.1, 0.95).toFixed(2);
+    }
+    const Hc = HARMONY[o.harmony];
+    if (Hc) { m.harmony = o.harmony; m.ext = Hc.ext; }
+    const fam = o.prog || (Hc && Hc.prog);
+    if (fam && S.PROGS[fam]) m.progFamily = MINORISH[m.mode] && S.PROGS[fam + '_minor'] ? fam + '_minor' : fam;
+    return m;
+  }
+  // a different style for a take: tempo at the same place in the new style's range (as an explicit STYLE does)
+  function restyle(m, style) {
+    const S = SG(), a = S.STYLES[m.style].bpm, z = S.STYLES[style].bpm, pos = clamp((m.bpm - a[0]) / Math.max(1, a[1] - a[0]), 0, 1);
+    m.style = style; m.bpm = Math.round(z[0] + pos * (z[1] - z[0]));
+    // a style seqgen links (solo piano: the hands follow the chords) keeps that; an earlier style's voices may not fit
+    return m;
+  }
+  // an ensemble's picks for this take (by its seed) → the mood's voices / kit / texture / parts. A role picked by hand
+  // (INSTRUMENTS) or named in the typed direction ("a sax lead") keeps that; a preset FORGE lacks is skipped.
+  function ensemblePicks(ens, seed, skip = {}) {
+    const out = {}, forge = root.FORGE_PRESETS ? havePreset : () => true;
+    for (const [role, list] of Object.entries(ens.roles || {})) {
+      if (skip[role] || !Array.isArray(list)) continue;
+      const ok = role === 'drums' ? list.filter(x => /^kit(:[a-z_]+)?$/.test(x)) : list.filter(forge);
+      if (ok.length) out[role] = ok[mixHash(String(seed) + ':ens:' + role) % ok.length];
+    }
+    for (const [role, from] of Object.entries(ens.link || {})) if (!skip[role] && out[from]) out[role] = out[from];
+    return out;
+  }
+  function applyEnsemble(m, ens, o, seed) {
+    const skip = Object.assign({}, o.instruments || {}, o.description ? SG().soundsFromText(o.description).voices : {});
+    const p = ensemblePicks(ens, seed, skip);
+    m.voices = Object.assign({}, m.voices || {});
+    for (const [role, v] of Object.entries(p)) {
+      if (role === 'drums') m.kit = v.split(':')[1] || 'standard';
+      else if (role === 'texture') { if (m.textures === undefined) m.textures = [v]; }
+      else m.voices[role] = v;
+    }
+    if (ens.drop && ens.drop.length && !o.roles) m.drop = ens.drop.slice();
+    return m;
+  }
+  // a mood (+ the take's choices) → the options compose / SeqGen.song take
+  function songOpts(m) {
+    const s = { seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: m.key,
+      motif: m.motif, motifSpec: m.motifSpec, shape: m.shape, textures: m.textures, fx: m.fx, hit: m.hit, voices: m.voices };
+    if (m.ext) s.ext = m.ext;
+    if (m.progFamily) s.progFamily = m.progFamily;
+    if (m.feel) s.feel = m.feel;
+    if (m.kit) s.kit = m.kit;
+    if (m.ensemble) s.ensemble = m.ensemble;
+    return s;
   }
   // the score bible: every resources/music/score/*.json merged (soundtrack / volumes / chapters / characters / tracks)
   async function loadScore() {
@@ -243,7 +540,7 @@
   const forgePresets = () => (root.FORGE_PRESETS || []).map(p => ({ id: p.id, name: p.name, category: p.category }));
   async function deviceFor(E, role, spec) {
     const [kind, ...rest] = spec.split(':'), id = rest.join(':');
-    if (kind === 'kit') return E.addDevice('kit', { name: 'KIT' });
+    if (kind === 'kit') return E.addDevice('kit', id ? { name: 'KIT', kit: id } : { name: 'KIT' });    // kit:<style> → that style's pieces
     if (kind === 'forge') {
       if (typeof root.ForgeSynth !== 'function') throw new Error('FORGE is not loaded');
       if (!forgePresets().some(p => p.id === id)) throw new Error('no FORGE preset "' + id + '"');
@@ -291,17 +588,27 @@
     }
     for (const t of P.tracks) {
       const spec = o.instruments && o.instruments[t.role];
+      // texture2 / hit share their stem's role but are their own sound: a pick for 'texture' / 'fx' is the first one's
+      if (SOUND_PARTS.includes(t.name) && t.name !== t.role) continue;
+      // already that instrument (⟳ AGAIN re-applies every recorded one): keep the device; a bare 'kit' keeps the style's kit
+      if (spec && (spec === specOf(E, t) || (spec === 'kit' && /^kit/.test(specOf(E, t))))) continue;
       if (spec && !EXTRA_PADS.includes(t.role)) await setInstrument(E, t, spec);
     }
     E.applyMix();
     return instrumentsOf(E);
   }
+  // a track's instrument as a request spec: kit · kit:<style> · forge:<preset> · patch:<id> · emu:… · audio · none
+  function specOf(E, t) {
+    const d = E.dev(t.deviceId);
+    return !d ? (t.kind === 'audio' ? 'audio' : 'none') : d.type === 'forge' ? 'forge:' + (d.preset || '') : d.type === 'patch' ? 'patch:' + d.patch
+      : d.type === 'kit' ? (d.kit ? 'kit:' + d.kit : 'kit') : d.type === 'emu' ? 'emu:' + (d.emuId || '') + ' ch' + t.channel : d.type;
+  }
   // { role (or track name): instrument } of the project as it stands — a take's meta.instruments
   function instrumentsOf(E) {
     const instr = {};
     for (const t of E.project.tracks) {
-      const d = E.dev(t.deviceId), k = t.role && !(t.role in instr) ? t.role : t.name;   // texture2 / hit share their stem's role
-      instr[k] = !d ? (t.kind === 'audio' ? 'audio' : 'none') : d.type === 'forge' ? 'forge:' + (d.preset || '') : d.type === 'patch' ? 'patch:' + d.patch : d.type === 'emu' ? 'emu:' + (d.emuId || '') + ' ch' + t.channel : d.type;
+      const k = t.role && !(t.role in instr) ? t.role : t.name;   // texture2 / hit share their stem's role
+      instr[k] = specOf(E, t);
     }
     return instr;
   }
@@ -396,11 +703,18 @@
       const b = req.useBriefs === false ? null : (briefs && briefs[t.id]) || null;
       let seeds = { used: new Set(), rejected: new Set() };
       if (review) seeds = await seedsUsed(t.id);
+      const styles = new Set(); let lock = null, lockIns = null;      // VARIETY: styles taken so far · close: take 1's choices
       for (let n = 0; n < nTakes; n++) {
         k++;
         const m = takeMood(t, b, o, score);
         m.seed = o.seed != null && n === 0 ? o.seed : nextSeed(t.id, m.seed, seeds.used);
         seeds.used.add(m.seed);
+        varyTake(m, o, { n, seed: m.seed, used: styles, lock });
+        styles.add(m.style);
+        // this take's PARTS (an ensemble may leave some out) and INSTRUMENTS (close: take 1's line-up, hand picks win)
+        const ot = Object.assign({}, o);
+        if (m.drop && !o.roles) { const rs = ALL_ROLES.filter(x => !m.drop.includes(x)); if (rs.length) ot.roles = rs; }
+        if (lockIns) ot.instruments = Object.assign({}, lockIns, o.instruments || {});
         const tag = k + '/' + total + ' · ' + t.title + ' · ' + S.STYLES[m.style].name + ' ' + m.mode + ' · seed ' + m.seed;
         const say = (stage, text) => on({ type: 'progress', id: t.id, n: k, total, stage, text: tag + ' — ' + text });
         say('compose', 'composing…');
@@ -409,10 +723,16 @@
           let bars = o.length && o.length.bars;
           if (o.length && o.length.sec) { bars = Math.max(1, Math.round(o.length.sec * m.bpm / 240)); m.bpm = bars * 240 / o.length.sec; }
           if (E.project) E.project.name = t.id;
-          song = await compose(E, { seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: m.key,
-            motif: m.motif, motifSpec: m.motifSpec, shape: o.length ? undefined : m.shape, textures: m.textures, fx: m.fx, hit: m.hit, voices: m.voices }, ctx.inst || 'forge');
+          song = await compose(E, Object.assign(songOpts(m), { shape: o.length ? undefined : m.shape }), ctx.inst || 'forge');
           const P = E.project; P.name = t.id;
-          const instruments = await shapeArrangement(E, song, o);
+          const instruments = await shapeArrangement(E, song, ot);
+          if (o.variety === 'close' && !lock) {
+            // close: every later take gets this one's style, key, tempo, sound and instruments — only the notes change
+            const voices = {}; for (const r of ROLE_ORDER) if (song.parts[r] && song.parts[r].preset && r !== 'drums') voices[r] = song.parts[r].preset;
+            lock = { style: song.style, mode: song.mode, key: song.key, bpm: m.bpm, density: song.density, form: song.form, textures: song.textures && song.textures.length ? song.textures : 'none',
+              fx: song.fx || 'none', hit: song.hit || 'none', voices, kit: m.kit, ensemble: m.ensemble, drop: m.drop };
+            lockIns = {}; for (const [r, v] of Object.entries(instruments)) if ((ROLE_ORDER.includes(r) || EXTRA_PADS.includes(r)) && INSTR_SPEC.test(v)) lockIns[r] = v;
+          }
           // the game plays a track once, then the next: with no length asked, repeat to at least TEMP_MIN_SEC
           if (!bars) { const secs = song.bars * BAR() * E.spt(); bars = song.bars * Math.max(1, Math.ceil(TEMP_MIN_SEC / secs)); }
           const plan = arrangeTo(E, song, bars);
@@ -429,7 +749,10 @@
           const sec = r.channels[0].length / r.sampleRate;
           const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+song.bpm).toFixed(4), density: song.density, seed: song.seed,
             composer: song.v || 1, motif: song.motif || undefined, textures: song.textures && song.textures.length ? song.textures : 'none', fx: song.fx || 'none', hit: song.hit || 'none',
-            voices: m.voices || undefined, motifSpec: m.motifSpec || undefined, shape: m.shape || undefined, scored: m.scored || undefined, vocab: song.vocab };
+            voices: m.voices || undefined, motifSpec: m.motifSpec || undefined, shape: m.shape || undefined, scored: m.scored || undefined, vocab: song.vocab,
+            // what this take got from the panel's choices (absent when nothing was asked) — ⟳ AGAIN / loadTake rebuild from it
+            ensemble: m.ensemble || undefined, kit: m.kit || undefined, drop: m.drop || undefined, feel: m.feel || undefined, harmony: m.harmony || undefined,
+            ext: m.ext || undefined, prog: m.progFamily || undefined, variety: o.variety || undefined };
           const entry = { id: t.id, style: song.style, mode: song.mode, bpm: mood.bpm, sec: +sec.toFixed(3), bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, seed: song.seed };
           say('write', 'saving…');
           if (review) {
@@ -468,10 +791,11 @@
     if (proj && proj.v) { await E.load(proj); E.project.name = meta.id; E.emit('project'); return { meta, song: null, exact: true }; }
     const mo = meta.mood || {};
     if (E.project) E.project.name = meta.id;
-    const song = await compose(E, { seed: mo.seed, style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, key: mo.key,
-      motif: mo.motif, motifSpec: mo.motifSpec, shape: mo.shape, textures: mo.textures, fx: mo.fx, hit: mo.hit, voices: mo.voices }, 'forge');
+    const song = await compose(E, songOpts(Object.assign({}, mo, { progFamily: mo.prog })), 'forge');
     E.project.name = meta.id;
-    await shapeArrangement(E, song, normOpts(meta.request));
+    const ro = normOpts(meta.request);
+    if (mo.drop && !ro.roles) { const rs = ALL_ROLES.filter(x => !mo.drop.includes(x)); if (rs.length) ro.roles = rs; }
+    await shapeArrangement(E, song, ro);
     if (meta.bars) arrangeTo(E, song, meta.bars);
     E.project.loop = { on: false, a: 0, b: meta.bars || E.songBars() };
     E.emit('project');
@@ -505,5 +829,7 @@
     ROLE_ORDER, SOUND_ROLES, ALL_ROLES, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
     routing, compose, loadBriefs, loadScore, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
     padLayer, texturePreset, shapeArrangement, instrumentsOf, loadTake, stageEdit, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
+    // the MAKE TAKES panel's choices: instrument families, take variety, feel, harmony colour, sound design
+    ENSEMBLES, ENSEMBLE_MORE, STYLE_COMPAT, VARIETY, FEELS, HARMONY, INSTR_SPEC, progFamilies, homeKey, soundChoices, varyTake, restyle, ensemblePicks, applyEnsemble, songOpts, specOf,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
