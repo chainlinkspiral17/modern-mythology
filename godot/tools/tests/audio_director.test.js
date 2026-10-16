@@ -427,6 +427,10 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
       return { from, groups, field: !!field, real: !!RX.list.find(x => x.id === 'real_track' && x.real), off, recipe: RX.recipe, go: document.getElementById('rx-go').textContent };
     }, first.take);
     t.ok(r.from.startsWith('take:') && r.from.includes(first.take), 'take-row REMIX selects it: ' + r.from);
+    // ⤳ REMIX ↓ in the TAKES header brings the box into view (it sits under MAKE TAKES)
+    const seen = await p.evaluate(async () => { document.getElementById('right').scrollTop = 0; document.getElementById('toremix').click(); await new Promise(r => setTimeout(r, 900));
+      const b = document.getElementById('remix').getBoundingClientRect(), R = document.getElementById('right').getBoundingClientRect(); return b.top >= R.top - 1 && b.top < R.bottom - 40; });
+    t.ok(seen, 'REMIX scrolled into view');
     t.ok(r.groups.includes('THIS TRACK') && r.field && r.real, JSON.stringify(r));
     t.eq(r.off, [], 'a recording takes every recipe (the NOTES ones transcribe it)');
     t.eq(r.go, '⤳ REMIX × 2');

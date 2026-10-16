@@ -145,6 +145,7 @@
   <div class="right" id="right">
     <div class="empty" id="welcome">
       Pick a track on the left.<br>
+      Its takes, <b>⚄ MAKE TAKES</b> and <b>⤳ REMIX</b> (covers and remixes of finished music — including songs you ⇪ IMPORT) open on the right; <b>⤳ REMIX ↓</b> in the TAKES header jumps to it.<br>
       <kbd>↑</kbd><kbd>↓</kbd> track · <kbd>1</kbd>–<kbd>9</kbd> take (A/B at the same spot) · <kbd>space</kbd> play / stop · <kbd>[</kbd><kbd>]</kbd> intensity · <kbd>a</kbd> approve · <kbd>x</kbd> reject (twice) · <kbd>l</kbd> loop
     </div>
     <div id="track" style="display:none">
@@ -183,7 +184,7 @@
       <div class="line next" id="line2"></div>
       <div class="note" id="sceneinfo"></div>
 
-      <h2>TAKES <button class="go" id="make2" title="make takes for this track with the settings in MAKE TAKES below">⚄ MAKE TAKES</button><button class="dim" id="tosettings" title="the take settings: how many, direction, style, parts, instruments">⚙ SETTINGS ↓</button><span class="sp"></span><label class="note"><input type="checkbox" id="showrej"> rejected</label><label class="note" title="REJECT also deletes the take's files (its seed stays recorded)"><input type="checkbox" id="rejdel"> reject deletes files</label></h2>
+      <h2>TAKES <button class="go" id="make2" title="make takes for this track with the settings in MAKE TAKES below">⚄ MAKE TAKES</button><button class="dim" id="tosettings" title="the take settings: how many, direction, style, parts, instruments">⚙ SETTINGS ↓</button><button class="dim" id="toremix" title="REMIX: takes for this track made from finished music — any take, a recording, or a song you ⇪ IMPORT">⤳ REMIX ↓</button><span class="sp"></span><label class="note"><input type="checkbox" id="showrej"> rejected</label><label class="note" title="REJECT also deletes the take's files (its seed stays recorded)"><input type="checkbox" id="rejdel"> reject deletes files</label></h2>
       <div class="row"><label>NOTES</label><input type="text" id="notes" style="flex:1" placeholder="why — goes into temp_approvals.json with the approval / rejection"></div>
       <div id="takes"></div>
       <div class="row"><button class="dim" id="revoke" title="remove the approved temp from the game path (never real audio)">✕ REVOKE APPROVED TEMP</button><span class="note" id="revnote"></span></div>
@@ -1197,10 +1198,13 @@ function makeNow() {
 $('make').addEventListener('click', makeNow);
 $('make2').addEventListener('click', makeNow);
 // the box's top lands just under the sticky transport (scrollIntoView alone would tuck FOR / TAKES / QUICK beneath it)
-$('tosettings').addEventListener('click', () => {
-  const tr = document.querySelector('.transport').getBoundingClientRect(), top = $('regen').getBoundingClientRect().top;
+// jump the right pane to a box, landing it under the sticky transport bar
+function jumpTo(id) {
+  const tr = document.querySelector('.transport').getBoundingClientRect(), top = $(id).getBoundingClientRect().top;
   $('right').scrollBy({ top: top - ($('right').getBoundingClientRect().top - 8 + tr.height) - 34, behavior: 'smooth' });
-});
+}
+$('tosettings').addEventListener('click', () => jumpTo('regen'));
+$('toremix').addEventListener('click', () => jumpTo('remix'));
 // One engine for the page, started on the first MAKE TAKES tap (its AudioContext needs the gesture); requests queue
 // and run one after another. Each take lands in review staging and shows up under TAKES as soon as it's written.
 const STUDIO = { E: null, busy: false, queue: [] };
@@ -1358,7 +1362,7 @@ $('rx-go').addEventListener('click', remixNow);
 // ⤳ REMIX on a take row: that take becomes the source
 function remixFrom(m) {
   RX.from = 'take:' + m.dir; rxRender();
-  $('remix').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  jumpTo('remix');
   msg('remixing from take ' + m.take + ' — pick a RECIPE, then ⤳ REMIX.', false, 'rxmsg');
 }
 // ⟳ AGAIN on a remix: the same source, recipe, seed and the style (and key) it got
