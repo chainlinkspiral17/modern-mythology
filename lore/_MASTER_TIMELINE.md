@@ -28,6 +28,7 @@ Volume windows:
 | Volume | Window | Anchor |
 |---|---|---|
 | vol 4 and earlier | pre-2012 | the attic's "vol4 names" ('94–'95 deaths are in-BBS archive dates) [REC — see Knot 6] |
+| **Small Wood volumes** (Driftwood) | ~1997–98 | NEW SOURCE: author-supplied DRIFT WOOD strips (Class of 1998 banner); see `lore/small_wood/_DRIFTWOOD.md` |
 | **vol 5** (Graustark · Pomegranate Hour) | ~2019 | the Sinkhole ≈ seven years before vol 6 (aria_glossary) |
 | **vol 6** (Planned Community) | 2025 – 2026 | digital_subculture's editors write "late summer 2025"; the novel's summer + COMMUNITY PLANNED inset = **summer 2026** (Core rule #0) |
 | **vol 7** (Land of Milk and Honey) | **Aug 21 – Sep 2, 2052** | six full-date anchors in the scene prose |
@@ -301,6 +302,17 @@ shifted resolution**; the author decides.
    Oneironautics' sticks, which either makes the machine a
    Dean-adjacent prototype (he was building toward the medium
    then) or moves the arrival later. [RESERVED].
+11a. **Small Wood's geography** — COMMUNITY PLANNED's
+   `small_wood` region was never pinned to a state in canon;
+   the author-supplied DRIFT WOOD strips pin a Small Wood on
+   the **Oregon coast** (estuary, cannery, crab derby, Class
+   of 1998). Whether CP's region is the same town (which would
+   make the August event's "cypress" a flagged detail and put
+   Dean's Small Wood tower on the coast his 2010 old-Yachats
+   purchase later joins) or a Texas namesake is RESERVED. Also
+   reserved: Arthur Finch → vol 7's Finn, and Lena Kimo (1997)
+   vs Lena (2052) — name-echoes, unruled. See
+   `lore/small_wood/_DRIFTWOOD.md` § Open questions.
 11. **Dean's portrait age** — the tower-lobby portrait is read as
    "Dean at 48" in 2013 (ch22_floors), but the b. ~1978
    arithmetic (14 in Oct '92; 28 at SFO 2006 — two attestations)
