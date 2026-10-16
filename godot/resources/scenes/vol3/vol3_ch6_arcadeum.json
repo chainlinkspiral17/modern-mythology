@@ -28,7 +28,7 @@
     {
       "t": "interlude",
       "text": "arcadeum",
-      "sub": "transmission · 2003, as you be",
+      "sub": "Oneironautics Inc. · personnel · J. Okimoto · 2003, as you be",
       "duration": 2200
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "I've never heard of this game before."
     },
@@ -183,7 +183,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "I'll take it."
     },
@@ -219,7 +219,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "It's five hundred dollars."
     },
@@ -231,7 +231,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "These are old used games."
     },
@@ -247,7 +247,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "I'd really like if you returned my money to me."
     },
@@ -269,7 +269,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "I'm interviewing. I thought it was my dream job. I don't think I'll get it."
     },
@@ -281,7 +281,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "Do you get a lot of them down here?"
     },
@@ -293,7 +293,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "Have any of them bought your game?"
     },
@@ -303,7 +303,7 @@
     },
     {
       "t": "say",
-      "char": "The Woman",
+      "char": "June",
       "expr": "neutral",
       "text": "I don't live here. I probably won't be back to tell you if it's any good."
     },

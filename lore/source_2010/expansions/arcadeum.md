@@ -6,7 +6,7 @@ Sources (Andy's own text, used verbatim):
 - **"sticker shock"** (Drive, Aug 2017), the prologue of the "arcadeum" doc. About 120 words, ending mid-word at "go up a f".
 - **"What Lies Beyond"** (May 2018), posted by chainlinkspiral to the "What Lies Beyond" creative writing challenge thread (Creative Writing Challenge #012). About 1,000 words. One typo fixed: "been [to] the nearest campus library".
 
-Andy calls this "the Aria story". On screen she stays unnamed ("The Woman"), keeping Aria a flicker. In the 2016 "mm ii" plan, Arcadeum is a novella about Ariaster "Aria" Dean, a game designer raised by a mechanic father. That conflicts with the current canon of Aria as Dean's daughter, born after 1994. The story is set in 1991.
+**Who she is (Andy, Oct 2026): not Aria. She is a different Oneironautics employee.** On screen she is **June Okimoto**, a programmer from Dallas. The name is a placeholder and easy to change. In 1991 she interviews at Koa Works and doesn't get the job. Oneironautics Inc. hires her years later. The 2003 prologue ("Your dad… presumed dead for a few weeks there") is read as her Oneironautics personnel interview, and the title card says so. Narration still calls her "she"; only the speaker label and the card name her.
 
 Game-design lore introduced: Koa Works (Honolulu studio), WHAT LIES BEYOND (a hand-made game by an ex-Army vet, about a hundred copies, ~$500), Mountaintop's *Final Cut* (a CD-ROM graphic adventure about a film editor who is also a spy).
 

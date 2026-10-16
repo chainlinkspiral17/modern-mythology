@@ -91,7 +91,7 @@ const MM_MUSIC = [
   { id:"vol3_radio_1945", vol:3, title:"Wireless, Pasadena 1945", src:"assets/audio/bgm/vol3_radio_1945.mp3",
     composer:"—", desc:"A tube set warming up in Ron's room. Dance-band ghosts under the static; the war just over.", unlock:{"type": "heard"}, chars:["ron"], chapters:["meld_seam_2_3", "vol3_ch10_notes_from_the_underground", "vol3_ch19_ron_takes_notes"] },
   { id:"vol3_arcadeum_lobby", vol:3, title:"Arcadeum · Lobby, Honolulu 1991", src:"assets/audio/bgm/vol3_arcadeum_lobby.mp3",
-    composer:"—", desc:"High-rise lobby on a sleepless morning: fluorescent hum, a boutique game shop’s demo loop leaking through glass, trade wind at the revolving door.", unlock:{"type": "heard"}, chars:["arcadeum_designer", "arcadeum_shopkeeper"], chapters:["vol3_ch6_arcadeum"] },
+    composer:"—", desc:"High-rise lobby on a sleepless morning: fluorescent hum, a boutique game shop’s demo loop leaking through glass, trade wind at the revolving door.", unlock:{"type": "heard"}, chars:["june_okimoto", "arcadeum_shopkeeper"], chapters:["vol3_ch6_arcadeum"] },
   { id:"vol3_signal_drone", vol:3, title:"The Transmission", src:"assets/audio/bgm/vol3_signal_drone.mp3",
     composer:"—", desc:"The ruined-future carrier wave. The time pod humming between 1945 and now.", unlock:{"type": "heard"}, chars:[], chapters:["meld_seam_2_3", "vol3_ch12_uncle_nick", "vol3_ch13_sins_of_our_fathers", "vol3_ch14_last_of_the_oil_men", "vol3_ch1_boy_from_pasadena", "vol3_ch2_dreams_in_the_key_of_godhead", "vol3_ch8_passengers", "vol3_ch8_passengers_b", "vol3_ch8_passengers_c", "vol3_ch8_pulp_the_catwalk", "vol3_ch9_backward_jaunt", "vol3_title"] },
   { id:"vol3_projector_hum", vol:3, title:"Slide Carousel", src:"assets/audio/bgm/vol3_projector_hum.mp3",
