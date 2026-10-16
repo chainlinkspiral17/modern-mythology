@@ -1171,6 +1171,80 @@ context keeps running into a fake sink, and the meters still move.
   style's own extensions. Half-time on an already-slow style bottoms
   out at 40 BPM.
 
+### 2026-10-14 — arrangement parts: counter, arp, perc, double ("a lot more instrumentation and variety")
+
+- The user: takes still need "a lot more instrumentation and variety".
+  Five musical roles + the sound layer is a band, not an arrangement.
+  seqgen now writes four more parts (`SeqGen.ARR_ROLES`), each with
+  per-style odds and figures in `ARRANGE` (presets + pools merged into
+  `STYLES[id].presets` / `FORGE_POOLS[id]` at load).
+- What each one is:
+  - **counter** — a countermelody under the lead (range 55–74), built
+    from `chordAt` and the lead's actual notes in the same section: it
+    never starts on a lead onset, never forms a unison / octave on
+    beats 1 and 3 (a held note the lead moves onto is cut before the
+    beat), so no parallel octaves. Kinds: `answer` (call / response in
+    the lead's rests, or under a note the lead has held a beat, moving
+    against its last step), `horn` (noir / dub muted horn), `second`
+    (chamber / hymn / piano inner voice, entering just after the lead
+    like a suspension), `guide` (jazz 3rds / 7ths, voice-led,
+    anticipated), `harmony` (folk: a third / sixth under the tune,
+    homorhythmic on purpose), `ring` (post-rock high pendulum),
+    `interlock` (minimal eighth cell in the lead's gaps).
+  - **arp** — one note at a time over the current chord: up, down,
+    updown, broken thirds, alberti, pedal, 16th sequencer cell with an
+    octave jump + gate, triplet, walk. 8ths or 16ths from density;
+    swung styles get triplets, never straight 16ths. Registers low /
+    mid / high (high = bells above the lead). Every note is a chord
+    tone (tested over ~300k notes).
+  - **perc** — hand percussion on its own KIT device: tumbao congas,
+    martillo bongos, shaker, cabasa, tambourine, cowbell, son clave,
+    wood-block tick-tock, frame drum, nyabinghi, washboard; conga fills
+    into phrase ends. The drums' old `pl.perc` colour stays folded in
+    the drums part (byte-identical); the new part skips every voice
+    the song's grooves or that colour already play.
+  - **double** — the lead an octave down / up, or the bass an octave
+    up, on another instrument, softer; for lift in B / C.
+- Where they play (intent, from `P('arr:place:<role>')`): arp opens
+  the intro in synthwave / motorik / minimal / chiptune / post-rock or
+  enters in A2; the counter answers in A2 / B (only where the lead
+  plays, unless it is a stand-alone kind); perc lifts B and may take
+  a break; the doubling is B / C. A cue's own section roles stand
+  (shape roles may now name the new parts; `checkScore` rejects an
+  unknown role in a shape or a `voices` key).
+- Reproducibility is the rule that shaped everything: every choice is
+  its own stream (`P('arr:<role>')`, `rng(seed*31 + hash(role+base))`),
+  extra roles are appended to `sec.roles` after `rolesFor`, the new
+  parts render after the five and never touch `harm`. A snapshot of
+  1092 style × form × seed × option hashes over the five original
+  parts, generated from the unmodified seqgen.js and committed first
+  (`tests/fixtures/seqgen_roles_v2.json`), is checked in data.test.
+  Old takes regenerate the same five parts; a take rebuilt without
+  project.json may gain new parts unless its request's PARTS excluded
+  them (a subset of PARTS never listed them → shapeArrangement drops
+  them).
+- `o.arrange`: undefined = the style's odds · `'none'` · `[roles]` =
+  always these. temp_maker passes the arrangement roles a PARTS subset
+  names, so ticking `arp` alone gets an arp even when the dice say no.
+- Mix + game: ROLE_LEVEL perc 0.38, arp 0.24, counter 0.28, double
+  0.24. Measured stem RMS (a 2-bar loop at 150 BPM): synthwave lead
+  0.061 vs arp 0.027 / counter 0.020; noir lead 0.046 vs arp 0.026 /
+  counter 0.020; folk lead 0.051 vs arp 0.023 / counter 0.025 /
+  double 0.019; perc 0.013–0.029 under drums 0.11–0.27. STEM_LAYER:
+  perc 0.4, arp 0.5, counter 0.75, double 0.9. AudioMgr takes any stem
+  names and up to 32 streams; a take now has at most 13.
+- CPU: counter / arp / double are one FORGE voice each
+  (`voice.mode = 'mono'`, set in compose and setInstrument); perc's
+  KIT builds only the pieces it hits. Still, every part costs render
+  time like another lead (8 bars at 120 BPM, one track offline in the
+  sandbox: perc KIT 1.0–1.8 s, arp 0.8–2.2 s, counter 1.1–1.3 s,
+  double 1.5 s, vs lead 1.4 s). The test club song (four_floor + perc +
+  arp) went from 1.5× to 0.9× real time in the sandbox and PLAY:
+  RENDER's first sound from 6 s to 16 s; the PLAY test now strips the
+  arrangement tracks to keep measuring the streaming mechanism. On the
+  Deck, PLAY: RENDER of a take with 3–4 arrangement parts may wait
+  longer before the first sound — watch DIAG's "× real time".
+
 ## TEMPLATE
 
 ```

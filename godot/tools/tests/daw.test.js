@@ -8,7 +8,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
 
   await t.test('generated project: 5 parts on FORGE / KIT', async () => {
     const r = await p.evaluate(() => P.tracks.map(t => t.role + ':' + E.dev(t.deviceId).type));
-    t.eq(r.filter(x => !/^(texture|fx):/.test(x)), ['drums:kit', 'bass:forge', 'chords:forge', 'lead:forge', 'pad:forge']);
+    t.eq(r.filter(x => !/^(texture|fx|perc|arp|counter|double):/.test(x)), ['drums:kit', 'bass:forge', 'chords:forge', 'lead:forge', 'pad:forge']);
     t.ok(r.filter(x => /^(texture|fx):/.test(x)).every(x => x.endsWith(':forge')), 'the sound-design layer (beds, risers, hits) is FORGE: ' + r);
   });
   await t.test('offline render: exact length, audible, faster than real time', async () => {
@@ -28,7 +28,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
       let x = 0, ya = 0, yb = 0; a.forEach((v, i) => { x += (v - ma) * (b[i] - mb); ya += (v - ma) ** 2; yb += (b[i] - mb) ** 2; });
       return { names: stems.map(s => s.name), corr: x / Math.sqrt(ya * yb) };
     });
-    t.eq(r.names.filter(n => n !== 'texture' && n !== 'fx'), ['drums', 'bass', 'chords', 'lead', 'pad']); t.ok(r.corr > 0.99, 'envelope corr ' + r.corr.toFixed(4));
+    t.eq(r.names.filter(n => !['texture', 'fx', 'perc', 'arp', 'counter', 'double'].includes(n)), ['drums', 'bass', 'chords', 'lead', 'pad']); t.ok(r.corr > 0.99, 'envelope corr ' + r.corr.toFixed(4));
   });
   await t.test('undo / redo an arrangement edit (no instrument reload)', async () => {
     const r = await p.evaluate(async () => {
@@ -42,7 +42,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
   });
   await t.test('MIDI export: drums on channel 10, all five parts', async () => {
     const r = await p.evaluate(() => SMF.read(E.exportMidi()).tracks.map(t => t.name + ':' + t.channel));
-    t.eq(r.filter(x => !/^(texture2?|fx|hit):/.test(x)), ['drums:10', 'bass:1', 'chords:1', 'lead:1', 'pad:1']);
+    t.eq(r.filter(x => !/^(texture2?|fx|hit|perc|arp|counter|double):/.test(x)), ['drums:10', 'bass:1', 'chords:1', 'lead:1', 'pad:1']);
   });
 
   const SLOW = !!process.env.TEST_SLOW;   // stems = one full render per part (~5× the time)
@@ -110,7 +110,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     const man = JSON.parse(fs.readFileSync(B + '.stems.json', 'utf8'));
     t.eq([man.temp, man.format, man.mix, man.loop], [true, 'ogg', 'assets/audio/bgm/test_club.temp.ogg', false]); t.near(man.frames, r.sec * 44100, 50, 'frames');
     if (SLOW) {
-      t.eq(man.stems.map(s => s.name + '@' + s.layer).filter(x => !/^(texture|fx)@/.test(x)), ['drums@0.5', 'bass@0.25', 'chords@0', 'lead@0.75', 'pad@0']);
+      t.eq(man.stems.map(s => s.name + '@' + s.layer).filter(x => !/^(texture|fx|perc|arp|counter|double)@/.test(x)), ['drums@0.5', 'bass@0.25', 'chords@0', 'lead@0.75', 'pad@0']);
       t.ok(man.stems.every(s => s.name !== 'texture' || s.layer === 0) && man.stems.every(s => s.name !== 'fx' || s.layer === 0.5), 'bed always on, fx with the drums');
       for (const s of man.stems) { const m = mbMin(path.join(game, s.file)); t.ok(s.file.endsWith('.ogg') && m > 0.02 && m < 0.8, s.file + ' ' + m.toFixed(2) + ' MB/min'); }
       console.log('    stems (MB/min): ' + man.stems.map(s => s.name + ' ' + mbMin(path.join(game, s.file)).toFixed(2)).join(', '));
@@ -125,6 +125,10 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
   await t.test('PLAY: RENDER (the default ▶): streams the render — starts in about a second, sounds exactly like the bounce, loops, cached replay', async () => {
     const r = await p.evaluate(async () => {
       const sl = ms => new Promise(res => setTimeout(res, ms)), sr = E.ctx.sampleRate;
+      // the streaming mechanism is measured on the five-part band + sound layer: every arrangement part (perc / arp /
+      // counter / double) adds about as much render time as another lead, and this sandbox renders a 10-part 90 s song
+      // slower than real time (see the audio playbook, 2026-10-14 arrangement parts)
+      for (const tr of P.tracks.slice()) if (TempMaker.ARR_ROLES.includes(tr.role)) { const d = tr.deviceId; E.removeTrack(tr.id); if (!P.tracks.some(x => x.deviceId === d)) E.removeDevice(d); }
       E._rcache = null; E.diag = [];
       P.loop = { on: false, a: 0, b: 4 };
       const songEnd = E.songBars();
@@ -207,6 +211,37 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     });
     t.ok(r.length >= 26, r.length + ' styles');
     t.eq(r.filter(x => x.err || !x.finite || !(x.pk > 0.02) || !x.kit), [], 'styles that fail to render');
+  });
+  await t.test('arrangement parts: a take with every part composes onto KIT / mono FORGE and renders finite, audible stems that sit under the lead', async () => {
+    const r = await p.evaluate(async () => {
+      window.confirm = () => true; E.stop(); await E.setLiveQuality('full');
+      const out = [];
+      for (const [style, seed] of [['synthwave', 3], ['noir', 8], ['folk', 2]]) {
+        const s = await TempMaker.compose(E, { seed, style, form: 'loop', bpm: 150, arrange: TempMaker.ARR_ROLES }, 'forge'); P = E.project; await E.whenReady();
+        const tracks = P.tracks.map(t => ({ role: t.role, type: E.dev(t.deviceId).type, mode: E.devices.get(t.deviceId).getState && E.dev(t.deviceId).type === 'forge' ? E.devices.get(t.deviceId).getState().voice.mode : null, vol: E.dev(t.deviceId).mix.vol }));
+        const r = await TempMaker.render(E, { stems: true, master: false, loop: true });
+        const stat = ch => { let pk = 0, ss = 0, n = 0, fin = true; for (const c of ch) for (let i = 0; i < c.length; i++) { const x = c[i]; if (!Number.isFinite(x)) fin = false; else { pk = Math.max(pk, Math.abs(x)); ss += x * x; n++; } } return { pk: +pk.toFixed(3), rms: +Math.sqrt(ss / Math.max(1, n)).toFixed(4), fin }; };
+        out.push({ style, vocab: s.vocab.arrange, tracks, stems: r.stems.map(st => Object.assign({ name: st.name, layer: TempMaker.STEM_LAYER[st.name] }, stat(st.channels))) });
+      }
+      return out;
+    });
+    for (const x of r) {
+      const by = Object.fromEntries(x.stems.map(s => [s.name, s])), roles = x.tracks.map(t => t.role);
+      for (const role of ['arp', 'counter', 'double', 'perc']) if (roles.includes(role)) t.ok(by[role], x.style + ': stem ' + role + ' (' + x.stems.map(s => s.name) + ')');
+      t.ok(roles.includes('arp') && roles.includes('counter') && roles.includes('perc'), x.style + ': every part asked for is written: ' + roles + ' ' + JSON.stringify(x.vocab));
+      for (const tr of x.tracks) {
+        if (tr.role === 'perc') t.eq(tr.type, 'kit', x.style + ': perc on a KIT');
+        if (['arp', 'counter', 'double'].includes(tr.role)) t.eq([tr.type, tr.mode], ['forge', 'mono'], x.style + ': ' + tr.role + ' is one FORGE voice');
+      }
+      for (const st of x.stems) {
+        t.ok(st.fin && st.pk > 0.003, x.style + '/' + st.name + ': finite + audible ' + JSON.stringify(st));
+        t.ok(typeof st.layer === 'number', x.style + '/' + st.name + ': a game intensity layer');
+      }
+      // the mix: arp / counter / double stay under the lead (RMS), perc under the drums
+      for (const role of ['arp', 'counter', 'double']) if (by[role] && by.lead) t.ok(by[role].rms < by.lead.rms, x.style + ': ' + role + ' RMS ' + by[role].rms + ' under the lead ' + by.lead.rms);
+      if (by.perc && by.drums) t.ok(by.perc.rms < by.drums.rms, x.style + ': perc RMS ' + by.perc.rms + ' under the drums ' + by.drums.rms);
+      console.log('    ' + x.style + ' stem RMS / peak: ' + x.stems.map(s => s.name + ' ' + s.rms + '/' + s.pk).join(' · '));
+    }
   });
   await t.test('no page / console errors', async () => t.noErrors(errors));
 });

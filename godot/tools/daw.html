@@ -267,7 +267,7 @@
         <option value="patch">PATCH BANK — real instruments, picked for the style</option>
       </select></div>
       <div class="row"><button id="g-go">⚄ GENERATE</button><span class="note" id="g-info"></span></div>
-      <div class="row"><span class="note">re-roll one part:</span><button class="dim" data-reroll="drums">drums</button><button class="dim" data-reroll="bass">bass</button><button class="dim" data-reroll="chords">chords</button><button class="dim" data-reroll="lead">lead</button><button class="dim" data-reroll="pad">pad</button></div>
+      <div class="row"><span class="note">re-roll one part:</span><button class="dim" data-reroll="drums">drums</button><button class="dim" data-reroll="bass">bass</button><button class="dim" data-reroll="chords">chords</button><button class="dim" data-reroll="lead">lead</button><button class="dim" data-reroll="pad">pad</button><button class="dim" data-reroll="perc">perc</button><button class="dim" data-reroll="arp">arp</button><button class="dim" data-reroll="counter">counter</button><button class="dim" data-reroll="double">double</button></div>
       <div class="msg" id="g-msg"></div>
 
       <h2>FOR THE GAME · catalog tracks with no audio</h2>
@@ -365,7 +365,7 @@
 const $ = id => document.getElementById(id);
 const { PPQ, BAR } = DAW;
 const E = new DAW.Engine();
-const COLORS = { drums: '#e08a7a', bass: '#c87633', chords: '#d8a060', lead: '#a8e89c', pad: '#8ab4f0', audio: '#c8a4f0', midi: '#f0b94a' };
+const COLORS = TempMaker.COLORS;
 const GM_NAMES = { 36: 'kick', 37: 'rim', 38: 'snare', 39: 'clap', 42: 'hat c', 44: 'hat ped', 45: 'tom lo', 46: 'hat o', 48: 'tom hi', 49: 'crash', 51: 'ride', 56: 'bell', 70: 'shaker' };
 const DRUM_ROWS = [36, 37, 38, 39, 42, 44, 46, 45, 48, 49, 51, 70];
 let P = null;                     // project
@@ -1846,7 +1846,7 @@ $('m-dtime').addEventListener('change', () => { P.master.delayBeats = +$('m-dtim
 // export / bounce / record
 // ═══════════════════════════════════════════════════════════════════
 // stems: one per generated role (drums / bass / chords / lead / pad), anything else one per track
-const STEM_LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75 };
+const STEM_LAYER = TM.STEM_LAYER;                 // the game's intensity layers per stem (temp_maker.js)
 function stemGroups() {
   const g = new Map();
   for (const t of P.tracks) {

@@ -397,9 +397,78 @@
     trip_hop: { bass: ['bass_808', 'bass_fretless', 'bass_upright', 'bass_ladder'], chords: ['keys_felt', 'strings_noir', 'keys_wurli', 'pad_tape_wobble', 'keys_vibes'],
       lead: ['strings_noir', 'winds_harmon', 'keys_vibes', 'bell_glock', 'winds_clarinet'], pad: ['pad_tape_wobble', 'choir_crypt', 'pad_seance', 'pad_dusk', 'strings_tremolo'] },
   };
+  // The arrangement parts per style: p = how likely a song has each one; counter / arp / perc / double = the idiomatic
+  // figures (see genCounter, genArp, PERC_KITS, genDouble); reg = arp registers; presets + pools are merged into
+  // STYLES[id].presets and FORGE_POOLS[id] below (counter and arp play mono, so any melodic FORGE preset will do).
+  const ARRANGE = {
+    four_floor: { p: [0.35, 0.6, 0.6, 0.3], counter: ['answer', 'ring'], arp: ['seq16', 'up', 'updown', 'pedal'], reg: ['mid', 'high'], perc: ['bongo', 'conga', 'shaker', 'cabasa'], double: ['bass_up', 'lead_low'],
+      presets: ['strings_silver', 'pluck_neon', 'lead_fm'], pools: [['winds_horns', 'lead_fm', 'keys_vibes'], ['arp_chip', 'pluck_bell', 'bell_glock', 'keys_harpsichord'], ['pluck_neon', 'winds_brass']] },
+    boom_bap: { p: [0.5, 0.25, 0.55, 0.2], counter: ['answer', 'horn'], arp: ['thirds', 'walk', 'alberti'], reg: ['high', 'mid'], perc: ['bongo', 'shaker', 'tamb', 'conga'], double: ['lead_low'],
+      presets: ['winds_horns', 'pluck_kalimba', 'keys_vibes'], pools: [['winds_sax', 'keys_vibes', 'strings_noir'], ['keys_vibes', 'pluck_marimba', 'keys_celesta'], ['winds_flute', 'keys_ep']] },
+    lofi: { p: [0.45, 0.4, 0.45, 0.2], counter: ['answer', 'horn'], arp: ['thirds', 'walk', 'updown', 'alberti'], reg: ['high', 'mid'], perc: ['shaker', 'bongo', 'cabasa', 'tamb'], double: ['lead_low', 'lead_high'],
+      presets: ['winds_flute', 'pluck_kalimba', 'keys_vibes'], pools: [['keys_vibes', 'winds_clarinet', 'strings_silver'], ['keys_celesta', 'bell_music_box', 'pluck_nylon'], ['winds_flute', 'pluck_nylon']] },
+    trap: { p: [0.3, 0.55, 0.2, 0.25], counter: ['ring', 'answer'], arp: ['triplet', 'pedal', 'down', 'up'], reg: ['high'], perc: ['shaker', 'woodblock'], double: ['lead_high', 'lead_low'],
+      presets: ['strings_noir', 'bell_music_box', 'bell_glock'], pools: [['choir_crypt', 'lead_theremin', 'pad_frost'], ['keys_celesta', 'bell_glock', 'pluck_bell'], ['lead_square', 'keys_celesta']] },
+    dnb: { p: [0.35, 0.5, 0.45, 0.3], counter: ['ring', 'answer'], arp: ['seq16', 'up', 'pedal'], reg: ['high', 'mid'], perc: ['shaker', 'bongo', 'tamb'], double: ['bass_up', 'lead_low'],
+      presets: ['strings_silver', 'pluck_neon', 'lead_brass'], pools: [['lead_fm', 'pad_shimmer', 'winds_horns'], ['arp_chip', 'bell_glock', 'pluck_bell'], ['lead_saw']] },
+    shuffle: { p: [0.55, 0.15, 0.5, 0.35], counter: ['horn', 'answer'], arp: ['walk', 'alberti'], reg: ['mid'], perc: ['tamb', 'conga', 'cowbell', 'shaker'], double: ['lead_low'],
+      presets: ['winds_horns', 'keys_vibes', 'winds_brass'], pools: [['winds_brass', 'winds_sax', 'keys_organ'], ['pluck_nylon', 'keys_ep'], ['winds_sax', 'winds_horns']] },
+    motorik: { p: [0.3, 0.75, 0.4, 0.35], counter: ['ring', 'interlock'], arp: ['seq16', 'up', 'pedal', 'updown'], reg: ['mid', 'low', 'high'], perc: ['shaker', 'tamb', 'cabasa'], double: ['bass_up', 'lead_low'],
+      presets: ['lead_ring', 'arp_chip', 'lead_saw'], pools: [['strings_silver', 'lead_brass'], ['pluck_neon', 'keys_harpsichord', 'pluck_bell'], ['lead_brass']] },
+    synthwave: { p: [0.45, 0.8, 0.35, 0.35], counter: ['answer', 'ring'], arp: ['up', 'updown', 'seq16', 'pedal', 'thirds'], reg: ['mid', 'high'], perc: ['tamb', 'shaker'], double: ['bass_up', 'lead_low'],
+      presets: ['lead_brass', 'arp_chip', 'lead_square'], pools: [['strings_silver', 'lead_fm', 'winds_horns'], ['pluck_neon', 'pluck_bell', 'keys_harpsichord'], ['strings_silver', 'lead_saw']] },
+    noir: { p: [0.6, 0.2, 0.35, 0.25], counter: ['horn', 'answer', 'horn'], arp: ['walk', 'thirds'], reg: ['mid', 'high'], perc: ['bongo', 'conga', 'shaker'], double: ['lead_low'],
+      presets: ['winds_harmon', 'keys_vibes', 'winds_clarinet'], pools: [['winds_horns', 'winds_clarinet', 'strings_noir'], ['pluck_harp', 'keys_celesta'], ['strings_noir', 'winds_sax']] },
+    ambient: { p: [0.3, 0.4, 0.1, 0], counter: ['second', 'ring'], arp: ['walk', 'updown', 'up'], reg: ['high', 'mid'], perc: ['shaker', 'woodblock'], double: ['lead_low'],
+      presets: ['strings_silver', 'pluck_harp', 'winds_flute'], pools: [['winds_flute', 'choir_angel', 'pad_bowed_glass'], ['keys_celesta', 'pluck_kalimba', 'bell_bowl'], []] },
+    folk: { p: [0.65, 0.3, 0.45, 0.25], counter: ['harmony', 'answer', 'harmony'], arp: ['alberti', 'thirds', 'up'], reg: ['mid'], perc: ['tamb', 'shaker', 'frame'], double: ['lead_low'],
+      presets: ['strings_silver', 'pluck_nylon', 'winds_flute'], pools: [['winds_flute', 'winds_harmonica', 'pluck_dobro'], ['pluck_harp', 'pluck_dobro', 'pluck_kalimba'], ['winds_harmonica', 'lead_whistle']] },
+    chamber: { p: [0.8, 0.35, 0.1, 0.3], counter: ['second', 'second', 'answer'], arp: ['alberti', 'updown', 'thirds'], reg: ['mid'], perc: ['frame'], double: ['lead_low'],
+      presets: ['strings_noir', 'pluck_harp', 'strings_noir'], pools: [['winds_clarinet', 'winds_horns', 'strings_silver'], ['keys_harpsichord', 'keys_celesta'], ['winds_clarinet', 'strings_silver']] },
+    // solo piano: the counter is an inner voice, the arp a right-hand figure, the double melody in octaves — all on the
+    // chords' piano (STYLES.piano.link)
+    piano: { p: [0.5, 0.25, 0, 0.15], counter: ['second', 'answer'], arp: ['updown', 'alberti', 'up'], reg: ['high'], perc: [], double: ['lead_low'], presets: [], pools: [] },
+    hymn: { p: [0.75, 0.1, 0, 0.35], counter: ['second', 'second'], arp: ['updown'], reg: ['mid'], perc: [], double: ['lead_low'],
+      presets: ['choir_vox', 'pluck_harp', 'winds_horns'], pools: [['winds_horns', 'strings_ensemble', 'keys_organ'], ['keys_celesta'], ['choir_vox', 'keys_organ']] },
+    dark_drone: { p: [0.3, 0.2, 0.1, 0], counter: ['second', 'ring'], arp: ['walk', 'pedal'], reg: ['high', 'low'], perc: ['frame'], double: ['lead_low'],
+      presets: ['strings_noir', 'bell_tubular', 'strings_noir'], pools: [['bell_bowl', 'choir_crypt', 'pad_bowed_metal'], ['bell_bowl', 'pluck_harp'], []] },
+    synth_horror: { p: [0.35, 0.65, 0.2, 0.25], counter: ['ring', 'answer'], arp: ['up', 'down', 'pedal', 'triplet', 'seq16'], reg: ['high', 'mid'], perc: ['woodblock', 'shaker'], double: ['lead_low', 'bass_up'],
+      presets: ['strings_noir', 'keys_celesta', 'lead_saw'], pools: [['lead_theremin', 'choir_crypt', 'pad_seance'], ['pluck_bell', 'arp_chip', 'keys_harpsichord'], ['lead_ring']] },
+    jazz: { p: [0.6, 0.1, 0.2, 0.3], counter: ['guide', 'guide', 'answer'], arp: ['walk'], reg: ['mid'], perc: ['bongo', 'conga', 'shaker'], double: ['lead_low', 'lead_high'],
+      presets: ['winds_clarinet', 'keys_vibes', 'keys_vibes'], pools: [['winds_horns', 'keys_vibes', 'winds_harmon'], ['pluck_harp'], ['winds_flute', 'winds_clarinet']] },
+    dub: { p: [0.5, 0.2, 0.55, 0.3], counter: ['horn', 'answer'], arp: ['pedal', 'walk'], reg: ['mid'], perc: ['nyabinghi', 'shaker', 'conga'], double: ['lead_low'],
+      presets: ['winds_brass', 'pluck_nylon', 'winds_brass'], pools: [['winds_horns', 'winds_flute', 'keys_organ'], ['keys_clav', 'pluck_steel_pan'], ['winds_flute']] },
+    post_rock: { p: [0.55, 0.6, 0.3, 0.4], counter: ['ring', 'ring', 'second'], arp: ['updown', 'up', 'pedal', 'thirds'], reg: ['high', 'mid'], perc: ['tamb', 'shaker'], double: ['lead_low', 'bass_up'],
+      presets: ['lead_ring', 'pluck_nylon', 'strings_silver'], pools: [['keys_celesta', 'strings_silver', 'bell_tubular'], ['pluck_harp', 'pluck_neon', 'keys_celesta'], ['lead_fuzz']] },
+    lullaby: { p: [0.5, 0.5, 0.2, 0.3], counter: ['second', 'answer'], arp: ['triplet', 'alberti', 'updown'], reg: ['high', 'mid'], perc: ['woodblock', 'shaker'], double: ['lead_high', 'lead_low'],
+      presets: ['winds_flute', 'pluck_harp', 'keys_celesta'], pools: [['keys_celesta', 'strings_silver', 'choir_angel'], ['keys_celesta', 'bell_music_box', 'keys_toy_piano'], ['bell_glock']] },
+    industrial: { p: [0.3, 0.5, 0.55, 0.3], counter: ['ring', 'interlock'], arp: ['seq16', 'pedal', 'down'], reg: ['low', 'mid'], perc: ['woodblock', 'cowbell', 'shaker'], double: ['bass_up', 'lead_low'],
+      presets: ['lead_ring', 'arp_chip', 'lead_fuzz'], pools: [['pad_bowed_metal', 'lead_siren'], ['pluck_bell', 'keys_clav'], ['lead_saw']] },
+    surf: { p: [0.45, 0.3, 0.55, 0.35], counter: ['answer', 'horn'], arp: ['updown', 'up'], reg: ['mid'], perc: ['tamb', 'bongo'], double: ['lead_low'],
+      presets: ['keys_combo_organ', 'pluck_nylon', 'pluck_neon'], pools: [['winds_brass', 'lead_ring'], ['pluck_neon', 'pluck_steel_pan'], ['winds_brass']] },
+    bayou: { p: [0.55, 0.15, 0.6, 0.3], counter: ['answer', 'horn', 'harmony'], arp: ['walk'], reg: ['mid'], perc: ['washboard', 'tamb', 'cowbell'], double: ['lead_low'],
+      presets: ['winds_clarinet', 'pluck_dobro', 'winds_harmonica'], pools: [['winds_harmon', 'keys_combo_organ', 'pluck_dobro'], ['pluck_nylon'], ['winds_sax']] },
+    minimal: { p: [0.6, 0.75, 0.4, 0.2], counter: ['interlock', 'interlock', 'second'], arp: ['pedal', 'seq16', 'updown', 'walk'], reg: ['mid', 'high'], perc: ['woodblock', 'shaker', 'clave'], double: ['lead_high'],
+      presets: ['pluck_marimba', 'keys_celesta', 'winds_clarinet'], pools: [['keys_vibes', 'keys_celesta', 'winds_clarinet'], ['pluck_marimba', 'keys_harpsichord', 'pluck_kalimba'], ['choir_vox']] },
+    chiptune: { p: [0.45, 0.55, 0.15, 0.35], counter: ['answer', 'interlock'], arp: ['up', 'updown', 'seq16'], reg: ['high', 'mid'], perc: ['shaker'], double: ['lead_low', 'lead_high'],
+      presets: ['lead_square', 'arp_chip', 'lead_square'], pools: [['arp_chip', 'bell_glock'], ['pluck_neon', 'bell_glock'], ['arp_chip']] },
+    trip_hop: { p: [0.45, 0.35, 0.45, 0.25], counter: ['answer', 'horn', 'ring'], arp: ['walk', 'thirds', 'pedal'], reg: ['high', 'mid'], perc: ['shaker', 'bongo', 'tamb'], double: ['lead_low'],
+      presets: ['strings_noir', 'keys_vibes', 'strings_noir'], pools: [['winds_harmon', 'keys_vibes', 'lead_theremin'], ['keys_celesta', 'pluck_harp', 'bell_glock'], ['winds_clarinet']] },
+  };
+  const ARRANGE_DEFAULT = { p: [0.35, 0.35, 0.3, 0.2], counter: ['answer'], arp: ['up', 'updown'], reg: ['mid'], perc: ['shaker', 'tamb'], double: ['lead_low'], presets: ['strings_silver', 'pluck_bell', 'strings_silver'], pools: [] };
+  const COUNTER_RANGE = { ring: [72, 91], interlock: [60, 79] };      // else [55, 74]: under the lead
+  // presets + pools → the style tables; the piano's new hands are the chords' piano too
+  for (const [id, A] of Object.entries(ARRANGE)) {
+    const st = STYLES[id]; if (!st) continue;
+    ['counter', 'arp', 'double'].forEach((r, i) => {
+      if (A.presets[i]) st.presets[r] = A.presets[i];
+      if ((A.pools[i] || []).length) FORGE_POOLS[id] = Object.assign(FORGE_POOLS[id] || {}, { [r]: A.pools[i].slice() });
+    });
+  }
+  STYLES.piano.link = Object.assign({}, STYLES.piano.link, { counter: 'chords', arp: 'chords', double: 'chords' });
   function presetFor(styleId, role, seed) {
     const st = STYLES[styleId]; if (!st) return null;
-    if (role === 'drums') return 'kit';
+    if (role === 'drums' || role === 'perc') return 'kit';
     if (st.link && st.link[role]) return presetFor(styleId, st.link[role], seed);   // one instrument for several roles
     const base = st.presets[role], pool = ((FORGE_POOLS[styleId] || {})[role] || []).filter(x => x !== base);
     const all = base ? [base, ...pool] : pool;
@@ -955,6 +1024,260 @@
     return notes;
   }
 
+  // ── arrangement parts: counter, arp, perc, double ───────────────
+  // Parts an arranger adds over the five-piece band. Each style says how likely each one is and which figures are
+  // idiomatic (ARRANGE); plan() decides per song from its own 'arr:<role>' streams, so these parts never move a note
+  // of drums / bass / chords / lead / pad (tests/fixtures/seqgen_roles_v2.json pins those).
+  const ARR_ROLES = ['counter', 'arp', 'perc', 'double'];
+  const pcOf = n => ((n % 12) + 12) % 12;
+  // one voice at a time: each note ends before the next one starts (counter, arp and double are monophonic)
+  function monoLine(ns) {
+    const s = ns.slice().sort((a, b) => a.t - b.t || b.v - a.v), out = [];
+    for (const x of s) {
+      const prev = out[out.length - 1];
+      if (prev && prev.t === x.t) continue;
+      if (prev && prev.t + prev.d > x.t - 2) prev.d = Math.max(4, x.t - prev.t - 2);
+      out.push(Object.assign({}, x));
+    }
+    return out;
+  }
+  // counter — a second melodic voice built on the same chords, aware of the lead's actual notes in the section:
+  //   answer    call / response: short phrases in the lead's rests, moving against the lead's last direction
+  //   horn      a muted horn: one or two long notes swelling in the rests (noir, dub)
+  //   second    a second voice in halves / wholes, contrary to the lead, passing tones on weak beats (chamber, hymn)
+  //   guide     jazz guide tones: the 3rd / 7th of each chord, voice-led, anticipated past the lead's onsets
+  //   harmony   a harmony a third or a sixth below the lead, phrase by phrase (folk fiddle / second whistle)
+  //   ring      a high ringing line: a slow pendulum between the top chord tones (post-rock)
+  //   interlock an eighth-note cell in the gaps of the lead (minimalism)
+  // Never a unison / octave against the lead where a note starts; never a new note on a lead onset (but harmony,
+  // which moves with the lead by design).
+  const ANSWER_CELLS = [[0, 2, 4], [0, 4], [0, 2, 6], [2, 4], [0, 3, 6], [0, 2]];
+  function genCounter(R, st, sec, ctx, harm, opts) {
+    const { key, scale } = harm, H = ctx.H, [lo, hi] = ctx.range, bars = sec.bars, N = bars * 16, kind = ctx.kind;
+    // the lead on a 16th grid (grace notes and slides left out; swung offbeats read on the straight grid)
+    const lead = (ctx.lead || []).filter(x => x.d > 10 || x.v >= 0.5).map(x => {
+      const pos = ((x.t % BEAT) + BEAT) % BEAT;
+      return ctx.unswing && pos === BEAT / 2 + BEAT / 6 ? Object.assign({}, x, { t: x.t - BEAT / 6 }) : x;
+    });
+    const on = new Uint8Array(N + 1), snd = new Array(N + 1).fill(null), age = new Array(N + 1).fill(0);
+    for (const x of ctx.unswing ? ctx.lead || [] : []) {         // swung: an eighth the counter would swing onto a lead onset is taken
+      if (!(x.d > 10 || x.v >= 0.5)) continue;
+      const b0 = Math.floor(x.t / BEAT), pos = x.t - b0 * BEAT, s = pos < 16 ? b0 * 4 : pos > 84 ? b0 * 4 + 4 : pos >= 44 ? b0 * 4 + 2 : -1;
+      if (s >= 0 && s < N) on[s] = 1;
+    }
+    for (const x of lead) {
+      const s = Math.round(x.t / S16); if (s >= 0 && s < N) on[s] = 1;
+      for (let k = Math.max(0, Math.floor(x.t / S16)); k < Math.min(N, Math.ceil((x.t + x.d) / S16)); k++) { snd[k] = x.n; age[k] = k - Math.floor(x.t / S16); }
+    }
+    // where the lead leaves room: a rest, or the tail of a note it has held for a beat (a fill under a held note)
+    const room = s => s < N && !on[s] && (snd[s] === null || age[s] >= 4);
+    const pcsAt = s => chordPcsOf(key, scale, chordAt(H, Math.floor(s / 16), (s % 16) / 4));
+    const okLead = (n, s) => { const l = snd[Math.min(N - 1, Math.max(0, s))]; return l === null || pcOf(n - l) !== 0; };
+    const free = s => s >= 0 && s < N && !on[s];
+    const pool = (s, chordTone) => { const pcs = pcsAt(s), out = []; for (let n = lo; n <= hi; n++) if ((chordTone ? pcs.includes(pcOf(n)) : inScale(n, key, scale)) && okLead(n, s)) out.push(n); return out; };
+    const nearest = (c, target) => c.reduce((a, n) => (a === null || Math.abs(n - target) < Math.abs(a - target) ? n : a), null);
+    // the next note: a chord tone on a strong beat (else a scale step), in direction dir from prev when there is one
+    const next = (s, prev, dir, chordTone) => {
+      let c = pool(s, chordTone); if (!c.length) c = pool(s, false); if (!c.length) return null;
+      if (dir) { const d = c.filter(n => (n - prev) * dir > 0 && Math.abs(n - prev) <= 7); if (d.length) return nearest(d, prev); }
+      return nearest(c.filter(n => n !== prev).length ? c.filter(n => n !== prev) : c, prev);
+    };
+    // the lead's last move before s: up (1) or down (−1) — the counter goes the other way
+    const leadDir = s => { let a = null, b = null; for (let k = s - 1; k >= 0 && b === null; k--) { const n = snd[k]; if (n === null) continue; if (a === null) a = n; else if (n !== a) b = n; } return a !== null && b !== null ? Math.sign(a - b) : 0; };
+    const shift = (s, tries) => { for (const d of tries) if (free(s + d)) return s + d; return null; };
+    const out = [], push = (s, len, n, v) => { if (n !== null && len > 0) out.push({ t: s * S16, d: Math.max(6, len * S16 - 6), n, v: clampV(v + (R() - 0.5) * 0.06) }); };
+    let prev = nearest(pool(0, true), Math.round((lo + hi) / 2)) ?? Math.round((lo + hi) / 2);
+    const hasLead = lead.length > 0;
+    const play = k0 => {
+      if (k0 === 'answer' || k0 === 'horn') {
+        const cells = ANSWER_CELLS.filter(c => !st.trip8 || c.every(x => x % 2 === 0));
+        for (let a = 0; a < N;) {
+          if (!room(a)) { a++; continue; }
+          let z = a; while (z < N && room(z)) z++;
+          let s0 = a + (a % 2);
+          for (let chunk = 0; s0 < z; chunk++) {
+            const end = Math.min(z, s0 + (k0 === 'horn' ? 16 : 8)), len = end - s0;
+            if (len >= 4 && (chunk === 0 || R.chance(0.5))) {
+              const rh = k0 === 'horn' ? (len >= 8 ? R.pick([[0], [0, 4], [0]]) : [0]) : len >= 8 ? R.pick(cells) : R.pick([[0], [0, 2]]).filter(x => x < len);
+              let dir = -leadDir(s0) || R.pick([-1, 1]);
+              rh.forEach((off, i) => {
+                const s = s0 + off; if (s >= z || !free(s)) return;
+                const last = i === rh.length - 1, strong = s % 8 === 0 || last;
+                const n = next(s, prev, i ? dir : 0, strong || k0 === 'horn');
+                if (n === null) return;
+                if (i && R.chance(0.2)) dir = -dir;                       // a turn inside the answer
+                const until = last ? Math.min(N, end + (R.chance(0.5) ? 4 : 0)) : s0 + rh[i + 1];
+                push(s, until - s, n, k0 === 'horn' ? 0.44 : 0.5 + (strong ? 0.05 : 0));
+                prev = n;
+              });
+            }
+            s0 = end;
+          }
+          a = z;
+        }
+      } else if (k0 === 'second' || k0 === 'ring') {
+        const whole = k0 === 'ring' || R.chance(0.45), step = whole ? 16 : 8;
+        for (let s = 0; s < N; s += step) {
+          const at = shift(s, st.trip8 ? [0, 2, 4] : [0, 2, 4, 1]); if (at === null) continue;   // a voice entering just after the lead (a suspension)
+          let dir = 0;
+          if (k0 === 'second' && snd[s] !== null && s >= step && snd[s - step] !== null) dir = -Math.sign(snd[s] - snd[s - step]);
+          const n = k0 === 'ring' ? nearest(pool(at, true).filter(x => x !== prev).slice(-3), prev) ?? next(at, prev, 0, true) : next(at, prev, dir, true);
+          const nx = Math.min(N, s + step);
+          // a passing tone on the weak half toward the next chord (second voice in wholes)
+          if (k0 === 'second' && whole && R.chance(0.35) && free(s + 8)) {
+            const tgt = nearest(pool(Math.min(N - 1, s + 16), true), n ?? prev) ?? prev, d = Math.sign(tgt - (n ?? prev));
+            const p = d ? next(s + 8, n ?? prev, d, false) : null;
+            push(at, s + 8 - at, n, 0.5); if (p !== null && Math.abs(p - tgt) <= 4) { push(s + 8, nx - s - 8, p, 0.44); prev = p; } else prev = n ?? prev;
+            continue;
+          }
+          push(at, nx - at, n, k0 === 'ring' ? 0.42 : 0.5);
+          if (n !== null) prev = n;
+        }
+      } else if (k0 === 'guide') {
+        let lastKey = null;
+        for (let s = 0; s < N; s += 8) {
+          const c = chordAt(H, Math.floor(s / 16), (s % 16) / 4), ck = c.deg + ':' + c.ext;
+          if (ck === lastKey && s % 16) continue;
+          lastKey = ck;
+          const tones = chordNotes(key, scale, c, 4), g = [tones[1], tones[3] ?? tones[2]].map(pcOf);
+          const at = shift(s, [0, -2, 2, 4]); if (at === null || (out.length && at * S16 <= out[out.length - 1].t)) continue;
+          const cands = []; for (let n = lo; n <= hi; n++) if (g.includes(pcOf(n)) && okLead(n, at)) cands.push(n);
+          const n = nearest(cands, prev); if (n === null) continue;
+          let nx = s + 8; while (nx < N && chordAt(H, Math.floor(nx / 16), (nx % 16) / 4).deg === c.deg) nx += 8;
+          push(at, Math.min(N, nx) - at, n, 0.5); prev = n;
+        }
+      } else if (k0 === 'harmony') {
+        const below = R.pick([2, 2, 5]);                                  // a third (or a sixth) under the tune
+        const down = (n, k) => { let m = n; for (let i = 0; i < k; i++) { m--; while (!inScale(m, key, scale)) m--; } return m; };
+        for (let b = 0; b < bars; b += 2) {
+          if (!R.chance(0.65)) continue;
+          for (const x of lead) {
+            if (x.t < b * BAR || x.t >= (b + 2) * BAR || x.d < S16 || !inScale(x.n, key, scale)) continue;
+            let n = down(x.n, below); while (n < lo) n += 12; while (n > hi) n -= 12;
+            if (pcOf(n - x.n) === 0) continue;
+            out.push({ t: x.t, d: x.d, n, v: clampV(x.v * 0.72) });
+          }
+        }
+      } else if (k0 === 'interlock') {
+        const L = R.int(3, 5), cell = [], pit = [];
+        for (let i = 0; i < L; i++) { cell.push(i === 0 || R.chance(0.6)); pit.push(R.int(0, 2)); }
+        for (let s = 0; s < N; s += 2) {
+          const i = (s / 2) % L; if (!cell[i] || !free(s)) continue;
+          const pcs = pcsAt(s), tones = []; for (let n = lo; n <= hi && tones.length < 4; n++) if (pcs.includes(pcOf(n))) tones.push(n);
+          let n = tones[pit[i] % (tones.length || 1)]; if (n === undefined) continue;
+          if (!okLead(n, s)) n = tones.find(m => okLead(m, s)); if (n === undefined) continue;
+          push(s, 2, n, i === 0 ? 0.52 : 0.44);
+        }
+      }
+    };
+    // no lead to answer (or a lead that never leaves room): a second voice in long notes instead
+    const k0 = !hasLead && (kind === 'answer' || kind === 'horn' || kind === 'harmony' || kind === 'guide') ? 'second' : kind;
+    play(k0);
+    if ((k0 === 'answer' || k0 === 'horn') && out.length < 2) { out.length = 0; play('second'); }
+    // a held note the lead moves onto (unison / octave on beat 1 or 3) ends just before that beat
+    const res = [];
+    for (const x of monoLine(out)) {
+      for (let t = Math.ceil((x.t + 1) / (2 * BEAT)) * 2 * BEAT; t < x.t + x.d; t += 2 * BEAT) {
+        const l = snd[Math.min(N - 1, t / S16)];
+        if (l !== null && pcOf(x.n - l) === 0) { x.d = t - x.t - 6; break; }
+      }
+      if (x.d >= S16) res.push(x);
+    }
+    return res;
+  }
+
+  // arp — an ostinato over the current chord, one note at a time:
+  //   up · down · updown · thirds (broken thirds: 1 3 2 4 3 5) · alberti (low high mid high) · pedal (a pedal tone
+  //   between the moving chord tones) · seq16 (a sixteenth sequencer cell, an octave jump, a gate) · triplet · walk
+  //   (a random walk inside the chord). Rate from density; registers: low / mid / high (above the lead for bells).
+  const ARP_GATES = ['1011101110111011', '1101101101101101', '1110111011101110', '1011011010110110', '1111111011111110'];
+  const SEQ_CELLS = [[0, 1, 2, 1], [0, 2, 1, 3], [0, 2, 3, 1], [0, 1, 3, 2], [0, 3, 1, 2], [0, 0, 2, 1]];
+  const ARP_RANGE = { low: [45, 66], mid: [55, 77], high: [72, 93] };
+  function genArp(R, st, sec, ctx, harm, opts) {
+    const notes = [], { key, scale } = harm, H = ctx.H, kind = ctx.kind, [lo, hi] = ARP_RANGE[ctx.reg] || ARP_RANGE.mid, bars = sec.bars, dens = opts.density;
+    let rate = kind === 'triplet' ? BEAT / 3 : kind === 'seq16' || kind === 'pedal' ? S16 : kind === 'alberti' || kind === 'walk' ? (dens > 0.7 ? S16 : S16 * 2) : (dens >= 0.6 ? S16 : S16 * 2);
+    if (st.trip8 && rate === S16) rate = BEAT / 3;                    // swung styles: triplets, never straight sixteenths
+    const cell = R.pick(SEQ_CELLS), octJump = R.chance(0.5), span = ctx.span || 4, len = ctx.legato ? 0.85 : 0.5;
+    let k = 0, wi = 1, lastKey = '';
+    for (let x = 0; x < bars * BAR; x += rate) {
+      const b = Math.floor(x / BAR), beat = (x % BAR) / BEAT, c = chordAt(H, b, beat), pcs = chordPcsOf(key, scale, c);
+      const tones = []; for (let n = lo; n <= hi && tones.length < 7; n++) if (pcs.includes(pcOf(n))) tones.push(n);
+      if (!tones.length) continue;
+      const ck = c.deg + ':' + c.ext; if (ck !== lastKey) { lastKey = ck; if (kind !== 'walk') k = 0; }
+      const L = Math.min(tones.length, span);
+      let n;
+      switch (kind) {
+        case 'down': n = tones[L - 1 - (k % L)]; break;
+        case 'updown': { const per = Math.max(1, 2 * L - 2), i = k % per; n = tones[i < L ? i : per - i]; break; }
+        case 'thirds': { const kk = k % (2 * Math.max(1, tones.length - 2)); n = tones[Math.min(tones.length - 1, (kk >> 1) + (kk & 1) * 2)]; break; }
+        case 'alberti': n = tones[[0, L - 1, Math.min(1, L - 1), L - 1][k % 4]]; break;
+        case 'pedal': n = k % 2 === 0 ? tones[0] : tones[1 + ((k >> 1) % Math.max(1, L - 1))] ?? tones[0]; break;
+        case 'seq16': { n = tones[cell[k % 4] % L]; if (octJump && k % 8 === 7 && n + 12 <= hi + 12) n += 12; break; }
+        case 'walk': wi = Math.max(0, Math.min(tones.length - 1, wi + R.pick([-1, 1, 1, -1, 2, -2]))); n = tones[wi]; break;
+        default: n = tones[k % L];                                      // up, triplet
+      }
+      const step16 = Math.round((x % BAR) / S16);
+      k++;
+      if (ctx.gate && rate === S16 && ctx.gate[step16 % 16] === '0') continue;
+      if (x % BEAT !== 0 && dens < 0.35 && R.chance(0.3)) continue;   // sparse: the arp thins between the beats
+      const acc = (x % BEAT === 0 ? 0.1 : 0) + (ctx.accent && (k - 1) % ctx.accent === 0 ? 0.07 : 0);
+      notes.push({ t: Math.round(x), d: Math.max(8, Math.round(rate * len)), n, v: clampV((0.44 + acc) * (ctx.lvl || 1) + (R() - 0.5) * 0.06) });
+    }
+    return notes;
+  }
+
+  // perc — a hand percussionist next to the kit (on a KIT device: congas 60–64, tambourine 54, cowbell 56, cabasa 69,
+  // shaker 70, claves 75, wood blocks 76 / 77). Each kit is a few [GM note, grid, velocity]; a 32-step grid spans two
+  // bars, a 12-step one is a bar of triplet eighths. The drums' own percussion colour (PERC / pl.perc) stays in the
+  // drums part untouched; a song's perc avoids the voices its drums already play.
+  const PERC_KITS = {
+    conga: [[61, '0000100000001000', 0.6], [62, '0000001000001010/0.85', 0.7], [64, '1000000010000000/0.6', 0.5]],      // tumbao: slap on 2 & 4, open tones on 4-and
+    bongo: [[60, '1010100010101000', 0.5], [61, '0000001000000010', 0.58]],                                               // martillo
+    shaker: [[70, '1111111111111111/0.85', 0.3]],
+    trip_shaker: [[70, '101101101101/0.9', 0.32]],
+    cabasa: [[69, '1010101010101010', 0.34]],
+    tamb: [[54, '0000100000001000', 0.6], [54, '0010001000100010/0.55', 0.3]],
+    cowbell: [[56, '1000100010001000', 0.48], [56, '0010000000100000/0.5', 0.34]],
+    clave: [[75, '10010010000000000000100010000000', 0.55]],                                                                // son clave 3-2
+    woodblock: [[76, '1000000010000000', 0.42], [77, '0000100000001000', 0.38]],                                         // tick-tock
+    frame: [[64, '1000000010000000', 0.55], [63, '0000100000001000/0.6', 0.34]],                                         // a frame drum
+    nyabinghi: [[64, '1000000010000000', 0.66], [62, '0000100000001000/0.8', 0.42], [60, '0010001000100010/0.6', 0.32]],
+    washboard: [[70, '111111111111/0.9', 0.32], [54, '000100000100', 0.48]],
+  };
+  const KIT_NOTES = k => (PERC_KITS[k] || []).map(x => x[0]);
+  function genPerc(R, st, sec, ctx, opts) {
+    const notes = [], bars = sec.bars, dens = opts.density, kits = ctx.kits || [];
+    const drumish = kits.some(k => /conga|bongo|frame|nyabinghi/.test(k));
+    for (let b = 0; b < bars; b++) {
+      const T = b * BAR, fill = drumish && !opts.bed && (b === bars - 1 || b % 4 === 3) && R.chance(0.45);
+      for (const kit of kits) for (const [n, g, vel] of PERC_KITS[kit] || []) {
+        const grid = parseGrid(g), steps = grid.length === 32 ? 16 : grid.length, off = grid.length === 32 ? (b % 2) * 16 : 0, stepT = BAR / steps;
+        for (let s = 0; s < steps; s++) {
+          const p = grid[off + s]; if (!p) continue;
+          const at = s * stepT, pos = at % BEAT;
+          if (fill && at >= 3 * BEAT && n >= 60 && n <= 64) continue;           // the fill takes beat 4
+          const accent = kit === 'shaker' || kit === 'cabasa' ? (pos === BEAT / 2 ? 1.35 : pos === 0 ? 1 : 0.8) : pos === 0 ? 1.12 : pos === BEAT / 2 ? 0.95 : 0.82;
+          if (!R.chance(accent >= 1 ? p : p * (0.55 + 0.45 * dens))) continue;
+          notes.push({ t: T + Math.round(at), d: S16, n, v: clampV(vel * accent * (ctx.lvl || 1) + (R() - 0.5) * 0.08) });
+        }
+      }
+      if (fill) {
+        const run = R.pick([[62, 62, 63, 64], [60, 60, 61, 61], [61, 62, 63, 64], [60, 61, 62, 64]]), at = st.trip8 ? [0, 32, 64] : [0, 24, 48, 72];
+        at.forEach((x, i) => notes.push({ t: T + 3 * BEAT + x, d: S16, n: run[i], v: clampV(0.45 + i * 0.08) }));
+      }
+    }
+    return notes;
+  }
+
+  // double — the lead an octave down (or up), or the bass an octave up, for lift in B / C: the same notes on another
+  // instrument, softer. Sometimes it arrives halfway through a long section.
+  function genDouble(R, sec, ctx) {
+    const src = (ctx.src || []).filter(x => x.d > 10 || x.v >= 0.5), kind = ctx.kind;
+    const sh = kind === 'lead_low' ? -12 : 12, g = kind === 'bass_up' ? 0.62 : kind === 'lead_high' ? 0.55 : 0.7;
+    const from = sec.bars >= 8 && R.chance(0.35) ? Math.floor(sec.bars / 2) * BAR : 0;
+    return monoLine(src.filter(x => x.t >= from).map(x => ({ t: x.t, d: x.d, n: x.n + sh, v: clampV(x.v * g) })).filter(x => x.n >= 36 && x.n <= 100));
+  }
+
   // ── sound design: texture beds, transitions, hits ──────────────
   // texture: one held note per section (the bed's own preset breathes; the level follows the section)
   function genTexture(R, sec, ctx) {
@@ -1014,6 +1337,60 @@
   //      textures [preset ids] | 'none', fx (preset | 'none'), hit (preset | 'none'), voices { role: FORGE preset } }
   const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad'];
   const SD_ROLES = ['texture', 'texture2', 'fx', 'hit'];
+  // The arrangement parts of one song: whether it has each (the style's odds, or o.arrange), its figures, and the
+  // sections each one plays in. Every draw comes from a stream of its own (P('arr:<role>'), P('arr:place:<role>')),
+  // so these never reshuffle the five original roles, nor each other. o.arrange: undefined = the style's odds ·
+  // 'none' = no arrangement parts · [roles] = those always (the rest by the odds). A cue's own section roles stand.
+  function arrangePlan(P, o, st, styleId, sections, { formId, sparse, density, gi, gB, perc }) {
+    const AR = ARRANGE[styleId] || ARRANGE_DEFAULT, forced = Array.isArray(o.arrange) ? o.arrange : [], off = o.arrange === 'none';
+    const arr = {};
+    ARR_ROLES.forEach((role, i) => {
+      const A = P('arr:' + role), roll = A.chance((AR.p[i] || 0) * (sparse ? 0.65 : 1));
+      const on = !off && (roll || forced.includes(role));
+      if (role === 'counter') { const kind = A.pick(AR.counter); arr.counter = { on, kind, range: COUNTER_RANGE[kind] || [55, 74] }; }
+      else if (role === 'arp') {
+        const kindA = A.pick(AR.arp), kindB = A.chance(0.5) ? A.pick(AR.arp) : kindA;
+        arr.arp = { on, kindA, kindB, reg: A.pick(AR.reg), span: A.pick([3, 4, 4, 5]), legato: A.chance(0.5), accent: A.pick([0, 0, 3, 4, 5]),
+          gate: A.chance(kindA === 'seq16' ? 0.7 : 0.2) ? A.pick(ARP_GATES) : null, intro: A.chance(/synthwave|motorik|minimal|chiptune|post_rock/.test(styleId) ? 0.55 : 0.2), early: A.chance(0.4) };
+      } else if (role === 'perc') {
+        // the voices the kit already plays (both grooves + the drums' colour) are left to the drums
+        const busy = new Set();
+        for (const g of [st.grooves[gi], st.grooves[gB]]) for (const v of Object.keys(g || {})) busy.add(GM_OF[v]);
+        if (perc && PERC[perc]) { busy.add(PERC[perc].n); if (PERC[perc].n2) busy.add(PERC[perc].n2); }
+        const cands = AR.perc.map(k => (st.trip8 && k === 'shaker' ? 'trip_shaker' : k)).filter(k => !KIT_NOTES(k).some(n => busy.has(n) || (n >= 60 && n <= 64 && [60, 61, 62, 63, 64].some(m => busy.has(m)))));
+        const main = cands.length ? A.pick(cands) : null, rest = cands.filter(k => k !== main), second = rest.length && A.chance(0.5) ? A.pick(rest) : null;
+        // every idiomatic kit doubles the drums: the odds leave perc out; asked for by name (PARTS, a cue) it plays anyway
+        const first = main || (AR.perc[0] ? (st.trip8 && AR.perc[0] === 'shaker' ? 'trip_shaker' : AR.perc[0]) : null);
+        arr.perc = { on: !off && ((roll && !!main) || (forced.includes(role) && !!first)), kitsA: first ? [first] : [], kitsB: first ? [first].concat(second ? [second] : []) : [], early: A.chance(0.35) };
+      } else {
+        const kind = AR.double.length ? A.pick(AR.double) : null;
+        arr.double = { on: on && !!kind, kind };
+      }
+    });
+    // where each part plays: with intent — an arp entering in A2, the counter answering in B / A2, perc lifting B, the
+    // doubling for the lift. Loops and beds have one section: a part the song has plays there.
+    for (const role of ARR_ROLES) {
+      const a = arr[role], X = P('arr:place:' + role);
+      if (!a.on) continue;
+      for (const sec of sections) {
+        if (sec.given || sec.roles.includes(role)) continue;
+        const b = sec.base, v = /\d$/.test(sec.name), has = r => sec.roles.includes(r), one = b === 'loop' || b === 'bed';
+        let yes = false;
+        if (role === 'arp') yes = one || b === 'B' || (b === 'A' ? v || a.early : b === 'intro' ? a.intro : b === 'C' ? X.chance(0.6) : b === 'brk' ? X.chance(0.5) : b === 'outro' ? X.chance(0.45) : false);
+        else if (role === 'counter') {
+          const alone = a.kind === 'second' || a.kind === 'ring' || a.kind === 'interlock';   // these stand without the lead
+          if (!has('lead') && !(alone && (has('chords') || has('pad')))) continue;
+          yes = one ? b === 'loop' || X.chance(0.5) : b === 'B' || (b === 'A' ? v : b === 'C' ? X.chance(0.7) : b === 'outro' ? X.chance(0.35) : b === 'intro' ? alone && X.chance(0.3) : false);
+        } else if (role === 'perc') yes = one ? b === 'loop' || X.chance(0.4) : b === 'B' || (b === 'A' ? (v ? X.chance(0.7) : a.early) : b === 'C' ? X.chance(0.5) : b === 'brk' ? X.chance(0.55) : b === 'intro' ? X.chance(0.2) : b === 'outro' ? X.chance(0.3) : false);
+        else if (role === 'double') {
+          if (!has(a.kind === 'bass_up' ? 'bass' : 'lead')) continue;
+          yes = b === 'loop' ? X.chance(0.5) : b === 'B' || (b === 'C' ? X.chance(0.5) : b === 'A' && v ? X.chance(0.35) : false);
+        }
+        if (yes) sec.roles.push(role);
+      }
+    }
+    return arr;
+  }
   function plan(o) {
     const seed = o.seed ?? Math.floor(Math.random() * 1e9);
     const R = rng(seed);
@@ -1039,7 +1416,7 @@
     const SR = P('roles');
     shape.forEach(([name, bars, given], i) => {
       const base = baseOf(name), fixed = given || (formId !== 'song' || custom ? (FORMS[formId].find(f => f[0] === name) || [])[2] : null);
-      sections.push({ name, base, bar, bars, roles: fixed ? fixed.slice() : rolesFor(SR, base, name, st, sparse) });
+      sections.push({ name, base, bar, bars, roles: fixed ? fixed.slice() : rolesFor(SR, base, name, st, sparse), given: !!given });
       bar += bars;
     });
     // per-song vocabulary picks (A / B contrast), from the style's lists
@@ -1065,8 +1442,9 @@
     if (!textures) textures = SD.chance(0.7) ? [SD.pick(TEXTURE_FOR[styleId] || ['amb_room_tone'])] : [];
     const fxPreset = want(o.fx) ? (o.fx || SD.pick(FX_FOR[styleId] || ['fx_noise_sweep'])) : null;
     const hitPreset = want(o.hit) ? (o.hit || (SD.chance(0.6) ? SD.pick(HIT_FOR[styleId] || ['fx_impact']) : null)) : null;
+    const arr = arrangePlan(P, o, st, styleId, sections, { formId, sparse, density, gi, gB, perc });
     const out = { seed, R, styleId, st, mode, scale, key, bpm, formId, density, fam, HP, sections, gi, gB, bassA, bassB, compA, compB, padA, padB, leadKind, perc, range, spread, fills,
-      motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {},
+      motifA, motifB, phraseA, phraseB, textures, fxPreset, hitPreset, motif: o.motif || null, voices: o.voices || {}, arr, arrange: o.arrange ?? null,
       soundBy: shape.some(x => x[2] && x[2].some(r => r === 'texture' || r === 'fx')) };
     // a remix (remix.js) grafts another song's material onto this plan: its harmony, sections, motif (fields of `out`)
     return typeof o.graft === 'function' ? Object.assign(out, o.graft(out) || {}) : out;
@@ -1082,9 +1460,27 @@
     });
   }
   // one role's notes for one section
-  function renderRole(pl, role, sec, i, harm) {
+  // src: the section's notes of the parts already written ({ lead, bass }) — the counter answers the lead, the
+  // double copies it (both already swung, so the double is not swung again)
+  function renderRole(pl, role, sec, i, harm, src) {
+    if (ARR_ROLES.includes(role)) {
+      const ns = renderArr(pl, role, sec, harm, src || {});
+      if (!pl.st.trip8 || role === 'double') return ns;
+      return role === 'perc' ? swing8(ns) : monoLine(swing8(ns));
+    }
     const ns = renderRole0(pl, role, sec, i, harm);
     return pl.st.trip8 && (role === 'drums' || role === 'bass' || role === 'chords' || role === 'lead') ? swing8(ns) : ns;
+  }
+  function renderArr(pl, role, sec, harm, src) {
+    const { st, density, formId, HP } = pl, opts = { density, bed: formId === 'bed' }, a = pl.arr[role];
+    const base = sec.base, isB = base === 'B' || base === 'C', variant = /\d$/.test(sec.name), H = HP[base] || HP.A;
+    const RR = rng(pl.seed * 31 + hash(role + base + (variant ? '~' : '')));
+    const lvl = { intro: 0.85, outro: 0.85, brk: 0.95, B: 1.05, C: 1 }[base] || 1;
+    if (role === 'counter') return genCounter(RR, st, sec, { H, kind: a.kind, range: base === 'B' && a.kind !== 'ring' ? [a.range[0] + 2, a.range[1] + 2] : a.range, lead: src.lead, unswing: !!st.trip8 }, harm, opts);
+    if (role === 'arp') return genArp(RR, st, sec, { H, kind: isB ? a.kindB : a.kindA, reg: a.reg, span: a.span, legato: a.legato, accent: a.accent, gate: a.gate, lvl }, harm, opts);
+    if (role === 'perc') return genPerc(RR, st, sec, { kits: isB || variant || base === 'brk' || base === 'loop' ? a.kitsB : a.kitsA, lvl: base === 'brk' ? 1.1 : lvl }, opts);
+    if (role === 'double') return genDouble(RR, sec, { kind: a.kind, src: a.kind === 'bass_up' ? src.bass : src.lead });
+    return [];
   }
   function renderRole0(pl, role, sec, i, harm) {
     const { st, density, formId, HP } = pl, opts = { density, bed: formId === 'bed' };
@@ -1123,6 +1519,8 @@
     const parts = {};
     const linked = r => st.link && st.link[r] && pl.voices[st.link[r]];      // solo piano: the hands follow the chords' instrument
     for (const role of ROLES) parts[role] = { role, patterns: {}, clips: [], preset: pl.voices[role] || linked(role) || presetFor(styleId, role, seed) };
+    // arrangement parts: only the ones some section plays (perc plays on a KIT, like the drums)
+    for (const role of ARR_ROLES) if (sections.some(sec => sec.roles.includes(role))) parts[role] = { role, patterns: {}, clips: [], preset: pl.voices[role] || linked(role) || presetFor(styleId, role, seed) };
     // sound design parts (texture / texture2 → one 'texture' stem; fx + hit → one 'fx' stem)
     if (pl.textures[0]) parts.texture = { role: 'texture', patterns: {}, clips: [], preset: pl.textures[0], sound: true };
     if (pl.textures[1]) parts.texture2 = { role: 'texture', patterns: {}, clips: [], preset: pl.textures[1], sound: true };
@@ -1134,7 +1532,7 @@
       const roles = sec.roles.concat(snd);
       for (const role of Object.keys(parts)) {
         if (!roles.includes(role)) continue;
-        const notes = renderRole(pl, role, sec, i, harm);
+        const notes = renderRole(pl, role, sec, i, harm, srcOf(parts, sec));
         if (!notes.length) continue;
         const pid = role + '_' + sec.name;
         parts[role].patterns[pid] = { name: role + ' ' + sec.name, lenBars: sec.bars, notes: sortNotes(clampLen(notes, sec.bars)) };
@@ -1147,14 +1545,29 @@
       progression: A.prog, progressionText: A.prog.map(d => romanFor(d, mode)).join(' – ') + (A.hr !== 1 ? ' (' + (A.hr < 1 ? 'two per bar' : A.hr + ' bars each') + ')' : ''),
       sections: sections.map(({ name, bar, bars }) => ({ name, bar, bars })), bars: sections.reduce((n, s) => n + s.bars, 0), parts,
       motif: pl.motif, textures: pl.textures, fx: pl.fxPreset, hit: pl.hitPreset,
-      vocab: { groove: [pl.gi, pl.gB], bass: [pl.bassA, pl.bassB], chords: [pl.compA, pl.compB], pad: [pl.padA, pl.padB], lead: pl.leadKind, perc: pl.perc, fills: pl.fills, ext: [A.ext, pl.HP.B.ext], hr: [A.hr, pl.HP.B.hr] },
+      vocab: { groove: [pl.gi, pl.gB], bass: [pl.bassA, pl.bassB], chords: [pl.compA, pl.compB], pad: [pl.padA, pl.padB], lead: pl.leadKind, perc: pl.perc, fills: pl.fills, ext: [A.ext, pl.HP.B.ext], hr: [A.hr, pl.HP.B.hr],
+        arrange: arrVocab(pl, parts) },
+      arrange: pl.arrange,
+      harmony: Object.fromEntries(Object.entries(pl.HP).map(([k, h]) => [k, { prog: h.prog, hr: h.hr, ext: h.ext }])),
     };
+  }
+  // the chord tones (pitch classes) under tick `t` of a section of a song() result
+  function chordTonesAt(s, secName, t) {
+    const H = (s.harmony || {})[baseOf(secName)] || (s.harmony || {}).A; if (!H) return [];
+    return chordPcsOf(s.key, SCALES[s.mode], chordAt(H, Math.floor(t / BAR), (t % BAR) / BEAT));
+  }
+  // the lead / bass notes of one section, for the parts that follow them (counter, double)
+  const srcOf = (parts, sec) => ({ lead: ((parts.lead && parts.lead.patterns['lead_' + sec.name]) || {}).notes || [], bass: ((parts.bass && parts.bass.patterns['bass_' + sec.name]) || {}).notes || [] });
+  // what the arrangement parts play (null = not in this song): the song's vocab, saved with every take
+  function arrVocab(pl, parts) {
+    const a = pl.arr, has = r => !!(parts[r] && parts[r].clips.length);
+    return { counter: has('counter') ? a.counter.kind : null, arp: has('arp') ? [a.arp.kindA, a.arp.kindB, a.arp.reg] : null, perc: has('perc') ? a.perc.kitsB : null, double: has('double') ? a.double.kind : null };
   }
   // re-roll one role in place: the same plan (structure, harmony, picks), that role's note dice re-seeded
   function part(role, s, o = {}) {
     const seed = o.seed ?? Math.floor(Math.random() * 1e9);
     const pl = plan({ seed: s.seed, style: s.style, key: s.key, mode: s.mode, bpm: s.bpm, form: s.form, density: o.density ?? s.density, progression: s.progression, motif: s.motif,
-      textures: s.textures && s.textures.length ? s.textures : 'none', fx: s.fx || 'none', hit: s.hit || 'none' });
+      textures: s.textures && s.textures.length ? s.textures : 'none', fx: s.fx || 'none', hit: s.hit || 'none', arrange: s.arrange ?? undefined });
     const pl2 = Object.assign({}, pl, { seed });                // new note dice, same structure
     if (role === 'lead') { pl2.motifA = s.motif ? pl.motifA : makeMotif(rng(seed * 13 + 5), pl.leadKind, pl.density); pl2.motifB = makeMotif(rng(seed * 13 + 9), pl.leadKind, pl.density); }
     const harm = { key: pl.key, scale: pl.scale, prevVoicing: null };
@@ -1163,7 +1576,7 @@
     if (prev.sound) p.sound = true;
     pl.sections.forEach((sec, i) => {
       if (!sec.roles.includes(role) && !p.sound) return;
-      const notes = renderRole(pl2, role, sec, i, harm);
+      const notes = renderRole(pl2, role, sec, i, harm, srcOf(s.parts, sec));
       if (!notes.length) return;
       const pid = role + '_' + sec.name;
       p.patterns[pid] = { name: role + ' ' + sec.name, lenBars: sec.bars, notes: sortNotes(clampLen(notes, sec.bars)) };
@@ -1374,7 +1787,9 @@
     if (layers.length || ch) { m.scored = true; m.why = (m.why ? m.why + ' · ' : '') + 'score' + (feel.length ? ': ' + feel[feel.length - 1].slice(0, 70) : ''); }
     return m;
   }
-  // the score's referential integrity — styles, modes, keys, presets (FORGE or a known fallback), catalog ids
+  // the roles a cue's shape may place (texture / fx: the sound layer) and the roles `voices` may name
+  const SHAPE_ROLES = ROLES.concat(ARR_ROLES, ['texture', 'fx']), PART_ROLES = SHAPE_ROLES.concat(['texture2', 'hit']);
+  // the score's referential integrity — styles, modes, keys, presets (FORGE or a known fallback), catalog ids, roles
   function checkScore(score, { catalog = [], presets = [] } = {}) {
     const bad = [], ids = new Set(catalog.map(t => t.id)), P = new Set(presets), okPreset = v => v === 'none' || v === 'kit' || P.has(v) || (/^patch:/.test(v)) || SOUND_FALLBACK[v] !== undefined;
     const arr = v => (Array.isArray(v) ? v : [v]);
@@ -1384,11 +1799,14 @@
       if (L.mode) for (const s of arr(L.mode)) if (!SCALES[s]) bad.push(where + ': mode ' + s);
       if (L.form) for (const s of arr(L.form)) if (!FORMS[s]) bad.push(where + ': form ' + s);
       if (L.key !== undefined) for (const k of arr(L.key)) if (keyOf(k) === undefined) bad.push(where + ': key ' + k);
-      for (const [r, v] of Object.entries(L.voices || {})) for (const x of arr(v)) if (!okPreset(x)) bad.push(where + ': voice ' + r + ' ' + x);
+      for (const [r, v] of Object.entries(L.voices || {})) { if (!PART_ROLES.includes(r)) bad.push(where + ': voices role ' + r); for (const x of arr(v)) if (!okPreset(x)) bad.push(where + ': voice ' + r + ' ' + x); }
       if (L.textures && L.textures !== 'none') for (const x of arr(L.textures)) if (!okPreset(x)) bad.push(where + ': texture ' + x);
       for (const k of ['fx', 'hit']) if (L[k]) for (const x of arr(L[k])) if (!okPreset(x)) bad.push(where + ': ' + k + ' ' + x);
       if (L.instrument) for (const x of arr(L.instrument)) if (!okPreset(x)) bad.push(where + ': instrument ' + x);
-      if (L.shape) for (const sec of L.shape) if (!Array.isArray(sec) || !sec[0] || !(+sec[1] > 0)) bad.push(where + ': shape ' + JSON.stringify(sec));
+      if (L.shape) for (const sec of L.shape) {
+        if (!Array.isArray(sec) || !sec[0] || !(+sec[1] > 0)) bad.push(where + ': shape ' + JSON.stringify(sec));
+        else if (sec[2] !== undefined && sec[2] !== null) for (const r of arr(sec[2])) if (!SHAPE_ROLES.includes(r)) bad.push(where + ': shape ' + sec[0] + ' role ' + r);
+      }
       if (L.motifSpec && !(Array.isArray(L.motifSpec.rhythm) && Array.isArray(L.motifSpec.degrees))) bad.push(where + ': motifSpec');
     };
     layer('soundtrack', score.soundtrack);
@@ -1510,6 +1928,7 @@
   }
 
   const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, SONG_SHAPES, SOUNDS, SOUND_FALLBACK, TEXTURE_FOR, FX_FOR, HIT_FOR, PERC_FOR, rng, hash, deg2midi, chordPCs, song, part, presetFor,
+    ROLES, ARR_ROLES, SHAPE_ROLES, ARRANGE, PERC_KITS, chordTonesAt,
     moodFromText, moodFromBrief, applyDirection, romanFor, soundsFromText, motifOf, volumeKey, keyOf, applyScore, checkScore, chapterOf };
   API.plan = plan;                                           // remix.js: a song's plan without its notes
   if (typeof module !== 'undefined' && module.exports) module.exports = API;

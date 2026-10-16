@@ -24,14 +24,22 @@
   const SG = () => root.SeqGen, AKg = () => (typeof AK !== 'undefined' ? AK : root.AK);
   const BAR = () => root.DAW.BAR;
 
-  const ROLE_ORDER = ['drums', 'bass', 'chords', 'lead', 'pad'];
+  // the five-piece band, then the arrangement parts (seqgen ARR_ROLES): perc (hand percussion, on a KIT), arp (an
+  // ostinato), counter (a countermelody) and double (the lead / bass in octaves for lift) — appended, so older takes'
+  // tracks keep their order
+  const ARR_ROLES = ['perc', 'arp', 'counter', 'double'];
+  const ROLE_ORDER = ['drums', 'bass', 'chords', 'lead', 'pad'].concat(ARR_ROLES);
   // the sound-design layer seqgen.js writes: ambience beds (texture, texture2 → one 'texture' stem) · transitions + hits (→ 'fx')
   const SOUND_PARTS = ['texture', 'texture2', 'fx', 'hit'], SOUND_ROLES = ['texture', 'fx'], ALL_ROLES = ROLE_ORDER.concat(SOUND_ROLES);
-  const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36, texture: 0.3, texture2: 0.24, fx: 0.4, hit: 0.42 };
-  const ROLE_VEL = { drums: 1, bass: 0.95, chords: 0.75, lead: 0.85, pad: 0.7 };
-  const COLORS = { drums: '#e08a7a', bass: '#c87633', chords: '#d8a060', lead: '#a8e89c', pad: '#8ab4f0', audio: '#c8a4f0', midi: '#f0b94a' };
-  // the game's intensity layers per stem (AudioMgr: pad / chords always, bass from 0.25, drums 0.5, lead 0.75)
-  const STEM_LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75, texture: 0, fx: 0.5 };
+  // starting balance: the arrangement parts sit under the lead (arp / counter / double well under it — they must not mask it)
+  const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36, perc: 0.38, arp: 0.24, counter: 0.28, double: 0.24, texture: 0.3, texture2: 0.24, fx: 0.4, hit: 0.42 };
+  const ROLE_VEL = { drums: 1, bass: 0.95, chords: 0.75, lead: 0.85, pad: 0.7, perc: 0.85, arp: 0.6, counter: 0.65, double: 0.6 };
+  const COLORS = { drums: '#e08a7a', bass: '#c87633', chords: '#d8a060', lead: '#a8e89c', pad: '#8ab4f0', perc: '#e0b07a', arp: '#7ad8c8', counter: '#d4e87a', double: '#b4c8f0',
+    audio: '#c8a4f0', midi: '#f0b94a' };
+  // the game's intensity layers per stem (AudioMgr: pad / chords always, bass from 0.25, hand percussion 0.4, drums + the
+  // arp 0.5, lead + its counter 0.75, the doubling only at the top (0.9: choices, reveals))
+  const STEM_LAYER = { pad: 0, chords: 0, bass: 0.25, perc: 0.4, drums: 0.5, arp: 0.5, lead: 0.75, counter: 0.75, double: 0.9, texture: 0, fx: 0.5 };
+  const MONO_ROLES = ['arp', 'counter', 'double'];             // one FORGE voice each (the Deck plays these live)
   const EXTRA_PADS = ['pad2', 'pad3'];                       // texture layers: the pad an octave up · a sub drone
   const TEMP_MIN_SEC = 90;
   const REVIEW_DIR = 'assets/audio/review';
@@ -277,6 +285,11 @@
   const havePreset = id => !!id && (root.FORGE_PRESETS || []).some(p => p.id === id);
   // an instrument spec a request may carry per role: the FORGE kit (standard or a style's pieces), a FORGE preset, a patch
   const INSTR_SPEC = /^(kit(:[a-z_]+)?|forge:.+|patch:.+)$/;
+  // counter / arp / double: a FORGE device plays them as one mono voice (any preset; the line is monophonic anyway)
+  function monoVoice(E, dev, role) {
+    const inst = dev && MONO_ROLES.includes(role) && dev.type === 'forge' && E.devices.get(dev.id);
+    if (inst && inst.setParam) { try { inst.setParam('voice.mode', 'mono'); } catch (e) {} }
+  }
   // where each role plays for each "PLAY ON" choice (emulator / hardware channels from the firmware registry)
   function routing(E, inst) {
     const reg = id => (typeof root.fm1Firmware === 'function' && root.fm1Firmware(id)) || {};
@@ -305,10 +318,10 @@
     if (rt.emu) emuDev = await E.addDevice('emu', { name: rt.emu === 'x0x' ? 'X0X' : 'FELUCCA', emuId: rt.emu });
     if (rt.hw) hwDev = await E.addDevice('hw', { name: 'FM-1 HW' });
     for (const role of ROLE_ORDER) {
-      const part = song.parts[role]; if (!part.clips.length) continue;
+      const part = song.parts[role]; if (!part || !part.clips.length) continue;
       let dev, ch = 1;
       if (rt.map[role] && (emuDev || hwDev)) { dev = emuDev || hwDev; ch = rt.map[role]; }
-      else if (rt.patch && root.PatchBank) {
+      else if (rt.patch && root.PatchBank && ((PATCH_POOLS[song.style] || {})[role] || (PATCH_PICKS[song.style] || PATCH_PICKS.lofi)[role])) {   // arrangement parts: no picks → FORGE / KIT
         const pool = (PATCH_POOLS[song.style] || {})[role], base = (PATCH_PICKS[song.style] || PATCH_PICKS.lofi)[role];
         const ep = ens && ens.patch && ens.patch[role];        // an ensemble's own PATCH BANK family for this role
         const pick = ep && ep.length ? ep[mixHash(song.seed + ':ens:' + role) % ep.length]
@@ -316,8 +329,8 @@
         const it = pick && await root.PatchBank.item(pick);
         dev = await E.addDevice('patch', { name: it ? it.name : pick, patch: pick });
       }
-      else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT', kit: o.kit || song.style });   // o.kit: an ensemble's kit
-      else { const pr = havePreset(part.preset) ? part.preset : SG().presetFor(song.style, role, song.seed); dev = await E.addDevice(typeof root.ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + pr, preset: pr }); }
+      else if (role === 'drums' || role === 'perc') dev = await E.addDevice('kit', { name: role === 'perc' ? 'PERC KIT' : 'KIT', kit: role === 'drums' ? o.kit || song.style : song.style });   // o.kit: an ensemble's kit
+      else { const pr = havePreset(part.preset) ? part.preset : SG().presetFor(song.style, role, song.seed); dev = await E.addDevice(typeof root.ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + pr, preset: pr }); monoVoice(E, dev, role); }
       const t = E.addTrack('midi', { name: role, role, deviceId: dev.id, channel: ch, color: COLORS[role] });
       t.patterns = part.patterns; t.clips = part.clips;
       if (dev !== emuDev && dev !== hwDev) dev.mix.vol = ROLE_LEVEL[role];   // a starting balance with headroom
@@ -381,6 +394,8 @@
     if (o.seed !== undefined && o.seed !== null && o.seed !== '' && Number.isFinite(+o.seed)) r.seed = Math.round(+o.seed);
     return r;
   }
+  // the arrangement parts a request names in PARTS (a subset): those are always written; no PARTS → the style's odds
+  const arrangeOf = o => (o && o.roles ? ARR_ROLES.filter(r => o.roles.includes(r)) : undefined);
   // the mood a take is composed with: brief (+ energy nudge) → typed direction → explicit overrides
   function takeMood(t, b, o, score) {
     const S = SG();
@@ -540,7 +555,7 @@
   const forgePresets = () => (root.FORGE_PRESETS || []).map(p => ({ id: p.id, name: p.name, category: p.category }));
   async function deviceFor(E, role, spec) {
     const [kind, ...rest] = spec.split(':'), id = rest.join(':');
-    if (kind === 'kit') return E.addDevice('kit', id ? { name: 'KIT', kit: id } : { name: 'KIT' });    // kit:<style> → that style's pieces
+    if (kind === 'kit') return E.addDevice('kit', Object.assign({ name: role === 'perc' ? 'PERC KIT' : 'KIT' }, id ? { kit: id } : {}));    // kit:<style> → that style's pieces
     if (kind === 'forge') {
       if (typeof root.ForgeSynth !== 'function') throw new Error('FORGE is not loaded');
       if (!forgePresets().some(p => p.id === id)) throw new Error('no FORGE preset "' + id + '"');
@@ -555,7 +570,7 @@
   }
   async function setInstrument(E, t, spec) {
     const P = E.project, old = E.dev(t.deviceId), dev = await deviceFor(E, t.role, spec);
-    dev.mix.vol = ROLE_LEVEL[t.role] ?? ROLE_LEVEL.pad * 0.8;
+    dev.mix.vol = ROLE_LEVEL[t.role] ?? ROLE_LEVEL.pad * 0.8; monoVoice(E, dev, t.role);
     t.deviceId = dev.id; t.channel = 1; t.vel = 1;
     if (old && !P.tracks.some(x => x.deviceId === old.id)) E.removeDevice(old.id);
   }
@@ -723,7 +738,7 @@
           let bars = o.length && o.length.bars;
           if (o.length && o.length.sec) { bars = Math.max(1, Math.round(o.length.sec * m.bpm / 240)); m.bpm = bars * 240 / o.length.sec; }
           if (E.project) E.project.name = t.id;
-          song = await compose(E, Object.assign(songOpts(m), { shape: o.length ? undefined : m.shape }), ctx.inst || 'forge');
+          song = await compose(E, Object.assign(songOpts(m), { shape: o.length ? undefined : m.shape, arrange: arrangeOf(o) }), ctx.inst || 'forge');
           const P = E.project; P.name = t.id;
           const instruments = await shapeArrangement(E, song, ot);
           if (o.variety === 'close' && !lock) {
@@ -791,7 +806,7 @@
     if (proj && proj.v) { await E.load(proj); E.project.name = meta.id; E.emit('project'); return { meta, song: null, exact: true }; }
     const mo = meta.mood || {};
     if (E.project) E.project.name = meta.id;
-    const song = await compose(E, songOpts(Object.assign({}, mo, { progFamily: mo.prog })), 'forge');
+    const song = await compose(E, Object.assign(songOpts(Object.assign({}, mo, { progFamily: mo.prog })), { arrange: arrangeOf(normOpts(meta.request)) }), 'forge');
     E.project.name = meta.id;
     const ro = normOpts(meta.request);
     if (mo.drop && !ro.roles) { const rs = ALL_ROLES.filter(x => !mo.drop.includes(x)); if (rs.length) ro.roles = rs; }
@@ -826,7 +841,7 @@
   }
 
   root.TempMaker = {
-    ROLE_ORDER, SOUND_ROLES, ALL_ROLES, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
+    ROLE_ORDER, ARR_ROLES, MONO_ROLES, SOUND_ROLES, ALL_ROLES, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, arrangeOf, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
     routing, compose, loadBriefs, loadScore, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
     padLayer, texturePreset, shapeArrangement, instrumentsOf, loadTake, stageEdit, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
     // the MAKE TAKES panel's choices: instrument families, take variety, feel, harmony colour, sound design
