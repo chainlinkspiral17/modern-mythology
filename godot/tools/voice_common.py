@@ -11,6 +11,11 @@ all three agree on:
                               voice_studio.html.  Keep the two in sync.
   * voice_map.json lookups  - aliases, _walkons groups, scene_aliases,
                               and the _chorus key for multi-speaker lines
+  * narrator ids            - narrate lines (and char-less lines) resolve to
+                              _narrator_vol{N} from the scene's "vol" field,
+                              or _narrator_whispers for vol5_prelude_arcana_ep*;
+                              fallback _narrator_vol{N} -> _narrator.
+                              (_narrator_vol5 is aliased to _narrator.)
 
 The audio path convention is assets/audio/voice/<scene_id>/<NNN>.<ext>.
 """
@@ -89,17 +94,44 @@ def alias_table(vmap):
     return out
 
 
-def resolve_char(vmap, char, kind="say", scene_id=None, _aliases=None):
+WHISPERS_PREFIX = "vol5_prelude_arcana_ep"   # Whispers from the Liminal episodes
+NARRATOR_WHISPERS = "_narrator_whispers"
+
+
+def narrator_key(scene_id=None, vol=None):
+    """Per-volume narrator id: _narrator_whispers for the Whispers episodes,
+    else _narrator_vol{N} from the scene's "vol" field, else _narrator.
+    voice_studio.html narratorKey() mirrors this."""
+    if scene_id and scene_id.startswith(WHISPERS_PREFIX):
+        return NARRATOR_WHISPERS
+    try:
+        return f"{NARRATOR}_vol{int(vol)}"
+    except (TypeError, ValueError):
+        return NARRATOR
+
+
+def resolve_char(vmap, char, kind="say", scene_id=None, _aliases=None, vol=None):
     """Map a scene's raw char to a voice_map key.
 
     Returns (key, fallbacks): fallbacks is an ordered list of other keys to
-    try if `key` has no voice_id (used for _chorus -> first named speaker).
-    Order: narrate -> _narrator; scene_aliases[scene]; aliases/_walkons;
-    multi-speaker -> _chorus; else the normalised name.
+    try if `key` has no voice_id (_chorus -> named speakers; narrator ids ->
+    _narrator_vol{N} -> _narrator).
+    Order: narrate / empty char -> narrator_key(); scene_aliases[scene];
+    aliases/_walkons; multi-speaker -> _chorus; else the normalised name.
     """
-    if kind == "narrate" or not (char or "").strip():
-        return NARRATOR, []
     aliases = _aliases if _aliases is not None else alias_table(vmap)
+    if kind == "narrate" or not (char or "").strip():
+        nk = narrator_key(scene_id, vol)
+        chain = [nk]
+        if nk == NARRATOR_WHISPERS and vol is not None:
+            chain.append(narrator_key(None, vol))
+        chain.append(NARRATOR)
+        chain = [aliases.get(k, k) for k in chain]
+        dedup = []
+        for k in chain:
+            if k not in dedup:
+                dedup.append(k)
+        return dedup[0], dedup[1:]
     k = char_key(char)
     scoped = (vmap.get("scene_aliases") or {}).get(scene_id or "", {})
     scoped = {char_key(a): char_key(b) for a, b in scoped.items()}
@@ -119,14 +151,23 @@ def resolve_char(vmap, char, kind="say", scene_id=None, _aliases=None):
     return k, []
 
 
-def voice_for(vmap, char, kind="say", scene_id=None, _aliases=None):
+def voice_for(vmap, char, kind="say", scene_id=None, _aliases=None, vol=None):
     """Return (resolved_key, voice_id or None, voice_settings or None).
 
-    Falls back through _chorus speakers, then _narrator, before giving up.
+    Tries the resolved key, then its fallbacks (_chorus -> named speakers;
+    narrator ids -> _narrator).  A character with NO voice_map entry at all
+    falls back to the volume narrator (the old behaviour); a character that
+    has an entry with an empty voice_id does not, so nobody gets silently
+    rendered in the narrator's voice.
     """
     chars = vmap.get("characters", {})
-    key, fallbacks = resolve_char(vmap, char, kind, scene_id, _aliases)
-    for k in [key] + fallbacks + [NARRATOR]:
+    aliases = _aliases if _aliases is not None else alias_table(vmap)
+    key, fallbacks = resolve_char(vmap, char, kind, scene_id, aliases, vol)
+    chain = [key] + fallbacks
+    if key not in chars and not fallbacks:
+        nk, nfb = resolve_char(vmap, "", "narrate", scene_id, aliases, vol)
+        chain += [nk] + nfb
+    for k in chain:
         entry = chars.get(k)
         if entry and (entry.get("voice_id") or "").strip():
             settings = dict(vmap.get("default_voice_settings", {}))
@@ -195,7 +236,22 @@ def find_scenes(patterns=None, vol_filter=None, index_order=False):
 
 
 def scene_vol(path):
+    """Folder name, e.g. 'vol4' - used for grouping reports."""
     return Path(path).parent.name
+
+
+def scene_vol_number(data, path=None):
+    """The scene's own "vol" field (meld scenes carry theirs), else the folder."""
+    v = (data or {}).get("vol")
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        pass
+    if path is not None:
+        digits = re.sub(r"\D", "", Path(path).parent.name)
+        if digits:
+            return int(digits)
+    return None
 
 
 # ── audio on disk ───────────────────────────────────────────────────────────

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Inject "voice" keys into scene JSONs based on files present on disk.
 
-For each scene under resources/scenes/, scan
+For each scene under resources/scenes/vol*/ (every *.json that is a dict
+with "id" and "nodes", so meld_* scenes are included and index.json is
+skipped), scan
     assets/audio/voice/<scene_id>/<NNN>.<ext>
 where NNN is the zero-padded node index and ext is one of ogg/mp3/wav.
 For every match where the target node is narrate/say/think, add a
@@ -11,7 +13,9 @@ preserved unless --overwrite is passed.
 Usage:
     python3 tools/wire_voicelines.py                       # all scenes
     python3 tools/wire_voicelines.py vol5_ch0_*            # glob
-    python3 tools/wire_voicelines.py --vol 5
+    python3 tools/wire_voicelines.py --vol 1
+    python3 tools/wire_voicelines.py 'meld_*'              # meld scenes
+    python3 tools/wire_voicelines.py 'vol5_prelude_arcana_*'
     python3 tools/wire_voicelines.py --dry-run             # show diff, write nothing
     python3 tools/wire_voicelines.py --overwrite           # replace existing voice keys
 
@@ -21,54 +25,26 @@ disk had no matching voiceable node (warnings), and how many existing
 """
 
 import argparse
-import fnmatch
 import json
 import sys
-from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
-SCENES_ROOT = REPO / "resources" / "scenes"
-VOICE_ROOT = REPO / "assets" / "audio" / "voice"
-VOICE_KINDS = {"narrate", "say", "think"}
-EXTS = (".ogg", ".mp3", ".wav")
+import voice_common as vc
+
+VOICE_KINDS = set(vc.VOICE_KINDS)
 
 
 def find_scene_paths(patterns, vol_filter):
-    out = []
-    for vol_dir in sorted(SCENES_ROOT.glob("vol*")):
-        if vol_filter is not None and vol_dir.name != f"vol{vol_filter}":
-            continue
-        for path in sorted(vol_dir.glob("vol*.json")):
-            if patterns and not any(fnmatch.fnmatch(path.stem, p) for p in patterns):
-                continue
-            out.append(path)
-    return out
+    return vc.find_scenes(patterns, vol_filter, index_order=vol_filter is not None)
 
 
 def scan_voice_dir(scene_id):
-    """Return {node_index: rel_src_path} for files matching NNN.<ext>."""
-    d = VOICE_ROOT / scene_id
-    out = {}
-    if not d.exists():
-        return out
-    for f in d.iterdir():
-        if f.suffix.lower() not in EXTS:
-            continue
-        stem = f.stem
-        if not stem.isdigit():
-            continue
-        idx = int(stem)
-        # Stable preference order: keep the first ext we see per index
-        # (ogg > mp3 > wav so authoring overrides defaults).
-        existing = out.get(idx)
-        if existing and EXTS.index(f.suffix.lower()) > EXTS.index(Path(existing).suffix.lower()):
-            continue
-        out[idx] = f.relative_to(REPO).as_posix()
-    return out
+    """Return {node_index: rel_src_path} for files matching NNN.<ogg|mp3|wav>
+    (ogg > mp3 > wav when several exist for one index)."""
+    return vc.scan_voice_dir(scene_id)
 
 
 def wire_scene(path, dry_run, overwrite):
-    data = json.loads(path.read_text())
+    data = vc.load_scene(path)
     scene_id = data.get("id", path.stem)
     nodes = data.get("nodes", [])
     files = scan_voice_dir(scene_id)
@@ -102,7 +78,8 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("patterns", nargs="*",
                     help="Scene id glob(s), e.g. 'vol5_ch0_*'. Empty matches all.")
-    ap.add_argument("--vol", type=int, help="Restrict to one volume number.")
+    ap.add_argument("--vol", type=int,
+                    help="Restrict to one volume number (processed in index.json order).")
     ap.add_argument("--dry-run", action="store_true",
                     help="Report planned changes without writing.")
     ap.add_argument("--overwrite", action="store_true",
