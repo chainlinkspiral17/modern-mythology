@@ -106,7 +106,9 @@ suite('data · registries, composer, MIDI files', async t => {
     const b = SG.soundsFromText('Modem handshake + low fluorescent buzz.');
     t.eq(b.textures, ['amb_fluor_hum', 'amb_modem']);
     t.eq(SG.soundsFromText('A single low pad, no field-recording layer. The quietest track in Vol 2.').textures, 'none');
-    t.eq(SG.soundsFromText('Bowed cello single note, dampened.').voices.lead, 'strings_noir');
+    t.eq(SG.soundsFromText('Bowed cello single note, dampened.').voices.lead, 'solo_cello');            // the 2026-10-14 solo cello, ahead of the strings patch
+    t.eq(SG.soundsFromText('a door chime, then a heartbeat').hit, 'fx_door_chime');
+    t.eq(SG.soundsFromText('a door chime, then a heartbeat').textures, ['amb_heartbeat']);
     t.eq(SG.soundsFromText('Pump-bell ding + a fluorescent ballast click').hit, 'fx_bell_hit');
     const s = SG.song({ seed: 3, style: 'noir', form: 'song', textures: ['amb_rain'], hit: 'fx_bell_hit', fx: 'fx_reverse_swell' });
     t.ok(s.parts.texture.preset === 'amb_rain' && s.parts.texture.role === 'texture' && s.parts.texture.clips.length === s.sections.length, 'the bed runs under every section');
