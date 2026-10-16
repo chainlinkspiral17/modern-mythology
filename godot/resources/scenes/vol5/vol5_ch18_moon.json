@@ -93,7 +93,7 @@
     {
       "t": "say",
       "text": "Visitor. How long.",
-      "char": "natalie"
+      "char": "aria"
     },
     {
       "t": "show",
@@ -104,22 +104,22 @@
     {
       "t": "say",
       "text": "Minutes, I think.",
-      "char": "aria"
+      "char": "natalie"
     },
     {
       "t": "say",
       "text": "Should I wake her.",
-      "char": "natalie"
-    },
-    {
-      "t": "say",
-      "text": "Yes, sweetheart. Both of you are going to need to be awake.",
       "char": "aria"
     },
     {
       "t": "say",
-      "text": "Understood.",
+      "text": "Yes, sweetheart. Both of you are going to need to be awake.",
       "char": "natalie"
+    },
+    {
+      "t": "say",
+      "text": "Understood.",
+      "char": "aria"
     },
     {
       "t": "narrate",
@@ -128,7 +128,7 @@
     {
       "t": "say",
       "text": "What —",
-      "char": "aria"
+      "char": "nicola"
     },
     {
       "t": "show",
@@ -139,7 +139,7 @@
     {
       "t": "say",
       "text": "Someone's coming, Nic. It's okay. Sit up. Put on your shoes.",
-      "char": "nicola"
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -154,9 +154,15 @@
       "text": "A figure arrived at the landing.\n\nIt was not, as Natalie had expected, a man in a charcoal suit. It was a woman. Mid-sixties. Silver hair in a loose braid. A gray wool coat that looked like it had been in somebody's family for a while. A canvas bag over one shoulder.\n\nOn the shoulder, perched, still and bright-eyed, was a crow.\n\nThe crow, Natalie realized, was the same crow. The crow had a small specific chip in the left wing that Natalie recognized with the absolute certainty of a person who had been trained by the older system to recognize the crows that mattered.\n\nThe woman raised a hand, palm out, in the old still gesture of I come in peace."
     },
     {
+      "t": "show",
+      "char": "miriam",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
       "t": "say",
       "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "say",
@@ -166,7 +172,7 @@
     {
       "t": "say",
       "text": "Close enough.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "narrate",
@@ -175,7 +181,7 @@
     {
       "t": "say",
       "text": "Hello, dear. I'm here for you.",
-      "char": "nicola"
+      "char": "miriam"
     },
     {
       "t": "narrate",
@@ -184,12 +190,12 @@
     {
       "t": "say",
       "text": "Who are you.",
-      "char": "natalie"
+      "char": "nicola"
     },
     {
       "t": "say",
       "text": "I'm a friend of Joanna LeMoine's.",
-      "char": "aria"
+      "char": "miriam"
     },
     {
       "t": "narrate",
@@ -198,22 +204,22 @@
     {
       "t": "say",
       "text": "Joanna —",
-      "char": "natalie"
+      "char": "nicola"
     },
     {
       "t": "say",
       "text": "The woman in the ruins. You don't know her. She knows you. She has known you, in the way she knows people, since you were about twelve. She's asked me to come get you.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "say",
       "text": "Come get me where.",
-      "char": "natalie"
+      "char": "nicola"
     },
     {
       "t": "say",
       "text": "Somewhere safe. Somewhere the man from Table 14 can't find you. Somewhere where what's growing in you can grow. Both of what's growing in you.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "narrate",
@@ -231,17 +237,17 @@
     {
       "t": "say",
       "text": "Because you've been broadcasting on a frequency Joanna LeMoine has been listening to for thirty-eight years, dear. Because the older system has been moving pieces to get you somewhere safe before the thing that's about to happen happens. Because Joanna wrote a letter this morning and the letter set pieces moving, and one of the pieces is me. I'm the piece that gets you in the car.",
-      "char": "nicola"
+      "char": "miriam"
     },
     {
       "t": "say",
       "text": "You don't have to come. I can tell you what will happen if you don't. You won't like it. But I'm not going to force you. This is a ride, not a collection.",
-      "char": "aria"
+      "char": "miriam"
     },
     {
       "t": "say",
       "text": "Nic. Aria. Listen to me.",
-      "char": "nicola"
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -250,7 +256,7 @@
     {
       "t": "say",
       "text": "I've known there was weather coming since midnight. I didn't know what the weather was. I now know. I trust this woman because the room trusts this woman.",
-      "char": "aria"
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -259,17 +265,17 @@
     {
       "t": "say",
       "text": "The room is not often wrong. I'm going to suggest you go with her. I'm going to suggest it for reasons I can't fully explain, but which I would explain if I could. Do you want me to come.",
-      "char": "nicola"
+      "char": "natalie"
     },
     {
       "t": "say",
       "text": "Can you.",
-      "char": "aria"
+      "char": "nicola"
     },
     {
       "t": "say",
       "text": "If Miriam says yes.",
-      "char": "nicola"
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -278,7 +284,7 @@
     {
       "t": "say",
       "text": "I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "narrate",
@@ -287,7 +293,7 @@
     {
       "t": "say",
       "text": "Then yes, Nic. I'll come to the line.",
-      "char": "nicola"
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -324,7 +330,7 @@
     {
       "t": "say",
       "text": "This is where you get out.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "show",
@@ -335,12 +341,12 @@
     {
       "t": "say",
       "text": "Okay.",
-      "char": "miriam"
+      "char": "natalie"
     },
     {
       "t": "say",
       "text": "The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue.",
-      "char": "natalie"
+      "char": "miriam"
     },
     {
       "t": "narrate",

@@ -3,7 +3,7 @@
   "default_voice_settings": {
     "stability": 0.45,
     "similarity_boost": 0.75,
-    "style": 0.30,
+    "style": 0.3,
     "use_speaker_boost": true
   },
   "_comment": "Fill in voice_id values from https://elevenlabs.io/app/voice-library. Per-character voice_settings override the defaults above; omit them to use defaults. _narrator is used for any 'narrate' line.",
@@ -12,7 +12,7 @@
       "voice_id": "",
       "voice_settings": {
         "stability": 0.55,
-        "style": 0.20
+        "style": 0.2
       }
     },
     "john": {
@@ -64,7 +64,7 @@
     "father_amato": {
       "voice_id": "",
       "voice_settings": {
-        "stability": 0.60
+        "stability": 0.6
       }
     },
     "the_aide": {
@@ -210,7 +210,7 @@
     },
     "margaret": {
       "voice_id": "",
-      "casting": "Margaret, the stressed one in the bar group, with mock-parliamentary humor. 20s female, softer, wry. NOTE: Vol 7's 'margaret' (11 lines, talks to Finn) also resolves here and is probably someone else; split her with scene_aliases when Vol 7 is cast.",
+      "casting": "Margaret, the stressed one in the bar group, with mock-parliamentary humor. 20s female, softer, wry.",
       "appears": "vol1"
     },
     "corpse_painted_boy": {
@@ -487,6 +487,21 @@
       "voice_id": "",
       "casting": "Shared child voice for unnamed kids (boy, Kid). About 8-10.",
       "appears": "walk-ons"
+    },
+    "the_older_man": {
+      "voice_id": "",
+      "casting": "The older man in the charcoal suit at Joanna's gate ('I received your letter… not today'). 60s male, level, neither kind nor unkind, unhurried. May be the same figure Natalie expected in the Moon chapter; possibly shares a voice with the Stranger. Andy decides.",
+      "appears": "vol5 ch21"
+    },
+    "the_third_consciousness": {
+      "voice_id": "",
+      "casting": "The Third Consciousness, unborn, speaking mentally from inside Nicola ('I've never seen one. What do you recommend.'). Calm, curious, quietly funny; ageless, a child's simplicity with an adult's precision. Not Aria, not Nicola.",
+      "appears": "vol5 ch21"
+    },
+    "margaret_vol7": {
+      "voice_id": "",
+      "casting": "Vol 7 Margaret (talks with Finn in Smolvud, 2050s). Separate person from the Faust 3 bar-group Margaret. Cast from vol7_ch12_morning / ch21_leaving.",
+      "appears": "vol7"
     }
   },
   "aliases": {
@@ -549,6 +564,12 @@
     "vol5_ch11_justice": {
       "ben": "_walkon_male",
       "anna": "_walkon_female"
+    },
+    "vol7_ch12_morning": {
+      "margaret": "margaret_vol7"
+    },
+    "vol7_ch21_leaving": {
+      "margaret": "margaret_vol7"
     }
   },
   "_comment_cast": "Vols 1-4, meld scenes and Vol 5 cast added Oct 2026. Every new entry has an empty voice_id plus a one-line 'casting' brief and an 'appears' hint; the renderer ignores both. Narrate lines resolve to _narrator_vol{N} (the scene's vol field) or _narrator_whispers (vol5_prelude_arcana_ep*), then fall back to _narrator. voice_studio.html can import this file (Import voice_map.json)."
