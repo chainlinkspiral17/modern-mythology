@@ -1,0 +1,419 @@
+{
+  "id": "vol2_ch9_truck",
+  "vol": 2,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "ix. Flotsam and Jetsam — The Truck",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_truck_cab_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "After school",
+      "sub": "The truck · Afternoon",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Nathaniel waited for me after school, he wanted to drive me home. I smiled and nodded, and he opened up the passenger side for me. It was a big truck. No doubt an expensive gift from Mommy and Daddy. We buckled in and he hauled ass out of the parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "Want a smoke, he said?"
+    },
+    {
+      "t": "narrate",
+      "text": "Sure. I'd smoked before, but I wasn't very good at it. I could never afford a habit of any kind. He smiled and tapped two out, giving me the first one. I stuck it under my lip and he was immediately on it with a lighter."
+    },
+    {
+      "t": "narrate",
+      "text": "Wait a second, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I looked at him. He looked serious for a second."
+    },
+    {
+      "t": "narrate",
+      "text": "He grabbed the cigarette from my lips and leaned over and kissed me before I knew it was happening. I let him come in closer. It felt good and he began petting the back of my neck, stroking my cheek. Then it was over."
+    },
+    {
+      "t": "narrate",
+      "text": "Here you go, he said, handing back the cigarette."
+    },
+    {
+      "t": "narrate",
+      "text": "He was smiling, looking forward."
+    },
+    {
+      "t": "narrate",
+      "text": "I somehow forgot he was driving the car. The kiss couldn't have been that long."
+    },
+    {
+      "t": "narrate",
+      "text": "But that's how it felt."
+    },
+    {
+      "t": "narrate",
+      "text": "Nathaniel wanted to keep it quiet. What we were doing. Sneaking around, seeing each other. Kissing behind opened lockers, under bleachers, down on the beach. He wanted to keep us a secret."
+    },
+    {
+      "t": "narrate",
+      "text": "I didn't think he was ashamed. Scared. Maybe. His parents had standards I probably couldn't live up to."
+    },
+    {
+      "t": "narrate",
+      "text": "You want to do something this Christmas together, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "He frowned and looked me in my eyes for a couple of moments."
+    },
+    {
+      "t": "narrate",
+      "text": "I repeated my question."
+    },
+    {
+      "t": "narrate",
+      "text": "He shook his head with a smirk on his face. I can't, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I got up right next to him and looked him in the eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "You could if you really wanted to."
+    },
+    {
+      "t": "narrate",
+      "text": "My folks made plans."
+    },
+    {
+      "t": "narrate",
+      "text": "You don't have to go."
+    },
+    {
+      "t": "narrate",
+      "text": "It would be my last Christmas with them. Before I graduate."
+    },
+    {
+      "t": "narrate",
+      "text": "You could invite me."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't think they'd approve of that."
+    },
+    {
+      "t": "narrate",
+      "text": "You could ask."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't think they'd approve of me asking."
+    },
+    {
+      "t": "narrate",
+      "text": "I sighed and got up and left him alone."
+    },
+    {
+      "t": "narrate",
+      "text": "Julie. What'd I do wrong? Look. I'm sorry."
+    },
+    {
+      "t": "narrate",
+      "text": "You won't do one thing to make me a part of your life."
+    },
+    {
+      "t": "narrate",
+      "text": "He grabbed me and I saw tears in his eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "You don't understand, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I looked at him. My beautiful, weak Nathaniel."
+    },
+    {
+      "t": "narrate",
+      "text": "He stopped making sniffling noises."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't want to be invisible forever, I said. You can't hide me like this."
+    },
+    {
+      "t": "narrate",
+      "text": "He nodded and wiped the tears from his eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "I'll talk to them, he said."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "walk straight to the cave",
+          "goto": 43
+        },
+        {
+          "text": "walk the tideline first",
+          "goto": 42
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The tide was out and the sand lay hard and grey to the water."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_beach_overcast.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The beach",
+      "sub": "On the way to the cave · Morning",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "I was going to visit my cave when I met a man in a suit. Julie Weyland, I heard him call my name. I turned and looked at him, he was jogging. I walked up to him and looked at him for a long time. He was clean cut, probably in his middle thirties."
+    },
+    {
+      "t": "narrate",
+      "text": "Julie Weyland."
+    },
+    {
+      "t": "narrate",
+      "text": "Not anymore, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "He nodded and offered me a cigarette. I took it and he lit it for me."
+    },
+    {
+      "t": "narrate",
+      "text": "There's a lot we need to talk about, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Out here?"
+    },
+    {
+      "t": "narrate",
+      "text": "No, he said. We'll have to go in town to talk."
+    },
+    {
+      "t": "narrate",
+      "text": "I just nodded and let him lead the way."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_interview_room.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "In town",
+      "sub": "A back room · Day",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "My name is James, he said to me, when we were sitting and everything was ready. You can just address me as James."
+    },
+    {
+      "t": "narrate",
+      "text": "I nodded and he poured coffee for himself and the other men in the room. He pulled his pin from the clip on his notebook and tapped the butt, clicking it ready."
+    },
+    {
+      "t": "narrate",
+      "text": "Tell us a bit about yourself Julie."
+    },
+    {
+      "t": "narrate",
+      "text": "I smiled and sat back a little, looking at him. I'm dead, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "He nodded and wrote my response down. How'd you die, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "Nathaniel killed me, I said. Nathaniel killed you, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "He's my love. I said something bad to him. I upset him."
+    },
+    {
+      "t": "narrate",
+      "text": "What'd you say to Nathaniel to make him kill you?"
+    },
+    {
+      "t": "narrate",
+      "text": "I called Nathaniel a -"
+    },
+    {
+      "t": "narrate",
+      "text": "Faggot, Nathaniel. You're a fucking faggot."
+    },
+    {
+      "t": "narrate",
+      "text": "Julie, stop it."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't love you, Nathaniel. I don't."
+    },
+    {
+      "t": "narrate",
+      "text": "Julie, you're lying."
+    },
+    {
+      "t": "narrate",
+      "text": "I never lie, Nathaniel. I always tell the truth. When have you ever known me to lie?"
+    },
+    {
+      "t": "narrate",
+      "text": "Stop it Julie."
+    },
+    {
+      "t": "narrate",
+      "text": "How can a faggot like you love me? The only reason you kissed me was because I looked like a guy. I'm not beautiful, Nathaniel. I'm not like you. I'm not some queer faggot."
+    },
+    {
+      "t": "narrate",
+      "text": "That's when I saw the knife. He must've grabbed it from his backpack. That's when he stabbed me with it. I died because I lied to him. That's what killed me. He was the only person who could ever see me."
+    },
+    {
+      "t": "narrate",
+      "text": "But Julie, he said, you aren't dead."
+    },
+    {
+      "t": "narrate",
+      "text": "I put my head on my arms covering up my eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "But he stabbed me, I said. Look."
+    },
+    {
+      "t": "narrate",
+      "text": "I pulled my sweatshirt down and showed him where the blade went in."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a tiny cut, there was a lot more blood before."
+    },
+    {
+      "t": "narrate",
+      "text": "I looked at where the exacto blade snapped when it struck my breastplate. It hardly went it. I remembered trying to pull it out with my fingers. That only cut me up more."
+    },
+    {
+      "t": "narrate",
+      "text": "What happened to Nathaniel, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know. I left him in that car alone."
+    },
+    {
+      "t": "narrate",
+      "text": "Did he drive away, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know. I think he was just sitting there, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "Doing what, he said. What was Nathaniel doing?"
+    },
+    {
+      "t": "narrate",
+      "text": "Look, stop it, I said. Nathaniel was upset, I said. I'm the one that died."
+    },
+    {
+      "t": "narrate",
+      "text": "He was upset because he stabbed you? Because you rejected him?"
+    },
+    {
+      "t": "narrate",
+      "text": "I lied to him, I said. I lied to him."
+    },
+    {
+      "t": "narrate",
+      "text": "Look Julie, we found the truck, he said. There was blood everywhere."
+    },
+    {
+      "t": "narrate",
+      "text": "That was my blood. It was my fault, I said."
+    },
+    {
+      "t": "narrate",
+      "text": "We just need to find his body, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "I didn't know he'd kill himself, I said. Weeping."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_sea_cave.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_seagash_drone.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The sea cave",
+      "sub": "Beach · Tide coming in",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "I kept visiting the cave, feeding it death I collected from the beach. Even when they took him away and buried him proper, I went back."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a wicked silence there, a white noise of wave and water rushing all around me. so loud it sounded almost like nothing at all. I could scream for hours there and not be heard. I could weep and my tears would fall to the ground, the same as drops from the sea. I could stay invisible in there."
+    },
+    {
+      "t": "narrate",
+      "text": "I could pretend I was the one who died that day."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch9_truck_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch10_spawning_grounds"
+    }
+  ]
+}

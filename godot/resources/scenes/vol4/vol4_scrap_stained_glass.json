@@ -1,0 +1,93 @@
+{
+  "id": "vol4_scrap_stained_glass",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "stained glass",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "stained glass",
+      "sub": "scraps · tuesday, march 28, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "yeah, i've been working towards a good solid depressed day. a bit of background, about every six months, i seem to collapse into myself, utterly terrified of the world, feeling helpless about life, afraid of all that is good and right. perhaps this is natural and common to other people, but it doesn't seem to be."
+    },
+    {
+      "t": "narrate",
+      "text": "usually, all i need is a warm presence near me to help me through it. but at the same time, i need a distance from the warm presence. i just need the proximity."
+    },
+    {
+      "t": "narrate",
+      "text": "i'm too scared to close my eyes and will it away, i always stay sober, i have to surround myself with comfort, and the feeling always seems to last way too long in that day."
+    },
+    {
+      "t": "narrate",
+      "text": "i'm not there yet, but i soon will be."
+    },
+    {
+      "t": "narrate",
+      "text": "and today was no picnic. i had a great night last night. got to see a lot of swell people, the always delightful and mesmerizing(and hyper silly) p and her crowd of choristes, the soon to be kiwis Mike Scott and Eric V.C, the long time no see Jenn and her friend Kim, and that's about it for last night."
+    },
+    {
+      "t": "narrate",
+      "text": "i finished and turned in my meta-fiction, weep (FOR TEH FUTURE!) ((which i should have called it)). i got some curious remarks and can't wait to get the actual class reaction."
+    },
+    {
+      "t": "narrate",
+      "text": "still need to have a sit down with glenn blake about what i've written so far. i have one more story i think i'll write for that class. just need to find the time to brainstorm."
+    },
+    {
+      "t": "narrate",
+      "text": "i want to do something completely fresh in my mind."
+    },
+    {
+      "t": "narrate",
+      "text": "i also went to the Alley Theater for the poetry reading by Louise Gluck and Franz Wright. that was pretty swell. two Pulitzer Prize winners for poetry, and i liked it. go figure."
+    },
+    {
+      "t": "narrate",
+      "text": "they were captivating to soak in. i lament my lack of culture."
+    },
+    {
+      "t": "narrate",
+      "text": "from this point on, i will play some overdue Oblivion, soak in the intraweb, and wash this bad day away."
+    },
+    {
+      "t": "narrate",
+      "text": "send me words people."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_stained_glass",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_scraps"
+    }
+  ]
+}

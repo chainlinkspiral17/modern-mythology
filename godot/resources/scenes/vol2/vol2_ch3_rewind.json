@@ -1,0 +1,162 @@
+{
+  "id": "vol2_ch3_rewind",
+  "vol": 2,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "iii. points of impact — Rewind",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bedroom_window_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Rewind",
+      "sub": "Small Wood · September to December",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "A simple statement, over and over. I'd sing it to myself for hours at a time, alone in bed at night. I was struck with insomnia."
+    },
+    {
+      "t": "narrate",
+      "text": "Most nights I was up till three or four in the morning, up at six-thirty for school. When I could sleep, I'd often wake up hours early and not be able to fall back asleep. I made up a song and sang it to myself, hoping I'd rediscover a natural pattern."
+    },
+    {
+      "t": "narrate",
+      "text": "I felt most alone at these hours. Often I'd just keep reading from twelve at night until the next morning. I didn't let my family know about it, my school work did not suffer; my performance on the field never mattered enough."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Keep reading till morning.",
+          "goto": 10
+        },
+        {
+          "text": "Look out the window.",
+          "goto": 11
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The paperback's pages had gone soft at the corners, the house dark and quiet around the lamp."
+    },
+    {
+      "t": "narrate",
+      "text": "Often I'd just look out my window at the moon on the night horizon, falling behind the many trees, I'd listen to noises of animals and the lands surrounding. I worked myself into a state of extreme paranoia and anxiety. Thoughts overtook me; I'd consider what ifs that made me shake."
+    },
+    {
+      "t": "narrate",
+      "text": "The song, the mantra, the statement was my key to fighting the night terror, but it would only work once or twice in an evening, after that I was left to fight my way to dawn, until the shadows pulled back and wet covered the earth."
+    },
+    {
+      "t": "narrate",
+      "text": "It wasn't simply being afraid of the dark; it was more the thought of the overwhelming horrible pit of despair I'd see people sink into, it was about me coming to terms with the total otherness that existed in the world. I lived on the edge of darkness and I peered into it every night."
+    },
+    {
+      "t": "narrate",
+      "text": "When thousands of stars were out in force, I was afraid of the alien unknown, how very small and pointless I was, how over-powering, all encompassing it was in relation."
+    },
+    {
+      "t": "narrate",
+      "text": "When the clouds covered and all was a foggy haze, I was afraid of what looked just out of view, the tangible barrier between here and there, to lose yourself inside and never come out."
+    },
+    {
+      "t": "narrate",
+      "text": "All around me was fear and I never let on how just afraid I was. What really made my blood run cold was the idea that for every genuine terror that hit me, there were a dozen more out there I'd never even considered. Just the sheer enormity of me being unfamiliar and uncomfortable in Small Wood hit me and hit me hard."
+    },
+    {
+      "t": "narrate",
+      "text": "I was coming to understand and appreciate the true transition to adulthood or at least sympathize with my own strange situation. I could feel the impending weight of responsibility and decision and that scared me. So I stayed up late, my eyelids not my enemy but doing me no favors."
+    },
+    {
+      "t": "narrate",
+      "text": "From September to December, my thoughts turned grim. My classmates gave me the nickname Morbid, though I never really saw myself in that light."
+    },
+    {
+      "t": "narrate",
+      "text": "I always felt my tone far more diffusive and joking than serious but I knew my nighttime thoughts were overtaking my daytime interactions and it was reflected in my habit and nature."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a lot of bad going on in the world that first fall in Small Wood and this was the very first time it got through to me, affected me in ways beyond my understanding. Small towns more than big, make the bad personal."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_football_field_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Tender was the flesh of the left and right edges of my mouth, the seams between my lips. I needed a shave and I'd been rubbing out of habit. The home game, my helmet off while I stood on the sidelines."
+    },
+    {
+      "t": "narrate",
+      "text": "When I first started practicing, before we got suited up, I was afraid for my safety. We weren't supposed to be hitting each other with the intensity that we were and minor injuries were frequent and noticeable. At the end of the day we could grimace a smile and compare our wounds."
+    },
+    {
+      "t": "narrate",
+      "text": "In hindsight, the week without pads was probably to toughen us up and weed out the players who couldn't grin and bear it. Pads were like the best thing ever. I felt like a rubber ball, like I could bounce off anything, I was an electron spinning out of orbit."
+    },
+    {
+      "t": "narrate",
+      "text": "It was as much mental padding as physical, and without having to worry, the body could do some pretty wicked crazy stuff. Gross physical injury placebo is what it was and it worked wonders for my self esteem and general teenage feelings of invulnerability."
+    },
+    {
+      "t": "narrate",
+      "text": "We were getting walked all over the third quarter. The news of the hit and run had sobered everyone to the point of detached introspection. There was no big whoop do it for the dead girls speech, only silence and tears."
+    },
+    {
+      "t": "narrate",
+      "text": "We were short two players who'd left the game to go to their dear friends, the family in shock and mourning. There was an understanding that a football game was not life and death tonight, that no one would be able to concentrate on winning after such a great loss."
+    },
+    {
+      "t": "narrate",
+      "text": "But we played and we won, I'll save you the suspense, as that wasn't the goddamn point. It was our last victory of the season, the rest downhill, each game far more humiliating than the last."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_rip_scoreboard.jpg",
+      "caption": "R.I.P. on the scoreboard."
+    },
+    {
+      "t": "narrate",
+      "text": "I just remember the final touchdown, the final ticking away of the clock, our victory assured. When it was all over, they flashed R.I.P. on the scoreboard and people filed out and away into the night."
+    },
+    {
+      "t": "narrate",
+      "text": "It was a Friday night where the players agreed not to get trashed and make trouble in the supermarket parking lot, where parents talked by their cars about finding the human filth responsible and doing unspeakable things to him,"
+    },
+    {
+      "t": "narrate",
+      "text": "where religious types and the sympathetic souls held a candlelight vigil at church across the street, and where I went straight home to take a shower, sit in silence and stare out the window at the coming storm."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch3_rewind_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch4_night_lights"
+    }
+  ]
+}

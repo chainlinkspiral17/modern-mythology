@@ -1,0 +1,73 @@
+{
+  "id": "vol4_scrap_twirlwind",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "twirlwind",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "twirlwind",
+      "sub": "scraps · sunday, february 05, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "wow, life."
+    },
+    {
+      "t": "narrate",
+      "text": "i'm sort of approaching critical mass. life is both too good to me, and a complete bastard."
+    },
+    {
+      "t": "narrate",
+      "text": "i have feelings, tremendous feelings, but time is going by both too fast and too slow. time is choice in how it cruel it does this. i shake an angry finger at time."
+    },
+    {
+      "t": "narrate",
+      "text": "because"
+    },
+    {
+      "t": "narrate",
+      "text": "i am altogether smitten.\ni am writing like a madman. each new bit is getting better than the last. i've grown afraid of new words, afraid i'll fail, afraid i'll fuck it all up. but i know i won't, no way, no how.\nschool is brilliant. my profs are like unto demi-gods of good reading and writing."
+    },
+    {
+      "t": "narrate",
+      "text": "on the downside, i probably work too hard so that much of life is dedicated unfairly to just getting by. but the delicious irony is that it makes the worthy choice bits that much more incandescent."
+    },
+    {
+      "t": "narrate",
+      "text": "somebody slap me."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_twirlwind",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_scraps"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "vol4_poem_modern_drunkard",
+  "vol": 4,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Modern Drunkard",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Modern Drunkard",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He relaxes against the hill\nWhere grass meets concrete shore\nAnd raises the oblong can\nTo his lips."
+    },
+    {
+      "t": "narrate",
+      "text": "Later he pisses into it\nThis half-mile long fountain\nThe moon like a smile"
+    },
+    {
+      "t": "narrate",
+      "text": "Reflected disrupted wavering.\nCross-legged he sits\nMore listening to\nThan watching the ducks\nTiny bobbing shapes catching light."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_modern_drunkard",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

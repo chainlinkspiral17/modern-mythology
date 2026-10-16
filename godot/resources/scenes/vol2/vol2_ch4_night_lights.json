@@ -1,0 +1,302 @@
+{
+  "id": "vol2_ch4_night_lights",
+  "vol": 2,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "iv. night lights",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_christmas_lights_road.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "iv. night lights",
+      "sub": "Small Wood · December",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "It was around the start of December, that Christmas trees were being sold off neighbors' private lots, the cattle bundled up inside the barns and stalls, that celebration began in earnest in Small Wood."
+    },
+    {
+      "t": "narrate",
+      "text": "My mother had a tradition; she'd round the family up in the car and take us on a long winding ride to check out Christmas lights on display."
+    },
+    {
+      "t": "narrate",
+      "text": "It was exasperating in its tedium, but also good quality family time, stuck together as we were. The tone was often far more mocking than revelatory, as Christmas was a time when even the more cultured and well-meaning were somehow struck with a curious holiday affliction known as complete and wanton tastelessness."
+    },
+    {
+      "t": "narrate",
+      "text": "This year, Mom heard about a botanical garden and adjoining bed and breakfast that was said to house a splendid and classy assortment of holiday lights and decorations. So it was to be our mini-vacation to drive there and spend a cozy night, relaxing away from it all."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe for a week or so I could not get a particular girl out of my head. She was not an expected choice for carefree idle obsessing over, as she was as different from me as could be. So many attractions in life tend to be of that variety but for me it was a rare thing and I kept it to myself."
+    },
+    {
+      "t": "narrate",
+      "text": "It was not that I had anyone to really share the notion of her with. My family, I preferred their ignorance on all matters romantic and the friends I could claim as my own would have just tried to knock some sense into me."
+    },
+    {
+      "t": "narrate",
+      "text": "So I found it the most casual and comfortable to just let the feeling linger beneath the surface and pop up for breath only on occasion."
+    },
+    {
+      "t": "narrate",
+      "text": "But as school winded down with the impending holiday time and we as a family took long drives up and down the coast to do our shopping and preparations, I had an excess of time to fantasize and live in my head with her."
+    },
+    {
+      "t": "narrate",
+      "text": "Some women I find very good for that and it is ever only in the imagination that they take on real and exacting depth. A horrible thought, but I'd learned that so much of life was trial and error, with the end result so often siding with the negative."
+    },
+    {
+      "t": "narrate",
+      "text": "I actually tried asking this girl to Winter Formal only to be shot down in flames."
+    },
+    {
+      "t": "narrate",
+      "text": "The notion and my attempt really did come out of nowhere and must have appeared to the poor girl as a blustery, confused sort of query. She knew of me, but nothing concrete solid. We had no real interaction with each other except eye contact in halls."
+    },
+    {
+      "t": "narrate",
+      "text": "We did not share a pool of friends nor did we participate in activities together. It was admittedly a pretty horrible idea on my part but I regarded her as older, cooler, and my hormones ruled all."
+    },
+    {
+      "t": "narrate",
+      "text": "Thankfully, after my subsequent dismissal, no mention of my attempt to ask her out was ever relayed back to me by a third party so I always assumed she had the common decency not to make a show among her friends regarding the error of my ways. Such are the games we play."
+    },
+    {
+      "t": "narrate",
+      "text": "It's very strange because even now, almost ten years after last seeing her, I really don't want to say her name or conjure up her image. When I write, I want to feign ignorance. This is that part of me I have trouble reconciling."
+    },
+    {
+      "t": "narrate",
+      "text": "So intensely personal I feel I can shed light upon some incidents from my past but small little things like this it's almost like a stopper is in place and I can not drain this pool of thought. It's personal shame, perhaps."
+    },
+    {
+      "t": "narrate",
+      "text": "I stash away the memory for my own and realize that there was once so much wasted opportunity for connection and my own personality and development as a person comes into doubt when I think back to all my blunders and blind fool ignorance."
+    },
+    {
+      "t": "narrate",
+      "text": "I withheld so much of my true feeling and emotion and that baggage still runs within me, deep and prescient. In the end it all comes down to that unshakeable feeling and I harbor so much doubt about what might have been, could have been."
+    },
+    {
+      "t": "narrate",
+      "text": "And now I withhold even her name, real or false, to account for her existence."
+    },
+    {
+      "t": "narrate",
+      "text": "This moment feels less like a memory and more like a dream someone else is having which I can't see through broken glass."
+    },
+    {
+      "t": "narrate",
+      "text": "So there was that, and here now my extended analysis of rejection and I suppose ties somehow to how I feel most alone during holidays, a time of all that togetherness and cheer, strips me naked, leaves me to shiver in the cold."
+    },
+    {
+      "t": "narrate",
+      "text": "I love my family, I love my friends, I love the women who were that half of me in their time. The holy days, the change in temperature and climate, the lengths we go to show how much we love and cherish. It all seemed a bit much."
+    },
+    {
+      "t": "narrate",
+      "text": "Ennui is the best way to define it, as it has always been there, that cold bit of distance like I'm a goddamn exile in my own skin. Every last sentiment and doubt is quite firmly my own mental folly, an excuse to despair when all is seemingly well in the world."
+    },
+    {
+      "t": "narrate",
+      "text": "Ah, to be a teenager and thinking the same dreaded cliches, that's what hurts us most of all."
+    },
+    {
+      "t": "narrate",
+      "text": "To know everyone does it, how much it sucks to be us and how we can't wait to be rid of it."
+    },
+    {
+      "t": "narrate",
+      "text": "The holiday food I ate the year before I came to Small Wood was the hallaca, a variant on the tamale, very popular in Venezuela during the holidays. It was a true mutt of cuisine which tend to be my favorites. Inside the ground lard and maize enclosure was basically whatever leftover the chef felt obliged to insert."
+    },
+    {
+      "t": "narrate",
+      "text": "I've always very much enjoyed that tamale texture and flavor, or anything dumpling-like in nature, all carefully portioned, wrapped and steamed. Half the fun was the surprise in seeing how very different each meal turned out."
+    },
+    {
+      "t": "narrate",
+      "text": "A little bit of this and a little bit of that, all wrapped up like a present, very time consuming to prepare, a labor of love and special to the season. I bring this up, because that was the last time I felt like a child, when the holiday was sacred and the world so beautiful it hurt. The cusp is what I know it as."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere between the Small Wood holiday and the Venezuelan one prior, I'd lost it. I'd breached the cusp and was well on my way. The lustere, the luminous veil I now regard childhood with, that was gone from sight."
+    },
+    {
+      "t": "narrate",
+      "text": "Or at least dimmed significant."
+    },
+    {
+      "t": "narrate",
+      "text": "Christmas lights were dull and obnoxious to me, an eye sore. The Christmas tree, a decaying thing, gaudy all dolled up like that."
+    },
+    {
+      "t": "narrate",
+      "text": "I never really believed in Santa as child, but in his place I always had a sense of spirit, a concept of the beauty of the thing and whatever that unknown was now failed me, or perhaps I failed myself."
+    },
+    {
+      "t": "narrate",
+      "text": "That sense of history, the richness of the collective suspension of disbelief, the majesty and dream of a white sunrise, all that gone."
+    },
+    {
+      "t": "narrate",
+      "text": "I played pretend along with everyone who believed, I willed myself into fooling them all and going along with their foolishness because it mattered so very much to the world at large."
+    },
+    {
+      "t": "narrate",
+      "text": "I spoke to my father my newfound sense of holiday dread and he shrugged and told me, \"When you have young children, I hope you'll learn to feel it again.\""
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_radio_studio.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Before departing to the bed and breakfast and the Feast of Lights, I was talked into playing a part of the town's annual radio drama rendition of some sappy holiday pap our school librarian had written and poured every last bit of herself into. I was to play Santa."
+    },
+    {
+      "t": "narrate",
+      "text": "St. Nick and I had a confused and troubled history, as I'd also been assigned to play him in a second grade wee tyke production about cultural confusion. It would almost have been construed as racist if it weren't so gosh darned cute."
+    },
+    {
+      "t": "narrate",
+      "text": "For the radio play, I hoped to draw upon my rich and checkered past with the character, so I wouldn't actually have to do any damn work. So all that week, I lied and said I'd practiced my part and when it came time to do a live reading on the air, I stumbled through my lines and botched the whole mess."
+    },
+    {
+      "t": "narrate",
+      "text": "Regardless of that performance, the librarian was so pleased with my enthusiasm and doltish nature, she cast me as Lil Abner in the school musical without even asking me. I refused to hurt her feelings and keeping with the holiday cheer I agreed to that as well."
+    },
+    {
+      "t": "narrate",
+      "text": "Between mucking up an attempt to ask mystery girl out to winter formal, making an ass of myself on the radio and feeling general loathing anytime anyone muttered \"Merry Christmas\", things were going as well as they could."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_minivan_night_coast.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The family unit put miles on the minivan that Friday evening, driving in darkness an hour and a half away from Small Wood. I remember sitting in the passenger seat, watching it all with a casual detachment, feeling emotionally empty in a strange and novel way."
+    },
+    {
+      "t": "narrate",
+      "text": "I did like I do now, I thought through my situation, gave much mind to my troubles, if they even existed in a definable sense and plotted a course of action."
+    },
+    {
+      "t": "narrate",
+      "text": "With the winter holiday occurring after the end of the next week there was closure to the football season, to my first school term in Small Wood, and an end to a year that started half a world away."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "Keep watching the dark.",
+          "goto": 51
+        },
+        {
+          "text": "Let the miles go by.",
+          "goto": 52
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The coast road unspooled in the headlights, black trees on one side and blacker water on the other."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_used_bookstore.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "We stopped at a small book store between Small Wood and the bed and breakfast. The name of the place was \"The Cat's Pause\", and it was lorded over by two elderly lesbians who knew their shit when it came to good books. Tammy had saved a whole bag of paperbacks for my sister and I, to our surprise."
+    },
+    {
+      "t": "narrate",
+      "text": "Grandma and Tammy organized a library book sale and had ferreted out some pretty choice titles. Also included for me specifically, was a journal. It was a curious thing because it had a name written on the outside, but nothing else to go on within."
+    },
+    {
+      "t": "narrate",
+      "text": "Right there on the cover, it had once belonged to \"D. Dean\", whose hand-writing was far superior to my own."
+    },
+    {
+      "t": "narrate",
+      "text": "Later on, I took to writing to D. Dean from the perspective of some stupid kid who had stolen his super awesome journal. It was an entertaining way to write, but also a silly way to jot down thoughts. I was pleased when something far more natural came out of the process over time."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_dean_journal.jpg",
+      "caption": "A name written on the outside, nothing else within."
+    },
+    {
+      "t": "narrate",
+      "text": "\"Dean. I think you did the right thing, finding some way to rid yourself of this diary before a kid like me got the chance to find it and read it. See, now I'm the fool, putting my words in here, to be discovered and divulged."
+    },
+    {
+      "t": "narrate",
+      "text": "If I had any secrets, I'd share them with you, Dean, but as it goes, I'm pretty boring. I don't have a girlfriend, I'm not all that popular, and I'm not sure what I'll be doing when I graduate. I might do something with computers, or I might see what's up with this journalism thing."
+    },
+    {
+      "t": "narrate",
+      "text": "I've had some strange dreams Dean, like you wouldn't believe. I keep dreaming about this second house on the property that doesn't exist in real life. I guess if you were to go there awake, you'd find nothing but trees and maybe a bit of a crick running through it."
+    },
+    {
+      "t": "narrate",
+      "text": "But in my dreams, it's this old abandoned place, maybe three stories tall, but the third story has sort of fallen in on the second, so it's very hard to get around in, lots of mattresses lying about everywhere."
+    },
+    {
+      "t": "narrate",
+      "text": "In my dream, my room is somewhere in there, and I'm always getting in trouble for how messy I keep the second house, as if I had anything to do with how gross it is. Tell you what Dean, if you ever come back and want your journal, I'll set you up a room real nice in the second house."
+    },
+    {
+      "t": "narrate",
+      "text": "You can live there, like a boarder, only rent free, because it's basically my place, and since you've given me the diary, I feel I can give you a room in return. Fair trade, huh? Now I don't feel so bad, because my words are going in here where yours never will.\""
+    },
+    {
+      "t": "narrate",
+      "text": "So on and so forth, until I began to get more serious about my words and the exact effect they were having. Say you create a character in your mind, for instance this Dean fellow. Say he actually exists, but the details about him are so very thin, like the skin of milk left out to sit."
+    },
+    {
+      "t": "narrate",
+      "text": "Dean becomes something else with every passing suggestion or idea that comes to mind. You begin to say stuff like, \"I wonder what Dean would think of this?\" And Dean takes some precedence in your thoughts, and over time he takes on features and the barest emergence of personality begins to emerge."
+    },
+    {
+      "t": "narrate",
+      "text": "What has Dean become now, but a presence nestled against the small of your thoughts? To me, Dean always existed, he was around before my thoughts could ever give birth to him."
+    },
+    {
+      "t": "narrate",
+      "text": "I hesitate to reveal just how I saw Dean, and where to lead the narrative thread from here, but like any ghost that ever was, know that Dean is dead now, and continues to live on in an appropriate form long after his demise. Because like I said, Dean once existed and will forever continue to haunt places such as these."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch4_night_lights_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch4_lighthouse"
+    }
+  ]
+}

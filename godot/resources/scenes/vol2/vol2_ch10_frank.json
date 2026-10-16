@@ -1,0 +1,187 @@
+{
+  "id": "vol2_ch10_frank",
+  "vol": 2,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "x. The Spawning Grounds — Frank",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_reading_lamp_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Twenty hours ago",
+      "sub": "Home · Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Twenty hours ago I was reading Frank's book to get ready for the hearing. The saddest thing is how much he didn't get right. Frank despised everyone and everything. I was his best friend, but that didn't mean he cut me any slack."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_pier_crabbing.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The pier",
+      "sub": "Small Wood · Years back",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "I hate Small Wood he said to me out on the peer. We were helping the tourists catch crabs, trying to pick up chicks who were just passing through town."
+    },
+    {
+      "t": "narrate",
+      "text": "I hate my drunk piece of shit daddy and those Siletz Indian motherfuckers because they killed my goddamn mother. Frank had his routine. He was smiling. I hate my daddy for lying to me, when I know damn well it was me who killed my mommy. Don't laugh. It's only funny because it's true."
+    },
+    {
+      "t": "narrate",
+      "text": "I hate my dick because it's too goddamn small. I hate the ocean and the pull of the moon. I hate the tides because of what they bring in each and every day."
+    },
+    {
+      "t": "narrate",
+      "text": "Amen brother. I said and smiled and tossed a small crab to the gulls that hovered overhead. They swooped and fought to get a piece. You know what I hate most of all, he said. No I don't. Guess man. Don't want to. Go on guess."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "guess",
+          "goto": 13
+        },
+        {
+          "text": "don't guess",
+          "goto": 13
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Frank was my best friend because I beat the shit out of him to keep him from killing himself when he was twelve. He fought every inch as I pulled him from the water then afterwards back on dry land. Frank was skinny and mean, smarter than all the dumb-fucks put together. Born and raised in Small Wood. He said."
+    },
+    {
+      "t": "narrate",
+      "text": "This is our curse, to grow up in a dying town. With a bunch of dumb-fucks. He laughed."
+    },
+    {
+      "t": "narrate",
+      "text": "I hate these goddamn Salmon most of all. He said to me that day. Stupid fish. Suicidal fish. They're too dumb to figure out they're the local currency and the Alsea River is the bank from which our daddies second mortgage our homes."
+    },
+    {
+      "t": "narrate",
+      "text": "All we can do is grow up piss-poor and pissed off and try to dodge the boats and canneries that killed our granddaddies. Those goddamn fish don't have the right to kill themselves. No Sir. Those fish got no goddamn right. Amen brother I said and smiled."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_country_road_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Nineteen hours ago",
+      "sub": "A dirt road · Night",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Nineteen hours ago I was a piece of fiction in my best friend's book. He wrote about all of us, all those years back. Becca and I were seeing each other as often as possible. Her parents were pretty self-righteous. We couldn't hang out together for more than an hour at a time."
+    },
+    {
+      "t": "narrate",
+      "text": "That didn't stop me from feeling up second base every now and then."
+    },
+    {
+      "t": "narrate",
+      "text": "Heavens, stop that. She said with a smile, not even trying to stop me. Wiggling closer, her breath on my neck. I touched her lips with my hand, felt her through my fingers. I can't take any more. She said, I smiled, she hugged me closer. Her hands under my shirt, along my back. Light turned on inside the garage."
+    },
+    {
+      "t": "narrate",
+      "text": "She saw it before I did and was quickly composing her attire. Becca's father came out, pushing the garage door up, walking to the car as Becca exited the passenger side door. She came back around and kissed me goodnight. Her father silently walked her back. She adjusted her skirt on the way up the stairs."
+    },
+    {
+      "t": "narrate",
+      "text": "Frank wrote about all this because he was in the back seat fucking Sue Ellen halfway to Tuesday. Sue Ellen came as I started up the ignition and her moan continued as I took off down the empty dirt road. Frank laughed and zipped himself up when we were back on the main drag."
+    },
+    {
+      "t": "narrate",
+      "text": "Sue Ellen adjusted herself, then sat back, completely taken with Frank. What's the matter. He said. Becca ain't working out too well is she. Shut up I said. The car bounced up and down over potholed country road. My fingers tightened around the wheel, Frank slapped me on the shoulder. You mate, you die."
+    },
+    {
+      "t": "narrate",
+      "text": "Fuck and flounder. Don't want that, do you? Course not I said. Everything in its time. Me and Sue Ellen here, our time is just about up. You're still alive, you and Becca both. He laughed like a madman. Sue Ellen wasn't pleased with the conversation we were having and started whining. You two make no sense."
+    },
+    {
+      "t": "narrate",
+      "text": "Quiet on a dark road in the middle of the night. I drove on."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_gymnasium_hearing.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The hearing",
+      "sub": "High school gymnasium · Evening",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Pastor Tim stands up at the podium in the middle of the gymnasium. He's got brown hair to his shoulders, wears jeans and flannel. He says,"
+    },
+    {
+      "t": "say",
+      "char": "Pastor Tim",
+      "expr": "neutral",
+      "text": "I'm here today because pornography will not be taught to my children. This book depicts teenagers having premarital sex. The language is coarse and inappropriate. This is not acceptable English material. This shouldn't even be in the library for casual reading and that is all I have to say about that. Thank you."
+    },
+    {
+      "t": "narrate",
+      "text": "Applause, of course. Joe KU, the oldest son stands up and walks to the podium. The senior son in my psychology class. He is dressed the nicest in the room, wearing a three-piece suit."
+    },
+    {
+      "t": "say",
+      "char": "Joe KU",
+      "expr": "neutral",
+      "text": "My dad read this book to me when I was in fifth grade. It was hilarious and honest and sad. It was real. That's why he moved here with my mom. He wanted to experience life like this. He fell in love with the town because of this book."
+    },
+    {
+      "t": "say",
+      "char": "Joe KU",
+      "expr": "neutral",
+      "text": "He raised all four of us here because he learned to love Small Wood for what it really was. This book is a part of our history. Sure, the book has a bunch of sex in it. It's kinda scary thinking about all of you as stupid kids having sex, but that's the reality of it."
+    },
+    {
+      "t": "say",
+      "char": "Joe KU",
+      "expr": "neutral",
+      "text": "You people really did this and acted in some ways worse than all of us do now. This is a valuable tool we can learn from. You know, learn from the mistakes of others. The ones who came before us. That's history, right. That's what you teach us. Well, that's all I've got to say."
+    },
+    {
+      "t": "narrate",
+      "text": "I smile and nod. Joe is one of those brilliant kids who won't take shit from anyone, questions everything. He can be brutal defending his argument. How just like Frank that boy is."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch10_frank_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch10_salmon"
+    }
+  ]
+}

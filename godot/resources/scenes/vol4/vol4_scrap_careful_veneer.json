@@ -1,0 +1,57 @@
+{
+  "id": "vol4_scrap_careful_veneer",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "careful veneer",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "careful veneer",
+      "sub": "scraps · monday, march 06, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "crackle and static tug at my ears.\ni'm alone in my room.\ntonight i actually feel it.\ni have words i can't explore because they are stuck coming out.\ni write here in hopes that i can jar a thought or three free.\ni'm working on a new story. it is bizarre."
+    },
+    {
+      "t": "narrate",
+      "text": "it may be planned community redux. i'm not sure.\nit will take a strange shape. i will do strange things with it.\nit is very meta.\ni hope to have it complete before the end of my spring break.\ni will call on several of you to play your part.\ni have a paper/presentation i need to be working on."
+    },
+    {
+      "t": "narrate",
+      "text": "something is wrong with my keyboard or computer."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_careful_veneer",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_scraps"
+    }
+  ]
+}

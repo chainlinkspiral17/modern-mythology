@@ -1,0 +1,61 @@
+{
+  "id": "vol4_poem_retinal_burn_third",
+  "vol": 4,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Retinal Burn (darkroom) (third)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Retinal Burn (darkroom) (third)",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Light began some ancient journey long ago\nSetting off from all stars, but mostly just our star.\nArriving without much consideration, falling casual about the day.\nCapturing circumstance and framing countenance."
+    },
+    {
+      "t": "narrate",
+      "text": "Shadows cut across perfect beauty\nSketching far more interesting facets\nThan mere light ever will."
+    },
+    {
+      "t": "narrate",
+      "text": "An oscillating eye is all there is to see.\nA catch of breath later the chemical burns,\nThe trace image remains."
+    },
+    {
+      "t": "narrate",
+      "text": "The negative reverse, the mold cast outward\nTo return to, study inward amber moments preserved.\nThere exists a secret process,\nKnown only to those who consider\nThe baths of poison that give it shape and color,\nWrinkling, yellowing, molding,\nLeft to dry like leaves on a vine after a rainstorm."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_retinal_burn_third",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

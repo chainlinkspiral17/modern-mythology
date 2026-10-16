@@ -1,0 +1,61 @@
+{
+  "id": "vol4_poem_mailbox_second",
+  "vol": 4,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "Mailbox (second)",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Mailbox (second)",
+      "sub": "loose pages · verse",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "expecting words to fall out\nof so small a space\nsometimes it does and all falls away.\nnames that aren't mine\nlost in these hands."
+    },
+    {
+      "t": "narrate",
+      "text": "rather i pry into shadow lives\nthan relinquish my claim\nfound on lost correspondence.\nnot hard at all to imagine\na cave not far from shore."
+    },
+    {
+      "t": "narrate",
+      "text": "the trap door shut on\nthe sea-shell sounding\nblood in my neck\nechoing waiting for\nwords to appear explicit\nwriting on walls."
+    },
+    {
+      "t": "narrate",
+      "text": "hesitant dread awaiting inspection\ncarefully wrapped missives\ntucked in context folded corners\nstasis of parcel pieces\nquiet slumber waiting\nfor the right hands to find reason\nto bend them crack them\nbreak them anew."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_mailbox_second",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_poems",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_poems"
+    }
+  ]
+}

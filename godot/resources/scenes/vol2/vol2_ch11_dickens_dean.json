@@ -1,0 +1,190 @@
+{
+  "id": "vol2_ch11_dickens_dean",
+  "vol": 2,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "xi. Terminal Velocity — Dickens Dean",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_school_newspaper.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Dickens Dean",
+      "sub": "Small Wood High · Senior year",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean came to Small Wood the start of my senior year. He was a year younger than me and better than me at everything. He was not a nice guy so perhaps this was the reason Small Wood loved him."
+    },
+    {
+      "t": "narrate",
+      "text": "I was taken aback when I heard the name as I had carried around a notebook with that unusual name for the last year, kept it close, stashed away guarded thoughts inside his covers. Dickens Dean made my life miserable. Everything I'd worked so hard to accomplish, he'd take from me."
+    },
+    {
+      "t": "narrate",
+      "text": "That first month when he was the new guy, I went up to him in his awkward apart from everyone at lunch existence and forced myself into his world. I told him I was the new guy last year and not to worry, there were decent people in Small Wood. He smiled and thanked me and so we started to hang out a lunch together."
+    },
+    {
+      "t": "narrate",
+      "text": "Him, Justin, Katrina and me."
+    },
+    {
+      "t": "narrate",
+      "text": "The problem with Dickens Dean is that he knew no boundaries. He was this giant gaping hole of need and want. If he saw something he wanted, he took it. Most people were fine with this. They enjoyed his enjoyment. The problem with Dickens Dean is he took peoples lives without them ever realizing it."
+    },
+    {
+      "t": "narrate",
+      "text": "For me, the first thing he took was the newspaper. He began as I did doing layouts and simple graphic design work. What he did was far better and took the paper visually several steps beyond even my own limited ambition. The look became elegant, a word that should never be used to describe a high school newspaper."
+    },
+    {
+      "t": "narrate",
+      "text": "When it came time to vote on positions for the winter term, I knew he'd try to take the editorship from me. He succeeded with a handy majority. His ideas, his platform, his vision for the paper, all of it, I freely admit, better than my own."
+    },
+    {
+      "t": "narrate",
+      "text": "I would have voted for him had I not wanted so desperately wanted to hold onto what was mine. But he took it, and I gave it willingly. There was no fight, my baby was in better hands."
+    },
+    {
+      "t": "narrate",
+      "text": "I went back to graphic design where I got to keep pushing things in small ways visually, writing articles about film and cultural events. I was particularly fond of seeking out the local eccentrics who were pretty much the rest of the world's window into Small Wood as they were the ones getting all the attention."
+    },
+    {
+      "t": "narrate",
+      "text": "UFO and abduction enthusiasts, cult and commune members, paranormal types. There was a tourist trap called Dry Gulch, whereupon one man created a whole ghost town and populated it with life sized chainsaw carved wooden statues."
+    },
+    {
+      "t": "narrate",
+      "text": "It was as if he took that chainsaw and carved a facsimile of Small Wood, a gross and deranged echo of itself, given to rot and mold. I don't see how it stayed in business unless the guy had a thing on the side selling wooden Indians."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_chainsaw_ghost_town.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The ghost town",
+      "sub": "A roadside attraction · Overcast",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "One day, taking photographs there for the school paper, I saw what looked like myself and I wondered if I myself was already but a faint impression of something much more horrifying, a boy takes a photograph of a carved wooden log in the effigy of a boy taking a photograph of him."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "take the photograph",
+          "goto": 21
+        },
+        {
+          "text": "lower the camera",
+          "goto": 21
+        }
+      ]
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_glass_mansion_bay.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "Up the hill",
+      "sub": "Overlooking the bay · Now",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Dickens Dean now lives in a big glass mansion up the hill overlooking the bay. He rules over Small Wood like some benevolent protector. He doesn't leave the place, not even to travel. He brings so much money into Small Wood, managing a data center that connects several state-wide university research hubs."
+    },
+    {
+      "t": "narrate",
+      "text": "He is the head of many local environmental organizations, charities and public arts programs. He goes to the local video store and sees as many movies as he possibly can. He volunteers at the public library which he has brought into the present screaming. My grandmother is more in love with the guy than she is with me."
+    },
+    {
+      "t": "narrate",
+      "text": "When I say that Dickens Dean is not a nice guy, I am telling the truth. He's a fantastic guy but has no consideration for the waves of destruction he leads in his day to day existence. Small Wood is not challenged by Dean, it's bullied into submission."
+    },
+    {
+      "t": "narrate",
+      "text": "Two thousand people trying to go about their lives and matter and he has to make that hard for them. Kids want him as a parent, girls want him as their husband."
+    },
+    {
+      "t": "narrate",
+      "text": "He bulldozes their dreams by his dismissal, he wrecks the whole course of their lives with his non-recommendation, he serves as a constant reminder for everything they are not but hope to be."
+    },
+    {
+      "t": "narrate",
+      "text": "I think part of the reason he is so popular and has done so well for himself is because everyone who has spent their whole life in Small Wood wants to see him fail. But he hasn't and he won't. And that right there is where the true horror begins."
+    },
+    {
+      "t": "narrate",
+      "text": "By his singular success he has created failure after failure after failure. And while Small Wood is awash with a far more intense and exciting failure, failure it remains and failure it accumulates. The ghosts are piling up and Dickens Dean is sitting a top looking out at the future."
+    },
+    {
+      "t": "narrate",
+      "text": "He still has friends and I count myself among them. But he's taken so much from me already I feel I have nothing left to give. Yet still, I want to give more. None of us can stop him and even those of us who know what he's doing count ourselves among the luckiest. He's trying to break through the worlds."
+    },
+    {
+      "t": "narrate",
+      "text": "That's where most of his time and money is going, to computing very specific imaginary properties. He's building up the unreal to unstable levels and his brand of madness is starting to seep out. It's already infected me and radiates along so many axis."
+    },
+    {
+      "t": "narrate",
+      "text": "I went back to visit him, he wanted to show me what he was working on. Told me I was the first among his old friends. He took me to the room, as he calls it. We were walking through his beautiful home, he was showing off art on some of the digital walls."
+    },
+    {
+      "t": "narrate",
+      "text": "He had a nice indoor pool we swam in, treaded about, talking travel. He kept quiet about his own firmly rooted existence but mentioned he was planning on travelling soon, staying very quiet about that. That's when he got excited and told me I had to see the room. What is the room, I asked. You'll see, he said."
+    },
+    {
+      "t": "narrate",
+      "text": "When we dried off and got to the room, it was closed. He asked me to open the door. I did. Inside was my bedroom from grandmother's ranch house exactly as I remembered it. The light coming in from the window, the angle of the sun, it was all perfect. Even my paperbacks, magazines, clothes, all identical."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_the_room.jpg",
+      "caption": "The room."
+    },
+    {
+      "t": "narrate",
+      "text": "I couldn't say anything. I looked at him. He smiled. I walked in and felt my way around. It was all real. I opened up the window and crawled out onto the roof. It was all real. Dickens Dean joined me outside. I asked him how he did this. He shrugged as if it wasn't a big deal and said, this is mostly all your doing."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't understand that. He mentioned that the room becomes what you want it to be. I asked him how often he's been in the room. He responds."
+    },
+    {
+      "t": "narrate",
+      "text": "All I can do at this point is look out among the past, the words already written and hope to find some measure of sanity within. That's not what I'll find, but I can always hope."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch11_dickens_dean_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch12_drift_wood_intro"
+    }
+  ]
+}

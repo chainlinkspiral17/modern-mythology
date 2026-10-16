@@ -1,0 +1,133 @@
+{
+  "id": "vol4_scrap_scraps",
+  "vol": 4,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "scraps",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "scraps",
+      "sub": "scraps · thursday, may 18, 2006",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "i realize now that i've done a lot with my day today, but it didn't feel that way ten minutes ago. only when i stopped to think about it, did i understand."
+    },
+    {
+      "t": "narrate",
+      "text": "i woke up early for class, attended that, came home and did homework, two or so hours worth, read and relaxed on the couch for the rest of the time, reading through an armfull of mcsweeneys published books, the persistent gappers of frip by the excellent george saunders, the people of paper, and everything that rises."
+    },
+    {
+      "t": "narrate",
+      "text": "the last two are both amazing and elevated my thought in curious ways today. i wrote many words and found a nice gateway into the fake l.ron book i'm writing called the earthman chronicles."
+    },
+    {
+      "t": "narrate",
+      "text": "i already have a very good idea how i want to lay out and present all the writings from that project/book, and i have to say it's a tad unusual. but it should be pretty, and fun to read, if i do my job right. i'm writing the pulp thing fast and furious, and only today did i stop to look at what i'd written."
+    },
+    {
+      "t": "narrate",
+      "text": "clunky, but with a little revision, and a new beginning, i really think i opened it up into something far less clunky and thoughtful and pretty. probably too much for a pseudo-pulp novel, but it is clearly evocative of the ethereal john carter books, so it works, i think."
+    },
+    {
+      "t": "narrate",
+      "text": "i pretty much spend all my work hours, thinking about what i want to write for that, what i need to learn more about, and fun stuff to do."
+    },
+    {
+      "t": "narrate",
+      "text": "basically, to lay it out here, the untitled pasadena project: (it really needs a kick ass name, but nothing has come to me yet. maybe one will later, hopefully. usually the title is the first thing that hits me when i write."
+    },
+    {
+      "t": "narrate",
+      "text": "not this time. i mean, i got individual titles for the individual parts, but not the cohesive whole. oh well)"
+    },
+    {
+      "t": "narrate",
+      "text": "The first part is the thesis, a fun, wacky bit of meta writing."
+    },
+    {
+      "t": "narrate",
+      "text": "The introduction really gets things rolling. i've written a lot of this out long hand on receipt paper at work and will not transcribe it here, but just give you the gist..."
+    },
+    {
+      "t": "narrate",
+      "text": "Basically, the introduction is where I apologize to all my friends and family for all the hell i've put them through, following my mental breakdown."
+    },
+    {
+      "t": "narrate",
+      "text": "This was written in the far off year of 2011, whereupon my graduate thesis was rejected, i disappeared off the face of the earth, and descended into hermetic artistic madness."
+    },
+    {
+      "t": "narrate",
+      "text": "the result was my revised thesis, which i present here, with notes to the prior edition, which i tried to once publish, but the edition was tied up in a legal battle with the church of scientology."
+    },
+    {
+      "t": "narrate",
+      "text": "i have basically come to my senses, this time around, and present the findings as amused yet horrified anecdotes into the initial mindset."
+    },
+    {
+      "t": "narrate",
+      "text": "but the thesis explores lots of fun stuff, mostly made-up yet truthfully divergent episodes of me visiting my sister at caltech, and mentally projecting myself through some odd caltech scientific experiment, back into the past, which i only remember years later while writing my first thesis."
+    },
+    {
+      "t": "narrate",
+      "text": "the second edition of the thesis removes or changes all names of the litigious parties. but it still makes perfect sense."
+    },
+    {
+      "t": "narrate",
+      "text": "(yeah right)"
+    },
+    {
+      "t": "narrate",
+      "text": "as well, there is a long lost volume of science fiction pulp i've brought back from the past somehow, the missing l.ron hubbard 'masterpiece'. which i've claimed as my own for whatever reason. 'the earthman chronicles'."
+    },
+    {
+      "t": "narrate",
+      "text": "which is way fun and stupid, but tied into the meta-narrative in wild playful ways."
+    },
+    {
+      "t": "narrate",
+      "text": "the main character in the story isn't so much me, as jack parsons, the rocket scientist/playboy/satanic church figurehead. i deal with the jack parsons, l. ron hubbard, forrey ackerman circle of old time sci-fi nerds extensively, dramatizing that with odd strokes."
+    },
+    {
+      "t": "narrate",
+      "text": "if it sounds insane, i hope it is, because that's sort of the point. i want to go out there on a limb with this one. not play it safe, be a word nerd, challenge myself and try something outlandish and celebrate strange facets of myself and open that up to my own artistic interpretation."
+    },
+    {
+      "t": "narrate",
+      "text": "yeah, enough about that. i should read more and fall unconscious with a lot on my mind, neurons safely occupied."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_seen_scraps",
+      "val": true
+    },
+    {
+      "t": "flag",
+      "key": "vol4_read_scraps",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_scraps"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "id": "vol2_ch11_terminal_velocity",
+  "vol": 2,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "xi. Terminal Velocity",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_car_interior_day.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_rest_stop_wind.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "xi. terminal velocity",
+      "sub": "On the road to the next township · Morning",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "My mother grabbed my right forearm. I was driving her, my grandmother and Christine to a Walmart in the next township. They wanted to go shopping and buy us things. I was in a foul mood. The reasons were many and complicated. There is no first of all, just a litany of reasons. Here are some of those."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "keep your eyes on the road",
+          "goto": 8
+        },
+        {
+          "text": "let her hold on",
+          "goto": 8
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "I woke up with the sound of their knocking outside the little rented duplex college town shack we lived in. They were an hour and a half early, driving in from out of town. I had expected to wake up in half an hour and at least clean the place up a bit. As it was, the house was trashed. Literally filthy."
+    },
+    {
+      "t": "narrate",
+      "text": "Odor, stain, taint. I asked that Mother and Grandmother not come in. As it was, I realized that Christine hadn't done any laundry and there were no clean clothes. I had just worked over night, a twelve hour shift."
+    },
+    {
+      "t": "narrate",
+      "text": "Christine was doing nothing to support us and nothing to take care of the house and I accepted that as fate."
+    },
+    {
+      "t": "narrate",
+      "text": "But that was just my current present predicament and not aligned with where I saw myself in my head. In my mind, I was working hard for all the right things. But to put those right things to words and try to explain myself, my current situation and mindset, would sound to my mother and grandmother like madness."
+    },
+    {
+      "t": "narrate",
+      "text": "Hence, my uncontrollably twitching right arm."
+    },
+    {
+      "t": "narrate",
+      "text": "In her briefest gesture and body language, I could see my Mother's shame and concern, all my sleepless writing nights, all the faith I poured into Christine, all the dreams I forged with friends, all the education gone who knows where exactly and it twitched out of me, an uncontrollable facade that was falling apart before their eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know when it was I broke into tears. I was smiling when it happened, enjoying myself. It was not one thing that was said, it was many things I was still in the process of working through, one at a time."
+    },
+    {
+      "t": "narrate",
+      "text": "I'm not slow on the uptake, I just like to fully consider all the possibilities and implications of any given moment. Especially one as powerful as the one that was currently happening. I think it was my grandmother saying she'd stay in the car, as she was ashamed to be out in public with us."
+    },
+    {
+      "t": "narrate",
+      "text": "The words they said never really hit until all at once."
+    },
+    {
+      "t": "narrate",
+      "text": "See, I loved Christine. I had long been out of love with her but I cared no less for her and tried my best for her. She was my friend and lover and loved me in return far deeply than I can easily convey. There was no part of me that wanted her unhappy or miserable and I tried to give her whatever peace and joy I could."
+    },
+    {
+      "t": "narrate",
+      "text": "But as her idea of happiness drifted further and further away from levels I could healthily sustain, my own unhappiness grew. There had been bad nights. Her crying and locking herself in the bathroom, her inability to process basic truths. I tried to be gentle with reasoning but she was locked up tight."
+    },
+    {
+      "t": "narrate",
+      "text": "She was afraid of the world, so deathly afraid and there was nothing I could do to help. All I could do was share with her my point of view, my perspective, and mostly then it was alright. When you live with someone that long, part of them creeps into you and part of you creeps into them."
+    },
+    {
+      "t": "narrate",
+      "text": "Over the years, I could lose myself in this slippage."
+    },
+    {
+      "t": "narrate",
+      "text": "I try not to regret but with Christine, that's all I did and all I still do. We were just not right. Even though we were. I see it both ways so clearly and that is where madness lies. I don't know how to explain the four or was it five years I spent with her. The days grew the same after awhile."
+    },
+    {
+      "t": "narrate",
+      "text": "I mostly lived in my head. She was my companion when I wanted company. I wrote endless amounts, much of it awful, felt my storytelling growing pains deep down aching hurt at the very center of myself. I don't know if she ever read any of it."
+    },
+    {
+      "t": "narrate",
+      "text": "She had little interest in my works, besides telling me how good she'd know it would be when finished. Nothing was ever finished. That kind of thing also drove me mad. Her faith in my ability without knowing a thing about it. It made me hate her for not caring what my thoughts were."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd go off to Portland and work with Justin on projects. I'd work for the campus television station. I'd go to writer's groups. I was trying to do something and I could share none of it with her when all I wanted was so desperately to show her, not just what I'd done but what I was doing and the places I was going."
+    },
+    {
+      "t": "narrate",
+      "text": "This was not a journey we were taking together, it was either implied by her understanding or my own casual admission of it."
+    },
+    {
+      "t": "narrate",
+      "text": "She would have none of it, or to be less general, very little. I don't know what her increasing agoraphobia was about. She refused to get help or see anybody. I had no time to look into it, to help her. Perhaps I should have sacrificed more to give her that time, perhaps I should have left far sooner."
+    },
+    {
+      "t": "narrate",
+      "text": "There is madness down every road with Christine and that is the true reason I stayed. I needed to study this madness with her up close and personal for as long as my center would hold. My center did not hold. It came off me as tics, as insomnia, as hysteria, as unhappiness."
+    },
+    {
+      "t": "narrate",
+      "text": "I am by nature, a happy individual. I take great joy in basic human existence. So much of our unhappiness was our youth, our inability to figure things out. We tried too hard but came up inexperienced in having a healthy relationship, in forging a life together."
+    },
+    {
+      "t": "narrate",
+      "text": "The years we spent were not wasted much as people have told me. We were trying very hard and there was a lot of love, a lot of warmth and a lot of history. I care so much about the girl it hurts. Life is full of choice and I got to make one that involved breaking her heart."
+    },
+    {
+      "t": "narrate",
+      "text": "There was no pride, there was much shame but there was also joy in the act. I was free again and that saved my life. She and I had a child together, I named him Dickens Dean. If she were to ever read these words, I hope she would be proud of her awful beautiful child."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch11_terminal_velocity_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch11_dickens_dean"
+    }
+  ]
+}
