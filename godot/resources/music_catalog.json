@@ -41,8 +41,7 @@
    "_narrator"
   ],
   "chapters": [
-   "vol1_introduction",
-   "vol1_ch1_s2"
+   "vol1_introduction"
   ]
  },
  {
@@ -140,9 +139,7 @@
    "type": "key",
    "key": "milestone:vol1_choice"
   },
-  "chapters": [
-   "vol1_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol1_painting",
@@ -260,9 +257,7 @@
   "unlock": {
    "type": "heard"
   },
-  "chapters": [
-   "vol2_graveyard"
-  ]
+  "chapters": []
  },
  {
   "id": "vol2_lena_theme",
@@ -289,9 +284,7 @@
    "type": "key",
    "key": "milestone:vol2_seagash"
   },
-  "chapters": [
-   "vol2_end"
-  ]
+  "chapters": []
  },
  {
   "id": "vol2_rest_stop_wind",
@@ -325,8 +318,7 @@
    "vol2_ch2_seagash",
    "vol2_ch2_cliffside",
    "vol2_ch2_ghost",
-   "vol2_ch2_disappearance",
-   "vol2_graveyard"
+   "vol2_ch2_disappearance"
   ]
  },
  {
