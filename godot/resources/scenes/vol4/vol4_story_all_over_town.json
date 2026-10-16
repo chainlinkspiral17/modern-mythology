@@ -116,6 +116,15 @@
       "text": "Because the flood was loosed upon mankind."
     },
     {
+      "t": "narrate",
+      "text": "Scissors from the drawer. The first page of the story, cut down to the headline, pinned to the cork with the others. Below it there is a lot of empty cork."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_all_over_town",
+      "val": true
+    },
+    {
       "t": "flag",
       "key": "vol4_seen_all_over_town",
       "val": true

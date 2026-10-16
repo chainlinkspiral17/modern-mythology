@@ -1,0 +1,79 @@
+{
+  "id": "vol4_board_gaps",
+  "vol": 4,
+  "chapter": 7,
+  "type": "interlude",
+  "title": "the corkboard, half pinned",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_corkboard_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "vii.",
+      "sub": "the desk · not yet",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The folder marked vii. is held shut with a pushpin through both covers."
+    },
+    {
+      "t": "narrate",
+      "text": "Over the desk the corkboard has gaps in it, pale squares where something ought to hang."
+    },
+    {
+      "t": "choice",
+      "prompt": "What's missing from the board?",
+      "opts": [
+        {
+          "text": "a gap where a blog post goes · march, 2006",
+          "scene": "vol4_scraps",
+          "hide_if": "vol4_pin_weep_post"
+        },
+        {
+          "text": "a gap a few days later · march, 2006",
+          "scene": "vol4_scraps",
+          "hide_if": "vol4_pin_turned_in"
+        },
+        {
+          "text": "a gap the size of a zine page",
+          "scene": "vol4_zine",
+          "hide_if": "vol4_pin_zine"
+        },
+        {
+          "text": "a gap where a headline goes",
+          "scene": "vol4_stories",
+          "hide_if": "vol4_pin_all_over_town"
+        },
+        {
+          "text": "the board is full. pull the string.",
+          "scene": "vol4_board",
+          "requires": [
+            "vol4_pin_weep_post",
+            "vol4_pin_turned_in",
+            "vol4_pin_zine",
+            "vol4_pin_all_over_town"
+          ]
+        },
+        {
+          "text": "back to the desk",
+          "scene": "vol4_hub"
+        }
+      ]
+    }
+  ]
+}

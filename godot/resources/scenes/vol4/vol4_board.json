@@ -1,0 +1,214 @@
+{
+  "id": "vol4_board",
+  "vol": 4,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "the corkboard",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_corkboard_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_xerox_hum.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "the corkboard",
+      "sub": "the desk · after midnight",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Four clippings on the cork. In the drawer, with the rubber bands and the dead nine-volts, a ball of red string."
+    },
+    {
+      "t": "narrate",
+      "text": "You tie off on the zine first, because it's farthest out. A world where knowing comes in shrinkwrap and kids in basements cut the seal and burn it, and somebody's uncle in a missile silo laughs about the back doors he left open."
+    },
+    {
+      "t": "narrate",
+      "text": "The string goes left and down to the headline. All over town. The week the idea hit and nothing happened, and then the old professors quit coming to class."
+    },
+    {
+      "t": "narrate",
+      "text": "Left again, to the blog. A kid up all night in March with a story due Monday, finishing the rough of weep."
+    },
+    {
+      "t": "narrate",
+      "text": "Four days later he turns it in and goes to hear poems at a theater and goes home and plays a video game to wash the day off."
+    },
+    {
+      "t": "narrate",
+      "text": "The string doesn't care which of these came first. It runs back and back, through the paper, through the year."
+    },
+    {
+      "t": "narrate",
+      "text": "At the left edge of the clippings it stops at a card you didn't pin. An index card, block capitals, ballpoint pressed hard enough to emboss the cork behind it."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_board_string.jpg",
+      "caption": "DICKENS DEAN."
+    },
+    {
+      "t": "narrate",
+      "text": "Under that, smaller, in the same hand: glass tower. Pacific."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "leave it there.",
+          "goto": 16
+        },
+        {
+          "text": "pull the string a little.",
+          "goto": 18
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The card stays. The string is pulled tight to it like a line to a cleat."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "follow the string.",
+          "goto": 19
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "You pull. The card holds. The string keeps coming off the ball, more than the board has room for."
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol4_por_puesto_night.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "There's slack left. A lot of it."
+    },
+    {
+      "t": "narrate",
+      "text": "It goes past the card, past the frame, down the wall below the board to a strip of cork somebody screwed in under the light switch. Three things are already pinned there, and the pins are rusted."
+    },
+    {
+      "t": "narrate",
+      "text": "A newspaper clipping, gone the color of weak tea. The section header is SUCESOS. The crime page."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "read the headline.",
+          "goto": 24
+        },
+        {
+          "text": "look at the photograph.",
+          "goto": 28
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. Somebody's ballpoint has underlined sin placa twice. No plates."
+    },
+    {
+      "t": "narrate",
+      "text": "Beside it, a parade on the news, shot off a television screen. Masks with too many eyes, feathers, a float shaped like a jaguar made of hubcaps."
+    },
+    {
+      "t": "narrate",
+      "text": "At the edge of the crowd the halftone goes strange around one girl: a yellow slicker, a smear of blue where her hair should be. The credit under the photo says only foto: Maribel."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "turn it over.",
+          "goto": 31
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "A parade on the news, shot off a television screen. Masks with too many eyes, feathers, a float shaped like a jaguar made of hubcaps."
+    },
+    {
+      "t": "narrate",
+      "text": "At the edge of the crowd the halftone goes strange around one girl: a yellow slicker, a smear of blue where her hair should be. The credit under the photo says only foto: Maribel."
+    },
+    {
+      "t": "narrate",
+      "text": "Above it, the headline. POR PUESTO SIN PLACA RECOGE PASAJEROS EN LA AUTOPISTA INCONCLUSA. Caracas, 1978. Somebody's ballpoint has underlined sin placa twice. No plates."
+    },
+    {
+      "t": "narrate",
+      "text": "You turn the clipping over on its pin. The back is birth notices. One is circled. The name is torn away along the fold, and what's left reads nació en Caracas, 1978, varón."
+    },
+    {
+      "t": "narrate",
+      "text": "The string runs to it."
+    },
+    {
+      "t": "narrate",
+      "text": "The second thing is a lollipop wrapper. Waxed paper, flattened by a thumb. Printed on the inside, where you'd only see it once you'd eaten the candy: VALE POR UN BOLETO · LA TIERRA DE LECHE Y MIEL."
+    },
+    {
+      "t": "narrate",
+      "text": "The third pin is still in the jar, and the third thing is in your hand. You don't remember picking it up."
+    },
+    {
+      "t": "narrate",
+      "text": "A cardboard placard, the kind wedged against a windshield. RUTA 77 in house paint. Chacaíto. Sabana Grande. Plaza Venezuela. Petare."
+    },
+    {
+      "t": "narrate",
+      "text": "Below Petare a last stop painted over so many times the cardboard has a crust, and an arrow that runs off the edge of the card."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol4_route_card.jpg",
+      "caption": "RUTA 77"
+    },
+    {
+      "t": "narrate",
+      "text": "The last pin goes in."
+    },
+    {
+      "t": "narrate",
+      "text": "Rain on hot asphalt. The window is shut. It isn't raining here."
+    },
+    {
+      "t": "narrate",
+      "text": "Headlights sweep the ceiling once, left to right, though the street below runs the other way."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_board_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_hub"
+    }
+  ]
+}

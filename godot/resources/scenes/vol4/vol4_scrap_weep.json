@@ -96,6 +96,15 @@
       "text": "Just finished the rough of weep. You can read it here or wait until i get you a better looking hard copy sometime this week."
     },
     {
+      "t": "narrate",
+      "text": "You tear the post off along the printer perforation. A red pushpin out of the jar, and it goes up on the corkboard over the desk, top corner, where the cork is still clean."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_weep_post",
+      "val": true
+    },
+    {
       "t": "flag",
       "key": "vol4_seen_weep",
       "val": true

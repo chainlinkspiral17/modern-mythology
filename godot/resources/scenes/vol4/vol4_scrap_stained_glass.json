@@ -76,6 +76,15 @@
       "text": "send me words people."
     },
     {
+      "t": "narrate",
+      "text": "Just the one line, the one about turning it in, torn out with a ragged margin. Pinned under the other. The cork takes it with a sound like a bitten apple."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_turned_in",
+      "val": true
+    },
+    {
       "t": "flag",
       "key": "vol4_seen_stained_glass",
       "val": true

@@ -1,9 +1,9 @@
 {
   "id": "vol4_finale",
   "vol": 4,
-  "chapter": 8,
+  "chapter": 10,
   "type": "chapter",
-  "title": "Scraps — end",
+  "title": "Scraps — here ends the book",
   "nodes": [
     {
       "t": "hide",
@@ -23,9 +23,13 @@
     },
     {
       "t": "interlude",
-      "text": "End of modern mythology.",
-      "sub": "fly not fall.",
+      "text": "here ends the book.",
+      "sub": "modern mythology. · a chainlinkspiral production of a oneironautics endeavor",
       "duration": 3000
+    },
+    {
+      "t": "narrate",
+      "text": "fly not fall."
     },
     {
       "t": "flag",

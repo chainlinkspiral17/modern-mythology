@@ -46,6 +46,16 @@
           "scene": "vol4_stories"
         },
         {
+          "text": "the corkboard over the desk",
+          "scene": "vol4_board",
+          "requires": [
+            "vol4_pin_weep_post",
+            "vol4_pin_turned_in",
+            "vol4_pin_zine",
+            "vol4_pin_all_over_town"
+          ]
+        },
+        {
           "text": "vii. daddy",
           "scene": "vol4_daddy_a",
           "requires": [
@@ -53,8 +63,21 @@
             "vol4_read_poems",
             "vol4_read_zine",
             "vol4_read_cc",
-            "vol4_read_stories"
+            "vol4_read_stories",
+            "vol4_board_seen"
           ]
+        },
+        {
+          "text": "vii. daddy",
+          "scene": "vol4_board_gaps",
+          "requires": [
+            "vol4_read_scraps",
+            "vol4_read_poems",
+            "vol4_read_zine",
+            "vol4_read_cc",
+            "vol4_read_stories"
+          ],
+          "hide_if": "vol4_board_seen"
         }
       ]
     }

@@ -1,0 +1,192 @@
+{
+  "id": "vol4_curtain_call",
+  "vol": 4,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "curtain call",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_dawn.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "curtain call",
+      "sub": "the desk · before the sun",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "The desk near dawn. Every drawer pulled. The corkboard in the window light, the red string gone brown."
+    },
+    {
+      "t": "narrate",
+      "text": "Four folding chairs that weren't here before, church-basement chairs, one with a lean."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "(nervously, capping a pen) A moment ago I was debating whether or not to stop, and here I am stopping something I swore I'd never finish."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "(comfortable, paint under the nails) Pieces click. Not all of them. The rest go in the drawer with the rubber bands."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "(sitting with a book, the same book) The days gone by dried up, crackled, flaked. I swept them into a dustpan. Some I kept."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "(at the window) Hold on this. Don't cut yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Through the glass, the street. A car idles at the curb with its parking lights on and a cardboard sign against the windshield."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "(making hallacas at the end of the desk) Plantain leaf, string, whatever's left over goes inside. You tie it shut and boil it and nobody asks what's in it."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "That's the book."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "amused",
+      "text": "That's every book."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Somebody's standing at the back."
+    },
+    {
+      "t": "narrate",
+      "text": "There is. By the door a man stands as if he's in line for a movie, holding a slip of waxed paper the way you'd hold a ticket. He doesn't come in."
+    },
+    {
+      "t": "narrate",
+      "text": "His lips move. It might be all so very meta. It might be the name of a street."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Every scrap on this desk, every page in that drawer. One book. It always was. You can lift it by the string."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "There's a city up in the mountains, an hour from the coast. Four in the afternoon it rains and the streets steam like a kettle."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Cut to: the car."
+    },
+    {
+      "t": "narrate",
+      "text": "Two short taps on a horn."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Por puesto. One seat left. That's what two taps means."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Where does it go?"
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "Where it always goes. Then one stop past."
+    },
+    {
+      "t": "narrate",
+      "text": "The sign in the windshield says RUTA 77. The last stop on it is a crust of paint."
+    },
+    {
+      "t": "say",
+      "char": "The Director",
+      "expr": "neutral",
+      "text": "Lights down. Not out."
+    },
+    {
+      "t": "narrate",
+      "text": "When you look again the man at the door is gone, the car is gone, and the street is wet though it hasn't rained."
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "Say the thing."
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "Which thing."
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "warm",
+      "text": "The one from the front of the book."
+    },
+    {
+      "t": "narrate",
+      "text": "Four voices, nobody first:"
+    },
+    {
+      "t": "narrate",
+      "text": "fly not fall."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_curtain_call_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol4_finale"
+    }
+  ]
+}

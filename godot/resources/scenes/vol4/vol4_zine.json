@@ -934,6 +934,15 @@
       "text": "kinesthesia"
     },
     {
+      "t": "narrate",
+      "text": "One page of the zine comes loose at the staple, the one with the seal that says FUCK OFF. It goes up on the board crooked and stays crooked."
+    },
+    {
+      "t": "flag",
+      "key": "vol4_pin_zine",
+      "val": true
+    },
+    {
       "t": "flag",
       "key": "vol4_read_zine",
       "val": true

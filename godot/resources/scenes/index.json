@@ -214,10 +214,13 @@
     "vol4_story_influx_a",
     "vol4_story_influx_b",
     "vol4_story_influx_c",
+    "vol4_board",
     "vol4_daddy_a",
     "vol4_daddy_b",
     "vol4_daddy_c",
-    "vol4_finale"
+    "vol4_curtain_call",
+    "vol4_finale",
+    "vol4_board_gaps"
   ],
   "5": [
     "vol5_ch0_booth6",
