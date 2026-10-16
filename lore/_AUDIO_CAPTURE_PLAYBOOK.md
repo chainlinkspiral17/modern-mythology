@@ -3,7 +3,8 @@
 How FIELD RECORDER, TAPE STUDIO and `field_ingest.py` record, process
 and deliver audio, and how that audio reaches Godot. Read before
 touching `godot/tools/audio_kit.js`, `field_recorder.html`,
-`tape_studio.html`, `field_ingest.py`, `vendor/oggvorbis/`, or
+`tape_studio.html`, `field_ingest.py`, `vendor/oggvorbis/`,
+`vendor/basicpitch/` + `transcribe_notes.js` (audio → notes), or
 `AudioMgr._load_audio`.
 
 ## Core rules
@@ -1320,6 +1321,51 @@ context keeps running into a fake sink, and the meters still move.
   nearest diatonic one), one chord per bar; the relative major / minor ambiguity again (an A-minor test piece
   read as C major — same notes, same chord pitches). A full mix's melody is rough even with Basic Pitch: plan on
   ✎ EDIT IN DAW for the lead; the edit keeps the flag.
+
+### 2026-10-16 — Basic Pitch vendored: audio → notes on file:// (transcribe_notes.js)
+
+- Imported audio needs notes before the tools can sketch a temp arrangement from it, so Spotify's Basic
+  Pitch (npm `@spotify/basic-pitch` 1.0.1, Apache-2.0) is vendored in `godot/tools/vendor/basicpitch/`,
+  the oggvorbis way: generated classic scripts + a rebuild script, nothing fetched at run time. The API is
+  `godot/tools/transcribe_notes.js`: `BasicPitchLite.ready()` → true / false and
+  `BasicPitchLite.transcribe(mono, sampleRate, opts)` → `{ notes: [{t, d, n, v}], seconds, backend, ms }`.
+- **Three generated files, 2.7 MB:** `basicpitch_tf.js` (esbuild IIFE of tfjs-core / converter / webgl /
+  wasm / cpu 4.22.0 + Basic Pitch's `inference.ts` + `toMidi.ts`, 0.99 MB), `basicpitch_model.js` (the
+  graph model, weights as base64, 1.15 MB), `basicpitch_wasm.js` (the WASM backend's SIMD binary as base64,
+  0.57 MB). `build.sh` pins every version and rebuilds byte-identical output.
+- **file:// model loading:** `loadGraphModel(url)` fetches, and Chrome blocks `fetch()` on file://. The
+  model goes in through `tf.io.fromMemory({ modelTopology, weightSpecs, weightData })`; the WASM binary as a
+  `data:application/wasm;base64,…` URL through `setWasmPaths` (read from memory, no `.wasm` request). The
+  test asserts the only requests are `file:` (the five expected files) and `data:`.
+- **The modular tfjs core has no chained methods.** Basic Pitch calls `tensor.slice()` / `.reshape()`, which
+  only exist once `@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops` is imported (the
+  full `@tensorflow/tfjs` does it). Without it every backend "failed" its warm-up with `o.max is not a function`.
+- **Only the SIMD wasm is vendored**, so WASM is tried only when `WASM_HAS_SIMD_SUPPORT` is true, with
+  threads forced off: with a missing binary the backend's init asks for another file and never settles.
+- **Speed, headless Chromium 141, sandbox (4 vCPU, no GPU):** WASM 0.10–0.16 s per second of audio (180 s
+  in 21.5 s), WebGL on SwiftShader 0.9–1.2 (+ 5–7 s of shader compile), plain-JS CPU 1.3–1.9. So the order
+  is WebGL on a real GPU → WASM → CPU, and a software WebGL renderer (SwiftShader, llvmpipe — read from
+  `WEBGL_debug_renderer_info`) goes last. Every backend must pass a warm-up (a 440 Hz window peaks at A4)
+  or the next is tried. The Deck's GPU WebGL is not timed yet; its WASM should land near the sandbox's.
+- **Upstream's loop leaks tensors** (`evaluateModel` never disposes its slices / outputs). We run the same
+  methods (`prepareData`, `evaluateSingleFrame`, `unwrapOutput`) inside `tf.engine().startScope()` /
+  `endScope()` per window, one transcription at a time; the suite asserts only the 245 weight tensors stay.
+- **The note decoder is quadratic.** `outputToNotesPoly`'s melodia pass rescans the whole piece per note:
+  30 s → 0.4 s, 180 s → 12 s of frozen page. Past 38 s it runs on 30 s segments with 4 s of context each
+  side (a note belongs to the segment it starts in; a note a window cut is stretched by the same key in the
+  next segment's context): 180 s decodes in 2.9 s with yields, and a 75 s test piece gives the identical 282
+  notes either way.
+- **Good at:** monophonic lines and block chords with clear onsets — 8/8 melody notes within ±26 ms, every
+  tone of C / Am / F / G7, and on a synthetic 120 bpm mix (drums + bass + pad chords + lead) 100 % recall of
+  lead, bass and chords. Onsets stay right deep into a piece (Basic Pitch's per-window time correction).
+- **Bad at (full mixes):** precision, not recall. That synthetic mix gave 268 notes for 103 played: 93
+  overtone notes (+12 / +19 over bright tones), 47 octaves under the bass, 25 other (drums, smear). Real
+  mixes (vocals, reverb, distortion, dense guitars) will be worse; it is no stem separator. Filter downstream
+  (velocity, key range per part, overtone pruning against a louder note a twelfth / octave below) and treat
+  the result as a sketch — which is all the temp-only arrangements need.
+- Basic Pitch's `minFreq` / `maxFreq` act on whole keys, rounded down: 300 Hz is key 62.4, so
+  `maxFreq: 300` drops key 62 (293.7 Hz) and up, and `minFreq: 300` still keeps key 62. To keep key K
+  under a `maxFreq`, pass key K + 1's frequency.
 
 ## TEMPLATE
 
