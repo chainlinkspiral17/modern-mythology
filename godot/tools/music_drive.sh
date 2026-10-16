@@ -31,7 +31,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 LOCAL="$(cd "$HERE/../assets" && pwd)/audio"
 # the tools' working folders travel whole; elsewhere only audio, MIDI and their sidecars
 # (--filter rules apply in order; mixing --include with --exclude would leave the order to rclone)
-FILTERS=(--filter "+ /review/**" --filter "+ /library/**" --filter "+ /projects/**" --filter "+ /replaced/**"
+FILTERS=(--filter "+ /review/**" --filter "+ /library/**" --filter "+ /projects/**" --filter "+ /replaced/**" --filter "+ /imports/**"
          --filter "+ *.ogg" --filter "+ *.mp3" --filter "+ *.wav" --filter "+ *.flac" --filter "+ *.mid" --filter "+ *.midi"
          --filter "+ *.stems.json" --filter "+ *.credits.txt" --filter "- **")
 # a progress bar on a terminal; one stats line in the background (the timer's journal)

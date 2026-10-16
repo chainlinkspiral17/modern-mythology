@@ -77,6 +77,14 @@ func _ready() -> void:
 	out["real_loop"] = rs.loop if rs is AudioStreamOggVorbis else null
 	var b: AudioStream = AudioMgr._load_audio("assets/audio/bgm/both.ogg")
 	out["both_class"] = b.get_class() if b else "null"
+	# a third-party temp (a cover from imported audio): playable while sketching, blocked when the project says so
+	out["tp_can_play"] = AudioMgr.can_play("assets/audio/bgm/tpcover.ogg")
+	ProjectSettings.set_setting("audio/block_third_party_temps", true)
+	out["tp_blocked_can_play"] = AudioMgr.can_play("assets/audio/bgm/tpcover.ogg")
+	var tpb = AudioMgr._load_audio("assets/audio/bgm/tpcover.ogg")
+	out["tp_blocked_stream"] = tpb.get_class() if tpb else "null"
+	out["tp_clean_still_plays"] = AudioMgr.can_play("assets/audio/bgm/tmp_loop.ogg")
+	ProjectSettings.set_setting("audio/block_third_party_temps", false)
 	print("RESULT " + JSON.stringify(out))
 	get_tree().quit()
 

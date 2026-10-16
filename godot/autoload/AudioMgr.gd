@@ -305,8 +305,23 @@ func can_play(src: String) -> bool:
 	var base := src.get_basename()
 	for p in [src, base + ".wav", base + ".temp.ogg", base + ".stems.json"]:
 		if _exists(p):
+			# a third-party temp (a cover / sample made from imported audio) is never playable in a release build
+			if (p == base + ".temp.ogg" or p == base + ".stems.json") and _third_party_blocked(base):
+				continue
 			return true
 	return false
+
+
+## Temps made from imported third-party audio (the AUDIO DIRECTOR's REMIX of an import: covers, samples) carry
+## "third_party" in their manifest. They are sketches: a release build never plays them (nor their stems), and
+## the project setting audio/block_third_party_temps (default false) blocks them in the editor too, to hear the
+## game as it would ship. godot/tools/music_release_check.py lists / strips them before an export.
+func _third_party_blocked(base: String) -> bool:
+	var block := not OS.is_debug_build() or bool(ProjectSettings.get_setting("audio/block_third_party_temps", false))
+	if not block:
+		return false
+	var man = _manifest(base)
+	return man != null and man.has("third_party") and man["third_party"] != null
 
 
 func _exists(path: String) -> bool:
@@ -373,6 +388,8 @@ func _load_stems(src: String) -> AudioStream:
 		return null
 	# a temp's stems never layer over real audio (the src itself, or a recorded .wav)
 	if bool(man.get("temp", false)) and (_exists(src) or _exists(base + ".wav")):
+		return null
+	if _third_party_blocked(base):
 		return null
 	var stems: Array = man["stems"]
 	if stems.is_empty() or stems.size() > AudioStreamSynchronized.MAX_STREAMS:
@@ -751,7 +768,7 @@ func _load_audio(src: String) -> AudioStream:
 			if _exists(wav_src):
 				return _load_audio(wav_src)
 			var temp_src := src.get_basename() + ".temp.ogg"
-			if _exists(temp_src):
+			if _exists(temp_src) and not _third_party_blocked(src.get_basename()):
 				return _load_audio(temp_src)
 		return null
 	var bytes := FileAccess.get_file_as_bytes(abs_path)

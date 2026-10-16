@@ -393,7 +393,7 @@
   // target track's own mood (takeMood), with: a BLEND partner's options. → { o (TempMaker.compose options, with the
   // graft), style, op, key, label, roles }
   function notesOptions(recipe, src, ctx) {
-    const S = SG(), tm = ctx.target || {}, srcPl = S.plan(Object.assign({}, src, { graft: null }));
+    const S = SG(), tm = ctx.target || {}, srcPl = ctx.srcPlan || S.plan(Object.assign({}, src, { graft: null }));      // srcPlan: a transcription's
     // one stream per decision: an asked-for style (⟳ AGAIN passes the one it got) leaves every other draw where it was
     const RS = S.rng(ctx.seed * 3 + 17), R = S.rng(ctx.seed * 3 + 29), RT = S.rng(ctx.seed * 3 + 41);
     const dark = darkOf(srcPl.mode), side = dark ? 'dark' : 'bright', same = !!ctx.sameTrack;
@@ -436,7 +436,7 @@
         HP[k] = keep ? { prog: h.prog, hr: h.hr, ext: mine.ext } : mine;
       }
       return { mode: srcPl.mode, scale: srcPl.scale, key, HP, sections: sections.map(s => Object.assign({}, s, { roles: s.roles.slice() })),
-        motifA: motifOp(theme.motifA, op), motifB: motifOp(theme.motifB, op), motif: theme.motif };
+        motifA: theme.motifA ? motifOp(theme.motifA, op) : pl.motifA, motifB: theme.motifB ? motifOp(theme.motifB, op) : pl.motifB, motif: theme.motif };
     };
     const o = { seed: ctx.seed, style, form: 'song', mode: srcPl.mode, key, bpm, density: +density.toFixed(2), motif: theme.motif || undefined,
       textures: recipe === 'intense' ? undefined : src.textures, fx: recipe === 'underscore' || recipe === 'dream' ? 'none' : undefined, graft };
@@ -529,6 +529,118 @@
   }
 
   // ═══════════════════════════════════════════════════════════════
+  // transcription: any audio → a source the NOTES recipes can use (a cover of a recording)
+  // ═══════════════════════════════════════════════════════════════
+  // tempo / key / downbeat (analyse) → the diatonic chord of every bar (chroma vs triads, sticky) → sections (4-bar
+  // phrases grouped by similarity: A, B, C …) → the notes (BasicPitchLite, when vendor/basicpitch is loaded) →
+  // a melody (the top line) and a bass (the bottom line) on a 16th grid. → { plan (SeqGen.plan-shaped: sections,
+  // HP, key, mode, motif …), project (lead / bass patterns per section, for COVER), opts, info }
+  function barChroma(x, sr, an) {
+    const barSec = 240 / an.bpm, out = [];
+    for (let t = an.phase; t + barSec * 0.5 <= x.length / sr; t += barSec) {
+      const ch = chroma(x, sr, Math.round(t * sr), Math.min(x.length, Math.round((t + barSec) * sr)));
+      const tot = ch.reduce((a, v) => a + v, 0) || 1;
+      out.push(Array.from(ch, v => v / tot));
+    }
+    return out;
+  }
+  const cosine = (a, b) => { let d = 0, na = 0, nb = 0; for (let i = 0; i < a.length; i++) { d += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; } return na && nb ? d / Math.sqrt(na * nb) : 0; };
+  // the bar's chord as a scale degree: the diatonic triad (or seventh) its chroma fits best; a change needs a clear win
+  function barChords(chromas, an) {
+    const S = SG(), scale = S.SCALES[an.mode] || S.SCALES.minor;
+    const tmpl = [0, 1, 2, 3, 4, 5, 6].map(d => { const v = new Array(12).fill(0); S.chordPCs(an.key, scale, d, false).forEach((pc, i) => { v[pc] += i === 0 ? 1.3 : 1; }); return v; });
+    const out = []; let prev = 0;
+    for (const ch of chromas) {
+      const sc = tmpl.map(v => cosine(ch, v)); let best = 0; for (let d = 1; d < 7; d++) if (sc[d] > sc[best]) best = d;
+      if (out.length && sc[prev] >= sc[best] - 0.03) best = prev;
+      out.push(best); prev = best;
+    }
+    return out;
+  }
+  // 4-bar phrases, grouped: a phrase like an earlier one (chroma + chords) gets its label; runs become sections (≤ 8 bars)
+  function sectionsOf(chromas, degs) {
+    const P = 4, n = Math.floor(chromas.length / P), labels = [], reps = [];
+    for (let i = 0; i < n; i++) {
+      const sim = r => { let s = 0; for (let b = 0; b < P; b++) s += cosine(chromas[i * P + b], chromas[r * P + b]) * 0.7 + (degs[i * P + b] === degs[r * P + b] ? 0.3 : 0); return s / P; };
+      let best = -1, bs = 0; reps.forEach((r, j) => { const v = sim(r); if (v > bs) { bs = v; best = j; } });
+      if (best >= 0 && bs > 0.86) labels.push(best); else { reps.push(i); labels.push(reps.length - 1); }
+    }
+    const NAMES = 'ABCDEFGH', secs = [], count = {};
+    for (let i = 0; i < n;) {
+      let j = i; while (j < n && labels[j] === labels[i] && (j - i) < 2) j++;
+      const base = NAMES[Math.min(labels[i], NAMES.length - 1)];
+      count[base] = (count[base] || 0) + 1;
+      secs.push({ name: base + (count[base] > 1 ? count[base] : ''), base, bar: i * P, bars: (j - i) * P, label: labels[i] });
+      i = j;
+    }
+    return secs.length ? secs : [{ name: 'A', base: 'A', bar: 0, bars: Math.max(1, chromas.length), label: 0 }];
+  }
+  // a top line and a bottom line from polyphonic notes, on the 16th grid (ticks from the first downbeat)
+  function lines(notes, an, bars) {
+    const S = SG(), S16 = S.S16, grid = 60 / an.bpm / 4, steps = bars * 16, top = new Int16Array(steps).fill(-1), bot = new Int16Array(steps).fill(-1), vel = new Float32Array(steps);
+    for (const nt of notes) {
+      const a = Math.max(0, Math.round((nt.t - an.phase) / grid)), z = Math.min(steps, Math.max(a + 1, Math.round((nt.t + nt.d - an.phase) / grid)));
+      for (let k = a; k < z; k++) {
+        if (nt.n >= 52 && nt.n <= 96 && (nt.v ?? 0.6) >= 0.2 && nt.n > top[k]) { top[k] = nt.n; vel[k] = nt.v ?? 0.6; }
+        if (nt.n >= 28 && nt.n <= 55 && (bot[k] < 0 || nt.n < bot[k])) bot[k] = nt.n;
+      }
+    }
+    const run = arr => { const out = []; for (let k = 0; k < steps;) { if (arr[k] < 0) { k++; continue; } let j = k + 1; while (j < steps && arr[j] === arr[k] && (j % 16)) j++; out.push({ t: k * S16, d: (j - k) * S16 - 4, n: arr[k], v: +Math.max(0.45, Math.min(0.9, vel[k] || 0.7)).toFixed(2) }); k = j; } return out; };
+    return { melody: run(top), bass: run(bot) };
+  }
+  // a note → its scale degree from the tonic at octave 5 (the motif's language)
+  function degreeOf(n, key, scale) { const S = SG(); let best = 0, bd = 99; for (let d = -14; d <= 14; d++) { const m = S.deg2midi(key, scale, d, 5), e = Math.abs(m - n); if (e < bd) { bd = e; best = d; } } return best; }
+  function motifFrom(mel, sec, key, scale) {
+    const S = SG(), BAR = S.BAR, S16 = S.S16, a = sec.bar * BAR;
+    const ev = mel.filter(x => x.t >= a && x.t < a + 2 * BAR).map(x => ({ s: Math.round((x.t - a) / S16), step: degreeOf(x.n, key, scale) }));
+    return ev.length >= 2 ? ev.filter((x, i, l) => x.s < 32 && (!i || l[i - 1].s !== x.s)) : null;
+  }
+  const guessStyle = (bpm, mode) => { const minor = !!MINORISH[mode]; return bpm < 75 ? (minor ? 'noir' : 'hymn') : bpm < 100 ? (minor ? 'trip_hop' : 'folk') : bpm < 128 ? (minor ? 'synthwave' : 'post_rock') : (minor ? 'dnb' : 'surf'); };
+  async function transcribe(src, say = () => {}) {
+    const S = SG(), BAR = S.BAR;
+    say('listen', 'reading the audio…');
+    const chs = await decodeFile(src.ref.path), x = mono(chs);
+    say('listen', 'tempo, key, chords, sections…');
+    const an = analyse(chs, RATE, src.known);
+    const scale = S.SCALES[an.mode] || S.SCALES.minor, chromas = barChroma(x, RATE, an), degs = barChords(chromas, an);
+    const secs = sectionsOf(chromas, degs), bars = secs.reduce((m, q) => Math.max(m, q.bar + q.bars), 0);
+    let notes = [], engine = null;
+    const BP = root.BasicPitchLite;
+    if (BP && await BP.ready().catch(() => false)) {
+      say('listen', 'transcribing the notes…');
+      const r = await BP.transcribe(x, RATE, { onProgress: f => say('listen', 'transcribing the notes… ' + Math.round(f * 100) + '%') });
+      notes = r.notes || []; engine = 'basic-pitch (' + (r.backend || '?') + ')';
+    }
+    const { melody, bass } = lines(notes, an, bars);
+    // per section: its chords (one per bar) and, for COVER, its own melody / bass
+    const HP = {}, project = { tracks: [{ role: 'lead', patterns: {} }, { role: 'bass', patterns: {} }] };
+    const inSec = (list, q) => list.filter(n => n.t >= q.bar * BAR && n.t < (q.bar + q.bars) * BAR).map(n => Object.assign({}, n, { t: n.t - q.bar * BAR, d: Math.min(n.d, (q.bar + q.bars) * BAR - n.t) }));
+    for (const q of secs) {
+      if (!HP[q.base]) HP[q.base] = { prog: degs.slice(q.bar, q.bar + q.bars), hr: 1, ext: 'triad' };
+      const lm = inSec(melody, q), bm = inSec(bass, q);
+      q.roles = ['drums', 'bass', 'chords', 'pad'].concat(lm.length ? ['lead'] : []);
+      if (lm.length) project.tracks[0].patterns['lead_' + q.name] = { notes: lm };
+      if (bm.length) project.tracks[1].patterns['bass_' + q.name] = { notes: bm };
+    }
+    HP.intro = HP.outro = HP.loop = HP.bed = HP.brk = HP.A; HP.B = HP.B || HP.A; HP.C = HP.C || HP.B;      // the song's summary reads A and B
+    const first = secs.find(q => q.base === 'A'), second = secs.find(q => q.base === 'B') || first;
+    const perBar = melody.length / Math.max(1, bars);
+    const plan = { styleId: guessStyle(an.bpm, an.mode), mode: an.mode, scale, key: an.key, bpm: Math.round(an.bpm), density: +clamp(0.3 + perBar * 0.06, 0.3, 0.85).toFixed(2),
+      sections: secs.map(q => ({ name: q.name, base: q.base, bar: q.bar, bars: q.bars, roles: q.roles })), HP,
+      motifA: melody.length ? motifFrom(melody, first, an.key, scale) : null, motifB: melody.length ? motifFrom(melody, second, an.key, scale) : null, motif: null };
+    const opts = { style: plan.styleId, mode: an.mode, key: an.key, bpm: plan.bpm, density: plan.density };
+    return { plan, project, opts, info: { bars, sections: secs.map(q => q.name + ':' + q.bars).join(' '), chords: degs.length, notes: notes.length, melody: melody.length, bass: bass.length, engine, guessed: an.guessed, bpm: an.bpm, key: an.key, mode: an.mode } };
+  }
+  // the third-party flag a take inherits: an import not marked cleared (a cover / sample of someone else's music),
+  // or a source take that already carries one (a remix of a cover is still a cover)
+  function thirdPartyOf(src, kind) {
+    if (src.ref.kind === 'file' && src.ref.imported && src.ref.rights !== 'cleared')
+      return { kind, source: src.title, file: src.ref.path, rights: 'temp-only', note: 'a sketch from imported audio — strip (godot/tools/music_release_check.py --strip) or license before release' };
+    const tp = src.meta && src.meta.third_party;
+    return tp ? Object.assign({}, tp, { kind: tp.kind === 'sample' || kind === 'sample' ? 'sample' : 'cover', via: (src.meta && src.meta.take) || undefined }) : null;
+  }
+
+  // ═══════════════════════════════════════════════════════════════
   // making remix takes
   // ═══════════════════════════════════════════════════════════════
   // req: { takes, recipe, from: ref, with?: ref, style?, key?, seed?, review? } → like TempMaker.makeTakes (events
@@ -541,7 +653,13 @@
     const briefs = ctx.briefs !== undefined ? ctx.briefs : await T.loadBriefs();
     const score = ctx.score !== undefined ? ctx.score : await T.loadScore();
     const src = await loadSource(req.from), wth = req.with ? await loadSource(req.with) : null;
-    if (R0.kind === 'notes' && !src.opts) throw new Error(R0.name + ' needs a take made here (its notes) — a recording can only take the audio recipes (CHOP, DUB, STRETCH, TAPE)');
+    // a recording (an import, a catalog recording, an approved temp's Ogg) → transcribed for the NOTES recipes
+    let trx = null;
+    if (R0.kind === 'notes' && !src.opts && src.ref.kind === 'file') {
+      trx = await transcribe(src, (st, text) => on({ type: 'progress', id: list[0] && list[0].id, n: 0, total: list.length * nTakes, stage: st, text: R0.name + ' of ' + src.title + ' — ' + text }));
+      src.opts = trx.opts; src.project = trx.project;
+    }
+    if (R0.kind === 'notes' && !src.opts) throw new Error(R0.name + ' needs notes: a take made here, or a recording to transcribe');
     if (recipe === 'blend' && !(wth && wth.opts)) throw new Error('BLEND needs a take (with notes) as its WITH source');
     let audio = null, an = null;
     const done = [], total = list.length * nTakes; let k = 0;
@@ -559,10 +677,11 @@
           let song, why, bars, label, extra = {};
           if (R0.kind === 'notes') {
             say('compose', 'grafting the source’s chords, sections and theme…');
-            const no = notesOptions(recipe, src.opts, { seed, n, target: tm, sameTrack: src.ref.id === t.id, style: req.style, key: req.key, with: wth && wth.opts });
+            const no = notesOptions(recipe, src.opts, { seed, n, target: tm, sameTrack: src.ref.id === t.id, style: req.style, key: req.key, with: wth && wth.opts, srcPlan: trx ? trx.plan : null });
             song = await T.compose(E, no.o, ctx.inst || 'forge');
-            if (recipe === 'cover') coverLead(E, src, no);
+            if (recipe === 'cover') coverLead(E, src, no, trx ? ['lead', 'bass'] : ['lead']);
             label = no.label; extra = { op: no.op, key: no.key };
+            if (trx) extra.transcription = trx.info;
             await T.shapeArrangement(E, song, {});
             if (req.bars) bars = Math.max(1, Math.round(+req.bars));
             else { const secs = song.bars * S.BAR * E.spt(); bars = song.bars * Math.max(1, Math.ceil(T.TEMP_MIN_SEC / secs)); }
@@ -615,7 +734,8 @@
           const r = await T.render(E, { loop: false, stems, master: ctx.master !== false, lufs: ctx.lufs ?? -14, tape: req.tape ? { id: req.tape, seed } : null,
             onProgress: p => p && p.phase === 'stem' && say('render', 'rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
           const credits = await E.credits(), sec = r.channels[0].length / r.sampleRate;
-          why = 'REMIX · ' + label + ' — from ' + src.title + (src.ref.take ? ' (take ' + src.ref.take + ')' : '') + (wth ? ' with the theme of ' + wth.title : '');
+          why = 'REMIX · ' + label + ' — from ' + src.title + (src.ref.take ? ' (take ' + src.ref.take + ')' : '') + (wth ? ' with the theme of ' + wth.title : '') + (trx ? ' (transcribed)' : '');
+          const tp = thirdPartyOf(src, R0.kind === 'notes' ? 'cover' : 'sample') || (wth && thirdPartyOf(wth, 'cover'));
           const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+P.bpm).toFixed(4), density: song.density, seed,
             composer: song.v || 1, motif: song.motif || undefined, textures: song.textures && song.textures.length ? song.textures : 'none', fx: song.fx || 'none', hit: song.hit || 'none', vocab: song.vocab };
           const request = { remix: { recipe, from: req.from, with: req.with || undefined, style: req.style || undefined, key: req.key ?? undefined, bars: req.bars || undefined, tape: req.tape || undefined } };
@@ -626,6 +746,7 @@
             roles: P.tracks.map(x => x.role || x.name), lufs: r.mastered ? +r.mastered.after.toFixed(1) : null,
             true_peak: r.mastered ? +r.mastered.truePeak.toFixed(2) : +AK.util.db(AK.util.peakOf(r.channels)).toFixed(2),
             seconds: +sec.toFixed(3), bars, sample_rate: r.sampleRate, credits: credits.text || '', credits_worst: credits.worst || 'free', stems: [] };
+          if (tp) meta.third_party = tp;
           const files = await T.writeTake(E, dir, r, r.stems, credits, meta);
           done.push({ id: t.id, take, dir, seed, files, recipe, label });
           on({ type: 'take', id: t.id, take, seed });
@@ -638,15 +759,18 @@
   const mostCommon = a => { const c = new Map(); for (const x of a) c.set(x, (c.get(x) || 0) + 1); return [...c.entries()].sort((p, q) => q[1] - p[1])[0][0]; };
   // COVER: the source's own lead notes (its project's lead patterns; else regenerated from its options), section by
   // section, moved to the remix's key
-  function coverLead(E, src, no) {
-    const S = SG(), tr = E.project.tracks.find(x => x.role === 'lead'); if (!tr) return;
-    const srcTr = src.project && src.project.tracks && src.project.tracks.find(x => x.role === 'lead');
-    const gen = srcTr ? null : S.song(Object.assign({}, src.opts)).parts.lead;
-    const pats = srcTr ? srcTr.patterns : gen.patterns;
+  function coverLead(E, src, no, roles = ['lead']) {
+    const S = SG();
     let d = ((no.key - no.srcKey) % 12 + 12) % 12; if (d > 6) d -= 12;
-    for (const [pid, p] of Object.entries(tr.patterns)) {
-      const q = pats[pid]; if (!q || !q.notes) continue;
-      p.notes = q.notes.filter(x => x.t < p.lenBars * S.BAR).map(x => Object.assign({}, x, { n: clamp(x.n + d, 0, 127), d: Math.min(x.d, p.lenBars * S.BAR - x.t) }));
+    for (const role of roles) {
+      const tr = E.project.tracks.find(x => x.role === role); if (!tr) continue;
+      const srcTr = src.project && src.project.tracks && src.project.tracks.find(x => x.role === role);
+      const pats = srcTr ? srcTr.patterns : role === 'lead' ? S.song(Object.assign({}, src.opts)).parts.lead.patterns : null;
+      if (!pats) continue;
+      for (const [pid, p] of Object.entries(tr.patterns)) {
+        const q = pats[pid]; if (!q || !q.notes || !q.notes.length) continue;
+        p.notes = q.notes.filter(x => x.t < p.lenBars * S.BAR).map(x => Object.assign({}, x, { n: clamp(x.n + d, 0, 127), d: Math.min(x.d, p.lenBars * S.BAR - x.t) }));
+      }
     }
   }
   async function addBass(E, notes, bars, style, seed) {
@@ -661,14 +785,18 @@
 
   // every finished thing in the game folder that can be a source, for the director's REMIX FROM list:
   // takes (approved first) with their track, the catalog's real recordings, the approved temps' Oggs
-  function sourcesFrom(cat, state, approvals) {
+  function sourcesFrom(cat, state, approvals, imports = []) {
     const out = [];
+    // imported audio (assets/audio/imports): anything not marked cleared makes flagged, temp-only takes
+    for (const im of imports) out.push({ kind: 'file', id: 'import:' + im.slug, title: im.name, path: im.path, imported: true, rights: im.rights || 'unlicensed',
+      label: im.name + (im.rights === 'cleared' ? ' — import (cleared)' : ' — import ⚠ temp only') });
     for (const t of cat) {
       const st = state[t.id]; if (!st) continue;
       const ap = st.approved && st.approved.take;
       for (const m of st.takes || []) {
         if (m.status === 'rejected') continue;
-        out.push({ kind: 'take', id: t.id, title: t.title, take: m.take, dir: m.dir, approved: m.take === ap, label: t.title + ' — ' + (m.take === ap ? 'APPROVED ' : '') + 'take ' + m.take + ' (' + ((SG().STYLES[(m.mood || {}).style] || {}).name || '?') + ')' });
+        out.push({ kind: 'take', id: t.id, title: t.title, take: m.take, dir: m.dir, approved: m.take === ap, third_party: m.third_party || undefined,
+          label: t.title + ' — ' + (m.take === ap ? 'APPROVED ' : '') + 'take ' + m.take + ' (' + ((SG().STYLES[(m.mood || {}).style] || {}).name || '?') + ')' + (m.third_party ? ' ⚠ ' + m.third_party.kind : '') });
       }
       // a real recording: the catalog's own .ogg / .mp3, or a .wav that is not a temp (a FIELD RECORDER / TAPE STUDIO take)
       const rp = st.real ? t.src : st.wav === 'real' ? t.src.replace(/\.[^.\/]+$/, '') + '.wav' : null;
@@ -680,10 +808,10 @@
           known: mo ? { bpm: mo.bpm, key: mo.key, mode: mo.mode } : undefined, label: t.title + ' — approved temp (Ogg)' });
       }
     }
-    return out.sort((a, b) => (b.approved || b.real || b.temp ? 1 : 0) - (a.approved || a.real || a.temp ? 1 : 0) || a.label.localeCompare(b.label));
+    return out.sort((a, b) => (b.approved || b.real || b.temp || b.imported ? 1 : 0) - (a.approved || a.real || a.temp || a.imported ? 1 : 0) || a.label.localeCompare(b.label));
   }
 
-  root.Remix = { RECIPES, NEAR, MOTIF_OPS, fft, onsetEnvelope, estimateTempo, downbeat, estimateKey, chroma, barRoots, chopLayer, dubLayer, tapeLayer, paulstretch, stretchLayer,
+  root.Remix = { transcribe, barChords, sectionsOf, lines, motifFrom, thirdPartyOf, RECIPES, NEAR, MOTIF_OPS, fft, onsetEnvelope, estimateTempo, downbeat, estimateKey, chroma, barRoots, chopLayer, dubLayer, tapeLayer, paulstretch, stretchLayer,
     liveliest, motifOp, notesOptions, rootBass, loadSource, sourceAudio, analyse, remixTakes, sourcesFrom, coverLead };
   if (typeof module !== 'undefined' && module.exports) module.exports = root.Remix;
 })(typeof window !== 'undefined' ? window : globalThis);

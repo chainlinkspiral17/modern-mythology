@@ -45,6 +45,9 @@ suite('godot · AudioMgr stems, intensity, fallbacks, Ogg temps + loops', async 
   manifest(path.join(bgm, 'realwin.stems.json'), { mix: B + 'realwin.temp.ogg', loop: true, stems: [{ name: 'pad', role: 'pad', layer: 0, file: B + 'realwin.stems/pad.ogg' }] });
   wav(path.join(bgm, 'both.wav'), 220, 1);                                    // a recorded .wav beats a temp
   await ogg(path.join(bgm, 'both.temp.ogg'), 330, 1);
+  // a third-party temp: a cover made from imported audio — sketch only, never in a release build
+  await ogg(path.join(bgm, 'tpcover.temp.ogg'), 330, 1);
+  manifest(path.join(bgm, 'tpcover.stems.json'), { mix: B + 'tpcover.temp.ogg', third_party: { kind: 'cover', source: 'an import', rights: 'temp-only' } });
   // never imported (.gdignore): the raw load_from_buffer path
   const raw = path.join(proj, 'assets/audio/raw'); fs.mkdirSync(raw, { recursive: true }); fs.writeFileSync(path.join(raw, '.gdignore'), '');
   await ogg(path.join(raw, 'rawtmp.temp.ogg'), 441, 1);
@@ -83,6 +86,9 @@ suite('godot · AudioMgr stems, intensity, fallbacks, Ogg temps + loops', async 
   await t.test('real audio wins: a real .ogg over a temp (and its stems), a .wav over a .temp.ogg', async () => {
     t.eq([res.real_class, res.real_len, res.real_loop], ['AudioStreamOggVorbis', 2, false]);
     t.eq(res.both_class, 'AudioStreamWAV');
+  });
+  await t.test('a third-party temp (cover / sample of imported audio) plays while sketching; blocked by audio/block_third_party_temps (and in release builds)', async () => {
+    t.eq([res.tp_can_play, res.tp_blocked_can_play, res.tp_blocked_stream, res.tp_clean_still_plays], [true, false, 'null', true]);
   });
   fs.rmSync(proj, { recursive: true, force: true });
 });

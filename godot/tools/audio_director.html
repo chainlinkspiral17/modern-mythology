@@ -226,7 +226,8 @@
 
       <h2>REMIX <span class="sp"></span><span class="note">new takes for this track made from finished music — any take, an approved one, a recording</span></h2>
       <div class="box" id="remix">
-        <div class="row"><label>FROM</label><select id="rx-from" style="flex:1;min-width:220px"></select></div>
+        <div class="row"><label>FROM</label><select id="rx-from" style="flex:1;min-width:220px"></select><button class="dim" id="rx-import" title="bring any audio file (mp3, ogg, wav, flac, m4a) in as a REMIX source — for sketching. Unless you mark it cleared, every take made from it is flagged TEMP ONLY">⇪ IMPORT AUDIO…</button><input type="file" id="rx-file" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac" style="display:none"></div>
+        <div class="row" id="rx-importrow" style="display:none"><label>RIGHTS</label><select id="rx-rights"><option value="unlicensed">someone else's music — takes are flagged TEMP ONLY (cover / sample)</option><option value="cleared">mine / public domain / licensed — not flagged</option></select><button class="go" id="rx-importgo">⇪ IMPORT</button><button class="dim" id="rx-importno">cancel</button><span class="note" id="rx-importname"></span></div>
         <div class="row"><label>RECIPE</label><span class="chipset" id="rx-recipes"></span></div>
         <div class="row"><label></label><span class="note" id="rx-hint"></span></div>
         <div class="row" id="rx-withrow" style="display:none"><label>WITH</label><select id="rx-with" style="flex:1;min-width:220px"></select><span class="note">its theme</span></div>
@@ -255,6 +256,7 @@
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
       <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. If the track already has a <b>.wav</b> that isn't a temp (a recording, or an older DAW bounce), the first tap says what it is and a second tap moves it to <code>assets/audio/replaced/</code> (kept, not deleted) before approving. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
+      <li><b>⇪ IMPORT AUDIO…</b> (in REMIX) brings any mp3 / ogg / wav in as a source. Pick its RIGHTS: someone else's music makes every take from it <b>⚠ TEMP ONLY</b> (a cover or a sample — flagged on the take, its approval and the game's manifest; a release build never plays it, and <code>python3 godot/tools/music_release_check.py --strip</code> removes them before an export). The NOTES recipes (COVER, RESTYLE …) transcribe it first: tempo, key, chords, sections, and the melody + bass when vendor/basicpitch is there — rough on full mixes, so clean the lead up with ✎ EDIT IN DAW.</li>
       <li><b>REMIX</b> (under MAKE TAKES) makes takes for this track out of music that's already done: pick a take (any track's — an approved one is marked), a recording or an approved temp under <b>FROM</b>, a <b>RECIPE</b>, then <b>⤳ REMIX</b>. RESTYLE / COVER / VARIATIONS / UNDERSCORE / INTENSE / DREAM / BLEND re-compose the take's own chords, sections and theme (they need a take made here); CHOP / DUB / STRETCH / TAPE cut up the audio itself (anything that plays) over new drums and bass. Every take row has <b>⤳ REMIX</b> to start from it. Remixes land under TAKES like any other take.</li>
       <li>None good? Change the DIRECTION / STYLE / ENSEMBLE / VARIETY / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings (its style, line-up, feel and sound — the card shows what it got). Want to change notes, instruments or the mix by hand? <b>✎ EDIT IN DAW</b> opens that take in the DAW (tap START there); when it sounds right, <b>⇪ SEND TO DIRECTOR</b> (top of the DAW) renders it and it shows up here as a new take, ready to play and approve.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
@@ -387,6 +389,7 @@ async function refresh() {
   const b = await readJson('resources/music/temp_briefs.json', { tracks: [] });
   DIR.briefs = Object.fromEntries((b.tracks || []).map(x => [x.id, x]));
   DIR.score = await TempMaker.loadScore().catch(() => null);      // resources/music/score/*.json: the written direction
+  DIR.imports = await scanImports().catch(() => []);
   DIR.approvals = await readApprovals();
   const dj = await readJson('resources/music/direction.json', null);
   if (dj && dj.defaults) for (const k of ['attack_sec', 'release_sec']) if (+dj.defaults[k] > 0) DIR.defaults[k] = +dj.defaults[k];
@@ -409,7 +412,8 @@ async function rescanOne(id) {
 const STATUS_LABEL = { missing: ['MISSING', 'bad'], candidates: ['CANDIDATES', 'cand'], approved: ['APPROVED TEMP', 'ok'], real: ['REAL AUDIO', 'real'] };
 function statusBadge(st) {
   const [l, c] = STATUS_LABEL[st.status];
-  return `<span class="badge ${c}">${l}${st.status === 'candidates' ? ' (' + st.cand + ')' : ''}</span>` + (st.status !== 'candidates' && st.cand ? `<span class="badge cand">+${st.cand} cand.</span>` : '');
+  return `<span class="badge ${c}">${l}${st.status === 'candidates' ? ' (' + st.cand + ')' : ''}</span>` + (st.status !== 'candidates' && st.cand ? `<span class="badge cand">+${st.cand} cand.</span>` : '') +
+    (st.status === 'approved' && st.approved && st.approved.third_party ? `<span class="badge bad" title="the approved temp is a ${esc(st.approved.third_party.kind)} of ${esc(st.approved.third_party.source)} — strip or license before release (godot/tools/music_release_check.py)">⚠ ${esc(st.approved.third_party.kind.toUpperCase())} · TEMP ONLY</span>` : '');
 }
 function whyOf(b) {
   if (!b) return 'no scene plays it (chapter / volume queue only)';
@@ -430,7 +434,7 @@ function visible() {
 function renderList() {
   const vis = visible(), L = $('list');
   const n = s => DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].status === s).length;
-  $('b-counts').textContent = DIR.cat.length + ' tracks · ' + n('missing') + ' missing · ' + DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].cand).length + ' with candidates · ' + n('approved') + ' approved temp · ' + n('real') + ' real';
+  $('b-counts').textContent = DIR.cat.length + ' tracks · ' + n('missing') + ' missing · ' + DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].cand).length + ' with candidates · ' + n('approved') + ' approved temp · ' + n('real') + ' real' + (n3 => n3 ? ' · ⚠ ' + n3 + ' third-party temp' + (n3 > 1 ? 's' : '') : '')(DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].status === 'approved' && DIR.state[t.id].approved && DIR.state[t.id].approved.third_party).length);
   $('b-counts').title = $('b-counts').textContent;
   const nw = DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].temp === 'wav').length;
   $('shrink').textContent = nw ? '⇣ SHRINK ' + nw + ' WAV TEMP' + (nw === 1 ? '' : 'S') + ' → OGG' : '⇣ SHRINK WAV TEMPS'; $('shrink').disabled = !nw || !!DIR.busy;
@@ -538,6 +542,7 @@ function renderTakes() {
       `<b style="color:var(--gold-hi);font-weight:normal">${esc(m.take)}</b> ${isAp ? '<span class="badge ok">APPROVED</span>' : m.status === 'rejected' ? '<span class="badge bad">REJECTED</span>' : '<span class="badge cand">CANDIDATE</span>'}<br>` +
       `<span class="mood">${esc(S ? S.name : mo.style)} · ${esc(mo.form)} · ${esc(SeqGen.NOTE_NAMES[mo.key] || '')} ${esc(mo.mode)} · ${(+mo.bpm).toFixed(+mo.bpm % 1 ? 2 : 0)} BPM · density ${mo.density} · seed ${mo.seed}${esc(takeChoices(mo))}</span><br>` +
       `<span>${m.lufs != null ? m.lufs.toFixed(1) + ' LUFS · ' : ''}${m.true_peak != null ? m.true_peak.toFixed(1) + ' dBTP · ' : ''}${(+m.seconds).toFixed(1)} s · ${m.bars} bars · ${m.stems && m.stems.length ? m.stems.length + ' stems (' + m.stems.map(s => s.name).join(', ') + ')' : 'no stems'}</span><br>` +
+      (m.third_party ? `<span class="badge bad" title="${esc(m.third_party.note || '')}">⚠ ${esc(String(m.third_party.kind || 'cover').toUpperCase())} OF ${esc(m.third_party.source || '?')} · TEMP ONLY</span><br>` : '') +
       (m.edited_from ? `<span class="note" style="color:var(--violet)">✎ edited in the DAW from take ${esc(m.edited_from)}</span><br>` : '') +
       (m.why ? `<span class="note">${esc(m.why)}</span><br>` : '') +
       (reqText(m.request) ? `<span class="req">asked: ${esc(reqText(m.request))}</span><br>` : '') +
@@ -880,7 +885,7 @@ async function approve(i, btn) {
     out = await AK.game.writeMusic(base, {
       mix: wavPcm(m.dir + 'mix.wav', tally), stems: ((tm && tm.stems) || []).map(x => ({ name: x.name, role: x.role, layer: x.layer, pcm: wavPcm(x.file, tally) })),
       title: (tm && tm.title) || t.title + ' (temp)', credits,
-      extra: { bpm: (tm && tm.bpm) || (m.mood || {}).bpm, bars: m.bars, lufs: m.lufs, credits: m.credits || '', approved: { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString() } },
+      extra: { third_party: m.third_party || undefined, bpm: (tm && tm.bpm) || (m.mood || {}).bpm, bars: m.bars, lufs: m.lufs, credits: m.credits || '', approved: { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString() } },
       onProgress: (f, what) => msg(tag + ' — encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') });
     // an older .wav temp plays before the .temp.ogg: it goes now that the Ogg is there
     if (st.wav === 'temp' && (await wavKind(base + '.wav')) === 'temp') { await AK.game.remove(base + '.wav'); await AK.game.remove(base + '.wav.credits.txt'); }
@@ -891,7 +896,8 @@ async function approve(i, btn) {
   rec.rejected = rec.rejected || []; rec.history = rec.history || [];
   const prev = rec.approved;
   rec.approved = { take: m.take, seed: (m.mood || {}).seed, mood: m.mood, request: m.request || {}, instruments: m.instruments || {}, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim(),
-    lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files, format: 'ogg', bytes, quality: out.manifest.quality };
+    lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files, format: 'ogg', bytes, quality: out.manifest.quality,
+    third_party: m.third_party || undefined };
   rec.history.push({ action: prev ? 'replace' : 'approve', take: m.take, seed: (m.mood || {}).seed, replaced: prev ? prev.take : undefined, moved_aside: aside || undefined, date: rec.approved.date, by: who(), notes: rec.approved.notes });
   await writeApprovals(ap);
   await setMetaStatus(m, 'approved');
@@ -1267,13 +1273,14 @@ const rxKey = x => x.kind === 'take' ? 'take:' + x.dir : 'file:' + x.path;
 const rxSrc = k => RX.list.find(x => rxKey(x) === k) || null;
 function rxRender() {
   if (!DIR.cat || !DIR.state) return;
-  RX.list = Remix.sourcesFrom(DIR.cat, DIR.state, DIR.approvals || { tracks: {} });
+  RX.list = Remix.sourcesFrom(DIR.cat, DIR.state, DIR.approvals || { tracks: {} }, DIR.imports || []);
   // default source: this track's approved take, else its newest take, else the first approved / real one anywhere
   if (!rxSrc(RX.from)) {
     const mine = RX.list.filter(x => x.id === DIR.sel), d = mine.find(x => x.approved) || mine.find(x => x.kind === 'take') || mine[0] || RX.list[0];
     RX.from = d ? rxKey(d) : '';
   }
-  const groups = [['APPROVED · RECORDINGS', x => x.approved || x.real || x.temp], ['THIS TRACK', x => x.id === DIR.sel && !(x.approved || x.real || x.temp)], ['OTHER TAKES', x => x.id !== DIR.sel && !(x.approved || x.real || x.temp)]];
+  const done = x => x.approved || x.real || x.temp;
+  const groups = [['IMPORTED', x => x.imported], ['APPROVED · RECORDINGS', x => !x.imported && done(x)], ['THIS TRACK', x => !x.imported && x.id === DIR.sel && !done(x)], ['OTHER TAKES', x => !x.imported && x.id !== DIR.sel && !done(x)]];
   const opts = list => groups.map(([g, f]) => { const it = list.filter(f); return it.length ? `<optgroup label="${esc(g)} (${it.length})">` + it.map(x => `<option value="${esc(rxKey(x))}">${esc(x.label)}</option>`).join('') + '</optgroup>' : ''; }).join('');
   $('rx-from').innerHTML = RX.list.length ? opts(RX.list) : '<option value="">nothing finished yet — make and approve a take first</option>';
   $('rx-from').value = RX.from;
@@ -1281,14 +1288,15 @@ function rxRender() {
   if (!takes.some(x => rxKey(x) === RX.with)) RX.with = takes[0] ? rxKey(takes[0]) : '';
   $('rx-with').innerHTML = takes.length ? opts(takes) : '<option value="">no other take</option>';
   $('rx-with').value = RX.with;
-  const src = rxSrc(RX.from), notesOk = !!(src && src.kind === 'take');
+  const src = rxSrc(RX.from), notesOk = !!src;              // a recording / import is transcribed for the NOTES recipes
   if (!notesOk && Remix.RECIPES[RX.recipe].kind === 'notes') RX.recipe = 'chop';
   $('rx-recipes').innerHTML = Object.entries(Remix.RECIPES).map(([id, r]) => {
     const off = r.kind === 'notes' && !notesOk;
     return `<button data-rx="${id}" class="${id === RX.recipe ? 'on' : 'dim'}" ${off ? 'disabled' : ''} title="${esc(r.hint + (off ? ' — needs a take made here (a recording has no notes)' : ''))}">${r.name}</button>`;
   }).join('');
   const R0 = Remix.RECIPES[RX.recipe];
-  $('rx-hint').textContent = R0.hint + (R0.kind === 'notes' ? ' · works from the take’s notes' : ' · works from the audio' + (src && src.kind === 'take' ? ' (its stems minus the drums)' : ''));
+  $('rx-hint').textContent = R0.hint + (R0.kind === 'notes' ? (src && src.kind === 'file' ? ' · transcribes the recording first (chords, sections' + (typeof BasicPitchLite !== 'undefined' ? ', melody, bass' : '; melody needs vendor/basicpitch') + ')' : ' · works from the take’s notes') : ' · works from the audio' + (src && src.kind === 'take' ? ' (its stems minus the drums)' : '')) +
+    (src && (src.imported && src.rights !== 'cleared' || src.third_party) ? ' · ⚠ takes are flagged TEMP ONLY (third-party)' : '');
   $('rx-withrow').style.display = R0.needsWith ? '' : 'none';
   $('rx-key').disabled = R0.kind !== 'notes';
   document.querySelectorAll('#rx-n [data-n]').forEach(b => b.classList.toggle('on', +b.dataset.n === RX.n));
@@ -1298,8 +1306,40 @@ $('rx-with').addEventListener('change', () => { RX.with = $('rx-with').value; })
 $('rx-recipes').addEventListener('click', e => { const b = e.target.closest('[data-rx]'); if (b && !b.disabled) { RX.recipe = b.dataset.rx; rxRender(); } });
 $('rx-n').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { RX.n = +b.dataset.n; rxRender(); studioUI(); } });
 // what a source is, as the remix request records it (enough to find it again: ⟳ AGAIN)
-const rxRef = x => x.kind === 'take' ? { kind: 'take', id: x.id, title: x.title, take: x.take, dir: x.dir } : { kind: 'file', id: x.id, title: x.title, path: x.path, known: x.known };
+const rxRef = x => x.kind === 'take' ? { kind: 'take', id: x.id, title: x.title, take: x.take, dir: x.dir } : { kind: 'file', id: x.id, title: x.title, path: x.path, known: x.known, imported: x.imported || undefined, rights: x.rights || undefined };
 function requestRemix(ids, takes, rx) { return requestTakes(ids, takes, {}, rx); }
+// ⇪ IMPORT AUDIO: the file goes to assets/audio/imports/ (Godot ignores it, git ignores it, Drive backs it up) with a
+// sidecar saying what it is and its RIGHTS. Unlicensed → every take made from it carries third_party (TEMP ONLY).
+const IMPORT_DIR = 'assets/audio/imports';
+async function scanImports() {
+  const out = [];
+  for (const e of await AK.game.list(IMPORT_DIR)) {
+    if (e.kind !== 'file' || !/\.(mp3|ogg|wav|flac|m4a|aac)$/i.test(e.name)) continue;
+    const slug = e.name.replace(/\.[^.]+$/, ''), side = await readJson(IMPORT_DIR + '/' + slug + '.json', {}) || {};
+    out.push({ slug, path: IMPORT_DIR + '/' + e.name, name: side.name || slug, rights: side.rights === 'cleared' ? 'cleared' : 'unlicensed', imported: side.imported || null });
+  }
+  return out.sort((a, b) => a.name.localeCompare(b.name));
+}
+async function importAudio(file, rights) {
+  if (!AK.game.root) throw new Error('link the game folder first (⌂ LINK GAME FOLDER)');
+  const ext = (file.name.match(/\.([a-z0-9]+)$/i) || [, 'mp3'])[1].toLowerCase(), name = file.name.replace(/\.[^.]+$/, '');
+  const slug = (AK.util.slug(name) || 'import').slice(0, 60);
+  if (!(await AK.game.exists(IMPORT_DIR + '/.gdignore'))) await AK.game.write(IMPORT_DIR + '/.gdignore', new Blob([''], { type: 'text/plain' }));
+  await AK.game.write(IMPORT_DIR + '/' + slug + '.' + ext, file);
+  await AK.game.write(IMPORT_DIR + '/' + slug + '.json', new Blob([JSON.stringify({ name, file: file.name, rights: rights === 'cleared' ? 'cleared' : 'unlicensed', imported: new Date().toISOString(), by: who(),
+    note: rights === 'cleared' ? 'marked as yours / public domain / licensed' : 'third-party audio for sketching: takes made from it are flagged TEMP ONLY' }, null, 1)], { type: 'application/json' }));
+  DIR.imports = await scanImports();
+  RX.from = 'file:' + IMPORT_DIR + '/' + slug + '.' + ext; rxRender();
+  return slug;
+}
+$('rx-import').addEventListener('click', () => $('rx-file').click());
+$('rx-file').addEventListener('change', () => { const f = $('rx-file').files[0]; if (!f) return; $('rx-importname').textContent = f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; $('rx-importrow').style.display = ''; });
+$('rx-importno').addEventListener('click', () => { $('rx-importrow').style.display = 'none'; $('rx-file').value = ''; });
+$('rx-importgo').addEventListener('click', async () => {
+  const f = $('rx-file').files[0]; if (!f) return;
+  try { await importAudio(f, $('rx-rights').value); $('rx-importrow').style.display = 'none'; $('rx-file').value = ''; msg('imported ' + f.name + ($('rx-rights').value === 'cleared' ? '' : ' — takes from it are flagged TEMP ONLY') + '. Pick a RECIPE, then ⤳ REMIX.', false, 'rxmsg'); }
+  catch (e) { msg('import failed: ' + (e.message || e), true, 'rxmsg'); }
+});
 function remixNow() {
   const ids = DIR.checked.size ? [...DIR.checked] : DIR.sel ? [DIR.sel] : [];
   if (!ids.length) { msg('pick a track (or tick some) first — the remix is made for it.', true, 'rxmsg'); return; }

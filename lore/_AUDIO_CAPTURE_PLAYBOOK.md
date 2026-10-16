@@ -1300,6 +1300,27 @@ context keeps running into a fake sink, and the meters still move.
   pool moves which preset an old seed draws, never the notes — approvals record their instruments, so AGAIN
   holds.
 
+### 2026-10-16 — imported songs → sketch covers, flagged TEMP ONLY end to end
+
+- "covers of existing songs (mp3) … all for temp and sketching, flag the covers so they can be removed from the
+  final game". REMIX's ⇪ IMPORT AUDIO brings any audio file into assets/audio/imports/ (git-ignored,
+  .gdignore'd, Drive-synced) with a sidecar naming its RIGHTS: unlicensed (default) or cleared (yours / public
+  domain / licensed). The NOTES recipes transcribe a recording first (remix.js `transcribe`): tempo + downbeat,
+  key, one diatonic chord per bar (chroma vs triads, sticky), sections (4-bar phrases grouped by similarity →
+  A, A2, B …), and the melody + bass from vendor/basicpitch when it's there. That becomes a SeqGen.plan-shaped
+  source, so COVER / RESTYLE / VARIATIONS … work on it like on a take.
+- The flag is ONE field, `third_party` {kind: cover | sample, source, rights: 'temp-only', note}, copied at every
+  hop: the take's meta → a remix of that take (`via`) → an edit sent back from the DAW (stageEdit copies the meta)
+  → the approval record → the game's `<base>.stems.json`. The director badges it (take card, track list, header
+  count). The game: AudioMgr._third_party_blocked — a release build never plays one (can_play false, no temp, no
+  stems); `audio/block_third_party_temps` does the same in the editor to hear the game as it would ship. Before an
+  export: `python3 godot/tools/music_release_check.py` (exit 1 while any are in the game folder) and `--strip`
+  (removes only the temp files; the approval stays, so the director shows the track as missing its temp).
+- Known limits: chords are projected onto the key's seven triads (borrowed / chromatic chords become their
+  nearest diatonic one), one chord per bar; the relative major / minor ambiguity again (an A-minor test piece
+  read as C major — same notes, same chord pitches). A full mix's melody is rough even with Basic Pitch: plan on
+  ✎ EDIT IN DAW for the lead; the edit keeps the flag.
+
 ## TEMPLATE
 
 ```

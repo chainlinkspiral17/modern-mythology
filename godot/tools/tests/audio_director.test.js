@@ -415,7 +415,7 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
   const remixDone = async (ids, n, rx) => p.evaluate(async ({ ids, n, rx }) => { const R = await requestRemix(ids, n, rx).done; return { state: R.state, made: R.made, errors: R.errors, msg: document.getElementById('rxmsg').textContent }; }, { ids, n, rx });
   const newest = (id, re) => { const d = fs.readdirSync(G('assets/audio/review/' + id)).filter(x => re.test(x)).sort().pop(); const dir = 'assets/audio/review/' + id + '/' + d + '/'; return Object.assign(json(dir + 'meta.json'), { dir }); };
   const firstRef = () => ({ kind: 'take', id: 'sam_theme', title: 'Sam', take: first.take, dir: first.dir });
-  await t.test('REMIX box: sources listed (this track\'s take first), take-row ⤳ REMIX picks it, NOTES recipes off for a recording', async () => {
+  await t.test('REMIX box: sources listed (this track\'s take first), take-row ⤳ REMIX picks it, every recipe on for a recording', async () => {
     await p.evaluate(async () => { await refresh(); await selectTrack('sam_theme'); });
     const r = await p.evaluate(take => {
       const i = DIR.takes.findIndex(m => m.take === take);
@@ -428,8 +428,8 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     }, first.take);
     t.ok(r.from.startsWith('take:') && r.from.includes(first.take), 'take-row REMIX selects it: ' + r.from);
     t.ok(r.groups.includes('THIS TRACK') && r.field && r.real, JSON.stringify(r));
-    t.eq(r.off, ['restyle', 'cover', 'variations', 'underscore', 'intense', 'dream', 'blend'], 'a recording has no notes');
-    t.eq([r.recipe, r.go], ['chop', '⤳ REMIX × 2']);
+    t.eq(r.off, [], 'a recording takes every recipe (the NOTES ones transcribe it)');
+    t.eq(r.go, '⤳ REMIX × 2');
   });
   let rs = null;
   await t.test('RESTYLE: the take\'s chords, sections and theme in another style, for another track, in that track\'s key', async () => {
@@ -535,6 +535,67 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.ok(pk > 0.1 && err < 0.002 * man.stems.length + 1e-3, 'stems sum to the mix within 16-bit rounding: ' + err.toFixed(5));
     const card = await p.evaluate(async () => { await refresh(); await selectTrack('quiet_bed'); return document.getElementById('takes').textContent; });
     t.ok(/tape: cassette deck/.test(card), 'the take card says which tape');
+  });
+  // ── IMPORT AUDIO → covers, flagged TEMP ONLY ──
+  await t.test('IMPORT AUDIO: an imported song (synthesized here) becomes a source; unlicensed → flagged, cleared → not', async () => {
+    const r = await p.evaluate(async () => {
+      // an original test piece: 16 bars at 100 BPM in A minor, i – VI – III – VII, a plucked line on top
+      const sr = 44100, bpm = 100, beat = 60 / bpm, bars = 16, n = Math.round(bars * 4 * beat * sr), L = new Float32Array(n);
+      const prog = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]], hz = m => 440 * Math.pow(2, (m - 69) / 12);
+      for (let i = 0; i < n; i++) {
+        const t = i / sr, bar = Math.floor(t / (4 * beat)), ch = prog[bar % 4], inBeat = t % beat;
+        let v = 0; for (const m of ch) v += 0.06 * Math.sin(2 * Math.PI * hz(m - 12) * t);
+        v += 0.1 * Math.sin(2 * Math.PI * hz(ch[0] - 24) * t) * (inBeat < beat * 0.9 ? 1 : 0.2);
+        const mel = ch[(Math.floor(t / beat)) % 3] + 12; v += 0.12 * Math.sin(2 * Math.PI * hz(mel) * t) * Math.exp(-inBeat * 5);
+        if (inBeat < 0.02) v += 0.3 * Math.sin(2 * Math.PI * 60 * inBeat) * Math.exp(-inBeat * 90);
+        L[i] = v;
+      }
+      const f = new File([AK.wav.encode([L, L], sr, { bitDepth: 16 })], 'My Sketch Song.wav', { type: 'audio/wav' });
+      await importAudio(f, 'unlicensed');
+      const f2 = new File([AK.wav.encode([L, L], sr, { bitDepth: 16 })], 'Public Hymn.wav', { type: 'audio/wav' });
+      await importAudio(f2, 'cleared');
+      const imp = RX.list.filter(x => x.imported).map(x => ({ id: x.id, rights: x.rights, label: x.label })), sel = document.getElementById('rx-from');
+      const groups = [...sel.querySelectorAll('optgroup')].map(g => g.label.replace(/ \(\d+\)$/, ''));
+      const notesOff = [...document.querySelectorAll('#rx-recipes [data-rx]')].filter(b => b.disabled).map(b => b.dataset.rx);
+      return { imp, groups, from: RX.from, notesOff, hint: document.getElementById('rx-hint').textContent };
+    });
+    t.ok(r.imp.length === 2 && r.imp.some(x => x.rights === 'unlicensed' && /temp only/.test(x.label)) && r.imp.some(x => x.rights === 'cleared'), JSON.stringify(r.imp));
+    t.ok(r.groups[0] === 'IMPORTED' && /public_hymn/.test(r.from) && r.notesOff.length === 0, JSON.stringify(r));
+    t.ok(fs.existsSync(G('assets/audio/imports/my_sketch_song.wav')) && fs.existsSync(G('assets/audio/imports/.gdignore')) && json('assets/audio/imports/my_sketch_song.json').rights === 'unlicensed', 'stored in imports/ with its rights');
+  });
+  let cover = null;
+  await t.test('COVER of an unlicensed import: transcribed (tempo, key, chords, sections), flagged ⚠ cover · TEMP ONLY on the take', async () => {
+    const from = { kind: 'file', id: 'import:my_sketch_song', title: 'My Sketch Song', path: 'assets/audio/imports/my_sketch_song.wav', imported: true, rights: 'unlicensed' };
+    const r = await remixDone(['quiet_bed'], 1, { recipe: 'cover', from, bars: 4 });
+    t.eq([r.state, r.made, r.errors], ['done', 1, []], r.msg);
+    cover = newest('quiet_bed', /-cover$/);
+    const tr = cover.remix.transcription;
+    // A minor, or its relative C major (the same notes — the chords land on the same pitches either way)
+    t.ok(Math.abs(tr.bpm - 100) < 1 && (tr.mode === 'major' ? tr.key : (tr.key + 3) % 12) === 0 && tr.bars >= 12 && tr.chords >= 12 && /^A/.test(tr.sections), 'heard: ' + JSON.stringify(tr));
+    t.eq([cover.third_party.kind, cover.third_party.rights, cover.third_party.source], ['cover', 'temp-only', 'My Sketch Song']);
+    const card = await p.evaluate(async () => { await refresh(); await selectTrack('quiet_bed'); return document.getElementById('takes').textContent; });
+    t.ok(/⚠ COVER OF My Sketch Song · TEMP ONLY/.test(card), 'the card says so');
+    // a cleared import → no flag; a CHOP of the unlicensed one → a flagged sample; a remix of the cover stays flagged
+    const c2 = await remixDone(['quiet_bed'], 1, { recipe: 'restyle', from: { kind: 'file', id: 'import:public_hymn', title: 'Public Hymn', path: 'assets/audio/imports/public_hymn.wav', imported: true, rights: 'cleared' }, bars: 4 });
+    t.eq(c2.errors, []);
+    t.ok(!newest('quiet_bed', /-restyle$/).third_party, 'cleared import: not flagged');
+    const c3 = await remixDone(['quiet_bed'], 1, { recipe: 'chop', from, bars: 4 });
+    t.eq(c3.errors, []); t.eq(newest('quiet_bed', /-chop$/).third_party.kind, 'sample');
+    const c4 = await remixDone(['quiet_bed'], 1, { recipe: 'dream', from: { kind: 'take', id: 'quiet_bed', title: 'Quiet Bed', take: cover.take, dir: cover.dir }, bars: 4 });
+    t.eq(c4.errors, []); t.ok(newest('quiet_bed', /-dream$/).third_party.via === cover.take, 'a remix of the cover inherits the flag');
+  });
+  await t.test('APPROVE a flagged cover: approval + game manifest carry third_party; music_release_check.py lists it, --strip removes only the temp', async () => {
+    const r = await p.evaluate(async take => { await refresh(); await selectTrack('quiet_bed'); const i = DIR.takes.findIndex(m => m.take === take); let a = await approve(i); if (!a.ok) a = await approve(i); return { a, list: document.getElementById('list').textContent, counts: document.getElementById('b-counts').textContent }; }, cover.take);
+    t.ok(r.a.ok, JSON.stringify(r.a));
+    const ap = json('resources/music/temp_approvals.json').tracks.quiet_bed.approved, man = json('assets/audio/bgm/quiet_bed.stems.json');
+    t.eq([ap.third_party.kind, man.third_party.kind], ['cover', 'cover']);
+    t.ok(/⚠ COVER · TEMP ONLY/.test(r.list) && /⚠ 1 third-party temp/.test(r.counts), 'track list + header flag it: ' + r.counts);
+    const py = (...a) => require('child_process').spawnSync('python3', [path.join(__dirname, '..', 'music_release_check.py'), '--godot', GAME, ...a], { encoding: 'utf8' });
+    const ls = py(); t.ok(ls.status === 1 && /quiet_bed/.test(ls.stdout) && /cover/.test(ls.stdout), ls.stdout + ls.stderr);
+    const st = py('--strip'); t.eq(st.status, 0, st.stdout + st.stderr);
+    t.ok(!fs.existsSync(G('assets/audio/bgm/quiet_bed.temp.ogg')) && !fs.existsSync(G('assets/audio/bgm/quiet_bed.stems.json')) && !fs.existsSync(G('assets/audio/bgm/quiet_bed.stems')), 'temp files gone');
+    t.ok(fs.existsSync(G('assets/audio/bgm/real_track.ogg')), 'real audio untouched');
+    t.eq(py().status, 0, 'clear to export after the strip');
   });
   await t.test('the tools\' library is mirrored into the game folder (library/<kind>/…wav + .json), at once and on link for older items', async () => {
     const r = await p.evaluate(async () => {
