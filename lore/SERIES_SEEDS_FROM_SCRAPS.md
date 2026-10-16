@@ -789,3 +789,17 @@ The index flags it as AI-assisted prose; it is used here for structure only.
 - **X3.** The Ariaster option (section 0: A, B, C or D).
 - **X4.** E/D's commercial date. After 2026 is proposed.
 - **X5.** Should a "future tense" dispatch layer sit on Vol 6 at all, or should the War Dawgz and Glorious Meadows material go to a later volume?
+
+
+---
+
+## Andy's answers (Oct 16, 2026)
+- **E/D (X4, V6-2):** E/D isn't a product with a release date. It's one of the things Dickens Dean created in the multiverse. It turns up in different worlds and eras in different forms:
+  - "still years away" in the 2000s Planned Community stories
+  - the anti-E/D zine in Vol 4
+  - "last gen" units and collars by 2048
+
+  Drop the "commercial E/D after 2026" proposal. Read the disagreeing dates as different worlds, not as a timeline to reconcile.
+- **Joven (Vol 8):** Joven is young Nate. It's his Venezuelan nickname.
+- **Chumpa Chump (Vol 9):** recast his later crime with an adult victim.
+- **X1 (volume numbering):** still open; explained to Andy.
