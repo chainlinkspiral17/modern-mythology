@@ -368,6 +368,12 @@ func _populate_chapters(vol: int) -> void:
 		ch.queue_free()
 
 	var chapters := SceneDataDB.get_volume_chapters(vol)
+	# How many scenes each chapter holds — the row is just the door.
+	var ch_counts: Dictionary = {}
+	for s_any in SceneDataDB.get_volume_scenes(vol):
+		var s_d: Dictionary = s_any
+		var ck: String = str(s_d.get("chapter"))
+		ch_counts[ck] = int(ch_counts.get(ck, 0)) + 1
 	if chapters.is_empty():
 		var lbl := Label.new()
 		lbl.text = "The book is empty — no chapters found.\n(dev: run tools/import_scenes.py)"
@@ -435,10 +441,15 @@ func _populate_chapters(vol: int) -> void:
 		title_lbl.add_theme_color_override("font_color", C_TXT)
 		row.add_child(title_lbl)
 
-		# Badge: "Ch N · TYPE" or just "Ch N"
+		# Badge: "Ch N · n scenes · TYPE" — the count says a row is a
+		# whole run of scenes, not one page (the Honolulu story lives
+		# five scenes inside "vi. stacks" and reads as missing without it).
 		var badge_parts: Array = []
 		if ch_str != "":
 			badge_parts.append("Ch %s" % ch_str)
+		var n_scenes: int = int(ch_counts.get(ch_str, 0))
+		if n_scenes > 1:
+			badge_parts.append("%d scenes" % n_scenes)
 		if scene_type != "" and scene_type != "chapter":
 			badge_parts.append(scene_type.to_upper())
 		if not badge_parts.is_empty():
