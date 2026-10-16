@@ -1,0 +1,298 @@
+{
+  "id": "vol1_ch9_street",
+  "vol": 1,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "Act Three — The Street",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_city_color_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_club_thump.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The Street Outside Club #",
+      "sub": "EXT. · Night",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The street hums. Every streetlight has a halo and each halo has its own halo. A bus goes by with an ad on the side for a product that doesn't exist yet."
+    },
+    {
+      "t": "narrate",
+      "text": "The three stand on the curb in their new t-shirts. They haven't decided which way to walk."
+    },
+    {
+      "t": "narrate",
+      "text": "The audio devices in their ears crackle on all at once."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "(static, far off, finishing a thought he started a long time ago) — how you come back. And what you carry when you do."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Oh good, he's in the earbuds now."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Sorry. Lag. Time runs different on my end. I'll be with you mostly as a voice, sometimes as a shirt."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Sometimes as a what?"
+    },
+    {
+      "t": "narrate",
+      "text": "They look down. The prints on their shirts are moving."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob's shirt is Air, a figure made of wind with her hair going every which way. Wagner's is Fire, curled up and grinning. Faust's is Water, and she's looking right up at him off his own chest."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I painted these. These are my girls, from the easel, from the afternoon."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "(small, off his shirt) hi."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Hi."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Dude your shirt just said hi."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "She's polite."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Where's the fourth one."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust holds up the fourth shirt, still folded, still on its hanger from Dickens's office. It's a border of painted wood grain, knots and rings, and inside it nothing at all, just white cotton."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "That's his? He gets the blank one?"
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "It isn't blank. It's the frame."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Tie it to the mirror of your car if you would. I can't wear it from here."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust ties the shirt by its sleeves to the rearview of Judgement Day, which is parked at the curb where nobody parked it. It hangs there like fuzzy dice."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Now your lifelines. Each of you press play. What you hear is yours. If you get lost, it's what you swim toward."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner presses play. A woman's voice, close, half-asleep."
+    },
+    {
+      "t": "say",
+      "char": "Wagner's Partner",
+      "expr": "neutral",
+      "text": "drinking with the boys, steering them out of trouble, I know, I know, come home anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Wagner shuts his eyes a second."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "That's from the phone. That's the other half of the phone call. I never heard her side of it. I just said love you too."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob presses play. A kid, maybe six, talking with his mouth full."
+    },
+    {
+      "t": "say",
+      "char": "Jacob's Son",
+      "expr": "neutral",
+      "text": "dad, dad, is schnitzel a dinosaur"
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "amused",
+      "text": "(laughing despite himself) No buddy. No it is not. (to the others) I'd forgotten he asked me that. Where'd this guy get that."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Personal samples. From your library."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I don't have a library. I have a phone and a crib."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Then that's your library."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust presses play. Fluorescent hum, a register drawer."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "bit early to tell."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That's it? That's mine? My coworker telling me it's early?"
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Could be worse. Could be Eric."
+    },
+    {
+      "t": "say",
+      "char": "Eric",
+      "expr": "neutral",
+      "text": "(on Faust's line, uninvited) yo yo ma —"
+    },
+    {
+      "t": "narrate",
+      "text": "Faust slaps the earbud. It goes quiet."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "There's more on here. I can feel it queued up. I just don't get to pick the order."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Nobody does. Get in the car."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob tries the driver's door. Locked. Wagner tries it. Locked. Faust reaches past them both and it opens like it was waiting on him."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Since when do you drive JD. JD's Wagner's."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "JD's nobody's. JD's a state of mind."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I think tonight I'm the one who drives."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets in. The others pile in. The engine starts before he turns the key."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch9_street_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch10_longboat"
+    }
+  ]
+}

@@ -732,6 +732,7 @@ We can stand on this porch for hours or we can go on inside.
 
 *Canon used:*
 - *Nate is sixteen in spring 1994, and the 4 a.m. talk with Cale about the daughter is in March.*
+- *The family moved up the Alsea in 1992. Coastal kids pick a high school by address, so Nate went to the valley school first and transferred to Small Wood High in fall 1994, the narrator's senior year (Andy, Oct 2026).*
 - *The rented farmhouse up the Alsea off Little Switzerland Road; the Hagstrom place.*
 - *Aud's Missing Link (since 1989); Hans's bakery and Sal's Pizza Pirate (both since 1991).*
 - *The Small Wood crab derby; the Great Crustacean.*
@@ -742,7 +743,7 @@ We can stand on this porch for hours or we can go on inside.
 
 ### vii. SCUMM
 
-*from the dream journal of D. Dean — Small Wood High School — spring 1994*
+*from the dream journal of D. Dean — sophomore year, Alsea Valley High, before the transfer — spring 1994*
 
 **march 2**
 

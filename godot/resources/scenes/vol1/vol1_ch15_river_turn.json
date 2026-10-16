@@ -1,0 +1,410 @@
+{
+  "id": "vol1_ch15_river_turn",
+  "vol": 1,
+  "chapter": 15,
+  "type": "chapter",
+  "title": "Act Three — The Turn",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_river_turn.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_drive_night.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "The River — The Turn",
+      "sub": "EXT. · No Time",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "Judgement Day is waiting at the edge of the canvas, where the painted water meets the real water, engine idling. It came back, the way Olivia said it would. The front seat is warm where the cat was."
+    },
+    {
+      "t": "narrate",
+      "text": "A gray hair or two are stuck to the upholstery."
+    },
+    {
+      "t": "narrate",
+      "text": "The three get in. Faust takes the wheel. The empty shirt hangs from the rearview, and Dickens is in it now, a small dark figure in the middle of the frame, the size of a postage stamp."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(tiny, from the mirror) I'll ride back like this. If no one minds."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I mind a little."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "We'll allow it."
+    },
+    {
+      "t": "narrate",
+      "text": "The boat pulls away from the shore. Behind them the drugstore glows and gets smaller, all the lights on, the customers still reading their boxes. Olivia waves from the window."
+    },
+    {
+      "t": "narrate",
+      "text": "Then it's just a bright smudge, then a star."
+    },
+    {
+      "t": "narrate",
+      "text": "Out in the middle of the river it's very quiet. There's no shore on either side."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust opens his hand. His palm is covered in Joan's paint, warm, moving a little, still alive."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I can't hold this."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Then don't."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "If I hold it, I'm the frame. If I drop it, it's gone."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "There's three of us."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I know."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "So there's three hands."
+    },
+    {
+      "t": "narrate",
+      "text": "They look at each other. It's the oldest thing they know how to do. Fifteen years of it: jogging, the skatepark, the bar, Judgement Day."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob holds out his hand, palm up. Wagner holds out his. Faust lays his paint-covered hand flat across both, and the paint spreads three ways. It goes up their arms, onto the shirts, into the cotton."
+    },
+    {
+      "t": "narrate",
+      "text": "Jacob's Air has a stripe of Joan's spine through the middle of her. Wagner's Fire has the curve of a shoulder. Faust's Water has the bottom of a dagger, the hilt, the place a hand goes."
+    },
+    {
+      "t": "narrate",
+      "text": "None of the three shirts shows her whole. Put side by side, they make one picture: a woman charging off into battle, in three panels."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(looking down at his chest) Well. That's going to start conversations."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Triptych."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Bless you."
+    },
+    {
+      "t": "narrate",
+      "text": "The river starts to move. There's current now, real current, carrying them somewhere. The banks come back, far off, and they're not the banks they came in on."
+    },
+    {
+      "t": "narrate",
+      "text": "Judgement Day rocks."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "(from the mirror) This is the hard part. Coming back, you lose more than going in. Hold on to something that's yours."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Like what."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Something you'd say even if nobody heard."
+    },
+    {
+      "t": "narrate",
+      "text": "The boat bucks. Water comes over the side. All three earbuds click at once, and the lifelines come up together, all of them, the whole queue, out loud, overlapping. It's a bar at closing time, a whole night in one breath."
+    },
+    {
+      "t": "say",
+      "char": "Helen",
+      "expr": "neutral",
+      "text": "to finding gainful not painful employment —"
+    },
+    {
+      "t": "say",
+      "char": "Margaret",
+      "expr": "neutral",
+      "text": "thanks for helping me forget my troubles if but for a moment —"
+    },
+    {
+      "t": "say",
+      "char": "Emily",
+      "expr": "neutral",
+      "text": "multi-pass! —"
+    },
+    {
+      "t": "say",
+      "char": "Eric",
+      "expr": "neutral",
+      "text": "yo yo ma in the hizzouse —"
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "bit early to tell —"
+    },
+    {
+      "t": "say",
+      "char": "Old Woman",
+      "expr": "neutral",
+      "text": "be young and happy forever —"
+    },
+    {
+      "t": "say",
+      "char": "Jacob's Son",
+      "expr": "neutral",
+      "text": "dad is it a dinosaur —"
+    },
+    {
+      "t": "say",
+      "char": "Wagner's Partner",
+      "expr": "neutral",
+      "text": "come home anyway —"
+    },
+    {
+      "t": "say",
+      "char": "Aunt Grace",
+      "expr": "neutral",
+      "text": "don't overwork it, honey —"
+    },
+    {
+      "t": "narrate",
+      "text": "And under them, last, a text-message chime, and a voice Faust hasn't heard out loud in a very long time."
+    },
+    {
+      "t": "say",
+      "char": "Habes",
+      "expr": "neutral",
+      "text": "Hey. In town. Wanted to catch up. Thinking of you."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust closes his eyes."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That one's mine. That one's all mine."
+    },
+    {
+      "t": "narrate",
+      "text": "The boat steadies, a little. Not enough. The current is very strong."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Something we'd say even if nobody heard."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I've got one. You've got one. We all three have the same one. We said it in the car."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That was a joke too."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Everything you say is a joke until it isn't. Say it."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust looks at both of them. The water is coming up fast now. The shirts are glowing a little, Air, Fire, Water, each with its third of her."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We three shall be the Handsome Triumvirate."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "But aren't we already. I mean look at us."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "(and he means it, completely, the most sincere thing anyone has said in the whole picture) Living in this land of milk honey."
+    },
+    {
+      "t": "narrate",
+      "text": "They say it again, together, not as a joke this time. It's a vow, the way you'd say it at a wedding or a grave or a gas station at two a.m."
+    },
+    {
+      "t": "say",
+      "char": "Faust, Jacob, Wagner",
+      "expr": "neutral",
+      "text": "Living in this land of milk honey."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Here. This one. Not the next one. Not a better one. This one with the cheap fluorescents and the impulse buys and the drugstore and the bar and the overpriced drinks and the crusted restrooms and the ball fields and the downwind list and the girl in the square and the riff. I'll take it. I'll take all of it."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm not trading it."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Not trading it."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Not trading it. Not for superpowers, not for rockstar, not for a whole multiverse."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "sad",
+      "text": "(in the mirror, very small, almost to himself) Nobody's ever turned it down like that before. They usually counter."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "We're not countering. We're declining. Politely."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "amused",
+      "text": "(something like a laugh) Yes. That's what I needed to see. I think."
+    },
+    {
+      "t": "narrate",
+      "text": "The current lets go. The river goes flat. Up ahead, on the bank, there's a building with the lights low: Club #, with no line and no sign, just a door."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust steers for it."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "sad",
+      "text": "(from his chest, very quietly, the last thing she says) good job, captain."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Thanks. Thanks for sitting for me."
+    },
+    {
+      "t": "say",
+      "char": "Water",
+      "expr": "neutral",
+      "text": "anytime. next time take a reference photo."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch15_river_turn_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch16_four_am"
+    }
+  ]
+}

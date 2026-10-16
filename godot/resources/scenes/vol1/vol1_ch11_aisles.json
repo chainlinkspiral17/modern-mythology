@@ -1,0 +1,92 @@
+{
+  "id": "vol1_ch11_aisles",
+  "vol": 1,
+  "chapter": 11,
+  "type": "chapter",
+  "title": "Act Three — The Back of the Store",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_drugstore_aisles.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_diner_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "History. Music. Art.",
+      "sub": "The Back of the Store · No Time",
+      "duration": 1800
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "choice",
+      "prompt": "Who goes first.",
+      "opts": [
+        {
+          "text": "HISTORY — paper and jet fuel.",
+          "scene": "vol1_ch12_history",
+          "hide_if": "vol1_ch12_history_complete"
+        },
+        {
+          "text": "MUSIC — hot asphalt and amplifier dust.",
+          "scene": "vol1_ch13_deep_end",
+          "hide_if": "vol1_ch13_deep_end_complete"
+        },
+        {
+          "text": "ART — linseed oil and something burning low.",
+          "scene": "vol1_ch14_painting",
+          "hide_if": "vol1_ch14_painting_complete"
+        },
+        {
+          "text": "Back out to the river.",
+          "scene": "vol1_ch15_river_turn",
+          "requires": [
+            "vol1_ch12_history_complete",
+            "vol1_ch13_deep_end_complete",
+            "vol1_ch14_painting_complete"
+          ]
+        }
+      ]
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch11_aisles_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch15_river_turn"
+    }
+  ]
+}

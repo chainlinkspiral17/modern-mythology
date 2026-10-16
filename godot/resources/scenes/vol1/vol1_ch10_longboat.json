@@ -1,0 +1,286 @@
+{
+  "id": "vol1_ch10_longboat",
+  "vol": 1,
+  "chapter": 10,
+  "type": "chapter",
+  "title": "Act Three — The Longboat",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol1_jd_river.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol1_drive_night.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Judgement Day — The River",
+      "sub": "INT. · No Time",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "faust",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "show",
+      "char": "jacob",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "show",
+      "char": "wagner",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "The street outside the windshield goes soft and wet. Streetlights stretch into long reflections and the reflections turn into water. Judgement Day isn't on a road anymore."
+    },
+    {
+      "t": "narrate",
+      "text": "The tires make the noise of oars."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust has both hands on the wheel, which is now a tiller, which is now a wheel again."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "(watching the water out the window) So we're a boat."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Longboat. You said it the other day. Take the longboat out, prowl uncertain waters."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I was being colorful."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "You're always being colorful. It keeps happening."
+    },
+    {
+      "t": "narrate",
+      "text": "On the shore, things go by. A strip mall. A Little League diamond with the lights still on. A tanooki leaf drifting down onto the water and floating there."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "I know that ball field."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Grand slam. I was nine. That's not your ball field that's my ball field."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "It's everybody's ball field. Every ball field looks like that."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "Then it's everybody's grand slam. I'll allow it."
+    },
+    {
+      "t": "narrate",
+      "text": "A figure on the bank raises a hand like he's hailing a cab. Faust slows the boat without meaning to."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "Don't stop for every hitchhiker. They aren't yours."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "How do I know which ones are mine."
+    },
+    {
+      "t": "say",
+      "char": "Dickens Dean",
+      "expr": "neutral",
+      "text": "They'll have exact change."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust lets the figure slide by. It waves again, patient, unbothered, used to it."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "Okay hold up. Faust. I'm going to say a thing. You're driving the boat on the river with dead dudes waving at you."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I noticed."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "You told Deborah, I feel like Charon ferrying and she said aptly put and now look."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "That was a joke about pills."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Funny how jokes keep coming home to roost."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "neutral",
+      "text": "So who's paying the fare. Charon gets a coin. Coin on the eyes, coin under the tongue. History major. I know these things."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust pats his pockets. Receipts. A pen from work. A single blister-pack pill he doesn't remember pocketing."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I've got one Advil."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Ferryman's got to eat."
+    },
+    {
+      "t": "narrate",
+      "text": "The water ahead is darker. A toll gate rises out of it, an old wooden arm painted red and white, a booth with nobody in it. The radio in the dash turns on by itself."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "warm",
+      "text": "(over the radio, bored, kind) toll is something personal. can't sell what isn't personal. you said that. I heard you say that to the mirror."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "You were in the back."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "walls are thin at a drugstore."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "What counts as personal."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "you know already. you're stalling."
+    },
+    {
+      "t": "narrate",
+      "text": "Faust thinks about it. He pulls Judgement Day up to the booth."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "(to the empty booth) Here's one. I've been telling people my grand-dad was either Jack Parsons or L. Ron Hubbard. Rocket fuel on one side, sailor boy on the other. And I tell it like a party trick, because it's a great story. But the personal part is I don't know. I really don't know whose I am."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I tell the story so nobody sees me not knowing."
+    },
+    {
+      "t": "narrate",
+      "text": "Silence. Then the gate arm lifts."
+    },
+    {
+      "t": "say",
+      "char": "Deborah",
+      "expr": "neutral",
+      "text": "that'll do."
+    },
+    {
+      "t": "say",
+      "char": "Jacob",
+      "expr": "sad",
+      "text": "(quietly) Damn, man."
+    },
+    {
+      "t": "say",
+      "char": "Wagner",
+      "expr": "neutral",
+      "text": "Sailor boy it is. Look at you. You're steering."
+    },
+    {
+      "t": "say",
+      "char": "Faust",
+      "expr": "neutral",
+      "text": "I'm steering."
+    },
+    {
+      "t": "narrate",
+      "text": "They go under the arm. Behind them it drops back down. The water goes still and very flat and very bright, a fluorescent kind of bright, and up ahead a building sits on the water with every light on."
+    },
+    {
+      "t": "flag",
+      "key": "vol1_ch10_longboat_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol1_ch11_drugstore"
+    }
+  ]
+}
