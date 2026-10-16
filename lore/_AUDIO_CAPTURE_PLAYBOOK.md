@@ -1274,6 +1274,15 @@ context keeps running into a fake sink, and the meters still move.
   Deck, PLAY: RENDER of a take with 3–4 arrangement parts may wait
   longer before the first sound — watch DIAG's "× real time".
 
+### 2026-10-16 — at most two arrangement parts by the odds (render cost on the Deck)
+
+- Each arrangement part (counter / arp / perc / double) renders about as slowly as another lead: a four_floor
+  song with perc + arp went from 1.5× to 0.9× real time offline, PLAY: RENDER's first sound 6 s → 16 s. The
+  Deck's playback start is the thing the user fought hardest, so seqgen caps the parts chosen BY THE ODDS at
+  ARR_AUTO_MAX = 2 per song (the style's likeliest stay; `o.arrangeMax` overrides). Parts asked for by name —
+  PARTS, `o.arrange`, a cue's shape — always play and don't count. Over 26 styles × 39 seeds: 10 % none, 35 %
+  one, 55 % two. The five original roles are untouched (the 1092-hash snapshot still matches).
+
 ## TEMPLATE
 
 ```

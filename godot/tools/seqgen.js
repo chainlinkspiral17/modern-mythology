@@ -1029,6 +1029,7 @@
   // idiomatic (ARRANGE); plan() decides per song from its own 'arr:<role>' streams, so these parts never move a note
   // of drums / bass / chords / lead / pad (tests/fixtures/seqgen_roles_v2.json pins those).
   const ARR_ROLES = ['counter', 'arp', 'perc', 'double'];
+  const ARR_AUTO_MAX = 2;
   const pcOf = n => ((n % 12) + 12) % 12;
   // one voice at a time: each note ends before the next one starts (counter, arp and double are monophonic)
   function monoLine(ns) {
@@ -1367,6 +1368,11 @@
         arr.double = { on: on && !!kind, kind };
       }
     });
+    // at most ARR_AUTO_MAX parts by the odds (each costs a lead's render time — the Deck's PLAY: RENDER start): the
+    // style's most likely ones stay. Asked-for parts (o.arrange, PARTS, a cue) always play and don't count.
+    const maxAuto = Number.isFinite(+o.arrangeMax) ? Math.max(0, Math.round(+o.arrangeMax)) : ARR_AUTO_MAX;
+    const auto = ARR_ROLES.map((r, i) => ({ r, p: AR.p[i] || 0, i })).filter(x => arr[x.r].on && !forced.includes(x.r)).sort((a, b) => b.p - a.p || a.i - b.i);
+    for (const x of auto.slice(maxAuto)) arr[x.r].on = false;
     // where each part plays: with intent — an arp entering in A2, the counter answering in B / A2, perc lifting B, the
     // doubling for the lift. Loops and beds have one section: a part the song has plays there.
     for (const role of ARR_ROLES) {
