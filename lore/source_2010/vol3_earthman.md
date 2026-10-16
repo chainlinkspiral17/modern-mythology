@@ -1841,6 +1841,17 @@ That night we stayed awake till dawn and talked about the future.
 We talked about the future as two high school boys would talk about the future. We talked about our parents. Mine are together and look happy, so hell, that's what I want, I said. I want to be happy. Nick just smiled and pointed to the last page of the story. Mark was drunk and stoned on the couch. The last time I ever saw my father, the caption said, his eyes were rolled into the back of his head. He looked dead.
 
 <!-- p.283 -->
+> [[RECOVERED from page image]]
+
+But, I said to Nick, you're nothing like Mark. You could be a great dad.
+
+He looked me in the eyes and turned away a second later. No, he said, I don't think so. Unless it happens by accident, it'd scare me too much. I don't want to be that. I don't ever want to have my kid look at me, he said pointing to page, and see this. I don't want to be seen like this.
+
+Nick signed the bottom of the page with an ink brush and took his glasses off to give it one final going over. He looked up and said to me, I want to be Uncle Nick. I want to be the guy kids come to for advice, to buy cigarettes and alcohol off. I love my dad but he never wanted to be my dad. I don't think my grandpa wanted kids either. You, man, have wonderful parents. I wish they were mine but that's not how it works. Not all the time. You can be a good father, I think. You have that in you. No, man. I just want to be Uncle Nick. I just want to be the guy who loans kids dirty magazines and tells them stories they don't want to believe about their parents. It's a sad thing. A very sad thing, to say I don't ever want kids but it's the honest to god truth. I'm eighteen. I'm a fucking kid, and I don't think I will ever be an adult. My dad died when he became an adult. Having kids ruined him. Not at first but over time, that's what killed him. I don't want to die in my kid's eye. I don't want that to happen to me. I just want to be Uncle Nick.
+
+I looked at him. For an instant, what he said made sense to me.
+
+Tony is looking at me, across from the table. The magazine sits between us. We are way too quiet. My wife would see something wrong with this. I don't know what to do. This is a big deal, this is a scary place to be. I love my kid, I talk to him and like to think I treat him right. But I wonder sometimes if Nick's words will ever come true. Will I ever fail Tony so miserably? I spin the magazine and I begin to chuckle. God-
 
 <!-- p.284 -->
 > [[RECOVERED from page image]]

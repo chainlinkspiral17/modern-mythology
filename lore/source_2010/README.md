@@ -54,7 +54,7 @@ The rest of Vols I–IV is now in `godot/resources/scenes/vol1–vol4`. There ar
 `ASSET_WORKLIST.tsv` lists every new background, CG, music track and portrait the scenes reference (220 bg, 35 cg, 34 bgm, 18 portraits), with one painter-ready line each. It's ready for bulk_intake.
 
 Open questions for Andy, as flagged by the batches:
-- p.283 is blank in the PDF, so "uncle nick" jumps from "He looked dead." straight to "damn it's a funny thing."
+- p.283 (blank in the PDF render) was supplied by Andy as a screenshot and is now in both the source text and the uncle nick scene.
 - The chapter numerals in Earthman repeat (two v.s and two vi.s). The game numbers them 1–14.
 - In Vol I, "Dicken's Phone vibrates" is printed where the line seems to be Faust's. It's kept as printed.
 - In "ps." (p.393), the blog postscript after SCUMM plays as its own story.
