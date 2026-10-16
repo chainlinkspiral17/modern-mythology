@@ -136,7 +136,7 @@
       "t": "say",
       "char": "Janessa",
       "expr": "neutral",
-      "text": "Jessie. Sixteen and a sophomore next year."
+      "text": "Jessie. Nineteen, and a sophomore at Pomona next year."
     },
     {
       "t": "narrate",
@@ -171,7 +171,7 @@
     },
     {
       "t": "jump",
-      "scene": "vol3_ch6_arcadeum"
+      "scene": "vol3_ch6_couch"
     }
   ]
 }

@@ -1,0 +1,203 @@
+{
+  "id": "vol3_ch6_couch",
+  "vol": 3,
+  "chapter": 7,
+  "type": "interlude",
+  "title": "vi. stacks — the couch",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_dabney_game_room.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "the couch",
+      "sub": "now · Dabney basement · afternoon",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Andy goes back down to the basement alone with his notebook."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy Link is an awful writer, but stupid him loves his own words, he can not help himself. Indulge me, that's all he asks of any reader, asks of himself."
+    },
+    {
+      "t": "narrate",
+      "text": "Confront the world post-Nietzsche."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "page back to the plane.",
+          "goto": 10
+        },
+        {
+          "text": "write.",
+          "goto": 14
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Portions of moments, whole chapters of life,\nIdea nowhere to be found, not even among cross faded dream.\nNow, idea spills out some font of the cosmos, bigger than reckoning,\nMe."
+    },
+    {
+      "t": "narrate",
+      "text": "The edges of perception, where the world is large, our universe is larger, and the multiverse still not largest.\nBigger than what you can imagine, but exactly what you imagine, lies our next question."
+    },
+    {
+      "t": "narrate",
+      "text": "The simple missteps of a life lived, the small regrets and missed opportunities, spiraling inward.\nA perfect life unlived by simple mistake, undone by single word, and awkwardly glanced implication."
+    },
+    {
+      "t": "narrate",
+      "text": "The firmament we find ourselves in is new dirt,\nYet more far ancient than our animal intellect can tell."
+    },
+    {
+      "t": "narrate",
+      "text": "Invitational intellect divvied up\nWrit on walls, up in the air\nMusical strains echo through halls\nArriving here nor there."
+    },
+    {
+      "t": "narrate",
+      "text": "Rich paternity of learned expression\nExpanded consciousness and experimentation\nYoung bodies yearning and earning\nLingering in exhausted's comfy shadow."
+    },
+    {
+      "t": "narrate",
+      "text": "Video basements alive with gameplay\nA broken insect's eye of screen and monitor\nCathode rays, LCD infestation of low light imagery\nRetinal burn pattern recognition cognitive dissonance."
+    },
+    {
+      "t": "narrate",
+      "text": "Nerdery, a simple refrain for Nerdery."
+    },
+    {
+      "t": "narrate",
+      "text": "8-bit chorus line of butt rock\nMuralized sprite art, archaic and totemic.\nScrawled across leather couch with pen knife"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_couch_carving.jpg",
+      "caption": "cut into the leather"
+    },
+    {
+      "t": "narrate",
+      "text": "Under his hand the leather says it, cut deep and gone gray in the grooves: SLOW STICKS. Smaller, under that: put in and wait."
+    },
+    {
+      "t": "narrate",
+      "text": "Houses pitted against each other\nFor intellectual supremacy,\nSettling instead on cultural divides\nThat shape egos instead."
+    },
+    {
+      "t": "narrate",
+      "text": "A cross-talk emerges, ages of experience\nForbidden knowledge and cracked sanities\nSpill out on warm California concrete\nA rich paternity of L. Ron Hubbard,\nJack Parsons, JPL and experimental rockets to hell."
+    },
+    {
+      "t": "narrate",
+      "text": "Not so much eternal damnation as muddled\nAntichrists, stolen goods and womens\nBlack magic martyrs for the lost and confused\nErrol Flynn wannabes and Pulp Fiction Religion."
+    },
+    {
+      "t": "narrate",
+      "text": "A moment which fragments an author's dream\nInto that of a renegade charlatan prophet\nDiscords New Age into something Tired\nThe dreamers cease to, and the opposite comes true."
+    },
+    {
+      "t": "narrate",
+      "text": "Lafayette was a pirate captain, aye.\nI dreamed his dream in hallowed walls\nThought perhaps, so was I\nFooling the foolish, feeling quite the fool."
+    },
+    {
+      "t": "narrate",
+      "text": "An ecstatic state of being, drifting to beaches\nOver-lit Chinese supermalls, sister's friends\nIn Bikini tops, striding through freezer section\nFighting over which Mochi ball is the more perfect."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the wall of screens is a shelf of big game boxes gone soft at the corners. Final Cut, from a studio called Mountaintop. Wedged behind it, a burned disc in a jewel case: RETINAL BURN. Mountaintop. Beta. Do not distribute."
+    },
+    {
+      "t": "narrate",
+      "text": "Imagine an adventure game taken to the next level, a fractal cinematic narrative video-game, a mature blend of old school investigation, coupled with a new and unique gameplay mechanic."
+    },
+    {
+      "t": "narrate",
+      "text": "Retinal Burn follows a film student/historian tasked with uncovering the long lost silent film of Austrian auteur Stefan Stutgart."
+    },
+    {
+      "t": "narrate",
+      "text": "Starting with a tutorial in the academic world, the player embarks upon a globetrot to rediscover the missing film reels, encountering a wide range of shady entrepreneurs and filmland eccentrics and royalty."
+    },
+    {
+      "t": "narrate",
+      "text": "Retinal burn. It is in his notebook already, a line he wrote ten minutes ago. He reads the insert again to be sure he didn't write that too."
+    },
+    {
+      "t": "narrate",
+      "text": "Under the jewel case lies a floppy disk, the label in ballpoint: S.C.U.M.M. Under that, D.N.D., and an Oregon phone number one digit short."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "try the floppy in the old machine.",
+          "goto": 34
+        },
+        {
+          "text": "leave it where it was.",
+          "goto": 35
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The drive grinds and the screen asks for disk two. There is no disk two."
+    },
+    {
+      "t": "narrate",
+      "text": "Words carefully aimed to intercept\nMissile'd defense, fortified silos\nOf intellect, wit, measured response."
+    },
+    {
+      "t": "narrate",
+      "text": "Cities are lost to stray visions of\nSoft-lined, out of focus passing beauties\nWhose backward glancing\nShoots and eschews for the pinball tables."
+    },
+    {
+      "t": "narrate",
+      "text": "Horsemen, more quarters for the slotting.\nFriendly conversation turned competitive.\nScores are tallied cities left flaming,\nDames in passing, wasted initials."
+    },
+    {
+      "t": "narrate",
+      "text": "Backsides scored to carnival noises,\nEyes never quite averted\nFrom dim-lit glass holding it all in."
+    },
+    {
+      "t": "narrate",
+      "text": "Drunken fingers fumble over drunken quarters\nThe last game is played to warm the eyes\nBack in to focus."
+    },
+    {
+      "t": "narrate",
+      "text": "The sit-down cabinet in the corner cycles its high scores to nobody. At the top, three initials nobody in the house will claim: J.O.K."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch6_couch_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch6_arcadeum"
+    }
+  ]
+}

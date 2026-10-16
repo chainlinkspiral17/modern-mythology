@@ -784,7 +784,7 @@ It's just a level, a stage he can transcend. But Janessa wants something wants h
 
 Andy looks around the room, pokes his nose into the dirty clothed over corners picks up at magazine and text book and thumbs through articles without care. He sees a picture of a pretty Asian girl posed with Janessa and both are wearing an uncomfortable very little, Jessie with hair not so pink as neon explicit plugged in exploded, both the girls covered or not so covered in strategic locations with black vinyl paint-on.
 
-Janessa says, "Jessie. Sixteen and a sophomore next year."
+Janessa says, "Jessie. Nineteen, and a sophomore at Pomona next year."
 
 Andy says, "Damn," and Spencer looks up and frowns. Prickles is the word.
 

@@ -1,0 +1,142 @@
+{
+  "id": "vol3_ch6_binder",
+  "vol": 3,
+  "chapter": 7,
+  "type": "interlude",
+  "title": "vi. stacks — the binder",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_sleep_lab.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "the binder",
+      "sub": "now · the basement's basement · 3 a.m.",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "He is not supposed to get up, so he doesn't. He reaches instead for the bookshelf between the two beds."
+    },
+    {
+      "t": "narrate",
+      "text": "Between the Wittgenstein and the Powers is a white binder with no spine label. The cover sheet says IRIS, and under it ONEIRONAUTICS INC., and under that a violet stamp: rev. 22 SEP 09."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_iris_binder.jpg",
+      "caption": "IRIS · Oneironautics Inc."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris Williams - a 75 year old woman living in the desert with a strange collection of artists, visionaries, doomsayers, war protesters, and the ghosts of her past."
+    },
+    {
+      "t": "narrate",
+      "text": "Grace Knight - Iris's best friend and worst enemy, at various points in life. An artistic genius whose vision haunts and shades Iris's perspective."
+    },
+    {
+      "t": "narrate",
+      "text": "Gabriel Jansen - The love of Iris's life, father of Grace's daughter, a world traveler, soldier, entrepreneur, writer."
+    },
+    {
+      "t": "narrate",
+      "text": "Esther Knight - Daughter of Gabriel, kept her Mother's name. Wants to learn as much about her Dad as she can from Iris, as he has recently passed away."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "keep reading the cast.",
+          "goto": 14
+        },
+        {
+          "text": "skip to the part about her.",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Cameron Stephenson - An old-fashioned inventor type, has a workshop. At seventy-seven, his mind is a whirling dervish of activity. His visions of the future, of science, technology, awe and wonder are the stuff of dreams and nightmares."
+    },
+    {
+      "t": "narrate",
+      "text": "Jane Huxley - A thirty-six year old woman of the moment, always looking after people as best she can, and always asking about others. A flirt, gossip, grandmotherly-type, despite being quite young."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy reads the name twice. Through the curtain the monitor light does not change."
+    },
+    {
+      "t": "narrate",
+      "text": "The key crux of the story is this: The people that make up Iris' world are themes and variations on her ideal lives she has led, or might yet lead. They are all herself, had she made different choices."
+    },
+    {
+      "t": "narrate",
+      "text": "Her world is a strange shadow world of her own choosing, represented by the various threads of existence she eeks out in her associations."
+    },
+    {
+      "t": "narrate",
+      "text": "Her interactions make up her life, and the end result of her life comes down to the choices she's made, each of these is reflected in the various people who inhabit her world."
+    },
+    {
+      "t": "narrate",
+      "text": "It is interesting that she finds these people here, at the end of her life. Is it a hallucination, one last day dream before dying, a day in the life, just some random chaotic nonsense. It can be anything, everything, should the player invest that into it. Or not."
+    },
+    {
+      "t": "narrate",
+      "text": "The game is a parallel to the world we live in. Some dreams come true, some don't. We learn, and error, and learn some more."
+    },
+    {
+      "t": "narrate",
+      "text": "It makes a statement about death as a natural process, and judges nobody in their acceptance or unacceptance of it. The odd hints at the end suggest it may not really be the end, should the players seek out a perfect ending for Iris."
+    },
+    {
+      "t": "narrate",
+      "text": "Iris is a tabula rasa until the player forms her, through the interactions and connections she makes over the course of her last 30 minutes of her life."
+    },
+    {
+      "t": "narrate",
+      "text": "If she remains utterly passive and never leaves the room she will get a different ending as a player who explores their universe."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy thinks of another room, the one in Houston, and closes the binder on his thumb."
+    },
+    {
+      "t": "narrate",
+      "text": "On the clipboard by the door hangs the week's sign-in sheet. His name is the last line. The line above it is in a neater hand, no school listed: J. Okimoto — Dallas — calibration."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere past three he goes under with the binder on his chest. He does not remember putting it back. In the morning it is on the shelf, spine in."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch6_binder_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch8_pulp_the_catwalk"
+    }
+  ]
+}

@@ -1479,7 +1479,7 @@ I went back to visit him, he wanted to show me what he was working on. Told me I
 All I can do at this point is look out among the past, the words already written and hope to find some measure of sanity within. That's not what I'll find, but I can always hope.
 
 <!-- p.156 -->
-xii. drift wood - jay rose was the first of us to disappear. These are the comics he contributed to the Small Wood Senior High newspaper.
+xii. drift wood - arthur finch was the first of us to disappear. These are the comics he contributed to the Small Wood Senior High newspaper.
 
 :::expansion
 **[expansion E2 — optional · source: "The Mircocosmographer" by andy link (c. 2015) · verbatim, unfinished]**
