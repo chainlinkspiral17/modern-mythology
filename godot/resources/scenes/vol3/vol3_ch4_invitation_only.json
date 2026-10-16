@@ -1,0 +1,194 @@
+{
+  "id": "vol3_ch4_invitation_only",
+  "vol": 3,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "iv. names in neon — invitation only",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_city_street_friday.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_neon_drift.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Invitation only",
+      "sub": "now · a Friday afternoon",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "There are moments you never forget. When the book we walk through comes to a new chapter and the words that begin this great transition hover vibrato in the air."
+    },
+    {
+      "t": "narrate",
+      "text": "Everything changed when we saw the film. I hesitate to even call it that. I lead you gently into that night."
+    },
+    {
+      "t": "narrate",
+      "text": "I was in town, the start of the movie making weekend that would last a hollow eternity. It was a Friday afternoon and there was nothing for Justin and I to do except socialize and reacquaint."
+    },
+    {
+      "t": "narrate",
+      "text": "We wandered streets in the early evening, window drop shopping independent record stores, trailblazing Powells book store, being observed out in the open laughing and celebrating early that rush of impending weekend freedom rubbing it in eager curious noses that looked up from lack of passion duties."
+    },
+    {
+      "t": "narrate",
+      "text": "She found me, the young woman with dreadlocked hair all the colors of fruity pebbles. Practically assaulted me in the street, thought she knew me from somewhere, called me by a stranger's name which I remember to be Bran."
+    },
+    {
+      "t": "narrate",
+      "text": "She was certain I was him and grew all the more empirical the longer we spoke between concrete limbo. She thought I was fucking with her and went back and forth between upset and excited."
+    },
+    {
+      "t": "narrate",
+      "text": "I showed her my driver's license to which she said, I'll be damned and changed her tune, suddenly now wanting to hang with us, asked if we had a problem with that. She kept looking at me, eying me, squinting effectively unnervingly. Justin, to stop the honking, embraced the girl completely, her name April."
+    },
+    {
+      "t": "narrate",
+      "text": "She lurched over and included me in the hugging tight. I was big and awkward, consciously scouting for my implied doppelganger to appear out of nowhere. The three of us in the road, just like that."
+    },
+    {
+      "t": "show",
+      "char": "april",
+      "expr": "amused",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "She took us by hand and led us through alleys we'd never considered but understand she was not an alley person."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't want to give the impression that she was from the street that she knew the lingo because she was entirely like us and we were all tourists. She used four dollar words because she was a student and they felt good on her tongue. Pierced not once but twice."
+    },
+    {
+      "t": "narrate",
+      "text": "We shared this new world together for a day the way strangers do when they familiarize themselves with comfortable otherness. She wanted to know all about us, all about our movie, because she loved movies."
+    },
+    {
+      "t": "narrate",
+      "text": "In fact, she explains in bold, she got an invite to an invitation only movie screening that very evening and this she kept repeating."
+    },
+    {
+      "t": "narrate",
+      "text": "Important, this invite only invite. She pulled it out of her purse at some point, written in fancy cursive across one side, invitation only. On the other side was an address, a gallery space she told us her friend once used, but had since reverted vacant."
+    },
+    {
+      "t": "narrate",
+      "text": "She tried and failed to explain the significance, it was all a web of people, names we couldn't place."
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "narrate",
+      "text": "We continued our wandering. Unimportant save for details, fleeting. We had pizza dinner and bought disposable cameras which we emptied, pow pow pow, in a pigeon occupied park plaza."
+    },
+    {
+      "t": "narrate",
+      "text": "The winged squatters refusing to budge, unafraid of us, we'd run at them and they'd stare us down, the whole flock would just flutter and bustle in place, watching as we were the ones who trembled."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "run at the pigeons.",
+          "goto": 25
+        },
+        {
+          "text": "keep walking.",
+          "goto": 27
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_pigeon_plaza.jpg",
+      "caption": "The winged squatters refusing to budge."
+    },
+    {
+      "t": "narrate",
+      "text": "The whole flock lifts an inch off the stones and settles again where it was."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_vacant_gallery_lobby.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "The gallery",
+      "sub": "now · evening",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "We showed up early, there was already a line at the door. These people were individuals. I empathize because they were fascinating to look at and to overhear speaking to one another. I wanted to know their stories. They were cool and different and they all hummed at that same special frequency."
+    },
+    {
+      "t": "narrate",
+      "text": "It has taken this long to realize that Justin and I and April, we all hummed at that same frequency as well. We belonged there, with them, at that moment. But even then, I knew This Was Important in that Richard Dreyfuss mashed potatoes mountain kind of way."
+    },
+    {
+      "t": "narrate",
+      "text": "People nervously fondled their invite only invites. A colic youth moved to the front and unlocked the glass doors, kick stopped them open and disappeared into dark leaving us to watch as lights appeared non-sequentially in relative distance. We saw a waiting area which we slowly filed into brushing against one another."
+    },
+    {
+      "t": "narrate",
+      "text": "April holding our arms tight wedged tiny down there. The floor was unswept meaning dust was kicked up and footprints emerged, diverged leading every which way."
+    },
+    {
+      "t": "narrate",
+      "text": "There was a table with refreshments set up along one wall, a trashcan filled with ice and cans of beer. This became the uncomfortable transition period, forced to wait together. This energy is vital. The uncomfortable dread, the questions we asked of one another, ourselves, why are we here exactly."
+    },
+    {
+      "t": "narrate",
+      "text": "The line of thought continues like this and continues to build, the answers must be coming. I remember a strange young woman in the corner, dressed in a ratty dress. Ratty like a doll dress, used up by too much play, too treasured to discard. She had that raggedy ann look, languid limp from so much existence."
+    },
+    {
+      "t": "narrate",
+      "text": "She was telling a story when I wandered up to her. Justin and April at different corners with different circles, our shapes formed an imaginary triangle, circles within circles. She spoke of a boy she gave a ride to in her car."
+    },
+    {
+      "t": "narrate",
+      "text": "He was a normal looking kid, about nine or ten. Then he started talking. He sounded funny. Like he should be medicated. (she speaks very slow, affects some truly queer accents and enunciations) He talks about twigs. Sticks. For minutes, that's all he talks about. About having sticks inside."
+    },
+    {
+      "t": "narrate",
+      "text": "Having scarecrow stick limbs. That's when he pulls out a pistol. Only it's missing a barrel. It's just a handle and chamber. He assures me it can still shoot. He's already shot somebody with it. He shows it to me. I'm driving. I'm terrified. I keep driving and he keeps talking. He talks for maybe an hour."
+    },
+    {
+      "t": "narrate",
+      "text": "Then he puts the gun in my lap, leaves it there, his hand still on it. Tells me to let him out at the gas station. He leaves the gun on my lap and walks out into the night."
+    },
+    {
+      "t": "narrate",
+      "text": "This was when she produced the gun without a barrel and showed it to us. Said she knows it still shoots because she's shot somebody with it. Some people laughed at this. You know the kind of laugh."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch4_invitation_only_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch4_four_screens"
+    }
+  ]
+}

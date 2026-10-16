@@ -1,0 +1,96 @@
+{
+  "id": "vol2_ch6_mayhune",
+  "vol": 2,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. Triptych — Mayhune Lovers",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_backyard_party_summer.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Mayhune Lovers",
+      "sub": "First Panel · she and he",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Keep waiting for that moment of connection because he and she were like fish in a bowl, always brushing past each other never touching. He was clumsy like the words out of his mouth, she was stoic with her inward gaze. Compare and contrast for effect."
+    },
+    {
+      "t": "narrate",
+      "text": "But they had a history."
+    },
+    {
+      "t": "narrate",
+      "text": "He remembered something, a moment he'd forgotten. They were age nine or so, lanky springs of acutely conscious energy, polar in their pursuits. She wanted to be a vet, loved animals and was preoccupied with breeding rabbits."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd help her clean cages, little fecal balls rolled away and he'd have to pick them up, one by one with his fingers. He didn't know what he wanted to do with his life and didn't much care to worry. His gaze was on her."
+    },
+    {
+      "t": "narrate",
+      "text": "He knew he enjoyed her company. She tried to teach him little things suspected he'd forget completely. Yet he remembered every thing about the way she said it, how much fun they were having."
+    },
+    {
+      "t": "narrate",
+      "text": "She only saw him as uninteresting, plain and simple. She grew tired of trying to improve him, he was not worth her energy. But they had a history, and she too remembered moments."
+    },
+    {
+      "t": "narrate",
+      "text": "When they were thirteen, he could not begin to understand who she was becoming. Never were they so very different. Somehow he remembered the smallest thing she said at the lake one spring."
+    },
+    {
+      "t": "narrate",
+      "text": "About how she wanted to go to Nepal and climb the highest mountain and at the top instead of leaving a flag, she'd leave a photo of herself to be buried under all that snow."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_bedroom_window_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "When the day was done and he had left with his family, the painful waves and hugs and thanks all exchanged, she went up to her room and sat in silence. She looked over all her unwrapped presents and considered him again. It was nothing really but she kept thinking about him and she didn't want to."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd given her a stethoscope for her birthday. She'd wanted to be a doctor now and hadn't told anybody, even him. She wanted to help people because there was so much sickness in the world and she knew nothing of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He was so simple, so silly. She could not get him out of her head. The day turned to night and she sat on her pillows, her legs crossed, her chin cradled against her hands, forehead creased and set like stone."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside her chest her breathing came short against her throat, she breathed through her nose, every thought and beat of her eyes a measure of her consideration. Her hands were sweaty together entwined, eyes more out of focus with every flutter."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_mayhune_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_sacrificial_pair"
+    }
+  ]
+}

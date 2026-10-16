@@ -1,0 +1,291 @@
+{
+  "id": "vol2_ch7_scumm_d",
+  "vol": 2,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vii. SCUMM — The Middle",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_inventory_vga.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_scumm_adlib.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "march 15",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Things in the inventory I never picked up:"
+    },
+    {
+      "t": "narrate",
+      "text": "INVENTORY\n  a key with no teeth\n  a jar (the lid is about to slide open)\n  a heron feather\n  a derby crab, number 0\n  a stick, plastic, no label\n  a raincoat, yellow, small"
+    },
+    {
+      "t": "narrate",
+      "text": "The raincoat won't describe. The line above the verbs runs through every word it has, *Bakery Door Script Aud Dean minivan crab*, too fast to read, and lands on nothing. Tried to give it to Aud."
+    },
+    {
+      "t": "say",
+      "char": "Aud",
+      "expr": "neutral",
+      "text": "I can't take that, that's not mine to hold."
+    },
+    {
+      "t": "narrate",
+      "text": "Tried it on the boy and he held it up to his chest like measuring and it comes nowhere close. It's for a kid five or six. Mud on the hem."
+    },
+    {
+      "t": "narrate",
+      "text": "Real mud, brown, on a picture that doesn't have any brown left in it."
+    },
+    {
+      "t": "narrate",
+      "text": "I put it back. Something in the dream liked that."
+    },
+    {
+      "t": "narrate",
+      "text": "The stick is the other weird one. Size of a pack of gum. Plastic."
+    },
+    {
+      "t": "narrate",
+      "text": "Warm."
+    },
+    {
+      "t": "narrate",
+      "text": "> LOOK AT stick\nIt's slow.\n\n> USE stick WITH Dean\nWait."
+    },
+    {
+      "t": "narrate",
+      "text": "So I waited. In the dream I waited what felt like a whole summer. The boy stood there holding it and the minivan doors stopped and the crab stopped with one leg up and the rain hung in the air in its three straight lines, and nothing loaded, and nothing loaded, and then everything did."
+    },
+    {
+      "t": "narrate",
+      "text": "Not the town. The inside of the town. Every kitchen."
+    },
+    {
+      "t": "narrate",
+      "text": "Every basement. What everybody in it was thinking right at that second, all at once, slow, like syrup. I can't write down what that was like."
+    },
+    {
+      "t": "narrate",
+      "text": "I tried for ten minutes and threw the page away."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_spiral_vga.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "march 18",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The middle."
+    },
+    {
+      "t": "narrate",
+      "text": "Every street bends the same way. I go past the bakery and Hans lifts his loaf. Past the red door and hear the one person clapping."
+    },
+    {
+      "t": "narrate",
+      "text": "Past the minivans, doors going crazy now. Past the Link, where the coffee has reached the street and is running in the gutter, black and shining, toward the middle of everything."
+    },
+    {
+      "t": "narrate",
+      "text": "In the middle of everything is a hole. Round. Turning."
+    },
+    {
+      "t": "narrate",
+      "text": "Those games have a trick for water and fire where they cycle the colors through a shape instead of drawing new pictures, so the river looks like it's moving when nothing's moving at all. The hole is that trick done to a spiral. Blue to violet to theater red to black to blue, around and down."
+    },
+    {
+      "t": "narrate",
+      "text": "The coffee goes in. The rain goes in, the three lines bending at the bottom for the first time all night. Out on the flats the crab is walking toward it, slow, sideways, and the whole map on its back is turning with it."
+    },
+    {
+      "t": "narrate",
+      "text": "On the lip of the hole there's a root-cellar door in the ground. Cut into the wood like the initials on the bleachers:"
+    },
+    {
+      "t": "narrate",
+      "text": "D.D."
+    },
+    {
+      "t": "narrate",
+      "text": "Mine. Dad's. Grandpa's."
+    },
+    {
+      "t": "narrate",
+      "text": "> OPEN Door\nIt's locked.\n\n> USE key with no teeth WITH Door\nIt fits. It doesn't turn. Not yet.\n\n> PULL Door\nYou'll need someone to hold the other side."
+    },
+    {
+      "t": "narrate",
+      "text": "Then there was a new verb at the end of the bar, a little brighter than the others:"
+    },
+    {
+      "t": "narrate",
+      "text": "WALK TO    PICK UP    USE      OPEN     LOOK AT\nTALK TO    PUSH       PULL     GIVE     CLOSE     MAKE"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "MAKE",
+          "goto": 35
+        }
+      ]
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_save_screen_vga.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I put the pointer on it and before I could click, black. A save box. Ten slots."
+    },
+    {
+      "t": "narrate",
+      "text": "Nine full of names I don't know in handwriting I don't know with dates that haven't happened. 2013. 2026."
+    },
+    {
+      "t": "narrate",
+      "text": "2042. 2052. The tenth one empty, cursor blinking."
+    },
+    {
+      "t": "narrate",
+      "text": "SAVE GAME\nName your game:\n_"
+    },
+    {
+      "t": "narrate",
+      "text": "I didn't know the name. I want to write that down plainly because I already know I'm going to want to say later that I did. What I felt wasn't scared."
+    },
+    {
+      "t": "narrate",
+      "text": "It was like standing at the bottom of the stairs holding somebody's coat, waiting for them to come down."
+    },
+    {
+      "t": "narrate",
+      "text": "INSERT DISK 2"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_dean_bedroom_1994.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody has disk two. Furnace kicked on under the floor, same as every morning at four, and I was awake and the river was loud and my hand was a hand."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_dean_basement_1994.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "march 18, later",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Didn't go back to sleep. Went down to the basement in socks, didn't turn on the monitor. Graph paper."
+    },
+    {
+      "t": "narrate",
+      "text": "Drew the town like the dream draws it, one road, buildings propped on nothing, the crab on the flats with the map on its back, the spiral in the middle. Under it I wrote the five letters off the side of the boxes all those games came in. They don't mean what the box says they mean."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know what they mean instead yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Then I figured out the stick."
+    },
+    {
+      "t": "narrate",
+      "text": "Disks are wrong. Disks are fast and small and you swap them. The thing in the dream loaded slow, slow like the tide going out, slow like the crab, and that was the point, the waiting was the game, you live in it WHILE it loads and the loading is you."
+    },
+    {
+      "t": "narrate",
+      "text": "A stick you put in and wait. A slow stick."
+    },
+    {
+      "t": "narrate",
+      "text": "SLOW STICKS."
+    },
+    {
+      "t": "narrate",
+      "text": "Called Cale at quarter past four and he picked up on the first ring because he's sixteen too and nobody sleeps. Didn't tell him about the theater or Aud or the faces like spoons or the crab. Told him the other thing."
+    },
+    {
+      "t": "narrate",
+      "text": "About the daughter. About the work. About bringing her here."
+    },
+    {
+      "t": "narrate",
+      "text": "He was quiet a long time. Then he asked if I'd been playing those games again. I said yeah."
+    },
+    {
+      "t": "narrate",
+      "text": "*It's going to be a game,* I said. *Not a game. A place."
+    },
+    {
+      "t": "narrate",
+      "text": "A machine that makes a place. You put a stick in and it's slow.*"
+    },
+    {
+      "t": "narrate",
+      "text": "He told me to go back to sleep. I didn't. Outside the window well it's raining in long lines that reach the ground, the way rain is supposed to, and it's getting light enough to see the Hagstrom place across the pasture."
+    },
+    {
+      "t": "narrate",
+      "text": "The town is the town again, and it has edges, and I know the way down to the middle of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Okada if you are reading this you said you wouldn't."
+    },
+    {
+      "t": "narrate",
+      "text": "SCUMM"
+    },
+    {
+      "t": "narrate",
+      "text": "— end of chapter seven —"
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_d_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch8_stories"
+    }
+  ]
+}

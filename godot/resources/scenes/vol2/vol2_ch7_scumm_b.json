@@ -1,0 +1,201 @@
+{
+  "id": "vol2_ch7_scumm_b",
+  "vol": 2,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vii. SCUMM — The Theater",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_hemlock_vga.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_scumm_adlib.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "march 9",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The theater."
+    },
+    {
+      "t": "narrate",
+      "text": "There's a door at the end of Hemlock that isn't on any street. Red, theater-curtain red, set into the side of the hill. The line over it says *Door*, the way those games say it when the artist ran out of time."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "OPEN Door",
+          "goto": 9
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "> OPEN Door\nYou open the door."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_theater_vga.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "And I'm on a stage. It's the grange hall and the auditorium and every Christmas pageant at once. Folding chairs going back into the dark and somebody in every chair, drawn from behind, heads and shoulders a shade lighter than the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "Painted moon on a wire. Behind me a backdrop of the town I just left, in house paint, the bakery a brown square, the minivans brown bricks. In my hand there's a script thick as a phone book."
+    },
+    {
+      "t": "narrate",
+      "text": "> LOOK AT Script\nIt's your part. You've had it the whole time."
+    },
+    {
+      "t": "narrate",
+      "text": "Every line belongs to THE BOY. Page one is the airport. The exact words Mom said."
+    },
+    {
+      "t": "narrate",
+      "text": "The words I didn't say back. In the margin somebody wrote in pencil *slower here*."
+    },
+    {
+      "t": "narrate",
+      "text": "Someone in the dark starts clapping. Slow, and it doesn't stop when it should. Nobody joins in."
+    },
+    {
+      "t": "narrate",
+      "text": "I raised the pointer to find who it was and every head in every row turned around at once and they don't have faces. Skin color and the outline of hair and that's it, smooth as the backs of spoons."
+    },
+    {
+      "t": "narrate",
+      "text": "And I knew, the way you know things in dreams with no argument, that the one clapping wrote the script, and is sitting in the third row, and is proud of me."
+    },
+    {
+      "t": "narrate",
+      "text": "There's no verb for running so I walked off."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_dean_bedroom_1994.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Woke up at 3:50 with my jaw hurting."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_tideflats_crab_vga.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "march 11",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "The crab."
+    },
+    {
+      "t": "narrate",
+      "text": "The town is bigger every time. The road goes past where it ended and the world loads in front of the boy in bands, top to bottom, a gray fuzz of dots where it isn't done yet. Rooftops, the water tower, the cannery."
+    },
+    {
+      "t": "narrate",
+      "text": "Then the beach. The tide is all the way out, farther than it ever goes, the flats shining like a cookie sheet, and out on the flats is the crab."
+    },
+    {
+      "t": "narrate",
+      "text": "It's the size of the cannery. Bigger. It's a Dungeness, the same red-brown as the ones at the derby with the numbers painted on their backs, except this one's number is the whole town."
+    },
+    {
+      "t": "narrate",
+      "text": "Its shell is a map. Hemlock, the river, the Little Switzerland road, our house a white dot up the Alsea. It walks sideways, slow, slower than the loading bands."
+    },
+    {
+      "t": "narrate",
+      "text": "When it lifts a leg the screen stops and waits for it, the way the game waits when you swap disks. Its claws click and the click is the sound of the floppy drive reading, *tk tk tk tk*, and every time it clicks a little more of the town fills in."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "LOOK AT crab",
+          "goto": 31
+        },
+        {
+          "text": "LOOK AT the number on its back",
+          "goto": 37
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "> LOOK AT crab\nIt's holding everything.\n\n> TALK TO crab\nIt doesn't talk. It loads.\n\n> PICK UP crab\nNot yet."
+    },
+    {
+      "t": "narrate",
+      "text": "At the derby last August Gully's uncle had the winner, same crab as the year before he said, twenty bucks says it's the same crab. Everybody laughed. In the dream it's the same crab."
+    },
+    {
+      "t": "narrate",
+      "text": "It's been the same crab the whole time."
+    },
+    {
+      "t": "narrate",
+      "text": "It turned one eye toward the boy on the beach, an eye on a stalk as tall as the water tower, and the eye was the pointer. It was looking at me looking at it."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_b_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_c"
+    },
+    {
+      "t": "narrate",
+      "text": "At the derby last August Gully's uncle had the winner, same crab as the year before he said, twenty bucks says it's the same crab. Everybody laughed. In the dream it's the same crab."
+    },
+    {
+      "t": "narrate",
+      "text": "It's been the same crab the whole time."
+    },
+    {
+      "t": "narrate",
+      "text": "> LOOK AT crab\nIt's holding everything.\n\n> TALK TO crab\nIt doesn't talk. It loads.\n\n> PICK UP crab\nNot yet."
+    },
+    {
+      "t": "narrate",
+      "text": "It turned one eye toward the boy on the beach, an eye on a stalk as tall as the water tower, and the eye was the pointer. It was looking at me looking at it."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_b_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_c"
+    }
+  ]
+}

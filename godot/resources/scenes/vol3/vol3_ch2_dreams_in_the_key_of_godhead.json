@@ -1,0 +1,156 @@
+{
+  "id": "vol3_ch2_dreams_in_the_key_of_godhead",
+  "vol": 3,
+  "chapter": 2,
+  "type": "chapter",
+  "title": "ii. dreams in the key of godhead",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_pink_light_void.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "ii. dreams in the key of godhead",
+      "sub": "transmission · the ruined future",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "He opens his eyes and can't close them back up again."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_parsonage_ron_room_dawn.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_pulp_theme.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "Lafayette",
+      "sub": "Pasadena · 1946",
+      "duration": 2000
+    },
+    {
+      "t": "narrate",
+      "text": "Lafayette Ronald Hubbard felt entirely alone up there in his room. He had just moved to Pasadena from another city, another whole coast. He looked out on his empty street, always empty at this hour. He was waiting for something to happen, a new day to echo out like all before."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look down at the street with him.",
+          "goto": 12
+        },
+        {
+          "text": "stay in the room.",
+          "goto": 14
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_pasadena_street_dawn.jpg",
+      "caption": "His empty street."
+    },
+    {
+      "t": "narrate",
+      "text": "A streetlamp still burns at the corner though the sky has begun to pale."
+    },
+    {
+      "t": "narrate",
+      "text": "His day and the day it slowly ended up transmogrifying into was now come and gone and sat upstairs gasping in great breaths of significance, sucking the air out of the room,"
+    },
+    {
+      "t": "narrate",
+      "text": "out of the black magic mansion commune palace he called home, lived in, sucking so hard he felt his own breath like it was deep kissed from sleeping roommates, recalled directly the memory of friends in slow places,"
+    },
+    {
+      "t": "narrate",
+      "text": "forgotten and swilled by lovers in other states, other states of mind, spat out of sworn enemies always lurking in suggestive shadows, tasting of their blackened lungs,"
+    },
+    {
+      "t": "narrate",
+      "text": "their stretch-marked souls shoved deep down inside, coming at last to the taste particle taint of the universe that bore everything, the simple stardust stuff which brought him to this very moment."
+    },
+    {
+      "t": "narrate",
+      "text": "He tasted silence, mistrust and preconceived notions. There were very few kindred souls in the world. Most souls being rotten things, dirty laundry in need of better cleaning, pressing and pressure washing."
+    },
+    {
+      "t": "narrate",
+      "text": "This unkind world, this rottenness in man existed because things never got better, only ready-steady progressively worse. He knew childhood a beautiful thing the world ruins a day at a time. He knew because he was a beautiful child with dreams of adventure and discovery and endless delight."
+    },
+    {
+      "t": "narrate",
+      "text": "Sure Lafayette was spoiled by dreams but not spoiled rotten, instead dreams preserved him. He liked to imagine himself an egg, not left out in the sun but kept in a bottle, preserved forever, waiting for his day to be born again. To be devoured."
+    },
+    {
+      "t": "narrate",
+      "text": "He was not quite there yet, but he would be, of this he was certain, and remained firm believing. He asked himself every day, is this why I'm here, now, in this place?"
+    },
+    {
+      "t": "narrate",
+      "text": "The new kid who showed up, who Jack introduced into the fold, who told everyone he was a time-traveler from the future, he was big, as big as Ron but fatter. He had a silly lumberjack half-beard which cut his head from the neck. He wore a suit with no tie and his shoes were huge and falling apart on his feet."
+    },
+    {
+      "t": "narrate",
+      "text": "The big kid, quiet almost like an affected simpleton, looked into things with big blue green gray eyes and asked the oddest question upon being introduced acting very much like a tourist without a map. He said to Ron, aren't you going to start some crazy religion or something?"
+    },
+    {
+      "t": "narrate",
+      "text": "Seeing him made Ron recall New York and how everything changed at once and he was no longer significant in that place and how his stories, his words, no longer carried necessary weight and the incredulity which brought him into that awesome and focused and vital literary circle warped into something much more like disdain."
+    },
+    {
+      "t": "narrate",
+      "text": "They met him with silence. No one looked forward to his presence. He had done something, said something to someone, word had spread like an influenza to infect everyone he cared about. Perhaps word got out about his wife and kid. Or perhaps they simply stopped believing the words coming out of his mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "His words, great in volume, great in furious output he produced from fingers without rest, words which poured, goddamn poured like pulp novel blood, clean and crimson, those sad messy human words could, would, never be equal to the primal stories inarticulate, spoken from drunk and delirious queasy lips, half-finished abstracted near-greatness protruding from his mind."
+    },
+    {
+      "t": "narrate",
+      "text": "Ron woke that day to cars honking, people leaning on loud horns, merry melody intonations, squawks and sirens, cacophony, car tunes. Downstairs was a ruckus unholy."
+    },
+    {
+      "t": "narrate",
+      "text": "That morning, not quite awake, Ron had been thinking he had no one in Pasadena to truly confide in, to give himself over to, to tell all his secrets and impress with the fantastic and utterly untrue life story he had come to very much half-believe despite knowing better, telling himself, it's all true, every last word."
+    },
+    {
+      "t": "narrate",
+      "text": "He was a storyteller because he's always been, but he did not yet realize he was a liar. A great big deceptive awful glorious bastard intent on untruth. He never would realize this deception, this Ron told only himself in confidence."
+    },
+    {
+      "t": "narrate",
+      "text": "Instead he made to believe that life was one great big adventure and this he would tell them all when he had become who he was always meant to become."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch2_dreams_in_the_key_of_godhead_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch2_the_time_traveler"
+    }
+  ]
+}

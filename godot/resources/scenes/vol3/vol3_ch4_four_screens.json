@@ -1,0 +1,245 @@
+{
+  "id": "vol3_ch4_four_screens",
+  "vol": 3,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "iv. names in neon — four screens",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_four_screen_room.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_eight_track_twang.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Four screens",
+      "sub": "now · the back room",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "There was that frenzied moment where the crowd out of sight reacts and moves and you are suddenly aware that the time has come. A physical change comes over the assembly, and we are blood cells now. We slow and flow. There is a back room, dimly lit, larger than expected. We move into it."
+    },
+    {
+      "t": "narrate",
+      "text": "Oh wow. I saw an island of leather executive swivel chairs, maybe eighty in total. Pilot chairs that swallow up a man like me. April squeed and pulled us into the middle somewhere. People unsure what to make of this. She was more open to the possibility, the play of it all."
+    },
+    {
+      "t": "narrate",
+      "text": "So we're sitting in these chairs, rocking and spinning like tops. They were securely bolted down but we managed to bounce all over the place, locked in place. This was rad. You had to be there. There was some original music playing, beautiful noise. The sounds you make by accident hitting objects together."
+    },
+    {
+      "t": "narrate",
+      "text": "Arranged just so."
+    },
+    {
+      "t": "narrate",
+      "text": "The house lights flicker. We approach the curtain call. The doors close. Tremendous excitement. We are locked in a large room, each wall taller than normal. White. People realize something is about to happen. Perhaps a light show, a slide show. What happens is darkness. People are quiet and loud at the same time."
+    },
+    {
+      "t": "narrate",
+      "text": "There are four projectors that must be on the other side of the walls. I don't know how they do it. Each wall has a moving image on it. Sound comes from each of the four walls. It is cinema on four screens, all at once. I can see one whole image in my periphery at any one time."
+    },
+    {
+      "t": "narrate",
+      "text": "The edges of the flanking two screens bleed over. The sound is everywhere. It starts like this."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "let the chair spin.",
+          "goto": 14
+        },
+        {
+          "text": "face the wall in front of you.",
+          "goto": 16
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_four_screens.jpg",
+      "caption": "Cinema on four screens, all at once."
+    },
+    {
+      "t": "narrate",
+      "text": "The four walls slide past, one into the next, and the sound stays everywhere."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_desert_van.jpg",
+      "caption": "A van at the edge of the screen."
+    },
+    {
+      "t": "narrate",
+      "text": "A helicopter shot through graphic desert landscape. A van is always at the edge of the screen, moving closer as the shot spins and orients itself. The van is dust-covered, a relic from the sixties, seventies, hard to place. It is a patchwork of all vans."
+    },
+    {
+      "t": "narrate",
+      "text": "We are giddy, we notice that the images are all different, complimentary. Each of the four screens has a different, beautiful angle. I am a cinephile, I don't know how they did this. It seems to all be happening at the same time. There is light music, like bouncing around an eight-track, tinny, wheezy."
+    },
+    {
+      "t": "narrate",
+      "text": "I have to relate this as it is relative to me. I could only see so much of this. This is what I saw."
+    },
+    {
+      "t": "narrate",
+      "text": "It overwhelms us. The shot(s) seamlessly transition inside the van, each shot settles on a particular character inhabiting this van fully. The shots linger, letting us spin and consider each of them. Driving is a deranged looking character played by John Goodman. Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "There are big name actors in this thing we are seeing. It is shocking to us. In the passenger seat is an unknown young actor, male, somewhat Hispanic looking, beautiful at fourteen-fifteen. In the middle seat is John Cusack. Yes. He looks like I've never seen him. At the end of his rope."
+    },
+    {
+      "t": "narrate",
+      "text": "A gaunt creepy drifter, copious patchy facial hair. Behind him is a young woman, another unknown. She is an enigma. Neither beautiful nor ugly. Maybe about twenty-three, twenty-four. She is looking intently at the back of John Cusack's head, like she just wants to reach up and touch it."
+    },
+    {
+      "t": "narrate",
+      "text": "The cameras slowly begin to pull back out again. I catch a road sign outside the car that announces \"Ticonderoga\". Apparently on other screens, people saw different signs. The one I was watching was the main one (?), the John Goodman one. I say this because he was the driver."
+    },
+    {
+      "t": "narrate",
+      "text": "The John Cusack one said \"Promontory Point\". These are our jumping off points for later discussion afterwards. I can't remember the others, I think one may have been \"Durango\". I am dizzy by this point. It may have just been a few minutes, and I'm just spinning all over the place."
+    },
+    {
+      "t": "narrate",
+      "text": "There are no credits. As the camera pulls back out of the van, each film transitions to how each character began their respective day. I can't begin to describe the artistry, the craft of the thing. There were four narrative films playing in concert. The setting was indeterminate. Late seventies, early eighties."
+    },
+    {
+      "t": "narrate",
+      "text": "A small town in the middle of godforsake. I spun, watched as John Goodman went through a Samuel Beckett inspired existence, suffering the torments of a hateful and indifferent family, absurd, cruel and cutting but shockingly funny."
+    },
+    {
+      "t": "narrate",
+      "text": "It was played as carefully observant, the tackiness of this man's suffering, the lengths he went through to get through a day, until he could take no more and began his ascent-descent."
+    },
+    {
+      "t": "narrate",
+      "text": "I want to reveal so much. But I can't. I shouldn't say anything at all. I just have to talk about this."
+    },
+    {
+      "t": "narrate",
+      "text": "The girl's story was full of graphic sex, which made for some interesting viewing scenarios. There was a whole portion of the audience who'd take casual peeks over at her screen and titter. And those like April who'd get caught up and not look away. I was somewhere in between."
+    },
+    {
+      "t": "narrate",
+      "text": "I reflect that my viewing experience was completely natural and right for me. My eyes fell where only they could have. Did I want to see more, of course. But that is life."
+    },
+    {
+      "t": "narrate",
+      "text": "Digression, her story was this. She was in the middle of preparations to leave town to be with her dying mother. She just gets word when it opens that her mom is in the hospital, and she probably wouldn't come out."
+    },
+    {
+      "t": "narrate",
+      "text": "The girl, never called by name (none of the characters are) is living with her boyfriend in complete and total squalor. A dingy one-room pit of human decay. No amenities. Just a nightmarish mattress where they fed off each other like sexual emotional vampires."
+    },
+    {
+      "t": "narrate",
+      "text": "For the first twenty minutes or so, while she packs and gets ready, he is insecure and forceful, afraid and knowing she'll never come back."
+    },
+    {
+      "t": "narrate",
+      "text": "He gets her undressed and sits on the floor and makes her masturbate for him because he's never seen her do it before and wants to see it before she goes and most probably never comes back. And she does, for him, maybe for herself. Closure."
+    },
+    {
+      "t": "narrate",
+      "text": "I'll say nothing of the John Cusack character. I can't."
+    },
+    {
+      "t": "narrate",
+      "text": "The young teenager though. He's nuts. He has no home, he moves from house to house, living with other kids his age, for a day, two at most. He's a sort of ghost, a Peter Pan, playful and arrogant and youthful wise."
+    },
+    {
+      "t": "narrate",
+      "text": "An older sibling of a friend gives him some acid, presumably to attempt to molest him, and the kid goes off on this amazing trip. We see it from his point of view. It's like a beautiful painting. Time stops and slows and there are moments of forced interest."
+    },
+    {
+      "t": "narrate",
+      "text": "The only reason it works and doesn't fall flat on its face is because of the content. The kid imagines himself and the beautiful young seventies-eighties Michael Jackson as best friends, getting into all sorts of magical mischief. I can't give enough credit to how well this sequence worked."
+    },
+    {
+      "t": "narrate",
+      "text": "It could have been an utter farce, given the dubious stature of the pop idol. But this was a time capsule, a character piece of the young man, the potential. Michael Jackson was beauty and wonderment and the strong guiding hand. He was what was right in the world, the glamour of the age."
+    },
+    {
+      "t": "narrate",
+      "text": "This played straight, played perfect."
+    },
+    {
+      "t": "narrate",
+      "text": "You're probably thinking, how could this have worked. Well know that, by all accounts, it worked. Somehow, they edited the four films tight. Each was a stand-alone film. But they played in tandem. Imagine that. There were moments of cacophony and crossover and revelation. The soundtrack was pure creation."
+    },
+    {
+      "t": "narrate",
+      "text": "The music was timeless unidentifiable rock and twang. The sound effects and dialogue and pacing were done just so as to subtly lead the viewer from moment to moment. Each audience member responded to different cues and charted their own course through the narrative."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_river_edge_dusk.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_neon_drift.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "After",
+      "sub": "now · the streets, till dusk",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "When it was over and it kept going on, god bless it, we filed out, stunned, afraid to leave our seats, our cockpits. The film was over and we were changed. There was applause. For minutes. They kept both the theater and lobby open after for few hours. People grabbed drinks."
+    },
+    {
+      "t": "narrate",
+      "text": "Some people got drunk and found their way back into the seats. Spinning aimlessly. I was tempted to join them. Justin and April and I had far off looks in our eyes. We'd be playing scenes over in our heads, sharing moments, realizing each of us had different pieces of the puzzle, we could only just grasp at."
+    },
+    {
+      "t": "narrate",
+      "text": "Talk like this continued. After they shut us out, we found ourselves and others wandering the streets, finding places to gather and discuss. We had little information to go on. What the hell just happened to us. It was wondrous, it was phenomenal. Was it film or art or bigger than both, certainly bigger than us."
+    },
+    {
+      "t": "narrate",
+      "text": "Realize there was tremendous craftsmanship. When you talk about great films this was four great films and it came out of nowhere. Who made it. Why. And more questions emerged as that night gave way. It affected us. Parts of it felt like certain filmmakers had their hands on it. One person mentioned Matthew Barney."
+    },
+    {
+      "t": "narrate",
+      "text": "Could one mind have been behind that? It felt like both a yes and a no. It was big, too big. As a lover of life, it was far too much. It was madness, the potential to drift and lose oneself in recursive thought."
+    },
+    {
+      "t": "narrate",
+      "text": "There is no way for me to conclude my telling of my experience with the film. If it was a film. It changed us. It humbled us. Tempered our passion somewhat. Inspired us, but tore us apart. April drifted off around dusk. We were on the edge of the Columbia River."
+    },
+    {
+      "t": "narrate",
+      "text": "She wanted to crash at a nearby friend's house, she invited us to join her. But we were in our own heads by then. We would remain there for weeks."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch4_four_screens_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch4_the_coast"
+    }
+  ]
+}

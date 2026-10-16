@@ -1,0 +1,220 @@
+{
+  "id": "vol2_ch8_stories",
+  "vol": 2,
+  "chapter": 8,
+  "type": "chapter",
+  "title": "viii. Stories Within Stories",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_copy_shop_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "viii. stories within stories",
+      "sub": "Small Wood · now",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "I struggle to find the voice I've forgotten. Writing again is hard, make no mistake. Years have passed since I've started this project."
+    },
+    {
+      "t": "narrate",
+      "text": "I am not the man I should be. I think of the solid purposeful paths I might have taken and realize that inaction has become my matter of fact mode of being. I am stasis, the ghost I was always afraid of becoming."
+    },
+    {
+      "t": "narrate",
+      "text": "I am the living dead, unnoticed; the hazy shimmer of motion out of the corner of an eye, the person once known but not worth remembering. I work two jobs and struggle to finish a four year degree."
+    },
+    {
+      "t": "narrate",
+      "text": "I stopped going to the state university I started eight years ago, but attend a closer magnet building that looks like a temp office, all so that I can live room and board free house as my grandmother dies close by, cancer, what killed my father three some odd years ago, that same old story."
+    },
+    {
+      "t": "narrate",
+      "text": "I expand on the working situation: Two jobs, I said. The first graveyard shift at a copy shop. When I say it out loud to people it sounds like coffee shop, they're always confused by my saying that."
+    },
+    {
+      "t": "narrate",
+      "text": "I seldom correct the mistake, leading them along like I'm someone I'm not, because that's what passes for entertainment these days. Ten hours a day, four days a week, with an hour lunch like poor punctuation. I finish up projects the day crew was too busy or lazy to get around to doing."
+    },
+    {
+      "t": "narrate",
+      "text": "I let myself fall sleep on the job quite often because the hours really get to me and there isn't much else to occupy my mind. The place is full of odd fascinations."
+    },
+    {
+      "t": "narrate",
+      "text": "What people leave behind becomes mine, estranged photographs and badly written letters they go through the trouble of replicating, always seeming to forget. This place is like that, a small ugly copy shop started by an old Korean War vet who just wanted to get away from his nag of a wife."
+    },
+    {
+      "t": "narrate",
+      "text": "It used to be an office supply store, the big ticket item back in the day was the mechanical pencil. Boxes of unsold merchandise fill a back room which I hide in to read on breaks. The walls are greenish black in places, the lighting what you'd expect when every third long florescent bulb gasps as the end nears."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_diner_grill_dawn.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "From there, I open up a local diner as the grill chef. The food is good because I am a good cook. There are regulars who thank the wait staff but never me."
+    },
+    {
+      "t": "narrate",
+      "text": "I say it's good food, but it's not good for you. I work the fryer as much as I do the grill. Breakfast and lunch food, grease and starch mostly."
+    },
+    {
+      "t": "narrate",
+      "text": "Some green thrown in for garnish. For each job I make the state minimum wage of 6.50 an hour, just enough to get by, the total sum of that well below the national poverty line. At least I have the luxury of living rent free without much hassle."
+    },
+    {
+      "t": "narrate",
+      "text": "The hours I keep make it hard to be there for Grandma. I don't want to talk about her dying because I like to save my words for her alive."
+    },
+    {
+      "t": "narrate",
+      "text": "I go to classes in the afternoon, trying to get a few hours of sleep in between starting all over again. It is not much of an existence."
+    },
+    {
+      "t": "narrate",
+      "text": "I used to be too tired to think but now I'm aware a certain dullness that has crept into my conscious thought, a filter that prevents me from responding to some of the most basic questions people ask me. They think I'm deaf or ignoring them, both of which seem like valid interpretations depending on the situation."
+    },
+    {
+      "t": "narrate",
+      "text": "I've almost stopped talking to people entirely. The effort to open my mouth and create facial gestures is almost too much these days. Slack like a net, aching for the big catch that pulls me taut."
+    },
+    {
+      "t": "narrate",
+      "text": "I used to think a woman would be the thing. I am still a young man but so much of the desperate yearning long ago used up on names that sting each time I hear them used in public. A fault of mine, falling for a pretty face that displays but an ounce of compassion."
+    },
+    {
+      "t": "narrate",
+      "text": "Initial sparks are what blind me to the ordinariness of their eventual becoming. I am in love with the idea of a muse not a real flesh and blood woman. I fetishize electricity in their eyes and live to fall and fall all over again."
+    },
+    {
+      "t": "narrate",
+      "text": "I know this now, like I've probably always known it, the same mistake I keep repeating. I don't learn, I am a basic creature of bad habit. It keeps me from becoming a man, a grown up, making an honest connection."
+    },
+    {
+      "t": "narrate",
+      "text": "Not that I can offer a woman anything beyond my present state of inadequacy. I have no free time, no shiny toys to share, my stories lack warmth, and my sense of humor is pitch black these days, my attention, my eyes, elsewhere. I was never an ugly person to look at."
+    },
+    {
+      "t": "narrate",
+      "text": "From what others have told me, and I believe truthfully, I am attractive in a big, loving life kind of way, but getting past my stone cold solemn face, my brooding caveman stoop, that can be difficult. I used to love to talk, to carry on about most everything."
+    },
+    {
+      "t": "narrate",
+      "text": "Now, I've become rigid in my train of thought, either one of two extremes. Trivial entertainments, movies, books, etc. Or intensely personal lines of inquiry."
+    },
+    {
+      "t": "narrate",
+      "text": "It is a balancing act I may have once been able to pull off, or was once not so forceful in demanding but now only the closest of my friends put up with. To strangers and not so near acquaintances, I'm an enigma and not worth the trouble."
+    },
+    {
+      "t": "narrate",
+      "text": "I want you to see me as a ghost, because that's what I feel like. I straddle the line of most every twenty something. I have no great success in life."
+    },
+    {
+      "t": "narrate",
+      "text": "Life consisting of mostly missed potential, I kept on mostly out of familial obligation. I could have dropped out of life entirely too easy. The easy not being lost on me."
+    },
+    {
+      "t": "narrate",
+      "text": "Only recently have I gotten the urge to continue, to make something of myself. A competitive spirit, rekindled and aching just to compare and be compared to. I need to know my place again, because I think there is someone else out there living my life."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_rain_windshield_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "This is an assignment I make myself complete. I tell you about the moment I almost killed myself because it surprised me a great deal, and I very much did not expect it. I was having a very bad night."
+    },
+    {
+      "t": "narrate",
+      "text": "At a friend's house I ran into a woman I almost had a thing with. We'd gotten to the point where something damn well should have happened, but didn't. Words that built up and never crashed down on us."
+    },
+    {
+      "t": "narrate",
+      "text": "Nights spent aching and longing and holding back and afar, the gap never distanced so much as shouted across. We were a bad match but that's besides the point because in our moments there should have been something."
+    },
+    {
+      "t": "narrate",
+      "text": "We saw each other across the foyer of the entryway as she entered. A horrible look, unexpected and not at all distant. There was an immediacy in the air, a clashing of eyes and curt hellos."
+    },
+    {
+      "t": "narrate",
+      "text": "Aware of all the unsaids that filled the space between us. We settled into a routine of at once calmly listening but never speaking directly to the person, a three second delay of translation going on in the earpiece, calculating and precise."
+    },
+    {
+      "t": "narrate",
+      "text": "I wanted to find the nerve to leave then there, knowing how the resulting evening would go. I stayed and made it so. I predict the future once again."
+    },
+    {
+      "t": "narrate",
+      "text": "We kept finding distractions and reasons to define individual space away from each other, the resulting collisions revulsions of a mental sense."
+    },
+    {
+      "t": "narrate",
+      "text": "Edging around each other physically, eye contact never quite established, the sound of the other's voice like an echo, having to repeatedly ask the same question because the words just don't sound close to meaning anything at all."
+    },
+    {
+      "t": "narrate",
+      "text": "Simply put, an evening strung together with little pockets of emotional void. The whole mess leaving me feeling empty and broken. As soon as my hands grabbed onto the steering wheel, I was sobbing."
+    },
+    {
+      "t": "narrate",
+      "text": "Sobbing for minutes before any tears came. My whole chest on fire with hurting. The details of the rain soaked evening, always raining it feels like."
+    },
+    {
+      "t": "narrate",
+      "text": "The rain occluding and distorting the windshield like tears spread thin over corneas. It was driving home I felt it. Not just a sudden urge to kill myself but a growing compulsion that I knew would kill me."
+    },
+    {
+      "t": "narrate",
+      "text": "I wanted nothing more than to pick up the speed and drive off a cliff. Up until that moment, I could say with honesty that I've never before had a suicidal thought. I never once could justify ending my own life to myself."
+    },
+    {
+      "t": "narrate",
+      "text": "I'd thought of suicidal people as unknowable, for I could never sympathize. Life was precious, was it not, wasn't I taught this. It was like a simple biological trigger snapped inside and here I was moments from ending myself."
+    },
+    {
+      "t": "narrate",
+      "text": "There was no reason beside the present unhappiness. There wasn't any thought given, so much more an instinctive biological command, an order I had to follow."
+    },
+    {
+      "t": "narrate",
+      "text": "I got home and locked myself inside. Felt the social wine buzz of the early part of the evening wearing off. Found a liter of vodka I diluted pitifully and began drinking."
+    },
+    {
+      "t": "narrate",
+      "text": "That familiar medical taste and I knew I'd be too fucked up to brush my teeth before bed. The last sensible thought of the night."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch8_stories_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch8_apple_peddler"
+    }
+  ]
+}

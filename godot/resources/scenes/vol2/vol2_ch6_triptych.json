@@ -1,0 +1,232 @@
+{
+  "id": "vol2_ch6_triptych",
+  "vol": 2,
+  "chapter": 6,
+  "type": "chapter",
+  "title": "vi. Triptych",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_coast_highway_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "vi. triptych",
+      "sub": "a distant wail",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "Energy hits the body like a thousand volts. Sunlight on the cheeks, the sky a cobalt blue, the smell of youth an intoxication. A day to be alive, to lose the hours cruising around in vehicles with windows down, music blaring, every lyric and riff imbued with meaning and clarity."
+    },
+    {
+      "t": "narrate",
+      "text": "The blast of wind across the skin, the prickle an aphrodisiac. Close company with the opposite sex, one on each side, stuck in the middle of their smell and touch. Every breath taking in this drug of life's choices."
+    },
+    {
+      "t": "narrate",
+      "text": "Everything physical and real and so very immediate. Screaming for no reason, squealing just to test those pipes, slam those brakes. The curves of corners go fast and tight, the crush and the heat of visceral contact in the backseat."
+    },
+    {
+      "t": "narrate",
+      "text": "Discovering what is real and what is right. Learning this is youth, these sensations new, horizons open up and skies break through so very clear."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_reading_lamp_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "back to reality,",
+      "sub": "right here right now",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "the song in my head that is stuck. i weep because it is so beautiful. it is like a turning point in time, when life is revealed so damn ugly and wonderful and all there is to be done about it is laugh and cry, one and the same."
+    },
+    {
+      "t": "narrate",
+      "text": "what follows is a story told in three parts. words that have never been said before. will never be said again."
+    },
+    {
+      "t": "narrate",
+      "text": "people lost and wisdom gained. words that run together without so much as a breath to break them apart. the emotion that spills out like a hot scream, steaming the landscape forever."
+    },
+    {
+      "t": "narrate",
+      "text": "learn how this life will never be the same again, the tender veil parts, the wicked are we reflections in each other ourselves. people tell me to stop writing because they know what comes next. i tell them i've yet to get to the best parts."
+    },
+    {
+      "t": "narrate",
+      "text": "when it all becomes madness, because i lose and i don't know what to say, so i just keep going because that is what i do. i am here now, this story has a long ways to go."
+    },
+    {
+      "t": "narrate",
+      "text": "travel with me yet, this unreliable narrator, author boy wise beyond his years, never measuring up, disconnected from his friends and family, willing to destroy everything he has built for a chance to show just how much he loves an impossible dream. he is already dead, he just doesn't know it yet."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_backyard_party_summer.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "First Panel — Mayhune Lovers",
+      "sub": "a story about what it means to be",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "because it means something to me at this point in the telling. I've not been able to put my words down in quite some time. You read this linear but I write when words seize me and refuse to let go."
+    },
+    {
+      "t": "narrate",
+      "text": "It happens when it wills itself, here and there. Make no mistake that I'm struggling with who I am and where I'm going in this life, understand that by committing myself to this project and seeing it through, many sacrifices were and will be made. Every word is a choice and I have to live with the consequences."
+    },
+    {
+      "t": "narrate",
+      "text": "I am a lazy human being, full of idle thought and means of leisure. I occupy myself with entertainments, diversions and frequent breaks from reality. I have been drinking to excess."
+    },
+    {
+      "t": "narrate",
+      "text": "You know nothing of my present and I apologize, but you can always skip ahead to the second half where I detail in greater length my present woe. It's a different sort of story, so very different from the one that will immediately follow."
+    },
+    {
+      "t": "narrate",
+      "text": "When I set out to collect my thoughts, I thought these Small Wood reminisces would be easy. I said how I am very lazy, I tell you I thought this would write itself. I was wrong and now realize just how hard this will be to continue at this pace and say what needs to be said."
+    },
+    {
+      "t": "narrate",
+      "text": "So often when I sit down to write I give up half-way through, delete what came before and retire to my bed. I need to feel the click in place with this language, this past. It doesn't have to be true; it just has to feel true."
+    },
+    {
+      "t": "interlude",
+      "text": "she and he",
+      "sub": "a backyard · summer",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Her name was like so many other girl names, named for a flower. He had his father's name, the fourth father's name in a row. They did not truly see the other for the first time until her fifteenth birthday."
+    },
+    {
+      "t": "narrate",
+      "text": "Their parents had been best friends, grown up together, courted, married and had children together. Their families lived on opposites ends of the town which meant they lived pretty close by never more than a phone call away."
+    },
+    {
+      "t": "narrate",
+      "text": "Four or five days every month got spent co-mingling, the kids clashing, bonding and spurting through the years while the parents worked, mellowed and enjoyed the rearing."
+    },
+    {
+      "t": "narrate",
+      "text": "The birthday party was nothing special. Her family had set-up a large table out in the backyard. It was summer, of course."
+    },
+    {
+      "t": "narrate",
+      "text": "The small children played in a sprinkler, on a slip and slide. The bright husks of broken water balloons were not well hidden in the tall grass."
+    },
+    {
+      "t": "narrate",
+      "text": "The girl was sullen and distant, not wanting the carefree ritual burden of tearing through wrapped presents, eating cake and ice cream that were her favorite flavor, smiling and thanking everyone for their thought and consideration."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy was quiet but kind, realizing that his place in this world was changing, that things were changing and never going back. He was remarkably attracted this almost sister of his. She was the keeper of so many of his secrets and lived forever in the pages of family albums."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "stay with her",
+          "goto": 35
+        },
+        {
+          "text": "watch him in the grass",
+          "goto": 43
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "She had been unwanted by a boy, a feeling she'd anticipated ever since childhood. It was the other half of play, when one doll snubbed the other for the affection of herself. Dejection was always a concept never an actual emotion."
+    },
+    {
+      "t": "narrate",
+      "text": "So very different from being left behind as a child at a gas station, being forgotten for a moment, a terrifying moment. Altogether alien and foreign to her, a slight against her character, her not being good enough, attractive enough, ideal enough in the eyes of her own ideal."
+    },
+    {
+      "t": "narrate",
+      "text": "Her head was clouded with thoughts of endings, of melodramatic over-simplifications. She would change herself to challenge him, to change his perception of her. She would go into the bathroom and cry as quiet as she could, look into the mirror and hate that awful no good reflection."
+    },
+    {
+      "t": "narrate",
+      "text": "He pined for her gaze but had no trick up his sleeve to catch it. He was ordinary, altogether plain. He would sit in the grass, let his brothers and sisters wrestle him to the wet carpet."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes would never leave her, they played for his smile and smile he did. He wore glasses, dressed like an old man. The sound of a fog horn off in the distance, birds overhead."
+    },
+    {
+      "t": "narrate",
+      "text": "He drank cherry soda and wiped his forehead. She sat silent, so her mother shook her shoulders to stir some life back into those bones. She smiled weakly, played with a mash of cake and cream."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_triptych_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_mayhune"
+    },
+    {
+      "t": "narrate",
+      "text": "He pined for her gaze but had no trick up his sleeve to catch it. He was ordinary, altogether plain. He would sit in the grass, let his brothers and sisters wrestle him to the wet carpet."
+    },
+    {
+      "t": "narrate",
+      "text": "His eyes would never leave her, they played for his smile and smile he did. He wore glasses, dressed like an old man. The sound of a fog horn off in the distance, birds overhead."
+    },
+    {
+      "t": "narrate",
+      "text": "He drank cherry soda and wiped his forehead. She sat silent, so her mother shook her shoulders to stir some life back into those bones. She smiled weakly, played with a mash of cake and cream."
+    },
+    {
+      "t": "narrate",
+      "text": "She had been unwanted by a boy, a feeling she'd anticipated ever since childhood. It was the other half of play, when one doll snubbed the other for the affection of herself. Dejection was always a concept never an actual emotion."
+    },
+    {
+      "t": "narrate",
+      "text": "So very different from being left behind as a child at a gas station, being forgotten for a moment, a terrifying moment. Altogether alien and foreign to her, a slight against her character, her not being good enough, attractive enough, ideal enough in the eyes of her own ideal."
+    },
+    {
+      "t": "narrate",
+      "text": "Her head was clouded with thoughts of endings, of melodramatic over-simplifications. She would change herself to challenge him, to change his perception of her. She would go into the bathroom and cry as quiet as she could, look into the mirror and hate that awful no good reflection."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch6_triptych_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch6_mayhune"
+    }
+  ]
+}

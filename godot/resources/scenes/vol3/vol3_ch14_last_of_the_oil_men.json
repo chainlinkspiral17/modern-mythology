@@ -1,0 +1,170 @@
+{
+  "id": "vol3_ch14_last_of_the_oil_men",
+  "vol": 3,
+  "chapter": 14,
+  "type": "chapter",
+  "title": "the last of the oil men.",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_oil_field_dusk.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "the last of the oil men.",
+      "sub": "transmission · last of the signal",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Steve in Taiwan on business, one suit-case guy\nCarried so much of it in his head these days.\nNames and faces of friends, family and business partners\nDrifted like parts of his being."
+    },
+    {
+      "t": "narrate",
+      "text": "(High technology so grand, stuck him firm in place\neverything changed on a fundamental level day to day.)"
+    },
+    {
+      "t": "narrate",
+      "text": "Connecting flights like screams across the sky\nThe noise and pressure in his ear a deafening\nReminder of his aerial nomadic lifestyle\nSleeping hungover from Jakarta to Cape Town\nTo why the fuck not Los Angeles by way of Sydney."
+    },
+    {
+      "t": "narrate",
+      "text": "The war in Venezuela was bad\nAbout as bad as Steve could comfortably admit to himself\nAs long as he was going long with his questionably fantasy driven narrative\nHappened because of stupid little things he'd neglected early in life."
+    },
+    {
+      "t": "narrate",
+      "text": "His gentle arrogance a thoughtful touch of death\nSmoky entrances and gunslinger eyes firm\nYou serve his kind here\nThese eyes have seen things they seem to say."
+    },
+    {
+      "t": "narrate",
+      "text": "He asks them where the old wells are\nThey whisper in an odd silence that suggests\nHe would not like the condition of the old wells\nNever mind he says with a wave of the hand."
+    },
+    {
+      "t": "narrate",
+      "text": "Steve pulls out high technology\nShows them on his screen scans of earth\nAn indexing of reclamation techniques matched to\nCorrelating core samples from the region"
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look at the scans",
+          "goto": 14
+        },
+        {
+          "text": "watch their faces",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Contour lines glow green across the little screen, like weather over a buried country."
+    },
+    {
+      "t": "narrate",
+      "text": "As a child he played a game where he mined ore in Gnomish depths of lore.\nAnd how very much like a game this was\nSearching for that fabled fountain of gold\nBetting on being the first to the party of the last great find."
+    },
+    {
+      "t": "narrate",
+      "text": "Steve got into scuba diving, salvaging vessels\nA couple of his smart kid friends got into chem and bio eng\nSteve hacked it out with mech e and a bit of comp sci\ndid a lot of meth and k and e for fun."
+    },
+    {
+      "t": "narrate",
+      "text": "Steve's father was an oilman."
+    },
+    {
+      "t": "narrate",
+      "text": "The look in his eye was one of warning\nBetter look elsewhere kid\nThere's no future for you here\nI'm fifty and I don't know why we're still looking."
+    },
+    {
+      "t": "narrate",
+      "text": "Something funny happened to Steve\nHe believed in that last great find\nThat mythical Moby Dick he stared down from the dock\nKnowing full well what he was getting himself into."
+    },
+    {
+      "t": "narrate",
+      "text": "The death throes of the industry, he saw in his lifetime\nKnowing he'd walk among the ashes of his father's dreams\nBut realizing that no, his father's dream was to get him right here\nAware of his simple, honest destiny - to find the well, the last great well."
+    },
+    {
+      "t": "narrate",
+      "text": "The thought made him smile, and gave him courage to try great things\nLimitless ambition, he told his friends\nIs just the start of realizing what can be done."
+    },
+    {
+      "t": "narrate",
+      "text": "He watched their intelligent energy solution dreams come to pass\nHappy in their continued success\nWatchful of their great strides and understanding patience\nand secretly looking as alchemist into the nature of synthetic fuels."
+    },
+    {
+      "t": "narrate",
+      "text": "But first, he needed samples from all the sites he could find.\nAnd at first, his colleagues thought his approach scattershot\nInsisting he was going about it all backwards\nExactly he said, rushing off to locale number two."
+    },
+    {
+      "t": "narrate",
+      "text": "Steve like every other kid in fifth grade\nLoved the ever loving shit out dinosaurs\nBecause dinosaurs were freaking rad bad ass shit from the land before time\nDinosaurs ate our distant mammal relations\nStill scare the fuck out of our tiny little animal brains."
+    },
+    {
+      "t": "narrate",
+      "text": "The sound of thunder indeed."
+    },
+    {
+      "t": "narrate",
+      "text": "They used hyper-viscosity scrubbers to scratch the last of the scratch\nShot it into earth brought the last little bit out\nCleaned up actually made better than new\nHe'd show up and close the place down."
+    },
+    {
+      "t": "narrate",
+      "text": "Towns that still held on knew upon seeing him\nHe was Death walked in, nice guy though\nPlaying the part well\nTaking the very last little bit that's left, is all."
+    },
+    {
+      "t": "narrate",
+      "text": "And they nod and point to the sick thing hidden just out of sight\nHe takes his sunglasses off and squints at the horizon\nDreading what's next but hungry for the pure raw liquid data\nThis is the stuff of legend held in his palm."
+    },
+    {
+      "t": "narrate",
+      "text": "The dreams and nightmares of reptilian eden\nWhere stealth and flight rewarded the bravest of its heroes\nAnd their demise so much life reduced to such a\nSimple sustenance and fuel for the next species to find and discover."
+    },
+    {
+      "t": "narrate",
+      "text": "Steve is making a new oil, new breed of fuel,\nBut first he must understand life\nThis is where life has taken him,\nTo the steps of tracing back all the steps pressed in dirt\nHeld forever to be found again for simple eyes\nTo see their own personal progress\nHe tries to find a better process for converting the power of life to fuel."
+    },
+    {
+      "t": "narrate",
+      "text": "He runs in the sun even though scientists tell him not to\nIt's dangerous they say\nSo he limits himself to moments when it really matters\nSo he can pay his due proper respect to the sun."
+    },
+    {
+      "t": "narrate",
+      "text": "The main player inspiring hearts and minds\nQuietly reminding that darned human species\nI've been here the whole time\nYou did worship me after all."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_last_oil_man_sunset.jpg",
+      "caption": "the last oil man can ride off into the sunset"
+    },
+    {
+      "t": "narrate",
+      "text": "Steve thinks about a nice wife and kids\nWhy not, the last oil man can ride off into the sunset\nSecure in the contents of his last great haul\nThe random rolling of life's great odds.\n."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch14_last_of_the_oil_men_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_finale"
+    }
+  ]
+}

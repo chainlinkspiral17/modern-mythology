@@ -1,0 +1,148 @@
+{
+  "id": "vol3_ch4_the_coast",
+  "vol": 3,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "iv. names in neon — the coast",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_andy_room_day.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_neon_drift.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "Penny",
+      "sub": "now · weeks later",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "So Justin gives me a call up out of the blue. We'd drifted back into our respective lives away from the movie. We'd agreed by not agreeing to shutter the film, re-evaluate what we were doing in hopes of making it better. I was going through another round of re-writes."
+    },
+    {
+      "t": "narrate",
+      "text": "Justin fired a bunch of the actors and was trying to recast. He was not willing to compromise his vision and it was a set-back but I admired the decision. In particular, he wanted to cast a girl he knew from back home in Small Wood. A non-actor, achingly beautiful. He adored her, but she was always with someone."
+    },
+    {
+      "t": "narrate",
+      "text": "So he used her in music videos and advertisements and couldn't let go. She was perfect for the part of Penny. I had to agree. Even with her lack of experience, she was our Penny. She liked the script, was uncomfortable with aspects, but recognized there was no way around them and agreed to be our Penny."
+    },
+    {
+      "t": "narrate",
+      "text": "Justin shot scenes with Amber, bringing her up on days I couldn't be there to shoot with her. It was obvious what he was doing but I didn't say anything. I sort of wanted the distance from the project at that point. I saw all of the flaws and none of the beauty. We had become polarized. Him, in love with life."
+    },
+    {
+      "t": "narrate",
+      "text": "Me, withdrawn from it. I wanted to switch places, I wanted to equalize. But it was necessary, it was life correcting the imbalance, bringing us back down."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_coast_road_forest.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_coast_radio.mp3"
+    },
+    {
+      "t": "interlude",
+      "text": "The coast",
+      "sub": "now · Small Wood",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "And then he called. He was in Small Wood and needed me on the coast to shoot a scene with Ginger. The big scene with her and he couldn't do it by himself, was afraid to do it by himself. So I drove the many miles to the coast. It was beautiful that time of year. The roads ever twisting revealing deep forest and valley."
+    },
+    {
+      "t": "narrate",
+      "text": "Sunlight dotting through the thickness of it all. I drove with the window down and the radio blaring, it crackling in and out of reception."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look out at the valley.",
+          "goto": 17
+        },
+        {
+          "text": "keep your eyes on the road.",
+          "goto": 18
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_coast_road.jpg",
+      "caption": "Deep forest and valley, sunlight dotting through."
+    },
+    {
+      "t": "narrate",
+      "text": "I met them both at Justin's parent's house. We drove from there to a clothing store where we picked out lingerie for Amber to wear in scene. The middle-aged woman garment attendant gave serious pause to two young men helping this young woman pick out and model barely theres. She didn't say anything with her mouth."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_coast_home_studio.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "From there we went to a photographer friend's home-studio overlooking the coast. He was on a shoot in Washington state and gave us access to his place. We set-up in the bathroom. Lighting kits were unfurled and cameras set-up on tripods. It was Justin and me and her. This was to be done minimal, for her comfort."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_car_coast_dusk.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "The problem came after the scene was shot. After the sweat was wiped from our brows and we just stood there and shook nervously. It all felt wrong. Justin and I couldn't talk about this until Ginger took leave of our company. There was too much silence in that car before we dropped her off."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_andy_room_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "By that evening, I was back home quiet and moody. Justin called me up and told me that Amber was furious, that Ginger's boyfriend was furious. She wanted the tapes in her hand and she wanted to destroy them. The boyfriend wanted to beat the fucking shit out of Justin. He was afraid to leave his parent's house."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_car_coast_night.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "I did not know how this happened. Justin was hysterical. I drove back to the coast and took him for a ride. We did damage control. We were hopeful about the state of the film, we could recast once again."
+    },
+    {
+      "t": "narrate",
+      "text": "But by now Ginger was on all our posters and what a great image that was, her nakedness just covered holding that giant shard of broken mirror. We had to fix what was right with her. She was hurt and vulnerable right now. And whether we could admit it or not, we did it to her. We could have done things differently."
+    },
+    {
+      "t": "narrate",
+      "text": "Maybe if she saw the tapes, she'd come to a different conclusion. I kept driving and Justin kept talking. We talked it to death. We replayed the moment over and over, each time it was different. Sometimes we were right, sometimes she was. We loved ourselves, hated ourselves. We drove and did not stop."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch4_the_coast_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch5_non_stop_flights"
+    }
+  ]
+}

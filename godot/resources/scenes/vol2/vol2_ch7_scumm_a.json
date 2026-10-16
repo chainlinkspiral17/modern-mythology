@@ -1,0 +1,223 @@
+{
+  "id": "vol2_ch7_scumm_a",
+  "vol": 2,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "vii. SCUMM",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_scumm_hemlock_vga.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol2_scumm_adlib.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "vii. SCUMM",
+      "sub": "dream journal · 1994",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "from the dream journal of D. Dean — Small Wood High School — spring 1994"
+    },
+    {
+      "t": "interlude",
+      "text": "march 2",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Okada says if you write them down the second you wake up you keep more of them, so this is me keeping more of them. He also says nobody else reads these. Good."
+    },
+    {
+      "t": "narrate",
+      "text": "Same dream again. Fourth time since Christmas. It's the town but it's a game, the old kind, the kind that came on six disks and made you swap them in the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "Everything flat. The sky is three blues stacked like paint chips at the hardware store. Under the bottom of the world there's a black strip with words in it:"
+    },
+    {
+      "t": "narrate",
+      "text": "WALK TO    PICK UP    USE      OPEN     LOOK AT\nTALK TO    PUSH       PULL     GIVE     CLOSE"
+    },
+    {
+      "t": "narrate",
+      "text": "I'm not in my body. I'm the pointer. A white crosshair that goes where I mean it to go, a beat behind the meaning, like the mouse on Ray's dad's computer."
+    },
+    {
+      "t": "narrate",
+      "text": "Down in the street there's a boy in a coat too big for him and when I hover over him the line above the verbs says *Dean*. That's all. Not Nate."
+    },
+    {
+      "t": "narrate",
+      "text": "Just the name off the mailbox."
+    },
+    {
+      "t": "narrate",
+      "text": "> LOOK AT Dean\nIt's you. You have always lived here."
+    },
+    {
+      "t": "narrate",
+      "text": "I've lived here two years. Before that, Caracas: the apartment on the hill, Dad's company car, the dogs in the barrio going all night. I tried to tell it."
+    },
+    {
+      "t": "narrate",
+      "text": "There's no verb for that."
+    },
+    {
+      "t": "interlude",
+      "text": "march 3",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Wrote down more this time. The minivans."
+    },
+    {
+      "t": "narrate",
+      "text": "Every car in the dream town is the same minivan. Woodgrain down the sides, that brown-on-tan like a rec room wall, the long sliding door. They're parked nose to tail all down Hemlock and up past the Elk Lodge, more than the town has people."
+    },
+    {
+      "t": "narrate",
+      "text": "They're running. Every one of them, engines on, headlights on in the daytime, wipers going though the rain in the dream doesn't land on anything. No drivers."
+    },
+    {
+      "t": "narrate",
+      "text": "The sliding doors open and shut in two frames, open, shut, open, shut, the same clunk every time, the clunk of ours at the Portland airport the day we got here, Mom saying *look at the trees, look how tall*, my forehead against the window."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "LOOK AT minivan",
+          "goto": 24
+        },
+        {
+          "text": "OPEN minivan",
+          "goto": 24
+        },
+        {
+          "text": "CLOSE minivan",
+          "goto": 24
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "> LOOK AT minivan\nIt's yours. They're all yours.\n\n> OPEN minivan\nIt's already open.\n\n> CLOSE minivan\nIt's already open."
+    },
+    {
+      "t": "narrate",
+      "text": "When I walked the boy past them the doors went faster. Like they were trying to get his attention. Like a dog that wants to go out."
+    },
+    {
+      "t": "interlude",
+      "text": "march 5",
+      "sub": "dream journal · 1994",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Hans in the bakery window. Real Hans wipes his hands on his apron before he shakes yours. Dream Hans is eleven pictures of a man lifting a loaf off a tray and setting it back, lifting it, setting it back, and the flour puffs off the bread the same puff every time down to the dot."
+    },
+    {
+      "t": "narrate",
+      "text": "> TALK TO Hans\n1. What are you baking?\n2. Have you seen my father?\n3. Nothing. Goodbye."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "1. What are you baking?",
+          "goto": 30
+        },
+        {
+          "text": "2. Have you seen my father?",
+          "goto": 30
+        },
+        {
+          "text": "3. Nothing. Goodbye.",
+          "goto": 37
+        }
+      ]
+    },
+    {
+      "t": "say",
+      "char": "Hans",
+      "expr": "neutral",
+      "text": "Bread for the morning."
+    },
+    {
+      "t": "narrate",
+      "text": "All three get *Bread for the morning.* But when I picked 3 and the boy turned away, Hans said it to his back, in a voice the speaker could barely hold:"
+    },
+    {
+      "t": "say",
+      "char": "Hans",
+      "expr": "warm",
+      "text": "Bread for the morning, Dickens. You'll want it later."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody here calls me that. Mom when she's angry. Never Dad."
+    },
+    {
+      "t": "narrate",
+      "text": "It was Grandpa's name, and Grandpa was not good to him."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_a_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_b"
+    },
+    {
+      "t": "narrate",
+      "text": "All three get *Bread for the morning.* But when I picked 3 and the boy turned away, Hans said it to his back, in a voice the speaker could barely hold:"
+    },
+    {
+      "t": "say",
+      "char": "Hans",
+      "expr": "warm",
+      "text": "Bread for the morning, Dickens. You'll want it later."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody here calls me that. Mom when she's angry. Never Dad."
+    },
+    {
+      "t": "narrate",
+      "text": "It was Grandpa's name, and Grandpa was not good to him."
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch7_scumm_a_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_ch7_scumm_b"
+    }
+  ]
+}

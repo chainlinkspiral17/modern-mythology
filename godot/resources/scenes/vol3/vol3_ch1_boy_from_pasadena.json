@@ -1,0 +1,151 @@
+{
+  "id": "vol3_ch1_boy_from_pasadena",
+  "vol": 3,
+  "chapter": 1,
+  "type": "chapter",
+  "title": "i. the boy from pasadena",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_ruined_city_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_drone.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "i. the boy from pasadena",
+      "sub": "transmission · the ruined future",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "The sky was falling and it came down in pieces. Jack Perkins wanted to be strong but he was only just a child. The world at war with itself was one he was stranger to and all he dreamt of was home."
+    },
+    {
+      "t": "narrate",
+      "text": "He feared that if this the true future of the planet earth there wouldn't be much left to build on after all the smoke had settled. He hoped there had been some mistake, some miscalculation in all his years of research, experimentation and thorough planning."
+    },
+    {
+      "t": "narrate",
+      "text": "He crouched under a fallen street sign, thick cables held at odd angles, close to terrified it would fall on him and crush him like a bug."
+    },
+    {
+      "t": "narrate",
+      "text": "The building behind him existed as stubbled foundation, brick and steel charred black and white with smoke and ash. Children sat round small fires, warmed themselves and kept a considerable distance from the odd man."
+    },
+    {
+      "t": "narrate",
+      "text": "He realized he was a complete stranger with his nice clothes, his kempt haircut, his general cleanliness. Jack Perkins stuck out like a shiny quarter in a penny jar."
+    },
+    {
+      "t": "narrate",
+      "text": "He had seen few other people since his arrival in the time pod besides packs of pathetic children, ugly asexual feral monsters."
+    },
+    {
+      "t": "narrate",
+      "text": "His first moments in this place were primal, sliding from nightmare to nightmare. He didn't know what he expected to emerge into. He never dared hope his experiment a success but it was and that changed everything."
+    },
+    {
+      "t": "narrate",
+      "text": "He conceived the idea hundreds of years ago, built his egg with a team of other young, passionate like-minded scientists, volunteered himself, sealed himself inside one quiet night, dared himself to push a button, gestated in the time between times and was born thusly into this strange new blighted landscape of humankind and fallen civilization."
+    },
+    {
+      "t": "narrate",
+      "text": "Jack first noticed the quality of the air, thick and heavy like the aftermath of a rocket experiment in a desert arroyo, the lingering charnel residue of a science lab caught in chemical fire, the blinding chaos of a wildfire magnesium accident,"
+    },
+    {
+      "t": "narrate",
+      "text": "the after-image of intensity burning the retinas, the blindspots of white and surrounding pools of darkness, the sound and presence of great machines passing above, directly overhead, the gusts of turbulence and electricity in the air standing his hair on end."
+    },
+    {
+      "t": "narrate",
+      "text": "He saw shapes moving, the children. They remained very still keeping to shadows yet remained casually indifferent and distracted, knowing the machines had no real interest in them. Their eyes were afraid, more focused on future horrors that awaited them not these present discomforts."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "look up at the lights.",
+          "goto": 18
+        },
+        {
+          "text": "keep still, like the children.",
+          "goto": 20
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_machines_overhead.jpg",
+      "caption": "A machine among machines."
+    },
+    {
+      "t": "narrate",
+      "text": "The small lights swivel and sweep the rubble, and none of them stop on him."
+    },
+    {
+      "t": "narrate",
+      "text": "The machines drifted above covered in tiny lights like little eyes, oscillating and surveying the ground, kicking up dervishes and fogging the night with dust and light. Jack did as the children did, and kept absolutely still."
+    },
+    {
+      "t": "narrate",
+      "text": "A voice came booming from a machine among machines, it spoke a language not quite English, almost understandable. It was angry, desperate, pleading. After a few moments of petrified fright, Jack began to imagine began to hear his father's voice come out of it."
+    },
+    {
+      "t": "narrate",
+      "text": "He wanted so much to be home right now, to have his father close by saying words of encouragement, gentle and firm. He felt so alone, so rotten that he was only just a boy, that he did not belong, that his whole life had led to this one terrifying terminus."
+    },
+    {
+      "t": "narrate",
+      "text": "He didn't want to think about how he had no friends, in this or any other present. He was different as a child, could never be one of them. These children of the ruins would not accept him like his own youthful peers had never accepted him. His world was limited to science and precision logic."
+    },
+    {
+      "t": "narrate",
+      "text": "At an early age his mother read to him classics, works of literature, but his father weaned him off the frivolous and pushed him into science and mathematics, drilling equation, proof, socratic discourse and scientific method into his eager, he remembers how impressionable young mind."
+    },
+    {
+      "t": "narrate",
+      "text": "He was nothing if not willing, stupid and willing."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_pink_light.jpg",
+      "caption": "The pink light."
+    },
+    {
+      "t": "narrate",
+      "text": "The lights stop above where he cowers a siren sounds, light changes color to a dirty hue of pink, encircles him. He feels a gentle tug about his very being, his ears stop working or perhaps all that ambient, awful sound ceases to be. He thinks to scream but can not hear it."
+    },
+    {
+      "t": "narrate",
+      "text": "He is alone again, completely alone in the pink light. His stomach flip-flops, his arms drift up and away, he kicks out his feet and begins to spin, can't find his footing, vertigo seizes him, debris floats around him, bounces off him, the world spins and holds him and he is swimming."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to the source of all the light, shadow darkness ebbs at the periphery, the end of the world just outside, perhaps going on business as usual. He almost feels comfort for a minute before it all goes away. All sensation, all thought, all connection to the world."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch1_boy_from_pasadena_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch2_dreams_in_the_key_of_godhead"
+    }
+  ]
+}

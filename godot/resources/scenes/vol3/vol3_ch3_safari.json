@@ -1,0 +1,238 @@
+{
+  "id": "vol3_ch3_safari",
+  "vol": 3,
+  "chapter": 3,
+  "type": "chapter",
+  "title": "iii. safari",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_tulsa_living_room_slideshow.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_projector_hum.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "iii. safari",
+      "sub": "slide carousel · Tulsa, mid-eighties",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Jackie Onassis played a major role in the slide shows and it took an audience that many years to finally see it."
+    },
+    {
+      "t": "narrate",
+      "text": "He'd pull out the projector with its dim bulb, its strange disembodied yet tethered outlet control wand, its central sliding forward/rewind mechanism, the one button to advance counter/clockwise."
+    },
+    {
+      "t": "narrate",
+      "text": "He would clear away wall space or venture up to the attic to pull out the pull down screen, assemble it hours before pinning it in place. At the bar his wife would have bottles of wine ready to pour. He loved old ports, saving them for the end of a long evening and those all but last to leave."
+    },
+    {
+      "t": "narrate",
+      "text": "Dozens of cases acquired in travels, the good stuff, dwindled and appreciated more each year, savored murky antiquity. His children would drink from half-full glasses if left unobserved, the Saturday or Sunday morning afters showing telltale broken blood vessels in nostrils."
+    },
+    {
+      "t": "narrate",
+      "text": "Trickled in coworkers and a strange collective of friends. The men mostly oil, close but not quite big wigs, though sometimes one or two would sneak in and loyalties and resentment would ripple across the quasi visible surface tension."
+    },
+    {
+      "t": "narrate",
+      "text": "The women medical professionals, higher education and expatriate ambition their shared commonalities. Couples mostly all childless, adrift and moving in packs across the globe. Ended up in Tulsa, a sort of mid-eighties purgatory for the best and brightest of them."
+    },
+    {
+      "t": "narrate",
+      "text": "They'd built massive dream homes atop the rolling hills but for the most part didn't know what to do with themselves."
+    },
+    {
+      "t": "narrate",
+      "text": "They spent. And swapped. And drank more than they damn well should have. They spoke about crazy mad religion and Oral Roberts just down the road and that designer drug mad scientist compound right around the corner. And it all came a crashing down around as profiled in Rolling Stone Magazine."
+    },
+    {
+      "t": "narrate",
+      "text": "Tulsa, OK, off the map, yet somehow the center of this now non-existent universe. If for just an instant, a fast fading blip on the extra-cultural radar."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty's young children were allowed to mingle and run around until exhausted and this confused the guests so they regarded the kids as everything children were actually not, depending on their level of intoxication and familiarity: to young adults a delightful entertainment, an oftentimes nuisance, focused on them they were, free range youth as gangly pets without cages, pets without leashes."
+    },
+    {
+      "t": "narrate",
+      "text": "When it got to be time, there'd be a hush and the hum of the projector alive, its empty contents illuminating in the air minute threads and particulate without rest, like a Chinese silk artisan juggling her threads in the air while stitching."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty would stand beside the screen in full on professor mode, right hand casting shadow, resting and pressing upon points of interest."
+    },
+    {
+      "t": "narrate",
+      "text": "Niles thought it like a comic strip almost not quite something else entire."
+    },
+    {
+      "t": "narrate",
+      "text": "The still images, one after another, slip sliding into the next."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty had his cameras with him. Slung around his neck and shoulder, three of them, Minolta. In his army green burlap back sack were several telephoto and macro lenses, some as big as his forearm running all the way down to the tips of his fingers."
+    },
+    {
+      "t": "narrate",
+      "text": "He screwed on attached filters red and black, the difference how they tricked the eye, did things to light and shadow."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty built like the center lineman he once was wore khaki, Dodgers baseball cap. Facial stubble, ruggedly stooped, mostly muscle, intimidation in silhouette, eagerly approachable in profile."
+    },
+    {
+      "t": "narrate",
+      "text": "Jackie Onassis and her kids were with him all in that same open air school bus safari vehicle, top shaved off, bars in place of window- like they were being driven around in their own special cage, like they were the ones caught, rounded up by animal controllers and not the ones observing from afar."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "hold on this slide.",
+          "goto": 25
+        },
+        {
+          "text": "advance.",
+          "goto": 26
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_safari_slide.jpg",
+      "caption": "Open air school bus, top shaved off, bars in place of windows."
+    },
+    {
+      "t": "narrate",
+      "text": "He only ever took slide photos. Black and white mostly, sold what he could on the side to glossy magazine or advertising outfits looking for stock photography. His best slides of Jackie O, wherever did those go."
+    },
+    {
+      "t": "narrate",
+      "text": "He had a special license, had to these days. He was carrying microfiche with him everywhere he went. He'd often spend days in some office waiting, getting clearance to move on, hotspots entrenched until word came from on high to mosey on, move along."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty living with, learning to love the big guy sweat coming off him like rings, concentric rings, to measure his age in the yellow brown of his white tees, the pits and shoulder blade and where it all pooled belly button."
+    },
+    {
+      "t": "narrate",
+      "text": "His name on special lists, keep an eye on this one, all said in protocol politeness. Twenty-eight and about to start work on his PhD at USC under some stubborn old son of a bitch who could and would use and abuse him, outlive him most likely."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty was something else entire and wherever he was, whatever he was doing, they could not hold him, keep him, contain him. He drank with pretend spooks who offered part time work which Marty sometimes accepted no ifs ands or buts."
+    },
+    {
+      "t": "narrate",
+      "text": "The contracts, liaisons, short-lived, hardly worth a mention, except for the hmm, curiosity of the thing."
+    },
+    {
+      "t": "narrate",
+      "text": "This photo-safari gig, what this was, a one-time thing preserved and on display now and here was Jackie O and JFK Jr and the girl, and the can't miss it secret service presence."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty and all took pictures of bull elephants by watering holes, gazelles spooked by large cat and of baby giraffe newborns reaching up to almost not quite grasp out of reach Savannah frond."
+    },
+    {
+      "t": "narrate",
+      "text": "Slide after slide revealed fuzziness and clarity both. Background foreground, something compelling just out of focus, that lone woman in her sun hat, her light drapery blouse, the children clutching car bars like nickelodeon convicts, the incredible hulk about to break free. Lou Ferigno, he'd pantomime to the audience."
+    },
+    {
+      "t": "narrate",
+      "text": "They'd laugh with a fresh familiarity."
+    },
+    {
+      "t": "narrate",
+      "text": "The guys who would normally be wearing matching suits asked what Marty would wear normally and they all dressed accordingly, because they were all on the same team, so they looked like fraternity brothers or well-physiqued gonzo journalists, dark sunglasses all."
+    },
+    {
+      "t": "narrate",
+      "text": "Because things were happening in the world, which is why they arrived with such short notice and snatched up whoever was around, background checks over and done with in half-a-day. This isn't some cover story, they said. It just is what it is, a family out for a good time. This was seventy-five."
+    },
+    {
+      "t": "narrate",
+      "text": "Nothing going on in the world, nothing ever."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty read spy novels all through college, Ian Fleming's early stuff, the movies he looked forward to and was disappointed, further and further by."
+    },
+    {
+      "t": "narrate",
+      "text": "The runt border collie who is their new pet, who nips at heels during slide show, who children hug onto and the youngest, the girl, rides around, her own pony, named Tracey after James Bond's wife who didn't last very long. The dog is named Tracey, not the daughter, though that was under consideration at one point."
+    },
+    {
+      "t": "narrate",
+      "text": "Marty disappeared for a few years after becoming a geologist, traveling the world and the United States under the grant and auspice of the USGS, mapping, writing geological field guides, taking reference photos, always something in the shot to show scale, a pick-ax, a human body, geological outcropping in relief."
+    },
+    {
+      "t": "narrate",
+      "text": "Strata revealed, naked, the human reference usually an attractive female in short shorts, Kathy doesn't smile so much at all the in-joking."
+    },
+    {
+      "t": "narrate",
+      "text": "Seven of them before settling down, what he tells people, though the number is probably twice that, judging on slide data alone."
+    },
+    {
+      "t": "narrate",
+      "text": "And they exist in slide, especially the one that gave him a Hawaiian Punch red boutique print shirt that he wore to his wedding."
+    },
+    {
+      "t": "narrate",
+      "text": "Casual that way, in her mother's backyard, already pregnant. Kathy knows when they're coming and looks away, engages somebody in small talk."
+    },
+    {
+      "t": "narrate",
+      "text": "Slide go by. Sometimes one is upside down. Or reversed, you only can tell by certain ones. The insignia or logo or lettering in a vehicle, a print tee, a newspaper left lying about. Ambulance is backwards on purpose, but not here, not on safari."
+    },
+    {
+      "t": "narrate",
+      "text": "The children hiding behind the structural bar marvel at father, hair still black, chest still firm, belly flat to hip. He seems to stride across frame, some superhero pose impossible to imagine, blurred slightly distorted, unreal."
+    },
+    {
+      "t": "narrate",
+      "text": "About to strike an oxen with branch, shooing off juvenile cheetah with scary claw fingers and a static hiss captured. They wonder who took the photos. Him posing with Jackie O, the progeny, the drivers, and the black guys with white teeth thumbs up saluting."
+    },
+    {
+      "t": "narrate",
+      "text": "It makes no sense and there is no connection between this and that, here and there. A vague uncertainty in that kodak color projection, the later sameness of color corrective processing. The children still ahide behind the bar."
+    },
+    {
+      "t": "narrate",
+      "text": "Everyone knows they are there and not yet asleep but those that remain who haven't yet said goodbyes are those caught up by the story, his lack of story, this slide-show meandering, matter of fact, interactive and interpretive."
+    },
+    {
+      "t": "narrate",
+      "text": "Someone finally pipes up, it's Niles, the geologist cartoonist."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch3_safari_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch3_patio"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "id": "vol3_ch4_names_in_neon",
+  "vol": 3,
+  "chapter": 4,
+  "type": "chapter",
+  "title": "iv. names in neon",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_coast_studio_bathroom.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_neon_drift.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "iv. names in neon",
+      "sub": "now · a stranger's bathroom",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Justin looks to me expecting an answer. I look Ginger in the eyes, the girl shivering in the stranger's bathtub. The bubbles there to cover her have mostly dispersed into a thin film she works with hands to pull in close to chest. I can't tell you a damn thing about this look she gives me."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know if she's excited or afraid or both. I just know that whatever I say back to Justin will be wrong, that this moment is too fucked up, too far gone and the three of us have let it get out of control."
+    },
+    {
+      "t": "narrate",
+      "text": "\"We can do it either way,\" I say, not really saying anything at all."
+    },
+    {
+      "t": "narrate",
+      "text": "He tells her to stand up out of the tub and she does. She's eighteen and beautiful and naked and dripping. The cameras love her which is why we love her. That will be our pathetic excuse when we got caught up in the fantasy of the moment. I only try and look at her through the viewfinder."
+    },
+    {
+      "t": "narrate",
+      "text": "I feel ashamed, I'm burning frightened and I hate that my dick is hard. I'm twenty-two. I have a girlfriend who doesn't know what I'm doing far from home back home on the coast of Small Wood."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_editing_suite_night.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "So So Cool",
+      "sub": "now · three days a week",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "Living vicariously through my best friend. I don't have a life until he brings me into his. He's twenty, bleached his hair blond dates a twenty-nine year old actress. He knows she cheats on him with her costars but until she leaves him for the sensible obvious reasons he flies blind, loving it. He doesn't sleep."
+    },
+    {
+      "t": "narrate",
+      "text": "He taught me how to do this without resorting to speed or caffeine or supplemental stimulant. When we are together, quietly discussing something away from raucous, we begin by breathing deep and repeating a coda, a familiar chord. \"Inhale light, exhale exhaustion.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Themes and variations thereof, a cliche for every occasion. We do it by the force of sheer will alone. Shooting, editing, writing and planning three days a week straight. Friday, Saturday and Sunday, switching off and resting eyes for maybe an hour two max."
+    },
+    {
+      "t": "narrate",
+      "text": "The other four days we both have jobs and I, school to return to, to blink, emerge back into, mental patients released to the outside world."
+    },
+    {
+      "t": "narrate",
+      "text": "He has many nicknames. Jlowe, JKL said \"Jekyll\" signifying the three letters used to advance frames in the AVID software editing suite we chore master. He works at Maximillian, arguably the best west coast ad agency. They are Nike."
+    },
+    {
+      "t": "narrate",
+      "text": "He charmed his way in, a high school graduate nobody translated into no practical experience. He cut a tape together with some personal highlights of his short life in front of the camera."
+    },
+    {
+      "t": "narrate",
+      "text": "The video opens with a custom-made eighteenth birthday present neon sign being born out of darkness, his name flickering and glowing, \"Justin J. Lowe\", cursive blue."
+    },
+    {
+      "t": "choice",
+      "opts": [
+        {
+          "text": "watch the tape again.",
+          "goto": 21
+        },
+        {
+          "text": "keep going.",
+          "goto": 22
+        }
+      ]
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol3_neon_sign.jpg",
+      "caption": "A name being born out of darkness."
+    },
+    {
+      "t": "narrate",
+      "text": "That whole advertising mentality I can't fathom, the seemling too hipsters, the comfortable distance they create for themselves away from the rest of reality. They see themselves as those who sell dreams to primates."
+    },
+    {
+      "t": "narrate",
+      "text": "They don't associate with the common man, they move in packs of carbon copies of themselves wearing black always considerate of how they feel."
+    },
+    {
+      "t": "narrate",
+      "text": "Justin is not like them but he is their mascot. The young kinetic human being they all wish they might have been. He bleeds electric. At their weekly meetings he's the DJ at the mike working their reptile blood into a lather. He gets them to hoot and holler and dance and go to strip clubs and celebrate existence."
+    },
+    {
+      "t": "narrate",
+      "text": "He tapes inspirational messages that play on closed circuit monitors in that beautiful steel and wood and glass edifice, non-cubicles seemingly hovering in space. He lives too hard and burns far too fast, and he tells me I bring him back down to reality, as if that's a good thing."
+    },
+    {
+      "t": "narrate",
+      "text": "I look like a logger. I missed growing up of that grunge era and must reference this iconic Pacific-Northwest. Torn jeans, corduroy, flannel wear, long greasy hair and full beard. I am the emotional anchor, the overstimulated octopus brain behind his rabbit beating heart."
+    },
+    {
+      "t": "narrate",
+      "text": "We are So So Cool, the name we give ourselves to stand out from all the rest. We say it like Japanese tourists, thumbs up excited, so very self-aware. We have a mission statement and it is said in defiance. We are two young people, two old souls."
+    },
+    {
+      "t": "narrate",
+      "text": "He hits the streets, I craft websites, he prints t-shirts and stickers that I design."
+    },
+    {
+      "t": "narrate",
+      "text": "We network and schmooze. We hit the clubs and bars looking for fresh faces and eager minds to join us for a fleeting moment. We capture impressions with Polaroid cameras, leave behind hyper real post-it notes, tattoo sharpie marker bare flesh for a week or two."
+    },
+    {
+      "t": "narrate",
+      "text": "We talk emerging musical acts out of their art so that we might 'collaborate', incorporate them and further this collision into being with our incredible persistence, they become the soundtrack of our lives. We want to share our vision, our vision that we can't agree on, that changes from moment to moment."
+    },
+    {
+      "t": "narrate",
+      "text": "But we feel it with all of our being, we know it. We dream the dream together and somehow find the time to parent our love child of the mind."
+    },
+    {
+      "t": "narrate",
+      "text": "This is where we are before the horrible truth of reality hits and we dreamers come crashing down."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_glass_condo_demo_unit.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "House of Glass",
+      "sub": "now · Vancouver, Washington",
+      "duration": 1800
+    },
+    {
+      "t": "narrate",
+      "text": "We're working on a film called House of Glass. I brag now about how we accomplish so much with so little. Our massive set, sound stage and backdrop is a brand new up-scale condominium in Vancouver, Washington."
+    },
+    {
+      "t": "narrate",
+      "text": "We somehow talked the owners into letting us shoot our movie in several of the empty demo units, fully furnished and glossy like a magazine spread. It is trendy and urban hip. There is a Starbucks in the lobby, across from it an art gallery."
+    },
+    {
+      "t": "narrate",
+      "text": "It is too perfect a locale and we consider ourselves blessed karmic fortunates."
+    },
+    {
+      "t": "narrate",
+      "text": "This is all so amazing because the fictional House of Glass is a post-modern art commune, a hive where all the rooms are wired for sound and video and all the tenants can see what exactly their neighbors are doing at a moment's notice by turning on the television or computer."
+    },
+    {
+      "t": "narrate",
+      "text": "I wrote the script because I recognized the crazy voyeur exhibitionist in my young self and I got a very real thrill writing it. Justin responded as much if not more so. He is obsessed with making this a reality."
+    },
+    {
+      "t": "narrate",
+      "text": "He encouraged me to write into a mirror, digging ever deeper, discovering so much more than the surface sensational we were selling it as."
+    },
+    {
+      "t": "narrate",
+      "text": "I was mainly interested in the peculiar sorts of people who would gather in such an environment. The jump off point of historical reference, this was written and is constantly rewritten at the dawning of reality television."
+    },
+    {
+      "t": "narrate",
+      "text": "We started shooting days after 9/11 with the jets in the skies, their sonic booms etched audibly into our tape. This is about that, we delude ourselves."
+    },
+    {
+      "t": "narrate",
+      "text": "This is fresh and topical and deranged. Also mean and ugly and too much, yes. But we go forward because people respond to the concept on some basic level. They want to see what we will do with this, where we could possibly go."
+    },
+    {
+      "t": "narrate",
+      "text": "Where it falls apart because it was bound to from the beginning. I blame my bloated script. At one time it was upwards of 300 pages. Six hours of material. We thought about doing as a mini-series, like The Kingdom, the Lars Von Triers DV show. Release it to DVD, that exciting new format."
+    },
+    {
+      "t": "narrate",
+      "text": "Or sell it off the Internet, there's gold in them thar hills. There is too much to it to keep straight. Too many characters, too many archetypes clashing and coming alive, representing conflicting aspects of Boheme being. The two main foils, Haydon and bass, order and chaos."
+    },
+    {
+      "t": "narrate",
+      "text": "The logical documentary filmmaker locked in a battle of wills against the passionate entropic musician. House of Glass, their playground, a place too small for boys to share willingly."
+    },
+    {
+      "t": "narrate",
+      "text": "All the players are young and beautiful and talented."
+    },
+    {
+      "t": "narrate",
+      "text": "And they are. The webpage for the House of Glass is already up, the interlinked web pages of all the fictional characters an on-going meta-exercise that takes weeks out of my life. I write as all the characters in the House of Glass forum."
+    },
+    {
+      "t": "narrate",
+      "text": "We've been casting cool people off the streets, as themselves, as extras, filling in the negative space that sucks at me. They photograph themselves, improv their existence. House of Glass is entirely beyond our control now."
+    },
+    {
+      "t": "narrate",
+      "text": "It certainly doesn't help that as of this very moment, the (spoiler) written finale is a musical number filled with such choice moments as our fresh out of high school sexual suicide diva masturbating with a pen camera while all the characters watch and come together as one uber-art-organism thanks to the magical black man powers of bass."
+    },
+    {
+      "t": "narrate",
+      "text": "I mean goddamn. We're going for broke here, we're letting it all hang out and fall where it may."
+    },
+    {
+      "t": "narrate",
+      "text": "Somehow all the people associated look at us and think we know what we're doing."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch4_names_in_neon_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol3_ch4_invitation_only"
+    }
+  ]
+}
