@@ -392,7 +392,7 @@ func _apply_chapter_music_context(scene_id: String) -> void:
 	# Player picks them up as the player progresses, even without
 	# a `show` directive naming a tracked character on this page.
 	if AudioMgr.has_method("unlock_tracks_for_chapter"):
-		AudioMgr.unlock_tracks_for_chapter(ch_id)
+		AudioMgr.unlock_tracks_for_chapter(scene_id)
 
 
 const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"
