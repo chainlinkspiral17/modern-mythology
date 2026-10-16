@@ -488,11 +488,6 @@
       "casting": "Shared child voice for unnamed kids (boy, Kid). About 8-10.",
       "appears": "walk-ons"
     },
-    "the_older_man": {
-      "voice_id": "",
-      "casting": "The older man in the charcoal suit at Joanna's gate ('I received your letter… not today'). 60s male, level, neither kind nor unkind, unhurried. May be the same figure Natalie expected in the Moon chapter; possibly shares a voice with the Stranger. Andy decides.",
-      "appears": "vol5 ch21"
-    },
     "the_third_consciousness": {
       "voice_id": "",
       "casting": "The Third Consciousness, unborn, speaking mentally from inside Nicola ('I've never seen one. What do you recommend.'). Calm, curious, quietly funny; ageless, a child's simplicity with an adult's precision. Not Aria, not Nicola.",
@@ -523,7 +518,8 @@
     "frasier temple": "frasier",
     "d dean": "dean",
     "mr d dean": "dean",
-    "demon": "the_demon"
+    "demon": "the_demon",
+    "the_older_man": "stranger"
   },
   "_walkons": {
     "_comment": "One-line walk-ons. Each name listed here resolves to the shared voice named by its group key. Move a name out (and give it its own entry) if it grows into a character.",
