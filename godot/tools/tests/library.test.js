@@ -16,7 +16,10 @@ const RENDER = `(async function () {
   const SR = 16000;
   const PAT = { drums: [[[60, 0, 0.3]], 2], bass: [[[36, 0, 1.2], [43, 1.3, 0.5]], 2.6], pads: [[[48, 0, 2.6], [55, 0, 2.6], [60, 0, 2.6], [64, 0, 2.6]], 3.4],
     ambient: [[[48, 0, 2.6], [55, 0, 2.6]], 3.4], fx: [[[60, 0, 2.2]], 3], keys: [[[60, 0, 1.4], [64, 0, 1.4], [67, 0, 1.4]], 2.6],
-    plucks: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], leads: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6], winds: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6] };
+    plucks: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], leads: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6], winds: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6],
+    // the 2026-10-14 categories play like their nearest older one
+    guitars: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], world: [[[60, 0, 0.5], [67, 0.6, 0.5]], 2.6], orchestra: [[[67, 0, 1.2], [72, 1.25, 1]], 2.6],
+    voices: [[[48, 0, 2.6], [55, 0, 2.6], [60, 0, 2.6], [64, 0, 2.6]], 3.4] };
   function fft(re, im) { const n = re.length; for (let i = 1, j = 0; i < n; i++) { let bit = n >> 1; for (; j & bit; bit >>= 1) j ^= bit; j ^= bit; if (i < j) { [re[i], re[j]] = [re[j], re[i]]; [im[i], im[j]] = [im[j], im[i]]; } }
     for (let len = 2; len <= n; len <<= 1) { const a = -2 * Math.PI / len, wr = Math.cos(a), wi = Math.sin(a); for (let i = 0; i < n; i += len) { let cr = 1, ci = 0; for (let k = 0; k < len / 2; k++) { const h = len / 2, ur = re[i + k], ui = im[i + k], vr = re[i + k + h] * cr - im[i + k + h] * ci, vi = re[i + k + h] * ci + im[i + k + h] * cr; re[i + k] = ur + vr; im[i + k] = ui + vi; re[i + k + h] = ur - vr; im[i + k + h] = ui - vi; const t = cr * wr - ci * wi; ci = cr * wi + ci * wr; cr = t; } } } }
   const edges = Array.from({ length: 25 }, (_, i) => 40 * Math.pow((SR / 2) / 40, i / 24));
