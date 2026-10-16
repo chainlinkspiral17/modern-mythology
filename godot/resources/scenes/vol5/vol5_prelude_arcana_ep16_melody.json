@@ -1,0 +1,125 @@
+{
+  "id": "vol5_prelude_arcana_ep16_melody",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 14 · MELODY",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep16_melody.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 14 · MELODY",
+      "sub": "a coastal town in Oregon · a video store · rain",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "A viewer in Oregon mailed me a rental card. No letter. A rubber band, a store stamp, and one title.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "The film is called MELODY. It was shot on that coast sometime in the nineties, and nobody I’ve asked has seen the end of it.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "notes · MELODY · do not say the word cursed on air"
+    },
+    {
+      "t": "narrate",
+      "text": "The card. Pink stock, the kind with a pocket. Title typed. Under FORMAT someone wrote VHS and underlined it twice, as if there had once been a question."
+    },
+    {
+      "t": "narrate",
+      "text": "Under DUE, in stamp ink: NO LATE FEES. Not a policy. A stamp. Somebody paid to have that made."
+    },
+    {
+      "t": "narrate",
+      "text": "Renters, top to bottom. Eleven lines, mostly initials. Ten of the dates run in order, ninety-six to oh-nine."
+    },
+    {
+      "t": "narrate",
+      "text": "The fourth line reads D. Dean, and the date beside it is 03/94. Two years before the first line on the card."
+    },
+    {
+      "t": "narrate",
+      "text": "I called the store. It’s still there, which is its own small miracle. The man who answered said the owner was out on the bay after crab and would be back when the tide said so."
+    },
+    {
+      "t": "narrate",
+      "text": "I asked if they still had MELODY. He said they had never not had it."
+    },
+    {
+      "t": "narrate",
+      "text": "I asked who made it. He said it was shot nearby, back in the nineties, the way you’d tell someone where the post office is."
+    },
+    {
+      "t": "narrate",
+      "text": "I asked how it ends. There was a long breath on the line, then a bell over a door, then he said he had a customer."
+    },
+    {
+      "t": "narrate",
+      "text": "The sleeve photo the viewer sent along: a beach at dusk, out of focus, and something yellow at the edge of the frame. A slicker, or a hem. It’s gone in the next photo."
+    },
+    {
+      "t": "narrate",
+      "text": "No credits on the back. A running time in grease pencil, ninety-four minutes. Under it, in a second hand: longer at night."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "I have a VCR coming from a man in Albany. If you don’t hear from me, he got the better end of the deal. Goodnight.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep16_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

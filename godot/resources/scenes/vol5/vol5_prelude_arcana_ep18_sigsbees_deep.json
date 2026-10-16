@@ -1,0 +1,121 @@
+{
+  "id": "vol5_prelude_arcana_ep18_sigsbees_deep",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 16 · the city in miniature",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep18_sigsbees_deep.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 16 · the city in miniature",
+      "sub": "a diner on the Gulf · after closing",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "There’s a diner on the Gulf where the pie is bad and the city on the back counter is very, very good.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "I won’t tell you which diner. I’m told the model has a street in it the real city doesn’t.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "The city in miniature at Sigsbee’s Deep."
+    },
+    {
+      "t": "narrate",
+      "text": "Mark devotes most evenings in the latter half of his life on the micro-sculpture. Most folk jest if he’d have spent as much time keeping up the diner, business would be booming."
+    },
+    {
+      "t": "narrate",
+      "text": "Graustark in tiny relief is an oddity curio-tourists have delighted in for years, as its scope has grown beyond even the conventional limits of reality."
+    },
+    {
+      "t": "narrate",
+      "text": "At the river edge of it a paddle boat sits moored and lit, and in one window someone has painted a single figure carrying a tray."
+    },
+    {
+      "t": "narrate",
+      "text": "“His shape suggests a plastic bag carrying broken bottle dreams, sagged to give. The steady shuff shuff shuffle of dragging feet barely carried along by long since bottomed out heels."
+    },
+    {
+      "t": "narrate",
+      "text": "Shoes worn to filament, feet roughened by exposure, heavy weight stagger step, shuffle ball changed. Lurching from a past into the future shiny new. Muscles shred yellowed cotton screwed tight on his frame, tic by tic."
+    },
+    {
+      "t": "narrate",
+      "text": "Tatters of the past she left him with, worn with no such pride, an expression of puzzlement, stroke struck and yet impermanent. The derelict dead eyed dreamer, a walking monument to the deal that was dealt him.”"
+    },
+    {
+      "t": "narrate",
+      "text": "Lane goes shopping at the dollar store for things that break. Lightbulbs, eggs, bottles of spaghetti sauce. Thirty dollars counting sales tax. Four paper bags full."
+    },
+    {
+      "t": "narrate",
+      "text": "She pulls up outside his house and lights a cigarette. She shouldn’t, but she is."
+    },
+    {
+      "t": "narrate",
+      "text": "A neighbor dog freaks out, yapping through the fence, bounding off at increment heights."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "Lane never gets out of the car, on the page. I’d like to think she did. Goodnight.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep18_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}
