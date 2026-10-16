@@ -1171,7 +1171,38 @@ const BG3D_SCRIPT := preload("res://scripts/vn/Background3D.gd")
 var _bg_place: String = ""
 
 
+## BG PLACES (2026-10-16): the vols 1-4 scenes name flat pictures
+## (assets/backgrounds/<stem>.jpg) that were never made; bg_places.json maps
+## each stem to the 3D set that plays it (exact, reuse or a stand-in until
+## the place is built). A stem with no set (a picture still to paint) and
+## any 3d: or unknown src pass through unchanged.
+const BG_PLACES_PATH := "res://resources/vn/bg_places.json"
+static var _bg_places: Dictionary = {}
+static var _bg_places_loaded: bool = false
+
+
+static func resolve_bg(src: String) -> String:
+	if src == "" or src.begins_with("3d:"):
+		return src
+	if not _bg_places_loaded:
+		_bg_places_loaded = true
+		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(BG_PLACES_PATH))
+		if typeof(data) == TYPE_DICTIONARY:
+			var places: Variant = (data as Dictionary).get("places", {})
+			if typeof(places) == TYPE_DICTIONARY:
+				_bg_places = places
+	var stem: String = src.get_file().get_basename()
+	var entry: Variant = _bg_places.get(stem, null)
+	if typeof(entry) != TYPE_DICTIONARY:
+		return src
+	var to: Variant = (entry as Dictionary).get("to", null)
+	if typeof(to) == TYPE_STRING and String(to) != "":
+		return String(to)
+	return src
+
+
 func _place_of(src: String) -> String:
+	src = resolve_bg(src)
 	if not src.begins_with("3d:"):
 		return src
 	var presets: Dictionary = BG3D_SCRIPT.CAMERA_PRESETS
@@ -1183,7 +1214,7 @@ func _place_of(src: String) -> String:
 
 
 func _do_bg(n: Dictionary) -> void:
-	var src: String = _s(n, "src")
+	var src: String = resolve_bg(_s(n, "src"))
 	var place: String = _place_of(src)
 	if _bg_place != "" and place != _bg_place and _chars != null:
 		_chars.call("hide_all")

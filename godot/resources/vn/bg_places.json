@@ -1,0 +1,1589 @@
+{
+ "_comment": [
+  "BG PLACES (2026-10-16): the vols 1-4 scenes (branch claude/vol1-4-source-text) name",
+  "flat pictures — assets/backgrounds/<stem>.jpg — that were never made. GameEngine._do_bg looks the",
+  "stem up here and plays the 3D set instead, so those scenes render without editing their JSON.",
+  "fit: exact (the place) · reuse (an existing set that is this kind of place) · standin (the nearest",
+  "set until its 'build' locale exists) · 2d (stays a picture; to: null until it is painted).",
+  "When a build group's locale lands, point its stems at the new presets and change fit to exact.",
+  "Plan and priorities: lore/_VOL1_4_SETS_AND_CAST.md."
+ ],
+ "places": {
+  "vol1_above_the_record": {
+   "fit": "2d",
+   "to": null,
+   "note": "abstract",
+   "scenes": 1
+  },
+  "vol1_bar_exterior_night": {
+   "fit": "exact",
+   "to": "3d:bar_exterior_night",
+   "scenes": 2
+  },
+  "vol1_bar_interior": {
+   "fit": "exact",
+   "to": "3d:new_orleans_bar",
+   "scenes": 2
+  },
+  "vol1_battle_painting": {
+   "fit": "2d",
+   "to": null,
+   "note": "Joan Charging Off Into Battle — the painting itself",
+   "scenes": 1
+  },
+  "vol1_city_color_night": {
+   "fit": "standin",
+   "to": "3d:bar_exterior_night",
+   "build": "city_night_street",
+   "note": "a city street in colour at night",
+   "scenes": 3
+  },
+  "vol1_club_dance": {
+   "fit": "exact",
+   "to": "3d:foxhole_stage",
+   "note": "aligned with the 3D vol1 scenes",
+   "scenes": 1
+  },
+  "vol1_club_office_night": {
+   "fit": "standin",
+   "to": "3d:foxhole_dressing_room",
+   "build": "dean_office",
+   "note": "the club's back office",
+   "scenes": 2
+  },
+  "vol1_club_sharp": {
+   "fit": "exact",
+   "to": "3d:club_sharp",
+   "scenes": 3
+  },
+  "vol1_club_sharp_empty": {
+   "fit": "exact",
+   "to": "3d:club_sharp",
+   "note": "the club after hours",
+   "scenes": 2
+  },
+  "vol1_deep_end_pool": {
+   "fit": "2d",
+   "to": null,
+   "note": "the deep end: an empty pool, the corpse-painted boy — a painted plate",
+   "scenes": 1
+  },
+  "vol1_dream_bar": {
+   "fit": "reuse",
+   "to": "3d:new_orleans_bar",
+   "note": "the bar dreamed",
+   "scenes": 2
+  },
+  "vol1_dream_bed": {
+   "fit": "reuse",
+   "to": "3d:faust_bedroom",
+   "scenes": 1
+  },
+  "vol1_drugstore_aisles": {
+   "fit": "exact",
+   "to": "3d:pharmacy_floor",
+   "note": "Act Three's drugstore hub",
+   "scenes": 2
+  },
+  "vol1_drugstore_purgatory": {
+   "fit": "reuse",
+   "to": "3d:pharmacy_floor",
+   "note": "the drugstore as purgatory: a mood, same aisles",
+   "scenes": 1
+  },
+  "vol1_editing_suite": {
+   "fit": "standin",
+   "to": "3d:cedar_tower_studio",
+   "build": "editing_suite",
+   "note": "the Fool's editing suite (prelude, trailer, Act Three)",
+   "scenes": 1
+  },
+  "vol1_faust_apartment_day": {
+   "fit": "exact",
+   "to": "3d:faust_apartment_day",
+   "scenes": 5
+  },
+  "vol1_faust_bedroom_night": {
+   "fit": "exact",
+   "to": "3d:faust_bedroom",
+   "scenes": 5
+  },
+  "vol1_grandparents_montage": {
+   "fit": "reuse",
+   "to": "3d:riverfront_park",
+   "note": "aligned",
+   "scenes": 1
+  },
+  "vol1_hall_of_ratifications": {
+   "fit": "2d",
+   "to": null,
+   "note": "dream architecture",
+   "scenes": 1
+  },
+  "vol1_jacob_apartment": {
+   "fit": "exact",
+   "to": "3d:new_orleans_apartment",
+   "note": "aligned",
+   "scenes": 2
+  },
+  "vol1_jacob_house_ext_day": {
+   "fit": "standin",
+   "to": "3d:meadowlark_circle",
+   "build": "faust3_houses",
+   "note": "Act Two homes montage",
+   "scenes": 1
+  },
+  "vol1_jd_driving_day": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab",
+   "note": "in the car, day",
+   "scenes": 1
+  },
+  "vol1_jd_driving_night": {
+   "fit": "exact",
+   "to": "3d:small_wood_road_night",
+   "note": "aligned",
+   "scenes": 1
+  },
+  "vol1_jd_river": {
+   "fit": "reuse",
+   "to": "3d:riverfront_exterior",
+   "scenes": 1
+  },
+  "vol1_missing_link_exterior": {
+   "fit": "exact",
+   "to": "3d:missing_link_exterior",
+   "scenes": 1
+  },
+  "vol1_missing_link_interior": {
+   "fit": "exact",
+   "to": "3d:missing_link_interior",
+   "scenes": 2
+  },
+  "vol1_office_day": {
+   "fit": "standin",
+   "to": "3d:new_orleans_office",
+   "build": "dean_office",
+   "note": "INT. THE OFFICE: Dickens Dean's",
+   "scenes": 2
+  },
+  "vol1_painting_interior": {
+   "fit": "reuse",
+   "to": "3d:faust_apartment_day",
+   "note": "Faust painting at home",
+   "scenes": 1
+  },
+  "vol1_park_day": {
+   "fit": "exact",
+   "to": "3d:riverfront_park",
+   "scenes": 1
+  },
+  "vol1_pharmacy_floor": {
+   "fit": "exact",
+   "to": "3d:pharmacy_floor",
+   "scenes": 1
+  },
+  "vol1_pharmacy_office": {
+   "fit": "exact",
+   "to": "3d:pharmacy_office",
+   "scenes": 1
+  },
+  "vol1_river_turn": {
+   "fit": "reuse",
+   "to": "3d:riverfront_exterior",
+   "note": "Act Three's river turn",
+   "scenes": 1
+  },
+  "vol1_shuttle_bench": {
+   "fit": "exact",
+   "to": "3d:shuttle_bench",
+   "scenes": 8
+  },
+  "vol1_skatepark_day": {
+   "fit": "exact",
+   "to": "3d:skatepark_day",
+   "scenes": 1
+  },
+  "vol1_tutorial_lobby": {
+   "fit": "standin",
+   "to": "3d:cedar_tower_lobby",
+   "build": "dean_office",
+   "note": "the tutorial: office spaces carved out of imagination",
+   "scenes": 1
+  },
+  "vol1_wagner_home": {
+   "fit": "exact",
+   "to": "3d:wagner_home",
+   "scenes": 2
+  },
+  "vol1_wagner_house_ext_day": {
+   "fit": "standin",
+   "to": "3d:meadowlark_circle",
+   "build": "faust3_houses",
+   "note": "Act Two homes montage",
+   "scenes": 1
+  },
+  "vol1_wagner_porch_day": {
+   "fit": "standin",
+   "to": "3d:wagner_home",
+   "build": "faust3_houses",
+   "note": "Wagner's porch",
+   "scenes": 1
+  },
+  "vol2_apple_peddler_diner": {
+   "fit": "standin",
+   "to": "3d:pit_stop_interior",
+   "build": "apple_peddler",
+   "scenes": 1
+  },
+  "vol2_ark_hillside": {
+   "fit": "2d",
+   "to": null,
+   "note": "the ark on the hill: painted until a build is planned",
+   "scenes": 2
+  },
+  "vol2_art_classroom": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_art",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol2_backyard_party_summer": {
+   "fit": "reuse",
+   "to": "3d:kowalski_backyard",
+   "scenes": 1
+  },
+  "vol2_barn_interior": {
+   "fit": "exact",
+   "to": "3d:crumpled_barn_int",
+   "scenes": 1
+  },
+  "vol2_beach_bonfire": {
+   "fit": "reuse",
+   "to": "3d:beach_night",
+   "scenes": 1
+  },
+  "vol2_beach_night": {
+   "fit": "exact",
+   "to": "3d:beach_night",
+   "scenes": 2
+  },
+  "vol2_beach_overcast": {
+   "fit": "reuse",
+   "to": "3d:grunion_beach",
+   "scenes": 4
+  },
+  "vol2_bed_breakfast_christmas": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol2_bedroom_window_night": {
+   "fit": "standin",
+   "to": "3d:ben_bedroom",
+   "build": "dean_house_1994",
+   "scenes": 2
+  },
+  "vol2_bookstore_back_lounge": {
+   "fit": "reuse",
+   "to": "3d:salty_tome_office",
+   "note": "Small Wood's bookstore = the Salty Tome",
+   "scenes": 2
+  },
+  "vol2_briar_falls_building": {
+   "fit": "exact",
+   "to": "3d:briar_falls_building",
+   "scenes": 1
+  },
+  "vol2_briar_falls_overlook": {
+   "fit": "exact",
+   "to": "3d:briar_falls_overlook",
+   "scenes": 1
+  },
+  "vol2_briar_falls_picnic": {
+   "fit": "exact",
+   "to": "3d:briar_falls_picnic",
+   "scenes": 1
+  },
+  "vol2_briar_falls_rest_stop": {
+   "fit": "exact",
+   "to": "3d:briar_falls_rest_stop",
+   "scenes": 4
+  },
+  "vol2_briar_falls_trail": {
+   "fit": "exact",
+   "to": "3d:briar_falls_trail",
+   "scenes": 2
+  },
+  "vol2_cannery_dawn": {
+   "fit": "exact",
+   "to": "3d:grunion_beach",
+   "note": "aligned",
+   "scenes": 1
+  },
+  "vol2_car_interior_day": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab",
+   "scenes": 1
+  },
+  "vol2_chainsaw_ghost_town": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol2_christmas_lights_road": {
+   "fit": "reuse",
+   "to": "3d:small_wood_road_night",
+   "scenes": 1
+  },
+  "vol2_cliffside_circus": {
+   "fit": "exact",
+   "to": "3d:cliffside_circus",
+   "scenes": 1
+  },
+  "vol2_coast_highway_day": {
+   "fit": "reuse",
+   "to": "3d:highway_101",
+   "scenes": 2
+  },
+  "vol2_coast_woods_dawn": {
+   "fit": "reuse",
+   "to": "3d:cape_perpetua_overlook",
+   "scenes": 1
+  },
+  "vol2_copy_shop_night": {
+   "fit": "standin",
+   "to": "3d:new_orleans_office",
+   "build": "copy_shop",
+   "scenes": 2
+  },
+  "vol2_country_road_night": {
+   "fit": "reuse",
+   "to": "3d:small_wood_road_night",
+   "scenes": 1
+  },
+  "vol2_crumpled_barn_ext": {
+   "fit": "exact",
+   "to": "3d:crumpled_barn_ext",
+   "scenes": 1
+  },
+  "vol2_dean_basement_1994": {
+   "fit": "standin",
+   "to": "3d:henderson_garage",
+   "build": "dean_house_1994",
+   "scenes": 1
+  },
+  "vol2_dean_bedroom_1994": {
+   "fit": "standin",
+   "to": "3d:ben_bedroom",
+   "build": "dean_house_1994",
+   "note": "D.N. Dean's room",
+   "scenes": 2
+  },
+  "vol2_diner_grill_dawn": {
+   "fit": "standin",
+   "to": "3d:pit_stop_interior",
+   "build": "apple_peddler",
+   "note": "the Apple Peddler",
+   "scenes": 2
+  },
+  "vol2_diner_night": {
+   "fit": "standin",
+   "to": "3d:pit_stop_interior",
+   "build": "apple_peddler",
+   "scenes": 1
+  },
+  "vol2_dive_bar_bridge": {
+   "fit": "reuse",
+   "to": "3d:foxhole_bar",
+   "scenes": 1
+  },
+  "vol2_farmhouse_night": {
+   "fit": "standin",
+   "to": "3d:caldwell_porch_night",
+   "scenes": 1
+  },
+  "vol2_football_field_night": {
+   "fit": "reuse",
+   "to": "3d:school_field_evening",
+   "scenes": 2
+  },
+  "vol2_football_practice": {
+   "fit": "exact",
+   "to": "3d:school_field_evening",
+   "scenes": 1
+  },
+  "vol2_glass_mansion_bay": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol2_grunion_beach": {
+   "fit": "exact",
+   "to": "3d:grunion_beach",
+   "scenes": 1
+  },
+  "vol2_gymnasium_hearing": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_gym",
+   "build": "small_wood_high",
+   "note": "the school-board hearing in the gym",
+   "scenes": 3,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol2_harbor_dusk": {
+   "fit": "reuse",
+   "to": "3d:smolvud_jetty",
+   "scenes": 1
+  },
+  "vol2_ice_storm": {
+   "fit": "exact",
+   "to": "3d:cliffside_circus",
+   "note": "aligned",
+   "scenes": 1
+  },
+  "vol2_interview_room": {
+   "fit": "reuse",
+   "to": "3d:county_line_station",
+   "note": "a police interview room",
+   "scenes": 1
+  },
+  "vol2_lighthouse_night": {
+   "fit": "standin",
+   "to": "3d:beach_night",
+   "build": "lighthouse",
+   "note": "bayou_lighthouse.tscn exists (gauntlet) — add a VN preset",
+   "scenes": 1
+  },
+  "vol2_little_switzerland": {
+   "fit": "exact",
+   "to": "3d:little_switzerland",
+   "scenes": 1
+  },
+  "vol2_locker_room": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_locker",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol2_meld_editing_suite_tideflats": {
+   "fit": "standin",
+   "to": "3d:cedar_tower_studio",
+   "build": "editing_suite",
+   "scenes": 1
+  },
+  "vol2_minivan_night_coast": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab_night",
+   "scenes": 2
+  },
+  "vol2_model_workbench": {
+   "fit": "2d",
+   "to": null,
+   "note": "an insert",
+   "scenes": 1
+  },
+  "vol2_pier_crabbing": {
+   "fit": "reuse",
+   "to": "3d:smolvud_jetty",
+   "scenes": 2
+  },
+  "vol2_radio_studio": {
+   "fit": "standin",
+   "to": "3d:caldwell_radio_room_night",
+   "note": "bayou/wgur shack locales exist without presets: give one a preset",
+   "scenes": 1
+  },
+  "vol2_rain_windshield_night": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab_night",
+   "scenes": 1
+  },
+  "vol2_reading_lamp_night": {
+   "fit": "standin",
+   "to": "3d:ben_bedroom",
+   "build": "dean_house_1994",
+   "scenes": 2
+  },
+  "vol2_rec_center_dance": {
+   "fit": "exact",
+   "to": "3d:small_wood_rec_center",
+   "note": "Jay Rose's dance",
+   "scenes": 1
+  },
+  "vol2_riverbed_dunes": {
+   "fit": "standin",
+   "to": "3d:grunion_beach",
+   "scenes": 1
+  },
+  "vol2_road_running": {
+   "fit": "exact",
+   "to": "3d:small_wood_road",
+   "scenes": 1
+  },
+  "vol2_sapo_falls": {
+   "fit": "exact",
+   "to": "3d:sapo_falls",
+   "scenes": 1
+  },
+  "vol2_school_hallway": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_hall",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol2_school_newspaper": {
+   "fit": "exact",
+   "to": "3d:school_newspaper",
+   "scenes": 3
+  },
+  "vol2_scumm_hemlock_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "in-fiction graphic adventure screen (ch vii) — modern art, not era cosplay",
+   "scenes": 3
+  },
+  "vol2_scumm_inventory_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 1
+  },
+  "vol2_scumm_missing_link_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 1
+  },
+  "vol2_scumm_save_screen_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 1
+  },
+  "vol2_scumm_spiral_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 1
+  },
+  "vol2_scumm_theater_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 1
+  },
+  "vol2_scumm_tideflats_crab_vga": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 2
+  },
+  "vol2_sea_cave": {
+   "fit": "standin",
+   "to": "3d:grunion_beach",
+   "build": "sea_cave",
+   "note": "three scenes",
+   "scenes": 3
+  },
+  "vol2_sea_wall_bookstore": {
+   "fit": "reuse",
+   "to": "3d:salty_tome_alley",
+   "scenes": 1
+  },
+  "vol2_seagash_circus_old": {
+   "fit": "exact",
+   "to": "3d:cliffside_circus",
+   "scenes": 2
+  },
+  "vol2_second_house_night": {
+   "fit": "standin",
+   "to": "3d:meadowlark_circle_night",
+   "build": "dean_house_1994",
+   "note": "the second house",
+   "scenes": 1
+  },
+  "vol2_small_town_road": {
+   "fit": "exact",
+   "to": "3d:small_wood_roadside",
+   "scenes": 1
+  },
+  "vol2_small_wood_scrapbook": {
+   "fit": "2d",
+   "to": null,
+   "note": "the scrapbook: an insert",
+   "scenes": 2
+  },
+  "vol2_truck_cab_day": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab",
+   "scenes": 1
+  },
+  "vol2_upturned_log_woods": {
+   "fit": "reuse",
+   "to": "3d:briar_falls_trail",
+   "scenes": 1
+  },
+  "vol2_used_bookstore": {
+   "fit": "reuse",
+   "to": "3d:salty_tome_interior",
+   "scenes": 1
+  },
+  "vol3_andy_room_day": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom_day",
+   "build": "andy_family_house",
+   "scenes": 1
+  },
+  "vol3_andy_room_night": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom",
+   "build": "andy_family_house",
+   "scenes": 1
+  },
+  "vol3_ballfield_concession_stand": {
+   "fit": "standin",
+   "to": "3d:school_field_day",
+   "build": "little_league",
+   "scenes": 1
+  },
+  "vol3_ballfield_dugout_august": {
+   "fit": "standin",
+   "to": "3d:school_field_day",
+   "build": "little_league",
+   "note": "acceptable losses",
+   "scenes": 2
+  },
+  "vol3_ballfield_first_base": {
+   "fit": "standin",
+   "to": "3d:school_field_day",
+   "build": "little_league",
+   "scenes": 1
+  },
+  "vol3_ballfield_home_plate": {
+   "fit": "standin",
+   "to": "3d:school_field_day",
+   "build": "little_league",
+   "scenes": 2
+  },
+  "vol3_ballfield_pitchers_mound": {
+   "fit": "standin",
+   "to": "3d:school_field_day",
+   "build": "little_league",
+   "scenes": 1
+  },
+  "vol3_bedroom_closet_dallas": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom",
+   "build": "andy_family_house",
+   "scenes": 1
+  },
+  "vol3_bedroom_lamp_night": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom",
+   "build": "andy_family_house",
+   "scenes": 2
+  },
+  "vol3_blanket_fort_night": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom",
+   "build": "andy_family_house",
+   "scenes": 2
+  },
+  "vol3_brick_wall_halloween_night": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol3_caltech_bare_room": {
+   "fit": "standin",
+   "to": "3d:ben_bedroom",
+   "build": "caltech_dabney",
+   "note": "Dabney House",
+   "scenes": 2
+  },
+  "vol3_caltech_campus_afternoon": {
+   "fit": "standin",
+   "to": "3d:main_street",
+   "build": "caltech_dabney",
+   "scenes": 1
+  },
+  "vol3_caltech_dabney_day": {
+   "fit": "standin",
+   "to": "3d:main_street",
+   "build": "caltech_dabney",
+   "scenes": 1
+  },
+  "vol3_caltech_hallway_1945": {
+   "fit": "standin",
+   "to": "3d:accretion_corridor",
+   "build": "caltech_dabney",
+   "note": "the same halls in 1945",
+   "scenes": 1
+  },
+  "vol3_caltech_tunnels_night": {
+   "fit": "standin",
+   "to": "3d:accretion_corridor",
+   "build": "caltech_dabney",
+   "note": "the steam tunnels",
+   "scenes": 1
+  },
+  "vol3_car_backseat_streetlamps": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab_rear_night",
+   "scenes": 1
+  },
+  "vol3_car_coast_dusk": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab",
+   "scenes": 1
+  },
+  "vol3_car_coast_night": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab_night",
+   "scenes": 1
+  },
+  "vol3_chau_bathroom_steam": {
+   "fit": "standin",
+   "to": null,
+   "build": "chau_house",
+   "scenes": 1
+  },
+  "vol3_chau_game_room_night": {
+   "fit": "standin",
+   "to": "3d:cosmic_comics_back_office",
+   "build": "chau_house",
+   "scenes": 1
+  },
+  "vol3_chau_house_day": {
+   "fit": "standin",
+   "to": "3d:meadowlark_circle",
+   "build": "chau_house",
+   "note": "passengers",
+   "scenes": 2
+  },
+  "vol3_chau_living_room": {
+   "fit": "standin",
+   "to": "3d:kowalski_kitchen",
+   "build": "chau_house",
+   "scenes": 1
+  },
+  "vol3_chris_bedroom_night": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom",
+   "scenes": 1
+  },
+  "vol3_chris_bedroom_trophies": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom_day",
+   "scenes": 1
+  },
+  "vol3_city_street_friday": {
+   "fit": "reuse",
+   "to": "3d:main_street",
+   "scenes": 1
+  },
+  "vol3_clinic_1945": {
+   "fit": "standin",
+   "to": "3d:hospital_room",
+   "build": "pasadena_1945",
+   "scenes": 1
+  },
+  "vol3_clinic_waiting_room": {
+   "fit": "reuse",
+   "to": "3d:hospital_waiting",
+   "scenes": 1
+  },
+  "vol3_coast_home_studio": {
+   "fit": "standin",
+   "to": "3d:lena_studio",
+   "scenes": 1
+  },
+  "vol3_coast_road_forest": {
+   "fit": "reuse",
+   "to": "3d:highway_101",
+   "scenes": 1
+  },
+  "vol3_coast_studio_bathroom": {
+   "fit": "standin",
+   "to": "3d:lena_studio",
+   "scenes": 1
+  },
+  "vol3_crt_monitor_newsgroup": {
+   "fit": "2d",
+   "to": null,
+   "note": "an insert: the Usenet post",
+   "scenes": 1
+  },
+  "vol3_dabney_courtyard_day": {
+   "fit": "standin",
+   "to": "3d:main_street",
+   "build": "caltech_dabney",
+   "scenes": 1
+  },
+  "vol3_dabney_game_room": {
+   "fit": "standin",
+   "to": "3d:cosmic_comics_back_office",
+   "build": "caltech_dabney",
+   "scenes": 2
+  },
+  "vol3_dance_floor_fog": {
+   "fit": "reuse",
+   "to": "3d:club_sharp",
+   "scenes": 1
+  },
+  "vol3_desert_gas_station": {
+   "fit": "reuse",
+   "to": "3d:nexcorp_fueling_station",
+   "scenes": 1
+  },
+  "vol3_desert_motel_dusk": {
+   "fit": "reuse",
+   "to": "3d:cypress_motel",
+   "scenes": 1
+  },
+  "vol3_dust_storm_highway": {
+   "fit": "reuse",
+   "to": "3d:highway9_scar",
+   "scenes": 1
+  },
+  "vol3_editing_suite_night": {
+   "fit": "standin",
+   "to": "3d:cedar_tower_studio",
+   "build": "editing_suite",
+   "scenes": 2
+  },
+  "vol3_family_bathroom_day": {
+   "fit": "standin",
+   "to": null,
+   "build": "andy_family_house",
+   "note": "no bathroom set yet",
+   "scenes": 1
+  },
+  "vol3_family_bathroom_night": {
+   "fit": "standin",
+   "to": null,
+   "build": "andy_family_house",
+   "scenes": 1
+  },
+  "vol3_family_kitchen_evening": {
+   "fit": "standin",
+   "to": "3d:kowalski_kitchen",
+   "build": "andy_family_house",
+   "scenes": 2
+  },
+  "vol3_family_living_room_night": {
+   "fit": "standin",
+   "to": "3d:kowalski_kitchen",
+   "build": "andy_family_house",
+   "scenes": 1
+  },
+  "vol3_father_bedside": {
+   "fit": "reuse",
+   "to": "3d:hospital_room",
+   "note": "Dad in hospital",
+   "scenes": 1
+  },
+  "vol3_four_screen_room": {
+   "fit": "standin",
+   "to": "3d:hospital_room",
+   "build": "sleep_lab",
+   "scenes": 2
+  },
+  "vol3_gas_station_night": {
+   "fit": "reuse",
+   "to": "3d:nexcorp_fueling_station",
+   "scenes": 1
+  },
+  "vol3_glass_condo_demo_unit": {
+   "fit": "standin",
+   "to": "3d:elicia_apartment",
+   "scenes": 1
+  },
+  "vol3_grandma_house_night": {
+   "fit": "standin",
+   "to": "3d:grandmother_kitchen_morning",
+   "scenes": 1
+  },
+  "vol3_hollywood_street_1945": {
+   "fit": "standin",
+   "to": "3d:main_street",
+   "build": "pasadena_1945",
+   "scenes": 1
+  },
+  "vol3_honolulu_game_store": {
+   "fit": "reuse",
+   "to": "3d:cosmic_comics_interior",
+   "note": "Koa Works' game store",
+   "scenes": 1
+  },
+  "vol3_honolulu_highrise_lobby": {
+   "fit": "reuse",
+   "to": "3d:cedar_tower_lobby",
+   "scenes": 1
+  },
+  "vol3_hospital_catwalk_night": {
+   "fit": "standin",
+   "to": "3d:hospital_waiting",
+   "scenes": 2
+  },
+  "vol3_hospital_elevator_benches": {
+   "fit": "reuse",
+   "to": "3d:hospital_waiting",
+   "scenes": 3
+  },
+  "vol3_hospital_lobby_night": {
+   "fit": "reuse",
+   "to": "3d:hospital_waiting",
+   "scenes": 1
+  },
+  "vol3_hospital_room_night": {
+   "fit": "reuse",
+   "to": "3d:hospital_room",
+   "scenes": 4
+  },
+  "vol3_hospital_room_window_night": {
+   "fit": "reuse",
+   "to": "3d:hospital_room",
+   "scenes": 3
+  },
+  "vol3_hot_tub_night": {
+   "fit": "standin",
+   "to": "3d:kowalski_backyard",
+   "build": "chau_house",
+   "scenes": 1
+  },
+  "vol3_houston_car_night": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab_night",
+   "scenes": 1
+  },
+  "vol3_korean_bbq_night": {
+   "fit": "standin",
+   "to": "3d:el_rancho_taqueria",
+   "scenes": 1
+  },
+  "vol3_lake_dock_dawn": {
+   "fit": "reuse",
+   "to": "3d:lake_palestine_dock",
+   "scenes": 1
+  },
+  "vol3_lake_dock_day": {
+   "fit": "reuse",
+   "to": "3d:lake_palestine_dock",
+   "scenes": 1
+  },
+  "vol3_lake_house_day": {
+   "fit": "reuse",
+   "to": "3d:lake_palestine",
+   "scenes": 1
+  },
+  "vol3_lax_terminal_night": {
+   "fit": "standin",
+   "to": "3d:hospital_waiting",
+   "build": "airport",
+   "note": "LAX",
+   "scenes": 3
+  },
+  "vol3_meld_time_pod_interior": {
+   "fit": "2d",
+   "to": null,
+   "note": "pulp: the time pod",
+   "scenes": 2
+  },
+  "vol3_mojave_desert_1945": {
+   "fit": "2d",
+   "to": null,
+   "note": "the Mojave in 1945: painted",
+   "scenes": 1
+  },
+  "vol3_motel_pool_dusk": {
+   "fit": "reuse",
+   "to": "3d:cypress_motel",
+   "scenes": 1
+  },
+  "vol3_motel_room_dusk": {
+   "fit": "reuse",
+   "to": "3d:cypress_motel",
+   "scenes": 1
+  },
+  "vol3_nick_bedroom_drawings": {
+   "fit": "standin",
+   "to": "3d:jesse_bedroom",
+   "note": "uncle Nick's drawings",
+   "scenes": 2
+  },
+  "vol3_nick_garage_workshop": {
+   "fit": "standin",
+   "to": "3d:nate_garage",
+   "note": "the printing press",
+   "scenes": 1
+  },
+  "vol3_oil_field_dusk": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol3_oregon_apartment_day": {
+   "fit": "standin",
+   "to": "3d:finn_apartment_day",
+   "scenes": 1
+  },
+  "vol3_oregon_apartment_night": {
+   "fit": "standin",
+   "to": "3d:finn_apartment_night",
+   "scenes": 2
+  },
+  "vol3_parsonage_hallway": {
+   "fit": "standin",
+   "to": "3d:cabin_interior",
+   "build": "parsonage_1945",
+   "scenes": 1
+  },
+  "vol3_parsonage_ron_room_dawn": {
+   "fit": "standin",
+   "to": "3d:cabin_interior_day",
+   "build": "parsonage_1945",
+   "scenes": 1
+  },
+  "vol3_parsonage_ron_room_day": {
+   "fit": "standin",
+   "to": "3d:cabin_interior_day",
+   "build": "parsonage_1945",
+   "scenes": 1
+  },
+  "vol3_parsonage_ron_room_night": {
+   "fit": "standin",
+   "to": "3d:cabin_interior",
+   "build": "parsonage_1945",
+   "note": "the Parsonage, Pasadena 1945: Ron's room",
+   "scenes": 1
+  },
+  "vol3_pasadena_park_1945": {
+   "fit": "standin",
+   "to": "3d:riverfront_park",
+   "build": "pasadena_1945",
+   "scenes": 1
+  },
+  "vol3_pasadena_street_1945": {
+   "fit": "standin",
+   "to": "3d:main_street",
+   "build": "pasadena_1945",
+   "scenes": 2
+  },
+  "vol3_pink_light_void": {
+   "fit": "2d",
+   "to": null,
+   "note": "abstract",
+   "scenes": 1
+  },
+  "vol3_pizza_parlor_rain": {
+   "fit": "standin",
+   "to": "3d:daily_grind_interior",
+   "note": "acceptable losses' pizza parlor",
+   "scenes": 1
+  },
+  "vol3_plane_cabin_day": {
+   "fit": "standin",
+   "to": null,
+   "build": "airport",
+   "scenes": 1
+  },
+  "vol3_plane_cabin_night": {
+   "fit": "standin",
+   "to": null,
+   "build": "airport",
+   "scenes": 1
+  },
+  "vol3_pulp_helipad_dawn": {
+   "fit": "2d",
+   "to": null,
+   "note": "pulp",
+   "scenes": 1
+  },
+  "vol3_pulp_pod_street_dawn": {
+   "fit": "2d",
+   "to": null,
+   "note": "pulp",
+   "scenes": 1
+  },
+  "vol3_pulp_ward_rows": {
+   "fit": "2d",
+   "to": null,
+   "note": "the Earthman pulp — painted in its own register",
+   "scenes": 2
+  },
+  "vol3_river_edge_dusk": {
+   "fit": "reuse",
+   "to": "3d:riverfront_exterior",
+   "scenes": 1
+  },
+  "vol3_ruined_city_night": {
+   "fit": "2d",
+   "to": null,
+   "note": "pulp",
+   "scenes": 2
+  },
+  "vol3_saab_highway_dusk": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab",
+   "scenes": 1
+  },
+  "vol3_silkscreen_garage": {
+   "fit": "standin",
+   "to": "3d:nate_garage",
+   "scenes": 1
+  },
+  "vol3_sleep_lab": {
+   "fit": "standin",
+   "to": "3d:hospital_room",
+   "build": "sleep_lab",
+   "note": "Jane's sleep study",
+   "scenes": 3
+  },
+  "vol3_spencer_room": {
+   "fit": "standin",
+   "to": "3d:ben_bedroom",
+   "build": "caltech_dabney",
+   "scenes": 1
+  },
+  "vol3_suburban_garage_night": {
+   "fit": "reuse",
+   "to": "3d:henderson_garage",
+   "scenes": 1
+  },
+  "vol3_suburban_street_ambulance": {
+   "fit": "reuse",
+   "to": "3d:meadowlark_circle_night",
+   "scenes": 1
+  },
+  "vol3_taxi_night": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab_rear_night",
+   "scenes": 1
+  },
+  "vol3_texas_highway_rain": {
+   "fit": "reuse",
+   "to": "3d:louisiana_road",
+   "scenes": 1
+  },
+  "vol3_tulsa_backyard_night": {
+   "fit": "standin",
+   "to": "3d:kowalski_backyard",
+   "scenes": 1
+  },
+  "vol3_tulsa_living_room_slideshow": {
+   "fit": "standin",
+   "to": "3d:kowalski_kitchen",
+   "note": "Marty's slideshow",
+   "scenes": 1
+  },
+  "vol3_utah_highway_day": {
+   "fit": "reuse",
+   "to": "3d:highway9_long",
+   "scenes": 1
+  },
+  "vol3_vacant_gallery_lobby": {
+   "fit": "reuse",
+   "to": "3d:cedar_tower_lobby",
+   "scenes": 1
+  },
+  "vol3_warehouse_club_night": {
+   "fit": "standin",
+   "to": "3d:club_sharp",
+   "scenes": 1
+  },
+  "vol4_abstract_club_night": {
+   "fit": "reuse",
+   "to": "3d:club_sharp",
+   "scenes": 1
+  },
+  "vol4_after_party_night": {
+   "fit": "standin",
+   "to": "3d:new_orleans_apartment",
+   "scenes": 2
+  },
+  "vol4_airplane_cabin": {
+   "fit": "standin",
+   "to": null,
+   "build": "airport",
+   "scenes": 1
+  },
+  "vol4_all_over_town": {
+   "fit": "reuse",
+   "to": "3d:main_street",
+   "scenes": 1
+  },
+  "vol4_alley_dumpster": {
+   "fit": "reuse",
+   "to": "3d:salty_tome_alley",
+   "scenes": 1
+  },
+  "vol4_ambulance_road": {
+   "fit": "reuse",
+   "to": "3d:louisiana_road",
+   "scenes": 1
+  },
+  "vol4_angry_fog_suburb": {
+   "fit": "reuse",
+   "to": "3d:meadowlark_circle_night",
+   "scenes": 1
+  },
+  "vol4_apartment_dawn": {
+   "fit": "reuse",
+   "to": "3d:finn_apartment_day",
+   "scenes": 1
+  },
+  "vol4_arcade_cabinet": {
+   "fit": "2d",
+   "to": null,
+   "note": "an insert",
+   "scenes": 1
+  },
+  "vol4_aria_childhood": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_bathroom_mirror": {
+   "fit": "standin",
+   "to": "3d:nexcorp_fueling_restroom",
+   "scenes": 1
+  },
+  "vol4_beach_daycare": {
+   "fit": "2d",
+   "to": null,
+   "note": "four coloured variants: a painted series",
+   "scenes": 1
+  },
+  "vol4_beach_daycare_kitchen": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_beach_daycare_red": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_beach_daycare_yellow": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_bedroom_desk": {
+   "fit": "exact",
+   "to": "3d:writers_desk_room",
+   "build": "writers_desk",
+   "scenes": 2,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_betterment_desk_2am": {
+   "fit": "exact",
+   "to": "3d:writers_desk",
+   "build": "writers_desk",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_betterment_wire_table": {
+   "fit": "exact",
+   "to": "3d:writers_desk_room",
+   "build": "writers_desk",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_bigbox_parking_lot_day": {
+   "fit": "reuse",
+   "to": "3d:new_auburn_lot",
+   "scenes": 1
+  },
+  "vol4_blue_sand_beach": {
+   "fit": "2d",
+   "to": null,
+   "note": "surreal",
+   "scenes": 1
+  },
+  "vol4_bus_interior_day": {
+   "fit": "standin",
+   "to": "3d:vehicle_cab_rear",
+   "build": "bus_station",
+   "scenes": 2
+  },
+  "vol4_bus_station_day": {
+   "fit": "standin",
+   "to": "3d:county_line_station",
+   "build": "bus_station",
+   "scenes": 2
+  },
+  "vol4_caltech_basement": {
+   "fit": "standin",
+   "to": "3d:accretion_basement",
+   "build": "caltech_dabney",
+   "scenes": 1
+  },
+  "vol4_charlie_apartment_day": {
+   "fit": "standin",
+   "to": "3d:new_orleans_apartment",
+   "scenes": 1
+  },
+  "vol4_charlie_apartment_night": {
+   "fit": "standin",
+   "to": "3d:new_orleans_apartment",
+   "note": "Sister Carrie: Charlie Drouet",
+   "scenes": 2
+  },
+  "vol4_chess_apartment_morning": {
+   "fit": "reuse",
+   "to": "3d:finn_apartment_day",
+   "note": "Chess's place",
+   "scenes": 1
+  },
+  "vol4_classroom": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_class",
+   "build": "small_wood_high",
+   "note": "Todd's 7th-grade class",
+   "scenes": 2,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_classroom_afternoon": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_class",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_cold_water": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_computer_lab": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_lab",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_corkboard_night": {
+   "fit": "exact",
+   "to": "3d:writers_desk_board",
+   "build": "writers_desk",
+   "scenes": 2,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_crash_intersection": {
+   "fit": "reuse",
+   "to": "3d:new_auburn_two_lane",
+   "scenes": 1
+  },
+  "vol4_crt_adventure": {
+   "fit": "2d",
+   "to": null,
+   "note": "game screen",
+   "scenes": 1
+  },
+  "vol4_dark_hallway": {
+   "fit": "reuse",
+   "to": "3d:accretion_corridor",
+   "scenes": 1
+  },
+  "vol4_dead_department_store": {
+   "fit": "standin",
+   "to": "3d:centro_grocery_aisle",
+   "note": "a dead store",
+   "scenes": 1
+  },
+  "vol4_dead_park": {
+   "fit": "reuse",
+   "to": "3d:riverfront_park",
+   "scenes": 1
+  },
+  "vol4_dean_home_night": {
+   "fit": "standin",
+   "to": "3d:montreal_apartment",
+   "note": "the Deans' home (Caracas)",
+   "scenes": 1
+  },
+  "vol4_dean_office_night": {
+   "fit": "standin",
+   "to": "3d:new_orleans_office",
+   "build": "dean_office",
+   "scenes": 1
+  },
+  "vol4_desk_dawn": {
+   "fit": "exact",
+   "to": "3d:writers_desk_dawn",
+   "build": "writers_desk",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_desk_night": {
+   "fit": "exact",
+   "to": "3d:writers_desk",
+   "build": "writers_desk",
+   "note": "the scrapbook desk — 26 scenes",
+   "scenes": 26,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_esther_neighborhood": {
+   "fit": "2d",
+   "to": null,
+   "note": "Esther's simulated neighbourhood",
+   "scenes": 1
+  },
+  "vol4_fast_food_riot": {
+   "fit": "reuse",
+   "to": "3d:el_rancho_taqueria",
+   "scenes": 1
+  },
+  "vol4_glass_tower": {
+   "fit": "reuse",
+   "to": "3d:cedar_tower_exterior",
+   "scenes": 2
+  },
+  "vol4_grungy_bathroom_night": {
+   "fit": "reuse",
+   "to": "3d:nexcorp_fueling_restroom",
+   "scenes": 1
+  },
+  "vol4_heavy_breathing_bedroom": {
+   "fit": "standin",
+   "to": "3d:sam_bedroom",
+   "scenes": 1
+  },
+  "vol4_jack_of_suede_stage": {
+   "fit": "reuse",
+   "to": "3d:foxhole_stage",
+   "scenes": 1
+  },
+  "vol4_letters": {
+   "fit": "2d",
+   "to": null,
+   "note": "an insert",
+   "scenes": 1
+  },
+  "vol4_looking_forward_bath": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_machine_cell": {
+   "fit": "reuse",
+   "to": "3d:nightmare_cell",
+   "scenes": 1
+  },
+  "vol4_meld_lens_mandala": {
+   "fit": "2d",
+   "to": null,
+   "note": "abstract",
+   "scenes": 1
+  },
+  "vol4_monitor_wall": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_museum_case": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_office_copier": {
+   "fit": "standin",
+   "to": "3d:new_orleans_office",
+   "build": "copy_shop",
+   "scenes": 3
+  },
+  "vol4_ourobouros_mirror": {
+   "fit": "2d",
+   "to": null,
+   "scenes": 1
+  },
+  "vol4_parking_garage": {
+   "fit": "standin",
+   "to": "3d:new_auburn_lot",
+   "scenes": 1
+  },
+  "vol4_retirement_kitchen": {
+   "fit": "reuse",
+   "to": "3d:grandmother_kitchen_morning",
+   "scenes": 1
+  },
+  "vol4_school_hallway": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_hall",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_seem_drugstore_night": {
+   "fit": "reuse",
+   "to": "3d:pharmacy_floor",
+   "scenes": 1
+  },
+  "vol4_shanghai_apartment": {
+   "fit": "standin",
+   "to": "3d:montreal_apartment",
+   "scenes": 1
+  },
+  "vol4_sister_carrie_notes": {
+   "fit": "2d",
+   "to": null,
+   "note": "an insert",
+   "scenes": 1
+  },
+  "vol4_sister_house_ext_day": {
+   "fit": "standin",
+   "to": "3d:meadowlark_circle",
+   "scenes": 1
+  },
+  "vol4_sister_house_int_day": {
+   "fit": "standin",
+   "to": "3d:kowalski_kitchen",
+   "scenes": 1
+  },
+  "vol4_squirrel_road": {
+   "fit": "reuse",
+   "to": "3d:small_wood_road",
+   "scenes": 1
+  },
+  "vol4_various_locales": {
+   "fit": "2d",
+   "to": null,
+   "note": "montage",
+   "scenes": 1
+  },
+  "vol4_voices_crowded_room": {
+   "fit": "reuse",
+   "to": "3d:foxhole_bar",
+   "scenes": 1
+  },
+  "vol4_wasted_sentiment_bedroom": {
+   "fit": "standin",
+   "to": "3d:maya_bedroom",
+   "scenes": 1
+  },
+  "vol4_what_sort_of_car_dawn": {
+   "fit": "reuse",
+   "to": "3d:vehicle_cab",
+   "scenes": 1
+  },
+  "vol4_workshop_classroom_day": {
+   "fit": "exact",
+   "to": "3d:small_wood_high_class",
+   "build": "small_wood_high",
+   "scenes": 1,
+   "built": "2026-10-16 draft 1"
+  },
+  "vol4_xerox_sky": {
+   "fit": "2d",
+   "to": null,
+   "note": "a xeroxed sky",
+   "scenes": 2
+  }
+ }
+}

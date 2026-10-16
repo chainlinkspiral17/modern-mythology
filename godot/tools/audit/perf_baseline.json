@@ -40,5 +40,15 @@
  },
  "salty_tome_interior": {
   "draw": 402
+ },
+ "small_wood_high": {
+  "draw": 236,
+  "prims": 128644,
+  "objects": 406
+ },
+ "writers_desk": {
+  "draw": 108,
+  "prims": 23976,
+  "objects": 278
  }
 }

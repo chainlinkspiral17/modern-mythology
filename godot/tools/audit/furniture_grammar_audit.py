@@ -126,7 +126,9 @@ NOT_SEATING = re.compile(r"(side|end|night|console|hall|lamp|plant|tv|outline|zo
 # glass, and Marcus's desk in the hall facing it (houston_office, 2026-10-09).
 DESK_FREESTANDING_LOCALES = {"miller_office", "new_orleans_office", "ember_ash_office", "wgur_transmitter_shack", "houston_office"}
 # pit_desk: a casino pit boss's podium stands in the pit (le roulant, 2026-09-23)
-DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing|pit_desk|service_desk)", re.I)
+# class_desk / teacher_desk: a classroom's desks stand in rows and the
+# teacher's at the front (small_wood_high, 2026-10-16)
+DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing|pit_desk|service_desk|class_desk|teacher_desk)", re.I)
 TOPISH = re.compile(r"(top|surface|slab)(_[0-9]+)?$", re.I)
 
 

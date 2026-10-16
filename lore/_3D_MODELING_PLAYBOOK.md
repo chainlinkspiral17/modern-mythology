@@ -399,6 +399,26 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-16 · a new set, built and seen in one session (vols 1–4)
+
+- **The builders run under the `bpy` module** (pip `bpy==4.2.0` in a
+  Python 3.11 venv): `runpy.run_path('build_x.py', run_name='__main__')`.
+  A session can build a GLB, import it, and look at it before the Deck
+  does. The Deck's Blender (5.x) stays the build of record.
+- **`tools/PresetShot.gd OUT_DIR preset …`** renders any camera preset
+  through Background3D. The contact sheet only knows presets a chapter on
+  this branch plays.
+- **`B_KEY` in the 2026-08-03 tscn generator aims 45° UP** by
+  light_direction_audit's row-major reading. New sets use explicit,
+  checked matrices (`B_KEY_FROM_N`, `B_SUN_FROM_S` in
+  make_vol1_4_tscns_2026_10_16.py).
+- **A wire or string is `make_tube` along `catenary`, never a rotated
+  `make_box`.** The box's vertices are baked at world position, so a
+  rotation swings it about the world origin and off the board.
+- Light names `<name>__<preset>` are matched exactly, so a light can belong
+  to `writers_desk` without also lighting `writers_desk_board`. A night-only
+  light needs one copy per night preset.
+
 ### 2026-10-16 · draw calls, not triangles — merge the still parts at load
 
 - **Every builder part is its own object, and Compatibility draws each one

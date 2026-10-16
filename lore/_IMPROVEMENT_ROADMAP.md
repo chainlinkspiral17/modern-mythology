@@ -3834,6 +3834,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-16 · pass 108: VOLS 1–4 — SETS AND CAST (draft 1).** The user:
+"Let's move back to background and model work for all the new vol 1-4
+stuff." Plan and queue: `lore/_VOL1_4_SETS_AND_CAST.md`.
+- **The 279 pictures the vols 1–4 scenes name** (branch
+  claude/vol1-4-source-text; none was ever made) map to sets in
+  `resources/vn/bg_places.json`; `GameEngine.resolve_bg()` plays the set, so
+  that branch's scene JSON needs no edits. Fits:
+  - exact 53;
+  - reuse 81 (an existing set that is this kind of place);
+  - standin 99 (the nearest set until its own is built);
+  - 2d 46 (game screens, inserts, the pulp visions — to paint).
+- **Two new sets, built here with the bpy module and rendered with the new
+  `tools/PresetShot.gd`:**
+  - **writers_desk** (vol 4's scrapbook desk, 33 scene uses): the stuck
+    drawer with the red string, the corkboard's four clippings and pale
+    gaps, the window onto the street; presets desk / board / room / dawn;
+    108 draw calls.
+  - **small_wood_high** (vol 2's school and vol 4's classrooms, 12 uses):
+    the hearing in the gym, the locker corridor, Kordowski's locker room,
+    the classroom, the art room, the computer lab; 236 draw calls.
+- **51 cast entries** in the Hero Studio roster (48 characters + 3 looks)
+  from the manuscript and the voice map.
+
+NEXT (draft 2 of the program):
+- build the queue's next sets: andy_family_house, caltech_dabney,
+  dean_house_1994, little_league, dean_office, chau_house, airport;
+- paint the 2D stems through a Hero Studio `scene2d` kind;
+- per-preset props (the curtain call's folding chairs);
+- HeroArt for the corkboard clippings and the lab's sign;
+- generate the cast in Hero Studio;
+- once claude/vol1-4-source-text merges, point the Python audits at
+  `bg_places.json` too (they key on `3d:` srcs).
+
 **2026-10-16 · CANON: ARTHUR FINCH AND JAY ROSE, A SPLIT CHARACTER.** The
 user: "Arthur Finch is strip artist. Jay Rose is DJ. Split character. I like
 the naming ambiguity over time. Meta texts." Vol 2's one figure becomes two:

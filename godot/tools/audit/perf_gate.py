@@ -52,6 +52,9 @@ def changed_rooms(base):
     out = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"], cwd=REPO,
                          capture_output=True, text=True).stdout.split()
     out += subprocess.run(["git", "diff", "--name-only"], cwd=REPO, capture_output=True, text=True).stdout.split()
+    # a brand-new set is untracked until its commit: its builder and scene count too
+    out += subprocess.run(["git", "ls-files", "--others", "--exclude-standard"], cwd=REPO,
+                          capture_output=True, text=True).stdout.split()
     scenes = {p.stem: p for p in (GODOT_DIR / "scenes" / "locales").glob("*.tscn")}
     glb_of = {}
     for stem, p in scenes.items():
