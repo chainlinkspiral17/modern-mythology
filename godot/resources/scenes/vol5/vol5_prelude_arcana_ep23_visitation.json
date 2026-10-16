@@ -1,0 +1,101 @@
+{
+  "id": "vol5_prelude_arcana_ep23_visitation",
+  "vol": 5,
+  "chapter": 0,
+  "type": "interlude",
+  "title": "Whispers from the Liminal — ep. 21 · visitation",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol5_prelude_ep23_waking.jpg"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 21 · visitation",
+      "sub": "voicemail · no number · 4:07 a.m.",
+      "duration": 2400
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "This one came in as a voicemail. No number. A man, calm, the kind of calm you get after.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "I asked the listeners if anyone knew the voice. Nine of you wrote back. Nine different names.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "“I wake up having spent the day with my family. My love and children, lost to me upon waking. What sort of condition is this, to rise staggered and heartbroken.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Figure, ten times a year upon average. Lost, for a moment, gut wrenched for the day’s remainder.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“Visitation never a certainty. A week, a day, this month as forward continuum. Skipping along for how long now.”"
+    },
+    {
+      "t": "narrate",
+      "text": "“If I give you a date, I’m thrice damned.”"
+    },
+    {
+      "t": "narrate",
+      "text": "The message runs on after he stops talking. Rain on a window. A girl’s voice, far off, asking if he’s coming back in."
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "Elicia",
+      "expr": "neutral",
+      "text": "He never gave a date. The voicemail did. It’s stamped a Tuesday that hasn’t happened yet.",
+      "role": "— voice-over —"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "flag",
+      "key": "vol5_prelude_whispers_ep23_seen",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol5_prelude_arcana_whispers"
+    }
+  ]
+}

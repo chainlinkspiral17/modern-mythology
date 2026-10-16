@@ -998,3 +998,12 @@ KOMODO DAWN · film, w/ L.A. Steve · turnaround.[[/new]]
 3. **Oneironautics' home.** The letterhead says Small Wood, Oregon. OK, or was the company somewhere else in 2010?
 4. **Esther.** The Iris bible has an Esther Knight. Is that Dean's Esther from "vii. daddy"? It's boxed in pencil and left open.
 5. **Winter Cactus.** It's a blind old cat at midnight. If that's a real pet and reads as personal, it can be cut.
+
+---
+
+## Andy's answers (Oct 16, 2026)
+All four calls approved as written:
+1. Lydia stays: Nate's older sister, about nine years older, never seen.
+2. Iris's Esther Knight is Dean's Esther.
+3. *Winter Cactus* stays.
+4. The Oneironautics letterhead gives Small Wood as the address.

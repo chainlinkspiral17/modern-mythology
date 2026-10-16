@@ -501,3 +501,13 @@ His taste in music awful barren these days, stagnant to the point of cliche, roo
 
 [[new]]Nothing happens to him. That’s the card, I’m told. He hangs there, and he’s fine with it, and somebody else isn’t. Goodnight.[[/new]]
 
+
+---
+
+## Added Oct 16, 2026 (Andy: "go ahead with all")
+**ep. 21 · visitation** (`vol5_prelude_arcana_ep23_visitation`). The source is the untitled doc "I wake up having spent the day with my family…" (Drive, modified 2012-10-12), about 80 words. Andy's text is verbatim, framed as an anonymous voicemail.
+- [[new]] Elicia's intro and sign-off.
+- [[new]] One closing line: rain, and a girl's voice asking if he's coming back in.
+- Hook: the voicemail is stamped with a Tuesday that hasn't happened yet. It echoes "he gets up on a Tuesday" from ep. 20.
+
+Also approved: "D. Dean" stays on the MELODY rental card.
