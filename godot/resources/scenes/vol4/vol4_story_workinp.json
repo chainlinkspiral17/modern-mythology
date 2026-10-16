@@ -68,15 +68,23 @@
       "text": "She kissed him and gave him a, \"be good,\" before she was gone."
     },
     {
+      "t": "narrate",
+      "text": "Before lunch, Alex and the children drew in coloring books, listened to Grandma Tulsa tell a chapter in The Sea Shells and the Very Scary Storm Cloud storybook. She had a strange voice. Hard and man-like, but still very soft and gentle."
+    },
+    {
+      "t": "narrate",
+      "text": "She made the pain of the Sea Shells feel very real and immediate and the oppressive Storm Cloud so very scary. Her accent was very different than any Alex had ever heard but he never had trouble understanding a word she said."
+    },
+    {
       "t": "choice",
       "opts": [
         {
           "text": "listen to the story.",
-          "goto": 16
+          "goto": 18
         },
         {
           "text": "lie still.",
-          "goto": 18
+          "goto": 20
         }
       ]
     },
@@ -87,14 +95,6 @@
     {
       "t": "narrate",
       "text": "The storybook's pages are soft and grey at the corners from being turned."
-    },
-    {
-      "t": "narrate",
-      "text": "Before lunch, Alex and the children drew in coloring books, listened to Grandma Tulsa tell a chapter in The Sea Shells and the Very Scary Storm Cloud storybook. She had a strange voice. Hard and man-like, but still very soft and gentle."
-    },
-    {
-      "t": "narrate",
-      "text": "She made the pain of the Sea Shells feel very real and immediate and the oppressive Storm Cloud so very scary. Her accent was very different than any Alex had ever heard but he never had trouble understanding a word she said."
     },
     {
       "t": "narrate",

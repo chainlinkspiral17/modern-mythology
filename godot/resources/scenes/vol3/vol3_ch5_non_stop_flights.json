@@ -1,0 +1,106 @@
+{
+  "id": "vol3_ch5_non_stop_flights",
+  "vol": 3,
+  "chapter": 5,
+  "type": "chapter",
+  "title": "v. non-stop flights",
+  "nodes": [
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_lax_terminal_night.jpg"
+    },
+    {
+      "t": "bgm",
+      "src": "assets/audio/bgm/vol3_signal_ambient.mp3"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "v. non-stop flights",
+      "sub": "transmission · LAX / Oregon",
+      "duration": 2400
+    },
+    {
+      "t": "narrate",
+      "text": "Brother sister in different places trying to schedule similar flights to the same place to be with the male specific one half of their reason for being before he leaves on a plane to god knows where henceforthever."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa waits at LAX for the flight to up up and away. She packed light, barely anything. She buys books and gifts in the airport convenience store."
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol3_oregon_apartment_day.jpg"
+    },
+    {
+      "t": "narrate",
+      "text": "Andy tries to work out the logistics in Oregon. He is stuck in panic mode, and nothing is going right, the stars are not aligned, and he flails about in his mad dash attempt to get home to see Dad before-"
+    },
+    {
+      "t": "narrate",
+      "text": "They both need to be in Houston right this minute because every minute counts."
+    },
+    {
+      "t": "narrate",
+      "text": "Tick tock tick."
+    },
+    {
+      "t": "narrate",
+      "text": "Janessa dropped a thousand bucks on a last minute ticket. Andy has a ticket already on hand but it is dated for a couple weeks future tense. He had been planning the hypothetical trip the last few months, emailing back and forth to Dad in his medical isolation room."
+    },
+    {
+      "t": "narrate",
+      "text": "But shit happens."
+    },
+    {
+      "t": "narrate",
+      "text": "He has no money to buy another ticket at last minute prices so sobbing mom on the phone forwards her credit card details and Andy argues with airline people pleading his case to work down the price and give him a break but they'll have none of that hassle and harangue him being under the impression they have a policy to be nice to people suffering from extreme wits-end emotional duress dealing with non-negotiable deadlines emphatic dead."
+    },
+    {
+      "t": "narrate",
+      "text": "Andy has no ride so he calls up Justin who drives several hours down from Portland to pick him up and deliver him, big baby that he is, to PAX."
+    },
+    {
+      "t": "narrate",
+      "text": "While the friend works his way down south, Andy walks into work, them surprised to see him as they expect him much later to work that evening all night sleep deprived student in flux making what he must and sucking up the debt remainder."
+    },
+    {
+      "t": "narrate",
+      "text": "He tells them the good news. They hug him, he breaks down and cries on the store floor but smiles on the inside because he is sick to death of his job, his coworkers, his dependence. And this will be a vacation of sorts, he's leaving this state with no return ticket to ferry him back, one way for all he knows."
+    },
+    {
+      "t": "narrate",
+      "text": "Big change is on the horizon he can feel it. So much has gone wrong in his life details forthcoming."
+    },
+    {
+      "t": "flag",
+      "key": "vol3_ch5_non_stop_flights_complete",
+      "val": true
+    },
+    {
+      "t": "choice",
+      "prompt": "Who first?",
+      "opts": [
+        {
+          "text": "Janessa, and her checklists.",
+          "scene": "vol3_ch5_janessa_first"
+        },
+        {
+          "text": "Andy, and the last hours at home.",
+          "scene": "vol3_ch5_christine_first"
+        }
+      ]
+    }
+  ]
+}
