@@ -5590,7 +5590,7 @@ const FORGE_PRESETS = [
 
   // ── SYNTHS · supersaw, PWM, sync, hoover, wobble, FM bells, arps, 80s brass, glitch, grains ──────────
   PRE('lead_supersaw', 'Supersaw · Trance Wall', 'leads', ['four_floor', 'synthwave', 'dnb', 'supersaw', 'trance', 'wide', 'bright'], {
-    gens: [{ type: 'analog', shape: 'saw', unison: 7, detune: 28, spread: 1, level: 0.6 }, { type: 'analog', shape: 'saw', coarse: 12, unison: 3, detune: 20, spread: 0.8, level: 0.14 },
+    gens: [{ type: 'analog', shape: 'saw', unison: 6, detune: 28, spread: 1, level: 0.6 }, { type: 'analog', shape: 'saw', coarse: 12, unison: 2, detune: 20, spread: 0.8, level: 0.14 },
       { type: 'analog', shape: 'sine', coarse: -12, level: 0.14 }],
     filter: { on: true, type: 'lowpass', cutoff: 6500, res: 0.08, key: 0.2, env: 0.1 },
     amp: E(0.005, 0.5, 0.85, 0.3), envs: [E(0.005, 0.4, 0.3, 0.3), E(0.002, 0.4, 0.3, 0.3), E(0.3, 0.6, 0.5, 0.5)],
