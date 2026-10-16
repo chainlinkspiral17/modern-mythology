@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 11 · writ fer rain",
+  "title": "Whispers from the Liminal — ep. 9 · writ fer rain",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 9 · writ fer rain",
-      "sub": "rain · anywhere",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Two poems. One about weather on skin. One about a middle school with geniuses in the walls.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Short. Turn it up.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -66,19 +46,6 @@
     {
       "t": "narrate",
       "text": "Tandem sideshow conjoined genii\nBad habit of finishing each other’s-\nJung, Freud, Kant, Tesla, Einstein-\nSentence."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Sentence. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

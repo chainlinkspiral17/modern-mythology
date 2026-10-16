@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 15 · one hundred places.",
+  "title": "Whispers from the Liminal — ep. 14 · one hundred places.",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 15 · one hundred places.",
-      "sub": "a typed list · folded into a library book",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 14 · one hundred places.",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A list, typed, folded into the back of a library copy of Labyrinths. Somebody numbered a hundred places. The numbers aren’t in order. They’re pi.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "It starts after the decimal point. Whoever wrote it left out the three. I keep wondering where the three went.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -77,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "5\n8\n2\n0 null\n9\n7\n4\n9\n4 the room that becomes what you want it to be   (in pencil, another hand)\n4"
+      "text": "5\n8\n2\n0 null\n9\n7\n4\n9\n4\n4"
     },
     {
       "t": "narrate",
@@ -94,19 +74,6 @@
     {
       "t": "narrate",
       "text": "3\n4\n2\n1\n1\n7\n0 nichts\n6\n7\n9"
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "That’s the list. Most of it blank. One blank, not anymore. If you know where the three went, don’t email me. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

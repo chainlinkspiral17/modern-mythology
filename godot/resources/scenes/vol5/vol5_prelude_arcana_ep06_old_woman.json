@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 6 · The old woman before you",
+  "title": "Whispers from the Liminal — ep. 5 · The old woman before you",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 5 · The old woman before you",
-      "sub": "Arizona · 1964",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Same woman, same sky, a different draft. Thirty-three minutes, by her count.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Watch who she spends them on.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -222,19 +202,6 @@
     {
       "t": "narrate",
       "text": "Iris wanders up to the museum. She looks at its exterior, the fine work that Devin has put in, the areas where shabbily cut corners. Inside the first section of the museum is a photo exhibit dedicated to the life and times of Grace Knight and company."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "She walks into the museum and the page runs out. Fitting, for a museum.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

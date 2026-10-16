@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 17 · ravensway",
+  "title": "Whispers from the Liminal — ep. 16 · ravensway",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 17 · ravensway",
-      "sub": "Ravensway · the old attraction · sundown",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 16 · ravensway",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Ravensway. Some of you know the gallery. Fewer of you know there used to be a ride.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "This came to me as three pages stapled out of order. I’ve put them back the way they wanted to go.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -142,19 +122,6 @@
     {
       "t": "narrate",
       "text": "The experience was almost too good\nsuch that upon leaving ravensway few ever wanted to return.\nOnce was enough, indeed."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "The fear emitters are, I’m told, still running. Nobody pays the power bill. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

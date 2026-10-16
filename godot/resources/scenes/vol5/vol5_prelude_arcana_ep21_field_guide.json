@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 19 · a field guide, left on a park bench",
+  "title": "Whispers from the Liminal — ep. 18 · a field guide, left on a park bench",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 19 · a field guide, left on a park bench",
-      "sub": "a park bench · rain · a screen still glowing",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 18 · a field guide, left on a park bench",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Someone found this on a bench in the rain and mailed it to me, which, legally, I think makes it mine.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "It calls itself a field guide. To what, it doesn’t say. It’s still running.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -58,14 +38,6 @@
     {
       "t": "narrate",
       "text": "A field guide written by a student, left on a park bench. Plasteek pages, slick and glowy with rain, animated menus and transitions unspooling in an endless loop."
-    },
-    {
-      "t": "narrate",
-      "text": "The menu loops. 0. the fool. i. the magician. ii. the high priestess. Then the fool again. It never gets past two."
-    },
-    {
-      "t": "narrate",
-      "text": "Inside the cover, the name is rubbed out. The class period isn’t. Fourth."
     },
     {
       "t": "narrate",
@@ -90,19 +62,6 @@
     {
       "t": "narrate",
       "text": "come with me prolapsed children of the mind.\nthe soma solipsism hurts only so much as you want it to."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "It stops at the priestess every time. I’ve decided not to take that personally. The battery should have died weeks ago. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

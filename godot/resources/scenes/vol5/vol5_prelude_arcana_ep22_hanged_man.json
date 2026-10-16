@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 20 · the hanged man",
+  "title": "Whispers from the Liminal — ep. 19 · the hanged man",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 20 · the hanged man",
-      "sub": "a one-bedroom · headphones on · afternoon",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 19 · the hanged man",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Card twelve. Not the card. A room someone wrote down as the card.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "It was a bookmark in a thrift-store paperback, left at the page where nothing happens.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -90,23 +70,6 @@
     {
       "t": "narrate",
       "text": "His taste in music awful barren these days, stagnant to the point of cliche, rooted firmly to the inside foreground of the ever draining cultural shallow pool his red eyes open, a chlorine shocked depth perception perhaps."
-    },
-    {
-      "t": "narrate",
-      "text": "On the back of the page, in a hand that isn’t his: he gets up on a Tuesday."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Nothing happens to him. That’s the card, I’m told. He hangs there, and he’s fine with it, and somebody else isn’t. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

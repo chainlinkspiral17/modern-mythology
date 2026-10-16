@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 15 · hometown something? (excerpt)",
+  "title": "Whispers from the Liminal — ep. 13 · hometown something? (excerpt)",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 13 · hometown something? (excerpt)",
-      "sub": "Lynch’s Peak, Oregon · night",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "An excerpt from a much longer, much louder screenplay. I kept the quiet part.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Two people in a church in a town called Lynch’s Peak, and one of them claims to know how the place got made.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -200,19 +180,6 @@
       "char": "Samantha",
       "expr": "neutral",
       "text": "You don't have to believe me. That's quite alright. I just thought you should know, of all people."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Then the bikers arrive. They always do. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

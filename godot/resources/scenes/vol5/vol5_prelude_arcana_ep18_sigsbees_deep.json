@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 16 · the city in miniature",
+  "title": "Whispers from the Liminal — ep. 15 · the city in miniature",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 16 · the city in miniature",
-      "sub": "a diner on the Gulf · after closing",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 15 · the city in miniature",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "There’s a diner on the Gulf where the pie is bad and the city on the back counter is very, very good.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "I won’t tell you which diner. I’m told the model has a street in it the real city doesn’t.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -62,10 +42,6 @@
     {
       "t": "narrate",
       "text": "Graustark in tiny relief is an oddity curio-tourists have delighted in for years, as its scope has grown beyond even the conventional limits of reality."
-    },
-    {
-      "t": "narrate",
-      "text": "At the river edge of it a paddle boat sits moored and lit, and in one window someone has painted a single figure carrying a tray."
     },
     {
       "t": "narrate",
@@ -90,19 +66,6 @@
     {
       "t": "narrate",
       "text": "A neighbor dog freaks out, yapping through the fence, bounding off at increment heights."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Lane never gets out of the car, on the page. I’d like to think she did. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

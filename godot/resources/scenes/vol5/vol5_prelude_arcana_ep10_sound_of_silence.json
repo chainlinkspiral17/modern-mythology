@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 10 · the sound of the silence of",
+  "title": "Whispers from the Liminal — ep. 8 · the sound of the silence of",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 8 · the sound of the silence of",
-      "sub": "a studio apartment · rain",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Three fragments from one page. A child in a studio apartment, a fence crew, and an incantation.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Watch the window when it rains.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -98,19 +78,6 @@
     {
       "t": "narrate",
       "text": "What is a day but a chance. What is life but a stage to dance. And sing. And prance. And ring the bell, and speak the spell. Incant.”"
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Say it back if you like. Incant. It doesn’t hurt.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

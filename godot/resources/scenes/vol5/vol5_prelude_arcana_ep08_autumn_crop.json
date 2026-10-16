@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 8 · The Autumn Crop",
+  "title": "Whispers from the Liminal — ep. 7 · The Autumn Crop",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 7 · The Autumn Crop",
-      "sub": "the senior center · fall",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A volunteer, a quilter between quilts, and the tiniest of the Rons.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A gentle one. You’ve earned it.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -86,19 +66,6 @@
     {
       "t": "narrate",
       "text": "Beatrice also helped Little Ron with his computer, which was maybe two years newer than Bernie’s, yet worse off in every way."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Somebody fix Bernie’s computer. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

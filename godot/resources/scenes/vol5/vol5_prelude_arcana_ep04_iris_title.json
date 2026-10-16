@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 4 · Iris · title screen",
+  "title": "Whispers from the Liminal — ep. 3 · Iris · title screen",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 3 · Iris · title screen",
-      "sub": "the desert · morning",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "This was written to play over a title screen, for anyone who never presses start.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "So don’t. Let it run.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -126,19 +106,6 @@
     {
       "t": "narrate",
       "text": "I am.\nI."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "You can press start now. Or not. She won’t mind.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

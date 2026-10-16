@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 1 · UMBRA",
-      "sub": "a very late round · smoke and scotch",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Every conspiracy starts the same way. Too many grown men, not enough to do, and a bottle somebody should have hidden.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "This one comes with a subtitle. The case for, or against. Pick a side before the scotch picks it for you.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -126,19 +106,6 @@
     {
       "t": "narrate",
       "text": "We laughed and drank more, far more than we possibly should have, and left entertaining fantastic notions of freeing this knowledge for all."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "The page stops there. Pages like this always stop right before the digging starts. Sleep well, or don’t.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

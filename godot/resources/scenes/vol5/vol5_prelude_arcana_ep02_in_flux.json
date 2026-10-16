@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 2 · In/Flux",
-      "sub": "a Texas middle school · a Thursday",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A teacher, a Thursday, and a building full of other people’s children.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "The names have been taken out. Everything else is as it came to me.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -610,19 +590,6 @@
     {
       "t": "narrate",
       "text": "\"Your mom needs you to bring your house keys home, [—].\""
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "No ending. A note gets delivered, it says nothing, and the day keeps going. Go to bed.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

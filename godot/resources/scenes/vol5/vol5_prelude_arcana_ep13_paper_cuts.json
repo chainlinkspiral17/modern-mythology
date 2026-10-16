@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 13 · paper cuts & the star key",
+  "title": "Whispers from the Liminal — ep. 11 · paper cuts & the star key",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 11 · paper cuts & the star key",
-      "sub": "a bedroom · television glow",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A girl, an accident, and a point of light that keeps her company after.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "I’m told this is a love story. I’m not sure that covers it.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -250,19 +230,6 @@
     {
       "t": "narrate",
       "text": "She feels him, knows him and realizes-"
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "It stops mid-thought. She realizes something. You’ll have to decide what.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

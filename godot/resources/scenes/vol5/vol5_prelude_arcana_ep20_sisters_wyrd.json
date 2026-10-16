@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 18 · Sisters Wyrd",
+  "title": "Whispers from the Liminal — ep. 17 · Sisters Wyrd",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 18 · Sisters Wyrd",
-      "sub": "the east hill · wind · riding for Tulsa",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 17 · Sisters Wyrd",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A western. There are three sisters in it, and we never meet them. We meet the man riding back to where they started.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "The email that sent it said there was a second page. There wasn’t.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -81,24 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the margin beside his eyes, someone has drawn three small circles in ink, and filled in one."
-    },
-    {
-      "t": "narrate",
       "text": "He was on the way to Tulsa, where it all began. Where the girls were born and raised. Where they played as normal girls do, in a city"
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "In a city. That’s where it stops. The page warned us: he never brings a story home whole. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

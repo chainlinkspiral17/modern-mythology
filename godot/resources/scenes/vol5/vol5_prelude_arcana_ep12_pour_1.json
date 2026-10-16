@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 12 · pour 1",
+  "title": "Whispers from the Liminal — ep. 10 · pour 1",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 10 · pour 1",
-      "sub": "late · alone, by choice",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "A love poem, mostly couplets. Read it slow.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Then read it again and decide who it’s dangerous to.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -110,19 +90,6 @@
     {
       "t": "narrate",
       "text": "where & when exactly\nwas this\nhidden."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Where and when, exactly. Good question. Goodnight.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

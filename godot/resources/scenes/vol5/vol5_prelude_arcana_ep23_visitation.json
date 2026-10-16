@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 21 · visitation",
+  "title": "Whispers from the Liminal — ep. 20 · visitation",
   "nodes": [
     {
       "t": "bg",
@@ -23,29 +23,9 @@
     },
     {
       "t": "interlude",
-      "text": "WHISPERS FROM THE LIMINAL · ep. 21 · visitation",
-      "sub": "voicemail · no number · 4:07 a.m.",
+      "text": "WHISPERS FROM THE LIMINAL · ep. 20 · visitation",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "This one came in as a voicemail. No number. A man, calm, the kind of calm you get after.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "I asked the listeners if anyone knew the voice. Nine of you wrote back. Nine different names.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -66,23 +46,6 @@
     {
       "t": "narrate",
       "text": "“If I give you a date, I’m thrice damned.”"
-    },
-    {
-      "t": "narrate",
-      "text": "The message runs on after he stops talking. Rain on a window. A girl’s voice, far off, asking if he’s coming back in."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "He never gave a date. The voicemail did. It’s stamped a Tuesday that hasn’t happened yet.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

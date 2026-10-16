@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 5 · iris",
+  "title": "Whispers from the Liminal — ep. 4 · iris",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 4 · iris",
-      "sub": "Arizona · the end times",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Arizona, a trailer, a cat, and a missile on its way somewhere else.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "The world ends. Iris has errands.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -122,19 +102,6 @@
     {
       "t": "narrate",
       "text": "\"If you see her, can you tell her I'm sorry.\""
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "We cut on a boy holding a bat. Not the last frame I’d pick, but I respect it.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 14 · Land of Milk & Honey",
+  "title": "Whispers from the Liminal — ep. 12 · Land of Milk & Honey",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 12 · Land of Milk & Honey",
-      "sub": "a convenience store · all night",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Second person, all night, under fluorescent light. This one is addressed to you.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Bring exact change.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -142,19 +122,6 @@
     {
       "t": "narrate",
       "text": "You live here with us, here, in this land of milk and honey."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "That’s the whole shift. Same time tomorrow.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

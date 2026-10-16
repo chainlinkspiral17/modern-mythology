@@ -3,7 +3,7 @@
   "vol": 5,
   "chapter": 0,
   "type": "interlude",
-  "title": "Whispers from the Liminal — ep. 7 · the backyard dogs",
+  "title": "Whispers from the Liminal — ep. 6 · the backyard dogs",
   "nodes": [
     {
       "t": "bg",
@@ -24,28 +24,8 @@
     {
       "t": "interlude",
       "text": "WHISPERS FROM THE LIMINAL · ep. 6 · the backyard dogs",
-      "sub": "a suburban porch · afternoon",
+      "sub": "",
       "duration": 2400
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Two men, a cooler, and a job nobody will name out loud.",
-      "role": "— voice-over —"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Pay attention to the coin.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",
@@ -344,19 +324,6 @@
     {
       "t": "narrate",
       "text": "Clinton checks in, slinging a bag over his shoulder."
-    },
-    {
-      "t": "show",
-      "char": "elicia",
-      "expr": "neutral",
-      "pos": "center"
-    },
-    {
-      "t": "say",
-      "char": "Elicia",
-      "expr": "neutral",
-      "text": "Conditional if. I have built whole seasons on less.",
-      "role": "— voice-over —"
     },
     {
       "t": "hide",

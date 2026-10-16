@@ -511,3 +511,12 @@ His taste in music awful barren these days, stagnant to the point of cliche, roo
 - Hook: the voicemail is stamped with a Tuesday that hasn't happened yet. It echoes "he gets up on a Tuesday" from ep. 20.
 
 Also approved: "D. Dean" stays on the MELODY rental card.
+
+---
+
+## Revision, Oct 16, 2026 (Andy: "The written whispers from the Google drive and the stuff like it is the stuff I want. The wiki ones are pretty bad.")
+- Every Elicia intro and sign-off was removed from all episodes. Her voice there came from the Claude-written gauntlet wiki.
+- Every `[[new]]` line above was removed from the scenes: the marginalia, the hooks and the closing lines. The episodes are now Andy's text under a title card.
+- The **MELODY** episode was cut entirely. It was almost all Claude's writing. MELODY still appears in Small Wood's field notes, from Andy's blog.
+- The channel page lost its wiki tagline.
+- There are 20 episodes, renumbered.
