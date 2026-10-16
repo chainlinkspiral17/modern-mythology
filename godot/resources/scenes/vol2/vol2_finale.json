@@ -1,0 +1,44 @@
+{
+  "id": "vol2_finale",
+  "vol": 2,
+  "chapter": 13,
+  "type": "chapter",
+  "title": "Small Wood Volumes — end",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_plate_small_wood.jpg",
+      "caption": "Small Wood Volumes — By D.N. Dean"
+    },
+    {
+      "t": "interlude",
+      "text": "End of Small Wood Volumes",
+      "sub": "modern mythology. · volume two",
+      "duration": 2600
+    },
+    {
+      "t": "flag",
+      "key": "vol2_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

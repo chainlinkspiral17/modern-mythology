@@ -577,7 +577,13 @@ func _do_choice(n: Dictionary) -> void:
 	# every frame (UPDATE_ALWAYS) and keep their idle-sway going, so
 	# without this they draw and animate over the choice buttons.
 	_chars.visible = false
-	var opts: Array = n.get("opts", [])
+	# Optional gating: an option with "requires" (flag key or array of
+	# keys) only shows once every listed flag is truthy; "hide_if" (flag
+	# key) hides it once that flag is set. Used by hub scenes (Vol IV desk).
+	var opts: Array = []
+	for o in n.get("opts", []):
+		if _opt_visible(o):
+			opts.append(o)
 	_choices.visible = true
 	_choices.call("present", n.get("prompt", ""), opts,
 		func(idx: int) -> void:
@@ -595,6 +601,19 @@ func _do_choice(n: Dictionary) -> void:
 			else:
 				_run_next()
 	)
+
+
+func _opt_visible(o: Dictionary) -> bool:
+	var req = o.get("requires", null)
+	if req != null:
+		var keys: Array = req if req is Array else [req]
+		for k in keys:
+			if not bool(_flags.get(str(k), false)):
+				return false
+	var hide_key = o.get("hide_if", null)
+	if hide_key != null and bool(_flags.get(str(hide_key), false)):
+		return false
+	return true
 
 
 # Scene data puts pass/fail as siblings of `check` on the option

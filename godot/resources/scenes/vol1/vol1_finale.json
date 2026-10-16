@@ -1,0 +1,44 @@
+{
+  "id": "vol1_finale",
+  "vol": 1,
+  "chapter": 7,
+  "type": "chapter",
+  "title": "Faust 3 — curtain",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol1_plate_three_figures.jpg",
+      "caption": "modern mythology. — a fiction by andy link"
+    },
+    {
+      "t": "interlude",
+      "text": "End of Faust 3",
+      "sub": "modern mythology. · volume one",
+      "duration": 2600
+    },
+    {
+      "t": "flag",
+      "key": "vol1_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

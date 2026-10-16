@@ -1,0 +1,39 @@
+{
+  "id": "vol4_finale",
+  "vol": 4,
+  "chapter": 9,
+  "type": "chapter",
+  "title": "Scraps — end",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "interlude",
+      "text": "End of modern mythology.",
+      "sub": "fly not fall.",
+      "duration": 3000
+    },
+    {
+      "t": "flag",
+      "key": "vol4_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

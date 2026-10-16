@@ -1,0 +1,39 @@
+{
+  "id": "vol3_finale",
+  "vol": 3,
+  "chapter": 15,
+  "type": "chapter",
+  "title": "The Earthman Chronicles — end",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": null
+    },
+    {
+      "t": "interlude",
+      "text": "End of The Earthman Chronicles",
+      "sub": "modern mythology. · volume three",
+      "duration": 2600
+    },
+    {
+      "t": "flag",
+      "key": "vol3_complete",
+      "val": true
+    },
+    {
+      "t": "end"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "vol4_hub",
+  "vol": 4,
+  "chapter": 1,
+  "type": "interlude",
+  "title": "The desk",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol4_desk_night.jpg"
+    },
+    {
+      "t": "choice",
+      "prompt": "The desk. Everything that didn't fit anywhere else.",
+      "opts": [
+        {
+          "text": "the blog printouts — scraps, 2006",
+          "scene": "vol4_scraps"
+        },
+        {
+          "text": "loose poems in a folder",
+          "scene": "vol4_poems"
+        },
+        {
+          "text": "a zine: weep (FOR THE FUTURE!), issue six",
+          "scene": "vol4_zine"
+        },
+        {
+          "text": "a screenplay: Charlie & Caroline",
+          "scene": "vol4_cc_1"
+        },
+        {
+          "text": "stories, stapled",
+          "scene": "vol4_stories"
+        },
+        {
+          "text": "vii. daddy",
+          "scene": "vol4_daddy_a",
+          "requires": [
+            "vol4_read_scraps",
+            "vol4_read_poems",
+            "vol4_read_zine",
+            "vol4_read_cc",
+            "vol4_read_stories"
+          ]
+        }
+      ]
+    }
+  ]
+}

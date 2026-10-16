@@ -1,0 +1,44 @@
+{
+  "id": "vol2_drift_wood",
+  "vol": 2,
+  "chapter": 12,
+  "type": "chapter",
+  "title": "xii. drift wood — the strips",
+  "nodes": [
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "assets/backgrounds/vol2_small_wood_scrapbook.jpg"
+    },
+    {
+      "t": "interlude",
+      "text": "DRIFT WOOD",
+      "sub": "by jay rose · Small Wood High, 1997–1999",
+      "duration": 2200
+    },
+    {
+      "t": "narrate",
+      "text": "[DRIFT WOOD strips go here — Andy is preparing the final high-school-run strips. Each strip will be a cg node: assets/cg/vol2_driftwood_<date>_<slug>.jpg]"
+    },
+    {
+      "t": "flag",
+      "key": "vol2_ch12_complete",
+      "val": true
+    },
+    {
+      "t": "jump",
+      "scene": "vol2_finale"
+    }
+  ]
+}
