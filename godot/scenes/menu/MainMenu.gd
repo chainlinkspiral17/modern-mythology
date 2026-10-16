@@ -379,7 +379,13 @@ func _populate_chapters(vol: int) -> void:
 
 	for scene: Dictionary in chapters:
 		var ch_raw = scene.get("chapter", "")
-		var ch_str: String = str(ch_raw) if ch_raw != null else ""
+		# JSON numbers land as floats — "Ch 3.0" reads wrong in the list.
+		var ch_str: String = ""
+		if ch_raw != null:
+			if ch_raw is float and ch_raw == floorf(ch_raw):
+				ch_str = str(int(ch_raw))
+			else:
+				ch_str = str(ch_raw)
 		var scene_title: String = scene.get("title", "")
 		if scene_title == "":
 			scene_title = "Chapter %s" % ch_str if ch_str != "" else scene.get("id", "—")

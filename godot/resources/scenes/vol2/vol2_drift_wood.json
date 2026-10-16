@@ -28,8 +28,74 @@
       "duration": 2200
     },
     {
-      "t": "narrate",
-      "text": "[DRIFT WOOD strips go here — Andy is preparing the final high-school-run strips. Each strip will be a cg node: assets/cg/vol2_driftwood_<date>_<slug>.jpg]"
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_00_masthead.jpg",
+      "caption": "DRIFT WOOD · the masthead"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_01_the_vending_machine.jpg",
+      "caption": "DRIFT WOOD · the vending machine · strip 1 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_02_corn_or_peas.jpg",
+      "caption": "DRIFT WOOD · corn or peas · strip 2 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_03_the_assembly.jpg",
+      "caption": "DRIFT WOOD · the assembly · strip 3 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_04_the_inverted_pyramid.jpg",
+      "caption": "DRIFT WOOD · the inverted pyramid · strip 4 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_05_yearbook_day.jpg",
+      "caption": "DRIFT WOOD · yearbook day · strip 5 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_06_thankful_for.jpg",
+      "caption": "DRIFT WOOD · thankful for · strip 6 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_07_the_real_work.jpg",
+      "caption": "DRIFT WOOD · the real work · strip 7 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_08_eleven_rentals.jpg",
+      "caption": "DRIFT WOOD · eleven rentals · strip 8 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_09_the_tape.jpg",
+      "caption": "DRIFT WOOD · the tape · strip 9 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_10_backup.jpg",
+      "caption": "DRIFT WOOD · backup · strip 10 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_11_the_greek_chorus.jpg",
+      "caption": "DRIFT WOOD · the greek chorus · strip 11 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_12_big_crab.jpg",
+      "caption": "DRIFT WOOD · big crab · strip 12 of 13"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol2_driftwood_13_tides_out_at_four.jpg",
+      "caption": "DRIFT WOOD · tide's out at four · strip 13 of 13"
     },
     {
       "t": "flag",

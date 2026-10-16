@@ -521,7 +521,10 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	# Persistent chapter echo in the HUD (the plate's quiet twin).
 	_refresh_items()
 	if _hud != null and _hud.has_method("set_chapter"):
-		var ch := str(_scene_data.get("chapter", "")).strip_edges()
+		var ch_v: Variant = _scene_data.get("chapter", "")
+		if ch_v is float and ch_v == floorf(ch_v):
+			ch_v = int(ch_v)
+		var ch := str(ch_v).strip_edges()
 		var ttl := String(_scene_data.get("title", "")).strip_edges()
 		var ch_key := "%d::%s" % [_vol, ch]
 		if ttl != "":
